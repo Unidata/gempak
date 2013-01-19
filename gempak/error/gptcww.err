@@ -1,0 +1,17 @@
+! This is the error file for GPTCWW.
+!
+  4     ! Error in opening breakpoint VGF file.
+  3     ! Too few points in track error table.
+  2     ! Cannot change !AS in color table.
+  1	! No new storms to process.
+ -1	! Fatal error initializing TAE.
+ -2	! Fatal error reading TAE parameters.
+ -3	! Error in reading advisory.
+ -5	! Error in opening history_tc file.
+ -6	! No advisories found in directory.
+ -7	! Error in opening breakpoint file.
+ -8	! Error in opening average track error table.
+ -9	! Error in opening breakpoint station plotting table.
+-10	! Invalid storm identifier in advisory message.
+-12	! Error in opening file name table.
+-13	! Error reading public advisory.

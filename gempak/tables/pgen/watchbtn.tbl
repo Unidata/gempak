@@ -1,0 +1,17 @@
+! PRODBTN.TBL.
+!
+! This table provides the icons located in the products button palette
+!
+! Log:
+! S. Law/GSC		10/98	Moved watches to watchbtn.tbl
+! A. Hardy/GSC		 8/99   Removed the watch-by-county icon
+! E. Safford/GSC	12/99	Added watch line icon
+! E. Safford/GSC	01/01	reorder for horizontal layout
+!------------------------------------------------------------------------
+BEGIN
+!
+! Row 1
+!
+wbprll
+wtchln
+END

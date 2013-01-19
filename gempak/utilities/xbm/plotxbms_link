@@ -1,0 +1,7 @@
+echo STARTING LINK OF PLOTXBMS.
+
+$FC $FFLAGS $LDFLAGS -o plotxbms plotxbms.f \
+     $APPL $SYSLIB $GEMLIB 
+$RM plotxbms.o
+
+echo LINK OF PLOTXBMS IS COMPLETE.

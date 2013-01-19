@@ -1,0 +1,38 @@
+!
+! Restore File : sfc_precip_type
+!
+! Log:
+!
+GDATTIM F006-F252-6
+!GDFILE  {gefs:01,gefs:02,gefs:03,gefs:04,gefs:05,gefs:06,gefs:07,gefs:08,gefs:09,gefs:10}
+GDFILE  {GEFS}
+GLEVEL  0
+GVCORD  none
+PANEL   0           
+SKIP    0
+SCALE   2 ! 2 ! 0
+GDPFUN  ens_prob(GT(p06i,.01)) ! ens_prob(AND(GT(p06i,.01),LT(tmpc@2%hght,2))) ! ens_savg(pmsl)
+TYPE    f ! f ! c
+CONTUR  3/3
+CINT    4
+LINE    5/1/2/1
+FINT    10/30/90 ! 10/30/90
+FLINE   0;23-17/7 ! 0;24-30/7
+HILO     ! ! 4;2/H;L/1012-1099;0-1008///Y
+HLSYM   2//33/1/hw          
+CLRBAR  1/V/LR/.03;.05/.5;.01/-1 ! 1/V/LL/.03;.05/.5;.01/1
+WIND    18/1/1
+REFVEC      
+TITLE   5/-1/@ ^ Ensemble Precipitation and Type ! !
+TEXT    1/21//hw            
+CLEAR   yes                
+STNPLT                  
+SATFIL                 
+RADFIL                
+STREAM              
+POSN    4          
+COLORS  2         
+MARKER  2        
+GRDLBL  5                                                                       
+LUTFIL  none
+FILTER  yes

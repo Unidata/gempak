@@ -1,0 +1,97 @@
+     IJSKIP
+
+     IJSKIP is used to control subsetting of the internal grid by
+     declaring bounding index values and numbers of points to skip in
+     each index direction, I and J.  Input is entered as follows:
+
+                 Iskp;Istrt;Istp/Jskp;Jstrt;Jstp
+     or
+                 Yes
+     or
+                 No
+
+     where Iskp and Jskp are the number of grid points to skip in
+     the I and J grid index directions, respectively; Istrt and
+     Istp are the beginning and ending I index values, respectively;
+     and Jstrt and Jstp are the beginning and ending J index values,
+     respectively.  GEMPAK grids have (I,J) = (1,1) at the lower
+     left corner, with I increasing in the X (horizontal or east-west)
+     direction.  J increases in the Y (vertical or north-south)
+     direction.  The internal grid navigation is determined from the
+     GDFILE entry.
+
+     The defaults for Iskp and Jskp are zero.  The other parameters
+     default to missing values so that they will be determined
+     automatically, depending on the area of the grid required by
+     the map display.
+
+     If only Iskp is given, then Jskp = Iskp, and the bounds are
+     determined automatically.  The skip values thin the grid by
+     skipping over the number of points specified.
+
+     If IJSKIP = NO, then the results are the same as for IJSKIP set
+     to blank or zero.  If IJSKIP = YES, then all the skipping values
+     are computed automatically.  When IJSKIP = YES, skipping is only
+     done if the number of grid points required to cover the display
+     area is too large.  The automatic number of points skipped is
+     the same in each index direction, and it will be the minimum
+     number required to make the internal computational grid fit in
+     allocated memory.
+
+     IJSKIP and SKIP are functionally independent.  If SKIP is also
+     specified, IJSKIP operates first to create the subset grid,
+     then the SKIP information is applied to that subset grid, which
+     has already been thinned by IJSKIP.  Since IJSKIP and SKIP are
+     done in series, the combined effect is multiplicative.  IJSKIP
+     determines the internal computational grid; therefore, changing
+     it changes the results of computations involving derivatives.
+     The SKIP parameter is applied to the internal grid after compu-
+     tations and affects only the display.  SKIP and IJSKIP results,
+     when done separately and compared, will not always yeild coinci-
+     dent points for the same skipping values, because IJSKIP creates
+     a computational halo of grid points around the display region
+     resulting in different initial indexes for IJSKIP vis-a-vis SKIP.
+
+     In programs like GDPLOT2, which allows different specifications
+     of IJSKIP for different GDPFUN entries, IJSKIP must be the same
+     for all fields if the // grid naming feature is used in GDPFUN.
+     This is because IJSKIP determines the navigation of the internal
+     grid, which must remain the same if saved grids are to be kept
+     for reuse.
+
+     If user-supplied index bounds are not consistent with the given
+     number to skip, then the bounds will be reset, taking into
+     account any nearby grid boundaries.  The reset values will be
+     close to what the user intended.  For best results, provide
+     consistent bounding index values.  If the full range of the index
+     is required, then the unit (1) value of the index is the starting
+     point.
+     
+     If the grid is a global grid and the "seam" falls within the
+     display area, then if Istrt is given, Istp must also be given;
+     otherwise, an error message is generated.  If both Istrt and
+     Istp are given in the case of the global grid, the grid "seam"
+     will not be shifted out of the display area.
+
+     If a start value (strt) exceeds a stop value, an error message
+     appears.
+
+     Some examples follow:
+
+      Example                            Action
+
+     IJSKIP = YES   Skip only if necessary, skipping as few points
+                    as possible; if the subset area is reduced fewer
+                    points will be skipped
+
+     IJSKIP = 5     Skip 5 points in both index directions; beginning
+                    and ending indexes are automatically determined
+
+     IJSKIP = 5/3   Skip 5 points in the I index direction; skip 3
+                    points in the J index direction; beginning and
+                    ending indexes are automatically determined
+
+     IJSKIP = 5;3/2 Skip 5 points in the I index direction; skip 2
+                    points in the J index direction; beginning I
+                    index is 3; all other indexes are determined
+                    automatically

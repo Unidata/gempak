@@ -1,0 +1,37 @@
+!
+! Restore File : lifted_index
+!
+! Log:
+! J. Carr/HPC        10/98	Initial Creation
+!
+GDATTIM fall
+GLEVEL  0   !0   !0   !30:0
+GVCORD  none!none!none!pdly
+PANEL   0                                                                       
+SKIP    0/1
+SCALE   0
+GDPFUN  sm9s(lft4)!sm9s(lft4)  !sm9s(lft4)
+TYPE    c
+CONTUR  1                                                                       
+CINT    4/4       !0;10000     !2/-100/-2
+LINE    20/1/2    !1/2/2/1     !2/1/2
+FINT    0
+FLINE   0
+HILO    0
+HLSYM   1;1//22;22/2;2/hw
+CLRBAR  0
+WIND    0
+REFVEC                                                                          
+TITLE   1/-2/~ BEST LI (0-180 MB AGL)!0
+TEXT    1/21/1/hw
+CLEAR   yes                                                                     
+STNPLT                                                                          
+SATFIL                                                                          
+RADFIL                                                                          
+STREAM                                                                          
+POSN    4                                                                       
+COLORS  2                                                                       
+MARKER  2                                                                       
+GRDLBL  5                                                                       
+LUTFIL  none
+FILTER  yes

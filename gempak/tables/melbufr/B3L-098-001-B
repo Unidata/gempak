@@ -1,0 +1,81 @@
+  0;    0;      1;      0;           0;   24;     CCITTIA5; TABLE A: ENTRY
+  0;    0;      2;      0;           0;  256;     CCITTIA5; TABLE A: DATA CATEGORY DESCRIPTION, LINE 1
+  0;    0;      3;      0;           0;  256;     CCITTIA5; TABLE A: DATA CATEGORY DESCRIPTION, LINE 2
+  0;    0;      5;      0;           0;   24;     CCITTIA5; BUFR EDITION NUMBER
+  0;    0;     10;      0;           0;    8;     CCITTIA5; F DESCRIPTOR TO BE ADDED OR DEFINED
+  0;    0;     11;      0;           0;   16;     CCITTIA5; X DESCRIPTOR TO BE ADDED OR DEFINED
+  0;    0;     12;      0;           0;   24;     CCITTIA5; Y DESCRIPTOR TO BE ADDED OR DEFINED
+  0;    0;     13;      0;           0;  256;     CCITTIA5; ELEMENT NAME, LINE 1
+  0;    0;     14;      0;           0;  256;     CCITTIA5; ELEMENT NAME, LINE 2
+  0;    0;     15;      0;           0;  192;     CCITTIA5; UNITS NAME
+  0;    0;     16;      0;           0;    8;     CCITTIA5; UNITS SCALE SIGN
+  0;    0;     17;      0;           0;   24;     CCITTIA5; UNITS SCALE
+  0;    0;     18;      0;           0;    8;     CCITTIA5; UNITS REFERENCE SIGN
+  0;    0;     19;      0;           0;   80;     CCITTIA5; UNITS REFERENCE VALUE
+  0;    0;     20;      0;           0;   24;     CCITTIA5; ELEMENT DATA WIDTH
+  0;    0;     30;      0;           0;   48;     CCITTIA5; DESCRIPTOR DEFINING SEQUENCE
+  0;    1;      1;      0;           0;    7;      NUMERIC; WMO BLOCK NUMBER
+  0;    1;      2;      0;           0;   10;      NUMERIC; WMO STATION NUMBER
+  0;    1;      3;      0;           0;    3;      NUMERIC; WMO REGION NUMBER/GEOGRAPHICAL AREA
+  0;    1;      4;      0;           0;    3;      NUMERIC; WMO REGION SUB-AREA
+  0;    1;      5;      0;           0;   17;      NUMERIC; BUOY/PLATFORM IDENTIFIER
+  0;    1;      6;      0;           0;   64;     CCITTIA5; AIRCRAFT FLIGHT NUMBER
+  0;    1;      7;      0;           0;   10;         CODE; TABLE   	SATELLITE IDENTIFIER
+  0;    1;      8;      0;           0;   64;     CCITTIA5; AIRCRAFT REGISTRATION NUMBER
+  0;    1;      9;      0;           0;   64;     CCITTIA5; TYPE OF COMMERCIAL AIRCRAFT
+  0;    1;     10;      0;           0;   64;     CCITTIA5; STATIONARY BUOY PLATFORM IDENTIFIER(C-MAN BUOYS)
+  0;    1;     11;      0;           0;   72;     CCITTIA5; SHIP'S CALL SIGN
+  0;    1;     12;      0;           0;    9;       DEGREE; TRUE  	DIRECTION OF MOTION OF MOVING OBSERVING PLATFORM
+  0;    1;     13;      0;           0;   10;          M/S; SPEED OF MOTION OF MOVING OBSERVING PLATFORM
+  0;    1;     14;      2;           0;   10;          M/S; PLATFORM DRIFT SPEED(HIGH PRECISION
+  0;    1;     21;      0;           0;   14;      NUMERIC; SYNOPTIC FEATURE IDENTIFIER
+  0;    1;     25;      0;           0;   24;     CCITTIA5; STORM IDENTIFIER
+  0;    1;     26;      0;           0;   64;     CCITTIA5; WMO STORM NAME
+  0;    1;     31;      0;           0;   16;         CODE; TABLE   	GENERATING CENTRE
+  0;    1;     32;      0;           0;    8;         CODE; TABLE   	GENERATING APPLICATION
+  0;    1;     63;      0;           0;   64;     CCITTIA5; ICAO LOCATION INDICATOR
+  0;    1;    192;      0;           0;    8;         CODE; TABLE   	MODEL VERSION NUMBER
+  0;    1;    193;      0;           0;    4;         CODE; TABLE   	SIGMA_0 SIMULATION METHOD
+  0;    1;    194;      0;           0;   72;     CCITTIA5; CARRIER BALLOON/AIRCRAFT IDENTIFIER
+  0;    1;    195;      0;           0;   72;     CCITTIA5; MOBIL LAND STATION IDENTIFIER
+  0;    1;    196;      0;           0;   72;     CCITTIA5; CONSTANT LEVEL BALLOON IDENTIFIER
+  0;    1;    197;      0;           0;   10;         CODE; TABLE   	RTP - PLATFORM TYPE
+  0;    1;    198;      0;           0;   10;         CODE; TABLE   	ITP - DECK ID
+  0;    1;    199;      0;           0;    4;         CODE; TABLE   	DUP - DUPLICATE STATUS
+  0;    1;    201;      0;           0;    8;         CODE; TABLE   	GENERATING APPLICATION
+  0;    1;    205;      0;           0;   10;         CODE; TABLE   	SATELLITE IDENTIFIER
+  0;    1;    208;      5; -1073741824;   31;          M/S; VELOCITY OF PLATFORM, X
+  0;    1;    209;      5; -1073741824;   31;          M/S; VELOCITY OF PLATFORM, Y
+  0;    1;    210;      5; -1073741824;   31;          M/S; VELOCITY OF PLATFORM, Z
+  0;    2;      1;      0;           0;    2;         CODE; TABLE   	TYPE OF STATION
+  0;    2;      2;      0;           0;    4;         FLAG; TABLE   	TYPE OF INSTRUMENTATION FOR WIND MEASUREMENT
+  0;    2;      3;      0;           0;    4;         CODE; TABLE   	TYPE OF MEASURING EQUIPMENT USED
+  0;    2;      4;      0;           0;    4;         CODE; TABLE   	TYPE OF INSTRUMENTATION FOR EVAPORATION MEASUEMENT
+  0;    2;      5;      2;           0;    7;            K; PRECISION OF TEMPERATURE OBSERVATION
+  0;    2;     11;      0;           0;    8;         CODE; TABLE   	RADIOSONDE TYPE
+  0;    2;     12;      0;           0;    4;         CODE; TABLE   	RADIOSONDE COMPUTATIONAL METHOD
+  0;    2;     13;      0;           0;    4;         CODE; TABLE   	SOLAR AND INFRARED RADIATION CORRECTION
+  0;    2;     14;      0;           0;    7;         CODE; TABLE   	TRACKING TECHNIQUE/STATUS OF SYSTEM USED
+  0;    2;     15;      0;           0;    4;         CODE; TABLE   	RADIOSONDE COMPLETENESS
+  0;    2;     21;      0;           0;    9;         FLAG; TABLE   	SATELLITE INSTRUMENT DATA USED IN PROCESSING
+  0;    2;     22;      0;           0;    8;         FLAG; TABLE   	SATELLITE DATA PROCESSING TECHNIQUE USED
+  0;    2;     23;      0;           0;    4;         CODE; TABLE   	SATELLITE DERIVED WIND COMPUTATION METHOD
+  0;    2;     24;      0;           0;    4;         CODE; TABLE   	INTEGRATED MEAN HUMIDITY COMPUTATIONAL METHOD
+  0;    2;     25;      0;           0;   25;         FLAG; TABLE   	SATELLITE CHANNEL(S) USED IN COMPUTATION
+  0;    2;     26;      2;           0;   12;            M; CROSS TRACK RESOLUTION
+  0;    2;     27;      2;           0;   12;            M; ALONG TRACK RESOLUTION
+  0;    2;     30;      0;           0;    3;         CODE; TABLE   	METHOD OF CURRENT MEASUREMENT
+  0;    2;     31;      0;           0;    5;         CODE; TABLE   	DURATION AND TIME OF CURRENT MEASUREMENT
+  0;    2;     32;      0;           0;    2;         CODE; TABLE   	INDICATOR FOR DIGITIZATION
+  0;    2;     33;      0;           0;    3;         CODE; TABLE   	METHOD OF SALINITY/DEPTH MEASUREMENT
+  0;    2;     34;      0;           0;    5;         CODE; TABLE   	DROGUE TYPE
+  0;    2;     35;      0;           0;    9;            M; CABLE LENGTH
+  0;    2;     36;      0;           0;    2;         CODE; TABLE   	BUOY TYPE
+  0;    2;     37;      0;           0;    3;         CODE; TABLE   	METHOD OF TIDAL OBSERVATION
+  0;    2;     38;      0;           0;    4;         CODE; TABLE   	METHOD OF SEA-SURFACE TEMPERATURE MEASUREMENT
+  0;    2;     39;      0;           0;    3;         CODE; TABLE   	METHOD OF WET-BULB TEMPERATURE MEASUREMENT
+  0;    2;     40;      0;           0;    4;         CODE; TABLE   	METHOD OF REMOVING VELOCITY AND MOTION OF PLATFORM FROM CURRENT
+  0;    2;     41;      0;           0;    6;         CODE; TABLE   	METHOD FOR ESTIMATING REPORTS RELATED TO SYNOPTIC FEATURES
+  0;    2;     51;      0;           0;    4;         CODE; TABLE   	INDICATOR TO SPECIFY OBSERVING METHOD FOR EXTREME TEMPERATURES
+  0;    2;     61;      0;           0;    3;         CODE; TABLE   	AIRCRAFT NAVIGATIONAL SYSTEM
+  0;    2;     62;      0;           0;    4;         CODE; TABLE   	TYPE OF AIRCRAFT DATA RELAY SYST

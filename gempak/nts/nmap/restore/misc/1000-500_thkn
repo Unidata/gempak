@@ -1,0 +1,37 @@
+!
+! Restore File : 1000-500_thkn
+!
+! Log:
+! J. Carr/HPC   	 9/98	Initial creation
+!
+GDATTIM fall
+GLEVEL  500:1000!500:1000
+GVCORD  pres!pres
+PANEL   0                                                                       
+SKIP    1
+SCALE   -1
+GDPFUN  ldf(hght)!ldf(hght)
+TYPE    c
+CONTUR  1                                                                       
+CINT    6/0/540!6/546/999
+LINE    6/3/2  !2/3/2
+FINT    
+FLINE   
+HILO    
+HLSYM   
+CLRBAR                                                                        
+WIND    
+REFVEC                                                                          
+TITLE   5/-1/~ 1000-500 MB THICKNESS!0
+TEXT    1/21//hw                                                                
+CLEAR   yes                                                                     
+STNPLT                                                                          
+SATFIL                                                                          
+RADFIL                                                                          
+STREAM                                                                          
+POSN    4                                                                       
+COLORS  2                                                                       
+MARKER  2                                                                       
+GRDLBL  5                                                                       
+LUTFIL  none
+FILTER  yes

@@ -1,0 +1,8 @@
+     GAMMA
+
+     GAMMA, the convergence parameter, is a multiplier for the weight and 
+     search radius for passes after the first pass of the Barnes analysis 
+     programs.  GAMMA must be within the range 0 - 1.  Any value outside 
+     this range will default to a value of 0.3.  If GAMMA is 0, the number 
+     of passes will be set to 1.  The recommended value for GAMMA is 0.3.
+

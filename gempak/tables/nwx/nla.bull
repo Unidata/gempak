@@ -1,0 +1,11 @@
+! NLA.BULL
+!
+! Location information for the following product:
+! Radar_low_layer_composite_reflectivity_ap_RMVD_id_67/ARP.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+SDUS58 PACR     CIRCLE_CITY_AIRPORT              AK US  6583 -14407     0

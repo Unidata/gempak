@@ -1,0 +1,507 @@
+#!/usr/bin/perl
+
+$changelog = <<EOL;
+#########################################################################
+# SEARCHER								#
+#									#
+# This program searches a directory hierarchy for a regular expression.	#
+#									#
+##									#
+# Log:									#
+# G. Krueger/EAI 	 3/96						#
+# G. Krueger/EAI	 4/97 Fixed replace;Fixed error messages;Fixed	#
+#			      change log format; Fixed found count	#
+# G. Krueger/EAI	 6/98 Fixed BINARY and DEPTH usage statement	#
+# G. Krueger/EAI	 7/98 Removed filter substrings; Binary off def	#
+# R. Tian/SAIC		 1/04 Added map directory searching option and	#
+#                             specific test for PDF format file		#
+#########################################################################
+EOL
+
+$| = 1;
+
+$optsfile = "$ENV{'HOME'}/gkk.opts";
+$optstmp = "$ENV{'HOME'}/gkk.tmp";
+
+$resize = `resize`;
+$resize =~ /columns '(\d+)'/i;
+$screenwidth = $1;
+$screenwidth = 80 if ( $screenwidth < 10 );
+
+$progname = $0;
+$progname =~ s|.*/||g;
+
+$starttime = time;
+
+$true = ( 1 == 1 );
+$false = ! $true;
+$| = 1;
+$filecount = 0;
+$filefound = 0;
+$filefail = 0;
+$dircount = 0;
+$dirfound = 0;
+$dirfail = 0;
+$afind = $false;
+$done = $false;
+
+# Before changing the following modes, consider that the appropriate logic
+# in the argmode section must be inverted.
+$binary = $false;
+$depth = -1;
+$forkcmd = $false;
+$skipmap = $true;
+
+if ( $ARGV[0] =~ /^\+o$/ig )
+{
+    open ( OPTSIN, "<$optsfile" );
+    unless (open ( OPTSOUT, ">$optstmp" ))
+    {
+	printf ( STDERR "Could not open options temporary file.\n" );
+	exit;
+    }
+    while ( $optline = <OPTSIN> )
+    {
+	if ( $optline !~ /$progname/ )
+	{
+	    printf ( OPTSOUT "%s", $optline );
+	}
+    }
+    printf ( OPTSOUT "%s", $progname );
+    foreach $argument ( @ARGV )
+    {
+	printf ( OPTSOUT " %s", $argument )
+	    if ( $argument !~ /^\+o$/i );
+    }
+    printf ( OPTSOUT "\n" );
+    close ( OPTSOUT );
+    close ( OPTSIN );
+    rename ( $optstmp, $optsfile );
+    exit;
+}
+
+open ( OPTSIN, $optsfile );
+while ( $optline = <OPTSIN> )
+{
+    if ( $optline =~ /$progname/ )
+    {
+	@optargs = split ( /[ \t\n]+/, $optline );
+	shift (@optargs);
+	@ARGV = (@optargs, @ARGV);
+    }
+}
+
+# Process command line options:
+while ($_ = $ARGV[0], /^[-\+]/)
+{
+    shift;
+    last if /^--$/;
+#   Get the overall argmode:
+    if ( /^\+/ )
+    {
+	$argmode = $true;
+    } else
+    {
+	$argmode = $false;
+    }
+#   Get the prefix, postfix, or replacement string:
+    if ( /\+([ser])(.*)/i )
+    {
+	if ( $1 eq "s" )
+	{
+	    $startcmd = $2;
+	} elsif ( $1 eq "e" )
+	{
+	    $endcmd = $2;
+	} elsif ( $1 eq "r" )
+	{
+	    $rregexp = $2;
+	}
+    } elsif ( /\+([ser])/i )
+    {
+	if ( $1 eq "s" )
+	{
+	    $startcmd = "";
+	} elsif ( $1 eq "e" )
+	{
+	    $endcmd = "";
+	} elsif ( $1 eq "r" )
+	{
+	    $rregexp = "";
+	}
+    } elsif ( /\+([m])/i )
+    {
+	$skipmap = $false;
+    } else
+    {
+#	Get the binary argmode:
+	if ( /-b/i || (/b/i && !$argmode) )
+	{
+	    $binary = $false;
+	} elsif ( /\+b/i || (/b/i && $argmode) )
+	{
+	    $binary = $true;
+	}
+#	Get the depth argmode:
+	if ( /\+d(\d*)/i )
+	{
+	    $depth = $1;
+	    if ( $depth !~ /\d+/ )
+	    {
+		$depth = 1;
+	    }
+	} elsif ( /d(\d*)/i && $argmode )
+	{
+	    $depth = $1;
+	    if ( $depth !~ /\d+/ )
+	    {
+		$depth = 1;
+	    }
+	}
+#	Get the fork argmode:
+	if ( /\+f/i || (/f/i && $argmode) )
+	{
+	    $forkcmd = $true;
+	}
+#	Get the change log display argmode:
+	if ( /\+changes/ )
+	{
+	    printf ( STDERR "%s", $changelog );
+	}
+    }
+}
+
+$regexp = shift;
+# No arguments:
+if ( ! defined ($regexp) )
+{
+    printf ( STDERR "%s", <<EOU )
+usage:  $progname [+o] [options] pattern [basedirectory [filenamefilters]]
+
+\t+o\tsave all options (except +o) as defaults, and exit.
+\toptions are:  -b\texclude binary files.
+\t              +ddepth\tsearch this many directory levels.
+\t              \tIf +d is used w/o depth, defaults to 1 (no subdirs.).
+\t              +estring\tpostfix for command string on found files.
+\t              +f\tfork commands executed on found files.
+\t              +rstring\tstring to replace matches.
+\t              +sstring\tprefix for command string on found files.
+\t              +changes\tdisplays the change log of SEARCHER.
+\t              +m\tinclude searching the gempak map directory.
+EOU
+
+# At least one argument:
+} else
+{
+    $basedir = shift;
+    if ( ! defined ($basedir) )
+    {
+	$basedir = ".";
+    }
+    $filter = shift;
+    if ( ! defined ($filter) )
+    {
+	$filter = "*";
+    }
+    $filtexp = $filter;
+    $filtexp =~ s/\./\\\./g;
+    $filtexp =~ s/\*/\.\*/g;
+    $filtexp =~ s/(\{.*),(.*\})/\1\|\2/g;
+    $filtexp =~ s/\{(.*)\}/\(\1\)/g;
+
+    if ( chdir (${basedir}) )
+    {
+	$currentdir = `pwd`;
+	chop ($currentdir);
+	$dircount++;
+	$inodes="";
+	do ProcDir($currentdir, $currentdir, $basedir, $depth, $inodes);
+    } else
+    {
+	$dirfail++;
+    }
+
+# Print the statistics:
+    $endtime = time;
+    if ( $dircount == 1 )
+    {
+	$dirunit = "directory";
+    } else
+    {
+	$dirunit = "directories";
+    }
+    if ( $filecount == 1 )
+    {
+	$fileunit = "file";
+    } else
+    {
+	$fileunit = "files";
+    }
+    if ( $endtime-$starttime == 1 )
+    {
+	$timeunit = "second";
+    } else
+    {
+	$timeunit = "seconds";
+    }
+    $spacestring = ' ' x $screenwidth;
+    printf ( STDERR
+	     "\r$spacestring\r>> Searched %d $fileunit of %d $dirunit in %d $timeunit. <<\n",
+	     $filecount, $dircount, $endtime-$starttime
+	   );
+    if ( $dirfound == 1 )
+    {
+	$dirunit = "directory";
+    } else
+    {
+	$dirunit = "directories";
+    }
+    if ( $filefound == 1 )
+    {
+	$fileunit = "file";
+    } else
+    {
+	$fileunit = "files";
+    }
+    if ( defined ($rregexp) )
+    {
+	printf ( STDERR
+		 ">> Replaced in %d $fileunit of %d $dirunit. <<\n",
+		 $filefound, $dirfound
+	       );
+    } else
+    {
+	printf ( STDERR
+		 ">> Found in %d $fileunit of %d $dirunit. <<\n", $filefound,
+		 $dirfound
+	       );
+    }
+    if ( $dirfail || $filefail )
+    {
+	if ( $dirfail == 1 )
+	{
+	    $dirunit = "directory";
+	} else
+	{
+	    $dirunit = "directories";
+	}
+	if ( $filefail == 1 )
+	{
+	    $fileunit = "file";
+	} else
+	{
+	    $fileunit = "files";
+	}
+	printf ( STDERR
+		 ">> Failed to open %d $fileunit and %d $dirunit. <<\n",
+		 $filefail, $dirfail
+	       );
+    }
+# Done.
+}
+
+sub ProcDir
+{
+    local($currentdir, $fullpath, $displaypath, $depth, $inodes) = @_;
+    local(@entrylist, $afind, $newentry, $shortentry, $_);
+
+    if ( $depth )
+    {
+	$afind = $false;
+
+	opendir (CURRENTDIR, $fullpath);
+	@entrylist = readdir (CURRENTDIR);
+	closedir (CURRENTDIR);
+
+	foreach $shortentry ( @entrylist )
+	{
+	    $newentry = "${fullpath}/${shortentry}";
+
+	    if ( -d "$newentry" && ($depth - 1) && $newentry !~ m|/\.\.?$| )
+	    {
+                #
+		# Skip the 'gempak/maps' directory by default
+		#
+		next if ( $skipmap && $newentry =~ /gempak\/maps/ );
+		next if ( $newentry =~ /\.svn/ );
+
+		$printpath = "${displaypath}/${shortentry}/";
+		$printpath =~ s|//|/|g;
+		$printlen = length ($printpath);
+		if ( $printlen > $screenwidth - 2 )
+		{
+		    $printpath =
+			".." .
+			substr ($printpath, $printlen - $screenwidth + 4,
+				$screenwidth - 4
+			       );
+		}
+		$spacestring = ' ' x ($lastlen + 2);
+		printf ( STDERR "$spacestring\r:${printpath}:\r" );
+		$lastlen = length ($printpath);
+		($dev, $ino, $mode, $nlink, $uid, $gid, $rdev, $size,
+
+		 $atime, $mtime, $ctime, $blksize, $blocks
+		) = stat ($newentry);
+		if ( $inodes !~ /\s$ino\s/ )
+		{
+		    if ( chdir (${newentry}) )
+		    {
+			$inodes .= " $ino ";
+			do ProcDir($shortentry, ${newentry},
+				   "${displaypath}/${shortentry}", $depth - 1,
+				   $inodes
+				  );
+			chdir ( "${fullpath}" ); 
+			$dircount++;
+		    } else
+		    {
+			printf ( STDERR "$spacestring\r:${printpath}:" );
+			printf ( STDERR "\t## Could not be opened ##\n" );
+			$dirfail++;
+		    }
+		}
+	    } elsif ( ($shortentry =~ m|^${filtexp}$|) && -f "$newentry" &&
+		      ($binary || !-B "$newentry")
+		    )
+#	    If the element is not a directory and is allowed to be binary, or
+#		is text, perform file search:
+	    {
+	        #
+	        # Since the '-B' test can not tell a PDF file as binary.
+	        # A specific test for PDF file has to be added.
+	        #
+	        $filetest = `file $newentry`;
+	        if ( $filetest =~ /PDF\s+document/ ) {
+	            $pdffile = $true;
+	        }
+	        else {
+	            $pdffile = $false;
+	        }
+		next if ( ! $binary && $pdffile );
+
+		$success = $false;
+		$printpath = "${displaypath}/${shortentry}";
+		$printpath =~ s|//|/|g;
+		$printlen = length ($printpath);
+		if ( $printlen > $screenwidth - 2 )
+		{
+		    $printpath = ".." . substr ($printpath, $printlen - $screenwidth + 4, $screenwidth - 4);
+		}
+		$spacestring = ' ' x ($lastlen + 2);
+		printf ( STDERR "$spacestring\r:${printpath}:\r" );
+		$lastlen = length ($printpath);
+		if ( defined ($rregexp) )
+		{
+		    do replfile( $regexp, $rregexp, $newentry, $printpath );
+		} else
+		{
+		    do procfile( $regexp, $newentry, $printpath );
+		}
+		if ( $foundfile )
+		{
+		    $afind = $true;
+		    $filefound++;
+		    if ( defined ($startcmd) || defined ($endcmd) )
+		    {
+			if ( $forkcmd )
+			{
+			    $| = 1;
+			    if ( ! fork() )
+			    {
+				system ("$startcmd ${newentry} $endcmd");
+				exit;
+			    }
+			    $| = 0;
+			} else
+			{
+			    system ("$startcmd ${newentry} $endcmd");
+			}
+		    }
+		}
+		if ( $success )
+		{
+		    $filecount++;
+		} else
+		{
+		    printf ( STDERR "$spacestring\r:${printpath}:" );
+		    printf ( STDERR "\t## Could not be opened ##\n" );
+		    $filefail++;
+		}
+	    }
+	}
+	if ( $afind ) { $dirfound++; }
+    }
+}
+
+sub procfile
+{
+    local($regexp, $filename, $printpath) = @_;
+    local($searchstring);
+    $foundfile = $false;
+    $success = open(filehandle, "<$filename");
+    if ( $success )
+    {
+	$foundfile = $false;
+	$printstring = "";
+	$sstring = "while ( <filehandle> )";
+	$sstring .= "{";
+	$sstring .= "	if ( /$regexp/i )";
+	$sstring .= "	{";
+	$sstring .= "		\$printstring .= \"\$\`\$&\$\'\";";
+	$sstring .= "		\$foundfile = \$true;";
+	$sstring .= "	}";
+	$sstring .= "}";
+	eval ($sstring);
+	close(filehandle);
+	printf ( ":%s:\n%s", $printpath, $printstring ) if ( $foundfile );
+    }
+}
+
+sub replfile
+{
+    local($regexp, $rregexp, $filename, $printpath) = @_;
+    local($inname) = $filename;
+    local($outname) = "searcher.$$";
+    local($printstring) = '';
+    local($_);
+    $foundfile = $false;
+    $success = open(filehandle, "<$filename");
+    if ( $success )
+    {
+	$success = open(outfile, ">$outname");
+	if ( $success )
+	{
+	    $foundfile = $false;
+	    $sstring  = "while (\$line = <filehandle>)";
+	    $sstring .= "{";
+	    $sstring .= "	\$nocc = (\$line =~ s/$regexp/$rregexp/g);";
+	    $sstring .= "	if ( \$nocc != 0 )";
+	    $sstring .= "	{";
+	    $sstring .= "	    \$foundfile = $true;";
+	    $sstring .= "	    \$printstring .= \$line;";
+	    $sstring .= "	}";
+	    $sstring .= "	printf ( outfile \"%s\", \$line );";
+	    $sstring .= "}";
+	    eval $sstring;
+	    close(outfile);
+	} else
+	{
+	    printf ( STDERR "%s:  Could not write to $outname\n", $0 );
+	}
+	close(filehandle);
+    } else
+    {
+	printf ( STDERR "%s:  Could not read from $filename\n", $0 );
+    }
+    ($dev, $ino, $mode, $nlink, $uid, $gid, $rdev, $size, $atime, $mtime,
+     $ctime, $blksize, $blocks
+    ) = stat ($filename);
+    if ( $foundfile )
+    {
+	`mv $outname $filename`;
+	chmod $mode, $filename;
+	printf ( ":%s:\n%s", $printpath, $printstring );
+    }
+    unlink ($outname);
+}

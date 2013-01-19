@@ -1,0 +1,81 @@
+#!/bin/sh
+#
+# Script SEARCH . . .
+# GREP for the specified string ($2) in the specified directory ($1)
+# and all subdirectories under it. The directory can be omitted.
+#
+# G.J. Huffman/USRA  03/15/90   Massive collaboration with T. Piper
+# G.J. Huffman/USRA  05/03/90   Re-do core algorithm
+# S. Jacobs/EAI      05/05/93   Modified directory and file selection
+#
+# If both arguments are missing a help message is generated.
+#
+  if  [ . = .$1 ]
+      then
+        echo ' '
+        echo 'Usage:  search STRING DIR'
+        echo ' '
+        echo 'where:'
+        echo '      STRING is the string being sought'
+        echo ' '
+        echo '      DIR is the starting point pathname'
+	echo '          DIR is appended to $GEMPAK/source/'
+        echo ' '
+        echo '      If only one input is given, it is assumed to be '
+        echo '      STRING, and DIR is set to $GEMPAK/source'
+        echo ' '
+#
+#     Both arguments present implies that user has entered DIR and STRING.
+#
+      else
+        if [ . != .$2 ]
+           then
+             dir=$GEMPAK/source/$2
+             string=$1
+           else
+             dir=$GEMPAK/source
+             string=$1
+           fi
+#
+#       Move to DIR, and put it in the temporary file for use in NAWK
+#
+        cd $dir
+        echo $dir > "/usr/tmp/search.tmp"
+#
+#       Put STRING in the temporary file for use in NAWK.
+#
+#       This generates a list of all subdirectories and files under $DIR,
+#       then passes through lines ending in ':' (subdirectories). The line
+#       is passed to /bin/sh to execute, and the results are passed to NAWK.
+#
+        echo $string >> "/usr/tmp/search.tmp"
+        lnstr="/bin/ls -Rp"
+        echo $lnstr | /bin/sh |
+#
+#       Get the current directory and search string from the temporary file.
+#       If the line is a directory name, load it into DIR and build an ECHO line.
+#       Otherwise the line is a file name; build a GREP line.
+#       Pass the line built in NAWK to /bin/sh to execute.
+#
+        nawk ' BEGIN { getline base   < "/usr/tmp/search.tmp";
+                       getline schstr < "/usr/tmp/search.tmp";
+                       print "echo " base;
+                       if ( base ~ /^\/$/ ) { base="" }
+                     }
+               { if  ( $0 ~ /:$/ )
+                     { l = length - 2;
+                       dir = substr($0,2,l);
+                       print "echo ";
+                       print "echo ==========";
+                       print "echo " base dir;
+                       print "cd " base dir
+                     }
+                   else
+                     { print "grep -sin " schstr " " $0 " force_name" }
+               }
+             ' - | /bin/sh
+#
+#       Remove the temporary file.
+#
+        /bin/rm /usr/tmp/search.tmp
+    fi

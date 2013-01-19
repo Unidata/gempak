@@ -1,0 +1,41 @@
+
+SHPCV
+                                                                       
+  SHPCV creates GEMPAK bound, bound info, and station table files from
+  shapefile(s).
+
+SYNOPSIS
+
+  shpcv [-r ratio] [-btldh] shape_filename1[shape_filename2[shape_filename3]]
+
+DESCRIPTION
+
+  SHPCV is a program that creates GEMPAK bound, bound info, and station
+  table files. File names are predefined for different map types. Upto three 
+  shapefiles can be combined together to create bound, bound info and station
+  table.
+
+OPTIONS
+  -r  ratio
+      Reducing number of points ratio. Suggested value is 0.01.
+
+  -b  Create bound and bound info files. File names are predefined.
+
+  -t  Create station table file. File name is predefined.
+
+  -l  List shapefile(s) fields.
+
+  -d  Dump shapefile(s).
+
+  -h  Display this help.
+
+EXAMPLE
+
+  shpcv -r 0.01 -b -t c_18nv03
+
+	the program creates bound, bound info and station table from the 
+	shapefile c_18nv03. The reducing ratio is 0.01.
+
+  shpcv -l c_18nv03 mz15jl04
+
+	the program lists the fields of shapefile c_18nv03 and mz15jl04.

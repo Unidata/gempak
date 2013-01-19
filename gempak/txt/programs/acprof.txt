@@ -1,0 +1,84 @@
+ACPROF draws profiles of ACARS data 
+
+INPUT PARAMETERS
+ 
+
+PROGRAM DESCRIPTION
+ 
+    ACPROF draws profiles of ACARS data. The program is derived from
+    SNPROF to use ACARS data stored in ship format files. If AREA
+    is given as a single tail number (eg @FSL0001) then only data from
+    that aircraft will be used. If AREA is given as a region (eg DEN)
+    then all aircraft in vicinity of that location will be used.
+    AREA can be expanded/contracted as usual with +,*/-. All observations
+    in the given time range will be used. Once data is obtained, program 
+    behavior is similar to SNPROF.
+
+    Any two parameters that can be computed from the data set can
+    be plotted.  These parameters are specified in SNPARM.
+    The profiles' colors, line types, and widths are
+    specified in LINE.  Markers identifying the data points
+    can be plotted by setting a color in MARKER. A different MARKER
+    number is assigned to each aircraft. If marker numbers overlap, the 
+    marker color is incremented.
+
+    The type of y axis is specified in PTYPE.  LIN, LOG, STUVE,
+    and SKEW are all valid.  Note that SKEW is only valid when
+    plotting temperature vs. pressure.  The bottom and top of
+    the axis, along with an increment for labels, are set in
+    YAXIS.  If the panel is changed to be less than the full
+    screen, the default margins will often be too large.  The
+    margins can be set explicitly in PTYPE.
+
+    Winds are plotted in the right margin and can be specified in
+    WIND.  There are three positions available for plotting winds.
+    They are numbered 1 to 3, with 1 being the leftmost position.
+    The location for the wind to be plotted is specified in WINPOS.
+    The positions also apply to the station identifier, date/time
+    and stability indices which are plotted above the diagram.
+
+    Dry adiabats, moist adiabats and mixing ratio background
+    lines can be added to the diagram.  The attributes of these
+    lines are specified in THTALN, THTELN, and MIXRLN.
+
+    If the color is set to 0, no lines will be plotted.  If the
+    start, stop and increment are not set, defaults will be
+    supplied.  Note that these lines can only be drawn on plots
+    of pressure versus temperature.
+
+    FILTER in this program determines whether the wind barbs are
+    filtered.
+
+ 
+EXAMPLES
+ 
+    1.  Plot a Skew T chart using ACARS observations in the vicinity
+        of DEN.
+
+	SFFILE   = acars.gem
+	DATTIM   = all
+	AREA     = den
+	SNPARM   = tmpc;dwpc
+	LINE     = 2;4
+	PTYPE    = skewt
+	VCOORD   = PRES
+	STNDEX   =  
+	STNCOL   = 1
+	WIND     = BM1
+	WINPOS   = 1
+	MARKER   = 0
+	BORDER   = 1
+	TITLE    = 1
+	DEVICE   = XW
+	YAXIS    =  
+	XAXIS    =  
+	FILTER   = N
+	CLEAR    = YES
+	PANEL    = 0
+	TEXT     = 1
+	THTALN   = 8/1/1
+	THTELN   = 6/10/1
+	MIXRLN   = 5/2/1
+	
+ERROR MESSAGES
+ 

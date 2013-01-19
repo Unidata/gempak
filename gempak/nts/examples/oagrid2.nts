@@ -1,0 +1,15 @@
+GDFILE  hbobsnd.grd                                                             
+DELTAN  0                                                                       
+DELTAX  0                                                                       
+DELTAY  0                                                                       
+GRDAREA us                                                                      
+EXTEND  2;2;2;2                                                                 
+DTAAREA us                                                                      
+SOURCE  sn                                                                      
+SNFILE  $GEMPAK/data/hrcbob.snd                                                     
+SFFILE  $GEMPAK/data/hrcbob.sfc                                                     
+SNPARM  tmpc;dwpc                                                               
+SFPARM  tmpc;dwpc                                                               
+DATTIM  last                                                                    
+LEVELS  500                                                                     
+MAXGRD  2000                                                                    

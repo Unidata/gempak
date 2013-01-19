@@ -1,0 +1,14 @@
+! DP error file
+!
+ -1	! Packing terms are not defined.
+ -2	! Too many packing sets are defined.
+ -3	! Invalid number of data values.
+ -4	! Invalid number of bits specified.
+ -5	! Datamax less than datamin.
+ -6	! Invalid resolution.
+ -7	! Open error on parameter packing file.
+ -8	! Read error on parameter packing file.
+ -9	! Packed and unpacked data are mixed.
+-10	! NBITS is invalid for grid packing.
+-11	! The grid data has no range.
+-12	! SCALE is invalid for grid packing.

@@ -1,0 +1,46 @@
+#include <sys/types.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <stddef.h>
+#include <string.h>
+#include <errno.h>
+#include <fcntl.h>
+#include <unistd.h>
+#include <math.h>
+#include "hex.h"
+
+typedef struct CONTEXTFILE {
+  int DAY;
+  int TIME;
+  int QCU;
+  int QCV;
+  int LLAG;
+  int ELAG;
+  int LSIZ;
+  int ESIZ;
+  int PMAX;
+  int PMIN;
+  int MAXB;
+  int MINB;
+  int LATN;
+  int LATS;
+  int LONW;
+  int LONE;
+  int ROW;
+  char ARA1[40];
+  char ARA2[40];
+  char ARA3[40];
+  char ARA4[40];
+  char ARA5[40];
+  char HARA1[40];
+  char HARA2[40];
+  char MDF[40];
+  char GRID[40];
+  char ALL[5];
+  char OUT[5];
+  char INIT[5];
+  char WTRM[5];
+  char CHMH[5];
+  char INPT[5];
+  char GSS[5];
+} CNTX;

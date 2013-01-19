@@ -1,0 +1,21 @@
+! TRKINT.TBL
+!
+! This table contains the list of time intervals presented to the 
+! users for the Track function in product generation.  The list may contain
+! a maximum of 20 entries.  The entries in this table are in hours and 
+! minutes of the form HH:MM.  The default interval is 30 minutes. 
+!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!
+!!
+! Log:
+! M. Li/GSC		10/00	Created
+!------------------------------------------------------------------------
+!
+! Interval (5)
+00:15
+00:30
+01:00
+02:00
+06:00
+12:00

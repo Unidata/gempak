@@ -1,0 +1,31 @@
+C************************************************************************
+C* / RACMN /								*
+C*									*
+C* This common area holds the fields of a surface report.  The		*
+C* subroutine RA_GFLD puts the fields in common.			*
+C**									*
+C* Log:									*
+C* M. desJardins/GSFC	 8/89						*
+C************************************************************************
+	PARAMETER	( IFLDMX = 100 )
+C*
+	CHARACTER	cfield (IFLDMX)*12
+C------------------------------------------------------------------------
+	COMMON 		/RACMN/
+     +		nfield,
+C!					Number of fields
+     +	        ifstrt (IFLDMX),
+C!					Field start point
+     +	        ifendp (IFLDMX),
+C!					Field end point
+     +	        ifsize (IFLDMX),
+C!					Field length
+     +	        iftype (IFLDMX),
+C!					Field types 
+C!					  1 = character
+C!					  2 = number
+C!					  3 = slash
+     +	        ifintg (IFLDMX),
+C!					Integer value of field
+     +		cfield
+C!					Field if less than 12 chars

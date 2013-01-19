@@ -1,0 +1,29 @@
+! PL_VGTYPE:    VGF object type of the object to place
+! PL_SUBTYPE:   VGF subtype of the object to place (-1 if doesn't apply)
+! REF_VGTYPE:   VGF object type of the reference for placement (what the PL_VGTYPE object 
+!               'points' to)
+! REF_SUBTYPE:  VGF subtype of the reference for placement (-1 if doesn't apply)
+! TOP_VGTYPE:   VGF object type if the PL and REF objects are part of a composite VG objects
+!               (like GFA_ELM)
+! GROUP:        Type of group to find the PL and REF VGTYPE objects in when the association
+!               is group based (like for SIGWX Turb), should UNDEF if TOP_VGTYPE is defined
+!               for objects that do not need grouping (like a GFA_ELM)
+! INSIDE:       Allow the object to be placed inside the reference when the reference is a
+!               polygon
+! BOTH_SIDES:   Allow the object to be placed on either side of the a line if the reference
+!               is not a polygon
+! ATTEMPS:      Number of iterations around the reference to attempt before giving up
+!               each attempt is moved INCR distance away from the reference until a location
+!               is found
+! OFFSET:       Amount of initial offset between the reference and the object.  Expressed
+!               as a percentage of a base unit derived from the display size
+! INCR:         How far to move away from the reference on each attempt to place the object.
+!               Expressed as a percentage of a base unit derived from the display size
+! PT_CENTER:    First attempt to point from the object to the center of the reference instead
+!               of the edge of the reference
+!
+!TOP_VGTYPE GROUP  PL_VGTYPE PL_SUBTYPE REF_VGTYPE REF_SUBTYPE INSIDE BOTH_SIDES ATTEMPTS OFFSET INCR PT_CENTER
+GFA_ELM     UNDEF  SPTX_ELM       -1     SPLN_ELM       -1        1       1         5       1.25  0.5      1
+UNDEF_ELM   TURB   SPTX_ELM       -1     LINE_ELM        5        1       1         5        1     1       0
+UNDEF_ELM   CLOUD  SPTX_ELM       -1     SPLN_ELM        3        1       1         5        1     1       0
+UNDEF_ELM   CCFP   SPTX_ELM       -1     SIGCCF_ELM     -1        1       1         8       1.25  0.5      1 

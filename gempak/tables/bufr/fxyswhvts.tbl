@@ -1,0 +1,74 @@
+! FXYSWHVTS.TBL
+!
+! This table contains the FXY descriptors for the SWH tropical storms,
+! volcanoes and radiation structures for use by BUFR encoder program
+! BUFRENC.
+!
+! Log:
+!
+! D. Kidwell/NCEP	11/03	From fxyvts.tbl
+! M. Li/SAIC		05/04	115000->117000 for volcano
+! M. Li/SAIC		12/04	7620 -> 3050
+!
+! FXY    DEFAULT   DESCRIPTION
+!
+STORM|VOLCANO|RADIATION
+001031 = 7       ! Originating center (NCEP)	
+008021 = 16      ! Time significance (analysis)
+004001           ! Year
+004002           ! Month
+004003           ! Day
+004004           ! Hour
+004005           ! Minute
+008021 = 4       ! Time significance (forecast)
+004001           ! Year
+004002           ! Month
+004003           ! Day
+004004           ! Hour 
+004005           ! Minute
+007002 = 3050    ! Height (in meters - base of chart layer)
+007002 = 19200   ! Height (in meters - top of chart layer)
+108000           ! Replication of 8 items
+031001           ! Delayed descriptor replication factor (no. of storms)
+008005 = 1       ! Meteorological attribute significance (storm center)
+008007 = 0       ! Dimensional significance (point)
+001026           ! WMO storm name
+005002           ! Latitude
+006002           ! Longitude
+019001           ! Type of synoptic feature (type of storm)
+008007           ! (cancel previous 008007)
+008005           ! (cancel previous 008005)
+117000           ! Replication of 17 items
+031001           ! Delayed descriptor replication factor (no. volcanoes)
+008011 = 17      ! Meteorological feature (volcano)
+001022           ! Name of feature (volcano name)
+008007 = 0       ! Dimensional significance (point)
+102000           ! Replication of 2 items   
+031001           ! Delayed descriptor replication factor (no. of points)
+005002           ! Latitude
+006002           ! Longitude
+008021 = 17      ! Time significance (eruption start time)
+004001           ! Year
+004002           ! Month
+004003           ! Day
+004004           ! Hour
+004005           ! Minute
+020090 = 5       ! Special clouds (clouds from volcanic eruptions)
+008021           ! (cancel previous 008021)
+008007           ! (cancel previous 008007)
+008011           ! (cancel previous 008011)
+113000           ! Replication of 13 items
+031001           ! Delayed descriptor replication factor (no. symbols)
+023002 = 1       ! Facility involved (nuclear reactor on ground)
+008007 = 0       ! Dimensional significance (point)
+001022           ! Name of feature (reactor name)
+005002           ! Latitude
+006002           ! Longitude
+008021 = 17      ! Time significance (release start time)
+004001           ! Year
+004002           ! Month
+004003           ! Day
+004004           ! Hour
+004005           ! Minute
+008021           ! (cancel previous 008021)
+008007           ! (cancel previous 008007)

@@ -1,0 +1,34 @@
+OPSYS = HPUX
+OPGCC = HPUX.gcc
+
+CC = gcc
+FC = g77
+
+COPT = -DUNDERSCORE -D$(OPSYS) $(GEMINC) $(XCFLAGS) 
+FOPT = -fno-second-underscore $(GEMINC) $(GEMINC)/$(OPGCC) 
+FOPT_NOGLOB = -fno-globals -Wno-globals
+NCII = "-I../libsrc"
+NCOPT = "CC=$(CC)" "FC=$(FC)" "CPPFLAGS=-DNDEBUG -Df2cFortran" "FFLAGS=-O -Wno-globals" "CFLAGS=-O $(NCII)" "CXX= "
+
+JASPER_HPUX = -DHAVE_STDINT_H -I$(GEMPAK)/source/jasper/hpux/include
+JASPEROPT = 'CC=$(CC)' 'CFLAGS=-O $(JASPER_HPUX)' '--disable-libjpeg'
+XML2OPT = 'CC=$(CC)' '--with-iconv'
+
+CFLAGS = $(COPT)
+CFLAGS_DB = $(COPT)
+FFLAGS = $(FOPT)
+
+LDM_FLAGS = -D__STDC__
+
+X11LIBDIR = 
+MOTIFLIBS = -lXm
+MOTIFINC  = 
+XWINCDIR  = 
+INSTALL = install -i -s
+AUXINSTALL = install -i
+
+SYSLIBS = -lm
+CSYSLIB = -lm
+
+ARSLEEP = sleep 1 ;
+

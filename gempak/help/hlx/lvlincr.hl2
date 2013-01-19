@@ -1,0 +1,10 @@
+     LVLINCR
+
+     LVLINCR specifies the freezing level increment. Freezing level ranges
+     are rounded to the nearest levels with the increment. For example, 
+     if LVLINCR is set to 500, top freezing level of 8200 foot will be 
+     rounded to 8500 foot. Bottom freezing level 4100 foot will be rounded 
+     to 4000 foot.
+
+     The default value is 500.
+

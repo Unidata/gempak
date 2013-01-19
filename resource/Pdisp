@@ -1,0 +1,213 @@
+! ****************************************************************
+! Pdisp
+!	This is the X windows resource file for the nfax application.
+!
+!
+! Log:
+! E. Wehner/EAi		7/96		Created	
+!
+! *****************************************************************
+Pdisp.geometry:               +112+0
+Pdisp.width:		600
+Pdisp.height:		700
+!
+!	WHEEL SELECTION dialog box
+!
+Pdisp*wheel_dlg.height:370
+Pdisp*wheel_dlg.width:400
+Pdisp*wheel_dlg*node_box.labelString:Location
+Pdisp*wheel_dlg*node_box.radioAlwaysOne:True
+Pdisp*wheel_dlg*node_box*node1.labelString:Local pre 6bit
+Pdisp*wheel_dlg*node_box*node2.labelString:Local 6bit
+Pdisp*wheel_dlg*node_box*node3.labelString:6bit at OSO
+Pdisp*wheel_dlg*node_box*node4.labelString:6bit at plot server
+Pdisp*wheel_dlg*size_box*size1.labelString:8.5x11
+Pdisp*wheel_dlg*size_box*size2.labelString:11x17
+Pdisp*wheel_dlg*size_box*x:250
+Pdisp*wheel_dlg*size_box*y:30
+Pdisp*wheel_dlg*prod_name*x:125
+Pdisp*wheel_dlg*prod_name*y:150
+Pdisp*wheel_dlg*prod_name*width:100
+Pdisp*wheel_dlg*prod_extract*x:250
+Pdisp*wheel_dlg*prod_extract*y:150
+Pdisp*wheel_dlg*prod_extract*labelString:Read Config
+Pdisp*wheel_dlg*prod_label*x:10
+Pdisp*wheel_dlg*prod_label*y:155
+Pdisp*wheel_dlg*prod_label*labelString: Enter wheel#
+Pdisp*wheel_dlg*prod_ok*x:15
+Pdisp*wheel_dlg*prod_ok*y:320
+Pdisp*wheel_dlg*prod_ok*width:80
+Pdisp*wheel_dlg*prod_ok.labelString:OK
+Pdisp*wheel_dlg*prod_quit*x:305
+Pdisp*wheel_dlg*prod_quit*y:320
+Pdisp*wheel_dlg*prod_quit*width:80
+Pdisp*wheel_dlg*prod_quit.labelString:Cancel
+Pdisp*wheel_dlg*prod_descr_label.x:10
+Pdisp*wheel_dlg*prod_descr_label.y:200
+Pdisp*wheel_dlg*prod_descr_label.labelString:Description:
+Pdisp*wheel_dlg*prod_descr.x:10
+Pdisp*wheel_dlg*prod_descr.y:220
+Pdisp*wheel_dlg*prod_descr.width:380
+Pdisp*wheel_dlg*status_box.x:10
+Pdisp*wheel_dlg*status_box.y:270
+Pdisp*wheel_dlg*status_box.width:380
+
+
+
+
+!
+!	file selection	
+!
+Pdisp*fileSelectBox.dialogTitle:	Select Data File
+!
+!	menubar	
+!
+Pdisp*topmenubar.rightPosition:        70
+Pdisp*topmenubar.spacing:		6
+Pdisp*topmenubar.shadowThickness:      0
+Pdisp*buttonrc.spacing:                10
+Pdisp*buttonrc.marginWidth:            10
+Pdisp*topmenubar.Help.mnemonic:	H
+Pdisp*topmenubar.Exit.mnemonic:	E
+Pdisp*topmenubar.File.mnemonic:	F
+Pdisp*topmenubar.Arrange.mnemonic:	A
+Pdisp*topmenubar.Tools.mnemonic:	T
+Pdisp*topmenubar.View.mnemonic:	V
+Pdisp*topmenubar*Open.mnemonic:	O
+Pdisp*topmenubar*Exit.mnemonic:	E
+!
+!	drawing widget	
+!
+Pdisp*draw_area.width:		600
+Pdisp*draw_area.height:		600
+Pdisp*draw_area.background:	white
+!
+!	colorbar	
+!
+Pdisp*colorbarW.height:	25
+!
+!	enhancement
+!
+Pdisp*enhance_list_toplevel.dialogTitle:	Enh_list
+Pdisp*enhance_list_toplevel.noResize:                True
+Pdisp*enhance_list_toplevel.defaultPosition: False
+Pdisp*enhance_list_toplevel.x:	0
+Pdisp*enhance_list_toplevel.y:   0
+Pdisp*enhanceList.visibleItemCount:	15
+Pdisp*enhanceList.fontList:	-adobe-times-bold-r-normal-*-14-140-75-75-p-*-iso8859-1
+Pdisp*enhanceClose.x:			25
+Pdisp*enhanceClose.y:			300
+!
+!	file selection box	
+!
+Pdisp*dataSelectPop.defaultPosition: False
+Pdisp*dataSelectPop.x:	125
+Pdisp*dataSelectPop.y:	105
+Pdisp*dirFramelabel.fontList: -adobe-times-bold-r-normal-*-14-140-75-75-p-*-iso8859-1
+!
+!       preference panel
+!
+! quick pick in data selection popup
+!
+Pdisp*LoadImageOptionRc.x:	        10
+Pdisp*LoadImageOptionRc.y:	        0
+Pdisp*LoadImageOptionLb1.x:	        10
+Pdisp*LoadImageOptionLb1.y:	        65
+Pdisp*LoadImageOptionTxt.x:	        115
+Pdisp*LoadImageOptionTxt.y:	        55
+Pdisp*LoadImageOptionLb2.x:	        170
+Pdisp*LoadImageOptionLb2.y:	        65
+Pdisp*LatlonOnOffOptionLb.x:	 	5
+Pdisp*LatlonOnOffOptionLb.y:	        105
+Pdisp*LatlonOnOffOptionRc.spacing:	10
+Pdisp*LatlonOnOffOptionRc.x:	        120
+Pdisp*LatlonOnOffOptionRc.y:	        98
+Pdisp*LatlonOnOffOptionRc*.fontList: -adobe-times-bold-r-normal-*-14-140-75-75-p-*-iso8859-1
+Pdisp*AutoUpdateOnOffOptionLb.x:	 	5
+Pdisp*AutoUpdateOnOffOptionLb.y:	        135
+Pdisp*AutoUpdateOnOffOptionRc.spacing:	5
+Pdisp*AutoUpdateOnOffOptionRc.x:	        120
+Pdisp*AutoUpdateOnOffOptionRc.y:	        130
+Pdisp*AutoUpdateOnOffOptionRc*.fontList: -adobe-times-bold-r-normal-*-14-140-75-75-p-*-iso8859-1
+!
+Pdisp*PreferencePanel.noResize:		True
+Pdisp*PreferencePanel.dialogTitle:	Set Preferences
+Pdisp*MapOverlayOptionLb.x:	        45
+Pdisp*MapOverlayOptionRc.y:	        45
+Pdisp*LatIncLb.x:	        	35
+Pdisp*LatIncLb.y:	        	65
+Pdisp*LatlonInc1.x:	        	205
+Pdisp*LatlonInc1.y:	        	55
+Pdisp*LonIncLb.x:	        	35
+Pdisp*LonIncLb.y:	        	115
+Pdisp*LatlonInc2.x:	        	205
+Pdisp*LatlonInc2.y:	        	105
+Pdisp*latlonSelectionRc.x:	        55
+Pdisp*latlonSelectionRc.y:	        155
+Pdisp*UpdateIntervalOptionLb.x:	        65
+!Pdisp*AutoUpdateOptionRc.x:	        75
+!Pdisp*AutoUpdateOptionRc.y:	        35
+Pdisp*UpdateInt.x:	        	65
+Pdisp*UpdateInt.y:	        	55
+Pdisp*UpdateLb.x:	        	165
+Pdisp*UpdateLb.y:	        	60
+Pdisp*updateQuickbRc.x:	        	55
+Pdisp*updateQuickbRc.y:	        	100
+Pdisp*PreferCBtnRc.x:	        	20
+Pdisp*PreferCBtnRc.spacing:	        10
+!
+!	toplevel_form colors
+!
+Pdisp*background:			grey75
+Pdisp*foreground:			black
+Pdisp*CascadeButtonGadget.foreground:	black
+!Pdisp*fontList: -adobe-courier-bold-r-normal--18-180-75-75-m-110-iso8859-1
+Pdisp*fontList: -adobe-times-bold-r-normal-*-18-180-75-75-p-*-iso8859-1
+!
+! 	looping control 
+!
+Pdisp*drawing_widget.translations:	#override\n\
+	<Btn3Down>, <Btn3Up>:   toggle_dataPopup() \n\
+	<Key>minus:	NxmAnimationStepBackward() \n\
+	<Key>plus:	NxmAnimationStepForeward() \n\
+	<Key>underscore:	NxmAnimationStepBackward() \n\
+	<Key>equal:	NxmAnimationStepForeward() \n\
+	<Key>L:		NxmAnimationLoopForeward() \n\
+	<Key>l:		NxmAnimationLoopForeward()
+	<Key>!:		NxmAnimationLoopForewardBackward()
+!	<Key>exclam:	NxmAnimationLoopForewardBackward()
+!
+! 	legend area 
+!
+Pdisp*legendform.height:			20
+Pdisp*SourceLabel.leftPosition: 		2
+Pdisp*slabel.leftPosition: 		11
+Pdisp*AreaLabel.leftPosition:		28
+Pdisp*alabel.leftPosition:		35
+Pdisp*DateLabel.leftPosition:		55
+Pdisp*dlabel.leftPosition:		62
+Pdisp*HourLabel.leftPosition:		80
+Pdisp*hlabel.leftPosition:		87
+Pdisp*legendform.background:		wheat
+Pdisp*SourceLabel.background:		wheat
+Pdisp*slabel.background:			wheat
+Pdisp*AreaLabel.background:		wheat
+Pdisp*alabel.background:			wheat
+Pdisp*DateLabel.background:		wheat
+Pdisp*dlabel.background:			wheat
+Pdisp*HourLabel.background:		wheat
+Pdisp*hlabel.background:			wheat
+Pdisp*legendform.foreground:			black
+Pdisp*AreaLabel.fontList: -adobe-courier-*-r-normal-*-14-*-*-*-m-90-iso8859-1
+!Pdisp*SourceLabel.leftPosition: 2
+Pdisp*SourceLabel.fontList: -adobe-courier-*-r-normal-*-14-*-*-*-m-90-iso8859-1
+Pdisp*slabel.fontList: -adobe-courier-*-r-normal-*-14-*-*-*-m-90-iso8859-1
+Pdisp*AreaLabel.fontList: -adobe-courier-*-r-normal-*-14-*-*-*-m-90-iso8859-1
+Pdisp*alabel.fontList: -adobe-courier-*-r-normal-*-14-*-*-*-m-90-iso8859-1
+Pdisp*DateLabel.fontList: -adobe-courier-*-r-normal-*-14-*-*-*-m-90-iso8859-1
+Pdisp*dlabel.fontList: -adobe-courier-*-r-normal-*-14-*-*-*-m-90-iso8859-1
+Pdisp*HourLabel.fontList: -adobe-courier-*-r-normal-*-14-*-*-*-m-90-iso8859-1
+Pdisp*hlabel.fontList: -adobe-courier-*-r-normal-*-14-*-*-*-m-90-iso8859-1
+Pdisp*sty_set.fontList:-adobe-courier-bold-r-normal-*-12-*-*-*-m-110-iso8859-1
+!
+Pdisp*mainw_latlonLabel.fontList: -adobe-times-bold-r-normal-*-12-*-75-75-p-*-iso8859-1

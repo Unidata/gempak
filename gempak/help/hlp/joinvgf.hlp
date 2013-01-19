@@ -1,0 +1,58 @@
+
+JOINVGF
+                                                                       
+  JOINVGF connects similar linear objects in two VGF files if certain
+	  distance criterion is met.  
+
+INPUT PARAMETERS
+
+  joinvgf input_filename1 input_filename2 output_filename [tolerance]
+
+  joinvgf		Program name.
+  input_filename1	VGF file1 to be examined for connection.
+  input_filename2	VGF file2 to be examined for connection.
+  output_filename	VGF file containing elements from fiel1 and file2.
+  [tolerance]		Distance in kilometers within which points from
+			two separate lines are to be connected, optional.
+			The default value is currently set to 0.5 km.
+                                                                       
+PROGRAM DESCRIPTION
+
+  JOINVGF scans two VGF files and tests linear objects for "similarity". 
+  If two objects are found to be "similar" the objects are further tested
+  for "closeness".  After that there are two possibilities:
+  1) If "closeness" is met, JOINVGF proceeds with connecting the objects
+     following the CONNECTION RULES. 
+  2) If "closeness" is NOT met, the objects are not connected.  Resulting
+     output file contains elements from file1 followed by elements from
+     file2 as they are.
+
+  CONNECTION RULES
+  * order of points from file1 is never reversed;
+  * order of points from file2 may be reversed;
+  * points from file2 may proceed or follow points from file1;
+  * connecting point is not repeated but taken as average of two 
+    neighboring points;
+  * the resulting line may be closed if the endpoints meet the 
+    "closeness" test;
+  * the attributes of the resulting connected linear object are inherited 
+    from file1, including the group associations;
+
+  LABELING
+  Each linear object is permitted to keep its label.
+
+  USAGE NOTES
+  1.  The following element classes are not processed:			
+  CLASS_WATCHES, CLASS_TRACKS, CLASS_SIGMETS.
+  2.  It is assumed that two input VGF files are the result of clipping
+  of some initial VGF file by program CLIPVGF using "exact" clipping
+  algorithm.
+
+EXAMPLE
+
+  joinvgf input1.vgf input2.vgf output.vgf 0.1
+
+	- the programs searches input1.vgf and input2.vgf for lines,
+	  endpoints of which are closer than 0.1 km; if found, the lines
+	  are connected in the resulting file output.vgf, otherwise - 
+          they are written out unconnected.

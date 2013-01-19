@@ -1,0 +1,37 @@
+!TAF.PACK
+!
+!This table is the packing table for DCTAF, which decodes TAF reports.
+!
+!*Log:
+!
+!D. Kidwell   9/02   
+!D. Kidwell   5/03	Added VWNM, TVWN, LLWS, MOTV   
+!D. Kidwell  10/04	Added CTYL, TCTL
+!F. J. Yen    7/07	Added STIM
+!
+SKNT         0.        126.      1.
+DRCT         0.        360.     10.
+GUST         0.        250.      1.
+WNUM        -3.     512000.      1.
+CHC1         0.      18009.      1.
+CHC2         0.       8009.      1.
+CHC3         0.       8009.      1.
+VSBY         0.        101.       .01
+TSKN         0.        126.      1.
+TDRC         0.        360.     10.
+TGST         0.        250.      1.
+TWNM        -3.     512000.      1.
+TCH1         0.      18009.      1.
+TCH2         0.       8009.      1.
+TCH3         0.       8009.      1.
+TVSB         0.        101.       .01
+PPRB         0.        100.     10.
+CEIL         0.        800.      1.
+TCEL         0.        800.      1.
+VWNM        -3.     512000.      1.
+TVWN        -3.     512000.      1.
+LLWS         0.          1.      1.
+MOTV         0.        200.     10.
+CTYL        -1           9.      1.
+TCTL        -1           9.      1.
+STIM	     0        2400       1.

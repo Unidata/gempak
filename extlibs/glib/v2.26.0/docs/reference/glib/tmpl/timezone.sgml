@@ -1,0 +1,72 @@
+<!-- ##### SECTION Title ##### -->
+timezone
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### SECTION Image ##### -->
+
+
+<!-- ##### STRUCT GTimeZone ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### FUNCTION g_time_zone_unref ##### -->
+<para>
+
+</para>
+
+@tz: 
+
+
+<!-- ##### FUNCTION g_time_zone_ref ##### -->
+<para>
+
+</para>
+
+@tz: 
+@Returns: 
+
+
+<!-- ##### FUNCTION g_time_zone_new ##### -->
+<para>
+
+</para>
+
+@identifier: 
+@Returns: 
+
+
+<!-- ##### FUNCTION g_time_zone_new_local ##### -->
+<para>
+
+</para>
+
+@void: 
+@Returns: 
+
+
+<!-- ##### FUNCTION g_time_zone_new_utc ##### -->
+<para>
+
+</para>
+
+@void: 
+@Returns: 
+
+

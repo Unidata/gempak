@@ -1,0 +1,236 @@
+C************************************************************************
+C* VICMN.CMN								*
+C*									*
+C* These common areas are used in the grid vertical interpolation	*
+C* package. 								*
+C**									*
+C* K. Brill/NMC		05/92						*
+C* R. Tian/SAIC		 4/05	At VIMISC, + wrtflg, - igdfli/igdflo	*
+C* G. Hull/SAIC         03/08   Remove MXGD sized arrays
+C*
+C************************************************************************
+	INCLUDE 'viprm.prm'
+C************************************************************************
+C*  / VINPUT /								*
+C*									*
+C* This common area contains the user input for the interpolation	*
+C* program.								*
+C************************************************************************
+	CHARACTER	gdfile*128, gdoutf*128, gdattm*32,
+     +			gvcord*32,  glevel*32,  maxgrd*16, area*32,
+     +			vcoord*32
+	COMMON  / VINPUT /	
+     +			gdfile,
+C!						input grid file name
+     +			gdoutf,
+C!						output grid file name
+     +			gdattm,
+C!						date/time of grids
+     +			gvcord,
+C!						input/output coord.
+     +			glevel,
+C! 						interpolation levels
+     + 			maxgrd,
+C!						maximum # of grids
+     +			area,
+C!						area of grid
+     +			vcoord
+C!						surface parm vc's/lorenz
+C************************************************************************
+C*  / VIPRMS /								*
+C*									*
+C* This common area contains the information needed to interpolate the	*
+C* parameters.								*
+C************************************************************************
+	CHARACTER*12	parms
+	LOGICAL		lprmrd, lprmwr, havlnp, havtmp, lpmrds,
+     +			uselvl, intlvl, subsfc
+	INTEGER         sfcval_indx, ovcbuf1_indx, ovcbuf2_indx,
+     +                  rlnpi_indx, rlnpo_indx, valu_indx, dbglun,dbgid
+	COMMON  / VIPRMS /
+     +			parms (MAXPRM),
+C!						parameter names
+     +			np,
+C!						number of parameters
+     +			sfcval_indx,          
+C!						indx to sfc value of parms
+     +			ovcbuf1_indx,          
+C!						indx to buffer for final vc
+     +			ovcbuf2_indx,          
+C!						indx to buffer for 
+C!                                              intermediate out vc
+     +			rlnpi_indx,  
+C!						indx to array for 
+C!						Ln (p) on input lvls
+     +			rlnpo_indx,  
+C!						ln (p) on output lvls
+     +			valu_indx,           
+C!						indx to array with 
+C!						values on input lvls
+     +			vclo (MAXLVL),
+C!						low output vc values:
+     +			vchi (MAXLVL),
+C!						hi output vc values:
+     +			lprmrd (MAXLVL),
+C!						data read flag
+     +			havlnp (MAXLVL),
+C!						input lvl pressure flg
+     +			havtmp (MAXLVL),
+C!						input lvl temp flag
+     +			uselvl (MAXLVL),
+C!						input level is OK flag
+     +			intlvl (MAXLVL),
+C!						output level is OK flag
+     +			subsfc (MAXLVL),
+C!						underground points flag
+     +			lpmrds ( MAXPRM),
+C!						sfc data read flag
+     +			lprmwr (MAXPRM),
+C!						data write flag
+     +			mstprm
+C!						pointer to moisture parm
+C************************************************************************
+C*  / VILVLS /								*
+C*									*
+C* This common area contains the input and output coordinate levels.	*
+C************************************************************************
+	COMMON  / VILVLS /
+     +			levin  ( MAXLVL ),
+C!						input levels
+     +			levout ( MAXLVL ),
+C!						output levels
+     +			nli,
+C!						number of input lvls
+     +			nlo ,
+C!						number of output lvls
+     +			dbglun, dbgid
+C************************************************************************
+C*  / VIGPOT /								*
+C*									*
+C* This common area contains the arrays used in integrating the 	*
+C* geostrophic stream function or computing pressure.			*
+C************************************************************************
+C*
+	LOGICAL		buildz
+	INTEGER         zlast_indx, plast_indx, tlast_indx,
+     +                  sphbuf_indx, tmpbuf_indx, hgtbuf_indx,
+     +                  grid_indx, pln_indx, aprs_indx, 
+     +                  rdwrbuf_indx, vgread_buf_indx
+ 	COMMON  / VIGPOT /
+     + 			buildz,
+C!						flag to build z
+     + 			zlast_indx,
+C!						indx to last computed z
+     + 			plast_indx,
+C!						indx to last ln (p)
+     + 			tlast_indx,
+C!						indx to last virtual tmp
+C!		the followint variables are indexes into cmn_data for  
+C!              space that was previously defined as local MXGD arrays 
+     + 			sphbuf_indx,     
+C!						local for VI_GETQ
+     + 			tmpbuf_indx,     
+C!						local for VI_GETQ
+     + 			hgtbuf_indx,     
+C!						local for VI_GETZ
+     + 			grid_indx,     
+C!						local for VI_LNPO
+     + 			pln_indx,     
+C!						local for VI_POOL
+     +			aprs_indx,
+C!						local for VI_RDTK
+     +			rdwrbuf_indx,
+C!						local for VI_WSFC
+     +			vgread_buf_indx     
+C!						local for VG_READ
+C************************************************************************
+C*  / VIGNAV /								*
+C*									*
+C* This common area contains the grid navigation information		*
+C************************************************************************
+C*
+	COMMON / VIGNAV /
+     +			kxin, kyin,
+C!						input grid size
+     +			kx, ky,
+C!						output grid size
+     +			kxky,
+C!						number of grid pts
+     +			issll,
+C!						lower-left I subset
+     +			jssll,
+C!						lower-left J subset
+     +			issur,
+C!						upper-right I subset
+     +			jssur
+C!						upper-right J subset
+     +
+
+C************************************************************************
+C*  / VIMISC /								*
+C*									*
+C* This common area contains miscellaneous interpolation data.		*
+C************************************************************************
+C*
+	CHARACTER*4	vcordi, vcordo
+	CHARACTER*20	gdttm (2)
+	CHARACTER*128	gdcuri, gdcuro
+	LOGICAL		sfcovc, lorenz, wrtflg
+	INTEGER 	ovcsfc_indx
+	COMMON  / VIMISC /
+     +			ovcsfc_indx,   
+C!						output vc value on sfc
+     +			sfcovc,
+C!						flag for existence of
+C!					 	output vc value on sfc
+     +			vcordi,
+C!						input vertical coord
+     +			vcordo,
+C!						output vertical coord
+     +			igvci,
+C!						input coord GEMPAK #
+     + 			igvco,
+C!						output coord GEMPAK #
+     +			ptopi,
+C!						input sigma p top
+     +			ptopo,
+C!						output sigma p top
+     +			ipktyp,
+C!						packing type
+     +			iprcnt,
+C!						flag for RH units
+C!						  0 = not set
+C!						  1 = unitless
+C!						  2 = percent
+     +			nbits,
+C!						number of packing bits
+     +			gdttm,
+C!						date time of grid
+     +			gdcuri,
+C!						current input file
+     +			wrtflg,
+C!						input file write flag
+     +			gdcuro,
+C!						current output file
+     +			lorenz,
+C!						Flag for putting sfc
+C!						value on undrgrd thta
+     +			icalvi
+C!						Flag for first interp.
+C************************************************************************
+C*  / VISFVC /								*
+C*									*
+C* This common area contains the parameters needed to add coordinate	*
+C* names for data transfer to the output file.				*
+C************************************************************************
+	INTEGER		isfvc ( MXSFVC )
+	CHARACTER*8	sfvclt ( MXSFVC )
+C*
+	COMMON  / VISFVC /
+     +			isfvc,
+C!						VC numbers of other
+C!						parms to put in output
+     +			sfvclt,
+C!						VC names for other parms
+     +			nsfvc
+C!						Number of VC numbers

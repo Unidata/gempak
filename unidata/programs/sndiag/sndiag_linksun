@@ -1,0 +1,4 @@
+f77 -cg89 -o sndiag sndiag.f sndiag.a \
+     $GEMLIB 
+strip sndiag
+

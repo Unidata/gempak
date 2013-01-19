@@ -1,0 +1,4 @@
+$CC $CFLAGS -c dctaf.c
+$FC $LDFLAGS -o $OS_BIN/dctaf dctaf.o \
+	$BRIDGE $GEMLIB $CGEMLIB
+$RM *.o

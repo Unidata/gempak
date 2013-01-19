@@ -1,0 +1,15 @@
+GDFILE  Grid file                                                               
+DELTAN  Station spacing                                                         
+DELTAX  X spacing                                                               
+DELTAY  Y spacing                                                               
+GRDAREA Area covered by grid                                                    
+EXTEND  Points to extend grid                                                   
+DTAAREA Data area for OA                                                        
+SOURCE  Data source (SN or SF)                                                  
+SNFILE  Sounding data file                                                      
+SFFILE  Surface data file                                                       
+SNPARM  Sounding parameter list                                                 
+SFPARM  Surface parameter list                                                  
+DATTIM  Date/time                                                               
+LEVELS  Vertical levels                                                         
+MAXGRD  Maximum number of grids                                                 

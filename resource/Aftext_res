@@ -1,0 +1,22 @@
+! $Id: Aftext_res,v 1.4 1994/10/07 14:16:43 chang Exp chang $
+!
+! Window size and location
+!
+Aftext_res.geometry:               1150x900+112+0
+
+Aftext_res*background:  grey75
+Aftext_res*foreground:  black
+*fontList:    -Adobe-Courier-Bold-R-Normal--14-100-100-100-M-90-ISO8859-1
+Aftext_res*text_shell.geometry:     1130x850+124+65
+Aftext_res*text_shell.title:        AFOS Text Product Selection
+Aftext_res*animate_shell.geometry:  310x210
+Aftext_res*animate_shell.title:     Animate Rate
+Aftext_res*fileselection1.geometry  200x200
+Aftext_res*form1.title:			Select Text 
+Aftext_res*form1*geometry:	   	50x100+0+0	
+!
+! Selection popup
+!
+Aftext_res*afos_select*form1.defaultPosition: False
+Aftext_res*afos_select*form1.x: 123
+Aftext_res*afos_select*form1.y: 397

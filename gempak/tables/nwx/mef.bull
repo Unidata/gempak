@@ -1,0 +1,12 @@
+! MEF.BULL
+!
+! Location information for the following product:
+! AFOS_Forecast_Verification_Matrix.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+NZUS81 KBOX     TAUNTON                          MA US  4195  -7112     0
+NZUS82 KMHX     NEWPORT/MOREHEAD_CITY            NC US  3477  -7687     0

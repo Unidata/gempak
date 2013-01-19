@@ -1,0 +1,16 @@
+!	This is the error file for GDPROF.
+!
+ +2     ! WARNING:  !AS not found.  CONTINUING---
+ +1	! Invalid parameter for background lines.
+ -1	! Fatal error initializing TAE.
+ -2	! Fatal error reading TAE parameters.
+ -3	! Fatal error initializing GEMPLT.
+ -4	! Input for GPOINT is invalid.
+ -5	! Input for GDATTIM is invalid.
+ -6	! Input for GVCORD is invalid.
+ -7	! Input for PTYPE is invalid.
+ -8	! Error defining graph coordinates.
+ -9	! No points found for profile.
+-10	! There are no levels at this time.
+-11     ! Input !AS for YAXIS is invalid.
+-12     ! Input !AS for XAXIS is invalid.

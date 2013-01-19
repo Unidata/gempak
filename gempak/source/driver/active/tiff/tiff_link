@@ -1,0 +1,8 @@
+echo LINKING TIFF
+cp $GEMPAK/source/device/main/device.f .
+$FC $FFLAGS $LDFLAGS -o $OS_BIN/tiff device.f \
+	    $DEVICE $OS_LIB/tiff.a $OS_LIB/gn.a \
+	    $SYSLIB $GEMLIB $CGEMLIB $GEMLIB \
+	    -lm -lnetcdf -lz
+$RM *.o 
+$RM device.f

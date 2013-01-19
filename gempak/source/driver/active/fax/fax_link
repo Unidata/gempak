@@ -1,0 +1,7 @@
+echo LINKING FAX
+cp $GEMPAK/source/device/main/device.f .
+$FC $FFLAGS $LDFLAGS -o $OS_BIN/fax device.f \
+	$GEMLIB $DEVICE $OS_LIB/fax.a $CGEMLIB $OS_LIB/gn.a \
+	$GEMLIB $CGEMLIB $SYSLIB -lm
+$RM *.o 
+$RM device.f

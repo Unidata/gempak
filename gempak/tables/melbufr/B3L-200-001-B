@@ -1,0 +1,28 @@
+#
+#       BUFR Table B - Classification of elements specific to RSA
+#
+#
+#F	X	Y	Scale	RefVal	Data Width	Units		Element Name
+############################################################################################
+
+#                                PROFILER DATA
+  0;    1;    192;      0;           0;   32;      Numeric; Platform ID
+  0;    1;    193;      0;           0;  248;    CCITT_IA5; Platform Name
+  0;    4;    192;      0;           0;   16;      Numeric; Report Duration
+  0;   33;    192;      0;           0;    8;      Numeric; Accuracy
+
+#                                   LLP DATA
+  0;   20;    192;      0;           0;    5;      Numeric; Maximum Mulitplicity
+  0;   20;    193;      1;        -200;   12;      Numeric; Strength
+  0;   20;    194;      0;           0;  100;    CCITT_IA5; Condition
+
+#                                  RTAMPS DATA
+  0;    1;    194;      0;           0;   48;    CCITT_IA5; Mission Name
+  0;    4;    193;      2;           0;   21;            s; Sample Time
+  0;   10;    192;      2;           0;   24;            m; Geopotential Height
+  0;   11;    192;      2;           0;   18;          m/s; Velocity of Sound
+  0;   13;    192;      1;           0;   10;            %; Relative Humidity
+  0;   13;    193;      5;           0;   14;      kg/m**3; Absolute Humidity
+  0;   13;    194;      5;           0;   19;      kg/m**3; Density of Air
+  0;   21;    192;      2;           0;   19;      numeric; Microwave Index of Refraction
+  0;   21;    193;      2;           0;   19;      numeric; Optical Index of Refraction

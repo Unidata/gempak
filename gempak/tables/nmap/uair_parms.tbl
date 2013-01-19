@@ -1,0 +1,31 @@
+! 
+!	UAIR_PARMS.TBL
+!
+! This table contains the available parameters used in the
+! station model editing panel in NMAP for UAIR data types. 
+!
+!	pos_zero_flag:	1 = plot at position 0 only
+!			0 = plot at any position
+!
+! Log:
+! D.W.Plummer/NCEP	 3/98	from GEMPARMS.TBL
+! T.S.Piper/GSC		 4/98   alphabetized list
+! S. Schotz/NCEP	 5/98	Added stnm
+! G. Grosshans/SPC       5/99   Added thte
+!
+! parameter       pos_zero_flag  
+!
+brbk:1:2:112      1        
+brbm:1:2          1       
+dpdc              0      
+dwpc              0     
+hght              0    
+mixr	          0   
+pres              0  
+psym              0        
+relh              0       
+stdz              0
+stid              0      
+stnm              0
+tmpc              0    
+thte              0

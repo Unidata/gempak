@@ -1,0 +1,29 @@
+! NMAP_ROAM.TBL
+!
+! This table specifies the NMAP roam factors that appear in the "Roam"
+! pop-up GUI following the "Fit to Screen" and "Size of Image" entries.  
+! The roam factor controls the amount of data magnification over which
+! roaming occurs.  The data region's area is multiplied by the roam
+! factor.  Thus, a roam factor of 2 produces a data region with twice
+! the number of pixels, a roam factor of 3 produces a data region with
+! three times the number of pixels, and so on.
+!
+! Roam factors MUST be integers that range from 2 through 20.  A maximum
+! of 19 roam factors may be specified in this table.  
+!
+!!
+! Log:
+!  S. Law/GSC		06/99	initial coding
+!  S. Schotz/NCEP	03/02	Updated Documentation
+!  S. Schotz/NCEP	06/02   Added 6-10 roam factors
+!
+!-------------------------------------------------------------------------
+2
+3
+4
+5
+6
+7
+8
+9
+10

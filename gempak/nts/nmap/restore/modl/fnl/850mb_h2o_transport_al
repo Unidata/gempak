@@ -1,0 +1,41 @@
+!
+! Restore File : 850mb_h2o_transport_al
+!
+! Log:
+! D.W.Plummer/NCEP	 2/97	Initial creation
+! D.W.Plummer/NCEP	 8/97	Added FILTER parameter and changed TEXT value
+! J. Carr/HPC   	10/97	Changed Hilo symbol color to match line color and changed name from
+!                               .al to _al
+!
+GDATTIM firstf00 - lastf00
+GLEVEL  850
+GVCORD  pres
+PANEL   0                                                                       
+SKIP    0/1;-1
+SCALE   2/0!-1/0!0
+GDPFUN  mag(smul(mixr;wnd))!hght!thte(pres;tmpc;dwpc)!smul(100;smul(mixr;wnd))
+TYPE    c/f!c!c!a
+CONTUR  1                                                                       
+CINT    6!3!5/300/380
+LINE    32!5//2!25/10/1
+FINT    6;12;18;24;30;36
+FLINE   0;23;22;21;14;15;2
+HILO    0!5/H#;L#/3!
+HLSYM   0!1;1//22;22/2;2/hw!
+CLRBAR  1/V/LL!0                                                                
+WIND    16/0.4/2/211/0.4
+REFVEC                                                                          
+TITLE   1/-1/~ @ MOISTURE TRANSPORT, HGHT, THTAE (>300C) !0 
+TEXT    1/22/2/hw                                                             
+CLEAR   yes                                                                     
+DEVICE  xw                                                                      
+STNPLT                                                                          
+SATFIL                                                                          
+RADFIL                                                                          
+STREAM                                                                          
+POSN    4                                                                       
+COLORS  2                                                                       
+MARKER  2                                                                       
+GRDLBL  5                                                                       
+LUTFIL  none
+FILTER  yes

@@ -1,0 +1,5 @@
+$CC $CFLAGS -c sfcsplt.c
+$FC $LDFLAGS -o $OS_BIN/sfcsplt sfcsplt.o \
+		$CGEMLIB $APPL $GEMLIB $CGEMLIB \
+		$GEMLIB $APPL $SYSLIB -lm
+$RM *.o

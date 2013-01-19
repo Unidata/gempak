@@ -1,0 +1,6 @@
+LINE    Color/type/width/label/smth/fltr/scflg                                  
+DEVICE  Device|name|x size;y size|color type                                    
+REGION  Region type                                                             
+GAREA   Graphics area                                                           
+PROJ    Map projection/angles/margins|drop flag                                 
+GDFILE  Grid file                                                               

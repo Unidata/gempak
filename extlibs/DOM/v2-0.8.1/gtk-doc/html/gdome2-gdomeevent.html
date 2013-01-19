@@ -1,0 +1,2011 @@
+<HTML
+><HEAD
+><TITLE
+>GdomeEvent</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
+"><LINK
+REL="HOME"
+TITLE="Gdome2 Reference Manual"
+HREF="book1.html"><LINK
+REL="UP"
+TITLE="Events modules"
+HREF="gdome2-events.html"><LINK
+REL="PREVIOUS"
+TITLE="GdomeEventListener"
+HREF="gdome2-gdomeeventlistener.html"><LINK
+REL="NEXT"
+TITLE="GdomeMutationEvent"
+HREF="gdome2-gdomemutationevent.html"></HEAD
+><BODY
+CLASS="REFENTRY"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+BGCOLOR="#000000"
+CELLPADDING="1"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="4"
+ALIGN="center"
+><FONT
+COLOR="#FFFFFF"
+SIZE="5"
+>Gdome2 Reference Manual</FONT
+></TH
+></TR
+><TR
+><TD
+WIDTH="25%"
+BGCOLOR="#C00000"
+ALIGN="left"
+><A
+HREF="gdome2-gdomeeventlistener.html"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+>&#60;&#60;&#60; Previous Page</B
+></FONT
+></A
+></TD
+><TD
+WIDTH="25%"
+BGCOLOR="#0000C0"
+ALIGN="center"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+><A
+HREF="book1.html"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+>Home</B
+></FONT
+></A
+></B
+></FONT
+></TD
+><TD
+WIDTH="25%"
+BGCOLOR="#00C000"
+ALIGN="center"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+><A
+HREF="gdome2-events.html"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+>Up</B
+></FONT
+></A
+></B
+></FONT
+></TD
+><TD
+WIDTH="25%"
+BGCOLOR="#C00000"
+ALIGN="right"
+><A
+HREF="gdome2-gdomemutationevent.html"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+>Next Page &#62;&#62;&#62;</B
+></FONT
+></A
+></TD
+></TR
+></TABLE
+></DIV
+><H1
+><A
+NAME="GDOME2-GDOMEEVENT">GdomeEvent</H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN22461"
+></A
+><H2
+>Name</H2
+>GdomeEvent&nbsp;--&nbsp;Interface Event implementation.</DIV
+><DIV
+CLASS="REFSYNOPSISDIV"
+><A
+NAME="AEN22464"><H2
+>Synopsis</H2
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="SYNOPSIS"
+>&#13;
+
+struct      <A
+HREF="gdome2-gdomeevent.html#GDOMEEVENT"
+>GdomeEvent</A
+>;
+<A
+HREF="gdome2-gdomeevent.html#GDOMEEVENT"
+>GdomeEvent</A
+>* <A
+HREF="gdome2-gdomeevent.html#GDOME-EVNT-MKREF"
+>gdome_evnt_mkref</A
+>                (void);
+void        <A
+HREF="gdome2-gdomeevent.html#GDOME-EVNT-REF"
+>gdome_evnt_ref</A
+>                  (<A
+HREF="gdome2-gdomeevent.html#GDOMEEVENT"
+>GdomeEvent</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);
+void        <A
+HREF="gdome2-gdomeevent.html#GDOME-EVNT-UNREF"
+>gdome_evnt_unref</A
+>                (<A
+HREF="gdome2-gdomeevent.html#GDOMEEVENT"
+>GdomeEvent</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);
+<GTKDOCLINK
+HREF="GPOINTER"
+>gpointer</GTKDOCLINK
+>    <A
+HREF="gdome2-gdomeevent.html#GDOME-EVNT-QUERY-INTERFACE"
+>gdome_evnt_query_interface</A
+>      (<A
+HREF="gdome2-gdomeevent.html#GDOMEEVENT"
+>GdomeEvent</A
+> *self,
+                                             const char *interface,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);
+<A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEBOOLEAN"
+>GdomeBoolean</A
+> <A
+HREF="gdome2-gdomeevent.html#GDOME-EVNT-BUBBLES"
+>gdome_evnt_bubbles</A
+>             (<A
+HREF="gdome2-gdomeevent.html#GDOMEEVENT"
+>GdomeEvent</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);
+<A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEBOOLEAN"
+>GdomeBoolean</A
+> <A
+HREF="gdome2-gdomeevent.html#GDOME-EVNT-CANCELABLE"
+>gdome_evnt_cancelable</A
+>          (<A
+HREF="gdome2-gdomeevent.html#GDOMEEVENT"
+>GdomeEvent</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);
+<A
+HREF="gdome2-events-basic-types-and-enumerations.html#GDOMEEVENTTARGET"
+>GdomeEventTarget</A
+>* <A
+HREF="gdome2-gdomeevent.html#GDOME-EVNT-CURRENTTARGET"
+>gdome_evnt_currentTarget</A
+>  (<A
+HREF="gdome2-gdomeevent.html#GDOMEEVENT"
+>GdomeEvent</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);
+unsigned <GTKDOCLINK
+HREF="SHORT"
+>short</GTKDOCLINK
+> <A
+HREF="gdome2-gdomeevent.html#GDOME-EVNT-EVENTPHASE"
+>gdome_evnt_eventPhase</A
+>        (<A
+HREF="gdome2-gdomeevent.html#GDOMEEVENT"
+>GdomeEvent</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);
+<A
+HREF="gdome2-events-basic-types-and-enumerations.html#GDOMEEVENTTARGET"
+>GdomeEventTarget</A
+>* <A
+HREF="gdome2-gdomeevent.html#GDOME-EVNT-TARGET"
+>gdome_evnt_target</A
+>         (<A
+HREF="gdome2-gdomeevent.html#GDOMEEVENT"
+>GdomeEvent</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);
+<A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMTIMESTAMP"
+>GdomeDOMTimeStamp</A
+> <A
+HREF="gdome2-gdomeevent.html#GDOME-EVNT-TIMESTAMP"
+>gdome_evnt_timeStamp</A
+>      (<A
+HREF="gdome2-gdomeevent.html#GDOMEEVENT"
+>GdomeEvent</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);
+<A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+>* <A
+HREF="gdome2-gdomeevent.html#GDOME-EVNT-TYPE"
+>gdome_evnt_type</A
+>             (<A
+HREF="gdome2-gdomeevent.html#GDOMEEVENT"
+>GdomeEvent</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);
+void        <A
+HREF="gdome2-gdomeevent.html#GDOME-EVNT-INITEVENT"
+>gdome_evnt_initEvent</A
+>            (<A
+HREF="gdome2-gdomeevent.html#GDOMEEVENT"
+>GdomeEvent</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *eventTypeArg,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEBOOLEAN"
+>GdomeBoolean</A
+> canBubbleArg,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEBOOLEAN"
+>GdomeBoolean</A
+> cancelableArg,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);
+void        <A
+HREF="gdome2-gdomeevent.html#GDOME-EVNT-PREVENTDEFAULT"
+>gdome_evnt_preventDefault</A
+>       (<A
+HREF="gdome2-gdomeevent.html#GDOMEEVENT"
+>GdomeEvent</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);
+void        <A
+HREF="gdome2-gdomeevent.html#GDOME-EVNT-STOPPROPAGATION"
+>gdome_evnt_stopPropagation</A
+>      (<A
+HREF="gdome2-gdomeevent.html#GDOMEEVENT"
+>GdomeEvent</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);</PRE
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN22520"
+></A
+><H2
+>Description</H2
+><P
+>The <A
+HREF="gdome2-gdomeevent.html#GDOMEEVENT"
+>GdomeEvent</A
+> interface is used to provide contextual information about an
+event to the handler processing the event. An object which implements the
+<A
+HREF="gdome2-gdomeevent.html#GDOMEEVENT"
+>GdomeEvent</A
+> interface is generally passed as the first parameter to an event
+handler. More specific context information is passed to event handlers by
+deriving additional interfaces from <A
+HREF="gdome2-gdomeevent.html#GDOMEEVENT"
+>GdomeEvent</A
+> which contain information
+directly relating to the type of event they accompany. These derived interfaces
+are also implemented by the object passed to the event listener.</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN22526"
+></A
+><H2
+>Details</H2
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN22528"
+></A
+><H3
+><A
+NAME="GDOMEEVENT"
+></A
+>struct GdomeEvent</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>struct GdomeEvent {
+	gpointer user_data;
+};</PRE
+></TD
+></TR
+></TABLE
+><P
+></P
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN22533"
+></A
+><H3
+><A
+NAME="GDOME-EVNT-MKREF"
+></A
+>gdome_evnt_mkref ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+><A
+HREF="gdome2-gdomeevent.html#GDOMEEVENT"
+>GdomeEvent</A
+>* gdome_evnt_mkref                (void);</PRE
+></TD
+></TR
+></TABLE
+><P
+></P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN22540"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+> a new allocated <A
+HREF="gdome2-gdomeevent.html#GDOMEEVENT"
+>GdomeEvent</A
+>.</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN22550"
+></A
+><H3
+><A
+NAME="GDOME-EVNT-REF"
+></A
+>gdome_evnt_ref ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>void        gdome_evnt_ref                  (<A
+HREF="gdome2-gdomeevent.html#GDOMEEVENT"
+>GdomeEvent</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);</PRE
+></TD
+></TR
+></TABLE
+><P
+>Increase the reference count of the specified Event.</P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN22558"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>self</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Event Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>exc</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Exception Object ref</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN22571"
+></A
+><H3
+><A
+NAME="GDOME-EVNT-UNREF"
+></A
+>gdome_evnt_unref ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>void        gdome_evnt_unref                (<A
+HREF="gdome2-gdomeevent.html#GDOMEEVENT"
+>GdomeEvent</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);</PRE
+></TD
+></TR
+></TABLE
+><P
+>Decrease the reference count of the specified Event. Free the Event
+structure if the Event will have zero reference.</P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN22579"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>self</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Event Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>exc</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Exception Object ref</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN22592"
+></A
+><H3
+><A
+NAME="GDOME-EVNT-QUERY-INTERFACE"
+></A
+>gdome_evnt_query_interface ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+><GTKDOCLINK
+HREF="GPOINTER"
+>gpointer</GTKDOCLINK
+>    gdome_evnt_query_interface      (<A
+HREF="gdome2-gdomeevent.html#GDOMEEVENT"
+>GdomeEvent</A
+> *self,
+                                             const char *interface,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);</PRE
+></TD
+></TR
+></TABLE
+><P
+></P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN22601"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>self</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Event Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>interface</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  name of the Interface needed.</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>exc</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Exception Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+> a reference to the object that implements the interface needed or
+<TT
+CLASS="LITERAL"
+>NULL</TT
+> if this object doesn't implement the interface specified.</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN22623"
+></A
+><H3
+><A
+NAME="GDOME-EVNT-BUBBLES"
+></A
+>gdome_evnt_bubbles ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+><A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEBOOLEAN"
+>GdomeBoolean</A
+> gdome_evnt_bubbles             (<A
+HREF="gdome2-gdomeevent.html#GDOMEEVENT"
+>GdomeEvent</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);</PRE
+></TD
+></TR
+></TABLE
+><P
+></P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN22632"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>self</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Event Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>exc</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Exception Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+> If the event can bubble the value is <TT
+CLASS="LITERAL"
+>TRUE</TT
+>, else the value is
+<TT
+CLASS="LITERAL"
+>FALSE</TT
+>.</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN22651"
+></A
+><H3
+><A
+NAME="GDOME-EVNT-CANCELABLE"
+></A
+>gdome_evnt_cancelable ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+><A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEBOOLEAN"
+>GdomeBoolean</A
+> gdome_evnt_cancelable          (<A
+HREF="gdome2-gdomeevent.html#GDOMEEVENT"
+>GdomeEvent</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);</PRE
+></TD
+></TR
+></TABLE
+><P
+></P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN22660"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>self</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Event Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>exc</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Exception Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+> If the default action can be prevented the value is <TT
+CLASS="LITERAL"
+>TRUE</TT
+>, else
+the value is <TT
+CLASS="LITERAL"
+>FALSE</TT
+>.</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN22679"
+></A
+><H3
+><A
+NAME="GDOME-EVNT-CURRENTTARGET"
+></A
+>gdome_evnt_currentTarget ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+><A
+HREF="gdome2-events-basic-types-and-enumerations.html#GDOMEEVENTTARGET"
+>GdomeEventTarget</A
+>* gdome_evnt_currentTarget  (<A
+HREF="gdome2-gdomeevent.html#GDOMEEVENT"
+>GdomeEvent</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);</PRE
+></TD
+></TR
+></TABLE
+><P
+></P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN22688"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>self</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Event Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>exc</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Exception Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+> the EventTarget whose EventListeners are currently being
+processed. This is particularly useful during capturing and bubbling.</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN22705"
+></A
+><H3
+><A
+NAME="GDOME-EVNT-EVENTPHASE"
+></A
+>gdome_evnt_eventPhase ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>unsigned <GTKDOCLINK
+HREF="SHORT"
+>short</GTKDOCLINK
+> gdome_evnt_eventPhase        (<A
+HREF="gdome2-gdomeevent.html#GDOMEEVENT"
+>GdomeEvent</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);</PRE
+></TD
+></TR
+></TABLE
+><P
+></P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN22714"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>self</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Event Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>exc</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Exception Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+> the phase of event flow is currently being evaluated.</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN22731"
+></A
+><H3
+><A
+NAME="GDOME-EVNT-TARGET"
+></A
+>gdome_evnt_target ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+><A
+HREF="gdome2-events-basic-types-and-enumerations.html#GDOMEEVENTTARGET"
+>GdomeEventTarget</A
+>* gdome_evnt_target         (<A
+HREF="gdome2-gdomeevent.html#GDOMEEVENT"
+>GdomeEvent</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);</PRE
+></TD
+></TR
+></TABLE
+><P
+></P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN22740"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>self</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Event Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>exc</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Exception Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+> the EventTarget to which the event was originally dispatched.</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN22757"
+></A
+><H3
+><A
+NAME="GDOME-EVNT-TIMESTAMP"
+></A
+>gdome_evnt_timeStamp ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+><A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMTIMESTAMP"
+>GdomeDOMTimeStamp</A
+> gdome_evnt_timeStamp      (<A
+HREF="gdome2-gdomeevent.html#GDOMEEVENT"
+>GdomeEvent</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);</PRE
+></TD
+></TR
+></TABLE
+><P
+></P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN22766"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>self</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Event Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>exc</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Exception Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+> the time (in milliseconds relative to the epoch) at which the
+event was created. Due to the fact that some systems may not provide this
+information the value of timeStamp may be not available for all events.
+When not available, a value of 0 will be returned. Examples of epoch time
+are the time of the system start or 0:0:0 UTC 1st January 1970.</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN22783"
+></A
+><H3
+><A
+NAME="GDOME-EVNT-TYPE"
+></A
+>gdome_evnt_type ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+><A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+>* gdome_evnt_type             (<A
+HREF="gdome2-gdomeevent.html#GDOMEEVENT"
+>GdomeEvent</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);</PRE
+></TD
+></TR
+></TABLE
+><P
+></P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN22792"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>self</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Event Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>exc</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Exception Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+> The name of the event (case-insensitive). The name must be an XML
+name.</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN22809"
+></A
+><H3
+><A
+NAME="GDOME-EVNT-INITEVENT"
+></A
+>gdome_evnt_initEvent ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>void        gdome_evnt_initEvent            (<A
+HREF="gdome2-gdomeevent.html#GDOMEEVENT"
+>GdomeEvent</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *eventTypeArg,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEBOOLEAN"
+>GdomeBoolean</A
+> canBubbleArg,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEBOOLEAN"
+>GdomeBoolean</A
+> cancelableArg,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);</PRE
+></TD
+></TR
+></TABLE
+><P
+>The initEvent method is used to initialize the value of an Event created
+through the <A
+HREF="gdome2-gdomedocument.html#GDOME-DOC-CREATEEVENT"
+>gdome_doc_createEvent</A
+>() API. This method may only be called
+before the Event has been dispatched via the dispatchEvent method, though
+it may be called multiple times during that phase if necessary. If called
+multiple times the final invocation takes precedence. If called from a
+subclass of Event interface only the values specified in the initEvent
+method are modified, all other attributes are left unchanged.</P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN22821"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>self</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Event Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>eventTypeArg</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Specifies the event type. This type may be any event type
+currently defined in this specification or a new event type.
+The string must be an XML name.
+Any new event type must not begin with any upper, lower, or
+mixed case version of the string "DOM".
+This prefix is reserved for future DOM event sets. It is
+also strongly recommended that third parties adding their
+own events use their own prefix to avoid confusion and
+lessen the probability of conflicts with other new events.</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>canBubbleArg</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Specifies whether or not the event can bubble.</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>cancelableArg</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Specifies whether or not the event's default action can be
+prevented.</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>exc</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Exception Object ref</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN22846"
+></A
+><H3
+><A
+NAME="GDOME-EVNT-PREVENTDEFAULT"
+></A
+>gdome_evnt_preventDefault ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>void        gdome_evnt_preventDefault       (<A
+HREF="gdome2-gdomeevent.html#GDOMEEVENT"
+>GdomeEvent</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);</PRE
+></TD
+></TR
+></TABLE
+><P
+>If an event is cancelable, the preventDefault method is used to signify
+that the event is to be canceled, meaning any default action normally
+taken by the implementation as a result of the event will not occur. If,
+during any stage of event flow, the preventDefault method is called the
+event is canceled. Any default action associated with the event will not
+occur. Calling this method for a non-cancelable event has no effect. Once
+preventDefault has been called it will remain in effect throughout the
+remainder of the event's propagation. This method may be used during any
+stage of event flow.</P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN22854"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>self</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Event Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>exc</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Exception Object ref</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN22867"
+></A
+><H3
+><A
+NAME="GDOME-EVNT-STOPPROPAGATION"
+></A
+>gdome_evnt_stopPropagation ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>void        gdome_evnt_stopPropagation      (<A
+HREF="gdome2-gdomeevent.html#GDOMEEVENT"
+>GdomeEvent</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);</PRE
+></TD
+></TR
+></TABLE
+><P
+>The stopPropagation method is used prevent further propagation of an event
+during event flow. If this method is called by any EventListener the event
+will cease propagating through the tree. The event will complete dispatch
+to all listeners on the current EventTarget before event flow stops. This
+method may be used during any stage of event flow.</P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN22875"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>self</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Event Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>exc</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Exception Object ref</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><BR
+CLEAR="all"><BR><TABLE
+WIDTH="100%"
+BORDER="0"
+BGCOLOR="#000000"
+CELLPADDING="1"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="25%"
+BGCOLOR="#C00000"
+ALIGN="left"
+><A
+HREF="gdome2-gdomeeventlistener.html"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+>&#60;&#60;&#60; Previous Page</B
+></FONT
+></A
+></TD
+><TD
+WIDTH="25%"
+BGCOLOR="#0000C0"
+ALIGN="center"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+><A
+HREF="book1.html"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+>Home</B
+></FONT
+></A
+></B
+></FONT
+></TD
+><TD
+WIDTH="25%"
+BGCOLOR="#00C000"
+ALIGN="center"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+><A
+HREF="gdome2-events.html"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+>Up</B
+></FONT
+></A
+></B
+></FONT
+></TD
+><TD
+WIDTH="25%"
+BGCOLOR="#C00000"
+ALIGN="right"
+><A
+HREF="gdome2-gdomemutationevent.html"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+>Next Page &#62;&#62;&#62;</B
+></FONT
+></A
+></TD
+></TR
+><TR
+><TD
+COLSPAN="2"
+ALIGN="left"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+>GdomeEventListener</B
+></FONT
+></TD
+><TD
+COLSPAN="2"
+ALIGN="right"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+>GdomeMutationEvent</B
+></FONT
+></TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

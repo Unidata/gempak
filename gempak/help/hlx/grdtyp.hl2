@@ -1,0 +1,5 @@
+     GRDTYP
+
+     GRDTYP is the type of a diagnostic grid. In GDDIAG, valid input
+     can be 'S', 'V' or blank. 'S' or blank indicates scalar grid,
+     and 'V' indicates vector grid.

@@ -1,0 +1,11 @@
+     GSKIP 
+
+     GSKIP allows the NDFDG2 user to specify a skip factor in order
+     to reduce the resolution of the resulting GEMPAK grid.
+ 
+     Any positive integer may be specified.  This skip factor will 
+     be applied to both the I and J dimensions.
+
+     A warning will be issued if no value is specified and the 
+     resulting grid is too large.
+

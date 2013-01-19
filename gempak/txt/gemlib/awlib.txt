@@ -1,0 +1,12 @@
+
+
+
+                        AWIPS (AW) Library 
+
+The AWIPS libaray provides subroutines to read, write out the AWIPS AFOS
+file information to a local file and plot an AWIPS graphics file.  These 
+subroutines use the FCM-S2-1994 standard format except where noted.
+
+The subroutines AWALPH, AWGRPH, AWPROD and AWSYST decodes the alphanumeric 
+block, vector graphic block, data block and systems data block 
+respectively.

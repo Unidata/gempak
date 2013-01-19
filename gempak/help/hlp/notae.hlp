@@ -1,0 +1,146 @@
+
+This is the HELP information for the GEMPAK user interface.
+
+The following commands may be entered after the GEMPAK-PROGRAM> prompt,
+where "PROGRAM" is the name of the current GEMPAK program.  These
+commands may be abbreviated so long as the abbreviation is unique and
+may be either upper or lower case.  In a parameter assignment command,
+a parameter name may be abbreviated to the extent that it remains
+unique among all the other parameters used by that program.  If HELP
+information is sought for a parameter not in the current program, the
+full parameter name must be entered.  For HELP information on any
+program, the full program name must be entered.
+
+In the command summary below, optional information is enclosed by [...].
+
+The following commands show parameter names, definitions and values:
+
+  DISPLAY [NAME]    Lists definitions and values of all program
+                    parameters or of the single specified parameter NAME
+
+  LIST    [NAME]    Lists values of all the program parameters or of the
+                    single specified parameter NAME
+
+These commands permit access to HELP information:
+
+  HELP              Types this HELP information on the screen
+
+  HELP     NAME     Types HELP information for program or parameter NAME
+
+  PHELP   [NAME]    Same as HELP, but the output is paged
+
+The following commands assign values to the parameters:
+
+  PARM =   xyz      Assigns value xyz to PARM
+
+  PARM =  &PARM2    Assigns values of PARM2 to PARM
+
+  RESTORE [FILE]    Recalls parameter values stored by SAVE [FILE]
+
+  SAVE    [FILE]    Save values of parameters for future RESTORE
+
+  CURSOR  PARM      Assigns value to PARM based on user input from the
+                    mouse button [GAREA, GAREAX, CGAREA, CGAREAX, 
+		    GPOINT and CXSTNS are the only valid inputs for PARM]
+
+The following commands manipulate display windows:
+
+  LUT     FILE      Loads a color look-up table stored in FILE
+
+  WINDOW  NAME      Raises the window specified by NAME to the top.
+
+  CLOSE   NAME      Closes the window specified by NAME
+
+  GSAVE   FILE      Saves the current frame to the file specified by FILE
+
+These commands allow manipulation of an existing animation sequence:
+
+  ;LOOP             Starts forward animation of the sequence
+                    (The loop is stopped by a single click in the output
+                    graphics window.)
+
+  ;REVERSE          Starts backward animation the of sequence
+                    (The loop is stopped by a single click in the output
+                    graphics window.)
+
+  ;STEP             Step one frame forward
+
+  ;BACK             Step one frame backward
+
+  ;#                Set the dwell rates to group #
+                    (# can be any number from 1-5. One has the slowest
+                    loop speeds and 5 has the fastest.)
+
+The following command will return the current version number of GEMPAK:
+
+  VERSION           Write the current version number to the screen
+
+There are two commands to control execution of the program:
+
+  EXIT              Exit from the current GEMPAK program
+
+  RUN               Runs the current program with the current parameter
+                    values
+
+The following is a one sentence summary of each GEMPAK program:
+
+  GDCFIL   creates a GEMPAK grid file
+  GDCNTR   draws contour lines through a scalar grid
+  GDCROSS  displays a vertical cross section of scalar and vector grids
+  GDDELT   deletes grids from GEMPAK grid files
+  GDDIAG   computes a scalar diagnostic grid and adds it to the grid file
+  GDEDIT   reads grids from an edit file and adds them to a GEMPAK file
+  GDGRIB2  encodes GEMPAK grid into GRIB2 format
+  GDGSFC   interpolates grid data to stations in a GEMPAK surface file
+  GDINFO   lists information about GEMPAK grid files
+  GDLIST   lists data from a scalar grid
+  GDMAP    plots data from a scalar grid
+  GDMOD    moves grids from one GEMPAK grid file to another
+  GDOMEG   computes vertical motion grids and adds them to a grid file
+  GDPLOT   draws multiple sets of contours and vectors
+  GDPROF   draws profiles of a scalar grid and/or a vector grid
+  GDSTAT   computes statistics on a time series of scalar grids
+  GDSTREAM draws streamlines through a vector grid
+  GDTHGT   draws contours and vectors on a time section at a grid point
+  GDTSER   draws a time series of a scalar at a single level
+  GDVINT   performs interpolation between vertical coordinates
+  GDWIND   displays a vector grid using wind barbs or arrows
+
+  GPBOX    draws a box around a region
+  GPCLEAR  clears the current graphics device
+  GPCLOSE  closes the specified graphics output window or file
+  GPCOLOR  changes the colors on a color device
+  GPEND    terminates the GEMPLT subprocesses
+  GPMAP    draws a map and latitude/longitude lines
+
+  NAGRIB   converts gridded data in GRIB files to GEMPAK gridded data
+  NAGRIB2  converts gridded data in GRIB2 files to GEMPAK gridded data
+
+  OABOX    draws a box around an objective analysis region
+  OABSFC   performs a Barnes objective analysis on surface data
+  OABSND   performs a Barnes objective analysis on upper air data
+  OAGRID   creates a GEMPAK grid file for use in a Barnes analysis
+
+  SFCFIL   creates a new GEMPAK surface file
+  SFCHCK   outputs a table of surface stations and the times they report
+  SFDELT   deletes data from a surface data file
+  SFEDIT   adds or changes data in a surface file using a text file
+  SFGRAM   draws a meteorogram for surface data
+  SFL604   lists data from a GEMPAK surface file in a fixed format
+  SFLIST   lists surface data from a GEMPAK surface data file
+  SFMAP    plots surface station data on a map
+  SFMOD    moves selected surface data from one surface file to another
+  SFSTNS   modifies the station information in a surface file
+  SFVGSF   scans a Vector Graphics file and writes data to a surface file
+
+  SNCFIL   creates a new GEMPAK sounding file
+  SNCROSS  draws cross sections through sounding data
+  SNDELT   deletes data from a sounding data file
+  SNEDIT   adds data in a sequential edit file to a sounding file
+  SNHODO   draws a hodograph of upper air data
+  SNLIST   lists upper air data from a sounding file
+  SNMAP    plots sounding data on a map
+  SNMOD    moves selected sounding data from one sounding file to another
+  SNPROF   draws profiles of upper air data
+  SNSTNS   modifies the station information in an upper air file
+  SNTSER   draws a time series at a sounding station

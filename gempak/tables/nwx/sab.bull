@@ -1,0 +1,20 @@
+! SAB.BULL
+!
+! Location information for the following product:
+! Snow_Avalanche_Bulletin.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+WWUS85 KBOI     BOISE                            ID US  4356 -11620     0
+WWUS85 KBOU     DENVER                           CO US  4000 -10526     0
+WWUS85 KBYZ     BILLINGS                         MT US  4575 -10856     0
+WWUS85 KPIH     POCATELLO/IDAHO_FALLS            ID US  4290 -11258     0
+WWUS85 KREV     RENO                             NV US  3956 -11979     0
+WWUS85 KRIW     RIVERTON                         WY US  4306 -10847     0
+WWUS85 KSLC     SALT_LAKE_CITY                   UT US  4077 -11194     0
+WWUS86 KPQR     PORTLAND                         OR US  4556 -12252     0
+WWUS86 KSEW     SEATTLE                          WA US  4768 -12225     0
+WWUS86 KSTO     SACRAMENTO                       CA US  3859 -12137     0

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<TEST>
+  <NODE>
+    <TOTEST><NODE ATTR="foo"><NODE/></NODE></TOTEST>
+  </NODE>
+</TEST>

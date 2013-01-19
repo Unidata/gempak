@@ -1,0 +1,47 @@
+ 
+ 
+                    Error (ER) Library 
+
+
+The error library is provided for processing errors from GEMPAK
+subroutines.  
+
+When a GEMPAK program begins execution, ER_STAT sets the global
+value of the error logging level, the output of the error message
+( stdout, a buffer file, or no output ), and whether a local time
+flag will be appended to the error message.
+
+ER_LMSG outputs error messages either to standard output, or
+to a buffer file ( via ER_SMSG ).
+
+Messages will only be written if the logging level of the message
+is less than or equal to the global value set by ER_STAT.  
+Most error messages will have a logging level of zero, and will
+always be reported.  Messages with higher logging levels, useful
+for informational and debugging purposes, will not always be
+output.
+
+The error message is actually constructed by ER_MMSG.  The 
+messages are stored in GEMPAK table files, which are sequential 
+access files that can be created using any text editor.  Each file
+may contain any number of leading comment records.  These are records
+which begin with an exclamation point.  Message records may contain
+up to 128 characters.  They are free format and consist of the
+following fields separated by any number of spaces or tabs: 
+
+    MESSAGE NUMBER
+        The first field is the number that ER_MMSG uses to locate
+        the message.  It may be any non-zero integer value. 
+
+    MESSAGE NAME
+        The second field is a name that may be used for the 
+        message.  This field is optional and is ignored by ER_MMSG. 
+
+    MESSAGE
+        The last field is the message to be printed. It must be 
+        preceded by an exclamation point which indicates the 
+        start of message.  One !AS code may be included to 
+        indicate where a string is to be embedded.  The code !\ 
+        may be used for a new line if a message is to appear on 
+        two lines.  There is no provision for continuation lines 
+        within the file. 

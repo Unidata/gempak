@@ -1,0 +1,17 @@
+!
+!	WOUPDT error file
+!
+ 11     ! Could not find UPDT_UNIQUE_MINS tag in !AS, now defaulting to 60.
+ 10     ! Could not find UPDT_WOU_PROD_CODE tag in !AS, now defaulting to E.
+  9     ! Could not find UPDT_WOU_SIGCD tag in !AS, now defaulting to A.
+  8     ! Could not find UPDT_WOU_OFFID tag in !AS, now defaulting to KWNS.
+  7     ! Could not find UPDT_WOU_USE_VTEC tag in !AS, now defaulting to 2.
+  6     ! Could not find UPDT_WOU_FNL_TIM tag, use EXP for action code.
+  5     ! Could not convert value to integer; using default.
+  4     ! Definition table, woudef.tbl, not found.
+  3	! Invalid flag option.
+  2	! Watch !AS has expired.
+  1	! No active watch numbers found.
+ -1	! Error with time string
+ -2	! Error finding latest WOU file.
+ -3     ! Maximum number of active or WOU counties exceeded.

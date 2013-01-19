@@ -1,0 +1,26 @@
+! RFR.BULL
+!
+! Location information for the following product:
+! Route_Forecast.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+! Log:
+! A. Hardy/NCEP		11/04	separated out the lat/lons
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+FROC31 PHFO     HONOLULU                         HI US  2129 -15780     0
+FROC32 PHFO     HONOLULU                         HI US  2149 -15802     0
+FROC33 PHFO     HONOLULU                         HI US  2169 -15820     0
+FRPA31 PHFO     HONOLULU                         HI US  2129 -15780     0
+FRPA32 PHFO     HONOLULU                         HI US  2149 -15802     0
+FRPA33 PHFO     HONOLULU                         HI US  2169 -15820     0
+FRPA34 PHFO     HONOLULU                         HI US  2189 -15840     0
+FRPA35 PHFO     HONOLULU                         HI US  2209 -15860     0
+FRPA36 PHFO     HONOLULU                         HI US  2229 -15880     0
+FRPN31 PHFO     HONOLULU                         HI US  2149 -15900     0
+FRPQ31 PGUM     GUAM                             GU US  1347  14478     0
+FRPZ31 PHFO     HONOLULU                         HI US  2129 -15780     0
+FRPZ32 PHFO     HONOLULU                         HI US  2149 -15802     0

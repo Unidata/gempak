@@ -1,0 +1,10 @@
+SNFILE  Sounding data file                                                      
+SNOUTF  Output sounding file                                                    
+SNPARM  Sounding parameter list                                                 
+AREA    Data area                                                               
+DATTIM  Date/time                                                               
+LEVELS  Vertical levels                                                         
+VCOORD  Vertical coordinate type                                                
+TIMSTN  Times/additional stations                                               
+MRGDAT  Merge data file flag/part type                                          
+IDNTYP  STNM or STID                                                            

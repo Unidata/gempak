@@ -1,0 +1,10 @@
+!	NM error file
+!
+ +2	! End of file.
+ +1     ! GPARM from table is blank.
+ -1	! File open failed.
+ -2	! File read error.
+ -3 	! NMC ON 84 time marker is not zero.
+ -4	! Invalid NMC parameter number.
+ -5	! Table file open failed.
+ -6	! This grid has no valid time.

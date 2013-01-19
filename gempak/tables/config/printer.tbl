@@ -1,0 +1,38 @@
+! This is the printer setup table for nawips gui applications.
+! Comment lines start with a '!'. Each valid line has 4 fields,
+!
+! field 1 and 2 are printer names:
+!
+! field 1:	printer name in menu
+! field 2:	printer name used in command
+!
+! field 3 and 4 are capabilities of the printer:
+!
+! field 3:	color 
+! field 4:	paper size
+!
+! A '*' in a field means all options are available ( * in printer
+! name means default printer name note specified). Otherwise the 
+! specified option and all those lower than it are available. For
+! example, a 'g' (gray) in the color field means both gray scale 
+! and black and white color and available; an 's'(small) in the 
+! paper size field means only small sized paper is available.
+!
+!!
+! Log:
+! S. Jacobs/NCEP	11/97	Added new printer for HPC
+! S. Jacobs/NCEP	 9/98	Added new printer for HPC - lj5simr
+! S. Jacobs/NCEP	 4/99	Added new printer for HPC - hplj4v5
+! J. Carr/HPC		 8/00	Added new printers for HPC.
+! S. Jacobs/NCEP	 8/00	Removed QMS
+! S. Jacobs/NCEP	 1/01	Fixed CDB printer names; Removed 4th flr
+! T. Piper/SAIC		09/04	Fixed CDB printer names again...
+!
+!HPLJ5_302        hplj5_302       g        *
+!HPLJ4V           hplj4v          g        *
+!PH750_COLOR      ph750_cob       *        s
+!
+! Unidata Printers
+HP8000           fp              g       *
+HPColorJet       cp              *       s
+HPIII            hp              g       s

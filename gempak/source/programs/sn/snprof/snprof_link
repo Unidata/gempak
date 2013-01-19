@@ -1,0 +1,4 @@
+$FC $FFLAGS $LDFLAGS -o $OS_BIN/snprof snprof.f \
+	$OS_LIB/snprof.a \
+	$GEMLIB $APPL $SYSLIB $CGEMLIB 
+$RM *.o

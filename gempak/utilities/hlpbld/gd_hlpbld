@@ -1,0 +1,58 @@
+GEMPARM=$GEMPAK/parm
+export GEMPARM
+GEMPTXT=$GEMPAK/txt/programs
+export GEMPTXT
+
+hlpbld $GEMHLP/hlp GDCFIL
+#########################
+hlpbld $GEMHLP/hlp GDCNTR
+#########################
+hlpbld $GEMHLP/hlp GDCROSS
+##########################
+hlpbld $GEMHLP/hlp GDDELT
+#########################
+hlpbld $GEMHLP/hlp GDDIAG
+#########################
+hlpbld $GEMHLP/hlp GDEDIT
+#########################
+hlpbld $GEMHLP/hlp GDFRZL
+#########################
+hlpbld $GEMHLP/hlp GDGSFC
+#########################
+hlpbld $GEMHLP/hlp GDGRIB
+#########################
+hlpbld $GEMHLP/hlp GDGRIB2
+##########################
+hlpbld $GEMHLP/hlp GDINFO
+#########################
+hlpbld $GEMHLP/hlp GDLIST
+#########################
+hlpbld $GEMHLP/hlp GDMAP
+########################
+hlpbld $GEMHLP/hlp GDMOD
+########################
+hlpbld $GEMHLP/hlp GDOMEG
+#########################
+hlpbld $GEMHLP/hlp GDPLOT
+#########################
+hlpbld $GEMHLP/hlp GDPLOT2
+##########################
+hlpbld $GEMHLP/hlp GDPLOT3
+##########################
+hlpbld $GEMHLP/hlp GDPROF
+#########################
+hlpbld $GEMHLP/hlp GDSTAT
+#########################
+hlpbld $GEMHLP/hlp GDSTREAM
+###########################
+hlpbld $GEMHLP/hlp GDTHGT
+#########################
+hlpbld $GEMHLP/hlp GDTSER
+#########################
+hlpbld $GEMHLP/hlp GDVINT
+#########################
+hlpbld $GEMHLP/hlp GDWIND
+#########################
+hlpbld $GEMHLP/hlp GRPHGD
+###############################
+echo ALL THE GD HLPs ARE BUILT.

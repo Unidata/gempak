@@ -1,0 +1,28 @@
+     LOCI is the point(s) needed to place the object to be plotted.
+
+          TEXT            x;y
+          POLYGON         x1;y1/x2;y2/x3;y3/.../xN;yN
+          REGPOLY         x;y
+          ARC             x;y
+          CURVE           x1;y1/x2;y2/x3;y3/.../xN;yN
+          LINE            x1;y1/x2;y2/x3;y3/.../xN;yN
+          ARROW           x;y
+          COLDFRONT       x1;y1/x2;y2/x3;y3/.../xN;yN
+          WARMFRONT       x1;y1/x2;y2/x3;y3/.../xN;yN
+          OCCLFRONT       x1;y1/x2;y2/x3;y3/.../xN;yN
+          STATFRONT       x1;y1/x2;y2/x3;y3/.../xN;yN
+          WEATHER         x;y
+          CLOUD           x;y
+          SKY             x;y
+          TURB            x;y
+          ICNG            x;y
+          SPCL            x;y
+          MARKER          x;y
+          PRESTEND        x;y
+          PASTWTHR        x;y
+
+     If LOCI is preceded by a '#' then the x and y values should be
+     latitudes and longitudes. If the first character is a '@' then
+     all points will be grid point columns and rows.  In GDPLOT3, 
+     the grid coordinates are not implemented for annotation.
+

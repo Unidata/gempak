@@ -1,0 +1,12 @@
+! SAF.BULL
+!
+! Location information for the following product:
+! Special_Agri_Wx_Fcst/Advisory/Flying_Farmer_Fcst_Outlook.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+FNUS85 KREV     RENO                             NV US  3956 -11979     0
+FNUS85 KTFX     GREAT_FALLS                      MT US  4745 -11137     0

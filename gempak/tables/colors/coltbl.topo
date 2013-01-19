@@ -1,0 +1,40 @@
+! COLTBL.TOPO
+!
+! XWP and XW color table for topographic display
+!
+! S. Chiswell/Unidata
+!
+!Color name    Abrev   Red  Green   Blue  X color name
+BLACK           BLA      0      0      0  black
+TOPO01          T01      0     80      0  DarkGreen
+TOPO02          T01      0     95      0  DarkGreen
+TOPO03          T01      0    110      0  DarkGreen
+TOPO04          T00      0    125      0  chartreuse
+TOPO05          T00      0    140      0  chartreuse
+TOPO06          T00      0    165      0  chartreuse
+TOPO07          T02      0    180      0  ForestGreen
+TOPO08          T02     32    188      0  ForestGreen
+TOPO09          T03     80    200      0  LimeGreen
+TOPO10          T03    128    212      0  LimeGreen
+TOPO11          T04    176    224      0  LawnGreen
+TOPO12          T05    240    240      0  green
+TOPO13          T06    227    219      0  PaleGreen
+TOPO14          T06    220    207      6  PaleGreen
+TOPO15          T08    214    198      7  SpringGreen
+TOPO16          T09    202    177     10  GreenYellow
+TOPO17          T10    189    156     14  yellowgreen
+TOPO18          T11    176    135     18  OliveDrab
+TOPO19          T12    161    111     22  DarkKhaki
+TOPO20          T13    152     96     24  khaki
+TOPO21          T14    139     75     28  PaleGoldenrod
+TOPO22          T15    130     60     30  LightGoldenrodYellow
+TOPO23          T16    130     72     48  LightYellow
+TOPO24          T17    130     84     65  yellow
+TOPO25          T19    130    106     95  LightGoldenrod
+TOPO26          T20    135    135    135  goldenrod
+TOPO27          T21    170    170    170  DarkGoldenrod
+TOPO28          T22    205    205    205  RosyBrown
+TOPO29          T23    228    228    228  IndianRed
+SKY             SKY      0    178    238  DeepSkyBlue2
+WHITE           WHI    255    255    255  white
+BLACK           BLA      0      0      0  black

@@ -1,0 +1,8 @@
+     KEYCOL
+
+     KEYCOL indicates which contour lines to process.  
+
+         KEYCOL = 0	- process all lines
+         KEYCOL = n	- process all lines whose color is n
+
+

@@ -1,0 +1,28 @@
+!SHPEXCEPTION.TBL
+!
+! This table contains the shapes (either counties or marine zones) with their
+! mathematical centroid points being outside the shape area. It is causing
+! trouble when the user tries to clip the shape area and finds there is no
+! centroid point in it. The centroid points of these shapes are manually set 
+! so they fall within the shape. Also these manually set points should be 
+! close to their mathematical counterparts.
+!
+! Shapes with their mathematical centroid points:
+!
+!STID     STNM    NAME                             ST CO   LAT    LON  ELV PRI WFO
+!VAC059   51059   Fairfax                          VA US  3884  -7729     0  0 LWX
+!VAC650   51650   Hampton                          VA US  3705  -7636     0  0 AKQ
+!ANZ535   675350  ANZ535                           AN US  3875  -7705     0  0 LWX
+!TXC273   48273   Kleberg                          TX US  2745  -9732     0  0 CRP
+!
+! Shapes with their centroid points manually set are shown below as table entries.
+!
+! Log:
+! H. Zeng/SAIC          07/07   Created
+!
+!STID    STNM    NAME                             ST CO   LAT    LON  ELV PRI WFO
+!
+VAC059   51059   Fairfax                          VA US  3882  -7728     0  0 LWX
+VAC650   51650   Hampton                          VA US  3704  -7636     0  0 AKQ
+ANZ535   675350  ANZ535                           AN US  3875  -7704     0  0 LWX
+TXC273   48273   Kleberg                          TX US  2743  -9763     0  0 CRP

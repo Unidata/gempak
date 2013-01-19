@@ -1,0 +1,49 @@
+! 
+!	TAF_PARMS.TBL
+!
+! This table contains the available parameters used in the
+! station model editing panel in NMAP for the TAF data type. 
+!
+!	pos_zero_flag:	1 = plot at position 0 only
+!			0 = plot at any position
+!
+! Log:
+! D. Kidwell/NCEP        9/02   From METAR_PARMS.TBL
+! D. Kidwell/NCEP        5/03   Added CMSL, LLWS, WSKC, AWSY, TPWS, VWSY
+! D. Kidwell/NCEP        8/03   Added TCMS, WCMS
+! D. Kidwell/NCEP       10/04   Added CSYL, TCSL
+! F. J. Yen/NCEP         7/07   Added STIM
+!
+! parameter       pos_zero_flag     
+!
+brbk:1:2:112      1  
+brbm:1:2          1  
+brbs:1:2:112      1
+skyc:1:2          1 
+skyk:1:2	  1
+brgk:1:2:112	  1
+tskc:1:2          1
+wskc:1:2          1 
+ceil              0
+cmsl              0
+csyl              0
+gust              0       
+llws              0       
+selv              0          
+stid              0     
+stim              0     
+vwsy:1            0
+vsby*10	          0     
+wsym:1            0    
+xvfr              0
+awsy:1            0
+pprb              0
+tcel              0
+tcms              0
+tcsl              0
+tgst              0       
+tpws:1            0
+tvsb*10	          0     
+twsy:1            0    
+txvf              0
+wcms              0

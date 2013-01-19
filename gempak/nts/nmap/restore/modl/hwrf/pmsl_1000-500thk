@@ -1,0 +1,33 @@
+!
+! Restore file: pmsl_1000-500thk
+!
+! Log:
+! S. Jacobs/NCEP	 6/01	Created
+! M. Klein/HPC          12/08   Change color of values below 500 dm to purple.
+!
+GLEVEL  500:1000  !500:1000  !500:1000       !0
+GVCORD  pres      !pres      !pres           !none
+SKIP    0
+SCALE   -1        !-1        !-1             !0
+GDPFUN  ldf(hght) !ldf(hght) !ldf(hght)      !sm9s(pmsl)
+TYPE    c
+CONTUR  3
+CINT    6/0/498   !6/504/540      !6/543/999      !4
+LINE    7/3/2     !6/3/2          !2/3/2          !20//3
+FINT       
+FLINE      
+HILO    !         !               !26;2/H#;L#/1018-1070;900-1012//30;30/y
+HLSYM   2;1.5//21//hw
+CLRBAR  1
+WIND         
+REFVEC    
+TITLE   5/-1/~ ? PMSL, 1000-500 MB THICKNESS ! 0
+TEXT    1/21//hw
+STNPLT                                                                          
+STREAM                                                                          
+POSN    4                                                                       
+COLORS  2                                                                       
+MARKER  2                                                                       
+GRDLBL  5                                                                       
+FILTER  yes
+IJSKIP 0

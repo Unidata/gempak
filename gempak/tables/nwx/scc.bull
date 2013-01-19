@@ -1,0 +1,18 @@
+! SCC.BULL
+!
+! Location information for the following product:
+! Storm_Summary.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+! Log:
+! A. Hardy/NCEP		11/04	separated out the lat/lons
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+ACUS41 KWBC     NCEP_NMC                         MD US  3841  -7727     0
+ACUS42 KWBC     NCEP_NMC                         MD US  3861  -7707     0
+ACUS43 KWBC     NCEP_NMC                         MD US  3881  -7687     0
+ACUS44 KWBC     NCEP_NMC                         MD US  3901  -7667     0
+ACUS45 KWBC     NCEP_NMC                         MD US  3921  -7647     0

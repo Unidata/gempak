@@ -1,0 +1,13 @@
+!
+! NWSGRIB3.TBL -- GRIB 1 parameter conversion table version 3
+! Center #9 forecast office grib
+!
+!ID# NAME                             UNITS                GNAM         SCALE   MISSING  HZREMAP DIRECTION
+!
+205 Accumulated Snow Depth            m                    SNDM             0  -9999.00        0         0
+207 Snow Cover {Snow=250, clouds=100  -                    SCOV             0  -9999.00        0         0
+!               no-snow/no-clouds=50}
+208 Snow Cover by Elevation (0-252    100m                 SCEV             0  -9999.00        0         0
+!   no-snow/no-clouds=253, clouds=254)
+209 Snow Water Equivalent at 2m       -                    SNWE             0  -9999.00        0         0
+255 Missing                           -                    MISS             0  -9999.00        0         0

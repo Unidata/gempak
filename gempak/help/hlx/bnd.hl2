@@ -1,0 +1,84 @@
+     BND
+
+     BND specifies the parameters needed for processing bounds areas:
+
+	name[|tag]/color/fillsiz/fillpat/filt/minpts ! 
+		lincol/linpat/linwid ! 
+		mrksym/col/typ/siz/wid
+
+     FILLING BOUNDS AREAS:
+
+     name - If name is "BG", then the entire background area in plot coordinates
+     	if filled with the given color, pattern, etc.
+
+     tag - The tag option allows specification of a precise subarea to fill, e.g.,
+     	fill a particular state instead of filling all the states. See examples.
+
+     color - Additional help for color is available in COLORS.
+
+     fillsiz, fillpat - The fill size is not yet implemented, however the fill 
+ 	pattern may be set to 1 (solid), 2 (slanted dash) or 3 (slanted line).
+
+     filt - The filter value is used to reduce the number of points used to draw
+     	the bound areas.  Valid values for the filter flag are between 0 and 1.
+     	The default is 0.
+
+     minpts - The minpts variable allows plotting of only bounds with a number 
+ 	of points greater than a certain value, thus eliminating numerous small 
+ 	areas, such as islands.  The overall effect is to increase performance. 
+ 	Care must be taken, however, since some large geographic areas may be 
+ 	described with just a few points (e.g., the state of Wyoming).  Usually, 
+ 	a value of 100 or 200 will suffice.
+
+     OUTLINING BOUNDS AREAS:
+
+     lincol - Color of bound outline. Additional help for color is available 
+	in COLORS.
+
+     linpat - Outline line pattern.
+
+     linwid - Outline line width.
+
+     Note that filt and minpts also apply to outlining.
+
+     PLOTTING A MARKER OR WEATHER SYMBOL AT BOUNDS CENTROID:
+
+     mrksym - Either "MARK" or "WTHR" to plot either a marker or weather symbol.
+
+     col - Color of marker or symbol. Additional help for color is available 
+        in COLORS.
+
+     typ - Marker or weather symbol type (number).
+
+     siz, wid - Marker or symbol size and width.
+
+     NOTE: any or all plot options may be requested at the same time.
+
+     The attributes for multiple bounds may be set by separating the settings
+     for each bound with a plus sign (+).
+
+     Examples:
+
+		BND	= bg/4 + state_bnds/23 + lakes/4
+
+		BND	= state_bnds/23 + great_lakes/4
+
+		BND	= state_bnds|<STATE>FL/23
+	
+			- fills only the state of Florida
+
+		BND	= state_bnds|<STATE>FL/23 ! 2/2/5
+	
+			- fills only the state of Florida and outlines the
+				state of Florida with a dashed red line of
+				width 5.
+
+		BND	= state_bnds|<STATE>FL/23 ! 2/2/5 ! wthr/3/65/5/3
+	
+			- fills only the state of Florida and outlines the
+				state of Florida with a dashed red line of
+				width 5. Also plots a weather symbol at the
+				centroid of the state of Florida. This symbol
+				is a green heavy rain symbol of size 5 and 
+				width 3.
+

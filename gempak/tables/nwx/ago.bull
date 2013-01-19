@@ -1,0 +1,52 @@
+! AGO.BULL
+!
+! Location information for the following product:
+! Agriculture_Observations.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+SHUS41 KCLE     CLEVELAND                        OH US  4140  -8186     0
+SHUS41 KPHI     MOUNT_HOLLY                      NJ US  4000  -7480     0
+SHUS42 KCAE     COLUMBIA                         SC US  3393  -8112     0
+SHUS42 KCHS     CHARLESTON                       SC US  3288  -8001     0
+SHUS42 KMLB     MELBOURNE                        FL US  2811  -8065     0
+SHUS42 KRAH     RALEIGH                          NC US  3577  -7868     0
+SHUS43 KBIS     BISMARCK                         ND US  4677 -10075     0
+SHUS43 KDDC     DODGE_CITY                       KS US  3775  -9995     0
+SHUS43 KDTX     DETROIT                          MI US  4268  -8347     0
+SHUS43 KFSD     SIOUX_FALLS                      SD US  4358  -9672     0
+SHUS43 KGLD     GOODLAND                         KS US  3936 -10169     0
+SHUS43 KICT     WICHITA                          KS US  3765  -9744     0
+SHUS43 KIND     INDIANAPOLIS                     IN US  3970  -8627     0
+SHUS43 KLMK     LOUISVILLE                       KY US  3811  -8563     0
+SHUS43 KLSX     ST_LOUIS                         MO US  3868  -9068     0
+SHUS43 KTOP     TOPEKA                           KS US  3906  -9562     0
+SHUS44 KAMA     AMARILLO                         TX US  3522 -10169     0
+SHUS44 KBRO     BROWNSVILLE                      TX US  2590  -9741     0
+SHUS44 KEPZ     EL_PASO_TX/SANTA_TERESA          NM US  3187 -10669     0
+SHUS44 KHUN     HUNTSVILLE                       AL US  3472  -8665     0
+SHUS44 KJAN     JACKSON                          MS US  3231  -9008     0
+SHUS44 KLCH     LAKE_CHARLES                     LA US  3012  -9320     0
+SHUS44 KLIX     NEW_ORLEANS                      LA US  3032  -8981     0
+SHUS44 KLUB     LUBBOCK                          TX US  3352 -10187     0
+SHUS44 KLZK     LITTLE_ROCK                      AR US  3483  -9225     0
+SHUS44 KMAF     MIDLAND/ODESSA                   TX US  3194 -10218     0
+SHUS44 KMEG     MEMPHIS                          TN US  3513  -8980     0
+SHUS44 KMRX     MORRISTOWN                       TN US  3615  -8340     0
+SHUS44 KOUN     NORMAN                           OK US  3522  -9745     0
+SHUS44 KSHV     SHREVEPORT                       LA US  3245  -9383     0
+SHUS44 KSJT     SAN_ANGELO                       TX US  3137 -10048     0
+SHUS45 KBOU     DENVER                           CO US  4000 -10526     0
+SHUS45 KGJT     GRAND_JUNCTION                   CO US  3911 -10851     0
+SXUS4  KBOI     BOISE_MUNICIPAL                  ID US  4357 -11622   874
+SXUS04 KCHI     CHICAGO_(WSFO)                   IL US  4200  -8788   181
+SXUS04 KCLE     CLEVELAND/HOPKINS                OH US  4142  -8230   245
+SXUS04 KDTX     DETROIT/PONTIAC                  MI US  4270  -8447   329
+SXUS04 KIND     INDIANAPOLIS_INTL                IN US  3973  -8627   246
+SHUS44 KJAN     JACKSON/THOMPSON                 MS US  3232  -9115   101
+SXUS04 KRDU     RALEIGH-DURHAM                   NC US  3587  -7900   134
+SXUS04 KSDF     LOUISVILLE/STANDIFO              KY US  3818  -8673   149
+SXUS04 KTOP     TOPEKA/BILLARD_MUNI              KS US  3907  -9700   270

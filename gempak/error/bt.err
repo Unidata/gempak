@@ -1,0 +1,13 @@
+!	BT error messages !
+   7	! Bad minutes value: !AS
+   6	! Bad hour value: !AS
+   5	! Bad day value: !AS
+   4	! Bad month value: !AS
+   3	! Bad year value: !AS
+   2	! Report date/time problem: !AS
+   1	! !AS
+  -1	! Bad report length: !AS
+  -2	! Bad report - rejected: !AS
+  -3	! Bad group - reject rest of report: !AS
+  -4	! Rejected bulletin because of garbled groups:
+  -5	! Rejected NNXX reports containing garbled groups:

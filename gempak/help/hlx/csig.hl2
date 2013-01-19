@@ -1,0 +1,49 @@
+     CSIG
+
+     CSIG is the ending valid time for the convective sigmet and convective 
+     outlook, the colors for the initial hour (0-hr) CSIG, extrapolated 1-hr
+     CSIG, extrapolated 2-hr CSIG, and outlook, and flags for plotting the
+     0-hr CSIG sequence number, end time, direction/speed, flight level,
+     intensity, 1-hr CSIG sequence number, and 2-hr CSIG sequence number on
+     the map. 
+
+	  End time|0_Hr;1_Hr;2_Hr;OL clrs|Seq0|Tm|Mv|Fl|Insty|Seq1|Seq2
+
+     Convective sigmets, extrapolated 1-hr and 2-hr CSIGs, and outlooks that
+     are valid at the ending time will be plotted on the map. The ending time
+     is given as a GEMPAK date/time string.  Any missing items from the string
+     will be filled in by the system time.  The ending time may also be LAST
+     or ALL.  LAST will use the system time and plot all current convective
+     sigmets, extrapolated CSIGs, and outlooks.  ALL will plot all the 
+     convective sigmets, extrapolated CSIGs and outlooks in the data files for
+     the last ten days, whether they are active or expired.
+
+     The colors are separated by a semi-colon.  If any color is set to 0,
+     that line will not be plotted.  If any color is missing, a default will be 
+     used.  Defaults are red for 0-hour CSIG, blue for 1-hour CSIG, yellow for
+     2-hour CSIG, and green for outlooks.
+
+     The sequence number ID flag (Seq0) is YES or NO and controls whether or
+     not to plot the identifying text for the convective sigmets and outlooks
+     on the map.  The default is NO.
+
+     The time flag is YES or NO and controls whether or not to plot the end
+     time of the convective sigmet and outlook on the map.  The default is NO.
+
+     The movement flag is YES or NO and controls whether or not to plot the
+     direction from north in degrees and the speed in knots on the map. The 
+     default is NO.
+
+     The flight level flag is YES or NO and controls whether or not to plot the
+     flight level in hundreds of feet on the map.  The default is NO.
+
+     The intensity flag is YES or NO and controls whether or not to plot the
+     intensity of the area, line or isolated area on the map. The default is NO.
+
+     The sequence number ID flag (Seq1) is YES or NO and controls whether or
+     not to plot the identifying text for the extrapolated 1-hr convective
+     sigmets on the map.  The default is NO.
+
+     The sequence number ID flag (Seq2) is YES or NO and controls whether or
+     not to plot the identifying text for the extrapolated 2-hr convective
+     sigmets on the map.  The default is NO.

@@ -1,0 +1,108 @@
+! SHEF unit conversion table
+!
+! Constructed from Table 1 and Appendix B of SHEF Users Manual
+!
+! First column contains 2 character variable name.  Second column
+! contains conversion factor from S.I. to English units.
+! If a parameter is not present, it does not have a conversion.
+!
+! For degrees C -> degrees F, the special value of 9999 is
+! given.  You must translate this to 1.8*DC+32 in the resulting
+! code.
+!
+! P.Bruehl/NWS	6/98	
+!
+!Code    Unit Conversion
+
+EA   0.0393701 
+ED   0.0393701 
+EM   0.0393701 
+EP   0.0393701 
+ER   0.0393701 
+ET   0.0393701 
+EV   0.0393701 
+GD   0.393701  
+GT   0.393701  
+HA   3.2808399 
+HB   3.2808399 
+HC   3.2808399
+HD   3.2808399
+HE   3.2808399  
+HF   3.2808399
+HG   3.2808399 
+HH   3.2808399   
+HJ   3.2808399  
+HK   3.2808399 
+HL   3.2808399
+HM   3.2808399 
+HN   3.2808399  
+HO   3.2808399 
+HP   3.2808399
+HQ   3.2808399 
+HR   3.2808399
+HS   3.2808399
+HT   3.2808399
+HW   3.2808399
+HX   3.2808399
+HY   3.2808399 
+HZ   3.2898399  
+IE   0.6213712  
+IO   3.2808399 
+IT   0.393701  
+LA   247.10541
+LC   0.8107131 
+LS   0.8107131 
+MI   0.393701  
+ML   0.393701  
+MS   0.0393701 
+MT   9999.     
+MU   0.393701  
+NG   3.2808399  
+PA   0.296134  
+PC   0.0393701    
+PF   0.0393701 
+PN   0.0393701
+PP   0.0393701 
+PR   0.0393701 
+PY   0.0393701 
+QA   0.353147  
+QB   0.0393701 
+QC   0.8107131 
+QD   0.353147  
+QF   0.6213712 
+QG   0.353147 
+QI   0.353147 
+QL   0.353147 
+QM   0.353147 
+QN   0.353147 
+QP   0.353147 
+QR   0.353147 
+QS   0.353147 
+QT   0.353147 
+QU   0.353147 
+QV   0.8107131
+QX   0.353147 
+QY   0.353147 
+SD   0.393701  
+SF   0.393701  
+SI   0.393701  
+SL   0.00328084
+SW   0.0393701 
+TA   9999. 
+TC   9999.
+TD   9999.
+TF   9999. 
+TH   9999. 
+TM   9999. 
+TN   9999. 
+TP   9999. 
+TS   9999. 
+TW   9999. 
+TX   9999. 
+UC   0.6213712
+UL   0.6213712 
+US   2.2369363 
+WG   0.0393701
+WV   3.2808399 
+XU   2.2883564 
+XV   0.6213712 

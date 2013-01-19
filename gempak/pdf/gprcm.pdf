@@ -1,0 +1,25 @@
+MAP     Map color/dash/width/filter flag                                        
+GAREA   Graphics area                                                           
+PROJ    Map projection/angles/margins|drop flag                                 
+SATFIL  Satellite image filename(s)                                             
+RADFIL  Radar image filename(s)                                                 
+LATLON  Line color/dash/width/freq/inc/label/format                             
+PANEL   Panel loc/color/dash/width/regn                                         
+TITLE   Title color/line/title                                                  
+TEXT    Size/fnt/wdth/brdr/N-rot/just/hw flg                                    
+CLEAR   Clear screen flag                                                       
+DEVICE  Device|name|x size;y size|color type                                    
+RCMFIL  RCM data file                                                           
+RADTIM  Radar composite current/dattim                                          
+RADDUR  Radar time window (minutes prior to RADTIM)                             
+DITHER  dither level                                                            
+MESO    meso color/marker/size/width/hw;filter                                  
+TVS     tvs color/marker/size/width/hw;filter                                   
+CNTR    Centroid barb color/size/width;filter                                   
+MAXTOP  Maxtop color;filter                                                     
+RADINFO Radar status color                                                      
+ECHO    Plot radar echoes (0,1,2)                                               
+CLRBAR  Color/ornt/anch/x;y/ln;wd/freq|text_info                                
+LUTFIL  Enhancement lookup table filename                                       
+IMBAR   Color/ornt/anch/x;y/ln;wd/freq|text_info                                
+OUTPUT  Output device/filename

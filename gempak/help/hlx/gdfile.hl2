@@ -1,0 +1,124 @@
+     GDFILE
+
+     GDFILE is the name of the file which contains gridded data.
+
+     The input for GDFILE may contain more than one file name separated
+     by +.  Up to three file names may be entered.  Individual operands
+     in GFUNC or GVECT can be accessed from a specific file by placing
+     +n after the operand name, where n is the number corresponding to
+     the placement of the file name in the GDFILE input.  In the example
+     below, the temperature from the third file is advected by winds
+     from the first file:
+
+		GDFILE = file1.grd + file2.grd + file3.grd
+		GFUNC  = ADV ( TMPK+3, WND )
+    
+     The input for GDFILE may also be a file type.  The following file
+     types are examples of the possible input. See the table,
+     datatype.tbl, for the actual file types that can be used.
+
+		NAM		NAM model grid
+		NGM		NGM model grid
+                ENS             GFS ensemble
+		GFS		GFS model grid
+		MRF		MRF model grid
+		ECMWFG		ECMWF model grid (global)
+		ECMWFT		ECMWF model grid (tropical)
+		FNL		Final analysis
+		RUC2		Rapid update cycle
+		RUCS		Rapid update cycle surface
+                SREF            Short Range Ensemble
+		UKMET		UKMET model grid
+
+      When one of these file types is input, the program searches
+      locally for the most recent file first.  If no files are found
+      locally, the program searches remotely for the most recent file.
+      The remote directories are specified in the table, datatype.tbl.
+
+      An optional base time may be included with the file type name,
+      following a bar (|).  For example:
+
+		GDFILE = nam | 00
+
+      This will attempt to find the most recent run of the NAM
+      model at 00Z.  The base time may be any valid format for a
+      GEMPAK date/time.  Any missing parts of the date/time will be
+      supplied by the last time.  If the entry in GDATTIM specifies
+      a base time, that base time overrides the base time following
+      the bar, which is ignored in that case.
+
+      The entries in GDFILE are not required to have the same grid
+      navigation.  The navigation of the internal grid on which
+      computations are done is determined by the first GDFILE entry,
+      the GAREA and PROJ inputs, and by IJSKIP input.  The latter
+      three are used to determine a subset of the grid associated
+      with the first GDFILE entry.  If the other GDFILE entries have
+      different navigations, grids read from these files are remapped
+      to the internal computational grid before any calculations
+      are done.
+
+      See the help for GRDHDR for an explanation of the grid header
+      flags used for remapping.
+      
+      The members of an ensemble for ensemble diagnostic calculations
+      are specified within a GDFILE entry by listing file names and 
+      aliases, separated by commas and enclosed in curly brackets ({}).  
+      Each alias therein may have an optional cycle time specification 
+      appended to it following |.  The latest cycle time is the default.
+
+      GDFILE input may have more than one ensemble specification among 
+      its "+" separated entities.  If the first GDFILE entry is an 
+      ensemble specification, then the internal grid is set using the 
+      the first member in the ensemble specification.  This is an 
+      important consideration when the members of the ensemble are on 
+      different grids.
+
+      The following is an example of a GDFILE entry containing an 
+      ensemble specification:
+
+	GDFILE = nam|06 + {sref,gfs|00,gfs|06,nam|06}
+
+      In this example, the first entry is not an ensemble; while the 
+      second is.
+
+      The members of an ensemble may be assigned weights as percentages 
+      ranging from 0 to 100.  The percentage is prefixed to the member 
+      name and separated from it by a % character.  The sum of the 
+      weights must not exceed 100.  If one or more members is not 
+      assigned a weight, the residual between 100 and the sum of the 
+      specified weights is divided equally among the members with no 
+      weights assigned.  A weight preceding an alias representing 
+      multiple members is divided equally among those members.  For 
+      example, let GDFILE = { 72.5%ENS, 2.5%GFS, SREF, NAM }, where ENS
+      has 11 members and SREF has 15 members.  Each of the 11 members 
+      of ENS gets a weight of .06591, the GFS gets .025, and the SREF 
+      and NAM share 25% so that each of the 15 members of SREF gets a 
+      weight of .00833 and the NAM gets .125.  If no weights are given,
+      all members are equally weighted.
+
+      The individual members of an ensemble associated with an entry in
+      the datatype.tbl file can be addressed by placing the individual
+      member name following the name given in the first column of the
+      datatype.tbl entry with a colon separator.  The member name is
+      that character string for which the asterisk stands in the
+      datatype.tbl entry.  For example, suppose the datatype.tbl entry
+      is this:
+
+      SRE $MM/sre sre_YYYYMMDDHH_*x CAT_GRD SCAT_FCT -1 -1 -1 OFF/0/0
+
+      Suppose the four members associated with this template are:
+
+      sre_YYYYMMDDHH_arw1x  sre_YYYYMMDDHH_arw2x  sre_YYYYMMDDHH_wrf1x
+      sre_YYYYMMDDHH_wrf2x
+
+      To use only the wrf1 model requires the following:
+
+      GDFILE = sre:wrf1
+
+      The arw sub-ensemble specification is this:
+
+      GDFILE = {sre:arw1,sre:arw2}
+
+      In each GDFILE entry, the name following the colon is the string
+      for which the asterisk stands in the template of the datatype.tbl
+      entry.

@@ -1,0 +1,225 @@
+#!/usr/bin/perl
+#-*-Perl-*-
+# Pretty unsophisicated.
+
+
+sub runit {
+	print "COMMAND @_\n";
+	system("@_");
+}
+
+sub diffimage {
+# Convert to ppm. GIF stores date in header!
+	local ($gif) = @_;
+	$ipath = '../../rsl_test_images';
+	system("giftoppm $gif > img_junk1.ppm");
+	system("giftoppm $ipath/$gif > img_junk2.ppm");
+    $s = `diff -q img_junk1.ppm img_junk2.ppm`;
+	unlink(<img_junk?.ppm>);
+	if ($s eq "") {
+		print "MATCH: $gif and  $ipath/$gif are identical ... good.\n";
+	} else {
+		print "----<ERROR>---- Files $gif and $ipath/$gif are different.\n";
+	}
+}
+
+&runit('any_to_gif -r200 /d8/merritt/l00038.ppi');
+&diffimage('radtec_DZ_051298_1429.gif');
+print "---------------------------------------------\n";
+
+
+&runit('any_to_gif -r 200 /d8/merritt/1C51.921002.13.MELB.1.HDF');
+#runit('xv MELB_DZ_100292_1205.gif');
+#runit('xv MELB_CZ_100292_1205.gif');
+&diffimage('MELB_DZ_100292_1205.gif');
+&diffimage('MELB_CZ_100292_1205.gif');
+print "---------------------------------------------\n";
+
+&runit('any_to_gif -r 200 /d8/merritt/19980127050001.vol');
+#runit('xv Berrima_ZT_012798_0500.gif');
+#runit('xv Berrima_VR_012798_0500.gif');
+#runit('xv Berrima_SW_012798_0500.gif');
+&diffimage('Berrima_ZT_012798_0500.gif');
+&diffimage('Berrima_VR_012798_0500.gif');
+&diffimage('Berrima_SW_012798_0500.gif');
+print "---------------------------------------------\n";
+
+&runit('qlook -v -g -D -V /d8/merritt/Lassen_mp.vol');
+#runit('xv dz_951117_0730_00.gif');
+#runit('xv dr_951117_0730_00.gif');
+#runit('xv vr_951117_0730_00.gif');
+&diffimage('dz_951117_0730_00.gif');
+&diffimage('dr_951117_0730_00.gif');
+&diffimage('vr_951117_0730_00.gif');
+print "---------------------------------------------\n";
+
+&runit('qlook -v -g  -W -V  /d8/merritt/nex.file.2');
+#runit('xv dz_930701_1957_00.gif');
+#runit('xv vr_930701_1957_00.gif');
+#runit('xv sw_930701_1957_00.gif');
+&diffimage('dz_930701_1957_00.gif');
+&diffimage('vr_930701_1957_00.gif');
+&diffimage('sw_930701_1957_00.gif');
+print "---------------------------------------------\n";
+
+&runit('qlook -v -g -W -V /d8/merritt/nex.file.2.gz');
+#runit('xv vr_930701_1957_00.gif');
+&diffimage('dz_930701_1957_00.gif');
+&diffimage('sw_930701_1957_00.gif');
+&diffimage('vr_930701_1957_00.gif');
+print "---------------------------------------------\n";
+
+&runit('cappi_image /d8/merritt/nex.file.2.gz KMLB');
+#runit('xv cappi_03.gif');
+&diffimage('cappi_01.gif');
+&diffimage('cappi_02.gif');
+&diffimage('cappi_03.gif');
+&diffimage('cappi_04.gif');
+&diffimage('cappi_05.gif');
+print "---------------------------------------------\n";
+
+&runit('any_to_gif /d8/merritt/nex.file.2.gz /d8/merritt/nex.file.1');
+#runit('xv KMLB_DZ_070193_1957.gif');
+#runit('xv KMLB_VR_070193_1957.gif');
+#runit('xv KMLB_SW_070193_1957.gif');
+&diffimage('KMLB_DZ_070193_1957.gif');
+&diffimage('KMLB_VR_070193_1957.gif');
+&diffimage('KMLB_SW_070193_1957.gif');
+print "---------------------------------------------\n";
+
+#&runit('any_to_gif -r 150 /d8/merritt/34598DE1.vol.gz');
+#runit('xv Gunn_Pt_DZ_103197_0739.gif');
+#&diffimage('Gunn_Pt_DZ_103197_0739.gif');
+#&diffimage('Gunn_Pt_VR_103197_0739.gif');
+#&diffimage('Gunn_Pt_SW_103197_0739.gif');
+#&diffimage('Gunn_Pt_ZT_103197_0739.gif');
+#&diffimage('Gunn_Pt_ZD_103197_0739.gif');
+#&diffimage('Gunn_Pt_RH_103197_0739.gif');
+#&diffimage('Gunn_Pt_PH_103197_0739.gif');
+#print "---------------------------------------------\n";
+
+&runit('any_to_gif -r 150 /d8/merritt/2D17FBB4.vol');
+#runit('xv Berrima_DZ_122293_0747.gif');
+&diffimage('Berrima_DZ_122293_0747.gif');
+&diffimage('Berrima_VR_122293_0747.gif');
+&diffimage('Berrima_SW_122293_0747.gif');
+&diffimage('Berrima_ZT_122293_0747.gif');
+&diffimage('Berrima_LR_122293_0747.gif');
+&diffimage('Berrima_RH_122293_0747.gif');
+&diffimage('Berrima_PH_122293_0747.gif');
+&diffimage('Berrima_KD_122293_0747.gif');
+&diffimage('Berrima_TI_122293_0747.gif');
+print "---------------------------------------------\n";
+
+&runit('any_to_gif -r 150 /d8/merritt/30BE3D11.vol.gz');
+#runit('xv Nguiu_DZ_113095_2319.gif');
+&diffimage('Nguiu_DZ_113095_2319.gif');
+&diffimage('Nguiu_VR_113095_2319.gif');
+&diffimage('Nguiu_SW_113095_2319.gif');
+&diffimage('Nguiu_ZT_113095_2319.gif');
+print "---------------------------------------------\n";
+
+&runit('any_to_gif -r 150 /d8/merritt/tog_930129_1731.raw');
+#runit('xv TOGA_DZ_012993_1731.gif');
+&diffimage('TOGA_DZ_012993_1731.gif');
+&diffimage('TOGA_VR_012993_1731.gif');
+&diffimage('TOGA_SW_012993_1731.gif');
+print "---------------------------------------------\n";
+
+&runit('any_to_gif -r 133 /d8/merritt/kwaj.new');
+#runit('xv KWAJ_DZ_021496_2351.gif');
+&diffimage('KWAJ_DZ_021496_2351.gif');
+&diffimage('KWAJ_VR_021496_2351.gif');
+&diffimage('KWAJ_SW_021496_2351.gif');
+&diffimage('KWAJ_ZT_021496_2351.gif');
+print "---------------------------------------------\n";
+
+&runit('any_to_gif -r 150 /d8/merritt/KWA980324084320.ARCPYLY');
+#runit('xanim KWAJ_??_032498_0843.gif');
+&diffimage('KWAJ_DZ_032498_0843.gif');
+&diffimage('KWAJ_VR_032498_0843.gif');
+&diffimage('KWAJ_SW_032498_0843.gif');
+&diffimage('KWAJ_ZT_032498_0843.gif');
+&diffimage('KWAJ_DR_032498_0843.gif');
+&diffimage('KWAJ_KD_032498_0843.gif');
+print "---------------------------------------------\n";
+
+&runit('any_to_gif -r 150 /d8/merritt/VIC.930129.213153.sig');
+#runit('xv MIT-CSU_DZ_012993_2131.gif');
+&diffimage('MIT-CSU_DZ_012993_2131.gif');
+&diffimage('MIT-CSU_VR_012993_2131.gif');
+&diffimage('MIT-CSU_SW_012993_2131.gif');
+&diffimage('MIT-CSU_ZT_012993_2131.gif');
+print "---------------------------------------------\n";
+
+&runit('any_to_gif -r 150 /d8/merritt/VIC.930130.213215.sig.gz');
+#runit('xv MIT-CSU_DZ_013093_2132.gif');
+&diffimage('MIT-CSU_DZ_013093_2132.gif');
+&diffimage('MIT-CSU_VR_013093_2132.gif');
+&diffimage('MIT-CSU_SW_013093_2132.gif');
+&diffimage('MIT-CSU_ZT_013093_2132.gif');
+print "---------------------------------------------\n";
+
+print "You will be placed in 'less'.  Search for the string 'OUT' and\n";
+print "examine the angles.  You should only see the 'OUT OF ORDER' message\n";
+print "when the angle changes from the maximum to the minimum.\n";
+&runit('killer_sweep /d8/merritt/nex.file.2.gz /d8/merritt/nex.file.1 | less');
+print "---------------------------------------------\n";
+
+&runit('wsr88d_to_gif /d8/merritt/nex.file.2.gz /d8/merritt/nex.file.1');
+#runit('xanim dz_sweep.??.gif');
+#runit('xanim vr_sweep.??.gif');
+#runit('xanim sw_sweep.??.gif');
+&diffimage('dz_sweep.00.gif');
+&diffimage('dz_sweep.01.gif');
+&diffimage('dz_sweep.02.gif');
+&diffimage('dz_sweep.03.gif');
+&diffimage('dz_sweep.04.gif');
+&diffimage('dz_sweep.05.gif');
+&diffimage('dz_sweep.06.gif');
+&diffimage('dz_sweep.07.gif');
+&diffimage('dz_sweep.08.gif');
+&diffimage('dz_sweep.09.gif');
+&diffimage('dz_sweep.10.gif');
+&diffimage('vr_sweep.00.gif');
+&diffimage('vr_sweep.01.gif');
+&diffimage('vr_sweep.02.gif');
+&diffimage('vr_sweep.03.gif');
+&diffimage('vr_sweep.04.gif');
+&diffimage('vr_sweep.05.gif');
+&diffimage('vr_sweep.06.gif');
+&diffimage('vr_sweep.07.gif');
+&diffimage('vr_sweep.08.gif');
+&diffimage('vr_sweep.09.gif');
+&diffimage('vr_sweep.10.gif');
+&diffimage('sw_sweep.00.gif');
+&diffimage('sw_sweep.01.gif');
+&diffimage('sw_sweep.02.gif');
+&diffimage('sw_sweep.03.gif');
+&diffimage('sw_sweep.04.gif');
+&diffimage('sw_sweep.05.gif');
+&diffimage('sw_sweep.06.gif');
+&diffimage('sw_sweep.07.gif');
+&diffimage('sw_sweep.08.gif');
+&diffimage('sw_sweep.09.gif');
+&diffimage('sw_sweep.10.gif');
+print "---------------------------------------------\n";
+
+&runit('wsr_hist_uf_test /d8/merritt/nex.file.2.gz');
+$s = `diff *.dat`;
+   if ($s != "") {
+	   print "==> Unexpected differences.    FAILED test.\n";
+   } else {
+	   print "==> No differences, good.      PASSED test.\n";
+   }
+
+##print "---------------------------------------------\n";
+##&runit('bscan /d8/merritt/pafb_swap');
+##system('mv bscan.00.ppm bscan.00.swap.ppm');
+##&runit('bscan /d8/merritt/pafb_unswap');
+##$s = `diff bscan.00.ppm bscan.00.swap.ppm`;
+##   if ($s != "") {
+##	   print "==> Unexpected differences.    FAILED test.\n";
+##   } else {
+##	   print "==> No differences, good.      PASSED test.\n";
+##   }

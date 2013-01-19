@@ -1,0 +1,64 @@
+
+
+               Upper-Air Merge (MR) Library
+
+
+The upper-air merge library merges mandatory and significant level 
+upper-air reports into a single station sounding.  This library is 
+called by the SN subroutines to merge data which is stored as 
+separate parts in an SN file.  
+
+The main subroutine used to merge data is MR_UADT.  This subroutine
+takes reports for mandatory, significant temperature and significant
+wind data, both below and above 100 mb, and creates a sounding where
+all the input levels are present with data interpolated to these
+levels, if necessary.  The order of the parameters in the input
+reports is critical to the proper execution of this subroutine.
+
+The data is merged using the following sequence.
+
+1.  The surface data is found by checking the TTAA, TTBB and PPBB
+    reports.
+
+2.  The below- and above-100-mb mandatory (TTAA, TTCC) data reports 
+    are combined.
+
+3.  The significant temperature (TTBB, TTDD) reports are merged
+    with the speed, direction and height set to missing.
+
+4.  The height at all levels is recomputed using one of the three
+    methods described below.
+
+5.  The significant wind (PPBB, PPDD) reports are merged using the
+    heights from the reports and the pressure is computed by
+    interpolating the LOG (pressure) linearly with height.  If the 
+    significant wind data was reported on pressure surfaces, it is 
+    merged using pressure, and the heights are then computed.
+
+6.  Missing values of speed, direction, temperature and dewpoint
+    are computed by interpolating linearly with respect to 
+    LOG (pressure).
+
+
+
+One of three methods of height interpolation can be specified in
+IZTYPE.  These are:
+
+IZTYPE = 1   The height is computed by interpolating linearly with
+             respect to LOG (pressure).  If heights cannot be
+             interpolated at the top of the sounding, they are
+             computed using method 2.
+
+IZTYPE = 2   The heights are replaced with the moist hydrostatic
+             height computed using the temperature.  Heights which
+             were reported at mandatory levels are replaced by
+             the computed heights.
+
+IZTYPE = 3   The heights reported at mandatory levels are retained.
+             Heights at levels between mandatory levels are computed
+             as moist hydrostatic heights and scaled to fit the
+             mandatory heights.  Above the top mandatory report,
+             heights are computed using method 2.
+
+
+The SN subroutine which merges data transparently sets IZTYPE to 3.

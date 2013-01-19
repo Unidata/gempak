@@ -1,0 +1,142 @@
+
+
+                              Overview
+
+
+
+1.1  Introduction
+
+
+The GEMLIB Programmer's Guide is a manual for application software
+developers that write GEMPAK programs or stand-alone programs that call
+GEMPAK subroutines.
+
+Other books in the GEMPAK documentation set include:
+
+  GEMPAK User's Manual          information on running GEMPAK programs
+  GEMPLT Programmer's Guide     information helpful in calling GEMPAK
+                                    graphics subroutines or writing
+                                    GEMPAK graphics programs and device
+                                    drivers
+  GEMPAK Bridge Prog. Guide     information helpful in writing GEMPAK
+                                    decoders
+  GEMPAK Installation Guide     information on bringing up GEMPAK at a
+                                    site
+
+
+GEMPAK subroutines are written in standard FORTRAN/77 and ANSI C.  Many
+C subroutines can be called from FORTRAN and vice versa.  Modularity,
+documentation, and extensibility are important design considerations.
+The code was developed on, and has been ported to, all major brands of
+UNIX computers.
+
+
+
+1.2  Subroutine Libraries
+
+
+GEMPAK programs are built in a modular fashion using an extensive set of
+subroutines.  The subroutines are grouped by function into GEMPAK
+libraries.  Each library subroutine name begins with a two or three
+letter acronym that is the library name.  The library name acronym is
+followed by an underscore ('_') and a short subroutine name.  For
+example, SF_OPNF is a subroutine from the SF (surface) library that
+opens a surface file.  To avoid unintentional duplication of subroutine
+names, names of subroutines outside the GEMLIB libraries should not
+follow the XX_... pattern.
+
+Documentation for all of the program-callable GEMPAK library subroutines
+is included in the rest of this manual.  Also included are brief
+descriptions of the libraries' functions and lists of exception (error)
+conditions that each library produces.
+
+
+
+1.3  Object Code
+
+
+The object code for the GEMPAK subroutines is contatined in object
+libraries in a directory defined by the environment variable $GEMOLB.
+The GEMPAK library, gemlib.a, is referenced by a special environment
+variable, $GEMLIB.  Therefore, $GEMLIB is the same as $GEMOLB/gemlib.a .
+
+The GEMPLT object code is grouped in the appl.a library that is also
+located in the $GEMOLB directory.  The appl.a library is also referenced
+by a special environment variable, $APPL.  Therefore, $APPL is the same
+as $GEMOLB/appl.a .  The GEMPLT library (as all libraries) is included
+in the linker commands only if GEMPLT calls are made within the program
+being linked.
+
+When subroutines from several libraries are used, the libraries must be
+included in the link command in a particular order.  The link command
+for the GDCNTR program provides a typical example:
+
+    $FC $FFLAGS $LDFLAGS -o $OS_BIN/gdcntr gdcntr.f \
+           $GEMOLB/gdcntr.a \
+           $GEMLIB $APPL $SYSLIB $GEMLIB
+
+
+
+
+1.4  Meteorological Parameters
+
+
+Several facilities are available to the GEMPAK programmer for computing
+a variety of meteorological parameters.  All meteorological parameters
+are given names in GEMPAK.  The observed quantities, that may be found
+in surface or sounding data sets, are given 4-character names.  The
+abbreviations, and descriptions of the parameters, are an appendix in
+the GEMPAK User's Guide.
+
+The PR library is a collection of functions that can be used to compute
+meteorological parameters found in surface and sounding data sets.  In
+addition, the PC library converts upper-air data to different vertical
+coordinate systems, and interpolates and extrapolates data.
+
+The DG library allows computation of diagnostic functions from gridded
+data.  The functions are expressed as nested strings of operators and
+operands, allowing flexibility in calculatiing new quantities.  In
+addition, in-line flags for time, level, and vertical coordinate permit
+the user additional freedom in defining functions.  The grid diagnostics
+are documented in an appendix to the GEMPAK User's Guide.
+
+
+
+1.5  Error Processing
+
+
+Error messages in GEMPAK programs are displayed by calling the
+subroutine ER_WMSG.  The text of error messages is kept in text files
+named xx.err, where xx is the subroutine library or program name.  The
+error text files reside in a directory pointed to by $GEMERR.  The error
+text file format is described in the ER library documentation.
+
+
+
+1.6  Disk File Access
+
+
+Disk file access in GEMPAK may be made from routines written in FORTRAN
+or C.  To facilitate disk file access, subroutines are provided in the
+FL (FORTRAN) or CFL (C) libraries.  Programmers should not access disk
+files directly.
+
+GEMPAK tables, a special type of disk files, are accessed using the TB
+(FORTRAN) or CTB (C) library subroutines.  The TB and CTB subroutines
+are used so that the format of table files can be changed in the future
+without adversely affecting existing software.
+
+GEMPAK tables are stored in a directory pointed to by $GEMTBL.  As new
+tables are needed, the appropriate TB and CTB subroutine are written.
+Table file format is described in the FL and TB library documentation.
+
+
+
+1.7  Graphics
+
+
+The GEMPAK graphics and transformation functions are provided in GEMPLT.
+Routines in the GG library standardize and simplify some calls to the
+GEMPLT subroutines.  Attributes may be set using IN subroutines.
+However, most of the garphics plotting subroutine calls must be made
+directly to the GEMPLT subroutines.  See the GEMPLT Programmer's Guide.

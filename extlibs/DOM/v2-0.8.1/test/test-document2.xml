@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE TEST [
+  <!ELEMENT TEST ANY>
+  <!ELEMENT OTHER ANY>
+  <!ELEMENT NODE ANY>
+  <!ATTLIST NODE
+    ITEM ID #REQUIRED
+  >
+]>
+<TEST>
+  <OTHER>
+    <OTHER>
+      <OTHER>
+        <NODE ITEM="0">zero</NODE>
+        <NODE ITEM="1">one</NODE>
+      </OTHER>
+      <NODE ITEM="2">two</NODE>
+    </OTHER>
+  </OTHER>
+  <NODE ITEM="3">three
+    <OTHER>
+      <OTHER></OTHER>
+    </OTHER>
+    <NODE ITEM="4">four</NODE>
+    <NODE ITEM="5">five</NODE>
+  </NODE>
+  <OTHER>
+    <OTHER>
+      <OTHER>
+        <NODE ITEM="6">six</NODE>
+        <NODE ITEM="7">seven</NODE>
+      </OTHER>
+      <NODE ITEM="8">eight</NODE>
+    </OTHER>
+  </OTHER>
+</TEST>

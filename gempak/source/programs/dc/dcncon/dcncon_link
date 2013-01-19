@@ -1,0 +1,4 @@
+$CC $CFLAGS -c dcncon.c
+$FC $LDFLAGS -o $OS_BIN/dcncon dcncon.o \
+        $BRIDGE $GEMLIB $CGEMLIB -lm
+$RM *.o

@@ -1,0 +1,598 @@
+      69002 HUNTER_LIGGET/TUSI&              CA US  3600 -12123   310  0
+      69007 FORT_ORD/FRITZSCHE&              CA US  3668 -12177    41  0
+      69008 CAMP_ROBERTS                     CA US  3575 -12070   220  0
+      69012 EGLIN_AFB_RNG_C52A&              FL US  3052  -8630    61  0
+      69013 FALCON_RANGE______&              OK US  3465  -9868   421  0
+      69014 EL_TORO_MCAS______&              CA US  3367 -11773   117  0
+      69016 TUSTIN_MCAS_______&              CA US  3370 -11783    17  0
+      69017 IND_SPRNG_RANGE_63               NV US  3653 -11557   972  0
+      69019 DYESS_AFB/ABILENE_&              TX US  3243  -9985   545  0
+      70026 BARROW                           AK US  7130 -15678     7  0        
+      70063 OUIKTOK                          AK US  7050 -14988     5  0        
+      70086 BARTER IS.                       AK US  7012 -14363     2  0        
+      70133 KOTZEBUE                         AK US  6687 -16263     5  0        
+      70174 BETTLES                          AK US  6690 -15152   203  0        
+      70194 FORT YUKON                       AK US  6658 -14508   129  0        
+      70200 NOME                             AK US  6450 -16543    11  0        
+      70207 UNALAKLEET                       AK US  6388 -16080     7  0        
+      70219 BETHEL                           AK US  6078 -16180    41  0        
+      70231 MCGRATH                          AK US  6297 -15562   103  0        
+      70232 ANIAK                            AK US  6158 -15953    26  0        
+      70251 TALKEETNA                        AK US  6230 -15010    16  0
+      70259 KENAI                            AK US  6056 -15125    27  0        
+      70260 NENANA                           AK US  6455 -14908   110  0        
+      70261 FAIRBANKS                        AK US  6482 -14787   138  0        
+      70264 SUMMIT                           AK US  6333 -14912   734  0        
+      70266 FT_GREELY/ALLEN                  AK US  6397 -14569   398  1
+      70267 BIG DELTA                        AK US  6400 -14573   386  0        
+      70270 FT_RICHARDSON/B                  AK US  6127 -14965   115  1
+      70271 GULKANA                          AK US  6215 -14545   481  0        
+      70273 ANCHORAGE                        AK US  6117 -15002    40  0        
+      70275 VALDEZ                           AK US  6113 -14635     9  0        
+      70291 NORTHWAY                         AK US  6295 -14192   523  0        
+      70296 CORDOVA-MILE 13                  AK US  6050 -14550    12  0        
+      70308 ST. PAUL ISLAND                  AK US  5715 -17022    13  0        
+      70316 COLD BAY                         AK US  5520 -16272    30  0        
+      70321 DILLINGHAM                       AK US  5905 -15852    26  0        
+      70326 KING SALMON                      AK US  5868 -15664    17  0        
+      70333 PORT HEIDEN                      AK US  5695 -15862    29  0        
+      70340 ILIAMNA                          AK US  5975 -15492    46  0        
+      70341 HOMER                            AK US  5963 -15150    22  0        
+      70343 MIDDLETON IS.                    AK US  5943 -14633    14  0        
+      70350 KODIAK                           AK US  5775 -15252    34  0        
+      70361 YAKUTAT                          AK US  5952 -13967    11  0        
+      70371 SITKA                            AK US  5706 -13535     5  0        
+      70381 JUNEAU                           AK US  5837 -13458     5  0        
+      70387 WRANGELL                         AK US  5646 -13238    11  0        
+      70395 KETCHIKAN                        AK US  5535 -13170    28  0        
+      70398 ANNETTE ISLAND                   AK US  5503 -13157    34  0        
+      70414 SHMYA/EARECKSON_AFS              AK US  5272  17412    30  0
+      70454 ADAK                             AK US  5188 -17665     5  0        
+      70489 DUTCH HARBOR                     AK US  5388 -16653     4  0        
+      71043 NORMAN WELLS                     NT CN  6528 -12680    73  0        
+      71045 TESLIN                           YT CN  6017 -13275   705  0        
+      71051 SACHS HARBOUR                    NT CN  7200 -12527    86  0        
+      71062 CONTWOYTO LAKE                   NT CN  6548 -11037   451  0        
+      71066 HIGH LEVEL                       AB CN  5862 -11717   338  0        
+      71068 PEACE RIVER                      AB CN  5623 -11745   571  0        
+      71069 WAGNER/SLAVE LAKE                AB CN  5530 -11478   581  0        
+      71072 MOULD BAY                        NT CN  7623 -11932    20  0        
+      71073 FORT RELIANCE                    NT CN  6272 -10917   164  0        
+      71076 URANIUM CITY                     SK CN  5957 -10848   318  0        
+      71077 BUFFALO NARROWS                  SK CN  5583 -10843   434  0        
+      71078 LYNN LAKE                        MB CN  5687 -10107   357  0        
+      71079 THOMPSON                         MB CN  5580  -9787   218  0        
+      71090 CLYDE                            NT CN  7047  -6862    25  0        
+      71101 SANDSPIT                         BC CN  5325 -13182     6  0        
+      71102 ETHELDA BAY                      BC CN  5305 -12967     8  0        
+      71103 QUESNAL                          BC CN  5303 -12252   545  0        
+      71104 WILLIAMS LAKE                    BC CN  5218 -12205   940  0        
+      71107 CAPE ST. JAMES                   BC CN  5193 -13102    89  0        
+      71108 ABBOTSFORD                       BC CN  4903 -12237    58  0        
+      71109 PORT HARDY                       BC CN  5068 -12737    22  0        
+      71114 HOPE                             BC CN  4937 -12148    39  0        
+      71120 COLD LAKE                        AB CN  5442 -11028   541  0        
+      71121 EDMONTON/NAMAO                   AB CN  5367 -11347   688  0        
+      71122 BANFF                            AB CN  5118 -11557  1397  0        
+      71123 EDMONTON                         AB CN  5332 -11358  0723  0
+      71125 MEADOW LAKE                      SK CN  5413 -10852   480  0        
+      71129 KINDERSLEY                       SK CN  5147 -10917   683  0        
+      71135 ROCKGLEN                         SK CN  4917 -10597   917  0        
+      71138 YORKTON                          SK CN  5127 -10247   498  0        
+      71140 BRANDON                          MB CN  4992  -9995   409  0        
+      71143 BISSETT                          MB CN  5103  -9567   258  0        
+      71145 ISLAND LAKE                      MB CN  5387  -9467   238  0        
+      71182 CHURCHILL FALLS                  NF CN  5355  -6410   440  0        
+      71187 BAIE COMEAU                      PQ CN  4913  -6819    22  0        
+      71188 GASPE                            PQ CN  4877  -6448    33  0        
+      71193 COMFORT COVE                     NF CN  4927  -5488    99  0        
+      71196 BONAVISTA                        NF CN  4870  -5310    27  0        
+      71395 HALIFAX                          NS CN  4488  -6351   145  0        
+      71398 TRURO                            NS CN  4537  -6327    40  0        
+      71399 SHELBURNE                        NS CN  4372  -6525    30  1
+      71527 SIMCOE                           ON CN  4285  -8026   241  0        
+      71538 WINDSOR                          ON CN  4227  -8297   190  0        
+      71600 SABLE ISLAND                     NS CN  4393  -6002     4  0        
+      71601 SHEARWATER                       NS CN  4463  -6350    51  0        
+      71603 YARMOUTH                         NS CN  4383  -6608    43  0        
+      71604 EDDY POINT                       NS CN  4552  -6125    66  0        
+      71609 ST. JOHN                         NB CN  4532  -6587   109  0        
+      71610 SHERBROOKE                       PQ CN  4543  -7168   241  0        
+      71620 KINGSTON                         ON CN  4422  -7660    93  0        
+      71621 TRENTON                          ON CN  4412  -7753    86  0        
+      71623 LONDON                           ON CN  4303  -8115   278  0        
+      71624 TORONTO/MALTON                   ON CN  4368  -7962   173  0        
+      71625 PETAWAWA                         ON CN  4595  -7732   130  0        
+      71626 MONTREAL/MIRABEL                 PQ CN  4568  -7403    82  0        
+      71627 MONTREAL/DORVAL                  PQ CN  4547  -7375    36  0        
+      71628 OTTAWA                           ON CN  4532  -7567   114  0        
+      71630 MUSKOKA                          ON CN  4497  -7930   282  0        
+      71631 MT. FOREST                       ON CN  4398  -8075   415  0        
+      71633 WIARTON                          ON CN  4475  -8110   222  0        
+      71700 FREDERICTON                      NB CN  4587  -6653    20  0        
+      71701 GAGETOWN                         NB CN  4583  -6643    51  1
+      71702 SUMMERSIDE                       PE CN  4643  -6383    24  0        
+      71705 MONCTON                          NB CN  4612  -6468    71  0        
+      71706 CHARLOTTETOWN                    PE CN  4628  -6313    55  0        
+      71707 SYDNEY                           NS CN  4617  -6005    62  0        
+      71709 GRINDSTONE IS.                   PQ CN  4738  -6187    60  0        
+      71711 CHARLO                           NB CN  4800  -6633    38  0        
+      71714 QUEBEC                           PQ CN  4680  -7140    73  0
+      71716 VALCARTIER                       QB CN  4690  -7150   168  1
+      71717 CHATHAM                          NB CN  4702  -6544    34  0        
+      71718 MONT JOLI                        PQ CN  4862  -6822    52  0        
+      71720 STE. AGATHE DES MONTS            PQ CN  4605  -7428   395  0        
+      71722 MANIWAKI                         QB CN  4638  -7597   170  1
+      71725 VAL D'OR                         PQ CN  4805  -7778   337  0        
+      71727 BAGOTVILLE                       PQ CN  4833  -7100   159  0        
+      71730 SUDBURY                          ON CN  4663  -8080   348  0        
+      71731 NORTH BAY                        ON CN  4637  -7942   371  0        
+      71733 GORE BAY                         ON CN  4588  -8257   193  0        
+      71735 EARLTON                          ON CN  4770  -7985   243  0        
+      71739 TIMMINS                          ON CN  4857  -8137   295  0        
+      71749 THUNDER BAY                      ON CN  4837  -8932   199  0
+      71799 VICTORIA                         BC CN  4865 -12343    19  0        
+      71801 ST. JOHN'S/TORBAY                NF CN  4762  -5275   140  0        
+      71803 GANDER                           NF CN  4895  -5457   151  0        
+      71805 ST. PIERRE-MIQUELON                 FR  4677  -5617     3  0        
+      71808 BLANC SABLON                     PQ CN  5145  -5718    36  0        
+      71809 DEER LAKE                        NF CN  4922  -5740    22  0        
+      71811 SEPT ILES                        PQ CN  5022  -6626    55  0        
+      71813 NATASHQUAN                       PQ CN  5018  -6182     7  0        
+      71815 STEPHENVILLE                     NF CN  4853  -5855    26  0        
+      71816 GOOSE BAY                        NF CN  5332  -6042    49  0        
+      71819 ST. ANTHONY                      NF CN  5137  -5563   111  0        
+      71821 MATAGAMI                         PQ CN  4977  -7780   281  0        
+      71822 CHIBOUGAMAU                      PQ CN  4982  -7442   402  0        
+      71825 WABUSH LAKE                      NF CN  5293  -6687   551  0        
+      71826 NITCHEQUON                       PQ CN  5320  -7090   536  0        
+      71828 SCHEFFERVILLE                    PQ CN  5480  -6680   522  0        
+      71831 KAPUSKASING                      ON CN  4942  -8247   227  0        
+      71834 GERALDTON                        ON CN  4978  -8693   351  0        
+      71836 MOOSONEE                         ON CN  5127  -8065    10  0        
+      71841 ARMSTRONG                        ON CN  5028  -8892   323  0        
+      71842 SIOUX LOOKOUT                    ON CN  5012  -9190   390  0        
+      71846 LANSDOWNE HOUSE                  ON CN  5223  -8788   256  0
+      71848 TROUT LAKE                       ON CN  5383  -8987   220  0        
+      71850 KENORA                           ON CN  4978  -9437   411  0        
+      71851 PORTAGE LA PRAIRIE               MB CN  4990  -9827   270  0        
+      71852 WINNIPEG                         MB CN  4992  -9723   239  0        
+      71854 RED LAKE                         ON CN  5107  -9380   383  0        
+      71855 DAUPHIN                          MB CN  5110 -10005   305  0        
+      71856 GIMLI                            MB CN  5062  -9698   223  0        
+      71858 GRAND RAPIDS                     MB CN  5318  -9927   223  0        
+      71861 BROADVIEW                        SK CN  5038 -10268   602  0        
+      71862 ESTEVAN                          SK CN  4907 -10300   572  0        
+      71863 REGINA                           SK CN  5043 -10467   577  0        
+      71864 MOOSE JAW                        SK CN  5033 -10555   577  0        
+      71865 WYNYARD                          SK CN  5177 -10420   561  0        
+      71866 SASKATOON                        SK CN  5217 -10670   504  0        
+      71867 THE PAS                          MB CN  5397 -10110   271  0        
+      71868 HUDSON BAY                       SK CN  5282 -10232   358  0        
+      71869 PRINCE ALBERT                    SK CN  5322 -10568   428  0        
+      71870 SWIFT CURRENT                    SK CN  5030 -10768   818  0        
+      71871 LLOYDMINSTER                     AB CN  5325 -11007   669  0        
+      71872 MEDICINE HAT                     AB CN  5002 -11072   717  0        
+      71873 CORONATION                       AB CN  5207 -11145   791  0        
+      71874 LETHBRIDGE                       AB CN  4963 -11280   929  0        
+      71876 NORTH BATTLEFORD                 SK CN  5277 -10825   548  0        
+      71877 CALGARY                          AB CN  5112 -11402  1084  0        
+      71878 RED DEER                         AB CN  5218 -11390   905  0        
+      71879 EDMONTON                         AB CN  5357 -11352   671  0        
+      71880 CRANBROOK                        BC CN  4962 -11578   939  0        
+      71881 EDSON                            AB CN  5358 -11645   925  0        
+      71882 REVELSTOKE                       BC CN  5097 -11818   443  0        
+      71884 CASTLEGAR                        BC CN  4930 -11763   495  0        
+      71887 KAMLOOPS                         BC CN  5070 -12045   346  0        
+      71888 JASPER                           AB CN  5288 -11807  1061  0        
+      71889 PENTICTON                        BC CN  4947 -11960   344  0        
+      71890 NANAIMO                          BC CN  4905 -12387    30  0        
+      71891 LYTTON                           BC CN  5023 -12158   258  0        
+      71892 VANCOUVER                        BC CN  4918 -12317     3  0        
+      71893 COMOX                            BC CN  4972 -12490    24  0        
+      71896 PRINCE GEORGE                    BC CN  5388 -12267   691  0        
+      71898 PRINCE RUPERT                    BC CN  5430 -13045    34  0        
+      71899 LANGARA                          BC CN  5425 -13305    41  0        
+      71900 HOPEDALE                         NF CN  5545  -6023    12  0
+      71905 KUUJJUARAPIK                     PQ CN  5528  -7776    18  0        
+      71906 KUUJJUAQ                         PQ CN  5810  -6842    37  0        
+      71907 INUKJUAK                         PQ CN  5845  -7812     8  0        
+      71909 FROBISHER                        NT CN  6375  -6855    34  0        
+      71912 GILLAM                           MB CN  5637  -9470   145  0        
+      71913 CHURCHILL                        MB CN  5873  -9407    29  0        
+      71915 CORAL HARBOUR                    NT CN  6419  -8337    64  0        
+      71916 CHESTERFIELD                     NT CN  6333  -9072     6  0        
+      71917 EUREKA                           NT CN  8000  -8593    10  0        
+      71920 CREE LAKE                        SK CN  5735 -10713   499  0        
+      71922 LA RONGE                         SK CN  5515 -10527   379  0        
+      71923 ENNADAI LAKE                     NT CN  6113 -10090   353  0        
+      71924 RESOLUTE BAY                     NT CN  7472  -9495    67  0        
+      71925 CAMBRIDGE BAY                    NT CN  6910 -10513    27  0        
+      71926 BAKER LAKE                       NT CN  6430  -9608    18  0        
+      71928 ROCKY MT. HOUSE                  AB CN  5243 -11492   988  0        
+      71930 WHITECOURT                       AB CN  5415 -11578   782  0        
+      71931 LAC LA BICHE                     AB CN  5477 -11202   568  0        
+      71932 FORT MCMURRAY                    AB CN  5665 -11122   369  0        
+      71933 FORT CHIPEWYAN                   AB CN  5877 -11112   232  0        
+      71934 FORT SMITH                       NT CN  6002 -11197   203  0        
+      71935 HAY RIVER                        NT CN  6083 -11578   166  0        
+      71936 YELLOWKNIFE                      NT CN  6247 -11443   205  0        
+      71938 COPPERMINE                       NT CN  6782 -11513    22  0        
+      71940 GRANDE PRAIRIE                   AB CN  5518 -11888   669  0        
+      71943 FORT ST. JOHN                    BC CN  5623 -12073   695  0        
+      71944 MACKENZIE                        BC CN  5530 -12313   700  0        
+      71945 FORT NELSON                      BC CN  5883 -12260   382  0        
+      71946 FORT SIMPSON                     NT CN  6175 -12123   169  0        
+      71950 SMITHERS                         BC CN  5482 -12718   523  0        
+      71951 TERRACE                          BC CN  5447 -12858   217  0        
+      71952 BURNS LAKE                       BC CN  5423 -12577   704  0        
+      71953 WATSON LAKE                      YT CN  6012 -12882   690  0        
+      71957 INUVIK                           NT CN  6830 -13348    68  0        
+      71958 DEASE LAKE                       BC CN  5842 -13000   816  0        
+      71964 WHITEHORSE                       YT CN  6072 -13507   703  0        
+      71965 MAYO LANDING                     YT CN  6362 -13587   504  0        
+      71966 DAWSON                           YT CN  6405 -13913   369  0        
+      71967 BURWASH                          YT CN  6137 -13905   799  0        
+      72201 KEY WEST                         FL US  2455  -8175     6  0        
+      72202 MIAMI                            FL US  2580  -8028     4  0        
+      72203 WEST PALM BEACH                  FL US  2668  -8010  0006  0
+      72204 VERO BEACH                       FL US  2765  -8041     7  0        
+      72205 ORLANDO                          FL US  2843  -8132    32  0        
+      72206 JACKSONVILLE                     FL US  3050  -8169     9  0        
+      72207 SAVANNAH                         GA US  3213  -8120  0015  0
+      72208 CHARLESTON                       SC US  3290  -8003    15  0        
+      72210 TAMPA BAY AREA                   FL US  2770  -8240    13  1
+      72211 TAMPA                            FL US  2797  -8253     3  0        
+      72212 CROSS CITY                       FL US  2962  -8310  0013  0
+      72213 WAYCROSS/WARE C                  GA US  3125  -8240    46  1
+      72214 TALLAHASSEE                      FL US  3038  -8437    21  0        
+      72215 PEACHTREE CITY                   GA US  3336  -8456   246  1
+      72217 MACON                            GA US  3270  -8365  0110  0
+      72218 AUGUSTA                          GA US  3337  -8197    45  0        
+      72219 ATLANTA                          GA US  3365  -8443   315  0        
+      72220 APALACHICOLA                     FL US  2973  -8503  0010  0
+      72221 CRESTVIEW                        FL US  3078  -8651    56  0        
+      72222 PENSACOLA                        FL US  3047  -8720  0036  0
+      72223 MOBILE                           AL US  3068  -8825    67  0        
+      72225 COLUMBUS METRO ARPT              GA US  3251  -8493   121  0        
+      72226 MONTGOMERY                       AL US  3230  -8640    62  0        
+      72228 BIRMINGHAM                       AL US  3357  -8675   192  0        
+      72229 CENTREVILLE WSM                  AL US  3290  -8725   140  1
+      72230 SHELBY CO AIRPT                  AL US  3317  -8677   178  1
+      72231 NEW ORLEANS/MOISANT              LA US  2998  -9025     9  0        
+      72232 BOOTHVILLE                       LA US  2933  -8940     0  1
+      72233 SLIDELL                          LA US  3025  -8977     3  1
+      72234 MERIDIAN                         MS US  3233  -8875  0094  0
+      72235 JACKSON                          MS US  3232  -9008   101  0        
+      72239 FORT POLK (ARMY                  LA US  3105  -9320   100  1
+      72240 LAKE CHARLES                     LA US  3013  -9322    10  0        
+      72242 GALVESTON                        TX US  2930  -9480    16  0        
+      72243 HOUSTON                          TX US  2997  -9535    33  0        
+      72247 LONGVIEW                         TX US  3235  -9465   124  1
+      72248 SHREVEPORT                       LA US  3247  -9382    79  0        
+      72249 FORT WORTH                       TX US  3279  -9730   196  1
+      72250 BROWNSVILLE                      TX US  2590  -9743     6  0        
+      72251 CORPUS CHRISTI                   TX US  2777  -9750    13  0        
+      72252 LAREDO                           TX US  2753  -9947   156  0        
+      72253 SAN ANTONIO                      TX US  2953  -9847   242  0        
+      72254 AUSTIN                           TX US  3030  -9770  0189  0
+      72255 VICTORIA                         TX US  2885  -9692  0036  0
+      72256 WACO                             TX US  3162  -9723  0155  0
+      72257 FT HOOD AAF/KIL                  TX US  3115  -9772   286  1
+      72258 PARIS                            TX US  3363  -9545   167  0        
+      72259 DALLAS-FORT WORTH                TX US  3290  -9703   182  0        
+      72260 STEPHENVILLE                     TX US  3222  -9818   402  1
+      72261 DEL RIO                          TX US  2937 -10092   313  0        
+      72262 GUADALUPE PASS                   TX US  3183 -10480  1664  0        
+      72263 SAN ANGELO                       TX US  3137 -10050  0582  0
+      72264 MARFA                            TX US  3037 -10402  1481  0        
+      72265 MIDLAND                          TX US  3195 -10218   872  0        
+      72266 ABILENE                          TX US  3241  -9968   546  0        
+      72267 LUBBOCK                          TX US  3365 -10182  0988  0
+      72268 ROSWELL                          NM US  3330 -10453  1103  0        
+      72270 EL PASO                          TX US  3180 -10640  1194  0        
+      72271 TRUTH OR CONSEQUENCES            NM US  3323 -10727  1481  0
+      72273 FORT HUACHUCA                    AZ US  3160 -11035  1438  1
+      72274 TUCSON                           AZ US  3212 -11093   779  0        
+      72278 PHOENIX                          AZ US  3343 -11202   337  0        
+      72280 YUMA                             AZ US  3266 -11460    63  0        
+      72281 EL_CENTRO_NAF                    CA US  3282 -11568   -13  0
+      72286 RIVERSIDE MUNI                   CA US  3395 -11745   248  0        
+      72288 VAN NUYS                         CA US  3421 -11848   244  0        
+      72290 SAN DIEGO/LINDBERGH              CA US  3273 -11717     9  0        
+      72291 SAN_NICOLAS_ISLAND               CA US  3323 -11945   154  0
+      72293 SAN DIEGO/MONTG                  CA US  3282 -11713   124  1
+      72295 LOS ANGELES                      CA US  3393 -11840    32  0        
+      72297 SANTA ANA-ORANGE CO.             CA US  3366 -11788    16  0        
+      72303 FAYETTEVILLE                     NC US  3500  -7888    57  0        
+      72304 HATTERAS                         NC US  3527  -7555     3  0        
+      72305 MOREHEAD CITY/N                  NC US  3470  -7680    11  1
+      72306 RALEIGH-DURHAM                   NC US  3587  -7878   134  0        
+      72308 NORFOLK                          VA US  3690  -7619     9  0        
+      72309 NEW RIVER MCAS                   NC US  3470  -7743     8  0        
+      72310 COLUMBIA                         SC US  3395  -8112  0069  0
+      72311 ATHENS                           GA US  3395  -8333   247  0        
+      72312 GREENVILLE                       SC US  3490  -8222  0296  0
+      72314 CHARLOTTE                        NC US  3522  -8093   234  0        
+      72315 ASHEVILLE                        NC US  3543  -8253  0661  0
+      72317 GREENSBORO                       NC US  3608  -7994   270  0        
+      72318 BLACKSBURG                       VA US  3721  -8041   648  1
+      72319 WINSTON SALEM                    NC US  3613  -8023   295  0        
+      72320 ROME                             GA US  3434  -8517   196  0        
+      72323 HUNTSVILLE                       AL US  3465  -8677  0196  0
+      72324 CHATTANOOGA                      TN US  3503  -8520  0210  0
+      72326 KNOXVILLE                        TN US  3582  -8398   299  0        
+      72327 NASHVILLE                        TN US  3613  -8668   184  0        
+      72329 LONDON                           KY US  3708  -8408   366  0        
+      72330 POPLAR BLUFF                     MO US  3677  -9047   146  0        
+      72334 MEMPHIS                          TN US  3505  -9000    87  0        
+      72340 LITTLE ROCK                      AR US  3483  -9227   172  0        
+      72341 PAGE                             OK US  3468  -9462   883  0        
+      72344 FORT SMITH                       AR US  3533  -9437   141  0        
+      72348 WEST PLAINS                      MO US  3673  -9185   308  0        
+      72349 MONETT                           MO US  3688  -9390   437  0        
+      72351 WICHITA FALLS                    TX US  3397  -9848  0314  0
+      72352 GAGE                             OK US  3630  -9976   678  0        
+      72353 OKLAHOMA CITY                    OK US  3540  -9760   397  0        
+      72354 PONCA CITY                       OK US  3673  -9710   307  0        
+      72355 ARDMORE                          OK US  3430  -9701   232  0        
+      72356 TULSA                            OK US  3620  -9590  0206  0
+      72357 NORMAN                           OK US  3522  -9747   362  1
+      72360 CLAYTON                          NM US  3645 -10315  1515  0
+      72363 AMARILLO                         TX US  3523 -10170  1099  0        
+      72364 SANTA TERESA                     NM US  3190 -10670  1252  1
+      72365 ALBUQUERQUE                      NM US  3505 -10662  1620  0        
+      72370 KINGMAN                          AZ US  3527 -11395  1033  0        
+      72371 PAGE                             AZ US  3693 -11145  1304  0        
+      72374 WINSLOW                          AZ US  3502 -11072  1488  0        
+      72376 FLAGSTAFF                        AZ US  3523 -11182  2192  1
+      72381 EDWARDS AFB                      CA US  3490 -11788   702  1
+      72383 SANDBURG                         CA US  3475 -11873  1377  0        
+      72384 BAKERSFIELD                      CA US  3543 -11905   150  0        
+      72386 LAS VEGAS                        NV US  3608 -11517   664  0        
+      72387 MERCURY/DESERT                   NV US  3661 -11602  1009  1
+      72389 FRESNO                           CA US  3677 -11972   100  0        
+      72391 PT MUGU NAS                      CA US  3411 -11911     4  0        
+      72393 VANDENBERG_AFB                   CA US  3473 -12058   112  0
+      72394 SANTA MARIA                      CA US  3490 -12045    73  0        
+      72401 RICHMOND/BYRD                    VA US  3750  -7732    50  0        
+      72402 WALLOPS IS.                      VA US  3785  -7548  0015  0
+      72403 DULLES AIRPORT                   VA US  3895  -7744    98  0        
+      72404 SALISBURY                        MD US  3833  -7550    16  0        
+      72405 WASHINGTON/NATIONAL              DC US  3884  -7703    20  0        
+      72406 BALTIMORE/FRIENDSHIP             MD US  3918  -7667    47  0
+      72407 ATLANTIC CITY                    NJ US  3945  -7458  0020  0
+      72408 PHILADELPHIA                     PA US  3988  -7525     9  0        
+      72410 LYNCHBURG                        VA US  3733  -7920  0286  0
+      72411 ROANOKE                          VA US  3732  -7998   358  0        
+      72412 BECKLEY                          WV US  3778  -8112   766  0        
+      72414 CHARLESTON                       WV US  3837  -8160   301  0        
+      72421 CINCINNATI                       OH US  3905  -8467   267  0        
+      72422 LEXINGTON                        KY US  3803  -8460  0301  0
+      72423 LOUISVILLE/STANDIFORD            KY US  3818  -8573   149  0        
+      72424 FORT KNOX/GODMA                  KY US  3790  -8597   230  1
+      72425 HUNTINGTON                       WV US  3837  -8255   255  0        
+      72426 WILMINGTON                       OH US  3942  -8372   317  1
+      72427 WHEELING                         WV US  4018  -8065   364  0        
+      72428 COLUMBUS                         OH US  4000  -8288   254  0        
+      72429 DAYTON                           OH US  3990  -8422   306  0        
+      72432 EVANSVILLE                       IN US  3805  -8753   118  0        
+      72433 SALEM-LECKRONE                   IL US  3865  -8897   177  1
+      72434 ST. LOUIS                        MO US  3875  -9037   172  0        
+      72435 PADUCAH                          KY US  3707  -8877   125  1
+      72437 BLOOMINGTON                      IN US  3913  -8661   258  0        
+      72438 INDIANAPOLIS                     IN US  3973  -8628   243  0        
+      72439 SPRINGFIELD                      IL US  3983  -8967  0187  0
+      72440 SPRINGFIELD                      MO US  3723  -9338   387  0        
+      72445 COLUMBIA                         MO US  3882  -9222   274  0        
+      72446 KANSAS CITY/INTL.                MO US  3932  -9472   312  0        
+      72450 WICHITA                          KS US  3765  -9743   408  0        
+      72451 DODGE CITY                       KS US  3777  -9997   790  0        
+      72452 MEDICINE LODGE                   KS US  3730  -9858   468  0        
+      72455 EMPORIA                          KS US  3833  -9620   367  0        
+      72456 TOPEKA                           KS US  3907  -9562   270  0        
+      72458 CONCORDIA                        KS US  3955  -9765   452  0        
+      72460 ELKHART                          KS US  3700 -10188  1106  0        
+      72462 ALAMOSA                          CO US  3745 -10587  2298  0
+      72464 PUEBLO                           CO US  3828 -10452  1439  0        
+      72465 GOODLAND                         KS US  3937 -10170  1124  0
+      72466 ENGLEWOOD/ARAPAHOE               CO US  3756 -10483  1790  0        
+      72468 FORT CARSON/BUT                  CO US  3868 -10477  1790  1
+      72469 DENVER                           CO US  3975 -10487  1625  0        
+      72470 PRICE                            UT US  3962 -11075  1799  0        
+      72472 BLANDING                         UT US  3762 -10947  1840  0        
+      72476 GRAND JUNCTION                   CO US  3912 -10852  1475  0        
+      72481 MERCED MUNICIPAL                 CA US  3728 -12051    47  0        
+      72483 SACRAMENTO                       CA US  3852 -12150     8  0        
+      72485 TONOPAH                          NV US  3807 -11708  1654  0
+      72486 ELY                              NV US  3928 -11485  1909  0        
+      72488 RENO                             NV US  3950 -11977  1341  0        
+      72489 RENO                             NV US  3957 -11979  1515  1
+      72491 MONTEREY NAF                     CA US  3660 -12185  0046  0
+      72492 STOCKTON                         CA US  3790 -12125  0008  0
+      72493 CONCORD/BUCHANAN                 CA US  3798 -12205    18  0        
+      72494 SAN FRANCISCO                    CA US  3762 -12238     5  0        
+      72501 BROOKHAVEN                       NY US  4087  -7286    20  1
+      72502 TETERBORO                        NJ US  4085  -7405     3  0        
+      72503 NEW YORK/LA GUARDIA              NY US  4077  -7390     9  0        
+      72504 BRIDGEPORT                       CT US  4117  -7313  0005  0
+      72506 NANTUCKET                        MA US  4125  -7007  0014  0
+      72507 PROVIDENCE                       RI US  4173  -7143  0015  0
+      72508 HARTFORD                         CT US  4193  -7268    51  0        
+      72509 BOSTON/LOGAN                     MA US  4237  -7103     3  0        
+      72511 LANCASTER                        PA US  4013  -7630   123  0        
+      72512 PHILIPSBURG                      PA US  4088  -7808  0589  0
+      72513 WILKES-BARRE                     PA US  4133  -7573  0289  0
+      72514 WILLIAMS PORT                    PA US  4125  -7692     0  0
+      72515 BINGHAMTON                       NY US  4222  -7598   499  0        
+      72517 ALLENTOWN                        PA US  4065  -7543  0117  0
+      72518 ALBANY                           NY US  4275  -7380    89  0        
+      72519 SYRACUSE                         NY US  4312  -7612   124  0        
+      72520 PITTSBURGH                       PA US  4050  -8023   373  0        
+      72521 AKRON                            OH US  4092  -8143  0377  0
+      72523 DANSVILLE                        NY US  4257  -7772   209  0        
+      72524 CLEVELAND/HOPKINS                OH US  4140  -8185   245  0        
+      72525 YOUNGSTOWN                       OH US  4127  -8067  0361  0
+      72526 FRANKLIN                         PA US  4138  -7986   469  0        
+      72528 BUFFALO                          NY US  4293  -7873   225  0        
+      72529 ROCHESTER                        NY US  4312  -7767   169  0        
+      72530 CHICAGO/O'HARE                   IL US  4198  -8790   205  0        
+      72532 PEORIA                           IL US  4066  -8968   202  0        
+      72533 FORT WAYNE                       IN US  4100  -8520   252  0        
+      72534 CHICAGO/MIDWAY                   IL US  4178  -8775   190  0
+      72535 SOUTH BEND                       IN US  4170  -8632  0236  0
+      72536 TOLEDO                           OH US  4160  -8380  0211  0
+      72537 DETROIT                          MI US  4223  -8333   202  0        
+      72539 BATTLE CREEK                     MI US  4230  -8523   287  0        
+      72540 SPICKARD                         MO US  4025  -9372   271  0        
+      72543 ROCKFORD                         IL US  4220  -8910   224  0        
+      72544 MOLINE                           IL US  4145  -9052   181  0        
+      72545 BURLINGTON                       IA US  4078  -9111   212  0        
+      72546 DES MOINES                       IA US  4153  -9365   294  0        
+      72547 DUBUQUE                          IA US  4240  -9070  0329  0
+      72548 MASON CITY                       IA US  4315  -9333   370  0        
+      72549 FORT DODGE                       IA US  4255  -9418   355  0        
+      72550 OMAHA/EPPLEY                     NE US  4130  -9590     0  0
+      72551 BEATRICE                         NE US  4031  -9675   402  0        
+      72552 GRAND ISLAND                     NE US  4097  -9832  0566  0
+      72553 NORTH OMAHA                      NE US  4137  -9602   406  0        
+      72554 OFFUT AFB                        NE US  4111  -9590   319  0        
+      72556 NORFOLK                          NE US  4198  -9743  0473  0
+      72557 SIOUX CITY                       IA US  4240  -9638  0334  0
+      72558 VALLEY                           NE US  4132  -9637   350  1
+      72561 SIDNEY                           NE US  4110 -10298  1312  0        
+      72562 NORTH PLATTE                     NE US  4113 -10068   849  0        
+      72563 CHADRON                          NE US  4283 -10308  1004  0        
+      72564 CHEYENNE                         WY US  4115 -10482  1872  0        
+      72566 SCOTTS BLUFF CO.                 NE US  4186 -10360  1209  0        
+      72567 VALENTINE                        NE US  4287 -10055   792  0        
+      72569 CASPER                           WY US  4292 -10647  1612  0        
+      72572 SALT LAKE CITY                   UT US  4078 -11197  1288  0        
+      72574 RAWLINS                          WY US  4180 -10720  2068  0        
+      72576 LANDER                           WY US  4282 -10873  1694  0        
+      72578 POCATELLO                        ID US  4292 -11260  1365  0        
+      72581 WENDOVER                         NV US  4072 -11403  1292  0
+      72582 ELKO                             NV US  4087 -11573  1608  1
+      72583 WINNEMUCCA                       NV US  4090 -11780  1315  0        
+      72591 RED BLUFF                        CA US  4015 -12225   108  0        
+      72594 EUREKA                           CA US  4080 -12417    18  0        
+      72597 MEDFORD                          OR US  4237 -12287   405  0        
+      72604 FRANCONIA                        NH US  4422  -7175   287  0                   
+      72605 CONCORD                          NH US  4320  -7150  0105  0
+      72606 PORTLAND                         ME US  4365  -7032    19  0        
+      72608 EASTPORT                         ME US  4492  -6700  0023  0
+      72613 MT. WASHINGTON                   NH US  4427  -7130  1910  0        
+      72617 BURLINGTON                       VT US  4447  -7315   104  0        
+      72618 RUMFORD                          ME US  4453  -7053   205  0        
+      72632 DETROIT/PONTIAC                  MI US  4270  -8347   329  1
+      72634 GAYLORD                          MI US  4491  -8472   448  1
+      72635 GRAND RAPIDS                     MI US  4288  -8552   245  0        
+      72636 MUSKEGON                         MI US  4317  -8623  0193  0
+      72637 FLINT                            MI US  4297  -8373   233  0        
+      72638 HOUGHTON LAKE                    MI US  4437  -8467  0354  0
+      72639 ALPENA                           MI US  4507  -8357  0211  0
+      72640 MILWAUKEE                        WI US  4295  -8790   211  0        
+      72641 MADISON                          WI US  4313  -8933   264  0        
+      72643 VOLK FIELD                       WI US  4393  -9026   279  0        
+      72644 ROCHESTER                        MN US  4392  -9250  0402  0
+      72645 GREEN BAY                        WI US  4448  -8813   214  0        
+      72646 MOSINEE                          WI US  4478  -8966   388  0        
+      72648 ESCENABA                         MI US  4575  -8705   187  0        
+      72649 CHANHASSEN                       MN US  4485  -9357   287  1
+      72650 SPENCER                          IA US  4317  -9515   408  0        
+      72651 SIOUX FALLS                      SD US  4358  -9673  0435  0
+      72652 PICKSTOWN                        SD US  4307  -9853   453  0        
+      72653 CHAMBERLAIN                      SD US  4380  -9932   530  0        
+      72654 HURON                            SD US  4438  -9823   393  0        
+      72655 ST. CLOUD                        MN US  4555  -9407   313  0        
+      72658 MINNEAPOLIS                      MN US  4488  -9322   255  0        
+      72659 ABERDEEN                         SD US  4545  -9842  0396  0
+      72661 REDIG                            SD US  4527 -10353   925  0        
+      72662 RAPID CITY                       SD US  4405 -10307   966  0        
+      72665 GILLETTE                         WY US  4435 -10553  1323  0        
+      72666 SHERIDAN                         WY US  4477 -10698  1243  0
+      72670 CODY                             WY US  4452 -10902  1551  0        
+      72671 BIG PINEY                        WY US  4253 -11012  2124  0        
+      72672 RIVERTON                         WY US  4301 -10850  1703  1
+      72677 BILLINGS                         MT US  4580 -10853  1088  0        
+      72681 BOISE                            ID US  4357 -11623   874  0        
+      72683 BURNS                            OR US  4358 -11905  1271  0        
+      72688 PENDLETON                        OR US  4568 -11885   456  0        
+      72693 EUGENE                           OR US  4412 -12322  0114  0
+      72694 SALEM                            OR US  4492 -12302    61  0        
+      72698 PORTLAND                         OR US  4560 -12260    12  0        
+      72712 CARIBOU                          ME US  4687  -6801   191  0        
+      72734 SAULT STE. MARIE                 MI US  4648  -8437   221  0        
+      72741 PARK FALLS                       WI US  4593  -9045   469  0        
+      72743 MARQUETTE                        MI US  4653  -8755  0434  0
+      72744 IRONWOOD                         MI US  4653  -9013   380  0        
+      72745 DULUTH                           MN US  4683  -9218   432  0        
+      72747 INTERNATIONAL FALLS              MN US  4857  -9338   361  0        
+      72753 FARGO                            ND US  4690  -9680   274  0        
+      72755 BEMIDJI                          MN US  4750  -9493   421  0        
+      72757 DEVIL'S LAKE                     ND US  4812  -9887   451  0        
+      72758 DEVIL'S LAKE                     ND US  4810  -9887   438  0        
+      72764 BISMARCK                         ND US  4678 -10075   506  0        
+      72767 WILLISTON                        ND US  4818 -10363   581  0        
+      72768 GLASGOW                          MT US  4822 -10662   700  0        
+      72772 HELENA                           MT US  4660 -11200  1188  0        
+      72773 MISSOULA                         MT US  4692 -11408   972  0        
+      72775 GREAT FALLS                      MT US  4748 -11137  1115  0        
+      72776 GREAT_FALLS                      MT US  4746 -11138  1130  1
+      72777 HAVRE                            MT US  4855 -10977   792  0        
+      72779 KALISPELL                        MT US  4830 -11427  0906  0
+      72781 YAKIMA                           WA US  4657 -12053   325  0        
+      72783 LEWISTON                         ID US  4638 -11702  0438  0
+      72784 HANFORD                          WA US  4657 -11958   223  0        
+      72785 SPOKANE                          WA US  4762 -11753   721  0        
+      72786 SPOKANE                          WA US  4770 -11760   728  1
+      72788 WALLA WALLA                      WA US  4610 -11828  0302  0
+      72789 OMAK                             WA US  4842 -11953   260  0        
+      72791 ASTORIA                          OR US  4615 -12388  0007  0
+      72792 OLYMPIA                          WA US  4697 -12290  0061  0
+      72793 SEATTLE-TACOMA                   WA US  4745 -12230   137  0        
+      72797 QUILLAYUTE                       WA US  4795 -12455    62  0        
+      74002 ABERDEEN AFB                     MD US  3947  -7607     5  1
+      74004 YUMA_PRVG_GROUNDS_&              AZ US  3285 -11440    98  0
+      74206 MCCHORD AFB                      WA US  4715 -12248    98  0        
+      74207 FT. LEWIS                        WA US  4708 -12258    92  0        
+      74370 FORT_DRUM/WHEELER                NY US  4405  -7573   207  0
+      74389 GRAY                             ME US  4389  -7026   125  1
+      74392 BRUNSWICK NAS                    ME US  4388  -6993    24  0        
+      74455 QUAD CITIES                      IA US  4161  -9057   229  1
+      74460 MARSEILLES                       IL US  4137  -8868   225  0        
+      74486 NEW YORK/KENNEDY                 NY US  4065  -7378     7  0        
+      74492 BLUE HILL                        NY US  4222  -7112   195  0        
+      74494 CHATHAM                          MA US  4167  -6997    16  0
+      74506 ALAMEDA NAS                      CA US  3778 -12231     9  0        
+      74509 MOFFET NAS                       CA US  3741 -12205    12  0        
+      74516 TRAVIS AFB                       CA US  3826 -12193    19  0        
+      74520 MILFORD                          UT US  3826 -11301   644  0
+      74531 AIR_FORCE_ACADEMY                CO US  3897 -10482  2003  0
+      74560 LINCOLN                          IL US  4015  -8934   178  1
+      74570 WRIGHT PATTERSON AFB             OH US  3983  -8405   252  0        
+      74594 ANDREWS AFB                      MD US  3881  -7685    84  0        
+      74598 LANGLEY AFB                      VA US  3708  -7635     3  0        
+      74611 BICYCLE_LAKE_(AAF)&              CA US  3528 -11662   716  0
+      74612 CHINA LAKE NAF                   CA US  3568 -11768   696  1
+      74619 SUPERIOR_VLLY_GNRY               CA US  3633 -11710   962  0
+      74671 BOWLING GREEN                    KY US  3696  -8643   164  0        
+      74693 FORT BRAGG                       NC US  3513  -7893    74  0        
+      74702 LEMOORE NAS                      CA US  3633 -11995    73  0        
+      74724 GILA_BEND_(AAF)                  AZ US  3288 -11272   262  0
+      74732 HOLLOMAN AFB                     NM US  3285 -10610  1258  1
+      74740 JUNCTION                         TX US  3050  -9977   522  0        
+      74754 ENGLAND AFB                      LA US  3131  -9255    27  0        
+      74755 CLAIBORNE_RNG_(AFS)              LA US  3113  -9257    67  0
+      74775 TYNDALL AFB                      FL US  3006  -8558     5  0        
+      74777 HURLBURT FIELD                   FL US  3041  -8668    11  0        
+      74788 MACDILL AFB                      FL US  2785  -8250     4  0        
+      74790 SHAW AFB                         SC US  3396  -8048    73  0        
+      74791 MYRTLE BEACH AFB                 SC US  3368  -7893     8  0        
+      74794 CAPE CANAVERAL                   FL US  2847  -8055     3  1
+      91162 BARKING_SANDS                    HI US  2201 -15978    99  0
+      91178 BARBERS POINT NAS, OAHU          HI US  2132 -15807    15  0
+      91190 KAHALUI, MAUI                    HI US  2090 -15643    17  0
+      91176 KANEOHE MCAS, OAHU               HI US  2145 -15777     3  0
+      91182 HONOLULU, OAHU                   HI US  2135 -15793     5  0
+      91165 LIHUE, KAUAI                     HI US  2198 -15935    45  0

@@ -1,0 +1,745 @@
+! FAXPROD.TBL
+!
+! This table contains the information necessary for creating 6-bit FAX
+! products. Each product has identification numbers, a description,
+! x and y size and a rotation factor. 
+! 
+! The x and y size refer to the dimensions of the final 6-bit product 
+! where x is the number of bits per line and y is the number of lines.
+! X must be an exact multiple of 8.
+!
+! The rotation is also for the final product. It is also used to
+! define the GEMPAK Device coordinate system. The valid values for
+! the rotation are only 0, 90, 180 and 270.
+!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!
+! Note:
+! This table is used for the FAX device driver only. If you wish to
+! add a product, it must be added here and also in PRODUCT.TBL.
+!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!
+!!
+! Log:
+! S. Jacobs/NCEP	 7/97	Copied from product.tbl
+! M. Linda/GSC		 7/97	Swapped X and Y for 074X, 702X, 781X
+! S. Jacobs/NCEP	 7/97	Fixed typo for 131X
+! S. Jacobs/NCEP	 7/97	Added indent column
+! S. Jacobs/NCEP	 7/97	Changed rotation for 580X,581X,780X,781X
+! S. Jacobs/NCEP	 8/97	Added reserved column
+! J. Partain/MPC        10/97   Added new MPC graphics 008X,009X,011X,012X
+! J. Whistler/AWC	11/97	Sorted by Wheel ID
+! S. Jacobs/NCEP	11/97	Changed indent and rsrv for TPC products
+! S. Jacobs/NCEP	 2/98	Changed rsrv for 325X
+! S. Jacobs/NCEP	 3/98	Changed rotation for 601X,602X,650X,651X
+! S. Jacobs/NCEP	 4/98	Changed rotation and rsrv for 450X
+! S. Jacobs/NCEP	 4/98	Changed 450X;3187 to 450Y;3187
+! S. Jacobs/NCEP	 4/98	Changed rsrv for 461X-467X
+! S. Jacobs/NCEP	 5/98	Changed rsrv for 403X and 455X
+! M. Huber/TPC		 6/98	Added products 118X and 119X
+! S. Jacobs/NCEP	 6/98	Changed rotation and rsrv for TPC products
+! S. Jacobs/NCEP	 7/98	Changed rotation for 455X
+! S. Jacobs/NCEP	 7/98	Changed rotation for 403X
+! J. Partain/MPC	 7/98	Changed rotation for MPC EPac products
+! S. Jacobs/NCEP	 7/98	Fixed rsrv for all MPC products
+! S. Jacobs/NCEP	 7/98	Added 121X, 122X, 229X, 230X
+! S. Jacobs/NCEP	 7/98	Fixed rsrv for 326X
+! J. Carr/HPC		 9/98	Fixed rsrv for all HPC sfc fax charts  
+! J. Partain/MPC         9/98   Fixed rsrv for remaining MPC products
+! J. Partain/MPC         9/98   Added subsets for 404X,456X
+! S. Jacobs/NCEP	 1/99	Changed rotation for 405X
+! S. Jacobs/NCEP	 1/99	Changed rotation for 603X
+! S. Jacobs/NCEP	 2/99	Changed rsrv for 105X-108X
+! S. Jacobs/NCEP	 2/99	Updated info for 411X
+! S. Jacobs/NCEP	 3/99	Changed rotation for 307X,319X,322X,323X,
+!						     357X,366X,367X,369X
+! S. Jacobs/NCEP	 3/99	Changed rotation for 307X,319X,322X,323X,
+!						     357X,366X,367X,369X
+! S. Jacobs/NCEP	 3/99	Changed size for TPC prods: 182X, 184X,
+!							    188X, 191X
+! S. Jacobs/NCEP	 3/99	Changed rsrv for 405X
+! S. Jacobs/NCEP	 4/99	Changed rsrv for 453X, 459X
+! J. Partain/MPC         4/99   Chg rotation for 125-6,133-4,142-3,150-1X,
+!                                                155-6,164-5,168-9,179-80X
+! J. Partain/MPC	 5/99	Chg lines for 128X, 145X
+! S. Jacobs/NCEP	 7/99	Removed 280X-297X, no longer used
+! S. Jacobs/NCEP	 7/99	Added AWC ICAO maps 261X-284X
+! S. Jacobs/NCEP	 8/99	Fixed rotation for 261X-264X
+! S. Jacobs/NCEP	 9/99	Changed rsrv for 454X
+! J. Partain/MPC	11/99	Added 00(3,4,5,6)X for new 48hr Wave Pd Fcst
+! S. Jacobs/NCEP	 8/00	Added 01(7,8,9)X and 022X for MPC 96hr prods
+! J. Partain/MPC	 8/00	Fixed subset # for 022X
+! J. Partain/MPC	10/00   Chg lines for pyba0(2,4,6,8)
+!------------------------------------------------------------------------
+!
+!Wheel Subset                                       Bits/
+!ID    ID    Description  	                    Line Lines Rot Indent Rsrv
+!(4) (4)  (40)                                       (4)   (4) (3)  (4)  (4)
+!                                                                           
+003X 1013 Atl 48HR Wave Pd Fcst 00Z                 1728  1120   0    0   64
+004X 1014 Atl 48HR Wave Pd Fcst 12Z                 1728  1120   0    0   64
+005X 1015 Pac 48HR Wave Pd Fcst 00Z                 1728  1120   0    0   64
+006X 1016 Pac 48HR Wave Pd Fcst 12Z                 1728  1120   0    0   64
+008X 1008 WAtl Wind/Wave Analysis 00Z               1728  1120   0    0   64
+009X 1009 WAtl Wind/Wave Analysis 12Z               1728  1120   0    0   64
+010X 0100 Atl Lowr layr mean wnid cir               1728  2646  90    0   64
+011X 1011 EPac Wind/Wave Analysis 00Z               1728  1120  90    0   64
+012X 1012 EPac Wind/Wave Analysis 12Z               1728  1120  90    0   64
+015X 0115 Pac Deep layr mean wind anl               1728  2646  90  928   64
+016X 0116 Pac Shear wind anl                        1728  2646  90  928   64
+017X 1017 96HR Fcst Pac Wind/Wave 12Z               1728  1120   0    0   64
+018X 1018 96HR Fcst Pac Wind Pd 12Z                 1728  1120   0    0   64
+019X 1019 96HR Fcst Atl Wind/Wave 12Z               1728  1120   0    0   64
+020X 0120 Pac Deep layr mean wind anl               1728  2646  90  928   64
+021X 0121 Pac Shear wind anl                        1728  2646  90  928   64
+022X 1020 96HR Fcst Atl Wind Pd 12Z                 1728  1120   0    0   64
+025X 0125 Atl Atoll wind anl                        1728  2646  90  928   64
+026X 0126 Atl 200MB wind (steams) anl               1728  2646  90  928   64
+033X 0133 Pac Atoll wind anl                        1728  2646  90  928   64
+034X 0134 Pac 200MB wind (steams) anl               1728  2646  90  928   64
+035X 0135 Pac Upper-Lower wind shear                1728  2646  90  928   64
+052X 0052 IEEE test chart                           1728  1110   0    0    0
+057X 0057 Cambridge plot                            1728  1110   0    0    0
+070X 0070 Unknown map                               1728   800   0    0    0
+071X 0071 Unknown map                               1728  3000  90    0    0
+072X 0072 Unknown map                               1728  3000  90    0    0
+073X 0073 Unknown map                               1728  3000  90    0    0
+074X 0074 Unknown map                                856  1100   0    0    0
+075X 0075 Unknown map                                800  3000  90    0    0
+076X 0076 Unknown map                               1728  1728   0    0    0
+077X 0077 Unknown map                               1728  3000  90    0    0
+078X 0078 Unknown map                               1728  3000  90    0    0
+079X 0079 Unknown map                               1728  3000  90    0    0
+080X 0080 Unknown map                               1728  1076   0    0    0
+100X 1100 High Seas Forecast 4Z                     1728  3408   0    0   64
+101X 1101 High Seas Forecast 16Z                    1728  3408   0    0   64
+102X 1102 Atl Radiofax Schedule Pt. 2               1728  1152   0    0   64
+103X 1103 Atl Product Notice Bulletin               1728  1120   0    0   64
+104X 1104 Atl Req 4 Comments/Prd Notx               1728  1120   0    0   64
+105X 1105 Atl 00Z Prelim Surface Anal               1728  1120   0    0   64
+106X 1106 Atl 06Z Prelim Surface Anal               1728  1120   0    0   64
+107X 1107 Atl 12Z Prelim Surface Anal               1728  1120   0    0   64
+108X 1108 Atl 18Z Prelim Surface Anal               1728  1120   0    0   64
+109X 1109 Atl 36HR Surface Forcst 12Z               1728  1120   0    0    0
+110X 1110 Atl 36HR Surface Forcst 00Z               1728  1120   0    0    0
+111X 1111 Atl 36HR Wind/Wave Fcst 12Z               1728  1120   0    0    0
+112X 1112 Atl 36HR Wind/Wave Fcst 00Z               1728  1120   0    0    0
+113X 1113 BACK UP ICE CHART                         1728  1100   0    0    0
+114X 1114 U. S. Surface Analysis 06Z                1728  1536   0    0   64
+115X 1115 U. S. Surface Analysis 18Z                1728  1536   0    0   64
+116X 1116 Tropical Surf Analysis 00Z                1728  3533 270    0   64
+117X 1117 Tropical Surf Analysis 12Z                1728  3533 270    0   64
+118X 1118 Request For Comments Gulf                 1728  1536   0    0   64
+119X 1119 Product Notice Bulletin Gulf              1728  1536   0    0   64
+120X 1120 African Desk SST Anomalies                1728   864   0    0    0
+121X 1121 24HR Atl 500 Fcst 00Z                     1728  1056   0    0   64
+122X 1122 36HR Atl 500 Fcst 00Z                     1728  1056   0    0   64
+124X 1024 Pac Test Pattern                          1728   280   0    0   64
+125X 1025 Pac Surface Anal 00Z Part 1               1728  1440  90    0   64
+126X 1026 Pac Surface Anal 00Z Part 2               1728  1440  90    0   64
+127X 1027 Pac Sea State Analysis 00Z                1728  1120   0    0   64
+128X 1028 500MB Pac Analysis 00Z                    1728  1120   0    0   64
+129X 1029 24HR Pac Wind/Wave Fcst 00Z               1728  1120  90    0   64
+130X 1030 24HR Pac SFC Fcst VT00Z                   1728  1120  90    0   64
+131X 1031 48HR 500MB Pac Fcst VT00Z                 1728  1120   0    0   64
+132X 1032 48HR Pac SEA Fcst VT00Z                   1728  1120   0    0   64
+133X 1033 Pac Surface Anal 06Z Part 1               1728  1440  90    0   64
+134X 1034 Pac Surface Anal 06Z Part 2               1728  1440  90    0   64
+135X 1035 Pac RadioFax Sched Part 1                 1728  1152   0    0   64
+136X 1036 Pac RadioFax Sched Part 2                 1728  1152   0    0   64
+137X 1037 Pac Request for Comments                  1728  1152   0    0   64
+138X 1038 Pac Product Notice Bulletin               1728  1152   0    0   64
+139X 1039 96HR 500MB Pac Fcst VT00Z                 1728  1120   0    0   64
+140X 1040 96HR Pac SFC Fcst VT00Z                   1728  1120   0    0   64
+141X 1041 12Z E. Pac SST Anal Part C                1728  1120   0    0    0
+142X 1042 Pac Surface Anals 12Z Pt 1                1728  1440  90    0   64
+143X 1043 Pac Surface Anals 12Z Pt 2                1728  1440  90    0   64
+144X 1044 E Pac Surf Streamln Anl 12Z               1728  1120   0    0   64
+145X 1045 Pac 500MB Analysis 12Z                    1728  1120   0    0   64
+146X 1046 24HR Pac Wind/Wave Fcst 12Z               1728  1120  90    0   64
+147X 1047 24HR Pac SFC Fcst VT12Z                   1728  1120  90    0   64
+148X 1048 48HR 500MB Pac Fcst VT12Z                 1728  1120   0    0   64
+149X 1049 48HR Pac SEA FCST VT12Z                   1728  1120   0    0   64
+150X 1050 Pac Surface Anal 18Z Part 1               1728  1440  90    0   64
+151X 1051 Pac Surface Anal 18Z Part 2               1728  1440  90    0   64
+152X 1052 E Pac Surf Streamln Anl 18Z               1728  1120   0    0   64
+153X 1053 Pac SST Analysis Part D                   1728  1120   0    0   64
+154X 1054 Atl Radiofax Schedule Pt. 1               1728  1120   0    0   64
+155X 1055 Atl Surface Anal 00Z Part 1               1728  1440  90    0   64
+156X 1056 Atl Surface Anal 00Z Part 2               1728  1440  90    0   64
+157X 1057 500mb Atl Analysis 00Z                    1728  1120   0    0   64
+158X 1058 24hr Atl SFC Fcst VT00Z                   1728  1120   0    0   64
+159X 1059 24hr Atl Wind/Wave Fcst 00Z               1728  1120   0    0   64
+160X 1060 48hr 500mb Atl Fcst VT00Z                 1728  1120   0    0   64
+161X 1061 48hr Atl Sea State Fcst 00Z               1728  1120   0    0   64
+162X 1062 Atl RadioFax Legend                       1728  1152   0    0   64
+163X 1063 Atl Request For Comments                  1728  1152   0    0   64
+164X 1064 Atl Surface Anal 06Z Part 1               1728  1440  90    0   64
+165X 1065 Atl Surface Anal 06Z Part 2               1728  1440  90    0   64
+166X 1066 Atl Gulf Stream Anal Part A               1728  1120   0    0    0
+167X 1067 Atl Gulf Stream Anal Part B               1728  1120   0    0    0
+168X 1068 Atl Surface Anal 12Z Part 1               1728  1440  90    0   64
+169X 1069 Atl Surface Anal 12Z Part 2               1728  1440  90    0   64
+170X 1070 500mb Atl Analysis 12Z                    1728  1120   0    0   64
+171X 1071 Atl Sea State Analysis 12Z                1728  1120   0    0   64
+172X 1072 96hr 500mb Atl Fcst VT00Z                 1728  1120   0    0   64
+173X 1073 96hr Atl SFC Fcst VT00Z                   1728  1120   0    0   64
+174X 1074 Atl Gulf Stream Analysis                  1728  1120   0    0    0
+175X 1075 24hr Atl SFC Fcst VT12Z                   1728  1120   0    0   64
+176X 1076 24hr Atl Wind/Wave Fcst 12Z               1728  1120   0    0   64
+177X 1077 48hr 500mb Atl Fcst VT12Z                 1728  1120   0    0   64
+178X 1078 48hr Atl Sea Fcst VT12Z                   1728  1120   0    0   64
+179X 1079 Atl Surface Anal 18Z Part 1               1728  1440  90    0   64
+180X 1080 Atl Surface Anal 18Z Part 2               1728  1440  90    0   64
+181X 1081 24/36Hr Gulf Surf Prog 00Z                1728  2496   0    0   64
+182X 1082 00/12HR Gulf Surf Prog 06Z                1728  2496   0    0   64
+183X 1083 U. S. Surface Analysis 00Z                1728  1536   0    0   64
+184X 1084 00/12HR Gulf Surf Prog 12Z                1728  2496   0    0   64
+185X 1085 High Seas Forecast 10Z                    1728  3408   0    0   64
+186X 1086 Tropical Surf Analysis 06Z                1728  3533 270    0   64
+187X 1087 24/36Hr Gulf Surf Prog 12Z                1728  2496   0    0   64
+188X 1088 00/12HR Gulf Surf Prog 18Z                1728  2496   0    0   64
+189X 1089 Radiofax Schedule                         1728  3408   0    0   64
+190X 1090 U. S. Surface Analysis 12Z                1728  1536   0    0   64
+191X 1091 00/12HR Gulf Surf Prog 00Z                1728  2496   0    0   64
+194X 1094 High Seas Forecast 22Z                    1728  3408   0    0   64
+195X 1095 Tropical Surface Anal 18Z                 1728  3533 270    0   64
+196X 1096 Pac SST Analysis Part E                   1728  1120   0    0   64
+197X 1097 Atlantic Test Pattern                     1728  1152   0    0   64
+198X 1098 Pac SST Analysis Part A                   1728  1120   0    0    0
+199X 1099 Pac SST Analysis Part B                   1728  1152   0    0    0
+200X 3567 Unknown map                               1728   550   0    0    0
+201X 3554 Wx Depiction                              1728   550   0    0    0
+201X 3556 Wx Depiction                              1728   550   0    0    0
+201X 3561 Wx Depiction                              1728   550   0    0    0
+201X 3565 Wx Depiction                              1728   550   0    0    0
+202X 3557 12Hr Fn Prog                              1728   550   0    0    0
+202X 3562 12Hr Fn Prog                              1728   550   0    0    0
+203X 3558 24Hr Fn Prog                              1728   550   0    0    0
+203X 3563 24Hr Fn Prog                              1728   550   0    0    0
+204X 3559 36Hr Fn Prog                              1728   550   0    0    0
+205X 3560 48Hr Fn Prog                              1728   550   0    0    0
+206X 3564 VT18 Sig Wx Hi-lvl                        1728   550   0    0    0
+207X 3555 Lifted Index                              1728   550   0    0    0
+208X 3567 Unknown map                               1728   550   0    0    0
+209X 3566 Unknown map                               1728  3900  90    0    0
+209X 3567 Unknown map                               1728  3900  90    0    0
+209X 3568 Unknown map                               1728  3900  90    0    0
+210X 3567 Unknown map                               1728   550   0    0    0
+211X 3567 Unknown map                               1728   550   0    0    0
+212X 3567 Unknown map                               1728   550   0    0    0
+213X 3567 Unknown map                               1728   550   0    0    0
+229X 1129 24HR Atl 500 Fcst 12Z                     1728  1056   0    0   64
+230X 1130 36HR Atl 500 Fcst 12Z                     1728  1056   0    0   64
+253X 3253 Monthly Global Temp and Precp Anon        1728  1070   0    0    0
+259X 3259 (D147) Sea Sfc Temp (ATL)                 1728  1152   0    0    0
+261X 1261 24HR Sig Wx 400-70MB VT00Z (A)            1728  2156   0    0   64
+262X 1262 24HR Sig Wx 400-70MB VT06Z (A)            1728  2156   0    0   64
+263X 1263 24HR Sig Wx 400-70MB VT12Z (A)            1728  2156   0    0   64
+264X 1264 24HR Sig Wx 400-70MB VT18Z (A)            1728  2156   0    0   64
+265X 1265 24HR Sig Wx 400-70MB VT00Z (F)            1728  2156  90    0   64
+266X 1266 24HR Sig Wx 400-70MB VT06Z (F)            1728  2156  90    0   64
+267X 1267 24HR Sig Wx 400-70MB VT12Z (F)            1728  2156  90    0   64
+268X 1268 24HR Sig Wx 400-70MB VT18Z (F)            1728  2156  90    0   64
+269X 1269 24HR Sig Wx 400-70MB VT00Z (B1)           1728  2156  90    0   64
+270X 1270 24HR Sig Wx 400-70MB VT06Z (B1)           1728  2156  90    0   64
+271X 1271 24HR Sig Wx 400-70MB VT12Z (B1)           1728  2156  90    0   64
+272X 1272 24HR Sig Wx 400-70MB VT18Z (B1)           1728  2156  90    0   64
+273X 1273 24HR Sig Wx 400-70MB VT00Z (I)            1728  2156  90    0   64
+274X 1274 24HR Sig Wx 400-70MB VT06Z (I)            1728  2156  90    0   64
+275X 1275 24HR Sig Wx 400-70MB VT12Z (I)            1728  2156  90    0   64
+276X 1276 24HR Sig Wx 400-70MB VT18Z (I)            1728  2156  90    0   64
+277X 1277 24HR Sig Wx 400-70MB VT00Z (H)            1728  2156  90    0   64
+278X 1278 24HR Sig Wx 400-70MB VT06Z (H)            1728  2156  90    0   64
+279X 1279 24HR Sig Wx 400-70MB VT12Z (H)            1728  2156  90    0   64
+280X 1280 24HR Sig Wx 400-70MB VT18Z (H)            1728  2156  90    0   64
+281X 1281 24HR Sig Wx 400-70MB VT00Z (J)            1728  2156  90    0   64
+282X 1282 24HR Sig Wx 400-70MB VT06Z (J)            1728  2156  90    0   64
+283X 1283 24HR Sig Wx 400-70MB VT12Z (J)            1728  2156  90    0   64
+284X 1284 24HR Sig Wx 400-70MB VT18Z (J)            1728  2156  90    0   64
+300X 3010 00Z NAm Sfc Pt-1                          1728  2748  90    0   64
+301X 3009 00Z NAm Sfc Pt-2                          1728  1152   0    0   64
+302X 3017 03Z NAm Sfc                               1728  2262  90    0   64
+303X 3025 06Z NAm Sfc Pt-1                          1728  2748  90    0   64
+304X 3033 06Z NAm Sfc Pt-2                          1728  1152   0    0   64
+305X 3040 09Z NAm Sfc                               1728  2262  90    0   64
+306X 3047 00Z Sfc/1-500 Thk                         1728  1083   0    0    0
+306X 3048 00Z Sfc/1-500 Thk                         1728  1083   0    0    0
+306X 3049 00Z Sfc/1-500 Thk                         1728  1083   0    0    0
+307X 3060 00Z Alaskan Sfc Anal                      1728   877   0    0   64
+308X 3066 00Z Prelim ATL Sfc                        1728  2235  90    0   64
+308X 3067 00Z Prelim ATL Sfc                        1728  2235  90    0   64
+308X 3069 00Z Prelim ATL Sfc                        1728  2235  90    0   64
+308X 3070 00Z Prelim ATL Sfc                        1728  2235  90    0   64
+309X 3076 06Z Prelim ATL Sfc                        1728  2235  90    0   64
+309X 3077 06Z Prelim ATL Sfc                        1728  2235  90    0   64
+309X 3078 06Z Prelim ATL Sfc                        1728  2235  90    0   64
+310X 3084 00Z Prelim PAC Sfc                        1728  2691  90    0   64
+310X 3085 00Z Prelim PAC Sfc                        1728  2691  90    0   64
+310X 3087 00Z Prelim PAC Sfc                        1728  2691  90    0   64
+310X 3088 00Z Prelim PAC Sfc                        1728  2691  90    0   64
+311X 3098 06Z Prelim PAC Sfc                        1728  2235  90    0   64
+311X 3099 06Z Prelim PAC Sfc                        1728  2235  90    0   64
+311X 3101 06Z Prelim PAC Sfc                        1728  2235  90    0   64
+311X 3102 06Z Prelim PAC Sfc                        1728  2235  90    0   64
+312X 3112 Unknown map                               1728  1083   0    0    0
+312X 3113 Unknown map                               1728  1083   0    0    0
+313X 3120 Unknown map                               1728  1083   0    0    0
+313X 3121 Unknown map                               1728  1083   0    0    0
+314X 3128 Unknown map                               1728  1083   0    0    0
+314X 3129 Unknown map                               1728  1083   0    0    0
+315X 3136 Unknown map                               1728  1083   0    0    0
+315X 3137 Unknown map                               1728  1083   0    0    0
+316X 3144 Unknown                                   1728  1200   0    0    0
+317X 3152 Unknown                                   1728  1200   0    0    0
+318X 3152 Unknown                                   1728  3348  90    0    0
+319X 3174 03Z Alaskan Sfc Anal                      1728   877   0    0   64
+320X 3178 Unknown                                   1728  2583  90    0    0
+321X 3161 Unknown                                   1728  3348  90    0    0
+322X 3175 06Z Alaskan Sfc Anal                      1728   877   0    0   64
+323X 3176 09Z Alaskan Sfc Anal                      1728   877   0    0   64
+325X 3177 24/48Hr Svr Wx Outlook (AC)               1728   688   0    0   64
+326X 3407 Miami Sfc Anal                            1728  2750  90    0   64
+328X 3436 Crop Moist/Index NTL                      1728  1150   0    0    0
+329X 3437 Crop Moist/Index DIV                      1728  1150   0    0    0
+330X 3438 Drought Severity NTL                      1728  1150   0    0    0
+331X 3439 Drought Severity DIV                      1728  1150   0    0    0
+332X 3413 Crop Moist/Index Pcpn                     1728  1150   0    0    0
+348X 3348 (H058 D283) Sea Sfc Temp (PAC)            1728  1152   0    0    0
+348X 3349 (H058 D283) Sea Sfc Temp (PAC)            1728  1152   0    0    0
+350X 3014 12Z NAm Sfc Pt-1                          1728  2748  90    0   64
+351X 3013 12Z NAm Sfc Pt-2                          1728  1152   0    0   64
+352X 3022 15Z NAm Sfc                               1728  2262  90    0   64
+353X 3028 18Z NAm Sfc Pt-1                          1728  2748  90    0   64
+353X 3029 18Z NAm Sfc Pt-1                          1728  2748  90    0   64
+354X 3036 18Z NAm Sfc Pt-2                          1728  1152   0    0   64
+355X 3044 21Z NAm Sfc                               1728  2262  90    0   64
+356X 3054 12Z Sfc/1-500 Thk                         1728  1083   0    0    0
+356X 3055 12Z Sfc/1-500 Thk                         1728  1083   0    0    0
+356X 3056 12Z Sfc/1-500 Thk                         1728  1083   0    0    0
+356X 3057 12Z Sfc/1-500 Thk                         1728  1083   0    0    0
+357X 3063 12Z Alaskan Sfc Anal                      1728   877   0    0   64
+358X 3071 12Z Prelim ATL Sfc                        1728  2235  90    0   64
+358X 3073 12Z Prelim ATL Sfc                        1728  2235  90    0   64
+358X 3074 12Z Prelim ATL Sfc                        1728  2235  90    0   64
+358X 3075 12Z Prelim ATL Sfc                        1728  2235  90    0   64
+359X 3080 18Z Prelim ATL Sfc                        1728  2235  90    0   64
+359X 3081 18Z Prelim ATL Sfc                        1728  2235  90    0   64
+359X 3082 18Z Prelim ATL Sfc                        1728  2235  90    0   64
+360X 3091 12Z Prelim PAC Sfc                        1728  2691  90    0   64
+360X 3092 12Z Prelim PAC Sfc                        1728  2691  90    0   64
+360X 3094 12Z Prelim PAC Sfc                        1728  2691  90    0   64
+360X 3095 12Z Prelim PAC Sfc                        1728  2691  90    0   64
+361X 3105 18Z Prelim PAC Sfc                        1728  2235  90    0   64
+361X 3107 18Z Prelim PAC Sfc                        1728  2235  90    0   64
+361X 3108 18Z Prelim PAC Sfc                        1728  2235  90    0   64
+361X 3109 18Z Prelim PAC Sfc                        1728  2235  90    0   64
+362X 3116 Unknown Map                               1728  1083   0    0    0
+362X 3117 Unknown Map                               1728  1083   0    0    0
+363X 3124 Unknown Map                               1728  1083   0    0    0
+363X 3125 Unknown Map                               1728  1083   0    0    0
+364X 3132 Unknown Map                               1728  1083   0    0    0
+364X 3133 Unknown Map                               1728  1083   0    0    0
+365X 3140 Unknown Map                               1728  1083   0    0    0
+365X 3141 Unknown Map                               1728  1083   0    0    0
+366X 3148 15Z Alaskan Sfc Anal                      1728   877   0    0   64
+367X 3156 18Z Alaskan Sfc Anal                      1728   877   0    0   64
+368X 3164 Unknown Map                               1728  3348  90    0    0
+369X 3168 21Z Alaskan Sfc Anal                      1728   877   0    0   64
+370X 3171 Unknown Map                               1728  2583  90    0    0
+372X 3179 Unknown Map                               1728  2610  90    0    0
+373X 3165 Unknown Map                               1728  3348  90    0    0
+373X 3173 Unknown Map                               1728  3348  90    0    0
+400X 3181 Unknown Map                               1728  1083   0    0    0
+400X 3182 Unknown Map                               1728  1083   0    0    0
+400X 3183 Unknown Map                               1728  1083   0    0    0
+401X 3199 Unknown Map                               1728  1080   0    0    0
+401X 3200 Unknown Map                               1728  1080   0    0    0
+402X 3218 Unknown Map                               1728  1083   0    0    0
+403X 3224 36/48Hr Sfc Prog                          1728  1014 180    0   64
+403X 3226 36/48Hr Sfc Prog                          1728  1014 180    0   64
+404X 3231 00Z 48hr Atl Sfc Prog                     1728  1120   0    0   64
+404X 3232 00Z 48hr Atl Sfc Prog                     1728  1120   0    0   64
+404X 3233 00Z 48hr Atl Sfc Prog                     1728  1120   0    0   64
+404X 3234 00Z 48hr Atl Sfc Prog                     1728  1120   0    0   64
+404X 3235 00Z 48hr Atl Sfc Prog                     1728  1120   0    0   64
+405X 3245 12Z Ext Outlook Pt-1                      1728  2400 270    0   64
+405X 3248 12Z Ext Outlook Pt-1                      1728  2400 270    0   64
+405X 3261 12Z Ext Outlook Pt-1                      1728  2400 270    0   64
+405Y 3261 12Z Dly Ext Sfc Pt-1                      1728  3024  90    0    0
+406X 3251 00hr 500 Bkup                             1728  1324   0    0    0
+406X 3252 00hr 500 Bkup                             1728  1324   0    0    0
+407X 3266 00hr 850 Bkup                             1728  1324   0    0    0
+407X 3267 00hr 850 Bkup                             1728  1324   0    0    0
+408X 3230 00Z 48hr Pac Sfc Prog                     1728  1120   0    0   64
+409X 3201 Nrn Ice Limit                             1728  1632   0    0    0
+409X 3202 Nrn Ice Limit                             1728  1632   0    0    0
+409X 3206 Nrn Ice Limit                             1728  1632   0    0    0
+411X 3442 12Z Dly Ext Sfc Pt-2                      1728   864 270    0   64
+413X 3412 Unknown Map                                800  2000  90    0    0
+414X 3409 Unknown Map                                800  2000  90    0    0
+415X 3406 Unknown Map                                800  2000  90    0    0
+416X 3405 Unknown Map                                800  2000  90    0    0
+424X 3210 Great Lakes Ice Anal                      1728  1344   0    0    0
+424X 3211 Great Lakes Ice Anal                      1728  1344   0    0    0
+424X 3212 Great Lakes Ice Anal                      1728  1344   0    0    0
+425X 3210 Alaskan Ice Limit                         1728  1440   0    0    0
+425X 3211 Alaskan Ice Limit                         1728  1440   0    0    0
+425X 3212 Alaskan Ice Limit                         1728  1440   0    0    0
+449X 3448 (D283 H058) Sea Sfc Temp (PAC)            1728  1152   0    0    0
+449X 3449 (D283 H058) Sea Sfc Temp (PAC)            1728  1152   0    0    0
+450X 3186 6-10Day Tmp/Pcpn outlook                  1728   964 270    0   64
+450Y 3187 6-10Day Tmp/Pcpn outlook                  1728   964 270    0   64
+451X 3203 Unknown Map                               1728  1080   0    0    0
+451X 3204 Unknown Map                               1728  1080   0    0    0
+451X 3205 Unknown Map                               1728  1080   0    0    0
+452A 3210 Alaskan Ice Limit                         1728  1440   0    0    0
+452A 3211 Alaskan Ice Limit                         1728  1440   0    0    0
+452A 3212 Alaskan Ice Limit                         1728  1440   0    0    0
+452G 3210 Great Lakes Ice Anal                      1728  1344   0    0    0
+452G 3211 Great Lakes Ice Anal                      1728  1344   0    0    0
+452G 3212 Great Lakes Ice Anal                      1728  1344   0    0    0
+452X 3210 Great Lakes Ice Anal                      1728  1536   0    0    0
+452X 3211 Great Lakes Ice Anal                      1728  1536   0    0    0
+452X 3212 Great Lakes Ice Anal                      1728  1536   0    0    0
+453X 3213 12Z Ext Outlook                           1728  1092   0    0   64
+453X 3214 12Z Ext Outlook                           1728  1092   0    0   64
+453X 3215 12Z Ext Outlook                           1728  1092   0    0   64
+453X 3216 12Z Ext Outlook                           1728  1092   0    0   64
+453X 3217 12Z Ext Outlook                           1728  1092   0    0   64
+454X 3221 6-10 Day 500mb Mean                       1728  1532   0    0   64
+455X 3227 12Z 36/48 Sfc Prog                        1728  1008 180    0   64
+455X 3228 12Z 36/48 Sfc Prog                        1728  1008 180    0   64
+456X 3237 12Z 48hr Atl Sfc Prog                     1728  1120   0    0   64
+456X 3238 12Z 48hr Atl Sfc Prog                     1728  1120   0    0   64
+456X 3239 12Z 48hr Atl Sfc Prog                     1728  1120   0    0   64
+456X 3240 12Z 48hr Atl Sfc Prog                     1728  1120   0    0   64
+456X 3241 12Z 48hr Atl Sfc Prog                     1728  1120   0    0   64
+457X 3255 90-Day Seasonal Temp/Prcp Prob            1728  1314   0    0    0
+457X 3256 90-Day Seasonal Temp/Prcp Prob            1728  1314   0    0    0
+458X 3270 Unknown Map                               1728  1132   0    0    0
+458X 3271 Unknown Map                               1728  1132   0    0    0
+459X 3263 12Z Ext Outlook Pt-2                      1728  1152   0    0   64
+460X 3265 Unknown Map                               1728  1920  90    0    0
+461X 3461 0.5 Mon LL and SNL Tmp/Prc OL             1728  1400   0    0   64
+462X 3462 1.5-2.5 Mon LL and SNL Tmp/Prc OL         1728  1400   0    0   64
+463X 3463 3.5-4.5 Mon LL and SNL Tmp/Prc OL         1728  1400   0    0   64
+464X 3464 5.5-6.5 Mon LL and SNL Tmp/Prc OL         1728  1400   0    0   64
+465X 3465 7.5-8.5 Mon LL and SNL Tmp/Prc OL         1728  1400   0    0   64
+466X 3466 9.5-10.5 Mon LL and SNL Tmp/Prc OL        1728  1400   0    0   64
+467X 3467 11.5-12.5 Mon LL and SNL Tmp/Prc OL       1728  1400   0    0   64
+468X 3236 12Z 48hr Pac Sfc Prog                     1728  1120   0    0   64
+500X 3274 12/00 Sig Wx LL                           1728  1133 180    0   64
+500X 3275 12/00 Sig Wx LL                           1728  1133 180    0   64
+501X 3281 18/06 Sig Wx LL                           1728  1133 180    0   64
+501X 3282 18/06 Sig Wx LL                           1728  1133 180    0   64
+501X 3283 18/06 Sig Wx LL                           1728  1133 180    0   64
+502X 3289 VT18Z Sig Wx FL250-600                    1728  1200  90    0   64
+503X 3297 VT12Z Sig Wx FL250-600                    1728  1200  90    0   64
+504X 3306 VT12Z Sig Wx FL250-600                    1728  2450 270    0   64
+504X 3307 VT12Z Sig Wx FL250-600                    1728  2450 270    0   64
+504X 3309 VT12Z Sig Wx FL250-600                    1728  2450 270    0   64
+504X 3311 VT12Z Sig Wx FL250-600                    1728  2450 270    0   64
+505X 3318 VT18Z Sig Wx FL250-600                    1728  2450 270    0   64
+505X 3320 VT18Z Sig Wx FL250-600                    1728  2450 270    0   64
+505X 3321 VT18Z Sig Wx FL250-600                    1728  2450 270    0   64
+505X 3323 VT18Z Sig Wx FL250-600                    1728  2450 270    0   64
+506X 3330 VT12Z Sig Wx 400-150mb                    1728   700   0    0   64
+506X 3331 VT12Z Sig Wx 400-150mb                    1728   700   0    0   64
+506X 3332 VT12Z Sig Wx 400-150mb                    1728   700   0    0   64
+507X 3342 VT18Z Sig Wx FL250-600                    1728   700   0    0   64
+508X 3350 VT12Z Sig Wx 400-150mb                    1728  2225  90    0   64
+509X 3356 VT18Z Sig Wx 400-150mb                    1728  2225  90    0   64
+510X 3363 VT12Z Sig Wx FL250-600                    1728  1022   0    0   64
+511X 3371 VT18Z Sig Wx FL250-600                    1728  1022   0    0   64
+512X 3379 VT18Z Sig Wx 400-150mb                    1728  1224  90    0   64
+512X 3380 VT18Z Sig Wx 400-150mb                    1728  1224  90    0   64
+513X 3390 Unknown Map                               1728  2784  90    0    0
+514X 3396 Unknown Map                               1728  1248   0    0    0
+514X 3397 Unknown Map                               1728  1248   0    0    0
+514X 3398 Unknown Map                               1728  1248   0    0    0
+515X 3411 VT06Z Sig Wx 400-150mb                    1728   550   0    0   64
+516X 3414 VT18Z Sig Wx 400-150mb                    1728   550   0    0   64
+516X 3415 VT18Z Sig Wx 400-150mb                    1728   550   0    0   64
+517X 3417 ALNOT                                     1728   275   0    0    0
+518X 3011 30-day Outlook tmp/precip prob            1728   910   0    0    0
+522X 3570 VT18Z Sig Wx FL250-600                    1728  1248  90    0   64
+523X 3569 VT12Z Sig Wx FL250-600                    1728  1248  90    0   64
+524X 3196 VT00Z Sig Wx FL250-600                    1728  2400 270    0   64
+525X 3197 VT06Z Sig Wx FL250-600                    1728  2400 270    0   64
+526X 3198 VT12Z Sig Wx FL250-600                    1728  2400 270    0   64
+527X 3199 VT18Z Sig Wx FL250-600                    1728  2400 270    0   64
+540X 3110 OPNL System Status Mesg                   1728  1114   0    0    0
+541X 3111 OPNL System Status Mesg                   1728  1114   0    0    0
+542X 3304 VT12Z Sig Wx FL250-600                     800   970   0  928   64
+543X 3305 VT12Z Sig Wx FL250-600                     800   970  90  928   64
+544X 3315 VT18Z Sig Wx FL250-600                     800   970   0  928   64
+545X 3316 VT18Z Sig Wx FL250-600                     800   970  90  928   64
+546X 3324 VT00Z Sig Wx FL250-600                     800   970   0  928   64
+547X 3325 VT00Z Sig Wx FL250-600                     800   970  90  928   64
+548X 3333 VT06Z Sig Wx FL250-600                     800   970   0  928   64
+549X 3334 VT06Z Sig Wx FL250-600                     800   970  90  928   64
+550X 3277 00/12 Sig Wx LL                           1728  1133 180    0   64
+550X 3278 00/12 Sig Wx LL                           1728  1133 180    0   64
+551X 3285 06/18 Sig Wx LL                           1728  1133 180    0   64
+551X 3286 06/18 Sig Wx LL                           1728  1133 180    0   64
+551X 3287 06/18 Sig Wx LL                           1728  1133 180    0   64
+552X 3293 VT06Z Sig Wx FL250-600                    1728  1200  90    0   64
+553X 3302 VT00Z Sig Wx FL250-600                    1728  1200  90    0   64
+554X 3312 VT00Z Sig Wx FL250-600                    1728  2450 270    0   64
+554X 3313 VT00Z Sig Wx FL250-600                    1728  2450 270    0   64
+554X 3314 VT00Z Sig Wx FL250-600                    1728  2450 270    0   64
+554X 3317 VT00Z Sig Wx FL250-600                    1728  2450 270    0   64
+555X 3326 VT06Z Sig Wx FL250-600                    1728  2450 270    0   64
+555X 3327 VT06Z Sig Wx FL250-600                    1728  2450 270    0   64
+555X 3329 VT06Z Sig Wx FL250-600                    1728  2450 270    0   64
+556X 3335 VT00Z Sig Wx FL250-600                    1728   700   0    0   64
+556X 3336 VT00Z Sig Wx FL250-600                    1728   700   0    0   64
+556X 3337 VT00Z Sig Wx FL250-600                    1728   700   0    0   64
+557X 3345 VT06Z Sig Wx FL250-600                    1728   700   0    0   64
+557X 3346 VT06Z Sig Wx FL250-600                    1728   700   0    0   64
+557X 3347 VT06Z Sig Wx FL250-600                    1728   700   0    0   64
+558X 3353 VT00Z Sig Wx 400-150mb                    1728  2225  90    0   64
+559X 3359 VT06Z Sig Wx 400-150mb                    1728  2225  90    0   64
+560X 3366 VT00Z Sig Wx FL250-600                    1728  1022   0    0   64
+561X 3375 VT06Z Sig Wx FL250-600                    1728  1022   0    0   64
+562X 3383 VT06Z Sig Wx FL250-600                    1728  1224  90    0   64
+562X 3384 VT06Z Sig Wx FL250-600                    1728  1214   0    0   64
+563X 3387 VT00Z Sig Wx FL250-600                    1728  1224  90    0   64
+563X 3388 VT00Z Sig Wx FL250-600                    1728  1214   0    0   64
+564X 3393 Unknown Map                               1728  2784  90    0    0
+565X 3400 Unknown Map                               1728  1248   0    0    0
+565X 3401 Unknown Map                               1728  1248   0    0    0
+565X 3402 Unknown Map                               1728  1248   0    0    0
+566X 3408 Area Stagnation Fcst                      1728  1183   0    0    0
+567X 3420 ALNOT                                     1728   275   0    0    0
+567X 3421 ALNOT                                     1728   275   0    0    0
+568X 3403 VT12Z Sig Wx FL000-250                    1728  1076   0    0   64
+569X 3404 Unknown Map                               1728  1300   0    0    0
+570X 3405 Unknown Map                               1728  1300   0    0    0
+572X 3572 VT06Z Sig Wx FL250-600                    1728  1248  90    0   64
+573X 3571 VT00Z Sig Wx FL250-600                    1728  1248  90    0   64
+580X 3338 VT12Z Sig Wx FL250-600                     800  1141  90  928   64
+581X 3339 VT00Z Sig Wx FL250-600                     800  1141  90  928   64
+582X 3340 Unknown Map                               1728  1116   0    0    0
+583X 3341 Unknown Map                               1728  1116   0    0    0
+587X 3450 Ocean Frnt/Temp Anal                      1728  1056   0    0    0
+588X 3444 Sea Sfc Temp (GOA and Reg Pac)            1728  1256   0    0    0
+589X 3410 Unknown Map                               1728  1086   0    0    0
+590X 3425 Unknown Map                               1728  1008   0    0    0
+591X 3424 Srn Ice Limit - East Arc                  1728  2850  90    0    0
+592X 3423 Unknown Map                               1728  1152   0    0    0
+593X 3422 Unknown Map                               1728  1944  90    0    0
+594X 3428 Sea Sfc Temp (Reg Pac)                    1104  2850  90    0    0
+595X 3433 Sea Sfc Tmp (ATL/PAC)                     1728  1008   0    0    0
+596X 3430 Srn Ice Limit - East                      1728  3648  90    0    0
+597X 3431 Srn Ice Limit - West                      1728  3648  90    0    0
+599X 3451 Unknown Map                               1728   960   0    0    0
+600X 3447 Crop Moist/Index Div                      1728  1000   0    0    0
+601X 3429 12/18Z 6hr Pd QPF                         1728   633 270    0   64
+602X 3435 18/00Z 6hr Pd QPF                         1728   633 270    0   64
+603X 3443 24hr Pd QPF                               1728   633 270    0   64
+604X 3426 MFM Pcpn Prog(Hurr)                       1728  1152   0    0    0
+605X 3427 MFM 1000mb Prog(Hurr)                     1728  1152   0    0    0
+650X 3432 00/06Z 6hr Pd QPF                         1728   633 270    0   64
+651X 3440 06/12Z 6hr Pd QPF                         1728   633 270    0   64
+652X 3448 Crop Moist/Index Pcpn                     1728  1008   0    0    0
+653X 3452 Crop Moist/Index NTL                      1728  1000   0    0    0
+654X 3454 Spl QPF 4-panl                            1728  1152   0    0    0
+655X 3455 MFM 1000mb Prog(Hurr)                     1728  1152   0    0    0
+656X 3446 Drought Severity NTL                      1728  1000   0    0    0
+657X 3441 Prog Sunsh/Solar Energy                   1728  1152   0    0    0
+658X 3445 Drought Severity Div                      1728  1056   0    0    0
+660X 3456 00ZA ARL Volcanic Ash Fcst                1728  3090  90    0    0
+661X 3457 00ZB ARL Volcanic Ash Fcst                1728  3090  90    0    0
+662X 3458 12ZA ARL Volcanic Ash Fcst                1728  3090  90    0    0
+663X 3459 12ZB ARL Volcanic Ash Fcst                1728  3090  90    0    0
+700X 7140 Unknown Map                               1728  2400  90    0    0
+701X 7640 Unknown Map                               1728  2400  90    0    0
+702X 7289 VT18Z Sig Wx FL250-600                    1728  1200  90    0   64
+703X 7297 VT12Z Sig Wx FL250-600                    1728  1200  90    0   64
+704X 7306 VT12Z Sig Wx FL250-600                    1728  2450 270    0   64
+704X 3307 VT12Z Sig Wx FL250-600                    1728  2450 270    0   64
+704X 7309 VT12Z Sig Wx FL250-600                    1728  2450 270    0   64
+704X 7311 VT12Z Sig Wx FL250-600                    1728  2450 270    0   64
+705X 7318 VT18Z Sig Wx FL250-600                    1728  2450 270    0   64
+705X 7320 VT18Z Sig Wx FL250-600                    1728  2450 270    0   64
+705X 3321 VT18Z Sig Wx FL250-600                    1728  2450 270    0   64
+705X 7323 VT18Z Sig Wx FL250-600                    1728  2450 270    0   64
+706X 7330 VT12Z Sig Wx 400-150mb                    1728   700   0    0   64
+706X 7331 VT12Z Sig Wx 400-150mb                    1728   700   0    0   64
+706X 3332 VT12Z Sig Wx 400-150mb                    1728   700   0    0   64
+707X 7342 VT18Z Sig Wx FL250-600                    1728   700   0    0   64
+708X 7350 VT12Z Sig Wx 400-150mb                    1728  2225  90    0   64
+709X 7356 VT18Z Sig Wx 400-150mb                    1728  2225  90    0   64
+710X 7363 VT12Z Sig Wx FL250-600                    1728  1022   0    0   64
+711X 7371 VT18Z Sig Wx FL250-600                    1728  1022   0    0   64
+712X 7379 VT18Z Sig Wx 400-150mb                    1728  1214  90    0   64
+712X 7380 VT18Z Sig Wx 400-150mb                    1728  1214  90    0   64
+715X 7411 VT06Z Sig Wx 400-150mb                    1728   550   0    0   64
+716X 7414 VT18Z Sig Wx 400-150mb                    1728   550   0    0   64
+716X 7415 VT18Z Sig Wx 400-150mb                    1728   550   0    0   64
+722X 7570 VT18Z Sig Wx FL250-600                    1728  1248  90    0   64
+723X 7569 VT12Z Sig Wx FL250-600                    1728  1248  90    0   64
+724X 7196 VT00Z Sig Wx FL250-600                    1728  2400  90    0   64
+725X 7197 VT06Z Sig Wx FL250-600                    1728  2400  90    0   64
+726X 7198 VT12Z Sig Wx FL250-600                    1728  2400  90    0   64
+727X 7199 VT18Z Sig Wx FL250-600                    1728  2400  90    0   64
+742X 7304 VT12Z Sig Wx FL250-600                     800   970   0  928   64
+743X 7305 VT12Z Sig Wx FL250-600                     800   970  90  928   64
+744X 7315 VT18Z Sig Wx FL250-600                     800   970   0  928   64
+745X 7316 VT18Z Sig Wx FL250-600                     800   970  90  928   64
+746X 7324 VT00Z Sig Wx FL250-600                     800   970   0  928   64
+747X 7325 VT00Z Sig Wx FL250-600                     800   970  90  928   64
+748X 7333 VT06Z Sig Wx FL250-600                     800   970   0  928   64
+749X 7334 VT06Z Sig Wx FL250-600                     800   970  90  928   64
+752X 7293 VT06Z Sig Wx FL250-600                    1200  1728   0    0   64
+753X 7302 VT00Z Sig Wx FL250-600                    1728  1200  90    0   64
+754X 3312 VT00Z Sig Wx FL250-600                    1728  2450 270    0   64
+754X 7313 VT00Z Sig Wx FL250-600                    1728  2450 270    0   64
+754X 7314 VT00Z Sig Wx FL250-600                    1728  2450 270    0   64
+754X 7317 VT00Z Sig Wx FL250-600                    1728  2450 270    0   64
+755X 7326 VT06Z Sig Wx FL250-600                    1728  2450 270    0   64
+755X 3327 VT06Z Sig Wx FL250-600                    1728  2450 270    0   64
+755X 7329 VT06Z Sig Wx FL250-600                    1728  2450 270    0   64
+756X 7335 VT00Z Sig Wx FL250-600                    1728   700   0    0   64
+756X 7336 VT00Z Sig Wx FL250-600                    1728   700   0    0   64
+756X 3337 VT00Z Sig Wx FL250-600                    1728   700   0    0   64
+757X 7345 VT06Z Sig Wx FL250-600                    1728   700   0    0   64
+757X 7346 VT06Z Sig Wx FL250-600                    1728   700   0    0   64
+757X 3347 VT06Z Sig Wx FL250-600                    1728   700   0    0   64
+758X 7353 VT00Z Sig Wx 400-150mb                    1728  2225  90    0   64
+759X 7359 VT06Z Sig Wx 400-150mb                    1728  2225  90    0   64
+760X 7366 VT00Z Sig Wx FL250-600                    1728  1022   0    0   64
+761X 7375 VT06Z Sig Wx FL250-600                    1728  1022   0    0   64
+762X 7383 VT06Z Sig Wx FL250-600                    1728  1214  90    0   64
+762X 7384 VT06Z Sig Wx FL250-600                    1728  1214   0    0   64
+763X 7387 VT00Z Sig Wx FL250-600                    1728  1214  90    0   64
+763X 7388 VT00Z Sig Wx FL250-600                    1728  1214   0    0   64
+768X 7403 VT12Z Sig Wx FL000-250                    1728  1076   0    0   64
+772X 7572 VT06Z Sig Wx FL250-600                    1728  1248  90    0   64
+773X 7571 VT00Z Sig Wx FL250-600                    1728  1248  90    0   64
+780X 7338 VT12Z Sig Wx FL250-600                     800  1141  90  928   64
+781X 7339 VT00Z Sig Wx FL250-600                     800  1141  90  928   64
+800X 7476 Unknown Map                               1728  2400  90    0    0
+801X 7240 Unknown Map                               1728  2400  90    0    0
+802X 7241 Unknown Map                               1728  2400  90    0    0
+803X 7242 Unknown Map                               1728  2400  90    0    0
+804X 7243 Unknown Map                               1728  2400  90    0    0
+805X 7244 Unknown Map                               1728  2400  90    0    0
+806X 7245 Unknown Map                               1728  2400  90    0    0
+807X 7246 Unknown Map                               1728  2400  90    0    0
+808X 7247 Unknown Map                               1728  2400  90    0    0
+809X 7248 Unknown Map                               1728  2400  90    0    0
+810X 7249 Unknown Map                               1728  2400  90    0    0
+811X 7250 Unknown Map                               1728  2400  90    0    0
+812X 7251 Unknown Map                               1728  2400  90    0    0
+813X 7252 Unknown Map                               1728  2400  90    0    0
+814X 7253 Unknown Map                               1728  2400  90    0    0
+815X 7254 Unknown Map                               1728  2400  90    0    0
+816X 7255 Unknown Map                               1728  2400  90    0    0
+817X 7256 Unknown Map                               1728  2400  90    0    0
+818X 7257 Unknown Map                               1728  2400  90    0    0
+825X 7468 Unknown Map                               1728  2400  90    0    0
+826X 7468 Unknown Map                               1728  2400  90    0    0
+827X 7261 Unknown Map                               1728  2400  90    0    0
+828X 7261 Unknown Map                               1728  2400  90    0    0
+829X 7469 Unknown Map                               1728  2400  90    0    0
+830X 6790 Unknown Map                               1728  2400  90    0    0
+831X 7262 Unknown Map                               1728  2400  90    0    0
+832X 6290 Unknown Map                               1728  2400  90    0    0
+833X 7472 Unknown Map                               1728  2400  90    0    0
+834X 7263 Unknown Map                               1728  2400  90    0    0
+835X 7473 Unknown Map                               1728  2400  90    0    0
+836X 7264 Unknown Map                               1728  2400  90    0    0
+837X 7470 Unknown Map                               1728  2400  90    0    0
+838X 7470 Unknown Map                               1728  2400  90    0    0
+839X 7271 Unknown Map                               1728  2400  90    0    0
+840X 7271 Unknown Map                               1728  2400  90    0    0
+845X 7471 Unknown Map                               1728  2400  90    0    0
+846X 7471 Unknown Map                               1728  2400  90    0    0
+847X 7272 Unknown Map                               1728  2400  90    0    0
+848X 7272 Unknown Map                               1728  2400  90    0    0
+849X 7474 Unknown Map                               1728  2400  90    0    0
+850X 7273 Unknown Map                               1728  2400  90    0    0
+853X 7475 Unknown Map                               1728  2400  90    0    0
+854X 7274 Unknown Map                               1728  2400  90    0    0
+857X 7280 Unknown Map                               1728  2400  90    0    0
+858X 7281 Unknown Map                               1728  2400  90    0    0
+859X 7282 Unknown Map                               1728  2400  90    0    0
+860X 7283 Unknown Map                               1728  2400  90    0    0
+861X 7284 Unknown Map                               1728  2400  90    0    0
+862X 7285 Unknown Map                               1728  2400  90    0    0
+863X 7291 Unknown Map                               1728  2400  90    0    0
+864X 7292 Unknown Map                               1728  2400  90    0    0
+865X 7293 Unknown Map                               1728  2400  90    0    0
+866X 7294 Unknown Map                               1728  2400  90    0    0
+875X 7125 Unknown Map                               1728  2400  90    0    0
+876X 7126 Unknown Map                               1728  2400  90    0    0
+877X 7127 Unknown Map                               1728  2400  90    0    0
+878X 7128 Unknown Map                               1728  2400  90    0    0
+879X 7370 Unknown Map                               1728  2400  90    0    0
+880X 7371 Unknown Map                               1728  2400  90    0    0
+881X 7372 Unknown Map                               1728  2400  90    0    0
+882X 7373 Unknown Map                               1728  2400  90    0    0
+883X 7374 Unknown Map                               1728  2400  90    0    0
+884X 7375 Unknown Map                               1728  2400  90    0    0
+885X 7286 Unknown Map                               1728  2400  90    0    0
+886X 7287 Unknown Map                               1728  2400  90    0    0
+887X 7288 Unknown Map                               1728  2400  90    0    0
+888X 7289 Unknown Map                               1728  2400  90    0    0
+889X 7290 Unknown Map                               1728  2400  90    0    0
+890X 7477 Unknown Map                               1728  2400  90    0    0
+891X 7478 Unknown Map                               1728  2400  90    0    0
+892X 7480 Unknown Map                               1728  2400  90    0    0
+893X 7479 Unknown Map                               1728  2400  90    0    0
+894X 7481 Unknown Map                               1728  2400  90    0    0
+900X 7046 Unknown Map                               1728  2400  90    0    0
+901X 7046 Unknown Map                               1728  2400  90    0    0
+902X 7046 Unknown Map                               1728  2400  90    0    0
+903X 7046 Unknown Map                               1728  2400  90    0    0
+904X 7047 Unknown Map                               1728  2400  90    0    0
+905X 7047 Unknown Map                               1728  2400  90    0    0
+906X 7047 Unknown Map                               1728  2400  90    0    0
+907X 7047 Unknown Map                               1728  2400  90    0    0
+909X 0165 Nrn Ice Limit                             1728  1632   0    0    0
+909X 0166 Nrn Ice Limit                             1728  1632   0    0    0
+909X 0167 Nrn Ice Limit                             1728  1632   0    0    0
+915X 7048 Unknown Map                               1728  2400  90    0    0
+916X 7048 Unknown Map                               1728  2400  90    0    0
+917X 7049 Unknown Map                               1728  2400  90    0    0
+918X 7049 Unknown Map                               1728  2400  90    0    0
+925X 7091 Unknown Map                               1728  2400  90    0    0
+926X 7591 Unknown Map                               1728  2400  90    0    0
+927X 7093 Unknown Map                               1728  2400  90    0    0
+928X 7593 Unknown Map                               1728  2400  90    0    0
+929X 7095 Unknown Map                               1728  2400  90    0    0
+930X 7595 Unknown Map                               1728  2400  90    0    0
+931X 7097 Unknown Map                               1728  2400  90    0    0
+932X 7597 Unknown Map                               1728  2400  90    0    0
+940X 7440 Unknown Map                               1728  2400  90    0    0
+941X 7440 Unknown Map                               1728  2400  90    0    0
+942X 7440 Unknown Map                               1728  2400  90    0    0
+943X 7440 Unknown Map                               1728  2400  90    0    0
+944X 7441 Unknown Map                               1728  2400  90    0    0
+945X 7441 Unknown Map                               1728  2400  90    0    0
+946X 7441 Unknown Map                               1728  2400  90    0    0
+947X 7441 Unknown Map                               1728  2400  90    0    0
+955X 0165 12Z 36/48 Sfc Prog                        1728  1008   0    0    0
+955X 0166 12Z 36/48 Sfc Prog                        1728  1008   0    0    0
+960X 7123 Unknown Map                               1728  2400  90    0    0
+961X 7124 Unknown Map                               1728  2400  90    0    0
+962X 7042 Unknown Map                               1728  2400  90    0    0
+963X 7043 Unknown Map                               1728  2400  90    0    0
+964X 7044 Unknown Map                               1728  2400  90    0    0
+965X 7045 Unknown Map                               1728  2400  90    0    0
+970X 0169 Unknown map                               1728  3000  90    0    0
+988X 0168 Sea Sfc Temp (GOA and Reg Pac)            1248  1152   0    0    0
+994X 0169 Sea Sfc Temp (Reg Pac)                    1296  1104   0    0    0
+999X 0167 NAWIPS TEST MAP                           1728  2400  90    0    0
+999X 0168 NAWIPS TEST MAP                           1728  2400  90    0    0
+9PWX 3257 24hr Marine Sig Wx                        1728  1296   0    0    0
+9RWX 3258 48hr Marine Sig Wx                        1728  1296   0    0    0
+!767X 0057 VT06Z Sig Wx FL250-600                    1728  2400  90    0    0
+767X 0057 18/06 Sig Wx LL                           1728  1133  180   0   64

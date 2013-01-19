@@ -1,0 +1,55 @@
+
+SPENES
+
+  SPENES generates a text file with lat-lon points from an enclosed area (line),
+  the list of WFOs and RFCs in or touching the enclosed area and a list of state
+  names in or touching the area. Some standard text for the final product is
+  also added to the output file. This program is for the Satellite Precipitation
+  Estimates (SPE) product.
+
+INPUT PARAMETERS
+
+  spenes vgf_filename
+
+  spenes	Program name
+  vgf_filename	VGF file containing line element
+
+PROGRAM DESCRIPTION
+
+  SPENES scans a VGF file and generates a set of lat-lon points from the first
+  line in the file. The points of the line are ordered to progress clockwise
+  from the northernmost point. A list of WFOs, RFCs and states touched or inside
+  the enclosed area is also included.
+
+EXAMPLE
+
+  If the VGF file 'testfile.vgf' contained a line with the following points:
+42.87N 76.44W
+41.14N 76.28W
+40.15N 82.15W
+42.05N 81.74W
+
+  Then the output file 'testfile.spe' would contain:
+ZCZC NFDSPENES ALL
+SPENES
+NYZ000-PAZ000-WVZ000-OHZ000-
+.
+SATELLITE PRECIPITATION ESTIMATES..DATE/TIME ##/##/## ####Z
+SATELLITE ANALYSIS BRANCH/NESDIS---NPPU---TEL.301-763-8678
+VALUES ARE MAX OR SGFNT EST.  OROGRAPHIC CORRECTION IN AUTO-ESTS..
+EST'S FM: #######################
+.
+LOCATION...NEW YORK...PENNSYLVANIA...WEST VIRGINIA...OHIO...
+.
+ATTN WFOS...BGM...BUF...CTP...PBZ...CLE...
+ATTN RFCS...
+.
+EVENT...##################
+.
+#######DISCUSSION#########
+.
+SEE NCEP HPC DISCUSSION AND QPF/S FOR FORECAST.
+.
+LAT...LON 4287 7644 4114 7628 4015 8215 4205 8174 
+.
+NNNN

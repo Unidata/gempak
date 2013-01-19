@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs='http://www.w3.org/2001/XMLSchema'>
+
+    <!--
+    	Indent schema
+
+	This is a schema that describes the correct form that an xml document
+	must conform to in order to be correctly transformed by the 
+	indent.xsl stylesheet into a text report.
+
+	The schema has only one type of component element, a line.  Each line
+	contains the text for a single line of text and an attribute to 
+	indicate the desired indentation.
+
+	Log:
+	E. Safford	3/05	initial coding
+    -->
+
+
+    <xs:element name="report">
+        <xs:complexType>
+	    <xs:sequence>
+	        <xs:element name="line" type="lineType" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+	</xs:complexType>
+    </xs:element>
+
+
+    <xs:complexType name="lineType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+	        <xs:attribute name="indent" type="xs:nonNegativeInteger" use="required"/>
+	    </xs:extension>
+	</xs:simpleContent>
+    </xs:complexType>
+
+
+</xs:schema>

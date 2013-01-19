@@ -1,0 +1,115 @@
+##############################################################################
+# BUFR Table 0
+#
+#
+# Notes
+# -----
+#
+# * This table comes from GRIB Code Table 0 (Identification of center)
+#
+# * A value of 1 in the first column indicates a center that uses minor
+#   version numbers with local tables.  Since minor local table version
+#   numbers are stored in Section 1, Octet 18, the value in the first
+#   column must not be set if a center uses Section 1, Octet 18 for other
+#   purposes (i.e., ECMWF).
+#
+#
+##############################################################################		
+		
+#01-09: WMCs		
+0	1	Melbourne
+0	2	Melbourne
+0	3	Melbourne
+0	4	Moscow
+0	5	Moscow
+0	6	Moscow
+0	7	"US National Weather Service, National Centres for Environmental Prediction(NCEP)"
+0	8	US National Weather Service TelecommunicationsGateway (NWSTG)
+0	9	US National Weather Service - Other
+#10-25: Centres in Region I		
+0	10	Cairo (RSMC/RAFC)
+0	11	Cairo (RSMC/RAFC)
+0	12	Dakar (RSMC/RAFC)
+0	13	Dakar (RSMC/RAFC)
+0	14	Nairobi (RSMC/RAFC)
+0	15	Nairobi (RSMC/RAFC)
+0	18	Tunis Casablanca (RSMC)
+0	19	Tunis Casablanca (RSMC)
+0	20	Las Palmas (RAFC)
+0	21	Algiers (RSMC)
+0	24	Pretoria (RSMC)
+0	25	La Réunion (RSMC)
+#26-40: Centres in Region II		
+0	26	Khabarovsk (RSMC)
+0	27	Khabarovsk (RSMC)
+0	28	New Delhi (RSMC/RAFC)
+0	29	New Delhi (RSMC/RAFC)
+0	30	Novosibirsk (RSMC)
+0	31	Novosibirsk (RSMC)
+0	32	Tashkent (RSMC)
+0	33	Jeddah (RSMC)
+0	34	"Tokyo (RSMC), Japan Meteorological Agency"
+0	35	"Tokyo (RSMC), Japan Meteorological Agency"
+0	36	Bangkok
+0	37	Ulan Bator
+0	38	Beijing (RSMC)
+0	39	Beijing (RSMC)
+0	40	Seoul
+#41-50: Centres in Region III		
+0	41	Buenos Aires (RSMC/RAFC)
+0	42	Buenos Aires (RSMC/RAFC)
+0	43	Brasilia (RSMC/RAFC)
+0	44	Brasilia (RSMC/RAFC)
+0	45	Santiago
+0	46	Brazilian Space Agency ­ INPE
+#51-63: Centres in Region IV		
+0	51	Miami (RSMC/RAFC)
+0	52	"Miami RSMC, National Hurricane Center"
+0	53	Montreal (RSMC)
+0	54	Montreal (RSMC)
+0	55	San Francisco
+0	57	U.S. Air Force Air Force Global Weather Central 
+0	58	"Fleet Numerical Meteorology and Oceanography Center, Monterey, CA"
+0	59	"The NOAA Forecast Systems Laboratory, Boulder, CO, USA"
+0	60	United States National Centre for Atmospheric Research (NCAR)
+#64-73: Centres in Region V		
+0	64	Honolulu
+0	65	Darwin (RSMC)
+0	66	Darwin (RSMC)
+0	67	Melbourne (RSMC)
+0	69	Wellington (RSMC/RAFC)
+0	70	Wellington (RSMC/RAFC)
+0	71	Nadi (RSMC)
+#74-99: Centres in Region VI		
+0	74	UK Meteorological Office ­ Bracknell (RSMC)
+0	75	UK Meteorological Office ­ Bracknell (RSMC)
+0	76	Moscow (RSMC/RAFC)
+0	78	Offenbach (RSMC)
+0	79	Offenbach (RSMC)
+0	80	Rome (RSMC)
+0	81	Rome (RSMC)
+0	82	Norrköping
+0	83	Norrköping
+0	85	Toulouse (RSMC)
+0	86	Helsinki
+0	87	Belgrade
+0	88	Oslo
+0	89	Prague
+0	90	Episkopi
+0	91	Ankara
+0	92	Frankfurt/Main (RAFC)
+0	93	London (WAFC)
+0	94	Copenhagen
+0	95	Rota
+0	96	Athens
+0	97	European Space Agency (ESA)
+0	98	"ECMWF, RSMC"
+0	99	De Bilt
+0	110	Hong-Kong
+0	160	US NOAA/NESDIS
+0	210	Frascati (ESA/ESRIN)
+0	211	Lanion
+0	212	Lisboa
+0	213	Reykjavik
+0	254	EUMETSAT Operation Centre
+0	255	Missing value

@@ -1,0 +1,50 @@
+! MAPINFO.TBL
+!
+! This table specifies the predefined map areas listed on the left side
+! of the "Map Selection" GUI in NMAP2.  They are listed in the GUI
+! in the order they appear in this table.  The first entry in this table
+! is the default map area when NMAP2 is invoked.
+!
+! The first column in this table specifies the name that appears in the
+! "Map Selection" GUI.  The second column specifies the GEMPAK map alias
+! name that defines the map area and projection defined in the table: 
+! $GEMTBL/stns/geog.tbl.  Any GEMPAK alias in the geog.tbl can be used as a 
+! predefined map area.  Modifying "+" and "-" strings after the alias name
+! are allowed to zoom in and expand the area, respectively.
+!
+! The format for the file is given below.  Note that spaces are NOT allowed 
+! within the names.
+!
+!!
+! Log:
+! C. Lin/EAI		1/97	Originated
+! J. Carr/HPC		4/97	Added Tropical-Pacific, Tropical-Atlantic
+!				and Tropical-Marine, removed Pacific-North
+! J. Partain/MPC	5/97    Changed location/name of Pacific-Marine
+!                               to Pacific-North to match Atlantic conv.
+! G. Krueger/EAI	10/97	Replaced US+ area with BasicWX-US
+! S. Schotz/NCEP	11/01	Updated documentation
+!
+!----------------------------------------------------------------------------
+!
+!NAME (Shown in GUI)    GAREA (GEMPAK Alias Name, defined in geog.tbl)
+!---------------------------------------------------------------------
+US                      US
+BasicWx_US              BWUS
+North_America           NCNA
+N_Hemisphere            NHEM
+Alaska                  AK
+Hawaii                  HI--
+Caribbean               CARI
+Atlantic-Western        WATL
+Atlantic-North          NATL
+Atlantic-Tropical       TATL
+Pacific-Eastern         EPAC
+Pacific-North           MPAC
+Pacific-Tropical        TPAC
+Canada                  CN
+Europe                  EUR
+South_America           SAM
+Africa                  AFRCA
+World                   WORLD
+LOCAL                   LOCAL

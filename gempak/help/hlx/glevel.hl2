@@ -1,0 +1,22 @@
+     GLEVEL
+
+     GLEVEL is the vertical level for the grid.
+
+     Grids may contain two levels separated by a colon.  If the grid to 
+     be selected contains only one level, the colon and second level may 
+     be omitted.  In this case, the second level is stored in the grid 
+     file as -1.
+
+     Note that the vertical coordinate system for GLEVEL is specified by 
+     GVCORD.
+
+     The value in GLEVEL may be overridden by specifying @GLEVEL with the 
+     grids to be found.  For example, the following two computations are 
+     identical:
+  
+		GFUNC = SUB (TMPF@850,TMPF@500)  
+ 
+		GFUNC = LDF (TMPF)  and  GLEVEL = 850:500.
+
+     See the help information on gparm for information on how to specify
+     a layer in GLEVEL for a LYR_ function.

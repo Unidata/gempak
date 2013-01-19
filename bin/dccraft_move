@@ -1,0 +1,28 @@
+#!/bin/csh -f
+#
+# Shell script to move a file in the data tree, with check
+# to avoid overwriting data (in case of retransmission on data).
+
+if ($#argv != 2 ) then
+   echo "Usage: $0 tmpfile finalfile"
+   exit 0
+endif
+
+if ( ! -e $1 ) then
+   echo "could not find $1" >>! ~ldm/logs/crafterror.log
+   exit 0
+endif
+
+if ( ! -e $2 ) then
+   mv $1 $2
+else 
+   # don't overwrite outfile!
+   # Use process ID for unique file name to save old file
+   # Useful if more than 1 scan volume this minute
+   mv $2 $2.$$
+   mv $1 $2
+   echo `date` "mv $1 $2" >>! ~ldm/logs/crafterror.log
+endif
+
+exit 0
+

@@ -1,0 +1,38 @@
+     TRACE
+
+     TRACE parameters contain specifications for each trace on the
+     meteogram in the following format:
+ 
+		parameters/colors/range/witnes!parameters/colors/range/witnes
+ 
+     The parameters before the ! will be plotted on the left of the plot; 
+     those after the ! will be plotted on the right.  The parameters may 
+     be any GEMPAK surface parameter.  Real-valued parameters will be 
+     drawn as a graph.  Character valued parameters will be rotated 90 
+     degrees and written on the plot.  Symbol parameters will be drawn
+     as symbols.
+
+     For GUST and GUMS, the character G will be plotted.  Up to four 
+     parameters may be plotted along each axis.  The parameters must 
+     be separated using semicolons.  Character and weather symbol data 
+     may only be plotted in positions 1, 2 or 3.
+
+     Each parameter name may be followed by a colon, the size or line type,
+     a second colon and the width.  For example, WSYM:.5:5 will draw weather
+     symbols half the default size with a line width of 5.  For example,
+     TMPF:3 will plot a temperature line using dash pattern 3.
+
+     The colors for the parameters must also be separated using semicolons.  
+     If a single number is entered, all parameters are drawn in that color.  
+     If a zero is entered, the current default color is used.
+
+     The range specifies the scaling of the y axis.  The format is: 
+     start;stop;increment.  Note that in this program, the parts of range 
+     must be separated using semicolons.  If no range is given, it is 
+     selected using the data values.
+
+     Witness lines are specified in WITNES.  These are horizontal dotted 
+     lines.  A list of y values may be entered separated by semicolons.  
+     If the value of witnes is YES, a witness line will be centered on 
+     the plot.
+

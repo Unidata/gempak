@@ -1,0 +1,7 @@
+$CC $CFLAGS -c testngd.c 
+$FC $LDFLAGS -o $OS_BIN/testngd testngd.o \
+		$NMAPLIB $OS_LIB/gdplot2.a \
+		$OS_LIB/gdstream.a $OS_LIB/gdmap.a \
+		$OS_LIB/sfmap.a $GEMLIB $CGEMLIB \
+		$APPL $SYSLIB $GEMLIB -lm -lnetcdf -lz
+$RM *.o

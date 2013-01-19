@@ -1,0 +1,7 @@
+     RCMFIL
+ 
+     RCMFIL is the RCM data file. Bulletins with radar observation times
+     in the RCM file will be plotted if the observation time is within
+     the range specified by the starting and ending times.
+
+     RCMFIL may be a file alias defining a file template.

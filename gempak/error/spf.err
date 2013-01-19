@@ -1,0 +1,34 @@
+!	This is the GEMLIB SPF error file
+!
+! log
+!------
+! J. Wu/GSC	06/01	create
+! J. Wu/GSC	07/01	add error number 1
+! J. Wu/SAIC	08/01	add error number -8
+! J. Wu/SAIC	08/01	add error numbers for roam, skip, auto-update,
+!			    frame and index of dominant source.
+! J. Wu/SAIC	08/01	add error number for map ovelays.
+! J. Wu/SAIC	05/02	add error number -15.
+! F. J. Yen/NCEP 7/08   added error number -16
+!
+
+  4	! End of file reached.
+  3	! No data is associated with the tag !AS, default value is used.
+  2	! SPF buffer is not loaded.
+  1	! File is opened as READ_ONLY.
+ -1	! SPF file !AS does not exist.
+ -2 	! SPF file !AS cannot be opened.
+ -3 	! Failed to create SPF file !AS.
+ -4 	! Read failure from SPF file !AS.
+ -5	! Write failure to SPF file !AS.
+ -6	! No SPF file has been opened.
+ -7	! Failure to allocate memory for SPF buffer.
+ -8	! Source !AS is invalid.
+ -9	! !AS - invalid dominant source index. Set to the first source.
+ -10	! !AS - invalid skip factor. Set to 0.
+ -11	! !AS - invalid frame number adjusted.
+ -12	! !AS - invalid roam factor. Set to FIT_TO_SCREEN.
+ -13	! !AS - invalid auto-update. Set to AUTO_UPDT_ON.
+ -14	! !AS - invalid map overlay. Ignored.
+ -15	! !AS - Single time mode requested but dominant source is not a grid source.
+ -16	! Source name starting with !AS is too long for field.

@@ -1,0 +1,89 @@
+
+MKELEV draws contour lines for topography.
+
+INPUT PARAMETERS
+    
+
+PROGRAM DESCRIPTION
+
+    MKELEV draws contour lines for topography using geopotential 
+    height field contained in a specified data filei and save the
+    plot in a VG file.
+
+    The attributes of the contour lines, including the color,
+    line type, line width, and label frequency are specified
+    in LINE.  The four attributes must be separated with slashes;
+    semicolons separate the values for each attribute.  If the
+    line type is set to a single negative number, negative
+    contour values will have the absolute value of the line type
+    and positive values will be solid.  If the label frequency 
+    is set to a single number, n, then every nth value will be
+    labeled.
+    
+    CINT specifies the contour interval, minimum value, and maximum 
+    value separated with slashes.  A scaling factor may be entered 
+    in SCALE. The data in the grid file will be multiplied by 
+    10 ** SCALE before the contour levels are selected.  If no 
+    contour interval is entered, a default value which will generate 
+    5 to 10 contour levels will be selected.
+ 
+    The SKIP parameter specifies the number of grid points to skip
+    in generating contours.  For example, if SKIP = 1, every other
+    point is used to generate the contours.
+
+EXAMPLES
+
+    1.  Draw topography contours every 4000 feet for the whole
+        area covered by data on NAM model output.  Force the labels 
+        to be drawn for each contour with no gaps for the label 
+        itself and each contour to be closed.
+        
+        NOTES: 
+          1.  There is a limit of 500 point per line.  There are 
+        more than 500 points on the perimeter of the data grid.
+        In order to produce the VG file, the program needs to be
+        run twice, first for the line encompasing the area, the
+        "0" contour line, with SKIP set to 1, and then for the
+        rest of the contours with SKIP set to 0.
+        
+
+	GDATTIM  = f00
+	GLEVEL   = 0
+	GVCORD   = none
+	GFUNC    = mul(smax(hght,0.), 3.28)
+	GDFILE   = nam
+	CINT     = 0/0/0
+	LINE     = 1 / 1 / 2 / -1
+	MAP      = 1
+	MSCALE   = 0
+	TITLE    = 0
+	DEVICE   = vg | elev.vgf
+	SATFIL   =
+	RADFIL   =
+	IMCBAR   =
+	PROJ     =
+	GAREA    = dset
+	IJSKIP   =
+	CLEAR    = YES
+	PANEL    = 0
+	TEXT     = 1
+	SCALE    = 999
+	LATLON   =
+	HILO     =
+	HLSYM    =
+	CLRBAR   =
+	CONTUR   = 0
+	SKIP     = 1
+	FINT     = 0
+	FLINE    = 10-20
+	CTYPE    = C
+	LUTFIL   =
+	STNPLT   =
+        RUN
+
+	CINT     = 4000; 8000; 12000
+	LINE     = 5;3;2 / 1 / 2 / -1
+	SKIP     = 0
+        RUN
+
+ERROR MESSAGES

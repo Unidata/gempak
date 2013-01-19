@@ -1,0 +1,640 @@
+C  Copyright(c) 1997, Space Science and Engineering Center, UW-Madison
+C  Refer to "McIDAS Software Acquisition and Distribution Policies"
+C  in the file  mcidas/data/license.txt
+
+C *** $Id: kbxmsat.dlm,v 1.1 2000/07/24 13:50:41 gad Exp $ ***
+
+C ? REALTIME METEOSAT CALIBRATION   SEE KBXMET FOR OLD TAPE RESTORES
+
+      INTEGER FUNCTION KBXINI(CIN,COUT,IOPT)
+
+      IMPLICIT NONE
+
+      CHARACTER*4 CIN
+      CHARACTER*4 COUT
+      INTEGER IOPT(*)
+
+      ! symbolic constants & shared data
+
+      INCLUDE 'areaparm.inc'
+
+      INTEGER JTYPE
+      INTEGER ISOU
+      INTEGER IDES
+      INTEGER JOPT(NUMAREAOPTIONS)
+      COMMON/METXXX/JTYPE,ISOU,IDES,JOPT
+
+      ! external functions
+
+      ! local variables
+
+      CALL MOVW(NUMAREAOPTIONS,IOPT,JOPT)
+      JTYPE=0
+      ISOU=IOPT(1)
+      IDES=IOPT(2)
+      IF(CIN.EQ.'RAW '.AND.COUT.EQ.'RAD ') JTYPE=1
+      IF(CIN.EQ.'RAW '.AND.COUT.EQ.'TEMP') JTYPE=2
+      IF(CIN.EQ.'RAW '.AND.COUT.EQ.'BRIT') JTYPE=3
+      IF(CIN.EQ.'RAW '.AND.COUT.EQ.'MODB') JTYPE=3
+      IF(JTYPE.EQ.0) GO TO 900
+      KBXINI=0
+      RETURN
+900   CONTINUE
+      KBXINI=-1
+      RETURN
+      END
+
+
+
+
+      INTEGER FUNCTION KBXCAL(CALB,IDIR,NVAL,JBAND,IBUF)
+
+      IMPLICIT NONE
+
+      INTEGER CALB(*)
+      INTEGER IDIR(*)
+      INTEGER NVAL
+      INTEGER JBAND
+      INTEGER IBUF(*)
+
+      ! symbolic constants & shared data
+
+      INCLUDE 'areaparm.inc'
+
+      INTEGER    NUM
+      PARAMETER (NUM=34)
+
+      INTEGER JTYPE
+      INTEGER ISOU
+      INTEGER IDES
+      INTEGER JOPT(NUMAREAOPTIONS)
+      COMMON/METXXX/JTYPE,ISOU,IDES,JOPT
+
+      CHARACTER*4 CALTYP
+      COMMON/BRKPNT/CALTYP
+
+      ! external functions
+
+      INTEGER BRKVAL
+      INTEGER GRYSCL
+
+      ! local variables
+
+      INTEGER I
+      INTEGER ICAL
+      INTEGER IBAND
+      INTEGER IE
+      INTEGER IOFF
+      INTEGER ITABLE(256)
+      INTEGER J
+      REAL A
+      REAL B
+      REAL BBC
+      REAL COEF(4,NUM)
+      REAL E
+      REAL FVAL
+      REAL XCAL(2)
+      REAL XCO
+      REAL XRAD(NUM)
+      REAL XTEMP(NUM)
+
+      ! initialized variables
+
+      ! DATA M3/ #0000D4F3 /,M4/ #0000D4F4 /
+      ! NOTE #D4F3= 54515 , #D4F4=54516
+
+      REAL YCAL(2)
+      INTEGER ITEMP
+      INTEGER INC
+      INTEGER LASARA
+      INTEGER LASTYP
+      INTEGER IP2
+      INTEGER NEWCAL
+      INTEGER LASBND
+      INTEGER ISEN
+      INTEGER M3
+      INTEGER M4
+      INTEGER M5
+      INTEGER M6
+      INTEGER M7
+      INTEGER IRAD(NUM,18)
+
+      DATA YCAL       / .04,.008 /
+      DATA ITEMP      /   165 /
+      DATA INC        /     5 /
+      DATA LASARA     /  -999 /
+      DATA LASTYP     /    -1 /
+      DATA IP2        / 88224 /
+      DATA NEWCAL     / 89128 /
+      DATA LASBND     /  -999 /
+      DATA M3         / 54515 /
+      DATA M4         / 54516 /
+      DATA M5         / 54517 /
+      DATA M6         / 54518 /
+      DATA M7         / 54519 /
+
+C
+C---RADIANCES VALUES FOR 165K TO 330K BY 5 DEGREES
+C---  11 MU   FOLLOWED BY  6 MU (REPEAT FOR M3 SATELLITE)
+C--- FOLLOWED BY M4, M5, M6 & M7 (PRIMARY AND SECONDARY IR & WV SENSORS)
+C
+
+      DATA ((IRAD(I,J),I=1,NUM),J=1,4)/
+     &0217,0271,0335,0409,0494,0591,0700,0823,0959,1111,1277,1459,
+     &1658,1873,2106,2356,2623,2910,3214,3537,3879,4239,4619,5017,
+     &5435,5872,6327,6802,7296,7808,8339,8889,9457,10043,
+
+     &0012,0017,0025,0035,0049,0066,0089,0117,0153,0196,0250,0315,
+     &0392,0484,0592,0719,0866,1035,1229,1450,1701,1983,2299,2651,
+     &3043,3477,3954,4479,5052,5677,6357,7093,7889,8745,
+
+     &0230,0287,0354,0432,0521,0622,0737,0865,1008,1167,1341,1531,
+     &1739,1963,2206,2467,2746,3044,3362,3698,4054,4429,4825,5239,
+     &5674,6128,6602,7096,7609,8141,8693,9264,9854,10463,
+
+     &0014,0021,0030,0043,0059,0080,0107,0141,0183,0235,0298,0375,
+     &0467,0575,0703,0852,1024,1223,1451,1709,2002,2331,2700,3111,
+     &3567,4071,4626,5235,5900,6625,7411,8263,9183,10172/
+
+      DATA ((IRAD(I,J),I=1,NUM),J=5,6)/
+     &0300,0475,0587,0717,0867,1037,1230,1446,1687,1954,2248,2570,
+     &2921,3302,3713,4155,4630,5136,5676,6248,6854,7494,8167,8875,
+     &9616,10392,11201,12045,12922,13833,14777,15755,16765,17809,
+
+     &0007,0015,0022,0031,0043,0060,0081,0107,0141,0183,0235,0299,
+     &0375,0466,0574,0702,0850,1023,1221,1449,1707,2000,2330,2700,
+     &3113,3571,4078,4636,5250,5921,6653,7448,8310,9241/
+
+      DATA ((IRAD(I,J),I=1,NUM),J=7,8)/
+     &0368,0478,0590,0721,0871,1042,1236,1453,1695,1963,2258,2582,
+     &2934,3317,3730,4175,4651,5160,5702,6277,6886,7529,8206,8917,
+     &9662,10441,11255,12103,12985,13900,14850,15832,16848,17897,
+
+     &0010,0018,0026,0037,0052,0072,0098,0130,0172,0223,0286,0363,
+     &0457,0568,0700,0856,1038,1248,1492,1770,2087,2447,2851,3305,
+     &3812,4375,4999,5686,6441,7268,8169,9150,10212,11362/
+
+      DATA ((IRAD(I,J),I=1,NUM),J=9,10)/
+     &0348,0452,0559,0684,0827,0990,1175,1382,1614,1870,2153,2462,
+     &2800,3166,3563,3989,4446,4935,5455,6008,6593,7211,7861,8545,
+     &9262,10012,10795,11612,12461,13343,14257,15204,16183,17194,
+
+     &0010,0017,0025,0035,0049,0068,0092,0122,0161,0209,0269,0341,
+     &0429,0534,0658,0805,0977,1176,1405,1668,1967,2307,2689,3118,
+     &3598,4130,4720,5370,6085,6867,7721,8649,9656,10744/
+
+      DATA ((IRAD(I,J),I=1,NUM),J=11,12)/
+     &0387,0505,0624,0761,0919,1099,1302,1530,1784,2065,2374,2713,
+     &3082,3482,3913,4378,4876,5407,5972,6572,7207,7877,8582,9323,
+     &10098,10910,11756,12638,13555,14507,15493,16514,17569,18658,
+
+     &0008,0015,0022,0032,0044,0061,0082,0110,0145,0188,0242,0307,
+     &0385,0479,0591,0722,0876,1054,1259,1494,1762,2065,2406,2789,
+     &3217,3692,4217,4797,5433,6130,6890,7716,8611,9580/
+
+      DATA ((IRAD(I,J),I=1,NUM),J=13,14)/
+     &0387,0503,0621,0758,0915,1094,1296,1523,1776,2055,2363,2700,
+     &3067,3466,3896,4358,4853,5382,5945,6543,7175,7842,8544,9281,
+     &10053,10861,11704,12582,13495,14443,15425,16442,17492,18577,
+
+     &0008,0015,0022,0031,0044,0061,0082,0110,0144,0187,0241,0306,
+     &0384,0478,0589,0720,0873,1051,1256,1490,1758,2060,2401,2784,
+     &3211,3685,4210,4790,5426,6122,6881,7707,8602,9570/
+
+      DATA ((IRAD(I,J),I=1,NUM),J=15,16)/
+     &0537,0667,0822,1002,1207,1441,1704,1999,2328,2690,3089,3526,
+     &4000,4514,5069,5665,6303,6983,7707,8474,9285,10141,11040,
+     &11984,12973,14006,15083,16205,17371,18580,19833,21130,22469,
+     &23850,
+
+     &0013,0021,0030,0043,0060,0082,0111,0147,0193,0250,0320,0405,
+     &0507,0628,0772,0941,1138,1366,1627,1927,2267,2651,3083,3566,
+     &4105,4703,5363,6089,6886,7756,8705,9734,10849,12052/
+
+      DATA ((IRAD(I,J),I=1,NUM),J=17,18)/
+     &0534,0664,0818,0996,1200,1433,1695,1988,2315,2676,3072,3506,
+     &3978,4490,5041,5634,6268,6945,7664,8427,9234,10084,10979,
+     &11918,12901,13928,14999,16115,17274,18477,19723,21012,22343,
+     &23717,
+
+     &0011,0020,0030,0042,0059,0080,0108,0144,0189,0244,0313,0396,
+     &0496,0615,0756,0922,1115,1339,1596,1890,2224,2602,3026,3502,
+     &4031,4619,5268,5983,6767,7624,8558,9571,10669,11854/
+
+C
+C*********************************************************
+C
+C
+C
+C
+      KBXCAL=0
+C
+C--- BECAUSE MSAT HAS SINGLE BANDS, NOT NUMBERED AS 1, WE MUST DEFAULT TO
+C--- THE CORRECT BAND NUMBER IF IT ISN'T SPECIFIED.  THIS TEST WILL NOT
+C--- TRIGGER ON MULTI-BANDED IMAGES, OR IF A SINGLE NON-EXISTENT BAND
+C--- IS REQUESTED.
+C
+      IBAND=JBAND
+      IF(IBAND.EQ.0) THEN
+         IF(IDIR(19).EQ.  1) IBAND=1
+         IF(IDIR(19).EQ.128) IBAND=8
+         IF(IDIR(19).EQ.512) IBAND=10
+      END IF
+
+      IF(LASARA.NE.IDIR(33).OR.JTYPE.NE.LASTYP.OR.
+     &   LASBND.NE.IBAND) THEN
+         LASBND=IBAND
+         LASARA=IDIR(33)
+         LASTYP=JTYPE
+C
+C--- IDENTIFY AS A VISIBLE BAND, UNLESS BAND IS 8 OR 10
+C
+         IF(IBAND.NE.8.AND.IBAND.NE.10) THEN
+            IF ((CALTYP.EQ.'BRIT').OR.(CALTYP.EQ.'RAW')) THEN
+               DO 1 J=0,255
+                  ITABLE(J+1) = BRKVAL(REAL(J))
+1              CONTINUE
+            ELSE
+               DO 5 J=0,255
+                  ITABLE(J+1) = J
+5              CONTINUE
+            ENDIF
+            GO TO 150
+         ENDIF
+C
+C--- END OF VISIBLE BAND LOOKUP TABLE GENERATION
+C
+
+
+C
+C--- BEGIN IR BAND RADIANCE TO TEMPERATURE TABLE GENERATION
+C--- WORDS 21-24 OF AREA DIRECTORY ARE MSAT CALIBRATION CONSTANTS:
+C
+C          21: Satellite ID: M3-M7      (after (89128)
+C              Blackbody constant       (prior to 89128)
+C 
+C          22: B = Slope for Radiance   (after(89128)
+C              Band 8 Slope Constant    (prior to 89128) unused if IDIR(21)=0)
+C 
+C          23: XCO = Zero Rad. Offset   (after 89128)
+C              Band 10 Slope Constant   (prior to 89128) unused if IDIR(21)=0)
+C
+C          24: Sensor ID for a single banded image    (1,2, or 0 if undefined)
+C
+C    NOTE THAT AS OF THE MAY 1996 UPGRADE, THE CALIBRATION BLOCK FOR A
+C    McIDAS AREA WILL CONTAIN THE FIRST 480 BYTES OF THE INTERPRETATION
+C    DATA BLOCK TRANSMITTED WITH THE METEOSAT SIGNAL.
+C   
+C    THE CALIBRATION BLOCK FORMAT WILL BE AS FOLLOWS:
+C       WORD      1:    "MET1"   -- Meteosat Calibration Format #1
+C                          (format identifier for calibration block)
+C               2-8:    Reserved for McIDAS
+C             9-128:    Bytes 0-479 of the Interpretation Data Block
+C   
+C    THIS IS BEING DONE IN PREPARATION FOR MULTI-BANDED AREAS AND USE OF
+C    X-SECTOR DATA.  AT SOME FUTURE TIME, M8 OR LATER, USE OF THE AREA
+C    DIRECTORY FOR STORING CALIBRATION CONSTANTS WILL BE DISCONTINUED,
+C    AND THE SIZE OF THE CALIBRATION BLOCK WILL PROBABLY INCREASE AS WELL.
+C    RESEARCHERS WHO USE CALIBRATION INFORMATION SHOULD TAKE NOTE OF THIS
+C    COMING CHANGE AND START ACQUIRING CALIBRATION CONSTANTS FROM THE
+C    CALIBRATION BLOCK INSTEAD OF THE AREA DIRECTORY.
+C   
+C    FOR THE PRESENT, UNTIL THE X-SECTOR DOCUMENTATION STABILIZES, X-SECTOR
+C    IMAGES WILL BE IDENTIFIED AS VISR/BRIT CALIBRATION, NOT MSAT/BRIT, AND
+C    WILL BE IDENTIFIED AS BAND 1, WITH "RT MSAT MX" PLACED IN THE MEMO FIELD.
+C    NO CALIBRATED OR NAVIGATED DATA WILL CURRENTLY BE AVAILABLE FROM SUCH
+C    AREAS.
+C
+
+
+         XCO  = 5.0                !  Default zero radiance level = 5 DN
+                                   !  (we won't allow negative radiances though)
+         B    = 0.0                !  Default slope (should never be used!!!)
+         IOFF = 1                  !  Default Offset into Temp tables
+                                   !    Tables alternate 11 MU & 6 MU
+C
+C--- WHICH SATELLITE??      P2 OPERATION 11 AUG 1988 (88224 UP TO 89128)
+C
+         IF(IDIR(4).GE.IP2) IOFF=2
+
+C
+C--- CHECK FOR NEWCAL (89128 OR AFTER), BUT NOT IF IDIR(4) INDICATES CAL BLOCK
+C--- SHOULD BE USED INSTEAD (AFTER A CERTAIN DATE IN 1997-8 CALLED NEWFMT,
+C--- WHEN THE CONSTANTS WILL BE REMOVED FROM THE AREA DIRECTORY 21-24).
+C--- AS OF MAY 1996, THAT INFORMATION IS NOW DUPLICATED IN CAL BLOCK
+C---     IF(IDIR(4).GE.NEWFMT) use the cal block for newest image slope-offset
+C
+         IF(IDIR(4).GE.NEWCAL) THEN
+
+C
+C--- NOMINAL NEW CALIBRATION (M3-M6 SLOPE & OFFSET IN IDIR ARE SCALED INTEGERS)
+C
+            B=IDIR(22)/100000.         ! Slope constant for radiance
+            XCO=IDIR(23)/10.           ! Offset constant (zero radiance level)
+            ISEN=IDIR(24)              ! Primary or backup sensor ID (M5-M6)
+
+C--- INDICES NEEDED FOR M3 ONLY
+            ICAL=1                     ! Index to cal constants for band 8
+            IF(IBAND.EQ.10) ICAL=2     ! Index to cal constants for band 10
+
+C--- CHECK FOR VALID SENSOR ID FOR M5, M6 & M7 (1 or 2)
+C--- IF UNUSED (M3 & M4), VALUE MUST BE 0
+C
+            IF(ISEN.LT.0.OR.ISEN.GT.2) THEN
+               CALL EDEST('Invalid sensor ID for band ',IBAND)
+               CALL EDEST('Valid IR sensors are 1, 2, or 0, not ',ISEN)
+               KBXCAL=-1
+            END IF
+C
+C--- GET INDEX FOR TEMP TABLES -- LATE M3 (AFTER 89128),  AND M4-M7
+C
+            IF     (IDIR(21).EQ.M3.AND.IBAND.EQ. 8) THEN
+               IOFF=3
+            ELSE IF(IDIR(21).EQ.M3.AND.IBAND.EQ.10) THEN
+               IOFF=4
+            ELSE IF(IDIR(21).EQ.M4.AND.IBAND.EQ. 8) THEN
+               IOFF=5
+            ELSE IF(IDIR(21).EQ.M4.AND.IBAND.EQ.10) THEN
+               IOFF=6
+            ELSE IF(IDIR(21).EQ.M5.AND.IBAND.EQ. 8.AND.ISEN.EQ.1) THEN
+               IOFF=7                                               !  IR1
+            ELSE IF(IDIR(21).EQ.M5.AND.IBAND.EQ.10.AND.ISEN.EQ.1) THEN
+               IOFF=8                                               !  WV1
+            ELSE IF(IDIR(21).EQ.M5.AND.IBAND.EQ. 8.AND.ISEN.EQ.2) THEN
+               IOFF=9                                               !  IR2
+            ELSE IF(IDIR(21).EQ.M5.AND.IBAND.EQ.10.AND.ISEN.EQ.2) THEN
+               IOFF=10                                              !  WV2
+            ELSE IF(IDIR(21).EQ.M6.AND.IBAND.EQ. 8.AND.ISEN.EQ.1) THEN
+               IOFF=11                                              !  IR1
+            ELSE IF(IDIR(21).EQ.M6.AND.IBAND.EQ.10.AND.ISEN.EQ.1) THEN
+               IOFF=12                                              !  WV1
+            ELSE IF(IDIR(21).EQ.M6.AND.IBAND.EQ. 8.AND.ISEN.EQ.2) THEN
+               IOFF=13                                              !  IR2
+            ELSE IF(IDIR(21).EQ.M6.AND.IBAND.EQ.10.AND.ISEN.EQ.2) THEN
+               IOFF=14                                              !  WV2
+            ELSE IF(IDIR(21).EQ.M7.AND.IBAND.EQ. 8.AND.ISEN.EQ.1) THEN
+               IOFF=15                                              !  IR1
+            ELSE IF(IDIR(21).EQ.M7.AND.IBAND.EQ.10.AND.ISEN.EQ.1) THEN
+               IOFF=16                                              !  WV1
+            ELSE IF(IDIR(21).EQ.M7.AND.IBAND.EQ. 8.AND.ISEN.EQ.2) THEN
+               IOFF=17                                              !  IR2
+            ELSE IF(IDIR(21).EQ.M7.AND.IBAND.EQ.10.AND.ISEN.EQ.2) THEN
+               IOFF=18                                              !  WV2
+            ELSE
+               CALL EDEST('TABLE UNIDENTIFIED: IDIR(21)=',IDIR(21))
+               CALL EDEST('                       IBAND=',IBAND)
+               CALL EDEST('                      SENSOR=',IDIR(24))
+               CALL EDEST('                      OFFSET=',IOFF)
+            END IF
+         ELSE IF(IDIR(21).EQ.0) THEN
+C
+C--- EARLY M3 (PRIOR TO 89128 NO CAL CONSTANTS WERE IN IDIR)
+C
+            A=YCAL(ICAL)
+            B=1.0
+            B=B*A
+
+         ELSE
+C
+C--- LATE M3 -- (CONSTANTS IN IDIR PRIOR TO 89128 DEFINED DIFFERENTLY)
+C
+            BBC=IDIR(21)/100.
+            XCAL(1)=IDIR(22)/1000000.
+            XCAL(2)=IDIR(23)/1000000.
+            IF(IDIR(23).LT.5000) XCAL(2)=IDIR(23)/100000.
+            B=121./BBC
+            A=XCAL(ICAL)
+            B=B*A
+
+
+         ENDIF
+
+
+         IF(B.EQ.0.0) THEN
+            CALL EDEST('ERROR: Radiance slope = 0.0',0)
+            CALL EDEST('       Check IDIR(21-24)',0)
+         END IF
+
+C
+C---USE BREAKPOINT TABLE TO GET MODIFIED BRIGHTNESS FROM RAW
+C
+         IF(CALTYP .EQ.'RAW'.AND.JTYPE .EQ.3) THEN
+            DO 10 I=0,255
+               ITABLE(I+1) = BRKVAL(REAL(I))
+10          CONTINUE
+            GOTO 150
+         ENDIF
+
+C
+C---CALCULATE LINEAR RADIANCE VALUES FROM RAW (NEG VALUES NOT PERMITTED)
+C
+         IF (CALTYP .EQ. 'RAD'.AND. JTYPE.EQ.3) THEN
+            DO 15 I=0,255
+               E=MAX(0.0,B*(I-XCO))
+               ITABLE(I+1) = BRKVAL(REAL(E))
+15          CONTINUE
+            GO TO 150
+         ELSE
+            DO 20 I=0,255
+               E=B*(I-XCO)
+               IE=MAX0(0,NINT(E*1000.))
+               ITABLE(I+1)=IE
+20          CONTINUE
+            IF(JTYPE.EQ.1) GO TO 150
+         ENDIF
+
+C
+C---CONVERT RADIANCE VALUES TO TEMPERATURE
+C
+         DO 30 I=1,NUM
+            XTEMP(I)=10.*(ITEMP+(I-1)*INC)
+            XRAD(I)=IRAD(I,IOFF)
+30       CONTINUE
+         CALL ASSPL2(NUM,XRAD,XTEMP,COEF)
+         DO 60 I=1,256
+            IF ((CALTYP .EQ.'TEMP') .AND. (JTYPE.EQ.3)) THEN
+               ITABLE(I)=
+     &         BRKVAL(REAL(FVAL(NUM,REAL(ITABLE(I)),XRAD,COEF)/10))
+            ELSE
+               ITABLE(I)=NINT(FVAL(NUM,REAL(ITABLE(I)),XRAD,COEF))
+            ENDIF
+60       CONTINUE
+
+         IF(JTYPE.EQ.2) GO TO 150
+         IF ((CALTYP .EQ.'TEMP') .AND. (JTYPE.EQ.3))THEN
+            GOTO 150
+         ENDIF
+
+C
+C---CONVERT TEMPERATURES TO GRAY SCALE
+C
+         IF ((CALTYP .EQ. 'BRIT').AND.(JTYPE .EQ.3)) THEN
+            DO 70 I=1,256
+               ITABLE(I) = BRKVAL(REAL(GRYSCL(ITABLE(I)/10.)))
+70          CONTINUE
+         ELSE
+            DO 80 I=1,256
+               ITABLE(I)=GRYSCL(ITABLE(I)/10.)
+80          CONTINUE
+         ENDIF
+
+C
+C---FINISHED, NEW LOOKUP TABLE GENERATED
+C
+150      CONTINUE
+      ENDIF
+
+C
+C---APPLY LOOKUP TABLE TO DATA
+C
+      CALL MPIXTB(NVAL,ISOU,IDES,IBUF,ITABLE)
+
+      RETURN
+      END
+
+
+
+
+      INTEGER FUNCTION KBXOPT(CFUNC,IIN,IOUT)
+
+      IMPLICIT NONE
+
+      CHARACTER*4 CFUNC
+      INTEGER IIN(*)
+      INTEGER IOUT(*)
+
+      ! symbolic constants & shared data
+
+      INCLUDE 'areaparm.inc'
+
+      INTEGER JTYPE
+      INTEGER ISOU
+      INTEGER IDES
+      INTEGER JOPT(NUMAREAOPTIONS)
+      COMMON/METXXX/JTYPE,ISOU,IDES,JOPT
+
+      CHARACTER*4 CALTYP
+      COMMON/BRKPNT/CALTYP
+
+      ! external functions
+
+      INTEGER ISCHAR
+      INTEGER LIT
+
+      ! local variables
+
+      CHARACTER*8 CFILE
+      INTEGER *4 BRKSET
+
+      IF(CFUNC.EQ.'KEYS') THEN
+C--- IIN CONTAINS THE FRAME DIRECTORY
+         IF(IIN(4).EQ.8.OR.IIN(4).EQ.10) THEN
+            IOUT(1)=4
+            IOUT(2)=LIT('RAW ')
+            IOUT(3)=LIT('RAD ')
+            IOUT(4)=LIT('TEMP')
+            IOUT(5)=LIT('BRIT')
+         ELSE
+            IOUT(1)=2
+            IOUT(2)=LIT('RAW ')
+            IOUT(3)=LIT('BRIT')
+         ENDIF
+C
+C--- IF THE FRAME DIRECTORY HAS THE BREAKPOINT TABLE NAME IN IT, SET BREAKPOINT
+C
+         IF (ISCHAR(IIN(38)).EQ.1) THEN
+            CALL MOVWC(IIN(38),CFILE)
+            IF (BRKSET(CFILE,CALTYP) .NE.0) THEN
+               KBXOPT = -3
+               RETURN
+            ENDIF
+         ENDIF
+         KBXOPT=0
+C
+C---  BRKP OPTION WILL SET UP THE BREAKPOINT TABLE TO BE USED IN CAL
+C
+      ELSE IF (CFUNC .EQ.'BRKP') THEN
+         CALL MOVWC(IIN(1),CFILE)
+         IF (BRKSET(CFILE,CALTYP).NE.0) THEN
+            KBXOPT = -3
+            RETURN
+         ENDIF
+         KBXOPT = 0
+C
+C--- INFO OPTION PASSES BACK THE VALID KEYS, UNITS AND SCALING FACTORS
+C
+      ELSE IF (CFUNC .EQ.'INFO') THEN
+C
+C--- CHECK TO SEE IF VALID BAND
+C
+         IF (IIN(1).LT.1.OR.IIN(1).GT.12) THEN
+            KBXOPT = -2
+            RETURN
+         ENDIF
+         IF(IIN(1).EQ.8.OR.IIN(1).EQ.10) THEN
+            IOUT(1) = 4
+            IOUT(2) = LIT('RAW ')
+            IOUT(3) = LIT('RAD ')
+            IOUT(4) = LIT('TEMP')
+            IOUT(5) = LIT('BRIT')
+            IOUT(6) = LIT('    ')
+            IOUT(7) = LIT('WP**')
+            IOUT(8) = LIT('K   ')
+            IOUT(9) = LIT('    ')
+            IOUT(10) = 1
+            IOUT(11) = 1000
+            IOUT(12) = 10
+            IOUT(13) = 1
+            KBXOPT=0
+         ELSE
+            IOUT(1) = 2
+            IOUT(2) = LIT('RAW ')
+            IOUT(3) = LIT('BRIT')
+            IOUT(4) = LIT('    ')
+            IOUT(5) = LIT('    ')
+            IOUT(6) = 1
+            IOUT(7) = 1
+            KBXOPT=0
+         ENDIF
+
+      ELSE
+         KBXOPT = -1
+      ENDIF
+      RETURN
+      END
+
+
+
+
+C $ FUNCTION GRYSCL(TEMPK)  (RCD)
+C $ CONVERT A BRIGHTNESS TEMPERATURE TO A GREY SCALE
+C $ TEMPK = (R) INPUT  TEMPERATURE IN DEGRESS KELVIN
+C $$ GRYSCL = CONVERT
+
+      INTEGER FUNCTION GRYSCL (TEMPK)
+
+      IMPLICIT NONE
+
+      REAL TEMPK
+
+      ! initialized variables
+
+      INTEGER CON1
+      INTEGER CON2
+      REAL TLIM
+
+      DATA CON1 / 418 /
+      DATA CON2 / 660 /
+      DATA TLIM / 242.0 /
+
+C CONVERT A BRIGHTNESS TEMPERATURE TO A GREY SCALE
+C     TEMPK---TEMPERATURE IN DEGREES KELVIN
+      IF (TEMPK .GE. TLIM) GOTO 100
+         GRYSCL = MIN0 (CON1 - IFIX (TEMPK), 255)
+         GOTO 200
+100   CONTINUE
+         GRYSCL = MAX0 (CON2 - IFIX (2 * TEMPK), 0)
+200   CONTINUE
+      RETURN
+      END
+

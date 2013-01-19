@@ -1,0 +1,23 @@
+$CC $CFLAGS -c nmap.c
+if [ $OS = "AIX" ]
+then
+    large=-bmaxdata:0x80000000
+elif [ $OS = "IRIX" ]
+then
+    large=-LD_MSG:OFF=171
+else
+    large=
+fi
+$FC $LDFLAGS $large -static -o $OS_BIN/nmap2 nmap.o $OS_LIB/nmap2.a \
+		$OS_LIB/ginitp_alt.o $OS_LIB/gendp_alt.o \
+		$OS_LIB/nmaplib.a -lnxm $OS_LIB/sfmap.a \
+		$OS_LIB/snmap.a $OS_LIB/gdplot2.a \
+		$OS_LIB/gdmap.a $OS_LIB/gdstream.a \
+		$OS_LIB/grphgd.a $OS_LIB/gdcfil.a \
+		$OS_LIB/oabsfc.a -lAODT_v64 -lAODT_v72 $GEMLIB \
+		$CGEMLIB $OS_LIB/textlib.a $GPLT \
+		$DEVICE $OS_LIB/xwp.a $OS_LIB/xw.a \
+		$OS_LIB/ps.a $OS_LIB/gn.a $GEMLIB \
+		$CGEMLIB -lGPC -lm -lnetcdf $XLIBS -lxslt \
+		-lxml2 -lz -lpthread
+$RM *.o

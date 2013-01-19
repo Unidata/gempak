@@ -1,0 +1,76 @@
+! TCABKPT_ISLAND.TBL - Locations of official tropical cyclone breakpoints
+!
+! The format for the file is given below, with the number of characters
+! in parentheses.
+!
+! Log:
+! D. Kidwell/NCEP	 4/05	From tcabkpt.tbl
+! D. Kidwell/NCEP	 7/05	Added Orange Co., Sipacate, Dry Tort. Isl.
+! C. Lauer/NHC           4/09   Updated for 2009 Season
+! M. Brennan/NHC         2/12   Updated for Block Isl, Nantucket, and Martha's Vinyrd
+!
+!STID    STNM   NAME                             ST CO   LAT    LON  ELV PRI TBCHRS  
+!(8)     (6)    (32)                            (2)(2)   (5)    (6)   (5)(2)   (20)
+!
+!  Other Caribbean islands
+!
+ANTIGUA/ 500100 Antigua/Barbuda                  -- AD  1735  -6180     0 50    
+ARUBA    500200 Aruba                            -- AR  1250  -6997     0 50
+CURACAO  500230 Curacao                          -- CC  1218  -6900     0 50
+BONAIRE  500260 Bonaire                          -- BO  1219  -6821     0 50
+BAHAMA_C 500300 Bahamas_(Central)                -- BA  2400  -7550     0 50    
+BAHAM_AN 500400 Bahamas_(Andros_only)            -- BA  2440  -7790     0 50    
+BAHAM_NW 500450 Bahamas_(NW_not_Andros)          -- BA  2590  -7740     0 50    
+BAHAM_SE 500500 Bahamas_(Southeast)              -- BA  2200  -7350     0 50    
+BARBADOS 500600 Barbados                         -- BR  1315  -5955     0 50    
+BERMUDA  500700 Bermuda                          -- BE  3230  -6475     0 50    
+GR_CAYMN 500800 Grand_Cayman                     -- GC  1932  -8126     0 50    
+LT_CAYMN 500850 Little_Cayman,_Cayman_Brac       -- GC  1970  -7994     0 50    
+DOMINICA 500900 Dominica                         -- DO  1540  -6135     0 50    
+GRENADA  501000 Grenada                          -- GD  1210  -6170     0 50    
+GRENADIN 501100 Grenadines/St._Vincent           -- GV  1320  -6120     0 50    
+GUADELOU 501200 Guadeloupe                       -- GP  1620  -6150     0 50    
+JAMAICA_ 501300 Jamaica_(all)                    -- JM  1810  -7730     0 50    
+JAMAIC_N 501400 Jamaica_(north_coast)            -- JM  1850  -7750     0 50    
+JAMAIC_S 501500 Jamaica_(south_coast)            -- JM  1770  -7720     0 50    
+MARTINIQ 501600 Martinique                       -- MR  1470  -6100     0 50    
+SAB/NEV/ 502000 Saba/Nevis/StKitt/StE/Montserrat -- KM  1730  -6270     0 50    
+SAN_ANDR 502100 San_Andres                       -- SS  1255  -8170     0 50    
+PROVIDEN 502150 Providencia                      -- CO  1335  -8137     0 50
+ST._LUCI 502200 St._Lucia                        -- LC  1390  -6095     0 50    
+ST._MART 502300 St._Mart/St._Bart/Anguilla       -- AA  1800  -6300     0 50    
+TOBAGO   502400 Tobago                           -- TD  1125  -6065     0 50    
+TRINIDAD 502500 Trinidad                         -- TD  1050  -6125     0 50    
+TURKS_AN 502600 Turks_and_Caicos                 -- TI  2175  -7160     0 50    
+VENEZUEL 502700 Venezuela_(Isla_de_Margarita)    -- VN  1100  -6400     0 50    
+BAYISLAN 502750 Bay_Islands_(Honduras)           -- HO  1637  -8648     0 50
+BRIT_V_I 502800 Virgin_Is._(British)             -- VI  1855  -6445     0 50    
+!
+!  Do not change STID for US_VRG_I, to get correct UGCs
+!
+!US_VRG_I 502900 Virgin_Is._(U.S.)                -- VI  1805  -6480     0 50
+PUERTO_R 502900 Puerto_Rico                      PR US  1822  -6644     0 50
+VIEQUES  502930 Vieques                          PR US  1812  -6543     0 50
+CULEBRA  502940 Culebra                          PR US  1832  -6528     0 50
+ST_TH_JO 502950 St_Thomas_and_St_John            VI US  1833  -6485     0 50
+ST_CROIX 502960 St_Croix                         VI US  1774  -6473     0 50
+ISLE_YTH 503000 Isle_of_Youth_(Cuba)             -- CU  2170  -8285     0 50    
+DRY_ISLE 504400 Dry_Tortugas_Island              FL US  2467  -8285     0 50
+!
+!  Florida Keys
+!
+!DRY_TORT 904400 Dry_Tortugas                     FL US  2466  -8286     0 90
+!KEY_WEST 904500 Key_West                         FL US  2455  -8181     0 90
+!7-MILE_B 904600 Seven_Mile_Bridge                FL US  2470  -8114     0 90
+!CRAIG_KY 904700 Craig_Key                        FL US  2483  -8077     0 90
+!KY_LARGO 904800 Key_Largo                        FL US  2509  -8044     0 90
+!OCEAN_RF 904900 Ocean_Reef                       FL US  2533  -8026     0 90
+!
+! New England Islands
+BLOCK_IS 506000 Block_Island                     RI US  4116  -7156     0 50
+NANTUKCT 506100 Nantucket                        MA US  4127  -7004     0 50
+MRT_VYRD 506200 Marthas_Vineyard                 MA US  4138  -7063     0 50
+!
+MAGDALEN 509200 Magdalen_Islands                 -- CN  4746  -6178     0 50
+ANTICOST 509300 Anticosti_Island                 -- CN  4949  -6308     0 50
+PR_ED_IS 509400 Prince_Edward_Island             -- CN  4634  -6335     0 50

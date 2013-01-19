@@ -1,0 +1,11 @@
+! FA1.BULL
+!
+! Location information for the following product:
+! Aviation_Area_forecast_(Northeast_US).
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+FAUS5  KBOS     BOSTON/LOGAN_INTL                MA US  4236  -7102     0

@@ -1,0 +1,26 @@
+#!/bin/csh
+#
+# EZPRINT
+#
+# This script will print any X windows graphic on a laser printer.  It uses
+# the xwd and xpr programs to accomplish this.  Both have man pages if you
+# need more information on them.  To use, type EZPRINT after you have a window
+# of graphics displayed.  When the mouse cursor changes to a + sign, click the
+# mouse on the window you want to print.  The script is set up to print on
+# laser jet printers by default but can be easily modified for postscript or
+# other drivers.
+#
+#	Syntax:  ezprint
+#
+##
+# Log:
+# B. Colman/SEA		 1994
+# R. Miller/COMET	 1994
+#
+
+xwd -out easy.dmp
+
+xpr -device ljet easy.dmp | lp
+#xpr -device ps easy.dmp | lp
+
+rm -f easy.dmp

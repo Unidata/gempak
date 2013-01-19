@@ -1,0 +1,17 @@
+Usage:  prnt ptype model [fhr] [printer] [yymmdd/cc]   	      
+        ptype   - pmsl, 500mb, 4panel, 500mbdiff, 700mb etc... 
+        model   - eta, ngm, avn, mrf1, mrf2, meso      	      
+                  use mrf1 for the mrf to 168hrs, mrf2 beyond 168
+        fhr     - forecast hour (eg.,F00,F12, all-increment )
+                  - increment used to indicate all times every increment hours
+		  - increment default model dependant
+                    - eta, ngm, avn, meso - increment default = 6,
+                    - all the rest - no default; get all times regardless.
+		  - increment may not work properly with yymmdd/cc option
+        printer - printer name (default by workstation)	      
+        yymmdd/cc  - year, month, day and cycle (def most recent)
+
+        prnt <ptype> <model> avail -- lists current available files for model.
+        (If model = "all", lists current available files for all major models)
+
+        Note : Not all products are available from all models.

@@ -1,0 +1,30 @@
+! CURSORTYP.TBL
+!
+! This table contains the N_AWIPS cursor type information.
+!
+! Cursor type may come from X standard cursor set or be defined 
+! in N_AWIPS.
+!
+! Internally in X, each standard cursor type has a name which starts 
+! with "XC_".
+! Each cursor type defined in N_AWIPS gets its shape from a pixmap
+! file in $NAWIPS/icons/cursor. 
+!
+! The maximum number of cursor type is limited to 20.
+!!
+! Log:
+! H. Zeng/EAI           04/00   Created
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!
+!CURSOR_NAME      X_NAME | PIXMAP_FILENAME  
+!    (20)                   (25)
+!
+SMALL_ARROW          XC_top_left_arrow
+LARGE_ARROW          lg_arrow
+SMALL_CROSS          XC_crosshair
+LARGE_CROSS          lg_cross
+SMALL_X              XC_X_cursor
+LARGE_X              lg_x
+!
+!
+

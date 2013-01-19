@@ -1,0 +1,6 @@
+$CC $CFLAGS -c nfax.c
+$FC $LDFLAGS -o $OS_BIN/nfax nfax.o $OS_LIB/nfax.a \
+                $OS_LIB/ginitp_alt.o $OS_LIB/gendp_alt.o \
+                -lnxm $GEMLIB $CGEMLIB $GPLT $DEVICE \
+                $OS_LIB/xw.a $OS_LIB/gn.a $XLIBS
+$RM *.o

@@ -1,0 +1,55 @@
+! FRH.BULL
+!
+! Location information for the following product:
+! ETA_FOUS_Relative_Humidity/Temperature_Guidance.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+FOCA51 KWNO     NCEP_NCO                         MD US  3881  -7687     0
+FOCA52 KWNO     NCEP_NCO                         MD US  3881  -7687     0
+FOCN74 KWNO     NCEP_NCO                         MD US  3881  -7687     0
+FOCN75 KWNO     NCEP_NCO                         MD US  3881  -7687     0
+FOCN76 KWNO     NCEP_NCO                         MD US  3881  -7687     0
+FOGX77 KWNO     NCEP_NCO                         MD US  3881  -7687     0
+FOUE60 KWNO     NCEP_NCO                         MD US  3881  -7687     0
+FOUE61 KWNO     NCEP_NCO                         MD US  3881  -7687     0
+FOUE62 KWNO     NCEP_NCO                         MD US  3881  -7687     0
+FOUE63 KWNO     NCEP_NCO                         MD US  3881  -7687     0
+FOUE64 KWNO     NCEP_NCO                         MD US  3881  -7687     0
+FOUE80 KWNO     NCEP_NCO                         MD US  3881  -7687     0
+FOUM65 KWNO     NCEP_NCO                         MD US  3881  -7687     0
+FOUM66 KWNO     NCEP_NCO                         MD US  3881  -7687     0
+FOUM67 KWNO     NCEP_NCO                         MD US  3881  -7687     0
+FOUM68 KWNO     NCEP_NCO                         MD US  3881  -7687     0
+FOUM69 KWNO     NCEP_NCO                         MD US  3881  -7687     0
+FOUM70 KWNO     NCEP_NCO                         MD US  3881  -7687     0
+FOUM71 KWNO     NCEP_NCO                         MD US  3881  -7687     0
+FOUM81 KWNO     NCEP_NCO                         MD US  3881  -7687     0
+FOUM82 KWNO     NCEP_NCO                         MD US  3881  -7687     0
+FOUM84 KWNO     NCEP_NCO                         MD US  3881  -7687     0
+FOUS60 KWNO     NCEP_NCO                         MD US  3881  -7687     0
+FOUS61 KWNO     NCEP_NCO                         MD US  3881  -7687     0
+FOUS62 KWNO     NCEP_NCO                         MD US  3881  -7687     0
+FOUS63 KWNO     NCEP_NCO                         MD US  3881  -7687     0
+FOUS64 KWNO     NCEP_NCO                         MD US  3881  -7687     0
+FOUS65 KWNO     NCEP_NCO                         MD US  3881  -7687     0
+FOUS66 KWNO     NCEP_NCO                         MD US  3881  -7687     0
+FOUS67 KWNO     NCEP_NCO                         MD US  3881  -7687     0
+FOUS68 KWNO     NCEP_NCO                         MD US  3881  -7687     0
+FOUS69 KWNO     NCEP_NCO                         MD US  3881  -7687     0
+FOUS70 KWNO     NCEP_NCO                         MD US  3881  -7687     0
+FOUS71 KWNO     NCEP_NCO                         MD US  3881  -7687     0
+FOUS72 KWNO     NCEP_NCO                         MD US  3881  -7687     0
+FOUS73 KWNO     NCEP_NCO                         MD US  3881  -7687     0
+FOUS74 KWNO     NCEP_NCO                         MD US  3881  -7687     0
+FOUS75 KWNO     NCEP_NCO                         MD US  3881  -7687     0
+FOUS76 KWNO     NCEP_NCO                         MD US  3881  -7687     0
+FOUS77 KWNO     NCEP_NCO                         MD US  3881  -7687     0
+FOUS78 KWNO     NCEP_NCO                         MD US  3881  -7687     0
+FOUW72 KWNO     NCEP_NCO                         MD US  3881  -7687     0
+FOUW73 KWNO     NCEP_NCO                         MD US  3881  -7687     0
+FOUW78 KWNO     NCEP_NCO                         MD US  3881  -7687     0
+FOUW83 KWNO     NCEP_NCO                         MD US  3881  -7687     0

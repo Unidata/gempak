@@ -1,0 +1,3298 @@
+<HTML
+><HEAD
+><TITLE
+>Basic Types and Enumerations</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
+"><LINK
+REL="HOME"
+TITLE="Gdome2 Reference Manual"
+HREF="book1.html"><LINK
+REL="UP"
+TITLE="Core & XML modules"
+HREF="gdome2-core.html"><LINK
+REL="PREVIOUS"
+TITLE="Core & XML modules"
+HREF="gdome2-core.html"><LINK
+REL="NEXT"
+TITLE="GdomeDOMImplementation"
+HREF="gdome2-gdomedomimplementation.html"></HEAD
+><BODY
+CLASS="REFENTRY"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+BGCOLOR="#000000"
+CELLPADDING="1"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="4"
+ALIGN="center"
+><FONT
+COLOR="#FFFFFF"
+SIZE="5"
+>Gdome2 Reference Manual</FONT
+></TH
+></TR
+><TR
+><TD
+WIDTH="25%"
+BGCOLOR="#C00000"
+ALIGN="left"
+><A
+HREF="gdome2-core.html"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+>&#60;&#60;&#60; Previous Page</B
+></FONT
+></A
+></TD
+><TD
+WIDTH="25%"
+BGCOLOR="#0000C0"
+ALIGN="center"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+><A
+HREF="book1.html"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+>Home</B
+></FONT
+></A
+></B
+></FONT
+></TD
+><TD
+WIDTH="25%"
+BGCOLOR="#00C000"
+ALIGN="center"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+><A
+HREF="gdome2-core.html"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+>Up</B
+></FONT
+></A
+></B
+></FONT
+></TD
+><TD
+WIDTH="25%"
+BGCOLOR="#C00000"
+ALIGN="right"
+><A
+HREF="gdome2-gdomedomimplementation.html"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+>Next Page &#62;&#62;&#62;</B
+></FONT
+></A
+></TD
+></TR
+></TABLE
+></DIV
+><H1
+><A
+NAME="GDOME2-BASIC-TYPES-AND-ENUMERATIONS">Basic Types and Enumerations</H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN11"
+></A
+><H2
+>Name</H2
+>Basic Types and Enumerations&nbsp;--&nbsp;Description of basic types, classes and enumeration for "Core" modules.</DIV
+><DIV
+CLASS="REFSYNOPSISDIV"
+><A
+NAME="AEN14"><H2
+>Synopsis</H2
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="SYNOPSIS"
+>&#13;
+
+enum        <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMENODETYPE"
+>GdomeNodeType</A
+>;
+enum        <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTIONCODE"
+>GdomeExceptionCode</A
+>;
+enum        <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEACCESSTYPE"
+>GdomeAccessType</A
+>;
+enum        <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMELOADINGCODE"
+>GdomeLoadingCode</A
+>;
+enum        <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMESAVINGCODE"
+>GdomeSavingCode</A
+>;
+
+typedef     <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEBOOLEAN"
+>GdomeBoolean</A
+>;
+typedef     <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMTIMESTAMP"
+>GdomeDOMTimeStamp</A
+>;
+typedef     <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+>;
+struct      <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEENTITIESTABLEENTRY"
+>GdomeEntitiesTableEntry</A
+>;
+
+#define     <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOME-A-CAPS"
+>GDOME_A</A
+>                         (node)
+#define     <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOME-C-CAPS"
+>GDOME_C</A
+>                         (node)
+#define     <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOME-CD-CAPS"
+>GDOME_CD</A
+>                        (node)
+#define     <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOME-CDS-CAPS"
+>GDOME_CDS</A
+>                       (node)
+#define     <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOME-DF-CAPS"
+>GDOME_DF</A
+>                        (node)
+#define     <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOME-DOC-CAPS"
+>GDOME_DOC</A
+>                       (node)
+#define     <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOME-DT-CAPS"
+>GDOME_DT</A
+>                        (node)
+#define     <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOME-EL-CAPS"
+>GDOME_EL</A
+>                        (node)
+#define     <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOME-ENT-CAPS"
+>GDOME_ENT</A
+>                       (node)
+#define     <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOME-ER-CAPS"
+>GDOME_ER</A
+>                        (node)
+#define     <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOME-N-CAPS"
+>GDOME_N</A
+>                         (node)
+#define     <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOME-NOT-CAPS"
+>GDOME_NOT</A
+>                       (node)
+#define     <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOME-PI-CAPS"
+>GDOME_PI</A
+>                        (node)
+#define     <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOME-T-CAPS"
+>GDOME_T</A
+>                         (node)
+#define     <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOME-EVNTT-CAPS"
+>GDOME_EVNTT</A
+>                     (node)
+
+#define     <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOME-XMLNS-NAMESPACE-CAPS"
+>GDOME_XMLNS_NAMESPACE</A
+>
+
+#define     <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOME-EXCEPTION-TYPE-CAPS"
+>GDOME_EXCEPTION_TYPE</A
+>            (exc)
+#define     <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOME-EXCEPTION-CODE-CAPS"
+>GDOME_EXCEPTION_CODE</A
+>            (exc)
+enum        <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTIONMASKS"
+>GdomeExceptionMasks</A
+>;
+enum        <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTIONTYPE"
+>GdomeExceptionType</A
+>;
+
+struct      <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+>;
+<A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+>* <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOME-STR-MKREF"
+>gdome_str_mkref</A
+>             (const <GTKDOCLINK
+HREF="GCHAR"
+>gchar</GTKDOCLINK
+> *str);
+<A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+>* <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOME-STR-MKREF-OWN"
+>gdome_str_mkref_own</A
+>         (<GTKDOCLINK
+HREF="GCHAR"
+>gchar</GTKDOCLINK
+> *str);
+<A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+>* <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOME-STR-MKREF-DUP"
+>gdome_str_mkref_dup</A
+>         (const <GTKDOCLINK
+HREF="GCHAR"
+>gchar</GTKDOCLINK
+> *str);
+void        <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOME-STR-REF"
+>gdome_str_ref</A
+>                   (<A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *self);
+void        <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOME-STR-UNREF"
+>gdome_str_unref</A
+>                 (<A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *self);
+<A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEBOOLEAN"
+>GdomeBoolean</A
+> <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOME-STR-EQUAL"
+>gdome_str_equal</A
+>                (<A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *str);
+<A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEBOOLEAN"
+>GdomeBoolean</A
+> <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOME-STR-EQUALIGNORECASE"
+>gdome_str_equalIgnoreCase</A
+>      (<A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *str);
+<GTKDOCLINK
+HREF="GCHAR"
+>gchar</GTKDOCLINK
+>       <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOME-STR-CHARAT"
+>gdome_str_charAt</A
+>                (<A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *self,
+                                             int index);
+<A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+>* <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOME-STR-CONCAT"
+>gdome_str_concat</A
+>            (<A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *str);
+<A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEBOOLEAN"
+>GdomeBoolean</A
+> <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOME-STR-ENDSWITH"
+>gdome_str_endsWith</A
+>             (<A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *suffix);
+<A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEBOOLEAN"
+>GdomeBoolean</A
+> <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOME-STR-ISEMPTY"
+>gdome_str_isEmpty</A
+>              (<A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *self);
+int         <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOME-STR-LENGTH"
+>gdome_str_length</A
+>                (<A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *self);
+<A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEBOOLEAN"
+>GdomeBoolean</A
+> <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOME-STR-STARTSWITH"
+>gdome_str_startsWith</A
+>           (<A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *prefix);</PRE
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN88"
+></A
+><H2
+>Description</H2
+><P
+></P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN91"
+></A
+><H2
+>Details</H2
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN93"
+></A
+><H3
+><A
+NAME="GDOMENODETYPE"
+></A
+>enum GdomeNodeType</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>typedef enum {
+	GDOME_ELEMENT_NODE = 1,
+	GDOME_ATTRIBUTE_NODE = 2,
+	GDOME_TEXT_NODE = 3,
+	GDOME_CDATA_SECTION_NODE = 4,
+	GDOME_ENTITY_REFERENCE_NODE = 5,
+	GDOME_ENTITY_NODE = 6,
+	GDOME_PROCESSING_INSTRUCTION_NODE = 7,
+	GDOME_COMMENT_NODE = 8,
+	GDOME_DOCUMENT_NODE = 9,
+	GDOME_DOCUMENT_TYPE_NODE = 10,
+	GDOME_DOCUMENT_FRAGMENT_NODE = 11,
+	GDOME_NOTATION_NODE = 12,
+	GDOME_XPATH_NAMESPACE_NODE = 13
+} GdomeNodeType;</PRE
+></TD
+></TR
+></TABLE
+><P
+></P
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN98"
+></A
+><H3
+><A
+NAME="GDOMEEXCEPTIONCODE"
+></A
+>enum GdomeExceptionCode</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>typedef enum {
+  GDOME_NOEXCEPTION_ERR = 0,
+	GDOME_INDEX_SIZE_ERR = 1,
+	GDOME_DOMSTRING_SIZE_ERR = 2,
+	GDOME_HIERARCHY_REQUEST_ERR = 3,
+	GDOME_WRONG_DOCUMENT_ERR = 4,
+	GDOME_INVALID_CHARACTER_ERR = 5,
+	GDOME_NO_DATA_ALLOWED_ERR = 6,
+	GDOME_NO_MODIFICATION_ALLOWED_ERR = 7,
+	GDOME_NOT_FOUND_ERR = 8,
+	GDOME_NOT_SUPPORTED_ERR = 9,
+	GDOME_INUSE_ATTRIBUTE_ERR = 10,
+	GDOME_INVALID_STATE_ERR = 11,
+	GDOME_SYNTAX_ERR = 12,
+	GDOME_INVALID_MODIFICATION_ERR = 13,
+	GDOME_NAMESPACE_ERR = 14,
+	GDOME_INVALID_ACCESS_ERR = 15,
+	GDOME_NULL_POINTER_ERR = 100
+} GdomeExceptionCode;</PRE
+></TD
+></TR
+></TABLE
+><P
+></P
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN103"
+></A
+><H3
+><A
+NAME="GDOMEACCESSTYPE"
+></A
+>enum GdomeAccessType</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>typedef enum {
+	GDOME_READONLY_NODE = 0,
+	GDOME_READWRITE_NODE = 1
+} GdomeAccessType;</PRE
+></TD
+></TR
+></TABLE
+><P
+></P
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN108"
+></A
+><H3
+><A
+NAME="GDOMELOADINGCODE"
+></A
+>enum GdomeLoadingCode</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>typedef enum {
+	GDOME_LOAD_PARSING = 0,
+	GDOME_LOAD_VALIDATING = 1,
+	GDOME_LOAD_RECOVERING = 2,
+	GDOME_LOAD_SUBSTITUTE_ENTITIES = 4,
+	GDOME_LOAD_COMPLETE_ATTRS = 8
+} GdomeLoadingCode;</PRE
+></TD
+></TR
+></TABLE
+><P
+></P
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN113"
+></A
+><H3
+><A
+NAME="GDOMESAVINGCODE"
+></A
+>enum GdomeSavingCode</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>typedef enum {
+	GDOME_SAVE_STANDARD = 0,
+	GDOME_SAVE_LIBXML_INDENT = 1
+} GdomeSavingCode;</PRE
+></TD
+></TR
+></TABLE
+><P
+></P
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN118"
+></A
+><H3
+><A
+NAME="GDOMEBOOLEAN"
+></A
+>GdomeBoolean</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>typedef int GdomeBoolean;</PRE
+></TD
+></TR
+></TABLE
+><P
+></P
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN123"
+></A
+><H3
+><A
+NAME="GDOMEDOMTIMESTAMP"
+></A
+>GdomeDOMTimeStamp</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>typedef long long GdomeDOMTimeStamp;</PRE
+></TD
+></TR
+></TABLE
+><P
+></P
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN128"
+></A
+><H3
+><A
+NAME="GDOMEEXCEPTION"
+></A
+>GdomeException</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>typedef guint32 GdomeException;</PRE
+></TD
+></TR
+></TABLE
+><P
+></P
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN133"
+></A
+><H3
+><A
+NAME="GDOMEENTITIESTABLEENTRY"
+></A
+>struct GdomeEntitiesTableEntry</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>struct GdomeEntitiesTableEntry {
+	gchar *name;
+	gchar *value;
+	gchar *publicID;
+	gchar *systemID;
+};</PRE
+></TD
+></TR
+></TABLE
+><P
+></P
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN138"
+></A
+><H3
+><A
+NAME="GDOME-A-CAPS"
+></A
+>GDOME_A()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define GDOME_A(node) gdome_cast_a((GdomeNode *)node)</PRE
+></TD
+></TR
+></TABLE
+><P
+>Cast a ganeral GdomeNode reference to a GdomeAttr one.</P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN144"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>node</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Node Object ref</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN153"
+></A
+><H3
+><A
+NAME="GDOME-C-CAPS"
+></A
+>GDOME_C()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define GDOME_C(node) gdome_cast_c((GdomeNode *)node)</PRE
+></TD
+></TR
+></TABLE
+><P
+>Cast a ganeral GdomeNode reference to a GdomeComment one.</P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN159"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>node</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Node Object ref</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN168"
+></A
+><H3
+><A
+NAME="GDOME-CD-CAPS"
+></A
+>GDOME_CD()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define GDOME_CD(node) gdome_cast_cd((GdomeNode *)node)</PRE
+></TD
+></TR
+></TABLE
+><P
+>Cast a ganeral GdomeNode reference to a GdomeCharacterData one.</P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN174"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>node</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Node Object ref</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN183"
+></A
+><H3
+><A
+NAME="GDOME-CDS-CAPS"
+></A
+>GDOME_CDS()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define GDOME_CDS(node) gdome_cast_cds((GdomeNode *)node)</PRE
+></TD
+></TR
+></TABLE
+><P
+>Cast a ganeral GdomeNode reference to a GdomeCDATASection one.</P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN189"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>node</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Node Object ref</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN198"
+></A
+><H3
+><A
+NAME="GDOME-DF-CAPS"
+></A
+>GDOME_DF()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define GDOME_DF(node) gdome_cast_df((GdomeNode *)node)</PRE
+></TD
+></TR
+></TABLE
+><P
+>Cast a ganeral GdomeNode reference to a GdomeDocumentFragment one.</P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN204"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>node</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Node Object ref</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN213"
+></A
+><H3
+><A
+NAME="GDOME-DOC-CAPS"
+></A
+>GDOME_DOC()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define GDOME_DOC(node) gdome_cast_doc((GdomeNode *)node)</PRE
+></TD
+></TR
+></TABLE
+><P
+>Cast a ganeral GdomeNode reference to a GdomeDocument one.</P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN219"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>node</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Node Object ref</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN228"
+></A
+><H3
+><A
+NAME="GDOME-DT-CAPS"
+></A
+>GDOME_DT()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define GDOME_DT(node) gdome_cast_dt((GdomeNode *)node)</PRE
+></TD
+></TR
+></TABLE
+><P
+>Cast a ganeral GdomeNode reference to a GdomeDocumentType one.</P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN234"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>node</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Node Object ref</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN243"
+></A
+><H3
+><A
+NAME="GDOME-EL-CAPS"
+></A
+>GDOME_EL()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define GDOME_EL(node) gdome_cast_el((GdomeNode *)node)</PRE
+></TD
+></TR
+></TABLE
+><P
+>Cast a ganeral GdomeNode reference to a GdomeElement one.</P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN249"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>node</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Node Object ref</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN258"
+></A
+><H3
+><A
+NAME="GDOME-ENT-CAPS"
+></A
+>GDOME_ENT()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define GDOME_ENT(node) gdome_cast_ent((GdomeNode *)node)</PRE
+></TD
+></TR
+></TABLE
+><P
+>Cast a ganeral GdomeNode reference to a GdomeEntity one.</P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN264"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>node</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Node Object ref</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN273"
+></A
+><H3
+><A
+NAME="GDOME-ER-CAPS"
+></A
+>GDOME_ER()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define GDOME_ER(node) gdome_cast_er((GdomeNode *)node)</PRE
+></TD
+></TR
+></TABLE
+><P
+>Cast a ganeral GdomeNode reference to a GdomeEntityReference one.</P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN279"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>node</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Node Object ref</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN288"
+></A
+><H3
+><A
+NAME="GDOME-N-CAPS"
+></A
+>GDOME_N()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define GDOME_N(node) gdome_cast_n((GdomeNode *)node)</PRE
+></TD
+></TR
+></TABLE
+><P
+>Cast a ganeral GdomeNode reference to a GdomeNode one.</P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN294"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>node</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Node Object ref</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN303"
+></A
+><H3
+><A
+NAME="GDOME-NOT-CAPS"
+></A
+>GDOME_NOT()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define GDOME_NOT(node) gdome_cast_not((GdomeNode *)node)</PRE
+></TD
+></TR
+></TABLE
+><P
+>Cast a ganeral GdomeNode reference to a GdomeNotation one.</P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN309"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>node</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Node Object ref</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN318"
+></A
+><H3
+><A
+NAME="GDOME-PI-CAPS"
+></A
+>GDOME_PI()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define GDOME_PI(node) gdome_cast_pi((GdomeNode *)node)</PRE
+></TD
+></TR
+></TABLE
+><P
+>Cast a ganeral GdomeNode reference to a GdomeProcessingInstruction one.</P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN324"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>node</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Node Object ref</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN333"
+></A
+><H3
+><A
+NAME="GDOME-T-CAPS"
+></A
+>GDOME_T()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define GDOME_T(node) gdome_cast_t((GdomeNode *)node)</PRE
+></TD
+></TR
+></TABLE
+><P
+>Cast a ganeral GdomeNode reference to a GdomeText one.</P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN339"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>node</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Node Object ref</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN348"
+></A
+><H3
+><A
+NAME="GDOME-EVNTT-CAPS"
+></A
+>GDOME_EVNTT()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define GDOME_EVNTT(node) gdome_cast_evntt((GdomeNode *)node)</PRE
+></TD
+></TR
+></TABLE
+><P
+>Cast a ganeral GdomeNode reference to a GdomeEventTarget one.</P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN354"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>node</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Node Object ref</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN363"
+></A
+><H3
+><A
+NAME="GDOME-XMLNS-NAMESPACE-CAPS"
+></A
+>GDOME_XMLNS_NAMESPACE</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define     GDOME_XMLNS_NAMESPACE</PRE
+></TD
+></TR
+></TABLE
+><P
+>This is the namespace for the xmlns: prefix for namespace declaration
+attributes.</P
+><P
+></P
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN369"
+></A
+><H3
+><A
+NAME="GDOME-EXCEPTION-TYPE-CAPS"
+></A
+>GDOME_EXCEPTION_TYPE()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define GDOME_EXCEPTION_TYPE(exc) ((exc) &amp; GDOME_EXCEPTION_TYPE_MASK)</PRE
+></TD
+></TR
+></TABLE
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN374"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>exc</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>&nbsp;</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN383"
+></A
+><H3
+><A
+NAME="GDOME-EXCEPTION-CODE-CAPS"
+></A
+>GDOME_EXCEPTION_CODE()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define GDOME_EXCEPTION_CODE(exc) ((exc) &amp; GDOME_EXCEPTION_CODE_MASK)</PRE
+></TD
+></TR
+></TABLE
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN388"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>exc</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>&nbsp;</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN397"
+></A
+><H3
+><A
+NAME="GDOMEEXCEPTIONMASKS"
+></A
+>enum GdomeExceptionMasks</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>typedef enum {
+	GDOME_EXCEPTION_TYPE_MASK = 0x00FF0000,
+	GDOME_EXCEPTION_CODE_MASK = 0x0000FFFF
+} GdomeExceptionMasks;</PRE
+></TD
+></TR
+></TABLE
+><P
+></P
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN402"
+></A
+><H3
+><A
+NAME="GDOMEEXCEPTIONTYPE"
+></A
+>enum GdomeExceptionType</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>typedef enum {
+	GDOME_CORE_EXCEPTION = 0 &lt;&lt; 16,
+	GDOME_EVENT_EXCEPTION = 1 &lt;&lt; 16,
+	GDOME_XPATH_EXCEPTION = 2 &lt;&lt; 16
+} GdomeExceptionType;</PRE
+></TD
+></TR
+></TABLE
+><P
+></P
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN407"
+></A
+><H3
+><A
+NAME="GDOMEDOMSTRING"
+></A
+>struct GdomeDOMString</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>struct GdomeDOMString {
+	gchar *str;
+	gint refcnt;
+	void (*unref) (GdomeDOMString *self);
+};</PRE
+></TD
+></TR
+></TABLE
+><P
+></P
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN412"
+></A
+><H3
+><A
+NAME="GDOME-STR-MKREF"
+></A
+>gdome_str_mkref ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+><A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+>* gdome_str_mkref             (const <GTKDOCLINK
+HREF="GCHAR"
+>gchar</GTKDOCLINK
+> *str);</PRE
+></TD
+></TR
+></TABLE
+><P
+>Creates a <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> from a statically allocated string.</P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN421"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>str</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  a <TT
+CLASS="LITERAL"
+>NULL</TT
+> terminated string</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+> the new DOMString object.</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN435"
+></A
+><H3
+><A
+NAME="GDOME-STR-MKREF-OWN"
+></A
+>gdome_str_mkref_own ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+><A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+>* gdome_str_mkref_own         (<GTKDOCLINK
+HREF="GCHAR"
+>gchar</GTKDOCLINK
+> *str);</PRE
+></TD
+></TR
+></TABLE
+><P
+>Creates a <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> from a dynamically allocated gchar buffer.</P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN444"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>str</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  a <TT
+CLASS="LITERAL"
+>NULL</TT
+> terminated string</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+> the new DOMString object.</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN458"
+></A
+><H3
+><A
+NAME="GDOME-STR-MKREF-DUP"
+></A
+>gdome_str_mkref_dup ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+><A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+>* gdome_str_mkref_dup         (const <GTKDOCLINK
+HREF="GCHAR"
+>gchar</GTKDOCLINK
+> *str);</PRE
+></TD
+></TR
+></TABLE
+><P
+>Creates a <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> from a static or dynamically allocated gchar
+buffer, but a copy of the initializing string is done before construction.</P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN467"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>str</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  a <TT
+CLASS="LITERAL"
+>NULL</TT
+> terminated string</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+> the new DOMString object.</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN481"
+></A
+><H3
+><A
+NAME="GDOME-STR-REF"
+></A
+>gdome_str_ref ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>void        gdome_str_ref                   (<A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *self);</PRE
+></TD
+></TR
+></TABLE
+><P
+>Increase the reference count of the specified <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+>.</P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN489"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>self</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  DOMString Object ref</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN498"
+></A
+><H3
+><A
+NAME="GDOME-STR-UNREF"
+></A
+>gdome_str_unref ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>void        gdome_str_unref                 (<A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *self);</PRE
+></TD
+></TR
+></TABLE
+><P
+>Decrease the reference count of the specified <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+>. Free the
+structure if the object will have zero reference.</P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN506"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>self</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  DOMString Object ref</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN515"
+></A
+><H3
+><A
+NAME="GDOME-STR-EQUAL"
+></A
+>gdome_str_equal ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+><A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEBOOLEAN"
+>GdomeBoolean</A
+> gdome_str_equal                (<A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *str);</PRE
+></TD
+></TR
+></TABLE
+><P
+></P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN524"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>self</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  DOMString Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>str</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  DOMString to be compared</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+> <TT
+CLASS="LITERAL"
+>TRUE</TT
+> if the strings are equal, <TT
+CLASS="LITERAL"
+>FALSE</TT
+> otherwise.</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN543"
+></A
+><H3
+><A
+NAME="GDOME-STR-EQUALIGNORECASE"
+></A
+>gdome_str_equalIgnoreCase ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+><A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEBOOLEAN"
+>GdomeBoolean</A
+> gdome_str_equalIgnoreCase      (<A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *str);</PRE
+></TD
+></TR
+></TABLE
+><P
+></P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN552"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>self</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  DOMString Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>str</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  DOMString to be compared</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+> <TT
+CLASS="LITERAL"
+>TRUE</TT
+> if the strings are equal ignoring case, <TT
+CLASS="LITERAL"
+>FALSE</TT
+> otherwise.</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN571"
+></A
+><H3
+><A
+NAME="GDOME-STR-CHARAT"
+></A
+>gdome_str_charAt ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+><GTKDOCLINK
+HREF="GCHAR"
+>gchar</GTKDOCLINK
+>       gdome_str_charAt                (<A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *self,
+                                             int index);</PRE
+></TD
+></TR
+></TABLE
+><P
+></P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN579"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>self</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  DOMString Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>index</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  the index of the character wanted</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+> the <TT
+CLASS="PARAMETER"
+><I
+>index</I
+></TT
+> -th character in the specified string</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN597"
+></A
+><H3
+><A
+NAME="GDOME-STR-CONCAT"
+></A
+>gdome_str_concat ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+><A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+>* gdome_str_concat            (<A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *str);</PRE
+></TD
+></TR
+></TABLE
+><P
+></P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN606"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>self</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  DOMString Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>str</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  DOMString to be appended</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+> a new <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> that is the concatenation of this string
+with <TT
+CLASS="PARAMETER"
+><I
+>str</I
+></TT
+>. If <TT
+CLASS="PARAMETER"
+><I
+>str</I
+></TT
+> is <TT
+CLASS="LITERAL"
+>NULL</TT
+> a new reference to this string is returned.</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN627"
+></A
+><H3
+><A
+NAME="GDOME-STR-ENDSWITH"
+></A
+>gdome_str_endsWith ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+><A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEBOOLEAN"
+>GdomeBoolean</A
+> gdome_str_endsWith             (<A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *suffix);</PRE
+></TD
+></TR
+></TABLE
+><P
+></P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN636"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>self</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  DOMString Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>suffix</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  DOMString to check</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+> <TT
+CLASS="LITERAL"
+>TRUE</TT
+> if this string ends with <TT
+CLASS="PARAMETER"
+><I
+>str</I
+></TT
+>.</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN655"
+></A
+><H3
+><A
+NAME="GDOME-STR-ISEMPTY"
+></A
+>gdome_str_isEmpty ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+><A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEBOOLEAN"
+>GdomeBoolean</A
+> gdome_str_isEmpty              (<A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *self);</PRE
+></TD
+></TR
+></TABLE
+><P
+></P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN663"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>self</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  DOMString Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+> <TT
+CLASS="LITERAL"
+>TRUE</TT
+> if this string is empty, <TT
+CLASS="LITERAL"
+>FALSE</TT
+> otherwise.</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN678"
+></A
+><H3
+><A
+NAME="GDOME-STR-LENGTH"
+></A
+>gdome_str_length ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>int         gdome_str_length                (<A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *self);</PRE
+></TD
+></TR
+></TABLE
+><P
+></P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN685"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>self</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  DOMString Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+> the length of this string.</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN698"
+></A
+><H3
+><A
+NAME="GDOME-STR-STARTSWITH"
+></A
+>gdome_str_startsWith ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+><A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEBOOLEAN"
+>GdomeBoolean</A
+> gdome_str_startsWith           (<A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *prefix);</PRE
+></TD
+></TR
+></TABLE
+><P
+></P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN707"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>self</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  DOMString Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>prefix</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  DOMString to check</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+> <TT
+CLASS="LITERAL"
+>TRUE</TT
+> if this string starts with <TT
+CLASS="PARAMETER"
+><I
+>str</I
+></TT
+>.</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><BR
+CLEAR="all"><BR><TABLE
+WIDTH="100%"
+BORDER="0"
+BGCOLOR="#000000"
+CELLPADDING="1"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="25%"
+BGCOLOR="#C00000"
+ALIGN="left"
+><A
+HREF="gdome2-core.html"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+>&#60;&#60;&#60; Previous Page</B
+></FONT
+></A
+></TD
+><TD
+WIDTH="25%"
+BGCOLOR="#0000C0"
+ALIGN="center"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+><A
+HREF="book1.html"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+>Home</B
+></FONT
+></A
+></B
+></FONT
+></TD
+><TD
+WIDTH="25%"
+BGCOLOR="#00C000"
+ALIGN="center"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+><A
+HREF="gdome2-core.html"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+>Up</B
+></FONT
+></A
+></B
+></FONT
+></TD
+><TD
+WIDTH="25%"
+BGCOLOR="#C00000"
+ALIGN="right"
+><A
+HREF="gdome2-gdomedomimplementation.html"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+>Next Page &#62;&#62;&#62;</B
+></FONT
+></A
+></TD
+></TR
+><TR
+><TD
+COLSPAN="2"
+ALIGN="left"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+>Core &#38; XML modules</B
+></FONT
+></TD
+><TD
+COLSPAN="2"
+ALIGN="right"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+>GdomeDOMImplementation</B
+></FONT
+></TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

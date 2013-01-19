@@ -1,0 +1,38 @@
+!
+! Restore File : 300thta_pres,wnd,pres_adv
+!
+! Log:
+! D.W.Plummer/NCEP	 2/97	Initial creation
+! D.W.Plummer/NCEP	 8/97	Added FILTER parameter and changed TEXT value
+!
+GDATTIM fall
+GLEVEL  300
+GVCORD  thta
+PANEL   0                                                                       
+SKIP    0/2
+SCALE   3!3!0
+GDPFUN  ADV(pres,obs)//advp!advp!sm5s(pres)!obs
+TYPE    c/f                !c   !c         !b
+CONTUR  1                                                                       
+CINT    2/2/99!2/-99/-2!40
+LINE    21/1/1!24/1/2/2!6/1/2
+FINT    2;4;6;8;10
+FLINE   0;23;22;28;15;2
+HILO    0
+HLSYM   0
+CLRBAR  1
+WIND    9/0.7/2/212
+REFVEC                                                                          
+TITLE   1/-1/~ @ PRESSURE, WIND & PRES ADV (omega)!0
+TEXT    1/22/2/hw
+CLEAR   yes                                                                     
+STNPLT                                                                          
+SATFIL                                                                          
+RADFIL                                                                          
+STREAM                                                                          
+POSN    4                                                                       
+COLORS  2                                                                       
+MARKER  2                                                                       
+GRDLBL  5                                                                       
+LUTFIL  none
+FILTER  yes

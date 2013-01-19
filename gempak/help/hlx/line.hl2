@@ -1,0 +1,70 @@
+     LINE
+
+     LINE is the color, line type, line width, line label freqency, 
+     smoothing separated by slashes, and flag to suppress small contours.  The 
+     individual values in each group are separated by semicolons:
+
+     colr1;..;colrn/type1;..;typen/width1;..;widthn/labl1;..;labln/smth/fltr/scflg
+
+     For example:
+
+		LINE = 1;2 / 7;8 / 4;5 / 2 / 2 / T
+ 
+     assigns colors 1 and 2 to alternate lines, dashing patterns 7 and 8 to 
+     alternate lines, line widths 4 and 5 to alternate lines, and labels 
+     every other line.  Smoothing level 2 is used on all lines. Contours with
+     7 points or less wil not be drawn.
+
+     If any specification is missing, a default of 1 is used.  Except for the
+     smoothing, which defaults to 0, or no smoothing.  If a color number of 0
+     is given, no plotting will be done. The suppress small contour flag will 
+     default to F, drawing small contours. 
+ 
+     Information on color selection can be found in the help for COLORS.
+
+     There are ten distinct line types:
+
+	1	-	solid
+	2	-	short dashed
+	3	-	medium dashed
+	4	-	long dash short dash
+	5	-	long dash
+	6	-	long dash three short dashes
+	7	-	long dash dot
+	8	-	long dash three dots
+	9	-	medium dash dot
+	10	-	dotted
+
+     These patterns can be expanded or compressed by prefixing the single 
+     digit with a number from 1 to 9.  A prefix of 1 compresses the pattern, 
+     2 is the default and prefixes 3 -- 9 expand the basic pattern.  For 
+     example, 32 expands line type 2 while 12 compresses the same pattern.
+
+     If the line type is set to a single negative number, negative contour
+     values will use the absolute value of the line type, and positive
+     values will be solid.
+
+     If the label information is a single number, n, then every nth line 
+     will be labelled.  If the label information is a single number, -n,
+     then every nth line will be labelled, however, there will not be a break
+     in the line for the label.  If a label is a sequence of numbers separated
+     by semicolons, lines corresponding to values other than 0 will be
+     labelled.  The pattern established will be repeated to accommodate all
+     lines.
+
+     The smoothing level is an integer which specifies the amount of 
+     smoothing to apply using a parametric curve function.  The current values
+     are 0, 1 and 2 which correspond to no smoothing and two levels of 
+     increasing smoothing.
+
+     The filter is a real value that specifies the amount of filtering of the
+     points on a line.  Smaller values allow for more points, while larger
+     values reduce the number of points on the line.  Valid values are in the
+     range of 0.0 to 1.0.  The default is 0.0 which means that no reduction
+     in the number of points will occur. 
+
+     The suppress small contour flag allows the user to specify whether or not
+     to draw a contour with 7 points or less. The default is F or FALSE which 
+     allows all contours to be drawn. Setting the flag to T or TRUE will have
+     the small contours not drawn. 
+

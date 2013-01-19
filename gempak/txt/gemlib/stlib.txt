@@ -1,0 +1,30 @@
+
+
+                    String (ST) Library 
+
+
+The GEMPAK string library provides subroutines to simplify handling
+character strings.  These subroutines are used extensively
+throughout GEMPAK. 
+ 
+Basic routines convert strings to upper or lower case (ST_LCUC and 
+ST_UCLC), determine the length without trailing blanks (ST_LSTR), 
+remove leading spaces (ST_LDSP), and check for alphanumeric characters
+(ST_ALNM). 
+ 
+The routines ST_C2C, ST_C2I, and ST_C2R separate a character string 
+into arrays of characters, integers or reals.  Separators are any 
+non-alphanumeric character, except period, plus, minus, or 
+asterisk. 
+ 
+The routines ST_CLST, ST_ILST, and ST_RLST also separate lists
+into arrays.  In this case, the separator must be specified (and
+may not be a blank) and a default value is inserted for
+unspecified values.  These subroutines are especially useful for
+decoding GEMPAK input parameters and are preferred to the subroutines
+described in the last paragraph. 
+
+The routines ST_INCH, ST_RLCH, ST_NUMB, and ST_CRNM encode and
+decode integers and real numbers. 
+ 
+ 

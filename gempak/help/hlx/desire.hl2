@@ -1,0 +1,14 @@
+     DESIRE 
+
+     DESIRE is the value of the output vertical coordinate variable
+     to which the input variables should be interpolated.  For example,
+     to interpolate the input variables to the PV surface PV = 1.5 PVU,
+     DESIRE should be set equal to 0.0000015.  
+
+     DESIRE and GDOUTL are specified separately because GEMPAK requires
+     vertical levels in grid files to be integers.  For example, by
+     convention, for the PV surface PV = 1.5 PVU, an output grid level
+     of 0.0000015 is not allowed.  By convention, one could specify
+     this level as GDOUTL = 15.
+
+

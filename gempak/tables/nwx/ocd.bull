@@ -1,0 +1,24 @@
+! OCD.BULL
+!
+! Location information for the following product:
+! Oceanographic_Data.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+SOVD10 KWBC     NCEP_NMC                         MD US  3881  -7687     0
+SOVD11 KWBC     NCEP_NMC                         MD US  3881  -7687     0
+SOVD12 KWBC     NCEP_NMC                         MD US  3881  -7687     0
+SOVD13 KWBC     NCEP_NMC                         MD US  3881  -7687     0
+SOVD1  KWBC     NCEP_NMC                         MD US  3881  -7687     0
+SOVD20 KWBC     NCEP_NMC                         MD US  3881  -7687     0
+SOVD2  KWBC     NCEP_NMC                         MD US  3881  -7687     0
+SOVD3  KWBC     NCEP_NMC                         MD US  3881  -7687     0
+SOVD4  KWBC     NCEP_NMC                         MD US  3881  -7687     0
+SOVD5  KWBC     NCEP_NMC                         MD US  3881  -7687     0
+SOVD6  KWBC     NCEP_NMC                         MD US  3881  -7687     0
+SOVD7  KWBC     NCEP_NMC                         MD US  3881  -7687     0
+SOVD8  KWBC     NCEP_NMC                         MD US  3881  -7687     0
+SOVD9  KWBC     NCEP_NMC                         MD US  3881  -7687     0

@@ -1,0 +1,19 @@
+! FL error file
+!
+ -1     ! Cannot open file !AS.  
+ -2     ! Cannot close file !AS.
+ -3     ! Cannot create file !AS.
+ -4     ! Cannot read file !AS.
+ -5     ! Cannot write to file !AS.
+ -6	! Cannot access file !AS.
+ -7	! Cannot rewind file !AS.
+ -8	! Cannot backspace in file !AS.
+ -9	! No file open with logical unit number !AS.
+-10 	! No data records in table file !AS.
+-11     ! No file for allowable time range !AS.
+-12	! Cannot scan directory !AS.
+-13	! No valid file for given type and cycle time.
+-14	! Cannot decode date from filename.
+-15	! Invalid date/time or template.
+-16	! Cannot find file in path: !AS
+-17	! Template wildcard (*) replacement is ambiguous.

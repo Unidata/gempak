@@ -1,0 +1,20 @@
+!	This is the error file for SNCROSS.
+!
+ -1	! Fatal error initializing TAE.
+ -2	! Fatal error reading TAE parameters.
+ -3	! GEMPLT initialization error.
+ -4	! Vertical coordinate for isentropes must be PRES.
+ -5	! There are no times in the file.
+ -6	! Fewer than four stations/times were selected.
+ -7	! Data buffer is too small.
+ -8	! Temperature or pressure data not available.
+ -9	! The station !AS cannot be found in the data set.
+-10	! Error setting up graph; check invalid LOG axis.
+-11	! Input !AS for PTYPE is invalid.
+-12	! Either input !AS for YAXIS or input for VCOORD is invalid.
+-13	! Parameter !AS is not computable.
+-14	! Parameter !AS is a character.
+-15	! The grid coordinates cannot be defined.
+-16	! Multiple station entry is invalid for time sections.
+-17	! Data at time !AS is not in the file.
+-18	! Wind data cannot be computed.

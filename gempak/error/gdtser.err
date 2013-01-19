@@ -1,0 +1,15 @@
+!	This is the error file for GDTSER.
+!
+  1	! Some points missing for plot of !AS.
+ -1	! Fatal error initializing TAE.
+ -2	! Fatal error reading TAE parameters.
+ -3	! Fatal error initializing GEMPLT.
+ -4	! Input for GPOINT is invalid.
+ -5	! Input for GLEVEL is invalid.
+ -6	! Input for GVCORD is invalid.
+ -7	! Input for PTYPE is invalid.
+ -8	! Error defining graph coordinates.
+ -9	! No points found for plot of !AS.
+-11	! Input for !AS in TAXIS is invalid.
+-12	! Time range is size zero.
+-13	! No grids found with times in GDATTIM.

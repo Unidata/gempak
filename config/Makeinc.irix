@@ -1,0 +1,33 @@
+OPSYS = IRIX
+
+#CC = cc
+CC = c99
+
+X11LIBDIR = 
+# ncep uses: -lXm -lXt -lX11 -lPW
+MOTIFLIBS = -L/usr/Motif-2.1/lib32 -lXm
+MOTIFINC  = -I/usr/Motif-2.1/include
+
+COPT = -DUNDERSCORE -D$(OPSYS) $(XCFLAGS) $(GEMINC) $(MOTIFINC) # -O # -g -DDEBUG
+FOPT =  $(XCFLAGS) $(GEMINC) $(MOTIFINC) #-O # -g -C
+NCOPT = "CFLAGS=$(XCFLAGS)" "FFLAGS=$(XCFLAGS)" "CXX= "
+JASPEROPT = 'CC=$(CC)' 'CFLAGS=$(XCFLAGS)' 'LDFLAGS=$(XCFLAGS)' '--disable-libjpeg'
+XML2OPT = 'CC=$(CC)' '--with-iconv'
+XMLDEP = -lpthread
+HDFOPT = "CFLAGS=$(XCFLAGS)" "FFLAGS=$(XCFLAGS)" "FC= " \
+	 "F77= " "F90= " "CPP= " "CXX= " "CXXCPP= " "LDFLAGS= " \
+	 "CPPFLAGS=-DNDEBUG" "PKG_CONFIG=$(OS_BIN)/pkg-config"
+
+#WITH-LIBICONV='--with-libiconv=no'
+WITH-LIBICONV='--without-iconv'
+
+CPLUS_COMMENT = -Xcpluscomm
+
+CFLAGS = $(COPT)
+CFLAGS_DB = $(COPT)
+FFLAGS = $(FOPT)
+LDFLAGS = -LD_MSG:off=171
+
+LDM_FLAGS = -D__STDC__
+
+#BUFRFLAGS = -DDEBUG

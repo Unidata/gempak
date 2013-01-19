@@ -1,0 +1,8 @@
+! SI error file
+!
+-1	! No report.
+-2	! No decodable fields in main body of report.
+-3	! The time - !AS - cannot be set.
+-4	! The station - !AS - cannot be set.
+-5	! Cannot get header information. Error in header format.
+-6	! Invalid verification time.

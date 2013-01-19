@@ -1,0 +1,1 @@
+cat pqact.gempak_decoders_grid pqact.gempak_decoders | sed 's/\/home\/gempak\/NAWIPS\/gempak\/tables/@GEMTBL@/g' | sed 's/\/home\/gempak\/NAWIPS\/gempak/@GEMPAK@/g'

@@ -1,0 +1,40 @@
+GDFILE  gefs:01!gefs:02!gefs:03!gefs:04!gefs:05!gefs:06!gefs:07!gefs:08!gefs:09!gefs:10!gefs:11!gefs:12!gefs:13!gefs:14
+GDATTIM fall
+GLEVEL  0
+GVCORD  none
+PANEL   0
+SKIP    0
+SCALE   0
+GDPFUN  pmsl
+TYPE    c
+CONTUR  3/3
+CINT    8
+LINE    30/1/2!29!28!27!26!25!24!23!22!21!20!19!18!17
+FINT    
+FLINE   
+HILO    
+HLSYM   1.5
+CLRBAR  31
+WIND    
+REFVEC  
+TITLE   31/-1/~ PMSL Ensembles
+TEXT    1/21//hw
+CLEAR   y
+GAREA   nam
+IJSKIP  yes
+PROJ    def
+MAP     32/1/1+31/1/2
+MSCALE  
+LATLON  0
+DEVICE  xw
+STNPLT  
+SATFIL  
+RADFIL  
+IMCBAR  31/v/CL/.005;.5/.8;.01
+LUTFIL  default
+STREAM  
+POSN    4
+COLORS  2
+MARKER  2
+GRDLBL  5
+FILTER  no

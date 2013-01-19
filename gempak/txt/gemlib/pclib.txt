@@ -1,0 +1,76 @@
+ 
+
+             Parameter Conversion (PC) Library 
+
+ 
+The Parameter Conversion Library is used to compute the desired 
+meteorological parameters for both upper-air and surface programs.
+
+In order to use the package the programmer must call PC_INIT first.  
+This subroutine provides information about the data set to the 
+conversion package.  In particular, it specifies the names of the 
+parameters which are included in the data set.  If PC_INIT is called 
+a second time, all calls to define output parameters must be 
+repeated.
+ 
+PC_STIM defines the current data set time to GEMPAK.  It is not used
+currently, but parameters which encode the time may be defined in 
+the future.
+ 
+There are two types of parameters which can be computed by the PC
+subroutines.  LEVEL parameters include parameters computed at a 
+specific level of the atmosphere as well as layer parameters which
+are computed for a layer specified by two levels.  Level parameters
+at a specific level include TMPC and MIXR.  Layer parameters, such as
+RICH and BVFQ, use the two significant levels bounding the input 
+level.  STATION parameters, such as SELV and stability indices, have
+a single value associated with the station.
+
+Conditions may now be defined for each type of parameter.  These 
+conditions are defined in the subroutines listed below.  The 
+conditional functions >, < and = will return data only if the 
+condition is met.  For example, TMPC > 0 will only return reports at
+levels where the temperature is greater than or equal to 0.  The 
+conditional functions +, -, *, and / will perform the required 
+function on the specified parameters.  For example, if TMPC = 12.34,
+TMPC * 10 will return 123.4.  Finally, parameters requiring user
+input use the symbols !, % and $.  By convention, ! precedes a layer
+depth, % precedes the numerical value of the vertical coordinate and 
+$ specifies a storm direction. 
+
+The PC library contains subroutines to define parameters to be
+computed and corresponding subroutines to perform the computations.
+The following chart lists these subroutines and the types of
+parameters for which they are designed. 
+
+The STATION & LEVEL subroutines should be used whenever the 
+parameters are to be returned in a single array and the distinction
+between level and station parameters is important.  Programs such 
+as SNMAP and SFLIST call these subroutines.
+
+
+     TYPE           DEFINE         COMPUTE         CONDITIONS
+---------------     -------        -------         ----------
+
+STATION & LEVEL     PC_DFLS        PC_CMVS         PC_SLCD
+
+
+STATION             PC_DFST        PC_CMST         PC_SSCD
+
+
+LEVEL               PC_DFLV        PC_CMLV         PC_SLCD
+                                   PC_CMVR  
+
+All of the DEFINE subroutines will initialize the compute flags,
+CMPFLG.  Any parameter which cannot be identified as computable by
+the DEFINE subroutine called will be set to FALSE.  When the COMPUTE 
+subroutines are called, any non-computable parameter will be
+returned with the missing data value.  This is a change from
+earlier versions of the PC subroutines.  Note that, if PC_DFST and
+PC_DFLV are to be called separately, PC_DFLV must be called first. 
+
+In all cases, PC_SSTN must be called to save the station information
+before any COMPUTE subroutine is called.
+
+The routines PC_FLVL and PC_INTP are also available for general use.
+ 

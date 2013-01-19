@@ -1,0 +1,22 @@
+C************************************************************************
+C* DLCMN.CMN								*
+C*									*
+C* These common areas are used in the layer grid diagnostics package.	*
+C**									*
+C* Log:									*
+C* T. Lee/SAIC		 3/05						*
+C* T. Lee/SAIC		 3/05	Added MAXARG
+C************************************************************************
+	INCLUDE	'DGCMN.CMN'
+C************************************************************************
+C*  / LYRDIAG /								*
+C*									*
+C* This common area contains information for layer diagnostics.		*
+C************************************************************************
+	PARAMETER	(MAXARG=16)
+C!			Maximum number of layer function arguments
+	COMMON  /LYRDIAG/
+     +		lyrlvs (2,LLMXLV),
+C!			List of levels/layers
+     +		lyrnid
+C!			ID # to name LYR_ output

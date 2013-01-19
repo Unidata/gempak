@@ -1,0 +1,34 @@
+                    GPMXPLT
+
+This utility uses the specified GAREA, DEVICE and PROJECTION and
+computes a new GAREA that will fill the device, leaving the original
+GAREA in the center.  The new GAREA is obtained from the resulting
+gemglb.nts file.  This utility is used to help fill in the horizontal
+gaps that can result in rendering the image to a device, whether it is
+a GIF image for a postscript image.  The utility is used in surface map
+and watch box plotting routines at the AWC.
+
+Typically, a center point or geographic area of coordinates is passed
+to the GPMXPLT program through a shell script.  Since output is kept in
+the resulting gemglb.nts file, additional applications such as GDCNTR,
+SFMAP, GPMAP, etc. can reference the gemglb.nts file for the GAREA,
+DEVICE and PROJECTION information.  In other words, don't specify the 
+GAREA, DEVICE, or PROJ command in the subsequent GEMPAK application(s).
+
+Examle use vis csh:
+gpmxplt << EOF > /dev/null
+   GAREA + $area
+   PROJ = $proj
+   DEVICE = $device
+   PANEL = 0
+   R<CR>
+   Exit
+EOF
+gpmap << EOF1 > /dev/null
+# Don't mention GAREA, DEVICE, or PROJ.  These were set up by gpmxplt
+   MAP = ...
+   CLEAR = Y
+   ...
+R<CR>
+   Exit
+EOF1

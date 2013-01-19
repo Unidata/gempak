@@ -1,0 +1,5 @@
+$CC $CFLAGS -c dcxmos.c
+$FC $FFLAGS -c dcgfsx.f
+$FC $LDFLAGS -o $OS_BIN/dcxmos *.o \
+	$BRIDGE $GEMLIB $CGEMLIB
+$RM *.o

@@ -1,0 +1,211 @@
+C************************************************************************
+C*                                                                      *
+C* Log:                                                                 *
+C* J. Ator/NCEP		 8/97	                                        *
+C* D. Kidwell/NCEP	10/98	Moved data statements elsewhere         *
+C* J. Ator/NCEP		12/98	Added YEAR, MNTH, DAYS to /INTF/	*
+C* D. Kidwell/NCEP	 6/99 	Added more parms for PIREPS             *
+C* D. Kidwell/NCEP	 8/99 	(irhocb,irhoct) -> (irhcbf,irhctf)      *
+C* J. Ator/NCEP		11/99	Move field declaration elsewhere	*
+C* D. Kidwell/NCEP	 1/00 	Added icrsid for PIREPS                 *
+C************************************************************************
+	PARAMETER	( MXNLYR = 5 )
+C*					Maximum number of layers of icing,
+C*					turbulence, or cloud/sky cover data
+C*					that will be decoded from a PIREP
+C*					or RECCO report 
+C*
+	PARAMETER	( MXWLYR = 3 )
+C*					Maximum number of layers of present
+C*					weather data that will be decoded
+C*					from a PIREP or RECCO report 
+C*
+	PARAMETER	( MXLENF = 20 )
+C*					Maximum length of a field
+C*					(i.e. group) that can be read
+C*					using AF_GFLD 
+C*
+C************************************************************************
+C*  / FIELDS /								*
+C*									*
+C*  This common area contains groups of "like-type" (i.e. letter,	*
+C*  number, or non-alphanumeric) as well as other associated output	*
+C*  from subroutine AF_BKGP for a particular input string of data.	*
+C************************************************************************
+	PARAMETER	( MXNFLD = 100 )
+C*					Maximum number of groups 
+C*
+	INTEGER		NALNMR, NMR, ALPHA
+C*
+	PARAMETER	( NALNMR = 0,
+C*					Indicator for non-alphanumeric
+C*					group type 
+     +			  NMR    = 1,
+C*					Indicator for numeric group type 
+     +			  ALPHA  = 2 )
+C*					Indicator for alphabetic group
+C*					type 
+C*
+	CHARACTER	fields*(MXLENF)
+C*
+	COMMON	/ FIELDS /	nflds,
+C*					Number of groups stored 
+C*
+     +				fields ( MXNFLD ),
+C*					Groups 
+C*
+     +				lensf ( MXNFLD ),
+C*					Lengths of groups 
+C*
+     +				itypsf ( MXNFLD ),
+C*					Types of groups 
+C*					  ( NALNMR = non-alphanumeric
+C*					    NMR = numeric
+C*					    ALPHA = alphabetic )
+C*
+     +				irfnsf ( MXNFLD )
+C*					Indicator as to which other groups
+C*					each group was concatenated with
+C*					in the input string 
+C*
+C************************************************************************
+C*  / PNVTBL /								*
+C*									*
+C*  This common area contains information from the PIREP navaid table.	*
+C************************************************************************
+	CHARACTER	pdnvid ( LLSTFL )*8
+C*
+	REAL		pdlat ( LLSTFL ), pdlon ( LLSTFL )
+C*
+	COMMON	/ PNVTBL /	npde,
+C*					Number of table entries 
+     +				pdnvid,
+C*					Navaid ID 
+     +				pdlat,
+C*					Latitude 
+     +				pdlon
+C*					Longitude 
+C*
+C************************************************************************
+C*  / AWPTBL /								*
+C*									*
+C*  This common area contains information from the AIREP waypoint table.*
+C************************************************************************
+	PARAMETER	( LLSTF2 = 26000 )
+C*
+	CHARACTER	adiccn ( LLSTF2 )*2, adicpv ( LLSTF2 )*2,
+     +			adwypt ( LLSTF2 )*8
+C*
+	REAL		adlat ( LLSTF2 ), adlon ( LLSTF2 )
+C*
+	INTEGER		adnswp ( LLSTF2 )
+C*
+	COMMON	/ AWPTBL /	nade,
+C*					Number of table entries 
+     +				adwypt,
+C*					Waypoint ID 
+     +				adlat,
+C*					Latitude 
+     +				adlon,
+C*					Longitude 
+     +				adiccn,
+C*					ICAO country code 
+     +				adicpv,
+C*					ICAO province code 
+     +				adnswp
+C*					Total number of table entries
+C*					which use this waypoint ID 
+C*
+C************************************************************************
+C*  / BULTYP /								*
+C*									*
+C*  This common area contains the bulletin type.			*
+C************************************************************************
+	CHARACTER	AMDAR*5, AIREP*5, PIREP*5, RECCO*5, LEMON*5,
+     +			bultyp*5
+C*
+	PARAMETER  ( AMDAR = 'AMDAR', AIREP = 'AIREP', PIREP = 'PIREP',
+     +		     RECCO = 'RECCO', LEMON = 'LEMON'  )
+C*
+	COMMON  / BULTYP /	bultyp
+C*					Bulletin type 
+C*
+C************************************************************************
+C*  / LOGMSG /								*
+C*									*
+C*  This common area contains a string used to hold messages that are	*
+C*  to be written to the decoder log.					*
+C************************************************************************
+	CHARACTER	logmsg*200
+C*
+	COMMON	/ LOGMSG /	logmsg
+C*					String to hold a message to be
+C*					written to decoder log 
+C*
+C************************************************************************
+C*  / INTF /								*
+C*									*
+C*  This common area contains the interface arrays.			*
+C************************************************************************
+	PARAMETER	(     MNM1 = ( MXNLYR - 1 ),
+     +			    MNM1T3 = ( MNM1 * 3 ),
+     +			    MNM1T4 = ( MNM1 * 4 ),
+     +			    MNM1T5 = ( MNM1 * 5 )     )
+C*
+	PARAMETER	(     MWM1 = ( MXWLYR - 1 ),
+     +			    MWM1T2 = ( MWM1 * 2 )     )
+C*
+	PARAMETER 	( NRIMN = 103 )
+C*					Number of real interface
+C*					mnemonics
+C*
+	PARAMETER 	( NRSIMN = 28 )
+C*					Number of real single-level
+C*					interface mnemonics
+C*
+	COMMON	/ RINTFP /
+     +	   irslat  , irslon  , irdrct  , irsknt  , irtmpc  , irdwpc  ,
+     +	   irrelh  , irsstc  , irpmsl  , irflvl  , irpsal  , irpoaf  ,
+     +	   iracns  , irtadr  , irpcat  , irmdvg  , irdayw  , irvsby  ,
+     +	   iryear  , irmnth  , irdays  , irhour  , irminu  ,
+     +	   irwdr1  , irwsk1  ,
+     +	   irvsig  , irpres  , irhgtm  ,
+     +	   irntrb  , irdgot ( MXNLYR ) , 
+     +		     irhbot ( MXNLYR ) , irhtot ( MXNLYR ) ,
+     +		     irfqot ( MXNLYR ) , irtpot ( MXNLYR ) ,
+     +	   irnicg  , irafic ( MXNLYR ) ,
+     +		     irhboi ( MXNLYR ) , irhtoi ( MXNLYR ) ,
+     +		     irtpoi ( MXNLYR ) ,
+     +	   irnpwx  , irhbwx ( MXWLYR ) , irhtwx ( MXWLYR ) ,
+     +	   irncld  , irclam ( MXNLYR ) , ircltp ( MXNLYR ) ,
+     +		     irhcbf ( MXNLYR ) , irhctf ( MXNLYR )
+C*					Pointers to relative locations of
+C*					real interface mnemonics within
+C*					rimnem ( ).  These pointers will be
+C*					set by AF_IFSP and then used as
+C*					indices into the real interface
+C*					values array rivals ( ).
+C*
+	REAL		rivals ( NRIMN )
+C*
+	COMMON	/ RINTFV /	rivals
+C*					Real interface values 
+C*
+	PARAMETER 	( NCIMN = 7 )
+C*					Number of character interface
+C*					mnemonics
+C*
+	COMMON	/ CINTFP /
+     +	   icacid  , icactp  , icrpid  , icrsid  ,
+     +	   icwcod ( MXWLYR )
+C*					Pointers to relative locations of
+C*					character interface mnemonics within
+C*					cimnem ( ).  These pointers will be
+C*					set by AF_IFSP and then used as
+C*					indices into the character
+C*					interface values array civals ( ) 
+C*
+	CHARACTER	civals ( NCIMN )*8
+C*
+	COMMON	/ CINTFV /	civals
+C*					Character interface values 

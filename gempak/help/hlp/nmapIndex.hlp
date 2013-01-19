@@ -1,0 +1,96 @@
+#----------------------------------------------------------------------------
+#
+# nmapIndex.hlp
+#
+# This is the NMAP help files table.  Each line consists of three fields.
+# The first field is a unique ID number assigned to the corresponding help
+# file.  The second field is the help panel title.  The third field is the
+# path to the help file.  Fields are separated by '|'.  Currently the
+# maximum number of help files is 50.
+#
+# Log:
+# S. Wang/GSC		10/96	Original
+# M. Linda/GSC		12/96	Edited documentation, added common directory
+# S. Wang/GSC		03/97   Change name from nmap.readme to nmapHlp.index
+# S. Wang/GSC		03/97   Add "Print setup" item
+# S. Schotz/NCEP	05/97	Updated product generation help, added ship
+# S. Jacobs/NCEP	 6/98	Added "What's New" item
+# S. Schotz/NCEP	 2/99 	Updated help, added Cursor and Hide/Show help 
+# A. Hardy/GSC		 6/99   Changed Cursor to Seek Functions
+# A. Hardy/GSC		12/99   Added Cloud Height help and updated Seek help
+# S. Schotz/NCEP	 1/00	Added NMAP2 help
+# D.W.Plummer/NCEP	 2/00	Added Graph-to-Grid help
+# S. Jacobs/NCEP	 7/00	Added Hot Keys help
+# S. Schotz/NCEP	 9/01	Added SPF help
+# S. Schotz/NCEP	11/01	Added Group and Modify helps, updated 
+# S. Schotz/NCEP	01/02	Added CCFP help
+# S. Schotz/NCEP	03/02	Added Data_Access_Config and Roam help
+# S. Schotz/NCEP	03/02	Added Product Generation Layer help
+# S. Schotz/NCEP	 5/02	Added Locator, Reload, Stop, and Wipe helps, 
+#                               removed nmap2 specific help
+# S. Schotz/NCEP	 6/02	Added Layer Product File help
+# J. Wu/SAIC		 7/03   Added surface and upper air parameter help
+# A. Hardy/NCEP		 9/03	Added Option help for cursor and general
+#                               renamed dwell rate, enhancement and locator
+# T. Piper/SAIC		02/04	Renamed from nmapHlp.index and moved help
+#					files to $GEMHLP/hlp
+# D. Kidwell/NCEP	 6/04	Added Product Generation BUFR help
+# E. Safford/SAIC	08/04	added product generation Element help
+# E. Safford/SAIC	08/04	added product generation Filter help
+# E. Safford/SAIC	08/04	added product generation Smear help
+# T. Lee/SAIC		09/04	added bin hours help
+# E. Safford/SAIC	03/05	added product generation Show Un-Group, Show
+#				   All Group, change all Product Generation
+#				   entries to PGEN
+# C. Bailey/HPC          3/05   added Export To Gif help
+#----------------------------------------------------------------------------
+#
+# ID | Help Panel Title		  | Help File Path And Name
+#----------------------------------------------------------------------------
+01   | NMAP Overview		     | $GEMHLP/hlp/nmap.hlp
+02   | Data Selection		     | $GEMHLP/hlp/DataSelection.hlp
+03   | Map-Selection		     | $GEMHLP/hlp/MapSelection.hlp
+04   | Map-Selection-Custom	     | $GEMHLP/hlp/CustomMapDef.hlp
+05   | Loop Control Buttons	     | $GEMHLP/hlp/loop_ctrl.hlp
+06   | Error Window		     | $GEMHLP/hlp/ErrorMessage.hlp
+07   | Zoom			     | $GEMHLP/hlp/zoom.hlp
+08   | Unzoom			     | $GEMHLP/hlp/unzoom.hlp
+09   | Print Setup		     | $GEMHLP/hlp/print.hlp
+10   | Option - Color Enhancement    | $GEMHLP/hlp/color_enhance.hlp
+11   | Option - Dwell Rate           | $GEMHLP/hlp/dwell_rate.hlp
+12   | Station Model Editing	     | $GEMHLP/hlp/StationModel.hlp
+13   | PGEN - Basic                  | $GEMHLP/hlp/Pgen_Basic.hlp
+14   | PGEN - Group	             | $GEMHLP/hlp/Pgen_Group.hlp
+15   | PGEN - Modify                 | $GEMHLP/hlp/Pgen_Modify.hlp
+16   | Line Attributes		     | $GEMHLP/hlp/attributes.hlp
+17   | What's New		     | $GEMHLP/hlp/WhatsNew.hlp
+18   | Seek 			     | $GEMHLP/hlp/Seek.hlp
+19   | Hide/Show Loop		     | $GEMHLP/hlp/Hide_show.hlp 
+20   | Cloud Height 		     | $GEMHLP/hlp/CloudHght.hlp
+21   | PGEN - Graph-to-Grid          | $GEMHLP/hlp/Pgen_GrphGd.hlp
+22   | Hot Keys			     | $GEMHLP/hlp/HotKeys.hlp
+23   | Procedures		     | $GEMHLP/hlp/Procedures.hlp
+24   | PGEN - CCFP	             | $GEMHLP/hlp/Pgen_CCFP.hlp
+25   | Data Access-Configuration     | $GEMHLP/hlp/DataAccess_Conf.hlp
+26   | PGEN - Layer	             | $GEMHLP/hlp/Pgen_Layer.hlp
+27   | Roam			     | $GEMHLP/hlp/Roam.hlp
+28   | Option - Locator              | $GEMHLP/hlp/Locator.hlp
+29   | Reload			     | $GEMHLP/hlp/Reload.hlp
+30   | Stop			     | $GEMHLP/hlp/Stop.hlp
+31   | Wipe			     | $GEMHLP/hlp/Wipe.hlp
+32   | PGEN - LPF	             | $GEMHLP/hlp/Pgen_LPF.hlp
+33   | Parameters - Surface	     | $GEMHLP/hlx/sfparm.hl2
+34   | Parameters - Upper Air	     | $GEMHLP/hlx/snparm.hl2
+35   | Option - General Description  | $GEMHLP/hlp/Opt_General.hlp
+36   | Option - Cursor               | $GEMHLP/hlp/Opt_Cursor.hlp
+37   | PGEN - BUFR	             | $GEMHLP/hlp/Pgen_BUFR.hlp
+38   | PGEN - Elements               | $GEMHLP/hlp/Pgen_Elements.hlp
+39   | PGEN - Filter                 | $GEMHLP/hlp/Pgen_Filter.hlp
+40   | PGEN - Smear                  | $GEMHLP/hlp/Pgen_Smear.hlp
+41   | Bin Hours                     | $GEMHLP/hlp/Bin_Hours.hlp
+42   | PGEN - Change Group           | $GEMHLP/hlp/Pgen_ChangeGroup.hlp
+43   | PGEN - Ungroup                | $GEMHLP/hlp/Pgen_Ungroup.hlp
+43   | PGEN - Ungroup All            | $GEMHLP/hlp/Pgen_UngroupAll.hlp
+44   | PGEN - Show All Grouped       | $GEMHLP/hlp/Pgen_ShowAllGroup.hlp
+45   | PGEN - Show Un-Grouped        | $GEMHLP/hlp/Pgen_ShowUngroup.hlp
+46   | Export To GIF                 | $GEMHLP/hlp/make_gif.hlp

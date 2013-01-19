@@ -1,0 +1,28 @@
+     MRGDAT
+
+     MRGDAT is a logical variable indicating whether sounding data is to be 
+     merged or unmerged.  The type of unmerged data follows a slash:
+
+		merge flag / unmerged data type
+
+     The valid unmerged data types are:
+
+	1	=	mandatory data below 100 mb  ( TTAA, PPAA, TRPA, 
+			MXWA )
+	2	=	mandatory and significant level data below 100 mb
+			( TTAA, PPAA, TRPA, MXWA, TTBB, PPBB )
+	3	=	mandatory and significant level data below and
+			above 100 mb  ( TTAA, PPAA, TRPA, MXWA, TTBB, PPBB,
+			TTCC, PPCC, TRPC, MXWC, TTDD, PPDD )
+
+     The default is 3.  If the data is merged, the data type is ignored.
+
+     When MRGDAT is used to create a sounding file, it indicates whether 
+     the file is to contain merged or unmerged data.  Unmerged datasets 
+     will store the data as separate parts.  Merged data sets contain 
+     values for each parameter at each level.
+ 
+     If MRGDAT is used in a program to list data, the data will be merged 
+     if MRGDAT = YES.  If MRGDAT = NO, the separate parts requested by the 
+     type will be listed.
+

@@ -1,0 +1,30 @@
+
+
+                         Access Subroutines
+
+
+The subroutines in this group are used for initialization, termination,
+and changing modes.
+
+GINITP is the first subroutine called by any program that uses GEMPLT.
+The first time this initialization routine is called, the GPLT sub-
+process is spawned and communication is set up between the program and
+the sub-process.  When, at a later time, a user executes another program
+from the same window, the second program's call to GINITP establishes
+communication with the same GPLT sub-process.
+
+As GINITP is called, a mode is specified.  Mode 1 indicates that
+plotting will be done in Earth (latitude/longitude) coordinates.  Mode
+2 is used for drawing graph (X/Y) plots.  Graphs may not be defined or
+drawn in Earth mode and map projections may not be defined or plotted
+in graph mode.  The transformations for both modes are retained in GPLT.
+
+The mode may be changed during a program's execution at any time by a
+call to GSMODE.  As the mode is changed, the appropriate transformations
+are activated internally to GEMPLT.  The currently set mode is
+determined by calling GQMODE.
+
+GENDP is the last GEMPLT subroutine called by an application program.
+An option exists to stop GPLT and the device driver sub-processes or to
+retain them for programs executed later.  GENDP also causes any data,
+buffered internally by GEMPLT, to be flushed.

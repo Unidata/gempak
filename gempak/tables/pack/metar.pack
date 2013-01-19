@@ -1,0 +1,46 @@
+!METAR.PACK
+!
+!This table is the packing table for DCMTR, which decodes Metar data.
+!
+!*Log:
+!
+!D. Kidwell  	 6/96
+!K. Tyle/GSC	 1/97		Revised	
+!K. Tyle/GSC	 2/97		Change TMAX to TDXC; TMIN to TDNC;
+!				T06X to T6XC; T06N to T6NC
+!K. Tyle/GSC	 3/97		Increase range of PMSL
+!D. Kidwell  	 4/98		Change HSUN to MSUN; increase max VSBY
+!D. Kidwell  	 5/98		Change WNUM min; add CEIL          
+!D. Kidwell  	 1/99		Add P01I; change max for P03I and SNOW
+!A. Hardy/GSC    4/99		Changed accuracy for VSBY from .1 to .01
+!				
+!
+PMSL       880.       1080.       .1
+ALTI        24.        34.       .01
+TMPC      -100.        60.       .1
+DWPC      -100.        60.      .1
+SKNT         0.        126.      1.
+DRCT         0.        360.     10.
+GUST         0.        250.      1.
+WNUM        -3.     512000.      1.
+CHC1         0.      18009.      1.
+CHC2         0.       8009.      1.
+CHC3         0.       8009.      1.
+VSBY         0.        101.       .01
+P03D	     0.		8999.	 1.
+P03I	     0.		10.2	 .01  
+MSUN	     0.	       999.	 1.
+SNOW	     0.	       254.0	 1.
+WEQS	     0.	       100.0	  .1
+P24I	     0.	        40.	 .01 
+TDXC      -100.         60.      .1
+TDNC      -100.         60.      .1
+P03C       -10.         10.      .1
+CTYL        -1.          9.     1.
+CTYM        -1.          9.     1.
+CTYH        -1.          9.     1.
+P06I         0.         20.      .01
+T6XC	  -100.         60.      .1
+T6NC      -100.         60.      .1
+CEIL         0.        800.      1.
+P01I         0.          5.1     .01

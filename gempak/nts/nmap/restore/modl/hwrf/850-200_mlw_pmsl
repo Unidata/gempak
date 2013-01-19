@@ -1,0 +1,35 @@
+!
+! Restore File : 850-200 mb mlw_pmsl
+!
+! Log:
+! J. Carr/HPC	 7/98	Initial creation
+! A. Robson/HPC  5/05   Modified to make separate 850-400 and then 850-250 mb files
+! M. Klein/HPC   6/07   Change to 850-250 mean layer
+
+GLEVEL  200:850!0
+GVCORD  pres!none
+SKIP    0
+SCALE   0
+GDPFUN  vecr(lyr_swtm(urel|850-200),lyr_swtm(vrel|850-200))     !sm9s(pmsl)
+!GDPFUN  squo(3,vadd(vadd(vlav(wnd@850:700),vlav(wnd@500:250)),vlav(wnd@700:500))  !sm9s(pmsl)
+TYPE    b!c
+CONTUR  2
+CINT    0!4
+LINE    0!20//3
+FINT    
+FLINE   
+HILO    0!26;2/H#;L#/1020-1070;900-1012//30;30/y
+HLSYM   0!2;1.5//21//hw
+CLRBAR  0
+WIND    bk10/0.9/1.4/112!bk0
+REFVEC  
+TITLE   1/-2/~ ? 850-200 MB MLW and PMSL!0
+TEXT    1/22//hw 
+STNPLT  
+STREAM  
+POSN    4
+COLORS  2
+MARKER  2
+GRDLBL  5
+FILTER  yes
+ijskip  0

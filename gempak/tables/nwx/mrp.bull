@@ -1,0 +1,24 @@
+! MRP.BULL
+!
+! Location information for the following product:
+! Techniques_Development_Laboratory_Marine_Product.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+AGAK40 KWNO     NCEP_NCO                         MD US  3881  -7687     0
+AGUS40 KWNO     NCEP_NCO                         MD US  3881  -7687     0
+AGUS41 KWNO     NCEP_NCO                         MD US  3881  -7687     0
+AGUS42 KWNO     NCEP_NCO                         MD US  3881  -7687     0
+AGUS43 KWNO     NCEP_NCO                         MD US  3881  -7687     0
+AGUS44 KWNO     NCEP_NCO                         MD US  3881  -7687     0
+AGUS45 KWNO     NCEP_NCO                         MD US  3881  -7687     0
+AGUS46 KWNO     NCEP_NCO                         MD US  3881  -7687     0
+AGUS47 KWNO     NCEP_NCO                         MD US  3881  -7687     0
+FQGX40 KWBC     NCEP_NMC                         MD US  3881  -7687     0
+FQUS20 KWBC     NCEP_NMC                         MD US  3881  -7687     0
+FQUS21 KWBC     NCEP_NMC                         MD US  3881  -7687     0
+FQUS22 KWBC     NCEP_NMC                         MD US  3881  -7687     0
+FQUS23 KWBC     NCEP_NMC                         MD US  3881  -7687     0

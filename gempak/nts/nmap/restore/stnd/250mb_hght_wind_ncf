@@ -1,0 +1,37 @@
+!
+! Restore File : 250mb_hght_wind_ncf
+!
+! Log:
+! J. Carr/HPC	 2/98	Initial creation
+!
+GLEVEL  250
+GVCORD  pres
+PANEL   0                                                                       
+SKIP    1/1;-1
+SCALE   0                             ! -1
+GDPFUN  knts((mag(wnd)))              !(hght)  ! kntv(wnd)
+TYPE    c                             !c       !b
+CONTUR  1                                                                       
+CINT    30;50;70;90;110;130;150       ! 12
+LINE    27/5/2/1               ! 20/1/2/1
+FINT    70;90;110;130;150
+FLINE   0;25;24;29;7;15
+HILO    
+HLSYM                                                                           
+CLRBAR  1                                                                       
+WIND    18/1/1
+REFVEC                                                                          
+TITLE   5/-1/~ @  HEIGHTS, ISOTACHS AND WIND (KTS)!0
+TEXT    1/21//hw                                                                
+CLEAR   yes                                                                     
+STNPLT                                                                          
+SATFIL                                                                          
+RADFIL                                                                          
+STREAM                                                                          
+POSN    4                                                                       
+COLORS  2                                                                       
+MARKER  2                                                                       
+GRDLBL  5                                                                       
+LUTFIL  none
+FILTER  yes
+FILTER  yes

@@ -1,0 +1,31 @@
+     SNEFIL
+
+     SNEFIL is the name of the sounding edit file to be used to update a 
+     sounding data file.
+
+     SNEFIL is a text file which may be created using the program SNLIST 
+     with F as an output device.  A text editor may be used to create or 
+     change the edit file.
+  
+     The parameters to be edited must be specified at the beginning of 
+     the edit file.  For example:
+  
+		SNPARM = PRES;TMPF;DWPF
+  
+     If the output sounding file exists, the data set parameters must be 
+     the same as those listed in the edit file.  Station information, such 
+     as latitude, longitude, and elevation, cannot be changed with SNEFIL.  
+     Use GEMPAK program SNSTNS to update station information in a sounding 
+     file.
+ 
+     If the file does not exist, a new, unpacked file with these parameters 
+     will be created.
+     
+     The data follows the parameter list.  Only level data will be added 
+     to the file.  Stability indices from STNDEX will be ignored.  The
+     data should not include undecoded text (raw reports), although the
+     output sounding file, if it exists, may include undecoded text.
+
+     Stations and times which do not already exist in the surface data 
+     file will be added.
+

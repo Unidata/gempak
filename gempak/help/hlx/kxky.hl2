@@ -1,0 +1,19 @@
+     KXKY
+
+     KXKY specifies the size of a grid as two numbers separated by a 
+     semicolon:
+
+		kx ; ky
+
+     These numbers are KX and KY, which represent the number of grid points 
+     in the x- and y- directions.
+
+     If the projection is CED, these numbers may be DELTAX and DELTAY, the 
+     grid spacing in degrees in the x and y directions.  If the spacing is 
+     input, the first character in KXKY must be #.  For example:
+
+		KXKY = #2.5;2.0
+
+     will create a grid with 2.5 degree spacing in x (longitude) and 2.0
+     degree spacing in y (latitude).
+

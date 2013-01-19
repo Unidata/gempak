@@ -1,0 +1,225 @@
+
+DCSHEF VERSION 1
+
+    The GEMPAK DCSHEF program decodes raw SHEF reports from a real-time
+    data feed (via an LDM), or from a file containing raw SHEF reports.
+    The data is written to a GEMPAK surface file, or a BUFR file and an
+    ASCI listing file based on the options provided by the user.
+
+
+Parameters:
+
+DCSHEF will decode any valid SHEF parameter.  SHEF parameters that are
+decoded to a GEMPAK surface file are the following based on the NATIONAL
+WEATHER SERVICE STANDARD HYDROMETEOROLOGICAL EXCHANGE FORMAT (SHEF)  
+10-944 OCTOBER 28, 2005 Operations and Services Hydrologic Services 
+Program, NWSPD 10-9 Manual. This publication is available at:
+http://www.nws.noaa.gov/directives/
+
+!Original NWSM 10-944 Table 1 SHEF parameters
+!
+! # 1   PP = Total precipitation (IN) 'TPCI'
+! # 2   PT = Type of precipitation 'SHPT'
+! # 3   HG = River stage height (FT) 'RSHF'
+! # 4   SF = Depth of fresh snow (IN) 'SNEW'
+! # 5   SD = Total snow depth (IN) 'SNOW'
+! # 6   SW = Water equivalent of snow (IN) 'WEQS'
+! # 7, 8 & 9
+!       TA = Dry bulb temperature (F) 'TMPF' Minimum 'TDNF' and Maximum 'TDXF'
+! # 10  TM = Wet bulb temperature (F) 'TMWF'
+! # 11  TD = Dew point temperature (F) 'DWPF'
+! # 12  TW = Water temperature (F) 'WTMF'
+! # 13  XR = Relative humidity (%) 'RELH'
+! # 14  UD = Wind direction (degrees) 'DRCT'
+! # 15  US = Wind speed (miles/hour) 'SMPH'
+! # 16  UG = Wind gust speed at time of observation ( in miles per hour) 'GMPH'
+! # 17  UR = Peak wind direction (degrees) 'PWDR'
+! # 18  UP = Peak wind speed (miles/hour) 'PMPH'
+! # 19 & 20
+!       UQ = Combined wind direction and speed (in format SSS.SDDD where SSS.S is
+!       speed in miles per hour and DDD is direction in degrees) 'CWDS' - 2 parameters
+!       combined wind direction 'WDIR' and speed 'WSPD'
+!
+! # 21  PA = Pressure in inches of mercury (They are often reported in millibars 'PRSI'
+! # 22  PL = MSL pressure in inches of mercury (often reported in mb) 'PMSI'
+! # 23  XW = Present weather 'WWMO'
+! # 24  XP = Past weather 'PWWM'
+! # 25  XV = Horizontal visibility (miles) 'VSBY'
+! # 26  HR24 = Time duration always 24 HOURS for both GEMPAK and BUFR
+!
+! Total of 26 parameters from SHEF are decoded and converted to GEMPAK sfc file
+! The following are the GEMPAK parameters (4 characters)
+!
+PR24         0.      9999.       .01
+SHPT         0.      9999.       .01
+SHHG         0.      9999.       .01
+SF24         0.      9999.       .01
+SNOW         0.      9999.       .01
+WEQS         0.      9999.       .01
+TMPF      -999.      9999.       .01
+TDXF      -999.      9999.       .01
+TDNF      -999.      9999.       .01
+TMWF      -999.      9999.       .01
+DWPF      -999.      9999.       .01
+TWAF      -999.      9999.       .01
+RELH         0.      9999.       .01
+DRCT         0.      9999.       .01
+PKWD         0.      9999.       .01
+SMPH         0.      9999.       .01
+GMPH         0.      9999.       .01
+WSGU         0.      9999.       .01
+WDIR         0.      9999.       .01
+WSPD         0.      9999.       .01
+PRES         0.      9999.       .01
+PMSL         0.      9999.       .01
+PWWM         0.      9999.       .01
+WWMO         0.      9999.       .01
+VSBY         0.      9999.       .01
+HR24         0.      9999.       .01
+
+How to run DCSHEF?
+
+    The inputs are program options and the output file name or template.
+
+    Running the DCSHEF interactively with standard input, the -c
+    option must be used.  The INPUT FILES must also be specified.
+    For example:
+
+	dcshef -c YYMMDD/HHNN [other options] [SHEFPARM] [sheftable] 
+         [bufrtable] [output_file] [IFLAG] [PESTRINGS (optional)] < input_file
+    
+    A template may be used to specify the output file name.  The file
+    name template uses the date and time of the bulletin or report
+    to replace the following characters.
+
+	YY or YYYY	Year
+	MM		Month number
+	DD		Day
+	HH		Hour
+	NN		Minute
+
+REQUIREMENTS
+
+    In order to run DCSHEF with the iflag = 2 for GEMPAK output, specify 
+    the proper options and the following input files. For example,
+    
+    ./dcshef -v 3 -t 300 -d decod_dcshef.log -c 060802/1200 \
+     shef.prm \
+     shef_COOP3.tbl \
+     bufrtab.000 \
+     YYYYMMDD_HH.3.shef \
+     2 < sample_shef_bul
+ 
+    where "shef.prm" is the shef parm file, "shef_COOP3.tbl" is one of the
+    COOP station tables, "bufrtab.000" is the bufr table for type 000, 
+    "YYYYMMDD_HH.3.shef" is the template for the GEMPAK surface file output,
+    "2" is the flag for generating GEMPAK surface file output. 
+
+    In order to run DCSHEF with the flag 1 for BUFR output, in the run 
+    directory, one needs to set the following exports:
+
+    export DBNROOT=`pwd`
+    export DBNBUFRT=120
+    export GEMERR=`pwd`
+ 
+    One should also have the following directory created in the run 
+    directory:
+
+    tmp/
+
+   For IFLAG = 1, the BUFR output will be written into the tmp/ directory.
+
+   In addition to the BUFR output (BUFR.0.*) in the /tmp directory, three
+   empty files (.dcshef_* ) are also generated  from the NCEP BUFR library. 
+   This results from writing/reading BUFR files that is mandated by 
+   the OPENBF program since the program expects a logical unit to read/write
+   which remained as a legacy issue of the NCEP BUFR library. 
+
+   If one is interested in generating an ASCI output of the user defined
+   OHSHEF PECODES, provide the string of the PECODES after the IFLAG
+   option. The PECODES are a string of concatenated two-character PE codes
+   for which to additionally create ASCII text output, and where a "." as 
+   the second character of a PE code matches any single character. This 
+   is not a default option.  
+ 
+   The "pefile" is the detailed ASCI output from the user defined
+   PESTRINGS. The ASCI output file will be of the form YYYYMMDD.pe within
+   the run directory. The user defined ASCI listing can be exhaustive
+   depending on the choice of Physical Element letter codes of the SHEF 
+   library.  
+
+   A sample interactive script for generating a BUFR output is given below.
+   -------------------------------------------------------
+   #!/bin/bash
+   set -x
+   export DBNROOT=`pwd`
+   export DBNBUFRT=120
+   export GEMERR=`pwd`
+   #
+   # Create the /tmp directory in the run directory
+   # if not created for writing the bufr output
+   #
+   ./dcshef -v 3 -t 300 -d decod_dcshef.log -c 060802/1200 \
+   shef.prm \
+   shef_COOP3.tbl \
+   bufrtab.000 \
+   gemdummy \
+   1 A.E.G.P.R.S.T.U.X. < sample_shef_bul
+   ------------------------------------------------------------- 
+   The output BUFR file will be written inside the /tmp directory.
+   The "gemdummy" for flag = 1 will just be an empty GEMPAK surface
+   file.
+    
+ 
+INPUT FILES
+
+    SHEFPARM - This file describes the NWS SHEF manual PE codes and 
+    conversion factors. The name of this file is "shef.prm" which is
+    used in the SHEF NWS DECODER ROUTINES. "shef.prm" resides in $GEMTBL/pack 
+    Note that the GEMPAK packing file is a different file.
+
+    SHEFTABLE - This file contains the SHEF station table.
+    Since there are more than 50,000 stations, we have created
+    multiple SHEF stations of size 4000 containing primarily COOP 
+    stations. The COOP station tables are : shef_COOP1.tbl
+    shef_COOP2.tbl, shef_COOP3.tbl, shef_COOP4.tbl.
+    The master COOP station table is shef_COOP.tbl
+    The whole shef (master) station table is : shef.master.tbl
+    These files reside in $GEMTBL/stns.
+ 
+    BUFRTABLE - This file contains the BUFR tables corresponding
+    to SHEF data. The relevant BUFR tables for SHEF are 
+    bufrtab.000, bufrtab.001, bufrtab.255
+    These table files are in $GEMTBL/bufrlib
+
+    OUTPUT FILE - This file contains the template for the GEMPAK
+    surface output file. For example YYYYMMDD_HH.shef where
+    YYYYMMDD_HH corresponds to 4 digit year, two digit months, 
+    day and hour respectively. 
+
+    IFLAG - Integer flag for either a BUFR output file or a GEMPAK
+    output file. IFLAG = 1 is for BUFR output and IFLAG =2 is for
+    GEMPAK output.
+
+    PESTRINGS Physical Element Code for the SHEF decoder. 
+    String of concatenated two-character PE codes for which to 
+    additionally create ASCII text output, and where a "." as 
+    the second character of a PE code matches any single character.                         
+    For the extensive list of PE codes, see Table 1. Physical Elements
+    Codes - PE DTSEP of the SHEF manual. The users need to specify
+    only the first letter of the PE codes. For A.E.G.P.R.S.T.U.X.
+    stands for all elements starting with A which is Agricultural
+    Data. There are seven A codes AD, AF, AG, AM, AT, AU, AW.
+    AF is Surface frost intensity, AG is Percent of green 
+    vegetation (%). E* are parameters for Evaporation, G* are  
+    parameters for Ground Frost and Ground State, P* are for
+    Pressure and Precipitation, R* are for Radiation, S* are for
+    Snow data, T* are for Temperature data, U* are for Wind data
+    and X* are for Weather Codes.
+    
+    GEMPAK parameter table file "shef.pack" is passed through as
+    a default value in the c decoder driver program "dcshef.c" 
+    This file resides in $GEMTBL/pack.
+
+   
+

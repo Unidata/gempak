@@ -1,0 +1,15 @@
+GDFILE  Grid file                                                               
+GFUNC   Scalar grid                                                             
+GDATTIM Grid date/time                                                          
+GLEVEL  Grid level                                                              
+GVCORD  Grid vertical coordinate                                                
+GBTBLS  Input GRIB decoding tables                                              
+GBFILE  GRIB data file name                                                     
+VERCEN  PDS byte_4/byte_5/byte_6/byte_26                                        
+PDSVAL  GRIB PDS grid identifier overrides                                      
+PRECSN  Packing precision                                                       
+WMOHDR  WMO_ID/Origin_ID/DDHHMM                                                 
+CPYFIL  Grid file whose navigation is to be used in new grid file | subarea     
+PROJ    Map projection/angles/margins|drop flag                                 
+GRDAREA Area covered by grid                                                    
+KXKY    Number of grid points in x;y                                            

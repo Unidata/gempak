@@ -1,0 +1,16 @@
+!	Program GDDIAG
+!
+-1	! Fatal error initializing TAE.
+-2	! Fatal error reading TAE parameters.
+-3	! Error initializing GEMPLT.
+-4	! There is no input file specified.
+-5	! Error creating output grid
+-6	! Error opening input files.
+-7	! Error writing output grid.
+-8      ! Only one output file is permitted.
+-9      ! Output file open failure.
+-10     ! Grid files have different navigations.
+-11	! Output level is invalid.
+-12	! Output time is invalid.
+-13	! Output vertical coordinate is invalid.
+-14	! Invalid grid type.

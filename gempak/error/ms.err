@@ -1,0 +1,9 @@
+!	MS error messages
+!
+-1	! Could not find end of report.
+-2	! There are no more reports.
+-3	! Date cannot be decoded.
+-4	! No climatology for !AS
+-6      ! Climatology file not opened for !AS
+-7	! Problem getting climo data for !AS
+-8	! Invalid number of forecast times.

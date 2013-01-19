@@ -1,0 +1,20 @@
+! FTP.BULL
+!
+! Location information for the following product:
+! FOUS_prog_max/min_temp/pop_guidance.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+! Log:
+! A. Hardy/NCEP		11/04	separated out the lat/lons
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+FONA10 KWNO     NCEP_NCO                         MD US  3841  -7727     0
+FOUS12 KWNO     NCEP_NCO                         MD US  3861  -7707     0
+FOUS33 KWNO     NCEP_NCO                         MD US  3881  -7687     0
+FOUS81 KCAR     CARIBOU                          ME US  4577  -6862     0
+FOUS82 KJAX     JACKSONVILLE                     FL US  3047  -8169     0
+FOUS84 KMOB     MOBILE                           AL US  3067  -8823     0
+FOUS84 KMRX     MORRISTOWN                       TN US  3615  -8340     0

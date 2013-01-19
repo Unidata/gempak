@@ -1,0 +1,27 @@
+
+                                   CURSOR
+
+
+The cursor size, type and color can be changed for the N-AWIPS GUI programs for 
+the cursor that occurs in the data window.  The table $GEMTBL/config/cursorref.tbl 
+specifies the default cursor attributes. Currently, attributes for three 
+different types of cursors can be specified.
+
+CURS_DEFAULT specifies the cursor for normal operations in the data area of the 
+GUI programs. The default for this cursor is a small, red arrow.
+
+CURS_BUSY specifies the cursor when the GUI program is performing an operation, 
+such as loading data frames. The default for this cursor is a small, white cross.
+
+CURS_POINT_SELECT specifies the cursor in NMAP/NMAP2 when using the seek or 
+cloud height functions. The default for this cursor is a small, white 'X'.
+
+NMAP/NMAP2 provide a GUI to alter the cursor attributes for each cursor type.  
+Select the "Cursor" entry on the "Option" pulldown to invoke this GUI.
+
+There are six different cursor types from which to chose: small arrow, large
+arrow, small cross, large cross, small 'X' and large 'X'.  The color options
+are: red, black, green, yellow, cyan, magenta and white.
+
+See the documentation in cursorref.tbl for additional details.
+

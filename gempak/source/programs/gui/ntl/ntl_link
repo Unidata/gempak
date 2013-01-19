@@ -1,0 +1,4 @@
+$CC $CFLAGS -c ntl.c
+$CC $LDFLAGS -o $OS_BIN/ntl ntl.o -lntl -lnxm $OS_LIB/xw.a \
+		$OS_LIB/gn.a $CGEMLIB $GEMLIB $XLIBS
+$RM *.o

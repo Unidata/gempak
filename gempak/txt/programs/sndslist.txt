@@ -1,0 +1,39 @@
+
+SNDSLIST lists upper air data from a sounding file for specified
+vertical levels and stations in a format used for the
+AMS DataStreme web site.
+
+INPUT PARAMETERS
+ 
+
+PROGRAM DESCRIPTION
+ 
+    SNLIST lists parameters derived from an upper air data set for
+    the requested stations and times.
+
+    The parameter list is predefined for this program. The list
+    will always be:
+
+    	PRES;HGHT;TMPC;DWPC;RELH;DRCT;SKNT;MIXR
+
+    There will also be no stablility indices listed.
+
+    The program will also automatically merge the data and show
+    isobaric data at all levels available.
+
+    The output will be formatted for the AMS DataStreme Project
+    web site. There will be no missing values and some data
+    will have no decimal places shown. 
+
+ 
+EXAMPLES
+ 
+    1.	List the parameters in the data set for the stations IAD
+	and ACY for the last time in the data file.
+
+	SNFILE	 =  $GEMPAK/data/HRCBOB.SND
+	AREA	 =  @iad;acy
+	DATTIM	 =  last
+	OUTPUT	 =  t
+
+ERROR MESSAGES

@@ -1,0 +1,55 @@
+
+DCWTCH
+
+    DCWTCH decodes tornado and severe thunderstorm watch box reports 
+    and watch status reports from a real-time data feed, or from a
+    file fed to the program through standard input, and writes the data 
+    to an ASCII file.  The program is controlled by inputs to the 
+    command line.
+
+    The inputs are program options and the output file name or template.
+    For example, for real-time data feeds:
+    
+	dcwtch [options] output_file
+
+    If running the program interactively with standard input, the -c
+    option must be used.  The input file must also be specified.
+    For example:
+
+	dcwtch -c YYMMDD/HHNN [other_options] output_file < input_file
+    
+    A template may be used to specify the output file name.  The file
+    name template uses the date and time of the bulletin or report
+    to replace the following characters.
+
+	YYYY or YY	Year with or without the century
+	MM		Month number
+	DD		Day
+	HH		Hour
+	NN		Minute
+
+
+     The format of the output ASCII file is as follows:
+
+     |Type|Start_time|End_time|Watch_number|Corr_flag|Cancel_flag
+	     Lat1    Lon1
+	     Lat2    Lon2
+	     Lat3    Lon3
+	     Lat4    Lon4
+
+     Where: Type is TS (thunderstorm), TN (tornado) , RP (replaced)
+ 	    	or ST (status) 
+	    Start_time and End_time are full GEMPAK date/time strings
+	    Watch_number is the number assigned to the watch
+	    Corr_flag is a flag indicating a correction (0 or 1)
+	    Cancel_flag is a flag indicating a cancellation (0 or 1),
+		or, for type ST, the number of points which follow
+
+     Extra spaces may appear anywhere in this line of information,
+     except in the first character position.  The first character must
+     be a bar (|).
+
+     The latitude and longitude values are read using the FORTRAN
+     format (2F9.2).  Types TS and TN will always have four points;
+     the number of points for type ST may vary.
+

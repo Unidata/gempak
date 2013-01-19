@@ -1,0 +1,24 @@
+{
+   strok/parse_object/parse_input(Value)
+   Memcheck:Value4
+   fun:strtok
+   fun:parse_object
+   fun:parse_input
+}
+{
+   strok/parse_object/parse_input(Cond)
+   Memcheck:Cond
+   fun:strtok
+   fun:parse_object
+   fun:parse_input
+}
+{
+   strok(Value)
+   Memcheck:Value4
+   fun:strtok
+}
+{
+   strok(Cond)
+   Memcheck:Cond
+   fun:strtok
+}

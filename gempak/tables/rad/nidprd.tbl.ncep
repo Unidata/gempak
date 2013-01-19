@@ -1,0 +1,123 @@
+! NIDPRD.TBL
+!
+! This table contains product information necessary to interpret the
+! header of a NIDS radar image.
+!
+! LOCAL images are identified by a positive source ID less than 10000.
+! NATIONAL images are identified by a source ID equal to 10000. REGIONAL
+! images are identified by a source ID between 10001 and 10007,
+! inclusive.
+!
+!!
+! Log:
+! S. Jacobs/NCEP	12/97
+! S. Jacobs/NCEP	 2/98	Updated per UNISYS product catalog
+! S. Jacobs/NCEP	 4/98	Fixed spelling of abbreviations
+! S. Jacobs/NCEP	11/02	Added product #74 - RCM
+!------------------------------------------------------------------------
+!
+!Type    Name      Prod#   #Lvls Units    Res    Description
+!A8      A8           I6      I7 A8       F6.2   A20
+!2345678X12345678X123456X1234567X12345678X123.12X12345678901234567890
+! Used for the UNISYS data feed.
+LOCAL    BREF         19      16 DBZ        1.00 BASE_REFL_1KM_TILT
+LOCAL    BREF         20      16 DBZ        2.00 BASE_REFL_2KM_TILT
+LOCAL    VEL          27      16 KNOTS      1.00 RAD_VEL_1KM_TILT
+LOCAL    CREFC        36       8 DBZ        4.00 COMP_REFL_CLR_4KM
+LOCAL    CREFP        38      16 DBZ        4.00 COMP_REFL_PRCP_4KM
+LOCAL    TOPS         41      16 KFT        4.00 ECHO_TOPS
+LOCAL    SRVEL        56      16 KNOTS      1.00 STORM_REL_VEL
+LOCAL    VIL          57      16 KG/M**2    4.00 PREC_WATER
+LOCAL    LMRF1        65       8 DBZ        4.00 LYR1_MAX_REFL
+LOCAL    LMRF2        66       8 DBZ        4.00 LYR2_MAX_REFL
+LOCAL    PRCP1        78      16 INCHES     2.00 PRECIP_1HR
+LOCAL    PRCP3        79      16 INCHES     2.00 PRECIP_3HR
+LOCAL    PRCPT        80      16 INCHES     2.00 PRECIP_TOTAL
+LOCAL    LMRF3        90       8 DBZ        4.00 LYR_MAX_REFL3
+!
+! Used for data from other vendors.
+LOCAL    BREF         16       8 DBZ        1.00 BASE_REFL_1KM_TILT
+LOCAL    BREF         17       8 DBZ        2.00 BASE_REFL_2KM_TILT
+LOCAL    BREF         18       8 DBZ        4.00 BASE_REFL_4KM_TILT
+LOCAL    BREF         21      16 DBZ        4.00 BASE_REFL_4KM_TILT
+LOCAL    VEL          22       8 KNOTS      0.25 RAD_VEL_.25KM_TILT
+LOCAL    VEL          23       8 KNOTS      0.50 RAD_VEL_.5KM_TILT
+LOCAL    VEL          24       8 KNOTS      1.00 RAD_VEL_1KM_TILT
+LOCAL    VEL          25      16 KNOTS      0.25 RAD_VEL_.25KM_TILT
+LOCAL    VEL          26      16 KNOTS      0.50 RAD_VEL_.5KM_TILT
+LOCAL    SPWID        28       8 KNOTS      0.25 SPEC_WIDTH_.25KM
+LOCAL    SPWID        29       8 KNOTS      0.50 SPEC_WIDTH_.5KM
+LOCAL    SPWID        30       8 KNOTS      1.00 SPEC_WIDTH_1KM
+LOCAL    CREFC        35       8 DBZ        1.00 COMP_REFL_CLR_1KM
+LOCAL    CREFP        37      16 DBZ        1.00 COMP_REFL_PRCP_1KM
+LOCAL    SVREF        43      16 DBZ        1.00 SVR_WX_REFL
+LOCAL    SVVEL        44      16 KNOTS      0.25 SVR_WX_VEL
+LOCAL    SVSPWID      45       8 KNOTS      0.25 SVR_WX_SPEC_WID
+LOCAL    SVSHR        46      16 1/S        0.50 SVR_WX_SHEAR
+LOCAL    CMOM         49      16            0.50 COMB_MOMENT
+LOCAL    XSREF        50      16 DBZ        1.00 X-SECT_REFL
+LOCAL    XSVEL        51      16 KNOTS      1.00 X-SECT_VEL
+LOCAL    XSSPW        52       8 KNOTS      1.00 X-SECT_SPEC_WID
+LOCAL    WKECHO       53       8 DBZ        1.00 WEAK_ECHO
+LOCAL    SRVEL        55      16 KNOTS      0.50 STORM_REL_VEL
+LOCAL    LARF1        63       8 DBZ        4.00 LYR1_AVG_REFL
+LOCAL    LARF2        64       8 DBZ        4.00 LYR2_AVG_REFL
+LOCAL    LATB1        67       8            4.00 LYR1_AVG_TURB
+LOCAL    LATB2        68       8            4.00 LYR2_AVG_TURB
+LOCAL    LATB3        69       8            4.00 LYR3_AVG_TURB
+LOCAL    LMTB1        70       8            4.00 LYR1_MAX_TURB
+LOCAL    LMTB2        71       8            4.00 LYR2_MAX_TURB
+LOCAL    LMTB3        72       8            4.00 LYR3_MAX_TURB
+LOCAL    SHEAR        87      16 1/S        2.00 COMB_SHEAR
+LOCAL    LARF3        89       8 DBZ        4.00 LYR_AVG_REFL3
+!------------------------------------------------------------------------
+! Used for the UNISYS data feed.
+NATIONAL CREF         27      16 DBZ        4.00 COMP_REFL_4KM
+NATIONAL CREF         28      16 DBZ        8.00 COMP_REFL_8KM
+NATIONAL CREF         30      16 DBZ        4.00 COMP_REFL_4KM
+NATIONAL CREF         35      16 DBZ        8.00 COMP_REFL_8KM
+NATIONAL CREF         50       8 DBZ        4.00 COMP_REFL_4KM
+NATIONAL CREF         65       8 DBZ        8.00 COMP_REFL_8KM
+NATIONAL PRCP1        90      16 INCHES     4.00 PRECIP_1HR_4KM
+NATIONAL PRCP1        91      16 INCHES     8.00 PRECIP_1HR_8KM
+NATIONAL TOPS         95      16 KFT        4.00 ECHO_TOPS_4KM
+NATIONAL TOPS         96      16 KFT        8.00 ECHO_TOPS_8KM
+NATIONAL PRCPC       101      16 INCHES     4.00 PRECIP_CMLTV_4KM
+NATIONAL PRCP24      102      16 INCHES     4.00 PRECIP_24HR_4KM
+NATIONAL CREF        103      16 DBZ        4.00 COMP_REFL_4KM
+NATIONAL CREF        104      16 DBZ        8.00 COMP_REFL_8KM
+NATIONAL PRCPC       107      16 INCHES     8.00 PRECIP_CMLTV_8KM
+NATIONAL PRCP24      108      16 INCHES     8.00 PRECIP_24HR_8KM
+NATIONAL BREF        137      16 DBZ        2.00 BASE_REFL_NFLT_2KM
+NATIONAL BREF        138      16 DBZ        2.00 BASE_REFL_NFLTC_2KM
+NATIONAL BREF        140      16 DBZ        2.00 BASE_REFL_2KM
+NATIONAL BREF        141      16 DBZ        4.00 BASE_REFL_4KM
+NATIONAL BREF        142      16 DBZ        8.00 BASE_REFL_8KM
+NATIONAL BREF        144      16 DBZ        4.00 BASE_REFL_ALB_4KM
+NATIONAL LARFL       145       8 DBZ        4.00 LYR_AVG_REFL_LOW
+NATIONAL LARFM       146       8 DBZ        4.00 LYR_AVG_REFL_MID
+NATIONAL LARFH       147       8 DBZ        4.00 LYR_AVG_REFL_HIGH
+NATIONAL VIL         148      16 KG/M**2    4.00 PREC_WATER_4KM
+NATIONAL VIL         149      16 KG/M**2    4.00 PREC_WATER_8KM
+!
+! Used for data from other vendors.
+NATIONAL CREF          5      16 DBZ        4.00 COMP_REFL_4KM
+NATIONAL CREF         10      16 DBZ        8.00 COMP_REFL_8KM
+NATIONAL CREF         13       8 DBZ        4.00 COMP_REFL_4KM
+NATIONAL CREF         25       8 DBZ        8.00 COMP_REFL_8KM
+NATIONAL CREF         26      16 DBZ        4.00 COMP_REFL_4KM
+NATIONAL BREF         70      16 DBZ        2.00 BASE_REFL_2KM
+NATIONAL BREF         75      16 DBZ        4.00 BASE_REFL_4KM
+NATIONAL BREF         80      16 DBZ        8.00 BASE_REFL_8KM
+!------------------------------------------------------------------------
+! Used for the UNISYS data feed.
+REGIONAL CREF         30      16 DBZ        4.00 COMP_REFL
+REGIONAL PRCPC       105      16 INCHES     2.00 PRECIP_CMLTV
+REGIONAL PRCP24      106      16 INCHES     2.00 PRECIP_24HR
+REGIONAL BREF        137      16 DBZ        2.00 BASE_REFL_NFLT_2KM
+REGIONAL BREF        138      16 DBZ        2.00 BASE_REFL_NFLTC_2KM
+REGIONAL BREF        140      16 DBZ        2.00 BASE_REFL_2KM
+REGIONAL BREF        141      16 DBZ        4.00 BASE_REFL_4KM
+!------------------------------------------------------------------------
+! Other products for identification only (not necessarily images)
+LOCAL    RCM          74       0 NONE       0.00 RADAR_CODED_MSG

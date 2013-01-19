@@ -1,0 +1,13 @@
+GBFILE  GRIB data file name                                                     
+GDOUTF  Output grid file                                                        
+PROJ    Map projection/angles/margins|drop flag                                 
+GRDAREA Area covered by grid                                                    
+KXKY    Number of grid points in x;y                                            
+MAXGRD  Maximum number of grids                                                 
+CPYFIL  Grid file whose navigation is to be used in new grid file | subarea     
+GAREA   Graphics area                                                           
+OUTPUT  Output device/filename                                                  
+G2TBLS  Input GRIB2 decoding tables                                             
+G2DIAG  GRIB2 diagnostic elements                                               
+OVERWR  Overwr flag                                                             
+PDSEXT  Y or N, add PDS extension if found                                      

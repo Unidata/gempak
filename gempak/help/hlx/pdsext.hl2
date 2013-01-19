@@ -1,0 +1,15 @@
+    PDSEXT 
+
+    PDSEXT is a logical flag which only becomes applicable when a PDS
+    extension exists in the GRIB message. 
+
+	YES or NO
+
+    If PDSEXT is YES, then a sequence of characters specifying the extension 
+    information will be appended onto the standard GEMPAK parameter name.  
+    If PDSEXT is NO, then the append will not be performed. For instance, if 
+    the parameter is HGHT and the PDS extension is an ensemble extension 
+    indicating that this particular height field is an ensemble mean average, 
+    then the PDS extension suffix will be "ENMA". The final GEMPAK parameter 
+    name will be "HGHTENMA" and must be referenced as such in any GEMPAK 
+    program.

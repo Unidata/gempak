@@ -1,0 +1,94 @@
+#!/bin/csh
+#
+# EZMSLP
+#
+# This script displays the mean sea level pressure, winds, and 1000-500
+# thickness.
+#
+# No command line parameters are necessary.
+#
+#	Syntax:  ezmslp
+#
+##
+# Log:
+# B. Colman/SEA		 1994
+# R. Miller/COMET	 1994
+# S. Jacobs/NMC		10/94	Clean up
+
+# Source the file called settings.  This file contains commands to set
+# environment variables for the model name and device driver.
+
+source settings
+
+gdcntr << EOF
+GDATTIM = all
+GLEVEL  = 0
+GVCORD  = none
+GFUNC   = pmsl
+CINT    = 2
+LINE    = 3/1/1
+DEVICE  = $dev
+TITLE   = 1=white/-3/~  $model  SURFACE MSLP
+CLEAR   = yes
+PANEL   = 0
+SCALE   = 0
+CONTUR  = 1
+SKIP    = 
+FINT    = 
+FLINE   = 
+CTYPE   = c
+HILO    = 3/H;L
+r
+
+CLEAR   = no
+GLEVEL  = 500:1000
+GVCORD  = PRES
+GFUNC   = ldf[hght]
+CINT    = 30
+SCALE   = 0
+LINE    = 2/2/2
+TITLE   = 1=white/-2/ 1000-500 THICKNESS 
+CTYPE   = c
+r
+
+ex
+EOF
+
+# Plot the winds.
+#	For the eta and ngm, plot the 10 m winds.
+#	For the avn and mrf, plot the 1000 mb winds.
+#	For the ruc, plot the 1.0 sigma winds.
+
+switch ( $model )
+	case ETA:
+	case NGM:
+		set lvl = 10
+		set vcord = HGHT
+		set skip = /1
+	breaksw
+	case RUC:
+		set lvl = 10000
+		set vcord = SGMA
+		set skip = /1
+	breaksw
+	case AVN:
+	case MRF:
+		set lvl = 1000
+		set vcord = PRES
+		set skip = 0
+	breaksw
+endsw
+
+gdwind << EOFF
+GLEVEL  = $lvl
+GVCORD  = $vcord
+GVECT   = wnd
+WIND    = bk5/1.3/2
+TITLE   = 1=white/-1/ @ WINDS (KTS)
+SKIP    = $skip
+r
+
+;2
+;l
+ex
+EOFF

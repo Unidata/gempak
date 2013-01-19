@@ -1,0 +1,33 @@
+#!/bin/csh
+#
+# RMQUE
+#
+#  Removes any message queues in use.
+#
+##
+# Log:
+#  T. Piper/GSC          05/00   Added AIX, SunOS, Linux, & IRIX6.5 support
+#  T. Piper/SAIC	 10/01	 Fixed SunOS bug (start reduced to 9 from 10)
+#  S. Jacobs/NCEP	 05/02	 Changed to use awk to get the msg queue ids
+#  J. Lewis/AWC          09/03   Fixed bug where queue number and id run together
+
+set name=`whoami`
+set c1=`echo $name | cut -c1-1`
+
+if ( ( $NA_OS == "linux" ) || ( $NA_OS == "linux64" ) ) then
+
+    foreach msqid ( `ipcs -pq | grep $name | awk '{print $1}'` )
+        set qid=`echo $msqid|cut -f1 -d"$c1"`
+	echo Removing queue $qid
+	ipcrm msg $qid
+    end
+
+else
+
+    foreach msqid ( `ipcs -pq | grep $name | awk '{print $2}'` )
+        set qid=`echo $msqid|cut -f1 -d"$c1"`
+	echo Removing queue $qid
+	ipcrm -q $qid
+    end
+
+endif

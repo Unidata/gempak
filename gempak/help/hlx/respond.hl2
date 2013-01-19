@@ -1,0 +1,6 @@
+     $RESPOND
+
+     $RESPOND is a logical variable indicating whether the user will 
+     respond interactively to GEMPAK programs.  If set to NO, programs 
+     will not wait for input from the user.  
+

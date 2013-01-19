@@ -1,0 +1,486 @@
+
+
+                       Writing Device Drivers
+
+
+17.1  Overview
+
+
+A device driver is in large part that portion of the GEMPAK code that is
+unique for each graphics device because of physical differences between
+output mechanisms.
+
+A GEMPAK device driver is usually a stand-alone run-time executable
+module.  An application program selects a driver to use at run time.
+The driver executable is spawned (usually by GPLT) as a stand-alone
+task.  Inter-process communications link the driver to its parent.
+
+It is also possible to link driver subroutines directly into an
+application program so that no separate driver executable is created,
+but this is done only in special circumstances.  Because only a single
+set of driver subroutines can be linked into a program, only a single
+output device can be used.  This is less general and less desirable in
+the long run.
+
+This chapter discusses how a driver is built as a stand-alone module.
+
+
+
+17.2  Planning
+
+
+There are two approaches to developing a new device driver.  One way is
+to take an existing driver that is similar to the one that needs to be
+developed and modify it into the new driver.  Another way is to start
+with the GN "driver" and evolve it into the new driver.  Most of this
+chapter provides a programmer with guidance for the second, more
+difficult approach.
+
+Before developing a new driver, the easier approach should be explored.
+The programmer should become familiar with the existing devices and
+associated drivers.  If an existing device can be found that is similar
+to the new device, it is easier to modify the existing driver into the
+new one; it is easier than developing a driver from the GN subroutines.
+For example, the UTF driver was developed out of a combination of the PS
+and FAX drivers.  Currently the following drivers exist:
+
+    FAX   -  NMC 6-bit FAX driver
+    GF    -  Standard GIF driver
+    GN    -  General "driver"
+    HP    -  Hewlett-Packard HP-GL pen plotter driver
+    NC    -  N-AWIPS CGM metafile driver
+    PS    -  Standard PostScript driver
+    UTF   -  Universal Transmission Format (AFOS graphics) driver
+    VC    -  Standard "vanilla" CGM driver
+    VG    -  Vector Graphics File format driver
+    VT    -  Tektronix 4105 (monochrome) graphics terminal driver
+    XW    -  X Window System driver
+    XWP   -  Multi-device driver (currently includes XW and PS)
+
+
+No matter which of the two approaches is taken, a programmer should
+understand the GN "driver" since it is a prototype for all drivers.
+
+The GN is not a driver like the others.  Even though it is compiled and
+linked into an executable, it does not serve any physical device.  When
+selected at run time, plotting and drawing commands are accepted by the
+GN, but go nowhere.
+
+The GN driver code is a set of fully functional building blocks that are
+used as default functions for all of the other drivers.  Some drivers do
+not need device-specific code for some subroutines.  The GN driver has
+stubs for many of the common functions.  The GN driver library is linked
+into every other driver.  As a result, functions that are not unique in
+a driver need not be implemented; the GN library supplies the stubs
+during the link.
+
+Before starting to develop the new driver, understand as much as
+possible what the end product of the driver should be.  If the driver
+produces a file, assemble a complete description of the file format.  If
+the driver produces commands to a device, get a complete list of those
+commands.  And devise a test for the driver before the driver is
+implemented.
+
+
+
+17.3  Testing
+
+
+A new device driver can be tested using the test program ATEST.  It is
+often convenient to develop a series of test shell scripts that hold
+ATEST commands.  The scripts are developed at the same time that the
+driver is developed.  As each new function is added to the driver, a
+test for it is coded into an ATEST script and used to excite the driver
+during development.  Each driver function is tested by drawing lines,
+markers, filled polygons, text, and so on.  Chapter 18 is intended to
+get a programmer started with ATEST.
+
+It is very enlightening to test new device drivers on platforms from
+different vendors.  We test regularly on HP, SGI, and SUN workstations.
+Many bugs in drivers (and other code) are uncovered simply by exploring
+why the same function behaves differently on different platforms.
+
+Some drivers display output on the computer screen and as ATEST is used,
+the results are immediately visible.  Other drivers create intermediate
+plot files that are viewed later.  We test the existing drivers as
+follows:
+
+
+  FAX  -  The driver generates a FAX plot file.  The ViewFAX utility is
+          used to view the file.
+
+  GF   -  The driver generates a standard GIF plot file.  The XV utility
+	  is used to view the file.
+
+  GN   -  The GN driver is a part of every other driver and therefore it
+	  is not tested directly.
+
+  HP   -  The driver generates a HP-GL plot file.  The plot file is
+	  viewed one of several ways.  Either the file is plotted on a
+	  HP pen plotter, or some laser printers (such as the QMS-2025
+	  or some HP printers) have a HP-GL compatibility mode--the plot
+	  file is printed on such a printer, or the HPGL2PS utility is
+	  used to convert the HP-GL file to a PostScript file, then the
+	  result is viewed the same way as PS output.
+
+  NC   -  The driver creates a metafile; NTRANS is used to view the
+	  metafile.
+
+  PS   -  The driver creates a PostScript print file.  Either the file
+	  is printed out on a PostScript printer, or a PostScript viewer
+	  is used, such as XPSVIEW or GHOSTVIEW, to view the file on a
+	  display screen.
+
+  UTF  -  The driver has two modes of operation: it either produces a
+	  raw AFOS graphics file, or it creates a preprocessed AFOS
+	  file.  The raw AFOS graphics file is displayed directly on an
+	  AFOS terminal.  The preprocessed file is displayed using
+	  NAFOS.
+
+  VC   -  The driver creates a standard CGM plot file.  Various
+	  utilities on PCs understand this format.  The plot file is
+	  transferred to a PC and viewed there.
+
+  VG   -  The driver creates a VGF plot file.  NMAP is used to view the
+	  file.
+
+  VT   -  The driver displays output directly to a Tektronix 4105
+	  terminal or a terminal emulator.  A DEC VT-100 terminal or a
+	  VT-100 terminal emulator has a Tektronix mode.  Also, the
+	  commonly available XTERM has a VT mode and a Tektronix
+	  emulation.
+
+  XW   -  The driver displays output directly to an X Window.
+
+  XWP  -  The driver is tested the same way as the XW and PS drivers.
+
+
+
+
+17.4  Device Driver Structure
+
+
+A device driver is constructed out of several layers of functions.  Each
+layer has a specific purpose.
+
+When a driver is a stand-alone run-time module, at the very top of the
+driver is the main module, DEVICE.F .  During run time, this top-most
+module connects via inter-process communication links with the GPLT task
+and receives commands from GPLT.  Each command is interpreted and a
+corresponding D-level routine is called.
+
+D-level routines are functions that are common to every device driver.
+Some D-level routines call I-level routines.
+
+I-level routines are the software implementations of functions that also
+have hardware equivalents.  A good example are the routines that plot
+text.  Explore how GEMPAK plots text using hardware vs. software
+methods.
+
+D-level and I-level routines call H-level routines.
+
+H-level routines are driver-specific code; they are the hardware
+implementation of all functions.  H-level routines sometimes call lower
+level subroutines written in C.
+
+The D-level and I-level routines are stored in the $DEVICE library.
+Control of the device driver and all the software methods, along with
+line clipping, are performed in the D-level and I-level subroutines.
+None of the routines in the $DEVICE library should have to be modified
+for a new device driver.
+
+H-level routines, and lower level C routines, are unique for each
+driver.  They are compiled and added to each driver's unique object
+library.  The GN library is called gn.a, the XW library is xw.a, the FAX
+library is fax.a, and so on.  Object libraries are stored in directory
+$GEMOLB.
+
+
+
+17.5  How To Begin
+
+
+The first step in developing a driver out of the GN is to get the GN
+source code.  Create a device driver subdirectory in your work
+environment and copy all of the files from the GN source code directory
+into this subdirectory.  Most of the files are H-level subroutines.
+There are also a couple of build scripts, some C code subroutines, and
+include files.
+
+Delete all of the C files.  They are low level subroutines shared by
+other driver functions.  They need not be customized for a new driver.
+
+Devise a name for the driver.  Although a driver name can be up to 12
+characters long, a two- or three-letter acronym works well.  We will use
+XX for the new driver name in this discussion.
+
+Rename gn_compile and gn_link to XX_compile and XX_link.  Edit these two
+files, replacing references to GN with XX.  In XX_link, where the
+library gn.a is linked in, replace that with a combination of XX.a
+followed by gn.a.  The link procedure, XX_link, links a driver out of
+the following pieces (the order is significant):
+
+    DEVICE.F     (main)
+    $GEMLIB      (GEMPAK utility functions)
+    $DEVICE      (D-level and I-level driver functions)
+    XX.a         (H-level and unique routines for this driver)
+    gn.a         (driver default functions)
+    $SYSLIB      (system interface functions)
+    $CGEMLIB     (GEMPAK utility functions in C)
+    $GEMLIB      (GEMPAK utility functions)
+    C and other libraries (such as the math or X Windows library)
+
+
+Next, modify all of the H-level subroutines as necessary for the new
+driver.  The following sections provide guidance.  When an H-level
+subroutine is not applicable to a driver, such as when the H-level
+routine operates on an intermediate plot file and the driver has no plot
+files, the H-level routine is simply deleted from the XX driver.  It
+will be substituted with the GN stub at link time.  The GN stub
+generally does nothing except satisfy the linker.
+
+
+
+17.6  FORTRAN Versus C
+
+
+The D-level, I-level, and H-level routines are all written in FORTRAN.
+If the unique portion of the driver is also written in FORTRAN, it is
+all implemented in the H-level routines.
+
+It is sometimes appropriate to implement a driver in C instead of
+FORTRAN.  In such cases the D-level, I-level, and H-level routines
+remain written in FORTRAN, but the H-level routines become an interface
+to C.  The H-level routines include only enough code to make a call to a
+C routine that does the job in place of the traditional H-level routine.
+The function defined for the H-level routine is implemented in a C
+routine one level below the H-level routine.
+
+C routines one level below H-level routines are all named uniquely.  The
+first character of each C routine name indicates which driver the
+routine belongs to:
+
+        c = GN
+        r = FAX
+        x = GF
+        m = NC
+        p = PS
+        u = UTF
+        m = VC
+        v = VG
+        x = XW
+
+So, for example, HLINE.F in the XW driver calls XLINE.C while HLINE.F in
+the PS driver calls PLINE.C.
+
+When C routines are shared between several drivers, they are given a
+name starting with "c" and placed in with the GN driver.
+
+
+
+17.7  Initialization Subroutines
+
+
+HINIT	-  HINIT initializes DEVCHR.CMN.  This subroutine is called once
+	   when the device driver is installed (when a program calls
+	   GSDEVA).  It defines the basic characteristics of the
+	   physical device to GEMPLT.  Each of the assignment statements
+	   in HINIT should be edited for a new driver.
+
+HINITA	-  HINITA performs device-dependent initialization.  It is
+	   called once when the device driver is installed (when a
+	   program calls GSDEVA).  The intermediate plot file name, a
+	   flag indicating that the file is not open, hardware sizes in
+	   device units, and other device-specific parameters are
+	   assigned here and saved in DRIVER.CMN.  A typical DRIVER.CMN
+	   is included with the GN driver, but it may be modified as
+	   needed for the new driver.  Any specific initialization
+	   commands for the graphics device are included in HINITA.
+
+HINITP	-  HINITP is called each time that GINITP is called at the start
+	   of each program.  Generally, HINITP does nothing.
+	   Occasionally, some device-dependent functions must be
+	   performed at the start of each program in addition to
+	   functions performed when the device driver is first started.
+
+HOPEN	-  HOPEN opens an intermediate plot file for the device and
+	   initializes it with a header.  HOPEN in the PS driver is a
+	   good example.  HOPEN is called out of other H-level
+	   subroutines that check the open file flag when they are ready
+	   to add plotting information to a file.  If the file is not
+	   open, HOPEN is called.
+
+HSTANM	-  HSTANM is called whenever a program calls GSTANM. HSTANM
+	   sets up the beginning of a frame sequence.  It initializes
+	   frame pointers and counters and allocates memory.
+
+HSPLOT	-  HSPLOT is called whenever a program calls GSPLOT.  HSPLOT
+	   starts a new plot frame.  It switches pointers to the next
+	   frame (graphics memory), or advances the paper to the next
+	   page.
+
+
+
+17.8  Device Control Subroutines
+
+
+HEPLOT	-  HEPLOT is called whenever a program calls GEPLOT.  HEPLOT
+           flushes buffers, including system buffers, without closing
+	   the output device.  This causes all plot and draw commands
+	   issued up to that moment to become final output.  For screen
+	   displays, the image is rendered on the screen.  For
+	   intermediate plot files, the file is updated with the latest
+	   data.
+
+HCLEAR	-  HCLEAR is called whenever a program calls GCLEAR.  HCLEAR
+	   either clears the screen, clears the current frame (graphics
+	   memory), or advances the paper to the next page.
+
+HCLPNL	-  HCLPNL is called whenever a program calls GCLPNL.  HCLPNL
+	   does what HCLEAR does, but only for a fraction of the
+	   device's plot space.
+
+HGTPNT	-  HGTPNT is called whenever a program calls GGTPNT.  HGTPNT
+	   gets X and Y coordinates of the cursor on the screen when the
+	   left mouse button is clicked.
+
+HSATIM	-  HSATIM is called whenever a program calls GSATIM.  HSATIM
+	   displays a satellite image from a file.
+
+HSLWIN	-  HSLWIN is called whenever a program calls GSLWIN.  HSLWIN
+	   selects the specified output channel (such as a window) to be
+	   the current channel (window) for subsequent plotting.
+
+HLOOPC	-  HLOOPC is called whenever a program calls GLOOPC.  HLOOPC
+	   sends animation control commands to the device.
+
+HEVENT	-  HEVENT handles real-time events in the driver.  For example,
+	   it redraws an exposed window.  HEVENT is called continuously
+	   at one-second intervals from the moment that the driver is
+	   installed until the driver shuts down.
+
+
+
+17.9  Required Subroutine To Draw Lines
+
+
+HLINE	-  HLINE must be written in each device driver.  This is the
+           subroutine that draws simple lines on the graphics device.
+	   If a driver can do nothing else, it must be able to at least
+	   draw a line.  If it is necessary to rasterize lines being
+	   drawn, the FAX and LA device drivers provide examples of such
+	   code.
+
+
+
+17.10  Other Drawing Subroutines
+
+
+HFILL	-  HFILL is called whenever a program calls GFILL.  HFILL draws
+	   a filled polygon.
+
+
+
+17.11  Hardware Symbols
+
+
+The following subroutines draw using the driver's hardware capability.
+
+HMARK	-  draw hardware markers
+HTEXT	-  draw hardware left-justified text
+HTEXTC	-  draw hardware left-justified, right-justified, or centered
+	   text
+HTXSY	-  draw hardware special symbol with hardware text
+
+
+
+17.12  Pass-Thru Subroutines
+
+
+The following routines simply pass the draw commands to the device,
+preserving the X and Y coordinates as real numbers.
+
+HFRNT	-  draw front
+HRLINE	-  draw simple line
+HMESG	-  set frame title
+HRSPLN	-  draw special line
+HRTXT	-  plot left-justified text
+HRTXTC	-  plot left-justified, right-justified, or centered text
+HSYMB	-  plot symbols
+HWIND	-  plot wind arrows or barbs
+
+
+
+17.13  Attribute Subroutines
+
+
+The HSxxx routines save information in DRIVER.CMN or in a similar
+structure in the C domain.  The saved information includes various
+attributes such as sizes, line types, line widths, and so on.  HQxxx
+routines query the saved information.
+
+HQDATT	-  get attributes from the driver describing the device
+HSDATT	-  save attributes describing the device
+HSFRNT	-  save attributes for fronts
+HSICMN	-  save attributes for image
+HSLINE	-  save attributes for simple lines
+HSLTYP	-  save attributes for line types
+HSLWID	-  save attributes for line widths
+HSMARK	-  save attributes for markers (old)
+HSMRKR	-  save attributes for markers (new)
+HSSPLN	-  save attributes for special lines
+HSSYMB	-  save attributes for symbols
+HSTEXT	-  save attributes for text (old)
+HSTXTA	-  save attributes for text (new)
+HSWIND	-  save attributes for wind arrows or barbs
+
+
+
+17.14  Color Subroutines
+
+
+Each of the H-level color subroutines is called whenever a program calls
+the equivalent G-level routine.  For example, HQCLRS is called when
+GQCLRS is called.
+
+HQCLRS	-  returns the number of colors currently allocated in a color
+	   bank
+HQCOMP	-  returns the RGB components of a color
+HSBRGB	-  sets the RGB components for a group of colors in a color bank
+HSCINT	-  initializes the colors to this device's default values
+HSCNAM	-  sets the current color based on a color name
+HSCOLB	-  sets the current color in a color bank
+HSCOLR	-  sets the current color in the Graphics color bank
+HSCRGB	-  sets the RGB components for a color in the Graphics color
+	   bank
+HSCTBL	-  loads the device's internal color table from a color table
+	   file
+
+
+
+17.15  Termination Subroutines
+
+
+HENANM	-  HENANM is called whenever a program calls GENANM.  HENANM
+	   terminates a frame sequence.
+
+HCLOSP	-  HCLOSP is called whenever a program calls GCLOSP.  HCLOSP
+	   writes the tail into the intermediate plot file, closes it,
+	   and resets the open flag.  HCLOSP in the PS driver is a good
+	   example.  A new file is not opened until new plotting
+	   commands are received.
+
+HOUTP	-  HOUTP is called whenever a program calls GOUTP.  HOUTP sends
+	   output stored in the intermediate plot file to the physical
+	   device.  If that is not applicable to the driver, it checks
+	   the open flag and closes the intermediate plot file if the
+	   file is still open.
+
+HENDD	-  HENDD is called when the driver is to shut down.  It is
+	   called whenever a program calls GENDP or when a new device is
+	   requested.  When the device driver is requested to shut down
+	   (IEOP = 1), HENDD closes files and cleans up as needed by the
+	   driver.  When the device driver is requested to remain active
+	   (IEOP = 0), HENDD generally does nothing unless some special
+	   function must be performed at the end of each application
+	   program.

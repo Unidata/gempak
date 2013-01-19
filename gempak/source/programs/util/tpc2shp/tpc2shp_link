@@ -1,0 +1,7 @@
+$CC $CFLAGS -c tpc2shp.c 
+$FC $LDFLAGS -o $OS_BIN/tpc2shp tpc2shp.o \
+                $OS_LIB/textlib.a $CGEMLIB $GEMLIB $CGEMLIB \
+                -lGPC $OS_LIB/ginitp_alt.o $OS_LIB/gendp_alt.o \
+                $GPLT $DEVICE $OS_LIB/gn.a $GEMLIB $CGEMLIB $GEMLIB \
+		-lm -lshp -lpthread -lz
+$RM *.o

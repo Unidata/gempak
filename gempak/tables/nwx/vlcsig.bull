@@ -1,0 +1,55 @@
+! VLCSIG.BULL
+!
+! This table contains the bulletin/station information to be used
+! with the Volcano SIGMET bulletins.
+!
+! The format for the file is given below, with the
+! number of characters in parentheses.
+!!
+! Log:
+! S. Jacobs/NCEP	 2/01	Added more stations
+! S. Jacobs/NCEP	 6/03	Added "WVPQ21 PGUM"
+! S. Jacobs/NCEP	 3/06	Added products for KKCI, PHFO and PAWU
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+!
+!WVAU01 ADRM     
+WVNG01 AYPY     PORT_MORESBY_INTL                NG NG  -943  14722    47
+WVCN01 CWUL     QUEBEC_FCST_OFFICE               QB CN  4550  -7368 -9999
+WVCN31 CWZF     YELLOWKNIFE_AIRPORT              NT CN  6247 -11445   206
+WVIY31 LIIB     ROME/FIUMICINO                   IY IY  4180   1223     3
+WVIY31 LIMM     MILANO/LINATE                    IY IY  4543    928   103
+WVMX31 MMEX     MEXICO_CITY/JUAREZ               MX MX  1943  -9908  2234
+WVJP31 RJAA     NEW_TOKYO_INTL_ARPT              JP JP  3577  14038    44
+WVAS31 RPLL     NINOY_AQUINO_INTL                PH PH  1452  12100    21
+WVAG01 SABE     AEROPARQUE(CIV/MIL)              AG AG -3457  -5842     6
+!WVAG01 SABM     
+WVAG01 SACO     CORDOBA_AIRPORT                  AG AG -3132  -6422   474
+WVAG01 SAEZ     BUENOS_AIRES/MORON               AG AG -3468  -5865    30
+WVAG01 SAME     MENDOZA/EL_PLUMERIL              AG AG -3283  -6878   704
+WVAG01 SARE     RESISTENCIA_AIRPORT              AG AG -2745  -5905    52
+WVAG01 SAVC     COMODORO_RIVADAVIA               AG AG -4578  -6750    46
+!WVAA01 SAWB     
+WVBZ01 SBBR     BRASILIA_(CIV/MIL)               BZ BZ -1587  -4793  1061
+!WVAA01 SCEF     
+WVCH01 SCSC     SANTIAGO                         CH CH -3343  -7068   520
+WVEQ01 SEQU     QUITO/MARISCAL_SUC&              EQ EQ   -15  -7848  2812
+WVPY01 SGAS     ASUNCION/SILVIO_PET              PY PY -2527  -5763   101
+WVCO01 SKBO     BOGOTA/ELDORADO                  CO CO   470  -7413  2548
+WVBO01 SLLP     LA_PAZ/JFK_INTL                  BO BO -1652  -6818  4014
+WVSM01 SMZY     ZANDERY/PARAMARIBO               SM SM   545  -5520    15
+WVCA31 SOCA     CAYENNE/ROCHAMBEAU               FG FG   483  -5237     9
+WVFG20 SOCA     CAYENNE/ROCHAMBEAU               FG FG   483  -5237     9
+WVPR01 SPIM     LIMA/JORGE_CHAVEZ                PR PR -1200  -7712    13
+WVUY01 SUMU     CARRASCO_(CIV/MIL)               UY UY -3483  -5600    32
+WVVN01 SVBS     MARISCAL_SUCRE(MIL)              VN VN  1025  -6765   437
+WVGY01 SYTM     GEORGETOWN/TIMEHRI               GY GY   650  -5825    30
+WVCA31 TTPP     PIARCO_INTL_AIRPORT              TD TD  1062  -6135    15
+WVPQ21 PGUM     GUAM_INTL_ARPT                   -- MY  1348  14480    75
+! All KKCI are covered by 1 entry
+WVUS01 KKCI     KANSAS_CITY_MUNI__&              MO US  3900  -9550   231
+! All PHFO are covered by 1 entry
+WVPA01 PHFO     HONOLULU/UNIV_OF_HI-MANOA_CAMPUS HI US  2200 -16150    20
+! All PAWU are covered by 1 entry
+WVAK01 PAWU     ALASKAN_AVIATION_WEATHER_UNIT    AK US  6075 -15200     0

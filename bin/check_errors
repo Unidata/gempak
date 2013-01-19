@@ -1,0 +1,14 @@
+#!/bin/csh
+
+cd $GEMPAK/build
+
+foreach i ( error severe cannot warn fatal fail undefined )
+
+    echo "Searching for: $i"
+
+    grep -i $i RELEASE_$NA_OS | more
+
+    echo "Enter to continue"
+    set ans = $<
+
+end

@@ -1,0 +1,37 @@
+!
+! Restore File : ssh_contours
+!
+! Log:
+! Y.Hao		       01/09/08 
+!
+GLEVEL  0
+GVCORD  none
+PANEL   0
+SKIP    0
+SCALE   1
+GDPFUN  mul(SURGE,3.281)//w!sbtw(w,-10.0,-4)!sbtw(w,-3.9999,-2)!sbtw(w,-1.9999,-1)!sbtw(w,-0.9999,-0.5)!sbtw(w,-0.4999,-0.2)!sbtw(w,-0.1999,0.0)!sbtw(w,0.0001,0.2)!sbtw(w,0.2001,0.5)!sbtw(w,0.5001,1)!sbtw(w,1.0001,2)!sbtw(w,2.0001,3)!sbtw(w,3.0001,4)!sbtw(w,4.0001,10.0)
+TYPE    p
+CONTUR  0
+CINT    0
+LINE
+FINT               
+FLINE   
+HILO    0
+HLSYM   0
+CLRBAR  1/v/ll
+WIND    
+REFVEC  
+TITLE   5/-2/~ Extra Tropical Surge Height (1/10 feet)
+TEXT    1/21/1.4/hw
+CLEAR   yes
+STNPLT  
+SATFIL  
+RADFIL  
+LUTFIL  
+STREAM  
+POSN    0
+COLORS  24!25!26!27!23!22!3!21!5!19!17!16!15!14!7!28!29
+MARKER  0
+GRDLBL  0
+FILTER  no
+IJSKIP  yes

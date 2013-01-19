@@ -1,0 +1,96 @@
+!
+! LOCATOR.TBL
+!
+! This table specifies the location data sets that appear in the NMAP
+! locator and seek functions.  Location data sets can be any valid GEMPAK 
+! station table or bounds file.  Both types of data sets can be used by the 
+! locator function since this function may be used to indicate the cursor's
+! proximity to a discreet point (station) or the cursor's location within
+! a geographical area (bound). However, the seek function only performs 
+! operations with respect to discreet locations and therefore only accesses
+! station table data sets.  This table also specifies the default display 
+! attributes such as distance and direction units for the locator function.  
+! The seek function does not use this table to specify those defaults.
+!
+! The first column of this table, (NAME), specifies the name that appears
+! in the locator and seek GUIs.
+!
+! The second column of this table, (ALIAS), specifies the alias name defined
+! in the table $GEMTBL/config/clo.tbl that is used to reference the station
+! or bounds data set.
+!
+! The third column of this table, (FORMAT CODE), sets the default 
+! attributes to be used in the locator GUI.  The format code is in a
+! 4-5 digit format (Eg. 5212 or 10212).  The columns are formatted left to
+! right as follows:
+! 
+!   ROUNDING        UNITS        DIRECTION     DISPLAY
+!                                              
+!  5 - nearest 5    0 - omit     0 - omit      0 - degrees
+! 10 - nearest 10   1 - NM       1 - 16 point  1 - decimal/minutes
+!                   2 - SM       2 - degrees   2 - 1st column
+!                   3 - KM             	       4 - 3rd column
+!
+! The ROUNDING code sets the default distance relative to a station table 
+! data set to the nearest 5 or 10 distance units.
+!
+! The UNITS code sets the default distance unit to nautical miles (NM), 
+! statute miles (SM) or kilometers (KM) for a station table data set.
+!
+! The DIRECTION code sets the default direction unit to either a 16 point 
+! compass display or degrees for a station data set.
+!
+! The DISPLAY code 0 and 1 specify degrees and degrees/minutes for the
+! latitude and longitude display units, respectively.  The codes 2 and 4
+! specify whether the first or third column of the station table is 
+! displayed by default.  The first column is usually the station ID and the
+! third column is usually the station name.
+!
+!!
+! Log:
+! A. Hardy/GSC		01/00	Created
+! A. Hardy/GSC		01/00	Modified format codes and added 1 type
+! A. Hardy/GSC		01/00	Added VOLCANO table
+! H. Zeng/EAI           02/00   Removed DEGMIN entry
+! D.W.Plummer/NCEP	 2/00	Add COUNTY_FIPS; chg COUNTY to COUNTY_NAME
+! A. Hardy/GSC		 3/00	Added ISLAND table
+! D.W.Plummer/NCEP	 7/00	Changes for generalized boundary files
+! D.W.Plummer/NCEP	 8/00	Added NEXRAD
+! D.W.Plummer/NCEP	 8/00	Added COUNTY centroid table
+! S. Schotz/NCEP	11/00	Added Western Region QPF table
+! S. Schotz/NCEP	 4/02   Updated documentation
+! D. Kidwell/NCEP	 3/03   Added trop cyclone breakpoint table
+! R. Tian/SAIC		 2/04	Added TIMEZONE_NAME
+! A. Hardy/NCEP		 3/04	Added MZ_CNTY
+! A. Hardy/NCEP		 6/04	Change MZ_CNTY->WBCMZ_BNDS;0002->0004
+! T. Piper/SAIC		02/05	Added RFC_BNDS
+! M. Gamazayachikov	06/06	Added ELEVATION
+!----------------------------------------------------------------------
+!
+!NAME          ALIAS         FORMAT
+!                            CODE
+!
+! (15)         |   (15)      |(4)
+!-------------------------------------
+!
+LATLON           -             0000
+COUNTY_NAME    CNTY_BNDS       0004
+COUNTY_FIPS    CNTY_BNDS       0002
+CWA_NAME       CWA_BNDS        0004
+ANCHOR         ANCHOR          5212
+VOR            VOR             5212
+SFSTNS         SFSTNS          0002 
+CITIES         CITIES          0004 
+MARINE         MARINE          5212
+COASTAL        COASTAL         5212
+VOLCANO        VOLCANO         5214
+ISLAND         ISLAND          5214
+NEXRAD         NEXRAD          5212
+COUNTY         COUNTY          0004
+RFC_REGIONS    RFC_BNDS        0004
+STATE_NAME     STATE_BNDS      0004
+WR_QPF         WR_QPF          0004
+TROPCY_BRKS    TROPCY_BRKS     5214
+TIMEZONE_NAME  TZ_BNDS         0004
+MZ_CNTY        WBCMZ_BNDS      0004
+ELEVATION      NAM_TOPO        0004

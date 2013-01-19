@@ -1,0 +1,58 @@
+!	NAMSND error file 
+!
++3	! Done -- just wrote out bufr_table.dump.
++2	! Creating GEMPAK file !AS .
++1	! End of input file -- all done.
+-1	! Fatal error initializing TAE.
+-2	! Fatal error reading TAE parameters.
+-3	! Error opening model sounding file !AS .
+-4	! Error opening sounding parameter file.
+-5	! Wrong number of sounding parms in output file.
+-6	! Wrong sounding parameters in output file.
+-7	! Cannot create a new sounding data file.
+-8	! Error opening surface parameter file.
+-9	! Wrong number of surface parms in output file.
+-10	! Wrong surface parameters in output file.
+-11	! Cannot create a new surface data file.
+-12	! Error reading input file.
+-13	! Packing file not opened.
+-14	! Different SND parm count in input file.
+-15	! Different SFC parm count in input file.
+-16	! Cannot add SND time.
+-17	! Cannot add SFC time.
+-18	! Cannot add SND station.
+-19	! Cannot add SFC station.
+-20	! Sequence name not found in input file.
+-21	! No input parameter names were requested.
+-22	! Forecast time is missing.
+-23	! Station number is missing.
+-24	! Station latitude is missing.
+-25	! Station longitude is missing.
+-26	! Station elevation is missing.
+-27	! No surface data for a station.
+-28	! No data in output array.
+-29	! Sounding has only one level.
+-30	! Error opening auxiliary parameter file.
+-31	! Wrong number of auxiliary parms in output file.
+-32	! Wrong auxiliary parameters in output file.
+-33	! Cannot create a new auxiliary surface data file.
+-34	! Error assigning unit number to BUFR file.
+-35	! Must use all snd parms if not using one profile.
+-36	! Maximum number of profiles exceeded.
+-41	! Missing packing information---defective BUFR file.
+-42	! Too many TABLE B entries found in BUFR file.
+-43	! A sequence has no member parameters.
+-44	! Table is too long---MXTBLN is too small.
+-45	! No TABLE B entries found.
+-46	! Too many TABLE D entries found.
+-47	! Too many parameters in a sequence.
+-48	! No TABLE D entries found---defective BUFR file.
+-49	! The sequence !AS was not found.
+-50	! The parameter !AS was not found in table.
+-51	! Cannot open BUFR file !AS .
+-52	! BUFR file name is blank.
+-53	! Cannot open bufr_table.dump file.
+-54     ! 6th column entry in SND packing table is missing.
+-55	! Error opening sounding output file.
+-56	! Error opening surface output file.
+-57	! Error opening surface auxiliary output file.

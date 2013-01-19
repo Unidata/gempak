@@ -1,0 +1,95 @@
+!
+! alarm_text
+! 
+! resource file for alarm_text
+!
+!alarm_text*foreground: black
+!alarm_text*background: grey
+!
+!alarm_text*fontList: variable
+!alarm_text*fontList: -adobe-helvetica-bold-r-normal--12-120-75-75-p-70-iso8859-1
+alarm_text*fontList: 			helvb14
+
+alarm_text.width:			640
+alarm_text.height:			800
+!
+! Scrolled Lists
+!
+alarm_text*pathlabel.height		15
+alarm_text*filename.height:		15
+alarm_text*pathlabel.width:		430
+alarm_text*filelist.height:		200
+alarm_text*filelist.visibleItemCount:	20
+!
+! View File
+!
+alarm_text*viewfile.fontList:		courr14
+alarm_text*viewfile.height		450
+!
+! FileInfo Custom Dialog resources
+!
+! size of the dialog
+!
+alarm_text*fileinfo.width:		480
+alarm_text*fileinfo.height		160
+!
+! title
+!
+alarm_text*fileinfo.dialogTitle: File Information
+!
+! file name and size label location
+!
+alarm_text*label.x:			0
+alarm_text*label.y:			0
+alarm_text*label.width:			430
+!
+! Set up separator gadget
+!
+alarm_text*fileinfosep.x:		0
+alarm_text*fileinfosep.y:		150
+alarm_text*fileinfosep.width		480
+!
+!
+! form widget setup
+!
+!alarm_text*form*foreground: 		black
+!alarm_text*form*background: 		steelblue
+alarm_text*form*width:			480
+alarm_text*form*height			30
+!
+! Set attachments for pushbutton done
+!
+alarm_text*form.done.leftAttachment:   ATTACH_POSITION
+alarm_text*form.done.leftPosition:     8
+alarm_text*form.done.rightAttachment:  ATTACH_POSITION
+alarm_text*form.done.rightPosition:    23
+!alarm_text*form.done.topAttachment:    ATTACH_OPPOSITE_FORM
+!alarm_text*form.done.topOffset:         -40
+alarm_text*form.done.topAttachment:    ATTACH_FORM
+alarm_text*form.done.topOffset:        10
+alarm_text*form.done.bottomAttachment: ATTACH_FORM
+alarm_text*form.done.bottomOffset:     10
+!
+! Set attachments for pushbutton cancel
+!
+alarm_text*form.cancel.leftAttachment:   ATTACH_POSITION
+alarm_text*form.cancel.leftPosition:     31
+alarm_text*form.cancel.rightAttachment:  ATTACH_POSITION
+alarm_text*form.cancel.rightPosition:    46
+!
+! Set attachments for pushbutton delete
+!
+alarm_text*form.delete.leftAttachment:   ATTACH_POSITION
+alarm_text*form.delete.leftPosition:     54
+alarm_text*form.delete.rightAttachment:  ATTACH_POSITION
+alarm_text*form.delete.rightPosition:    69
+!
+! Set attachments for pushbutton quit
+!
+alarm_text*form.print.leftAttachment:   ATTACH_POSITION
+alarm_text*form.print.leftPosition:     77
+alarm_text*form.print.rightAttachment:  ATTACH_POSITION
+alarm_text*form.print.rightPosition:    92
+!
+! end of file
+!

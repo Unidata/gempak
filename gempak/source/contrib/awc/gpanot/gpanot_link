@@ -1,0 +1,5 @@
+$FC $FFLAGS $LDFLAGS  -o $OS_BIN/gpanot gpanot.f \
+	$OS_LIB/gpanot.a \
+	$GEMLIB $CGEMLIB $APPL $SYSLIB $GEMLIB \
+	$OS_LIB/libnetcdf.a $OS_LIB/libz.a -lm
+$RM *.o

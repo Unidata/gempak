@@ -1,0 +1,28 @@
+! TEXTBTN.TBL.
+!
+! This table provides the icons located in the text  button palette
+!
+! Log:
+! E. Wehner/EAi		 5/97
+! E. Safford/GSC	 6/97	Added textlow, texthi
+! E. Safford/GSC	 7/97	Added textbu to textht
+! W. Li/EAI		 4/98	Added textud
+! S. Law/GSC		05/98	Reduced to just three types
+! E. Safford/GSC	04/01	reorder for horizontal layout
+! M. Li/SAIC		10/01	Added texticng
+! J. Wu/SAIC		02/03	add textmcloud - mid level cloud
+!------------------------------------------------------------------------
+BEGIN
+!
+! Row 1
+!
+textgen
+textturb
+textfrzlvl
+!
+! Row 2
+!
+textcloud
+texticng
+textmcloud
+END

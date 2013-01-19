@@ -1,0 +1,135 @@
+! MARNMOS.STN
+!
+! This table contains the station information to be used
+! with the MARINE Model Output Statistics data.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+! Log:
+! m.gamazaychikov/SAIC	07/03	Original compilation
+!
+!STID    STNM   NAME                             ST CO   LAT    LON  ELEV  PRI
+!(8)     (6)    (32)                            (2)(2)   (5)    (6)   (5)  (2)
+!
+41001    410010 EAST_HATTERAS                    -- --  3468  -7223     0  0
+41002    410020 SOUTH_HATTERAS                   -- --  3227  -7542     0  0
+41004    410040 EDISTO                           -- --  3250  -7910     0  0
+41008    410080 GRAYS_REEF                       -- --  3140  -8087     0  0
+41009    410090 CANAVERAL                        FL US  2850  -8018     0  0
+41010    410100 CANAVERAL_EAST                   -- --  2889  -7852     0  0
+42001    420010 MID_GULF                         -- --  2592  -8968     0  0
+42002    420020 WEST_GULF                        -- --  2590  -9359     0  0
+42003    420030 EAST_GULF                        -- --  2588  -8595     0  0
+42007    420070 BILOXI                           -- --  3009  -8877     0  0
+42019    420190 FREEPORT                         TX US  2792  -9536     0  0
+42020    420200 CORPUS_CHRISTI                   TX US  2695  -9670     0  0
+42035    420350 GALVESTON                        TX US  2925  -9441     0  0
+42036    420360 W_TAMPA                          FL US  2851  -8451     0  0
+42039    420390 PENSACOLA                        FL US  2880  -8606     0  0
+42040    420400 DAUPHIN_ISLAND                   AL US  2921  -8820     0  0
+42041    420410 NORTH_MID_GULF                   -- --  2722  -9042     0  0
+44004    440040 EAST_CAPE_MAY                    NJ US  3850  -7047     0  0
+44005    440050 GULF_OF_MAINE                    -- --  4317  -6922     0  0
+44007    440070 PORTLAND                         ME US  4353  -7014     0  0
+44008    440080 NANTUCKET                        MA US  4050  -6943     0  0
+44009    440090 DELAWARE_BAY                     -- --  3846  -7470     0  0
+44011    440110 GEORGES_BANK                     -- --  4109  -6659     0  0
+44013    440130 BOSTON                           MA US  4235  -7069     0  0
+44014    440140 VIRGINIA_BEACH                   VA US  3658  -7484     0  0
+44025    440250 LONG_ISLAND                      NY US  4025  -7317     0  0
+45001    450010 MID_SUPERIOR                     -- --  4806  -8778     0  0
+45002    450020 N_MICHIGAN                       -- --  4533  -8642     0  0
+45003    450030 N_HURON                          -- --  4535  -8284     0  0
+45004    450040 E_SUPERIOR                       -- --  4756  -8655     0  0
+45005    450050 W_ERIE                           -- --  4168  -8240     0  0
+45006    450060 W_SUPERIOR                       -- --  4732  -8987     0  0
+45007    450070 S_MICHIGAN                       -- --  4267  -8702     0  0
+45008    450080 S_HURON                          -- --  4428  -8242     0  0
+46001    460010 GULF_OF_ALASKA                   -- --  5630 -14817     0  0
+46002    460020 OREGON                           OR US  4257 -13032     0  0
+46005    460050 WASHINGTON                       -- --  4605 -13102     0  0
+46006    460060 SE_PAPA                          -- --  4084 -13749     0  0
+46011    460110 SANTA_MARIA                      CA US  3488 -12087     0  0
+46012    460120 HALF_MOON_BAY                    -- --  3745 -12270     0  0
+46013    460130 BODEGA                           CA US  3823 -12333     0  0
+46014    460140 PT_ARENA                         CA US  3922 -12397     0  0
+46022    460220 EEL_RIVER                        CA US  4072 -12452     0  0
+46023    460230 D_PT_ARGUELLO                    CA US  3471 -12097     0  0
+46025    460250 CATALINA_RIDGE                   CA US  3375 -11908     0  0
+46026    460260 SAN_FRANCISCO                    CA US  3775 -12282     0  0
+46027    460270 ST_GEORGES                       CA US  4185 -12438     0  0
+46028    460280 CAPE_SAN_MARTIN                  CA US  3574 -12189     0  0
+46029    460290 COL_RIVER_BAR                    -- --  4612 -12451     0  0
+46030    460300 BLUNTS_REEF                      CA US  4042 -12453     0  0
+46035    460350 BERING_SEA                       -- --  5708 -17778     0  0
+46041    460410 CAPE_ELIZABETH                   WA US  4734 -12475     0  0
+46042    460420 MONTEREY                         CA US  3675 -12242     0  0
+46047    460470 TANNER_BANKS                     -- --  3243 -11953     0  0
+46050    460500 YAQUINA_BA                       -- --  4462 -12453     0  0
+46053    460530 SANTA_BARB_E                     -- --  3424 -11985     0  0
+46054    460540 SANTA_BARB_W                     -- --  3427 -12045     0  0
+46059    460590 CALIFORNIA                       -- --  3798 -13000     0  0
+46060    460600 N._PR._WM._SOUND                 -- --  6058 -14683     0  0
+46061    460610 S._PR._WM._SOUND                 -- --  6022 -14683     0  0
+46062    460620 PT._SAN_LUIS                     CA US  3510 -12101     0  0
+46063    460630 PT._CONCEPTION                   CA US  3425 -12066     0  0
+51001    510010 NORTHWEST_HAWAII                 -- --  2340 -16227     0  0
+51002    510020 SOUTHWEST_HAWAII                 -- --  1715 -15779     0  0
+51003    510030 WEST_HAWAII                      -- --  1916 -16074     0  0
+51004    510040 SOUTHEAST_HAWAII                 -- --  1744 -15252     0  0
+ABAN6    999999 ALEXANDRIA_BAY                   NY US  4433  -7593     0  0
+ALSN6    999999 AMBROSE_LS                       NY US  4046  -7383     0  0
+AUGA2    999999 AUGUSTINE_ISLAND                 AK US  5938 -15335     0  0
+BLIA2    999999 BLIGH_REEF_LIGHT                 AK US  6084 -14688     0  0
+BURL1    999999 SOUTHWEST_PASS                   LA US  2890  -8943     0  0
+BUZM3    999999 BUZZARDS_BAY_LS                  MA US  4140  -7103     0  0
+CARO3    999999 CAPE_ARAGO                       OR US  4334 -12438     0  0
+CDRF1    999999 CEDAR_KEY                        FL US  2914  -8303     0  0
+CHLV2    999999 CHESAPEAKE_LS                    VA US  3691  -7571     0  0
+CLKN7    999999 CAPE_LOOKOUT                     NC US  3462  -7652     0  0
+CSBF1    999999 CAPE_SAN_BLAS                    FL US  2967  -8536     0  0
+DBLN6    999999 DUNKIRK                          NY US  4249  -7935     0  0
+DESW1    999999 DESTRUCTION_IS.                  WA US  4768 -12449     0  0
+DISW3    999999 DEVILS_ISLAND                    WI US  4708  -9073     0  0
+DPIA1    999999 DAUPHIN_ISLAND                   AL US  3025  -8807     0  0
+DRFA2    999999 DRIFT_RIVER_TERMINAL             AK US  6055 -15214     0  0
+DRYF1    999999 DRY_TORTUGAS                     FL US  2464  -8286     0  0
+DSLN7    999999 DIAMOND_SHOALS_LS                NC US  3515  -7530     0  0
+DUCN7    999999 DUCK_PIER                        NC US  3618  -7575     0  0
+FBIS1    999999 FOLLY_ISLAND                     SC US  3268  -7989     0  0
+FFIA2    999999 FIVE_FINGER                      AK US  5727 -13363     0  0
+FPSN7    999999 FRYING_PAN_SHOALS                NC US  3349  -7759     0  0
+FWYF1    999999 FOWEY_ROCKS                      FL US  2559  -8010     0  0
+GDIL1    999999 GRAND_ISLE                       LA US  2927  -8996     0  0
+GLLN6    999999 GALLOO_ISLAND                    NY US  4389  -7645     0  0
+IOSN3    999999 ISLE_OF_SHOALS                   NH US  4297  -7062     0  0
+KTNF1    999999 KEATON_BEACH                     FL US  2982  -8359     0  0
+LKWF1    999999 LAKE_WORTH                       FL US  2661  -8003     0  0
+LONF1    999999 LONG_KEY                         FL US  2484  -8086     0  0
+MDRM1    999999 MOUNT_DESERT_ROCK                ME US  4397  -6813     0  0
+MISM1    999999 MATINICUS_ROCK                   ME US  4378  -6886     0  0
+MLRF1    999999 MOLASSES_REEF                    FL US  2501  -8038     0  0
+MRKA2    999999 MIDDLE_ROCK_LIGHT                AK US  6108 -14666     0  0
+NWPO3    999999 NEWPORT                          OR US  4461 -12407     0  0
+PILA2    999999 PILOT_ROCK                       AK US  5974 -14947     0  0
+PILM4    999999 PASSAGE_ISLAND                   MI US  4822  -8837     0  0
+POTA2    999999 POTATO_POINT                     AK US  6106 -14670     0  0
+PTAC1    999999 POINT_ARENA                      CA US  3896 -12374     0  0
+PTAT2    999999 PORT_ARANSAS                     TX US  2783  -9705     0  0
+PTGC1    999999 POINT_ARGUELLO                   CA US  3458 -12065     0  0
+ROAM4    999999 ROCK_OF_AGES                     MI US  4787  -8931     0  0
+SANF1    999999 SAND_KEY                         FL US  2446  -8188     0  0
+SAUF1    999999 ST._AUGUSTINE                    FL US  2986  -8126     0  0
+SBIO1    999999 SOUTH_BASS_ISLAND                OH US  4163  -8284     0  0
+SGNW3    999999 SHEBOYGAN                        WI US  4375  -8769     0  0
+SISW1    999999 SMITH_ISLAND                     WA US  4832 -12284     0  0
+SMKF1    999999 SOMBRERO_KEY                     FL US  2463  -8111     0  0
+SPGF1    999999 SETTLEMENT_POINT                 -- --  2670  -7900     0  0
+SRST2    999999 SABINE                           TX US  2967  -9405     0  0
+STDM4    999999 STANNARD_ROCK                    MI US  4718  -8722     0  0
+SUPN6    999999 SUPERIOR_SHOALS                  NY US  4447  -7580     0  0
+TPLM2    999999 THOMAS_POINT                     MD US  3890  -7644     0  0
+TTIW1    999999 TATOOSH_ISLAND                   WA US  4839 -12474     0  0
+VENF1    999999 VENICE                           FL US  2707  -8245     0  0
+WPOW1    999999 WEST_POINT                       WA US  4766 -12244     0  0

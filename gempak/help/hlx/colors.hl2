@@ -1,0 +1,129 @@
+     COLORS
+ 
+     COLORS specifies a list of color numbers which must be separated 
+     using semicolons:
+
+		color 1 ; color 2 ; ... ; color n
+
+     The last color in the list will be repeated, if necessary, to 
+     determine all colors required by the program.
+
+     Colors may be entered as a range in the form: first-last-increment.
+     If the increment is not entered, 1 is assumed.
+
+     Color-coding of any parameter may be done based on its own value or 
+     on the value of any other computable parameter.  There is a one-to-
+     one correspondence between the elements in the color list and the
+     elements in the parameter list (e.g., SFPARM).  To color-code any 
+     parameter, replace its corresponding color number in the COLORS
+     list with the form:
+
+ 	(v1;v2;...;vN-1/c1;c2;...;cN/PARM/E)   or
+ 	(v1-vN-1-vInc/c1-cN-cInc/PARM/E)       or
+ 	a combination of a list and a range
+
+     where the v's are parameter values, the c's are color numbers, and
+     PARM is the parameter whose value determines the color.  If PARM
+     is omitted, the parameter will be color-coded based on its own value.
+     The number of values must be one less than the number of colors.  If
+     a value range is used, an increment must be specified.  If a color
+     range is used and no increment is specified, 1 is assumed.  For
+     example, to color-code a marker based on the 3-hour flash flood
+     guidance value, the color element corresponding to the parameter
+     MARK could be specified as:
+
+	(0.5;1;1.5;2;3/2;19;21;22;6;4/FF03)
+
+     meaning that values less than or equal to .5 inch would be plotted 
+     with color 2, values greater than .5 but less than or equal to 1
+     would be plotted with color 19, etc.
+
+     The E is a flag to indicate whether to include the break value with
+     the lower range or the upper range of values. Valid values are L
+     and U, respectively. The default is L for inclusion in the lower
+     range of values. In the above example, the first data range is
+     X <= 0.5, the second is 0.5 < X <= 1.0, etc. If the U flag is added,
+     the ranges change to X < 0.5, 0.5 <= X < 1.0, etc.
+
+     If the input is blank, a default of 1 is used.  If a color number 
+     of 0 is entered, that parameter or line will not be plotted.
+ 
+     New color assignments may be made by appending the following commands
+     to the color number:
+
+	=INIT	--	all colors are initialized to device-dependent
+			colors
+
+	=NAME	--	this color number is set to the color specified
+			in NAME
+
+	=r:g:b	--	this color number is set using RGB components in
+			r, g, and b which must be separated using colons.
+			These components must be in the range 0 - 255.
+
+     Note that only =INIT may be appended to a range.
+
+     Color number 101 is the background color.
+
+     Note that the GIF driver does not accept NAME.
+     
+     The following colors are the default colors for the given devices:
+
+	    XW,NC   PS,PSP	PSC	GEMPAK NAMES	X COLOR NAMES
+	
+	    1			31	VANILLA		bisque1
+	    2			2	RED		red
+	    3			3	GREEN		green
+	    4			4	BLUE		blue
+	    5			5	YELLOW		yellow
+	    6			6	CYAN		cyan
+	    7 			7	MAGENTA		magenta
+	    8			8	BROWN		sienna3
+	    9			9	CORAL		sienna1
+	    10			10	APRICOT		tan1
+	    11			11	PINK		LightPink1
+	    12			12	DKPINK		IndianRed1
+	    13			13	MDVIOLET	firebrick2
+	    14			14	MAROON		red4
+	    15			15	FIREBRICK	red3
+	    16			16	ORRED		OrangeRed2
+	    17			17	ORANGE		DarkOrange1
+	    18			18	DKORANGE	orange3
+	    19			19	GOLD		gold1
+	    20			20	DKYELLOW	yellow2
+	    21			21	LWNGREEN	chartreuse1
+	    22			22	MDGREEN		green3
+	    23			23	DKGREEN		green4
+	    24			24	GRPBLUE		DodgerBlue4
+	    25			25	LTBLUE		DodgerBlue1
+	    26			26	SKY		DeepSkyBlue2
+	    27			27	MDCYAN		cyan2
+	    28			28	VIOLET		MediumPurple3
+	    29			29	PURPLE		purple2
+	    30			30	PLUM		magenta4
+	    31			32	WHITE		white
+	    32	    1		1	BLACK		black
+		    2			G95		gray95
+		    3			G90		gray90
+		    4			G85		gray85
+		    5			G80		gray80
+		    6			G75		gray75
+		    7 			G70		gray70
+		    8			G65		gray65
+		    9			G60		gray60
+		    10			G55		gray55
+		    11			G50		gray50
+		    12			G45		gray45
+		    13			G40		gray40
+		    14			G35		gray35
+		    15			G30		gray30
+		    16			G25		gray25
+		    17			G20		gray20
+		    18			G15		gray15
+		    19			G10		gray10
+		    20			G05		gray5
+
+     On the color devices, colors 8 through 30 will provide a range of
+     colors from brown to red to orange to yellow to green to blue to violet.
+     On the Postscript device, 20 gray shades are used.
+

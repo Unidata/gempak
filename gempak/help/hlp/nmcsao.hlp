@@ -1,0 +1,52 @@
+NMCSAO decodes surface airways data in NMC Office Note 117
+format and writes it to a GEMPAK surface data file.
+                                                                                
+                                                                                
+INPUT PARAMETERS                                                                
+                                                                                
+    SFEFIL    *NMC file
+    SFFILE    *Surface data file                                                
+    AREA      *Data area                                                        
+    TIMSTN    *Times/additional stations
+                                                                                
+                                                                                
+PROGRAM DESCRIPTION                                                             
+                                                                                
+    NMCSAO decodes airways data in NMC Office Note 117
+    format and writes it to the GEMPAK surface file given
+    by SFFILE.  AREA is entered as the southwestern and
+    northeastern corner points of the region over which
+    stations will be included.
+
+    The NMC raw file name is entered by specifying SFEFIL.
+    The file may contain either EBCIDC or ASCII data.
+
+    NMCSAO will create an GEMPAK surface file if SFFILE
+    does not already exist using TIMSTN to set the number
+    of times and stations to included in the file.
+                                                                                
+                                                                                
+                                                                                
+EXAMPLE                                                                        
+                                                                                
+    Load data from NMC file nmc.sao:
+                                                                                
+        SFEFIL  =  nmc.sao
+        SFFILE  =  gempak.sfc
+        AREA    =  30;-120;55;-70
+        TIMSTN  =  24/1200
+                                                                                
+                                                                                
+ERROR MESSAGES                                                                  
+                                                                                
+    [NMC  -1]     Fatal error initializing TAE.                               
+    [NMC  -2]     Fatal error reading TAE parameters.                         
+    [NMC  -3]     Error opening station file !AS .
+    [NMC  -4]     ... is a merged file.
+    [NMC  -5]     ... is not an upper air station.
+    [NMC  -6]     AREA is invalid; see help on GAREA.
+    [NMC  -7]     Error in NMCTMST.
+    [NMC  -8]     Error adding time ... .
+    [NMC  -9]     Wrong number of parms -- check packing file.
+    [NMC -10]     Unexpected data in the INPUT file.
+    [NMC -11]     Neither entry in TIMSTN can be zero.

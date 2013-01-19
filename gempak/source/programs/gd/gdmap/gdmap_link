@@ -1,0 +1,4 @@
+$FC $FFLAGS $LDFLAGS -o $OS_BIN/gdmap gdmap.f \
+	$OS_LIB/gdmap.a $GEMLIB $APPL $SYSLIB \
+	$CGEMLIB -lm -lnetcdf -lz
+$RM *.o

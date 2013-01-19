@@ -1,0 +1,19 @@
+
+#-------------------------------------------------------------------------------
+# Program uses GETARG() so the +U77 option is required under HPUX.
+if ( test "$OS" = "HPUX" )
+then
+   getArgLib="+U77"
+else
+   getArgLib=""
+fi
+#-------------------------------------------------------------------------------
+
+$FC $FFLAGS $getArgLib -o countc countc.f $GEMLIB
+$RM *.o
+strip countc
+
+$FC $FFLAGS $getArgLib -o countf countf.f $GEMLIB
+$RM *.o
+strip countf
+

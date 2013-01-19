@@ -1,0 +1,66 @@
+     STNPLT 
+
+     STNPLT allows the user to plot station markers and station information.
+
+	text color / text attributes | marker attributes | stnfile # column
+
+     Text color is the color of the station information. If the text color
+     is set to 0, no station information will be plotted. Text attributes are
+     text size, font, width, border, rotation, justification, and hw flag.
+
+     Marker attributes are color, type, size, width, and hw flag. If the marker 
+     color is 0, no markers will be drawn and the station information will be
+     centered on the station. If the marker color is not specified, a default
+     of 1 will be used.
+
+     Stnfile is the station table from which the station information is read.
+
+     Column refers to the station table and is the column number from which
+     to get the information to display. The following shows the columns for
+     a station table:
+     
+		1	ID
+		2	Number
+		3	Name
+		4	State
+		5	Country
+		6	Latitude
+		7	Longitude
+		8	Elevation
+		9	Priority
+		10	Extra information (not always present)
+
+     If no column number is given, the station ID will be displayed.
+
+     Multiple files with differing colors, types, etc. may be processed 
+     by listing the parameters individually separated with a '+' sign.  
+     See the third example.
+
+
+     Examples:
+
+	STNPLT	= 5/1|3/12/1.25/2|sfstns.tbl
+
+ 		The text color of the station ID is color 5. The text size 1 
+ 		is used. The marker color is 3. The marker type is 12. The 
+ 		marker size is 1.25 times larger than the default size and the 
+ 		marker width is 2 times larger than the default width. The 
+ 		station table filename from which the station information is 
+ 		read is sfstns.tbl.
+
+	STNPLT	= 17/1|0|snstns.tbl 
+
+ 		The text color of the station ID is color 17. The text size
+ 		is 1. The marker color is 0. No markers appear and the station 
+ 		ID will be centered on the station. Other marker values are set 
+ 		to the defaults.  The station table filename from which the 
+ 		station information is read is snstns.tbl.
+
+	STNPLT	= 17/1|0|snstns.tbl#3
+
+ 		Same as the previous example, but displays the station name
+ 		instead of the ID.
+
+	STNPLT	= 5/1|3/12/1.25/2|sfstns.tbl + 17/1|0|snstns.tbl 
+
+ 		Combine and plot the first two examples.

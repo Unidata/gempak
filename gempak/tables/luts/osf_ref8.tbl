@@ -1,0 +1,14 @@
+! osf_ref8.tbl
+!
+! Color table for 8-level NIDS Reflectivity
+! Used at OSF.
+!
+!Color name    Abrev   Red  Green   Blue  X color name
+                         0      0      0
+                         0      0    246
+                         0    200      0
+                       255    255      0
+                       231    192      0
+                       214      0      0
+                       255      0    255
+                       153     85    201

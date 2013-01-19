@@ -1,0 +1,11 @@
+!	SNCFIL error file 
+!
++2	! Negative number of stations entered -- 0 used.
+-1	! Fatal error initializing TAE.
+-2	! Fatal error reading TAE parameters.
+-3	! Error opening station file !AS .
+-4	! File does not include room for any stations.
+-5	! File does not include room for any times.
+-6	! SNPRMF is incorrectly specified.
+-7	! The file name for the new file is blank.
+-8	! Vertical coordinate = !AS -- specify more parameters.

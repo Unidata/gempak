@@ -1,0 +1,36 @@
+!
+! Restore File : 500mb_hght_absv
+!
+! Log:
+! Chiz/Unidata
+!
+GLEVEL  500
+GVCORD  pres
+PANEL   0
+SKIP    0                  !0             !0
+SCALE   8                !5             !-1
+GDPFUN  adv(vor(geo),thrm(hght@300:700)) !avor(obs)  !hght
+TYPE    f                  !c             !c 
+CONTUR  1                  !1             !2  
+CINT    0                  !0         !0
+LINE    7/5/1/2            !29/5/1/2      !5/1/2/1
+FINT    2/2
+FLINE   0;23-9
+HILO    2;6/X;N/10-99;10-99!0 
+HLSYM             
+CLRBAR  1        
+WIND    18/1/1
+REFVEC      
+TITLE   5/-1/ADV of Geo. Relative Vorticity in the layer 300-700mb ~!0!0
+TEXT    1/21//hw            
+CLEAR   yes                
+STNPLT                  
+SATFIL                 
+RADFIL                
+STREAM              
+POSN    4          
+COLORS  2         
+MARKER  2        
+GRDLBL  5                                                                       
+LUTFIL  none
+FILTER  yes

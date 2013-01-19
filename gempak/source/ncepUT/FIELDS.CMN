@@ -1,0 +1,45 @@
+C************************************************************************
+C*  / FIELDS /								*
+C*									*
+C*  This common area contains groups of "like-type" (i.e. letter,	*
+C*  number, or non-alphanumeric) as well as other associated output	*
+C*  from subroutine UT_BKGP for a particular input string of data.	*
+C************************************************************************
+	PARAMETER	( MXNFLD = 100 )
+C*					Maximum number of groups 
+C*
+	PARAMETER	( MXLENF = 20 )
+C*					Maximum length of a group
+C*
+	INTEGER		NALNMR, NMR, ALPHA
+C*
+	PARAMETER	( NALNMR = 0,
+C*					Indicator for non-alphanumeric
+C*					group type 
+     +			  NMR    = 1,
+C*					Indicator for numeric group type 
+     +			  ALPHA  = 2 )
+C*					Indicator for alphabetic group
+C*					type 
+C*
+	CHARACTER	fields*(MXLENF)
+C*
+	COMMON	/ FIELDS /	nflds,
+C*					Number of groups stored 
+C*
+     +				fields ( MXNFLD ),
+C*					Groups 
+C*
+     +				lensf ( MXNFLD ),
+C*					Lengths of groups 
+C*
+     +				itypsf ( MXNFLD ),
+C*					Types of groups: 
+C*					  NALNMR = non-alphanumeric
+C*					  NMR = numeric
+C*					  ALPHA = alphabetic
+C*
+     +				irfnsf ( MXNFLD )
+C*					Indicator as to which other groups
+C*					each group was concatenated with
+C*					in the input string 

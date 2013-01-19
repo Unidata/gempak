@@ -1,0 +1,155 @@
+! MAPOVL.TBL
+!
+! This table specifies the map overlays and their default attributes that
+! appear in the "Map Selection" GUI in NMAP.  It also controls which overlays
+! get turned on by default when NMAP is invoked.  The first three entries in 
+! this table specify the map, lat/lon, and scale legend default attributes. 
+! They correspond to the three buttons that appear at the top of the "Map 
+! Selection" GUI.  These three entries should NOT be removed.  The rest of 
+! the entries in this table are listed on the right side of the "Map 
+! Selection" GUI in the order they appear in this table.  Other valid 
+! overlays may be substituted for them.
+!
+! Map overlays may be either map backgrounds specified by using the GEMPAK map 
+! alias name, or station markers specified using the GEMPAK station file name.  
+! GEMPAK map aliases are defined in the table:  $GEMTBL/config/mapfil.tbl.  Any 
+! standard GEMPAK station file can be used as a marker overlay.  GEMPAK station 
+! files are found in $GEMTBL/stns.
+!
+! The format for the file is given below. Note that spaces are NOT allowed in
+! in  the 'NAME' or 'MAP/STATION' strings.
+!
+! NAME	            --  Overlay name that appears in the "Map Selection" GUI 
+! TYPE		    --  Overlay type: 0 = lat/lon, 1 = map file, 2 = station 
+!                                     marker plot, 5 = distance scale legend 
+! MAP/STATION NAME  --  GEMPAK map file or station plot file name 
+! ON/OFF            --  On/Off overlay flag: 1 = on, 0 = off
+! COLOR		    --  Default line, marker, or legend color, GEMPAK colors (1-32)
+! LSTYLE 	    --  Default map/lat/lon line style (1 - 10), 
+!                       see $GEMHLP/hlx/line.hl2 for definitions
+! LWIDTH 	    --  Default map/lat/lon line width ( > 0 )
+! MTYPE             --  Default marker type (1-22), see $GEMHLP/hlx/marker.hl2 
+!                       for definitions
+! MSIZE             --  Default marker size ( > 0 )
+! MSTATE            --  Default marker state ( 0 = marker only, 1 = marker + text
+!			                       2 = text only ) 
+! TSIZE             --  Default marker text size ( 0="Tiny", 1="Small", 
+!                                                  2="Medium", 3="Large", 
+!                                                  4="Huge", 5="Giant"  ) 
+!			Strings are defined in $GEMTBL/config/fontsz.tbl 
+! UNIT		     -- Default units for scale legend ( 0 = Statute miles,
+!						         1 = Nautical miles,
+!							 2 = Kilometers
+! POS		    --  Default position for distance scale legend
+!			(0 = Upper Left, 1 = Upper Center, 2 = Upper Right
+!			 3 = Lower Left, 4 = Lower Center, 5 = Lower Right )
+! CENLAT	    --  Center latitude for distance scale legend 
+!			for auto mode set LAT to RMISSD; i.e., -9999.0
+! VALUES	    --  Values for distance scale legend
+!			see $GEMHLP/hlx/mscale.hl2 for options and syntax
+!			for auto mode set VALUE to AUTO 
+! LTLNDEG           --  Default lat/lon line degree increment
+! LBLFRQ	    --  Default lat/lon line label frequency
+!
+!!
+! Log:
+! C. Lin/EAI		 7/97	Originated
+! C. Lin/EAI		 8/97	Add centroid
+! S. Wang/GSC		 9/97	add marker attribute
+! S. Schotz/NCEP        10/97   turned text off for centroids
+! G. Krueger/EAI        10/97	Added Basic Weather 12/24hr & 36/48hr
+! S. Schotz/NCEP        10/97	Added Watch Corner Points and VORs
+! D.W.Plummer/NCEP	11/97	Change color and type for VORs and WCP
+! W. Li/EAI	        12/97   ON_OFF -> M_STATE, modified table	
+! G. Krueger/EAI	12/97	Added CWA bounds and WFO stations
+! S. Jacobs/NCEP	12/97	Added Nexrad sites
+! G. Krueger/EAI	 1/98	Added county names
+! S. Schotz/NCEP	 2/98	Added RFC boundaries
+! W. Li/EAI		06/98	Added TEXT_SIZE
+! S. Schotz/NCEP	 6/98	Added North American forecast boundary map
+! G. Krueger/EAI	10/98	Added Basic Weather GIF boundary map
+! G. Krueger/EAI	11/98	Added Medium Range forecast boundary map
+! G. Krueger/EAI	12/98	Added Pacific Surface forecast boundary map
+! G. Krueger/EAI	 2/99	Changed color and line style of North_Amer.
+! G. Grosshans/SPC	 2/99	Added Marine_US 
+! S. Jacobs/NCEP	 3/99	Added Daily Wx Map stations; Clean up
+! G. Krueger/EAI	 3/99	Replaced COUNTY_SORT.TBL with COUNTY.TBL
+! B. McDonald/HPC	 7/99	Added QPF verification domain
+! T. Piper/GSC		 8/99	Added Flight Information Region (FIR)
+! E. Safford/GSC	11/99	Watch_Corner -> Anchor_Points
+! M. Li/GSC		09/00	Added DEFAULT column
+! S. Schotz/NCEP	11/00	Added Western Region QPF points
+! M. LI/GSC		02/01	Added LTLNSTEP, LBLFREQ	 and W_WIDTH
+! D.W.Plummer/NCEP      03/01   Added county cluster table
+! D.W.Plummer/NCEP      03/01   Added VAAC map overlay
+! S. Schotz/NCEP	11/01	Updated Documentation
+! R. Tian/SAIC		 2/04	Added Time_Zone
+! A. Hardy/NCEP		 3/04	Added Marine_Cnty
+! J. Morgan/OPC		 8/04	Added 1000 Fathom Line
+! H. Zeng/SAIC		08/04   Added Scale
+! T. Piper/SAIC		04/06	Removed sigwx, sigwx.tbl
+! m.gamazaychikov/SAIC	12/07	Add AK_Desk
+! m.gamazaychikov/SAIC	07/08	Add NE_Corr
+! S. Jacobs/NCEP	 1/10	Add NWS_States
+! S. Jacobs/NCEP	12/10	Add VAAC and volcano overlays
+!
+!-------------------------------------------------------------------------------
+! 
+!
+!NAME		TYPE MAP/STATION NAME  ON/OFF COLOR  LSTYLE  LWIDTH    LTLNDEG    LBLFREQ  
+!	   (2) Marker				     MTYPE   MSIZE     MSTATE     TSIZE      MWIDTH
+!          (5) Legend                                UNIT    POS       FONT       TSIZE      STYLE   CENLAT      VALUES
+!-----------------------------------------------------------------------------------------------------------------------
+Map             1    nmap                1      1      1      1
+Lat/Lon         0    NONE                1     10      2      1        10         1
+Scale           5    NONE                0      1      0      0         0         1          0       -9999.0     AUTO
+County_Names    2    countynam.tbl       0     15      1      1         2         2          1
+County_Clust    2    cnty_clst.tbl       0      5      2      1         0         2          1
+County_Map      1    county              0     14      1      1
+River           1    rivers              0     25      1      2
+Lake            1    lakes               0     25      1      2
+RFC_Boundaries  1    rfc                 0     30      1      2
+Road            1    inter               0     18      1      2
+WFO             2    wfo.tbl             0     20     14      1         1         2          1
+CWA             1    cwa                 0     16     18      2
+Marine          1    rseas               0     23      1      2
+1000_Fathom     1    1000fthm            0     22      1      3
+BasicWx12_24    1    bwx1224             0      2      7      3
+BasicWx36_48    1    bwx3648             0      3      9      3
+North_Amer      1    nam                 0     11     19      3
+BasicWx_GIF     1    bwxgif              0      4      9      3
+Pacific_Surface 1    pacsfcpd            0     12      1      1
+Medium_Range    1    medrange            0      5      9      3
+QPF_Verif       1    qpfver              0     29      2      3
+Sfc_stn         2    sfstns.tbl          0      2      1      1         1         2         1
+DWM_stn         2    dlwx.stn            0     31     15      2         1         1         1
+CPC_stn         2    cpcstns.tbl         0      8      1      1         1         2         1
+Anchor_Points   2    spcwatch.tbl        0      3     11      1         0         2         1
+VORs            2    vors.tbl            0      4      3      1         0         2         1
+NEXRAD          2    nexrad.tbl          0     31     12      1         1         2         1
+County_IDs      2    county.tbl          0      6      1      1         0         2         1
+Coastal_US      1    offshore            0     23      1      2
+Offshore_US     1    offsh2              0     23      1      2
+Flight_Info     1    fir                 0      7      1      2
+ARTCC           1    artcc               0      7      1      2
+WR_QPF          2    wrqpf.tbl           0     15      1      1         2         2         1
+VAAC            1    dcvaac              0      2      1      2                   2
+Time_Zone       1    timezone            0     14      1      1
+Marine_Cnty     1    wbcmarine           0     22      1      2
+AK_Desk         1    akdesk              0      2      1      3
+NE_Corr         1    necorr              0      3      1      3
+NWS_States      1    states              0      3      1      3
+VAAC_DC         1    dcvaac              0      2      1      2                   2
+VAACs           1    vaacar              0      5      1      2                   2
+Volcano         2    volcano.tbl         0      3      18     1         0         0
+Volcano_Names   2    volcano_names.tbl   0      3      3      1         1         1
+MWO             1    mwo                 0      4      1      2
+!
+! Unidata Additions
+Interstates     1    rdis                0     15      1      2
+US_Highways     1    rdus                0     22      1      2
+State_Highways  1    rdsh                0     23      1      1
+Arterial_roads  1    rdar                0     23      1      1
+Local_streets   1    hirdlo              0     23      1      1
+Brazil_States   1    brazil              0      8      1      1
+Argentina_State 1    argentina           0      8      1      1

@@ -1,0 +1,952 @@
+<HTML
+><HEAD
+><TITLE
+>GdomeNodeList</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
+"><LINK
+REL="HOME"
+TITLE="Gdome2 Reference Manual"
+HREF="book1.html"><LINK
+REL="UP"
+TITLE="Core & XML modules"
+HREF="gdome2-core.html"><LINK
+REL="PREVIOUS"
+TITLE="GdomeNode"
+HREF="gdome2-gdomenode.html"><LINK
+REL="NEXT"
+TITLE="GdomeNamedNodeMap"
+HREF="gdome2-gdomenamednodemap.html"></HEAD
+><BODY
+CLASS="REFENTRY"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+BGCOLOR="#000000"
+CELLPADDING="1"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="4"
+ALIGN="center"
+><FONT
+COLOR="#FFFFFF"
+SIZE="5"
+>Gdome2 Reference Manual</FONT
+></TH
+></TR
+><TR
+><TD
+WIDTH="25%"
+BGCOLOR="#C00000"
+ALIGN="left"
+><A
+HREF="gdome2-gdomenode.html"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+>&#60;&#60;&#60; Previous Page</B
+></FONT
+></A
+></TD
+><TD
+WIDTH="25%"
+BGCOLOR="#0000C0"
+ALIGN="center"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+><A
+HREF="book1.html"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+>Home</B
+></FONT
+></A
+></B
+></FONT
+></TD
+><TD
+WIDTH="25%"
+BGCOLOR="#00C000"
+ALIGN="center"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+><A
+HREF="gdome2-core.html"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+>Up</B
+></FONT
+></A
+></B
+></FONT
+></TD
+><TD
+WIDTH="25%"
+BGCOLOR="#C00000"
+ALIGN="right"
+><A
+HREF="gdome2-gdomenamednodemap.html"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+>Next Page &#62;&#62;&#62;</B
+></FONT
+></A
+></TD
+></TR
+></TABLE
+></DIV
+><H1
+><A
+NAME="GDOME2-GDOMENODELIST">GdomeNodeList</H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN5886"
+></A
+><H2
+>Name</H2
+>GdomeNodeList&nbsp;--&nbsp;Interface NodeList implementation.</DIV
+><DIV
+CLASS="REFSYNOPSISDIV"
+><A
+NAME="AEN5889"><H2
+>Synopsis</H2
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="SYNOPSIS"
+>&#13;
+
+struct      <A
+HREF="gdome2-gdomenodelist.html#GDOMENODELIST"
+>GdomeNodeList</A
+>;
+void        <A
+HREF="gdome2-gdomenodelist.html#GDOME-NL-REF"
+>gdome_nl_ref</A
+>                    (<A
+HREF="gdome2-gdomenodelist.html#GDOMENODELIST"
+>GdomeNodeList</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);
+void        <A
+HREF="gdome2-gdomenodelist.html#GDOME-NL-UNREF"
+>gdome_nl_unref</A
+>                  (<A
+HREF="gdome2-gdomenodelist.html#GDOMENODELIST"
+>GdomeNodeList</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);
+<GTKDOCLINK
+HREF="GPOINTER"
+>gpointer</GTKDOCLINK
+>    <A
+HREF="gdome2-gdomenodelist.html#GDOME-NL-QUERY-INTERFACE"
+>gdome_nl_query_interface</A
+>        (<A
+HREF="gdome2-gdomenodelist.html#GDOMENODELIST"
+>GdomeNodeList</A
+> *self,
+                                             const char *interface,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);
+<A
+HREF="gdome2-gdomenode.html#GDOMENODE"
+>GdomeNode</A
+>*  <A
+HREF="gdome2-gdomenodelist.html#GDOME-NL-ITEM"
+>gdome_nl_item</A
+>                   (<A
+HREF="gdome2-gdomenodelist.html#GDOMENODELIST"
+>GdomeNodeList</A
+> *self,
+                                             <GTKDOCLINK
+HREF="GULONG"
+>gulong</GTKDOCLINK
+> index,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);
+<GTKDOCLINK
+HREF="GULONG"
+>gulong</GTKDOCLINK
+>      <A
+HREF="gdome2-gdomenodelist.html#GDOME-NL-LENGTH"
+>gdome_nl_length</A
+>                 (<A
+HREF="gdome2-gdomenodelist.html#GDOMENODELIST"
+>GdomeNodeList</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);</PRE
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN5912"
+></A
+><H2
+>Description</H2
+><P
+>The <A
+HREF="gdome2-gdomenodelist.html#GDOMENODELIST"
+>GdomeNodeList</A
+> interface provides the abstraction of an ordered collection
+of nodes, without defining or constraining how this collection is implemented.
+<A
+HREF="gdome2-gdomenodelist.html#GDOMENODELIST"
+>GdomeNodeList</A
+> objects in the DOM are live.</P
+><P
+>The items in the <A
+HREF="gdome2-gdomenodelist.html#GDOMENODELIST"
+>GdomeNodeList</A
+> are accessible via an integral index, starting
+from <TT
+CLASS="LITERAL"
+>0</TT
+>.</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN5920"
+></A
+><H2
+>Details</H2
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN5922"
+></A
+><H3
+><A
+NAME="GDOMENODELIST"
+></A
+>struct GdomeNodeList</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>struct GdomeNodeList {
+	gpointer user_data;
+};</PRE
+></TD
+></TR
+></TABLE
+><P
+></P
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN5927"
+></A
+><H3
+><A
+NAME="GDOME-NL-REF"
+></A
+>gdome_nl_ref ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>void        gdome_nl_ref                    (<A
+HREF="gdome2-gdomenodelist.html#GDOMENODELIST"
+>GdomeNodeList</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);</PRE
+></TD
+></TR
+></TABLE
+><P
+>Increase the reference count of the specified NodeList.</P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN5935"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>self</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  NodeList Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>exc</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Exception Object ref</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN5948"
+></A
+><H3
+><A
+NAME="GDOME-NL-UNREF"
+></A
+>gdome_nl_unref ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>void        gdome_nl_unref                  (<A
+HREF="gdome2-gdomenodelist.html#GDOMENODELIST"
+>GdomeNodeList</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);</PRE
+></TD
+></TR
+></TABLE
+><P
+>Decrease the reference count of the specified NodeList. Free the NodeList
+structure if the specified NodeList will have zero reference.</P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN5956"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>self</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  NodeList Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>exc</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Exception Object ref</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN5969"
+></A
+><H3
+><A
+NAME="GDOME-NL-QUERY-INTERFACE"
+></A
+>gdome_nl_query_interface ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+><GTKDOCLINK
+HREF="GPOINTER"
+>gpointer</GTKDOCLINK
+>    gdome_nl_query_interface        (<A
+HREF="gdome2-gdomenodelist.html#GDOMENODELIST"
+>GdomeNodeList</A
+> *self,
+                                             const char *interface,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);</PRE
+></TD
+></TR
+></TABLE
+><P
+></P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN5978"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>self</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  NodeList Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>interface</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  interface needed</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>exc</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Exception Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+> a reference to this object that implements the <TT
+CLASS="PARAMETER"
+><I
+>interface</I
+></TT
+> needed,
+or <TT
+CLASS="LITERAL"
+>NULL</TT
+> if the <TT
+CLASS="PARAMETER"
+><I
+>interface</I
+></TT
+> is not supported by this Object.</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN6002"
+></A
+><H3
+><A
+NAME="GDOME-NL-ITEM"
+></A
+>gdome_nl_item ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+><A
+HREF="gdome2-gdomenode.html#GDOMENODE"
+>GdomeNode</A
+>*  gdome_nl_item                   (<A
+HREF="gdome2-gdomenodelist.html#GDOMENODELIST"
+>GdomeNodeList</A
+> *self,
+                                             <GTKDOCLINK
+HREF="GULONG"
+>gulong</GTKDOCLINK
+> index,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);</PRE
+></TD
+></TR
+></TABLE
+><P
+></P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN6012"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>self</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  NodeList Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>index</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Index into the collection</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>exc</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Exception Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+> the indexth item in the collection. If <TT
+CLASS="PARAMETER"
+><I
+>index</I
+></TT
+> is greater than or
+equal to the number of nodes in the list, this returns <TT
+CLASS="LITERAL"
+>NULL</TT
+>.</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN6035"
+></A
+><H3
+><A
+NAME="GDOME-NL-LENGTH"
+></A
+>gdome_nl_length ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+><GTKDOCLINK
+HREF="GULONG"
+>gulong</GTKDOCLINK
+>      gdome_nl_length                 (<A
+HREF="gdome2-gdomenodelist.html#GDOMENODELIST"
+>GdomeNodeList</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);</PRE
+></TD
+></TR
+></TABLE
+><P
+></P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN6044"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>self</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  NodeList Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>exc</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Exception Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+> the number of nodes in the list. The range of valid child node
+indices is 0 to length-1 inclusive.</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><BR
+CLEAR="all"><BR><TABLE
+WIDTH="100%"
+BORDER="0"
+BGCOLOR="#000000"
+CELLPADDING="1"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="25%"
+BGCOLOR="#C00000"
+ALIGN="left"
+><A
+HREF="gdome2-gdomenode.html"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+>&#60;&#60;&#60; Previous Page</B
+></FONT
+></A
+></TD
+><TD
+WIDTH="25%"
+BGCOLOR="#0000C0"
+ALIGN="center"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+><A
+HREF="book1.html"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+>Home</B
+></FONT
+></A
+></B
+></FONT
+></TD
+><TD
+WIDTH="25%"
+BGCOLOR="#00C000"
+ALIGN="center"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+><A
+HREF="gdome2-core.html"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+>Up</B
+></FONT
+></A
+></B
+></FONT
+></TD
+><TD
+WIDTH="25%"
+BGCOLOR="#C00000"
+ALIGN="right"
+><A
+HREF="gdome2-gdomenamednodemap.html"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+>Next Page &#62;&#62;&#62;</B
+></FONT
+></A
+></TD
+></TR
+><TR
+><TD
+COLSPAN="2"
+ALIGN="left"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+>GdomeNode</B
+></FONT
+></TD
+><TD
+COLSPAN="2"
+ALIGN="right"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+>GdomeNamedNodeMap</B
+></FONT
+></TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

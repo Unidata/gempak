@@ -1,0 +1,30 @@
+! FAA.BULL
+!
+! This table contains the bulletin/station information to be used
+! with the Area Forecasts of the Aviation Forecasts
+!
+! The format for the file is given below, with the
+! number of characters in parentheses.
+!
+! Log:
+! A. Hardy/NCEP         11/04   separated out the lat/lons
+! A. Hardy/NCEP         11/04   added FAAK1, FAAK5, FAUS5
+! J. Lewis/AWC		04/05	Modify WMO headers and station identifiers
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+!
+FAAK47 PAWU	JUNEAU_INTL_AIR                  AK US  5827 -13448     7
+FAAK57 PAWU	JUNEAU_INTL_AIR                  AK US  5867 -13488     7
+FAAK48 PAWU	ANCHORAGE_INTL                   AK US  6117 -15002    40
+FAAK58 PAWU	ANCHORAGE_INTL                   AK US  6157 -15042    40
+FAAK68 PAWU	ANCHORAGE_INTL                   AK US  6197 -15082    40
+FAAK49 PAWU	FAIRBANKS_INTL                   AK US  6441 -14747   138
+FAAK59 PAWU	FAIRBANKS_INTL                   AK US  6481 -14787   138
+FAHW31 PHFO     HONOLULU/UNIV_OF_HI-MANOA_CAMPUS HI US  2130 -15782    20
+FAUS41 KKCI	BOSTON/LOGAN_IN                  MA US  4237  -7103     9
+FAUS42 KKCI	MIAMI_INTL_AIRP                  FL US  2582  -8028     4
+FAUS43 KKCI	CHICAGO/O'HARE                   IL US  4198  -8790   205
+FAUS44 KKCI  	DALLAS/FT_WORTH                  TX US  3290  -9703   182
+FAUS45 KKCI	SALT_LAKE_CITY                   UT US  4078 -11197  1288
+FAUS46 KKCI	SAN_FRANCISCO                    CA US  3761 -12238     5

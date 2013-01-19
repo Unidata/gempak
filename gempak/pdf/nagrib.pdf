@@ -1,0 +1,14 @@
+GBFILE  GRIB data file name                                                     
+INDXFL  GRIB index file name                                                    
+GDOUTF  Output grid file                                                        
+PROJ    Map projection/angles/margins|drop flag                                 
+GRDAREA Area covered by grid                                                    
+KXKY    Number of grid points in x;y                                            
+MAXGRD  Maximum number of grids                                                 
+CPYFIL  Grid file whose navigation is to be used in new grid file | subarea     
+GAREA   Graphics area                                                           
+OUTPUT  Output device/filename                                                  
+GBTBLS  Input GRIB decoding tables                                              
+GBDIAG  GRIB diagnostic elements                                                
+PDSEXT  Y or N, add PDS extension if found                                      
+OVERWR  Overwr flag                                                             

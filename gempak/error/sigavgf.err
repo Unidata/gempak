@@ -1,0 +1,13 @@
+!	This is the SIGAVGF error file
+!
+! log
+!------
+! A. Hardy/SAIC		 3/02	
+!
+
+ -1     !  Forecast hour not found on the command line.
+ -2     !  Valid hour must be 18 or 24, not !AS
+ -3     !  ASCII file !AS failed to open.
+ -4     !  ASCII file !AS failed to close.
+ -5     !  VG file !AS failed to open.
+

@@ -1,0 +1,27 @@
+export GEMPARM=$GEMPAK/parm
+
+pdfbld $GEMPDF SFCFIL
+###########################
+pdfbld $GEMPDF SFCHCK
+###########################
+pdfbld $GEMPDF SFDELT
+###########################
+pdfbld $GEMPDF SFDSL604
+###########################
+pdfbld $GEMPDF SFEDIT
+###########################
+pdfbld $GEMPDF SFGRAM
+###########################
+pdfbld $GEMPDF SFL604
+###########################
+pdfbld $GEMPDF SFLIST
+###########################
+pdfbld $GEMPDF SFMAP
+###########################
+pdfbld $GEMPDF SFMOD
+###########################
+pdfbld $GEMPDF SFSTNS
+###########################
+pdfbld $GEMPDF SFVGSF
+###########################
+echo ALL THE SF PDFs ARE BUILT.

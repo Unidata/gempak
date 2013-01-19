@@ -1,0 +1,16 @@
+    STREAM
+
+    STREAM    lines/arrows/stop/slow/scale
+ 
+    The STREAM parameter controls several parameters dealing with 
+    the overall streamline calculation and display.  "Lines" is a 
+    real number multiplier which controls the number (density) of 
+    streamlines drawn (default 1.0); "arrows" is a real number 
+    multiplier which controls the number of arrowheads displayed 
+    (default 1.5*lines); "stop" is a real number multiplier which 
+    controls how close a streamline comes to another streamline 
+    before drawing is discontinued (default 0.5); "slow" is a 
+    real number multiplier which controls the minimum vector speed 
+    threshold for stopping a streamline (default 0.67); "scale" is 
+    a real number multiplier which controls how much the input vector 
+    field is scaled prior to streamline calculation (default 0.33).

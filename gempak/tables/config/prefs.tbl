@@ -1,0 +1,477 @@
+! PREFS.TBL
+!
+! This table contains a list of preference settings for NMAP2.
+!
+!
+! For each entry, the first string is the tag of the preference and the
+! second string is the value of the preference.
+!
+! The maximum number of chars for any preference tag   (TAG) is 25.
+! The maximum number of chars for any preference value (VAL) is 25.
+!
+!!
+! Log:
+! H. Zeng/EAI		08/02   initial coding
+! M. Li/SAIC		09/02	Added SFC_MINUTES
+! S. Schotz/NCEP	09/02	Updated documentation
+! J. Wu/SAIC		10/02	add entries for extrapolation
+! M. Li/SAIC		12/02	add entry for Restore Confirmation popup
+! T. Piper/SAIC		06/03	added ROAM_SHR
+! T. Piper/SAIC		07/03	Added LOOP_STOP
+! T. Lee/SAIC		10/03	Added WORK_FILE_DIR
+! H. Zeng/XTRIA		03/04	Added PGEN_ICON_NCOLUMN
+! A. Hardy/NCEP	 	03/04	Added ADD_MARZON
+! T. Piper/SAIC		06/04	Added SIG_FILE_DIR
+! T. Lee/SAIC		07/04	Added TIME_MATCH
+! A. Hardy/NCEP	 	08/04	Added ADD_WSM_WS_WT
+! J. Wu/SAIC		10/04	add SMEAR_REDUCE_THRESHOLD
+! A. Hardy/NCEP		10/04	Added PERM_CLUST
+! G. Grosshans/SPC	10/04	Added ADD_WATCH_APPROX
+! m.gamazaychikov/SAIC	11/04	Added USE_WCN_WSM
+! m.gamazaychikov/SAIC	01/05	Added TCV_HEADER
+! J. Lewis/AWC		02/05	Added USE_NEW_WMO
+! J. Lewis/AWC          02/05	Added NEW_LATLON_FORMAT
+! F. J. Yen/NCEP	07/05	Changed ADD_MARZON to TRUE
+! D.W.Plummer/NCEP	07/05	Added NEW_VAA_LATLON_FORMAT
+! H. Zeng/SAIC		09/05	Added GFA_LINE_XXXX
+! H. Zeng/SAIC		10/05	Added GFA_AF_XXXX
+! M. Li/SAIC		10/05	Added SIGWX_FLIGHT_LEVELS 
+! G. Grosshans/SPC	10/05	Added LATLON_SAW_FORMAT
+! H. Zeng/SAIC		11/05	Added NEARBY_WFO_DIST
+! H. Zeng/SAIC		12/05	Added COUNTY_FILL_PATTERN
+! B. Yin/SAIC		01/06	Added FZLVL_REDUCE_THRESHOLD
+! M. L/SAIC		01/06	Added TCV_ZONE 
+! R. Tian/SAIC		02/06	Added NEW_VAA_WORDING
+! S. Danz/AWC 		03/06	Added ENABLE_AUTOPLACE, AUTOPLACE_DBG
+! T. Piper/SAIC		03/06	Added GROUP_PERMS_SPF
+! M. Li/SAIC		03/06	Added AODT_HIST_DIR 
+! H. Zeng/SAIC          03/06   Added GHOST_ARROW_HD
+! m.gamazaychikov/SAIC  03/06   Added TCV_KEYWEST
+! J. Wu/SAIC		03/06	add GFA_AF_CONDWORDING
+! D.W.Plummer/NCEP      04/06   add GFA_SNAP_CLUSTER_DIST
+! B. Yin/SAIC           04/06   Added FZLVL_MAXIMUM_GAP_LENGTH
+!                               Added FZLVL_MINIMUM_LENGTH
+! E. Safford/SAIC	04/06	Added FZLVL_REDUCE_TOLERANCE
+! m.gamazaychikov/SAIC  05/06   Added documentation for TIME_MATCH
+! D.W.Plummer/NCEP	05/06	Chg GFA_AF_CLIPPING to TRUE
+! D.W.Plummer/NCEP	05/06	Chg FZLVL_MAXIMUM_GAP_LENGTH to 250
+! D.W.Plummer/NCEP	05/06	Chg FZLVL_MAXIMUM_GAP_LENGTH to 100
+! J. Wu/SAIC		06/06	add SMEAR_CONFIRM_POPUP
+! E. Safford/SAIC	08/06	rm FZLVL_REDUCE_TOLERANCE, change 
+!				   FZLVL_REDUCE_THRESHOLD to 7
+! J. Wu/SAIC		10/06	add SMEAR_INCR_PCT, SMEAR_INCR_DST and
+!				reomove SMEAR_REDUCE_THRESHOLD
+! H. Zeng/SAIC		10/06	added DEF_INTERP_MODE
+! J. Wu/SAIC		10/06	add GFA_AF_DRAWPT, GFA_PTS_COLOR and
+!				GFA_PTS_TYPE to draw points on FROM line
+! J. Wu/SAIC		11/06	add GFA_AF_EPSILON, set GFA_REDUCE_PTS to TRUE
+! J. Wu/SAIC		11/06	add a few options for internal GFA testing
+! J. Wu/SAIC		12/06	default SMEAR_INCR_PCT to 2%
+! J. Wu/SAIC		12/06	add SMEAR_RED_INC_PCT for "SMEAR" tool
+! H. Zeng/SAIC          01/07   add LOCATOR_POSITIONS
+! D.W.Plummer/NCEP      01/07   Add COMPUTATIONAL PROJECTION and GAREA
+! E. Safford/SAIC       02/07   add ENABLE_FZLVL_EXTENSION control
+! D.W.Plummer/NCEP      03/07   Add SMEAR_INCR_PCT_ORIG
+! D.W.Plummer/NCEP      03/07   Add GFA_AF_BISECT_PCT
+! B. Yin/SAIC		07/07	Add ADD_TAG_NUMBER
+! F. J. Yen/NCEP	07/07	Add SAT_WIND_START and SAT_WIND_END
+! E. Safford/SAIC       07/07   Add USE_DAY_CYCLE
+! J. Wu/SAIC		09/07	add GFA_FROM_CHOICE & GFA_FROM_CONFIRM
+!				    for FROM tool
+! G. Grosshans/SPC	10/07	Set values for WSM flags for SPC usage
+! J. Wu/SAIC		12/07	add GFA_OTLKGEN_RATIO
+! D.W.Plummer/NCEP	01/08	chg NEW_VAA_WORDING to TRUE
+! J. Wu/SAIC		02/08	add GFA_TOP_LIMIT & GFA_BOTTOM_LIMIT
+! B. Yin/SAIC		04/08	Add a flag for states button in GFA GUI 
+! m.gamazaychikov/SAIC  04/08   add TCV_RSP_OFFICE & TCV_WORK_DIR
+! m.gamazaychikov/CWS	01/10	add A2DB_HOST_NAME
+! X. Guo/CWS		01/10   add GFA_SMEAR_ALGORITHM
+! S. Jacobs/NCEP	11/10	Added TCV_BACKUP_SITE
+!----------------------------------------------------------------------------
+!
+!TAG			LABEL ITEMS
+!(25)			(25)
+!
+!  ADD_MARZON - flag to indicate if marine zones are to be included in
+!               the WBC text products.
+!
+ADD_MARZON              TRUE
+!
+!  ADD_WATCH_APPROX - flag for adding the watch approximation
+!                 phrases to the SAW, SEL, AWN and PWN products.
+!
+ADD_WATCH_APPROX        TRUE
+!
+!  ADD_WSM_WS_WT - flag for adding the the watch status type and watch
+!		  number to the enhanced watch status message.
+!
+ADD_WSM_WS_WT           TRUE
+!
+! AODT_HIST_DIR - directory to store the AODT history files.
+!
+AODT_HIST_DIR         	./ 
+!
+!  COUNTY_FILL_PATTERN - Pattern number to use for county/union fill in
+!                 Watch By County PGEN.  Valid values = 1 (solid) through 7
+!
+COUNTY_FILL_PATTERN     7
+!
+!  EXTRAP_**** are the inputs for object extrapolation.
+!  EXTRAP_SPEED - from 0.0 to MAX_SPEED_MPH ( currently 400.0).
+!  EXTRAP_SPDUNIT - 0 for knots, 1 for MPH, 2 for M/S.
+!  EXTRAP_DIRECTION - from 0.0 to 360.0
+!  EXTRAP_DURATION - in format of HH:MM
+!
+!
+EXTRAP_SPEED            30.0
+EXTRAP_SPDUNIT          1
+EXTRAP_DIRECTION        270.0
+EXTRAP_DURATION         06:00
+!
+! GFA_FROM_CONFIRM  - flag for final confirmation before smearing/fromatting
+!
+GFA_FROM_CONFIRM	TRUE
+!
+!  GFA_AF_CLIPPING - whether to perform clipping for AIRMET
+!
+GFA_AF_CLIPPING         TRUE
+!
+!  GFA_AF_CONDWORDING - whether to do conditional wording on snapshots
+!
+GFA_AF_CONDWORDING      TRUE
+!
+!  GFA_AF_DISPLAY - whether to plot or not to plot the FROM line
+!
+GFA_AF_DISPLAY          TRUE
+!
+!  GFA_AF_EPSILON - precision setting for GPC polygon clipping in AIRMET formatter
+!
+GFA_AF_EPSILON          0.0001
+!
+!  GFA_SMEAR_EPSILON - precision setting for GPC polygon smearing
+!                      comment this line to get DBL_EPSILON as the value
+!
+! GFA_SMEAR_EPSILON          0.0001
+!
+!  GFA_AF_DRAWPTS - whether to draw each point on the FROM line
+!
+GFA_AF_DRAWPTS          TRUE
+!
+!  GFA_AF_REDUCEPTS - whether to perform point reduction for AIRMET
+!
+GFA_AF_REDUCEPTS        TRUE
+!
+!  GFA_OTLKGEN_RATIO - in-state outlook generation ratio
+!
+GFA_OTLKGEN_RATIO       0.25
+!
+!  GFA_LINE_COLOR - color choice for AIRMET FROM line
+!
+GFA_LINE_COLOR		31
+!
+!  GFA_LINE_TYPE -  line type choice for AIRMET FROM line
+!
+GFA_LINE_TYPE		1
+!
+!  GFA_LINE_WIDTH - line width choice for AIRMET FROM line
+!
+GFA_LINE_WIDTH		3
+!
+!  GFA_SNAP_CLUSTER_DIST - distance (nm) between polygon points to be considered clustered
+!
+GFA_SNAP_CLUSTER_DIST   30
+!
+!  GFA_PTS_COLOR - color choice for drawing points on FROM line
+!
+GFA_PTS_COLOR          	2
+!
+!  GFA_PTS_TYPE - marker type choice for drawing points on FROM line
+!
+GFA_PTS_TYPE          	17
+! 
+!  GFA_TOP_LIMIT - The highest value allowed for "top". 
+!		   Any higher values will be set to GFA_TOP_LIMIT.
+!  GFA_BOTTOM_LIMIT - The lowest value allowed for "bottom".
+!		   Any lower values will be set to GFA_BOTTOM_LIMIT.
+!
+GFA_TOP_LIMIT		450
+GFA_BOTTOM_LIMIT	10
+!
+!  GHOST_ARROW_HD - flag (ON/OFF) for whether to draw a ghost arrowhead at 
+!		    cursor point for closed or open ghost lines of CLASS_LINES.
+!
+GHOST_ARROW_HD          OFF
+!
+! GROUP_PERMS_SPF - TRUE to give write permission to the group on SPF files
+!	WARNING:  Setting to TRUE will allow others to modify your SPF files
+GROUP_PERMS_SPF		FALSE	
+!
+! LATLON_SAW_FORMAT - flag for including lat/lon coordinates in SPC
+!		      SAW product and removing them from SPC SEL 
+!		      product.
+!
+LATLON_SAW_FORMAT       TRUE
+!
+!  LOOP_STOP - flag to indicate where to stop loop 
+!		( TRUE - at current frame, FALSE - reset to end of loop ) 
+LOOP_STOP               TRUE
+!
+!  NEARBY_WFO_DIST - the distance (statute miles) from a watch box
+!		     boundary to find nearby WFOs.
+!
+NEARBY_WFO_DIST		60
+!
+! NEW_LATLON_FORMAT - flag for using new format for lat/lon coordinates.
+!
+NEW_LATLON_FORMAT          FALSE
+!
+! NEW_VAA_LATLON_FORMAT - flag for using new format for lat/lon coordinates
+!                         in VAA product.
+!
+NEW_VAA_LATLON_FORMAT          TRUE
+!
+! NEW_VAA_WORDING - flag for using new or old wording.
+!
+NEW_VAA_WORDING		TRUE
+!
+!  PERM_CLUST -  flag that controls if permanent clustering will be used
+!               when managing a watch.
+!
+PERM_CLUST              TRUE
+!
+!  PGEN_ICON_NCOLUMN - number of column for PG palette
+!
+PGEN_ICON_NCOLUMN       4
+!
+!  RESTORE_POPUP - flag to popup the Restore Confirmation window in SPF
+!
+RESTORE_POPUP           FALSE
+!
+!  ROAM_SHR - flag to allow sharing roam value among loops
+!
+ROAM_SHR                TRUE
+!
+!  SFC_MINUTES is the number of minutes before the top of the hour that
+!  surface data will be accessible in NMAP2.  Its valid value is from 
+!  zero to twenty minutes.
+!
+SFC_MINUTES             0
+!
+!  SIG_FILE_DIR - the directory where SIGMET products are saved
+!
+SIG_FILE_DIR            ./
+!
+!  SIGWX_FLIGHT_LEVELS - flag for jet depth information display format. 
+!                        TRUE means actual flight levels are used. 
+!                        FALSE means delta values are used.
+SIGWX_FLIGHT_LEVELS    	TRUE  
+!
+!  SMEAR_RED_INC_PCT - maximum percentage allowed for the increase in size
+!		when a point is removed from a smeared GFA polygon in
+!		the "SMEAR" tool.
+!  SMEAR_INCR_PCT - maximum percentage allowed for the increase in size
+!		when a point is removed from a smeared GFA polygon in
+!		the AIRMET formatter.
+!  SMEAR_INCR_DST- maximum distance allowed between a new point and the
+!		point to be removed from a smeared GFA polygon.
+!
+SMEAR_RED_INC_PCT 	0
+SMEAR_INCR_PCT  	3
+SMEAR_INCR_DST  	100
+!
+!  REDUCEPTS_INCR_PCT_ORIG - maximum size increase of a GFA polygon, as a percentage, 
+!		when reducing points to format on three lines.
+!
+REDUCEPTS_INCR_PCT_ORIG     3
+!
+!  SAT_WIND_START - number of minutes before frame time to start for
+!		displaying sat wind data (QSCT, WSAT, ASCT) in NMAP2 and GPMAP
+SAT_WIND_START		360
+!
+!  SAT_WIND_END - number of minutes after frame time to end for displaying
+!		sat wind data (QSCT, WSAT, ASCT) in NMAP2 and GPMAP
+SAT_WIND_END		0
+!
+! SMEAR_CONFIRM_POPUP  - flag for final confirmation before smearing 
+!
+SMEAR_CONFIRM_POPUP	TRUE
+!
+!  FZLVL_REDUCE_THRESHOLD - Maximum number of points for a smeared 
+!		FZLVL line when generating xml strings.
+FZLVL_REDUCE_THRESHOLD  10
+!
+!
+!  TCV_HEADER -  flag to include line 1 and 2 in TCV_HEADER
+!
+TCV_HEADER              FALSE
+!
+!  TCV_ZONE -  'LAND' to use land zone UGC codes in the TCV product
+!           -  'COUNTY' to use county FIP and marine zone codes in the TCV product
+!
+TCV_ZONE             	LAND	
+!
+!  TCV_KEYWEST - specify the call letters for WFO Key West
+!
+TCV_KEYWEST             KEY
+!TCV_KEYWEST             EYW
+!
+!  TCV_RSP_OFFICE - specify the responsible office
+!
+TCV_RSP_OFFICE          KNHC
+!
+!  TCV_WORK_DIR - path to indicate where to save TCV files
+!
+TCV_WORK_DIR            ./
+!
+!  TCV_BACKUP_SITE - string specifying the backup site
+!                    the code needs to be changed if a new backup
+!                       site is added
+!
+TCV_BACKUP_SITE         FALSE
+!TCV_BACKUP_SITE         HPC
+!TCV_BACKUP_SITE         OPC
+!TCV_BACKUP_SITE         CPHC
+!TCV_BACKUP_SITE         NHC
+!
+!  TIME_MATCH - time match option.  Used only if Time Matching flag 
+!		is missing or invalid in datatype.tbl
+!
+!			FLAG	TIME MATCHING
+!
+!			1  	exact only               
+!			2  	closest before or equal
+!			3  	closest after or equal
+!			4  	closest before or after
+!
+TIME_MATCH              4
+!
+!  USE_NEW_WMO - flag for using new WMO headers for AWC, HFO and AWU.
+!
+USE_NEW_WMO             TRUE
+!
+!  USE_WCN_WSM - flag for displaying the dialogue box asking the user
+!               if he wants an automatic update to the active counties
+!		in the watch.
+!
+USE_WCN_WSM             TRUE
+!
+!  WORK_FILE_DIR - flag to indicate where to save the working file for PG
+!
+WORK_FILE_DIR           ./
+!
+!  FZLVL_MAXIMUM_GAP_LENGTH - in nautical miles. FZLVL gap lines which 
+!                             are shorter than the length will be treated
+!                             as in the FA area even though they are not
+!                             in the area.
+!
+FZLVL_MAXIMUM_GAP_LENGTH        125
+!
+!  FZLVL_MINIMUM_LENGTH - in nautical miles. FZLVL lines which are shorter
+!                         than this length will be ignored when formmating.
+!
+FZLVL_MINIMUM_LENGTH    125
+! 
+!  ENABLE_FZLVL_EXTENSION - flag to indicate if FZLVL contours should be 
+!                           extended to intersect with the FA Area bounds.
+!
+ENABLE_FZLVL_EXTENSION  FALSE
+!
+!  ENABLE_AUTOPLACE - flag to indicate if the auto placement routines should be enabled
+!
+ENABLE_AUTOPLACE       FALSE 
+!
+!  AUTOPLACE_DBG -  flag to indicate location to dump auto placement debug information
+!                   STDOUT will dump results to the screen
+!
+!AUTOPLACE_DBG           STDOUT
+!
+!  DEF_INTERP_MODE -  default interpolation mode. It takes value 0 or 1 with 0 means
+!		      "This Layer Only" and 1 means "Multiple Layers".
+!
+DEF_INTERP_MODE		 0
+!
+!
+! LOCATOR_POSITIONS - total number of locator positions
+!  
+LOCATOR_POSITIONS       5
+!
+! COMPUTATIONAL PROJECTION and GAREA  - standard PROJ and GAREA, just like
+!                                       in GEMPAK except no embedded blanks!
+!       COMP_WINDOW     TRUE / FALSE
+!       EXAMPLES:
+!       COMP_PROJ       str/90;-97;0
+!       COMP_GAREA      19.00;-119.00;47.00;-56.00
+!       or
+!       COMP_PROJ       
+!       COMP_GAREA      nhem
+!
+COMP_WINDOW             TRUE
+COMP_PROJ               ced/0;0;0
+COMP_GAREA              KS+
+!COMP_GAREA              19.00;-119.00;47.00;-56.00
+!COMP_GAREA             NHEM
+!
+! GFA FORMATTING BISECTION PERCENTAGE MAXIMUM
+!                                      
+GFA_AF_BISECT_PCT	60
+!
+! AWIPS II DATABASE HOST NAME
+!                                      
+A2DB_HOST_NAME		LNX227
+!
+!**************************************************************************
+!
+!  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+!  ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+!
+!             Permanent prefs table additions above this line
+!
+!  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+!  ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+!
+!**************************************************************************
+!
+!**************************************************************************
+!  NOTE:  The options below are GFA testing only.  Please do NOT modify.
+!**************************************************************************
+!
+!  GFA_AF_AREACLIP - whether to do areal clipping in point reduction
+!
+GFA_AF_AREACLIP         TRUE
+!
+!  GFA_AF_ROUNDS - how many rounds of bisection desired in point reduction (<=2) 
+!
+GFA_AF_ROUNDS		2
+!
+! SMEAR_PTS_REDUCE  - whether to do point reduction in SMEAR function
+!
+SMEAR_PTS_REDUCE	TRUE
+!
+! ADD_AIRMET_TAG  - whether to put the tag number in the AIRMET/OUTLOOK 
+!
+ADD_AIRMET_TAG		TRUE
+!
+! USE_DAY_CYCLE   - set/use a day (of the month) and cycle to indicate the 
+!		    forecast period.
+!
+USE_DAY_CYCLE		TRUE
+!
+!  GFA_FROM_MODE - Flag to show/hide mode choice menu in FROM tool
+!
+!GFA_FROM_CHOICE         TRUE
+!
+!
+!  GFA_ENABLE_STATES_BTN - Flag to enable the states button in GFA GUI
+!
+GFA_ENABLE_STATES_BTN        TRUE 
+!
+!
+!  GFA_SMEAR_ALGORITHM  - Smear algorithm for GFA snapshots.
+!
+!                       FLAG    Smear algorithm
+!
+!                       1       shrink wrap smear algorithm
+!                       2       union smear algorithm
+!
+GFA_SMEAR_ALGORITHM              1
+

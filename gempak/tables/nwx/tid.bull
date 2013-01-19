@@ -1,0 +1,42 @@
+! TID.BULL
+!
+! Location information for the following product:
+! Tide_report.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+! Log:
+! A. Hardy/NCEP		11/04	separated out the lat/lons
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+SOGM40 PGUM     GUAM                             GU US  1347  14478     0
+SOPA56 KWBC     NCEP_NMC                         MD US  3881  -7687     0
+SOUS41 KAKQ     WAKEFIELD                        VA US  3697  -7700     0
+SOUS41 KCAR     CARIBOU                          ME US  4577  -6862     0
+SOUS41 KCLE     CLEVELAND                        OH US  4140  -8186     0
+SOUS41 KGYX     GRAY                             ME US  4388  -7025     0
+SOUS41 KOKX     NEW_YORK                         NY US  4086  -7286     0
+SOUS41 KPHI     MOUNT_HOLLY                      NJ US  4000  -7480     0
+SOUS42 KCHS     CHARLESTON                       SC US  3288  -8001     0
+SOUS42 KKEY     KEY_WEST                         FL US  2457  -8178     0
+SOUS42 KILM     WILMINGTON                       NC US  3427  -7791     0
+SOUS42 KJAX     JACKSONVILLE                     FL US  3047  -8169     0
+SOUS42 KMLB     MELBOURNE                        FL US  2811  -8065     0
+SOUS42 KTAE     TALLAHASSEE                      FL US  3045  -8430     0
+SOUS42 KTBW     TAMPA_BAY_AREA/RUSKIN            FL US  2770  -8240     0
+SOUS44 KBRO     BROWNSVILLE                      TX US  2590  -9741     0
+SOUS44 KCRP     CORPUS_CHRISTI                   TX US  2777  -9750     0
+SOUS44 KHGX     HOUSTON/GALVESTON                TX US  2946  -9506     0
+SOUS44 KLCH     LAKE_CHARLES                     LA US  3012  -9320     0
+SOUS44 KLIX     NEW_ORLEANS                      LA US  3032  -8981     0
+SOUS46 KPQR     PORTLAND                         OR US  4556 -12252     0
+SOUS46 KSGX     SAN_DIEGO                        CA US  3290 -11705     0
+SOUS52 KWBC     NCEP_NMC                         MD US  3881  -7687     0
+SOUS53 KWBC     NCEP_NMC                         MD US  3901  -7667     0
+SOUS61 KWBC     NCEP_NMC                         MD US  3841  -7727     0
+SOUS62 KWBC     NCEP_NMC                         MD US  3861  -7702     0
+SOUS63 KWBC     NCEP_NMC                         MD US  3881  -7687     0
+SOUS64 KWBC     NCEP_NMC                         MD US  3901  -7667     0
+SOUS65 KWBC     NCEP_NMC                         MD US  3921  -7647     0

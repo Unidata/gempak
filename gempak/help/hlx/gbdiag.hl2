@@ -1,0 +1,14 @@
+     GBDIAG
+
+    	GBDIAG allows for detailed GRIB message section information, 
+    byte-by-byte, to be printed out for selected GRIB messages.
+    Simply list those GRIB sections to be examined (IDS, PDS, GDS,
+    BMS, BDS, END or ALL for all sections), e.g., pds;gds.  
+    Selected GRIB messages for examination may also be identified by 
+    number in list and/or range format, e.g., 2;4;5-9, immediately
+    following the section specification separated by a "|".
+    For example, GBDIAG=pds;gds|2;4;6-12 .  Please note that the BMS
+    section will be listed only if it exists and that the sections
+    BDS and END will be listed only if the GRIB data is actually
+    being decoded and written into the GEMPAK file.
+

@@ -1,0 +1,81 @@
+C************************************************************************
+C* NACMN								*
+C*									*
+C* NA library common area.						*
+C**									*
+C* Log:									*
+C* S. Jacobs/EAI	12/93						*
+C* M. Li/SAIC		4/04	Added mhzrmp, and mdrct to NAPARM	*
+C************************************************************************
+	PARAMETER	( MAXNUM = 255 )
+C************************************************************************
+C* / NACENT /								*
+C*									*
+C* This section is for the orginating center information.		*
+C************************************************************************
+	CHARACTER	cenfil*128, vrtfil*128, wmofil*128, prmfil*128
+	CHARACTER	mcnam*64, mcabb*16
+C*
+	COMMON /NACENT/
+     +		meditn,
+C!					GRIB edition number
+     +		cenfil,
+C!					Current center file name
+     +		mcnam (MAXNUM),
+C!					Array of center names
+     +		mcabb (MAXNUM)
+C!					Array of center abbreviations
+C************************************************************************
+C* / NAVCRD /								*
+C*									*
+C* This section is for the vertical coordinate information.		*
+C************************************************************************
+	CHARACTER	mvcnam*32, mvunit*20, mvcord*4
+C*
+	COMMON /NAVCRD/
+     +		vrtfil,
+C!					Current vertical coord file name
+     +		mvcnam (MAXNUM),
+C!					Array of vert coord names
+     +		mvunit (MAXNUM),
+C!					Array of vert coord units
+     +		mvcord (MAXNUM),
+C!					Array of GEMPAK vert coord names
+     +		mvscal (MAXNUM)
+C!					Array of vert coord scales
+C************************************************************************
+C* / NAPARM /								*
+C*									*
+C* This section is for the parameter information.			*
+C************************************************************************
+	CHARACTER	mprnam*32, mpunit*20, mparms*12
+C*
+	COMMON /NAPARM/
+     +		wmofil,
+C!					Current WMO file name
+     +		prmfil,
+C!					Current orig center file name
+     +		mcodtbl,
+C!					Parm table version number
+     +		mcenter,
+C!					Originating center number
+     +		mprnam (MAXNUM),
+C!					Array of parameter names
+     +		mpunit (MAXNUM),
+C!					Array of parameter units
+     +		mparms (MAXNUM),
+C!					Array of GEMPAK parameter names
+     +		mpscal (MAXNUM),
+C!					Array of parameter scales
+     +		rmssvl (MAXNUM),
+C!					Array of parm missing values
+     +		mhzrmp (MAXNUM),
+C!					Array of parm horizontal remapping flags
+C!					0 = Regular area averaging for continuous gribs
+C!					1 = Discrete field, use nearest neighbor
+C!					2 = Force bilinear interpolation
+     +		mdrct  (MAXNUM)
+C!					Array of parm directional flags
+C!					0 = NOT a directional field
+C!					1 = IS a directional field in degrees
+C!					2 = IS a directional field in radians

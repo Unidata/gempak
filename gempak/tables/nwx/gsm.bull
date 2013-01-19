@@ -1,0 +1,11 @@
+! GSM.BULL
+!
+! Location information for the following product:
+! General_Status_Message.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+NXUS68 PACR     CIRCLE_CITY_AIRPORT              AK US  6583 -14407     0

@@ -1,0 +1,32 @@
+
+
+               System Services (SS) Library 
+
+
+The system services library contains machine-dependent system-
+service calls in order to isolate them for conversion to other 
+machines.
+
+The routines SS_GLUN and SS_FLUN have been replaced by FORTRAN 
+standard routines, FL_GLUN and FL_FLUN.
+
+SS_IRET translates the IOSTAT return from a FORTRAN I/O call into
+a GEMPAK FL error number.
+
+SS_GSYM returns the value of a VMS symbol.  It is only used in
+the TAE (IP) library to determine whether the user is in the TAE
+or not.
+
+SS_GTIM returns the current system clock time in GEMPAK format. 
+It is used in real-time data decoders to complete the bulletin
+time.
+
+The subroutines SS_CURS and SS_PAGE allow the programmer control
+over the output display.  They are not generally called by GEMPAK
+programs and can be replaced by subroutines which do nothing.  
+SS_WAIT is included for convenience.  The FL routines that use
+SS_WAIT are likely to need rewriting for non-VMS systems, so it is 
+possible that SS_WAIT also can be replaced by a dummy subroutine
+in ports to non-VMS systems.
+ 
+ 

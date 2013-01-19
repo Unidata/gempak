@@ -1,0 +1,154 @@
+Copyright 1999-2000 Peter P. Neilley and UCAR.  All Rights Reserved.
+
+README file for program radmap.
+
+
+1. Introduction.  
+
+  The program radmap is designed to plot NIDS data on geographic map
+  backgrounds along with station ids markers to GIF files.  The program
+  can plot two types of NIDS files, the standard NIDS-product base 
+  reflectivity and velocity files (level-3 files?), as well as composited/
+  moasiced raster image files (such as the WSI NOWRAD files).  
+
+  The program is based on the GEMPAK program GPMAP, but differs in two
+  important ways:
+
+    a)  The program has been written in a very specific way, removing most
+        of the general features of GPMAP, to concentrate solely on plotting
+        radar data.  This was done to make to program as efficient as 
+        possible so as to plot a large number of NIDS images in real-time.
+        Many things, such as color tables and image size, are hard-wired into the 
+        code for efficiency.  Numerous GEMPAK subroutines were modified to also 
+        support the efficiency effort. On a Sun-SPARC 250Mhz processor, under Solaris 
+        V2.7, NIDS files can be plotted to GIF files in about 0.8 secs each.
+
+    b)  Unlike "standard" GEMPAK programs, the device driver (GDP in this case)
+        is built (linked) directly into the program.  This program plots
+        only to the GDP device (a GIF driver) and nothing else.
+
+
+   Although many of the standard GEMPAK libraries and include files are needed
+   for compiling and linking this program, the GEMPAK "environment" is not
+   needed to run it.  That is, once the program is built, it can be run 
+   on any machine (with similar OS) whether or not GEMPAK is available on that
+   machine as long as the necessary supporting files (see below) are in
+   the working directory that the program is run from.
+
+
+2. Usage:
+
+   The program can make several different types of plots.  These are the types
+   of plots that NCAR needs in order to support its real-time and archived
+   NIDS image viewer.  The plot types are (all plots are GIFs @ 768x576 resolution,
+   unless otherwise stated):
+
+       Site_REF, Site_VEL:  Single NIDS site plots of either Base Reflectivity
+                            or velocity.  The entire range of data is plotted
+                            and a color scale added to the site.  A background
+                            county map is drawn in dark green, and state boundaries
+                            are drawn in white.  METAR site IDS are overlayed as well.
+
+
+       National, Regional   These are plots of the moasic NIDS Reflectivity data.  The 
+                            area to be plotted is specified on the command line.  Both
+                            get color scales plotted, and state outlines in with.
+                            Regional plots also get county lines (dark green) and
+                            METAR site ids.
+
+       Clickable            This is almost identical to the National moasic plot, but
+                            NIDS site IDS are added to the plot.  The plot is also
+                            a bit smaller (640x380).  This plot is used on NCAR's NIDS
+                            home page enabling the user to click on the National
+                            Moasic plot and bring up specific NIDS sites images/loops.
+
+       Thumbnail            Similar to National, Regional or Site_REF, but a very small
+                            image (thumbnail, 61x46)  is produced.   No color bar,
+                            title, site IDS, or county maps are drawn.
+
+       Missing              This is just a blank base map with color bar and METAR ids 
+                            plotted in the same geometry as the Site_VEL/Site_REF maps.  
+                            These blank maps are plotted just once, set aside, and
+                            inserted into a NIDS image loop whenever a velocity NIDS
+                            file is missing that corresponds to a specific reflectivity 
+                            file.
+
+
+    The actual command line usage of the program is:
+
+       radmap -(n|r|s|v|t|m|c) nids_file gif_file title_string [plot_area]
+
+    where
+          -n: Make a national plot
+          -r: Make a regional plot
+          -s: Make a single-site reflectivity plot
+          -v: Make a single-site velocity plot
+          -t: Make a thumbnail plot
+          -m: Make a missing plot
+          -c: Make a clickable plot.
+                            
+                 
+          nids_file:  Path to the raw NIDS (or moasic raster) file
+          gif_file:   Path to the output gif file.  If the file already exists, it is overwritten.
+          title_string: String to put at the bottom of the plot as the plot title.
+          plot_area:  For (-n,-r,-t,-c only).  The plot area in the form (lat_ll, lon_ll, lat_ur, lon_ur)
+                      defining the lower-left and upper-right coordinates (e.g. 39.6;-126.1;49.8;-109.9).
+                      When making a thumbnail (-t) of a single-site data, specify plot_area as the
+                      phrase "DSET".
+
+
+     A sucessful plot of the data will exit with a status code of 0.  Otherwise the
+     exit status code is non-zero.
+
+
+    There are a number of files that need to be in the default (current working) directory
+    that the program is run in.  These are:
+
+	   hicnus.nws  ! County boundaries map file
+	   histus.nws  ! State boundaries map file
+	   mepowo.gsf  !Map file
+	   loconh.gsf  !Map file
+	   hiponw.cia  !Map file
+
+	   nidprd.tbl	   !NIDS format info
+	   geog.tbl	   !GAREA [plot_area] definitions; e.g., MD or US (optional)
+	   cities.rad	   !RADMAP specific cities table
+	   gempak_nids.tbl !NIDS site file for overlaying NIDS ids (only for "clickable" plots).
+
+	   ucar_logo.gif   !Logo placed in lower right corner of site, national and regional plots.
+                           !Replace with any GIF logo desired or delete the file.  
+
+
+    Although some color make files are in the distribution, colors are actually hard-coded in.
+    
+
+3. Compiling.
+
+    The program has only been built and used under Solaris 2.x operating systems.  Since the
+    code is heavily based on GEMPAK, compiling under other OS's supported by GEMPAK should
+    be straight forward.
+
+
+    Here are some general instructions/guidelines for installing locally.
+
+ 
+       1. Install GEMPAK V5.4 or later.
+      
+       2. A Makefile in not included.  Rather a c-shell script (Make.radmap) is included that
+          sort of looks like a Makefile.  Edit this file and change it according to the
+          directions there.
+
+       3. Although I'm not sure if this step is necessary, all of the files that are in
+          the /radmap and /gdp.ncar subdirectories that are named GEMINC:* or GEMPRM* shculd
+          be replaced with the files in your GEMPAK directories.  Copy the files something
+          like this (assuming you are in the destination [/radmap or /gdp.ncar] subdirectory) :
+         
+             $GEMPAKHOME/include/ADBUFF.CMN GEMINC:ADBUFF.CMN
+ 
+          etc. for each file.  I'm pretty sure there are some OS specific stuff that gets
+          put in these files when GEMPAK is installed, but not 100% sure.  
+
+       4. Run the build script Make.radmap from the /radmap directory.
+
+       5. Result is a compiled program radmap in the /radmap directory.
+

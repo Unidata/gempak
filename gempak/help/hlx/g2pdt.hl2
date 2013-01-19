@@ -1,0 +1,20 @@
+     G2PDT
+ 
+     G2PDT can be used to specify any or all of the values in the Product 
+     Definition Template (PDT), describing the grid in the output GRIB2 
+     message.  This provides both a method of identifying a diagnostic grid, 
+     when the standard table lookups will not suffice, as well as a means to 
+     add supplemental information to the PDT.  If left blank, the PDT will be 
+     filled in as much as pssible from the information in the grid file and 
+     appropriate tables.
+ 
+        PDT number | List of PDT values (each value separated by ;)
+ 
+     The PDT number is the Product Definition Template number used to
+     describe the grid.
+
+     Users can set the value for each item of the appropriate PDT ( in the 
+     same order as specified in the PDT ), and those values will overwrite
+     any that were automatically generated from information in the gempak 
+     grid file.
+

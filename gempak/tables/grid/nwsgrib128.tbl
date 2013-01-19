@@ -1,0 +1,53 @@
+!
+! NWSGRIB128.TBL -- GRIB 1 parameter conversion table version 128
+! Center #9 forecast office grib
+! Created from: http://205.156.54.206/om/grib128.htm
+! S. Chiswell/Unidata	Feb 2, 2002 
+!
+!ID# NAME                             UNITS                GNAM         SCALE   MISSING  HZREMAP DIRECTION
+!
+191 Total Precipitation               Kg/m**2              APCP             0  -9999.00        0         0
+192 Cond 25% pcpn amt fractile        Kg/m**2              EF25M            0  -9999.00        0         0
+!      past 24 hours. Accumulation. 
+193 Cond 50% pcpn amt fractile        Kg/m**2              EF50M            0  -9999.00        0         0
+!      past 24 hours. Accumulation. 
+194 % pcpn in 1st 6-h sub-period of a %                    PCTP1            0  -9999.00        0         0
+!   24 hr prd. Accum over the 6 h.
+195 % pcpn in 2nd 6-h sub-period of a %                    PCTP2            0  -9999.00        0         0
+!   24 hr prd. Accum over the 6 h.
+196 % pcpn in 3rd 6-h sub-period of a %                    PCTP3            0  -9999.00        0         0
+!   24 hr prd. Accum over the 6 h.
+197 % pcpn in 4th 6-h sub-period of a %                    PCTP4            0  -9999.00        0         0
+!   24 hr prd. Accum over the 6 h.
+198 POP (.01 inch)                    %                    POP              0  -9999.00        0         0
+!
+205 Accumulated Snow Depth            m                    SNDM             0  -9999.00        0         0
+207 Snow Cover {Snow=250, clouds=100  -                    SCOV             0  -9999.00        0         0
+!               no-snow/no-clouds=50}
+208 Snow Cover by Elevation (0-252    100m                 SCEV             0  -9999.00        0         0
+!   no-snow/no-clouds=253, clouds=254)
+209 Snow Water Equivalent at 2m       -                    SNWE             0  -9999.00        0         0
+210 Snow Water Equivalent % of normal %                    SWEPN            0  -9999.00        0         0
+!
+221 1-hour flash flood guidence       Kg/m**2              FFG01            0  -9999.00        0         0
+222 3-hour flash flood guidence       Kg/m**2              FFG03            0  -9999.00        0         0
+223 6-hour flash flood guidence       Kg/m**2              FFG06            0  -9999.00        0         0
+224 12-hour flash flood guidence      Kg/m**2              FFG12            0  -9999.00        0         0
+225 24-hour flash flood guidence      Kg/m**2              FFG24            0  -9999.00        0         0
+226 1-hour flash flood runoff values  Kg/m**2              FFR01            0  -9999.00        0         0
+227 3-hour flash flood runoff values  Kg/m**2              FFR03            0  -9999.00        0         0
+228 6-hour flash flood runoff values  Kg/m**2              FFR06            0  -9999.00        0         0
+229 12-hour flash flood runoff values Kg/m**2              FFR12            0  -9999.00        0         0
+230 24-hour flash flood runoff values Kg/m**2              FFR24            0  -9999.00        0         0
+!
+237 1-hour QPE                        Kg/m**2              QPE01            0  -9999.00        0         0
+!
+239 6-hour QPE                        Kg/m**2              QPE06            0  -9999.00        0         0
+!
+242 24-hour QPE                       Kg/m**2              QPE24            0  -9999.00        0         0
+!
+247 6-hour QPF                        Kg/m**2              QPF06            0  -9999.00        0         0
+!
+250 24-hour QPF                       Kg/m**2              QPF24            0  -9999.00        0         0
+!
+255 Missing                           -                    MISS             0  -9999.00        0         0

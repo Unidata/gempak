@@ -1,0 +1,72 @@
+
+GDFRZL generates GFA FZLVLs in VG format from a scalar grid.
+
+INPUT PARAMETERS
+    
+
+PROGRAM DESCRIPTION
+
+    GDFRZL create a VG file that contains GFA FZLVL elements.
+    It draws contours from the grid and save the contours and
+    labels into a temporary vg file. The the elements in the vg 
+    file are converted to GFA FZLVLs.
+    
+    The only valid device is VG. For example:
+
+		DEVICE = VG|gfa.vgf
+
+    The default vg file is vgf.vgf.
+
+    The FHR parameter specifies the forecast hour of the GFA.
+
+    The Tag parameter is the GFA tag value.
+
+    The STAT parameter is the GFA issuing statues.
+
+    The LVLINCR parameter is used to round freezing level ranges.
+
+    The freezing level ranges are computed on the first run. The
+    following runs will use the same range information.
+
+EXAMPLES
+
+    1.  Create a VG file gfa.vgf that contains freezing levels 
+	0;4000;8000;12000;16000 from gfs grid.
+
+	GDATTIM	 =  f00
+	GLEVEL	 =  0
+	GVCORD	 =  frzl
+	GFUNC	 =  mul(hght,3.28)
+	GDFILE	 =  gfs
+	CINT	 =  0;4000;8000;12000;16000
+	LINE	 =  3///-1
+	MAP	 =  1
+	MSCALE	 =  0
+	TITLE	 =  0
+	DEVICE	 =  vg|gfa.vgf
+	SATFIL	 =  
+	RADFIL	 =  
+	IMCBAR   = 
+	PROJ	 =  STR/90.0;-97.0;0.0
+	GAREA	 =  29.3;-105.8;43.6;-84.1
+	CLEAR	 =  yes
+	PANEL	 =  0
+	TEXT	 =  1
+	SCALE	 =  0
+	LATLON	 =  
+	HILO	 =  
+	HLSYM	 =  
+	CLRBAR	 =  
+	CONTUR	 =  0
+	SKIP	 =   
+	FINT	 =  0
+	FLINE	 =  10-20
+	CTYPE	 =  C
+	LUTFIL   =
+	STNPLT   =
+	FHR	 = 0-6
+	TAG	 = 1W
+	STAT	 = NRML
+	LVLINCR	 = 500
+
+ERROR MESSAGES

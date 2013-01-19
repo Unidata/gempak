@@ -1,0 +1,47 @@
+     FFA
+
+     FFA is the ending valid time for the flood watches, the colors for
+     the flash flood and areal flood watches, a flag for plotting the 
+     start and stop times, a flag for plotting the zone names for 
+     the storms on the map, a flag for plotting the immediate cause for
+     the flooding, and a flag to outline the zone.
+
+	End time|FF color;FA color|Time flag|Label flag|
+        Immediate Cause flag|Outline flag/FF;FA line width
+
+     Flood watches that are valid at the ending time will be plotted on 
+     the map. The ending time is given as a GEMPAK date/time string. 
+     Any missing items from the string will be filled in by the system 
+     time. The ending time may also be LAST and ALL. LAST will use the 
+     system time and plot all current storm messages. ALL will plot all 
+     the messages in the data files, whether they are active, cancelled 
+     or expired.
+
+     The colors are separated by a semi-colon.  If any color is set to 0,
+     that type of symbol will not be plotted.  If any color is missing, a
+     default will be used.  Defaults are red for warning, orange for watch,
+     and yellow for advisory.
+
+     The time flag is YES or NO and controls whether or not to plot
+     the start and stop times of the storm message on the map. The 
+     default is NO.
+
+     The label flag is YES or NO and controls whether or not to plot
+     the zone name of the storm message on the map. The default is NO.
+
+     The immediate cause flag is YES or NO and controls whether or not to
+     plot the immediate cause of the flooding on the map. The default in 
+     NO.
+
+     The outline flag is YES or NO and controls whether to outline the storm
+     zone instead of plotting a marker. The default is NO. The outline
+     colors are those specified previously.  If a message is a "test" only,
+     a hollow marker will be plotted at the zone centroid to indicate this, 
+     and no outlining will be done.
+
+     The line widths of warning, watch, and advisory are valid only when
+     the outline flag is YES. The line widths are separated by a semi-colon.  
+     If any line width is missing or less than 0 or greater than 10, a 
+     default value (3) will be used.
+
+

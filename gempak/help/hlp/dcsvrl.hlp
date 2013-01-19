@@ -1,0 +1,52 @@
+
+DCSVRL
+
+    DCSVRL decodes severe local storm reports (tornado and severe
+    thunderstorm watch reports) from a real-time data feed, or from
+    a file fed to the program through standard input, and writes the
+    data to an ASCII file.  The program is controlled by inputs to
+    the command line.
+
+    The inputs are program options and the output file name or template.
+    For example, for real-time data feeds:
+    
+	dcsvrl [options] output_file
+
+    If running the program interactively with standard input, the -c
+    option must be used.  The input file must also be specified.
+    For example:
+
+	dcsvrl -c YYMMDD/HHNN [other_options] output_file < input_file
+    
+    A template may be used to specify the output file name.  The file
+    name template uses the date and time of the bulletin or report
+    to replace the following characters.
+
+	YYYY or YY	Year with or without the century
+	MM		Month number
+	DD		Day
+	HH		Hour
+	NN		Minute
+
+
+     The format of the output ASCII file is as follows:
+
+        |Type|Start_time|End_time|Watch_number|Corr_flag
+        County_station_table_information_1
+        County_station_table_information_2
+	...
+        County_station_table_information_N
+
+     Where: Type is TS (severe thunderstorm) or TN (tornado)
+	    Start_time and End_time are full GEMPAK date/time strings
+	    Watch_number is the watch number
+	    Corr_flag is a flag indicating a correction (0 or 1)
+
+     Extra spaces may appear anywhere in this line of information,
+     except in the first character position.  The first character must
+     be a bar (|).
+
+     The County_station_table_information is read using the FORTRAN format
+     (A8,1X,I6,1X,A32,1X,A2,1X,A2,1X,F9.2,1X,F9.2,1X,F9.2,1X,I2,1X,A20).
+     The county information is the same as in the GEMPAK station tables.
+

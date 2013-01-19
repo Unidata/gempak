@@ -1,0 +1,214 @@
+     $MAPFIL
+
+     $MAPFIL is the name(s) of the map file(s) to be used for maps drawn by 
+     GEMPAK programs.  If no directory is specified, the GEMPLT map files 
+     in GEMMAPS will be used.
+
+     Multiple maps may be drawn at one time by separating the names with a
+     plus sign (+).
+  
+     The map files in GEMMAPS are named by concatenating the resolution, 
+     map boundaries, and area with the three-letter source file type.  
+     For example, the medium-resolution political world map from GSFC is 
+     called MEPOWO.GSF.
+								
+	RESOLUTION	FEATURES	  AREA		SOURCE
+
+	 ToP	   POlitical		 WOrld		   GSFc
+	 HIgh	   COastline		 NW quadrant	   NWS
+	 MEdium    REgional		 NE quadrant	   CIA
+	 LOw	   CouNty		 SE quadrant	   USGeol survey
+	 MiXed	   CountrY		 SW quadrant	   NCeP
+		   RiVers		 North Hemisphere  RFC
+		   InterState highways	 South Hemisphere  CPC
+		   U.s. Highways	 US
+		   State Highways	 Us Oceans
+		   RoaDs		 North America
+		   River Forecast Cntrs  Atlantic North
+		   County Watch Areas	 Atlantic1
+		   ZoNes		 Atlantic2
+		   High Seas		 Atlantic3
+		   OffShore		 Pacific North
+		   Forecast Bounds	 Pacific East
+		   AViation		 Pacific Surface
+		   Flight Info region	 Pacific1
+		   Convective Sigmet Reg Pacific2
+		   Tpc High seas         Pacific3
+		   Tpc Sigmets           MarylanD
+		   Tpc surface Bounds    Basic Weather
+		   Tpc surface Analysis  Medium Range
+		   Tpc aViation bounds   Qpf Verification
+		   Continental Divide	 Western Region
+		   Mar pred ctr Offshore Arkansas-Red Basin
+		   River fcst ctr Basins Lower Mississippi
+		   Climate Zones         Middle Atlantic
+		   Palmer climate Zones  Missouri Basin
+		   STates                North Central
+		   LaKes                 NorthEast
+		   1000(K) Fathoms       OHio
+		                         SouthEast
+		                         West Gulf
+					 AlasKa
+					 Western Atlantic
+
+     The default map is $GEMMAPS/HIPOWO.CIA.
+
+     The following map files are currently available:
+
+     TPSTUS.NWS    HISTUS.NWS  MESTUS.NWS  LOSTUS.NWS
+     TPCNUS.NWS    HICNUS.NWS  MECNUS.NWS  LOCNUS.NWS
+     TPCWA.NWS	   HICWA.NWS   MECWA.NWS   LOCWA.NWS
+     TPZNUS.NWS    HIZNUS.NWS  MEZNUS.NWS  LOZNUS.NWS
+     TPCSUS.NWS    HIPOWO.GSF  MEPOWO.GSF  LOPOWO.GSF
+     TPCDUS.USG    HICDUS.USG  MECDUS.USG  LOCDUS.USG
+		   HIRVUS.USG  MERVUS.USG  LORVUS.USG
+		   HIISUS.NWS		   LOISUS.NWS
+		   HIUHUS.NWS		   LOUHUS.NWS
+		   HISHUS.NWS		   LOSHUS.NWS
+		   HIRDUS.NWS		   LORDUS.NWS
+		   HIOSUO.NWS		   LOOSUO.NWS
+		   HIPOWO.CIA
+		   HICOWO.CIA
+		   HICYWO.CIA
+		   HIAVUS.NWS
+		   HIPONE.CIA
+		   HIPONW.CIA
+		   HIPOSE.CIA
+		   HIPOSW.CIA
+		   HICNMD.GSF
+		   HIFIWO.NCP
+		   HIFIWO.NCP
+     BWX1224.NCP
+     BWX3648.NCP
+     ISLANDS.CIA
+     LAKES.CIA
+     RFC.NWS
+     TECTONIC.CIA
+     TPCZUS.CPC
+     TPPZUS.CPC
+     TPFBWR.NCP
+     TPTANA.NCP
+     TPTBNA.NCP
+     TPTHNA.NCP
+     TPTSNA.NCP
+     TPTVNA.NCP
+     TPRBAB.RFC
+     TPRBLM.RFC
+     TPRBMA.RFC
+     TPRBMB.RFC
+     TPRBNC.RFC
+     TPRBNE.RFC
+     TPRBOH.RFC
+     TPRBSE.RFC
+     TPRBWG.RFC
+			       MEFBNA.NCP
+     TPHSUO.NWS	   HIHSUO.NWS  MEHSUO.NWS  LOHSUO.NWS
+			       MEHSUO.NCP
+			       MEREUO.NCP
+			       MEFBAN.NCP
+			       MEFBPE.NCP
+			       MEFBPN.NCP
+			       MEFBBW.NCP
+			       MEFBMR.NCP
+			       MEFBPS.NCP
+			       MEFBQV.NCP
+			       MEFBA1.NCP
+			       MEFBA2.NCP
+     TPFBA3.NCP	   HIFBA3.NCP  MEFBA3.NCP  LOFBA3.NCP
+			       MEFBP1.NCP
+			       MEFBP2.NCP
+     TPFBP3.NCP	   HIFBP3.NCP  MEFBP3.NCP  LOFBP3.NCP
+     TPMOUO.NWS	   HIMOUO.NWS  MEMOUO.NWS  LOMOUO.NWS
+					   LOCONH.GSF
+					   LOCOSH.GSF
+					   LOCOWO.GSF
+					   LORVWO.CIA
+						       MXPOWO.NCP
+     TPLKUS.NWS	   HILKUS.NWS  MELKUS.NWS  LOLKUS.NWS
+		   HIFIAK.NCP
+		   HIZNAK.NCP
+		   HIKFWA.NCP
+
+     The maps from GSFC were obtained for GEMPAK Version 1.0.  The history
+     of these maps is unknown.  The maps from the University of Wisconsin
+     were digitized there.  The CIA map files were created from a subset of
+     the CIA map database.  The United States Geological Survey maps were
+     converted from the USGS databases.  The NWS maps were obtained
+     from the National Weather Service/Modernization Systems
+     Implementation Group.  The NCEP map files were developed at the
+     National Centers for Environmental Prediction.  The RFC map files
+     were provided by the Arkansas-Red Basin River Forecast Center.
+
+     There are 5 maps designed to be used for the seamless surface analysis
+     which shows the area of responsibility for the Tropical Prediction 
+     Center, Marine Prediction Center and the Hydrometeorological Prediction 
+     Center. Also, these maps have the numbers 050 and 215 in their names 
+     which refer to the amount of time after the analysis time; 50 minutes 
+     past and 2 hours and 15 minutes past the analysis time.
+                    
+     The capability to use map alias names is available.  This makes it easier
+     to use the map files without previously knowing the long file name.  The 
+     following is a list of alias definitions.
+                    
+	bwx1224      Basic Weather 12 & 24hr  bwx1224.ncp
+	bwx3648      Basic Weather 36 & 48hr  bwx3648.ncp
+	bwxgif       Basic Weather GIF        mefbbw.ncp
+	medrange     Medium Range Weather     mefbmr.ncp
+	cwa          County Warning Areas     hicwa.nws
+	rfc          River Forecast Centers   rfc.nws
+	abrfc        AR-Red Basin RFC Basins  tprbab.rfc
+	lmrfc        Lower MS RFC Basins      tprblm.rfc
+	marfc        Mid Atlantic RFC Basins  tprbma.rfc
+	mbrfc        MO Basin RFC Basins      tprbmb.rfc
+	ncrfc        North Central RFC Basins tprbnc.rfc
+	nerfc        Northeast RFC Basins     tprbne.rfc
+	ohrfc        Ohio RFC Basins          tprboh.rfc
+	serfc        Southeast RFC Basins     tprbse.rfc
+	wgrfc        West Gulf RFC Basins     tprbwg.rfc
+        states       US states, NWS           histus.nws
+	county       US counties, NWS         hicnus.nws
+	zones        US zones, NWS            hiznus.nws
+	climate      US CPC Climate Zones     tpczus.cpc
+	palmer	     US Palmer Climate Zones  tppzus.cpc
+	coast        World Coasts             hicowo.cia
+	country      Hi-res World Countries   hicywo.cia
+	inter        US Interstates           loisus.nws
+	base         Poltcal Bndry,World,CIA  hipowo.cia
+	nmap         Poltcal Bndry,World,CIA  hipowo.cia
+	nsat         Poltcal Bndry,World,CIA  hipowo.cia
+	roads        US Roads                 lordus.nws
+	rivers       Rivers                   lorvwo.cia
+	hirivers     Hi-res US Rivers         hirvus.usg
+	state        State Highways           loshus.nws
+	ushwy        US Highways              louhus.nws
+	islands      Islands                  islands.cia
+	lakes        Lakes                    lakes.cia
+	nafos        Mix-res Pol Bndry,World  mxpowo.ncp
+	hiseas       High Seas Forecast Areas mehsuo.ncp
+        rseas        Regional Sea Fcst Areas  mereuo.ncp
+	offshore     Offshore Forecast Areas  hiosuo.nws
+	offsh2       Offshore Forecast OPC    himouo.nws
+	nam          North America Fcst Bnds  mefbna.ncp
+	epacprod     East Pacific Products    mefbpe.ncp
+	npacprod     North Pacific Products   mefbpn.ncp
+	natlprod     North Atlantic Products  mefban.ncp
+	pacsfcpd     Pacific Surface Products mefbps.ncp
+	pacpart1     Pacific SFC Anal Part 1  mefbp1.ncp
+	pacpart2     Pacific SFC Anal Part 2  mefbp2.ncp
+	atlpart1     Atlantic SFC Anal Part 1 mefba1.ncp
+	atlpart2     Atlantic SFC Anal Part 2 mefba2.ncp
+	qpfver       QPF Verification         mefbqv.ncp
+	fir          Flight Information Regn  hifiwo.ncp
+	convsigmet   Convective Sigmet Bounds tpcsus.ncp
+	wregion      Western Region Boundary  tpfbwr.ncp
+	tpcsfc       TPC Surface Analysis     tptana.ncp
+	tpcsfcbnd    TPC Surface Boundary     tptbna.ncp
+	tpchsf       TPC High Seas            tpthna.ncp
+	tpcsig       TPC SigMets              tptsna.ncp
+	tpcavn       TPC Aviation             tptvna.ncp
+	dcvaac       DC VAAC Boundary         dcvaac.ncp
+	hpcsfc       HPC SFC Anl Boundary     hpcsfc.ncp
+	1000fthm     1000 Fathom Line         hikfwa.ncp
+
+     The alias names are specified in the table:
+     $GEMPAK/tables/config/mapfil.tbl.

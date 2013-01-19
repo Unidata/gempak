@@ -1,0 +1,15 @@
+!	This is the error file for SNTSER.
+!
+ +2	! WARNING, invalid PTYPE, LIN will be used.
+ +1	! WARNING, more than one parameter specified.
+ -1	! Fatal error initializing TAE.
+ -2	! Fatal error reading TAE parameters.
+ -3	! Fatal error initializing GEMPLT.
+ -4	! Input for LEVEL is invalid.
+ -5	! Error defining graph coordinates.
+ -6	! No points found for plot.
+ -7	! Session not interactive.
+ -8	! No parameters entered.
+ -9	! Parm !AS not calculable.
+-10	! Parm !AS is a character.
+-11	! PTYPE chosen is invalid.

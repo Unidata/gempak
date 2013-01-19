@@ -1,0 +1,9 @@
+     AWPSFL
+
+     AWPSFL is the name of the AWIPS graphics file to be displayed.
+     These files can be viewed by using the debug option.
+           awpsfl | d
+        or
+           awpsfl | D
+     the output file is called awips.out.
+

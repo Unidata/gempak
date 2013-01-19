@@ -1,0 +1,77 @@
+
+DCIGDR
+
+DCIGDR decodes IGDR data in BUFR format from a real-time 
+data feed, or from a file fed to the program through standard 
+input, and writes the data to an ASCII file.  The program is 
+controlled by inputs to the command line.
+
+The inputs are program options and the output file name or template.
+For example, for real-time data feeds:
+    
+	dcigdr [options] output_file
+
+If running the program interactively with standard input, the -c
+option must be used.  The input file must also be specified.
+For example:
+
+	dcigdr -c YYMMDD/HHNN [other_options]
+		  output_file < input_file
+    
+A template may be used to specify the output file name.  The file
+name template uses the date and time of the bulletin or report
+to replace the following characters.
+
+	YYYY or YY	Year with or without the century
+	MM		Month number
+	DD		Day
+	HH		Hour
+	NN		Minute
+
+
+The format of the output ASCII file is as follows:
+
+YYYY MM DD HH MM Lat Lon Observation
+
+where:
+
+YYYY			Year
+
+MM			Month of Year
+
+DD			Day of Month
+
+HH			Hour of Day
+
+MM			Minute of Hour
+
+Lat			Latitude of Observation
+
+Lon			Longitude of Observation
+
+Observation		Significant Wave Height in meters
+
+Example
+-------
+2006 8 4 14 12 -12.075740 105.735909 3.720000
+2006 8 4 14 12 -12.125500 105.754738 3.940000
+2006 8 4 14 12 -12.175250 105.773567 3.710000
+2006 8 4 14 12 -12.225000 105.792419 3.760000
+2006 8 4 14 12 -12.274750 105.811279 3.680000
+2006 8 4 14 12 -12.324500 105.830147 3.730000
+2006 8 4 14 12 -12.374240 105.849007 3.910000
+2006 8 4 14 12 -12.423980 105.867897 3.900000
+2006 8 4 14 12 -12.473720 105.886787 4.030000
+2006 8 4 14 12 -12.523460 105.905693 3.940000
+2006 8 4 14 12 -12.573200 105.924599 3.910000
+2006 8 4 14 12 -12.622930 105.943512 3.890000
+2006 8 4 14 12 -12.672660 105.962440 3.810000
+2006 8 4 14 12 -12.722390 105.981377 3.770000
+2006 8 4 14 12 -12.772120 106.000320 3.970000
+2006 8 4 14 12 -12.821840 106.019272 4.130000
+2006 8 4 14 12 -12.871560 106.038231 4.110000
+2006 8 4 14 13 -12.921280 106.057213 4.200000
+2006 8 4 14 13 -12.971000 106.076180 4.020000
+2006 8 4 14 13 -13.020720 106.095169 3.910000
+...
+

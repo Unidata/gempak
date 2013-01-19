@@ -1,0 +1,77 @@
+! FWC.BULL
+!
+! Location information for the following product:
+! FOUS_Wind/Cloud_Guidance.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+FOAK14 KWBC     NCEP_NMC                         MD US  3881  -7687     0
+FOUS14 KACY     ATLANTIC_CITY_INTL               NJ US  3945  -7456     0
+FOUS14 KALB     ALBANY_COUNTY_ARPT               NY US  4275  -7380     0
+FOUS14 KALO     WATERLOO_MUNICIPAL               IA US  4254  -9240     0
+FOUS14 KARX     LA_CROSSE                        WI US  4381  -9119     0
+FOUS14 KAVL     ASHEVILLE_MUNICIPAL              NC US  3543  -8255     0
+FOUS14 KBDL     HARTFORD/BRADLEY                 CT US  4193  -7268     0
+FOUS14 KBDR     BRIDGEPORT/SIKORSKI              CT US  4116  -7312     0
+FOUS14 KBGM     BINGHAMTON                       NY US  4220  -7598     0
+FOUS14 KBIS     BISMARCK                         ND US  4677 -10075     0
+FOUS14 KBOS     BOSTON/LOGAN_INTL                MA US  4236  -7102     0
+FOUS14 KBTV     BURLINGTON                       VT US  4445  -7315     0
+FOUS14 KBUF     BUFFALO                          NY US  4293  -7870     0
+FOUS14 KBWI     BALTIMORE/WASH_INTL              MD US  3918  -7666     0
+FOUS14 KCAE     COLUMBIA                         SC US  3393  -8112     0
+FOUS14 KCAK     AKRON-CANTON_RGNL                OH US  4091  -8143     0
+FOUS14 KCAR     CARIBOU                          ME US  4577  -6862     0
+FOUS14 KCHS     CHARLESTON                       SC US  3288  -8001     0
+FOUS14 KCLE     CLEVELAND                        OH US  4140  -8186     0
+FOUS14 KCLT     CHARLOTTE/DOUGLAS                NC US  3522  -8094     0
+FOUS14 KCMH     PORT_COLUMBUS_INTL               OH US  4000  -8287     0
+FOUS14 KCNK     CONCORDIA                        KS US  3954  -9765     0
+FOUS14 KCON     CONCORD_MUNICIPAL                NH US  4320  -7150     0
+FOUS14 KCYS     CHEYENNE                         WY US  4115 -10480     0
+FOUS14 KDAY     DAYTON/JAMES_M_COX               OH US  3990  -8419     0
+FOUS14 KDDC     DODGE_CITY                       KS US  3775  -9995     0
+FOUS14 KDLH     DULUTH                           MN US  4683  -9220     0
+FOUS14 KDSM     DES_MOINES_INTL                  IA US  4152  -9365     0
+FOUS14 KEKN     ELKINS/RANDOLPH_FLD              WV US  3888  -7984     0
+FOUS14 KERI     ERIE_INTL_AIRPORT                PA US  4208  -8018     0
+FOUS14 KEVV     EVANSVILLE_REGIONAL              IN US  3804  -8752     0
+FOUS14 KEWR     NEWARK_INTL_AIRPORT              NJ US  4070  -7416     0
+FOUS14 KFGF     EASTERN_NORTH_DAKOTA             ND US  4791  -9708     0
+FOUS14 KGJT     GRAND_JUNCTION                   CO US  3911 -10851     0
+FOUS14 KGLD     GOODLAND                         KS US  3936 -10169     0
+FOUS14 KGRB     GREEN_BAY                        WI US  4449  -8811     0
+FOUS14 KGSP     GREENVILLE/SPARTANBURG           SC US  3488  -8222     0
+FOUS14 KHON     HURON_REGIONAL                   SD US  4438  -9822     0
+FOUS14 KHTS     HUNTINGTON/TRI_STAT              WV US  3836  -8255     0
+FOUS14 KIAD     WASHINGTON/DULLES                VA US  3895  -7744     0
+FOUS14 KICT     WICHITA                          KS US  3765  -9744     0
+FOUS14 KILG     WILMINGTON_AIRPORT               DE US  3968  -7559     0
+FOUS14 KILM     WILMINGTON                       NC US  3427  -7791     0
+FOUS14 KIND     INDIANAPOLIS                     IN US  3970  -8627     0
+FOUS14 KINL     INTERNATIONAL_FALLS              MN US  4856  -9337     0
+FOUS14 KLBF     NORTH_PLATTE                     NE US  4113 -10069     0
+FOUS14 KLMK     LOUISVILLE                       KY US  3811  -8563     0
+FOUS14 KLNK     LINCOLN_MUNICIPAL                NE US  4084  -9675     0
+FOUS14 KLYH     LYNCHBURG/P_GLENN                VA US  3733  -7919     0
+FOUS14 KOFK     NORFOLK/STEFAN_FLD               NE US  4197  -9743     0
+FOUS14 KOMA     OMAHA/EPPLEY_FIELD               NE US  4129  -9590     0
+FOUS14 KORF     NORFOLK_INTL_ARPT                VA US  3690  -7619     0
+FOUS14 KORH     WORCESTER                        MA US  4227  -7187     0
+FOUS14 KPAH     PADUCAH                          KY US  3706  -8876     0
+FOUS14 KPHL     PHILADELPHIA_INTL                PA US  3988  -7525     0
+FOUS14 KPUB     PUEBLO                           CO US  3827 -10451     0
+FOUS14 KPVD     PROVIDENCE/GREEN                 RI US  4172  -7143     0
+FOUS14 KPWM     PORTLAND_INTL_JET                ME US  4365  -7031     0
+FOUS14 KRAP     RAPID_CITY_REGIONAL              SD US  4404 -10306     0
+FOUS14 KRDU     RALEIGH-DURHAM                   NC US  3586  -7877     0
+FOUS14 KRIC     RICHMOND/BYRD_FIELD              VA US  3750  -7733     0
+FOUS14 KSGF     SPRINGFIELD                      MO US  3722  -9340     0
+FOUS14 KSUX     SIOUX_CITY_MUNI                  IA US  4240  -9637     0
+FOUS14 KTOL     TOLEDO_EXPRESS                   OH US  4159  -8380     0
+FOUS14 KTOP     TOPEKA                           KS US  3906  -9562     0
+FOUS14 KWAL     WALLOPS_ISLAND                   VA US  3793  -7547     0
+FOUS14 KYNG     YOUNGSTOWN_MUNI                  OH US  4127  -8066     0

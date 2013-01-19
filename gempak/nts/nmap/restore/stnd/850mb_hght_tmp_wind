@@ -1,0 +1,38 @@
+!
+! Restore File : 850mb_hght_tmp_wind
+!
+! Log:
+! D.W.Plummer/NCEP	 2/97	Initial creation
+! D.W.Plummer/NCEP	 8/97	Added FILTER parameter
+!
+GDATTIM fall
+GLEVEL  850
+GVCORD  pres
+PANEL   0                                                                       
+SKIP    0         !0         !0         !1         !0
+SCALE   0         !0         !0         !-1
+GDPFUN  sm9s(tmpc)!sm9s(tmpc)!sm9s(tmpc)!sm9s(hght)!kntv(wnd)
+TYPE    c/f       !c         !c         !c         !b
+CONTUR  1                                                                       
+CINT    3/-99/-3  !3/3/18    !3/21/99   !3
+LINE    32/1/2    !2/10/3    !16/10/3   !20/1/2/1
+FINT    -24;-18;-12;-6; 0
+FLINE    24; 30; 28;29;25; 0
+HILO    0                                                                        
+HLSYM   0                                                                        
+CLRBAR  1                                                                       
+WIND    3/.9/1
+REFVEC                                                                          
+TITLE   1/-2/~ @ HEIGHTS, TEMPERATURE AND WIND (KTS)!
+TEXT    1/21//hw                                                                
+CLEAR   yes                                                                     
+STNPLT                                                                          
+SATFIL                                                                          
+RADFIL                                                                          
+STREAM                                                                          
+POSN    4                                                                       
+COLORS  2                                                                       
+MARKER  2                                                                       
+GRDLBL  5                                                                       
+LUTFIL  none
+FILTER  yes

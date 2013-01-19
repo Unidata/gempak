@@ -1,0 +1,81 @@
+           Product Generation for BUFR File Creation
+
+I.  Functionality
+
+BUFR files may be created from VG files by a three-step process:
+	1.  Create the VG file in product generation.
+	2.  Convert the VG file to the UKMET browsable ASCII format using 
+	    program VG2UKA.
+	3.  Convert the ASCII file to BUFR using program BUFRENC.
+
+Both high level (SWH) and mid level (SWM)  significant weather charts 
+are supported for conversion from VG to BUFR.
+
+II. Operation
+	
+A. Creating a High Level (25000 to 63000 feet) Significant Weather (SWH) VG File
+
+Clouds - A single cloud group should consist of a scalloped line and text
+containing the base and top of the cloud area in hundreds of feet.  Information
+about the distribution, using the abbreviations FRQ, OCNL or ISOL, for
+frequent, occasional and isolated, respectively, and type (CB) should be
+included with the cloud base and top text.  The cloud level text object is
+used.  These elements must be grouped as type CLOUD to be recognized.
+ 
+Fronts - Fronts consist of warm fronts, cold fronts, quasi-stationary fronts
+and occluded fronts.  They must be grouped with an arrow vector and text as the
+speed.  Each front with any associated arrow and text must be grouped or a
+single front may be grouped by itself.  However, if two or more fronts are
+grouped together, only the front which was grouped first is currently
+recognized.  These elements must be grouped as type FRONT to be recognized.
+If an ITCZ line is to be drawn, use special line type number '23'.  It may be
+grouped with text.
+
+Jets - These features consist of a jet line, flight level, wind barbs and hash
+marks.  The jet line type that is recognized is the special solid line with the
+filled in arrow head (special line type 6).  Wind barbs and hash marks may be
+used to indicate the wind speeds along the jet.  The beginning and ending
+points along the jet represent 80 kts.  Hash marks are changes of 20 kts.  The
+flight level is given using text as "FL???", where '???' is how many hundreds
+of feet the jet is located.  These elements must be grouped as type JETS to be
+recognized.  Flight level deltas are not included in the jet group.  
+
+Alternatively, a jet may be defined in product generation as an (ungrouped) JET
+object of class MET.  The jet object contains all the jet elements including
+flight level deltas, automatically rotates and "snaps" wind barbs and hash
+marks to the jet line, and does not need the grouping.  	 	
+
+Turbulence - Turbulence is shown by using the dashed line and a text box with
+the information grouped together.  The turbulence text box object is used.  The
+base and top of the turbulence areas are given with a slash separating the two
+values.  If either the base or top is unknown, use 'XXX' to designate a
+missing value.  These elements must be grouped as type TURB to be recognized.
+
+Tropopause - There are three different types of tropopause labels which are
+used, the high, low and spot values.  These are represented by using the text
+object and selecting the correct box for the tropopause value to be plotted.
+These values are given in hundreds of feet.  These elements are not grouped.
+
+Storms - Tropical storms may be represented by the northern hemisphere and
+southern hemisphere tropical storm and hurricane symbols.  They are to be
+grouped with the name of the storm.  The text is quoted using double quotes.
+These elements must be grouped as type LABEL to be recognized as symbols.
+
+Volcanoes - Volcanoes are drawn using the volcano symbol.  It is grouped with a
+text box which contains the volcano name (no quotes) and the latitude and
+longitude of the volcano, e.g.,
+			Etna
+		     37.1N 15.0E
+These elements must be grouped as type LABEL to be recognized as symbols.
+
+Radiation - Radiation is represented by plotting the radiation symbol.  There
+is no text associated with it and it is not grouped.
+
+B.  Creating a Mid level (10000 to 45000 feet) Significant Weather (SWM) VG File.
+
+All elements of a mid level (SWM) chart are created the same as for a high level 
+(SWH) chart, except for clouds.   The cloud line itself is drawn the same as an 
+SWH cloud, but the cloud may be labeled in one of two ways.  It may be labeled 
+the same way as an SWH cloud (for type CB only), or it may be labeled using the 
+mid level cloud text object.  A mid level cloud line and associated text should 
+be grouped as type CLOUD.

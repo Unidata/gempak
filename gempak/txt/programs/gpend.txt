@@ -1,0 +1,16 @@
+GPEND terminates the GEMPLT subprocesses.
+   
+  
+INPUT PARAMETERS
+
+
+ 
+PROGRAM DESCRIPTION
+       
+    This program terminates the GEMPLT plotting package.  It stops
+    the GEMPLT subprocesses and should be run at the end of each
+    GEMPAK plotting session.
+  
+  
+ERROR MESSAGES
+  

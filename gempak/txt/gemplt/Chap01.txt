@@ -1,0 +1,72 @@
+
+
+                            Introduction
+
+
+1.1  GEMPLT Overview
+
+
+GEMPLT is a general plotting subroutine package that provides
+application programmers with device independent drawing capabilities.
+It is designed to simplify plotting of meteorological data.
+
+GEMPLT facilitates plotting in a variety of coordinate systems.  The
+transformations from one coordinate system to another are handled
+internally.  Lines, polygons, text, markers, wind barbs, arrows, and
+various symbols can be plotted in any of the coordinate systems.
+Utility functions that draw contours, streamlines, geopolitical maps,
+and other overlays are also included.  Satellite and radar images can be
+rendered with meteorological maps and gridded data sets geo-located on
+the images.
+
+GEMPLT is designed to be extremely flexible for application programmers
+developing either single programs or large application systems.
+Programs can be written that are independent of graphics devices and map
+projections; both can be selected at run time.  New features, coordinate
+systems, and graphics devices can be added easily without affecting
+existing application programs.
+
+The GEMPLT subroutines communicate with two sub-processes that are
+maintained as separate run-time modules.  Coordinate transformations and
+utility functions are handled by the first sub-process called GPLT.  The
+second sub-process is one of several device drivers that draw lines,
+text, and symbols.  The device characteristics that are needed by GPLT
+are defined in the device drivers.  A separate device driver is used
+for each graphics device.
+
+Since the GPLT and device sub-processes can remain active after an
+application program exits, plotting characteristics defined in one
+program may be used in other programs that follow it in the same
+session.
+
+
+
+1.2  Document Overview
+
+
+This manual is a guide for application programmers.  Chapter 2 is an
+introduction to the overall features of the GEMPLT system.
+
+Chapters 3 to 16 are a reference section for the callable subroutines
+in GEMPLT.  These chapters describe each GEMPLT function, its calling
+sequence, input and output parameters, and any special rules that apply
+to the function's usage.
+
+Chapter 17 is guidance for the programmers that write device drivers for
+GEMPLT.
+
+Chapter 18 is a tutorial for using ATEST, the GEMPLT test program.
+
+Appendix A describes the run-time architecture of a program that calls
+GEMPLT subroutines.  Program structure, logic flow, and interprocess
+communications are sketched out.
+
+Appendix B is information related to map files.  It is written for
+programmers that modify the GEMPLT maps.
+
+Appendix C is the complete list of all of the GEMPLT error codes and
+error messages.
+
+Appendix D includes fully functional example programs that use GEMPLT
+subroutines.  The examples are intended to get a programmer started in
+using GEMPLT.

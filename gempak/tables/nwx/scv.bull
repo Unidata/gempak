@@ -1,0 +1,11 @@
+! SCV.BULL
+!
+! Location information for the following product:
+! Satellite_areal_extent_of_snow_cover.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+SRUS43 KMSR     NORTHCENTRAL_RFC/MINNEAPOLIS     MN US  4484  -9355     0

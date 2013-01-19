@@ -1,0 +1,48 @@
+			     Layer Product Files	
+
+
+
+I.  Functionality
+
+A layer product file (LPF) specifies product generation layer attributes.   
+When an LPF is selected, layers and their associated attributes are read from 
+the LPF and automatically loaded into product generation allowing layer 
+operations.  A maximum of ten layers can be specified in an LPF.  See the 
+Product Generation-Layer Help for information regarding layer functionality.
+
+The following layer attributes can be specified in an LPF:
+
+	A.  Layer name
+	B.  VGF name
+	C.  Group name
+	D.  Layer toggle, i.e., on/off  
+	E.  Color mode, i.e., all colors or monochrome display 
+	F.  Monochrome color number 
+	G.  Fill toggle, i.e., on/off
+
+The layer toggle, color mode, monochrome color number and fill toggle specify 
+the layer appearance when the layer is not active.  These attributes appear in 
+the "Layer Control" GUI.  If a VGF is specified, it is opened for the layer.  
+If it does not exist, an empty VGF is created in the local directory and opened 
+for the layer.  The group name is the default group associated with the layer 
+that appears when the "GROUP" action is invoked.  
+
+II.  Operation
+
+Click the "OPEN PROD" button on the main product generation palette to open an
+LPF.  The "Open Layer Product File" GUI is invoked allowing the user to select 
+an LPF file in a similar fashion as selecting VGFs and SPFs.  Click on the 
+desired directory and file in the GUI's respective scroll lists.  Upon clicking 
+the "Open" button, the layers and attributes specified in the LPF are loaded 
+into product generation.  The "Layer Control" GUI is invoked allowing layer 
+operations.   
+
+The directories that appear in the "Open Layer Product File" GUI are specified 
+in the table: $GEMTBL/nmap/lpf.tbl.  
+
+III.  Layer Product File Format
+
+The LPF file has a format similar to the Stored Procedure File (SPF).  It is 
+an editable text file containing a set of key words followed by their values 
+for each layer.   The file $GEMTBL/pgen/example.lpf is an example of an LPF 
+with a complete description of the format.

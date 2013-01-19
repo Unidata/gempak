@@ -1,0 +1,13 @@
+! HEAT.BULL
+!
+! This table contains the bulletin/station information to be used
+! with the Heat Index Forecasts.
+!
+! The format for the file is given below, with the number of 
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+!
+FMUS23 KWNH     NCEP_HPC                         MD US  3900  -8500    86
+FMUS24 KWNH     NCEP_HPC                         MD US  3900 -11000    86

@@ -1,0 +1,202 @@
+!
+! VAA.TBL
+!
+! This table provides information for the VAA product making GUI.
+! The first oringination station/VAAC pair, and the first WMO ID and
+! header number of it will be picked as default.
+!
+!!
+! Log:
+! D.W.Plummer/NCEP	 7/03	Created
+! D.W.Plummer/NCEP	12/03	Added forecaster name and info source entries
+! H. Zeng/XTRIA		12/03   minor modification
+! H. Zeng/XTRIA		01/04   removed "Fcst Ash Cloud +6hr" info
+! H. Zeng/XTRIA		02/04   added text formating info.
+! H. Zeng/SAIC		03/05	added "Others-FCST" table entries
+! H. Zeng/SAIC		06/05	updated table with NESDIS
+! R. Tian/SAIC          02/06   added VAA wording
+! D.W.Plummer/NCEP	01/08	updates for Annex 3
+!
+!--------------------------------------------------------------------------
+! VAA GUI Information
+!---------------------------------------
+!
+PATH   LPF_PATH     ./
+PATH   TXT_PATH     ./
+!
+!
+!                Orig Stn   VAAC        WMO ID      WMO Header Number
+!
+Header Information  KNES  /WASHINGTON    /XX        /20;21;22;23;24;25;26;27
+Header Information  PAWU  /ANCHORAGE     /AK        /20;21;22;23;24
+Header Information  CWAO  /MONTREAL      /CN        /01;02;03;04
+Header Information  SABM  /BUENOS AIRES  /AG        /01
+Header Information  ADRM  /DARWIN        /AU        /01;02;03;04
+Header Information  EGRR  /LONDON        /UK        /01
+Header Information  RJTD  /TOKYO         /FE        /01
+Header Information  LFPW  /TOULOUSE      /XX        /01;02;03;04
+Header Information  NZKL  /WELLINGTON    /PS        /01
+!
+!
+Information Source    AWC
+Information Source    MEXICO CITY MWO
+Information Source    TEGUCIGALPA MWO
+Information Source    PIARCO MWO
+Information Source    GUAYAQUIL MWO
+Information Source    GUAM WFO
+Information Source    HONOLULU MWO
+Information Source    GUAM NWS
+Information Source    GOES-13
+Information Source    GOES-11
+Information Source    GOES-12
+Information Source    MTSAT
+Information Source    FY-2D
+Information Source    GFS WINDS
+Information Source    NAM WINDS
+Information Source    VAFTAD
+Information Source    SEISMIC DETECTION
+Information Source    INFRASOUND DETECTION
+Information Source    RADIOSONDE
+Information Source    METAR
+Information Source    VOLCANO WEB CAMERA
+Information Source    PILOT REPORT
+Information Source    USGS
+Information Source    CENAPRED
+Information Source    COLIMA OBSERVATORY
+Information Source    GEOPHYSICAL INST
+Information Source    INSIVUMEH
+Information Source    MONTSERRAT OBSERVATORY
+Information Source    INETER
+Information Source    HVO
+Information Source    AVO
+Information Source    CVO
+Information Source    AFWA
+!
+!
+Aviation Color Code   NOT GIVEN
+Aviation Color Code   NIL
+Aviation Color Code   UNKNOWN
+Aviation Color Code   GREEN
+Aviation Color Code   YELLOW
+Aviation Color Code   ORANGE
+Aviation Color Code   RED
+!
+!
+Next Advisory   WILL BE ISSUED BY YYYYMMMDD/HHNNZ
+Next Advisory   NO FURTHER ADVISORIES
+!
+!
+Forecaster(s)   BALDWIN
+Forecaster(s)   BIRCH
+Forecaster(s)   EVANS
+Forecaster(s)   GALLINA
+Forecaster(s)   KIBLER
+Forecaster(s)   LIDDICK
+Forecaster(s)   RUMINSKI
+Forecaster(s)   SALEMI
+Forecaster(s)   SCHWARTZ
+Forecaster(s)   SPAMPATA
+Forecaster(s)   STREETT
+Forecaster(s)   SWANSON
+Forecaster(s)   TURK
+!
+!
+! Identify which VAA form entries are used to make a VAA text product.
+! Value after VAA form entry is default.
+! LOC_1 refers to availability on the "VAA - (volcano name)" form,
+! LOC_2 refers to availability on the "VAA Create" form.
+!
+!	LOCATION PRODUCT <VAA form entry>Value
+!
+FORMAT  LOC_1  NORMAL      <ALL>
+!
+FORMAT  LOC_1  END         <ALL>
+FORMAT  LOC_1  END         <OBS ASH CLOUD>VA NOT IDENTIFIABLE FROM SATELLITE DATA.
+FORMAT  LOC_1  END         <FCST ASH CLOUD +6H>
+FORMAT  LOC_1  END         <FCST ASH CLOUD +12H>
+FORMAT  LOC_1  END         <FCST ASH CLOUD +18H>
+FORMAT  LOC_1  END         <NEXT ADVISORY> NO FURTHER ADVISORIES
+!
+FORMAT  LOC_2  TEST        <VOLCANO>TEST
+FORMAT  LOC_2  TEST        <NUMBER>9999-99
+FORMAT  LOC_2  TEST        <LOCATION>N9999W99999
+FORMAT  LOC_2  TEST        <AREA>TEST
+FORMAT  LOC_2  TEST        <SUMMIT ELEVATION>9999 FT (9999M)
+FORMAT  LOC_2  TEST        <ADVISORY NUMBER>001
+FORMAT  LOC_2  TEST        <REMARKS>TEST...TEST...TEST. THIS IS ONLY A TEST.
+!
+!FORMAT  LOC_1  QUICK       <ALL>
+FORMAT  LOC_1  QUICK       <VOLCANO>
+FORMAT  LOC_1  QUICK       <NUMBER>
+FORMAT  LOC_1  QUICK       <LOCATION>
+FORMAT  LOC_1  QUICK       <AREA>
+FORMAT  LOC_1  QUICK       <SUMMIT ELEVATION>
+FORMAT  LOC_1  QUICK       <ADVISORY NUMBER>
+FORMAT  LOC_1  QUICK       <INFORMATION SOURCE>
+FORMAT  LOC_1  QUICK       <ERUPTION DETAILS>
+FORMAT  LOC_1  QUICK       <OBS ASH DATA/TIME>NIL MAYBE
+!FORMAT  LOC_1  QUICK       <OBS ASH CLOUD>NOT AVBL
+!FORMAT  LOC_1  QUICK       <FCST ASH CLOUD +6H>
+!FORMAT  LOC_1  QUICK       <FCST ASH CLOUD +12H>
+!FORMAT  LOC_1  QUICK       <FCST ASH CLOUD +18H>
+FORMAT  LOC_1  QUICK       <REMARKS>WE HAVE RECEIVED INFORMATION SUGGESTING A POSSIBLE VA EMISSION. WE WILL GATHER FURTHER INFORMATION AND ISSUE A FULL ADVISORY AS SOON AS POSSIBLE.
+FORMAT  LOC_1  QUICK       <NEXT ADVISORY>AS SOON AS POSSIBLE
+!
+!FORMAT  LOC_1  NEAR        <ALL>
+FORMAT  LOC_1  NEAR        <VOLCANO> 
+FORMAT  LOC_1  NEAR        <LOCATION>
+FORMAT  LOC_1  NEAR        <AREA>
+FORMAT  LOC_1  NEAR        <SUMMIT ELEVATION>
+FORMAT  LOC_1  NEAR        <ADVISORY NUMBER>
+FORMAT  LOC_1  NEAR        <REMARKS>
+!
+FORMAT  LOC_2  RESUME      <VOLCANO>USER MESSAGE
+FORMAT  LOC_2  RESUME      <LOCATION>XX
+FORMAT  LOC_2  RESUME      <AREA>XX
+FORMAT  LOC_2  RESUME      <REMARKS>THE WASHINGTON VAAC HAS RESUMED NORMAL OPERATIONS. 
+!
+FORMAT  LOC_2  BACKUP      <VOLCANO> USER MESSAGE
+FORMAT  LOC_2  BACKUP      <LOCATION>XX
+FORMAT  LOC_2  BACKUP      <AREA>XX
+FORMAT  LOC_2  BACKUP      <REMARKS>  
+!
+FORMAT  LOC_1  WATCH       <VOLCANO> 
+FORMAT  LOC_1  WATCH       <NUMBER>
+FORMAT  LOC_1  WATCH       <LOCATION>
+FORMAT  LOC_1  WATCH       <AREA>
+FORMAT  LOC_1  WATCH       <SUMMIT ELEVATION>
+FORMAT  LOC_1  WATCH       <ADVISORY NUMBER>
+FORMAT  LOC_1  WATCH       <INFORMATION SOURCE>
+FORMAT  LOC_1  WATCH       <ERUPTION DETAILS>NO ERUPTION HAS OCCURRED
+FORMAT  LOC_1  WATCH       <REMARKS> 
+FORMAT  LOC_1  WATCH       <NEXT ADVISORY>WILL BE ISSUED DAILY UNTIL THE IMMINENT THREAT HAS PASSED OR SOONER IF AN ERUPTION OCCURS.
+
+! The following is for miscellaneous message display on VAA text product.
+!
+! MISCMESG EXTRA TEXT CAN BE ADDED HERE
+!
+! "Others-FCST" table entries.
+!
+!OTHERS-FCST  NOT AVBL|NOT AVAILABLE|NOT AVBL    
+OTHERS-FCST  NO ASH EXP (NO FL)|NO ASH EXP|NO ASH EXP
+OTHERS-FCST  NO ASH EXP (WITH FL)|{FL} NO ASH EXP|{FL} NO ASH EXP
+!OTHERS-FCST  NO VA EXP|NO VA EXPECTED|NO VA EXP
+!
+! VAA Wording Specification
+!
+!                TAG        OLD WORDING                  NEW WORDING
+!
+WORDING         <VAA>   VOLCANIC_ASH_ADVISORY   |       VA_ADVISORY
+WORDING         <DTG>   ISSUED                  |       DTG
+WORDING         <PSN>   LOCATION                |       PSN
+WORDING         <SUM>   SUMMIT_ELEVATION        |       SUMMIT_ELEV
+WORDING         <ADV>   ADVISORY_NUMBER         |       ADVISORY_NR
+WORDING         <INF>   INFORMATION_SOURCE      |       INFO_SOURCE
+WORDING         <OAD>   OBS_ASH_DATE/TIME       |       OBS_VA_DTG
+WORDING         <OAC>   OBS_ASH_CLOUD           |       OBS_VA_CLD
+WORDING         <F06>   FCST_ASH_CLOUD_+6H      |       FCST_VA_CLD_+6HR
+WORDING         <F12>   FCST_ASH_CLOUD_+12H     |       FCST_VA_CLD_+12HR
+WORDING         <F18>   FCST_ASH_CLOUD_+18H     |       FCST_VA_CLD_+18HR
+WORDING         <RMK>	REMARKS			|	RMK
+WORDING         <TXT>	NEXT_ADVISORY		|	NXT_ADVISORY
+WORDING         <TOF>	TO			|	FROM

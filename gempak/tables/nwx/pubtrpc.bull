@@ -1,0 +1,17 @@
+! PUBTRPC.BULL
+!
+! This table contains the bulletin/station information to be used
+! with the Public_Tropical_Cyclone_Advisory bulletins.
+!
+! The format for the file is given below, with the
+! number of characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+!
+WTCA40 TJSJ     SAN_JUAN_INTL_ARPT               PU PU  1843  -6600    19
+WTPA31 PHFO     HONOLULU/UNIV_OF_HI-MANOA_CAMPUS HI US  2130 -15782    20
+WTPA32 PHFO     HONOLULU/UNIV_OF_HI-MANOA_CAMPUS HI US  2150 -15802    20
+WTPA33 PHFO     HONOLULU/UNIV_OF_HI-MANOA_CAMPUS HI US  2170 -15822    20
+WTPA34 PHFO     HONOLULU/UNIV_OF_HI-MANOA_CAMPUS HI US  2190 -15842    20
+WTPA35 PHFO     HONOLULU/UNIV_OF_HI-MANOA_CAMPUS HI US  2210 -15862    20

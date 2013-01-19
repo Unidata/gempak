@@ -1,0 +1,4 @@
+$FC $FFLAGS $LDFLAGS -o $OS_BIN/gdptpdf gdptpdf.f \
+		$OS_LIB/gdptpdf.a $GEMLIB $CGEMLIB $APPL $GEMLIB \
+		$SYSLIB -lm -lnetcdf -lz
+$RM *.o

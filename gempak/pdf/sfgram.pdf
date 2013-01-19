@@ -1,0 +1,17 @@
+SFFILE  Surface data file                                                       
+DATTIM  Date/time                                                               
+STATION Stations                                                                
+TRACE1  Parms/colors/range/witness                                              
+TRACE2  Parms/colors/range/witness                                              
+TRACE3  Parms/colors/range/witness                                              
+TRACE4  Parms/colors/range/witness                                              
+TRACE5  Parms/colors/range/witness                                              
+NTRACE  Number of traces                                                        
+TAXIS   Time1-time2-tinc;lbl;gln;tck                                            
+BORDER  Background color/type/width                                             
+MARKER  Marker color/type/size/width/hw                                         
+TITLE   Title color/line/title                                                  
+CLEAR   Clear screen flag                                                       
+DEVICE  Device|name|x size;y size|color type                                    
+PANEL   Panel loc/color/dash/width/regn                                         
+TEXT    Size/fnt/wdth/brdr/N-rot/just/hw flg                                    

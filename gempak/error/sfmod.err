@@ -1,0 +1,11 @@
+!	This is the error file for SFMOD.
+!
++4	! Parameter !AS is not in output file.
++3	! Some stations were not added to file.
++2	! Character parameter cannot be used:  !AS
++1	! Parameter !AS cannot be calculated.
+-1	! Fatal error initializing TAE.
+-2	! Fatal error reading TAE parameters.
+-3	! There are no parameters to be computed.
+-4	! Time !AS cannot be added.
+-5      ! Number of input and output date/time are not equal.

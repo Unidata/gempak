@@ -1,0 +1,67 @@
+#!/bin/csh -f
+
+set view = 0
+set tests = ""
+if ($#argv > 0) then
+    foreach arg ($argv) 
+        if ("$arg" == "-v") then
+            set view = 1
+        else if ("$arg" == "-h") then
+            echo "Runs over each of the dataset files and runs the testcap on it"
+            echo "and generates a result file that will be compared to the reference file."
+            echo "If they differ, an error is produced."
+            echo "You can include a -v switch, and the viewer will be run on each result"
+            echo "so you can get a feel for what the results look like."
+            exit -
+        else
+            set tests = "$tests $arg"
+        endif
+    end
+endif
+
+if ($view == 1) then
+    echo "{{area 0 1 0 1}}" > view
+    display.tcl -i view >& /dev/null &
+endif
+
+onintr cleanup
+
+if ("$tests" == "") then
+    set tests = (dataset*)
+endif
+
+foreach f ($tests)
+    set test = `echo $f | sed 's/dataset//'`
+    echo "Running test $test"
+    if ($view == 1) then
+        cp $f view
+        echo -n "    Click the display window to show test data, hit return when ready"
+        set in = $<
+    endif
+    testcap -i $f > result
+    if ($view == 1) then
+        cp result view
+    endif
+    if (-e "result$test") then
+        diff result$test result > /dev/null
+        if ($status != 0) then
+            echo "    OOPS, the results don't match the reference for test ${test}."
+            echo "    You need to verify the information is correct and update the reference files"
+            mv result bad$test
+        endif
+    else
+        mv result result$test
+    endif
+
+    if ($view == 1) then
+        echo -n "    Click the display window to show the results, hit return when ready to continue"
+        set in = $<
+    endif
+end
+
+cleanup:
+rm -f result
+rm -f view
+if ($view == 1) then
+    kill %1
+endif

@@ -1,0 +1,60 @@
+! TMPPCP.STN
+!
+! This table contains the station information to be used
+! with the State Temp/Precip
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!STID     STNM     NAME                          ST CO   LAT    LON  ELEV
+!(13)      (8)     (32)                          (2)(2)  (5)    (6)   (5)
+!
+STPAK	 702730 ANCHORAGE_INTL_ARPT              AK US  6117 -15002    40
+STPAL	 722280 BIRMINGHAM                       AL US  3356  -8675   196
+STPAVL	 723150 ASHEVILLE_MUNIC		         NC US  3543  -8255   661
+STPAR 	 723401 LITTLE_ROCK                      AR US  3473  -9223    78
+STPAZ 	 722780 PHOENIX                          AZ US  3343 -11201   342
+STPCA 	 724830 SACRAMENTO                       CA US  3861 -12139    16
+STPCO	 724640 PUEBLO_MEMORIAL_(ASOS)           CO US  3828 -10452  1439
+STPCRS	 999999 CORSICANA                        TX US  3203  -9639   136   
+STPFL 	 722020 MIAMI                            FL US  2580  -8026     3
+STPGA 	 722190 ATLANTA                          GA US  3365  -8443   312
+STPHI	 000097 HONOLULU                         HI US  2130 -15781     0
+STPIA 	 725460 DES_MOINES                       IA US  4153  -9365   292
+STPID 	 726810 BOISE                            ID US  4356 -11621   871
+STPIL 	 725343 CHICAGO_(WSFO)                   IL US  4200  -8788   181
+STPIN 	 724380 INDIANAPOLIS                     IN US  3973  -8628   243
+STPKS 	 724560 TOPEKA                           KS US  3906  -9563   268
+STPKY 	 724230 LOUISVILLE                       KY US  3818  -8573   151
+STPLA 	 722315 NEW_ORLEANS/LAKEFRO_(ASOS)       LA US  3005  -9003     3
+STPMA    725090 BOSTON                           MA US  4237  -7103     9
+STPMD	 724060 BALT._WASH._INL._BALTIMORE       MD US  3918  -7666    45
+STPME 	 743890 GRAY                             ME US  4389  -7026   125
+STPMI 	 726390 ALPENA                           MI US  4507  -8357   211
+STPMN	 726580 DMINNEAPOLIS-ST._PAUL            MN US  4488  -9321   256
+STPMO	 724340 ST._LOUIS                        MO US  3875  -9038   174 
+STPMOB	 722230 MOBILE                           AL US  3068  -8825    66	 
+STPMS 	 722350 JACKSON                          MS US  3231  -9008    94
+STPMT	 727750 GREAT_FALLS                      MT US  4748 -11137  1115
+STPNC	 723060 RALEIGH/DURHAM                   NC US  3577  -7868    99
+STPND 	 727640 BISMARK                          ND US  4676 -10075   504
+STPNE 	 725500 OMAHA                            NE US  4130  -9590   299
+STPNJ	 999999 MOUNT_HOLLY_(ASOS)               NJ US  3993  -7483    16
+STPNV	 724880 RENO                             NV US  3950 -11978  1344
+STPNM 	 723650 ALBUQUERQUE                      NM US  3505 -10661  1631
+STPNY	 725180 ALBANY                           NY US  4275  -7380    88
+STPOH 	 725240 CLEVELAND                        OH US  4140  -8185   241
+STPOK 	 723530 OKLAHOMA_CITY                    OK US  3540 -09760   397
+STPOR 	 726980 PORTLAND                         OR US  4560 -12260     7
+STPPA 	 725128 STATE_COLLEGE                    PA US  4085  -7785   378
+STPSC 	 723100 COLUMBIA                         SC US  3395  -8111    64
+STPSD 	 726510 SIOUX_FALLS                      SD US  4356  -9673   435
+STPTN	 723340 MEMPHIS                          TN US  3505  -9000   101
+STPTX 	 722670 LUBBOCK                          TX US  3365 -10182   988
+STPTYS	 723260 KNOXVILLE/MORRISTOWN_NEXRAD      TN US  3617  -8340   437
+STPUT    725720 SALT_LAKE_CITY                   UT US  4076 -11196  1287
+STPVA    724010 RICHMOND/BYRD_FIELD              VA US  3750  -7733    54
+STPWA 	 727930 SEATTLE                          WA US  4745 -12230   130
+STPWI 	 726400 MILWAUKEE                        WI US  4295  -8790   214
+STPWV 	 724140 CHARLESTON                       WV US  3836  -8160   299
+STPWY	 725640 CHEYENNE/WARREN_AFB              WY US  4115 -10482  1872 

@@ -1,0 +1,116 @@
+
+                              NTRANS Procedures
+
+
+I. Functionality
+
+NTRANS provides the capability to save and restore multipanel information 
+by using NTRANS Procedure Files (NPFs).  The following information can be 
+saved and retrieved from an NPF for up to 36 Panels:
+
+        A. Total number panel columns and rows
+        B. Model source Metafile name 
+        C. Valid Time Set Flag
+        D. Panel location by column and row
+        E. Source Metafile group name
+
+The latest times are used for each NPF specified Metafile. 
+
+II.  Operation
+
+Save and restore functions are accessed by selecting the "Save Procedure File" 
+and "Restore Procedure File" under the "Procedures" pull down menu.
+
+The "Save Procedure File" function saves panel information to a user selected
+ASCII NPF for all of the panels loaded by the "Select Model" and "Select Group"
+GUIs. For example, suppose 2 panels are loaded into the display with panel 1 
+contains the GFS 1000-500 Thickness and Sea Level Pressure and panel 2 contains
+the GFS 500 Geopotential Height and Vorticity.  To save this information to an 
+NPF, click the "Save Procedure File" under "Procedures" in the menu bar which 
+invokes the "Save to NPF file" GUI.  This GUI allows the user to select an 
+existing NPF name or to specify a new NPF name.  The "Save to NPF file" GUI 
+operates in a similar fashion as the VGF open/save GUI.  NPFs are listed in the
+GUI by directory name.  Directory names are specified in the table, 
+GEMTBL/nmap/npf.nmap.
+
+The "Restore Procedure File" function loads the NTRANS Display with panel 
+information specified in an NPF. To retrieve a desired NPF click the 
+"Restore Procedure File" from the "Procedures" menu.  The "Restore from NPF 
+file" GUI is invoked which presents the same list of directories and NPFs as 
+the "Save from NPF file" GUI discussed above. Select the desired NPF from the 
+scroll list and click the "OK" button.  A "Restore Confirmation" GUI is invoked
+which lists the data source and dominant data for each loop.  Click the 
+"Accept" or "Cancel" button to fill the "Data Selection Window" GUI, or to 
+select another NPF, respectively.
+
+III.  NPF Creation, Editing and Error Processing
+
+The NPF is an editable ASCII file.  It is recommended that the "Save Procedure 
+File" menu button under "Procedures" be used to save procedures instead of 
+creating an NPF from scratch.  In this way the user is assured that the NPF 
+will have the correct format and operate as intended.  The "Save Procedure
+File" function automatically adds a prolog to the NPF including account name 
+and creation date.
+
+A user edited NPF has the potential for improper formatting and errors.
+Invalid NPF entries are handled according to the following rules.
+
+A.  Invalid entries in NPF are noted in "Error Messages" pop-up upon 
+    restore.
+
+B.  No attempt is made to restore a data set with invalid data 
+    source values. The panel will be remain blank as the rest of the valid
+    data sources are restored. 
+
+C.  If the Valid Time Set variable is set for an invalid data source entry,
+    the remaining source will load all frames in the saved group.
+
+IV. NPF Syntax
+
+The NPF has two columns.  The first column is a reserved keyword that indicates
+the panel attribute.  The second column is the value for that panel attribute.
+Keywords and their values are grouped by panel in the file. The exclamation 
+point, !, precedes comment lines in the file.
+
+The following table lists the reserved keywords and their valid values 
+specified in the Definitions section.
+
+    <reserved keyword>  	Valid value(s)
+-------------------------------------------------------------------
+
+    <total_columns>             C
+
+    <total_rows>                R
+
+    <panelN_source>	     	Data Source 
+
+    <panelN_validTimeSet>    	D
+
+    <panelN_column>      	W
+
+    <panelN_row>	       	X
+
+    <panelN_group>        	Metafile group name
+
+---------------------------------------------------------------------
+
+Definitions:
+
+    Data Source : Metafile model directory and Metafile File name
+                  e.g., gfs/gfs_[cycle_date]_[cycle_hour]_us
+    N : panel number, the order in which the files are to be loaded
+        (integer,  0 < N < 36 )
+    C : Total number of Columns in display (integer, 0 < C <= 6)
+    R : Total number or Rows in Display (integer, 0 < R <= 6)
+    D : Valid Set Time Variable number (integer, D > 0)
+    W : Panel column location in display (integer, 0 <= W < 6)
+    X : Panel row location in display (integer, 0 <= X < 6  )
+    Metafile group name: Name of model group in Metafile to load
+			 e.g. MSLP, 1000-500 THKN
+
+Note 1:
+-------
+	The <panelN_validTimeSet> will be set to zero by default. The entry 
+	with a value greater than 0 will be loaded first and any following
+	entries will load only those times matching those of the initial 
+	source.	

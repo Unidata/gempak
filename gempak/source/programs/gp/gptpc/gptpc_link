@@ -1,0 +1,4 @@
+$FC $FFLAGS $LDFLAGS  -o $OS_BIN/gptpc gptpc.f \
+	$OS_LIB/gptpc.a $GEMLIB $CGEMLIB $APPL \
+	$SYSLIB $GEMLIB -lm -lnetcdf -lz
+$RM *.o

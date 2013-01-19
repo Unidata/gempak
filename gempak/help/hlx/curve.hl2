@@ -1,0 +1,16 @@
+     CURVE
+
+     CURVE is a number corresponding to the method to be used to fit the 
+     curve.  Generally, CURVE should be set to 2.
+ 
+     The curve types currently available are:
+ 
+	1	-	piecewise straight line
+	2	-	cubic spline 
+	21	-	cubic spline with linear ends
+	22	-	cubic spline with parabolic ends
+	23	-	cubic spline with extrapolated ends
+
+     Note that types 2 and 21 are the same.  Types 22 and 23 produce
+     slightly different results at the ends of the splines.
+

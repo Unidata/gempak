@@ -1,0 +1,55 @@
+! CMM.BULL
+!
+! Location information for the following product:
+! Coded_Climatotogical_Monthly_Means.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+CSGM50 PGUM     GUAM                             GU US  1347  14478     0
+CSKA50 PTKK     TRUK/MOEN_FLT_S                  -- KA   746  15185     0
+CSKA50 PTKR     WSO_KOROR                        -- KA   726  13444     0
+CSKA50 PTTP     WSO_POHNPEI                      -- KA   694  15825     0
+CSKA50 PTYA     YAP_ISLAND                       -- KA   947  13808     0
+CSMH50 PKMR     WSO_MAJURO                       -- MH   705  17127     0
+CSUS51 KBOX     TAUNTON                          MA US  4195  -7112     0
+CSUS51 KBUF     BUFFALO                          NY US  4293  -7870     0
+CSUS52 KCAE     COLUMBIA                         SC US  3393  -8112     0
+CSUS52 KGSP     GREENVILLE/SPARTANBURG           SC US  3488  -8222     0
+CSUS53 KABR     ABERDEEN                         SD US  4545  -9841     0
+CSUS53 KARX     LA_CROSSE                        WI US  4381  -9119     0
+CSUS53 KDDC     DODGE_CITY                       KS US  3775  -9995     0
+CSUS53 KDLH     DULUTH                           MN US  4683  -9220     0
+CSUS53 KFSD     SIOUX_FALLS                      SD US  4358  -9672     0
+CSUS53 KGID     HASTINGS                         NE US  4063  -9837     0
+CSUS53 KGRB     GREEN_BAY                        WI US  4449  -8811     0
+CSUS53 KLBF     NORTH_PLATTE                     NE US  4113 -10069     0
+CSUS53 KLOT     CHICAGO                          IL US  4159  -8808     0
+CSUS53 KOAX     OMAHA/VALLEY                     NE US  4131  -9636     0
+CSUS53 KTOP     TOPEKA                           KS US  3906  -9562     0
+CSUS54 KAMA     AMARILLO                         TX US  3522 -10169     0
+CSUS54 KBMX     BIRMINGHAM                       AL US  3316  -8677     0
+CSUS54 KCRP     CORPUS_CHRISTI                   TX US  2777  -9750     0
+CSUS54 KEPZ     EL_PASO_TX/SANTA_TERESA          NM US  3187 -10669     0
+CSUS54 KFWD     DALLAS/FORT_WORTH                TX US  3283  -9729     0
+CSUS54 KJAN     JACKSON                          MS US  3231  -9008     0
+CSUS54 KLUB     LUBBOCK                          TX US  3352 -10187     0
+CSUS54 KLZK     LITTLE_ROCK                      AR US  3483  -9225     0
+CSUS54 KMAF     MIDLAND/ODESSA                   TX US  3194 -10218     0
+CSUS54 KMEG     MEMPHIS                          TN US  3513  -8980     0
+CSUS54 KOUN     NORMAN                           OK US  3522  -9745     0
+CSUS54 KSHV     SHREVEPORT                       LA US  3245  -9383     0
+CSUS54 KSJT     SAN_ANGELO                       TX US  3137 -10048     0
+CSUS54 KTSA     TULSA                            OK US  3613  -9586     0
+CSUS55 KABQ     ALBUQUERQUE                      NM US  3502 -10662     0
+CSUS55 KCYS     CHEYENNE                         WY US  4115 -10480     0
+CSUS55 KLKN     ELKO                             NV US  4086 -11573     0
+CSUS55 KPIH     POCATELLO/IDAHO_FALLS            ID US  4290 -11258     0
+CSUS55 KREV     RENO                             NV US  3956 -11979     0
+CSUS55 KRIW     RIVERTON                         WY US  4306 -10847     0
+CSUS55 KTWC     TUCSON                           AZ US  3222 -11094     0
+CSUS56 KEKA     EUREKA                           CA US  4079 -12416     0
+CSUS56 KOTX     SPOKANE                          WA US  4768 -11762     0
+CSUS56 KSEW     SEATTLE                          WA US  4768 -12225     0

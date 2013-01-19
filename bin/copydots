@@ -1,0 +1,14 @@
+#!/bin/csh
+
+if  ( $#argv < 1 )  then
+    echo "Must enter the version number as #.#.#"
+    exit
+endif
+
+cd
+
+cp .login .login_${1}
+cp .cshrc .cshrc_${1}
+cp .cshrc_data .cshrc_data_${1}
+cp .profile .profile_${1}
+cp .profile_data .profile_data_${1}

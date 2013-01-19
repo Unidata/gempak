@@ -1,0 +1,19 @@
+     STNFIL
+
+     STNFIL is the name of a file which contains station information which  
+     includes the character identifier, number, name, state, country, 
+     latitude, longitude and elevation for each station.
+   
+     All this information, except the station name, is stored as station 
+     header information in surface and sounding data files.
+   
+     The file SFSTNS.TBL is a surface station table.  
+     SNSTNS.TBL is an upper-air table.
+
+     Information in the files must be stored using the exact format used 
+     in current tables, since they are read with a FORTRAN FORMAT statement.  
+     They may be changed using a text editor.
+
+     WARNING: The variable STNFIL is used for both surface and upper-air
+     programs.  Care should be taken that the correct file is specified.
+

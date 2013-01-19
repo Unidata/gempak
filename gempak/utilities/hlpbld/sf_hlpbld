@@ -1,0 +1,28 @@
+export GEMPARM=$GEMPAK/parm
+export GEMPTXT=$GEMPAK/txt/programs
+
+hlpbld $GEMHLP/hlp SFCFIL
+###########################
+hlpbld $GEMHLP/hlp SFCHCK
+###########################
+hlpbld $GEMHLP/hlp SFDELT
+###########################
+hlpbld $GEMHLP/hlp SFDSL604
+###########################
+hlpbld $GEMHLP/hlp SFEDIT
+###########################
+hlpbld $GEMHLP/hlp SFGRAM
+###########################
+hlpbld $GEMHLP/hlp SFL604
+###########################
+hlpbld $GEMHLP/hlp SFLIST
+###########################
+hlpbld $GEMHLP/hlp SFMAP
+###########################
+hlpbld $GEMHLP/hlp SFMOD
+###########################
+hlpbld $GEMHLP/hlp SFSTNS
+###########################
+hlpbld $GEMHLP/hlp SFVGSF
+###########################
+echo ALL THE SF HLPs ARE BUILT.

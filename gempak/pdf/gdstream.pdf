@@ -1,0 +1,24 @@
+GDATTIM Grid date/time                                                          
+GLEVEL  Grid level                                                              
+GVCORD  Grid vertical coordinate                                                
+GVECT   Vector grid                                                             
+GDFILE  Grid file                                                               
+GAREA   Graphics area                                                           
+IJSKIP  Iskp;Istrt;Istp/Jskp;Jstrt;Jstp                                         
+SATFIL  Satellite image filename(s)                                             
+RADFIL  Radar image filename(s)                                                 
+IMCBAR  Color/ornt/anch/x;y/ln;wd/freq                                          
+LINE    Color/type/width/label/smth/fltr/scflg                                  
+MAP     Map color/dash/width/filter flag                                        
+MSCALE  fgc;bgc;mask/units/lat;hide/values/anch/x;y/ln;wd/freq|text_info|title  
+LATLON  Line color/dash/width/freq/inc/label/format                             
+TITLE   Title color/line/title                                                  
+PANEL   Panel loc/color/dash/width/regn                                         
+TEXT    Size/fnt/wdth/brdr/N-rot/just/hw flg                                    
+DEVICE  Device|name|x size;y size|color type                                    
+PROJ    Map projection/angles/margins|drop flag                                 
+CLEAR   Clear screen flag                                                       
+WIND    Wind symbol/siz/wdth/typ/hdsz                                           
+LUTFIL  Enhancement lookup table filename                                       
+STNPLT  Txtc/txt attr|marker attr|stnfil#col                                    
+STREAM  lines/arrows/stop/slow/scale                                            

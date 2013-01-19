@@ -1,0 +1,6 @@
+$CC $CFLAGS -c testnim.c 
+$FC $LDFLAGS -o $OS_BIN/testnim testnim.o \
+		$NMAPLIB $GEMLIB $CGEMLIB \
+		$APPL $SYSLIB $GEMLIB \
+		-lm -lnetcdf -lz
+$RM *.o

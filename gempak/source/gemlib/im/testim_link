@@ -1,0 +1,4 @@
+$FC $FFLAGS $LDFLAGS -o $OS_BIN/testim testim.f \
+	$GEMLIB $CGEMLIB $APPL $SYSLIB \
+	$OS_LIB/libnetcdf.a $OS_LIB/libz.a -lm
+$RM *.o

@@ -1,0 +1,162 @@
+'\"
+'\" $Id: gribtonc.1,v 1.1 1995/06/15 19:41:37 russ Exp $
+.TH GRIBTONC 1 "8 June 1995"
+.SH NAME
+gribtonc - GRIB to netCDF decoder
+.SH SYNOPSIS
+.HP
+.ft B
+gribtonc
+.nh
+\%[-l\ \fIlogpath\fP]
+\%[-v]
+\%[-t\ \fItimeout\fP]
+\%[-e\ \fIerrpath\fP]
+\%[-q\ \fIqspecs\fP]
+\%[\fICDL_path\fP]
+\%\fInetCDF_path\fP
+.hy
+.ft
+.SH DESCRIPTION
+.LP
+This program decodes GRIB products (embedded in WMO product envelopes) on
+the NWS High-Resolution Data Service (HRS) feed, writing the decoded
+products into a single netCDF output file, specified by
+.IR netCDF_path .
+In case the output netCDF file does not already exist, the
+.I CDL_path
+must be supplied to specify the structure for the desired netCDF file, which
+.B gribtonc
+creates. 
+GRIB products are converted to the units specified for the appropriate
+netCDF variable, if this differs from the units used for the GRIB parameter.
+A set of CDL files for all the model outputs appearing on the HRS data
+stream is provided with
+.B gribtonc
+for use in decoding HRS GRIB data.
+.LP
+.B gribtonc
+can run as a subprocess of the LDM \fBpqact\fP(1) program, receiving a stream
+of GRIB products from standard input and decoding them as they arrive.
+.B gribtonc
+can also be used as a standalone decoder, decoding products on its standard
+input into netCDF form, as specified by
+.I netCDF_file
+GRIB products that do not conform to the specified file structure
+(e.g. they are defined on a different grid or contain a grid parameter not
+included in the specified netCDF file) are skipped.
+.LP
+To use
+.B gribtonc
+from the LDM \fBpqact\fP(1) program requires adding entries  
+to the \fBpqact\fP configuration file
+that invoke 
+.B gribtonc
+on appropriate HRS products.  The PIPE action should be used in pattern-action
+entries.  The form of such an entry is:
+.HP
+  HRS	\fIpattern\fR		PIPE	\fIgribtonc-executable\fR
+				\fIgribtonc-options\fR
+				\fIcdl-file\fR	\fInetcdf-file\fR
+.LP
+where \fIpattern\fR is a regular expression pattern matching product
+identifiers of products that are to be decoded and written to the output
+file \fInetcdf-file\fR.  
+.LP
+Any directories that do not exist in \fInetcdf-file\fR
+will be created as needed, so date components, for example, may be part of
+the output file path, specified by using matched parts of the regular
+expression \fIpattern\fR.  In case the output \fInetcdf-file\fR does not
+already exist, it will be created from the CDL specification in the file
+specified by \fIcdl-file\fR.
+.LP
+The path of the executable for 
+.B gribtonc
+must be specified as the first
+argument to the PIPE command, and should be either an absolute path name or
+in a directory in the executable search path of \fBpqact\fP.
+.LP
+An example \fBpqact.conf\fP entry for decoding GRIB products from the ETA model as
+they appear on the HRS data stream is:
+.HP
+# ETA model on Lambert conformal grid to yymmddhh_eta.nc
+HRS	^Y.Q... KWBC (..)(..).*/mETA
+	PIPE	/usr/local/ldm/decoders/gribtonc
+	etc/eta.cdl
+	data/GRIB/(\1:yy)(\1:mm)\1\2_eta.nc
+.LP
+Since 
+.B gribtonc
+reads GRIB products from its standard input, it may be invoked independently
+of \fBpqact\fP(1) by using I/O redirection.
+.SH OPTIONS 
+.TP
+.BI "-l " logpath
+Log file pathname.
+The program uses Unidata's \fBulog\fP(3) package to write error and log
+messages.
+The default is to write to the \fBsyslogd\fP(8) daemon.  If this option is
+specified, however, then messages will be written to the file
+\fIlogpath\fP unless that pathname is "-", in which case all messages will be
+written to standard error.
+.TP
+.B -v
+Verbose logging.
+Informative messages (level \fBLOG_INFO\fP) are logged, including a line for
+each GRIB product decoded.
+By default, only messages of severity \fBLOG_NOTICE\fP and greater are
+logged.
+.TP
+.BI \-t " timeout"
+Timeout in seconds (default is 600).  If there has been no input available
+on stdin for the duration of the specified timeout, the program exits
+gracefully.
+.TP
+.BI \-e " errpath"
+If a GRIB product cannot be decoded, perhaps because it is truncated or
+otherwise corrupted, it is appended to this file.
+.TP
+.BI \-q " qspecs"
+Specification for how to expand so-called quasi-regular or thinned grids
+into rectangular grids.  This argument is a
+comma-delimited text string that specifies the method of interpolation used
+(currently \fBlin\fP for linear or \fBcub\fP for cubic), and the latitude
+and longitude
+increments in degrees for the resulting grid (e.g. \fBdlat=2.5,dlon=5.0\fP).
+.TP
+.B CDL_path
+The path name of a file to be used as a template for the netCDF file, if the
+netCDF file specified as output does not exist.  If the netCDF output file
+does exist, this argument is ignored.
+A path name relative to the directory
+specified by the LDM_ETCDIR environment variable may be used, but you must
+make sure this environment variable is defined in 
+.B gribtonc
+'s environment.
+.TP
+.B netCDF_path
+The path name of the netCDF output file.
+This may be specified as an absolute path name or (more
+typically) relative to the directory from which 
+.B gribtonc
+is invoked.
+Directories that do not exist in the path name of the output file
+will be created as needed.
+
+.SH EXAMPLE
+The command
+.RS +4
+.nf
+gribtonc -v -l- -q "lin,dlat=2.5,dlon=5.0" avn-x.cdl avn-x.nc < avn-x.wmo
+.fi
+.RE
+will decode the products in avn-x.wmo into the netCDF file
+avn-x.nc, creating the latter file if it does not already exist from
+the ASCII CDL template file avn-x.cdl.  If the data contain quasi-regular
+grids, they will be expanded to full regular grids on a 2.5 by 5.0 degree
+grid before being written into the output file.
+.SH "SEE ALSO"
+gribdump(1), netcdf(3), pqact(1), udunits(3), ulog(3)
+.SH DIAGNOSTICS
+Error messages and log messages are written to the log file.
+

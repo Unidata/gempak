@@ -1,0 +1,12 @@
+! TWO.BULL
+!
+! Location information for the following product:
+! Tropical_Weather_Outlook_and_Summary.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+ACCA62 TJSJ     SAN_JUAN                         PR US  1843  -6600     0
+ACPN50 PHFO     HONOLULU                         HI US  2129 -15780     0

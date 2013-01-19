@@ -1,0 +1,26 @@
+GPOINT
+GDATTIM
+GVCORD
+GLEVEL
+GFUNC
+GDFILE
+PTYPE
+PRBTYP                                                                                                                                  
+CTYPE   c
+TAXIS                                                                                                                                   
+YAXIS                                                                                                                                   
+BORDER  1                                                                                                                               
+LINE    2/2/3/1                                                                                                                         
+CINT    0                                                                                                                               
+HILO
+HLSYM
+FINT    0                                                                                                                               
+FLINE   10-20                                                                                                                           
+CLRBAR                                                                                                                                  
+TITLE   1                                                                                                                               
+CLEAR   YES                                                                                                                             
+SCALE   1                                                                                                                               
+PANEL   0                                                                                                                               
+DEVICE  xw                                                                                                                              
+TEXT    1/21//hw                                                                                                                        
+OUTPUT  T                                                                                                                               

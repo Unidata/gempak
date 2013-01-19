@@ -1,0 +1,139 @@
+
+
+                   Surface (SF) Library 
+
+
+The surface library subroutines allow the programmer to access
+GEMPAK surface data files.  Surface files contain meteorological
+observations from many locations for different times.  The library
+contains modules which create and open files and read or write
+data to these files. 
+
+There are three types of surface files: standard, climate, and ship
+files.  Standard files have stations as columns in the file and
+times in the rows.  Climate data sets have stations in rows and
+times in the columns.  Ship files, which are used for reports
+which are not from fixed locations, will have a single row with the
+station and time information in the same header.  The type of file 
+is determined by the subroutine used to create the file.  Note
+that there are two subroutines for each type of file; one sends all 
+the information about the file and the other reads a packing file
+to retrieve information about the parameters to be included in the
+file.  Each of the three types of files can be opened and the data 
+can be read using subroutines SF_OPNF and SF_RDAT.  SF_WDAT can be
+used to write to standard or climate files; SF_WSDD is used to 
+write to a ship file.  
+
+The following table shows the subroutines used with the three file
+types:
+
+     TYPE        CREATE       CREATE-PACK       WRITE
+     ----        ------       -----------       -----
+
+   standard      SF_CREF        SF_CRFP         SF_WDAT
+   climate       SF_CCLF        SF_CCLP         SF_WDAT
+   ship          SF_CSDF        SF_CSDP         SF_WSDD
+
+The subroutines to create or open a surface file return a file
+number which must be used in later subroutines to access the file.
+
+The file GEMPRM.PRM contains the maximum values for array
+dimensions when using GEMPAK subroutines.  A copy of this file has
+been included in the appendix for easy reference.  MMFILE is the 
+maximum number of files that can be open.  LLMXTM is the maximum 
+number of times that can be saved in a GEMPAK file.  The maximum 
+number of stations is LLSTFL and the maximum number of parameters 
+is MMPARM.
+
+After a file is opened, both the time and station must be selected
+before data can be read or written.  There are two groups of 
+subroutines that perform this function.
+
+If data from many stations are to be accessed for a particular
+time, the time can be set using SF_STIM.  The stations to be
+selected may be defined using LC_SARE or LC_UARE, which select
+stations using the GEMPAK variable, AREA.  In addition, a new   
+subroutine, SF_UARE, can be used to set a station search.  This
+subroutine will allow programs to execute faster if a single 
+station is to be found at a list of times.  The search subroutines
+may be called before or after SF_STIM.  Stations within the area 
+are returned using SF_SNXT.  The subroutines SF_SSTN, SF_STAT and
+SF_STST are included for compatibility with earlier versions of
+GEMPAK.  Note that calls to these subroutines will delete searches
+already defined.
+
+If data for many times at a particular station are required, the
+station may be selected using SF_TSTN.  The time may then be 
+defined using SF_TTIM.  Alternatively, times may be returned using
+SF_TNXT.
+
+All GEMPAK surface files contain information about the station in 
+station headers.  The station header names, contents, and the data 
+type returned from the SF library are:
+
+        STID    Station identifier            CHARACTER*4
+        STNM    Station number                INTEGER
+        SLAT    Station latitude              REAL
+        SLON    Station longitude             REAL
+        SELV    Station elevation in meters   REAL
+        STAT    State                         CHARACTER*2
+        COUN    Country                       CHARACTER*2
+	STD2	Extended station id           CHARACTER*4
+	SPRI	Station priority	      INTEGER
+
+Only SLAT and SLON are required for surface files.  The other header 
+variables are optional.
+
+The subroutines SF_FTIM and SF_FSTN can be used to find a time and
+station in a data set.  They will execute faster than the
+subroutines above, but can only be used with files where the times
+are in rows and the stations are in columns (or vice versa).  They 
+were designed to be used in real-time, data-ingest applications and
+should not be used for normal applications which use general
+surface files.
+
+The parameter packing file specifies the parameters and packing 
+information for a surface file.  Each line must contain the 
+following information separated by blanks or tabs:
+
+    parameter name    		CHAR*4
+    minimum data value		REAL
+    maximum data value		REAL
+    resolution			REAL
+
+The resolution should be an integral power of 10; otherwise the 
+next smaller resolution will be used ( e.g., res = 0.5 will become 
+0.1 ).  If the data are not to be packed, the minimum and maximum 
+data values and the resolution should not be included.  Note that
+either all of the parameters must have packing values or none of 
+them must have them.
+
+Some examples of subroutine sequences for accessing the data follow.
+
+A sequence of subroutines to retrieve surface data for many 
+stations at one time is:
+ 
+	Open the surface file			(SF_OPNF)
+	Define time				(SF_STIM)
+	Define the area search			(LC_SARE)
+	Loop:
+	   Get the next station			(SF_SNXT)
+	   Read the data			(SF_RDAT)
+	End loop
+	Close the file				(SF_CLOS)
+
+A sequence of subroutines to retrieve surface data for many 
+times at one station is:
+  
+	Initialize GEMPAK			(IN_BDTA)
+
+	Open the surface file			(SF_OPNF)
+	Get times in file                       (SF_GTIM)
+	Get times to use                        (TI_FIND)
+	Set the station				(SF_TSTN)
+	Loop:
+	   Get the next time			(SF_TTIM)
+	   Read the data			(SF_RDAT)
+	End loop
+	Close the file				(SF_CLOS)
+

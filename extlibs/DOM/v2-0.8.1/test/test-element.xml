@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!DOCTYPE test [
+   <!ATTLIST TEST
+   FOO2 (bar2|ciccia2) "ciccia2">
+]>
+<TEST xmlns:pippo="urn:cips.ciak.uk" xmlns="http://test.org/"
+      FOO1="bar1" FOO2="bar2" FOO3="bar3" FOO4="bar4" FOO5="bar5"
+      pippo:CIPPO1="lippo1" pippo:CIPPO2="lippo2"
+      pippo:CIPPO3="lippo3" pippo:CIPPO4="lippo4"
+      pippo:CIPPO5="lippo5">
+  <SUBTEST/>
+</TEST>

@@ -1,0 +1,15 @@
+SNFILE  Sounding data file                                                      
+AREA    Data area                                                               
+LINE    Color/type/width/label/smth/fltr/scflg                                  
+MARKER  Marker color/type/size/width/hw                                         
+BORDER  Background color/type/width                                             
+TITLE   Title color/line/title                                                  
+XAXIS   Xstrt/xstop/xinc/lbl;gln;tck                                            
+YAXIS   Ystrt/ystop/yinc/lbl;gln;tck                                            
+LEVELS  Vertical levels                                                         
+VCOORD  Vertical coordinate type                                                
+DATTIM  Date/time                                                               
+CLEAR   Clear screen flag                                                       
+DEVICE  Device|name|x size;y size|color type                                    
+PANEL   Panel loc/color/dash/width/regn                                         
+TEXT    Size/fnt/wdth/brdr/N-rot/just/hw flg                                    

@@ -1,0 +1,6 @@
+$CC $CFLAGS -c sigavgf.c
+$FC $LDFLAGS -o $OS_BIN/sigavgf sigavgf.o $OS_LIB/sigavgf.a \
+		$OS_LIB/ginitp_alt.o $OS_LIB/gendp_alt.o \
+		$CGEMLIB $GPLT $DEVICE $OS_LIB/nc.a \
+		$OS_LIB/gn.a $GEMLIB $CGEMLIB $GEMLIB -lm
+$RM *.o 

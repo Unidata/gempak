@@ -1,0 +1,24 @@
+! TPT.BULL
+!
+! Location information for the following product:
+! Temp./Precip/table_(National_and_International).
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+! Log:
+! A. Hardy/NCEP		11/04	separated out the lat/lons
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+ABCN1  KWBC     NCEP_NMC                         MD US  3881  -7687     0
+ABCN01 KWBC     NCEP_NMC                         MD US  3881  -7687     0
+ABNA26 KWBC     NCEP_NMC                         MD US  3881  -7687     0
+ABUS23 KWBC     NCEP_NMC                         MD US  3841  -7727     0
+ABUS24 KWBC     NCEP_NMC                         MD US  3861  -7707     0
+ABUS25 KWBC     NCEP_NMC                         MD US  3881  -7687     0
+ABUS64 KMEG     MEMPHIS                          TN US  3513  -8980     0
+ABXX6  KWBC     NCEP_NMC                         MD US  3881  -7687     0
+ABXX06 KWBC     NCEP_NMC                         MD US  3881  -7687     0
+ABXX7  KWBC     NCEP_NMC                         MD US  3901  -7667     0
+ABXX07 KWBC     NCEP_NMC                         MD US  3901  -7667     0

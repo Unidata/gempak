@@ -1,0 +1,39 @@
+! TCP.BULL
+!
+! Location information for the following product:
+! Public_Tropical_Cyclone_Advisory.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+! Log:
+! A. Hardy/NCEP		11/04	separated out the lat/lons
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+WTCA40 TJSJ     SAN_JUAN                         PR US  1823  -6580     0
+WTCA41 TJSJ     SAN_JUAN                         PR US  1843  -6600     0
+WTCA42 TJSJ     SAN_JUAN                         PR US  1863  -6620     0
+WTCA43 TJSJ     SAN_JUAN                         PR US  1873  -6640     0
+WTCA44 TJSJ     SAN_JUAN                         PR US  1883  -6660     0
+WTCA45 TJSJ     SAN_JUAN                         PR US  1903  -6680     0
+WTPA31 PHFO     HONOLULU                         HI US  2130 -15782     0
+WTPA32 PHFO     HONOLULU                         HI US  2150 -15802     0
+WTPA33 PHFO     HONOLULU                         HI US  2170 -15822     0
+WTPA34 PHFO     HONOLULU                         HI US  2190 -15842     0
+WTPA35 PHFO     HONOLULU                         HI US  2210 -15862     0
+WTPQ31 PGUM     GUAM                             GU US  1347  14478     0
+WTPQ32 PGUM     GUAM                             GU US  1367  14498     0
+WTPQ33 PGUM     GUAM                             GU US  1387  14518     0
+WTPQ34 PGUM     GUAM                             GU US  1407  14538     0
+WTPQ35 PGUM     GUAM                             GU US  1427  14558     0
+WTNT31 KNHC     MIAMI/TROPICAL_PREDICTION_CENTER FL US  2570  -8038     0
+WTNT32 KNHC     MIAMI/TROPICAL_PREDICTION_CENTER FL US  2600  -8038     0
+WTNT33 KNHC     MIAMI/TROPICAL_PREDICTION_CENTER FL US  2630  -8038     0
+WTNT34 KNHC     MIAMI/TROPICAL_PREDICTION_CENTER FL US  2660  -8038     0
+WTNT35 KNHC     MIAMI/TROPICAL_PREDICTION_CENTER FL US  2690  -8038     0
+WTPZ31 KNHC     MIAMI/TROPICAL_PREDICTION_CENTER FL US  2570  -8138     0
+WTPZ32 KNHC     MIAMI/TROPICAL_PREDICTION_CENTER FL US  2600  -8138     0
+WTPZ33 KNHC     MIAMI/TROPICAL_PREDICTION_CENTER FL US  2630  -8138     0
+WTPZ34 KNHC     MIAMI/TROPICAL_PREDICTION_CENTER FL US  2660  -8138     0
+WTPZ35 KNHC     MIAMI/TROPICAL_PREDICTION_CENTER FL US  2690  -8138     0

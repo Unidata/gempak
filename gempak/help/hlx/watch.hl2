@@ -1,0 +1,43 @@
+     WATCH
+
+     WATCH is the ending valid time for the watches, the colors for
+     the severe thunderstorm and tornado watches and a flag for plotting
+     the start and stop times for the watch on the map.
+
+	End time|Watch colors|Watch box time flag;Status line time flag
+	     |Watch box number flag;Status line number flag|Color code
+	     |Most recent status line flag
+
+     Watches that are valid at the ending time will be plotted on the map.
+     The ending time is given as a GEMPAK date/time string. Any missing
+     items from the string will be filled in by the system time. The
+     ending time may also be LAST and ALL. LAST will use the system time
+     and plot all current watches. ALL will plot all the watches in the
+     data files, whether they are active, cancelled or expired.
+
+     If a status message was issued for the watch, a line will be plotted
+     dividing the expired portion of the watch from the active portion.
+
+     The colors are separated by a semi-colon.  If any color is set to 0,
+     that type of line will not be plotted.  If any color is missing, a 
+     default will be used.  Defaults are cyan for thunderstorm, red for
+     tornado, and yellow for status line.
+
+     The time flag is YES or NO  for both watch box and status line. It 
+     controls whether or not to plot the start and stop times of the watch 
+     on the map, or the start time of the status line. The default is NO.
+
+     The number flag is YES or NO and controls whether or not to plot
+     the watch number for watch box or status line. The default is NO.
+     
+     If the time or number flag is YES for watch box and missing for status
+     line, YES will be assigned to status line.
+
+     The color code flag is YES or NO, if YES, the colors are associated 
+     with the last digit of the watch number, otherwise, based on the
+     weather type ( tornado or thunderstorm ).
+
+     The most recent status line flag is YES or NO and controls whether 
+     or not to only plot the most recent status line. The default is NO.
+
+

@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE test PUBLIC "-//pippo//pluto//paperino" "test.dtd" [
+  <!ENTITY FOO1 "bar1">
+  <!ENTITY FOO2 "bar2">
+  <!ENTITY FOO3 "bar3">
+  <!ENTITY FOO4 "bar4">
+  <!ENTITY FOO5 "bar5">
+  <!ENTITY FOO6 "bar6">
+  <!ENTITY FOO7 "bar7">
+  <!ENTITY FOO8 "bar8">
+  <!ENTITY FOO9 "bar9">
+  <!ENTITY FOO10 "bar10">
+  <!ENTITY FOO11 "bar11">
+  <!ENTITY FOO12 "bar12">
+  <!ENTITY FOO13 "bar13">
+  <!ENTITY FOO14 "bar14">
+  <!ENTITY FOO15 "bar15">
+  <!ENTITY FOO16 "bar16">
+  <!ENTITY FOO17 "bar17">
+  <!ENTITY FOO18 "bar18">
+  <!ENTITY FOO19 "bar19">
+  <!ENTITY FOO20 "bar20">
+  <!ENTITY FOO21 "bar21">
+  <!ENTITY FOO22 "bar22">
+  <!ENTITY FOO23 "bar23">
+  <!ENTITY FOO24 "bar24">
+  <!ENTITY FOO25 "bar25">
+]>
+
+<TEST xmlns:pippo="urn:cips.ciak.uk" xmlns="http://test.org/"
+      FOO1="bar1" FOO2="bar2" FOO3="bar3" FOO4="bar4" FOO5="bar5" FOO6="bar6" FOO7="bar7" 
+      FOO8="bar8" FOO9="bar9" FOO10="bar10" FOO11="bar11" FOO12="bar12" FOO13="bar13"
+      FOO14="bar14" FOO15="bar15" FOO16="bar16" FOO17="bar17" FOO18="bar18" FOO19="bar19"
+      FOO20="bar20" FOO21="bar21" FOO22="bar22" FOO23="bar23" FOO24="bar24" FOO25="bar25">
+</TEST>

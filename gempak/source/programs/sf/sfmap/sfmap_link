@@ -1,0 +1,5 @@
+$FC $FFLAGS $LDFLAGS -o $OS_BIN/sfmap sfmap.f \
+	$OS_LIB/sfmap.a \
+	$GEMLIB $APPL $SYSLIB $CGEMLIB \
+	-lm -lnetcdf -lz
+$RM *.o

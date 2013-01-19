@@ -1,0 +1,13 @@
+     GBTBLS
+
+     GBTBLS allows for specification of the GRIB decoding tables.
+     The format is GBTBLS=W;N;V;C, where W is the WMO decoding table
+     for parameters 1-127, N is the NCEP decoding table for 
+     parameters 128-255, V is the vertical coordinate table and
+     C is the originating center table.
+     The defaults are 
+	$GEMTBL/grid/wmogribX.tbl, 
+	$GEMTBL/grid/ncepgribX.tbl,
+	$GEMTBL/grid/vcrdgribX.tbl,
+	$GEMTBL/grid/cntrgribX.tbl,
+     where X is the version number of the GRIB message.

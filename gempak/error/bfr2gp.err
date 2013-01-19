@@ -1,0 +1,44 @@
+!	BFR2GP error file 
+!
++3	! Message rejected by parameter screening.
++2	! No parameters for the surface data file.
++1	! End of input file -- all done.
+-1	! Fatal error initializing TAE.
+-2	! Fatal error reading TAE parameters.
+-3	! Missing station lat/lon.
+-4	! Missing BUFR data and/or table file name.
+-5	! BUFR file could not be opened.
+-6	! Sounding parameters' list could not be made.
+-7	! Existing file sounding parms differ from those requested.
+-8	! Cannot open/create the GEMPAK sounding data file.
+-9	! Surface parameters' list could not be made.
+-10	! Existing file surface parms differ from those requested.
+-11	! Cannot open/create the GEMPAK surface data file.
+-12	! No station location information.
+-13	! BUFR file read failed.
+-14	! Surface data read failed.
+-15	! Not enough replicated data.
+-16	! Sounding data read failed.
+-17	! Number of sounding levels varies with parameters.
+-18	! Too many sounding parms.
+-19	! Too many surface parms.
+-20	! SFPARM count does not match requested number.
+-21	! SNPARM count does not match requested number.
+-22	! Cannot create a GEMPAK time for the data.
+-23	! Sounding data GEMPAK time cannot be set.
+-24	! Surface data GEMPAK time cannot be set.
+-25	! Sounding station cannot be set.
+-26	! Surface station cannot be set.
+-27	! Data array overflow.
+-28	! No output files are open.
+-29	! Existing sounding file needs to be unmerged type.
+-30	! Cannot create unmerged sounding file.
+-31	! Cannot write mandatory level data.
+-32	! Cannot write significant level data.
+-33	! @ is not valid for setting subset area filter.
+-34	! Standard UPA sounding parameters were not given correctly.
+-35	! There must be 7 UPA sounding parameters for unmerged file.
+-36	! Significant-level wind data cannot be on both p and z.
+-37	! Invalid input for SFFSRC.
+-38	! Not all screening parameters were found.
+-39	! Too many sounding levels.

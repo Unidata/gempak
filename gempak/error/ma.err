@@ -1,0 +1,17 @@
+!	MA error messages
+!
+  10	! Bad wind speed value: !AS   	
+   9	! Bad minutes value: !AS
+   8	! Bad hour value: !AS
+   7	! Bad day value: !AS
+   6	! Bad month value: !AS
+   5	! Bad year value: !AS
+   4	! Report date/time problem: !AS
+   3	! CMAN station !AS not in marine station table
+   2	! Great Lakes Buoy !AS not in station table
+   1	! !AS
+  -1	! Bad report length: !AS
+  -2	! Bad report - rejected: !AS
+  -3	! Bad group - reject rest of report: !AS
+  -4	! Bad station id: !AS
+  -5	! Format error in wave field: !AS

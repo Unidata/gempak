@@ -1,0 +1,31 @@
+! TPC.TBL
+!
+! This table contains tropical and Carribean country names.
+!
+! The format for the file is given below, with the number of characters in
+! parentheses.
+!
+! Log:
+! T. Piper/SAIC		01/07	Created
+!-------------------------------------------------------------------
+!
+!ALPHA   FIPS   NAME                             ST CO   LAT    LON  ELV PRI
+!(8)     (6)    (32)                            (2)(2)   (5)    (6)   (5)(2)
+!
+PR        72    Puerto Rico                      -- PR  1890  -6500 00000 00
+BA       101    Bahamas                          -- BA  2450  -7380 00000 00
+BE       102    Bermuda                          -- BE  3200  -6370 00000 00
+BH       103    Belize                           -- BH  1710  -8850 00000 00
+CO       104    Colombia                         -- CO   890  -7430 00000 00
+CS       105    Costa Rica                       -- CS   990  -8400 00000 00
+CU       106    Cuba                             -- CU  2200  -7930 00000 00
+DR       107    Dominican Rep.                   -- DR  1870  -6950 00000 00
+ES       108    El Salvador                      -- ES  1378  -8890 00000 00
+GU       109    Guatemala                        -- GU  1550  -9020 00000 00
+HA       110    Haiti                            -- HA  1930  -7250 00000 00
+HO       111    Honduras                         -- HO  1490  -8670 00000 00
+JM       112    Jamaica                          -- JM  1750  -7700 00000 00
+MX       113    Mexico                           -- MX  2350 -10030 00000 00
+NK       114    Nicaragua                        -- NK  1270  -8530 00000 00
+PM       115    Panama                           -- PM   850  -8100 00000 00
+VN       116    Venezuela                        -- VN   900  -6750 00000 00 

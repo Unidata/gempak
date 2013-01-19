@@ -1,0 +1,113 @@
+#!/bin/csh
+#
+# EZTHGT.WIND
+#
+# This script will plot a time-height section of wind freezing level and rh.
+#
+# The location for the time-height section may be chosen by (1) entering the
+# station ID for a station; or (2) graphically selecting the location using
+# the mouse on a map/field window that has already been generated using a
+# different EZ script.
+#
+# The user must enter the location, as above.
+#
+#       Syntax:   ezthgt.wind [station_id]
+#
+#       Examples: ezthgt.wind ( The script will prompt for station ID
+#                               or graphical selection. )
+#                 ezthgt.wind GLD                                               
+#
+##
+# Log:
+# B. Colman/SEA		 1994
+# R. Miller/COMET	 1994
+# S. Jacobs/NMC         10/94   Clean up
+#
+
+if ( ${1}x == x ) then
+   echo " GEMPAK shell script to plot a time-height section from model "
+   echo " grids.  The user has two options on selecting the location of "
+   echo " the time-height section.  The user can enter the station ID when"
+   echo " prompted.  Or first display a map/fields using another script "
+   echo " then run this script and select a point on the map using the"
+   echo " mouse cursor. "
+
+   echo " "
+   echo " Do you want to specify the location by 1) station or "
+   echo " 2) graphically or 3) use previous selection? "
+   set ans=$<
+
+   if $ans == 1 then
+      echo " "
+      echo " Enter the station: \c"
+      set stn=$<
+   else
+      set stn=""
+   endif
+else
+   set stn  = $1
+endif
+
+# The variable stn is empty if the user wants to specify the location 
+# graphically.
+
+if ( $ans != 3 ) then
+
+    if ( ${stn}x == x ) then
+	echo " "
+	echo " Choose location on the screen using the mouse one the + appears."
+	echo " "
+
+	gdplot << EOD
+	cursor gpoint
+	exit
+EOD
+
+#   Otherwise, just set the GPOINT to the station selected.
+
+    else
+
+	gdplot << EODD
+	GPOINT = ${stn}
+	exit
+EODD
+
+    endif
+
+endif
+
+# Source the file called settings.  This file contains commands to set
+# environment variables for the model name and device driver.
+
+source settings
+
+gdthgt << EOF
+BORDER  = 1=white
+CINT    = 10
+CLEAR   = yes
+DEVICE  = $dev_thgt
+GDATTIM = f00-f51-6
+GFUNC   = relh
+GVCORD  = pres
+GVECT   = wnd 
+WIND    = bk5
+LINE    = 3/1/2
+PTYPE   = log
+SCALE   = 0
+TAXIS   = r
+TITLE   = 1/-2/TIME VS. HEIGHT SERIES AT #
+WIND    = 
+YAXIS   = 1020/250
+r
+
+GFUNC   = tmpc
+CLEAR   = no
+CINT    = 100/0
+LINE    = 2/3/4
+SCALE   = 0
+GVECT   =
+TITLE   = 1/-1/ ^ $model RH, FREEZING LEVEL AND WINDS
+r
+
+ex
+EOF

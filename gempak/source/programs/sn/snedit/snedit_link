@@ -1,0 +1,4 @@
+$FC $FFLAGS $LDFLAGS  -o $OS_BIN/snedit snedit.f \
+	$OS_LIB/snedit.a \
+	$GEMLIB $APPL $SYSLIB $CGEMLIB
+$RM *.o

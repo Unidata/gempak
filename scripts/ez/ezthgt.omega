@@ -1,0 +1,112 @@
+#!/bin/csh
+#
+# EZTHGT.OMEGA
+#
+# This script will plot a time-height section of omega and zero-divergence.
+#
+# The location for the time-height section may be chosen by (1) entering the
+# station ID for a station; or (2) graphically selecting the location using
+# the mouse on a map/field window that has already been generated using a
+# different EZ script.
+#
+# The user must enter the location, as above.
+#
+#       Syntax:   ezthgt.omega [station_id]
+#
+#       Examples: ezthgt.omega ( The script will prompt for station ID
+#                                or graphical selection. )
+#                 ezthgt.omega GLD
+#
+##
+# Log:
+# B. Colman/SEA		 1994
+# R. Miller/COMET	 1994
+# S. Jacobs/NMC		10/94	Clean up
+#
+
+if ( ${1}x == x ) then
+   echo " GEMPAK shell script to plot a time-height section from model "
+   echo " grids.  The user has two options on selecting the location of "
+   echo " the time-height section.  The user can enter the station ID when"
+   echo " prompted.  Or first display a map/fields using another script "
+   echo " then run this script and select a point on the map using the"
+   echo " mouse cursor. "
+
+   echo " "
+   echo " Do you want to specify the location by 1) station or "
+   echo " 2) graphically or 3) use previous selection? "
+   set ans=$<
+
+   if $ans == 1 then
+      echo " "
+      echo " Enter the station: \c"
+      set stn=$<
+   else
+      set stn=""
+   endif
+else
+   set stn  = $1
+endif
+
+# The variable stn is empty if the user wants to specify the location 
+# graphically.
+
+if ( $ans != 3 ) then
+
+    if ( ${stn}x == x ) then
+	echo " "
+	echo " Choose location on the screen using the mouse one the + appears."
+	echo " "
+
+	gdplot << EOD
+	cursor gpoint
+	exit
+EOD
+
+#   Otherwise, just set the GPOINT to the station selected.
+
+    else
+
+	gdplot << EODD
+	GPOINT = ${stn}
+	exit
+EODD
+
+    endif
+
+endif
+
+# Source the file called settings.  This file contains commands to set
+# environment variables for the model name and device driver.
+
+source settings
+
+gdthgt << EOF
+BORDER  = 1=white
+CINT    = 1
+CLEAR   = yes
+DEVICE  = $dev_thgt
+GDATTIM = f00-f48
+GFUNC   = omeg
+GVCORD  = pres
+GVECT   = wnd
+LINE    = 5/-2
+PTYPE   = log
+SCALE   = 3/0
+TAXIS   = R
+TITLE   = 1=white/-2/ZERO DIV AND OMEGA (TIME VS. HEIGHT) AT #
+WIND    = bk1=white
+YAXIS   = 1020/250
+r
+
+GFUNC   = div(wnd)
+CLEAR   = no
+CINT    = -2;0;2
+LINE    = 3/-2/3
+SCALE   = 5
+GVECT   = 
+TITLE   = 1=white/-1/^  $model
+r
+
+ex
+EOF

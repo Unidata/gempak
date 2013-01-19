@@ -1,0 +1,36 @@
+!	GB error file
+!
+ +3	! GRIB message is not version 2.
+ +2     ! GRIB grid is not grid point data.
+ +1	! No GEMPAK parameter name defined for this grid.
+ -1	! No GRIB record was found.
+ -2	! GRIB record does not start on half-word boundary.
+ -3 	! Read error or end of file.
+ -4	! Invalid flag for GDS or BMS.
+ -5	! Table file could not be opened.
+ -6	! This version of GRIB is not supported.
+ -7	! Invalid parameter or vert coord number.
+ -8     ! GRIB section !AS is too long.
+ -9	! GRIB time to GEMPAK time conversion error.
+-10     ! GRIB version # !AS is not supported.
+-11	! GRIB with !AS not yet supported.
+-12     ! Constant grid = !AS is not stored.
+-13	! Error opening originating center table file !AS.
+-14	! Could not find entry !AS in originating center table.
+-15     ! Error opening/closing GRIB file.
+-16     ! EOF on input GRIB file
+-18	! Invalid bit-map entry specified
+-19	! Unrecognized Grid Definition Template number !AS.
+-25	! Error unpacking GRIB2 metadata.
+-26	! Could not allocate memory for GRIB2 message.
+-27	! Unrecognized Product Definition Template number !AS.
+-28	! Not a valid GRIB2 message.
+-29	! Could not open vertical coordinate table file !AS.
+-30	! Could not find entry !AS in vertical coordinate table.
+-31	! Could not open parameter table file !AS.
+-32	! Could not find entry !AS in parameter table.
+-33	! Error unpacking GRIB2 data field.
+-34     ! Could not convert GRIB2 message to GEMPAK grid.
+-35     ! Grid projection !AS not recognized
+-36     ! Grid projection !AS is not expected
+-37     ! Invalid navigation information.

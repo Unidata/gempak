@@ -1,0 +1,57 @@
+! $Id: Afos_res,v 1.4 1994/10/07 14:16:43 chang Exp chang $
+!
+! Window size and location
+!
+Afos_res.geometry:               1145x980+112+0
+
+!*background:  #000000000000
+!*foreground:  #FFFFFFFFFFFF
+Afos_res*background:  grey75
+Afos_res*foreground:  black
+*fontList:    -Adobe-Courier-Bold-R-Normal--14-100-100-100-M-90-ISO8859-1
+!*topShadowColor:         white
+!*form.width:              915
+!*form.height:             640 
+!*main_shell.x			  0
+!*main_shell.y                   0
+!*text_program:            /hpexport/disk01/desj/afos/comms/bin/alarm_text
+!*color_dir:               /hpexport/disk01/desj/afos/utils
+!*program_dir:             /hpexport/disk07/nawipsdv/afos/afos_graphics/bin
+!*program_dir:             /hpexport/disk01/desj/afos/bin
+!*prod_dir:                /hpexport/disk03/nadata/data/products
+!*graph_dir:               /hpexport/disk03/nadata/data/graphics
+!*obs_dir:                 /hpexport/disk03/nadata/data/surface_obs
+!*text_program:            /usr/apps/comms/bin/alarm_text
+!*color_dir:               /usr/apps/afos/utils
+!*program_dir:             /usr/apps/afos/bin
+!*prod_dir:                /usr/data/products
+!*graph_dir:               /usr/data/graphics
+!*obs_dir:                 /usr/data/surface_obs
+
+!*main_shell.title:        AFOS Data Display Program
+Afos_res*text_shell.geometry:     980x650+124+65
+Afos_res*text_shell.title:        AFOS Text Product Selection
+Afos_res*animate_shell.geometry:  310x210
+Afos_res*animate_shell.title:     Animate Rate
+Afos_res*fileselection1.geometry  200x200
+!*color_form*XmPushButton.width:   170
+!*color_form*XmPushButton.height:  50
+!*color_form*XmLabel.width:        190
+!*color_form*XmLabel.height:       90
+!*color_shell.geometry:            840x760+100+100
+!*color_shell.title:               Colors
+
+!*colrbarRc.spacing:		15
+!*colrbarRc.marginWidth:		15
+Afos_res*form1.title:			Select Text 
+Afos_res*form1*geometry:	   	50x100+0+0	
+!*form1*y:			0
+!@*form2*x:			900	
+!*form2*y:			800	
+
+!
+! Selection popup
+!
+Afos_res*afos_select*form1.defaultPosition: False
+Afos_res*afos_select*form1.x: 123
+Afos_res*afos_select*form1.y: 397

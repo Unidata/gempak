@@ -1,0 +1,103 @@
+! WOUDEF.TBL
+!
+! This table contains a list of preference settings for WOUPDT.  
+!
+! For each entry, the first string is the tag of the preference and the
+! second string is the value of the preference.
+!
+! The maximum number of chars for any preference tag   (TAG) is 25.
+! The maximum number of chars for any preference value (VAL) is 119.
+!
+!!
+! Log:
+! A. Hardy/NCEP		 7/03   add entry for WOUPDT 
+! A. Hardy/NCEP		 1/04   add entries for WOUi and update VTEC line
+! A. Hardy/NCEP		 4/04	add UPDT_WOU_ACT_FNL;turned off VTEC 
+! A. Hardy/NCEP		 4/04	add UPDT_WOU_FNL_TIM;rm UPDT_WOU_ACT_FNL
+! G. Grosshans/SPC	11/04   changed *_USE_VTEC from '0' -> '2'
+! G. Grosshans/SPC	02/05	added FINL_WOU_PROD_CODE;modified the file 
+!				search;changed WOU_CNL_PLUS_MIN 5 ->15
+! A. Hardy/NCEP		 3/05	add FINL_WOU_PROD_CODE_CAN,FINL_WOU_PROD_CODE_EXP
+!				and UPDT_UNIQUE_MINS
+! A. Hardy/NCEP		 4/05	add UPDT_WCP and WCP_VGF
+! F. J. Yen/NCEP	 1/07	add AMD_SAW
+! F. J. Yen/NCEP	 4/07	changed *PROD_CODEs to O;UPDT_UNIQUE_MINS to 50
+!----------------------------------------------------------------------------
+!
+!TAG                       LABEL ITEMS
+!(25)                         (119)     
+!
+! AMD_SAW determines if an amended SAW should be created if there is an 
+! extension in time.
+!
+AMD_SAW                    OFF
+!
+! WOU****  inputs for number of minutes to create a WOUPDT cancel message
+! WOUPLUS - number of minutes after the watch expires to issue
+! a cancellation message.
+!
+WOU_CNL_PLUS_MIN           15
+!
+! WOU_SRCH is the tag for the hierarchy of search patterns for a file.
+!
+!WOU_SRCH		   ./%N:$NCDESK/config/%N:$GEMTBL/config/%N
+WOU_SRCH		   ./%N:/NAWIPS/spclead/PRODUCTS/%N:/NAWIPS/spcleadll/PRODUCTS/%N:/NAWIPS/spcmeso/PRODUCTS/%N:/NAWIPS/spcmeso2/PRODUCTS/%N
+!
+! INIT_WOU_USE_VTEC and UPDT_WOU_USE_VTEC are the tags for setting 
+! whether or not the VTEC line appears in the text product. 
+!
+!		0 = No VTEC line to be used  
+!		1 - Use VTEC - WITHOUT the product type defn. code
+!		2 - Use VTEC - WITH the product type defn. code.
+!
+INIT_WOU_USE_VTEC           2
+UPDT_WOU_USE_VTEC           2
+!
+! INIT_WOU_PROD_CODE and UPDT_WOU_PROD_CODE are tags for which product
+! definition code to use in the new form of VTEC. These codes are defined
+! in NWS Directive 10-1703.
+!
+!       O - Operational products
+!	T - Test Products
+!       X - Experimental VTEC in an operational product
+!       E - Experimental product
+!
+INIT_WOU_PROD_CODE          O
+UPDT_WOU_PROD_CODE          O
+FINL_WOU_PROD_CODE_CAN      O
+FINL_WOU_PROD_CODE_EXP      O
+!
+! INIT_WOU_ACTION is the VTEC action code.
+!
+INIT_WOU_ACTION             NEW
+!
+! INIT_WOU_OFFID is the VTEC originating office id.
+!
+INIT_WOU_OFFID              KWNS
+UPDT_WOU_OFFID              KWNS
+!
+! INIT_WOU_SIGCD is the VTEC significance code.
+!
+INIT_WOU_SIGCD              A
+UPDT_WOU_SIGCD              A
+!
+! UPDT_WOU_FNL_TIM is the final WOU update time difference. This time
+! represents how many minutes before the end of the watch's expiration
+! time to determine which action code, CAN or EXP, to use.
+!
+UPDT_WOU_FNL_TIM            15
+!
+! UPDT_UNIQUE_MINS is the number of minutes difference between the previous
+! decoded WOU and the time of the current run of WOUPDT. 
+! 
+UPDT_UNIQUE_MINS            50
+!
+! UPDT_WCP determines if the Watch Corner Points text product will
+! be created, it's file name is KWNSWCPSPC.
+!
+UPDT_WCP                    OFF
+!
+! WCP_VGF turns on or off the creation of the rebundled VG file, KWNSWCPSPC.vgf.
+!
+WCP_VGF                     FALSE
+!

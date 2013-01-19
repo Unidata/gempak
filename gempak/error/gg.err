@@ -1,0 +1,40 @@
+!	GG error file
+!
+ +9	! Maximum number of counties in WCN exceeded in !AS.
+ +8	! Maximum number of active or WOU counties exceeded.
+ +7	! Maximun number of action codes in sacod exceeded.
+ +6	! Reached maximum number of watches to be plotted in !AS.
+ +5	! Reached maximum number of watches (NW).
+ +4	! Error in polygon interpolation for GGTCMG.
+ +3	! Reached maximum number of warnings.
+ +2	! Reached maximum number of markers to be plotted in !AS.
+ +1	! No part of image viewable within graphics area.
+ -1	! Invalid mode set.
+ -2	! Area !AS is an invalid graphics area.
+ -3	! Error initializing GEMPLT.
+ -4	! Error in graph mode setup.
+ -5	! Projection !AS is invalid.
+ -6	! Device !AS is invalid.
+ -7	! No map drawn.
+ -8	! Margins requested with NM.
+ -9	! Invalid region specified.
+-10	! Panel not recognized.
+-11	! Error in setting view.
+-12     ! GFUNC or SNPARM must be temperature for Skew T.
+-13	! Error drawing lat/lon grid.
+-14	! Navigation type !AS is invalid.
+-15	! Image file !AS is invalid.
+-16	! Invalid date in the image file.
+-17	! Invalid VGF file !AS.
+-18	! Error in clearing panel.
+-19	! Error in processing bound !AS.
+-20	! Error in finding array of watch numbers.
+-21	! GG_WLSO reached max no. of vertices when calling CLO_BLASSO.
+-22	! GG_WLSO failed to obtain union when calling CLO_BLASSO.
+-23     ! Reached maximum number of counties to obtain union.
+-24	! Error from GG_WWTP, INSPECT WOU-FINAL.
+-25	! Error from GG_WWTP, unable to open output WOU file.
+-26	! Invalid SAW amendment letter: !AS.
+-27	! No prior SAW found for watch !AS.
+-28	! Error in finding watch number in SAW:  !AS.
+-29	! Error in finding expiration time in SAW:  !AS.

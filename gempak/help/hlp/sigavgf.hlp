@@ -1,0 +1,79 @@
+
+ SIGAVGF
+
+    SIGAVGF reads a High Level (SWH) or Mid Level (SWM) Significant
+    Weather ASCII file and encodes the information into a VG file.
+
+ INPUT PARAMETERS
+
+    SIGAVGF  YYMMDD/HHNN FF infile.name
+
+
+    SIGAVGF        Program name
+    YYMMDD/HHNN    GEMPAK date/time
+                      YY - year, MM - month, DD - day, HH - hour,
+                      NN - minutes
+    FF             Valid forecast hour (must be 18 or 24)
+    infile.name    Input file name
+
+ PROGRAM DESCRIPTION
+
+    SIGAVGF reads a single ASCII file using the UKMET browsable dataset
+    format (see "Representing WAFS Significant Weather (SIGWX) Data in
+    BUFR", version 2.3, November 2004, for documentation).  The output
+    VG files use the following naming conventions, where date/time,
+    forecast hour and data type define the file name:
+
+                ???_YYYYMMDDHH_FF_final.vgf for high level SIGWX files
+                m???_YYYYMMDDHH_FF_final.vgf for mid level SIGWX files
+
+   where:
+        YYYY - the year including the century
+          MM - the month
+          DD - the day
+          HH - the hour
+	  FF - the valid forecast hour (18 or 24)
+
+         ??? - cld - CLOUD (Embedded cumulonimbus)
+               cat - CAT (Clear air turbulence)
+	       frt - FRONTS (Frontal systems)
+               jet - JETS (Jetstreams)
+               trp - TROP (Tropopause height)
+               vts - V_T_S (Volcanoes, Storms, Radiation)
+
+        m??? - cld - M-CLOUD (SWM cloud, in-cloud icing and turbulence)
+               cat - M-CAT (SWM Clear air turbulence)
+	       frt - M-FRONTS (SWM Frontal systems)
+               jet - M-JETS (SWM Jetstreams)
+               trp - M-TROP (SWM Tropopause height)
+               vts - V_T_S (Volcanoes, Storms, Radiation)
+
+   The ??? names above apply to high level SIGWX VG files.  For mid
+   level files, each ??? is prefixed by an "m", so that, for example,
+   the mid level FRONTS VG file is mfrt_YYYYMMDDHH_FF_final.vgf.  The
+   output VG files are created locally. 
+ 
+   The infile.name is the name of the ASCII file to be decoded.  If the
+   input file is not given, then the program looks locally for a file
+   named SIGWXHI.txt or SIGWXMID.txt, in that order.  If none of these
+   files can be found, an error is displayed.
+
+
+
+ VG FILE DIFFERENCES 
+
+   There are known instances where if there are three hash marks in a 
+   row on a jet, the middle hash mark may be placed on top of the right 
+   hash mark.  Also, the labels for clouds and turbulence are placed in 
+   the center of each area. These issues will be fixed at a later date.
+
+ ERROR MESSAGES 
+
+
+   [SIGAVGF -1]  Forecast hour not found on the command line.
+   [SIGAVGF -2]  Valid hour must be 18 or 24, not !AS
+   [SIGAVGF -3]  ASCII file !AS failed to open.
+   [SIGAVGF -4]  ASCII file !AS failed to close.
+   [SIGAVGF -5]  VG file !AS failed to open.
+
+

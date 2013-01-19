@@ -1,0 +1,41 @@
+!
+! Restore File : precip_3hr_emsl
+!
+! Log:
+! D.W.Plummer/NCEP	 2/97	Initial creation
+! D.W.Plummer/NCEP	 8/97	Added FILTER parameter
+! J. Carr/HPC            2/99   Removed the contour from type and left just fill
+!                               Also changed the fint and time interval
+!
+GDATTIM f006-LAST-3
+GLEVEL  0                                                                       
+GVCORD  none                                                                    
+PANEL   0                                                                       
+SKIP    0                                                                       
+SCALE   0                                                                       
+GDPFUN  p03menmw!sm5s(miss(and(sgt(CAPE0500PA,50),sgt(pp030000pa,50)),0))!sm5s(miss(and(sgt(CAPE1000PA,50),sgt(pp030000pa,50)),0))
+TYPE    f ! fc ! fc                                                    
+CONTUR  3/3                                                                       
+CINT    ! .9=CAPE 500;1.2 ! .9=CAPE 1000;1.2  
+LINE    ! 5/1/2 ! 2/1/2 
+FINT    .25;2.5;6.35;12.7;19.05;25.4;31.75;38.1;44.45;50.8;63.5;76.2;101.6;127;152.4;177.8 ! .9;1.2 ! .9;1.2
+FLINE   0;21-30;14-20;5 ! 0;5/7 ! 0;2/3
+HILO    
+HLSYM   
+CLRBAR  0                                                                       
+WIND                                                                            
+REFVEC                                                                          
+TITLE   5/-1/~ 3-HR TOTAL PRECIPITATION, CAPE and PP03 Probability >50%!0!0
+TEXT    1/21//hw                                                                
+CLEAR   yes                                                                     
+DEVICE  xw                                                                      
+STNPLT                                                                          
+SATFIL                                                                          
+RADFIL                                                                          
+STREAM                                                                          
+POSN    4                                                                       
+COLORS  2                                                                       
+MARKER  2                                                                       
+GRDLBL  5                                                                       
+LUTFIL  none
+FILTER  yes

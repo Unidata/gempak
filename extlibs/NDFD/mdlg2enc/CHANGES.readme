@@ -1,0 +1,60 @@
+*********************************************************************************
+*										*
+*	the following changes were made to original fortran90 mdl grib2 	* 
+*	encoder subroutines to make them usable with f77 compiler		*
+*										*
+*********************************************************************************
+*										*
+	check_flt.f:
+		substituted EXIT statement with GOTO;
+
+	check_int.f:
+		substituted EXIT statement with GOTO;
+
+	flt_map.f:
+		explicitly set the dimension of arrays A, IB, WORK to 800000
+
+	fmkieee.f:
+		changed comment symbol from '!' to 'C'
+
+        int_map.f:
+                explicitly set the dimension of array IWORK to 800000
+
+        pack_gp.f:
+                explicitly set the dimension of array MISSLX to 800000
+
+	pk_cmplx.f:
+                1. explicitly set the dimension of array JMAX to 80000
+                2. explicitly set the dimension of array JMIN to 80000
+                3. explicitly set the dimension of array LBIT to 80000
+                4. explicitly set the dimension of array NOV  to 80000
+
+	pk_grib2.f:
+		1. changed  A to one dimension array and set to 800000
+		2. changed IA to one dimension array and set to 800000
+		3. added common 'pkgrib2' to avoid stack-overflow warning
+
+	pk_missp.f:
+		1. explicitly set the dimension of array IWORK to 800000
+		2. substituted CYCLE statement with GOTO;
+
+	pk_sect2.f:
+		1. explicitly set the dimension of array ITEMP to 100000
+		2. explicitly set the dimension of array RTEMP to 100000
+
+	pk_sect3.f, pk_sect4.f, pk_sect5.f:
+                substituted CASE statement with equivalent IF-ELSEIF-ENDIF
+                statement
+
+	prep_flt.f:
+		1. substituted EXIT statement with GOTO;
+		2. substituted CYCLE statement with GOTO;
+
+        prep_int.f:
+                1. substituted EXIT statement with GOTO;
+                2. substituted CYCLE statement with GOTO;
+
+	reduce.f:
+		1. explicitly set the dimension of array NEWBOX  to 800000
+		2. explicitly set the dimension of array NEWBOXP to 800000
+		3. added common 'red' to avoid stack-overflow warning

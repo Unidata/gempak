@@ -1,0 +1,22 @@
+
+                                   COLORS
+
+
+NTRANS colors are listed in the color bar at the bottom of the display window.  
+The color bar allows for color editing, toggling, and blinking.  In a single 
+panel mode, only the colors used in the frames are listed.  In multi-panel 
+mode, all the NTRANS colors are listed.
+
+Click on the desired color number to invoke the color editor.  Alternatively, 
+click on the color in the display window using the middle mouse button.  The 
+color editor allows editing of the selected color by RGB value, using slider 
+bars, or from a list of colors displayed on the color palette.  Pre-defined X 
+color names may also be selected from the scroll list.  User-defined colors 
+may be saved and restored using the "Save" and "Load" buttons, respectively.
+
+Colors may be toggled off and on by clicking the right mouse button on that 
+color from the color bar only.
+
+Color blinking may be achieved by clicking the right mouse button in 
+combination with the CONTROL key, <CTRL>-right_mouse_button, on that color 
+from the color bar only.

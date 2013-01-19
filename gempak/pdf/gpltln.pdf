@@ -1,0 +1,19 @@
+MAP     Map color/dash/width/filter flag                                        
+MSCALE  fgc;bgc;mask/units/lat;hide/values/anch/x;y/ln;wd/freq|text_info|title  
+GAREA   Graphics area                                                           
+PROJ    Map projection/angles/margins|drop flag                                 
+SATFIL  Satellite image filename(s)                                             
+RADFIL  Radar image filename(s)                                                 
+IMCBAR  Color/ornt/anch/x;y/ln;wd/freq                                          
+LAT     Latitude                                                                
+LON     Longitude                                                               
+PANEL   Panel loc/color/dash/width/regn                                         
+MARKER  Marker color/type/size/width/hw                                         
+TITLE   Title color/line/title                                                  
+TEXT    Size/fnt/wdth/brdr/N-rot/just/hw flg                                    
+CLEAR   Clear screen flag                                                       
+DEVICE  Device|name|x size;y size|color type                                    
+LUTFIL  Enhancement lookup table filename                                       
+STNPLT  Txtc/txt attr|marker attr|stnfil#col                                    
+VGFILE  Vgfile | scale file | attribute file | filter                           
+PLUS    Plus sign size/width                                                    

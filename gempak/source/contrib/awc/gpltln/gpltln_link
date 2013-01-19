@@ -1,0 +1,5 @@
+$FC $FFLAGS $LDFLAGS -o $OS_BIN/gpltln gpltln.f \
+	$OS_LIB/gpltln.a \
+	$GEMLIB $CGEMLIB $APPL $SYSLIB $GEMLIB \
+	$CGEMLIB $OS_LIB/libnetcdf.a $OS_LIB/libz.a -lm
+$RM *.o

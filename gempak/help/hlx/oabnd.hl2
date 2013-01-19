@@ -1,0 +1,5 @@
+     OABND
+
+     OABND specifies the bounds file(s) to use for 'blocking'. Multiple
+     bound areas may be specified via '+' sign between bound names.
+     Default is NULL - no bounds specified.

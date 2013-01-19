@@ -1,0 +1,66 @@
+! enhanced_thunder_06z.lpf
+!
+! Created by Jeremy Grams on 02/02/2009.
+!
+! This layer product file displays 21z calibrated SREF probabilities as 
+! first-guess 06z enhanced thunder lines. 
+!
+!--------------------------------------------------------------------------------
+!
+! layer 1: Enhanced Thunder 12-16Z Layer
+!
+<layer1_name>		ENH-16
+<layer1_file>  		SREF_ENH16.vgf	
+<layer1_output_file>	WORK_ENH16.vgf	
+<layer1_group_type>	ENH16
+!<layer1_group_type>	OUTLOOK
+<layer1_display_mode>	Off
+<layer1_color_mode>	Mono
+<layer1_color_id>	22
+<layer1_fill_mode>	On
+!
+! layer 2: Enhanced Thunder 16-20Z Layer
+!
+<layer2_name>		ENH-20
+<layer2_file>  		SREF_ENH20.vgf	
+<layer2_output_file>	WORK_ENH20.vgf	
+<layer2_group_type>	ENH20
+!<layer2_group_type>	OUTLOOK
+<layer2_display_mode>	Off
+<layer2_color_mode>	Mono
+<layer2_color_id>	24
+<layer2_fill_mode>	On
+!
+! layer 3: Enhanced Thunder 20-00Z Layer
+!
+<layer3_name>		ENH-00
+<layer3_file>  		SREF_ENH00.vgf	
+<layer3_output_file>	WORK_ENH00.vgf	
+<layer3_group_type>	ENH00
+!<layer3_group_type>	OUTLOOK
+<layer3_display_mode>	Off
+<layer3_color_mode>	Mono
+<layer3_color_id>	28
+<layer3_fill_mode>	On
+!
+! Layer 4: Categorical Layer
+!
+<layer4_name>		GEN-TSTM
+<layer4_file>		LAST_DAY2.vgf
+<layer4_output_file>	WORK_GEN-TSTM.vgf
+<layer4_group_type>	OUTLOOK
+<layer4_display_mode>	Off
+<layer4_color_mode>	Mono
+<layer4_color_id>	20
+<layer4_fill_mode>	Off
+!
+! Layer 5: SREF 12-12z Layer
+!
+<layer5_name>		S_GEN-T
+<layer5_file>		SREF_GEN-TSTM.vgf
+<layer5_output_file>	WORK_SREF_GEN-TSTM.vgf
+<layer5_group_type>	OUTLOOK
+<layer5_display_mode>	Off
+<layer5_color_mode>	Mono
+<layer5_color_id>	11
+<layer5_fill_mode>	Off

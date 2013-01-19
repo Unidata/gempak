@@ -1,0 +1,49 @@
+!
+! OUTLOOKTIMES.TBL
+!
+! This table contains the initial and expiration time for different
+! clock time ranges. Current UTC is compared against each time range
+! to find the desired initial and expiration hours and minutes. 
+! Current day plus day adjustment is the desired day. The maximum number 
+! of clock time ranges allowed is 10 for each day and the time ranges
+! should be listed in descent order. 
+!
+!!
+! Log:
+! H. Zeng/EAI           02/00   Created
+! G. Grosshans/SPC	04/00	Updated
+! G. Grosshans/SPC	08/00	Updated for 2nd period CCFP
+! G. Grosshans/SPC	02/01	Updated to correct Day 1 01Z initial day adjustment 
+! G. Grosshans/SPC	11/04	Added DAY4 - DAY 4-8
+! F. J. Yen/SPC		04/07	Added ENH_PD1 and ENH_PD2
+! G. Grosshans/SPC	04/07	Added DAY 3-8, removed Day 4, 5, 6 and 7
+! J. Grams/SPC		02/09	Modified ENH_PD1 and ENH_PD2, and 
+!                               added ENH_PD3
+! G. Grosshans/SPC	02/10	Added Day 1 & 2 Fire Weather Outlook 
+!				entries to handle daytime updates.
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!
+!    Clock Time Range     Initial Time     Expiration Time
+!     ----------------     ------------     ---------------
+!       FROM    TO         HHMM  DAY ADJ.    HHMM  DAY ADJ.
+DAY1    2201   2359        0100     1        1200     1
+DAY1    1801   2200        2000     0        1200     1
+DAY1    1431   1800        1630     0        1200     1
+DAY1    1100   1430        1300     0        1200     1
+DAY1    0301   1059        1200     0        1200     1
+DAY1    0000   0300        0100     0        1200     0
+DAY2    0200   2359        1200     1        1200     2
+DAY2    0000   0159        1200     0        1200     1
+DAY3    0200   2359        1200     2        1200     3
+DAY3    0000   0159        1200     1        1200     2
+DAY4-8  0200   2359        1200     3        1200     8
+ENH00   0000   2359        2000     0        0000     1
+ENH04   0000   2359        0000     1        0400     1
+ENH12   0300   2359        0400     1        1200     1
+ENH12   0000   0259        0400     0        1200     0
+ENH20   0000   2359        1600     0        2000     0
+ENH16   0000   2359        1200     0        1600     0
+FDAY1   1201   2359        1700     0        1200     1
+FDAY1   0301   1200        1200     0        1200     1
+FDAY2   0200   2359        1200     1        1200     2
+DAY3-8  0200   2359        1200     2        1200     8

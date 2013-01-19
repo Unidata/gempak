@@ -1,0 +1,29 @@
+! VOLCANO_SMALL.TBL
+!
+! This table contains the locations of volcanoes.
+!
+! The format for the file is given below, with the number of characters in
+! parentheses.
+!
+! Log:
+! M. Li/SAIC    	06/02
+!
+!-------------------------------------------------------------------
+!
+!STID    STNM   NAME                             ST CO   LAT    LON  ELV PRI
+!(8)     (6)    (32)                            (2)(2)   (5)    (6)   (5)(2)
+!
+AVACHINS 999999 AVACHINSKY                       -- BY  5325  15883     0  0
+BEZYMIAN 999999 BEZYMIANNY                       -- BY  5597  16058     0  0
+KARYMSKY 999999 KARYMSKY                         -- BY  5405  15943     0  0
+KORYAKSK 999999 KORYAKSKY                        -- BY  5332  15868     0  0
+MT_AUGUS 999999 MT_AUGUSTINE                     AK US  5937 -15341     0  0
+MT_ILIAM 999999 MT_ILIAMNA                       AK US  6003 -15308     0  0
+MT_KOROV 999999 MT_KOROVIN                       AK US  5238 -17415     0  0
+MT_PAVLO 999999 MT_PAVLOF                        AK US  5542 -16190     0  0
+MT_REDOU 999999 MT_REDOUBT                       AK US  6048 -15275     0  0
+MT_SHISH 999999 MT_SHISHALDIN                    AK US  5475 -16397     0  0
+MT_SPURR 999999 MT_SPURR                         AK US  6130 -15225     0  0
+SHIVELUC 999999 SHIVELUCH                        -- BY  5665  16136     0  0
+SOUFRIER 999999 SOUFRIERE_HILLS                  -- MS  1672  -6218     0  0
+ST_HELEN 999999 ST_HELENA                        -- UK -1595   -572   819  0

@@ -1,0 +1,13 @@
+!
+!	AODTVERS.TBL
+!
+! This table contains the AODT version names and version numbers.
+!
+! Log:
+! M. Li/SAIC		06/05	Created
+! D. Kidwell/NCEP	 8/05	For v 6.3
+! M. Li/SAIC		10/05   Added v6.4 
+! M. Li/SAIC		12/06   Added v7.2, removed v6.3 
+!
+Operational	6.4
+Experimental    7.2

@@ -1,0 +1,39 @@
+
+VGFTOASCII
+
+  VGFTOASCII converts a VGF file to ASCII format.  The text information
+  is directed to standard output. This program currently dumps lines and 
+  special lines with any grouped text.
+
+INPUT PARAMETERS
+
+  vgftoascii vgf_filename
+
+  vgftoascii		Program name
+  vgf_filename		VGF file to be converted
+
+PROGRAM DESCRIPTION
+
+  VGFTOASCII scans a VGF file and generates a text version of each element.
+  The resulting ASCII text employs the tag format for the element header
+  (first line), grouped text (second line) and info (third line +). These
+  are then followed by NUMPTS pairs of lat/lon coordinates.
+
+  Only lines and special lines are processed at this time.
+
+EXAMPLES
+
+  If the VGF file 'testfile.vgf' contained a single 4-point line grouped
+  with the text string "MDT" (ala SPC outlook product), the following command:
+
+  vgftoascii testfile.vgf >testfile.txt
+
+  would produce something like the following in the output file 'testfile.txt':
+
+  <VG_TYPE>1<VG_CLASS>3<FILLED>0<CLOSED>1<SMOOTH>2<MAJ_COL>4<MIN_COL>4<GRPTYP>8<GRPNUM>18
+  <GROUPED TEXT>MDT
+  <NUMPTS>4<LINTYP>1<LTHW>0<WIDTH>2<LWHW>0
+  45.53 -67.08
+  45.40 -67.62
+  45.11 -67.51
+  45.22 -67.02

@@ -1,0 +1,37 @@
+     GPACK
+
+     GPACK is the packing type and the number of bits (or data precision)
+     to be used to pack the grid data, separated with a slash:
+
+	packing type / number of bits (NONE, GRIB, DIF)
+
+	packing type / precision      (DEC)
+
+     The valid packing types are:
+
+	NONE	No packing 
+	GRIB	Data is packed in GEMPAK GRIB format
+	DEC	Data is packed in GEMPAK GRIB format
+	DIF	Data is packed in GEMPAK DIF format
+
+     If the packing type is DEC, the number of bits is replaced by the
+     data precision.  The data will be scaled by 10**precision and rounded
+     to the nearest integer.  The number of bits used to store the data
+     will be the minimum number required to store the resulting integers.
+
+     If the number of bits is less than 32, the packing type specified will 
+     be used.  If no packing type is given, the data will be packed using 
+     the GEMPAK GRIB scheme.
+
+     In general, data should be stored using packing type GRIB with 16 bits,
+     by specifying the precision in DEC or with no packing using type NONE.
+     Care should be taken using the other packing options.
+
+	Pack Type	Minimum		Maximum		Default
+	  NONE		  32		  32		  32
+	  DEC		  -5		   5		   2
+	  DIF		   2		  32		  16
+	  GRIB		   2		  32		  16
+
+     The default data packing when GPACK is blank is GRIB/16.
+

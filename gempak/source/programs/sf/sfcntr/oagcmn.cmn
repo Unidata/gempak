@@ -1,0 +1,40 @@
+C************************************************************************
+C* OAGCMN								*
+C*									*
+C* This common area is used by the program OAGRID to save information	*
+C* about the data used to compute the station spacing.			*
+C**									*
+C* Log:									*
+C* M. desJardins/612	8/85						*
+C************************************************************************
+	CHARACTER	file*72, src*12, parm*4, date*20
+	LOGICAL		cmpflg 
+	REAL		area (4)
+C*
+	COMMON  / OAGCMN /
+     +		cmpflg,
+C!				flag set when calculations are done
+     +		file,
+C!				SN or SF file name
+     +		src,
+C!				type of file
+     +		area,
+C!				grid area for computations
+     +		parm,
+C!				parameter retrieved from file
+     +		rlevel,
+C!				vertical level used
+     +		date,
+C!				dattim used
+     +		compds,
+C!				computed data spacing
+     +		unifds,
+C!				uniform data spacing
+     +		ngstn,
+C!				# of stations in grid area
+     +		cdeltn,
+C!				computed deltan
+     +		cdeltx,
+C!				computed deltax
+     +		cdelty
+C!				computed deltay

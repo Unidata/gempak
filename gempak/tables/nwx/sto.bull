@@ -1,0 +1,53 @@
+! STO.BULL
+!
+! Location information for the following product:
+! Road_Condition_Report_(State_Agencies).
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+NZUS90 KGRB     GREEN_BAY                        WI US  4449  -8811     0
+SXUS41 KAKQ     WAKEFIELD                        VA US  3697  -7700     0
+SXUS41 KALY     ALBANY                           NY US  4268  -7383     0
+SXUS41 KBOX     TAUNTON                          MA US  4195  -7112     0
+SXUS41 KBTV     BURLINGTON                       VT US  4445  -7315     0
+SXUS41 KCLE     CLEVELAND                        OH US  4140  -8186     0
+SXUS41 KGYX     GRAY                             ME US  4388  -7025     0
+SXUS41 KLWX     BALTIMORE_MD/_WASHINGTON_DC      VA US  3897  -7747     0
+SXUS41 KPHI     MOUNT_HOLLY                      NJ US  4000  -7480     0
+SXUS41 KRLX     CHARLESTON                       WV US  3831  -8170     0
+SXUS42 KCAE     COLUMBIA                         SC US  3393  -8112     0
+SXUS42 KMFL     MIAMI                            FL US  2575  -8037     0
+SXUS42 KRAH     RALEIGH                          NC US  3577  -7868     0
+SXUS43 KABR     ABERDEEN                         SD US  4545  -9841     0
+SXUS43 KBIS     BISMARCK                         ND US  4677 -10075     0
+SXUS43 KDMX     DES_MOINES                       IA US  4172  -9372     0
+SXUS43 KDTX     DETROIT                          MI US  4268  -8347     0
+SXUS43 KFSD     SIOUX_FALLS                      SD US  4358  -9672     0
+SXUS43 KGRR     GRAND_RAPIDS                     MI US  4288  -8554     0
+SXUS43 KIND     INDIANAPOLIS                     IN US  3970  -8627     0
+SXUS43 KIWX     NORTHERN_INDIANA                 IN US  4134  -8569     0
+SXUS43 KLMK     LOUISVILLE                       KY US  3811  -8563     0
+SXUS43 KLOT     CHICAGO                          IL US  4159  -8808     0
+SXUS43 KMKX     MILWAUKEE/SULLIVAN               WI US  4295  -8854     0
+SXUS43 KOAX     OMAHA/VALLEY                     NE US  4131  -9636     0
+SXUS43 KTOP     TOPEKA                           KS US  3906  -9562     0
+SXUS44 KBMX     BIRMINGHAM                       AL US  3316  -8677     0
+SXUS44 KFWD     DALLAS/FORT_WORTH                TX US  3283  -9729     0
+SXUS44 KLIX     NEW_ORLEANS                      LA US  3032  -8981     0
+SXUS44 KLZK     LITTLE_ROCK                      AR US  3483  -9225     0
+SXUS44 KMEG     MEMPHIS                          TN US  3513  -8980     0
+SXUS44 KOUN     NORMAN                           OK US  3522  -9745     0
+SXUS45 KBOI     BOISE                            ID US  4356 -11620     0
+SXUS45 KBOU     DENVER                           CO US  4000 -10526     0
+SXUS45 KCYS     CHEYENNE                         WY US  4115 -10480     0
+SXUS45 KPSR     PHOENIX                          AZ US  3343 -11201     0
+SXUS45 KREV     RENO                             NV US  3956 -11979     0
+SXUS45 KSLC     SALT_LAKE_CITY                   UT US  4077 -11194     0
+SXUS45 KTFX     GREAT_FALLS                      MT US  4745 -11137     0
+SXUS46 KLOX     LOS_ANGELES/OXNARD               CA US  3420 -11912     0
+SXUS46 KMTR     SAN_FRANCISCO                    CA US  3659 -12184     0
+SXUS46 KPQR     PORTLAND                         OR US  4556 -12252     0
+SXUS46 KSEW     SEATTLE                          WA US  4768 -12225     0

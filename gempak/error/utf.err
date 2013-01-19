@@ -1,0 +1,15 @@
+!	This is the CGEMLIB UTF error file
+!
+  1	! No record type in range.
+ -1 	! File !AS cannot be opened.
+ -2	! File !AS does not exist.
+ -3	! No buffer space allocated for file !AS.
+ -4 	! Read failure from file !AS.
+ -5	! Buffer is has not been loaded.
+ -6	! Buffer is already stripped.
+ -7	! Buffer is not stripped.
+ -9	! Number of bytes to output too large.
+-10	! Invalid byte number to start.
+-11	! No file has been opened.
+-12	! Error closing file !AS.
+-13	! !AS is not a valid UTF file.

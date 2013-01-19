@@ -1,0 +1,47 @@
+#
+#	Makefile for GEMPAK 6.0
+#		Builds program makefiles
+#		Unidata 11/99 Chiz
+#
+include $(CONFIGDIR)/$(MAKEINC)
+
+COBJS = 
+
+PROG = sfcsplt
+PROG.c = sfcsplt.c
+
+LIBINC = \
+	$(CGEMLIB) \
+	$(APPL) \
+	$(GEMLIB) \
+	$(CGEMLIB) \
+	$(GEMLIB) \
+	$(APPL) \
+	$(SYSLIB)
+
+LIBINC_NC = \
+	$(GPLT_NC) \
+	$(GEMLIB) \
+	$(GPLT) \
+	$(DEVICE) \
+	$(NC) \
+	$(GN) \
+	$(SYSLIB) \
+	$(CGEMLIB) \
+	$(GEMLIB) \
+	$(CGEMLIB)
+
+PROG_NC = $(PROG)_nc
+
+all : $(PROG)
+
+$(PROG): $(LIBINC) $(PROG.c)
+	$(COMPILE.c) $(PROG.c) 
+	$(LINK.f) $(NOFORMAIN) $@.o $(LIBINC) $(SYSLIBS) -o $@
+
+clean:
+	$(RM) *.o $(PROG)
+
+install: $(PROG)
+	$(INSTALL) $(PROG) $(OS_BIN)
+

@@ -1,0 +1,7 @@
+!	SFSTNS error file 
+!
++1	! WARNING! No stations were updated.
+-1	! Fatal error initializing TAE.
+-2	! Fatal error reading TAE parameters.
+-3	! Invalid input for IDNTYP; must be STID or STNM.
+-4	! STNFIL !AS cannot be opened.

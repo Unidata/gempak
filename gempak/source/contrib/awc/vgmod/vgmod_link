@@ -1,0 +1,5 @@
+$CC $CFLAGS -c vgmod.c
+$FC $LDFLAGS -o $OS_BIN/vgmod vgmod.o \
+		$CGEMLIB $APPL $GEMLIB \
+		$CGEMLIB $APPL $GEMLIB $SYSLIB -lm
+$RM *.o

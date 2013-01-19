@@ -1,0 +1,5 @@
+$CC $CFLAGS -c arinfo.c 
+$FC $LDFLAGS -o $OS_BIN/arinfo arinfo.o \
+		$OS_LIB/gn.a $GEMLIB \
+		$CGEMLIB $GEMLIB -lm
+$RM *.o

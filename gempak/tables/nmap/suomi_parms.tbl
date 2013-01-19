@@ -1,0 +1,25 @@
+! 
+!	SUOMI_PARMS.TBL
+!
+! This table contains the available parameters used in the
+! station model editing panel in NMAP for the SUOMI data type. 
+!
+!	pos_zero_flag:	1 = plot at position 0 only
+!			0 = plot at any position
+!
+! Log:
+! S. Chiswell/Unidata	 10/03	Created
+!
+! parameter       pos_zero_flag     
+!
+pres              0
+tmpc              0
+relh              0
+pwvm              0
+pwve              0
+delw              0
+deld              0
+delt              0
+delf              0
+pifc              0
+mflg              0

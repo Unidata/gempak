@@ -1,0 +1,49 @@
+
+     SFPRMF
+
+     SFPRMF specifies the packing information for the surface file to be
+     created.  It may be the name of a surface parameter packing file or
+     the information itself entered as follows:
+
+		SFPRMF=PRM1/MIN1-MAX1-RES1;PRM2/MIN2-MAX2-RES2; ...
+
+     where each PRMi, MINi, MAXi, and RESi is the parameter name, minimum,
+     maximum and resolution for a parameter to be included in the file.
+
+     If SFPRMF specifies a file name, then each line of the file must 
+     contain the following information separated by blanks or tabs:
+
+	parameter name			CHAR*4
+	minimum data value		REAL
+	maximum data value		REAL
+	resolution			REAL
+
+     The resolution should be an integral power of 10; otherwise the next 
+     smaller resolution will be used.  For example, res = .5 will become .1.
+
+     If the data are not to be packed, the minimum and maximum data values 
+     and the resolution should not be included.  Note that either all of 
+     the parameters or none of them must have packing information.
+
+     METAR.PACK is a typical table used to pack surface data.  
+     This file may be used as an example when creating a packing file.
+
+     When SFPRMF is used with program NAMSND, the user must supply the
+     parameter packing file name.  In this case, a fifth entry is required 
+     for each line of the file, containing a real conversion factor used  
+     to scale from BUFR to GEMPAK.  Diagnosed or extra computed parameters 
+     may be added at the end of the parameter list in the packing file.
+     If diagnosed parameters are to be added, or if there is not enough
+     room in the packing file for all the primary parameters, an 
+     auxiliary packing file must be used.  This file will have the same
+     name as that specified for SFPRMF, with the suffix _aux.  The
+     auxiliary file is not specified explicitly in SFPRMF.  Rather, the 
+     presence of the auxiliary file is indicated by suffixing the output
+     surface file name given in SFOUTF with a +.  Note that the order of
+     the parameters in the packing file(s) must be the same as the order
+     of the surface parameters listed in the NAMSND output file 
+     bufr_table.dump.  The parameter names themselves do not have to be 
+     the same as those in the bufr_table.dump file, but the order must be
+     preserved.
+
+

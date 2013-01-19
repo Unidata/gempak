@@ -1,0 +1,74 @@
+! SCALE.FAX
+!
+! This file is a sample template for the scale file set by the GPMAP 
+! parameter VGFILE.  The scale file allows a limited set of VGF
+! attributes to be modified in the output device, e.g., FAX, GIF, etc.,
+! by specifying a multiplier value.  For example, if the SYMSIZE is 
+! set to 2.0, then its size will be multiplied by two in the output
+! device. The following parameters can be scaled:
+!
+!        Parameter Name          Description
+!        --------------          -----------
+!
+!        PIPSIZE                 Front Pip Size
+!        FRONTSTRENGTH           Frontal strength
+!        SYMWIDTH                Symbol width
+!        SYMSIZE                 Symbol size
+!        WINDWIDTH               Wind barb/arrow width
+!        WINDSIZE                Wind barb/arrow size
+!        WINDHDSIZ               Wind barb head size
+!        LINEWIDTH               Line width
+!        SPLWIDTH                Special line width
+!        SPLSIZE                 Special line pattern size
+!        TEXTSIZE                Text size
+!        TEXTWIDTH               Text width
+!        SPTXTSIZE               Special text size
+!        SPTXTWIDTH              Special text width
+!
+! The parameter name must appear in the scale file followed by an
+! equal sign, "=", and a real value. 
+!
+!!
+! Log:
+! C. Lin/EAI		3/98  
+! S. Schotz/NCEP    	2/02	Updated documentation 
+!
+!------------------------------------------------------------------------
+!
+! Scaling factor for fronts
+!
+PIPSIZE        = 1.0
+PIPSTROKE      = 1.0
+FRONTSTRENGTH  = 1.0
+!
+! Scaling factor for symbols
+!
+SYMWIDTH    = 1.0
+SYMSIZE     = 1.0
+!
+! Scaling factor for winds
+!
+WINDWIDTH   = 1.0
+WINDSIZE    = 1.0
+WINDHDSIZ   = 1.0
+!
+! Scaling factor for lines
+!
+LINEWIDTH  = 1.0
+!
+! Scaling factor for special lines
+!
+SPLWIDTH   = 1.0
+SPLSIZE    = 1.0
+SPLSTROKE  = 1.0
+!
+! Scaling factor for text 
+!
+TEXTSIZE   = 1.0
+TEXTWIDTH  = 1.0
+!
+! Scaling factor for special text 
+!
+SPTXTSIZE   = 1.0
+SPTXTWIDTH  = 1.0
+

@@ -1,0 +1,39 @@
+!
+! Restore File : bl_h2o_conv
+!
+! Log:
+! D.W.Plummer/NCEP	 2/97	Initial creation
+! D.W.Plummer/NCEP	 8/97	Added FILTER parameter and changed TEXT value
+!
+GDATTIM fall                                                                    
+GLEVEL  9823!9823!9823:0!9823:0!0
+GVCORD  sgma!sgma!sgma!sgma!none 
+PANEL   0                                                                       
+SKIP    0/1                                                                     
+SCALE   7!0
+GDPFUN  sdiv(mixr,obs)!thte(mul(.9823;pres@0%none),tmpc,dwpc)//te!te!te!pmsl!kntv(wnd%sgma@9823)
+TYPE    c/f!c!c!c!c ! b
+CONTUR  1                                                                       
+CINT    1!4//296!4/300/320!4/324!1;2
+LINE    32/1/1/2!30/1/1/0!29/1/1/0!7/1/1/1!1
+FINT    -9;-7;-5;-3;-1
+FLINE   2;15;21;22;23;0
+HILO    !!!!6/H#;L#/
+HLSYM   1;1/2//4;1.5/0
+CLRBAR  1
+WIND    10/0.75/1.5/112
+REFVEC                                                                          
+TITLE   1/-1/~ BL MOISTURE CONVERGENCE, WIND (KTS) and THTAE!0
+TEXT    1/22/2/hw                                                             
+CLEAR   yes                                                                     
+DEVICE  xw                                                                      
+STNPLT                                                                          
+SATFIL                                                                          
+RADFIL                                                                          
+STREAM                                                                          
+POSN    4                                                                       
+COLORS  2                                                                       
+MARKER  2                                                                       
+GRDLBL  5                                                                       
+LUTFIL  none
+FILTER  yes

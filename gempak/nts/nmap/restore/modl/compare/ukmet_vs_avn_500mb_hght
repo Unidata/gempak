@@ -1,0 +1,40 @@
+!
+! Restore File : ukmet_vs_mrf_500mb_hght
+!
+! Log:
+! D.W.Plummer/NCEP	 2/97	Initial creation
+! D.W.Plummer/NCEP	 8/97	Added FILTER parameter and changed TEXT value
+!
+GDFILE  gfsthin ! ukmet
+GDATTIM all
+GLEVEL  500
+GVCORD  pres
+PANEL   0                                                                       
+SKIP    0/1;-1
+SCALE   -1
+GDPFUN  hght ! hght
+TYPE    c
+CONTUR  1                                                                       
+CINT    3
+LINE    5//2  ! 6//2
+FINT    
+FLINE   
+HILO    5/H#;L#//5/5;5/y ! 6/H#;L#//5/5;5/y
+HLSYM   
+CLRBAR  
+WIND    
+REFVEC                                                                          
+TITLE   1/-1/~ @ HEIGHTS (MRF YELLOW, UKMET CYAN)
+TEXT    1/22/2/hw                                                             
+CLEAR   yes                                                                     
+DEVICE  xw                                                                      
+STNPLT                                                                          
+SATFIL                                                                          
+RADFIL                                                                          
+STREAM                                                                          
+POSN    4                                                                       
+COLORS  2                                                                       
+MARKER  2                                                                       
+GRDLBL  5                                                                       
+LUTFIL  none
+FILTER  yes

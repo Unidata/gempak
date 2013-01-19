@@ -1,0 +1,69 @@
+     VGFILE
+
+     VGFILE is the name of the Vector Graphics File (VGF) to be displayed
+     or processed.  It also specifies the name of the scale file, 
+     attribute file and time filter. The scale file and attribute file are 
+     used by GPMAP to alter objects in the VGF when displayed or stored in 
+     the output device, e.g., XW, FAX, GIF, etc.  These files allow the VGF 
+     object attributes to be tailored to meet the display requirements of 
+     FAX, GIF, and other supported product formats.  The scale, attribute 
+     file names and filter are specified using the "|" character as a 
+     delimiter in the following format:
+
+		vgfile | scale file | attribute file | filter
+
+     Specifying the scale file allows a limited set of object attributes
+     in the VGF to be changed in the output device by multiplying their 
+     values by numbers defined in the scale file.  The following parameters 
+     can be scaled:
+
+	Parameter Name		Description
+	--------------		-----------
+
+	PIPSIZE			Front Pip Size
+	FRONTSTRENGTH		Frontal strength
+	SYMWIDTH		Symbol width
+	SYMSIZE			Symbol size
+	WINDWIDTH		Wind barb/arrow width
+	WINDSIZE		Wind barb/arrow size
+	WINDHDSIZ		Wind barb head size
+	LINEWIDTH		Line width  
+	SPLWIDTH		Special line width
+	SPLSIZE			Special line pattern size
+	TEXTSIZE		Text size
+	TEXTWIDTH		Text width
+	SPTXTSIZE		Special text size
+	SPTXTWIDTH		Special text width
+
+     The parameter name must appear in the scale file followed by an 
+     equal sign, "=", and a real value.  See the table 
+     $GEMTBL/pgen/scale.fax for examples.
+
+     Specifying the attribute file allows VGF object attributes to be
+     modified for output devices by setting their values.  Attributes such 
+     as color, size, thickness, etc. can be changed for particular object 
+     sub-types, e.g., cold fronts.  Also, sub-types can be eliminated from 
+     the output device by setting their major color number to -1. 
+
+     The value of the attribute for an object in the attribute file
+     overrides the value in the VGF with the following exceptions:
+
+        1.  If the value for an attribute is set to 0, then it is not 
+            changed except in the case of smoothing. 
+        2.  If the attribute file value for smoothing is -1, then 
+            smoothing remains unchanged.
+        3.  Rotation values in the attribute file are ignored.
+
+     The attribute file can also be used to change the object sub-type.  
+     For example, all underlined text objects can be changed to non-underlined
+     text objects.  
+
+     The attribute file uses a similar format as the table 
+     $GEMTBL/pgen/setting.tbl.  The file, $GEMTBL/pgen/uattribd.tbl
+     provides a sample template for the attribute file and additional 
+     instructions.
+
+     Specifying the filter allows the vg elements with an embedded time 
+     (i.e. GFA) to be selectively displayed. The filter value is a time 
+     or times, with ";" used to delimit the the filter times. If the 
+     time filter is not specified, all elements will be displayed. 

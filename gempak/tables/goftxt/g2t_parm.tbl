@@ -1,0 +1,99 @@
+! G2T_PARM.TBL
+!
+! This table specifies parameters that are used in the Offshore Text 
+! Formatter (OTF).
+!
+! The name and values are defined below:
+!
+! NCNTER: National Center indicator		
+!	OPC = 1
+!	TPC = 2
+!
+! LIGHT: Definition of light winds; e.g., 10 KTS (inclusive)
+!
+! MNWDIF/MXWDIF: Simplification thresholds for wave (Task #: 22.3)
+! MNSDIF/MXSDIF: Simplification thresholds for wind 
+!
+! MCLOCK: Wind direction
+!	1 = Clockwise
+!	2 = Histogram
+!
+! WAVE_RANGE: Allowable wave range and gap thresholds.
+!
+! OPC: 	Rmin   Rmax    Range    Gap
+!         0      3       1       1
+!         3      7       2       2
+!         7     10       3       3
+!        10     20       5       5
+!        20   9999      10      10
+!
+! Note: Rmin is inclusive; Rmax is not inclusive.
+!
+! TPC:  (no needed)
+!
+! WIND_RANGE: Allowable wind range and gap thresholds.
+!
+! OPC:  Rmin   Rmax    Range    Gap
+!         0     25       5       5
+!        25     50      10      10
+!        50   9999      25      25
+!
+! TPC:  Rmin   Rmax    Range    Gap
+!	  0	30	 5	 5
+!	 30	65	10	10
+!	 65	90	15	15
+!	 90   9999	20	20
+!!
+! Log:
+! T. Lee/SAIC		11/07
+!---------------------------------------------------------------------------
+!
+! National Center: OPC = 1
+!		   TPC = 2 
+!
+NCNTER		2
+!
+! Definition of Light winds
+!
+LGHTS		10
+!
+! Simplification thresholds
+!
+MNWDIF		1
+MXWDIF		1
+MNSDIF		5
+MXSDIF		5
+!
+! Wind direction: 1 = Clockwise
+!		  2 = Histogram
+!
+MCLOCK		1
+!
+! For OPC
+!
+!WAVE_RANGE	 
+! 0	 3	 1	 1
+! 3	 7	 2	 2
+! 7	10	 3	 3
+!10	20	 5	 5
+!20    9999	10	10
+!
+! Wind range: (OPC)
+!
+!WIND_RANGE	 
+! 0	25	 5 	 5
+!25	50	10	10
+!50    9999	25	25
+!
+! For TPC    
+!
+! W max - Wmin <= 1/2 Wmin = R
+! or
+! Wmax - 2R <= R
+! R <= 1/3 Wmax
+!
+WIND_RANGE	 
+ 0	30	 5	 5
+30	65	10	 5
+65	90	15	 5
+90    9999	20	 5

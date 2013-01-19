@@ -1,0 +1,12 @@
+!       This is the TCACANCEL error file
+!
+! log
+!------
+! M. Li/SAIC            04/05
+!
+
+  -1    ! Too few arguments on command line.
+  -2    ! VG file not found, or valid file name could not be created. 
+  -3    ! Invalid GEMPAK time. 
+  -4    ! Invalid storm type. 
+  -5    ! Invalid time zone. 

@@ -1,0 +1,5 @@
+$CC $CFLAGS -c gdgrib.c
+$FC $LDFLAGS -o $OS_BIN/gdgrib gdgrib.o \
+	$OS_LIB/gdgrib.a $OS_LIB/gdcfil.a $GEMLIB $CGEMLIB \
+	$GEMLIB $APPL $SYSLIB -lm
+$RM *.o

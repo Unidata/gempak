@@ -1,0 +1,38 @@
+     HLSYM
+
+     HLSYM defines the characteristics for the HILO symbols specified
+     in HILO.  The text sizes, value position, fonts, text widths and
+     hardware/software flags are specified for the symbols (s) and 
+     plotted values (v) as:
+
+	sizes;sizev/position/fonts;fontv/widths;widthv/hwflgs;hwflgv
+
+     The size, font, width, and hw flag are the same as the TEXT 
+     variable.  If only one value is given, it is used for both the
+     symbol and value.  
+
+     The value plotting position may be 1, 2, or 3 where 2 is the 
+     default.  The number selects the position of the value string 
+     beneath the symbol string.  The three positions are shown below:
+
+				   H
+				1  2  3
+
+     It is common for HILO symbols near the edge of the display to be
+     hidden when hardware text font is used. Therefore, when using
+     hardware text font, the number of HILO symbols displayed may be
+     slightly less than what the user specifies.
+ 
+     Examples:
+
+	HLSYM = 2;1/3/2//HW  --	symbol text size = 2
+				value text size = 1
+				plot value in position 3	
+				hardware text font 2 applies to both
+
+	HLSYM = 2/1/1;2/     --	symbol text size = 2
+				value text size = 2
+				plot value in position 1	
+				symbol text font = 1
+				value text font = 2
+

@@ -1,0 +1,4 @@
+ln -s $GEMPAK/source/cgemlib/clo/clocmn.h clocmn.h
+$CC $CFLAGS $LDFLAGS -o locinfo.$NA_OS locinfo.c \
+	$CGEMLIB
+$RM clocmn.h *.o

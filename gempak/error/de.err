@@ -1,0 +1,21 @@
+! DE error file
+!
+ +4	! Number of MEMBERS = !AS
+ +3	! Percentile is less than 0.
+ +2	! Ensemble files with no ensemble diagnostic function specified.
+ +1	! Percentile is greater than 100.
+ -1	! More than one ensemble file referenced.
+ -2	! Grid file or template does not exist.
+ -3	! A member has an invalid forecast time.
+ -4	! Operator !AS is not recognized.
+ -5	! No ensemble file referenced in ensemble diagnostic.
+ -6	! Too many grid files have been requested.
+ -7	! Too many ensemble members.
+ -8	! Cannot parse arguments.
+ -9	! Ensemble diagnostic cannot be computed.
+-10	! Ensemble function embedded in ensemble diagnostics.
+-11	! Invalid ensemble member weight value entry.
+-12	! Sum of ensemble weights greater than 100.
+-13	! Sum of ensemble weights less than 100.
+-14	! An ensemble entry has zero members.
+-15	! Incorrect number of arguments.

@@ -1,0 +1,8 @@
+PROCESS HELP=*
+REFGBL ($MAPFIL,$RESPOND)                                                       
+END-PROC
+        PROGRAM GPEND
+.LEVEL1
+.LEVEL2
+.HELP
+.INCLUDE GEMHLP:GPEND.HLP

@@ -1,0 +1,59 @@
+
+
+             Input Parameter (IP) Library 
+
+
+The IP library provides an easy interface to all of the GEMPAK 
+subroutines. 
+
+If a program is to obtain any variables from the interface, IP_INIT 
+must be called first.  This subroutine initializes the GEMPAK user
+interface.  The program can then obtain input parameter values using 
+the subroutines IP_STR or IP_LOG.  
+
+When the IP library is first called, parameters are initially set to
+the values stored in the local file GEMGLB.NTS.  If this file is not 
+present, it will be created and defaults from the global file 
+$GEMNTS/GEMGLB.NTS will be used.  
+
+IP_DYNM is called by most GEMPAK programs to allow new parameters
+to be entered and the program to be re-executed.
+
+IP_EXIT must be the last IP subroutine called when exiting a program.
+It updates GEMGLB.NTS with the current variable settings.   If a program 
+is terminated prematurely (e. g., by using CTRL-C), GEMGLB.NTS will not 
+be updated.
+
+All errors from the interface are printed when they are encountered by an
+IP subroutine.
+
+The following commands can be entered while in the interface; each calls
+a particular IP subroutine:
+
+	LIST 		list values for program parameters
+	LIST PARM 	list value for parameter PARM 
+	DISPLAY		list values and definitions of program parameters
+	DISPLAY PARM	list value and definition of parameter PARM  
+	HELP		Types HELP information on the screen
+	HELP NAME	Types HELP information for program or parameter NAME
+	PHELP [NAME]	Same as HELP, but the output is paged
+	PARM = xyz	Assign value xyz to PARM
+	PARM = &PARM2	Assign value of PARM2 to PARM
+	RESTORE [FILE]	Recalls parameter values stored by SAVE [FILE]
+	SAVE [FILE]	Save values of parameters in FILE.NTS	
+	WSAVE [FILE]	Save values of parameters except file name in FILE.NTS
+	CURSOR PARM	Assign value to PARM based on mouse button input
+	LUTR/LUTS FILE	Loads a radar/satellite color look-up table
+	WINDOW NAME	Activates, pops, and restores window information
+	CLOSE NAME	Closes the window specified by NAME
+	VERSION		Displays the version number of GEMPAK
+	RUN		Run the program
+	EXIT		Exit the program
+	
+The following commands allow manipulation of an existing animation sequence:
+
+	;LOOP		Starts forward animation of the loaded sequence
+	;REVERSE	Starts backward animation of the loaded sequence
+	;STEP		Steps one frame forward
+	;BACK		Steps one frame backward
+	;#		Sets the dwell rates to group #

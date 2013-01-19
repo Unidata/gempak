@@ -1,0 +1,26 @@
+{
+    {area 0 1 0 1}
+    {dist 0.15}
+}
+{
+    {type polygon}
+    {id 4}
+    {ref 3}
+    {offset 1}
+    {pointcenter 1}
+    {vertex 0.05 0.1725}
+    {vertex 0.1275 0.1725}
+    {vertex 0.1275 0.2275}
+    {vertex 0.05 0.2275}
+}
+{
+    {type polygon}
+    {id 3}
+    {vertex 0.2 0.1}
+    {vertex 0.3 0.0}
+    {vertex 0.6 0.0}
+    {vertex 0.3 0.2}
+    {vertex 0.6 0.3}
+    {vertex 0.3 0.4}
+    {vertex 0.2 0.3}
+}

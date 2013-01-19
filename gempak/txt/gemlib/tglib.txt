@@ -1,0 +1,61 @@
+
+
+                  Grid Time (TG) Library 
+ 
+ 
+The GEMPAK GRID TIME library subroutines process grid times for 
+GEMPAK.
+ 
+The GEMPAK format for grid time is a character string:
+
+    YYMMDD/HHMMthhhmm
+ 
+        YY      last two digits of the year 
+        MM      month                       
+        DD      day of month
+        /       date and time separator
+        HH      hour                        
+        MM      minute
+        t       type  ( F=forecast, A=analysis, G=guess, 
+                        I=initialization )
+        hhh     forecast hour
+        mm      forecast minute
+ 
+The string before the / is the DATE; the string after the / is the 
+TIME; "thhhmm" is the FORECAST TIME.
+
+If  hhhmm  is one or two characters, they will be interpreted as
+hours.  Three or more characters will be right justified in hhhmm.
+
+The forecast type may specify V for verification time.  In this
+case,  hhhmm  will be subtracted from the DATE and TIME and the
+type will be returned as  F.
+ 
+A partial time may be entered for the grid time.  The last time in
+the data set will be used to fill in the missing parts.  If the 
+input string does not contain the date and time separator, '/', 
+the input string is assumed to be a left-justified time (i.e., 12 
+represents HH).  If the forecast type is not specified, the forecast
+time from the last time will be used.  FIRST and LAST can be used to 
+specify the first and last times in the file.
+
+        If the last time in the file is  890408/1200F72,
+        the abbreviated forms will be translated into the 
+        following GEMPAK times:
+
+        3/11          ---->       890403/1100F72
+
+        00F00         ---->       890408/0000F00
+
+        7/            ---->       890407/1200F72
+
+        LAST          ---->       890408/1200F72
+
+        LASTF00       ---->       890408/1200F00
+
+        F12           ---->       890408/1200F12
+
+        9/00V48       ---->       890407/1200F48
+
+
+

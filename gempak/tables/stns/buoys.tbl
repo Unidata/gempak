@@ -1,0 +1,25 @@
+! BUOYS.TBL
+!
+! This table contains marine buoy locations used by the National Marine 
+! Verification program.
+!
+! Log:
+! G. Krueger/EAI         6/97
+! A. Hardy/GSC           4/99	Added underscores to names
+! C.J.Janota/MPC	 7/00	Added 3 more WATL buoys for MPC verification
+!
+! The format for the file is given below, with the number of characters in
+! parentheses.
+!
+!STID    STNM   NAME                             ST CO   LAT    LON  ELV PRI
+!(8)     (6)    (32)                            (2)(2)   (5)    (6)   (5)(2)
+!
+         44004  Hotel                               US  3850  -7070     0  0
+         41001  East_Hatteras                       US  3470  -7260     0  0
+         41002  South_Hatteras                      US  3230  -7520     0  0
+         44005  Gulf_of_Maine                       US  4290  -6890     0  0
+         44008  Nantucket                           US  4050  -6940     0  0
+         44011  Georges_Bank                        US  4110  -6660     0  0
+         46005  Washington                          US  4610 -13100     0  0
+         46002  Oregon                              US  4250 -13030     0  0
+         46059  Point_Arena                         US  3800 -13000     0  0

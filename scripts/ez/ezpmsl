@@ -1,0 +1,37 @@
+#! /bin/csh
+#
+# EZPMSL
+#
+# This script will plot the mean sea level pressure and the 1000-500
+# thickness for all of the times in the given model.
+#
+#	Syntax:  ezpmsl
+#
+##
+# Log:
+# D. Plummer/NMC	 1994
+# S. Jacobs/NMC		10/94		Clean up
+
+source settings
+
+gdcntr << EOF
+GDATTIM	= ALL
+DEVICE	= ${dev}
+!
+! Restore the 1000-500 mb thickness parameters
+restore ez/thick500
+CLEAR	= yes
+TITLE	= 5/-2/${model} ~  MSL PRESSURE, 1000-500 MB THICKNESS|~ MSLP, 1000-500 THKN
+r
+
+!
+! Restore the mean sea level pressure parameters
+restore ez/pmsl_hilo
+CLEAR	= no
+TITLE	= 0
+r
+
+;2
+;l
+ex
+EOF

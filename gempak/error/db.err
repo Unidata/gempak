@@ -1,0 +1,14 @@
+!	DB error file
+!
+ -1	! Could not connect to services on host !AS - check that the camel is running.
+ -2     ! Data category !AS not supported.
+ -3     ! Text for data base query !AS not set.
+ -4     ! Data base query !AS was run unsuccessfully.
+ -5     ! XSLT file !AS not found.
+ -6     ! XML transform performed unsuccessfully.
+ -7     ! Error allocating memory.
+ -8     ! Data base query !AS not supported for the data type.
+ -9     ! Invalid data base query/data type combination: !AS
+ -10    ! Unable to get binary data for data category !AS
+ -11    ! Unable to run curl command line utility.
+ -12    ! Returned XML message contains error.

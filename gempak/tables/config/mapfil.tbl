@@ -1,0 +1,136 @@
+! MAPFIL.TBL
+!
+! This table specifies map file alias names for GEMPAK map files.
+! Map alias names can be used by GEMPAK programs to set the
+! value of $MAPFIL.  The aliases are also used by NMAP/NMAP2 to
+! specify the map overlays that appear in the "Map Selection" GUI.  
+! See $GEMTBL/nmap/mapovl.nmap for additional details.
+!
+! Note: Do NOT use tabs between columns in this table.
+! Note: GG_DMAP requires that aliases be all lower case!
+!	Map file names can now be up to 72 characters and are case sensitive.
+
+!!
+! Log:
+! S. Maxwell/GSC	 1/97
+! G. Krueger/EAI	 4/97	Added zones
+! G. Krueger/EAI	 6/97	Added Oceanic Forecast areas
+! C. Lin/EAI		 7/97	Added Sigwx for AVN
+! G. Krueger/EAI	10/97	Added Basic Weather 12/24hr & 36/48hr
+! G. Krueger/EAI	 6/98	Added North America Forecast Bounds
+! J. Partain/MPC	 7/98	Added MPC EPacific products area
+! J. Partain/MPC	 9/98	Added MPC NPac and NAtl products areas
+! G. Krueger/EAI	10/98	Added Basic Weather GIF boundary map
+! G. Krueger/EAI	11/98	Added Medium Range forecast boundary map
+! G. Krueger/EAI	12/98	Added Pacific Surface forecast boundary map
+! J. Partain/MPC	 3/99	Added fcst boundary areas for Pac/Atl SFC Anal
+! G. Krueger/EAI	 6/99	Added Quantitative Precip Fcst Verification
+! G. Krueger/EAI	 7/99	Added Flight Information Region boundary map
+! G. Krueger/EAI	 9/99	Modified for new hi-res cwa map
+! G. Krueger/EAI	10/99	Added new boundary files for TPC
+! G. Krueger/EAI	 1/00	Added River Forecast Center Basins
+! T. Piper/GSC		 4/00	Added Palmer Climate Zones
+! T. Piper/GSC		 8/00	Added State Boundaries
+! D.W.Plummer/NCEP	 2/01	Added DC VAAC Boundary
+! S. Schotz/NCEP	11/01	Updated Documentation
+! S. Jacobs/NCEP	 5/03	Added HPCSFC
+! G. Grosshans/SPC      10/03   Added Fire Weather Zones
+! R. Tian/SAIC		 2/04	Added US Time Zones
+! A. Hardy/NCEP		 3/04	Added Marine zones/Counties
+! J. Morgan/OPC		 8/04	Added 1000 Fathom Line
+! T. Piper/SAIC		 4/06	Removed sigwx.ncp
+! G. Grosshans/SPC	 9/07	Added spcout.ncp
+! m.gamazaychikov/SAIC	12/07	Added akdesk.ncp
+! m.gamazaychikov/SAIC	07/08	Added corrne.ncp
+! m.gamazaychikov/SAIC  11/08   Added vaacar.ncp
+! G. Grosshans/SPC	01/10	Added Fire Weather PSA areas
+!
+!-----------------------------------------------------------------------------
+!ALIAS       DESCRIPTION              MAP FILE NAME
+!(12)        (24)                     (72)
+!-------------------------------------------------
+bwx1224      Basic Weather 12 & 24hr  bwx1224.ncp
+bwx3648      Basic Weather 36 & 48hr  bwx3648.ncp
+bwxgif       Basic Weather GIF        mefbbw.ncp
+medrange     Medium Range Weather     mefbmr.ncp
+cwa          County Warning Areas     hicwa.nws
+rfc          River Forecast Centers   rfc.nws
+abrfc        AR-Red Basin RFC Basins  tprbab.rfc
+lmrfc        Lower MS RFC Basins      tprblm.rfc
+marfc        Mid Atlantic RFC Basins  tprbma.rfc
+mbrfc        MO Basin RFC Basins      tprbmb.rfc
+ncrfc        North Central RFC Basins tprbnc.rfc
+nerfc        Northeast RFC Basins     tprbne.rfc
+ohrfc        Ohio RFC Basins          tprboh.rfc
+serfc        Southeast RFC Basins     tprbse.rfc
+wgrfc        West Gulf RFC Basins     tprbwg.rfc
+climate      US CPC Climate Zones     tpczus.cpc
+palmer       US Palmer Climate Zones  tppzus.cpc
+states       US states, NWS           histus.nws
+county       US counties, NWS         hicnus.nws
+zones        US zones, NWS            hiznus.nws
+coast        World Coasts             hicowo.cia
+country      Hi-res World Countries   hicywo.cia
+inter        US Interstates           loisus.nws
+base         Poltcal Bndry,World,CIA  hipowo.cia
+nmap         Poltcal Bndry,World,CIA  hipowo.cia
+nsat         Poltcal Bndry,World,CIA  hipowo.cia
+roads        US Roads                 lordus.nws
+rivers       Rivers                   lorvwo.cia
+hirivers     Hi-res US Rivers         hirvus.usg
+state        State Highways           loshus.nws
+ushwy        US Highways              louhus.nws
+islands      Islands                  islands.cia
+lakes        Lakes                    lakes.cia
+nafos        Mix-res Pol Bndry,World  mxpowo.ncp
+hiseas       High Seas Forecast Areas mehsuo.ncp
+rseas        Regional Sea Fcst Areas  mereuo.ncp
+offshore     Offshore Forecast Areas  hiosuo.nws
+wbcmarine    Marine zones/Counties    himzcn.nws
+offsh2       Offshore Forecast OPC    himouo.nws
+nam          North America Fcst Bnds  mefbna.ncp
+epacprod     East Pacific Products    mefbpe.ncp
+npacprod     North Pacific Products   mefbpn.ncp
+natlprod     North Atlantic Products  mefban.ncp
+pacsfcpd     Pacific Surface Products mefbps.ncp
+pacpart1     Pacific SFC Anal Part 1  mefbp1.ncp
+pacpart2     Pacific SFC Anal Part 2  mefbp2.ncp
+pacpart3     Pacific SFC Anal Part 3  mefbp3.ncp
+atlpart1     Atlantic SFC Anal Part 1 mefba1.ncp
+atlpart2     Atlantic SFC Anal Part 2 mefba2.ncp
+atlpart3     Atlantic SFC Anal Part 3 mefba3.ncp
+qpfver       QPF Verification         mefbqv.ncp
+fir          Flight Information Regn  hifiwo.ncp
+convsigmet   Convective Sigmet Bounds tpcsus.ncp
+wregion      Western Region Bounds    tpfbwr.ncp
+tpcsfc       TPC Surface Analysis     tptana.ncp
+tpcsfcbnd    TPC Surface Boundary     tptbna.ncp
+tpchsf       TPC High Seas            tpthna.ncp
+tpcsig       TPC SigMets              tptsna.ncp
+tpcavn       TPC Aviation             tptvna.ncp
+dcvaac       DC VAAC Boundary         dcvaac.ncp
+hpcsfc       HPC SFC Anl Boundary     hpcsfc.ncp
+firezones    US Fire WX Zones, NWS    tpfzus.nws
+timezone     US Time Zone, NWS        hitzus.nws
+1000fthm     1000 Fathom Line         hikfwa.ncp
+artcc        ARTCC Areas              artcc.gsf
+spcotlkbnd   SPC OUTLOOK BOUNDS       spcout.ncp
+akdesk       Alaska desk              akdesk.ncp
+necorr       NE Corridor              corrne.ncp
+vaacar       VAAC areas               vaacar.ncp
+hiakpsa      Alaska PSA Areas         hiakpsa.nws
+hinpsa       US PSA Areas             hinpsa.nws
+!
+! Unidata additions
+rdis         Interstates              rdis.uni
+rdus         US Highways              rdus.uni
+rdsh         State Highways           rdsh.uni
+rdar         Arterial Roads           rdar.uni
+hirdlo       Local Streets            hirdlo.uni
+hicnuni      AWIPS counties           hicnus.uni
+histuni      AWIPS states             states.uni
+hirdny       NYC streets              hirdny.uni
+hicnny       NYC counties             hicnny.uni
+tpnynj       NYC area counties        tpnynj.uni
+brazil       Brazillian States        histbr.uni
+argentina    Argentinian States       histar.uni

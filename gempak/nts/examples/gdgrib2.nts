@@ -1,0 +1,15 @@
+GDFILE  $GEMPAK/data/hrcbob.grd                                                                                                             
+GFUNC   tmpk                                                                                                                            
+GDATTIM f24                                                                                                                             
+GLEVEL  500                                                                                                                             
+GVCORD  pres                                                                                                                            
+GBTBLS  wmogrib3.tbl                                                                                                                    
+GBFILE  hrcbob.pgrb                                                                                                                     
+VERCEN                                                                                                                                  
+PDSVAL                                                                                                                                  
+PRECSN  b/-3                                                                                                                            
+WMOHDR  HTRE50                                                                                                                          
+CPYFIL  #212                                                                                                                            
+PROJ                                                                                                                                    
+GRDAREA                                                                                                                                 
+KXKY                                                                                                                                    

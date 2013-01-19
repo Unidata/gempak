@@ -1,0 +1,40 @@
+
+
+                         Bounds Subroutines
+
+
+The plot space is the region of the graphics device that a program can
+drawn on.  This overall region may be subdivided or reduced.
+
+Subroutine GSVIEW specifies a view region within the plot space.  The
+view region is a fraction of the overall drawing area.  Point (0, 0) is
+the lower left corner and (1, 1) is the upper right corner of the plot
+space; the view region is any rectangular portion inside.  For example,
+the upper right quadrant is selected by placing the lower left corner of
+the view region at (0.5, 0.5) and the upper right corner at (1, 1).
+Except for square devices, these fractional units are not the same as
+the normalized coordinates.
+
+Bounds of the currently set view region are returned by subroutine
+GQVIEW.  A view region, or any rectangular fraction of the plot space,
+is erased by subroutine GCLPNL.
+
+Margins reduce the plot space.  As a default, there are no margins.
+GSMMGN defines margins for plotting in map mode; GSGMGN defines margins
+for the graph mode.  No margins apply when plotting on satellite or
+radar imagery.  The margins are usually set at about the same time as
+the M coordinate system is defined.  The margins remain set for the life
+of the coordinate system; calls to change the margins have no effect
+until the coordinate system is redefined.  Margins are specified as
+either fractions of the plot space or as multiples of the currently set
+text character size.  Currently set margins are queried by calls to
+GQMMGN and GQGMGN.
+
+Subroutine GQBND is called to query the limits of any of the coordinate
+systems.  The bounds of the D, N, V, and P regions are returned exactly
+while the bounds of the M and G regions are estimates of the maximum and
+minimum values of the coordinates along each axis.
+
+Given a set of points in a particular coordinate system, subroutine
+GPTVIS tests which points will be visible and which points will be
+clipped if plotted.

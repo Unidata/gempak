@@ -1,0 +1,11 @@
+<!ELEMENT TEST-DTD (#PCDATA)>
+<!NOTATION type0 SYSTEM "program0">
+<!NOTATION type1 SYSTEM "program1">
+<!NOTATION type2 SYSTEM "program2">
+<!NOTATION type3 SYSTEM "program3">
+<!NOTATION type4 SYSTEM "program4">
+<!ENTITY FOO0 "bar0">
+<!ENTITY FOO1 "bar1">
+<!ENTITY FOO2 SYSTEM "file.type2" NDATA type2>
+<!ENTITY FOO3 "bar3">
+<!ENTITY FOO4 "bar4">

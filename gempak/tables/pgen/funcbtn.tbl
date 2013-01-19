@@ -1,0 +1,100 @@
+! FUNCBTN.TBL.
+!
+! This table provides the icons located in the function button palette
+!
+! Log:
+! E. Wehner/EAi		05/97
+! D. Keiser/GSC		06/97		Added delall (delete all) button
+! D. Keiser/GSC		06/97		Added flip button
+! E. Wehner/Eai		07/97		Added rotate button
+! E. Safford/GSC	11/97		Added modify button
+! C. Lin/EAi		12/97		Added saveas and restore buttons
+! E. Safford/GSC	02/98		Added undo button
+! E. Safford/GSC	02/98		Added partial delete button
+! E. Safford/GSC	03/98		Added multi-select button  
+! E. Safford/GSC	04/98		Added ungroup              
+! S. Law/GSC		04/98		Added copy
+! C. Lin/EAI		04/98		Added label
+! S. Law/GSC		09/98		Added delpoint
+! S. Law/GSC		09/98		Added connect
+! S. Law/GSC		09/98		Added ungrpall
+! W. Li/EAI		11/98		Added numb_edit
+! E. Safford/GSC	12/98		rename numb_edit to inc_dec
+! E. Safford/GSC	01/99		add showgrps
+! S. Jacobs/NCEP	 2/99		Reorganized functions
+! H. Zeng/EAI           12/00           added redo
+! H. Zeng/EAI           01/01           removed control buttons from here
+! E. Safford/GSC	04/01		reorder for horizontal draw
+! H. Zeng/EAI           05/01           added chnggrps
+! J. Wu/SAIC            10/02           add extrap & remove label
+! E. Safford/SAIC	11/03		add smear
+! J. Wu/SAIC            03/04           add interp (interpolation)
+! J. Wu/SAIC            06/04           add filter (display filter)
+! J. Wu/SAIC            03/05           add shownongrp
+! H. Zeng/SAIC		07/06		add distance
+! E. Safford/SAIC	03/07		add from
+! E. Safford/SAIC	06/07		add cycle
+! X. Guo/CWS		01/10		add addpoint
+!------------------------------------------------------------------------
+BEGIN
+!
+! Row 1
+!
+select
+modify
+connect
+!
+! Row 2
+!
+multisel
+move
+delete
+!
+! Row 3
+!
+group
+copy
+partdel
+!
+! Row 4
+!
+ungroup
+rotate
+delpoint
+!
+! Row 5
+!
+ungrpall
+flip
+delall
+!
+! Row 6
+!
+showgrps
+inc_dec
+del_obj
+!
+! Row 7
+!
+chnggrps
+undo
+redo
+!
+! Row 8
+!
+shownongrp
+extrap
+smear
+!
+! Row 9
+!
+interp
+filter
+distance
+!
+! Row 10
+!
+from
+cycle
+addpoint
+END

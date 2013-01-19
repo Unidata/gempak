@@ -1,0 +1,119 @@
+C************************************************************************
+C*								        *
+C* Log:								        *
+C* D. Kidwell/NCEP 	 4/95	                                        *
+C* D. Kidwell/NCEP 	 9/96	Added documentation                     *
+C* K. Tyle/GSC		 4/97	Increased id to 8 chars		 	*
+C* D. Kidwell/NCEP 	 4/98	New interface INTF; modified OUTREC     *
+C* D. Kidwell/NCEP 	10/98	Moved data statements elsewhere         *
+C************************************************************************
+	COMMON / outrec / irtarr ( 5 ), irhour,
+     +			  rmkund, seqnum, wmohdr, oristn, bultim, bbb,
+     +			  contry, logmsg, irctm ( 5 )
+C*
+	CHARACTER * 1000 logmsg
+	CHARACTER * 200 rmkund
+	CHARACTER * 12 bultim
+	CHARACTER * 8 bbb, wmohdr, oristn
+	CHARACTER * 4 seqnum, contry
+C*
+C************************************************************************
+C* Input parameters (stored in COMMON / postpr /)                       *
+C*	IRTD  	INTEGER	   Error value returned from decoder            *
+C*	NUM  	INTEGER	   Number of fields to be decoded               *
+C*								        *
+C* Input and output parameters (stored in COMMON / postpr /)            *
+C*	IPTR  	INTEGER	   Pointer to current/next string array element *
+C*								        *
+C* Output parameters (stored in COMMON / postpr /)                      *
+C*	DONLIN  LOGICAL    Flag for completed processing                *
+C*	IMHERE  INTEGER	   Pointer for next decode routine to use       *
+C*	IQUIT  	INTEGER	   Re-entry point in DO loop                    *
+C*	ERRFLG  LOGICAL	   Master error flag for print                  *
+C************************************************************************
+C*
+        COMMON / postpr / irtd, num, iptr, donlin, imhere, iquit, errflg
+C*
+        LOGICAL donlin, errflg
+C*
+C************************************************************************
+C*  / INTF /                                                            *
+C*                                                                      *
+C*  This common area contains the interface arrays.                     *
+C************************************************************************
+	PARAMETER	( MXVISB = 2 )
+C*					Maximum number of visibility    
+C*					groups
+	PARAMETER	( MVM1   = ( MXVISB - 1 ),
+     +			  MVM1T3 = ( MVM1 * 3 )  )
+C*
+	PARAMETER	( MXRWVR = 4 )
+C*					Maximum number of runway visual  
+C*					range groups
+	PARAMETER	( MRM1   = ( MXRWVR - 1 ),
+     +			  MRM1T5 = ( MRM1 * 5 )  )
+C*
+	PARAMETER	( MXWTHR = 3 )
+C*					Maximum number of weather groups 
+	PARAMETER	( MWM1   = ( MXWTHR - 1 ) )
+C*
+	PARAMETER	( MXSKYC = 6 )
+C*					Maximum number of sky condition  
+C*					groups
+	PARAMETER	( MSM1   = ( MXSKYC - 1 ) )
+C*
+	PARAMETER	( NRIMN  = 80 )
+C*					Number of real interface
+C*					mnemonics
+	PARAMETER	( NRSLMN = 44 )
+C*					Number of real single-level
+C*					interface mnemonics
+	PARAMETER	( NRSLP1 = NRSLMN + 1 )
+C*
+	COMMON  / RINTFP /
+     +		irthrp  , irauto  , irdrct  , irsped  , irsknt  ,
+     +		irgums  , irgust  , irdrc1  , irdrc2  , irvrtv  ,
+     +		irtmpc  , irdwpc  , iralti  , iraltm  , irp03i  ,
+     +		irp06i  , irp24i  , irp01i  , irsnow  , irsnew  ,
+     +		irweqs  , irctyl  , irctym  , irctyh  , irmsun  ,
+     +		irpmsl  , irtdxc  , irtdnc  , irt6xc  , irt6nc  ,
+     +		irp03d  , irctmx  , irctmn  , ircttp  , ircorn  ,
+     +		irpwdr  , irpwsp  , irpwhr  , irpwmn  , irwshh  ,
+     +		irwshm  , irslat  , irslon  , irselv   
+	COMMON  / RINTFP /
+     +		irnvsb  , irvsby ( MXVISB ), irvsbk ( MXVISB ),
+     +	 		  irvsfl ( MXVISB ),
+     +		irnrwy  , irv1ri ( MXRWVR ), irv2ri ( MXRWVR ),
+     +			  irv1rf ( MXRWVR ), irv2rf ( MXRWVR ), 
+     +			  irrwyt ( MXRWVR ),
+     +		irnpwx  ,
+     +		irnsky  , ircmtn ( MXSKYC )                    
+C*					Pointers to relative locations of
+C*					real interface mnemonics within
+C*					rimnem( ).  These pointers will
+C*					be set by MT_IFSP and then used
+C*					as indices into the real
+C*					interface values array rivals( ).
+C*
+	REAL		rivals ( NRIMN )
+C*
+	COMMON  / RINTFV /	rivals
+C*					Real interface values
+C*
+	PARAMETER	( NCIMN = 8 )
+C*
+	COMMON  / CINTFP /
+     +		icstid  , icrwid ( MXRWVR ), icwcod ( MXWTHR )
+C*					Pointers to relative locations of
+C*					character interface mnemonics
+C*					within cimnem( ).  These
+C*					pointers will be set by MT_IFSP
+C*					and then used as indices into the
+C*					character interface values array
+C*					civals( ).
+C*
+	CHARACTER	civals ( NCIMN ) * 9
+C*
+	COMMON  / CINTFV / 	civals
+C*					Character interface values
+C*

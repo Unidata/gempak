@@ -1,0 +1,47 @@
+
+ nmap2  
+
+ nmap2 [option flags] [spf file name]
+
+    Valid option flags:
+
+       -s  -- indicates an spf file name is specified.  The
+              sp file name MUST follow the -s flag and may or may
+              not be separated by a space.
+
+       -a  -- indicates an automatic load of data should take
+              place.  Is meaningless unless a valid spf file
+              has been specified.
+
+       -v  -- indicates a VGF name is specified. The VG file name
+              MUST follow the -v flag and may or may not be separated
+	      by a space.
+
+       -h  -- shows this usage file.
+
+
+    An spf file is either a relative or full path to a valid
+    spf file.  If the -a option is included, this file will be
+    read and the data will be loaded without any user interaction.
+    If the -a option is not included, then the data will be set
+    in nmap2's data window but the user interaction will be
+    required before data is loaded.
+
+    example:
+
+       nmap2 -as example.spf
+
+       nmap2 -v sfc_fronts.vgf
+
+
+    Command line parsing may be directed to halt with a double 
+    dash ("--").  This is useful if the user wants to send command 
+    line options to the window manager.  Nmap2 ceases parsing 
+    command line options at the "--", and passes everything that 
+    follows the doubledash on the command line to the window 
+    manager. 
+
+    example:
+   
+       nmap2 -- -xrm "*Page:0 0 1" &
+    

@@ -1,0 +1,30 @@
+GDATTIM first                                                                                                                           
+GLEVEL  0                                                                                                                               
+GVCORD  none                                                                                                                            
+PANEL   0                                                                                                                               
+SKIP    0/1                                                                                                                             
+SCALE   0                                                                                                                               
+GDPFUN  mul(3.28,hght)                                                                                                                  
+TYPE    c/f                                                                                                                             
+CONTUR  1                                                                                                                               
+CINT    1;500;1000;1500;2000;2500;3000;3500;4000;5000;6000;7000;8000                                                                    
+LINE    32/1/1/0                                                                                                                        
+FINT    1;500;1000;1500;2500;3000;4000;5000;6000;7000;8000;10000;12000                                                                  
+FLINE   26;23-1                                                                                                                         
+HILO    0                                                                                                                               
+HLSYM   0                                                                                                                               
+CLRBAR  1/h/ll/.007;.007/.75;.03                                                                                                        
+WIND    bk0                                                                                                                             
+REFVEC                                                                                                                                  
+TITLE   0                                                                                                                               
+TEXT    1/22/2/hw                                                                                                                       
+STNPLT                                                                                                                                  
+SATFIL                                                                                                                                  
+RADFIL                                                                                                                                  
+LUTFIL                                                                                                                                  
+STREAM                                                                                                                                  
+POSN    0                                                                                                                               
+COLORS  0;                                                                                                                              
+MARKER  0                                                                                                                               
+GRDLBL  0                                                                                                                               
+FILTER  3                                                                                                                               

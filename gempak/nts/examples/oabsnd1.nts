@@ -1,0 +1,12 @@
+SNFILE  $GEMPAK/data/hrcbob.snd                                                     
+GDFILE  hbobsnd.grd                                                             
+SNPARM  tmpc;dwpc;hght;uwnd;vwnd                                                
+STNDEX  lift;show                                                               
+LEVELS  man                                                                     
+VCOORD  pres                                                                    
+DATTIM  all                                                                     
+DTAAREA us-                                                                     
+GUESS                                                                           
+GAMMA   0.3                                                                     
+SEARCH  20                                                                      
+NPASS   2                                                                       

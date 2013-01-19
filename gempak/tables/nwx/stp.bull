@@ -1,0 +1,18 @@
+! STP.BULL
+!
+! Location information for the following product:
+! State_Max/Min_Temp_and_Precip_Table.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+ASHW50 PHFO     HONOLULU                         HI US  2129 -15780     0
+ASKA50 PTKK     TRUK/MOEN_FLT_S                  -- KA   746  15185     0
+ASKA50 PTKR     WSO_KOROR                        -- KA   726  13444     0
+ASKA50 PTTP     WSO_POHNPEI                      -- KA   694  15825     0
+ASKA50 PTYA     YAP_ISLAND                       -- KA   947  13808     0
+ASMH50 PKMR     WSO_MAJURO                       -- MH   705  17127     0
+ASZS50 NSTU     PAGO_PAGO                        -- ZM -1432 -17072     0
+NZUS66 KMFR     MEDFORD                          OR US  4236 -12287     0

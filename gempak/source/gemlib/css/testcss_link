@@ -1,0 +1,4 @@
+$CC $CFLAGS -c testcss.c
+$FC $LDFLAGS -o $OS_BIN/testcss \
+		testcss.o $CGEMLIB $GEMLIB
+$RM *.o

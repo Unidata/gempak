@@ -1,0 +1,56 @@
+GEMPARM=$GEMPAK/parm
+export GEMPARM
+
+pdfbld $GEMPAK/pdf GDCFIL
+#########################
+pdfbld $GEMPAK/pdf GDCNTR
+#########################
+pdfbld $GEMPAK/pdf GDCROSS
+##########################
+pdfbld $GEMPAK/pdf GDDELT
+#########################
+pdfbld $GEMPAK/pdf GDDIAG
+#########################
+pdfbld $GEMPAK/pdf GDEDIT
+#########################
+pdfbld $GEMPAK/pdf GDFRZL
+#########################
+pdfbld $GEMPAK/pdf GDGRIB
+#########################
+pdfbld $GEMPAK/pdf GDGRIB2
+#########################
+pdfbld $GEMPAK/pdf GDGSFC
+#########################
+pdfbld $GEMPAK/pdf GDINFO
+#########################
+pdfbld $GEMPAK/pdf GDLIST
+#########################
+pdfbld $GEMPAK/pdf GDMAP
+########################
+pdfbld $GEMPAK/pdf GDMOD
+########################
+pdfbld $GEMPAK/pdf GDOMEG
+#########################
+pdfbld $GEMPAK/pdf GDPLOT
+#########################
+pdfbld $GEMPAK/pdf GDPLOT2
+##########################
+pdfbld $GEMPAK/pdf GDPLOT3
+##########################
+pdfbld $GEMPAK/pdf GDPROF
+#########################
+pdfbld $GEMPAK/pdf GDSTAT
+#########################
+pdfbld $GEMPAK/pdf GDSTREAM
+###########################
+pdfbld $GEMPAK/pdf GDTHGT
+#########################
+pdfbld $GEMPAK/pdf GDTSER
+#########################
+pdfbld $GEMPAK/pdf GDVINT
+#########################
+pdfbld $GEMPAK/pdf GDWIND
+#########################
+pdfbld $GEMPAK/pdf GRPHGD
+#########################
+echo ALL THE GD PDFs ARE BUILT.

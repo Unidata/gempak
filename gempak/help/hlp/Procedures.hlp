@@ -1,0 +1,223 @@
+
+                              NMAP2 Procedures
+
+
+I. Functionality
+
+NMAP2 provides the capability to save and restore loop information by using
+Stored Procedure Files (SPFs).  The following information can be saved
+and retrieved from an SPF for up to eight loops:
+
+        A. Data set name(s) and path(s)
+        B. Dominant data set
+        C. Skip factor
+        D. Number of frames
+        E. Roam factor
+        F. Auto-update on/off
+        G. Pre-defined area name
+        H. Graphics area (garea) and map projection (proj)
+        I. Map on/off, Lat/Lon lines on/off, Map overlay name(s)
+	J. Map and Lat/Lon line overlay attributes, e.g., color and line type 
+
+Attributes for data sets that can be modified by clicking the "Edit Source"
+button can also be saved and retrieved.  These include station model 
+attributes for surface and upper-air data sets and plotting attributes for 
+miscellaneous data sets.
+
+The latest times are used for each SPF specified data set except in the
+case of the single time mode.  For that case, the frame number selected in the
+time line is saved and is used when the SPF is restored. 
+
+II.  Operation
+
+Save and restore functions are accessed by clicking the "Save Data Settings" 
+and "Restore Data Settings" buttons in the "Data Selection Window".
+
+The "Save Data Settings" function saves loop information to a user selected
+ASCII SPF for all of the loops loaded in the "Data Selection Window" GUI. For 
+example, suppose loop 1 contains GOES East Satellite imagery and METAR surface
+observations and loop 2 contains radar imagery and model data.  To save this 
+information to an SPF, click the "Save Data Settings" which invokes the 
+"Save to SPF file" GUI.  This GUI allows the user to select an existing SPF 
+name or to specify a new SPF name.  This GUI allows the user to select whether 
+to save each specified SPF data source's current time or to have the data
+source restored using the latest available time.  The "Save to SPF file" GUI 
+operates in a similar fashion as the VGF open/save GUI.  SPFs are listed in 
+the GUI by directory name.  Directory names are specified in the table, 
+GEMTBL/nmap/spf.tbl.
+
+If a source is turned off in the "Data Selection Window", it is not saved to 
+the SPF.  However, if the turned off source is an image, its projection is 
+saved to the SPF.  Upon restore, the default garea and proj for the dominant 
+data source in the SPF is used.  It is recommended that all data sources be 
+turned on when saving to an SPF to avoid confusion.
+
+The "Restore Data Settings" function fills the "Data Selection Window" GUI with 
+loop information specified in an SPF.  It does not load the data into the loop
+frames.  In this way the user has the opportunity to modify any settings 
+before loading.  To retrieve a desired SPF click the "Restore Data Settings" 
+button.  The "Restore from SPF file" GUI is invoked which presents the same 
+list of directories and SPFs as the "Save from SPF file" GUI discussed above.  
+Select the desired SPF from the scroll list and click the "OK" button.  A 
+"Restore Confirmation" GUI is invoked which lists the data source and dominant 
+data for each loop.  Click the "Accept" or "Cancel" button to fill the 
+"Data Selection Window" GUI, or to select another SPF, respectively.
+
+Restore clears out all loop information from the "Data Selection Window". 
+For example, suppose NMAP2 has data sets, map areas and other information 
+filled in for loops 1, 2 and 3.  Selecting an SPF with loops 1 and 2 specified 
+overides the current loop information in loops 1 and 2 and clears the data 
+sets in loop 3.  In addition, map areas, and overlays are set to the defaults 
+for loops 3 - 8.
+
+III.  SPF Creation, Editing and Error Processing
+
+The SPF is an editable ASCII file.  It is recommended that the "Save Data 
+Settings" button be used to save procedures instead of creating an SPF from 
+scratch.  In this way the user is assured that the SPF will have the correct 
+format and operate as intended.  The "Save Data Settings" function 
+automatically adds a prolog to the SPF including account name and creation 
+date.
+
+A user edited SPF has the potential for improper formatting and errors.
+Invalid SPF entries are handled according to the following rules.
+
+A.  Invalid entries in SPF are noted in "Error Messages" pop-up upon 
+    restore.
+
+B.  No attempt is made to restore a data set with invalid data 
+    source values.  Valid data sources are consecutively renumbered
+    when restoring. For example, if source 1 is invalid, then source 
+    2 becomes source 1 and source 3 becomes source 2, and so on upon 
+    restoring.
+
+C.  If the dominant data source entry is invalid, the first data 
+    source becomes dominant.  If the first data source entry is 
+    dominant and invalid, then the next data source becomes the 
+    dominant one.
+
+D.  If skip value is invalid, it is set to 0 meaning no frames are
+    skipped.
+
+E.  If the frames value is invalid, it is set to the default value for 
+    corresponding data type. The default is determined by the first value 
+    specified in the table $GEMTBL/config/datatyp.tbl.
+
+F.  Invalid roam factors are set to 0 (fit to screen).  A roam factor 
+    of 1 (size of image) will be set to 0 if no image source exists 
+    for a given loop.
+
+G.  If the auto update value is invalid, it is set to 1, which is on.
+
+H.  If either the garea or proj value is invalid in the SPF, then 
+
+    1) If imagery is displayed, then garea is set to the
+       entire image using the the image projection;
+
+    2) If imagery is not displayed, then garea and proj are
+       set to the default values that are retrieved from
+       the first entry in the $GEMTBL/nmap/mapinfo.tbl table.
+
+I.  If the pre-defined area name is invalid but garea and proj are valid, 
+    then the name is set to "CUSTOM" and the garea and proj values 
+    from the SPF are used.
+
+
+IV. SPF Syntax
+
+The SPF has two columns.  The first column is a reserved keyword that indicates
+the loop attribute.  The second column is the value for that loop attribute.
+Keywords and their values are grouped by loop in the file. The exclamation 
+point, !, precedes comment lines in the file.
+
+The following table lists the reserved keywords and their valid values 
+specified in the Definitions section.
+
+    <reserved keyword>  	Valid value(s)
+-------------------------------------------------------------------
+
+    <loopN_sourceM>     	Category | Data Source 
+
+    <loopN_sourceM_attr>        See Note #1 
+
+    <loopN_dominant>    	D
+
+    <loopN_frames>      	W
+
+    <loopN_skip>        	X
+
+    <loopN_roam>        	Y
+
+    <loopN_auto_update> 	Z
+
+    <loopN_map>         	Area name
+
+    <loopN_proj>        	proj
+
+    <loopN_garea>       	garea
+
+    <loopN_map_ovl>     	Overlay_Name1:attb1 attb2 ... attbj |
+		        	Overlay_Name2:attb1 attb2 ... attbj |
+			     	.
+			     	.
+			     	.
+                        	Overlay_Namen:attb1 attb2 ... attbj |
+				See Note #2
+
+    <loopN_single_time>         V | FN
+
+---------------------------------------------------------------------
+
+Definitions:
+
+    Category : Data Category type, e.g., CAT_SFC for METAR data.  This
+               value comes from the CATEGORY column in the 
+               $GEMTBL/config/datatyp.tbl
+    Data Source : Source names listed in the "Data Source" GUI separated
+                  by slashes, e.g., SURF_OBS/METAR/standard
+    N : Loop number (integer,  0 < N < 9 )
+    M : Source number for a given loop (integer, M > 0)
+    D : Dominant data source number (integer, D > 0)
+    W : Number of frames to load (integer, 0 < W < 80)
+    X : Frame Skip factor (integer, 0 <= X < W  )
+    Y : Roam Factor (integer 0 = fit to screen, 
+                     1 = size of image, 1 < Y < 20 roam factor )
+    Z : Auto Update Flag ( 0 = off, 1 = on ) 
+    Area name : Pre-defined area name.  This string is from the list of
+                selections that appear along the left side of the
+                "Map Selection" GUI.  The values are specified in the
+                $GEMTBL/nmap/mapinfo.tbl table. 
+    proj : GEMPAK proj value
+    garea : GEMPAK garea value
+    Map : Literal "Map" string.  If this string is not present, 
+          then the default map is not drawn.
+    Lat/Lon : Literal "Lat/Lon" string.  If this string is not present,
+              then lat/lon lines are not drawn.
+    V :	  Single time mode on/off flag, 1 = on, 0 = off
+    FN :  Frame number
+
+Note 1:
+-------
+	The <loopN_sourceM_attr> entry appears only for data sets that can have
+	their plotting attributes edited in NMAP.  These data sets include those
+	under the SURF_OBS, SURF_FCST, UAIR_OBS, and MISC categories.  The
+	attributes are specified following the conventions defined in 
+	$GEMTBL/config/prmlst.tbl for data sets in the SURF_OBS, SURF_FCST
+	and UAIR_OBS categories, and the table $GEMTBL/config/miscset.tbl
+	for data sets in the MISC category.  The default values from these
+	tables are used if the loopN_sourceM_attr entry is not present in the
+	SPF.
+
+Note 2:
+-------
+	The <loopN_map_ovl> entries are attributes associated with overlays
+	shown in the "Map Selection" GUI.  The attributes are specified 
+	following the conventions defined in $GEMTBL/nmap/mapovl.tbl.  For
+	map type overlays the attributes are GEMPAK color number, line type
+	and line width.  For the lat/lon overlay, the attributes are GEMPAK
+	color number, line type, line width, lat/lon plotting increment
+	in degrees and label frequency.  For station table type overlays
+	the attributes are GEMPAK color number, marker type, marker size, 
+	marker state, marker text size, and marker width.   The default
+        values from the mapovl.tbl table are used if the attributes are
+	not specified in the SPF.

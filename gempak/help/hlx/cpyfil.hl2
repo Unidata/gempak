@@ -1,0 +1,36 @@
+     CPYFIL
+ 
+     FORM:
+     Grid file whose navigation is to be used in new grid file | subarea
+
+     CPYFIL identifies the location of the grid navigation and analysis 
+     information to be stored in a grid file, as well as an optional subarea.
+     Three options are available:
+
+        1.  If CPYFIL is blank, the information is taken from the input 
+            for PROJ, GRDAREA, KXKY, and ANLYSS.
+
+        2.  If CPYFIL begins with a #, the information is read from the 
+            line in the grid navigation table which has the grid name or 
+            number corresponding to the rest of CPYFIL.
+
+        3.  If CPYFIL is the name of a current grid file, the grid and 
+            navigation information will be copied from that file.
+
+     For cases 2) and 3), the information may be followed by a vertical bar
+     and a specified subarea.  This subarea has the same meaning as GAREA and
+     may take on the same values.  The grid file that gets created has the 
+     same navigation and grid spacing as that indicated by the first part 
+     except over a smaller area.
+
+     The input for CPYFIL may also be a file type (model alias). Valid 
+     aliases may be found in the table "datatype.tbl" with CATEGORY 
+     (column 4) equal to CAT_GRD.  When one of these file types is input, 
+     the program searches locally for the most recent file first, then 
+     locally for the previous file. If no files are found locally, the 
+     program searches remotely for the most recent file, then remotely for 
+     the previous file.
+
+     NOTE: If CPYFIL is not blank, the values of PROJ, GRDAREA, KXKY,
+     and ANLYSS will be ignored.
+ 

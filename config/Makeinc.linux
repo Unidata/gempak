@@ -1,0 +1,1 @@
+include $(NAWIPS)/config/Makeinc.$(NA_OS)_$(GEM_COMPTYPE)

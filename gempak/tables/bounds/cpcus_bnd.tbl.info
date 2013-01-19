@@ -1,0 +1,17 @@
+!
+!    BOUNDARIES FILENAME 
+cpcus_bnd.tbl
+!
+!    TOTAL NUMBER OF BOUNDS
+1
+!
+!    MAX NUMBER OF POINTS per BOUND
+93
+!
+!    BOUNDARY STRUCTURE INFORMATION
+!
+!
+CPC_US 0            45.01 -114.89 24.26 -179.65 71.91 -65.37 2    
+<AREA>CPC_US
+	70           50.73 -179.65 71.91 -129.18 54       
+	1111         24.26 -125.24 50.37 -65.37 93       

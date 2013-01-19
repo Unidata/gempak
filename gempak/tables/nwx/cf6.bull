@@ -1,0 +1,35 @@
+! CF6.BULL
+!
+! Location information for the following product:
+! WFO_Daily_Climate_Web_Page_Messages.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+CXUS55 KBOI     BOISE                            ID US  4356 -11620     0
+CXUS55 KBYZ     BILLINGS                         MT US  4575 -10856     0
+CXUS55 KFGZ     FLAGSTAFF                        AZ US  3522 -11181     0
+CXUS55 KGGW     GLASGOW                          MT US  4820 -10662     0
+CXUS55 KLKN     ELKO                             NV US  4086 -11573     0
+CXUS55 KMSO     MISSOULA                         MT US  4691 -11408     0
+CXUS55 KPIH     POCATELLO/IDAHO_FALLS            ID US  4290 -11258     0
+CXUS55 KPSR     PHOENIX                          AZ US  3343 -11201     0
+CXUS55 KREV     RENO                             NV US  3956 -11979     0
+CXUS55 KSLC     SALT_LAKE_CITY                   UT US  4077 -11194     0
+CXUS55 KTFX     GREAT_FALLS                      MT US  4745 -11137     0
+CXUS55 KTWC     TUCSON                           AZ US  3222 -11094     0
+CXUS55 KVEF     LAS_VEGAS                        NV US  3604 -11518     0
+CXUS56 KBOI     BOISE                            ID US  4356 -11620     0
+CXUS56 KEKA     EUREKA                           CA US  4079 -12416     0
+CXUS56 KHNX     SAN_JOAQUIN_VALLEY/HANFORD       CA US  3631 -11962     0
+CXUS56 KLOX     LOS_ANGELES/OXNARD               CA US  3420 -11912     0
+CXUS56 KMFR     MEDFORD                          OR US  4236 -12287     0
+CXUS56 KMTR     SAN_FRANCISCO                    CA US  3659 -12184     0
+CXUS56 KOTX     SPOKANE                          WA US  4768 -11762     0
+CXUS56 KPDT     PENDLETON                        OR US  4568 -11884     0
+CXUS56 KPQR     PORTLAND                         OR US  4556 -12252     0
+CXUS56 KSEW     SEATTLE                          WA US  4768 -12225     0
+CXUS56 KSGX     SAN_DIEGO                        CA US  3290 -11705     0
+CXUS56 KSTO     SACRAMENTO                       CA US  3859 -12137     0

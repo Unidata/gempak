@@ -1,0 +1,14 @@
+!	This is the error file for DCISIG.
+!
++1	! International sigmet bulletin header error !AS
+-1	! Report is not a sigmet !AS
+-2	! Format error in sigmet preamble !AS
+-3	! Recognized phenomenon not found !AS
+-4	! Bad area definition !AS
+-5	! Missing expected phenom terminator !AS
+-6	! Format error for CANCEL !AS
+-7      ! Location !AS not in VOR table
+-8 	! Format error in sigmet preamble--no hyphen after preamble !AS
+-9	! MWO id or originating station not found in station table !AS
+-10	! Storm center not found !AS
+-11     ! Bad international sigmet location !AS

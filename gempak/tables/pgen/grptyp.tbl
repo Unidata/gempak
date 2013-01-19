@@ -1,0 +1,293 @@
+! GRPTYP.TBL
+!
+! This table lists the valid VGF group names. It allows the specification
+! of up to 20 different label values associated with each group.  Line and
+! text/symbol attributes can be specified for each label.
+!
+! The format for the file is given below, with the number of characters
+! in parentheses.  The group names (GROUP) must start from the first column,
+! and may be continued in the following lines with a continuation indicator
+! '\' right at the end of each line except the last line (there should be no
+! blanks before the continuation indicator). All the continuation 
+! lines must start with blanks.
+!
+! Each group name may also have an optional list of label choices
+! (LABEL ITEMS) which are presented to the user in the GUI.  To specify 
+! label values and their attributes, each entry must start with a "+" in
+! the first column.  The "+" is followed by the label value and attributes
+! using the following format:
+!
+!	+	LABEL_VALUE	LINE_ATTRIBS | TEXT_ATTRIBS
+! or
+!	+	LABEL_VALUE	LINE_ATTRIBS | SYMBOL_ATTRIBS
+!
+! where,
+!
+! LINE_ATTRIBS: color/width/pat_size/smooth/fill_pat/clsd_flg
+! TEXT_ATTRIBS: color/size/font/border/rot/just/hwsw
+! SYMBOL_ATTRIBS: color/width/size
+!
+! The line and text/symbol attributes use the GEMPAK definitions where:
+!
+!	color - 	The GEMPAK color (integer: 1-32)
+!	width - 	The line/symbol width (integer)
+!	pat_size -	Line pattern size (real)
+!	smooth -	Smoothing level (integer: 0,1,2)
+!	fill_pat -	Fill pattern number (integer: 0,1,2,3)
+!	clsd_flg - 	Closed flag (integer: 0,1)
+!
+!	size - 		Text/symbol size (real; keyword ok for text, e.g., small)
+!	font - 		Font number (integer)
+!	border - 	Border type (integer: nnn)
+!	rot -		Rotation flag (character: s,n)
+!	just - 		Text justification (character: l,c,r)
+!	hwsw - 		Hardware/Software flag (character: hw,sw)
+!
+!	See the GEMPAK help for TEXT, LINE, COLOR for additional details.
+!
+! If an attribute is not specified, then the previous value set in the 
+! GUI is used.
+!
+! Group names shown to users (GUI) is limited to those listed in this table
+! All group names listed in this table must be valid, i.e., each name must
+! match one of the following officially recognized group names:
+!
+! CLOUD, TURB, FRONT, JETS, HIGH, LOW, OUTLOOK, TROPICL, STNMDL, MRFSTN,
+! HAILOTLK, TORNOTLK, WINDOTLK TOTL_SVR, FIREOUTL, CATG_SVR, MESO_DSC
+!
+! or one of the special names designated for development purposes only 
+! (contact NCEP/NCO/CDB for assignment).
+!
+!
+! The maximum number of chars for any group name (GROUP) is 8.
+! The maximum number of LABEL ITEMS for each group type is limited to 20.
+! The maximum chars per LABEL ITEM string is limited to 9.
+!
+!!
+! Log:
+! S. Jacobs/NCEP	 2/99	Added warning in prolog
+! S. Jacobs/NCEP	 3/99	Added MRFSTN type
+! H. Zeng/EAI           04/00   Added label item list
+! G. Grosshans/SPC	 5/00	Added more selections for OUTLOOK type
+! M. Li/GSC		12/00	Added label item color list
+! D.W.Plummer/NCEP	01/01	Added new probabilistic outlook types
+! H. Zeng/EAI           03/01   Removed GRPNUM column
+! D.W.Plummer/NCEP	 3/01	Updated documentation
+! H. Zeng/EAI           03/01   Added multiple attrib. setting
+! S. Schotz/NCEP	04/01	Updated outlook group labels
+! S. Schotz/NCEP	11/01	Renamed Hail, Wind, Tornado groups
+! E. Safford/SAIC	05/02	Added MESO_DSC type
+! R. Tian/SAIC		07/02	Updated comment
+! J. Wu/SAIC		07/02	allow symbol names as label values
+! A. Hardy/NCEP		10/03   Added TSTMOLK type
+! G. Grosshans/SPC	02/06	Changed Fire Weather outlooks to
+!				handle new points product
+! M. Li/SAIC		08/06	Added EXT_SVR and EXT_FIRE
+! H. Zeng/SAIC		02/07	Added 7 additional group types
+! F. J. Yen/NCEP	04/07   Added ENH_PD1 and ENH_PD2
+! G. Grosshans/SPC	09/07	Added 30% line back in several
+!				SPC OUTLOOK GROUPS.  Changes
+!				attributes in some SPC specific
+!				groups.
+! G. Grosshans/SPC	02/08	Updated D3-8 and D4-8 OUTLOOK
+!				line color attributes.
+! J. Grams/SPC		02/09   Modified ENH_PD1 & ENH_PD2 line color 
+!                               attributes. Added ENH_PD3 & ENH_PD4.
+! G. Grosshans/SPC	02/10	Added ENH16
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!
+!
+!GROUP    LABEL ITEMS
+!(8)
+!+	LABEL_ITEM	COLOR
+!
+!
+CLOUD          -
+!
+TURB           -
+!
+FRONT     620];[620;420];[420;220];[220;020];[020;TROF
+!
+JETS           -
+!
+HIGH           -
+!
+LOW            -
+!
+OUTLOOK   TSTM;SLGT;MDT;HIGH;2%;5%;10%;15%;30%;45%;40%;60%;70%;SIG
++         TSTM    18/2/0.5/0/0/0 | 18/small/22/2/121/s/l/hw
++         SLGT    23/2/0.5/0/0/0 | 23/small/22/2/121/s/l/hw 
++         MDT      2/2/0.5/0/0/0 |  2/small/22/2/121/s/l/hw 
++         HIGH     7/2/0.5/0/0/0 |  7/small/22/2/121/s/l/hw 
++         2%      22/2/0.5/0/0/0 | 22/small/22/2/121/s/l/hw
++         5%      18/2/0.5/0/0/0 | 18/small/22/2/121/s/l/hw
++         10%      8/2/0.5/0/0/0 |  8/small/22/2/121/s/l/hw 
++         15%     20/2/0.5/0/0/0 | 20/small/22/2/121/s/l/hw
++         30%      2/2/0.5/0/0/0 |  2/small/22/2/121/s/l/hw 
++         45%      7/2/0.5/0/0/0 |  7/small/22/2/121/s/l/hw
++         40%     26/2/0.5/0/0/0 | 26/small/22/2/121/s/l/hw
++         60%     31/2/0.5/0/0/0 | 31/small/22/2/121/s/l/hw 
++         70%      2/2/0.5/0/0/0 |  2/small/22/2/121/s/l/hw
++         SIG     26/2/0.5/0/1/1 | 26/small/22/2/121/s/l/hw
+!
+LABEL     .01;.10;.25;.50;1;1.5;2;2.5;3;4;5;6
+!
+TROPICL        -
+!
+STNMDL         -
+!
+MRFSTN         -
+!
+HAILOTLK  5%;15%;30%;45%;60%;SIG
++         5%      18/2/0.5/0/0/0 | 18/small/22/2/121/s/l/hw
++         15%     20/2/0.5/0/0/0 | 20/small/22/2/121/s/l/hw 
++         30%      2/2/0.5/0/0/0 |  2/small/22/2/121/s/l/hw 
++         45%      7/2/0.5/0/0/0 |  7/small/22/2/121/s/l/hw 
++         60%     31/2/0.5/0/0/0 | 31/small/22/2/121/s/l/hw 
++         SIG     26/2/0.5/0/0/0 | 26/small/22/2/121/s/l/hw 
+!
+TORNOTLK  2%;5%;10%;15%;30%;45%;60%;SIG
++         2%      22/2/0.5/0/0/0 | 22/small/22/2/121/s/l/hw
++         5%      18/2/0.5/0/0/0 | 18/small/22/2/121/s/l/hw
++         10%      8/2/0.5/0/0/0 |  8/small/22/2/121/s/l/hw 
++         15%     20/2/0.5/0/0/0 | 20/small/22/2/121/s/l/hw 
++         30%      2/2/0.5/0/0/0 |  2/small/22/2/121/s/l/hw 
++         45%      7/2/0.5/0/0/0 |  7/small/22/2/121/s/l/hw 
++         60%     31/2/0.5/0/0/0 | 31/small/22/2/121/s/l/hw 
++         SIG     26/2/0.5/0/0/0 | 26/small/22/2/121/s/l/hw 
+!
+WINDOTLK  5%;15%;30%;45%;60%;SIG
++         5%      18/2/0.5/0/0/0 | 18/small/22/2/121/s/l/hw
++         15%     20/2/0.5/0/0/0 | 20/small/22/2/121/s/l/hw 
++         30%      2/2/0.5/0/0/0 |  2/small/22/2/121/s/l/hw 
++         45%      7/2/0.5/0/0/0 |  7/small/22/2/121/s/l/hw 
++         60%     31/2/0.5/0/0/0 | 31/small/22/2/121/s/l/hw 
++         SIG     26/2/0.5/0/0/0 | 26/small/22/2/121/s/l/hw 
+!
+TOTL_SVR  5%;15%;30%;45%;60%;SIG
++         5%      18/2/0.5/0/0/0 | 18/small/22/2/121/s/l/hw
++         15%     20/2/0.5/0/0/0 | 20/small/22/2/121/s/l/hw 
++         30%      2/2/0.5/0/0/0 |  2/small/22/2/121/s/l/hw 
++         45%      7/2/0.5/0/0/0 |  7/small/22/2/121/s/l/hw 
++         60%     31/2/0.5/0/0/0 | 31/small/22/2/121/s/l/hw 
++         SIG     26/2/0.5/0/0/0 | 26/small/22/2/121/s/l/hw 
+!
+FIREOUTL  CRITICAL;EXTREME;DRY-TSTM
++         CRITICAL  2/2/0.5/0/0/0 |  2/small/22/2/121/s/l/hw 
++         EXTREME   2/2/0.5/0/0/0 |  2/small/22/2/121/s/l/hw 
++         DRY-TSTM  2/2/0.5/0/0/0 |  2/small/22/2/121/s/l/hw 
+!
+CATG_SVR  SLGT;MDT;HIGH
++         SLGT    22/3/1.0/0/0/0 | 22/large/22/2/121/s/l/hw
++         MDT      5/3/1.0/0/0/0 |  5/large/22/2/121/s/l/hw
++         HIGH     2/3/1.0/0/0/0 |  2/large/22/2/121/s/l/hw
+!
+MESO_DSC  CNVTV;SVRUK;SVRRED;SVRBLUE;HVYRA;HVYSN;FZRA;\
+          pstwx09;wxsym065;wxsym073;wxsym075;csymb19;\
+          wxsym066;wxsym079;csymb06
++       CNVTV      9/3/0.7/0/0/1 |  9/small/22/2/221/s/c/hw
++       SVRUK      9/3/0.7/0/0/1 |  9/small/22/2/221/s/c/hw
++       SVRRED     2/3/0.7/0/0/1 |  2/small/22/2/221/s/c/hw
++       SVRBLUE   26/3/0.7/0/0/1 | 26/small/22/2/221/s/c/hw
++       HVYRA      3/3/0.7/0/0/1 |  3/small/22/2/221/s/c/hw
++       HVYSN      7/2/0.7/0/0/1 |  7/small/22/2/221/s/c/hw
++       FZRA       7/3/0.7/0/0/1 |  7/small/22/2/221/s/c/hw
++       pstwx09    5/3/0.7/0/0/1 |  5/1/2.0
++       wxsym065   3/3/0.7/0/0/1 |  3/1/2.0
++       wxsym073   7/3/0.7/0/0/1 |  7/1/2.0
++       wxsym075   7/3/0.7/0/0/1 |  7/1/2.0
++       csymb19    7/3/0.7/0/0/1 |  7/1/2.0
++       wxsym066   7/3/0.7/0/0/1 |  7/1/2.0
++       wxsym079   7/3/0.7/0/0/1 |  7/1/2.0
++       csymb06    7/3/0.7/0/0/1 |  7/1/2.0
+!
+TSTMOLK  5%;15%;30%;45%;60%;SIG
++         5%      18/2/0.5/0/0/0 | 18/small/22/2/121/s/l/hw
+!
++         15%     20/2/0.5/0/0/0 | 20/small/22/2/121/s/l/hw
++         30%      2/2/0.5/0/0/0 |  2/small/22/2/121/s/l/hw
++         45%      7/2/0.5/0/0/0 |  7/small/22/2/121/s/l/hw
++         60%     31/2/0.5/0/0/0 | 31/small/22/2/121/s/l/hw
++         SIG     26/2/0.5/0/0/0 | 26/small/22/2/121/s/l/hw
+!
+EXT_SVR  D4;D5;D6;D7;D8;D4-5;D4-6;D4-7;D4-8;D5-6;D5-7;D5-8;D6-7;D6-8;D7-8
++         D4       2/2/0.5/0/0/0 |  2/small/22/2/121/s/l/hw
++         D5      29/2/0.5/0/0/0 | 29/small/22/2/121/s/l/hw
++         D6      23/2/0.5/0/0/0 | 23/small/22/2/121/s/l/hw
++         D7      24/2/0.5/0/0/0 | 24/small/22/2/121/s/l/hw
++         D8       8/2/0.5/0/0/0 |  8/small/22/2/121/s/l/hw
++         D4-5     2/2/0.5/0/0/0 |  2/small/22/2/121/s/l/hw
++         D4-6     2/2/0.5/0/0/0 |  2/small/22/2/121/s/l/hw
++         D4-7     2/2/0.5/0/0/0 |  2/small/22/2/121/s/l/hw
++         D4-8     2/2/0.5/0/0/0 |  2/small/22/2/121/s/l/hw
++         D5-6    29/2/0.5/0/0/0 | 29/small/22/2/121/s/l/hw
++         D5-7    29/2/0.5/0/0/0 | 29/small/22/2/121/s/l/hw
++         D5-8    29/2/0.5/0/0/0 | 29/small/22/2/121/s/l/hw
++         D6-7    23/2/0.5/0/0/0 | 23/small/22/2/121/s/l/hw
++         D6-8    23/2/0.5/0/0/0 | 23/small/22/2/121/s/l/hw
++         D7-8    24/2/0.5/0/0/0 | 24/small/22/2/121/s/l/hw
+!
+EXT_FIRE   D3;D4;D5;D6;D7;D8;D3-4;D3-5;D3-6;D3-7;D3-8;D4-5;D4-6;D4-7;\
+           D4-8;D5-6;D5-7;D5-8;D6-7;D6-8;D7-8
++         D3       7/2/0.5/0/0/0 |  7/small/22/2/121/s/l/hw
++         D4       2/2/0.5/0/0/0 |  2/small/22/2/121/s/l/hw
++         D5      29/2/0.5/0/0/0 | 29/small/22/2/121/s/l/hw
++         D6      23/2/0.5/0/0/0 | 23/small/22/2/121/s/l/hw
++         D7      24/2/0.5/0/0/0 | 24/small/22/2/121/s/l/hw
++         D8       8/2/0.5/0/0/0 | 18/small/22/2/121/s/l/hw
++         D3-4     7/2/0.5/0/0/0 |  7/small/22/2/121/s/l/hw
++         D3-5     7/2/0.5/0/0/0 |  7/small/22/2/121/s/l/hw
++         D3-6     7/2/0.5/0/0/0 |  7/small/22/2/121/s/l/hw
++         D3-7     7/2/0.5/0/0/0 |  7/small/22/2/121/s/l/hw
++         D3-8     7/2/0.5/0/0/0 |  7/small/22/2/121/s/l/hw
++         D4-5     2/2/0.5/0/0/0 |  2/small/22/2/121/s/l/hw
++         D4-6     2/2/0.5/0/0/0 |  2/small/22/2/121/s/l/hw
++         D4-7     2/2/0.5/0/0/0 |  2/small/22/2/121/s/l/hw
++         D4-8     2/2/0.5/0/0/0 |  2/small/22/2/121/s/l/hw
++         D5-6    29/2/0.5/0/0/0 | 29/small/22/2/121/s/l/hw
++         D5-7    29/2/0.5/0/0/0 | 29/small/22/2/121/s/l/hw
++         D5-8    29/2/0.5/0/0/0 | 29/small/22/2/121/s/l/hw
++         D6-7    23/2/0.5/0/0/0 | 23/small/22/2/121/s/l/hw
++         D6-8    23/2/0.5/0/0/0 | 23/small/22/2/121/s/l/hw
++         D7-8    24/2/0.5/0/0/0 | 24/small/22/2/121/s/l/hw
+!
+ISOBARS  956;960;968;972;976;980;984;988;992;996;1000;1004;1008;\
+         1012;1016;1020;1024;1028;1032
+!
+HI_FCST  08;10;12;14;16;20;22;24;28;30;32;34;36;38;40;42;44;46
+!
+LO_FCST  60;64;68;72;76;80;82;84;86;88;90;92;94;96;98;00;02;04;08
+!
+WHFT     1.5;3;4.5;6;9;12;15;18;21;24;27;30;33;36;39;42;45;48
+!
+WHM      0.5;1;1.5;2;3;4;5;6;7;8;9;10;11;12;13;14;15;16;17;18
+!
+WPER     6;8;10;12;14;16
+!
+PROB     10;20;25;30;40;50;60;70;75;80;90;100
+!
+ENH20    10%;40%;70%
++         10%      8/2/0.5/0/0/0 |  8/small/22/2/121/s/l/hw 
++         40%     26/2/0.5/0/0/0 | 26/small/22/2/121/s/l/hw
++         70%      2/2/0.5/0/0/0 |  2/small/22/2/121/s/l/hw
+!
+ENH00    10%;40%;70%
++         10%      8/2/0.5/0/0/0 |  8/small/22/2/121/s/l/hw 
++         40%     26/2/0.5/0/0/0 | 26/small/22/2/121/s/l/hw
++         70%      2/2/0.5/0/0/0 |  2/small/22/2/121/s/l/hw
+!
+ENH04    10%;40%;70%
++         10%      8/2/0.5/0/0/0 |  8/small/22/2/121/s/l/hw 
++         40%     26/2/0.5/0/0/0 | 26/small/22/2/121/s/l/hw
++         70%      2/2/0.5/0/0/0 |  2/small/22/2/121/s/l/hw
+!
+ENH12    10%;40%;70%
++         10%      8/2/0.5/0/0/0 |  8/small/22/2/121/s/l/hw 
++         40%     26/2/0.5/0/0/0 | 26/small/22/2/121/s/l/hw
++         70%      2/2/0.5/0/0/0 |  2/small/22/2/121/s/l/hw
+!
+ENH16    10%;40%;70%
++         10%      8/2/0.5/0/0/0 |  8/small/22/2/121/s/l/hw 
++         40%     26/2/0.5/0/0/0 | 26/small/22/2/121/s/l/hw
++         70%      2/2/0.5/0/0/0 |  2/small/22/2/121/s/l/hw
+!

@@ -1,0 +1,37 @@
+                     POINT FORECAST SOUNDINGS
+
+
+The POINT FORECAST SOUNDING SELECTION window allows the user to plot 
+forecast soundings stored in GEMPAK upper air format data files. The
+data set choices are defined in $NAWIPS/tables/nsharp/nsharp_pfc.tbl,
+and reference the datatype.tbl template/aliases. Any GEMPAK upper air 
+file may be used by choosing the "BROWSE" option in the file list. 
+
+Typical sources of point forecast soundings include buffer
+encoded model output soundings which may be decoded into GEMPAK format 
+upper air files using NAMSND. PFC sounding files typically contain 
+forecast times, therefore the same validation time may exist in multiple
+sounding files.
+
+After selecting the GEMPAK PFC data set, the available data files
+are displayed. A single file, or multiple files may be chosen.
+Multiple files are selected by clicking a starting file and dragging 
+the mouse pointer, or by selecting the first file and then depressing 
+<SHIFT> while selecting the second time. Individual files may be added by 
+depressing <CTRL> when selecting additional files.
+
+After selecting from the available files, the times within the selected
+files will be displayed in the "Sounding times" list. A single time, or 
+multiple times may be selected (similarly as described above). After 
+selecting the desired times from the available times list, the sounding 
+location is selected using the available stations displayed on the selection map. 
+The location for which the soundings are computed is obtained by positioning 
+the mouse pointer over the desired point and clicking mouse button 1. 
+
+The map AREA may be set using the predefined map regions, while
+ZOOMing is accomplished through the use of a rubber band box.
+UNZOOMing will restore the image to the current AREA.
+
+Select "Cancel" to close the sounding selection window without changing the 
+current sounding display. The sounding selection window will close after a 
+sounding location is chosen from the map display.

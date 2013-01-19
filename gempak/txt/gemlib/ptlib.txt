@@ -1,0 +1,23 @@
+
+ 
+            Character Translation (PT) Library 
+
+
+The character translation library contains functions to convert 
+numeric codes into character strings and vice versa.  The functions 
+which output character data are called by the GEMPAK parameter 
+conversion (PC) library.  Since all data in GEMPAK files must be 
+stored as real values, functions to translate character data to 
+numeric codes are included for use in data ingest programs.  
+When creating a GEMPAK file, the numeric names MUST be used.
+
+Several methods for storing surface weather reports are available.
+The parameter names and conversion functions are included in the
+following table.  For new files, WNUM should be used.
+
+   Data Type       Char Name   Num Name    N-->C Conv   C-->N Conv
+----------------   ---------   --------    ----------   ----------
+General weather       WCOD       WNUM        PT_WCOD      PT_WNUM
+METAR coded weather   WCMT       WNUM        PT_WNMT     (PT_WCMT)
+WMO weather           WTMO       WWMO        PT_WTMO
+WMO past weather      PWTH       PWWM        PT_PWTH

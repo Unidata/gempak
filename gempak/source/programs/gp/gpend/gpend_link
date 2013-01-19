@@ -1,0 +1,3 @@
+$FC $FFLAGS $LDFLAGS -o $OS_BIN/gpend gpend.f \
+	    $GEMLIB $APPL $CGEMLIB $GEMLIB $SYSLIB
+$RM *.o

@@ -1,0 +1,10 @@
+     DITHER
+
+     DITHER is used to specify the plotting behavior of the reflectivity
+     intensities. A value of 0 specifies no dithering, the grid box is
+     completely filled. Values 1-4 increase the number of dither points
+     per grid box, approaching an increasingly opaque value. Dither
+     can be used to overlay image data with radar reflectivity in
+     order to simulate transparency. A dither value >= 5 will outline
+     the grid box.
+

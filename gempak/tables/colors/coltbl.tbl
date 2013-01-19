@@ -1,0 +1,162 @@
+! Color table 
+! Columns = RGBHLS
+!
+! Basic Colors
+RED             RED    255      0      0  red
+GREEN           GRE      0    255      0  green
+BLUE            BLU      0      0    255  blue
+YELLOW          YEL    255    255      0  yellow
+CYAN            CYA      0    255    255  cyan
+MAGENTA         MAG    255      0    255  magenta
+WHITE           WHI    255    255    255  white
+BLACK           BLA      0      0      0  black
+!
+GRAY            GRA    127    127    127  gray50
+VANILLA         VAN    255    228    220  bisque1
+!
+! Oranges
+ORANGE          ORA    255    127      0  DarkOrange1
+DKORANGE        DKO    205    133      0  orange3
+CORAL           COR    255    130     71  sienna1
+!
+! Browns
+BROWN           BRO    139     71     38  sienna3
+BEIGE           BEI    255    127     36  chocolate1
+SAND            SAN    205    133     63  tan3
+MUD             MUD    139     69     19  chocolate4
+!
+! Blues
+SKY             SKY      0    178    238  DeepSkyBlue2
+LTBLUE          LTB     30    144    255  DodgerBlue1
+GRPBLUE         GRP     16     78    139  DodgerBlue4
+MDCYAN          MDC      0    238    238  cyan2
+AQUA            AQU      0    205    205  cyan3
+NAVY            NAV      0      0    139  blue4
+DKBLUE          DKB      0      0    205  blue3
+INDIGO          IND    148      0    211  DarkViolet
+!
+! Greens
+LWNGREEN        LWN    127    255      0  chartreuse1
+MDGREEN         MDG      0    205      0  green3
+DKGREEN         DKG      0    139      0  green4
+LTGREEN         LTG    124    252      0  lawn green
+AVOCADO         AVO    107    142     35  olive drab
+FOGREEN         FOG      0    100      0  dark green
+!
+! Yellows
+GOLD            GOL    255    215      0  gold1
+DKYELLOW        DKY    238    238      0  yellow2
+BLOND           BLO    238    180     34  goldenrod2
+!
+! Reds
+PINK            PIN    255    174    185  LightPink1
+DKPINK          DKP    255    106    106  IndianRed1
+MAROON          MAR    139      0      0  red4
+APRICOT         APR    255    165     79  tan1
+VIOLET          VIO    137    104    205  MediumPurple3
+MDVIOLET        MDV    238     44     44  firebrick2
+PURPLE          PUR    145     44    238  purple2
+PLUM            PLU    139      0    139  magenta4
+FIREBRIC        FIR    205      0      0  red3
+ORRED           ORR    238     64      0  OrangeRed2
+! 
+! Grays
+G99             G99    252    252    252  gray99
+G98             G98    250    250    250  gray98
+G97             G97    247    247    247  gray97
+G96             G96    245    245    245  gray96
+G95             G95    242    242    242  gray95
+G94             G94    240    240    240  gray94
+G93             G93    237    237    237  gray93
+G92             G92    235    235    235  gray92
+G91             G91    232    232    232  gray91
+G90             G90    230    230    230  gray90
+G89             G89    227    227    227  gray89
+G88             G88    224    224    224  gray88
+G87             G87    222    222    222  gray87
+G86             G86    219    219    219  gray86
+G85             G85    217    217    217  gray85
+G84             G84    214    214    214  gray84
+G83             G83    212    212    212  gray83
+G82             G82    209    209    209  gray82
+G81             G81    207    207    207  gray81
+G80             G80    204    204    204  gray80
+G79             G79    201    201    201  gray79
+G78             G78    199    199    199  gray78
+G77             G77    196    196    196  gray77
+G76             G76    194    194    194  gray76
+G75             G75    191    191    191  gray75
+G74             G74    189    189    189  gray74
+G73             G73    186    186    186  gray73
+G72             G72    184    184    184  gray72
+G71             G71    181    181    181  gray71
+G70             G70    179    179    179  gray70
+G69             G69    176    176    176  gray69
+G68             G68    173    173    173  gray68
+G67             G67    171    171    171  gray67
+G66             G66    168    168    168  gray66
+G65             G65    166    166    166  gray65
+G64             G64    163    163    163  gray64
+G63             G63    161    161    161  gray63
+G62             G62    158    158    158  gray62
+G61             G61    156    156    156  gray61
+G60             G60    153    153    153  gray60
+G59             G59    150    150    150  gray59
+G58             G58    148    148    148  gray58
+G57             G57    145    145    145  gray57
+G56             G56    143    143    143  gray56
+G55             G55    140    140    140  gray55
+G54             G54    138    138    138  gray54
+G53             G53    135    135    135  gray53
+G52             G52    133    133    133  gray52
+G51             G51    130    130    130  gray51
+G50             G50    128    128    128  gray50
+G49             G49    125    125    125  gray49
+G48             G48    122    122    122  gray48
+G47             G47    120    120    120  gray47
+G46             G46    117    117    117  gray46
+G45             G45    115    115    115  gray45
+G44             G44    112    112    112  gray44
+G43             G43    110    110    110  gray43
+G42             G42    107    107    107  gray42
+G41             G41    105    105    105  gray41
+G40             G40    102    102    102  gray40
+G39             G39     99     99     99  gray39
+G38             G38     97     97     97  gray38
+G37             G37     94     94     94  gray37
+G36             G36     92     92     92  gray36
+G35             G35     89     89     89  gray35
+G34             G34     87     87     87  gray34
+G33             G33     84     84     84  gray33
+G32             G32     82     82     82  gray32
+G31             G31     79     79     79  gray31
+G30             G30     77     77     77  gray30
+G29             G29     74     74     74  gray29
+G28             G28     71     71     71  gray28
+G27             G27     69     69     69  gray27
+G26             G26     66     66     66  gray26
+G25             G25     64     64     64  gray25
+G24             G24     61     61     61  gray24
+G23             G23     59     59     59  gray23
+G22             G22     56     56     56  gray22
+G21             G21     54     54     54  gray21
+G20             G20     51     51     51  gray20
+G19             G19     48     48     48  gray19
+G18             G18     46     46     46  gray18
+G17             G17     43     43     43  gray17
+G16             G16     41     41     41  gray16
+G15             G15     38     38     38  gray15
+G14             G14     36     36     36  gray14
+G13             G13     33     33     33  gray13
+G12             G12     31     31     31  gray12
+G11             G11     28     28     28  gray11
+G10             G10     26     26     26  gray10
+G09             G09     23     23     23  gray9
+G08             G08     20     20     20  gray8
+G07             G07     18     18     18  gray7
+G06             G06     15     15     15  gray6
+G05             G05     13     13     13  gray5
+G04             G04     10     10     10  gray4
+G03             G03      8      8      8  gray3
+G02             G02      5      5      5  gray2
+G01             G01      3      3      3  gray1

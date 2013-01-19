@@ -1,0 +1,9 @@
+!	OA error file
+!
+  1	! Grid and guess files are the same. GRIDS MAY BE OVERWRITTEN.
+ -1	! Grid file !AS could not be processed.
+ -2	! Invalid grid projection area.
+ -3     ! Invalid grid time. 
+ -5     ! Guess grid could not be found.
+ -6     ! Guess grid does not align with unextended analysis grid.
+ -7	! Can not compute a forecast time valid at !AS.

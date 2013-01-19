@@ -1,0 +1,52 @@
+
+
+The GEMPAK 5.3 software is delivered for a generic UNIX system.  Where 
+differences have been discovered between UNIX and VMS or between versions
+of UNIX, separate subdirectories have been established for the alternate
+code and the build files point to these alternate subdirectories.  A 
+description of each of these alternate libraries follows.
+
+
+gemlib/dm/vms:		dmchng.f, dmclop.f - use SHARED keyword which is not
+                          standard
+
+gemlib/fl/vms:		flcdel.f, fldopn.f, fldsop.f flsopn.f flswop.f - 
+                          use VMS non-standard keywords
+			flread.f, flrshr.f - special check for locked files 
+
+gemlib/mv/alt:		mvev32.f, mvve32.f - alternate FORTRAN routines to 
+                        replace C routines if desired
+
+gemlib/mv/AIX:		contains all mv_ subroutines:
+                        mvswp2.f, mvswp4.f - INTEGER*1 replaces BYTE
+
+gemlib/mv/OSF1:		contains all mv_ subroutines:
+                        mvei32.f, mvie32.f - handle byte swapping correctly
+                        mvev32.f, mvve32.f - FORTRAN version of C modules
+
+gemlib/mv/ULTRIX:	contains all mv_ subroutines:
+                        mvei32.f, mvie32.f - handle byte swapping correctly
+                        mvev32.f, mvve32.f - FORTRAN version of C modules
+
+gemlib/mv/vms:		mvei32.f, mvie32.f - handle byte swapping correctly
+                        mvev32.f, mvve32.f - FORTRAN version of C modules
+
+gemlib/ss/vms:		contains all ss_ subroutines; these are VMS specific
+                          modules
+
+gemlib/st/AIX:		contains copy of all st_ subroutines:
+                        st_etoa.f - BYTE replaced by INTEGER*1
+
+syslib/vms:             VMS-specific versions of system library to create
+                          subprocesses
+
+syslib/unix/AIX:	all source code:
+			IBM workstations also construct the message queue key
+			  differently, since they cannot use the ttyname
+			  (cgetmq.c, csproc.c, gsproc.f)
+
+programs/sf/sfrawd/vms: all routines for SFRAWD:
+			VMS specific file access
+
+error:                  fl.err_vms - VMS error message file
+                        sfrawd.err_vms - VMS error message file

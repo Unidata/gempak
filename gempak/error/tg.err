@@ -1,0 +1,23 @@
+!	TG error file
+!
+  3	! Too many frames in this window, set to MXLOOP = 30
+  2	! The time !AS is not found in the data set.
+  1	! EXIT entered by the user.
+ -1	! Invalid date or time.
+ -2	! Invalid forecast type.
+ -3	! Invalid forecast time.
+ -4	! No times in input file.
+ -5	! Invalid time range.
+ -6	! Single time invalid for range.
+ -7	! Invalid forecast type for ALL.
+ -8	! Invalid first time in range.
+ -9	! Invalid last time in range.
+-10	! First time is after last time.
+-11	! First and last times are the same.
+-12	! Forecast types must be the same for different dates.
+-13	! Forecast times must be the same for different dates.
+-14	! The time increment is invalid.
+-15	! Too many times in list.
+-16	! No times in range.
+-17	! "LIST" cannot be entered when RESPOND is false.
+-18	! The DATTIM !AS is invalid.

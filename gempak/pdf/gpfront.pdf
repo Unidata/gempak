@@ -1,0 +1,16 @@
+MAP     Map color/dash/width
+GAREA   Graphics area
+PROJ    Map projection/angles/margins
+SATFIL  Satellite image filename(s)
+RADFIL  Radar image filename(s)
+LATLON  Line color/dash/width/label/inc
+PANEL   Panel loc/color/dash/width/regn
+TITLE   Title color/line/title
+TEXT    Text size/font/width/hw flag
+CLEAR   Clear screen flag
+DEVICE  Dev|name|X;Y|colormode|plotmode
+ASFIL   ASUS1 front data file (FSUS2 forecast)
+ASHR    valid hour (used for forecast hour)
+ASATT   H-L symbol Size/WX symbol flag/Frontal Pip Size
+LUTFIL  Image color LUT
+IMCBAR  Color/ornt/anch/x;y/ln;wd/freq|text_info

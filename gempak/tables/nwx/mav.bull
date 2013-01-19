@@ -1,0 +1,19 @@
+! MAV.BULL
+!
+! Location information for the following product:
+! MOS_Aviation_Based_Guidance_From_AVN_Model.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+FOAK38 KWNO     NCEP_NCO                         MD US  3881  -7687     0
+FOAK39 KWNO     NCEP_NCO                         MD US  3881  -7687     0
+FOCN20 KWNO     NCEP_NCO                         MD US  3881  -7687     0
+FOUS21 KWNO     NCEP_NCO                         MD US  3881  -7687     0
+FOUS22 KWNO     NCEP_NCO                         MD US  3881  -7687     0
+FOUS23 KWNO     NCEP_NCO                         MD US  3881  -7687     0
+FOUS24 KWNO     NCEP_NCO                         MD US  3881  -7687     0
+FOUS25 KWNO     NCEP_NCO                         MD US  3881  -7687     0
+FOUS26 KWNO     NCEP_NCO                         MD US  3881  -7687     0

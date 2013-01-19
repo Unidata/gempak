@@ -1,0 +1,6 @@
+!	This is the error file for DCIDFT.
+!
++2	! Invalid bulletin header:  !AS
+-1	! Fatal error initializing GEMPAK.
+-2	! Fatal error reading GEMPAK parameters.
+-3	! Parameter !AS is not in the dataset.

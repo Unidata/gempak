@@ -1,0 +1,37 @@
+!
+! Restore File : precip_12hr_mm
+!
+! Log:
+! J. Carr/HPC	6/16/98		Created for nogaps.
+!
+GDATTIM f12-last-12
+GLEVEL  0                                                                       
+GVCORD  none                                                                    
+PANEL   0                                                                       
+SKIP    0                                                                       
+SCALE   0                                                                       
+GDPFUN  pxxm
+TYPE    f
+CONTUR  1                                                                       
+CINT    0
+LINE    0
+FINT    1;5;10;15;20;25;30;35;40;45;50;55;60;65;70;75;80;85
+FLINE   0;21-30;14-20;5
+HILO    31;0/x#/5-500///y
+HLSYM   1.5
+CLRBAR  1                                                                       
+WIND                                                                            
+REFVEC                                                                          
+TITLE   5/-1/~ 12-HR TOTAL PRECIPITATION!0
+TEXT    1/21//hw                                                                
+CLEAR   yes                                                                     
+STNPLT                                                                          
+SATFIL                                                                          
+RADFIL                                                                          
+STREAM                                                                          
+POSN    4                                                                       
+COLORS  2                                                                       
+MARKER  2                                                                       
+GRDLBL  5                                                                       
+LUTFIL  none
+FILTER  yes

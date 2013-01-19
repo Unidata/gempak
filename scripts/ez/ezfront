@@ -1,0 +1,80 @@
+#!/bin/csh
+#
+# EZFRONT
+#
+# This script displays the frontogenesis function, wind barbs, and temperature
+# for a given level.
+#
+# The user must supply the level.
+#
+#	Syntax:  ezfront level
+#
+#	Example: ezfront 850
+#
+##
+# Log:
+# B. Colman/SEA		 1994
+# R. Miller/COMET	 1994
+# S. Jacobs/NMC		10/94	Clean up
+#
+
+if ( ${1}x == x ) then
+   echo " GEMPAK shell script to plot wind, temperature, and frontogenesis."
+   echo " The user must supply the level either on the command line or "
+   echo " by prompting."
+
+   echo " "
+   echo " Enter the pressure level (e.g. 700)."
+   set lvl=$<
+
+else
+   set lvl  = $1
+endif
+
+# Source the file called settings.  This file contains commands to set
+# environment variables for the model name and device driver.
+
+source settings
+
+gdcntr << EOF
+GDATTIM = all
+GLEVEL  = ${lvl}
+GVCORD  = pres
+GFUNC   = frnt(thta,wnd)
+CINT    = 8
+LINE    = 22/-2/1
+TITLE   = 1=white/-3/~  $model  @ FRONTOGENESIS (SHADED)
+DEVICE  = $dev
+CLEAR   = yes
+PANEL   = 0
+SCALE   = 2
+CONTUR  = 1
+SKIP    = /2
+FINT    = 16/8
+FLINE   = 101;22-25
+CTYPE   = f/c
+HILO    = 
+r
+
+CLEAR   = no
+GFUNC   = tmpc
+CINT    = 2
+SCALE   = 0
+LINE    = 7/-2/2
+TITLE   = 1=white/-2/TEMPERATURE (C)
+CTYPE   = c
+r
+
+ex
+EOF
+
+gdwind << EOFF
+GVECT   = wnd
+WIND    = bk20/1.3/2
+TITLE   = 1=white/-1/WINDS (KTS)
+r
+
+;2
+;l
+ex
+EOFF

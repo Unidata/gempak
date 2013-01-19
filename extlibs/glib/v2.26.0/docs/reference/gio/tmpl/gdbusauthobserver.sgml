@@ -1,0 +1,58 @@
+<!-- ##### SECTION Title ##### -->
+GDBusAuthObserver
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### SECTION Image ##### -->
+
+
+<!-- ##### STRUCT GDBusAuthObserver ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SIGNAL GDBusAuthObserver::authorize-authenticated-peer ##### -->
+<para>
+
+</para>
+
+@gdbusauthobserver: the object which received the signal.
+@arg1: 
+@arg2: 
+@Returns: 
+
+<!-- ##### FUNCTION g_dbus_auth_observer_new ##### -->
+<para>
+
+</para>
+
+@void: 
+@Returns: 
+
+
+<!-- ##### FUNCTION g_dbus_auth_observer_authorize_authenticated_peer ##### -->
+<para>
+
+</para>
+
+@observer: 
+@stream: 
+@credentials: 
+@Returns: 
+
+

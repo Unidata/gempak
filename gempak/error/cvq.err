@@ -1,0 +1,7 @@
+!	This is the CGEMLIB CVQ error file
+!
+  -1 	! VG file !AS cannot be created and/or opened.
+  -2	! Error closing VG file !AS.
+  -5	! VG file !AS is empty.
+  -6	! Must specify a group number and type to retrieve a group
+ -13	! Error reading VG header from file !AS.

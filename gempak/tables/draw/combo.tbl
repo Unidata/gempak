@@ -1,0 +1,41 @@
+! COMBO.TBL.
+!
+! This table is a list of combination weather symbols.
+!
+! Log:
+! A. Hardy/GSC		10/98
+! E. Safford/GSC	10/98	added missing combosymbols (21 & 22)
+! S. Jacobs/NCEP	 2/99	Added new combo symbols 23-27
+! m.gamazaychikov/SAIC 	04/03	added combo symbol 28
+!------------------------------------------------------------------------
+!
+!No. Type SymNum1  Type SymNum2
+!
+1    WTHR   61.0   WTHR   51.0
+2    WTHR   61.0   WTHR   80.0
+3    WTHR   71.0   WTHR   85.0
+4    WTHR   61.0   WTHR   71.0
+5    WTHR   80.0   WTHR   85.0
+6    WTHR   79.0   WTHR   66.0
+7    WTHR   80.0   PWTH    9.0
+8    WTHR   51.0   WTHR   56.0
+9    WTHR   61.0   PWTH    9.0
+10   WTHR   61.0   WTHR   56.0
+11   WTHR   63.0   WTHR   80.0
+12   WTHR   63.0   WTHR   65.0
+13   WTHR   61.0   WTHR   63.0
+14   WTHR   65.0   WTHR   80.0
+15   WTHR   63.0   WTHR   95.0
+16   WTHR   65.0   WTHR   95.0
+17   WTHR   73.0   WTHR   85.0
+18   WTHR   71.0   WTHR   73.0
+19   WTHR   73.0   WTHR   75.0
+20   WTHR   73.0   WTHR  105.0
+21   WTHR   61.0   WTHR   95.0
+22   WTHR   80.0   WTHR   95.0
+23   WTHR   71.0   WTHR  105.0
+24   WTHR   75.0   WTHR  105.0
+25   WTHR   75.0   WTHR   85.0
+26   WTHR   61.0   WTHR   66.0
+27   WTHR   61.0   WTHR   79.0
+28   WTHR   71.0   WTHR   79.0

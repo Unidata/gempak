@@ -1,0 +1,216 @@
+C************************************************************************
+C*                                                                      *
+C* Common blocks containing marine surface decoded report variables and *
+C* station table data.                                                  *
+C*                                                                      *
+C* Log:							                *
+C* R. Hollern/NCEP     6/96                                             *
+C* R. Hollern/NCEP     9/96   Increased dimension of rctim from 5 to 6  *
+C* D. Kidwell/NCEP     4/97   Added block INTF and associated PARAMETER *
+C*			      values                                    *
+C* R. Hollern/NCEP     9/97   Added wsped to BLOCK1                     *
+C* D. Kidwell/NCEP    10/97   Revised interface INTF                    *
+C* D. Kidwell/NCEP     5/98   TDXC -> MTXM, TDNC -> MITM                *
+C* D. Kidwell/NCEP    10/98   Moved data statements elsewhere           *
+C* R. Hollern/NCEP     7/99   Added many more parameter values          *
+C* R. Hollern/NCEP     9/99   Added drifter section 444 parameter values*
+C* F. J. Yen/NCEP      4/01   Merged C. Caruso Magee's cgcmn.cmn and 	*
+C*			      added common block MAWXCD.  Type changed. *
+C* D. Kidwell/NCEP     4/05   Added 5 buoy parms;  MTBLSZ = 500         *
+C************************************************************************
+        COMMON /BLOCK1/  ihour,   iuwind,  iprec,   ixind,   hgtlcl,
+     +                   irptdt,  ibrtyp,  ifbuoy,  
+     +                   xwvhgt,  xswell,  rctim,   xclds,   hgtlcx,
+     +                   iflgco,  xm907,   xdtfvm,  gums,    wdgflg 
+C*
+        COMMON /BLOCK2/  buhd,    btime,   bbb,     orign,   seqnum
+C*
+        COMMON /BLOCK3/  logmsg
+C*
+        COMMON /BLOCK5/  jstn,  jstnid,  elev,  ylat,  ylong
+C*
+        COMMON /BLOCK6/ isec1,  lsec1,  isec2,  lsec2,  isec3,  lsec3,
+     +                  isec4,  lsec4,  isec5,  lsec5,
+     +			iwxvsb, iwind, iwave, isea, iair,
+     +			ipres, irmk, gothdr
+C*
+C*
+	COMMON /MAWXCD/ iwxvln, wxvsav 
+C*
+	PARAMETER	( MTBLSZ = 500 )
+C*					Maximum number of stations
+        REAL   		xswell(6),   rctim(6),     xclds(4,4)
+        REAL   		ylat(MTBLSZ),   ylong(MTBLSZ),   elev(MTBLSZ)
+C*
+        INTEGER  	irptdt(5)
+C*
+        LOGICAL  	wdgflg, gothdr
+C*
+        CHARACTER*1000  logmsg
+C*
+        CHARACTER*8  	orign,   buhd,     bbb,   btime
+        CHARACTER*8   	jstnid(MTBLSZ)
+C*
+        CHARACTER*4  	seqnum
+	CHARACTER*20	wxvsav
+C*
+C************************************************************************
+C*  / FIELDS /                                                          *
+C*                                                                      *
+C*  This common area contains groups of "like-type" (i.e. letter,       *
+C*  number, or non-alphanumeric) as well as other associated output     *
+C*  from subroutine MA_CGBG for a particular input string of data.      *
+C************************************************************************
+        PARAMETER       ( MXNFLD = 100 )
+C*                                      Maximum number of groups
+        PARAMETER       ( MXLENF = 20 )
+C*                                      Maximum length of a field
+C*
+        INTEGER         ALPHA
+C*
+        PARAMETER       ( NALNMR = 0,
+C*                                      Indicator for non-alphanumeric
+C*                                      group type
+     +                    NMR    = 1,
+C*                                      Indicator for numeric group type
+     +                    ALPHA  = 2 )
+C*                                      Indicator for alphabetic group
+C*                                      type
+C*
+        CHARACTER       fields*(MXLENF)
+C*
+        COMMON  / FIELDS /      nflds,
+C*                                      Number of groups stored
+C*
+C*
+     +                          fields ( MXNFLD ),
+C*                                      Groups
+C*
+     +                          lensf ( MXNFLD ),
+C*                                      Lengths of groups
+C*
+     +                          itypsf ( MXNFLD ),
+C*                                      Types of groups
+C*                                        ( NALNMR = non-alphanumeric
+C*                                          NMR = numeric
+C*                                          ALPHA = alphabetic )
+C*
+     +                          irfnsf ( MXNFLD )
+C*                                      Indicator as to which other groups
+C*                                      each group was concatenated with
+C*                                      in the input string
+C*
+C************************************************************************
+C*  / INTF /								*
+C*									*
+C*  This common area contains the interface arrays.			*
+C************************************************************************
+	PARAMETER	( MXDLYR = 20 )
+C*					Maximum number of layers of
+C*					depth/temperature/salinity
+C*					data that will be decoded
+C*
+  	PARAMETER	(   MDM1 = ( MXDLYR - 1 ),
+     +			  MDM1T3 = ( MDM1 * 3 )   )
+	PARAMETER	( MXCLYR = 3 )
+C*					Maximum number of layers of sec
+C*					1 cloud data that will be decoded
+C*
+  	PARAMETER	(   MCM1 = ( MXCLYR - 1 ),
+     +			  MCM1T4 = ( MCM1 * 4 )   )
+	PARAMETER	( MX3LYR = 4 )
+C*					Maximum number of layers of sec
+C*					3 cloud data that will be decoded
+C*
+  	PARAMETER	(   M3M1 = ( MX3LYR - 1 ),
+     +			  M3M1T4 = ( M3M1 * 4 )   )
+	PARAMETER	( MXWLYR = 6 )
+C*					Maximum number of layers of
+C*					continuous wind data that will
+C*					be decoded 
+C*
+  	PARAMETER	(   MWM1 = ( MXWLYR - 1 ),
+     +			  MWM1T3 = ( MWM1 * 3 )   )
+	PARAMETER	( MXSLYR = 2 )
+C*					Maximum number of layers of 
+C*					wave data that will be decoded
+C*
+  	PARAMETER	(   MSM1 = ( MXSLYR - 1 ),
+     +			  MSM1T3 = ( MSM1 * 3 )   )
+C*					
+	PARAMETER 	( NRIMN = 242 )
+C*					Number of real interface 
+C*					mnemonics
+	PARAMETER 	( NRSLMN = 125 )
+C*					Number of real single-level 
+C*					interface mnemonics
+C*
+	COMMON	/ RINTFP /
+     +		iryear  , irmnth  , irdays  , irhour  , irminu  ,
+     +		irslat  , irslon  , irselv  ,
+     +		irdrct  , irsped  , irgum0  , irgum2  , irgum1  ,      
+     +		irxs10  , irxs20  , irpres  , irpmsl  , irp03d  , 
+     +		irchpt  , ir3hpc  , irrelh  , irmsst  , irstwc  ,
+     +		irtmpc  , irdwpc  , irsstc  , irtmwc  , irdtv1  ,
+     +		irmxtm  , irdtv2  , irmitm  , irqopm  , irqcbh  ,
+     +		irqwtm  , irqatm  , irqbst  , irqcil  , irmsdm  ,
+     +		irpxxm  , irp06m  , irp12m  , irp18m  , irp24m  ,
+     +		irp01m  , irp02m  , irp03m  , irp09m  , irp15m  ,
+     +		irinpc  , iritso  , irtost  , ircbas  , irvsbk  ,
+     +		ircfrt  , irwwmo  , irwwma  , irpwwm  , irpwwa  ,
+     +		irpsw2  , ircfrl  , irctyl  , irclhl  , irctym  ,
+     +		irclhm  , irctyh  , irclhh  , irtdmp  , irasmp  ,
+     +		irwper  , irpoww  , irhoww  , ircoia  , iridth  ,
+     + 		irroia  , ir24pc  , irpwyr  , irpwmo  , irpwdy  ,
+     +		irpwhr  , irpwmn  , irpwdr  , irpwsp  , irdtvm  ,
+     +		irgums  , irwhgt  , ircorn  , irbpid  , irsuws  ,
+     +		irqpos  , irqtim 
+C*
+	COMMON	/ RINTFP /
+     +		irqcls  , irqds1  , irqxs1  , irqds2  , irqxs2  ,
+     +		irq3d1  , irq3d2  , irq4cl  , irpwa2  , irvrtm  ,
+     +		irpsyr  , irpsmn  , irpsdy  , irpshr  , irpsmi  ,
+     +		irdbvv  , irdbdd  , irbeng  , irdrot  , ircaln  ,
+     +          irdlat  , irdlon  , irsknt  , iralti  , irtmpf  ,
+     +		irsstf  , irvsby  , irmxwh  , irterc  , irgust  ,
+     +		irpkwd  , irpkws  , irpkwt  , irpmn1  , irpmnt
+C*
+	COMMON	/ RINTFP /
+     +		irndts  , irdbss ( MXDLYR ) , irstmp ( MXDLYR ) , 
+     +                    irsaln ( MXDLYR ) , 
+     +          irnclo  , irvsso ( MXCLYR ) , irclam ( MXCLYR ) ,
+     +                    ircltp ( MXCLYR ) , irhocb ( MXCLYR ) ,
+     +		irncl3  , irvss3 ( MX3LYR ) , ircla3 ( MX3LYR ) ,
+     +                    irclt3 ( MX3LYR ) , irhcb3 ( MX3LYR ) , 
+     +          irncwd  , irtpmi ( MXWLYR ) , irwdrc ( MXWLYR ) ,
+     +                    irwdsc ( MXWLYR ) ,
+     +          irnswv  , irdosw ( MXSLYR ) , irposw ( MXSLYR ) ,
+     +                    irhosw ( MXSLYR ) 
+C*					Pointers to relative locations of
+C*					real interface mnemonics within
+C*					rimnem( ).  These pointers will
+C*					be set by MA_IFSP and then used
+C*					as indices into the real
+C*					interface values array rivals( ).
+C*
+	REAL		rivals ( NRIMN )
+C*
+	COMMON	/ RINTFV /	rivals
+C*					Real interface values 
+C*
+	PARAMETER 	( NCIMN = 1 )
+C*
+	COMMON	/ CINTFP / icstid
+C*					Pointers to relative locations of
+C*					character interface mnemonics
+C*					within cimnem( ).  These
+C*					pointers will be set by MA_IFSP
+C*					and then used as indices into the
+C*					character interface values array
+C*					civals( ).
+C*
+	CHARACTER	civals ( NCIMN )*8
+C*
+	COMMON	/ CINTFV /	civals
+C*					Character interface values 
+C*

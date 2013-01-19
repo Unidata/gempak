@@ -1,0 +1,32 @@
+! WDA.BULL
+!
+! Location information for the following product:
+! Weekly_Data_for_Agriculture.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+CXUS72 KFFC     PEACHTREE_CITY                   GA US  3336  -8455     0
+CXUS73 KBIS     BISMARCK                         ND US  4677 -10075     0
+CXUS73 KDMX     DES_MOINES                       IA US  4172  -9372     0
+CXUS73 KFSD     SIOUX_FALLS                      SD US  4358  -9672     0
+CXUS73 KIND     INDIANAPOLIS                     IN US  3970  -8627     0
+CXUS73 KLMK     LOUISVILLE                       KY US  3811  -8563     0
+CXUS73 KMKX     MILWAUKEE/SULLIVAN               WI US  4295  -8854     0
+CXUS73 KOAX     OMAHA/VALLEY                     NE US  4131  -9636     0
+CXUS73 KTOP     TOPEKA                           KS US  3906  -9562     0
+CXUS74 KFWD     DALLAS/FORT_WORTH                TX US  3283  -9729     0
+CXUS74 KLIX     NEW_ORLEANS                      LA US  3032  -8981     0
+CXUS74 KLZK     LITTLE_ROCK                      AR US  3483  -9225     0
+CXUS74 KMEG     MEMPHIS                          TN US  3513  -8980     0
+CXUS74 KOUN     NORMAN                           OK US  3522  -9745     0
+CXUS75 KABQ     ALBUQUERQUE                      NM US  3502 -10662     0
+CXUS75 KBOI     BOISE                            ID US  4356 -11620     0
+CXUS75 KBOU     DENVER                           CO US  4000 -10526     0
+CXUS75 KMTR     SAN_FRANCISCO                    CA US  3659 -12184     0
+CXUS75 KPSR     PHOENIX                          AZ US  3343 -11201     0
+CXUS75 KSLC     SALT_LAKE_CITY                   UT US  4077 -11194     0
+CXUS76 KPQR     PORTLAND                         OR US  4556 -12252     0
+CXUS76 KSEW     SEATTLE                          WA US  4768 -12225     0

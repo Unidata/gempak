@@ -1,0 +1,69 @@
+!SHEF.PACK
+!
+!This table is the packing table for DCSHEF, which decodes SHEF data.
+!
+!*Log:
+!
+!K. KUMAR 	 12/06
+!				
+!
+!Original NWSM 10-944 Table 1 SHEF parameters
+!
+! # 1   PP = Total precipitation (IN) 'TPCI' 
+! # 2   PT = Type of precipitation 'SHPT'
+! # 3   HG = River stage height (FT) 'RSHF'
+! # 4   SF = Depth of fresh snow (IN) 'SNEW'
+! # 5   SD = Total snow depth (IN) 'SNOW'
+! # 6   SW = Water equivalent of snow (IN) 'WEQS'
+! # 7, 8 & 9
+!       TA = Dry bulb temperature (F) 'TMPF' Minimum 'TDNF' and Maximum 'TDXF'
+! # 10  TM = Wet bulb temperature (F) 'TMWF'
+! # 11  TD = Dew point temperature (F) 'DWPF'
+! # 12  TW = Water temperature (F) 'WTMF'
+! # 13  XR = Relative humidity (%) 'RELH'
+! # 14  UD = Wind direction (degrees) 'DRCT'
+! # 15  US = Wind speed (miles/hour) 'SMPH'
+! # 16  UG = Wind gust speed at time of observation ( in miles per hour) 'GMPH'
+! # 17  UR = Peak wind direction (degrees) 'PWDR' 
+! # 18  UP = Peak wind speed (miles/hour) 'PMPH'
+! # 19 & 20
+!       UQ = Combined wind direction and speed (in format SSS.SDDD where SSS.S is 
+!       speed in miles per hour and DDD is direction in degrees) 'CWDS' - 2 parameters
+!       combined wind direction 'WDIR' and speed 'WSPD'
+!
+! # 21  PA = Pressure in inches of mercury (They are often reported in millibars 'PRSI'
+! # 22  PL = MSL pressure in inches of mercury (often reported in mb) 'PMSI'
+! # 23  XW = Present weather 'WWMO'
+! # 24  XP = Past weather 'PWWM'
+! # 25  XV = Horizontal visibility (miles) 'VSBY'
+!
+! Total of 25 parameters from SHEF are decoded and converted to GEMPAK sfc file
+! HR24 is the additional 26th parameter just to indicate the time duration interval
+! which is always 24 here.
+!
+PR24         0.      9999.       .01
+SHPT         0.      9999.       .01
+SHHG         0.      9999.       .01
+SF24         0.      9999.       .01
+SNOW         0.      9999.       .01
+WEQS         0.      9999.       .01
+TMPF      -999.      9999.       .01
+TDXF      -999.      9999.       .01
+TDNF      -999.      9999.       .01
+TMWF      -999.      9999.       .01
+DWPF      -999.      9999.       .01
+TWAF      -999.      9999.       .01
+RELH         0.      9999.       .01
+DRCT         0.      9999.       .01
+PKWD         0.      9999.       .01
+SMPH         0.      9999.       .01
+GMPH         0.      9999.       .01
+WSGU         0.      9999.       .01
+WDIR         0.      9999.       .01
+WSPD         0.      9999.       .01
+PRES         0.      9999.       .01
+PMSL         0.      9999.       .01
+PWWM         0.      9999.       .01
+WWMO         0.      9999.       .01
+VSBY         0.      9999.       .01
+HR24         0.      9999.       .01

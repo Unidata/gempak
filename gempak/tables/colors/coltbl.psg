@@ -1,0 +1,32 @@
+! COLTBL.PSG
+!
+! Color table 
+!
+! Color Table for GreyScale PostScript driving..
+!
+! History:
+! E. Wehner	3/96		Created
+!
+!
+!Color name    Abrev   Red  Green   Blue  X color name
+WHITE           WHI    255    255    255  white
+BLACK		BLA      0      0      0  black
+G05             G05     13     13     13  gray5
+G10             G10     26     26     26  gray10
+G15             G15     38     38     38  gray15
+G20             G20     51     51     51  gray20
+G25             G25     64     64     64  gray25
+G30             G30     77     77     77  gray30
+G35             G35     89     89     89  gray35
+G40             G40    102    102    102  gray40
+G45             G45    115    115    115  gray45
+G50             G50    128    128    128  gray50
+G55             G55    140    140    140  gray55
+G60             G60    153    153    153  gray60
+G65             G65    166    166    166  gray65
+G70             G70    179    179    179  gray70
+G75             G75    191    191    191  gray75
+G80             G80    204    204    204  gray80
+G85             G85    217    217    217  gray85
+G90             G90    230    230    230  gray90
+G95             G95    242    242    242  gray95

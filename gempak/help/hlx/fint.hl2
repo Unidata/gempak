@@ -1,0 +1,24 @@
+     FINT
+ 
+     FINT is the contour fill interval, minimum and maximum values
+     separated by slashes:
+
+		fill interval / minimum / maximum
+
+     The contour fill interval may be any real number.  If it is not
+     specified or if the value is 0, the program will select an interval
+     which will generate 5 to 10 contour fill levels.
+
+     The minimum and maximum values specify the range of data to use in 
+     selecting the fill levels.  If either value is not specified, the 
+     value will be obtained from the range of values in the dataset.  If 
+     the minimum and maximum are equal, that value will be used and only 
+     one contour fill level will be selected; however, since the number
+     of colors is one greater than the number of fill levels, two colors
+     will be needed--the first for filling regions with values less than
+     the input value and the second for filling regions of greater value.
+
+     A list of two or more fill levels may be entered using semicolons 
+     to separate the individual values.  In this case, the minimum and 
+     maximum are ignored.
+ 

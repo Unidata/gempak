@@ -1,0 +1,134 @@
+#!/bin/csh
+# 
+# EZSET
+#
+# This script allows the user to select the model and the date/time of the
+# model run. For the date/time, the user can enter the full yymmddhh (year,
+# month, day, hour) or merely a 00 or 12 for the current date.  The model
+# can be eta, ruc, ngm, avn, or mrf.
+#
+# EZSET assumes a file naming convention and location.  The location is set
+# through the MODEL environment variable, which is defined by the .cshrc file.
+# The file naming convention by default is mdl_yymmddhh, where yymmddhh is the
+# year/month/day/hour of the model run and mdl is the lowercase 3 letter id of
+# the model.
+#
+#	Syntax:   ezset yymmddhh|hh model
+#
+#	Examples: ezset 94052612 eta
+#		  ezset 00 ngm
+#
+##
+# Log:
+# B. Colman/SEA		 1994
+# R. Miller/COMET	 1994
+# S. Jacobs/NMC		10/94	Clean up; Added multiple workstation types
+
+#  Check for command line parameters and prompt for them if necessary
+
+if ( ${1}x == x || ${2}x == x ) then
+   echo " Syntax:  ezset aaa bbb"
+   echo "         where aaa = 00 or 12 for current data or "
+   echo "                     full yymmddhh for non-current data"
+   echo "               bbb = model id (e.g. eta, ngm, avn, mrf, ruc)"
+
+   echo " "
+   echo " Enter the time (00, 12, or full yymmddhh)"
+   set mdl_time=$<
+
+   echo " "
+   echo " Enter the model (eta, ngm, avn, mrf, or ruc)"
+   set model=$<
+
+else
+   set mdl_time = $1
+   set model = $2
+endif
+
+set device=xw
+
+#  Construct the time based on the input
+
+if ( $mdl_time == 00 || $mdl_time == 12 ) then
+   if  ( $OS == "IRIX" ) then
+	set tmp=`echo $TZ`
+	setenv TZ " "
+	set ymdh = `date +%y%m%d`${mdl_time}
+	setenv TZ $tmp
+   else
+   	set ymdh = `date -u +%y%m%d`${mdl_time}
+   endif
+else
+   set ymdh = $mdl_time
+endif
+
+#  Handle the common problem of rgl vs ngm
+
+if ( $model == RGL || $model == rgl ) then
+   set model = ngm
+endif
+
+#  Set two variables for the model name, lower and upper case
+
+if ( $OS == "HPUX" ) then
+    set model_uc = `echo $model | tr '[:lower:]' '[:upper:]'`
+    set model_lc = `echo $model | tr '[:upper:]' '[:lower:]'`
+else
+    set model_uc = `echo $model | tr '[a-z]' '[A-Z]'`
+    set model_lc = `echo $model | tr '[A-Z]' '[a-z]'`
+endif
+
+#  Set the device driver based on the user's input
+
+switch ( $device )
+	case xw:
+	case XW:
+		set driver = xw
+	breaksw
+	case meta:
+	case META:
+		set driver = nc
+	breaksw
+	default:
+		echo " "
+		echo " Error.  Device must be meta or xw."
+		echo " "
+		exit
+	breaksw
+endsw
+
+#  Write a file which sets environment variables for the model name 
+#  and device drivers, which will be used for all subsequent scripts
+
+cat > settings << EOF
+set model = $model_uc
+set dev = $driver
+set dev_cros = "${driver}|Cross_Section"
+set dev_prof = "${driver}|Skew-T"
+set dev_thgt = "${driver}|Time-Height"
+EOF
+
+#  Run gdinfo to set file name for all future gempak programs.
+
+if ( -e $MODEL/${model_lc}/${model_lc}_${ymdh} ) then
+	gdinfo << EOD
+	GDFILE  = $MODEL/${model_lc}/${model_lc}_${ymdh}
+	TEXT    = 1.5/2//hw
+
+	exit
+EOD
+
+	echo " "
+	echo " "
+	echo " Setting date to $ymdh"
+	echo "         model to $model_uc"
+	echo "         device to $device"
+	echo " "
+
+else
+
+	echo " "
+	echo " Data for $model at $ymdh not available "
+	echo " Please run ezset again with a different time or model"
+	echo " "
+endif

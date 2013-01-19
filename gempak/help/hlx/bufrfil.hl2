@@ -1,0 +1,12 @@
+     BUFRFIL
+
+     BUFRFIL is the BUFR output file names in the format of
+
+	BUFRFIL = ...;...;...
+	       or blank
+
+     where the individual items are the BUFR output file names 
+     corresponding to the individual FXYTBL file name (e.g., 
+     JUBf99.YYYYMMDDHH;JUFf00.YYYYMMDDHH) and the blank means that 
+     the output file names are gotten from the master table based 
+     on the requested FXY file names.

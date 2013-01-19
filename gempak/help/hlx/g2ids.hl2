@@ -1,0 +1,43 @@
+     G2IDS
+ 
+     G2IDS is a list of integers that are encoded into the GRIB2 
+     Identification Section ( Section 1 ) that identifies the source and
+     type of data packed in the GRIB2 message:
+ 
+        Orig center ; sub-center ; master tables vers ; local tables ver ;
+        Significance of reference time ; status of data ; type of data
+ 
+     The Originating Center id  can be found in WMO Common Code Table C-1.
+     The default is 7 = "NCEP".
+
+     The sub-center is defined by the originating center.
+ 
+     The current WMO master table version number is 2.
+
+     Local table version numbers are defined by the originating center.
+
+     The significance of the referece time is defined in GRIB2 Code Table 1.2:
+             0   = Analysis 
+             1   = Start of forecast (default)
+             2   = Verifying time of forecast 
+             3   = Observation time 
+             255 = Missing
+
+     The production status of data is defined in GRIB2 Code Table 1.3:
+             0   = Operational products  (default)
+             1   = Operational test products 
+             2   = Research products 
+             3   = Re-analysis products 
+             255 = Missing
+
+     The type of data is defined in GRIB2 Code Table 1.4:
+             0   = Analysis products 
+             1   = Forecast products  (default)
+             2   = Analysis and forecast products 
+             3   = Control forecast products 
+             4   = Perturbed forecast products 
+             5   = Control and perturbed forecast products 
+             6   = Processed satellite observations 
+             7   = Processed radar observations 
+             255 = Missing
+

@@ -1,0 +1,36 @@
+!
+! Restore File : temp
+!
+! Log:
+!
+! GDATTIM first-last
+GLEVEL  0
+GVCORD  none
+PANEL   0                                                                       
+SKIP    0
+SCALE   0
+GDPFUN  tmpc!tmpc!tmpc
+TYPE    c
+CONTUR  1                                                                       
+CINT    4/-100/0!4/4/20!4/24/48
+LINE    27/1/2!2/1/2!16/1/2
+FINT    
+FLINE   
+HILO    0
+HLSYM   0
+CLRBAR  0
+WIND    
+REFVEC  
+TITLE   1/-1/~ SFC TEMPERATURE!0
+TEXT    1/22/2/hw
+CLEAR   yes                                                                     
+STNPLT                                                                          
+SATFIL                                                                          
+RADFIL                                                                          
+STREAM                                                                          
+POSN    4                                                                       
+COLORS  2                                                                       
+MARKER  2                                                                       
+GRDLBL  5                                                                       
+LUTFIL  none
+FILTER  yes

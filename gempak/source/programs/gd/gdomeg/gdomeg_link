@@ -1,0 +1,4 @@
+$FC $FFLAGS $LDFLAGS -o $OS_BIN/gdomeg gdomeg.f \
+		$OS_LIB/gdomeg.a $GEMLIB $CGEMLIB \
+		$GEMLIB $APPL $SYSLIB -lm
+$RM *.o

@@ -1,0 +1,30 @@
+				SHPLIB
+
+   Library SHPLIB contains functions to process shapefiles (contains
+   only point, line, and polygon), and produce SSF (Standard Sequential
+   Format) formatted map files, as well as bound, bound info, and 
+   station table files used by NAWIPS programs.
+
+   Files contained in the library SHPLIB can be divided into two groups:
+   generic to the different types of shapefile and related to the types
+   of shapefile. When a new type of shapefile is added, only those 
+   files that are related to the types of shapefile are necessary to be
+   changed. These files are:
+
+	shpprm.h
+	shpmtyp.c
+	shpgkey.c
+	shpbhdr.c
+	shpcbnd.c
+	shpctbl.c
+
+   First, the new type has to be defined in shpprm.h. For example, the
+   AWIPS Countes is defined as MAP_CNTY, and the Public Forecast Zones
+   is defined as MAP_ZONE. 
+
+   Second, shpmtyp.c has to be modified to detect the new type, and 
+   shpgkey.c be modified to return a new key.
+
+   Third, new functions have to be added into shpbhdr.c, shpcbnd.c and
+   shpctbl.c to create bound, bound info, and station table specific 
+   to this new type.

@@ -1,0 +1,16 @@
+! GPOLYG error file.
+!
++6	! No warning polygons.
++5	! Cannot generate VGF file for raw polygons.
++4	! Cannot generate VGF file forecast zones.
++3	! Too many groups within area.  Increase group distance.
++2	! Too many points within polygon.
++1	! WARNING: !AS not found.  CONTINUING--- 
+-1	! Cannot open parameter table.
+-2	! Cannot find forecast zone.
+-3	! Cannot process polygon.
+-4	! Cannot open file.
+-5	! Cannot find latitude/longitude grids.
+-6	! Cannot find wind data.
+-7	! Too many points on map bound.
+-8	! Incorrect index for padding.

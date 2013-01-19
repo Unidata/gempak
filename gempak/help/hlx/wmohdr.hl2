@@ -1,0 +1,16 @@
+     WMOHDR
+
+     WMOHDR allows specification of a WMO header for a GRIB message.
+
+		WMO_ID / Origin_ID / DDHHMM
+
+     The first six bytes of the header (WMO_ID) must be given.  The
+     four-character originating center identifier (Origin_ID)
+     defaults to KWBC.  The six-character reference day, hour, and
+     minute (DDHHMM) defaults to values from the reference time
+     in the GRIB1 PDS (bytes 15, 16, and 17, respectively), or 
+     GRIB2 IDS (bytes 16, 17, nd 18).
+
+     Bytes 7 and 12 of the WMO header are always blank.
+
+     Only the 21-byte version of the WMO header is generated.

@@ -1,0 +1,23 @@
+!	SNEDIT error file
+!
+ +1	! Data for !AS has been added to the file.
+ -1	! Fatal error initializing TAE.
+ -2	! Fatal error reading the TAE parameters.
+ -3	! The edit file cannot be opened.
+ -4	! List of parameters not found in edit file.
+ -5	! Too many parameters in edit file.
+ -6	! Edit file !AS cannot be opened.
+ -7	! Error creating new sounding file !AS.
+ -8	! Edit file parms don't match those in data set.
+ -9	! First parameter not a valid vertical coordinate.
+-10	! Error opening existing sounding file !AS.
+-11	! Cannot write merged data to unmerged data set.
+-12	! Sounding file can't be created with MAXTIM <= 0.
+-13	! Sounding file can't be created with MAXSTN <= 0.
+-14	! The time !AS was not added to the file.
+-15	! The station !AS was not added to the file.
+-16	! Error writing data to file.
+-17     ! The part !AS has invalid parameters.
+-18     ! Edit file !AS has an invalid format.
+-19	! Station !AS has an invalid format.
+-20	! Cannot write unmerged data to merged data set.

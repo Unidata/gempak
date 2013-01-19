@@ -1,0 +1,88 @@
+!
+!  Station table for sigmet bulletins
+!
+!
+! Log:
+! S. Jacobs/NCEP	 8/99	Created
+! M. Li/GSC		 7/00	Added PHFO
+! J. Lewis/AWC		 4/05   Removed KBOS,KCHI,KDFW,KMIA,KSLC,KSFO,PGUM,
+!				PHNL,PAFA,PAJN,PANCR,KMKC,PANC
+!				Added KKCI, PAWU
+!
+94294  ABTL    TOWNSVILLE(CIV/MIL)               AU  AU  -1925   14675      6
+94035  AYPY    PORT_MORESBY_INTL                 NG  NG   -943   14722     47
+04231  BGSF    SONDRE_STROMFJORD                 GL  GL   6700   -5080     53
+99999  CWEG    ALBERTA_WX_CENTRE_&               CN  CN   5350  -11350  -9999
+99999  CWHX    MARITIMES_WX_CENTRE               CN  CN   4473   -6367  -9999
+99999  CWTO    TORONTO_AES_HQ____&               CN  CN   4378   -7947    187
+99999  CWUL    QUEBEC_FCST_OFFICE                CN  CN   4550   -7368  -9999
+99999  CWVR    PACIFIC_WX_CENTER                 CN  CN   4918  -12317  -9999
+99999  CWWG    PRAIRIE_WX_CENTER                 CN  CN   4990   -9713  -9999
+71053  CWXK    CLINTON_POINT                     CN  CN   6958  -12080    101
+99999  CYQX    GANDER_INTL_AIRPORT               CN  CN   4895   -5457    151
+99999  CYXY    WHITEHORSE_AIRPORT                CN  CN   6072  -13507    703
+06451  EBBR    BRUSSELS_NATIONAL                 BX  BX   5090     453     58
+02974  EFHK    HELSINKI/VANTAA                   FI  FI   6032    2497     56
+68442  FABL    BLOEMFONTEIN/HERTZO               ZA  ZA  -2910    2630   1348
+68816  FACT    CAPETOWN/DF_MALAN                 ZA  ZA  -3398    1860     42
+68588  FADN    DURBAN/LOUIS_BOTHA                ZA  ZA  -2997    3095      8
+68858  FAEL    EAST_LONDON/SCHOEMA               ZA  ZA  -3303    2783    125
+68368  FAJS    JAN_SMUTS                         ZA  ZA  -2613    2823   1700
+68842  FAPE    PORT_ELIZABETH                    ZA  ZA  -3398    2560     60
+68262  FAPR    PRETORIA_(MET)                    ZA  ZA  -2573    2818   1322
+61980  FMEE    ST._DENIS/GILLOT                  RE  RE  -2088    5552     25
+60155  GMMC    CASABLANCA/ANFA                   MC  MC   3357    -767     62
+61641  GOOY    DAKAR/YOFF                        SG  SG   1473   -1750     24
+62366  HECA    CAIRO_INTL_AIRPORT                EG  EG   3013    3140     74
+99999  KKCI    AVIATION_WEATHER_CENTER           MO  US   3912   -9460    231
+99999  KNHC    NATIONAL_HURRICANE_CENTER(TPC)    FL  US   2582   -8028      4
+99999  KWBC    WASHINGTON/DULLES                 VA  US   3895   -7745     98
+99999  LFPW    PARIS_MET_CENTER                  FR  FR   4883     233     75
+11518  LKPR    PRAGUE/RUZYNE                     CZ  CZ   5010    1428    366
+08536  LPPT    LISBON/PORTELA                    PO  PO   3878    -913    123
+17128  LTAC    ANKARA/ESENBOGA                   TU  TU   4012    3298    949
+13272  LYBE    BELGRADE/SURCIN                   YG  YG   4482    2028     99
+11816  LZIB    BRATISLAVA_IVANKA                 CZ  CZ   4820    1720    130
+78485  MDSD    CAUCEDO/DE_LAS_AMER               DR  DR   1843   -6967     18
+76679  MMEX    MEXICO_CITY/JUAREZ                MX  MX   1943   -9908   2234
+99999  MMMX    MEXICO_CITY/LICENCI               MX  MX   1943   -9910   2238
+78792  MPTO    TOCUMEN/GEN._OMAR                 PM  PM    905   -7937     11
+99999  MROC    SAN_JOSE/SANTAMARIA               CS  CS   1000   -8422    931
+78224  MUHA    HAVANA/JOSE_MARTI                 CU  CU   2298   -8240     59
+99999  MYNN    NASSAU_INTL_AIRPORT               BA  BA   2505   -7747      7
+99999  MZBZ    BELIZE_INTL_AIRPORT               BH  BH   1753   -8830      5
+91680  NFFN    NANDI/NADI_INTL                   FJ  FJ  -1775   17745     18
+91938  NTAA    TAHITI_ISLAND/FAAA                PF  PF  -1755  -14962      2
+93436  NZWN    WELLINGTON_INTL                   NZ  NZ  -4133   17480      7
+41150  OBBI    BAHRAIN_INTL_ARPT_&               BN  BN   2627    5065      2
+41026  OEJD    JEDDAH____________&               SD  SD   2150    3920     15
+41217  OMAA    ABU_DHABI_INTL____&               ER  ER   2443    5465     27
+41404  OYSN    SANA'A                            YE  YE   1538    4420   2200
+99999  PAWU    ALASKA_AVIATION_WEATHER_UNIT      AK  US   6118  -15000     44
+99999  PHFO    HONOLULU/UNIV_OF_HI-MANOA_CAMPUS  HI  US   2190  -15842     20
+46686  RCTP    CHIANG_KAI_SHEK                   TW  TW   2508   12122     33
+47686  RJAA    NEW_TOKYO_INTL_ARPT               JP  JP   3577   14038     44
+98429  RPMM    NINOY_AQUINO_INTL                 PH  PH   1452   12100     21
+87576  SAEZ    BUENOS_AIRES/EZEIZA               AG  AG  -3482   -5853     20
+87155  SARE    RESISTENCIA_AIRPORT               AG  AG  -2745   -5905     52
+82193  SBBE    BELEM/VAL_DE_CAES                 BZ  BZ   -138   -4848     16
+82111  SBEG    EDUARDO_GOMES_INTL                BZ  BZ   -303   -6005      2
+83378  SBBR    BRASILIA_(CIV/MIL)                BZ  BZ  -1587   -4793   1061
+83746  SBGL    GALEAO/RIO(CIV/MIL)               BZ  BZ  -2282   -4325      6
+99999  SBGR    GUARULHOS_(CIV/MIL)               BZ  BZ  -2343   -4647    750
+82899  SBRF    RECIFE/GUARARAPES                 BZ  BZ   -807   -3485     19
+85574  SCEL    PUDAHUEL/ARTURO_MER               CH  CH  -3338   -7078    476
+85201  SLLP    LA_PAZ/JFK_INTL                   BO  BO  -1652   -6818   4014
+81405  SOCA    CAYENNE/ROCHAMBEAU                FG  FG    483   -5237      9
+84628  SPIM    LIMA/JORGE_CHAVEZ                 PR  PR  -1200   -7712     13
+86580  SUMU    CARRASCO_(CIV/MIL)                UY  UY  -3483   -5600     32
+78954  TBPB    GRANTLEY_ADAMS_INTL               BR  BR   1307   -5948     56
+78988  TNCC    HATO_ARPT_(CIV/MIL)               NU  NU   1220   -6897     67
+78970  TTPP    PIARCO_INTL_AIRPORT               TD  TD   1062   -6135     15
+37789  UGEE    YEREVAN/ZVARTNOTS                 RS  RS   4013    4447    890
+26850  UMMS    MINSK                             BY  BY   5387    2753    234
+43450  VCBI    COLOMBO/KATUNAYAKE                SB  SB    717    7988      8
+41922  VGZR    KURMITOLA/ZIA_INTL                BW  BW   2385    9040     10
+45007  VHHH    HONG_KONG_INTL_ARPT               HK  HK   2233   11418     24
+48900  VVTS    HO_CHI_MINH/TANSONN               VS  VS   1082   10667     19
+48698  WSSS    SINGAPORE/CHANGI                  SR  SR    137   10398     16

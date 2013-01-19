@@ -1,0 +1,12 @@
+! AWS.BULL
+!
+! Location information for the following product:
+! Area_Weather_Summary.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+AWUS82 KMLB     MELBOURNE                        FL US  2811  -8065     0
+AWUS84 KMRX     MORRISTOWN                       TN US  3615  -8340     0

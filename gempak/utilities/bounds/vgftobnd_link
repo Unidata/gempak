@@ -1,0 +1,5 @@
+$CC $CFLAGS -c vgftobnd.c
+$FC $LDFLAGS -o vgftobnd.$NA_OS vgftobnd.o \
+	        $CGEMLIB $GEMLIB $APPL $CGEMLIB \
+		$GEMLIB $SYSLIB -lm
+$RM *.o

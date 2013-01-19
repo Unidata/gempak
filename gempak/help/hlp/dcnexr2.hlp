@@ -1,0 +1,24 @@
+DCNEXR2 (Unidata)
+
+    DCNEXR2 is used to receive the Level II NEXRAD data from the
+    CRAFT IDD data stream. Products are received in BZIP2 compressed pieces
+    from a file or data stream fed to the program through standard input, 
+    and appended to an output file for use with display programs.
+    The program is controlled by inputs to the command line.
+
+
+    The inputs are program options, and the output file name.
+    For example: 
+    
+	dcnexr2 [options] output_file
+
+   By default, the program initially prepends a "." to the output file name, 
+   and renames the file upon closing in order to make it easier for
+   programs to determine when a file is complete. Subsequent writes to
+   an existing file bypass adding the leading "." to the filename.
+
+   The only useful option to the program is "-s STID" which allows the user
+   to specify a 4 character station ID to be written in to the output data
+   file in bytes 21-24 of the Archive2 Level II data header, which allows 
+   programs to identify the source of the radar data without having to 
+   rely on a file name convention.

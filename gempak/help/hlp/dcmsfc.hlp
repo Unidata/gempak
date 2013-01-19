@@ -1,0 +1,37 @@
+
+DCMSFC
+
+    DCMSFC decodes raw buoy, ship, C-MAN, and Coast Guard reports from
+    a real-time data feed, or from a file fed to the program through
+    standard input, and writes the data to a GEMPAK surface file.  The
+    program is controlled by inputs to the command line.
+
+    The inputs are program options and the output file name or template.
+    For example, for real-time data feeds:
+    
+	dcmsfc [options] output_file
+
+    Currently, the decoder can be run in two different modes.  If the -a
+    option is not used, the decoder will create hourly files of all 
+    marine surface data (ship, C-MAN, fixed and drifting buoys, Coast
+    Guard).  If the option "-a 6" is specified, 6-hour files of ship
+    data only will be created.  For real-time operation, output files
+    have the form YYYYMMDDHH.ship, and are placed in different
+    directories depending on whether they are hourly or 6-hour files.
+
+    If running the program interactively with standard input, the -c
+    option must be used.  The input file must be also be specified.
+    For example:
+
+	dcmsfc -c YYMMDD/HHNN [other_options] output_file < input_file
+    
+    A template may be used to specify the output file name.  The file
+    name template uses the date and time of the bulletin or report
+    to replace the following characters.
+
+	YYYY or YY	Year with or without the century
+	MM		Month number
+	DD		Day
+	HH		Hour
+	NN		Minute
+

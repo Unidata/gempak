@@ -1,0 +1,5 @@
+$CC $CFLAGS -c convcvg.c 
+$FC $LDFLAGS -o $OS_BIN/convcvg convcvg.o \
+		$CGEMLIB $APPL $GEMLIB \
+		$CGEMLIB $APPL $GEMLIB $SYSLIB -lm
+$RM *.o

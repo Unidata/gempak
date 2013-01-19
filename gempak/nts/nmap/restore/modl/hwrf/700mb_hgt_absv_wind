@@ -1,0 +1,32 @@
+!
+! Restore file: 700mb_hgt_absv_wind
+!
+! Log:
+! M Klein/HPC	07/2002 Created 
+!
+GLEVEL  700
+GVCORD  pres
+SKIP    0                  !0             !1		!0
+SCALE   5                  !5             !-1		!-1
+GDPFUN  sm5s(abs(avor(wnd)))//v  !v             !kntv(wnd)	!sm5s(hght)
+TYPE    c/f                !c             !b		!c
+CONTUR  1                  !1
+CINT    2/10/20            !2/4/8 	  !0		!6
+LINE    7/5/1/2            !29/5/1/2 	  !0		!5/1/2/1
+FINT    16;20;24;28;32;36;40;44
+FLINE   0;23-15 
+HILO    2;6/X;N/10-99;10-99!0 
+HLSYM      
+CLRBAR  1
+WIND    0                  !          !18/1/1     !0 
+REFVEC     
+TITLE   5/-1/~ ? @ HEIGHTS, WINDS and ABSOLUTE VORTICITY!0
+TEXT    1/21//hw
+STNPLT                                                                          
+STREAM                                                                          
+POSN    4                                                                       
+COLORS  2                                                                       
+MARKER  2                                                                       
+GRDLBL  5                                                                       
+FILTER  yes
+IJSKIP  1

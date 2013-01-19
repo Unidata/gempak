@@ -1,0 +1,38 @@
+!
+! Restore File : 300mb_hght_wind
+!
+! Log:
+! D.W.Plummer/NCEP	 2/97	Initial creation
+! D.W.Plummer/NCEP	 8/97	Added FILTER parameter
+! J. Carr/HPC            7/99   Smoothed height field. Use 2 as a contur for height.
+!                               Changed skip to a 0.
+GLEVEL  300
+GVCORD  pres
+PANEL   0                                                                       
+SKIP    0
+SCALE   0                             !-1
+GDPFUN  knts((mag(wnd)))              !sm5s(hght)!kntv(wnd)
+TYPE    c/f                           !c         !b
+CONTUR  1                             !2                                          
+CINT    30;50;70;90;110;130;150       !12
+LINE    27/5/2/1                      !20/1/2/1
+FINT    70;90;110;130;150
+FLINE   0;25;24;29;7;15
+HILO    
+HLSYM                                                                           
+CLRBAR  1                                                                       
+WIND    18/1/1
+REFVEC                                                                          
+TITLE   5/-1/~ @ HEIGHTS, ISOTACHS AND WIND (KTS)!0
+TEXT    1/21//hw                                                                
+CLEAR   yes                                                                     
+STNPLT                                                                          
+SATFIL                                                                          
+RADFIL                                                                          
+STREAM                                                                          
+POSN    4                                                                       
+COLORS  2                                                                       
+MARKER  2                                                                       
+GRDLBL  5                                                                       
+LUTFIL  none
+FILTER  yes

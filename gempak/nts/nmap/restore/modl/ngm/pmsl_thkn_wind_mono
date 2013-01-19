@@ -1,0 +1,38 @@
+!
+! Restore File : pmsl_thkn_wnd_mono
+!
+! Log:
+! J. Carr/HPC   	 7/98	Initial creation
+! J. Carr/HPC		11/98	Changed color from brown to green and increment of thickness from 60 to 30
+!				Changed dotted thickness lines to dashed.
+!
+GLEVEL  500:1000!500:1000!0!9823
+GVCORD  pres!pres!none!sgma
+PANEL   0                                                                       
+SKIP    0!0!0!0/1;2
+SCALE   -1!-1!0
+GDPFUN  ldf(hght) ! ldf(hght) !sm9s(pmsl)! kntv(wnd)
+TYPE    c!c!c!b
+CONTUR  1                                                                       
+CINT    3/0/540 !3/546/999        !4
+LINE    23/3/2  !23/3/2          !23/1/2
+FINT    
+FLINE   
+HILO    !! 23;23/H#;L#/1018-1070;900-1012//30;30/y
+HLSYM   2;1.5//21//hw
+CLRBAR  1                                                                       
+WIND    23/0.8/1/112
+REFVEC                                                                          
+TITLE   23/-1/~ PMSL, 1000-500 MB THICKNESS, BL (~982 MB) WIND!0
+TEXT    1/21//hw                                                                
+CLEAR   yes                                                                     
+STNPLT                                                                          
+SATFIL                                                                          
+RADFIL                                                                          
+STREAM                                                                          
+POSN    4                                                                       
+COLORS  2                                                                       
+MARKER  2                                                                       
+GRDLBL  5                                                                       
+LUTFIL  none
+FILTER  no

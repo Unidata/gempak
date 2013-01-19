@@ -1,0 +1,4 @@
+$CC $CFLAGS -c dcsvrl.c
+$FC $LDFLAGS -o $OS_BIN/dcsvrl dcsvrl.o \
+        $BRIDGE $GEMLIB $CGEMLIB
+$RM *.o

@@ -1,0 +1,18 @@
+GLEVEL  850
+GVCORD  pres
+GFUNC   tmpc
+CINT    -33;-30;-27;-24;-21;-18;-15;-12;-9;-6;-3;0;3;6;9;12;18;21;24;27;30;33
+LINE    27;27;27;27;27;27;27;27;27;27;27;27;2;2;2;2;2;16;16;16;16;16
+TITLE   5/-2/~  @  TEMPERATURE|~ @ TEMPERATURE
+CLEAR   yes
+PANEL   0
+TEXT    1/21//hw
+SCALE   0
+HILO     
+HLSYM    
+CLRBAR  1
+CONTUR  1
+SKIP    0
+FINT    -24;-18;-12;-6;0;18
+FLINE   24;30;28;29;25;0;17                                                  
+CTYPE   c/f

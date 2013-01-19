@@ -1,0 +1,25 @@
+!
+! Restore File : max_temp 
+!
+! Log:
+! J. Carr/HPC   	10/98	Initial creation
+!
+GDATTIM F24;F48;F72;F96;F120;F144;F168
+SCALE   0
+TEXT    1.2/21/1/hw
+HILO    0
+HLSYM   0
+CONTUR  1
+SKIP    0
+WIND    0 
+FINT    0
+FLINE   0
+LINE    6/1/3/1  !2/1/3/1
+CINT    5/-100/30!5/35/100
+TYPE    c
+CLRBAR  1
+GLEVEL  2
+GVCORD  HGHT
+GDPFUN  sm9s(MAXF)!sm9s(MAXF)
+TITLE   1/-2/~ MOS MAX TEMP |~MAX TEMP
+

@@ -1,0 +1,18 @@
+
+
+                   Terminal (TM) Library 
+
+
+The TERMINAL library provides subroutines to write messages to the 
+user's terminal and to read terminal input.
+
+The subroutines TM_INT, TM_REAL and TM_CHR write a message to the 
+terminal and return the integer, real or character array that was 
+input by the user.  TM_STR returns a single, unprocessed string. 
+TM_ACCP waits for the user to respond by entering a carriage return.  
+In every case, the user may type EXIT to stop processing.
+
+Subroutines to clear the terminal screen, halt program execution
+and write messages are also available.
+
+

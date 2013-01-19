@@ -1,0 +1,22 @@
+! MAPINFO.NWX
+!
+! This table contains the information to identify the map GAREA.
+!
+! The format for the file is given below.
+!
+!NAME        GAREA
+!( < 40 )   ( < 80 )  
+US           NWUS
+LOCAL        LOCAL
+CANADA       NWCN
+CARIBBEAN    NWCAR
+ALASKA       NWAK
+HAWAII       NWXHI
+WATLANTIC    WATL
+NATLANTIC    NATL
+EPACIFIC     EPAC
+NPACIFIC     MPAC
+SAUDI_ARABIA SAUD
+WORLD1       NWWRD1
+WORLD2       NWWRD2
+WORLD3       WORLD

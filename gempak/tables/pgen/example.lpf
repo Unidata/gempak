@@ -1,0 +1,143 @@
+! EXAMPLE.LPF
+!
+! This file is an example Layer Product File (LPF).  It describes the LPF
+! format and processing rules.
+!
+! An LPF allows the specification of product generation layers and their 
+! attributes.  When an LPF is selected using the NMAP "OPEN PROD" action,
+! the layers and their attributes in the LPF are loaded into product generation.
+! See the NMAP Product Generation-LPF help for additional details.
+!
+! An LPF has two columns.  The first column is a reserved keyword enclosed in
+! angle brackets that indicates the layer attribute.  The second column is the 
+! value for that attribute.  Keywords and their values are grouped by layer in 
+! the file.  The exclamation point, !, precedes comment lines in the file. 
+!
+! The following table lists the reserved keyword, its format or valid values,
+! and a brief description. Note that N is the layer number from 1 through 10.
+!
+! KEYWORD		FORMAT/VALID VALUES		DESCRIPTION
+!==============================================================================
+! <layerN_name> 	String up to 8 characters	Layer name
+!
+! <layerN_file>		String				input VGF name
+!							and default output name
+!							if no output_file is
+!							specified (see below).
+!
+! <layerN_output_file>  String				output VGF name
+!
+! <layerN_group_type>   Group name                      Group name assigned to
+!                                                       the layer, see
+!                                                       $GEMTBL/pgen/grptyp.tbl
+!
+! <layerN_display_mode>	On | Off			Layer toggle when the 
+!							layer is not active
+!
+! <layerN_color_mode>   All | Mono                      Color mode when the
+!                                                       layer is not active,
+!							all, all colors shown,
+!							mono, one color shown
+!
+! <layerN_color_id>	GEMPAK color ID (1-32)		Layer mono color when  
+!							the layer is not active
+!
+! <layerN_fill_mode>	On | Off			Fill toggle when
+!							the layer is not 
+!                                                       active 
+!
+! The following rules apply:
+!
+! 	1. The key words can be in any order for a given layer. 
+!
+!	2. An empty VGF is created in the local directory if the VGF does not
+!	   exist.  The VGF is opened for the layer.
+!	
+!	3. The following defaults are used if a layer attribute is not specified
+!          or if its value is invalid:
+!
+!		<layerN_name>   	layer_N, If the name is > 8 characters,
+!                                       it is truncated 
+!		<layerN_file>	        No default, no VGF opened for the layer 
+!		<layerN_output_file>	No default, no VGF opened for output 
+!					  for the layer.
+!		<layerN_display_mode>	On
+!		<layerN_color_id>	19
+!		<layerN_color_mode>	All
+!		<layerN_fill_mode>	On
+!		<layerN_group_type>     The first group type in 
+!                                       $GEMTBL/pgen/grptyp.tbl is used 
+!
+!!
+! Log:
+! T. Lee/SAIC		5/02	Created
+! S. Schotz/NCEP	6/02	Updated documentation, added more examples
+! S. Schotz/NCEP 	6/02    Corrected group default rule
+! E. Safford/SAIC      11/03	Added <layerN_output_file>
+!--------------------------------------------------------------------------------
+!
+!
+! layer 1: Sample Jets Layer
+!
+<layer1_name>		Jets
+<layer1_file>		jets_current.vgf
+<layer1_output_file>	jets_out.vgf
+<layer1_group_type>	Jets
+<layer1_display_mode>	On
+<layer1_color_mode>	All
+<layer1_color_id>	2
+<layer1_fill_mode>	On
+!
+! Layer 2: Sample Fronts Layer
+!
+<layer2_name>		Frnts
+<layer2_file>		fronts_current.vgf
+<layer2_output_file>	fronts_out.vgf
+<layer2_group_type>	Front
+<layer2_display_mode>	Off
+<layer2_color_mode>	Mono
+<layer2_color_id>	5
+<layer2_fill_mode>	On
+!
+! Layer 3: Sample Clouds Layer
+!
+<layer3_name>	 	Clds	
+<layer3_file>		clouds_current.vgf
+<layer3_output_file>	clouds_out.vgf
+<layer3_group_type>	Cloud	
+<layer3_display_mode>	On
+<layer3_color_mode>	Mono
+<layer3_color_id>	6
+<layer3_fill_mode>	Off
+!
+! Layer 4: Sample Turbulence Layer
+!
+<layer4_name>		Turb
+<layer4_file>		turb_current.vgf
+<layer4_output_file>	turb_out.vgf
+<layer4_group_type>	Turb
+<layer4_display_mode>	Off
+<layer4_color_mode>	Mono
+<layer4_color_id>	7
+<layer4_fill_mode>	off
+!
+! Layer 5: Sample Tropopause Layer
+!
+<layer5_name>		Trop
+<layer5_file>		trop_current.vgf
+<layer5_output_file>	trop_out.vgf
+<layer5_display_mode>	off
+<layer5_color_mode>	Mono
+<layer5_color_id>	8
+<layer5_fill_mode>	Off
+!
+! Layer 6: Sample Volcano and Tropical Storm Symbols Layer
+!
+<layer6_name>		Symbols
+<layer6_file>		symb_current.vgf
+<layer6_output_file>	symb_out.vgf
+<layer6_group_type>	Label
+<layer6_display_mode>	Off
+<layer6_color_mode>	Mono
+<layer6_color_id>	9
+<layer6_fill_mode>	Off

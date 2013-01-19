@@ -1,0 +1,13 @@
+GDFILE  Grid file                                                               
+SATFIL  Satellite image filename(s)                                             
+RADFIL  Radar image filename(s)                                                 
+PROJ    Map projection/angles/margins|drop flag                                 
+GAREA   Graphics area                                                           
+PANEL   Panel loc/color/dash/width/regn                                         
+DEVICE  Device|name|x size;y size|color type                                    
+CLEAR   Clear screen flag                                                       
+SHAPE   Object to draw                                                          
+INFO    Shape information                                                       
+LOCI    Point(s) associated with SHAPE                                          
+LINE    Color/type/width/label/smth/fltr/scflg                                  
+CTYPE   Contour type:  C/F                                                      

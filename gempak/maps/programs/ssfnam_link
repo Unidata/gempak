@@ -1,0 +1,4 @@
+$FC $FFLAGS $LDFLAGS -o ssfnam ssfnam.f \
+			$GEMLIB $APPL $SYSLIB \
+			$GEMLIB $CGEMLIB $GEMLIB
+$RM *.o

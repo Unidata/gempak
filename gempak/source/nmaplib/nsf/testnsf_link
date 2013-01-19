@@ -1,0 +1,6 @@
+$CC $CFLAGS -c testnsf.c 
+$FC $LDFLAGS -o $OS_BIN/testnsf testnsf.o \
+		$NMAPLIB $OS_LIB/sfmap.a \
+		$GEMLIB $CGEMLIB $APPL $SYSLIB \
+		-lm -lnetcdf -lz
+$RM *.o

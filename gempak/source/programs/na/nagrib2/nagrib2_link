@@ -1,0 +1,5 @@
+$CC $CFLAGS -c nagrib2.c
+$FC $LDFLAGS -o $OS_BIN/nagrib2 nagrib2.o \
+		$OS_LIB/nagrib2.a $GEMLIB $CGEMLIB \
+		$APPL $SYSLIB -ljasper -lm -lpng -lz
+$RM *.o

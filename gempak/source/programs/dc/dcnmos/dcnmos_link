@@ -1,0 +1,5 @@
+$CC $CFLAGS -c dcnmos.c
+$FC $FFLAGS -c dcnmdc.f
+$FC $LDFLAGS -o $OS_BIN/dcnmos *.o \
+	$BRIDGE $GEMLIB $CGEMLIB
+$RM *.o

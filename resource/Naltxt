@@ -1,0 +1,81 @@
+!
+! Naltxt
+! 
+! resource file for Naltxt
+!
+Naltxt*foreground: black
+Naltxt*background: grey75
+!
+Naltxt*fontList: -adobe-helvetica-bold-r-normal--12-120-75-75-p-70-iso8859-1
+
+Naltxt.width:			640
+Naltxt.height:			800
+!
+! Scrolled Lists
+!
+Naltxt*pathlabel.height		15
+Naltxt*filename.height:		15
+Naltxt*pathlabel.width:		430
+Naltxt*filelist.height:		200
+Naltxt*filelist.visibleItemCount:	20
+!
+! View File
+!
+Naltxt*viewfile.height		450
+!
+! FileInfo Custom Dialog resources
+!
+! size of the dialog
+!
+Naltxt*fileinfo.width:		480
+Naltxt*fileinfo.height		160
+!
+! title
+!
+Naltxt*fileinfo.dialogTitle: File Information
+!
+! file name and size label location
+!
+Naltxt*label.x:			0
+Naltxt*label.y:			0
+Naltxt*label.width:			430
+!
+! Set up separator gadget
+!
+Naltxt*fileinfosep.x:		0
+Naltxt*fileinfosep.y:		150
+Naltxt*fileinfosep.width		480
+!
+!
+! form widget setup
+!
+Naltxt*form*width:			480
+Naltxt*form*height			30
+!
+! Set attachments for pushbutton cancel
+!
+Naltxt*form.cancel.leftAttachment:   ATTACH_POSITION
+Naltxt*form.cancel.leftPosition:     16
+Naltxt*form.cancel.rightAttachment:  ATTACH_POSITION
+Naltxt*form.cancel.rightPosition:    31
+Naltxt*form.cancel.topAttachment:    ATTACH_FORM
+Naltxt*form.cancel.topOffset:        10
+Naltxt*form.cancel.bottomAttachment: ATTACH_FORM
+Naltxt*form.cancel.bottomOffset:     10
+!
+! Set attachments for pushbutton delete
+!
+Naltxt*form.delete.leftAttachment:   ATTACH_POSITION
+Naltxt*form.delete.leftPosition:     41
+Naltxt*form.delete.rightAttachment:  ATTACH_POSITION
+Naltxt*form.delete.rightPosition:    56
+!
+! Set attachments for pushbutton quit
+!
+Naltxt*form.print.leftAttachment:   ATTACH_POSITION
+Naltxt*form.print.leftPosition:     66
+Naltxt*form.print.rightAttachment:  ATTACH_POSITION
+Naltxt*form.print.rightPosition:    81
+!
+! end of file
+!

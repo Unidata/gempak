@@ -1,0 +1,40 @@
+!
+! Restore File : 700mb_rh_rs_temp
+!
+! Log:
+! D.W.Plummer/NCEP	 2/97	Initial creation
+! J. Carr/HPC   	 5/97	Changed name -- no comma, changed the glevel to the ngm 
+! J. Carr/HPC   	 5/97	level not the eta
+! D.W.Plummer/NCEP	 8/97	Added FILTER parameter and changed TEXT value
+!
+GDATTIM fall
+GLEVEL  700!700!700!850!850!9823!9823
+GVCORD  PRES!PRES!PRES!PRES!PRES!SGMA!SGMA
+PANEL   0                                                                       
+SKIP    0/1
+SCALE   0
+GDPFUN  sm9s(relh)!sm9s(tmpc)!sm9s(tmpc)!sm9s(tmpc)!sm9s(tmpc)!sm9s(tmpc)!sm9s(tmpc)
+TYPE    c/f        ! c
+CONTUR  1                                                                       
+CINT    70;90;95   !2;-2 !200;0 !2;-2 !200;0 !2;-2 !-100;0;100
+LINE    32//1/0    !6/3/2!6/1/2 !2/3/2!2/1/2 !20/3/2!20/1/2
+FINT    70;90;95
+FLINE   0;24;23;22
+HILO    0
+HLSYM   0
+CLRBAR  1
+WIND    
+REFVEC                                                                          
+TITLE   1/-1/~ @ RH, near-0 TEMPS (BL yel (985 MB), 850 red, 700 cyan)!0
+TEXT    1/22/2/hw
+CLEAR   yes                                                                     
+STNPLT                                                                          
+SATFIL                                                                          
+RADFIL                                                                          
+STREAM                                                                          
+POSN    4                                                                       
+COLORS  2                                                                       
+MARKER  2                                                                       
+GRDLBL  5                                                                       
+LUTFIL  none
+FILTER  yes

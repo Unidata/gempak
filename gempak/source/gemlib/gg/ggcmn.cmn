@@ -1,0 +1,39 @@
+C************************************************************************
+C GGCMN                                                                 *
+C*                                                                      *
+C* GGCMN data common area.                                            	*
+C**                                                                     *
+C* Log:                                                                 *
+C*  A. Hardy/GSC	 6/01		Created				*
+C*  F. J. Yen/NCEP	 4/05		Added timist; fixed spelling	*
+C************************************************************************
+	PARAMETER ( NW = 1000 )
+	CHARACTER*(MXFLSZ) filnam, files(MXNMFL)
+	CHARACTER wnum(NW)*4, timstr(NW)*20, timstp(NW)*20, 
+     +            timist(NW)*20, wtype(NW)*2, dattm4*20, dattim*20
+        INTEGER	npt(NW), itest(NW), nwtch
+	REAL	rlat(20,NW), rlon(20,NW)
+C*
+	COMMON / GGCMN /
+     +			filnam, files,
+C*					File name
+C*					List of files
+     +			timstr, timstp,
+C*					Starting time
+C*					Ending time
+     +			timist,
+C*					Issue time
+     +			wnum, wtype,
+C*					Watch number
+C*					Watch type
+     +			npt, itest,
+C*					Number of status points
+C*					Test flag
+     +			rlat, rlon,
+C*					Text size
+C*					Text line width
+     +			nwtch, dattm4,
+C*					Number of active watches
+C*					Latest time with 4 digit year
+     +			dattim
+C*					User ending time

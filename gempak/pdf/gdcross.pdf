@@ -1,0 +1,25 @@
+CXSTNS  Cross-section station line                                              
+GDATTIM Grid date/time                                                          
+GVCORD  Grid vertical coordinate                                                
+GFUNC   Scalar grid                                                             
+GVECT   Vector grid                                                             
+GDFILE  Grid file                                                               
+WIND    Wind symbol/siz/wdth/typ/hdsz                                           
+REFVEC  Mag;x;y;txtsiz/font/wdth/HW;labl                                        
+PTYPE   Plot type/h:w ratio/margins                                             
+YAXIS   Ystrt/ystop/yinc/lbl;gln;tck                                            
+IJSKIP  Iskp;Istrt;Istp/Jskp;Jstrt;Jstp                                         
+CINT    Contour interval/min/max                                                
+SCALE   Scalar scale / vector scale                                             
+LINE    Color/type/width/label/smth/fltr/scflg                                  
+BORDER  Background color/type/width                                             
+TITLE   Title color/line/title                                                  
+CLEAR   Clear screen flag                                                       
+DEVICE  Device|name|x size;y size|color type                                    
+TEXT    Size/fnt/wdth/brdr/N-rot/just/hw flg                                    
+PANEL   Panel loc/color/dash/width/regn                                         
+CLRBAR  Color/ornt/anch/x;y/ln;wd/freq|text_info                                
+CONTUR  Subbox/smooth                                                           
+FINT    Fill interval/min/max                                                   
+FLINE   Fill colors/fill types                                                  
+CTYPE   Contour type:  C/F                                                      

@@ -1,0 +1,15 @@
+#!/bin/csh
+
+if ( ${1} == "" )  then
+	echo "Must input state/longitude-sorted table filename on cammand line."
+	exit
+endif
+
+set infile=${1}
+set outfile="$GEMTBL/cities/${infile}.info"
+
+echo "Creating information file $outfile from ${infile}"
+
+locinfo.$NA_OS  ${infile}  > $GEMTBL/cities/${infile}.info
+
+exit

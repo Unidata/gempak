@@ -1,0 +1,38 @@
+! 
+!	RUCPTYPSND_PARMS.TBL
+!
+! This table contains the available parameters used in the
+! station model editing panel in NMAP for UAIR data types. 
+!
+!	pos_zero_flag:	1 = plot at position 0 only
+!			0 = plot at any position
+!
+! Log:
+! S. Jacobs/NCEP	12/02	Copied from uair_parms.tbl
+!
+! parameter       pos_zero_flag  
+!
+brbk:1:2:112      1        
+brbm:1:2          1       
+cfrl              0
+cwtr              0
+dpdc              0      
+dtar              0
+dtcp              0
+dtgp              0
+dtlw              0
+dtsw              0
+dwpc              0     
+hght              0    
+imxr              0    
+mixr	          0   
+omeg	          0   
+pres              0  
+psym              0        
+relh              0       
+stdz              0
+stid              0      
+stnm              0
+tkel              0    
+tmpc              0    
+thte              0

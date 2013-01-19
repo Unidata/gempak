@@ -1,0 +1,30 @@
+! CHANNEL.TBL
+!
+! This table contains the NETCDF channel string names and corresponding
+! channel numbers.
+!
+! (Do not use tabs when adding to the table.)
+!!
+! Log:
+! A. Hardy/GSC		 7/01 	Created
+!------------------------------------------------------------------------
+!
+!CHANNEL STRINGS                                            |NUM|
+!(60)                                                       |(3)|
+Visible                                                        1
+0.58-0.68 micron VIS                                           1
+0.55-0.75 micron VIS                                           1
+0.6 micron visible                                             1
+3.9 micron                                                     2
+3.9 micron IR                                                  2
+3.90 micron IR                                                 2
+3.80-4.00 micron IR                                            2
+6.50-7.00 micron IR                                            2
+6.7 micron                                                     4
+6.7 micron water vapor                                         4
+10.20-11.20 micron IR                                          8
+11 micron IR                                                   8
+10.50-11.50 micron IR                                          8
+11 micron                                                      8
+12 micron                                                     16
+12 micron IR                                                  16

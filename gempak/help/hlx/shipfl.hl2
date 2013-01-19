@@ -1,0 +1,14 @@
+     SHIPFL
+
+     SHIPFL is a logical variable which indicates whether the surface 
+     file contains stations which are not at a fixed location, such as 
+     moving ships, aircraft, or floating buoys.
+
+     A ship file will store and write data differently from a standard 
+     GEMPAK surface file.  However, these files can be read using the 
+     surface library and all programs which access data in surface files 
+     can be used unchanged.
+
+     Note that station information cannot be added to these files, since 
+     the station information must be stored with the data.
+

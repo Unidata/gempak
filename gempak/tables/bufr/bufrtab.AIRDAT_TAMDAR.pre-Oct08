@@ -1,0 +1,105 @@
+.------------------------------------------------------------------------------.
+| ------------   USER DEFINITIONS FOR TABLE-A TABLE-B TABLE D   -------------- |
+|------------------------------------------------------------------------------|
+| MNEMONIC | NUMBER | DESCRIPTION                                              |
+|----------|--------|----------------------------------------------------------|
+|          |        |                                                          |
+| FN004000 | A49027 | MSG TYPE 004-000 TAMDAR DIRECT FROM AIRDAT               |
+|          |        |                                                          |
+| YYMMDD   | 301011 | DATE -- YEAR, MONTH, DAY                                 |
+| HHMMSS   | 301013 | TIME -- HOUR, MINUTE, SECOND                             |
+| LTLONH   | 301021 | LOCATION -- LATITUDE, LONGITUDE (HIGH ACCURACY)          |
+|          |        |                                                          |
+| ACRN     | 001008 | AIRCRAFT REGISTRATION NUMBER (TAIL NUMBER)               |
+| SMMO     | 001013 | SPEED OF MOTION OF MOVING OBSERVING PLATFORM             |
+|          |        |                                                          |
+| YEAR     | 004001 | YEAR                                                     |
+| MNTH     | 004002 | MONTH                                                    |
+| DAYS     | 004003 | DAY                                                      |
+| HOUR     | 004004 | HOUR                                                     |
+| MINU     | 004005 | MINUTE                                                   |
+| SECO     | 004006 | SECOND                                                   |
+|          |        |                                                          |
+| CLATH    | 005001 | LATITUDE (HIGH ACCURACY)                                 |
+|          |        |                                                          |
+| CLONH    | 006001 | LONGITUDE (HIGH ACCURACY)                                |
+|          |        |                                                          |
+| HMSL     | 007002 | HEIGHT OR ALTITUDE                                       |
+| PRLC     | 007004 | PRESSURE                                                 |
+| FLVLST   | 007010 | FLIGHT LEVEL                                             |
+|          |        |                                                          |
+| POAF     | 008004 | PHASE OF AIRCRAFT FLIGHT                                 |
+|          |        |                                                          |
+| IALR     | 010082 | INSTANTANEOUS ALTITUDE RATE                              |
+|          |        |                                                          |
+| WDIR     | 011001 | WIND DIRECTION                                           |
+| WSPD     | 011002 | WIND SPEED                                               |
+| TRBXST   | 011037 | TURBULENCE INDEX                                         |
+| TOPEDR   | 011038 | TIME OF OCCURRENCE OF PEAK EDDY DISSIPATION RATE         |
+|          |        |                                                          |
+| TMDBST   | 012001 | TEMPERATURE/DRY-BULB TEMPERATURE                         |
+|          |        |                                                          |
+| RAWHU    | 013009 | RAW RELATIVE HUMIDITY                                    |
+|          |        |                                                          |
+| AFIC     | 020041 | AIRFRAME ICING                                           |
+|          |        |                                                          |
+| AFSI     | 031021 | ASSOCIATED FIELD SIGNIFICANCE                            |
+|          |        |                                                          |
+| PCCF     | 033007 | PERCENT CONFIDENCE                                       |
+| TPQC2    | 033254 | TEMP QC HOLDER -- 2 BITS                                 |
+|          |        |                                                          |
+|------------------------------------------------------------------------------|
+| MNEMONIC | SEQUENCE                                                          |
+|----------|-------------------------------------------------------------------|
+|          |                                                                   |
+| FN004000 | YYMMDD  HHMMSS  LTLONH  HMSL  PRLC  FLVLST  IALR  POAF  ACRN      |
+| FN004000 | AFSI  TPQC2  SMMO  TPQC2  TMDBST  TPQC2  WDIR  TPQC2  WSPD        |
+| FN004000 | TPQC2  TRBXST  TPQC2  TOPEDR  TPQC2  AFIC                         |
+| FN004000 | AFSI  PCCF  RAWHU                                                 |
+|          |                                                                   |
+| YYMMDD   | YEAR  MNTH  DAYS                                                  |
+| HHMMSS   | HOUR  MINU  SECO                                                  |
+| LTLONH   | CLATH CLONH                                                       |
+|          |                                                                   |
+|------------------------------------------------------------------------------|
+| MNEMONIC | SCAL | REFERENCE   | BIT | UNITS                    |-------------|
+|----------|------|-------------|-----|--------------------------|-------------|
+|          |      |             |     |                          |-------------|
+| ACRN     |    0 |           0 |  64 | CCITT IA5                |-------------|
+| SMMO     |    0 |           0 |  10 | METERS/SECOND            |-------------|
+|          |      |             |     |                          |-------------|
+| YEAR     |    0 |           0 |  12 | YEAR                     |-------------|
+| MNTH     |    0 |           0 |   4 | MONTH                    |-------------|
+| DAYS     |    0 |           0 |   6 | DAY                      |-------------|
+| HOUR     |    0 |           0 |   5 | HOUR                     |-------------|
+| MINU     |    0 |           0 |   6 | MINUTE                   |-------------|
+| SECO     |    0 |           0 |   6 | SECOND                   |-------------|
+|          |      |             |     |                          |-------------|
+| CLATH    |    5 |    -9000000 |  25 | DEGREES                  |-------------|
+|          |      |             |     |                          |-------------|
+| CLONH    |    5 |   -18000000 |  26 | DEGREES                  |-------------|
+|          |      |             |     |                          |-------------|
+| HMSL     |   -1 |         -40 |  16 | METERS                   |-------------|
+| PRLC     |   -1 |           0 |  14 | PASCALS                  |-------------|
+| FLVLST   |    0 |       -1024 |  16 | METERS                   |-------------|
+|          |      |             |     |                          |-------------|
+| POAF     |    0 |           0 |   3 | CODE TABLE               |-------------|
+|          |      |             |     |                          |-------------|
+| IALR     |    3 |      -65536 |  17 | METERS/SECOND            |-------------|
+|          |      |             |     |                          |-------------|
+| WDIR     |    0 |           0 |   9 | DEGREES TRUE             |-------------|
+| WSPD     |    1 |           0 |  12 | METERS/SECOND            |-------------|
+| TRBXST   |    0 |           0 |   6 | CODE TABLE               |-------------|
+| TOPEDR   |    0 |           0 |   5 | CODE TABLE               |-------------|
+|          |      |             |     |                          |-------------|
+| TMDBST   |    1 |           0 |  12 | DEGREES KELVIN           |-------------|
+|          |      |             |     |                          |-------------|
+| RAWHU    |    1 |       -1000 |  12 | PERCENT                  |-------------|
+|          |      |             |     |                          |-------------|
+| AFIC     |    0 |           0 |   4 | CODE TABLE               |-------------|
+|          |      |             |     |                          |-------------|
+| AFSI     |    0 |           0 |   6 | CODE TABLE               |-------------|
+|          |      |             |     |                          |-------------|
+| PCCF     |    0 |           0 |   7 | PERCENT                  |-------------|
+| TPQC2    |    0 |           0 |   2 | CODE TABLE               |-------------|
+`------------------------------------------------------------------------------'

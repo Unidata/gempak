@@ -1,0 +1,8 @@
+!	This is the GEMLIB CRG error file
+!
+   1	! Element ioffset is negative
+  -1 	! Element is not found
+  -2	! Element is out of bounds of range record
+  -3	! Range array is full.
+  -4	! Element layer value is out of bounds
+  -5    ! Element has been deleted (file position < 0)

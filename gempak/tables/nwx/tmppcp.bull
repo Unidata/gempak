@@ -1,0 +1,74 @@
+! TMPPCP.BULL
+!
+! This table contains the bulletin/station information to be used
+! with the State Temp/Precip
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+!
+ASUS55 KABQ     ALBUQUERQUE/KIR                  NM US  3504 -10660  1613
+ABUS21 KALB     ALBANY_MUNICIPA                  NY US  4275 -07380    89
+ASUS52 KFFC     PEACHTREE_CITY                   GA US  3336  -8456   246
+ABUS21 KAVL     ASHEVILLE_MUNIC                  NC US  3543  -8255   661
+ASUS54 KBMX     SHELBY_CO_AIRPT                  AL US  3317  -8677   178
+ABUS21 KBIS     BISMARCK_MUNICI                  ND US  4677 -10075   506
+ABUS21 KBOI     BOISE_MUNICIPAL                  ID US  4357 -11622   874
+ABUS21 KBOS     BOSTON/LOGAN_IN                  MA US  4237  -7103     9
+ABUS21 KBWI     BALTIMORE/WASH                   MD US  3918  -7667    47
+ABUS21 KCAE     COLUMBIA_METRO                   SC US  3395  -8112    69
+ABUS21 KCHI     CHICAGO_(WSFO)                   IL US  4200  -8788   181
+ABUS21 KCLE     CLEVELAND/HOPKI                  OH US  4142  -8187   245
+ABUS21 KCYS     CHEYENNE/WARREN                  WY US  4115 -10482  1872
+ABUS21 KDEN     DENVER_INTERNAT                  CO US  3990 -10470  1656
+ABUS21 KDSM     DES_MOINES_INTL                  IA US  4153  -9365   294
+ABUS21 KDTX     DETROIT/PONTIAC                  MI US  4270  -8347   329
+ABUS21 KFSD     SIOUX_FALLS/FOS                  SD US  4358  -9673   435
+ABUS21 KGTF     GREAT_FALLS_INT                  MT US  4748 -11137  1115
+ABUS21 KILG     WILMINGTON_AIRP                  DE US  3968  -7559    24
+ABUS21 KIND     INDIANAPOLIS_IN                  IN US  3972  -8627   246
+ASUS54 KJAN     JACKSON/THOMPSO                  MS US  3232  -9008   101
+ASUS54 KLZK     NORTH_LITTLE_RO                  AR US  3483  -9225   165
+ASUS54 KMEG     MEMPHIS                          TN US  3513  -8980    87
+ASUS52 KMFL     MIAMI                            FL US  2575  -8038     5
+ABUS21 KMKE     MILWAUKEE/MITCH                  WI US  4295  -8790   211
+ABUS21 KMSP     MINNEAPOLIS-ST                   MN US  4488  -9322   255
+ASUS54 KLIX     NEW_ORLEANS_LAKE                 LA US  3003  -9003     3
+ASUS54 KOUN     NORMAN                           OK US  3522  -9747   362
+ABUS21 KOMA     OMAHA/EPPLEY_FI                  NE US  4130  -9590   299
+ABUS21 KPDX     PORTLAND_INTL_A                  OR US  4560 -12260    12
+ABUS21 KPHL     PHILADELPHIA_IN                  PA US  3988  -7525     9
+ABUS21 KPHX     PHOENIX/SKY_HAR                  AZ US  3343 -11202   337
+ABUS21 KPWM     PORTLAND_INTL_J                  ME US  4365  -7031    19
+ABUS21 KRDU     RALEIGH-DURHAM                   NC US  3586  -7878   134
+ABUS21 KRIC     RICHMOND/BYRD_F                  VA US  3750  -7733    54
+ABUS21 KRNO     RENO/CANNON_INT                  NV US  3950 -11978  1341
+ABUS21 KSDF     LOUISVILLE/STAN                  KY US  3818  -8573   149
+ABUS21 KSEA     SEATTLE-TACOMA                   WA US  4745 -12230   137
+ABUS21 KSLC     SALT_LAKE_CITY                   UT US  4078 -11197  1288
+ABUS21 KSTL     ST_LOUIS/LAMBER                  MO US  3875  -9037   172
+ABUS21 KSTO     SACRAMENTO                       CA US  3861 -12139    16
+ABUS21 KTOP     TOPEKA/BILLARD                   KS US  3907  -9562   270
+ABUS21 KTYS     KNOXVILLE_MUNIC                  TN US  3582  -8398   299
+ABUS54 KLUB     LUBBOCK_INTL_AR                  TX US  3365 -10182   988
+ASHW50 PHFO     HONOLULU/UNIV_OF_HI-MANOA_CAMPUS HI US  2130 -15782    20
+ASUS51 KRLX     CHARLESTON/KANA                  WV US  3836  -8159   299
+ASUS54 KLUB     LUBBOCK_INTL_AR                  TX US  3365 -10182   988
+ASUS54 KMRX     KNOXVILLE/MORRISTOWN_NEXRAD      TN US  3617  -8340   437
+ASUS55 KREV     RENO/CANNON_INT                  NV US  3970 -11988  1341
+ABUS21 KAKQ     WAKEFIELD_MUNICIPAL_AIRPORT      VA US  3698 -7700     34  
+ABUS21 KALY     ALBANY                           NY US  4285  -7390    88
+ABUS21 KAPX     ALPENA_CO._REGIONAL              MI US  4507  -8357   211
+ABUS21 KGSP     GREER,_GREENVILLE-SPARTANBURG_AP SC US  3488  -8222   296
+ABUS21 KGYX     PORTLAND                         ME US  4365  -7031    20
+ASUS51 KBOX     BOSTON/LOGAN_IN                  MA US  4247  -7113     9
+ASUS51 KBTV     BURLINGTON_INTL                  VT US  4447  -7315   104
+ASUS51 KNYC     NEW_YORK_CITY                    NY US  4077  -7398    27
+ASUS51 KPHI     PHILADELPHIA_IN                  PA US  3998  -7535     9
+ASUS52 KRAH     RALEIGH-DURHAM                   NC US  3596  -7888   134
+ASUS54 KMOB     MOBILE                           AL US  3068  -8825    67
+ASUS55 KPUB     SE_COLORADO/CO_SPRINGS/PUEBLO    CO US  3828 -10452  1439
+ASUS55 KRIW     RIVERTON_REGIONAL_AIRPORT        WY US  4306 -10845  1684
+

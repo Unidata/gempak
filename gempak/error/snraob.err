@@ -1,0 +1,12 @@
+!	SNRAOB Error file
+!
++1	! The sounding file !AS has been created.
+-1	! Fatal error initializing TAE.
+-2	! Fatal error reading TAE parameters.
+-3	! Error opening raobs file.
+-4	! Error opening sounding file.
+-5	! Sounding file must contain unmerged data.
+-6	! Error reading raobs file.
+-7	! Invalid time input.
+-8	! No more stations can be added to the file.
+-9	! No more times can be added to the file.

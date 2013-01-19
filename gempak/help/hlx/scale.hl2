@@ -1,0 +1,24 @@
+     SCALE
+
+     SCALE is the scaling factor for the data.  All data will be multiplied 
+     by 10 ** SCALE.  The user specifies the scaling factor for scalar
+     grids and/or vector grids by entering:
+
+	scalar / vector
+ 
+     If SCALE is not specified, an appropriate scaling will be selected.
+     In the grid programs, a data-dependent scaling will be selected.  In 
+     the surface, sounding and the grid to station interpolation programs, 
+     a default of 0 will be used.  If no vector scale is specified the 
+     scalar scaling factor will be used in its place.
+
+     If the absolute value of SCALE is greater than 5 in a surface or 
+     sounding program, a value of 0 will be used.  If the absolute value 
+     is greater than 20, a default will be computed in a grid program.
+     In the grid to station interpolation program, a default of 0 will
+     be used.
+
+     Note that scaling data may create integer overflow problems in 
+     programs, such as SFMAP, which round data to the nearest integer.  
+     Valid integers must be in the range -2*10**9 to 2*10**9, approximately.
+

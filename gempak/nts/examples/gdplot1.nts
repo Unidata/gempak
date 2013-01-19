@@ -1,0 +1,28 @@
+GDFILE  $GEMPAK/data/HRCBOB.GRD                                                     
+GDATTIM f24                                                                     
+GLEVEL  700                                                                     
+GVCORD  PRES                                                                    
+PANEL   0                                                                       
+SKIP    0                                                                       
+SCALE   0                                                                       
+GFUNC   tmpc                                      ! dwpc                         
+CTYPE   C                                                                       
+CONTUR  3                                                                       
+CINT    2                                         ! 5                           
+LINE    3/-3/3/2                                  ! 17/-3/2/2                   
+FINT    0                                                                       
+FLINE   10-20                                                                   
+HILO                                                                            
+HLSYM                                                                           
+CLRBAR                                                                          
+GVECT   wnd                                                                     
+WIND    bm6//2                                                                  
+REFVEC  10                                                                      
+TITLE   1/-2/~  @  TEMPERATURE, DEWPOINT and WIND ! 0
+TEXT    1/22//hw                                                                
+CLEAR   YES                                                                     
+GAREA   ny-                                                                     
+PROJ    mer                                                                     
+MAP     1/7                                                                     
+LATLON  2/10/1/1/5;5                                                            
+DEVICE  XW                                                                      

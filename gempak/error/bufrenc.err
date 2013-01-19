@@ -1,0 +1,16 @@
+!	This is the BUFRENC error file
+!
+! log
+!------
+! M. LI/SAIC		10/03        
+! M. Li/SAIC		10/04	Added -7, -8
+!
+
+  -1	! Invalid input for FXY file names.
+  -2	! Invalid input for the ASCII file.	
+  -3	! Error opening input ASCII file. 
+  -4	! Error read the header information for input ASCII file.
+  -5	! Error with the number of BUFR output files. 
+  -6	! Cannot open FXY table. 
+  -7	! Mixing SWH and SWM table names in fxytbl.
+  -8	! Chart levels do not match requested chart type.

@@ -1,0 +1,12 @@
+     MAXTOP
+
+     MAXTOP specifies the color and filter attributes for cell top 
+     annotations (feet):
+
+           color ; filter
+
+     A color value of 0 is used to turn off cell top annotations. 
+
+     FILTER is a logical variable or real number which controls the
+     filtering of data in order to eliminate plotting of overlapping
+     data.

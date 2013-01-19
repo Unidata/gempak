@@ -1,0 +1,368 @@
+#!/bin/sh -f
+#-------------------------------------------------------------------------------
+#
+# cntall - Source Code Line Counter (for multiple directories)
+#
+# Counts lines of source code (LOC) in one or more directories.
+#
+## Log:
+# M. Linda/GSC		 3/97	Original
+# S. Jacobs/NCEP	 4/97	Added -f and -c flags to count only FORTRAN or C
+#-------------------------------------------------------------------------------
+
+HINT='Invoke this utility with no arguments for help.'
+
+#-------------------------------------------------------------------------------
+
+USAGE='........................................'\
+'......................................\n'\
+'\n'\
+'NAME'\
+'\t     cntall - Source Code Line Counter (for multiple directories)\n'\
+'\n'\
+'SYNOPSIS\n'\
+'\t     cntall [-bnsdtfc] [-x dir] [path]\n'\
+'\n'\
+'DESCRIPTION\n'\
+'\t     This utility counts lines of source code (LOC) in multiple\n'\
+'\t     directories.  It steps through the directory tree starting with the\n'\
+'\t     given path.  If no path is given, the current directory is used.\n'\
+'\t     Options control the amount of information that is displayed.  As a\n'\
+'\t     default, this utility displays detailed counts for all non-binary\n'\
+'\t     files in the directory.  Options may be used to suppress selected\n'\
+'\t     detail down to a single line of summary totals.\n'\
+'\n'\
+'\t     The path specification may be prefixed with a back-slash (\) to\n'\
+'\t     avoid expansion of the path by the shell.  The back-slash makes\n'\
+'\t     the final output more concise when environment variables or home\n'\
+'\t     directory abbreviations (~ prefix) are used in the path\n'\
+'\t     specification.\n'\
+'\n'\
+'\t     -b   \tInclude binary files in the counting.\n'\
+'\n'\
+'\t     -n   \tSuppress column labels.\n'\
+'\n'\
+'\t     -s   \tOverall summary only.  Displays only the single grand total\n'\
+'\t          \tfor all subdirectories.\n'\
+'\n'\
+'\t     -d   \tDirectory summary only.  Displays a total for each directory\n'\
+'\t          \tas well as the grand total for all directories (no detail is\n'\
+'\t          \tshown for the individual files).\n'\
+'\n'\
+'\t     -t   \tSuppress the time stamp header.\n'\
+'\n'\
+'\t     -f   \tCount only the FORTRAN source code.\n'\
+'\n'\
+'\t     -c   \tCount only the C source code.\n'\
+'\n'\
+'\t     -x dir\tSpecifies a subdirectory that is to be skipped over.  This\n'\
+'\t          \toption may be repeated for multiple subdirectories.\t\n'\
+'\n'\
+'EXAMPLE\n'\
+'\t     cntall -x \$GEMPAK/source/gplt/device \$GEMPAK/source/gplt\n'\
+'\n'\
+'\t\t        Counts lines of source code (the -b option is not given) for\n'\
+'\t\t        all files subordinate to the given directory.  The gplt/device\n'\
+'\t\t        directory is not included (the -x option excludes it).\n'\
+'\t\t        Displays detail counts for each file (neither the -s nor the -d\n'\
+'\t\t        option is given).  Also displays one set of column headers for\n'\
+'\t\t        each directory (the -n and -t options are not given).\n'\
+'\n'\
+'FILES\n'\
+'\t     /tmp/cntall.1.xxxx\t    Temporary files (where xxxx is the PID).\n'\
+'\t     /tmp/cntall.2.xxxx\n'\
+'\n'\
+'SEE ALSO\n'\
+'\t     cntloc, countf, countc\n'\
+'\n'\
+'........................................'\
+'......................................'
+
+#-------------------------------------------------------------------------------
+# Process the command line.
+
+if  [ "$1" = "" ] ; then
+    if  [ "$OS" != "SunOS" ] ; then
+	echo $USAGE
+    else
+	if  [ -f /usr/5bin/echo ] ; then
+	    /usr/5bin/echo $USAGE
+	else
+	    echo $USAGE | sed 's,\\n,@,g' | tr "@" "\012" | \
+			  sed 's,\\t,	,g'
+	fi
+    fi
+    exit 1
+else
+    if  [ "$OPTIND" = 1 ] ; then
+	while getopts "bnsdtfcx:" nextOption ; do
+	    case $nextOption in
+		b ) OPTb=$nextOption ;;
+		n ) OPTn=$nextOption ;;
+		s ) OPTs=$nextOption ;;
+		d ) OPTd=$nextOption ;;
+		t ) OPTt=$nextOption ;;
+		f ) OPTf=$nextOption ;;
+		c ) OPTc=$nextOption ;;
+		x ) xPth="$xPth $OPTARG" ;;
+		* ) echo $HINT >&2 ; exit 1 ;;
+	    esac
+	done
+	shift `expr $OPTIND - 1`
+    else
+	while [ $# -gt 0 ] ; do
+	    case $1 in
+		-b ) OPTb=`echo $1 | sed 's/^-//'` ; shift ;;
+		-n ) OPTn=`echo $1 | sed 's/^-//'` ; shift ;;
+		-s ) OPTs=`echo $1 | sed 's/^-//'` ; shift ;;
+		-d ) OPTd=`echo $1 | sed 's/^-//'` ; shift ;;
+		-t ) OPTt=`echo $1 | sed 's/^-//'` ; shift ;;
+		-f ) OPTf=`echo $1 | sed 's/^-//'` ; shift ;;
+		-c ) OPTc=`echo $1 | sed 's/^-//'` ; shift ;;
+		-x ) xPth="$xPth $2" ; shift 2 ;;
+		-x*) arg=`echo "$1" | sed 's/^..//'`
+		     xPth="$xPth $arg"
+		     shift
+		     ;;
+		-- ) shift ; break ;;
+		-* ) echo "$0: illegal option $1" >&2
+		     echo $HINT >&2
+		     exit 1
+		     ;;
+		 * ) if  [ $# -eq 1 ] ; then
+			 break
+		     else
+			 echo "$0: illegal option $1" >&2
+			 echo $HINT >&2
+			 exit 1
+		     fi
+		     ;;
+	    esac
+	done
+    fi
+
+    if  [ "$1" = "" -o "$1" = "." ] ; then
+	rawPath=`pwd`
+    else
+	rawPath="$1"
+    fi
+fi
+
+#-------------------------------------------------------------------------------
+# Initialize variables.
+
+procname=`basename $0`
+tmpFile1=/tmp/$procname.1.$$
+tmpFile2=/tmp/$procname.2.$$
+
+curDir=`pwd`
+
+#-------------------------------------------------------------------------------
+# Set up a trap so that interruptions cause a clean exit.
+
+trap 'if [ -f $tmpFile1 -o -f $tmpFile2 ] ; then
+         rm -f $tmpFile1
+         rm -f $tmpFile2
+      fi ; \
+      exit' 1 2
+
+#-------------------------------------------------------------------------------
+# Display headers.
+
+if  [ "$OPTt" != "t" ] ; then
+    if  [ "$OS" = "SunOS" ] ; then
+	mon=h
+    else
+	mon=b
+    fi
+    dateTimeNow=`date "+%d %$mon %y %H:%M"`
+    echo ""
+    echo "$0 -- Lines of Code (LOC) Counter -- $dateTimeNow"
+    echo "LOC counts for directories under $rawPath"
+
+    for onePath in $xPth
+    do
+	echo "                   Excluding ... $onePath"
+    done
+
+    if  [ "$OPTb" != "b" ] ; then
+	echo "                   Excluding ... all binary files"
+    fi
+    if  [ "$OPTf" = "f" ] ; then
+	echo "                   Counting only FORTRAN source code"
+    fi
+    if  [ "$OPTc" = "c" ] ; then
+	echo "                   Counting only C source code"
+    fi
+fi
+
+echo ""
+if  [ \( "$OPTs" = "s" -o "$OPTd" = "d" \) -a "$OPTn" != "n" ] ; then
+    countf noFileName
+fi
+
+#-------------------------------------------------------------------------------
+# Expand the path using the C shell.
+
+expPath=`csh -fc "echo $rawPath"`;
+
+#-------------------------------------------------------------------------------
+# Initialize grand total counters.
+
+t1='0'
+t2='0'
+t3='0'
+t4='0'
+
+#-------------------------------------------------------------------------------
+# Step through all directories, one at a time.
+
+# Write all paths into a temporary file.
+find $expPath -type d -print | \
+	sed -e "s,$expPath,$rawPath," | \
+	sort > $tmpFile1
+
+# Exclude the requested paths.
+for onePath in $xPth
+do
+    grep -v "^$onePath$" $tmpFile1 | grep -v "^$onePath/" > $tmpFile2
+    mv $tmpFile2 $tmpFile1
+done
+
+# Redirect standard input from the temporary file.
+exec < $tmpFile1
+
+while true
+do
+    # Read the next directory in the tree.
+    read rawDir
+
+    # Stop reading if end of file reached.
+    if  [ "$rawDir" = "" ] ; then
+	break
+    fi
+
+    # Expand path name using the C shell.
+    oneDir=`csh -fc "echo $rawDir"`;
+
+    # Check if this directory has any files in it.
+    allFiles=`/bin/ls -lo $oneDir | grep -v '^total' | \
+              grep -v '^d' | tr -s " " " " | cut -d" " -f8`
+
+    if  [ "$allFiles" != "" ] ; then
+	# Check that at least one file is readable in this directory.
+	filesOK="no"
+	for oneFile in $allFiles
+	do
+	    if  [ -r $oneDir/$oneFile -a -f $oneDir/$oneFile ] ; then
+		filesOK="yes"
+		break
+	    fi
+	done
+
+	# Check binary vs. text in this directory.
+	if  [ "$OPTb" = "b" ] ; then
+	    # -b is true: Include binary files (therefore, no check is needed).
+	    binTxtOK="yes"
+	else
+	    # -b is false: Exclude binary files (check that not all are binary).
+	    binTxtOK="no"
+	    for oneFile in $allFiles
+	    do
+	        if  [ -r $oneDir/$oneFile -a -f $oneDir/$oneFile ] ; then
+		    line=`tr -d "[\001-\177]" < $oneDir/$oneFile`
+		    if  [ "$line" = "" ] ; then
+			# File is a text file.
+			binTxtOK="yes"
+			break
+		    fi
+		fi
+	    done
+	fi
+
+	if  [ "$filesOK" = "yes" ] ; then
+	    if  [ "$binTxtOK" != "yes" -a "$OPTs" != "s" ] ; then
+		if  [ "$OPTd" != "d" ] ; then
+		echo "------------------------------------------------------------"
+		fi
+		echo "all files binary                           $rawDir"
+	    elif [ "$binTxtOK" = "yes" ] ; then
+		# Count in this directory.
+		if  [ "$OPTs" != "s" ] ; then
+		    if  [ "$OPTd" != "d" ] ; then
+			options="-t"
+			if  [ "$OPTb" = "b" ] ; then
+			    options=" -b $options"
+			fi
+			if  [ "$OPTn" = "n" ] ; then
+			    options=" -n $options"
+			fi
+			if  [ "$OPTf" = "f" ] ; then
+			    options=" -f $options"
+			fi
+			if  [ "$OPTc" = "c" ] ; then
+			    options=" -c $options"
+			fi
+			cntloc $options $rawDir
+		    else
+			options="-n -d -t"
+			if  [ "$OPTb" = "b" ] ; then
+			    options=" -b $options"
+			fi
+			if  [ "$OPTf" = "f" ] ; then
+			    options=" -f $options"
+			fi
+			if  [ "$OPTc" = "c" ] ; then
+			    options=" -c $options"
+			fi
+			cntloc $options $rawDir
+		    fi
+		fi
+		options="-n -d -t"
+		if  [ "$OPTb" = "b" ] ; then
+		    options=" -b $options"
+		fi
+		if  [ "$OPTf" = "f" ] ; then
+		    options=" -f $options"
+		fi
+		if  [ "$OPTc" = "c" ] ; then
+		    options=" -c $options"
+		fi
+		counts=`cntloc $options $rawDir`
+
+		s1=`echo $counts | cut -d" " -f1`
+		s2=`echo $counts | cut -d" " -f2`
+		s3=`echo $counts | cut -d" " -f3`
+		s4=`echo $counts | cut -d" " -f4`
+
+		t1=`expr $t1 + $s1`
+		t2=`expr $t2 + $s2`
+		t3=`expr $t3 + $s3`
+		t4=`expr $t4 + $s4`
+	    fi
+	fi
+    fi
+done
+
+if  [ "$OPTs" != "s" ] ; then
+    if  [ "$OPTd" != "d" ] ; then
+	echo ""
+	echo ""
+    fi
+    echo "============================================================"
+fi
+
+echo "$t1 $t2 $t3 $t4 $rawPath" | \
+     awk '{printf (" %10d%10d%10d%10d  %s\n", $1, $2, $3, $4, $5)}'
+
+#-------------------------------------------------------------------------------
+# Output trailing blank line.
+
+echo ""
+
+#-------------------------------------------------------------------------------
+# Clean up.
+
+/bin/rm -f $tmpFile1
+
+#-------------------------------------------------------------------------------

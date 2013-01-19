@@ -1,0 +1,32 @@
+!
+!    BOUNDARIES FILENAME 
+greatlakesbnds.tbl
+!
+!    TOTAL NUMBER OF BOUNDS
+5
+!
+!    MAX NUMBER OF POINTS per BOUND
+508
+!
+!    BOUNDARY STRUCTURE INFORMATION
+!
+!
+Lake_Superior 0            47.54 -87.77 46.40 -92.10 49.02 -84.35 1    
+<ID>LS
+	64           46.40 -92.10 49.02 -84.35 473      
+!
+Lake_Michigan 8751         44.61 -86.62 41.62 -88.03 46.10 -84.73 1    
+<ID>LM
+	8816         41.62 -88.03 46.10 -84.73 351      
+!
+Lake_Erie 15277        42.14 -81.43 41.38 -83.48 42.90 -78.85 1    
+<ID>LE
+	15341        41.38 -83.48 42.90 -78.85 191      
+!
+Lake_Ontario 18882        43.80 -77.43 43.18 -79.80 44.55 -75.73 1    
+<ID>LO
+	18946        43.18 -79.80 44.55 -75.73 157      
+!
+Lake_Huron 21866        45.19 -82.25 43.00 -84.76 46.33 -79.72 1    
+<ID>LH
+	21931        43.00 -84.76 46.33 -79.72 508      

@@ -1,0 +1,15 @@
+!	This is the error file for DCCSIG.
+!
++1	! Convective sigmet bulletin header error !AS
+-1	! Report region cannot be found.
+-2	! Valid convective sigmet type not found !AS
+-3	! Valid convective sigmet start time not found !AS
+-4	! Valid convective sigmet end time not found !AS
+-6	! No convective sigmet bounds given !AS
+-7	! Location !AS not in vor table
+-8	! Bad convective sigmet/outlook location !AS
+-9      ! Bad type, sequence number, start or end time.
+-10     ! Error decoding distance for Convective Sigmet !AS.
+-11     ! Error decoding direction for Convective Sigmet !AS.
+-12     ! Error decoding speed for Convective Sigmet !AS.
+-13     ! Error decoding flight level for Convective Sigmet !AS.

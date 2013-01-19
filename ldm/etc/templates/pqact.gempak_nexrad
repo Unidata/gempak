@@ -1,0 +1,58 @@
+#################################################################################
+#										#
+# NEXRAD specific pqact processing						#
+#										#
+# Feedtypes included in these actions are:					#
+#	NEXRAD, WSI								
+#										#
+#################################################################################
+#
+# Use this action to file everything
+NEXRAD	^SDUS[23578]. .... ([0-3][0-9])([0-2][0-9])([0-6][0-9]).*/p(...)(...)
+	FILE	-overwrite	-close	data/gempak/nexrad/NIDS/\5/\4/\4_(\1:yyyy)(\1:mm)\1_\2\3
+#
+# Alternative, get tilt 0 and derived products for all sites, other titles for FTG only
+#NEXRAD	^SDUS[23578]. .... ([0-3][0-9])([0-2][0-9])([0-6][0-9]).*/p(N0.)(...)
+#	FILE	-close	data/gempak/nexrad/NIDS/\5/\4/\4_(\1:yyyy)(\1:mm)\1_\2\3
+#NEXRAD	^SDUS[23578]. .... ([0-3][0-9])([0-2][0-9])([0-6][0-9]).*/p(N1P)(...)
+#	FILE	-close	data/gempak/nexrad/NIDS/\5/\4/\4_(\1:yyyy)(\1:mm)\1_\2\3
+#NEXRAD	^SDUS[23578]. .... ([0-3][0-9])([0-2][0-9])([0-6][0-9]).*/p(N[A-Z].)(...)
+#	FILE	-close	data/gempak/nexrad/NIDS/\5/\4/\4_(\1:yyyy)(\1:mm)\1_\2\3
+#
+#NEXRAD	^SDUS[23578]. .... ([0-3][0-9])([0-2][0-9])([0-6][0-9]).*/p(N[1-3][RVSZ])(FTG)
+#	FILE	-close	data/gempak/nexrad/NIDS/\5/\4/\4_(\1:yyyy)(\1:mm)\1_\2\3
+#
+#
+# make some nids gifs
+#NEXRAD	SDUS5. .... ([0-3][0-9])([0-2][0-9])([0-6][0-9]).*/p(N0[RV])(FTG)
+#	EXEC	util/NEXRAD_gif.csh \5 \4 (\1:yyyy)(\1:mm)\1_\2\3
+#
+# FNEXRAD Composite RADAR products
+#
+# png compressed 1km radar GINI format
+FNEXRAD	^rad/NEXRCOMP/(...)/(...)_(........)_(....)
+	FILE	-close	data/gempak/images/sat/NEXRCOMP/\1/\2/\2_\3_\4
+#
+#
+#################### WSI Nexrad Data #####################################
+WSI	^(NOW)/USRAD/([1-2][0-9])([0-9][0-9])([0-1][0-9])([0-3][0-9])([0-2][0-9])([0-6][0-9])
+	FILE	-close	data/gempak/nexrad/USRAD/8km/\1/\1_\2\3\4\5_\6\7
+WSI	^(NOW)/MASTER/([1-2][0-9])([0-9][0-9])([0-1][0-9])([0-3][0-9])([0-2][0-9])([0-6][0-9])
+	FILE	-close	data/gempak/nexrad/USRAD/2km/\1/\1_\2\3\4\5_\6\7
+#
+WSI	^(NOW)/USRAD15/([1-2][0-9])([0-9][0-9])([0-1][0-9])([0-3][0-9])([0-2][0-9])([0-6][0-9])
+	FILE	-close	data/gempak/nexrad/USRAD15/8km/\1/\1_\2\3\4\5_\6\7
+WSI	^(NOW)/MASTER15/([1-2][0-9])([0-9][0-9])([0-1][0-9])([0-3][0-9])([0-2][0-9])([0-6][0-9])
+	FILE	-close	data/gempak/nexrad/USRAD15/2km/\1/\1_\2\3\4\5_\6\7
+#
+WSI	^NOW/MSNEX(..)/([1-2][0-9])([0-9][0-9])([0-1][0-9])([0-3][0-9])([0-2][0-9])([0-6][0-9])
+	FILE	-close	data/gempak/nexrad/USRAD/4km/\1/\1_\2\3\4\5_\6\7
+WSI	^NOW/USNEX(..)/([1-2][0-9])([0-9][0-9])([0-1][0-9])([0-3][0-9])([0-2][0-9])([0-6][0-9])
+	FILE	-close	data/gempak/nexrad/USRAD/8km/\1/\1_\2\3\4\5_\6\7
+##########################################################################
+# End WSI NEXRAD section
+##########################################################################
+#
+# Canadian radar data via Pelmorex
+EXP	^([A-z][A-z][A-z])([0-3][PRS]).TXT.gz
+	PIPE	-close	decoders/dcgunzip -f data/gempak/nexrad/cradar/\1/C\2/C\2_%Y%m%d_%H%M

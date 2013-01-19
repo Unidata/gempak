@@ -1,0 +1,14 @@
+! TRAVEL.BULL
+!
+! This table contains the bulletin/station information to be used
+! with the Travelers' Forecast.
+!
+! The format for the file is given below, with the number of 
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+!
+FPUS10 KWNH     NCEP_HPC                         MD US  3880  -7700    86
+FPUS12 KWNH     NCEP_HPC                         MD US  3930  -7650    86
+FPUS13 KWNH     NCEP_HPC                         MD US  3980  -7600    86

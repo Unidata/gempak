@@ -1,0 +1,85 @@
+! 
+!	METAR_PARMS.TBL
+!
+! This table contains the available parameters used in the
+! station model editing panel in NMAP for the METAR data type. 
+!
+!	pos_zero_flag:	1 = plot at position 0 only
+!			0 = plot at any position
+!
+! Log:
+! D.W.Plummer/NCEP	 3/98	From GEMPARMS.TBL
+! T.S.Piper/GSC		 4/98	Alphabetized list
+! S. Schotz/NCEP         5/98   Added STNM
+! S. Jacobs/NCEP	 5/98	Added precip in millimeters
+! G. Grosshans/SPC	 5/98	Added CLDT
+! A. Hardy/GSC           6/98   Added CEIL
+! D. Kidwell/NCEP        7/98   Added TDNF, TDXF
+! D. Kidwell/NCEP        1/99   Added P01I, P01M
+! G. Grosshans/SPC       5/99   Added T6XF, T6NF
+! D. Kidwell/NCEP        8/99   Added XVFR
+! G. Grosshans/SPC      10/99   Added BRBS, SMPH
+! D. Kidwell/NCEP        4/00   Added CLDS
+! T. Lee/SAIC		 9/01	Added WCHT
+! S. Schotz/NCEP	 5/02	Added PALT and PRES for SDMs
+! T. Lee/SAIC		 6/03	Added FOSB
+! G. Grosshans/SPC	 2/04	Added SALI
+! M. Li/SAIC		 7/06	Added CLDB
+!
+! parameter       pos_zero_flag     
+!
+brbk:1:2:112      1  
+brbm:1:2          1  
+skyc:1:2          1 
+skyk:1:2	  1
+brbs:1:2:112      1
+alti*100	  0          
+ceil              0
+cldb              0
+clds              0
+cldt              0
+dpdc              0         
+dwpc              0        
+dwpf              0       
+fosb              0
+gust              0       
+heat              0      
+ltmp              0      
+p01i*100          0     
+p01m              0     
+p03i*100          0     
+p03m              0     
+p06i*100          0    
+p06m              0    
+p24i*100          0   
+p24m              0   
+palt              0
+pres              0
+ptnd:1            0 
+relh              0
+sali              0
+salt              0
+selv              0          
+smph		  0
+smsl              0         
+smxr              0        
+snow              0
+stha              0       
+sthe              0      
+stid              0     
+stnm              0
+tdnf              0
+tdxf              0
+t6xf              0
+t6nf              0
+tmax              0    
+tmin              0   
+tmpc              0  
+tmpf              0 
+tmwc              0       
+tmwf              0      
+vsby*10	          0     
+wceq              0    
+wcht              0    
+wsym:1            0    
+xvfr              0    

@@ -1,0 +1,49 @@
+     NCON
+
+     NCON is the ending valid time for the non-convective sigmet, the colors
+     for the icing, turbulence, duststorm and sandstorm, and volcanic ash,
+     and flags for plotting symbols, the end time, the message id, and the 
+     flight levels on the map.
+
+	End time|IC;TB;DU;VA clrs|Symbol flg|Time flg|Id flg|Flight lvl flg|
+        Id1 flg|Id2 flg| ... ... |Id10 flg|
+
+     Non-convective sigmets that are valid at the ending time will be plotted
+     on the map.  The ending time is given as a GEMPAK date/time string.  Any
+     missing items from the string will be filled in by the system time.  The
+     ending time may also be LAST or ALL.  LAST will use the system time and
+     plot all current non-convective sigmets.  ALL will plot all the non-
+     convective sigmets in the data files for the last ten days, whether they 
+     are active, cancelled, updated or expired.
+
+     The colors are separated by a semi-colon.  If any color is set to 0,
+     that type of symbol will not be plotted.  If any color is missing, a 
+     default will be used.  Defaults are green for icing, light blue for 
+     turbulence, gold for duststorm and sandstorm and orange for volcanic ash.
+
+     The symbol flag is YES or NO and controls whether or not to plot a symbol
+     for the non-convective sigmet on the map.  The default is NO.
+
+     The time flag is YES or NO and controls whether or not to plot the end
+     time of the non-convective sigmet on the map.  The default is NO.
+
+     The message id flag is YES or NO and controls whether or not to plot the
+     message identification and sequence number on the map.  The default is NO.
+
+     The flight level flag is YES or NO and controls whether or not to plot the
+     flight level(s) in hundreds of feet on the map.  The default is NO.
+
+     The Id1~10 flags are YES or NO and controls whether or not to plot the NCON
+     data in corresponding names. The defaults are YES.
+     The Id names are:
+	 1	NOVEMBER
+	 2	OSCAR
+	 3	PAPA
+	 4	QUEBEC
+	 5	ROMEO
+	 6	UNIFORM
+	 7	VICTOR
+	 8	WHISKEY
+	 9	XRAY
+	10	YANKEE
+

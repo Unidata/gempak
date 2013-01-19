@@ -1,0 +1,15 @@
+! TSM.BULL
+!
+! Location information for the following product:
+! Tsunami_Tide/Seismic_Message.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+! Log:
+! A. Hardy/NCEP		11/04	separated out the lat/lons
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+SEPA40 PHEB     PACIFIC_TSUNAMI_WARNING_CTR      HI US  2131 -15800     0
+SEPA41 PHEB     PACIFIC_TSUNAMI_WARNING_CTR      HI US  2151 -15780     0

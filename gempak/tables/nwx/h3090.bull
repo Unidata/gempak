@@ -1,0 +1,12 @@
+! H3090.BULL
+!
+! This table contains the bulletin/station information to be used
+! with the Hawaii 30 & 90 day narrative.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+!
+FXHW40 KWBC     NMC                              MD US  3882  -7687    86

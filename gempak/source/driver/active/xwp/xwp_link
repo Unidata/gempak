@@ -1,0 +1,8 @@
+echo LINKING XWP
+cp $GEMPAK/source/device/main/device.f .
+$FC $FFLAGS $LDFLAGS -o $OS_BIN/xwp device.f \
+	    $DEVICE $OS_LIB/xwp.a $OS_LIB/xw.a \
+	    $OS_LIB/ps.a $OS_LIB/gn.a \
+	    $SYSLIB $GEMLIB $CGEMLIB $GEMLIB \
+	    -lm -lnetcdf -lX11 -lz 
+$RM *.o device.f

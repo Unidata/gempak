@@ -1,0 +1,154 @@
+AC_INIT(libgdome/gdome.c)
+
+VERSION=0.8.1
+PACKAGE=gdome2
+GDOME_VERSION_INFO=`echo $VERSION | awk -F. '{ printf "%d:%d:%d", $1+$2, $3, $2 }'`
+AC_SUBST(GDOME_VERSION_INFO)
+
+AM_CONFIG_HEADER(config.h)
+AM_INIT_AUTOMAKE($PACKAGE, $VERSION, no-define)
+AM_MAINTAINER_MODE
+
+
+dnl
+dnl The following new parameters were added to offer
+dnl the ability to specify the location of the libxml
+dnl library during linking and compilation.
+dnl Mathieu Lacage 30/03/2000
+dnl
+LIBXML_PREFIX=""
+AC_ARG_WITH(libxml-prefix,
+        [  --with-libxml-prefix=[PFX]		Specify location of libxml],
+	LIBXML_PREFIX=$withval
+)
+        
+AC_ARG_WITH(libxml-include-prefix,
+        [  --with-libxml-include-prefix=[PFX]	Specify location of libxml headers],
+        LIBXML_CFLAGS="-I$withval"
+)
+
+AC_ARG_WITH(libxml-libs-prefix,
+        [  --with-libxml-libs-prefix=[PFX]	Specify location of libxml libs],
+        LIBXML_LIBS="-L$withval -lxml2 -lz"
+)
+
+AC_ARG_WITH(html-dir, [  --with-html-dir=DIR	Specify the path to install html docs])
+AC_ARG_WITH(ref_debug, [  --with-ref-debug      Add the reference counting debugging module [default=no]])
+
+dnl
+dnl Check the environment
+dnl
+
+AC_ISC_POSIX
+AC_PROG_CC
+AC_PROG_INSTALL
+AC_STDC_HEADERS
+AC_ARG_PROGRAM
+AM_PROG_LIBTOOL
+dnl AC_PROG_CXX
+dnl AM_PROG_LEX
+dnl AC_PROG_YACC
+
+AC_SUBST(CFLAGS)
+AC_SUBST(CPPFLAGS)
+AC_SUBST(LDFLAGS)
+
+dnl
+dnl find glib
+dnl
+
+GLIB_1="no"
+AC_ARG_ENABLE(glib-1, 
+        [  --enable-glib-1=[no]	            Specify if you want to use glib 1],
+	GLIB_1=yes
+)
+
+if test "x$GLIB_1" = "xyes"
+then
+	PKG_CHECK_MODULES(GLIB, glib)
+	GLIB_REQUIRED="glib"
+	GLIB_MIN_VERSION=1.2.10
+        AM_PATH_GLIB($GLIB_MIN_VERSION,,AC_MSG_ERROR(Could not find GLIB (see config.log for details).))
+else
+	PKG_CHECK_MODULES(GLIB, glib-2.0)
+	GLIB_REQUIRED="glib-2.0"
+	GLIB_MIN_VERSION=2.2.0
+        AM_PATH_GLIB_2_0($GLIB_MIN_VERSION,,AC_MSG_ERROR(Could not find GLIB (see config.log for details).))
+fi
+AC_SUBST(GLIB_MIN_VERSION)
+AC_SUBST(GLIB_LIBS)
+AC_SUBST(GLIB_REQUIRED)
+
+dnl
+dnl find libxml
+dnl
+XML_CONFIG="xml2-config"
+XML_MIN_VERSION=2.4.26
+AC_MSG_CHECKING(for GnomeXML libraries >= $XML_MIN_VERSION) 
+if test "x$LIBXML_PREFIX" != "x"
+then
+	if ${LIBXML_PREFIX}/bin/$XML_CONFIG --version > /dev/null 2>&1
+	then
+		XML_CONFIG=${LIBXML_PREFIX}/bin/$XML_CONFIG
+        elif ! $XML_CONFIG --version > /dev/null 2>&1
+        then
+		AC_MSG_ERROR(Could not find libxml2 anywhere (see config.log for details).)
+	fi
+fi
+
+dnl
+dnl test version and init our variables
+dnl
+vers=`$XML_CONFIG --version | awk -F. '{ printf "%d", ($1 * 1000 + $2) * 1000 + $3;}'`
+minvers=`echo $XML_MIN_VERSION | awk -F. '{ printf "%d", ($1 * 1000 + $2) * 1000 + $3;}'`
+if test "$vers" -ge "$minvers"
+then
+        LIBXML_LIBS="`$XML_CONFIG --libs`"
+        LIBXML_CFLAGS="`$XML_CONFIG --cflags`"
+        AC_MSG_RESULT(found)
+else
+        AC_MSG_ERROR(You need at least libxml2 $XML_MIN_VERSION for this version of $PACKAGE)
+fi
+
+if test "x$with_html_dir" = "x" ; then
+  HTML_DIR='$(prefix)/share/gtk-doc/html'
+else
+  HTML_DIR=$with_html_dir
+fi
+
+if test "$with_ref_debug" = "yes" ; then
+    echo Enabling reference counting debug support
+    WITH_REF_DEBUG=1
+    AC_DEFINE(DEBUG_REFCNT)
+else    
+    WITH_REF_DEBUG=0
+fi
+AC_SUBST(XML_CONFIG)
+AC_SUBST(LIBXML_LIBS)
+AC_SUBST(LIBXML_CFLAGS)
+AC_SUBST(XML_MIN_VERSION)
+
+GDOME_LIBDIR='-L${libdir}'
+GDOME_INCLUDEDIR="-I${includedir} -I${includedir}/libgdome $GLIB_CFLAGS $LIBXML_CFLAGS"
+GDOME_LIBS="-lgdome $GLIB_LIBS $LIBXML_LIBS"
+
+AC_SUBST(GDOME_LIBDIR)
+AC_SUBST(GDOME_INCLUDEDIR)
+AC_SUBST(GDOME_LIBS)
+
+AC_SUBST(HTML_DIR)
+
+AC_OUTPUT([
+Makefile
+libgdome/Makefile
+libgdome/gdomecore/Makefile
+libgdome/events/Makefile
+libgdome/xpath/Makefile
+test/Makefile
+test/apigen/Makefile
+gtk-doc/Makefile
+gdome-config
+gdome2.spec
+gdome-config.1
+gdome2.pc
+])

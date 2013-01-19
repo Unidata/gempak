@@ -1,0 +1,6 @@
+# program name
+PROGRAM	      =	ex21
+
+# source files
+SRCS	      = ex21.c \
+		fill_array2.c

@@ -1,0 +1,57 @@
+#!/bin/sh
+if  [ $# != 0 ]
+then
+  version=$1
+  path=$NAWIPS/extlibs/melBUFR/$version/src
+  if  [ -d $path ]
+  then
+    echo "COMPILING melBUFR LIBRARY $version"
+    mkdir -p $OS_BIN $OS_INC $OS_LIB
+    $RM $OS_LIB/melBUFR_$version $OS_LIB/libmelBUFR.a
+
+# Go to the current melBUFR directory
+    cd $path 
+# Make sure that the header files are moved to $OS_INC
+    cp ../include/* $OS_INC
+#####
+    $CC $CFLAGS $BUFRFLAGS \
+        -DDEBUG_PRINT=1 \
+        -DFNOC_KLUDGE=0 \
+        -DIGNORE_NESTING=1 \
+        -DMEMORY_DEBUG=0 \
+        -DTRACE_PRINT=1 \
+	-c [ABCDEF]*.c dump_print.c
+    $CC $CFLAGS $BUFRFLAGS \
+        -DDEBUG_PRINT=1 \
+        -DFNOC_KLUDGE=0 \
+        -DIGNORE_NESTING=1 \
+        -DMEMORY_DEBUG=0 \
+        -DTRACE_PRINT=1 \
+        -c [GHIJKLMNOPQRSTUVWXYZ]*.c
+    echo "INSTALLING as \"$OS_LIB/libmelBUFR.a\""
+    $AR $ARFLAGS $OS_LIB/libmelBUFR.a *.o
+    $RM *.o
+
+    touch $OS_LIB/melBUFR_$version
+###################################################################
+    echo "COMPILATION OF MELBUFR LIBRARY $version IS COMPLETE."
+    echo "================================================"
+######################
+    echo LINKING bufr_dump
+    $CC $CFLAGS $BUFRFLAGS $LDFLAGS -o $OS_BIN/bufr_dump \
+	bufr_dump.c -lmelBUFR
+    $RM *.o
+######################
+    echo LINKING dataset_dmp
+    $CC $CFLAGS $BUFRFLAGS $LDFLAGS -o $OS_BIN/dataset_dmp \
+	dataset_dmp.c -lmelBUFR
+    $RM *.o
+######################
+    echo LINK OF melBUFR $version DUMP PROGRAMS IS COMPLETE.
+    echo ===============================================
+  else
+    echo "Directory \"$path\" does not exist!"
+  fi
+else
+  echo "Please include a valid melBUFR library version; e.g., v5.2"
+fi

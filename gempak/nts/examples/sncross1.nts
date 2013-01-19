@@ -1,0 +1,24 @@
+CXSTNS  chh;acy;wal;hat;chs;ays                                                 
+SNPARM  thta                                                                    
+SNFILE  $GEMPAK/data/HRCBOB.SND                                                     
+DATTIM  last                                                                    
+VCOORD  pres                                                                    
+PTYPE   log                                                                     
+YAXIS                                                                           
+TAXIS                                                                           
+LINE    3                                                                       
+BORDER  1                                                                       
+CINT    5                                                                       
+WIND    bm6//2                                                                  
+TITLE   1                                                                       
+PANEL   0                                                                       
+DEVICE  xw                                                                      
+CLEAR   y                                                                       
+FILTER  .8                                                                      
+TEXT    1                                                                       
+CURVE   2                                                                       
+CLRBAR                                                                          
+CONTUR  0                                                                       
+FINT    0                                                                       
+FLINE   10-20                                                                   
+CTYPE   C                                                                       

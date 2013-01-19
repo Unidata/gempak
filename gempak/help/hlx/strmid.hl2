@@ -1,0 +1,98 @@
+     STRMID
+
+     STRMID specifies the storm identifier used by programs GPTPC,
+     and GPTCWW:
+
+	Storm id/adv num/device/num fcst days/text/track/sz1;sz2/
+		lt1;lt2/lw1;lw2/clr1;clr2/disclaimer
+
+     The storm id is the six or eight character storm identifier given
+     for each particular storm, for example, AL0300 or EP072001.  The
+     inclusion of the 2-digit century is optional.
+
+     The adv num is the number of the advisory that the user
+     wishes to see displayed.  Both the storm id and the adv num
+     must be specified in order to view a particular storm.  If either
+     or both of these fields are blank, the program will get the
+     storm(s) to be displayed by comparing the contents of the storm
+     history file to the files in the storm advisory directory.  Each
+     storm id and advisory number in the history file is checked against
+     the storms in the directory.  If a storm advisory is found in the
+     directory which has a higher number than the advisory number given
+     in the history file for that storm, the new advisory is displayed
+     and the history file is updated.  If more than one new storm
+     advisory is in the directory for a specific storm, only the latest
+     advisory will be displayed.  If new advisories for multiple storms
+     are in the directory, the latest new advisory for each storm will
+     be displayed.  (If a storm id and advisory number are explicitly
+     specified using the STRMID parameter, the history file is neither
+     referenced or updated.)  The history file must be a local file
+     named 'history.YYYY' for program GPTPC, and 'history_tc.YYYY' for 
+     program GPTCWW, where YYYY is the 4-digit year.  It looks like 
+     this:
+
+            n
+         stormid1_adv1
+         stormid2_adv2
+           .
+           .
+           .
+         stormidn_advn
+
+     where n is the number of storm identifiers in the file (in I4
+     format), and where stormid# is the 8-character storm identifier 
+     (e.g., al892001) and adv# is the 3 or 4 character storm advisory number
+     (e.g., 009) for the most recently displayed advisory for stormid#.
+     Advisory numbers must be in the format NNN or NNNP, where NNN specifies
+     the regular numeric (up to 3 digits) advisory number.  Intermediate
+     advisories are specified with the format NNNP, where P is either the 
+     character 'a' or 'b'.  Program GPTCWW will read an intermediate public
+     advisory to obtain updated storm information when necessary.  GPTPC only
+     uses information in the forecast advisory, so it ignores the intermediate
+     advisory extension (P), and uses only the numeric part of NNNP.
+
+     The device is the device driver to which the graphics will be sent.
+     The current choices are limited to XW, GF, PSC and, for GPTPC 
+     only, TEST.  If TEST is chosen, the program will display
+     the graphics in an XW window only, but the program becomes more 
+     interactive than if XW were specified.  With TEST, the user has the 
+     option of which graphics to see, and is prompted to move from one 
+     graphic to the next.  XW will create four graphics in successive 
+     windows for GPTPC with no user intervention.  If no device is 
+     specified, the default is GF.  For GPTCWW, a single graphic is 
+     created with no user intervention.  Breakpoint information, if 
+     required, is gotten from a previously generated local VG file. 
+
+     The num fcst days is the number of forecast days of data to 
+     display.  (This field is not used by program GPTPC.)  Permissible
+     values are 3 and 5.  The default is 5.
+
+     The text field is not used.
+
+     The track is a flag to plot the cyclone's forecasted track.  If 
+     track is N, the track is not plotted. (This field is only used 
+     by program GPTCWW.)  The default is Y (yes).
+
+     The sz1;sz2 are the marker size multipliers for the cyclone's
+     forecast postion markers.  Both (sz1;sz2), only first (sz1), 
+     only second (;sz2) or neither can be specified.  (This field is 
+     only used by program GPTCWW.)  Default values are 2;1.5
+
+     The lt1;lt2 are the cyclone's forecast track line types.
+     Both (lt1;lt2), only first (lt1), only second (;lt2) or neither
+     can be specified.  (This field is only used by program GPTCWW.)
+     Default values are 1;3
+
+     The lw1;lw2 are the cyclone's forecast track line widths.
+     Both (lw1;lw2), only first (lw1), only second (;lw2) or neither
+     can be specified.  (This field is only used by program GPTCWW.)
+     Default values are 4;4
+
+     The clr1;clr2 are the cyclone's forecast track line colors.
+     Both (clr1;clr2), only first (clr1), only second (;clr2) or neither
+     can be specified.  (This field is only used by program GPTCWW.)
+     Default values are 32;32
+
+     The disclaimer is a flag to plot the disclaimer text.  If
+     disclaimer is N, the text is not plotted. (This field is only used 
+     by program GPTCWW.)  The default is Y (yes).

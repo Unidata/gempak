@@ -1,0 +1,25 @@
+! OABSFC error file
+!
++11	! Surface file !AS cannot be opened.
++10	! There are no times in file !AS.
+ +9	! No data from !AS will be used.
+ +8	! Parameter !AS is a character parameter.
+ +7	! Parameter !AS cannot be computed.
+ +6	! WARNING:  Area is not DATA area in file.
+ +5	! WARNING:  The recommended number of passes is 2.
+ +4	! !AS is invalid for NPASS.  It is set to 2.
+ +3	! !AS is invalid for search.  It is set to 20.
+ +2	! WARNING:  GAMMA is 0.  There will be only 1 pass.
+ +1	! !AS is invalid for GAMMA.  It is set to .3.
+ -1	! Fatal error initializing TAE.
+ -2	! Fatal error reading TAE parameters.
+ -3	! Fatal error initializing GEMPLT.
+ -4	! Grid size is too large.
+ -5	! Not enough buffer space; reduce number of grids.
+ -6	! There are too many stations in data subset area.
+ -7	! There are too few stations in data subset area.
+ -8	! There are no times in the surface files.
+ -9	! No valid parameters have been entered.
+-10     ! No surface file could be opened.
+-11     ! Time cannot be found in !AS.
+-12	! Number of GDATTIM mismatches number of DATTIM 

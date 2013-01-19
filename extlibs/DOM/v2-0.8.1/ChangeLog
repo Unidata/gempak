@@ -1,0 +1,3402 @@
+2003-10-05  Paolo Casarini <paolo@casarini.org>
+	* configure.in, README, gdome2.spec.in
+        - fixed dipendencies
+        - now gdome2 depends by default from glib2
+        - added "enable-glib-1" flag to compile gdome2 with glib1
+        - updated for 0.8.1 release
+        - deleted traversal module related rule
+        
+        * libgdome/gdome-treegc.[ch]
+        removed some dead code
+	
+2003-10-03  Luca Padovani <lpadovan@cs.unibo.it>
+	* fixed configure.in so that it checks correctly
+	  for glib-2.0
+	* fixed dependencies in gdome2.pc
+	* added inline versions for simple functions in gdome-xsmlutil.h.
+	  The inline versions are currently disabled by they can be easily
+	  enabled by defining a macro at the top of the file
+	* removed some dead code within #ifdef LUCA in several files
+	* added missing #include directive in gdome.c
+
+2003-09-10  Paolo Casarini <paolo@casarini.org>
+        * configure.in, README
+	Updated for 0.8.0 release
+
+	* gtk-doc/
+        * libgdome/gdome.c
+        * libgdome/gdomecore/gdome-xml-domimpl.c
+        Updated documentation
+	
+2003-09-09  Luca Padovani <lpadovan@cs.unibo.it>
+	* Re-enabled --enable-glib-2 flag for supporting GLIB 2.x.
+	The code seems to compile and run OK.
+
+2003-07-28  Paolo Casarini <paolo@casarini.org>
+	* libgdome/gdomecore/gdome-xml-domimpl.c
+        (gdome_xml_di_createDocument) Deleted duplicated checks on the
+        qualifiedName and now is always used the gdome_xml_doc_createElementNS.
+        * libgdome/gdomecore/gdome-xml-node.c
+        (gdome_xml_n_removeChild) Modified the check on the oldChild parameter
+        from GDOME_XML_IS_N to GDOME_XML_IS_TREE_N to prevent errors.
+        
+2003-07-22  Paolo Casarini <paolo@casarini.org>
+	* libgdome/gdomecore/gdome-xml-document.c
+        (gdome_xml_doc_createElementNS) patched to allow the creation of node
+        that belogs to the default namespace (no prefix and namespaceURI!=NULL)
+        * libgdome/gdomecore/gdome-xml-text.c
+        (gdome_xml_t_splitText) patched to always initialize gparent before use
+        
+2003-07-18  Luca Padovani <lpadovan@cs.unibo.it>
+	* internally events are initialized by their code directly. This
+	saves one allocation of a GdomeDOMString, and one lookup for
+	mapping the event name into the event code. Auxiliary functions have
+	been implemented into *-event.c and *-mevent.c
+
+2003-07-17  Paolo Casarini <paolo@casarini.org>
+	* libgdome/gdomecore/gdome-xml-document.c
+        (gdome_xml_doc_createAttributeNs) patched to allow namespaceURI = NULL
+        * libgdome/gdomecore/gdome-xml-node.c
+        (gdome_xml_n_unref) moved the delNode call before checking for removal
+        * test/test-treegc.c
+        Modified to follow changes in the treegc behaviour
+        
+        * libgdome/events/gdome-evt-event.[ch]
+        (struct _Gdome_evt_Event) field type change from gchar* to guint32
+        (gdome_evt_evnt_initEvent) modified to follow the type field change
+        (gdome_evt_evnt_type) modified to follow the type field change
+        * libgdome/events/gdome-evt-mevent.h
+        (struct _Gdome_evt_MutationEvent) field type change from gchar* to
+        guint32
+        (gdome_evt_mevnt_unref) modified to follow the type field change
+        * libgdome/events/gdome-evt-propagation.c
+        (gdome_evt_fireEvent) modified to folloe the type field change
+        * libgdome/gdomecore/gdome-xml-node.[ch]
+        (Gdome_xml_ListenerList) field type change from char* to guint32
+        (gdome_xml_n_addEventListener) modified to follow the type field change
+        (gdome_xml_n_removeEventListener) modified to follow the type field
+        change
+        (gdome_xml_n_dispatchEvent) modified to follow the type field change
+        
+2003-07-14  Paolo Casarini <paolo@casarini.org>
+	* libgdome/events/gdome-evt-propagation.c
+        (gdome_evt_invokeListeners) removed, no more used
+        (gdome_evt_invokeListerner_new) renamed in gdome_evt_invokeListeners
+        (gdome_evt_fireEvent1) removed, no more used
+        (gdome_evt_fireEvent2) removed, no more used
+        * libgdome/events/gdome-xml-node.[ch]
+        (Gdome_xml_ListenerList) removed porcessing and toRemove fields no
+        more used in event propagation.
+        (gdome_xml_n_addEventListener) modified to follow 
+        Gdome_xml_ListenerList and event propagation changes
+        (gdome_xml_n_removeEventListener) modified to follow
+        Gdome_xml_ListenerList and event propagation changes
+
+2003-07-13  Luca Padovani <lpadovan@cs.unibo.it>
+	* added methods for filtering fired events
+	* changed the tree GC mechanism. The document tree is now
+	freed only when there are no wrappers left. This fixes a reported
+	bug and should improve performances as it is no longer necessary to
+	count the live nodes in subtrees for adjusting the livenodes field.
+
+2003-04-25  Paolo Casarini <paolo@casarini.org>
+	* libgdome/events/gdome-evt-propagation.h
+        (gdome_evt_invokeListeners) removed from header        
+	* libgdome/events/gdome-evt-propagation.h
+        (Gdome_evt_PropagationEl) added this new structure to build propagation
+        simple lists.
+        (gdome_evt_fireEvent) Modified to use three simple list, one for each
+        propagation phase, to store the node-listeners pairs.
+        (gdome_evt_invokeListeners_new) added to call handleEvent on the lists
+        made by Gdome_evt_PropagationEl.
+        (gdome_evt_fireEvents1) is the previous functin based on GList.
+        
+2003-03-31  Paolo Casarini <paolo@casarini.org>
+	* libgdome/events/gdome-evt-propagation.c
+        (gdome_evt_fireEvent) Modified to use a GList instead of a dynamic
+        array to store the propagation path. Now to save the propagation
+        path, only gdome wrappers that have at least one listener are
+        stored instead of all subordinate libxml2 nodes as done before.
+        (gdome_evt_fireEvent2) inserted. Is the old gdome_evt_fireEvent.
+
+2003-03-10  Paolo Casarini <paolo@casarini.org>
+        * configure.in, README
+	Updated for 0.7.4 release
+
+	* gtk-doc/
+        Updated documentation
+
+2003-03-03  Luca Padovani <lpadovan@cs.unibo.it>
+	* gdome-xml-evntl.?
+	added callback for finalization of eventlistener objects
+
+2003-01-29  Paolo Casarini <paolo@casarini.org>
+	* configure.in
+	Updated libxml2 min version to 2.4.26
+
+2003-01-21  Paolo Casarini <paolo@casarini.org>
+	* gdome-xml-node.h
+	(gdome_xml_n_appendChild) bug fix in treegc
+	(gdome_xml_n_replaceChild) now works also to replace the
+	  documentElement node
+
+2003-01-10  Paolo Casarini <paolo@casarini.org>
+	* gdome-xml-node.h
+        Added the "extern" modifier to all gdome-xml-n-vtab const
+        declaration (Thanx to Alexandr Petrosian)
+        
+	* gdome-xml-memory.c
+        Added the "static" modifier to all 'const xmlChar' declarations
+        (Thanx to Alexandr Petrosian)
+
+        * gdome-xml-node.c
+        (gdome_xml_n_removeEventListener) bug fix on searching the listener to
+        remove
+
+2003-01-08  Paolo Casarini <paolo@casarini.org>
+	* gdome-xml-node.c
+        * gdome-xml-text.c
+        Fixed all occurrences of DOMSubtreeModified initialization
+        changing the canBubbleArg from FALSE to TRUE.
+        
+        * gdome-xml-node.c
+        (gdome_xml_n_addEventListener) Now check duplicates only on parameters
+        
+2003-01-07  Paolo Casarini <paolo@casarini.org>
+	* Makefile.am
+	Added declaration for pkgconfig support
+	(EXTRA_DIST) added gdome2.m4 and gdome2.pc.in
+
+	* configure.in
+	Updated to release 0.7.3 with libxml2 min ver set to 2.4.23
+	(AC_OUTPUT) removed comment line and added gdome2.pc
+	(HTML_DIR) changed the default directory and the description
+
+	* gdome2.m4
+	* gdome2.pc.in
+	Added to CVS
+	
+	* configure.in
+	Removed the GLIB2 flag to enable/disable a not yet implemented glib2
+	support.
+
+	* gdome2.spec.in
+	Applied patch provided by Oron Peled
+	- %defattr(-,root,root) wasn't set for documents in the
+	  devel package. This cause wrong ownership of docs in
+	  non-root builds. Fixed.
+	- Update URL: and Source: locations
+	- s/Copyright:/License:/
+
+2002-11-08  Paolo Casarini <paolo@casarini.org>
+	* Makefile.am
+        (EXTRA_DIST) added README.developer (Tobias Peters patch)
+        * test/apigen/Makefile.am
+        (EXTRA_DIST) added xpath.xml (Tobias Peters patch)
+
+2002-09-14  T.J. Mather <tjmather@tjmather.com>
+	* test/test-xpath.c
+	test failures should return FALSE
+	libxml2 2.4.23 namespace order changed, updated test to reflect this
+	* test/test-document3.xml
+	Added ATTLIST for tns:NODE, required for libxml2 2.4.23 and greater
+
+2002-07-16  T.J. Mather <tjmather@tjmather.com>
+	* libgdome/Makefile.am
+	* libgdome/gdome-libxml-util.h
+	Added header to private interface for XML::LibXML to use,
+	patch provided by Christian Glahn.
+
+2002-05-30  Paolo Casarini <paolo@casarini.org>
+	* configure.in
+        (VERSION) updated to 0.7.2
+        (XML_MIN_VERSION) updated to 2.4.21
+        
+        * libgdome/traversal/gdome-trv-nodeiterator.[ch}
+        (struct _Gdome_trv_NodeIterator) added field entityReferenceExpansion
+        (gdome_trv_ni_mkref) added entityReferenceExpansion to prototype
+          and implemented
+        (gdome_trv_ni_ref) implemented
+        (gdome_trv_ni_unref) implemented
+        (gdome_trv_nodefilter.h) added in include
+        (gdome-xml-node.h) added in include
+        (gdome_trv_ni_query_interface) implemented
+        (gdome_trv_ni_root) implemented
+        (gdome_trv_ni_whatToShow) implemented
+        (gdome_trv_ni_filter) implemented
+        (gdome_trv_ni_expandEntityReference) implemented
+        (gdome_trv_ni_detach) implemented
+
+2002-05-28  T.J. Mather <tjmather@tjmather.com>
+	* libgdome/gdome-treegc.c
+	* libgdome/gdomecore/gdome-xml-document.c
+	* test/Makefile.am
+	* test/test-importnode.c
+	Fixed bug when importing Entity Reference Node
+
+2002-05-23  Paolo Casarini <paolo@casarini.org>
+	* libgdome/gdome.[ch]
+        (gdome_di_saveDocToMemory) changed the type of the mem parameter
+          from char* to char**
+        (gdome_di_saveDocToFileEnc) added
+        (gdome_di_saveDocToMemoryEnc) added
+        
+        * test/apigen/core.xml
+        (saveDocToMemory) changed the type of the mem parameter from char*
+          to char** in the DOMImplementation interface
+        (saveDocToFileEnc) added
+        (saveDocToMemoryEnc) added
+        
+	* libgdome/gdomecore/gdome-xml-domimpl.[ch]
+        (gdome_xml_di_saveDocToMemory) changed the type of the mem parameter
+          from char* to char**
+        (gdome_xml_di_saveDocToFileEnc) added
+        (gdome_xml_di_saveDocToMemoryEnc) added
+        
+        * test/test-loadsave.c
+        Modified to test gdome_di_saveDocToMemmory and
+        gdome_di_saveDocToMemoryEnc
+        
+        Updated Documentation
+
+2002-05-15  Paolo Casarini <paolo@casarini.org>
+	* libgdome/gdome.[ch]
+        (gdome_di_saveDocToMemory) changed the type of the mem parameter
+          from char** to char*
+        
+        * test/apigen/core.xml
+        (saveDocToMemory) changed the type of the mem parameter from char**
+          to char* in the DOMImplementation interface
+        
+	* libgdome/gdomecore/gdome-xml-domimpl.[ch]
+        (gdome_xml_di_saveDocToMemory) changed the type of the mem parameter
+          from char** to char*
+        
+	* libgdome/gdomecore/gdome-xml-node.c
+        (gdome_xml_n_removeChild) moved the dispatch of "DOMSubtreeModified"
+        before inlink the node from the tree.
+        
+	* libgdome/events/gdome-evt-event.h
+	* libgdome/events/gdome-evt-eventl.h
+	* libgdome/events/gdome-evt-mevent.h
+	* libgdome/gdomecore/gdome-xml-attribute.h
+	* libgdome/gdomecore/gdome-xml-cdata.h
+	* libgdome/gdomecore/gdome-xml-cdata.h
+	* libgdome/gdomecore/gdome-xml-cdatas.h
+	* libgdome/gdomecore/gdome-xml-comment.h
+	* libgdome/gdomecore/gdome-xml-document.h
+	* libgdome/gdomecore/gdome-xml-documentf.h
+	* libgdome/gdomecore/gdome-xml-documentt.h
+	* libgdome/gdomecore/gdome-xml-domimpl.h
+	* libgdome/gdomecore/gdome-xml-element.h
+	* libgdome/gdomecore/gdome-xml-entity.h
+	* libgdome/gdomecore/gdome-xml-entityref.h
+	* libgdome/gdomecore/gdome-xml-nnodem.h
+	* libgdome/gdomecore/gdome-xml-node.h
+	* libgdome/gdomecore/gdome-xml-nodel.h
+	* libgdome/gdomecore/gdome-xml-notation.h
+	* libgdome/gdomecore/gdome-xml-pi.h
+	* libgdome/gdomecore/gdome-xml-text.h
+	* libgdome/gdomecore/gdome-xml-xpns.h
+	* libgdome/traversal/gdome-trv-nodefilter.h
+	* libgdome/traversal/gdome-trv-nodeiterator.h
+	* libgdome/traversal/gdome-xpath-xpeval.h
+	* libgdome/traversal/gdome-xpath-xpnsresolv.h
+	* libgdome/gdomecore/gdome-xpath-xpresult.h
+        Added the "extern" modifier to all gdome-*-*-vtab const
+        declaration (Thanx to Tobias Peters)
+        
+        * gtk-doc/gdome2-sections.txt
+        * gtk-doc/tmpl/etypes.sgml
+        Updated
+        
+        Updated Documentation
+
+2002-04-17  T.J. Mather <tjmather@tjmather.com>
+	* libgdome/gdomecore/gdome-xml-document.c
+	* libgdome/gdomecore/gdome-xml-node.c
+	Added support for handling HTML documents like XML documents
+
+2002-04-16  T.J. Mather <tjmather@tjmather.com>
+	* test/test-xpath.c
+	Added test for when XPath returns no results.
+	* libgdome/xpath/gdome-xpath-xpresult.c
+	Fixed bug when XPath result set is empty.
+
+2002-04-05  Paolo Casarini <paolo@casarini.org>
+	* configure.in
+        (XML_MIN_VERSION) updated to 2.4.19
+        
+        * libgdome/gdomecore/gdome-xml-nnodem.c
+        (itemHashScanner) modified to fit xmlHashScanner prototype
+        
+        * libgdome/gdomecore/gdome-xml-document.c
+        (idsHashScanner) modified to fit xmlHashScanner prototype
+        
+        * libgdome/gdomecore/gdome-xml-xmldtdutil.c
+        (notationsHashScanner) modified to fit xmlHashScanner prototype
+        (entitiesHashScanner) modified to fit xmlHashScanner prototype
+        
+        * gtk-doc/Makefile.am
+        (EXTRA_DIST) Added html/gdome2-xpath.html and
+          html/gdome2-xpath-basic-types-and-enumerations.html
+        
+2002-04-04  Paolo Casarini <paolo@casarini.org>
+	* AUTHORS
+        Added Luca Padovani and T.J. Mather
+        
+        * libgdome/gdomecore/gdome-xml-domimpl.c
+        (gdome_xml_di_createDocFromMemory)
+        (gdome_xml_di_createDocFromURIWithEntitiesTable)
+        (gdome_xml_di_createDocFromMemoryWithEntitiesTable)
+        Added GDOME_LOAD_COMPLETE_ATTR in documentation.
+        
+        * libgdome/gdome.c
+        (gdome_xml_createDocFromMemory)
+        (gdome_xml_createDocFromURIWithEntitiesTable)
+        (gdome_xml_createDocFromMemoryWithEntitiesTable)
+        Added GDOME_LOAD_COMPLETE_ATTR in documentation.
+        
+        * gtk-doc/Makefile.am
+        (EXTRA_DIST) html filename w.r.t XPath module modified
+        
+        * libgdome/Makefile.am
+        removed traversal references
+        
+        * test/Makefile.am
+        (EXTRA_DIST) Added test data file test-xpath.xml
+	
+        * gdome2.spec.in
+        Updated
+        
+        Updated Documentation
+        
+2002-04-01  Daniel Veillard <veillard@redhat.com>
+
+	* libgdome/gdome-treegc.c libgdome/events/gdome-evt-event.h
+	  libgdome/events/gdome-evt-propagation.c
+	  libgdome/gdomecore/gdome-xml-attribute.c
+	  libgdome/gdomecore/gdome-xml-cdata.c
+	  libgdome/gdomecore/gdome-xml-document.c
+	  libgdome/gdomecore/gdome-xml-documentt.c
+	  libgdome/gdomecore/gdome-xml-domimpl.c
+	  libgdome/gdomecore/gdome-xml-element.c
+	  libgdome/gdomecore/gdome-xml-entity.c
+	  libgdome/gdomecore/gdome-xml-nnodem.c
+	  libgdome/gdomecore/gdome-xml-node.c
+	  libgdome/gdomecore/gdome-xml-nodel.c
+	  libgdome/gdomecore/gdome-xml-notation.c
+	  libgdome/gdomecore/gdome-xml-pi.c
+	  libgdome/gdomecore/gdome-xml-str.c
+	  libgdome/gdomecore/gdome-xml-text.c
+	  libgdome/gdomecore/gdome-xml-xmldtdutil.c
+	  libgdome/gdomecore/gdome-xml-xmlmemory.c
+	  libgdome/gdomecore/gdome-xml-xmlutil.c
+	  libgdome/gdomecore/gdome-xml-xpns.c
+	  libgdome/gdomehtml/gdome-xml-htmlcollection.c
+	  libgdome/gdomehtml/gdome-xml-htmldocument.h
+	  libgdome/gdomehtml/gdome-xml-htmlelement.c
+	  libgdome/xpath/gdome-xpath-xpresult.h
+	  test/test-events.c test/test-gdome.c:
+	  updated all the includes for libxml to use #include <libxml/...>
+	  since it's the supported way and to avoid headers name clashes (
+	  especially with tree.h)
+
+2002-02-28  T.J. Mather <tjmather@tjmather.com>
+	* libgdome/gdome-xpath.[c|h]
+	* libgdome/gdome.h
+	* libgdome/xpath/Makefile.am
+	* libgdome/xpath/gdome-xpath-xpresult.[c|h]
+	* libgdome/xpath/gdome-xpath-xpsetiter.[c|h]
+	* test/test-xpath.c
+	* test/apigen/xpath.xml
+	Replaced XPathSetIterator module with
+	XPathResult.iterateNext method, to reflect change made in
+	DOM Level 3 XPath working document.
+
+2002-02-25  T.J. Mather <tjmather@tjmather.com>
+	* libgdome/gdomecore/gdome-xml-document.c
+	* libgdome/gdomecore/gdome-xml-element.c
+	* test/test-element.c
+	* test/test-element.xml
+	Fixed bug when gdome_n_unref on document node was called before
+	gdome_nnm_unref.
+
+2002-02-22  T.J. Mather <tjmather@tjmather.com>
+
+	* BUGS
+	Added bugs files
+
+	* README.developer
+	Added developer README file
+
+	* libgdome/gdome.c
+	Added Level 3 DOM XPath Module
+	Added support for namespace declaration attributes
+
+	* libgdome/gdome.h
+	Added GDOME_LOAD_COMPLETE_ATTR option
+	Added Level 3 DOM XPath Module
+	Added support for namespace declaration attributes
+
+	* libgdome/gdomecore/gdome-xml-attribute.[ch]
+	* libgdome/gdomecore/gdome-xml-document.c
+	* libgdome/gdomecore/gdome-xml-documentt.c
+	* libgdome/gdomecore/gdome-xml-element.c
+	* libgdome/gdomecore/gdome-xml-node.c
+	* libgdome/gdomecore/gdome-xml-nnodem.[ch]
+	* libgdome/gdomecore/gxome-xml-util.h
+	* libgdome/gdomecore/gdome-xml-xmlutil.[ch]
+	Added support for namespace declaration attributes
+
+	* libgdome/gdomecore/gdome-xml-cdata.c
+	Memory leak fix
+
+	* libgdome/gdomecore/gdome-xml-domimpl.c
+	* gtk-doc/tmpl/types.sgml
+	* gtk-doc/gdome2-decl.txt
+	Added GDOME_LOAD_COMPLETE_ATTR option
+
+	* libgdome/gdomecore/gdome-xml-xpns.[ch]
+	* libgdome/xpath/gdome-xpath-xpeval.[ch]
+	* libgdome/xpath/gdome-xpath-xpresolv.[ch]
+	* libgdome/xpath/gdome-xpath-xpresult.[ch]
+	* libgdome/xpath/gdome-xpath-xpsetiter.[ch]
+	* libgdome/gdome-xpath.[ch]
+	* libgdome/Makefile.am
+	* configure.in
+	Added Level 3 DOM XPath Module
+
+	* test/apigen/core.xml
+	added XPathNamespace interface
+	added "automatically generated" message
+
+	* test/apigen/events.xml
+	added "automatically generated" message
+
+	* test/apigen/xpath.xml
+	Added Level 3 DOM XPath Module
+	
+	* test/apigen/srcutil.c
+	Added Level 3 DOM XPath Module
+
+	* test/test-namednodemap.c
+	* test/test-namednodemap.xml
+	* test/test-element.c
+	* test/test-element.xml
+	added tests for namespace declaration attributes
+
+	* test/Makefile.am
+	* test/test-xpath.c
+	* test/test-xpath.xml
+	added tests for XPath module
+
+2002-01-14  Paolo Casarini <paolo@casarini.org>
+	* test/apigen/Makefile
+        (EXTRA_DIST) Added events.xml and traversal.xml
+        
+        * test/apigen/srcutil.c
+        (writeException) now manage also int32 method and attribute type
+        
+        * test/apigen/traversal.xml (added to CVS)
+        (NodeFilter) INTERFACE added
+        (NodeIterator) INTERFACE added
+        
+	* libgdome/Makefile
+        Added traversal directory to the build process
+        Added libgdometraversal.la to libgdome.la build process
+        
+        * configure.in
+        Added traversal Makefile to the build process
+        
+        * ligdome/gdome.h
+        (GdomeNodeFilter) typedef added
+        (GdomeNodeIterator) typedef added
+        (GdomeTreeWalker) typedef added
+        
+        * libgdome/gdome-traversal.[ch] (added to CVS)
+        external interface for Traversal Level 2 Module
+        (GdomeNodeFilterVtab) added
+	(GdomeNodeIteratorVtab) added
+	(GdomeTreeWalkerVtab) added
+        (GdomeFilterResultType) implemented
+        (GdomeWhatToShowType) implemented
+        (struct _GdomeNodeFilter) implemented
+        (struct _GdomeNodeIterator) implemented
+        (struct _GdomeTreeWalker) implemented
+	(gdome_nf_mkref) external API implemented
+	(gdome_nf_ref) external API implemented
+	(gdome_nf_unref) external API implemented
+	(gdome_nf_query_interface) external API implemented
+	(gdome_nf_acceptNode) external API implemented
+	(gdome_ni_root) external API implemented
+	(gdome_ni_whatToShow) external API implemented
+	(gdome_ni_filter) external API implemented
+	(gdome_ni_expandEntityReference) external API implemented
+	(gdome_ni_ref) external API implemented
+	(gdome_ni_unref) external API implemented
+	(gdome_ni_query_interface) external API implemented
+	(gdome_ni_nextNode) external API implemented
+	(gdome_ni_previousNode) external API implemented
+	(gdome_ni_detach) external API implemented
+             
+        * libgdome/traversal (added to CVS)
+        directory where to implement Traversal Level 2 module
+        
+        * libgdome/traversal/Makefile (added to CVS)
+        gives instructions on building libgdometraversal.la
+        
+        * libgdome/traversal/gdome-trv-nodefilter.[ch] (added to CVS)
+        (Gdome_trv_NodeFilter) implemented
+        (struct _GdomeNodeFilterVtab) implemented
+	(gdome_trv_nf_mkref) internal API implemented
+	(gdome_trv_nf_ref) internal API implemented
+	(gdome_trv_nf_unref) internal API implemented
+	(gdome_trv_nf_query_interface) internal API implemented
+	(gdome_trv_nf_acceptNode) internal API implemented
+        
+        * libgdome/traversal/gdome-trv-nodeiterator.[ch] (added to CVS)
+        (Gdome_trv_NodeIterator) implemented
+        (struct _GdomeNodeIteratorVtab) implemented
+	(gdome_trv_ni_root) internal empty prototype added
+	(gdome_trv_ni_whatToShow) internal empty prototype added
+	(gdome_trv_ni_filter) internal empty prototype added
+	(gdome_trv_ni_expandEntityReference) internal empty prototype added
+	(gdome_trv_ni_mkref) internal empty prototype added
+	(gdome_trv_ni_ref) internal empty prototype added
+	(gdome_trv_ni_unref) internal empty prototype added
+	(gdome_trv_ni_query_interface) internal empty prototype added
+	(gdome_trv_ni_nextNode) internal empty prototype added
+	(gdome_trv_ni_previousNode) internal empty prototype added
+	(gdome_trv_ni_detach) internal empty prototype added
+        
+        * libgdome/traversal/gdome-trv-treewalker.[ch] (added to CVS)
+        added empty
+        
+2002-01-09  Paolo Casarini <paolo@casarini.org>
+	* gdome2.spec.in
+        URL and Source updated
+        
+        * libgdome/gdome.h
+        (GdomeException) changed type from guint to guint32
+        (GdomeExcetionType) added
+        (GdomeExceptionMasks) added
+        (GDOME_EXCEPTION_TYPE) macro added
+        (GDOME_EXCEPTION_CODE) macro added
+        
+        * libgdome/gdome-events.h
+        (GdomeEventException) removed
+        (GDOME_UNSPECIFIED_EVENT_TYPE_ERR) Modified from 257 to 0
+        
+        * libgdome/gdome-xml-node.c
+        (gdome_xml_n_dispatchEvent) Updated Exception handling
+        
+2001-12-21  Paolo Casarini <paolo@casarini.org>
+	* libgdome/gdomecore/gdome-xml-domimpl.[ch]
+        (gdome_xml_di_parseFile) removed
+        (gdome_xml_di_validateFile) removed
+        (gdome_xml_di_saveFile) removed
+        (gdome_xml_di_saveFormatFile) removed
+        
+        * libgdome/gdome.[ch]
+        (gdome_di_parseFile) removed
+        (gdome_di_validateFile) removed
+        (gdome_di_saveFile) removed
+        (gdome_di_saveFormatFile) removed
+        
+        * test/apigen/*
+        Updated
+        
+        * configure.in
+        Modified for release 0.7.0
+        
+        * gdome2.spec.in
+        Updated
+        
+        * README
+        Updated
+        
+2001-12-03  Paolo Casarini <paolo@casarini.org>
+	* configure.in
+        (AC_SUBST) Added GLIB_LIBS
+        
+        * libgdome/Makefile.am
+        (libgdome_la_LIBADD) Added GLIB_LIBS and LIBXML_LIBS
+        
+        * test/test-node.c
+        Modified to follow new treegc features
+        
+        * libgdome/gdomecore/gdome-xml-node.c
+        (gdome_xml_n_replaceChild) Reference counting bug fix
+        (gdome_xml_n_appendChild) Bugs fix related to DocumentFragment node
+          and treegc
+        (gdome_xml_n_insertBeforeChild) Bugs fix related to DocumentFragment
+          node and treegc
+        
+        * libgdome/gdome-treegc.c
+        (gdome_treegc_insertSubtree) Modified to handle XML_DOCUMENT_FRAG_NODE
+        
+        * libgdome/gdomecore/gdome-xmlutil.[ch]
+        (gdome_xmlSetFirstChild) Added
+        
+        * libgdome/gdomecore/gdome-xml-document.c
+        (gdome_xml_doc_doctype) Modified to link always intSubset
+        
+        * configure.in
+        (gdome-config.1.in) added
+        
+        * gdome-config.in
+        Modified to use prefix and exec-prefix outputting cflags and libs result
+        
+        * libgdome/gdome.h
+        (GdomeExceptionCode) Added GDOME_NOEXCEPTION_ERR = 0
+        (GdomeException) modified from unsigned short to guint
+        
+        * libgdome/gdome-events.h
+        (GdomeEventExceptionCode) Modified GDOME_UNSPECIFIED_EVENT_TYPE_ERR
+           from 0 to 257.
+        
+        * gtk-doc/
+        - Added a new main section called "Memory Management System"
+        - Moved private-list documentation to the new main section
+        - Added a new section related to treegc module in the new main section
+        - Declared DEPRECATED! som old functions in GdomeDOMImplementation
+           interface
+        
+        CVS
+        Removed gdome-config.1
+        Added gdome-config.1.in
+        
+2001-11-30  Paolo Casarini <paolo@casarini.org>
+	* libgdome/gdomecore/gdome-xml-node.c
+        (gdome_xml_n_replaceChild) Modified to raise NO_MODIFICATION_ALLOWED_ERR,
+           before HIERARCHY_REQUEST_ERR.
+        (gdome_xml_n_childNodes) Modified to return an empty NodeList, instead
+           NULL, if the specified node is a node that can't have childrens.
+           
+        * lingdome/gdomecore/gdome-xml-util.h
+        (GDOME_XML_IS_LEAF_N) Added
+        
+        * libgdome/gdomecore/gdome-xml-nodel.c
+        (gdome_xml_nl_length) Modified to return 0L if the specified node is 
+           "leaf" node
+        (gdome_xml_nl_item) Modified to return NULL if the specified node is 
+           "leaf" node
+           
+        * test/test-cdata.c
+        Modified to test Text.childNodes
+
+        * test/test-dtd.c
+        Modified to test DocumentType.childNodes and Notation.childsNodes
+
+2001-11-28  Paolo Casarini <paolo@casarini.org>
+        - Changed the type of all unsigned long parameters, variables and return
+          values to gulong
+        - Changed the type of all unsigned short parameters, variables and return
+          values to gushort
+          
+	* libgdome/gdome-treegc.c
+        Modified comments on parameters
+        
+        * libgdome/gdome-xml-nnodem.c
+        (gdome_xml_nnm_mkref) Added memset call to reset Gdome_xml_NamedNodeMap
+          after creation
+        
+        * libgdome/gdome-xml-domimpl.c
+        (gdome_xml_di_mkref) Added memset call to reset Gdome_xml_DOMImplementation
+          after creation
+        
+2001-11-23  Paolo Casarini <paolo@casarini.org>
+	* test/apigen/core.xml
+        Added INVALID_STATE_ERR EXCEPTION to attrs and methods of NodeList and 
+        NamedNodeMap interfaces. Added IMPLEMENTATION to gdome_nl_unref and to
+        gdome_nnm_unref.
+        
+2001-11-22  Paolo Casarini <paolo@casarini.org>
+	* test/apigen/apigen.c
+        (createInterfaceAPI) Modified to read the name of attribute from
+           the attribute NAME instead of the content of the ATTR node.
+           Modified also to read EXCEPTION info from the xml.
+           Modified also to read IMPLEMENTATION info from xml.
+           
+        * test/apigen/srcutil.c
+        (writeAttribute) modified to write Exception handler
+        (writeMethod) modified to write Exception handler and Implementation
+        (writeCheck) deleted
+        (writeException) Added
+        
+        * test/apigen/core.xml
+        * test/apigen/events.xml
+        Modifed all ATTR Node moving the name of the attribute specified
+        from the content to the the attribute NAME.
+        Modified all NOT RAW ATTR and METHOD addind NULL_POINTER_ERR Exception.
+        Modified all NOT RAW ATTR and METHOD of Node derived interfaces adding
+        INVALID_STATE_ERR Exception.
+        Added IMPLEMENTATION element to gdome_xxx_unref
+        
+        * libgdome/gdome-events.h
+        (GdomeEventType) Added
+        
+        * libgdome/events/gdome-evt-event.[ch]
+        (struct _Gdome_evt_Event) added etype field
+        (gdome_evt_evnt_mkref) Modified to add etype field initialization
+        
+        * libgdome/events/gdome-evt-mevent.[ch]
+        (struct _Gdome_evt_MutationEvent) added etype field
+        (gdome_evt_mevnt_mkref) Modified to add etype field initialization
+        
+        * libgdome/events/gdome-evt-eventl.c
+        (gdome_evt_evntl_handleEvent) Bug Fix
+        
+        * libgdome/events/gdome-evt-util.h
+        (GDOME_XML_IS_EVNT) Implemented
+        (GDOME_XML_IS_MEVNT) Implemented
+        
+        * libgdome/events/gdome-xml-util.h
+        All macros modified
+        
+        * libgdome/gdome-util.[ch]
+        (gdome_cast_evnt) added
+        (gdome_cast_mevnt) added
+        
+        * libgdome/gdome-events.h
+        (GDOME_EVNT) added
+        (GDOME_MEVNT) added
+        
+2001-11-19  Paolo Casarini <paolo@casarini.org>
+        * libgdome/gdome-treegc.[ch]
+        (gdome_treegc_isDetached) added to finds nodes that are in detached
+           subtrees
+        (gdome_treegc_countLiveNodes) added to count referenced node in a
+           detached subtree
+        (gdome_treegc_addRef) modified to handle NOTATION, ENTITY nodes and
+           nodes owned by detached subtree
+        (gdome_treegc_delRef) modified to handle NOTATION, ENTITY nodes and
+           nodes owned by detached subtree
+        (gdome_treegc_removeSubtree) added to decrease main doc livenodes value
+           when a subtree is removed.
+        (gdome_treegc_removeSubtree) added to increase main doc livenodes value
+           when a subtree is inserted.
+        (gdome_treegc_adjust) added to adjust main doc livenodes value.
+        
+        * libgdome/gdomecore/gdome-xml-node.c
+        (gdome_xml_n_unref) Modified to free libxml2 underling structures
+           if a node is the root of a detached subtree.
+        (gdome_xml_n_appendChild) now also calls gdome_treegc_insertSubtree
+        (gdome_xml_n_insertBefore) now also calls gdome_treegc_insertSubtree
+           and gdome_treegc_removeSubtree
+        (gdome_xml_n_removeChild) now also calls gdome_treegc_removeSubtree
+        
+        * libgdome/gdomecore/gdome-xml-element.c
+        (gdome_xml_el_removeAttribute) now it doesn't free the directly free
+           the removed attribute, but gdome_xml_n_unref does it if needed.
+        (gdome_xml_el_removeAttributeNS) now it doesn't free the directly free
+           the removed attribute, but gdome_xml_n_unref does it if needed.
+           
+        * libgdome/gdomecore/gdome-xml-nnodem.c
+        (gdome_xml_nnm_removeNamedItem) now also calls
+           gdome_treegc_removeSubtree and gdome_treegc_adjust if needed.
+        (gdome_xml_nnm_removeNamedItemNS) now also calls
+           gdome_treegc_removeSubtree and gdome_treegc_adjust if needed.
+        (gdome_xml_nnm_setNamedItem) now also calls
+           gdome_treegc_insertSubtree and gdome_treegc_removeSubtree if
+           needed.
+        (gdome_xml_nnm_setNamedItemNS) not also calls
+           gdome_treegc_insertSubtree and gdome_treegc_removeSubtree if
+           needed.
+           
+        * test/test-document.c
+        * test/test-namednodemap.c
+        * test/test-treegc.c
+        Modified to follow new treegc features
+        
+        * libgdome/gdomecore/Makefile.am
+        Modified to compile also gdome-xml-xmlmemory.[ch]
+        
+        * libgdome/gdomecore/gdome-xml-xmlmemory.[ch]
+        (gdome_xmlFreeSubtree) Added to free libxml2 subtree enabling
+           GDOME_INVALID_STATE_ERR exception.
+        
+        CVS
+        Added: gdome-xml-xmlmemory.[ch]
+        
+2001-11-07  Paolo Casarini <paolo@casarini.org>
+	* test/apigen/apigen.c
+        * test/apigen/util.c
+        * test/test-element.c
+        * test/namednodemap.c
+        * test/examplea.c
+        * test/exampleb.c
+        * test/examplec.c
+        Added stdio.h in includes
+        
+        * test/test-cdata.c
+        Removed parser.h from includes
+        Replaced all !xmlStrEqual with strcmp
+        
+        * test/test-document.c
+        Removed parser.h from includes
+        Added string.h in includes
+        Replaced all !xmlStrEqual with strcmp
+        Replaced all XML_ costants with corresponding GDOME_ ones
+
+        * test/test-dtd.c
+        Removed parser.h from includes
+        Replaced all !xmlStrEqual with strcmp
+        
+        * test/test-node.c
+        Removed parser.h from includes
+        Added string.h in includes
+        Replaced all !xmlStrEqual with strcmp
+        Replaced all XML_ costants with corresponding GDOME_ ones
+        
+        * libgdome/gdome.h
+        Removed libxml/tree.h from includes
+        
+        * libgdome/events/gdome-evt-events.h
+        Added tree.h in includes
+        
+        * libgdome/gdome.h
+        * libgdome/gdome-events.h
+        Removed from every _Gdome... structs the vtab field
+        
+        * libgdome/gdomecore/gdome-xml-node.h
+        * libgdome/gdomecore/gdome-xml-attribute.h
+        * libgdome/gdomecore/gdome-xml-cdata.h
+        * libgdome/gdomecore/gdome-xml-cdatas.h
+        * libgdome/gdomecore/gdome-xml-comment.h
+        * libgdome/gdomecore/gdome-xml-document.h
+        * libgdome/gdomecore/gdome-xml-documentf.h
+        * libgdome/gdomecore/gdome-xml-documentt.h
+        * libgdome/gdomecore/gdome-xml-domimpl.h
+        * libgdome/gdomecore/gdome-xml-element.h
+        * libgdome/gdomecore/gdome-xml-entity.h
+        * libgdome/gdomecore/gdome-xml-entityref.h
+        * libgdome/gdomecore/gdome-xml-nnodem.h
+        * libgdome/gdomecore/gdome-xml-node.h
+        * libgdome/gdomecore/gdome-xml-nodel.h
+        * libgdome/gdomecore/gdome-xml-notation.h
+        * libgdome/gdomecore/gdome-xml-pi.h
+        * libgdome/gdomecore/gdome-xml-text.h
+        Added in _Gdome_xml_... structs added the vtab field
+        * libgdome/gdomecore/gdome-evt-event.h
+        * libgdome/gdomecore/gdome-evt-eventl.h
+        * libgdome/gdomecore/gdome-evt-mevent.h
+        Added in _Gdome_evt_... structs added the vtab field
+        
+        * libgdome/gdomecore/gdome-xml-node.c
+        * libgdome/gdomecore/gdome-xml-nodel.c
+        * libgdome/gdomecore/gdome-xml-nnodem.c
+        * libgdome/gdomecore/gdome-xml-document.c
+        * libgdome/gdomecore/gdome-xml-documentt.c
+        * libgdome/gdomecore/gdome-xml-domimpl.c
+        (gdome_xml_XXX_mkref) Modified to follow the vtab field
+
+        * libgdome/gdomecore/gdome-evt-event.c
+        * libgdome/gdomecore/gdome-evt-eventl.c
+        * libgdome/gdomecore/gdome-evt-mevent.c
+        (gdome_evt_XXX_mkref) Modified to follow the vtab field and
+        added the reset for super.user_data field
+        
+        * libgdome/gdome-treegc.c
+        (gdome_treegc_delRef) Modified to fix a memory leak
+        
+2001-11-05  Paolo Casarini <paolo@casarini.org>
+	* libgdome/events/gdome-evt-propagation.c
+        (add_timestamp) replaced gettimeofday with g_get_current_time
+           patch from Tobias Peters
+        
+        * Makefile.am
+        (EXTRA_DIST) added gdome-config.1
+        
+        * gdome2.spec.in
+        (%doc) added gdome-config.1
+        
+	* test/Makefile
+        Added test-treegc.c test program
+        
+	* libgdome/gdomecore/gdome-xml-domimpl.c
+        Added gdome-treegc.h in includes
+	(gdome_xml_di_createDocument)  Modified to fix a bug related 
+        to the treegc with regard to DocumentType
+        
+	* libgdome/gdomecore/gdome-xml-documentt.c
+        (gdome_xml_dt_mkref) Modified to fix a bug related to the treegc
+        (gdome_xml_dt_unref) Modified to fix a bug related to the treegc
+
+	* libgdome/gdomecore/gdome-xml-node.c
+        (gdome_xml_n_unref) Modified to fix a bug related to the treegc
+        
+        * libgdome/gdomecore/gdome-xmldtdutil.c
+        (notationDeallocator) Modified to fix a memory bug related to the
+ 	Notation Nodes implemetation at the gdome2 layer
+        
+        CVS
+        Added gdome-config.1 (made by Enrico Zini)
+        Added test/test-treegc.c
+        
+2001-10-23  Paolo Casarini <paolo@casarini.org>
+	* libgdome/gdomecore/gdome-xml-domimpl.c
+        (gdome_xml_di_hasFeature) Modified to return TRUE for "Events" and
+          "MutationEvents" modules.
+          
+        * libgdome/gdome.h
+        (gdome_xml_n_mkref) declaration moved in gdome-xml-node.h
+        (gdome_xml_from_document) declaration removed
+        (gdome_xml_n_get_xmlNode) declaration moved in gdome-xml-node.h
+        
+        * libgdome/gdomecore/gdome-xml-document.c
+        (gdome_xml_from_document) removed
+        
+2001-10-22  Paolo Casarini <paolo@casarini.org>
+	* libgdome/gdomecore/gdome-xml-node.c
+        (gdome_xml_n_mkref) added the call to the treegc module and added the
+          different call to manage GdomeDocument nodes
+        (gdome_xml_n_unref) added the call to the treegc module
+        (gdome-treegc.h) in includes
+        
+        * libgdome/gdomecore/gdome-xml-document.[ch]
+        (gdome_xml_doc_mkref) added
+        (gdome_xml_doc_unref) added
+        (Gdome_xml_Document) added the field livenodes of type int to hold
+          tree garbage collector information
+        (gdome_xml_doc_vtab) gdome_xml_n_unref replaced with gdome_xml_doc_unref
+        
+        * libgdome/gdomecore/gdome-xml-documentt.c
+        (gdome_xml_dt_mkref) added the call to the treegc module
+        (gdome_xml_dt_unref) added the call to the treegc module
+        
+        * test/examplea.c
+        Added two gdome_n_unref to free result reference
+        Updated to the new memory management system
+        
+        * test/exampleb.c
+        Added gdome_nl_unref to free childs reference
+        Added gdome_el_unref to free root reference
+        Updated to the new memory management system
+        
+        * test/examplec.c
+        Added gdome_el_unref to free rootel reference
+        Updated to the new memory management system
+        
+        * test/test-loadsave.c
+        Removed glib.h from includes
+        Updated to the new memory management system
+        
+        * test/test-nodelist.c
+        Removed glib.h from includes
+        Added gdome_nl_unref to free the last nl reference
+        Added gdome_n_node to free node reference
+        Updated to the new memory management system
+
+        * test/test-dtd.c
+        Removed glib.h from includes
+        Added some gdome_xxx_unref to free some zombie references
+        Updated to the new memory management system
+
+        * test/test-cdata.c
+        Very old gdome2 style programming
+        Removed gdome_xml_str.h from includes
+        Added many gdome_xxx_unref to free some zombie references
+        Updated to the new memory management system
+        
+        * libgdome/gdomecore/gdome-xml-text.c
+        (gdome_xml_t_splitText) Lost references bug fix
+        
+        * libgdome/gdomecore/gdome-xml-nnodem.c
+        (gdome_xml_nnm_setNamedItem) Lost references bug fix
+        (gdome_xml_nnm_setNamedItemNS) Lost references bug fix
+        (gdome_xml_nnm_removeNamedItem) Lost references bug fix
+        (gdome_xml_nnm_removeNamedItemNS) Lost references bug fix
+
+        * test/test-document.c
+        Added many gdome_xxx_unref to free some zombie references
+        Updated to the new memory management system
+
+        * test/test-element.c
+        Added many gdome_xxx_unref to free some zombie references
+        Updated to the new memory management system
+        
+        * libgdome/gdomecore/gdome-xml-element.c
+        (gdome_xml_el_removeAttributeNode) Lost reference bug fix
+
+        * test/test-mevents.c
+        Added many gdome_xxx_unref to free some zombie references
+        Added many removeEventListener to free some zombie references
+        Updated to the new memory management system
+
+        * test/test-namednodemap.c
+        Added many gdome_xxx_unref to free some zombie references
+        Updated to the new memory management system
+
+        CVS
+        Added gdome-treegc.[ch]
+        
+2001-10-02  Paolo Casarini <paolo@casarini.org>
+	* libgdome/gdomecore/gdome-xml-element.c
+        (gdome_xml_el_getAttribute) modified to be compliant to DOM2 spec
+        (gdome_xml_el_getAttributeNS) modified to be compliant to DOM2 spec
+        
+        * test/test-element.c
+        Modified to follow Element.getAttribute and Element.getAttributeNS
+        changes
+        
+        * libgdome/gdomecore/gdome-xml-node.c
+        (gdome_xml_n_ownerDocument) modified to be compliant to DOM2 spec
+        
+2001-08-06  Paolo Casarini <paolo@casarini.org>
+        * configure.in
+        Added in AC_OUTPUT gdome2.spec.in (by Andrew Hughes Chatman)
+        Prepared for 0.6.9
+        
+        * Makefile.am
+        Added in EXTRA_DIST gdome2.spec
+        
+        * libgdome/gdomecore/gdome-xml-domimpl.c
+        Removed "extern int xmlDoValidityCheckingDefaultValue;"
+        
+        * libgdome/gdomecore/gdome-xml-node.c
+        (gdome_xml_n_hasChildNodes) Bug Fix
+        
+        CVS
+        Added gdome2.spec.in
+        
+2001-06-13  Paolo Casarini <paolo@casarini.org>
+	* gtk-doc/Makefile.am
+        install-data-local fix: now ignore errors
+        
+        * COPYING.LIB
+        Changed the license from GPL to LGPL: to make this change I asked the
+        consent to previous Gdome2 authors (Raph Levien, Daniel Veillard,
+        Mathieu Lacage, Anders Carlson). See the mailing list archive.
+        
+        * *.[ch]
+        Changed the license in the start of each source file from GPL to LGPL
+        
+2001-06-08  Paolo Casarini <paolo@casarini.org>
+	* libgdome/gdome.[ch]
+        (GdomeExceptionCode) bug fix
+        
+        * libgdome/gdomecore/gdome-xml-domimpl.c
+        (gdome_di_createDocument) Added GDOME_WRONG_DOCUMENT_ERR check
+        
+        * gtk-doc/tmpl/...
+        Added short and long description to Entity, EntityReference,
+        NamedNodeMap, Node, NodeList, Notation, ProcessingInstruction,
+        Text, EventListener, Event and MutationEvent interfaces.
+        
+        Updated Documentation
+        
+2001-05-30  Paolo Casarini <paolo@casarini.org>
+	* libgdome/gdomecore/gdome-xml-str.c
+        (gdome_xml_str_ref) Added g_return... check on paramenter
+        (gdome_xml_str_unref) Added g_return... check on paramenter
+        
+        * test/Makefile.am
+        Added bench.c
+        
+        CVS
+        Added: test/bench.c
+        
+2001-05-27  Paolo Casarini <paolo@casarini.org>
+	*libgdome/gdomecore/gdome-xml-str.[ch]
+        (gdome_xml_str_ieEmpty) added
+        
+        *libgdome/gdome.[ch]
+        (gdome_str_isEmpty) added
+        
+        HTML Documentation
+        Added short e long description to Attr, CharacterData, CDATASection,
+        Comment, Document, DocumentFragment, DocumentType, DOMImplementation,
+        Element interfaces
+        
+        * libgdome/gdome.[ch]
+        (GdomeLoadingMode) added GDOME_LOAD_SUBSTITUTE_ENTITIES
+        (gdome_di_createDoc...) changed the type of parameter mode from
+          GdomeLoadindMode to unsigned int to add the entities substitution
+          capability.
+
+        * libgdome/gdomecore/gdome-xml-domimpl.[ch]
+        (gdome_xml_di_createDoc...) changed the type of parameter mode from
+          GdomeLoadindMode to unsigned int to add the entities substitution
+          capability.
+        (gdome_xml_di_createDocFromXXXXWithEntitiesTable) Fixed SAX memory leak
+        
+        * test/test-loadsave.c
+        Modified to test the GDOME_LOAD_SUBSTITUTE_ENTITIES flag
+        
+        CVS TREE
+        Added in gtk-doc/tmpl: 
+        attribute.sgml, documentf.sgml, entityref.sgml, mevent.sgml, pi.sgml,
+	cdata.sgml, documentt.sgml, etypes.sgml, nnodem.sgml, text.sgml,
+	cdatas.sgml, domimpl.sgml, event.sgml, node.sgml, types.sgml,
+	comment.sgml, element.sgml, eventl.sgml, nodel.sgml,
+	document.sgml, entity.sgml, gdome2-unused.sgml, notation.sgml.
+        
+2001-05-24  Paolo Casarini <paolo@casarini.org>
+	* libgdome/gdomecore/gdome-xml-domimpl.c
+        (gdome_xml_di_createDocFromURIWithEntitiesTable) Bug Fix
+        (gdome_xml_di_createDocFromMemoryWithEntitiesTable) Bug Fix
+        
+        * libgdome/gdome.[ch]
+        Changed the return value of all gdome_xxx_query_interface prototypes
+        from void * to gpointer
+        
+        * libgdome/gdome-events.[ch]
+        Changed the return value of all gdome_xxx_query_interface prototypes
+        from void * to gpointer
+        (gdome_evntl_mkref) changed the type of priv field from void * to gpointer
+        (gdome_evntl_get_priv) changed the return value from coid * to gpointer
+        
+        * libgdome/events/gdome-evt-eventl.h
+        (struct _Gdome_evt_EventListener) changed type of field priv from void* to gpointer
+        
+        * libgdome/gdomecore/gdome-xml-str.[ch]
+        Removed old functions
+        
+        Changed in all function mapped by public API the type void* to gpointer
+        
+        Updated Documentation
+        
+2001-05-23  Paolo Casarini <paolo@casarini.org>
+	* libgdome/gdome.h
+        * libgdome/gdome-events.h
+        * libgdome/gdome-util.h
+        * libgdome/gdome-refdebug.h
+        * libgdome/gdome-private-list.h
+        Added extern "C" {} block when _cplusplus is defined
+        
+        * libgdome/gdome.h
+        * libgdome/gdome-events.h
+        CHANGED THE TYPE OF THE user_data field FROM GdomePrivateList TO gpointer
+        TO ALL PUBLIC OBJECT STRUCTURES
+        
+        Updated documentation
+        
+2001-05-23  Paolo Casarini <paolo@casarini.org>
+	* libgdome/gdomecore/gdome-xml-xmldtdutil
+        (notationDeallocator) bug fix to be compiled with libxml 2.3.9
+        
+        * libgdome/gdomecore/gdome-xml-element.c
+        (gdome_xml_el_getAttributeNode) bug fix
+        
+        * libgdome/gdome.[ch]
+        (GdomeEntitiesTableEntry) added
+        (gdome_di_createDocFromURIWithEntityTable)
+          renamed in gdome_di_createDocFromURIWithEntitiesTable
+        (gdome_di_createDocFromMemoryWithEntityTable)
+          renamed in gdome_di_createDocFromMemoryWithEntitiesTable
+	(gdome_di_createDocFromURIWithEntitiesTable)
+	(gdome_di_createDocFromMemoryWithEntitiesTable)
+           changed the field type of entityTable from gchar [][4] to
+           const GdomeEntitiesTableEntry[]
+        (gdome_str_equalIgnoreCase) added
+	(gdome_str_charAt) added
+	(gdome_str_concat) added
+	(gdome_str_endsWith) added
+	(gdome_str_length) added
+	(gdome_str_startsWith) added
+        
+        * libgdome/gdomecore/gdome-xml-domimpl.[ch]
+        (gdome_xml_di_createDocFromURIWithEntityTable)
+           renamed in gdome_xml_di_createDocFromURIWithEntitiesTable
+        (gdome_xml_di_createDocFromMemoryWithEntityTable)
+           renamed in gdome_xml_di_createDocFromMemoryWithEntitiesTable
+	(gdome_xml_di_createDocFromURIWithEntitiesTable)
+	(gdome_xml_di_createDocFromMemoryWithEntitiesTable)
+           changed the field type of entityTable from gchar* [][4] to
+           const GdomeEntitiesTableEntry[]
+        
+        * test/tes-loadsave.c
+        Modified to follow changes in DOMImplementation interface
+        
+        * libgdome/gdomecore/gdome-xml-str.[ch]
+        (gdome_xml_str_equalIgnoreCase) added
+	(gdome_xml_str_charAt) added
+	(gdome_xml_str_concat) added
+	(gdome_xml_str_endsWith) added
+	(gdome_xml_str_length) added
+	(gdome_xml_str_startsWith) added
+        
+        * configure.in
+        Prepared for release 0.6.8
+        
+        Updated Documentation
+        
+        
+2001-05-22  Paolo Casarini <paolo@casarini.org>
+	* libgdome/gdome.h
+        (GDOME_A) Casting Marco added
+        (GDOME_CD) Casting Marco added
+        (GDOME_CDS) Casting Marco added
+        (GDOME_C)) Casting Marco added
+        (GDOME_DOC) Casting Marco added
+        (GDOME_DF) Casting Marco added
+        (GDOME_DT) Casting Marco added
+        (GDOME_EL) Casting Marco added
+        (GDOME_ENT) Casting Marco added
+        (GDOME_ER) Casting Marco added
+        (GDOME_N) Casting Marco added
+        (GDOME_NOT) Casting Marco added
+        (GDOME_PI) Casting Marco added
+        (GDOME_T) Casting Marco added
+        (GDOME_EVNTT) Casting Marco added
+        
+        * libgdome/gdomecore/gdome-xml-domimpl.c
+        (gdome_xml_di_ref) added g_return assert to check parameters
+        (gdome_xml_di_unref) added g_return assert to check parameters
+        
+        * libgdome/gdomecore/gdome-xml-element.c
+        (gdome_xml_el_attributes) added g_return assert to check parameters
+        (gdome_xml_el_getAttribute) added g_return assert to check parameters
+        (gdome_xml_el_getAttributeNode) added g_return assert to check parameters
+        (gdome_xml_el_getElementsByTagName) added g_return assert to check parameters
+        (gdome_xml_el_getElementsByTagNameNS) added g_return assert to check parameters
+        (gdome_xml_el_getAttributeNS) added g_return assert to check parameters
+        (gdome_xml_el_getAttributeNodeNS) added g_return assert to check parameters
+        (gdome_xml_el_hasAttribute) added g_return assert to check parameters
+        (gdome_xml_el_hasAttributeNS) added g_return assert to check parameters
+
+        * libgdome/gdomecore/gdome-xml-nnodem.c
+        (gdome_xml_nnm_ref) added g_return assert to check parameters
+        (gdome_xml_nnm_unref) added g_return assert to check parameters
+        (gdome_xml_nnm_length) added g_return assert to check parameters
+        (gdome_xml_nnm_getNamedItem) added g_return assert to check parameters
+        (gdome_xml_nnm_getNamedItemNS) added g_return assert to check parameters
+        (gdome_xml_nnm_item) added g_return assert to check parameters
+
+	* libgdome/gdomecore/gdome-xml-node.c
+        (gdome_xml_n_ref) added g_return assert to check parameters
+        (gdome_xml_n_unref) added g_return assert to check parameters
+        (gdome_xml_n_) added g_return assert to check parameters
+        (gdome_xml_n_) added g_return assert to check parameters
+        (gdome_xml_n_) added g_return assert to check parameters
+        (gdome_xml_n_) added g_return assert to check parameters
+        
+	* libgdome/gdomecore/gdome-xml-nodel.c
+        (gdome_xml_nl_ref) added g_return assert to check parameters
+        (gdome_xml_nl_unref) added g_return assert to check parameters
+        (gdome_xml_nl_length) added g_return assert to check parameters
+        (gdome_xml_nl_item) added g_return assert to check parameters
+
+        CVS TREE
+        Added: gdome-util.[ch]
+2001-05-20  Paolo Casarini <paolo@casarini.org>
+	* libgdome/gdomecore/gdome-xml-domimpl.[ch]
+        (gdome_xml_di_saveDocToFile) added
+        (gdome_xml_di_saveDocToMemory) added
+        
+        * libgdome/gdome.[ch]
+        Renamed field private to user_data in all object structures
+        (gdome_di_saveDocToFile) added
+        (gdome_di_saveDocToMemory) added
+        
+        * libgdome/gdome-events.h
+        Renamed field private to user_data in all object structures
+        
+        * libgdome/gdomecore/gdome-xml-documentt.c
+        (gdome_xml_dt_mkref) modified to follow private field name
+
+        * libgdome/gdomecore/gdome-xml-node.c
+        (gdome_xml_n_mkref) modified to follow private field name
+        
+        * test/examplea.c
+        * test/exampleb.c
+        * test/examplec.c
+        * test/test-document.c
+        * test/test-node.c
+        Modified to follow save API changes
+        
+        * configure.in
+        Prepared for 0.6.7
+        
+        Updated dodumentation
+
+2001-05-19  Paolo Casarini <paolo@casarini.org>
+	* libgdome/gdomecore/gdome-xml-attribute.c
+	* libgdome/gdomecore/gdome-xml-cdata.c
+	* libgdome/gdomecore/gdome-xml-documentt.c
+	* libgdome/gdomecore/gdome-xml-element.c
+	* libgdome/gdomecore/gdome-xml-entity.c
+	* libgdome/gdomecore/gdome-xml-nnodem.c
+	* libgdome/gdomecore/gdome-xml-node.c
+	* libgdome/gdomecore/gdome-xml-nodel.c
+	* libgdome/gdomecore/gdome-xml-notation.c
+	* libgdome/gdomecore/gdome-xml-pi.c
+	* libgdome/gdomecore/gdome-xml-text.c
+	* libgdome/gdomecore/gdome-xml-util.c
+        * libgdome/events/gdome-evt-event.c
+        * libgdome/events/gdome-evt-eventl.c
+        * libgdome/events/gdome-evt-mevent.c
+        (gdome-util.h) removed from include
+        
+        * libgdome/gdomecore/gdome-xml-documentt.c
+        (gdome_xml_dt_internalSubset) implemented
+        
+        * libgdome/Makefile.am
+        (gdome-util.[ch]) removed
+        
+        * libgdome/gdomecore/Makefile.am
+        (gdome-xml-util.c) removed
+        
+        * libgdome/events/Makefile.am
+        (gdome-evt-util.c) added
+
+        * libgdome/gdomecore/gdome-xml-util.h
+	(gdome_xml_cast_node) removed
+	(gdome_xml_cast_el) removed
+	(gdome_xml_cast_evntt) removed
+	(gdome_xml_cast_evntl) removed
+	(GDOME_XML_IS_EVNTT) moved in gdome-evt-util.h
+	(GDOME_XML_IS_EVNTL) moved in gdome-evt-util.h
+	(GDOME_XML_IS_EVNT) moved in gdome-evt-util.h
+	(GDOME_XML_IS_MEVNT) moved in gdome-evt-util.h
+        
+        * test/test-dtd.c
+        Added test for gdome_dt_internalSubset
+        
+        CVS TREE
+        Removed libgdome/gdome-util.[ch], libgdome/gdomecore/gdome-xml-util.c
+        Added libgdome/events/gdome-evt-util.h
+        
+        
+2001-05-19  Paolo Casarini <paolo@casarini.org>
+	* libgdome/gdomecore/gdome-xml-document.c
+        (gdome_xml_doc_importNode) Bug Fix handling GDOME_ATTRIBUTE_NODE
+        
+	* libgdome/gdomecore/gdome-xml-node.c
+        (gdome_xml_n_cloneNode) Bug Fix handling GDOME_ATTRIBUTE_NODE
+        
+2001-05-16  Paolo Casarini <paolo@casarini.org>
+	* libgdome/gdomecore/gdome-xml-document.c
+        (gdome_xml_doc_createEvent) added the support for "Events" eventType
+        
+        * libgdome/gdome-events.[ch]
+        (struct _GdomeMutationEvent) added "private" field
+        (struct _GdomeEvent) added "private" field
+        (struct _GdomeEventListener) added "private" field
+        (gdome_evntl_get_priv) added - Deprecated function -
+        
+        * libgdome/gdomecore/gdome-evt-evntl.[ch]
+        (gdome_evt_evntl_get_priv) commented
+        
+2001-05-15  Paolo Casarini <paolo@casarini.org>
+	* libgdome/gdomecore/gdome-xml-node.c
+        (addEventListener) bug fix in EventListener reference counting
+        (removeEventListener) bug fix in EventListener reference counting
+        
+        * libgdome/events/gdome-evt-propagation.c
+        (invokeListeners) bug fix in EventListener reference counting
+        
+        * libgdome/gdomecore/gdome-xml-node.[ch]
+        (gdome_xml_n_canAppend) added - used for GDOME_HIERARCHY_REQUEST_ERR
+        (gdome_xml_n_appendChild) added check for GDOME_HIERARCHY_REQUEST_ERR
+        (gdome_xml_n_insertBefore) added check for GDOME_HIERARCHY_REQUEST_ERR
+        (gdome_xml_n_replaceChild) added check for GDOME_HIERARCHY_REQUEST_ERR
+        (gdome_xml_n_set_prefix) bug fix in prefix check
+        
+        * libgdome/gdome.[ch]
+        (gdome_xxx_canAppend) added
+        
+        * libgdome/gdomecore/gdome-xml-nnodem.h
+        (struct _Gdome_xml_NamedNodeMap) Changed the type of field "type" from gint to GdomeNodeType
+        (GDOME_XML_NNM_LIST) removed
+        (GDOME_XML_NNM_HASH) removed
+        
+        * libgdome/gdomecore/gdome-xml-nnodem.c
+        (gdome_xml_nnm_mkref) changed parameter type of "type" from gint to
+        GdomeNodeType, added increasing of reference counting for elem,
+        changed the check to distinguish the type of the nnm from specific gint
+        to GdomeNodeType
+        (gdome_xml_nnm_unref) added decreasing of referecen counting for doc and elem
+        (gdome_xml_nnm_length) modified to distinguish on node type
+        (gdome_xml_nnm_getNamedItem) modified to distinguish on node type
+        (gdome_xml_nnm_getNamedItemNS) modified to distinguish on node type
+        (gdome_xml_nnm_item) modified to distinguish on node type
+        (gdome_xml_nnm_removeNamedItem) modified to distinguish on node type
+        (gdome_xml_nnm_removeNamedItemNS) modified to distinguish on node type
+        (gdome_xml_nnm_setNamedItem) modified to distinguish on node type,
+        added GDOME_GDOME_HIERARCHY_REQUEST_ERR (see DOM-Level-2-errata core-4)
+        (gdome_xml_nnm_setNamedItemNS) modified to distinguish on node type
+        added GDOME_GDOME_HIERARCHY_REQUEST_ERR (see DOM-Level-2-errata core-4)
+        
+        * libgdome/gdomecore/gdome-xml-documentt.c
+        (gdome_xml_dt_entities) modified to follow changes in gdome_xml_nnm_mkref
+        (gdome_xml_dt_notations) modified to follow changes in gdome_xml_nnm_mkref
+        
+        * libgdome/gdomecore/gdome-xml-element.c
+        (gdome_xml_el_attributes) modified to follow changes in gdome_xml_nnm_mkref
+        (gdome_xml_el_removeAttribute) modified to follow changes in gdome_xml_nnm_mkref
+        (gdome_xml_el_getAttributeNode) modified to follow changes in gdome_xml_nnm_mkref
+        (gdome_xml_el_setAttributeNode) modified to follow changes in gdome_xml_nnm_mkref
+        (gdome_xml_el_removeAttributeNode) modified to follow changes in gdome_xml_nnm_mkref
+        (gdome_xml_el_removeAttributeNodeNS) modified to follow changes in gdome_xml_nnm_mkref
+        (gdome_xml_el_getAttributeNodeNS) modified to follow changes in gdome_xml_nnm_mkref
+        (gdome_xml_el_setAttributeNodeNS) modified to follow changes in gdome_xml_nnm_mkref
+        
+2001-05-13  Paolo Casarini <paolo@casarini.org>
+	* libgdome/gdomecore/gdome-xml-domimpl.[ch]
+        Renamed all functions from gdome_xml_DOMImplementation_xxx to gdome_xml_di_xxx
+        
+	* libgdome/gdome.[ch]
+        Renamed all functions from gdome_DOMImplementation_xxx to gdome_di_xxx
+        (GdomeLoadingCode) added
+        (gdome_di_createDocFromURI) added
+        (gdome_di_createDocFromMemory) added
+        (gdome_di_createDocFromURIWithEntityTable) added
+        (gdome_di_createDocFromMemoryWithEntityTable) added
+        
+        * gtk-doc/gdome2-sections.txt
+        * test/apigen/core.xml
+        * test/examplea.c
+        * test/exampleb.c
+        * test/examplec.c
+        * test/test-cdata.c
+        * test/test-document.c
+        * test/test-dtd.c
+        * test/test-element.c
+        * test/test-mevents.c
+        * test/test-namednodemap.c
+        * test/test-node.c
+        * test/test-nodelist.c
+        * test/apigen/apigen.c
+        * libgdome/gdomecore/gdome-xml-document.c
+        * libgdome/gdomecore/gdome-xml-node.c
+        Updated to follow changes of DOMImplementation Inteface APIs
+        
+        * libgdome/gdomecore/gdome-xml-node.c
+        (gdome_xml_n_childNodes) hierarchy bug fix
+        (gdome_xml_n_firstChild) hierarchy bug fix
+        (gdome_xml_n_lastChild) hierarchy bug fix
+        (gdome_xml_n_mkref) hierarchy bug fix
+        (gdome_xml_n_unref) hierarchy bug fix
+        (gdome_xml_n_dispatchEvent) modified to return the right value
+        
+        * libgdome/gdomecore/gdome-xml-documentt.c
+        (config.h) added in include
+        (gdome-refdebug.h) added in include
+        (gdome_xml_dt_mkref) modifed to add reference counting debug
+        (gdome_xml_dt_unref) modifed to add reference counting debug
+        
+        * libgdome/gdomecore/gdome-xml-element.c
+        (gdome_xml_el_removeAttribute) SegFault BUG FIX
+        (gdome_xml_el_removeAttributeNS) SegFault BUG FIX
+        
+        * test/test-mevents.c
+        Adde tests on DOMAttrModified events
+        
+        * libgdome/gdomecore/gdome-xml-domimpl.c
+        (gdome_xml_di_createDocFromURI) added
+        (gdome_xml_di_createDocFromMemory) added
+        (gdome_xml_di_createDocFromURIWithEntityTable) added
+        (gdome_xml_di_createDocFromMemoryWithEntityTable) added
+        
+        * libgdome/refdebug.[ch]
+        (GDOME_REFDBG_NODELIST) added
+        (GDOME_REFDBG_NAMEDNODEMAP) added
+        (GDOME_REFDBG_EVENTLISTENER) added
+        
+        * libgdome/events/gdome-evt-eventl.c
+        (config.h) added in include
+        (gdome-refdebug.h) added in include
+        (gdome_evt_evntl_mkref) modified to add reference counting debug
+        (gdome_evt_evntl_unref) modified to add reference counting debug
+
+        * libgdome/events/gdome-xml-nodel.c
+        (config.h) added in include
+        (gdome-refdebug.h) added in include
+        (gdome_xml_nl_mkref) modified to add reference counting debug
+        (gdome_xml_nl_unref) modified to add reference counting debug
+        
+        * libgdome/events/gdome-xml-nnodem.c
+        (config.h) added in include
+        (gdome-refdebug.h) added in include
+        (gdome_xml_nnm_mkref) modified to add reference counting debug
+        (gdome_xml_nnm_unref) modified to add reference counting debug
+        
+        * test/apigen/core.xml
+        (gdome_di_createDocFromURI) added
+        (gdome_di_createDocFromMemory) added
+        (gdome_di_createDocFromURIWithEntityTable) added
+        (gdome_di_createDocFromMemoryWithEntityTable) added
+        
+        * gtk-doc
+        Update Documentation
+        
+        * test/exampleb.c
+        * test/examplec.c
+        * test/test-document.c
+        * test/test-dtd.c
+        * test/test-document.c
+        * test/test-element.c
+        * test/test-mevents.c
+        * test/test-namednodemap.c
+        * test/test-node.c
+        * test/test-nodelist.c
+        Modified to use new DOMImplementation APIs
+        
+        * test/Makefile.am
+        Added test-loadsave test program
+        
+        * configure.in
+        Prepared for 0.6.6
+        
+        CVS ADD
+        test/test-loadsave.c, test/test-loadsave1.xml, test/test-loadsave2.xml
+        
+2001-05-09  Paolo Casarini <paolo@casarini.org>
+	* libgdome/Makefile.am
+        Added gdome-refdebug.[ch]
+        
+        * configure.in
+        Added with-ref-debug flag to include reference counting module
+        
+        * libgdome/gdomecore/gdome-xml-node.c
+        (config.h) added in include
+        (gdome_xml_n_mkref) modified to add reference counting debug
+        (gdome_xml_n_unref) modified to add reference counting debug
+        (gdome_xml_n_removeChild) modified the order of dispatching
+        (gdome_xml_n_insertBefore) modified the order of dispatching
+
+        * libgdome/gdomecore/gdome-evt-event.c.c
+        (config.h) added in include
+        (gdome_evt_evnt_mkref) modified to add reference counting debug
+        (gdome_evt_evnt_unref) modified to add reference counting debug
+
+        * libgdome/gdomecore/gdome-evt-mevent.c
+        (config.h) added in include
+        (gdome_evt_mevnt_mkref) modified to add reference counting debug
+        (gdome_evt_mevnt_unref) modified to add reference counting debug
+        
+        * libgdome/gdomecore/gdome-xml-str.c
+        (config.h) added in include
+        (gdome_xml_str_mkref) modified to add reference counting debug
+        (gdome_xml_str_mkref_own) modified to add reference counting debug
+        (gdome_xml_str_mkref_xml) modified to add reference counting debug
+        (gdome_xml_str_mkref_dup) modified to add reference counting debug
+	(gdome_xml_str_const_unref) modified to add reference counting debug
+        (gdome_xml_str_unref_own) modified to add reference counting debug
+        (gdome_xml_str_unref_xml) modified to add reference counting debug
+        
+        * libgdome/events/gdome-evt-propagation.c
+        (fireEvent) bug fix in capturing and bubbling phase
+        
+        * libgdome/gdomecore/gdome-xml-domimpl.c
+        (gdome_xml_DOMImplementation_createDocument) refcnt bug fix
+        
+        * test/Makefile.am
+        Added test-mevents test program
+        
+        * gtk-doc/Makefile.am
+        (EXTRA_DIST) added events html files
+        
+        CVS TREE
+        Added:
+        libgdome/gdome-refdebug.[ch], acconfig.h, test/test-mevents.c,
+        test/test-mevents.xml
+        
+2001-05-06  Paolo Casarini <paolo@casarini.org>
+        * libgdome/events/gdome-evt-eventl.[ch]
+        Added doumentation comments to all functions
+        (gdome_evt_evntl_handleEvent) modified the prototype
+        
+        * libgdome/events/gdome-evt-event.[ch]
+        (gdome_evt_evnt_currentTarget) modified the prototype
+        (gdome_evt_evnt_target) modified the prototype
+        
+        * libgdome/events/gdome-evt-event.[ch]
+        (gdome_evt_mevnt_unref) bug fix
+        (gdome_evt_mevnt_query_interface) added
+        (gdome_evt_mevnt_vtab) modified
+        
+        * libgdome/gdome-events.h
+        (gdome_evnt_currentTarget) modified the prototype
+        (gdome_evntl_handleEvent) modified the prototype
+        (gdome_evnt_target) modified the prototype
+        (gdome_mevnt_attrChange) added
+        (GdomePhaseType) added
+        (GdomeAttrChangeType) added
+        * libgdome/gdome-events.c
+        Added Comments
+        
+        * test/apigen/apigen.c
+        Bug Fix
+        
+        * test/apigen/srcutil.c
+        (writeMethod) added implementation for function params
+        (writeCheck) added implementation for GdomeDOMTimeStamp
+        
+        * libgdome/gdomecore/gdome-xml-attribute.c
+        * libgdome/gdomecore/gdome-xml-cdata.c
+        * libgdome/gdomecore/gdome-xml-element.c
+        * libgdome/gdomecore/gdome-xml-nnodem.c
+        * libgdome/gdomecore/gdome-xml-node.c
+        * libgdome/gdomecore/gdome-xml-pi.c
+        * libgdome/gdomecore/gdome-xml-text.c
+        Bug fix using gdome_evt_mevnt_unref
+        
+        * libgdome/gdome.h
+        (struct _GdomeNamedNodeMapVtab) removed
+        (struct _GdomeNodeListVtab) removed
+        (struct _GdomeDOMImplementationVtab) removed
+        (struct _GdomeNodeVtab) removed
+        (struct _GdomeCharacterDataVtab) removed
+        (struct _GdomeTextVtab) removed
+        (struct _GdomeCDATASectionVtab) removed
+        (struct _GdomeCommentVtab) removed
+        (struct _GdomeDocumentVtab) removed
+        (struct _GdomeDocumentFragmentVtab) removed
+        (struct _GdomeDocumentTypeVtab) removed
+        (struct _GdomeAttrVtab) removed
+        (struct _GdomeElementVtab) removed
+        (struct _GdomeEntityVtab) removed
+        (struct _GdomeEntityReferenceVtab) removed
+        (struct _GdomeNotationVtab) removed
+        (struct _GdomeProcessingInstructionVtab) removed
+        
+        * libgdome/gdome.c
+        * test/apigen/core.xml
+        (libxml/hash.h) added in include
+        (gdome-xml-nnodem.h) added in include
+        (gdome-xml-nodel.h) added in include
+        (gdome-xml-domimpl.h) added in include
+        (gdome-xml-node.h) added in include
+        (gdome-xml-cdata.h) added in include
+        (gdome-xml-text.h) added in include
+        (gdome-xml-cdatas.h) added in include
+        (gdome-xml-comment.h) added in include
+        (gdome-xml-document.h) added in include
+        (gdome-xml-documentf.h) added in include
+        (gdome-xml-documentt.h) added in include
+        (gdome-xml-attribute.h) added in include
+        (gdome-xml-element.h) added in include
+        (gdome-xml-entity.h) added in include
+        (gdome-xml-entityref.h) added in include
+        (gdome-xml-notation.h) added in include
+        (gdome-xml-pi.h) added in include
+        
+        * libgdome/gdomecore/gdome-xml-nnodem.h
+        (struct _GdomeNamedNodeMapVtab) added
+
+        * libgdome/gdomecore/gdome-xml-nodel.h
+        (struct _GdomeNodeListVtab) added
+        
+        * libgdome/gdomecore/gdome-xml-domimpl.h
+        (struct _GdomeDOMImplementationVtab) added
+        
+        * libgdome/gdomecore/gdome-xml-node.h
+        (struct _GdomeNodeVtab) added
+
+        * libgdome/gdomecore/gdome-xml-cdata.h
+        (struct _GdomeCharacterDataVtab) added
+
+        * libgdome/gdomecore/gdome-xml-cdata.h
+        (struct _GdomeTextVtab) added
+
+        * libgdome/gdomecore/gdome-xml-cdatas.h
+        (struct _GdomeCDATASectionVtab) added
+        
+        * libgdome/gdomecore/gdome-xml-comment.h
+        (struct _GdomeCommentVtab) added
+        
+        * libgdome/gdomecore/gdome-xml-document.h
+        (struct _GdomeDocumentVtab) added
+        
+        * libgdome/gdomecore/gdome-xml-documentf.h
+        (struct _GdomeDocumentFragmentVtab) added
+        
+        * libgdome/gdomecore/gdome-xml-documentt.h
+        (struct _GdomeDocumentTypeVtab) added
+
+        * libgdome/gdomecore/gdome-xml-attribute.h
+        (struct _GdomeAttributeVtab) added
+
+        * libgdome/gdomecore/gdome-xml-element.h
+        (struct _GdomeElementVtab) added
+        
+        * libgdome/gdomecore/gdome-xml-entity.h
+        (struct _GdomeEntityVtab) added
+        
+        * libgdome/gdomecore/gdome-xml-entityref.h
+        (struct _GdomeEntityReferenceVtab) added
+        
+        * libgdome/gdomecore/gdome-xml-notation.h
+        (struct _GdomeNotationVtab) added
+        
+        * libgdome/gdomecore/gdome-xml-pi.h
+        (struct _GdomeProcessingInstructionVtab) added
+        
+        * test/test-node.c
+        * test/test-dtd.c
+        * test/test-document.c
+        All API calls changed from vtabs style to C API style
+        
+        * gtk-doc/Makefile.am
+        Added gdome-events.h to scan
+        
+        * gtk-doc/gdome2-sections.txt
+        * gtk-doc/gdome2-docs.sgml
+        Added Events Documentation
+        
+        CVS TREE
+        Added: test/apigen/events.xml
+         gtk-doc/html/gdome2-events-basic-types-and-enumerations.html
+         gtk-doc/html/gdome2-events.html
+         gtk-doc/html/gdome2-gdomeevent.html
+         gtk-doc/html/gdome2-gdomeeventlistener.html
+         gtk-doc/html/gdome2-gdomemutationevent.html
+        
+2001-05-04  Paolo Casarini <paolo@casarini.org>
+	* libgdome/gdomecore/gdome-xml-domimpl.[ch]
+        (gdome_xml_DOMImplementation_saveFormatFile) changed the prototype
+        
+        * libgdome/gdomecore/gdome-xml-document.[ch]
+        (gdome_xml_doc_createEvent) added
+        
+        * libgdome/gdome.[ch]
+        (gdome_DOMImplementation_saveFormatFile) changed the prototype
+        (gdome_xml_mut_invoke_listener) removed
+        (struct _GdomeNodeVtab) added subTreeDispatchEvent
+        (gdome_n_subTreeDispatchEvent) added
+        (gdome_el_subTreeDispatchEvent) added
+        (gdome_a_subTreeDispatchEvent) added
+        (gdome_cd_subTreeDispatchEvent) added
+        (gdome_t_subTreeDispatchEvent) added
+        (gdome_cds_subTreeDispatchEvent) added
+        (gdome_c_subTreeDispatchEvent) added
+        (gdome_doc_subTreeDispatchEvent) added
+        (gdome_dt_subTreeDispatchEvent) added
+        (gdome_df_subTreeDispatchEvent) added
+        (gdome_ent_subTreeDispatchEvent) added
+        (gdome_er_subTreeDispatchEvent) added
+        (gdome_not_subTreeDispatchEvent) added
+        (gdome_pi_subTreeDispatchEvent) added
+        (struct _GdomeDocumentVtab) added createEvent
+        (gdome_doc_createEvent) added
+        
+        * test/apigen/core.xml
+        Changed the prototype of the saveFormatFile METHOD in DOMImplmentation
+        Interface.
+        Added createEvent in Document Interface and subTreeDispatchEvent in
+        Node Interface.
+        
+        * configure.in
+        Prepared for 0.6.5 release
+        
+        * libgdome/gdomecore/gdome-xml-node.[ch]
+        (gdome_xml_n_invoke_listener) removed
+        (gdome_xml_mut_invoke_listener_recursive) removed
+        (add_timestamp) removed
+        (gdome_xml_n_invoke_listener_prop) removed
+        (gdome_xml_mut_invoke_listener_recursive) removed
+        (gdome_xml_n_subTreeDispatchEvent) commented
+        
+        * gtk-doc
+        Documentation on Core module updated
+        
+2001-05-03  Paolo Casarini <paolo@casarini.org>
+	* libgdome/gdomecore/gdome-xml-pi.c
+        (gdome_xml_pi_set_data) mopdified to dispatch of DOMSubTreeModified and
+                                the check for GDOME_NO_MODIFICATION_ALLOWED_ERR
+        (gdome_xml_pi_query_interface) added and implemented
+        
+        * libgdome/gdomecore/gdome-xml-node.c
+        (gdome_xml_n_set_nodeValue) modified to forward the call to more
+	                            specific API
+        (gdome_xml_n_appendChild) modifed to dispatch DOMNodeInserted,
+                                  DOMInsertedIntoDocument and DOMSubTreeModified
+        (gdome_xml_n_insertBeforeChild) modifed to dispatch DOMNodeInserted,
+                                        DOMInsertedIntoDocument, DOMSubTreeModified,
+                                        DOMNodeRemovedFromDocument and DOMNodeRemoved
+        (gdome_xml_n_removeChild) modifed to dispatch DOMSubTreeModified,
+                                  DOMNodeRemovedFromDocument and DOMNodeRemoved
+        (gdome_xml_n_query_interface) modified and commented
+        
+        
+        * libgdome/gdomecore/gdome-xml-cdata.[ch]
+        (gdome_xml_n_set_data) modified to dispatch of DOMSubTreeModified and
+                               DOMCharacterDataModified
+        (gdome_xml_cd_appendData) modified to dispatch of DOMSubTreeModified
+                                  and DOMCharacterDataModified
+        (gdome_xml_cd_deleteData) modified to dispatch of DOMSubTreeModified
+                                  and DOMCharacterDataModified
+        (gdome_xml_cd_insertData) modified to dispatch of DOMSubTreeModified
+                                  and DOMCharacterDataModified
+        (gdome_xml_cd_replaceData) modified to dispatch of DOMSubTreeModified
+                                   and DOMCharacterDataModified
+        (gdome_xml_cd_query_interface) implemented
+        
+	
+        * libgdome/gdomecore/gdome-xml-attribute.[ch]
+        (gdome_xml_a_set_value) modified to dispatch of DOMAttrModified
+	                        and DOMSubTreeModified
+        (gdome_xml_a_query_interface) bug fix
+        (gdome_xml_a_ownerElement) bug fix
+        (gdome_xml_a_query_interface) modified and commented
+        
+        * libgdome/gdomecore/gdome-xml-nnodem.c
+        (gdome_xml_nnm_removeNamedItem) modifed to dispatch DOMAttrModified
+	                                and DOMSubTreeModified
+        (gdome_xml_nnm_removeNamedItemNS) modifed to dispatch DOMAttrModified
+	                                  and DOMSubTreeModified
+        (gdome_xml_nnm_setNamedItem) modifed to dispatch DOMAttrModified
+	                             and DOMSubTreeModified
+        (gdome_xml_nnm_setNamedItemNS) modifed to dispatch DOMAttrModified
+	                               and DOMSubTreeModified
+        
+        * libgdome/gdomecore/gdome-xml-element.c
+        (gdome_xml_el_setAttribure) modifed to dispatch DOMAttrModified
+                                    and DOMSubTreeModified
+        (gdome_xml_el_setAttribureNS) modifed to dispatch DOMAttrModified
+                                      and DOMSubTreeModified
+        (gdome_xml_el_removeAttribute) modified tests on params
+        (gdome_xml_el_removeAttributeNS) modified tests on params
+        (gdome_xml_el_setAttributeNode) modified tests on params
+        (gdome_xml_el_setAttributeNodeNS) modified tests on params
+        (gdome_xml_el_removeAttributeNode) modified tests on params
+        (gdome_xml_el_query_interface) added and implemented
+        
+        * libgdome/gdomecore/gdome-xml-text.c
+        (gdome_xml_t_splitText) modifed to dispatch DOMNodeInserted
+                                and DOMSubTreeModified
+        (gdome_xml_t_query_interface) added and implemented
+        
+        * libgdome/gdomecore/gdome-xml-cdatas.[ch]
+        (gdome_xml_cds_query_interface) added and implemented
+
+        * libgdome/gdomecore/gdome-xml-comment.[ch]
+        (gdome_xml_c_query_interface) added and implemented
+        
+        * libgdome/gdomecore/gdome-xml-document.[ch]
+        (gdome_xml_doc_query_interface) added and implemented
+        
+        * libgdome/gdomecore/gdome-xml-documentf.[ch]
+        (gdome_xml_df_query_interface) added and implemented
+
+        * libgdome/gdomecore/gdome-xml-documentt.[ch]
+        (gdome_xml_dt_query_interface) added and implemented
+
+        * libgdome/gdomecore/gdome-xml-domimpl.[ch]
+        (gdome_xml_DOMImplementation_query_interface) implemented
+
+        * libgdome/gdomecore/gdome-xml-entity.[ch]
+        (gdome_xml_ent_query_interface) added and implemented
+
+        * libgdome/gdomecore/gdome-xml-entityref.[ch]
+        (gdome_xml_er_query_interface) added and implemented
+
+        * libgdome/gdomecore/gdome-xml-notation.[ch]
+        (gdome_xml_not_query_interface) added and implemented
+
+        * lingdome/gdomecore/gdome-xml-util.h
+        (GDOME_XML_IS_C) implemented
+        (GDOME_XML_IS_CDS) implemented
+        (GDOME_XML_IS_DF) implemented
+        (GDOME_XML_IS_ER) implemented
+        
+        * libgdome/gdome.h
+        (GdomeEventTarget) added
+        (GdomeDocumentEvent) added
+        
+2001-04-29  Paolo Casarini <paolo@casarini.org>
+	* test/test-nodelist.c
+        Bug fix
+        
+        * libgdome/gdomecore/gdome-xml-node.c
+        (gdome_xml_n_addEventListener) modified
+        (gdome_xml_n_removeListener) implemented
+        (gdome_xml_n_dispatchEvent) implemented
+        (gdome_xml_n_subTreeDispatchEvent) added - no standard
+        (gdome_xml_n_appendChild) modified event's implementation
+        
+        * libgdome/gdomecore/gdome-evt-propagation.c
+        (gdome_evt_invokeListeners) modified to handle removal
+        (gdome_evt_fireEvent) modified
+        
+        * libgdome/events/gdome-evt-mevnt.c
+        (gdome_evt_mevnt_initMutationEvent) modified
+        
+        * libgdome/gdome-events.h
+        (GdomeEventException) added
+        (GdomeEventExceptionCode) added
+        
+        * libgdome/events/gdome-evt-event.c
+        (gdome_evt_evnt_preventDefault) bug fix.
+        
+2001-04-27  Paolo Casarini <paolo@casarini.org>
+        * libgdome/events/Makefile.am
+        Modified to follow CVS TREE changes
+        
+        * libgdome/gdome-events.[ch]
+        (struct _GdomeEventListenerVtab) moved in libgdome/events/gdome-evt-eventl.h
+        (struct _GdomeEventVtab) moved in libgdome/events/gdome-evt-event.h
+        (struct _GdomeMutationEventVtab) moved in libgdome/events/gdome-evt-mevent.h
+        Modified to follow events file changes
+        
+        * libgdome/events/gdome-evt-eventl.[ch]
+        (struct _GdomeEventListenerVtab) added
+        (struct _Gdome_xml_EventListenerPriv) removed
+        (struct _Gdome_xml_EventListener) added struct _Gdome_xml_EventListenerPriv fields
+        Implementation of the EventListener Interface
+        
+        * libgdome/events/gdome-evt-event.[ch]
+        (struct _GdomeEventVtab) added
+        (struct _Gdome_xml_EventPriv) removed
+        (struct _Gdome_xml_Event) added struct _Gdome_xml_EventPriv fields
+        Implementation of the Event Interface
+
+        * libgdome/events/gdome-evt-mevent.[ch]
+        (struct _GdomeMutationEventVtab) added
+        (struct _Gdome_xml_MutationEventPriv) removed
+        (struct _Gdome_xml_MutationEvent) added struct _Gdome_xml_MutationEventPriv fields
+        Implementation of the MutationEvent Interface
+
+        * libgdome/gdomecore/gdome-xml-comment.h
+        (#include "gdome-xml-eventl.h") removed, useless
+        
+        * libgdome/gdomecore/gdome-xml-node.c
+        * libgdome/gdomecore/gdome-xml-util.[ch]
+        * libgdome/Makefile.am
+        * libgdome/gdome-events.c
+        Modified to follow events file changes
+        
+        * libgdome/gdomecore/gdome-xml-node.c
+        (gdome_n_cloneNode) modified comment and implementation
+
+        * libgdome/gdomecore/gdome-xml-document.c
+        (gdome_doc_importNode) modified comment and implementation
+        (gdome_doc_createEvent) added
+        
+        * libgdome/gdomecore/gdome-xml-pi.c
+        (gdome_xml_pi_set_data) bug fix and added Events
+        
+        * libgdome/gdomecore/gdome-xml-domimpl.[ch]
+        (gdome_xml_DOMImplementation_saveFormatFile) added
+
+        CVS TREE
+        Added:
+        libgdome/events/gdome-evt-propagation.[ch]
+        Moved:
+        libgdome/events/gdome-xml-event.c to libgdome/events/gdome-evt-event.c
+        libgdome/events/gdome-xml-event.h to libgdome/events/gdome-evt-event.h
+        libgdome/events/gdome-xml-eventl.c to libgdome/events/gdome-evt-eventl.c
+        libgdome/events/gdome-xml-eventl.h to libgdome/events/gdome-evt-eventl.h
+        libgdome/events/gdome-xml-mevent.c to libgdome/events/gdome-evt-mevent.c
+        libgdome/events/gdome-xml-mevent.h to libgdome/events/gdome-evt-mevent.h
+        
+2001-04-25  Paolo Casarini <paolo@casarini.org>
+	* libgdome/gdomecore/gdome-xml-document.c
+        (gdome_xml_doc_importNode) bug fix
+        
+        * libgdome/gdomecore/gdome-xml-node.c
+        (gdome_xml_n_mkref) bug fix in the init of the Gdome_xml_Node structure
+        (gdome_xml_vtabs) bug fix for entity reference nodes
+        
+        * libgdome/gdomecore/gdome-xml-documentt.c
+        (gdome_xml_dt_mkref) bug fix in the init of the Gdome_xml_DocumentType structure
+        
+        * Makefile.am
+        (SUBDIRS) Added gtk-doc
+        
+        * gtk-doc/Makefile.am
+        (EXTRA_DIST) added
+        
+        * test/test-cdata.c
+        All API calls changed from vtabs style to C API style
+        
+        * configure.in
+        Prepared for 0.6.4
+        
+        CVS TREE
+        Added:
+        gtk-doc/html
+        gtk-doc/html/book1.html
+        gtk-doc/html/gdome2-basic-types-and-enumerations.html
+	gtk-doc/html/gdome2-core.html
+	gtk-doc/html/gdome2-gdomeattr.html
+	gtk-doc/html/gdome2-gdomecdatasection.html
+	gtk-doc/html/gdome2-gdomecharacterdata.html
+	gtk-doc/html/gdome2-gdomecomment.html
+	gtk-doc/html/gdome2-gdomedocument.html
+	gtk-doc/html/gdome2-gdomedocumentfragment.html
+	gtk-doc/html/gdome2-gdomedocumenttype.html
+	gtk-doc/html/gdome2-gdomedomimplementation.html
+	gtk-doc/html/gdome2-gdomeelement.html
+	gtk-doc/html/gdome2-gdomeentity.html
+	gtk-doc/html/gdome2-gdomeentityreference.html
+	gtk-doc/html/gdome2-gdomenamednodemap.html
+	gtk-doc/html/gdome2-gdomenode.html
+	gtk-doc/html/gdome2-gdomenodelist.html
+	gtk-doc/html/gdome2-gdomenotation.html
+	gtk-doc/html/gdome2-gdomeprocessinginstruction.html
+	gtk-doc/html/gdome2-gdometext.html
+	gtk-doc/html/index.sgml
+        
+2001-04-24  Paolo Casarini <paolo@casarini.org>
+	* libgdome/gdomecore/gdome-xml-document.c
+        (gdome_xml_doc_importNode) Bug Fix
+        
+        * libgdome/gdomecore/gdome-xml-nodel.c
+        (gdome_xml_nl_mkref) Added gdome_xml_n_ref(root, &exc)
+        (gdome_xml_nk_unref) Added gdome_xml_n_unref(root, &exc)
+        
+        * test/test-nodelist.c
+        Modified to test all attribute, methods and liveness
+        
+        * test/Makefile.am
+        Modified to compile test-nodelist.c and test-namednodemap.c
+        
+        * test/apigen/Makefile.am
+        removed "copying" from EXTRA_DIST
+        
+        * configure.in
+        Prepared for 0.6.3
+        
+        CVS
+        Added: test/test-namednodemap.c test-namednodemap.xml
+        
+2001-04-22  Paolo Casarini <paolo@casarini.org>
+	* libgdome/gdomecore/gdome-xml-attribute.c
+	* libgdome/gdomecore/gdome-xml-cdata.c
+        * libgdome/gdomecore/gdome-xml-document.c
+        * libgdome/gdomecore/gdome-xml-documentt.c
+        * libgdome/gdomecore/gdome-xml-domimpl.c
+        * libgdome/gdomecore/gdome-xml-element.c
+        * libgdome/gdomecore/gdome-xml-entity.c
+        * libgdome/gdomecore/gdome-xml-nnodem.c
+        * libgdome/gdomecore/gdome-xml-node.c
+        * libgdome/gdomecore/gdome-xml-nodel.c
+        * libgdome/gdomecore/gdome-xml-notation.c
+        * libgdome/gdomecore/gdome-xml-pi.c
+        * libgdome/gdomecore/gdome-xml-str.c
+        * libgdome/gdomecore/gdome-xml-text.c
+        * libgdome/gdomecore/gdome-xml-xmldtdutil.c
+        * libgdome/gdomecore/gdome-xml-xmlutil.c
+        Modified some comments to respect gtk-doc rules
+        
+        * libgdome/gdome.h
+        (GdomeExceptionCode) Added GDOME_NULL_POINTER_ERR
+	(gdome_nnm_getNamedItemNS) Added prototype
+	(gdome_nnm_setNamedItemNS) Added prototype
+	(gdome_nnm_removeNamedItemNS) Added prototype
+        -Added the old field private (GdomePrivateList*) to all the interface struts
+        -Some Bugs Fix
+        
+        * libgdome/gdome-private-list.[ch]
+        Some little changes and added comments
+        
+        * libgdome/gdomecore/gdome-xml-domimpl.c
+        (gdome_DOMImplementation_createDocumentType) Bug fix
+        (gdome_DOMImplementation_createDocumentType) Bug fix
+        
+        * configure.in
+        * libgdome/gdome.[ch]
+        * libgdome/gdome-util.h
+        * libgdome/Makefile.am
+        * lingdome/gdomecore/Makefile.am
+        Modified to follow "events" directory creation
+        
+        CVS TREE
+        Added: 
+        libgdome/gdome-events.[ch]
+        libgdome/events
+        libgdome/events/Makefile.am
+        test/apigen
+        test/apigen/Makefile.am
+        test/apigen/apigen.c
+        test/apigen/core.xml
+        test/apigen/srcutil.c
+        test/apigen/srcutil.h
+        test/apigen/util.c
+        test/apigen/util.h
+        gtk-doc
+        gtk-doc/Makefile.am
+        gtk-doc/gdome2-docs.sgml
+        gtk-doc/gdome-sections.txt
+        
+        Moved in libgdome/events:
+        libgdome/gdomecore/gdome-xml-event.[ch]
+        libgdome/gdomecore/gdome-xml-mevent.[ch]
+        libgdome/gdomecore/gdome-xml-eventl.[ch]
+        
+2001-04-12  Paolo Casarini <paolo@casarini.org>
+	* test/Makefile.am
+        * test/examplea.c
+        * test/exampleb.c
+        * test/examplec.c
+        * test/test-document.c
+        * test/test-dtd.c
+        * test/test-element.c
+        * test/test-node.c
+        Modified work fine with distcheck
+        
+        * libgdome/gdomecore/gdome-xml-element.c
+        (gdome_xml_el_setAttribute) Memory Bug Fix (thanx to Laurent Lemaitre)
+        
+        * configure.in
+        (GDOME_INCLUDEDIR) bug fix
+        
+        * libgdome/gdomecore/gdome-xml-domimpl.c
+        Modified some comments
+        
+2001-04-12  Paolo Casarini <paolo@casarini.org>
+	* libgdome/gdomecore/gdome-xml-attribute.c
+	* libgdome/gdomecore/gdome-xml-document.c
+	* libgdome/gdomecore/gdome-xml-documentf.c
+	* libgdome/gdomecore/gdome-xml-documentt.c
+	* libgdome/gdomecore/gdome-xml-element.c
+	* libgdome/gdomecore/gdome-xml-event.c
+	* libgdome/gdomecore/gome-xml-eventl.c
+	* libgdome/gdomecore/gome-xml-mevent.c
+	* libgdome/gdomecore/gdome-xml-node.c
+	* libgdome/gdomecore/gdome-xml-nodel.c
+	* libgdome/gdomecore/gdome-xml-str.c
+	* libgdome/gdomecore/gdome-xml-util.c
+        deleted #include <gtk/gtk.h>
+        
+        * configure.in
+        Deleted check for GTK libraries
+        (GDOME_INCLUDEDIR) Added GLIB,LIBXML and -I${includedir}/libgdome
+        (GDOME_LIBS) Added GLIB and LIBXML
+        Prepared for release 0.6.2
+        
+        * gnome-config.in
+        (the_libs) Added GLIB
+        (the_flags) Added GLIB and -I$includedir/libgdome
+        
+        * libgdome/Makefile.am
+        * test/Makefile.am
+        * libgdome/gdomecore/Makefile.am
+        * libgdome/gdomehtml/Makefile.am
+        Now include GLIB and not GTK
+        
+        * libgdome/gdomecore/gdome-xml-document.c
+        (gdome_xml_doc_importNode) bug fix (thanx to rob)
+        
+        * test/test-element.c
+        (test_el) bug fix
+        
+        * test/Makefile.am
+        Now support the test suites
+        
+        * libgdome/gdomecore/gdome-xml-domimpl.[ch]
+        (gdome_xml_DOMImplementation_parseFile) renamed field filename in uri
+        (gdome_xml_DOMImplementation_validateFile) renamed field filename in uri
+        
+	* libgdome/gdomecore/gdome-xml-str.[ch]
+        (gdome_xml_str_dup) changed type for field str from gchar to const gchar
+        
+        * libgdome/gdome.[ch]
+        (gdome_DOMImplementation_parseFile) renamed field filename in uri
+        (gdome_DOMImplementation_validateFile) renamed field filename in uri
+        (gdome_str_dup) changed type for field str from gchar to const gchar
+        
+        CVS TREE
+        Added test/examplec.c test/examplec.xml
+        
+2001-03-26  Paolo Casarini <paolo@casarini.org>
+        * configure.in: prepared for release 0.6.1
+        
+        * test/Makefile.am
+        Added EXTRA_DIST for xml and dtd data files
+        Removed test-gdome.c, test-events, test-nodelist
+        
+        * test/test-document.c
+        Added test for the existence of input files
+        
+        * test/test-dtd.c
+        * test/test-element.c
+        * test/test-node.c
+        Added test for the existence of input file
+        
+2001-03-25  Paolo Casarini <paolo@casarini.org>
+	* libgdome/gdome.h
+        (GdomeNodeType) added
+        
+        * configure.in: require libxml2-2.3.5
+        
+	CVS TREE
+        Added: test/examplea.c, test/exampleb.c test/exampleb.xml
+               test/test-element.c test/test-element.xml
+        Deleted: STATE
+	
+2001-03-25  Paolo Casarini <paolo@casarini.org>
+	* libgdome/gdome.[ch]
+        (gdome_str_mkref) added
+        (gdome_str_mkref_own) added
+        (gdome_str_mkref_dup) added
+        (gdome_str_ref) added
+        (gdome_str_equal) added
+        
+        * libgdome/gdomecore/gdome-xml-str.[ch]
+        (gdome_xml_str_equal) modified
+        
+        * Makefile.am: 0.6.0
+        * configure.in:0.6.0
+        
+        * Makefile.am, README, config.h.in, configure.in, gdome-config.in,
+          gdomeConf.sh.in, libgdome/Makefile.am, ligdome/gdomecore/Makefile.am
+          Prepared for release 0.6.0
+        
+        * gdome-xml-documentt.c, gdome-xml-node.c
+          bug fix
+        
+        * Test Programs: bug fix 
+        
+2001-03-23  Paolo Casarini <paolo@casarini.org>
+	* libgdome/gdomecore/gdome-xml-node.[ch]
+        (gdome_xml_n_normalize) modified
+        (gdome_xml_n_supports) renamed in gdome_xml_n_supports
+        (gdome_xml_n_isSupported) implemented
+        (gdome_xml_n_vtab) updated
+        (gdome_xml_n_set_prefix) modified to manage GDOME_NAMESPACE_ERR
+        
+        * libgdome/gdomecore/gdome-xml-attribute.c
+        (gdome_xml_a_vtab) updated
+        
+        * libgdome/gdomecore/gdome-xml-documentf.c
+        (gdome_xml_df_vtab) updated
+        
+        * libgdome/gdomecore/gdome-xml-cdata.c
+        (gdome_xml_cd_vtab) updated
+        
+        * libgdome/gdomecore/gdome-xml-cdatas.c
+        (gdome_xml_cds_vtab) updated
+        
+        * libgdome/gdomecore/gdome-xml-comment.c
+        (gdome_xml_c_vtab) updated
+        
+        * libgdome/gdomecore/gdome-xml-document.c
+        (gdome_xml_doc_vtab) updated
+        
+        * libgdome/gdomecore/gdome-xml-documentt.c
+        (gdome_xml_dt_vtab) updated
+        
+        * libgdome/gdomecore/gdome-xml-element.c
+        (gdome_xml_el_vtab) updated
+        
+        * libgdome/gdomecore/gdome-xml-entity.c
+        (gdome_xml_ent_vtab) updated
+        
+        * libgdome/gdomecore/gdome-xml-entityref.c
+        (gdome_xml_er_vtab) updated
+        
+        * libgdome/gdomecore/gdome-xml-notation.c
+        (gdome_xml_not_vtab) updated
+        
+        * libgdome/gdomecore/gdome-xml-pi.c
+        (gdome_xml_pi_vtab) updated
+        
+        * libgdome/gdomecore/gdome-xml-text.c
+        (gdome_xml_t_vtab) updated
+        
+        * libgdome/gdome.[ch]
+        "supports" method renamed in "isSupported" in all intefaces
+        Added to all gdome2 API check for "self != NULL"
+        
+        * libgdome/gdomecore/gdome-xml-domimpl.c
+        (gdome_xml_DOMImplementation_hasFeature) implemented
+        (gdome_xml_DOMImplementation_createDocument) modified to manage GDOME_NAMESPACE_ERR
+        (gdome_xml_DOMImplementation_createDocumentType) modified to manage GDOME_NAMESPACE_ERR
+        
+        * libgdome/gdomecore/gdome-xml-document.[ch]
+        (gdome_xml_doc_vtab) updated
+        (gdome_xml_doc_importNode) added
+        (gdome_xml_doc_createAttributeNS) modified to manage GDOME_NAMESPACE_ERR
+        (gdome_xml_doc_createElementNS) modified to manage GDOME_NAMESPACE_ERR
+        
+        * libgdome/gdomecore/gdome-xml-element.c
+        (gdome_setAttributeNS) modified to manage GDOME_NAMESPACE_ERR
+        
+2001-03-22  Paolo Casarini <paolo@casarini.org>
+	* libgdome/gdome.h
+        
+        * libgdome/gdomecore/gdome-xml-attribute.h
+        (GdomeAccessType accessType) added to struct Gdome_xml_Attribute
+        
+        * libgdome/gdomecore/gdome-xml-cdata.h
+        (GdomeAccessType accessType) added to struct Gdome_xml_CharacterData
+        
+        * libgdome/gdomecore/gdome-xml-cdatas.h
+        (GdomeAccessType accessType) added to struct Gdome_xml_CDATASection
+        
+        * libgdome/gdomecore/gdome-xml-comment.h
+        (GdomeAccessType accessType) added to struct Gdome_xml_Comment
+
+        * libgdome/gdomecore/gdome-xml-document.h
+        (GdomeAccessType accessType) added to struct Gdome_xml_Document
+
+        * libgdome/gdomecore/gdome-xml-documentf.h
+        (GdomeAccessType accessType) added to struct Gdome_xml_DocumentFragment
+
+        * libgdome/gdomecore/gdome-xml-documentt.h
+        (GdomeAccessType accessType) added to struct Gdome_xml_DocumentType
+
+        * libgdome/gdomecore/gdome-xml-element.h
+        (GdomeAccessType accessType) added to struct Gdome_xml_Element
+
+        * libgdome/gdomecore/gdome-xml-entity.h
+        (GdomeAccessType accessType) added to struct Gdome_xml_Entity
+
+        * libgdome/gdomecore/gdome-xml-entityref.h
+        (GdomeAccessType accessType) added to struct Gdome_xml_EntityReference
+
+        * libgdome/gdomecore/gdome-xml-node.h
+        (GdomeAccessType accessType) added to struct Gdome_xml_Node
+
+        * libgdome/gdomecore/gdome-xml-notation.h
+        (GdomeAccessType accessType) added to struct Gdome_xml_Notation
+
+        * libgdome/gdomecore/gdome-xml-pi.h
+        (GdomeAccessType accessType) added to struct Gdome_xml_ProcessingInstruction
+
+        * libgdome/gdomecore/gdome-xml-text.h
+        (GdomeAccessType accessType) added to struct Gdome_xml_Text
+        
+        * libgdome/gdomecore/gdome-xml-nodel.[ch]
+        (GdomeAccessType accessType) added to struct Gdome_xml_Nodelist
+        (gdome_xml_nl_mkref) modified to manage readonly
+
+        * libgdome/gdomecore/gdome-xml-nnodem.[ch]
+        (gboolean isReadonly) deleted
+        (GdomeAccessType accessType) added to struct Gdome_xml_NamedNodeMap
+        (gdome_xml_nnm_mkref) modified to manage readonly
+        (gdome_xml_nnm_removeNamedItem) modified to manage NO_MODIFICATION_ALLOW_ERR
+        (gdome_xml_nnm_removeNamedItemNS) modified to manage NO_MODIFICATION_ALLOW_ERR
+        (gdome_xml_nnm_setNamedItem) modified to manage NO_MODIFICATION_ALLOW_ERR
+        (gdome_xml_nnm_setNamedItemNS) modified to manage NO_MODIFICATION_ALLOW_ERR
+        
+        * libgdome/gdomecore/gdome-xml-util.h
+        (GDOME_ISREADONLY) added
+        
+        * libgdome/gdomecore/gdome-xml-node.c
+        (gdome_xml_n_mkref) modified to manage readonly
+        (gdome_xml_n_ref) modified
+        (gdome_xml_n_unref) modified
+        (gdome_xml_n_childNodes) modified to manage readonly
+        (gdome_xml_n_setNodeValue) modified to manage NO_MODIFICATION_ALLOW_ERR
+        (gdome_xml_n_setPrefix) modified to manage NO_MODIFICATION_ALLOW_ERR
+        (gdome_xml_n_appendChild) modified to manage NO_MODIFICATION_ALLOW_ERR
+        (gdome_xml_n_insertBefore) modified to manage NO_MODIFICATION_ALLOW_ERR
+        (gdome_xml_n_removeChild) modified to manage NO_MODIFICATION_ALLOW_ERR
+        (gdome_xml_n_replaceChild) modified to manage NO_MODIFICATION_ALLOW_ERR
+        
+        * libgdome/gdomecore/gdome-xml-attr.c
+        (gdome_xml_a_set_value) modified to manage NO_MODIFICATION_ALLOW_ERR
+        
+        * libgdome/gdomecore/gdome-xml-cdata.c
+        (gdome_xml_cd_set_data) modified to manage NO_MODIFICATION_ALLOW_ERR
+        (gdome_xml_cd_appendData) modified to manage NO_MODIFICATION_ALLOW_ERR
+        (gdome_xml_cd_deleteData) modified to manage NO_MODIFICATION_ALLOW_ERR
+        (gdome_xml_cd_insertData) modified to manage NO_MODIFICATION_ALLOW_ERR
+        (gdome_xml_cd_replaceDat) modified to manage NO_MODIFICATION_ALLOW_ERR
+        
+        * libgdome/gdomecore/gdome-xml-document.c
+        (gdome_xml_doc_getElementById) modified to manage readonly
+        (gdome_xml_doc_getElementsByTagName) modified to manage readonly
+        (gdome_xml_doc_getElementsByTagNameNS) modified to manage readonly
+        
+        * libgdome/gdomecore/gdome-xml-domimpl.c
+        (gdome_xml_DOMImplementation_parseFile) modified
+        (gdome_xml_DOMImplementation_validateFile) modified
+        
+        * libgdome/gdomecore/gdome-xml-element.c
+        (gdome_xml_el_attributes) modified to manage readonly
+        (gdome_xml_el_getAttribute) bug fix
+        (gdome_xml_el_setAttribute) modified to manage NO_MODIFICATION_ALLOW_ERR
+        (gdome_xml_el_removeAttribute) modified to manage NO_MODIFICATION_ALLOW_ERR
+        (gdome_xml_el_setAttributeNode) modified to manage NO_MODIFICATION_ALLOW_ERR
+        (gdome_xml_el_removeAttributeNode) modified to manage NO_MODIFICATION_ALLOW_ERR
+        (gdome_xml_el_getAttributeNS) bug fix
+        (gdome_xml_el_setAttributeNS) modified to manage NO_MODIFICATION_ALLOW_ERR
+        (gdome_xml_el_removeAttributeNS) modified to manage NO_MODIFICATION_ALLOW_ERR
+        (gdome_xml_el_setAttributeNodeNS) modified to manage NO_MODIFICATION_ALLOW_ERR
+        
+        * libgdome/gdomecore/gdome-xml-text.c
+        (splitText) modified to manage NO_MODIFICATION_ALLOW_ERR
+        
+        * libgdome/gdomecore/gdome-xml-documentt.c
+        (gdome_xml_dt_mkref) modified manage readonly
+        (gdome_xml_dt_entities) modified to manage readonly
+        (gdome_xml_dt_notations) modified to manage readonly
+        
+2001-03-18  Paolo Casarini <paolo@casarini.org>
+	* libgdome/gdome.h
+        (GdomeExceptionCode) added
+        (GdomeAccessType) added
+        
+        * libgdome/gdomecore/gdome-xml-node.[ch]
+        (gdome_xml_n_mkref) modified for XML_ENTITY_DECL
+        (gdome_xml_n_nodeName) modified for XML_ENTITY_DECL
+        (gdome_xml_vtabs[]) modified for XML_ENTITY_DECL
+        (gdome_xml_n_nodeType) modified for XML_ENTITY_DECL
+        (gdome_xml_n_nodeValue) modified for XML_ENTITY_DECL
+        deleted doc field in _Gdome_xml_Node struct
+        (gdome_xml_n_mkref) modified for XML_DTD_NODE
+        
+        * libgdome/gdomecore/gdome-xml-util.h
+        (GDOME_XML_IS_N) XML_ENTITY_DECL added
+        (GDOME_XML_IS_ENT) implemented
+        (GDOME_XML_IS_NOT) added
+        
+        * libgdome/gdomecore/gdome-xml-entity.[ch]
+        (struct _Gdome_xml_Entity) changed type for n (xmlNode* to xmlEntity*)
+        (gdome_xml_ent_publicId) implemented
+        (gdome_xml_ent_systemId) implemented
+        (gdome_xml_ent_notationName) implemented
+
+        * libgdome/gdomecore/gdome-xml-entityref.[ch]
+        Implementation of EntityReference Interface
+        
+        * libgdome/gdomecore/gdome-xml-element.[ch]
+        deleted doc field in _Gdome_xml_Node struct
+        (gdome_xml_el_attributes) updated
+        (gdome_xml_el_removeAttribute) updated
+        (gdome_xml_el_getAttributeNode) updated
+        (gdome_xml_el_setAttributeNode) updated
+        (gdome_xml_el_removeAttributeNode) updated
+        (gdome_xml_el_removeAttributeNodeNS) updated
+        (gdome_xml_el_getAttributeNodeNS) updated
+        (gdome_xml_el_setAttributeNodeNS) updated
+        
+        * libgdome/gdomecore/gdome-xml-xmldtdutil.[ch]
+        (gdome_xmlNotation) implemented
+        (gdome_xmlNotattionsHashCreate) implemented
+        (gdome_xmlNotattionsHashFree) implemented
+        (gdome_xmlEntitiesHashCreate) implemented
+        (gdome_xmlEntitiesHashFree) implemented
+        
+        * libgdome/gdomecore/gdome-xml-documentt.[ch]
+        Added to _Gdome_xml_DocumentType struct:
+	 -Gdome_xml_ListenerList *ll
+         -xmlHashTable *entities (to hold xmlEntity structs)
+         -xmlHashTable *notations (to hold gdome_xmlNotation structs)
+        (gdome_xml_dt_mkref) added
+        (gdome_xml_dt_unref) added
+        (gdome_xml_dt_notations) updated
+        (gdome_xml_dt_entities) updated
+        
+        * libgdome/gdomecore/gdome-xml-document.c
+        (gdome_xml_doc_docType) updated
+        
+        * test/test-dtd.[c|xml|dtd]
+        Added tests for Notations and Entities.
+        
+        CVS TREE
+        Added: libgdome/gdomecore/gdome-xml-entityref.[ch]
+               libgdome/gdomecore/gdome-xml-xmldtdutil.[ch]
+        
+2001-03-14  Paolo Casarini <paolo@casarini.org>
+	* libgdome/gdomecore/gdome-xml-domimpl.[ch]
+        (gdome_xml_DOMImplementation_createDocumentType) modified
+        (gdome_xml_DOMImplementation_validateFile) added
+        
+        * libgdome/gdomecore/gdome-xml-documentt.[ch]
+        Renamed field "dt" in "n" in struct _Gdome_xml_DocumentType
+        (gdome_xml_dt_name) implemented
+        (gdome_xml_dt_entities) implemented
+        (gdome_xml_dt_notations) implemented
+        (gdome_xml_dt_publicId) implemented
+        (gdome_xml_dt_systemId) implemented
+        
+        * libgdome/gdomecore/gdome-xml-util.h
+        (GDOME_XML_IS_DT) added
+        (GDOME_XML_IS_CD) implemented
+        (GDOME_XML_IS_T) implemented
+        
+        * libgdome/gdome.[ch]
+        (gdome_xml_DOMImplementation_validateFile) added
+        
+        * libgdome/gdomecore/gdome-xml-document.c
+        (gdome_xml_doc_doctype) implemented
+        (gdome_xml_doc_createCDATASection) bug fix
+        
+        * libgdome/gdomecore/gdome-xml-cdatas.[ch]
+        Implementation of CDATASection Interface
+        
+        * libgdome/gdomecore/gdome-xml-node.c
+        (gdome_xml_vtabs[]) added vtabs for CDATA_SECTION_NODE and DTD_NODE
+        (gdome_xml_n_hasAttributes) bug fix
+        (gdome_xml_n_nodeName) modified for XML_DTD_NODE, XML_PI_NODE
+        (gdome_xml_n_nodeType) modified for XML_DTD_NODE
+        (gdome_xml_n_nodeValue) modified for XML_DTD_NODE, XML_PI_NODE
+        (gdome_xml_n_set_nodeValue) modified for XML_DTD_NODE, XML_PI_NODE
+        
+        * libgdome/gdomecore/gdome-xml-cdata.c
+        (gdome_xml_cd_replaceData) bug fix
+        
+        * libgdome/gdomecore/gdome-xml-pi.[ch]
+        (gdome_xml_pi_data) implemented
+        (gdome_xml_pi_target) implemented
+        (gdome_xml_pi_set_data) implemented
+        
+        * test/test-document.
+        (test_document1) added test on CDATASection creation
+        
+        CVS TREE
+        Added: libgdome/gdomecore/gdome-xml-cdatas.[ch]
+               test/test-dtd.dtd test/test-dtd.xml test-dtd.c
+        
+2001-03-11  Paolo Casarini <paolo@casarini.org>
+	* libgdome/gdomecore/gdome-xml-cdata.c
+        (gdome_utf16Length) added (helper function)
+        (gdome_utf16Offset) added (helper function)
+        (gdome_xml_cd_data) modified
+        (gdome_xml_cd_set_data) modified
+        (gdome_xml_cd_length) modified
+        (gdome_xml_cd_appendData) modified
+        (gdome_xml_cd_deleteData) modified
+        (gdome_xml_cd_insertData) modified
+        (gdome_xml_cd_replaceData) modified
+        (gdome_xml_cd_substringData) modified
+        
+        * libgdome/gdomecore/gdome-xml-text.c
+        (gdome_xml_t_splitText) modified
+        
+        * libgdome/gdomecore/gdome-xml-xmlutil.[ch]
+        (gdome_xmlSetPrev) added
+        (gdome_xmlSetNext) added
+        (gdome_xmlSetLastChild) added
+        (gdome_xmlGetPrevChild) renamed in gdome_xmlGetPrev
+        (gdome_xmlGetNextChild) renamed in gdome_xmlGetNext
+        
+        * libgdome/gdomecore/gdome-xml-node.c
+        Updated calls to gdome_xmlGet[Prev|Next]Child
+        bug fix
+        
+        CVS TREE
+        Added: test-cdata.c (test nodes bases on CharacterData)
+        
+2001-03-08  Paolo Casarini <paolo@casarini.org>
+	* libgdome/gdomecore/gdome-xml-xmlutil.[ch]
+        (gdome_xmlSetAttrValue) added
+        Like libxml xmlSetProp
+        (gdome_xmlAppendChild) modified
+        (gdome_xmlInsertBeforeChild) modified
+        Modified to specialize the behavior for DocumentFragment nodes
+        
+        * libgdome/gdomecore/gdome-xml-attribute.c
+        (gdome_xml_a_set_value) modified
+        Now use gdome_xmlSetAttrValue
+        
+        * libgdome/gdomecore/gdome-xml-nnodem.c
+        (gdome_xml_nnodem_mkref) bug fix
+        
+        * libgdome/gdomecore/gdome-xml-node.c
+        (gdome_xml_n_appendChild) bug fix
+        
+        * test/test-document.c
+        (test_document1) bug fix
+        
+        * test/test-node.c
+        Completely changed, now test all attributes and methods
+        
+        * libgdome/gdomecore/gdome-xml-domimpl.[ch]
+        (gdome_xml_DOMImplementation_freeDoc) added
+        
+        * libgdome/gdome.[ch]
+        (gdome_DOMImplementation_freeDoc) added
+        
+        * CVS TREE
+        added: test/test-node.xml used by test-node
+        deleted: libgdome/gdomecore/gdome-xml-element-nnodem.[ch] useless
+        
+2001-03-06  Paolo Casarini <paolo@casarini.org>
+	* libgdome/gdomecore/gdome-xml-domimpl.[ch]
+        (gdome_xml_DOMImplementation_parseFile) implemented
+        (gdome_xml_DOMImplementation_saveFile) implemented
+        (gdome_xml_DOMImplementation_createDocument) implemented
+        
+        * libgdome/gdomecore/gdome-xml-document.[ch]
+        (gdome_xml_doc_createAttributeNS) implemented
+        (gdome_xml_doc_createElementNS) implemented
+        (gdome_xml_doc_getElementsByTagNameNS) implemented
+        (gdome_xml_doc_getElementById) implemented
+        (gdome_xml_doc_getElementsByTagName) modified
+        (gdome_xml_doc_createEntityReference) modified
+        (gdome_xml_doc_createAttribute) modified
+        (gdome_xml_doc_createCDATASection) modified
+        (gdome_xml_doc_createComment) modified
+        (gdome_xml_doc_createDocumentFragment) modified
+        (gdome_xml_doc_createElement) modified
+        (gdome_xml_doc_createProcessingInstruction) modified
+        (gdome_xml_doc_createTextNode) modified
+        
+        * libgdome/gdomecore/gdome-xml-nnodem.c
+        bug fix in nodeIterator struct
+        
+        * libgdome/gdome.[ch]
+        (gdome_DOMImplementation_parseFile) added
+        (gdome_DOMImplementation_saveFile) added
+        (gdome_DOMImplementation_mkref) added
+        
+        * libgdome/gdome-html.c
+        (gdome_HTMLDocument_createAttributeNS) updated
+        
+        * libgdome/gdomecore/gdome-xml-node.c
+        (gdome_xml_n_mkref) bug fix
+        
+        * libgdome/gdomecore/gdome-xml-attribute.c
+        (gdome_xml_a_value) bug fix
+        
+        * test
+        -Modified: Makefile.am
+        -Added files: test-document.c test-document2.xml test-document3.xml
+        Test Document object and its methods, preorder traversal Nodelist and
+        the new bootstrap mode in DOMImplementation. Create also a file named
+        test-document1.xml.
+        
+2001-02-25  Paolo Casarini <paolo@casarini.org>
+        * libgdome/gdomecore/gdome-xml-xmlutil.[ch]
+        (gdome_xmlGetPrevChild) implemented
+        (gdome_xmlGetNextChild) implemented
+	(gdome_xmlGetFirstChild) implemented
+	(gdome_xmlGetLastChild) implemented
+	(gdome_xmlGetNsPrefix) implemented
+	(gdome_xmlGetType) implemented
+	(gdome_xmlRemoveChild) implemented
+	(gdome_xmlAppendChild) implemented
+	(gdome_xmlInsertBeforeChild) implemented
+        (gdome_xmlSetNs) implemented
+        (gdome_xmlGetChildrenItem) implemented
+        (gdome_xmlGetChildrensLength) implemented
+        (gdome_xmlPreoderTraveral) replaced by gdome_xmlGetChildrenItem
+        (gdome_xmlCntTreeNodes) replaced by gdome_xmlGetChildrensLength
+        
+        * libgdome/gdomecore/gdome-xml-node.[ch]
+        "Attributes"
+        (gdome_xml_n_attributes) modified
+        (gdome_xml_n_childNodes) modified
+	(gdome_xml_n_firstChild) updated
+	(gdome_xml_n_lastChild) updated
+        (gdome_xml_n_localName) implemented
+        (gdome_xml_n_namespaceURI) modified
+	(gdome_xml_n_nextSibling) updated
+        (gdome_xml_n_nodeName) modified
+        (gdome_xml_n_nodeType) updated
+        (gdome_xml_n_nodeValue) modified
+        (gdome_xml_n_ownerDocument) modified
+        (gdome_xml_n_parentNode) modified
+        (gdome_xml_n_prefix) updated
+	(gdome_xml_n_previousSibling) updated
+        (gdome_xml_n_set_nodeValue) modified
+        (gdome_xml_n_set_prefix) implemented
+        Methods
+        (gdome_xml_n_appendChild) modified
+        (gdome_xml_n_insertBeforeChild) modified
+        (gdome_xml_n_hasAttributes) implemented
+        (gdome_xml_n_hasChildNodes) modified
+        (gdome_xml_n_cloneNode) modified
+        (gdome_xml_n_removeChild) modified
+        (gdome_xml_n_replaceChild) modified
+        vtab
+        (gdome_xml_n_hasAttributes) added
+        
+        * libgdome/gdomecore/gdome-xml-util.h
+        GDOME_XML_IS_TREE_N added
+        GDOME_XML_IS_A implemented
+        GDOME_XML_IS_EL implemented
+        
+        * libgdome/gdomecore/gdome-xml-element.c
+        (gdome_xml_el_tagName) modified
+        (gdome_xml_el_setAttributeNS) bug fix
+        (gdome_xml_n_hasAttributes) added in vtab
+
+        * libgdome/gdomecore/gdome-xml-attribute.[ch]
+        (gdome_xml_a_nodeName) renamed in gdome_xml_a_name
+        (gdome_xml_a_name) modified
+        (gdome_xml_a_nodeValue) modified and renamed in gdome_xml_a_value
+        (gdome_xml_a_set_nodeValue) modified and renamed in gdome_xml_a_set_value
+        (gdome_xml_a_ownerElement) implemented
+        vtab
+        (gdome_xml_n_namespaceURI) added
+        (gdome_xml_n_prefix) added
+        (gdome_xml_n_set_prefix) added
+        (gdome_xml_n_localName) added
+        (gdome_xml_n_hasAttributes) added
+        
+        * libgdome/gdomecore/gdome-xml-cdata.c
+        * libgdome/gdomecore/gdome-xml-comment.c
+        * libgdome/gdomecore/gdome-xml-document.c
+        * libgdome/gdomecore/gdome-xml-documentf.c
+        * libgdome/gdomecore/gdome-xml-documentt.c
+        * libgdome/gdomecore/gdome-xml-entity.c
+        * libgdome/gdomecore/gdome-xml-notation.c
+        * libgdome/gdomecore/gdome-xml-pi.c
+        * libgdome/gdomecore/gdome-xml-text.c
+        (gdome_xml_n_hasAttributes) added in vtab
+        
+        * libgdome/gdome.h
+        (hasAttributes) added to _GdomeNodeVtab
+        (ownerElement) added to _GdomeAttrVtab
+        Added prototypes: gdome_n_hasAttributes, gdome_pi_hasAttributes,
+        gdome_not_hasAttributes, gdome_er_hasAttributes, gdome_ent_hasAttributes,
+        gdome_dt_hasAttributes, gdome_df_hasAttributes, gdome_doc_hasAttributes,
+        gdome_c_hasAttributes, gdome_cds_hasAttributes, gdome_t_hasAttributes,
+        gdome_el_hasAttributes, gdome_a_hasAttributes, gdome_el_hasAttributes,
+        gdome_a_ownerElement.
+        
+        *libgdome/gdome.c
+        Added implementations: gdome_n_hasAttributes, gdome_a_hasAttributes,
+        gdome_cd_hasAttributes, gdome_t_hasAttributes, gdome_cds_hasAttributes,
+        gdome_c_hasAttributes, gdome_doc_hasAttributes, gdome_df_hasAttributes,
+        gdome_dt_hasAttributes, gdome_el_hasAttributes, gdome_ent_hasAttributes,
+        gdome_er_hasAttributes, gdome_not_hasAttributes, gdome_pi_hasAttributes,
+        gdome_a_ownerElement.        
+        
+2001-02-20  Paolo Casarini <paolo@casarini.org>
+	* libgdome/gdomecore/gdome-xml-str.[ch]
+        (gdome_xml_str_mkref_dup) implemented
+        
+        * libgdome/gdomecore/gdome-xml-xmlutil.[ch]
+        (gdome_xmlPreorderTraversal) implemented
+        (gdome_xmlNamedPreorderTraversal) implemented
+        (gdome_xmlCntTreeNodes) implemented
+        (gdome_xmlNamedCntTreeElemets) implemented
+        
+        * libgdome/gdomecore/gdome-xml-element.c
+        (gdome_xml_el_traversal_helper) deleted (obsolete)
+        (gdome_xml_el_getElementsByTagName) modified to use the new NodeList
+        (gdome_xml_el_getElementsByTagNameNS) implemented
+        
+        * libgdome/gdomecore/gdome-xml-nodel.[ch]
+        (gdome_xml_nl_mkref) rewritten
+        (gdome_xml_nl_unref) modified
+        (gdome_xml_nl_item) rewritten
+        (gdome_xml_nl_length) rewritten
+        (gdome_xml_nl_append) deleted (obsolete)
+        Completely changed
+        
+        * libgdome/gdomecore/gdome-xml-node.c
+        (gdome_xml_n_childNodes) modified to use the new NodeList
+
+        * libgdome/gdomecore/gdome-xml-document.c
+        (gdome_xml_doc_traversal_helper) deleted (obsolete)
+        (gdome_xml_doc_getElementsByTagName) modified to use the new NodeList
+        
+2001-02-18  Paolo Casarini <paolo@casarini.org>
+	* libgdome/gdomecore/gdome-xml-xmlutil.[ch]
+        Added the prefix gdome_ to all functions
+        (gdome_xmlGetAttrList) implemented
+        (gdome_xmlSetAttrList) implemented
+        (gdome_xmlGetOwner) implemented
+        (gdome_xmlSetOwner) implemented
+        (gdome_xmlGetParent) implemented
+        (gdome_xmlSetParent) implemented
+        (gdome_xmlGetNsURI) implemented
+        (gdome_xmlGetNs) implemented
+        (gdome_xmlGetName) implemented
+        (gdome_xmlGetAttr) implemented
+        (gdome_xmlGetNsAttr) implemented
+        (gdome_xmlUnlinkAttr) modified to use the new functions
+        (gdome_xmlUnlinkNsAttr) modified to use the new functions
+        (gdome_xmlLinkAttr) modified to use the new functions and bug fix
+        
+        * libgdome/gdomecore/gdome-xml-nnodem.c
+        (gdome_xml_nnm_removeNamedItem) bug fix
+        (gdome_xml_nnm_removeNamedItemNS) bug fix
+        Most of method modified to use the new functions in module xmlutil
+        
+        * libgdome/gdomecore/gdome-xml-element.c
+        (gdome_xml_el_tagName) modified
+        (gdome_xml_el_attributes) updated
+        (gdome_xml_el_getAttributeNode) updated
+        (gdome_xml_el_getAttributeNodeNS) updated
+        (gdome_xml_el_removeAttributeNode) updated
+        (gdome_xml_el_setAttributeNode) implemented
+        (gdome_xml_el_setAttributeNodeNS) implemented
+        (gdome_xml_el_getAttribute) updated
+        (gdome_xml_el_setAttribute) added comment
+        (gdome_xml_el_removeAttribute) modified
+        (gdome_xml_el_getAttributeNS) updated
+        (gdome_xml_el_setAttributeNS) modified
+        (gdome_xml_el_removeAttributeNS) modified
+        (gdome_xml_hasAttribute) modified
+        (gdome_xml_hasAttributeNS) modified
+        
+        * libgdome/gdomecore/gdome-xml-str.[ch]
+        (gdome_xml_str_equal) implemented (an utility function for tests)
+        (gdome_xml_unref) implemented
+        (gdome_xml_ref) implemented
+        (gdome_xml_mkref) updated
+        (gdome_xml_mkref_xml) implemented
+        (gdome_xml_unref_xml) implemented
+        (gdome_xml_mkref_own) updated
+        (gdome_xml_unref_own) updated
+        Added: -xml function that substitute xmlfree ones
+               -global unref for all kind of GdomeDOMString
+               -refcnt field
+        
+        * libgdome/gdome.h
+        Added the field refcnt to the _GdomeDOMString struct
+        Added GDOME_NAMESPACE_ERR
+        
+        * libgdome/gdomecore/gdome-xml-node.c
+        (gdome_xml_n_unref) bug fix
+	
+2001-02-14  Paolo Casarini <paolo@casarini.org>
+	* libgdome/gdomecore/Makefile.am
+        Added gdome_xml_nnodem.[ch] and gdome_xml_xmlutil.[ch]
+        Removed gdome_xml_element_nnodem.[ch]
+        
+        * libgdome/gdome.h
+        Added GDOME_WRONG_DOCUMENT_ERR
+              GDOME_NO_MODIFICATION_ALLOWED_ERR
+              GDOME_INUSE_ATTRIBUTE_ERR
+        
+        * libgdome/gdomecore/gdome_xml_nnodem.h
+        Fixed compilation error (#include <libxml/hash.h>).
+
+        * libgdome/gdomecore/gdome_xml_nnodem.c
+	(gdome_xml_nnm_getNamedItemNS) bug fix
+        
+        * libgdome/gdomecore/gdome_xml_node.h
+        Added a GdomeDocument ref in the Gdome_xml_Node struct.
+        
+        * libgdome/gdomecore/gdome_xml_node.c
+        (gdome_xml_n_mkref) modified to inizialize the GdomeDocument ref in
+                            the Element Object.
+
+        l* libgdome/gdomecore/gdome_xml_element.h
+        Added a GdomeDocument ref in the Gdome_xml_Element struct.
+
+        * libgdome/gdomecore/gdome_xml_node.c
+        (gdome_xml_el_attributes) modified to return the new NamedNodeMap.
+        (gdome_xml_el_getAttributeNode) modified using NamedNodeMap.
+        (gdome_xml_el_getAttributeNodeNS) modified using NamedNodeMap.
+        (gdome_xml_el_removeAttributeNode) modified using NamedNodeMap.
+
+        * libgdome/gdomecore/gdome_xml_xmlutil.c
+        (xmlUnlinkNsAttr) bug fix
+        
+2001-02-11  Paolo Casarini <paolo@casarini.org>
+
+	* libgdome/gdomecore/gdome-xml-xmlutil.c
+        * libgdome/gdomecore/gdome-xml-xmlutil.h
+        added, it's a module with the functions to works on gnome-xml tree
+        structure. So if something change we have to modify only these
+        function.
+        (not added to the Makefile.am)
+        
+        * libgdome/gdomecore/gdome-xml-nnodem.c
+        * libgdome/gdomecore/gdome-xml-nnodem.h
+	(gome_xml_nnm_mkref) implemented.
+	(gdome_xml_nnm_length) implemented.
+	(gome_xml_nnm_getNamedItem) implemented.
+	(gdome_xml_nnm_getNamedItemNS) implemented.
+	(gdome_xml_nnm_item) implemented.
+	(gdome_xml_nnm_removeNamedItem) implemented.
+	(gdome_xml_nnm_removeNamedItemNS) implemented.
+	(gdome_xml_nnm_setNamedItem) implemented.
+	(gdome_xml_nnm_setNamedItemNS) implemented.
+        This object map two kind of structure. It has to work with an
+        xmlHashTable when is called by a DocumentType with the methods
+        getNotations and getEntities, and with a list of xmlAttr when is
+        called by an Element with the method getAttributes.
+        (not added to the Makefile.am)
+        
+        * AUTHORS
+        update
+
+2000-11-06  Mathieu Lacage <mathieu@eazel.com>
+
+	move to doc/
+	* ChangeLog.gdome1: 
+	* TODO:	
+	* Copyright:
+	* doc/ChangeLog.gdome1: 
+
+	* STATE: more work on the state.
+	* Makefile.am: fix make distcheck.
+	* libgdome/Makefile.am: fix make distcheck.
+	* libgdome/gdomehtml/Makefile.am: fix make
+	distcheck.
+	* libgdome/gdome-util.h:
+	* libgdome/gdomecore/Makefile.am:
+	* libgdome/gdomecore/gdome-util.c:
+	* libgdome/gdomecore/gdome-util.h:
+	* libgdome/gdomecore/gdome-xml-node.c: (gdome_xml_n_childNodes),
+	(gdome_xml_n_removeChild),
+	(gdome_xml_mut_invoke_listener_recursive):
+	fix 2 or 3 bugs.
+
+	Add test to show the bug in NodeList.
+	* test/Makefile.am:
+	* test/test-nodelist.c: (main):
+	* test/test-nodelist.xml:
+
+Thu Oct 26 11:11:22 CEST 2000 Daniel Veillard <Daniel.Veillard@w3.org>
+
+	* libgdome/gdomecore/gdome-xml-util.h: added missing definition for
+	  GDOME_XML_IS_DOC
+	* libgdome/gdomecore/gdome-xml-element-nnodem.c: closed an unfinished
+	  comment
+	* libgdome/gdomecore/gdome-xml-document.c: 3 missing local variable
+	  declarations
+
+2000-10-26  Mathieu Lacage  <mathieu@eazel.com>
+
+	* AUTHORS:
+	* MAINTAINERS:
+	update.
+	
+	* QUERIES:
+	* README.gdome1:
+	move to doc/
+	
+	* STATE:
+	state of oimplementation. not finished.
+	
+	* configure.in:
+	make gtk+/glib 2.0 compilation optional.
+	
+	* doc/QUERIES:
+	* doc/README.gdome1:
+	* doc/RaphDream:
+	move there.
+	
+	* libgdome/gdomecore/gdome-xml-attribute.c:
+	(gdome_xml_a_specified):
+	* libgdome/gdomecore/gdome-xml-cdata.c: (gdome_xml_cd_data),
+	(gdome_xml_cd_set_data), (gdome_xml_cd_length),
+	(gdome_xml_cd_substringData):
+	* libgdome/gdomecore/gdome-xml-cdata.h:
+	* libgdome/gdomecore/gdome-xml-document.c: (gdome_xml_doc_doctype),
+	(gdome_xml_doc_implementation), (gdome_xml_doc_documentElement),
+	(gdome_xml_doc_createElement),
+	(gdome_xml_doc_createDocumentFragment),
+	(gdome_xml_doc_createTextNode), (gdome_xml_doc_createComment),
+	(gdome_xml_doc_createCDATASection),
+	(gdome_xml_doc_createProcessingInstruction),
+	(gdome_xml_doc_createAttribute),
+	(gdome_xml_doc_createEntityReference),
+	(gdome_xml_doc_getElementsByTagName):
+	* libgdome/gdomecore/gdome-xml-document.h:
+	* libgdome/gdomecore/gdome-xml-element-nnodem.c:
+	* libgdome/gdomecore/gdome-xml-element.c:
+	(gdome_xml_el_setAttribute), (gdome_xml_el_getElementsByTagNameNS),
+	(gdome_xml_el_hasAttribute):
+	* libgdome/gdomecore/gdome-xml-node.c: (gdome_xml_n_nodeName),
+	(gdome_xml_n_parentNode), (gdome_xml_n_childNodes):
+	* libgdome/gdomecore/gdome-xml-nodel.h:
+	add numerous FIXMEs, cleanup, change some error handling.
+	
+	
+	* test/test-gdome.c: (test_el_structure):
+	small fix.
+
+2000-09-01  Anders Carlsson  <andersca@gnu.org>
+
+	* libgdome/gdomecore/gdome-xml-util.h: Update to match libxml
+
+	* libgdome/gdomecore/gdome-xml-node.c: Likewise.
+
+2000-07-08  Anders Carlsson  <andersca@gnu.org>
+
+	* libgdome/gdome-private-list.c (gdome_private_list_nth): New function.
+
+2000-07-06  Anders Carlsson  <andersca@gnu.org>
+
+	* libgdome/gdomecore/gdome-xml-mevent.c (gdome_xml_mevnt_vtab = ): Add declaration for
+	gdome_xml_evnt_type in the vtab.
+
+	* libgdome/gdomecore/gdome-xml-util.h (GDOME_XML_IS_N): Add HTML_DOCUMENT_NODE.
+
+2000-07-04  Anders Carlsson  <andersca@gnu.org>
+
+	* libgdome/gdomecore/gdome-xml-node.c (gdome_xml_n_insertBefore): Emit correct events.
+	(gdome_xml_n_replaceChild): Likewise.
+	(gdome_xml_n_removeChild): Likewise.
+	(gdome_xml_n_appendChild): Likewise.
+	(gdome_xml_mut_invoke_listener_recursive): Function for traversing a node and emitting
+	all its children's event listeners.
+
+	* libgdome/gdomecore/gdome-xml-element.c (gdome_xml_el_setAttribute): Emit correct events.
+
+	* libgdome/gdomecore/gdome-xml-cdata.c (gdome_xml_cd_set_data): Emit events.
+	(gdome_xml_cd_appendData): Likewise.
+	(gdome_xml_cd_insertData): Likewise.
+	(gdome_xml_cd_deleteData): Likewise.
+	(gdome_xml_cd_replaceData): Likewise.
+
+	* libgdome/gdomecore/gdome-xml-node.c (gdome_xml_n_get_xmlnode): Add a function
+	to get an xmlNode from a GdomeNode.
+
+	* libgdome/gdome.h (gdome_xml_n_get_xmlNode): Add function declaration.
+
+2000-07-03  Anders Carlsson  <andersca@gnu.org>
+
+	* libgdome/gdomecore/gdome-xml-node.c (add_timestamp): Function for
+	adding a timestamp to an event.
+	(gdome_xml_n_invoke_listener): Call add_timestamp ()
+	(gdome_xml_n_invoke_listener_prop): Likewise.
+	(gdome_xml_n_namespaceURI): Implement function.
+	(gdome_xml_n_prefix): Implement function.
+
+	* libgdome/gdomecore/gdome-xml-mevent.c (gdome_xml_mevnt_vtab = ): Add timestamp
+	function.
+
+	* libgdome/gdomecore/gdome-xml-event.h: Add timestamp variable
+	to Gdome_xml_EventPriv structure.
+
+	* libgdome/gdomecore/gdome-xml-event.c: Add timeStamp to vtable.
+	(gdome_xml_evnt_timeStamp): Add function.
+
+	* libgdome/gdome.h: Add typedef for GdomeDOMTimeStamp.
+	Add timeStamp function to GdomeEvent's vtab.
+	Several function declarations.
+
+	* libgdome/gdome.c (gdome_evnt_timeStamp): Add function.
+	(gdome_mevnt_timeStamp): Likewise.
+	(gdome_uievnt_timeStamp): Likewise.
+
+	* libgdome/gdome.h (gdome_xml_from_document): Move a public function
+	declaration.
+
+2000-07-01  Anders Carlsson <andersca@gnu.org>
+
+	* libgdome/gdomecore/gdome-xml-node.c: Update to match new
+	HTML tree style in libxml2 (using XML_HTML_DOCUMENT_NODE)
+
+2000-06-30  Anders Carlsson  <andersca@gnu.org>
+
+	* libgdome/gdomecore/gdome-xml-node.c
+	(gdome_xml_n_addEventListener): Don't add duplicate event listeners.
+
+2000-06-11  Anders Carlsson  <andersca@gnu.org>
+
+	* libgdome/gdome.h: Add PrivateList pointer to all Gdome
+	structures. This may not be needed, but it's easy to remove them
+	later.
+
+2000-06-08  Anders Carlsson  <andersca@gnu.org>
+
+	* configure.in (XML_CONFIG): add XML_CONFIG for gdome-config.in script.
+
+	* gdome-config.in: Make this work.
+
+	* libgdome/gdome.h: Add private field to GdomeNode;
+
+	* libgdome/gdomecore/gdome-xml-node.c (gdome_xml_n_mkref): Set private field to NULL.
+
+	* libgdome/gdome-private-list.c: New file, used for a
+	"private" list in GdomeNode for views etc.
+
+	* libgdome/gdome-private-list.h: Likewise.
+
+	* libgdome/Makefile.am: Add gdome-private-list.[ch]
+
+2000-06-04  Jonas Borgström  <jonas_b@bitsmart.com>
+
+	* configure.in: set XML_CONFIG="xml-config" as default. Or else it will not find 
+	the xml-config in the $PATH.
+
+	* .cvsignore: Added gdome-config.
+
+2000-06-04  Anders Carlsson  <andersca@gnu.org>
+
+	* Makefile.am (bin_SCRIPTS): Install gdome-config.
+
+	* configure.in (GDOME_LIBS): Create gdome-config.
+
+	* gdome-config.in: New file.
+
+2000-05-17  Anders Carlsson  <andersca@gnu.org>
+
+	* libgdome/gdome.h: Change syntax.
+
+	* libgdome/gdome.c (gdome_DOMImplementation_createDocumentType): Change syntax.
+
+	* libgdome/gdome-html.c (gdome_HTMLDOMImplementation_createDocumentType): Change syntax.
+
+	* libgdome/gdomecore/gdome-xml-domimpl.c (gdome_xml_DOMImplementation_createDocumentType): Implement,
+	and change syntax due to changes in the DOM spec.
+
+	* libgdome/gdomecore/gdome-xml-document.c (gdome_xml_doc_createDocumentFragment): Implement.
+	(gdome_xml_doc_createComment): Likewise.
+	(gdome_xml_doc_createCDATASection): Likewise.
+	(gdome_xml_doc_createProcessingInstruction): Likewise.
+	(gdome_xml_doc_createEntityReference): Likewise.
+
+2000-05-16  Anders Carlsson  <andersca@gnu.org>
+
+	* libgdome/gdomecore/gdome-xml-element.c (gdome_xml_el_getElementsByTagName): Implement.
+
+2000-05-10  Anders Carlsson  <andersca@gnu.org>
+
+	* libgdome/*.[ch]: Add LGPL headers.
+
+2000-05-07  Anders Carlsson  <andersca@gnu.org>
+
+	* libgdome/gdome-xml-document.c (gdome_xml_doc_implementation): Implement.
+
+	* configure.in: Better (?) libxml check.
+
+	* libgdome/Makefile.am: Added new files.
+
+	* test/test-gdome.c (test_DOMImplementation): Added test case.
+
+	* libgdome/gdome-xml-domimpl.[ch]: Added.
+
+16/04/2000	Mathieu Lacage	<mathieu@advogato.org>
+
+	* libgdome/gdome-xml-entity.[hc]: added.
+
+	* libgdome/gdome-xml-documentf.[hc]: added.
+
+	* libgdome/gdome-xml-documentt.[hc]: added.
+
+	* libgdome/gdome-xml-comment.[hc]: added.
+
+	* libgdome/gdome-xml-pi.[hc]: added.
+
+	* libgdome/gdome-xml-notation.[hc]: added.
+
+	* libgdome/gdome-xml-node.c: added the other files in the 
+	Node vtable.
+
+	* libgdome/Makefile.am: added new files for 
+	compilation.
+
+	* autogen.sh: changed warning for raph.
+	
+16/04/2000	Mathieu Lacage	<mathieu@advogato.org>
+
+	* libgdome/*.[hc]: 
+
+	* Copyright: added.
+
+	* COPYING.LIB: added.
+
+	* AUTHORS: added myself.
+	
+16/04/2000	Mathieu Lacage	<mathieu@advogato.org>
+
+	* libgdome/gdome-xml-element.[hc] : finish sanity checks.
+	 - gdome_xml_el_hasAttribute. implement.
+	 - gdome_xml_el_hasAttributeNs. implement.
+	
+16/04/2000	Mathieu Lacage	<mathieu@advogato.org>
+
+	* libgdome/gdome-xml-element.[hc] : add new DOM2 method
+	from the latest spec.
+	
+	* libgdome/gdome.[hc] : add new DOM2 method
+	from the latest spec. Also, format code.
+
+16/04/2000	Mathieu Lacage	<mathieu@advogato.org>
+
+	* libgdome/gdome-xml-element.c: 
+	 - gdome_xml_el_getAttributeNS : implement.
+	 - gdome_xml_el_setAttributeNS : implement.
+	 - gdome_xml_el_removeAttributeNS : implement.
+	 - gdome_xml_el_getAttributeNodeNS : implement.
+	 - gdome_xml_el_setAttributeNodeNS : implement.
+	 Warning: the above 2 last implementations do not take
+	 into account the fact that the Attribute default value may 
+	 be defined in the document DTD. It lacks code to search the
+	 DTD attributes first. (same for gdome_xml_el_getAttributeNode
+	 and gdome_xml_el_setAttributeNode)
+
+	* libgdome/gdome-xml-nnodem.[hc]: mv gdome-xml-element-nnodem.[hc]
+	The above name change will allow me to begin the implementation
+	of some other stuff which must export some NamedNodeMap objects
+	which don't have the same implementation of the NamedNodeMap object
+	exported by Element. (namely, DocumentType for example)
+	Also cleanups inside this thing : replace all xmlElement with 
+	xmlNode and all xmlAttribute with xmlAttr and all attributes with 
+	properties.
+	
+16/04/2000	Mathieu Lacage	<mathieu@advogato.org>
+
+	* ligdome/gdome-xml-element.c: my, god, I am plain stupid.
+	I still wonder how the code I wrote worked...
+	replace all xmlElement with xmlNode and all xmlAttribute
+	with xmlAttr and all attributes with properties.
+
+13/04/2000	Mathieu Lacage	<mathieu@advogato.org>
+
+	* libgdome/gdome-xml-nodel.c: implement
+	gdome_xml_nl_query_interface.
+
+	* libgdome/gdome-xml-document.c: implement
+	 - gdome_xml_doc_createAttribute. thanks to DV_ for
+	 xmlNewDocProp.
+	 
+
+	* libgdome/gdome-xml-attribute.c:
+	 - gdome_xml_a_query_interface. implement.
+	 - gdome_xml_a_nodeName. implement.
+	 - all other functions. New sanity checks.
+
+	* libgdome/gdome-xml-element.c: 
+	 - gdome_xml_el_tagName. New sanity checks.
+	 - gdome_xml_el_getAttribute. New sanity checks. cleanups.
+	 - gdome_xml_el_setAttribute. New sanity checks.
+	 - gdome_xml_el_removeAttribute. New sanity checks. cleaner 
+	 implementation.
+	 - gdome_xml_el_getAttributeNode. New sanity checks. cleaner 
+	 implementation.
+	 - gdome_xml_el_setAttributeNode. New sanity checks. full
+	 implementation.
+	 - gdome_xml_el_removeAttributeNode. New sanity checks.
+	 - all other functions --> new sanity checks. cleanups.
+
+05/04/2000	Mathieu Lacage	<mathieu@advogato.org>
+
+	* gdome2/ : mv gdome2 libgdome. cvs import.
+	
+04/04/2000	Mathieu Lacage	<mathieu@advogato.org>
+
+	* test/test-gdome.c : complete rewrite of the tests.
+	focusing on the Element Node.
+
+	* gdome2/gdome-xml-element.c : as a consequence of 
+	the tests, correct bugs, add some new ones and implement
+	a lot of methods in Element. They do not support Events.
+	 - gdome_xml_el_removeAttribute.
+	 - gdome_xml_el_getAttributeNode : no test.
+	 - gdome_xml_el_setAttributeNode : no test.
+	 - gdome_xml_el_removeAttributeNode : no test.
+
+	* gdome2/gdome-xml-document.c : implement some methods
+	of the Document interface.
+	 - gdome_xml_doc_createTextNode.
+	Fix the gdome_xml_from_document function: make it call
+	the gdome_xml_n_mkref function.
+
+	* configure.in : dump version to 0.5.
+	eh: it still compiles !! /me becomes good programmer.
+
+03/04/2000	Mathieu Lacage	<mathieu@advogato.org>
+	
+	* gdome2/gdome-xml-str.[hc] : new files. str helper
+	functions are there.
+
+	* gdome2/gdome-xml-util.[hc], gdome2/gdome-util.[hc]
+	implement the dynamic type-checking stuff we discused 
+	with Raph though the use of the macros: 
+	 - GDOME_N
+	 - GDOME_EL
+	 - GDOME_EVNTT
+	 - GDOME_EVENL
+	These macros rely on the GDOME_XML_IS_* macros which 
+	are defined in gdome-xml-util.h and called by the
+	gdome_xml_cast_* functsion defined in gdome_xml_util.c.
+	The whole thing is not very complex... Most of its 
+	overhead will disapear when compiling g_return_val_if_fail
+	as no-op.
+
+	* gdome2/*.h and *.c : need to cleanup the includes.
+	Sanity checks are now uniform. All the parameters are tested
+	against NULL with: if (self == NULL ) return NULL;
+	int parameters are furthermore tested against their bounds.
+	The type checking is made with g_return_*_if_fail.
+	It still compiles !! I managed not to break compilation :)
+
+	* gdome2/gdome-xml-doc.[hc] : rename.
+	mv gdome-xml-doc gdome-xml-document
+
+	* gdome2/gdome-xml-text.[hc] : new file. implement Text
+	interface.
+
+	* gdome2/gdome-xml-cdata.[hc] : new file. implement the
+	CharacterData interface.
+
+	* gdome2/gdome-xml-nnodem.[hc] : new file. implement the
+	NamedNodeMap interface.
+
+	* configure.in : dump version to 0.4.
+	
+02/04/2000	Mathieu Lacage	<mathieu@advogato.org>
+
+	* gdome2/gdome-xml.c : 
+	- gdome_xml_doc_createElement : implement using
+	xmlNewDocNode.
+	- gdome_xml_doc_documentElement : implement.
+	The root Element of a document can be found 
+	using xmlDocGetRootElement. (Fuck, Daniel
+	did a HUGE work !! I LOVE libxml2 !!!)
+	- gdome_xml_from_document : implement.
+
+	* gdome2/gdome-xml-doc.[hc], 
+	gdome2/gdome-xml-node.[hc],
+	gdome2/gdome-xml-element.[hc], 
+	gdome2/gdome-xml-attribute.[hc],
+	gdome2/gdome-xml-event.[hc],
+	gdome2/gdome-xml-eventl.[hc],
+	gdome2/gdome-xml-mevent.[hc],
+	gdome2/gdome-xml-nodel.[hc],
+	new files.
+	Basically, we have in each .h file: 
+	 - Structure definition.
+	 - gdome_xml_* function declarations.
+	 - vtable declarations.
+	in each .c file, we have: 
+	 - header inclusion.
+	 - vtable declaration.
+	 - gdome_xml_* function implementation.
+
+	* gdome2/gdome-xml.[hc] : removed.
+
+	* configure.in : dump version unmber to 0.3
+	It now compiles again. (the breakage lasted 4 hours)
+	
+01/04/2000	Mathieu Lacage	<mathieu@advogato.org>
+
+	* gdome2/gdome-xml.c : make it compile.
+	Now, need to find anders and ask him for his
+	test prgm for Gdome. I wonder if things will 
+	work with this awfull implementation...
+
+	* configure.in : dump version number to 0.2.
+
+01/04/2000	Mathieu Lacage	<mathieu@advogato.org>
+
+	* gdome2/gdome-xml.c :
+	 - add implementation for NodeList.
+	 - cleanups. I will try compiling soon.
+	 There are issues on the xmlSetNodeValue function
+	 from libxml --> it seems not to handle the 
+	 attribute code properly.
+
+31/03/2000	Mathieu Lacage	<mathieu@advogato.org>
+
+	* gdome2/gdome-xml.c : 
+	 - remove all the implementations which are child 
+	 of Node except for Element and Attribute.
+	 - gdome_evntl_get_priv : rename : 
+	 gdome_evntl_get_attribute.
+	 - change lots of checks to be still there when
+	 compiled with g_return_* as NoOp.
+	 - removed gdome_a_mkref. Now, you can use 
+	 gdome_n_mkref for Attribute thanks to the 
+	 common structures.
+	* gdome2/gdome.[hc] : some indentation fixes.
+
+30/03/2000	Mathieu Lacage	<mathieu@advogato.org>
+
+	* Changelog : new Changelog. old one is in
+	Changelog.gdome1.
+	
+	* README : new README. old one is in README.gdome1.
+	
+	* gdome2 : new source directory. mv gdome gdome2.
+	
+	* configure.in : remove old stuff. add checks to 
+	specify the location of the libxml library.
+	That way, we can use both libxml2 and libxml during
+	developement.
+	
+	* Makefile.am, autogen.sh : change to match the 
+	directory name change (gdome -> gdome2).
+
+	* gdome2/rxml* : remove.
+
+	* gdome2/*rdom* : remove.
+
+	* ifgen.pl, DOM* : remove.
+
+	* gdome2/Makefile.am : cleanups. Remove code autogeneration.
+
+	

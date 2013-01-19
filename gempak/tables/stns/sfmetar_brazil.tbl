@@ -1,0 +1,170 @@
+!
+!	Waldenio (CPTEC/INPE)- Mar/2005
+!  	Station Table for Brazilians METARs
+!	
+!Here at CPTEC we are ingesting (EXP feed) the Brazilian METARs. I have
+!done a new station table, with 160 Stations. 
+!
+! Edited by S. Chiswell/Unidata
+!
+SBAA      82861 CONCEICAO ARAGUAIA               -- BZ  -825  -4920   160
+SBAF      83748 AFONSOS ARPT (MIL)               -- BZ -2287  -4337    34
+SBAM      82030 AMAPA AIRPORT                    -- BZ   207  -5085    10
+SBAN      83419	ANAPOLIS                         -- BZ -1622  -4897  1137
+SBAQ      99999 ARARAQUARA			 -- BZ -2180  -4813   708
+SBAR      83095 ARACAJU/SANTA MARIA              -- BZ -1098  -3707     9
+SBAS      99999 ASSIS                            -- BZ -2263  -5045   564
+SBAT      82965	ALTA FLORESTA                    -- BZ  -987  -5610   288
+SBAU      99999 ARACATUBA                        -- BZ -2113  -5043   415
+SBAX      99999 ARAXA                            -- BZ -1957  -4697   998
+SBBA      82816 BOCADOACRE                       -- BZ  -872  -6732   112
+SBBC      82410	BENJAMIN CONSTANT                -- BZ  -437  -7002    65
+SBBE      82193 BELEM AIRPORT                    -- BZ  -138  -4848    16
+SBBG      83981 BAGE/CMDT KRAEMER                -- BZ -3135  -5412   180
+SBBH      83583 BELO HORIZ/PAMPULHA              -- BZ -1985  -4395   785
+SBBI      83842 CURITIBA/BACACHERI               -- BZ -2543  -4927   923
+SBBQ      83689 BARBACENA                        -- BZ -2125  -4377  1171
+SBBR      83378 BRASILIA ARPT.                   -- BZ -1587  -4793  1061
+SBBT      99999 CHAFEI AMSEI                     -- BZ -2058  -4860   579
+SBBU      83722 BAURU                            -- BZ -2232  -4907   590
+SBBV      82022 BOA VISTA                        -- BZ   283  -6070   140
+SBBW      83359 BERRA DO GARCAS                  -- BZ -1587  -5237   350
+SBBZ      99999 BUZIOS/MODIANO                   -- BZ -2275  -4195     3
+SBCA      99999 CASCAVEL                         -- BZ -2500  -5350   754
+SBCB      99999 CABO FRIO                        -- BZ -2292  -4208     4
+SBCC      99999 CACHIMBO                         -- BZ  -932  -5495   536
+SBCF      83587 BELO HORIZ/TANCREDO              -- BZ -1983  -4393   917
+SBCG      83612 CAMPO GRANDE                     -- BZ -2047  -5467   567
+SBCH      99999 CHAPECO                          -- BZ -2713  -5267   650
+SBCI      82764	CAROLINA AIRPORT                 -- BZ  -732  -4747   183
+SBCJ      99999 CARAJAS/MARABA                   -- BZ  -612  -5000   621
+SBCM      99999 FORQUILHINHA                     -- BZ -2872  -4942    28
+SBCO      83967 PORTO ALEGRE/CANOAS              -- BZ -3002  -5122    47
+SBCP      83698	CAMPOS/BARTOLOMEU                -- BZ -2175  -4132    11
+SBCR      83552 CORUMBA INTL ARPT                -- BZ -1900  -5765   154
+SBCT      83840 CURITIBA AIRPOR                  -- BZ -2552  -4917   908
+SBCV      83497 CARAVELAS AIRPORT                -- BZ -1763  -3925     4
+SBCX      99999 CAXIAS DO SUL                    -- BZ -2918  -5118   754
+SBCY      83362 CUIABA/MARECHAL RON              -- BZ -1565  -5610   182
+SBCZ      82704 CRUZEIRO DO SUL                  -- BZ  -762  -7267   170
+SBDN      83716 PRESIDENTE PRUDENTE              -- BZ -2212  -5138   435
+SBEC      99999 PIRAUNA P15 OIL                  -- BZ -2267  -4060    10
+SBEG      82111 EDUARDO GOMES INTL               -- BZ  -303  -6005     2
+SBEK      82640 JACAREACANGA                     -- BZ  -616  -5743    98
+SBER      82610 EIRUNEPE                         -- BZ  -667  -6987   104
+SBES      83759	SAO PEDRO DA ALDEIA              -- BZ -2282  -4210    11
+SBFI      83827 FOZ DO IGUACU ARPT               -- BZ -2552  -5458   243
+SBFL      83899 FLORIANOPOLIS ARPT               -- BZ -2767  -4855     5
+SBFN      82400 FERNANDO DE NOR                  -- BZ  -385  -3242    56
+SBFS      99999 CMP GOITACAZES                   -- BZ -2202  -4107     3
+SBFT      99999 FRONTEIRA                        -- BZ -2028  -4918   487
+SBFU      99999 FURNAS (PRIVATE)                 -- BZ -2068  -4632   735
+SBFZ      82398 FORTALEZA/PINTO MAR              -- BZ  -378  -3853    25
+SBGA      83375	GAMA                             -- BZ -1605  -4803   700
+SBGL      83746 GALEAO/RIO                       -- BZ -2282  -4325     6
+SBGM      83016 GUAJARA MIRIM                    -- BZ -1078  -6528   146
+SBGO      83424 GOIANIA/SANTA GENOV              -- BZ -1663  -4922   747
+SBGP      99999 GAVIAO PEIXOTO                   -- BZ -2177  -4840   609
+SBGR      83778 GUARULHOS                        -- BZ -2343  -4647   750
+SBGU      99999 GUARAPUAVA                       -- BZ -2538  -5152  1065
+SBGV      99999 GOV VALADARES                    -- BZ -1888  -4198   171
+SBGW      83708 GUARATINGUETA (MIL)              -- BZ -2278  -4520   533
+SBHT      82353 ALTAMIRA                         -- BZ  -320  -5220    74
+SBIC      82335 ITACOATIARA                      -- BZ  -312  -5847    43
+SBIH      82444 ITAITUBA                         -- BZ  -425  -5600    34
+SBIL      83349 ILHEUS AIRPORT                   -- BZ -1480  -3902     5
+SBIP      99999 USIMINAS/PARAISO                 -- BZ -1947  -4248   239
+SBIT      99999 ITUMBIARA (HIDROELETRICA)        -- BZ -1843  -4920   497
+SBIZ      82564 IMPERATRIZ                       -- BZ  -557  -4758   123
+SBJF      83692 JUIZ DE FORA                     -- BZ -2177  -4335   939
+SBJP      82798 JOAO PESSOA                      -- BZ  -710  -3487     7
+SBJR      83111 RIO/JACAREPAGUA                  -- BZ -2298  -4337     3
+SBJU      99999 JUAZEIRO DO NORTE/CARIRI         -- BZ  -722  -3927   409
+SBJV      83905 JOINVILLE                        -- BZ -2622  -4880     4
+SBKG      82795	CAMPINA GRANDE                   -- BZ  -722  -3587   560
+SBKP      83721 CAMPINAS/VIRACOPOS               -- BZ -2300  -4713   661
+SBLB      99999 ALBACORA P25 OIL                 -- BZ -2210  -3992    10
+SBLE      99999 LENCOIS (CHAPADA DIAMANTINA)     -- BZ -1248  -4128   511
+SBLJ      99999 LAGES                            -- BZ -2778  -5028   934
+SBLN      83674 LINS                             -- BZ -2167  -4975   426
+SBLO      83768 LONDRINA AIRPORT                 -- BZ -2333  -5113   570
+SBLP      83288 BOM JESUS DA LAPA                -- BZ -1327  -4342   440
+SBLS      83588 LAGOA SANTA                      -- BZ -1967  -4390   852
+SBMA      82562 MARABA                           -- BZ  -535  -4915   102
+SBMC      99999 MINACU                           -- BZ -1355  -4820   440
+SBMD      82091 ALMERIM (MONTE DOURADO)          -- BZ   -88  -5260   206
+SBME      99999 MACAE                            -- BZ -2235  -4177     2
+SBMG      83767 MARINGA                          -- BZ -2342  -5195   542
+SBMK      83437 MONTES CLAROS                    -- BZ -1672  -4387   646
+SBML      99999 MARILIA                          -- BZ -2218  -4992   647
+SBMM      99999 MARLIM P20 OIL                   -- BZ -2235  -4008    10
+SBMN      82332 MANAUS AIRPORT                   -- BZ  -315  -5998    84
+SBMO      82993 MACEIO/CAMPO PALMAR              -- BZ  -952  -3578   115
+SBMQ      82098 MACAPA INTL AIRPORT              -- BZ     3  -5105    15
+SBMS      82591 MOSSORO                          -- BZ  -518  -3733    18
+SBMT      83779 MARTE (CIV/MIL)                  -- BZ -2352  -4663   722
+SBMY      82533 MANICORE                         -- BZ  -582  -6130    49
+SBMZ      82184 PORTO DE MOZ                     -- BZ  -173  -5223    17
+SBNF      83926 NAVEGANTES                       -- BZ -2688  -4865     5
+SBNM      99999 AEROP. SANTO ANGELO              -- BZ -2827  -5417   322
+SBNT      82599 NATAL/AUGUSTO S                  -- BZ  -592  -3525    49
+SBOI      82017 OIAPOQUE                         -- BZ   383  -5183    39
+SBPA      83971 PORTO ALEGRE AR                  -- BZ -3000  -5118     3
+SBPB      82288 PARNAIBA (AEROPORTO)             -- BZ  -292  -4175     5
+SBPC      83681 POCOS DE CALDAS                  -- BZ -2185  -4657  1260
+SBPF      83914	PASSO FUNDO/LAUR                 -- BZ -2825  -5238   684
+SBPG      83844	PARANAGUA                        -- BZ -2552  -4852     4
+SBPJ      83065 PALMAS                           -- BZ -1020  -4835   236
+SBPK      83985 PELOTAS                          -- BZ -3187  -5235    13
+SBPL      82984 PETROLINA (AEROPORTO)            -- BZ  -935  -4055   375
+SBPN      83063 PORTO NACIONAL (AEROPORTO)       -- BZ -1070  -4840     0
+SBPP      83703 PONTA PORA INTL                  -- BZ -2255  -5570   660
+SBPR      83571 BELO HORIZONTE (CARLOS PRATES)   -- BZ -1990  -4398   927
+SBPS      83460 PORTO SEGURO                     -- BZ -1643  -3908    51
+SBPV      82824 PORTO VELHO(CV/MIL)              -- BZ  -877  -6392    88
+SBQV      83344 VITORIA DA CONQUISTA             -- BZ -1495  -4088   893
+SBRB      82917 RIO BRANCO/MEDICI                -- BZ -1000  -6780   143
+SBRF      82899 RECIFE/GUARARAPES                -- BZ  -807  -3485    19
+SBRG      83995	RIO GRANDE                       -- BZ -3202  -5208     8
+SBRJ      83755 SANTOS DUMONT/RIO                -- BZ -2290  -4317     3
+SBRP      99999	LEITE LOPES/RIBE                 -- BZ -2112  -4777   549
+SBRQ      83058 SAO ROQUE/S.PAULO                -- BZ -2352  -4712   750
+SBRS      83738 RESENDE                          -- BZ -2247  -4447   439
+SBSA      83726 SAO CARLOS(PRIVATE)              -- BZ -2202  -4787   856
+SBSC      83741 SANTA CRUZ (MIL)                 -- BZ -2293  -4372     3
+SBSJ      99999 SAO JOSE DOS CAMPO               -- BZ -2323  -4587   646
+SBSL      82281 SAO LUIS/MARECHAL                -- BZ  -260  -4423    53
+SBSM      83937 SANTA MARIA(CV/MIL)              -- BZ -2972  -5370    85
+SBSN      82244 SANTAREM INTL ARPT               -- BZ  -243  -5472    72
+SBSP      83780 SAO PAULO/CONGONHAS              -- BZ -2362  -4665   803
+SBSR      99999 SAO JOSE PRETO                   -- BZ -2080  -4940   543
+SBST      83818 SANTOS (BRAZ-AFB)                -- BZ -2393  -4630     3
+SBSV      83248 SALVADOR/DOIS JULHO              -- BZ -1290  -3833     6
+SBSY      83156 SANTA ISABEL MOR                 -- BZ -1157  -5067   197
+SBTA      99999 TAUBATE (BASE TAUBATE)           -- BZ -2303  -4550   586
+SBTB      99999 ORIXIMINA (TROMBETAS)            -- BZ  -148  -5638    87
+SBTC      99999 UNA (HOTEL TRANSAMERICA)         -- BZ -1535  -3898     6
+SBTD      99999 TOLEDO                           -- BZ -2468  -5370   565
+SBTE      82579 TERESINA AIRPORT                 -- BZ  -505  -4282    69
+SBTF      82317 TEFE                             -- BZ  -337  -6467    47
+SBTK      82808 TARAUACA (AEROPORTO)             -- BZ  -815  -7077   188
+SBTL      99999 TELEMACO BORBA                   -- BZ -2432  -5065   796
+SBTR      83948 TORRES                           -- BZ -2935  -4973     1
+SBTS      82026 TIRIOS                           -- BZ   222  -5593   325
+SBTT      82411 TABATINGA INTL ARPT              -- BZ  -367  -6967    85
+SBTU      82361 TUCURUI                          -- BZ  -372  -4972    40
+SBUA      82107 SAO GABRIEL DA CACHOEIRA         -- BZ   -13  -6705    79
+SBUF      82986 PAULO AFONSO                     -- BZ  -940  -3822   252
+SBUG      83928 URUGUAIANA/RUBEM                 -- BZ -2978  -5703    74
+SBUI      82418 CARAUARI                         -- BZ  -495  -6690    81
+SBUL      83525 UBERLANDIA                       -- BZ -1890  -4823   922
+SBUP      83617 URUBUPUNGA                       -- BZ -2080  -5157   356
+SBUR      83576 UBERABA                          -- BZ -1978  -4797   807
+SBVG      99999 VARGINHA                         -- BZ -2158  -4547   923
+SBVH      83208 VILHENA-IN-ROND                  -- BZ -1273  -6013   652
+SBVT      83649 VITORIA/GOIABEIRAS               -- BZ -2027  -4028     4
+SBXI      82930 CACHIMBO-IN-PAR                  -- BZ  -935  -5488   432
+SBXV      83319 XAVANTINA                        -- BZ -1468  -5235   315
+SBYA      82068 IAUARETE (AEROPORTO)             -- BZ    60  -6911   105
+SBYS      83671 PIRASSUNUNGA/CAMPO               -- BZ -2198  -4733   598
+SWBC      82113 BARCELOS                         -- BZ   -97  -6292    40

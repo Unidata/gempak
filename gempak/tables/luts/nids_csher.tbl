@@ -1,0 +1,22 @@
+! nids_csher.tbl
+!
+! Color table for NIDS 16-level Combined Shear
+! Appendix A, FMH-11 Part C
+!
+!Color name    Abrev   Red  Green   Blue  X color name
+BLACK           BLA      0      0      0  black
+DKGRAY          DGR    118    118    118
+GRAY            GRA    170    170    170
+DKBLUE          DKB     50      0    150
+MDBLUE          MBL      0    128    255
+CYAN            CYA      0    255    255
+DKGREEN         DKG      0    143      0
+MDGREEN         MDG      0    187      0
+GREEN           GRE      0    255      0
+BROWN           BRO    200    100      0
+ORANGE          ORA    255    170      0
+YELLOW          YEL    255    255      0
+DKRED           DKR    174      0      0
+RED             RED    255      0      0
+PINK            PNK    255    125    125
+MDMAGENTA       MDM    150      0    150

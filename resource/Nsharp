@@ -1,0 +1,15 @@
+Nsharp.geometry:               230x120+155+0
+Nsharp.title:                  SkewT Hodograph Analysis and Research Program (V3.2 + UPC Mods)
+!
+! toplevel_form colors
+!
+Nsharp*background:			grey75
+Nsharp*foreground:			black
+!
+Nsharp*fontList: -adobe-times-bold-r-normal-*-18-180-75-75-p-*-iso8859-1
+Nsharp*cursor_text.fontList: -adobe-times-bold-r-normal-*-12-*-75-75-p-*-iso8859-1
+Nsharp*Parcel*selectColor:		blue
+!
+! ACARS observation search radius
+!
+Nsharp*search_radius.value:		100km

@@ -1,0 +1,8 @@
+echo LINKING UTF
+cp $GEMPAK/source/device/main/device.f .
+$FC $FFLAGS $LDFLAGS -o $OS_BIN/utf device.f \
+        $GEMLIB $DEVICE $OS_LIB/utf.a \
+	$OS_LIB/gn.a $CGEMLIB \
+	$GEMLIB $CGEMLIB $SYSLIB -lm 
+$RM *.o 
+$RM device.f

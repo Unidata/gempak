@@ -1,0 +1,4 @@
+$CC $CFLAGS -c tran2fos.c cstunp2.c
+$FC $LDFLAGS -o $OS_BIN/tran2fos tran2fos.o \
+		cstunp2.o $CGEMLIB 
+$RM *.o

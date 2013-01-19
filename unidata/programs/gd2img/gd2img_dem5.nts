@@ -1,0 +1,11 @@
+GDATTIM last                                                                                                                            
+GDFILE  ../gdtopo_dev/topo_usdem5.gem                                                                                                   
+GLEVEL  0                                                                                                                               
+GVCORD  pres                                                                                                                            
+GFUNC   topodem5                                                                                                                        
+SCALE   0                                                                                                                               
+PROJ    str/90;-95;0                                                                                                                    
+GRDAREA -4;-134;39;3                                                                                                                    
+KXKY    1200;660                                                                                                                        
+CPYFIL                                                                                                                                  
+SATFIL  ustopo_dem5.gini                                                                                                                

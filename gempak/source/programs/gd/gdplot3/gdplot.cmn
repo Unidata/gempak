@@ -1,0 +1,160 @@
+C************************************************************************
+C* / GDNPRM / and / GDPPRM /						*
+C*									*
+C* This common block contains information stored for GDPLOT.		*
+C**									*
+C* Log:									*
+C* D.W.Plummer/NCEP	10/96						*
+C* D.W.Plummer/NCEP	02/97	Added LUTFIL parameter			*
+C* D.W.Plummer/NCEP	 3/97	Added FILTER parameter			*
+C* T. Lee/GSC		12/00	Used LLMXLN for input string length	*
+C* K. Brill/HPC		12/02	Added skp(MAXB) for IJSKIP parameter	*
+C* T. Lee/SAIC		08/03	Increased MAXB from 10 to 20		*
+C* M. Li/SAIC		11/03	Added IMCBAR				*
+C* T. Piper/SAIC	08/04	Added MSCALE, mscl			*
+C. T. Lee/SAIC		01/06	Added parameters for GDPLOT3		*
+C************************************************************************
+	PARAMETER	( MAXB = 20 )
+C
+C*	Input parameter arrays.
+C
+	CHARACTER gdf(MAXB)*256, gle(MAXB)*(LLMXLN),
+     &	    gvc(MAXB)*(LLMXLN),
+     &	    	gdp(MAXB)*(LLMXLN), cin(MAXB)*(LLMXLN),
+     &	    	gda(MAXB)*(LLMXLN), lin(MAXB)*(LLMXLN),
+     &	    	tit(MAXB)*(LLMXLN), pan(MAXB)*(LLMXLN),
+     &	    	tex(MAXB)*(LLMXLN), sca(MAXB)*(LLMXLN),
+     &	    	con(MAXB)*(LLMXLN), win(MAXB)*(LLMXLN),
+     &	    	ref(MAXB)*(LLMXLN), ski(MAXB)*(LLMXLN),
+     &	    	fin(MAXB)*(LLMXLN), fli(MAXB)*(LLMXLN),
+     &	    	typ(MAXB)*(LLMXLN), hil(MAXB)*(LLMXLN),
+     &	    	hls(MAXB)*(LLMXLN), clr(MAXB)*(LLMXLN),
+     &	    	stn(MAXB)*256, sat(MAXB)*256, rad(MAXB)*256,
+     &	    	pro(MAXB)*(LLMXLN), gar(MAXB)*(LLMXLN),
+     &	    	lat(MAXB)*(LLMXLN), mpp(MAXB)*(LLMXLN),
+     &	    	str(MAXB)*(LLMXLN), pos(MAXB)*(LLMXLN),
+     &	    	col(MAXB)*(LLMXLN), mar(MAXB)*(LLMXLN),
+     &	    	grd(MAXB)*(LLMXLN), lut(MAXB)*(LLMXLN),
+     &	    	fil(MAXB)*(LLMXLN), skp(MAXB)*(LLMXLN),
+     &	    	imc(MAXB)*(LLMXLN), mscl(MAXB)*(LLMXLN),
+     &	    	bli(MAXB)*(LLMXLN), reg(MAXB)*(LLMXLN),
+     &	    	tco(MAXB)*(llmxln), tty(MAXB)*(LLMXLN), 
+     &		tfl(MAXB)*(LLMXLN), tlo(MAXB)*(LLMXLN), 
+     &		cln(MAXB)*(LLMXLN), sha(MAXB)*(LLMXLN), 
+     &		inf(MAXB)*(LLMXLN), loc(MAXB)*(LLMXLN), 
+     &		ali(MAXB)*(LLMXLN), aty(MAXB)*(LLMXLN)
+C*
+	LOGICAL   lclear, lshrtl, lprmap, verbos
+C*
+	COMMON  / GDLOGI /  lclear, lshrtl, lprmap, verbos
+C*
+	COMMON  / GDNPRM /
+     &		ngdf, ngle, ngvc, ngdp, ncin, ngda,  nlin, ntit,
+     &		npan, ntex, nsca, ncon, nwin, nref,  nski, nfin,
+     &		nfli, ntyp, nhil, nhls, nclr, nstn,  nsat, nrad,
+     &		npro, ngar, nlat, nmpp, nstr, npos,  ncol, nmar,
+     &		ngrd, nlut, nfil, nskp, nimc, nmscl, nbli, nreg,
+     &		ntco, ntty, ntfl, ntlo, ncln, nsha,  ninf, nloc, 
+     &		nali, naty
+C*
+	COMMON  / GDPPRM /
+     &		gdf,
+C!	                      GDFILE  - Grid file
+     &		gle,
+C!	                      GLEVEL  - Grid level
+     &		gvc,
+C!	                      GVCORD  - Grid vertical coordinate
+     &		gdp,
+C!	                      GDPFUN  - Grid parameter
+     &		cin,
+C!	                      CINT    - Contour interval
+     &		gda,
+C!	                      GDATTIM - Date/time specification
+     &		lin,
+C!	                      LINE    - Line definition
+     &		tit,
+C!	                      TITLE   - Title parameter
+     &		pan,
+C!	                      PANEL   - Panel parameter
+     &		tex,
+C!	                      TEXT    - Text definition
+     &		sca,
+C!			      SCALE   - Scale definition
+     &		con,
+C!			      CONTUR  - Contour definition
+     &		win,
+C!			      WIND    - Wind parameter
+     &		ref,
+C!			      REFVEC  - Reference vector parameter
+     &		ski,
+C!			      SKIP    - Skip parameter
+     &		fin,
+C!			      FINT    - Fill interval parameter
+     &		fli,
+C!			      FLINE   - Fill color parameter
+     &		typ,
+C!			      TYPE    - Type definition
+     &		hil,
+C!			      HILO    - Hilo parameter
+     &		hls,
+C!			      HLSYM   - Hilo symbol parameter
+     &		clr,
+C!			      CLRBAR  - Color bar parameter
+     &		stn,
+C!			      STNFIL  - Station plot file parameter
+     &		sat,
+C!			      SATFIL  - Satellite file parameter
+     &		rad,
+C!			      RADFIL  - Radar file parameter
+     &		pro,
+C!			      PROJ    - Projection parameter
+     &		gar,
+C!			      GAREA   - Graphics area parameter
+     &		lat,
+C!			      LATLON  - Latitude/longitude parameter
+     &		mpp,
+C!	                      MAP     - Map definition
+     &		str,
+C!	                      STREAM  - GDSTREAM - Stream definition
+     &		pos,
+C!	                      POSN    - GDMAP - Position
+     &		col,
+C!	                      COLORS  - GDMAP - Color list
+     &		mar,
+C!	                      MARKER  - GDMAP - Marker definition
+     &		grd,
+C!	                      GRDLBL  - GDMAP - Grid point label color
+     &		lut,
+C!	                      LUTFIL  - Image enhancement lookup table
+     &		fil,
+C!	                      FILTER  - Grid point filter (winds)
+     &		skp,
+C!			      IJSKIP  - Grid point skipping parameter
+     &		imc,
+C!                            IMCBAR  - Image color bar parameter
+     &		mscl,
+C!			      MSCALE  - Scale legend for maps
+     &		bli,
+C!			      BOXLIN  - Line type for box
+     &		reg,
+C!			      REGION  - Region type
+     &		tco,
+C!			      TXTCOL  - Text color
+     &		tty,
+C!			      TXTYPE  - Text type
+     &		tfl,
+C!			      TXTFIL  - Text file name
+     &		tlo,
+C!			      TXTLOC  - Text location
+     &		cln,
+C!			      COLUMN  - Number of columns
+     &		sha,
+C!			      SHAPE   - Object to draw
+     &		inf,
+C!			      INFO    - Shape information
+     &		loc,
+C!			      LOCI    - Point(s) associated with SHAPE
+     &		ali,
+C!			      ANOTLN  - Annotation line
+     &		aty
+C!			      ANOTYP  - Annotation type

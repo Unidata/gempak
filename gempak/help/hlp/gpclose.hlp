@@ -1,0 +1,25 @@
+GPCLOSE closes the specified graphics output window or file.
+
+INPUT PARAMETERS
+ 
+    DEVICE    Device|name|x size;y size|color type
+ 
+ 
+
+PROGRAM DESCRIPTION
+ 
+    GPCLOSE closes the graphics output window or file
+    specified in the DEVICE parameter.
+
+ 
+EXAMPLES
+ 
+    1. Close the window named "window2".
+
+	DEVICE	= xw|window2
+
+ERROR MESSAGES
+ 
+    [GPCLOSE  1]   Cannot close window. Blank name is invalid.
+    [GPCLOSE  -1]   Fatal error initializing TAE.
+    [GPCLOSE  -3]   Fatal error initializing GEMPLT.

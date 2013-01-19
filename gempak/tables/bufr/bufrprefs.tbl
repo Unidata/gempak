@@ -1,0 +1,32 @@
+! BUFRPREFS.TBL
+!
+! This table contains a list of preference settings for BUFR.  
+!
+!!
+! Log:
+! M. Li/SAIC		10/04	
+! D. Kidwell/NCEP	11/04	Updated for edition 3, version 11	
+! D. Kidwell/NCEP	11/04	Reordered corner points per UKMET
+! D. Kidwell/NCEP	 2/05	Set default as no London backup
+!----------------------------------------------------------------------------
+!
+! Areas to be included in BUFR section 2 for SWM
+AREAS_TO_INCLUDE         ICAO_EU;ICAO_ME;ICAO_AS;ICAO_NA 
+! Corner points of areas - lat/long for lower left, upper left, upper right, lower right
+ICAO_EU                  NO_LONDON_BACKUP
+ICAO_ME                  NO_LONDON_BACKUP
+ICAO_AS                  NO_LONDON_BACKUP
+ICAO_NA                  17.2_-54.1,_44.7_-101.7,_50.7_60.3,_19.7_10.0
+! Backup values for WAFC London
+ICAO_EU_BKUP             21.4_-21.6,_46.6_-56.6,_58.7_68.4,_26.4_33.4
+ICAO_ME_BKUP             10.0_17.0,_44.0_17.0,_44.0_70.0,_10.0_70.0
+ICAO_AS_BKUP             0.0_53.0,_36.0_53.0,_36.0_108.0,_0.0_108.0
+! Values for BUFR sections 0, 1 and 3.  Keep entries in the order given below.
+MASTER_TABLE             0
+EDITION                  3
+UPDATE_SEQ_NUMBER        0
+DATA_CATEGORY            7
+DATA_SUBCATEGORY         255
+VERSION_NUMBER_MASTER    11	
+VERSION_NUMBER_LOCAL     0	
+OBSERVED_DATA_FLAG       0

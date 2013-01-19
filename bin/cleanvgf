@@ -1,0 +1,15 @@
+#!/bin/csh
+#
+# CLEANVGF
+#
+# This script removes the working VGF file from the current directory.
+#
+##
+# Log:
+# S. Jacobs/NCEP	 4/98
+# T. Piper/SAIC		 9/02	Added cp commands
+
+set name = `whoami`
+if ( -e .DEFAULT.vgf ) cp .DEFAULT.vgf $HOME/$name.vgf 
+if ( -e .DEFAULT.vgf.save ) cp .DEFAULT.vgf.save $HOME/$name'_save.vgf'
+rm .DEFAULT.vgf .UNDO.vgf

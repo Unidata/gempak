@@ -1,0 +1,76 @@
+! upc_velimg.tbl
+!
+! Color table for NEXRAD II Velocity
+! S. Chiswell/Unidata
+!
+!Color name    Abrev   Red  Green   Blue  X color name
+BLACK           BLA      0      0      0  black
+                       191    239    255             LightBlue1
+                       178    223    238             LightBlue2
+                       154    192    205             LightBlue3
+                       104    131    139             LightBlue4
+                        30    144    255             DodgerBlue1
+                        28    134    238             DodgerBlue2
+                        24    116    205             DodgerBlue3
+                        16     78    139             DodgerBlue4
+                         0      0    255             blue1
+                         0      0    238             blue2
+                         0      0    205             blue3
+                         0      0    139             blue4
+                       154    255    154             PaleGreen1
+                       144    238    144             PaleGreen2
+                       124    205    124             PaleGreen3
+                        84    139     84             PaleGreen4
+                         0    255    127             SpringGreen1
+                         0    238    118             SpringGreen2
+                         0    205    102             SpringGreen3
+                         0    139     69             SpringGreen4
+                         0    255      0             green1
+                         0    238      0             green2
+                         0    205      0             green3
+                         0    139      0             green4
+                       211    211    211             LightGray
+                       190    190    190             grey
+                       119    136    153             LightSlateGrey
+                       112    128    144             SlateGrey
+                        47     79     79             DarkSlateGrey
+                       255    165      0             orange1
+                       238    154      0             orange2
+                       205    133      0             orange3
+                       139     90      0             orange4
+                       255    193     37             goldenrod1
+                       238    180     34             goldenrod2
+                       205    155     29             goldenrod3
+                       139    105     20             goldenrod4
+                       255    255      0             yellow1
+                       238    238      0             yellow2
+                       205    205      0             yellow3
+                       139    139      0             yellow4
+                       255    106    106             IndianRed1
+                       238     99     99             IndianRed2
+                       205     85     85             IndianRed3
+                       139     58     58             IndianRed4
+                       255    193    193             RosyBrown1
+                       238    180    180             RosyBrown2
+                       205    155    155             RosyBrown3
+                       139    105    105             RosyBrown4
+                       255      0      0             red1
+                       238      0      0             red2
+                       205      0      0             red3
+                       139      0      0             red4
+DKPURPLE        DKP    119      0    125
+!LTBLUE          LTB      0    224    255
+!MDBLUE          MDB      0    128    255
+!DKBLUE          DKB     50      0    150
+!LTGREEN         LTG      0    251    144
+!MDGREEN         MDG      0    187      0
+!DKGREEN         DKG      0    143      0
+!LTGRAY          LTG    205    192    159
+!DKGRAY          DKG    118    118    118
+!MDORANGE        MDO    248    135      0
+!MDYELLOW        MDY    255    207      0
+!YELLOW          YEL    255    255      0  yellow
+!DKRED           DKR    174      0      0
+!MDBROWN         MBR    208    112      0
+!RED             RED    255      0      0
+!DKPURPLE        DKP    119      0    125

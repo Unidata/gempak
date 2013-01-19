@@ -1,0 +1,23 @@
+     YAXIS
+
+     YAXIS contains the lower bound, upper bound, label increment, and 
+     frequency information separated by slashes in the form:
+
+		lower/upper/increment/lbfq;gdfq;tkfq
+
+     The frequencies for labels, grid lines, and tick marks follow the 
+     last slash and are separated with semicolons.  If the increment is 
+     positive, all the label values will be divisible by the increment.  
+     If it is negative, the label values will begin with the lower value 
+     and be separated by the increment.  The bounds and increment are for 
+     the scaled data.
+
+     Defaults will be supplied if no specification is given.  The following 
+     defaults will be used when appropriate:
+
+	vcoord	lower	upper	defaults
+	------	-----	-----	----------------
+	PRES	1020	100	Mandatory levels
+	THTA	270	400	10
+	HGHT	0	20000	1000
+

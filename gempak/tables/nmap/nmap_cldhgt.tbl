@@ -1,0 +1,33 @@
+!************************************************************************
+!* NMAP_CLDHGT.TBL							*
+!*									*
+!* This table contains default information for cloud-to-height option	*
+!* window.  The default code is as follow:				*
+!*									*
+!*  DISTANCE	  TEMPERATURE	  HEIGHT	  MAX SEARCH RADIUS	*
+!*									*
+!*  0 - KM	  0 - Celsius	  0 - Feet	  0 - Single		*
+!*  1 - MI	  1 - Kelvin	  1 - Meters      1 - Area		*
+!*  2 - NM								*
+!*									*
+!*  LEVEL	  TYPE OF PIXEL   RADIUS OF AREA  PIXEL VALUE		*
+!*									*
+!*  0 - Single	  0 - Single	  0 - Maximum	  0 - Maximum		* 
+!*  1 - Multiple  1 - Area	  1 - Mode	  1 - Mode		* 
+!*									*
+!* Log:									*
+!* T. Lee/GSC		 4/00	Created					*
+!* L. Hinson/AWC         6/12   Add Moist-Adiabatic Method Setting      *
+!*                              0-Standard Search/1-Moist Adiabatic     *
+!************************************************************************
+! Name		Default code
+!		
+DISTANCE              2
+TEMPERATURE           0
+HEIGHT                0
+MOIST_ADIABATIC       0
+MAX_SEARCH_RADIUS   540
+LEVEL                 0
+TYPE_OF_PIXEL         1
+RADIUS_OF_AREA       10
+PIXEL_VALUE           0

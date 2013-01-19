@@ -1,0 +1,83 @@
+
+
+                        Transform Subroutines
+
+
+GEMPLT has several coordinate systems for plotting and drawing.
+Subroutine GTRANS transforms a list of X/Y points from any of the
+coordinate systems into any other system.  The coordinate systems are
+arranged in a hierarchy.  The D coordinate system is at the bottom
+while the G system is at the top.  It is advantageous for application
+programs to use the highest possible coordinate system that fits the
+application.
+
+When items are plotted, their locations are in units of one of the
+coordinate systems.  Every plot command identifies a coordinate system.
+When plotted items exceed the boundaries of the system in which they are
+plotted, the items are clipped.
+
+  o  D coordinates are the native coordinates of the currently selected
+     graphics device.  Every device is different.  For example, if a
+     device is a 1024 by 1280 display screen, the coordinate units are
+     screen pixels.  The diagonal corners of the coordinate system are
+     (0, 0) and (1024, 1280).  Vertex (0, 0) may be any corner as
+     defined by the device.
+
+  o  N coordinates are normalized device coordinates.  N coordinate
+     limits range from 0 to 1 along the longest dimension and from 0 to
+     a value less than or equal to 1 along the other axis.  The limits
+     are determined as a linear scaling of the device coordinates.
+     Correction for the pixel aspect ratio is included in the
+     transformation from D to N coordinates.  Vertex (0, 0) is the lower
+     left corner of the plot space.
+
+     When a view region or margins are set, two clipped versions of N
+     coordinates result:
+
+     o  V coordinates, view coordinates, are the same as normalized
+	coordinates, but the clipping boundaries correspond to the
+	view region.
+
+     o  P coordinates, plot coordinates, are the same as normalized
+	coordinates, but the clipping boundaries correspond to the
+	region inside the margins.
+
+  o  M coordinates are the Earth or graph coordinates, depending on the
+     plotting mode (map or graph).  Clipping boundaries are the same as
+     for plot coordinates.
+
+     When plotting in map mode, M coordinates are the Earth's latitude/
+     longitude system.  Map projections are set to define a system that
+     transforms any point on the Earth into a (possibly infinite) plane,
+     a subregion that is scaled to the normalized coordinate system and
+     clipped as needed.
+
+     When plotting in graph mode, M coordinates are those coordinates
+     defined at the time that the graph is initially set.  For example,
+     if both graph axes are defined to range between 0 and 100, then a
+     point at (50, 50) is plotted in the center of the graph while a
+     point at (120, 300) is clipped.
+
+  o  G coordinates are grid coordinates.  The X and Y in this coordinate
+     system are the rows and columns of a grid.  Using the inverse of
+     the projection functions, grid point coordinates can be translated
+     into Earth coordinates.  The grid projection is independent of the
+     map coordinate projection; the grid can be displayed on a
+     projection different from the one native to the grid.  Clipping is
+     the same as for plot coordinates.
+
+In addition to the D, N, V, P, M, and G coordinate systems, there are
+additional coordinate systems used internally by GEMPLT.  For example,
+the plane into which M coordinates are transformed defines an L
+coordinate system that is linear.  Since the L system is different for
+each map projection, it is not generally used by application
+programmers.
+
+Subroutine GQBND is called to query the limits of any of the coordinate
+systems.  The bounds of the D, N, V, and P regions are returned exactly
+while the bounds of the M and G regions are estimates of the maximum and
+minimum values of the coordinates along each axis.
+
+Given a set of points in a particular coordinate system, subroutine
+GPTVIS tests which points will be visible and which points will be
+clipped if plotted.

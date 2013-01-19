@@ -1,0 +1,29 @@
+! CURSORREF.TBL
+!
+! This table contains the N_AWIPS cursor default setting information.
+!
+! The following is the mapping of name constants to reference indexes.
+! They are defined in gemprm.h.
+!
+! CURS_DEFAULT          0
+! CURS_POINT_SELECT     1
+! CURS_BUSY             2
+!
+! Possible cursor name choices come from cursortyp.tbl.
+! Possible cursor color choices are: red, black, green, yellow, cyan,
+! magenta and white.
+! It is required that the cursor references are listed in ascent order.
+! The maximum number of reference is limited to 10.
+!!
+! Log:
+! H. Zeng/EAI           04/00   Created
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!
+!REF. INDEX    REF. NAME          CURSOR_NAME      CURSOR_COLOR   
+!                (20)                (20)              (10)
+!
+     0         CURS_DEFAULT       SMALL_ARROW          red
+     1         CURS_POINT_SELECT  SMALL_CROSS          white
+     2         CURS_BUSY          SMALL_X              white
+!
+!

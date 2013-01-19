@@ -1,0 +1,28 @@
+! OFFSH.BULL
+!
+! This table contains the bulletin/station information to be used
+! with the Offshore Forecasts
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+!
+FZHW50 PHFO     HONOLULU/UNIV_OF_HI-MANOA_CAMPUS HI US  2130 -15782    20
+FZPN01 PANC     ANCHORAGE_INTL_ARPT              AK US  6118 -15000    44
+FZNT21 KWBC     BOSTON/LOGAN_INTL_&              MA US  4237  -7103     9
+FZNT22 KWBC     WASHINGTON/DULLES                VA US  3895  -7844    98
+FZNT23 KWNM     WASHINGTON/DULLES                VA US  4050  -6860    98
+FZNT24 KWNM     WASHINGTON/DULLES                VA US  3662  -7383    98
+FZNT25 KWNM     WASHINGTON/DULLES                VA US  3232  -7765    98
+FZNT23 KNHC     MIAMI/TROPICAL_PREDICTION_CENTER FL US  2575  -8040     0
+FZNT24 KNHC     MIAMI/TROPICAL_PREDICTION_CENTER FL US  2675  -8140     0
+FZNT25 KNHC     MIAMI/TROPICAL_PREDICTION_CENTER FL US  2375  -8050     6
+FZNT26 KNHC     MIAMI/TROPICAL_PREDICTION_CENTER FL US  2825  -7750     6
+FZNT27 KNHC     MIAMI/TROPICAL_PREDICTION_CENTER FL US  2700  -8850     6
+FZPN22 KWNM     WASHINGTON/DULLES                VA US  3340 -12240    98
+FZPN23 KWNM     WASHINGTON/DULLES                VA US  3783 -12455    98
+FZPN24 KWNM     WASHINGTON/DULLES                VA US  4560 -12650    98
+FZPN25 KWBC     SEATTLE-TACOMA_INTL              WA US  4745 -12230   137
+FZPN26 KWBC     SAN_FRANCISCO_INTL               CA US  3762 -12238     5

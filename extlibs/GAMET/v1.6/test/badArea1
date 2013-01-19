@@ -1,0 +1,76 @@
+# comment lines begin with #
+# NOTE this particular file has a bad AREA 1 (line missing)`
+# File can create a gamet structure using the following
+# $ Start a Gamet
+# % Start an element type (may be > 1 / gamet )
+# ! Start an area (may be > 1 / element type )
+# !! End an area
+# %% End an element type
+# $$ End a Gamet
+#START GAMET
+$
+KZLC
+KKCI
+SALT LAKE CITY FIR BLW FL450
+22
+18
+OR ID MT WY NV UT
+2
+#extra line below is ignoredd`
+Cat in Hat
+#START ELEM
+#  Structure filled for element type SIG CLD  
+%
+sig cld
+3
+#  1st area of element SIG CLD (CIG) 
+#START AREA
+!
+#NOTE THE AREA will not be read`
+#50SW YXH TO 60ESE HVR TO 50W MLS TO 20W BIL TO 40SSW YQL TO 50SW YXH
+
+OVC CIG BLW 10/080
+0 1 1
+MT
+!!
+#END AREA
+#START AREA
+# 2nd area of element SIG CLD (CIG) 
+!
+MLD TO 20E SLC TO DTA TO BVL TO 50WSW MLD TO MLD
+BKN CIG BLW 010/060
+0 0 1
+ID UT
+#END AREA
+!!
+# Structure filled for element type SIG CLD (TCU) 
+!
+#START AREA
+# 3rd area of element SIG CLD (TCU) 
+80NNW DNJ TO 50NW DLN TO DBS TO 30NW TWF TO 30SSE BKE TO 80NNW DNJ
+OCNL TCU 100/FL300
+1 0 0
+OR ID MT
+!!
+#END AREA
+#END ELEM
+%%
+# End element SIG CLD (TCU) 
+#  Structure for element type ICE 
+%
+#START ELEM
+ice
+1
+#START AREA
+# 1st area of element ICE 
+!
+YXC TO 70SSW YYN TO 50WSW ISN TO 90SSW MLS TO BIL TO 50E JAC TO 20N PIH TO 40N DNJ TO YXC
+MOD RIME ICGIC 090/FL180
+0 1 1
+ID MT WY
+#END AREA
+!!
+%%
+#END ELEMENT
+$$
+#END GAMET

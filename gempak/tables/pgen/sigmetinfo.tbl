@@ -1,0 +1,112 @@
+!************************************************************************
+! SIGMETINFO.TBL
+!
+! This table contains SIGMET information.  The maximum length of strings 
+! is shown in parenthesis.  Types use the following shorthand:
+!
+!	INTL	International SIGMET
+!	CONV	Convective SIGMET
+!	NCON	Non-convective SIGMET
+!	AIRM	AIRMET
+!	OUTL	Convective outlook
+!
+!!
+! Log:
+! D.W.Plummer/NCEP	 8/99
+! S. Schotz/NCEP	 9/99	Updated, improved documentation
+! D.W.Plummer/NCEP	 9/99	Added phenom,movement,trend,remarks,fcstr
+! S. Schotz/NCEP	 9/99	Modified remarks for Int sigmet
+! S. Schotz/NCEP	11/99	Updated with new remarks and phenomenon
+! S. Schotz/NCEP	12/99	Corrected areas for outlooks
+! D.W.Plummer/NCEP	 1/00	Corrected areas for non-conv outlooks
+! D. Kidwell/NCEP	 4/00	Added area KKCI for Intl sigmet   
+! F. J. Yen/NCEP	 8/00	Added volcano names and new remarks
+! F. J. Yen/NCEP	 9/00	Added tc, tropical storm and tr. depression
+! D.W.Plummer/NCEP       6/01   Added "-none-" as TREND option
+! H. Zeng/XTRIA         11/02   modified for NxmVolcano.c
+! F. J. Yen/NCEP         5/03   mod'd for PHFO, PGUM, & PANC Intl sigmets
+! J. Lewis/AWC		 2/05	mod'd for PAWU Intl sigmets
+! J. Lewis/AWC           2/05   update forecaster list
+! J. Lewis/AWC		05/07	removed old MWO identifiers for Intl sigmets
+! J. Lewis/AWC		05/07	removed forecaster names
+! J. Lewis/AWC		05/07	changed Anchorage_Oceanic to Anchorage
+! S. Jacobs/NCEP	 3/10	Changed KZOA to KZAK
+!************************************************************************
+!
+!		Communications Identifiers	(max 20, each 4)
+!
+!
+AIRM	AREA	KSFO;KSLC;KCHI;KDFW;KBOS;KMIA;PHNL;PANC;PAFA;PAJN
+CONV	AREA 	KMKC 	
+INTL	AREA	KKCI;KNHC;PHFO;PAWU
+NCON	AREA	KSFO;KSLC;KCHI;KDFW;KBOS;KMIA;PHNL;PANC;PAFA;PAJN
+OUTL	AREA 	KSFO;KSLC;KCHI;KDFW;KBOS;KMIA;PHNL;PANC;PAFA;PAJN	
+!
+!
+!
+!
+!		Product Identifiers	(max 20, each 10)
+!	
+!	Airmet - Phenomenon 
+!	Convective, Outlook - Region
+!	International - Alphanumeric designator
+!	Non-Convective - Alphanumeric designator
+	
+!
+AIRM	ID	SIERRA;TANGO;ZULU
+CONV	ID 	EAST;CENTRAL;WEST	
+INTL	ID	ALFA;BRAVO;CHARLIE;DELTA;ECHO;FOXTROT;GOLF;HOTEL
+INTL	ID	INDIA;JULIETT;KILO;LIMA;MIKE
+INTL    ID      NOVEMBER;OSCAR;PAPA;QUEBEC;ROMEO
+INTL    ID      SIERRA;TANGO;UNIFORM;VICTOR;WHISKEY;XRAY;YANKEE;ZULU
+NCON	ID	NOVEMBER;OSCAR;PAPA;QUEBEC;ROMEO;UNIFORM;VICTOR
+NCON	ID	WHISKEY;XRAY;YANKEE
+OUTL	ID 	EAST;CENTRAL;WEST	
+!
+!	Phenomenon	(max 10)
+!
+!		phenomenon(32)
+!
+AIRM	PHEN 	IFR;TURB;ICE	
+CONV	PHEN	TORNADO;HAIL;WIND_GUSTS
+INTL	PHEN	FRQ_TS;OBSC_TS;EMBD_TS;SQL_TS
+INTL    PHEN    WDSPR_TS;ACT_TS;ISOL_SEV_TS;MOD_TO_SEV_CAT
+INTL    PHEN    MOD_OCNL_SEV_TURB;MOD_OCNL_SEV_CAT_TURB
+INTL    PHEN    MOD_TURB;SEV_TURB;OCNL_SEV_TURB
+INTL	PHEN	SEV_ICE;SEV_ICE_(FZRA)	
+INTL	PHEN 	ISOL_CB;OCNL_CB;FRQ_CB	
+INTL	PHEN	MOD-SEV_TURB;MOD-SEV_ICE;VOLCANIC_ASH;TROPICAL_CYCLONE
+INTL	PHEN	TROPICAL_STORM;TROPICAL_DEPRESSION
+NCON	PHEN	TURBULENCE;ICING;DUST_STORM;VOLCANIC_ERUPTION
+!
+!		speed (4) and direction (4)
+!
+ALL	SPEED	5;10;15;20;25;30;35;40;45;50
+ALL	DIRECT	N;NNE;NE;ENE;E;ESE;SE;SSE;S;SSW;SW;WSW;W;WNW;NW;NNW
+!
+!
+!
+!		FIR Identification (max 20, presented to user in order given)
+!
+!  	FIR (4|26)
+!
+INTL    FIR     PAZA|ANCHORAGE
+INTL    FIR     KZHU|HOUSTON_OCEANIC
+INTL    FIR     KZMA|MIAMI_OCEANIC
+INTL    FIR     KZNY|NEW_YORK_OCEANIC
+INTL    FIR     KZAK|OAKLAND_OCEANIC
+INTL    FIR     TJZS|SAN_JUAN
+!
+!
+!		trend(8), presented to user in order given
+!
+INTL	TREND	-none-;NC;WKN;INTSF
+!
+!		remarks(80), presented to user in order given
+!
+INTL	REM	-none-;BASED_ON_SATELLITE_OBS
+INTL	REM	BASED_ON_ACFT_AND_SAT;BASED_ON_LATST_ADVSRY;
+INTL	REM	BASED_ON_SAT_AND_LTG_OBS
+INTL	REM	BASED_ON_SATELLITE_OBS_AND_LATEST_ADVSRY
+INTL	REM	BASED_ON_LATEST_WASHINGTON_VAAC_ADVISORY
+INTL	REM	BASED_ON_ACFT_RPT

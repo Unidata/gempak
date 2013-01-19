@@ -1,0 +1,16 @@
+! LFP.BULL
+!
+! Location information for the following product:
+! Local_Forecast.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+FLKA80 PTKK     TRUK/MOEN_FLT_S                  -- KA   746  15185     0
+FLKA80 PTKR     WSO_KOROR                        -- KA   726  13444     0
+FLKA80 PTTP     WSO_POHNPEI                      -- KA   694  15825     0
+FLKA80 PTYA     YAP_ISLAND                       -- KA   947  13808     0
+FLMH80 PKMR     WSO_MAJURO                       -- MH   705  17127     0
+FLUS86 KMTR     SAN_FRANCISCO                    CA US  3659 -12184     0

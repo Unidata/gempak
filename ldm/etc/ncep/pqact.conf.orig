@@ -1,0 +1,591 @@
+####
+# $Id: pqact.conf,v 1.6 1995/04/05 21:37:54 mitch Exp $
+#
+# This is an example pqact.conf file, with example entries commented out.
+# Before uncommenting these, you should determine whether you need them, and
+# make relevant substitutions, for example your local host name for
+# @local-host-name@.  Uses of the "@" character are to delimit such
+# meta-variables, and should not appear in the substitutions.
+#
+# Format is
+# feedtype tab pattern tab action [tab action_args]
+# where tab is \t or \n\t.
+#
+# Actions are
+#
+#	NOOP
+#		Do nothing
+#
+#	FILE	[-overwrite|-flush|-close|-strip] filename
+#		write(2) to unix file (flush calls fsync(2))
+#
+#	STDIOFILE	[-overwrite|-flush|-close|-strip] filename
+#		fwrite(3) (buffered io) to file (flush calls fflush(3))
+#
+#	DBFILE	dbfilename [dbkey]
+#		Put to gdbmfile.
+#
+#	PIPE	[-close|-strip] commandname [args]
+#		Put data on stdin of a subprocess specified by
+#			commandname [args].
+#		Uses the execvp library call, so if commandname is not fully
+#		qualified, the PATH environment variable will be used.
+#
+#	EXEC	[-wait] commandname [args ...]
+#		Run a program. No io channel between this process and it.
+#		Like PIPE above, uses execvp.
+#
+# Note that the old ALLOW and ACCEPT access control actions are not handled
+# by pqact, but by rpc.ldmd instead.  ALLOW and ACCEPT lines should be moved
+# into the ldmaccess.conf configuration file.
+#
+# The old BEGIN EXEC actions used to start up other programs (for example
+# surf_split and feedhere) when the LDM server is started should no longer
+# appear here.  Instead these programs should be started by runpg as
+# specified in the ldmadmin.conf configuration file instead.
+#
+# The '-strip' option to FILE, STDIOFILE, & PIPE removes control characters
+# (other than the '\n') from the data before output. This is useful for
+# cleaning up WMO format text bulletins (like the ldm3  STRIP psuedo action).
+#
+# To check the syntax of the pqact.conf file, execute pqact with the product
+# queue specified as /dev/null:
+#
+#	pqact -vxl- -q /dev/null pqact.conf
+#
+
+####								PPS
+# Special actions for local text products and other text products of local
+# interest.
+#
+# File the zone forecast in a place for "finger weather@unidata.ucar.edu",
+# assumes a mythical use named "weather" with login directory data/weather.
+# Substitute your zonal center for "@zone@", e.g. "KDEN" for Denver.
+#PPS	^FPUS05 @zone@
+#	FILE	-overwrite -close data/weather/.plan
+#
+# Append local watches and warnings to local weather file
+#PPS	^W..... @zone@
+#	FILE	-close data/weather/.plan
+#
+# Put latest zone forecast in place for mailings via cron
+#PPS	^FPUS05 @zone@  [0-3][0-9]
+#	FILE	-overwrite -close data/weather/zone
+#
+# Mail local severe weather bulletins to local mail alias "severe_@zone@"
+#PPS	^W[FMRUW]US.. @zone@
+#	PIPE	-close /usr/ucb/mail -s "Severe Weather (@zone@)" severe_@zone@
+#
+# Mail earthquake reports to local "earthquakes" mailing list.
+#PPS	^SE	PIPE	-close
+#		 /usr/ucb/mail -s "Earthquake report" earthquakes
+#
+# File US summary weather
+#PPS	^ABUS01 KWBC
+#	FILE	-overwrite -close data/weather/summary
+#
+# File notices from NWS and NMC in monthly file logs/MMM-notices.wmo.
+#PPS	^N[FO].... .... ([0-3][0-9])
+#	FILE	logs/(\1:mmm)-notices.wmo
+
+####							DDS IDS PPS
+# Create raw files for WXP.  These entries file raw data where WXP decoders
+# and scripts expect to find it.
+#
+##
+# Watch boxes in yymmddhh_wws.wmo
+#PPS	^WWUS40 .... ([0-3][0-9])([0-2][0-9])
+#	FILE	data/severe/(\1:yy)(\1:mm)\1\2_wws.wmo
+##
+# Fronts in yymmddhh_frt.wmo
+#DDS	^ASUS01 .... ([0-3][0-9])([0-2][0-9])
+#	FILE	data/surface/front/(\1:yy)(\1:mm)\1\2_frt.wmo
+##
+# Buoy reports in yymmddhh_boy.wmo
+#DDS|IDS	^S[NS].... .... ([0-3][0-9])([0-2][0-9])
+#	STDIOFILE	data/surface/boy/(\1:yy)(\1:mm)\1\2_boy.wmo
+##
+# Radar in yymmddhh_rad.wmo
+#DDS	^SD.... .... ([0-3][0-9])([0-2][0-9])
+#	STDIOFILE	data/surface/rad/(\1:yy)(\1:mm)\1\2_rad.wmo
+##
+# US and Canadian sfc obs and specials in hourly files yymmddhh_sao.wmo
+#DDS|IDS	^S[AP][ACHMNPUX][AEKMNSUWX].. .... ([0-3][0-9])([0-2][0-9])
+#	STDIOFILE	data/surface/sao/(\1:yy)(\1:mm)\1\2_sao.wmo
+##
+# upper air reports in hourly files yymmddhh_upa.wmo
+#DDS|IDS	^U[ABDEFGHIJKLMPQRSTXZ].... .... ([0-3][0-9])([0-2][0-9])
+#	STDIOFILE	data/upperair/(\1:yy)(\1:mm)\1\2_upa.wmo
+##
+# fous in yymmddhh.mod
+#DDS	^FO.... .... ([0-3][0-9])([0-2][0-9])
+#	STDIOFILE	data/forecasts/mod/(\1:yy)(\1:mm)\1\2_mod.wmo
+##
+# Synoptic reports (SYNOP,SHIP) in yymmddhh_syn.wmo
+#DDS|IDS	^S[IMN].... .... ([0-3][0-9])([0-2][0-9])
+#	STDIOFILE	data/surface/syn/(\1:yy)(\1:mm)\1\2_syn.wmo
+#
+# US and Canadian SHEF data hourly files yymmddhh_river.wmo
+#DDS|IDS	^SRUS.. .... ([0-3][0-9])([0-2][0-9])
+#	STDIOFILE	data/surface/shef/(\1:yy)(\1:mm)\1\2_river.wmo
+##
+# Bulletins for wxptxt script
+##
+# Forecasts in yymmddhh_for.wmo
+#DDS|PPS	^F[PTXEQWZ].... .... ([0-3][0-9])([0-2][0-9])
+#	STDIOFILE	data/forecasts/(\1:yy)(\1:mm)\1\2_for.wmo
+##
+# severe data in yymmddhh_sev.wmo
+#DDS|PPS	^W..... .... ([0-3][0-9])([0-2][0-9])
+#	STDIOFILE	data/severe/(\1:yy)(\1:mm)\1\2_sev.wmo
+#DDS|PPS	^AC.... .... ([0-3][0-9])([0-2][0-9])
+#	STDIOFILE	data/severe/(\1:yy)(\1:mm)\1\2_sev.wmo
+##
+# summary data in yymmddhh_sum.wmo
+#DDS|PPS	^A[BCS].... .... ([0-3][0-9])([0-2][0-9])
+#	STDIOFILE	data/summary/(\1:yy)(\1:mm)\1\2_sum.wmo
+#
+# End WXP4
+
+####								HRS
+# Decode HRS GRIB products with gribtonc.
+#
+# Invoke gribtonc(1) decoder to read GRIB products from NMC and ECMWF
+# models and decode into netCDF files.  Multiple products are stored in each
+# file by "stitching together" subgrids into global grids and storing
+# multiple levels and forecast times for each parameter as multidimensional
+# netCDF variables.
+#
+##
+# NMC Early domestic on G grid (NGM model), decode into yymmddhh_n?.nc
+#
+#HRS	^H([EHOPRTUVX])G[A-Z](10|15|20|25|30|40|50|70|85|90|98|99) KWBC ([0-3][0-9])([0-2][0-9])
+#	PIPE	/usr/local/ldm/bin/gribtonc
+#		etc/nps_n\1.cdl		data/GRIB/(\3:yy)(\3:mm)\3\4_n\1.nc
+#HRS	^H([PTUV])G[A-Z]97 KWBC ([0-3][0-9])([0-2][0-9])
+#	PIPE	/usr/local/ldm/bin/gribtonc
+#		etc/nps_n\1T.cdl 	data/GRIB/(\2:yy)(\2:mm)\2\3_n\1T.nc
+#
+##
+# NMC Extended range on E,F grids (MRF model), decode into ymmddhh_m?.nc
+#
+#HRS	^H([PH])[EF][L-Y][0-9][0-9] KWBC ([0-3][0-9])([0-2][0-9])
+#	PIPE	/usr/local/ldm/bin/gribtonc
+#		etc/nps_m\1.cdl 	data/GRIB/(\2:yy)(\2:mm)\2\3_m\1.nc
+#HRS	^H([UV])[EF][L-Y]99 KWBC ([0-3][0-9])([0-2][0-9])
+#	PIPE	/usr/local/ldm/bin/gribtonc
+#		etc/nps_m\1.cdl 	data/GRIB/(\2:yy)(\2:mm)\2\3_m\1.nc
+#
+##
+# NMC Global on A,B,C,D grids (aviation model), decode into yymmddhh_a?.nc
+#
+#    Tropopause Geoptl. Hgt., Pressure, and Temperature
+#        on 6 hour intervals thru 48 hours, 60 & 72 hours
+#
+#HRS	^H([HPTUV])[A-D][A-K]97 KWBC ([0-3][0-9])([0-2][0-9])
+#	PIPE	/usr/local/ldm/bin/gribtonc
+#		etc/nps_a\1T.cdl data/GRIB/(\2:yy)(\2:mm)\2\3_a\1T.nc
+#
+##
+#    Pressure and UV wind at Max wind level, on 6 hour intervals thru 42 hours
+#
+#HRS	^H([PUV])[A-D][A-H]96 KWBC ([0-3][0-9])([0-2][0-9])
+#	PIPE	/usr/local/ldm/bin/gribtonc
+#		etc/nps_a\1M.cdl  data/GRIB/(\2:yy)(\2:mm)\2\3_a\1M.nc
+#
+##
+#    Relative Humidity on 6 hour intervals thru 48 hours, 60 & 72 hours
+#
+#HRS	^H(R)[A-D][A-K](85|70|50|40|30) KWBC ([0-3][0-9])([0-2][0-9])
+#	PIPE	/usr/local/ldm/bin/gribtonc
+#		etc/nps_a\1.cdl data/GRIB/(\3:yy)(\3:mm)\3\4_a\1.nc
+#
+##
+#    Surface Pressure on 6 hour intervals thru 48 hours, 60 & 72 hours
+#
+#HRS	^H(P)[A-D][A-K]98 KWBC ([0-3][0-9])([0-2][0-9])
+#	PIPE	/usr/local/ldm/bin/gribtonc
+#		etc/nps_a\1.cdl data/GRIB/(\2:yy)(\2:mm)\2\3_a\1.nc
+#
+##
+#    Geoptl. hgt, Temperature, UV winds
+#    on 6 hour intervals thru 48 hours, 60 & 72 hours
+#
+#HRS	^H([HTUV])[A-D][A-K](99|85|70|50|40|30|25|20|15|10) KWBC ([0-3][0-9])([0-2][0-9])
+#	PIPE	/usr/local/ldm/bin/gribtonc
+#		etc/nps_a\1.cdl data/GRIB/(\3:yy)(\3:mm)\3\4_a\1.nc
+#
+##
+# NMC Special products on T,U grids, decode into yymmddhh_sP.nc
+#
+#
+#    Snow Cover over northern hemisphere
+#
+#HRS	^H(S)[TU]A98 KWBC ([0-3][0-9])([0-2][0-9])
+#	PIPE	/usr/local/ldm/bin/gribtonc
+#		etc/nps_s\1.cdl data/GRIB/(\2:yy)(\2:mm)\2\3_s\1.nc
+#
+#    Snow Cover over southern hemisphere decode to yymmddhh_ssP.nc
+#    (Do these products exist?)
+#HRS	^H(S)[VW]A98 KWBC ([0-3][0-9])([0-2][0-9])
+#	PIPE	/usr/local/ldm/bin/gribtonc
+#		etc/nps_s\1.cdl data/GRIB/(\2:yy)(\2:mm)\2\3_ss\1.nc
+##
+# NMC Oceanographic products
+#
+#    Sea Surface Temperature on 2 degree grid
+#
+#HRS	^H(T)[T-W]A93 KWBC ([0-3][0-9])([0-2][0-9])
+#	PIPE	/usr/local/ldm/bin/gribtonc
+#		etc/nps_oT2.cdl data/GRIB/(\2:yy)(\2:mm)\2\3_oT2.nc
+#
+##
+#    Sea Surface Temperature
+#
+#HRS	^H(T)[A-D]A93 KWBC ([0-3][0-9])([0-2][0-9])
+#	PIPE	/usr/local/ldm/bin/gribtonc
+#		etc/nps_o\1S.cdl data/GRIB/(\2:yy)(\2:mm)\2\3_o\1S.nc
+#
+##
+#    Sea Surface Geoptl. Hgt; Primary Wave Period & Direction
+#
+#HRS	^H([KL])[A-D][CEIK]93 KWBC ([0-3][0-9])([0-2][0-9])
+#	PIPE	/usr/local/ldm/bin/gribtonc
+#		etc/nps_o\1.cdl data/GRIB/(\2:yy)(\2:mm)\2\3_o\1.nc
+#HRS	^H(H)[A-D][CEIK]93 KWBC ([0-3][0-9])([0-2][0-9])
+#	PIPE	/usr/local/ldm/bin/gribtonc
+#		etc/nps_o\1W.cdl data/GRIB/(\2:yy)(\2:mm)\2\3_o\1W.nc
+#
+##
+#    UV wind at Sea Surface
+#
+#HRS	^H([UV])[A-D][CEIK]98 KWBC ([0-3][0-9])([0-2][0-9])
+#	PIPE	/usr/local/ldm/bin/gribtonc
+#		etc/nps_o\1.cdl data/GRIB/(\2:yy)(\2:mm)\2\3_o\1.nc
+#
+#
+##
+# ECMWF GRIB products, decode into yymmddhh_e[HPTUV].nc
+#
+#HRS	^H([HPTUV])[A-L][A-Z][0-9][0-9] ECMF ([0-3][0-9])([0-2][0-9])
+#	PIPE	/usr/local/ldm/bin/gribtonc
+#		etc/nps_e\1.cdl data/GRIB/(\2:yy)(\2:mm)\2\3_e\1.nc
+##
+#
+# ETA 80 km model output for continental US on Lambert conformal grid
+# decode into into yymmddhh_eta.nc
+#
+#HRS	^Y..... KWBC ([0-3][0-9])([0-2][0-9])
+#	PIPE	/usr/local/ldm/bin/gribtonc
+#		etc/eta0.cdl data/GRIB/(\1:yy)(\1:mm)\1\2_eta.nc
+
+####								HRS
+#
+# ECMWF Grid products are duplicated in their GRIB products, so ignore these
+# Also ignore NMC GRID-format products
+#
+#HRS	^G..... ECMF	NOOP
+#HRS	^G..... KWBC	NOOP
+##
+#
+# MRF 1.25 degree model output on the infamous thinned quasi-regular "grids"
+# We can't handle these yet, so ignore or file in raw GRIB format
+#
+#HRS	^H.[I-P]... KWBC ([0-3][0-9])([0-2][0-9]).*[/mAVN|/mSSIAVN]
+#	NOOP
+#
+#HRS	^H.[I-P]... KWBC ([0-3][0-9])([0-2][0-9]).*[/mAVN|/mSSIAVN]
+#	FILE	data/GRIB/(\1:yy)(\1:mm)\1\2_thinned.GRB
+
+##
+# Profiler data in EBUFR format.  
+#
+#HRS	^IUAX	NOOP
+#HRS	^IUAT	NOOP
+#HRS	^IUPT.*.... ([0-3][0-9])([0-2][0-9])
+#	STDIOFILE	data/upperair/(\1:yy)(\1:mm)\1\2_prf.wmo
+
+
+####								HRS
+# Put everything else (e.g. new products that we don't know about) in daily
+# "else" file.  Watch these to see when new products get added to HRS.  Be
+# sure to ignore HRS products above you aren't interested in or this file
+# could get very large.
+#
+#HRS	^_ELSE_$	FILE	data/GRIB/%m%d_else.wmo
+
+####								HRS
+# GEMPAK actions for HRS
+#
+#-----------------------------------------------------------------
+#
+#  Pattern/Action file for NMC gridded data products
+#
+#  Jim Cowie (NPS) 10/89
+#  P.Bruehl (Unidata) 3/93
+#-----------------------------------------------------------------
+#
+# NMC GRIB products
+#
+#  NGM grids - grid G
+#
+#HRS	^H[EHOPRTUVX]G[A-Z][0-9][0-9] KWBC ([0-3][0-9])([0-2][0-9])..
+#	PIPE	/usr/local/ldm/decoders/gribtogem
+#		PACK data/gempak/hrs/(\1:yy)(\1:mm)\1\2_n.gem
+#
+#  Spectral grids - grids A,B,C,D Global grid
+#
+#HRS	^H[HPRTUV][ABCD][A-Z][0-9][0-9] KWBC ([0-3][0-9])([0-2][0-9])..
+#	PIPE	/usr/local/ldm/decoders/gribtogem
+#		PACK data/gempak/hrs/(\1:yy)(\1:mm)\1\2_a.gem
+#
+#  MRF grids - Extended range grids E and F
+#
+#HRS	^H[HPUV][EF][A-Z][0-9][0-9] KWBC ([0-3][0-9])([0-2][0-9])..
+#	PIPE	/usr/local/ldm/decoders/gribtogem
+#		PACK data/gempak/hrs/(\1:yy)(\1:mm)\1\2_m.gem
+#
+#  Oceanic products - Analysis (surf tmp) & Forecasts (wind & waves)
+#
+#HRS	^H[HKLTUV][A-D][ACEIK]93 KWBC ([0-3][0-9])([0-2][0-9])..
+#	PIPE	/usr/local/ldm/decoders/gribtogem
+#		PACK data/gempak/hrs/(\1:yy)(\1:mm)\1\2_f.ocn
+#
+# ECMWF GRIB products, decode into yymmdd_e.gem (e1=global,e2=+/-35lat)
+#
+#HRS	^H[HPT][A-L][A-Z][0-9][0-9] ECMF ([0-3][0-9])([0-2][0-9])
+#	PIPE	/usr/local/ldm/decoders/gribtogem
+#		PACK data/gempak/hrs/(\1:yy)(\1:mm)\1\2_e1.gem
+#
+#HRS	^H[UV][A-L][A-Z][0-9][0-9] ECMF ([0-3][0-9])([0-2][0-9])
+#	PIPE	/usr/local/ldm/decoders/gribtogem
+#		PACK data/gempak/hrs/(\1:yy)(\1:mm)\1\2_e2.gem
+#
+# ETA 80 km model output for continental US on Lambert conformal grid
+# decode into into yymmddhh_eta.gem
+#
+#HRS	^Y..... KWBC ([0-3][0-9])([0-2][0-9]).*/mETA
+#	PIPE	/usr/local/ldm/decoders/gribtogem
+#		PACK data/gempak/hds/(\1:yy)(\1:mm)\1\2_eta.gem
+#
+# RUC MAPS model output decoded into yymmddhh_ruc.gem
+#
+#HRS	^[YZ]..... KWBC ([0-3][0-9])([0-2][0-9]).*/mRUC
+#	PIPE	/usr/local/ldm/decoders/gribtogem
+#		PACK data/gempak/hds/(\1:yy)(\1:mm)\1\2_ruc.gem
+#
+# AVN model output decoded into yymmddhh_avn211.gem
+#
+#HRS	^[YZ]..... KWBC ([0-3][0-9])([0-2][0-9]).*/mAVN
+#	PIPE	/usr/local/ldm/decoders/gribtogem
+#		PACK data/gempak/hds/(\1:yy)(\1:mm)\1\2_avn211.gem
+#
+# NGM model output decoded into yymmddhh_ngm211.gem
+#
+#HRS	^[YZ]..... KWBC ([0-3][0-9])([0-2][0-9]).*/mNGM
+#	PIPE	/usr/local/ldm/decoders/gribtogem 
+#		PACK data/gempak/hds/(\1:yy)(\1:mm)\1\2_ngm211.gem
+#
+# GEMPAK decoder for profiler data
+#
+#HRS	^IUPT.* .... ([0-3][0-9])([0-2][0-9])
+#	PIPE	/usr/local/ldm/decoders/prtogem
+#	/home/gempak/nawips/ldm4bridge/prtogem/prstns.tbl 41 24
+#	/home/gempak/nawips/ldm4bridge/prtogem/bufr2.tableb.mt0.ver2.l0
+#	/home/gempak/nawips/ldm4bridge/prtogem/bufr2.tabled.mt0.ver2.l0
+#	(\1:yyyy)(\1:mm)
+#	data/gempak/profiler/(\1:yy)(\1:mm)\1.gem
+
+####								DDS IDS
+# GEMPAK products (surface, upperair).  Make sure paths to tables
+# are correct for your system.
+#
+# US and Canadian sfc obs and specials
+#
+#DDS|IDS	^S[AP][ACHMNU][AEKMNSWX].* .... ([0-3][0-9])
+#	PIPE	/usr/local/ldm/decoders/satogem
+#		/home/nawips/gempak5.2/tables/sfpack.tbl
+#		/home/nawips/gempak5.2/tables/sfstns.tbl 2000 24 (\1:yyyy)(\1:mm)
+#		data/gempak/surface/sao/(\1:yy)(\1:mm)\1.gem
+#
+# upper air reports
+#
+#DDS|IDS	^U[GJKLMQS][ABCGHJMPSU][ACFKMNRSUWX].* .... ([0-3][0-9])
+#	PIPE	/usr/local/ldm/decoders/uatogem
+#	/home/nawips/gempak5.2/tables/snworld.tbl 1690 8 (\1:yyyy)(\1:mm)\1
+#		data/gempak/upperair/(\1:yy)(\1:mm)\1.gem
+#
+# Synoptic reports (SYNOP) North America in yymmddhh.gem
+#
+#DDS|IDS	^S[IMN][^VW].* .... ([0-3][0-9])
+#	PIPE	/usr/local/ldm/decoders/sytogem
+#	/home/nawips/gempak5.2/tables/sypack.tbl
+#	/home/nawips/gempak5.2/tables/systns.tbl 2000 24 (\1:yyyy)(\1:mm)
+#	data/gempak/surface/syn/(\1:yy)(\1:mm)\1.gem
+#
+# Synoptic reports (SYNOP) Non North America in yymmddhh.world
+#
+#DDS|IDS	^S[IMN][^VW].* .... ([0-3][0-9])
+#	PIPE	/usr/local/ldm/decoders/sytogem 
+#	/home/nawips/gempak5.2/tables/sypack.tbl
+#	/home/nawips/gempak5.2/tables/synonna.tbl 2000 24 (\1:yyyy)(\1:mm)
+#	data/gempak/surface/syn/(\1:yy)(\1:mm)\1.world
+#
+# buoy and ship reports m
+#
+#             Bouys in yymmdd_boy.gem
+#
+#DDS|IDS	^S[IMN]V.(1[5-9]|2[0-6]|4[5-6]) .... ([0-3][0-9])
+#	PIPE	/usr/local/ldm/decoders/sytogem 
+#	/home/nawips/gempak5.2/tables/sbpack.tbl 3999
+#	(\2:yyyy)(\2:mm) data/gempak/surface/boy/(\2:yy)(\2:mm)\2_boy.gem
+#
+#             Bouys in yymmdd_shp.gem
+#
+#DDS|IDS	^S[IMN]V[^NS](0[0-9]|1[0-4]) [^CK]... ([0-3][0-9])
+#	PIPE	/usr/local/ldm/decoders/sytogem 
+#	/home/nawips/gempak5.2/tables/sbpack.tbl 3999
+#	(\2:yyyy)(\2:mm) data/gempak/surface/boy/(\2:yy)(\2:mm)\2_shp.gem
+#
+
+####								MCIDAS
+# Pattern/actions for the Unidata/Wisconsin (i.e. McIDAS) data stream.
+# See the man page documentation for gunrv2, lwfile, lwtmd2, and lwtoa3
+# for more info on how to customize these.
+#
+# GRID files:
+#
+#MCIDAS	^(GUNRV2 .*)
+#	PIPE
+#	-close gunrv2 -d data/mcidasd
+#
+# Opaque files:
+#
+#MCIDAS	^(LWFILE .*)
+#	PIPE
+#	-close lwfile -d data/mcidasd
+#
+# MD files:
+#
+#MCIDAS	^(LWTMD2 .*)
+#	PIPE
+#	-close lwtmd2 -d data/mcidasd
+#
+# AREA files:
+#
+#MCIDAS	^(LWTOA3 .*)
+#	PIPE
+#	-close lwtoa3 -d data/mcidasd
+#
+
+####                                                                 WSI
+# Nexrad data
+#
+#
+# file NIDS each product by product/hour in yymmddhhmm.id.wsi
+#
+#WSI	^NEX/(...)/(.*)/..([0-9][0-9])([0-1][0-9])([0-3][0-9])([0-2][0-9])([0-6][0-9])
+#	FILE	data/nexrad/\2/\6/\3\4\5\6\7.\1.wsi
+#
+# 2 and 15 minute nowrad products in yymmddhh_type.now
+#
+#WSI	^NOW/(USRADQC|MASTER)/..([0-9][0-9][0-1][0-9][0-3][0-9][0-2][0-9][0-6][0-9])
+#	FILE	data/nexrad/nowrad/\2_\1.now
+#
+# decode raw NIDS product to McIDAS area files.  See man page on 
+# nids2area for more information on configuring these actions.
+#
+#                        Base reflectivity Level 1
+#WSI	^NEX/(...)/(BREF1)/..([0-9][0-9])([0-1][0-9])([0-3][0-9])([0-2][0-9])([0-6][0-9])
+#	PIPE	nids2area -d /var/data/mcidasd/ 8001 \1 DIALPROD=R1 \3%j \6\700 DEV=CCN
+#                        Base reflectivity Level 2
+#WSI	^NEX/(...)/(BREF2)/..([0-9][0-9])([0-1][0-9])([0-3][0-9])([0-2][0-9])([0-6][0-9])
+#	PIPE	nids2area -d /var/data/mcidasd/ 8002 \1 DIALPROD=R2 \3%j \6\700 DEV=CCN
+#                        Base reflectivity Level 3
+#WSI	^NEX/(...)/(BREF3)/..([0-9][0-9])([0-1][0-9])([0-3][0-9])([0-2][0-9])([0-6][0-9])
+#	PIPE	nids2area -d /var/data/mcidasd/ 8003 \1 DIALPROD=R3 \3%j \6\700 DEV=CCN
+#                        Base reflectivity Level 4
+#WSI	^NEX/(...)/(BREF4)/..([0-9][0-9])([0-1][0-9])([0-3][0-9])([0-2][0-9])([0-6][0-9])
+#	PIPE	nids2area -d /var/data/mcidasd/ 8004 \1 DIALPROD=R4 \3%j \6\700 DEV=CCN
+#                        Composite Reflectivity
+#WSI	^NEX/(...)/(CREF)/..([0-9][0-9])([0-1][0-9])([0-3][0-9])([0-2][0-9])([0-6][0-9])
+#	PIPE	nids2area -d /var/data/mcidasd/ 8005 \1 DIALPROD=R5 \3%j \6\700 DEV=CCN
+#                        Layer Reflectivity (Sfc-24K ft)
+#WSI	^NEX/(...)/(LREF1)/..([0-9][0-9])([0-1][0-9])([0-3][0-9])([0-2][0-9])([0-6][0-9])
+#	PIPE	nids2area -d /var/data/mcidasd/ 8006 \1 DIALPROD=R6 \3%j \6\700 DEV=CCN
+#                        Layer Reflectivity (24-33K ft)
+#WSI	^NEX/(...)/(LREF2)/..([0-9][0-9])([0-1][0-9])([0-3][0-9])([0-2][0-9])([0-6][0-9])
+#	PIPE	nids2area -d /var/data/mcidasd/ 8007 \1 DIALPROD=R7 \3%j \6\700 DEV=CCN
+#                        Layer Reflectivity (33-60K ft)
+#WSI	^NEX/(...)/(LREF3)/..([0-9][0-9])([0-1][0-9])([0-3][0-9])([0-2][0-9])([0-6][0-9])
+#	PIPE	nids2area -d /var/data/mcidasd/ 8008 \1 DIALPROD=R8 \3%j \6\700 DEV=CCN
+#                        Echo Tops
+#WSI	^NEX/(...)/(TOPS)/..([0-9][0-9])([0-1][0-9])([0-3][0-9])([0-2][0-9])([0-6][0-9])
+#	PIPE	nids2area -d /var/data/mcidasd/ 8009 \1 DIALPROD=R9 \3%j \6\700 DEV=CCN
+#                        Vertically Integrated Liquid
+#WSI	^NEX/(...)/(VIL)/..([0-9][0-9])([0-1][0-9])([0-3][0-9])([0-2][0-9])([0-6][0-9])
+#	PIPE	nids2area -d /var/data/mcidasd/ 8010 \1 DIALPROD=RA \3%j \6\700 DEV=CCN
+#                        1-hour Surface Rainfall
+#WSI	^NEX/(...)/(PRE1)/..([0-9][0-9])([0-1][0-9])([0-3][0-9])([0-2][0-9])([0-6][0-9])
+#	PIPE	nids2area -d /var/data/mcidasd/ 8011 \1 DIALPROD=RB \3%j \6\700 DEV=CCN
+#                        3-hour Surface Rainfall
+#WSI	^NEX/(...)/(PRE3)/..([0-9][0-9])([0-1][0-9])([0-3][0-9])([0-2][0-9])([0-6][0-9])
+#	PIPE	nids2area -d /var/data/mcidasd/ 8012 \1 DIALPROD=RC \3%j \6\700 DEV=CCN
+#                        Storm Total Rainfall
+#WSI	^NEX/(...)/(PRET)/..([0-9][0-9])([0-1][0-9])([0-3][0-9])([0-2][0-9])([0-6][0-9])
+#	PIPE	nids2area -d /var/data/mcidasd/ 8013 \1 DIALPROD=RD \3%j \6\700 DEV=CCN
+#                        Radial Velocity Level 1
+#WSI	^NEX/(...)/(VEL1)/..([0-9][0-9])([0-1][0-9])([0-3][0-9])([0-2][0-9])([0-6][0-9])
+#	PIPE	nids2area -d /var/data/mcidasd/ 8014 \1 DIALPROD=RE \3%j \6\700 DEV=CCN
+#                        Radial Velocity Level 2
+#WSI	^NEX/(...)/(VEL2)/..([0-9][0-9])([0-1][0-9])([0-3][0-9])([0-2][0-9])([0-6][0-9])
+#	PIPE	nids2area -d /var/data/mcidasd/ 8015 \1 DIALPROD=RF \3%j \6\700 DEV=CCN
+#                        Radial Velocity Level 3
+#WSI	^NEX/(...)/(VEL3)/..([0-9][0-9])([0-1][0-9])([0-3][0-9])([0-2][0-9])([0-6][0-9])
+#	PIPE	nids2area -d /var/data/mcidasd/ 8016 \1 DIALPROD=RG \3%j \6\700 DEV=CCN
+#                        Radial Velocity Level 4
+#WSI	^NEX/(...)/(VEL4)/..([0-9][0-9])([0-1][0-9])([0-3][0-9])([0-2][0-9])([0-6][0-9])
+#	PIPE	nids2area -d /var/data/mcidasd/ 8017 \1 DIALPROD=RH \3%j \6\700 DEV=CCN
+
+####
+# DIFAX actions
+#
+#DIFAX	(.*)
+#	FILE	-close -overwrite data/difax/%H/\1
+
+####
+# NLDN decode actions
+#
+#
+#       nldn format: YYJJJHHMbMe -- YY year, JJJ julian day, HH hour
+#                                   Mb begin minute bin, Me end minute bin
+#
+# Store 6 min bins with group parts
+#
+#NLDN	^(9[3-9])([0-3][0-9][0-9])([0-2][0-9])([0-5][0-9])([0-5][0-9])
+#	FILE	-close /var/data/ldm/nldn/\1\2\3\4\5.ingest
+#
+# Store 6 min bins verbatim
+#NLDN	(.*)
+#	FILE	-close /var/data/ldm/nldn/\1.ingest
+#
+# Store transmitted, binary form as YYJJHH file
+#NLDN	^(9[3-9])([0-3][0-9][0-9])([0-2][0-9])([0-5][0-9])([0-5][0-9])
+#	FILE	-close /var/data/ldm/nldn/\1\2\3.ingest
+#
+# Decode transmitted binary form as GEMPAK ship file (named YYMMDDHH.gem)
+#NLDN	^(9[3-9])([0-3][0-9][0-9])([0-2][0-9])([0-5][0-9])([0-5][0-9])
+#	PIPE	
+#	/usr/local/ldm/decoders/nldntogem -vxl
+#	/var/data/ldm/gempak/nldn/log /home/nawips/gempak5.2/tables/nldn.pack
+#	hour gem /var/data/ldm/gempak/nldn/
+#
+# Decode transmitted, binary form as McIDAS MD file
+#NLDN	^(9[3-9])([0-3][0-9][0-9])([0-2][0-9])([0-5][0-9])([0-5][0-9])
+#	PIPE
+#	-close /usr/local/ldm/decoders/nldn2md -v
+#	-d /var/data/mcidasd 70 NLDN DIALPROD=LD \1\2 \3\400 DEV=CCN
+#
+
+# Sample action that does nothing to every product
+ANY	.*	NOOP

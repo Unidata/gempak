@@ -1,0 +1,31 @@
+     INFO is the information needed to define the object to be plotted.
+     The location of the object is defined in LOCI.
+
+          TEXT            size/font/width/border/rotation/justify/hw/text_string
+          POLYGON         line type
+          REGPOLY         line type/radius/number points/rotation
+          ARC             line type/radius/number points/start ang/end ang
+          CURVE           line type/curve type
+          LINE            line type (overwrite line type set in ANOTYP)
+          ARROW           line typ/arrw typ/arrw siz/head siz/
+						     head ang mult/rotation
+          COLDFRONT       number pips/pip size/line type/# smoothing passes
+          WARMFRONT       number pips/pip size/line type/# smoothing passes
+          OCCLFRONT       number pips/pip size/line type/# smoothing passes
+          STATFRONT       number pips/pip size/line type/# smoothing passes
+          WEATHER         symbol code/size
+          CLOUD           symbol code/size
+          SKY             symbol code/size
+          TURB            symbol code/size
+          ICNG            symbol code/size
+          SPCL            symbol code/size
+          MARKER          symbol code/size
+          PRESTEND        symbol code/size
+          PASTWTHR        symbol code/size
+
+     Special notes:
+             - For fronts, a positive value for the number of pips will
+               plot on one side of the curve, and negative values will
+               plot on the opposite side.
+             - The symbol codes can be found in the users' manual.
+

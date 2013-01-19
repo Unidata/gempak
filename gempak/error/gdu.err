@@ -1,0 +1,13 @@
+!	GDU error file
+!
+  2	! Did not find any matching grids.
+  1	! Too many levels.
+ -1	! Number of expected levels < 0.
+ -2	! For input=MAN, need PRES cord.
+ -3	! Input was range with an increment.
+ -4	! Input was range without an increment.
+ -5	! List for LEVEL is empty.
+ -6	! Could not decode individual level value.
+ -7 	! Cannot parse user input for GLEVEL or GVCORD.
+ -8 	! Cannot parse user input for GFUNC.
+ -9 	! Cannot parse user input for GDATTIM.

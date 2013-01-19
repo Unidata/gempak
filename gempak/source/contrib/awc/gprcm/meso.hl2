@@ -1,0 +1,15 @@
+     MESO
+
+     MESO specifies the plot symbol and filter attributes for
+     mesocyclones:
+
+           color / marker / size / width / hw ; filter
+
+     A color value of 0 is used to turn off mesocyclone plotting.
+    
+     Marker attributes behave as MARKER for other plotting programs.
+
+     FILTER is a logical variable or real number which controls the
+     filtering of data in order to control plotting of overlapping
+     data.
+      

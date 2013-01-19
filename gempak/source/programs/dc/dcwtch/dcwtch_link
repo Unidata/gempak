@@ -1,0 +1,4 @@
+$CC $CFLAGS -c dcwtch.c
+$FC $LDFLAGS -o $OS_BIN/dcwtch dcwtch.o \
+        $BRIDGE $GEMLIB $CGEMLIB -lm
+$RM *.o

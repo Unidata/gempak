@@ -1,0 +1,6 @@
+$CC $CFLAGS -c vggrep.c
+$FC $LDFLAGS -o $OS_BIN/vggrep vggrep.o \
+		$CGEMLIB $APPL $GEMLIB \
+		$CGEMLIB $APPL \
+		$GEMLIB $SYSLIB -lm
+$RM *.o

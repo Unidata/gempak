@@ -1,0 +1,56 @@
+
+SPCTXT
+
+    SPCTXT creates the text aviation product, county list product,
+    the public product, the watch coordination list product, the 
+    watch outline update - initial, the aviation watch notification
+    and the public watch notification.  If specified on the command 
+    line, cancel watch products are created for the SAW and SEL products.
+
+    The input to the program is the ww####.txt file that is 
+    created by an issued watch within product generation in NMAP.
+    The output text files, WW####.SAW, WW####.SEL, WW####.SEV,
+    WW####.WCL, WW####.WOU, WW####.AWN, WW####.PWN, WW####.SAW.CNL 
+    and WW####.SEL.CNL are created in the directory where the program 
+    is called.
+    
+    If replacement watches are listed in the current ww####.txt file,
+    those files need to exist in the same directory where SPCTXT is 
+    called.
+
+    The user will be prompted for the watch number(s) of any continuing 
+    watches when the SEL and PWN products are being created.  The numbers
+    should be entered on one line separated by spaces.
+
+    The output text products which may need modifications by the user:
+
+        SAW - WWUS30 - There should not be any modification necessary.
+
+        SEL - WWUS20 - The user will need to add the general description 
+              of the region within the state(s) where the watch is
+              occurring and the DISCUSSION text. 
+
+        SEV - WWUS50 - There should not be any modification necessary.
+
+	WCL - WWUS51 - There should not be any modification necessary.
+
+	WOU - WWUS52 - There should not be any modification necessary.
+
+	AWN - WWUS40 - There should not be any modification necessary.
+
+        PWN - WWUS09 - The user will need to add the general description 
+              of the region within the state(s) where the watch is
+              occurring and the DISCUSSION text. 
+
+
+    To create the SEV, SEL, SAW, WCL, WOU, AWN and PWN products: 
+    
+        spctxt ww####.txt 
+
+    To create a canceled SAW and SEL products:    
+ 
+        spctxt ww####.txt  cancel
+
+    If the ww####.txt file does not exist or if the filename was
+    not entered on the command line, the program will exit.
+

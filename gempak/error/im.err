@@ -1,0 +1,19 @@
+!	IM error file
+!
+ +4	! Could not match channel string.
+ +3	! Only pixel value displayed
+ +2	! No part of image viewable within graphics area.
+ +1	! No entry in the image type table, imgtyp.tbl, for file !AS
+ -1	! Image file !AS does not exist
+ -2	! Error opening/reading image file !AS
+ -3	! Image file !AS not a supported format
+ -4	! Invalid or unsupported image product
+ -5	! Invalid image navigation
+ -6	! Invalid graphics area
+ -7	! Error opening/reading image type table !AS
+ -8	! Could not open LUT file !AS
+ -9	! Off image pixel
+-10	! Cannot get pixel value
+-11	! Cannot get pressure and height
+-12	! Error opening/reading sounding table
+-13	! Error opening/reading channel table

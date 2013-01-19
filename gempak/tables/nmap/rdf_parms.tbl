@@ -1,0 +1,36 @@
+! 
+!	RDF_PARMS.TBL
+!
+! This table contains the available parameters used in the
+! station model editing panel in NMAP for the RDF data type.
+!
+!	pos_zero_flag:	1 = plot at position 0 only
+!			0 = plot at any position
+!
+! Log:
+! F. J. Yen/NCEP	 9/02	Created
+!
+! parameter       pos_zero_flag     
+!
+brbk:1:2:112      1  
+mark:1:2          1 
+skyc:1:2          1 
+skyk:1:2	  1
+cfrt              0
+drct              0       
+dwpf              0       
+heat              0       
+ovis              0
+pp12              0
+qp12              0
+qpx2              0
+relh              0
+smph              0
+sn12              0
+stid              0
+tdyf              0  
+tmpf              0 
+tntf              0  
+wceq              0  
+wsym              0  
+wxpb              0  

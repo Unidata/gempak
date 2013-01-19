@@ -1,0 +1,44 @@
+
+MDPSPC
+
+  MDPSPC generates a text file with lat-lon points from an enclosed area (line),
+  the list of WFOs in or touching the enclosed area as well as two letter state
+  abbreviations from a VGF file. This program is for the Mesoscale Discussion 
+  Product (MCD).
+
+INPUT PARAMETERS
+
+  mdpspc vgf_filename
+
+  mdpspc	Program name
+  vgf_filename	VGF file containing line element
+
+PROGRAM DESCRIPTION
+
+  MDPSPC scans a VGF file and generates a set of lat-lon points from a single line.
+  The lat-lon points are in the format "%04d%04d". Latitudes are multiplied by
+  100 and have G_NINT applied; longitudes have 100 subtracted from their value
+  if their value exceeds 100, then are multiplied by 100 and have G_NINT applied.
+  Only six pairings are listed per output text file line.  A list of WFOs touched or
+  inside the enclosed area is also included as well as the two letter state
+  abbreviations
+
+EXAMPLE
+
+  If the VGF file 'testfile.vgf' contained a line with the following points:
+32.11  88.41 
+32.27  86.30 
+31.79  83.20 
+31.31  81.93 
+30.11  81.77 
+29.79  83.61
+29.92  85.51 
+30.21  88.22 
+
+  Then the output file 'testfile.mdp' would contain:
+STATES=FL GA AL 
+
+ATTN...WFO...JAX...FFC...TAE...BMX...MOB...
+
+32118841 32278630 31798320 31318193 30118177 29798361
+29928551 30218822 

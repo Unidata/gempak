@@ -1,0 +1,9 @@
+
+
+                 VGF Display And Store (CDS) Library
+
+
+The CDS library contains subroutines that are the interface layer
+between VGF interactive functions and GEMPAK.  Subroutines in the CDS
+library make the "Gxxxx" (GEMPLT) calls that display and store VGF
+elements.

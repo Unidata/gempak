@@ -1,0 +1,8 @@
+PANEL   Panel loc/color/dash/width/regn                                         
+COLORS  Color list                                                              
+TEXT    Size/fnt/wdth/brdr/N-rot/just/hw flg                                    
+CLEAR   Clear screen flag                                                       
+DEVICE  Device|name|x size;y size|color type                                    
+TXTFIL  Text filename or LOGO|size|mode                                         
+TXTLOC  Text location                                                           
+COLUMN  Number of columns                                                       

@@ -1,0 +1,54 @@
+     ISIG
+
+     ISIG is the ending valid time for the international SIGMET, the colors for
+     the thunderstorms, turbulence, hurricanes, tropical storms, tropical 
+     depressions, volcanic ash clouds, marked mountain waves, tropical
+     cyclones, squall lines, CAT, icing, hail, duststorms, sandstorms,
+     cumulonimbus, and low level wind shear, flags for plotting symbols or
+     storm names, the start and end times, the message id, the direction and
+     speed, and the flight level or the central pressure and maximum wind speed
+     associated with a tropical cyclone on the map.
+
+	End time|TS;TB;HU;TR;TD;VA;MW;TC;SQ;CT;IC;GR;DS;SS;CB;WS clrs|Symbol flg|
+		Time flg|Id flg|Motion flg|Flight lvl flg
+
+     SIGMETs that are valid at the ending time will be plotted on the map.
+     The ending time is given as a GEMPAK date/time string.  Any missing
+     items from the string will be filled in by the system time.  The
+     ending time may also be LAST or ALL.  LAST will use the system time
+     and plot all current SIGMETs.  ALL will plot all the SIGMETs in the data
+     files for the last ten days, whether they are active, cancelled, or expired.
+
+     The colors are separated by a semi-colon.  If any color is set to 0,
+     that type of symbol will not be plotted.  If any color is missing, a 
+     default will be used.  Defaults are cyan for thunderstorm, yellow for 
+     turbulence, red for hurricane, red for tropical cyclone, yellow for tropical 
+     storm, green for tropical depression, orange for volcanic ash cloud, 
+     magenta for marked mountain wave, magenta for squall line, yellow for CAT,
+     green for icing, red for hail, orange for duststorm, orange for sandstorm,
+     and red for cumulonimbus.
+
+     The symbol flag is YES or NO and controls
+	(1)  for thunderstorms and turbulence:  whether or not to plot the
+	     symbol at the center of the defined area.
+	(2)  for volcanic ash clouds:  whether or not to plot the symbol
+	     at the volcano location, if given, or at the center of the
+	     defined area.
+	(3)  for named storms:  whether or not to display the storm name.
+     The default is NO.
+
+     The time flag is YES or NO and controls whether or not to plot the start
+     and end times of the SIGMET on the map.  The default is NO.
+
+     The message id flag is YES or NO and controls whether or not to plot the 
+     SIGMET message identification and sequence number on the map.  The default 
+     is NO.
+
+     The motion flag is YES or NO and controls whether or not to plot the 
+     direction in degrees and the speed in knots of the SIGMET.  The default 
+     is NO.
+
+     The flight level flag is YES or NO and controls whether or not to plot the
+     SIGMET flight level in hundreds of feet on the map.  Or if a tropical
+     cyclone is the phenomenon, this position controls whether or not to plot
+     the central pressure in mb and the maximum winds in kts.  The default is NO.

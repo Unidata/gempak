@@ -1,0 +1,48 @@
+#! /bin/csh
+#
+# EZ700
+#
+# This script will plot the 700 mb vertical motions, RH and heights
+# for all of the times for the given model.
+#
+#	Syntax:  ez700
+#
+##
+# Log:
+# D. Plummer/NMC	 1994
+# S. Jacobs/NMC		10/94		Clean up
+
+#
+# Set Up Local Variables
+#
+
+source settings
+
+gdcntr << EOF
+GDATTIM	= ALL
+DEVICE	= ${dev}
+!
+! Restore the 700 mb relative humidity
+restore ez/700relh
+CLEAR   = yes
+TITLE	= 5/-2/${model} ~  @  HGHTS, REL HUMIDITY AND OMEGA|~ @ HGHT, RH AND OMEGA
+r
+
+!
+! Restore the 700 mb heights
+restore ez/700hght
+CLEAR   = no
+TITLE	= 0
+r
+
+!
+! Restore the 700 mb vertical motions
+restore ez/700omeg
+CLEAR   = no
+TITLE	= 0
+r
+
+;2
+;l
+ex
+EOF

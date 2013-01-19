@@ -1,0 +1,22 @@
+
+
+                          Grid Subroutines
+
+
+A grid is a two-dimensional data set.  GEMPLT supports grids that are
+evenly spaced on a map or graph projection.  To plot grid data, the
+projection originally used, when the grid was created, must be defined
+to GEMPLT.  If the grid was set on a graph projection, subroutine GSGGRF
+is called.  If the grid was set on a map projection, subroutine GSGMAP
+or GSGPRJ is called.
+
+Currently set grid projections are queried by calls to GQGGRF, GQGMAP,
+and GQGPRJ.
+
+After the grid projection is set, G coordinates may be transformed into
+any other coordinates.  For example, when a map projection is also set,
+a particular row/column location on the grid is transformed into
+latitude/longitude by GTRANS when a G-to-M transformation is carried
+out.  When plotting grid data, calling the plot functions with the
+points in G coordinates performs this transformation as the data points
+are plotted.

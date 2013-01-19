@@ -1,0 +1,49 @@
+! PRODBTN.TBL.
+!
+! This table provides the icons located in the product button palette.
+!
+! Log:
+! E. Wehner/EAi          5/97
+! C. Lin/EAi             4/98	add outlook
+! F. J. Yen/NCEP	 6/98	Added qpf
+! D.W.Plummer/NCEP	 8/98	Added hcntrak
+! D.W.Plummer/NCEP	 8/98	Added ggcntr
+! F. J. Yen/NCEP	 9/98	Added xrainf
+! S. Law/GSC		01/99	Changed ctylst to wtchfmt
+! F. J. Yen/NCEP	 1/99	Added wxd
+! S. Law/GSC		03/00	Added CCFPRD
+! A. Hardy/GSC		03/00	Reordered buttons
+! A. Hardy/GSC		 5/00	Added wtchcnl
+! E. Safford/GSC	04/01	reorder for horizontal layout
+! B. Yin/SAIC		12/04	Added airmet
+! E. Safford/GSC	03/07	add airmet_p               
+!------------------------------------------------------------------------
+BEGIN
+!
+! Row 1
+!
+sfcprg
+wxd
+ggcntr
+qpf
+!
+! Row 2
+!
+xrainf
+outlook
+hcntrak
+ccfprd
+!
+! Row 3
+!
+wtchfmt
+wtchstat
+wtchcnl
+airmet
+!
+! Row 4
+!
+airmet_p
+END
+
+

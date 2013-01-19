@@ -1,0 +1,15 @@
+! TCA.BULL
+!
+! Location information for the following product:
+! Tropical_Cyclone_Advisory.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+FKPA21 PHFO     HONOLULU                         HI US  2129 -15780     0
+FKPA22 PHFO     HONOLULU                         HI US  2129 -15780     0
+FKPA23 PHFO     HONOLULU                         HI US  2129 -15780     0
+FKPA24 PHFO     HONOLULU                         HI US  2129 -15780     0
+FKPA25 PHFO     HONOLULU                         HI US  2129 -15780     0

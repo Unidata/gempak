@@ -1,0 +1,37 @@
+!	DM error file
+!
+ -1	! File !AS cannot be created.
+ -2	! File !AS cannot be opened.
+ -3	! Too many files open.
+ -4	! File is not open.
+ -5	! Invalid dimension sizes.
+ -6	! Write error.
+ -7	! Read error.
+ -8	! Undefined file header.
+ -9	! Invalid row or column location.
+-10	! Invalid part name.
+-11	! Undefined row or column header.
+-12	! No more row / column headers.
+-13	! No write access.
+-14	! Invalid key name.
+-15	! Data not available.
+-16	! Invalid data packing terms.
+-17	! Search criteria not met.
+-18	! File header length too large.
+-19	! Error packing / unpacking data.
+-20	! File is not a GEMPAK DM file.
+-21	! Incorrect data type.
+-22	! Too many searches defined.
+-23	! File was created on a different machine.
+-24	! Invalid number of words to pack / unpack.
+-25	! Invalid station keywords.
+-26	! Invalid delete conditions.
+-27	! Invalid time keywords.
+-28	! Too many times.
+-29	! Invalid file header name.
+-30	! Close and reopen failed.
+-31	! Error packing or unpacking grid.
+-32     ! Machine is invalid for writing.
+-33     ! Data cannot be translated.
+-34	! WARNING:  incorrect record length. 
+-35	! Problems with dynamic memory allocation

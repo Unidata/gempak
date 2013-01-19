@@ -1,0 +1,20 @@
+     GUESFUN
+
+     GUESFUN specifies one or more grid diagnostic functions that compute
+     the first guess grid for a Barnes objective analysis.  If more than
+     one functions are specified, they must be separated by semicolons.
+     For more information, see the GPARM documentation.
+
+     GUESFUN may contain in-line values for the times, levels and vertical
+     coordinate. These values are used to override the analysis time, level
+     and vertical coordinate for the guess grid. However, the time has a 
+     special feature. In order to proceed, the application must be able to 
+     set a default time for the guess grid. This is done by using the 
+     analysis time and the grid file cycle time to find the matching
+     analysis or forecast time from the grids. The feedback from the
+     application will show the default time even if the user has set an
+     in-line value for the guess grid time. However, the in-line value will
+     override the analysis time when the grid is computed. If a default
+     time cannot be created, even if the in-line value is valid, the
+     application will stop processing.
+     

@@ -1,0 +1,14 @@
+! nids_swid.tbl
+!
+! Color table for 8-level NIDS Spectrum Width
+! Appendix A, FMH-11 Part C
+!
+!Color name    Abrev   Red  Green   Blue  X color name
+BLACK           BLA      0      0      0  black
+DKGRAY          DRG    118    118    118
+MDGRAY          MEG    156    156    156
+MDGREEN         MDG      0    187      0
+RED             RED    255      0      0
+MDBROWN         MDB    208    112      0
+YELLOW          YEL    255    255      0
+DKPURPLE        DKP    119      0    125

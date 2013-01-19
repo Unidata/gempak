@@ -1,0 +1,22 @@
+!	GRPHGD error file
+!
+ +5	! WARNING.  visib reset to TRUE by rule.
+ +4	! WARNING.  Maximum number of lines exceeded.
+ +3	! WARNING.  Maximum number of intersections exceeded (!AS).
+ +2	! WARNING.  This grid dimension is too large.
+ +1	! WARNING.  This grid is too large.
+ -1	! Fatal error initializing TAE.
+ -2	! Fatal error reading TAE parameters.
+ -3	! Fatal error initializing GEMPLT.
+ -4	! Navigation information is invalid.
+ -5	! Grid area !AS is invalid.
+ -6	! Grid size is invalid.
+ -7	! The grid file name may not be blank.
+ -8	! Cannot create file !AS.
+ -9	! Grid name !AS cannot be found in grid table.
+-11	! Cannot open file !AS.
+-12     ! Cannot convert value from file !AS.
+-13     ! File !AS does not exist.
+-14     ! The control file name may not be blank.
+-15     ! Boundary condition can not be set due to open line(s).
+

@@ -1,0 +1,20 @@
+AREA    us-                                                                     
+GAREA   us                                                                      
+SATFIL                                                                          
+RADFIL                                                                          
+SNPARM  ;;tmpc<-8;;hght;;;;;lift*10                                             
+DATTIM  all                                                                     
+LEVELS  500                                                                     
+VCOORD  pres                                                                    
+SNFILE  $GEMPAK/data/HRCBOB.SND                                                     
+COLORS  2;5;3                                                                   
+MAP     1                                                                       
+LATLON  2/10/1/1/10;10                                                          
+MARKER  1                                                                       
+TITLE   1                                                                       
+CLEAR   yes                                                                     
+PANEL   0                                                                       
+DEVICE  xw                                                                      
+PROJ    mer                                                                     
+FILTER  0                                                                       
+TEXT    .75                                                                     

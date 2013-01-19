@@ -1,0 +1,9 @@
+SFFILE  $GEMPAK/data/hrcbob.sfc                                                     
+GDFILE  hbobsfc.grd                                                             
+SFPARM  tmpc;dwpc;uwnd;vwnd;pmsl                                                
+DATTIM  all                                                                     
+DTAAREA us-                                                                     
+GUESS                                                                           
+GAMMA   0.3                                                                     
+SEARCH  20                                                                      
+NPASS   2                                                                       

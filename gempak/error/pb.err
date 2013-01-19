@@ -1,0 +1,8 @@
+!	PB error messages
+!
+   4	! Bad return from !AS
+   3	! Report error:  lat/long group !AS
+   2	! Report error:  unknown group !AS
+   1	! !AS
+  -1	! Bulletin error:  day/hour group !AS
+  -2	! Bulletin error:  could not find !AS

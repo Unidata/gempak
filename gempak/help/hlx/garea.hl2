@@ -1,0 +1,55 @@
+     GAREA
+
+     GAREA is the graphics area.  This is the area which will be displayed 
+     on a graphics device.
+
+     GAREA can be specified in the following:
+
+     1.  lat1;lon1;lat2;lon2 
+         This defines a latitude/longitude range where (lat1, lon1) is 
+         the lower left corner and (lat2, lon2) is the upper right corner.
+         West longitude is negative.
+  
+         #clat;clon;dlat;dlon
+         This defines a latitude/longitude range by the center latitude 
+         and longitude.  The lower left corner is (clat-dlat; clon-dlon); 
+         the upper right corner is (clat+dlat; clon+dlon).  No corrections 
+         are made for the poles or the International Date Line.
+
+     2.  GEOG
+         This is an abbreviation for a geographic area defined in the 
+         GEMPAK geographic table which includes abbreviations for states, 
+         provinces, and countries, as well as other names. A suffixed + or * 
+         will decrease the extent of the geographic area. A suffixed - will 
+         increase the extent of the geographic area.
+
+     3.  STN
+         This defines an area centered on a station found in the GEMPAK 
+         station table, which currently contains US, Canadian and
+         Mexican stations.  A suffixed + or * will expand, and - will reduce
+         the area.
+
+     4.  Graphically using the CURSOR command.
+
+
+     Note that the other ways of specifying AREA are not valid for GAREA.   
+  
+     For all projections, the lat/lon corners defined will be used exactly.
+     (If GAREAX is used with the CURSOR command, the display area attempts 
+     to fill the entire view area, extending the area defined by the selected 
+     lat/lon).  For projections which include the pole, if lat1 = lat2 and 
+     lon1 = lon2, then lat1 will specify the range of data from the pole and 
+     lon1 will specify the central longitude. If the projection has been 
+     rotated so that a geographic pole is no longer at the center and 
+     lat1 = lat2 and lon1 = lon2, then lat1 will determine the range of data 
+     from the rotated pole and lon1 specifies the central longitude as before.
+     If a cylindrical equidistant projection has been rotated for any angle1 
+     between 90 and -90 degrees, then the entire world can be displayed 
+     by entering GAREA=0;0;0;0. The central longitude is taken from the 
+     PROJ specification for angle2. This works for angle1 = 0 as well.
+
+     West longitude is negative.
+
+     For overlay on satellite and radar imagery, PROJ must be set to
+     SAT and RAD, respectively. 
+

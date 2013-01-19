@@ -1,0 +1,35 @@
+     MARKER
+
+     MARKER specifies the marker color, type, size, line width and
+     hardware/software flag separated by slashes:
+
+		marker color / marker type / size / width / hw flag
+
+     If the marker color is 0, no markers will be drawn.  If the marker 
+     color is not specified, a default of 1 will be used.
+
+     The marker type specifies the shape of the marker to be drawn.  If 
+     the type is unspecified or zero, the current marker type (usually 1)
+     will be used.  The software marker types are:
+ 
+	 1	plus sign		12	asterisk
+	 2	octagon			13	hourglass X
+	 3	triangle		14	star
+	 4	box		        15	dot
+	 5	small X		        16	large X
+	 6	diamond		        17	filled octagon
+	 7	up arrow		18	filled triangle
+	 8	X with top bar		19	filled box
+	 9	Z with bar		20	filled diamond
+	10	Y			21	filled star
+	11	box with diagonals	22	minus sign
+
+     Hardware marker types may differ.
+
+     The marker size is a real number multiplier for the default marker 
+     size.  If the size is zero or unspecified, the current size will be 
+     used.
+
+     The hardware/software marker flag must be HW or SW.  Otherwise, the 
+     current value is assumed.
+

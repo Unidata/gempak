@@ -1,0 +1,8 @@
+PRES    .1    1090.    .01       .01      PRES
+TMPC  -140.    50.     .01      1.        TMPK
+DWPC  -150.    40.     .01      1.        UWND
+SPED    00.    300.    .01      1.        VWND
+DRCT    00.    360.    .01      1.        SPFH
+HGHT  -200.  50000.	.1      1.        OMEG
+OMEG   -30.     30.    .01   86400.       RADH
+RADH  -100.    100.    .01

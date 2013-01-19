@@ -1,0 +1,278 @@
+# Gemenviron file for GEMPAK
+#
+#		Sets environment variables used in running GEMPAK
+#		UNIDATA Program Center 6/1/92 (PB)
+#		Revised 8/31/94 for GEMPAK 5.2
+#		Modified 12/95 for Gempak5.2.1/Nawips (Chiz)
+#               Modified  8/96 for Gempak5.4/NAWIPS (Chiz)
+#               Modified 10/00 for Gempak5.6/NAWIPS (Chiz)
+#               Modified  3/04 for Gempak5.7/NAWIPS (Chiz)
+#---------------------------------------------------------------------
+#  The command
+#               source Gemenviron
+#
+#  or the individual lines below, must be included in your .login or 
+#  .cshrc file!
+#---------------------------------------------------------------------
+# <<CONFIGURE>>
+# To build GEMPAK on your system, you should set the NAWIPS variable 
+# below to the top level of the source distribution tree on your system.
+#
+#  Please configure the following definitions to reflect your system:
+#
+# Top level directory:
+   setenv NAWIPS /home/gempak/GEMPAK6.7.0
+   setenv GARPHOME /home/gempak/openGARP/build
+#
+# Path for Garp tables and configuration. You should only have to
+# modify GARP_PATH if you have unique Garp_defaults for specifc
+# data sets, such as case studies. In those cases, creating
+# a ntl.case startup script which sets those local environmental variables
+# is generally the best solution.
+#
+   setenv GARP_PATH $GARPHOME/config
+#
+#
+# Uncomment the following lines for using GCC compilers (Solaris/HP only)
+# set USEGCC_SOL=1
+# set USEGCC_HPUX=1
+#
+set USE_GFORTRAN=1
+#set USE_PGI=1
+#set USE_G77=1
+#
+# --------------------------------------------------------------------
+# Make sure NAWIPS directory exists
+#
+if ( ! -d $NAWIPS ) then
+        echo "Can not find NAWIPS distribution."
+        echo 'Check Gemenviron NAWIPS definition ->' $NAWIPS
+        unsetenv NAWIPS
+        exit
+endif
+
+#try to determine operating system: command uname must be in path
+#
+setenv MAKEINC "Makeinc.common"
+if($?NA_OS == 0) then
+   set TMP_OS=`uname -s | tr '[A-Z]' '[a-z]'`
+   switch ($TMP_OS)
+        case "aix":
+           setenv NA_OS "aix"
+	   setenv OS_MAJOR `uname -v`
+	   if ( $OS_MAJOR == 5 ) then
+	      setenv AIX_NO_GEMPAK_SCANDIR 1
+	   endif
+           breaksw
+        case hp-ux:
+	   set OS_MAJOR=`uname -r | cut -f1,2 -d.`
+           if($OS_MAJOR == 'B.11') then
+              setenv XCFLAGS "-DSYSLOG_RETURNS_INT"
+           endif
+	   if ( $?USEGCC_HPUX ) then
+	      setenv NA_OS "hpux_gcc"
+           else
+              setenv NA_OS "hpux"
+           endif
+           breaksw
+        case irix64:
+           #setenv XCFLAGS "-o32"
+        case irix:
+           setenv NA_OS "irix"
+           breaksw
+        case osf1:
+           setenv NA_OS "osf"
+           uac p noprint # supress warnings in xw driver for unaligned access
+           breaksw
+        case sunos:
+	   setenv MAKEINC "Makeinc.common_sol"
+           set OS_MAJOR=`uname -r | sed 's/\..*//'`
+           set HARDWARE=`uname -i | tr '[A-Z]' '[a-z]'`
+           setenv NA_OS "sunos"
+           if(($OS_MAJOR == 5)&&($?USEGCC_SOL)) then
+              setenv NA_OS "sol_gcc"
+	   else
+              setenv NA_OS "sol"
+           endif
+           if(($NA_OS == 'sol')&&($HARDWARE == 'i86pc')) then
+              setenv NA_OS "x86"
+           endif
+           breaksw
+        case ultrix:
+           setenv NA_OS "ultrix"
+           breaksw
+	case linux:
+	   setenv NA_OS "linux"
+	   if ( $?USE_G77 ) then
+               setenv GEM_COMPTYPE "g77"
+           else if ( $?USE_GFORTRAN ) then
+               setenv GEM_COMPTYPE "gfortran"
+	       # use backward compatible LD for FC5 and earlier
+	       # setenv LDFLAGS '-Wl,--hash-style=both'
+           else if ( $?USE_PGI ) then
+               setenv GEM_COMPTYPE "pgi"
+           else
+               echo "Using default COMPTYPE g77"
+               setenv GEM_COMPTYPE "g77"
+           endif
+           # 
+           if ( ! $?MACHTYPE ) then
+              # set the MACHTYPE
+              set MACHTYPE=`uname -m`
+           endif 
+           set MACHTEST=`echo $MACHTYPE | grep -c "_64"`
+	   if ( $MACHTEST > 0 )  then
+	      setenv NA_OS "linux64"
+           endif
+	   breaksw
+	case freebsd:
+	   setenv NA_OS "freebsd"
+	   breaksw
+	case darwin:
+	   setenv NA_OS "darwin"
+	   breaksw
+	case cygwin:
+	   setenv NA_OS "cygwin"
+	   breaksw
+        case default:
+           echo "trouble determining operating system configuration"
+           echo "OS reported $TMP_OS"
+           exit
+   endsw
+endif
+
+# --------------------------------------------------------------------
+#
+# GEMPAK directory:
+#
+   setenv GEMPAK $NAWIPS/gempak
+   setenv GEMPAKHOME $NAWIPS/gempak
+#
+# CONFIGURATION directory
+   setenv CONFIGDIR $NAWIPS/config
+
+#
+# System environmental variables 
+#
+   setenv OS_ROOT	$NAWIPS/os/$NA_OS
+   setenv OS_BIN	$OS_ROOT/bin
+   setenv OS_INC	$OS_ROOT/include
+   setenv OS_LIB	$OS_ROOT/lib
+
+#
+# Directory for storing object libraries (GEMPAK + related software):
+#
+   setenv GEMLIB    $OS_LIB
+#
+# Directory for executables (GEMPAK + related software):
+#
+   setenv GEMEXE    $OS_BIN
+#
+# Remaining directories used by GEMPAK  (leave as is):
+#
+   setenv GEMPDF    $GEMPAK/pdf
+   setenv GEMTBL    $GEMPAK/tables
+   setenv GEMERR    $GEMPAK/error
+   setenv GEMHLP    $GEMPAK/help
+   setenv GEMMAPS   $GEMPAK/maps
+   setenv GEMNTS    $GEMPAK/nts
+   setenv GEMPARM   $GEMPAK/parm
+   setenv GEMPTXT   $GEMPAK/txt/programs
+   setenv GEMGTXT   $GEMPAK/txt/gemlib
+   setenv NMAP_RESTORE  $GEMNTS/nmap/restore
+#
+#  MEL_BUFR environment
+   setenv MEL_BUFR             $NAWIPS/extlibs/melBUFR/melbufr
+   setenv MEL_BUFR_TABLES      $GEMPAK/tables/melbufr
+#
+#
+# Add NAWIPS to the X applications resource path.
+#
+set xresources=""
+
+if ( -d $NAWIPS/resource ) then
+        set xresources="$NAWIPS/resource/%N"
+        if ( $?XUSERFILESEARCHPATH ) then
+           setenv XUSERFILESEARCHPATH ${xresources}:${XUSERFILESEARCHPATH}
+        else
+           setenv XUSERFILESEARCHPATH $xresources
+        endif
+endif
+
+#
+# 
+# Set PATH to include $GEMEXE
+#
+#setenv PATH ${PATH}:${GEMEXE}:${NAWIPS}/bin
+setenv PATH ${PATH}:${OS_BIN}:${NAWIPS}/bin
+
+#
+# --------------------------------------------------------------------
+# <<CONFIGURE>>
+# Data directories, either real time or the Hurricane Bob sample data set:
+#
+#  setenv GEMDATA       $GEMPAK/data
+   setenv GEMDATA       /data/ldm/gempak
+#   setenv GEMDATA       /home/mjames/test/gempak
+   setenv OBS           $GEMDATA
+#
+# Location of meta files (generated with NC decide driver)
+   setenv NTRANS_META	$GEMDATA/meta
+#
+# Location of text bulletins for use with NWX
+   setenv TEXT_DATA	$GEMDATA/nwx
+#
+#   Used by Nalarm (path component /nawips is added automatically by program). 
+#   Write products into $GEMDATA/alarms/nawips for display.
+    setenv AFOS_ALARMS   $GEMDATA/alarms/
+#
+#  Location of SAT directory tree "Required!!"...must exist
+#
+   setenv SAT  		$GEMDATA/images/sat
+   setenv RAD		$GEMDATA/nexrad
+#
+#
+# Below follow variables for data locations (site specific)
+# These may be used in scripts etc., as well as $GEMTBL/config/datatype.tbl.
+#
+   setenv LDMDATA	/data/ldm
+   setenv GOES8		$SAT/GOES-8
+   setenv GOES9		$SAT/GOES-9
+   setenv SUPER_NATIONAL_IR	$SAT/SUPER-NATIONAL/8km/IR 
+   setenv NHEMMULTI_IR	$SAT/NHEM-MULTICOMP/1km/IR 
+
+   setenv MODEL         $GEMDATA/model
+#
+# note HDS is mainted for historical reasons....
+   setenv HDS           $MODEL
+   setenv MODEL_SND     $GEMDATA/modsnd/gempak/bufr/model
+   setenv MODEL_SFC     $GEMDATA/modsnd/gempak/bufr/model
+   setenv SAO		$GEMDATA/surface
+   setenv UPA		$GEMDATA/upperair
+   setenv RAW_SAO       $LDMDATA/surface/sao
+   setenv RAW_SYN       $LDMDATA/surface/syn
+   setenv RAW_UPA       $LDMDATA/upperair
+   setenv NLDN          $GEMDATA/nldn
+
+   setenv TORN_WARN     $TEXT_DATA/watch_warn/TOR
+   setenv TSTRM_WARN    $TEXT_DATA/watch_warn/SVR
+   setenv TEXT_WARN     $TEXT_DATA/watch_warn
+
+   setenv RBKGPH	$GEMDATA/redbook
+   setenv SIGWX		$GEMDATA/sigwx
+   setenv SPDATA	$GEMDATA
+
+   setenv WS_ETA_GEM    /scratch/chiz/wseta/worketa/gempak
+
+   if($?HOME) then
+      setenv GRPHGD $HOME
+   else
+      setenv GRPHGD $GEMPAK
+   endif
+#
+#  Print command and flags for systems
+   setenv LP "lp -c"
+   setenv LPFLAG "-d"
+#
+# getenv("OS") used by cfl_iret()
+   setenv OS $NA_OS

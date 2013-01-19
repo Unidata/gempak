@@ -1,0 +1,11 @@
+GLEVEL  250
+GVCORD  pres
+GVECT   kntv(wnd)           
+SKIP    /3                  
+WIND    Bk18//1
+REFVEC   
+PANEL   0
+TITLE   5/-2/~  @  WIND (KTS)|~ @ WIND
+CLEAR   yes
+SCALE   0
+TEXT    1/21//hw

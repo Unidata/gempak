@@ -1,0 +1,15 @@
+!SNTDAR.PACK
+!
+!This table is the packing table used to create a merged sounding file
+!from TAMDAR data.
+!
+!*Log:
+!
+!m.gamazaychikov/SAIC	03/08	From SNMERG.PACK
+!
+PRES    .1    1050.    .1
+TMPK     0.    350.    .1
+RELH     0.    100.    .1
+DRCT     0.    360.   1.
+SPED     0.    300.   1.
+HGHT     0.  65534.   1.

@@ -1,0 +1,15 @@
+SNFILE  Sounding data file                                                      
+GDFILE  Grid file                                                               
+SNPARM  Sounding parameter list                                                 
+STNDEX  Stability indices                                                       
+LEVELS  Vertical levels                                                         
+VCOORD  Vertical coordinate type                                                
+DATTIM  Date/time                                                               
+DTAAREA Data area for OA                                                        
+GUESS   Guess file                                                              
+GUESFUN Guess grid                                                              
+GAMMA   Convergence parameter                                                   
+SEARCH  Search radius/Extrapolation                                             
+NPASS   Number of passes                                                        
+QCNTL   Quality control threshold                                               
+OABND   Bounds file(s) to use for 'blocking'                                    

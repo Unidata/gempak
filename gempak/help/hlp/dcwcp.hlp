@@ -1,0 +1,53 @@
+
+DCWCP
+
+    DCWCP decodes tornado and severe thunderstorm Watch Corner Points
+    (WCP) reports from a real-time data feed, or from a file fed to
+    the program through standard input, and writes the data 
+    to an ASCII file.  The program is controlled by inputs to the 
+    command line.
+
+    The inputs are program options and the output file name or template.
+    For example, for real-time data feeds:
+    
+	dcwcp [options] output_file
+
+    If running the program interactively with standard input, the -c
+    option must be used.  The input file must also be specified.
+    For example:
+
+	dcwcp -c YYMMDD/HHNN [other_options] output_file < input_file
+    
+    A template may be used to specify the output file name.  The file
+    name template uses the date and time of the bulletin or report
+    to replace the following characters.
+
+	YYYY or YY	Year with or without the century
+	MM		Month number
+	DD		Day
+	HH		Hour
+	NN		Minute
+
+
+     The format of the output ASCII file is as follows:
+
+     |Type|Issue_Time|Start_time|End_time|Watch_number|Points
+	     Lat1    Lon1
+	     Lat2    Lon2
+	     Lat3    Lon3
+	     Lat4    Lon4
+
+     Where: Type is TSM (thunderstorm), TOR (tornado) , NA (No watches
+ 	    	currently active)
+	    Issue_Time, Start_time and End_time are full GEMPAK
+		date/time strings (YYYYMMDD/HHNN)
+	    Watch_number is the number assigned to the watch
+	    Points is the number of lat/lon pairs which follow
+
+     Extra spaces may appear anywhere in this line of information,
+     except in the first character position.  The first character must
+     be a bar (|).
+
+     The latitude and longitude values are read using the FORTRAN
+     format (2F9.2).  Currently, there are 7 points but this may not
+     always be the case.

@@ -1,0 +1,4 @@
+$FC $FFLAGS $LDFLAGS -o $OS_BIN/oagrid oagrid.f \
+	$OS_LIB/oagrid.a \
+	$GEMLIB $APPL $SYSLIB $CGEMLIB
+$RM *.o

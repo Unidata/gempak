@@ -1,0 +1,47 @@
+MAP     Map color/dash/width/filter flag                                        
+MSCALE  fgc;bgc;mask/units/lat;hide/values/anch/x;y/ln;wd/freq|text_info|title  
+GAREA   Graphics area                                                           
+PROJ    Map projection/angles/margins|drop flag                                 
+SATFIL  Satellite image filename(s)                                             
+RADFIL  Radar image filename(s)                                                 
+IMCBAR  Color/ornt/anch/x;y/ln;wd/freq                                          
+LATLON  Line color/dash/width/freq/inc/label/format                             
+PANEL   Panel loc/color/dash/width/regn                                         
+TITLE   Title color/line/title                                                  
+TEXT    Size/fnt/wdth/brdr/N-rot/just/hw flg                                    
+CLEAR   Clear screen flag                                                       
+DEVICE  Device|name|x size;y size|color type                                    
+LUTFIL  Enhancement lookup table filename                                       
+STNPLT  Txtc/txt attr|marker attr|stnfil#col                                    
+VGFILE  Vgfile | scale file | attribute file | filter                           
+AFOSFL  AFOS Graphics File                                                      
+AWPSFL  AWIPS Graphics File                                                     
+LINE    Color/type/width/label/smth/fltr/scflg                                  
+WATCH   End time|Wtch clrs|Wtch Tm;Status Ln Tm|Watch Num;                      
+WARN    End time|TS;TN;FF clrs|Tm|Lb|Outline|Poly                               
+HRCN    End time|colors|syms|Tm|Lb|Mt|Qw|F12|F24|F36|F48|F72|F96|F120|Name      
+ISIG    End time|colors|Sym|Tm|Id|Mv|Fl                                         
+LTNG    End time|time ints/colors|markers                                       
+ATCF    Time|colors|models|Tm|Id|Mv|Mkr|Name                                    
+AIRM    Airmet Plotting Attributes                                              
+GAIRM   GAirmet Plotting Attributes                                             
+NCON    NCON attributes                                                         
+CSIG    End time|0_Hr;1_Hr;2_Hr;OL clrs|Seq0|Tm|Mv|Fl|Insty|Seq1|Seq2           
+SVRL    End time|SVRL clrs|Tm|Lb|Outline|Clr                                    
+BND     Bnd name/color/fillsiz/fillpat/filt/minpts!lincol/linpat/linwid!mrksym/c
+TCMG    End time|colors|center                                                  
+QSCT    QuickScat Plotting Attributes                                           
+WSTM    End time|WN;WT;AD clrs|Tm|Lb|Outline/WN;WT;AD lwidth                    
+WOU     End time|Mrkr and Otln clrs|Tm|Lb|Wt|Clr|Mrkr|Otln|Fill/Fill clrs|Union 
+WCN     End time|Mrkr and Otln clrs|Tm|Lb|Wt|Clr|Mrkr|Otln|Fill/Fill clrs|Union 
+WCP     End time|Wtch clrs|Tm|Lb|Clr                                            
+ENCY    Time|colors|models|Tm|Prs|Mkr|Ccd;wlevs|Fcst_Hour                       
+FFA     End time|FF;FA clrs|Tm|Lb|Ic|Outline/FF;FA lwidth                       
+WSAT    WindSAT Plotting Attributes                                             
+ASCT    AScat Plotting Attributes                                               
+TRAK1   Jason-1 Ground Track Prediction Plotting Attributes                     
+TRAKE   ENVISAT Ground Track Prediction Plotting Attributes                     
+TRAK2   Jason-2 Ground Track Prediction Plotting Attributes                     
+OSCT    OScat Plotting Attributes                                               
+SGWH    Significant Wave Heights Plotting Attributes                            
+ASDI    End time|Mode|DepArr|time increment/clrs or ht range/clrs|time lmt|SITES

@@ -1,0 +1,74 @@
+
+DCISIG
+
+    DCISIG decodes international SIGMET reports from a real-time data 
+    feed, or from a file fed to the program through standard input, and 
+    writes the data to an ASCII file.  The program is controlled by 
+    inputs to the command line.
+
+    The inputs are program options and the output file name or template.
+    For example, for real-time data feeds:
+    
+	dcisig [options] output_file
+
+    If running the program interactively with standard input, the -c
+    option must be used.  The input file must also be specified.
+    For example:
+
+	dcisig -c YYMMDD/HHNN [other_options] output_file < input_file
+    
+    A template may be used to specify the output file name.  The file
+    name template uses the date and time of the bulletin or report
+    to replace the following characters.
+
+	YYYY or YY	Year with or without the century
+	MM		Month number
+	DD		Day
+	HH		Hour
+	NN		Minute
+
+
+     The format of the output ASCII file is as follows:
+
+   |Type|Start_tm|End_tm|Msg_id|Seq_num|Orig_id|Flt_lvl|Dir|Spd|Name_Loc|Corr
+	     Lat1    Lon1
+	     Lat2    Lon2
+	     Lat3    Lon3
+	     Lat4    Lon4
+	      .       .
+	      .       .
+	      .       .
+
+     Where: Type is TS (thunderstorm), TB (turbulence), HU (hurricane),
+ 	        TR (tropical storm), TD (tropical depression),
+		VA (volcanic ash cloud), MW (marked mountain waves), 
+		TC (tropical cyclone), SQ (squall line), CT (CAT),
+		IC (icing), GR (hail), DS (duststorm), SS (sandstorm),
+		CB (cumulonimbus), WS (low level wind shear, or CN (cancel) 
+	    Start_tm and End_tm are full GEMPAK date/time strings
+	    Msg_id is the message identification
+	    Seq_num is the message sequence number
+	    Ori_id is the originating station ID taken from the WMO header
+		for the message or location ID for KKCI
+	    Flt_lvl is the flight level (or flight level range,
+		expressed as nnn-nnn) in hundreds of feet
+	    Dir is the direction of movement of the phenomenon
+	    Spd is the speed of the phenomenon in knots
+	    Name_Loc is the name of the storm, where applicable, or
+		location of the volcano, where applicable, or the
+		word, OTHER, for reports not from CONUS, Hawaii, Guam,
+		Japan, UK, Tahiti, and Cuba
+	    Corr is a flag indicating a correction,amendment or update (0 or 1)
+
+     Extra spaces may appear anywhere in this line of information,
+     except in the first character position.  The first character must
+     be a bar (|).
+
+     The latitude and longitude values describing the bounds of the
+     phenomenon are read using the FORTRAN format (2F9.2).  The number 
+     of points may vary.  For a phenomenon at a point (e.g., a
+     hurricane), only that point is specified.  For a phenomenon
+     centered at a point (e.g., a thunderstorm), the first point is
+     the center and the second point gives the radius (in nautical
+     miles), followed by RMISSD.
+

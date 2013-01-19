@@ -1,0 +1,24 @@
+     DISCRETE
+
+     DISCRETE is a string that contains "value1-value2=value3" pairs. 
+     The individual pairs are separated by semicolons:
+
+	a-b=x;c-d=y;e-f=z
+
+     For example:
+
+		DISCRETE=0.1-0.3=1;0.3-0.6=2;0.6-0.9=3
+ 
+     All value1, value2 and value3 are considered floating point
+     values. If 'a' is missing in the first pair, use -(FLT_MAX), if
+     'f' is missing in the last pair, use FLT_MAX.
+
+     If the 'left of line' is set to 'YES' in DLINES, the value of
+     value3 will be that value to the left (in order) of the contour
+     line value in the DISCRETE parameter.  For above example, if the
+     contour line value is  '3', then left of the line value will be
+     '2'.  If the contour line value is '1', then left of the line
+     value will be RMISSD.
+
+
+

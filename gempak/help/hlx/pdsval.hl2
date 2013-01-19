@@ -1,0 +1,38 @@
+     PDSVAL
+
+     PDSVAL provides a way to enter explicitly PDS numbers identifying
+     a grid by parameter, level, vertical coordinate type, and time.
+     None, some, or all of them may be entered.  Default values are
+     determined from the GEMPAK grid label information and the GEMPAK
+     grid GRIB lookup tables.
+
+     The input has the following form:
+
+     parameter # %vertical coordinate type # @level # ^time
+
+     or
+
+     parm name %vertical coordinate name @level # ^time
+
+     The parameter number or name, if given, must appear first.  It
+     is not preceded by any marking delimiter.  The parameter number
+     will be assigned to PDS byte 9.  After the parameter number, the
+     entries may be given in any order.  The parameter may be entered
+     as a name to be found and matched to a number using the GEMPAK
+     grid GRIB lookup tables.
+
+     The vertical coordinate type number is preceded by % as a marking
+     delimiter.  The number entered will be assigned to byte 10.  The
+     vertical coordinate may be entered as a name to be found and
+     matched to a number using the GEMPAK grid GRIB lookup tables.
+
+     The level information is preceded by @.  A single level value
+     or two level values separated by a colon may be entered following
+     the @ symbol.  This information is assigned to bytes 11 and 12.
+
+     The time information is entered following the ^ symbol in the form
+     YYYYMMDD/HHMMFhhhmm.  This is a standard GEMPAK time, except that
+     the year must have four digits.  This information is assigned to
+     bytes 13 through 25, with forecast time units assumed to be hours.
+     Any accumulation period must come from information imbedded within
+     the GEMPAK parameter name.

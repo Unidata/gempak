@@ -1,0 +1,106 @@
+C************************************************************************
+C GHCMN.CMN                                                             *
+C*                                                                      *
+C* These common areas are used for the hurricane graphics programs     	*
+C* GPTCWW and GPTPC.                        				* 
+C**                                                                     *
+C* Log:                                                                 *
+C*  A. Hardy/GSC	 6/01	Created					*
+C*  D. Kidwell/NCEP	 4/03	Added / GHBKPT / and parameters 	*
+C*  D. Kidwell/NCEP	11/03	Added bkstid to / GHBKPT /, doc.	*
+C*  D. Kidwell/NCEP	 1/04	Generalized store of bays, sounds, etc. *
+C* m.gamazaychikov/SAIC	04/04	Added IPRICO, NAREAS, changed indxbk	*
+C*  D. Kidwell/NCEP	 7/04	Increased MAXBK, NAREAS, added IWATER   *
+C*  D. Kidwell/NCEP	 4/05	Increased NAREAS, added IKEYS           *
+C*  M. Li/SAIC		 9/05	Remove MAXLIN, MAXSND, bklist, linsbk, 	*
+C*			        and isound				*
+C*  S. Gilbert/NCEP	10/07	Added bkstate and bkcntry to GHBKPT	*
+C*  S. Gilbert/NCEP	06/09	Added iseqme to GHBKPT			*
+C************************************************************************
+C*
+C************************************************************************
+C GH PARAMETERS                                                         *
+C*                                                                      *
+C************************************************************************
+	PARAMETER	( MAXBK = 2000 )
+	PARAMETER	( NAREAS = 9 )
+	PARAMETER	( IUSGEC = 1, IMXCSA = 2, ICUBA  = 3, 
+     +			  IHISP  = 4, IOTHER = 5, IPACIF = 6, 
+     +                    IPRICO = 7, IWATER = 8, IKEYS  = 9 )
+C************************************************************************
+C GHCMN                                                                 *
+C*                                                                      *
+C* This common area stores values used for save and restore.            *
+C************************************************************************
+	CHARACTER 	szghspcl*4, ghsztx*4, color(33)*30, xname(33)*30
+        INTEGER		jred(33), jgreen(33), jblue(33)
+
+C*
+	COMMON / GHCMN /
+     +			szghspcl, jghspwd,
+C*					Special marker size
+C*					Special marker width
+     +			jghltyp, jghlthw, 
+C*					Line type
+C*					Line type flag
+     +			jghwdth, jghwhw, 
+C*					Line width
+C*					Line width flag
+     +			jghtxfn, jghtxhw, 
+C*					Text font
+C*					Text sw/hw flag
+     +			ghsztx, jghtxwd, 
+C*					Text size
+C*					Text line width
+     +			jghbrdr, jghrotn, jghjust,
+C*					Text border/blank fill flag
+C*					Text north-relative rot flag
+C*					Text justification
+     +			color, xname,
+C*					GEMPAK color name
+C*					X-Window color name
+     +			jred, jgreen, jblue
+C*					Red color component
+C*					Green color component
+C*					Blue color component
+C------------------------------------------------------------------------
+C************************************************************************
+C GHBKPT                                                                *
+C*                                                                      *
+C* This common area stores breakpoint plotting information.             *
+C************************************************************************
+	CHARACTER	bktbch(MAXBK)*20, bkstid(MAXBK)*8,
+     +			bkstate(MAXBK)*2, bkcntry(MAXBK)*2
+	INTEGER		ibkpri(MAXBK), ibkseq(MAXBK), iseqca, iseqme,
+     +			indxbk(NAREAS+1), nbkpts(NAREAS), isnd(2,9) 
+	REAL		bklat(MAXBK), bklon(MAXBK)
+C*
+	COMMON / GHBKPT /
+     +			ibkseq,
+C*					Breakpoint sequence number
+     +			indxbk,
+C*					Geographic indices for bkpts
+     +			nbkpts,
+C*					Number of bkpts for each area
+     +			bklat, bklon,
+C*					Breakpoint plotting location
+     +			ibkpri,
+C*					Breakpoint priority number
+     +			bktbch,
+C*					Breakpoint extra characters
+     +			isnd,
+C*					Bay, etc. bracketing indices
+     +			nsnds,
+C*					Number of bays, sounds, lakes
+     +			bkstid,
+C*					Breakpoint station id
+     +			bkstate,
+C*					Breakpoint state abbreviation
+     +			bkcntry,
+C*					Breakpoint country abbreviation
+     +			iseqca,
+C*					Sequence number of last breakpoint 
+C*                                      in California
+     +			iseqme 
+C*					Sequence number of last breakpoint 
+C*                                      in Maine

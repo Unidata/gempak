@@ -1,0 +1,13 @@
+!QSCT.PACK
+!
+!This table is the packing table used to create a merged sounding file.
+!
+!*Log:
+!
+!
+!ALAT   -90.     90.   .00001
+!ALON  -180.    180.   .00001
+SPED     0.    200.   .01
+DRCT     0.    360.   .01
+POPR     0.    100.   .01
+QVAL     0.   9999.     1

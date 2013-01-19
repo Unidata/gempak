@@ -1,0 +1,16 @@
+GPCLEAR clears the current graphics device.
+  
+    
+INPUT PARAMETERS
+
+
+  
+PROGRAM DESCRIPTION
+    
+    This program clears the graphics device.  On an interactive
+    device, the screen is erased.  On a hardcopy device, the
+    next plot will be on a new page.
+   
+  
+ERROR MESSAGES
+  

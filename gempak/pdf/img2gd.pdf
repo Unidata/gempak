@@ -1,0 +1,13 @@
+PROJ    Map projection/angles/margins|drop flag                                 
+GRDAREA Area covered by grid                                                    
+KXKY    Number of grid points in x;y                                            
+GRDNAM  Grid parameter name                                                     
+GDFILE  Grid file                                                               
+GLEVEL  Grid level                                                              
+GVCORD  Grid vertical coordinate                                                
+GDATTIM Grid date/time                                                          
+CPYFIL  Grid file whose navigation is to be used in new grid file | subarea     
+MAXGRD  Maximum number of grids                                                 
+IMGFIL  Image filename(s)                                                       
+IMGTIM  image file current/dattim                                               
+CALIMG  Flag to use calibrated values or pixel values                           

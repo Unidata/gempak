@@ -1,0 +1,32 @@
+
+
+                          File (FL) Library
+
+
+The FL library contains subroutines to access direct access files,
+sequential files, and table files.  The open and create subroutines
+return a logical unit number that is used in subsequent calls to
+reference each file.
+
+When opening a file, the file name may include an environment variable.
+In addition, if the file name includes '^' as its first character, no
+case conversions on the file name are attempted.  Without this
+indicator, when the file name cannot be found as given, the name is
+converted to lower-case characters and an additional test is made for
+the file's existence.
+
+A table file is a sequential file that may include comment records.  A
+comment record is any record where the first non-blank  character is an
+exclamation point ('!').  The table open subroutine skips the leading
+comment records.  Table files may be created using a text editor.
+
+Direct access files may be created using FL_DCRE.  The subroutines
+FL_DOPN and FL_DSOP open existing direct access files.  FL_READ and
+FL_WRIT are provided to read and write data in direct access files.
+
+The subroutine FL_CLOS, and its relatives, are provided for closing any
+file opened by an FL open subroutine.
+
+Each of the FL subroutines returns a condition code, IRET, that is the
+GEMPAK file error number.  This error number can be printed using
+ER_WMSG.

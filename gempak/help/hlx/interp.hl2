@@ -1,0 +1,6 @@
+     INTERP
+
+     INTERP is a logical variable which determines whether interpolation
+     between sweeps will occur. If INTERP=NO, only values within the beam
+     scan volume will be displayed. If INTERP=yes, data values between
+     scan tilts will be interpolated using bilinear interpolation. 

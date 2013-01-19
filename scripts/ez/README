@@ -1,0 +1,78 @@
+			    GEMPAK-5.2 EZ scripts
+
+			   Brad Colman  NWS/WSFO-SEA
+			    Ron Miller   COMET
+
+			     Updated 31 Aug 94
+
+
+	This document describes how to set up and run the GEMPAK EZ scripts.  
+These scripts allow the user to quickly produce a GEMPAK plot of various 
+meteorological fields.  NOTE:  This document is for running the ezscripts
+with version 5.2 of GEMPAK.  This version provides looping and multiple 
+windows. 
+
+	To run any of the EZ scripts, the user needs only type the name of the 
+script at the UNIX prompt.  The script will prompt you for all necessary 
+parameters.  You can short cut the prompting by supplying the necessary 
+parameters on the command line.  That is, after typing the name of the desired 
+script but BEFORE hitting the enter key, type the necessary parameters 
+seperated by spaces.  For example:
+
+		ezrelh 700 
+
+	There are two "set up" programs, ezset and ezarea which are used 
+infrequently to specify the gridded data file and the area of interest to use.  
+Once set, the user may run the remaining scripts as often as desired.  Note
+that you need to run these FIRST to initially set up your display map
+and gridded data source.
+
+	Most of the EZ scripts display the data in plan view.  Some require a 
+level or levels to be input by the user.  There are also cross section, 
+time-height section, and sounding scripts which require the user to input 
+the location of the section or sounding.  See below for more information.
+
+
+****** IMPORTANT ******
+
+	Note that you should ALWAYS run the GEMPAK command gpend when you're 
+all done examining data.  gpend removes the GEMPAK X window from you screen. 
+DO NOT CLOSE THIS WINDOW WITH THE X-WINDOW WIDGET (the button on the upper left 
+corner of the window).
+		
+gpend -		This is actually a GEMPAK program that you should ALWAYS use
+		to delete the GEMPAK X-window from your display.  You can use
+		the same window for multiple EZ scripts and only need to use 
+		gpend when you're all done examining data.
+
+================================================================================
+	
+VERTICAL Scripts
+
+	Vertical EZ scripts require that the user specify the location of 
+the sounding, time-height section, or spatial cross section.  There are 
+two ways to accomplish this.  The user can 
+	
+	1) Enter the 3-character station identifier(s) or 
+	2) Graphically select the locations using the mouse on a map/field 
+         window that has already been generated using a different ez script.  
+	
+In the first case, the user merely runs the desired vertical EZ script, such 
+as ezprof, and enters the station ID(s) when prompted.  You can also supply 
+the station ID(s) on the command line.  See below for the syntax and examples.
+In the second case, the user would first have run a plan-view (horizontal) EZ 
+script such as ezfront and have a display on the screen of frontogenesis.  
+Without removing that graphic, the user then runs ezprof to generate a 
+sounding from the gridded data.  Once the script is running and all required 
+parameters have been input, place the cursor on the graphics screen.  When 
+the cursor changes from an arrow to a + sign, you can select the location(s) 
+with the mouse.  For a single point, just click the left button at the 
+desired location.  For a line (spatial cross section), press and hold the 
+left mouse button at the location where you want the left side of the 
+cross section to start.  Then "drag" the line to the desired location 
+and release the left mouse button to select the cross section.  
+
+================================================================================
+
+List of scripts and descriptions
+

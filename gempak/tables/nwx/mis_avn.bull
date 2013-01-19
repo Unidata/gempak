@@ -1,0 +1,32 @@
+! MIS_AVN.BULL
+!
+! This table contains the bulletin/station information to be used
+! with the miscellaneous aviation products.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+!
+FAUS20  KZAB    ALBUQUERQUE                      NM US  3505  -10662  1620
+FAUS20  KZTL    ATLANTA                          GA US  3365   -8443   312
+FAUS20  KZBW    BOSTON                           MA US  4237   -7103     9
+FAUS20  KZAU    CHICAGO                          IL US  4198   -8790   181
+FAUS20  KZOB    CLEVELAND                        OH US  4140   -8185   241
+FAUS20  KZDV    DENVER                           CO US  3999  -10526  1625
+FAUS20  KZFW    FT.WORTH                         TX US  3290   -9703   182
+FAUS20  KZHU    HOUSTON                          TX US  2965   -9528    14
+FAUS20  KZID    INDIANAPOLIS                     IN US  3973   -8627    99
+FAUS20  KZJX    JACKSONVILLE                     FL US  3048   -8170     9
+FAUS20  KZKC    KANSAS_CITY                      MO US  3932   -9472   312
+FAUS20  KZLA    LOS_ANGELES                      CA US  3393  -11840    32
+FAUS20  KZME    MEMPHIS                          TN US  3505   -9000    87
+FAUS20  KZMA    MIAMI                            FL US  2582   -8028     4
+FAUS20  KZMP    MINNEAPOLIS                      MN US  4507   -9335   265
+FAUS20  KZNY    NEW_YORK                         NY US  4065   -7378     7
+FAUS20  KZOA    OAKLAND                          CA US  3773  -12222     3
+FAUS20  KZLC    SALT_LAKE_CITY                   UT US  4078  -11197  1288
+FAUS20  KZSE    SEATTLE                          WA US  4745  -12230   137
+FAUS20  KZDC    WASHINGTON                       DC US  3885   -7703    20
+FAUS20  PANC    ANCHORAGE                        AK US  6117  -15002    40

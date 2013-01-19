@@ -1,0 +1,223 @@
+! EXAMPLE.LPF
+!
+! This file is an example Layer Product File (LPF).  It describes the LPF
+! format and processing rules.
+!
+! An LPF allows the specification of product generation layers and their 
+! attributes.  When an LPF is selected using the NMAP "OPEN PROD" action,
+! the layers and their attributes in the LPF are loaded into product generation.
+! See the NMAP Product Generation-LPF help for additional details.
+!
+! An LPF has two columns.  The first column is a reserved keyword enclosed in
+! angle brackets that indicates the layer attribute.  The second column is the 
+! value for that attribute.  Keywords and their values are grouped by layer in 
+! the file.  The exclamation point, !, precedes comment lines in the file. 
+!
+! The following table lists the reserved keyword, its format or valid values,
+! and a brief description. Note that N is the layer number from 1 through 10.
+!
+! KEYWORD		FORMAT/VALID VALUES		DESCRIPTION
+!==============================================================================
+! <layerN_name> 	String up to 8 characters	Layer name
+!
+! <layerN_file>		String				input VGF name
+!							and default output name
+!							if no output_file is
+!							specified (see below).
+!
+! <layerN_output_file>  String				output VGF name
+!
+! <layerN_group_type>   Group name                      Group name assigned to
+!                                                       the layer, see
+!                                                       $GEMTBL/pgen/grptyp.tbl
+!
+! <layerN_display_mode>	On | Off			Layer toggle when the 
+!							layer is not active
+!
+! <layerN_color_mode>   All | Mono                      Color mode when the
+!                                                       layer is not active,
+!							all, all colors shown,
+!							mono, one color shown
+!
+! <layerN_color_id>	GEMPAK color ID (1-32)		Layer mono color when  
+!							the layer is not active
+!
+! <layerN_fill_mode>	On | Off			Fill toggle when
+!							the layer is not 
+!                                                       active 
+!
+! The following rules apply:
+!
+! 	1. The key words can be in any order for a given layer. 
+!
+!	2. An empty VGF is created in the local directory if the VGF does not
+!	   exist.  The VGF is opened for the layer.
+!	
+!	3. The following defaults are used if a layer attribute is not specified
+!          or if its value is invalid:
+!
+!		<layerN_name>   	layer_N, If the name is > 8 characters,
+!                                       it is truncated 
+!		<layerN_file>	        No default, no VGF opened for the layer 
+!		<layerN_output_file>	No default, no VGF opened for output 
+!					  for the layer.
+!		<layerN_display_mode>	On
+!		<layerN_color_id>	19
+!		<layerN_color_mode>	All
+!		<layerN_fill_mode>	On
+!		<layerN_group_type>     The first group type in 
+!                                       $GEMTBL/pgen/grptyp.tbl is used 
+!
+!!
+! Log:
+! T. Lee/SAIC		5/02	Created
+! S. Schotz/NCEP	6/02	Updated documentation, added more examples
+! S. Schotz/NCEP 	6/02    Corrected group default rule
+! E. Safford/SAIC      11/03	Added <layerN_output_file>
+! D.W.Plummer/NCEP     11/04	Added more alyers for GFA example
+!--------------------------------------------------------------------------------
+!
+!
+! layer 1: Sample Sigwx Layer
+!
+<layer1_name>		SIGWX		
+<layer1_file>		sigwx_current.vgf
+<layer1_output_file>	sigwx_out.vgf
+<layer1_group_type>	
+<layer1_display_mode>	On
+<layer1_color_mode>	All
+<layer1_color_id>	2
+<layer1_fill_mode>	Off
+!
+! Layer 2: Sample  Cig Clouds Layer
+!
+<layer2_name>		CIG_CLD
+<layer2_file>		cigcld_current.vgf
+<layer2_output_file>	cigcld_out.vgf
+<layer2_group_type>	 
+<layer2_display_mode>	on	
+<layer2_color_mode>	All	
+<layer2_color_id>	5
+<layer2_fill_mode>	Off
+!
+! Layer 3: Sample TCU clouds layer 
+!
+<layer3_name>	 	TCU_CLD
+<layer3_file>		tcucld_current.vgf
+<layer3_output_file>	tcucld_out.vgf
+<layer3_group_type>	
+<layer3_display_mode>	On
+<layer3_color_mode>	All	
+<layer3_color_id>	6
+<layer3_fill_mode>	Off
+!
+! Layer 4: Sample Ice Layer
+!
+<layer4_name>	        ICE	
+<layer4_file>		ice_current.vgf
+<layer4_output_file>	ice_out.vgf
+<layer4_group_type>	
+<layer4_display_mode>	On
+<layer4_color_mode>	All	
+<layer4_color_id>	7
+<layer4_fill_mode>	Off
+!
+! Layer 5: Sample Turb Layer
+!
+<layer5_name>		TURB
+<layer5_file>		turb_current.vgf
+<layer5_output_file>	turb_out.vgf
+<layer5_group_type>	
+<layer5_display_mode>	On
+<layer5_color_mode>	All	
+<layer5_color_id>	8
+<layer5_fill_mode>	Off
+!
+! Layer 6: Sample MTW Layer
+!
+<layer6_name>		MTW
+<layer6_file>		mtw_current.vgf
+<layer6_output_file>	mtw_out.vgf
+<layer6_group_type>	
+<layer6_display_mode>	On
+<layer6_color_mode>	All	
+<layer6_color_id>	10
+<layer6_fill_mode>	Off
+!
+! Layer 7: Sample CLD Layer
+!
+<layer7_name>		CLD
+<layer7_file>		cld_current.vgf
+<layer7_output_file>	cld_out.vgf
+<layer7_group_type>	
+<layer7_display_mode>	On
+<layer7_color_mode>	All	
+<layer7_color_id>	12
+<layer7_fill_mode>	Off
+!
+! Layer 8: Sample MT_OBSC Layer
+!
+<layer8_name>		MT_OBSC
+<layer8_file>		mt_obsc_current.vgf
+<layer8_output_file>	mt_obsc_out.vgf
+<layer8_group_type>	
+<layer8_display_mode>	On
+<layer8_color_mode>	All	
+<layer8_color_id>	14
+<layer8_fill_mode>	Off
+!
+! Layer 9: Sample IFR Layer
+!
+<layer9_name>		IFR
+<layer9_file>		ifr_current.vgf
+<layer9_output_file>	ifr_out.vgf
+<layer9_group_type>	
+<layer9_display_mode>	On
+<layer9_color_mode>	All	
+<layer9_color_id>	16
+<layer9_fill_mode>	Off
+!
+! Layer 10: Sample FZLVL Layer
+!
+<layer10_name>		FZLVL
+<layer10_file>		fzlvl_current.vgf
+<layer10_output_file>	fzlvl_out.vgf
+<layer10_group_type>	
+<layer10_display_mode>	On
+<layer10_color_mode>	All	
+<layer10_color_id>	18
+<layer10_fill_mode>	Off
+!
+! Layer 11: Sample M_FZLVL Layer
+!
+<layer11_name>		M_FZLVL
+<layer11_file>		m_fzlvl_current.vgf
+<layer11_output_file>	m_fzlvl_out.vgf
+<layer11_group_type>	
+<layer11_display_mode>	On
+<layer11_color_mode>	All	
+<layer11_color_id>	20
+<layer11_fill_mode>	Off
+!
+! Layer 12: Sample SFC_WND Layer
+!
+<layer12_name>		SFC_WND
+<layer12_file>		sfc_wnd_current.vgf
+<layer12_output_file>	sfc_wnd_out.vgf
+<layer12_group_type>	
+<layer12_display_mode>	On
+<layer12_color_mode>	All	
+<layer12_color_id>	22
+<layer12_fill_mode>	Off
+!
+! Layer 13: Sample M_FZLVL Layer
+!
+<layer13_name>		LLWS
+<layer13_file>		llws_current.vgf
+<layer13_output_file>	llws_out.vgf
+<layer13_group_type>	
+<layer13_display_mode>	On
+<layer13_color_mode>	All	
+<layer13_color_id>	24
+<layer13_fill_mode>	Off
+!

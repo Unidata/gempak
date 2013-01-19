@@ -1,0 +1,7 @@
+! This is the error file for GPTEXT.
+!
+ -1	! Fatal error initializing TAE.
+ -2	! Fatal error reading TAE parameters.
+ -3	! Fatal error initializing GEMPLT.
+ -4	! File !AS does not exist.
+ -5	! Map projection is not set.

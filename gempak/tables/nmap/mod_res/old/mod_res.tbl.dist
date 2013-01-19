@@ -1,0 +1,668 @@
+!************************************************************************************************************************************************
+!																		*
+!	mod_res.tbl																*
+!																		*
+!	This table contains the information necessary for setting up the model product selection within NMAP.  					*
+!	The columns are not in fixed locations.													*
+!																		*
+!		Column 1 - product name as it is to appear in NMAP,										*
+!		Column 2 - path/filename to restore file for product in column 1,								*
+!		Column 3 - group name under which the product is to appear,									*
+!		Column 4 - list of models (separated by semicolons, no spaces!) to which product will apply.					*
+!																		*
+! D.W.Plummer/NCEP	02/97	Initial set-up													*
+! D.W.Plummer/NCEP	03/97	Removed all references to ECMWF model										*
+! J. Carr/HPC           05/97   Putting each product in reference to a model                                   					*
+! J. Carr/HPC           08/97   Organized files into standard, precip and misc setup                           					*
+! D.W.Plummer/NCEP	 9/97	Re-organize after adding FILTER and TEXT changes								*
+! J. Carr/HPC    	10/97	Added some products                             								*
+! D.W.Plummer/NCEP	11/97	Added meso topography												*
+! J. Carr/HPC   	12/97	Added meso topography (lines-no color fill)									*
+! J. Carr/HPC   	 2/98	Changed the name of eta lifted index to best li and added some products for the HPC				*	
+! J. Partain/MPC         2/98   Added 950mb eta statibility product                                                                     	*
+! J. Carr/HPC            4/98   Added some rucs products and removed some groups from the ruc model that did not apply such as hurricane 	*
+! J. Carr/HPC            4/98   Added the mrfx, ruc2, and ecmwfg models                                                                  	*
+! D.W.Plummer/NCEP	 6/98	Added the etasaudi (standard, basic wx, nocolfil, precip, qpf) and nogaps (standard) models			*
+! J. Carr/HPC            6/98   Added the nogaps 12-hr pcpn                                                                              	*
+! J. Carr/HPC            6/98   Added the nogaps 12-hr pcpn in mm, added 500 mb and 300 mb abv vort advection                            	*
+! J. Carr/HPC            7/98   Added mean-layer wind and pmsl                                                                           	*
+! J. Carr/HPC            7/98   Added a pmsl_1000-500mb_wind to the ETA products and to the AVN                                          	*
+! J. Carr/HPC            7/98   Added streamlines (1000,925,850) mb for most models                                                      	*
+! J. Carr/HPC            7/98   Removed nogaps from the mean layer wind product                                                          	*
+! J. Carr/HPC            7/98   Removed ukmet from the 300-700_Q-VCTRS_THKN product                                                      	*
+! J. Carr/HPC            7/98   Removed nogaps from the PMSL_and_BL_WIND global product because it does not work                         	*
+! J. Carr/HPC            7/98   Created new nogaps products for PMSL_and_BL_WIND and 850mb_HGT_and_WIND                                  	*
+! J. Partain/MPC         7/98   Added experimental fields (exp_marine) in support of MPC Prod Generation                                 	*
+! J. Carr/HPC            7/98   Removed some products from the basic weather section and added a monochrome group for basic weather      	*
+! J. Partain/MPC         9/98   Added more exp_marine fields; added NEWwave model                                                        	*
+! J. Carr/HPC            9/98   Added more fields to each model for the surface analysis desk                                            	*
+! J. Carr/HPC           10/98   Added tdl mrf temperatures, 2-meter temps and sgma 9950 temps                                            	*
+! J. Carr/HPC           11/98   Added ecmwf and ukmet thicknesses for the medium range desk                                              	*
+! J. Carr/HPC            1/99   Copied pmsl, thickness, 1000-850 wind from marine to bawx                                                	*
+! J.L.Partain/MPC	 2/99	Added entries for NWW3/NEWwave models; few new exp_marine fields; minor name changes to other wave entries	*
+! J. Carr/HPC            2/99   Added the (3-hr emsl and pcpn) &  (6-hr emsl and pcpn) to the eta model 					*
+! J. Carr/HPC            2/99   Added 3-hr pcpn to the eta model 										*
+! J. Carr/HPC            2/99   Added lifted index to the basic weather group under the eta, ngm and global				 	*
+! S. Jacobs/NCEP	 4/99	Added mrf1;mrf2;ukmet;ukmet2 to the 700mb_HGHT_RH_OMEGA_NCF product						*
+! J.L.Partain/MPC        4/99   Added 1000-850thk-only product to NCEP suite									*
+! J. Carr/HPC            5/99   Added cross totals index to the basic weather group under the eta, ngm and global                       	*
+! J. Carr/HPC            5/99   Added 2-meter 12-hr max and 12-hr min and 2-meter temp in Celcius			                       	*
+! S. Jacobs/NCEP	 5/99	Added restore files for the RFC grids										*
+! J.L.Partain/MPC	 5/99	Added pmsl_bl_wind_only and 1000-850thk fields to NOGAPS and UKMET for marine					*
+! J. Carr/HPC            8/99   Added 500 mb winds and height field                                     		                       	*
+! J. Carr/HPC            8/99   Added the ruc2 to some of the 6-hr precip fields.                                                               *
+! J. Carr/HPC            8/99   Added two cape products to the ruc2 model.                                                                      *
+! J. Carr/HPC           10/99   Added a 600 mb relative humidity/vertical velocity product.                                                     *
+! J. Carr/HPC           10/99   Added models to various products. The ensemble members were added and various models to various products.       *
+! J.L.Partain/MPC       11/99   Added 1000mb_hght_absv and 850mb_hght_absv fields for global models for marine group                            *
+! J.L.Partain/MPC       11/99   Added peak_swell_per_gridded for NEWwave, wam, and nww3 models for exp_marine group                             *
+! J. Carr/HPC            1/00   Added two new freezing level products and removed an old one.                                                   *
+! J.L.Partain/MPC        1/00   Added hght_tmp_wind for 300,500,700,1000mb levels in standard group                                             *
+! J. Carr/HPC            3/00   Added 700, 500 and 250 mb streamlines                                                                           *
+! J. Carr/HPC            3/00   Added two new great lakes products for the eta and avn models.                                                  *
+! J. Carr/HPC            3/00   Added pcpn type product without vertical velocity info to the eta and avn models                                *
+! J.L.Partain/MPC	 6/00	Added model comparison restore files for avn, eta, ngm								*
+! S. Jacobs/NCEP	 6/00	Added avn_SP to the list of models										*
+! M. Li/GSC		 7/00	Removed avn_SP from the list of models										*
+! J.L.Partain/MPC	 8/00   Add contoured pk swell pd for nww3; add fields for nww3_gfdl, deleted WAM and NEWwave references		*
+! J.L.Partain/MPC	 9/00	Separated dir/period fields for nww3_gfdl from rest of nww3 (they use different grid names)			*
+! S. Jacobs/NCEP	 1/01	Added eta20													*
+! S. Jacobs/NCEP	 1/01	Removed ukmet2; Changed mrf1/2 to mrf										*
+! D.W.Plummer/NCEP	 3/01	Consolidated ensemble entries; rm avnext entry									*
+! T. Lee/GSC		 4/01	added avnp, mrfp and fnlp											*
+! S. Jacobs/NCEP	 6/01	Added ghm and ghmnest												*
+! S. Jacobs/NCEP	 6/01	Added mm5ak, mm5us, fslrucs, fnmocwave										*
+! S. Jacobs/NCEP	11/01	Added the etap model												*
+! S. Schotz/NCEP	 4/03	Added firwx                                                                                                     *
+! T. Lee/SAIC		10/03	Added NDFD													* 
+! T. Piper/SAIC		01/05	Removed avnp, etap, eta20, etasaudi; replaced avn with dgex;gfs;gfshd and eta with nam;nam20;nam40;nam44	*
+! S. Jacobs/NCEP	 3/05	Added GoesSST restore files											*
+!************************************************************************************************************************************************
+!
+! PRODUCT NAME                 PATH/FILENAME                                         GROUP        MODELS
+!
+!
+! SINGLE-LEVEL, STANDARD PARAMETERS
+!
+50mb_HGHT_WIND                 $NMAP_RESTORE/stnd/50mb_hght_wind                     standard     dgex;gfs;gfshd;fnl;mrf;nam;nam20;nam40;nam44
+!
+70mb_HGHT_WIND                 $NMAP_RESTORE/stnd/70mb_hght_wind                     standard     dgex;gfs;gfshd;fnl;mrf
+!
+100mb_HGHT_WIND                $NMAP_RESTORE/stnd/100mb_hght_wind                    standard     dgex;gfs;gfshd;fnl;mrf;ukmet;nam;nam20;nam40;nam44;ngm;ruc2;fslruc2
+!
+150mb_HGHT_WIND                $NMAP_RESTORE/stnd/150mb_hght_wind                    standard     dgex;gfs;gfshd;fnl;mrf;ukmet;nam;nam20;nam40;nam44;ngm;ruc2;fslruc2
+!
+200mb_HGHT_WIND                $NMAP_RESTORE/stnd/200mb_hght_wind                    standard     dgex;gfs;gfshd;fnl;mrf;mrfx;ukmet;nam;nam20;nam40;nam44;ngm;ruc2;fslruc2;nogaps
+200mb_DIV_ISOTACHS             $NMAP_RESTORE/stnd/200mb_div_isotachs                 standard     dgex;gfs;gfshd;ruc2;fslruc2;nogaps
+!
+250mb_AGEO_DIV_ISOTACHS        $NMAP_RESTORE/stnd/250mb_ageo_div_isotachs            standard     dgex;gfs;gfshd;nam;nam20;nam40;nam44;fnl;mrf;ngm;ruc2;fslruc2;ukmet
+250mb_HGHT_ABSV                $NMAP_RESTORE/stnd/250mb_hght_absv                    tropical     mrf
+250mb_HGHT_WIND                $NMAP_RESTORE/stnd/250mb_hght_wind                    hurricane    dgex;gfs;gfshd;fnl;mrf;mrfx;ukmet;nam;nam20;nam40;nam44;ngm
+250mb_HGHT_WIND                $NMAP_RESTORE/stnd/250mb_hght_wind                    standard     dgex;gfs;gfshd;fnl;mrf;mrfx;ukmet;nam;nam20;nam40;nam44;ngm;ruc2;fslruc2;nogaps;mm5ak;mm5us
+250mb_HGHT_WIND                $NMAP_RESTORE/stnd/250mb_hght_wind                    tropical     mrf;mrfx
+250mb_HGHT_WIND_NCF            $NMAP_RESTORE/stnd/250mb_hght_wind_ncf                no_col-fill  dgex;gfs;gfshd;nam;nam20;nam40;nam44;ngm;ruc2;fslruc2
+250mb_WIND_AND_REL_VORT        $NMAP_RESTORE/stnd/250mb_wind_and_rel_vort            hurricane    dgex;gfs;gfshd;nam;nam20;nam40;nam44;ngm
+250mb_WIND_AND_REL_VORT        $NMAP_RESTORE/stnd/250mb_wind_and_rel_vort            standard     dgex;gfs;gfshd;nam;nam20;nam40;nam44;ngm;nogaps;ruc2;fslruc2
+250mb_STREAMLINES              $NMAP_RESTORE/stnd/250mb_streamlines                  streamlines  dgex;gfs;gfshd;nam;nam20;nam40;nam44;fnl;mrf;mrfx;ngm;ruc2;fslruc2
+!
+300mb_AGEO_DIV_ISOTACHS        $NMAP_RESTORE/stnd/300mb_ageo_div_isotachs            qpf          dgex;gfs;gfshd;nam;nam20;nam40;nam44;fnl;mrf;mrfx;ngm;ruc2;fslruc2;ukmet
+300mb_DIV_ISOTACHS             $NMAP_RESTORE/stnd/300mb_div_isotachs                 standard     dgex;gfs;gfshd;nogaps
+300mb_HGHT_ABSV                $NMAP_RESTORE/stnd/300mb_hght_absv                    standard     ruc2;fslruc2
+300mb_HGHT_ABSV_ADV            $NMAP_RESTORE/stnd/300mb_hght_absv_adv                standard     dgex;gfs;gfshd;nam;nam20;nam40;nam44;ngm;mrf;mrfx;nogaps;ruc2;fslruc2
+300mb_HGHT_WIND                $NMAP_RESTORE/stnd/300mb_hght_wind                    standard     dgex;gfs;gfshd;nam;nam20;nam40;nam44;fnl;mrf;mrfx;ngm;ruc2;fslruc2;ukmet;nogaps;mm5ak;mm5us
+300mb_HGHT_WIND_TEMP           $NMAP_RESTORE/stnd/300mb_hght_tmp_wind                standard     dgex;gfs;gfshd;nam;nam20;nam40;nam44;fnl;mrf;mrfx;ukmet;nogaps
+!
+500mb_HGHT_ABSV                $NMAP_RESTORE/stnd/500mb_hght_absv                    hurricane    dgex;gfs;gfshd;nam;nam20;nam40;nam44;fnl;mrf;mrfx;ngm;ukmet;firewx
+500mb_HGHT_ABSV                $NMAP_RESTORE/stnd/500mb_hght_absv                    marine       dgex;gfs;gfshd;nam;nam20;nam40;nam44;fnl;mrf;mrfx;ngm;ukmet;firewx
+500mb_HGHT_ABSV                $NMAP_RESTORE/stnd/500mb_hght_absv                    standard     dgex;gfs;gfshd;nam;nam20;nam40;nam44;fnl;mrf;mrfx;ngm;ruc2;fslruc2;ukmet;nogaps;ens;mm5ak;mm5us;firewx
+
+500mb_HGHT_ABSV                $NMAP_RESTORE/stnd/500mb_hght_absv                    tropical     dgex;gfs;gfshd;nam;nam20;nam40;nam44;ngm;mrf;mrfx;ngm;ukmet;nogaps;firewx
+500mb_HGHT_ABSV_WND            $NMAP_RESTORE/stnd/500mb_hght_absv_wnd                standard     dgex;gfs;gfshd;nam;nam20;nam40;nam44;ngm;mrf;mrfx;ngm;ukmet;nogaps;firewx
+500mb_HGHT                     $NMAP_RESTORE/stnd/500mb_hght                         surface      dgex;gfs;gfshd;nam;nam20;nam40;nam44;fnl;mrf;mrfx;ngm;ruc2;fslruc2;ukmet;nogaps;firewx
+500mb_ABSV_NCF                 $NMAP_RESTORE/stnd/500mb_absv_ncf                     no_col-fill  dgex;gfs;gfshd;nam;nam20;nam40;nam44;fnl;mrf;mrfx;ngm;ruc2;fslruc2;ukmet;nogaps;firewx
+500mb_ABSV_NCF                 $NMAP_RESTORE/stnd/500mb_absv_ncf                     surface      dgex;gfs;gfshd;nam;nam20;nam40;nam44;fnl;mrf;mrfx;ngm;ruc2;fslruc2;ukmet;nogaps;firewx
+500mb_HGHT_ABSV_ADV            $NMAP_RESTORE/stnd/500mb_hght_absv_adv                standard     dgex;gfs;gfshd;nam;nam20;nam40;nam44;ngm;mrf;mrfx;nogaps;ruc2;fslruc2;firewx
+500mb_HGHT_ABSV_NCF            $NMAP_RESTORE/stnd/500mb_hght_absv_ncf                no_col-fill  dgex;gfs;gfshd;nam;nam20;nam40;nam44;fnl;mrf;mrfx;ngm;ruc2;fslruc2;ukmet;firewx
+500mb_HGHT_GEOABSV             $NMAP_RESTORE/stnd/500mb_hght_geoabsv                 standard     dgex;gfs;gfshd;nam;nam20;nam40;nam44;fnl;mrf;mrfx;ngm;ruc2;fslruc2;ukmet;ecmwfg;nogaps;firewx
+500mb_WIND_AND_REL_VORT        $NMAP_RESTORE/stnd/500mb_wind_and_rel_vort            hurricane    dgex;gfs;gfshd;nam;nam20;nam40;nam44;ngm
+500mb_HGHT_WIND                $NMAP_RESTORE/stnd/500mb_hght_wind                    standard     dgex;gfs;gfshd;nam;nam20;nam40;nam44;fnl;mrf;mrfx;ngm;ruc2;fslruc2;ukmet;nogaps;firewx
+500mb_HGHT_COLOR               $NMAP_RESTORE/stnd/500mb_hght_color                   standard     dgex;gfs;gfshd;nam;nam20;nam40;nam44;fnl;mrf;mrfx;ngm;ruc2;fslruc2;ukmet;nogaps;firewx
+500mb_HGHT_WIND_TEMP           $NMAP_RESTORE/stnd/500mb_hght_tmp_wind                standard     dgex;gfs;gfshd;nam;nam20;nam40;nam44;fnl;mrf;mrfx;ukmet;nogaps;firewx
+500mb_STREAMLINES              $NMAP_RESTORE/stnd/500mb_streamlines                  streamlines  dgex;gfs;gfshd;nam;nam20;nam40;nam44;fnl;mrf;mrfx;ngm;ruc2;fslruc2;firewx
+!
+600mb_HGHT_RH_OMEGA            $NMAP_RESTORE/stnd/600mb_hght_rh_omega                standard     dgex;gfs;gfshd;nam;nam20;nam40;nam44;fnl;mrf;ngm;ruc2;fslruc2
+!
+700mb_HGHT_RH_OMEGA            $NMAP_RESTORE/stnd/700mb_hght_rh_omega                standard     dgex;gfs;gfshd;nam;nam20;nam40;nam44;fnl;mrf;mrfx;ngm;ruc2;fslruc2;ukmet;nogaps;mm5ak;mm5us;firewx
+700mb_HGHT_RH_OMEGA_NCF        $NMAP_RESTORE/stnd/700mb_hght_rh_omega_ncf            no_col-fill  dgex;gfs;gfshd;nam;nam20;nam40;nam44;ngm;ruc2;fslruc2;mrf;ukmet;firewx
+700mb_HGHT_WIND_DWPT           $NMAP_RESTORE/stnd/700mb_hght_wind_dwpt               qpf          dgex;gfs;gfshd;nam;nam20;nam40;nam44;fnl;mrf;mrfx;ngm;ruc2;fslruc2;ukmet;firewx
+700mb_WIND_AND_REL_VORT        $NMAP_RESTORE/stnd/700mb_wind_and_rel_vort            hurricane    dgex;gfs;gfshd;nam;nam20;nam40;nam44;fnl;mrf;mrfx;ngm;ukmet;firewx
+700mb_WIND_AND_REL_VORT        $NMAP_RESTORE/stnd/700mb_wind_and_rel_vort            tropical     mrf;firewx
+700mb_STREAMLINES              $NMAP_RESTORE/stnd/700mb_streamlines                  streamlines  dgex;gfs;gfshd;nam;nam20;nam40;nam44;fnl;mrf;mrfx;ngm;ruc2;fslruc2;firewx
+700mb_HGHT_WIND_TEMP           $NMAP_RESTORE/stnd/700mb_hght_tmp_wind                standard     dgex;gfs;gfshd;nam;nam20;nam40;nam44;fnl;mrf;mrfx;ukmet;nogaps;firewx
+!
+850mb_HGHT_TMP_WIND            $NMAP_RESTORE/stnd/850mb_hght_tmp_wind                standard     dgex;gfs;gfshd;nam;nam20;nam40;nam44;fnl;mrf;mrfx;ngm;ruc2;fslruc2;ukmet;nogaps;mm5ak;mm5us;firewx
+850mb_HGHT_TMP_WIND_NCF        $NMAP_RESTORE/stnd/850mb_hght_tmp_wind_ncf            no_col-fill  dgex;gfs;gfshd;nam;nam20;nam40;nam44;ngm;ruc2;fslruc2;firewx
+850mb_HGHT_WIND_DWPT           $NMAP_RESTORE/stnd/850mb_hght_wind_dwpt               qpf          dgex;gfs;gfshd;nam;nam20;nam40;nam44;fnl;mrf;mrfx;ngm;ruc2;fslruc2;ukmet;firewx
+850mb_THTAE_ADVECTION          $NMAP_RESTORE/stnd/850mb_thtae_advection              qpf          dgex;gfs;gfshd;nam;nam20;nam40;nam44;fnl;mrf;mrfx;ngm;ruc2;fslruc2;ukmet;firewx
+850mb_THTAE_NCF                $NMAP_RESTORE/stnd/850mb_thtae_ncf                    surface      dgex;gfs;gfshd;nam;nam20;nam40;nam44;fnl;mrf;mrfx;ngm;ruc2;fslruc2;ukmet;firewx
+850mb_WIND_AND_REL_VORT        $NMAP_RESTORE/stnd/850mb_wind_and_rel_vort            hurricane    dgex;gfs;gfshd;nam;nam20;nam40;nam44;ngm;firewx
+850mb_WIND_AND_REL_VORT        $NMAP_RESTORE/stnd/850mb_wind_and_rel_vort            tropical     mrf;firewx
+850mb_STREAMLINES              $NMAP_RESTORE/stnd/850mb_streamlines                  streamlines  dgex;gfs;gfshd;nam;nam20;nam40;nam44;fnl;mrf;mrfx;ngm;ruc2;fslruc2;firewx
+!
+925mb_STREAMLINES              $NMAP_RESTORE/stnd/925mb_streamlines                  streamlines  dgex;gfs;gfshd;nam;nam20;nam40;nam44;fnl;mrf;ruc2;fslruc2;firewx
+!
+1000mb_STREAMLINES             $NMAP_RESTORE/stnd/1000mb_streamlines                 streamlines  dgex;gfs;gfshd;nam;nam20;nam40;nam44;fnl;mrf;mrfx;ngm;ruc2;fslruc2;firewx
+1000mb_HGHT_WIND_TEMP          $NMAP_RESTORE/stnd/1000mb_hght_tmp_wind               standard     dgex;gfs;gfshd;nam;nam20;nam40;nam44;fnl;mrf;mrfx;ukmet;nogaps;firewx
+! MULTI-LEVEL, STANDARD PARAMETERS
+!
+300-700_Q-VCTRS_THKN           $NMAP_RESTORE/misc/300-700_q-vctrs_thkn               misc         dgex;gfs;gfshd;nam;nam20;nam40;nam44;fnl;mrf;mrfx;ngm;ruc2;fslruc2
+1000-500_THKN                  $NMAP_RESTORE/misc/1000-500_thkn                      standard     dgex;gfs;gfshd;nam;nam20;nam40;nam44;fnl;mrf;mrfx;ngm;ukmet;nogaps
+1000-500_THKN                  $NMAP_RESTORE/misc/1000-500_thkn                      surface      dgex;gfs;gfshd;nam;nam20;nam40;nam44;fnl;mrf;mrfx;ngm;ruc2;fslruc2;ukmet;nogaps
+1000-500_THKN                  $NMAP_RESTORE/misc/1000-500_thkn                      medr         dgex;gfs;gfshd;nam;nam20;nam40;nam44;fnl;mrf;mrfx;ngm;ruc2;fslruc2;ukmet;nogaps
+1000-850_THKN                  $NMAP_RESTORE/misc/1000-850_thkn                      standard     dgex;gfs;gfshd;nam;nam20;nam40;nam44;fnl;mrf;mrfx;ngm;ruc2;fslruc2;ukmet;nogaps
+1000-850_THKN                  $NMAP_RESTORE/misc/1000-850_thkn                      surface      dgex;gfs;gfshd;nam;nam20;nam40;nam44;fnl;mrf;mrfx;ngm;ruc2;fslruc2;ukmet;nogaps
+850-700_THKN                   $NMAP_RESTORE/misc/850-700_thkn                       standard     dgex;gfs;gfshd;nam;nam20;nam40;nam44;fnl;mrf;mrfx;ngm;ruc2;fslruc2;ukmet;nogaps
+850-700_THKN                   $NMAP_RESTORE/misc/850-700_thkn                       surface      dgex;gfs;gfshd;nam;nam20;nam40;nam44;fnl;mrf;mrfx;ngm;ruc2;fslruc2;ukmet;nogaps
+!
+850-300mb_WIND_SHEAR           $NMAP_RESTORE/misc/850-300mb_wind_shear               hurricane    dgex;gfs;gfshd
+850-300mb_WIND_SHEAR           $NMAP_RESTORE/misc/850-300mb_wind_shear               tropical     dgex;gfs;gfshd;fnl;mrf;mrfx
+850-300mb_WIND_SHEAR           $NMAP_RESTORE/misc/850-300mb_wind_shear               tropical     dgex;gfs;gfshd;fnl;mrf;mrfx
+MLW_PMSL                       $NMAP_RESTORE/misc/mlw_pmsl                           tropical     dgex;gfs;gfshd;nam;nam20;nam40;nam44;fnl;mrf;mrfx;ngm;ruc2;fslruc2
+!
+! OTHER MISCELLANEOUS PARAMETERS
+!
+BL_THTE_WIND                   $NMAP_RESTORE/misc/bl_thte_wind                       tropical     dgex;gfs;gfshd;fnl;mrf;mrfx
+BL_THTE_WIND                   $NMAP_RESTORE/misc/bl_thte_wind                       basic_wx     dgex;gfs;gfshd;mrf;fnl;mrfx
+PMSL_THKN                      $NMAP_RESTORE/misc/pmsl_thkn                          standard     dgex;gfs;gfshd;nam;nam20;nam40;nam44;fnl;mrf;mrfx;ngm;ukmet;nogaps;ens;mm5ak;mm5us
+PMSL                           $NMAP_RESTORE/misc/pmsl                               standard     dgex;gfs;gfshd;nam;nam20;nam40;nam44;fnl;mrf;mrfx;ngm;ukmet;nogaps
+PMSL                           $NMAP_RESTORE/misc/pmsl                               surface      dgex;gfs;gfshd;nam;nam20;nam40;nam44;fnl;mrf;mrfx;ngm;ukmet;nogaps
+PRECIP_WATER_PMSL              $NMAP_RESTORE/misc/precip_water_mslp                  tropical     dgex;gfs;gfshd;fnl;mrf;mrfx
+!
+! PRECIPITATION PARAMETERS
+!
+PRECIP_12hr                    $NMAP_RESTORE/prcp/precip_12hr                        precip       nam;nam20;nam40;nam44;ngm;dgex;gfs;gfshd;mrf;mrfx;ens;mm5ak;mm5us
+PRECIP_12hr_MM                 $NMAP_RESTORE/prcp/precip_12hr_mm                     precip       nam;nam20;nam40;nam44;ngm;dgex;gfs;gfshd;mrf;mrfx;ens;mm5ak;mm5us
+PRECIP_12hr_NDFD               $NMAP_RESTORE/prcp/ndfd_12hr                          precip       ndfd
+!
+PRECIP_24hr                    $NMAP_RESTORE/prcp/precip_24hr                        precip       nam;nam20;nam40;nam44;ngm;dgex;gfs;gfshd;mrf;mrfx;ens;mm5ak;mm5us
+PRECIP_24hr_MM                 $NMAP_RESTORE/prcp/precip_24hr_mm                     precip       nam;nam20;nam40;nam44;ngm;dgex;gfs;gfshd;mrf;mrfx;ens
+PRECIP_24hr_NDFD               $NMAP_RESTORE/prcp/ndfd_24hr                          precip       ndfd
+!
+PRECIP_3-day                   $NMAP_RESTORE/prcp/precip_3-day                       precip       dgex;gfs;gfshd;mrf;mrfx;ens
+PRECIP_4-day                   $NMAP_RESTORE/prcp/precip_4-day                       precip       dgex;gfs;gfshd;mrf;mrfx;ens
+PRECIP_48hr                    $NMAP_RESTORE/prcp/precip_48hr                        precip       dgex;gfs;gfshd;nam;nam20;nam40;nam44;ngm;mrf;mrfx
+PRECIP_54hr                    $NMAP_RESTORE/prcp/precip_54hr                        precip       dgex;gfs;gfshd;nam;nam20;nam40;nam44
+PRECIP_60hr                    $NMAP_RESTORE/prcp/precip_60hr                        precip       dgex;gfs;gfshd;nam;nam20;nam40;nam44
+PRECIP_66hr                    $NMAP_RESTORE/prcp/precip_66hr                        precip       dgex;gfs;gfshd
+PRECIP_72hr                    $NMAP_RESTORE/prcp/precip_72hr                        precip       dgex;gfs;gfshd;mrf;mrfx;ens
+PRECIP_78hr                    $NMAP_RESTORE/prcp/precip_78hr                        precip       dgex;gfs;gfshd
+PRECIP_5-day                   $NMAP_RESTORE/prcp/precip_5-day                       precip       dgex;gfs;gfshd;mrf;mrfx;ens
+PRECIP_3hr_EMSL                $NMAP_RESTORE/prcp/precip_3hr_emsl                    precip       nam;nam20;nam40;nam44
+PRECIP_3hr                     $NMAP_RESTORE/prcp/precip_3hr                         precip       nam;nam20;nam40;nam44;ruc2;fslruc2
+PRECIP_6hr                     $NMAP_RESTORE/prcp/precip_6hr                         precip       nam;nam20;nam40;nam44;ngm;dgex;gfs;gfshd;ruc2;fslruc2;mm5ak;mm5us
+PRECIP_6hr_EMSL                $NMAP_RESTORE/prcp/precip_6hr_emsl                    precip       nam;nam20;nam40;nam44;ruc2;fslruc2
+PRECIP_6hr_NDFD                $NMAP_RESTORE/prcp/ndfd_6hr                           precip       ndfd
+PRECIP_6hr_1000-500_THKN       $NMAP_RESTORE/prcp/precip_6hr_1000-500_thkn           basic_wx     nam;nam20;nam40;nam44;ngm;dgex;gfs;gfshd;ruc2;fslruc2;mm5ak;mm5us
+PRECIP_6hr_MSLP                $NMAP_RESTORE/prcp/precip_6hr_mslp                    precip       nam;nam20;nam40;nam44;ngm;dgex;gfs;gfshd;ruc2;fslruc2;mm5ak;mm5us
+PRECIP_6hr_MSLP_SFCHGHT        $NMAP_RESTORE/prcp/precip_6hr_mslp_sfchght            precip       nam;nam20;nam40;nam44;ngm;dgex;gfs;gfshd;ruc2;fslruc2;mm5ak;mm5us
+PRECIP_6hr_MSLPhilo            $NMAP_RESTORE/prcp/precip_6hr_mslphilo                precip       nam;nam20;nam40;nam44;ngm;dgex;gfs;gfshd;ruc2;fslruc2;mm5ak;mm5us
+!
+! MODEL_SPECIFIC PARAMETERS, GROUPED BY MODEL
+!
+!
+! AVN, MRF1, MRF2, FNL, NOGAPS (GLOBAL) models
+
+POTVORT_300-200mb              $NMAP_RESTORE/modl/global/300-200mb_pv                standard     dgex;gfs;gfshd;mrf;mrfx;fnl;nogaps
+POTVORT_400-200mb              $NMAP_RESTORE/modl/global/400-200mb_pv                standard     dgex;gfs;gfshd;mrf;mrfx;fnl;nogaps
+POTVORT_400-250mb              $NMAP_RESTORE/modl/global/400-250mb_pv                standard     dgex;gfs;gfshd;mrf;mrfx;fnl;nogaps
+POTVORT_500-300mb              $NMAP_RESTORE/modl/global/500-300mb_pv                standard     dgex;gfs;gfshd;mrf;mrfx;fnl;nogaps
+POTVORT_500-250mb              $NMAP_RESTORE/modl/global/500-250mb_pv                standard     dgex;gfs;gfshd;mrf;mrfx;fnl;nogaps
+PMSL_and_BL_WIND               $NMAP_RESTORE/modl/global/pmsl_and_bl_wind            standard     dgex;gfs;gfshd;mrf;mrfx;fnl
+1000mb_HGHT_ABSV               $NMAP_RESTORE/modl/global/1000mb_hght_absv            marine       dgex;gfs;gfshd;mrf;mrfx;fnl;nogaps;ukmet
+850mb_HGHT_ABSV                $NMAP_RESTORE/modl/global/850mb_hght_absv             marine       dgex;gfs;gfshd;mrf;mrfx;fnl;nogaps;ukmet
+!
+850mb_H2O_TRANSPORT            $NMAP_RESTORE/modl/global/850mb_h2o_transport         qpf          dgex;gfs;gfshd;mrf;mrfx;fnl
+850mb_WIND_PW                  $NMAP_RESTORE/modl/global/850mb_wind_pw               qpf          dgex;gfs;gfshd;mrf;mrfx;fnl 
+850mb_THTAE_ADVECTION          $NMAP_RESTORE/modl/global/850mb_thtae_advection       qpf          dgex;gfs;gfshd;mrf;mrfx;fnl
+BL_MoistConv_WIND_DWPT         $NMAP_RESTORE/modl/global/bl_moistconv_wind_dwpt      qpf          dgex;gfs;gfshd;mrf;mrfx;fnl
+LIFTED_INDEX                   $NMAP_RESTORE/modl/global/lifted_index                qpf          dgex;gfs;gfshd;mrf;mrfx;fnl
+KIndex_700mbTEMP_BLdwpt_MSLP   $NMAP_RESTORE/modl/global/kindex_700mbtemp_bldwpt_mslp qpf         dgex;gfs;gfshd;mrf;mrfx;fnl
+PW_MSLP_C-VEC                  $NMAP_RESTORE/modl/global/pw_mslp_c-vec               qpf          dgex;gfs;gfshd;mrf;mrfx;fnl
+PRECIP_POTENTIAL               $NMAP_RESTORE/modl/global/pcpn_potential              qpf          dgex;gfs;gfshd;mrf;mrfx;fnl
+RAIN_SNOW_CSI_500-850MB        $NMAP_RESTORE/modl/global/ransnocsi_500-850           qpf          dgex;gfs;gfshd;mrf;mrfx;fnl
+RAIN_SNOW_CSI_700-850MB        $NMAP_RESTORE/modl/global/ransnocsi_700-850           qpf          dgex;gfs;gfshd;mrf;mrfx;fnl
+SVRWX                          $NMAP_RESTORE/modl/global/svrwx                       qpf          dgex;gfs;gfshd;mrf;mrfx;fnl
+!
+200mb_VORTICITY_PW             $NMAP_RESTORE/modl/global/200mb_vorticity_pw          basic_wx     dgex;gfs;gfshd;mrf;mrfx;fnl
+250mb_VORTICITY_PW             $NMAP_RESTORE/modl/global/250mb_vorticity_pw          basic_wx     dgex;gfs;gfshd;mrf;mrfx;fnl
+300mb_VORTICITY_PW             $NMAP_RESTORE/modl/global/300mb_vorticity_pw          basic_wx     dgex;gfs;gfshd;mrf;mrfx;fnl
+PMSL_BL_TEMP(C)_WIND           $NMAP_RESTORE/modl/global/pmsl_bl_temp_wind           basic_wx     dgex;gfs;gfshd;mrf;mrfx;fnl
+300-700_Q-VCTRS_THKN           $NMAP_RESTORE/modl/global/300-700_q-vctrs_thkn        basic_wx     dgex;gfs;gfshd;mrf;mrfx;fnl
+1000-470MB_RH_RS_T_700_VV      $NMAP_RESTORE/modl/global/1000-470mb_rh_rs_t_700mb_vv basic_wx     dgex;gfs;gfshd;mrf;mrfx;fnl
+1000-470MB_RH                  $NMAP_RESTORE/modl/global/1000-500mb_rh               basic_wx     dgex;gfs;gfshd;mrf;mrfx;fnl
+PMSL_1000-500THKN_BL_WIND      $NMAP_RESTORE/modl/global/pmsl_thkn_wind              basic_wx     dgex;gfs;gfshd;mrf;mrfx;fnl
+PMSL_1000-850_THK              $NMAP_RESTORE/modl/global/pmsl_1000-850_thk           basic_wx     dgex;gfs;gfshd;mrf;mrfx;fnl
+LIFTED_INDEX                   $NMAP_RESTORE/modl/global/lifted_index                basic_wx     dgex;gfs;gfshd;mrf;mrfx;fnl
+CROSS_TOTAL_INDEX              $NMAP_RESTORE/modl/global/ct_index                    basic_wx     dgex;gfs;gfshd;mrf;mrfx;fnl
+PRECIP_TYPE_VV                 $NMAP_RESTORE/modl/global/precip_type_vv              basic_wx     dgex;gfs;gfshd
+PRECIP_TYPE                    $NMAP_RESTORE/modl/global/precip_type                 basic_wx     dgex;gfs;gfshd
+GREAT_LAKES_SNOW               $NMAP_RESTORE/modl/global/great_lakes_snow            basic_wx     dgex;gfs;gfshd;fnl
+GREAT_LAKES_SNOW2              $NMAP_RESTORE/modl/global/great_lakes_snow2           basic_wx     dgex;gfs;gfshd;fnl
+
+PMSL_and_BL_WIND               $NMAP_RESTORE/modl/global/pmsl_and_bl_wind            marine       dgex;gfs;gfshd;mrf;mrfx;fnl
+PMSL_and_BL_WIND               $NMAP_RESTORE/modl/nogaps/pmsl_and_bl_wind            marine       nogaps
+PMSL_and_BL_WIND               $NMAP_RESTORE/modl/ukmet/pmsl_and_bl_wind             marine       ukmet
+PMSL_1000-850_THK              $NMAP_RESTORE/modl/nogaps/pmsl_1000-850_thk           marine       nogaps
+PMSL_1000-850_THK              $NMAP_RESTORE/modl/ukmet/pmsl_1000-850_thk            marine       ukmet
+PMSL_1000-850_THK              $NMAP_RESTORE/modl/global/pmsl_1000-850_thk           marine       dgex;gfs;gfshd;mrf;mrfx;fnl
+PMSL_BL_TEMP(C)_WIND           $NMAP_RESTORE/modl/global/pmsl_bl_temp_wind           marine       dgex;gfs;gfshd;mrf;mrfx;fnl
+PRECIP_WATER_PMSL              $NMAP_RESTORE/modl/global/precip_water_pmsl           marine       dgex;gfs;gfshd;mrf;mrfx;fnl
+BL_MOISTURE_CONV_THTAE         $NMAP_RESTORE/modl/global/bl_moisture_conv_thtae      marine       dgex;gfs;gfshd;mrf;mrfx;fnl
+STABILITY_850mb_WND            $NMAP_RESTORE/modl/global/stability_850mb_wnd         marine       dgex;gfs;gfshd;mrf;mrfx;fnl
+STABILITY_925mb_WND            $NMAP_RESTORE/modl/global/stability_925mb_wnd         marine       dgex;gfs;gfshd;mrf;mrfx;fnl
+MARINE_FRONTS                  $NMAP_RESTORE/modl/global/marine_fronts               exp_marine   dgex;gfs;gfshd;mrf;mrfx;fnl
+MARINE_FRONTS                  $NMAP_RESTORE/modl/eta/marine_fronts                  exp_marine   nam;nam20;nam40;nam44
+MARINE_FRONTS                  $NMAP_RESTORE/modl/ngm/marine_fronts                  exp_marine   ngm
+PMSL_ONLY                      $NMAP_RESTORE/stnd/pmsl_only                          exp_marine   dgex;gfs;gfshd;fnl;mrf;mrfx;ukmet;nam;nam20;nam40;nam44;ngm;ruc2;fslruc2;nogaps
+PMSL_1000-850THK_NO_WIND       $NMAP_RESTORE/modl/global/pmsl_1000-850thk            exp_marine   dgex;gfs;gfshd;mrf;mrfx;ukmet;nogaps
+PMSL_1000-850THK_NO_WIND       $NMAP_RESTORE/modl/eta/pmsl_1000-850thk               exp_marine   nam;nam20;nam40;nam44
+PMSL_1000-850THK_NO_WIND       $NMAP_RESTORE/modl/ngm/pmsl_1000-850thk               exp_marine   ngm
+PMSL_1000-500THK_NO_WIND       $NMAP_RESTORE/modl/global/pmsl_1000-500thk            exp_marine   dgex;gfs;gfshd;mrf;mrfx;nogaps;ukmet;nogaps;nam;nam20;nam40;nam44;ngm
+1000-850THK_ONLY               $NMAP_RESTORE/modl/global/1000-850thk_only            exp_marine   dgex;gfs;gfshd;mrf;mrfx;nogaps;ukmet;nogaps;nam;nam20;nam40;nam44;ngm
+WINDS_ONLY                     $NMAP_RESTORE/modl/global/bl_winds_only               exp_marine   dgex;gfs;gfshd;mrf;mrfx
+WINDS_ONLY                     $NMAP_RESTORE/modl/eta/bl_winds_only                  exp_marine   nam;nam20;nam40;nam44
+WINDS_ONLY                     $NMAP_RESTORE/modl/ngm/bl_winds_only                  exp_marine   ngm
+WINDS_ONLY                     $NMAP_RESTORE/modl/ukmet/bl_winds_only                exp_marine   ukmet
+WINDS_ONLY                     $NMAP_RESTORE/modl/nogaps/bl_winds_only               exp_marine   nogaps
+500_VORT_ONLY                  $NMAP_RESTORE/stnd/500_vort_only                      exp_marine   dgex;gfs;gfshd;fnl;mrf;mrfx;ukmet;nam;nam20;nam40;nam44;ngm;ruc2;fslruc2;nogaps
+GRID_SIG_WAVE(M)_AVN_MSLP      $NMAP_RESTORE/modl/nww3/sig_wave_gridded_mslp_meters_nw exp_marine   nww3;fnmocwave
+GRID_SIG_WAVE(M)_SWELL_DIR     $NMAP_RESTORE/modl/nww3/sig_wave_gridded_meters_dir   exp_marine   nww3;fnmocwave
+GRID_SIG_WAVE(M)_ONLY          $NMAP_RESTORE/modl/nww3/sig_wave_gridded_meters_only  exp_marine   nww3;fnmocwave
+GRID_SWELL_DIR_ONLY            $NMAP_RESTORE/modl/nww3/sig_wave_gridded_dir_only     exp_marine   nww3;fnmocwave
+GRID_SIG_WAVE(FT)_NEW_WINDS    $NMAP_RESTORE/modl/nww3/sig_wave_gridded_feet         exp_marine   nww3;fnmocwave
+GRID_SIG_WAVE(FT)_AVN_MSLP     $NMAP_RESTORE/modl/nww3/sig_wave_gridded_mslp_feet_nw exp_marine   nww3;fnmocwave
+GRID_SIG_WAVE(FT)_SWELL_DIR    $NMAP_RESTORE/modl/nww3/sig_wave_gridded_feet_dir     exp_marine   nww3;fnmocwave
+GRID_SIG_WAVE(FT)_ONLY         $NMAP_RESTORE/modl/nww3/sig_wave_gridded_feet_only    exp_marine   nww3;fnmocwave
+PEAK_SWELL_PERIOD_GRIDDED      $NMAP_RESTORE/modl/nww3/peak_swell_per_gridded        exp_marine   nww3;fnmocwave
+!
+850mb_WIND_PW_MM               $NMAP_RESTORE/modl/global/850mb_wind_pw_mm            tropical     dgex;gfs;gfshd;mrf;mrfx;fnl
+PMSL_and_BL_WIND               $NMAP_RESTORE/modl/global/pmsl_and_bl_wind            tropical     dgex;gfs;gfshd;mrf;mrfx;fnl
+1000-470MB_RH                  $NMAP_RESTORE/modl/global/1000-500mb_rh               tropical     dgex;gfs;gfshd;mrf;mrfx;fnl
+BL_MOISTURE_CONV_THTAE         $NMAP_RESTORE/modl/global/bl_moisture_conv_thtae      tropical     dgex;gfs;gfshd;mrf;mrfx;fnl
+PMSL_BL_TMP(C)_WIND            $NMAP_RESTORE/modl/global/pmsl_bl_temp_wind           tropical     dgex;gfs;gfshd;mrf;mrfx;fnl
+PRECIP_WATER_PMSL_MM           $NMAP_RESTORE/modl/global/precip_water_pmsl_mm        tropical     dgex;gfs;gfshd;mrf;mrfx;fnl
+PMSL_THKN_850mb_WIND           $NMAP_RESTORE/modl/global/pmsl_thkn_850mb_wind        tropical     dgex;gfs;gfshd;mrf;mrfx;fnl
+850-300mb_WIND_SHEAR           $NMAP_RESTORE/modl/global/850-300mb_wind_shear        tropical     dgex;gfs;gfshd;mrf;mrfx;fnl
+
+850mb_WIND_PW_NCF              $NMAP_RESTORE/modl/global/850mb_wind_pw_ncf           no_col-fill  dgex;gfs;gfshd;mrf;mrfx;fnl
+850mb_WIND_PW_MM_NCF           $NMAP_RESTORE/modl/global/850mb_wind_pw_mm_ncf        no_col-fill  dgex;gfs;gfshd;mrf;mrfx;fnl
+LIFTED_INDEX_NCF               $NMAP_RESTORE/modl/global/lifted_index_ncf            no_col-fill  dgex;gfs;gfshd;mrf;mrfx;fnl
+BL_H2O_CONV_NCF                $NMAP_RESTORE/modl/global/bl_h2o_conv_ncf             no_col-fill  dgex;gfs;gfshd;mrf;mrfx;fnl
+PRECIP_POTENTIAL_NCF           $NMAP_RESTORE/modl/global/pcpn_potential_ncf          no_col-fill  dgex;gfs;gfshd;mrf;mrfx;fnl
+500-300_AVG_RH_NCF             $NMAP_RESTORE/modl/global/400mb_avg_rh_ncf            no_col-fill  dgex;gfs;gfshd;mrf;mrfx;fnl
+PRECIP_TYPE_VV                 $NMAP_RESTORE/modl/global/precip_type_vv_ncf          no_col-fill  dgex;gfs;gfshd
+!
+PMSL_1000-500THKN_BL_WIND      $NMAP_RESTORE/modl/global/pmsl_thkn_wind_mono         monochrome   dgex;gfs;gfshd;mrf;mrfx;fnl
+BL_THTE_WIND                   $NMAP_RESTORE/modl/global/bl_thte_wind_mono           monochrome   dgex;gfs;gfshd;mrf;mrfx;fnl
+
+BL_THTE_NCF                    $NMAP_RESTORE/modl/global/bl_thte_ncf                 surface      dgex;gfs;gfshd;mrf;mrfx;fnl
+!
+BL_2-METER_TEMP                $NMAP_RESTORE/modl/global/bl_2-meter_temp             medr         dgex;gfs;gfshd;mrf;mrfx;fnl
+BL_2-METER_12HRMAX_TEMP        $NMAP_RESTORE/modl/global/bl_2-meter_12hrmax_temp     medr         mrf;mrfx
+BL_2-METER_12HRMIN_TEMP        $NMAP_RESTORE/modl/global/bl_2-meter_12hrmin_temp     medr         mrf;mrfx
+BL_SGMA_9950_TEMP              $NMAP_RESTORE/modl/global/bl_sgma_9950_temp           medr         dgex;gfs;gfshd;mrf;mrfx;fnl
+BL_1000MB_TEMP                 $NMAP_RESTORE/modl/global/bl_1000mb_temp              medr         dgex;gfs;gfshd;mrf;mrfx;fnl
+!
+BL_DWPT_(C)                    $NMAP_RESTORE/modl/global/bl_dwpt_c                   intl_sam     dgex;gfs;gfshd;mrf;mrfx;fnl
+SVRWX_INTL                     $NMAP_RESTORE/modl/global/svrwx_intl                  intl_sam     dgex;gfs;gfshd;mrf;mrfx;fnl
+BL_2-METER_TEMP_C              $NMAP_RESTORE/modl/global/bl_2-meter_temp_c           intl_sam     dgex;gfs;gfshd;mrf;mrfx;fnl
+BL_2-METER_12HRMAX_TEMP_C      $NMAP_RESTORE/modl/global/bl_2-meter_12hrmax_temp_c   intl_sam     mrf;mrfx
+BL_2-METER_12HRMIN_TEMP_C      $NMAP_RESTORE/modl/global/bl_2-meter_12hrmin_temp_c   intl_sam     mrf;mrfx
+!
+! ECMWFG model
+!
+850mb_TMP                      $NMAP_RESTORE/modl/ecmwfg/850mb_tmp                   standard     ecmwfg
+PMSL_EST_1000-500_THICK        $NMAP_RESTORE/modl/ecmwfg/pmsl_ethkn                  standard     ecmwfg
+EST_1000-500_THICK             $NMAP_RESTORE/modl/ecmwfg/ethkn                       standard     ecmwfg
+!
+EST_1000-500_THICK             $NMAP_RESTORE/modl/ecmwfg/ethkn                       medr         ecmwfg
+!
+!
+! ECMWFT model
+!
+850mb_WIND                     $NMAP_RESTORE/modl/ecmwft/850mb_wnd                   standard     ecmwft
+200mb_WIND                     $NMAP_RESTORE/modl/ecmwft/200mb_wnd                   standard     ecmwft
+!
+!
+! NAM model
+! ---------
+!
+EMSL_THKN                      $NMAP_RESTORE/modl/eta/emsl_thkn                      standard     nam;nam20;nam40;nam44
+POTVORT_400-250MB              $NMAP_RESTORE/modl/eta/potvort_400-250mb              standard     nam;nam20;nam40;nam44
+!
+ETAvsNGMvsAVN_PMSL             $NMAP_RESTORE/modl/eta/pmslcomponly                   comp         nam;nam20;nam40;nam44
+ETAvsNGMvsAVN_500MB            $NMAP_RESTORE/modl/eta/500mbcomponly                  comp         nam;nam20;nam40;nam44
+!
+850mb_WIND_PW                  $NMAP_RESTORE/modl/eta/850mb_wind_pw                  qpf          nam;nam20;nam40;nam44
+850mb_H2O_TRANSPORT            $NMAP_RESTORE/modl/eta/850mb_h2o_transport            qpf          nam;nam20;nam40;nam44
+BL_H2O_TRNSP_OMGQ              $NMAP_RESTORE/modl/eta/bl_h2o_trnsp_omgq              qpf          nam;nam20;nam40;nam44
+BL_MoistConv_WIND_DWPT         $NMAP_RESTORE/modl/eta/bl_moistconv_wind_dwpt         qpf          nam;nam20;nam40;nam44
+BestCAPE_CIN                   $NMAP_RESTORE/modl/eta/bestcape_cin                   qpf          nam;nam20;nam40;nam44
+BEST_LI                        $NMAP_RESTORE/modl/eta/lifted_index                   qpf          nam;nam20;nam40;nam44
+SFC_LI                         $NMAP_RESTORE/modl/eta/sfclifted_index                qpf          nam;nam20;nam40;nam44
+KIndex_700mbTEMP_BLdwpt_MSLP   $NMAP_RESTORE/modl/eta/kindex_700mbtemp_bldwpt_mslp   qpf          nam;nam20;nam40;nam44
+PW_EMSL_C-VEC                  $NMAP_RESTORE/modl/eta/pw_emsl_c-vec                  qpf          nam;nam20;nam40;nam44
+PRECIP_POTENTIAL               $NMAP_RESTORE/modl/eta/pcpn_potential                 qpf          nam;nam20;nam40;nam44
+RAIN_SNOW_CSI_500-850MB        $NMAP_RESTORE/modl/eta/ransnocsi_500-850              qpf          nam;nam20;nam40;nam44
+RAIN_SNOW_CSI_600-800MB        $NMAP_RESTORE/modl/eta/ransnocsi_600-800              qpf          nam;nam20;nam40;nam44
+PRECIP_TYPE_6HR_AMOUNTS        $NMAP_RESTORE/modl/eta/precip_type_6hr_amounts        qpf          nam;nam20;nam40;nam44
+PRECIP_TYPE_12HR_AMOUNTS       $NMAP_RESTORE/modl/eta/precip_type_12hr_amounts       qpf          nam;nam20;nam40;nam44
+PRECIP_TYPE_24HR_AMOUNTS       $NMAP_RESTORE/modl/eta/precip_type_24hr_amounts       qpf          nam;nam20;nam40;nam44
+PRECIP_TYPE_48HR_AMOUNTS       $NMAP_RESTORE/modl/eta/precip_type_48hr_amounts       qpf          nam;nam20;nam40;nam44
+!
+700mb_RH_RS_TEMP               $NMAP_RESTORE/modl/eta/700mb_rh_rs_temp               basic_wx     nam;nam20;nam40;nam44
+GREAT_LAKES_SNOW               $NMAP_RESTORE/modl/eta/great_lakes_snow               basic_wx     nam;nam20;nam40;nam44
+GREAT_LAKES_SNOW2              $NMAP_RESTORE/modl/eta/great_lakes_snow2              basic_wx     nam;nam20;nam40;nam44
+EMSL_BL_TEMP(C)_WIND           $NMAP_RESTORE/modl/eta/emsl_bl_tempc_wind             basic_wx     nam;nam20;nam40;nam44
+BL_THTE_WIND                   $NMAP_RESTORE/modl/eta/bl_thte_wind                   basic_wx     nam;nam20;nam40;nam44
+PMSL_1000-500THKN_BL_WIND      $NMAP_RESTORE/modl/eta/pmsl_thkn_wind                 basic_wx     nam;nam20;nam40;nam44
+PMSL_1000-850_THK              $NMAP_RESTORE/modl/eta/pmsl_1000-850_thk              basic_wx     nam;nam20;nam40;nam44
+1000-470MB_RH_RS_T_700_VV      $NMAP_RESTORE/modl/eta/1000-470mb_rh_rs_t_700_vv      basic_wx     nam;nam20;nam40;nam44
+PRECIP_TYPE_VV                 $NMAP_RESTORE/modl/eta/precip_type_vv                 basic_wx     nam;nam20;nam40;nam44
+PRECIP_TYPE                    $NMAP_RESTORE/modl/eta/precip_type                    basic_wx     nam;nam20;nam40;nam44
+BEST_LI                        $NMAP_RESTORE/modl/eta/lifted_index                   basic_wx     nam;nam20;nam40;nam44
+SFC_LI                         $NMAP_RESTORE/modl/eta/sfclifted_index                basic_wx     nam;nam20;nam40;nam44
+CROSS_TOTAL_INDEX              $NMAP_RESTORE/modl/eta/ct_index                       basic_wx     nam;nam20;nam40;nam44
+!
+EMSL_and_0-30MB_AGL_WIND       $NMAP_RESTORE/modl/eta/emsl_and_bl_wind               marine       nam;nam20;nam40;nam44
+EMSL_and_30-60MB_AGL_WIND      $NMAP_RESTORE/modl/eta/emsl_and_ll_wind               marine       nam;nam20;nam40;nam44
+EMSL_and_10m_WIND              $NMAP_RESTORE/modl/eta/emsl_and_10m_wind              marine       nam;nam20;nam40;nam44
+PMSL_and_0-30MB_AGL_WIND       $NMAP_RESTORE/modl/eta/pmsl_and_bl_wind               marine       nam;nam20;nam40;nam44
+PMSL_and_30-60MB_AGL_WIND      $NMAP_RESTORE/modl/eta/pmsl_and_ll_wind               marine       nam;nam20;nam40;nam44
+PMSL_and_10m_WIND              $NMAP_RESTORE/modl/eta/pmsl_and_10m_wind              marine       nam;nam20;nam40;nam44
+18MB_AGL_MOISTURE_CONV         $NMAP_RESTORE/modl/eta/bl_h2o_conv                    marine       nam;nam20;nam40;nam44
+STABILITY_850mb_WND            $NMAP_RESTORE/modl/eta/stability_850mb_wnd            marine       nam;nam20;nam40;nam44
+STABILITY_900mb_WND            $NMAP_RESTORE/modl/eta/stability_900mb_wnd            marine       nam;nam20;nam40;nam44
+STABILITY_950mb_WND            $NMAP_RESTORE/modl/eta/stability_950mb_wnd            marine       nam;nam20;nam40;nam44
+PMSL_1000-850_THK              $NMAP_RESTORE/modl/eta/pmsl_1000-850_thk              marine       nam;nam20;nam40;nam44
+!
+0-30MB_AGL_RH                  $NMAP_RESTORE/modl/eta/bl1_rh                         aviation     nam;nam20;nam40;nam44
+20-160MB_AGL_RH                $NMAP_RESTORE/modl/eta/bl2-5_rh                       aviation     nam;nam20;nam40;nam44
+EMSL_BL1_WIND_850MB_TAD        $NMAP_RESTORE/modl/eta/emsl_bl1_wind_850mb_tad        aviation     nam;nam20;nam40;nam44
+FRZG_LVL_HGHT                  $NMAP_RESTORE/modl/eta/frzg_lvl_hght                  aviation     nam;nam20;nam40;nam44
+FRZG_LVL_HGHT_NCF              $NMAP_RESTORE/modl/eta/frzg_lvl_hght_ncf              aviation     nam;nam20;nam40;nam44
+!
+850mb_WIND_PW_NCF              $NMAP_RESTORE/modl/eta/850mb_wind_pw_ncf              no_col-fill  nam;nam20;nam40;nam44
+BEST_CAPE_CIN_NCF              $NMAP_RESTORE/modl/eta/bestcape_cin_ncf               no_col-fill  nam;nam20;nam40;nam44
+LIFTED_INDEX_NCF               $NMAP_RESTORE/modl/eta/lifted_index_ncf               no_col-fill  nam;nam20;nam40;nam44
+BL_MOIST_CONV_NCF              $NMAP_RESTORE/modl/eta/bl_h2o_conv_ncf                no_col-fill  nam;nam20;nam40;nam44
+PRECIP_POTENTIAL_NCF           $NMAP_RESTORE/modl/eta/pcpn_potential_ncf             no_col-fill  nam;nam20;nam40;nam44
+500-300_AVG_RH_NCF             $NMAP_RESTORE/modl/eta/400mb_avg_rh_ncf               no_col-fill  nam;nam20;nam40;nam44
+PRECIP_TYPE_VV_NCF             $NMAP_RESTORE/modl/eta/precip_type_vv_ncf             no_col-fill  nam;nam20;nam40;nam44
+BL_THTE_NCF                    $NMAP_RESTORE/modl/eta/bl_thte_ncf                    no_col-fill  nam;nam20;nam40;nam44
+BL_THTE_NCF                    $NMAP_RESTORE/modl/eta/bl_thte_ncf                    surface      nam;nam20;nam40;nam44
+!
+SVR_WX                         $NMAP_RESTORE/modl/eta/svrwx                          severe       nam;nam20;nam40;nam44
+!
+EMSL_1000-500THKN_BL_WIND      $NMAP_RESTORE/modl/eta/emsl_thkn_wind                 misc         nam;nam20;nam40;nam44
+EMSL_BL_TEMP(F)_WIND           $NMAP_RESTORE/modl/eta/emsl_bl_tempf_wind             misc         nam;nam20;nam40;nam44
+!
+PMSL_1000-500THKN_BL_WIND      $NMAP_RESTORE/modl/eta/pmsl_thkn_wind_mono            monochrome   nam;nam20;nam40;nam44
+BL_THTE_WIND                   $NMAP_RESTORE/modl/eta/bl_thte_wind_mono              monochrome   nam;nam20;nam40;nam44
+!
+!
+! FNL model
+! ---------
+!
+500mb_HGHT_ABSV                $NMAP_RESTORE/modl/fnl/500mb_hght_absv_al             anl_loops    fnl
+300mb_DIV_ISOTACHS             $NMAP_RESTORE/modl/fnl/300mb_div_isotachs_al          anl_loops    fnl
+PRECIP_WATER_MSLP              $NMAP_RESTORE/modl/fnl/precip_water_mslp_al           anl_loops    fnl
+MSLP_and_BL_THTE               $NMAP_RESTORE/modl/fnl/mslp_and_bl_thte_al            anl_loops    fnl
+850mb_HGHT_TMP                 $NMAP_RESTORE/modl/fnl/850mb_hght_tmp_al              anl_loops    fnl
+850mb_HGHT_DWPT                $NMAP_RESTORE/modl/fnl/850mb_hght_dwpt_al             anl_loops    fnl
+850mb_H2O_TRANSPORT            $NMAP_RESTORE/modl/fnl/850mb_h2o_transport_al         anl_loops    fnl
+!
+!
+! MESO model
+! ----------
+!
+TOPOLINES                      $NMAP_RESTORE/modl/meso/topolines                     misc         nam20
+TOPOGRAPHY                     $NMAP_RESTORE/modl/meso/topography                    misc         nam20
+!BL_H2O_TRNSP_OMGQ             $NMAP_RESTORE/modl/meso/bl_h2o_trnsp_omgq             qpf          nam20
+!BL_MoistConv_WIND_DWPT        $NMAP_RESTORE/modl/meso/bl_moistconv_wind_dwpt        qpf          nam20
+!BestCAPE_CIN                  $NMAP_RESTORE/modl/meso/bestcape_cin                  qpf          nam20
+!LIFTED_INDEX                  $NMAP_RESTORE/modl/meso/lifted_index                  qpf          nam20
+!KIndex_700mbTEMP_BLdwpt_MSLP  $NMAP_RESTORE/modl/meso/kindex_700mbtemp_bldwpt_mslp  qpf          nam20
+!PW,_MSLP,_C-VEC               $NMAP_RESTORE/modl/meso/pw,_mslp,_c-vec               qpf          nam20
+!200mb_VORTICITY_PW            $NMAP_RESTORE/modl/meso/200mb_vorticity_pw            basic_wx     nam20
+!250mb_VORTICITY_PW            $NMAP_RESTORE/modl/meso/250mb_vorticity_pw            basic_wx     nam20
+!300mb_VORTICITY_PW            $NMAP_RESTORE/modl/meso/300mb_vorticity_pw            basic_wx     nam20
+!300-200mb_PV                  $NMAP_RESTORE/modl/meso/300-200mb_pv                  basic_wx     nam20
+!300-700_Qn-VECTRS             $NMAP_RESTORE/modl/meso/300-700_qn-vectrs             basic_wx     nam20
+!400-250mb_PV                  $NMAP_RESTORE/modl/meso/400-250mb_pv                  basic_wx     nam20
+!500-250mb_PV                  $NMAP_RESTORE/modl/meso/500-250mb_pv                  basic_wx     nam20
+!700mb_RH,_RS_T,_VV            $NMAP_RESTORE/modl/meso/700mb_rh,_rs_t,_vv            basic_wx     nam20
+!700mb_RH,_RS_TEMP             $NMAP_RESTORE/modl/meso/700mb_rh,_rs_temp             basic_wx     nam20
+!BL_RH_LAKE                    $NMAP_RESTORE/modl/meso/bl_rh_lake                    basic_wx     nam20
+!BL_THTE,_WIND                 $NMAP_RESTORE/modl/meso/bl_thte,_wind                 basic_wx     nam20
+!PMSL,_BL_TEMP,_WIND           $NMAP_RESTORE/modl/meso/pmsl,_bl_temp,_wind           basic_wx     nam20
+!PRECIP_TYPE,_VV               $NMAP_RESTORE/modl/meso/precip_type,_vv               basic_wx     nam20
+!PMSL_and_BL_WIND              $NMAP_RESTORE/modl/meso/pmsl_and_bl_wind              marine       nam20
+!PMSL_and_LL_WIND              $NMAP_RESTORE/modl/meso/pmsl_and_ll_wind              marine       nam20
+!PMSL_and_10m_WIND             $NMAP_RESTORE/modl/meso/pmsl_and_10m_wind             marine       nam20
+!BL_H2O_CONV                   $NMAP_RESTORE/modl/meso/bl_h2o_conv                   marine       nam20
+!STABILITY_850mb_WND           $NMAP_RESTORE/modl/meso/stability_850mb_wnd           marine       nam20
+!BL1_RH                        $NMAP_RESTORE/modl/meso/bl1_rh                        aviation     nam20
+!FRZG_LVL_HGHT_and_RH          $NMAP_RESTORE/modl/meso/frzg_lvl_hght_and_rh          aviation     nam20
+!LL_TURB                       $NMAP_RESTORE/modl/meso/ll_turb                       aviation     nam20
+!BL_WIND                       $NMAP_RESTORE/modl/meso/bl_wind                       hurricane    nam20
+!
+!
+! NGM model
+! ---------
+!
+POTVORT_300-200mb              $NMAP_RESTORE/modl/ngm/300-200mb_pv                   standard     ngm
+POTVORT_400-250mb              $NMAP_RESTORE/modl/ngm/400-250mb_pv                   standard     ngm
+POTVORT_500-250mb              $NMAP_RESTORE/modl/ngm/500-250mb_pv                   standard     ngm
+!
+PMSL_and_BL_WIND               $NMAP_RESTORE/modl/ngm/pmsl_and_bl_wind               marine       ngm
+PMSL_and_10m_WIND              $NMAP_RESTORE/modl/ngm/pmsl_and_10m_wind              marine       ngm
+PMSL_and_LL_WIND               $NMAP_RESTORE/modl/ngm/pmsl_and_ll_wind               marine       ngm
+BL_H2O_CONV                    $NMAP_RESTORE/modl/ngm/bl_h2o_conv                    marine       ngm
+PMSL_1000-850_THK              $NMAP_RESTORE/modl/ngm/pmsl_1000-850_thk              marine       ngm
+!
+850mb_WIND_PW                  $NMAP_RESTORE/modl/ngm/850mb_wind_pw                  qpf          ngm
+850mb_THTAE_ADVECTION          $NMAP_RESTORE/modl/ngm/850mb_thtae_advection          qpf          ngm
+850mb_H2O_TRANSPORT            $NMAP_RESTORE/modl/ngm/850mb_h2o_transport            qpf          ngm
+BL_MoistConv_WIND_DWPT         $NMAP_RESTORE/modl/ngm/bl_moistconv_wind_dwpt         qpf          ngm
+LIFTED_INDEX                   $NMAP_RESTORE/modl/ngm/lifted_index                   qpf          ngm
+KIndex_700mbTEMP_BLdwpt_MSLP   $NMAP_RESTORE/modl/ngm/kindex_700mbtemp_bldwpt_mslp   qpf          ngm
+PW_MSLP_C-VEC                  $NMAP_RESTORE/modl/ngm/pw_mslp_c-vec                  qpf          ngm
+PRECIP_POTENTIAL               $NMAP_RESTORE/modl/ngm/pcpn_potential                 qpf          ngm
+!
+200mb_VORTICITY_PW             $NMAP_RESTORE/modl/ngm/200mb_vorticity_pw             basic_wx     ngm
+250mb_VORTICITY_PW             $NMAP_RESTORE/modl/ngm/250mb_vorticity_pw             basic_wx     ngm
+300mb_VORTICITY_PW             $NMAP_RESTORE/modl/ngm/300mb_vorticity_pw             basic_wx     ngm
+700mb_RH_RS_TEMP               $NMAP_RESTORE/modl/ngm/700mb_rh_rs_temp               basic_wx     ngm
+BL_THTE_WIND                   $NMAP_RESTORE/modl/ngm/bl_thte_wind                   basic_wx     ngm
+PMSL_BL_TEMP(F)_WIND           $NMAP_RESTORE/modl/ngm/pmsl_bl_tempf_wind             basic_wx     ngm
+PMSL_BL_TEMP(C)_WIND           $NMAP_RESTORE/modl/ngm/pmsl_bl_tempc_wind             basic_wx     ngm
+PMSL_1000-500THKN_BL_WIND      $NMAP_RESTORE/modl/ngm/pmsl_thkn_wind                 basic_wx     ngm
+PMSL_1000-850_THK              $NMAP_RESTORE/modl/ngm/pmsl_1000-850_thk              basic_wx     ngm
+1000-470mb_RH_RS_T_700VV       $NMAP_RESTORE/modl/ngm/1000-470mb_rh_rs_t_700vv       basic_wx     ngm
+300-700_Q-VCTRS_THKN           $NMAP_RESTORE/modl/ngm/300-700_q-vctrs_thkn           basic_wx     ngm
+LIFTED_INDEX                   $NMAP_RESTORE/modl/ngm/lifted_index                   basic_wx     ngm
+CROSS_TOTAL_INDEX              $NMAP_RESTORE/modl/ngm/ct_index                       basic_wx     ngm
+!
+BL1_RH                         $NMAP_RESTORE/modl/ngm/bl1_rh                         aviation     ngm
+BL3_RH                         $NMAP_RESTORE/modl/ngm/bl3_rh                         aviation     ngm
+PMSL_BL1_WIND_850MB_TAD        $NMAP_RESTORE/modl/ngm/pmsl_bl1_wind_850mb_tad        aviation     ngm
+!
+850mb_WIND_PW_NCF              $NMAP_RESTORE/modl/ngm/850mb_wind_pw_ncf              no_col-fill  ngm
+LIFTED_INDEX_NCF               $NMAP_RESTORE/modl/ngm/lifted_index_ncf               no_col-fill  ngm
+BL_H2O_CONV_NCF                $NMAP_RESTORE/modl/ngm/bl_h2o_conv_ncf                no_col-fill  ngm
+PRECIP_POTENTIAL_NCF           $NMAP_RESTORE/modl/ngm/pcpn_potential_ncf             no_col-fill  ngm
+500-300_AVG_RH_NCF             $NMAP_RESTORE/modl/ngm/400mb_avg_rh_ncf               no_col-fill  ngm
+!
+PMSL_1000-500THKN_BL_WIND      $NMAP_RESTORE/modl/ngm/pmsl_thkn_wind_mono            monochrome   ngm
+BL_THTE_WIND                   $NMAP_RESTORE/modl/ngm/bl_thte_wind_mono              monochrome   ngm
+!
+!
+! NOGAPS model
+! ------------
+!
+12HR_PCPN                      $NMAP_RESTORE/modl/nogaps/precip_12hr                 precip       nogaps
+12HR_PCPN_MM                   $NMAP_RESTORE/modl/nogaps/precip_12hr_mm              precip       nogaps
+PMSL_and_BL_WIND               $NMAP_RESTORE/modl/nogaps/pmsl_and_bl_wind            standard     nogaps
+850mb_HGT_WIND                 $NMAP_RESTORE/modl/nogaps/850mb_hgt_wind              standard     nogaps
+!
+!
+! RFC Coop Precip Obs
+! -------------------
+!
+24-HR_OBS_PCPN                 $NMAP_RESTORE/modl/rfc/24-hr_obs_pcpn.al              loops
+24-HR_OBS_PCPN_SPC             $NMAP_RESTORE/modl/rfc/24-hr_obs_pcpn_spc.al          loops
+!
+!
+! RUC model and RUC2
+! ------------------
+!
+700mb_RH_RS_TEMP               $NMAP_RESTORE/modl/ruc/700mb_rh_rs_temp               basic_wx     ruc2;fslruc2
+300-700_Q-VCTRS_THKN           $NMAP_RESTORE/modl/ruc/300-700_q-vctrs_thkn           basic_wx     ruc2;fslruc2
+!
+850mb_THTAE_ADVECTION          $NMAP_RESTORE/modl/ruc/850mb_thtae_advection          qpf          ruc2;fslruc2
+SFC_LI                         $NMAP_RESTORE/modl/ruc/sfclifted_index                qpf          ruc2;fslruc2
+BestCAPE_CIN                   $NMAP_RESTORE/modl/ruc/bestcape_cin                   qpf          ruc2;fslruc2
+!
+BEST_CAPE_CIN_NCF              $NMAP_RESTORE/modl/ruc/bestcape_cin_ncf               no_col-fill  ruc2;fslruc2
+!
+MMSL                           $NMAP_RESTORE/modl/ruc/mmsl                           surface      ruc2;fslruc2
+!
+250mb_AGEO_DIV_ISOTACHS        $NMAP_RESTORE/modl/ruc/250mb_ageo_div_isotachs        standard     ruc2;fslruc2
+700mb_HGHT_RH                  $NMAP_RESTORE/modl/ruc/700mb_hght_rh                  standard     ruc2;fslruc2
+BL_RH                          $NMAP_RESTORE/modl/ruc/bl_rh                          standard     ruc2;fslruc2
+POTVORT_400-250mb              $NMAP_RESTORE/modl/ruc/potvort_400-250mb              standard     ruc2;fslruc2
+MMSL                           $NMAP_RESTORE/modl/ruc/mmsl                           standard     ruc2;fslruc2
+!296thta_PRES_WND_PRES_ADV     $NMAP_RESTORE/modl/ruc/296thta_pres_wnd_pres_adv      standard     ruc2;fslruc2
+!300thta_PRES_WND_PRES_ADV     $NMAP_RESTORE/modl/ruc/300thta_pres_wnd_pres_adv      standard     ruc2;fslruc2
+!304thta_PRES_WND_PRES_ADV     $NMAP_RESTORE/modl/ruc/304thta_pres_wnd_pres_adv      standard     ruc2;fslruc2
+!308thta_PRES_WND_PRES_ADV     $NMAP_RESTORE/modl/ruc/308thta_pres_wnd_pres_adv      standard     ruc2;fslruc2
+!312thta_PRES_WND_PRES_ADV     $NMAP_RESTORE/modl/ruc/312thta_pres_wnd_pres_adv      standard     ruc2;fslruc2
+!316thta_PRES_WND_PRES_ADV     $NMAP_RESTORE/modl/ruc/316thta_pres_wnd_pres_adv      standard     ruc2;fslruc2
+!
+200mb_HGHT_WIND                $NMAP_RESTORE/modl/ruc/200mb_hght_wind_al             anl_loops    ruc2;fslruc2
+250mb_AGEO_DIV_ISOTACHS        $NMAP_RESTORE/modl/ruc/250mb_ageo_div_isotachs_al     anl_loops    ruc2;fslruc2
+300mb_HGHT_WIND                $NMAP_RESTORE/modl/ruc/300mb_hght_wind_al             anl_loops    ruc2;fslruc2
+300mb_HGHT_ABSV                $NMAP_RESTORE/modl/ruc/300mb_hght_absv_al             anl_loops    ruc2;fslruc2
+500mb_HGHT_ABSV                $NMAP_RESTORE/modl/ruc/500mb_hght_absv_al             anl_loops    ruc2;fslruc2
+700mb_RH_RS_TEMP               $NMAP_RESTORE/modl/ruc/700mb_rh_rs_temp_al            anl_loops    ruc2;fslruc2
+700mb_HGHT_RH                  $NMAP_RESTORE/modl/ruc/700mb_hght_rh_al               anl_loops    ruc2;fslruc2
+850mb_HGHT_TMP_WIND            $NMAP_RESTORE/modl/ruc/850mb_hght_tmp_wind_al         anl_loops    ruc2;fslruc2
+850mb_HGHT_WIND_DWPT           $NMAP_RESTORE/modl/ruc/850mb_hght_wind_dwpt_al        anl_loops    ruc2;fslruc2
+850mb_H2O_TRANSPORT            $NMAP_RESTORE/modl/ruc/850mb_h2o_transport_al         anl_loops    ruc2;fslruc2
+POTVORT_400-250mb              $NMAP_RESTORE/modl/ruc/potvort_400-250mb_al           anl_loops    ruc2;fslruc2
+300thta_PRES_WND_PRES_ADV      $NMAP_RESTORE/modl/ruc/300thta_pres_wnd_pres_adv_al   anl_loops    ruc2;fslruc2
+!
+!
+! RUCS model
+! ----------
+!
+PMSL_and_SFC_TEMP              $NMAP_RESTORE/modl/rucs/pmsl_and_sfc_temp             standard     rucs;fslrucs
+PMSL                           $NMAP_RESTORE/modl/rucs/pmsl                          surface      rucs;fslrucs
+SFC_TEMP                       $NMAP_RESTORE/modl/rucs/sfc_temp                      surface      rucs;fslrucs
+SFC_DWPC                       $NMAP_RESTORE/modl/rucs/sfc_dwpc                      surface      rucs;fslrucs
+SFC_FNT                        $NMAP_RESTORE/modl/rucs/sfc_fnt                       surface      rucs;fslrucs
+SFC_MOIST_CONV                 $NMAP_RESTORE/modl/rucs/sfc_moist_conv                standard     rucs;fslrucs
+PMSL_and_DEW_POINT             $NMAP_RESTORE/modl/rucs/pmsl_and_dew_point            standard     rucs;fslrucs
+PMSL_and_SFC_FNT               $NMAP_RESTORE/modl/rucs/pmsl_and_sfc_fnt              standard     rucs;fslrucs
+PMSL_and_SFC_THE               $NMAP_RESTORE/modl/rucs/pmsl_and_sfc_the              standard     rucs;fslrucs
+!
+PMSL_and_SFC_TEMP              $NMAP_RESTORE/modl/rucs/pmsl_and_sfc_temp_al          loops        rucs;fslrucs
+SFC_MOIST_CONV                 $NMAP_RESTORE/modl/rucs/sfc_moist_conv_al             loops        rucs;fslrucs
+PMSL_and_DEW_POINT             $NMAP_RESTORE/modl/rucs/pmsl_and_dewpoint_al          loops        rucs;fslrucs
+!
+!
+! MDL_NGM products
+! ----------------
+!
+CIG_under_200ft                $NMAP_RESTORE/modl/tdl_ngm/cig_under_200ft            aviation     mdlngm 
+CIG_200-400ft                  $NMAP_RESTORE/modl/tdl_ngm/cig_200-400ft              aviation     mdlngm
+CIG_500-900ft                  $NMAP_RESTORE/modl/tdl_ngm/cig_500-900ft              aviation     mdlngm
+CIG_1000-3000ft                $NMAP_RESTORE/modl/tdl_ngm/cig_1000-3000ft            aviation     mdlngm
+CIG_3100-6500ft                $NMAP_RESTORE/modl/tdl_ngm/cig_3100-6500ft            aviation     mdlngm
+CIG_6600-12Kft                 $NMAP_RESTORE/modl/tdl_ngm/cig_6600-12kft             aviation     mdlngm
+CIG_over_12Kft                 $NMAP_RESTORE/modl/tdl_ngm/cig_over_12kft             aviation     mdlngm
+!
+!
+! MDL_MRF products
+! ----------------
+!
+MAX_TEMP                       $NMAP_RESTORE/modl/tdl_mrf/max_temp                   medr         mdlmrfsvr
+NORM_MAX_TEMP                  $NMAP_RESTORE/modl/tdl_mrf/climax_temp                medr         mdlmrfsvr
+DEV_NORM_MAX_TEMP              $NMAP_RESTORE/modl/tdl_mrf/devclimax_temp             medr         mdlmrfsvr
+MIN_TEMP                       $NMAP_RESTORE/modl/tdl_mrf/min_temp                   medr         mdlmrfsvr
+NORM_MIN_TEMP                  $NMAP_RESTORE/modl/tdl_mrf/climin_temp                medr         mdlmrfsvr
+DEV_NORM_MIN_TEMP              $NMAP_RESTORE/modl/tdl_mrf/devclimin_temp             medr         mdlmrfsvr
+DEV_COMBO_NORM_MIN_TEMP        $NMAP_RESTORE/modl/tdl_mrf/devcombomin_temp           medr         mdlmrfsvr
+DEV_COMBO_NORM_MAX_TEMP        $NMAP_RESTORE/modl/tdl_mrf/devcombomax_temp           medr         mdlmrfsvr
+POPS_24HR                      $NMAP_RESTORE/modl/tdl_mrf/pops_24hr                  medr         mdlmrfsvr
+POPS_24HR_DEV                  $NMAP_RESTORE/modl/tdl_mrf/pops_24hr_dev              medr         mdlmrfsvr
+!
+!
+! NDFD
+! ----
+!
+MAX_TEMP_FILL                  $NMAP_RESTORE/modl/ndfd/max_temp_fill                 ndfd         ndfd
+MIN_TEMP_FILL                  $NMAP_RESTORE/modl/ndfd/min_temp_fill                 ndfd         ndfd
+POP_12HR_FILL                  $NMAP_RESTORE/modl/ndfd/pops_12hr_fill                ndfd         ndfd
+!
+!
+! UKMET model
+! -----------
+!
+EST_1000-500_THICK             $NMAP_RESTORE/modl/ukmet/ethkn                        medr         ukmet
+!
+!
+! NWW3 model
+! ----------
+!
+SIG_WAVE(FT)_NEW_WINDS         $NMAP_RESTORE/modl/nww3/sig_wave_cont_fill_feet       marine       nww3;fnmocwave
+SIG_WAVE(M)_NEW_WINDS          $NMAP_RESTORE/modl/nww3/sig_wave_cont_fill_meters     marine       nww3;fnmocwave
+SIG_WAVE(FT)_AVN_MSLP&WINDS    $NMAP_RESTORE/modl/nww3/sig_wave_and_mslp_feet        marine       nww3;fnmocwave
+SIG_WAVE(M)_AVN_MSLP&WINDS     $NMAP_RESTORE/modl/nww3/sig_wave_and_mslp_meters      marine       nww3;fnmocwave
+GRID_SIG_WAVE(FT)_NEW_WINDS    $NMAP_RESTORE/modl/nww3/sig_wave_gridded_feet         marine       nww3;fnmocwave
+GRID_SIG_WAVE(M)_NEW_WINDS     $NMAP_RESTORE/modl/nww3/sig_wave_gridded_meters       marine       nww3;fnmocwave
+GRID_SIG_WAVE(FT)_AVN_MSLP     $NMAP_RESTORE/modl/nww3/sig_wave_gridded_mslp_feet    marine       nww3;fnmocwave
+GRID_SIG_WAVE(M)_AVN_MSLP      $NMAP_RESTORE/modl/nww3/sig_wave_gridded_mslp_meters  marine       nww3;fnmocwave
+PEAK_SWELL_PERIOD&DIRECTION    $NMAP_RESTORE/modl/nww3/peak_swell_period_contoured   marine       nww3;fnmocwave
+!
+!
+! VAFTAD model
+! ------------
+!
+VOLCANIC_ASH_COMP              $NMAP_RESTORE/volcano/volcash_comp                    volcash      vaftad
+VOLCANIC_ASH_LOW_LVL           $NMAP_RESTORE/volcano/volcash_low_lvl                 volcash      vaftad
+VOLCANIC_ASH_MID_LVL           $NMAP_RESTORE/volcano/volcash_mid_lvl                 volcash      vaftad
+VOLCANIC_ASH_HIGH_LVL          $NMAP_RESTORE/volcano/volcash_high_lvl                volcash      vaftad
+!
+!
+! GHM model
+! ---------
+!
+200mb_absv_wind                $NMAP_RESTORE/modl/ghm/200mb_absv_wind                hurricane    ghm;ghmnest
+500mb_absv_wind                $NMAP_RESTORE/modl/ghm/500mb_absv_wind                hurricane    ghm;ghmnest
+700mb_absv_wind                $NMAP_RESTORE/modl/ghm/700mb_absv_wind                hurricane    ghm;ghmnest
+850mb_absv_wind                $NMAP_RESTORE/modl/ghm/850mb_absv_wind                hurricane    ghm;ghmnest
+pmsl_1000-500thk               $NMAP_RESTORE/modl/ghm/pmsl_1000-500thk               hurricane    ghm;ghmnest
+pmsl_1000mb_wind               $NMAP_RESTORE/modl/ghm/pmsl_1000mb_wind               hurricane    ghmnest
+minpres_1000mb_wind            $NMAP_RESTORE/modl/ghm/minpres_1000mb_wind            hurricane    ghmnest
+minpres_35m_wind               $NMAP_RESTORE/modl/ghm/minpres_35m_wind               hurricane    ghmnest
+!
+!**********************
+! GOESSST MODELS (OPC)
+!**********************
+!
+GOES_SST                       $NMAP_RESTORE/GOESSST/oceanic/goessst_fill            oceanic      GoesSST
+GOES-SST_ENH_WATL              $NMAP_RESTORE/GOESSST/oceanic/goessst_fill_enh_watl   oceanic      GoesSST
+GOES-SST_ENH_GMEX              $NMAP_RESTORE/GOESSST/oceanic/goessst_fill_enh_gmex   oceanic      GoesSST
+GOES-SST_ENH_EPAC              $NMAP_RESTORE/GOESSST/oceanic/goessst_fill_enh_epac   oceanic      GoesSST

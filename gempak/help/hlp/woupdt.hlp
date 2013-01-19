@@ -1,0 +1,157 @@
+
+WOUPDT
+
+    WOUPDT creates the Watch Outline Update (WOU) text product for each 
+    active watch number. This program reads the most recently decoded 
+    Watch County Notification (WCN) files and creates a list of active 
+    counties for a given watch number. If a WFO id in the WOU was not found
+    in the WCN files, then that WFO's county information is taken from the
+    last WOU.  Once all of the active counties have been found, the county 
+    list is then formated into a WOU ASCII text file.
+
+    In addition to creating the updated WOU text products, WOUPDT also creates 
+    the Watch Corner Points (WCP) text product from the active watches. 
+
+
+INPUT PARAMETERS
+
+
+    woupdt -[e, c, o, u or h] YYMMDD/HHNN 
+
+    woupdt		program name
+    -[e, c, o, u, or h] flags [optional]
+                           -e  - checks for extensions in time, area or both 
+				 by the WCNs (EXT, EXA, EXB)
+                           -c  - check if a WOU final message has been 
+				 created for the watch  
+                           -o  - checks for regular clearing of counties
+                                  by the WCNs (CAN)
+                           -u  - checks for hourly updates
+                           -h  - list WOUPDT help file
+    YYMMDD/HHNN		GEMPAK dat/time
+			   YY - year, MM - month, DD - day, HH - hour,
+                           NN - minutes
+
+PROGRAM DESCRIPTION
+
+    The inputs for WOUPDT are the flags WOUPDT used to check for data
+    changes and the date and hour that the WOU is to be run.  The time is given
+    in GMT and it follows the same rules as the GEMPAK parameter DATTIM. 
+    Keywords, LAST and ALL are not allowed.
+
+    If no arguments are given on the command line then the system clock 
+    time will be used as the input time.
+
+    The output file naming convention is:
+
+                ####_YYYYMMDDHHNN.wou
+
+    where:
+
+    	#### 	= 	active watch number
+    	YYYY 	=	Year
+    	MM	=	Month
+    	DD	=	Day
+    	HH	=	Hour
+    	NN	=	Minutes
+
+
+    The flag options; '-e', '-c', '-o', '-u' and '-h', are optional. If no flag 
+    is used, then an updated WOU message is created whenever the program is run. 
+    If the '-h' option is used, the help file for WOUPDT is displayed and the
+    program exits. The '-e' flag creates an updated WOU if it found a EXA, EXT
+    or EXB in the decoded WCN file. Using the '-c' flag creates a cancel WOU 
+    message if a previous cancel message for that watch number does _not_ 
+    exist and if the remaining WFOs with active counties have cleared them 
+    before the ending time of the watch, or if the watch has expired and the 
+    run time is within the (end time + delta minutes).  The '-o' flag option 
+    creates an updated WOU message if there have been regular clearing of 
+    counties since the last WOU message. The '-u' flag will create an updated
+    WOU message if county and time difference aspects are met. First is the
+    time difference between the current time and the most recent decoded WOU
+    message; delta time. Second is the use of a time threshold value, 
+    UPDT_UNIQUE_MINS. Third, is if counties have been cleared from the watch.
+    Below are the contiditions on whether or not an updated message will be
+    created:
+       1. no change in counties and delta time < UPDT_UNIQUE_MINS - don't issue 
+       2. a change in counties and delta time < UPDT_UNIQUE_MINS -  issue 
+       3. no change in counties and delta time > UPDT_UNIQUE_MINS - issue 
+       4. a change in counties and delta time > UPDT_UNIQUE_MINS -  issue 
+
+
+    The date/time input is used to construct the output file names.  The 
+    aliases, WOU and WCN, are used to search the file directories and 
+    use the templates, YYYYMMDDHH.wou or YYYYMMDDHH.wcn, from the 
+    datatyp.tbl file.  The aliases, WOU and WCN, also sets a value for 
+    the path to the decoded WOU and WCN files.  These paths are defined by
+    the environment variable $OBS.  This environment variable must be 
+    set by the site administrator.
+
+    The table, woudef.tbl, is used by WOUPDT to set the delta time (in 
+    minutes) after the watch expiration time and the path to the original
+    watch text file, ww####.txt, where, ####, is the watch number. The delta
+    time parameter is 'WOU_CNL_PLUS_MIN'.  If the table cannot be found or if
+    the delta number cannot be converted a default value of 15 minutes is set. 
+    The search path parameter is 'WOU_SRCH'. This directory list is separated
+    by a ':' and the file name is represented by "%N" in each directory. If this
+    parameter is not set, the watch file, ww####.txt, will only be searched for
+    in the local directory.
+
+    Also found in woudef.tbl, are the settings for using the VTEC string in the
+    Watch Outline Update-initial (WOUi) and WOU update. There are separate 
+    settings for the WOUi and WOUPDT for use of the VTEC line, product type 
+    code, originating office identifier and the significance code. The product
+    type code for the WOU-i will be set to 'T' if the watch is issued as 'TEST'.
+    Also, only the action code for the WOUi is listed in the table. For 
+    WOU-update the code is set to 'CON' for continuing update messages. The 
+    WOU-final text message, if the WFOs cancel all of the counties before the 
+    ending time of the watch, the WOU-final product code and action codes are:
+    'E' and 'CAN'. There will be 'EXPERIMENTAL...' leading the watch number MND 
+    line. If the watch is allowed to expire at it's normal ending time, the 
+    product and action codes are, 'O' and 'EXP', respectively. There will not be 
+    anything added to the MND watch number line.
+
+PROGRAM METHODOLOGY FOR CREATING THE WCP TEXT PRODUCTS
+
+    As the WOUPDT loops over the active watches, information about each watch is
+    stored locally so that a WCP text product can be created. The latitude and
+    longitude pairs found for each watch in the WCP comes from rebundling the
+    active counties found by the update program.  Currently, in the WCP, there 
+    are 7 lat/lon pairs calculated for each watch.  If there are not any active
+    watches, a WCP text file is created stating that currently, there are not
+    any active watches.  Control of creating the WCP text product is found in 
+    $GEMTBL/txtprd/woudef.tbl. The controlling tag value is UPDT_WCP, it's 
+    default value is OFF.  The output WCP text file name is KWNSWCPSPC.  When 
+    the WCP text product is created, a VG file, KWNSWCPSPC.vgf, is also created. 
+    If there are not any active watches, an emtpy VG file is created. Control 
+    for creating a VG file is found in $GEMTBL/txtprd/woudef.tbl with the tag 
+    WCP_VGF. It's default value is set to FALSE.  
+    
+
+PROGRAM METHODOLOGY FOR TIME STRINGS
+
+    WOUPDT uses three time strings to determine if a WCN report for a WFO
+    is the most current county information. These times are: the bulletin 
+    issue time, watch start time and watch end time.
+
+    To collect the most recently sent WCNs for a given watch number, the
+    user date/time is compared to the WCN's report bulletin time, start 
+    time and end time.  If the user date/time is greater than or equal to
+    the bulletin issue time, greater than or equal to the watch start time
+    and less than or equal to the watch's end time; that decoded report
+    will be considered for storing it's county information. 
+
+    The active watch number is then compared to the decoded watch number. If 
+    the watch numbers match, WOUPDT then checks to see if that WFO ID and it's 
+    information has been previously saved.  If not, that WFO's information 
+    and counties are stored.
+
+    
+ERROR MESSAGE
+
+   [WOUPDT   4]  ! Definition table, woudef.tbl, not found.
+   [WOUPDT   3]  ! Invalid flag option.
+   [WOUPDT   2]  ! Watch !AS has expired.
+   [WOUPDT   1]  ! No active watch numbers found.
+   [WOUPDT  -1]  ! Error with time string
+   [WOUPDT  -2]  ! Error finding latest WOU file

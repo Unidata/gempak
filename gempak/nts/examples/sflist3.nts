@@ -1,0 +1,6 @@
+SFFILE  $GEMPAK/data/HRCBOB.SFC                                                     
+AREA    @PA                                                                     
+DATTIM  /05-06                                                                  
+SFPARM  tmpf;dwpf>65;pmsl;wthr=t                                                
+OUTPUT  T                                                                       
+IDNTYP  STID                                                                    

@@ -1,0 +1,18 @@
+SNFILE  $GEMPAK/data/HRCBOB.SND                                                     
+DATTIM  all                                                                     
+TAXIS                                                                           
+LEVELS  850                                                                     
+VCOORD  pres                                                                    
+SNPARM  relh                                                                    
+STNDEX                                                                          
+AREA    @chh                                                                    
+PTYPE   lin                                                                     
+YAXIS                                                                           
+BORDER  1                                                                       
+LINE    3                                                                       
+MARKER  1                                                                       
+TITLE   1                                                                       
+CLEAR   y                                                                       
+PANEL   0                                                                       
+TEXT    1/2/1/hw                                                                
+DEVICE  xw                                                                      

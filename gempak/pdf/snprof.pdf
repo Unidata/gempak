@@ -1,0 +1,24 @@
+SNFILE  Sounding data file                                                      
+DATTIM  Date/time                                                               
+AREA    Data area                                                               
+SNPARM  Sounding parameter list                                                 
+LINE    Color/type/width/label/smth/fltr/scflg                                  
+PTYPE   Plot type/h:w ratio/margins                                             
+VCOORD  Vertical coordinate type                                                
+STNDEX  Stability indices                                                       
+STNCOL  Stability index color                                                   
+WIND    Wind symbol/siz/wdth/typ/hdsz                                           
+WINPOS  Wind position                                                           
+MARKER  Marker color/type/size/width/hw                                         
+BORDER  Background color/type/width                                             
+TITLE   Title color/line/title                                                  
+DEVICE  Device|name|x size;y size|color type                                    
+YAXIS   Ystrt/ystop/yinc/lbl;gln;tck                                            
+XAXIS   Xstrt/xstop/xinc/lbl;gln;tck                                            
+FILTER  Filter data factor                                                      
+CLEAR   Clear screen flag                                                       
+PANEL   Panel loc/color/dash/width/regn                                         
+TEXT    Size/fnt/wdth/brdr/N-rot/just/hw flg                                    
+THTALN  THTA color/dash/width/mn/mx/inc                                         
+THTELN  THTE color/dash/width/mn/mx/inc                                         
+MIXRLN  MIXR color/dash/width/mn/mx/inc                                         

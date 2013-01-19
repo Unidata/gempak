@@ -1,0 +1,5 @@
+$CC $CFLAGS -c testnms.c 
+$FC $LDFLAGS -o $OS_BIN/testnms testnms.o \
+	$NMAPLIB $GEMLIB $CGEMLIB $APPL $SYSLIB $GEMLIB \
+	$CGEMLIB -lGPC -lnetcdf -lz -lm
+$RM *.o

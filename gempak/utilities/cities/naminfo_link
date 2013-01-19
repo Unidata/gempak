@@ -1,0 +1,4 @@
+$CC $CFLAGS $LDFLAGS  -o naminfo.x naminfo.c \
+	$CGEMLIB
+mv naminfo.x naminfo.$NA_OS
+$RM *.o

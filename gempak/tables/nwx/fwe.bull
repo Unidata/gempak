@@ -1,0 +1,35 @@
+! FWE.BULL
+!
+! Location information for the following product:
+! Extenced_Fire_Weather_Outlook.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+FEUS41 KBOX     TAUNTON                          MA US  4195  -7112     0
+FEUS41 KCLE     CLEVELAND                        OH US  4140  -8186     0
+FEUS41 KGYX     GRAY                             ME US  4388  -7025     0
+FEUS41 KLWX     BALTIMORE_MD/_WASHINGTON_DC      VA US  3897  -7747     0
+FEUS41 KPBZ     PITTSBURGH                       PA US  4052  -8020     0
+FEUS41 KPHI     MOUNT_HOLLY                      NJ US  4000  -7480     0
+FEUS41 KRLX     CHARLESTON                       WV US  3831  -8170     0
+FEUS42 KCAE     COLUMBIA                         SC US  3393  -8112     0
+FEUS42 KMLB     MELBOURNE                        FL US  2811  -8065     0
+FEUS42 KRAH     RALEIGH                          NC US  3577  -7868     0
+FEUS42 KTBW     TAMPA_BAY_AREA/RUSKIN            FL US  2770  -8240     0
+FEUS43 KABR     ABERDEEN                         SD US  4545  -9841     0
+FEUS43 KBIS     BISMARCK                         ND US  4677 -10075     0
+FEUS43 KDMX     DES_MOINES                       IA US  4172  -9372     0
+FEUS43 KFSD     SIOUX_FALLS                      SD US  4358  -9672     0
+FEUS43 KLMK     LOUISVILLE                       KY US  3811  -8563     0
+FEUS43 KLSX     ST_LOUIS                         MO US  3868  -9068     0
+FEUS43 KTOP     TOPEKA                           KS US  3906  -9562     0
+FEUS43 KUNR     RAPID_CITY                       SD US  4406 -10320     0
+FEUS44 KFWD     DALLAS/FORT_WORTH                TX US  3283  -9729     0
+FEUS44 KJAN     JACKSON                          MS US  3231  -9008     0
+FEUS44 KLZK     LITTLE_ROCK                      AR US  3483  -9225     0
+FEUS44 KOUN     NORMAN                           OK US  3522  -9745     0
+FEUS45 KBOU     DENVER                           CO US  4000 -10526     0
+FEUS46 KMFR     MEDFORD                          OR US  4236 -12287     0

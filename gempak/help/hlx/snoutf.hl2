@@ -1,0 +1,9 @@
+     SNOUTF
+
+     SNOUTF is the output sounding data file.
+
+     SNOUTF is used in programs which create a new sounding data
+     file.  It is also used in programs in which data is moved
+     from an input file to an output file, in which case SNFILE
+     is the original file.
+

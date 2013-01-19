@@ -1,0 +1,35 @@
+!GFSXMOS.PACK
+!
+!This table is the packing table for DCXMOS, which
+!decodes GFSX MOS model data.
+!
+!*Log:
+!
+!m.gamazaychikov/SAIC	11/03	copied from mosm.pack 
+!
+TNTF	   -99.        150.      1.
+TDYF	   -99.        150.      1.
+TMPF       -99.        150.      1.
+DWPF       -99.        150.      1.
+CL12	     0.         10.      1.
+SK12         0.        150.      1.
+PP12	     0.        100.      1.
+PP24	     0.        100.      1.
+QP12         0.          6.      1.
+QP24         0.          7.      1.
+TS12         0.        100.      1.
+TS24         0.        100.      1.
+PC12         0.          6.      1.
+PZ12         0.        100.      1.
+PS12	     0.        100.      1.
+PR12         0.        100.      1.
+SN24         0.          8.      1.
+TNCF   	  -100.        150.      1.
+TDCF	  -100.        150.      1.
+PP1C	     0.        100.      1.
+PP2C	     0.        100.      1.
+TNAF   	   -63.         63.      1.
+TDAF	   -63.         63.      1.
+PP1A	  -100.        100.      1.
+PP2A	  -100.        100.      1.
+DRCT	     0.	       360.	 1.

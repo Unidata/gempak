@@ -1,0 +1,8 @@
+#!/bin/csh
+foreach data (dataset*)
+    echo "Running $data"
+    (valgrind --tool=memcheck --leak-check=yes --num-callers=12 --suppressions=strtok_suppress $OS_BIN/testcap -i $data > /dev/null) |& grep -q 'ERROR SUMMARY: 0 errors'
+    if ($status != 0) then
+        echo "Memory error reported with $data"
+    endif
+end

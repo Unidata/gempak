@@ -1,0 +1,30 @@
+! SIGMETBTN.TBL.
+!
+! This table provides the icons located in the SIGMET button palette
+!
+! Log:
+! S. Law/GSC		05/99	initial coding
+! S. Law/GSC		08/99	added more buttons
+! S. Law/GSC		02/00	added CCF
+! E. Safford/GSC	04/01	reorder for horizontal layout
+! H. Zeng/XTRIA		07/03	added volcano and ash cloud elements
+! S. Jacobs/NCEP	09/03	Temporarily removed volcano/ash cloud
+! D.W.Plummer/NCEP	11/03	Replaced volcano/ash cloud
+!------------------------------------------------------------------------
+BEGIN
+!
+! Row 1
+!
+sigintl
+sigconv
+sigairm
+signcon
+!
+! Row 2
+!
+sigoutl
+sigccf
+sigvol
+sigvac
+END
+

@@ -1,0 +1,20 @@
+!	TB error file
+!
+ 4	! No font size alias found.
+ 3	! No NIDS product ID found.
+ 2	! No parameter alias found.
+ 1	! Unreadable station(s) found.
+-1	! End of file reached.
+-2	! Read error.
+-3	! Could not open table.
+-4	! The geographic area !AS is not in the table.
+-5	! Error writing to the file.
+-6	! The parameter conversion buffer is full.
+-7	! The parameter flag buffer is full.
+-9	! Error converting table parameters.
+-10	! Geography table !AS must be updated to new format.
+-11	! Geographic area !AS is defective in geography table.
+-12	! Geography table could not be opened.
+-13     ! No parameters found in alias table.
+-14	! Invalid NIDS source ID.
+-15	! Entry could not be found in state.tbl.

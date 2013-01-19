@@ -1,0 +1,187 @@
+
+                           NMAP2 Data Access Configuration 
+
+
+NOTE:  The following information is of use to site administrators and others 
+       having responsibility for managing NMAP2 data access.
+
+The types of data available for display in NMAP2 may be controlled in large 
+part by a set of tables and rules governing the use of those tables.  In 
+addition, the display options for the various data types are largely table 
+driven.  Display options include the choice of station plotting model for 
+observational data types, the choice of fields and contouring options 
+(restore files) for model data, and the default time line characteristics such 
+as time span, number of frames, etc.  The intent of this help is to provide 
+the necessary information so that site administrators can properly manage NMAP2 
+data access and display options.
+
+The information in this help is presented from the perspective of how the
+"Data Selection" window interacts with the various tables . The 
+"Data Selection" window uses the "Data Source" and time line GUIs to specify a 
+loop's data sets and time controls, respectively.  The ways in which the 
+"Data Source" window and time line are constructed are a function of data type 
+and several tables that can be configured by the site administrator.  
+
+The top-level categories that appear in the "Data Source" window, i.e.,
+"IMAGE", SURF_OBS", "SURF_FCST",  "UAIR_OBS", "GRID", "VGF", "MISC" are 
+hard-coded.  A data type must fall under one of these categories to be
+displayed in NMAP2.  
+
+For the purposes of this description the top-level scroll list that appears
+in the "Data Source" window is referred to as layer 1, the next layer as the 
+GUI expands is referred to as layer 2, and so on.  The number of layers and the 
+contents of each layer scroll list are a function of data category and several 
+tables.  
+
+The following sections describe the "Data Source" window layers for each 
+top-level data category.  At the beginning of each section a table is given 
+which lists each layer, its description, the $GEMTBL table name and columns 
+used to construct the layer, and an example layer name.  Then the rules 
+governing the use of the tables are given.  Finally, the rules governing the 
+construction of the time line are given at the end of each section assuming 
+that the data type is dominant.
+
+I.  Image Data Sources (IMAGE)
+
+Layer#  Description			Table/Columns		Example
+------------------------------------------------------------------------
+1	Data Source Name		Hard Coded		IMAGE
+2	Image Type			datatype.tbl, cols 1,4	SAT
+3	Top-Level Image Type directory	N/A			GOES-E
+4	Sub-directory			N/A			Atlantic
+5	Sub-directory			N/A			IR	
+
+For image data sources, layer 2 of the "Data Source" window lists the available
+image types, currently SAT for satellite images, and RAD for radar images.  
+These image types are obtained from the table $GEMTBL/config/datatype.tbl table 
+using the SAT and RAD file type entries that correspond to the category type 
+CAT_IMG in the 4th column of the table.  Subsequent "Data Source" layers 
+correspond to directories that fall under the directory tree specified by the 
+environment variable in the 2nd column in the table and are generated 
+automatically.  Thus, the number of layers depends on the number of 
+sub-directories in the data base.  The maximum number of sub-directories that 
+can be supported is ten.
+
+The time line frame times are obtained from the image file names.  The number of
+selected times and total time span are obtained from the DEF # FRM and DEF RANGE
+columns, respectively, in the datatype.tbl.
+
+II.  Observational Data Sources (SURF_OBS, UAIR_OBS)
+
+Layer#  Description                     Table/Columns           Example
+------------------------------------------------------------------------
+1	Data Source Name		Hard Coded		SURF_OBS
+2	Observation Data Type		datatype.tbl, cols 1,4	METAR
+3	Station Plotting Model Name	prmlst.tbl, cols 1,2	standard	
+
+For observational data sources, layer 2 of the "Data Source" window presents the
+available data types in the data base.  These data types are determined from 
+the table $GEMTBL/config/datatype.tbl.  For the SURF_OBS category, the data 
+type choices that appear in the layer 2 scroll list, e.g., METAR, SYNOP, etc., 
+are obtained from all first column entries in the table that match the category 
+CAT_SFC in 4th column of the table.  Likewise, for UAIR_OBS the data type 
+choices for the layer 2 scroll list are obtained from all first column entries 
+that match the category CAT_SND in the 4th column of the table.  The layer 3 
+scroll list presents the available station plotting models for each data type.  
+The station plotting models are obtained from the table 
+$GEMTBL/config/prmlst.tbl.  See this table for a description of how station
+plotting models are specified.  All available station models for a data type, 
+e.g, WINTER, are listed for that data type, e.g., METAR.  For each station 
+model in the table, the station model name appears in the first column, 
+preceded by a "^",  and the data type appears in the second column.  When
+the station model name is the same as the data type, the word "standard"
+appears in layer 3. 
+
+The time line is constructed by opening the latest data files that match the 
+template specified in the 3rd column of the datatype.tbl for the selected data 
+type.  The available frame times and time increments are read from the data 
+files.  The time line span and default number of frames selected are obtained 
+from the DEF RANGE and DEF # FRM, columns of the datatype table, respectively. 
+
+III.  Surface Forecast Data Sources (SURF_FCST)
+
+Layer#  Description                     Table/Columns           Example
+------------------------------------------------------------------------
+1       Data Source Name                Hard Coded              SURF_FCST
+2	Surface Forecast Data Set Name	datatype.tbl, cols 1,4	MRFMOS
+3	Cycle Time, from template	datatype.tbl, cols 2,3	020305_1200
+4	Station Plotting Model Name	prmlst.tbl, cols 1,2	climo_mm	 
+
+Layer 2 of the "Data Source" window lists the surface forecast data set
+names which are obtained from $GEMTBL/config/datatype.tbl.  All first column 
+entries that match CAT_SFF in the 4th column are listed in the scroll list.  
+Layer 3 lists the available cycle times.  The cycle times are determined by the
+files in the directory specified in column 2 that match the template in
+column 3 of the table.  Layer 4 lists the station plotting model names.  These
+are obtained from the $GEMTBL/config/prmlst.tbl.   
+
+The time line is constructed by opening the surface forecast data file that
+matches the template in the 3rd column of the datatype.tbl using the user-
+selected cycle time.  The forecast valid times are read from the surface 
+forecast data file and selected by default for loading.
+
+IV.  Grid Data Sources (GRID)
+
+Layer#  Description                     Table/Columns           Example
+------------------------------------------------------------------------
+1 	Data Source Name		Hard Coded		GRID
+2	Model Name			datatype.tbl, cols 1,4	avn	
+3	Cycle Time, from template	datatype.tbl, cols 2,3	020305_1200
+4	Product Group Name		mod_res.tbl, cols 3,4	basic_wx	
+5	Product Name			mod_res.tbl, cols 1,4	PRECIP_TYPE	
+
+Layer 2 of the "Data Source" window presents the model data names, 
+e.g., AVN, ETA, etc. in the data base.  These are determined from all first 
+column entries in the table $GEMTBL/config/datatype.tbl that match CAT_GRD in
+the 4th column of the table and have at least one corresponding entry in the
+4th column of $GEMTBL/nmap/mod_res.tbl.  Layer 3 presents the list of 
+available cycle times for the model selected.  The cycle times are determined 
+by the file names that match the template in the datatype.tbl.  Layer 4 
+presents the product groups, e.g., standard, basic_wx, etc., that are 
+available for each model.  These are obtained from the mod_res.tbl table.  All 
+group names in the third column of mod_res.tbl are listed that match the 
+selected model specified in the 4th column of that table.  Layer 5 lists all 
+the product names, e.g, 500mb_HGHT_WIND, that correspond to the product group.  
+The product names, which are specified in the first column of the table, 
+correspond to a specific NMAP restore file.
+
+The time line is constructed by opening the model data file that matches the
+template in the 3rd column of the datatype.tbl, using the user-selected cycle 
+time.  The forecast valid times are read from the model data file and selected 
+by default for loading.
+
+V.  VGF Data Source (VGF)
+
+Layer#  Description                     Table/Columns           Example
+------------------------------------------------------------------------
+1 	Data Source Name		Hard Coded		VGF
+2	VGF Group Name			vgf.tbl, col 1		bawx
+3	VGF Name, from directory list	vgf.tbl, col 2		rnsnow.vgf
+
+VGF product group names are listed in layer 2 of the "Data Source" window.  
+These are obtained from the first column of the table $GEMTBL/nmap/vgf.tbl.  
+They correspond to directories where VGFs are stored.  Layer 3 lists the VGFs 
+for the selected product group.
+
+The time line uses the system clock time rounded to the nearest hour for the
+selected frame time. 
+
+VI.  Miscellaneous Data Sources (MISC)
+
+Layer#  Description                     Table/Columns           Example
+------------------------------------------------------------------------
+1       Data Source Name                Hard Coded              MISC
+2	Misc. Data Set Name		datatype.tbl, col 1 	AIRM
+
+Miscellaneous data sources obtain their level 2 names from the data set 
+alias (file type) names given in column 1 of the $GEMTBL/config/datatype.tbl
+table.  All first column entries that match CAT_MSC in the 4th column are
+listed in the scroll list. 
+
+The time line is constructed using the default range and interval specified
+in the datatype.tbl, DEF RANGE and DEF INTRVL columns (7,8), respectively.
+The number of frames is computed using these values and all frames are 
+selected by default for loading.  The path and template specified in 
+the datatype.tbl, columns 2 and 3, respectively, are used to open the
+appropriate files.
+

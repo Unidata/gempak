@@ -1,0 +1,11 @@
+GDATTIM last                                                                                                                            
+GDFILE  ../gdtopo_dev/topo_us2.gem                                                                                                      
+GLEVEL  0                                                                                                                               
+GVCORD  pres                                                                                                                            
+GFUNC   topo                                                                                                                            
+SCALE   0                                                                                                                               
+PROJ    lcc/40;-100;40                                                                                                                  
+GRDAREA 23;-120;47.2634;-63.5664                                                                                                        
+KXKY    1184;750                                                                                                                        
+CPYFIL                                                                                                                                  
+SATFIL  ustopo3.gini                                                                                                                    

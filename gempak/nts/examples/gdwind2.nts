@@ -1,0 +1,20 @@
+GDATTIM f18                                                                     
+GLEVEL  850                                                                     
+GVCORD  PRES                                                                    
+GVECT   WND                                                                     
+GDFILE  $GEMPAK/data/HRCBOB.GRD                                                     
+GAREA   ri                                                                      
+SATFIL  $GEMPAK/data/VIS_910819_1801                                                
+RADFIL                                                                          
+SKIP    0                                                                       
+WIND    bk6/1.5/3                                                               
+REFVEC  10                                                                      
+MAP     1/7                                                                     
+LATLON  2/10/1/1/5;5                                                            
+PANEL   0                                                                       
+TITLE   1                                                                       
+DEVICE  XW                                                                      
+PROJ    sat                                                                     
+CLEAR   yes                                                                     
+SCALE                                                                           
+TEXT    1                                                                       

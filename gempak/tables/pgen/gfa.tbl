@@ -1,0 +1,271 @@
+!------------------------------------------------------------------------
+! GFA.TBL
+!
+! This table contains GFA gui information. 
+!
+!!
+! Log:
+! B. Yin/SAIC		10/04	Copied from the design sheet
+! B. Yin/SAIC		11/04	Added 'Other' to forecast hour
+! B. Yin/SAIC		11/04	Added hazard category
+! B. Yin/SAIC		11/04	Rename to gfa.tbl
+! D.W.Plummer/NCEP	11/04	Added more hazards and forecast hours
+!				   to match the GFA LPF file
+! B. Yin/SAIC		12/04	Added airmet bulletin file name template
+! E. Safford/SAIC       04/04   remove MT_OBSC freq and sev and most types,
+!                               add IFR freq and types
+! B. Yin/SAIC           06/05   add single smear forecast hours
+! L. Hinson/AWC		09/05	modify AIRMET_FILE format
+! L. Hinson/AWC		10/05	add issue time, reorganize hazards
+! J. Wu/SAIC		10/05	add single outlook hours 9-9 & 12-12
+! J. Wu/SAIC		10/05	add two new hazards: IFR_CIG & IFR_VIS
+! J. Wu/SAIC		10/05	add top/bottom line for M_FZLVL
+! B. Yin/SAIC		12/05	add options for FZLVL
+! B. Yin/SAIC		01/06	add hazards TURB-HI and TURB-LO
+! E. Safford/SAIC	01/06	add NULL_STRING for TURB's DUE_TO menu
+! E. Safford/SAIC	02/06	add level 160 to FZLVL                
+! B. Yin/SAIC		03/06	add checkbox and popup into IFR
+!				remove IFR_VIS and IFR_CIG
+!				remove Frequency from all hazards
+! B. Yin/SAIC		04/06	add FZL Top/Bottom to ICE
+! B. Yin/SAIC		06/06	add hazard identifier    
+! B. Yin/SAIC		06/06	add region option and 'new' in tag option
+! B. Yin/SAIC		06/07	change MT_OBSC type menu to popup dialog 
+! E. Safford/SAIC	08/07	add FZLVL range                       
+! J. Wu/SAIC		06/08	add entries for MTW
+! J. Wu/SAIC		06/08	add entries for CLD
+! J. Wu/SAIC		06/08	add entries for TS
+! B. Yin/SAIC		06/08	change IFR to C&V 
+! B. Yin/SAIC		06/08	add top/bottom, BLSA and BLDU for MT OBSC
+! B. Yin/SAIC		07/08	add speed options for SFC WND
+! L. Hinson/AWC         05/09   Set Default SFC WND to 30 KTS
+! L. Hinson/AWC         11/09   Remove C&V, Add IFR, MVFR, CLD_TOPS
+!------------------------------------------------------------------------
+!
+! AIRMET bulletin file name template
+! AIRMET formatter makes file names from this template
+!	{type}	  -	hazard category (SERRIA/TANGO/ZULU)
+!	{FA_Area} -	FA area (SLC/SFO/CHI/DFW/BOS/MIA)
+!	{YYYY}	  -	year
+!	{MM}	  -  	month
+!	{DD}	  -	day
+!	{HH}	  -	hour
+! 
+AIRMET_FILE	AIRMET_{type}_{FA_Area}_{CC}.txt
+!
+!  GFA Hazards 
+!  (order determines appearance in GUI)
+!
+HAZARD    IFR           SIERRA    IF
+HAZARD    MVFR          NONE      MV
+HAZARD    CLD           NONE      CL
+HAZARD    CLD_TOPS      NONE      CT
+HAZARD    MT_OBSC       SIERRA    MT
+HAZARD    ICE		ZULU	  IC
+HAZARD    TURB          TANGO     TB  
+HAZARD    TURB-HI     	TANGO     TH  
+HAZARD    TURB-LO     	TANGO     TL  
+HAZARD    SFC_WND       TANGO     SW
+HAZARD    SIGWX         NONE      SG
+HAZARD    CIG_CLD	NONE      CG
+HAZARD    TCU_CLD       NONE      TC
+HAZARD    MTW           NONE      MW
+HAZARD    FZLVL         ZULU      FZ
+HAZARD    M_FZLVL       ZULU      MZ
+HAZARD    LLWS          TANGO     WS
+HAZARD    TS            NONE      TS
+!
+!  Forecast Hours  (max 30 entries, one per line, each max 8 characters)
+!  (order determines appearance in GUI)
+!
+FCSTHR          0-6
+FCSTHR          0
+FCSTHR          3
+FCSTHR          6
+FCSTHR          9
+FCSTHR          12
+FCSTHR          0-0
+FCSTHR          3-3
+FCSTHR          6-6
+FCSTHR          9-9
+FCSTHR          12-12
+FCSTHR          0-3
+FCSTHR          3-6
+FCSTHR          6-9
+FCSTHR          6-12
+FCSTHR          9-12
+FCSTHR          Other
+!
+!  Identifying tags
+!  (Tag numbers must be numbers between 1 and 50 except New.)
+!
+TAG        New 
+!
+!  Desk options
+!
+DESK          W
+DESK          C
+DESK          E
+!
+! Issue Options:
+!
+ISSUE       NRML
+ISSUE       NEW
+ISSUE       COR
+ISSUE       AMD
+ISSUE       CAN
+!
+!    Label      Choices or user input ( "USERINPUT" )
+!               Note that any '/' within the label for  "USERINPUT"
+!		requires that the user input more than one value 
+!		separated by a '/'.
+!
+TURB Top/Bottom USERINPUT:16
+TURB DUE_TO     NULL_STRING 
+TURB DUE_TO     STG LOW LVL WNDS
+TURB DUE_TO     UPR TROF AND WIND SHEAR ASSOC WITH JTST
+TURB DUE_TO     STG LOW LVL WNDS AND CDFNT MOVG THRU AREA
+TURB DUE_TO     STG LOW LVL WNDS OVR RUFF TRRN
+TURB DUE_TO     STG LOW/MID LVL WNDS
+TURB DUE_TO     UPR TROF
+TURB DUE_TO     WIND SHEAR ASSOC WITH JTST
+TURB DUE_TO     MTN WAVE ACT
+TURB DUE_TO     WIND SHEAR ASSOC WITH JTST AND MTN WAVE ACT
+!
+TURB-HI Top/Bottom USERINPUT:16
+TURB-HI DUE_TO     NULL_STRING 
+TURB-HI DUE_TO     STG LOW LVL WNDS
+TURB-HI DUE_TO     UPR TROF AND WIND SHEAR ASSOC WITH JTST
+TURB-HI DUE_TO     STG LOW LVL WNDS AND CDFNT MOVG THRU AREA
+TURB-HI DUE_TO     STG LOW LVL WNDS OVR RUFF TRRN
+TURB-HI DUE_TO     STG LOW/MID LVL WNDS
+TURB-HI DUE_TO     UPR TROF
+TURB-HI DUE_TO     WIND SHEAR ASSOC WITH JTST
+TURB-HI DUE_TO     MTN WAVE ACT
+TURB-HI DUE_TO     WIND SHEAR ASSOC WITH JTST AND MTN WAVE ACT
+!
+TURB-LO Top/Bottom USERINPUT:16
+TURB-LO DUE_TO     NULL_STRING 
+TURB-LO DUE_TO     STG LOW LVL WNDS
+TURB-LO DUE_TO     UPR TROF AND WIND SHEAR ASSOC WITH JTST
+TURB-LO DUE_TO     STG LOW LVL WNDS AND CDFNT MOVG THRU AREA
+TURB-LO DUE_TO     STG LOW LVL WNDS OVR RUFF TRRN
+TURB-LO DUE_TO     STG LOW/MID LVL WNDS
+TURB-LO DUE_TO     UPR TROF
+TURB-LO DUE_TO     WIND SHEAR ASSOC WITH JTST
+TURB-LO DUE_TO     MTN WAVE ACT
+TURB-LO DUE_TO     WIND SHEAR ASSOC WITH JTST AND MTN WAVE ACT
+!
+!    Label      Choices or user input ( "USERINPUT" )
+!               Note that any '/' within the label for  "USERINPUT"
+!		requires that the user input more than one value 
+!		separated by a '/'.
+!
+ICE Top/Bottom USERINPUT:16
+ICE FZL_Top/Bottom USERINPUT:16
+ICE Type       RIME/MXD ICGICIP
+ICE Type       RIME ICGIC
+ICE Type       CLR ICGIP
+!
+!    Label      Choices or user input ( "USERINPUT" )
+!               Note that any '/' within the label for  "USERINPUT"
+!		requires that the user input more than one value 
+!		separated by a '/'.
+!
+MT_OBSC Top/Bottom      USERINPUT:16
+MT_OBSC MTNS_OBSC_BY    POPUP:CLDS
+MT_OBSC MTNS_OBSC_BY    POPUP:PCPN
+MT_OBSC MTNS_OBSC_BY    POPUP:BR
+MT_OBSC MTNS_OBSC_BY    POPUP:FG
+MT_OBSC MTNS_OBSC_BY    POPUP:FU
+MT_OBSC MTNS_OBSC_BY    POPUP:HZ
+
+!
+!    Label      Choices or user input ( "USERINPUT" )
+!               Note that any '/' within the label for  "USERINPUT"
+!               requires that the user input more than one value
+!               separated by a '/'.
+!
+!    Note:	C&V GUI layout is different from other hazards, so labels 
+!		and some items are hard-coded. Please do not modify labels
+!		(Coverage, CIG, VIS, TOP, WX) and 010-030/BLW_010, 3-5SM/
+!		BLW_3SM. New items can be added into the list.
+!C&V     Coverage        BKN
+!C&V     Coverage        OVC
+!C&V     Coverage        N/A
+!C&V     CIG     010-030
+!C&V     CIG     BLW_010
+!C&V     CIG     N/A
+!C&V     TOP     USERINPUT:16
+!C&V     VIS     3-5SM
+!C&V     VIS     BLW_3SM
+!C&V     VIS     N/A
+!C&V     WX      POPUP:PCPN
+!C&V     WX      POPUP:BR
+!C&V     WX      POPUP:FG
+!C&V     WX      POPUP:HZ
+!C&V     WX      POPUP:FU
+!C&V     WX      POPUP:BLSN
+!C&V     WX      POPUP:BLSA
+!C&V     WX      POPUP:BLDU
+IFR CIG_BLW_010  CHECKBOX
+IFR VIS_BLW_3SM  POPUP:PCPN
+IFR VIS_BLW_3SM  POPUP:BR
+IFR VIS_BLW_3SM  POPUP:FG
+IFR VIS_BLW_3SM  POPUP:HZ
+IFR VIS_BLW_3SM  POPUP:FU
+IFR VIS_BLW_3SM  POPUP:BLSN
+MVFR CIG_010-030 CHECKBOX
+MVFR VIS_BLW_3SM  POPUP:BR
+MVFR VIS_BLW_3SM  POPUP:FG
+MVFR VIS_BLW_3SM  POPUP:HZ
+MVFR VIS_BLW_3SM  POPUP:FU
+MVFR VIS_BLW_3SM  POPUP:BLSN
+CLD  Bottom      USERINPUT:16
+CLD  Coverage    SCT
+CLD  Coverage    BKN
+CLD  Coverage    OVC
+CLD_TOPS Top     USERINPUT:16
+CLD_TOPS LYR     CHECKBOX
+!
+!    Label      Choices or user input ( "USERINPUT" )
+!               Note that any '/' within the label for  "USERINPUT"
+!		requires that the user input more than one value 
+!		separated by a '/'.
+!
+M_FZLVL Top/Bottom USERINPUT:16
+!
+!   Label and options for FZLVL
+!
+FZLVL	Contour	   Open
+FZLVL	Contour	   Closed
+FZLVL	Level	   SFC
+FZLVL	Level	   040
+FZLVL	Level	   080
+FZLVL	Level	   120
+FZLVL	Level	   160
+FZLVL	FZL_RANGE  USERINPUT:128
+!
+!    Label      Choices or user input ( "USERINPUT" )
+!               Note that any '/' within the label for  "USERINPUT"
+!		requires that the user input more than one value 
+!		separated by a '/'.
+MTW Top/Bottom	USERINPUT:16
+MTW Intensity	MOD 
+!
+!    Label      Choices or user input ( "USERINPUT" )
+!               Note that any '/' within the label for  "USERINPUT"
+!		requires that the user input more than one value 
+!		separated by a '/'.
+TS 	Top/Bottom	USERINPUT:16
+TS	Category	NULL_STRING 
+TS	Category	EMBD
+TS	Category	OBSC
+TS	Frequency	ISOL 
+TS	Frequency	OCNL
+TS 	GR		CHECKBOX
+!
+!   Labels and options for SFC_WND
+!
+SFC_WND Speed   30KT
+SFC_WND Speed   20KT

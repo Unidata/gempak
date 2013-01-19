@@ -1,0 +1,15 @@
+IMTYPE RAD
+IMINFO qpe2d
+default cref,0
+parameter cref,hgt_cref,etp18,shi,posh,mehs,hsr,hsrh,lcref,hgt_lcref,vil,vilD,pcp_flag
+!
+IMTYPE RAD
+IMINFO qpe3d
+default mrefl_mosaic,0
+parameter mrefl_mosaic
+!
+IMTYPE RAD
+IMINFO craft
+default dz,.5
+parameter dz,vr,sw
+!

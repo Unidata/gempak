@@ -1,0 +1,37 @@
+!
+! Restore File : bestcape_cin
+!
+! Log:
+! J. Carr/HPC   	 9/99	Initial creation
+!
+GDATTIM fall
+GLEVEL  0
+GVCORD  none 
+PANEL   0                                                                       
+SKIP    0
+SCALE   0
+GDPFUN  sm5s(cape)              !sm5s(cins) !sm5s(cins)  !sm5s(cins)
+TYPE    f                       !c
+CONTUR  1                                                                       
+CINT    0                       !-120;-60   !60/-300/-180!60/-600/-360
+LINE    22/1/1                  !6/10/2/1   !6/1/2/2     !25/1/2/2
+FINT    500;1000;2000;3000;4000;5000!0
+FLINE   0  ;23  ;22  ;30  ;15  ;2;5 !0
+HILO    0
+HLSYM   0
+CLRBAR  1/V/LL                  !0
+WIND    0
+REFVEC                                                                          
+TITLE   1/-1/~ BEST CAPE (jkg-1) & CIN (cyan)!0
+TEXT    1/22/2/hw
+CLEAR   yes                                                                     
+STNPLT                                                                          
+SATFIL                                                                          
+RADFIL                                                                          
+STREAM                                                                          
+POSN    4                                                                       
+COLORS  2                                                                       
+MARKER  2                                                                       
+GRDLBL  5                                                                       
+LUTFIL  none
+FILTER  yes

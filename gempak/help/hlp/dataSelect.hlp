@@ -1,0 +1,27 @@
+
+                                 DATA SELECT
+
+
+This pop-up selects text products for display.  Pressing the right mouse 
+button when the cursor is in the map area will toggle the pop-up on and off.  
+It may also be invoked by clicking "Data" on the NWX display panel.  To 
+display a product:
+
+1.   Click on a product category from the "Select Data Type Group" section 
+     and a list of available products given that product category will 
+     appear in the "Select Data Type Product" section.
+
+2.   Click on a product in the "Select Data Type Product" section.  Station 
+     markers (appear as red boxes) are plotted on the map if multiple 
+     stations issue the product.  Products that are not available are 
+     indicated with an asterisk.
+
+3.   If station markers are plotted on the map, click on the marker closest 
+     to the desired station to display its product in the "text report" window.
+
+To view earlier versions of the selected product, click on "Previous" in the 
+"text report" window.  To then step ahead and return to the current product, 
+click "Next."
+
+Click on the "Hours Covered" radio buttons to limit the search to products 
+from the current time back to the selected number of hours.

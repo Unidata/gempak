@@ -1,0 +1,10 @@
+     STATION
+
+     STATION is the station to use in SFGRAM.  Either a station character 
+     identifier or station number may be entered.
+
+     If a single station is entered, all traces will use data from that 
+     station.  If a list of stations is entered, trace 1 will be for 
+     station 1, trace 2 for station 2, ...  Stations in the list must 
+     be separated using semicolons.
+

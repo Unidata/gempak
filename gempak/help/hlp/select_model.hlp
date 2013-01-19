@@ -1,0 +1,18 @@
+
+                                SELECT MODEL
+
+
+The "Select Model" pop-up is used to select the desired model metafile for 
+display.
+
+This pop-up is found under the "File" pull-down menu and may be invoked by 
+choosing "Model list," by pressing the right mouse button, or by typing CTRL-M.
+
+Models available in the database appear as buttons in the panel.  Click on 
+the desired model.  A list of the metafiles for that model appear in the 
+scroll list.  To select the desired metafile, click in the scroll list, then 
+click the "Select" button.  A list of products for the selected metafile will 
+appear in the "Select Group" panel.
+
+Click on the "Update" button to get the latest available metafiles in the 
+database.

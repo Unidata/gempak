@@ -1,0 +1,15 @@
+     CONTUR
+
+     CONTUR sets attributes for the contour algorithms:
+
+		subbox factor / number of smoothing passes 
+
+     Each grid box will be subdivided into the number of subboxes
+     specified by the subbox factor.  Increasing this value will
+     produce smoother contours, but will increase contouring times 
+     and make metafiles larger.  The new default value in GEMPAK 5.2 
+     is 0.
+
+     A simple three-point smoothing filter is used if the number 
+     of smoothing passes is greater than 0.  The default is 0.
+

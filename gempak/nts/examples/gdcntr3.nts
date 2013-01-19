@@ -1,0 +1,27 @@
+GDATTIM f24                                                                     
+GLEVEL  700                                                                     
+GVCORD  PRES                                                                    
+GFUNC   div(wnd)                                                                
+GDFILE  $GEMPAK/data/HRCBOB.GRD                                                     
+CINT    .5                                                                      
+LINE    2/1/7/1                                                                 
+MAP     1                                                                       
+TITLE   1                                                                       
+DEVICE  XW                                                                      
+SATFIL                                                                          
+RADFIL                                                                          
+PROJ    mer                                                                     
+GAREA   mo                                                                      
+CLEAR   yes                                                                     
+PANEL   0                                                                       
+TEXT    1                                                                       
+SCALE   5                                                                       
+LATLON  0                                                                       
+HILO                                                                            
+HLSYM                                                                           
+CLRBAR  1                                                                       
+CONTUR  3                                                                       
+SKIP    0                                                                       
+FINT    .5                                                                      
+FLINE   23;19                                                                   
+CTYPE   f/c                                                                     

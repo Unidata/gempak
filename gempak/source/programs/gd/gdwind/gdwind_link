@@ -1,0 +1,4 @@
+$FC $FFLAGS $LDFLAGS -o $OS_BIN/gdwind gdwind.f \
+	$OS_LIB/gdwind.a $GEMLIB $APPL $SYSLIB \
+	$CGEMLIB -lm -lnetcdf -lz
+$RM *.o

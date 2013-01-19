@@ -1,0 +1,107 @@
+! FZL.BULL
+!
+! Location information for the following product:
+! Freezing_Level_Forecast.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+UXAK47 PANT     ANNETTE_ISLAND                   AK US  5502 -13157     0
+UXAK47 PAYA     YAKUTAT                          AK US  5952 -13966     0
+UXAK48 PABE     BETHEL_AIRPORT                   AK US  6077 -16180     0
+UXAK48 PACD     COLD_BAY_AIRPORT                 AK US  5520 -16272     0
+UXAK48 PADQ     KODIAK                           AK US  5775 -15250     0
+UXAK48 PAFC     ALASKA/PACIFIC_RFC               AK US  6115 -14997     0
+UXAK48 PAFC     ANCHORAGE                        AK US  6115 -14997     0
+UXAK48 PAKN     KING_SALMON                      AK US  5868 -15664     0
+UXAK48 PAMC     MCGRATH                          AK US  6297 -15561     0
+UXAK48 PASN     SAINT_PAUL_ISLAND                AK US  5715 -17022     0
+UXAK49 PABR     BARROW/POST-ROGERS               AK US  7130 -15677     0
+UXAK49 PAOM     NOME                             AK US  6450 -16542     0
+UXAK49 PAOT     KOTZEBUE/RALPH_WIEN              AK US  6687 -16263     0
+UXGM40 PGUM     GUAM                             GU US  1347  14478     0
+UXHW40 PHLI     LIHUE/KAUAI_ISLAND               HI US  2197 -15935     0
+UXHW40 PHTO     HILO/LYMAN_FIELD                 HI US  1971 -15507     0
+UXKA40 PTKK     TRUK/MOEN_FLT_S                  -- KA   746  15185     0
+UXKA40 PTKR     WSO_KOROR                        -- KA   726  13444     0
+UXKA40 PTTP     WSO_POHNPEI                      -- KA   694  15825     0
+UXKA40 PTYA     YAP_ISLAND                       -- KA   947  13808     0
+UXMH40 PKMR     WSO_MAJURO                       -- MH   705  17127     0
+UXUS41 KAKQ     WAKEFIELD                        VA US  3697  -7700     0
+UXUS41 KALY     ALBANY                           NY US  4268  -7383     0
+UXUS41 KBOX     TAUNTON                          MA US  4195  -7112     0
+UXUS41 KBUF     BUFFALO                          NY US  4293  -7870     0
+UXUS41 KCAR     CARIBOU                          ME US  4577  -6862     0
+UXUS41 KGYX     GRAY                             ME US  4388  -7025     0
+UXUS41 KILN     WILMINGTON                       OH US  3941  -8381     0
+UXUS41 KLWX     BALTIMORE_MD/_WASHINGTON_DC      VA US  3897  -7747     0
+UXUS41 KOKX     NEW_YORK                         NY US  4086  -7286     0
+UXUS41 KPBZ     PITTSBURGH                       PA US  4052  -8020     0
+UXUS41 KRNK     BLACKSBURG                       VA US  3720  -8041     0
+UXUS42 KCHS     CHARLESTON                       SC US  3288  -8001     0
+UXUS42 KKEY     KEY_WEST                         FL US  2457  -8178     0
+UXUS42 KFFC     PEACHTREE_CITY                   GA US  3336  -8455     0
+UXUS42 KJAX     JACKSONVILLE                     FL US  3047  -8169     0
+UXUS42 KMFL     MIAMI                            FL US  2575  -8037     0
+UXUS42 KMHX     NEWPORT/MOREHEAD_CITY            NC US  3477  -7687     0
+UXUS42 KRAH     RALEIGH                          NC US  3577  -7868     0
+UXUS42 KTAE     TALLAHASSEE                      FL US  3045  -8430     0
+UXUS42 KTBW     TAMPA_BAY_AREA/RUSKIN            FL US  2770  -8240     0
+UXUS42 TJSJ     SAN_JUAN                         PR US  1843  -6600     0
+UXUS43 KABR     ABERDEEN                         SD US  4545  -9841     0
+UXUS43 KAPX     GAYLORD                          MI US  4490  -8470     0
+UXUS43 KBIS     BISMARCK                         ND US  4677 -10075     0
+UXUS43 KDDC     DODGE_CITY                       KS US  3775  -9995     0
+UXUS43 KDLH     DULUTH                           MN US  4683  -9220     0
+UXUS43 KDTX     DETROIT                          MI US  4268  -8347     0
+UXUS43 KDVN     QUAD_CITIES_IA                   IL US  4161  -9058     0
+UXUS43 KGRB     GREEN_BAY                        WI US  4449  -8811     0
+UXUS43 KILX     LINCOLN                          IL US  4015  -8933     0
+UXUS43 KLBF     NORTH_PLATTE                     NE US  4113 -10069     0
+UXUS43 KMPX     TWIN_CITIES/CHANHASSEN           MN US  4484  -9355     0
+UXUS43 KOAX     OMAHA/VALLEY                     NE US  4131  -9636     0
+UXUS43 KSGF     SPRINGFIELD                      MO US  3722  -9340     0
+UXUS43 KTOP     TOPEKA                           KS US  3906  -9562     0
+UXUS43 KUNR     RAPID_CITY                       SD US  4406 -10320     0
+UXUS44 KAMA     AMARILLO                         TX US  3522 -10169     0
+UXUS44 KBMX     BIRMINGHAM                       AL US  3316  -8677     0
+UXUS44 KBRO     BROWNSVILLE                      TX US  2590  -9741     0
+UXUS44 KCRP     CORPUS_CHRISTI                   TX US  2777  -9750     0
+UXUS44 KEPZ     EL_PASO_TX/SANTA_TERESA          NM US  3187 -10669     0
+UXUS44 KEWX     AUSTIN/SAN_ANTONIO               TX US  2970  -9801     0
+UXUS44 KFWD     DALLAS/FORT_WORTH                TX US  3283  -9729     0
+UXUS44 KJAN     JACKSON                          MS US  3231  -9008     0
+UXUS44 KLCH     LAKE_CHARLES                     LA US  3012  -9320     0
+UXUS44 KLIX     NEW_ORLEANS                      LA US  3032  -8981     0
+UXUS44 KLZK     LITTLE_ROCK                      AR US  3483  -9225     0
+UXUS44 KMAF     MIDLAND/ODESSA                   TX US  3194 -10218     0
+UXUS44 KOHX     NASHVILLE                        TN US  3624  -8655     0
+UXUS44 KOUN     NORMAN                           OK US  3522  -9745     0
+UXUS44 KSHV     SHREVEPORT                       LA US  3245  -9383     0
+UXUS45 KABQ     ALBUQUERQUE                      NM US  3502 -10662     0
+UXUS45 KBOI     BOISE                            ID US  4356 -11620     0
+UXUS45 KBOU     DENVER                           CO US  4000 -10526     0
+UXUS45 KFGZ     FLAGSTAFF                        AZ US  3522 -11181     0
+UXUS45 KGGW     GLASGOW                          MT US  4820 -10662     0
+UXUS45 KGJT     GRAND_JUNCTION                   CO US  3911 -10851     0
+UXUS45 KLKN     ELKO                             NV US  4086 -11573     0
+UXUS45 KPSR     PHOENIX                          AZ US  3343 -11201     0
+UXUS45 KREV     RENO                             NV US  3956 -11979     0
+UXUS45 KRIW     RIVERTON                         WY US  4306 -10847     0
+UXUS45 KSLC     SALT_LAKE_CITY                   UT US  4077 -11194     0
+UXUS45 KTFX     GREAT_FALLS                      MT US  4745 -11137     0
+UXUS45 KTWC     TUCSON                           AZ US  3222 -11094     0
+UXUS45 KVEF     LAS_VEGAS                        NV US  3604 -11518     0
+UXUS46 KMFR     MEDFORD                          OR US  4236 -12287     0
+UXUS46 KMTR     SAN_FRANCISCO                    CA US  3659 -12184     0
+UXUS46 KOTX     SPOKANE                          WA US  4768 -11762     0
+UXUS46 KSEW     SEATTLE                          WA US  4768 -12225     0
+UXUS46 KSGX     SAN_DIEGO                        CA US  3290 -11705     0
+UXUS46 KSTO     SACRAMENTO                       CA US  3859 -12137     0
+UXZS40 NSTU     PAGO_PAGO                        -- ZM -1432 -17072     0
+UXUS70 KWBC     WASHINGTON                       VA US  3945  -7700    98
+UXUS71 KWBC     WASHINGTON                       VA US  3895  -7700    98
+UXUS72 KWBC     WASHINGTON                       VA US  3840  -7700    98
+

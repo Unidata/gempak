@@ -1,0 +1,14 @@
+!	Bridge DCFFA error file
+!
+-1	! Error finding VTEC string in bulletin with: !AS
+-2	! Error finding end of county string
+-3	! Error finding county string in bulletin with: !AS
+-4	! Error finding watch type 
+-5	! Error finding watch number
+-6	! Error finding local time string in bulletin with: !AS
+-7	! Error finding current time
+-8	! Error calculating end time
+-9	! Error with county string
+-10	! Error with VTEC string : !AS
+-11	! No 'NATIONAL WEATHER SERVICE' header found
+-12	! Error in local time

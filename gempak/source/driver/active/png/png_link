@@ -1,0 +1,7 @@
+echo LINKING PNG
+cp $GEMPAK/source/device/main/device.f .
+$FC $FFLAGS $LDFLAGS -o $OS_BIN/png device.f \
+	$DEVICE $OS_LIB/png.a $OS_LIB/gn.a \
+	$SYSLIB $GEMLIB $CGEMLIB \
+	$OS_LIB/libnetcdf.a $OS_LIB/libpng.a $OS_LIB/libz.a -lX11 -lm
+$RM *.o device.f

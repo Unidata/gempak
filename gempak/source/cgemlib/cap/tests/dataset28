@@ -1,0 +1,178 @@
+{
+        {area 0.0000 640.0000 26.1975 453.5521}
+}
+{
+        {type polygon}
+        {id 42400}
+        {vertex 418.6107 215.4783}
+        {vertex 412.8752 314.9150}
+        {vertex 307.8571 316.7293}
+        {vertex 314.9663 215.6337}
+        {vertex 418.6107 215.4783}
+}
+{
+        {type polygon}
+        {id 42401}
+        {placecenter 1}
+        {pointcenter 1}
+        {dist 0.500000}
+        {offset 1.250000}
+        {sides 1}
+        {tries 5}
+        {ref 42400}
+        {vertex 358.4569 151.5291}
+        {vertex 287.1769 151.5291}
+        {vertex 287.1769 116.9691}
+        {vertex 358.4569 116.9691}
+        {vertex 358.4569 151.5291}
+}
+{
+        {type polygon}
+        {id 152800}
+        {vertex 342.2101 241.1532}
+        {vertex 335.4361 284.7201}
+        {vertex 265.1703 289.7196}
+        {vertex 272.0134 248.0446}
+        {vertex 342.2101 241.1532}
+}
+{
+        {type polygon}
+        {id 152801}
+        {placecenter 1}
+        {pointcenter 1}
+        {dist 0.500000}
+        {offset 1.250000}
+        {sides 1}
+        {tries 5}
+        {ref 152800}
+        {vertex 339.4825 282.9111}
+        {vertex 268.2026 282.9111}
+        {vertex 268.2026 248.3511}
+        {vertex 339.4825 248.3511}
+        {vertex 339.4825 282.9111}
+}
+{
+        {type polygon}
+        {id 263200}
+        {vertex 324.4629 214.9809}
+        {vertex 310.9668 315.9934}
+        {vertex 224.0686 324.7266}
+        {vertex 227.8504 224.2795}
+        {vertex 324.4629 214.9809}
+}
+{
+        {type polygon}
+        {id 263201}
+        {placecenter 1}
+        {pointcenter 1}
+        {dist 0.500000}
+        {offset 1.250000}
+        {sides 1}
+        {tries 5}
+        {ref 263200}
+        {vertex 329.7592 403.8338}
+        {vertex 258.4792 403.8338}
+        {vertex 258.4792 369.2738}
+        {vertex 329.7592 369.2738}
+        {vertex 329.7592 403.8338}
+}
+{
+        {type polygon}
+        {id 373600}
+        {vertex 401.8788 155.2377}
+        {vertex 394.8677 227.3197}
+        {vertex 250.8147 239.7071}
+        {vertex 247.0654 157.5325}
+        {vertex 401.8788 155.2377}
+}
+{
+        {type polygon}
+        {id 373601}
+        {placecenter 1}
+        {pointcenter 1}
+        {dist 0.500000}
+        {offset 1.250000}
+        {sides 1}
+        {tries 5}
+        {ref 373600}
+        {vertex 333.9035 213.1525}
+        {vertex 262.6234 213.1525}
+        {vertex 262.6234 178.5925}
+        {vertex 333.9035 178.5925}
+        {vertex 333.9035 213.1525}
+}
+{
+        {type polygon}
+        {id 484000}
+        {vertex 386.1608 368.3072}
+        {vertex 270.5045 369.0469}
+        {vertex 245.2557 304.0042}
+        {vertex 378.9459 301.3045}
+        {vertex 386.1608 368.3072}
+}
+{
+        {type polygon}
+        {id 484001}
+        {placecenter 1}
+        {pointcenter 1}
+        {dist 0.500000}
+        {offset 1.250000}
+        {sides 1}
+        {tries 5}
+        {ref 484000}
+        {vertex 365.2517 359.1970}
+        {vertex 293.9717 359.1970}
+        {vertex 293.9717 324.6370}
+        {vertex 365.2517 324.6370}
+        {vertex 365.2517 359.1970}
+}
+{
+        {type polygon}
+        {id 594400}
+        {vertex 256.8581 377.5182}
+        {vertex 127.6053 375.8076}
+        {vertex 122.7841 173.8916}
+        {vertex 255.2547 156.1472}
+        {vertex 256.8581 377.5182}
+}
+{
+        {type polygon}
+        {id 594401}
+        {placecenter 1}
+        {pointcenter 1}
+        {dist 0.500000}
+        {offset 1.250000}
+        {sides 1}
+        {tries 5}
+        {ref 594400}
+        {vertex 220.3175 354.2313}
+        {vertex 149.0375 354.2313}
+        {vertex 149.0375 319.6713}
+        {vertex 220.3175 319.6713}
+        {vertex 220.3175 354.2313}
+}
+{
+        {type polygon}
+        {id 704800}
+        {vertex 533.8005 190.4146}
+        {vertex 498.8555 397.5123}
+        {vertex 379.0474 383.0992}
+        {vertex 398.0236 148.2935}
+        {vertex 533.8005 190.4146}
+}
+{
+        {type polygon}
+        {id 704801}
+        {placecenter 1}
+        {pointcenter 1}
+        {dist 0.500000}
+        {offset 1.250000}
+        {sides 1}
+        {tries 5}
+        {ref 704800}
+        {vertex 526.1910 225.9561}
+        {vertex 454.9110 225.9561}
+        {vertex 454.9110 191.3961}
+        {vertex 526.1910 191.3961}
+        {vertex 526.1910 225.9561}
+}

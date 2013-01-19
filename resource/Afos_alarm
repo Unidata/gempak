@@ -1,0 +1,14 @@
+!
+! Setup button resources
+!
+!afos_alarm.button.background:		red
+afos_alarm*button.background:		red
+afos_alarm*button.foreground:		black
+afos_alarm*button.labelString:		ALARM
+afos_alarm*button.width:		50
+afos_alarm*button.height:		70
+!
+! Setup text_program and alarm_file_name
+!
+afos_alarm*text_program:        /hpexport/disk01/chang/nadata/alarm/alarm_text
+afos_alarm*alarm_path_name: 	/hpexport/disk16/nadata/afos_alarms

@@ -1,0 +1,31 @@
+{
+    {area 0 1 0 1}
+    {dist 0.15}
+}
+{
+    {type polygon}
+    {id 3}
+    {vertex .50 .50}
+    {vertex .75 .50}
+    {vertex .75 .75}
+    {vertex .50 .75}
+}
+{
+    {type polygon}
+    {id 1}
+    {vertex .125 .625}
+    {vertex .625 .125}
+    {vertex .75 .25}
+    {vertex .25 .75}
+}
+{
+    {type polygon}
+    {id 2}
+    {ref 1}
+    {offset 1}
+    {placecenter 1}
+    {vertex .22 .55}
+    {vertex .32 .55}
+    {vertex .32 .65}
+    {vertex .22 .65}
+}

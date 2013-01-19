@@ -1,0 +1,76 @@
+GAIRM
+
+GAIRM makes provision to plot the G-AIRMET snapshots in 3-hour time bins.  While
+snapshots are typically valid at a given forecast time, this option makes
+provision to plot them continuously valid over a 3 hour time period from the
+forecast time.  Included will also be any amendments or corrections.
+Amendments and corrections are valid from the time they are issued until the
+next 3-hourly valid forecast time.
+
+The GAIRM parameter list follows similar conventions used for the AIRM function.
+It includes the frame time for the airmet, the colors for the instrument
+flight rules, mountain obscuration, turbulence, icing, sustained winds and
+low-level wind shear, and flags for plotting symbols or airmet type, the end
+time, and the flight levels on the map.  It also includes additional parameters
+to render the plotting of G-AIRMETs at offset hours of -2, -1, 0, +1, and +2
+hours.
+
+Frame time|IR;MO;TB;IC;SW;WS clrs|TB color2|Flight Lvl|low;upper filter
+lvl|Symbol flg|Time flg|Flight lvl flg| M2HROffset flg|M1HROffset flg|
+0HROffset flg|1HROffset flg|2HROffset flg
+
+Airmets that are valid at the frame time will be plotted on the map.  The frame
+time is given as a GEMPAK date/time string.
+
+The colors are separated by a semi-colon.  If any color is set to 0, that type
+of symbol will not be plotted.  If any color is missing, a default will be used.
+Defaults are red for instrument flight rules, yellow for mountain obscuration, 
+light blue and magenta for turbulence, green for icing, dark pink for sustained
+winds and cyan for low-level wind shear.
+
+TB color2 is the second color for turbulence. The color from the first list will
+be used to plot Turbulence AIRMETs below the specified level. The color listed
+as the second color will be for Turbulence AIRMETs above the specified level.
+
+Flight lvl is the dividing level for the turbulence display. The value is in
+hundreds of feet.
+
+The lower and upper filter levels are flight level values used to filter the
+GAIRM data display. If neither value is given, then all data is plotted. If only
+the lower level is present, then only data above that level is displayed. For
+the upper level only, data below this upper value are displayed. If both values
+are given, then the data is plotted for levels between the two boundary values.
+
+The symbol flag is YES or NO and controls whether or not to plot a symbol or
+identifying text for the airmet on the map.  The default is NO.
+
+The time flag is YES or NO and controls whether or not to plot the start time of
+the airmet on the map.  The default is NO.
+
+The flight level flag is YES or NO and controls whether or not to plot the
+flight level(s) in hundreds of feet on the map.  The default is NO.
+
+The flags named M2HROffset (for minus 2 hour offset), M1HROffset, 0HROffset,
+1HROffset (for plus 1 hour offset), and 2HROffset  are used to indicate how the
+G-AIRMET snapshots are plotted with respect to the underlying frame time
+associated with an image.  If omitted, the default is to use a 0 Hour Offset
+where snapshot times are time matched to the satellite imagery, but plotted over
+3 hour time bins.  A combination set of snapshot images over transition times
+can be rendered if multiple flags are selected.
+
+An example string to render the G-AIRMETs, for IFR & MT_OBSC hazards in colors
+of red and yellow, with a 0 hour offset:
+
+    GAIRM = ${yymmdd}/${hhmm}|2;20;0;0;0;0|||Y|Y|Y|N|N|Y|N|N
+
+An example string to render the G-AIRMETs for all hazards with a 0 hour offset.
+Turbulence AOA 180 kft is rendered in color 10:
+
+    GAIRM = ${yymmdd}/${hhmm}|1;2;3;4;5;6|10|180|Y|Y|Y|N|N|Y|N|N
+
+An example string to render the G-AIRMETs for all hazards with a -1, and -2 hour
+offset.  Turbulence AOA 180 kft is rendered in color 10:
+
+
+GAIRM = ${yymmdd}/${hhmm}|1;2;3;4;5;6|10|180|Y|Y|Y|Y|Y|N|N|N
+

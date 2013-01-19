@@ -1,0 +1,381 @@
+Nmap.geometry:               +106+0
+Nmap*background:            grey75
+Nmap*foreground:            black
+Nmap*fontList: -adobe-helvetica-*-r-normal-*-14-*-75-75-p-*-iso8859-1
+Nmap*XmToggleButton.selectColor:            blue
+Nmap*XmToggleButtonGadget.selectColor:      blue
+!
+!	drawing widget	
+!
+Nmap*mainw_canvas.width:		1475
+Nmap*mainw_canvas.height:		955
+Nmap*mainw_canvas.background:	        black
+!
+!
+!	bottom frame 
+!
+Nmap*mbotw_pageLabel.fontList: -adobe-times-bold-r-normal-*-12-*-75-75-p-*-iso8859-1
+Nmap*mbotw_timeLabel.fontList: -adobe-times-bold-r-normal-*-12-*-75-75-p-*-iso8859-1
+Nmap*mbotw_latlonLabel.fontList: -adobe-times-bold-r-normal-*-12-*-75-75-p-*-iso8859-1
+Nmap*mbotw_hintLabel.fontList: -adobe-times-bold-r-normal-*-12-*-75-75-p-*-iso8859-1
+Nmap*mbotw_pgfileLabel.fontList: -adobe-times-bold-r-normal-*-12-*-75-75-p-*-iso8859-1
+!
+!	data selection popup
+!
+Nmap*dataw_popup.defaultPosition: False
+Nmap*dataw_popup.x:	330
+Nmap*dataw_popup.y:	130
+!
+Nmap*dataw_canvas.background:	white
+!
+Nmap*uairw_popup.defaultPosition:	False
+Nmap*uairw_popup.x:	0
+Nmap*uairw_popup.y:	130
+!
+Nmap*mapw_canvas.background:	black
+!
+Nmap*mpcstw_popup.defaultPosition:	False
+Nmap*mpcstw_popup.x:	20
+Nmap*mpcstw_popup.y:	180
+!
+Nmap*cldhgtw_popup.defaultPosition:	False
+Nmap*cldhgtw_popup.x:	20
+Nmap*cldhgtw_popup.y:	100
+!
+Nmap*cldhgtw_opt_popup.defaultPosition:	False
+Nmap*cldhgtw_opt_popup.x:	20
+Nmap*cldhgtw_opt_popup.y:	525
+!
+Nmap*msc_popup.defaultPosition:	False
+Nmap*msc_popup.x:	200
+Nmap*msc_popup.y:	250
+Nmap*msc_line.defaultPosition:	False
+Nmap*msc_line.x:	500
+Nmap*msc_line.y:	300
+Nmap*msc_symb.defaultPosition:	False
+Nmap*msc_symb.x:	500
+Nmap*msc_symb.y:	300
+Nmap*msc_arrw.defaultPosition:	False
+Nmap*msc_arrw.x:	500
+Nmap*msc_arrw.y:	300
+!
+Nmap*dataw_fmctlRefTOpt.x:	100
+Nmap*dataw_fmctlReftW.x:	360
+Nmap*Total_#_of_Frames.x:	105
+Nmap*Total_#_of_Frames.y:	60
+Nmap*dataw_totalFm.x:		260
+Nmap*dataw_totalScaleLb1.x:	340
+Nmap*dataw_totalScale.x:	360
+Nmap*dataw_totalScaleLbn.x:	585
+Nmap*Time_Span.x:	105
+Nmap*Time_Span.y:	100
+Nmap*dataw_tspanOpt.x:	215
+Nmap*dataw_tspanOpt.y:	95
+Nmap*dataw_tspanTxt.x:	360
+Nmap*dataw_tspanTxt.y:	100
+Nmap*hour.x:	430
+Nmap*hour.y:	100
+!
+Nmap*tmln_canvas.background:	white
+!
+Nmap*mbtnw_fadeScale.width:	100
+Nmap*mbotw_fadeScale.fontList: -adobe-times-bold-r-normal-*-12-*-75-75-p-*-iso8859-1
+!
+!       enhancement
+!
+Nmap*enhance_list_toplevel.dialogTitle: Enh_list
+Nmap*enhance_list_toplevel.noResize:                True
+Nmap*enhance_list_toplevel.defaultPosition: False
+Nmap*enhance_list_toplevel.x:   0
+Nmap*enhance_list_toplevel.y:   0
+Nmap*enhanceList.visibleItemCount:      15
+Nmap*enhanceList.fontList:      -adobe-times-bold-r-normal-*-14-140-75-75-p-*-iso8859-1
+Nmap*enhanceClose.x:                    25
+Nmap*enhanceClose.y:                    300
+Nmap*_attrwDrawA.background:	black
+!
+Nmap*stnmw_popup.defaultPosition:	False
+Nmap*stnmw_popup.x:		0
+Nmap*stnmw_popup.y:		130
+!
+Nmap*sfmw_popup.defaultPosition:	False
+Nmap*sfmw_popup.x:			0
+Nmap*sfmw_popup.y:			130
+!
+Nmap*stnmw_popup*DrawingArea.background:		black
+!
+!	roam control popup
+!
+Nmap*roamw_popup.defaultPosition: False
+Nmap*roamw_popup.x:	0
+Nmap*roamw_popup.y:	710
+!
+Nmap*pgpalette.defaultPosition:	False
+Nmap*pgpalette.x:		0
+Nmap*pgpalette.y:		0
+
+Nmap*wind_edit.defaultPosition:		False
+Nmap*wind_edit.x:			0
+Nmap*wind_edit.y:			500
+
+Nmap*group_selection.defaultPosition:	False
+Nmap*group_selection.x:			125
+Nmap*group_selection.y:			115
+
+Nmap*lines_edit.defaultPosition:	False
+Nmap*lines_edit.x:			0
+Nmap*lines_edit.y:			420
+
+Nmap*fronts_edit.defaultPosition:	False
+Nmap*fronts_edit.x:			0
+Nmap*fronts_edit.y:			500
+
+Nmap*text_edit.defaultPosition:		False
+Nmap*text_edit.x:			0
+Nmap*text_edit.y:			250
+
+Nmap*symbol_edit.defaultPosition:	False
+Nmap*symbol_edit.x:			0
+Nmap*symbol_edit.y:			500
+
+Nmap*Volcano_list.defaultPosition:	False
+Nmap*Volcano_list.x:			280
+Nmap*Volcano_list.y:			120
+
+Nmap*wind_edit.defaultPosition:	False
+Nmap*wind_edit.x:			0
+Nmap*wind_edit.y:			500
+
+Nmap*circles_edit.defaultPosition:	False
+Nmap*circles_edit.x:			0
+Nmap*circles_edit.y:			500
+
+Nmap*pgwbxw_popup.defaultPosition:	False
+Nmap*pgwbxw_popup.x:			0
+Nmap*pgwbxw_popup.y:			600
+
+Nmap*pgwlst_popup.defaultPosition:	False
+Nmap*pgwlst_popup.x:			112
+Nmap*pgwlst_popup.y:			0
+Nmap*pgwlst_list.visibleItemCount:	15
+Nmap*pgwlst_list*fontList: -adobe-courier-bold-r-normal-*-12-*-75-75-m-*-iso8859-1
+Nmap*pgwlst_label*fontList: -adobe-courier-bold-r-normal-*-12-*-75-75-m-*-iso8859-1
+
+Nmap*pgwfmt_WCCpopup.defaultPosition:	False
+Nmap*pgwfmt_WCCpopup.x:			112
+Nmap*pgwfmt_WCCpopup.y:			0	
+
+Nmap*wsmw_format.defaultPosition:	False
+Nmap*wsmw_format.x:			0
+Nmap*wsmw_format.y:			0
+
+Nmap*function.width:	250
+Nmap*function.height: 	200
+Nmap*mainw_form.?.translations:    #override\n\
+        <Key>minus:	loopw_back() \n\
+        <Key>underscore:loopw_back() \n\
+        <Key>plus:	loopw_frwd() \n\
+        <Key>equal:	loopw_frwd() \n\
+        <Key>L:		loopw_lpfd() \n\
+        <Key>l:		loopw_lpfd() \n\
+        <Key>H:		loopw_hide() \n\
+        <Key>h:		loopw_hide() \n\
+        <Key>U:		pgpalw_undo() \n\
+        <Key>u:		pgpalw_undo() \n\
+        <Key>R:		pgpalw_redo() \n\
+        <Key>r:		pgpalw_redo() \n\
+        <Key>osfDelete: pgdel_keyboardDelete() \n\
+        <Key>w:		toggle_dataPopup() \n\
+        <Key>F:		mbotw_fadeReset() \n\
+        <Key>f:		mbotw_fadeReset() \n\
+        <Key>I:		mbotw_fadeToggle() \n\
+        <Key>i:		mbotw_fadeToggle() \n\
+	Shift<Key>F1:	mbtnw_setLoopNine() \n\
+	Shift<Key>osfHelp: mbtnw_setLoopNine() \n\
+	Shift<Key>F2:	mbtnw_setLoopTen() \n\
+	Shift<Key>F3:	mbtnw_setLoopEleven() \n\
+	Shift<Key>F4:	mbtnw_setLoopTwelve() \n\
+	Shift<Key>F5:	mbtnw_setLoopThirteen() \n\
+	Shift<Key>F6:	mbtnw_setLoopFourteen() \n\
+	Shift<Key>F7:	mbtnw_setLoopFifteen() \n\
+	Shift<Key>F8:	mbtnw_setLoopSixteen() \n\
+	<Key>F1:	mbtnw_setLoopOne() \n\
+	<Key>osfHelp:	mbtnw_setLoopOne() \n\
+	<Key>F2:	mbtnw_setLoopTwo() \n\
+	<Key>F3:	mbtnw_setLoopThree() \n\
+	<Key>F4:	mbtnw_setLoopFour() \n\
+	<Key>F5:	mbtnw_setLoopFive() \n\
+	<Key>F6:	mbtnw_setLoopSix() \n\
+	<Key>F7:	mbtnw_setLoopSeven() \n\
+	<Key>F8:	mbtnw_setLoopEight() \n\
+        !Shift<Key>a:	mbtnw_autoLockToggle() \n\
+        ~Shift<Key>a:	mbtnw_autoUpdtToggle() \n\
+        <Key>osfUp:	hotkeyArrowUp()	     \n\
+        <Key>osfDown:   hotkeyArrowDown()    \n\
+        <Key>osfLeft:   roamw_arrowLeft()    \n\
+        <Key>osfRight:  roamw_arrowRight()   \n\
+        <Key>KP_Left:   roamw_arrowLeft()    \n\
+        <Key>KP_Right:  roamw_arrowRight()   \n\
+        <Key>KP_Up:     hotkeyArrowUp()      \n\
+        <Key>KP_Down:   hotkeyArrowDown()    \n\
+        <Key>KP_4:	roamw_arrowLeft()    \n\
+        <Key>KP_6:	roamw_arrowRight()   \n\
+        <Key>KP_8:	hotkeyArrowUp()      \n\
+        <Key>KP_2:	hotkeyArrowDown()    \n\
+        <Btn3Down>, <Btn3Up>:   toggle_dataPopup() \n\
+        Ctrl<Btn1Down>: mcanvw_catchCtrl() \n\
+        Shift<Key>1:            pglayrw_setLayer() \n\
+        Shift<Key>2:            pglayrw_setLayer() \n\
+        Shift<Key>3:            pglayrw_setLayer() \n\
+        Shift<Key>4:            pglayrw_setLayer() \n\
+        Shift<Key>5:            pglayrw_setLayer() \n\
+        Shift<Key>6:            pglayrw_setLayer() \n\
+        Shift<Key>7:            pglayrw_setLayer() \n\
+        Shift<Key>8:            pglayrw_setLayer() \n\
+        Shift<Key>9:            pglayrw_setLayer() \n\
+        Shift<Key>0:            pglayrw_setLayer() \n\
+        <Key>1:         pglayrw_setLayer() \n\
+        <Key>2:         pglayrw_setLayer() \n\
+        <Key>3:         pglayrw_setLayer() \n\
+        <Key>4:         pglayrw_setLayer() \n\
+        <Key>5:         pglayrw_setLayer() \n\
+        <Key>6:         pglayrw_setLayer() \n\
+        <Key>7:         pglayrw_setLayer() \n\
+        <Key>8:         pglayrw_setLayer() \n\
+        <Key>9:         pglayrw_setLayer() \n\
+        <Key>0:         pglayrw_setLayer() \n\
+        <Key>]:		pgfilterw_stepOneUp() \n\
+        <Key>[:		pgfilterw_stepOneDown() 
+
+Nmap*pglayrw_popup.*.translations:    #override\n\
+        Shift<Key>1:            pglayrw_setLayer() \n\
+        Shift<Key>2:            pglayrw_setLayer() \n\
+        Shift<Key>3:            pglayrw_setLayer() \n\
+        Shift<Key>4:            pglayrw_setLayer() \n\
+        Shift<Key>5:            pglayrw_setLayer() \n\
+        Shift<Key>6:            pglayrw_setLayer() \n\
+        Shift<Key>7:            pglayrw_setLayer() \n\
+        Shift<Key>8:            pglayrw_setLayer() \n\
+        Shift<Key>9:            pglayrw_setLayer() \n\
+        Shift<Key>0:            pglayrw_setLayer() \n\
+        <Key>1:         pglayrw_setLayer() \n\
+        <Key>2:         pglayrw_setLayer() \n\
+        <Key>3:         pglayrw_setLayer() \n\
+        <Key>4:         pglayrw_setLayer() \n\
+        <Key>5:         pglayrw_setLayer() \n\
+        <Key>6:         pglayrw_setLayer() \n\
+        <Key>7:         pglayrw_setLayer() \n\
+        <Key>8:         pglayrw_setLayer() \n\
+        <Key>9:         pglayrw_setLayer() \n\
+        <Key>0:         pglayrw_setLayer() \n\
+        <Key>]:		pgfilterw_stepOneUp() \n\
+        <Key>[:		pgfilterw_stepOneDown() 
+
+Nmap*pgfilterw_popup.*.translations:    #override\n\
+        <Key>]:		pgfilterw_stepOneUp() \n\
+        <Key>[:		pgfilterw_stepOneDown() 
+
+Nmap*pgprd_popup.defaultPosition:	False
+Nmap*pgprd_popup.x:			112
+Nmap*pgprd_popup.y:			0
+Nmap*pgprd_text*fontList: -adobe-courier-bold-r-normal-*-14-*-75-75-m-*-iso8859-1
+
+Nmap*pgprd_popupSave.defaultPosition:       False
+Nmap*pgprd_popupSave.x:                     300
+Nmap*pgprd_popupSave.y:                     500
+
+Nmap*tracks_edit.defaultPosition:	False
+Nmap*tracks_edit.x:			0
+Nmap*tracks_edit.y:			400
+
+Nmap*tracks_results.defaultPosition:	False
+Nmap*tracks_results.x:			300
+Nmap*tracks_results.y:			700
+
+Nmap*sigw_edit.defaultPosition:		False
+Nmap*sigw_edit.x:			0
+Nmap*sigw_edit.y:			0
+
+Nmap*sigw_format.defaultPosition:	False
+Nmap*sigw_format.x:			0
+Nmap*sigw_format.y:			0
+
+Nmap*ccf_main.defaultPosition:		False
+Nmap*ccf_main.x:			0
+Nmap*ccf_main.y:			650
+
+Nmap*pgccfp_popup.defaultPosition:	False
+Nmap*pgccfp_popup.x:			112
+Nmap*pgccfp_popup.y:			0
+
+Nmap*pgofmt_popup.defaultPosition:      False
+Nmap*pgofmt_popup.x:                    0
+Nmap*pgofmt_popup.y:                    0 
+
+Nmap*pggfmt_popup.defaultPosition:      False
+Nmap*pggfmt_popup.x:                    125
+Nmap*pggfmt_popup.y:                    0 
+
+Nmap*locfmtw_popup.defaultPosition:     False
+Nmap*locfmtw_popup.x:                   800
+Nmap*locfmtw_popup.y:                   400
+
+Nmap*pglayrw_popup.defaultPosition:     False
+Nmap*pglayrw_popup.x:                   125
+Nmap*pglayrw_popup.y:                   115 
+
+Nmap*pglayred_popup.defaultPosition:    False
+Nmap*pglayred_popup.x:                  325
+Nmap*pglayred_popup.y:                  115 
+
+Nmap*pglayrnm_popup.defaultPosition:    False
+Nmap*pglayrnm_popup.x:                  325
+Nmap*pglayrnm_popup.y:                  275 
+
+Nmap*extrap_popup.defaultPosition:	False
+Nmap*extrap_popup.x:			0
+Nmap*extrap_popup.y:			515
+
+Nmap*list_edit.defaultPosition:		False
+Nmap*list_edit.x:			0
+Nmap*list_edit.y:			500
+
+Nmap*pgjet_popup.defaultPosition:	False
+Nmap*pgjet_popup.x:			0
+Nmap*pgjet_popup.y:			730
+
+Nmap*pgjet_barbpopup.defaultPosition:	False
+Nmap*pgjet_barbpopup.x:			172
+Nmap*pgjet_barbpopup.y:			790
+
+Nmap*pgjet_attrpopup.defaultPosition:	False
+Nmap*pgjet_attrpopup.x:			0
+Nmap*pgjet_attrpopup.y:			500
+
+Nmap*pggfaw_popup.defaultPosition:	False
+Nmap*pggfaw_popup.x:			0
+Nmap*pggfaw_popup.y:			630
+
+Nmap*pggfawp_popup.defaultPosition:	False
+Nmap*pggfawp_popup.x:			0
+Nmap*pggfawp_popup.y:			630
+
+Nmap*pginterp_popup.defaultPosition:	False
+Nmap*pginterp_popup.x:			0
+Nmap*pginterp_popup.y:			515
+
+Nmap*pgfilterw_popup.defaultPosition:	False
+Nmap*pgfilterw_popup.x:			320
+Nmap*pgfilterw_popup.y:			115
+
+Nmap*pgsmear_popup.defaultPosition:	False
+Nmap*pgsmear_popup.x:			0
+Nmap*pgsmear_popup.y:			515
+
+Nmap*pgdist_popup.defaultPosition:	False
+Nmap*pgdist_popup.x:			0
+Nmap*pgdist_popup.y:			450
+
+Nmap*pgfrom_popup.defaultPosition:	False
+Nmap*pgfrom_popup.x:			0
+Nmap*pgfrom_popup.y:			515

@@ -1,0 +1,25 @@
+     OVERWR
+
+     OVERWR allows the user to specify whether existing GEMPAK grids in a 
+     file should be overwritten or left unchanged.
+     The valid choices for the flags are "YES", or "NO".
+
+     If OVERWR is set to "YES", and the program tries to write out a grid 
+     that already exists in the output GEMPAK file, the grid will be replaced 
+     with the new one.  Otherwise, the original grid remains the same and 
+     the new grid is not written out to the file.
+
+     Note that the "YES" option does not overwrite the grid navigation in 
+     the header of the output GEMPAK file nullifying all the existing grids.  
+     Only grids with the same navigation that is specified in the output file 
+     header can be written.
+
+     Examples:
+
+	OVERWR =	yes		--	existing grid is overwritten.
+
+	OVERWR =			--	existing grid is NOT
+						overwritten.
+
+	OVERWR =	no		--	existing grid is NOT
+						overwritten.

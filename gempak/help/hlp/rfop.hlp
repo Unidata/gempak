@@ -1,0 +1,57 @@
+
+RFOP
+
+  RFOP converts a VGF NWS Flood Outlook Product file into an ASCII NWS 
+  Flood Outlook Product file. Unfilled closed lines are assumed to be
+  areas of possible flooding, hatch filled areas are assumed to be areas
+  of likely flooding, solid fill areas are assumed to be areas of
+  imminent or occurring flooding.
+
+INPUT PARAMETERS
+
+  rfop vgf_filename
+
+  rfop		Program name
+  vgf_filename	VGF file to be converted
+
+PROGRAM DESCRIPTION
+
+  RFOP scans a VGF file and generates a text description of each line.
+  The output file format is:
+NWS NATIONAL FLOOD OUTLOOK PRODUCT yymmdd/hhmm
+line1npts category valid_dates
+lon1, lat1
+lon2, lat2
+lon3, lat3
+...
+lonN, latN
+line2npts category valid_dates
+...
+
+  Flood categories are:
+  0 - flooding possible
+  1 - flooding likely
+  2 - flooding occurring or imminent
+
+EXAMPLES
+
+  If the VGF file 'testfile.vgf' contained a single 4-point line with
+  no fill, then the output would look like:
+
+NWS NATIONAL FLOOD OUTLOOK PRODUCT 020321/1223
+4 0 Mar 21 - Mar 23
+  45.53 -69.08
+  44.40 -67.62
+  44.11 -67.51
+  45.22 -69.02
+
+  If the VGF file 'testfile.vgf' contained a single 5-point line with
+  solid fill, then the output would look like:
+
+NWS NATIONAL FLOOD OUTLOOK PRODUCT 020321/1223
+5 2 Mar 21 - Mar 23
+  45.53 -69.08
+  44.40 -67.62
+  44.11 -67.51
+  45.22 -69.02
+  45.39 -70.07

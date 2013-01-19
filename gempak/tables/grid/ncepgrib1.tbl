@@ -1,0 +1,26 @@
+!
+! NCEPGRIB1.TBL -- GRIB 1 parameter conversion table version 1
+!
+!ID# NAME                             UNITS                GNAM         SCALE   MISSING  HZREMAP DIRECTION
+!
+130 MSLP (ETA reduction)              Pa                   EMSL            -2  -9999.00        0         0
+131 Surface lifted index              K                    LIFT             0  -9999.00        0         0
+132 Best (4 layer) lifted index       K                    LFT4             0  -9999.00        0         0
+133 K index                           K                    KINX             0  -9999.00        0         0
+134 Sweat index                       K                    SWET             0  -9999.00        0         0
+135 Horizontal moisture divergence    kg kg**-1 s**-1      MCNV             0  -9999.00        0         0
+136 Vertical speed shear              s**-1                VWSH             0  -9999.00        0         0
+!137 Visibility                        m                                     0  -9999.00       0         0
+156 Convective inhibition             J kg**-1             CINS             0  -9999.00        0         0
+157 CAPE                              J kg**-1             CAPE             0  -9999.00        0         0
+201 Ice-free water surface            %                    IFWS             0  -9999.00        0         0
+205 Downward long wave rad flux       W m**-2              LWRD             0  -9999.00        0         0
+207 Moisture availability             %                    MSAV             0  -9999.00        0         0
+208 Exchange coefficient              kg m**-3 m s**-1     SEXC             0  -9999.00        0         0
+209 No of mixed layers next to sfc    -                    NMXL             0  -9999.00        0         0
+212 Upward long wave rad flux         W m**-2              LWRU             0  -9999.00        0         0
+213 Amt of non-convective cloud       %                    CLDA             0  -9999.00        0         0
+216 Temp tendecy by all radiation     K s**-1              DTAR             0  -9999.00        0         0
+!220 Natural log of surface press      ln(kPa)                               0  -9999.00       0         0
+!222 5-wave geopotential height        gpm                                   0  -9999.00       0         0
+255 Missing                           -                    MISS             0  -9999.00        0         0

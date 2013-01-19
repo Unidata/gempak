@@ -1,0 +1,28 @@
+
+
+                     Level (LV) Library 
+
+
+The LEVEL library processes user input for vertical level and 
+vertical coordinate.
+
+LV_INPT translates the user inputs for LEVELS and VCOORD into a
+list of levels.  The input for LEVELS may be a list separated by 
+semicolons.  The following items may be included in the list:
+
+             a single level;
+             MAN for the mandatory levels below 100 mb;
+             VAS for the standard VAS levels;
+             a range of levels with an increment.
+
+The following items are also valid, provided they are not part of
+a list:
+
+             ALL for all levels;
+             a range of levels without an increment.
+
+The flag /MAN may be used after any specification of LEVELS so
+that any application will use only mandatory level data with no
+interpolation. 
+
+

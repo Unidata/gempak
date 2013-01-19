@@ -1,0 +1,4 @@
+$CC $CFLAGS -c chgCWAcentroid.c
+$FC $LDFLAGS -o chgCWAcentroid.$NA_OS chgCWAcentroid.o \
+	        $CGEMLIB
+$RM chgCWAcentroid*.o

@@ -1,0 +1,50 @@
+#!/bin/csh
+#
+# EZLOOP
+#
+# This script allows the user to loop the graphics previously created.
+#
+# Note that the user can loop the plan view graphics so long as he/she has not
+# yet run a vertical (skew-T, time-height section, or cross-section) ezscript.
+# Once one of these has been run, the existing graphics in the plan view
+# window can no longer be looped without re-running the plan view ezscript
+# to regenerate them.  However, the vertical graphics generated for the Skew-T
+# may be looped by the user.
+#
+# The following are the looping commands:
+#		;l = begin looping forward
+#		;r = begin looping backward
+#		;s = step forward one frame
+#		;b = step backward one frame
+#		;N = change loop speed, where N = 1 (slowest) to 5 (fastest).
+#
+# To stop loop, click the left mouse button on the graphic window.
+#
+# To end looping script, enter "exit" in the text window.
+#
+##
+# Log:
+# B. Colman/SEA		 1994
+# R. Miller/COMET	 1994
+# S. Jacobs/NMC		10/94	Clean up; Added sleep
+
+# Source the file called settings.  This file contains commands to set
+# environment variables for the model name and device driver.
+
+source settings
+
+echo " "
+echo "  Looping commands: "
+echo "         ;l = begin looping forward "
+echo "         ;r = begin looping backward "
+echo "         ;s = step forward one frame "
+echo "         ;b = step backward one frame "
+echo "         ;# = change loop speed, where # = 1 (slowest) to 5 (fastest)."
+echo "  To stop loop, click the left mouse button on the graphic window."
+echo "  To end looping script, enter EXIT."
+echo " "
+
+sleep 7
+
+gpmap 
+

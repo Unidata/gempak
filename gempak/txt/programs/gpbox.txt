@@ -1,0 +1,39 @@
+GPBOX draws a box around a region.
+ 
+ 
+INPUT PARAMETERS
+    
+
+
+PROGRAM DESCRIPTION
+     
+    This program draws a box around a region on the current 
+    graphics device.  REGION can be specified as VIEW, PLOT, or
+    DEVICE.  VIEW is the view region of the graphics device.  
+    The view region may be changed in GEMPAK programs using the
+    parameter PANEL.  The PLOT region is the area used for the
+    data plot, excluding margins.  DEVICE is the entire device
+    space.
+
+    Note that a box may also be drawn around the VIEW region
+    using the PANEL variable.
+ 
+ 
+EXAMPLES
+  
+    1. Draw a solid line of width 1 around the view region on the
+       xw device.
+  
+       LINE    =  1
+       REGION  =  view
+       DEVICE  =  xw
+ 
+    2. Draw a line around the device region in color 2, using line 
+       type 3 and width 5.
+  
+       LINE    =  2/3/5
+       REGION  =  device
+  
+ 
+ERROR MESSAGES
+  

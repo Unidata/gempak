@@ -1,0 +1,14 @@
+     CTLFLG
+ 
+     CTLFLG is a logical flag which indicates whether control characters 
+     are included in a raw surface data set to be decoded.  
+
+     The raw surface data set must contain either bulletins from the 
+     Domestic Data Service or single station reports.  If the data set 
+     contains bulletins, set CTLFLG = YES.  Otherwise, it will be
+     assumed that the file contains single station reports with one
+     report per line.
+     
+     If CTLFLG = YES, the input file must contain bulletins.  If
+     CTLFLG = NO, the file must have reports.
+ 

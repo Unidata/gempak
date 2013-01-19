@@ -1,0 +1,25 @@
+! PLS.BULL
+!
+! Location information for the following product:
+! Plain_Language_Ship_Report.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+SXVD01 PAJN     JUNEAU_INTL_AIRPORT              AK US  5836 -13458     0
+SXVD01 PANC     ANCHORAGE_INTL_ARPT              AK US  6116 -15002     0
+SXVD82 KKEY     KEY_WEST                         FL US  2457  -8178     0
+SXVD82 KJAX     JACKSONVILLE                     FL US  3047  -8169     0
+SXVD82 KMLB     MELBOURNE                        FL US  2811  -8065     0
+SXVD82 KTBW     TAMPA_BAY_AREA/RUSKIN            FL US  2770  -8240     0
+SXVD83 KLOT     CHICAGO                          IL US  4159  -8808     0
+SXVD84 KLCH     LAKE_CHARLES                     LA US  3012  -9320     0
+SXVD86 KEKA     EUREKA                           CA US  4079 -12416     0
+SXVD86 KLOX     LOS_ANGELES/OXNARD               CA US  3420 -11912     0
+SXVD86 KMFR     MEDFORD                          OR US  4236 -12287     0
+SXVD86 KMTR     SAN_FRANCISCO                    CA US  3659 -12184     0
+SXVD86 KPQR     PORTLAND                         OR US  4556 -12252     0
+SXVD86 KSEW     SEATTLE                          WA US  4768 -12225     0
+SXVD86 KSGX     SAN_DIEGO                        CA US  3290 -11705     0

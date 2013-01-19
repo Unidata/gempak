@@ -1,0 +1,5 @@
+$CC $CFLAGS -c dcffg.c
+$FC $FFLAGS -c dcffcd.f
+$FC $LDFLAGS -o $OS_BIN/dcffg *.o \
+	$BRIDGE $GEMLIB $CGEMLIB
+$RM *.o

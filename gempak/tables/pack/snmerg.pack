@@ -1,0 +1,14 @@
+!SNMERG.PACK
+!
+!This table is the packing table used to create a merged sounding file.
+!
+!*Log:
+!
+!S. Maxwell  6/96    Renamed SNPACK.TBL to SNMERG.PACK
+!
+PRES    .1    1050.    .1
+TEMP  -127.     63.    .1
+DWPT   -63.     63.    .1
+DRCT     0.    360.   1.
+SPED     0.    126.   1.
+HGHT     0.  65534.   1.

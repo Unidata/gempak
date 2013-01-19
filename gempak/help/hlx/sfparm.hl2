@@ -1,0 +1,610 @@
+     SFPARM
+
+     SFPARM is a list of surface parameters to be used in a surface 
+     program.  
+
+     The four-character parameter names must be separated by semicolons.  
+     For example:
+
+		SFPARM = TMPF;DWPF;WTHR
+
+     If a parameter is not present in a data set, the program will 
+     attempt to derive it from those parameters which are present.  
+     For example, relative humidity can be computed from the temperature 
+     and dewpoint temperature.  Note that STHA, STHE, and SMXR are 
+     computed from PALT.
+ 
+     In plotting programs, the position of the parameter determines
+     where it will appear with respect to the station location.
+     The first position is centered on the station.  The other
+     positions are shown below:
+
+		18	14	8	16	22
+		19	2	10	4	23 
+		12	3	1	5	13
+		20	6	11	7	24
+		21	15	9	17	25
+
+     In the example above, WTHR is plotted in position 3.
+  
+     Functions can be used to modify/qualify the output parameters.  
+     These functions must follow the parameter name and are applied in 
+     the order given; however, arithmetic operators must precede the 
+     other operators.  The function symbols must precede the qualifying 
+     value and are defined as follows:
+
+	*	multiply		=	equal to
+	/	divide    		$	direction
+	+	add      		<	less than or equal to
+	-	subtract		>	greater than or equal to
+
+     In the case of weather symbols,  the size, line width and other 
+     information needed to draw the symbol may be specified following a 
+     colon after the symbol name and after the function specifications 
+     if any exist.  The drawing attributes are separated by colons.  For 
+     all the symbols, the information is entered as:size:width;for arrows
+     and barbs the information is entered as :size:width:type:headsiz, 
+     where the headsiz applies only to arrows.  The type is a three-digit
+     number, ABC, interpreted digit by digit as follows:
+
+            A                       B                      C
+        1 = plot calm wind   1 = start at stn        1 = not filled
+        2 = ignore calm wind 2 = center at stn       2 = filled
+                             3 = start on sky symbol 3 = not filled with box
+                                                     4 = filled with box
+
+     Calm winds are plotted as a circle or an arrowhead for barbs and
+     arrows, respectively.  Arrowheads and 50-unit barb flags are filled
+     if C=2 or 4. A box is plotted with background color if C = 3 or 4.
+     For example, if TYPE=132, a barb will be plotted as a circle if the 
+     wind is calm; it will begin on the edge of the cloud cover symbol, 
+     and 50-unit flags will be filled.  The default is 111 unless sky 
+     symbols are being plotted in which case it is 131.
+
+     The text size and line width can also be specified for plotting numerical 
+     data such as temperature and dewpoint.  These follow the parameter name,
+     or condition, delimited by colons.  For example, TMPF:2.5:3 , would 
+     cause temperatures to be plotted with a text size of 2.5 and a 
+     line width of 3.  Text sizes that are positive cause the data to be 
+     plotted at the location they would appear if they were being plotted
+     with the largest specified text size (ie. farther from the center of 
+     the station model than they would normally appear).  Text sizes that are
+     negative cause the offsets from the center of the station model to be
+     computed based on the specified text size.  NOTE:  A large range of 
+     negative text sizes may result in some degree of overplotting.
+     When using hardware fonts, text sizes may be named sizes.  For example,
+     tiny, SMALL, m, -m, -LARGE, etc, are all valid specifications.
+     If no text size is provided for a particular data type, that data will
+     be plotted with the default text size specified in the TEXT parameter.
+
+     For all symbols ( weather, cloud, pressure tendency, sky cover, past
+     weather, icing, combination, etc. ) and wind barbs and arrows, the area
+     immediately surrounding the symbol may be blanked out.  The resulting
+     effect allows the object to be more easily identified.  This capability
+     may be invoked by adding the additional blank-out width (*100) to the 
+     object width.  For example, to blank-out an extra 8 width units
+     around the weather symbols of size 2 and width 3, specify the SFPARM
+     as WSYM:2:803.
+
+     A special value of M may be used for the = function to denote a 
+     missing value, so that values will be plotted only when a specific
+     parameter is missing.  For example, to plot an X when the visibility
+     is missing, specify SFPARM=MARK:16;VSBY=M.
+
+     Aliases are available to make it easier for the user to plot typical
+     surface data by using pre-set parameters and colors.  To use an alias, 
+     enter the alias name for SFPARM and leave COLORS blank.  If the user
+     does not leave COLORS blank, the selected colors will be used instead
+     of the pre-set alias colors.
+
+     See PRMLST.TBL for a list of current aliases for surface data.
+
+     The GEMPAK surface parameters and the corresponding four-character 
+     abbreviations are:
+
+
+		TEMPERATURE
+
+	TMPC - Temperature in Celsius
+	TMPF - Temperature in Fahrenheit
+	TMPK - Temperature in Kelvin
+	STHA - Surface potential temperature in Kelvin 
+	STHK - Surface potential temperature in Kelvin
+	STHC - Surface potential temperature in Celsius
+	STHE - Surface equivalent potential temperature in Kelvin
+	STHS - Surface saturation equiv. pot. temp. in Kelvin
+	TVRC - Virtual temperature in Celsius
+	TVRF - Virtual temperature in Fahrenheit
+	TVRK - Virtual temperature in Kelvin
+	THTV - Virtual potential temperature in Kelvin
+	TDXC - Maximum 24-hour temperature in Celsius
+	TDNC - Minimum 24-hour temperature in Celsius
+	TDXF - Maximum 24-hour temperature in Fahrenheit
+	TDNF - Minimum 24-hour temperature in Fahrenheit
+	T6XC - Maximum 6-hour temperature in Celsius
+	T6NC - Minimum 6-hour temperature in Celsius
+	T6XF - Maximum 6-hour temperature in Fahrenheit
+	T6NF - Minimum 6-hour temperature in Fahrenheit
+	DMAX - Daily weather map maximum temperature in Fahrenheit
+	DMIN - Daily weather map minimum temperature in Fahrenheit
+	SSTC - Sea surface temperature in Celsius
+	SSTF - Sea surface temperature in Fahrenheit
+	LTMP - Temp. in Celsius of surface air lifted to 500 or !x mb
+
+
+		MOISTURE 
+
+	DWPC - Dewpoint in Celsius
+	DWPF - Dewpoint in Fahrenheit
+	DWPK - Dewpoint in Kelvin
+	DPDC - Dewpoint depression Celsius
+	DPDF - Dewpoint depression Fahrenheit
+	DPDK - Dewpoint depression Kelvin
+	SMXR - Surface mixing ratio in g/kg
+	SMXS - Surface saturated mixing ratio in g/kg
+	RELH - Relative humidity in percent
+	TMWK - Wet bulb temperature Kelvin
+	TMWC - Wet bulb temperature Celsius
+	TMWF - Wet bulb temperature Fahrenheit
+	VAPR - Vapor pressure in millibars
+	VAPS - Saturation vapor pressure in millibars
+
+		PRESSURE AND ALTIMETER
+
+	PRES - Station pressure in millibars
+	PMSL - Mean sea level pressure in millibars
+	PALT - Pressure in millibars from altimeter
+	ALTI - Altimeter setting in inches of mercury
+	ALTM - Altimeter setting converted to millibars
+	SALT - Abbreviated altimeter in millibars
+	SMSL - Abbreviated mean sea level pressure
+	SALI - Abbreviated ALTI
+	RMSL - First 3 digits left of decimal of PMSL * 10
+	RSLI - First 3 digits left of decimal of ALTI * 100
+	RSLT - First 3 digits left of decimal of ALTM * 10
+	PTND - Complete pressure tendency with symbol
+	PTSY - Pressure tendency symbol only
+	P03C - Pressure change over 3 hours
+	P03D - Pressure tendency and change group, appp
+	P24C - Pressure change over 24 hours
+	ZMSL - Estimated height at PMSL
+	Z000 - Estimated height at 1000 mb
+	Z850 - Estimated height at 850 mb
+	Z800 - Estimated height at 800 mb
+	PANY - Returns PMSL, if avaliable, if not, returns ALTM 
+	RANY - Computes the 3 digit display of pressure
+	SANY - Creates a 3 character string from integral part 
+		of PMSL or ALTM
+
+		WIND                            
+
+	ARRW - Wind arrow (m/s)
+	ARRM - Wind arrow (m/s)
+	ARRK - Wind arrow (knots)
+	BARB - Wind barb (m/s)
+	BRBM - Wind barb (m/s)
+	BRBK - Wind barb (knots)
+	BRBS - Wind barb (mi/hr)
+	DARR - Wind arrows of uniform length
+	UWND - U component of the wind in meters/second
+	VWND - V component of the wind in meters/second
+	UKNT - U component of the wind in knots
+	VKNT - V component of the wind in knots
+	DRCT - Wind direction in degrees
+	SPED - Wind speed in meters/second
+	SKNT - Wind speed in knots
+	SMPH - Wind speed in miles/hour
+	PSPD - Packed speed and direction (ddfff) in meters/second
+	PKNT - Packed speed and direction (ddfff) in knots
+	GUST - Wind gusts in knots
+	GUMS - Wind gusts in meters/second
+	PWDR - Peak 5-second wind direction in degrees
+	PWSP - Peak 5-second wind speed in meters/sec
+	PWHR - Hour of 5-second peak wind
+	PWMN - Minutes of 5-second peak wind
+
+		CLOUD                                    
+
+ 	For the following parameters, the character x may be
+ 	replaced by L, M, or H, indicating low, middle or high
+ 	clouds.  The character T indicates the value of the parameter
+ 	at the level of maximum cloud coverage.
+
+	xCLD - Character cloud coverage
+	TCLD - Character maximum cloud coverage 
+	xCLO - Fractional cloud coverage 
+	TCLO - Fractional maximum cloud coverage 
+	CLCx - Numeric cloud coverage
+	CLCT - Numeric maximum cloud cover
+	CLDS - Combined cloud coverage from three levels
+	CMBC - Numeric combined cloud coverage from three levels
+	CLHx - Cloud height in hundreds of feet
+	CLDx - Combined cloud height and coverage 
+	CLDT - Maximum value of CLDx
+	CLDB - Lowest ceiling; if no ceiling, then height of lowest layer.  
+	       Height combined with short code for coverage. 
+	COMx - Numeric combined cloud height and coverage
+	COMT - Maximum value of COMx
+	CEIL - Ceiling in hundreds of feet
+
+ 	For the next two cloud parameters the x can be replaced by
+ 	1, 2, or 3 and represents the cloud report number.
+
+	CHCx - Numeric combined cloud height and coverage
+	CHDx - Combined cloud height and short code     
+
+ 	The following numeric cloud parameters are WMO standard 
+ 	codes.
+
+	CFRT - Fraction of celestial dome covered by cloud from WMO
+		Code 2700
+	CFRL - Fraction of celestial dome covered by low or mid
+		clouds from WMO Code 2700
+	CTYL - Low-level cloud genera from WMO Code 0513
+	CTYM - Mid-level cloud genera from WMO Code 0515
+	CTYH - High-level cloud genera from WMO Code 0509
+	CBAS - Cloud base height from WMO Code 1600
+	CSYL - Low cloud type symbol
+	CSYM - Middle cloud type symbol
+	CSYH - High cloud type symbol
+	CSYT - Cloud type symbol on first reported level
+	SKYC - Sky coverage symbol
+	SKYM - Sky coverage symbol with wind barbs in m/s
+	SKYK - Sky coverage symbol with wind barbs in knots
+
+ 	The following numeric parameter follows the guidelines in
+ 	the National Weather Service Operations Manual, Chapter D-31.
+
+	XVFR - Categorical identification of flight rules 
+		0 = Low Instrument Flight Rules (LIFR)
+		1 = Instrument Flight Rules (IFR)
+		2 = Marginal Visual Flight Rules (MVFR)
+		3 = Visual Flight Rules (VFR)
+
+		WEATHER 
+
+	WTHR - Character weather code from any numeric code
+	WCOD - Character weather code     
+	WNUM - Numeric weather code
+	WSYM - Present weather symbol
+	WTMO - Character weather code from WMO 
+	WWMO - Numeric WMO weather code
+	PWTH - Past weather symbol
+	PWWM - Numeric past weather in WMO code 
+
+		STATION VARIABLES
+
+	STID - Character station identifier
+	STNM - 5-digit station identifier
+	SLAT - Station latitude in degrees
+	SLON - Station longitude in degrees, West is negative
+	SELV - Station elevation in meters
+	SPRI - Station priority
+
+		MODEL OUTPUT STATISTICS
+
+	MXMN - Maximum or minimum temperature in Fahrenheit
+	TNTF - Night temperature fcst in Fahrenheit
+	TNCF - Night temperature climatology in Fahrenheit
+	TNAF - Night temperature anomaly in Fahrenheit
+	TDYF - Day temperature fcst in Fahrenheit
+	TDCF - Day temperature climatology in Fahrenheit
+	TDAF - Day temperature anomaly in Fahrenheit
+	CL12 - Prevailing total sky cover fcst for a 12-hr period
+		1 = CL = mostly clear
+		4 = OV = mostly overcast
+		7 = PC = mixed clouds and clear skies
+	SK12 - Maximum sustained surface wind speed fcst for a 12-hr period
+		 5 = light	 0 - 12 knots
+		15 = Moderate	13 - 21 knots
+		25 = Strong	22 - 33 knots
+		40 = High	greater than or equal to 34 knots
+	PP06 - Probability of precipitation fcst in a 6-hr period
+	PP12 - Probability of precipitation fcst in a 12-hr period
+	PP1C - Probability of precipitation climatology in a 12-hr period
+	PP1A - Probability of precipitation anomaly in a 12-hr period
+	PP24 - Probability of precipitation fcst in a 24-hr period
+	PP2C - Probability of precipitation climatology in a 24-hr period
+	PP2A - Probability of precipitation anomaly in a 24-hr period
+	QPX2 - Maximum amount of precipitation in inches fcst in a 12-hr
+		period.  Values are same as QP12
+	QP06 - Quantitative precipitation fcst in a 6-hr period
+		1 = 0.01 - 0.09 inches
+		2 = 0.10 - 0.24 inches
+		3 = 0.25 - 0.49 inches
+		4 = 0.50 - 0.99 inches
+		5 = 1.00 - 1.99 inches
+	QP12 - Quantitative precipitation fcst in a 12-hr period
+		0 = no precipitation expected
+		1 through 5 same as QP06
+		6 = greater than or equal to 2.00 inches 
+	QP24 - Quantitative precipitation fcst in a 24-hr period
+		0 through 5 same as QP12
+		6 = 2.00 - 2.99 inches
+		7 = greater than or equal to 3.00 inches
+	TS06 - Unconditional probability of thunderstorms occurring
+		in a 6-hr period 
+	TS12 - Unconditional probability of thunderstorms occurring
+		in a 12-hr period 
+	TS24 - Unconditional probability of thunderstorms occurring
+		in a 24-hr period 
+	TC06 - Conditional probability of severe weather occurring
+		in a 6-hr period 
+	TC12 - Conditional probability of severe weather occurring
+		in a 12-hr period
+	PCPT - Categorical forecast of precipitation
+		0 = R = rain
+		1 = S = snow
+		2 = Z = freezing
+	POZP - Conditional probability of freezing precipitation
+		(not included during the warm season)
+	POSN - Conditional probability of snow
+		(not included during the warm season)
+	SN06 - Categorical forecast of snow amount falling in a 6-hr
+		period
+		0 = no snow
+		1 = trace to less than 2 inches
+		2 = greater than or equal to 2 inches
+	SN12 - Categorical forecast of snow amount falling in a 12-hr
+		period
+		0 and 1 same as SN06
+		2 = 2 to less than 4 inches
+		4 = 4 to less than 6 inches
+		6 = greater than 6 inches
+		(not included during the warm season)
+	SN24 - Categorical forecast of snow amount falling in a 24-hr
+		period
+		0 = no snow or a trace
+		1 = greater than a trace to less than 2 inches
+		2 = 2 to less than 4 inches
+		4 = 4 to less than 6 inches
+		6 = 6 to less than 8 inches
+		8 = greater than 8 inches
+		(not included during the warm season)
+	PZ12 - Conditional probability of freezing precipitation in a 12-hr
+		period
+	PS12 - Conditional probability of snow in a 12-hr period
+	PR12 - Conditional probability of mixed liquid/frozen precipitation
+		in a 12-hr period
+	PC12 - Categorical forecast of precipitation type in a 12-hr period
+		0 = R = liquid
+		1 = S = frozen
+		2 = Z = freezing
+		3 = RS = mixed liquid and frozen precipitation
+		4 = RZ
+		5 = SZ
+		6 = RSZ
+	FCIG - Categorical forecast of ceiling height conditions
+		1 = less than 200 feet
+		2 = 200 - 400 feet
+		3 = 500 - 900 feet
+		4 = 1000 - 1900 feet
+		5 = 2000 - 3000 feet
+		6 = 3100 - 6500 feet
+		7 = 6600 - 12,000 feet      
+		8 = greater than 12,000 feet or unlimited
+	FVIS - Categorical forecast of visibility conditions
+		1 = less than 0.5 miles
+		2 = 0.5 - 0.875 miles
+		3 = 1.0 - 2.75 miles
+		4 = 3.0 - 5.0 miles
+		5 = greater than 5.0 miles
+	FVSA - Categorical forecast of visibility conditions (for new MOS)
+		1 = less than 0.5 miles
+		2 = 0.5 mile to less than 1.0 mile
+		3 = 1.0 to less than 2.0 miles
+		4 = 2.0 to less than 3.0 miles
+		5 = 3.0 to 5.0 miles
+		6 = 6.0 miles
+		7 = greater than 6.0 miles
+	OVIS - Categorical forecast in plain language of obstructions
+		to vision
+		0 = N = none of the following
+		1 = FG or F = fog or ground fog (vis. less than .625 mile)
+		2 = HZ or H = haze, smoke, dust
+		3 = BR = mist (fog with visibility greater than .625 mile)
+		4 = BL = blowing dust, sand, snow
+	WXPB - Categorical weather precipitation probability or areal
+		coverage determined by the precipitation parameter having 
+		the highest probability or areal coverage in WNUM
+		For probability:
+		1 = slight chance
+		2 = chance
+		3 = likely
+		4 = occasional
+		5 = definite
+		For areal coverage:
+		1 = isolated
+		2 = widely scattered
+		3 = scattered
+		4 = numerous
+		5 = widespread
+
+		TERMINAL AERODROME FORECAST (TAF)
+
+	TDRC - Temporary/probability wind direction in degrees
+	TSKN - Temporary/probability wind speed in knots
+	TGST - Temporary/probability wind gusts in knots
+	BRGK - Gust barb feathered in knots
+	TCHx - Temporary/probability numeric combined cloud height and
+	        coverage, as for CHCx
+	TCEL - Temporary/probability ceiling in hundreds of feet, as for
+		CEIL
+	TSKC - Temporary/probability cloud coverage graphics symbol, as for
+		SKYC
+	TXVF - Temporary/probability categorical identification of flight
+		rules, as for XVFR
+	TWNM - Temporary/probability numeric weather code, as for WNUM
+	TWSY - Temporary/probability graphics weather symbol corresponding
+		to TWNM, as for WSYM
+	TVSB - Temporary/probability visibility in statute miles
+	PPRB - Probability for TAF forecast change indicator
+        	30 = PROB30 - 30 percent probability condition
+        	40 = PROB40 - 40 percent probability condition
+        	50 = TEMPO  - temporary condition
+	VWNM - Vicinity numeric weather code, as for WNUM
+	VWSY - Vicinity graphics weather symbol corresponding to VWNM, as
+		for WSYM
+	TVWN - Temporary/probability vicinity numeric weather code, as for
+		WNUM
+	WSKC - Worst case cloud coverage graphics symbol, as for SKYC
+	WXVF - Worst case categorical identification of flight rules, as
+		for XVFR
+	TPWN - Temporary/probability/vicinity numeric weather code, as for
+		WNUM
+	TPWS - Temporary/probability/vicinity graphics weather symbol
+		corresponding to TPWN, as for WSYM
+	AWNM - Prevailing/temporary/probability/vicinity numeric weather
+		code, as for WNUM
+	AWSY - Prevailing/temporary/probability/vicinity graphics weather
+		symbol corresponding to AWNM, as for WSYM
+	LLWS - Low level wind shear forecast flag
+	MOTV - Mountain obscuration threshold value in hundreds of feet
+	CMSL - Ceiling converted to mean sea level in hundreds of feet
+	MOBS - Mountain obscuration threshold met indicator
+	TCMS - Temporary/probability ceiling converted to mean sea level
+	        in hundreds of feet
+	TMOB - Temporary/probability mountain obscuration threshold met
+	        indicator
+	WCMS - Worst case ceiling converted to mean sea level in hundreds
+	        of feet
+	WMOB - Worst case mountain obscuration threshold met indicator
+	TCTL - Temporary/probability low-level cloud genera from WMO Code
+		0513, as for CTYL
+	TCSL - Temporary/probability cloud graphics symbol for TCTL, as for
+		CSYL
+
+		MARINE
+
+	WHGT - Wave height in meters
+	WHFT - Wave height in feet
+	WPER - Wave period in seconds
+	HOWW - Height of wind wave in meters
+	POWW - Period of wind wave in seconds
+	HOSW - Height of predominant swell wave in meters
+	POSW - Period of predominant swell wave in seconds
+	DOSW - Direction of predominant swell wave in degrees
+	HOS2 - Height of secondary swell wave in meters
+	POS2 - Period of secondary swell wave in seconds
+	DOS2 - Direction of secondary swell wave in degrees
+	WAV2 - Combined wind wave period and height in feet ("2 group")
+	WAV3 - Combined predominant and secondary swell wave direction
+		in tens of degrees ("3 group")
+	WAV4 - Combined predominant swell wave period and height in 
+		feet ("4 group")
+	WAV5 - Combined secondary swell wave period and height in feet
+		("5 group")
+	WPHM - Combined wave period and height in half meters
+	WVSW - Combined swell wave direction, period and height in half
+		meters
+	SWEL - Character combined swell wave direction, period and 
+		height in half meters
+	DAWV - Swell wave direction arrows of uniform length
+	IDTH - Thickness of ice on ship in meters
+	ROIA - Rate of ice accretion on ship from WMO code table 3551
+	IGRO - Rate of ice accretion on vessel in salt water in inches
+		per 3 hours
+	DIGR - Character rate of ice accretion in inches per three hours
+	SHPD - True direction from which ship is moving (for 3 hours 
+		before obs) in degrees
+	SHPK - Ship's average speed (for 3 hours before obs) in knots
+	DASH - Ship's true direction arrows of uniform length
+	PMN1 - Lowest 1-minute average pressure in previous hour in mb
+	PMNT - Time of lowest 1-minute average pressure, as hhmm
+	PKWD - Direction of 1-minute peak wind in previous hour in degrees
+	PKWK - Highest 1-minute mean wind speed in previous hour in knots
+	PKWS - Highest 1-minute mean wind speed in previous hour in m/sec
+	PKWT - Time of highest peak 1-minute wind in previous hour, as hhmm
+	BRPK - Wind barb (knots) for highest peak 1-minute wind
+
+		AIRCRAFT
+
+	TURB - Amount of turbulence
+	TBSE - Base of turbulence in feet
+	TTOP - Top of turbulence in feet
+	HBOT - Base of turbulence in meters
+	HTOT - Top of turbulence in meters
+	FQOT - Frequency of turbulence
+	TPOT - Type of turbulence
+	TBSY - Turbulence symbol
+	ICNG - Amount of airframe icing
+	IBSE - Base of icing in feet
+	ITOP - Top of icing in feet
+	HBOI - Base of icing in meters
+	HTOI - Top of icing in meters
+	TPOI - Type of icing
+	ICSY - Icing symbol
+	WBSE - Base of weather in feet
+	WTOP - Top of weather in feet
+	HBWX - Base of weather in meters
+	HTWX - Top of weather in meters
+	CLC1 - Numeric cloud coverage 1 
+	CBS1 - Cloud base 1 in feet
+	CTP1 - Cloud top 1 in feet
+	CB1M - Cloud base 1 in meters
+	CT1M - Cloud top 1 in meters
+	CLC2 - Numeric cloud coverage 2
+	CBS2 - Cloud base 2 in feet
+	CTP2 - Cloud top 2 in feet
+	CB2M - Cloud base 2 in meters
+	CT2M - Cloud top 2 in meters
+	ACRT - Aircraft report type
+	SELV - Flight level in meters
+	FELV - Flight level in hundreds of feet
+	ITSY - Icing type symbol
+	TTSY - Turbulence type symbol
+	TFSY - Turbulence frequency symbol
+	ACTP - Character aircraft type
+	ATP1 - Numeric aircraft type
+
+		MISCELLANEOUS
+
+	DDEN - Density of dry air in kg/(m**3)
+	VSBY - Visibility in statute miles
+	VSBK - Visibility in kilometers
+	VSBN - Visibility in nautical miles
+	VSBF - Character visibility in fractions of statute miles for
+		visibilities between 0. and 1.
+	VSBC - Character visibility in fractions of statute miles for
+		all visibility numbers
+	PnnI - Precipitation over last nn hours in inches
+		nn = 01, 03, 06, 09, 12, 18 or 24
+	PnnM - Precipitation over last nn hours in millimeters
+		nn = 01, 03, 06, 09, 12, 18 or 24
+	DPRC - Character daily weather map precipitation in inches
+	PR24 - Precipitation over last 24 hours in inches, as sum of
+		four successive 6-hour precip amounts
+	SNOW - Snow depth in inches
+	SNEW - Amount of new snow in inches
+	SNRT - Forecast snow and ice pellet accumulation to watch
+		threshold ratio
+	SI12 - Forecast snow and ice pellet 12-h accumulation in inches
+	SNIP - Snow and ice pellet watch threshold in inches
+	FZRT - Forecast freezing rain accumulation to watch threshold
+		ratio
+	FZ12 - Forecast Freezing rain 12-h accumulation in inches
+	FZRN - Freezing rain watch threshold in inches
+	WEQS - Water equivalent of snow on the ground in inches
+	HAIL - Hail flag
+	HLSZ - Hail size in centimeters
+	HEAT - Heat index in Fahrenheit
+	HMTR - Humiture (apparent temperature) in Fahrenheit
+	WCEQ - Wind chill equivalent temperature in Fahrenheit
+	WCHT - Revised wind chill temperature in Fahrenheit
+	MSUN - Duration of sunshine in minutes
+	FFnn - Flash flood guidance for next nn hours in inches
+		nn = 01, 03, 06, 12 or 24
+	TOST - Type of station (manned or automatic) 
+		0 = automatic
+		1 = manned
+	STIM - Report hour and minutes as hhmm
+	TEXT - Undecoded data
+	SPCL - Undecoded special reports
+	MARK - Markers
+	DTNM - Sea ice drifting distance in nautical miles
+	FOSB - Fosberg index, also called fire weather index
+
+		SPACING
+
+	SPAC - Plot a space, accounted for in FILTER
+	BLNK - Plot a blank, not accounted for in FILTER

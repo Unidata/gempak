@@ -1,0 +1,4 @@
+$CC $CFLAGS -c dcwarn.c
+$FC $LDFLAGS -o $OS_BIN/dcwarn *.o \
+        $BRIDGE $GEMLIB $CGEMLIB
+$RM *.o

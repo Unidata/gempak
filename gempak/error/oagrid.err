@@ -1,0 +1,16 @@
+!	OAGRID error file
+!
+ +1	! WARNING : This grid is too large for GEMPAK programs.
+ -1	! Fatal error initializing TAE.
+ -2	! Fatal error reading TAE parameters.
+ -3	! !AS is invalid for GRDAREA.
+ -4	! !AS is invalid for DTAAREA.
+ -5	! No data file name specified.
+ -6	! Parameter input is invalid.
+ -7	! Parameter !AS cannot be calculated.
+ -8	! Invalid value for DELTAX or DELTAY.
+ -9 	! Too few stations to calculate DELTAN.
+-10	! Source must be set to SN or SF.
+-11	! Station data file is invalid.
+-12	! Invalid time requested.
+-13     ! Invalid level requested.

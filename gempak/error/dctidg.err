@@ -1,0 +1,27 @@
+!	This is the error file for DCTIDG.
+!
++8 	! Report date/time problem
++7 	! Fatal Problem in CREX Table D
++6	! Nil report:  !AS
++5	! No valid station found in report:  !AS
++4	! Invalid date/time:  !AS
++3	! Invalid bulletin:  !AS
++2	! !AS
++1	! Probable end of input file.
+-1	! Fatal error initializing GEMPAK.
+-2	! Fatal error reading GEMPAK parameters.
+-3	! Parameter !AS is not in the dataset.
+-4	! The last time in !AS is invalid.
+-5      ! The first time in !AS is invalid.
+-6	! The input file has control characters.
+-7	! Could not locate mnemonic !AS
+-8	! Could not set interface pointer.
+-9	! Bulletin rejected  !AS
+-10	! Fatal I/O err reading CREX Table D
+-11	! CREX Table D size exceeded - fatal error
+-12	! CREX Table D record does not end properly - fatal error
+-13	! Fatal I/O err reading CREX Table B
+-14	! CREX Table B size exceeded - fatal error
+-15	! CREX report rejected
+-16	! Current descriptor !AS not in Sect 1 descriptor list
+-17	! Current descriptor !AS not in Table B descriptor list

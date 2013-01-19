@@ -1,0 +1,32 @@
+!SFSYN.PACK
+!
+!This table is the packing table used to create a surface synoptic file.
+!
+!*Log:
+!
+!S. Maxwell  6/96    Renamed SYPACK.TBL to SFSYN.PACK
+!
+PRES	700.	1100.	.1
+PMSL	900.	1100.	.1
+PTND	0.	9999.	1.
+TMPC	-60.	60.	.1
+DWPC	-60.	60.	.1
+SPED	0.	100.	.1
+DRCT	0.	360.	1.
+GUMS	0.	100.	.1
+VSBY	0.	150.	.1
+WWMO	0.	99.	1.
+PWWM	0.	9.	1.
+CFRT	0.	9.	1.
+CFRL	0.	9.	1.
+CBAS	0.	24000.	1.
+CTYL	0.	9.	1.
+CTYM	0.	9.	1.
+CTYH	0.	9.	1.
+P06M	0.	500.	1.
+P24M	0.	1000.	1.
+SNOW	0.	150.	1.
+TMAX	-60.	60.	.1
+TMIN	-60.	60.	.1
+
+

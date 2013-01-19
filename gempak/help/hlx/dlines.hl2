@@ -1,0 +1,24 @@
+     DLINES
+
+     DLINES indicates whether the direction of lines (order of points) should
+     be taken into consideration when performing a graph-to-grid contour
+     analysis.  For instance, if only one contour line is drawn, the situation 
+     is ambiguous as to which side of the line should have values greater (or 
+     lesser) than the contour value. The convention is that GREATER VALUES ARE 
+     ALWAYS TO THE RIGHT OF THE LINE. DLINES also indicates if the left-of-line
+     value is smaller.  If the DISCRETE option is enabled, then DLINES is 
+     automatically TRUE for right of line.
+
+     In cases where only like-valued contours exist (or a single contour), then
+     the value of epsilon is added to grid points to the right of the contour
+     line.
+
+     This option defaults to 'yes' for right-of-line, and NO for left-of-
+     line if the DISCRETE option is being applied.
+
+	yes or no;yes or no [ | epsilon ]
+
+     For example:
+
+		DLINES = yes;yes|0.5
+ 

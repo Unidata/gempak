@@ -1,0 +1,78 @@
+! RR8.BULL
+!
+! Location information for the following product:
+! Hydrology/Meteorology_Data_Report_Part_8.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+SRUS81 KAKQ     WAKEFIELD                        VA US  3697  -7700     0
+SRUS81 KALY     ALBANY                           NY US  4268  -7383     0
+SRUS81 KBGM     BINGHAMTON                       NY US  4220  -7598     0
+SRUS81 KBOX     TAUNTON                          MA US  4195  -7112     0
+SRUS81 KBTV     BURLINGTON                       VT US  4445  -7315     0
+SRUS81 KBUF     BUFFALO                          NY US  4293  -7870     0
+SRUS81 KCAR     CARIBOU                          ME US  4577  -6862     0
+SRUS81 KCLE     CLEVELAND                        OH US  4140  -8186     0
+SRUS81 KCTP     STATE_COLLEGE                    PA US  4079  -7786     0
+SRUS81 KGYX     GRAY                             ME US  4388  -7025     0
+SRUS81 KILN     WILMINGTON                       OH US  3941  -8381     0
+SRUS81 KLWX     BALTIMORE_MD/_WASHINGTON_DC      VA US  3897  -7747     0
+SRUS81 KOKX     NEW_YORK                         NY US  4086  -7286     0
+SRUS81 KPBZ     PITTSBURGH                       PA US  4052  -8020     0
+SRUS81 KPHI     MOUNT_HOLLY                      NJ US  4000  -7480     0
+SRUS81 KRHA     MIDDLE_ATLANTIC/STATE_COLLEGE    PA US  4079  -7786     0
+SRUS81 KRLX     CHARLESTON                       WV US  3831  -8170     0
+SRUS81 KRNK     BLACKSBURG                       VA US  3720  -8041     0
+SRUS81 KTAR     NORTHEAST_RFC/BOSTON             MA US  4195  -7112     0
+SRUS82 KCAE     COLUMBIA                         SC US  3393  -8112     0
+SRUS82 KCHS     CHARLESTON                       SC US  3288  -8001     0
+SRUS82 KGSP     GREENVILLE/SPARTANBURG           SC US  3488  -8222     0
+SRUS82 KILM     WILMINGTON                       NC US  3427  -7791     0
+SRUS82 KMHX     NEWPORT/MOREHEAD_CITY            NC US  3477  -7687     0
+SRUS82 KMLB     MELBOURNE                        FL US  2811  -8065     0
+SRUS82 KRAH     RALEIGH                          NC US  3577  -7868     0
+SRUS82 KTAE     TALLAHASSEE                      FL US  3045  -8430     0
+SRUS83 KARX     LA_CROSSE                        WI US  4381  -9119     0
+SRUS83 KDTX     DETROIT                          MI US  4268  -8347     0
+SRUS83 KGRB     GREEN_BAY                        WI US  4449  -8811     0
+SRUS83 KGRR     GRAND_RAPIDS                     MI US  4288  -8554     0
+SRUS83 KIWX     NORTHERN_INDIANA                 IN US  4134  -8569     0
+SRUS83 KUNR     RAPID_CITY                       SD US  4406 -10320     0
+SRUS84 KAMA     AMARILLO                         TX US  3522 -10169     0
+SRUS84 KBMX     BIRMINGHAM                       AL US  3316  -8677     0
+SRUS84 KEWX     AUSTIN/SAN_ANTONIO               TX US  2970  -9801     0
+SRUS84 KFWR     WEST_GULF_RFC/FORT_WORTH         TX US  3283  -9729     0
+SRUS84 KHUN     HUNTSVILLE                       AL US  3472  -8665     0
+SRUS84 KLIX     NEW_ORLEANS                      LA US  3032  -8981     0
+SRUS84 KLUB     LUBBOCK                          TX US  3352 -10187     0
+SRUS84 KLZK     LITTLE_ROCK                      AR US  3483  -9225     0
+SRUS84 KMEG     MEMPHIS                          TN US  3513  -8980     0
+SRUS84 KMRX     MORRISTOWN                       TN US  3615  -8340     0
+SRUS84 KOUN     NORMAN                           OK US  3522  -9745     0
+SRUS85 KABQ     ALBUQUERQUE                      NM US  3502 -10662     0
+SRUS85 KBOU     DENVER                           CO US  4000 -10526     0
+SRUS85 KBYZ     BILLINGS                         MT US  4575 -10856     0
+SRUS85 KFGZ     FLAGSTAFF                        AZ US  3522 -11181     0
+SRUS85 KGJT     GRAND_JUNCTION                   CO US  3911 -10851     0
+SRUS85 KLKN     ELKO                             NV US  4086 -11573     0
+SRUS85 KPSR     PHOENIX                          AZ US  3343 -11201     0
+SRUS85 KPUB     PUEBLO                           CO US  3827 -10451     0
+SRUS85 KREV     RENO                             NV US  3956 -11979     0
+SRUS85 KRIW     RIVERTON                         WY US  4306 -10847     0
+SRUS85 KTFX     GREAT_FALLS                      MT US  4745 -11137     0
+SRUS85 KTWC     TUCSON                           AZ US  3222 -11094     0
+SRUS85 KVEF     LAS_VEGAS                        NV US  3604 -11518     0
+SRUS86 KEKA     EUREKA                           CA US  4079 -12416     0
+SRUS86 KHNX     SAN_JOAQUIN_VALLEY/HANFORD       CA US  3631 -11962     0
+SRUS86 KLOX     LOS_ANGELES/OXNARD               CA US  3420 -11912     0
+SRUS86 KMFR     MEDFORD                          OR US  4236 -12287     0
+SRUS86 KMTR     SAN_FRANCISCO                    CA US  3659 -12184     0
+SRUS86 KPDT     PENDLETON                        OR US  4568 -11884     0
+SRUS86 KPTR     NORTHWEST_RFC/PORTLAND           OR US  4556 -12252     0
+SRUS86 KRSA     CALIF-NEVADA_RFC/SACRAMENTO      CA US  3859 -12137     0
+SRUS86 KSEW     SEATTLE                          WA US  4768 -12225     0
+SRUS86 KSGX     SAN_DIEGO                        CA US  3290 -11705     0
+SRUS86 KSTO     SACRAMENTO                       CA US  3859 -12137     0

@@ -1,0 +1,82 @@
+! MARINELOC.TBL
+!
+!	This table contains locations and elevations for CMAN stations
+!	and for fixed buoys.  The entries need not be sorted in increasing 
+!	order based on the ASCII station identifier.
+!!
+! Log:
+! A. Hardy/GSC		 4/99	
+! D. Kidwell/NCEP	 5/05	Added 11 buoys (42... series), removed BUSL1
+!
+ABAN6     99999 ALEXANDRIA_BAY                   NY US 04433 -07593 00076  0   
+ALSN6     99999 AMBROSE_LS                       NY US 04046 -07383 00000  0   
+BLIA2     99999 BLIGH_REEF_LT                    AK US 06084 -14688 00000  0   
+BURL1     99999 SOUTHWEST_PASS                   LA US 02890 -08943 00000  0   
+BUZM3     99999 BUZZARDS_BAY                     MA US 04140 -07103 00000  0   
+CARO3     99999 CAPE_ARAGO                       OR US 04334 -12437 00018  0   
+CDRF1     99999 CEDAR_KEY                        FL US 02914 -08303 00002  0   
+CHLV2     99999 CHESAPEAKE_LS                    VA US 03690 -07571 00000  0   
+CLKN7     99999 CAPE_LOOKOUT                     NC US 03462 -07652 00005  0   
+CSBF1     99999 CAPE_SAN_BLAS                    FL US 02967 -08536 00002  0   
+DBLN6     99999 DUNKIRK                          NY US 04249 -07935 00183  0   
+DESW1     99999 DESTRUCTION_ISLAND               WA US 04768 -12449 00021  0   
+DISW3     99999 DEVILS_ISLAND                    WI US 04708 -09073 00192  0   
+DPIA1     99999 DAUPHIN_ISLAND                   AL US 03025 -08807 00000  0   
+DRYF1     99999 DRY_TORTUGAS                     FL US 02464 -08286 00000  0   
+DSLN7     99999 DIAMOND_SHOALS                   NC US 03515 -07530 00000  0   
+DUCN7     99999 DUCK_PIER                        NC US 03620 -07570 00000  0   
+FBIS1     99999 FOLLY_ISLAND                     SC US 03268 -07989 00003  0   
+FFIA2     99999 FIVE_FINGER_ISLAND               AK US 05727 -13363 00007  0   
+FPSN7     99999 FRYING_PAN_SHOALS                NC US 03349 -07759 00000  0   
+FWYF1     99999 FOWEY_ROCKS                      FL US 02559 -08010 00000  0   
+GDIL1     99999 GRAND_ISLE                       LA US 02927 -08996 00002  0   
+GLLN6     99999 GALLOO_ISLAND                    NY US 04389 -07645 00076  0   
+IOSN3     99999 ISLE_OF_SHOALS                   NH US 04297 -07062 00013  0   
+KTNF1     99999 KEATON_BEACH                     FL US 02982 -08359 00002  0   
+LKWF1     99999 LAKE_WORTH                       FL US 02661 -08003 00000  0   
+LONF1     99999 LONG_KEY                         FL US 02484 -08086 00000  0   
+LPOI1     99999 LAKE_PEND_OREILLE                ID US 04810 -11650 00625  0   
+MDRM1     99999 MOUNT_DESERT_ROCK                ME US 04397 -06813 00009  0   
+MISM1     99999 MATINICUS_ROCK                   ME US 04378 -06886 00016  0   
+MLRF1     99999 MOLASSES_REEF                    FL US 02501 -08038 00000  0   
+MRKA2     99999 MIDDLE_ROCK                      AK US 06108 -14666 00005  0   
+NWPO3     99999 NEWPORT                          OR US 04461 -12407 00009  0   
+PILM4     99999 PASSAGE_ISLAND                   MI US 04822 -08837 00195  0   
+POTA2     99999 POTATO_POINT                     AK US 06106 -14670 00007  0   
+PTAC1     99999 POINT_ARENA                      CA US 03896 -12374 00017  0   
+PTAT2     99999 PORT_ARANSAS                     TX US 02783 -09705 00000  0   
+PTGC1     99999 POINT_ARGUELLO                   CA US 03458 -12065 00012  0   
+ROAM4     99999 ROCK_OF_AGES                     MI US 04787 -08931 00184  0   
+SANF1     99999 SAND_KEY                         FL US 02446 -08188 00000  0   
+SAUF1     99999 ST._AUGUSTINE                    FL US 02986 -08126 00000  0   
+SBIO1     99999 SOUTH_BASS_ISLAND                OH US 04163 -08284 00177  0   
+SGNW3     99999 SHEBOYGAN                        WI US 04375 -08769 00176  0   
+SISW1     99999 SMITH_ISLAND                     WA US 04832 -12284 00015  0   
+SMKF1     99999 SOMBRERO_KEY                     FL US 02463 -08111 00000  0   
+SPGF1     99999 SETTLEMENT_POINT                 GB US 02669 -07900 00002  0   
+SRST2     99999 SABINE                           TX US 02967 -09405 00001  0   
+STDM4     99999 STANNARD_ROCK                    MI US 04718 -08722 00183  0   
+SUPN6     99999 SUPERIOR_SHOALS                  NY US 04447 -07580 00077  0   
+SVLS1     99999 SAVANNAH_LIGHT                   GA US 03195 -08068 00000  0   
+THIN6     99999 THOUSAND_IS_BRIDGE               NY US 04430 -07598 00076  0   
+TPLM2     99999 THOMAS_POINT                     MD US 03890 -07644 00000  0   
+TTIW1     99999 TATOOSH_ISLAND                   WA US 04839 -12474 00031  0   
+VENF1     99999 VENICE                           FL US 02707 -08245 00000  0   
+WPOW1     99999 WEST_POINT                       WA US 04766 -12244 00003  0   
+44004     44004 HOTEL                            -- US  3850  -7070     0  0   
+41001     41001 EAST_HATTERAS                    -- US  3470  -7260     0  0   
+41002     41002 SOUTH_HATTERAS                   -- US  3230  -7520     0  0   
+42003     42003 GULF                             -- US  2601  -8591     4  0
+42013     42013 COMPS                            -- US  2716  -8295     4  0
+42014     42014 COMPS                            -- US  2525  -8221     4  0
+42022     42022 COMPS                            -- US  2750  -8372     4  0
+42023     42023 BUOY_42023                       -- US  2605  -8307     4  0
+42024     42024 COMPS                            -- US  2746  -8422     4  0
+42043     42043 GULF                             -- US  2898  -9492     4  0
+42044     42044 GULF                             -- US  2619  -9705     4  0
+42045     42045 GULF                             -- US  2622  -9650     4  0
+42046     42046 GULF                             -- US  2789  -9404     4  0
+42047     42047 GULF                             -- US  2790  -9360     4  0
+46005     46005 WASHINGTON                       -- US  4610 -13100     0  0   
+46002     46002 OREGON                           -- US  4250 -13030     0  0   
+46059     46059 POINT_ARENA                      -- US  3800 -13000     0  0   

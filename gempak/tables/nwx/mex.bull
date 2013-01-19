@@ -1,0 +1,19 @@
+! MEX.BULL
+!
+! Location information for the following product:
+! MOS_Extended_Range_Guidance_From_MRF_Model.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+FEAK38 KWNO     NCEP_NCO                         MD US  3881  -7687     0
+FEAK39 KWNO     NCEP_NCO                         MD US  3881  -7687     0
+FECN21 KWNO     NCEP_NCO                         MD US  3881  -7687     0
+FEUS21 KWNO     NCEP_NCO                         MD US  3881  -7687     0
+FEUS22 KWNO     NCEP_NCO                         MD US  3881  -7687     0
+FEUS23 KWNO     NCEP_NCO                         MD US  3881  -7687     0
+FEUS24 KWNO     NCEP_NCO                         MD US  3881  -7687     0
+FEUS25 KWNO     NCEP_NCO                         MD US  3881  -7687     0
+FEUS26 KWNO     NCEP_NCO                         MD US  3881  -7687     0

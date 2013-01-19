@@ -1,0 +1,37 @@
+
+
+         	    Parameter Array (PD) Library 
+
+
+This parameter library contains subroutines to compute 
+meteorological parameters for arrays of data.  These subroutines 
+are used by the grid diagnostics package to calculate parameters.
+They may also be called directly by application programs, provided 
+that the programmer is careful to use the subsetting capabilities 
+properly.  In each subroutine, SUBFLG is a logical array.  At each
+point, if SUBFLG is true, the calculation will be made; if it is 
+false, no calculation will be done.
+
+Note that this library is derived from the PR library.  Therefore,
+changes made in either library should also be made in the other.
+
+
+The following constants are used in the computations:
+
+    RKAPPA = Poisson's constant              = 2 / 7
+
+         G = Gravitational constant          = 9.80616 m/sec/sec
+
+     GAMMA = Standard atmospheric lapse rate = 6.5 K/km
+
+     RDGAS = Gas constant for dry air        = 287.04 J/K/kg
+
+Many of the conversion algorithms are taken from:
+
+    Bolton, D., 1980:  The computation of equivalent potential	
+        temperature.  MONTHLY WEATHER REVIEW, 108, pp. 1046-1053.
+
+    University of Wisconsin: Green sheet.
+
+    Wallace, J.M., P.V. Hobbs, 1977: ATMOSPHERIC SCIENCE, Academic
+        Press, 467 pp.

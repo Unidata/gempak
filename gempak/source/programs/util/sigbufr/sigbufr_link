@@ -1,0 +1,4 @@
+$CC $CFLAGS $BUFRFLAGS -c sigbufr.c
+$FC $LDFLAGS -o $OS_BIN/sigbufr sigbufr.o $OS_LIB/sigbufr.a \
+        $CGEMLIB $GEMLIB $CGEMLIB -lmelBUFR
+$RM *.o

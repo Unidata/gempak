@@ -1,0 +1,41 @@
+!
+! Restore File : sig_wave_gridded_feet
+!
+! Log:
+! D.W.Plummer/NCEP	 2/97	Initial creation
+! J.L.Partain/MPC        7/97   chg text size
+! D.W.Plummer/NCEP	 8/97	Added FILTER parameter and changed TEXT value
+! J.L.Partain/MPC	12/97	Chg Cont int; skip some winds; bigger barbs
+! A. Hardy/GSC		 5/99   Added -1 to TITLE for title location
+!
+GDATTIM fall
+GLEVEL  0
+GVCORD  none
+PANEL   0                                                                       
+SKIP    0
+SCALE   0
+GDPFUN  mul(HTSGW,3.28) ! kntv(wnd)
+TYPE    p               ! b
+CONTUR  1                                                                       
+CINT    3/1     
+LINE    
+FINT    
+FLINE   
+HILO    0
+HLSYM   0
+CLRBAR  1
+WIND    17/0.8/1.3/112
+REFVEC                                                                          
+TITLE   5/-1/~ GRIDDED SIG WAVE HEIGHT (ft) and WAM 10m WINDS!0
+TEXT    1/21/1/hw
+CLEAR   yes                                                                     
+STNPLT                                                                          
+SATFIL                                                                          
+RADFIL                                                                          
+STREAM                                                                          
+POSN    0
+COLORS  1
+MARKER  0
+GRDLBL                                                                         
+LUTFIL  none
+FILTER  no

@@ -1,0 +1,24 @@
+
+	The functions for drawing fronts expect the front code to map 
+	to the desired type of front being plotted.
+	Frontal codes identify the type, intensity and character
+        of a front.  The three characters are 3 digits with each
+        having the following respective interpretations:
+
+   digit 1: type           digit 2: intensity       digit 3: character
+   -------------           ------------------       ------------------
+ 0 stationary             0 unspecified intensity   0 unspecified character
+ 1 stationary above sfc   1 weak, decreasing        1 frontal decreasing
+ 2 warm                   2 weak                    2 activity little change
+ 3 warm above sfc         3 weak, increasing        3 area increasing
+ 4 cold                   4 moderate, decreasing    4 intertropical
+ 5 cold above sfc         5 moderate                5 forming or suspected
+ 6 occlusion              6 moderate, increasing    6 quasi-stationary
+ 7 instability line       7 strong, decreasing      7 with waves
+ 8 intertropical line     8 strong                  8 diffuse
+ 9 convergence line       9 strong, increasing      9 position doubtful
+
+
+ Example:
+        425 translates to cold (4) weak (2) and forming (5).
+

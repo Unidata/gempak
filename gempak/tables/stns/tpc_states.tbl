@@ -1,0 +1,65 @@
+! TPC_STATES.TBL
+!
+! This table contains the U.S. two character state identifiers.
+!
+! The format for the file is given below, with the number of characters in
+! parentheses.
+!
+! Log:
+! T. Piper/SAIC		01/07	Created
+!-------------------------------------------------------------------
+!
+!ALPHA   FIPS   NAME                             ST CO   LAT    LON  ELV PRI
+!(8)     (6)    (32)                            (2)(2)   (5)    (6)   (5)(2)
+!
+AL        01    Alabama                          AL US  3250  -8650 00000 00 
+AK        02    Alaska                           AK US  6300 -15000 00000 00
+AZ        04    Arizona                          AZ US  3450 -11100 00000 00
+AR        05    Arkansas                         AR US  3500  -9275 00000 00
+CA        06    California                       CA US  3700 -11975 00000 00
+CO        08    Colorado                         CO US  3900 -10600 00000 00
+CT        09    Connecticut                      CT US  4150  -7250 00000 00
+DE        10    Delaware                         DE US  3875  -7500 00000 00
+DC        11    District of Columbia             DC US  3885  -7700 00000 00
+FL        12    Florida                          FL US  2850  -8150 00000 00
+GA        13    Georgia                          GA US  3250  -8350 00000 00
+HI        15    Hawaii                           HI US  2000 -15700 00000 00
+ID        16    Idaho                            ID US  4475 -11500 00000 00
+IL        17    Illinois                         IL US  4000  -8900 00000 00
+IN        18    Indiana                          IN US  4000  -8600 00000 00
+IA        19    Iowa                             IA US  4200  -9350 00000 00
+KS        20    Kansas                           KS US  3875  -9850 00000 00
+KY        21    Kentucky                         KY US  3725  -8500 00000 00
+LA        22    Louisiana                        LA US  3200  -9260 00000 00
+ME        23    Maine                            ME US  4500  -6950 00000 00
+MD        24    Maryland                         MD US  3925  -7670 00000 00
+MA        25    Massachusetts                    MA US  4225  -7225 00000 00
+MI        26    Michigan                         MI US  4300  -8450 00000 00
+MN        27    Minnesota                        MN US  4600  -9400 00000 00
+MS        28    Mississippi                      MS US  3250  -8950 00000 00
+MO        29    Missouri                         MO US  3850  -9300 00000 00
+MT        30    Montana                          MT US  4700 -10900 00000 00
+NE        31    Nebraska                         NE US  4160  -9950 00000 00
+NV        32    Nevada                           NV US  3950 -11700 00000 00
+NH        33    New Hampshire                    NH US  4300  -7150 00000 00
+NJ        34    New Jersey                       NJ US  4025  -7450 00000 00
+NM        35    New Mexico                       NM US  3450 -10625 00000 00
+NY        36    New York                         NY US  4275  -7500 00000 00
+NC        37    North Carolina                   NC US  3550  -7925 00000 00
+ND        38    North Dakota                     ND US  4760  -9950 00000 00
+OH        39    Ohio                             OH US  4000  -8250 00000 00
+OK        40    Oklahoma                         OK US  3560  -9725 00000 00
+OR        41    Oregon                           OR US  4425 -12000 00000 00
+PA        42    Pennsylvania                     PA US  4080  -7750 00000 00
+RI        44    Rhode Island                     RI US  4150  -7130 00000 00
+SC        45    South Carolina                   SC US  3400  -8100 00000 00
+SD        46    South Dakota                     SD US  4450  -9950 00000 00
+TN        47    Tennessee                        TN US  3550  -8600 00000 00
+TX        48    Texas                            TX US  3060  -9800 00000 00
+UT        49    Utah                             UT US  3950 -11100 00000 00
+VT        50    Vermont                          VT US  4440  -7250 00000 00
+VA        51    Virginia                         VA US  3775  -7830 00000 00
+WA        53    Washington                       WA US  4725 -12000 00000 00
+WV        54    West Virginia                    WV US  3850  -8050 00000 00
+WI        55    Wisconsin                        WI US  4500  -9000 00000 00
+WY        56    Wyoming                          WY US  4325 -10800 00000 00

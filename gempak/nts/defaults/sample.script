@@ -1,0 +1,51 @@
+#!/bin/csh -x
+
+#Sample script to generate a contour plot of the 500mb heights from
+#an input grid file.  Originally written by P.Neilley, RAP
+
+# syntax:  sample.script datafilename
+set filename=$1
+set ftime = 00		
+# Configure with your correct path name
+set infile = $GEMDATA/hds/$filename
+
+# Can loop over forecast times. If so, uncomment the following:
+#while ( $ftime <= 72 )
+
+# Run GDCNTR 
+    $OS_BIN/gdcntr << 	    GDCNTR_FLAG
+    gdf=$infile
+    garea=20;-130;50;0
+    glevel=500
+    gvcord=pres
+    gfunc=hght
+    proj=str/+90;-100;0.
+    line=31-17--1/1/3
+    cint=7/490/600
+    scale=-1
+    map=3
+    title=8
+    panel=0/8
+    latlon=0
+    device=xw
+    \$MAPFIL=loconh.gsf
+    ctype=c
+    fint = 6
+    fline = 31-17
+    clear=yes
+    \$RESPOND=YES
+    gdattim=/f$ftime
+    run
+
+    exit
+GDCNTR_FLAG
+
+# Uncomment the following if looping over many forecast times.
+#  @ ftime = $ftime + 6
+#end
+
+# End the graphics processes!  Comment this out if you'd like
+# the XW graphics to remain on your screen.  If you do this,
+# don't forget to run gpend BEFORE YOU LOG OUT!
+#$OS_BIN/gpend
+exit

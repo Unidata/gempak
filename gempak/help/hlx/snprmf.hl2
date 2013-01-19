@@ -1,0 +1,51 @@
+     SNPRMF
+
+     SNPRMF specifies the packing formation for the sounding file to be
+     created.  It may be the name of a sounding parameter packing file or
+     the information itself entered as follows:
+
+		SNPRMF = PRM1/MIN1-MAX1-RES1;PRM2/MIN2-MAX2-RES2; ...
+
+     where each PRMi, MINi, MAXi, and RESi is the parameter name, minimum,
+     maximum and resolution for a parameter to be included in the file.
+
+     If SNPRMF specifies a file name, then each line of the file must 
+     contain the following information separated by blanks or tabs:
+
+	parameter name			CHAR*4
+	minimum data value		REAL
+	maximum data value		REAL
+	resolution			REAL
+
+     The resolution should be an integral power of 10; otherwise the next 
+     smaller resolution will be used ( e.g., res = .5 will become .1).  
+
+     If the data are not to be packed, the minimum and maximum data values 
+     and the resolution should not be included.  Note that either all of 
+     the parameters or none of them must have packing information.
+
+     It is important to remember to include the vertical coordinate in
+     the parameter packing list.
+
+     SNMERG.PACK is a typical table used to pack sounding data.  
+     This file may be used as an example when creating a packing file.
+
+     Note that if MRGDAT is NO, the data will be packed using the standard 
+     packing for unmerged data, and the value of SNPRMF will be ignored.
+
+     When SNPRMF is used with program NAMSND, the user must supply the
+     parameter packing file name.  In this case, two more entries are 
+     required for lines of the file, in addition to the four listed 
+     above.  These entries must contain the GEMPAK names corresponding 
+     to the BUFR sounding data parameters listed in the NAMSND output file 
+     bufr_table.dump.  The order of the GEMPAK names must be the same as 
+     the order of the BUFR parameters, although the names themselves do 
+     not have to be the same.  The fifth column is the real conversion 
+     factor to be applied to the GEMPAK parameter named in the sixth 
+     (last) column.  Note that the last two columns of data are 
+     independent of the first four, and are used only for BUFR to GEMPAK
+     conversion.  The parameter named in column one does not necessarily
+     have any relationship to the one referenced in columns five and six. 
+     Diagnosed or extra computed parameters may be added anywhere in the
+     packing file for profile data.
+ 

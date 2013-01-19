@@ -1,0 +1,5 @@
+$CC $CFLAGS -c ccwords.c
+$FC $FFLAGS $LDFLAGS -o cwordsh.x_$NA_OS \
+	fcwords.f ccwords.o \
+	-lncepBUFR
+$RM *.o

@@ -1,0 +1,41 @@
+#! /bin/csh
+#
+# EZ500
+#
+# This script will plot the 500 mb absolute vorticity and heights
+# for all of the times for the given model.
+#
+#	Syntax:  ez500
+#
+##
+# Log:
+# D. Plummer/NMC	 1994
+# S. Jacobs/NMC		10/94		Clean up
+
+#
+# Set Up Local Variables
+#
+
+source settings
+
+gdcntr << EOF
+GDATTIM	= ALL
+DEVICE	= ${dev}
+!
+! Restore the 500 mb absolute vorticity
+restore ez/500absv
+CLEAR   = yes
+TITLE	= 5//${model} ~  @  HEIGHTS AND VORTICITY|~ @ HGHT AND VORTICITY
+r
+
+!
+! Restore the 500 mb heights
+restore ez/500hght
+CLEAR   = no
+TITLE	= 0
+r
+
+;2
+;l
+ex
+EOF

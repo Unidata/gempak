@@ -1,0 +1,30 @@
+#!/bin/csh
+#
+# RMSEM
+#
+#  Removes any IPC semaphores in use.
+#
+##
+# Log:
+#  K. Tyle/UAlbany       03/05   Based on rmque
+
+set name=`whoami`
+set c1=`echo $name | cut -c1-1`
+
+if ( ( $NA_OS == "linux" ) || ( $NA_OS == "linux64" ) ) then
+
+    foreach semid ( `ipcs -s | grep $name | awk '{print $2}'` )
+        set sid=`echo $semid|cut -f1 -d"$c1"`
+	echo Removing semaphore $sid
+	ipcrm sem $sid
+    end
+
+else
+
+    foreach semid ( `ipcs -ps | grep $name | awk '{print $2}'` )
+        set sid=`echo $semid|cut -f1 -d"$c1"`
+	echo Removing semaphore $sid
+	ipcrm -s $sid
+    end
+
+endif

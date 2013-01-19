@@ -1,0 +1,9 @@
+<doc xmlns:foo="http://foo.com/baz" xmlns:a="http://www.w3.org">
+ <p> This is a simple <a href="http://www.w3.org/XML/">XML</a>
+ document. </p>
+ <p foo="h&amp;j"> Life's a bitch, ain't it? </p>
+ <foo:bar>
+   <foo:a1/>
+   <foo:a2/>
+ </foo:bar>
+</doc>

@@ -1,0 +1,65 @@
+! SMW.BULL
+!
+! Location information for the following product:
+! Special_Marine_Warning.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+! Log:
+! A. Hardy/NCEP		11/04	separated out the lat/lons
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+WHAK51 PAFC     ALASKA/PACIFIC_RFC               AK US  6115 -14997     0
+WHAK51 PAFC     ANCHORAGE                        AK US  6135 -14997     0
+WHAK52 PAFC     ALASKA/PACIFIC_RFC               AK US  6155 -14997     0
+WHAK52 PAFC     ANCHORAGE                        AK US  6175 -14997     0
+WHAK57 PAJK     JUNEAU                           AK US  5836 -13458     0
+WHAK59 PAFG     FAIRBANKS                        AK US  6484 -14783     0
+WHCA52 TJSJ     SAN_JUAN                         PR US  1843  -6600     0
+WHHW50 PHFO     HONOLULU                         HI US  2129 -15780     0
+WHMY50 PGUM     GUAM                             GU US  1347  14478     0
+WHPN50 PHFO     HONOLULU                         HI US  2109 -15760     0
+WHPS50 PHFO     HONOLULU                         HI US  2129 -15780     0
+WHUS51 KAKQ     WAKEFIELD                        VA US  3697  -7700     0
+WHUS51 KBOX     TAUNTON                          MA US  4195  -7112     0
+WHUS51 KBUF     BUFFALO                          NY US  4293  -7870     0
+WHUS51 KCAR     CARIBOU                          ME US  4577  -6862     0
+WHUS51 KCLE     CLEVELAND                        OH US  4140  -8186     0
+WHUS51 KGYX     GRAY                             ME US  4388  -7025     0
+WHUS51 KLWX     BALTIMORE_MD/_WASHINGTON_DC      VA US  3897  -7747     0
+WHUS51 KOKX     NEW_YORK                         NY US  4086  -7286     0
+WHUS51 KPHI     MOUNT_HOLLY                      NJ US  4000  -7480     0
+WHUS52 KCHS     CHARLESTON                       SC US  3288  -8001     0
+WHUS52 KKEY     KEY_WEST                         FL US  2457  -8178     0
+WHUS52 KILM     WILMINGTON                       NC US  3427  -7791     0
+WHUS52 KJAX     JACKSONVILLE                     FL US  3047  -8169     0
+WHUS52 KMFL     MIAMI                            FL US  2575  -8037     0
+WHUS52 KMHX     NEWPORT/MOREHEAD_CITY            NC US  3477  -7687     0
+WHUS52 KMLB     MELBOURNE                        FL US  2811  -8065     0
+WHUS52 KTAE     TALLAHASSEE                      FL US  3045  -8430     0
+WHUS52 KTBW     TAMPA_BAY_AREA/RUSKIN            FL US  2770  -8240     0
+WHUS53 KAPX     GAYLORD                          MI US  4490  -8470     0
+WHUS53 KDLH     DULUTH                           MN US  4683  -9220     0
+WHUS53 KDTX     DETROIT                          MI US  4268  -8347     0
+WHUS53 KGRB     GREEN_BAY                        WI US  4449  -8811     0
+WHUS53 KGRR     GRAND_RAPIDS                     MI US  4288  -8554     0
+WHUS53 KIWX     NORTHERN_INDIANA                 IN US  4134  -8569     0
+WHUS53 KLOT     CHICAGO                          IL US  4159  -8808     0
+WHUS53 KMKX     MILWAUKEE/SULLIVAN               WI US  4295  -8854     0
+WHUS53 KMQT     MARQUETTE                        MI US  4652  -8754     0
+WHUS54 KBRO     BROWNSVILLE                      TX US  2590  -9741     0
+WHUS54 KCRP     CORPUS_CHRISTI                   TX US  2777  -9750     0
+WHUS54 KHGX     HOUSTON/GALVESTON                TX US  2946  -9506     0
+WHUS54 KLCH     LAKE_CHARLES                     LA US  3012  -9320     0
+WHUS54 KLIX     NEW_ORLEANS                      LA US  3032  -8981     0
+WHUS54 KMOB     MOBILE                           AL US  3067  -8823     0
+WHUS56 KEKA     EUREKA                           CA US  4079 -12416     0
+WHUS56 KLOX     LOS_ANGELES/OXNARD               CA US  3420 -11912     0
+WHUS56 KMFR     MEDFORD                          OR US  4236 -12287     0
+WHUS56 KMTR     SAN_FRANCISCO                    CA US  3659 -12184     0
+WHUS56 KPQR     PORTLAND                         OR US  4556 -12252     0
+WHUS56 KSEW     SEATTLE                          WA US  4768 -12225     0
+WHUS56 KSGX     SAN_DIEGO                        CA US  3290 -11705     0
+WHZS50 NSTU     PAGO_PAGO                        -- ZM -1432 -17072     0

@@ -1,0 +1,18 @@
+
+GPCLOSE closes the specified graphics output window or file.
+
+INPUT PARAMETERS
+
+
+PROGRAM DESCRIPTION
+
+    GPCLOSE closes the graphics output window or file 
+    specified in the DEVICE parameter.  
+
+EXAMPLES
+
+    1. Close the window named "window2".
+
+	DEVICE	= xw|window2
+
+ERROR MESSAGES

@@ -1,0 +1,30 @@
+! WSV.BULL
+!
+! Location information for the following product:
+! Volcanic_Activity_Sigmet.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+! Log:
+! A. Hardy/NCEP		11/04	separated out the lat/lons
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+WVAK20 PANC     ANCHORAGE_INTL_ARPT              AK US  6076 -15042     0
+WVAK21 PANC     ANCHORAGE_INTL_ARPT              AK US  6096 -15022     0
+WVAK21 PAWU     ALASKAN_AVIATION_WEATHER_UNIT    AK US  6075 -15037     0
+WVAK22 PANC     ANCHORAGE_INTL_ARPT              AK US  6116 -15002     0
+WVAK22 PAWU     ALASKAN_AVIATION_WEATHER_UNIT    AK US  6095 -15017     0
+WVAK23 PANC     ANCHORAGE_INTL_ARPT              AK US  6136 -14982     0
+WVAK23 PAWU     ALASKAN_AVIATION_WEATHER_UNIT    AK US  6115 -14997     0
+WVAK24 PANC     ANCHORAGE_INTL_ARPT              AK US  6156 -14962     0
+WVAK24 PAWU     ALASKAN_AVIATION_WEATHER_UNIT    AK US  6135 -14977     0
+WVAK25 PAWU     ALASKAN_AVIATION_WEATHER_UNIT    AK US  6155 -14957     0
+WVPA20 PHFO     HONOLULU                         HI US  2129 -15780     0
+WVPA21 PHFO     HONOLULU                         HI US  2159 -15802     0
+WVPQ21 PGUM     GUAM                             GU US  1327  14478     0
+WVPQ22 PGUM     GUAM                             GU US  1347  14478     0
+WVPQ23 PGUM     GUAM                             GU US  1367  14478     0
+WVPQ24 PGUM     GUAM                             GU US  1387  14478     0
+WVPQ25 PGUM     GUAM                             GU US  1407  14478     0

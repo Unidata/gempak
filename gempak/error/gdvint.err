@@ -1,0 +1,22 @@
+
+! This is the error file for the vertical interpolation.
+!
+ +4	! Warning--no surface elevation grid exists.
+ +3	! No pressure on this level.
+ +2	! No output vertical coordinate value on this level.
+ +1	! All values are missing.
+ -1	! Fatal error initializing TAE.
+ -2	! Fatal error reading TAE parameters.
+ -3	! Fatal error initializing GEMPLT.
+ -4	! No thermodynamic data in the input file.
+ -5	! Navigation blocks are different.
+ -6	! Required surface pressure is absent.
+ -7	! Required surface elevation is absent.
+ -8	! Too few levels to interpolate this parameter.
+ -9	! No parameters to interpolate -- check GVCORD, GDATTIM.
+-10	! Top pressure for SGMA or ETA missing.
+-11	! Subset region is invalid.
+-12	! File !AS cannot be opened.
+-13	! User specified coordinates are invalid.
+-14	! Levels not correctly specified.
+-15	! Grid size is too large.

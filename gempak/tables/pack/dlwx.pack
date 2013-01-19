@@ -1,0 +1,20 @@
+!DLWX.PACK
+!
+!This table is the packing table for daily weather map parameters.
+!
+!*Log:
+!
+!D. Kidwell  	 3/99
+!A. Hardy/GSC    4/99	Added P00Z, P06Z, P12Z, P18Z
+!				
+!
+P24I	     0.	        40.	 .01 
+TDXC      -100.         60.      .1
+T00X      -100.         60.      .1
+T06X	  -100.         60.      .1
+T12N      -100.         60.      .1
+T18N      -100.         60.      .1
+P00Z	     0.	        40.	 .01 
+P06Z	     0.	        40.	 .01 
+P12Z	     0.	        40.	 .01 
+P18Z	     0.	        40.	 .01 

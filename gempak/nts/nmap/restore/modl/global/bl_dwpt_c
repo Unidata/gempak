@@ -1,0 +1,37 @@
+!
+! Restore File : bl_dwpt_c
+!
+! Log:
+! J. Carr/HPC         10/98     Initial creation
+!
+GDATTIM fall
+GLEVEL  9950
+GVCORD  SGMA
+PANEL   0                                                                       
+SKIP    0
+SCALE   0
+GDPFUN  dwpc    !dwpc  !dwpc !kntv(wnd@9950%SGMA)
+TYPE    c       !c     !c    !b
+CONTUR  1                                                                       
+CINT    4/-100/0!4/4/16!4/20 
+LINE    19/1/2  !23/1/2!3/1/2
+FINT    0
+FLINE   0
+HILO    0
+HLSYM   0
+CLRBAR  0
+WIND    9/0.7/2/112
+REFVEC                                                                          
+TITLE   1/-1/~ BL WIND (KTS) AND DEW POINT!0
+TEXT    1/21/1/hw
+CLEAR   yes                                                                     
+STNPLT                                                                          
+SATFIL                                                                          
+RADFIL                                                                          
+STREAM                                                                          
+POSN    4                                                                       
+COLORS  2                                                                       
+MARKER  2                                                                       
+GRDLBL  5                                                                       
+LUTFIL  none
+FILTER  yes

@@ -1,0 +1,12 @@
+! PMDEPD.BULL
+!
+! Location information for the following product:
+! Prognostic_Meteorological_Discussion:
+! Preliminary_Extended_Discussions
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+FXUS02 KWNH     NCEP_HPC                         MD US  3881  -7687     0

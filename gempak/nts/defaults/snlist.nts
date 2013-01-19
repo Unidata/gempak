@@ -1,0 +1,9 @@
+SNFILE                                                                          
+AREA                                                                            
+DATTIM                                                                          
+SNPARM  dset                                                                    
+STNDEX  lift                                                                    
+LEVELS  all                                                                     
+VCOORD  pres                                                                    
+OUTPUT  t                                                                       
+MRGDAT  yes                                                                     

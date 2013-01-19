@@ -1,0 +1,15 @@
+! DL error file
+!
+ +1	! Extra argument is specified.
+ -1	! Operator !AS is not recognized.
+ -2	! No argument is specified.
+ -3	! Arguments contain both single level and two-level layer functions.
+ -4	! Vertical coordinate has to be PRES.
+ -5	! No level found.
+ -6	! Layer function embedded in layer diagnostics.
+ -7	! Multiple levels or a layer required.
+ -8	! Cannot parse arguments.
+ -9	! Layer diagnostics cannot be computed.
+-10	! GLEVEL is invalid.
+-11	! Colon is not allowed in GLEVEL for layer functions.
+-12	! An argument is not valid.

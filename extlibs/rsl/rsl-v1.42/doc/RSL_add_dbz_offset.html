@@ -1,0 +1,43 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="GENERATOR" CONTENT="Mozilla/4.05 [en] (X11; U; Linux 2.0.32 i686) [Netscape]">
+</HEAD>
+<BODY>
+<A HREF="index.html"><IMG SRC="rsl.gif" ></A>&nbsp;
+<HR>
+<H1>
+RSL_add_dbz_offset...</H1>
+
+<HR>
+<H3>
+Synopsis</H3>
+<B>#include "rsl.h"</B>
+<BR><B>void RSL_add_dbz_offset_to_ray(<A HREF="RSL_ray_struct.html">Ray</A> *r, float dbz_offset);</B>&nbsp;
+<BR><B>void RSL_add_dbz_offset_to_sweep(<A HREF="RSL_sweep_struct.html">Sweep </A> *s, float dbz_offset);</B>&nbsp;
+<BR><B>void RSL_add_dbz_offset_to_volume(<A HREF="RSL_volume_struct.html">Volume </A> *v, float dbz_offset);</B>&nbsp;
+
+<HR>
+<H3>
+Description</H3>
+
+<B>RSL_add_dbz_offset_to_ray</B> Adds a calibration factor 'dbz_offset' to a ray's range bins
+containing valid values.  Valid values are those other than NOECHO.&nbsp;
+<BR>
+<BR>
+<B> RSL_add_dbz_offset_to_sweep </B> Calls RSL_add_dbz_offset_to_ray for each ray in the sweep.&nbsp;
+<BR>
+<BR>
+<B> RSL_add_dbz_offset_to_volume </B> Calls RSL_add_dbz_offset_to_sweep for each sweep in the volume.&nbsp;
+<BR>
+<HR>
+<H3>
+Return value</H3>
+None.
+<BR>
+<BR>
+<HR>
+
+<P>Author: <A HREF="mike.kolander.html">Mike Kolander</A>.
+</BODY>
+</HTML>

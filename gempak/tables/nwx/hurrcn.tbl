@@ -1,0 +1,16 @@
+!
+!  Station table for nwx hurricane bulletins 
+!
+!       This table is ordered alphabetically by the second column
+!       to facilitate more efficient table searching.
+!
+72202  KMIA    MIAMI_INTL_AIRP                   FL  US   2582   -8028      4
+99999  KNHC    NATIONAL_HURRICANE_CENTER(TPC)    FL  US   2582   -8028      4
+99999  KWBC    WASHINGTON/DULLES                 VA  US   3895   -7745     98
+99999  KWNH    WASHINGTON/DULLES                 VA  US   3895   -7745     98
+99999  NFFN    NANDI/NADI_INTL                   FJ  FJ  -1775   17745     18
+99999  PGTW    GUAM,MARIANA_IS                   MY  MY   1355   14483    111
+99999  PHNL    HONOLULU_INTL/OAHU                HI  HI   2132  -15792      4
+99999  PHFO    HONOLULU/UNIV_OF_HI-MANOA_CAMPUS  HI  US   2190  -15842     20
+99999  TFFF    LE_LAMENTIN_______&               MR  MR   1460   -6100      4
+99999  TJSJ    SAN_JUAN_INTL_ARPT                PU  PU   1843   -6600     19

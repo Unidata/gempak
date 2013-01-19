@@ -1,0 +1,28 @@
+!	This is the SIGBUFR error file
+!
+! log
+!------
+! D. Kidwell/NCEP	 1/02
+! M. Li/SAIC		12/04	Deleted -8, modified -7
+!
+
+   6    ! Feature count is !AS
+   5    ! Returned value for feature is !AS
+   4    ! Found feature !AS
+   3    ! Time code is !AS
+   2    ! Center id is !AS
+   1    ! BUFR_File is !AS
+  -1 	! GEMPAK date/time and valid hour must be on command line.
+  -2 	! No BUFR files found for !AS
+  -3 	! Valid hour must be 18 or 24, not !AS
+  -4 	! Could not initialize BUFR info structure.
+  -5 	! Error in BUFR_Init for file !AS
+  -6 	! Error in BUFR_Get_Value for file !AS
+  -7 	! Error in chart level !AS 
+ -10 	! End of dataset.
+ -11 	! File !AS not found.
+ -12 	! Error getting decoded value.
+ -13 	! End of file.
+ -14 	! Unknown value !AS returned by BUFR_Get_Value().
+ -15 	! End of message.
+ -16 	! File !AS is not a BUFR file.

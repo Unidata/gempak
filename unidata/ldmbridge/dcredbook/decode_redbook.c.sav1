@@ -1,0 +1,317 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <time.h>
+
+#include <errno.h>
+
+#include <dccmn.h>
+
+#include <uscore.h>
+
+#ifdef UNDERSCORE
+#define aw_read	aw_read_
+#define gqmode	gqmode_
+#endif
+
+extern int errno;
+
+decode_redbook(char *device, char *rawfile, int *iret)
+{
+int i, ier;
+int idrpfl;
+int color, itype, iwidth,  arg1=0, arg2=0;
+int in_file, out_file;
+mode_t omode=S_IRUSR|S_IWUSR|S_IRGRP|S_IROTH;
+int START=0;
+float lat[4],lon[4],fproj[3];
+struct tm redtime;
+time_t prodtime;
+
+char outfilenm[256],outtmpl[256],*outtemp=NULL,*pos,*cpos,*tempfil,*tempdev=NULL,buf[512],tstr[128],outrstr[512];
+char DEV[10],*optparms=NULL,outdev[512];
+char pnam[7],ptype[10];
+char PIL[10],TITLE[256],prod1[80],prod2[80];
+char sysline[512];
+char **aryptr;
+static char proj[50];
+char garea[30];
+char gemtime[20];
+char errstr[81];
+static char imgfls[] = " ";
+static char subtok[]="%P";
+/*static char mapfil[] = "hipowo.cia ";*/
+static char mapfil[] = "mepowo.gsf ";
+static char map[] = "2/1/1 ";
+static char dbug[] = " ";
+FILE *fp;
+
+*iret = 0;
+
+aryptr = (char **) malloc(sizeof(char *) * 1);
+aryptr[0] = (char *)malloc(80);
+
+outtemp = (char *)tempnam(NULL, ".rdbk");
+
+outfilenm[0] = '\0';
+DEV[0] = '\0';
+
+pos = (char *)cst_split(device,'|',9,DEV,&ier);
+if(ier != 0)
+   {
+   printf("error determining device driver name %s\n",DEV);
+   return;
+   }
+
+if(pos != NULL)
+   {
+   optparms = (char *)cst_split(pos,'|',256,outfilenm,&ier);
+   if(optparms != NULL) optparms--;
+   }
+
+
+
+
+in_file = STDIN_FILENO;
+out_file = mkdirs_open(outtemp,O_WRONLY|O_CREAT|O_TRUNC,omode);
+if(out_file < 0)
+   {
+   sprintf(errstr,"could not open %s\0",outtemp);
+   dc_wclg(0,"DCREDBOOK",-1,errstr,&ier);
+   *iret = -1;
+   return;
+   }
+
+tstr[0] = '\0';
+while((i = read(in_file,buf,512)) > 0) 
+   {
+   write(out_file,buf,i);
+   if(START == 0)
+      {
+      START++;
+      lat[0] = -9999; lon[0] = -9999; fproj[0] = -9999; pnam[0] = '\0';
+      redbook_header(buf,tstr,lat,lon,fproj,pnam,&ier);
+      /*printf("look tstr %s [%f %f proj %f %f %f]\n",tstr,lat[0],lon[0],
+              fproj[0],fproj[1],fproj[2]);
+      printf("error %d check pnam %s\n",ier,pnam);*/
+      if(ier != 0)
+         {
+	 close(out_file);
+	 unlink(outtemp);
+	 free(outtemp);
+	 *iret = ier;
+	 return;
+         }
+      }
+   }
+close(out_file);
+
+i=1;
+gg_init(&i, &ier);
+
+/* Add call to query mode to load this routine...since gemlib
+** routine gp_azdr will try to access this routine later
+*/
+gqmode(&i,&ier);
+
+if(lat[0] != -9999)
+   {
+   sprintf(garea,"%6.2f;%7.2f;%6.2f;%7.2f\0",lat[0],lon[0],lat[1],lon[1]);
+   }
+else
+   sprintf(garea,"AFNA\0");
+
+sprintf(ptype,"STR\0");
+if(pnam[0] != '\0')
+   {
+   if(strcmp(pnam,"PNHE01") == 0)
+      sprintf(ptype,"STR\0");
+   else if(strcmp(pnam,"PNAM02") == 0)
+      sprintf(ptype,"STR\0");
+   else
+      printf("unknown pnam %s\n",pnam);
+   }
+
+if(fproj[0] != -9999)
+   sprintf(proj,"%s/%.2f;%.2f;%.2f/NM\0",ptype,fproj[0],fproj[1],fproj[2]);
+else
+   sprintf(proj,"STR/90;-105;0/NM\0");
+
+
+PIL[0] = '\0'; TITLE[0] = '\0';
+if(tstr[0] != '\0')
+   {
+   if((cpos = strstr(tstr,"NMCGPH")) != NULL)
+      {
+      strncat(PIL,cpos+6,3);
+      fp = (FILE *)cfl_tbop("redbook.tbl","nafos",&ier);
+      if(fp != NULL)
+         {
+         ier = 0;
+         while(ier == 0)
+            {
+            cfl_trln(fp,255,buf,&ier);
+            if(strncmp(buf,PIL,strlen(PIL)) == 0)
+               {
+               cpos = strchr(buf,' ');
+               if(cpos == NULL)
+                  strcat(TITLE,buf);
+               else
+                  {
+                  strncat(TITLE,buf,cpos-buf);
+                  while((cpos[0] != '\n') && isspace(cpos[0])) cpos++;
+	          cst_clst(cpos,' ',garea,1,80,aryptr,&i,&ier);
+                  if((i > 0)&&(strcmp(aryptr[0],"*") != 0)) sprintf(garea,"%s\0",aryptr[0]);
+                  }
+	       dc_wclg(0,"DCREDBOOK",1,TITLE,&ier);
+               ier = -10;
+               }
+            }
+         cfl_clos(fp,&ier);
+         }
+      } 
+   else if(tstr[0] == '/') /* use 2nd & third field */
+      {
+      cst_nocc(tstr+1,'/',2,0,&i,&ier);
+      prod1[0] = '\0';
+      strncat(prod1,tstr+1,i);
+      sprintf(TITLE,"UNKNOWN_%s\0",prod1);
+      fp = (FILE *)cfl_tbop("afosgraph.tbl","nafos",&ier);
+      if(fp != NULL)
+         {
+         ier = 0;
+         while(ier == 0)
+            {
+            cfl_trln(fp,255,buf,&ier);
+            if(strncmp(buf,prod1,strlen(prod1)) == 0)
+               {
+               TITLE[0] = '\0';
+               cpos = strchr(buf,' ');
+               cst_nocc(prod1,'/',1,0,&i,&ier);
+	       strncat(TITLE,prod1,i);
+               cst_nocc(buf,'-',1,0,&i,&ier);
+               if(cpos == NULL)
+                  {
+                  strcat(TITLE,buf+i);
+                  }
+               else
+                  {
+                  strncat(TITLE,buf+i,cpos-buf-i);
+                  while((cpos[0] != '\n') && isspace(cpos[0])) cpos++;
+                  cst_clst(cpos,' ',garea,1,80,aryptr,&i,&ier);
+                  if((i > 0)&&(strcmp(aryptr[0],"*") != 0)) sprintf(garea,"%s\0",aryptr[0]);
+                  }
+               ier = -10;
+               }
+            }
+         cfl_clos(fp,&ier);
+         }
+      dc_wclg(0,"DCREDBOOK",2,TITLE,&ier);
+      }
+   else
+      {
+      sprintf(TITLE,"UNKNOWN\0");
+      dc_wclg(0,"DCREDBOOK",3,TITLE,&ier);
+      }
+ 
+   cst_nocc(tstr,'/',3,0,&i,&ier);
+   gemtime[0] = '\0';
+   strncat(gemtime,tstr+i+3,6);
+   strncat(gemtime,"/",1);
+   strncat(gemtime,tstr+i+10,4);
+   cfl_mnam(gemtime,outfilenm,outtmpl,&ier);
+   strcpy(outfilenm,outtmpl);
+   }
+
+
+ier = 0;
+while((strstr(outfilenm,subtok) != 0)&&(ier == 0))
+   cst_rpst(outfilenm,subtok,TITLE,outfilenm,&ier);
+
+if(strlen(outfilenm) > 0)
+   {
+   pos = strrchr(outfilenm,'/');
+   if(pos != NULL)
+      { 
+      char stripped[PATH_MAX+1];
+      i = pos - outfilenm;
+      memcpy(stripped, outfilenm, i);
+      stripped[i] = 0;
+      ier = mkdirs(stripped,(omode | 0111));
+      }
+
+   tempdev = (char *)tempnam(NULL, ".rdbk");
+   sprintf(outdev,"%s|%s\0",DEV,tempdev);
+   if(optparms != NULL) strcat(outdev,optparms);
+   gg_sdev(outdev, &ier, strlen(outdev));
+   }
+else
+   gg_sdev(device, &ier, strlen(device));
+
+
+
+gg_maps ( proj, garea, imgfls, &idrpfl, &ier, strlen(proj),strlen(garea),strlen(imgfls));
+
+gstanm(&ier);
+
+gsmfil(mapfil, &ier, strlen(mapfil));
+gg_map(map, &ier, strlen(map));
+
+if((strncmp(device,"ps",2) == 0)||
+   (strncmp(device,"PS",2) == 0))
+   color = 4;
+else
+   color = 5;
+
+gscolr(&color, &ier);
+itype = 1;
+iwidth = 1;
+gsline(&itype, &arg1, &iwidth, &arg2, &ier );
+aw_read(outtemp, dbug, &ier, strlen(outtemp)+1, strlen(dbug));
+
+geplot(&ier);
+genanm(&ier);
+
+i=0;
+gendp(&i, &ier);
+
+if(strlen(outfilenm) != 0)
+   {
+   sprintf(sysline,"mv %s %s\0",tempdev,outfilenm);
+   if( (ier = system(sysline)) != 0)
+      {
+      sprintf(errstr,"could not move %s to %s\0",tempdev,outfilenm);
+      dc_wclg(0,"DCREDBOOK",-1,errstr,&ier);
+      }
+   free(tempdev);
+   }
+
+
+if(rawfile[0] == '\0')
+   unlink(outtemp);
+else
+   {
+   ier = 0;
+   while((strstr(rawfile,subtok) != 0)&&(ier == 0))
+      cst_rpst(rawfile,subtok,TITLE,rawfile,&ier);
+
+   cfl_mnam(gemtime,rawfile,outtmpl,&ier);
+   strcpy(rawfile,outtmpl);
+
+   sprintf(sysline,"mv %s %s\0",outtemp,rawfile);
+   if( (ier = system(sysline)) != 0)
+      {
+      sprintf(errstr,"could not move %s to %s\0",outtemp,rawfile);
+      dc_wclg(0,"DCREDBOOK",-1,errstr,&ier);
+      }
+
+   }
+
+if(outtemp != NULL) free(outtemp);
+
+nbull++;
+}

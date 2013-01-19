@@ -1,0 +1,11 @@
+     STAT
+
+     STAT is the issuing status of the GFA freezing levels. The valid 
+     values are:
+
+               NRML		normal
+               COR		correction
+	       AMD		amended
+
+    The default value is NRML.
+

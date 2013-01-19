@@ -1,0 +1,62 @@
+! STATES.STN
+!
+! This table contains the station information to be used
+! for the state centroids.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!STID    STNM   NAME                             ST CO   LAT    LON  ELEV  PRI
+!(8)     (6)    (32)                            (2)(2)   (5)    (6)   (5)  (4)
+!
+AL       000010 Alabama                          AL US  3289  -8674     0    0
+AK       000020 Alaska                           AK US  6604 -15367     0    0
+AZ       000030 Arizona                          AZ US  3430 -11154     0    0
+AR       000040 Arkansas                         AR US  3500  -9245     0    0
+CA       000050 California                       CA US  3736 -12046     0    0
+CO       000060 Colorado                         CO US  3900 -10559     0    0
+CT       000070 Connecticut                      CT US  4166  -7258     0    0
+DE       000080 Delaware                         DE US  3884  -7540     0    0
+FL       000090 Florida                          FL US  2821  -8150     0    0
+GA       000100 Georgia                          GA US  3266  -8346     0    0
+HI       000110 Hawaii                           HI US  1942 -15553     0    0
+ID       000120 Idaho                            ID US  4385 -11489     0    0
+IL       000130 Illinois                         IL US  4025  -8909     0    0
+IN       000140 Indiana                          IN US  4002  -8612     0    0
+IA       000150 Iowa                             IA US  4205  -9339     0    0
+KS       000160 Kansas                           KS US  3861  -9832     0    0
+KY       000170 Kentucky                         KY US  3766  -8455     0    0
+LA       000180 Louisiana                        LA US  3149  -9261     0    0
+ME       000190 Maine                            ME US  4526  -6914     0    0
+MD       000200 Maryland                         MD US  3923  -7696     0    0
+MA       000210 Massachusetts                    MA US  4236  -7204     0    0
+MI       000220 Michigan                         MI US  4495  -8471     0    0
+MN       000230 Minnesota                        MN US  4603  -9456     0    0
+MS       000240 Mississippi                      MS US  3273  -8964     0    0
+MO       000250 Missouri                         MO US  3837  -9237     0    0
+MT       000260 Montana                          MT US  4706 -10950     0    0
+NE       000270 Nebraska                         NE US  4135  -9965     0    0
+NV       000280 Nevada                           NV US  3962 -11686     0    0
+NH       000290 New_Hampshire                    NH US  4362  -7157     0    0
+NJ       000300 New_Jersey                       NJ US  4016  -7446     0    0
+NM       000310 New_Mexico                       NM US  3439 -10606     0    0
+NY       000320 New_York                         NY US  4315  -7485     0    0
+NC       000330 North_Carolina                   NC US  3548  -7875     0    0
+ND       000340 North_Dakota                     ND US  4745 -10043     0    0
+OH       000350 Ohio                             OH US  4025  -8299     0    0
+OK       000360 Oklahoma                         OK US  3555  -9722     0    0
+OR       000370 Oregon                           OR US  4401 -12046     0    0
+PA       000380 Pennsylvania                     PA US  4087  -7782     0    0
+RI       000390 Rhode_Island                     RI US  4166  -7164     0    0
+SC       000400 South_Carolina                   SC US  3384  -8072     0    0
+SD       000410 South_Dakota                     SD US  4440 -10028     0    0
+TN       000420 Tennessee                        TN US  3579  -8650     0    0
+TX       000430 Texas                            TX US  3165  -9918     0    0
+UT       000440 Utah                             UT US  3900 -11154     0    0
+VT       000450 Vermont                          VT US  4432  -7265     0    0
+VA       000460 Virginia                         VA US  3751  -7876     0    0
+WA       000470 Washington                       WA US  4737 -12021     0    0
+WV       000480 West_Virginia                    WV US  3853  -8079     0    0
+WI       000490 Wisconsin                        WI US  4440  -8971     0    0
+WY       000500 Wyoming                          WY US  4299 -10763     0    0
+DC       000510 District_of_Columbia             DC US  3892  -7704     0    0

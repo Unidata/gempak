@@ -1,0 +1,30 @@
+GDOUTF  Output grid file                                                        
+GUESS   Guess file                                                              
+PROJ    Map projection/angles/margins|drop flag                                 
+GRDAREA Area covered by grid                                                    
+KXKY    Number of grid points in x;y                                            
+MAXGRD  Maximum number of grids                                                 
+CPYFIL  Grid file whose navigation is to be used in new grid file | subarea     
+ANLYSS  Grid analysis block                                                     
+CNTRFL  Contour file                                                            
+GDATTIM Grid date/time                                                          
+GFUNC   Scalar grid                                                             
+GLEVEL  Grid level                                                              
+GVCORD  Grid vertical coordinate                                                
+KEYCOL  Key color                                                               
+KEYLINE Key line (LINE or SPLN/subtyp)                                          
+OLKDAY  Day of extended outlook                                                 
+GGLIMS  Grid value limitations and control                                      
+HISTGRD Toggle writing history grid (y/n)                                       
+BOUNDS  BOUNDS name|<key>key_name|mask_flag                                     
+TYPE    GDPLOT2 function processing type                                        
+GAMMA   Convergence parameter                                                   
+SEARCH  Search radius/Extrapolation                                             
+NPASS   Number of passes                                                        
+QCNTL   Quality control threshold                                               
+GUESFUN Guess grid                                                              
+CATMAP  s1=x;s2=y;...sN=z                                                       
+DISCRETEa-b=x;c-d=y;e-f=z                                                       
+DLINES  [yes/no][;yes/no] | epsilon                                             
+GGVGF   VGF file                                                                
+EDGEOPTSOption to specify boundary conditions.                                  

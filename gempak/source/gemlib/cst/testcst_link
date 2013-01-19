@@ -1,0 +1,3 @@
+$CC $CFLAGS $LDFLAGS -o $OS_BIN/testcst \
+		testcst.c $CGEMLIB
+$RM *.o

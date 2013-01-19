@@ -1,0 +1,9 @@
+!	GDSTAT error file
+!
+-1	! Fatal error initializing TAE.
+-2	! Fatal error reading TAE parameters.
+-3	! Fatal error initializing GEMPLT.
+-4	! No valid times found in grid file.
+-6 	! There are fewer than four grids.
+-7	! Error writing grid !AS to output file.
+-8	! Grid navigation has changed.

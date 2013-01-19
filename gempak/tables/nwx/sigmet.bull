@@ -1,0 +1,17 @@
+! SIGMET.BULL
+!
+! This table contains the bulletin/station information to be used
+! with the SIGMETS.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+!
+WSUS1  KDFW     DALLAS/FT.WORTH                  TX US  3290  -9703   182
+WSUS1  KBOS     BOSTON/LOGAN_IN                  MA US  4237  -7103     9
+WSUS1  KCHI     CHICAGO                          IL US  4198  -8790   205
+WSUS1  KSLC     SALT_LAKE_CITY                   UT US  4078 -11197  1288
+WSUS1  KSFO     SAN_FRANCISCO                    CA US  3761 -12238     5
+WSUS1  KMIA     MIAMI                            FL US  2582  -8028     4

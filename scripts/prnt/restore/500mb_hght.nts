@@ -1,0 +1,23 @@
+GLEVEL  500                                                                     
+GVCORD  PRES                                                                    
+PANEL   0                                                                       
+SKIP    0                                                                       
+SCALE   -1                                                                   
+GFUNC   hght                                                
+GDPFUN  hght                                                
+CTYPE   c
+TYPE    c
+CONTUR  2                                                                       
+CINT    6                                                              
+LINE    1//3                                                         
+FINT    14;20;24
+FLINE   0;18;14;12
+HILO    
+HLSYM   
+CLRBAR  
+GVECT                                                                           
+WIND                                                                            
+REFVEC                                                                          
+TITLE   1/-1/FCST 500MB HEIGHT VALID ~!0    
+TEXT    1//4/sw
+STNPLT                                                                          

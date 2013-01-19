@@ -1,0 +1,45 @@
+!* LPF.TBL
+!************************************************************************
+!*                                                                      *
+!*                 LPF user table in NMAP (lpf.tbl)			*
+!*                                                                      *
+!* This table is used for setting up the LPF user information in NMAP. 	*
+!*                                                                      *
+!* title:  title name shown in the data source selection box   		*
+!*                                                                      *
+!* user_login:  user login name   					*
+!*                                                                      *
+!* lpf_dir:  LPF file directory full path name for that user     	*
+!*                                                                      *
+!* LOG:                                                                 *
+!* T. Lee/SAIC		04/02	copy from spf.tbl     			*
+!************************************************************************
+!
+!
+!title		lpf_dir 
+!------------------------------------------------------------------------
+test_data	$GEMDATA/lpf
+bawx		/export/hbawx1/bawx
+eff1		/export/heff1/eff1
+eff2		/export/hww1/eff2
+eff3		/export/lnx159/eff3
+eff4		/export/lnx162/eff4
+nppu2		/export/hqpf1/nppu2
+nppu3		/export/hqpf2/nppu3
+medr		/export/hmedr2/medr
+medr3		/export/hmedr1/medr3
+avn3		/export/hdwm/avn3
+sfc1		/export/hsfc1/sfc1
+dwm		/export/hdwm/dwm
+id0		/export/sgi112/id0
+id1		/export/lnx114/id1
+id2		/export/lnx130/id2
+id3		/export/hp61/id3
+id5		/export/sgi20/id5
+id6		/export/sgi112/id6
+prism		/export-2/hp46/modtdg/joey/prism
+Pac_HS		/home/hp2/marine
+Atl_HS		/home/hp12/marine2
+Pac_Reg		/home/hp41/marine3
+Atl_Reg		/home/hp49/marine4
+HS_Outlook	/home/hp68/marine5

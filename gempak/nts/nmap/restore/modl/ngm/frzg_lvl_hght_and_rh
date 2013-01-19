@@ -1,0 +1,40 @@
+!
+! Restore File : frzg_lvl_hght_and_rh
+!
+! Log:
+! D.W.Plummer/NCEP	 2/97	Initial creation
+! D.W.Plummer/NCEP	 8/97	Added FILTER parameter and changed TEXT value
+!
+GDATTIM fall                                                                    
+GLEVEL  0!0!0!0!9700:10000
+GVCORD  FRZL!FRZL!FRZL!FRZL!sgma
+PANEL   0                                                                       
+SKIP    0/1                                                                     
+SCALE   0!-3!-2!0!0
+GDPFUN  (relh)   !mul(3.28,hght) !mul(3.28,hght) !sub(hght,hght@0%none) !tmpc
+TYPE    c/f      ! c             !c              !c/f                   !c
+CONTUR  1                                                                       
+CINT    70;90;95!1;2;3;5;6;7;9;10;11;13;14;15 !40;80;120;160 !-100;25 !0;100
+LINE    32//1/0  !6/1/2/0                        !29/1/4    !8/1/5   !15/1/4
+FINT    70;90;95    !!!-100;25!
+FLINE   0;24;23;22  !!!8;8;0!
+HILO    0
+HLSYM   0
+CLRBAR  1!0
+WIND    0
+REFVEC                                                                          
+TITLE   1/-1/~ FREEZING LVL HGHT & RH & BL1 0C TEMPERATURE!0
+TEXT    1/22/2/hw                                                             
+CLEAR   yes                                                                     
+DEVICE  xw                                                                      
+STNPLT                                                                          
+SATFIL                                                                          
+RADFIL                                                                          
+LUTFIL                                                                          
+STREAM                                                                          
+POSN    4                                                                       
+COLORS  2                                                                       
+MARKER  2                                                                       
+GRDLBL  5                                                                       
+LUTFIL  none
+FILTER  yes

@@ -1,0 +1,88 @@
+README DESCRIPTION OF SNDIAG 
+ 
+    SNDIAG performs specialized computations on a sounding or set
+    of soundings. The program creates a new output sounding file,
+    in height coordinates, if one does not exist.
+
+    The input for SNDIAG can be either a conventional sounding or
+    one generated from the output of a model at a grid point.  The 
+    user can either specify that vertical interpolation of irregularly
+    spaced data is required, as needed by SNDIAG if the file is that
+    of a conventional sounding, or that the data has already been
+    interpolated, which is the case for a model grid point.  A new
+    output sounding file is created with equally-spaced data at
+    height intervals specified by the user. The user input for this 
+    height increment is displayed versus the computed height differences
+    and the user is given an opportunity to adjust any input.
+
+    All GEMPAK Sounding programs can then access this output
+    file to produce plots, listings, etc. The other output generated 
+    by the program will be sent to either the terminal or to a file as 
+    specified by the user.
+
+    Some of the unique capabilities of SNDIAG include options for 
+    choosing:
+
+    <> The type of vertical interpolation to perform on the data (cubic
+    spline or linear with respect to log pressure)
+
+    <> A choice of either no filtering of the interpolated data or 
+    heavy or light filtering (for synoptic or specialized purposes)
+
+    <> Various quantities and parameters that are of particular use for 
+    the study of convective storm systems, including:
+
+	* Tropopause height and tropopause-averaged winds
+	* Layer-averaged wind shears
+	* Cloud-layer averaged quantities
+	* Sub-cloud-layer averaged quantities
+	* Air and moisture fluxes normal to the direction of motion
+		of a squall line or other linear weather system
+	* Mixed layer depth specifiable by the user for determining
+		cloud thermodynamic properties
+	* The location of all inversions and the minimum temperature
+		on the sounding. Inversions are based on layers where 
+		temperature increases with height.
+	* Storm helicity
+	* Bulk Richardson number
+
+    <> Gravity wave parameters, including:
+
+	* Intrinsic wave frequency calculated on the basis of user-
+	  selected value for wave propagation velocity and wavelength
+	* Ratio of Brunt-Vaisalla frequency to intrinsic wave frequency
+	* Scorer parameter, the component stability term and wind 
+	  curvature term, and the vertical wavenumber profile based on
+	  these quantities
+	* Richardson number in the plane of wave propagation
+	* Wave-relative winds in the plane of wave propagation
+
+    <> System-relative wind profiles for such linear phenomena as
+	 squall lines, fronts, and gravity waves
+
+    Although not fully implemented in this version of SNDIAG, the 
+    sounding balloon range and azimuth data are read into a file for 
+    future use in the GEMPAK sounding programs for accurate placement of
+    the balloon position at each data level.  This data will be useful 
+    for mesoscale analyses, where the balloon drift is a significant 
+    fraction of the average sounding spacing.
+
+    Also planned for a future release of SNDIAG is calculation of the
+    Carlson Lid Strength Index. 
+
+#####################################################################
+Installation:
+
+SNDIAG is currently an off-line program to GEMPAK. It requires GEMPAK
+libraries to be compiled and linked, and can be install within GEMPAK 
+or outside of GEMPAK, but the program is not an official part of GEMPAK.
+It more than one user is going to use SNDIAG, it is recommended to move
+the PDF, HELP, and ERR files to the appropriate GEMPAK directories, and
+placed the SNDIAG executable in the EXE??? directory. Otherwise just 
+compile and run SNDIAG in its home directory. To compile and link SNDIAG
+just run the appropriate "sndiag_com???" script and the corresponding 
+"sndiag_link???" script and SNDIAG should be place in the directory 
+compiled and linked in. Also include is a UNIDATA Makefile for compiling
+and linking. If you do not move the pdf files the program will not run 
+properly outside of the SNDIAG directory and you will not have any help
+at all for parameters specific to SNDIAG.

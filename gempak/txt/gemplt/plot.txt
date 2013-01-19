@@ -1,0 +1,39 @@
+
+
+                          Plot Subroutines
+
+
+GEMPLT includes subroutines that draw and plot lines, circles, filled
+polygons, text, markers, winds, and various meteorological symbols.
+
+The simplest item to plot is a marker.  Markers are plotted by calling
+subroutine GMARK.  The location of the marker's center is given by its
+X and Y position in the coordinate system specified at the time of
+plotting.  The units of X and Y, and the limits of X and Y (the clipping
+boundaries) are dependent on the coordinate system.  When plotting in
+Earth coordinates, the X and Y are the latitude and longitude (in
+degrees).
+
+The plotting and drawing routines accept lists of X/Y pairs.  Each pair
+is a point.  The list is a group of points that share the currently set
+attributes.  The list is plotted as a unit (such as a line) or as a
+group (such as a group of markers).  The list of points is translated to
+the currently set device coordinates, the shapes of the plottable items
+are tested against the plot boundaries and clipped if necessary, and the
+rest is plotted.
+
+For lines and polygons, the list of X and Y coordinates is a (possibly
+large) set of points that are connected by straight line segments.
+Smooth curves are achieved by spacing the points close to one another.
+
+Symbols are plotted just like markers except that for each X and Y
+reference location there is an additional X and Y offset.  The reference
+location is given in terms of a coordinate system while the offsets are
+given in terms of the currently set text character size.
+
+Text is plotted either centered or justified relative to its X and Y
+reference location.  Offsets are defined for plotting text just like for
+symbols.
+
+Wind barbs and wind arrows are plotted exactly at the given X and Y
+locations.

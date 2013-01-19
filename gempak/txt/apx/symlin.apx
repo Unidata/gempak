@@ -1,0 +1,63 @@
+
+		SYMBOLS, LINES and MARKERS
+
+SYMBOLS
+
+The World Meteorological Organization (WMO) has established a 
+standard set of symbols depicting descriptive reports of certain 
+types of weather observations. The observation is reported as an 
+integer value which corresponds to an appropriate symbol in a table. 
+In GEMPAK applications programs, these symbols are plotted by 
+specifying the four-character name associated with a particular 
+set of symbols. These names are given below:
+
+	GEMPAK 				NAME TYPE OF SYMBOL
+	-----------			-------------------
+	WSYM 				Weather
+	CSYT, CSYL, CSYM, CSYH 		Clouds
+	PWTH 				Past Weather
+	PTND 				Pressure tendency with change
+	PTSY 				Pressure tendency
+	SKYC 				Sky cover
+	ICNG				Icing
+	TURB				Turbulence
+	SPCL				Special
+
+The symbols with the WMO code numbers are plotted on the following pages.
+
+
+
+LINES
+
+GEMPAK provides a variety of line types (dashing patterns) to be 
+used when multiple plots are overlain. The various line types are specified 
+by integers. There are ten basic line types as follows:
+
+	0 - dotted 
+	1 - solid 
+	2 - short dashed 
+	3 - medium dashed 
+	4 - long dash short dash 
+	5 - long dash 
+	6 - long dash three short dashes 
+	7 - long dash dot 
+	8 - long dash three dots 
+	9 - medium dash dot 
+
+These patterns can be expanded or compressed by prefixing the single digit 
+with a number from 1 to 9.  A prefix of 1 compresses the basic pattern, 
+a prefix of 2 is the default, and prefixes 3 - 9 expand the pattern. 
+A single-digit line type n is identical to the two-digit number n+20. Line 
+type numbers 10 - 19 cause a compressed line pattern while umbers 
+30 and higher cause expanded line patterns. For example, 32 expands line 
+type 2 while 12 compresses the same pattern.  
+
+The first thirty line types are displayed on the following page. 
+
+
+
+MARKERS
+
+GEMPAK provides a variety of markers that can be plotted using the MARKER
+variable.  The available marker shapes are shown on the following page.
+

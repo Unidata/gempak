@@ -1,0 +1,5 @@
+$CC $CFLAGS -c dumpvgf.c
+$FC $LDFLAGS -o $OS_BIN/dumpvgf dumpvgf.o \
+		$CGEMLIB $GEMLIB $APPL $GEMLIB \
+		$CGEMLIB $GEMLIB $SYSLIB -lm
+$RM *.o

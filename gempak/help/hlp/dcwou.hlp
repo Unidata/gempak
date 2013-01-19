@@ -1,0 +1,79 @@
+
+DCWOU
+
+DCWOU decodes watch outline update reports from a real-time data feed, 
+or from a file fed to the program through standard input, 
+and writes the data to an ASCII file.  The program is controlled 
+by inputs to the command line.
+
+The inputs are program options and the output file name or template.
+For example, for real-time data feeds:
+    
+	DCWOU [options] output_file
+
+If running the program interactively with standard input, the -c
+option must be used.  The input file must also be specified.
+For example:
+
+	DCWOU -c YYMMDD/HHNN [other_options] output_file < input_file
+    
+A template may be used to specify the output file name.  The file
+name template uses the date and time of the bulletin or report
+to replace the following characters.
+
+	YYYY or YY	Year with or without the century
+	MM		Month number
+	DD		Day
+	HH		Hour
+	NN		Minute
+
+
+The format of the output ASCII file is as follows:
+
+|Watch|Issue|Start|Stop|Watch |Bulletin  |Active|Time|Corr/test|Cancel
+|type |time |time |time|number|originator|WFOs  |zone|flag     | flag
+
+County/marine zone table entries, one per line, formatted as shown in the 
+example below (county/marine zone information lines should appear just as 
+they do in $GEMTBL/stns/mzcntys.tbl)
+.        .      .                                .  .   .     .         .  . .
+.        .      .                                .  .   .     .         .  . .
+.        .      .                                .  .   .     .         .  . .
+
+where:
+
+Watch type is           TSM     thunderstorm watch
+                        TOR     tornado watch
+
+Issue time is           YYMMDD/HHMM - GEMPAK date/time format - Issue time 
+                                      of the WOU bulletin
+Start time is           YYMMDD/HHMM - GEMPAK date/time format - Start time 
+                                      of the WOU bulletin
+Stop time is            YYMMDD/HHMM - GEMPAK date/time format - End time of
+                                      the WOU bulletin
+Bulletin originator is  KALY, KBGM, etc. from 2nd field of 1st line of bulletin
+
+Watch number is 	the decoded watch number
+
+Active WFOs are 	the WFOs that the watch affects
+Time zone is 		the time zone where the watch has been issued 
+Corr/test flag is       0       Not a correction; not a test
+                        1       A correction; not a test
+                        2       Not a correction; a test
+                        3       A correction; a test
+
+Cancel flag is          0       Not a cancellation
+                        1       A cancellation
+
+Example
+-------
+
+|TOR|021008/1121|021008/1130|021008/1700|102|KWNS|BMX;OHX;MEG;PAH;LMK;APX;OKX|CST|0|0
+ALC077     1077 Lauderdale                       AL US     34.91    -87.65      0.00  0  BMX
+INC129    18129 Posey                            IN US     38.02    -87.88      0.00  0  PAH
+KYC031    21031 Butler                           KY US     37.21    -86.69      0.00  0  LMK 
+MSC093    28093 Marshall                         MS US     34.77    -89.50      0.00  0  MEG
+TNC147    47147 Robertson                        TN US     36.53    -86.87      0.00  0  OHX
+LHZ361   743610 LHZ361                           LH US     45.65    -83.88      0.00  0  APX
+ANZ335   673350 ANZ335                           AN US     41.04    -73.35      0.00  0  OKX
+ANZ338   673380 ANZ338                           AN US     40.54    -74.08      0.00  0  OKX

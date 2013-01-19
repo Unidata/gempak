@@ -1,0 +1,19 @@
+! TCE.BULL
+!
+! Location information for the following product:
+! Tropical_Cyclone_Position_Estimate.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+! Log:
+! A. Hardy/NCEP		11/04	separated out the lat/lons
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+WTPA50 PHFO     HONOLULU                         HI US  2129 -15780     0
+WTPQ51 PGUM     GUAM                             GU US  1327  14478     0
+WTPQ52 PGUM     GUAM                             GU US  1347  14478     0
+WTPQ53 PGUM     GUAM                             GU US  1367  14478     0
+WTPQ54 PGUM     GUAM                             GU US  1387  14478     0
+WTPQ55 PGUM     GUAM                             GU US  1407  14478     0

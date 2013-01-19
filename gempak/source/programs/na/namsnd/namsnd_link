@@ -1,0 +1,4 @@
+$FC $FFLAGS $LDFLAGS -o $OS_BIN/namsnd namsnd.f \
+     $OS_LIB/namsnd.a \
+     $GEMLIB $CGEMLIB $APPL $SYSLIB -lncepBUFR
+$RM *.o

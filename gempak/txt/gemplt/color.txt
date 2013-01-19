@@ -1,0 +1,65 @@
+
+
+                          Color Subroutines
+
+
+Every graphics device is capable of some fixed number of simultaneously
+available colors.  The available colors are divided into groups.  Each
+group is allocated to a color bank.  GEMPLT supports three banks:
+Graphics, Satellite, and Radar.  The number of colors in each bank is
+chosen for each graphics device depending on the device's application.
+For the X Window device, for example, the banks are allowed to hold 33,
+95, and 20 colors respectively.  Some devices have all colors allocated
+only to a single bank, the Graphics color bank.
+
+The Graphics color bank is the default bank.  It exists on every device
+while the other banks may not be present.  The Graphics bank is used for
+general drawing and plotting.  Routines that deal with color, and that
+do not explicitly provide a selection of a color bank, operate on the
+Graphics bank.  The Graphics bank is used for drawing graphs, plots, and
+overlays such as station models, contours, wind arrows, streamlines,
+geopolitical boundaries, latitude/longitude grids, titles and
+annotations, color bars, and anything else that is not an image.
+
+The Satellite and Radar banks, when present, are used to render images.
+
+Colors are specified by numbers from 1 to N where N is the maximum
+number of colors allowed in a color bank.  If a program requests a
+color number in the Graphics bank larger than N, the invalid color
+number is converted to a valid number by taking modulo-N.  In addition
+to the maximum number of colors in the Graphics color bank, there is an
+additional color, the background color, number 101.  After a graphics
+device is selected, the maximum number of colors permissible in the
+Graphics color bank (excluding the background color) is returned by
+subroutine GQNCOL.
+
+The Graphics bank is loaded with colors in a number of ways.  Subroutine
+GSCINT sets the colors to the defaults defined internally for each
+graphics device.  Alternately, the Graphics bank is loaded from a
+custom color table by calling GSCTBL.  The Graphics bank can also be set
+up one color at a time.  GEMPAK includes a table of predefined named
+colors.  By calling GSCNAM, colors are selected from this table by name
+and assigned to color numbers in the Graphics bank.  Or, arbitrary
+colors are created by specifying their RGB components and assigning the
+components to color numbers in the Graphics bank by calling GSCRGB.
+
+After the Graphics bank is loaded with colors, information about any one
+color is obtained by calling GQCOMP.
+
+To draw or plot using a particular color in the Graphics bank,
+subroutine GSCOLR sets the current color number.  The current color
+applies to all drawing and plotting until it is replaced by another
+color.  Routine GQCOLR returns the currently set Graphics bank drawing
+color number.
+
+When a device supports multiple color banks, the maximum number of
+colors permissible in a bank is returned by subroutine GQCLRS.
+
+A named bank, usually other than the Graphics bank, is loaded with
+colors by calling GSBRGB.
+
+To draw in a color bank other than the Graphics bank, for example when
+drawing a color key bar in the Satellite bank, subroutine GSCOLB sets
+the current drawing color.  GSCOLB is used like GSCOLR.  When the
+current drawing color is set in a bank other than the Graphics bank,
+GQCOLR returns zero.

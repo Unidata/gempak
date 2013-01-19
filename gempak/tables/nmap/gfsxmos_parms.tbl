@@ -1,0 +1,50 @@
+! 
+!	GFSXMOS_PARMS.TBL
+!
+! This table contains the available parameters used in the
+! station model editing panel in NMAP for the GFSX MOS
+! data type. 
+!
+!	pos_zero_flag:	1 = plot at position 0 only
+!			0 = plot at any position
+!
+! Log:
+! m.gamazaychikov/SAIC	11/03	Copied from newmrfmos_parms.tbl
+!
+! parameter       pos_zero_flag     
+!
+darr              1
+skyc:1:2          1
+cl12              0
+dpdc              0         
+drct              0         
+dwpc              0        
+dwpf              0       
+pp12              0
+pp1a              0
+pp1c              0
+pp24              0
+pp2a              0
+pp2c              0
+pc12              0
+pr12              0
+ps12              0
+pz12              0
+qp12              0
+qp24              0
+relh              0
+sk12              0
+sn24              0
+stid              0
+tdaf              0  
+tdcf              0  
+tdyf              0  
+tmpc              0  
+tmpf              0 
+tmwc              0       
+tmwf              0      
+tnaf              0 
+tncf              0 
+tntf              0 
+ts12              0
+ts24              0

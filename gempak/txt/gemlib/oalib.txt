@@ -1,0 +1,53 @@
+
+
+              Objective Analysis (OA) Library 
+
+
+The objective analysis library performs general objective analysis 
+functions. 
+
+Three areas are defined in the objective analysis programs:
+     
+   GRID             Grid area      Computed grid area
+   EXTEND           Extend grid    Grid area extended for first pass
+   DATA             Data area      Data subset area.
+
+These areas are specified by the lower left and upper right corners.
+If the grid projection is not a latitude/longitude (CED) projection,
+the range for the grid or extend area may not be identical with the
+range in GRID or EXTEND.
+
+Information about the grid area is obtained from the grid navigation
+block which is stored in the grid file.  The data area and extend
+area are stored in the analysis block.  Two types of analyses blocks
+are available.  The contents of these blocks are:
+
+WORD           CONTENTS for type 1         CONTENTS for type 2
+-----          -------------------         -------------------
+  1            type = 1.0                  type = 2.0
+  2            DELTAN                      DELTAN
+  3            DELTAX                      IEXTND (1)
+  4            DELTAY                      IEXTND (2)
+  5            GAMMA (not used)            IEXTND (3)
+  6            GBNDS (1)                   IEXTND (4)
+  7            GBNDS (2)                   GBNDS  (1)
+  8            GBNDS (3)                   GBNDS  (2)
+  9            GBNDS (4)                   GBNDS  (3)
+ 10            EBNDS (1)                   GBNDS  (4)
+11-13          EBNDS (2-4)                 EBNDS  (1-3)
+14-17          DBNDS (1-4)                 EBNDS  (4), DBNDS (1-3)
+ 18                                        DBNDS  (4).
+
+These variables have the following meanings:
+ 
+               DELTAN  -  station spacing (degrees)
+               DELTAX  -  spacing in x direction (degrees)
+               DELTAY  -  spacing in y direction (degrees)
+               IEXTND  -  number of points to extend grid
+               GBNDS   -  grid area corners
+               EBNDS   -  extend grid area corners
+               DBNDS   -  data subset corners.
+
+Note that analysis type 1 assumes that the grid projection is CED.
+
+

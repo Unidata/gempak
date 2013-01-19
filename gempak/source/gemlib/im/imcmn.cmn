@@ -1,0 +1,26 @@
+C************************************************************************
+C IMCMN.CMN								*
+C*									*
+C* Common area for image routines					*
+C*									*
+C**									*
+C* Log:									*
+C* S. Chiswell								*
+C************************************************************************
+C
+C!
+	COMMON	/IMCMN/
+C
+     +			imcalbar
+C
+	CHARACTER	im_sweep_num*32
+	CHARACTER	im_sweep_elev*32, im_radar_field*32
+C
+	COMMON	/NEXRADII/
+C
+     +			im_sweep_num, 
+C!					Volume sweep number
+     +			im_sweep_elev,
+C!					Mean beam elevation angle
+     +			im_radar_field
+C!					Field name (dz, vr, sw)

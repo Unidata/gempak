@@ -1,0 +1,4 @@
+$CC $CFLAGS -c datetime.c
+$FC $LDFLAGS -o $OS_BIN/datetime datetime.o \
+		$GEMLIB $CGEMLIB
+$RM *.o

@@ -1,0 +1,12 @@
+! WOU.BULL
+!
+! This table contains the bulletin/station information to be used
+! with the Weather Watch Outline Update.
+!
+! The format for the file is given below, with the
+! number of characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+!
+WOUS64 KWNS     NORMAN                           OK US  3522  -9747   362

@@ -1,0 +1,20 @@
+GLEVEL  500:1000!500:1000!0
+GVCORD  pres!pres!none
+PANEL   0                                                                       
+SKIP    0     
+SCALE   -1        !-1             !0
+GDPFUN  ldf(hght) !ldf(hght)      !sm9s(pmsl)
+TYPE    c                                                                       
+CONTUR  2                                                                       
+CINT    6/0/540   !6/546/999      !4    
+LINE    6/3/2     !2/3/2          !20//3  
+FINT                                                                            
+FLINE                                                                           
+HILO    !! 26;2/H#;L#/1018-1070;900-1012//30;30/y
+HLSYM   2;1.5//21//hw                                                           
+CLRBAR  1                                                                       
+WIND    !         !                !                !18//1                    
+REFVEC                                                                          
+TITLE   5/-2/~ ^  MSL PRESSURE, 1000-500 MB THICKNESS|^ MSLP, 1000-500 THKN!    
+TEXT    1/21//hw                                                                
+CLEAR   yes                                                                     

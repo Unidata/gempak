@@ -1,0 +1,28 @@
+! ADX.BULL
+!
+! Location information for the following product:
+! Admin_Alert_for_Nonreceipt_of_Transmission.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+NTUS43 KABR     ABERDEEN                         SD US  4545  -9841     0
+NTUS43 KAPX     GAYLORD                          MI US  4490  -8470     0
+NTUS43 KARX     LA_CROSSE                        WI US  4381  -9119     0
+NTUS43 KDLH     DULUTH                           MN US  4683  -9220     0
+NTUS43 KDMX     DES_MOINES                       IA US  4172  -9372     0
+NTUS43 KDVN     QUAD_CITIES_IA                   IL US  4161  -9058     0
+NTUS43 KGRR     GRAND_RAPIDS                     MI US  4288  -8554     0
+NTUS43 KILX     LINCOLN                          IL US  4015  -8933     0
+NTUS43 KJKL     JACKSON                          KY US  3759  -8330     0
+NTUS43 KLBF     NORTH_PLATTE                     NE US  4113 -10069     0
+NTUS43 KLOT     CHICAGO                          IL US  4159  -8808     0
+NTUS43 KPAH     PADUCAH                          KY US  3706  -8876     0
+NTUS43 KSGF     SPRINGFIELD                      MO US  3722  -9340     0
+NTUS43 KUNR     RAPID_CITY                       SD US  4406 -10320     0
+NTUS45 KBOU     DENVER                           CO US  4000 -10526     0
+NTUS45 KGJT     GRAND_JUNCTION                   CO US  3911 -10851     0
+NTUS45 KPUB     PUEBLO                           CO US  3827 -10451     0
+NTUS45 KRIW     RIVERTON                         WY US  4306 -10847     0

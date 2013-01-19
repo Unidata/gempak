@@ -1,0 +1,57 @@
+! SFP.BULL
+!
+! Location information for the following product:
+! State_Forecast.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+FPHW60 PHFO     HONOLULU                         HI US  2129 -15780     0
+FPKA60 PTKK     TRUK/MOEN_FLT_S                  -- KA   746  15185     0
+FPKA60 PTKR     WSO_KOROR                        -- KA   726  13444     0
+FPKA60 PTTP     WSO_POHNPEI                      -- KA   694  15825     0
+FPKA60 PTYA     YAP_ISLAND                       -- KA   947  13808     0
+FPMH60 PKMR     WSO_MAJURO                       -- MH   705  17127     0
+FPUS62 KFFC     PEACHTREE_CITY                   GA US  3336  -8455     0
+FPUS62 KMFL     MIAMI                            FL US  2575  -8037     0
+FPUS63 KABR     ABERDEEN                         SD US  4545  -9841     0
+FPUS63 KBIS     BISMARCK                         ND US  4677 -10075     0
+FPUS63 KDMX     DES_MOINES                       IA US  4172  -9372     0
+FPUS63 KFSD     SIOUX_FALLS                      SD US  4358  -9672     0
+FPUS63 KLMK     LOUISVILLE                       KY US  3811  -8563     0
+FPUS63 KMKX     MILWAUKEE/SULLIVAN               WI US  4295  -8854     0
+FPUS63 KMPX     TWIN_CITIES/CHANHASSEN           MN US  4484  -9355     0
+FPUS63 KMQT     MARQUETTE                        MI US  4652  -8754     0
+FPUS63 KOAX     OMAHA/VALLEY                     NE US  4131  -9636     0
+FPUS63 KTOP     TOPEKA                           KS US  3906  -9562     0
+FPUS64 KBMX     BIRMINGHAM                       AL US  3316  -8677     0
+FPUS64 KFWD     DALLAS/FORT_WORTH                TX US  3283  -9729     0
+FPUS64 KLIX     NEW_ORLEANS                      LA US  3032  -8981     0
+FPUS64 KLUB     LUBBOCK                          TX US  3352 -10187     0
+FPUS64 KLZK     LITTLE_ROCK                      AR US  3483  -9225     0
+FPUS64 KOHX     NASHVILLE                        TN US  3624  -8655     0
+FPUS64 KTSA     TULSA                            OK US  3613  -9586     0
+FPUS65 KBOI     BOISE                            ID US  4356 -11620     0
+FPUS65 KBOU     DENVER                           CO US  4000 -10526     0
+FPUS65 KBYZ     BILLINGS                         MT US  4575 -10856     0
+FPUS65 KCYS     CHEYENNE                         WY US  4115 -10480     0
+FPUS65 KFGZ     FLAGSTAFF                        AZ US  3522 -11181     0
+FPUS65 KGGW     GLASGOW                          MT US  4820 -10662     0
+FPUS65 KLKN     ELKO                             NV US  4086 -11573     0
+FPUS65 KPIH     POCATELLO/IDAHO_FALLS            ID US  4290 -11258     0
+FPUS65 KREV     RENO                             NV US  3956 -11979     0
+FPUS65 KSLC     SALT_LAKE_CITY                   UT US  4077 -11194     0
+FPUS65 KTFX     GREAT_FALLS                      MT US  4745 -11137     0
+FPUS65 KTWC     TUCSON                           AZ US  3222 -11094     0
+FPUS65 KVEF     LAS_VEGAS                        NV US  3604 -11518     0
+FPUS66 KHNX     SAN_JOAQUIN_VALLEY/HANFORD       CA US  3631 -11962     0
+FPUS66 KMFR     MEDFORD                          OR US  4236 -12287     0
+FPUS66 KMTR     SAN_FRANCISCO                    CA US  3659 -12184     0
+FPUS66 KOTX     SPOKANE                          WA US  4768 -11762     0
+FPUS66 KPDT     PENDLETON                        OR US  4568 -11884     0
+FPUS66 KPQR     PORTLAND                         OR US  4556 -12252     0
+FPUS66 KSEW     SEATTLE                          WA US  4768 -12225     0
+FPUS66 KSGX     SAN_DIEGO                        CA US  3290 -11705     0
+FPUS66 KSTO     SACRAMENTO                       CA US  3859 -12137     0

@@ -1,0 +1,4 @@
+Usage:  prntsfc area [dattim] [printer] 		
+        area - US (United States), SA (South America) or CRB (Caribbean)
+        dattim - yymmdd/hhhh (default most recent)
+        printer - printer name (default by workstation)	

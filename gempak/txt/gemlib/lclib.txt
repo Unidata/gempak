@@ -1,0 +1,73 @@
+
+
+                   Location (LC) Library 
+
+
+The GEMPAK location library provides subroutines for defining data
+subset and graphics areas in GEMPAK.
+
+Areas containing subareas may now be defined using the subroutines
+LC_SARE and LC_UARE.  Subareas must be separated by slashes (/).  
+Each subarea is additive (+) or subtractive (-), depending on the 
+first character following the slash, with + being the default.  
+Additive subareas add stations to the list of valid stations; 
+subtractive subareas eliminate stations which were previously valid.
+
+Subareas may be specified in the following ways:
+
+
+     1.  lat1;lon1;lat2;lon2 
+            This defines a latitude/longitude range where
+            (lat1, lon1) is the lower left corner and
+            (lat2, lon2) is the upper right corner.
+
+                            or
+
+         #clat;clon;dlat;dlon
+             This defines a latitude/longitude range where
+             (clat-dlat, clon-dlon) is the lower left corner
+             (clat+dlat, clon+dlon) is the upper right corner.
+
+     2.  GEOG
+             This is an abbreviation for a geographic area
+             defined in the GEMPAK geographic table which
+             includes abbreviations for states, provinces and
+             countries, as well as other names.  If #GEOG is
+             entered, the user's geographic table, GEOG.TBL,
+             will be searched.  A * or - after the name may
+             be used to reduce/expand the area.
+
+     3.  STN
+             This defines an area centered on a station found
+             in the GEMPAK station table, which contains US
+             and Canadian surface stations.  A * or - after
+             the name may be used to reduce/expand the area.
+
+     4.  DSET 
+             This includes all the stations in the current dataset.
+
+     5.  @ST  
+             This area includes those stations located in the state,
+             province or country defined by ST.  Only some countries
+             are recognized (US,CN,MX,CI,BW,AU); other countries
+             may be specified using method 6.
+
+     6.  @CN:C
+             This area includes those stations located in the
+             country defined by CN.
+
+     7.  @STN1;STN2;...;STNn 
+             This area includes the stations listed, where STNn
+             may be a station identifier or a station number.
+
+     8.  SHDR:iloval:ihival 
+             This area defines a range of valid values for the
+             station header, SHDR.  For example, SELV:0:2000
+             specifies stations whose elevations are less than
+             2000 meters.
+
+Graphics areas must be specified using methods 1 - 3.
+
+Subroutines to set and check bounds, LC_SBND and LC_INBN, are included
+to maintain compatibility with earlier versions of GEMPAK.
+ 

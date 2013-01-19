@@ -1,0 +1,12 @@
+C****************************************************************
+C*								*
+C* COMMON /LCBND/						*
+C*								*
+C* This common area stores a set of lat, lon boundaries.	*
+C*								*
+C* Log:								*
+C* M. desJardins/914	6/84					*
+C****************************************************************
+C*
+	COMMON /LCBND/ rllbnd (4)
+C*

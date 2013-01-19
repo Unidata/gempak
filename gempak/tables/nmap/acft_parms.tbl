@@ -1,0 +1,58 @@
+! 
+!	ACFT_PARMS.TBL
+!
+! This table contains the available parameters used in the
+! station model editing panel in NMAP for ACFT data types. 
+!
+!	pos_zero_flag:	1 = plot at position 0 only
+!			0 = plot at any position
+!
+! Log:
+! D. Kidwell/NCEP	 4/98	From SHIP_PARMS.TBL
+! D. Kidwell/NCEP	 4/98	Added PRES
+! D. Kidwell/NCEP	 7/98	Added FELV
+! D. Kidwell/NCEP	 6/99	Added STIM
+! D. Kidwell/NCEP	 8/99	Added more icing, turb, sky cover parms
+! A. Hardy/GSC		10/99   Added :1 to ICSY and TBSY
+! D. Kidwell/NCEP	11/99   Removed HEAT
+! A. Hardy/GSC          12/99   Removed SELV
+! D. Kidwell/NCEP	 1/00	Added ACTP
+!
+!
+! parameter       pos_zero_flag 
+!
+brbk:1:2:112      1          
+brbm:1:2          1         
+acrt              0
+actp              0
+cbs1              0
+cbs2              0
+clc1              0
+clc2              0
+ctp1              0
+ctp2              0
+dwpc              0     
+dwpf              0    
+felv              0
+ibse              0   
+icsy:1            0   
+itop              0   
+itsy              0   
+pmsl              0       
+pres              0       
+relh              0     
+smsl              0    
+sstc              0
+stid              0   
+stim              0   
+tbse              0
+tbsy:1            0
+tfsy              0
+tmpc              0  
+tmpf              0 
+ttop              0
+ttsy              0
+vsby   	          0        
+wbse              0        
+wsym:1            0      
+wtop              0        

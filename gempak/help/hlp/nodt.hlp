@@ -1,0 +1,139 @@
+
+NODT - Objective Dvorak Technique
+	University of Wisconsin - Madison
+	Cooperative Institute for Meteorological Satellite Studies
+
+Purpose :
+      Estimate intensity of a tropical cyclone using digital
+      geostationary satellite infrared imagery.  
+      Algorithm ONLY works for storms equal to or greater 
+      than hurricane strength (T# >= 3.5)... do not use on 
+      weaker systems.
+                                                                       
+
+Usage: 	nodt [options] image_filename
+
+  OPTIONS:
+
+ opt    value   description
+
+  -a	typ/fn	(McIDAS keyword option "AUTO")
+		Allow for totally automated operation of the ODT.
+		May be used in conjunction with -v option.
+		"typ" may be:
+		typ=1:TPC WTNT4? or WTPZ3? DISCUSSION file.
+		typ=2:JTWC WTPN3? TROPICAL CYCLONE WARNING file.
+		and "fn" is the file (default "AUTOFIX").
+		(NOTE: no whitespace allowed in "typ/fn" string)
+
+  -c	fn	NMAP2 cursor point file filename (must be *.cpf)
+                containing storm center location
+       -or-     -OR-
+      clat,clon Storm center location in the format "clat,clon" 
+		(NOTE: clon negative west, no whitespace allowed)
+
+  -d   date1/time1/date2/time2
+		(McIDAS keyword option "DATE")
+		Range of dates/times desired (same format as history file)
+                Enter "date" as YrMonDay (e.g. 97OCT05)
+                Enter "time" as HHMMSS   (e.g. 131500)
+                Defaults :
+                  LIST (-l option):
+                    date1/time1 : first record
+                    date2/time2 : last record
+                  DELETE (-e option):
+                    date1/time1 : no defaults, must specify
+                    date2/time2 : date1/time1
+		No whitespace allowed in "date1/time1/date2/time2" string.
+
+  -e     -      Allows for manual deletion of a date or a range of dates
+	        (use in conjuction with -d option). No option value such 
+		as YES or NO.
+
+  -h	 -      Display this help message.
+
+  -l	 -   	(McIDAS keyword option "LIST")
+	        List contents of history file (-y fn option) to text window. 
+		No option value such as YES or NO.
+	    
+
+  -m	"ATL"	(McIDAS keyword option "DOMAIN")
+	-or-	Atlantic or West Pacific T# and CI intensity estimate and 
+	"PAC"	related pressure/wind value.  For East Pacific, user will 
+		have to decide which domain is correct to use for pressure.
+		(default ATL)
+
+  -o	fn      (McIDAS keyword option "OUTPUT")
+		For -l option only, output to the file "fn" (default 
+		ODTDUMP.ASC), otherwise to the screen.
+
+  -r	"yes"	(McIDAS keyword option "RULE48")
+	-or-    Turn off application of special "first 48 hour rule" 
+	"no"    which subtracts 0.5 from the Raw T# (default=YES).
+
+  -s	scene	(functionality of McIDAS keyword option "OVER")
+	        Allow user to manually override ODT scene identification 
+	        and/or automated center positioning.  May be utilized 
+	    	with -a option, if desired.  (default=let pgm determine).
+		Valid scene types:
+		"EYE"   - CLEAR EYE
+		"EYEL"  - VERY LARGE CLEAR EYE
+		"EYES"  - SMALL EYE (pinhole)
+		"EYER"  - RAGGED EYE
+		"DRYR"  - DRY SLOT/RAGGED EYE
+		"EMBC"  - EMBEDDED CENTER
+		"CDO"   - CDO
+		"SHEAR" - SHEAR
+
+  -w	"yes"	(McIDAS keyword option "WIND")
+	-or-    List intensity units in terms of wind speed (knots) 
+	"no"    instead of MSLP.  Used with LIST or with ODA analysis 
+	    	output (default=NO).
+
+  -y	fn	(McIDAS keyword option "HISTORY")
+		File to which the history record will be written.
+
+                                                                       
+  image_filename	McIDAS image filename
+
+
+
+PROGRAM DESCRIPTION
+
+  NODT makes the appropriate calls into the CIMSS ODT library to
+  calculate tropical cyclone intensity. The results are output to the
+  screen as well as the history file.
+
+REMARKS
+
+  - Use of default history file will only provide user
+    with CI value (which is actually the RAW T#).
+    NO TIME AVERAGING OR OTHER ADJUSTMENTS WILL BE PERFORMED,
+    and any output will only list this CI (raw T#) value.
+  - If either LIST=YES or DELETE=YES
+    ODT analysis will NOT be performed on current image.
+  - If a record is modified/added within an existing history
+    file, all subsequent records within the history file
+    will be recalculated using the new/modified ODT record.
+  - If DATE is provided in conjunction with LIST *AND*
+    DELETE keywords, DATE will apply ONLY to the DELETE
+    keyword (and a LIST will be drawn/listed for
+    the entire history file (defaults)).
+
+
+EXAMPLES
+
+  nodt -c nmap2.cpf IR_19990915_1045
+
+	- performs the ODT analysis on the image file IR_19990915_1045
+          (located in the current working directoy) using the latitude and
+          longitude in the cpf file "nmap2.cpf". The history file will be
+	  the default history file "ODTDUMP.ODT".
+
+  nodt -c 29.4,-78.8 -y $ODTHIST/floyd $SAT/GOES-E/TropAtl_8km/IR/IR_19990915_1045
+
+	- performs the ODT analysis on the image file IR_19990915_1045 
+	  (located in the directoy "$SAT/GOES-E/TropAtl_8km/IR") using a 
+	  latitude of 29.4 and longitude of -78.8. The history file will 
+	  be saved to the file "$ODTHIST/floyd".
+

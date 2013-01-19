@@ -1,0 +1,240 @@
+!
+! temperature
+!D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING  HZREMAP  DIRECTION
+!23|123|123|123|12345678901234567890123456789012|12345678901234567890|123456789012|12345|123456.89|12345678|1234567890
+000 000 000 000 Temperature                      K                    TMPK             0  -9999.00        0          0
+000 000 000 019 Temperature Below Normal         %                    PTBN             0  -9999.00        0          0
+000 000 000 029 Temperature Near Normal          %                    PTNN             0  -9999.00        0          0
+000 000 000 039 Temperature Above Normal         %                    PTAN             0  -9999.00        0          0
+000 000 001 000 Virtual Temperature              K                    TVRK             0  -9999.00        0          0
+000 000 002 000 Potential Temperature            K                    THTA             0  -9999.00        0          0
+000 000 003 000 Equivalent Potential Temp        K                    THTE             0  -9999.00        0          0
+000 000 004 008 Maximum Temperature              K                    TMXK             0  -9999.00        0          0
+000 000 005 008 Minimum Temperature              K                    TMNK             0  -9999.00        0          0
+000 000 006 000 Dew Point Temperature            K                    DWPK             0  -9999.00        0          0
+000 000 007 000 Dew Point Depression             K                    DPDK             0  -9999.00        0          0
+000 000 008 000 Lapse Rate                       K m**-1              LAPS             0  -9999.00        0          0
+000 000 009 000 Temperature Anomaly              K                    TMPKA            0  -9999.00        0          0
+000 000 010 000 Latent Heat Net Flux             W m**-2              FXLH             0  -9999.00        0          0
+000 000 011 000 Sensible Heat Net Flux           W m**-2              FXSH             0  -9999.00        0          0
+000 000 012 000 Heat Index                       K                    HEAT             0  -9999.00        0          0
+!000 000 013 000 Wind Chill Factor                K                    ????             0  -9999.00       0          0
+!000 000 014 000 Minimum Dew Point Depression     K                    ????             0  -9999.00       0          0
+!000 000 015 000 Virtual Potential Temperature    K                    ????             0  -9999.00       0          0
+!
+! mositure 
+!D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING  HZREMAP  DIRECTION
+!23|123|123|123|12345678901234567890123456789012|12345678901234567890|123456789012|12345|123456.89|12345678|1234567890
+000 001 000 000 Specific Humidity                kg kg**-1            SPFH             0  -9999.00        0          0
+000 001 001 000 Relative Humidity                %                    RELH             0  -9999.00        0          0
+000 001 002 000 Humidity Mixing Ratio            kg kg**-1            MIXR             3  -9999.00        0          0
+000 001 003 000 Precipitable water               kg m**-2             PWTR             0  -9999.00        0          0
+000 001 004 000 Vapour pressure                  Pa                   VAPR            -2  -9999.00        0          0
+000 001 005 000 Saturation deficit               Pa                   SATD            -2  -9999.00        0          0
+000 001 006 000 Evaporation                      kg m**-2             EVAP             0  -9999.00        0          0
+000 001 007 008 Precipitation rate               kg m**-2 s**-1       PR--             0  -9999.00        0          0
+000 001 008 008 Total precipitation              kg m**-2             P--M             0     -0.01        0          0
+000 001 008 009 Precipitation Probability        %                    PP--             0  -9999.00        0          0
+000 001 008 019 Precipitation Below Normal       %                    PPBN             0  -9999.00        0          0
+000 001 008 029 Precipitation Near Normal        %                    PPNN             0  -9999.00        0          0
+000 001 008 039 Precipitation Above Normal       %                    PPAN             0  -9999.00        0          0
+000 001 009 008 Large scale precipitation        kg m**-2             S--M             0     -0.01        0          0
+000 001 010 008 Convective precipitation         kg m**-2             C--M             0     -0.01        0          0
+000 001 011 000 Snow depth                       m                    SNDM             0  -9999.00        0          0
+000 001 012 008 Snowfall rate water equiv        kg m**-2 s**-1       SR--             0  -9999.00        0          0
+000 001 013 000 Wat equiv of accum snow dep      kg m**-2             SWEM             0  -9999.00        0          0
+000 001 014 000 Convective snow                  kg m**-2             CSNO             0  -9999.00        0          0
+000 001 015 000 Large scale snow                 kg m**-2             LSNO             0  -9999.00        0          0
+000 001 016 008 Snow melt                        kg m**-2             N--M             0  -9999.00        0          0
+!000 001 017 000 Snow age                         day                  ????             ?  -9999.00       0          0
+!000 001 018 000 Absolute Humidity                kg m**-3             ????             ?  -9999.00       0          0
+!000 001 019 000 Precipitation Type               code table           ????             ?  -9999.00       0          0
+!000 001 020 000 Integrated Liquid Water          kg m**-2             ????             ?  -9999.00       0          0
+!000 001 021 000 Condensate                       kg kg**-1            ????             ?  -9999.00       0          0
+!000 001 022 000 Cloud Mixing Ratio               kg kg**-1            ????             ?  -9999.00       0          0
+!000 001 023 000 Ice water Mixing Ratio           kg kg**-1            ????             ?  -9999.00       0          0
+!000 001 024 000 Rain Mixing Ratio                kg kg**-1            ????             ?  -9999.00       0          0
+!000 001 025 000 Snow Mixing Ratio                kg kg**-1            ????             ?  -9999.00       0          0
+!000 001 026 000 Horizon Moisture Converg         kg kg**-1 s**-1      ????             ?  -9999.00       0          0
+!000 001 027 000 Maximum Relative Humidity        %                    ????             ?  -9999.00       0          0
+!000 001 028 000 Maximum Absolute Humidity        kg m**-3             ????             ?  -9999.00       0          0
+000 001 029 008 Total Snowfall                   m                    SNOW             0  -9999.00        0          0
+!000 001 030 000 Precipitable water Category      code table           ????             ?  -9999.00       0          0
+!000 001 031 000 Hail                             m                    ????             ?  -9999.00       0          0
+!000 001 032 000 Graupel (snow pellets)           kg kg**-1            ????             ?  -9999.00       0          0
+000 001 192 000 Weather                          NA                   WX               0  -9999.00        0          0
+!        
+! momentum
+!D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING  HZREMAP  DIRECTION         
+!23|123|123|123|12345678901234567890123456789012|12345678901234567890|123456789012|12345|123456.89|12345678|1234567890
+000 002 000 000 Wind Direction                   Degree true          DRCT             0  -9999.00        0          1
+000 002 001 000 Wind Speed                       m s**-1              SPED             0  -9999.00        0          0
+000 002 002 000 u-component of wind              m s**-1              UREL             0  -9999.00        0          0
+000 002 003 000 v-component of wind              m s**-1              VREL             0  -9999.00        0          0
+000 002 004 000 Stream Function                  m**2 s**-1           STRM             0  -9999.00        0          0
+000 002 005 000 Velocity Potential               m**2 s**-1           VPOT             0  -9999.00        0          0
+000 002 006 000 Montgomery Streamfunction        m**2 s**-2           PSYM            -2  -9999.00        0          0
+000 002 007 000 Sigma co-ordinate vert vel       s**-1                SGCVV            0  -9999.00        0          0
+000 002 008 000 Vertical Velocity (Pressure)     Pa s**-1             OMEG            -2  -9999.00        0          0
+000 002 009 000 Vertical Velocity (Geometric)    m s**-1              VVEL             0  -9999.00        0          0
+000 002 010 000 Absolute Vorticity               s**-1                AVOR             0  -9999.00        0          0
+000 002 011 000 Absolute Divergence              s**-1                DIV              0  -9999.00        0          0
+000 002 012 000 Relative Vorticity               s**-1                VOR              0  -9999.00        0          0
+000 002 013 000 Relative Divergence              s**-1                RDIV             0  -9999.00        0          0
+!000 002 014 000 Potential Vorticity              K m**2 (kg s)**-1    ????             ?  -9999.00       0          0
+000 002 015 000 Vertical u-component shear       s**-1                USHR             0  -9999.00        0          0
+000 002 016 000 Vertical v-component shear       s**-1                VSHR             0  -9999.00        0          0
+000 002 017 000 Momentum Flux, u-component       N m**-2              URELFX           0  -9999.00        0          0
+000 002 018 000 Momentum Flux, v-component       N m**-2              VRELFX           0  -9999.00        0          0
+000 002 019 000 Wind Mixing Energy               J                    ENRG             0  -9999.00        0          0
+000 002 020 000 Boundary Layer Dissipation       W m**-2              BLDIS            0  -9999.00        0          0
+!000 002 021 000 Maximum Wind Speed               m s**-1              ????             ?  -9999.00       0          0
+!000 002 022 000 Wind Speed (gust)                m s**-1              ????             ?  -9999.00       0          0
+!000 002 023 000 u-component of wind (gust)       m s**-1              ????             ?  -9999.00       0          0
+!000 002 024 000 v-component of wind (gust)       m s**-1              ????             ?  -9999.00       0          0
+!         										   	   
+! mass
+!D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING  HZREMAP  DIRECTION
+!23|123|123|123|12345678901234567890123456789012|12345678901234567890|123456789012|12345|123456.89|12345678|1234567890
+000 003 000 000 Pressure                         Pa                   PRES            -2  -9999.00        0          0
+000 003 001 000 Pressure Reduced to MSL          Pa                   PMSL            -2  -9999.00        0          0
+000 003 002 000 Pressure Tendency                Pa s**-1             PTND            -2  -9999.00        0          0
+!000 003 003 000 ICAO Standard Atm Ref Height    m                     ????             ?  -9999.00       0          0
+000 003 004 000 Geopotential                     m**2 s**-2           GP               0  -9999.00        0          0
+000 003 005 000 Geopotential Height              gpm                  HGHT             0  -9999.00        0          0
+000 003 006 000 Geometrical Height               m                    DIST             0  -9999.00        0          0
+000 003 007 000 Standard Deviation of Height     m                    HGHTSD           0  -9999.00        0          0
+000 003 008 000 Pressure Anomaly                 Pa                   PRESA           -2  -9999.00        0          0
+000 003 009 000 Geopotential Height Anomaly      gpm                  HGHTA            0  -9999.00        0          0
+000 003 010 000 Density                          kg m**-3             DNTY             0  -9999.00        0          0
+!000 003 011 000 Altimeter Setting                ????                 ????             ?  -9999.00       0          0
+!000 003 012 000 Thickness                        ????                 ????             ?  -9999.00       0          0
+!000 003 013 000 Pressure Altitude                ????                 ????             ?  -9999.00       0          0
+!000 003 014 000 Density Altitude                 ????                 ????             ?  -9999.00       0          0
+!         										   	   
+! short-wave radiation         								   	   
+!D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING   HZREMAP DIRECTION
+!23|123|123|123|12345678901234567890123456789012|12345678901234567890|123456789012|12345|123456.89|12345678|1234567890
+000 004 000 000 Net Short-Wave Rad (sfc)         W m**-2              SNIR             0  -9999.00        0          0
+000 004 001 000 Net Short-Wave Rad (toa)         W m**-2              SWRT             0  -9999.00        0          0
+!000 004 002 000 Short-Wave Radiation Flux        W m**-2              ????             ?  -9999.00       0          0
+!000 004 003 000 Global radiation Flux            W m**-2              ????             ?  -9999.00       0          0
+!000 004 004 000 Brightness Temperature           K                    ????             ?  -9999.00       0          0
+!000 004 005 000 Radiance (w/r to wave nmber)     W m**-1 sr**-1       ????             ?  -9999.00       0          0
+!000 004 006 000 Radiance (w/r to wave length)    W m**-3 sr**-1       ????             ?  -9999.00       0          0
+!         										   	  0 	     0
+! long-wave radiation         								   	  0 	     0
+!D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING  HZREMAP  DIRECTION 
+!23|123|123|123|12345678901234567890123456789012|12345678901234567890|123456789012|12345|123456.89|12345678|1234567890
+000 005 000 000 Net Long-Wave Rad (sfc)          W m**-2              SNOR             0  -9999.00        0          0
+000 005 001 000 Net Long-Wave Rad (toa)          W m**-2              LWRT             0  -9999.00        0          0
+!000 005 002 000 Long-Wave Radiation Flux         W m**-2              ????             0  -9999.00       0          0
+!         										   	   
+! cloud          									   	   
+!D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING  HZREMAP  DIRECTION
+!23|123|123|123|12345678901234567890123456789012|12345678901234567890|123456789012|12345|123456.89|12345678|1234567890
+000 006 000 000 Cloud Ice                        kg m**-2             CICE             0  -9999.00        0          0
+000 006 001 000 Total Cloud Cover                %                    CLD              0  -9999.00        0          0
+000 006 002 000 Convective Cloud Cover           %                    CCLD             0  -9999.00        0          0
+000 006 003 000 Low Cloud Cover                  %                    CLDL             0  -9999.00        0          0
+000 006 004 000 Medium Cloud Cover               %                    CLDM             0  -9999.00        0          0
+000 006 005 000 High Cloud Cover                 %                    CLDH             0  -9999.00        0          0
+000 006 006 000 Cloud Water                      kg m**-2             CWTR             0  -9999.00        0          0
+!000 006 007 000 Cloud Amount                     %                    ????             ?  -9999.00       0          0
+!000 006 008 000 Cloud Type                       code table           ????             ?  -9999.00       0          0
+!000 006 009 000 Thunderstorm Maximum Tops        m                    ????             ?  -9999.00       0          0
+!000 006 010 000 Thunderstorm Coverage            code table           ????             ?  -9999.00       0          0
+!000 006 011 000 Cloud Base                       m                    ????             ?  -9999.00       0          0
+!000 006 012 000 Cloud Top                        m                    ????             ?  -9999.00       0          0
+!000 006 013 000 Ceiling                          m                    ????             ?  -9999.00       0          0
+!         										   	   
+! thermodynamic stability indices 
+!D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING  HZREMAP  DIRECTION
+!23|123|123|123|12345678901234567890123456789012|12345678901234567890|123456789012|12345|123456.89|12345678|1234567890
+000 007 000 000 Parcel Lifted Index (500hPa)     K                    LIFT             0  -9999.00        0         0
+000 007 001 000 Best Lifted Index (500hPa)       K                    LFT4             0  -9999.00        0         0
+!000 007 002 000 K Index                          K                    ????             ?  -9999.00       0         0
+!000 007 003 000 KO Index                         K                    ????             ?  -9999.00       0         0
+!000 007 004 000 Total Totals Index               K                    ????             ?  -9999.00       0         0
+!000 007 005 000 Sweat Index                      K                    ????             ?  -9999.00       0         0
+!000 007 006 000 Conv Available Pot Energy        J K**-1              ????             ?  -9999.00       0         0
+!000 007 007 000 Convective Inhibition            J K**-1              ????             ?  -9999.00       0         0
+!000 007 008 000 Storm Relative Helicity          J K**-1              ????             ?  -9999.00       0         0
+!000 007 009 000 Energy Helicity Index            J K**-1              ????             ?  -9999.00       0         0
+!
+! aerosols 
+!D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING  HZREMAP  DIRECTION
+!23|123|123|123|12345678901234567890123456789012|12345678901234567890|123456789012|12345|123456.89|12345678|1234567890
+!000 013 000 000 Aerosol Type                     code table           ????            ?  -9999.00        0         0
+!
+! trace gases
+!D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING  HZREMAP  DIRECTION
+!23|123|123|123|12345678901234567890123456789012|12345678901234567890|123456789012|12345|123456.89|12345678|1234567890
+000 014 000 000 Total ozone                      Dobson units         TOZO             0  -9999.00        0          0
+!
+! radar
+!D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING  HZREMAP  DIRECTION
+!23|123|123|123|12345678901234567890123456789012|12345678901234567890|123456789012|12345|123456.89|12345678|1234567890
+!000 015 000 000 Base Spectrum Width              m s**-1              ????             ?  -9999.00        0         0
+!000 015 001 000 Base Reflectivity                dB                   ????             ?  -9999.00        0         0
+!000 015 002 000 Base Radial Velocity             m s**-1              ????             ?  -9999.00        0         0
+!000 015 003 000 Vertically-Integrated Liquid     kg m**-1             ????             ?  -9999.00        0         0
+!000 015 004 000 Layer-Max Base Reflectivity      dB                   ????             ?  -9999.00        0         0
+!000 015 005 000 Precipitation                    kg m**-2             ????             ?  -9999.00        0         0
+!000 015 006 000 Radar Spectra (1)                -                    ????             ?  -9999.00        0         0
+!000 015 007 000 Radar Spectra (2)                -                    ????             ?  -9999.00        0         0
+!000 015 008 000 Radar Spectra (3)                -                    ????             ?  -9999.00        0         0
+000 015 192 000 Reflectivity                     dBz                  MergedReflec     0  -9999.00        0          0
+000 015 194 000 MESH                             mm                   MESH             0  -9999.00        0          0
+000 015 195 000 POSH                             %                    POSH             0  -9999.00        0          0
+000 015 196 000 RotationTrack10min               s**-1                RotationTrac     0  -9999.00        0          0
+000 015 197 000 RotationTrack30min               s**-1                RotationTrac     0  -9999.00        0          0
+000 015 198 000 RotationTrack60min               s**-1                RotationTrac     0  -9999.00        0          0
+!
+! nuclear/radiology
+!D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING  HZREMAP  DIRECTION
+!23|123|123|123|12345678901234567890123456789012|12345678901234567890|123456789012|12345|123456.89|12345678|1234567890
+!000 018 000 000 Air Concentration Caesium137     Bq m**-3             ????             ?  ?????.??       ?          ?      
+!000 018 001 000 Air Concentration Iodine131      Bq m**-3             ????             ?  ?????.??       ?          ?
+!000 018 002 000 Air Concentr Rad Act Polluts     Bq m**-3             ????             ?  ?????.??       ?          ?
+!000 018 003 000 Ground Deposition Caesium137     Bq m**-3             ????             ?  ?????.??       ?          ?
+!000 018 004 000 Ground Deposition Iodine131      Bq m**-3             ????             ?  ?????.??       ?          ?
+!000 018 005 000 Grn Depositn Rad Act Polluts     Bq m**-3             ????             ?  ?????.??       ?          ?
+!
+! physical atmospheric properties
+!D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING  HZREMAP  DIRECTION
+!23|123|123|123|12345678901234567890123456789012|12345678901234567890|123456789012|12345|123456.89|12345678|1234567890
+000 019 000 000 Visibility                       m                    VSBY             0  -9999.00        0          0
+000 019 001 000 Albedo                           %                    ALBD             0  -9999.00        0          0
+000 019 002 000 Thunderstorm probability         %                    TSTM             0  -9999.00        0          0
+000 019 003 000 Mixed layer depth                m                    MIXL             0  -9999.00        0          0
+!000 019 004 000 Volcanic Ash                     code table           ????             ?  ?????.??       ?          ?
+!000 019 005 000 Icing Top                        m                    ????             ?  ?????.??       ?         ?
+!000 019 006 000 Icing Base                       m                    ????             ?  ?????.??       ?         ?
+!000 019 007 000 Icing                            code table           ????             ?  ?????.??       ?         ?
+!000 019 008 000 Turbulence Top                   m                    ????             ?  ?????.??       ?          ?
+!000 019 009 000 Turbulence Base                  m                    ????             ?  ?????.??       ?         ?
+!000 019 010 000 Turbulence                       code table           ????             ?  ?????.??       ?         ?
+!000 019 011 000 Turbulent Kinetic Energy         J kg**-1             ????             ?  ?????.??       ?         ?
+!000 019 012 000 Planet Boundary Layer Regime     code table           ????             ?  ?????.??       ?         ?
+!000 019 013 000 Contrails Intencity              code table           ????             ?  ?????.??       ?         ?
+!000 019 014 000 Contrails Engine Type            code table           ????             ?  ?????.??       ?         ?
+!000 019 015 000 Contrails Top                    m                    ????             ?  ?????.??       ?         ?
+!000 019 016 000 Contrails Base                   m                    ????             ?  ?????.??       ?         ?
+000 019 194 008 slight_risk_conv_otlk            %                    OTLK             0  -9999.00        0          0
+000 019 195 008 moderate_risk_conv_otlk          %                    OTLK             0  -9999.00        0          0
+000 019 196 008 high_risk_conv_otlk              %                    OTLK             0  -9999.00        0          0
+000 019 197 009 torn_probability                 %                    PROBTORN         0  -9999.00        0          0
+000 019 198 009 hail_probability                 %                    PROBHAIL         0  -9999.00        0          0
+000 019 199 009 wind_probability                 %                    PROBWIND         0  -9999.00        0          0
+000 019 200 009 sig_torn_probability             %                    PROBSIGTORN      0  -9999.00        0          0
+000 019 201 009 sig_hail_probability             %                    PROBSIGHAIL      0  -9999.00        0          0
+000 019 202 009 sig_wind_probability             %                    PROBSIGWIND      0  -9999.00        0          0
+000 019 215 009 severe_probability               %                    PROBSVR          0  -9999.00        0          0
+000 019 216 009 sig_severe_probability           %                    PROBSIGSVR       0  -9999.00        0          0
+!000 019 220 009 fire_otlk_critical_risk_area     %                    CRITICAL         0  -9999.00        0          0
+!000 019 221 009 fire_otlk_extreme_critical_risk  %                    CRITICAL         0  -9999.00        0          0
+!000 019 222 009 fire_otlk_dry_ltg_area           %                    DRY-TSTM         0  -9999.00        0          0
+002 192 192 009 fire_otlk_critical_risk_area     %                    CRITICAL         0  -9999.00        0          0
+002 192 193 009 fire_otlk_extreme_critical_risk  %                    CRITICAL         0  -9999.00        0          0
+002 192 194 009 fire_otlk_dry_ltg_area           %                    DRY-TSTM         0  -9999.00        0          0

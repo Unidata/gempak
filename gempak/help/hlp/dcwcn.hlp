@@ -1,0 +1,105 @@
+
+DCWCN
+
+DCWCN decodes watch county notification reports from a real-time data 
+feed, or from a file fed to the program through standard input, 
+and writes the data to an ASCII file.  The program is controlled 
+by inputs to the command line.
+
+The inputs are program options and the output file name or template.
+For example, for real-time data feeds:
+    
+	DCWCN [options] output_file
+
+If running the program interactively with standard input, the -c
+option must be used.  The input file must also be specified.
+For example:
+
+	DCWCN -c YYMMDD/HHNN [other_options] output_file < input_file
+    
+A template may be used to specify the output file name.  The file
+name template uses the date and time of the bulletin or report
+to replace the following characters.
+
+	YYYY or YY	Year with or without the century
+	MM		Month number
+	DD		Day
+	HH		Hour
+	NN		Minute
+
+
+PROGRAM METHODOLOGY FOR TIME STRINGS
+
+When decoding WCNs, assumptions on time varibles are made for those cases
+where the watch start time is '000000T0000Z'.
+
+For 'NEW' reports, the watch starting and ending times are decoded
+from the VTEC line.
+
+For 'CON' reports, where the watch starting time is '000000T0000Z' 
+in the VTEC line, the start time is set equal to the bulletin issue time 
+and the ending time is decoded from the VTEC line.
+
+For 'CAN' reports, where the watch starting time is '000000T0000Z' 
+in the VTEC line, the ending time is decoded from the VTEC line and
+the starting time is set equal to the ending time.
+
+OUTPUT FORMATING
+
+The format of the output ASCII file is as follows:
+
+|Watch|Issue|Start|Stop|Watch |Bulletin  |Action;Significance|Corr|Cancel|Test
+|type |time |time |time|number|originator|code   code        |flag|flag  |flag
+
+County/marine zone table entries, one per line, formatted as shown in the 
+example below (county/marine zone information lines should appear just as they 
+do in $GEMTBL/stns/mzcntys.tbl)
+.        .      .                                .  .   .     .         .  . .
+.        .      .                                .  .   .     .         .  . .
+.        .      .                                .  .   .     .         .  . .
+
+where:
+
+Watch type is           TSM     thunderstorm watch
+                        TOR     tornado watch
+
+Issue time is           YYMMDD/HHMM - GEMPAK date/time format - time of the
+                                      of the WCN bulletin
+Start time is           YYMMDD/HHMM - GEMPAK date/time format - Start time
+                                      of the WCN bulletin
+Stop time is            YYMMDD/HHMM - GEMPAK date/time format - End time of
+                                      of the WCN bulletin
+
+Bulletin originator is  KALY, KBGM, etc. from 2nd field of 1st line of bulletin
+
+Watch number		is the decoded watch number
+
+Action code             is the action on the counties listed
+                           	NEW - new counties in the watch
+                           	CON - continuing counties in the watch
+                           	EXT - extending the time of the watch
+                           	EXA - extending the area of the watch
+                           	EXT - extending the area and time of the watch
+                           	EXP - normal expiration of counties
+                           	CAN - canceling counties from the watch
+
+Significance code       A       Watch
+
+Correction flag         0       Not a correction
+                        1       A correction
+
+Cancel flag             0       Not a cancellation or expired report
+                        1       A cancellation or expired report
+
+Test flag               0       Not a test report
+                        1       A test report
+
+Example
+-------
+|TOR|020807/1701|020807/1716|020807/2100|0002|KLSX|CON;A|0|0|1                                  
+ILC121    17121 Marion                           IL US     38.65    -88.92      0.00  0  LSX 
+ILC051    17051 Fayette                          IL US     39.00    -89.03      0.00  0  LSX
+ILC189    17189 Washington                       IL US     38.35    -89.41      0.00  0  LSX
+LHZ361   743610 LHZ361                           LH US     45.65    -83.88      0.00  0  APX
+ANZ335   673350 ANZ335                           AN US     41.04    -73.35      0.00  0  OKX
+ANZ338   673380 ANZ338                           AN US     40.54    -74.08      0.00  0  OKX

@@ -1,0 +1,14 @@
+! OFFSHA.BULL
+!
+! This table contains the bulletin/station information to be used
+! with the Offshore Area
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+!
+FHPN01 PHNL     HONOLULU_INTL/OAHU               HI HI  2132 -15792     4
+FHPN01 PHFO	HONOLULU/UNIV_OF_HI-MANOA_CAMPUS HI US  2190 -15842    20
+FANT2  KWBC     WASHINGTON/NATI                  VA US  3885  -7703    20 

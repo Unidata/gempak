@@ -1,0 +1,4 @@
+#!/bin/csh
+
+ll -R | grep "^\-r\-"
+ll -R | grep "^dr\-"

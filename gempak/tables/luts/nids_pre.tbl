@@ -1,0 +1,22 @@
+! nids_pre.tbl
+!
+! Color table for 16-level NIDS precip products
+! Appendix A, FMH-11 Part C
+!
+!Color name    Abrev   Red  Green   Blue  X color name
+BLACK           BLA      0      0      0  black
+GRAY            GRA    170    170    170
+DKGRAY          DKG    118    118    118
+CYAN            CYA      0    255    255  cyan
+DKCYAN          DKC      0    175    175
+GREEN           GRE      0    255      0  green
+DKGREEN         DKG      0    143      0
+MAGENTA         MAG    255      0    255  magenta
+DKMAGENTA       DKM    175     50    125
+BLUE            BLU      0      0    255  blue
+DKBLUE          DKB     50      0    150
+YELLOW          YEL    255    255      0  yellow
+ORANGE          ORA    255    170      0
+RED             RED    255      0      0  red
+DKRED           DKR    174      0      0
+WHITE           WHI    255    255    255  white

@@ -1,0 +1,15 @@
+!	This is the NMP error file.
+!
+-1	! Map structure not initialized or no records found.
+-2	! Overlay structure not initialized or no records found.
+-3	! The number of elements in the attribute string not match the overlay type. 
+-4 	! Invalid itype.
+-11	! Loop index out of range.
+-12	! Invalid overlay number.
+-13	! Invalid overlay attribute.
+-14	! !AS invalid map name.
+-15	! Invalid image file name.
+-16	! Mapfile string overrun.
+-17	! Map string overrun.
+-18	! !AS invalid garea.
+-19	! !AS invalid projection.

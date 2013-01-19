@@ -1,0 +1,37 @@
+!
+! Restore File : goessst_fill (for GoesSST)
+!
+! Log:
+! J.A.Morgan/OPC        	08/04 Adapted for high resolution display
+! J.A.Morgan/OPC		11/04 Reset color scheme
+!
+GDATTIM allf00
+GLEVEL  0
+GVCORD  none
+PANEL   0
+SKIP    0/0
+SCALE   999
+GDPFUN  tmpc
+TYPE    c/f
+CONTUR  0
+CINT    26
+LINE    32///0
+FINT    5;6;7;8;9;10;11;12;13;14;15;16;17;18;19;20;21;22;23;24;25;26;27;28;29;30;31
+FLINE   31;7;30-28;6;27-24;23-21;20-15;2;14-11;1;10-8 
+HILO    
+HLSYM   
+CLRBAR  1/v/ll
+WIND    
+REFVEC  
+TITLE   5/-2/~ GOES 6km SST (deg C)
+TEXT    1/21/1/hw
+STNPLT  
+SATFIL  
+RADFIL  
+LUTFIL  
+STREAM  
+POSN    0
+COLORS  1
+MARKER  0
+GRDLBL  
+FILTER  no

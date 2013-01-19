@@ -1,0 +1,90 @@
+!************************************************************************
+!* NMAP_PGW.TBL								*
+!*									*
+!* This table contains information for severe weather watch issueing.	*
+!* Range list elements must be separated by ';'.			*
+!* No embedded blanks are allowed in the range lists.			*
+!* The range list will be presented to the user in the order given here.*
+!* The range lists may contain a maximum of 30 elements. 		*
+!*									*
+!**									*
+!* Log:									*
+!* D.W.Plummer	 	 3/99	Created					*
+!* D.W.Plummer	 	 4/99	Added adjacent area items		*
+!* H. Zeng/EAI          12/99   Added expiration time items             *
+!* R. Curtis/EAI         5/00	Removed forecaster names                *
+!* G. Grosshans/SPC      2/01   Updated Hail items                      *
+!* H. Zeng/EAI          06/01   Added initial time items                *
+!* H. Zeng/EAI          06/02   Removed initial time items              *
+!* A. Hardy/NCEP 	 6/03	Added 1.5 and 2.5 to hail sizes		*
+!************************************************************************
+!
+!       "HHMM" of expiration time
+!       (maximum of 30 entries, maximum of 16 characters each)
+!
+EXPIRATIONTIME  0000
+EXPIRATIONTIME  0100
+EXPIRATIONTIME  0200
+EXPIRATIONTIME  0300
+EXPIRATIONTIME  0400
+EXPIRATIONTIME  0500
+EXPIRATIONTIME  0600
+EXPIRATIONTIME  0700
+EXPIRATIONTIME  0800
+EXPIRATIONTIME  0900
+EXPIRATIONTIME  1000
+EXPIRATIONTIME  1100
+EXPIRATIONTIME  1200
+EXPIRATIONTIME  1300
+EXPIRATIONTIME  1400
+EXPIRATIONTIME  1500
+EXPIRATIONTIME  1600
+EXPIRATIONTIME  1700
+EXPIRATIONTIME  1800
+EXPIRATIONTIME  1900
+EXPIRATIONTIME  2000
+EXPIRATIONTIME  2100
+EXPIRATIONTIME  2200
+EXPIRATIONTIME  2300
+!
+!	Adjacent Areas
+!	(maximum of 30 areas, maximum of 16 and 32 characters each)
+!
+ADJ_AREA	LM	Lake_Michigan
+ADJ_AREA	LS	Lake_Superior
+ADJ_AREA	LO	Lake_Ontario
+ADJ_AREA	LE	Lake_Erie
+ADJ_AREA	LH	Lake_Huron
+ADJ_AREA	CW	Coastal_Waters
+!
+!	Defaults and range for hail
+!	(maximum of 30 elements, maximum of 3 characters each)
+!
+HAIL 	RANGE 		0.5;1.0;1.5;2.0;2.5;3.0;4.0
+HAIL 	DEFAULT		2.0
+!
+!	Defaults and range for maximum wind gusts
+!	(maximum of 30 elements, maximum of 3 characters each)
+!
+GUST 	RANGE 		50;60;70;80;90;100
+GUST 	DEFAULT		60
+!
+!	Defaults and range for maximum tops
+!	(maximum of 30 elements, maximum of 3 characters each)
+!
+TOPS 	RANGE 		300;350;400;450;500;550;600;650;700
+TOPS 	DEFAULT		500
+!
+!	Defaults and range for mean storm motion vector direction
+!	(maximum of 30 elements, maximum of 3 characters each)
+!
+SMVD 	RANGE 		180;190;200;210;220;230;240;250;260
+SMVD 	RANGE 		270;280;290;300;310;320;330;340;350;360
+SMVD 	DEFAULT		240
+!
+!	Defaults and range for mean storm motion vector speed
+!	(maximum of 30 elements, maximum of 3 characters each)
+!
+SMVS 	RANGE 		10;15;20;25;30;35;40;45;50;55;60;65;70
+SMVS 	DEFAULT		35
+

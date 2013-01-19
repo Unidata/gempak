@@ -1,0 +1,10 @@
+!	GDDELT error file
+!
+-1	! Fatal error initializing TAE.
+-2	! Fatal error reading TAE parameters.
+-3	! Invalid grid range entered.
+-4	! Grid number !AS is invalid.
+-5      ! There are no grids in file !AS.
+-6	! No valid grids in list.
+-7	! Input grid !AS cannot be found.
+-8	! Grid file !AS not exist.

@@ -1,0 +1,40 @@
+!
+! Restore File : pmsl_1000-850_thk
+!
+! Log:
+! D.W.Plummer/NCEP	 2/97	Initial creation
+! J. Carr/HPC         5/15/97   Changed line thickness on thickness and hilo ranges
+! D.W.Plummer/NCEP	 8/97	Added FILTER parameter and changed TEXT value
+!
+GDATTIM fall                                                                    
+GLEVEL  850:1000                  !0
+GVCORD  pres                      !none
+PANEL   0                                                                       
+SKIP    0/1;-1
+SCALE   -1                        ! 0
+GDPFUN  (sub(hght@850,hght@1000)) !sm9s(pmsl) ! kntv(wnd@9950%sgma)
+TYPE    c                         !           ! b
+CONTUR  1
+CINT    1                         !4
+LINE    3/5/2/1                   !20//2
+FINT    
+FLINE   
+HILO    !26;2/H#;L#/1020-1070;900-1012/3/30;30/y
+HLSYM   2;1.5//21//hw
+CLRBAR  1
+WIND    9/0.7/2/112
+REFVEC                                                                          
+TITLE   1/-1/~ PMSL, 1000-850mb THKN & BL (~995 MB) WIND (KTS)!0
+TEXT    1/22/2/hw                                                             
+CLEAR   yes                                                                     
+DEVICE  xw                                                                      
+STNPLT                                                                          
+SATFIL                                                                          
+RADFIL                                                                          
+STREAM                                                                          
+POSN    4                                                                       
+COLORS  2                                                                       
+MARKER  2                                                                       
+GRDLBL  5                                                                       
+LUTFIL  none
+FILTER  yes

@@ -1,0 +1,31 @@
+OPSYS = Linux
+
+CC = pgcc
+FC = pgf77
+
+MOTIFINC  = -I/usr/X11R6/include
+XWINCDIR  = -I/usr/X11R6/include
+
+COPT = -DUNDERSCORE -D$(OPSYS) $(GEMINC) $(MOTIFINC) -g
+FOPT =  $(GEMINC) -g
+NCII = "-I../libsrc"
+NCOPT = "CC=$(CC)" "FC=$(FC)" "CPPFLAGS=-DNDEBUG -DpgiFortran" "FFLAGS=-O -w" "CFLAGS=-O $(NCII)" "CXX= "
+
+CFLAGS = $(COPT) 
+CFLAGS_DB = $(COPT)
+FFLAGS = $(FOPT)
+LDM_FLAGS = 
+
+
+
+X11LIBDIR = -L/usr/X11R6/lib
+#MOTIFLIBS = -L/usr/X11R6/lib -lXm $(X11LIBDIR) -lSM -lICE -lXp -lXext
+MOTIFLIBS = /usr/X11R6/lib/libXm.a $(X11LIBDIR) -lSM -lICE -lXp -lXext
+
+BUFRFLAGS = -O 
+
+SYSLIBS = 
+
+NOFORMAIN = -Mnomain
+OS_LIB = $(NAWIPS)/lib/linux.pgi
+OS_BIN = $(NAWIPS)/bin/linux.pgi

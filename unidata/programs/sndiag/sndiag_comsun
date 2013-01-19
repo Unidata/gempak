@@ -1,0 +1,5 @@
+f77 -c -cg89 *.f
+ar rv sndiag.a *.o
+ranlib sndiag.a
+rm *.o
+

@@ -1,0 +1,11 @@
+     EXTEND
+
+     EXTEND specifies the numbers of grid points beyond the GRDAREA which 
+     define the grid extend area in the Barnes objective analysis.  The 
+     first pass is computed on the extend area to reduce edge effects on 
+     the GRDAREA.
+ 
+     EXTEND is specified as four integers, which are the number of grid 
+     points to extend the grid left, down, right, and up.  The values are 
+     separated by semicolons.  The default for EXTEND is 2;2;2;2.
+ 

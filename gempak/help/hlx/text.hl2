@@ -1,0 +1,99 @@
+     TEXT
+
+     TEXT is the size, font, text width and hardware/software flag for 
+     graphics text separated with slashes:
+
+		text size / font / width / border /
+		rotation / justification / hw flag
+
+     The size may be a real number multiplier for the default text
+     size.  If the size is zero or unspecified, the current size
+     will be used.
+     
+     The size may also be a name, or the first character of a name.
+     The name is converted to a real number multiplier.  For hardware
+     text, the named sizes correspond to discrete point sizes.  Sizes
+     other than the named sizes will be rounded to the nearest point
+     size.  Any size may be given for software text.  The standard
+     names and size values are given in the table FONTSZ.TBL:
+
+		Name		Size	HW Point
+		----		----	--------
+		Tiny		0.714	   10
+		Small		0.857	   12
+		Medium		1.000	   14
+		Large		1.286	   18
+		Huge		1.714	   24
+		Giant		2.429	   34
+
+     The text width is the integer line width to be used in generating 
+     software text.  If the text size, font or width is not specified, 
+     the current value is used.
+
+     The text border is a border/blank fill flag.  If the input value is
+     less than or equal to zero, the current value is used.  Border is a
+     three digit number, ABC, where:
+
+	A - Border	B - Blank Fill		C - Border Type
+	----------	--------------		---------------
+	1 = No		1 = No			1 = Regular Box
+	2 = Yes		2 = Yes			2 = Low Pressure Box
+			3 = Reverse video	3 = High Pressure Box
+						4 = Freezing Level Box
+						5 = Underline
+						6 = Overline
+
+     If reverse video is selected, the text color and background color
+     are switched.  The result is similar to a photographic negative.
+     Low and high border types refer to the low and high outlines for
+     use on aviation forecast products.
+	
+     The text rotation is a character input that specifies whether the
+     text is aligned with the screen (S) or with north (N) on a given
+     image. If the choice is invalid or not specified, the current value
+     will be used.
+
+     The text justification is a character input that specifies whether
+     the text is justified to the center (C), right (R), or left (L). 
+     If the choice is invalid or not specified, the current value will
+     be used.
+
+     The hardware/software selector must be HW or SW to change to 
+     hardware- or software-generated text.  This selector can appear
+     anywhere in the string.
+
+     The font number must be specified by using the HW selector and 
+     choosing a font number from the list below.
+
+		     REGULAR	ITALIC	  BOLD	   ITALIC-BOLD
+	Courier	        1	  11	   21	      31
+	Helvetica	2	  12	   22	      32
+	Times	        3	  13	   23	      33
+
+     There are also four software fonts. 
+
+		     	     REGULAR	ITALIC	  BOLD	   ITALIC-BOLD
+	Mixed Case     		1	  --	   21	      --
+	All Upper Case		2	  --	   22	      --
+	Helvetica Emulation	3	  --	   23	      --
+	Times Emulation     	4	  14	   24	      34
+
+     If a font does not support a particular style, the next lower
+     style is used instead. For example, font 1 does not support Italic,
+     therefore Italic is converted to regular.
+
+     If a particular device driver does not support hardware fonts,
+     the requested font is emulated using the appropriate software font. 
+ 
+     Examples:
+
+	TEXT = 1/21/SW		--	text size = 1; bold software font 1
+
+	TEXT = 1/2/HW		--	text size = 1; hardware text font 2
+ 
+	TEXT = 2.5		--	text size = 2.5; current text font
+
+	TEXT = 1.24///221/s/c   --	text size = 1.24; current text font;
+					current text width; Border = yes,
+					Blank fill = yes, Border type = box;
+					screen relative; center justified

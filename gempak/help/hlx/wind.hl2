@@ -1,0 +1,52 @@
+     WIND
+
+     WIND specifies the wind symbol, size, width, type, and head size 
+     separated by slashes:
+
+		wind symbol / size / width / type / arrow head size
+
+     The wind symbol contains a letter for symbol type, a letter for symbol 
+     units and a color number with no separators.  The character meanings 
+     are:
+
+	TYPE:	B = BARB	A = ARROW               D = DIRECTIONAL ARROW
+
+	UNITS:	K = KNOTS	M = m/s
+
+	COLOR:	Color number	0 = no wind plotted
+
+     The default is BM1, i.e., barbs in meters/sec plotted in color number 
+     1.  If a partial specification is given, the remaining characteristics
+     will be taken from the default.
+
+     The wind size is a real number which will be used as a multiplier for 
+     the default wind symbol size.  If this number is negative, zero, or 
+     missing, the current size will be used.  The sizes for barbs and 
+     arrows are independent.
+ 
+     The width is an integer specifying the line width to use in drawing
+     the arrows or barbs.
+
+     The type is a four-digit number, FABC, interpreted digit by digit as
+     follows:
+
+	    A	                    B	                   C
+	1 = plot calm wind   1 = start at stn	     1 = not filled
+	2 = ignore calm wind 2 = center at stn	     2 = filled
+		             3 = start on sky symbol 3 = not filled with box
+						     4 = filled with box
+
+     F is a flag which specifies whether to plot the wind barb on the
+     opposite side from where it would normally occur.  If, F is not
+     equal to zero, the wind barb is flipped.
+
+     Calm winds are plotted as a circle or an arrowhead for barbs and
+     arrows, respectively.  Arrowheads and 50-unit barb flags are filled
+     if C=2 or 4.  A box is plotted with background color if C = 3 or 4.
+     For example, if TYPE=132, a barb will be plotted as a circle if the 
+     wind is calm; it will begin on the edge of the cloud cover symbol, 
+     and 50-unit flags will be filled.  The default is 111.
+
+     The head size is a real valued multiplier used for the length of the 
+     arrow head.  This variable is not used for wind barbs.
+ 

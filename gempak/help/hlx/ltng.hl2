@@ -1,0 +1,51 @@
+     LTNG
+
+     LTNG is the ending valid time for lightning data, the time increments (in
+     minutes going back from the ending time) and the corresponding colors for
+     the lightning data, and the positive and negative markers to display.
+
+	End time|time increments/colors|positive marker/negative marker
+
+     The ending time is the latest time for which lightning data will be
+     plotted.  The ending time is given as a GEMPAK date/time string.  Any 
+     missing items from the string will be filled in by the system time.  The
+     ending time may also be LAST.  LAST will use the system time and plot all
+     lightning data for the preceding times as defined by the time increments.
+     ALL is not accepted as an ending time for lightning data.
+
+     The time increments and colors may each be specified using either a list
+     separated by semicolons or a range in the form first-last-increment. 
+     Time increments are given in minutes going back sequentially from the
+     ending time.  The number of time increments must be the same as the
+     number of colors.  If no time increment and color are given, a single
+     time increment of 5 minutes with a default color of red will be used.  
+     If the range format is used for the time, an increment must be specified.
+     If the range format is used for the color and an increment is not 
+     specified, an increment of one is used.
+
+     The marker data includes the marker type, size and width, separated by
+     semicolons.  The default marker for positive strikes is a plus sign, and
+     for negative strikes a minus sign.  Default marker size multiplier is
+     one, as is default width.
+     
+
+     Examples:
+
+	LTNG  = 991130/2315|1/5
+
+ 		All lightning data will be plotted in yellow for times 2314Z
+ 		and 2315Z.  Default marker values will be used.
+
+	LTNG  = LAST      
+
+ 		All lightning data for the preceding five minutes will be 
+ 		plotted in red.
+
+	LTNG  = ltng=991201/0000|10;20;30;90/2;17;5;3|4;1.5;2/6;2;3
+
+ 		Lightning data for 991130/2350 to 991201/0000 will be plotted
+ 		in red; for 2330 to 2349 in orange; for 2300 to 2329 in yellow;
+ 		and for 2130 to 2259 in green.  Positive strikes will be 
+ 		plotted as squares with a size multiplier of 1.5 and a line
+ 		width of 2; negative markers will be plotted as diamonds with
+ 		a size multiplier of 2 and a line width of 3.

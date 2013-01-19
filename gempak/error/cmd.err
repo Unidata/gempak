@@ -1,0 +1,7 @@
+!       This is the GEMLIB CMD error file
+!
+-1      ! Invalid pointer in arguments
+-2      ! Could not allocate memory
+-3      ! CMDObject with this id already exists
+-4      ! Invalid plot area defined
+-5      ! Could not find id in set

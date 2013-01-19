@@ -1,0 +1,16 @@
+! AWU.BULL
+!
+! Location information for the following product:
+! Area_Weather_Update.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+FLUS73 KEAX     KANSAS_CITY/PLEASANT_HILL        MO US  3879  -9426     0
+FLUS74 KFWD     DALLAS/FORT_WORTH                TX US  3283  -9729     0
+FLUS74 KOUN     NORMAN                           OK US  3522  -9745     0
+FLUS74 KTSA     TULSA                            OK US  3613  -9586     0
+FLUS75 KBOU     DENVER                           CO US  4000 -10526     0
+FLUS75 KGJT     GRAND_JUNCTION                   CO US  3911 -10851     0

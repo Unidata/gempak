@@ -1,0 +1,26 @@
+!************************************************************************
+!* WCCPHONE.TBL							        *
+!*                                                                      *
+!* This table contains a phone number list.		                *
+!* This list is used on WCC window                                      *
+!* The range lists may contain a maximum of 30 elements 		*
+!* of no more than 16 characters each.					*
+!*									*
+!**									*
+!* Log:									*
+!* H. Zeng/EAI          11/01   Created                                 *
+!************************************************************************
+!
+!	Phone Numbers 
+!	(maximum of 30 numbers, maximum of 16 characters each)
+!
+1-800-5551111
+1-800-5552222
+1-800-5553333
+1-800-5554444
+1-800-5555555
+1-800-5556666
+1-800-5557777
+1-800-5558888
+1-800-5559999
+

@@ -1,0 +1,18 @@
+GDATTIM f24                                                                     
+GLEVEL  500:850                                                                 
+GVCORD  PRES                                                                    
+GVECT   thrm                                                                    
+GDFILE  $GEMPAK/data/HRCBOB.GRD                                                     
+GAREA   oh-                                                                     
+SATFIL                                                                          
+RADFIL                                                                          
+LINE    3//2                                                                    
+MAP     1/7                                                                     
+LATLON  2/10/1/1/5;5                                                            
+TITLE   5                                                                       
+PANEL   0                                                                       
+TEXT    1                                                                       
+DEVICE  xw|window2                                                              
+PROJ    nps                                                                     
+CLEAR   yes                                                                     
+WIND    an3////.75                                                              

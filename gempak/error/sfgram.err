@@ -1,0 +1,19 @@
+!	This is the error file for SFGRAM.
+!
+ +3	! Hardware text cannot generally be rotated.
+ -1	! Fatal error initializing TAE.
+ -2	! Fatal error reading TAE parameters.
+ -3	! Fatal error initializing GEMPLT.
+ -4	! No stations have been entered.
+ -5	! !AS cannot be plotted in position 4.
+ -6	! The time range along the x axis is 0.
+ -7	! The parameter !AS cannot be computed.
+ -8	! The graph coordinates are invalid.
+ -9	! There is no data at station !AS.
+-10	! Station !AS is invalid.
+-11	! There are no times in the file.
+-12	! The time !AS is invalid.
+-14	! The file !AS cannot be opened.
+-15	! There are no parameters specified.
+-16	! Error in specifying TAXIS.
+-17	! No valid time or file found.

@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs='http://www.w3.org/2001/XMLSchema'>
+
+    <!--
+        Airmet schema
+    
+        This is a schema that describes the correct form that an xml document 
+        must conform to in order to be correctly transformed by the 
+        airmet_tango.xsl stylesheet.  
+   
+        The schema defines two types of elements, a hdr and smear.  The hdr 
+        contains information that is applied to all elements and cannot be 
+        derived from any of the GFA elements in the vg file.  The smear element 
+        contains information that is taken from smear elements found in the 
+        originating vg file.
+    
+        Log:
+        E. Safford/SAIC    11/04    initial coding
+        E. Safford/SAIC	   01/05    add IFR and allow for multiple sigmet
+        							  references per smear
+        E. Safford/SAIC    11/05    add outlooks, add lat/lon info necessary for 
+                                                    the From line display
+        E. Safford/SAIC    12/05    add freezingRange, split up Base & Top in smearType
+        E. Safford/SAIC    01/06    add Level, include FZLVL in enumerated hazard types
+        E. Safford/SAIC    04/06    add conditions begin/end information
+        E. Safford/SAIC    05/06    add FzlBase and FzlTop              
+	B. Yin/SAIC	   07/07    add airmetTag
+    -->
+    
+    <xs:element name="gfaInfo">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="hdr" type="hdrType"/>  <!-- must have 1 per file -->
+                <xs:choice minOccurs="0" maxOccurs="unbounded">
+                    <xs:element name="smear" type="smearType"/>
+                    <xs:element name="outlook" type="smearType"/>
+                </xs:choice>
+                <xs:element name="freezingRange" type="freezingRangeType" minOccurs="0" maxOccurs="1"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    
+    <!-- 
+        header element type definition
+    -->
+    <xs:complexType name="hdrType">            
+        <xs:all>
+            <xs:element name="faArea" type="faAreaType"/>
+            <xs:element name="issueTime" type="timeType"/>
+            <xs:element name="untilTime" type="timeType"/>
+            <xs:element name="outlookEndTime" type="timeType"></xs:element>
+        </xs:all>
+    </xs:complexType>
+    
+    <!--  
+        hdrType component types 
+    -->
+    <xs:simpleType name="faAreaType">
+        <xs:restriction base="xs:string">
+            <xs:length value="3"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="timeType">
+        <xs:restriction base="xs:positiveInteger">
+            <xs:totalDigits value="6"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="hazardWordingType">
+        <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+   
+    
+    
+    <!--
+      smearType definition
+    -->
+    <xs:complexType name="smearType">
+        <xs:sequence>
+            <xs:element name="ReferToSigmet" type="xs:string" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="hazard" type="hazardType" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="stateList" type="xs:string" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="closeFlg" type="xs:string" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="nLatLonPts" type="xs:int" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="latPts" type="xs:string" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="lonPts" type="xs:string" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="fromLine" type="xs:string" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="Frequency" type="frequencyType" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="Severity" type="severityType" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="Top" type="BaseTopType" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="Base" type="BaseTopType" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="FzlTop" type="BaseTopType" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="FzlBase" type="BaseTopType" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="Level" type="BaseTopType" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="DUE_TO" type="xs:string" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="Status" type="statusType" minOccurs="0" maxOccurs="1"/>	
+            <xs:element name="updateNum" type="updateType" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="fromCondsDvlpg" type="xs:string" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="fromCondsEndg" type="xs:string" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="genOlk" type="genOlkType" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="condsContg" type="xs:string" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="otlkCondsDvlpg" type="xs:string" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="otlkCondsEndg" type="xs:string" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="airmetTag" type="xs:string" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <!-- 
+        smear component types 
+    -->
+    <xs:simpleType name="hazardType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="TURB"/>
+            <xs:enumeration value="turb"/>
+            <xs:enumeration value="ICE"/>
+            <xs:enumeration value="ice"/>
+            <xs:enumeration value="MT_OBSC"/>
+            <xs:enumeration value="mt_obsc"/>
+            <xs:enumeration value="LLWS"/>
+            <xs:enumeration value="llws"/>
+            <xs:enumeration value="SFC_WND"/>
+            <xs:enumeration value="sfc_wnd"/>
+            <xs:enumeration value="IFR"/>
+            <xs:enumeration value="ifr"/>
+            <xs:enumeration value="M_FZLVL"/>
+            <xs:enumeration value="m_fzlvl"/>
+            <xs:enumeration value="FZLVL"/>
+            <xs:enumeration value="fzlvl"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="updateType">
+        <xs:restriction base="xs:positiveInteger">
+            <xs:totalDigits value="1"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="frequencyType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="OCNL"/>
+            <xs:enumeration value="ocnl"/>
+            <xs:enumeration value="FRQ"/>
+            <xs:enumeration value="frq"/>
+            <xs:enumeration value="NO QUALIFIER"/>
+            <xs:enumeration value="No Qualifier"/>
+            <xs:enumeration value="no qualifier"/>
+            <xs:enumeration value=""/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="severityType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="MOD"/>
+            <xs:enumeration value="mod"/>
+            <xs:enumeration value="SEV"/>
+            <xs:enumeration value="sev"/>
+            <xs:enumeration value=""/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="statusType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="NRML"/>
+            <xs:enumeration value="COR"/>
+            <xs:enumeration value="AMD"/>
+            <xs:enumeration value="CAN"/>
+            <xs:enumeration value="NEW"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <!--  
+        freezing range and component types
+    -->
+    <xs:complexType name="freezingRangeType">            
+        <xs:all>
+            <xs:element name="Top" type="BaseTopType"/>
+            <xs:element name="Base" type="BaseTopType"/>
+        </xs:all>
+    </xs:complexType>
+    
+    
+    <xs:simpleType name="BaseTopType">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="3"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- 
+        generate outlook type
+    -->
+    <xs:simpleType name="genOlkType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="YES"/>
+            <xs:enumeration value="NO"/>
+            <xs:enumeration value="MAYBE"/>
+            <xs:enumeration value="NULL"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+</xs:schema>

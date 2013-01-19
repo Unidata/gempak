@@ -1,0 +1,7 @@
+$FC $FFLAGS $LDFLAGS -o $OS_BIN/gdfrzl gdfrzl.f \
+	$OS_LIB/gdfrzl.a $OS_LIB/gdcntr.a \
+	$OS_LIB/ginitp_alt.o $OS_LIB/gendp_alt.o \
+        $GEMLIB $GPLT $DEVICE \
+        $OS_LIB/vg.a $OS_LIB/gn.a \
+        $CGEMLIB $GEMLIB $GPLT $DEVICE $CGEMLIB $OS_LIB/vg.a -lm -lnetcdf -lz
+$RM *.o

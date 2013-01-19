@@ -1,0 +1,14 @@
+!	This is the VG2UKA error file
+!
+! log
+!------
+! M. Li/SAIC		 6/04	
+! M. Li/SAIC		 9/04	Added -5
+!
+
+  -1 	! The GEMPAK date/time and/or valid hour should be input.
+  -2 	! Group type !AS cannot be found in the group type list.
+  -3 	! Cannot create alias from datatyp.tbl. Check alias or inputs.
+  -4    ! VG file !AS not found.
+  -5	! Cannot mix high and mid level charts in fxytbl.
+  -6	! Chart type/alias should be input. 	

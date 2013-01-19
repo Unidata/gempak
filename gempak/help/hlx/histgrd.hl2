@@ -1,0 +1,14 @@
+     HISTGRD
+
+     HISTGRD toggles the writing of the graph-to-grid history grid to
+     the GEMPAK grid file.  The history grid contains integral values
+     which indicate which method was used to assign the data grid value.
+     The grid is primarily a diagnostic tool and is usually not saved.
+
+         yes - save history grid
+         anything else - do not save history grid
+
+     The name of the history grid will be the name of the data grid
+     concatenated with "HIST", e.g., data P06I will be P06IHIST.
+     The vertical coordinate and level will be the same as the data grid.
+

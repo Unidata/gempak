@@ -1,0 +1,17 @@
+! SUS.BULL
+!
+! This table contains the bulletin/station information to be used
+! with the Coded Fronts Analysis.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!
+!
+! A. Hardy/NCEP		10/04		Changed ASUS1 -> ASUS01
+!------------------------------------------------------------------------
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+!
+ASUS01  KWBC     NMC                              MD US  3882  -7687    86

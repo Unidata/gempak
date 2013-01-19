@@ -1,0 +1,8 @@
+!
+! NCEPGRIB130.TBL -- GRIB 1 parameter conversion table version 130
+!
+!ID# NAME                             UNITS                GNAM         SCALE   MISSING HZREMAP DIRECTION
+!
+139 Ozone prod from temp term         kg/kg/s              POZT             0  -9999.00       0         0
+154 Omega divided by density          K                    OMGALF           0  -9999.00       0         0
+191 Sunshine Duration                 s                    SUNSD            0  -9999.00       0         0

@@ -1,0 +1,16 @@
+! IP error file
+!
+  1	! Cannot close window. Blank name is invalid.
+ -1	! Global file cannot be opened for write access.
+ -2	! The global parameter file GEMGLB.NTS cannot be opened.
+ -3	! There are too many parameters.
+ -4	! Error writing to GEMGLB.NTS.
+ -5	! !AS is an unrecognized command.
+ -6	! There is no help file for !AS.
+ -7	! !AS is an unrecognized parameter.
+ -8	! !AS is an ambiguous parameter abbreviation.
+ -9	! The save file !AS is invalid.
+-10	! The parameter file for !AS cannot be opened.
+-11	! Invalid parameter name for CURSOR.
+-12	! !AS is an invalid dwell rate setting.
+-13	! !AS is an invalid window name.

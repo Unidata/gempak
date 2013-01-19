@@ -1,0 +1,4 @@
+$CC $CFLAGS -c tag2vgf.c
+$FC $LDFLAGS -o $OS_BIN/tag2vgf tag2vgf.o \
+		$CGEMLIB $GEMLIB $CGEMLIB $GEMLIB
+$RM *.o

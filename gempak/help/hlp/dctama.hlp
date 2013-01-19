@@ -1,0 +1,68 @@
+
+DCTAMA
+
+DCTAMA decodes TAMDAR data in BUFR format from a real-time 
+data feed, or from a file fed to the program through standard 
+input, and writes the data to a GEMPAK sounding file.  The program is 
+controlled by inputs to the command line.
+
+The inputs are program options and the output file template.
+For example, for real-time data feeds:
+    
+	dctama [options] output_file_template
+
+If running the program interactively with standard input, the -c
+option must be used.  The input file must also be specified.
+For example:
+
+	dctama -c YYMMDD/HH [other_options]
+		 output_file_template < input_file
+    
+	output_file_template = YYYYMMDD.tdar
+
+The template uses the date and time of the bulletin or report
+to replace the following characters.
+
+	YYYY or YY	Year with or without the century
+	MM		Month number
+	DD		Day
+
+The output file is a merged GEMPAK sounding file and can be viewed 
+using NSHARP or dumped using snlist. 
+
+Example of a snlist run print-out:
+
+SNPARM = PRES;TEMP;DWPT;DRCT;SPED;HGHT
+
+ STID = 0000404D      STNM =   600404   TIME = 080823/2300
+ SLAT =  44.25     SLON =  -88.50   SELV = -9999.0
+ STIM =  2336
+
+      PRES     TEMP     DWPT     DRCT     SPED     HGHT
+    980.20 -9999.00     0.00   350.00 -9999.00   270.00
+    974.90 -9999.00     0.00   303.00     6.00   320.00
+
+
+here:
+
+	STID - is the "station ID" comprised from the aircraft flight 
+	number (ACFN) and a letter indicating the phase of the flight
+		A - ascending
+		D - discending
+
+	STNM - is just another representation where first number actually
+	corresponds to the code number for the phase of flight:
+		5 - ascending
+		6 - discending
+
+	TIME - is the time of the report
+
+	SLAT - latitude of the lowest reporting point
+
+	SLON - longitude of the lowest reporting point
+
+	SELV - elevation
+
+	STIM - the time stamp of the actual "sounding"
+
+

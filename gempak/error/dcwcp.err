@@ -1,0 +1,9 @@
+!	This is the error file for DCWCP.
+!
+-1	! 'BULLETIN' not found.  Possibly bad format.  !AS
+-2	! Not a valid report type  !AS
+-3	! Bad start or end time  !AS
+-4      ! Unable to determine bulletin time  !AS
+-5      ! Unable to determine type of watch  !AS
+-6      ! Bad lat/lon format  !AS
+-7      ! Lat/lon string too long: !AS

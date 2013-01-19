@@ -1,0 +1,38 @@
+!
+! Restore File : cig_500-900ft
+!
+! Log:
+! D.W.Plummer/NCEP	 2/97	Initial creation
+! D.W.Plummer/NCEP	 8/97	Added FILTER parameter and changed TEXT value
+!
+GDATTIM f6-f36-3 ; f42 ; f48
+GLEVEL  0
+GVCORD  none
+PANEL   0                                                                       
+SKIP    0
+SCALE   0
+GDPFUN  (pcig3)
+TYPE    c/f    
+CONTUR  1                                                                       
+CINT    20;30;40;50;60;70;80;90
+LINE    32//1/0
+FINT    10;20;30;40;50;60;70;80;90
+FLINE   0;18-26
+HILO    
+HLSYM   
+CLRBAR  1/h/lc/0.5;0.93/0.8;0.01/1
+WIND    0
+REFVEC                                                                          
+TITLE   5/-1/~ NGM MOS PROB OF CEILING HEIGHT 500-900ft
+TEXT    1/21/2/sw
+CLEAR   yes                                                                     
+STNPLT                                                                          
+SATFIL                                                                          
+RADFIL                                                                          
+STREAM                                                                          
+POSN    4                                                                       
+COLORS  2                                                                       
+MARKER  2                                                                       
+GRDLBL  5                                                                       
+LUTFIL  none
+FILTER  yes

@@ -1,0 +1,20 @@
+     GVCORD
+
+     GVCORD is the vertical coordinate of the grid to be selected.
+
+     The standard values are:
+ 
+	NONE	for surface data
+	PRES	data in pressure coordinates (millibars)
+	THTA	data in isentropic coordinates (Kelvin)
+	HGHT	data in height coordinates (meters)
+	SGMA	data in sigma coordinates
+
+     The value in GVCORD may be overridden by specifying %GVCORD with the 
+     grids to be found.  For example:
+  
+	GFUNC = SUB ( TMPC @850 %PRES, TMPC @1500 %HGHT )  
+  
+     will compute the difference between temperatures on the 850-mb level 
+     and the 1500-meter level.
+

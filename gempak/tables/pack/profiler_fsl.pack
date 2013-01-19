@@ -1,0 +1,19 @@
+!PROFILER_FSL.PACK
+!
+!This table is the packing table used to create a merged sounding file
+! for FSL Wind profiler and RASS data.
+!
+!*Log:
+!
+!
+HGHT     0.  16250.   1.
+DRCT     0.    360.   .01
+SPED     0.    200.   .01
+WWND  -200.    200.   .01
+SIGS     0.     50.   .01
+SIGW     0.     50.   .01
+LMOD     0.      2.   1.
+TVRK     0.    400.   .0001
+PPOW     0.    200.   .0001
+SPCW     0.    200.   .0001
+CNUM     0.    256.   1.

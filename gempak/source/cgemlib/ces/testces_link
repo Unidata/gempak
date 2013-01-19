@@ -1,0 +1,4 @@
+$CC $CFLAGS -c testces.c
+$FC $LDFLAGS -o $OS_BIN/testces testces.o \
+		$CGEMLIB $GEMLIB $CGEMLIB $GEMLIB
+$RM *.o

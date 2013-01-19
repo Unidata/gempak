@@ -1,0 +1,7 @@
+     SPLINE
+
+     SPLINE is a logical for using splines to interpolate the data
+     to height levels. Valid input are YES and NO.  If NO is
+     selected for SPLINE, linear interpolation, with respect to
+     log pressure, is used.
+

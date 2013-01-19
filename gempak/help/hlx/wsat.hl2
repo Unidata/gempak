@@ -1,0 +1,57 @@
+     WSAT 
+
+     WSAT is the ending valid time for the WindSAT wind data, the speed
+     intervals and colors, the wind barb size and width and plotting
+     flags.  Skip is a value that indicates how many rows and data points
+     to skip when plotting.  The flag being used is the Rain flag.
+
+       Data type | End time | Speed intervals | colors1 | colors2 |
+       Arrow/Barb shaft size;Arrow/Barb width;Arrow head size;
+       Type of wind vector | Skip | Time stamp interval | Time stamp color | 
+       Line Width | Rain | Rain Colors | Plot Circles
+
+     The data type is a selection to plot. Currently there is only one data
+     type, WSAT. 
+
+     The ending time is the latest time for which WindSAT data will be 
+     plotted.  The ending time is given as a GEMPAK date/time string.  Any
+     missing items from the string will be filled in by the system time.  The 
+     ending time may also be LAST.  LAST will use the system time and plot all
+     WindSAT data for the preceding 4 hours. ALL is not accepted as an ending 
+     time for WindSAT data.
+
+     The speed intervals and colors may each be specified using either a list
+     separated by semicolons or a range in the form first-last-increment.
+     Speed intervals are given in knots.  If any color is missing, a default 
+     will be used.  If no interval and color are given, a single speed 
+     interval of 200 knots will be used.  This means that any wind speed less 
+     than 200 knots will be plotted.  The default color for the single speed
+     is green.  If the rain flag in the data is true, and the rain colors flag 
+     is true, the wind barb is plotted in the second colors for that wind speed.  
+     If the rain flag is false or the rain colors flag is false, then the 
+     first color is used.
+
+     The wind arrow/barb attributes are the shaft size of the arrow or barb,
+     width of the arrow or barb, size of the arrow head, and the type of wind
+     vector separated by a semicolon.  The default shaft size is 0.2, the
+     default width is 1, the default arrow head size is .4 , and the default
+     type of wind vector is 5 for wind barb.  The other values for type of wind
+     vector is 1 or 3 for directional arrow and 4 for regular arrow.  If no
+     value is given for the type of wind vector, then if the arrow head size is
+     greater than 0, directional arrows will be plotted, otherwise wind barbs
+     will be plotted.
+
+     The Skip value is an integer used for skipping rows and columns of data
+     when plotting the winds.
+
+     The time stamp interval is the time interval in minutes. Line width is
+     the width of the time stamp. The default value is 30 time stamp interval
+     and 1 for line width.
+
+     The Rain flag corresponds to the Rain affected flag in the WindSAT data.
+     The Rain flag allows the user to display wind data that has this attribute.
+     The default for this flag is NO. 
+
+     The Plot Circles flag indicates whether circles should be plotted along 
+     with the wind barbs/arrows for rain flagged winds.
+

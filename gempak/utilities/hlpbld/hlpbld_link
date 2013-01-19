@@ -1,0 +1,9 @@
+if  [ $OS = "HPUX" ]
+then
+    MYFLAG="+U77"
+else
+    MYFLAG=""
+fi
+$FC $FFLAGS $MYFLAG $LDFLAGS -o hlpbld hlpbld.f \
+	$GEMLIB $CGEMLIB $GEMLIB
+$RM *.o

@@ -1,0 +1,27 @@
+     SFEFIL
+
+     SFEFIL is the name of the surface edit file to be used to update a 
+     surface file.
+
+     SFEFIL is a text file which may be created using the program SFLIST 
+     with F as an output device.  A text editor may be used to create or 
+     change the surface edit file.
+  
+     The parameters to be edited must be specified at the beginning of 
+     the surface edit file.  For example:
+  
+		PARM = TMPF;DWPF
+  
+     Parameters that have character values, such as WTHR, cannot be edited.
+     Instead, the numeric value must be used, e.g., WSYM in the case of 
+     WTHR.  All the parameters which are to be edited must already exist 
+     in the surface data file, since no parameter transformations will be 
+     done.  Station information, such as latitude, longitude and elevation, 
+     cannot be changed with SFEFIL.  Use GEMPAK program, SFSTNS, to update 
+     station information in a surface file.
+      
+     The data follow the parameter list.  
+
+     Stations and times which do not already exist in the surface data file 
+     will be added.
+

@@ -1,0 +1,10 @@
+GEMPARM=$GEMPAK/parm
+export GEMPARM
+
+pdfbld $GEMPAK/pdf BUFRENC
+##########################
+pdfbld $GEMPAK/pdf SECTOR
+##########################
+pdfbld $GEMPAK/pdf VG2UKA
+##########################
+echo ALL THE UTIL PDFs ARE BUILT.

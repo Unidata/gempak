@@ -1,0 +1,5 @@
+$FC $FFLAGS $LDFLAGS -o $OS_BIN/testgg testgg.f \
+	$GEMLIB $OS_LIB/textlib.a $CGEMLIB \
+	$APPL $SYSLIB $GEMLIB \
+	-lGPC -lnetcdf -lz -lm
+$RM *.o

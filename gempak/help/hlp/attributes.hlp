@@ -1,0 +1,22 @@
+
+                            LINE ATTRIBUTES
+
+
+The "Line Attributes" pop-ups are used to change the color, line width, and 
+line style of maps, lat/lon lines, and AFOS graphic products.  In NMAP, on the 
+"Map Selection" window, click on any of the "Map", "Lat/Lon", "County", 
+"River", or "Road" buttons to activate the associated "Line Attributes" pop-up. 
+In NSAT, select "Attributes" in the "Tool" menu and click on "Map" or "Lat/Lon."
+In NAFOS, select "Line/Color Attributes" in the "Tool" menu and click on "Base 
+Map," "Lat/Lon," or one of the 6 products.
+
+On the "Line Attributes" pop-up, choose the line color, line width, and line 
+style from the "Color", "Width", and "Style" menus, respectively.  Click the 
+"Compress", "Normal", and "Expand" buttons to control the spacing between line
+elements (dashes and dots).
+
+In NMAP, pressing the "Accept" button saves the line attribute changes toward 
+the next load and shows the changes on the "Map Selection" window.  In NSAT, 
+clicking the "Apply" button saves the selections and re-loads the image 
+sequence immediately.  In NAFOS, clicking the "Load" button also saves the 
+selections and re-loads the products immediately.

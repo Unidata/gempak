@@ -1,0 +1,173 @@
+
+AODT - Advanced Objective Dvorak Technique
+	University of Wisconsin - Madison
+	Cooperative Institute for Meteorological Satellite Studies
+
+Purpose :
+      Estimate intensity of a tropical cyclone using digital
+      geostationary satellite infrared imagery.  
+      Algorithm ONLY works for storms equal to or greater 
+      than hurricane strength (T# >= 3.5)... do not use on 
+      weaker systems.
+                                                                       
+
+Usage: 	aodt [options] image_filename
+
+  OPTIONS:
+
+ opt    value   description
+
+  -a    n,file	Run AODT intensity estimation in automated mode.  
+
+	Note: Cannot be used with the "-c" option.
+
+	    n =	0 - ATCF Tropical Cyclone Forecast Record files.
+       		1 - TPC WTNT4?  or WTPZ3? discussion files
+	        2 - JTWC WTPN3? TROPICAL CYCLONE WARNING file.
+	        3 - Generic format file.
+
+	    file = Name of the input file.
+
+
+  -c	fn	NMAP2 cursor point file filename (must be *.cpf)
+                containing storm center location
+       -or-     -OR-
+      clat,clon Storm center location in the format "clat,clon" 
+		(NOTE: clon negative west, no whitespace allowed)
+
+	Note:  Cannot be used with the "-a" option.
+
+  -d   date1/time1/date2/time2
+		(McIDAS keyword option "DATE")
+		Range of dates/times desired (same format as history file)
+                Enter "date" as YrMonDay (e.g. 97OCT05)
+                Enter "time" as HHMMSS   (e.g. 131500)
+                Defaults :
+                  LIST (-l option):
+                    date1/time1 : first record
+                    date2/time2 : last record
+                  DELETE (-e option):
+                    date1/time1 : no defaults, must specify
+                    date2/time2 : date1/time1
+		  COMMENT (-n option):
+                    date1/time1 : no defaults, must specify
+                    date2/time2 : date1/time1
+		No whitespace allowed in "date1/time1/date2/time2" string.
+
+  -e     -      Allows for manual deletion of a date or a range of dates
+	        (use in conjuction with -d option). No option value such 
+		as YES or NO.
+
+  -f   f1,f2    Flags to allow intensity analysis over land, f1,        
+                ( 0 = don't allow, 1 = allow)                           
+                and to set max log spiral search flag, f2               
+                ( 0 = search OFF, 1 = search ON )                       
+                (default = 0, 0)
+
+  -h	 -      Display this help message.
+
+  -i   nf,nv    Allows for manual settings of initial classification   
+                flag, nf, ( 0 = value not set, 1 = value set to nv ) 
+                and initial classification value, nv.
+                (default = 0, RMISSD)
+
+  -l	 -   	(McIDAS keyword option "LIST")
+	        List contents of history file (-y fn option) to text window. 
+		No option value such as YES or NO.
+	    
+  -m   "AUTO"   (McIDAS keyword option "DOMAIN")                        
+       -or-     Atlantic or West Pacific T# and CI intensity estimate & 
+       "ATL"    related pressure/wind value.  For East Pac, user must   
+       -or-     decide which domain is correct to use for pressure.     
+       "PAC"    (default "AUTO")
+
+  -n "comment"	Comment to be added to a line in the history file
+		(use in conjuction with -d and -y option). Applies to    
+                for version 6.4 and later. 
+
+  -o	fn      (McIDAS keyword option "OUTPUT")
+		For -l option only, output to the file "fn",
+		otherwise to the screen.
+
+  -s	scene	(functionality of McIDAS keyword option "OVER")
+	        Allow user to manually override AODT scene identification 
+	        and/or automated center positioning.  May be utilized 
+	    	with -a option, if desired.  (default=let pgm determine).
+		Valid scene types for AODT version 6.4:
+                  "CLEAR" 
+                  "PINHOLE" 
+                  "LARGE_CLEAR"
+                  "LARGE_RAGGED" 
+                  "RAGGED" 
+                  "OBSCURED"
+                  "UNIFORM_CDO" 
+                  "EMBEDDED_CENTER"
+                  "IRREGULAR_CDO" 
+                  "CURVED_BAND" 
+                  "SHEAR"
+
+		The following is the list of possible scene types 
+		in ADT version 7.2:
+		   "EYE"
+                   "PINHOLE_EYE"
+                   "LARGE_EYE"
+                   "UNIFORM_CDO"
+                   "EMBEDDED_CENTER"
+                   "IRREGULAR_CDO"
+                   "CURVED_BAND"
+                   "SHEAR"
+
+  -v  version   Version of the AODT library. A list of available versions 
+		are located in table aodtvers.tbl. The table can be expanded 
+		as new versions are added. The default is the first entry in 
+		the table.
+
+  -y	fn	(McIDAS keyword option "HISTORY")
+		File to which the history record will be written.
+
+                                                                       
+  image_filename	McIDAS image filename
+
+
+
+PROGRAM DESCRIPTION
+
+  AODT makes the appropriate calls into the CIMSS AODT library to
+  calculate tropical cyclone intensity. The results are output to the
+  screen as well as the history file.
+
+REMARKS
+
+  - Use of default history file will only provide user
+    with CI value (which is actually the RAW T#).
+    NO TIME AVERAGING OR OTHER ADJUSTMENTS WILL BE PERFORMED,
+    and any output will only list this CI (raw T#) value.
+  - Use of default history file is only possible when AODT 
+    analysis is performed (ie, LIST and/or DELETE options disabled).
+  - If either LIST=YES or DELETE=YES
+    AODT analysis will NOT be performed on current image.
+  - If a record is modified/added within an existing history
+    file, all subsequent records within the history file
+    will be recalculated using the new/modified AODT record.
+  - If DATE is provided in conjunction with LIST *AND*
+    DELETE keywords, DATE will apply ONLY to the DELETE
+    keyword (and a LIST will be drawn/listed for
+    the entire history file (defaults)).
+
+
+EXAMPLES
+
+  aodt -c nmap2.cpf IR_19990915_1045
+
+	- performs the AODT analysis on the image file IR_19990915_1045
+          (located in the current working directoy) using the latitude and
+          longitude in the cpf file "nmap2.cpf". The history file will be
+	  the default history file "AODTDUMP.AODT".
+
+  aodt -c 29.4,-78.8 -y $AODTHIST/floyd $SAT/GOES-E/TropAtl_8km/IR/IR_19990915_1045
+
+	- performs the AODT analysis on the image file IR_19990915_1045 
+	  (located in the directoy "$SAT/GOES-E/TropAtl_8km/IR") using a 
+	  latitude of 29.4 and longitude of -78.8. The history file will 
+	  be saved to the file "$AODTHIST/floyd".
+

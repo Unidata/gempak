@@ -1,0 +1,44 @@
+
+DCUAIR
+
+    DCUAIR decodes upper air sounding data from a real-time data
+    feed, or from a file fed to the program through standard input, and
+    writes the data to a GEMPAK sounding file.  The program is controlled
+    by inputs to the command line.
+
+    The inputs are program options and the output file name or template.
+    For example, for real-time data feeds:
+    
+	dcuair [options] output_file
+
+    If running the program interactively with standard input, the -c
+    option must be used.  The input file must be also be specified.
+    For example:
+
+	dcuair -c YYMMDD/HHNN [other_options] output_file < input_file
+    
+    A template may be used to specify the output file name.  The file
+    name template uses the date and time of the bulletin or report
+    to replace the following characters.
+
+	YY or YYYY	Year
+	MM		Month number
+	DD		Day
+	HH		Hour
+	NN		Minute
+
+    The dcuair decoder may be used to decode dropsonde data.  If this
+    is done, it is advisable to run a separate instance of the decoder
+    from that used to decode standard upper air data.  In this case, 
+        a) the maximum number of stations to add should be set to 
+           at least 50 on the command line ( -a 50 ), since all
+           dropsonde reports are treated as additional stations 
+        b) the maximum number of times should be set to 24 on the
+           command line ( -m 24 ), to create hourly entries instead of
+           3-hourly entries
+        c) only upper air bulletins having WMO bulletin headers
+           beginning with UZ should be sent to the decoder
+	d) the cutoff height in meters for using a "close-to-the surface"
+	   wind in place of a missing surface wind may be specified using 
+	   the -w option.  The default value is 20 meters
+

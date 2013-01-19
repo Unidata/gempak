@@ -1,0 +1,22 @@
+    STNTYP
+
+    STNTYP is used to select the data reporting characteristic
+    of a station.  Stations will only be listed if they meet
+    the selected characterstic(s).
+
+    The valid types are as follows:
+	
+	A = list all stations
+	R = list reporting stations
+	M = list missing stations
+	U = list stations not in station table
+	L = list stations in station table
+
+    The characteristics may be combined.  For example, 
+    STNTYP = ML will list missing stations that are in 
+    the station table.
+
+    It is necessary to set AREA = DSET in order to view any
+    unlisted stations.
+
+    IF STNTYP is blank, the default value of 'A' is used.

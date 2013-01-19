@@ -1,0 +1,39 @@
+OPSYS = HPUX
+
+FC = fort77
+FOPT   = +E4 +E5 +E6 $(GEMINC)
+NEED_U77 = +U77
+
+#COPT = -Aa -D_HPUX_SOURCE -D$(OPSYS) $(GEMINC) $(XCFLAGS)
+COPT = -Ae -D$(OPSYS) $(GEMINC) $(XCFLAGS)
+
+NCOPT = "CPPFLAGS=-D_HPUX_SOURCE  -DNDEBUG" "FFLAGS=-w"
+
+# Jasper-1.700.5 configuration
+#JASPER_HPUX = -DHAVE_STDINT_H -I$(GEMPAK)/source/jasper/$(NA_OS)/include
+#JASPEROPT = 'CC=$(CC)' 'CFLAGS=-Ae $(JASPER_HPUX)' '--disable-libjpeg'
+
+# Jasper-1.7001.0 options
+# use -DHPUX_HAVE_BOOL if boolis defined for jas_types.h.mod
+JASPER_HPUX = -DJAS_LOCAL_MOD
+JASPEROPT = 'CC=$(CC)' '--disable-libjpeg' 'CFLAGS=$(JASPER_HPUX)'
+XML2OPT = 'CC=$(CC)' '--with-iconv'
+
+CFLAGS = $(COPT)
+CFLAGS_DB = $(COPT)
+FFLAGS = $(FOPT)
+
+LDM_FLAGS = -D__STDC__
+
+X11LIBDIR = 
+MOTIFLIBS = -lXm
+MOTIFINC  = 
+XWINCDIR  = 
+INSTALL = install -i -s
+AUXINSTALL = install -i
+
+SYSLIBS = -lm
+CSYSLIB = -lm
+LDFLAGS = -Wl,+n
+
+ARSLEEP = sleep 1 ;

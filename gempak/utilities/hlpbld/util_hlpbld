@@ -1,0 +1,12 @@
+GEMPARM=$GEMPAK/parm
+export GEMPARM
+GEMPTXT=$GEMPAK/txt/programs
+export GEMPTXT
+
+hlpbld $GEMHLP/hlp BUFRENC
+###########################
+hlpbld $GEMHLP/hlp SECTOR
+###########################
+hlpbld $GEMHLP/hlp VG2UKA
+###########################
+echo ALL THE UTIL HLPs ARE BUILT.

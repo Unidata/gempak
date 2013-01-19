@@ -1,0 +1,52 @@
+C************************************************************************
+C* JTB.CMN								*
+C*									*
+C* This common area holds parameter and sequence name information for	*
+C* a Jack Woollen BUFR table as dumped by SUBROUTINE GETABDB.		*
+C**									*
+C* Log:									*
+C* K. Brill/EMC		 9/98						*
+C************************************************************************
+	PARAMETER	( MXSQNM = 256, MXPRNM = 256, MXSQPR = 32 )
+	PARAMETER	( MXTBLN = 512 )
+C*
+	CHARACTER*128	entrys ( MXTBLN )
+	CHARACTER*8	tbbprm, seqnam, seqprm
+	CHARACTER*12	pkunit
+	LOGICAL		sqpflg
+C------------------------------------------------------------------------
+C*
+	COMMON /TBLROW/
+     +			entrys,
+C!			  Rows of TABLE D & B info from the table.
+     +			nntrys
+C!			  Number of rows filled in ENTRYS
+C*
+C*
+	COMMON /TABLEB/
+     +			nmbprm,
+C!			  # of TABLE B entries
+     +			tbbprm ( MXPRNM ),
+C!			  TABLE B entries
+     +			ipkscl ( MXPRNM ),
+C!			  packing scale value
+     +			ipkref ( MXPRNM ),
+C!			  packing reference value
+     +			ipkbit ( MXPRNM ),
+C!			  packing bit count value
+     +			pkunit ( MXPRNM )
+C!			  packing units
+C*
+C*
+	COMMON /SEQUNC/
+     +			numseq,
+C!			  # of sequence mnemonics
+     +			nsqprm ( MXSQNM ),
+C!			  # of parameters in sequence
+     +			seqnam ( MXSQNM ),
+C!			  sequence mnemonics
+     +			seqprm ( MXSQNM, MXSQPR ),
+C!			  sequence parameters / subsequence names
+     +			sqpflg ( MXSQNM, MXSQPR )
+C!			  flag for actual parameter names
+C------------------------------------------------------------------------

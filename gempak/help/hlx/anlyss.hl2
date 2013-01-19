@@ -1,0 +1,20 @@
+     ANLYSS
+
+     ANLYSS is the average station spacing and the grid extend region
+     separated by a slash:
+
+		station spacing / grid extend region
+
+     This information is retrieved from the grid file and used in the 
+     objective analysis programs.
+  
+     The station spacing is in degrees of latitude and is used to compute 
+     the weighting functions in the Barnes analysis programs.  The 
+     default for the station spacing is twice the grid spacing.
+
+     The grid extend area is specified by four integers, separated by 
+     semicolons, which are the numbers of grid points to extend the grid 
+     left, down, right, and up.  Only data within the extended grid area 
+     is used after the first Barnes pass. The default for the grid extend 
+     region is 2;2;2;2.
+

@@ -1,0 +1,43 @@
+ETAMAP generate a graphical depiction of the workstation model domain
+
+INPUT PARAMETERS
+ 
+    GCENTER   *Lat-lon center   
+    GSPACE    *Model grid spacing               
+    IMJM      *Model grid points
+    MAP       *Map color/dash/width
+    LATLON    *Line color/dash/width/label/inc
+    TITLE     *Title color/line/title
+    TEXT      *Text size/font/width/hw flag
+    CLEAR     *Clear screen flag
+    DEVICE    *Device|name|x size;y size|color type
+ 
+PROGRAM DESCRIPTION
+ 
+    ETAMAP draws a map and/or latitude/longitude lines for
+    a specified model domain. 
+
+    This utility program has been provided for you to get a better 
+    idea as to the computational workstation ETA model domain. It
+    is strongly recommended that you use this program to establish
+    the areal coverage of your model runs.  There are three variables
+    that need to be provided, GCENTER, GSPACE, and IMJM.  For more 
+    information, type "h <variable> at the ETAMAP prompt.
+
+ 
+EXAMPLES
+ 
+    1.  Draw a map of a workstataion ETA model domain for a grid
+        consisting of 71 E-W and 121 N-S grid points centered at
+        39.0 N, 108.0  with a grid spacing of 0.098 degrees. 
+
+        GCENTER  = 39.0;-108
+        GSPACE   = 0.098
+        IMJM     = 71;121
+        MAP      = 23//2
+        TITLE    = 1/-2/WORKSTATION ETA DOMAIN
+        LATLON   = 18/10/1/1;1/2;2
+        TEXT     = 1/33//HW
+        DEVICE   = XW
+        CLEAR    = YES
+

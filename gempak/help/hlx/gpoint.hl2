@@ -1,0 +1,40 @@
+     GPOINT
+
+     GPOINT is the grid location to be used for the plot.  The value can 
+     be entered in the following ways:
+
+        1.  station numeric or character identifier
+
+        2.  a latitude and longitude pair separated with a semicolon
+ 
+        3.  @ followed by a grid x and y coordinate pair separated
+            with a semicolon. The grid x and y coordinate pair will not
+	    change even the navigation is changed.
+
+	4.  a CPF file name with optional path.  The CPF file must
+	    contain only one valid latitude/longitude pair.
+	    
+	5.  Graphically using the CURSOR command.
+
+
+     If necessary, the grid data will be interpolated using a 
+     bilinear interpolation to the point specified.
+
+     Examples:
+
+	GPOINT	=  @1;1.5	Grid point (1,1.5)
+
+	GPOINT	=  30;-120	Grid point at 30 latitude and 
+			        -120 longitude
+
+	GPOINT	=  5;5	        Grid point at 5 latitude and 
+			        5 longitude.  Note that this is 
+			        probably an error and the input 
+			        should have been @5;5
+
+	GPOINT	=  BWI	        Point located at Baltimore-Washington
+			        International Airport.
+
+	GPOINT	=  nmap2.cpf    CPF file containing a valid latitude
+				longitude pair.
+

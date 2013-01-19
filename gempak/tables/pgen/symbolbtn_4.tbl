@@ -1,0 +1,150 @@
+! SYMBOLBTN.TBL.
+!
+! This table specifies which symbols appear in the NMAP/NMAP2 product 
+! generation "Symbol" class object palette.  Any GEMPAK symbol in the  
+! Present Weather, Past Weather, Icing, Sky Cover, Turbulence, Special Symbols, 
+! Cloud Type, or Pressure Tendency symbol category can be put into the palette.
+!
+! Symbols are specified by listing their associated icon file name, excluding
+! the file extension.  NMAP icon files are located in $NAWIPS/icons/nmap.  Each 
+! type of symbol has a name followed by the GEMPAK symbol number.  The naming 
+! convention for each type is as follows:
+!
+!	SYMBOL TYPE		ICON NAMING CONVENTION
+!	-----------------------------------------------
+!	Present Weather 	wxsymNNN.xbm
+!	Past weather		pstwxNN.xbm
+!	Icing			iceNN.xbm
+!	Sky Cover		skyNN.xbm
+!	Turbulence	 	turbNN.xbm	
+! 	Special Symbols		spsymNN.xbm
+!	Cloud Type		cloudNN.xbm
+!	Pressure Tendency	ptendNN.xbm
+!
+! For example, to include the two-dot rain symbol, wxsym062, must be
+! listed in this file.  The symbol number for each symbol can be
+! determined by running the GEMPAK utility program PLOTSYMS or by 
+! printing out the PostScript file $NAWIPS/doc/User_guide/FINAL/plotsyms.ps. 
+! A pdf file, plotsyms.pdf is also in this directory for viewing the 
+! symbols using a WEB browser.
+!
+! The symbol icons in the "Symbol" class object palette are arranged in 
+! rows of three.  Icons listed in this table sequentially fill
+! each row, three at a time, i.e, the first three entries fill the first
+! row, the next three entries fill the second row, and so on.  It is
+! recommended that this table not exceed twelve rows because greater
+! than twelve rows will go beyond the bottom of the screen on most 
+! systems.  Note that the strings BEGIN and END must be included before
+! and after the list of icons, respectively. 
+! 
+!
+!!
+! Log:
+! E. Wehner/EAi          5/97
+! D. Keiser/GSC		 6/97		Add new symbols
+! D. Keiser/GSC		 6/97		Add volcano (#201) symbol
+! W. Li/Eai              3/98           Added icing, hvy rain, snow and modtst
+! A. Hardy/GSC           4/98           Reorganized symbols
+! W. Li/EAI		 7/98		Add new symbol(pwtstorm).  
+! G. Krueger/EAI	 8/98		Add STMCNTR, TRPDPRSN, and TRPCYCLN
+! G. Krueger/EAI	10/98		Added FLAME
+! G. Krueger/EAI	 1/99		Added XCROSS and LOWX
+! S. Jacobs/NCEP	 2/99		Reorganized symbols
+! G. Krueger/EAI	 8/99		Added PTRPSNH and PTRPSSH
+! T. Piper/GSC		12/99		Added wxsym05 (haze)
+! E. Safford/GSC	04/01		reorder for Horizontal layout
+! S. Jacobs/NCEP	 9/01		Add NUCLEAR symbol
+! S. Schotz/NCEP	11/01		Updated Documentation
+! E. Safford/GSC	11/01		Standardized symbol icon names      
+! m.gamazaychikov/SAIC	04/03		added symbols A,C, X, N
+! A. Hardy/NCEP		12/03		added spsym50 ('30' with barb)
+! S. Jacobs/NCEP	 5/09		added spsym51-spsym56
+!------------------------------------------------------------------------
+BEGIN
+! 
+! Row 1
+!
+spsym12
+spsym13
+ice09
+ice10
+! 
+! Row 2
+!
+wxsym010
+wxsym061
+wxsym071
+spsym25
+! 
+! Row 3
+!
+wxsym045
+wxsym063
+wxsym073
+spsym26
+! 
+! Row 4
+!
+wxsym051
+wxsym065
+wxsym075
+spsym27
+! 
+! Row 5
+!
+wxsym056
+wxsym080
+wxsym085
+spsym28
+! 
+! Row 6
+!
+wxsym066
+wxsym095
+wxsym105
+spsym32
+! 
+! Row 7
+!
+wxsym079
+wxsym201
+pstwx09
+spsym33
+! 
+! Row 8
+!
+spsym38
+spsym39
+spsym36
+spsym34
+! 
+! Row 9
+!
+wxsym005
+spsym40
+spsym35
+spsym41
+! 
+! Row 10
+!
+spsym43
+spsym45
+spsym47
+spsym49
+! 
+! Row 11
+!
+spsym55
+spsym56
+spsym50
+spsym54
+!
+! Row 12
+!
+spsym53
+spsym51
+spsym52
+END
+
+
+

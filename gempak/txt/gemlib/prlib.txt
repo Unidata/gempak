@@ -1,0 +1,37 @@
+
+
+                  Parameter (PR) Library 
+
+
+The parameter library contains functions to compute meteorological
+parameters.  These functions are used by the PC subroutine package 
+to convert parameters and may also be called directly by application
+programs.
+
+The library was designed to provide easy access to standard 
+meteorological conversions.  Any desired change to a parameter 
+conversion function, either to add precision or make a correction,
+which is made to a PR function will then be effective throughout 
+GEMPAK when the executable code is relinked.
+
+
+The following constants are used in the computations:
+
+    RKAPPA = Poisson's constant              = 2 / 7
+
+         G = Gravitational constant          = 9.80616 m/sec/sec
+
+     GAMMA = Standard atmospheric lapse rate = 6.5 K/km
+
+     RDGAS = Gas constant for dry air        = 287.04 J/K/kg
+
+
+Many of the conversion algorithms are taken from:
+
+    Bolton, D., 1980: The computation of equivalent potential 
+        temperature.  MONTHLY WEATHER REVIEW, 108, pp. 1046-1053. 
+
+    University of Wisconsin: Green sheet.
+
+    Wallace, J.M., P.V. Hobbs, 1977: ATMOSPHERIC SCIENCE, Academic
+        Press, 467 pp.

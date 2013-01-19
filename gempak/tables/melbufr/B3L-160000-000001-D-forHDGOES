@@ -1,0 +1,83 @@
+#
+# BUFR Table D (Lists of High Density Wind Sequences)
+#
+# Descriptor sequences are terminated with -1
+#
+# Sequences do not need to appear in any order.  Sequence A
+# which includes sequence B, may appear before sequence B
+# is defined.
+#
+3	10	195
+	3	1	250
+	3	3	250
+	3	4	250
+	-1
+
+3	1	250
+	3	1	193
+	3	1	11
+	3	1	13
+	3	1	21
+	-1
+
+3	1	193
+	0	1	7
+	0	1	31
+	0	2	196
+	0	2	221
+	0	2	222
+	-1
+
+3	1	11
+	0	4	1
+	0	4	2
+	0	4	3
+	-1
+
+3	1	13
+	0	4	4
+	0	4	5
+	0	4	6
+	-1
+
+3	1	21
+	0	5	1
+	0	6	1
+	-1
+
+3	3	250
+	0	2	252
+	0	2	23
+	0	7	4
+	0	11	1
+	0	11	2
+	0	2	197
+	0	2	198
+	0	12	193
+	-1
+
+3	4	250
+	0	2	231
+	0	2	232
+	0	8	12
+	0	7	24
+	0	2	57
+	0	8	21
+	0	4	1
+	0	4	2
+	0	4	3
+	0	4	4
+	0	8	21
+	0	4	24
+	1	10	4
+	0	8	21
+	0	4	4
+	0	4	5
+	0	4	6
+	0	11	1
+	0	11	2
+	1	30	10
+	0	2	231
+	0	7	4
+	0	12	1
+	-1

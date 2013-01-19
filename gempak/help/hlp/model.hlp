@@ -1,0 +1,39 @@
+                     MODEL DATA SOUNDINGS
+
+
+The MODEL SOUNDING SELECTION window allows the user to select the
+source of the gridded data set using the "Select Model" button. The
+data set choices are defined in the $NAWIPS/tables/nsharp/nsharp_models.tbl
+table and reference the datatype.tbl template/aliases. Any model file may
+be used by choosing the "BROWSE" option in the model file list.
+
+The sounding location is entered using a valid GPOINT specification.
+The point for which the model sounding is computed can be (1) entered
+directly into the text box, (2) obtained by positioning the mouse pointer
+in the provided map and clicking mouse button 1 to set the point, or
+(3) obtained from the Cursor Point File (CPF).
+
+A readout is provided for the current mouse position in addition to the
+sounding location. The interactive selection map can be toggled using
+the radio buttons provided to either specify the GPOINT value as a
+latitude/longitude pair, or the closest surface station.
+
+The third radio button option allows the user to select the contents of
+the Cursor Point File (CPF). The CPF contains a location obtained from
+saving the cursor position from NMAP2. When this radio button is
+selected, the latitude/longitude pair from the CPF is displayed in 
+the text box.
+
+After selecting the grid file(s), the available times within the 
+file(s) will be displayed in the "Model times" list. Multiple
+files may be selected. A single time or multiple times may be selected.
+
+The map AREA may be set using the predefined map regions, while
+ZOOMing is accomplished through the use of a rubber band box.
+UNZOOMing will restore the image to the current AREA.
+
+Select "Cancel" to close the sounding selection window without
+changing the current sounding display, or choose "OK" to
+plot the sounding once the desired grid time and location are 
+selected.
+ 

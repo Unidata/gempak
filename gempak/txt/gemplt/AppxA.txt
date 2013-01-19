@@ -1,0 +1,109 @@
+
+
+                         Software Libraries
+
+
+A.1  Traditional Topology
+
+
+When a program uses GEMPLT subroutines, there are two sub-processes that
+are spawned by the program automatically in background during run time.
+The first sub-process, GPLT, is created the first time subroutine GINITP
+is called during a session.  The second sub-process, a device driver, is
+created when GSDEVA is called.  GEMPLT functions are implemented within
+the two sub-processes.
+
+The GPLT and device driver sub-processes may remain active after the
+parent program terminates.  When programs executed later make GEMPLT
+subroutine calls, the original GPLT and device driver sub-processes
+service those calls based on the context set by the earlier program.
+
+Because the GPLT subprocess is independent of the application program,
+an inter-process communication mechanism links the two.  The calling
+parameters for each GEMPLT subroutine are put in a mailbox that is read
+by the GPLT process.  Information is passed from the parent program to
+the mailbox and from the mailbox to GPLT as follows:
+
+    _______________                                   _______________
+   |               |           -----------           |               |
+   |  Application  |  ______\       G       ______\  |     GPLT      |
+   |    Program    |        /    Mailbox          /  |    Process    |
+   |_______________|           -----------           |_______________|
+
+
+
+Similarly, GPLT passes requests to the device driver:
+
+    _______________                                   _______________
+   |               |           -----------           |               |
+   |     GPLT      |  ______\       D       ______\  | Device Driver |
+   |    Process    |        /    Mailbox          /  |    Process    |
+   |_______________|           -----------           |_______________|
+
+
+
+In order to achieve this architecture at run time, the application
+program is linked with $APPL, the GEMPLT "application side" object
+library; the GPLT process is linked with $GPLT, the "GPLT side" object
+library.  The G mailbox is created at run time as an interface between
+routines from these two libraries.
+
+Most of the routines in $APPL have a relative of the same name in $GPLT.
+Names of these paired routines begin with the letter "G."  Routines of
+the same name have exactly the same calling sequence (input and output
+parameters).  Their functions are different.
+
+An application program calls GEMPLT subroutines from the $APPL library.
+The $APPL routines pass pertinent information through the mailbox to
+GPLT.  GPLT calls routines of the same name from the $GPLT library.  The
+$GPLT routines do the work.
+
+GPLT interfaces similarly with the device drivers.  There is another
+pair of libraries with related routines, $GPLTDEV and $DEVICE.  The
+names of the paired routines in these libraries begin with the letter
+"D."  GPLT is linked with $GPLTDEV; and each device driver is linked
+with $DEVICE.  GPLT calls a "D" routine in the $GPLTDEV library.  The
+$GPLTDEV routine passes requests through the mailbox to the device
+driver process.  The device driver calls a routine of the same name in
+the $DEVICE library.  The $DEVICE routines do the work.
+
+The following example traces a call from an application program to the
+device driver for a GLINE call (that draws a line):
+
+
+SUBROUTINE      LIBRARY        PROCESS               FUNCTION
+----------   -------------   -----------   -----------------------------
+  GLINE        $APPL          APPLICATION     Pass request to G mailbox
+  GLINE        $GPLT          GPLT            Transform points to device
+                                                coordinates
+  DLINE        $GPLTDEV       GPLT            Pass request to D mailbox
+  DLINE        $DEVICE        Device Driver   Perform clipping, dashing,
+                                                ...
+  HLINE     xw.a, ps.a, ...   Device Driver   Draw line segments on
+                                                graphics device
+
+
+
+A.2  Alternate Topology
+
+
+An application program can be linked without the G mailbox.  Instead of
+linking with the $APPL library, the application program is linked
+directly with the $GPLT library.  In such a topology, the GPLT
+sub-process is not spawned at run time as a stand-alone process.
+Instead, all of the GPLT functionality becomes an integral part of the
+application program.  Parameters from the application program are passed
+to the GPLT routines that do the work via simple subroutine calls.  As a
+result, the GPLT internals are initialized each time the application
+program executes.  Context set in one program is not retained for use by
+later programs.  Also, the executable image size of the application
+program becomes larger when GPLT functions are linked in this way.
+
+Similarly, the D mailbox can be eliminated.  The device driver can be
+linked directly into GPLT, or (if GPLT is linked into the application
+program) the device driver can be linked into the application program.
+To do so, the $DEVICE library is used instead of $GPLTDEV.  When the
+device driver is thusly linked, directly with its parent, only a single
+graphics device is supported by the resulting executable and the
+executable is larger.
+

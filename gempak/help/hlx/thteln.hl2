@@ -1,0 +1,11 @@
+     THTELN
+
+     THTELN specifies the color, line type, line width, minimum, maximum, 
+     and increment for the background moist adiabats (equivalent potential 
+     temperature lines) on thermodynamic diagrams:
+
+	line color / line type / width / minimun / maximum / increment
+
+     The values must be separated by slashes.  If THTELN is blank, no
+     lines will be drawn.
+

@@ -1,0 +1,229 @@
+     SNPARM
+
+     SNPARM is a list of upper air parameters to be used in an upper-air 
+     program.
+
+     The four-character parameter names must be separated by semicolons.  
+     For example:
+
+		SNPARM = PRES;TMPC;DWPC;THTA
+
+     If a parameter is not present in a data set, the program will attempt 
+     to derive it from those parameters which are present.  For example, 
+     if pressure, temperature and dewpoint are present in a data set, 
+     then relative humidity can be derived. 
+
+     In plotting programs, the position of the parameter determines
+     where it will appear with respect to the station location.
+     The first position is centered on the station.  The other
+     positions are shown below:
+
+				8
+			2	10	4
+			3	1	5
+			6	11	7
+				9
+
+     In the example above, DWPC is plotted in position 3.
+  
+     The layer parameters are computed over a default layer between the 
+     specified level and the next level upward in the sounding.  The depth 
+     of the layer for layer averages may be specified preceded by ! in the 
+     user input.  The shear and RICH calculations can be done relative to 
+     a direction by specifying the direction preceded by $ in the user input.
+
+     In-line functions can be used to modify/qualify the output parameters.  
+     These functions are applied in the order given; however, arithmetic
+     operators must precede other operators.  The function symbols must
+     precede the qualifying value and are defined as follows:
+
+	*	multiply			=	equal to
+	/	divide			        $	direction
+	+	add			        %	vertical coordinate
+	-	subtract			!	depth
+	<	less than or equal to           
+	>	greater than or equal to        
+
+     In the case of wind symbols, the size, line width, type and headsiz
+     (arrows) for drawing the symbol may be specified following a colon 
+     after the symbol name and after the function specifications if any 
+     exist.  The drawing attributes are separated by colons.  The type 
+     is a three-digit number, ABC, interpreted digit by digit as follows:
+
+            A                       B                      C
+        1 = plot calm wind   1 = start at stn        1 = not filled
+        2 = ignore calm wind 2 = center at stn       2 = filled
+                             3 = start on sky symbol 3 = not filled with box
+                                                     4 = filled with box
+
+     Calm winds are plotted as a circle or an arrowhead for barbs and
+     arrows, respectively.  Arrowheads and 50-unit barb flags are filled
+     if C=2 or 4. A box is plotted with background color if C = 3 or 4.
+     For example, if TYPE=122, a barb will be plotted as a circle if the 
+     wind is calm; it will be centered on the station location, and 50-unit 
+     flags will be filled.  The default is 111.
+
+     Aliases were created to make it easier for the user to plot typical
+     sounding data by using pre-set parameters and colors.  To use an
+     alias, enter the alias name for SNPARM and leave COLORS blank. If the
+     user does not leave COLORS blank, the selected colors will be used 
+     instead of the pre-set alias colors.
+
+     See PRMLST.TBL for a list of current aliases for sounding data.
+
+     The GEMPAK sounding parameters and the corresponding four-character 
+     abbreviations are:
+
+
+		TEMPERATURES
+
+	TMPC - Temperature in Celsius
+	TMPF - Temperature in Fahrenheit
+	TMPK - Temperature in Kelvin
+	THTA - Potential temperature in Kelvin
+	THTE - Equivalent potential temperature in Kelvin
+	THTS - Saturation equiv. pot. temp. in Kelvin
+	THTV - Virtual potential temperature in Kelvin
+	TVRK - Virtual temperature in Kelvin
+	TVRC - Virtual temperature in Celsius
+	TVRF - Virtual temperature in Fahrenheit
+
+		MOISTURE PARAMETERS
+
+	DWPC - Dewpoint in Celsius
+	DWPF - Dewpoint in Fahrenheit
+	DWPK - Dewpoint in Kelvin
+	DPDC - Dewpoint depression in Celsius
+	DPDF - Dewpoint depression in Fahrenheit
+	DPDK - Dewpoint depression in Kelvin
+        DPDX - Dewpoint depression in Celsius; if .ge. 30 plotted as an "X"
+	MIXR - Mixing ratio in g/kg
+	MIXS - Saturation mixing ratio in g/kg
+	PWTR - Precipitable water (mm) up to the specified level
+	RELH - Relative humidity in percent
+	TMWK - Wet bulb temperature in Kelvin
+	TMWC - Wet bulb temperature in Celsius
+	THWC - Wet bulb potential temperature in Celsius
+	TMWF - Wet bulb temperature in Fahrenheit
+	VAPR - Vapor pressure in millibars
+	VAPS - Saturation vapor pressure in millibars
+	LHVP - Latent heat of vaporization in J/kg
+
+		HEIGHT 
+
+	HGHT - Height in meters
+	HGTM - Height in meters (alternate name)
+	HGTK - Height in kilometers
+	HGTD - Height in decameters
+	HGFT - Height in feet
+	HGFH - Height in hundreds of feet
+	HGFK - Height in thousands of feet
+	HGML - Height in miles
+	STDZ - Character standard height convention used on upper air charts
+	RSTZ - Numeric standard height convention used on upper air charts
+	DHGT - Dry hydrostatic height in meters
+	MHGT - Moist hydrostatic height in meters
+
+		PRESSURE AND ALTIMETER
+
+	PRES - Station pressure in millibars
+	PMSL - Mean sea level pressure in millibars
+	ALTI - Altimeter setting in inches from PRES
+
+		WINDS                 
+
+	ARRW - Wind arrow (m/s)
+	ARRM - Wind arrow (m/s)
+	ARRK - Wind arrow (knots)
+	BARB - Wind barb (m/s)
+	BRBM - Wind barb (m/s)
+	BRBK - Wind barb (knots)
+	DARR - Wind direction arrows of uniform length
+	UWND - U component of the wind in meters/second
+	VWND - V component of the wind in meters/second
+	UKNT - U component of the wind in knots
+	VKNT - V component of the wind in knots
+	DRCT - Wind direction in degrees
+	SPED - Wind speed in meters/second
+	SKNT - Wind speed in knots
+	PSPD - Packed speed and direction (ddfff) in meters/second
+	PKNT - Packed speed and direction (ddfff) in knots
+	WCMP - Wind component toward a specific direction
+	WNML - Wind component toward 90 deg from a specific direction
+
+		LIFTED CONDENSATION LEVEL
+
+	TLCL - Temperature in Kelvin of parcel raised to LCL
+	PLCL - Pressure in millibars of parcel raised to LCL
+
+		STABILITY INDICES
+
+ 	Note:  Default depths are enclosed in parentheses.
+
+	SHOW - Showalter Index
+	LIFT - Lifted Index  (100 mb)
+	LFTV - LIFT computed by using virtual temperature
+	SWET - Sweat Index
+	KINX - K Index
+	CTOT - Cross Totals Index
+	VTOT - Vertical Totals Index
+	TOTL - Total Totals Index
+	CAPE - Convective Available Potential Energy  (500 m)
+	CAPV - CAPE computed by using virtual temperature
+	CINS - Convective Inhibition  (500 m)
+	CINV - CINS computed by using virtual temperature
+	EQLV - Equilibrium Level (500 m)
+	EQTV - EQLV computed by using virtual temperature
+	LFCT - Level of Free Convection
+	LFCV - LFCT computed by using virtual temperature
+	BRCH - Bulk Richardson Number  (500 m, 6000 m)
+	BRCV - BRCH computed by using CAPV
+	MLTH - Mixed layer mean potential temperature (500 m)
+	MLMR - Mixed layer mean mixing ratio  (500 m)
+	LCLT - Temperature in Kelvin of the LCL
+	LCLP - Pressure in millibars of the LCL
+	PWAT - Precipitable water (mm) for the whole sounding
+
+		LAYER QUANTITIES
+
+ 	Note:  Default depths are the layer depths in the sounding
+ 	except for SEPA for which the layer depth is 5 K.
+
+	RICH - Richardson number
+	BVFQ - Brunt-Vaisala frequency
+	BVSQ - Brunt-Vaisala frequency squared
+	BVPD - Brunt-Vaisala period
+	LAPS - Temperature lapse rate
+	STAB - Potential temperature lapse rate
+	STAP - Stability with respect to pressure in k/mb
+	SHRM - Wind shear magnitude
+	SHRD - Wind shear direction
+	SEPA - Vertical separation in mb between isentropes
+
+		STATION VARIABLES
+
+	STID - Character station identifier
+	STNM - 5-digit station identifier
+	SLAT - Station latitude in degrees
+	SLON - Station longitude  in degrees, West is negative
+	SELV - Station elevation in meters
+	RANG - Range (specialized data)
+	AZIM - Azimuth (specialized data)
+	LATI - Latitude in degrees
+	LONG - Longitude in degrees, West is negative
+	DELT - Delta time (specialized data)
+     
+		MISCELLANEOUS
+
+	DDEN - Density of dry air in kg/(m**3)
+	PSYM - Montgomery stream function
+	MARK - Markers
+	TEXT - Undecoded data
+	LHAN - Low level Haines Index
+	MHAN - Middle level Haines Index
+	HHAN - High level Haines Index
+
+		SPACING
+
+	SPAC - Plot a space, accounted for in FILTER
+	BLNK - Plot a blank, not accounted for in FILTER

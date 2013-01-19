@@ -1,0 +1,8 @@
+!	This is the error file for DCACFT.
+!
+ 2	! Invalid bulletin:  !AS
+ 1	! !AS
+-1	! Could not locate mnemonic !AS
+-2      ! Fatal error reading GEMPAK parameters.
+-3      ! Parameter !AS is not in the dataset.
+

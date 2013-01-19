@@ -1,0 +1,381 @@
+	PROGRAM ETAMAP
+C************************************************************************
+C* ETAMAP								*
+C* This program sets up the graphics area and optionally draws a map,	*
+C* lat/lon lines, and a title.						*
+C**									*
+C* Log:									*
+C* R. Rozumalski/NWS    02/00   Adapted from GPMAP for use with the     *
+*                               WS Eta                                  *
+C************************************************************************
+	INCLUDE		'GEMPRM.PRM'
+C*
+	LOGICAL		clear
+	CHARACTER	map*(LLMXLN)   , device*(LLMXLN), title*(LLMXLN),
+     +			panel*(LLMXLN) , text*(LLMXLN)  , latlon*(LLMXLN),
+     +			garea*(LLMXLN) , proj*(LLMXLN)  , shrttl*(LLMXLN),
+     +			satfil*(LLMXLN), radfil*(LLMXLN),
+     +			lutfil*(LLMXLN), stnplt*(LLMXLN),
+     +			vgfile*(LLMXLN), afosfl*(LLMXLN),
+     +			line*(LLMXLN)  , awpsfl*(LLMXLN),
+     +			watch*(LLMXLN) , warn*(LLMXLN)  , hrcn*(LLMXLN),
+     +			strnam*(LLMXLN), isig*(LLMXLN)  , ltng*(LLMXLN),
+     +			atcf*(LLMXLN)  , airm*(LLMXLN),
+     +                  gcenter*(LLMXLN), gspace*(LLMXLN), imjm*(LLMXLN)
+C*
+	PARAMETER	( NM = 20, NW = 3, NN = 3, NH = 4, NI = 8, 
+     +			  NA = 20, NR = 4 )
+        PARAMETER       ( IMM = 301, JMM = 301, IMJMF = IMM*JMM-JMM/2 )
+C*
+	CHARACTER	ttlstr*72, ttlinp*72, vgfl*72, vgf2*72, vgf3*72,
+     +			imgfls(MXLOOP)*132, ucproj*72, charstr*72,
+     +			varr(3)*72, warr(4)*72, harr(9)*72, cc*1, ee*1,
+     +			atmodl(NM)*20, usrmdl(NM)*20
+	INTEGER         iwclr(NM), mrktyp(NM), iwidth(NM), iflag(NM),
+     +			ihclr(NM), ihsym(NM), lwidth(NM), iawdth(NM),
+     +			itminc(LLCLEV), itmclr(LLCLEV), isorc(5),
+     +			lclrwt(NM), lclrwn(NM), lclrhn(NM), lclris(NM),
+     +			lclrat(NM), lclram(NM)
+        INTEGER         imd, jmd, imjmk
+        DOUBLE PRECISION clat, clon, delta, wbd, sbd, p, dtro
+	LOGICAL		respnd, done, first, proces, found
+	REAL		ppmark(3), pnmark(3), tminc(LLCLEV), ssize(NM),
+     +			arwsiz(NM), ahdsiz(NM), khlo(JMM), khho(JMM),
+     +                  glat(IMJMF), glon(IMJMF)
+C-----------------------------------------------------------------------
+C*	Initialize user interface and graphics.
+C
+        p = 3.141592654
+
+	CALL IP_INIT  ( respnd, iperr )
+	IF  ( iperr .ne. 0 )  THEN
+	    CALL ER_WMSG  ( 'ETAMAP', -1, ' ', ier )
+	    CALL SS_EXIT
+	END IF
+C
+C*	Initialize graphics.
+C
+	CALL GG_INIT  ( 1, iret )
+	IF  ( iret .eq. 0 )  THEN
+	    done = .false.
+	  ELSE 
+	    CALL ER_WMSG  ( 'ETAMAP', -3, ' ', ier )
+	    done = .true.
+	END IF
+	CALL IP_IDNT ( 'ETAMAP', ier )
+C
+C*	Initialize defaults for miscellaneous data types from table.
+C
+C	CALL GG_MISC ( NM, lclrwt, lclrwn, lclrhn, lclris, lclrat,
+C    +		       atmodl, lclram, ier )
+C
+	DO WHILE  ( .not. done )
+C	
+	    proces = .true.
+	    first = .true.
+	    numimg = 1
+C
+C*	    Get input parameters.
+C
+            CALL ETAINP  ( gcenter, gspace, imjm, map, title, latlon,
+     +                     text, device, clear, iperr )
+C
+C*          Parse the user input for the ETA Domain
+C*          This code is messy and undocumented but it works
+C*          First, parse out the center lat-lon - do error checking
+C
+            DO ic = 1, 72
+               if ( gcenter(ic:ic).eq.';'  .or.
+     +              gcenter(ic:ic).eq.','  .or.
+     +              gcenter(ic:ic).eq.':' ) gcenter(ic:ic) = ' '
+
+               if ( imjm(ic:ic).eq.';'  .or.
+     +              imjm(ic:ic).eq.','  .or.
+     +              imjm(ic:ic).eq.':' ) imjm(ic:ic) = ' '
+
+            END DO
+
+            icm = 1
+            icb = icm
+
+            DO WHILE ( gcenter(icm:icm).ne." " )
+               icm = icm + 1
+            ENDDO
+            ice = icm - 1
+            charstr = gcenter(icb:ice)
+
+            ice = ice - icb + 1
+
+            idot = 0
+            DO ici = 1, ice
+               if ( charstr(ici:ici).eq."." ) idot = ici
+            ENDDO
+
+            ipost = ice - idot
+            if ( ipost.eq.0 .or. idot.eq.0 ) then
+                read(charstr(1:ice),'(f5.0)') clat
+            else if ( ipost.eq.1 ) then
+                read(charstr(1:ice),'(f6.1)') clat
+            else if ( ipost.ge.2 ) then
+                read(charstr(1:idot+2),'(f7.2)') clat
+            endif
+
+            DO WHILE ( gcenter(icm:icm).eq." " )
+               icm = icm + 1
+            ENDDO
+
+            icb = icm
+            DO WHILE ( gcenter(icm:icm).ne." " )
+               icm = icm + 1
+            ENDDO
+            ice = icm - 1
+            charstr = gcenter(icb:ice)
+
+            ice = ice - icb + 1
+
+            idot = 0
+            DO ici = 1, ice
+               if ( charstr(ici:ici).eq."." ) idot = ici
+            ENDDO
+
+            ipost = ice - idot
+            if ( ipost.eq.0 .or. idot.eq.0 ) then
+                read(charstr(1:ice),'(f5.0)') clon
+            else if ( ipost.eq.1 ) then
+                read(charstr(1:ice),'(f6.1)') clon
+            else if ( ipost.ge.2 ) then
+                read(charstr(1:idot+2),'(f7.2)') clon
+            endif
+
+            icm = 1
+            icb = icm
+
+            DO WHILE ( gspace(icm:icm).ne." " )
+               icm = icm + 1
+            ENDDO
+            ice = icm - 1
+            charstr = gspace(icb:ice)
+
+            ice = ice - icb + 1
+
+            idot = 0
+            DO ici = 1, ice
+               if ( charstr(ici:ici).eq."." ) idot = ici
+            ENDDO
+            ipost = ice - idot
+            if ( ipost.eq.0 .or. idot.eq.0 ) then
+                read(charstr(1:ice),'(f3.0)') delta
+            else if ( ipost.eq.1 ) then
+                read(charstr(1:ice),'(f4.1)') delta
+            else if ( ipost.eq.2 ) then
+                read(charstr(1:ice),'(f5.2)') delta
+            else if ( ipost.eq.3 ) then
+                read(charstr(1:ice),'(f6.3)') delta
+            else if ( ipost.ge.4 ) then
+                read(charstr(1:idot+4),'(f7.4)') delta
+            endif
+
+            icm = 1
+            icb = icm
+
+            DO WHILE ( imjm(icm:icm).ne." " )
+               icm = icm + 1
+            ENDDO
+            ice = icm - 1
+            charstr = imjm(icb:ice)
+
+            ice = ice - icb + 1
+
+            read(charstr(1:ice),'(I5)') imd
+
+            DO WHILE ( imjm(icm:icm).eq." " )
+               icm = icm + 1
+            ENDDO
+
+            icb = icm
+            DO WHILE ( imjm(icm:icm).ne." " )
+               icm = icm + 1
+            ENDDO
+            ice = icm - 1
+            charstr = imjm(icb:ice)
+
+            ice = ice - icb + 1
+
+            read(charstr(1:ice),'(I5)') jmd
+
+C
+C*          Parsing completed - what a mess!
+C
+C*          Now compute the domain
+C*
+            imjmk = imd*jmd-jmd/2
+            wbd   = -(float(imd)-1.)*delta
+            sbd   = (-(float(jmd)-1.)/2.)*delta
+            dtro   = p/180.0
+            tpho  = clat*dtro
+            wb    = wbd*dtro
+            sb    = sbd*dtro
+            dlm   = delta*dtro
+            dph   = delta*dtro
+            tdlm  = dlm + dlm
+            tdph  = dph + dph
+            stpho = sin(tpho)
+            ctpho = cos(tpho)
+
+            DO j = 1, jmd
+               khlo(j) = imd*(j-1)-(j-1)/2+1
+               khho(j) = imd*j-j/2
+            END DO
+
+            tph = sb - dph
+
+            DO j = 1, jmd
+               khl = khlo(j)
+               khh = khho(j)
+
+               tlm  = wb-tdlm+mod(j+1,2)*dlm
+               tph  = tph + dph
+               stph = sin(tph)
+               ctph = cos(tph)
+
+               DO k = khl, khh
+                  tlm = tlm+tdlm
+                  sph = ctpho*stph+stpho*ctph*cos(tlm)
+                  glat(k) = asin(sph)
+                  clm = ctph*cos(tlm)/(cos(glat(k))*ctpho)
+     .                  -tan(glat(k))*tan(tpho)
+
+                  if (clm.gt.1.) clm = 1.
+                  fact = 1.
+                  if (tlm.gt.0.) fact = -1.
+
+                  glon(k) = (-clon*dtro+fact*acos(clm))/dtro
+
+                  if (glon(k) .lt. 0)    glon(k) = glon(k) + 360.
+                  if (glon(k) .gt. 360.) glon(k) = glon(k) - 360.
+                  if (glon(k) .lt. 180.) glon(k) = - glon(k)
+                  if (glon(k) .gt. 180.) glon(k) = 360.0 - glon(k)
+
+                  glat(k) = glat(k) / dtro
+               END DO
+            END DO
+
+            write( proj, '(A4,F6.2,A,F7.2,A,F6.2)')
+     .            'lcc/',clat,';',clon,';',clat
+
+            write(garea, '(F6.2,A,F7.2,A,F6.2,A,F7.2)')
+     .            glat(1),';',glon(1),';',glat(imjmk),';',glon(imjmk)
+
+	    IF  ( iperr .eq. 0 )  THEN
+C
+C*		Set device and projection.
+C
+		CALL GG_SDEV  ( device, ier )
+		IF  ( ier .ne. 0 )  proces = .false.
+		IF  ( proces )  THEN
+		  CALL IN_TEXT ( text, ier )
+C
+C*		  Set map projection
+C		  
+		  CALL GG_MAPS ( proj, garea, imgfls (1), idrpfl, ier )
+		  IF  ( ier .ne. 0 )  proces = .false.
+C
+C*		  Start loop over input image files.
+C
+		  IF  ( proces )  THEN
+
+	      	     DO  ifile = 1, numimg
+C
+C*			Reset the projection for each image.
+C
+			IF ( ifile .eq. 1 ) THEN
+C
+C*			    Go to the first frame.
+C
+		  	    first = .true.
+			    CALL GSTANM ( ier )
+			  ELSE 
+C
+C*			    Advance to the next frame.
+C
+			    first = .false.
+			    CALL GSPLOT ( ier )
+			END IF
+C
+C*			Display user options, allow program exit.
+C
+			IF  ( first ) 
+     +			    CALL ETAOPT ( device, proj, garea, map, 
+     +					  title, panel, latlon, clear, 
+     +					  ier )
+			IF  ( ier .ne. 0 )  proces = .false.
+C
+			IF  ( proces )  THEN
+C
+C*			    Clear the screen, if requested, and set
+C*			    the panel.
+C
+			    IF  ( clear ) CALL GCLEAR ( iret )
+			    CALL GG_PANL ( panel, iret )
+C
+C*			    Draw map, lat/lon lines, and station 
+C*			    ID/marker.
+C
+			    CALL GG_MAP  ( map, iret )
+			    CALL GG_LTLN ( latlon, iret )
+C
+C*			    Reset the text attributes.
+C
+			    CALL IN_TEXT ( text, ier )
+C
+C*			    Decode title input and draw the title.
+C
+			    ipbar = INDEX ( title, '|' )
+			    IF  ( ipbar .ne. 0 )  THEN
+				shrttl = title (ipbar+1:)
+				IF  ( ipbar .eq. 1 )  THEN
+				    ttlinp = ' '
+				  ELSE
+				    ttlinp = title (:ipbar-1)
+				END IF
+			      ELSE
+				CALL ST_LSTR ( garea, len1, ier )
+				shrttl = 'MAP OF AREA: ' // garea(:len1)
+				ttlinp = title
+			    END IF
+			    CALL IN_TITL ( ttlinp, -3, ititl, linttl, 
+     +					   ttlstr, iret )
+			    IF  ( ( ucproj (1:3) .eq. 'SAT' .or. 
+     +				    ucproj (1:3) .eq. 'RAD' ) .and.
+     +				  ( ttlstr .eq. ' ' ) )  THEN
+				CALL GG_STTL ( ttlstr, iret )
+			    END IF
+			    IF  ( clear ) CALL GMESG ( shrttl, iret )
+			    IF  ( ititl .gt. 0 )  THEN
+				CALL GSCOLR  ( ititl, iret )
+				CALL GG_WSTR ( ttlstr, linttl, iret )
+			    END IF
+C
+C*			    Flush the graphics buffer.
+C
+			    CALL GEPLOT  ( iret)
+			END IF
+		      END DO
+C
+C*		      Mark the end of the animation sequence.
+C
+		      CALL GENANM ( iret)
+		  END IF
+		END IF
+	      END IF
+C
+C*	    Call the dynamic tutor.
+C
+	    CALL IP_DYNM ( done, iret )
+	END DO
+C 
+	IF  ( iperr .ne. 0 )  CALL ER_WMSG  ( 'ETAMAP', iperr, ' ', ier )
+	CALL GENDP   ( 0, iret )
+	CALL IP_EXIT ( iret )
+C*
+	END

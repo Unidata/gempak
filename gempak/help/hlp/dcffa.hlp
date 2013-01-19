@@ -1,0 +1,80 @@
+
+DCFFA
+
+DCFFA decodes flash flood watch reports from a real-time 
+data feed, or from a file fed to the program through standard 
+input, and writes the data to an ASCII file. Only flash flood
+watch reports with VTEC lines will be decoded.  The program is 
+controlled by inputs to the command line.
+
+The inputs are program options and the output file name or template.
+For example, for real-time data feeds:
+    
+	dcffa [options] output_file
+
+If running the program interactively with standard input, the -c
+option must be used.  The input file must also be specified.
+For example:
+
+	dcffa -c YYMMDD/HHNN [other_options] output_file < input_file
+    
+A template may be used to specify the output file name.  The file
+name template uses the date and time of the bulletin or report
+to replace the following characters.
+
+	YYYY or YY	Year with or without the century
+	MM		Month number
+	DD		Day
+	HH		Hour
+	NN		Minute
+
+
+The format of the output ASCII file is as follows:
+
+|Type|Issue_time|Start_time|Prd_end_time|Event_end_time|Orig_stn|ETN
+|Action_code;Prd_class;IC
+
+Zone/County table entries, one per line, formatted as shown in the 
+example below (zone/county information lines should appear just as 
+they do in $GEMTBL/stns/zones.tbl or $GEMTBL/stns/county.tbl)
+.        .      .                                .  .   .     .         .  . .
+.        .      .                                .  .   .     .         .  . .
+.        .      .                                .  .   .     .         .  . .
+
+where:
+
+Type is                 FF      Flash Flood(the only type for now)
+
+Issue time is		YYMMDD/HHMM - GEMPAK data/time format
+                        issue time from the local time string
+Start time is           YYMMDD/HHMM - GEMPAK date/time format
+			start time from the P-VTEC line
+Prd end time is         YYMMDD/HHMM - GEMPAK date/time format
+			product end time from the UGC string
+Event end time is       YYMMDD/HHMM - GEMPAK date/time format
+			event end time from the P-VTEC line
+
+Orig_stn is             4-letter identifier of the office that 
+		        issued the watch
+
+ETN is			the event tracking number from the P-VTEC line
+
+Action_code is		the action on the zones/counties listed from the 
+			P-VTEC line
+
+Prd_class is		the 1-letter product class from the P-VTEC line
+
+IC is			the 2-letter code for the immediate cause from the 
+			H-VTEC line. If the corresponding H-VTEC line is
+			missing, IC is set to 99.
+
+Example
+-------
+
+|FF|050613/2307|050613/2307|050614/0015|050613/2300|KSGF|0008|EXP;X;ER
+KSZ073   160730 Bourbon                          KS US     37.85    -94.85      0.00  0  SGF
+KSZ097   160970 Crawford                         KS US     37.50    -94.85      0.00  0  SGF
+KSZ101   161010 Cherokee                         KS US     37.16    -94.85      0.00  0  SGF
+MOZ055   250550 Benton                           MO US     38.30    -93.29      0.00  0  SGF
+MOZ056   250560 Morgan                           MO US     38.44    -92.85      0.00  0  SGF
+

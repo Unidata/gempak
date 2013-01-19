@@ -1,0 +1,7 @@
+echo LINKING NC
+cp $GEMPAK/source/device/main/device.f .
+$FC $FFLAGS $LDFLAGS -o $OS_BIN/nc device.f \
+	    $GEMLIB $DEVICE $OS_LIB/nc.a \
+	    $CGEMLIB $OS_LIB/gn.a \
+	    $GEMLIB $CGEMLIB $GEMLIB $SYSLIB -lm
+$RM *.o device.f

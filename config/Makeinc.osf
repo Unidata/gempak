@@ -1,0 +1,31 @@
+OPSYS = OSF1
+
+CC=cc
+
+COPT = -c99 -DUNDERSCORE -DNO_NANOSLEEP -D$(OPSYS) $(GEMINC) -O0
+FOPT =  $(GEMINC) -O0
+NCOPT = "CXX= "
+JASPEROPT = 'CC=$(CC) -c99' '--disable-libjpeg'
+XML2OPT = 'CC=c89' '--with-iconv' 'CFLAGS=-I$(OS_INC)' 'LDFLAGS=-L$(OS_LIB) -lz'
+
+CFLAGS = $(COPT)
+CFLAGS_DB = $(COPT)
+FFLAGS = $(FOPT)
+LDFLAGS =
+
+LDM_FLAGS = -DLONG_64_BITS=1 -DNO_REPLACE_SYSLOG -DLOGNAME_ISSOCK 
+
+SYSLIBS  = -lm
+NOFORMAIN = -nofor_main
+
+X11LIBDIR = 
+MOTIFLIBS = -lXm
+
+
+INSTALL = installbsd -c -s
+AUXINSTALL = installbsd -c
+
+# The following line will allow the system to pause 1 second before
+# trying to access the archive files being built to work around the
+# time granularity.
+ARSLEEP          = sleep 1 ;

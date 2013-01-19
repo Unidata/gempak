@@ -1,0 +1,41 @@
+GD2NDFD converts a GEMPAK grid to an NDFD GRIB2 file.
+  
+INPUT PARAMETERS
+    
+  
+   
+PROGRAM DESCRIPTION
+ 
+    GD2NDFD converts a GEMPAK grid to an NDFD GRIB2 file.
+
+    The input grids for the computation must be in GDFILE.  The
+    converted GRIB2 message is added to the output file, GBFILE.
+    If GBFILE does not exist, it will be created.
+  
+    The parameter CENTER allows the GD2NDFD user to specify the 
+    originating or generating center ID and sub-center ID of 
+    the GRIB2 message. 
+
+    A World Meteorological Organization (WMO) header may be
+    prefixed to the GRIB2 message by giving at least the first
+    six bytes of the header in the WMOHDR input parameter.
+    Default values will be supplied for the originating center
+    (KWBC) and reference time.
+
+ 
+EXAMPLES
+ 
+        Convert all times for paramter TMPK from GEMPAK grid format to 
+	NDFD GRIB2 format.  The output is written to file hrcbob.ndfd.
+
+        GDFILE   = $GEMPAK/data/hrcbob.grd
+        GFUNC    = tmpk 
+        GDATTIM  = all 
+        GLEVEL   = 0 
+        GVCORD   = none 
+        GBFILE   = hrcbob.ndfd
+        CENTER   = 7/5 
+        WMOHDR   = HTRE50 
+
+
+ERROR MESSAGES

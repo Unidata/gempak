@@ -1,0 +1,16 @@
+     IDNTYP
+
+     IDNTYP sets character or numeric station identifiers to be used for 
+     input or output.  The valid values are STID and STNM.  STID specifies
+     station character identifiers; STNM specifies station numbers.
+
+     If the value in IDNTYP is not STNM, the default of STID will be used.
+
+     For example, to update station headers in SFSTNS:
+
+	IDNTYP = 	STID --	compares character ids in file with those
+			        in the station table
+
+	IDNTYP = 	STNM --	compares numeric ids in file with those
+			        in the station table
+

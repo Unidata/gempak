@@ -1,0 +1,144 @@
+
+                            PRODUCT GENERATION
+
+
+Product generation provides tools to create and edit products.  Product drawing 
+and editing can be overlaid on any NMAP data display.  The Vector Graphic 
+File (VGF) is used to store product generation graphics and associated product
+information.  Click on the icon with the low symbol and cold front next to the 
+map icon in the main NMAP window to invoke product generation.  
+
+The product generation palette is divided into controls, actions, classes, and 
+objects.
+
+The actions may act in either the "object" or "group" mode.  In object mode, 
+actions are performed on objects including objects within a group.  In group
+mode, actions are performed on groups only.  
+
+Click on the desired class to activate the available objects for drawing and 
+editing.  For example, clicking on the "Fronts" button will display the 
+available fronts for editing under the "Objects" label.  When the "Fronts" 
+class is activated, only front objects can be added, edited, deleted, etc.  
+Click on the "ANY" class to perform actions on objects regardless of class.
+
+Button hints appear in the bottom title bar below the NMAP data display window 
+while in product generation.  They provide brief help when performing 
+actions on objects.
+
+The following is a brief description of each of the control functions in product
+generation.
+
+EXIT       Exit product generation.
+
+OPEN       Open an existing VGF.  The user is presented with a file
+           selection GUI to select the desired VGF.
+
+REFRESH    Refresh the screen.
+
+RESTORE    Restore the objects from the last session.  The user is
+           asked to confirm the action.
+
+SAVE       Save the current objects to the current VGF name. If there
+           is no current file, the action performs a SAVE AS.
+
+SAVE AS    Save the current objects to a VGF.  The user is presented
+           with a file selection GUI to choose a file or enter a new name.
+
+START/ADD  Start or add layers to product generation.  Layering allows the
+LAYER	   display and editing of more than one product while in product
+	   generation.  Each layer is associated with a set of objects
+           and optionally a VGF file.  See the Product Generation-Layer help
+	   for additional information.
+
+OPEN PROD  Open and load a Layer Product File (LPF).  An LPF specifies layers
+	   and their attributes for a product.  See the Product Generation-LPF
+           help for additional information.
+
+The following is a brief description of each product generation action.
+
+CHNG GROUP Change all group types or a selected group type to another 
+           group type.
+
+CONN       Connect two lines or two fronts to form a single line or front.
+           Select the first line/front near the end to be connected, then
+           select the second line/front, and confirm the connection.
+           Note that the attributes of the first line/front selected, e.g., 
+           color, are inherited by the connected line/front.
+
+COPY       Copy an object/group to a new location while leaving the
+           original object. Select and then drag the object/group.
+
+DEL        Delete a single object or a group. Select the object or 
+           group for deletion and confirm.
+
+DEL ALL    Delete all current objects.  The user is asked to confirm
+           the action.
+
+DEL OBJ    Deletes all of the same object. Select the delete object
+           button, select the class, then select the object to be
+           deleted. The user is asked to confirm the action.
+
+DEL PART   Deletes part of a line or front.  Select the object; click 
+           for the start of the opening, then click for the end of the 
+           opening. This results in two new lines separated by the defined 
+           space.
+
+DEL PT     Delete a single vertex on a line or front.  Select the object.
+           Select the point to delete.  Confirm the deletion. 
+
+EXTRAP     Move or copy an object, or group, some distance from the original
+           location. The distance is computed from the speed and direction
+	   of movement and a time interval. Select the object. Enter the
+	   necessary information in the dialog box. Confirm the extrapolation
+	   with the left mouse button.
+
+FLIP       Flip the direction of the pips for a front or special line type.
+           Flip also switches arrow heads from one end of the line to the other.
+           Select the object and confirm.
+
+GROUP      Group objects.  Select the appropriate group type from the dialog
+           box.  Select or draw the objects to put into a group.  See 
+           Prod_Generation_Group help for additional details.
+
+INC_DEC    Increment or decrement selected numeric text values.  Select the
+(1234)     objects using the methods available for the multi-select action.  
+           Click the middle mouse button to increment/decrement the text.  If 
+           text in a station type group are selected, all numeric text in that
+           group are incremented/decremented.
+
+
+MOD        Modify or replace a line or front.  Select the object and add 
+           vertices anywhere along the line.  See Product Generation_Modify 
+           help for additional details.
+
+MOVE       Move an object/group to a new location.  Select and then drag 
+           the object/group.
+
+MULTI      Select objects for changing attributes of more than one object.
+SELECT     Objects can be selected one-by-one by clicking on them.  
+           Objects can also be selected by using a drag box to define 
+           a rectangular region.  Finally, a polygon may be defined to
+           select objects.  To define a polygon, press the "Shift" key and
+           click the left mouse button to define each polygon vertex.  A
+           ghost polygon is drawn.  Click the middle mouse button to close
+           the polygon and all objects within the polygon are selected.
+
+ROTATE     Rotate a vector/software text object.  Select the object and 
+           drag the indicator to the new direction.
+
+SELECT     In object mode, select an object for changing attributes.  
+           In group mode, this action is used to identify groups.  
+	   Select also modifies the shape of a line/front by dragging
+           vertices.
+
+SHOW       Highlights all object groups.
+ALL GROUPS
+
+UNDO/REDO  This allows the last action to be undone/redone.  Up to ten
+	   actions can be undone.
+
+UNGROUP    Ungroup objects.  Select a group, then confirm the ungroup 
+           command.
+
+UNGROUP    Ungroup all objects.  The user is asked to confirm the action.
+ALL

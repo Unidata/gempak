@@ -1,0 +1,11 @@
+     G2DIAG
+
+    	G2DIAG allows for detailed GRIB2 message section information, 
+    entry-by-entry, to be printed out for selected GRIB2 messages.
+    Simply list those GRIB2 sections to be examined (IS, IDS, GDS, PDS,
+    DRS, BMS, or ALL for all sections), e.g., pds;gds.  
+    Selected GRIB2 messages for examination may also be identified by 
+    number in list and/or range format, e.g., 2;4;5-9, immediately
+    following the section specification separated by a "|".
+    For example, G2DIAG=pds;gds|2;4;6-12 .
+

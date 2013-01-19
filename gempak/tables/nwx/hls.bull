@@ -1,0 +1,51 @@
+! HLS.BULL
+!
+! Location information for the following product:
+! Hurricane_Local_Statement.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+! Log:
+! A. Hardy/NCEP		11/04	separated out the lat/lons
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+WTCA82 TJSJ     SAN_JUAN                         PR US  1843  -6600     0
+WTHW80 PHFO     HONOLULU                         HI US  2129 -15780     0
+WTKA80 PTKK     TRUK/MOEN_FLT_S                  -- KA   746  15185     0
+WTKA80 PTKR     WSO_KOROR                        -- KA   726  13444     0
+WTKA80 PTTP     WSO_POHNPEI                      -- KA   694  15825     0
+WTKA80 PTYA     YAP_ISLAND                       -- KA   947  13808     0
+WTMH80 PKMR     WSO_MAJURO                       -- MH   705  17127     0
+WTPQ81 PGUM     GUAM                             GU US  1327  14478     0
+WTPQ82 PGUM     GUAM                             GU US  1347  14478     0
+WTPQ83 PGUM     GUAM                             GU US  1367  14478     0
+WTPQ84 PGUM     GUAM                             GU US  1387  14478     0
+WTPQ85 PGUM     GUAM                             GU US  1407  14478     0
+WTUS81 KAKQ     WAKEFIELD                        VA US  3697  -7700     0
+WTUS81 KBOX     TAUNTON                          MA US  4195  -7112     0
+WTUS81 KCAR     CARIBOU                          ME US  4577  -6862     0
+WTUS81 KGYX     GRAY                             ME US  4388  -7025     0
+WTUS81 KLWX     BALTIMORE_MD/_WASHINGTON_DC      VA US  3897  -7747     0
+WTUS81 KOKX     NEW_YORK                         NY US  4086  -7286     0
+WTUS81 KPHI     MOUNT_HOLLY                      NJ US  4000  -7480     0
+WTUS82 KCHS     CHARLESTON                       SC US  3288  -8001     0
+WTUS82 KKEY     KEY_WEST                         FL US  2457  -8178     0
+WTUS82 KILM     WILMINGTON                       NC US  3427  -7791     0
+WTUS82 KJAX     JACKSONVILLE                     FL US  3047  -8169     0
+WTUS82 KMFL     MIAMI                            FL US  2575  -8037     0
+WTUS82 KMHX     NEWPORT/MOREHEAD_CITY            NC US  3477  -7687     0
+WTUS82 KMLB     MELBOURNE                        FL US  2811  -8065     0
+WTUS82 KTAE     TALLAHASSEE                      FL US  3045  -8430     0
+WTUS82 KTBW     TAMPA_BAY_AREA/RUSKIN            FL US  2770  -8240     0
+WTUS84 KBMX     BIRMINGHAM                       AL US  3316  -8677     0
+WTUS84 KBRO     BROWNSVILLE                      TX US  2590  -9741     0
+WTUS84 KCRP     CORPUS_CHRISTI                   TX US  2777  -9750     0
+WTUS84 KHGX     HOUSTON/GALVESTON                TX US  2946  -9506     0
+WTUS84 KLCH     LAKE_CHARLES                     LA US  3012  -9320     0
+WTUS84 KLIX     NEW_ORLEANS                      LA US  3032  -8981     0
+WTUS84 KMOB     MOBILE                           AL US  3067  -8823     0
+WTUS85 KPSR     PHOENIX                          AZ US  3343 -11201     0
+WTUS86 KLOX     LOS_ANGELES/OXNARD               CA US  3420 -11912     0
+WTUS86 KSGX     SAN_DIEGO                        CA US  3290 -11705     0

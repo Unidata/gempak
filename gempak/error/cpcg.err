@@ -1,0 +1,7 @@
+!	This is the CPCG error file.
+!
+-1	! Structure not initialized or no records found.
+-2	! No needed line found in the vgf file.
+-3	! No station found in the station data file. 
+-4 	! No bounds found in the bounds file.
+-5	! No closed polygon found. 

@@ -1,0 +1,24 @@
+CXSTNS  lax>bwi                                                                 
+GDATTIM f06                                                                     
+GVCORD  pres                                                                    
+GFUNC   tmpc                                                                    
+GVECT   wnd                                                                     
+GDFILE  $GEMPAK/data/HRCBOB.GRD                                                     
+WIND    bm6//2                                                                  
+REFVEC  10                                                                      
+PTYPE   log                                                                     
+YAXIS                                                                           
+CINT                                                                            
+SCALE                                                                           
+LINE    32/1/3                                                                  
+BORDER  1                                                                       
+TITLE   1                                                                       
+CLEAR   yes                                                                     
+DEVICE  xw                                                                      
+TEXT    1                                                                       
+PANEL   0                                                                       
+CLRBAR  1/h/cc/.5;.03/.6;.01                                                    
+CONTUR  3                                                                       
+FINT                                                                            
+FLINE   30-8-2                                                                  
+CTYPE   c/f                                                                     

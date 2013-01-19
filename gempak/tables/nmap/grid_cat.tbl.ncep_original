@@ -1,0 +1,22 @@
+!************************************************************************************************************************************************
+!                                                                                                                                               *
+!       grid_cat.tbl                                                                                                                            *
+!                                                                                                                                               *
+!       This table specifies user-defined grid categories and corresponding models for the NMAP Data Source GUI.				* 
+!																		*
+!	The first column specifies the category name.  The name can be up to 40 characters in length.  The second column lists the		* 
+! 	corresponding models for the category. The columns are not in fixed locations.  Invalid model names are not displayed in the GUI.	*
+!	If the table is empty, does not exist, or all model names are invalid, NMAP will display all models in the database.			*
+!	Note that models not specified in the grid categories, appear in the GUI under a catgory called Others at the end of the category list.	* 
+!	The Others category is generated automatically and does not need to be included in this table.						*
+!                                                                                                                                               *
+!               Column 1 - grid categories to appear in the NMAP Data Source GUI,                                                               *
+!               Column 2 - list of models (separated by semicolons, no spaces!) in the category.				        	* 
+!                                                                                                                                               *
+! M. Li/SAIC		02/07	Created                                                                                                  	*
+!************************************************************************************************************************************************
+!
+!Global_Models          dgex;gfs;gefs;gfshd;nam;nam20;nam40;nam44;fnl;mrf;mrfx;ngm;ruc2
+!Global_Ensembles       nam;nam20;nam40;nam44;ngm;dgex;gfs;gfshd;mrf;mrfx;ens;mm5ak;mm5us
+!Ocean_Models           GoesSST
+!OPC_Grids              ruc2;fslruc2;ngm;nam20;nam40;nam44;ghm

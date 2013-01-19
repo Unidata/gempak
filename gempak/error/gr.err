@@ -1,0 +1,31 @@
+! GR error file
+!
+  6	! More than one time is requested.
+  5	! Too many frames in this window, set to MXLOOP.
+  4	! Invalid input for GPACK.  Defaults being used.
+  3	! User typed "EXIT".
+  2	! Note: data have been internally rescaled.
+  1	! No valid contour level.
+ -1	! Invalid input time.
+ -2	! Invalid input level.
+ -3	! Wind components not found.
+ -4	! File !AS cannot be opened.
+ -5	! Invalid grid spacing.
+ -6	! Invalid navigation block.
+ -7	! Error defining grid navigation in GEMPLT.
+ -8	! Invalid data range.
+ -9	! Invalid grid or grid subset size.
+-10	! Invalid analysis type.
+-11	! Number of output LUNs must be positive.
+-12	! Input !AS for grid point is invalid.
+-13     ! GRID projection is not set in GEMPLT. 
+-14     ! Data could not be scaled.
+-15     ! START and STOP values for axis are missing.
+-17     ! Axis labelling interval cannot be determined.
+-18     ! Endpoints are too close together.
+-19	! PSI vector components not found.
+-20	! No times selected.
+-21	! Cannot fix wrap around.
+-22	! No valid map projection is set.
+-23	! Exceeds maximum number of points allowed.
+-24     ! Invalid rotation angle for cylindrical projection.

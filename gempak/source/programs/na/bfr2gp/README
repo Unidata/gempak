@@ -1,0 +1,324 @@
+
+                        Overview of bfr2gp
+
+
+The program bfr2gp is a GEMPAK program designed to convert any BUFR file
+produced by Jack Woollen's BUFR encoder to a GEMPAK file.  Please read
+the bfr2gp.hlp file for specific user guidance information.  
+
+The BUFR file must be an UNBLOCKED BUFR file.
+
+Installation Notes:
+
+    1)  If your collection of .pdf files in GEMPDF contain text
+        formatted like that seen in bfr2gp.pdfnew, then edit
+        the file install_bfr2gp so that bfr2gp.pdfnew is copied
+        into $GEMPDF/bfr2gp.pdf.
+
+    2)  If your version of GEMPAK predates 1997, remove the variable
+        ispri from the calling sequence for SF_ASTN in bfrsst.f.
+
+    3)  Execute the install script (install_bfr2gp) to build the
+        bfr2gp program and copy the required files to GEMPAK directories.
+	Execution of install_bfr2gp requires write permission to
+        the GEMPAK directories.
+
+Examples:
+
+The following script fragment contains examples of how bfr2gp is used
+to process multiple GEMPAK files from the single Eta model prepda BUFR
+file.  The conversion tables are found in the included directory named
+conv_tables and are included only to complete this example.  Actual
+applications may require different tables.  The conv_tables directory
+also includes prep.bufrtable, the BUFR table for the Eta model prepda
+BUFR file.
+
+set tblpth = conv_tables
+
+bfr2gp << EOF > bfr2gp.record
+SNEFIL	= prepda|prep.bufrtable
+SFFSRC	= adpsfc
+SNOUTF	=
+SFOUTF	= adpsfc.sfc
+SNPRMF	=
+SFPRMF	= ${tblpth}/adpsfc.tbl
+AREA	= 0;-180;90;-30
+DATTIM	=
+TIMSTN	= 13/3930
+r
+
+EOF
+
+bfr2gp << EOF >> bfr2gp.record
+SNEFIL	= prepda|prep.bufrtable
+SFFSRC	= adpupa|cat=0,1,2,5
+SNOUTF	= adpupa_mass.snd
+SFOUTF	= 
+SNPRMF	= ${tblpth}/adpupa_qcm.tbl
+SFPRMF	= ${tblpth}/anysnd_sfc.tbl
+AREA	= 0;-180;90;-30
+DATTIM	=
+TIMSTN	= 13/3930
+r
+
+EOF
+
+bfr2gp << EOF >> bfr2gp.record
+SNEFIL	= prepda|prep.bufrtable
+SFFSRC	= adpupa|cat=1,3,4
+SNOUTF	= adpupa_wind.snd
+SFOUTF	= 
+SNPRMF	= ${tblpth}/adpupa_qcw.tbl
+SFPRMF	= ${tblpth}/anysnd_sfc.tbl
+AREA	= 0;-180;90;-30
+DATTIM	=
+TIMSTN	= 13/3930
+r
+
+EOF
+
+bfr2gp << EOF >> bfr2gp.record
+SNEFIL	= prepda|prep.bufrtable
+SFFSRC	= adpupa
+SNOUTF	= adpupa.snd
+SFOUTF	= 
+SNPRMF	= ${tblpth}/adpupa_usd.tbl
+SFPRMF	= ${tblpth}/anysnd_sfc.tbl
+AREA	= 0;-180;90;-30
+DATTIM	=
+TIMSTN	= 13/3930
+r
+
+EOF
+
+bfr2gp << EOF >> bfr2gp.record
+SNEFIL	= prepda|prep.bufrtable
+SFFSRC	= aircar|typ=133
+SNOUTF	= 
+SFOUTF	= aircar_mass_west.sfc
+SNPRMF	= 
+SFPRMF	= ${tblpth}/aircar_mass.tbl
+AREA	= 0;-180;90;-105
+DATTIM	=
+TIMSTN	= 3999
+r
+
+EOF
+
+bfr2gp << EOF >> bfr2gp.record
+SNEFIL	= prepda|prep.bufrtable
+SFFSRC	= aircar|typ=233
+SNOUTF	= 
+SFOUTF	= aircar_wind_west.sfc
+SNPRMF	= 
+SFPRMF	= ${tblpth}/aircar_wind.tbl
+AREA	= 0;-180;90;-105
+DATTIM	=
+TIMSTN	= 3999
+r
+
+EOF
+
+bfr2gp << EOF >> bfr2gp.record
+SNEFIL	= prepda|prep.bufrtable
+SFFSRC	= aircar|typ=133
+SNOUTF	= 
+SFOUTF	= aircar_mass_east.sfc
+SNPRMF	= 
+SFPRMF	= ${tblpth}/aircar_mass.tbl
+AREA	= 0;-105;90;-30
+DATTIM	=
+TIMSTN	= 3999
+r
+
+EOF
+
+bfr2gp << EOF >> bfr2gp.record
+SNEFIL	= prepda|prep.bufrtable
+SFFSRC	= aircar|typ=233
+SNOUTF	= 
+SFOUTF	= aircar_wind_east.sfc
+SNPRMF	= 
+SFPRMF	= ${tblpth}/aircar_wind.tbl
+AREA	= 0;-105;90;-30
+DATTIM	=
+TIMSTN	= 3999
+r
+
+EOF
+
+bfr2gp << EOF >> bfr2gp.record
+SNEFIL	= prepda|prep.bufrtable
+SFFSRC	= aircft|typ=130
+SNOUTF	= 
+SFOUTF	= aircft.sfc
+SNPRMF	= 
+SFPRMF	= ${tblpth}/aircft_mass.tbl
+AREA	= 0;-180;90;-30
+DATTIM	=
+TIMSTN	= 3999
+r
+
+EOF
+
+bfr2gp << EOF >> bfr2gp.record
+SNEFIL	= prepda|prep.bufrtable
+SFFSRC	= aircft|typ=230
+SNOUTF	= 
+SFOUTF	= aircft_wind.sfc
+SNPRMF	= 
+SFPRMF	= ${tblpth}/aircft_wind.tbl
+AREA	= 0;-180;90;-30
+DATTIM	=
+TIMSTN	= 3999
+r
+
+EOF
+
+bfr2gp << EOF >> bfr2gp.record
+SNEFIL	= prepda|prep.bufrtable
+SFFSRC	= aircft|typ=230
+SNOUTF	= 
+SFOUTF	= aircft_wind.sfc
+SNPRMF	= 
+SFPRMF	= ${tblpth}/aircft_wind.tbl
+AREA	= 0;-180;90;-30
+DATTIM	=
+TIMSTN	= 13/3930
+r
+
+EOF
+
+bfr2gp << EOF >> bfr2gp.record
+SNEFIL	= prepda|prep.bufrtable
+SFFSRC	= goesnd
+SNOUTF	= 
+SFOUTF	= goes_west.sfc
+SNPRMF	= 
+SFPRMF	= ${tblpth}/goesnd.tbl
+AREA	= 0;-180;90;-110
+DATTIM	=
+TIMSTN	= 13/3930
+r
+
+SFOUTF	= goes_cent.sfc
+AREA	= 0;-110;90;-80
+r
+
+SFOUTF	= goes_east.sfc
+AREA	= 0;-80;90;-30
+r
+
+EOF
+
+bfr2gp << EOF >> bfr2gp.record
+SNEFIL	= prepda|prep.bufrtable
+SFFSRC	= proflr
+SNOUTF	= proflr.snd
+SFOUTF	= 
+SNPRMF	= ${tblpth}/proflr.tbl
+SFPRMF	= ${tblpth}/anysnd_sfc.tbl
+AREA	= 0;-180;90;-30
+DATTIM	=
+TIMSTN	= 13/3930
+r
+
+EOF
+
+bfr2gp << EOF >> bfr2gp.record
+SNEFIL	= prepda|prep.bufrtable
+SFFSRC	= satemp
+SNOUTF	= satemp.snd
+SFOUTF	= 
+SNPRMF	= ${tblpth}/satemp.tbl
+SFPRMF	= ${tblpth}/anysnd_sfc.tbl
+AREA	= 0;-180;90;-30
+DATTIM	=
+TIMSTN	= 13/3930
+r
+
+EOF
+
+bfr2gp << EOF >> bfr2gp.record
+SNEFIL	= prepda|prep.bufrtable
+SFFSRC	= satwnd
+SNOUTF	= satwnd_east.snd
+SFOUTF	= 
+SNPRMF	= ${tblpth}/satwnd.tbl
+SFPRMF	= ${tblpth}/anysnd_sfc.tbl
+AREA	= 0;-180;90;-105
+DATTIM	=
+TIMSTN	= 13/3930
+r
+
+EOF
+
+bfr2gp << EOF >> bfr2gp.record
+SNEFIL	= prepda|prep.bufrtable
+SFFSRC	= satwnd
+SNOUTF	= satwnd_west.snd
+SFOUTF	= 
+SNPRMF	= ${tblpth}/satwnd.tbl
+SFPRMF	= ${tblpth}/anysnd_sfc.tbl
+AREA	= 0;-105;90;-30
+DATTIM	=
+TIMSTN	= 13/3930
+r
+
+EOF
+
+bfr2gp << EOF >> bfr2gp.record
+SNEFIL	= prepda|prep.bufrtable
+SFFSRC	= sfcshp|typ=180
+SNOUTF	= 
+SFOUTF	= sfcshp_mass.sfc
+SNPRMF	= 
+SFPRMF	= ${tblpth}/sfcshp_mass.tbl
+AREA	= 0;-180;90;-30
+DATTIM	=
+TIMSTN	= 3999
+r
+
+EOF
+
+bfr2gp << EOF >> bfr2gp.record
+SNEFIL	= prepda|prep.bufrtable
+SFFSRC	= sfcshp|typ=280
+SNOUTF	= 
+SFOUTF	= sfcshp_wind.sfc
+SNPRMF	= 
+SFPRMF	= ${tblpth}/sfcshp_wind.tbl
+AREA	= 0;-180;90;-30
+DATTIM	=
+TIMSTN	= 3999
+r
+
+EOF
+
+bfr2gp << EOF >> bfr2gp.record
+SNEFIL	= prepda|prep.bufrtable
+SFFSRC	= spssmi
+SNOUTF	= 
+SFOUTF	= spssmi.sfc
+SNPRMF	= 
+SFPRMF	= ${tblpth}/spssmi.tbl
+AREA	= 0;-180;90;-30
+DATTIM	=
+TIMSTN	= 3999
+r
+
+EOF
+
+bfr2gp << EOF >> bfr2gp.record
+SNEFIL	= prepda|prep.bufrtable
+SFFSRC	= vadwnd
+SNOUTF	= vadwnd.snd
+SFOUTF	= 
+SNPRMF	= ${tblpth}/vadwnd.tbl
+SFPRMF	= ${tblpth}/anysnd_sfc.tbl
+AREA	= 0;-180;90;-30
+DATTIM	=
+TIMSTN	= 13/3930
+r
+
+EOF

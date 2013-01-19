@@ -1,0 +1,10 @@
+!	This is the GEMLIB CES error file
+!
+   3	| The grptyp.tbl was not loaded.
+   2	! Record from !AS is unreadable or has unknown class; record is ignored.
+   1	! Setting array size exceeded.  Increase MAX_SET.
+  -1 	! Settings file !AS not found.
+  -2	! Failure to obtain index for subtype !AS; unable to get or set settings
+  -3	! Unknown vgclass or vgtype to set.
+  -4    ! Memory allocation failed.
+  -5    ! Group structure not initialized. 

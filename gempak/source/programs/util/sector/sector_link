@@ -1,0 +1,6 @@
+$FC $FFLAGS $LDFLAGS -o $OS_BIN/sector sector.f \
+	$OS_LIB/sector.a \
+	$OS_LIB/ginitp_alt.o $OS_LIB/gendp_alt.o \
+	$GEMLIB $CGEMLIB $GPLT $DEVICE \
+	$OS_LIB/gn.a $GEMLIB $CGEMLIB $GEMLIB
+$RM *.o

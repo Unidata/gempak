@@ -1,0 +1,4 @@
+$FC $FFLAGS $LDFLAGS -o $OS_BIN/sfcfil sfcfil.f \
+	    $OS_LIB/sfcfil.a $GEMLIB $APPL \
+	    $GEMLIB $CGEMLIB $GEMLIB $SYSLIB
+$RM *.o

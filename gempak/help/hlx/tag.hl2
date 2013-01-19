@@ -1,0 +1,10 @@
+     TAG 
+
+     TAG is used to identify a group of GFA FZLVL elements. FZLVLs 
+     with the same tags can be smeared together. 
+
+     The value of TAG can be 1W, 2W, ..., 9W, 1C, 2C, ..., 9C, 1E, 
+     2E, ..., 9E. 
+
+     The default value is 1W.
+

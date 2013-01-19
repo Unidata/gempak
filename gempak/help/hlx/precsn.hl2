@@ -1,0 +1,31 @@
+     PRECSN
+
+     PRECSN is the binary or decimal precision to be preserved in the
+     packing of the gridded data.
+
+     Binary precision is entered as a B/n, where B indicates binary
+     precision and n is an integer indicating the nearest power of 2
+     to which to pack the data.  Power of 10 scaling of the data is
+     NOT done when binary precision is specified.  The following
+     table relates values of n to the precision retained.
+
+             n             Binary Precision Description
+
+            -4       Data values are rounded to the nearest 1/16.
+            -3       Data values are rounded to the nearest 1/8.
+            -2       Data values are rounded to the nearest 1/4.
+            -1       Data values are rounded to the nearest 1/2.
+             0       Data values are rounded to the nearest 1.
+             1       Data values are rounded to the nearest 2.
+             2       Data values are rounded to the nearest 4.
+             3       Data values are rounded to the nearest 8.
+             4       Data values are rounded to the nearest 16.
+
+     Decimal precision is entered as D/r, where D indicates decimal
+     precision and r is a positive floating point number indicating
+     the number of decimal significant digits to preserve.  The
+     fractional part of r is retained in the calculation of the
+     number of packing bits required and may be used to enhance
+     precision in cases where binary precision might require too
+     many bits.  The necessary power of 10 scaling is determined
+     automatically.

@@ -1,0 +1,15 @@
+#!/bin/csh
+
+#
+#	Get plottype ${pt}
+#
+
+set pt=`echo ${0} | awk -F/ '{print $NF}' | cut -c5-`
+
+#
+#	Call general prnt script
+#
+
+`which prnt` ${pt} ${1} ${2} ${3} ${4} ${5} ${6} ${7} ${8} ${9}
+
+exit

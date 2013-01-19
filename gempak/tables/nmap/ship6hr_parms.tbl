@@ -1,0 +1,60 @@
+! 
+!	SHIP6HR_PARMS.TBL
+!
+! This table contains the available parameters used in the
+! station model editing panel in NMAP for SHIP6HR data types. 
+!
+!	pos_zero_flag:	1 = plot at position 0 only
+!			0 = plot at any position
+!
+! Log:
+! D. Kidwell/NCEP	 5/00   From SHIP_PARMS.TBL
+! D. Kidwell/NCEP	 3/02   Added DASH, GUST, SHPK; dropped P06
+!
+! parameter       pos_zero_flag 
+!
+brbk:1:2:112      1          
+brbm:1:2          1         
+skyc:1:2          1        
+skyk:1:2	  1       
+dash:.75:2        0         
+digr              0
+dpdc              0      
+dwpc              0     
+dwpf              0    
+gust              0    
+heat              0   
+pres              0       
+ptnd:1            0      
+relh              0     
+salt              0 
+shpk              0 
+smsl              0    
+sstc              0 
+sstf              0          
+stid              0   
+tmpc              0  
+tmpf              0 
+tmwc              0          
+tmwf              0         
+vsbn   	          0        
+wceq              0       
+wcht              0       
+wsym:1            0      
+!  wave parameters
+whft              0    
+whgt              0   
+wper              0  
+dawv:.75:2        0         
+dosw              0         
+hosw              0
+posw              0        
+dos2              0         
+hos2              0
+pos2              0        
+howw              0      
+poww              0     
+wav2              0
+wav3              0
+wav4              0
+wav5              0

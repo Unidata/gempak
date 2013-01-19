@@ -1,0 +1,5 @@
+$CC $CFLAGS -c gdlist.c
+$FC $LDFLAGS -o $OS_BIN/gdlist gdlist.o \
+	$OS_LIB/gdlist.a $GEMLIB $APPL $SYSLIB \
+	$CGEMLIB $GEMLIB -lm -lnetcdf -lz
+$RM *.o

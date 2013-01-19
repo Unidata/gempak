@@ -1,0 +1,8 @@
+! This is the error file for GPANOT.
+!
+ -1	! Fatal error initializing TAE.
+ -2	! Fatal error reading TAE parameters.
+ -3	! Fatal error initializing GEMPLT.
+ -4	! No symbol specified.
+ -5	! No front type specified.
+ -6	! Must have at least 2 pips.

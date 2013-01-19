@@ -1,0 +1,58 @@
+
+SHPSSF
+                                                                       
+  SHPSSF converts map file(s) from the Shapefile format to the Sequential 
+  Standard Format (SSF).
+
+SYNOPSIS
+
+  shpssf [options] shape_filename1[shape_filename2[shape_filename3]]
+
+DESCRIPTION
+
+  SHPSSF is a generic program that converts map file(s) from the Shapefile 
+  format to the Sequential Standard Format (SSF). The output map file in 
+  SSF format can be directly input into program SSFGSF to create a map file
+  in GEMPAK Standard Format (GSF).
+
+  The output map file can have different resolutions, and at least one
+  resolution has to be given. The resolution is specified in the program 
+  options. Upto three map files in the Shapefile format can be combined
+  together to create one map file in SSF format.
+
+OPTIONS
+  -s  strip_tolerance
+      Strip overlapped map lines. Suggested tolerance is 0.005. If gaps
+      appear, decrease the value.
+
+  -t  map_filename
+      Create top resolution map file.
+
+  -i  map_filename
+      Create high resolution map file.
+
+  -m  map_filename
+      Create medium resolution map file.
+
+  -l  map_filename
+      Create low resolution map file.
+
+  -a  map_filename
+      Create all resolution map files. 'tp', 'hi', 'me' and 'lo' will prefix
+      map_filename to indicate top, high, medium and low resolution respectively.
+
+  -h  Display this help.
+
+EXAMPLE
+
+  shpssf -s 0.005 -i hicnus.ssf c_18nv03
+
+	the program creates high resolution map files from the shapefile 
+	c_18nv03. The strip tolerance is 0.005.
+
+  shpssf -a mzcn.ssf c_18nv03 mz15jl04
+
+	the program combines shapefile c_18nv03 and mz15jl04 together, and
+	creates top, high, medium and low resolution map files with file name
+	tpmzcn.ssf, himzcn.ssf, memzcn.ssf and lomzcn.ssf respectively.
+	Overlapped map lines are not stripped.

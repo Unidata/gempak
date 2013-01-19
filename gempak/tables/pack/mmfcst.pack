@@ -1,0 +1,36 @@
+! MMFCST.PACK
+!
+! This table is the packing table for the Medium Range product
+! generation. The file contains the original MRF MOS data, climatology,
+! the edited values and the observed values.
+!
+!!
+! Log:
+! S. Jacobs/NCEP	 3/99
+! S. Jacobs/NCEP	 3/99	Added anomaly values
+! S. Jacobs/NCEP	 3/99	Adjusted the POP anomaly bounds
+! J. Carr/HPC		 7/02	Added PP12, PP1C, PP1A, P1AE, PP1E
+!
+TDYF	  -100.        150.      1.
+TDAF	   -63.         63       1.
+TDCF	  -100.        150.      1.
+TDYE	  -100.        150.      1.
+TDAE	   -63.         63       1.
+TDYO	  -100.        150.      1.
+TNTF	  -100.        150.      1.
+TNAF	   -63.         63       1.
+TNCF	  -100.        150.      1.
+TNTE	  -100.        150.      1.
+TNAE	   -63.         63       1.
+TNTO	  -100.        150.      1.
+PP24	     0.        100.      1.
+PP2A	  -100.        100       1.
+PP2C	     0.        100.      1.
+PP2E	     0.        100.      1.
+P2AE	  -100.        100.      1.
+PP2O	     0.        100.      1.
+PP12         0.        100.      1.
+PP1C         0.        100.      1.
+PP1A      -100.        100       1.
+P1AE      -100.        100.      1.
+PP1E         0.        100.      1.

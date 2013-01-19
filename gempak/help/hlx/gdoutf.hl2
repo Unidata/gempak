@@ -1,0 +1,11 @@
+     GDOUTF
+
+     GDOUTF is the output grid data file name.
+
+     GDOUTF is used in programs which create a new grid data file.  It 
+     is also used in programs that move data from an input file to an 
+     output file.  In that case, GDFILE is the original file.
+
+     The file types that can be used for GDFILE cannot be used to
+     specify the GDOUTF value.
+

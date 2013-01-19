@@ -1,0 +1,23 @@
+!	This is the UKA error file
+!
+! log
+!------
+! M. Li/SAIC		 6/04
+!
+
+  16 	! No !AS element found.
+  15	! Could not perform parametric curve fit for !AS
+  14    ! Found wrong line type grouped with !AS.
+  13    ! Found more than one symbol for !AS.
+  12	! Found more than one text label for !AS.
+  11	! Missing symbol for !AS.
+   9 	! Missing tropopause text boxes.
+   8 	! Missing flight level text for !AS.
+   7 	! Missing wind barb for !AS.
+   6 	! Missing directional arrow for !AS.
+   5 	! Missing wind speed text for !AS.
+   4 	! Missing text label for !AS. 
+   3 	! Missing line for !AS.
+   2    ! Found more than one line for !AS.
+   1    ! No grouped elements found for group type !AS. 
+  -2 	! Group type !AS cannot be found in the group type list.

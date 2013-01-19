@@ -1,0 +1,28 @@
+! WST.BULL
+!
+! Location information for the following product:
+! Tropical_Cyclone_Sigmet.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+! Log:
+! A. Hardy/NCEP		11/04	separated out the lat/lons
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+WCAK31 PAWU     ALASKAN_AVIATION_WEATHER_UNIT    AK US  6075 -15037     0
+WCAK32 PAWU     ALASKAN_AVIATION_WEATHER_UNIT    AK US  6095 -15017     0
+WCAK33 PAWU     ALASKAN_AVIATION_WEATHER_UNIT    AK US  6115 -14997     0
+WCAK34 PAWU     ALASKAN_AVIATION_WEATHER_UNIT    AK US  6135 -14977     0
+WCAK35 PAWU     ALASKAN_AVIATION_WEATHER_UNIT    AK US  6155 -14957     0
+WCPA31 PHFO     HONOLULU                         HI US  2129 -15780     0
+WCPA32 PHFO     HONOLULU                         HI US  2149 -15800     0
+WCPA33 PHFO     HONOLULU                         HI US  2169 -15820     0
+WCPA34 PHFO     HONOLULU                         HI US  2189 -15840     0
+WCPA35 PHFO     HONOLULU                         HI US  2209 -15860     0
+WCPQ31 PGUM     GUAM                             GU US  1327  14478     0
+WCPQ32 PGUM     GUAM                             GU US  1347  14478     0
+WCPQ33 PGUM     GUAM                             GU US  1367  14478     0
+WCPQ34 PGUM     GUAM                             GU US  1387  14478     0
+WCPQ35 PGUM     GUAM                             GU US  1407  14478     0

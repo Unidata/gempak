@@ -1,0 +1,30 @@
+GEMPARM=$GEMPAK/parm
+export GEMPARM
+GEMPTXT=$GEMPAK/txt/programs
+export GEMPTXT
+
+hlpbld $GEMHLP/hlp SNCFIL
+###########################
+hlpbld $GEMHLP/hlp SNCROSS
+###########################
+hlpbld $GEMHLP/hlp SNDELT
+###########################
+hlpbld $GEMHLP/hlp SNDSLIST
+###########################
+hlpbld $GEMHLP/hlp SNEDIT
+###########################
+hlpbld $GEMHLP/hlp SNHODO
+###########################
+hlpbld $GEMHLP/hlp SNLIST
+###########################
+hlpbld $GEMHLP/hlp SNMAP
+###########################
+hlpbld $GEMHLP/hlp SNMOD
+###########################
+hlpbld $GEMHLP/hlp SNPROF
+###########################
+hlpbld $GEMHLP/hlp SNSTNS
+###########################
+hlpbld $GEMHLP/hlp SNTSER
+###########################
+echo ALL THE SN HLPs ARE BUILT.

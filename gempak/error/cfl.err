@@ -1,0 +1,22 @@
+!	This is the GEMLIB CFL error file
+!
+  4	! End of file !AS reached.
+  3	! Pattern not found in file !AS.
+  2	! Line from file !AS exceeds line buffer size.
+  1	! Line from file !AS exceeds external line buffer size; partial record returned.
+ -1	! File !AS does not exist.
+ -2 	! File !AS cannot be opened.
+ -3 	! Read failure from file !AS.
+ -4	! Write failure to file !AS.
+ -5	! File !AS already exists.
+ -6	! No file has been opened.
+ -7	! Read or write failure in file !AS.
+ -8	! Access failure for file !AS; permission denied.
+ -9	! Invalid type of I/O for file !AS.
+-10	! Specified name !AS is a directory.
+-11	! Specified name !AS is not a directory.
+-14     ! Cannot decode date from filename.
+-21	! Invalid seek origin for file !AS.
+-22	! Attempted seek beyond file !AS.
+-23	! Invalid search direction for file !AS.
+-24	! Line from file !AS exceeds internal line buffer size.

@@ -1,0 +1,62 @@
+ 
+ 
+                 Data Packing (DP) Library 
+
+
+The data packing library provides subroutines for packing real data
+values into a bit string and for unpacking these data.  The bit
+string is stored and retrieved as an integer data array.  In general,
+packing and unpacking is done in the DM library subroutines and is
+the responsibility of the programmer.
+
+Station data is packed using DP_PACK and unpacked using DP_UNPK.
+The DP_PACK subroutine packs a real data value by applying a scale
+factor and an offset which transforms the expected range of data
+values into a small integer range.  The following equation is used:
+
+           IPACK = NINT ( DATA / SCALE ) - IOFFST
+
+The scale factor, SCALE, is 10 ** LOGSCL where LOGSCL is specified
+in DP_SETP.
+
+LOGSCL, IOFFST, and NBITS must be defined by a call to DP_SETP before
+any packing or unpacking is done.  The scale factor is specified in
+terms of its base-10 logarithm. These terms may be determined from
+the range and resolution desired using the subroutine DP_TERM.
+
+Once DP_SETP has been called to define the packing parameters, either
+DP_PACK or DP_UNPK may be called repeatedly for data records to be
+packed or unpacked.  The DP library allows multiple definitions.
+Each definition is identified by a packing number. 
+
+There are several packing schemes available for gridded data.  These
+are called the GEMPAK GRIB, DIF and NMC formats.
+
+The GEMPAK GRIB format is similar to the WMO GRIB format except that
+missing data points may be stored and retrieved and the scaling factor
+need not be a power of 2.  The equations used are:
+
+           IDATA  =  NINT ( ( GRID - QMIN ) / SCALE )
+           GRID   =  QMIN  +  IDATA * SCALE
+
+DP_PGRB may be used to pack the data.  In this case, SCALE will be a
+power of 2 and missing data may be stored and retrieved.  DP_PDEC will
+pack data in a minimum number of bits to retain the requested decimal
+precision.  SCALE will not necessarily be a power of 2.  Data stored
+by either subroutine or as received in GRIB format may be unpacked 
+using DP_UGRB.
+
+The GEMPAK DIF format computes the difference between points along
+a row of data.  At the first point in a row, the difference from the
+first point in the previous row is used.  These differences are used
+in the equations:
+
+           IDIF  =  NINT ( ( GDIF - DIFMIN ) / SCALE )
+           GDIF  =  DIFMIN + IDIF * SCALE
+
+These grids may be packed using DP_PDIF and unpacked using DP_UDIF.
+
+NMC 16-bit grids are saved directly from NMC.  They may be unpacked
+using DP_UNMC which uses the equation:
+
+           GRID  = AVG + IDATA * SCALE

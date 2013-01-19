@@ -1,0 +1,5 @@
+$CC $CFLAGS -c testcvg.c
+$FC $LDFLAGS -o $OS_BIN/testcvg testcvg.o \
+		$CGEMLIB $GEMLIB $APPL $GEMLIB \
+		$CGEMLIB $GEMLIB $SYSLIB -lm
+$RM *.o

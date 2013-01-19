@@ -1,0 +1,16 @@
+GDFILE  Grid file                                                               
+GDOUTF  Output grid file                                                        
+GFUNC   Scalar grid                                                             
+GDATTIM Grid date/time                                                          
+GLEVEL  Grid level                                                              
+GVCORD  Grid vertical coordinate                                                
+GRDNAM  Grid parameter name                                                     
+GRDTYP  Diagnostic grid type (Scalar/Vector)                                    
+GPACK   Packing type/number of bits                                             
+GRDHDR  Grid Header Flags                                                       
+PROJ    Map projection/angles/margins|drop flag                                 
+GRDAREA Area covered by grid                                                    
+KXKY    Number of grid points in x;y                                            
+MAXGRD  Maximum number of grids                                                 
+CPYFIL  Grid file whose navigation is to be used in new grid file | subarea     
+ANLYSS  Grid analysis block                                                     

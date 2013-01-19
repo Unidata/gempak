@@ -1,0 +1,12 @@
+     BORDER
+ 
+     BORDER is the color, line type and line width of the background and
+     underground plot separated with slashes:
+ 
+		background color; station line color; fill color/
+		background line type; station line type /
+		background line width; station line width
+
+     If the color is 0, no background will be drawn.  The defaults for 
+     color, line type and line width are each 1.
+ 

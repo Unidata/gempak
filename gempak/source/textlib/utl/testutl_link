@@ -1,0 +1,4 @@
+$CC $CFLAGS -c testutl.c 
+$FC $LDFLAGS -o $OS_BIN/testutl testutl.o \
+		$OS_LIB/textlib.a $CGEMLIB $GEMLIB -lm
+$RM *.o

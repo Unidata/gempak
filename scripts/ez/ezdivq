@@ -1,0 +1,84 @@
+#!/bin/csh
+#
+# EZDIVQ
+#
+# This script displays the divergence of layer averaged Q-vectors along with
+# the lapse rate through the same layer.
+#
+# The user must supply the script with the bottom and top pressure levels of
+# the layer.  Note that the order is important.
+#
+#	Syntax:  ezdivq lower_level upper_level
+#
+#	Example: ezdivq 500 300
+#
+##
+# Log:
+# B. Colman/SEA		 1994
+# R. Miller/COMET	 1994
+# S. Jacobs/NMC		10/94	Clean up
+#
+
+if ( ${2}x == x ) then
+   echo " GEMPAK shell script to plot div Q and lapse rate over a layer."
+   echo " The user must supply the top and bottom levels,"
+   echo " either on the command line or by prompting."
+
+   echo " "
+   echo " Enter the bottom pressure level (e.g. 500)."
+   set lvlb=$<
+
+   echo " "
+   echo " Enter the top pressure level (e.g. 300)."
+   set lvlt=$<
+
+else
+   set lvlb = $1
+   set lvlt = $2
+endif
+
+if ( $lvlt > $lvlb ) then
+   echo " "
+   echo " ERROR.  Top pressure level is lower than bottom level."
+   echo " "
+   exit
+endif
+
+# Source the file called settings.  This file contains commands to set
+# environment variables for the model name and device driver.
+
+source settings
+
+gdcntr << EOF
+GDATTIM = all
+GLEVEL  = ${lvlt}:${lvlb}
+GVCORD  = pres
+GFUNC   = div(qvcl(hght,geo))
+CINT    = 12/-180/180
+LINE    = 3/-12/2
+TITLE   = 1=white/-2/~  $model  @ Divergence of Q \$ 
+DEVICE  = $dev
+CLEAR   = yes
+PANEL   = 0
+SCALE   = 15
+CONTUR  = 3
+SKIP    = 1
+FINT    = 1000/-1000/0
+FLINE   = 31=.3:.3:.3;0
+CTYPE   = f/c
+HILO    = 
+r
+
+CLEAR   = no
+GFUNC   = stab(tmpc)
+CINT    = 1
+SCALE   = 0
+LINE    = 2/-2/2
+TITLE   = 1=white/-1/ and Lapse Rate
+CTYPE   = c
+r
+
+;2
+;l
+ex
+EOF

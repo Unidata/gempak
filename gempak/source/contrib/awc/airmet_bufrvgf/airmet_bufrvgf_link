@@ -1,0 +1,16 @@
+$CC $CFLAGS $BUFRFLAGS \
+	-DDEBUG_PRINT=1 \
+	-DFNOC_KLUDGE=0 \
+	-DIGNORE_NESTING=1 \
+	-DMEMORY_DEBUG=0 \
+	-DTRACE_PRINT=1 \
+	-I$OS_INC/libxml2 \
+	-c *.c
+
+$FC $LDFLAGS -o $OS_BIN/airmet_bufrvgf *.o \
+	$CGEMLIB $GEMLIB $CGEMLIB -lGPC \
+	$OS_LIB/ginitp_alt.o $OS_LIB/gendp_alt.o \
+	$GPLT $DEVICE $OS_LIB/gn.a $GEMLIB $CGEMLIB $GEMLIB \
+	-lm -lmelBUFR -lxslt -lxml2 -lpthread -lz
+
+$RM *.o

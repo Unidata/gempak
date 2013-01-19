@@ -1,0 +1,85 @@
+#!/bin/csh
+#
+# EZAREA
+#
+# This script allows the user to graphically define the area to view for all
+# subsequent EZ scripts.  By default, the user is shown a map of North America
+# in medium resolution. The user may also specify the projection, graphics
+# area and map resolution by answering the script's prompts.
+#
+# When the mouse cursor becomes a + sign while on the graphics window, press
+# and hold down the left button on one corner of the desired area.  Then
+# "stretch" the rubber rectangle to the desired size and release the left
+# button to select the area.  This area will now be used for ALL EZ scripts
+# until EZAREA is run again.
+#
+# EZAREA does not take any command line arguments.
+#
+# 	Syntax:  ezarea
+#
+##
+# Log:
+# B. Colman/SEA		 1994
+# R. Miller/COMET	 1994
+# S. Jacobs/NMC		10/94	Removed gpend; Added EZ_AREA window; Added prompt
+#
+
+   echo " "
+   echo "******************************************************************"
+   echo " GEMPAK shell script to allow the user to graphically select the "
+   echo " area of interest.  This will define the area to be used by all"
+   echo " other ez-scripts programs."
+   echo " The user runs this script and selects an area on the map using "
+   echo " mouse cursor.  Wait for the blank map to appear.  When the mouse"
+   echo " cursor appears as a + on the map, press the left button in one of"
+   echo " the desired corners and then 'stretch' the rubber rectangle to "
+   echo " the desired size.  Release the left mouse button to select the area."
+   echo "******************************************************************"
+   echo " "
+
+   echo " "
+   echo " Enter the value for PROJ (return for default)"
+   set proj=$<
+
+   if ( ${proj}x == x ) then
+	set proj = "lcc/30.0;-100.0;50.0"
+	set garea = "105"
+   else
+	echo " "
+	echo " Enter the value for GAREA"
+	set garea=$<
+   endif
+
+   echo " "
+   echo " Enter the value for map resolution (return for default)"
+   echo "   Valid options:"
+   echo "	    h  --  High   (looks better)"
+   echo "	    m  --  Medium (plots faster, default)"
+   set mapinp=$<
+
+   if ( ${mapinp} == h || ${mapinp} == H ) then
+	set mapfil = "hipowo.cia"
+   else
+	set mapfil = "mepowo.gsf"
+   endif
+
+gpmap << EOF
+\$MAPFIL = $mapfil
+PROJ     = $proj
+MAP      = 26/1/1
+DEVICE   = xw|EZ_AREA
+CLEAR    = yes
+TITLE    = 1=white/-2/CHOOSE A GRAPHICS AREA
+PANEL    = 0
+LATLON   = 
+GAREA    = $garea
+r
+
+cursor garea
+ex
+EOF
+
+echo " "
+echo " "
+echo " Area has been selected for all future ezscripts."
+echo " "

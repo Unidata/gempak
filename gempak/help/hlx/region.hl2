@@ -1,0 +1,23 @@
+     REGION
+
+     REGION specifies an areal location.
+
+     In GPBOX, REGION may be VIEW, PLOT or DEVICE where:
+
+	VIEW corresponds to the view region (includes margins);
+
+	PLOT corresponds to the plot region (excludes margins);
+
+	DEVICE corresponds to the entire device space.
+ 
+     In OABOX, the region must be GRID, DATA, or EXTEND where:
+
+	GRID corresponds to the area over which the objective
+	analysis is performed;
+
+	DATA corresponds to the area from which data will be
+	extracted for the objective analysis;
+
+	EXTEND corresponds to the extended grid area over which 
+	the first pass of the objective analysis is performed.
+

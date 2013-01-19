@@ -1,0 +1,23 @@
+GLEVEL  0        !700 
+GVCORD  none     !pres   
+PANEL   0                                                                       
+SKIP    1        ! 0  
+SCALE   0!3                                                                     
+GFUNC   p12i     !sm5s(omeg)
+GDPFUN  p12i     !sm5s(omeg)
+CTYPE   c/f      !c
+TYPE    c/f      !c
+CONTUR  2                                                                       
+CINT    0.25/0.25!-15;-13;-11;-9;-7;-5;-3;-1;1;3;5;7;9;11                       
+LINE    1//2/0   !1/-12/2
+FINT    0.1;0.25;0.50
+FLINE   0;18;14;12
+HILO                                                                            
+HLSYM                                                                           
+CLRBAR  1////0.5                                                                
+GVECT                                                                           
+WIND    bk0                                                                     
+REFVEC                                                                          
+TITLE   1/-1/FCST 12HR PCPN/VERT MOTION VALID ~!0                              
+TEXT    1//4/sw
+STNPLT                                                                          

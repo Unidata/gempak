@@ -1,0 +1,8 @@
+! LV error messages
+!
+ +1	! More than NEXP values found.
+ -1	! Level cannot be decoded.
+ -2	! The vertical coordinate for !AS must be PRES.
+ -3	! Invalid vertical coordinate.
+ -4	! Invalid input for LEVEL.
+ -5	! Range with increment cannot include SFC (0).

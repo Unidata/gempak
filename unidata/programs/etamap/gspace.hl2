@@ -1,0 +1,21 @@
+     GSPACE
+
+     GSPACE sets the grid spacing of the ETA model domain where:  
+
+		GSPACE = DLHD
+
+     from the eta_run.csh script. 
+                                                                         
+     GSPACE is  the grid spacing of the computational model domain in   
+     degrees longitude respectively.  A VERY rough conversion to km over 
+     the central US would be: 
+                                                                         
+             km/150 = delta degrees                                      
+                                                                         
+     Thus from above:                                                    
+                                                                         
+             10km grid spacing: GSPACE = 0.067                       
+             15km grid spacing: GSPACE = 0.098                        
+             32km grid spacing: GSPACE = 0.213                       
+
+      GSPACE is the same as the values for DLMD and DLHD in eta_run.csh.

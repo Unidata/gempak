@@ -1,0 +1,5 @@
+$CC $CFLAGS -c testwbc.c 
+$FC $LDFLAGS -o $OS_BIN/testwbc testwbc.o \
+		$OS_LIB/textlib.a $CGEMLIB \
+		$GEMLIB -lm 
+$RM *.o

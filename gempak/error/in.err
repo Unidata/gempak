@@ -1,0 +1,24 @@
+!	IN library errors.
+!
++3	! WARNING, invalid time found
++2	! WARNING, no output has been requested.
++1      ! START or STOP not specified for AXIS.
+-1	! Error opening OUTPUT files.
+-2      ! !AS for AXIS is insufficient or invalid.
+-3      ! Input is invalid for CINT or FINT.
+-4      ! Grid data for contouring is all missing or constant.
+-5      ! Mandatory levels requested, but coordinate is not p.
+-6      ! Axis limits are missing or indeterminant.
+-7      ! Range for time axis is zero.
+-8      ! Time axis increment results in too many labels.
+-9      ! Parameter packing information is invalid.
+-10     ! If one has, all parms must have packing information.
+-11	! Parameter !AS is invalid.
+-12     ! Input for !AS is invalid.
+-13	! Invalid number of intervals or colors.
+-14	! Range without increment is invalid.
+-15	! Badly formed color-coded string or string too long.
+-16	! IJSKIP input is not valid.
+-17	! Inputs are invalid.
+-18	! No valid outputs for !AS.
+-19     ! Parsing problem with !AS.

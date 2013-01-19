@@ -1,0 +1,28 @@
+AREA    dset                                                                                                                            
+GAREA   uslcc                                                                                                                           
+SATFIL                                                                                                                                  
+RADFIL                                                                                                                                  
+SFPARM  tmpc                                                                                                                            
+DATTIM  1200                                                                                                                            
+SFFILE  metar                                                                                                                           
+COLORS  1                                                                                                                               
+MAP     1                                                                                                                               
+LATLON                                                                                                                                  
+TITLE   1                                                                                                                               
+CLEAR   YES                                                                                                                             
+PANEL   0                                                                                                                               
+DEVICE  XW                                                                                                                              
+PROJ    def                                                                                                                             
+FILTER  YES                                                                                                                             
+TEXT    1                                                                                                                               
+LUTFIL                                                                                                                                  
+STNPLT                                                                                                                                  
+CLRBAR                                                                                                                                  
+CNTRPRM                                                                                                                                 
+GAMMA   0.3                                                                                                                             
+WEIGHT                                                                                                                                  
+LINE    3                                                                                                                               
+CONTUR  0                                                                                                                               
+NPASS   2                                                                                                                               
+CINT    0                                                                                                                               
+IMCBAR                                                                                                                                  

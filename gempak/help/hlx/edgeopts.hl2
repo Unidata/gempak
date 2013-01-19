@@ -1,0 +1,23 @@
+     EDGEOPTS
+ 
+     EDGEOPTS is an option which allows users to specify boundary
+     conditions for the analysis.
+
+     The format of EDGEOPTS is:
+
+	EDGEOPTS = [false|true/value1;distance1/value2;distance2/spec]
+
+     where
+	--(false|true) is the flag to access outside domain contours.
+	  default is false.
+	--valueN is the numeric contour value to assign to the boundary condition.
+        --distanceN is the distance in rows/columns away from the closest "spec".
+        --spec is either "c" for contour, or "e" for a combination of contour and
+	  grid edge, whichever is greater.
+
+     Note: if contours extend beyond the grid edge, then (false|true) is set 
+           to true by rule. 
+
+ 	   If an open line is entountered, the boundary condition will not
+	   be specified.
+ 

@@ -1,0 +1,65 @@
+#!/bin/sh
+if  [ $# != 0 ]
+then
+  version=$1
+  path=$NAWIPS/extlibs/PNG/$version
+  if  [ -d $path ]
+  then
+    echo "----->  BUILDING PNG LIBRARY $version"
+    cd $path 
+
+#=========================================================
+
+#  Initialize "influential environment variables"
+
+    export    FC=""		# Fortran compiler command
+    export    F77=""		# Fortran 77 compiler command
+    export    F90=""		# Fortran 90 compiler command
+    export    CPP=""		# C prepocessor
+    export    CXX=""		# C++ compiler command
+    export    CXXCPP=""		# C++ preprocessor
+    if [ $OS = "HPUX" ]
+    then
+      export  CFLAGS="+DA1.1"	# C compiler flags
+    else
+      export  CFLAGS=""
+    fi
+    export    FCFLAGS=""	# Fortran compiler flags
+    export    FFLAGS=""		# Fortran 77/90 compiler flags
+    export    LDFLAGS="-L$OS_LIB"	# linker flags
+    export    F90FLAGS=""	# Fortran 90 compiler flags
+    export    CXXFLAGS=""	# C++ compiler flags
+    export    CPPFLAGS="-DNDEBUG"	# C/C++ preprocessor flags
+    export    PKG_CONFIG="$OS_BIN/pkg-config"
+
+#=====================================================================
+# Clean up after any previous configure/make
+    if  [ -f Makefile ]
+    then
+      make -s distclean
+    fi
+
+# Run the configure script for this OS type
+    ./configure --prefix=$OS_ROOT --disable-shared
+
+# Compile, check, and install the package
+    echo "----->  COMPILING PNG LIBRARY $version"
+    make -s
+#    make -s test 
+    echo "----->  INSTALLING PNG LIBRARY as \"$OS_LIB/libpng.a\""
+    make -s install
+
+# Clean up after this configure/make
+    make -s distclean
+    rm -f $OS_LIB/PNG_*
+    touch $OS_LIB/PNG_$version
+
+##########################################################################
+    echo "----->  CREATION OF PNG LIBRARY $version IS COMPLETE."
+    echo "        ==========================================="
+  else
+    echo "Directory \"$path\" does not exist!"
+  fi 
+else
+  echo "Please include a valid PNG library version; e.g., v1.2.8"
+fi

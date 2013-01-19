@@ -1,0 +1,6 @@
+!
+! CMSGRIB2.TBL -- GRIB 1 parameter conversion table version 2
+!
+!ID# NAME                             UNITS                GNAM         SCALE   MISSING  HZREMAP DIRECTION
+!
+255 Missing                           -                    MISS             0  -9999.00        0         0

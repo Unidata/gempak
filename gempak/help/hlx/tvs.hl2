@@ -1,0 +1,13 @@
+     TVS
+ 
+     TVS specifies the plot symbol and filter attributes for tornado 
+     vortex signatures:
+
+          color / marker / size / width / hw ; filter
+
+     A color value of 0 is used to turn off TVS plotting
+
+     FILTER is a logical variable or real number which controls the
+     filtering of data in order to eliminate plotting of overlapping
+     data.
+

@@ -1,0 +1,19 @@
+!	This is the error file for DCWOU.
+!
++2	! Error in obtaining start time--use dattim= !AS
++1	! Watch outline update bulletin header error !AS
+-1	! Error finding county information string or bad format so not attempted
+-2	! Valid message end time not found
+-3	! Error finding watch type 
+-4	! Error finding 'NWS STORM PREDICTION CENTER' header
+-5	! Error finding Local time string 
+-6	! Error within local time string
+-7	! Ending time earlier than starting time
+-8	! Error finding watch number
+-9	! Error in obtaining start and end time
+-10	! Error in obtaining WFOs from the ATTN line; length WFO > 3
+-11	! Error in obtaining time zone
+-12	! Length of decoded head line greater than 120 for watch !AS
+-13	! Error in obtaining WFOs; length of ATTN line > 160
+-14	! Error in obtaining WFOs; length of output WFO string > 120
+-15	! Error no ATTN line found or bad format so search not attempted 

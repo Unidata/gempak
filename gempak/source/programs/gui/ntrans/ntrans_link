@@ -1,0 +1,8 @@
+$CC $CFLAGS -c ntrans.c
+$FC $LDFLAGS -o $OS_BIN/ntrans ntrans.o $OS_LIB/ntrans.a \
+		$OS_LIB/ginitp_alt.o $OS_LIB/gendp_alt.o \
+		-lnxm $GEMLIB $GPLT $DEVICE \
+		$OS_LIB/xwp.a $OS_LIB/xw.a \
+		$OS_LIB/ps.a $OS_LIB/gn.a \
+		$GEMLIB $CGEMLIB $GEMLIB $GPLT $XLIBS
+$RM *.o

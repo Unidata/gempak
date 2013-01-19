@@ -1,0 +1,55 @@
+     SKIP
+
+     SKIP is a variable which determines the contour points or plot
+     points to skip.  Input is entered as:
+
+	skip_contour / skip_plot_x ; skip_plot_y
+
+     The defaults for skip_contour and skip_plot are 0.
+
+     Skip_contour thins the input grid before computing the 
+     contours to be drawn.
+     
+     Skip_plot_x and _y specify the points at which data is to be
+     displayed.  If skip_plot_x is positive and skip_plot_y is not 
+     specified, skip_plot_y is set to skip_plot_x. 
+
+     If skip_plot_x is negative, the x plot locations on alternate rows
+     are indented by half the skip_plot_x value.  In this case, the 
+     absolute value of skip_plot_x must be odd.  If not, the absolute 
+     value minus 1 is used.  If no value for skip_plot_y is specified, 
+     half the skip_plot_x value is used.
+
+     Examples:
+
+	SKIP	SKIP_CNTR	SKIP_PLOT_X	SKIP_PLOT_Y	STAGGER
+
+	' '		0		 0		0	no
+	2		2		 0		0	no
+	-1		0		 0		0	no
+	2;3		2		 0		0	no
+
+	/3		0		 3		3	no
+	/2;3		0		 2		3	no
+	/;1		0		 0		1	no
+
+	/-1		0		 1		0	yes
+	/-3		0		 3		1	yes
+	/-1;1		0		 1		1	yes
+
+
+     Winds may be thinned by latitude by setting skip_plot_y to
+     a negative value.  This feature is most useful when plotting 
+     winds on a cylindrical grid on a projection with converging meridians.
+     In this case, ABS(skip_plot_y) determines how often
+     rows are plotted.  The variable skip_plot_x is not used.
+
+     Examples:
+
+	SKIP	SKIP_CNTR	SKIP_PLOT_X	SKIP_PLOT_Y	LAT THIN
+	/1;-1		0		 1		1	yes
+	-- every row is plotted with winds thinned along each row.
+
+	/1;-2		0		 1		2	yes
+	-- every other row is plotted with winds thinned.
+

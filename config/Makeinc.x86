@@ -1,0 +1,31 @@
+OPSYS = X86
+
+
+X11LIBDIR = -L/usr/openwin/lib
+MOTIFLIBS = -L/usr/dt/lib -lXm
+MOTIFINC  = -I/usr/dt/include
+XWINCDIR  = -I/usr/openwin/include
+
+#COPT = -DUNDERSCORE -DNO_NANOSLEEP -D$(OPSYS) $(GEMINC) $(MOTIFINC) $(XWINCDIR) -xO2 # -g # -O
+COPT = -DUNDERSCORE -DNO_NANOSLEEP -D$(OPSYS) $(GEMINC) $(MOTIFINC) $(XWINCDIR) #-xO2 # -g # -O
+#FOPT =  $(GEMINC) -xO2 # -g (NB: WS5.2 fails using -O)
+FOPT =  $(GEMINC) # -g (NB: WS5.2 fails using -O)
+
+NCOPT = "CC=$(CC)" "FC= " "CXX= " "F90= "
+
+JASPEROPT = 'CC=$(CC)' 'CFLAGS=-O' '--disable-libjpeg'
+XML2OPT = 'CC=$(CC)' '--with-iconv'
+XMLDEP = -lpthread -lsocket -lnsl
+
+#CPLUS_COMMENT = -xCC
+
+CFLAGS = $(COPT)
+CFLAGS_DB = $(COPT)
+FFLAGS = $(FOPT)
+LDM_FLAGS = -D_DEV_CONSLOG
+
+INSTALL = /usr/ucb/install -s
+AUXINSTALL = /usr/ucb/install
+
+SYSLIBS = -lm -lsocket -lnsl -lgen
+CSYSLIB = -lm -lsocket -lnsl -lgen

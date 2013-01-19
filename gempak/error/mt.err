@@ -1,0 +1,37 @@
+!	MT error messages
+!
+  34	! Error in city temperature field:  !AS
+  33	! Error in peak wind field:  !AS
+  32	! Undecodable weather field:  !AS
+  31	! Error in 24-hour max/min field:  !AS
+  30	! Error in hourly T/TD field:  !AS
+  29	! Error in SNINCR field:  !AS
+  28	! Error in water equiv. of snow field:  !AS
+  27	! Error in SLP field:  !AS
+  26	! Error in wind shift field:  !AS
+  25	! Error in duration of sunshine field:  !AS
+  24	! Error in 1-hour precip field:  !AS
+  23	! Error in 24-hour precip field:  !AS
+  22	! Error in pressure tendency field:  !AS
+  21	! Error in 6-hour max/min field:  !AS
+  20	! Error in snow depth field:  !AS
+  19	! Error in 3/6-hour precip field:  !AS
+  17	! Unable to decode date string:  !AS
+  16	! Undecodable field in report: !AS
+  15	! Coding error in report: !AS
+  14	! Error in cloud type group: !AS
+  13	! Error in altimeter setting group:  !AS
+  12	! Error in temp/dewpoint field:  !AS
+  11	! Error in vertical visibility field:  !AS
+  10	! Error in runway visual range group:  !AS
+   9	! Error in visibility group:  !AS
+   8	! Error in variable wind group:  !AS
+   7	! Error in wind gust speed:  !AS
+   6	! Variable wind speed greater than METAR standard:  !AS
+   5	! Coding error in wind speed:  !AS
+   4	! Coding error in wind direction:  !AS
+   3	! Suspect wind field:  will process as KTS:  !AS
+   2	! Coding error in wind group:  !AS
+   1	! Coding error in AUTO/COR group:  !AS
+  -1	! Report's length is zero.
+  -2	! No decodable fields in main body of report.

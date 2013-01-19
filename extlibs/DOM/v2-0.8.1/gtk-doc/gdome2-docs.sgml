@@ -1,0 +1,83 @@
+<!doctype book PUBLIC "-//Davenport//DTD DocBook V3.0//EN" [
+<!entity gdome2-Basic-Types-and-Enumerations SYSTEM "sgml/types.sgml">
+<!entity gdome2-GdomeDOMImplementation SYSTEM "sgml/domimpl.sgml">
+<!entity gdome2-GdomeDocumentFragment SYSTEM "sgml/documentf.sgml">
+<!entity gdome2-GdomeDocument SYSTEM "sgml/document.sgml">
+<!entity gdome2-GdomeNode SYSTEM "sgml/node.sgml">
+<!entity gdome2-GdomeNodeList SYSTEM "sgml/nodel.sgml">
+<!entity gdome2-GdomeNamedNodeMap SYSTEM "sgml/nnodem.sgml">
+<!entity gdome2-GdomeCharacterData SYSTEM "sgml/cdata.sgml">
+<!entity gdome2-GdomeAttr SYSTEM "sgml/attribute.sgml">
+<!entity gdome2-GdomeElement SYSTEM "sgml/element.sgml">
+<!entity gdome2-GdomeText SYSTEM "sgml/text.sgml">
+<!entity gdome2-GdomeComment SYSTEM "sgml/comment.sgml">
+<!entity gdome2-GdomeCDATASection SYSTEM "sgml/cdatas.sgml">
+<!entity gdome2-GdomeDocumentType SYSTEM "sgml/documentt.sgml">
+<!entity gdome2-GdomeNotation SYSTEM "sgml/notation.sgml">
+<!entity gdome2-GdomeEntity SYSTEM "sgml/entity.sgml">
+<!entity gdome2-GdomeEntityReference SYSTEM "sgml/entityref.sgml">
+<!entity gdome2-GdomeProcessingInstruction SYSTEM "sgml/pi.sgml">
+<!entity gdome2-Events-Basic-Types-and-Enumerations SYSTEM "sgml/etypes.sgml">
+<!entity gdome2-GdomeEventListener SYSTEM "sgml/eventl.sgml">
+<!entity gdome2-GdomeEvent SYSTEM "sgml/event.sgml">
+<!entity gdome2-GdomeMutationEvent SYSTEM "sgml/mevent.sgml">
+<!entity gdome2-XPath-Basic-Types-and-Enumerations SYSTEM "sgml/xtypes.sgml">
+<!entity gdome2-GdomeXPathEvaluator SYSTEM "sgml/xpeval.sgml">
+<!entity gdome2-GdomeXPathNamespace SYSTEM "sgml/xpns.sgml">
+<!entity gdome2-GdomeXPathNSResolver SYSTEM "sgml/xpnsresolv.sgml">
+<!entity gdome2-GdomeXPathResult SYSTEM "sgml/xpresult.sgml">
+<!entity gdome2-Module-Private-List SYSTEM "sgml/privatelist.sgml">
+<!entity gdome2-Module-Tree-Garbage-Collector SYSTEM "sgml/treegc.sgml">
+]>
+
+<book>
+  <bookinfo>
+    <title>Gdome2 Reference Manual</title>
+  </bookinfo>
+
+  <chapter id="gdome2-core">
+  <title>Core & XML modules</title>
+    &gdome2-Basic-Types-and-Enumerations;
+    &gdome2-GdomeDOMImplementation;
+    &gdome2-GdomeDocumentFragment;
+    &gdome2-GdomeDocument;
+    &gdome2-GdomeNode;
+    &gdome2-GdomeNodeList;
+    &gdome2-GdomeNamedNodeMap;
+    &gdome2-GdomeCharacterData;
+    &gdome2-GdomeAttr;
+    &gdome2-GdomeElement;
+    &gdome2-GdomeText;
+    &gdome2-GdomeComment;
+    &gdome2-GdomeCDATASection;
+    &gdome2-GdomeDocumentType;
+    &gdome2-GdomeNotation;
+    &gdome2-GdomeEntity;
+    &gdome2-GdomeEntityReference;
+    &gdome2-GdomeProcessingInstruction;
+  </chapter>
+
+  <chapter id="gdome2-events">
+  <title>Events modules</title>
+    &gdome2-Events-Basic-Types-and-Enumerations;
+    &gdome2-GdomeEventListener;
+    &gdome2-GdomeEvent;
+    &gdome2-GdomeMutationEvent;
+  </chapter>
+  
+  <chapter id="gdome2-xpath">
+  <title>XPath modules</title>
+    &gdome2-XPath-Basic-Types-and-Enumerations;
+    &gdome2-GdomeXPathEvaluator;
+    &gdome2-GdomeXPathNamespace;
+    &gdome2-GdomeXPathNSResolver;
+    &gdome2-GdomeXPathResult;
+  </chapter>
+  
+  <chapter id="gdome2-memory">
+  <title>Memory Management System</title>
+  &gdome2-Module-Private-List;
+  &gdome2-Module-Tree-Garbage-Collector;
+  </chapter>
+</book>
+  

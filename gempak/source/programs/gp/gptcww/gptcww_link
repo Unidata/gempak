@@ -1,0 +1,5 @@
+$FC $FFLAGS $LDFLAGS -o $OS_BIN/gptcww gptcww.f \
+	$OS_LIB/gptcww.a $GEMLIB \
+	$CGEMLIB $APPL $SYSLIB $GEMLIB $CGEMLIB\
+	-lm -lnetcdf -lz
+$RM *.o

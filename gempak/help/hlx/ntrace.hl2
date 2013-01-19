@@ -1,0 +1,9 @@
+     NTRACE
+
+     NTRACE is the number of traces to be drawn in SFGRAM.
+
+     If NTRACE is less than 5, the user input for TRACEx where x is
+     greater than NTRACE will be ignored.
+
+     The default value for NTRACE is 5.
+

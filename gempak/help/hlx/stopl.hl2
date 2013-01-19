@@ -1,0 +1,14 @@
+     STOPL 
+
+     STOPL is the level in the input data file at which to end the
+     search for the output vertical level in gdpvsf.  STOPL must be
+     a specific grid level in the input data file.  The search may 
+     proceed upward or downward, depending on the relative locations of
+     STARTL and STOPL.
+
+     If the desired level in the new vertical coordinate is not 
+     encountered in a particular grid column between STARTL and STOPL,
+     the value of all interpolated fields in the output file will be 
+     set to missing at that grid point.
+
+

@@ -1,0 +1,19 @@
+GPOINT  Grid point                                                              
+GDATTIM Grid date/time                                                          
+GVCORD  Grid vertical coordinate                                                
+GFUNC   Scalar grid                                                             
+GVECT   Vector grid                                                             
+GDFILE  Grid file                                                               
+PTYPE   Plot type/h:w ratio/margins                                             
+TAXIS   Time1-time2-tinc;lbl;gln;tck                                            
+YAXIS   Ystrt/ystop/yinc/lbl;gln;tck                                            
+BORDER  Background color/type/width                                             
+LINE    Color/type/width/label/smth/fltr/scflg                                  
+CINT    Contour interval/min/max                                                
+WIND    Wind symbol/siz/wdth/typ/hdsz                                           
+TITLE   Title color/line/title                                                  
+CLEAR   Clear screen flag                                                       
+SCALE   Scalar scale / vector scale                                             
+PANEL   Panel loc/color/dash/width/regn                                         
+DEVICE  Device|name|x size;y size|color type                                    
+TEXT    Size/fnt/wdth/brdr/N-rot/just/hw flg                                    

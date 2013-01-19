@@ -1,0 +1,36 @@
+!
+! Restore File : 700mb_rh
+!
+! Log:
+! M.James/Unidata	 10/09	Initial creation
+!
+GLEVEL  700
+GVCORD  pres
+PANEL   0                                                                       
+SKIP    0
+SCALE   0              !0           
+GDPFUN  relh     !relh     
+TYPE    c              !c/f            
+CONTUR  2                                     
+CINT    10;30 !50;70;90 
+LINE    8/1/2/0         !23//2/0        
+FINT    70;90
+FLINE   0;23;22
+HILO                                                                            
+HLSYM                                                                           
+CLRBAR  1                                                                       
+WIND    18/1/1
+REFVEC                                                                          
+TITLE   5/0/~ @ REL HUMIDITY
+TEXT    1/21//hw                                                                
+CLEAR   yes                                                                     
+STNPLT                                                                          
+SATFIL                                                                          
+RADFIL                                                                          
+STREAM                                                                          
+POSN    4                                                                       
+COLORS  2                                                                       
+MARKER  2                                                                       
+GRDLBL  5                                                                       
+LUTFIL  none
+FILTER  yes

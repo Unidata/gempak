@@ -1,0 +1,21 @@
+     SNBUFR
+
+     SNBUFR is the name of the BUFR model sounding file to be used as input
+     to create GEMPAK sounding and surface data files using program NAMSND.
+
+     The first message of the BUFR file must be a table of information
+     about the file contents.
+
+     If the BUFR sounding file name is followed by |sss=#####, where sss
+     is a 3-character station ID and ##### is the corresponding station
+     number, then an ASCII file named prof.sss is generated.  This
+     file will contain only the output for station #####.  For example,
+ 
+		SNBUFR = eta.T00Z.class1.bufr|pit=72520
+
+     creates an ASCII file prof.pit containing sounding data for station
+     72520.
+ 
+     The number of stations and times which may be written to the output 
+     files is determined by TIMSTN.
+

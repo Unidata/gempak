@@ -1,0 +1,37 @@
+!
+! Restore File : precip_12hr_avg
+!
+! Log:
+! M. Li/SAIC	 	2/08	Initial creation
+!
+GDATTIM f12-last-06
+GLEVEL  0                                                                       
+GVCORD  none                                                                    
+PANEL   0                                                                       
+SKIP    0                                                                       
+SCALE   0                                                                       
+GDPFUN  ENS_SAVG(p12i)
+TYPE    f
+CONTUR  1                                                                       
+CINT    
+LINE    
+FINT    .01;.1;.25;.5;.75;1;1.25;1.5;1.75;2;2.5;3;4;5;6;7;8;9
+FLINE   0;21-30;14-20;5
+HILO    31;0/x#2/0.1-99//100;0/y
+HLSYM   1.5
+CLRBAR  1                                                                       
+WIND                                                                            
+REFVEC                                                                          
+TITLE   5/-1/~ 12-HR AVERAGE PRECIPITATION ! 0
+TEXT    1/21//hw                                                                
+CLEAR   yes                                                                     
+STNPLT                                                                          
+SATFIL                                                                          
+RADFIL                                                                          
+STREAM                                                                          
+POSN    4                                                                       
+COLORS  2                                                                       
+MARKER  2                                                                       
+GRDLBL  5                                                                       
+LUTFIL  none
+FILTER  yes

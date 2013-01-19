@@ -1,0 +1,7804 @@
+<HTML
+><HEAD
+><TITLE
+>GdomeElement</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
+"><LINK
+REL="HOME"
+TITLE="Gdome2 Reference Manual"
+HREF="book1.html"><LINK
+REL="UP"
+TITLE="Core & XML modules"
+HREF="gdome2-core.html"><LINK
+REL="PREVIOUS"
+TITLE="GdomeAttr"
+HREF="gdome2-gdomeattr.html"><LINK
+REL="NEXT"
+TITLE="GdomeText"
+HREF="gdome2-gdometext.html"></HEAD
+><BODY
+CLASS="REFENTRY"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+BGCOLOR="#000000"
+CELLPADDING="1"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="4"
+ALIGN="center"
+><FONT
+COLOR="#FFFFFF"
+SIZE="5"
+>Gdome2 Reference Manual</FONT
+></TH
+></TR
+><TR
+><TD
+WIDTH="25%"
+BGCOLOR="#C00000"
+ALIGN="left"
+><A
+HREF="gdome2-gdomeattr.html"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+>&#60;&#60;&#60; Previous Page</B
+></FONT
+></A
+></TD
+><TD
+WIDTH="25%"
+BGCOLOR="#0000C0"
+ALIGN="center"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+><A
+HREF="book1.html"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+>Home</B
+></FONT
+></A
+></B
+></FONT
+></TD
+><TD
+WIDTH="25%"
+BGCOLOR="#00C000"
+ALIGN="center"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+><A
+HREF="gdome2-core.html"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+>Up</B
+></FONT
+></A
+></B
+></FONT
+></TD
+><TD
+WIDTH="25%"
+BGCOLOR="#C00000"
+ALIGN="right"
+><A
+HREF="gdome2-gdometext.html"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+>Next Page &#62;&#62;&#62;</B
+></FONT
+></A
+></TD
+></TR
+></TABLE
+></DIV
+><H1
+><A
+NAME="GDOME2-GDOMEELEMENT">GdomeElement</H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN9359"
+></A
+><H2
+>Name</H2
+>GdomeElement&nbsp;--&nbsp;Interface Element implementation.</DIV
+><DIV
+CLASS="REFSYNOPSISDIV"
+><A
+NAME="AEN9362"><H2
+>Synopsis</H2
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="SYNOPSIS"
+>&#13;
+
+struct      <A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+>;
+<A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+>* <A
+HREF="gdome2-gdomeelement.html#GDOME-EL-TAGNAME"
+>gdome_el_tagName</A
+>            (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);
+<A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+>* <A
+HREF="gdome2-gdomeelement.html#GDOME-EL-GETATTRIBUTE"
+>gdome_el_getAttribute</A
+>       (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *name,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);
+void        <A
+HREF="gdome2-gdomeelement.html#GDOME-EL-SETATTRIBUTE"
+>gdome_el_setAttribute</A
+>           (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *name,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *value,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);
+void        <A
+HREF="gdome2-gdomeelement.html#GDOME-EL-REMOVEATTRIBUTE"
+>gdome_el_removeAttribute</A
+>        (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *name,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);
+<A
+HREF="gdome2-gdomeattr.html#GDOMEATTR"
+>GdomeAttr</A
+>*  <A
+HREF="gdome2-gdomeelement.html#GDOME-EL-GETATTRIBUTENODE"
+>gdome_el_getAttributeNode</A
+>       (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *name,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);
+<A
+HREF="gdome2-gdomeattr.html#GDOMEATTR"
+>GdomeAttr</A
+>*  <A
+HREF="gdome2-gdomeelement.html#GDOME-EL-SETATTRIBUTENODE"
+>gdome_el_setAttributeNode</A
+>       (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-gdomeattr.html#GDOMEATTR"
+>GdomeAttr</A
+> *newAttr,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);
+<A
+HREF="gdome2-gdomeattr.html#GDOMEATTR"
+>GdomeAttr</A
+>*  <A
+HREF="gdome2-gdomeelement.html#GDOME-EL-REMOVEATTRIBUTENODE"
+>gdome_el_removeAttributeNode</A
+>    (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-gdomeattr.html#GDOMEATTR"
+>GdomeAttr</A
+> *oldAttr,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);
+<A
+HREF="gdome2-gdomenodelist.html#GDOMENODELIST"
+>GdomeNodeList</A
+>* <A
+HREF="gdome2-gdomeelement.html#GDOME-EL-GETELEMENTSBYTAGNAME"
+>gdome_el_getElementsByTagName</A
+>
+                                            (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *name,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);
+<A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+>* <A
+HREF="gdome2-gdomeelement.html#GDOME-EL-GETATTRIBUTENS"
+>gdome_el_getAttributeNS</A
+>     (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *namespaceURI,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *localName,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);
+void        <A
+HREF="gdome2-gdomeelement.html#GDOME-EL-SETATTRIBUTENS"
+>gdome_el_setAttributeNS</A
+>         (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *namespaceURI,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *qualifiedName,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *value,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);
+void        <A
+HREF="gdome2-gdomeelement.html#GDOME-EL-REMOVEATTRIBUTENS"
+>gdome_el_removeAttributeNS</A
+>      (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *namespaceURI,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *localName,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);
+<A
+HREF="gdome2-gdomeattr.html#GDOMEATTR"
+>GdomeAttr</A
+>*  <A
+HREF="gdome2-gdomeelement.html#GDOME-EL-GETATTRIBUTENODENS"
+>gdome_el_getAttributeNodeNS</A
+>     (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *namespaceURI,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *localName,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);
+<A
+HREF="gdome2-gdomeattr.html#GDOMEATTR"
+>GdomeAttr</A
+>*  <A
+HREF="gdome2-gdomeelement.html#GDOME-EL-SETATTRIBUTENODENS"
+>gdome_el_setAttributeNodeNS</A
+>     (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-gdomeattr.html#GDOMEATTR"
+>GdomeAttr</A
+> *newAttr,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);
+<A
+HREF="gdome2-gdomenodelist.html#GDOMENODELIST"
+>GdomeNodeList</A
+>* <A
+HREF="gdome2-gdomeelement.html#GDOME-EL-GETELEMENTSBYTAGNAMENS"
+>gdome_el_getElementsByTagNameNS</A
+>
+                                            (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *namespaceURI,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *localName,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);
+<A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEBOOLEAN"
+>GdomeBoolean</A
+> <A
+HREF="gdome2-gdomeelement.html#GDOME-EL-HASATTRIBUTE"
+>gdome_el_hasAttribute</A
+>          (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *name,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);
+<A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEBOOLEAN"
+>GdomeBoolean</A
+> <A
+HREF="gdome2-gdomeelement.html#GDOME-EL-HASATTRIBUTENS"
+>gdome_el_hasAttributeNS</A
+>        (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *namespaceURI,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *localName,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);
+void        <A
+HREF="gdome2-gdomeelement.html#GDOME-EL-REF"
+>gdome_el_ref</A
+>                    (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);
+void        <A
+HREF="gdome2-gdomeelement.html#GDOME-EL-UNREF"
+>gdome_el_unref</A
+>                  (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);
+<GTKDOCLINK
+HREF="GPOINTER"
+>gpointer</GTKDOCLINK
+>    <A
+HREF="gdome2-gdomeelement.html#GDOME-EL-QUERY-INTERFACE"
+>gdome_el_query_interface</A
+>        (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             const char *interface,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);
+<A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+>* <A
+HREF="gdome2-gdomeelement.html#GDOME-EL-NODENAME"
+>gdome_el_nodeName</A
+>           (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);
+<A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+>* <A
+HREF="gdome2-gdomeelement.html#GDOME-EL-NODEVALUE"
+>gdome_el_nodeValue</A
+>          (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);
+void        <A
+HREF="gdome2-gdomeelement.html#GDOME-EL-SET-NODEVALUE"
+>gdome_el_set_nodeValue</A
+>          (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *nodeValue,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);
+unsigned <GTKDOCLINK
+HREF="SHORT"
+>short</GTKDOCLINK
+> <A
+HREF="gdome2-gdomeelement.html#GDOME-EL-NODETYPE"
+>gdome_el_nodeType</A
+>            (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);
+<A
+HREF="gdome2-gdomenode.html#GDOMENODE"
+>GdomeNode</A
+>*  <A
+HREF="gdome2-gdomeelement.html#GDOME-EL-PARENTNODE"
+>gdome_el_parentNode</A
+>             (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);
+<A
+HREF="gdome2-gdomenodelist.html#GDOMENODELIST"
+>GdomeNodeList</A
+>* <A
+HREF="gdome2-gdomeelement.html#GDOME-EL-CHILDNODES"
+>gdome_el_childNodes</A
+>          (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);
+<A
+HREF="gdome2-gdomenode.html#GDOMENODE"
+>GdomeNode</A
+>*  <A
+HREF="gdome2-gdomeelement.html#GDOME-EL-FIRSTCHILD"
+>gdome_el_firstChild</A
+>             (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);
+<A
+HREF="gdome2-gdomenode.html#GDOMENODE"
+>GdomeNode</A
+>*  <A
+HREF="gdome2-gdomeelement.html#GDOME-EL-LASTCHILD"
+>gdome_el_lastChild</A
+>              (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);
+<A
+HREF="gdome2-gdomenode.html#GDOMENODE"
+>GdomeNode</A
+>*  <A
+HREF="gdome2-gdomeelement.html#GDOME-EL-PREVIOUSSIBLING"
+>gdome_el_previousSibling</A
+>        (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);
+<A
+HREF="gdome2-gdomenode.html#GDOMENODE"
+>GdomeNode</A
+>*  <A
+HREF="gdome2-gdomeelement.html#GDOME-EL-NEXTSIBLING"
+>gdome_el_nextSibling</A
+>            (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);
+<A
+HREF="gdome2-gdomenamednodemap.html#GDOMENAMEDNODEMAP"
+>GdomeNamedNodeMap</A
+>* <A
+HREF="gdome2-gdomeelement.html#GDOME-EL-ATTRIBUTES"
+>gdome_el_attributes</A
+>      (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);
+<A
+HREF="gdome2-gdomedocument.html#GDOMEDOCUMENT"
+>GdomeDocument</A
+>* <A
+HREF="gdome2-gdomeelement.html#GDOME-EL-OWNERDOCUMENT"
+>gdome_el_ownerDocument</A
+>       (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);
+<A
+HREF="gdome2-gdomenode.html#GDOMENODE"
+>GdomeNode</A
+>*  <A
+HREF="gdome2-gdomeelement.html#GDOME-EL-INSERTBEFORE"
+>gdome_el_insertBefore</A
+>           (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-gdomenode.html#GDOMENODE"
+>GdomeNode</A
+> *newChild,
+                                             <A
+HREF="gdome2-gdomenode.html#GDOMENODE"
+>GdomeNode</A
+> *refChild,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);
+<A
+HREF="gdome2-gdomenode.html#GDOMENODE"
+>GdomeNode</A
+>*  <A
+HREF="gdome2-gdomeelement.html#GDOME-EL-REPLACECHILD"
+>gdome_el_replaceChild</A
+>           (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-gdomenode.html#GDOMENODE"
+>GdomeNode</A
+> *newChild,
+                                             <A
+HREF="gdome2-gdomenode.html#GDOMENODE"
+>GdomeNode</A
+> *oldChild,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);
+<A
+HREF="gdome2-gdomenode.html#GDOMENODE"
+>GdomeNode</A
+>*  <A
+HREF="gdome2-gdomeelement.html#GDOME-EL-REMOVECHILD"
+>gdome_el_removeChild</A
+>            (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-gdomenode.html#GDOMENODE"
+>GdomeNode</A
+> *oldChild,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);
+<A
+HREF="gdome2-gdomenode.html#GDOMENODE"
+>GdomeNode</A
+>*  <A
+HREF="gdome2-gdomeelement.html#GDOME-EL-APPENDCHILD"
+>gdome_el_appendChild</A
+>            (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-gdomenode.html#GDOMENODE"
+>GdomeNode</A
+> *newChild,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);
+<A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEBOOLEAN"
+>GdomeBoolean</A
+> <A
+HREF="gdome2-gdomeelement.html#GDOME-EL-HASCHILDNODES"
+>gdome_el_hasChildNodes</A
+>         (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);
+<A
+HREF="gdome2-gdomenode.html#GDOMENODE"
+>GdomeNode</A
+>*  <A
+HREF="gdome2-gdomeelement.html#GDOME-EL-CLONENODE"
+>gdome_el_cloneNode</A
+>              (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEBOOLEAN"
+>GdomeBoolean</A
+> deep,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);
+void        <A
+HREF="gdome2-gdomeelement.html#GDOME-EL-NORMALIZE"
+>gdome_el_normalize</A
+>              (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);
+<A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEBOOLEAN"
+>GdomeBoolean</A
+> <A
+HREF="gdome2-gdomeelement.html#GDOME-EL-ISSUPPORTED"
+>gdome_el_isSupported</A
+>           (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *feature,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *version,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);
+<A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+>* <A
+HREF="gdome2-gdomeelement.html#GDOME-EL-NAMESPACEURI"
+>gdome_el_namespaceURI</A
+>       (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);
+<A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+>* <A
+HREF="gdome2-gdomeelement.html#GDOME-EL-PREFIX"
+>gdome_el_prefix</A
+>             (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);
+void        <A
+HREF="gdome2-gdomeelement.html#GDOME-EL-SET-PREFIX"
+>gdome_el_set_prefix</A
+>             (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *prefix,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);
+<A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+>* <A
+HREF="gdome2-gdomeelement.html#GDOME-EL-LOCALNAME"
+>gdome_el_localName</A
+>          (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);
+<A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEBOOLEAN"
+>GdomeBoolean</A
+> <A
+HREF="gdome2-gdomeelement.html#GDOME-EL-HASATTRIBUTES"
+>gdome_el_hasAttributes</A
+>         (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);
+void        <A
+HREF="gdome2-gdomeelement.html#GDOME-EL-ADDEVENTLISTENER"
+>gdome_el_addEventListener</A
+>       (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *type,
+                                             <A
+HREF="gdome2-gdomeeventlistener.html#GDOMEEVENTLISTENER"
+>GdomeEventListener</A
+> *listener,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEBOOLEAN"
+>GdomeBoolean</A
+> useCapture,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);
+void        <A
+HREF="gdome2-gdomeelement.html#GDOME-EL-REMOVEEVENTLISTENER"
+>gdome_el_removeEventListener</A
+>    (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *type,
+                                             <A
+HREF="gdome2-gdomeeventlistener.html#GDOMEEVENTLISTENER"
+>GdomeEventListener</A
+> *listener,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEBOOLEAN"
+>GdomeBoolean</A
+> useCapture,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);
+<A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEBOOLEAN"
+>GdomeBoolean</A
+> <A
+HREF="gdome2-gdomeelement.html#GDOME-EL-DISPATCHEVENT"
+>gdome_el_dispatchEvent</A
+>         (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-gdomeevent.html#GDOMEEVENT"
+>GdomeEvent</A
+> *evt,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);
+void        <A
+HREF="gdome2-gdomeelement.html#GDOME-EL-SUBTREEDISPATCHEVENT"
+>gdome_el_subTreeDispatchEvent</A
+>   (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-gdomeevent.html#GDOMEEVENT"
+>GdomeEvent</A
+> *evt,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);
+<A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEBOOLEAN"
+>GdomeBoolean</A
+> <A
+HREF="gdome2-gdomeelement.html#GDOME-EL-CANAPPEND"
+>gdome_el_canAppend</A
+>             (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-gdomenode.html#GDOMENODE"
+>GdomeNode</A
+> *newChild,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);</PRE
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN9593"
+></A
+><H2
+>Description</H2
+><P
+>The <A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> interface represents an element in an HTML or XML document.
+Elements may have attributes associated with them; since the <A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+>
+interface inherits from <A
+HREF="gdome2-gdomenode.html#GDOMENODE"
+>GdomeNode</A
+>, the generic <A
+HREF="gdome2-gdomenode.html#GDOMENODE"
+>GdomeNode</A
+> interface method
+<A
+HREF="gdome2-gdomeelement.html#GDOME-EL-ATTRIBUTES"
+>gdome_el_attributes</A
+>() may be used to retrieve the set of all attributes for an
+element. There are methods on the <A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> interface to retrieve either an
+<A
+HREF="gdome2-gdomeattr.html#GDOMEATTR"
+>GdomeAttr</A
+> object by name or an attribute value by name.
+In XML, where an attribute value may contain entity references, an <A
+HREF="gdome2-gdomeattr.html#GDOMEATTR"
+>GdomeAttr</A
+>
+object should be retrieved to examine the possibly fairly complex sub-tree
+representing the attribute value. On the other hand, in HTML, where all
+attributes have simple string values, methods to directly access an attribute
+value can safely be used as a convenience.</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN9604"
+></A
+><H2
+>Details</H2
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN9606"
+></A
+><H3
+><A
+NAME="GDOMEELEMENT"
+></A
+>struct GdomeElement</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>struct GdomeElement {
+	gpointer user_data;
+};</PRE
+></TD
+></TR
+></TABLE
+><P
+></P
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN9611"
+></A
+><H3
+><A
+NAME="GDOME-EL-TAGNAME"
+></A
+>gdome_el_tagName ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+><A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+>* gdome_el_tagName            (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);</PRE
+></TD
+></TR
+></TABLE
+><P
+></P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN9620"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>self</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Element Objects ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>exc</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Exception Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+> the qualified name of the element.</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN9637"
+></A
+><H3
+><A
+NAME="GDOME-EL-GETATTRIBUTE"
+></A
+>gdome_el_getAttribute ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+><A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+>* gdome_el_getAttribute       (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *name,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);</PRE
+></TD
+></TR
+></TABLE
+><P
+>Retrieves an attribute value by name.</P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN9647"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>self</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Element Objects ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>name</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  The name of attribute of which the value is wanted</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>exc</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Exception Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+> the Attr value as a string, or the empty string if that attribute
+does not have a specified or default value.</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN9668"
+></A
+><H3
+><A
+NAME="GDOME-EL-SETATTRIBUTE"
+></A
+>gdome_el_setAttribute ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>void        gdome_el_setAttribute           (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *name,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *value,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);</PRE
+></TD
+></TR
+></TABLE
+><P
+>Adds a new attribute. If an attribute with that name is already present in
+the element, its value is changed to be that of the value parameter.</P
+><P
+><TT
+CLASS="LITERAL"
+>GDOME_NO_MODIFICATION_ALLOWED_ERR</TT
+>: Raised if this node is readonly.</P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN9680"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>self</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Element Objects ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>name</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  The name of the attribute to create or alter</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>value</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+> Value to set in string form</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>exc</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Exception Object ref</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN9701"
+></A
+><H3
+><A
+NAME="GDOME-EL-REMOVEATTRIBUTE"
+></A
+>gdome_el_removeAttribute ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>void        gdome_el_removeAttribute        (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *name,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);</PRE
+></TD
+></TR
+></TABLE
+><P
+>Removes an attribute by name. If the removed attribute is known to have a
+default value, an attribute immediately appears containing the default
+value as well as the corresponding namespace URI, local name, and prefix
+when applicable.
+To remove an attribute by local name and namespace URI, use the
+<A
+HREF="gdome2-gdomeelement.html#GDOME-EL-REMOVEATTRIBUTENS"
+>gdome_el_removeAttributeNS</A
+>() function.</P
+><P
+><TT
+CLASS="LITERAL"
+>GDOME_NO_MODIFICATION_ALLOWED_ERR</TT
+>: Raised if this node is readonly.</P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN9713"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>self</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Element Objects ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>name</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  The name of the attribute to remove</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>exc</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Exception Object ref</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN9730"
+></A
+><H3
+><A
+NAME="GDOME-EL-GETATTRIBUTENODE"
+></A
+>gdome_el_getAttributeNode ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+><A
+HREF="gdome2-gdomeattr.html#GDOMEATTR"
+>GdomeAttr</A
+>*  gdome_el_getAttributeNode       (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *name,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);</PRE
+></TD
+></TR
+></TABLE
+><P
+>Retrieves an attribute node by name.
+To retrieve an attribute node by qualified name and namespace URI, use the
+<A
+HREF="gdome2-gdomeelement.html#GDOME-EL-GETATTRIBUTENODENS"
+>gdome_el_getAttributeNodeNS</A
+>() method.</P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN9741"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>self</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Element Objects ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>name</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  The name of the attribute to retreive</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>exc</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Exception Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+> the Attr node with the specified <TT
+CLASS="PARAMETER"
+><I
+>name</I
+></TT
+> or <TT
+CLASS="LITERAL"
+>NULL</TT
+> if there is no such
+attribute.</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN9764"
+></A
+><H3
+><A
+NAME="GDOME-EL-SETATTRIBUTENODE"
+></A
+>gdome_el_setAttributeNode ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+><A
+HREF="gdome2-gdomeattr.html#GDOMEATTR"
+>GdomeAttr</A
+>*  gdome_el_setAttributeNode       (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-gdomeattr.html#GDOMEATTR"
+>GdomeAttr</A
+> *newAttr,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);</PRE
+></TD
+></TR
+></TABLE
+><P
+>Adds a new attribute node. If an attribute with that name is already present
+in the element, it is replaced by the new one.
+To add a new attribute node with a qualified name and namespace URI, use the
+<A
+HREF="gdome2-gdomeelement.html#GDOME-EL-SETATTRIBUTENODENS"
+>gdome_el_setAttributeNodeNS</A
+>() method.</P
+><P
+><TT
+CLASS="LITERAL"
+>GDOME_WRONG_DOCUMENT_ERR</TT
+>: Raised if <TT
+CLASS="PARAMETER"
+><I
+>newAttr</I
+></TT
+> was created from a different
+document than the one that created the element.
+<TT
+CLASS="LITERAL"
+>GDOME_NO_MODIFICATION_ALLOWED_ERR</TT
+>: Raised if this node is readonly.
+<TT
+CLASS="LITERAL"
+>GDOME_INUSE_ATTRIBUTE_ERR</TT
+>: Raised if <TT
+CLASS="PARAMETER"
+><I
+>newAttr</I
+></TT
+> is already an attribute of
+another Element object. The DOM user must explicitly clone Attr nodes to
+re-use them in other elements.</P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN9781"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>self</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Element Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>newAttr</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  The Attr node to add to the attribute list</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>exc</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Exception Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+> if the <TT
+CLASS="PARAMETER"
+><I
+>newAttr</I
+></TT
+> attribute replaces an existing attribute, the
+replaced Attr node is returned, otherwise <TT
+CLASS="LITERAL"
+>NULL</TT
+> is returned.</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN9804"
+></A
+><H3
+><A
+NAME="GDOME-EL-REMOVEATTRIBUTENODE"
+></A
+>gdome_el_removeAttributeNode ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+><A
+HREF="gdome2-gdomeattr.html#GDOMEATTR"
+>GdomeAttr</A
+>*  gdome_el_removeAttributeNode    (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-gdomeattr.html#GDOMEATTR"
+>GdomeAttr</A
+> *oldAttr,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);</PRE
+></TD
+></TR
+></TABLE
+><P
+>Removes the specified attribute node. If the removed Attr has a default
+value it is immediately replaced. The replacing attribute has the same
+namespace URI and local name, as well as the original prefix, when
+applicable.</P
+><P
+><TT
+CLASS="LITERAL"
+>GDOME_NO_MODIFICATION_ALLOWED_ERR</TT
+>: Raised if this node is readonly.
+<TT
+CLASS="LITERAL"
+>GDOME_NOT_FOUND_ERR</TT
+>: Raised if <TT
+CLASS="PARAMETER"
+><I
+>oldAttr</I
+></TT
+> is not an attribute of the element.</P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN9818"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>self</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Element Objects ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>oldAttr</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  The Attr node to remove from the attribute list</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>exc</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Exception Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+> the Attr node that was removed.</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN9839"
+></A
+><H3
+><A
+NAME="GDOME-EL-GETELEMENTSBYTAGNAME"
+></A
+>gdome_el_getElementsByTagName ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+><A
+HREF="gdome2-gdomenodelist.html#GDOMENODELIST"
+>GdomeNodeList</A
+>* gdome_el_getElementsByTagName
+                                            (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *name,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);</PRE
+></TD
+></TR
+></TABLE
+><P
+></P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN9849"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>self</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Element Objects ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>name</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  The name of the tag to match on. The special value * matches all
+tags.</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>exc</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Exception Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+> a NodeList of all descendant elements with a given tag name, in the
+order in which they are encountered in a preorder traversal of this Element
+tree.</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN9870"
+></A
+><H3
+><A
+NAME="GDOME-EL-GETATTRIBUTENS"
+></A
+>gdome_el_getAttributeNS ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+><A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+>* gdome_el_getAttributeNS     (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *namespaceURI,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *localName,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);</PRE
+></TD
+></TR
+></TABLE
+><P
+>Retrieves an attribute value by local name and namespace URI.</P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN9881"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>self</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Element Objects ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>namespaceURI</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  The namespaceURI of attribute to retrieve</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>localName</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  The localName of the attribute to retrieve</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>exc</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Exception Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+> the Attr value as a string, or the empty string if that attribute
+does not have a specified or default value.</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN9906"
+></A
+><H3
+><A
+NAME="GDOME-EL-SETATTRIBUTENS"
+></A
+>gdome_el_setAttributeNS ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>void        gdome_el_setAttributeNS         (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *namespaceURI,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *qualifiedName,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *value,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);</PRE
+></TD
+></TR
+></TABLE
+><P
+>Adds a new attribute. If an attribute with the same <TT
+CLASS="PARAMETER"
+><I
+>namespaceURI</I
+></TT
+> and
+localName is already present in the element, its value is changed to be
+that of the value parameter.</P
+><P
+><TT
+CLASS="LITERAL"
+>GDOME_NAMESPACE_ERR</TT
+>: Raised if the <TT
+CLASS="PARAMETER"
+><I
+>qualifiedName</I
+></TT
+> is malformed, if the
+<TT
+CLASS="PARAMETER"
+><I
+>qualifiedName</I
+></TT
+> has a prefix and the <TT
+CLASS="PARAMETER"
+><I
+>namespaceURI</I
+></TT
+> is <TT
+CLASS="LITERAL"
+>NULL</TT
+>, if the
+<TT
+CLASS="PARAMETER"
+><I
+>qualifiedName</I
+></TT
+> has a prefix that is "xml" and the <TT
+CLASS="PARAMETER"
+><I
+>namespaceURI</I
+></TT
+> is different
+from "http://www.w3.org/XML/1998/namespace", or if the <TT
+CLASS="PARAMETER"
+><I
+>qualifiedName</I
+></TT
+> is
+"xmlns" and the namespaceURI is different from "http://www.w3.org/2000/xmlns/".
+<TT
+CLASS="LITERAL"
+>GDOME_NO_MODIFICATION_ALLOWED_ERR</TT
+>: Raised if this node is readonly.</P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN9928"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>self</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Element Objects ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>namespaceURI</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  The namespace URI of attribute to create or alter</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>qualifiedName</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  The qualifiedName of the attribute to create or alter</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>value</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+> Value to set in string form</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>exc</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Exception Object ref</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN9953"
+></A
+><H3
+><A
+NAME="GDOME-EL-REMOVEATTRIBUTENS"
+></A
+>gdome_el_removeAttributeNS ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>void        gdome_el_removeAttributeNS      (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *namespaceURI,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *localName,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);</PRE
+></TD
+></TR
+></TABLE
+><P
+>Removes an attribute by local name and namespace URI. If the removed
+attribute has a default value it is immediately replaced. The replacing
+attribute has the same namespace URI and local name, as well as the
+original prefix.</P
+><P
+><TT
+CLASS="LITERAL"
+>GDOME_NO_MODIFICATION_ALLOWED_ERR</TT
+>: Raised if this node is readonly.</P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN9965"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>self</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Element Objects ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>namespaceURI</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  The namespaceURI of attribute to remove</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>localName</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  The localName of the attribute to remove</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>exc</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Exception Object ref</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN9986"
+></A
+><H3
+><A
+NAME="GDOME-EL-GETATTRIBUTENODENS"
+></A
+>gdome_el_getAttributeNodeNS ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+><A
+HREF="gdome2-gdomeattr.html#GDOMEATTR"
+>GdomeAttr</A
+>*  gdome_el_getAttributeNodeNS     (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *namespaceURI,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *localName,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);</PRE
+></TD
+></TR
+></TABLE
+><P
+>Retrieves an Attr node by local name and namespace URI.</P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN9997"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>self</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Element Objects ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>namespaceURI</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  The namespace URI of the attribute to retrieve.</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>localName</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  The local name of the attribute to retrieve.</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>exc</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Exception Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+> the Attr node with the specified attribute local name and
+namespace URI or <TT
+CLASS="LITERAL"
+>NULL</TT
+> if there is no such attribute.</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN10023"
+></A
+><H3
+><A
+NAME="GDOME-EL-SETATTRIBUTENODENS"
+></A
+>gdome_el_setAttributeNodeNS ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+><A
+HREF="gdome2-gdomeattr.html#GDOMEATTR"
+>GdomeAttr</A
+>*  gdome_el_setAttributeNodeNS     (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-gdomeattr.html#GDOMEATTR"
+>GdomeAttr</A
+> *newAttr,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);</PRE
+></TD
+></TR
+></TABLE
+><P
+>Adds a new attribute. If an attribute with that local name and that
+namespace URI is already present in the element, it is replaced by the new
+one.</P
+><P
+><TT
+CLASS="LITERAL"
+>GDOME_WRONG_DOCUMENT_ERR</TT
+>: Raised if <TT
+CLASS="PARAMETER"
+><I
+>newAttr</I
+></TT
+> was created from a different
+document than the one that created the element.
+<TT
+CLASS="LITERAL"
+>GDOME_NO_MODIFICATION_ALLOWED_ERR</TT
+>: Raised if this node is readonly.
+<TT
+CLASS="LITERAL"
+>GDOME_INUSE_ATTRIBUTE_ERR</TT
+>: Raised if <TT
+CLASS="PARAMETER"
+><I
+>newAttr</I
+></TT
+> is already an attribute of
+another Element object. The DOM user must explicitly clone Attr nodes to
+re-use them in other elements.</P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN10039"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>self</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Element Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>newAttr</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  The Attr node to add to the attribute list</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>exc</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Exception Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+> if the <TT
+CLASS="PARAMETER"
+><I
+>newAttr</I
+></TT
+> attribute replaces an existing attribute with the
+same local name and namespace URI, the replaced Attr node is returned,
+otherwise <TT
+CLASS="LITERAL"
+>NULL</TT
+> is returned.</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN10062"
+></A
+><H3
+><A
+NAME="GDOME-EL-GETELEMENTSBYTAGNAMENS"
+></A
+>gdome_el_getElementsByTagNameNS ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+><A
+HREF="gdome2-gdomenodelist.html#GDOMENODELIST"
+>GdomeNodeList</A
+>* gdome_el_getElementsByTagNameNS
+                                            (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *namespaceURI,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *localName,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);</PRE
+></TD
+></TR
+></TABLE
+><P
+></P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN10073"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>self</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Element Objects ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>namespaceURI</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  The namespace URI of the elements to match on. The special
+value * matches all namespaces.</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>localName</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  The local name of the elements to match on. The special value
+* matches all local names.</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>exc</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Exception Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+> a NodeList of all the descendant elements with a given local name
+and namespace URI in the order in which they are encountered in a preorder
+traversal of this Element tree.</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN10098"
+></A
+><H3
+><A
+NAME="GDOME-EL-HASATTRIBUTE"
+></A
+>gdome_el_hasAttribute ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+><A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEBOOLEAN"
+>GdomeBoolean</A
+> gdome_el_hasAttribute          (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *name,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);</PRE
+></TD
+></TR
+></TABLE
+><P
+></P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN10108"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>self</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Element Objects ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>name</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  The name of the attribute to look for.</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>exc</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Exception Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+> <TT
+CLASS="LITERAL"
+>TRUE</TT
+> when an attribute with a given name is specified on this
+element or has a default value, <TT
+CLASS="LITERAL"
+>FALSE</TT
+> otherwise.</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN10131"
+></A
+><H3
+><A
+NAME="GDOME-EL-HASATTRIBUTENS"
+></A
+>gdome_el_hasAttributeNS ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+><A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEBOOLEAN"
+>GdomeBoolean</A
+> gdome_el_hasAttributeNS        (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *namespaceURI,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *localName,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);</PRE
+></TD
+></TR
+></TABLE
+><P
+></P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN10142"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>self</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Element Objects ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>namespaceURI</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  The namespaceURI of the attribute to look for.</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>localName</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  The localName of the attribute to look for.</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>exc</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Exception Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+> <TT
+CLASS="LITERAL"
+>TRUE</TT
+> when an attribute with a given local name and namespace URI
+is specified on this element or has a default value, <TT
+CLASS="LITERAL"
+>FALSE</TT
+> otherwise.</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN10169"
+></A
+><H3
+><A
+NAME="GDOME-EL-REF"
+></A
+>gdome_el_ref ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>void        gdome_el_ref                    (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);</PRE
+></TD
+></TR
+></TABLE
+><P
+>Increase the reference count of the specified Node.</P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN10177"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>self</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Node Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>exc</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Exception Object ref</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN10190"
+></A
+><H3
+><A
+NAME="GDOME-EL-UNREF"
+></A
+>gdome_el_unref ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>void        gdome_el_unref                  (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);</PRE
+></TD
+></TR
+></TABLE
+><P
+>Decrease the reference count of the specified Node. Free the Node structure
+if the Node will have zero reference.</P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN10198"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>self</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Node Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>exc</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Exception Object ref</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN10211"
+></A
+><H3
+><A
+NAME="GDOME-EL-QUERY-INTERFACE"
+></A
+>gdome_el_query_interface ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+><GTKDOCLINK
+HREF="GPOINTER"
+>gpointer</GTKDOCLINK
+>    gdome_el_query_interface        (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             const char *interface,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);</PRE
+></TD
+></TR
+></TABLE
+><P
+></P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN10220"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>self</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Node Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>interface</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  interface needed</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>exc</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Exception Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+> a reference to this object that implements the <TT
+CLASS="PARAMETER"
+><I
+>interface</I
+></TT
+> needed,
+or <TT
+CLASS="LITERAL"
+>NULL</TT
+> if the <TT
+CLASS="PARAMETER"
+><I
+>interface</I
+></TT
+> is not supported by this Object.</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN10244"
+></A
+><H3
+><A
+NAME="GDOME-EL-NODENAME"
+></A
+>gdome_el_nodeName ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+><A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+>* gdome_el_nodeName           (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);</PRE
+></TD
+></TR
+></TABLE
+><P
+></P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN10253"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>self</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Node Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>exc</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Exception Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+> the name of this node, depending on its type.</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN10270"
+></A
+><H3
+><A
+NAME="GDOME-EL-NODEVALUE"
+></A
+>gdome_el_nodeValue ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+><A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+>* gdome_el_nodeValue          (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);</PRE
+></TD
+></TR
+></TABLE
+><P
+></P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN10279"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>self</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Node Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>exc</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Exception Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+> the value of this node, depending on its type.</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN10296"
+></A
+><H3
+><A
+NAME="GDOME-EL-SET-NODEVALUE"
+></A
+>gdome_el_set_nodeValue ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>void        gdome_el_set_nodeValue          (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *nodeValue,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);</PRE
+></TD
+></TR
+></TABLE
+><P
+>Sets The value of this node, depending on its type.</P
+><P
+><TT
+CLASS="LITERAL"
+>GDOME_NO_MODIFICATION_ALLOWED_ERR</TT
+>: Raised when the node is readonly.</P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN10307"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>self</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Node Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>nodeValue</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  The new value for this node.</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>exc</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Exception Object ref</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN10324"
+></A
+><H3
+><A
+NAME="GDOME-EL-NODETYPE"
+></A
+>gdome_el_nodeType ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>unsigned <GTKDOCLINK
+HREF="SHORT"
+>short</GTKDOCLINK
+> gdome_el_nodeType            (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);</PRE
+></TD
+></TR
+></TABLE
+><P
+></P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN10333"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>self</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Node Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>exc</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Exception Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+> an integer bigger than <TT
+CLASS="LITERAL"
+>0</TT
+> representing the type of the underlying
+object or <TT
+CLASS="LITERAL"
+>0</TT
+> on error.</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN10352"
+></A
+><H3
+><A
+NAME="GDOME-EL-PARENTNODE"
+></A
+>gdome_el_parentNode ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+><A
+HREF="gdome2-gdomenode.html#GDOMENODE"
+>GdomeNode</A
+>*  gdome_el_parentNode             (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);</PRE
+></TD
+></TR
+></TABLE
+><P
+></P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN10361"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>self</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+> Node Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>exc</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+> Exception Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+> the parent of this node. All nodes, except Attr,
+Document, DocumentFragment, Entity, and Notation may have a parent. However,
+if a node has just been created and not yet added to the tree, or if it has
+been removed from the tree, this is <TT
+CLASS="LITERAL"
+>NULL</TT
+>.</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN10379"
+></A
+><H3
+><A
+NAME="GDOME-EL-CHILDNODES"
+></A
+>gdome_el_childNodes ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+><A
+HREF="gdome2-gdomenodelist.html#GDOMENODELIST"
+>GdomeNodeList</A
+>* gdome_el_childNodes          (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);</PRE
+></TD
+></TR
+></TABLE
+><P
+></P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN10388"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>self</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Node Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>exc</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Exception Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+> a NodeList that contains all children of this node. If there are no
+children, this is a NodeList containing no nodes.  Note that attributes are
+not considered to be children of element nodes - use gdome_n_attributes to
+obtain the attributes.</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN10405"
+></A
+><H3
+><A
+NAME="GDOME-EL-FIRSTCHILD"
+></A
+>gdome_el_firstChild ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+><A
+HREF="gdome2-gdomenode.html#GDOMENODE"
+>GdomeNode</A
+>*  gdome_el_firstChild             (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);</PRE
+></TD
+></TR
+></TABLE
+><P
+></P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN10414"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>self</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Node Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>exc</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Exception Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+> the first child of this node. If there is no such node,
+this returns <TT
+CLASS="LITERAL"
+>NULL</TT
+>.</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN10432"
+></A
+><H3
+><A
+NAME="GDOME-EL-LASTCHILD"
+></A
+>gdome_el_lastChild ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+><A
+HREF="gdome2-gdomenode.html#GDOMENODE"
+>GdomeNode</A
+>*  gdome_el_lastChild              (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);</PRE
+></TD
+></TR
+></TABLE
+><P
+></P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN10441"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>self</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Node Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>exc</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Exception Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+> the last child of this node. If there is no such node,
+this returns <TT
+CLASS="LITERAL"
+>NULL</TT
+>.</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN10459"
+></A
+><H3
+><A
+NAME="GDOME-EL-PREVIOUSSIBLING"
+></A
+>gdome_el_previousSibling ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+><A
+HREF="gdome2-gdomenode.html#GDOMENODE"
+>GdomeNode</A
+>*  gdome_el_previousSibling        (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);</PRE
+></TD
+></TR
+></TABLE
+><P
+></P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN10468"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>self</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Node Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>exc</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Exception Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+> the node immediately preceding this node. If there is no such
+node, this returns <TT
+CLASS="LITERAL"
+>NULL</TT
+>.</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN10486"
+></A
+><H3
+><A
+NAME="GDOME-EL-NEXTSIBLING"
+></A
+>gdome_el_nextSibling ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+><A
+HREF="gdome2-gdomenode.html#GDOMENODE"
+>GdomeNode</A
+>*  gdome_el_nextSibling            (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);</PRE
+></TD
+></TR
+></TABLE
+><P
+></P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN10495"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>self</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Node Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>exc</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Exception Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+> the node immediately following this node. If there is no such
+node, this returns <TT
+CLASS="LITERAL"
+>NULL</TT
+>.</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN10513"
+></A
+><H3
+><A
+NAME="GDOME-EL-ATTRIBUTES"
+></A
+>gdome_el_attributes ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+><A
+HREF="gdome2-gdomenamednodemap.html#GDOMENAMEDNODEMAP"
+>GdomeNamedNodeMap</A
+>* gdome_el_attributes      (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);</PRE
+></TD
+></TR
+></TABLE
+><P
+></P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN10522"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>self</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Node Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>exc</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Exception Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+> a NamedNodeMap containing the attributes of this node (if it is an
+Element) or <TT
+CLASS="LITERAL"
+>NULL</TT
+> otherwise.</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN10540"
+></A
+><H3
+><A
+NAME="GDOME-EL-OWNERDOCUMENT"
+></A
+>gdome_el_ownerDocument ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+><A
+HREF="gdome2-gdomedocument.html#GDOMEDOCUMENT"
+>GdomeDocument</A
+>* gdome_el_ownerDocument       (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);</PRE
+></TD
+></TR
+></TABLE
+><P
+></P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN10549"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>self</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Node Objects ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>exc</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Exception Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+> the documment object associated with this node. This is also the
+Document object used to create new nodes. When this node is a Document or a
+DocumentType which is not used with any Document yet, this is <TT
+CLASS="LITERAL"
+>NULL</TT
+>.</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN10567"
+></A
+><H3
+><A
+NAME="GDOME-EL-INSERTBEFORE"
+></A
+>gdome_el_insertBefore ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+><A
+HREF="gdome2-gdomenode.html#GDOMENODE"
+>GdomeNode</A
+>*  gdome_el_insertBefore           (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-gdomenode.html#GDOMENODE"
+>GdomeNode</A
+> *newChild,
+                                             <A
+HREF="gdome2-gdomenode.html#GDOMENODE"
+>GdomeNode</A
+> *refChild,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);</PRE
+></TD
+></TR
+></TABLE
+><P
+>Inserts the node <TT
+CLASS="PARAMETER"
+><I
+>newChild</I
+></TT
+> before the existing child node <TT
+CLASS="PARAMETER"
+><I
+>refChild</I
+></TT
+>. If
+<TT
+CLASS="PARAMETER"
+><I
+>refChild</I
+></TT
+> is <TT
+CLASS="LITERAL"
+>NULL</TT
+>, insert <TT
+CLASS="PARAMETER"
+><I
+>newChild</I
+></TT
+> at the end of the list of children.
+If <TT
+CLASS="PARAMETER"
+><I
+>newChild</I
+></TT
+> is a DocumentFragment node, all of its children are inserted,
+in the same order, before <TT
+CLASS="PARAMETER"
+><I
+>refChild</I
+></TT
+>. If the <TT
+CLASS="PARAMETER"
+><I
+>newChild</I
+></TT
+> is already in the
+tree, it is first removed.</P
+><P
+><TT
+CLASS="LITERAL"
+>GDOME_HIERARCHY_REQUEST_ERR</TT
+>: Raised if this node is of a type that does not
+allow children of the type of the <TT
+CLASS="PARAMETER"
+><I
+>newChild</I
+></TT
+> node, or if the node to insert is
+one of this node's ancestors or this node itself.
+<TT
+CLASS="LITERAL"
+>GDOME_WRONG_DOCUMENT_ERR</TT
+>: Raised if <TT
+CLASS="PARAMETER"
+><I
+>newChild</I
+></TT
+> was created from a different
+document than the one that created this node.
+<TT
+CLASS="LITERAL"
+>GDOME_NOT_FOUND_ERR</TT
+>: Raised if <TT
+CLASS="PARAMETER"
+><I
+>refChild</I
+></TT
+> is not a child of this node.
+<TT
+CLASS="LITERAL"
+>GDOME_NO_MODIFICATION_ALLOWED_ERR</TT
+>: Raised when the node is readonly.</P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN10594"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>self</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Node Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>newChild</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  The new node to put in the child list</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>refChild</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  the reference node, i.e., the node before which the new node
+must be inserted.</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>exc</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Exception Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+> the node being inserted.</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN10619"
+></A
+><H3
+><A
+NAME="GDOME-EL-REPLACECHILD"
+></A
+>gdome_el_replaceChild ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+><A
+HREF="gdome2-gdomenode.html#GDOMENODE"
+>GdomeNode</A
+>*  gdome_el_replaceChild           (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-gdomenode.html#GDOMENODE"
+>GdomeNode</A
+> *newChild,
+                                             <A
+HREF="gdome2-gdomenode.html#GDOMENODE"
+>GdomeNode</A
+> *oldChild,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);</PRE
+></TD
+></TR
+></TABLE
+><P
+>Replaces the child node <TT
+CLASS="PARAMETER"
+><I
+>oldChild</I
+></TT
+> with <TT
+CLASS="PARAMETER"
+><I
+>newChild</I
+></TT
+> in the list of children,
+and returns the <TT
+CLASS="PARAMETER"
+><I
+>oldChild</I
+></TT
+> node. If <TT
+CLASS="PARAMETER"
+><I
+>newChild</I
+></TT
+> is a DocumentFragment object,
+<TT
+CLASS="PARAMETER"
+><I
+>oldChild</I
+></TT
+> is replaced by all of the DocumentFragment children, which are
+inserted in the same order. If the <TT
+CLASS="PARAMETER"
+><I
+>newChild</I
+></TT
+> is already in the tree, it is
+first removed.</P
+><P
+><TT
+CLASS="LITERAL"
+>GDOME_HIERARCHY_REQUEST_ERR</TT
+>: Raised if this node is of a type that does
+not allow children of the type of the <TT
+CLASS="PARAMETER"
+><I
+>newChild</I
+></TT
+> node, or if the node to put
+in is one of this node's ancestors or this node itself.
+<TT
+CLASS="LITERAL"
+>GDOME_WRONG_DOCUMENT_ERR</TT
+>: Raised if <TT
+CLASS="PARAMETER"
+><I
+>newChild</I
+></TT
+> was created from a different
+document than the one that created this node.
+<TT
+CLASS="LITERAL"
+>GDOME_NOT_FOUND_ERR</TT
+>: Raised if <TT
+CLASS="PARAMETER"
+><I
+>oldChild</I
+></TT
+> is not a child of this node.
+<TT
+CLASS="LITERAL"
+>GDOME_NO_MODIFICATION_ALLOWED_ERR</TT
+>: Raised when the node is readonly.</P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN10644"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>self</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Node Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>newChild</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  The new node to put in the child list</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>oldChild</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  The node being replaced in the list</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>exc</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Exception Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+> the node replaced.</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN10669"
+></A
+><H3
+><A
+NAME="GDOME-EL-REMOVECHILD"
+></A
+>gdome_el_removeChild ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+><A
+HREF="gdome2-gdomenode.html#GDOMENODE"
+>GdomeNode</A
+>*  gdome_el_removeChild            (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-gdomenode.html#GDOMENODE"
+>GdomeNode</A
+> *oldChild,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);</PRE
+></TD
+></TR
+></TABLE
+><P
+>Removes the child node indicated by <TT
+CLASS="PARAMETER"
+><I
+>oldChild</I
+></TT
+> from the list of children, and
+returns it.</P
+><P
+><TT
+CLASS="LITERAL"
+>GDOME_NOT_FOUND_ERR</TT
+>: Raised if <TT
+CLASS="PARAMETER"
+><I
+>oldChild</I
+></TT
+> is not a child of this node.
+<TT
+CLASS="LITERAL"
+>GDOME_NO_MODIFICATION_ALLOWED_ERR</TT
+>: Raised when the node is readonly.</P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN10684"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>self</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Node Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>oldChild</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  The node being removed</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>exc</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Exception Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+> the node removed.</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN10705"
+></A
+><H3
+><A
+NAME="GDOME-EL-APPENDCHILD"
+></A
+>gdome_el_appendChild ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+><A
+HREF="gdome2-gdomenode.html#GDOMENODE"
+>GdomeNode</A
+>*  gdome_el_appendChild            (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-gdomenode.html#GDOMENODE"
+>GdomeNode</A
+> *newChild,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);</PRE
+></TD
+></TR
+></TABLE
+><P
+>Adds the node <TT
+CLASS="PARAMETER"
+><I
+>newChild</I
+></TT
+> to the end of the list of children of this node.
+If the <TT
+CLASS="PARAMETER"
+><I
+>newChild</I
+></TT
+> is already in the tree, it is first removed. If it is a
+DocumentFragment node, the entire contents of the document fragment are
+moved into the child list of this node</P
+><P
+><TT
+CLASS="LITERAL"
+>GDOME_HIERARCHY_REQUEST_ERR</TT
+>: Raised if this node is of a type that does not
+allow children of the type of the <TT
+CLASS="PARAMETER"
+><I
+>newChild</I
+></TT
+> node, or if the node to append is
+one of this node's ancestors or this node itself.
+<TT
+CLASS="LITERAL"
+>GDOME_WRONG_DOCUMENT_ERR</TT
+>: Raised if <TT
+CLASS="PARAMETER"
+><I
+>newChild</I
+></TT
+> was created from a different
+document than the one that created this node.
+<TT
+CLASS="LITERAL"
+>GDOME_NO_MODIFICATION_ALLOWED_ERR</TT
+>: Raised when the node is readonly.</P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN10723"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>self</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Node Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>newChild</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  The node to add</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>exc</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Exception Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+> the node added.</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN10744"
+></A
+><H3
+><A
+NAME="GDOME-EL-HASCHILDNODES"
+></A
+>gdome_el_hasChildNodes ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+><A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEBOOLEAN"
+>GdomeBoolean</A
+> gdome_el_hasChildNodes         (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);</PRE
+></TD
+></TR
+></TABLE
+><P
+></P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN10753"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>self</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Node Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>exc</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Exception Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+> <TT
+CLASS="LITERAL"
+>TRUE</TT
+> if this node has any children, <TT
+CLASS="LITERAL"
+>FALSE</TT
+> otherwise.</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN10772"
+></A
+><H3
+><A
+NAME="GDOME-EL-CLONENODE"
+></A
+>gdome_el_cloneNode ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+><A
+HREF="gdome2-gdomenode.html#GDOMENODE"
+>GdomeNode</A
+>*  gdome_el_cloneNode              (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEBOOLEAN"
+>GdomeBoolean</A
+> deep,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);</PRE
+></TD
+></TR
+></TABLE
+><P
+>Makes a duplicate of this node, i.e., serves as a generic copy
+constructor for nodes. The duplicate node has no parent; (parentNode is
+<TT
+CLASS="LITERAL"
+>NULL</TT
+>).
+<TT
+CLASS="LITERAL"
+>GDOME_DOCUMENT_TYPE_NODE</TT
+>, <TT
+CLASS="LITERAL"
+>GDOME_NOTATION_NODE</TT
+> and <TT
+CLASS="LITERAL"
+>GDOME_ENTITY_NODE</TT
+>
+nodes are not supported.</P
+><P
+><TT
+CLASS="LITERAL"
+>GDOME_NOT_SUPPORTED_ERR</TT
+>: Raised if the type of node being cloned is not
+supported.</P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN10788"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>self</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Node Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>deep</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  If true, recursively clone the subtree under the specified node;
+if false, clone only the node itself (and its attributes, if it is
+an Element).</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>exc</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Exception Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+> the duplicate node.</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN10809"
+></A
+><H3
+><A
+NAME="GDOME-EL-NORMALIZE"
+></A
+>gdome_el_normalize ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>void        gdome_el_normalize              (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);</PRE
+></TD
+></TR
+></TABLE
+><P
+>Puts all Text nodes in the full depth of the sub-tree underneath this Node,
+including attribute nodes, into a "normal" form where only structure (e.g.,
+elements, comments, processing instructions, CDATA sections, and entity
+references) separates Text nodes, i.e., there are neither adjacent Text
+nodes nor empty Text nodes.</P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN10817"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>self</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Node Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>exc</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Exception Object ref</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN10830"
+></A
+><H3
+><A
+NAME="GDOME-EL-ISSUPPORTED"
+></A
+>gdome_el_isSupported ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+><A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEBOOLEAN"
+>GdomeBoolean</A
+> gdome_el_isSupported           (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *feature,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *version,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);</PRE
+></TD
+></TR
+></TABLE
+><P
+>Tests whether the DOM implementation implements a specific feature and that
+feature is supported by this node.</P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN10841"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>self</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Node Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>feature</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  The name of the feature to test.</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>version</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  This is the version number of the feature to test. In Level 2,
+version 1, this is the string "2.0". If the version is not
+specified, supporting any version of the feature will cause the
+method to return <TT
+CLASS="LITERAL"
+>TRUE</TT
+>.</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>exc</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Exception Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+> <TT
+CLASS="LITERAL"
+>TRUE</TT
+> if the specified feature is supported on this node, <TT
+CLASS="LITERAL"
+>FALSE</TT
+>
+otherwise.</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN10869"
+></A
+><H3
+><A
+NAME="GDOME-EL-NAMESPACEURI"
+></A
+>gdome_el_namespaceURI ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+><A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+>* gdome_el_namespaceURI       (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);</PRE
+></TD
+></TR
+></TABLE
+><P
+></P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN10878"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>self</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Node Objects ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>exc</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Exception Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+> the namespace URI of this node, or <TT
+CLASS="LITERAL"
+>NULL</TT
+> if it is unspecified.
+For nodes of any type other than <TT
+CLASS="LITERAL"
+>GDOME_ELEMENT_NODE</TT
+> and
+<TT
+CLASS="LITERAL"
+>GDOME_ATTRIBUTE_NODE</TT
+> and nodes created with a DOM Level 1 method, this is
+always <TT
+CLASS="LITERAL"
+>NULL</TT
+>.</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN10899"
+></A
+><H3
+><A
+NAME="GDOME-EL-PREFIX"
+></A
+>gdome_el_prefix ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+><A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+>* gdome_el_prefix             (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);</PRE
+></TD
+></TR
+></TABLE
+><P
+></P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN10908"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>self</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Node Objects ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>exc</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Exception Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+> the namespace prefix of this node, or <TT
+CLASS="LITERAL"
+>NULL</TT
+> if it is unspecified.
+For nodes of any type other than <TT
+CLASS="LITERAL"
+>GDOME_ELEMENT_NODE</TT
+> and
+<TT
+CLASS="LITERAL"
+>GDOME_ATTRIBUTE_NODE</TT
+> and nodes created with a DOM Level 1 method, this is
+always <TT
+CLASS="LITERAL"
+>NULL</TT
+>.</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN10929"
+></A
+><H3
+><A
+NAME="GDOME-EL-SET-PREFIX"
+></A
+>gdome_el_set_prefix ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>void        gdome_el_set_prefix             (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *prefix,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);</PRE
+></TD
+></TR
+></TABLE
+><P
+>Sets a new nemaspace prefix for this node.</P
+><P
+><TT
+CLASS="LITERAL"
+>GDOME_NO_MODIFICATION_ALLOWED_ERR</TT
+>: Raised when the node is readonly.
+<TT
+CLASS="LITERAL"
+>GDOME_NAMESPACE_ERR</TT
+>: Raised if the specified <TT
+CLASS="PARAMETER"
+><I
+>prefix</I
+></TT
+> is malformed per the
+Namespaces in XML specification, if the namespaceURI of this node is <TT
+CLASS="LITERAL"
+>NULL</TT
+>,
+if the specified prefix is "xml" and the namespaceURI of this node is
+different from "http://www.w3.org/XML/1998/namespace", if this node is an
+attribute and the specified prefix is "xmlns" and the namespaceURI of this
+node is different from "http://www.w3.org/2000/xmlns/", or if this node is
+an attribute and the qualifiedName of this node is "xmlns".</P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN10943"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>self</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Node Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>prefix</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  The new prefix for this node.</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>exc</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Exception Object ref</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN10960"
+></A
+><H3
+><A
+NAME="GDOME-EL-LOCALNAME"
+></A
+>gdome_el_localName ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+><A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+>* gdome_el_localName          (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);</PRE
+></TD
+></TR
+></TABLE
+><P
+></P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN10969"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>self</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Node Objects ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>exc</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Exception Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+> the local part of the qualified name of this node.
+For nodes of any type other than <TT
+CLASS="LITERAL"
+>GDOME_ELEMENT_NODE</TT
+> and
+<TT
+CLASS="LITERAL"
+>GDOME_ATTRIBUTE_NODE</TT
+> and nodes created with a DOM Level 1 method, this is
+always <TT
+CLASS="LITERAL"
+>NULL</TT
+>.</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN10989"
+></A
+><H3
+><A
+NAME="GDOME-EL-HASATTRIBUTES"
+></A
+>gdome_el_hasAttributes ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+><A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEBOOLEAN"
+>GdomeBoolean</A
+> gdome_el_hasAttributes         (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);</PRE
+></TD
+></TR
+></TABLE
+><P
+></P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN10998"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>self</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Node Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>exc</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Exception Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+> <TT
+CLASS="LITERAL"
+>TRUE</TT
+> if this node has any attributes, <TT
+CLASS="LITERAL"
+>FALSE</TT
+> otherwise.</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN11017"
+></A
+><H3
+><A
+NAME="GDOME-EL-ADDEVENTLISTENER"
+></A
+>gdome_el_addEventListener ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>void        gdome_el_addEventListener       (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *type,
+                                             <A
+HREF="gdome2-gdomeeventlistener.html#GDOMEEVENTLISTENER"
+>GdomeEventListener</A
+> *listener,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEBOOLEAN"
+>GdomeBoolean</A
+> useCapture,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);</PRE
+></TD
+></TR
+></TABLE
+><P
+>This method allows the registration of event listeners on the event target.
+If an EventListener is added to an EventTarget while it is processing an
+event, it will not be triggered by the current actions but may be triggered
+during a later stage of event flow, such as the bubbling phase.
+If multiple identical EventListeners are registered on the same EventTarget
+with the same parameters the duplicate instances are discarded. They do not
+cause the EventListener to be called twice and since they are discarded
+they do not need to be removed with the removeEventListener method.</P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN11028"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>self</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Node Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>type</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  the event type for which the user is registering</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>listener</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  the listener parameter takes an interface implemented by the
+user which contains the methods to be called when the event occurs.</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>useCapture</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  if <TT
+CLASS="LITERAL"
+>TRUE</TT
+>, useCapture indicates that the user wishes to initiate
+capture. After initiating capture, all events of the specified
+type will be dispatched to the registered EventListener before
+being dispatched to any EventTargets beneath them in the tree.
+Events which are bubbling upward through the tree will not
+trigger an EventListener designated to use capture.</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>exc</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Exception Object ref</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN11054"
+></A
+><H3
+><A
+NAME="GDOME-EL-REMOVEEVENTLISTENER"
+></A
+>gdome_el_removeEventListener ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>void        gdome_el_removeEventListener    (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEDOMSTRING"
+>GdomeDOMString</A
+> *type,
+                                             <A
+HREF="gdome2-gdomeeventlistener.html#GDOMEEVENTLISTENER"
+>GdomeEventListener</A
+> *listener,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEBOOLEAN"
+>GdomeBoolean</A
+> useCapture,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);</PRE
+></TD
+></TR
+></TABLE
+><P
+>This method allows the removal of event listeners from the event target. If
+an EventListener is removed from an EventTarget while it is processing an
+event, it will not be triggered by the current actions. EventListeners can
+never be invoked after being removed. Calling removeEventListener with
+arguments which do not identify any currently registered EventListener on
+the EventTarget has no effect.</P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN11065"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>self</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Node Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>type</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Specifies the event type of the EventListener being removed.</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>listener</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  The EventListener parameter indicates the EventListener to be
+removed.</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>useCapture</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Specifies whether the EventListener being removed was
+registered as a capturing listener or not. If a listener was
+registered twice, one with capture and one without, each must
+be removed separately. Removal of a capturing listener does
+not affect a non-capturing version of the same listener, and
+vice versa.</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>exc</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Exception Object ref</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN11090"
+></A
+><H3
+><A
+NAME="GDOME-EL-DISPATCHEVENT"
+></A
+>gdome_el_dispatchEvent ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+><A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEBOOLEAN"
+>GdomeBoolean</A
+> gdome_el_dispatchEvent         (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-gdomeevent.html#GDOMEEVENT"
+>GdomeEvent</A
+> *evt,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);</PRE
+></TD
+></TR
+></TABLE
+><P
+>This method allows the dispatch of events into the implementations event
+model. Events dispatched in this manner will have the same capturing and
+bubbling behavior as events dispatched directly by the implementation. The
+target of the event is the EventTarget on which dispatchEvent is called.</P
+><P
+>GDOME_UNSPECIFIED_EVENT_TYPE_ERR: Raised if the Event's type was not
+specified by initializing the event before dispatchEvent was called.
+Specification of the Event's type as <TT
+CLASS="LITERAL"
+>NULL</TT
+> or an empty string will also
+trigger this exception.</P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN11102"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>self</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Node Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>evt</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Specifies the event type, behavior, and contextual information to be
+used in processing the event.</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>exc</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Exception Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+> if preventDefault was called the value is <TT
+CLASS="LITERAL"
+>FALSE</TT
+>, else the value
+is <TT
+CLASS="LITERAL"
+>TRUE</TT
+>.</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN11125"
+></A
+><H3
+><A
+NAME="GDOME-EL-SUBTREEDISPATCHEVENT"
+></A
+>gdome_el_subTreeDispatchEvent ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>void        gdome_el_subTreeDispatchEvent   (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-gdomeevent.html#GDOMEEVENT"
+>GdomeEvent</A
+> *evt,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);</PRE
+></TD
+></TR
+></TABLE
+><P
+>This method allows the dispatch of events into the implementations event
+model. Events dispatched in this manner will have the same capturing and
+bubbling behavior as events dispatched directly by the implementation. The
+target of the event is any nodes in the subtree of the EventTarget on which
+dispatchEvent is called.</P
+><P
+>GDOME_UNSPECIFIED_EVENT_TYPE_ERR: Raised if the Event's type was not
+specified by initializing the event before dispatchEvent was called.
+Specification of the Event's type as <TT
+CLASS="LITERAL"
+>NULL</TT
+> or an empty string will also
+trigger this exception.</P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN11136"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>self</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Node Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>evt</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Specifies the event type, behavior, and contextual information to be
+used in processing the event.</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>exc</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Exception Object ref</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+><HR><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN11153"
+></A
+><H3
+><A
+NAME="GDOME-EL-CANAPPEND"
+></A
+>gdome_el_canAppend ()</H3
+><TABLE
+BORDER="0"
+BGCOLOR="#D6E8FF"
+WIDTH="100%"
+CELLPADDING="6"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+><A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEBOOLEAN"
+>GdomeBoolean</A
+> gdome_el_canAppend             (<A
+HREF="gdome2-gdomeelement.html#GDOMEELEMENT"
+>GdomeElement</A
+> *self,
+                                             <A
+HREF="gdome2-gdomenode.html#GDOMENODE"
+>GdomeNode</A
+> *newChild,
+                                             <A
+HREF="gdome2-basic-types-and-enumerations.html#GDOMEEXCEPTION"
+>GdomeException</A
+> *exc);</PRE
+></TD
+></TR
+></TABLE
+><P
+>Tests if a <TT
+CLASS="PARAMETER"
+><I
+>newChild</I
+></TT
+> can be added in the child list of this node.</P
+><P
+></P
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN11164"><P
+></P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+BGCOLOR="#FFD0D0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>self</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Node Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>newChild</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  The Node Object ref of the node to test</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><TT
+CLASS="PARAMETER"
+><I
+>exc</I
+></TT
+>&nbsp;:</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>  Exception Object ref</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Returns</I
+></SPAN
+> :</TD
+><TD
+WIDTH="80%"
+ALIGN="LEFT"
+VALIGN="TOP"
+> <TT
+CLASS="LITERAL"
+>TRUE</TT
+> if <TT
+CLASS="PARAMETER"
+><I
+>newChild</I
+></TT
+> can be added, <TT
+CLASS="LITERAL"
+>FALSE</TT
+> otherwise.</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><BR
+CLEAR="all"><BR><TABLE
+WIDTH="100%"
+BORDER="0"
+BGCOLOR="#000000"
+CELLPADDING="1"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="25%"
+BGCOLOR="#C00000"
+ALIGN="left"
+><A
+HREF="gdome2-gdomeattr.html"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+>&#60;&#60;&#60; Previous Page</B
+></FONT
+></A
+></TD
+><TD
+WIDTH="25%"
+BGCOLOR="#0000C0"
+ALIGN="center"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+><A
+HREF="book1.html"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+>Home</B
+></FONT
+></A
+></B
+></FONT
+></TD
+><TD
+WIDTH="25%"
+BGCOLOR="#00C000"
+ALIGN="center"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+><A
+HREF="gdome2-core.html"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+>Up</B
+></FONT
+></A
+></B
+></FONT
+></TD
+><TD
+WIDTH="25%"
+BGCOLOR="#C00000"
+ALIGN="right"
+><A
+HREF="gdome2-gdometext.html"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+>Next Page &#62;&#62;&#62;</B
+></FONT
+></A
+></TD
+></TR
+><TR
+><TD
+COLSPAN="2"
+ALIGN="left"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+>GdomeAttr</B
+></FONT
+></TD
+><TD
+COLSPAN="2"
+ALIGN="right"
+><FONT
+COLOR="#FFFFFF"
+SIZE="3"
+><B
+>GdomeText</B
+></FONT
+></TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

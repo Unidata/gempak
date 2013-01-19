@@ -1,0 +1,45 @@
+!	SN error file
+!
++10	! Climatology data is used.
+ +9	! Multiple heights found.  
+ +8	! Cloud height from moist-adiabatic method.
+ +7	! Cloud top colder than sounding.
+ +6	! Temperature warmer than sounding.
+ +5	! Stable sounding.
+ +4	! No intersection from the sounding table.
+ +3	! Too many intersections.
+ +2	! No station found.
+ +1	! No data at station.
+ -1	! File !AS could not be created.
+ -2	! File !AS could not be opened.
+ -3 	! Invalid part type.
+ -4	! File not open.
+ -5	! No more times can be added.
+ -6	! No more stations can be added.
+ -7	! File !AS is not a sounding data set.
+ -8	! Station or time has not been set.
+ -9	! No more stations in file.
+-10	! No more times in file.
+-11	! Station !AS is not in file.
+-12	! Time !AS is not in file.
+-13	! Data management (DM) error.
+-14	! Too many times in file.
+-15	! Delete error.
+-16	! Too many levels at station.
+-17	! Invalid merged/unmerged data file.
+-18	! Station table file cannot be opened.
+-19	! Time has not been set.
+-20	! Station has not been set.
+-21	! Non-standard sounding station.
+-22	! Invalid part name.
+-23	! Time !AS is invalid.
+-24	! File name is blank.
+-25	! Vertical coordinate !AS not valid in sounding file.
+-26	! Too many parameters in the input file
+-27	! No parameter is found.
+-28	! Error reading parameter record.
+-29	! Invalid sounding data.
+-30	! Cannot compute convective cloud height with table data.
+-31	! Cannot compute climatology cloud height.
+-32	! Latitude value out of range.
+-33	! Cannot get pressure and height

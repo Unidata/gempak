@@ -1,0 +1,5 @@
+$FC $FFLAGS $LDFLAGS -o $OS_BIN/gdstream gdstream.f \
+	$OS_LIB/gdstream.a \
+	$GEMLIB $APPL $SYSLIB $CGEMLIB \
+	-lm -lnetcdf -lz
+$RM *.o

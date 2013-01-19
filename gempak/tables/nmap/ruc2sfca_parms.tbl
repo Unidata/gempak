@@ -1,0 +1,45 @@
+! 
+!	RUC2SFCA_PARMS.TBL
+!
+! This table contains the available parameters used in the
+! station model editing panel in NMAP for the METAR data type. 
+!
+!	pos_zero_flag:	1 = plot at position 0 only
+!			0 = plot at any position
+!
+! Log:
+! S. Jacobs/NCEP	12/02	Created
+!
+! parameter       pos_zero_flag     
+!
+cdbp              0
+drct              0
+dwpc              0
+fxtt              0
+hcld              0
+hlcy              0
+lcld              0
+mcld              0
+ndrf              0
+rnet              0
+s01m              0
+sllh              0
+sllp              0
+smc3              0
+smc4              0
+smsk              0
+snra              0
+sped              0
+stc3              0
+stc4              0
+swbl              0
+td2m              0
+tmpc              0
+ustm              0
+vsbk              0
+vstm              0
+wsym              0
+wxtp              0
+wxtr              0
+wxts              0
+wxtz              0

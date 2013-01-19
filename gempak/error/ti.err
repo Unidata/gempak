@@ -1,0 +1,21 @@
+!	TI error file
+!
+  2	! The time !AS is not found in the data set.
+  1	! EXIT entered by the user.
+ -1	! The DATTIM !AS is invalid.
+ -2	! No valid times entered.
+ -3	! No times within range.
+ -4	! "LIST" cannot be entered when RESPOND is false.
+ -5	! There are no times in the data set.
+ -6	! Range with an increment is invalid.
+ -7	! The value for the year is invalid.
+ -8	! The value for the month is invalid.
+ -9	! The value for the day is invalid.
+-10	! The value for the hour is invalid.
+-11	! The value for the minute is invalid.
+-12	! Invalid time difference.
+-13	! Invalid year for conversion to Daylight Saving Time.
+-14	! Invalid forecast time.
+-15	! Invalid input for the time zones.
+-16	! Cannot add/subtract negative minutes.
+-17	! Invalid local date/time !AS

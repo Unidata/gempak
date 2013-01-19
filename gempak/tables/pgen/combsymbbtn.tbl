@@ -1,0 +1,68 @@
+! COMBSYMB.TBL.
+!
+! This table provides the icons located in the combinational symbol
+! palette.
+!
+! Log:
+! C. Lin/EAi             4/98  
+! G. Krueger/EAI	 4/98	Corrected iceplts_sfdrzl->iceplts_sfrain
+! S. Jacobs/NCEP	 2/99	Renamed icons and added new icons
+! A. Hardy/GSC		 3/00   Removed csymb07 & csymb09; reordered
+! E. Safford/GSC	04/01	reorder for horizonatal layout
+! m.gamazaychikov/SAIC	04/03	added combo symbol 28 to the last row
+!------------------------------------------------------------------------
+BEGIN
+!
+! Row 1
+!
+csymb01
+csymb13
+csymb02
+!
+! Row 2
+!
+csymb21
+csymb12
+csymb11
+!
+! Row 3
+!
+csymb15
+csymb14
+csymb16
+!
+! Row 4
+!
+csymb08
+csymb10
+csymb26
+!
+! Row 5
+!
+csymb04
+csymb18
+csymb19
+!
+! Row 6
+!
+csymb03
+csymb17
+csymb25
+!
+! Row 7
+!
+csymb23
+csymb20
+csymb24
+!
+! Row 8
+!
+csymb22
+csymb05
+csymb27
+!
+! Row 9
+!
+csymb06
+csymb28
+END

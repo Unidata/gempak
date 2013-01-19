@@ -1,0 +1,18 @@
+     LSTPRM
+
+     LSTPRM specifies a field to list on the side of the display. Stations
+     are added to the list if they are filtered from the map. 
+
+     The input for LSTPRM is:
+
+	Filtered parameter | x;y | TEXT information
+
+     The filtered parameter is the name of the data field to list with the
+     station id. The filtered parameter must also appear in the list of 
+     parameters to be displayed on the map. 
+
+     X;Y is the location of the upper left corner of the list. 
+
+     TEXT information is the same as for the TEXT parameter, but only applies
+     to the list of filtered data.
+

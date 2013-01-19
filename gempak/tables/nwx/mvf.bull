@@ -1,0 +1,52 @@
+! MVF.BULL
+!
+! Location information for the following product:
+! Marine_Verification_Coded_Forecast.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+FXAK57 PAJK     JUNEAU                           AK US  5836 -13458     0
+FXAK58 PAFC     ALASKA/PACIFIC_RFC               AK US  6115 -14997     0
+FXAK58 PAFC     ANCHORAGE                        AK US  6115 -14997     0
+FXAK59 PAFG     FAIRBANKS                        AK US  6484 -14783     0
+FXCA52 TJSJ     SAN_JUAN                         PR US  1843  -6600     0
+FXUS51 KAKQ     WAKEFIELD                        VA US  3697  -7700     0
+FXUS51 KBOX     TAUNTON                          MA US  4195  -7112     0
+FXUS51 KBUF     BUFFALO                          NY US  4293  -7870     0
+FXUS51 KCAR     CARIBOU                          ME US  4577  -6862     0
+FXUS51 KCLE     CLEVELAND                        OH US  4140  -8186     0
+FXUS51 KGYX     GRAY                             ME US  4388  -7025     0
+FXUS51 KOKX     NEW_YORK                         NY US  4086  -7286     0
+FXUS51 KPHI     MOUNT_HOLLY                      NJ US  4000  -7480     0
+FXUS51 KWBC     NCEP_NMC                         MD US  3881  -7687     0
+FXUS52 KCHS     CHARLESTON                       SC US  3288  -8001     0
+FXUS52 KKEY     KEY_WEST                         FL US  2457  -8178     0
+FXUS52 KILM     WILMINGTON                       NC US  3427  -7791     0
+FXUS52 KJAX     JACKSONVILLE                     FL US  3047  -8169     0
+FXUS52 KMFL     MIAMI                            FL US  2575  -8037     0
+FXUS52 KMHX     NEWPORT/MOREHEAD_CITY            NC US  3477  -7687     0
+FXUS52 KMLB     MELBOURNE                        FL US  2811  -8065     0
+FXUS52 KTAE     TALLAHASSEE                      FL US  3045  -8430     0
+FXUS52 KTBW     TAMPA_BAY_AREA/RUSKIN            FL US  2770  -8240     0
+FXUS53 KAPX     GAYLORD                          MI US  4490  -8470     0
+FXUS53 KDLH     DULUTH                           MN US  4683  -9220     0
+FXUS53 KDTX     DETROIT                          MI US  4268  -8347     0
+FXUS53 KGRB     GREEN_BAY                        WI US  4449  -8811     0
+FXUS53 KGRR     GRAND_RAPIDS                     MI US  4288  -8554     0
+FXUS53 KLOT     CHICAGO                          IL US  4159  -8808     0
+FXUS53 KMKX     MILWAUKEE/SULLIVAN               WI US  4295  -8854     0
+FXUS53 KMQT     MARQUETTE                        MI US  4652  -8754     0
+FXUS54 KBRO     BROWNSVILLE                      TX US  2590  -9741     0
+FXUS54 KLCH     LAKE_CHARLES                     LA US  3012  -9320     0
+FXUS54 KLIX     NEW_ORLEANS                      LA US  3032  -8981     0
+FXUS54 KMOB     MOBILE                           AL US  3067  -8823     0
+FXUS56 KEKA     EUREKA                           CA US  4079 -12416     0
+FXUS56 KLOX     LOS_ANGELES/OXNARD               CA US  3420 -11912     0
+FXUS56 KMFR     MEDFORD                          OR US  4236 -12287     0
+FXUS56 KMTR     SAN_FRANCISCO                    CA US  3659 -12184     0
+FXUS56 KPQR     PORTLAND                         OR US  4556 -12252     0
+FXUS56 KSEW     SEATTLE                          WA US  4768 -12225     0
+FXUS56 KSGX     SAN_DIEGO                        CA US  3290 -11705     0

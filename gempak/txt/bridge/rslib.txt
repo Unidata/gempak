@@ -1,0 +1,150 @@
+
+
+               Synoptic-Ship-Buoy Decoder (RS) Library
+
+
+The RS library contains subroutines to decode and store WMO SYNOP
+reports (standard format and US variants), buoy reports, ship reports,
+and US CMAN reports.
+
+Because some reports do not include the time of the observation or
+certain code groups, the decoder must have access to the the entire
+bulletin, or the necessary information must be supplied along with the
+report.
+
+The main subroutines are:
+
+   RS_DHDR	Decode the header of a bulletin
+   RS_DLN2	Decode the second line of a bulletin
+   RS_GRPT	Extract next observation from a bulletin
+   RS_DECO	Decode observation
+
+
+Given a bulletin, RS_DHDR and RS_DLN2 are called once, and then RS_GRPT
+and RS_DECO are looped through until the end of the bulletin is reached.
+
+In addition, the subroutine RS_REAL is available to select desired
+elements from the decoded observation and load them into a real array,
+which may then be written to a GEMPAK file.  The elements, and their
+order, are input parameters which should in general be read from a file.
+Available elements are, of course, limited to elements contained in the
+raw observation.  For example, station latitude and longitude is present
+in ship observations but not synoptic observations.
+
+The program TESTRS is included for debugging purposes and to illustrate
+a typical calling sequence.  The program reads pseudo-bulletins from a
+file (using RS_RFIL) and sends them off to the decoder.
+
+The subroutines contained in decode_sm.f are designed to be called by
+the UNIDATA LDM to load synoptic, ship, and buoy data into GEMPAK data
+files in real time.
+
+The following table lists the elements returned by RS_DECO, and the
+units they are translated into by RS_REAL.
+
+ELEMENT  SOURCE (see WMO manual)  DESCRIPTION	UNITS FROM SMREAL
+
+STATION PARAMETERS
+   1	II  or A(1)b(w)		REGION
+   2	iii or n(b)n(b)n(b)	IDENTIFIER
+   3	YY			DAY
+   4	GG			HOUR
+   5	L(a)L(a)L(a)		LATITUDE (10ths of degrees, N+)	DEGREES
+   6	L(o)L(o)L(o)L(o)	LONGITUDE (10ths of degrees,E+)	DEGREES
+
+STANDARD OBSERVATIONS
+   7	i(R) or RRR		RECENT RAIN (10ths of mm)	MM
+   8	t(R) or from i(R)	TIME PERIOD (hours)
+   9	ww, w(a)w(a), or from i(x)  WEATHER
+  10	W(1) or from i(x)	PAST WEATHER (1)
+  11	W(2) or from i(x)	PAST WEATHER (2)
+  12	h or hh			HEIGHT OF LOWEST CLOUD (m)	FEET/100
+  13	VV			VISIBILITY (m*10)		MILES
+  14	N			SKY COVER
+  15	dd			WIND DIRECTION (degrees)
+  16	ff			WIND SPEED (m/s or knots+500)	M/S
+  17	s(n)TTT			TEMPERATURE (C/10)		C
+  18	s(n)T(d)T(d)T(d) or from UUU   DEW POINT (C/10)		C
+  19	P(o)P(o)P(o)P(o)	STATION PRESSURE (mb/10)	MB
+  20	PPPP			SEA LEVEL PRESSURE (mb/10)	MB
+  21	a			PRESSURE TENDENCY
+  22	ppp and from a		3-HOUR PRESSURE CHANGE (mb/10)	MB
+  23	p(24)p(24)p(24)		24-HOUR PRESSURE CHANGE (mb/10)	MB
+  24	s(n)T(x)T(x)T(x)	MAXIMUM TEMPERATURE (C/10)	C
+  25	s(n)T(n)T(n)T(n)	MINIMUM TEMPERATURE (C/10)	C
+  26	R(24)R(24)R(24)R(24) or RRRt	24 HOUR RAINFALL (mm/10)MM
+  27	sss or 904nn		SNOW DEPTH (cm)			CM
+  28	E' or E+10		STATE OF GROUND
+
+OCEANIC OBSERVATIONS
+  29	D(s)			SHIP DIRECTION (deg)
+  30	v(s)			SHIP SPEED (m/s)		M/S
+  31	s(n)T(w)T(w)T(w)	WATER TEMPERATURE (C/10)	C
+  32	P(wa)P(wa) or P(w)P(w)	WIND WAVE PERIOD (sec)		S
+  33	H(wa)H(wa) or H(w)H(w)	WIND WAVE HEIGHT (m/10)		M
+  34	d(w1)d(w1)		1ST SWELL DIRECTION (deg)
+  35	P(w1)P(w1)		1ST SWELL PERIOD (sec)		S
+  36	H(w1)H(w1)		1ST SWELL HEIGHT (m/10)		M
+  37	d(w2)d(w2)		2ND SWELL DIRECTION (deg)
+  38	P(w2)P(w2)		2ND SWELL PERIOD (sec)		S
+  39	H(w2)H(w2)		2ND SWELL HEIGHT (m/10)		M
+  40	I(s)			CAUSE OF ICE ACCRETION ON SHIP
+  41	E(s)E(s)		THICKNESS OF ICE ON SHIP (cm)	CM
+  42	R(s)			RATE OF ICE ACCRETION ON SHIP
+
+SURPRISING WEATHER
+  43	j(1)			SURPRISING WEATHER CODE
+  44	d'd'f'f'		ddff BEFORE WIND SHIFT
+  45	d''d''f''f''		ddff AFTER WIND SHIFT
+  46	g(o)			HOURS BEFORE OB OF WIND SHIFT
+  47	s(n)d(T)		MAG OF TEMPERATURE CHANGE (C)	C
+  48	g(o)			TIME OF TEMPERATURE CHANGE
+  49	f(x)f(x) or f(x)f(x)f(x) MAX WIND SPEED (m/s or kt+500)	M/S
+  50	g(o)			TIME OF MAX SUSTAINED WIND
+
+CLOUD INFORMATION
+  51	N(h)			LOW CLOUD COVER
+  52	C(L)			LOW CLOUD TYPE
+  53	C(M)			MIDDLE CLOUD TYPE
+  54	C(H)			HIGH CLOUD TYPE
+  55	C			GENUS OF CLOUD
+  56	D(a)			CLOUD MOTION (deg)
+  57	e(C)			ELEV. ANGLE OF CLOUD TOP (deg)
+  58	C(s) (IV)		STATE OF TROPICAL SKY
+  59	D(L)			LOW CLOUD MOTION (deg)
+  60	D(M)			MIDDLE CLOUD MOTION (d)
+  61	D(H)			HIGH CLOUD MOTION (deg)
+  62	N(s)			CLOUD 1 SKY COVER
+  63	C			CLOUD 1 TYPE
+  64	h(s)h(s)		CLOUD 1 HEIGHT (m)		FEET/100
+  65	N(s)			CLOUD 2 SKY COVER
+  66	C			CLOUD 2 TYPE
+  67	h(s)h(s)		CLOUD 2 HEIGHT (m)		FEET/100
+  68	N(s)			CLOUD 3 SKY COVER
+  69	C			CLOUD 3 TYPE
+  70	h(s)h(s)		CLOUD 3 HEIGHT (m)		FEET/100
+  71	N(s)			CLOUD 4 SKY COVER
+  72	C			CLOUD 4 TYPE
+  73	h(s)h(s)		CLOUD 4 HEIGHT (m)		FEET/100
+  74	N'			CLOUD AMOUNT BELOW STATION
+  75	C'			CLOUD TYPE BELOW STATION
+  76	H'H'			CLOUD HEIGHT BELOW S. (m)	FEET/100
+  77	C(t)			DESCRIPTION OF CLOUD BELOW S.
+
+MISCELLANEOUS OBSERVATIONS
+  78	901nn			SIX HOUR SNOW ACCUM (cm)	CM
+  79	902nn or 903nn		WATER EQUIV ON GROUND (mm)	MM
+  80	R(t)			PRECIP START/END (hours)
+  81	d(c)			DURATION OF PRECIP CODE
+  82	i(t)			TIDE CODE
+  83	t(d)t(d)t(d)		TIDE DEPARTURE MAG (m*10)	M
+  84	T(c)T(c)T(c)?		CITY TEMPERATURE (C*10)		C
+  85	T(cx)T(cx)T(cx)?	CITY MAX TEMPERATURE (C*10)	C
+  86	T(cn)T(cn)T(cn)?	CITY MIN TEMPERATURE (C*10)	C
+  87				CITY PRECIP (units?)		MM?
+  88				MAX SUST. WIND (m/s or kt+500)	M/S
+  89	11nnn			MIN REC. WIND (m/s or kt+500)	M/S
+  90	22nnn			MAX REC. WIND (m/s or kt+500)	M/S
+  91	9nnnn			TIME OF BUOY OR CMAN OB
+
+  92-200: NOT USED

@@ -1,0 +1,14 @@
+     PMAX 
+
+     PMAX defines the maximum possible pressure from which data may 
+     be interpolated to the output vertical coordinate.
+
+     PMAX originated as a way to exclude low-level PV when interpolating
+     to the tropopause level from a THTA-coordinate input file.  A good
+     value of PMAX could be 650 or 700 (mb).
+
+     When interpolating from pressure coordinates or any other coordinate
+     system, make sure that PMAX does not conflict with the bounds of
+     the search as specified by STARTL and STOPL.
+
+

@@ -1,0 +1,16 @@
+! WCR.BULL
+!
+! Location information for the following product:
+! Weekly_Weather_and_Crop_Report.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+AXUS51 KALY     ALBANY                           NY US  4268  -7383     0
+AXUS53 KGID     HASTINGS                         NE US  4063  -9837     0
+AXUS54 KLZK     LITTLE_ROCK                      AR US  3483  -9225     0
+AXUS54 KMEG     MEMPHIS                          TN US  3513  -8980     0
+AXUS55 KCYS     CHEYENNE                         WY US  4115 -10480     0
+AXUS56 KPDT     PENDLETON                        OR US  4568 -11884     0

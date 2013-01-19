@@ -1,0 +1,17 @@
+! FOH.BULL
+!
+! Location information for the following product:
+! ETA_FOUS_freezing_and_relative_humidity.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+! Log:
+! A. Hardy/NCEP		11/04	separated out the lat/lons
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+FOUS40 KWNO     NCEP_NCO                         MD US  3841  -7727     0
+FOUS41 KWNO     NCEP_NCO                         MD US  3861  -7707     0
+FOUS42 KWNO     NCEP_NCO                         MD US  3881  -7687     0
+FOUS43 KWNO     NCEP_NCO                         MD US  3901  -7667     0

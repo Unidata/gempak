@@ -1,0 +1,15 @@
+MAP     5+31                                                                                                                            
+GAREA   dset                                                                                                                            
+PROJ    rad                                                                                                                             
+RADFIL  NEXRII_KFTG                                                                                                                     
+LATLON  0                                                                                                                               
+PANEL   0                                                                                                                               
+TITLE   31                                                                                                                              
+TEXT    1                                                                                                                               
+CLEAR   YES                                                                                                                             
+DEVICE  XW                                                                                                                              
+LUTFIL  default                                                                                                                         
+IMBAR   31/V/LL/.005;.05/.85;.01|.7/1/1/hw                                                                                              
+TILT    0                                                                                                                               
+RADPARM dz                                                                                                                              
+RADTIM  last                                                                                                                            

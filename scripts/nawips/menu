@@ -1,0 +1,485 @@
+#!/bin/csh -f
+#
+# (preceeding line causes a "fast-start" of the c-shell, ie, the .cshrc file
+#  is not executed.)
+#
+#===========================================================================
+#
+#   Simple GEMPAK menu system.  Jim Cowie (NPS) 5/92.
+#   jcowie@unidata.ucar.edu
+#
+#===========================================================================
+#
+#  To run this script, simply place it somewhere in the GEMPAK distribution
+#  and type menu.  
+#
+onintr main_menu
+#
+#
+#----------------------------------------
+#   Main Menu
+#----------------------------------------
+main_menu:
+echo " "
+echo " "
+echo "     GEMPAK Main Menu"
+echo " "
+echo " 1.  Surface Programs"
+echo " 2.  Upper Air Programs"
+echo " 3.  Objective Analysis Programs"
+echo " 4.  Gridded Data Programs"
+echo " 5.  GEMPLT Utility Programs"
+echo " "
+echo -n " Enter selection number or exit: "
+set choice = $<
+echo " "
+switch ($choice)
+case 1:
+  goto surface_menu
+case 2:
+  goto upperair_menu
+case 3:
+  goto objanal_menu
+case 4:
+  goto grids_menu
+case 5:
+  goto gplt_menu
+case e:
+case ex:
+case exit:
+  goto exit
+default:
+  goto main_menu
+endsw
+#
+#----------------------------------------
+#   Surface Menu
+#----------------------------------------
+surface_menu:
+echo " "
+echo " "
+echo " "
+echo "     Surface Programs"
+echo " "
+echo " 1.  List surface data                           (SFLIST)"  
+echo " 2.  List surface data in standard format        (SFL604)"
+echo " 3.  Plot surface data on station model          (SFMAP)"
+echo " 4.  Draw meteorogram                            (SFGRAM)"
+echo " 5.  Create/update surface data file programs"
+echo " "
+echo -n " Enter selection number, back, or exit: "
+set choice = $<
+echo " "
+switch ($choice)
+case 1:
+  $GEMEXE/sflist
+  breaksw
+case 2:
+  $GEMEXE/sfl604
+  breaksw
+case 3:
+  $GEMEXE/sfmap
+  breaksw
+case 4:
+  $GEMEXE/sfgram
+  breaksw
+case 5:
+  goto sfcmod_menu
+case b:
+case back:
+  goto main_menu
+case e:
+case ex:
+case exit:
+  goto exit
+endsw
+goto surface_menu
+#
+#----------------------------------------
+#   Surface Data set modify Menu
+#----------------------------------------
+sfcmod_menu:
+echo " "
+echo " "
+echo " "
+echo "     Create/Modify Surface Datasets"
+echo " "
+echo " 1.  Create surface dataset                      (SFCFIL)"
+echo " 2.  Update station information                  (SFSTNS)"
+echo " 3.  Move data to a surface file                 (SFMOD)"
+echo " 4.  Add/modify surface data                     (SFEDIT)"
+echo " 5.  Decode raw surface data                     (SFRAWD)"
+echo " 6.  Delete surface data                         (SFDELT)"
+echo " "
+echo -n " Enter selection number, back, top or exit: "
+set choice = $<
+echo " "
+switch ($choice)
+case 1:
+  $GEMEXE/sfcfil
+  breaksw
+case 2:
+  $GEMEXE/sfstns
+  breaksw
+case 3:
+  $GEMEXE/sfmod
+  breaksw
+case 4:
+  $GEMEXE/sfedit
+  breaksw
+case 5:
+  $GEMEXE/sfrawd
+  breaksw
+case 6:
+  $GEMEXE/sfdelt
+  breaksw
+case b:
+case back:
+  goto surface_menu
+case t:
+case top:
+  goto main_menu
+case e:
+case ex:
+case exit:
+  goto exit
+endsw
+goto sfcmod_menu
+#
+#----------------------------------------
+#   Upper air Menu
+#----------------------------------------
+upperair_menu:
+echo " "
+echo " "
+echo " "
+echo "     Upper Air Programs"
+echo " "
+echo " 1.  List data in a sounding data set                 (SNLIST)"
+echo " 2.  Plot station sounding data on map                (SNMAP)"
+echo " 3.  Draw upper air profile                           (SNPROF)"
+echo " 4.  Draw cross section                               (SNCROSS)"
+echo " 5.  Plot a hodograph                                 (SNHODO)"
+echo " 6.  Plot a sounding time series                      (SNTSER)"
+echo " 7.  Create/Modify upper air data file programs"
+echo " "
+echo -n " Enter selection number, back, or exit: "
+set choice = $<
+echo " "
+switch ($choice)
+case 1:
+  $GEMEXE/snlist
+  breaksw
+case 2:
+  $GEMEXE/snmap
+  breaksw
+case 3:
+  $GEMEXE/snprof
+  breaksw
+case 4:
+  $GEMEXE/sncross
+  breaksw
+case 5:
+  $GEMEXE/snhodo
+  breaksw
+case 6:
+  $GEMEXE/sntser
+  breaksw
+case 7:
+  goto uamod_menu
+case b:
+case back:
+  goto main_menu
+case e:
+case ex:
+case exit:
+  goto exit
+endsw
+goto upperair_menu
+#
+#----------------------------------------
+#   Upper-air Data set modify Menu
+#----------------------------------------
+uamod_menu:
+echo " "
+echo " "
+echo " "
+echo "     Create/Modify Upper Air Datasets"
+echo " "
+echo " 1.  Create a sounding data file                      (SNCFIL)"
+echo " 2.  Update the geographic information in a file      (SNSTNS)"
+echo " 3.  Modify a sounding dataset                        (SNMOD)"
+echo " 4.  Edit sounding datasets                           (SNEDIT)"
+echo " 5.  Decode raw upper air data                        (SNRAWD)"
+echo " 6.  Delete sounding data                             (SNDELT)"
+echo " "
+echo -n " Enter selection number, back, top or exit: "
+set choice = $<
+echo " "
+switch ($choice)
+case 1:
+  $GEMEXE/sncfil
+  breaksw
+case 2:
+  $GEMEXE/snstns
+  breaksw
+case 3:
+  $GEMEXE/snmod
+  breaksw
+case 4:
+  $GEMEXE/snedit
+  breaksw
+case 5:
+  $GEMEXE/snrawd
+  breaksw
+case 6:
+  $GEMEXE/sndelt
+  breaksw
+case b:
+case back:
+  goto upperair_menu
+case t:
+case top:
+  goto main_menu
+case e:
+case ex:
+case exit:
+  goto exit
+endsw
+goto uamod_menu
+#----------------------------------------
+#   Objective Analysis Menu
+#----------------------------------------
+objanal_menu:
+echo " "
+echo " "
+echo " "
+echo "     Objective Analysis Programs"
+echo " "
+echo " 1.  Set up a grid file                       (OAGRID)"
+echo " 2.  Objective analysis of surface file       (OABSFC)"
+echo " 3.  Objective analysis of sounding file      (OABSND)"
+echo " 4.  Draw box around areas in grid files      (OABOX)"
+echo " "
+echo -n " Enter selection number, back, or exit: "
+set choice = $<
+echo " "
+switch ($choice)
+case 1:
+  $GEMEXE/oagrid
+  breaksw
+case 2:
+  $GEMEXE/oabsfc
+  breaksw
+case 3:
+  $GEMEXE/oabsnd
+  breaksw
+case 4:
+  $GEMEXE/oabox
+  breaksw
+case b:
+case back:
+  goto main_menu
+case e:
+case ex:
+case exit:
+  goto exit
+endsw
+goto objanal_menu
+#
+#----------------------------------------
+#   Gidded data Menu
+#----------------------------------------
+grids_menu:
+echo " "
+echo " "
+echo " "
+echo "     Gridded Data Programs"
+echo " "
+echo " 1.  General file information               (GDINFO)"
+echo " 2.  List grid data                         (GDLIST)"
+echo " 3.  Plot data on map                       (GDMAP)"
+echo " 4.  Draw contours                          (GDCNTR)"
+echo " 5.  Plot wind fields                       (GDWIND)"
+echo " 6.  Draw streamlines                       (GDSTREAM)"
+echo " 7.  Draw grid profile                      (GDPROF)"
+echo " 8.  Draw cross section                     (GDCROSS)"
+echo " 9.  Draw time series                       (GDTSER)"
+echo "10.  Draw time-height cross section         (GDTHGT)"
+echo "11.  Draw contours & vector fields	    (GDPLOT)"
+echo "12.  Create/Modify grid file programs"
+echo " "
+echo -n " Enter selection number, back, or exit: "
+set choice = $<
+echo " "
+switch ($choice)
+case 1:
+  $GEMEXE/gdinfo
+  breaksw
+case 2:
+  $GEMEXE/gdlist
+  breaksw
+case 3:
+  $GEMEXE/gdmap
+  breaksw
+case 4:
+  $GEMEXE/gdcntr
+  breaksw
+case 5:
+  $GEMEXE/gdwind
+  breaksw
+case 6:
+  $GEMEXE/gdstream
+  breaksw
+case 7:
+  $GEMEXE/gdprof
+  breaksw
+case 8:
+  $GEMEXE/gdcross
+  breaksw
+case 9:
+  $GEMEXE/gdtser
+  breaksw
+case 10:
+  $GEMEXE/gdthgt
+  breaksw
+case 11:
+  $GEMEXE/gdplot
+  breaksw
+case 12:
+  goto gdmod_menu
+case b:
+case back:
+  goto main_menu
+case e:
+case ex:
+case exit:
+  goto exit
+endsw
+goto grids_menu
+#
+#----------------------------------------
+#   Gridded Data set modify Menu
+#----------------------------------------
+gdmod_menu:
+echo " "
+echo " "
+echo " "
+echo "     Create/Modify Gridded Datasets"
+echo " "
+echo " 1.  Create grid file                       (GDCFIL)"
+echo " 2.  Delete grids from a file               (GDDELT)"
+echo " 3.  Add computed grids to file             (GDDIAG)"
+echo " 4.  Add OMEGA grid to file                 (GDOMEG)"
+echo " 5.  Edit grids in a grid file              (GDEDIT)"
+echo " 6.  Copy grids to a grid file              (GDMOD)"
+echo " 7.  Compute time statistics                (GDSTAT)"
+echo " 8.  Decode raw GRIB messages               (NAGRIB)"
+echo " 9.  Calculate vertical interpolations      (GDVINT)"
+echo " "
+echo -n " Enter selection number, back, top or exit: "
+set choice = $<
+echo " "
+switch ($choice)
+case 1:
+  $GEMEXE/gdcfil
+  breaksw
+case 2:
+  $GEMEXE/gddelt
+  breaksw
+case 3:
+  $GEMEXE/gddiag
+  breaksw
+case 4:
+  $GEMEXE/gdomeg
+  breaksw
+case 5:
+  $GEMEXE/gdedit
+  breaksw
+case 6:
+  $GEMEXE/gdmod
+  breaksw
+case 7:
+  $GEMEXE/gdstat
+  breaksw
+case 8:
+  $GEMEXE/nagrib
+  breaksw
+case 9:
+  $GEMEXE/gdvint
+  breaksw
+case b:
+case back:
+  goto grids_menu
+case t:
+case top:
+  goto main_menu
+case e:
+case ex:
+case exit:
+  goto exit
+endsw
+goto gdmod_menu
+#
+#----------------------------------------
+#   GEMPLT utilities Menu
+#----------------------------------------
+gplt_menu:
+echo " "
+echo " "
+echo " "
+echo "     GEMPLT Utility Programs"
+echo " "
+echo " 1.  Draw map                                 (GPMAP)"
+echo " 2.  Draw box around view region              (GPBOX)"
+echo " 3.  Set color components                     (GPCOLOR)"
+echo " 4.  Clear graphics device                    (GPCLEAR)"
+echo " 5.  Close a plot file                        (GPCLOSE)"
+echo " 6.  End use of GEMPLT                        (GPEND)"
+echo " "
+echo -n " Enter selection number, back, or exit: "
+set choice = $<
+echo " "
+switch ($choice)
+case 1:
+  $GEMEXE/gpmap
+  breaksw
+case 2:
+  $GEMEXE/gpbox
+  breaksw
+case 3:
+  $GEMEXE/gpcolor
+  breaksw
+case 4:
+  $GEMEXE/gpclear
+  breaksw
+case 5:
+  $GEMEXE/gpclose
+  breaksw
+case 6:
+  $GEMEXE/gpend
+  breaksw
+case b:
+case back:
+  goto main_menu
+case e:
+case exit:
+  $GEMEXE/gpend
+  exit 
+endsw
+goto gplt_menu
+#
+#--------------------------------------------------------------------------
+#
+# Exit this procedure. Stop the gplt process if running.
+#
+exit:
+/bin/ps | fgrep -s gplt > /dev/null
+#echo $status
+if ( $status == 0 ) then
+  $GEMEXE/gpend
+endif
+exit
+
+--------------------------------  cut here  ---------------------------------
+

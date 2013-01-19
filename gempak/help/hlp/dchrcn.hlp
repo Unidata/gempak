@@ -1,0 +1,75 @@
+
+DCHRCN
+
+    DCHRCN decodes forecast/advisory reports for tropical depressions,
+    tropical storms and hurricanes for the Atlantic and Pacific Oceans
+    from a real-time data feed, or from a file fed to the program 
+    through standard input, and writes the data to an ASCII file.  The 
+    program is controlled by inputs to the command line.
+
+    The inputs are program options and the output file name or template.
+    For example, for real-time data feeds:
+    
+	dchrcn [options] output_file
+
+    If running the program interactively with standard input, the -c
+    option must be used.  The input file must also be specified.
+    For example:
+
+	dchrcn -c YYMMDD/HHNN [other_options] output_file < input_file
+    
+    A template may be used to specify the output file name.  The file
+    name template uses the date and time of the bulletin or report
+    to replace the following characters.
+
+	YYYY or YY	Year with or without the century
+	MM		Month number
+	DD		Day
+	HH		Hour
+	NN		Minute
+
+
+     The format of the output ASCII file (with the 2 '|' lines given 
+     below appearing as one line in the file) is as follows: 
+
+     |Type|Valid_time|Name|Advisory_Number|Position_accuracy 
+        |Direction|Speed|Minimum_Central_Press|Corr_flag
+	     Lat    Lon    Type
+	     Quadrant data
+
+     Where: Type is TD (tropical depression), TS (tropical storm),
+ 	 	HU (hurricane) or HUT (typhoon).  If type is not 'HUT',
+		an 'E' or 'S' is appended for an extratropical or 
+		subtropical storm, respectively
+	    Valid_time is the full GEMPAK date/time string
+	    Name is the storm name
+	    Advisory_number is the number assigned to the storm	
+	    Position_accuracy is how close the center of the eye
+		is to the given latitude and longitude
+	    Direction is the direction that the storm is moving toward	
+	    Speed is the speed of the storm in knots	
+	    Minimum_Central_Press is the pressure value in mb in the eye
+		at the valid time
+	    Corr_flag is a flag indicating a correction (0 or 1)
+
+     Extra spaces may appear anywhere in this line of information,
+     except in the first character position.  The first character must
+     be a bar (|).
+
+     The current and forecast latitude and longitude values and storm
+     type are read using the FORTRAN format (2F9.2,4X,A).
+
+     Quadrant data (current 100 kt or 64 kt, 50 kt, and 34 kt winds and 
+     12 ft seas, and forecast 100 kt or 64 kt, 50 kt and 34 kt winds) 
+     are read using the FORTRAN format (4X,A).
+ 
+     Prior to June 1, 2004, reports from the Joint Typhoon Warning
+     Center (JTWC) included 100 kt winds instead of 64 kt winds.  As of
+     June 1, 2004, the JTWC reports 64 kt winds, as do the TPC and CPHC.
+     In the decoded quadrant sections, the first wind position,
+     originally labelled as '64', is now labelled as 'MW', the maximum
+     wind, where 'MW' represents either the 64 kt winds from any report
+     or the 100 kt winds from Western Pacific (JTWC) reports issued
+     before June 1, 2004.  If the storm type is 'HUT' and the date is
+     prior to June 1, 2004, the first quadrant data is assumed to be the
+     100 kt wind information.

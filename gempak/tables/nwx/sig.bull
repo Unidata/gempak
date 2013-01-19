@@ -1,0 +1,27 @@
+! SIG.BULL
+!
+! Location information for the following product:
+! International_Sigment/Convective_Sigmet.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+! Log:
+! A. Hardy/NCEP		11/04	separated out the lat/lons
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+NZUS90 KGRB     GREEN_BAY                        WI US  4449  -8811     0
+WSAC01 PAFA     FAIRBANKS_INTL_ARPT              AK US  6481 -14786     0
+WSPA31 PHFO     HONOLULU                         HI US  2130 -15780     0
+WSPA32 PHFO     HONOLULU                         HI US  2150 -15800     0
+WSPA33 PHFO     HONOLULU                         HI US  2170 -15820     0
+WSPA34 PHFO     HONOLULU                         HI US  2190 -15840     0
+WSPA35 PHFO     HONOLULU                         HI US  2210 -15860     0
+WSPN01 PAJN     JUNEAU_INTL_AIRPORT              AK US  5836 -13458     0
+WSPN01 PANC     ANCHORAGE_INTL_ARPT              AK US  6116 -15002     0
+WSPQ31 PGUM     GUAM                             GU US  1347  14478     0
+WSPQ32 PGUM     GUAM                             GU US  1367  14478     0
+WSPQ33 PGUM     GUAM                             GU US  1387  14478     0
+WSPQ34 PGUM     GUAM                             GU US  1407  14478     0
+WSPQ35 PGUM     GUAM                             GU US  1427  14478     0

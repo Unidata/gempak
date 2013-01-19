@@ -1,0 +1,30 @@
+! CTRLBTN.TBL.
+!
+! This table provides the icons located in the control button palette
+!
+! Log:
+! H. Zeng/EAI           01/01           initial coding
+! E. Safford/GSC	04/01		reorder for horizontal draw
+! H. Zeng/EAI           01/02           added layer button
+! T. Lee/SAIC		04/02		added open product button	
+!------------------------------------------------------------------------
+BEGIN
+!
+! Row 1
+!
+open
+save
+saveas
+!
+! Row 2
+!
+exit
+restore
+refresh
+!
+! Row 3
+!
+layer
+openprod
+saveall
+END

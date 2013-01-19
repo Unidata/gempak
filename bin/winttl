@@ -1,0 +1,24 @@
+#!/bin/csh
+
+if ( $#argv < 1 ) then
+#    echo " "
+#    echo " "
+#    echo " Usage: `basename $0` description"
+#    echo " "
+#    echo " "
+    set strng = "`whoami`@`hostname|cut -d. -f1`"
+else
+    set strng = `echo "${1}"`
+endif
+
+switch  ( $OS )
+
+    case "Linux":
+	/bin/echo -ne "\033]0;${strng}\007"
+    	breaksw
+
+    default:
+	/bin/echo "\033]0;${strng}\007"
+    	breaksw
+
+endsw

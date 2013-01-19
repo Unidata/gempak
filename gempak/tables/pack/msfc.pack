@@ -1,0 +1,60 @@
+!MSFC.PACK
+!
+!This table is the packing table for DCMSFC, which decodes marine surface reports.
+!
+!*Log:
+!
+!R. Hollern/NCEP  	 6/96
+!D. Kidwell/NCEP	 5/97	Changed CFRA to CFRT
+!D. Kidwell/NCEP	 5/97	Replaced many parameters
+!D. Kidwell/NCEP	10/97	Changed temperatures from K to C
+!A. Hardy/GSC            2/98   Changed CBAS limits:using WMO table 1600
+!D. Kidwell/NCEP	12/98	Added secondary swell wave parameters
+!D. Kidwell/NCEP	10/99	Removed WWMA, PWWA; changed WWMO limit
+!F. J. Yen/NCEP		 3/01	Added GUST and ALTI
+!D. Kidwell/NCEP	 3/02	Added SHPD, SHPK; deleted GUM1, P06M, XS10, ITSO
+!D. Kidwell/NCEP	 4/05	Added PKWD, PKWS, PKWT, PMN1, PMNT
+!
+PMSL       850.       1100.       .1
+PRES       700.       1100.       .1
+P03D         0.       8999.       1. 
+TMPC       -80.         62.        .1
+DWPC       -80.         62.        .1
+TMWC       -80.         62.        .1
+SPED         0.        100.       .1
+DRCT         0.        360.     10.
+VSBK         0.         72.       .1
+WWMO         0.        203.      1.
+PWWM         0.          9.      1.
+CFRT         0.          9.      1.
+CFRL         0.          9.      1.
+CTYL         0.          9.      1.
+CLHL         0.        130.      1.
+SSTC        -4.         40.      .1
+WPER         0.         50.      1.
+WHGT         0.         30.      .1
+PWHR         0.         23.      1.
+PWMN         0.         59.      1.
+PWDR         0.        360.     10.
+PWSP         0.        100.      .1
+TOST         0.          3.      1.
+CBAS        -1.          9.      1.
+POWW         0.         50.      1.
+HOWW         0.         30.      .1
+DOSW         0.        360.     10.
+POSW         0.         50.      1.
+HOSW         0.         30.      .1
+DOS2         0.        360.     10.
+POS2         0.         50.      1.
+HOS2         0.         30.      .1
+IDTH         0.          2.      .01
+ROIA         0.          4.      1.
+GUST         0.        250.	 1.
+ALTI        24.         34.      .01
+SHPD         0.        360.      5.
+SHPK         0.         45.      1.
+PKWD         0.        360.     10.
+PKWS         0.        100.      .1
+PKWT         0.       2359.      1.
+PMN1       850.       1100.      .1 
+PMNT         0.       2359.      1.

@@ -1,0 +1,4 @@
+$CC $CFLAGS -I$OS_INC/libxml2 -c testxml.c
+$FC $LDFLAGS -o $OS_BIN/testxml testxml.o \
+		$CGEMLIB -lm -lxslt -lxml2 -lpthread -lz
+$RM *.o

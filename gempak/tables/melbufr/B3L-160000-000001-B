@@ -1,0 +1,52 @@
+#
+# BUFR Table B - Local table for ECMWF encode/decode of 
+# High Density Winds from GOES, ref. IPD-1008 release 3 Version 1
+#
+#					Data
+#F	X	Y	Scale	RefVal	Width	Units	Element Name
+
+  0;    1;      7;      0;           0;   10;   Code_Table; Satellite identifier
+  0;    1;     31;      0;           0;   16;   Code_Table; Identification of originating/generating center
+  0;    1;     32;      0;           0;    8;   Code_Table; Generating application
+
+  0;    2;     23;      0;           0;    4;   Code_Table; Satellite derived wind computation method
+  0;    2;     57;      0;           0;    4;   Code_Table; Origin of first guess information for GOES-I/M soundings
+
+  0;    2;    196;      0;           0;    9;   Code_Table; Satellite Classification
+  0;    2;    197;      8;           0;   26;           Hz; Satellite Channel Center Frequency
+  0;    2;    198;      8;           0;   26;           Hz; Satellite Channel Band Width
+  0;    2;    221;      0;           0;   18;            M; Segment Size At Nadir In X Direction
+  0;    2;    222;      0;           0;   18;            M; Segment Size At Nadir In Y Direction
+  0;    2;    231;      0;           0;    4;   Code_Table; Height Assignment Method
+  0;    2;    232;      0;           0;    3;   Code_Table; Tracer Correlation Method
+  0;    2;    252;      0;           0;   31;   Flag_Table; Satellite Instrument Data Used In Processing
+
+  0;    4;      1;      0;           0;   12;         Year; Year
+  0;    4;      2;      0;           0;    4;           mo; Month
+  0;    4;      3;      0;           0;    6;          Day; Day
+  0;    4;      4;      0;           0;    5;           hr; Hour
+  0;    4;      5;      0;           0;    6;          min; Minute
+  0;    4;      6;      0;           0;    6;            s; Second
+  0;    4;     24;      0;       -2048;   12;           hr; Time period or displacement
+
+  0;    5;      1;      5;    -9000000;   25;          deg; Latitude (high accuracy)
+
+  0;    6;      1;      5;   -18000000;   26;          deg; Longitude (high accuracy)
+
+  0;    7;      4;     -1;           0;   14;           Pa; Pressure
+  0;    7;     24;      2;       -9000;   15;          deg; Satellite zenith angle
+
+  0;    8;     12;      0;           0;    2;   Code_Table; land/sea qualifier
+  0;    8;     21;      0;           0;    5;   Code_Table; Time significance
+
+  0;   11;      1;      0;           0;    9;     deg_true; Wind direction
+  0;   11;      2;      1;           0;   12;          m/s; Wind speed
+
+  0;   12;      1;      1;           0;   12;        deg_K; Temperature/dry bulb temperature
+  0;   12;    193;      1;           0;   12;        deg_K; Coldest Cluster Temperature
+
+
+  0;   31;     31;      0;           0;    1;   Flag_Table; Data present indicator
+
+  0;   33;      7;      0;           0;    7;      Percent; Per cent confidence
+

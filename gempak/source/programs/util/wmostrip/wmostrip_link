@@ -1,0 +1,3 @@
+$CC $CFLAGS $LDFLAGS -o $OS_BIN/wmostrip \
+		wmostrip.c $CGEMLIB
+$RM *.o

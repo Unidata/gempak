@@ -1,0 +1,95 @@
+! LINEBTN.TBL.
+!
+! This table provides the icons located in the lines  button palette
+!
+! Log:
+! E. Wehner/EAi          5/97
+! D.W.Plummer/NCEP	 7/97	Added filarrow and dshline
+! S. Jacobs/NCEP	 4/98	Added new special lines 
+! C. Lin/EAI	 	 6/98	Added more dashed lines 
+! F. J. Yen/NCEP	 9/98	Added more special lines 
+! S. Jacobs/NCEP	 3/99	Added special line 22
+! E. Safford/GSC	04/01	reorder for horizontal layout
+! J. Wu/SAIC		10/01	add spln23 - double line
+! J. Wu/SAIC		10/01	add kinkln1, 2 - kink arrow lines
+! S. Gilbert/NCEP  	 6/05	Added special line 26
+! S. Jacobs/NCEP	 4/08	Added line type 10 - dotted line
+!------------------------------------------------------------------------
+BEGIN
+!
+! Row 1
+!
+cntr
+dshline
+spln13
+!
+! Row 2
+!
+spln4
+spln6
+spln16
+!
+! Row 3
+!
+spln10
+spln5
+spln11
+!
+! Row 4
+!
+spln3
+spln2
+spln19
+!
+! Row 5
+!
+spln1
+spln7
+spln9
+!
+! Row 6
+!
+spln12
+spln8
+spln15
+!
+! Row 7
+!
+spln18
+spln17
+spln14
+!
+! Row 8
+!
+spln20
+spln21
+spln22
+!
+! Row 9
+!
+spln23
+dsline2
+dsline3
+!
+! Row 10
+!
+dsline4
+dsline5
+dsline6
+!
+! Row 11
+!
+dsline7
+dsline8
+dsline9
+!
+! Row 12
+!
+dsline10
+kinkln1
+kinkln2
+!
+! Row 13
+!
+spln26
+END

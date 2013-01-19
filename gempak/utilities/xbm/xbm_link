@@ -1,0 +1,8 @@
+echo LINKING XBM
+cp $GEMPAK/source/device/main/device.f .
+$FC $FFLAGS $LDFLAGS -o xbm device.f \
+	$GEMLIB $DEVICE \
+	xbm.a  $OS_LIB/gn.a $SYSLIB \
+	$CGEMLIB $GEMLIB
+
+$RM *.o device.f xbm.a

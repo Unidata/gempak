@@ -1,0 +1,13 @@
+! lingray.tbl
+!
+! Linear 128 gray scale table  
+!
+!Color name    Abrev   Red  Green   Blue  X color name
+                         0      0      0
+                         0    255      0 
+                         0    128      0
+                         0    255    255
+                       255    255      0
+                       255      0      0
+                       128      0      0
+                       255    255    255

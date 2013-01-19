@@ -1,0 +1,12 @@
+! FWDDY1.BULL
+!
+! This table contains the bulletin/station information to be used
+! with the Fire Weather Discusion Day1. 
+!
+! The format for the file is given below, with the
+! number of characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+!
+FNUS21 KWNS     NORMAN                           OK US  3522  -9747   362

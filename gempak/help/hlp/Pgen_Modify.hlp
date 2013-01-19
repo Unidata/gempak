@@ -1,0 +1,67 @@
+			Modify Action
+
+
+I.  Functionality
+
+The modify action changes the shape of a drawn line.  It may either replace the
+interior portion of a line, replace a portion of a line by retaining all 
+line vertices up to a selected point on a line and replacing all remaining 
+vertices, or totally replace the original line with a new line. 
+Line, front and Sigmet objects may be modified.  A ghost line is drawn while 
+modifying a line indicating the resultant line. 
+
+II. Operation 
+
+The portion of the line that is modified is determined by the location of
+the first mouse click relative to the line, the direction of subsequent 
+clicked points relative to the first, and the location of the last clicked 
+point relative to the line.  A tie distance, currently set at 10 pixels, 
+is used to control the modify function behavior.  The following describes how
+open and closed lines can be modified.  For each case, click the Modify action
+from the Product Generation Palette.  Move the cursor and click the left 
+mouse button to select the desired line to be modified.
+
+A.  Total Replacement of Open and Closed Lines
+
+Place the cursor at a distance greater than the tie distance away from the line 
+and click the left mouse button.  Subsequent left mouse clicks will add new 
+line vertices completely replacing the original line.  The ghost line indicates
+the shape of the new line.  Click the middle mouse to terminate the new line.  
+Click the middle mouse button again to deselect the line. 
+
+B.  Interior Replacement of Open and Closed Lines
+
+Place the cursor within the tie distance of the line and click the left mouse
+button.  Subsequent left mouse clicks will add points to the line.  The ghost
+line indicates the shape of the modified line as points are added.  For open
+lines, the last added point must be placed within the tie distance of the 
+original line to complete the interior replacement.  If the cursor is outside
+the tie distance, then partial replacement is performed.  Click the middle mouse 
+button to end the interior line replacement.  Click the middle mouse button 
+again to de-select the line.
+
+C.  Partial Replacement of Open Lines
+
+Partial replacement is performed in the same manner as interior replacement
+as described above.  The only difference is that the last added point is 
+located greater than the tie distance away from the original line.
+
+III.  Rules
+
+A.  Line Portion Replaced For Interior and Partial Line Modifications
+
+The portion of the line that is replaced is determined by the modify direction.
+The modify direction is defined to be the direction relative to the normal
+of the first added point and the original line.   For example, if the cursor
+is moved to the right of the normal line, then all line vertices to the
+left of the normal are retained and all points to the right of the normal are
+replaced by new points added by clicking the left mouse button.  The ghost
+line highlights which portion of the original line is retained and shows
+the shape of the new line as points are added.   
+
+B.  Vertex Addition in the Vicinity of Existing Vertices
+
+If the first clicked point or the last clicked point is within the tie
+distance of an existing vertex, the existing vertex is used for the new
+line instead of having two vertices nearly co-located.  This check is
+not performed for intermediate clicked points.  

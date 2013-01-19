@@ -1,0 +1,4 @@
+$CC $CFLAGS -c testctb.c 
+$FC $LDFLAGS -o $OS_BIN/testctb testctb.o \
+		$GEMLIB $CGEMLIB $GEMLIB
+$RM *.o

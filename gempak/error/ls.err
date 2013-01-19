@@ -1,0 +1,12 @@
+!	LS error messages
+!
+   6	! Report: !AS
+   5	! Bad hour value: !AS
+   4	! Bad day value: !AS
+   3	! Report date/time problem: !AS
+   2	! Station !AS not in land station table
+   1	! !AS
+  -1	! Bad report length: !AS
+  -2	! Report rejected: !AS
+  -3	! Bad group length - reject rest of report: !AS
+  -4	! Station table read error

@@ -1,0 +1,7 @@
+#
+# LOCAL BUFR Table B - Classification of Elements
+#
+# sccs keywords: @(#)Table_B.txt	1.1 05/07/97
+#					Data
+  0;   12;    194;      1;           0;   12;        deg_K; Dry bulb temperature at 2 meters
+  0;    1;    194;      0;           0;   72;    CCITT_IA5; test Ship or mobile land station identifier

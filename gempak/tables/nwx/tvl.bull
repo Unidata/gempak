@@ -1,0 +1,19 @@
+! TVL.BULL
+!
+! Location information for the following product:
+! Travelers_Forecast.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+FPAK87 PAJK     JUNEAU                           AK US  5836 -13458     0
+FPUS81 KAKQ     WAKEFIELD                        VA US  3697  -7700     0
+FPUS81 KBGM     BINGHAMTON                       NY US  4220  -7598     0
+FPUS81 KBOX     TAUNTON                          MA US  4195  -7112     0
+FPUS81 KCAR     CARIBOU                          ME US  4577  -6862     0
+FPUS81 KILN     WILMINGTON                       OH US  3941  -8381     0
+FPUS82 KGSP     GREENVILLE/SPARTANBURG           SC US  3488  -8222     0
+FPUS85 KBOU     DENVER                           CO US  4000 -10526     0
+NZUS90 KGRB     GREEN_BAY                        WI US  4449  -8811     0

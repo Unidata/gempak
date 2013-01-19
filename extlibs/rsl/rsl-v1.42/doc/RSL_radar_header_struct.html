@@ -1,0 +1,41 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.6 [en] (X11; U; Linux 2.2.12 i686) [Netscape]">
+</head>
+<body>
+<a href="index.html"><img SRC="rsl.gif" ></a>
+<hr>
+<pre>typedef struct {&nbsp;
+&nbsp; int month, day, year;&nbsp;
+&nbsp; int hour, minute;&nbsp;
+&nbsp; float sec; /* Second plus fractional part. */
+&nbsp; char radar_type[50]; /* Type of radar. Use for QC-ing the data.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; * Supported types are:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; * "wsr88d", "lassen", "uf",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; * "nsig", "nsig2", "mcgill",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; * "kwajalein", "rsl", "toga".
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; * Set by appropriate ingest routine.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; */&nbsp;
+&nbsp; int nvolumes;
+&nbsp; int number;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /* arbitrary number of this radar site */
+&nbsp; char name[8];&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /* Nexrad site name */
+&nbsp; char radar_name[8]; /* Radar name. */
+&nbsp; char project[24];&nbsp;&nbsp; /*&nbsp;Project assocated with data. */
+&nbsp; char city[15];&nbsp;&nbsp;&nbsp;&nbsp; /* nearest city to radaar site */
+&nbsp; char state[2];&nbsp;&nbsp;&nbsp;&nbsp; /* state of radar site */
+&nbsp; int latd;&nbsp;&nbsp; /* degrees of latitude of site */
+&nbsp; int latm;&nbsp;&nbsp; /* minutes of latitude of site */
+&nbsp; int lats;&nbsp;&nbsp; /* seconds of latitude of site */
+&nbsp; int lond;&nbsp;&nbsp; /* degrees of longitude of site */
+&nbsp; int lonm;&nbsp;&nbsp; /* minutes of longitude of site */
+&nbsp; int lons;&nbsp;&nbsp; /* seconds of longitude of site */
+&nbsp; int height; /* height of site in meters above sea level*/
+&nbsp; int spulse; /* length of short pulse (ns)*/
+&nbsp; int lpulse; /* length of long pulse (ns) */
+&nbsp; int vcp;&nbsp;&nbsp;&nbsp; /* Volume Coverage Pattern (for WSR-88D only) */
+} Radar_header;</pre>
+
+</body>
+</html>

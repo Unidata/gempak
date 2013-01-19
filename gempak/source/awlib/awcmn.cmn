@@ -1,0 +1,18 @@
+C************************************************************************
+C AWCMN.H								*
+C*                                                                      *
+C*									*
+C*  This common declares the global variables used in the AW       	*
+C*  gemlib subroutines.							*
+C* Log:                                                                 *
+C* A. Hardy/GSC		 10/00						*
+C************************************************************************
+	INTEGER		flun 
+C*
+	CHARACTER	dbug
+C*
+	COMMON	/ AWFILE /	flun,
+C*					open file number
+     +				dbug
+C*					debug flag
+C*

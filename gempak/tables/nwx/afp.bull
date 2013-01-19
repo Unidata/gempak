@@ -1,0 +1,38 @@
+! AFP.BULL
+!
+! Location information for the following product:
+! Area_Forecast_Product.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+FLUS42 KKEY     KEY_WEST                         FL US  2457  -8178     0
+FLUS42 KJAX     JACKSONVILLE                     FL US  3047  -8169     0
+FLUS42 KMLB     MELBOURNE                        FL US  2811  -8065     0
+FLUS43 KUNR     RAPID_CITY                       SD US  4406 -10320     0
+FLUS44 KAMA     AMARILLO                         TX US  3522 -10169     0
+FLUS44 KBMX     BIRMINGHAM                       AL US  3316  -8677     0
+FLUS44 KBRO     BROWNSVILLE                      TX US  2590  -9741     0
+FLUS44 KCRP     CORPUS_CHRISTI                   TX US  2777  -9750     0
+FLUS44 KFFC     PEACHTREE_CITY                   GA US  3336  -8455     0
+FLUS44 KFWD     DALLAS/FORT_WORTH                TX US  3283  -9729     0
+FLUS44 KHGX     HOUSTON/GALVESTON                TX US  2946  -9506     0
+FLUS44 KHUN     HUNTSVILLE                       AL US  3472  -8665     0
+FLUS44 KJAN     JACKSON                          MS US  3231  -9008     0
+FLUS44 KLCH     LAKE_CHARLES                     LA US  3012  -9320     0
+FLUS44 KLIX     NEW_ORLEANS                      LA US  3032  -8981     0
+FLUS44 KLUB     LUBBOCK                          TX US  3352 -10187     0
+FLUS44 KLZK     LITTLE_ROCK                      AR US  3483  -9225     0
+FLUS44 KMAF     MIDLAND/ODESSA                   TX US  3194 -10218     0
+FLUS44 KMEG     MEMPHIS                          TN US  3513  -8980     0
+FLUS44 KMOB     MOBILE                           AL US  3067  -8823     0
+FLUS44 KOHX     NASHVILLE                        TN US  3624  -8655     0
+FLUS44 KOUN     NORMAN                           OK US  3522  -9745     0
+FLUS44 KSHV     SHREVEPORT                       LA US  3245  -9383     0
+FLUS44 KSJT     SAN_ANGELO                       TX US  3137 -10048     0
+FLUS44 KTSA     TULSA                            OK US  3613  -9586     0
+FLUS45 KABQ     ALBUQUERQUE                      NM US  3502 -10662     0
+FLUS45 KEPZ     EL_PASO_TX/SANTA_TERESA          NM US  3187 -10669     0
+FLUS45 KGGW     GLASGOW                          MT US  4820 -10662     0

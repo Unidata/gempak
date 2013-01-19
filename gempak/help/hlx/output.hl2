@@ -1,0 +1,30 @@
+     OUTPUT
+
+     OUTPUT determines the output devices.  The valid devices are the 
+     terminal (T), a file (F) or none (N).  
+
+     Specify the output devices desired by entering the appropriate 
+     letters with no separators.
+
+     If output is sent to a file, the file name may be specified after a 
+     slash.  If no file name is entered, the output will be written to 
+     "program.fil", where "program" is the name of the program being 
+     executed.
+
+     If N appears anywhere in the output string other than in the file name, 
+     no output will be generated.
+
+     Examples:
+
+	OUTPUT =	f / data.dat	--	output will be written
+				                to data.dat
+
+	OUTPUT =		        -- 	when no output device is
+				                specified, is sent to the
+				                terminal
+
+	OUTPUT =	tf	        --	output sent to the terminal
+				                and to the file program.fil
+				                where program is the GEMPAK
+				                program being run.
+

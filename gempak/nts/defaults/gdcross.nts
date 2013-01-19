@@ -1,0 +1,22 @@
+CXSTNS                                                                          
+GDATTIM                                                                         
+GVCORD                                                                          
+GFUNC                                                                           
+GVECT                                                                           
+WIND    am4/.8/2//.7                                                            
+GDFILE                                                                          
+PTYPE                                                                           
+YAXIS   dset                                                                    
+CINT    0                                                                       
+SCALE   999                                                                     
+LINE    16/1/2                                                                  
+BORDER  1                                                                       
+TITLE   1/-2                                                                    
+CLEAR   y                                                                       
+DEVICE  xw                                                                      
+TEXT    1.3/23//hw                                                              
+PANEL   0                                                                       
+CONTUR  3/0                                                                       
+FINT    0                                                                       
+FLINE   31-18--1                                                                
+CTYPE   c/f                                                                     

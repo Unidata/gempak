@@ -1,0 +1,61 @@
+! COASTAL.BULL
+!
+! This table contains the bulletin/station information to be used
+! with the coastal waters forecasts of the Marine Forecast products
+!
+! The format for the file is given below, with the
+! number of characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+!
+FZAK66 PAFA     FAIRBANKS_INTL_ARPT              AK US  6482 -14787   138
+FZAK62 PANC     ANCHORAGE_INTL_(PKZ22x,PKZ23x)   AK US  6010 -14700    40
+FZAK63 PANC     ANCHORAGE_INTL_(PKZ3x0,PKZ4x0)   AK US  5890 -15080    40
+FZAK64 PANC     ANCHORAGE_INTL_(PKZ5x0,PKZ6x0)   AK US  5570 -15910    40
+FZAK65 PANC     ANCHORAGE_INTL_(PKZ800,PKZ1xx)   AK US  5520 -17210    40
+FZAK48 PADQ     KODIAK                           AK US  5775 -15250    34
+FZAK48 PAVD     VALDEZ                           AK US  6113 -14625    37
+FZAK47 PAYA     YAKUTAT                          AK US  5952 -13967     9
+FZAK61 PAJN     JUNEAU_INTL_AIRPORT              AK US  5837 -13458     7
+FZHW50 PHFO     HONOLULU/UNIV_OF_HI-MANOA_CAMPUS HI US  2130 -15782    20
+FZMY50 PGUM	GUAM/MARIANAS_ISLANDS            GU MY  1348  14480    75
+FZPQ50 PGUM	POHNPEI/MICRONESIAN_ISLANDS      -- KA   697  15822    46
+FZUS52 KKEY     KEY_WEST_INTL_A                  FL US  2455  -8178     6
+FZUS52 KJAX     JACKSONVILLE                     FL US  3048  -8170     9
+FZUS52 KTAE     TALLAHASSEE                      FL US  3045  -8430    53
+FZUS52 KTBW     TAMPA_BAY_AREA                   FL US  2770  -8240    13
+FZUS54 KMOB     MOBILE/BATES_FI                  AL US  3068  -8825    67
+FZUS56 KSEW     SEATTLE-TACOMA                   WA US  4745 -12230   137
+FZUS56 KPQR     PORTLAND_INTL_ARPT               OR US  4560 -12260    12
+FZUS56 KMTR     SAN_FRANCISCO                    CA US  3761 -12238     5
+FZUS51 KLWX     WASHINGTON/NATI                  VA US  3885  -7703    20
+FZUS52 KMHX     NEWPORT                          NC US  3478  -7688    11
+FZCA52 TJSJ     SAN_JUAN_INTL_A                  PU PU  1843  -6600    19
+FZUS51 KBOX     BOSTON/LOGAN_IN                  MA US  4237  -7103     9
+FZUS52 KCAE     COLUMBIA_METRO                   SC US  3395  -8112    69
+FZUS52 KCHS     CHARLESTON_MUNI                  SC US  3290  -8003    15
+FZUS56 KLOX     LOS_ANGELES_INT                  CA US  3393 -11840    32
+FZUS54 KLIX     NEW_ORLEANS/LAK                  LA US  3005  -9003     3
+FZUS54 KLCH     LAKE_CHARLES_MU                  LA US  3012  -9322    10
+FZUS51 KOKX     NEW_YORK_CITY                    NY US  4077  -7398    27
+FZUS52 KMFL     MIAMI_INTL_AIRP                  FL US  2582  -8028     4
+FZUS52 KMLB     MELBOURNE                        FL US  2810  -8063    11
+FZUS51 KPHI     PHILADELPHIA_IN                  PA US  3988  -7525     9
+FZUS51 KGYX     PORTLAND_INTL_J                  ME US  4365  -7031    19
+FZUS51 KCAR     CARIBOU_MUNICIPAL                ME US  4687  -6802   190
+FZUS52 KRAH     RALEIGH-DURHAM                   NC US  3586  -7878   134
+FZUS54 KEWX     SAN_ANTONIO_INT                  TX US  2953  -9847   242
+FZUS54 KCRP     CORPUS_CHRISTI                   TX US  2777  -9750    13
+FZUS54 KBRO     BROWNSVILLE                      TX US  2590  -9743     6
+FZUS54 KHGX     HOUSTON/WILL_HOBBY               TX US  2947  -9508    35
+FZUS56 KMTR     SAN_FRANCISCO                    CA US  3761 -12238     5
+FPCN20 CYQX     GANDER_INTL_AIRPORT              NF CN  4895  -5457   151
+FPCN21 CYQX     LABRADOR                         LB CN  5453  -5773   150
+FPCN22 CWHX     HALIFAX_NOVA_SCOTIA              NS CN  4455  -6359   100
+FPCN20 CWVR     VANCOUVER_INTL_ARPT              BC CN  4918 -12317     2
+FZUS52 KILM     WILMINGTON                       NC US  3427  -7790    10
+FZUS51 KAKQ     WAKEFIELD                        VA US  3698  -7700    34
+FZUS56 KMFR     MEDFORD/JACKSON                  CA US  4237 -12287   405
+FZUS56 KEKA     EUREKA                           CA US  4079 -12417    18
+FZUS56 KSGX     SAN_DIEGO/LINDB                  CA US  3272 -11717     8

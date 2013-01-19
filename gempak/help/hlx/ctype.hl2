@@ -1,0 +1,24 @@
+     CTYPE
+ 
+     CTYPE specifies the contouring algorithms to use separated by
+     slashes:
+
+		type 1 / type 2 / ... / type n
+
+     Valid inputs for type are:
+
+	C	the original GEMPAK contouring algorithm
+	F	contour fill algorithm
+	B	box algorithm -- same as contour fill, but draws lines 
+		around the polygons rather than filling in polygons.
+
+     Note that contour attributes are specified in CONTUR.  The contour 
+     interval and line characteristics for types C and B are read
+     from CINT and LINE and for type F from FINT and FLINE.
+
+     Examples:
+
+	CTYPE = C	--	draws contour lines
+
+	CTYPE = C / F	--	draws filled contours overlaid with lines
+

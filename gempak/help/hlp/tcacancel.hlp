@@ -1,0 +1,49 @@
+
+ TCACANCEL
+
+    TCACANCEL creates a TCV ("Tropical Cyclone VTEC") text message
+    that will cancel all tropical cyclone watches and warnings.
+
+ INPUT PARAMETERS
+
+    TCACANCEL   BBSS AAA StormType YYMMDD/HHNN TimeZone 
+
+
+    tcacancel      Program name
+    BBSS	   BB = basin, SS = storm number ( e.g., AL03 or al03)
+    AAA            advisory number for the cancellation
+    StormType      Storm type - HU, TS, TD, SS, or SD
+    YYMMDD/HHNN    GEMPAK date/time
+	              YY - year, MM - month, DD - day, HH - hour,
+                      NN - minutes
+    TimeZone	   Local time zone for the cancellation
+
+ PROGRAM DESCRIPTION
+
+    TCACANCEL reads five command line arguments above as inputs, and 
+    creates the final cancellation TCV message. This program would, 
+    in almost all cases, be run only once (at most) per numbered storm, 
+    when an advisory is issued that cancels all watches and warnings.   
+    The output file will be KNHCTCVATn, where "n" has a value from 1 to
+    5, corresponding to the storm number ( for storm 1, 6, 11, "n" is
+    1, for 2, 7, 12, it is 2, etc. ) 
+
+    Example:
+
+   	     tcacancel AL07 9 TD 050829/1500 edt
+
+    This should create the TCV cancellation message for advisory 9 of 
+    storm al07, issued at 1500Z on Aug. 29, 2005.  The local time zone 
+    is EDT, so the time in the message should be 1100 AM EDT MON AUG 29 
+    2005.  The program should use the previous advisory VG file, 
+    tca_al072005_008.vgf, to create the message.  The headline will be 
+    ".TROPICAL DEPRESSION name" and the file name will be KNHCTCVAT2.
+
+
+ ERROR MESSAGES
+
+   [TCACANCEL  -1]  Too few arguments on command line. 
+   [TCACANCEL  -2]  VG file not found, or valid file name could not be created.
+   [TCACANCEL  -3]  Invalid GEMPAK time.                            
+   [TCACANCEL  -4]  Invalid storm type.
+   [TCACANCEL  -5]  Invalid time zone.

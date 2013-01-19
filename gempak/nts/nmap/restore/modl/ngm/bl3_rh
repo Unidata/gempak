@@ -1,0 +1,40 @@
+!
+! Restore File : bl3_rh
+!
+! Log:
+! D.W.Plummer/NCEP	 2/97	Initial creation
+! D.W.Plummer/NCEP	 8/97	Added FILTER parameter and changed TEXT value
+! T. Lee/GSC		 6/99	Increased omega contour range
+!
+GDATTIM fall                                                                    
+GLEVEL  8967!8967!850 !8967
+GVCORD  sgma!sgma!pres!sgma
+PANEL   0                                                                       
+SKIP    0/1                                                                     
+SCALE   2!2!3!2
+GDPFUN  sm9s(sm9s(quo(mixr,mixr(tmpc,mul(pres@0%none,.879)))))//rlh!rlh!omeg!kntv(wnd)
+TYPE    c/f!c!c! b
+CONTUR  1                                                                       
+CINT    80;90;95!10;20;30;40;50;60;70!-25;-23;-21;-19;-17;-15;-13;-11;-9;-7;-5;-3;-1!0;1
+LINE    32//1!25//1!6//3!20
+FINT    70;80;90;95
+FLINE   0;24;23;22;14
+HILO    0
+HLSYM   0
+CLRBAR  1/V/LL!0
+WIND    9/0.8/2/112
+REFVEC                                                                          
+TITLE   1/-1/~ BL3 (~100mb AGL) RELH & WIND (KTS) & 850mb OMEGA!0
+TEXT    1/22/2/hw                                                             
+CLEAR   yes                                                                     
+DEVICE  xw                                                                      
+STNPLT                                                                          
+SATFIL                                                                          
+RADFIL                                                                          
+STREAM                                                                          
+POSN    4                                                                       
+COLORS  2                                                                       
+MARKER  2                                                                       
+GRDLBL  5                                                                       
+LUTFIL  none
+FILTER  yes

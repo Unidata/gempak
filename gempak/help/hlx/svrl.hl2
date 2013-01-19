@@ -1,0 +1,39 @@
+     SVRL
+
+     SVRL is the ending valid time for the SLS watches, the colors for
+     the severe thunderstorm and tornado (SLS) watches, a flag for
+     plotting the start and stop times, a flag for plotting the
+     county names for the watches on the map, and a flag to outline the
+     county.
+
+	End time|SVRL colors|Time flag|Label flag|Outline flag|Color code
+
+     SLS watches that are valid at the ending time will be plotted on the map.
+     The ending time is given as a GEMPAK date/time string. Any missing
+     items from the string will be filled in by the system time. The
+     ending time may also be LAST and ALL. LAST will use the system time
+     and plot all current SLS watches. ALL will plot all the watches in the
+     data files, whether they are active, cancelled or expired.
+
+     The colors are separated by a semi-colon.  If any color is set to 0,
+     that type of symbol will not be plotted.  If any color is missing, a
+     default will be used.  Defaults are cyan for thunderstorm and red for
+     tornado.
+
+     The time flag is YES or NO and controls whether or not to plot
+     the start and stop times of the SLS watch on the map. The default
+     is NO.
+
+     The label flag is YES or NO and controls whether or not to plot
+     the county name of the SLS watch on the map. The default is NO.
+
+     The outline flag is YES or NO and controls whether to outline the SLS
+     watch county instead of plotting a marker. The default is NO. The outline
+     colors are those specified previously.  If a watch is a "test" only, a
+     hollow marker will be plotted at the county centroid to indicate this,
+     and no outlining will be done.
+
+     The color code flag is YES or NO, if YES, the colors are associated
+     with the last digit of the watch number, otherwise, based on the
+     weather type ( tornado or thunderstorm ).
+

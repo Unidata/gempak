@@ -1,0 +1,57 @@
+     DATTIM
+
+     DATTIM is the date and time to be used by GEMPAK programs.
+     DATTIM is an 11-character string entered as YYMMDD/HHMM, where:
+
+		YY is the last two digits of the year   
+		MM is the month                       
+		DD is the day of the month
+		/  is the date and time separator
+		HH is the hour                       
+		MM is the minutes past the hour
+
+     The part before the / is the DATE; the part after the / is the TIME.
+
+     DATTIM may be abbreviated.  If the input has no / , it is assumed 
+     to be the TIME part.  An abbreviated version of either TIME or DATE 
+     is assumed to be the part closest to the /.  The rest of the 
+     standard time is obtained from the last time in the file.  For example, 
+     if the last time in the file is 940515/1200 the following translations 
+     will be done:
+
+		13/11        ---->    940513/1100
+		13           ---->    940515/1300
+		13/          ---->    940513/1200
+		0412/1300    ---->    940412/1300
+
+     A list of times may be entered for DATTIM.  Times in the list must be 
+     separated with semicolons.  For example:
+
+		13/11;0412/13;0515/6
+
+     In the above example, the times are:
+
+		940513/1100
+		940412/1300 and
+		940515/0600.
+
+     DATTIM may also be entered as a range.  The first and last times must 
+     be separated by a minus sign. For example:
+
+		13/11-15/14  
+
+     A range with an increment may also be entered using minus signs as 
+     separators.  The format of the increment is hhhmm.  If the increment 
+     is one or two digits, it is assumed to be in hours.
+
+     The following options are also valid for DATTIM:
+
+		LAST	--	the last time in the file
+		LIST	--	lists all times and waits for input
+		ALL	--	all the times in the file
+		/ALL	--	all the times for a single DATE.
+
+     If /ALL is entered, all the times for the most recent date are processed.
+     If /ALL is appended to a specific date, then all the times for that 
+     date will be processed.
+

@@ -1,0 +1,48 @@
+
+
+		DM VARIABLES
+
+
+
+
+FILE INFORMATION
+
+	nfhdrs		kfhdrs		#file keys
+			kpfile		ptr file keys
+	fhdnam		khdnam		file header names
+	ifhlen		kfhlen		file header lengths
+	ifhtyp		kfhtyp		file header data type
+
+ROW AND COL INFORMATION
+
+	nrow		krow		# rows
+	nrkeys		krkeys		# row keys
+	keyrow		kkrow		row keys
+			kprkey		ptr row keys
+	ncol		kcol		# columns
+	nckeys		kckeys		# column keys
+	keycol		kkcol		column keys
+			kpckey		ptr column keys
+			kheadr		row and col headers
+
+PART INFORMATION
+
+	nprt		kprt		# parts
+			kppart		ptr part info
+	prtnam		kprtnm ()	part names
+	lenhdr		klnhdr ()	header length
+	ityprt		ktyprt ()	data type
+	nparms		kparms ()	# parameters
+	prmnam		kprmnm (,)	parameter names
+	iscale		kscale (,)	scaling terms
+	ioffst		koffst (,)	offset terms
+	nbits		kbits  (,)	# bits
+
+DATA MANAGEMENT INFORMATION
+
+			kpdmgt		ptr data mgmt record
+			kldmgt		length data mgmt record
+			kpnext		next free word 
+			kmfree		max # free pairs
+			knfree		actual # free pairs
+			kfreeb		free block pairs

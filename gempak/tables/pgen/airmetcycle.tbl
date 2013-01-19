@@ -1,0 +1,22 @@
+!------------------------------------------------------------------------
+! airmetcycle.tbl
+!
+! This table contains the airmet cycle and corresponding issue times for
+! use with the GFA element and the airmet text reports.
+!
+!!
+! Log:
+! E. Safford/SAIC       07/05   created table                               
+!------------------------------------------------------------------------
+!
+!        Time Setting    Cycle Time	 Issue Time
+!        ---- -------    ----- ----      ----- ---- 
+        <setting>CDT    <cycle>02       <issue>0145
+	<setting>CDT    <cycle>08       <issue>0745
+	<setting>CDT	<cycle>14	<issue>1345
+	<setting>CDT	<cycle>20	<issue>1945
+!
+	<setting>CST    <cycle>03       <issue>0245
+	<setting>CST	<cycle>09	<issue>0845
+	<setting>CST	<cycle>15	<issue>1445
+	<setting>CST	<cycle>21	<issue>2045

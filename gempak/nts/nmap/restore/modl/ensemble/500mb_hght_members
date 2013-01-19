@@ -1,0 +1,39 @@
+!GDFILE  gefs:01!gefs:02!gefs:03!gefs:04!gefs:05!gefs:06!gefs:07!gefs:08!gefs:09!gefs:10
+GDFILE  {gefs}
+GDATTIM fall
+GLEVEL  500
+GVCORD  pres
+PANEL   0
+SKIP    0
+SCALE   0
+GDPFUN  hght
+TYPE    c
+CONTUR  21
+CINT    120
+LINE    30/1/1!29!28!27!26!25!24!23!22!21
+FINT    
+FLINE   
+HILO    
+HLSYM   1.5
+CLRBAR  31
+WIND    
+REFVEC  
+TITLE   31/-1/~ HGHT Ensembles
+TEXT    1/21//hw
+CLEAR   y
+IJSKIP  yes
+MAP     32/1/1+31/1/2
+MSCALE  
+LATLON  0
+DEVICE  xw
+STNPLT  
+SATFIL  
+RADFIL  
+IMCBAR  31/v/CL/.005;.5/.8;.01
+LUTFIL  default
+STREAM  
+POSN    4
+COLORS  2
+MARKER  2
+GRDLBL  5
+FILTER  no

@@ -1,0 +1,35 @@
+
+DCXMOS
+
+    DCXMOS decodes Global Forecast System - Extended (GFSX) 
+    Model Output Statistics data from a real-time data feed,
+    or from a file fed to the program through standard input, and 
+    writes the data to a GEMPAK surface file.  The program is controlled
+    by inputs to the command line.
+
+    The inputs are program options and the output file name or template.
+    For example, for real-time data feeds:
+    
+	dcxmos [options] output_file
+
+    If running the program interactively with standard input, the -c
+    option must be used.  The input file must also be specified.
+    For example:
+
+	dcxmos -c YYMMDD/HHNN [other_options] output_file < input_file
+    
+    A template may be used to specify the output file name.  The file
+    name template uses the date and time of the bulletin or report
+    to replace the following characters.
+
+	YYYY or YY	Year with or without the century
+	MM		Month number
+	DD		Day
+	HH		Hour
+	NN		Minute
+
+    Note that for data from Hawaii (WMO bulletin header FEPA20),
+    parameter PP12 (probability of precipitation fcst in a 12-hr
+    period) is valid for periods of 18-30, 30-42, ..., 186-198 hours
+    after 0000 or 1200 UTC.  For all other sites, PP12 is valid for
+    periods of 12-24, 24-36, ..., 180-192 hours after 0000 or 1200 UTC.

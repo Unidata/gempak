@@ -1,0 +1,36 @@
+
+
+                           Map Subroutines
+
+
+In order to plot in Earth coordinates, the map mode is set (with GSMODE)
+and a map projection is defined.  GEMPLT includes a comprehensive set of
+projections.  Subroutine GSMMAP is used to set a projection using a
+simplified method.  Several parameters that define the projection are
+derived automatically from the simplified specifications.  Alternately,
+subroutine GSMPRJ provides the full capability to define a projection;
+it provides control over variables that can produce very complex
+results.
+
+Once a projection is defined, anything plotted in M coordinates (station
+models, markers, symbols, lines, etc.) is geo-located relative to a map
+(whether the map is drawn or not).
+
+GEMPLT includes several map data files as discussed in Appendix B of
+this manual.  Subroutine GQMFIL returns the name of the currently set
+map file.  An alternate map file is specified by calling GSMFIL.
+
+Once a projection is defined and a map file is set, the map is drawn by
+calling GDRMAP.  A latitude/longitude grid is typically drawn at the
+same time by calling GDRGRD.
+
+Currently set map projections are queried by calls to GQMMAP and GQMPRJ.
+
+A map may be surrounded by margins.  As a default, there are no margins.
+GSMMGN defines margins for plotting in map mode.  The margins are
+usually set at about the same time as the M coordinate system is
+defined.  The margins remain set for the life of the coordinate system;
+calls to change the margins have no effect until the coordinate system
+is redefined.  Margins are specified as either fractions of the plot
+space or as multiples of the currently set text character size.
+Currently set map margins are queried by calls to GQMMGN.

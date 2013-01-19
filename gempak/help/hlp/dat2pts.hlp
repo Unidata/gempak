@@ -1,0 +1,86 @@
+DAT2PTS
+
+This program converts the:
+
+     - Outlook verification files to the Outlook Points text product, 
+
+     - the Fire Weather Outlook verification files to the Fire 
+       Weather Outlook Points text product,
+
+     - and the Experimental Enhanced Thunderstorm Outlook
+       verification files to the Experimental Enhanced Thunderstorm 
+       Outlook Points text product.
+
+The program gets the user input from the command line. The usage for
+the program is as follows:
+
+	dat2pts # DDHHNN T N ND 
+
+where,
+
+	#          is the day of the forecast period (1,2,3).  For
+		   extended forecasts, such as Day 3-8 or Day 4-8,
+		   then # is 38 or 48, respectively. 
+
+	DDHHNN     is the day, hour and minute of the product as
+	           it appears in the verification file names,
+                   in the case of the experimental enhanced 
+                   thunderstorm outlooks the DDHHNN will be for
+                   the earliest forecast product.
+
+	T	   is the type of outlook (F,C,E) where F is
+		   a fire weather outlook, C is a 
+		   traditional Convective Outlook, and E is
+                   for the Experimental Enhanced Thunderstorm
+                   Outlook.  This is an optional argument and
+		   defaults to "C" if not specified.
+
+	N          only needed when T=E and specifies what product
+                   issuance during the day is being dealt with:
+
+                          ISSUANCE   BEGINNING ISSUANCE
+                       N: TIME:      TIMES:
+                       1   06Z       1200  1600  2000
+                       2   13Z             1600  2000  0000*
+                       3   17Z                   2000  0000* 0400*
+                       4   20Z                         0000  0400
+                       5   01Z                               0400
+
+                                 (for "*" see ND below)
+
+	ND         only needed when T=E and is a two digit number
+                   for the next day when the forecast crosses from
+                   one day into the other.  There is no way to 
+                   determine the month and year from the input dat
+                   files so its not possible to determine what the
+                   next day is, so its a required input when the
+                   date changes for N=2,3.  Providing ND in all
+                   outlook types of "E" is acceptable.
+
+
+The input files must have the following file name formats:
+
+	Hail outlook		hailoutlook_DAY#_DDHHNNZ.dat
+	Tornado outlook		tornoutlook_DAY#_DDHHNNZ.dat
+	Wind outlook		windoutlook_DAY#_DDHHNNZ.dat
+	Any severe outlook	proboutlook_DAY#_DDHHNNZ.dat
+	Categorical outlook	outlook_DAY#_DDHHNNZ.dat
+	Fire outlook		fireoutlook_DAY#_DDHHNNZ.dat
+	Extended severe outlook	ext_svroutlook_DAY#_DDHHNNZ.dat
+        Enhanced TSTM outlook   enhHHoutlook_DAY1_DDHHNNZ.dat
+
+The input files are assumed to always exist, even if there is no
+outlook of that particular type. The input files are assumed to be
+in the directory $SPCDAT. This environment variable must be set for
+the program to execute properly.
+
+The output file will be named:
+
+     - KWNSPTSDY# for the convective outlook points product,
+     - KWNSPFWFD# for the fire weather outlook points product,
+     - KWNSPTSET# for the experimental enhanced thunderstorm
+                  outlook points product,
+
+where # is the day number of the product. The output file 
+names assume that the product will be sent using the NCEP Product 
+Distribution System.

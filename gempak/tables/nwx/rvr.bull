@@ -1,0 +1,83 @@
+! RVR.BULL
+!
+! Location information for the following product:
+! River_Recreation_Statement.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+FGAK47 PAJK     JUNEAU                           AK US  5836 -13458     0
+FGAK48 PACR     CIRCLE_CITY_AIRPORT              AK US  6583 -14407     0
+FGAK49 PAFG     FAIRBANKS                        AK US  6484 -14783     0
+FGUS41 KBTV     BURLINGTON                       VT US  4445  -7315     0
+FGUS42 KMFL     MIAMI                            FL US  2575  -8037     0
+FGUS42 KTAE     TALLAHASSEE                      FL US  3045  -8430     0
+FGUS43 KABR     ABERDEEN                         SD US  4545  -9841     0
+FGUS43 KAPX     GAYLORD                          MI US  4490  -8470     0
+FGUS43 KARX     LA_CROSSE                        WI US  4381  -9119     0
+FGUS43 KBIS     BISMARCK                         ND US  4677 -10075     0
+FGUS43 KDDC     DODGE_CITY                       KS US  3775  -9995     0
+FGUS43 KDLH     DULUTH                           MN US  4683  -9220     0
+FGUS43 KDMX     DES_MOINES                       IA US  4172  -9372     0
+FGUS43 KDTX     DETROIT                          MI US  4268  -8347     0
+FGUS43 KDVN     QUAD_CITIES_IA                   IL US  4161  -9058     0
+FGUS43 KEAX     KANSAS_CITY/PLEASANT_HILL        MO US  3879  -9426     0
+FGUS43 KFGF     EASTERN_NORTH_DAKOTA             ND US  4791  -9708     0
+FGUS43 KFSD     SIOUX_FALLS                      SD US  4358  -9672     0
+FGUS43 KGID     HASTINGS                         NE US  4063  -9837     0
+FGUS43 KGLD     GOODLAND                         KS US  3936 -10169     0
+FGUS43 KGRB     GREEN_BAY                        WI US  4449  -8811     0
+FGUS43 KGRR     GRAND_RAPIDS                     MI US  4288  -8554     0
+FGUS43 KICT     WICHITA                          KS US  3765  -9744     0
+FGUS43 KILX     LINCOLN                          IL US  4015  -8933     0
+FGUS43 KIND     INDIANAPOLIS                     IN US  3970  -8627     0
+FGUS43 KIWX     NORTHERN_INDIANA                 IN US  4134  -8569     0
+FGUS43 KJKL     JACKSON                          KY US  3759  -8330     0
+FGUS43 KKRF     MISSOURI_RIVER_BASIN/KANSAS_CITY MO US  3879  -9426     0
+FGUS43 KLBF     NORTH_PLATTE                     NE US  4113 -10069     0
+FGUS43 KLMK     LOUISVILLE                       KY US  3811  -8563     0
+FGUS43 KLOT     CHICAGO                          IL US  4159  -8808     0
+FGUS43 KLSX     ST_LOUIS                         MO US  3868  -9068     0
+FGUS43 KMKX     MILWAUKEE/SULLIVAN               WI US  4295  -8854     0
+FGUS43 KMPX     TWIN_CITIES/CHANHASSEN           MN US  4484  -9355     0
+FGUS43 KMQT     MARQUETTE                        MI US  4652  -8754     0
+FGUS43 KOAX     OMAHA/VALLEY                     NE US  4131  -9636     0
+FGUS43 KPAH     PADUCAH                          KY US  3706  -8876     0
+FGUS43 KSGF     SPRINGFIELD                      MO US  3722  -9340     0
+FGUS43 KTOP     TOPEKA                           KS US  3906  -9562     0
+FGUS43 KUNR     RAPID_CITY                       SD US  4406 -10320     0
+FGUS44 KEWX     AUSTIN/SAN_ANTONIO               TX US  2970  -9801     0
+FGUS44 KMEG     MEMPHIS                          TN US  3513  -8980     0
+FGUS44 KMOB     MOBILE                           AL US  3067  -8823     0
+FGUS44 KMRX     MORRISTOWN                       TN US  3615  -8340     0
+FGUS45 KBOI     BOISE                            ID US  4356 -11620     0
+FGUS45 KBOU     DENVER                           CO US  4000 -10526     0
+FGUS45 KBYZ     BILLINGS                         MT US  4575 -10856     0
+FGUS45 KCYS     CHEYENNE                         WY US  4115 -10480     0
+FGUS45 KFGZ     FLAGSTAFF                        AZ US  3522 -11181     0
+FGUS45 KGGW     GLASGOW                          MT US  4820 -10662     0
+FGUS45 KGJT     GRAND_JUNCTION                   CO US  3911 -10851     0
+FGUS45 KLKN     ELKO                             NV US  4086 -11573     0
+FGUS45 KMSO     MISSOULA                         MT US  4691 -11408     0
+FGUS45 KPIH     POCATELLO/IDAHO_FALLS            ID US  4290 -11258     0
+FGUS45 KPSR     PHOENIX                          AZ US  3343 -11201     0
+FGUS45 KPUB     PUEBLO                           CO US  3827 -10451     0
+FGUS45 KREV     RENO                             NV US  3956 -11979     0
+FGUS45 KRIW     RIVERTON                         WY US  4306 -10847     0
+FGUS45 KSLC     SALT_LAKE_CITY                   UT US  4077 -11194     0
+FGUS45 KTFX     GREAT_FALLS                      MT US  4745 -11137     0
+FGUS45 KTWC     TUCSON                           AZ US  3222 -11094     0
+FGUS45 KVEF     LAS_VEGAS                        NV US  3604 -11518     0
+FGUS46 KEKA     EUREKA                           CA US  4079 -12416     0
+FGUS46 KHNX     SAN_JOAQUIN_VALLEY/HANFORD       CA US  3631 -11962     0
+FGUS46 KLOX     LOS_ANGELES/OXNARD               CA US  3420 -11912     0
+FGUS46 KMFR     MEDFORD                          OR US  4236 -12287     0
+FGUS46 KMTR     SAN_FRANCISCO                    CA US  3659 -12184     0
+FGUS46 KOTX     SPOKANE                          WA US  4768 -11762     0
+FGUS46 KPDT     PENDLETON                        OR US  4568 -11884     0
+FGUS46 KPQR     PORTLAND                         OR US  4556 -12252     0
+FGUS46 KSEW     SEATTLE                          WA US  4768 -12225     0
+FGUS46 KSGX     SAN_DIEGO                        CA US  3290 -11705     0
+FGUS46 KSTO     SACRAMENTO                       CA US  3859 -12137     0

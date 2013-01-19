@@ -1,0 +1,9 @@
+SNFILE  $GEMPAK/data/HRCBOB.SND                                                     
+AREA    @acy                                                                    
+DATTIM  last                                                                    
+SNPARM  pres;mixr;uwnd;vwnd;psym                                                
+STNDEX                                                                          
+LEVELS  300-400-10                                                              
+VCOORD  thta                                                                    
+OUTPUT  t                                                                       
+MRGDAT  yes                                                                     

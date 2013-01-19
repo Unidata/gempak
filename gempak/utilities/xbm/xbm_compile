@@ -1,0 +1,6 @@
+echo START COMPILATION OF XBM UTILITY.
+cp $GEMPAK/source/driver/active/fax/faxcmn.h .
+$CC $CFLAGS -c r*.c
+cp $OS_LIB/fax.a xbm.a
+$AR $ARFLAGS xbm.a *.o
+$RM faxcmn.h *.o

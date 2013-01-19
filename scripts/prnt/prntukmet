@@ -1,0 +1,29 @@
+#!/bin/csh
+#
+#	Script to produce a suite of plots from the UKMET model.
+#
+#	The following products are plotted:
+#
+#	72hr fcst from 00Z and 12Z,
+#		MSLP
+#		500mb HGHT
+#
+#
+# Log :
+# D.W.Plummer/NCEP   2/97   Add log header
+#
+
+if ( ${1} == "-h" || ${1} == "-help" )  then
+	echo "Usage: ${0} [printer] [yymmdd/cc]   		      "
+        echo "       printer - printer name (default by workstation)	      "
+        echo "       yymmdd/cc  - year, month, day and cycle (def most recent)"
+	exit
+endif
+
+set prt=${1}
+set ymdc=${2}
+
+`which prnt`  pmsl  ukmet  72 ${prt} ${ymdc}
+`which prnt`  500mb ukmet  72 ${prt} ${ymdc}
+
+exit

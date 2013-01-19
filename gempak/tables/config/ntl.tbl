@@ -1,0 +1,51 @@
+; ntl.tbl
+;
+;	This is the ntl table file for available applications. 
+;	There are four parameters we need to provide here:
+;	- Prog_name:	The label of icon and executable program name.
+;			The program should be either in the current
+;			directory or in the directory defined in
+;			$OS_BIN environmental variable.
+;	- icon_file:	The full path name or an environmental variable
+;			followed by a slash and the path where the icon
+;			file is located. 
+;			e.g. if ICON has been defined, ntrans.xbm can
+;			be specified by
+;				../icons/ntrans.xbm 	or
+;				$ICONS/ntrans.xbm	or
+;				$(ICONS)/nsat.xbm
+;	- foregrnd:	icon foreground color.
+;	- backgrnd:	icon background color.
+;
+;	The word "EXIT" in Prog_name entry doesn't mean program name.
+;	It merely indicates a push button that quits the program.
+;	To comment out an application, just put a semicolon at
+;	the first column of a line.
+;
+; Log:
+# A. Chang/EAI		 9/94	Eliminated button id entry.
+# A. Chang/EAI		 9/94	Working table driven.
+# A. Chang/EAI		10/94	Eliminate ENV entry.
+# A. Chang/EAI		10/94	Added more comment.
+# D. Keiser/GSC		10/96	Replaced afos with nafos.
+# S. Jacobs/NCEP	11/96	Added nmap; Use green for all bg and
+#				black for all fg
+# C. Lin/EAI	        11/96   change nmap icon; green4->bg, white->fg	
+# E. Safford/GSC	01/99	added ncolor
+# S. Jacobs/NCEP	12/99	Added nmap2
+# T. Piper/GSC		 5/00	Removed NAFOS, AFTEXT
+# S. Jacobs/NCEP	 7/01	Added NSHARP
+# M. Li/SAIC		12/01	Changed path
+# T. Piper/SAIC		11/03	Removed NMAP & NSAT
+# M. James/Unidata       2/11   Copied from ntl.tbl for separate GARP build
+;
+; Prog_name  icon_file		           foregrnd	backgrnd
+;----------  -------------------           --------	--------
+nmap2	     $NAWIPS/icons/ntl/nmap.xbm	   white	green4
+ntrans       $NAWIPS/icons/ntl/ntrans.xbm  white 	green4
+nwx	     $NAWIPS/icons/ntl/nwx.xbm	   white 	green4
+nalarm       $NAWIPS/icons/ntl/nalarm.xbm  white	green4 
+nsharp       $NAWIPS/icons/ntl/nsharp.xbm  white	green4
+ncolor       $NAWIPS/icons/ntl/ncolor.xbm  white	green4 
+garp         $NAWIPS/icons/ntl/garp.xbm    white        green4
+EXIT	     $NAWIPS/icons/ntl/exit.xbm	   red   	white

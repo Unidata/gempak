@@ -1,0 +1,11 @@
+!	GDCNTR error file
+!
++2	! WARNING:  !AS not found.  CONTINUING---
++1	! WARNING.  There are no contour levels.
+-1	! Fatal error initializing TAE.
+-2	! Fatal error reading TAE parameters.
+-3	! Fatal error initializing GEMPLT.
+-4	! Grid requested is not available.
+-5	! Error setting grid navigation for file !AS.
+-6	! There are no grids in grid file.
+-13	! There are no times in the grid file

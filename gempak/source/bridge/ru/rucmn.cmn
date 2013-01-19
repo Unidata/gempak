@@ -1,0 +1,9 @@
+C************************************************************************
+C* These values are used by the RU decoder library.  They are 		*
+C* currently set to fixed values.  In order to change values, they	*
+C* must be included in a common area and set in an RU_INIT subroutine.	*
+C************************************************************************
+C*
+	PARAMETER	( MAXFLN = 15 )
+	PARAMETER	( MAXSKP = 10 )
+C*

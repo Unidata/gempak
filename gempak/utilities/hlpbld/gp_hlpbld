@@ -1,0 +1,26 @@
+GEMPARM=$GEMPAK/parm
+export GEMPARM
+GEMPTXT=$GEMPAK/txt/programs
+export GEMPTXT
+
+hlpbld $GEMHLP/hlp GPBOX
+##########################
+hlpbld $GEMHLP/hlp GPCLEAR
+##########################
+hlpbld $GEMHLP/hlp GPCLOSE
+##########################
+hlpbld $GEMHLP/hlp GPCOLOR
+##########################
+hlpbld $GEMHLP/hlp GPEND
+##########################
+hlpbld $GEMHLP/hlp GPFAX
+##########################
+hlpbld $GEMHLP/hlp GPMAP
+##########################
+hlpbld $GEMHLP/hlp GPTCWW
+##########################
+hlpbld $GEMHLP/hlp GPTEXT
+##########################
+hlpbld $GEMHLP/hlp GPTPC
+##########################
+echo ALL THE GP HLPs ARE BUILT.

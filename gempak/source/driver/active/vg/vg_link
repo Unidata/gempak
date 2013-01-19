@@ -1,0 +1,7 @@
+echo LINKING VG
+cp $GEMPAK/source/device/main/device.f .
+$FC $FFLAGS $LDFLAGS -o $OS_BIN/vg device.f \
+	    $GEMLIB $DEVICE $OS_LIB/vg.a \
+	    $OS_LIB/gn.a $CGEMLIB \
+	    $GEMLIB $CGEMLIB $GEMLIB $SYSLIB -lm
+$RM *.o device.f

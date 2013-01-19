@@ -1,0 +1,47 @@
+! FRNTBTN.TBL.
+!
+! This table provides the icons located in the fronts button palette
+!
+! Log:
+! E. Wehner/EAi         5/97
+! C. Lin/EAi            2/98  modified the names based on HPC requirement
+! S. Jacobs/NCEP	2/99	Added "squall" button
+! S. Jacobs/NCEP        3/01    Added trop trof (no pips front)
+! E. Safford/GSC	04/01	reorder for horizontal layout
+!------------------------------------------------------------------------
+BEGIN
+!
+! Row 1
+!
+coldfnt
+cold_forming
+cold_diss
+!
+! Row 2
+!
+warmfnt
+warm_forming
+warm_diss
+!
+! Row 3
+!
+statfnt
+stat_forming
+stat_diss
+!
+! Row 4
+!
+occlfnt
+occl_forming
+occl_diss
+!
+! Row 5
+!
+dryline
+troffnt
+trptfnt
+!
+! Row 6
+!
+squall
+END

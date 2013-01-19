@@ -1,0 +1,14 @@
+! AWSIZ.TBL
+!
+! This table contains the latitudes, longitudes and pixel sizes of the 
+! awips products.
+!
+! Log:
+!  A. Hardy/GSC		9/98
+!  A. Hardy/GSC		9/98		Changed lats. and lons. for #2
+!---------------------------------------------------------------------------------------------
+! Size XSIZ YSIZ ULLAT  ULLON  URLAT  URLON   LRLAT  LRLON   LLLAT  LLLON  VERT  STNDLAT 2LAT
+! (1)  (4)   (4)  (6)    (4)    (6)     (4)     (6)    (4)    (6)   (6)     (4)   (4)    (4)
+!----------------------------------------------------------------------------------------------
+   1   2400 1575 3562  -16858  3562    1858    784    6897    784   14103  10500  6000   9900
+   2   2400 1575 -815  -13416  -898   -1535  -1278    5053  -1155   15894  10500  6000   9900

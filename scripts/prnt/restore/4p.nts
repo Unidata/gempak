@@ -1,0 +1,20 @@
+GLEVEL  500!500   !    0!700    ! 500:1000!0!500:1000 !  700!700
+GVCORD  pres!pres ! none!pres   !    pres!none!pres   ! pres!pres
+PANEL   ul!ul     !   ur!ur     !      ll!ll!ll       !   lr!lr
+SKIP    0!0       !    1!0      !        0!0!0        !    0!1
+SCALE   5!-1      !    0!3      !       -1!0!-1       !    0!-1
+GDPFUN  avor(wnd)!hght!p12i!sm5s(omeg)!ldf(hght)!sm5s(pmsl)!ldf(hght)!relh!hght
+TYPE    c/f!c     !  c/f!c      !        c!c!c        !  c/f!c
+CONTUR  2                                                                       
+CINT    2/6/99!6!.25/.25!-13;-11;-9;-7;-5;-3;-1;1;3;5;7;9!6!4!540!30;50;70;90!3
+LINE    1/12/2/2!1//3 ! 1//2/0!1/-12/2 ! 1/12/2!1//3!1/12/4 ! 1/12/2!1//3
+FINT    14;20;24!   ! 0.1;0.25;0.50! ! ! ! ! 70;90  
+FLINE   0;18;14;12! ! 0;18;14;12   ! ! ! ! ! 0;18;14
+HILO    1;1/X;N/10-99;10-99 ! 0 ! 0 ! 0 ! 0 ! 1;1/H#;L#///30;30/y ! 0
+HLSYM   1;1//21/2/sw ! ! ! ! ! 1////0.5
+CLRBAR  1////0.5
+WIND    0
+REFVEC                                                                          
+TEXT    1//4/sw
+STNPLT                                                                          
+

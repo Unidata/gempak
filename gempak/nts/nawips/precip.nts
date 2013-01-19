@@ -1,0 +1,21 @@
+GLEVEL  0                                                                       
+GVCORD  none                                                                    
+PANEL   0                                                                       
+SKIP    0                                                                       
+SCALE   0                                                                       
+GFUNC   quo(p06m,25.4)                                                
+CTYPE   f/c                                                                     
+CONTUR  1                                                                       
+CINT    .01;.1;.25;.5;.75;1;1.25;1.5;1.75;2;2.25;2.5;2.75;3;3.25;3.5;3.75;4     
+LINE    32//1/0                                                                 
+FINT    .01;.1;.25;.5;.75;1;1.25;1.5;1.75;2;2.25;2.5;2.75;3;3.25;3.5;3.75;4     
+FLINE   0;21-30;14-20;5                                                         
+HILO                   
+HLSYM                                                                           
+CLRBAR  1                                                                       
+GVECT                                                                           
+WIND                                                                            
+REFVEC                                                                          
+TITLE   5//~ ^ TOTAL PRECIPITATION (IN)|^ TOTAL PCPN                            
+TEXT    1/21//hw                                                                
+CLEAR   yes                                                                     

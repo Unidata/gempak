@@ -1,0 +1,9 @@
+!	SNMAP error file
+!
+ +1	! Parameter !AS cannot be computed.
+ -1	! Fatal error initializing TAE.
+ -2	! Fatal error reading TAE parameters.
+ -3	! Fatal error initializing GEMPLT.
+ -4	! Invalid levels or vertical coordinate have been input.
+ -5	! A range of levels is invalid in SNMAP.
+ -6	! Winds cannot be computed.

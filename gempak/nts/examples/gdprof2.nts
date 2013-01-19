@@ -1,0 +1,26 @@
+GPOINT  iad                                                                     
+GDATTIM last                                                                    
+GVCORD  pres                                                                    
+GFUNC   dwpc                                                                    
+GVECT   wnd                                                                     
+GDFILE  $GEMPAK/data/HRCBOB.GRD                                                     
+LINE    3//3                                                                    
+MARKER  5//1.25                                                                 
+BORDER  1                                                                       
+PTYPE   skewt                                                                   
+SCALE   0                                                                       
+XAXIS   -40/40/10                                                               
+YAXIS   1000/100/100/;1                                                         
+WIND                                                                            
+REFVEC  10                                                                      
+WINPOS  1                                                                       
+FILTER  no                                                                      
+TITLE   0                                                                       
+PANEL   0                                                                       
+CLEAR   no                                                                      
+TEXT    1                                                                       
+DEVICE  xw                                                                      
+OUTPUT  n                                                                       
+THTALN  0                                                                       
+THTELN  0                                                                       
+MIXRLN  0                                                                       

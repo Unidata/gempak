@@ -1,0 +1,232 @@
+! NGMGD.STN
+!
+! This table contains the station information to be used with the
+! NGM City Guidance data.
+!
+! The format for the file is given below, with the number of 
+! characters in parentheses.
+!
+!STID    STNM   NAME                             ST CO   LAT    LON  ELEV  PRI
+!(8)     (6)    (32)                            (2)(2)   (5)    (6)   (5)  (4)
+!
+PWM      726060 PORTLAND                         ME US  4365  -7031    20
+BGR      726071 BANGOR                           ME US  4480  -6881    62
+!AFA
+CAR      727120 CARIBOU                          ME US  4686  -6801   163
+CON      726050 CONCORD                          NH US  4320  -7150   103
+!9B6
+!
+ALB      725180 ALBANY                           NY US  4275  -7380    88
+BOS      725090 BOSTON                           MA US  4236  -7103     6
+PHL      724080 PHILADELPHIA                     PA US  3988  -7525     4
+BTV      726170 BURLINGTON                       VT US  4446  -7315   102
+LGA      725030 LA_GUARDIA_ARPT._NYC             NY US  4076  -7390     6
+IPT      725140 WILLIAMSPORT                     PA US  4125  -7691   161
+!
+DCA      724050 WASHINGTON_NATIONAL_ARPT         DC US  3885  -7703     5
+RDU      723060 RALEIGH-DURHAM                   NC US  3586  -7878   133
+ILM      723011 WILMINGTON                       NC US  3426  -7791     9
+ORF      723080 NORFOLK                          VA US  3690  -7620     8
+HAT      723040 CAPE_HATTERAS                    NC US  3526  -7555     3
+!C7H
+!
+CAE      723100 COLUMBIA                         SC US  3395  -8111    64
+MIA      722020 MIAMI                            FL US  2580  -8026     3
+TLH      722140 TALLAHASSEE                      FL US  3038  -8436    25
+SAV      722070 SAVANNAH                         GA US  3213  -8120    15
+LAL      722119 LAKELAND_REGIONAL                FL US  2798  -8202    43
+!3J2
+!
+BUF      725280 BUFFALO                          NY US  4293  -7873   217
+CLE      725240 CLEVELAND                        OH US  4140  -8185   241
+CRW      724140 CHARLESTON                       WV US  3836  -8160   299
+PIT      725200 PITTSBURGH                       PA US  4050  -8021   367
+DAY      724290 DAYTON                           OH US  3990  -8421   307
+IND      724380 INDIANAPOLIS                     IN US  3973  -8628   243
+!
+STL      724340 ST._LOUIS                        MO US  3875  -9038   174
+MEM      723340 MEMPHIS                          TN US  3505  -9000   101
+TYS      723260 KNOXVILLE                        TN US  3581  -8398   301
+SDF      724230 LOUISVILLE                       KY US  3818  -8573   151
+BNA      723270 NASHVILLE                        TN US  3611  -8668   182
+ATL      722190 ATLANTA                          GA US  3365  -8443   312
+!
+BHM      722280 BIRMINGHAM                       AL US  3356  -8675   196
+JAN      722350 JACKSON                          MS US  3231  -9008    94
+SHV      722480 SHREVEPORT                       LA US  3246  -9381    78
+MOB      722230 MOBILE                           AL US  3068  -8825    66
+MSY      722310 NEW_ORLEANS                      LA US  2998  -9025     1
+LIT      723401 LITTLE_ROCK                      AR US  3473  -9223    78
+!
+DTW      725370 DETROIT_METRO_ARPT               MI US  4223  -8333   191
+MKE      726400 MILWAUKEE                        WI US  4295  -8790   214
+INL      727470 INTERNATIONAL_FALLS              MN US  4856  -9338   360
+SSM      727340 SAULT_STE._MARIE                 MI US  4646  -8436   176
+MSP      726580 DMINNEAPOLIS-ST._PAUL            MN US  4488  -9321   256
+ORD      725300 OHARE_ARPT._CHICAGO              IL US  4198  -8790   203
+!
+DSM      725460 DES_MOINES                       IA US  4153  -9365   292
+DDC      724510 DODGE_CITY                       KS US  3776  -9996   791
+LBF      725620 NORTH_PLATT                      NE US  4113 -10068   847
+TOP      724560 TOPEKA                           KS US  3906  -9563   268
+OMA      725500 OMAHA                            NE US  4130  -9590   299
+BFF      725660 SCOTTS_BLUFF_CO.                 NE US  4186 -10360  1209
+!
+OKC      723530 OKLAHOMA_CITY                    OK US  3540  -9760   391
+SAT      722530 SAN_ANTONIO                      TX US  2953  -9846   246
+BRO      722500 BROWNSVILLE                      TX US  2590  -9743     7
+DFW      722590 DALLAS-FORT_WORTH                TX US  3290  -9703   182
+IAH      722430 HOUSTON_INTERCONTINENTAL         TX US  2996  -9535    33
+DRT      722610 DEL_RIO                          TX US  2936 -10091   310
+!
+BIS      727640 BISMARK                          ND US  4676 -10075   504
+RAP      726620 RAPID_CITY                       SD US  4405 -10306   970
+BIL      726770 BILLINGS-LOGAN_FIELD             MT US  4580 -10853  1099
+FSD      726510 SIOUX_FALLS                      SD US  4356  -9673   435
+GTF      727750 GREAT_FALLS                      MT US  4748 -11136  1118
+MSO      727730 MISSOLA                          MT US  4691 -11408   976
+!
+LBB      722670 LUBBOCK                          TX US  3365 -10181   996
+ABQ      723650 ALBUQUERQUE                      NM US  3505 -10661  1631
+DEN      724690 DENVER                           CO US  3975 -10486  1625
+ELP      722700 EL_PASO                          TX US  3180 -10640  1206
+PHX      722780 PHOENIX                          AZ US  3343 -11201   342
+CYS      725640 CHEYENNE                         WY US  4115 -10481  1872
+!
+SEA      727930 SEATTLE                          WA US  4745 -12230   130
+PDX      726980 PORTLAND                         OR US  4560 -12260     7
+BOI      726810 BOISE                            ID US  4356 -11621   871
+GEG      727850 SPOKANE                          WA US  4763 -11753   723
+MFR      725970 MEDFORD-JACKSON_COUNTY           OR US  4236 -12286   405
+PIH      725780 POCATELLO                        ID US  4291 -11260  1355
+!
+SFO      724940 SAN_FRANCISCO                    CA US  3761 -12238     3
+LAX      722950 LOS_ANGELES                      CA US  3393 -11840    38
+SLC      725720 SALT_LAKE_CITY                   UT US  4076 -11196  1287
+FAT      723890 FRESNO_AIR_TERM.                 CA US  3676 -11971   100
+RNO      724880 RENO                             NV US  3950 -11978  1344
+CDC      724755 CEDAR_CITY                       UT US  3770 -11310  1714
+!
+YQB      717140 QUEBEC                           QB CN  4680  -7138    72
+!YMW
+!YLH
+YOW      716280 OTTAWA                           ON CN  4531  -7566   114
+YYB      717310 NORTH_BAY                        ON CN  4636  -7941   370
+YQT      717490 THUNDER_BAY                      ON CN  4836  -8931   199
+!
+YWG      718520 WINNIPEG_INL.                    MB CN  4990  -9723   239
+YQR      718630 REGINA                           SA CN  5043 -10466   577
+YYC      718770 CALGARY                          AB CN  5110 -11401  1084
+YQD      718670 THE_PAS                          MB CN  5396 -10110   270
+YPA      718690 PRINCE_ALBERT                    SA CN  5321 -10568   428
+YEG      711230 EDMONTON_INL.                    AB CN  5331 -11358   723
+!
+MCD	 999999	MACKINAC_ISLAND_AIRPORT		 MI US  4586  -8464   226
+YXC      718800 CRANBROOK                        BC CN  4960 -11578   939
+YVR      718920 VANCOUVER                        BC CN  4918 -12316     3
+YRV      718820 REVELSTOKE                       BC CN  5096 -11818   443
+YCG      718840 CASTLEGAR                        BC CN  4930 -11763   495
+YXS      718960 PRINCE_GEORGE                    BC CN  5388 -12266   691
+!
+!G2GFA
+!G2GFB
+!G2GFC
+!G2GFD
+!G2GFE
+!G2GFF
+!
+X68	 999999	NASA_SHUTTLE_LANDING_FACILITY	 FL US  2862  -8069     3
+EDW      723810 EDWARDS_AFB                      CA US  3490 -11786   705
+!UCC
+!BTNM3
+!LGIN6
+LWS      727830 LEWISTON-NEZ_PERCE               ID US  4638 -11701   438
+!
+SYR      725190 SYRACUSE                         NY US  4311  -7611   128
+ROA      724110 ROANOKE                          VA US  3731  -7996   358
+ZZV      724286 ZANESVILLE                       OH US  3995  -8190   274
+AOO      725126 ALTOONA                          PA US  4030  -7831   458
+AVL      723150 ASHEVILLE                        NC US  3543  -8253   659
+!HC1
+!
+SGF      724400 SPRINGFIELD                      MO US  3723  -9338   386
+GRB      726450 GREEN_BAY                        WI US  4448  -8813   212
+GJT      724760 GRAND_JUNCTION                   CO US  3911 -10853  1480
+JKL      724236 JACKSON/J._CARROLL               KY US  3760  -8332   421
+MLI      725440 MOLINE                           IL US  4145  -9051   180
+FAR      727530 FARGO                            ND US  4690  -9680   274
+LND      725760 LANDER-HUNT_FIELD                WY US  4281 -10873  1692
+!
+MAF      722650 MIDLAND                          TX US  3195 -10218   874
+LCH      722400 LAKE_CHARLES                     LA US  3011  -9321     4
+TUL      723560 TULSA                            OK US  3620  -9590   205
+DHT      722636 DALHART                          TX US  3601 -10255  1216
+DHN      722268 DOTHAN                           AL US  3131  -8545   122
+DAB      722056 DAYTONA_BEACH                    FL US  2918  -8105    12
+!
+GGW      727680 GLASGOW                          MT US  4821 -10661   700
+RDD      725915 REDDING                          CA US  4050 -12230   152
+LAS      723860 LAS_VEGAS                        NV US  3608 -11516   662
+PDT      726880 PENDELTON_MUNI                   OR US  4568 -11885   455
+EKO      725825 ELKO                             NV US  4083 -11578  1565
+FLG      723755 FLAGSTAFF                        AZ US  3513 -11166  2137
+!
+!G2GFG
+!G2GFH
+!G2GFI
+!G2GFJ
+!G2GFK
+!
+AKN      703263 KING_SALMON                      AK US  5868 -15667    17
+CZF      702120 CAPE ROMANZOF,ALASKA             AK US  6167 -16597   139
+EDF      702720 ANCHORAGE,ALASKA                 AK US  6117 -14977    65
+EHM      703050 CAPE NEWENHAM,ALASKA             AK US  5850 -16207   165
+SVW      702350 SPARREVOHN, ALASKA               AK US  6100 -15558   482
+TLJ	 702315 TATALINA_(AWOS)                  AK US  6290 -15598   294
+!
+EIL      702650 FAIRBANKS,ALASKA                 AK US  6467 -14712   167
+GAL      702223 GALENA                           AK US  6473 -15693    46
+LUR      701040 CAPE LISBURNE,ALASKA             AK US  6883 -16607     4
+TNC      701170 TIN CITY,ALASKA                  AK US  6552 -16790    82
+UTO      999999 UTOPIA CREEK,ALASKA              AK US  6585 -15372   372
+!
+ANC      702730 ANCHORAGE_INTL_ARPT              AK US  6117 -15002    40
+ANN      703980 ANNETTE_ISLAND                   AK US  5503 -13157    34
+CDV      702960 CORDOVA/MILE_13                  AK US  6050 -14550    13
+JNU      703810 JUNEAU_INTL_AIRPORT              AK US  5837 -13458     7
+ORT      702910 NORTHWAY                         AK US  6297 -14193   525
+YAK      703610 YAKUTAT                          AK US  5952 -13967     9
+!
+ADQ      703500 KODIAK                           AK US  5775 -15250    34
+BET      702190 BETHEL_AIRPORT                   AK US  6078 -16180    46
+CDB      703160 COLD_BAY_AIRPORT                 AK US  5520 -16272    31
+MCG      702310 MCGRATH                          AK US  6297 -15562   103
+SNP      703080 SAINT_PAUL_ISLAND                AK US  5715 -17022     9
+!
+BRW      700260 BARROW/POST-ROGERS               AK US  7130 -15678     4
+BTI      700860 BARTER_ISLAND_(DEW)              AK US  7013 -14363    15
+BTT      701740 BETTLES_FIELD                    AK US  6692 -15152   196
+FAI      702610 FAIRBANKS_INTL_ARPT              AK US  6482 -14787   138
+OME      702000 NOME                             AK US  6450 -16543     7
+OTZ      701330 KOTZEBUE/RALPH_WIEN              AK US  6687 -16263     5
+!
+TJSJ     785260 SAN_JUAN_INTL_ARPT               -- PU  1843  -6600    19  
+TJMZ     785145 MAYAGUEZ/EUGENIO                 -- PU  1827  -6715     9  
+TJPS     785203 PONCE/MERCEDITA___&              -- PU  1802  -6657     9  
+TJBQ     785140 AQUADILLA/BORINQUEN              -- PU  1850  -6713    72 
+!TJGU
+!TJAD
+TIST     785430 C._AMALIE/CYRIL_E.               -- VI  1833  -6497    67  
+TISX     785470 CHRISTIANSTED/ALEXA              -- VI  1770  -6480    17  
+!TISJ
+TNCM     788660 PRINSES_JULIANA                  -- MN  1805  -6312     9  
+TKPK     788580 GOLDEN_ROCK                      -- AT  1730  -6268    48  
+TJNR     785350 ROOSEVELT_ROADS_NAS              -- PU  1825  -6563    12  
+!
+PHNL     911820 HONOLULU_INTL/OAHU               HI US  2135 -15793     5  
+PHLI     911650 LIHUE/KAUAI_ISLAND               HI US  2198 -15935    45  
+PHOG     911900 KAHULUI_ARPT/MAUI                HI US  2090 -15643    20  
+PHTO     912850 HILO/LYMAN_FIELD                 HI US  1972 -15507    11  
+!HIB1
+!HIB4
+

@@ -1,0 +1,19 @@
+GPOINT  bwi                                                                     
+GDATTIM all                                                                     
+GVCORD  PRES                                                                    
+GFUNC   temp                                                                    
+GVECT   wnd                                                                     
+GDFILE  $GEMPAK/data/HRCBOB.GRD                                                     
+PTYPE   log                                                                     
+TAXIS                                                                           
+YAXIS   /50                                                                     
+BORDER  1                                                                       
+LINE    2/2/3/1                                                                 
+CINT    5                                                                       
+WIND    bm1                                                                     
+TITLE   1                                                                       
+CLEAR   YES                                                                     
+SCALE   999                                                                     
+PANEL   0                                                                       
+DEVICE  xw                                                                      
+TEXT    1/21//hw                                                                

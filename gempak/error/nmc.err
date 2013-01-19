@@ -1,0 +1,13 @@
+!	NMC error file
+!
+-1	! Fatal error initializing TAE.
+-2	! Fatal error reading TAE parameters.
+-3	! Error opening station file !AS .
+-4	! !AS is a merged file.
+-5	! !AS is not an upper air station.
+-6	! AREA is invalid; see help on GAREA.
+-7	! Error in NMCTMST.
+-8	! Error adding time !AS .
+-9	! Wrong number of parms -- check packing file.
+-10	! Unexpected data in the INPUT file.
+-11	! Neither entry in TIMSTN can be zero.

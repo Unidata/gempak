@@ -1,0 +1,6 @@
+     SOURCE
+
+     SOURCE indicates whether the data used to compute the average station 
+     spacing are to be read from a surface or sounding file.  Use SF to 
+     read from a surface file and SN to read from a sounding file.
+

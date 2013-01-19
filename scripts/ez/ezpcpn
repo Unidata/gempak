@@ -1,0 +1,56 @@
+#! /bin/csh
+#
+# EZPCPN
+#
+# This script will plot the precipitation for the shortest interval
+# in the grid file, then overlay the mean sea level pressure.
+#
+#	Syntax:  ezpcpn
+#
+##
+# Log:
+# D. Plummer/NMC	 1994
+# S. Jacobs/NMC		10/94		Clean up
+
+#
+# Set Up Local Variables
+#
+
+source settings
+
+if  ( ${model} == MRF || ${model} == MRFX )  then
+    set hour=12
+    set last=120
+else if  ( ${model} == NGM )  then
+    set hour=03
+    set last=48
+else if  ( ${model} == AVN )  then
+    set hour=06
+    set last=72
+else
+    set hour=06
+    set last=48
+endif
+
+gdcntr << EOF
+GDATTIM	= F${hour}-F${last}
+DEVICE	= ${dev}
+!
+! Restore the standard precip parameters
+restore ez/precip
+GFUNC   = p${hour}i
+TITLE	= 5//${model} ~  ${hour}-HOUR TOTAL PCPN, MSLP|~ ${hour}-HOURLY TOTAL PCPN, MSLP
+CLEAR	= yes
+r
+
+!
+! Restore the mean sea level pressure parameters
+restore ez/pmsl_pcpn
+TITLE	= 0
+CLEAR	= no
+r
+
+;3
+;l
+ex
+EOF

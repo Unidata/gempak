@@ -1,0 +1,36 @@
+OPSYS = Linux
+
+CC = gcc
+FC = g77
+
+MOTIFINC  = -I/usr/X11R6/include
+XWINCDIR  = -I/usr/X11R6/include
+
+COPT = -DUNDERSCORE -D$(OPSYS) $(GEMINC) $(MOTIFINC) -DG_64BIT -O # -g
+FOPT =  -ff2c -fno-second-underscore $(GEMINC) -O # -g
+FOPT_NOGLOB = -fno-globals -Wno-globals
+NCII = "-I../libsrc"
+NCOPT = "CPPFLAGS=-DNDEBUG -Df2cFortran" "FFLAGS=-O -Wno-globals" "CFLAGS=-O $(NCII)" "CXX= "
+JASPEROPT = 'CC=$(CC)' 'CFLAGS=-O' '--disable-libjpeg'
+XML2OPT = 'CC=$(CC)' '--with-iconv'
+XMLDEP = -lpthread
+
+CFLAGS = $(COPT) 
+CFLAGS_DB = $(COPT)
+FFLAGS = $(FOPT)
+LDFLAGS = -L/usr/X11R6/lib64
+LDM_FLAGS = 
+
+X11LIBDIR = -L/usr/X11R6/lib
+#MOTIFLIBS = -L/usr/X11R6/lib -lXm $(X11LIBDIR) -lSM -lICE -lXp -lXext
+# RedHat 7.1
+# MOTIFLIBS = /usr/X11R6/lib/libXm.a $(X11LIBDIR) -lSM -lICE -lXp -lXext
+# RedHat 7.3+
+#MOTIFLIBS = /usr/X11R6/lib/libXm.a $(X11LIBDIR) -lXmu -lSM -lICE -lXp -lXext
+#MOTIFLIBS = $(X11LIBDIR) /usr/X11R6/lib/libXm.a -lXmu -lSM -lICE -lXp -lXext 
+MOTIFLIBS = $(X11LIBDIR) -lXm
+
+BUFRFLAGS = -O -DNO_MSG_IPC -ansi
+
+SYSLIBS = 
+ARSLEEP = sleep 1;

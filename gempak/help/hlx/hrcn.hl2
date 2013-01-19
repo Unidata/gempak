@@ -1,0 +1,66 @@
+     HRCN
+
+     HRCN is the ending valid time for the tropical disturbance, the colors for
+     the hurricanes, tropical storms, tropical depressions and directional
+     arrows, the symbols for the hurricanes, tropical storms and tropical
+     depressions, and flags for plotting the center located time, the name and
+     minimum central pressure, the speed, the wind and sea quadrant radii, and
+     the forecast track on the map.
+
+        End time|HU;TS;TD;DA clrs|HU;TS;TD syms|Time flg|Label flg|
+                Speed flg|Quad Wind flag|00 hr fcst flg|06 hr fcst flg|
+                12 hr fcst flg|
+                18 hr fcst flg|24 hr fcst flg|30 hr fcst flg|36 hr fcst flg|
+                42 hr fcst flg|48 hr fcst flg|54 hr fcst flg|60 hr fcst flg|
+                66 hr fcst flg|72 hr fcst flg|78 hr fcst flg|84 hr fcst flg|
+                90 hr fcst flg|96 hr fcst flg|120 hr fcst flg|Name
+
+     Locations that are valid less than 24 hours before the ending time, given
+     as a GEMPAK date/time string, will be plotted on the map.  Any missing
+     items from the date/time string will be filled in by the system time.  The
+     ending time may also be LAST or ALL.  LAST will use the system time
+     and plot all current tropical weather.  ALL will plot all the tropical
+     weather in the data files for the last ten days.
+
+     The colors are separated by a semi-colon.  If any color is set to 0,
+     that type of symbol will not be plotted.  If any color is missing, a
+     default will be used.  Defaults are red for hurricane, yellow for
+     tropical storm, green for tropical depression, and magenta for
+     directional arrow.
+
+     The symbols are separated by a semi-colon.  If they are not given,
+     the default symbols will be used.  The defaults are Northern Hemisphere
+     hurricane, Northern Hemisphere tropical storm and tropical depression.
+
+     The time flag is YES or NO and controls whether or not to plot the location
+     time of the tropical disturbance on the map.  The default is NO.
+
+     The label flag is YES or NO and controls whether or not to plot the name
+     of the disturbance and the minimum central pressure on the map.  The
+     default is NO.
+
+     The speed flag is YES or NO and controls whether or not to plot the
+     speed in knots of the disturbance.  The default is NO.
+
+     The quad wind flag is YES or NO and controls whether or not to plot the 64,
+     50 and 34 kts wind and 12 foot seas quadrant arcs.  Only the most recent
+     time period of each storm will have the arcs drawn.  The 00, 12, 24, 36, 
+     48, 72, 96, 120 are decoded from the Tropical Cyclone Forecast Advisory.
+     The wind ranges for all other forecast hours are assigned the value of the 
+     previous decoded forecast hour.  The default is NO.
+
+     The xx hr fcst flags are YES or NO and control whether or not to plot the
+     valid forecasted latitudes and longitudes for the estimated positions at 
+     the forecast time for the disturbance.  Only the most recent time period
+     of each storm will have the track drawn.  The default is NO.  If both the
+     quad wind flag and the xx hr fcst flag are YES, the wind and sea quadrant
+     arcs will be plotted for the forecast position as well as for the most 
+     recent current position.  The 00, 12, 24, 36, 48, 72, 96, 120 are decoded 
+     from the Tropical Cyclone Forecast Advisory.  The positions for all other 
+     forecast hours are obtained using a linear interpolation of the
+     previous and subsequent decoded forecast hour.
+
+     The name of a tropical storm may be specified.  If a name is declared, then
+     only that storm will be displayed for the date/time indicated.  The default
+     is all storms are plotted.  ALL will also plot all storms within the given
+     time range.

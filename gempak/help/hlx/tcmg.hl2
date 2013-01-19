@@ -1,0 +1,32 @@
+     TCMG
+
+     TCMG is the ending valid time for the tropical disturbance, the colors for
+     the disturbance symbol, the arrows, and the storm danger area, and the
+     name of the center issuing the graphic.
+
+		End time|SY;AR;DA colors|center name
+
+     Tropical disturbances that are valid at the ending time will be plotted on
+     the map.  The ending time is given as a GEMPAK date/time string.  Any
+     missing items from the string will be filled in by the system time.  The
+     ending time may also be LAST.  LAST will use the system time and plot all
+     current tropical disturbances.  ALL is not valid for TCMG.
+
+     The colors are separated by a semi-colon.  If any color is set to 0,
+     the color will not be changed.  If any color is missing, a default will be
+     used.  Defaults are red for the tropical disturbance symbols, orange for
+     the track arrows, and magenta, yellow, green, purple, cyan, blue, coral,
+     pink, dark green and dark orange for the danger areas for tropical systems
+     1 through 10, respectively, in either the Atlantic or Pacific.
+
+     The name of the center is either TPC or CPHC.  If anything other than
+     CPHC is specified, the center will default to TPC.  TPC will plot Atlantic
+     tropical disturbances and Pacific tropical disturbances east of the
+     dateline.  CPHC will only plot Pacific tropical disturbances east of the
+     dateline.
+
+     Recommended values of GAREA for use with TCMG are
+     GAREA = -4;-104;61;-2     for TPC Atlantic disturbances
+     GAREA = -4;-180;41;-80    for TPC Pacific disturbances
+     GAREA = -4;180;41;-140    for CPHC Pacific disturbances
+

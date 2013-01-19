@@ -1,0 +1,8 @@
+     PLUS
+
+     PLUS specifies the size and width of a plus sign:
+
+		plus sign size / width
+
+     The plus sign size is a real number multiplier for the default size.  
+     If the size is zero or unspecified, the current size will be used.

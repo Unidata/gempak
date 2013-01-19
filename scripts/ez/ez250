@@ -1,0 +1,48 @@
+#! /bin/csh
+#
+# EZ250
+#
+# This script will plot the 250 mb isotachs, heights and winds for
+# all of the times for the given model.
+#
+#	Syntax:  ez250
+#
+##
+# Log:
+# D. Plummer/NMC	 1994
+# S. Jacobs/NMC		10/94		Clean up
+
+source settings
+
+gdcntr << EOF
+GDATTIM	= ALL
+DEVICE	= ${dev}
+!
+! Restore the 250 mb isotachs
+restore ez/250sped
+CLEAR   = yes
+TITLE	= 5/-2/${model} ~  @  HGHTS, ISOTACHS AND WIND (KTS)|~ @ HGHT, WIND
+r
+
+!
+! Restore the 250 mb heights
+restore ez/250hght
+CLEAR   = no
+TITLE	= 0
+r
+
+ex
+EOF
+
+gdwind << EOFF
+!
+! Restore the 250 mb winds
+restore ez/250wind
+CLEAR   = no
+TITLE	= 0
+r
+
+;2
+;l
+ex
+EOFF

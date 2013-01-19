@@ -1,0 +1,36 @@
+!
+! Restore File : 200mb_hght_absv_wnd
+!
+! Log:
+! J. Carr/HPC	 10/98	Initial creation
+!
+GLEVEL  200
+GVCORD  pres
+PANEL   0           
+SKIP    0                  !0         !1
+SCALE   5                  !5         !-1
+GDPFUN  sm5s(abs(avor(wnd)))//v  !v         !sm5s(hght)!kntv(wnd)
+TYPE    c/f                !c         !c   !b
+CONTUR  3
+CINT    2/10/20            !2/4/8     !3
+LINE    7/5/1/2            !29/5/1/2  !5/1/2/1
+FINT    16;20;24;28;32;36;40;44
+FLINE   0;23-15
+HILO    2;6/X;N/10-99;10-99!0 
+HLSYM             
+CLRBAR  1        
+WIND    0                  !          !     !18/1/1
+REFVEC      
+TITLE   1/-1/~ ? @ HEIGHTS, ABS VORTICITY AND WIND!0
+TEXT    l/22//hw            
+STNPLT                  
+SATFIL                 
+RADFIL                
+STREAM              
+POSN    4          
+COLORS  2         
+MARKER  2        
+GRDLBL  5                                                                       
+LUTFIL  none
+FILTER  yes
+ijskip  1

@@ -1,0 +1,12 @@
+! PMDTHR.BULL
+!
+! Location information for the following product:
+! Prognostic_Meteorological_Discussion:
+! US_Hazards_Assessment
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+FXUS21 KWNC     NCEP_CPC                         MD US  3881  -7687     0

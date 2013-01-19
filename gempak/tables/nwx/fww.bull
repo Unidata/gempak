@@ -1,0 +1,11 @@
+! FWW.BULL
+!
+! Location information for the following product:
+! Fire_Weather_Watch.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+FNUS63 KDMX     DES_MOINES                       IA US  4172  -9372     0

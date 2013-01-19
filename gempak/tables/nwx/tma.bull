@@ -1,0 +1,37 @@
+! TMA.BULL
+!
+! Location information for the following product:
+! Tsunami_Tide/Seismic_Message_Acknowledgement.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+SEAK47 PAJK     JUNEAU                           AK US  5836 -13458     0
+SEAK47 PANT     ANNETTE_ISLAND                   AK US  5502 -13157     0
+SEAK47 PAYA     YAKUTAT                          AK US  5952 -13966     0
+SEAK48 PACD     COLD_BAY_AIRPORT                 AK US  5520 -16272     0
+SEAK48 PADQ     KODIAK                           AK US  5775 -15250     0
+SEAK48 PAFC     ALASKA/PACIFIC_RFC               AK US  6115 -14997     0
+SEAK48 PAFC     ANCHORAGE                        AK US  6115 -14997     0
+SEAK48 PAHO     HOMER_MUNICIPAL                  AK US  5963 -15150     0
+SEAK48 PAKN     KING_SALMON                      AK US  5868 -15664     0
+SEAK48 PASN     SAINT_PAUL_ISLAND                AK US  5715 -17022     0
+SEAK48 PAVW     VALDEZ                           AK US  6113 -14635     0
+SEAK49 PABR     BARROW/POST-ROGERS               AK US  7130 -15677     0
+SEAK49 PAFG     FAIRBANKS                        AK US  6484 -14783     0
+SEAK49 PAOM     NOME                             AK US  6450 -16542     0
+SEAK49 PAOT     KOTZEBUE/RALPH_WIEN              AK US  6687 -16263     0
+SEPA50 PKMR     WSO_MAJURO                       -- MH   705  17127     0
+SEPA50 PTKK     TRUK/MOEN_FLT_S                  -- KA   746  15185     0
+SEPA50 PTKR     WSO_KOROR                        -- KA   726  13444     0
+SEPA50 PTTP     WSO_POHNPEI                      -- KA   694  15825     0
+SEPA50 PTYA     YAP_ISLAND                       -- KA   947  13808     0
+SEUS56 KEKA     EUREKA                           CA US  4079 -12416     0
+SEUS56 KLOX     LOS_ANGELES/OXNARD               CA US  3420 -11912     0
+SEUS56 KMFR     MEDFORD                          OR US  4236 -12287     0
+SEUS56 KMTR     SAN_FRANCISCO                    CA US  3659 -12184     0
+SEUS56 KPQR     PORTLAND                         OR US  4556 -12252     0
+SEUS56 KSEW     SEATTLE                          WA US  4768 -12225     0
+SEUS56 KSGX     SAN_DIEGO                        CA US  3290 -11705     0

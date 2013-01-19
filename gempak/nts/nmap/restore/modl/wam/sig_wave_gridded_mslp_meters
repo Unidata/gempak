@@ -1,0 +1,39 @@
+!
+! Restore File : sig_wave_gridded_mslp_meters
+!
+! Log:
+! J.L.Partain/MPC        9/98   Gridpoint sig waves (m), AVN BL Winds & MSLP
+! A. Hardy/GSC		 5/99   Added -1 to TITLE for title location
+! T. Lee/SAIC		 2/04	Changed AVN to GFS
+!
+GDFILE  wam ! gfs ! gfs
+GLEVEL  0
+GVCORD  none
+PANEL   0                                                                       
+SKIP    0
+SCALE   0
+GDPFUN  HTSGW           ! kntv(wnd@9950%sgma)	!sm5s(pmsl)
+TYPE    p               ! b			!c
+CONTUR  1
+CINT    0  		!			!4
+LINE                    !               	!25/13/1/2
+FINT    
+FLINE   
+HILO                    !			!26;2/h#;l#///30;30/y
+HLSYM    		!			!.9;0.8//21//hw
+CLRBAR  1
+WIND    17/1/1.4/112
+REFVEC                                                                          
+TITLE   5/-1/~ GRIDDED SIG WAVE HEIGHT (m) with GFS PMSL and BL WINDS!0
+TEXT    .9/21/1/hw
+CLEAR   yes                                                                     
+STNPLT                                                                          
+SATFIL                                                                          
+RADFIL                                                                          
+STREAM                                                                          
+POSN    0
+COLORS  1
+MARKER  0
+GRDLBL                                                                         
+LUTFIL  none
+FILTER  yes

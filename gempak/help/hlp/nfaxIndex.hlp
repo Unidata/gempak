@@ -1,0 +1,20 @@
+#----------------------------------------------------------------------------
+#
+# nfaxIndex.hlp
+#
+# This is the NFAX help files table.  Each line consists of three fields.
+# The first field is a unique ID number assigned to the corresponding help
+# file.  The second field is the help panel title.  The third field is the
+# path to the help file.  Fields are separated by '|'.  Currently the
+# maximum number of help files is 30.
+#
+# Log:
+# E. Wehner/EAi		3/97	Adopted for viewfax
+# S. Wang/GSC		3/97	change name from viewfax.readme to current
+# T. Piper/SAIC		2/04	Renamed from nfaxHlp.index and moved help
+#						files to $GEMHLP/hlp
+#----------------------------------------------------------------------------
+#
+# ID | Help Panel Title		| Help File Path And Name
+#----------------------------------------------------------------------------
+01   | NFAX Overview	| $GEMHLP/hlp/nfax.hlp

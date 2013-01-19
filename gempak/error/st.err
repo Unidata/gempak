@@ -1,0 +1,14 @@
+!	ST error file
+!
+ 7	! Unbalanced parenthesis.
+ 6	! Replacement string cannot have zero length.
+ 5	! Substring cannot have zero length.
+ 4	! Replacement string cannot be blank.
+ 3	! Substring cannot be blank.
+ 2	! Exceeded maximum length of output string.
+ 1	! More than the expected number of values entered.
+-1	! Invalid input string.
+-2	! Conversion error.
+-3	! Substring not found or invalid.
+-4	! Word not found.
+-5	! Nth occurrence not found.

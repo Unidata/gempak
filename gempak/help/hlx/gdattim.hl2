@@ -1,0 +1,63 @@
+     GDATTIM
+
+     GDATTIM is the date/time for the grid.
+
+     Grids may contain two date/time fields, in which case the fields must 
+     be separated using a colon.  If the grid to be selected contains only 
+     one time, the colon and second time may be omitted.
+
+     The standard format for a grid time is a character string
+
+		YYMMDD/HHMMthhhmm
+     where:
+		YYMMDD	is the year, month, day
+		/	is the date and time separator
+		HHMM	is the hour, minute
+		t	is the type
+                            ( F=forecast  A=analysis  G=guess  I=initial )
+		hhhmm	is the forecast hour, minute
+
+     If t is blank, an analysis grid is assumed.  The hhhmm field cannot
+     be omitted if the type is given.  If hhhmm has one, two, or three
+     digits, they represent hours.  With four or more digits, zeros will
+     be added at the beginning of the field.
+
+     The field YYMMDD is called the date; HHMM is the time; t is the type; 
+     hhhmm is the forecast time.  The fields may be abbreviated.  If the 
+     input has no /, it is assumed to be the time part.  Any abbreviated 
+     version of either date or time is assumed to be the part closest to 
+     the /.  The rest of the date and time is obtained from the last time 
+     in the file or data set.  If the type is missing, then A is assumed.
+
+     The type and forecast time fields are used with forecast model data.
+     If GDATTIM is 940831/0000F24, the grid to be found is the 24-hour
+     forecast from the model run at 00Z on Aug 31.
+
+     If a base time is specified in the first GDFILE entry, then the
+     entry in GDATTIM should not contradict it.  If there is a
+     contradiction, the GDATTIM entry overrides the entry in GDFILE.
+
+     FIRST and LAST are valid values and have the following definitions.
+     FIRST by itself means the first forecast time for the given cycle,
+     when the times represent forecast periods. When the times are analyses,
+     FIRST is the first time in the data set. Similar definitions apply
+     for LAST.
+
+     FIRST and LAST may be used in either the cycle or forecast parts of
+     the date/time string. In general the format is cycleFfcst. This
+     definition means that FIRSTFFIRST is a valid construct.
+     
+     A range of times, with an optional increment, may also be entered
+     by the user.  Either the cycle portion of the time or the forecast
+     portion may vary for the range.  However, both cannot vary for the
+     same execution of the program.  Dual times may appear in a range
+     and should always include an increment to avoid ambiguous situations.
+
+     The value in GDATTIM may be overridden by specifying ^GDATTIM 
+     with the grids to be found.  For example, 
+     GFUNC = SUB (TMPF^28/12,TMPF^27/12) will compute the same 
+     time difference as GFUNC = TDF (TMPF) with GDATTIM=28/12:27/12.
+ 
+     Note that a grid from an objective analysis will have forecast
+     type and time A00000, which is the default for a blank forecast
+     type and time.

@@ -1,0 +1,97 @@
+!
+! NCEPGRIB129.TBL -- GRIB 1 parameter conversion table version 129
+!
+!ID# NAME                             UNITS                GNAM         SCALE   MISSING HZREMAP DIRECTION
+!
+128 Prob anomaly of temperature       %                    PAOT             0  -9999.00       0         0
+129 Prob anomaly of precipitation     %                    PAOP             0  -9999.00       0         0
+!
+131 Rain fraction of total liquid wtr -                    FRAIN            0  -9999.00       0         0
+132 Ice fraction of total condensate  -                    FICE             0  -9999.00       0         0
+133 Rime factor                       -                    FRIME            0  -9999.00       0         0
+134 Convective cloud efficiency       -                    CUEFI            0  -9999.00       0         0
+135 Total condensate                  kg/kg                TCOND            0  -9999.00       0         0
+136 Total column-integrated cloud wtr kg/m**2              TCOLW            0  -9999.00       0         0
+137 Total column-integrated cloud ice kg/m**2              TCOLI            0  -9999.00       0         0
+138 Total column-integrated rain      kg/m**2              TCOLR            0  -9999.00       0         0
+139 Total column-integrated snow      kg/m**2              TCOLS            0  -9999.00       0         0
+140 Total column-integrated condens   kg/m**2              TCOLC            0  -9999.00       0         0
+!
+141 Pres from which parcel was lifted Pa                   PLPL             0  -9999.00       0         0
+142 Hght from which parcel was lifted m                    HLPL             0  -9999.00       0         0
+143 Cloud Emissivity                  Fraction 0-1         CEMS             0  -9999.00       0         0
+144 Cloud Optical Depth               non-dim              COPDS            0  -9999.00       0         0
+145 Effective Particle size           Microns              PSIZ             0  -9999.00       0         0
+146 Total Water Cloud                 %                    TCWAT            0  -9999.00       0         0
+147 Total Ice Cloud                   %                    TCICE            0  -9999.00       0         0
+148 Wind difference                   m/s                  WDIF             0  -9999.00       0         0
+149 Wave Steepness                    non-dim              WSTP             0  -9999.00       0         0
+!
+150 Prob of temp being above normal   %                    PTAN             0  -9999.00       0         0
+151 Prob of temp being near normal    %                    PTNN             0  -9999.00       0         0
+152 Prob of temp being below normal   %                    PTBN             0  -9999.00       0         0
+153 Prob of prcp being above normal   %                    PPAN             0  -9999.00       0         0
+154 Prob of prcp being near normal    %                    PPNN             0  -9999.00       0         0
+155 Prob of prcp being below normal   %                    PPBN             0  -9999.00       0         0
+156 Particulate matter (coarse)       g**-6/m**3           PMTC             0  -9999.00       0         0
+157 Particulate matter (fine)         g**-6/m**3           PMTF             0  -9999.00       0         0
+158 Analysis error of temperature     K                    AETMP            0  -9999.00       0         0
+159 Analysis error of dew point       K                    AEDPT            0  -9999.00       0         0
+!
+160 Analysis error of specific hum.   kg kg**-1            AESPH            0  -9999.00       0         0
+161 Analysis error of u-wind          m s**-1              AEUWD            0  -9999.00       0         0
+162 Analysis error of v-wind          m s**-1              AEVWD            0  -9999.00       0         0
+163 Particulate matter (fine)         log10(g10**-6 m**-3) LPMTF            0  -9999.00       0         0
+164 Integrated column part mat (fine) log10(g10**-6 m**-3) LIPMF            0  -9999.00       0         0
+165 Derived radar refl from rain      dbZ                  REFZR            0  -9999.00       0         0
+166 Derived radar refl from ice       dbZ                  REFZI            0  -9999.00       0         0
+167 Derived radar refl from conv      dBZ                  REFZC            0  -9999.00       0         0
+168 Total column-int supercooled H2O  kg m**-2             TCLSW            0  -9999.00       0         0
+169 Total column-int melting ice      kg m**-2             TCOLM            0  -9999.00       0         0
+!
+170 Ellrod index                      -                    ELRDI            0  -9999.00       0         0
+171 Sec prior to Initial Ref Time     sec                  TSEC             0  -9999.00       0         0
+172 Secs after initial reference time s                    TSECA            0  -9999.00       0         0
+173 Number of samples/observations    -                    NUMB             0  -9999.00       0         0
+174 Analysis error of pressure        Pa                   AEPRS           -2  -9999.00       0         0
+175 Icing severity                    non-dim              ICSEV            0  -9999.00       0         0 
+176 Icing probability                 non-dim              ICPRB            0  -9999.00       0         0 
+177 Low-level aviation interest       non-dim              LAVNI            0  -9999.00       0         0 
+178 High-level aviation interest      non-dim              HAVNI            0  -9999.00       0         0 
+!
+180 Ozone concentration               PPB                  OZCON            0  -9999.00       0         0
+181 Categorical ozone concentration   -                    OZCAT            0  -9999.00       0         0
+182 Vert eddy diffusivity heat exch   m**2/s               VEDHB            0  -9999.00       0         0
+183 Sigma level value                 non-dim              SIGV             0  -9999.00       0         0
+184 Ens member weighting parameter    -                    EMWT             0  -9999.00       0         0
+!
+190 U component from scatterometer    -                    USCT             0  -9999.00       0         0
+191 V component from scatterometer    -                    VSCT             0  -9999.00       0         0
+!
+194 Tropical Cyclone Heat Potential   J m**-2              TCHP             0  -9999.00       0         0
+195 Geometric Depth Below Sea Surface m                    DBSS             0  -9999.00       0         0
+196 Ocean Dynamic Height Anomaly      m                    ODHA             0  -9999.00       0         0
+197 Ocean Heat Content                J/m**2               OHC              0  -9999.00       0         0
+198 Sea Surface Height Rel to Geoid   m                    SSHG             0  -9999.00       0         0
+199 Salt Flux                         g/cm**2/s            SLTFL            0  -9999.00       0         0
+!
+200 UV-B downward solar flux          W/m**2               DUVB             0  -9999.00       0         0
+201 Clear sky UV-B downward solar flx W/m**2               CDUVB            0  -9999.00       0         0
+202 Total downward heat flux (sfc)    W/m**2               THFLX            0  -9999.00       0         0
+!
+! added from WRF documentation (Chiz)
+203 Dominant rain                     0,1                  WXDR             0  -9999.00       0         0
+204 Dominant freezing rain            0,1                  WXDZ             0  -9999.00       0         0
+205 Dominant ice pellets              0,1                  WXDP             0  -9999.00       0         0
+206 Dominant snow                     0,1                  WXDS             0  -9999.00       0         0
+!
+210 Observed radar reflectivity       dbZ                  REFO             0  -9999.00       0         0
+211 Derived radar reflectivity        dbZ                  REFD             0  -9999.00       0         0
+212 Maximum/Composite reflectivity    dbZ                  REFC             0  -9999.00       0         0
+!
+213 Sim Sat bright-T Chan2 GOES12     K                    SBT122           0  -9999.00       0         0
+214 Sim Sat bright-T Chan3 GOES12     K                    SBT123           0  -9999.00       0         0
+215 Sim Sat bright-T Chan4 GOES12     K                    SBT124           0  -9999.00       0         0
+216 Sim Sat bright-T Chan5 GOES12     K                    SBT125           0  -9999.00       0         0
+!
+255 Missing                           -                    MISS             0  -9999.00       0         0

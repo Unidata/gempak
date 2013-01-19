@@ -1,0 +1,13 @@
+     CNTR
+
+     CNTR specifies the plot attributes for Cell Centroid movement 
+     barbs (knots):
+ 
+           color / size / width ; filter
+
+     A value of 0 is used to turn off centroid plotting. 
+
+     FILTER is a logical variable or real number which controls the
+     filtering of data in order to eliminate plotting of overlapping
+     data. 
+

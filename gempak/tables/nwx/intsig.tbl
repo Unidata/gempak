@@ -1,0 +1,21 @@
+!
+!  Station table for international sigmet bulletins
+!
+!
+! Log:
+! S. Jacobs/NCEP	 7/99	Created
+! S. Jacobs/NCEP	 8/99	Reorganized the stations
+! S. Jacobs/NCEP	 4/00	Added KKCI
+! M. Li/GSC		 7/00	Added PHFO
+! S. Jacobs/NCEP	 2/01	Added PANC
+! D. Kidwell/NCEP	 6/01	Added NTAA
+! J. Lewis/AWC		 4/05   Removed KMKC,PGUM,PHNL,PANC
+! J. Lewis/AWC		 4/05   Added PAWU
+!
+03763  EGGY    BRACKNELL/BEAUFORT                UK  UK   5138    -078     74
+99999  KKCI    AVIATION_WEATHER_CENTER           MO  US   3912   -9460    231
+99999  KNHC    NATIONAL_HURRICANE_CENTER(TPC)    FL  US   2582   -8028      4
+99999  PHFO    HONOLULU/UNIV_OF_HI-MANOA_CAMPUS  HI  US   2190  -15842     20
+47686  RJAA    NEW_TOKYO_INTL_ARPT               JP  JP   3577   14038     44
+99999  PAWU    ALASKA_AVIATION_WEATHER_UNIT      AK  US   6118  -15000     44
+91938  NTAA    TAHITI_ISLAND/FAAA                PF  PF  -1755  -14962      2

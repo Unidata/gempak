@@ -1,0 +1,62 @@
+
+DCAIRM
+
+    DCAIRM decodes airmet (AIRman's METeorological Information)
+    reports from a real-time data feed, or from a file fed to the 
+    program through standard input, and writes the data to an ASCII 
+    file.  The program is controlled by inputs to the command line.
+
+    The inputs are program options and the output file name or template.
+    For example, for real-time data feeds:
+    
+	dcairm [options] output_file
+
+    If running the program interactively with standard input, the -c
+    option must be used.  The input file must also be specified.
+    For example:
+
+	dcairm -c YYMMDD/HHNN [other_options] output_file < input_file
+    
+    A template may be used to specify the output file name.  The file
+    name template uses the date and time of the bulletin or report
+    to replace the following characters.
+
+	YYYY or YY	Year with or without the century
+	MM		Month number
+	DD		Day
+	HH		Hour
+	NN		Minute
+
+
+     The format of the output ASCII file is as follows:
+
+     |Type|Issue_time|Start_time|End_time|Identifier|Update|Flt_lvl_1|
+           Flt_lvl_2|Corr_amd_tst_flag|Cancel_flag
+	     Lat1    Lon1
+	     Lat2    Lon2
+	     Lat3    Lon3
+	       .       .
+	       .       .
+	       .       .
+
+     (Note that the first two lines shown above appear as a single
+     line in the output file.)
+     Where: Type is IR (instrument flight rules), MO (mountain
+ 	    	obscuration), TB (turbulence), IC (icing),  
+                SW (sustained winds), or WS (low-level wind shear).
+	    Issue_Time, Start_time and End_time are full GEMPAK 
+                date/time strings
+	    Identifier is composed of the region and a sequence number
+	    Update is the airmet update number
+	    Flt_lvl_1 and Flt_lvl_2 are the flight levels
+	    Corr_amd_tst_flag is a flag indicating a correction (1),
+		an amendment (2), and/or a test (flag + 3)
+	    Cancel_flag is a flag indicating a cancellation (0 or 1)
+
+     Extra spaces may appear anywhere in this line of information,
+     except in the first character position.  The first character must
+     be a bar (|).
+
+     The latitude and longitude values are read using the FORTRAN
+     format (2F9.2).  The number of points may vary.
+

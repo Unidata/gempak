@@ -1,0 +1,4 @@
+$FC $FFLAGS $LDFLAGS -o $OS_BIN/gddelt_gn gddelt.f \
+		$OS_LIB/gddelt.a $GEMLIB $GPLT \
+		$DEVICE $OS_LIB/gn.a $GEMLIB $CGEMLIB
+$RM *.o

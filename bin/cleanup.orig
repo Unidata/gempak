@@ -1,0 +1,65 @@
+#!/bin/csh
+#
+# CLEANUP
+#
+# This script will find any GPLT process which are running and kill them.
+# It will also kill any children of GPLT, remove any message queues and
+# remove all core files in the user's directory.
+#
+##
+# Log:
+# S. Jacobs/NMC		 3/94
+# T. Piper/GSC		05/00	Added AIX, SunOS, Linux, & IRIX6.5 support
+# T. Piper/GSC		08/00	Added Linux Version 2, Release 2 support
+# T. Piper/GSC		09/00	USER > LOGNAME; fix AIX
+
+if ( $#argv < 1 ) then
+    echo Removing all CORE files
+    find $HOME -name core -exec rm {} \;
+else
+    if ( "$1" != "-c" ) then
+	echo Error: Type cleanup -c to turn off the CORE removal
+	exit
+    endif
+endif
+
+if ( $OS == "Linux" && $OS_REL == "0" ) then
+    foreach gplt_id ( `ps | grep gplt | grep -v grep | awk '{ print $1 }'` )
+        foreach j ( "`ps j | grep $gplt_id`" )
+            if ( `echo $j | awk '{ print $1 }'` == $gplt_id ) then
+	        set m=`echo $j | awk '{ print $2 }'`
+	        echo Killing process $m
+		kill -9 $m
+	    endif
+	end
+	echo Killing process $gplt_id
+	kill -9 $gplt_id
+    end
+else if ( $OS == "AIX" ) then
+    foreach gplt_id ( `ps -u $LOGNAME | grep gplt | grep -v grep | awk '{ print $2 }'` )
+	foreach j ( "`ps -ef | grep $gplt_id`" )
+	    if ( `echo $j | awk '{ print $3 }'` == $gplt_id) then
+	        set m=`echo $j | awk '{ print $2 }'`
+	        echo Killing process $m
+	        kill -9 $m
+	    endif
+	end
+	echo Killing process $gplt_id
+	kill -9 $gplt_id
+    end
+else
+    foreach gplt_id ( `ps -u $LOGNAME | grep gplt | grep -v grep | awk '{ print $1 }'` )
+        foreach j ( "`ps -ef | grep $gplt_id`" )
+	    if ( `echo $j | awk '{ print $3 }'` == $gplt_id) then
+	        set m=`echo $j | awk '{ print $2 }'`
+	        echo Killing process $m
+	        kill -9 $m
+	    endif
+        end
+        echo Killing process $gplt_id
+        kill -9 $gplt_id
+    end
+endif
+
+rmque
+

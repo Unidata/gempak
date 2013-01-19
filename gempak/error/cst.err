@@ -1,0 +1,12 @@
+!	This is the GEMLIB CST error file
+!
+ 4	! Invalid number for zero-padding.
+ 3	! Tag not found.
+ 2	! Exceeded maximum length of output string.
+ 1	! More than the expected number of values entered.
+-1	! Invalid number of expected input values.
+-3	! Substring not found or invalid.
+-5	! Nth occurrence not found.
+-6	! Invalid occurence number.
+-7	! Unbalanced parenthesis.
+-8	! Cannot zero-pad a non-numeric string.

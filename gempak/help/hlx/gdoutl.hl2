@@ -1,0 +1,15 @@
+     GDOUTL 
+
+     GDOUTL is the output vertical level in the target vertical
+     coordinate.  The value of GDOUTL is stored for identification
+     and access purposes with the output grid; it is not used in
+     the vertical interpolation itself.  To specify the level to
+     which to interpolate, use DESIRE.
+
+     DESIRE and GDOUTL are specified separately because GEMPAK requires
+     vertical levels in grid files to be integers.  For example, by
+     convention, for the PV surface PV = 1.5 PVU, an output grid level
+     of 0.0000015 is not allowed.  By convention, one could specify
+     this level as GDOUTL = 15, and DESIRE should still be = 0.0000015.
+
+

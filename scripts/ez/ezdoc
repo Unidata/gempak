@@ -1,0 +1,37 @@
+#!/bin/csh
+#
+# EZDOC
+#
+# This script will create a user document from the README file and the headers
+# of all of the scripts.
+#
+#	Syntax:  ezdoc
+#
+##
+# Log:
+# S. Jacobs/NMC		10/94
+#
+
+# Set the path to the ls command.
+
+if  ( $OS == "SunOS"  )  then
+    set LS = "/usr/5bin/ls"
+else
+    set LS = "/bin/ls"
+endif
+
+# Copy the README file to the user document.
+
+cp README EZDOC.txt
+
+# Add the headers of each script to the user document.
+
+foreach i ( `$LS ez*` )
+
+ echo "Processing $i..."
+
+ awk -F"#" '($0 == "##" ) {exit} ($2 !~ /\/bin\/csh/) {print $2}' $i >> EZDOC.txt
+
+ echo " "
+
+end

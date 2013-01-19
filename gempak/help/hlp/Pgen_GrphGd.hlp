@@ -1,0 +1,77 @@
+
+                             GRAPH - to - GRID
+
+
+This function generates a grid from contour lines drawn via NMAP product 
+generation.  
+
+    Procedure
+
+    To generate contours, invoke NMAP and enter product generation.
+    Contours are defined as a simple solid line grouped with a numeric
+    text value using 'LABEL' grouping.  The label may be located anywhere.
+    Any number of equal-valued labels may be grouped with any number of lines.
+    When drawing, labeling and grouping have been completed, a text file
+    containing the geographical contour coordinates must be created.  Click
+    'PROD' then 'GRAPH GRID'.  A popup will appear with cycle and forecast
+    time information which may be edited.  Clicking "Advanced..." enables the
+    user to assign or modify the parameter information as well as the 
+    computational grid information.  Clicking "Show Extensions" displays 
+    virtual lines extending from contours which are not closed.  These lines
+    must not cross each other within the bounds of the computational grid.
+
+    When the grid computation is complete, the grid is contoured and
+    displayed under the VGF lines using CINT and LINE.  If CINT is not
+    specified, contour levels identical to those drawn will be used.
+
+
+    PARAMETERS
+ 
+    CYCLE     Standard GEMPAK date/time (YYYYMMDD/HHHH)
+    FCSTHR    Forecast hour (fFFF)
+
+    PATH      Directory path for output grid file
+    GDOUTF    Output grid file
+    PROJ      Map projection/angles/margins|drop flag 
+    GRDAREA   Area covered by grid 
+    KXKY      Number of grid points in x;y 
+    MAXGRD    Maximum number of grids 
+    CPYFIL    Grid definition 
+    ANLYSS    Grid analysis block 
+    CNTRFL    Contour file
+    GDATTIM   Grid date/time
+    GFUNC     Scalar grid parameter name 
+    GLEVEL    Grid level 
+    GVCOORD   Grid vertical coordinate 
+    KEYCOL    Key color
+    KEYLINE   Key Line (LINE or SPLN/subtyp)
+    OLKDAY    Day of extended outlook
+    GGLIMS    Grid value limitations and control
+    HISTGRD   Toggle writing history grid (y/n)
+ 
+    CINT      Contour interval specs for displaying computed grid 
+    LINE      Line information for displaying computed grid
+    FINT      Fill interval specs for displaying computed grid
+    FLINE     Fill information for displaying computed grid
+    CLRBAR    Color/ornt/anch/x;y/ln;wd/freq|text_info
+
+    Several parameters (PROJ, GRDAREA, KXKY, MAXGRD, CPYFIL, ANLYSS) are
+    intended to be used identically as in the programs GDCFIL and NAGRIB.
+    These define the grid (and gridfile) to create the data.
+    The grid is written to file GDOUTF with parameter name GFUNC valid
+    at CYCLE/FCSTHR.  GLEVEL and GVCOORD may be assigned accordingly.
+    KEYCOL indicates which lines actually get processed; =0 processes all
+    lines, =n processes only lines with color n.  Note that unless CNTRFL 
+    contains an explicit path, the ASCII ".info" text file will be written 
+    into the same directory from which the original VGF file was opened.
+
+    GRPHGD loosely follows an algorithm originally described in TDL OFFICE
+    NOTE 92-14 "The Systematic Interpolative Radial Search (SIRS) -- A
+    Method to Compute Gridpoint Values from Contours".  Some minor changes
+    were incorporated to improve data consistency and to increase execution
+    efficiency.  The program performs three primary methodologies to
+    assign values at gridpoints: 1) radial search and assignment, 2) gradient
+    search and assignment where 1) could not be achieved, and 3) weighted
+    search and assignment where neither 1) nor 2) could be achieved.
+    A 9-point smoother is applied as a final step.
+

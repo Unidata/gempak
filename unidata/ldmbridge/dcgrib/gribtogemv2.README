@@ -1,0 +1,149 @@
+gribtogemv2.README
+
+NOTE:  This version of gribtogem is, strictly speaking, still in
+Beta test form.  Since the parent decoder, gribtonc, has not yet
+been released, we anticipate that there may be some changes and
+bug fixes to the underlying code.  At a minimum, an additional
+interpolation scheme will be added at a later date.  I have tested 
+this version of the software and verified that it works on Sun Solaris,
+Sun OS 4.x, SGI IRIX5, and IBM AIX. (PB)
+
+This README file describes the new GRIB to GEMPAK decoder, gribtogem 
+version 2.  This decoder is based on the new GRIB to netCDF gribtonc.
+Gribtogem ver 2 supports all the same GRIB decoding as the original
+gribtoge decoder, plus
+
+1) Expansion of quasi-regular grids 
+2) Grids on Sigma levels
+3) Bitmapped grids 61-64 Sea Surface Temperature grids
+
+Number 1) is the biggest change in this decoder.  Gribtogem will
+now support expansion of NMC's "thinned grids" onto regularly spaced
+grids.  These "thinned grids" are generated from the Aviation model
+and are broken into 8 octants of the globe.  (Please see the document
+"GRIB Edition 1" by John Stackpole for more information on the
+thinned grids.)  Gribtogem (and gribtonc) will decoded the GRIB
+messages containing a "thinned octant", and expand it to a evenly
+spaced grid of a specified resolution.  Here are important things
+to note about this process:
+
+1) There are two interpolation schemes supported at present - linear
+and cubic spline - used to expand the grid.  In the future, more 
+interpolation schemes may be added.
+
+2) Each octant is interpolated *individually* before the octants
+are stitched together into a globabl grid.  When you use a linear
+interpolater, there is no difference between interpolating individually
+or over the full global grid.  However, if you use more sophisticated
+interpolation schemes, interpolating each octant individually will
+result in some errors due to edge effects.  These errors will be
+greatest near the poles.
+
+3) The user may specify both the interpolation scheme and the 
+resulting resolution using the new gribtogem option "-q meth".
+For example:
+
+        -q "lin,dlat=2.5,dlon=5.0".  
+
+will expand the grids, using a linear interpolation scheme 
+to an output resolution of 2.5 degrees lat by 5.0 degrees lon.  
+
+        -q "cub,dlat=5.0,dlon=5.0"
+
+will expand the grids, using a cubic spline interpolation scheme
+to an output resolution of 5.0 degrees lat by 5.0 degrees lon.
+
+One restriction on the output resolution is that dlat & dlon must be
+evenly divisible into the expanded size of the grid. For the Aviation
+model, each octant (subgrid)is 90 degrees latitude by 90 degrees
+longitude. In addition, GEMPAK code has a limitation of LLMXGD (24,000
+for most platforms) grid points. For global grids, this means that
+dlat=1.25 by dlon=2.5 is about as fine a resolution that will fit into a
+GEMPAK grid file. If you need finer resolution, you will need to change
+the value for LLMXGD in the file $GEMPAK/include/GEMPRM.PRM to a
+larger number, and completely reinstall GEMPAK. A restriction on the
+cubic spline method is that the dlat value must be a multiple of the
+input grid resolution. If the input grid is 1.25 X 1.25, you could use
+dlat=2.5, but not dlat=3.0. The longitude value is not restricted.
+
+For more examples on how to use gribtogem version 2 with the LDM,
+please see the  file "pqact.conf.examples" included in this distribution.
+
+This software is available in two forms.  You may grab the tar file
+containing the entire LDM4-GEMPAK Bridge distribution (which includes
+other decoders) in the file ldm4bridge.tar.Z, or you may just grab
+a copy of gribtogem version 2 in gribtogemv2.tar.Z.  In either case,
+the old directory $BRDGDIR/gribtogem will be overwritten by this
+new software, so if you want to keep the old version of gribtogem,
+you should move it to a new name. In addition, a new version of
+the installation configuration file $BRDGDIR/Bridge.include will
+be untarred, so you should make a copy of the old one if you'd like
+to preserve your changes.
+
+To install this software:
+
+1) untar the distribution:
+
+cd $BRDGDIR
+mv gribtogem gribtogemv1          (or you can simply remove this directory)
+mv gribtonc_src gribtonc_srcv1    (or you can simply remove this directory)
+mv Bridge.include Bridge.include.v1
+zcat ldm4bridge.tar.Z | tar xvf -
+
+or 
+
+cd $BRDGDIR
+mv gribtogem gribtogemv1          (or you can simply remove this directory)
+mv gribtonc_src gribtonc_srcv1    (or you can simply remove this directory)
+mv Bridge.include Bridge.include.v1
+zcat gribtogem.tar.Z | tar xvf -
+
+
+2) Configure the file $BRDGDIR/Bridge.include for your system
+
+3) If you are running LDM4.2.X, you need to do the following:
+
+cd gribtogem
+mv gribtogem.ldm42 gribtogem.c
+
+4) Run make.  If you are installing only gribtogem:
+
+cd gribtogem
+make all
+make install
+make clean
+
+If you are installing all the decoders:
+
+make all
+make install
+make clean
+
+NOTE:  Thanks to Harry Edmon at Univ of Washington for the following report:
+"The older version of acc (SC1.0.1) does not correctly compile the 
+routine gribtypes.c, but the new version (SC2.0.1) and gcc work correctly."
+If you use the SC1.0.1 compiler, everything will appear to compile correctly,
+but the GEMPAK grid files created by gribtogem will contain erroneous data.
+Be sure to use the correct compilers indicated above.
+
+
+4) Reconfigure your pqact.conf file to add decoding of the
+newly available grids (including the bitmapped sea surface temperature
+grids and the thinned grids).  Please see the file pqact.conf.examples
+for examples.
+
+
+Questions and comments are welcome.
+____________________________________________________________________________
+Unidata User Support                                  Unidata Program Center
+support@unidata.ucar.edu                         UCAR, PO Box 3000
+(303) 497-8644                                   Boulder, CO 80307-3000
+----------------------------------------------------------------------------
+Unidata WWW Service                         URL http://www.unidata.ucar.edu/
+GEMPAK Home Page  URL http://www.unidata.ucar.edu/packages/gempak/index.html
+****************************************************************************
+
+
+
+
+

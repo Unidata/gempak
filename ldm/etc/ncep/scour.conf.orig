@@ -1,0 +1,23 @@
+#
+# Configuration file for "scour" utility, to delete all files older than a
+# specified number of days from specified directories and all their
+# subdirectories.  Scour should be invoked periodically by cron(8).
+#
+# Each line consists of a directory, a retention time (in days), and
+# (optionally) a shell filename pattern for files to be deleted.  If no
+# filename pattern is specified, "*" representing all files not beginning
+# with "." is assumed.
+
+# Directory			Days-old	Optional-filename-pattern
+
+~ldm/data/forecasts		2
+~ldm/data/warnings		2		*.gdbm
+~ldm/data/severe		2		*.wmo
+~ldm/data/decoded		2		*.nc
+~ldm/data/upperair		2		*.wmo
+~ldm/data/GRIB			2
+~ldm/data/GRIB			1		*eta.nc
+~ldm/data/gempak		2
+~ldm/data/surface		2
+~ldm/data/campus/netcdf		1
+#~ldm/data/ispan		2

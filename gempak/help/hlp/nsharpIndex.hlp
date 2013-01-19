@@ -1,0 +1,24 @@
+#----------------------------------------------------------------------------
+#
+# nsharpIndex.hlp
+#
+# This is the NSHARP help files table.  Each line consists of three fields.
+# The first field is a unique ID number assigned to the corresponding help
+# file.  The second field is the help panel title.  The third field is the
+# path to the help file.  Fields are separated by '|'.  Currently the
+# maximum number of help files is 50.
+#
+# Log:
+# S. Chiswell/Unidata		11/02	Original
+# T. Piper/SAIC		02/04	Renamed from nsharpHlp.index and moved
+#					help files to $GEMHLP/hlp
+#----------------------------------------------------------------------------
+#
+# ID | Help Panel Title		| Help File Path And Name
+#----------------------------------------------------------------------------
+01   | NSHARP Overview		| $GEMHLP/hlp/nsharp.hlp
+02   | Observed Data Soundings	| $GEMHLP/hlp/obs.hlp
+03   | PFC Data Soundings	| $GEMHLP/hlp/pfc.hlp
+04   | Model Data Soundings	| $GEMHLP/hlp/model.hlp
+05   | ACARS Data Selection	| $GEMHLP/hlp/acars.hlp
+06   | Whats New in NSHARP	| $GEMHLP/hlp/WhatsNewNSHARP.hlp

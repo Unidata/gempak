@@ -1,0 +1,3 @@
+$FC $FFLAGS $LDFLAGS -o $OS_BIN/testin testin.f \
+	$GEMLIB $CGEMLIB $APPL $SYSLIB $GEMLIB
+$RM *.o

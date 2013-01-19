@@ -1,0 +1,44 @@
+     STNDEX
+
+     STNDEX is the list of stability indices or station parameters for 
+     upper-air data.  The items in the list must be separated using 
+     semicolons.  The depth for the layer averages may be specified 
+     preceded by a ! in the user input.  For example, BRCH!1000!8000 
+     instructs the program to average over a mixed layer 1000 meters deep 
+     and lower tropospheric layer 8000 meters deep.  Similarly MLTH!750 
+     results in an average potential temperature over a mixed layer 750 
+     meters deep while the default is 500 meters.
+
+     The following is a list of valid names:
+
+	SHOW	Showalter index
+	LIFT	Lifted index
+	LFTV	LIFT computed by using virtual temperature
+	SWET	SWEAT index
+	KINX	K index
+	CTOT	Cross totals index
+	VTOT	Vertical totals index
+	TOTL	Total totals index
+	CAPE	Convective Available Potential Energy
+	CAPV	CAPE computed by using virtual temperature
+	CINS	Convective Inhibition
+	CINV	CINS computed by using virtual temperature
+	EQLV	Equilibrium Level
+	EQTV	EQLV computed by using virtual temperature
+	LFCT	Level of Free Convection
+	LFCV	LFCT computed by using virtual temperature
+	BRCH	Bulk Richardson Number
+	BRCV	BRCH computed by using CAPV
+	LCLT	Temperature in Kelvin of the LCL
+	LCLP	Pressure in millibars of the LCL
+	MLTH	Mean mixed layer potential temperature
+	MLMR	Mean mixed layer mixing ratio
+	STID	Station identifier
+	STNM	Station number
+	SLAT	Station latitude
+	SLON	Station longitude
+	SELV	Station elevation
+	TEXT	Undecoded data
+	LHAN	Low level Haines Index
+	MHAN	Middle level Haines Index
+	HHAN	High level Haines Index

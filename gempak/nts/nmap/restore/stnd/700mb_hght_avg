@@ -1,0 +1,37 @@
+!
+! Restore File : 700mb_hght_avg
+!
+! Log:
+! M. Li/SAIC    	 2/08	Initial creation
+!
+GDATTIM fall
+GLEVEL  700
+GVCORD  pres
+PANEL   0           
+SKIP    1
+SCALE   -1
+GDPFUN  ENS_SAVG(hght)
+TYPE    c
+CONTUR  1          
+CINT    6
+LINE    5/1/2/1
+FINT    
+FLINE   
+HILO    
+HLSYM             
+CLRBAR         
+WIND    
+REFVEC      
+TITLE   5/-1/~ @ HEIGHTS!0
+TEXT    1/21//hw            
+CLEAR   yes                
+STNPLT                  
+SATFIL                 
+RADFIL                
+STREAM              
+POSN    4          
+COLORS  2         
+MARKER  2        
+GRDLBL  5                                                                       
+LUTFIL  none
+FILTER  yes

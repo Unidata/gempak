@@ -1,0 +1,36 @@
+! Restore File : spc_cape_cin
+!
+! Log:
+! Greg Carbin/SPC 2002 Initial Creation
+!
+GDATTIM fall
+GLEVEL  0
+GVCORD  none
+PANEL   0
+SKIP    0
+SCALE   0
+GDPFUN  sm5s(cape)!sm5s(cins)
+TYPE    c/f!c
+CONTUR  2
+CINT    500/500/!50/-150/-50
+LINE    32/1/1!4/1/1
+FINT    500;1500;2500;3500;4500;5500;6500
+FLINE   0;10;11;12;13;16;17;18
+HILO    0
+HLSYM   0
+CLRBAR  0
+WIND    0
+REFVEC
+TITLE   1/-1/~ CAPE (SFC) AND CINS
+TEXT    1/22/2/hw
+CLEAR   yes
+STNPLT
+SATFIL
+RADFIL
+LUTFIL  none
+STREAM
+POSN    0
+COLORS
+MARKER  0
+GRDLBL  0
+FILTER  0

@@ -1,0 +1,1062 @@
+! TIFFPROD.TBL
+!
+! This table contains the information necessary for creating Group 4
+! compressed TIFF products. Each product has an identification string,
+! a description, x and y size and a rotation factor. 
+! 
+! The x and y size refer to the dimensions of the final TIFF product 
+! where x is the number of bits per line and y is the number of lines.
+! X must be an exact multiple of 8.
+!
+! The rotation is also for the final product. It is also used to
+! define the GEMPAK Device coordinate system. The valid values for
+! the rotation are only 0, 90, 180 and 270.
+!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!
+!!
+! Log:
+! S. Jacobs/NCEP	 1/99	Copied from faxprod.tbl
+! S. Jacobs/NCEP	 2/99	Changed rotation for QPUO00
+! S. Jacobs/NCEP	 2/99	Updated with more WMO ids
+! S. Jacobs/NCEP	 3/99	Changed rotation for QYBA88
+! S. Jacobs/NCEP         3/99   Changed rotation for QYBA88
+! S. Jacobs/NCEP         3/99   Changed size of TPC products:
+!                               PYEA96, PYEA97, PYEA98, PYEA99
+! J. Partain/MPC	 5/99	Chgd rotation for PYAA01-08, PYBA01-08,
+!				PTBA88-89; moved 127X from unknown to
+!				PJBA99; chgd no. lines for PPBA50 and
+!				PBBA51; removed ATL/PAC 36hr fcsts &
+!				24/48hr sig wx charts
+! J. Partain/MPC         5/99   Added radiofax sat images:
+!				evnt00,06,12,18; evst00,06,12,18;
+!				evpn00,01,06,07,12,13,18
+! S. Jacobs/NCEP	 7/99	Removed entries for "wide" maps
+! S. Jacobs/NCEP	 7/99	Added AWC ICAO maps - PG[ABEIGJ]E07
+! S. Jacobs/NCEP	 8/99	Fixed rotation for PGAE07
+! J. Partain/MPC        11/99   Corrected PPJA99 to PJAA99
+! J. Partain/MPC        11/99   Added entries for HPC Pac,Atl Sfc Anals for
+!                               MPC website posting: PYAA11-14, PYBA11-14
+! J. Partain/MPC        11/99   Added new MPC 48hr WavePeriod charts:
+!                               PJAI8(8,9), PJBI8(8,9).
+! J. Partain/MPC        11/99   Changed name of old 48hr SeaState to Wind/
+!                               Wave: PJAI9(8,9), PJBI9(8,9).
+! J. Partain/MPC        01/00   Changed lines and Rot for PYAA0(1,2)
+! S. Jacobs/NCEP         8/00   Added MPC 96hr products
+! J. Partain/MPC	08/00	Chg lines and Rot for PYAA0(1,2) (they were
+!                               never actually changed on 01/00???); chgd
+!                               valid times of 96hr products.
+! J. Partain/MPC	10/00	Chg titles of EV???? sat images; mv EVST??
+!                               images to TPC section; chg rotation on
+!                               EVPN00,07,13 sat images
+! J.Partain/MPC		05/01	Chg lines in PYBA0(2,4,6,8)
+! C.Janota/OPC		04/05	added 06 & 18Z RP1 charts (PWBB88, PWBD89)
+! C.Janota/OPC		04/05	added 06 & 18Z RA1 charts (PWAB88, PWAD89)
+! C.Janota/OPC		04/05   added 24hr 500 MB charts (PPBE50/PPBE51)
+! S. Jacobs/NCEP	 9/05	Add WAFS charts
+! C.Janota/OPC		11/05   changed all 1120 & 1152 lengths to 1106 at Tim Rulon's request
+! S. Jacobs/NCEP	 2/06	Add QJAA88 for FAX conversion
+! R. Jones/NCO		 3/06	Added numerous WAFS charts
+! S. Jacobs/NCEP	 3/06	Added Radar Summary
+! S. Jacobs/NCEP	 5/06	Added Snow Cover
+!------------------------------------------------------------------------
+!
+!WMO                                             Bits/
+!ID    Description                               Line Lines Rot
+!(6)   (40)                                       (4)   (4) (3)
+!
+! Test
+AAAA00 Test Image                                 800   800   0
+AAAA01 Test Image                                 800   800  90
+AAAA02 Test Image                                 800   800 180
+AAAA03 Test Image                                 800   800 270
+!
+! NCO
+QAUA00 Hourly Radar Summary                      1720  1106   0
+QSTA00 Observed Snow Cover                        900  650    0
+!
+! OPC Atlantic Radiofax
+EVNT00 WAtl Satellite Image 00Z                  1720  1260   0
+EVNT06 NAtl Satellite Image 06Z                  1720  1260   0
+EVNT12 WAtl Satellite Image 12Z                  1720  1260   0
+EVNT18 NAtl Satellite Image 18Z                  1720  1260   0
+PLAZ01 Atl Radiofax Schedule Pt. 1               1728  1106   0
+PLAZ02 Atl Radiofax Schedule Pt. 2               1728  1152   0
+PLAZ03 Atl Request For Comments                  1728  1152   0
+PLAZ04 Atl Product Notice Bulletin               1728  1106   0
+PZZZ94 Atlantic Test Pattern                     1728  1106   0
+PIEA88 Ice Chart Backup                          1728  1100   0
+PYAA01 Atl Surface Anal 00Z Part 1               1728  1440  90
+PYAA02 Atl Surface Anal 00Z Part 2               1728  1440  90
+PYAA03 Atl Surface Anal 06Z Part 1               1728  1440  90
+PYAA04 Atl Surface Anal 06Z Part 2               1728  1440  90
+PYAA05 Atl Surface Anal 12Z Part 1               1728  1440  90
+PYAA06 Atl Surface Anal 12Z Part 2               1728  1440  90
+PYAA07 Atl Surface Anal 18Z Part 1               1728  1440  90
+PYAA08 Atl Surface Anal 18Z Part 2               1728  1440  90
+PYAA10 Atl 00Z Prelim Surface Anal               1728  1106   0
+PYAB01 Atl 06Z Prelim Surface Anal               1728  1106   0
+PYAC01 Atl 12Z Prelim Surface Anal               1728  1106   0
+PYAD01 Atl 18Z Prelim Surface Anal               1728  1106   0
+PYAA11 00Z Prelim ATL Sfc-308X                   1728  2235  90
+PYAA12 06Z Prelim ATL Sfc-309X                   1728  2235  90
+PYAA13 12Z Prelim ATL Sfc-358X                   1728  2235  90
+PYAA14 18Z Prelim ATL Sfc-359X                   1728  2235  90
+PWAA88 WAtl Wind/Wave Analysis 00Z               1728  1106   0
+PWAA89 WAtl Wind/Wave Analysis 12Z               1728  1106   0
+PPAA50 500mb Atl Analysis 00Z                    1728  1106   0
+PWAB88 WAtl Wind/Wave Analysis 06Z               1728  1106   0
+PWAD89 WAtl Wind/Wave Analysis 18Z               1728  1106   0
+PPAE50 24HR Atl 500 Fcst 00Z                     1728  1056   0
+PPAG50 36HR Atl 500 Fcst 00Z                     1728  1056   0
+PPAI50 48hr Atl 500 Fcst 00Z                     1728  1106   0
+PPAA51 500mb Atl Analysis 12Z                    1728  1106   0
+4SWATL Special 24HR Atl SFC with smaller size     896   716   0
+PPAE51 24HR Atl 500 Fcst 12Z                     1728  1056   0
+PPAG51 36HR Atl 500 Fcst 12Z                     1728  1056   0
+PPAI51 48hr Atl 500 Fcst 12Z                     1728  1106   0
+PPAE00 24hr Atl SFC Fcst 00Z                     1728  1106   0
+QDTM85 48hr Atl SFC Fcst 00Z                     1728  1106   0
+!PDBG11 = QDTM85
+PPAE01 24hr Atl SFC Fcst 12Z                     1728  1106   0
+QDTM86 48hr Atl SFC Fcst 12Z                     1728  1106   0
+!PYBF00 = QDTM86
+PWAE98 24hr Atl Wind/Wave Fcst 00Z               1728  1106   0
+PWAE99 24hr Atl Wind/Wave Fcst 12Z               1728  1106   0
+PJAI98 48hr Atl Wind/Wave Fcst 00Z               1728  1106   0
+PJAI99 48hr Atl Wind/Wave Fcst 12Z               1728  1106   0
+PJAI88 48hr Atl Wave Period Fcst 00Z             1728  1106   0
+PJAI89 48hr Atl Wave Period Fcst 12Z             1728  1106   0
+PJEI88 48hr Atl Wave Period Fcst 00Z TPC         1728  1106   0
+PJEI89 48hr Atl Wave Period Fcst 12Z TPC         1728  1106   0
+PJAM98 96HR Atl Wind/Wave Fcst 00Z               1728  1106   0
+PJAM88 96HR Atl Wave Period Fcst 00Z             1728  1106   0
+QJAA88 4-panel Gulf Wave Fcst                    1850  1500   0
+!
+! OPC Pacific Radiofax
+EVPN00 EPac Satellite Image 00Z                  1720  1260  90
+EVPN01 NPac Satellite Image 00Z                  1720  1260   0
+EVPN06 NPac Satellite Image 06Z                  1720  1260   0
+EVPN07 EPac Satellite Image 06Z                  1720  1260  90
+EVPN12 NPac Satellite Image 12Z                  1720  1260   0
+EVPN13 EPac Satellite Image 12Z                  1720  1260  90
+EVPN18 NPac Satellite Image 18Z                  1720  1260   0
+PLBZ01 Pac RadioFax Sched Part 1                 1728  1106   0
+PLBZ02 Pac RadioFax Sched Part 2                 1728  1106   0
+PLBZ03 Pac Request for Comments                  1728  1106   0
+PLBZ04 Pac Product Notice Bulletin               1728  1106   0
+PZZZ93 Pac Test Pattern                          1728   280   0
+PYBA01 Pac Surface Anal 00Z Part 1               1728  1440  90
+PYBA02 Pac Surface Anal 00Z Part 2               1728  1440  90
+PYBA03 Pac Surface Anal 06Z Part 1               1728  1440  90
+PYBA04 Pac Surface Anal 06Z Part 2               1728  1440  90
+PYBA05 Pac Surface Anals 12Z Pt 1                1728  1440  90
+PYBA06 Pac Surface Anals 12Z Pt 2                1728  1440  90
+PYBA07 Pac Surface Anal 18Z Part 1               1728  1440  90
+PYBA08 Pac Surface Anal 18Z Part 2               1728  1440  90
+PYBA11 00Z Prelim PAC Sfc-310X                   1728  2691  90
+PYBA12 06Z Prelim PAC Sfc-311X                   1728  2235  90
+PYBA13 12Z Prelim PAC Sfc-360X                   1728  2691  90
+PYBA14 18Z Prelim PAC Sfc-361X                   1728  2235  90
+PTBA88 Pac SST Analysis Part D                   1728  1106  90
+PTBA89 Pac SST Analysis Part E                   1728  1106  90
+PWBA88 EPac Wind/Wave Analysis 00Z               1728  1106  90
+PWBA89 EPac Wind/Wave Analysis 12Z               1728  1106  90
+PPBA50 500MB Pac Analysis 00Z                    1728  1106   0
+PWBB88 EPac Wind/Wave Analysis 06Z               1728  1106  90
+PWBD89 EPac Wind/Wave Analysis 18Z               1728  1106  90
+PPBI50 48HR 500MB Pac Fcst 00Z                   1728  1106   0
+PPBE50 24HR 500MB Pac Fcst 00Z                   1728  1106   0
+PPBE51 24HR 500MB Pac Fcst 12Z                   1728  1106   0
+PBBA51 500MB Pac Analysis 12Z                    1728  1106   0
+PPBI51 48HR 500MB Pac Fcst 12Z                   1728  1106   0
+PPBE00 24HR Pac SFC Fcst 00Z                     1728  1106  90
+PWBI98 48hr Pac SFC Fcst 00Z                     1728  1106   0
+PPBE01 24HR Pac SFC Fcst 12Z                     1728  1106  90
+PWBI99 48HR Pac SFC Fcst 12Z                     1728  1106   0
+PWBE98 24HR Pac Wind/Wave Fcst 00Z               1728  1106  90
+PWBE99 24HR Pac Wind/Wave Fcst 12Z               1728  1106  90
+PJBI98 48HR Pac Wind/Wave Fcst 00Z               1728  1106   0
+PJBI99 48HR Pac Wind/Wave Fcst 12Z               1728  1106   0
+PJBI88 48HR Pac Wave Period Fcst 00Z             1728  1106   0
+PJBI89 48HR Pac Wave Period Fcst 12Z             1728  1106   0
+PJBM98 96HR Pac Wind/Wave Fcst 00Z               1728  1106   0
+PJBM88 96HR Pac Wave Period Fcst 00Z             1728  1106   0
+!
+! OPC Other
+PLEA86 High Seas Forecast 4Z                     1728  3408   0
+PLEA87 High Seas Forecast 10Z                    1728  3408   0
+PLEA89 High Seas Forecast 16Z                    1728  3408   0
+PLEA88 High Seas Forecast 22Z                    1728  3408   0
+PJAA99 Atl Sea State Analysis 12Z                1728  1106   0
+PJBA99 Pac Sea State Analysis 00Z                1728  1106   0
+PJBE88 24HR AK Wind/Wave Fcst 00Z                1728  1106   0
+PJBE89 24HR AK Wind/Wave Fcst 12Z                1728  1106   0
+PPAM50 96hr 500mb Atl Fcst VT00Z                 1728  1106   0
+PPBM50 96HR 500MB Pac Fcst VT00Z                 1728  1106   0
+PWAM99 96hr Atl SFC Fcst VT00Z                   1728  1106   0
+PWBM99 96HR Pac SFC Fcst VT00Z                   1728  1106   0
+PYBE00 24HR AK sfc fcst VT00Z                    1728  1106   0
+PYBE01 24HR AK sfc fcst VT12Z                    1728  1106   0
+!
+! TPC Radiofax
+EVST00 Trop Atl Satellite Image 00Z              1720  1260   0
+EVST06 Trop Atl Satellite Image 06Z              1720  1260   0
+EVST12 Trop Atl Satellite Image 12Z              1720  1260   0
+EVST18 Trop Atl Satellite Image 18Z              1720  1260   0
+PLEZ01 Radiofax Schedule                         1728  3408   0
+PLEZ02 Request For Comments Gulf                 1728  1536   0
+PLEZ03 Product Notice Bulletin Gulf              1728  1536   0
+PYEA86 Tropical Surf Analysis 00Z                1728  3533 270
+PYEA87 Tropical Surf Analysis 06Z                1728  3533 270
+PYEA85 Tropical Surf Analysis 12Z                1728  3533 270
+PYEA88 Tropical Surf Analysis 18Z                1728  3533 270
+PYAA98 U. S. Surface Analysis 00Z                1728  1536   0
+PYAA97 U. S. Surface Analysis 06Z                1728  1536   0
+PYAA99 U. S. Surface Analysis 12Z                1728  1536   0
+PYAA96 U. S. Surface Analysis 18Z                1728  1536   0
+PYEA99 00/12HR Gulf Surf Prog 00Z                1728  2496   0
+PWED98 24/36Hr Gulf Surf Prog 00Z                1728  2496   0
+PYEA96 00/12HR Gulf Surf Prog 06Z                1728  2496   0
+PYEA97 00/12HR Gulf Surf Prog 12Z                1728  2496   0
+PWED99 24/36Hr Gulf Surf Prog 12Z                1728  2496   0
+PYEA98 00/12HR Gulf Surf Prog 18Z                1728  2496   0
+PWEE11 24HR WW Prog 12Z                          1728  1106   0
+!
+! TPC Other
+PGBA00 E Pac Surf Streamln Anl 12Z               1728  1106   0
+PGBA01 E Pac Surf Streamln Anl 18Z               1728  1106   0
+QHQA17 Atl 200MB wind (steams) anl               1728  2646  90
+QPAA99 Miami Sfc Anal                            1728  2750  90
+QUNA00 Atl Atoll wind anl                        1728  2646  90
+QWAE60 Atl Lowr layr mean wind cir               1728  2646  90
+QWFA20 Pac Upper-Lower wind shear                1728  2646  90
+!
+! SPC
+PGUE00 24/48Hr Svr Wx Outlook (AC)               1728   688   0
+!
+! HPC
+PPNN88 Day 3, 4, & 5 SFC, 108HR 500 HT           1728  2400 270
+! QYTM00 = PPNN88 ????
+QPUO00 MN/MX TMP ANOMLY, PRECIP (5-DAY FCST)     1728   864 270
+QESC00 6hr Pd QPF (18/00) (00/06) (06/12)        1728   633 270
+QUEC00 6hr Pd QPF (12/18)                        1728   633 270
+QETI00 24hr Pd QPF                               1728   633 270
+!QHUQ00!403X 00Z 36/48 Sfc Prog                        1728  1014 180
+!QHUQ00!455X 12Z 36/48 Sfc Prog                        1728  1008 180
+QTMI01 12Z Ext Outlook Pt-1                      1728  1092   0
+QTMI00 12Z Ext Outlook Pt-2                      1728  1152   0
+!QYAA00!300X 00Z NAm Sfc Pt-1                          1728  2748  90
+!QYAA00!302X 03Z NAm Sfc                               1728  2262  90
+!QYAA00!303X 06Z NAm Sfc Pt-1                          1728  2748  90
+!QYAA00!305X 09Z NAm Sfc                               1728  2262  90
+!QYAA00!350X 12Z NAm Sfc Pt-1                          1728  2748  90
+!QYAA00!352X 15Z NAm Sfc                               1728  2262  90
+!QYAA00!353X 18Z NAm Sfc Pt-1                          1728  2748  90
+!QYAA00!355X 21Z NAm Sfc                               1728  2262  90
+!QYBA00!301X 00Z NAm Sfc Pt-2                          1728  1152   0
+!QYBA00!304X 06Z NAm Sfc Pt-2                          1728  1152   0
+!QYBA00!351X 12Z NAm Sfc Pt-2                          1728  1152   0
+!QYBA00!354X 18Z NAm Sfc Pt-2                          1728  1152   0
+!QYBA88!307X 00Z Alaskan Sfc Anal                      1728   877   0
+!QYBA88!319X 03Z Alaskan Sfc Anal                      1728   877   0
+!QYBA88!322X 06Z Alaskan Sfc Anal                      1728   877   0
+!QYBA88!323X 09Z Alaskan Sfc Anal                      1728   877   0
+!QYBA88!357X 12Z Alaskan Sfc Anal                      1728   877   0
+!QYBA88!366X 15Z Alaskan Sfc Anal                      1728   877   0
+!QYBA88!367X 18Z Alaskan Sfc Anal                      1728   877   0
+!QYBA88!369X 21Z Alaskan Sfc Anal                      1728   877   0
+!
+! CPC
+PTXV98 Monthly Global Temp and Precp Anon        1728  1070   0
+QEUA01 Crop Moist/Index NTL                      1728  1000   0
+QEUA02 Crop Moist/Index Div                      1728  1000   0
+QEUA03 Crop Moist/Index Pcpn                     1728  1008   0
+QEUZ01 0.5 Mon LL and SNL Tmp/Prc OL             1728  1400   0
+QEUZ02 1.5-2.5 Mon LL and SNL Tmp/Prc OL         1728  1400   0
+QEUZ03 3.5-4.5 Mon LL and SNL Tmp/Prc OL         1728  1400   0
+QEUZ04 5.5-6.5 Mon LL and SNL Tmp/Prc OL         1728  1400   0
+QEUZ05 7.5-8.5 Mon LL and SNL Tmp/Prc OL         1728  1400   0
+QEUZ06 9.5-10.5 Mon LL and SNL Tmp/Prc OL        1728  1400   0
+QEUZ07 11.5-12.5 Mon LL and SNL Tmp/Prc OL       1728  1400   0
+QPUT88 6-10Day Tmp/Pcpn outlook                  1728   964 270
+QUEA04 Drought Severity Div                      1728  1056   0
+QUEA05 Drought Severity NTL                      1728  1000   0
+!
+! AWC/HPC
+PGBE99 Sig Wx LL 12/24HR                         1728  1133 180
+!
+! AWC
+!PGAE40!526X VT12Z Sig Wx FL250-600                    1728  2400 270
+!PGAE40!512X VT18Z Sig Wx 400-150mb                    1728  1224  90
+!PGAE40!563X VT00Z Sig Wx FL250-600                    1728  1224  90
+!PGAE40!562X VT06Z Sig Wx FL250-600                    1728  1224  90
+!
+PGAE07 Sig Wx 400-70mb 24HR                      1728  2156   0
+PGBE07 Sig Wx 400-70mb 24HR                      1728  2156  90
+PGBE40 Sig Wx FL250-600                          1728  2450 270
+PGCE60 Sig Wx FL250-600                          1728  1022   0
+PGEE07 Sig Wx 400-70mb 24HR                      1728  2156  90
+PGEE60 Sig Wx 400-150mb                          1728  2225  90
+PGGE07 Sig Wx 400-70mb 24HR                      1728  2156  90
+PGIE07 Sig Wx 400-70mb 24HR                      1728  2156  90
+PGJE07 Sig Wx 400-70mb 24HR                      1728  2156  90
+PGNE40 Sig Wx FL250-600                          1728  2400 270
+PGNE60 Sig Wx FL250-600                          1728   700   0
+QGRE60 Sig Wx FL250-600                          1728  1200  90
+!
+PWNB85 Wind-Temp WAFS North America              1620  2470   0
+PWSB85 Wind-Temp WAFS Atlantic                   1620  2470   0
+PWFB85 Wind-Temp WAFS South Pacific              1620  2470   0
+PWYB85 Wind-Temp WAFS North Pacific              1620  2470   0
+PWJB85 Wind-Temp WAFS Antarctic                  1620  2470   0
+PWMB85 Wind-Temp WAFS North Pacific              1620  2470   0
+PWRB85 Wind-Temp WAFS Africa                     1620  2470   0
+PWZB85 Wind-Temp WAFS Asia                       1620  2470   0
+PWGB85 Wind-Temp WAFS Indian Ocean               1620  2470   0
+PWCB85 Wind-Temp WAFS Asia                       1620  2470   0
+PWAB85 Wind-Temp WAFS Atlantic                   1620  2470   0
+!
+PWNB70 Wind-Temp WAFS North America              1620  2470   0
+PWSB70 Wind-Temp WAFS Atlantic                   1620  2470   0
+PWFB70 Wind-Temp WAFS South Pacific              1620  2470   0
+PWYB70 Wind-Temp WAFS North Pacific              1620  2470   0
+PWJB70 Wind-Temp WAFS Antarctic                  1620  2470   0
+PWMB70 Wind-Temp WAFS North Pacific              1620  2470   0
+PWRB70 Wind-Temp WAFS Africa                     1620  2470   0
+PWZB70 Wind-Temp WAFS Asia                       1620  2470   0
+PWGB70 Wind-Temp WAFS Indian Ocean               1620  2470   0
+PWCB70 Wind-Temp WAFS Asia                       1620  2470   0
+PWAB70 Wind-Temp WAFS Atlantic                   1620  2470   0
+!
+PWNB50 Wind-Temp WAFS North America              1620  2470   0
+PWSB50 Wind-Temp WAFS Atlantic                   1620  2470   0
+PWFB50 Wind-Temp WAFS South Pacific              1620  2470   0
+PWYB50 Wind-Temp WAFS North Pacific              1620  2470   0
+PWJB50 Wind-Temp WAFS Antarctic                  1620  2470   0
+PWMB50 Wind-Temp WAFS North Pacific              1620  2470   0
+PWRB50 Wind-Temp WAFS Africa                     1620  2470   0
+PWZB50 Wind-Temp WAFS Asia                       1620  2470   0
+PWGB50 Wind-Temp WAFS Indian Ocean               1620  2470   0
+PWCB50 Wind-Temp WAFS Asia                       1620  2470   0
+PWAB50 Wind-Temp WAFS Atlantic                   1620  2470   0
+!
+PWNB40 Wind-Temp WAFS North America              1620  2470   0
+PWSB40 Wind-Temp WAFS Atlantic                   1620  2470   0
+PWFB40 Wind-Temp WAFS South Pacific              1620  2470   0
+PWYB40 Wind-Temp WAFS North Pacific              1620  2470   0
+PWJB40 Wind-Temp WAFS Antarctic                  1620  2470   0
+PWMB40 Wind-Temp WAFS North Pacific              1620  2470   0
+PWRB40 Wind-Temp WAFS Africa                     1620  2470   0
+PWZB40 Wind-Temp WAFS Asia                       1620  2470   0
+PWGB40 Wind-Temp WAFS Indian Ocean               1620  2470   0
+PWCB40 Wind-Temp WAFS Asia                       1620  2470   0
+PWAB40 Wind-Temp WAFS Atlantic                   1620  2470   0
+!
+PWNB30 Wind-Temp WAFS North America              1620  2470   0
+PWSB30 Wind-Temp WAFS Atlantic                   1620  2470   0
+PWFB30 Wind-Temp WAFS South Pacific              1620  2470   0
+PWYB30 Wind-Temp WAFS North Pacific              1620  2470   0
+PWJB30 Wind-Temp WAFS Antarctic                  1620  2470   0
+PWMB30 Wind-Temp WAFS North Pacific              1620  2470   0
+PWRB30 Wind-Temp WAFS Africa                     1620  2470   0
+PWZB30 Wind-Temp WAFS Asia                       1620  2470   0
+PWGB30 Wind-Temp WAFS Indian Ocean               1620  2470   0
+PWCB30 Wind-Temp WAFS Asia                       1620  2470   0
+PWAB30 Wind-Temp WAFS Atlantic                   1620  2470   0
+!
+PWNB25 Wind-Temp WAFS North America              1620  2470   0
+PWSB25 Wind-Temp WAFS Atlantic                   1620  2470   0
+PWFB25 Wind-Temp WAFS South Pacific              1620  2470   0
+PWYB25 Wind-Temp WAFS North Pacific              1620  2470   0
+PWJB25 Wind-Temp WAFS Antarctic                  1620  2470   0
+PWMB25 Wind-Temp WAFS North Pacific              1620  2470   0
+PWRB25 Wind-Temp WAFS Africa                     1620  2470   0
+PWZB25 Wind-Temp WAFS Asia                       1620  2470   0
+PWGB25 Wind-Temp WAFS Indian Ocean               1620  2470   0
+PWCB25 Wind-Temp WAFS Asia                       1620  2470   0
+PWAB25 Wind-Temp WAFS Atlantic                   1620  2470   0
+!
+PWNB20 Wind-Temp WAFS North America              1620  2470   0
+PWSB20 Wind-Temp WAFS Atlantic                   1620  2470   0
+PWFB20 Wind-Temp WAFS South Pacific              1620  2470   0
+PWYB20 Wind-Temp WAFS North Pacific              1620  2470   0
+PWJB20 Wind-Temp WAFS Antarctic                  1620  2470   0
+PWMB20 Wind-Temp WAFS North Pacific              1620  2470   0
+PWRB20 Wind-Temp WAFS Africa                     1620  2470   0
+PWZB20 Wind-Temp WAFS Asia                       1620  2470   0
+PWGB20 Wind-Temp WAFS Indian Ocean               1620  2470   0
+PWCB20 Wind-Temp WAFS Asia                       1620  2470   0
+PWAB20 Wind-Temp WAFS Atlantic                   1620  2470   0
+!
+PWNB15 Wind-Temp WAFS North America              1620  2470   0
+PWSB15 Wind-Temp WAFS Atlantic                   1620  2470   0
+PWFB15 Wind-Temp WAFS South Pacific              1620  2470   0
+PWYB15 Wind-Temp WAFS North Pacific              1620  2470   0
+PWJB15 Wind-Temp WAFS Antarctic                  1620  2470   0
+PWMB15 Wind-Temp WAFS North Pacific              1620  2470   0
+PWRB15 Wind-Temp WAFS Africa                     1620  2470   0
+PWZB15 Wind-Temp WAFS Asia                       1620  2470   0
+PWGB15 Wind-Temp WAFS Indian Ocean               1620  2470   0
+PWCB15 Wind-Temp WAFS Asia                       1620  2470   0
+PWAB15 Wind-Temp WAFS Atlantic                   1620  2470   0
+!
+PWNB07 Wind-Temp WAFS North America              1620  2470   0
+PWSB07 Wind-Temp WAFS Atlantic                   1620  2470   0
+PWFB07 Wind-Temp WAFS South Pacific              1620  2470   0
+PWYB07 Wind-Temp WAFS North Pacific              1620  2470   0
+PWJB07 Wind-Temp WAFS Antarctic                  1620  2470   0
+PWMB07 Wind-Temp WAFS North Pacific              1620  2470   0
+PWRB07 Wind-Temp WAFS Africa                     1620  2470   0
+PWZB07 Wind-Temp WAFS Asia                       1620  2470   0
+PWGB07 Wind-Temp WAFS Indian Ocean               1620  2470   0
+PWCB07 Wind-Temp WAFS Asia                       1620  2470   0
+PWAB07 Wind-Temp WAFS Atlantic                   1620  2470   0
+
+!
+PWNC85 Wind-Temp WAFS North America              1620  2470   0
+PWSC85 Wind-Temp WAFS Atlantic                   1620  2470   0
+PWFC85 Wind-Temp WAFS South Pacific              1620  2470   0
+PWYC85 Wind-Temp WAFS North Pacific              1620  2470   0
+PWJC85 Wind-Temp WAFS Antarctic                  1620  2470   0
+PWMC85 Wind-Temp WAFS North Pacific              1620  2470   0
+PWRC85 Wind-Temp WAFS Africa                     1620  2470   0
+PWZC85 Wind-Temp WAFS Asia                       1620  2470   0
+PWGC85 Wind-Temp WAFS Indian Ocean               1620  2470   0
+PWCC85 Wind-Temp WAFS Asia                       1620  2470   0
+PWAC85 Wind-Temp WAFS Atlantic                   1620  2470   0
+!
+PWNC70 Wind-Temp WAFS North America              1620  2470   0
+PWSC70 Wind-Temp WAFS Atlantic                   1620  2470   0
+PWFC70 Wind-Temp WAFS South Pacific              1620  2470   0
+PWYC70 Wind-Temp WAFS North Pacific              1620  2470   0
+PWJC70 Wind-Temp WAFS Antarctic                  1620  2470   0
+PWMC70 Wind-Temp WAFS North Pacific              1620  2470   0
+PWRC70 Wind-Temp WAFS Africa                     1620  2470   0
+PWZC70 Wind-Temp WAFS Asia                       1620  2470   0
+PWGC70 Wind-Temp WAFS Indian Ocean               1620  2470   0
+PWCC70 Wind-Temp WAFS Asia                       1620  2470   0
+PWAC70 Wind-Temp WAFS Atlantic                   1620  2470   0
+!
+PWNC50 Wind-Temp WAFS North America              1620  2470   0
+PWSC50 Wind-Temp WAFS Atlantic                   1620  2470   0
+PWFC50 Wind-Temp WAFS South Pacific              1620  2470   0
+PWYC50 Wind-Temp WAFS North Pacific              1620  2470   0
+PWJC50 Wind-Temp WAFS Antarctic                  1620  2470   0
+PWMC50 Wind-Temp WAFS North Pacific              1620  2470   0
+PWRC50 Wind-Temp WAFS Africa                     1620  2470   0
+PWZC50 Wind-Temp WAFS Asia                       1620  2470   0
+PWGC50 Wind-Temp WAFS Indian Ocean               1620  2470   0
+PWCC50 Wind-Temp WAFS Asia                       1620  2470   0
+PWAC50 Wind-Temp WAFS Atlantic                   1620  2470   0
+!
+PWNC40 Wind-Temp WAFS North America              1620  2470   0
+PWSC40 Wind-Temp WAFS Atlantic                   1620  2470   0
+PWFC40 Wind-Temp WAFS South Pacific              1620  2470   0
+PWYC40 Wind-Temp WAFS North Pacific              1620  2470   0
+PWJC40 Wind-Temp WAFS Antarctic                  1620  2470   0
+PWMC40 Wind-Temp WAFS North Pacific              1620  2470   0
+PWRC40 Wind-Temp WAFS Africa                     1620  2470   0
+PWZC40 Wind-Temp WAFS Asia                       1620  2470   0
+PWGC40 Wind-Temp WAFS Indian Ocean               1620  2470   0
+PWCC40 Wind-Temp WAFS Asia                       1620  2470   0
+PWAC40 Wind-Temp WAFS Atlantic                   1620  2470   0
+!
+PWNC30 Wind-Temp WAFS North America              1620  2470   0
+PWSC30 Wind-Temp WAFS Atlantic                   1620  2470   0
+PWFC30 Wind-Temp WAFS South Pacific              1620  2470   0
+PWYC30 Wind-Temp WAFS North Pacific              1620  2470   0
+PWJC30 Wind-Temp WAFS Antarctic                  1620  2470   0
+PWMC30 Wind-Temp WAFS North Pacific              1620  2470   0
+PWRC30 Wind-Temp WAFS Africa                     1620  2470   0
+PWZC30 Wind-Temp WAFS Asia                       1620  2470   0
+PWGC30 Wind-Temp WAFS Indian Ocean               1620  2470   0
+PWCC30 Wind-Temp WAFS Asia                       1620  2470   0
+PWAC30 Wind-Temp WAFS Atlantic                   1620  2470   0
+!
+PWNC25 Wind-Temp WAFS North America              1620  2470   0
+PWSC25 Wind-Temp WAFS Atlantic                   1620  2470   0
+PWFC25 Wind-Temp WAFS South Pacific              1620  2470   0
+PWYC25 Wind-Temp WAFS North Pacific              1620  2470   0
+PWJC25 Wind-Temp WAFS Antarctic                  1620  2470   0
+PWMC25 Wind-Temp WAFS North Pacific              1620  2470   0
+PWRC25 Wind-Temp WAFS Africa                     1620  2470   0
+PWZC25 Wind-Temp WAFS Asia                       1620  2470   0
+PWGC25 Wind-Temp WAFS Indian Ocean               1620  2470   0
+PWCC25 Wind-Temp WAFS Asia                       1620  2470   0
+PWAC25 Wind-Temp WAFS Atlantic                   1620  2470   0
+!
+PWNC20 Wind-Temp WAFS North America              1620  2470   0
+PWSC20 Wind-Temp WAFS Atlantic                   1620  2470   0
+PWFC20 Wind-Temp WAFS South Pacific              1620  2470   0
+PWYC20 Wind-Temp WAFS North Pacific              1620  2470   0
+PWJC20 Wind-Temp WAFS Antarctic                  1620  2470   0
+PWMC20 Wind-Temp WAFS North Pacific              1620  2470   0
+PWRC20 Wind-Temp WAFS Africa                     1620  2470   0
+PWZC20 Wind-Temp WAFS Asia                       1620  2470   0
+PWGC20 Wind-Temp WAFS Indian Ocean               1620  2470   0
+PWCC20 Wind-Temp WAFS Asia                       1620  2470   0
+PWAC20 Wind-Temp WAFS Atlantic                   1620  2470   0
+!
+PWNC15 Wind-Temp WAFS North America              1620  2470   0
+PWSC15 Wind-Temp WAFS Atlantic                   1620  2470   0
+PWFC15 Wind-Temp WAFS South Pacific              1620  2470   0
+PWYC15 Wind-Temp WAFS North Pacific              1620  2470   0
+PWJC15 Wind-Temp WAFS Antarctic                  1620  2470   0
+PWMC15 Wind-Temp WAFS North Pacific              1620  2470   0
+PWRC15 Wind-Temp WAFS Africa                     1620  2470   0
+PWZC15 Wind-Temp WAFS Asia                       1620  2470   0
+PWGC15 Wind-Temp WAFS Indian Ocean               1620  2470   0
+PWCC15 Wind-Temp WAFS Asia                       1620  2470   0
+PWAC15 Wind-Temp WAFS Atlantic                   1620  2470   0
+!
+PWNC07 Wind-Temp WAFS North America              1620  2470   0
+PWSC07 Wind-Temp WAFS Atlantic                   1620  2470   0
+PWFC07 Wind-Temp WAFS South Pacific              1620  2470   0
+PWYC07 Wind-Temp WAFS North Pacific              1620  2470   0
+PWJC07 Wind-Temp WAFS Antarctic                  1620  2470   0
+PWMC07 Wind-Temp WAFS North Pacific              1620  2470   0
+PWRC07 Wind-Temp WAFS Africa                     1620  2470   0
+PWZC07 Wind-Temp WAFS Asia                       1620  2470   0
+PWGC07 Wind-Temp WAFS Indian Ocean               1620  2470   0
+PWCC07 Wind-Temp WAFS Asia                       1620  2470   0
+PWAC07 Wind-Temp WAFS Atlantic                   1620  2470   0
+
+!
+PWND85 Wind-Temp WAFS North America              1620  2470   0
+PWSD85 Wind-Temp WAFS Atlantic                   1620  2470   0
+PWFD85 Wind-Temp WAFS South Pacific              1620  2470   0
+PWYD85 Wind-Temp WAFS North Pacific              1620  2470   0
+PWJD85 Wind-Temp WAFS Antarctic                  1620  2470   0
+PWMD85 Wind-Temp WAFS North Pacific              1620  2470   0
+PWRD85 Wind-Temp WAFS Africa                     1620  2470   0
+PWZD85 Wind-Temp WAFS Asia                       1620  2470   0
+PWGD85 Wind-Temp WAFS Indian Ocean               1620  2470   0
+PWCD85 Wind-Temp WAFS Asia                       1620  2470   0
+PWAD85 Wind-Temp WAFS Atlantic                   1620  2470   0
+!
+PWND70 Wind-Temp WAFS North America              1620  2470   0
+PWSD70 Wind-Temp WAFS Atlantic                   1620  2470   0
+PWFD70 Wind-Temp WAFS South Pacific              1620  2470   0
+PWYD70 Wind-Temp WAFS North Pacific              1620  2470   0
+PWJD70 Wind-Temp WAFS Antarctic                  1620  2470   0
+PWMD70 Wind-Temp WAFS North Pacific              1620  2470   0
+PWRD70 Wind-Temp WAFS Africa                     1620  2470   0
+PWZD70 Wind-Temp WAFS Asia                       1620  2470   0
+PWGD70 Wind-Temp WAFS Indian Ocean               1620  2470   0
+PWCD70 Wind-Temp WAFS Asia                       1620  2470   0
+PWAD70 Wind-Temp WAFS Atlantic                   1620  2470   0
+!
+PWND50 Wind-Temp WAFS North America              1620  2470   0
+PWSD50 Wind-Temp WAFS Atlantic                   1620  2470   0
+PWFD50 Wind-Temp WAFS South Pacific              1620  2470   0
+PWYD50 Wind-Temp WAFS North Pacific              1620  2470   0
+PWJD50 Wind-Temp WAFS Antarctic                  1620  2470   0
+PWMD50 Wind-Temp WAFS North Pacific              1620  2470   0
+PWRD50 Wind-Temp WAFS Africa                     1620  2470   0
+PWZD50 Wind-Temp WAFS Asia                       1620  2470   0
+PWGD50 Wind-Temp WAFS Indian Ocean               1620  2470   0
+PWCD50 Wind-Temp WAFS Asia                       1620  2470   0
+PWAD50 Wind-Temp WAFS Atlantic                   1620  2470   0
+!
+PWND40 Wind-Temp WAFS North America              1620  2470   0
+PWSD40 Wind-Temp WAFS Atlantic                   1620  2470   0
+PWFD40 Wind-Temp WAFS South Pacific              1620  2470   0
+PWYD40 Wind-Temp WAFS North Pacific              1620  2470   0
+PWJD40 Wind-Temp WAFS Antarctic                  1620  2470   0
+PWMD40 Wind-Temp WAFS North Pacific              1620  2470   0
+PWRD40 Wind-Temp WAFS Africa                     1620  2470   0
+PWZD40 Wind-Temp WAFS Asia                       1620  2470   0
+PWGD40 Wind-Temp WAFS Indian Ocean               1620  2470   0
+PWCD40 Wind-Temp WAFS Asia                       1620  2470   0
+PWAD40 Wind-Temp WAFS Atlantic                   1620  2470   0
+!
+PWND30 Wind-Temp WAFS North America              1620  2470   0
+PWSD30 Wind-Temp WAFS Atlantic                   1620  2470   0
+PWFD30 Wind-Temp WAFS South Pacific              1620  2470   0
+PWYD30 Wind-Temp WAFS North Pacific              1620  2470   0
+PWJD30 Wind-Temp WAFS Antarctic                  1620  2470   0
+PWMD30 Wind-Temp WAFS North Pacific              1620  2470   0
+PWRD30 Wind-Temp WAFS Africa                     1620  2470   0
+PWZD30 Wind-Temp WAFS Asia                       1620  2470   0
+PWGD30 Wind-Temp WAFS Indian Ocean               1620  2470   0
+PWCD30 Wind-Temp WAFS Asia                       1620  2470   0
+PWAD30 Wind-Temp WAFS Atlantic                   1620  2470   0
+!
+PWND25 Wind-Temp WAFS North America              1620  2470   0
+PWSD25 Wind-Temp WAFS Atlantic                   1620  2470   0
+PWFD25 Wind-Temp WAFS South Pacific              1620  2470   0
+PWYD25 Wind-Temp WAFS North Pacific              1620  2470   0
+PWJD25 Wind-Temp WAFS Antarctic                  1620  2470   0
+PWMD25 Wind-Temp WAFS North Pacific              1620  2470   0
+PWRD25 Wind-Temp WAFS Africa                     1620  2470   0
+PWZD25 Wind-Temp WAFS Asia                       1620  2470   0
+PWGD25 Wind-Temp WAFS Indian Ocean               1620  2470   0
+PWCD25 Wind-Temp WAFS Asia                       1620  2470   0
+PWAD25 Wind-Temp WAFS Atlantic                   1620  2470   0
+!
+PWND20 Wind-Temp WAFS North America              1620  2470   0
+PWSD20 Wind-Temp WAFS Atlantic                   1620  2470   0
+PWFD20 Wind-Temp WAFS South Pacific              1620  2470   0
+PWYD20 Wind-Temp WAFS North Pacific              1620  2470   0
+PWJD20 Wind-Temp WAFS Antarctic                  1620  2470   0
+PWMD20 Wind-Temp WAFS North Pacific              1620  2470   0
+PWRD20 Wind-Temp WAFS Africa                     1620  2470   0
+PWZD20 Wind-Temp WAFS Asia                       1620  2470   0
+PWGD20 Wind-Temp WAFS Indian Ocean               1620  2470   0
+PWCD20 Wind-Temp WAFS Asia                       1620  2470   0
+PWAD20 Wind-Temp WAFS Atlantic                   1620  2470   0
+!
+PWND15 Wind-Temp WAFS North America              1620  2470   0
+PWSD15 Wind-Temp WAFS Atlantic                   1620  2470   0
+PWFD15 Wind-Temp WAFS South Pacific              1620  2470   0
+PWYD15 Wind-Temp WAFS North Pacific              1620  2470   0
+PWJD15 Wind-Temp WAFS Antarctic                  1620  2470   0
+PWMD15 Wind-Temp WAFS North Pacific              1620  2470   0
+PWRD15 Wind-Temp WAFS Africa                     1620  2470   0
+PWZD15 Wind-Temp WAFS Asia                       1620  2470   0
+PWGD15 Wind-Temp WAFS Indian Ocean               1620  2470   0
+PWCD15 Wind-Temp WAFS Asia                       1620  2470   0
+PWAD15 Wind-Temp WAFS Atlantic                   1620  2470   0
+!
+PWND07 Wind-Temp WAFS North America              1620  2470   0
+PWSD07 Wind-Temp WAFS Atlantic                   1620  2470   0
+PWFD07 Wind-Temp WAFS South Pacific              1620  2470   0
+PWYD07 Wind-Temp WAFS North Pacific              1620  2470   0
+PWJD07 Wind-Temp WAFS Antarctic                  1620  2470   0
+PWMD07 Wind-Temp WAFS North Pacific              1620  2470   0
+PWRD07 Wind-Temp WAFS Africa                     1620  2470   0
+PWZD07 Wind-Temp WAFS Asia                       1620  2470   0
+PWGD07 Wind-Temp WAFS Indian Ocean               1620  2470   0
+PWCD07 Wind-Temp WAFS Asia                       1620  2470   0
+PWAD07 Wind-Temp WAFS Atlantic                   1620  2470   0
+
+!
+PWNE85 Wind-Temp WAFS North America              1620  2470   0
+PWSE85 Wind-Temp WAFS Atlantic                   1620  2470   0
+PWFE85 Wind-Temp WAFS South Pacific              1620  2470   0
+PWYE85 Wind-Temp WAFS North Pacific              1620  2470   0
+PWJE85 Wind-Temp WAFS Antarctic                  1620  2470   0
+PWME85 Wind-Temp WAFS North Pacific              1620  2470   0
+PWRE85 Wind-Temp WAFS Africa                     1620  2470   0
+PWZE85 Wind-Temp WAFS Asia                       1620  2470   0
+PWGE85 Wind-Temp WAFS Indian Ocean               1620  2470   0
+PWCE85 Wind-Temp WAFS Asia                       1620  2470   0
+PWAE85 Wind-Temp WAFS Atlantic                   1620  2470   0
+!
+PWNE70 Wind-Temp WAFS North America              1620  2470   0
+PWSE70 Wind-Temp WAFS Atlantic                   1620  2470   0
+PWFE70 Wind-Temp WAFS South Pacific              1620  2470   0
+PWYE70 Wind-Temp WAFS North Pacific              1620  2470   0
+PWJE70 Wind-Temp WAFS Antarctic                  1620  2470   0
+PWME70 Wind-Temp WAFS North Pacific              1620  2470   0
+PWRE70 Wind-Temp WAFS Africa                     1620  2470   0
+PWZE70 Wind-Temp WAFS Asia                       1620  2470   0
+PWGE70 Wind-Temp WAFS Indian Ocean               1620  2470   0
+PWCE70 Wind-Temp WAFS Asia                       1620  2470   0
+PWAE70 Wind-Temp WAFS Atlantic                   1620  2470   0
+!
+PWNE50 Wind-Temp WAFS North America              1620  2470   0
+PWSE50 Wind-Temp WAFS Atlantic                   1620  2470   0
+PWFE50 Wind-Temp WAFS South Pacific              1620  2470   0
+PWYE50 Wind-Temp WAFS North Pacific              1620  2470   0
+PWJE50 Wind-Temp WAFS Antarctic                  1620  2470   0
+PWME50 Wind-Temp WAFS North Pacific              1620  2470   0
+PWRE50 Wind-Temp WAFS Africa                     1620  2470   0
+PWZE50 Wind-Temp WAFS Asia                       1620  2470   0
+PWGE50 Wind-Temp WAFS Indian Ocean               1620  2470   0
+PWCE50 Wind-Temp WAFS Asia                       1620  2470   0
+PWAE50 Wind-Temp WAFS Atlantic                   1620  2470   0
+!
+PWNE40 Wind-Temp WAFS North America              1620  2470   0
+PWSE40 Wind-Temp WAFS Atlantic                   1620  2470   0
+PWFE40 Wind-Temp WAFS South Pacific              1620  2470   0
+PWYE40 Wind-Temp WAFS North Pacific              1620  2470   0
+PWJE40 Wind-Temp WAFS Antarctic                  1620  2470   0
+PWME40 Wind-Temp WAFS North Pacific              1620  2470   0
+PWRE40 Wind-Temp WAFS Africa                     1620  2470   0
+PWZE40 Wind-Temp WAFS Asia                       1620  2470   0
+PWGE40 Wind-Temp WAFS Indian Ocean               1620  2470   0
+PWCE40 Wind-Temp WAFS Asia                       1620  2470   0
+PWAE40 Wind-Temp WAFS Atlantic                   1620  2470   0
+!
+PWNE30 Wind-Temp WAFS North America              1620  2470   0
+PWSE30 Wind-Temp WAFS Atlantic                   1620  2470   0
+PWFE30 Wind-Temp WAFS South Pacific              1620  2470   0
+PWYE30 Wind-Temp WAFS North Pacific              1620  2470   0
+PWJE30 Wind-Temp WAFS Antarctic                  1620  2470   0
+PWME30 Wind-Temp WAFS North Pacific              1620  2470   0
+PWRE30 Wind-Temp WAFS Africa                     1620  2470   0
+PWZE30 Wind-Temp WAFS Asia                       1620  2470   0
+PWGE30 Wind-Temp WAFS Indian Ocean               1620  2470   0
+PWCE30 Wind-Temp WAFS Asia                       1620  2470   0
+PWAE30 Wind-Temp WAFS Atlantic                   1620  2470   0
+!
+PWNE25 Wind-Temp WAFS North America              1620  2470   0
+PWSE25 Wind-Temp WAFS Atlantic                   1620  2470   0
+PWFE25 Wind-Temp WAFS South Pacific              1620  2470   0
+PWYE25 Wind-Temp WAFS North Pacific              1620  2470   0
+PWJE25 Wind-Temp WAFS Antarctic                  1620  2470   0
+PWME25 Wind-Temp WAFS North Pacific              1620  2470   0
+PWRE25 Wind-Temp WAFS Africa                     1620  2470   0
+PWZE25 Wind-Temp WAFS Asia                       1620  2470   0
+PWGE25 Wind-Temp WAFS Indian Ocean               1620  2470   0
+PWCE25 Wind-Temp WAFS Asia                       1620  2470   0
+PWAE25 Wind-Temp WAFS Atlantic                   1620  2470   0
+!
+PWNE20 Wind-Temp WAFS North America              1620  2470   0
+PWSE20 Wind-Temp WAFS Atlantic                   1620  2470   0
+PWFE20 Wind-Temp WAFS South Pacific              1620  2470   0
+PWYE20 Wind-Temp WAFS North Pacific              1620  2470   0
+PWJE20 Wind-Temp WAFS Antarctic                  1620  2470   0
+PWME20 Wind-Temp WAFS North Pacific              1620  2470   0
+PWRE20 Wind-Temp WAFS Africa                     1620  2470   0
+PWZE20 Wind-Temp WAFS Asia                       1620  2470   0
+PWGE20 Wind-Temp WAFS Indian Ocean               1620  2470   0
+PWCE20 Wind-Temp WAFS Asia                       1620  2470   0
+PWAE20 Wind-Temp WAFS Atlantic                   1620  2470   0
+!
+PWNE15 Wind-Temp WAFS North America              1620  2470   0
+PWSE15 Wind-Temp WAFS Atlantic                   1620  2470   0
+PWFE15 Wind-Temp WAFS South Pacific              1620  2470   0
+PWYE15 Wind-Temp WAFS North Pacific              1620  2470   0
+PWJE15 Wind-Temp WAFS Antarctic                  1620  2470   0
+PWME15 Wind-Temp WAFS North Pacific              1620  2470   0
+PWRE15 Wind-Temp WAFS Africa                     1620  2470   0
+PWZE15 Wind-Temp WAFS Asia                       1620  2470   0
+PWGE15 Wind-Temp WAFS Indian Ocean               1620  2470   0
+PWCE15 Wind-Temp WAFS Asia                       1620  2470   0
+PWAE15 Wind-Temp WAFS Atlantic                   1620  2470   0
+!
+PWNE07 Wind-Temp WAFS North America              1620  2470   0
+PWSE07 Wind-Temp WAFS Atlantic                   1620  2470   0
+PWFE07 Wind-Temp WAFS South Pacific              1620  2470   0
+PWYE07 Wind-Temp WAFS North Pacific              1620  2470   0
+PWJE07 Wind-Temp WAFS Antarctic                  1620  2470   0
+PWME07 Wind-Temp WAFS North Pacific              1620  2470   0
+PWRE07 Wind-Temp WAFS Africa                     1620  2470   0
+PWZE07 Wind-Temp WAFS Asia                       1620  2470   0
+PWGE07 Wind-Temp WAFS Indian Ocean               1620  2470   0
+PWCE07 Wind-Temp WAFS Asia                       1620  2470   0
+PWAE07 Wind-Temp WAFS Atlantic                   1620  2470   0
+
+!
+PWNF85 Wind-Temp WAFS North America              1620  2470   0
+PWSF85 Wind-Temp WAFS Atlantic                   1620  2470   0
+PWFF85 Wind-Temp WAFS South Pacific              1620  2470   0
+PWYF85 Wind-Temp WAFS North Pacific              1620  2470   0
+PWJF85 Wind-Temp WAFS Antarctic                  1620  2470   0
+PWMF85 Wind-Temp WAFS North Pacific              1620  2470   0
+PWRF85 Wind-Temp WAFS Africa                     1620  2470   0
+PWZF85 Wind-Temp WAFS Asia                       1620  2470   0
+PWGF85 Wind-Temp WAFS Indian Ocean               1620  2470   0
+PWCF85 Wind-Temp WAFS Asia                       1620  2470   0
+PWAF85 Wind-Temp WAFS Atlantic                   1620  2470   0
+!
+PWNF70 Wind-Temp WAFS North America              1620  2470   0
+PWSF70 Wind-Temp WAFS Atlantic                   1620  2470   0
+PWFF70 Wind-Temp WAFS South Pacific              1620  2470   0
+PWYF70 Wind-Temp WAFS North Pacific              1620  2470   0
+PWJF70 Wind-Temp WAFS Antarctic                  1620  2470   0
+PWMF70 Wind-Temp WAFS North Pacific              1620  2470   0
+PWRF70 Wind-Temp WAFS Africa                     1620  2470   0
+PWZF70 Wind-Temp WAFS Asia                       1620  2470   0
+PWGF70 Wind-Temp WAFS Indian Ocean               1620  2470   0
+PWCF70 Wind-Temp WAFS Asia                       1620  2470   0
+PWAF70 Wind-Temp WAFS Atlantic                   1620  2470   0
+!
+PWNF50 Wind-Temp WAFS North America              1620  2470   0
+PWSF50 Wind-Temp WAFS Atlantic                   1620  2470   0
+PWFF50 Wind-Temp WAFS South Pacific              1620  2470   0
+PWYF50 Wind-Temp WAFS North Pacific              1620  2470   0
+PWJF50 Wind-Temp WAFS Antarctic                  1620  2470   0
+PWMF50 Wind-Temp WAFS North Pacific              1620  2470   0
+PWRF50 Wind-Temp WAFS Africa                     1620  2470   0
+PWZF50 Wind-Temp WAFS Asia                       1620  2470   0
+PWGF50 Wind-Temp WAFS Indian Ocean               1620  2470   0
+PWCF50 Wind-Temp WAFS Asia                       1620  2470   0
+PWAF50 Wind-Temp WAFS Atlantic                   1620  2470   0
+!
+PWNF40 Wind-Temp WAFS North America              1620  2470   0
+PWSF40 Wind-Temp WAFS Atlantic                   1620  2470   0
+PWFF40 Wind-Temp WAFS South Pacific              1620  2470   0
+PWYF40 Wind-Temp WAFS North Pacific              1620  2470   0
+PWJF40 Wind-Temp WAFS Antarctic                  1620  2470   0
+PWMF40 Wind-Temp WAFS North Pacific              1620  2470   0
+PWRF40 Wind-Temp WAFS Africa                     1620  2470   0
+PWZF40 Wind-Temp WAFS Asia                       1620  2470   0
+PWGF40 Wind-Temp WAFS Indian Ocean               1620  2470   0
+PWCF40 Wind-Temp WAFS Asia                       1620  2470   0
+PWAF40 Wind-Temp WAFS Atlantic                   1620  2470   0
+!
+PWNF30 Wind-Temp WAFS North America              1620  2470   0
+PWSF30 Wind-Temp WAFS Atlantic                   1620  2470   0
+PWFF30 Wind-Temp WAFS South Pacific              1620  2470   0
+PWYF30 Wind-Temp WAFS North Pacific              1620  2470   0
+PWJF30 Wind-Temp WAFS Antarctic                  1620  2470   0
+PWMF30 Wind-Temp WAFS North Pacific              1620  2470   0
+PWRF30 Wind-Temp WAFS Africa                     1620  2470   0
+PWZF30 Wind-Temp WAFS Asia                       1620  2470   0
+PWGF30 Wind-Temp WAFS Indian Ocean               1620  2470   0
+PWCF30 Wind-Temp WAFS Asia                       1620  2470   0
+PWAF30 Wind-Temp WAFS Atlantic                   1620  2470   0
+!
+PWNF25 Wind-Temp WAFS North America              1620  2470   0
+PWSF25 Wind-Temp WAFS Atlantic                   1620  2470   0
+PWFF25 Wind-Temp WAFS South Pacific              1620  2470   0
+PWYF25 Wind-Temp WAFS North Pacific              1620  2470   0
+PWJF25 Wind-Temp WAFS Antarctic                  1620  2470   0
+PWMF25 Wind-Temp WAFS North Pacific              1620  2470   0
+PWRF25 Wind-Temp WAFS Africa                     1620  2470   0
+PWZF25 Wind-Temp WAFS Asia                       1620  2470   0
+PWGF25 Wind-Temp WAFS Indian Ocean               1620  2470   0
+PWCF25 Wind-Temp WAFS Asia                       1620  2470   0
+PWAF25 Wind-Temp WAFS Atlantic                   1620  2470   0
+!
+PWNF20 Wind-Temp WAFS North America              1620  2470   0
+PWSF20 Wind-Temp WAFS Atlantic                   1620  2470   0
+PWFF20 Wind-Temp WAFS South Pacific              1620  2470   0
+PWYF20 Wind-Temp WAFS North Pacific              1620  2470   0
+PWJF20 Wind-Temp WAFS Antarctic                  1620  2470   0
+PWMF20 Wind-Temp WAFS North Pacific              1620  2470   0
+PWRF20 Wind-Temp WAFS Africa                     1620  2470   0
+PWZF20 Wind-Temp WAFS Asia                       1620  2470   0
+PWGF20 Wind-Temp WAFS Indian Ocean               1620  2470   0
+PWCF20 Wind-Temp WAFS Asia                       1620  2470   0
+PWAF20 Wind-Temp WAFS Atlantic                   1620  2470   0
+!
+PWNF15 Wind-Temp WAFS North America              1620  2470   0
+PWSF15 Wind-Temp WAFS Atlantic                   1620  2470   0
+PWFF15 Wind-Temp WAFS South Pacific              1620  2470   0
+PWYF15 Wind-Temp WAFS North Pacific              1620  2470   0
+PWJF15 Wind-Temp WAFS Antarctic                  1620  2470   0
+PWMF15 Wind-Temp WAFS North Pacific              1620  2470   0
+PWRF15 Wind-Temp WAFS Africa                     1620  2470   0
+PWZF15 Wind-Temp WAFS Asia                       1620  2470   0
+PWGF15 Wind-Temp WAFS Indian Ocean               1620  2470   0
+PWCF15 Wind-Temp WAFS Asia                       1620  2470   0
+PWAF15 Wind-Temp WAFS Atlantic                   1620  2470   0
+!
+PWNF07 Wind-Temp WAFS North America              1620  2470   0
+PWSF07 Wind-Temp WAFS Atlantic                   1620  2470   0
+PWFF07 Wind-Temp WAFS South Pacific              1620  2470   0
+PWYF07 Wind-Temp WAFS North Pacific              1620  2470   0
+PWJF07 Wind-Temp WAFS Antarctic                  1620  2470   0
+PWMF07 Wind-Temp WAFS North Pacific              1620  2470   0
+PWRF07 Wind-Temp WAFS Africa                     1620  2470   0
+PWZF07 Wind-Temp WAFS Asia                       1620  2470   0
+PWGF07 Wind-Temp WAFS Indian Ocean               1620  2470   0
+PWCF07 Wind-Temp WAFS Asia                       1620  2470   0
+PWAF07 Wind-Temp WAFS Atlantic                   1620  2470   0
+
+!
+PWNG85 Wind-Temp WAFS North America              1620  2470   0
+PWSG85 Wind-Temp WAFS Atlantic                   1620  2470   0
+PWFG85 Wind-Temp WAFS South Pacific              1620  2470   0
+PWYG85 Wind-Temp WAFS North Pacific              1620  2470   0
+PWJG85 Wind-Temp WAFS Antarctic                  1620  2470   0
+PWMG85 Wind-Temp WAFS North Pacific              1620  2470   0
+PWRG85 Wind-Temp WAFS Africa                     1620  2470   0
+PWZG85 Wind-Temp WAFS Asia                       1620  2470   0
+PWGG85 Wind-Temp WAFS Indian Ocean               1620  2470   0
+PWCG85 Wind-Temp WAFS Asia                       1620  2470   0
+PWAG85 Wind-Temp WAFS Atlantic                   1620  2470   0
+!
+PWNG70 Wind-Temp WAFS North America              1620  2470   0
+PWSG70 Wind-Temp WAFS Atlantic                   1620  2470   0
+PWFG70 Wind-Temp WAFS South Pacific              1620  2470   0
+PWYG70 Wind-Temp WAFS North Pacific              1620  2470   0
+PWJG70 Wind-Temp WAFS Antarctic                  1620  2470   0
+PWMG70 Wind-Temp WAFS North Pacific              1620  2470   0
+PWRG70 Wind-Temp WAFS Africa                     1620  2470   0
+PWZG70 Wind-Temp WAFS Asia                       1620  2470   0
+PWGG70 Wind-Temp WAFS Indian Ocean               1620  2470   0
+PWCG70 Wind-Temp WAFS Asia                       1620  2470   0
+PWAG70 Wind-Temp WAFS Atlantic                   1620  2470   0
+!
+PWNG50 Wind-Temp WAFS North America              1620  2470   0
+PWSG50 Wind-Temp WAFS Atlantic                   1620  2470   0
+PWFG50 Wind-Temp WAFS South Pacific              1620  2470   0
+PWYG50 Wind-Temp WAFS North Pacific              1620  2470   0
+PWJG50 Wind-Temp WAFS Antarctic                  1620  2470   0
+PWMG50 Wind-Temp WAFS North Pacific              1620  2470   0
+PWRG50 Wind-Temp WAFS Africa                     1620  2470   0
+PWZG50 Wind-Temp WAFS Asia                       1620  2470   0
+PWGG50 Wind-Temp WAFS Indian Ocean               1620  2470   0
+PWCG50 Wind-Temp WAFS Asia                       1620  2470   0
+PWAG50 Wind-Temp WAFS Atlantic                   1620  2470   0
+!
+PWNG40 Wind-Temp WAFS North America              1620  2470   0
+PWSG40 Wind-Temp WAFS Atlantic                   1620  2470   0
+PWFG40 Wind-Temp WAFS South Pacific              1620  2470   0
+PWYG40 Wind-Temp WAFS North Pacific              1620  2470   0
+PWJG40 Wind-Temp WAFS Antarctic                  1620  2470   0
+PWMG40 Wind-Temp WAFS North Pacific              1620  2470   0
+PWRG40 Wind-Temp WAFS Africa                     1620  2470   0
+PWZG40 Wind-Temp WAFS Asia                       1620  2470   0
+PWGG40 Wind-Temp WAFS Indian Ocean               1620  2470   0
+PWCG40 Wind-Temp WAFS Asia                       1620  2470   0
+PWAG40 Wind-Temp WAFS Atlantic                   1620  2470   0
+!
+PWNG30 Wind-Temp WAFS North America              1620  2470   0
+PWSG30 Wind-Temp WAFS Atlantic                   1620  2470   0
+PWFG30 Wind-Temp WAFS South Pacific              1620  2470   0
+PWYG30 Wind-Temp WAFS North Pacific              1620  2470   0
+PWJG30 Wind-Temp WAFS Antarctic                  1620  2470   0
+PWMG30 Wind-Temp WAFS North Pacific              1620  2470   0
+PWRG30 Wind-Temp WAFS Africa                     1620  2470   0
+PWZG30 Wind-Temp WAFS Asia                       1620  2470   0
+PWGG30 Wind-Temp WAFS Indian Ocean               1620  2470   0
+PWCG30 Wind-Temp WAFS Asia                       1620  2470   0
+PWAG30 Wind-Temp WAFS Atlantic                   1620  2470   0
+!
+PWNG25 Wind-Temp WAFS North America              1620  2470   0
+PWSG25 Wind-Temp WAFS Atlantic                   1620  2470   0
+PWFG25 Wind-Temp WAFS South Pacific              1620  2470   0
+PWYG25 Wind-Temp WAFS North Pacific              1620  2470   0
+PWJG25 Wind-Temp WAFS Antarctic                  1620  2470   0
+PWMG25 Wind-Temp WAFS North Pacific              1620  2470   0
+PWRG25 Wind-Temp WAFS Africa                     1620  2470   0
+PWZG25 Wind-Temp WAFS Asia                       1620  2470   0
+PWGG25 Wind-Temp WAFS Indian Ocean               1620  2470   0
+PWCG25 Wind-Temp WAFS Asia                       1620  2470   0
+PWAG25 Wind-Temp WAFS Atlantic                   1620  2470   0
+!
+PWNG20 Wind-Temp WAFS North America              1620  2470   0
+PWSG20 Wind-Temp WAFS Atlantic                   1620  2470   0
+PWFG20 Wind-Temp WAFS South Pacific              1620  2470   0
+PWYG20 Wind-Temp WAFS North Pacific              1620  2470   0
+PWJG20 Wind-Temp WAFS Antarctic                  1620  2470   0
+PWMG20 Wind-Temp WAFS North Pacific              1620  2470   0
+PWRG20 Wind-Temp WAFS Africa                     1620  2470   0
+PWZG20 Wind-Temp WAFS Asia                       1620  2470   0
+PWGG20 Wind-Temp WAFS Indian Ocean               1620  2470   0
+PWCG20 Wind-Temp WAFS Asia                       1620  2470   0
+PWAG20 Wind-Temp WAFS Atlantic                   1620  2470   0
+!
+PWNG15 Wind-Temp WAFS North America              1620  2470   0
+PWSG15 Wind-Temp WAFS Atlantic                   1620  2470   0
+PWFG15 Wind-Temp WAFS South Pacific              1620  2470   0
+PWYG15 Wind-Temp WAFS North Pacific              1620  2470   0
+PWJG15 Wind-Temp WAFS Antarctic                  1620  2470   0
+PWMG15 Wind-Temp WAFS North Pacific              1620  2470   0
+PWRG15 Wind-Temp WAFS Africa                     1620  2470   0
+PWZG15 Wind-Temp WAFS Asia                       1620  2470   0
+PWGG15 Wind-Temp WAFS Indian Ocean               1620  2470   0
+PWCG15 Wind-Temp WAFS Asia                       1620  2470   0
+PWAG15 Wind-Temp WAFS Atlantic                   1620  2470   0
+!
+PWNG07 Wind-Temp WAFS North America              1620  2470   0
+PWSG07 Wind-Temp WAFS Atlantic                   1620  2470   0
+PWFG07 Wind-Temp WAFS South Pacific              1620  2470   0
+PWYG07 Wind-Temp WAFS North Pacific              1620  2470   0
+PWJG07 Wind-Temp WAFS Antarctic                  1620  2470   0
+PWMG07 Wind-Temp WAFS North Pacific              1620  2470   0
+PWRG07 Wind-Temp WAFS Africa                     1620  2470   0
+PWZG07 Wind-Temp WAFS Asia                       1620  2470   0
+PWGG07 Wind-Temp WAFS Indian Ocean               1620  2470   0
+PWCG07 Wind-Temp WAFS Asia                       1620  2470   0
+PWAG07 Wind-Temp WAFS Atlantic                   1620  2470   0
+!
+!!!!
+!!!!
+! Unknown WMO ID
+!!015X Pac Deep layr mean wind anl               1728  2646  90
+!!016X Pac Shear wind anl                        1728  2646  90
+!!020X Pac Deep layr mean wind anl               1728  2646  90
+!!021X Pac Shear wind anl                        1728  2646  90
+!!033X Pac Atoll wind anl                        1728  2646  90
+!!034X Pac 200MB wind (steams) anl               1728  2646  90
+!!052X IEEE test chart                           1728  1110   0
+!!057X Cambridge plot                            1728  1110   0
+!!104X Atl Req 4 Comments/Prd Notx               1728  1106   0
+!!120X African Desk SST Anomalies                1728   864   0
+!!141X 12Z E. Pac SST Anal Part C                1728  1106   0
+!!162X Atl RadioFax Legend                       1728  1152   0
+!!166X Atl Gulf Stream Anal Part A               1728  1106   0
+!!167X Atl Gulf Stream Anal Part B               1728  1106   0
+!!174X Atl Gulf Stream Analysis                  1728  1106   0
+!!198X Pac SST Analysis Part A                   1728  1106   0
+!!199X Pac SST Analysis Part B                   1728  1152   0
+!!201X Wx Depiction                              1728   550   0
+!!202X 12Hr Fn Prog                              1728   550   0
+!!203X 24Hr Fn Prog                              1728   550   0
+!!204X 36Hr Fn Prog                              1728   550   0
+!!205X 48Hr Fn Prog                              1728   550   0
+!!206X VT18 Sig Wx Hi-lvl                        1728   550   0
+!!207X Lifted Index                              1728   550   0
+!!259X (D147) Sea Sfc Temp (ATL)                 1728  1152   0
+!!306X 00Z Sfc/1-500 Thk                         1728  1083   0
+!!308X 00Z Prelim ATL Sfc                        1728  2235  90
+!!309X 06Z Prelim ATL Sfc                        1728  2235  90
+!!310X 00Z Prelim PAC Sfc                        1728  2691  90
+!!311X 06Z Prelim PAC Sfc                        1728  2235  90
+!!328X Crop Moist/Index NTL                      1728  1150   0
+!!329X Crop Moist/Index DIV                      1728  1150   0
+!!330X Drought Severity NTL                      1728  1150   0
+!!331X Drought Severity DIV                      1728  1150   0
+!!332X Crop Moist/Index Pcpn                     1728  1150   0
+!!348X (H058 D283) Sea Sfc Temp (PAC)            1728  1152   0
+!!356X 12Z Sfc/1-500 Thk                         1728  1083   0
+!!358X 12Z Prelim ATL Sfc                        1728  2235  90
+!!359X 18Z Prelim ATL Sfc                        1728  2235  90
+!!360X 12Z Prelim PAC Sfc                        1728  2691  90
+!!361X 18Z Prelim PAC Sfc                        1728  2235  90
+!!405Y 12Z Dly Ext Sfc Pt-1                      1728  3024  90
+!!406X 00hr 500 Bkup                             1728  1324   0
+!!407X 00hr 850 Bkup                             1728  1324   0
+!!409X Nrn Ice Limit                             1728  1632   0
+!!424X Great Lakes Ice Anal                      1728  1344   0
+!!425X Alaskan Ice Limit                         1728  1440   0
+!!449X (D283 H058) Sea Sfc Temp (PAC)            1728  1152   0
+!!449X (D283 H058) Sea Sfc Temp (PAC)            1728  1152   0
+!!452A Alaskan Ice Limit                         1728  1440   0
+!!452G Great Lakes Ice Anal                      1728  1344   0
+!!452X Great Lakes Ice Anal                      1728  1536   0
+!!454X 6-10 Day 500mb Mean                       1728  1532   0
+!!457X 90-Day Seasonal Temp/Prcp Prob            1728  1314   0
+!!515X VT06Z Sig Wx 400-150mb                    1728   550   0
+!!516X VT18Z Sig Wx 400-150mb                    1728   550   0
+!!517X ALNOT                                     1728   275   0
+!!518X 30-day Outlook tmp/precip prob            1728   910   0
+!!522X VT18Z Sig Wx FL250-600                    1728  1248  90
+!!523X VT12Z Sig Wx FL250-600                    1728  1248  90
+!!540X OPNL System Status Mesg                   1728  1114   0
+!!541X OPNL System Status Mesg                   1728  1114   0
+!!542X VT12Z Sig Wx FL250-600                     800   970   0
+!!543X VT12Z Sig Wx FL250-600                     800   970  90
+!!544X VT18Z Sig Wx FL250-600                     800   970   0
+!!545X VT18Z Sig Wx FL250-600                     800   970  90
+!!546X VT00Z Sig Wx FL250-600                     800   970   0
+!!547X VT00Z Sig Wx FL250-600                     800   970  90
+!!548X VT06Z Sig Wx FL250-600                     800   970   0
+!!549X VT06Z Sig Wx FL250-600                     800   970  90
+!!550X 00/12 Sig Wx LL                           1728  1133 180
+!!566X Area Stagnation Fcst                      1728  1183   0
+!!567X ALNOT                                     1728   275   0
+!!568X VT12Z Sig Wx FL000-250                    1728  1076   0
+!!572X VT06Z Sig Wx FL250-600                    1728  1248  90
+!!573X VT00Z Sig Wx FL250-600                    1728  1248  90
+!!580X VT12Z Sig Wx FL250-600                     800  1141  90
+!!581X VT00Z Sig Wx FL250-600                     800  1141  90
+!!587X Ocean Frnt/Temp Anal                      1728  1056   0
+!!588X Sea Sfc Temp (GOA and Reg Pac)            1728  1256   0
+!!591X Srn Ice Limit - East Arc                  1728  2850  90
+!!594X Sea Sfc Temp (Reg Pac)                    1104  2850  90
+!!595X Sea Sfc Tmp (ATL/PAC)                     1728  1008   0
+!!596X Srn Ice Limit - East                      1728  3648  90
+!!597X Srn Ice Limit - West                      1728  3648  90
+!!604X MFM Pcpn Prog(Hurr)                       1728  1152   0
+!!605X MFM 1000mb Prog(Hurr)                     1728  1152   0
+!!654X Spl QPF 4-panl                            1728  1152   0
+!!655X MFM 1000mb Prog(Hurr)                     1728  1152   0
+!!657X Prog Sunsh/Solar Energy                   1728  1152   0
+!!660X 00ZA ARL Volcanic Ash Fcst                1728  3090  90
+!!661X 00ZB ARL Volcanic Ash Fcst                1728  3090  90
+!!662X 12ZA ARL Volcanic Ash Fcst                1728  3090  90
+!!663X 12ZB ARL Volcanic Ash Fcst                1728  3090  90
+!!909X Nrn Ice Limit                             1728  1632   0
+!!955X 12Z 36/48 Sfc Prog                        1728  1008   0
+!!988X Sea Sfc Temp (GOA and Reg Pac)            1248  1152   0
+!!994X Sea Sfc Temp (Reg Pac)                    1296  1104   0
+TEST01 Test setting                               896   716   0

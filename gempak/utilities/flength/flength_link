@@ -1,0 +1,2 @@
+$CC $CFLAGS -o flength flength.c
+$RM *.o

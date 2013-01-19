@@ -1,0 +1,23 @@
+     G2IS
+ 
+     G2IS is a list of integers that are encoded into the GRIB2 
+     Indicator Section ( Section 0 ) that identify the discipline
+     and version of the GRIB2 message:
+ 
+        Discipline ; version
+ 
+     The discipline is an integer value identifying the all the products in
+     the GRIB2 message and corresponds to GRIB2 Code Table 0.0:
+              0  = Meteorological products  (default)
+              1  = Hydrological products 
+              2  = Land surface products 
+              3  = Space products
+              10 = Oceanographic products
+
+     Note: Setting the discipline here will overwrite the discipline value
+     obtained from the GRIB2 parameter tables.  Use only if you know the 
+     requested grid is not in the tables.  (e.g. a diagnostic grid )
+
+     The GRIB code form version recognized by program gdgrib2 is only
+     version 2.  2 is currently the only valid entry for this field.
+

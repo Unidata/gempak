@@ -1,0 +1,18 @@
+     GDNUM
+
+     GDNUM allows the user to select grids by number in the following ways:
+
+	GDNUM = range        
+ 		The first and last grid numbers in the range are separated 
+ 		by a -.  If an increment is included, it will be ignored.
+   
+	GDNUM = list             
+ 		The grid numbers in the list are separated using semicolons.
+   
+	GDNUM = ALL                 
+ 		All the grids in the file will be included.
+     
+	GDNUM = LIST                 
+ 		All the grids in the file will be listed.  The user will 
+ 		be prompted to select the grids to be included.
+

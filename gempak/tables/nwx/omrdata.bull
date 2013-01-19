@@ -1,0 +1,32 @@
+! OMRDATA.BULL
+!
+! This table contains the bulletin/station information to be used
+! with the Other Marine reports text files     
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+!
+SXUS08 KAKQ     WAKEFIELD_MUNICIPAL_AIRPORT      VA US  3698  -7700    34
+SXUS08 KDTX     DETROIT_METRO                    MI US  4223  -8333   202
+SXUS08 KMHX     NEWPORT                          NC US  3478  -7688    11
+SXUS20 KHAT     HATTERAS_(ASOS)                  NC US  3522  -7562     3
+SXUS20 KILM     WILMINGTON/NEW_HAN               NC US  3427  -7790    10
+SXUS20 KORK     NORFOLK_INTL_ARPT                VA US  3690  -7620     9
+SXUS20 KSEA     SEATTLE-TACOMA_INTL              WA US  4745 -12230   137
+SXUS20 KSFO     SAN_FRANCISCO_INTL               CA US  3762 -12238     5
+SXNT1  KBOS     BOSTON/LOGAN_INTL                MA US  4237  -7103     9
+FPAK1  PANC     ANCHORAGE_INTL_ARPT              AK US  6117 -15002    40
+FZAK71 PANC     KODIAK                           AK US  5775 -15250    34
+SXUS01 KMLB     MELBOURNE_REGIONAL               FL US  2810  -8065    11
+SXUS1  KAPN     ALPENA_CO._REGIONAL              MI US  4507  -8357   211
+SXUS1  KGRB     GREEN_BAY/STRAUBEL               WI US  4448  -8813   214
+SXUS1  KMKE     MILWAUKEE/MITCHELL               WI US  4295  -8790   211
+SXUS1  KMQT     MARQUETTE_CO._ARPT               MI US  4653  -8755   434
+SXUS1  KSSM     SAULT_STE_MARIE                  MI US  4647  -8437   221
+SXUS41 KSEA     QUILLAYUTE_STATE                 WA US  4795 -12455    62
+SXUS86 KSEW     SEATTLE-TACOMA                   WA US  4705 -12295   137
+SXUS86 KSGX     SAN_DIEGO/LINDB                  CA US  3202 -11797     9
+SXVX1  KSAN     SAN_DIEGO/LINDBERG               CA US  3273 -11717     9

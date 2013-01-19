@@ -1,0 +1,11 @@
+     SKPMIS
+
+     SKPMIS is a logical variable which indicates whether non-reporting 
+     stations will be listed.
+
+     If SKPMIS is YES, nonreporting stations will not be listed.  
+     Otherwise, all stations will be listed.
+
+     In SFMAP, markers can be plotted at nonreporting stations when 
+     SKPMIS is NO.
+

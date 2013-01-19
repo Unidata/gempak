@@ -1,0 +1,4 @@
+this is a special fix of AODTV6.4.2 
+- modify Rule 8 application (add 0.2T# limit to most of the rule 8 rules)
+  in odthistory.c, odtintensity.c, and odtoutput.c
+- fix minor bug with odtintensity.c in lat bias calculation for six hour gap.

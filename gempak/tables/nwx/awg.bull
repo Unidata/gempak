@@ -1,0 +1,11 @@
+! AWG.BULL
+!
+! Location information for the following product:
+! National_Attack_Warning.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+WOUS03 KDEN     DENVER_INTNL_ARPT                CO US  3986 -10466     0

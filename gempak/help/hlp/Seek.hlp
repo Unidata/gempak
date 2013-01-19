@@ -1,0 +1,68 @@
+
+                                   SEEK
+
+I. Summary
+
+The seek function calculates the distance and direction between two 
+user selected points or stations from a GEMPAK station table.  The
+function also draws a ghost marker for each selected point and a ghost line 
+connecting them.  The markers and line are erased and redrawn each time 
+new points are selected.  They are erased upon exiting the function. 
+Click the seek icon (small map with an arrow) to the right of the "RELOAD" 
+icon to invoke the seek function.  
+
+After the seek icon is clicked, the "Seek Results" GUI is activated.  This GUI
+controls how locations are entered and how the resultant distances and 
+directions are displayed.  Click the "Take Control" button to gain cursor
+control if product generation is active.  Click the "Close" button to exit
+the seek function.
+
+II. Entering End Points
+
+The text and buttons to the right of the buttons labeled "1" and "2" control
+the input of each end point.  Click the numbered button to input the desired
+location for that end point.  Click the middle button to select the desired
+station table, e.g., "CITIES".  Type in the desired location in the text 
+box immediately to the right of the number button.  When typing a station 
+name, a scroll list appears at the bottom of the "Seek Results" GUI with a 
+list of matching locations as each character of the station name is entered.  
+The location may be selected by clicking on the desired choice in the scroll 
+list.  Select "LATLON" to enter the latitude and longitude of an end point.
+The values may be entered as degrees and decimal or in degrees and minutes
+where the minute value follows the ":" delimiter.
+
+Alternatively, an end point can be selected by positioning the cursor.  Click 
+the "Click Point" button and move the cursor to the desired location and click 
+the left mouse button.  The latitude and longitude or nearest station is then
+entered for that end point.
+
+III. Distance and Direction Display Options
+
+The distance and direction between the end points are displayed in the 
+text box below the end point buttons.  Click the icon with the opposing
+horizontal arrows to reverse the direction between the end points.
+
+The seek function also lists the nearest set of stations to the selected
+end point in a scroll list at the top of the "Seek Results" GUI.  The 
+end point is selected by clicking on button "1" or button "2".  The scroll
+list includes the station name, latitude and longitude, and distance and
+direction.  The "Limit:" arrows below the scroll list control the number of 
+nearest stations displayed in the scroll list. 
+
+The "Dist Units" and "Dir Units" pop-ups control the units for the
+distance and direction displays, respectively.
+
+IV. Varying Distance and Direction Option
+
+The seek function allows distance and direction to be displayed from 
+a fixed point as the cursor is moved.  Press the left mouse button with
+the cursor positioned on the desired location and then drag the mouse.  
+A ghost line is drawn and the distance and direction are displayed from the
+selected point as the cursor is moved.  The units are specified by the
+"Dist Units" and "Dir Units" pop-ups in the "Seek Results" GUI.  
+
+V.  Station Data Set Access
+
+The seek function can operate on any valid GEMPAK station table.  These
+tables are specified in the $GEMTBL/config/clo.tbl and $GEMTBL/nmap/seek.tbl
+tables.  See these tables for additional details.

@@ -1,0 +1,10 @@
+if  [ $OS = "HPUX" ]
+then
+    MYFLAG="+U77"
+else
+    MYFLAG=""
+fi
+
+$FC $FFLAGS $MYFLAG $LDFLAGS -o $OS_BIN/dat2pts \
+	dat2pts.f $OS_LIB/dat2pts.a $GEMLIB $CGEMLIB
+$RM *.o

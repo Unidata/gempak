@@ -1,0 +1,24 @@
+CXSTNS  Cross-section station line                                              
+SNPARM  Sounding parameter list                                                 
+SNFILE  Sounding data file                                                      
+DATTIM  Date/time                                                               
+VCOORD  Vertical coordinate type                                                
+PTYPE   Plot type/h:w ratio/margins                                             
+YAXIS   Ystrt/ystop/yinc/lbl;gln;tck                                            
+TAXIS   Time1-time2-tinc;lbl;gln;tck                                            
+LINE    Color/type/width/label/smth/fltr/scflg                                  
+BORDER  Background color/type/width                                             
+CINT    Contour interval/min/max                                                
+WIND    Wind symbol/siz/wdth/typ/hdsz                                           
+TITLE   Title color/line/title                                                  
+PANEL   Panel loc/color/dash/width/regn                                         
+DEVICE  Device|name|x size;y size|color type                                    
+CLEAR   Clear screen flag                                                       
+FILTER  Filter data factor                                                      
+TEXT    Size/fnt/wdth/brdr/N-rot/just/hw flg                                    
+CURVE   Curve fit type                                                          
+CLRBAR  Color/ornt/anch/x;y/ln;wd/freq|text_info                                
+CONTUR  Subbox/smooth                                                           
+FINT    Fill interval/min/max                                                   
+FLINE   Fill colors/fill types                                                  
+CTYPE   Contour type:  C/F                                                      

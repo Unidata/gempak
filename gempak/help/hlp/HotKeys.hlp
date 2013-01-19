@@ -1,0 +1,68 @@
+
+                                  HOT KEYS
+
+
+Pressing keyboard keys allows easy access to selected Nmap functions.  All 
+Nmap hot keys are case insensitive. Only the lower case are listed below. 
+
+The hot keys for Nmap/Nmap2 display functions:
+
+    -  Step backward / Halt loop
+    =  Step forward / Halt loop
+    l  Loop forward / Halt loop
+
+    f  Reset the fade on the current look-up table and restores the current 
+       look-up table
+
+    h  Turns all background data on/off by toggling the hide/show loop button
+
+    i  Turns an image "on/off" by toggling the fade between black and the 
+       default brightness setting
+
+    w  Toggle the data window up or down (Same as mouse button 3)
+
+    a  Toggle the auto-update on or off for the individual loop.
+
+    A  Toggle the auto-update lock or unlock for all loops.
+
+The numeric key pad arrow keys (2, 4, 6, 8) roam in the direction of the 
+respective arrow when in the roam mode.  (Note that this function is currently
+not supported on IRIX5/IRIX6 platforms.)
+
+The following hot keys display different loops for Nmap2:
+
+    F1  View loop 1
+    F2  View loop 2
+    F3  View loop 3
+    F4  View loop 4
+    F5  View loop 5
+    F6  View loop 6
+    F7  View loop 7
+    F8  View loop 8
+   
+To access loops 9 through 16, press the <shift> key and then press the F key.  
+For example, <shift> F3, views loop 11.
+
+The following list hot keys for Nmap/Nmap2 product generation functions:
+
+    u  Undo
+    r  Redo
+
+The numeric hot keys control which layer is active.  Keys 1...0 switch the 
+active layer to layers 1 - 10, respectively.  The key combination of Shift 
+and 1...0 change the active layer to layers 11 - 20, respectively.
+
+The "Filter Control" GUI allows hot keys to enable the user to step from one 
+time to the next.  These are the "[" and "]" keys.  The "[" key steps the 
+control from right to left and the the "]" steps from left to right. 
+
+The delete key can be used to delete selected elements.  It works in 
+both select and multi-select modes.  This is a keyboard shortcut that 
+functions the same as the Delete Action on the palette.  It can be undone 
+using the Undo Action button.
+
+The up and down arrows on the keyboard (meaning the up/down keys in the small 
+cluster of four directional keys located between the main keypad and the 
+numeric keypad) may be used to select the active segment of a TCA when the
+TCA GUI is active.  
+

@@ -1,0 +1,32 @@
+!GFSMOS.PACK
+!
+!This table is the packing table for DCGMOS, which 
+!decodes GFS MOS model data.
+!
+!*Log:
+!
+!m.gamazaychikov/SAIC	11/03	copied from mosa.pack
+!D. Kidwell/NCEP	 3/04	Increased range of FCIG
+!
+TNTF       -99.        150.      1.
+TDYF       -99.        150.      1.
+TMPF       -99.        150.      1.
+DWPF       -99.        150.      1.
+CLCT         0.         10.      1.
+DRCT         0.        360.     10.
+SKNT         0.        150.      1.
+PP06         0.        100.      1.
+PP12         0.        100.      1.
+QP06         0.          5.      1.
+QP12         0.          6.      1.
+TS06         0.        100.      1.
+TC06         0.        100.      1.
+TS12         0.        100.      1.
+TC12         0.        100.      1.
+PCPT         0.          2.      1.
+POZP         0.        100.      1.
+POSN         0.        100.      1.
+SN24         0.          8.      1.
+FCIG         1.          8.      1.
+FVSA         1.          7.      1.
+OVIS         0.          4.      1.

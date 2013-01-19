@@ -1,0 +1,133 @@
+#!/bin/csh
+#
+# EZCROSS.CSI
+#
+# This script displays a spatial cross section of theta-e, rh and momentum
+# surfaces.
+#
+# The end points for the cross section may be chosen by (1) entering the 
+# station IDs for two stations; or (2) graphically selecting the locations
+# using the mouse on a map/field window that has already been generated using
+# a different EZ script.
+#
+# The user must enter the fcst_hour and the left and right stations, as above.
+#
+#	Syntax:   ezcross.csi fcst_hour [left_stn right_stn]
+#
+#	Examples: ezcross.csi 00 ( The script will prompt for station
+#				   IDs or graphical selection. )
+#		  ezcross.csi 18 GEG ELP
+##
+# Log:
+# B. Colman/SEA		 1994
+# R. Miller/COMET	 1994
+# S. Jacobs/NMC		10/94	Clean up
+#
+
+if ( ${1}x == x ) then
+   echo " GEMPAK shell script to plot a spatial cross section from model "
+   echo " grids.  The user has two options on selecting the location of "
+   echo " the cross section.  The user can enter two station IDs when"
+   echo " prompted.  Or first display a map/fields using another script "
+   echo " then run this script and select 2 points on the map using the"
+   echo " mouse cursor. When the mouse cursor appears as a + on the graphic "
+   echo " window, click the left button at one end point of the cross "
+   echo " section.  Drag the line to the other end of the section and "
+   echo " click the left mouse button again.  The cross section will appear"
+   echo " in a moment."
+   echo " The user must supply the forecast time "
+   echo " either on the command line or by prompting."
+
+   echo " "
+   echo " Enter the forecast hour (e.g. 24)."
+   set fcst=$<
+
+   echo " "
+   echo " Do you want to specify the cross section by 1) stations or "
+   echo " 2) graphically or 3) use previous selection? "
+   set ans=$<
+
+   if $ans == 1 then
+      echo " "
+      echo " Enter the left station: \c"
+      set lstn=$<
+      echo " Enter the right station: \c"
+      set rstn=$<
+   else
+      set lstn=""
+      set rstn=""
+   endif
+else
+   set fcst = $1
+   set lstn  = $2
+   set rstn  = $3
+endif
+
+if ( $ans != 3 ) then
+
+    if ( ${lstn}x == x ) then
+	echo " "
+	echo " Choose locations on the screen using the mouse once the + appears."
+	echo " "
+
+	gdplot << EOD
+	cursor cxstns
+	exit
+EOD
+
+    else
+
+	gdplot << EODD
+	CXSTNS = ${lstn}>${rstn}
+	exit
+EODD
+
+    endif
+
+endif
+
+# Source the file called settings.  This file contains commands to set
+# environment variables for the model name and device driver.
+
+source settings
+
+gdcross << EOF
+GDATTIM  = f$fcst
+GVCORD   = pres
+GFUNC    = relh
+GVECT    = 
+WIND     = 
+PTYPE    = log
+YAXIS    = 1020/150
+CINT     = 4
+SCALE    = 0
+LINE     = 20/-2/1
+BORDER   = 1=white
+TITLE    = 1/-1/EQUIVALENT POTENTIAL TEMPERATURE (DOTTED), RH (>80%; SHADED),
+CLEAR    = yes
+DEVICE   = $dev_cros
+PANEL    = 0
+CONTUR   = 1/1
+FINT     = 80/80
+FLINE    = 101;22
+CTYPE    = f
+r
+
+CLEAR    = no
+GFUNC    = thte
+TITLE    = 1/-2/M SFCS (M/S; USING NORM COMP OF GEO WIND)
+LINE     = 20/2/2
+SCALE    = 0
+CINT     = 4
+CTYPE    = c
+r
+
+GFUNC    = sm5s[msfc[sm5v(normv(geo))]]
+GVECT    =
+TITLE    = 1/-3/~  $model
+CINT     = 6
+LINE     = 2/1/2
+r
+
+ex
+EOF

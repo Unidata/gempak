@@ -1,0 +1,13 @@
+! INTRPT.BULL
+!
+! This table contains the bulletin/station information to be used
+! with the Marine Interpretation Messages
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+!
+AGPN40 KWNM     WASHINGTON/DULLES                VA US  3895  -7747    98
+AGNT40 KWNM     WASHINGTON/DULLES                VA US  3895  -7745    98

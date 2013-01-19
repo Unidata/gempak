@@ -1,0 +1,6 @@
+$CC $CFLAGS -c testnsn.c 
+$FC $LDFLAGS -o $OS_BIN/testnsn testnsn.o \
+		$NMAPLIB $OS_LIB/snmap.a \
+		$GEMLIB $CGEMLIB $APPL $SYSLIB \
+		-lm -lnetcdf -lz
+$RM *.o

@@ -1,0 +1,357 @@
+The following table lists all of the possible IOSTAT errors encountered on the HPUX,
+SunOS, IRIX 4 and IRIX 5 machines.  Use this table to translate an IOSTAT code which
+is not translated by SS_IRET.  To translate, take the IOSTAT code returned by the
+program and locate it under the appropriate column on the right-hand side.
+
+This table was constructed using information derived from the following sources:
+HPUX:	/usr/include/sys/errno.h
+	/usr/lib/nls/C/f77_msgs.cat
+	man pages for PERROR (3F)	
+
+SunOS:	/usr/include/sys/errno.h
+	man pages for INTRO (2) and PERROR (3F)
+
+IRIX:  	/usr/include/sys/errno.h
+	man pages for INTRO (2) and PERROR (3F)
+
+A number with a following asterisk indicates that there is another instance of the same
+IOSTAT number elsewhere in the table.  
+
+A sole asterisk indicates that there is no IOSTAT number which correpsonds to the 
+given message.
+
+!#      Message							 HP   SUN   IX4   IX5
+!-      -------                                          	---   ---   ---   ---
+  1 /* Not super-user						  1     1     1     1
+  2 /* No such file or directory				  2     2     2     2
+  3 /* No such process						  3     3     3     3
+  4 /* interrupted system call					  4     4     4     4
+  5 /* I/O error						  5     5     5     5
+  6 /* No such device or address				  6     6     6     6
+  7 /* Arg list too long					  7     7     7     7 
+  8 /* Exec format error					  8     8     8     8
+  9 /* Bad file number						  9     9     9     9
+ 10 /* No children						 10    10    10    10
+ 11 /* No more processes					 11    11     *    11
+ 12 /* Not enough core						 12    12     *    12
+ 13 /* Permission denied					 13    13    13    13
+ 14 /* Bad address						 14    14    14    14
+ 15 /* Block device required					 15    15    15    15
+ 16 /* Mount device busy					 16    16    16    16
+ 17 /* File exists						 17    17    17    17
+ 18 /* Cross-device link					 18    18    18    18
+ 19 /* No such device						 19    19    19    19
+ 20 /* Not a directory						 20    20    20    20
+ 21 /* Is a directory						 21    21    21    21
+ 22 /* Invalid argument						 22    22    22    22
+ 23 /* File table overflow					 23    23    23    23
+ 24 /* Too many open files					 24    24    24    24
+ 25 /* Not a typewriter						 25    25    25    25
+ 26 /* Text file busy						 26    26    26    26
+ 27 /* File too large						 27    27    27    27
+ 28 /* No space left on device					 28    28    28    28
+ 29 /* Illegal seek						 29    29    29    29
+ 30 /* Read only file system					 30    30    30    30
+ 31 /* Too many links						 31    31    31    31
+ 32 /* Broken pipe						 32    32    32    32
+ 33 /* Argument too large					  *    33    33    33
+ 34 /* Result too large						  *    34    34    34
+ 35 /* No message of desired type				 35    75    35    35
+ 36 /* Identifier removed					 36    77    36    36
+ 37 /* Channel number out of range				 37     *    37    37
+ 38 /* Level 2 not synchronized					 38     *    38    38
+ 39 /* Level 3 halted						 39     *    39    39
+ 40 /* Level 3 reset						 40     *    40    40
+ 41 /* Link number out of range					 41     *    41    41	
+ 42 /* Protocol driver not attached				 42     *    42    42
+ 43 /* No CSI structure available    				 43     *    43    43
+ 44 /* Level 2 halted						 44     *    44    44
+ 45 /* A deadlock would occur					 45    78    45    45
+ 46 /* System record lock table was full 			 46    79    46    46
+ 47 /* Illegal byte sequence					 47     *     *    88
+ 48 /* Address already in use					226    48   114*  125*
+ 49 /* Can't assign requested address				227    49   115*  126*
+ 50 /* Machine is not on the network				 50    80    64    64
+ 51 /* no data (for no delay io)				 51     *    61    61
+ 52 /* timer expired						 52    73    62    62
+ 53 /* out of streams resources					 53    74    63    63
+ 54 /* Device not a stream					 54    72    60    60
+ 55 /* Package not installed 					 55     *    65    65
+ 56 /* Socket is already connected				234    56   122*  133*
+ 57 /* the link has been severed				 57    82    67    67
+ 58 /* advertise error						 58    83    68    68
+ 59 /* srmount error						 59    84    69    69
+ 60 /* Communication error on send				 60    85    70    70
+ 61 /* Protocol error						 61    86    71    71
+ 62 /* Too many levels of symbolic links			249    62   130*    *
+ 63 /* File name too long  					248    63   131*    *
+ 64 /* multihop attempted					 64    87    74    74
+ 65 /* No route to host						242    65   129*  148*
+ 66 /* Cross mount point (not really error)			 66    88     *     *	
+ 67 /* trying to read unreadable message			 67    76    77    77
+ 68 /* For Sun compatibilty, will not occur.			 68     *     *     *
+ 69 /* Disc quota exceeded					 69    69   133* 1133
+ 70 /* Stale NFS file handle					 70    70   134*  151*
+ 71 /* Too many levels of remote in path			 71    71   135* 1135
+ 77 /* Identifier removed					  *    77     *     *
+ 80 /* Name not unique on network				  *     *    80    80
+ 81 /* Object is remote						  *    81    66    66
+ 82 /* Remote address changed					  *    89    82    82
+ 83 /* Cannot access a needed shared library			  *     *    83    83
+ 84 /* Accessing a corrupted shared library. 			  *     *    84    84
+ 85 /* .lib section in a.out corrupted.				  *     *    85    85
+ 86 /* Attempting to link in too many libs.			  *     *    86    86
+ 87 /* Cannot exec a shared library directly.			  *     *    87    87
+ 88 /* IRIX uses EINVAL; POSIX wants ENOSYS.			  *     *    88     *
+ 89 /* Unsupported file system operation.			  *     *     *    89
+ 90 /* Symbolic file loop.					  *     *     *    90
+ 91 /* Restartable system call.					  *     *     *    91
+ 92 /* If pipe/FIFO, don't sleep in stream head.		  *     *     *    92
+ 93 /* Directory not empty.					247    66   132*   93
+ 94 /* Too many users.						  *    68     *    94
+ 95 /* Socket operation on non-socket.				216    38   104*   95
+ 96 /* Destination address required.				217    39   105*   96
+ 97 /* Message too long.					218    40   106*   97
+ 98 /* Protocol wrong type for socket.				219    41   107*   98
+ 99 /* Unexpected Error						 99     *     *     *
+100 ``error in format''				  	  	100   100   100   100
+101 ``illegal unit number''					101   101   101   101 
+102 ``formatted i/o not allowed''				102   102   102   102 
+103 ``unformatted i/o not allowed''				103   103   103   103
+104 ``direct i/o not allowed''					104   104   104   104
+105 ``sequential i/o not allowed''				105   105   105   105
+106 ``can't backspace file''					106   106   106   106
+107 ``off beginning of record''					107   107   124   124
+108 ``can't stat file''						108   108   108   108
+109 ``no * after repeat count''					109   109   125   125
+110 ``off end of record''					110   110   110   110
+111 ``truncation failed''					111   111   111   111
+112 ``incomprehensible list input''				112   112   112   112
+113 ``out of free space''					113   113   113   113
+114 ``unit not connected''					114   114   114   114
+115 ``invalid data for integer format term''			115   115   115   115 
+116 ``invalid data for logical format term''			116   116   116   116
+117 ``'new' file exists''					117   117   126   126
+118 ``can't find 'old' file''					118   118   127   127
+119 ``opening too many files or unknown system error''		119   119   128   128
+120 ``requires seek ability''					120   120   129   129
+121 ``illegal argument''					121   121   130   130
+122 ``negative repeat count''					122   122   122   122
+123 ``illegal operation for unit''				123   123   123   123
+124 ``invalid data for d, e, f, or g format term''		124     *     *     *
+125 ``illegal input for namelist'' 				125   126   118   118
+126 ``Attempted operation on unit that's not open''		  *   125     *     *
+127 ``Error in FILEOPT parameter''				  *   127     *     *
+128 ``Too many files open--no free descriptors''		  *   124     *     *
+129 ``Incompatible specifiers in open''				  *  1025     *     *
+130 ``Illegal i/o call''					  *  1028     *     *
+131 ``Null file name''						  *     *   107   107
+132 ``Unit not connected''					  *     *   109   109
+133 ``Bad variable type''					  *     *   117   117
+134 ``Variable not in namelist''				  *     *   119   119
+135  ``too many open indexed files''				  *     *   135   135
+136  ``corrupted isam	file''					  *     *   136   136
+137  ``isam file not opened for exclusive access''      	  *     *   137   137
+138  ``record	locked''					  *     *   138   138
+139  ``key already exists''					  *     *   139   139
+140  ``cannot	delete primary key''				  *     *   140   140
+141  ``beginning or end of file reached''			  *     *   141   141
+142  ``cannot	find requested record'' 			  *     *   142   142
+143  ``current record	not defined''				  *     *   143   143
+144  ``isam file is exclusively locked''			  *     *   144   144 
+145  ``filename too long''					  *     *   145   145
+146  ``cannot	create lock file''				  *     *   146   146
+147  ``record	too long''					  *     *   147   147
+148  ``key structure does not	match file structure''		  *     *   148   148
+149  ``direct	access on an indexed file not allowed''		  *     *   149   149
+150  ``keyed access on a sequential file not allowed''		  *     *   150   150
+151  ``keyed access on a relative file not allowed''	 	  *     *   151   151
+152  ``append	access on an indexed file not allowed''	 	  *     *   152   152
+153  ``must specify record length''				  *     *   153   153
+154  ``key field value type does not match key type''		  *     *   154   154
+155  ``character key field value length too long''		  *     *   155   155
+156  ``fixed record on sequential file not allowed''		  *     *   156   156
+157  ``variable records allowed only on unformatted		  *     *   157   157
+!      sequential file''
+158  ``stream	records	allowed	only on	formatted	 	  *     *   158   158
+!      sequential file''
+159  ``maximum number of records in direct access	 	  *     *   159   159
+!      file exceeded''
+160  ``attempt to create or write to a read only file''		  *     *   160   160
+161  ``must specify key descriptions''				  *     *   161   161
+162  ``carriage control not allowed for 			  *     *   162   162
+!     unformatted units''
+163  ``indexed files only''					  *     *   163   163
+164  ``cannot use on indexed file''				  *     *   164   164
+165  ``cannot use on indexed or append file''		 	  *     *   165   165
+166  ``error in closing file''					  *     *   166   166
+167  ``invalid code in format specification''			  *     *   167   167
+168  ``invalid record number in direct access	file''  	  *     *   168   168
+169  ``cannot have endfile record on non-sequential		  *     *   169   169
+!      file''
+170  ``cannot position within current file''			  *     *     *   170
+171  ``cannot have sequential records on direct			  *     *     *   171 
+!     access file''
+172  ``cannot find namelist in input file''			  *     *     *   172
+173  ``cannot read from stdout''				  *     *     *   173
+174  ``cannot write to stdin''					  *     *     *   174
+175  ``stat call failed in f77inode''				  *     *     *   175
+176  ``duplicate key value on write''				  *     *   131   131
+177  ``indexed file not open''					  *     *   132   132
+178  ``bad isam argument''					  *     *   133   133
+179  ``bad key description''					  *     *   134   134
+180  ``No end record''						  *     *   120   120
+181  ``Direct unformatted I/O not allowed.''			  *     *     *   181
+182  ``cannot open a directory''				  *     *     *   182
+183  ``subscript out of bounds''				  *     *     *   183
+184  ``function not declared as varargs''			  *     *     *   184
+185  ``internal error'' -- may be due to illegal		  *     *     *   185
+!     vararg usage.
+186 /* symbol does not exist in executable			215     *     *     *
+187 /* Too many processes					  *    67     *     *
+188 /* Option not supported by protocol				  *     *   108*    *
+190 /* Protocol not available					220    42     *    99
+191 /* Protocol not supported					221    43   109*  120*
+192 /* Socket type not supported				222    44   110*  121*
+193 /* Operation not supported					223    45   111*  122*
+194 /* Protocol family not supported				224    46   112*  123*
+195 /* Address family not supported by protocol family		225    47   113*  124*
+196 /* Network is down					 	228    50   116*  127*
+197 /* Network is unreachable					229    51   117*  128*
+198 /* Network dropped connection on reset			230    52   118*  129*
+199 /* Software caused connection abort				231    53   119*  130*
+200 /* Connection reset by peer					232    54   120*  131*
+201 /* No buffer space available				233    55   121*  132*
+202 /* Socket is not connected					235    57   123*  134*
+203 /* Can't send after socket shutdown				236    58   124*  143* 
+204 /* Too many references: can't splice			237    59   125*  144*
+205 /* Connection timed out					238    60   126*  145*
+206 /* Connection refused					239    61   127*  146*
+207 /* Remote peer released connection 				240     *     *     *
+208 /* Host is down						241    64   128*  147*
+209 /* Operation already in progress				244    37   103*  149*
+210 /* Operation now in progress				245    36   102*  150*
+211 /* Operation would block					246    35   101*    *
+212 /* Function not implemented 				251    90     *     *
+213 /* invalid exchange						  *     *    50    50
+214 /* invalid request descriptor				  *     *    51    51
+215 /* exchange full						  *     *    52    52
+216 /* no anode							  *     *    53    53
+217 /* invalid request code					  *     *    54    54
+218 /* invalid slot						  *     *    55    55
+219 /* file locking deadlock error				  *     *    56    56
+220 /* bad font file fmt					  *     *    57    57
+221 /* path name is too long					  *     *     *    78
+222 /* value too large to be stored in data type		  *     *    79     *
+223 /* f.d. invalid for this operation 				  *     *    81    81
+224 /* Structure needs cleaning					  *     *     *   135*
+225 /* Not a XENIX named type file				  *     *     *   137*
+226 /* No XENIX semaphores available				  *     *     *   138*
+227 /* Is a named type file					  *     *     *   139*
+228 /* Remote I/O error 					  *     *     *   140*
+229 /* Reserved for future					  *     *     *   141*
+230 /* Error 142 						  *     *     *   142*
+231 /* AIO operation canceled					  *     *     *   158*
+232 /* block not fully transferred				  *     *     *   500
+233 /* canceled 						  *     *     *  1000
+234  ERROR IN FORMAT						900     *     *     *
+235  NEGATIVE UNIT NUMBER SPECIFIED				901     *     *     *
+236  FORMATTED I/O ATTEMPTED ON UNFORMATTED FILE 		902     *     *     *	
+237  UNFORMATTED I/O ATTEMPTED ON FORMATTED FILE		903     *     *     *
+238  DIRECT I/O ATTEMPTED ON SEQUENTIAL FILE 			904     *     *     *
+239  ERROR IN LIST-DIRECTED READ OF LOGICAL DATA		905     *     *     *
+240  ILLEGAL SEQUENTIAL I/O TO TERMINAL ATTEMPTED		906     *     *     *
+241  ERROR IN LIST-DIRECTED I/O READ OF CHARACTER DATA		907     *     *     *
+242  COULD NOT OPEN FILE SPECIFIED				908     *     *     *
+243  SEQUENTIAL I/O ATTEMPTED ON DIRECT ACCESS FILE		909     *     *     *
+244  ACCESS PAST END OF RECORD ATTEMPTED			910     *     *     *
+245  CALL TO FUNCTION PERFORMING I/O IN I/O LIST		911     *     *     *
+246  ERROR IN LIST I/O READ OF COMPLEX DATA			912     *     *     *
+247  OUT OF FREE SPACE						913     *     *     *
+248  ACCESS OF UNCONNECTED UNIT ATTEMPTED			914     *     *     *
+249  READ UNEXPECTED CHARACTER					915     *     *     *
+250  ERROR IN READ OF LOGICAL DATA				916     *     *     *
+251  OPEN WITH NAMED SCRATCH FILE ATTEMPTED			917     *     *     *
+252  OPEN OF EXISTING FILE WITH STATUS= 'NEW' ATTEMPTED		918     *     *     *
+253  OPEN OF FILE CONNECTED TO DIFFERENT UNIT ATTEMPTED		920     *     *     *
+254  UNFORMATTED OPEN WITH BLANK SPECIFIER ATTEMPTED		921     *     *     *
+255  READ ON ILLEGAL RECORD ATTEMPTED				922     *     *     *
+256  OPEN WITH ILLEGAL FORM SPECIFIER ATTEMPTED			923     *     *     *
+257  CLOSE OF SCRATCH FILE WITH STATUS= 'KEEP' ATTEMPTED	924     *     *     *
+258  OPEN WITH ILLEGAL STATUS SPECIFIER ATTEMPTED		925     *     *     *
+259  CLOSE WITH ILLEGAL STATUS SPECIFIER ATTEMPTED		926     *     *     *
+260  OPEN WITH ILLEGAL ACCESS SPECIFIER ATTEMPTED		927     *     *     *
+261  OPEN OF SEQUENTIAL FILE WITH RECL SPECIFIER ATTEMPTED	928     *     *     *
+262  OPEN OF DIRECT FILE WITH NO RECL SPECIFIER ATTEMPTED	929     *     *     *
+263  OPEN WITH RECL LESS THAN 1 ATTEMPTED			930     *     *     *
+264  OPEN WITH ILLEGAL BLANK SPECIFIER ATTEMPTED		931     *     *     *
+265  TOO MANY UNITS OPEN AT ONCE				932     *     *     *
+266  SEQUENTIAL END-OF-FILE WITH NO "END=" SPECIFIER		933     *     *     *
+267  OPEN OF READ ONLY FILE WITH ACCESS='APPEND' ATTEMPTED 	934     *     *     *
+268  INTERNAL LIBRARY ERROR					935     *     *     *
+269  APPEND I/O ATTEMPTED ON SEQUENTIAL ONLY FILE/DEVICE	936     *     *     *
+270  ILLEGAL RECORD NUMBER SPECIFIED				937     *     *     *
+271  LIST-DIRECTED I/O OF UNKNOWN TYPE				938     *     *     *
+272  OPEN OF INACCESSIBLE FILE ATTEMPTED			939     *     *     *
+273  ERROR IN ATTEMPTED OPEN					940     *     *     *
+274  ERROR IN SEQUENTIAL UNFORMATTED READ			941     *     *     *
+275  ERROR IN LIST-DIRECTED READ - CHARACTER DATA READ FOR	942     *     *     *
+!     ASSIGNMENT TO NON-CHARACTER VARIABLE
+276  ERROR IN DIRECT FORMATTED READ				943     *     *     *
+277  RECORD TOO LONG IN DIRECT UNFORMATTED I/O			944     *     *     *
+278  ERROR IN FORMATTED I/O					945     *     *     *
+279  ERROR IN LIST-DIRECTED I/O					946     *     *     *
+280  FORMAT DESCRIPTOR NOT COMPATIBLE FOR ITEM TYPE		947     *     *     *
+281  WRITE TO WRITE-PROTECTED FILE ATTEMPTED			948     *     *     *
+282  READ FROM READ-PROTECTED FILE ATTEMPTED			949     *     *     *
+283  SUBSCRIPT, SUBSTRING, OR PARAMETER OUT OF BOUNDS AT 	950     *     *     *
+!     STATEMENT NUMBER !
+284  LABEL OUT OF BOUNDS IN ASSIGNED GOTO AT STATEMENT 		951     *     *     *
+!     NUMBER !
+285  ZERO INCREMENT VALUE IN DO LOOP AT STATEMENT NUMBER !	952     *     *     *
+286  NO REPEATABLE EDIT DESCRIPTOR IN FORMAT STRING		953     *     *     *
+287  ILLEGAL USE OF EMPTY FORMAT				954     *     *     *
+288  OPEN WITH NO FILE= AND STATUS = 'OLD' OR 'NEW'		955     *     *     *
+289  FILE SYSTEM ERROR						956     *     *     *
+290  FORMAT DESCRIPTOR INCOMPATIBLE WITH NUMERIC ITEM IN 	957     *     *     *
+!     I/O LIST
+291  FORMAT DESCRIPTOR INCOMPATIBLE WITH CHARACTER ITEM IN 	958     *     *     *
+!     I/O LIST
+292  FORMAT DESCRIPTOR INCOMPATIBLE WITH LOGICAL ITEM IN 	959     *     *     *
+!     I/O LIST
+293  FORMAT ERROR : MISSING STARTING LEFT PARENTHESIS		960     *     *     *
+294  FORMAT ERROR : INVALID FORMAT DESCRIPTOR			961     *     *     *
+295  FORMAT ERROR : UNEXPECTED CHARACTER FOUND FOLLOWING A	962     *     *     *
+!     NUMBER IN THE FORMAT STRING
+296  FORMAT ERROR : TRYING TO SCALE UNSCALABLE FORMAT SPECIFIER	963     *     *     *
+297  FORMAT ERROR : PARENTHESES TOO DEEPLY NESTED.		964     *     *     *
+298  FORMAT ERROR : INVALID TAB SPECIFIER.			965     *     *     *
+299  FORMAT ERROR : INVALID BLANK SPECIFIER			966     *     *     *
+300  FORMAT ERROR : SPECIFIER EXPECTED BUT END OF FORMAT FOUND	967     *     *     *
+301  FORMAT ERROR : MISSING SEPARATOR				968     *     *     *
+302  FORMAT ERROR : DIGIT EXPECTED				969     *     *     *
+303  FORMAT ERROR : PERIOD EXPECTED IN FLOATING POINT 		970     *     *     *
+!     FORMAT DESCRIPTOR
+304  FORMAT ERROR : UNBALANCED PARENTHESES			971     *     *     *
+305  FORMAT ERROR : INVALID STRING IN FORMAT			972     *     *     *
+306  RECORD LENGTH DIFFERENT IN SUBSEQUENT OPEN			973     *     *     *
+307  RECORD ACCESSED PAST END OF INTERNAL FILE (VARIABLE)	974     *     *     *
+308  ILLEGAL NEW FILE NUMBER REQUESTED IN FSET FUNCTION		975     *     *     *
+309  UNEXPECTED CHARACTER IN "NAMELIST" READ			976     *     *     *
+310  ILLEGAL SUBSCRIPT OR SUBSTRING IN "NAMELIST" READ		977     *     *     *
+311  TOO MANY VALUES IN "NAMELIST" READ				978     *     *     *
+312  VARIABLE NOT IN "NAMELIST" GROUP				979     *     *     *
+313  "NAMELIST" I/O ATTEMPTED ON UNFORMATTED FILE		980     *     *     *
+314  VALUE OUT OF RANGE IN NUMERIC READ				981     *     *     *
+315  INVALID SIZE FOR SHARED MEMORY SEGMENT			982     *     *     *
+316  SHARED MEMORY SEGMENT ACCESS PERMISSION DENIED		983     *     *     *
+317  SHARED MEMORY IDENTIFIER LIMIT EXCEEDED			984     *     *     *
+318  NOT ENOUGH SHARED MEMORY SPACE TO ALLOCATE 		985     *     *     *
+!     SHARED MEMORY SEGMENT
+319  SHARED MEMORY SEGMENT LOCKING PERMISSION DENIED		986     *     *     *
+320  SHARED MEMORY SEGMENT LIMIT EXCEEDED			987     *     *     *
+321  PROGRAM HAS ISAM FILE USAGE, SHOULD BE LINKED 		988     *     *     *
+!     WITH ISAM LIBRARY USING -lisam OPTION
+322  ILLEGAL FORTRAN NLS CALL:  FORTRAN SOURCE CODE		989     *     *     *
+!     MUST BE COMPILED WITH -Y
+323  OPEN WITH ILLEGAL RECORDTYPE SPECIFIER			990     *     *     *

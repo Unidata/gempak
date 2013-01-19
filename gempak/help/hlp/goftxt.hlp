@@ -1,0 +1,48 @@
+
+GOFTXT
+
+    GOFTXT is an Offshore Text Formatter (OTF) which creates five-day 
+    offshore forecast text from gridded data.  Currently only wind and 
+    significant wave heights are considered in the text.  The program is 
+    controlled by user inputs in the following format,
+
+	GOFTXT 
+	alias for a grid file[|cycle]
+	grid times
+	alias for a boundary info file
+
+    The alias name for the grid file must be defined in datatype.tbl. To
+    run the program properly, grid times have to be in specific time fields
+    from different cycles as follows:
+
+		Pacific Zones			Atlantic Zones
+        ---------------------------------------------------------------------
+	00Z	f15-f57-6;f63-f135-12		f12-f54-6;f60-f132-12
+	06Z	f15;f18;f21-f57-6;f69-f129-12	f12;f15;f18-f54-6;f66-f126-12
+	12Z	f15-f75-6;f87-f147-12		f12-f72-6;f84-f144-12
+	18Z	f15;f18;f21-f69-6;f81-f141-12 	f12;f15;f18-f66-6;f78-f138-12
+
+    The alias name for the boundary info file is defined in clo.tbl.  The
+    name of the output file is composed of the last three letters of the info
+    file appended with a "_" and a numerical value, i.e., pac_1, pac_2, etc..
+    The numbers correspond to the order the offshore zones in g2t_zone.tbl. 
+    For example, pac_1 is the output for the Washington zone and pac_2 is the
+    output for the Oregon zone.
+
+    A parameter table g2t_parm.tbl includes various parameters which can be
+    specified by users.  They may
+
+	(1) Select an index for the center (1 for OPC and 2 for TPC);
+
+	(2) Define a threshold for light winds.  Default is 10 KTS or less;
+
+	(3) Define output wind direction with 1 for clockwise direction and
+	    2 from histogram analysis;
+
+	(4) Define maximum allowable wind and wave ranges;
+
+	(5) Define simplification thresholds between RANGE and EXCEPT 
+	    portions; and
+
+	(6) Define allowable wind and wave gaps which are the difference 
+	    between the RANGE maximum and EXCEPT minimum.

@@ -1,0 +1,11 @@
+! WA7.BULL
+!
+! Location information for the following product:
+! Airmet_(Juneau,_AK).
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+WAAK01 PAJN     JUNEAU_INTL_AIRPORT              AK US  5836 -13458     0

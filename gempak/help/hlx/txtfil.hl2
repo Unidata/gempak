@@ -1,0 +1,25 @@
+     TXTFIL
+
+     TXTFIL specifies an ASCII text file to be read and displayed to the
+     the current device driver.
+     
+     If the input file is LOGO, the NOAA logo is plotted.  To specify
+     plotting of the NOAA LOGO enter:
+
+     		LOGO | size | mode
+
+     or
+
+     		NOAA | size | mode
+
+     The NWS logo can be plotted by entering:
+
+     		NWS | size | mode
+		
+     The size is a real number that specifies the size of the logo.  The
+     default size is 1.
+
+     The mode is a character that specifies the color mode of the logo.  
+     The options are 'M' for monochrome or 'C' for full color.  The default 
+     is set for 'M'.
+

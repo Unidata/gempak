@@ -1,0 +1,32 @@
+     TAXIS
+
+     TAXIS contains the range, increment and location for labels on a 
+     time axis input as:
+ 
+		start-stop-inc;lb;gl;tm
+ 
+     START and STOP are GEMPAK date/times which may be abbreviated.  If 
+     the values are omitted, the data range will be used.  The time axis 
+     will be reversed if the TAXIS specification begins with R or if the 
+     times are input with a later time first.
+
+     INC is the time increment in hours and minutes.  The form for INC 
+     is HHHMM.  If one or two digits are entered, hours will be assumed.  
+     If INC is omitted, a default appropriate for the range will be used.  
+     If the time range exceeds 720 days, the increment is ignored, and an 
+     appropriate labelling interval is selected automatically.
+
+     LB, GL, and TM are the frequencies for labels, grid lines, and tick 
+     marks.
+ 
+     Examples:
+ 
+	5/12-6/18-6	        Draw the axis from 5/12 to 6/18 with
+		                labels at 6-hour increments.
+
+
+	17/12-20/12-3;2;4;1	Draw the axis from 17/12 to 20/12 with
+		                labels at 6-hour increments, grid lines
+		                at 12-hour increments, and tic marks at
+		                at 3-hour increments.
+ 

@@ -1,0 +1,77 @@
+C************************************************************************
+C* VIPRM.PRM							
+C*								
+C* This include file contains parameters used in the vertical
+C* interpolation software.
+C*
+C* Log:                                                                 *
+C* G. Hull/SAIC      03/08   Remove MXGD PRM                            *
+C*
+C************************************************************************
+C!
+C!	Parameter names.
+C!
+	CHARACTER*4	NTMPC, NTMPF, NTHTA, NPSYM, NHGHT, NPRES
+	CHARACTER*4	NSPFH, NMIXR, NRMIX, NRELH, NDWPT, NDWPC
+	CHARACTER*4	NDWPK, NTMPK
+C!
+	PARAMETER	( NTMPC = 'TMPC' )
+C!						Temperature in deg C
+	PARAMETER	( NTMPF = 'TMPF' )
+C!						Temperature in deg F
+	PARAMETER	( NTHTA = 'THTA' )
+C!						Pot. Temperature in K
+	PARAMETER	( NPSYM = 'PSYM' )
+C!						Mont. Str. Func in mm/ss
+	PARAMETER	( NHGHT = 'HGHT' )	
+C!						Height in m
+	PARAMETER	( NPRES = 'PRES' )
+C!						Press. in hpa
+	PARAMETER	( NSPFH = 'SPFH' )
+C!						Specific humidity
+	PARAMETER	( NMIXR = 'MIXR' )
+C!						Mixing ratio * 1000
+	PARAMETER	( NRMIX = 'RMIX' )
+C!						Mixing ratio
+	PARAMETER	( NRELH = 'RELH' )
+C!						Relative humidity
+	PARAMETER	( NDWPT = 'DWPT' )	
+C!						Dewpt temp in C
+	PARAMETER	( NDWPC = 'DWPC' )
+C!						Dewpt temp in C
+	PARAMETER	( NDWPK = 'DWPK' )
+C!						Dewpt temp in K
+	PARAMETER	( NTMPK = 'TMPK' )
+C!						Temperature in deg K
+C------------------------------------------------------------------------
+C!
+C!	Coordinate names.
+C!
+	CHARACTER*4	NESFC, NNONE, NSGMA, NETA, NZAGL
+C!
+	PARAMETER	( NESFC = 'ESFC' )	
+C!						Earth's surface
+	PARAMETER	( NNONE = 'NONE' )	
+C!						None (surface)
+	PARAMETER	( NSGMA = 'SGMA' )
+C!						Sigma
+	PARAMETER	( NETA  = 'ELVL'  )
+C!						Eta
+	PARAMETER 	( NZAGL = 'ZAGL' )
+C!						Height above grnd lvl
+C------------------------------------------------------------------------
+C!
+C!	Miscellaneous parameters and GEMPAK parameters.
+C!
+C************************************************************************
+	INCLUDE 'GEMPRM.PRM'
+
+	PARAMETER ( MAXLVL = 200 )
+C!						Maximum number of lvls
+	PARAMETER ( MAXPRM = 10 )
+C!						Maximum number of parms
+	PARAMETER ( MXSFVC = 4 )
+C!						Maximum number of extra
+C!						vertical coordinates
+	PARAMETER ( LNAV = LLNNAV, LANL = LLNANL )
+C!						Max nav. & anal. blk sz

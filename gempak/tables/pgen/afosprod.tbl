@@ -1,0 +1,141 @@
+! AFOSPROD.TBL
+!
+! This table contains the information necessary for creating AFOS
+! products. Each product has a PIL, a description, x and y size,
+! a map id, a valid time increment and a geographic scale factor.
+! 
+!!
+! Log:
+! S. Jacobs/NCEP	 7/97	Copied from product.tbl
+! S. Jacobs/NCEP	 8/97	Added Tropical and Climate products
+! S. Jacobs/NCEP	10/97	Added HPC and AWC products
+! S. Jacobs/NCEP	 3/98	Added QPF products
+! S. Jacobs/NCEP	 3/98	Changed times for CPC products
+! S. Jacobs/NCEP	 4/98	Changed map background for TPC products
+! S. Jacobs/NCEP	 4/98	Added CPC Long Lead products L[TP][A-M]
+! S. Jacobs/NCEP	 7/98	Added TSA product for TPC
+! J. Carr/HPC		11/98	Added 90F for the HPC
+! J. Carr/HPC		12/98	Added QPF Products for the HPC
+! S. Jacobs/NCEP	 3/99	Added 95E for the HPC
+! J. Carr/HPC            3/99   Added 93P 94P 95P for the HPC
+! J. Carr/HPC            3/99   Added 96P and 97P for the HPC
+! S. Jacobs/NCEP	 5/99	Fixed "Times" for 93P,94P,95P,96P,97P
+! S. Jacobs/NCEP	 5/99	Added 95A and 95B for the HPC
+! S. Jacobs/NCEP	 8/99	Added DMA, THP, THS, THT for CPC
+! J. Carr/HPC           11/99   Added 99Q and 98S
+! J. Carr/HPC           01/00	Added 90I to the table.
+! J. Carr/HPC           01/00	Added 9AI to table.
+!------------------------------------------------------------------------
+!
+!PIL Description    	             Xsize Ysize Map   Time Geoscl
+!(3)(32)                               (5)   (5) (3)    (6)    (6)
+!
+! Testing
+T01 Test Product 01                   2048  1536   2      0   2000
+T02 Test Product 02                   2048  1536   2      0   2000
+T03 Test Product 03                   2048  1536   2      0   2000
+T04 Test Product 04                   2048  1536   2      0   2000
+T05 Test Product 05                   2048  1536   2      0   2000
+T06 Test Product 06                   2048  1536   2      0   2000
+T07 Test Product 07                   2048  1536   2      0   2000
+T08 Test Product 08                   2048  1536   2      0   2000
+T09 Test Product 09                   2048  1536   2      0   2000
+T11 Test Product 01                   2048  1536   1      0   2000
+!
+! OPC
+RA1 MAR ANLYS ATL                     2048  1536   2      0   2000
+RP1 MAR ANLYS PAC                     2048  1536   2      0   2000
+RA2 24H WNDWAV FCST ATL               2048  1536   2     24   2000
+RP2 24H WNDWAV FCST PAC               2048  1536   2     24   2000
+!
+! TPC
+LWA LTROP MN CRLCN                    2048  1536  90      0   2000
+LWB DP LYR MN CRLCN                   2048  1536  90      0   2000
+LWD UTROP MN CRLCN                    2048  1536  90      0   2000
+LWL DPLYR MN CRLCN                    2048  1536  90      0   2000
+LWM SHEAR UPR-LWR                     2048  1536  90      0   2000
+LWS SHEAR UPR-LWR                     2048  1536  90      0   2000
+TSA SFC PRES ANALYSIS                 2048  1536  90      0   2000
+!
+! CPC
+9ME 30D PCPN ANM                      2048  1536   2    720   2000
+9MT 30D TEMP ANM                      2048  1536   2    720   2000
+99P 3MO AVG PCPN ANM                  2048  1536   2      0   2000
+99T 3MO AVG TEMP ANM                  2048  1536   2      0   2000
+96C 6-10D 500 MB ANM                  2048  1536   2    192   2000
+96E 6-10D TOTAL PCPN                  2048  1536   2    192   2000
+96H 6-10D 500 MB MN HT                2048  1536   2    192   2000
+96T 6-10D TEMP ANM                    2048  1536   2    192   2000
+LTA 0.5 MTH TEMP                      2048  1536   2      0   2000
+LPA 0.5 MTH PRECIP                    2048  1536   2      0   2000
+LTB 1.5 MTH TEMP                      2048  1536   2      0   2000
+LPB 1.5 MTH PRECIP                    2048  1536   2      0   2000
+LTC 2.5 MTH TEMP                      2048  1536   2      0   2000
+LPC 2.5 MTH PRECIP                    2048  1536   2      0   2000
+LTD 3.5 MTH TEMP                      2048  1536   2      0   2000
+LPD 3.5 MTH PRECIP                    2048  1536   2      0   2000
+LTE 4.5 MTH TEMP                      2048  1536   2      0   2000
+LPE 4.5 MTH PRECIP                    2048  1536   2      0   2000
+LTF 5.5 MTH TEMP                      2048  1536   2      0   2000
+LPF 5.5 MTH PRECIP                    2048  1536   2      0   2000
+LTG 6.5 MTH TEMP                      2048  1536   2      0   2000
+LPG 6.5 MTH PRECIP                    2048  1536   2      0   2000
+LTH 7.5 MTH TEMP                      2048  1536   2      0   2000
+LPH 7.5 MTH PRECIP                    2048  1536   2      0   2000
+LTI 8.5 MTH TEMP                      2048  1536   2      0   2000
+LPI 8.5 MTH PRECIP                    2048  1536   2      0   2000
+LTJ 9.5 MTH TEMP                      2048  1536   2      0   2000
+LPJ 9.5 MTH PRECIP                    2048  1536   2      0   2000
+LTK 10.5 MTH TEMP                     2048  1536   2      0   2000
+LPK 10.5 MTH PRECIP                   2048  1536   2      0   2000
+LTL 11.5 MTH TEMP                     2048  1536   2      0   2000
+LPL 11.5 MTH PRECIP                   2048  1536   2      0   2000
+LTM 12.5 MTH TEMP                     2048  1536   2      0   2000
+LPM 12.5 MTH PRECIP                   2048  1536   2      0   2000
+DMA U.S. DROUGHT MONITOR ANL          2048  1536   2      0   2000
+THP PRECIP THREATS ASSESS             2048  1536   2      0   2000
+THS SOIL/WILDFIRE THREATS ASSESS      2048  1536   2      0   2000
+THT TEMP/WIND THREATS ASSESS          2048  1536   2      0   2000
+!
+! HPC
+92F 12H FNT AND MSL PRS               2048  1536   2     12   2000
+94F 24H FNT AND MSL PRS               2048  1536   2     24   2000
+96F 36H FNT AND MSL PRS               2048  1536   2     36   2000
+98F 48H FNT AND MSL PRS               2048  1536   2     48   2000
+L2P 12H INSTAN PCPN                   2048  1536   2     12   2000
+L4P 24H INSTAN PCPN                   2048  1536   2     24   2000
+L6P 36H INSTAN PCPN                   2048  1536   2     36   2000
+L8P 48H INSTAN PCPN                   2048  1536   2     48   2000
+91E 6H QPF UPDATE                     2048  1536   2      6   2000
+92E 6H QPF PD1                        2048  1536   2      6   2000
+93E 6H QPF PD2                        2048  1536   2      6   2000
+9EE 6H QPF PD3                        2048  1536   2      6   2000
+9FE 6H QPF PD4                        2048  1536   2      6   2000
+94E EXCSV RAIN OTLK                   2048  1536   2     21   2000
+93S 12H HVY SNOW                      2048  1536   2     12   2000
+94S HVY SNOW OTLK                     2048  1536   2     12   2000
+98S HVY SNOW OTLK DAY 2               2048  1536   2     48   2000
+94Q DAY 1 QPF                         2048  1536   2     24   2000
+95A 5DAY MAX TEMP ANM                 2048  1536   2     72   2000
+95B 5DAY MIN TEMP ANM                 2048  1536   2     72   2000
+95E 5DAY TOTAL PRECIP                 2048  1536   2     72   2000
+98Q DAY 2 QPF                         2048  1536   2     48   2000
+99Q DAY 3 QPF                         2048  1536   2     72   2000
+9JH 84H FNT AND MSL PRS               2048  1536   1     84   2000
+9KH 108H FNT AND MSL PRS              2048  1536   1    108   2000
+9LH 132H FNT AND MSL PRS              2048  1536   1    132   2000
+90I NORTH AMERICA SURFACE ISOBARS     2048  1536   1     00   2000
+9AI N. HEMISPHERE SURFACE ISOBARS     2048  1536   1     00   2000
+90F SURFACE ANALYSIS                  2048  1536   1     00   2000
+93P DAY 3 TEMPS AND POPS              2048  1536   1     72   2000
+94P DAY 4 TEMPS AND POPS              2048  1536   1     96   2000
+95P DAY 5 TEMPS AND POPS              2048  1536   1    120   2000
+96P DAY 6 TEMPS AND POPS              2048  1536   1    144   2000
+97P DAY 7 TEMPS AND POPS              2048  1536   1    168   2000
+!
+!
+! AWC
+L2F Low level 12 hr frzing and turb   2048  1536   2     12   2000
+L4F Low level 24 hr frzing and turb   2048  1536   2     24   2000
+L2W Low level 12 hr IRF and MVFR      2048  1536   2     12   2000
+L4W Low level 24 hr IRF and MVFR      2048  1536   2     24   2000

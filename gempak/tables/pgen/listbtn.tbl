@@ -1,0 +1,21 @@
+! LISTBTN.TBL.
+!
+! This table provides the icons located in the list button palette
+!
+! Log:
+! J. Wu/SAIC		11/02	created
+! A. Hardy/NCEP		 3/04	added list_mzcnty
+!------------------------------------------------------------------------
+BEGIN
+!
+! Row 1
+!
+list_county
+list_zone
+list_wfo
+!
+! Row 2
+!
+list_state
+list_mzcnty
+END

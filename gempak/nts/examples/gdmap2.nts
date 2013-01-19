@@ -1,0 +1,23 @@
+GDATTIM f18                                                                     
+GLEVEL  850                                                                     
+GVCORD  pres                                                                    
+GFUNC   sub(tmpc,dwpc)                                                          
+GDFILE  $GEMPAK/data/HRCBOB.GRD                                                     
+GAREA   ne                                                                      
+SATFIL                                                                          
+RADFIL                                                                          
+SKIP    0                                                                       
+POSN    0                                                                       
+COLORS  7                                                                       
+MARKER  0                                                                       
+MAP     1/7                                                                     
+LATLON  2/10/1/1/5;5                                                            
+PANEL   0                                                                       
+CINT    /10                                                                     
+TITLE   1/-2/(MAGENTA >10; GREEN <10)                                           
+SCALE   0                                                                       
+DEVICE  xw                                                                      
+PROJ    nps                                                                     
+CLEAR   no                                                                      
+TEXT    1                                                                       
+GRDLBL  17                                                                      

@@ -1,0 +1,25 @@
+! FONTSZ.TBL
+!
+! This table contains the size values for the named font sizes.
+!
+! The values for TINY, SMALL, MEDIUM, LARGE, HUGE, and GIANT should not
+! be changed.  These sizes correspond to hardware text sizes, which
+! are expressed in point sizes.  The values for these names match
+! point sizes 10, 12, 14, 18, 24 and 34, respectively.  Other sizes may
+! be added to the table for use with software text.  The hardware
+! text will be rounded to the nearest point size for non-standard
+! sizes.
+!
+!!
+! Log:
+! S. Jacobs/NCEP	 7/98
+! C. Lin/EAI	 	 8/98	add X window hardware size
+! S. Jacobs/NCEP	 4/00	Added GIANT
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!Name(A12)  X  Val(F7.3) 10X  X_fontsz(I2)
+TINY           0.714          10
+SMALL          0.857          12
+MEDIUM         1.000          14
+LARGE          1.286          18
+HUGE           1.714          24
+GIANT          2.429          34

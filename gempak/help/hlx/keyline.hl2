@@ -1,0 +1,18 @@
+     KEYLINE
+
+     KEYLINE indicates which contour lines to process based on VGTYPE
+     and SUBTYP.
+
+	KEYLINE = 0	- process all line types
+	KEYLINE = m/n	- process all lines with VGTYPE m and SUBTYP n
+			  where
+			    m is the VGF Object type and can be
+				 LINE or SPLN (special line type).
+			    n is the GEMPAK code number for a specific
+				 object type within VGTYPE.  See
+				 $GEMTBL/pgen/setting.tbl for code numbers.
+     For example:
+
+		KEYLINE=SPLN/4    will process only pointed arrowed lines.
+		KEYLINE=SPLN/3    will process only scalloped lines.
+

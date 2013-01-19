@@ -1,0 +1,7 @@
+$FC $FFLAGS $LDFLAGS -o $OS_BIN/oabsnd oabsnd.f \
+	$OS_LIB/oabsnd.a \
+	$OS_LIB/ginitp_alt.o $OS_LIB/gendp_alt.o \
+	$GEMLIB $CGEMLIB $GPLT $DEVICE \
+	$GEMLIB $CGEMLIB $GPLT $DEVICE \
+	$OS_LIB/gn.a -lm
+$RM *.o

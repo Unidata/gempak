@@ -1,0 +1,66 @@
+
+
+		CREATING BOUNDS FILES FROM MAP FILES
+
+
+1) Compile a version of GPLT with $GEMPAK/source/gplt/utility/gdrmap.f set to 
+	allow map line drawing to the VG driver.
+
+2) Execute GPMAP using this version of GPLT. Assign $MAPFIL the desired map 
+	file name. (e.g., locowo.gsf will draw a coarse map which will be 
+	easily editable in NMAP). Assign MAP=1//3 for thick map lines, again 
+	for easy editing. Run to create a VG file containing only map lines.
+
+	Example:
+
+	$MAPFIL = locowo.gsf
+	DEVICE	= vg | locowo.vgf
+
+3) Using a separate development account, set the MAXPTS parameter in the file 
+	vgstruct.h to be LLMXPT. Compile and link everything.
+
+4) Run NMAP or NMAP2 in the development account. Enter product generation and 
+	load in the VG file(s) created in step 2. It is usually helpful to 
+	turn off the map and latlon backgrounds. Edit the VG file with the 
+	goal of having only closed lines remain. (These lines should also not 
+	include unwanted areas.) Use the DELETE tool to remove lines and 
+	the CONNECT tool to connect pieces of lines together to form 
+	closed areas. Make sure newly connected areas (lines) have the 
+	"CLOSED" attribute. Add a piece of text anywhere containing the name 
+	of the bounds area, such as "North America", followed by a `|', 
+	followed by a string containing meta information, such as "<ID>NA". 
+	Finally, go to the GROUP function, select everything via mouse click a/o
+	click-and-drag and group the desired elements together using "LABEL" 
+	as the group type. Do this for as many groups as desired. Save the 
+	VG file.
+
+	Example:
+
+	SAVE AS: locowobnds.vgf
+
+5) Run the program VGFTOBND (which must also be compiled in the development 
+	account) using the newly-created VG file as the input. This program 
+	will convert a VG file containing lines (grouped with text as 
+	described above) into a bounds file. Lines that are ungrouped or not 
+	closed will be ignored. Text that is ungrouped will be ignored. The 
+	output should be directed to a bounds file.
+
+	Example:
+
+	vgftobnd locowobnds.vgf > locowobnds.tbl
+
+6) Run the program CREATEBINFO to generate the related bounds information file. 
+	This does not have to be done in the development account.
+
+	Example:
+
+	createbinfo locowobnds.tbl > locowobnds.tbl.info
+
+7) Deliver the resulting .vgf, .tbl and .info files to the appropriate areas:
+
+	Example:
+
+	locowobnds.vgf		-> $GEMPAK/data/vgf
+	locowobnds.tbl		-> $GEMPAK/tables/bounds
+	locowobnds.tbl.info	-> $GEMPAK/tables/bounds
+

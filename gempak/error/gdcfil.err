@@ -1,0 +1,13 @@
+!	GDCFIL error file
+!
+ +1	! WARNING: This grid is too large for GEMPAK programs.
+ -1	! Fatal error initializing TAE.
+ -2	! Fatal error reading TAE parameters.
+ -3	! Fatal error initializing GEMPLT.
+ -4	! Navigation information is invalid.
+ -5	! Grid area !AS is invalid.
+ -6	! Grid size is invalid.
+ -7	! The grid file name may not be blank.
+ -8	! Navigation table cannot be read.
+ -9	! Grid name !AS cannot be found in grid table.
+-10	! Extend region is invalid.  Try 2;2;2;2.

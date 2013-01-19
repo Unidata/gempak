@@ -1,0 +1,89 @@
+                           World Map Database
+
+
+This map file contains a subset of the CIA map database.  Geographic
+names have been attached to each record of the database.  The database
+file is cia.nam. 
+
+The file contains a sequence of numbered geographic records.  Each
+geographic record has the following physical records:
+
+    1:  NPTS = Number of latitude/longitude pairs (using the absolute value)
+        NREC = Geographic record number
+        NAME = Geographic name ( blank if this is a continuation )
+               ( I3, 2X, I5, 5X, A )
+
+    2-N LAT1, LON1, LAT2, LON2, ..., LATNPTS, LONNPTS
+               ( 8F10.5 )
+
+
+If NPTS is negative, this record is a continuation of the previous record
+and a line must be drawn connecting the last point of the previous record
+with the first point of this record.  If NPTS is positive, the first point
+in the record is not connected to the previous record.  The maximum number 
+of points in a record is 48.
+
+The geographic records in the file are ordered in the following blocks:
+
+       1 - 1686    Continental outlines
+    1687 - 2726    Islands
+    2727 - 3029    Lakes
+    3030 - 3160    State borders
+    3161 - 3828    National borders
+    3829 - 4531    Rivers
+    4532 - 4615    Tectonic plates
+    4616 - 4619    Miscellaneous
+
+A simple Fortran routine to read the dataset follows:
+       REAL        rlat (48), rlon (48)
+       CHARACTER   name*60
+
+       OPEN  ( UNIT = 2, FILE = 'cia.nam' )
+
+       iostat = 0
+
+       DO WHILE  ( iostat .eq. 0 )
+
+           READ   ( 2, 1100, IOSTAT = iostat ) npts, nrec, name
+ 1100      FORMAT ( I3, 2X, I5, 5X, A )
+
+           IF  ( iostat .eq. 0 )  THEN
+               ipts = ABS ( npts )
+               READ   ( 2, 1200 ) ( rlat (i), rlon (i), i = 1, ipts )
+ 1200          FORMAT ( 8F10.5 )
+           END IF
+       END DO
+
+       END
+
+
+In addition to the map database file, there is a file named rec.nam which
+lists the starting and ending records and names for each map element.  The
+records corresponding to the blocks in the file are written before the
+records in the file and can be identified by a line of asterisks written
+before and after.
+
+In addition to the addition of the geographic names, the following changes
+have been made:
+
+Joseph Fulson-Woytek:
+    The database did not contain all the boundaries for the area around 
+    Israel and Saudi Arabia.  I added boundaries but they are not totally 
+    accurate. 
+
+    The East/West Germany boundary was eliminated to celebrate the 
+    reunification.
+
+Mary desJardins/ Keith Brill:
+    The Canadian/US boundary through the Great Lakes was moved to the
+    new Miscellaneous block and the Great Lakes were added to the National
+    boundaries block (but not deleted from the Lakes).
+
+    Some minor changes to the country names in the Mideast were made.  Also,
+    some blocks were broken into two blocks.  The West Bank is identified
+    as a separate region.
+
+    Names were added to the rivers and tectonic plate blocks.
+
+    Narrow lakes in the US were added to the rivers block in order to make
+    the rivers continuous.

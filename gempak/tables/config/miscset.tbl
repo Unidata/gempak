@@ -1,0 +1,1701 @@
+! MISCSET.TBL
+!
+! This table contains the settings for the attributes needed when 
+! plotting MISC and VGF data types.
+!
+! The format of the table is as follows: A line with the word ALIAS
+! followed by a data type alias starts a section of information.
+! The TYPEs are lines of information that specify the name of the 
+! data and an on_off flag, its color number and, possibly, an
+! associated value.
+!
+! The line attributes, if needed, are specified on a data line
+! starting with LINE. The format of the information is:
+!	size / width
+!
+! Two symbols are allowed and their attributes are specified on a data
+! line starting with SYM1 and SYM2. The format of the information is:
+!	number / size / width
+!
+! The arrow attributes are specified on the data line starting with
+! ARRW. The type of wind vector to plot is specified in type.  The arrow
+! attribute type also determines which of three buttons in the user
+! interface will pop up.  The three buttons have the labels:  (a)  "Barb" 
+! --only wind barbs can be plotted and no head size scale will be
+! displayed,  (b)  "Arrw"--only directional arrows can be plotted, and 
+! (c)  "Arrw/Barb"--the type of wind vectors (directional arrow, regular
+! arrow, or wind barb) is selectable.  If type is 1, then the user
+! interface button will be labeled "Arrw".  If type is 2, then the
+! button will be labeled "Barb".  If type is 3, 4, or 5, then the button
+! will be labeled "Arrw/Barb", with the initial selection of type of wind
+! vector being directional arrow, regular arrow, and wind barb respectively.  
+! If type is missing or 0, then if the arrow head size is greater than 0,
+! then type is set to 1 (directional arrows), otherwise it is set to 2
+! (barbs).  All other values of type are considered invalid and will be set
+! to 5 (selectable wind vector type with wind barb selected initially.) 
+! The format of the information is:
+!	size / head_size / width / type
+!
+! The FLAGs are on(1) / off(0) values.
+!
+! Special notes:
+!	VGF	Only the color and the fill flag are used. If the
+!		color is 0, the objects are plotted in their original
+!		colors. Any other value forces all objects to use that
+!		color.
+!
+!	WTCH	Only the line attributes are needed. For the Status
+!		line, the line size refers to the size of the arrow head.
+!
+!	WARN	Only the symbol attributes are needed. The symbol
+!		numbers refer to the set of "Markers". Only the
+!		5 filled shapes are used. The valid values for the
+!		symbol code are 17-21. If the marker number is invalid,
+!		then marker 20 is used. The corresponding non-filled
+!		symbols are used if the WARN is a test. County outlines 
+!		may be plotted in place of symbols if the outline flag
+!	        is on.  Warning polygon may be plotted if the poly
+!		flag is on.
+!
+!	HRCN	Only the symbol attributes are needed. The symbol
+!		numbers refer to the set of "Special symbols".
+!		The type of wind vector in ARRW should be set to 1
+!		since a directional arrow will always be used.
+!
+!	ISIG	The symbol numbers are ignored. All other symbol
+!		attributes are valid.
+!
+!	LTNG	The symbol numbers following Time 1 are used to set the
+!		markers for positive and negative flashes. The symbol 
+!		numbers for the other times are ignored. The value
+!		following the "/" on each time line is the number of
+!		minutes before the given time.
+!
+!	ATCF	Both the line and symbol attributes are needed.  The
+!		symbol numbers refer to the set of "Markers".  The type
+!		is a two character preface, which is NOT used, followed by
+!		the model/technique name.  NOTE:  if the name is less than
+!		four characters pad the front with blanks; e.g. '99 NAM'.
+!		IMPORTANT:  there is a limit of 25 model names.
+!
+!	AIRM	The symbol numbers are ignored. All other symbol
+!		attributes are valid.
+!
+!	GAIRM	The symbol numbers are ignored. All other symbol
+!		attributes are valid.
+!
+!	NCON	The symbol numbers are ignored. All other symbol
+!		attributes are valid.
+!
+!	CSIG	The line attributes are needed. The symbol attributes 
+!		are ignored. 
+!
+!	SVRL	Only the symbol attributes are needed. The symbol
+!		numbers refer to the set of "Markers". Only the
+!		5 filled shapes are used. The valid values for the
+!		symbol code are 17-21. If the marker number is invalid,
+!		then marker 18 is used. The corresponding non-filled
+!		symbols are used if the SVRL is a test. County outlines
+!               may be plotted in place of symbols if the outline flag 
+!               is on.
+!
+!       WSTM    The symbol numbers refer to the set of "Markers". Only
+!               the 5 filled shapes are used. The valid values for the
+!               symbol code are 17-21. If the marker number is invalid,
+!               then marker 20 is used. The corresponding non-filled
+!               symbols are used if the WSTM is a test.  Zone outlines
+!               may be plotted in place of symbols if the outline flag 
+!               is on.
+!
+!	TCMG	Only the color is needed.  (TCMG is valid for GPMAP
+!		only.  It is not a valid NMAP miscellaneous data type.)
+!
+!	WCP	Only the line attributes are needed.
+!
+!       ENS_CYC Both the line and symbol attributes are needed.  The
+!               symbol numbers refer to the set of "Markers".  The type
+!               is the model name.
+!
+!!
+! Log:
+! S. Jacobs/NCEP	11/99	Created
+! S. Jacobs/NCEP	12/99	Added LTNG; Reformatted
+! S. Jacobs/NCEP	 2/00	Added flags for LTNG
+! S. Jacobs/NCEP	 3/00	Modified ARRW and LINE; Added TYPE on/off
+! S. Jacobs/NCEP	 3/00	Modified defaults for WARN and ISIG
+! S. Jacobs/NCEP	 3/00	Added Pos and Neg flags for LTNG
+! A. Hardy/GSC		 5/00	Turned watch number on;watch time off
+! D. Kidwell/NCEP	 5/00	Added VA and MW for ISIG
+! D. Kidwell/NCEP	 6/00	Added ATCF
+! A. Hardy/GSC		 6/00	Added HRCN radii and track flags
+! D. Kidwell/NCEP	 7/00	Added AIRM
+! A. Hardy/GSC		 8/00   Added trop. cyclone to ISIG
+! D. Kidwell/NCEP	 8/00	Added NCON
+! F. J. Yen/NCEP	12/00	Added SVRL
+! S. Jacobs/NCEP	 4/01	Updated documentation
+! F. J. Yen/NCEP	 4/01	Added ATCO
+! D. Kidwell/NCEP	 5/01	Changed WTCH Time flag to 1 for SPC
+! D. Kidwell/NCEP	 7/01	Added TCMG
+! S. Jacobs/NCEP	 7/01	Added QSCT
+! F. J. Yen/NCEP	 1/02	Added seven types to ISIG
+! S. Schotz/NCEP	 3/02	Minor updates to documentation         
+! M. Li/SAIC		 8/02	Added WSTM
+! D. Kidwell/NCEP	11/02	Changed WSTM Zone to Zone Name
+! D. Kidwell/NCEP	11/02	Added Outline flag for WARN, SVRL, WSTM
+! D. Kidwell/NCEP	11/02	Changed symbol width for WARN, SVRL, WSTM
+! A. Hardy/NCEP          2/03   Added WOU and WCN
+! M. Li/SAIC		 3/03	Set colors for WOU and WCN
+! M. Li/SAIC		 3/03	Set colors for Watch
+! T. Lee/SAIC            4/03   Changed MPC to OPC
+! M. Li/SAIC		 4/03	Add the second colors for QSCT
+! M. Li/SAIC		 4/03 	Add the time stamp to QSCT         
+! M. Li/SAIC		 5/03	Add color2 and level filter to AIRM
+! M. Li/SAIC		 5/03 	Add name filter flags to NCON
+! G. Grosshans/SPC	 7/03	Updated Watch color scheme
+! M. Li/SAIC		 7/03	Add second colors for SVRL
+! M. Li/SAIC		10/03	Add QSCT_HI, SEAWND and SEAWND_HI
+! m.gamazaychikov/SAIC	10/03	Removed ATCO
+! F. J. Yen/NCEP	10/03	Added low level wind shear to ISIG
+! m.gamazaychikov/SAIC	01/04	Added SW type for AIRM
+! F. J. Yen/NCEP	 6/04	Removed SEAWND & SEAWND_HI; Updated ARRW
+!				in QSCT, QSCT_HI, HRCN and the prolog.
+! Yin/SAIC		 7/04	Added forecast hour flags for HRCN
+! F. J. Yen/NCEP	 7/04	Added AMBG1, AMBG2, AMBG3, and AMBG4
+! m.gamazaychikov/SAIC  01/04   Added Issue time using flag for AIRMETs
+! M. Li/SAIC		10/04	Added Line for WSTM
+! M. Li/SAIC		12/04   Modified watch flags
+! M. Li/SAIC		01/05	Modified wou and wcn flags
+! F. J. Yen/NCEP	 4/05	Added WCP
+! m.gamazaychikov/SAIC  04/05   Added ENS_CYC
+! F. J. Yen/NCEP	 5/05	Removed union flag for WOU and WCN
+! S. Gilbert/NCEP	 6/05	Added "Plot circles" in QSCT
+! S. Gilbert/NCEP	 6/05	Re-Added SEAWND and SEAWND_HI
+! F. J. Yen/NCEP	 7/05	Re-added union flag for WOU and WCN
+! m.gamazaychikov/SAIC  02/06   Add wind lvls, clr coding flag for ENS_CYC
+! C.Bailey/HPC           4/06   Added FFA
+! S. Gilbert/NCEP	 5/06	Added new fcst hours for HRCN
+! m.gamazaychikov/SAIC  07/06   Changed and added model names for ENS_CYC
+! T. Piper/SAIC         07/06   Added SGWH and SSHA
+! G.McFadden/SAIC        7/06   Added WSAT, WAMBG1, WAMBG2, WAMBG3, WAMBG4 
+! G.McFadden/SAIC        3/07   Added ASCT
+! J.Lewis/AWC		 3/07	Added Low-Level Wind Shear to AIRM
+! H. Zeng/SAIC          06/07   Added Gale & Fcst Hour to ENS_CYC
+! T. Piper/SAIC		06/07	Added Poly flag to WARN
+! G.McFadden/SAIC	 7/07	Changed rain flags in ASCT to QC Fail
+! G.McFadden/SAIC	 7/07	Added ASCT_HI
+! T. Piper/SAIC		 7/07	Rename WARN attributes
+! G.McFadden/SAIC	 7/07	Added AAMBG1 and AAMBG2
+! G.McFadden/SAIC	 7/07	Added AAMBG1_HI and AAMBG2_HI
+! G. Grosshans/SPC	10/07	Changed WOU and SVRL to SPC usage
+! G. McFadden/SAIC      07/08   Added SGWH2, SGWHE, SGWHG
+! T. Piper/SAIC		09/08	Updated ATCF entries and comments
+! G. McFadden/SAIC	12/08	Added TRAK1, TRAKE, and TRAK2
+! S. Jacobs/NCEP	 6/09	Removed AAMBG1 and AAMBG2
+! S. Jacobs/NCEP	 8/09	Added EXperimental ASCAT data types
+! L. Hinson/AWC          4/10   Add GAIRM
+! G. McFadden/IMSG	 9/10	Added OSCT
+! G. McFadden/IMSG	 1/11	Added AAMBG3_HI and AAMBG4_HI
+! L. Hinson/AWC		 4/11	Add ATDNet Flag to LTNG Section
+! G. McFadden/IMSG	 7/11	Added SGWHC
+! G. McFadden/IMSG	 1/12	Added OSCT_HI
+! L. Hinson/AWC          5/12   Added ASDI_H, ASDI_T
+!
+!-------------------------------------------------------------------------
+!
+!                             Display Flag/Color1;Color2/Data Value
+!Key Name                     or Flag Value
+!    (24)                     (12)
+!
+ALIAS VGF
+TYPE Color                    0/3
+FLAG Fill Mode                1
+!
+ALIAS WTCH
+TYPE Thunderstorm             1/6
+LINE 0.00/2
+TYPE Tornado                  1/2
+LINE 0.00/2
+TYPE Status                   1/5
+LINE 0.70/2
+TYPE Watch xxx0               1/7
+LINE 0.00/2
+TYPE Watch xxx1               1/3
+LINE 0.00/2
+TYPE Watch xxx2               1/25
+LINE 0.00/2
+TYPE Watch xxx3               1/19
+LINE 0.00/2
+TYPE Watch xxx4               1/15
+LINE 0.00/2
+TYPE Watch xxx5               1/8
+LINE 0.00/2
+TYPE Watch xxx6               1/29
+LINE 0.00/2
+TYPE Watch xxx7               1/5
+LINE 0.00/2
+TYPE Watch xxx8               1/4
+LINE 0.00/2
+TYPE Watch xxx9               1/17
+LINE 0.00/2
+FLAG Watch Box Time           1
+FLAG Status Lines Time        1
+FLAG Watch Box Number         1
+FLAG Status Lines Number      1
+FLAG Color Code               0 
+FLAG Most Recent Status Line  0
+!
+ALIAS WARN
+TYPE Thunderstorm             1/6
+SYM1 20/1.00/3
+TYPE Tornado                  1/2
+SYM1 20/1.00/3
+TYPE Flash Flood              1/3
+SYM1 20/1.00/3
+FLAG Time                     1
+FLAG County Name              0
+FLAG County Outline           0
+FLAG Storm-based Polygon      1
+!
+ALIAS WOU
+TYPE Thunderstorm             1/6;25
+SYM1 19/1.00/1
+TYPE Tornado                  1/2;12
+SYM1 19/1.00/1
+TYPE Watch xxx0               1/7;11
+SYM1 19/1.00/1
+TYPE Watch xxx1               1/3;11
+SYM1 19/1.00/1
+TYPE Watch xxx2               1/25;11
+SYM1 19/1.00/1
+TYPE Watch xxx3               1/19;11
+SYM1 19/1.00/1
+TYPE Watch xxx4               1/15;11
+SYM1 19/1.00/1
+TYPE Watch xxx5               1/8;11
+SYM1 19/1.00/1
+TYPE Watch xxx6               1/29;11
+SYM1 19/1.00/1
+TYPE Watch xxx7               1/5;11
+SYM1 19/1.00/1
+TYPE Watch xxx8               1/4;11
+SYM1 19/1.00/1
+TYPE Watch xxx9               1/17;11
+SYM1 19/1.00/1
+FLAG Time                     1
+FLAG Label                    0
+FLAG Watch Number             0
+FLAG Color Code               0
+FLAG Marker                   1
+FLAG Outline                  0
+FLAG Fill                     0
+FLAG Union                    0
+!
+ALIAS WCN
+TYPE Thunderstorm             1/6;25
+SYM1 17/1.00/3
+TYPE Tornado                  1/2;12
+SYM1 17/1.00/3
+TYPE Watch xxx0               1/7;11
+SYM1 17/1.00/3
+TYPE Watch xxx1               1/3;11
+SYM1 17/1.00/3
+TYPE Watch xxx2               1/25;11
+SYM1 17/1.00/3
+TYPE Watch xxx3               1/19;11
+SYM1 17/1.00/3
+TYPE Watch xxx4               1/15;11
+SYM1 17/1.00/3
+TYPE Watch xxx5               1/8;11
+SYM1 17/1.00/3
+TYPE Watch xxx6               1/29;11
+SYM1 17/1.00/3
+TYPE Watch xxx7               1/5;11
+SYM1 17/1.00/3
+TYPE Watch xxx8               1/4;11
+SYM1 17/1.00/3
+TYPE Watch xxx9               1/17;11
+SYM1 17/1.00/3
+FLAG Time                     1
+FLAG Label                    0
+FLAG Watch Number             0
+FLAG Color Code               0
+FLAG Marker                   1
+FLAG Outline                  0
+FLAG Fill                     0
+FLAG Union                    0
+!
+ALIAS WCP
+TYPE Thunderstorm             1/6
+LINE 0.00/2
+TYPE Tornado                  1/2
+LINE 0.00/2
+TYPE Watch xxx0               1/7
+LINE 0.00/2
+TYPE Watch xxx1               1/3
+LINE 0.00/2
+TYPE Watch xxx2               1/25
+LINE 0.00/2
+TYPE Watch xxx3               1/19
+LINE 0.00/2
+TYPE Watch xxx4               1/15
+LINE 0.00/2
+TYPE Watch xxx5               1/8
+LINE 0.00/2
+TYPE Watch xxx6               1/29
+LINE 0.00/2
+TYPE Watch xxx7               1/5
+LINE 0.00/2
+TYPE Watch xxx8               1/4
+LINE 0.00/2
+TYPE Watch xxx9               1/17
+LINE 0.00/2
+FLAG Time                     1
+FLAG Watch Box Number         1
+FLAG Color Code               0 
+!
+ALIAS SVRL
+TYPE Thunderstorm             1/6
+SYM1 18/1.00/3
+TYPE Tornado                  1/2
+SYM1 18/1.00/3
+TYPE Watch xxx0               1/7
+SYM1 18/1.00/3
+TYPE Watch xxx1               1/3
+SYM1 18/1.00/3
+TYPE Watch xxx2               1/25
+SYM1 18/1.00/3
+TYPE Watch xxx3               1/19
+SYM1 18/1.00/3
+TYPE Watch xxx4               1/15
+SYM1 18/1.00/3
+TYPE Watch xxx5               1/8
+SYM1 18/1.00/3
+TYPE Watch xxx6               1/29
+SYM1 18/1.00/3
+TYPE Watch xxx7               1/5
+SYM1 18/1.00/3
+TYPE Watch xxx8               1/4
+SYM1 18/1.00/3
+TYPE Watch xxx9               1/17
+SYM1 18/1.00/3
+FLAG Time                     1
+FLAG County                   0
+FLAG Outline                  1
+FLAG Color Code               0
+!
+ALIAS WSTM
+TYPE Winter storm warning     1/2
+LINE 0.00/3
+SYM1 20/1.00/3
+TYPE Winter storm watch       1/17
+LINE 0.00/3
+SYM1 20/1.00/3
+TYPE Winter storm advisory    1/5
+LINE 0.00/3
+SYM1 20/1.00/3
+FLAG Time                     1
+FLAG Zone Name                0
+FLAG Outline                  0
+!
+ALIAS HRCN
+TYPE Hurricane                1/2
+SYM1 26/1.00/3
+TYPE Tropical Storm           1/5
+SYM1 25/1.00/3
+TYPE Tropical Depression      1/3
+SYM1 33/1.00/3
+TYPE Motion Direction         0/7
+ARRW 1.00/1.00/3/1
+FLAG Time                     1
+FLAG Name/Pressure            1
+FLAG Motion Speed             0
+FLAG Wind/Sea Ft Radii        1
+FLAG  00 Hr Forecast Pos      1
+FLAG  06 Hr Forecast Pos      0
+FLAG  12 Hr Forecast Pos      1
+FLAG  18 Hr Forecast Pos      0
+FLAG  24 Hr Forecast Pos      1
+FLAG  30 Hr Forecast Pos      0
+FLAG  36 Hr Forecast Pos      1
+FLAG  42 Hr Forecast Pos      0
+FLAG  48 Hr Forecast Pos      1
+FLAG  54 Hr Forecast Pos      0
+FLAG  60 Hr Forecast Pos      0
+FLAG  66 Hr Forecast Pos      0
+FLAG  72 Hr Forecast Pos      1
+FLAG  78 Hr Forecast Pos      0
+FLAG  84 Hr Forecast Pos      0
+FLAG  90 Hr Forecast Pos      0
+FLAG  96 Hr Forecast Pos      1
+FLAG 120 Hr Forecast Pos      1
+!
+ALIAS ISIG
+TYPE Thunderstorm             1/6
+LINE 0.00/2
+SYM1 0/1.50/2
+TYPE Turbulence               1/5
+LINE 0.00/2
+SYM1 0/1.50/2
+TYPE Hurricane                1/2
+SYM1 0/1.50/2
+TYPE Tropical Storm           1/5
+SYM1 0/1.50/2
+TYPE Tropical Depression      1/3
+SYM1 0/1.50/2
+TYPE Volcanic Ash Cloud       1/17
+LINE 0.00/2
+SYM1 0/1.50/2
+TYPE Mountain Wave            1/7
+LINE 0.00/2
+SYM1 0/1.50/2
+TYPE Tropical Cyclone         1/2
+SYM1 0/1.00/2
+TYPE Squall Line              1/7
+LINE 0.00/2
+SYM1 0/1.50/2
+TYPE CAT                      1/5
+LINE 0.00/2
+SYM1 0/1.50/2
+TYPE Icing                    1/3
+LINE 0.00/2
+SYM1 0/1.50/2
+TYPE Hail                     1/2
+LINE 0.00/2
+SYM1 0/1.50/2
+TYPE Duststorm                1/17
+LINE 0.00/2
+SYM1 0/1.50/2
+TYPE Sandstorm                1/17
+LINE 0.00/2
+SYM1 0/1.50/2
+TYPE Cumulonimbus             1/2
+LINE 0.00/2
+SYM1 0/1.50/2
+TYPE Low Level Wind Shear     1/5
+LINE 0.00/2
+SYM1 0/1.50/2
+FLAG Symbol                   1
+FLAG Time                     1
+FLAG Name/Number              1
+FLAG Motion                   0
+FLAG Flight Level/Pres-MxWnd  0
+!
+ALIAS LTNG
+TYPE Time 1                   1/2/5
+SYM1 1/1.00/1
+SYM2 22/1.00/1
+TYPE Time 2                   1/16/10
+TYPE Time 3                   1/17/15
+TYPE Time 4                   1/19/20
+TYPE Time 5                   1/22/30
+TYPE Time 6                   1/23/60
+TYPE Time 7                   1/24/90
+TYPE Time 8                   1/25/120
+TYPE Time 9                   1/28/180
+TYPE Time 10                  1/29/240
+FLAG Positive                 1
+FLAG Negative                 1
+FLAG Domestic                 1
+FLAG Off-shore                1
+FLAG TRMM                     1
+FLAG ATDNet                   1
+!
+ALIAS ASDI_T
+TYPE Time 1                   1/2/2
+TYPE Time 2                   1/16/4
+TYPE Time 3                   1/17/6
+TYPE Time 4                   1/19/8
+TYPE Time 5                   1/22/10
+TYPE Time 6                   1/23/12
+FLAG Departures               1
+FLAG Arrivals                 1
+FLAG ALL 30 AIRPORTS          1
+FLAG MCI ONLY                 0
+FLAG ATL ONLY                 0
+FLAG DEN ONLY                 0
+FLAG MSP ONLY                 0
+FLAG DTW ONLY                 0
+FLAG MIA ONLY                 0
+FLAG MCO ONLY                 0
+FLAG PHL ONLY                 0
+FLAG CLT ONLY                 0
+FLAG BOS ONLY                 0
+FLAG FLL ONLY                 0
+FLAG TPA ONLY                 0
+FLAG SAN ONLY                 0
+FLAG MEM ONLY                 0
+FLAG ORD, MDW ONLY            0
+FLAG JFK, EWR, LGA ONLY       0
+FLAG IAD, DCA, BWI ONLY       0
+FLAG SEA, SFO, LAX ONLY       0
+FLAG LAS, SLC, PHX ONLY       0
+FLAG DFW, IAH  ONLY           0
+!
+ALIAS ASDI_H
+TYPE Height 1                 1/12/050
+TYPE Height 2                 1/2/100
+TYPE Height 3                 1/16/150
+TYPE Height 4                 1/17/200
+TYPE Height 5                 1/19/250
+TYPE Height 6                 1/22/300
+TYPE Height 7                 1/23/350
+TYPE Height 8                 1/24/400
+TYPE Height 9                 1/27/450
+TYPE TimeLimit                1//12
+FLAG Departures               1
+FLAG Arrivals                 1
+FLAG ALL 30 AIRPORTS          1
+FLAG MCI ONLY                 0
+FLAG ATL ONLY                 0
+FLAG DEN ONLY                 0
+FLAG MSP ONLY                 0
+FLAG DTW ONLY                 0
+FLAG MIA ONLY                 0
+FLAG MCO ONLY                 0
+FLAG PHL ONLY                 0
+FLAG CLT ONLY                 0
+FLAG BOS ONLY                 0
+FLAG FLL ONLY                 0
+FLAG TPA ONLY                 0
+FLAG SAN ONLY                 0
+FLAG MEM ONLY                 0
+FLAG ORD, MDW ONLY            0
+FLAG JFK, EWR, LGA ONLY       0
+FLAG IAD, DCA, BWI ONLY       0
+FLAG SEA, SFO, LAX ONLY       0
+FLAG LAS, SLC, PHX ONLY       0
+FLAG DFW, IAH  ONLY           0
+!
+ALIAS ATCF
+TYPE 01OHPC                   1/2
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 02CLIP                   1/3
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 03AVNO                   1/4
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 04MRFO                   1/5
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 05 UKM                   1/11
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 06AVNI                   1/22
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 07NAMI                   1/16
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 08EMX2                   1/2
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 09EGRI                   1/4
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 10NGPI                   1/26
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 11UKM2                   1/17
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 12HWFI                   1/15
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 13GHMI                   1/10
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 14GFNI                   1/11
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 15AEMI                   1/18
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 16TCON                   1/29
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 17GUNA                   1/25
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 18TVCN                   1/12
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 19EMXI                   1/23
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 20FSSE                   1/3
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 21UKMI                   1/6
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 22BAMM                   1/19
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 23BAMD                   1/20
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 24BAMS                   1/5
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 25EGR2                   1/7
+LINE 0.00/3
+SYM1 1/1.00/1
+FLAG Time                     1
+FLAG Name                     1
+FLAG Speed                    0
+FLAG Marker                   0
+!
+ALIAS AIRM
+TYPE IFR                      1/2
+LINE 0.00/2
+SYM1 0/1.00/2
+TYPE Mtn Obscn                1/5
+LINE 0.00/2
+SYM1 0/1.00/2
+TYPE Turbulence               1/25;7/150
+LINE 0.00/2
+SYM1 0/1.50/2
+TYPE Icing                    1/3
+LINE 0.00/2
+SYM1 0/1.50/2
+TYPE Sustained Winds          1/12
+LINE 0.00/2
+SYM1 0/1.50/2
+TYPE Low Level Wind Shear     1/27
+LINE 0.00/2
+SYM1 0/1.00/2
+TYPE Lower Filter Level	      0//150
+TYPE Upper Filter Level	      0//300
+FLAG Symbol                   1
+FLAG Time                     1
+FLAG Flight Levels            1
+FLAG Using Issue Time         1
+!
+ALIAS GAIRM
+TYPE IFR                      1/2
+LINE 0.00/2
+SYM1 0/1.00/2
+TYPE Mtn Obscn                1/5
+LINE 0.00/2
+SYM1 0/1.00/2
+TYPE Turbulence               1/25;7/150
+LINE 0.00/2
+SYM1 0/1.50/2
+TYPE Icing                    1/3
+LINE 0.00/2
+SYM1 0/1.50/2
+TYPE Sustained Winds          1/12
+LINE 0.00/2
+SYM1 0/1.50/2
+TYPE Low Level Wind Shear     1/27
+LINE 0.00/2
+SYM1 0/1.00/2
+TYPE Lower Filter Level	      0//150
+TYPE Upper Filter Level	      0//300
+FLAG Symbol                   1
+FLAG Time                     1
+FLAG Flight Levels            1
+FLAG Time Offset -2 Hours     0
+FLAG Time Offset -1 Hours     0
+FLAG Time Offset  0 Hours     1
+FLAG Time Offset +1 Hours     0
+FLAG Time Offset +2 Hours     0
+!
+ALIAS NCON
+TYPE Icing                    1/3
+LINE 0.00/2
+SYM1 0/1.50/2
+TYPE Turbulence               1/25
+LINE 0.00/2
+SYM1 0/1.50/2
+TYPE Duststorm/Sandstorm      1/19
+LINE 0.00/2
+SYM1 0/1.50/2
+TYPE Volcanic Ash             1/17
+LINE 0.00/2
+SYM1 0/1.50/2
+FLAG Symbol                   1
+FLAG Time                     1
+FLAG Name/Number              1
+FLAG Flight Levels            1
+FLAG November                 1
+FLAG Oscar                    1
+FLAG Papa                     1	
+FLAG Quebec                   1
+FLAG Romeo                    1
+FLAG Uniform                  1
+FLAG Victor                   1
+FLAG Whiskey                  1
+FLAG Xray                     1
+FLAG Yankee                   1
+!
+ALIAS CSIG
+TYPE Initial (0-hour)        1/2
+LINE 0.00/2
+TYPE 1-hour                  0/4
+LINE 0.00/2
+TYPE 2-hour                  0/5
+LINE 0.00/2
+TYPE Outlook                 1/3
+LINE 0.00/2
+FLAG Sequence ID (0-hour)     1
+FLAG Time                     0
+FLAG Direction/speed          1
+FLAG Flight Level             1
+FLAG Intensity                0
+FLAG Sequence ID (1-hour)     0
+FLAG Sequence ID (2-hour)     0
+!
+ALIAS TCMG
+TYPE Tropical Cyclone         0/2
+TYPE Track Line               0/17
+TYPE Storm 1                  0/7
+TYPE Storm 2                  0/5
+TYPE Storm 3                  0/3
+TYPE Storm 4                  0/29
+TYPE Storm 5                  0/6
+TYPE Storm 6                  0/4
+TYPE Storm 7                  0/9
+TYPE Storm 8                  0/11
+TYPE Storm 9                  0/23
+TYPE Storm 10                 0/18
+!
+ALIAS OSCT
+TYPE Skip value               1//0
+TYPE Time Stamp Interval      1/6/1
+LINE 0.00/1
+TYPE Wind Speed 1             1/1;31/6
+ARRW 0.50/-9999/1/5
+TYPE Wind Speed 2             1/6;31/12
+TYPE Wind Speed 3             1/26;31/17
+TYPE Wind Speed 4             1/24;31/23
+TYPE Wind Speed 5             1/21;31/27
+TYPE Wind Speed 6             1/23;31/33.99
+TYPE Wind Speed 7             1/5;31/42
+TYPE Wind Speed 8             1/17;31/47.99
+TYPE Wind Speed 9             1/8;31/56
+TYPE Wind Speed 10            1/14;31/63.99
+TYPE Wind Speed 11            1/2;31/74
+TYPE Wind Speed 12            1/2;31/150
+FLAG Rain Flag                1
+FLAG Use 2nd color for Rain   1
+FLAG Plot circles for Rain    1
+!
+ALIAS OSCT_HI
+TYPE Skip value               1//0
+TYPE Time Stamp Interval      1/6/1
+LINE 0.00/1
+TYPE Wind Speed 1             1/1;31/6
+ARRW 0.50/-9999/1/5
+TYPE Wind Speed 2             1/6;31/12
+TYPE Wind Speed 3             1/26;31/17
+TYPE Wind Speed 4             1/24;31/23
+TYPE Wind Speed 5             1/21;31/27
+TYPE Wind Speed 6             1/23;31/33.99
+TYPE Wind Speed 7             1/5;31/42
+TYPE Wind Speed 8             1/17;31/47.99
+TYPE Wind Speed 9             1/8;31/56
+TYPE Wind Speed 10            1/14;31/63.99
+TYPE Wind Speed 11            1/2;31/74
+TYPE Wind Speed 12            1/2;31/150
+FLAG Rain Flag                1
+FLAG Use 2nd color for Rain   1
+FLAG Plot circles for Rain    1
+!
+ALIAS WSAT 
+TYPE Skip value               1//0
+TYPE Time Stamp Interval      1/31/1
+LINE 0.00/1
+TYPE Wind Speed 1             1/1;31/6
+ARRW .2/.4/1/5
+TYPE Wind Speed 2             1/6;31/12
+TYPE Wind Speed 3             1/26;31/17
+TYPE Wind Speed 4             1/24;31/23
+TYPE Wind Speed 5             1/21;31/27
+TYPE Wind Speed 6             1/23;31/33
+TYPE Wind Speed 7             1/5;31/42
+TYPE Wind Speed 8             1/17;31/48
+TYPE Wind Speed 9             1/8;31/56
+TYPE Wind Speed 10            1/14;31/63
+TYPE Wind Speed 11            1/2;31/74
+TYPE Wind Speed 12            1/2;31/150
+FLAG Rain Flag                1
+FLAG Use 2nd color for Rain   1
+FLAG Plot Circles for Rain    1
+!
+ALIAS QSCT
+TYPE Skip value               1//5
+TYPE Time Stamp Interval      1/31/30
+LINE 0.00/1
+TYPE Wind Speed 1             1/1;31/6
+ARRW .2/.4/1/5
+TYPE Wind Speed 2             1/6;31/12
+TYPE Wind Speed 3             1/26;31/17
+TYPE Wind Speed 4             1/24;31/23
+TYPE Wind Speed 5             1/21;31/27
+TYPE Wind Speed 6             1/23;31/33
+TYPE Wind Speed 7             1/5;31/42
+TYPE Wind Speed 8             1/17;31/48
+TYPE Wind Speed 9             1/8;31/56
+TYPE Wind Speed 10            1/14;31/63
+TYPE Wind Speed 11            1/2;31/74
+TYPE Wind Speed 12            1/2;31/150
+FLAG High Wind Speed          1
+FLAG Low Wind Speed           1
+FLAG Rain Flag                1
+FLAG Availability Flag        1
+FLAG Use 2nd color for Rain   0
+FLAG Plot circles for Rain    1
+!
+ALIAS QSCT_HI
+TYPE Skip value               1//5
+TYPE Time Stamp Interval      1/31/30
+LINE 0.00/1
+TYPE Wind Speed 1             1/1;31/6
+ARRW .2/.4/1/5
+TYPE Wind Speed 2             1/6;31/12
+TYPE Wind Speed 3             1/26;31/17
+TYPE Wind Speed 4             1/24;31/23
+TYPE Wind Speed 5             1/21;31/27
+TYPE Wind Speed 6             1/23;31/33
+TYPE Wind Speed 7             1/5;31/42
+TYPE Wind Speed 8             1/17;31/48
+TYPE Wind Speed 9             1/8;31/56
+TYPE Wind Speed 10            1/14;31/63
+TYPE Wind Speed 11            1/2;31/74
+TYPE Wind Speed 12            1/2;31/150
+FLAG High Wind Speed          1
+FLAG Low Wind Speed           1
+FLAG Rain Flag                1
+FLAG Availability Flag        1
+FLAG Use 2nd color for Rain   0
+FLAG Plot circles for Rain    1
+!
+ALIAS ASCT
+TYPE Skip value               1//5
+TYPE Time Stamp Interval      1/31/30
+LINE 0.00/1
+TYPE Wind Speed 1             1/1;31/6
+ARRW .2/.4/1/5
+TYPE Wind Speed 2             1/6;31/12
+TYPE Wind Speed 3             1/26;31/17
+TYPE Wind Speed 4             1/24;31/23
+TYPE Wind Speed 5             1/21;31/27
+TYPE Wind Speed 6             1/23;31/33
+TYPE Wind Speed 7             1/5;31/42
+TYPE Wind Speed 8             1/17;31/48
+TYPE Wind Speed 9             1/8;31/56
+TYPE Wind Speed 10            1/14;31/63
+TYPE Wind Speed 11            1/2;31/74
+TYPE Wind Speed 12            1/2;31/150
+FLAG High Wind Speed          1
+FLAG Low Wind Speed           1
+FLAG Quality Control Fail     1
+FLAG Redundancy Flag          1
+FLAG 2nd color for QC Fail    0
+FLAG Plot circles for QC Fail 1
+!
+ALIAS ASCT_HI
+TYPE Skip value               1//5
+TYPE Time Stamp Interval      1/31/30
+LINE 0.00/1
+TYPE Wind Speed 1             1/1;31/6
+ARRW .2/.4/1/5
+TYPE Wind Speed 2             1/6;31/12
+TYPE Wind Speed 3             1/26;31/17
+TYPE Wind Speed 4             1/24;31/23
+TYPE Wind Speed 5             1/21;31/27
+TYPE Wind Speed 6             1/23;31/33
+TYPE Wind Speed 7             1/5;31/42
+TYPE Wind Speed 8             1/17;31/48
+TYPE Wind Speed 9             1/8;31/56
+TYPE Wind Speed 10            1/14;31/63
+TYPE Wind Speed 11            1/2;31/74
+TYPE Wind Speed 12            1/2;31/150
+FLAG High Wind Speed          1
+FLAG Low Wind Speed           1
+FLAG Quality Control Fail     1
+FLAG Redundancy Flag          1
+FLAG 2nd color for QC Fail    0
+FLAG Plot circles for QC Fail 1
+!
+ALIAS AAMBG1_HI
+TYPE Skip value               1//5
+TYPE Time Stamp Interval      1/31/30
+LINE 0.00/1
+TYPE Wind Speed 1             1/4;31/6
+ARRW .2/.4/1/5
+TYPE Wind Speed 2             1/4;31/12
+TYPE Wind Speed 3             1/4;31/17
+TYPE Wind Speed 4             1/4;31/23
+TYPE Wind Speed 5             1/4;31/27
+TYPE Wind Speed 6             1/4;31/33
+TYPE Wind Speed 7             1/4;31/42
+TYPE Wind Speed 8             1/4;31/48
+TYPE Wind Speed 9             1/4;31/56
+TYPE Wind Speed 10            1/4;31/63
+TYPE Wind Speed 11            1/4;31/74
+TYPE Wind Speed 12            1/4;31/150
+FLAG High Wind Speed          1
+FLAG Low Wind Speed           1
+FLAG Quality Control Fail     1
+FLAG Redundancy Flag          1
+FLAG 2nd color for QC Fail    0
+FLAG Plot circles for QC Fail 1
+!
+ALIAS AAMBG2_HI
+TYPE Skip value               1//5
+TYPE Time Stamp Interval      1/31/30
+LINE 0.00/1
+TYPE Wind Speed 1             1/5;31/6
+ARRW .2/.4/1/5
+TYPE Wind Speed 2             1/5;31/12
+TYPE Wind Speed 3             1/5;31/17
+TYPE Wind Speed 4             1/5;31/23
+TYPE Wind Speed 5             1/5;31/27
+TYPE Wind Speed 6             1/5;31/33
+TYPE Wind Speed 7             1/5;31/42
+TYPE Wind Speed 8             1/5;31/48
+TYPE Wind Speed 9             1/5;31/56
+TYPE Wind Speed 10            1/5;31/63
+TYPE Wind Speed 11            1/5;31/74
+TYPE Wind Speed 12            1/5;31/150
+! Unidata Addition for BUFR format QuikSCAT winds
+ALIAS QBUF
+TYPE Skip value               1//5
+TYPE Time Stamp Interval      1/31/30
+LINE 0.00/1
+TYPE Wind Speed 1             1/30;31/6
+ARRW .2/.4/1/5
+TYPE Wind Speed 2             1/6;31/12
+TYPE Wind Speed 3             1/26;31/17
+TYPE Wind Speed 4             1/24;31/23
+TYPE Wind Speed 5             1/21;31/27
+TYPE Wind Speed 6             1/23;31/33
+TYPE Wind Speed 7             1/5;31/42
+TYPE Wind Speed 8             1/17;31/48
+TYPE Wind Speed 9             1/8;31/56
+TYPE Wind Speed 10            1/14;31/63
+TYPE Wind Speed 11            1/2;31/74
+TYPE Wind Speed 12            1/2;31/150
+FLAG High Wind Speed          1
+FLAG Low Wind Speed           1
+FLAG Rain Flag                1
+FLAG Availability Flag        1
+FLAG Use 2nd color for Rain   0
+FLAG Plot circles for Rain    1
+!
+! Unidata Addition for BUFR format DMSP winds
+ALIAS DMSPBUF
+TYPE Skip value               1//5
+TYPE Time Stamp Interval      1/31/30
+LINE 0.00/1
+TYPE Wind Speed 1             1/30;31/6
+ARRW .2/.4/1/5
+TYPE Wind Speed 2             1/6;31/12
+TYPE Wind Speed 3             1/26;31/17
+TYPE Wind Speed 4             1/24;31/23
+TYPE Wind Speed 5             1/21;31/27
+TYPE Wind Speed 6             1/23;31/33
+TYPE Wind Speed 7             1/5;31/42
+TYPE Wind Speed 8             1/17;31/48
+TYPE Wind Speed 9             1/8;31/56
+TYPE Wind Speed 10            1/14;31/63
+TYPE Wind Speed 11            1/2;31/74
+TYPE Wind Speed 12            1/2;31/150
+FLAG High Wind Speed          1
+FLAG Low Wind Speed           1
+FLAG Rain Flag                1
+FLAG Availability Flag        1
+FLAG Use 2nd color for Rain   0
+FLAG Plot circles for Rain    1
+!
+ALIAS QSCT_HI
+TYPE Skip value               1//5
+TYPE Time Stamp Interval      1/31/30
+LINE 0.00/1
+TYPE Wind Speed 1             1/1;31/6
+ARRW .2/.4/1/5
+TYPE Wind Speed 2             1/6;31/12
+TYPE Wind Speed 3             1/26;31/17
+TYPE Wind Speed 4             1/24;31/23
+TYPE Wind Speed 5             1/21;31/27
+TYPE Wind Speed 6             1/23;31/33
+TYPE Wind Speed 7             1/5;31/42
+TYPE Wind Speed 8             1/17;31/48
+TYPE Wind Speed 9             1/8;31/56
+TYPE Wind Speed 10            1/14;31/63
+TYPE Wind Speed 11            1/2;31/74
+TYPE Wind Speed 12            1/2;31/150
+FLAG High Wind Speed          1
+FLAG Low Wind Speed           1
+FLAG Rain Flag                1
+FLAG Availability Flag        1
+FLAG Use 2nd color for Rain   0
+FLAG Plot circles for Rain    1
+!
+ALIAS ASCT
+TYPE Skip value               1//5
+TYPE Time Stamp Interval      1/31/30
+LINE 0.00/1
+TYPE Wind Speed 1             1/1;31/6
+ARRW .2/.4/1/5
+TYPE Wind Speed 2             1/6;31/12
+TYPE Wind Speed 3             1/26;31/17
+TYPE Wind Speed 4             1/24;31/23
+TYPE Wind Speed 5             1/21;31/27
+TYPE Wind Speed 6             1/23;31/33
+TYPE Wind Speed 7             1/5;31/42
+TYPE Wind Speed 8             1/17;31/48
+TYPE Wind Speed 9             1/8;31/56
+TYPE Wind Speed 10            1/14;31/63
+TYPE Wind Speed 11            1/2;31/74
+TYPE Wind Speed 12            1/2;31/150
+FLAG High Wind Speed          1
+FLAG Low Wind Speed           1
+FLAG Quality Control Fail     1
+FLAG Redundancy Flag          1
+FLAG 2nd color for QC Fail    0
+FLAG Plot circles for QC Fail 1
+!
+ALIAS AAMBG3_HI
+TYPE Skip value               1//5
+TYPE Time Stamp Interval      1/31/30
+LINE 0.00/1
+TYPE Wind Speed 1             1/3;31/6
+ARRW .2/.4/1/5
+TYPE Wind Speed 2             1/3;31/12
+TYPE Wind Speed 3             1/3;31/17
+TYPE Wind Speed 4             1/3;31/23
+TYPE Wind Speed 5             1/3;31/27
+TYPE Wind Speed 6             1/3;31/33
+TYPE Wind Speed 7             1/3;31/42
+TYPE Wind Speed 8             1/3;31/48
+TYPE Wind Speed 9             1/3;31/56
+TYPE Wind Speed 10            1/3;31/63
+TYPE Wind Speed 11            1/3;31/74
+TYPE Wind Speed 12            1/3;31/150
+FLAG High Wind Speed          1
+FLAG Low Wind Speed           1
+FLAG Quality Control Fail     1
+FLAG Redundancy Flag          1
+FLAG 2nd color for QC Fail    0
+FLAG Plot circles for QC Fail 1
+!
+ALIAS AAMBG4_HI
+TYPE Skip value               1//5
+TYPE Time Stamp Interval      1/31/30
+LINE 0.00/1
+TYPE Wind Speed 1             1/16;31/6
+ARRW .2/.4/1/5
+TYPE Wind Speed 2             1/16;31/12
+TYPE Wind Speed 3             1/16;31/17
+TYPE Wind Speed 4             1/16;31/23
+TYPE Wind Speed 5             1/16;31/27
+TYPE Wind Speed 6             1/16;31/33
+TYPE Wind Speed 7             1/16;31/42
+TYPE Wind Speed 8             1/16;31/48
+TYPE Wind Speed 9             1/16;31/56
+TYPE Wind Speed 10            1/16;31/63
+TYPE Wind Speed 11            1/16;31/74
+TYPE Wind Speed 12            1/16;31/150
+FLAG High Wind Speed          1
+FLAG Low Wind Speed           1
+FLAG Quality Control Fail     1
+FLAG Redundancy Flag          1
+FLAG 2nd color for QC Fail    0
+FLAG Plot circles for QC Fail 1
+!
+ALIAS ASCT_HI
+TYPE Skip value               1//5
+TYPE Time Stamp Interval      1/31/30
+LINE 0.00/1
+TYPE Wind Speed 1             1/1;31/6
+ARRW .2/.4/1/5
+TYPE Wind Speed 2             1/6;31/12
+TYPE Wind Speed 3             1/26;31/17
+TYPE Wind Speed 4             1/24;31/23
+TYPE Wind Speed 5             1/21;31/27
+TYPE Wind Speed 6             1/23;31/33
+TYPE Wind Speed 7             1/5;31/42
+TYPE Wind Speed 8             1/17;31/48
+TYPE Wind Speed 9             1/8;31/56
+TYPE Wind Speed 10            1/14;31/63
+TYPE Wind Speed 11            1/2;31/74
+TYPE Wind Speed 12            1/2;31/150
+FLAG High Wind Speed          1
+FLAG Low Wind Speed           1
+FLAG Quality Control Fail     1
+FLAG Redundancy Flag          1
+FLAG 2nd color for QC Fail    0
+FLAG Plot circles for QC Fail 1
+!
+ALIAS AAMBG2_HI
+TYPE Skip value               1//5
+TYPE Time Stamp Interval      1/31/30
+LINE 0.00/1
+TYPE Wind Speed 1             1/5;31/6
+ARRW .2/.4/1/5
+TYPE Wind Speed 2             1/5;31/12
+TYPE Wind Speed 3             1/5;31/17
+TYPE Wind Speed 4             1/5;31/23
+TYPE Wind Speed 5             1/5;31/27
+TYPE Wind Speed 6             1/5;31/33
+TYPE Wind Speed 7             1/5;31/42
+TYPE Wind Speed 8             1/5;31/48
+TYPE Wind Speed 9             1/5;31/56
+TYPE Wind Speed 10            1/5;31/63
+TYPE Wind Speed 11            1/5;31/74
+TYPE Wind Speed 12            1/5;31/150
+FLAG High Wind Speed          1
+FLAG Low Wind Speed           1
+FLAG Quality Control Fail     1
+FLAG Redundancy Flag          1
+FLAG 2nd color for QC Fail    0
+FLAG Plot circles for QC Fail 1
+!
+!
+ALIAS EXASCT
+TYPE Skip value               1//5
+TYPE Time Stamp Interval      1/31/30
+LINE 0.00/1
+TYPE Wind Speed 1             1/1;31/6
+ARRW .2/.4/1/5
+TYPE Wind Speed 2             1/6;31/12
+TYPE Wind Speed 3             1/26;31/17
+TYPE Wind Speed 4             1/24;31/23
+TYPE Wind Speed 5             1/21;31/27
+TYPE Wind Speed 6             1/23;31/33
+TYPE Wind Speed 7             1/5;31/42
+TYPE Wind Speed 8             1/17;31/48
+TYPE Wind Speed 9             1/8;31/56
+TYPE Wind Speed 10            1/14;31/63
+TYPE Wind Speed 11            1/2;31/74
+TYPE Wind Speed 12            1/2;31/150
+FLAG High Wind Speed          1
+FLAG Low Wind Speed           1
+FLAG Quality Control Fail     1
+FLAG Redundancy Flag          1
+FLAG 2nd color for QC Fail    0
+FLAG Plot circles for QC Fail 1
+!
+ALIAS EXASCT_HI
+TYPE Skip value               1//5
+TYPE Time Stamp Interval      1/31/30
+LINE 0.00/1
+TYPE Wind Speed 1             1/1;31/6
+ARRW .2/.4/1/5
+TYPE Wind Speed 2             1/6;31/12
+TYPE Wind Speed 3             1/26;31/17
+TYPE Wind Speed 4             1/24;31/23
+TYPE Wind Speed 5             1/21;31/27
+TYPE Wind Speed 6             1/23;31/33
+TYPE Wind Speed 7             1/5;31/42
+TYPE Wind Speed 8             1/17;31/48
+TYPE Wind Speed 9             1/8;31/56
+TYPE Wind Speed 10            1/14;31/63
+TYPE Wind Speed 11            1/2;31/74
+TYPE Wind Speed 12            1/2;31/150
+FLAG High Wind Speed          1
+FLAG Low Wind Speed           1
+FLAG Quality Control Fail     1
+FLAG Redundancy Flag          1
+FLAG 2nd color for QC Fail    0
+FLAG Plot circles for QC Fail 1
+!
+ALIAS EXAAMBG1_HI
+TYPE Skip value               1//5
+TYPE Time Stamp Interval      1/31/30
+LINE 0.00/1
+TYPE Wind Speed 1             1/4;31/6
+ARRW .2/.4/1/5
+TYPE Wind Speed 2             1/4;31/12
+TYPE Wind Speed 3             1/4;31/17
+TYPE Wind Speed 4             1/4;31/23
+TYPE Wind Speed 5             1/4;31/27
+TYPE Wind Speed 6             1/4;31/33
+TYPE Wind Speed 7             1/4;31/42
+TYPE Wind Speed 8             1/4;31/48
+TYPE Wind Speed 9             1/4;31/56
+TYPE Wind Speed 10            1/4;31/63
+TYPE Wind Speed 11            1/4;31/74
+TYPE Wind Speed 12            1/4;31/150
+FLAG High Wind Speed          1
+FLAG Low Wind Speed           1
+FLAG Quality Control Fail     1
+FLAG Redundancy Flag          1
+FLAG 2nd color for QC Fail    0
+FLAG Plot circles for QC Fail 1
+!
+ALIAS EXAAMBG2_HI
+TYPE Skip value               1//5
+TYPE Time Stamp Interval      1/31/30
+LINE 0.00/1
+TYPE Wind Speed 1             1/5;31/6
+ARRW .2/.4/1/5
+TYPE Wind Speed 2             1/5;31/12
+TYPE Wind Speed 3             1/5;31/17
+TYPE Wind Speed 4             1/5;31/23
+TYPE Wind Speed 5             1/5;31/27
+TYPE Wind Speed 6             1/5;31/33
+TYPE Wind Speed 7             1/5;31/42
+TYPE Wind Speed 8             1/5;31/48
+TYPE Wind Speed 9             1/5;31/56
+TYPE Wind Speed 10            1/5;31/63
+TYPE Wind Speed 11            1/5;31/74
+TYPE Wind Speed 12            1/5;31/150
+FLAG High Wind Speed          1
+FLAG Low Wind Speed           1
+FLAG Quality Control Fail     1
+FLAG Redundancy Flag          1
+FLAG 2nd color for QC Fail    0
+FLAG Plot circles for QC Fail 1
+!
+ALIAS SEAWND
+TYPE Skip value               1//5
+TYPE Time Stamp Interval      1/31/30
+LINE 0.00/1
+TYPE Wind Speed 1             1/1;31/6
+ARRW .2/.4/1/5
+TYPE Wind Speed 2             1/6;31/12
+TYPE Wind Speed 3             1/26;31/17
+TYPE Wind Speed 4             1/24;31/23
+TYPE Wind Speed 5             1/21;31/27
+TYPE Wind Speed 6             1/23;31/33
+TYPE Wind Speed 7             1/5;31/42
+TYPE Wind Speed 8             1/17;31/48
+TYPE Wind Speed 9             1/8;31/56
+TYPE Wind Speed 10            1/14;31/63
+TYPE Wind Speed 11            1/2;31/74
+TYPE Wind Speed 12            1/2;31/150
+FLAG High Wind Speed          1
+FLAG Low Wind Speed           1
+FLAG Rain Flag                1
+FLAG Availability Flag        1
+FLAG Use 2nd color for Rain   0
+FLAG Plot circles for Rain    0
+!
+ALIAS SEAWND_HI
+TYPE Skip value               1//5
+TYPE Time Stamp Interval      1/31/30
+LINE 0.00/1
+TYPE Wind Speed 1             1/1;31/6
+ARRW .2/.4/1/5
+TYPE Wind Speed 2             1/6;31/12
+TYPE Wind Speed 3             1/26;31/17
+TYPE Wind Speed 4             1/24;31/23
+TYPE Wind Speed 5             1/21;31/27
+TYPE Wind Speed 6             1/23;31/33
+TYPE Wind Speed 7             1/5;31/42
+TYPE Wind Speed 8             1/17;31/48
+TYPE Wind Speed 9             1/8;31/56
+TYPE Wind Speed 10            1/14;31/63
+TYPE Wind Speed 11            1/2;31/74
+TYPE Wind Speed 12            1/2;31/150
+FLAG High Wind Speed          1
+FLAG Low Wind Speed           1
+FLAG Rain Flag                1
+FLAG Availability Flag        1
+FLAG Use 2nd color for Rain   0
+FLAG Plot circles for Rain    0
+!
+ALIAS WAMBG1
+TYPE Skip value               1//1
+TYPE Time Stamp Interval      1/31/5
+LINE 0.00/1
+TYPE Wind Speed 1             1/2;31/6
+ARRW .2/.4/1/3
+TYPE Wind Speed 2             1/2;31/12
+TYPE Wind Speed 3             1/2;31/17
+TYPE Wind Speed 4             1/2;31/23
+TYPE Wind Speed 5             1/2;31/27
+TYPE Wind Speed 6             1/2;31/33
+TYPE Wind Speed 7             1/2;31/42
+TYPE Wind Speed 8             1/2;31/48
+TYPE Wind Speed 9             1/2;31/56
+TYPE Wind Speed 10            1/2;31/63
+TYPE Wind Speed 11            1/2;31/74
+TYPE Wind Speed 12            1/2;31/150
+FLAG Rain Flag                1
+FLAG Use 2nd color for Rain   1
+FLAG Plot Circles for Rain    0
+!
+ALIAS AMBG1
+TYPE Skip value               1//5
+TYPE Time Stamp Interval      1/31/30
+LINE 0.00/1
+TYPE Wind Speed 1             1/2;31/6
+ARRW .2/.4/1/3
+TYPE Wind Speed 2             1/2;31/12
+TYPE Wind Speed 3             1/2;31/17
+TYPE Wind Speed 4             1/2;31/23
+TYPE Wind Speed 5             1/2;31/27
+TYPE Wind Speed 6             1/2;31/33
+TYPE Wind Speed 7             1/2;31/42
+TYPE Wind Speed 8             1/2;31/48
+TYPE Wind Speed 9             1/2;31/56
+TYPE Wind Speed 10            1/2;31/63
+TYPE Wind Speed 11            1/2;31/74
+TYPE Wind Speed 12            1/2;31/150
+FLAG High Wind Speed          1
+FLAG Low Wind Speed           1
+FLAG Rain Flag                1
+FLAG Availability Flag        1
+FLAG Use 2nd color for Rain   0
+!
+ALIAS WAMBG2
+TYPE Skip value               1//1
+TYPE Time Stamp Interval      1/31/5
+LINE 0.00/1
+TYPE Wind Speed 1             1/3;31/6
+ARRW .2/.4/1/3
+TYPE Wind Speed 2             1/3;31/12
+TYPE Wind Speed 3             1/3;31/17
+TYPE Wind Speed 4             1/3;31/23
+TYPE Wind Speed 5             1/3;31/27
+TYPE Wind Speed 6             1/3;31/33
+TYPE Wind Speed 7             1/3;31/42
+TYPE Wind Speed 8             1/3;31/48
+TYPE Wind Speed 9             1/3;31/56
+TYPE Wind Speed 10            1/3;31/63
+TYPE Wind Speed 11            1/3;31/74
+TYPE Wind Speed 12            1/3;31/150
+FLAG Rain Flag                1
+FLAG Use 2nd color for Rain   1
+FLAG Plot Circles for Rain    0
+!
+ALIAS AMBG2
+TYPE Skip value               1//5
+TYPE Time Stamp Interval      1/31/30
+LINE 0.00/1
+TYPE Wind Speed 1             1/3;31/6
+ARRW .2/.4/1/3
+TYPE Wind Speed 2             1/3;31/12
+TYPE Wind Speed 3             1/3;31/17
+TYPE Wind Speed 4             1/3;31/23
+TYPE Wind Speed 5             1/3;31/27
+TYPE Wind Speed 6             1/3;31/33
+TYPE Wind Speed 7             1/3;31/42
+TYPE Wind Speed 8             1/3;31/48
+TYPE Wind Speed 9             1/3;31/56
+TYPE Wind Speed 10            1/3;31/63
+TYPE Wind Speed 11            1/3;31/74
+TYPE Wind Speed 12            1/3;31/150
+FLAG High Wind Speed          1
+FLAG Low Wind Speed           1
+FLAG Rain Flag                1
+FLAG Availability Flag        1
+FLAG Use 2nd color for Rain   0
+!
+ALIAS WAMBG3
+TYPE Skip value               1//1
+TYPE Time Stamp Interval      1/31/5
+LINE 0.00/1
+TYPE Wind Speed 1             1/4;31/6
+ARRW .2/.4/1/3
+TYPE Wind Speed 2             1/4;31/12
+TYPE Wind Speed 3             1/4;31/17
+TYPE Wind Speed 4             1/4;31/23
+TYPE Wind Speed 5             1/4;31/27
+TYPE Wind Speed 6             1/4;31/33
+TYPE Wind Speed 7             1/4;31/42
+TYPE Wind Speed 8             1/4;31/48
+TYPE Wind Speed 9             1/4;31/56
+TYPE Wind Speed 10            1/4;31/63
+TYPE Wind Speed 11            1/4;31/74
+TYPE Wind Speed 12            1/4;31/150
+FLAG Rain Flag                1
+FLAG Use 2nd color for Rain   1
+FLAG Plot Circles for Rain    0
+!
+ALIAS AMBG3
+TYPE Skip value               1//5
+TYPE Time Stamp Interval      1/31/30
+LINE 0.00/1
+TYPE Wind Speed 1             1/4;31/6
+ARRW .2/.4/1/3
+TYPE Wind Speed 2             1/4;31/12
+TYPE Wind Speed 3             1/4;31/17
+TYPE Wind Speed 4             1/4;31/23
+TYPE Wind Speed 5             1/4;31/27
+TYPE Wind Speed 6             1/4;31/33
+TYPE Wind Speed 7             1/4;31/42
+TYPE Wind Speed 8             1/4;31/48
+TYPE Wind Speed 9             1/4;31/56
+TYPE Wind Speed 10            1/4;31/63
+TYPE Wind Speed 11            1/4;31/74
+TYPE Wind Speed 12            1/4;31/150
+FLAG High Wind Speed          1
+FLAG Low Wind Speed           1
+FLAG Rain Flag                1
+FLAG Availability Flag        1
+FLAG Use 2nd color for Rain   0
+!
+ALIAS WAMBG4
+TYPE Skip value               1//1
+TYPE Time Stamp Interval      1/31/5
+LINE 0.00/1
+TYPE Wind Speed 1             1/5;31/6
+ARRW .2/.4/1/3
+TYPE Wind Speed 2             1/5;31/12
+TYPE Wind Speed 3             1/5;31/17
+TYPE Wind Speed 4             1/5;31/23
+TYPE Wind Speed 5             1/5;31/27
+TYPE Wind Speed 6             1/5;31/33
+TYPE Wind Speed 7             1/5;31/42
+TYPE Wind Speed 8             1/5;31/48
+TYPE Wind Speed 9             1/5;31/56
+TYPE Wind Speed 10            1/5;31/63
+TYPE Wind Speed 11            1/5;31/74
+TYPE Wind Speed 12            1/5;31/150
+FLAG Rain Flag                1
+FLAG Use 2nd color for Rain   1
+FLAG Plot Circles for Rain    0
+!
+ALIAS AMBG4
+TYPE Skip value               1//5
+TYPE Time Stamp Interval      1/31/30
+LINE 0.00/1
+TYPE Wind Speed 1             1/5;31/6
+ARRW .2/.4/1/3
+TYPE Wind Speed 2             1/5;31/12
+TYPE Wind Speed 3             1/5;31/17
+TYPE Wind Speed 4             1/5;31/23
+TYPE Wind Speed 5             1/5;31/27
+TYPE Wind Speed 6             1/5;31/33
+TYPE Wind Speed 7             1/5;31/42
+TYPE Wind Speed 8             1/5;31/48
+TYPE Wind Speed 9             1/5;31/56
+TYPE Wind Speed 10            1/5;31/63
+TYPE Wind Speed 11            1/5;31/74
+TYPE Wind Speed 12            1/5;31/150
+FLAG High Wind Speed          1
+FLAG Low Wind Speed           1
+FLAG Rain Flag                1
+FLAG Availability Flag        1
+FLAG Use 2nd color for Rain   0
+!
+!
+ALIAS SGWH
+TYPE Skip value               1//10
+TYPE Time Stamp Interval      1/31/30
+TYPE SGWH 1                   1/31/3
+TYPE SGWH 2                   1/27/6
+TYPE SGWH 3                   1/26/9
+TYPE SGWH 4                   1/24/12
+TYPE SGWH 5                   1/3/15
+TYPE SGWH 6                   1/22/18
+TYPE SGWH 7                   1/23/21
+TYPE SGWH 8                   1/5/24
+TYPE SGWH 9                   1/19/27
+TYPE SGWH 10                  1/17/30
+TYPE SGWH 11                  1/2/33
+TYPE SGWH 12                  1/15/36
+TYPE SGWH 13                  1/14/39
+TYPE SGWH 14                  1/30/42
+TYPE SGWH 15                  1/28/45
+TYPE SGWH 16                  1/7/70
+!
+!
+ALIAS SGWHE
+TYPE Skip value               1//10
+TYPE Time Stamp Interval      1/2/1
+TYPE SGWHE 1                  1/31/3
+TYPE SGWHE 2                  1/27/6
+TYPE SGWHE 3                  1/26/9
+TYPE SGWHE 4                  1/24/12
+TYPE SGWHE 5                  1/3/15
+TYPE SGWHE 6                  1/22/18
+TYPE SGWHE 7                  1/23/21
+TYPE SGWHE 8                  1/5/24
+TYPE SGWHE 9                  1/19/27
+TYPE SGWHE 10                 1/17/30
+TYPE SGWHE 11                 1/2/33
+TYPE SGWHE 12                 1/15/36
+TYPE SGWHE 13                 1/14/39
+TYPE SGWHE 14                 1/30/42
+TYPE SGWHE 15                 1/28/45
+TYPE SGWHE 16                 1/7/70
+!
+!
+ALIAS SGWHG
+TYPE Skip value               1//10
+TYPE Time Stamp Interval      1/7/1
+TYPE SGWHG 1                  1/31/3
+TYPE SGWHG 2                  1/27/6
+TYPE SGWHG 3                  1/26/9
+TYPE SGWHG 4                  1/24/12
+TYPE SGWHG 5                  1/3/15
+TYPE SGWHG 6                  1/22/18
+TYPE SGWHG 7                  1/23/21
+TYPE SGWHG 8                  1/5/24
+TYPE SGWHG 9                  1/19/27
+TYPE SGWHG 10                 1/17/30
+TYPE SGWHG 11                 1/2/33
+TYPE SGWHG 12                 1/15/36
+TYPE SGWHG 13                 1/14/39
+TYPE SGWHG 14                 1/30/42
+TYPE SGWHG 15                 1/28/45
+TYPE SGWHG 16                 1/7/70
+!
+!
+ALIAS SGWH2
+TYPE Skip value                1//10
+TYPE Time Stamp Interval       1/5/1
+TYPE SGWH2 1                   1/31/3
+TYPE SGWH2 2                   1/27/6
+TYPE SGWH2 3                   1/26/9
+TYPE SGWH2 4                   1/24/12
+TYPE SGWH2 5                   1/3/15
+TYPE SGWH2 6                   1/22/18
+TYPE SGWH2 7                   1/23/21
+TYPE SGWH2 8                   1/5/24
+TYPE SGWH2 9                   1/19/27
+TYPE SGWH2 10                  1/17/30
+TYPE SGWH2 11                  1/2/33
+TYPE SGWH2 12                  1/15/36
+TYPE SGWH2 13                  1/14/39
+TYPE SGWH2 14                  1/30/42
+TYPE SGWH2 15                  1/28/45
+TYPE SGWH2 16                  1/7/70
+!
+!
+ALIAS SGWHC
+TYPE Skip value                1//10
+TYPE Time Stamp Interval       1/5/1
+TYPE SGWHC 1                   1/31/3
+TYPE SGWHC 2                   1/27/6
+TYPE SGWHC 3                   1/26/9
+TYPE SGWHC 4                   1/24/12
+TYPE SGWHC 5                   1/3/15
+TYPE SGWHC 6                   1/22/18
+TYPE SGWHC 7                   1/23/21
+TYPE SGWHC 8                   1/5/24
+TYPE SGWHC 9                   1/19/27
+TYPE SGWHC 10                  1/17/30
+TYPE SGWHC 11                  1/2/33
+TYPE SGWHC 12                  1/15/36
+TYPE SGWHC 13                  1/14/39
+TYPE SGWHC 14                  1/30/42
+TYPE SGWHC 15                  1/28/45
+TYPE SGWHC 16                  1/7/70
+!
+!
+ALIAS SSHA
+TYPE Skip value               1//5
+TYPE Time Stamp Interval      1/31/30
+SYM1 20/1.00/1
+TYPE SSHA 1                   1/30/-200
+TYPE SSHA 2                   1/29/-150
+TYPE SSHA 3                   1/28/-100
+TYPE SSHA 4                   1/27/-75
+TYPE SSHA 5                   1/26/-50
+TYPE SSHA 6                   1/25/-25
+TYPE SSHA 7                   1/24/-10
+TYPE SSHA 8                   1/23/0
+TYPE SSHA 9                   1/22/10
+TYPE SSHA 10                  1/21/25
+TYPE SSHA 11                  1/20/50
+TYPE SSHA 12                  1/19/75
+TYPE SSHA 13                  1/18/100
+TYPE SSHA 14                  1/17/150
+TYPE SSHA 15                  1/16/200
+!
+!
+ALIAS TRAK1
+TYPE TRAK1                    1/21
+TYPE Skip value               1//40
+!
+!
+ALIAS TRAKE
+TYPE TRAKE                    1/7
+TYPE Skip value               1//40
+!
+!
+ALIAS TRAK2
+TYPE TRAK2                    1/6
+TYPE Skip value               1//40
+!
+!
+ALIAS ENS_CYC
+TYPE Trop Depression          1/5/34
+TYPE Gale                     1/7/48
+TYPE Trop Storm               1/17/64
+TYPE Hurricane                1/2/200
+TYPE GFSO                     1/2
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE NAM                      1/3
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE UKX                      1/4
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE NGX                      1/5
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE EC00                     1/6
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE EP01                     1/7
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE EP02                     1/8
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE EP03                     1/9
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE EP04                     1/10
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE EP05                     1/11
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE EP06                     1/12
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE EP07                     1/13
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE EP08                     1/14
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE EP09                     1/15
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE EP10                     1/16
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE EP11                     1/17
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE EP12                     1/18
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE EP13                     1/19
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE EP14                     1/20
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE Fcst Hour                0//12
+FLAG Date/Time                1
+FLAG Pressure                 1
+FLAG Marker                   1
+FLAG ColorCode                0
+!
+!
+ALIAS FFA
+TYPE Flash Flood Watches      1/17
+LINE 0.00/3
+SYM1 22/1.00/3
+TYPE Areal Flood Watches      0/5
+LINE 0.00/3
+SYM1 20/1.00/3
+FLAG Time                     1
+FLAG County/ Zone Name        0
+FLAG Immediate Cause          0
+FLAG Outline                  0

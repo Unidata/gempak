@@ -1,0 +1,25 @@
+!	This is the CGEMLIB XML error file
+!
+! Log
+! ---
+! E. Safford	04/06	initial coding
+!
+ 3      ! Both childValue and elementNumber have values, using only elementNumber.
+ 2      ! Both childNumber and childValue have values, using only childNumber.
+ 1	! Non-fatal xpath error.                           
+-1      ! Bad xmlBuf pointer (NULL).
+-2      ! Bad bufSize (<= 0).
+-3      ! Fatal error creating XPath expression.
+-4      ! Unable to allocate memory.
+-5      ! Xpath context error.
+-6      ! Error parsing xmlBuf.
+-7      ! Xpath context error.
+-8      ! Xpath expression error.
+-9      ! Node list is empty, no results returned.
+-10     ! elementName parameter is NULL.
+-11     ! Error opening xslt file.
+-12     ! Error in xslt file.
+-13     ! Unable to parse xmlBuf.
+-14     ! Unable to create context.
+-15     ! Error evaluating Xpath expression.
+-16     ! Xpath expr returned more than one node.

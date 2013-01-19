@@ -1,0 +1,8 @@
+$CC $CFLAGS -c nwx.c
+$FC $LDFLAGS -o $OS_BIN/nwx nwx.o $OS_LIB/nwx.a \
+		$OS_LIB/ginitp_alt.o $OS_LIB/gendp_alt.o \
+		-lnxm $GEMLIB $GPLT $DEVICE \
+		$OS_LIB/xwp.a $OS_LIB/xw.a $OS_LIB/ps.a \
+		$OS_LIB/gn.a $CGEMLIB $GPLT $GEMLIB \
+		-lm -lnetcdf $XLIBS -lz
+$RM *.o

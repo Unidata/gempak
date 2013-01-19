@@ -1,0 +1,16 @@
+
+
+                Surface Airways Decoder (RA) Library
+
+
+The RA library contains subroutines to decode and store surface airways
+reports.
+
+The airways decoder must have access to individual airways reports.
+RA_GRPT extracts reports from bulletins.
+
+Before the report can be decoded, the subroutine RA_GFLD must be called.
+This subroutine breaks the report into parts and saves them in a common
+area which can be accessed by the other subroutines.  RA_RHDR can then
+be called to get the report header information.  RA_DECD decodes the
+rest of the bulletin.

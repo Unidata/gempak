@@ -1,0 +1,83 @@
+! DG error file
+!
+  7	! Skipping !AS point(s) in both I and J grid index directions.
+  6	! Warning:  Maybe too many points skipped in !AS index direction.
+  5	! Warning:  User skip bounds given--global grid shift canceled.
+  4	! Warning:  !AS bound indexes of subset have been reset for skip.
+  3	! Too many mins and maxs found -- increase radius or reduce range.
+  2	! Too many maxs found -- increase radius or reduce range.
+  1	! Too many mins found -- increase radius or reduce range.
+ -1	! Grid size is too large.
+ -2	! Grid size is invalid.
+ -3 	! GFUNC is blank.
+ -4	! Output grid is not a scalar.
+ -5	! Output grid is not a vector.
+ -6	! An operator has an incorrect number of operands.
+ -7	! Input grid !AS cannot be found.
+ -8	! Input grid !AS is the wrong size.
+ -9	! Operator !AS has a calling sequence error.
+-10	! Internal grid list is full; simplify function.
+-11	! Operand !AS must be a vector.
+-12	! Operand !AS must be a scalar.
+-13	! Operand !AS must be read from grid file.
+-14	! DG_INIT has not been called.
+-15	! Center of polar grid is not valid.
+-16	! Map projection !AS is invalid.
+-17	! LEVEL !AS must be a layer.
+-18	! TIME !AS must be a time range.
+-19	! Operator !AS is not recognized.
+-20	! Stack is full; simplify function.
+-21	! Stack is empty; check operands, nesting.
+-22	! TIME !AS is invalid.
+-23	! LEVEL !AS is invalid.
+-24	! IVCORD !AS is invalid.
+-25	! Vector field cannot be computed.
+-26	! Layer of layers is invalid.
+-27	! Layer of time range is invalid.
+-28     ! No orientation vector for TANG or NORM.
+-29     ! No grid file name specified.
+-30     ! Error opening grid file.
+-31     ! Navigation is not the same as in first grid file.
+-32	! Invalid file number.
+-33     ! Too many grid files have been requested.
+-34     ! More than one output grid file requested.
+-35	! No origin set for MSFC.
+-36	! Invalid (negative) subroutine ID number in DG_ESUB.
+-37	! No reference grid navigation is set in GPLT.
+-38	! Grid flagged as globe wrapping does not wrap globe.
+-39	! No valid map projection has been set.
+-40	! Subset grid bounds cannot be computed.
+-41	! Subset grid is too large.
+-42	! DG_AREA cannot be called after DG_SUBG is called.
+-43	! Grid re-arrangement failed.
+-44	! Error setting subset grid projection.
+-45	! GPOINT or CXSTNS is blank.
+-46	! Invalid grid point.
+-47	! Internal grid size is too large.
+-48	! Both I bounds required in IJSKIP for global grid.
+-49	! !AS index upper IJSKIP limit exceeds grid dimension.
+-50     ! Grid navigation differs from reference grid.
+-51	! Grid file or template does not exist.
+-52	! Expected grid file is not open.
+-53	! Internal nav set without reference nav
+-54	! Grid file open failed in DG_FIXA.
+-55	! Grid file open failed in DG_GLEV.
+-56	! Grid file open failed in DG_NDTM.
+-57	! Grid file open failed in DG_NTIM.
+-58	! Only one output file is permitted.
+-59	! Cannot add column to output grid.
+-60	! Grid file open failed in DG_QGRD.
+-61	! Grid file open failed in DG_NWDT.
+-62	! Grid file open failed in DG_NFIL.
+-63	! Cannot subset into an output grid.
+-64	! Output navigation differs from internal navigation.
+-65	! Grid write failed in DG_NWDT.
+-66     ! Failed to get levels in DG_GLEV.
+-67	! Transfer grid navigation cannot be set.
+-68	! Invalid remapping type code.
+-69	! Invalid remapping grid relative position.
+-70	! Ensemble field cannot be computed.
+-71	! Layer field cannot be computed.
+-72	! ENS_ and LYR_ functions cannot occur together.
+-73     ! Memory allocation failed.
+-74     ! Home point not on grid.

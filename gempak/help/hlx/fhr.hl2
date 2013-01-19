@@ -1,0 +1,15 @@
+     FHR 
+
+     FHR is the forecast hour of freezing levels. FHR can be a single
+     hour or a range. For example, 0, 3, 0-6, 6-12 all are valid 
+     values.
+
+     The defalut value is 0-6.
+
+     When the freezing levels are written into a GFA elements, FHR is
+     used to determine the GFA subtype. If the FHR is a single hour, 
+     the GFA subtype will be set to snapshot. If the FHR is a range 
+     that ends with 12, for instance, 6-12, the GFA subtype will be 
+     set to outlook. Freezing leveles with FHRs other than these two 
+     types will be written to FZLVLs with subtype of forecast.
+

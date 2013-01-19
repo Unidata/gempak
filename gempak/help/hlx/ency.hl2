@@ -1,0 +1,50 @@
+     ENCY
+
+     ENCY is the initial time for the ENCY forecast tracks, the colors
+     for each model track, the model names, flags for plotting the time,
+     the forecast pressures and markers at each forecast time.
+
+	Initial time|Model clrs|Model names|Time flg|Pres flg|
+                    Marker flg|Color code flg;wlv1;wlv2;wlv3;wlv4|Fcst_Hour
+
+     ENCY forecast tracks valid for the initial time will be plotted on
+     the map.  Forecast tracks show points at 6 hour intervals from
+     0 through 180 hours, if available. The initial time is given as 
+     a GEMPAK date/time string.  Any missing items from the string will be
+     filled in by the system time.  The initial time may also be LAST.
+     LAST will use the system time to plot the most recent tracks whose
+     initial time is within 9 hours of the current time.  ALL is not accepted
+     as an initial time for ENCY data.
+
+     The colors are separated by a semi-colon, as are the model names.
+     If no colors or model names are given, all model tracks will be plotted
+     at default colors.  If specific model names are listed, only those
+     model tracks will be plotted.  Default colors will be used unless colors
+     are explicitly given, with a one-to-one correspondence between model names
+     and colors.  Specifying colors without model names has no effect.
+
+     The time flag is YES or NO and controls whether or not to plot the initial
+     time of the ENCY forecast tracks on the map.  The default is NO.
+
+     The pressure flag is YES or NO and controls whether or not to plot the 
+     pressure in millibars, when given, at each forecast time.
+     The default is NO.
+
+     The marker flag is YES or NO and controls whether or not to plot a
+     marker at each forecast time on the map.  The default is NO.
+
+     The color code flag is YES or NO and controls whether or not to color
+     code the track based on the wind speed at each point of the track.
+     If the flag is Y, the color coding is on.  The wind levels to color
+     code the flag follow the flag.  If none are specified, the default 
+     values of 34 and 64 mph are used.  The colors are controlled by
+     miscset.tbl.  The default for flag is NO.
+
+     Single forecast hour field takes value ranging from 0 to 120. And it
+     should be multiples of 6 , namely 0,6,12,... 120. The value is not a
+     multiple of 6, gpmap will round it to the nearest one less than this
+     value. It can also take value -1, which means all forecast hour data 
+     will be displayed. If no valid vaule is found, the default value -1
+     will take effect.
+
+

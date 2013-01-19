@@ -1,0 +1,37 @@
+     GRDHDR
+
+     GRDHDR is a list of the valid grid header flags, separated by
+     slashes.
+
+	Horizontal Remap Type / Directional Grid Type
+
+     The values in GRDHDR are set in the header array of the grid
+     stored in a GEMPAK data file. The values for horizontal remap
+     type define how the grid is to be interpolated to a new 
+     navigation. The directional grid type flag identifies grids
+     that are direction grids and therefore must be handled differently
+     when interpolated from one navigation to another.
+
+     The Horizontal Remap Type has values 0, 1 or 2 defined as the 
+     following:
+
+	0 = Regular area averaging for continuous gribs
+	1 = Discrete field, use nearest neighbor
+	2 = Force bilinear interpolation
+
+     The Directional Grid Type has values 0, 1, or 2 defined as the
+     following:
+
+	0 = NOT a directional field
+	1 = IS a directional field in degrees
+	2 = IS a directional field in radians 
+
+     If any flag is not given by the user, the value is set to a
+     default of 0.
+
+     The setting of the grid header elements is done automatically
+     by programs like NAGRIB and the objective analysis programs.
+     GDMOD may be used to change the setting of the grid header
+     elements.  The header elements are all zero for grids created 
+     prior to the introduction of the remapping capability.
+

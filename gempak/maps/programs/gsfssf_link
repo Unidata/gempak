@@ -1,0 +1,3 @@
+$FC $FFLAGS $LDFLAGS -o gsfssf.$NA_OS gsfssf.f \
+			$GEMLIB $CGEMLIB $GEMLIB
+$RM *.o

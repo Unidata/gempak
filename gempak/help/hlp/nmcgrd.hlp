@@ -1,0 +1,91 @@
+NMCGRD transfers grids from a NMC file to a GEMPAK grid file.
+                                                                                
+INPUT PARAMETERS                                                                
+                                                                                
+    GDFILE    *GEMPAK grid file
+    OUTPUT    *Output device (TFP)
+    GDEFIL    *NMC grid file
+    MAXGRD    *Maximum number of grids
+    CPYFIL    *Navigation source
+                                                                                
+                                                                                
+                                                                                
+PROGRAM DESCRIPTION                                                             
+                                                                                
+    This program transfers grids from an NMC grid file into a
+    GEMPAK grid file.  If the GEMPAK file does not exist, it is
+    created using MAXGRD and CPYFIL in the same manner as GDCFIL.
+
+    CPYFIL may also be used to specify the output grid as a subset
+    of the input grid.  If the output grid is a proper subset of
+    the input grid, then specify CPYFIL as follows
+
+    		CPYFIL = #nnn>#mmm
+
+    This will tell NMCGRD to read grid number nnn and subset it
+    to grid number mmm.
+ 
+    GDFILE may be set to list, if so, no GEMPAK file is created.
+    Instead, a listing of the contents of the NMC file is printed
+    on the terminal.
+
+    GDEFIL specifies the name of the NMC file followed by 
+    optional qualifiers preceded by *'s.  The information after
+    the first * is interpreted the following way:
+
+            Blank or no *   =>   GRIB data
+            *SEQ            =>   Office Note 84 Sequential
+            *DIR            =>   Office Note 84 Direct Access
+                                 (NMC archive file)
+            *###            =>   ### is the Office Note 84
+                                 starting word number
+
+    The information following the second * is the grid time type:
+
+            Blank or no *   =>   F (forecast) assumed
+            *A              =>   Analysis
+            *F              =>   Forecast
+            *G              =>   Guess
+            *I              =>   Initialization
+
+                                                                                
+
+EXAMPLES:
+
+
+     1. Create a grid file called NEW.GRD from the information                   
+        within grid file OLD.GRD.  Read Office Note 84 grids from
+        sequential NMC file named NGM.GRD.  List the grids
+        being transfered on the screen.
+
+        GDFILE  = new.grd
+        OUTPUT  = t
+        GDEFIL  = ngm.grd*seq
+        MAXGRD  = 2000
+        CPYFIL  = old.grd
+
+     2. Create a grid file by subsetting grid 104 to grid 105.
+	The contents of the file are analysis fields.
+
+	GDFILE = new.grd
+	CPYFIL = #104>#105
+	GDEFIL = ngm104.grd*seq*a
+                                                                                
+                                                                                
+ERROR MESSAGES                                                                  
+                                                                                
+    [NMCGRD  +2]    Normal end of file with grid.
+    [NMCGRD  +1]    Normal end of file without grid.
+    [NMCGRD  -1]    Fatal error initializing TAE.                               
+    [NMCGRD  -2]    Fatal error reading TAE parameters.                         
+    [NMCGRD  -3]    Fatal error initializing GEMPLT.                            
+    [NMCGRD  -4]    Grid navigation has no NMC grid number.
+    [NMCGRD  -5]    Cannot open file ... .
+    [NMCGRD  -6]    CPYFIL could not be opened.
+    [NMCGRD  -7]    Error creating output grid.
+    [NMCGRD  -8]    Grid namd ... is not in the table.
+    [NMCGRD  -9]    Table file open failed.
+    [NMCGRD -10]    Grid navigation is invalid.
+    [NMCGRD -11]    ... is an invalid NMC file qualifier.
+    [NMCGRD -12]    Error in reading grid starting at ... .
+    [NMCGRD -13]    Error in writing grid ... .

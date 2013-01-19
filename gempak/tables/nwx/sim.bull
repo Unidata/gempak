@@ -1,0 +1,12 @@
+! SIM.BULL
+!
+! Location information for the following product:
+! Satellite_Interpretattion_Message.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+ATHW40 PHFO     HONOLULU                         HI US  2129 -15780     0
+ATPQ40 PGUM     GUAM                             GU US  1347  14478     0

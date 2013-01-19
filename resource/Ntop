@@ -1,0 +1,22 @@
+Ntop.geometry:	+0+0
+Ntop*background:	grey75
+Ntop*foreground:	black
+!
+! There are two ways to modify the background color for applications:
+!
+!1. Use a X color name to specify the background color.  Specify the following:
+!	Ntop*appbgName:		xcolor name
+!   For example:
+!	Ntop*appbgName:		grey50
+!
+!2. Specify an integer 0-255 to specify the RGB component.  For example:
+!	Ntop*appbgRed:		200
+!	Ntop*appbgGreen:	20
+!	Ntop*appbyBlue:		200
+!
+! If an invalid X Color name is specified, the color components will be
+! used if they are valid. Otherwise black will be used. If a color component
+! that component will be set to 0.
+!
+! WARNING: If a valid appbgName is also specified, the color components 
+!          will have no effect

@@ -1,0 +1,28 @@
+!	PC error file
+!
+-1	! NPARM is invalid.
+-2	! IVERT is invalid.
+-3	! NLEV is invalid.
+-4	! PC_INIT must be called.
+-5	! Invalid number of output parameters.
+-6	! PC_SSTN must be called first.
+-7	! Output parameters have not been defined.
+-8	! Requested level number is out of range.
+-9	! Surface data requested but not in data set.
+-10	! Only surface data can be computed when IVERT = 0.
+-11	! No valid data at station.
+-13	! Data cannot be computed for output vertical coordinate.
+-15	! Number of output parameters is incorrect. 
+-19	! No interpolations can be done since PRES is not computable.
+-20	! Function table cannot be opened.
+-21	! Error opening parameter type table.
+-22	! Invalid index in PC_COMP.
+-23	! Data to compute isentropic data is missing.
+-24	! Interpolation PRES is not between two input levels.
+-26	! Isentropic data is not computable.
+-27	! Computation of THTA does not converge.
+-28	! Input PRES of 0 is invalid.
+-29	! No such condition value.
+-30	! Invalid index.
++20	! There are too many functions in table for internal buffer.
++21	! There are too many parameters in parameter type table.

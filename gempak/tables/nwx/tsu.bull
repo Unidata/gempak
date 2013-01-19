@@ -1,0 +1,17 @@
+! TSU.BULL
+!
+! Location information for the following product:
+! Tsunami_Watch/Warning.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+! Log:
+! A. Hardy/NCEP		11/04	separated out the lat/lons
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+WEHW40 PHEB     PACIFIC_TSUNAMI_WARNING_CTR      HI US  2131 -15800     0
+WEHW50 PHEB     PACIFIC_TSUNAMI_WARNING_CTR      HI US  2151 -15780     0
+WEPA40 PHEB     PACIFIC_TSUNAMI_WARNING_CTR      HI US  2151 -15830     0
+WEPA41 PAAQ     PALMER_MUNICIPAL                 AK US  6159 -14908     0

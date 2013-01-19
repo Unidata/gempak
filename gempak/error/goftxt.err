@@ -1,0 +1,20 @@
+! G2T error file.
+!
++4	! WARNING:  Key word not found.
++3	! WARNING:  Incorrect zone alias.
++2	! WARNING:  !AS not found.  CONTINUING--- 
++1	! WARNING:  Grid-to-text number not found.
+-1	! Cannot open table file.
+-2	! File processing error.
+-3	! Error processing G2T data.
+-4	! Error processing bound files.
+-5	! No headline string.
+-6	! Cannot find the subzone.
+-7	! Cannot compute scalar field.
+-8	! Cannot compute vector field.
+-9	! Cannot find appropriate time trend.
+-10	! Incorrect storm type.
+-11	! Incorrect data type.
+-12	! Text processing error.
+-13	! Incorrect zone number.
+-14	! Cannot find the zone.

@@ -1,0 +1,44 @@
+     VERCEN
+
+     VERCEN allows the GDGRIB user to specify the contents of bytes 4,
+     5, 6, and 26 of the GRIB PDS.  The input is given as follows:
+
+                byte_4/byte_5/byte_6/byte_26
+
+     Values may be omitted in specifying VERCEN.  For example, to omit
+     the first and third values, specifying only the second and fourth,
+     enter the following:
+
+               /byte_5//byte_26
+
+
+     If values are omitted, the following defaults are inserted:
+
+               BYTE    Default value           Meaning
+
+                 4           2         Parameter Table Version #
+                 5           7         CENTER # (7->NCEP)
+                 6           0         Generating Process ID
+                26           5         Sub-center (5->HPC)
+
+     See NCEP OFFICE NOTE 388 for more information on how to set these
+     parameters.  Below is a table of center numbers that may be used
+     in byte number 7 of the PDS.
+
+     ID#                        NAME                          ABBREV
+ 
+     007 US Weather Svc - Nat. Cntrs for Envir. Prediction     NCEP
+     008 US Weather Svc - NWS Telecommunications Gateway       NCEP
+     009 US Weather Svc - Field Stations                       NCEP
+     034 Japanese Meteorological Agency - Tokyo                JMA
+     052 US Weather Svc (NCEP/TPC) Nat. Hurricane Cntr - Miami NHC
+     054 Canadian Meteorological Service - Montreal            CMS
+     057 US Air Force - Global Weather Central                 GWC
+     058 US Navy - Fleet Numerical Oceanography Center         FNOC
+     059 NOAA Forecast Systems Laboratory - Boulder, CO        FSL
+     060 Nat. Center for Atmos. Research (NCAR) - Boulder, CO  NCAR
+     074 UK Meteorological Office - Bracknell                  UKMO
+     085 French Weather Service - Toulouse                     FWS
+     097 European Space Agency (ESA)                           ESA
+     098 Eur. Cntr for Medium-range Wthr Frcsts - Reading      ECMWF
+     099 DeBilt, Netherlands                                   DEBILT

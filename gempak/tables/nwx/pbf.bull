@@ -1,0 +1,22 @@
+! PBF.BULL
+!
+! Location information for the following product:
+! Prescribed_Burn_Forecast.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+FNUS71 KBOX     TAUNTON                          MA US  4195  -7112     0
+FNUS72 KCAE     COLUMBIA                         SC US  3393  -8112     0
+FNUS72 KJAX     JACKSONVILLE                     FL US  3047  -8169     0
+FNUS72 KMLB     MELBOURNE                        FL US  2811  -8065     0
+FNUS72 KTAE     TALLAHASSEE                      FL US  3045  -8430     0
+FNUS74 KLCH     LAKE_CHARLES                     LA US  3012  -9320     0
+FNUS74 KOUN     NORMAN                           OK US  3522  -9745     0
+FNUS75 KBOU     DENVER                           CO US  4000 -10526     0
+FNUS75 KBYZ     BILLINGS                         MT US  4575 -10856     0
+FNUS75 KREV     RENO                             NV US  3956 -11979     0
+FNUS76 KLOX     LOS_ANGELES/OXNARD               CA US  3420 -11912     0
+FXUS76 KMFR     MEDFORD                          OR US  4236 -12287     0

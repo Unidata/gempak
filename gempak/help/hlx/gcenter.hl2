@@ -1,0 +1,19 @@
+     GCENTER
+
+     GCENTER sets the center latitude-longitude on the ETA model domain
+
+		GCENTER = TPH0D;TLM0D
+
+                                                                         
+     TPH0D and TLM0D  are the center latitude (W is negative) and  
+     longitude (E is positive) of the computational domain. Note that     
+     it is not necessary to to recompile the model if you change the     
+     areal coverage of the model domain as long as the number of grid    
+     points remains the same.                                            
+                                                                         
+     For a grid centered at 108 W, 39 N (Centered over Colorado)    
+                                                                         
+        TPH0D =   39.0
+        TLM0D =  -108.0  Note the Negative for W                        
+
+     set GCENTER = 39.0;-108.0

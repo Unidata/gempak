@@ -1,0 +1,38 @@
+# comment lines begin with #
+# File can create a gamet structure using the following
+# $ Start a Gamet
+# % Start an element type (may be > 1 / gamet )
+# ! Start an area (may be > 1 / element type )
+# !! End an area
+# %% End an element type
+# $$ End a Gamet
+# volcano type
+#START GAMET
+$
+KZLC
+KKCI
+SALT LAKE CITY FIR BLW FL450
+22
+18
+OR ID MT WY NV UT
+1
+Cat in Hat
+#-----
+%
+VA
+1
+!
+#vor string 0
+BISON N 4224 W 11530
+#attr 1
+ERUPTED VA CLD TOP FL330
+#snap 2
+0 0 0
+#states 3
+MT
+#movement 4
+
+!!
+%%
+$$
+#END GAMET

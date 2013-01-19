@@ -1,0 +1,16 @@
+!	SC error messages
+!
+  32	! Undecodable weather field:  !AS
+  31	! Error in 24-hour max/min field:  !AS
+  29	! Error in new snow field:  !AS
+  28	! Error in water equiv. of snow field:  !AS
+  25	! Error in duration of sunshine field:  !AS
+  23	! Error in 24-hour precip field:  !AS
+  20	! Error in snow depth field:  !AS
+  19	! Error in 6-hour precip field:  !AS
+  17	! Unable to decode date string:  !AS
+  16	! Undecodable field in report: !AS
+  15	! Coding error in report: !AS
+  14	! Error in cloud cover and type group: !AS
+  -1	! Report's length is zero.
+  -2	! No decodable fields in main body of report.

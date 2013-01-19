@@ -1,0 +1,44 @@
+! AWW.BULL
+!
+! Location information for the following product:
+! Aviation_Weather_Warning.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+WWGM80 PGUM     GUAM                             GU US  1347  14478     0
+WWUS81 KALY     ALBANY                           NY US  4268  -7383     0
+WWUS81 KBOX     TAUNTON                          MA US  4195  -7112     0
+WWUS81 KBUF     BUFFALO                          NY US  4293  -7870     0
+WWUS82 KCAE     COLUMBIA                         SC US  3393  -8112     0
+WWUS82 KCHS     CHARLESTON                       SC US  3288  -8001     0
+WWUS82 KGSP     GREENVILLE/SPARTANBURG           SC US  3488  -8222     0
+WWUS82 KILM     WILMINGTON                       NC US  3427  -7791     0
+WWUS82 KJAX     JACKSONVILLE                     FL US  3047  -8169     0
+WWUS82 KMLB     MELBOURNE                        FL US  2811  -8065     0
+WWUS82 KTBW     TAMPA_BAY_AREA/RUSKIN            FL US  2770  -8240     0
+WWUS82 TJSJ     SAN_JUAN                         PR US  1843  -6600     0
+WWUS83 KABR     ABERDEEN                         SD US  4545  -9841     0
+WWUS83 KMPX     TWIN_CITIES/CHANHASSEN           MN US  4484  -9355     0
+WWUS84 KAMA     AMARILLO                         TX US  3522 -10169     0
+WWUS84 KBMX     BIRMINGHAM                       AL US  3316  -8677     0
+WWUS84 KCRP     CORPUS_CHRISTI                   TX US  2777  -9750     0
+WWUS84 KEPZ     EL_PASO_TX/SANTA_TERESA          NM US  3187 -10669     0
+WWUS84 KEWX     AUSTIN/SAN_ANTONIO               TX US  2970  -9801     0
+WWUS84 KFWD     DALLAS/FORT_WORTH                TX US  3283  -9729     0
+WWUS84 KJAN     JACKSON                          MS US  3231  -9008     0
+WWUS84 KLUB     LUBBOCK                          TX US  3352 -10187     0
+WWUS84 KMAF     MIDLAND/ODESSA                   TX US  3194 -10218     0
+WWUS84 KOUN     NORMAN                           OK US  3522  -9745     0
+WWUS84 KSHV     SHREVEPORT                       LA US  3245  -9383     0
+WWUS84 KSJT     SAN_ANGELO                       TX US  3137 -10048     0
+WWUS85 KABQ     ALBUQUERQUE                      NM US  3502 -10662     0
+WWUS85 KPSR     PHOENIX                          AZ US  3343 -11201     0
+WWUS85 KSLC     SALT_LAKE_CITY                   UT US  4077 -11194     0
+WWUS85 KTFX     GREAT_FALLS                      MT US  4745 -11137     0
+WWUS85 KVEF     LAS_VEGAS                        NV US  3604 -11518     0
+WWUS86 KHNX     SAN_JOAQUIN_VALLEY/HANFORD       CA US  3631 -11962     0
+WWUS86 KMFR     MEDFORD                          OR US  4236 -12287     0
+WWUS86 KSGX     SAN_DIEGO                        CA US  3290 -11705     0

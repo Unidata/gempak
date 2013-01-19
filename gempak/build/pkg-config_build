@@ -1,0 +1,65 @@
+#!/bin/sh
+if  [ $# != 0 ]
+then
+  version=$1
+  path=$NAWIPS/extlibs/pkg-config/$version
+  if  [ -d $path ]
+  then
+    echo "----->  BUILDING pkg-config PROGRAM $version"
+    mkdir -p $OS_LIB/extlibs/pkg-config
+    cd $OS_LIB/extlibs/pkg-config
+
+#=========================================================
+
+#  Initialize "influential environment variables"
+
+    export  FC=""		# Fortran compiler command
+    export  F77=""		# Fortran 77 compiler command
+    export  F90=""		# Fortran 90 compiler command
+    export  CPP=""		# C prepocessor
+    export  CXX=""		# C++ compiler command
+    export  CXXCPP=""		# C++ preprocessor
+    if [ $OS = "HPUX" ]
+    then
+      export  CFLAGS="+DA1.1"	# C compiler flags
+    else
+      export  CFLAGS=""
+    fi
+    export  FCFLAGS=""		# Fortran compiler flags
+    export  FFLAGS=""		# Fortran 77/90 compiler flags
+    export  LDFLAGS=""		# linker flags
+    export  F90FLAGS=""		# Fortran 90 compiler flags
+    export  CXXFLAGS=""		# C++ compiler flags
+    export  CPPFLAGS="-DNDEBUG"	# C/C++ preprocessor flags
+    export  PKG_CONFIG="$OS_BIN/pkg-config"
+
+#=====================================================================
+# Clean up after any previous configure/make
+#    if  [ -f Makefile ]
+#    then
+#      make -s distclean
+#    fi
+
+# Run the configure script for this OS type
+    ${path}/configure --prefix=$OS_ROOT --disable-shared \
+		--disable-dependency-tracking
+
+# Compile, check, and install the package
+    echo "----->  COMPILING pkg-config PROGRAM $version"
+    make -s
+#    make -s check 
+    echo "----->  INSTALLING pkg-config PROGRAM as \"$OS_BIN/pkg-config\""
+    make -s install
+
+# Clean up after this configure/make
+#    make -s distclean
+
+############################################################
+    echo "----->  CREATION OF pkg-config PROGRAM $version IS COMPLETE."
+    echo "        ================================================="
+  else
+    echo "Directory \"$path\" does not exist!"
+  fi
+else
+  echo "Please include a valid pkg-config program version; e.g., v0.20"
+fi

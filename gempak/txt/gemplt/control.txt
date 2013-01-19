@@ -1,0 +1,76 @@
+
+
+                         Control Subroutines
+
+
+Control Of Plot Space
+
+
+GSDEVA is often the second subroutine called by an application program.
+It specifies the graphics device for plotting.  GSDEVA is called before
+any plotting begins because several transformations are not fully
+defined until a plotting device is established.  When the plotting
+device is identified, the associated device driver is installed.  The
+device driver becomes a separate sub-process spawned by GPLT.
+
+
+
+Frames And Animation
+
+
+An application program may produce a single picture, or it may create a
+sequence of frames.  The sequence of frames may be a slide show (each
+frame in the sequence has no relation to adjacent frames), or it may
+form a movie loop (an animation sequence).
+
+When more than a single frame is plotted, subroutine GSTANM is usually
+the third subroutine called by an application program.  It establishes
+the start of a sequence of frames.  Plotting and drawing that follows
+is rendered to the first frame of the sequence until an explicit change
+to the next frame is made.
+
+After some drawing and plotting takes place to a frame, subroutine
+GEPLOT is called to flush the buffers.  If the currently set device
+driver is an interactive driver, such as a display screen, the plotted
+image appears on the screen when the buffers are flushed.
+
+Subroutine GCLEAR is used to clear the current frame.  A program may
+plot over and over to the same frame, calling GEPLOT and GCLEAR as often
+as desired, or the program may advance to the next frame and plot.
+
+A frame may be given a title with a call to GMESG.
+
+A call to subroutine GSPLOT advances to a new frame.  Typically, a
+program calls GEPLOT to end one frame, GSPLOT to start the next frame,
+followed by more plotting commands.
+
+To end a sequence of frames, the last frame is closed with a call to
+GEPLOT, then the frame sequence is ended with a call to GENANM.
+
+An interactive program, that has generated an animation frame sequence,
+may set the frames in motion for the viewer.  Subroutine GLOOPC provides
+the control functions.
+
+
+
+Windows
+
+
+Some drivers can handle several output channels simultaneously.  For
+example, the XW driver can have several windows open at the same time
+and plot to each one separately.  Every output channel is differentiated
+from the others by its unique name (the window name for XW).  A program,
+that has several output channels open, switches between them by calling
+subroutine GSLWIN.
+
+
+
+Miscellaneous
+
+
+For interactive programs, subroutine GGTPNT gets X and Y point pairs
+from a user's mouse button clicks.
+
+For certain devices, those that use an intermediate plot file,
+subroutines GCLOSP and GOUTP close and display the contents of such a
+plot file.

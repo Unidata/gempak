@@ -1,0 +1,18 @@
+! VAA.BULL
+!
+! Location information for the following product:
+! Volcanic_Activity_Advisory.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+! Log:
+! A. Hardy/NCEP		11/04	separated out the lat/lons
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+FVAK20 PANC     ANCHORAGE_INTL_ARPT              AK US  6076 -15042     0
+FVAK21 PANC     ANCHORAGE_INTL_ARPT              AK US  6096 -15022     0
+FVAK22 PANC     ANCHORAGE_INTL_ARPT              AK US  6116 -15002     0
+FVAK23 PANC     ANCHORAGE_INTL_ARPT              AK US  6136 -14982     0
+FVAK24 PANC     ANCHORAGE_INTL_ARPT              AK US  6156 -14962     0

@@ -1,0 +1,14 @@
+! nids_vel8.tbl
+!
+! Color table for 8-level NIDS Mean Radial Velocity
+! Appendix A, FMH-11 Part C
+!
+!Color name    Abrev   Red  Green   Blue  X color name
+BLACK           BLA      0      0      0  black
+LTBLUE          LTB      0    224    255
+MDGREEN         MDG      0    187      0
+DKGREEN         DKG      0    143      0
+MDORANGE        MDO    248    135      0
+MDYELLOW        MDY    255    207      0
+RED             RED    255      0      0
+DKPURPLE        DKP    119      0    125

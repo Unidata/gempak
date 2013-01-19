@@ -1,0 +1,47 @@
+     CINT
+ 
+     CINT is the contour interval, minimum and maximum values and number 
+     of digits, separated by slashes:
+
+		contour interval / minimum / maximum / ndigits
+
+     The contour interval may be any real number.  If it is not specified 
+     or if the value is 0, the program will select an interval which will 
+     generate 5 to 10 contour levels.
+
+     The minimum and maximum values specify the range of data to use in 
+     selecting contour levels.  If either value is not specified, the 
+     value will be obtained from the range of values in the dataset.  If 
+     the minimum and maximum are equal, that value will be used and only 
+     one contour level will be selected.
+
+     A list of two or more contour levels may be entered using semicolons 
+     to separate the individual values.  In this case, the minimum and 
+     maximum are ignored.
+ 
+     A text string may be specified to replace the contour level value as
+     the contour label. In a list of contour values, enter a value and a
+     text string separated by an "=" sign. The input format is shown 
+     below:
+                value1=label1;value2=label2;...;valueN=labelN 
+
+     To set the contour label when plotting a single contour level by 
+     setting the minimum and maximum equal, enter the value and the text
+     string separated by an "=" sign before the first slash. For example:
+		value1=label1 / value1 / value1
+
+     If the number of digits (ndigits) is specified,  the integer portion
+     of the contour labels is forced to contain ndigits characters, not
+     counting the minus sign, if present.  If the the number of characters
+     in the integer portion is less than ndigits, that portion is expanded
+     by padding to the left of the leading digit with zeroes.  For example:
+     if ndigits = 3 and the original label is 15 or -5, the new labels will
+     be plotted as 015 and -005 respectively.  If the number of characters 
+     in the original label is greater than or equal to ndigits,  the original
+     label will be unchanged.  Using ndigits = 4, original labels 1260 and
+     43712 would be plotted as 1260 and 43712, while a label of 580
+     would be plotted as 0580.  If there are decimal places or scientific
+     notation in the original labels, everything to the right of the decimal
+     point will be plotted without change.  Therefore, if ndigits = 3, then
+     7.25, -12.4, and 6.5E+12 would be plotted as 007.25, -012.4 and
+     006.5E+12, respectively.

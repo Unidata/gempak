@@ -1,0 +1,4 @@
+$CC $CFLAGS -c dcwou.c
+$FC $LDFLAGS -o $OS_BIN/dcwou dcwou.o \
+        $BRIDGE $GEMLIB $CGEMLIB
+$RM *.o

@@ -1,0 +1,33 @@
+!NGMMOS.PACK
+!
+!This table is the packing table for DCNMOS, which decodes NGM MOS model data.
+!
+!*Log:
+!
+!D. Keiser   2/96
+!S. Maxwell  6/96  Renamed FOUS14.PACK to NGMMOS.PACK
+!F. J. Yen  10/98  Replacd MXMN with TNTF and TDYF
+!
+TNTF	  -100.        150.      1.
+TDYF	  -100.        150.      1.
+TMPF	  -100.        150.      1.
+DWPF	  -100.        150.      1.
+CLCT	     0.         10.      1.
+SKNT	     0.        150.      1.
+DRCT	     0.        360.     10.
+PP06	     0.        100.      1.
+PP12	     0.        100.      1.
+QP06	     0.          6.      1.
+QP12	     0.          6.      1.
+TS06	     0.        100.      1.
+TS12	     0.        100.      1.
+TC06	     0.        100.      1.
+TC12	     0.        100.      1.
+PCPT	     0.          2.      1.
+POZP	     0.        100.      1.
+POSN	     0.        100.      1.
+SN06	     0.          6.      1.
+SN12	     0.          6.      1.
+FCIG	     0.          7.      1.
+FVIS         0.          5.      1.
+OVIS         0.          2.      1.

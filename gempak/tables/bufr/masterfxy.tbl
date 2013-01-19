@@ -1,0 +1,27 @@
+! MASTERFXY.TBL
+!
+! This table contains all FXY (BUFR descriptor) file names, and
+! their associated aliases and BUFR output file names.
+!
+! Log:
+!
+! D. Kidwell/NCEP	11/03	Created
+! M. Li/SAIC		05/04	Added a fourth column "VGF TYPE NAME"
+! D. Kidwell/NCEP	 7/04	Added SWM entries
+! M. Li/SAIC		 9/04	Added TURB to SWM
+!
+!ALIAS  FXY FILE NAME   BUFR FILE NAME        VGF TYPE NAME
+! 
+! High level sig weather
+SWH     fxyswhcld       JUBf99.YYYYMMDDHH     CLOUD
+SWH     fxyswhfrt       JUFf00.YYYYMMDDHH     FRONT
+SWH     fxyswhjet       JUWf96.YYYYMMDDHH     JETS
+SWH     fxyswhtrp       JUTf97.YYYYMMDDHH     TROP
+SWH     fxyswhtur       JUCf00.YYYYMMDDHH     TURB
+SWH     fxyswhvts       JUVf00.YYYYMMDDHH     LABEL
+SWM     fxyswmcld       JUNf00.YYYYMMDDHH     MCLOUD
+SWM     fxyswmfrt       JUJf00.YYYYMMDDHH     FRONT
+SWM     fxyswmjet       JUTf00.YYYYMMDDHH     JETS
+SWM     fxyswmtrp       JUOf00.YYYYMMDDHH     TROP
+SWM     fxyswmtur       JUMf00.YYYYMMDDHH     TURB
+SWM     fxyswmvts       JUVf00.YYYYMMDDHH     LABEL

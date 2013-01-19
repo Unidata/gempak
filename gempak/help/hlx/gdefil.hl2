@@ -1,0 +1,40 @@
+     GDEFIL
+
+     GDEFIL is the name of the grid edit file which will be used to update 
+     a grid file.  The edit file must contain only complete grids.
+
+     GDEFIL is a text file which may be created using the program GDLIST 
+     with F as an output device and GAREA = DSET.  A text editor may be 
+     used to create or change the grid edit file.
+  
+     GDEFIL must contain the following information before the complete 
+     grid data:
+  
+     The time, level, vertical coordinate and parameter name MUST appear 
+     on the same line in the order given.  The time must be a fully 
+     qualified GEMPAK time.  The parameter name is the name of the grid.
+
+     The first and last row and column information must appear on one line.  
+     Column information must be preceded by the word COLUMNS:.  Row 
+     information must be preceded by the word ROW:.  The first row and 
+     column must be 1.  The last row and column must be the same as the 
+     grid size in the file.  For example:
+  
+		COLUMNS:  1  8      ROWS:   1  6
+
+     If the string FACTOR:, appears and is followed by an integer, the data 
+     will be divided by 10**SCALE before being stored in the grid file.  In 
+     the following example, the data will be divided by 10**5.
+
+		SCALE FACTOR:  10**5
+  
+     The string COLUMN: signals the beginning of the grid data.  If the 
+     required grid information has not already been found, an error will 
+     result.
+ 
+     The data for the grid follows the grid keywords.  The data for a grid 
+     is listed from the top (last) row to the bottom row in the grid.  
+     The beginning of each row of data must be preceded by the string ROW.  
+     Data consists of numeric values for each data point; missing data 
+     should be entered as -9999.0.
+

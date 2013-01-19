@@ -1,0 +1,34 @@
+
+SSFGSF
+
+  SSFGSF converts a map file in Sequential Standard Format (SSF) to
+  a GEMPAK Standard Format (GSF).
+
+SYNOPSIS
+
+  ssfgsf [options] -o output input
+
+DESCRIPTION
+
+  The GSF file is a packed binary file which is used for rapid access
+  to the map segments. The formats of these files are documented in
+  the GEMPAK Map Files Document.
+
+OPTIONS
+
+  -w  subset
+      Define subset area in the form of: MINLAT;MINLON;MAXLAT;MAXLON.
+      If no subset is provided, the whole SSF file will be converted.
+
+  -h
+      Display this help.
+      
+EXAMPLE
+
+  ssfgsf -o hiosuo.gsf hiosuo.ssf
+
+	the program converts the whole SSF file into GSF file.
+
+  ssfgsf -w 19.00;-119.00;47.00;-56.00 -o hiosuo.gsf hiosuo.ssf
+
+  	the program converts those points within the given bounds.

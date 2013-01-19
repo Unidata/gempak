@@ -1,0 +1,22 @@
+#! /bin/sh
+# This script builds the gamet library and a test driver
+echo $HOME
+echo build the gamet library and test driver
+
+gamDir=`pwd`
+#ls
+echo removing core .o lib and executable
+rm -f core *.o *.a gametTest lib/*a bin/*
+
+echo Building library gametLib.a
+gcc -g -ansii -c gamet.c
+ar vruc gametLib.a gamet.o
+cp gametLib.a $gamDir/lib/libgametLib.a
+rm gametLib.a
+
+echo Building gamet test binary
+gcc -g -ansii -o gametTest gametTest.c -L$gamDir/lib -lgametLib
+mv gametTest $gamDir/bin
+
+
+#END OF Makefile

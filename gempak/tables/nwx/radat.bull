@@ -1,0 +1,102 @@
+! RADAT.BULL
+!
+! This table contains the bulletin/station information to be used
+! with RADAT data.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+!
+UXUS44  KAMA    AMARILLO                          TX  US   3523  -10170   1099
+UXUS70	KWBC	WASHINGTON			  VA  US   3945   -7700     98
+UXUS71  KWBC    WASHINGTON                        VA  US   3895   -7700     98
+UXUS72  KWBC    WASHINGTON                        VA  US   3840   -7700     98
+UXUS41  KCAR    CARIBOU				  ME  US   4687   -6802    190
+UXAK49  PAOT	KOTZEBUE			  AK  US   6688  -16260      3
+UXUS41  KBOX	BOSTON				  MA  US   4237   -7103      9
+UXAK49  PABR    BARROW                            AK  US   7130  -15678      4
+UXUS41  KALY    ALBANY                            NY  US   4275   -7380     89
+UXUS45  KTFX	GREAT_FALLS                       MT  US   4746  -11138   1130
+UXUS44  KCRP	CORPUS_CHRISTI                    TX  US   2777   -9750     13
+UXUS44  KMAF	MIDLAND                           TX  US   3195  -10218    872
+UXUS42  KMHX	NEWPORT                           NC  US   3478   -7688     11
+UXUS43  KOAX 	VALLEY                            NE  US   4132   -9637    350
+UXUS46  KOTX	SPOKANE                           WA  US   4770  -11760    728
+UXUS42  KCHS	CHARLESTON                        SC  US   3290   -8004     14
+UXUS45  KFGZ	FLAGSTAFF                         AZ  US   3523  -11182   2192
+UXUS44  KLCH	LAKE_CHARLES                      LA  US   3012   -9322     10
+UXUS44  KEWX	SAN_ANTONIO                       TX  US   2953   -9846    246
+UXUS46  KMFR	MEDFORD                           OR  US   4237  -12287    405
+UXUS45  KBOU	DENVER/STAPLETON                  CO  US   3999  -10526   1625
+UXUS43  KILX	LINCOLN                           IL  US   4015   -8934    178
+UXUS43  KBIS	BISMARCK                          ND  US   4677  -10075    506
+UXAK47  PAYA	YAKUTAT                           AK  US   5952  -13967      9
+UXUS42  KTAE	TALLAHASSEE                       FL  US   3045   -8430     53
+UXAK48  PAKN	KING_SALMON                       AK  US   5868  -15665     15
+UXUS46  KSTO	SACRAMENTO                        CA  US   3852  -12150      8
+UXUS43  KABR	ABERDEEN                          SD  US   4545   -9843    396
+UXUS41  KRNK	BLACKSBURG                        VA  US   3721   -8041    648
+UXUS44  KJAN	JACKSON                           MS  US   3232   -9008    101
+UXUS44  KFWD	FORT_WORTH                        TX  US   3279   -9730    196
+UXUS45  KRIW	RIVERTON                          WY  US   4306  -10845   1684
+UXAK48  PASN	ST_PAUL                           AK  US   5715  -17022      9
+UXAK48  PABE	BETHEL                            AK  US   6078  -16180     46
+UXUS45  KGGW	GLASGOW                           MT  US   4822  -10662    700
+UXUS43  KLBF	N._PLATTE                         NE  US   4113  -10068    849
+UXUS45  KSLC	SALT_LAKE_CITY                    UT  US   4078  -11197   1288
+UXUS45  KTWC	TUCSON                            AZ  US   3223  -11096    720
+UXUS43  KDLH	DULUTH                            MN  US   4684   -9223    435
+UXUS45  KREV	RENO                              NV  US   3957  -11979   1515
+UXUS44  KOUN	NORMAN                            OK  US   3522   -9747    362
+UXUS43  KUNR	RAPID_CITY                        SD  US   4405  -10305    976
+UXUS41  KAKQ	WAKEFIELD                         VA  US   3698   -7700     34
+UXUS41  KLWX	WASH/DULLES                       VA  US   3898   -7748    113
+UXUS45  KGJT	GRAND_JUNCTION                    CO  US   3911  -10853   1475
+UXUS44  KEPZ	SANTA_TERESA                      NM  US   3190  -10670   1252
+UXUS46  KSGX	SAN_DIEGO                         CA  US   3272  -11717      9
+UXUS44  KSHV	SHREVEPORT                        LA  US   3247   -9384     84
+UXUS46  KSEW	SEATTLE-TACOMA                    WA  US   4745  -12230    137
+UXUS44  KLZK	LITTLE_ROCK                       AR  US   3483   -9225    165
+UXUS42  KMFL	MIAMI                             FL  US   2575   -8038      5
+UXUS42  KTBW	TAMPA_BAY                         FL  US   2770   -8240     13
+UXAK48  PAMC	MCGRATH                           AK  US   6297  -15562    103
+UXUS45  KBOI	BOISE                             ID  US   4357  -11622    874
+UXUS42  KKEY	KEY_WEST                          FL  US   2455   -8178      6
+UXUS44  KLIX	NEW_ORLEANS                       LA  US   3003   -9003      3
+UXUS44  KBRO	BROWNSVILLE                       TX  US   2590   -9743      6
+UXUS44  KBMX	BIRMINGHAM                        AL  US   3317   -8677    178
+UXKA40  PTTP	POHNPEI                           --  KA    695   15825     46
+UXUS43  KSGF	SPRINGFIELD                       MO  US   3723   -9338    387
+UXUS44  KOHX	NASHVILLE                         TN  US   3675   -8657    206
+UXUS42  KJAX	JACKSONVILLE                      FL  US   3048   -8170      9
+UXUS43  KAPX	ALPENA                            MI  US   4507   -8356    210
+UXUS43  KMPX	CHANHASSEN                        MN  US   4485   -9357    287
+UXUS41  KGYX	GRAY                              ME  US   4389   -7026    125
+UXUS43  KDTX	DETROIT                           MI  US   4270   -8345    361
+UXKA40  PTKR	KOROR                             --  KA    727   13445    176
+UXUS41  KILN	WILMINGTON                        OH  US   3942   -8372    317
+UXAK48  PACD	COLD_BAY                          AK  US   5520  -16272     30
+UXUS41  KPBZ	PITTSBURGH                        PA  US   4050   -8021    367
+UXUS43  KDVN	DAVENPORT                         IA  US   4161   -9058    229
+UXUS41  KBUF	BUFFALO                           NY  US   4294   -7873    225
+UXUS42  KFFC	PEACHTREE_CITY                    GA  US   3336   -8456    246
+UXAK48  PADQ	KODIAK                            AK  US   5775  -15250     34
+UXAK48  PAFC	ANCHORAGE                         AK  US   6118  -14950     44
+UXGM40  PGUM	GUAM                              --  MY   1348   14480     75
+UXUS45  KLKN	ELKO                              NV  US   4087  -11573   1608
+UXUS43  KDDC	DODGE_CITY                        KS  US   3777   -9997    790
+UXUS43  KTOP	TOPEKA                            KS  US   3907   -9562    270
+UXUS41  KOKX	BROOKHAVEN                        NY  US   4087   -7286     20
+UXAK49  PAOM	NOME                              AK  US   6452  -16545     11
+UXUS45  KABQ	ALBUQUERQUE                       NM  US   3504  -10660   1613
+UXUS43  KGRB	GREEN_BAY                         WI  US   4448   -8814    211
+UXUS42  TJSJ	SAN_JUAN                          PU  PU   1843   -6600     19
+UXUS45  KVEF	LAS_VEGAS                         NV  US   3608  -11517    664
+UXZS40  NSTU	PAGO_PAGO                         --  ZM  -1433  -17072      3
+UXAK47  PANT	ANNETTE                           AK  US   5503  -13157     34
+UXHW40  PHTO	HILO                              HI  US   1972  -15507     11
+UXHW40  PHLI	LIHUE                             HI  US   2198  -15935     45
+UXMH40  PKMR	MAJURO                            --  MH    706   17127      6
+UXMH40  PKWA	KWAJALEIN                         --  MH    873   16773      8

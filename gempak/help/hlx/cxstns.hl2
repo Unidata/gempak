@@ -1,0 +1,24 @@
+     CXSTNS
+
+     CXSTNS defines the x-axis for a cross-section plot.
+
+     In SNCROSS, CXSTNS is the list of stations, separated with semicolons, 
+     to be used for the cross section.  Stations may be entered using 
+     either character or numeric identifiers.
+
+     In GDCROSS, CXSTNS contains the endpoints of the cross-section line 
+     separated using a >.  Each endpoint may be defined as follows:
+
+        1.      a station character or numeric identifier;
+
+        2.      a latitude and longitude pair separated by a semicolon;
+
+        3.      an @ followed by a grid x and y coordinate pair separated 
+                using a semicolon, e.g., @1.5;2.3>@25.9;30.
+
+	4.	a CPF file name with optional path.  The CPF file must
+		contain two latitude/longitude pairs.
+	
+	5.	graphically using the CURSOR command.
+
+

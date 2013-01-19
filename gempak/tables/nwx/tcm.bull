@@ -1,0 +1,18 @@
+! TCM.BULL
+!
+! Location information for the following product:
+! Marine/aviation_Tropical_Cyclone_Advisory.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+! Log:
+! A. Hardy/NCEP		11/04	separated out the lat/lons
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+WTPA21 PHFO     HONOLULU                         HI US  2130 -15782     0
+WTPA22 PHFO     HONOLULU                         HI US  2150 -15802     0
+WTPA23 PHFO     HONOLULU                         HI US  2170 -15822     0
+WTPA24 PHFO     HONOLULU                         HI US  2190 -15842     0
+WTPA25 PHFO     HONOLULU                         HI US  2210 -15862     0

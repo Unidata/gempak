@@ -1,0 +1,17 @@
+C************************************************************************
+C*  / PECODES /								*
+C*									*
+C*  This common area contains PE code information needed to generate	*
+C*  the ASCII output file. 						*
+C************************************************************************
+	PARAMETER	( MXPECOD = 10 )
+C*
+	CHARACTER	pecod( MXPECOD )*2
+C*
+	COMMON	/ PECODES /	pecod,
+C*					PE codes
+     +				npecod,
+C*					Number of PE codes
+     +				iunpef
+C*					FORTRAN logical unit number of
+C*					ASCII output file

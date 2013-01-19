@@ -1,0 +1,20 @@
+!
+! CNTRGRIB1.TBL -- GRIB 1 originating center conversion table
+!
+!ID# NAME                            ABBREV
+!
+007 US Weather Svc - National Centers for Environmental Prediction   NCEP
+008 US Weather Svc - NWS Telecommunications Gateway                  NCEP
+009 US Weather Svc - Field Stations                                  NCEP
+034 Japanese Meteorological Agency - Tokyo                           JMA
+052 US Weather Svc - NCEP - TPC - National Hurricane Center - Miami  NHC
+054 Canadian Meteorological Service - Montreal                       CMS
+057 US Air Force - Global Weather Central                            GWC
+058 US Navy - Fleet Numerical Oceanography Center                    FNOC
+059 NOAA Forecast Systems Laboratory - Boulder, CO                   FSL
+060 National Center for Atmospheric Research (NCAR) - Boulder, CO    NCAR
+074 UK Meteorological Office - Bracknell                             UKMO
+085 French Weather Service - Toulouse                                FWS
+097 European Space Agency (ESA)                                      ESA
+098 European Centre for Medium-range Weather Forecasts - Reading     ECMWF
+099 DeBilt, Netherlands                                              DEBILT

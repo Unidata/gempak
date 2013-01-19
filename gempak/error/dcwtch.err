@@ -1,0 +1,6 @@
+!	This is the error file for DCWTCH.
+!
+-1	! Watch bulletin header error !AS
+-2	! Could not decode watch issue time.
+-3	! Location !AS not in anchor table.
+-4	! Bad status location !AS

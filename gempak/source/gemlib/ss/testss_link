@@ -1,0 +1,3 @@
+$FC $FFLAGS $LDFLAGS -o $OS_BIN/testss testss.f \
+	    $GEMLIB $CGEMLIB $GEMLIB -lm
+$RM *.o

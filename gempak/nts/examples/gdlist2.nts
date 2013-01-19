@@ -1,0 +1,9 @@
+GDATTIM /f24                                                                    
+GLEVEL  300                                                                     
+GVCORD  PRES                                                                    
+GFUNC   div(wnd)                                                                
+GDFILE  $GEMPAK/data/HRCBOB.GRD                                                     
+GAREA   east                                                                    
+PROJ    lcc                                                                     
+SCALE   999                                                                     
+OUTPUT  f/div.east                                                              

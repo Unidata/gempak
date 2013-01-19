@@ -1,0 +1,211 @@
+/*
+ * EXAMPLE 20: Delayed Replication within data set
+ * Encodes a data set using delayed replication to repeat a data sequence
+ * within the data set.  The data set is composed of a latatude, longitude,
+ * date, time, a repeated sequence of height, temperature, wind speed, 
+ * wind direction, and station name.
+ */
+
+#include <mel_bufr.h>           /* BUFR library include file */
+
+#if PROTOTYPE_NEEDED
+
+int main(int argc, char *argv[])
+
+#else
+ 
+int main(argc, argv )
+int argc;
+char *argv[];
+ 
+#endif
+
+{
+    BUFR_Info_t bufr_info;  /* Largely Section 1 information. */
+    Data_MixVal_t *bufr_rec;
+    int   *fxy_i;         /*  array of decimal FXYs  */
+    FXY_t *fxy;           /*  array of packed FXYs   */
+    int   num_vals;         /*  number of values in array */
+    int   i;                /*  loop counter */
+    char  fxy_file[40];
+    char  encode_file[30];
+    int   *ipr;
+    FXY_t *xpr;
+    FILE  *fd;
+    int   NUM_FXYS;         /* number of FXYs          */
+    
+   /* test for correct numbner of command line arguments */
+    if ( argc != 2) {
+      printf(" ********************************\n");
+      printf("   To execute example20 enter \n");
+      printf("  >ex20 [a,b]\n\n");
+      printf("  a = text string using descriptor 1011\n");
+      printf("  b = text string using 02-05-009 to encode the string\n");
+      printf(" ********************************\n");
+      exit(1);
+    }
+
+    printf("\n *************************** \n");
+    printf(" *       EXAMPLE 20        *\n");
+    printf(" *   Delayed Replication   *\n");
+    printf(" *     Within a Dataset    *\n");  
+    printf(" *  With Character Strings * \n");
+    switch ( *argv[1]){
+      case 'a':
+         printf(" *          CASE a          *\n");
+         printf(" *     using descriptor 0-01-011     *\n");
+         break;
+      case 'b':
+         printf(" *          CASE b          *\n");
+         printf(" * using descriptor 2-05-009 *\n");
+         break;
+     default:
+         printf("\n  <<<<<< ERROR >>>>>>\n");
+         printf(" ********************************\n");
+         printf("   To execute example20 enter \n");
+         printf("  >ex20 [a,b]\n\n");
+         printf("  a = text string using descriptor 1011\n");
+         printf("  b = text string using 02-05-009 to encode the string\n");
+         printf(" ********************************\n");
+         exit(1);
+    }
+    printf(" *                         * \n");
+    printf(" *   FXY_Pack_Dec          *\n"); 
+    printf(" *   BUFR_Put_MixArray     *\n");   
+    printf(" *   BUFR_DefineDataset    *\n");   
+    printf(" *************************** \n");
+ 
+    /****  define file names  *****/
+
+    switch ( *argv[1]){
+       case 'a':
+          strcpy(fxy_file,"exam20a.fxy");
+          strcpy(encode_file,"ex20a.enc");
+          break;
+       case 'b':
+          strcpy(fxy_file,"exam20b.fxy");
+          strcpy(encode_file,"ex20b.enc");
+    }
+
+
+    /********************************************************/
+    /*             read FXYs                                */
+    /********************************************************/
+
+    /* open FXY file */
+    fd = fopen(fxy_file,"r");
+
+    /* how many FXYs ?? */
+    fscanf(fd,"%d",&NUM_FXYS);
+    printf(" NUM_FXYS = %d\n",NUM_FXYS);
+
+    /* allocate memory of FXY input */
+    fxy_i = (int *)malloc ( (uint_t)NUM_FXYS * sizeof(int));
+    
+    /* allocate memory for packed FXYs */
+    fxy = (FXY_t *)malloc( (uint_t)NUM_FXYS * sizeof(FXY_t));
+    
+    /* read FXYs */
+    printf(" echo of FXYs read\n");
+    ipr = fxy_i;
+    for (i=0; i<NUM_FXYS; i++){
+      fscanf(fd,"%d",ipr);
+      printf(" %06d\n",*ipr++);
+      fflush(stdout);
+    }
+    /* close FXY file */
+    fclose(fd);
+    
+
+    /************************************************************/
+    
+    /* Initialize BUFR message.  Read standard tables. */
+
+    /* Initialize the BUFR information structure. */
+
+    if( BUFR_Info_Init( &bufr_info ) )
+    {
+        BUFR_perror( "main" );
+        return 1;
+    }
+
+    bufr_info.BUFR_MasterTable            =  0; /* Use WMO standard */
+    bufr_info.BUFR_Edition                =  3; /* Use WMO standard */
+    bufr_info.OriginatingCenter           = 58; /* FNOC Monterey, CA */
+    bufr_info.UpdateSequenceNumber        =  0; /* 0 for original message */
+    bufr_info.DataCategory                =  0; /* Surface land data */
+    bufr_info.DataSubCategory             =  0; /* BUFR message sub-type */
+    bufr_info.VersionNumberOfMasterTables =  5;
+    bufr_info.VersionNumberOfLocalTables  =  0;
+    bufr_info.MinorLocalVersion           =  0;
+    bufr_info.Year                        = 95;
+    bufr_info.Month                       = 12;
+    bufr_info.Day                         = 31;
+    bufr_info.Hour                        = 23;
+    bufr_info.Minute                      = 59;
+    bufr_info.ObservedData                =  1;
+
+    Set_Flag(NoAuto_FTP);
+    Set_Flag(Allow_Dup_Tab_Entry);
+    Set_Flag(No_Warn_Dup_Tab_Entry);
+    
+    if( BUFR_Init(  &bufr_info, encode_file, ENCODING ) )
+    {
+        BUFR_perror( "main" );  /* Print reason for failure to stderr. */
+        return 1;
+    }
+
+    /***************  pack FXYs  **************/
+    /*  pack replication FXY              */
+    /*  using delayed replication, therefore the replication count */
+    /*  is in the data array.  The FXY for delayed replication of  */
+    /*  5 FXY is 1-05-000.  The 000 indicates delayed replication. */ 
+    /*  The delayed replication FXY must be followed by a count    */
+    /*  descriptor (0-31-001 or 0-31-002).  This example uses      */
+    /*  0-31-001 (see exam5.fxy) (single byte count)               */    
+   
+    /* pack FXYs for data */
+    ipr = fxy_i;
+    xpr = fxy;
+    for ( i=0; i<NUM_FXYS; i++)
+       *xpr++ = FXY_Pack_Dec( *ipr++);
+
+/*
+**  Loop on the three data sets.
+**  Malloc for the number of data points needed and call fill_array2
+**  to file the sturcture properly.
+*/
+    for(i = 0; i < 3; i++){
+      bufr_rec = (Data_MixVal_t *) malloc(sizeof(Data_MixVal_t) * 23);
+      fill_array2(bufr_rec, i);
+ 
+    /* Enter array of data into bufr message */
+/*  Call BUFR_Put_MixArray with the data structure, the number of data
+    Elements in the structure, the packed FXYs, and the number of fxys */
+        num_vals = 23;
+      if ( BUFR_Put_MixArray( bufr_rec, num_vals, fxy, NUM_FXYS)){
+        BUFR_perror(" Error on call to BUFR_Put_Array in main");
+        return 1;
+      }
+        /*************************************************/
+        /*             define template           */
+
+        BUFR_Define_Dataset( (FXY_t*) NULL, 0 );
+
+
+    } /* end loop */
+
+
+    /* create message  */
+    if( BUFR_Encode( &bufr_info) )
+    {
+        BUFR_perror( "main" );
+        BUFR_Destroy(1);
+        return 1;
+    }
+
+    BUFR_Destroy(1);
+    free (fxy);
+    free (fxy_i);
+    return 0;
+}

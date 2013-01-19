@@ -1,0 +1,2270 @@
+! PRMLST.TBL
+!
+! This table specifies pre-defined station plotting models that can be used for
+! observational data types including surface, upper-air, and surface forecast
+! data sets in GEMPAK programs and NMAP2.
+!
+! A station model is defined by listing its alias name denoted by a ^
+! preceding its name, e.g., ^WINTER, its associated data type, e.g., METAR,
+! followed by lines that specify its GEMPAK parameters, colors, and other
+! plotting attributes.  These parameters are defined using the GEMPAK
+! syntax rules.  See the GEMPAK help on the parameters for additional
+! information.
+!
+! The first line of each station plotting model lists the alias name and
+! data set type name.  The alias name can be any unique descriptive string up
+! to 16 characters.  The associated data set name must be a valid observational
+! type that appears in the 1st colunn of the table $GEMTBL/config/datatype.tbl.
+!
+! The second line specifies either the GEMPAK surface or upper-air parameters
+! to be plotted and their station model positions, SFPARM and SNPARM,
+! respectively.
+!
+! The third line specifies the colors of each parameter using the GEMPAK
+! COLORS parameter.
+!
+! For upper-air station models, the next two lines specify the vertical
+! coordinate and level, VCOORD and LEVEL, respectively.
+!
+! The next line specifies the plotting density which is the GEMPAK FILTER
+! parameter.
+!
+! The final line specifies the text attributes including the size and
+! font using the GEMPAK TEXT parameter.
+!
+! Pre-defined station models specified in this table are used in GEMPAK
+! plotting programs by setting the value of SFPARM or SNPARM to the
+! desired alias name.
+!
+! NMAP2 accesses the station models in this table by presenting them as
+! choices in its "Data Source" GUI.  See the NMAP help,
+! Data Access-Configuration, for additional details.
+!
+!!
+! Log:
+! S. Maxwell/GSC         2/97
+! S. Jacobs/NCEP         2/97   Changed style of table.
+! S. Jacobs/NCEP         4/97   SKYC and BRBK in HRLY to SKYK
+! K. Tyle/GSC            5/97   Added SHIP alias
+! T. Lee/GSC             5/97   Used LTMP in Celsius
+! J. Partain/MPC         6/97   Added WAVES alias
+! S. Maxwell/GSC         6/97   Added divisions in title lines
+! G. Grosshans/SPC      12/97   Added WINTER2 alias
+! D. Kidwell/NCEP        2/98   Added FFG aliases
+! D.W.Plummer/NCEP       3/98   Removed VCOORD & LEVEL from ^ line
+! D.W.Plummer/NCEP       3/98   Added FILTER
+! D.W.Plummer/NCEP       3/98   Added TEXT
+! D. Kidwell/NCEP        4/98   Added SYNOP and ACFT aliases
+! D. Kidwell/NCEP        4/98   SMSL to PRES and DWPC to SELV in ACFT
+! D. Kidwell/NCEP        5/98   Changed parms for WAVES
+! S. Jacobs/NCEP         6/98   Explicitly set all symbol/wind attributes
+! J. Carr/HPC            6/98   Added some more user oriented choices
+!                               for metar and synoptic observations
+! A. Hardy/GSC           8/98   Changed all skyk to attribute 132
+! J. Partain/MPC         9/98   Added SEA-STATE_ANAL alias to SHIP;
+!                               mods to WAVES parms
+! S. Jacobs/NCEP         9/98   Changed filter values for most entries;
+!                               Changed text sizes to match new sizes
+! J. Carr/HPC           10/98   Changed the metar (noam_sat & noam_rad).
+!                               Added ship ( noam_sfc )
+! S. Jacobs/NCEP        11/98   Added NGMMOS, MRFMOS, AVNMOS
+! S. Jacobs/NCEP        12/98   Added new groups for MRF MOS
+! J. Carr/HPC            1/99   Changed the metar noam_sat to noam_sfc
+!                               and changed the parameters.
+!                               Changed ship ( noam_sfc ) parameters
+!                               as well.
+!                               Added a Saudi group under ship obs.
+!                               Added a Saudi group under synoptic obs.
+! J. Carr/HPC            1/99   Changed the ( noam_sfc ) under the ship
+!                               and metar data
+!                               Added a satellite overlay parameter
+!                               setup, (BLACK_SAT) a station only setup
+!                               and a pressure check setup.
+! J. Carr/HPC            2/99   Added a (press_check2) under the ship obs
+! J. Carr/HPC            2/99   Added a (noam_sfc) under synoptic obs
+! S. Jacobs/NCEP         2/99   Added more MRF MOS entries
+! S. Jacobs/NCEP         2/99   Changed the marker type for MRF MOS to 17
+! S. Jacobs/NCEP         3/99   Changed colors for MRF MOS entries
+! J. Carr/HPC            3/99   Altered station model plot for max_mm,
+!                               min_mm and pop_mm
+! J. Carr/HPC            3/99   Added Daily Wx Map entries
+! A. Hardy/GSC           5/99   Added :1:112 to BRBK for PRESS_CHECK and
+!                               SIMPLE (metar) and PRESS_CHECK2 (ship)
+! J. Partain/MPC         5/99   Added new models for MPC SFC anal to SHIP
+!                               METAR and SYNOP.
+! D. Kidwell/NCEP        6/99   Added RECON alias under ACFT
+! J. Carr/HPC            7/99   Made some changes for the medium range temps/pops desk.
+!                               CLIMO_MM, MAX_MM, MIN_MM, POP_MM were changed.
+! A. Hardy/GSC          10/99   Added :1:1 to ICSY and TBSY
+! D. Kidwell/NCEP       11/99   Created new standard ACFT display;
+!                               prev. standard display is now FULL_STD;
+!                               all flight lvls in 100s of feet
+! D. Kidwell/NCEP        3/00   Added WAVES_ICE (WAVES plus color-coded
+!                               ice accretion)
+! A. Hardy/GSC           4/00   Added SCD standard and cloud_cover
+! A. Hardy/GSC           4/00   Added :1:1 to SCD cloud type symbols
+! D. Kidwell/NCEP        5/00   Added SHIP6HR entries, based on SHIP
+! D. Kidwell/NCEP       10/00   Added New MOS entries, based on MOS
+! D. Kidwell/NCEP        3/01   Added DROP entry, based on UAIR
+! S. Jacobs/NCEP         1/02   Changed WCEQ to WCHT
+! S. Schotz/NCEP         3/02   Updated documentation
+! S. Schotz/NCEP         5/02   Added SDM station models
+! T. Lee/SAIC            9/02   Added IDFT station models
+! D. Kidwell/NCEP        9/02   Added TAF station models
+! F. J. Yen/NCEP         9/02   Added RDF station models
+! F. J. Yen/NCEP        11/02   Added more parameters to RDF station models
+! K. Brill/HPC          12/02   Added entries for ETA, RUC2 and RUCPTYP
+!                               sounding and surface data
+! D. Kidwell/NCEP        5/03   Added more TAF station models; fixed
+!                               duplicate aliases; removed obsolete MOS
+!  m.gamazaychikov/SAIC 06/03   Changed MPC to OPC
+!  m.gamazaychikov/SAIC 11/03   Changed NEWMRFMOS to GFSXMOS
+!                               Changed NEWAVNMOS to GFSMOS
+! J. Carr/HPC           01/04   Resolved natdv table with HPC.
+! D. Kidwell/NCEP       12/04   For SCD, P12 -> P24, Pnn -> Pnn*100
+! S. Jacobs/NCEP	 6/12	Added TIME for MW_ORBIT data
+!
+!---------------------------------------------------------------------------
+!
+! Unidata Additions
+^LOCATION | NLDN
+SFPARM=STID
+COLORS=5
+FILTER=0.0
+TEXT=.8/21/HW
+!
+!
+^POINTS | NLDN
+SFPARM=MARK:15:4:1
+COLORS=31
+FILTER=0.0
+TEXT=.8/21/HW
+!
+^LOCATION | USPLN
+SFPARM=STID
+COLORS=5
+FILTER=0.0
+TEXT=.8/21/HW
+!
+!
+^POINTS | USPLN
+SFPARM=MARK:15:4:1
+COLORS=31
+FILTER=0.0
+TEXT=.8/21/HW
+!
+!
+^SGNL | USPLN
+SFPARM = MARK:15:2:1
+COLORS=(20-95-5/30-14//U)
+COLORS=(-100;-80;-60;-40;-20;-10;-5;-1;1;5;10;20;40;60;80;100/30-14/SGNL/L)
+FILTER=0
+TEXT=.8/21/HW
+!
+!
+^TORNADO | SELS
+SFPARM=EVNT=1;mark:3
+COLORS=0;2
+FILTER=0.0
+TEXT=.8/21/HW
+TITLE=2//Tornado
+!
+^HAIL | SELS
+SFPARM=EVNT=3;mark:12
+COLORS=0;6
+FILTER=0.0
+TEXT=.8/21/HW
+!
+^WIND | SELS
+SFPARM=EVNT=2;mark:1
+COLORS=0;3
+FILTER=0.0
+TEXT=.8/21/HW
+!
+^GUST | SELS
+SFPARM=EVNT=4;mark:2
+COLORS=0;4
+FILTER=0.0
+TEXT=.8/21/HW
+!
+!
+^SIMPLE | ACARS
+SFPARM=PRES
+COLORS=5
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^PRES_OBS | COSMIC
+SFPARM = MARK:1:.6
+COLORS=(200-950-50/14-30/PRES/L)
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^PRECIP_WATER | SUOMI
+SFPARM = PWVM
+COLORS = 5
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^PWV_COLOR | SUOMI
+SFPARM = PWVM
+COLORS=(3-48-3/14-30//U)
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^PWV_MET | SUOMI
+SFPARM = PWVM
+COLORS=(65;88/3;2;5/MFLG/L)
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^PROF_STND | PROF
+SNPARM=BRBK:1:2:112;SPED;SPAC;STID;SPAC;SPAC;DRCT
+COLORS=6;           2;        5;             3
+VCOORD=HGHT
+LEVEL=3000
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^PRO6_STND | PRO6
+SNPARM=BRBK:1:2:112;SPED;SPAC;STID;SPAC;SPAC;DRCT
+COLORS=6;           2;        5;             3
+VCOORD=HGHT
+LEVEL=3000
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^LOC | WPAC
+SFPARM = FCHR=0;MARK:15:8:1
+COLORS=0;(1-7-1/0;4;3;2;5;7;6;8/SCAT/U)
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^TRAK | WPAC
+SFPARM = mark:1:2:2;scat;;sknt;;;fchr
+COLORS=(1-7-1/0;4;3;2;5;7;6;8/SCAT/U);31;31;31
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^MONOCHROME | METAR
+SFPARM=SKYK:.75:1:132;TMPF;WSYM:1:1;SMSL;PTND:1:1;DWPF;STID;;VSBY*10
+COLORS=3
+FILTER=0.7
+TEXT=.8/21/HW
+!
+!
+^COLOR_TEMP | METAR
+SFPARM=TMPF
+COLORS=(20-95-5/30-14//U)
+FILTER=0.7
+TEXT=.8/21/HW
+!
+!
+^METAR | METAR
+SFPARM=SKYK:.75:1:132;TMPF;WSYM:1:1;SMSL;PTND:1:1;DWPF;STID;;VSBY*10
+COLORS=26;            2;   7;       25;  20;      22;  18;   24
+FILTER=0.9
+TEXT=1/21/HW
+!
+!
+^SIMPLE | METAR
+SFPARM=BRBK:.75:1:112;TMPF;WSYM:.75;;;DWPF
+COLORS=31           ;   2;    31;3
+FILTER=0.9
+TEXT=1/21/HW
+!
+!
+^WINTER | METAR
+SFPARM=BRBK:1:2:112;WCHT;WSYM:1:1;TMWF;P03I*100;STHE;STID;GUST;SNOW
+COLORS=6;           26;  7;       29;  22;      15;  18;  6;   1
+FILTER=0.9
+TEXT=1/21/HW
+!
+!
+^WINTER2 | METAR
+SFPARM=BRBK:1:2:112;TMPF;WSYM:1:1;SMSL;P03I*100;TMWC;PTND:1:1;GUST;SNOW
+COLORS=27;          2;   5;       1;   3;       4;   5;       27;  1
+FILTER=0.9
+TEXT=1/21/HW
+!
+!
+^SUMMER | METAR
+SFPARM=BRBK:1:2:112;HEAT;WSYM:1:1;TMWF;P03I*100;STHE;STID;GUST;LTMP
+COLORS=6;           2;   7;       29;  22;      15;  18;  6;   1
+FILTER=0.9
+TEXT=1/21/HW
+!
+!
+^SDM_STANDARD | METAR
+SFPARM=SKYK:.75:1:132;TMPF;WSYM:1:1;SMSL;PTND:1:1;DWPF;STNM;;VSBY*10
+COLORS=26;            2;   7;       25;  20;      22;  7;   24
+FILTER=0.9
+TEXT=1/21/HW
+!
+!
+^SDM_PRESSURE | METAR
+SFPARM=SKYK:.75:1:132;TMPF;WSYM:1:1;PALT;PTND:1:1;DWPF;STNM;;VSBY*10
+COLORS=26;            2;   7;       25;  20;      22;  7;   24
+FILTER=0.9
+TEXT=1/21/HW
+!
+!
+^DLWX_SFC | METAR
+SFPARM=SKYK:.70:.70;TMPF;WSYM:.7;SMSL;PTND:.5;DWPF;STID;SPRI=99
+COLORS=          26;   2;      7;  31;      5;   3;  17;      0
+FILTER=0.0
+TEXT=.65/2/HW
+!
+!
+^NOAM_SFC | METAR
+SFPARM=SKYK:.70:.70;TMPF;WSYM:.7;SMSL;PTND:.5;DWPF;STID
+COLORS=          26;   2;      7;  31;      5;   3;  17
+FILTER=0.90
+TEXT=.65/2/HW
+!
+!
+^OPC_SFC_ANAL | METAR
+SFPARM=;TMPF;WSYM:0.7:1.2;SMSL;PTND:0.7:1.2;;;;BRBK:.9:1.6:112;MARK:4:0.6:1
+COLORS=   2 ;      7    ;  31 ;     5      ;     5             ;   25
+FILTER=0.90
+TEXT=.85/2/HW
+!
+!
+^NOAM_RAD | METAR
+SFPARM=SKYK:.60:.80;TMPF;WSYM:1.4;SMSL;PTND:.7;DWPF
+COLORS=          31;   2;      31;   1;      5; 3
+FILTER=0.7
+TEXT=1/2/HW
+!
+!
+^INTL_SAM | METAR
+SFPARM=SKYK:.50:.75;TMPC;WSYM:1;SMSL;PTND:1;DWPC;STID;;
+COLORS=26;        2;   7;     25;  20;    22;  18;
+FILTER=0.9
+TEXT=1/21/HW
+!
+!
+^INTL_SAUD | METAR
+SFPARM=SKYK:.75:1;TMPC;WSYM:1;SMSL;PTND:1;DWPC;STID;;
+COLORS=31;        2;   7;     25;  20;    22;  18;
+FILTER=0.35
+TEXT=1/21/HW
+!
+!
+^BLACK_SAT | METAR
+SFPARM=SKYK:.70:.70;TMPF;WSYM:.7;SMSL;PTND:.5;DWPF;STID
+COLORS=          32;  32;     32;  32;     32;  32;  17
+FILTER=0.90
+TEXT=.65/2/HW
+!
+!
+^STATIONS | METAR
+SFPARM=STID;
+COLORS=1
+FILTER=0.10
+TEXT=.65/2/HW
+!
+!
+^PRESS_CHECK | METAR
+SFPARM=BRBK:.60:1:112;BLNK;BLNK;PMSL;BLNK;BLNK;STID
+COLORS=       1;             5;          17
+FILTER=0.0
+TEXT=.65/2/HW
+!
+!
+^03_HR_PCPN | METAR
+SFPARM=;;;;;;;;;;P03I*100
+COLORS=3
+FILTER=0.10
+TEXT=.857/21/HW
+!
+!
+^06_HR_PCPN | METAR
+SFPARM=;;;;;;;;;;P06I*100
+COLORS=3
+FILTER=0.10
+TEXT=.857/21/HW
+!
+!
+^24_HR_PCPN_12Z | METAR
+SFPARM=;;;;;;;;;;P24I*100
+COLORS=3
+FILTER=0.10
+TEXT=.857/21/HW
+!
+!
+^UAIR | UAIR
+SNPARM=BRBK:1:2:112;TMPC;SPAC;STDZ;SPAC;DWPC;STID
+COLORS=6;           2;        5;        3;   18
+VCOORD=PRES
+LEVEL=500
+FILTER=1.0
+TEXT=1/21/HW
+!
+!
+^STABILITY | UAIR
+SNPARM=STID;LIFT;SPAC;KINX;SPAC;TOTL;PWAT*3.94;CAPE;BRCH
+COLORS=  18;   2;        5;       15;        3;   7;  26
+VCOORD=NONE
+LEVEL=0
+FILTER=1.0
+TEXT=1/21/HW
+!
+!
+^SDM_STANDARD_U | UAIR
+SNPARM=BRBK:1:2:112;TMPC;SPAC;STDZ;SPAC;DWPC;STNM
+COLORS=6;           2;        5;        3;   7
+VCOORD=PRES
+LEVEL=500
+FILTER=1.0
+TEXT=1/21/HW
+!
+!
+^SDM_STABILITY | UAIR
+SNPARM=STNM;LIFT;SPAC;KINX;SPAC;TOTL;PWAT*3.94;CAPE;BRCH
+COLORS= 7;  2;        5;        15;  3;        7;   26
+VCOORD=NONE
+LEVEL=0
+FILTER=1.0
+TEXT=1/21/HW
+!
+!
+^DROP | DROP
+SNPARM=BRBK:1:2:112;TMPC;SPAC;STDZ;SPAC;DWPC
+COLORS=6;           2;        5;        3
+VCOORD=PRES
+LEVEL=500
+FILTER=1.0
+TEXT=1/21/HW
+!
+!
+^SHIP | SHIP
+SFPARM=SKYK:.8:.5:132;TMPF;WSYM:.6:1;SMSL;PTND:.7:1;DWPF;WHFT;STID;SSTF
+COLORS=26;            2;   7;        25;  20;       22;  11;  18;  6
+FILTER=0.0
+TEXT=1/21/HW
+!
+!
+^SFC_ANAL_SHIPS | SHIP
+SFPARM=TOST=1;TMPF;WSYM:0.7:1.2;SMSL;PTND:0.7:1.2;;;;BRBK:.9:1.6:112;MARK:4:0.6:1
+COLORS=  0   ;  2 ;      7    ;  31 ;     5      ;     5             ;   25
+FILTER=0.0
+TEXT=.9/21/1.1/HW
+!
+!
+^SFC_ANAL_BUOYS | SHIP
+SFPARM=TOST=0;TMPF;WSYM:0.7:1.2;SMSL;PTND:0.7:1.2;;;;BRBK:1.1:2.2:112;MARK:4:0.6:1
+COLORS=  0   ;  2 ;      7    ;  31 ;     5      ;     5             ;   25
+FILTER=0.3
+TEXT=.9/21/1.1/HW
+!
+!
+^WAVES | SHIP
+SFPARM=BRBK:.8:1.5:112;;;;WHFT;;;;;DAWV:.75:1.2:112:.75;STID
+COLORS=5;                  3;       31;                  18
+FILTER=0.0
+TEXT=1/21/HW
+!
+!
+^WAVES_ICE | SHIP
+SFPARM=BRBK:.8:1.5:112;;DIGR;;WHFT;;;;;DAWV:.75:1.2:112:.75;STID
+COLORS=5;(.85;2.35/6;4;2/IGRO/U);3;    31;                  18
+FILTER=0.0
+TEXT=1/21/HW
+!
+!
+^SEA-STATE_ANAL | SHIP
+SFPARM=BRBK:.6:1.3:112;;;;WHGT;;;;;DAWV:.75:1.2:112:.75
+COLORS=5;                 3;       31
+FILTER=0.0
+TEXT=1.7/21/HW
+!
+!
+^NOAM_SFC_SHIP | SHIP 
+SFPARM=SKYK:.70:.70;TMPF;WSYM:.7;SMSL;PTND:.5;DWPF;WHFT;;SSTF
+COLORS=          26;   2;      7;  31;      5;   3;  11 ; 27
+FILTER=0.70
+TEXT=.65/2/HW
+!
+!
+^IR_SAT | SHIP
+SFPARM=BRBK:.8:1.6:112;TMPF;WSYM:.6:1;SMSL;PTND:.7:1;DWPF;WHFT;STID;SSTF
+COLORS=32;            2;    7;       32;  20;       22;  11;  18;  6
+FILTER=0.00
+TEXT=1/21/HW
+!
+!
+^PRESS_CHECK2 | SHIP
+SFPARM=BRBK:.60:1:112;BLNK;BLNK;PMSL;BLNK;BLNK;STID
+COLORS=       1;             5;          17
+FILTER=0.0
+TEXT=.65/2/HW
+!
+!
+^INTL_SAUD_SHIP | SHIP
+SFPARM=SKYK:.50:.70;TMPC;WSYM:.7;SMSL;PTND:.7;DWPC;WHFT;;SSTC
+COLORS=          26;   2;      7;  31;      5;   3;  11 ; 27
+FILTER=0.70
+TEXT=.65/2/HW
+!
+!
+^SHIP6HR | SHIP6HR
+SFPARM=SKYK:.8:.5:132;TMPF;WSYM:.6:1;SMSL;PTND:.7:1;DWPF;WHFT;STID;SSTF
+COLORS=26;            2;   7;        25;  20;       22;  11;  18;  6
+FILTER=0.02
+TEXT=1/21/HW
+!
+!
+^SFC_ANAL_SHIP6 | SHIP6HR
+SFPARM=;TMPF;WSYM:0.7:1.2;SMSL;PTND:0.7:1.2;;;;BRBK:.9:1.6:112;MARK:4:0.6:1
+COLORS=  2 ;      7    ;  31 ;     5      ;     5             ;   25
+FILTER=0.02
+TEXT=.9/21/1.1/HW
+!
+!
+^FFG | FFG
+SFPARM=MARK:12:.6
+COLORS=(0.5;1;1.5;2;3/2;19;21;22;6;4/FF03)
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^GUIDANCE_01 | FFG
+SFPARM=FF01*10
+COLORS=(5;10;15;20;30/2;19;21;22;6;4)
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^GUIDANCE_03 | FFG
+SFPARM=FF03*10
+COLORS=(5;10;15;20;30/2;19;21;22;6;4)
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^GUIDANCE_06 | FFG
+SFPARM=FF06*10
+COLORS=(5;10;15;20;30/2;19;21;22;6;4)
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^GUIDANCE_12 | FFG
+SFPARM=FF12*10
+COLORS=(5;10;15;20;30/2;19;21;22;6;4)
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^GUIDANCE_24 | FFG
+SFPARM=FF24*10
+COLORS=(5;10;15;20;30/2;19;21;22;6;4)
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^SYNOP | SYNOP
+SFPARM=SKYK:.75:1:132;TMPF;WSYM:1:1;SMSL;PTND:1:1;DWPF;STNM;;VSBY*10
+COLORS=26;            2;   7;       25;  20;      22;  18;   24
+FILTER=0.9
+TEXT=1/21/HW
+!
+!
+^DLWX_SFC_SYN | SYNOP
+SFPARM=SKYK:.70:.70;TMPF;WSYM:.7;SMSL;PTND:.5;DWPF;STID;SPRI=99
+COLORS=          26;   2;      7;  31;      5;   3;  17;      0
+FILTER=0.0
+TEXT=.65/2/HW
+!
+!
+^NOAM_SFC_SYN | SYNOP
+SFPARM=SKYK:.70:.70;TMPF;WSYM:.7;SMSL;PTND:.5;DWPF;STID
+COLORS=          26;   2;      7;  31;      5;   3;  17
+FILTER=0.90
+TEXT=.65/2/HW
+!
+!
+^MPC_SFC_ANAL_S | SYNOP
+SFPARM=;TMPF;WSYM:0.7:1.2;SMSL;PTND:0.7:1.2;;;;BRBK:.9:1.6:112;MARK:4:0.6:1
+COLORS=  2 ;       7    ;  31 ;     5      ;     5             ;   25
+FILTER=0.90
+TEXT=.85/2/HW
+!
+!
+^SDM_SYNOP | SYNOP
+SFPARM=SKYK:.75:1:132;TMPF;WSYM:1:1;SMSL;PTND:1:1;DWPF;STNM;;VSBY*10
+COLORS=26;            2;   7;       25;  20;      22;  7;   24
+FILTER=0.9
+TEXT=1/21/HW
+!
+!
+^SDM_PRESSURE_S | SYNOP
+SFPARM=SKYK:.75:1:132;TMPF;WSYM:1:1;PALT;PTND:1:1;DWPF;STNM;;VSBY*10
+COLORS=26;            2;   7;       25;  20;      22;  7;   24
+FILTER=0.9
+TEXT=1/21/HW
+!
+!
+^SAUD | SYNOP
+SFPARM=SKYK:.75:1:132;TMPC;WSYM:1:1;SMSL;PTND:1:1;DWPC;STNM;;VSBY*10
+COLORS=26;            2;   7;       25;  20;      22;  18;   24
+FILTER=0.9
+TEXT=1/21/HW
+!
+!
+^SYN_24HR_MM | SYNOP
+SFPARM=STID;;;;;;;;;;P24M
+COLORS=31;3
+FILTER=0.10
+TEXT=.857/21/HW
+!
+!
+^SYN_24HR_IN | SYNOP
+SFPARM=STID;;;;;;;;;;P24I*100
+COLORS=31;3
+FILTER=0.10
+TEXT=.857/21/HW
+!
+!
+^WINTER_SYN | SYNOP
+SFPARM=BRBK:1:2:112;WCHT;WSYM:1:1;TMWF;P06I*100;STHE;STNM;GUST;SNOW
+COLORS=6;           26;  7;       29;  22;      15;  18;  6;   1
+FILTER=0.9
+TEXT=1/21/HW
+!
+!
+^SUMMER_SYN | SYNOP
+SFPARM=BRBK:1:2:112;HEAT;WSYM:1:1;TMWF;P06I*100;STHE;STNM;GUST;LTMP
+COLORS=6;           2;   7;       29;  22;      15;  18;  6;   1
+FILTER=0.9
+TEXT=1/21/HW
+!
+!
+^SCD | SCD
+SFPARM = MARK:17:.35;TDXF;WSYM:1:1;P06I*100;;TDNF;P24I*100;;STID
+COLORS = 6 ;            2;  7;      21;     3;  17;     8
+FILTER=0.5
+TEXT=1/21/HW
+!
+!
+^CLOUD_COVER | SCD
+SFPARM = MARK:17:.35;;cfrt;cbas;;cfrl;stid;csyh:1:1;;csym:1:1;csyl:1:1
+COLORS = 6 ;            25;  10;   26;  19;  21;   7; 2
+FILTER=0.5
+TEXT=1/21/HW
+!
+!
+^ACFT | ACFT
+SFPARM=STID;TBSY:1:1;;;;;;;;TPOI;FELV
+COLORS=18;  26;             20;  3
+FILTER=0.0
+TEXT=1/21/HW
+!
+!
+^FULL_STD | ACFT
+SFPARM=BRBK:1:2:112;TMPC;WSYM:1:1;PRES;ICSY:1:1;FELV;STID;TBSY:1:1;VSBY*10
+COLORS=6;           2;   7;       25;  20;      3;   18;  26;      24
+FILTER=0.0
+TEXT=1/21/HW
+!
+!
+^RECON | ACFT
+SFPARM=BRBK:1:2:112;TMPC;WSYM:1:1;PRES;SMSL;DWPC;STID;TBSY:1:1;FELV;ACRT=3
+COLORS=6;           2;   7;       25;  4;   22;  18;  26;      3;   0
+FILTER=0.0
+TEXT=1/21/HW
+!
+!
+^NGMMOS | NGMMOS
+SFPARM=SKYK:.75:1:132;TMPF;;PP06;;DWPF;STID
+COLORS=26;            15;   19;   22;  18
+FILTER=1.0
+TEXT=S/21/HW
+!
+!
+^MXMN12HRPOP | NGMMOS
+SFPARM=MARK:17:.35;TDYF;;PP12;;TNTF;STID
+COLORS=          1;  15;   22;    6;  18
+FILTER=1.0
+TEXT=S/21/HW
+!
+!
+^GFSXMOS | GFSXMOS
+SFPARM=MARK:17:.35;TDYF;;PP24;;TNTF;STID
+COLORS=31;       15;   19;   22;  18
+FILTER=1.0
+TEXT=S/21/HW
+!
+!
+^MOS_ANOM_MM | GFSXMOS
+SFPARM=MARK:17:.35;TDYF;TNTF;TDAF;TNAF;PP24;PP2A
+COLORS=31;       15;  22;  15;  22;  19;  19
+FILTER=1.0
+TEXT=S/21/HW
+!
+!
+^ANOM_MM | GFSXMOS
+SFPARM=MARK:17:.35;TDAF;;PP2A;;TNAF;STID
+COLORS=31;       15;   19;   22;  18
+FILTER=1.0
+TEXT=S/21/HW
+!
+!
+^CLIMO_MM | GFSXMOS
+SFPARM=MARK:17:.35;TDCF;;PP2C;;TNCF;STID
+COLORS=31;       15;   19;   22;  18
+FILTER=0
+TEXT=M/21/HW
+!
+!
+^MAX_MM | GFSXMOS
+SFPARM=MARK:17:.35;TDYF;;TDAF;;;;;;;STID;SPRI>90
+COLORS=          1;   2;   13;         1;   0
+FILTER=0
+TEXT=m/22/HW
+!
+!
+^MIN_MM | GFSXMOS
+SFPARM=MARK:17:.35;TNTF;;TNAF;;;;;;;STID;SPRI>90
+COLORS=          1;  11;   12;         1;   0
+FILTER=0
+TEXT=m/22/HW
+!
+!
+^POP24_MM | GFSXMOS
+SFPARM=MARK:17:.35;;PP24;;PP2A;;;;STID;SPRI>90
+COLORS=          1;   11;   12;      1;   0
+FILTER=0
+TEXT=L/22/HW
+!
+!
+^POP12_MM | GFSXMOS 
+SFPARM=MARK:17:.35;PP12;;PP1A;;;;;;;STID;SPRI>90
+COLORS=          1;  11;   12;         1;   0  
+FILTER=0
+TEXT=m/22/HW
+!
+!
+^GFSMOS | GFSMOS
+SFPARM=;TDYF;;PP12;;TNTF;;STID
+COLORS= 15;   19;   22;   18
+FILTER=1.0
+TEXT=S/21/HW
+!
+!
+^IDFT | IDFT
+SFPARM=;;DTNM;;DRCT
+COLORS= 5;6
+FILTER=1.0
+TEXT=S/21/HW
+!
+!
+^IDFT_VECT | IDFT
+SFPARM=DARR:.5:2:112; DTNM
+COLORS= 6;5
+FILTER=1.0
+TEXT=S/21/HW
+!
+! Prevailing flight condition and associated sky coverage
+!
+^TAF | TAF
+SFPARM=SKYC
+COLORS= (1;2;3/7;2;26;0/XVFR/U)
+FILTER=0.0
+TEXT=S/21/HW
+!
+! Temporary flight condition and associated sky coverage
+!
+^TEMPO_FLT_COND | TAF
+SFPARM=TSKC;PPRB=50
+COLORS= (1;2;3/7;2;26;0/TXVF/U);0
+FILTER=0.0
+TEXT=S/21/HW
+!
+! Temporary/probability flight condition and associated sky coverage
+!
+^TEMPO_PROB_AFC | TAF
+SFPARM=TSKC
+COLORS= (1;2;3/7;2;26;0/TXVF/U)
+FILTER=0.0
+TEXT=S/21/HW
+!
+! Worst case prevailing/tempo/prob flight condition and sky coverage
+!
+^ALL_AFC | TAF
+SFPARM=WSKC
+COLORS= (1;2;3/7;2;26;0/WXVF/U)
+FILTER=0.0
+TEXT=S/21/HW
+!
+! Prevailling weather
+!
+^WEATHER | TAF
+SFPARM=WSYM:1
+COLORS= 7
+FILTER=0.0
+TEXT=S/21/HW
+!
+! Temporary weather
+!
+^TEMPO_WEATHER | TAF
+SFPARM=TWSY:1;PPRB=50
+COLORS= 7;0
+FILTER=0.0
+TEXT=S/21/HW
+!
+! Prevailing weather with low-level wind shear
+!
+^WEATHER_LLWS | TAF
+SFPARM=WSYM:1;MARK:4:1.4:2
+COLORS= 7;(1/17;0/LLWS)
+FILTER=0.0
+TEXT=S/21/HW
+!
+! Temporary/probability weather with low-level wind shear
+!
+^TEMPO_PROB_WX | TAF
+SFPARM=TPWS:1;MARK:4:1.4:2
+COLORS= 7;(1/17;0/LLWS)
+FILTER=0.0
+TEXT=S/21/HW
+!
+! Prevailing/tempo/prob weather with low-level wind shear
+!
+^ALL_WX_LLWS | TAF
+SFPARM=AWSY:1;MARK:4:1.4:2
+COLORS= 7;(1/17;0/LLWS)
+FILTER=0.0
+TEXT=S/21/HW
+!
+! Prevailing winds
+!
+^WINDS | TAF
+SFPARM=BRBK
+COLORS= (23/3;2/SKNT/U)
+FILTER=0.0
+TEXT=S/21/HW
+!
+! Gust winds
+!
+^GUST_WINDS | TAF
+SFPARM=BRGK
+COLORS= (23/3;2/GUST/U)
+FILTER=0.0
+TEXT=S/21/HW
+!
+! Probability flight condition and weather with probability value
+!
+^PROB_AFC_WX | TAF
+SFPARM=TSKC;PPRB<45;TWSY:1
+COLORS= (1;2;3/7;2;26;0/TXVF/U);1;7
+FILTER=0.0
+TEXT=S/21/HW
+!
+! Ceilings in hundreds of feet MSL below 18000 feet
+!
+^CEILINGS_MSL | TAF
+SFPARM=CMSL<180
+COLORS= (1/31;2/MOBS/U)
+FILTER=0.0
+TEXT=S/21/HW
+!
+!
+^RDF       | RDF
+SFPARM=SKYK:.75:1:132;TMPF;RELH;PP12;HEAT;DWPF;OVIS;STID;WSYM:1:1;TDYF;TNTF;WXPB
+COLORS=        26;     2;  18;  19;  11;  22;   6;   1;   5;       7;  10;   5
+FILTER=1.0
+TEXT=S/21/HW
+!
+!
+^ETA1 | ETASFC
+SFPARM=BRBK;TMPF;SPAC;PMSL;SPAC;DWPF;P01I*100
+COLORS=26;  2;        25;       22;  3
+TITLE=1/0
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^ETA2 | ETASFCA
+SFPARM=SPAC;SPAC;WSYM:1:1;SPAC;LCLD;SPAC;SPAC;VSBY*10
+COLORS=          7;             6;             24
+TITLE=1/-2
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^ETALYR1 | ETASFCA
+SFPARM=BRBK:.75:1:112;TMPF;WSYM:.75;LCLD;MCLD;DWPF;HCLD
+COLORS=6;             2;   7;       20;  21;  3;   23
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^ETA_TMPS | ETASFC
+SFPARM=BRBK;TMPF;TMAX;HEAT;WCHT;TMIN;STC1
+COLORS=6;   2;   10;  7;   6;   25;  18
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^ETA_STORM | ETASFCA
+SFPARM=BRBK:.75:1:112;TMPF;WSYM:.75;HLCY;STMS;DWPF;STMD
+COLORS=6;             2;   7;       20;  21;  3;   23
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^200MB_E | ETASND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;HGHT/10;SPAC;RELH;OMEG*10
+COLORS=6;             2;        5;           3;   7
+LEVEL=200
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^250MB_E | ETASND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;HGHT/10;SPAC;RELH;OMEG*10
+COLORS=6;             2;        5;           3;   7
+LEVEL=250
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^300MB_E | ETASND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;HGHT/10;SPAC;RELH;OMEG*10
+COLORS=6;             2;        5;           3;   7
+LEVEL=300
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^400MB_E | ETASND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;HGHT/10;SPAC;RELH;OMEG*10
+COLORS=6;             2;        5;           3;   7
+LEVEL=400
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^500MB_E | ETASND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;HGHT/10;SPAC;RELH;OMEG*10
+COLORS=6;             2;        5;           3;   7
+LEVEL=500
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^600MB_E | ETASND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;HGHT/10;SPAC;RELH;OMEG*10
+COLORS=6;             2;        5;           3;   7
+LEVEL=600
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^700MB_E | ETASND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;HGHT/10;SPAC;RELH;OMEG*10
+COLORS=6;             2;        5;           3;   7
+LEVEL=700
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^800MB_E | ETASND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;HGHT/10;SPAC;RELH;OMEG*10
+COLORS=6;             2;        5;           3;   7
+LEVEL=800
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^850MB_E | ETASND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;HGHT/10;SPAC;RELH;OMEG*10
+COLORS=6;             2;        5;           3;   7
+LEVEL=850
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^900MB_E | ETASND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;HGHT/10;SPAC;RELH;OMEG*10
+COLORS=6;             2;        5;           3;   7
+LEVEL=900
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^925MB_E | ETASND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;HGHT/10;SPAC;RELH;OMEG*10
+COLORS=6;             2;        5;           3;   7
+LEVEL=925
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^950MB_E | ETASND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;HGHT/10;SPAC;RELH;OMEG*10
+COLORS=6;             2;        5;           3;   7
+LEVEL=950
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^850MB_DP_E | ETASND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;HGHT/10;SPAC;DWPC;OMEG*10
+COLORS=6;             2;        5;           3;   7
+LEVEL=850
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^900MB_DP_E| ETASND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;HGHT/10;SPAC;DWPC;OMEG*10
+COLORS=6;             2;        5;           3;   7
+LEVEL=900
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^925MB_DP_E | ETASND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;HGHT/10;SPAC;DWPC;OMEG*10
+COLORS=6;             2;        5;           3;   7
+LEVEL=925
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^950MB_DP_E | ETASND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;HGHT/10;SPAC;DWPC;OMEG*10
+COLORS=6;             2;        5;           3;   7
+LEVEL=950
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^950MB_CLD_E | ETASND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;CFRL;SPAC;TMWC;OMEG*10
+COLORS=6;             2;        25;       3;   7
+LEVEL=950
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^925MB_CLD_E | ETASND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;CFRL;SPAC;TMWC;OMEG*10
+COLORS=6;             2;        25;       3;   7
+LEVEL=925
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^900MB_CLD_E | ETASND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;CFRL;SPAC;TMWC;OMEG*10
+COLORS=6;             2;        25;       3;   7
+LEVEL=900
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^850MB_CLD_E | ETASND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;CFRL;SPAC;TMWC;OMEG*10
+COLORS=6;             2;        25;       3;   7
+LEVEL=850
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^800MB_CLD_E | ETASND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;CFRL;SPAC;TMWC;OMEG*10
+COLORS=6;             2;        25;       3;   7
+LEVEL=800
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^700MB_CLD_E | ETASND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;CFRL;SPAC;TMWC;OMEG*10
+COLORS=6;             2;        25;       3;   7
+LEVEL=700
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^600MB_CLD_E | ETASND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;CFRL;SPAC;TMWC;OMEG*10
+COLORS=6;             2;        25;       3;   7
+LEVEL=600
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^500MB_CLD_E | ETASND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;CFRL;SPAC;TMWC;OMEG*10
+COLORS=6;             2;        25;       3;   7
+LEVEL=500
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^400MB_CLD_E | ETASND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;CFRL;SPAC;TMWC;OMEG*10
+COLORS=6;             2;        25;       3;   7
+LEVEL=400
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^300MB_CLD_E | ETASND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;CFRL;SPAC;TMWC;OMEG*10
+COLORS=6;             2;        25;       3;   7
+LEVEL=300
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^STABINDX_E | ETASND
+SNPARM=MARK;LIFT;SPAC;KINX;SPAC;TOTL;PWAT*3.94;CAPE;BRCH
+COLORS=6;   2;        5;        15;  3;        7;   26
+LEVEL=0
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^RUC21 | RUC2SFC
+SFPARM=BRBK;TMPF;SPAC;PMSL;SPAC;DWPF;P01I*100
+COLORS=26;  2;        25;       22;  3
+TITLE=1/0
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^RUC22 | RUC2SFCA
+SFPARM=SPAC;SPAC;WSYM:1:1;SPAC;LCLD;SPAC;SPAC;VSBY*10
+COLORS=          7;             6;             24
+TITLE=1/-2
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^RUC2LYR1 | RUC2SFCA
+SFPARM=BRBK:.75:1:112;TMPF;WSYM:.75;LCLD;MCLD;DWPF;HCLD
+COLORS=6;             2;   7;       20;  21;  3;   23
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^RUC2_TMPS | RUC2SFC
+SFPARM=BRBK;TMPF;TMAX;HEAT;WCHT;TMIN;STC1
+COLORS=6;   2;   10;  7;   6;   25;  18
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^RUC2_STORM | RUC2SFCA
+SFPARM=BRBK:.75:1:112;TMPF;WSYM:.75;HLCY;STMS;DWPF;STMD
+COLORS=6;             2;   7;       20;  21;  3;   23
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^200MB_R2 | RUC2SND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;HGHT/10;SPAC;RELH;OMEG*10
+COLORS=6;             2;        5;           3;   7
+LEVEL=200
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^250MB_R2 | RUC2SND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;HGHT/10;SPAC;RELH;OMEG*10
+COLORS=6;             2;        5;           3;   7
+LEVEL=250
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^300MB_R2 | RUC2SND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;HGHT/10;SPAC;RELH;OMEG*10
+COLORS=6;             2;        5;           3;   7
+LEVEL=300
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^400MB_R2 | RUC2SND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;HGHT/10;SPAC;RELH;OMEG*10
+COLORS=6;             2;        5;           3;   7
+LEVEL=400
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^500MB_R2 | RUC2SND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;HGHT/10;SPAC;RELH;OMEG*10
+COLORS=6;             2;        5;           3;   7
+LEVEL=500
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^600MB_R2 | RUC2SND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;HGHT/10;SPAC;RELH;OMEG*10
+COLORS=6;             2;        5;           3;   7
+LEVEL=600
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^700MB_R2 | RUC2SND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;HGHT/10;SPAC;RELH;OMEG*10
+COLORS=6;             2;        5;           3;   7
+LEVEL=700
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^800MB_R2 | RUC2SND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;HGHT/10;SPAC;RELH;OMEG*10
+COLORS=6;             2;        5;           3;   7
+LEVEL=800
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^850MB_R2 | RUC2SND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;HGHT/10;SPAC;RELH;OMEG*10
+COLORS=6;             2;        5;           3;   7
+LEVEL=850
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^900MB_R2 | RUC2SND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;HGHT/10;SPAC;RELH;OMEG*10
+COLORS=6;             2;        5;           3;   7
+LEVEL=900
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^925MB_R2 | RUC2SND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;HGHT/10;SPAC;RELH;OMEG*10
+COLORS=6;             2;        5;           3;   7
+LEVEL=925
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^950MB_R2 | RUC2SND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;HGHT/10;SPAC;RELH;OMEG*10
+COLORS=6;             2;        5;           3;   7
+LEVEL=950
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^850MB_DP_R2 | RUC2SND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;HGHT/10;SPAC;DWPC;OMEG*10
+COLORS=6;             2;        5;           3;   7
+LEVEL=850
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^900MB_DP_R2 | RUC2SND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;HGHT/10;SPAC;DWPC;OMEG*10
+COLORS=6;             2;        5;           3;   7
+LEVEL=900
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^925MB_DP_R2 | RUC2SND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;HGHT/10;SPAC;DWPC;OMEG*10
+COLORS=6;             2;        5;           3;   7
+LEVEL=925
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^950MB_DP_R2 | RUC2SND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;HGHT/10;SPAC;DWPC;OMEG*10
+COLORS=6;             2;        5;           3;   7
+LEVEL=950
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^950MB_CLD_R2 | RUC2SND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;CFRL;SPAC;TMWC;OMEG*10
+COLORS=6;             2;        25;       3;   7
+LEVEL=950
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^925MB_CLD_R2 | RUC2SND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;CFRL;SPAC;TMWC;OMEG*10
+COLORS=6;             2;        25;       3;   7
+LEVEL=925
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^900MB_CLD_R2 | RUC2SND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;CFRL;SPAC;TMWC;OMEG*10
+COLORS=6;             2;        25;       3;   7
+LEVEL=900
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^850MB_CLD_R2 | RUC2SND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;CFRL;SPAC;TMWC;OMEG*10
+COLORS=6;             2;        25;       3;   7
+LEVEL=850
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^800MB_CLD_R2 | RUC2SND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;CFRL;SPAC;TMWC;OMEG*10
+COLORS=6;             2;        25;       3;   7
+LEVEL=800
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^700MB_CLD_R2 | RUC2SND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;CFRL;SPAC;TMWC;OMEG*10
+COLORS=6;             2;        25;       3;   7
+LEVEL=700
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^600MB_CLD_R2 | RUC2SND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;CFRL;SPAC;TMWC;OMEG*10
+COLORS=6;             2;        25;       3;   7
+LEVEL=600
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^500MB_CLD_R2 | RUC2SND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;CFRL;SPAC;TMWC;OMEG*10
+COLORS=6;             2;        25;       3;   7
+LEVEL=500
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^400MB_CLD_R2 | RUC2SND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;CFRL;SPAC;TMWC;OMEG*10
+COLORS=6;             2;        25;       3;   7
+LEVEL=400
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^300MB_CLD_R2 | RUC2SND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;CFRL;SPAC;TMWC;OMEG*10
+COLORS=6;             2;        25;       3;   7
+LEVEL=300
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^STABINDX_R2 | RUC2SND
+SNPARM=MARK;LIFT;SPAC;KINX;SPAC;TOTL;PWAT*3.94;CAPE;BRCH
+COLORS=6;   2;        5;        15;  3;        7;   26
+LEVEL=0
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^RUCPTYP1 | RUCPTYPSFC
+SFPARM=BRBK;TMPF;SPAC;PMSL;SPAC;DWPF;P01I*100
+COLORS=26;  2;        25;       22;  3
+TITLE=1/0
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^RUCPTYP_TMPS | RUCPTYPSFC
+SFPARM=BRBK;TMPF;TMAX;HEAT;WCHT;TMIN;STC1
+COLORS=6;   2;   10;  7;   6;   25;  18
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^RUCPTYP_STORM | RUCPTYPSFCA
+SFPARM=BRBK:.75:1:112;TMPF;WSYM:.75;HLCY;STMS;DWPF;STMD
+COLORS=6;             2;   7;       20;  21;  3;   23
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^200MB_RP | RUCPTYPSND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;HGHT/10;SPAC;RELH;OMEG*10
+COLORS=6;             2;        5;           3;   7
+LEVEL=200
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^250MB_RP | RUCPTYPSND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;HGHT/10;SPAC;RELH;OMEG*10
+COLORS=6;             2;        5;           3;   7
+LEVEL=250
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^300MB_RP | RUCPTYPSND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;HGHT/10;SPAC;RELH;OMEG*10
+COLORS=6;             2;        5;           3;   7
+LEVEL=300
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^400MB_RP | RUCPTYPSND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;HGHT/10;SPAC;RELH;OMEG*10
+COLORS=6;             2;        5;           3;   7
+LEVEL=400
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^500MB_RP | RUCPTYPSND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;HGHT/10;SPAC;RELH;OMEG*10
+COLORS=6;             2;        5;           3;   7
+LEVEL=500
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^600MB_RP | RUCPTYPSND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;HGHT/10;SPAC;RELH;OMEG*10
+COLORS=6;             2;        5;           3;   7
+LEVEL=600
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^700MB_RP | RUCPTYPSND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;HGHT/10;SPAC;RELH;OMEG*10
+COLORS=6;             2;        5;           3;   7
+LEVEL=700
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^800MB_RP | RUCPTYPSND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;HGHT/10;SPAC;RELH;OMEG*10
+COLORS=6;             2;        5;           3;   7
+LEVEL=800
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^850MB_RP | RUCPTYPSND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;HGHT/10;SPAC;RELH;OMEG*10
+COLORS=6;             2;        5;           3;   7
+LEVEL=850
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^900MB_RP | RUCPTYPSND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;HGHT/10;SPAC;RELH;OMEG*10
+COLORS=6;             2;        5;           3;   7
+LEVEL=900
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^925MB_RP | RUCPTYPSND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;HGHT/10;SPAC;RELH;OMEG*10
+COLORS=6;             2;        5;           3;   7
+LEVEL=925
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^950MB_RP | RUCPTYPSND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;HGHT/10;SPAC;RELH;OMEG*10
+COLORS=6;             2;        5;           3;   7
+LEVEL=950
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^850MB_DP_RP | RUCPTYPSND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;HGHT/10;SPAC;DWPC;OMEG*10
+COLORS=6;             2;        5;           3;   7
+LEVEL=850
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^900MB_DP_RP | RUCPTYPSND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;HGHT/10;SPAC;DWPC;OMEG*10
+COLORS=6;             2;        5;           3;   7
+LEVEL=900
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^925MB_DP_RP | RUCPTYPSND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;HGHT/10;SPAC;DWPC;OMEG*10
+COLORS=6;             2;        5;           3;   7
+LEVEL=925
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^950MB_DP_RP | RUCPTYPSND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;HGHT/10;SPAC;DWPC;OMEG*10
+COLORS=6;             2;        5;           3;   7
+LEVEL=950
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^950MB_CLD_RP | RUCPTYPSND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;CFRL;SPAC;TMWC;OMEG*10
+COLORS=6;             2;        25;       3;   7
+LEVEL=950
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^925MB_CLD_RP | RUCPTYPSND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;CFRL;SPAC;TMWC;OMEG*10
+COLORS=6;             2;        25;       3;   7
+LEVEL=925
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^900MB_CLD_RP | RUCPTYPSND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;CFRL;SPAC;TMWC;OMEG*10
+COLORS=6;             2;        25;       3;   7
+LEVEL=900
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^850MB_CLD_RP | RUCPTYPSND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;CFRL;SPAC;TMWC;OMEG*10
+COLORS=6;             2;        25;       3;   7
+LEVEL=850
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^800MB_CLD_RP | RUCPTYPSND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;CFRL;SPAC;TMWC;OMEG*10
+COLORS=6;             2;        25;       3;   7
+LEVEL=800
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^700MB_CLD_RP | RUCPTYPSND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;CFRL;SPAC;TMWC;OMEG*10
+COLORS=6;             2;        25;       3;   7
+LEVEL=700
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^600MB_CLD_RP | RUCPTYPSND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;CFRL;SPAC;TMWC;OMEG*10
+COLORS=6;             2;        25;       3;   7
+LEVEL=600
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^500MB_CLD_RP | RUCPTYPSND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;CFRL;SPAC;TMWC;OMEG*10
+COLORS=6;             2;        25;       3;   7
+LEVEL=500
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^400MB_CLD_RP | RUCPTYPSND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;CFRL;SPAC;TMWC;OMEG*10
+COLORS=6;             2;        25;       3;   7
+LEVEL=400
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^300MB_CLD_RP | RUCPTYPSND
+SNPARM=BRBK:.75:2:112;TMPC;SPAC;CFRL;SPAC;TMWC;OMEG*10
+COLORS=6;             2;        25;       3;   7
+LEVEL=300
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^STABINDX_RP | RUCPTYPSND
+SNPARM=MARK;LIFT;SPAC;KINX;SPAC;TOTL;PWAT*3.94;CAPE;BRCH
+COLORS=6;   2;        5;        15;  3;        7;   26
+LEVEL=0
+VCOORD=PRES
+FILTER=0
+TEXT=1/21/HW
+!
+!
+^24HRPOP_ANOM | ENSMOSC0
+SFPARM=MARK:17:.35;;;;;;;;;;STID;;;;PP24;;PP2A;SPRI>90
+COLORS=          1;            1;     17;   14;   0
+FILTER=0
+TEXT=m/22/HW
+!
+!
+^12HRPOP_ANOM | ENSMOSC0
+SFPARM=MARK:17:.35;;;;;;;;;;STID;;;;PP12;;PP1A;SPRI>90
+COLORS=          1;            1;     17;   14;   0
+FILTER=0
+TEXT=m/22/HW
+! 
+!
+^MAX_ANOM | ENSMOSC0
+SFPARM=MARK:17:.35;;;;;;;;;;STID;;;;TDYF;;TDAF;SPRI>90
+COLORS=         31;            1;      2;   17; 0
+FILTER=0
+TEXT=m/22/HW
+!
+!
+^MIN_ANOM | ENSMOSC0
+SFPARM=MARK:17:.35;;;;;;;;;;STID;;;;TNTF;;TNAF;SPRI>90
+COLORS=         31;            1;      6;   25; 0
+FILTER=0
+TEXT=m/22/HW
+!
+!
+^24HRPOP_ANOM | ENSMOSN1
+SFPARM=MARK:17:.35;;;;;;;;;;STID;;;;PP24;;PP2A;SPRI>90
+COLORS=          1;            1;     17;   14;   0
+FILTER=0
+TEXT=m/22/HW
+!
+!
+^12HRPOP_ANOM | ENSMOSN1
+SFPARM=MARK:17:.35;;;;;;;;;;STID;;;;PP12;;PP1A;SPRI>90
+COLORS=          1;            1;     17;   14;   0
+FILTER=0
+TEXT=m/22/HW
+!
+!
+^MAX_ANOM | ENSMOSN1
+SFPARM=MARK:17:.35;;;;;;;;;;STID;;;;TDYF;;TDAF;SPRI>90
+COLORS=         31;            1;      2;   17; 0
+FILTER=0
+TEXT=m/22/HW
+!
+!
+^MIN_ANOM | ENSMOSN1
+SFPARM=MARK:17:.35;;;;;;;;;;STID;;;;TNTF;;TNAF;SPRI>90
+COLORS=         31;            1;      6;   25; 0
+FILTER=0
+TEXT=m/22/HW
+!
+!
+^24HRPOP_ANOM | ENSMOSN2
+SFPARM=MARK:17:.35;;;;;;;;;;STID;;;;PP24;;PP2A;SPRI>90
+COLORS=          1;            1;     17;   14;   0
+FILTER=0
+TEXT=m/22/HW
+!
+!
+^12HRPOP_ANOM | ENSMOSN2
+SFPARM=MARK:17:.35;;;;;;;;;;STID;;;;PP12;;PP1A;SPRI>90
+COLORS=          1;            1;     17;   14;   0
+FILTER=0
+TEXT=m/22/HW
+!
+!
+^MAX_ANOM | ENSMOSN2
+SFPARM=MARK:17:.35;;;;;;;;;;STID;;;;TDYF;;TDAF;SPRI>90
+COLORS=         31;            1;      2;   17; 0
+FILTER=0
+TEXT=m/22/HW
+!
+!
+^MIN_ANOM | ENSMOSN2
+SFPARM=MARK:17:.35;;;;;;;;;;STID;;;;TNTF;;TNAF;SPRI>90
+COLORS=         31;            1;      6;   25; 0
+FILTER=0
+TEXT=m/22/HW
+!
+!
+^24HRPOP_ANOM | ENSMOSN3
+SFPARM=MARK:17:.35;;;;;;;;;;STID;;;;PP24;;PP2A;SPRI>90
+COLORS=          1;            1;     17;   14;   0
+FILTER=0
+TEXT=m/22/HW
+!
+!
+^12HRPOP_ANOM | ENSMOSN3
+SFPARM=MARK:17:.35;;;;;;;;;;STID;;;;PP12;;PP1A;SPRI>90
+COLORS=          1;            1;     17;   14;   0
+FILTER=0
+TEXT=m/22/HW
+!
+!
+^MAX_ANOM | ENSMOSN3
+SFPARM=MARK:17:.35;;;;;;;;;;STID;;;;TDYF;;TDAF;SPRI>90
+COLORS=         31;            1;      2;   17; 0
+FILTER=0
+TEXT=m/22/HW
+!
+!
+^MIN_ANOM | ENSMOSN3
+SFPARM=MARK:17:.35;;;;;;;;;;STID;;;;TNTF;;TNAF;SPRI>90
+COLORS=         31;            1;      6;   25; 0
+FILTER=0
+TEXT=m/22/HW
+!
+!
+^24HRPOP_ANOM | ENSMOSN4
+SFPARM=MARK:17:.35;;;;;;;;;;STID;;;;PP24;;PP2A;SPRI>90
+COLORS=          1;            1;     17;   14;   0
+FILTER=0
+TEXT=m/22/HW
+!
+!
+^12HRPOP_ANOM | ENSMOSN4
+SFPARM=MARK:17:.35;;;;;;;;;;STID;;;;PP12;;PP1A;SPRI>90
+COLORS=          1;            1;     17;   14;   0
+FILTER=0
+TEXT=m/22/HW
+!
+!
+^MAX_ANOM | ENSMOSN4
+SFPARM=MARK:17:.35;;;;;;;;;;STID;;;;TDYF;;TDAF;SPRI>90
+COLORS=         31;            1;      2;   17; 0
+FILTER=0
+TEXT=m/22/HW
+!
+!
+^MIN_ANOM | ENSMOSN4
+SFPARM=MARK:17:.35;;;;;;;;;;STID;;;;TNTF;;TNAF;SPRI>90
+COLORS=         31;            1;      6;   25; 0
+FILTER=0
+TEXT=m/22/HW
+!
+!
+^24HRPOP_ANOM | ENSMOSN5
+SFPARM=MARK:17:.35;;;;;;;;;;STID;;;;PP24;;PP2A;SPRI>90
+COLORS=          1;            1;     17;   14;   0
+FILTER=0
+TEXT=m/22/HW
+!
+!
+^12HRPOP_ANOM | ENSMOSN5
+SFPARM=MARK:17:.35;;;;;;;;;;STID;;;;PP12;;PP1A;SPRI>90
+COLORS=          1;            1;     17;   14;   0
+FILTER=0
+TEXT=m/22/HW
+!
+!
+^MAX_ANOM | ENSMOSN5
+SFPARM=MARK:17:.35;;;;;;;;;;STID;;;;TDYF;;TDAF;SPRI>90
+COLORS=         31;            1;      2;   17; 0
+FILTER=0
+TEXT=m/22/HW
+!
+!
+^MIN_ANOM | ENSMOSN5
+SFPARM=MARK:17:.35;;;;;;;;;;STID;;;;TNTF;;TNAF;SPRI>90
+COLORS=         31;            1;      6;   25; 0
+FILTER=0
+TEXT=m/22/HW
+!
+!
+^24HRPOP_ANOM | ENSMOSP1
+SFPARM=MARK:17:.35;;;;;;;;;;STID;;;;PP24;;PP2A;SPRI>90
+COLORS=          1;            1;     17;   14;   0
+FILTER=0
+TEXT=m/22/HW
+!
+!
+^12HRPOP_ANOM | ENSMOSP1
+SFPARM=MARK:17:.35;;;;;;;;;;STID;;;;PP12;;PP1A;SPRI>90
+COLORS=          1;            1;     17;   14;   0
+FILTER=0
+TEXT=m/22/HW
+!
+!
+^MAX_ANOM | ENSMOSP1
+SFPARM=MARK:17:.35;;;;;;;;;;STID;;;;TDYF;;TDAF;SPRI>90
+COLORS=         31;            1;      2;   17; 0
+FILTER=0
+TEXT=m/22/HW
+!
+!
+^MIN_ANOM | ENSMOSP1
+SFPARM=MARK:17:.35;;;;;;;;;;STID;;;;TNTF;;TNAF;SPRI>90
+COLORS=         31;            1;      6;   25; 0
+FILTER=0
+TEXT=m/22/HW
+!
+!
+^24HRPOP_ANOM | ENSMOSP2
+SFPARM=MARK:17:.35;;;;;;;;;;STID;;;;PP24;;PP2A;SPRI>90
+COLORS=          1;            1;     17;   14;   0
+FILTER=0
+TEXT=m/22/HW
+!
+!
+^12HRPOP_ANOM | ENSMOSP2
+SFPARM=MARK:17:.35;;;;;;;;;;STID;;;;PP12;;PP1A;SPRI>90
+COLORS=          1;            1;     17;   14;   0
+FILTER=0
+TEXT=m/22/HW
+!
+!
+^MAX_ANOM | ENSMOSP2
+SFPARM=MARK:17:.35;;;;;;;;;;STID;;;;TDYF;;TDAF;SPRI>90
+COLORS=         31;            1;      2;   17; 0
+FILTER=0
+TEXT=m/22/HW
+!
+!
+^MIN_ANOM | ENSMOSP2
+SFPARM=MARK:17:.35;;;;;;;;;;STID;;;;TNTF;;TNAF;SPRI>90
+COLORS=         31;            1;      6;   25; 0
+FILTER=0
+TEXT=m/22/HW
+!
+!
+^24HRPOP_ANOM | ENSMOSP3
+SFPARM=MARK:17:.35;;;;;;;;;;STID;;;;PP24;;PP2A;SPRI>90
+COLORS=          1;            1;     17;   14;   0
+FILTER=0
+TEXT=m/22/HW
+!
+!
+^12HRPOP_ANOM | ENSMOSP3
+SFPARM=MARK:17:.35;;;;;;;;;;STID;;;;PP12;;PP1A;SPRI>90
+COLORS=          1;            1;     17;   14;   0
+FILTER=0
+TEXT=m/22/HW
+!
+!
+^MAX_ANOM | ENSMOSP3
+SFPARM=MARK:17:.35;;;;;;;;;;STID;;;;TDYF;;TDAF;SPRI>90
+COLORS=         31;            1;      2;   17; 0
+FILTER=0
+TEXT=m/22/HW
+!
+!
+^MIN_ANOM | ENSMOSP3
+SFPARM=MARK:17:.35;;;;;;;;;;STID;;;;TNTF;;TNAF;SPRI>90
+COLORS=         31;            1;      6;   25; 0
+FILTER=0
+TEXT=m/22/HW
+!
+!
+^24HRPOP_ANOM | ENSMOSP4
+SFPARM=MARK:17:.35;;;;;;;;;;STID;;;;PP24;;PP2A;SPRI>90
+COLORS=          1;            1;     17;   14;   0
+FILTER=0
+TEXT=m/22/HW
+!
+!
+^12HRPOP_ANOM | ENSMOSP4
+SFPARM=MARK:17:.35;;;;;;;;;;STID;;;;PP12;;PP1A;SPRI>90
+COLORS=          1;            1;     17;   14;   0
+FILTER=0
+TEXT=m/22/HW
+!
+!
+^MAX_ANOM | ENSMOSP4
+SFPARM=MARK:17:.35;;;;;;;;;;STID;;;;TDYF;;TDAF;SPRI>90
+COLORS=         31;            1;      2;   17; 0
+FILTER=0
+TEXT=m/22/HW
+!
+!
+^MIN_ANOM | ENSMOSP4
+SFPARM=MARK:17:.35;;;;;;;;;;STID;;;;TNTF;;TNAF;SPRI>90
+COLORS=         31;            1;      6;   25; 0
+FILTER=0
+TEXT=m/22/HW
+!
+!
+^24HRPOP_ANOM | ENSMOSP5
+SFPARM=MARK:17:.35;;;;;;;;;;STID;;;;PP24;;PP2A;SPRI>90
+COLORS=          1;            1;     17;   14;   0
+FILTER=0
+TEXT=m/22/HW
+!
+!
+^12HRPOP_ANOM | ENSMOSP5
+SFPARM=MARK:17:.35;;;;;;;;;;STID;;;;PP12;;PP1A;SPRI>90
+COLORS=          1;            1;     17;   14;   0
+FILTER=0
+TEXT=m/22/HW
+!
+!
+^MAX_ANOM | ENSMOSP5
+SFPARM=MARK:17:.35;;;;;;;;;;STID;;;;TDYF;;TDAF;SPRI>90
+COLORS=         31;            1;      2;   17; 0
+FILTER=0
+TEXT=m/22/HW
+!
+!
+^MIN_ANOM | ENSMOSP5
+SFPARM=MARK:17:.35;;;;;;;;;;STID;;;;TNTF;;TNAF;SPRI>90
+COLORS=         31;            1;      6;   25; 0
+FILTER=0
+TEXT=m/22/HW
+!
+!
+^MAPDISCO_SFC | METAR
+SFPARM=SKYK:.70:.70;TMPF;WSYM:.7;SMSL;PTND:1;DWPF;STID
+COLORS=          26;   2;      7;  31;      5;   3;  17
+FILTER=0.70
+TEXT=h/21/HW
+!
+!
+!^MPC_SFC_ANAL | METAR
+!SFPARM=;TMPF;WSYM:0.7:1.2;SMSL;PTND:0.7:1.2;;;;BRBK:.9:1.6:112;MARK:4:0.6:1
+!COLORS=   2 ;      7    ;  31 ;     5      ;     5             ;   25
+!FILTER=0.90
+!TEXT=.85/2/HW
+!
+!
+^01_HR_PCPN | METAR
+SFPARM=;;;;;;;;;;P01I*100
+COLORS=3
+FILTER=0.10
+TEXT=.857/21/HW
+!
+!
+^PREC_WAT | UAIR
+SNPARM=PWAT*3.94
+COLORS=       4
+VCOORD=NONE
+LEVEL=0
+FILTER=.10
+TEXT=g/21/HW
+!
+!
+^250MB | UAIR
+SNPARM=BRBK:1.5:2:112
+COLORS=             3
+VCOORD=PRES
+LEVEL=250
+FILTER=.20
+TEXT=l/21/HW
+!
+!
+^500MB | UAIR
+SNPARM=BRBK:1.5:2:112;SPAC;SPAC;STDZ
+COLORS=             6;             5
+VCOORD=PRES
+LEVEL=500
+FILTER=.20
+TEXT=l/21/HW
+!
+!
+^700MB | UAIR
+SNPARM=BRBK:1.5:2:112;TMPC;SPAC;SPAC;SPAC;DWPC
+COLORS=             6;   2;                  3
+VCOORD=PRES
+LEVEL=700
+FILTER=.20
+TEXT=l/21/HW
+!
+!
+^850MB | UAIR
+SNPARM=BRBK:1.5:2:112;TMPC;SPAC;SPAC;SPAC;DWPC
+COLORS=             6;   2;                  3
+VCOORD=PRES
+LEVEL=850
+FILTER=.20
+TEXT=h/21/HW
+!
+!
+^925MB | UAIR
+SNPARM=BRBK:1.5:2:112;TMPC;SPAC;SPAC;SPAC;DWPC
+COLORS=             6;   2;                  3
+VCOORD=PRES
+LEVEL=925
+FILTER=.20
+TEXT=l/21/HW
+!
+!
+^STATIONS | BUFKIT
+SFPARM=STID;
+COLORS=2
+FILTER=0
+TEXT=m/2/HW
+!
+!
+^INTL_SAM | SHIP
+SFPARM=SKYK:.50:.70;TMPC;WSYM:.7;SMSL;PTND:.7;DWPC;WHFT;;SSTC
+COLORS=          26;   2;      7;  31;      5;   3;  11 ; 27
+FILTER=0.00
+TEXT=.65/2/HW
+!
+!
+^SAM | SYNOP
+SFPARM=SKYK:.75:1:132;TMPC;WSYM:1:1;SMSL;PTND:1:1;DWPC;;;VSBY*10
+COLORS=            26;   2;       7;  25;      20;  22;  24
+FILTER=0.55
+TEXT=1/21/HW
+!
+!
+^MAX_MM | GFSXMOS
+SFPARM=MARK:17:.35;;;;;;;;;;;;;;TDYF;;TDAF
+COLORS=         31;               24;    6
+FILTER=0
+TEXT=m/22/HW
+!
+!
+^MIN_MM | GFSXMOS
+SFPARM=MARK:17:.35;;;;;;;;;;;;;;TNTF;;TNAF
+COLORS=         31;               12;   11
+FILTER=0
+TEXT=m/22/HW
+!
+!
+^POP_ANOM | GFSXMOS
+SFPARM=MARK:17:.35;;PP24;;PP2A;;;;;;STID;SPRI>90
+COLORS=          1;    3;   22;        1;   0
+FILTER=0
+TEXT=m/22/HW
+!
+!
+^MAX_ANOM | GFSXMOS
+SFPARM=MARK:17:.35;;;;;;;;;;STID;;;;TDYF;;TDAF;SPRI>90
+COLORS=         31;            1;      2;   17; 0
+FILTER=0
+TEXT=m/22/HW
+!
+!
+^MIN_ANOM | GFSXMOS
+SFPARM=MARK:17:.35;;;;;;;;;;STID;;;;TNTF;;TNAF;SPRI>90
+COLORS=         31;            1;      6;   25; 0
+FILTER=0
+TEXT=m/22/HW
+!
+!
+^MAXMINPOP_AN | GFSXMOS
+SFPARM=MARK:17:.35;TDYF;TNTF;TDAF;TNAF;PP24;PP2A;SPRI>90
+COLORS=         31;   2;  26;  15;  25;   3;  22; 0
+FILTER=0
+TEXT=m/22/HW
+!
+!
+^MAXMINPOP | GFSXMOS
+SFPARM=MARK:17:.35;TDYF;;PP24;;TNTF;STID;SPRI>90
+COLORS=         31;   2;    3;   26;   1;0
+FILTER=0
+TEXT=m/22/HW
+!
+!
+^CLI_ALL | GFSXMOS
+SFPARM=MARK:17:.35;TDCF;;PP2C;;TNCF;STID
+COLORS=         31;  16;   22;   26;   1
+FILTER=0
+TEXT=M/22/HW
+!
+!
+^CLI_HPC | GFSXMOS
+SFPARM=MARK:17:.35;TDCF;;PP2C;;TNCF;STID;SPRI>90
+COLORS=         31;  16;   22;   26;   1;0
+FILTER=0
+TEXT=m/22/HW
+!
+!
+^12HRPOP | GFSXMOS
+SFPARM=MARK:17:.35;;PP12;;PP1A;;;;STID;SPRI>90
+COLORS=          1;   11;   12;      1;   0
+FILTER=0
+TEXT=m/22/HW
+!
+!
+^DEWPOINT_HPC | GFSXMOS
+SFPARM=MARK:17:.35;;;DWPF;;;;;STID;SPRI>90
+COLORS=          1;    22;     1;   0
+FILTER=0
+TEXT=m/22/HW
+!
+!
+^CPC24 | CPC24
+SFPARM=P24I*10.
+COLORS=(.1;5.;10.;20.;30.;40.;50.;60./0;31;25;2;5;22;17;7;6)
+FILTER=0.0
+TEXT=.8/22/1////hw
+!
+!
+^CPCM24 | CPCM24
+SFPARM=P24I*10.
+COLORS=(.1;5.;10.;20.;30.;40.;50.;60./0;31;25;2;5;22;17;7;6)
+FILTER=0.0
+TEXT=.8/22/1////hw
+!
+!
+^CPCS24 | CPCS24
+SFPARM=P24I*10.
+COLORS=(.1;5.;10.;20.;30.;40.;50.;60./0;31;25;2;5;22;17;7;6)
+FILTER=0.0
+TEXT=.8/22/1////hw
+!
+!
+^NWQC24 | NWQC24
+SFPARM=P24I*10.
+COLORS=(.1;5.;10.;20.;30.;40.;50.;60./0;31;25;2;5;22;17;7;6)
+FILTER=0.0
+TEXT=.8/22/1////hw
+!
+!
+^NWQC06 | NWQC06
+SFPARM=MARK:15:2:2;;;;;;;;;P06I*100.
+COLORS=6;(1.;5.;10.;25.;50.;100.;200.;400./31;3;25;2;5;23;17;7;6)
+FILTER=0.0
+TEXT=.9/22/1////hw
+!
+!
+^NWF06MOS | NWF06MOS
+SFPARM=MARK:15:2:2;;P06I*100.
+COLORS=6;(1.;5.;10.;25.;50.;100.;200.;400./31;3;25;2;5;23;17;7;6)
+FILTER=0.0
+TEXT=.9/22/1////hw
+!
+!
+^HPCQPFMOS | HPCQPFMOS
+SFPARM=MARK:15:2:2;;;;P06I*100.;;;;;;STID
+COLORS=6;(1.;5.;10.;25.;50.;100.;200.;400./31;3;25;2;5;23;17;7;6);0
+FILTER=0.0
+TEXT=.9/22//HW
+!
+!
+^HPCQP2MOS | HPCQP2MOS
+SFPARM=MARK:15:2:2;;;;;;;;;P06I*100.;STID
+COLORS=6;(1.;5.;10.;25.;50.;100.;200.;400./31;3;25;2;5;23;17;7;6);0
+FILTER=0.0
+TEXT=.9/22//HW
+!
+!
+^HPCFRZMOS | HPCFRZMOS
+SFPARM=MARK:15:2:2;;FRZL;;;;;;;;STID
+COLORS=6;(20;40;60;80;100;120;140;160;180;200/30;29;4;25;6;23;22;19;5;17;18);0
+FILTER=0.0
+TEXT=.9/22//HW
+!
+!
+^OBS6 | OBS6
+SFPARM=MARK:15:3:3;;;;;;;;;P06I*100.;STID
+COLORS=6;(-1;24/5;23;3/P06I*100.);2
+FILTER=0.0
+TEXT=.7/22//HW
+!
+!
+^TIME | MW_ORBIT
+SFPARM=STIM
+COLORS=1
+FILTER=0.5
+TEXT=1/21/HW

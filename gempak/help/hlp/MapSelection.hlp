@@ -1,0 +1,97 @@
+
+                               MAP SELECTION
+
+
+The "Map Selection" window specifies the geographic area for frames  
+in a loop.  Map overlays and their associated attributes are also selected
+in this window.  The "Map Selection" window is invoked by clicking the "MAP" 
+button in the main NMAP window or in the "Data Selection Window".
+
+Several methods are available to select a geographic area.  Click on one
+of the buttons along the left side of the GUI to select a pre-defined
+geographic area.  The pre-defined areas listed in the GUI are obtained
+from the table: $GEMTBL/nmap/mapinfo.tbl.  Different areas may be specified 
+by editing the contents of this table.  A pre-defined area is any valid
+GEMPAK GAREA that is defined in the table $GEMTBL/stns/geog.tbl.
+Note that the first entry in the mapinfo.tbl, which appears as the top entry in 
+the GUI, is the default geographic area when NMAP is invoked.  The geographic 
+region may be interactively defined by clicking on the "Custom" button to 
+specify the lat/lon bounds and map projection.  See the help on "Customized 
+Maps" for additional details. 
+
+A geographic area may be defined by zooming on the map window.  Click the
+"Zoom" button to define the corner points of the zoomed region.  Click the
+left mouse button to define the first corner point.  Then hold the mouse
+button down and drag the mouse to shape the zoom box.  Release the left
+mouse button to complete the zoom box definition.  This action will immediately
+zoom the area.  Two types of zoom are available.  The extended zoom option
+(the default) attempts to fill the entire display area.  It uses either the
+width or height of the zoom box to define the zoom area and fills the window
+appropriately.  The non-extended zoom option uses the corner points of the
+zoom box to exactly define the zoom area, which may not necessarily fill 
+the display area.  The extended zoom option is turned on/off by selecting it 
+under the "Option" pulldown in the main NMAP window.
+
+When the selected data includes satellite or radar imagery, the last image 
+in the loop can be displayed in the "Map Selection" window so that a region 
+of interest may be chosen with the aid of the image.  Click on the 
+"Show Image" button to display the image in the GUI.  The image projection 
+is always used for the selected geographic area when a data source is a 
+radar or satellite image.  As a result, geographic areas located far from the 
+region covered by the image may not be viewable.   
+
+Click on the buttons located under the "Overlays" title on the right side of
+the GUI, to select desired map overlays.  Overlays can be either geographic
+boundaries, e.g., rivers, defined by GEMPAK map files, or markers, e.g., 
+WFO locations, defined by GEMPAK station files.  Click on the overlay name 
+button to change the attributes associated with the overlay.  Click the button 
+located to the left of the "Zoom" button to preview all selected map overlays.
+Changing the attributes of an overlay will also display that overlay as a 
+preview.  The overlays and their default attributes, e.g., color, are 
+specified in the table: $GEMTBL/nmap/mapovl.tbl.  The mapovl.tbl table
+also contains a column that controls which overlays are turned on by
+default when NMAP is initiated.  This table may be edited to change the 
+overlays and the defaults.  See the table for additional details.   
+
+Map settings including the base map, zoom area, overlay selections, and
+roam factor can be shared among loops by clicking on the "Apply Map Settings"
+or "Get Map Settings" buttons.  
+
+Click the "Apply Map Settings" button to apply the map settings of the 
+current loop to other loops.  This button is useful for applying map settings
+before data is loaded into loops.  For example suppose that the same
+zoom area is desired for loop 1, 2 and 3.  Loop 1 has a 
+visible satellite sector, loop 2 has an infrared sector and loop 3 
+has model data ready for loading using a Stored Procedure File (SPF) or manual
+selections.  Zoom on loop 1 to get the desired area of interest by 
+clicking the "Zoom" button in the "Map Selection" Window.  Then click the
+"Apply Map Settings" button to apply the zoom area to loops 2 and 3.  Clicking 
+the "Load" button will then load all loops with the same zoom area. 
+ 
+Click the "Get Map Settings" button to acquire the map settings from a 
+particular loop for the current loop.  This button is useful for loading data 
+after map settings have been applied to loaded loops.  For example, suppose 
+loops 1 and 2 have already been loaded with a common zoom area applied and that 
+this loop area is desired for new data to be loaded in loop 3.  After selecting
+the data to be loaded using the "Data Selection Window", click the "Map" button.
+Then click the "Get Map Settings" button.  Select loop 1 or 2 in the GUI and
+click the "Accept" button.  The zoom area for loop 3 will match the area for
+loops 1 and 2 upon loading.
+
+NMAP always loads images using the projection associated with the image file.
+Therefore, applying settings between loops that contain images obeys the 
+following rules.  If the destination loop contains an image, the projection
+associated with the source loop will not be applied to the destination
+loop.  This means that if the image's projection is not the same as the
+source's projection, the resultant zoom area will not match the source's area. 
+On the other hand, if the source loop has an image, and the destination loop
+does not, the destination loop will acquire the image projection.  Its zoom
+area should match the source's.
+
+When the "Map Window" is invoked from the main NMAP window, the "Load" button
+appears at the bottom of the GUI.  Click this button to immediately execute
+all changes made to the GUI and re-load all data in the loop.  When the
+"Map Window" is invoked from the "Data Selection" window, the "Accept" button
+appears at the bottom of the GUI.  Click this button to save all changes to
+the "Map Window" which will be applied when data are loaded from the 
+"Data Selection" window.

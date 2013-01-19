@@ -1,0 +1,41 @@
+! CGDATA.BULL
+!
+! This table contains the bulletin/station information to be used
+! with the Coast Guard reports text files     
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+!
+SXUS8  KBOS     BOSTON/LOGAN_IN                  MA US  4237  -7103     9
+SXUS8  KBDL     HARTFORD/BRADLEY                 CT US  4193  -7268    55
+SXUS8  KBDR     BRIDGEPORT/SIKORSKI              CT US  4117  -7313     5
+SXUS8  KBUF     BUFFALO_INTL_ARPT                NY US  4293  -7873   215
+SXUS8  KBWI     BALTIMORE/WASH_INTL              MD US  3918  -7667    47
+SXUS8  KCLE     CLEVELAND/HOPKI                  OH US  4142  -8187   245
+SXUS8  KDLH     DULUTH_INTL_AIRPORT              MN US  4683  -9218   432
+SXUS8  KDTW     DETROIT_METRO                    MI US  4223  -8333   202
+SXUS8  KERI     ERIE_INTL_AIRPORT                PA US  4208  -8018   225
+SXUS8  KEWR     NEWARK_INTL_AIRPORT              NJ US  4070  -7417     9
+SXUS8  KHAT     HATTERAS_(ASOS)                  NC US  3522  -7562     3
+SXUS8  KHVN     NEW_HAVEN/TWEED                  CT US  4127  -7288     4
+SXUS8  KILM     WILMINGTON/NEW_HAN&              NC US  3427  -7790    10
+SXUS8  KMKE     MILWAUKEE/MITCHELL               WI US  4295  -8790   211
+SXUS8  KORF     NORFOLK_INTL_ARPT                VA US  3690  -7620     9
+SXUS8  KPVD     PROVIDENCE/GREEN                 RI US  4173  -7143    19
+SXUS8  KPWM     PORTLAND_INTL_JET                ME US  4365  -7032    19
+SXUS8  KBHB     BAR_HARBOR_(AWOS)                ME US  4445  -6837    26
+SXUS8  KSAN     SAN_DIEGO/LINDBERG               CA US  3273 -11717     9
+SXUS8  KWAL     WALLOPS_ISLAND_STN               VA US  3793  -7548    41
+SXUS8  TJSJ     SAN_JUAN_INTL_ARPT               -- PU  1843  -6600    19
+SXUS8  KFOK     WESTHAMPTON_BEA                  NY US  4085  -7263    20
+SXUS8  KLAX     LOS_ANGELES_INT                  CA US  3393 -11840    32
+SXUS8  KMKG     MUSKEGON                         MI US  4317  -8625   193
+SXUS8  KSFO     SAN_FRANCISCO_I                  CA US  3761 -12238     5
+SXUS8  KSSM     SAULT_STE_MARIE                  MI US  4647  -8437   221
+SXUS08 KFOK     WESTHAMPTON_BEACH                NY US  4085  -7263    20
+SXUS40 KSEA     SEATTLE-TACOMA                   WA US  4745 -12230   137
+SXUS40 KNMW     WHIDBEY_ISLAND_NAS               WA US  4835 -12265    14
+SXUS40 KPDX     PORTLAND_INTL_ARPT               OR US  4560 -12260    12

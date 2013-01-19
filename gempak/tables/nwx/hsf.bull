@@ -1,0 +1,18 @@
+! HSF.BULL
+!
+! Location information for the following product:
+! High_seas_forecast.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+FZNT01 KWBC     NCEP_NMC                         MD US  3895  -7747    98
+FZPN01 KWBC     NCEP_NMC                         MD US  3525 -11835    98
+FZPN02 KWBC     NCEP_NMC                         MD US  3125 -11835     0
+WWJP25 RJTD     TOKYO_INTL_AIRPORT               -- JP  3555  13978     8
+FZNT02 KNHC     MIAMI                            FL US  2575  -8240     0
+FZPN03 KNHC     MIAMI                            FL US  2575  -8040     0
+FZPN40 PHFO     HONOLULU                         HI US  2150 -15782    20
+FZPS40 PHFO     HONOLULU                         HI US  2129 -15780     0

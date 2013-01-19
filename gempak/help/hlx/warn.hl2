@@ -1,0 +1,37 @@
+     WARN
+
+     WARN is the ending valid time for the warnings, the colors for
+     the severe thunderstorm, tornado and flash flood warnings, a
+     flag for plotting the start and stop times, a flag for plotting
+     the county names for the warning on the map, a flag to outline
+     the county, and a flag to plot warning polygon.
+
+	End time|T-storm color;Tornado color;Flash flood color|Time flag|
+		Label flag|Outline flag|Poly flag
+
+     Warnings that are valid at the ending time will be plotted on the map.
+     The ending time is given as a GEMPAK date/time string. Any missing
+     items from the string will be filled in by the system time. The
+     ending time may also be LAST and ALL. LAST will use the system time
+     and plot all current warnings. ALL will plot all the warnings in the
+     data files, whether they are active, cancelled or expired.
+
+     The colors are separated by a semi-colon.  If any color is set to 0,
+     that type of symbol will not be plotted.  If any color is missing, a
+     default will be used.  Defaults are cyan for thunderstorm, red for
+     tornado, and green for flash flood.
+
+     The time flag is YES or NO and controls whether or not to plot
+     the start and stop times of the warning on the map. The default is NO.
+
+     The label flag is YES or NO and controls whether or not to plot
+     the county name of the warning on the map. The default is NO.
+
+     The outline flag is YES or NO and controls whether to outline the warned
+     county instead of plotting a marker. The default is NO. The outline
+     colors are those specified previously.  If a warning is a "test" only, a
+     hollow marker will be plotted at the county centroid to indicate this,
+     and no outlining will be done.
+
+     The poly flag is YES or NO and controls whether to plot the storm-based
+     warning polygon.

@@ -1,0 +1,5 @@
+$CC $CFLAGS -c vgappend.c
+$FC $LDFLAGS -o $OS_BIN/vgappend vgappend.o \
+		$CGEMLIB $APPL $GEMLIB $CGEMLIB \
+		$APPL $GEMLIB $SYSLIB -lm
+$RM *.o 

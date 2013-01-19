@@ -1,0 +1,5 @@
+$CC $CFLAGS -c vgftoascii.c
+$FC $LDFLAGS -o $OS_BIN/vgftoascii vgftoascii.o \
+		$CGEMLIB $APPL $GEMLIB $CGEMLIB $APPL \
+		$GEMLIB $SYSLIB -lm
+$RM *.o

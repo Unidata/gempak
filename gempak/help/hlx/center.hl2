@@ -1,0 +1,44 @@
+     CENTER
+
+     CENTER allows the GD2NDFD user to specify the originating or generating
+     center ID and sub-center ID, as well as the Generating Process/Model ID.
+     The input is given as follows:
+
+                Center ID #/Sub-Center ID #/Generating ID #
+
+     Values may be omitted in specifying CENTER.  For example, to omit
+     the first value, specify only the second, enter the following:
+
+		/Sub-Center ID #               
+
+
+     If values are omitted, the following defaults are inserted:
+
+                ID #  Default value           Meaning
+
+               Center        7         Center # (7->NCEP)
+               Sub           5         Sub-center (5->HPC)
+
+     See NCEP OFFICE NOTE 388 for more information on how to set these
+     parameters.  Specifically, ON388 - Table 0 for Originating Center, ON388 
+     - Table C for Originating Sub-center, and ON388 - Table A for Generating 
+     Process ID.  Below is a table of center numbers that may be used.
+
+     ID#                        NAME                          ABBREV
+ 
+     007 US Weather Svc - Nat. Cntrs for Envir. Prediction     NCEP
+     008 US Weather Svc - NWS Telecommunications Gateway       NCEP
+     009 US Weather Svc - Field Stations                       NCEP
+     034 Japanese Meteorological Agency - Tokyo                JMA
+     052 US Weather Svc (NCEP/TPC) Nat. Hurricane Cntr - Miami NHC
+     054 Canadian Meteorological Service - Montreal            CMS
+     057 US Air Force - Global Weather Central                 GWC
+     058 US Navy - Fleet Numerical Oceanography Center         FNOC
+     059 NOAA Forecast Systems Laboratory - Boulder, CO        FSL
+     060 Nat. Center for Atmos. Research (NCAR) - Boulder, CO  NCAR
+     074 UK Meteorological Office - Bracknell                  UKMO
+     085 French Weather Service - Toulouse                     FWS
+     093 London (WAFC)
+     097 European Space Agency (ESA)                           ESA
+     098 Eur. Cntr for Medium-range Wthr Frcsts - Reading      ECMWF
+     099 DeBilt, Netherlands                                   DEBILT

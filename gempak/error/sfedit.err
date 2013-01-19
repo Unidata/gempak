@@ -1,0 +1,12 @@
+!	SFEDIT error file
+!
++2	! Station !AS cannot be added to the file.
+-1	! Fatal error initializing TAE.
+-2	! Fatal error reading TAE parameters.
+-3	! Edit file !AS cannot be opened.
+-5	! PARM keyword not found.
+-6	! Too many parameters to edit.
+-7	! Time !AS cannot be added to data set.
+-8	! Parameter !AS is not in the data set.
+-9	! SFEDIT cannot continue with invalid parameters.
+-10	! Missing lat/lon pair for ship file

@@ -1,0 +1,45 @@
+! P2CDEF.TBL
+!
+! This table contains a list of preference settings for PROB2CAT.
+!
+! For each entry, the first string is the tag of the preference and the
+! second string is the value of the preference.
+!
+! The maximum number of chars for any preference tag   (TAG) is 25.
+! The maximum number of chars for any preference value (VAL) is 10.
+!
+!!
+! Log:
+!----------------------------------------------------------------------------
+!
+!TAG                       LABEL ITEMS
+!(25)                         (5)
+!
+DAY1_TORN_HIGH             30-100
+DAY1_TORN_MDRT             15-16
+DAY1_TORN_SLGT              5-11
+!DAY1_TORN_TEXT              2-3
+!
+DAY1_WIND_HIGH             
+DAY1_WIND_MDRT             45-100
+DAY1_WIND_SLGT             15-31
+!DAY1_WIND_TEXT              5-6
+DAY1_WIND_BUMP             60
+!
+DAY1_HAIL_HIGH            
+DAY1_HAIL_MDRT             60-100
+DAY1_HAIL_SLGT             15-46
+!DAY1_HAIL_TEXT              5-6
+DAY1_HAIL_BUMP             45
+!
+DAY2_HIGH                  
+DAY2_MDRT                  60-100
+DAY2_SLGT                  15-46
+!DAY2_TEXT                   0-5
+DAY2_BUMP                  45;60
+!
+DAY3_HIGH
+DAY3_MDRT                  
+DAY3_SLGT                  15-100
+!DAY3_TEXT                   0-5
+DAY3_BUMP                  45

@@ -1,0 +1,6 @@
+$CC $CFLAGS $BUFRFLAGS -c b*.c
+$FC $FFLAGS -c bf*.f
+$FC $LDFLAGS -o $OS_BIN/bufrenc  b*.o  \
+	$OS_LIB/textlib.a -lmelBUFR \
+	$GEMLIB $CGEMLIB $APPL $SYSLIB $GEMLIB
+$RM *.o

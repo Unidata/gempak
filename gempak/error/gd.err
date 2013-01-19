@@ -1,0 +1,22 @@
+! This is the error file for the GRID library.
+!
+ -1	! File !AS cannot be created.
+ -2	! File !AS cannot be opened.
+ -3	! File cannot be closed.
+ -4	! File not open.
+ -5	! No write access to file.
+ -6	! File read/write error.
+ -7	! File !AS is not a GEMPAK grid file.
+ -8	! Grid navigation block cannot be read.
+ -9	! Invalid grid size.
+-10	! Grid already exists.
+-11	! Grid file is full.  Increase MAXGRD for nagrib.
+-12	! Grid does not exist.
+-13	! Grid header length is too long.
+-14	! File name is blank.
+-15     ! Too many files are open.
+-16	! File access number is stale or invalid.
+-17	! File number limit has been reached.
+-18	! DM file number does not match GD slot number.
+-19	! No valid GD file number slots were found.
+-99	! Cannot mix GD_OPEN and GD_OPNF

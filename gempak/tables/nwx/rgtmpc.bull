@@ -1,0 +1,98 @@
+! RGTMPP.BULL
+!
+! This table contains the bulletin/station information to be used
+! with the Regional Temp/Precip
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+!
+ASUS62 KKEY     KEY_WEST_INTL_A                  FL US  2455  -8178     6
+ASUS62 KFFC     PEACHTREE_CITY                   GA US  3336  -8456   246
+ASUS62 KJAX     JACKSONVILLE                     FL US  3048  -8170     9
+ASUS62 KMFL     MIAMI                            FL US  2575  -8038     5
+ASUS62 KMLB     MELBOURNE_REGIO                  FL US  2810  -8065    11
+ASUS62 KTAE     TALLAHASSEE                      FL US  3045  -8430    53
+ASUS62 KTBW     TAMPA_BAY_AREA                   FL US  2770  -8240    13
+ASUS63 KABR     ABERDEEN_REGION                  SD US  4545  -9843   396
+ASUS63 KAPX     ALPENA,_ALPENA_CO_REG_AIRPORT    MI US  4507  -8356   210
+ASUS63 KBIS     BISMARCK_MUNICI                  ND US  4677 -10075   506
+ASUS63 KDDC     DODGE_CITY(AWOS)                 KS US  3777  -9997   790
+ASUS63 KDLH     DULUTH,_DULUTH_INTL_AIRPORT      MN US  4684  -9223   435
+ASUS63 KDMX     DES_MOINES_INTL                  IA US  4153  -9365   294
+ASUS63 KDTX     DETROIT_NEXRAD                   MI US  4270  -8345   361
+ASUS63 KFGF     FARGO/HECTOR_FIELD               ND US  4690  -9680   274
+ASUS63 KFSD     SIOUX_FALLS/FOS                  SD US  4358  -9673   435
+ASUS63 KGID     HASTINGS                         NE US  4097  -9832   566
+ASUS63 KGLD     GOODLAND/RENNER                  KS US  3936 -10170  1124
+ASUS63 KGRB     GREEN_BAY,_AUSTIN_STRAUBEL_INTAP WI US  4448  -8814   211 
+ASUS63 KARX     LA_CROSSE_MUNIC                  WI US  4387  -9125   202 
+ASUS63 KDVN     DAVENPORT                        IA US  4161  -9058   229 
+ASUS63 KGRR     GRAND_RAPIDS_IN                  MI US  4288  -8552   242
+ASUS63 KICT     WICHITA/CONTINE                  KS US  3765  -9743   408
+ASUS63 KIND     INDIANAPOLIS_IN                  IN US  3972  -8627   246
+ASUS63 KJKL     JACKSON/J._CARROLL               KY US  3760  -8332   421
+ASUS63 KEAX     KANSAS_CITY/PLEASANT_HILL        MO US  3881  -9426   303 
+ASUS63 KILX     LINCOLN                          IL US  4015  -8934   178
+ASUS63 KLBF     N._PLATTE/LEE_B                  NE US  4113 -10068   849
+ASUS63 KLMK     LOUISVILLE/STAN                  KY US  3818  -8573   149
+ASUS63 KLOT     CHICAGO_NEXRAD                   IL US  4160  -8808   231
+ASUS63 KLSX     ST._LOUIS                        MO US  3875  -9038   174	
+ASUS63 KMKX     MILWAUKEE,_GEN_MITCHELL_INT_ARPT WI US  4295  -8790   220
+ASUS63 KMPX     MINNEAPOLIS-ST                   MN US  4488  -9322   255
+ASUS63 KMQT     MARQUETTE_CO._A                  MI US  4653  -8755   434
+ASUS63 KOAX     OMAHA/EPPLEY_FI                  NE US  4130  -9590   299
+ASUS63 KPAH     PADUCAH                          KY US  3707  -8877   125
+ASUS63 KSGF     SPRINGFIELD/MUNI                 MO US  3723  -9338   387
+ASUS63 KTOP     TOPEKA/BILLARD                   KS US  3907  -9562   270
+ASUS63 KUNR     RAPID_CITY_REGIONAL_AIRPORT      SD US  4405 -10305   976
+ASUS64 KAMA     AMARILLO_ARPT(A                  TX US  3522 -10170  1099
+ASUS64 KBMX     SHELBY_CO_AIRPT                  AL US  3317  -8677   178
+ASUS64 KBRO     BROWNSVILLE                      TX US  2590  -9743     6
+ASUS64 KCRP     CORPUS_CHRISTI                   TX US  2777  -9750    13
+ASUS64 KEPZ     SANTA_TERESA                     NM US  3190 -10670  1252
+ASUS64 KEWX     SAN_ANTONIO                      TX US  2953  -9846   246
+ASUS64 KFWD     FORT_WORTH                       TX US  3279  -9730   196
+ASUS64 KHGX     HOUSTON/WILL_HOBBY               TX US  2947  -9508    35
+ASUS64 KJAN     JACKSON/THOMPSO                  MS US  3232  -9008   101
+ASUS64 KLCH     LAKE_CHARLES_MU                  LA US  3012  -9322    10
+ASUS64 KLIX     NEW_ORLEANS_LAKE                 LA US  3003  -9003     3
+ASUS64 KLUB     LUBBOCK_INTL_AR                  TX US  3365 -10182   988
+ASUS64 KLZK     NORTH_LITTLE_RO                  AR US  3483  -9225   165
+ASUS64 KMAF     MIDLAND_REGIONA                  TX US  3195 -10218   872
+ASUS64 KMEG     MEMPHIS                          TN US  3513  -8980    87
+ASUS64 KMOB     MOBILE/BATES_FI                  AL US  3068  -8825    67
+ASUS64 KMRX     KNOXVILLE/MORRISTOWN_NEXRAD      TN US  3617  -8340   437
+ASUS64 KOHX     NASHVILLE_NEXRAD                 TN US  3675  -8657   206
+ASUS64 KOUN     NORMAN                           OK US  3522  -9747   362
+ASUS64 KSHV     SHREVEPORT                       LA US  3247  -9384    84
+ASUS64 KSJT     SAN_ANGELO/MATH                  TX US  3137 -10050   582
+ASUS64 KTSA     TULSA                            OK US  3615  -9586   186
+ASUS65 KABQ     ALBUQUERQUE/KIR                  NM US  3504 -10660  1613
+ASUS65 KBOU     NE_COLORADO/DENVER_METRO/BOULDER CO US  4000 -10527  1671
+ASUS65 KCYS     CHEYENNE_AIRPORT/WARREN          WY US  4116 -10481  1876
+ASUS65 KLKN     ELKO                             NV US  4087 -11573  1608 
+ASUS65 KPUB     PUEBLO_MEMORIAL                  CO US  3828 -10452  1439
+ASUS65 KRIW     RIVERTON_REGIONAL_AIRPORT        WY US  4306 -10845  1684
+ASUS65 KVEF     LAS_VEGAS/MCCAR                  NV US  3608 -11517   664
+ASUS65 KREV     RENO                             NV US  3957 -11979  1515 
+ASUS65 KPIH     POCATELLO_MUNIC                  ID US  4292 -11260   365 
+ASUS65 KFGZ     FLAGSTAFF                        AZ US  3523 -11182  2192 
+ASUS65 KTWC     TUCSON                           AZ US  3223 -11096   720 
+ASUS65 KPSR     PHOENIX/SKY_HAR                  AZ US  3343 -11202   337 
+ASUS65 KGJT     GRAND_JUNCTION                   CO US  3911 -10853  1475 
+ABUS65 KBOI     BOISE_MUNICIPAL                  ID US  4357 -11622   874
+ASUS66 KPDT     PENDLETON_MUNIC                  OR US  4568 -11885   456 
+ASUS66 KMFR     MEDFORD                          OR US  4237 -12287   405 
+ASUS66 KOTX     SPOKANE                          WA US  4770 -11760   728
+ASUS66 KSTO     SACRAMENTO/EXEC                  CA US  3852 -12150     8 
+ASUS66 KLOX     LOS_ANGELES_INT                  CA US  3393 -11840    32 
+ASUS66 KHNX     FRESNO_AIR_TERM                  CA US  3677 -11972   100 
+ASUS66 KSGX     SAN_DIEGO/LINDB                  CA US  3272 -11717     9 
+ASUS66 KMTR     SAN_FRANCISCO_I                  CA US  3761 -12238     5 
+ASUS66 KEKA     EUREKA                           CA US  4079 -12417    18 
+ASUS66 KPQR     PORTLAND_INTL_A                  OR US  4552 -12267    12 
+ASUS63 KIWX     NORTH_WEBSTER                    IN US  4135  -8570   266
+ASUS62 KSJU     LUIS_MUNOZ_MARIN                 PU PU  1845  -6600     3

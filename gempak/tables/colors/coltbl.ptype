@@ -1,0 +1,41 @@
+! COLTBL.PTYPE
+!
+! Default XWP and XW color table for precipitation type
+! radar composite.
+!
+! S. Chiswell/Unidata
+!
+!Color name    Abrev   Red  Green   Blue  X color name
+BLACK           BLA      0      0      0  black
+VANILLA         VAN    255    228    220  bisque1
+RED             RED    255      0      0  red
+GREEN           GRE      0    255      0  green
+BLUE            BLU      0      0    255  blue
+YELLOW          YEL    255    255      0  yellow
+CYAN            CYA      0    255    255  cyan
+MAGENTA         MAG    255      0    255  magenta
+BROWN           BRO    139     71     38  sienna3
+GRPBLUE         GRP     16     78    139  DodgerBlue4
+LTBLUE          LTB     30    144    255  DodgerBlue1
+SKY             SKY      0    178    238  DeepSkyBlue2
+MDCYAN          MDC      0    238    238  cyan2
+VIOLET          VIO    137    104    205  MediumPurple3
+RAIN1           R01    118    195     95  Rain1
+RAIN2           R02    111    193     85  Rain2
+RAIN3           R03     82    187     63  Rain3
+RAIN4           R04     51    163     52  Rain4
+RAIN5           R05     45    131     45  Rain5
+RAIN6           R06     34     91     33  Rain6
+FRZN1           F01    206    145     36  Frozen1
+FRZN2           F02    209    132     33  Frozen2
+FRZN3           F03    209    121     36  Frozen3
+FRZN4           F04    208    112     33  Frozen4
+FRZN5           F05    212    101     34  Frozen5
+FRZN6           F06    211     93     35  Frozen6
+SNOW1           G41    105    105    105  gray41
+SNOW2           G53    135    135    135  gray53
+SNOW3           G65    166    166    166  gray65
+SNOW4           G77    196    196    196  gray77
+SNOW5           G88    224    224    224  gray88
+WHITE           WHI    255    255    255  white
+BLACK           BLA      0      0      0  black

@@ -1,0 +1,22 @@
+! SCP.BULL
+!
+! Location information for the following product:
+! Satellite_Cloud_Product.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+! Log:
+! A. Hardy/NCEP		11/04	separated out the lat/lons
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+TCUS40 KWBC     NCEP_NMC                         MD US  3841  -7727     0
+TCUS41 KWBC     NCEP_NMC                         MD US  3861  -7707     0
+TCUS42 KWBC     NCEP_NMC                         MD US  3881  -7687     0
+TCUS43 KWBC     NCEP_NMC                         MD US  3901  -7667     0
+TCUS51 KWBC     NCEP_NMC                         MD US  3841  -7727     0
+TCUS52 KWBC     NCEP_NMC                         MD US  3861  -7707     0
+TCUS53 KWBC     NCEP_NMC                         MD US  3881  -7687     0
+TCUS54 KWBC     NCEP_NMC                         MD US  3901  -7667     0
+TCUS62 KWBC     NCEP_NMC                         MD US  3921  -7647     0

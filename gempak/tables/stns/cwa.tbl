@@ -1,0 +1,139 @@
+! CWA.TBL
+!
+! This table contains the station information to be used as county warning
+! area centroids.
+!
+! The format for the file is given below, with the number of characters in
+! parentheses.
+!
+! Log:
+! G. Krueger/EAI	 9/99
+! R. Tian/SAIC          05/02   Updated with w_25ap02 shapefile
+!-------------------------------------------------------------------
+!
+!STID    STNM   WFO                              ST CO   LAT    LON  ELV PRI
+!(8)     (6)    (32)                            (2)(2)   (5)    (6)   (5)(2)
+!
+CWA001        1 FGF                              -- US  4756  -9713     0  0
+CWA002        2 GGW                              -- US  4777 -10647     0  0
+CWA003        3 BIS                              -- US  4746 -10103     0  0
+CWA004        4 TFX                              -- US  4667 -11115     0  0
+CWA005        5 OTX                              -- US  4742 -11807     0  0
+CWA006        6 SEW                              -- US  4768 -12270     0  0
+CWA007        7 MSO                              -- US  4660 -11448     0  0
+CWA008        8 DLH                              -- US  4704  -9213     0  0
+CWA009        9 PDT                              -- US  4560 -11923     0  0
+CWA010       10 GYX                              -- US  4440  -7050     0  0
+CWA011       11 MQT                              -- US  4664  -8781     0  0
+CWA012       12 BYZ                              -- US  4571 -10754     0  0
+CWA013       13 PQR                              -- US  4511 -12279     0  0
+CWA014       14 MPX                              -- US  4493  -9356     0  0
+CWA015       15 GRB                              -- US  4509  -8856     0  0
+CWA016       16 ABR                              -- US  4476  -9905     0  0
+CWA017       17 UNR                              -- US  4446 -10278     0  0
+CWA018       18 APX                              -- US  4529  -8478     0  0
+CWA019       19 ARX                              -- US  4394  -9132     0  0
+CWA020       20 BOI                              -- US  4362 -11692     0  0
+CWA021       21 RIW                              -- US  4305 -10857     0  0
+CWA022       22 BTV                              -- US  4411  -7367     0  0
+CWA023       23 PIH                              -- US  4342 -11316     0  0
+CWA024       24 FSD                              -- US  4342  -9719     0  0
+CWA025       25 BUF                              -- US  4280  -7800     0  0
+CWA026       26 GRR                              -- US  4312  -8533     0  0
+CWA027       27 ALY                              -- US  4277  -7382     0  0
+CWA028       28 DTX                              -- US  4288  -8351     0  0
+CWA029       29 MKX                              -- US  4323  -8906     0  0
+CWA030       30 MFR                              -- US  4246 -12195     0  0
+CWA031       31 BGM                              -- US  4225  -7605     0  0
+CWA032       32 CYS                              -- US  4224 -10527     0  0
+CWA033       33 DMX                              -- US  4203  -9387     0  0
+CWA034       34 BOX                              -- US  4217  -7149     0  0
+CWA035       35 LBF                              -- US  4166 -10053     0  0
+CWA036       36 OAX                              -- US  4143  -9661     0  0
+CWA037       37 DVN                              -- US  4143  -9079     0  0
+CWA038       38 SLC                              -- US  3979 -11154     0  0
+CWA039       39 LOT                              -- US  4144  -8831     0  0
+CWA040       40 CLE                              -- US  4125  -8174     0  0
+CWA041       41 IWX                              -- US  4128  -8548     0  0
+CWA042       42 CTP                              -- US  4086  -7769     0  0
+CWA043       43 EKA                              -- US  4037 -12341     0  0
+CWA044       44 LKN                              -- US  4033 -11667     0  0
+CWA045       45 REV                              -- US  3972 -11930     0  0
+CWA046       46 GID                              -- US  4043  -9878     0  0
+CWA047       47 OKX                              -- US  4120  -7360     0  0
+CWA048       48 PBZ                              -- US  4029  -8046     0  0
+CWA049       49 PHI                              -- US  3990  -7520     0  0
+CWA050       50 ILX                              -- US  3990  -8921     0  0
+CWA051       51 STO                              -- US  3915 -12134     0  0
+CWA052       52 BOU                              -- US  3975 -10445     0  0
+CWA053       53 GJT                              -- US  3899 -10815     0  0
+CWA054       54 ILN                              -- US  3957  -8380     0  0
+CWA055       55 IND                              -- US  3958  -8628     0  0
+CWA056       56 LSX                              -- US  3883  -9077     0  0
+CWA057       57 EAX                              -- US  3931  -9402     0  0
+CWA058       58 GLD                              -- US  3934 -10138     0  0
+CWA059       59 TOP                              -- US  3901  -9649     0  0
+CWA060       60 RLX                              -- US  3844  -8134     0  0
+CWA061       61 LWX                              -- US  3862  -7793     0  0
+CWA062       62 ICT                              -- US  3810  -9705     0  0
+CWA063       63 VEF                              -- US  3659 -11565     0  0
+CWA064       64 DDC                              -- US  3805 -10019     0  0
+CWA065       65 PUB                              -- US  3805 -10459     0  0
+CWA066       66 LMK                              -- US  3776  -8548     0  0
+CWA067       67 MTR                              -- US  3732 -12185     0  0
+CWA068       68 SGF                              -- US  3759  -9305     0  0
+CWA069       69 PAH                              -- US  3748  -8900     0  0
+CWA070       70 AKQ                              -- US  3725  -7689     0  0
+CWA071       71 JKL                              -- US  3755  -8351     0  0
+CWA072       72 RNK                              -- US  3712  -8008     0  0
+CWA073       73 HNX                              -- US  3649 -11942     0  0
+CWA074       74 MRX                              -- US  3609  -8353     0  0
+CWA075       75 FGZ                              -- US  3524 -11119     0  0
+CWA076       76 ABQ                              -- US  3476 -10602     0  0
+CWA077       77 OUN                              -- US  3519  -9786     0  0
+CWA078       78 AMA                              -- US  3587 -10151     0  0
+CWA079       79 TSA                              -- US  3543  -9517     0  0
+CWA080       80 OHX                              -- US  3583  -8648     0  0
+CWA081       81 MEG                              -- US  3495  -8969     0  0
+CWA082       82 RAH                              -- US  3555  -7887     0  0
+CWA083       83 LZK                              -- US  3483  -9266     0  0
+CWA084       84 GSP                              -- US  3511  -8210     0  0
+CWA085       85 MHX                              -- US  3540  -7730     0  0
+CWA086       86 LOX                              -- US  3474 -11948     0  0
+CWA087       87 CAE                              -- US  3392  -8121     0  0
+CWA088       88 BMX                              -- US  3331  -8652     0  0
+CWA089       89 FFC                              -- US  3338  -8380     0  0
+CWA090       90 ILM                              -- US  3403  -7890     0  0
+CWA091       91 LUB                              -- US  3385 -10151     0  0
+CWA092       92 SGX                              -- US  3357 -11709     0  0
+CWA093       93 SHV                              -- US  3277  -9376     0  0
+CWA094       94 PSR                              -- US  3318 -11323     0  0
+CWA095       95 JAN                              -- US  3252  -9021     0  0
+CWA096       96 FWD                              -- US  3223  -9719     0  0
+CWA097       97 TWC                              -- US  3256 -11118     0  0
+CWA098       98 MAF                              -- US  3127 -10282     0  0
+CWA099       99 CHS                              -- US  3250  -8130     0  0
+CWA100      100 EPZ                              -- US  3206 -10694     0  0
+CWA101      101 SJT                              -- US  3184 -10039     0  0
+CWA102      102 MOB                              -- US  3125  -8773     0  0
+CWA103      103 JAX                              -- US  3046  -8218     0  0
+CWA104      104 TAE                              -- US  3062  -8462     0  0
+CWA105      105 HGX                              -- US  2998  -9566     0  0
+CWA106      106 LCH                              -- US  3047  -9290     0  0
+CWA107      107 LIX                              -- US  3015  -9010     0  0
+CWA108      108 EWX                              -- US  2962  -9916     0  0
+CWA109      109 MLB                              -- US  2819  -8101     0  0
+CWA110      110 CRP                              -- US  2816  -9826     0  0
+CWA111      111 TBW                              -- US  2795  -8205     0  0
+CWA112      112 BRO                              -- US  2660  -9831     0  0
+CWA113      113 MFL                              -- US  2616  -8095     0  0
+CWA114      114 AFC                              -- US  6100 -15500     0  0
+CWA115      115 AFG                              -- US  6700 -15000     0  0
+CWA116      116 AJK                              -- US  5728 -13278     0  0
+CWA117      117 SJU                              -- US  1809  -6625     0  0
+CWA118      118 HFO                              -- US  1959 -15543     0  0
+CWA119      119 GUM                              -- US  1344  14478     0  0
+CWA120      120 KEY                              -- US  2463  -8155     0  0
+CWA121      121 CAR                              -- US  4648  -6903     0  0
+CWA122      122 PPG                              -- US -1431 -17070     0  0
+CWA123      123 HUN                              -- US  3443  -8685     0  0

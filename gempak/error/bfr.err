@@ -1,0 +1,19 @@
+!	This is the BFR error file
+!
+! log
+!------
+! D. Kidwell/NCEP	 9/03   From SIGBENC	
+! M. Li/SAIC		10/04	Added -13
+!
+
+  -4	! Could not initialize BUFR info structure.
+  -5	! Error with call to BUFR_Put_Array 
+  -6	! Error opening output file !AS.
+  -7	! Cannot open FXY table !AS.
+  -8    ! Error in BUFR_Init for file !AS
+  -9    ! Error in BUFR_Encode for file !AS
+ -10    ! Cannot read FXY table !AS
+ -11    ! Error with call to BUFR_Put_MixArray.
+ -12    ! Number of descriptors in FXY table exceeds !AS
+ -13	! Problem writing section 2 data	
+

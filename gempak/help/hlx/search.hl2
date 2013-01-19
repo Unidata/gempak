@@ -1,0 +1,17 @@
+     SEARCH
+
+     SEARCH controls the search radius in an objective analysis program.  
+     The radius is the maximum distance that a station may be from a grid 
+     point to be used in the analysis for that point.  The search radius 
+     is set so that stations whose weighting factor is less than 
+     EXP (-SEARCH) are not used.  SEARCH must have a value in the range 
+     1 - 50.  If the value is outside this range, a default value of 20 
+     is used.  If SEARCH is given a very small value, many grid points 
+     will not have three stations within the search area, and consequently 
+     will be set to the missing data value.
+
+     SEARCH may also be used to set a flag to allow extrapolation of data 
+     values to grid points on the periphery of the data area.  To do this, 
+     follow the value of SEARCH with /EX; for example, SEARCH = 20/EX will 
+     result in data extrapolation.
+

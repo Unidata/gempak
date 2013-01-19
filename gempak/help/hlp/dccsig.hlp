@@ -1,0 +1,69 @@
+
+DCCSIG
+
+    DCCSIG decodes convective sigmet and convective outlook reports
+    from a real-time data feed, or from a file fed to the program 
+    through standard input, and writes the data to an ASCII file.  The 
+    program is controlled by inputs to the command line.
+
+    The inputs are program options and the output file name or template.
+    For example, for real-time data feeds:
+    
+	dccsig [options] output_file
+
+    If running the program interactively with standard input, the -c
+    option must be used.  The input file must also be specified.
+    For example:
+
+	dccsig -c YYMMDD/HHNN [other_options] output_file < input_file
+    
+    A template may be used to specify the output file name.  The file
+    name template uses the date and time of the bulletin or report
+    to replace the following characters.
+
+	YYYY or YY	Year with or without the century
+	MM		Month number
+	DD		Day
+	HH		Hour
+	NN		Minute
+
+
+     The format of the output ASCII file is as follows:
+
+     |Type|Start_time|End_time|Sequence ID|Intensity|Direction|
+           Speed|Flt_lvl_1|Flt_lvl_2|Distance|Correction_flag
+	     Lat1    Lon1
+	     Lat2    Lon2
+	     Lat3    Lon3
+	       .       .
+	       .       .
+	       .       .
+
+     (Note that the first two lines shown above appear as a single
+     line in the output file.)
+     Where: Type is AR (area), LN (line), IS (isolated area), 
+ 	   	CS ( nil convective sigmet ),  OL (outlook) 
+	    Start_time and End_time are full GEMPAK date/time strings
+	    Sequence ID is composed of the sequence number and a region
+	    Intensity is DMSHG (weakening), DSIPTG (ending)
+		INTSFYG (strengthening), DVLPG (beginning/growing) 
+	    Direction is in tens of degrees
+	    Speed is in knots
+	    Flt_lvl_1 and Flt_lvl_2 are the flight levels
+	    Distance is the Distance or Area diameter of the area or line
+	    Correction_flag is a flag indicating a cancellation (0 or 1)
+
+     Extra spaces may appear anywhere in this line of information,
+     except in the first character position.  The first character must
+     be a bar (|).
+
+     The latitude and longitude values are read using the FORTRAN
+     format (2F9.2).  The number of points may vary.
+
+     Nil convective sigmets and convective outlook reports are decoded and
+     are indicated in the decoded files by assigning the region id as: '0E', 
+     '0C' or '0W' for both convective sigmets and convective outlooks. Only 
+     convective sigmets use 'CS' as the type identifier to further indicate
+     a nil issuance for a region.  Also, there is no latitude or longitude 
+     information following the decoded nil issuance.
+

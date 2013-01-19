@@ -1,0 +1,4 @@
+$CC $CFLAGS -c testspf.c
+$FC $LDFLAGS -o $OS_BIN/testspf \
+		testspf.o $CGEMLIB $GEMLIB
+$RM *.o

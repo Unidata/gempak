@@ -1,0 +1,15 @@
+! SELCITY.BULL
+!
+! This table contains the bulletin/station information to be used
+! with the Selected Cities Forecast.
+!
+! The format for the file is given below, with the number of 
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+!
+FPUS20 KWNH     NCEP_HPC                         MD US  3880  -7700    86
+FPUS21 KWNH     NCEP_HPC                         MD US  3930  -7650    86
+FPUS22 KWNH     NCEP_HPC                         MD US  3980  -7600    86
+FPUS23 KWNH     NCEP_HPC                         MD US  4030  -7550    86

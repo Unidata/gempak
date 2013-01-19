@@ -1,0 +1,6 @@
+$CC $CFLAGS -c clipvgf.c
+$FC $LDFLAGS -o $OS_BIN/clipvgf clipvgf.o \
+		$OS_LIB/ginitp_alt.o $OS_LIB/gendp_alt.o \
+		$CGEMLIB $GEMLIB $GPLT $DEVICE \
+		$OS_LIB/gn.a $GEMLIB $CGEMLIB $GEMLIB -lGPC -lm
+$RM *.o

@@ -1,0 +1,10 @@
+!	This is the GEMLIB CDS error file
+!
+   3    ! NIL found in Text Layout String
+   2	! Record from !AS is unreadable or has unknown class; record is ignored.
+   1	! User attribute array size exceeded.  Increase MAX_SET.
+  -1	! User attribute file !AS not found.
+  -2	! Failure to obtain index.
+  -3	! VGF Class string !AS unknown.
+  -4	! Invalid pointer in arguments
+  -5    ! Problem in Parsing Text Layout String

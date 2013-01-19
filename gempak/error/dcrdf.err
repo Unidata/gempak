@@ -1,0 +1,10 @@
+!	This is the error file for DCRDF.
+!
++2	! !AS
+-1	! Parameter report line format error or no data: !AS
+-2	! Parameter report line has no data: !AS
+-3	! Parameter !AS is not in the dataset.
+-6	! Bad time line or no time line: !AS
+-7	! Zone list not found: !AS
+-8	! Issue time not found: !AS
+-9	! Bad date or no dateline: !AS

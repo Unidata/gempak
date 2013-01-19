@@ -1,0 +1,53 @@
+! CLASSBTN.TBL.
+!
+! This table provides the icons located in the class button palette
+!
+! Log:
+! E. Wehner/EAi          5/97
+! E. Wehner/Eai		 6/97	Added winds
+! C. Lin/Eai	        10/97	Added spc
+! E. Safford/GSC         3/98	Added all
+! E. Safford/GSC         4/98	changed all to any
+! C. Lin/EAI             4/98   add combsymb	
+! D.W.Plummer/NCEP	 5/98	add prod
+! S. Law/GSC		11/98	added watch
+! S. Law/GSC		05/99	added track
+! G. Krueger/EAI	 5/99	Added circle
+! S. Law/GSC		07/99	added sigmet
+! E. Safford/GSC	04/01	reorder for Horizontal layout
+! M. Li/SAIC		10/01	Added marker
+! J. Wu/SAIC		11/02	add list
+! J. Wu/SAIC		10/03	add met
+!------------------------------------------------------------------------
+BEGIN
+!
+! Row 1
+!
+front
+combsymb
+watch
+!
+! Row 2
+!
+symbol
+any
+track
+!
+! Row 3
+!
+prod
+text
+sigmet
+!
+! Row 4
+!
+line
+vector
+circle
+!
+! Row 5
+!
+marker
+list
+met
+END

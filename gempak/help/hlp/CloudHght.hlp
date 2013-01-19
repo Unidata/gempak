@@ -1,0 +1,56 @@
+
+                                 CLOUD HEIGHT
+
+
+This function estimates cloud top height using a sounding and a satellite 
+derived infrared temperature.  Click on the "cloud height" icon to invoke this
+function.  The sounding is either retrieved from a sounding data file or from
+a table file.  The table file, $GEMTBL/config/stdsnd.tbl contains a standard
+atmospheric profile.  The contents of this file may be modified for Nmap use
+after being copied to a local directory.
+
+Temperature and height are calculated corresponding to the cursor position, or 
+alternatively, a minimum temperature or mode temperature may be used to retrieve
+the height for an area surrounding the cursor.  Multiple heights are listed if 
+the same cloud top temperature crosses the sounding more than once.
+
+Click on the options button to specify the type of retrieval, units, and 
+whether a sounding data set (Closest Station) or sounding table (Standard 
+Atmosphere) is used.
+
+
+    CLOSE    Close the cloud height window.
+
+    OPTIONS  Display cloud height options.  Such as: distance, temperature, 
+             height, type of sounding, search radius and pixel selection 
+             information.
+
+    TAKE CONTROL  Regain use of the cloud height function after using 
+                  product generation.
+
+
+Under the OPTIONS button, these choices are available:
+
+
+    DISTANCE  The distance of the pixel to the closest sounding station.  
+              Units are kilometers, miles or nautical miles.
+
+    TEMPERATURE  The temperature can be displayed in Celsius or Kelvin.
+
+    HEIGHT  The cloud height can be displayed in feet or meters.
+
+    TYPE OF DATA  The source type for the sounding.  "Closest Station" 
+                  specifies the use of the nearest sounding in a sounding 
+                  data file.  "Standard Atmosphere" specifies using the 
+                  sounding defined in the table file, stdsnd.tbl.
+
+    SEARCH RADIUS  The maximum search radius that is used for finding a station.
+
+    PIXEL SELECTION  Use a single pixel or an area surrounding the cursor.
+
+    PIXEL RADIUS  Size of search area around the pixel area.  The maximum 
+                  allowed is 100.
+
+    PIXEL VALUE  The maximum or mode pixel value.
+
+    DEFAULTS  Set the cloud height options to the default values.

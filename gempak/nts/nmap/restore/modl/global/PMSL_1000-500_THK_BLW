@@ -1,0 +1,22 @@
+GLEVEL  0	!	500:1000	!	500:1000	!	1000
+GVCORD  NONE	!	PRES		!	PRES		!	PRES
+PANEL   0
+SKIP    0/1;1
+SCALE   0	!	-1		!	-1		!	0	!	/1;-1
+GDPFUN  mmsl	!	ldf(hght)	!	ldf(hght)	!	kntv(wnd)
+TYPE    c	!	c		!	c		!	b
+CONTUR
+CINT    4	!	6/0/540		!	6/546/999
+LINE    1/1/3	!	6/5/2		!	3/5/2
+FINT    0
+FLINE   0
+HILO    26;16/H#0;L#0!0
+HLSYM   1.5/2/3/3/hw
+CLRBAR  1
+WIND    17/1/1
+REFVEC
+TITLE   1/-2/~^ _ (MB)!3/-3/~^ @ THICKNESS(M)!!17/-1/~^ @ WIND(KTS)!0
+TEXT    1/21//hw
+CLEAR   y
+DEVICE  xw
+FILTER  yes

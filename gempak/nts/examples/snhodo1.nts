@@ -1,0 +1,15 @@
+SNFILE  $GEMPAK/data/HRCBOB.SND                                                     
+AREA    @chh                                                                    
+LINE    3                                                                       
+MARKER  1                                                                       
+BORDER  1                                                                       
+TITLE   1                                                                       
+XAXIS                                                                           
+YAXIS                                                                           
+LEVELS  1000-100-100                                                            
+VCOORD  pres                                                                    
+DATTIM  last                                                                    
+CLEAR   y                                                                       
+DEVICE  xw|snhodo                                                               
+PANEL   0                                                                       
+TEXT    1/2/1/hw                                                                

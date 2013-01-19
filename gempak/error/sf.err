@@ -1,0 +1,30 @@
+!  SF error file
+!
+ +2	! The special report already exists.
+ +1	! There is no data at the station.
+ -1	! File !AS could not be created.
+ -2	! File !AS could not be opened.
+ -3	! File is not open.
+ -4	! Time !AS cannot be added to the file
+ -5	! Station !AS cannot be added to the file--no more room.
+ -6	! File is not a surface data file.
+ -7	! Station or time has not been set.
+ -8	! There are no more stations in file.
+ -9	! There are no more times in the file.
+-10	! Station !AS is not in file.
+-11	! Time !AS is not in file.
+-12	! Error from the DM library.
+-13	! Information cannot be deleted.
+-14	! There are too many times in file.
+-15	! A state/country search is invalid.
+-16	! The station table file cannot be opened.
+-17	! Time has not been set.
+-18	! Station has not been set.
+-19	! Cannot write to ship file.
+-20	! Time !AS is invalid.
+-21	! File is not a ship file.
+-22	! File name is blank.
+-23	! The time - !AS - cannot be set.
+-24	! The station - !AS - cannot be set.
+-25	! No valid file found.
+-29	! The number of special reports exceeds the maximum of 6.

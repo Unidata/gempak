@@ -1,0 +1,109 @@
+{
+    {area 0 1 0 1}
+    {dist 0.15}
+}
+{
+    {type polygon}
+    {id 3}
+    {vertex .40 .40}
+    {vertex .60 .40}
+    {vertex .60 .60}
+    {vertex .40 .60}
+}
+{
+    {type polygon}
+    {id 5}
+    {ref 3}
+    {offset 1}
+    {vertex 0.05 0.1725} 
+    {vertex 0.1275 0.1725} 
+    {vertex 0.1275 0.2275} 
+    {vertex 0.05 0.2275}
+}
+{
+    {type polygon}
+    {id 1}
+    {ref 7}
+    {offset 1}
+    {pointcenter 1}
+    {vertex 0.05 0.1725} 
+    {vertex 0.1275 0.1725} 
+    {vertex 0.1275 0.2275} 
+    {vertex 0.05 0.2275}
+}
+{
+    {type polygon}
+    {id 7}
+    {vertex .35 .25}
+    {vertex .55 .25}
+    {vertex .55 .35}
+    {vertex .35 .35}
+}
+{
+    {type polygon}
+    {id 2}
+    {ref 3}
+    {offset 1}
+    {pointcenter 1}
+    {vertex 0.05 0.1725} 
+    {vertex 0.1275 0.1725} 
+    {vertex 0.1275 0.2275} 
+    {vertex 0.05 0.2275}
+}
+{
+    {type polygon}
+    {id 8}
+    {vertex .65 .30}
+    {vertex .75 .30}
+    {vertex .75 .60}
+    {vertex .65 .60}
+}
+{
+    {type polygon}
+    {id 9}
+    {vertex .50 .65}
+    {vertex .70 .65}
+    {vertex .70 .75}
+    {vertex .50 .75}
+}
+{
+    {type polygon}
+    {id 10}
+    {vertex .25 .45}
+    {vertex .35 .45}
+    {vertex .35 .75}
+    {vertex .25 .75}
+}
+{
+    {type polygon}
+    {id 12}
+    {ref 9}
+    {offset 1}
+    {pointcenter 1}
+    {vertex 0.05 0.1725} 
+    {vertex 0.1275 0.1725} 
+    {vertex 0.1275 0.2275} 
+    {vertex 0.05 0.2275}
+}
+{
+    {type polygon}
+    {id 11}
+    {ref 10}
+    {offset 1}
+    {pointcenter 1}
+    {vertex 0.05 0.1725} 
+    {vertex 0.1275 0.1725} 
+    {vertex 0.1275 0.2275} 
+    {vertex 0.05 0.2275}
+}
+{
+    {type polygon}
+    {id 13}
+    {ref 8}
+    {offset 1}
+    {pointcenter 1}
+    {vertex 0.05 0.1725} 
+    {vertex 0.1275 0.1725} 
+    {vertex 0.1275 0.2275} 
+    {vertex 0.05 0.2275}
+}

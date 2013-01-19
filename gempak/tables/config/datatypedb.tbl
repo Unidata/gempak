@@ -1,0 +1,53 @@
+!************************************************************************
+!* DATATYPEBD.TBL							*
+!*									*
+!* Log:                                                                 *
+!* m.gamazaychikov/CWS  01/10   Created after datatype.tbl for SAT, RAD *
+!* m.gamazaychikov/CWS  04/11	Removed entries for SAT, RAD, added 	*
+!*				entries for GFS, GHM			*
+!************************************************************************
+!
+!           |                         |                                                |        |        |DEF |DEF   |DEF   |                     |TIME
+!FILE TYPE  |PATH                     |FILE TEMPLATE                                   |CATEGORY|SUBCAT  |#FRM|RANGE |INTRVL|BIN HRS              |MATCH
+!(12)       |(25)                     |(48)                                            |(8)     |(8)     |(4) |(6)   |(6)   |(21)                 |(6)
+!           |                         |                                                |        |        |    |             |                     |
+! Surface data
+!METAR        $A2DB_CONF                metar_db                                         CAT_SFC  SCAT_SFC   10   2880     -1 OFF/0/0                    4
+!
+! Upper air data
+!
+! MOS
+!
+! Model Sounding and Surface data
+!
+!
+!
+! Misc data types
+!
+! Hurricane graphics
+!
+! Climatology
+!
+!
+! VG files
+!
+! BUFR files
+!
+! Operational model and grid data
+GFS          $GEMTBL/A2DB_CONF         GFS_db                                           CAT_GRD  SCAT_FCT   -1     -1     -1 OFF/0/0                    4
+GHM          $GEMTBL/A2DB_CONF         GHM_db                                           CAT_GRD  SCAT_FCT   -1     -1     -1 OFF/0/0                    4
+!
+! Experimental model and grid data
+!
+! Global Ensembles
+!
+! Global Ensembles derived products
+!
+! MDL grid data
+!
+! Misc Models
+!
+!
+!
+!
+! RFC grid data

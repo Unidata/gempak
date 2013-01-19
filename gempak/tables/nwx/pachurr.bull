@@ -1,0 +1,47 @@
+! PACHURR.BULL
+!
+! This table contains the bulletin/station information to be used
+! with the Eastern Pacific Hurricane products
+!
+! The format for the file is given below, with the
+! number of characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)  (5)
+!
+WTPZ21 KNHC     MARINE_ADVISORY                  FL US  2782  -8228    4
+WTPZ22 KNHC     MARINE_ADVISORY                  FL US  2782  -8128    4
+WTPZ23 KNHC     MARINE_ADVISORY                  FL US  2782  -8028    4
+WTPZ24 KNHC     MARINE_ADVISORY                  FL US  2782  -7928    4
+WTPZ25 KNHC     MARINE_ADVISORY                  FL US  2782  -7828    4
+WTPZ31 KNHC     PUBLIC_ADVISORY                  FL US  2682  -8228    4
+WTPZ32 KNHC     PUBLIC_ADVISORY                  FL US  2682  -8128    4
+WTPZ33 KNHC     PUBLIC_ADVISORY                  FL US  2682  -8028    4
+WTPZ34 KNHC     PUBLIC_ADVISORY                  FL US  2682  -7928    4
+WTPZ35 KNHC     PUBLIC_ADVISORY                  FL US  2682  -7828    4
+WTPZ41 KNHC     DISCUSSION                       FL US  2582  -8228    4
+WTPZ42 KNHC     DISCUSSION                       FL US  2582  -8128    4
+WTPZ43 KNHC     DISCUSSION                       FL US  2582  -8028    4
+WTPZ44 KNHC     DISCUSSION                       FL US  2582  -7928    4
+WTPZ45 KNHC     DISCUSSION                       FL US  2582  -7828    4
+WTPZ71 KNHC     STRIKE_PROBABILITIES             FL US  2482  -8228    4
+WTPZ72 KNHC     STRIKE_PROBABILITIES             FL US  2482  -8128    4
+WTPZ73 KNHC     STRIKE_PROBABILITIES             FL US  2482  -8028    4
+WTPZ74 KNHC     STRIKE_PROBABILITIES             FL US  2482  -7928    4
+WTPZ75 KNHC     STRIKE_PROBABILITIES             FL US  2482  -7828    4
+AXPZ20 KNHC     TROPICAL_WEATHER_DISCUSSION      FL US  2682  -8028    4
+ABPZ20 KNHC     TROPICAL_WEATHER_OUTLOOK         FL US  2682  -8028    4
+WTPZ51 KNHC     CYCLONE_POSITION_ESTIMATE        FL US  2682  -8028    4
+WTPZ61 KNHC     CYCLONE_UPDATE                   FL US  2682  -8028    4
+WOPZ41 KNHC     SPECIAL_DISTURBANCE_STATEMENT    FL US  2682  -8028    4
+ABPZ30 KNHC     TROPICAL_WEATHER_SUMMARY         FL US  2682  -8028    4
+URPN10 KNHC     RECONS_HURRICANE                 FL US  2682  -8028    4
+URPN11 KNHC     STORM_HURRICANE                  FL US  2682  -8028    4
+URPN12 KNHC     VORTEX_HURRICANE                 FL US  2682  -8028    4
+URPN14 KNHC     SUPPLEMENTAL_VORTEX              FL US  2682  -8028    4
+UZPN13 KNHC     DROPS                            FL US  2682  -8028    4
+UZPA13 KNHC     W_PAC_DROPS                      FL US  2682  -8028    4
+URPN40 KNHC     P3_ASDL                          FL US  2682  -8028    4
+URPN12 KNHC     RECON_POD                        FL US  2682  -8028    4
+WTNT80 EGRR     UKMET_GUIDANCE                   FL US  2682  -8178    4
+WHXX04 KWBC     MODEL_GUIDANCE_EPAC              FL US  2682  -8078    4

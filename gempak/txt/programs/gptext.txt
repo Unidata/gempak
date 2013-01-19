@@ -1,0 +1,40 @@
+
+GPTEXT draws the contents of a text file to the output device.
+
+INPUT PARAMETERS
+
+
+PROGRAM DESCRIPTION
+
+    GPTEXT draws text read from an ASCII text file to the
+    output device driver. If the input file is LOGO, the NOAA
+    logo will be plotted.  The logo can be plotted in either
+    full color or monochrome. The NOAA logo is also plotted if
+    "NOAA" is entered for the file name. The NWS logo is plotted
+    if "NWS" is entered.
+
+    The text location TXTLOC is given as the X and Y values
+    in the Normalized coordinate system or Map coordinate
+    system if a '#' is prefixed before the X and Y values.
+    To use map coordinates, the map projection must be 
+    defined by another GEMPAK application such as GPMAP.
+
+    COLUMN is the number of columns the text will be divided
+    into within a panel.
+
+EXAMPLES
+
+    1.  Draw the contents of the text file mytext.txt to the XW
+	device.  Display the text at the location .1;.8.  Display
+	in a single column.
+
+	PANEL	 =  0
+	COLORS   =  1
+	TEXT	 =  1
+	CLEAR	 =  yes
+	DEVICE	 =  xw
+	TXTFIL	 =  mytext.txt
+	TXTLOC	 =  .1;.8
+	COLUMN	 =  1
+
+ERROR MESSAGES

@@ -1,0 +1,42 @@
+!************************************************************************************************************************************************
+!                                                                                                                                               
+!       model_group.tbl                                                                                                                         
+!                                                                                                                                               
+!    This new table has two parts. The first part contains the information necessary for model selection.
+!	Column 1 ---- DEFINE, tag for first part of table
+!	Column 2 ---- model list name ( <= 40 characters ).
+!	Column 3 ---- model list ( <= 80 characters ).
+!
+!    The second part contains the information necessary for setting up the ensemble product selection within NMAP.  
+!    This part is similar to table mod_res.tbl.
+!
+!              Column 1 - RESTORE, tag for second part of table.
+!              Column 2 - product name as it is to appear in NMAP,                                                                            
+!              Column 3 - path/filename to restore file for product in column 2,                                                               
+!              Column 4 - group name under which the product is to appear,                                                                     
+!              Column 5 - list of model group alias (separated by semicolons, no spaces!) to which product will apply.  	
+!                                                                                                                                               
+!    The columns are not in fixed locations.
+!                                                                                                                                               
+! M. Li/SAIC		02/08	Initial set-up                                                                                                  
+!************************************************************************************************************************************************
+!
+! 	MODEL GROUP 		MODEL LIST
+!
+DEFINE	GEFS_ML			{gefs}
+DEFINE	NAM_TOM			{nam}
+DEFINE	GFS_GS			{50%gfs|00,gfs|06,gfs|12,gfs|18}
+DEFINE	NAM_00			{nam|00,gfs|00,gefs:01|00,gefs:03|00,gefs:05}
+!
+!*********************
+! RESTORE FILES
+!*********************
+!
+! 	PRODUCT NAME                PATH/FILENAME                                    GROUP        MODEL GROUPS
+!
+RESTORE	500mb_HGHT_AVG             $NMAP_RESTORE/stnd/500mb_hght_avg                 standard     GEFS_ML;NAM_TOM;GFS_GS;NAM_00
+RESTORE	700mb_HGHT_AVG             $NMAP_RESTORE/stnd/700mb_hght_avg                 standard     GEFS_ML;NAM_TOM;GFS_GS;NAM_00
+RESTORE	850mb_HGHT_AVG             $NMAP_RESTORE/stnd/850mb_hght_avg                 standard     GEFS_ML;NAM_TOM;GFS_GS;NAM_00 
+!
+RESTORE	PRECIP_12hr_AVG            $NMAP_RESTORE/prcp/precip_12hr_avg                precip       GEFS_ML;NAM_TOM 
+RESTORE	PRECIP_24hr_AVG            $NMAP_RESTORE/prcp/precip_24hr_avg                precip       GEFS_ML;NAM_TOM 

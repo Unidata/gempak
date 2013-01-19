@@ -1,0 +1,19 @@
+!	This is the error file for DCFFG.
+!
++8	! No report time could be found.
++7	! Undecodable value in report: !AS
++6	! Number of values is not 3 or 5 in value string !AS
++5	! Unrecognized originating station:  !AS
++4      ! Invalid date/time:  !AS
++3      ! Invalid bulletin:  !AS
++2	! !AS
++1	! Probable end of input file.
+-1	! Fatal error initializing GEMPAK.
+-2	! Fatal error reading GEMPAK parameters.
+-3	! Parameter !AS is not in the dataset.
+-4	! The last time in !AS is invalid.
+-5      ! The first time in !AS is invalid.
+-6	! The input file has control characters.
+-7	! No ".B" or ".END" strings found in bulletin !AS
+-8	! No decodable stations in bulletin !AS
+-9	! Over 3 hour difference between bulletin and report times.

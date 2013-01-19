@@ -1,0 +1,46 @@
+
+                              CUSTOMIZED MAP DEFINITION
+
+
+The "Customized Map Definition" pop-up allows an increased level of 
+flexibility in specifying geographic areas.  Click the "Custom" button below
+the pre-defined area buttons to invoke this pop-up.  
+
+The "Customized Map Definition" window permits direct control over the GEMPAK 
+parameters GAREA and PROJ.  Initially the window shows the current settings of 
+the two variables.  GAREA specifies the geographic area while PROJ specifies the 
+map projection over that area.
+
+GAREA may be specified in several ways.  A pre-defined GEMPAK area name, 
+e.g., US, may be used.  Any GEMPAK area defined in the table 
+$GEMTBL/stns/geog.tbl may be entered.  Alternatively, user-specified lat/lon 
+values separated by semi-colons can be entered to define the bounds of the 
+region.  The lower left lat;lon values followed by the upper right lat;lon
+values specify the bounding rectangle.  Any station ID, from the table 
+$GEMTBL/stns/sfstns.tbl, may also be entered to define the center point of 
+the geographic region.  The "+/-" notation may be used (when appended to a 
+station ID or a geographic area abbreviation, each "-" increases the area 
+extent while "+" decreases it).  
+
+If a satellite or radar image is one of the selected data sets, "DSET" may be 
+entered into the "GAREA" field to match the image coverage.
+
+The map projection, entered in the "PROJ" text box may be specified as a 
+simple or full projection (including projection angles and margins).  Any
+valid GEMPAK projection name can be specified.  The radio buttons display
+the more commonly used map projections and may be clicked to select the
+desired projection.  A more complete list of map projections is available for 
+selection from the "Others" pull-down.  In addition, the projection may be set 
+using one of the special key words "DEF", "SAT", or "RAD."  "DEF" indicates that 
+the projection associated with the GAREA entry obtained from the geog.tbl is 
+used.  Click the "DEF Content" button to see the projection obtained from the 
+table. "SAT" indicates that the projection definition is taken from the 
+satellite image.  "SAT" applies only if a satellite image is one of the selected 
+data sets.  "RAD" works similarly to "SAT" for radar images.  If a satellite or 
+radar image is selected, the projection cannot be altered.
+
+To apply changes to the "Map Selection" window without closing the "Customized 
+Map Definition" pop-up, click anywhere in the "GAREA" or "PROJ" type-in fields 
+and press the <Enter> key on the keyboard.  Alternately, click the "Accept" 
+button to close the pop-up and apply the changes to the "Map Selection" 
+window.

@@ -1,0 +1,6 @@
+cp $OS_LIB/xw.a $OS_LIB/png.a
+echo COMPILING PNG
+$AC $ANSI_CFLAGS -I$GEMPAK/source/libpng -c x*.c
+$AR $ARFLAGS $OS_LIB/png.a *.o
+$RM *.o
+echo COMPILATION OF PNG DRIVER IS COMPLETE.

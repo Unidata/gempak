@@ -1,0 +1,4 @@
+$FC $FFLAGS $LDFLAGS -o $OS_BIN/gpcolor gpcolor.f \
+	    $OS_LIB/gpcolor.a $GEMLIB $APPL \
+	    $GEMLIB $CGEMLIB $GEMLIB $SYSLIB
+$RM *.o

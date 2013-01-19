@@ -1,0 +1,64 @@
+C************************************************************************
+C*  / LOGMSG /								*
+C*									*
+C*  This common area contains a string used to hold messages that are	*
+C*  to be written to the decoder log.					*
+C************************************************************************
+	CHARACTER	logmsg*200
+C*
+	COMMON	/ LOGMSG /	logmsg
+C*					String to hold a message to be
+C*					written to decoder log
+C*
+C************************************************************************
+C*  / INTF /								*
+C*									*
+C*  This common area contains the interface arrays.			*
+C************************************************************************
+	PARAMETER 	( NRSLMN = 22 )
+C*					Number of real interface
+C*					mnemonics
+C*
+        PARAMETER       ( MXTPQC = 7 )
+C*                                      Max number of reps of temporary  
+C*                                      quality control indicator.
+C*
+        PARAMETER       ( MLM1QC = ( ( MXTPQC - 1 ) * 1 ) )
+C*
+        PARAMETER       ( NRIMN = NRSLMN + ( ( 1 * MXTPQC ) + 1 ) )
+C
+	COMMON	/ RINTFP /
+     +	   iryear  , irmnth  , irdays  , irhour  , irminu  , irseco  ,
+     +	   irslat  , irslon  , irhmsl  , irprlc  , irflvl  , irpoaf  ,
+     +     irialr  , irsmmo  , irtmdb  , irwdir  , irwspd  , irtrbx  ,
+     +	   irtedr  , irafic  , irpccf  , irrehu  ,
+     +     irntqc  , irtpqc ( MXTPQC )    
+C*					Pointers to relative locations of
+C*					real interface mnemonics within
+C*					rimnem ( ).  These pointers will
+C*					be set by TA_IFSP and then used as
+C*					indices into the real interface
+C*					values array rivals ( ).
+C*
+	REAL		rivals ( NRIMN )
+C*
+	COMMON	/ RINTFV /	rivals
+C*					Real interface values 
+C*
+        PARAMETER       ( NCIMN = 3 )
+C*                                      Number of character interface
+C*                                      mnemonics
+C*
+        COMMON  / CINTFP /
+     +     icacrn  , icactp  , icobsv   
+C*                                      Pointers to relative locations of
+C*                                      character interface mnemonics within
+C*                                      cimnem ( ).  These pointers will be
+C*                                      set by TA_IFSP and then used as
+C*                                      indices into the character
+C*                                      interface values array civals ( )
+C*
+        CHARACTER       civals ( NCIMN )*8
+C*
+        COMMON  / CINTFV /      civals
+C*                                      Character interface values

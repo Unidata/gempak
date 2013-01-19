@@ -1,0 +1,193 @@
+#!/bin/csh
+#
+#************************************************************************
+#                                                                       *
+#       Script to print surface data					*
+#                                                                       *
+#                                                                       *
+# D.W.Plummer/NCEP       2/97                                           *
+# D.W.Plummer/NCEP       3/97	Added CRB (Carribean) map option, moved	*
+#                               location of station ID, changed SA and	*
+#                               CRB units to metric.			*
+#************************************************************************
+#
+
+set v=`echo ${1} | cut -c1-2`
+if ( ${#argv} < 1 || ${v} == "-h" || ${v} == "h" || ${v} == "he" )  then
+        cat `which prntsfc.hlp`
+        exit
+endif
+
+set area=`echo ${1} | tr "[a-z]" "[A-Z]"`
+
+set dattim=${2}
+if ( ${dattim} == "" )  then
+	set dattim=LAST
+endif
+
+set prt=${3}
+
+set file="$HOME/prntsfc_${area}.ps"
+/bin/rm -f ${file}
+
+set prntout=${4}
+if ( ${prntout}"." == "." )  then
+        set prntout=/dev/null
+else
+        /bin/rm -f ${prntout}
+        echo "Print from GEMPAK will be saved in ${prntout}"
+endif
+
+if ( ${area} == "SA" || ${area} == "CRB" )  then
+
+
+    if ( ${area} == "SA" )  then
+        set dev="ps|${file}|11;17|m"
+	set garea="-58;-90;17;-28"
+    else if ( ${area} == "CRB" )  then
+        set dev="ps|${file}|17;11|m"
+	set garea="-5;-115;34;-56"
+    endif
+
+sfmap  <<EOF  >>${prntout}
+GAREA   = ${garea}
+PROJ    = mer
+LATLON  = 1
+MAP     = 1                                                       
+MARKER  = 0                      
+CLEAR   = YES    
+PANEL   = 0     
+DEVICE  = ${dev}
+SKPMIS  = yes                   
+
+DATTIM  = ${dattim}
+
+SFFILE  = hrly
+AREA    = garea        
+FILTER  = 0.7                     
+
+SFPARM  = skyc:.45;tmpc;dwpc;;vsby;wsym:0.5;;;brbk:0.6:2
+COLORS  = 26;2;7;25;20;22;18;6                                     
+TEXT    = 0.7/21/2/sw           
+TITLE   = 1/-1    
+l
+run
+
+
+CLEAR   = no
+MAP     = 0                                                       
+LATLON  = 0
+SFPARM  = ;;;salt
+COLORS  = 26
+TEXT    = 0.7/21/3/sw           
+TITLE   = 0
+l
+run
+
+
+SFPARM  = tmpf; ; ; ; ; ; ; ; ; ;stid
+COLORS  = 0;26
+TEXT    = 0.38/21/2/sw           
+TITLE   = 0
+l
+run
+
+
+exit
+
+EOF
+
+else if ( ${area} == "US" )  then
+
+    set dev="ps|${file}|17;11|m"
+
+    set garea="23.5;-119.8;42.7;-62.7"
+
+sfmap  <<EOF  >>${prntout}
+AREA    = garea        
+GAREA   = ${garea}
+PROJ    = STR/90.0;-105.0;0.0      
+MAP     = 1                                                       
+LATLON  = 0                                                      
+DATTIM  = ${dattim}
+SFFILE  = hrly
+MARKER  = 0                      
+CLEAR   = YES    
+PANEL   = 0     
+DEVICE  = ${dev}
+FILTER  = 0.7                     
+SKPMIS  = yes                   
+
+SFPARM  = skyc:.45;tmpf;dwpf;;ptnd:0.4;wsym:0.5;;;brbk:0.6:2
+COLORS  = 26;2;7;25;20;22;18;6                                     
+TEXT    = 0.7/21/2/sw           
+TITLE   = 1/-1    
+l
+run
+
+
+CLEAR   = no
+MAP     = 0                                                       
+SFPARM  = ;;;smsl
+COLORS  = 26
+TEXT    = 0.7/21/3/sw           
+TITLE   = 0
+l
+run
+
+
+SFPARM  = tmpf; ; ; ; ; ; ; ; ; ;stid
+COLORS  = 0;26
+TEXT    = 0.38/21/2/sw           
+TITLE   = 0
+l
+run
+
+
+exit
+
+EOF
+
+else
+
+	echo "Invalid area."
+
+endif
+
+gpend
+
+#
+#       Check size of postscript file, print if big enough.
+#
+
+if ( -f ${file} )  then
+
+    set size=`/bin/ls -l ${file} | awk '{print $5}'`
+
+    if ( ${size} > 1000 )  then
+        if ( ${prt} == "" )  then
+                echo "Print file creation complete... "
+                echo "Sending print file ${file} to default printer."
+                $LP  ${file}
+        else
+                echo "Print file creation complete... "
+                echo "Sending print file ${file} to printer ${prt}."
+                $LP  $LPFLAG${prt}   ${file}
+        endif
+    else
+        echo "Probable error creating print file.  Check input parameters for accuracy."
+        cat `which prntsfc.hlp`
+    endif
+
+else
+    echo "Print file not created.  Check input parameters for accuracy."
+    cat `which prntsfc.hlp`
+endif
+
+#
+#       Wait one minute, then remove postscript file
+#
+
+( ( sleep 60; /bin/rm -f ${file} ) & ) >/dev/null
+
+exit

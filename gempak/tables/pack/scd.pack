@@ -1,0 +1,27 @@
+!SCD.PACK
+!
+!This table is the packing table for DCSCD, which decodes SCD data.
+!
+!*Log:
+!
+!D. Kidwell/NCEP 3/97		Adapted from METAR.PACK
+!A. Hardy/GSC    1/98		Changed HSUN to MSUN
+!A. Hardy/GSC    6/98		Changed SNEW max 255. -> 100.;
+!				WNUM min 0. -> -3.
+!				
+!
+TDXC      -100.         60.      .1
+TDNC      -100.         60.      .1
+P06I	     0.	        40.	 .01 
+P24I	     0.	        40.	 .01 
+WNUM        -3.     512000.     1.
+SNOW	     0.	       255.0	1.
+SNEW	     0.	       100.0	 .1
+WEQS	     0.	       100.0	 .1
+MSUN	     0.	       999.	1.
+CTYL        -1.          9.     1.
+CTYM        -1.          9.     1.
+CTYH        -1.          9.     1.
+CFRT        -1.          9.     1.
+CFRL        -1.          9.     1.
+CBAS        -1.          9.     1.

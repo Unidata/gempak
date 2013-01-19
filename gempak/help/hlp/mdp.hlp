@@ -1,0 +1,70 @@
+
+MDP
+
+  MDP generates a text file with lat-lon points from a line-enclosed area
+  in a VGF file.  Only areas enclosed by scallop line are selected by this
+  program.  This program is for the Mesoscale Discussion Product (MCD).
+
+INPUT PARAMETERS
+
+  mdp vgf_filename
+
+  mdp		Program name
+  vgf_filename	VGF file containing line element
+
+PROGRAM DESCRIPTION
+
+  MDP scans a VGF file, finds a scallop line along with the associated 
+  states and WFOs and generates a set of lat-lon points from a single line.
+  The lat-lon points are in the format "%04d%04d". Latitudes are multiplied by
+  100 and have G_NINT applied; longitudes have 100 subtracted from their value
+  if their value exceeds 100, then are multiplied by 100 and have G_NINT applied.
+  In the output text file state id's listed first, followed by "ATTN...WFO..." 
+  and a list of WFO's, and finally by the lat-lon pairings.  Only six pairings 
+  are listed per output text file line.  If a scallop line is not grouped with
+  any states and/or WFOs only the lat-lon pairings are written out.  The execution
+  stops after the programs encounters the very first scallop line even though there
+  could be more lines in the VGF file.
+
+EXAMPLE
+
+  If the VGF file 'testfile.vgf' contained a line with the following points:
+        41.766418       -122.518044
+        42.707851       -122.467720
+        44.064945       -121.932777
+        44.591129       -120.760826
+        45.477966       -119.434814
+        46.121750       -117.436699
+        46.573746       -114.958611
+        46.324837       -114.361015
+        45.830158       -113.801498
+        45.148617       -113.245537
+        44.289459       -112.897202
+        43.804283       -112.323036
+        42.986031       -111.580902
+        41.616608       -112.739708
+        41.016850       -114.016533
+        39.825108       -115.012077
+        38.889137       -114.968842
+        37.886833       -114.334137
+        36.475399       -114.334740
+        35.717655       -115.874306
+        35.557777       -117.486488
+        35.708645       -118.983940
+        36.962063       -121.284622
+        38.641460       -122.809883
+        40.430874       -123.261604
+        41.344032       -123.670433
+
+  Then the output file 'testfile.mdp' would contain:
+
+MTZ000-UTZ000-IDZ000-NVZ000-CAZ000-ORZ000-WAZ000-
+
+ATTN...WFO...TFX...SLC...PIH...MSO...VEF...BOI...LKN...OTX...PDT...
+REV...HNX...MFR...STO...MTR...PQR...EKA
+
+41762251 42702246 44062193 44592076 45471943 46121743
+46571495 46321436 45831380 45141324 44281289 43801232
+42981158 41611273 41011401 39821501 38881496 37881433
+36471433 35711587 35551748 35701898 36962128 38642280
+40432326 41342367

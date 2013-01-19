@@ -1,0 +1,63 @@
+! SAD.BULL
+!
+! Location information for the following product:
+! Daily_Surface_Aviation_Weather_Summary.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+AWUS46 KMFR     MEDFORD                          OR US  4236 -12287     0
+AWUS51 KALY     ALBANY                           NY US  4268  -7383     0
+AWUS51 KBOX     TAUNTON                          MA US  4195  -7112     0
+AWUS51 KCAR     CARIBOU                          ME US  4577  -6862     0
+AWUS51 KCLE     CLEVELAND                        OH US  4140  -8186     0
+AWUS51 KOKX     NEW_YORK                         NY US  4086  -7286     0
+AWUS51 KPBZ     PITTSBURGH                       PA US  4052  -8020     0
+AWUS51 KPHI     MOUNT_HOLLY                      NJ US  4000  -7480     0
+AWUS51 KRLX     CHARLESTON                       WV US  3831  -8170     0
+AWUS52 KJAX     JACKSONVILLE                     FL US  3047  -8169     0
+AWUS52 KMFL     MIAMI                            FL US  2575  -8037     0
+AWUS52 KMLB     MELBOURNE                        FL US  2811  -8065     0
+AWUS52 KTAE     TALLAHASSEE                      FL US  3045  -8430     0
+AWUS53 KBIS     BISMARCK                         ND US  4677 -10075     0
+AWUS53 KDDC     DODGE_CITY                       KS US  3775  -9995     0
+AWUS53 KDLH     DULUTH                           MN US  4683  -9220     0
+AWUS53 KDMX     DES_MOINES                       IA US  4172  -9372     0
+AWUS53 KDVN     QUAD_CITIES_IA                   IL US  4161  -9058     0
+AWUS53 KFGF     EASTERN_NORTH_DAKOTA             ND US  4791  -9708     0
+AWUS53 KFSD     SIOUX_FALLS                      SD US  4358  -9672     0
+AWUS53 KGID     HASTINGS                         NE US  4063  -9837     0
+AWUS53 KGLD     GOODLAND                         KS US  3936 -10169     0
+AWUS53 KGRB     GREEN_BAY                        WI US  4449  -8811     0
+AWUS53 KICT     WICHITA                          KS US  3765  -9744     0
+AWUS53 KLBF     NORTH_PLATTE                     NE US  4113 -10069     0
+AWUS53 KLMK     LOUISVILLE                       KY US  3811  -8563     0
+AWUS53 KLOT     CHICAGO                          IL US  4159  -8808     0
+AWUS53 KMPX     TWIN_CITIES/CHANHASSEN           MN US  4484  -9355     0
+AWUS53 KPAH     PADUCAH                          KY US  3706  -8876     0
+AWUS53 KSGF     SPRINGFIELD                      MO US  3722  -9340     0
+AWUS53 KTOP     TOPEKA                           KS US  3906  -9562     0
+AWUS53 KUNR     RAPID_CITY                       SD US  4406 -10320     0
+AWUS54 KAMA     AMARILLO                         TX US  3522 -10169     0
+AWUS54 KBMX     BIRMINGHAM                       AL US  3316  -8677     0
+AWUS54 KBRO     BROWNSVILLE                      TX US  2590  -9741     0
+AWUS54 KCRP     CORPUS_CHRISTI                   TX US  2777  -9750     0
+AWUS54 KEPZ     EL_PASO_TX/SANTA_TERESA          NM US  3187 -10669     0
+AWUS54 KFWD     DALLAS/FORT_WORTH                TX US  3283  -9729     0
+AWUS54 KHGX     HOUSTON/GALVESTON                TX US  2946  -9506     0
+AWUS54 KJAN     JACKSON                          MS US  3231  -9008     0
+AWUS54 KLCH     LAKE_CHARLES                     LA US  3012  -9320     0
+AWUS54 KLZK     LITTLE_ROCK                      AR US  3483  -9225     0
+AWUS54 KMAF     MIDLAND/ODESSA                   TX US  3194 -10218     0
+AWUS54 KMOB     MOBILE                           AL US  3067  -8823     0
+AWUS54 KOHX     NASHVILLE                        TN US  3624  -8655     0
+AWUS54 KOUN     NORMAN                           OK US  3522  -9745     0
+AWUS54 KSHV     SHREVEPORT                       LA US  3245  -9383     0
+AWUS54 KTSA     TULSA                            OK US  3613  -9586     0
+AWUS55 KABQ     ALBUQUERQUE                      NM US  3502 -10662     0
+AWUS55 KBOU     DENVER                           CO US  4000 -10526     0
+AWUS55 KCYS     CHEYENNE                         WY US  4115 -10480     0
+AWUS55 KGJT     GRAND_JUNCTION                   CO US  3911 -10851     0
+AWUS55 KPUB     PUEBLO                           CO US  3827 -10451     0

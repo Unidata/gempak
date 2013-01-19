@@ -1,0 +1,22 @@
+#!/bin/sh
+
+dir=$NAWIPS/extlibs/OHSHEF 
+if  [ -d $dir ]
+  then
+    echo "COMPILING OHSHEF LIBRARY"
+    echo "INSTALLING as \"$OS_LIB/libOHSHEF.a\""
+    $RM $OS_LIB/libOHSHEF.a
+
+    cd $dir
+
+    $CC $CFLAGS -c *.c
+    $FC $FFLAGS -c *.f
+    $AR $ARFLAGS $OS_LIB/libOHSHEF.a *.o
+    $RM *.o
+
+##########################################################################
+    echo "COMPILATION OF OHSHEF LIBRARY IS COMPLETE."
+    echo "=========================================="
+  else
+    echo "Directory \"$dir\" does not exist!"
+fi

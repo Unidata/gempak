@@ -1,0 +1,18 @@
+!	This is the TEXTLIB WBC error file
+!
+-1	! Invalid 24 hour time.
+-2	! Locator type not equal to 'VOR'
+-3	! Latitude out of range.
+-4	! Longitude out of range.
+-5	! VOR string too big.
+-6	! Invalid month number.
+-7	! Invalid day number.
+-8	! Invalid anchor point station id.
+-9	! Invalid valid AM/PM time designator.
+-10	! Invalid ending AM/PM time designator.
+-11	! Invalid ending minutes.
+-12	! Invalid valid hour.
+-13	! Invalid ending hour.
+-14	! Invalid WFO id.
+-15	! Invalid state id.
+-16     ! Error opening VGF file, !AS.

@@ -1,0 +1,387 @@
+! UATTRIBD.TBL.   
+!
+! This file is a sample template for the attribute file set by the GPMAP 
+! parameter VGFILE.  The attribute file is used to tailor the display 
+! characteristics when producing products in the various formats, e.g., FAX, 
+! GIF, etc.  The attribute file can alter object attributes, e.g., color, 
+! line width, etc.  It can also change the object sub-type for a given 
+! class and object type.  For example, all underlined text can be changed to 
+! text with no underlines.  
+!
+! This template contains the VGF object class (VGCLASS) with the attributes set
+! to the default values.  To change specific objects, enter the object below 
+! the appropriate VGCLASS with the desired attribute values.  Refer to the 
+! $GEMTBL/pgen/setting.tbl for a complete list of object types (VGTYPE).  This 
+! table generally follows the format of the setting.tbl.  It includes all of 
+! the columns up to the GRP column in the setting.tbl.  Its last column, 
+! NEWSUBT, is not included in the setting.tbl file. 
+!
+! Two examples of how to use this table are given below.
+!
+! Example 1: Alter the size and color of the ball and chain line type in the
+!            output device. 
+!
+! CLASS_LINES    SPLN_ELM     1    3   3   2     1    1   0.8   2
+!
+! The VG Type in this example for VG Class lines is SPLN_ELM and the specific 
+! sub-type for ball and chain is 1.  The two 3's are the major and minor 
+! GEMPAK color, green.  The 2 is the smoothing level.  The 0.8 is the size 
+! and the final 2 is the width.  With this entry, all ball and chain lines in 
+! the input VGF have these attributes in the output device.
+!
+! NOTE:  If the color is set to -1 for an object, that object is eliminated
+!        from the output device.   
+!
+! Example 2: Change all underlined text in the input VGF to regular text 
+!            objects in the output device.
+!
+! CLASS_TEXT     SPTX_ELM     10  31  31   0 1.1   0   1   2  1    0       0
+!
+! In this example the sub-type corresponding to underlined text, 10 in the 
+! third column, is changed to regular text by specifying 0 for NEWSUBT in the
+! last column.  
+!
+! NOTE:  NEWSUBT only needs to be specified if a new sub-type is 
+!        desired for an object.  This table is backward compatible
+!        with earlier versions that do not include NEWSUBT in the 
+!        last column.  The value of NEWSUBT can be set to -99, to
+!        indicate no change in sub-type. 
+!
+! NOTE:  Do not use the name setting.tbl for the name of this table. 
+!        If you do, it will alter the display of objects in NMAP.
+!------------------------------------------------------------------------
+! VGCLASS:  VGF object class, e.g., CLASS_SYMBOLS, see $GEMTBL/pgen/setting.tbl
+!           for details.
+! VGTYPE:   VGF object type, e.g., SPSYM_ELM, sett $GEMTBL/pgen/setting.tbl 
+!           for details 
+! SUBTYP:   GEMPAK code number for specific lines types, symbols, 
+!	    fronts, etc., see $GEMTBL/pgen/setting.tbl for details 
+!
+!   Note:   An entry of -99 for VGTYPE or SUBTYP sets the attrbutes in the table 
+!           entry for all objects in these types. 
+!
+! ALIGN:    Text justification (-1 = left, 0 = center, 1 = right)
+! DIR:	    Front or special line pip direction (1 or -1)
+! FNT:      GEMPAK font number
+! HDSIZ:    Wind and directional arrow head size
+! HW:	    Text hardware flag (1 = software, 2 = hardware)
+! INCR:     Track interval in minutes
+! LN1:	    Track line type for user-drawn line
+! LN2:      Track line type for extrapolated track
+! LTHW:	    Line type hardware flag (currently only 0 is valid)
+! LTYP:	    GEMPAK Line pattern number
+! LWHW:	    Line width hardware flag (currently only 0 is valid
+! MAJ:	    Primary GEMPAK color number
+! MIN:	    Secondary GEMPAK color number
+! MK1:      Track marker type for user-drawn line 
+! MK2:      Track marker type for extrapolated track
+! NEWSUBT:  New subtype which is to replace the existing subtype (SUBTYP)
+! ROT:	    Text rotation in degrees
+! SLTYP:    GEMPAK Special Line pattern number
+! SIZE:     Object size, e.g, symbol size, line pattern size, etc.
+! SMTH:     smoothing level (0,1,2) 
+! STRENGTH: Front strength
+! TURB:	    GEMPAK turbulence symbol number
+! W_TYPE:   Watch Type
+! WIDTH:    Object width, line width, text width, etc.
+!
+!------------------------------------------------------------------------
+!!
+! Log:
+! E.Safford/SAIC	02/02	added NEWSUBT, rearranged comments
+! S. Schotz/NCEP	02/02 	Updated documentation, removed TEXT_ELEM 
+!				and TEXTC_ELEM.  They are no longer used. 
+! J. Wu/SAIC	 	11/02	add List class	
+! H. Zeng/XTRIA		05/03   added Watchbox marker info
+! D.W.Plummer/NCEP	06/03	added VOLC_ELM and ASHCLD_ELM elements
+! J. Wu/SAIC	 	09/03	add CLASS_MET -> JET_ELM	
+! J. Wu/SAIC	 	01/04	add CLASS_MET -> GFA_ELM	
+! B. Yin/SAIC		02/04	added CLASS_MET -> TCA_ELM	
+! J. Wu/SAIC		05/04   add barb/hash color into JET_ELM and
+!				control barb clearing via its width
+! J. Wu/SAIC		05/04   add post-processing setting for text
+! J. Wu/SAIC		09/04   add text type for jet barb text
+! J. Wu/SAIC	 	10/04	remove line width from GFA_ELM	
+! B. Yin/SAIC	 	12/05	add line width for GFA_ELM	
+! B. Yin/SAIC	 	07/06	add all GFA hazards
+! L. Hinson/AWC         01/07   Extend GFA hazards to support Text Layout
+! E. Safford/SAIC	04/07	add new subtypes for GFA F/BB/A elements
+! m.gamazaychikov/SAIC	06/07	add TCERR, TCTRK and TCBKL elems
+! L. Hinson/AWC         07/07   Extend GFA hazards to support Arrow Size
+! J. Wu/SAIC	 	06/08	add GFA hazard thunderstorm (TS)	
+! B. Yin/SAIC           06/08   add GFA display format for MVFR
+! B. Yin/SAIC           06/08   add TOP/BSE for MTOBSC
+! B. Yin/SAIC           07/08   add 20 KT surface wind for GFA
+! L. Hinson/AWC         08/08   Update GFA Hazards Text Layout to plot ZSFH
+!                               (UTC Time Special) instead of SFHR
+! L. Hinson/AWC         04/09   Add GFA SIGMET Hazards
+! L. Hinson/AWC         07/09   Extend CCF hazards
+!=========================================================================
+!
+!
+!VGCLASS        VGTYPE   SUBTYP   
+!                              MAJ MIN  SMTH  SIZE  DIR STRENGTH NEWSUBT
+!default frt
+CLASS_FRONTS   -99        -99    0   0   -1    0.0    0     0      -99
+!
+!                              MAJ MIN  W_TYPE MRKTYP MRKSIZ MRKWID NEWSUBT 
+!default wch
+CLASS_WATCHES  -99        -99    0   0     0     0     0.0     0      -99
+!
+!                              MAJ MIN  SMTH  LTYP  LTHW  WIDTH LWHW NEWSUBT
+!default line
+CLASS_LINES    LINE_ELM   -99    0   0   -1     0     0     0     0    -99
+!
+!                              MAJ MIN SMTH  LTYP  DIR  SIZE WIDTH NEWSUBT
+!default spl 
+CLASS_LINES    SPLN_ELM   -99    0   0   -1    0    0   0.0   0      -99 
+!
+!                              MAJ  MIN  WIDTH SIZE NEWSUBT 
+!default sym
+CLASS_SYMBOLS  -99        -99    0   0     0    0.0   -99
+!
+!                              MAJ MIN  WIDTH SIZE  HDSIZ NEWSUBT
+!default arw
+CLASS_WINDS    ARROW_ELM  -99    0   0    0    0.0   0.0    -99
+!
+!                              MAJ MIN  WIDTH SIZE NEWSUBT
+!default barb
+CLASS_WINDS    BARB_ELM   -99    0   0    0    0.0   -99 
+!
+!			       MAJ MIN  WIDTH SIZE  HDSIZ NEWSUBT
+!default darr
+CLASS_WINDS    DARR_ELM   -99    0   0    0    0.0  0.0	    -99
+!
+!                              MAJ MIN  WIDTH SIZE NEWSUBT
+!default hash
+CLASS_WINDS    HASH_ELM   -99    0   0      0  0.0   -99
+!
+!                              MAJ MIN ROT SIZ TURB FNT HW WID ALIGN NEWSUBT SPID
+!default text
+CLASS_TEXT     SPTX_ELM   -99    0   0   0 0.0   0   0   0  0    0     -99   NONE
+!
+!                                  MAJ MIN  LTYP LTHW  WIDTH LWHW NEWSUBT
+!default circle 
+CLASS_CIRCLE    CIRCLE_ELM   -99    0   0    0     0     0     0    -99
+!
+!                              MAJ MIN  LN1  LN2 MK1 MK2 WDTH INCR NEWSUBT
+!default track
+CLASS_TRACKS           -99 -99  0   0    0    0   0   0    0    0    -99 
+!
+!                                  MAJ MIN  SLTYP WIDTH NEWSUBT
+!default sigmet
+CLASS_SIGMETS           -99   -99    0   0     0   0      -99
+!                                  SMTH MAJ MIN   FILL FILL FILL LINE ARRW TEXT TEXT TEXT TEXT TEXT TLABEL                 GRP(23 characters maximum)
+!                                       HI  LO    HI   MED  LO   TYPE SIZE SIZE FONT ITHW WDTH ALGN
+CLASS_SIGMETS   SIGCCF_ELM    -99    0  1    2    0    0    0    1    1.00 1.00 1    2    1    2    NIL                    LABEL   !default ccf
+CLASS_SIGMETS   SIGCCF_ELM      0    0  6   24    1    8    2    1    0.50 0.66 1    2    1    2    ETD::GWTS|0.6          LABEL   !area ccf
+CLASS_SIGMETS   SIGCCF_ELM      1    2  29  29    0    0    0    1    0.00 0.00 0    0    0    2    NIL                    LABEL   !line ccf
+CLASS_SIGMETS   SIGCCF_ELM      2    2  29  29    0    0    0    2    0.00 0.00 0    0    0    2    NIL                    LABEL   !line ccf
+!
+!                                 MAJ MIN  SMTH  NEWSUBT
+!default ash cloud
+CLASS_SIGMETS	ASHCLD_ELM  -99    5   5    0     -99
+!
+!                                 MAJ  MIN  WIDTH SIZE   NEWSUBT
+!default volcano
+CLASS_SIGMETS	VOLC_ELM   -99     2    2     2    2.0     -99
+!
+!                                MAJ MIN  MRKTYP MRKSIZ MRKWID  NEWSUBT
+!default list
+CLASS_LIST	LIST_ELM   -99    0   0     0      0.0    0       -99  
+!
+!                       MAJ MIN SMTH LINE LINE LINE BARB BARB BARB TEXT TEXT TEXT TEXT TEXT TEXT HASH HASH HASH NEWSUBT
+! default jet                        TYPE SIZE WDTH COLR SIZE WDTH TYPE SIZE FONT ITHW WDTH ALGN COLR SIZE WDTH
+CLASS_MET  JET_ELM  -99  0   0    2   0   0.0   0    0    0    0     0   0.0   0    0    0    0    0   0.0   0   -99
+!
+!			MAJ MIN	LINE LINE LINE ARRW TEXT TEXT TEXT TEXT TEXT TEXT TLAYOUT               GRP(23 characters maximum)
+!				ELM  TYPE WDTH SIZE COLR SIZE FONT ITHW WDTH ALGN
+CLASS_MET  GFA_ELM -99  3   3   1    1    2    0.50 3    0.66 1    2    1    0    STA;ZSFH::TAG;HZD:LVL  LABEL  !default
+! IFR
+CLASS_MET  GFA_ELM  10  2   2   1    1    2    0.50 2    0.66 1    2    1    0    STA;ZSFH::TAG;CVR;BLW;TOP;VIS;WX|7 LABEL  !IFR snapshot
+CLASS_MET  GFA_ELM  11  2   2   1    1    3    0.50 2    0.66 1    2    1    0    STA;ZSFH::TAG;CVR;BLW;TOP;VIS;WX|7 LABEL  !IFR user drawn smear
+CLASS_MET  GFA_ELM  12  28  28  1    1    3    0.50 28   0.66 1    2    1    0    STA;ZSFH::TAG;CVR;BLW;TOP;VIS;WX|7 LABEL  !IFR system smear
+CLASS_MET  GFA_ELM  13  15  15  1    1    4    0.50 15   0.66 1    2    1    0    STA;ZSFH::TAG;CVR;BLW;TOP;VIS;WX|7 LABEL  !IFR user drawn outlook
+CLASS_MET  GFA_ELM  14  27  27  1    1    4    0.50 27   0.66 1    2    1    0    STA;ZSFH::TAG;CVR;BLW;TOP;VIS;WX|7 LABEL  !IFR system outlook
+CLASS_MET  GFA_ELM  15  28  28  1    1    3    0.50 28   0.66 1    2    1    0    STA;ZSFH::TAG;CVR;BLW;TOP;VIS;WX|7 LABEL  !IFR system smear
+CLASS_MET  GFA_ELM  16  27  27  1    1    4    0.50 27   0.66 1    2    1    0    STA;ZSFH::TAG;CVR;BLW;TOP;VIS;WX|7 LABEL  !IFR system outlook
+!MT OBSC
+CLASS_MET  GFA_ELM  20  5   5   1    1    2    0.50 5    0.66 1    2    1    0    STA;ZSFH::TAG;SSYM|52;TOP;BSE;WX|7  LABEL  !MT OBSC snapshot
+CLASS_MET  GFA_ELM  21  5   5   1    1    3    0.50 5    0.66 1    2    1    0    STA;ZSFH::TAG;SSYM|52;TOP;BSE;WX|7  LABEL  !MT OBSC user drawn smear 
+CLASS_MET  GFA_ELM  22  28  28  1    1    3    0.50 28   0.66 1    2    1    0    STA;ZSFH::TAG;SSYM|52;TOP;BSE;WX|7  LABEL  !MT OBSC system smear
+CLASS_MET  GFA_ELM  23  19  19  1    1    4    0.50 19   0.66 1    2    1    0    STA;ZSFH::TAG;SSYM|52;TOP;BSE;WX|7  LABEL  !MT OBSC user drawn outlook
+CLASS_MET  GFA_ELM  24  27  27  1    1    4    0.50 27   0.66 1    2    1    0    STA;ZSFH::TAG;SSYM|52;TOP;BSE;WX|7  LABEL  !MT OBSC system outlook
+CLASS_MET  GFA_ELM  25  28  28  1    1    3    0.50 28   0.66 1    2    1    0    STA;ZSFH::TAG;SSYM|52;TOP;BSE;WX|7  LABEL  !MT OBSC system smear
+CLASS_MET  GFA_ELM  26  27  27  1    1    4    0.50 27   0.66 1    2    1    0    STA;ZSFH::TAG;SSYM|52;TOP;BSE;WX|7  LABEL  !MT OBSC system outlook
+!ICE
+CLASS_MET  GFA_ELM  30  3   3   1    1    2    0.50 3    0.66 1    2    1    0    STA;ZSFH::TAG;ISYM|5;TOP;BSE  LABEL  !ICE snapshot
+CLASS_MET  GFA_ELM  31  3   3   1    1    3    0.50 3    0.66 1    2    1    0    STA;ZSFH::TAG;ISYM|5;TOP;BSE  LABEL  !ICE user drawn smear 
+CLASS_MET  GFA_ELM  32  28  28  1    1    3    0.50 28   0.66 1    2    1    0    STA;ZSFH::TAG;ISYM|5;TOP;BSE  LABEL  !ICE system smear
+CLASS_MET  GFA_ELM  33  22  22  1    1    4    0.50 22   0.66 1    2    1    0    STA;ZSFH::TAG;ISYM|5;TOP;BSE  LABEL  !ICE user drawn outlook
+CLASS_MET  GFA_ELM  34  27  27  1    1    4    0.50 27   0.66 1    2    1    0    STA;ZSFH::TAG;ISYM|5;TOP;BSE  LABEL  !ICE system outlook
+CLASS_MET  GFA_ELM  35  28  28  1    1    3    0.50 28   0.66 1    2    1    0    STA;ZSFH::TAG;ISYM|5;TOP;BSE  LABEL  !ICE system smear
+CLASS_MET  GFA_ELM  36  27  27  1    1    4    0.50 27   0.66 1    2    1    0    STA;ZSFH::TAG;ISYM|5;TOP;BSE  LABEL  !ICE system outlook
+!TURB
+CLASS_MET  GFA_ELM  40  4   4   1    1    2    0.50 4    0.66 1    2    1    0    STA;ZSFH::TAG;TSYM|4;TOP;BSE  LABEL  !TURB snapshot
+CLASS_MET  GFA_ELM  41  4   4   1    1    3    0.50 4    0.66 1    2    1    0    STA;ZSFH::TAG;TSYM|4;TOP;BSE  LABEL  !TURB user drawn smear 
+CLASS_MET  GFA_ELM  42  4   4   1    1    3    0.50 4    0.66 1    2    1    0    STA;ZSFH::TAG;TSYM|4;TOP;BSE  LABEL  !TURB system smear
+CLASS_MET  GFA_ELM  43  4   4   1    1    4    0.50 4    0.66 1    2    1    0    STA;ZSFH::TAG;TSYM|4;TOP;BSE  LABEL  !TURB user drawn outlook
+CLASS_MET  GFA_ELM  44  4   4   1    1    4    0.50 4    0.66 1    2    1    0    STA;ZSFH::TAG;TSYM|4;TOP;BSE  LABEL  !TURB system outlook
+CLASS_MET  GFA_ELM  45  4   4   1    1    3    0.50 4    0.66 1    2    1    0    STA;ZSFH::TAG;TSYM|4;TOP;BSE  LABEL  !TURB system smear
+CLASS_MET  GFA_ELM  46  4   4   1    1    4    0.50 4    0.66 1    2    1    0    STA;ZSFH::TAG;TSYM|4;TOP;BSE  LABEL  !TURB system outlook
+!TURB_HI
+CLASS_MET  GFA_ELM  50  7   7   1    1    2    0.50 7    0.66 1    2    1    0    STA;ZSFH::TAG;TSYM|4;TOP;BSE  LABEL  !TURB HI snapshot
+CLASS_MET  GFA_ELM  51  7   7   1    1    3    0.50 7    0.66 1    2    1    0    STA;ZSFH::TAG;TSYM|4;TOP;BSE  LABEL  !TURB HI user drawn smear 
+CLASS_MET  GFA_ELM  52  28  28  1    1    3    0.50 28   0.66 1    2    1    0    STA;ZSFH::TAG;TSYM|4;TOP;BSE  LABEL  !TURB HI system smear
+CLASS_MET  GFA_ELM  53  30  30  1    1    4    0.50 30   0.66 1    2    1    0    STA;ZSFH::TAG;TSYM|4;TOP;BSE  LABEL  !TURB HI user drawn outlook
+CLASS_MET  GFA_ELM  54  27  27  1    1    4    0.50 27   0.66 1    2    1    0    STA;ZSFH::TAG;TSYM|4;TOP;BSE  LABEL  !TURB HI system outlook
+CLASS_MET  GFA_ELM  55  28  28  1    1    3    0.50 28   0.66 1    2    1    0    STA;ZSFH::TAG;TSYM|4;TOP;BSE  LABEL  !TURB HI system smear
+CLASS_MET  GFA_ELM  56  27  27  1    1    4    0.50 27   0.66 1    2    1    0    STA;ZSFH::TAG;TSYM|4;TOP;BSE  LABEL  !TURB HI system outlook
+!TURB_LO
+CLASS_MET  GFA_ELM  60  25  25  1    1    2    0.50 25   0.66 1    2    1    0    STA;ZSFH::TAG;TSYM|4;TOP;BSE  LABEL  !TURB LO snapshot
+CLASS_MET  GFA_ELM  61  25  25  1    1    3    0.50 25   0.66 1    2    1    0    STA;ZSFH::TAG;TSYM|4;TOP;BSE  LABEL  !TURB LO user drawn smear 
+CLASS_MET  GFA_ELM  62  28  28  1    1    3    0.50 28   0.66 1    2    1    0    STA;ZSFH::TAG;TSYM|4;TOP;BSE  LABEL  !TURB LO system smear
+CLASS_MET  GFA_ELM  63  26  26  1    1    4    0.50 26   0.66 1    2    1    0    STA;ZSFH::TAG;TSYM|4;TOP;BSE  LABEL  !TURB LO user drawn outlook
+CLASS_MET  GFA_ELM  64  27  27  1    1    4    0.50 27   0.66 1    2    1    0    STA;ZSFH::TAG;TSYM|4;TOP;BSE  LABEL  !TURB LO system outlook
+CLASS_MET  GFA_ELM  65  28  28  1    1    3    0.50 28   0.66 1    2    1    0    STA;ZSFH::TAG;TSYM|4;TOP;BSE  LABEL  !TURB LO system smear
+CLASS_MET  GFA_ELM  66  27  27  1    1    4    0.50 27   0.66 1    2    1    0    STA;ZSFH::TAG;TSYM|4;TOP;BSE  LABEL  !TURB LO system outlook
+!SFC WIND
+CLASS_MET  GFA_ELM  70  17  17  1    1    2    0.50 17   0.66 1    2    1    0    STA;ZSFH::TAG;SSYM|54/1.2/3/2  LABEL  !SFC WIND snapshot
+CLASS_MET  GFA_ELM  71  17  17  1    1    3    0.50 17   0.66 1    2    1    0    STA;ZSFH::TAG;SSYM|54/1.2/3/2  LABEL  !SFC WIND user drawn smear 
+CLASS_MET  GFA_ELM  72  28  28  1    1    3    0.50 28   0.66 1    2    1    0    STA;ZSFH::TAG;SSYM|54/1.2/3/2  LABEL  !SFC WIND system smear
+CLASS_MET  GFA_ELM  73  10  10  1    1    4    0.50 10   0.66 1    2    1    0    STA;ZSFH::TAG;SSYM|54/1.2/3/2  LABEL  !SFC WIND user drawn outlook
+CLASS_MET  GFA_ELM  74  27  27  1    1    4    0.50 27   0.66 1    2    1    0    STA;ZSFH::TAG;SSYM|54/1.2/3/2  LABEL  !SFC WIND system outlook
+CLASS_MET  GFA_ELM  75  28  28  1    1    3    0.50 28   0.66 1    2    1    0    STA;ZSFH::TAG;SSYM|54/1.2/3/2  LABEL  !SFC WIND system smear
+CLASS_MET  GFA_ELM  76  27  27  1    1    4    0.50 27   0.66 1    2    1    0    STA;ZSFH::TAG;SSYM|54/1.2/3/2  LABEL  !SFC WIND system outlook
+!SIGWX
+CLASS_MET  GFA_ELM  80  3   3   1    1    2    0.50 3    0.66 1    2    1    0    STA;ZSFH::TAG;HZD  LABEL  !SIGWX snapshot
+CLASS_MET  GFA_ELM  81  3   3   1    1    3    0.50 3    0.66 1    2    1    0    STA;ZSFH::TAG;HZD  LABEL  !SIGWX user drawn smear 
+CLASS_MET  GFA_ELM  82  3   3   1    1    3    0.50 3    0.66 1    2    1    0    STA;ZSFH::TAG;HZD  LABEL  !SIGWX system smear
+CLASS_MET  GFA_ELM  83  3   3   1    1    4    0.50 3    0.66 1    2    1    0    STA;ZSFH::TAG;HZD  LABEL  !SIGWX user drawn outlook
+CLASS_MET  GFA_ELM  84  3   3   1    1    4    0.50 3    0.66 1    2    1    0    STA;ZSFH::TAG;HZD  LABEL  !SIGWX system outlook
+CLASS_MET  GFA_ELM  85  3   3   1    1    3    0.50 3    0.66 1    2    1    0    STA;ZSFH::TAG;HZD  LABEL  !SIGWX system smear
+CLASS_MET  GFA_ELM  86  3   3   1    1    4    0.50 3    0.66 1    2    1    0    STA;ZSFH::TAG;HZD  LABEL  !SIGWX system outlook
+!CIG CLD
+CLASS_MET  GFA_ELM  90  3   3   1    1    2    0.50 3    0.66 1    2    1    0    STA;ZSFH::TAG;HZD  LABEL  !CIG CLD snapshot
+CLASS_MET  GFA_ELM  91  3   3   1    1    3    0.50 3    0.66 1    2    1    0    STA;ZSFH::TAG;HZD  LABEL  !CIG CLD user drawn smear 
+CLASS_MET  GFA_ELM  92  3   3   1    1    3    0.50 3    0.66 1    2    1    0    STA;ZSFH::TAG;HZD  LABEL  !CIG CLD system smear
+CLASS_MET  GFA_ELM  93  3   3   1    1    4    0.50 3    0.66 1    2    1    0    STA;ZSFH::TAG;HZD  LABEL  !CIG CLD user drawn outlook
+CLASS_MET  GFA_ELM  94  3   3   1    1    4    0.50 3    0.66 1    2    1    0    STA;ZSFH::TAG;HZD  LABEL  !CIG CLD system outlook
+CLASS_MET  GFA_ELM  95  3   3   1    1    3    0.50 3    0.66 1    2    1    0    STA;ZSFH::TAG;HZD  LABEL  !CIG CLD system smear
+CLASS_MET  GFA_ELM  96  3   3   1    1    4    0.50 3    0.66 1    2    1    0    STA;ZSFH::TAG;HZD  LABEL  !CIG CLD system outlook
+!TCU CLD
+CLASS_MET  GFA_ELM 100  3   3   1    1    2    0.50 3    0.66 1    2    1    0    STA;ZSFH::TAG;HZD  LABEL  !TCU CLD snapshot
+CLASS_MET  GFA_ELM 101  3   3   1    1    3    0.50 3    0.66 1    2    1    0    STA;ZSFH::TAG;HZD  LABEL  !TCU CLD user drawn smear 
+CLASS_MET  GFA_ELM 102  3   3   1    1    3    0.50 3    0.66 1    2    1    0    STA;ZSFH::TAG;HZD  LABEL  !TCU CLD system smear
+CLASS_MET  GFA_ELM 103  3   3   1    1    4    0.50 3    0.66 1    2    1    0    STA;ZSFH::TAG;HZD  LABEL  !TCU CLD user drawn outlook
+CLASS_MET  GFA_ELM 104  3   3   1    1    4    0.50 3    0.66 1    2    1    0    STA;ZSFH::TAG;HZD  LABEL  !TCU CLD system outlook
+CLASS_MET  GFA_ELM 105  3   3   1    1    3    0.50 3    0.66 1    2    1    0    STA;ZSFH::TAG;HZD  LABEL  !TCU CLD system smear
+CLASS_MET  GFA_ELM 106  3   3   1    1    4    0.50 3    0.66 1    2    1    0    STA;ZSFH::TAG;HZD  LABEL  !TCU CLD system outlook
+!MTW
+CLASS_MET  GFA_ELM 110  3   3   1    1    2    0.50 3    0.66 1    2    1    0    STA;ZSFH::TAG;HZD  LABEL  !MTW snapshot
+CLASS_MET  GFA_ELM 111  3   3   1    1    3    0.50 3    0.66 1    2    1    0    STA;ZSFH::TAG;HZD  LABEL  !MTW user drawn smear 
+CLASS_MET  GFA_ELM 112  3   3   1    1    3    0.50 3    0.66 1    2    1    0    STA;ZSFH::TAG;HZD  LABEL  !MTW system smear
+CLASS_MET  GFA_ELM 113  3   3   1    1    4    0.50 3    0.66 1    2    1    0    STA;ZSFH::TAG;HZD  LABEL  !MTW user drawn outlook
+CLASS_MET  GFA_ELM 114  3   3   1    1    4    0.50 3    0.66 1    2    1    0    STA;ZSFH::TAG;HZD  LABEL  !MTW system outlook
+CLASS_MET  GFA_ELM 115  3   3   1    1    3    0.50 3    0.66 1    2    1    0    STA;ZSFH::TAG;HZD  LABEL  !MTW system smear
+CLASS_MET  GFA_ELM 116  3   3   1    1    4    0.50 3    0.66 1    2    1    0    STA;ZSFH::TAG;HZD  LABEL  !MTW system outlook
+!CLD
+CLASS_MET  GFA_ELM 120  3   3   1    1    2    0.50 3    0.66 1    2    1    0    STA;ZSFH::TAG;HZD  LABEL  !CLD snapshot
+CLASS_MET  GFA_ELM 121  3   3   1    1    3    0.50 3    0.66 1    2    1    0    STA;ZSFH::TAG;HZD  LABEL  !CLD user drawn smear 
+CLASS_MET  GFA_ELM 122  3   3   1    1    3    0.50 3    0.66 1    2    1    0    STA;ZSFH::TAG;HZD  LABEL  !CLD system smear
+CLASS_MET  GFA_ELM 123  3   3   1    1    4    0.50 3    0.66 1    2    1    0    STA;ZSFH::TAG;HZD  LABEL  !CLD user drawn outlook
+CLASS_MET  GFA_ELM 124  3   3   1    1    4    0.50 3    0.66 1    2    1    0    STA;ZSFH::TAG;HZD  LABEL  !CLD system outlook
+CLASS_MET  GFA_ELM 125  3   3   1    1    3    0.50 3    0.66 1    2    1    0    STA;ZSFH::TAG;HZD  LABEL  !CLD system smear
+CLASS_MET  GFA_ELM 126  3   3   1    1    4    0.50 3    0.66 1    2    1    0    STA;ZSFH::TAG;HZD  LABEL  !CLD system outlook
+!FZLVL_SFC
+CLASS_MET  GFA_ELM 130  26  26  20   33   2    0.50 26   0.66 1    2    1    0    STA;ZSFH::TAG;HZD:LVL  LABEL  !FZLVL_SFC snapshot
+CLASS_MET  GFA_ELM 131  26  26  20   33   3    0.50 26   0.66 1    2    1    0    STA;ZSFH::TAG;HZD:LVL  LABEL  !FZLVL_SFC user drawn smear 
+CLASS_MET  GFA_ELM 132  25  25  20   33   3    0.50 25   0.66 1    2    1    0    STA;ZSFH::TAG;HZD:LVL  LABEL  !FZLVL_SFC system smear
+CLASS_MET  GFA_ELM 133  27  27  20   33   4    0.50 27   0.66 1    2    1    0    STA;ZSFH::TAG;HZD:LVL  LABEL  !FZLVL_SFC user drawn outlook
+CLASS_MET  GFA_ELM 134  25  25  20   33   4    0.50 25   0.66 1    2    1    0    STA;ZSFH::TAG;HZD:LVL  LABEL  !FZLVL_SFC system outlook
+CLASS_MET  GFA_ELM 135  25  25  20   33   3    0.50 25   0.66 1    2    1    0    STA;ZSFH::TAG;HZD:LVL  LABEL  !FZLVL_SFC system smear
+CLASS_MET  GFA_ELM 136  25  25  20   33   4    0.50 25   0.66 1    2    1    0    STA;ZSFH::TAG;HZD:LVL  LABEL  !FZLVL_SFC system outlook
+!FZLVL
+CLASS_MET  GFA_ELM 140  12  12  20   34   2    0.50 12   0.66 1    2    1    0    STA;ZSFH::TAG;HZD:LVL  LABEL  !FZLVL snapshot
+CLASS_MET  GFA_ELM 141  12  12  20   34   3    0.50 12   0.66 1    2    1    0    STA;ZSFH::TAG;HZD:LVL  LABEL  !FZLVL user drawn smear 
+CLASS_MET  GFA_ELM 142  28  28  20   34   3    0.50 28   0.66 1    2    1    0    STA;ZSFH::TAG;HZD:LVL  LABEL  !FZLVL system smear
+CLASS_MET  GFA_ELM 143  27  27  20   34   4    0.50 27   0.66 1    2    1    0    STA;ZSFH::TAG;HZD:LVL  LABEL  !FZLVL user drawn outlook
+CLASS_MET  GFA_ELM 144  27  27  20   34   4    0.50 27   0.66 1    2    1    0    STA;ZSFH::TAG;HZD:LVL  LABEL  !FZLVL system outlook
+CLASS_MET  GFA_ELM 145  28  28  20   34   3    0.50 28   0.66 1    2    1    0    STA;ZSFH::TAG;HZD:LVL  LABEL  !FZLVL system smear
+CLASS_MET  GFA_ELM 146  27  27  20   34   4    0.50 27   0.66 1    2    1    0    STA;ZSFH::TAG;HZD:LVL  LABEL  !FZLVL system outlook
+!M_FZLVL
+CLASS_MET  GFA_ELM 150  27  27  1    1    2    0.50 27   0.66 1    2    1    0    STA;ZSFH::TAG;HZD;TOP;BSE  LABEL  !M_FZLVL snapshot
+CLASS_MET  GFA_ELM 151  27  27  1    1    3    0.50 27   0.66 1    2    1    0    STA;ZSFH::TAG;HZD;TOP;BSE  LABEL  !M_FZLVL user drawn smear 
+CLASS_MET  GFA_ELM 152  28  28  1    1    3    0.50 28   0.66 1    2    1    0    STA;ZSFH::TAG;HZD;TOP;BSE  LABEL  !M_FZLVL system smear
+CLASS_MET  GFA_ELM 153  26  26  1    1    4    0.50 26   0.66 1    2    1    0    STA;ZSFH::TAG;HZD;TOP;BSE  LABEL  !M_FZLVL user drawn outlook
+CLASS_MET  GFA_ELM 154  27  27  1    1    4    0.50 27   0.66 1    2    1    0    STA;ZSFH::TAG;HZD;TOP;BSE  LABEL  !M_FZLVL system outlook
+CLASS_MET  GFA_ELM 155  28  28  1    1    3    0.50 28   0.66 1    2    1    0    STA;ZSFH::TAG;HZD;TOP;BSE  LABEL  !M_FZLVL system smear
+CLASS_MET  GFA_ELM 156  27  27  1    1    4    0.50 27   0.66 1    2    1    0    STA;ZSFH::TAG;HZD;TOP;BSE  LABEL  !M_FZLVL system outlook
+!LLWS
+CLASS_MET  GFA_ELM 160  6   6   1    1    2    0.50 6    0.66 1    2    1    0    STA;ZSFH::TAG;HZD  LABEL  !LLWS snapshot
+CLASS_MET  GFA_ELM 161  6   6   1    1    3    0.50 6    0.66 1    2    1    0    STA;ZSFH::TAG;HZD  LABEL  !LLWS user drawn smear 
+CLASS_MET  GFA_ELM 162  28  28  1    1    3    0.50 28   0.66 1    2    1    0    STA;ZSFH::TAG;HZD  LABEL  !LLWS system smear
+CLASS_MET  GFA_ELM 163  25  25  1    1    4    0.50 25   0.66 1    2    1    0    STA;ZSFH::TAG;HZD  LABEL  !LLWS user drawn outlook
+CLASS_MET  GFA_ELM 164  27  27  1    1    4    0.50 27   0.66 1    2    1    0    STA;ZSFH::TAG;HZD  LABEL  !LLWS system outlook
+CLASS_MET  GFA_ELM 165  28  28  1    1    3    0.50 28   0.66 1    2    1    0    STA;ZSFH::TAG;HZD  LABEL  !LLWS system smear
+CLASS_MET  GFA_ELM 166  27  27  1    1    4    0.50 27   0.66 1    2    1    0    STA;ZSFH::TAG;HZD  LABEL  !LLWS system outlook
+!TS
+CLASS_MET  GFA_ELM 170  3   3   1    1    2    0.50 3    0.66 1    2    1    0    STA;ZSFH::TAG;HZD  LABEL  !TS snapshot
+CLASS_MET  GFA_ELM 171  3   3   1    1    3    0.50 3    0.66 1    2    1    0    STA;ZSFH::TAG;HZD  LABEL  !TS user drawn smear 
+CLASS_MET  GFA_ELM 172  3   3   1    1    3    0.50 3    0.66 1    2    1    0    STA;ZSFH::TAG;HZD  LABEL  !TS system smear
+CLASS_MET  GFA_ELM 173  3   3   1    1    4    0.50 3    0.66 1    2    1    0    STA;ZSFH::TAG;HZD  LABEL  !TS user drawn outlook
+CLASS_MET  GFA_ELM 174  3   3   1    1    4    0.50 3    0.66 1    2    1    0    STA;ZSFH::TAG;HZD  LABEL  !TS system outlook
+CLASS_MET  GFA_ELM 175  3   3   1    1    3    0.50 3    0.66 1    2    1    0    STA;ZSFH::TAG;HZD  LABEL  !TS aimet FBBA
+CLASS_MET  GFA_ELM 176  3   3   1    1    4    0.50 3    0.66 1    2    1    0    STA;ZSFH::TAG;HZD  LABEL  !TS outlook FBBA
+! MVFR
+CLASS_MET  GFA_ELM 180  6   2   1    1    2    0.50 2    0.66 1    2    1    0    STA;ZSFH::TAG;HZD;CVR;BLW;TOP;VIS;WX|7 LABEL  !MVFR snapshot
+CLASS_MET  GFA_ELM 181  6   2   1    1    3    0.50 2    0.66 1    2    1    0    STA;ZSFH::TAG;HZD;CVR;BLW;TOP;VIS;WX|7 LABEL  !MVFR user drawn smear
+CLASS_MET  GFA_ELM 182  6   28  1    1    3    0.50 28   0.66 1    2    1    0    STA;ZSFH::TAG;HZD;CVR;BLW;TOP;VIS;WX|7 LABEL  !MVFR system smear
+CLASS_MET  GFA_ELM 183  6   15  1    1    4    0.50 15   0.66 1    2    1    0    STA;ZSFH::TAG;HZD;CVR;BLW;TOP;VIS;WX|7 LABEL  !MVFR user drawn outlook
+CLASS_MET  GFA_ELM 184  6   27  1    1    4    0.50 27   0.66 1    2    1    0    STA;ZSFH::TAG;HZD;CVR;BLW;TOP;VIS;WX|7 LABEL  !MVFR system outlook
+CLASS_MET  GFA_ELM 185  6   28  1    1    3    0.50 28   0.66 1    2    1    0    STA;ZSFH::TAG;HZD;CVR;BLW;TOP;VIS;WX|7 LABEL  !MVFR system smear
+CLASS_MET  GFA_ELM 186  6   27  1    1    4    0.50 27   0.66 1    2    1    0    STA;ZSFH::TAG;HZD;CVR;BLW;TOP;VIS;WX|7 LABEL  !MVFR system outlook
+! 20KT SFC WIND
+CLASS_MET  GFA_ELM 190  17  17  1    1    2    0.50 17   0.66 1    2    1    0    STA;ZSFH::TAG;SSYM|53/1.2/3/2 LABEL  !SFC WIND snapshot
+CLASS_MET  GFA_ELM 191  17  17  1    1    3    0.50 17   0.66 1    2    1    0    STA;ZSFH::TAG;SSYM|53/1.2/3/2 LABEL  !SFC WIND user drawn smear
+CLASS_MET  GFA_ELM 192  28  28  1    1    3    0.50 28   0.66 1    2    1    0    STA;ZSFH::TAG;SSYM|53/1.2/3/2 LABEL  !SFC WIND system smear
+CLASS_MET  GFA_ELM 193  10  10  1    1    4    0.50 10   0.66 1    2    1    0    STA;ZSFH::TAG;SSYM|53/1.2/3/2 LABEL  !SFC WIND user drawn outlook
+CLASS_MET  GFA_ELM 194  27  27  1    1    4    0.50 27   0.66 1    2    1    0    STA;ZSFH::TAG;SSYM|53/1.2/3/2 LABEL  !SFC WIND system outlook
+CLASS_MET  GFA_ELM 195  28  28  1    1    3    0.50 28   0.66 1    2    1    0    STA;ZSFH::TAG;SSYM|53/1.2/3/2 LABEL  !SFC WIND system smear
+CLASS_MET  GFA_ELM 196  27  27  1    1    4    0.50 27   0.66 1    2    1    0    STA;ZSFH::TAG;SSYM|53/1.2/3/2 LABEL  !SFC WIND system outlook
+!ICE_SIGMET
+CLASS_MET  GFA_ELM 200  3   3   1    1    2    0.50 3    0.66 1    2    1    0    BFHR;EFHR;TAG;ISYM|8/0.55/1/1;TOP;BSE LABEL  !ICE_SIGMET snapshot
+CLASS_MET  GFA_ELM 201  3   3   1    1    3    0.50 3    0.66 1    2    1    0    BFHR;EFHR;TAG;ISYM|8/0.55/1/1;TOP;BSE LABEL  !ICE_SIGMET user drawn smear
+CLASS_MET  GFA_ELM 205  3   3   1    1    3    0.50 3    0.66 1    2    1    0    BFHR;EFHR;TAG;ISYM|8/0.55/1/1;TOP;BSE LABEL  !ICE_SIGMET system smear
+!TURB_SIGMET
+CLASS_MET  GFA_ELM 210  4   4   1    1    2    0.50 4    0.66 1    2    1    0    BFHR;EFHR;TAG;TSYM|6/0.60/1/1;TOP;BSE LABEL  !TURB_SIGMET snapshot
+CLASS_MET  GFA_ELM 211  4   4   1    1    3    0.50 4    0.66 1    2    1    0    BFHR;EFHR;TAG;TSYM|6/0.60/1/1;TOP;BSE LABEL  !TURB_SIGMET user drawn smear
+CLASS_MET  GFA_ELM 215  4   4   1    1    3    0.50 4    0.66 1    2    1    0    BFHR;EFHR;TAG;TSYM|6/0.60/3/1;TOP;BSE LABEL  !TURB_SIGMET system smear
+! DS_SIGMET
+CLASS_MET  GFA_ELM 220  18  18  1    1    2    0.50 17   0.66 1    2    1    0    BFHR;EFHR;TAG;WSYM|34/0.60/3/1;TOP;BSE LABEL  !DS_SIGMET snapshot
+CLASS_MET  GFA_ELM 221  18  18  1    1    3    0.50 17   0.66 1    2    1    0    BFHR;EFHR;TAG;WSYM|34/0.60/3/1;TOP;BSE LABEL  !DS_SIGMET user drawn smear
+CLASS_MET  GFA_ELM 225  18  18  1    1    3    0.50 17   0.66 1    2    1    0    BFHR;EFHR;TAG;WSYM|34/0.60/3/1;TOP;BSE LABEL  !DS_SIGMET system smear
+! SS_SIGMET
+CLASS_MET  GFA_ELM 230  5   5   1    1    2    0.50 17   0.66 1    2    1    0    BFHR;EFHR;TAG;WSYM|34/0.60/3/1;TOP;BSE LABEL  !SS_SIGMET snapshot
+CLASS_MET  GFA_ELM 231  5   5   1    1    3    0.50 17   0.66 1    2    1    0    BFHR;EFHR;TAG;WSYM|34/0.60/3/1;TOP;BSE LABEL  !SS_SIGMET user drawn smear
+CLASS_MET  GFA_ELM 235  5   5   1    1    3    0.50 17   0.66 1    2    1    0    BFHR;EFHR;TAG;WSYM|34/0.60/3/1;TOP;BSE LABEL  !SS_SIGMET system smear
+! VASH_SIGMET
+CLASS_MET  GFA_ELM 240  12  12  1    1    2    0.50 17   0.66 1    2    1    0    BFHR;EFHR;TAG;WSYM|201/0.55/3/1;TOP;BSE LABEL  !VASH_SIGMET snapshot
+CLASS_MET  GFA_ELM 241  12  12  1    1    3    0.50 17   0.66 1    2    1    0    BFHR;EFHR;TAG;WSYM|201/0.55/3/1;TOP;BSE LABEL  !VASH_SIGMET user drawn smear
+CLASS_MET  GFA_ELM 245  12  12  1    1    3    0.50 17   0.66 1    2    1    0    BFHR;EFHR;TAG;WSYM|201/0.55/3/1;TOP;BSE LABEL  !VASH_SIGMET system smear
+!
+!default tca, there are not used at the moment
+!			MAJ MIN  WIDTH  NEWSUBT
+CLASS_MET  TCA_ELM  -99  0   0    0     -99
+!
+!default tce, not used at the moment
+!                         MAJ MIN  WIDTH  NEWSUBT
+CLASS_MET  TCERR_ELM  -99  0   0    0     -99
+!
+!default tct, not used at the moment
+!                         MAJ MIN  WIDTH  NEWSUBT
+CLASS_MET  TCTRK_ELM  -99  0   0    0     -99
+!
+!default tcb, not used at the moment
+!                         MAJ MIN  WIDTH  NEWSUBT
+CLASS_MET  TCBKL_ELM  -99  0   0    0     -99

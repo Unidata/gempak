@@ -1,0 +1,48 @@
+{
+	{area 0.0000 1.0000 0.0000 1.0000}
+}
+{
+	{type polygon}
+	{id 1}
+	{vertex 0.6000 0.5000}
+	{vertex 0.1000 0.5000}
+	{vertex 0.1000 0.4000}
+	{vertex 0.6000 0.4000}
+	{vertex 0.6000 0.5000}
+}
+{
+	{type polygon}
+	{id 2}
+	{vertex 0.4000 0.7000}
+	{vertex 0.3000 0.7000}
+	{vertex 0.4000 0.6000}
+	{vertex 0.4000 0.7000}
+}
+{
+	{type line}
+	{id 3}
+	{vertex 0.2900 0.2600}
+	{vertex 0.3850 0.3500}
+}
+{
+	{type polygon}
+	{id 4}
+	{ref 1}
+	{vertex 0.8593 0.7181}
+	{vertex 0.6168 0.7181}
+	{vertex 0.6168 0.5581}
+	{vertex 0.8593 0.5581}
+	{vertex 0.8593 0.7181}
+	{arrow 0.7381 0.6381 0.6000 0.5000}
+}
+{
+	{type polygon}
+	{id 5}
+	{ref 2}
+	{vertex 0.6713 0.9225}
+	{vertex 0.4138 0.9225}
+	{vertex 0.4138 0.7625}
+	{vertex 0.6713 0.7625}
+	{vertex 0.6713 0.9225}
+	{arrow 0.5425 0.8425 0.4000 0.7000}
+}

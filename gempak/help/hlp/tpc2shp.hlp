@@ -1,0 +1,97 @@
+
+TPC2SHP
+                                                                       
+  TPC2SHP converts TC elements in a VGF file to shapefile format files.  
+
+INPUT PARAMETERS
+
+  tpc2vgf -o output -i input.vgf
+
+  tpc2vgf		Program name
+  input.vgf		VGF file to be converted
+  output		Prefix for shapefile format files
+                                                                       
+PROGRAM DESCRIPTION
+
+  TPC2SHP scans a VGF file and converts VGF elements TCBKL, TCERR and 
+  TCTRK to shapefile format.  For each of the elements a suite of files
+  with the following name convention 
+
+	output_OBJ.EXT 
+
+  is created.
+
+  EXT - corresponds to the file extensions.
+
+	 EXT	 	 Contains
+  	-----		----------
+	.dbf		attributes (meta information)
+	.shp		vertices of objects in map coordinates
+	.shx		index data to vertices of objects
+	.prj		earth model used to generate vertices 
+
+  OBJ - corresponds to the shapefile object, that the element is being
+	converted to.
+
+	 Element	 OBJ		 Object
+  	---------	----		--------
+	TCBKL		lin		Line
+	TCERR		pgn		Polygon
+	TCTRK		pts lin		Points and Line
+
+ATTRIBUTES FILE DESCRIPTION
+
+  Each element attributes file contains common information about the
+  tropical cyclone and element-specific information.
+
+  Common attributes:
+        stormName 	TC name
+        stormType 	TC type
+        validTime 	advisory valid time
+        advisoryNum 	advisory number
+        stormNum 	storm number
+        fcstpd 		forecast period (72 or 120)
+        basin 		basin  
+        issueStatus 	advisory issue status
+        timezone	time zone
+
+  TCBKL-specific attributes:
+	npts		number of points
+        code		empty
+        lclr		GEMPAK color number
+        lwid		GEMPAK line width
+        TCWW		Watch/Warning code
+
+  TCERR-specific attributes:
+	npts		number of points
+        code		empty
+        lclr		GEMPAK color number
+        ltyp		GEMPAK line type
+        fcol		GEMPAK fill color
+        ftyp		GEMPAK fill type
+
+  TCTRK-specific attributes:
+        advDate		advisory date
+        tau 		forecast period
+        mxWnd		maximum sustained wind
+        wGust		wind gust
+        mslp		minimum sea level pressure
+        tcDv		TC level of developement
+        tcDvLbl		TC level of developement (H, T or D)
+        tcDir 		direction of TC movement
+        tcSpd		speed of TC movement
+        dtLbl		date label
+
+EXAMPLES
+
+	tpc2shp -o tctal1805_04 -i AL182005TCt.4.vgf
+
+	- creates 8 files:
+		tctal1805_04_lin.dbf  	
+		tctal1805_04_lin.prj  	 
+		tctal1805_04_lin.shp  	 
+		tctal1805_04_lin.shx    
+		tctal1805_04_pts.dbf  
+		tctal1805_04_pts.prj  
+		tctal1805_04_pts.shp
+		tctal1805_04_pts.shx

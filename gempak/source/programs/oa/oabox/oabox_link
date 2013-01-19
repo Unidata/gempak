@@ -1,0 +1,5 @@
+$FC $FFLAGS $LDFLAGS -o $OS_BIN/oabox oabox.f \
+	$OS_LIB/oabox.a $GEMLIB $APPL \
+	$GEMLIB $CGEMLIB $GEMLIB $SYSLIB \
+	-lm -lnetcdf -lz
+$RM *.o

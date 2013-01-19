@@ -1,0 +1,22 @@
+
+
+                        Satellite Subroutines
+
+
+A satellite or radar image is displayed by GEMPLT using the native
+projection of the image.  Anything plotted over the image, that is to be
+geo-located with the image, must be transformed into the same
+projection.  Therefore, when an image is rendered, its navigation
+defines the M coordinate system.
+
+An image's navigation is typically retrieved from the image file by
+calling subroutine IM_SIMG.  The image's navigation is defined to GEMPLT
+with a call to GSATMG.  Key information about the image is also sent to
+the device driver by a call to GSICMN.  Currently set navigation is
+queried with a call to GQSATN.
+
+An image is displayed with a call to GSATIM.
+
+For plotting maps, latitude/longitude grids, or weather data over an
+image, the map projection is set by a call to GSMMAP with the input
+parameter PROJ equal to DEF.

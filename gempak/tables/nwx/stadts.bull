@@ -1,0 +1,12 @@
+! STADTS.BULL
+!
+! This table contains the bulletin/station information to be used
+! with the Daily Stats.
+!
+! The format for the file is given below, with the
+! number of characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+!
+NWUS20 KWNS     NORMAN                           OK US  3522  -9747   362

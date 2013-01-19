@@ -1,0 +1,38 @@
+     CATMAP
+
+     CATMAP is a string that contains "label=value" pairs. "Label" can have
+     a wildcard option having the format: x*, where "x" is the initial character
+     of the label and "*" is the wildcard portion. The label is case
+     insensitive.  The individual label-value pairs are separated by semicolons:
+
+	s1=x;s2=y;...sN=z
+     
+
+     For example:
+
+		CATMAP=LOW=1;MED=2;HIGH=3
+ 
+     Example using the wildcard option in the label:
+
+		CATMAP=D20=0;D*=14
+
+     The wildcard label of D* will match all labels beginning with the letter
+     "D" and set the value to 14.  This is particularly useful for day labels
+     which begin with the letter D in Extended Outlook VGFs.  Note that
+     because the label-value pair, D20=0 appears before D*=14, the label D20
+     will have the value 0 associated with it and all other labels beginning
+     with the letter D will have the value of 14.  If the label-value pair D*=14
+     had appeared before D20=0 in the CATMAP string, then the wildcard option
+     would have taken precedence over the D20=0 and the label D20 would have
+     had the value 14 associated with it and not 0.
+
+     Labels are considered character strings and values are considered 
+     floating point values.
+
+     For unlabeled lines, character string needs to set to "UNLABELED".
+
+     For example:
+
+		CATMAP=UNLABELED=1;SLGT=2;MDT=3
+
+

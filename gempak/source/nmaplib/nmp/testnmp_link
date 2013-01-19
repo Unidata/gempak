@@ -1,0 +1,6 @@
+$CC $CFLAGS -c testnmp.c
+$FC $LDFLAGS -o $OS_BIN/testnmp testnmp.o \
+		$NMAPLIB $GEMLIB $CGEMLIB \
+		$APPL $SYSLIB $GEMLIB \
+		-lm -lnetcdf -lz
+$RM *.o

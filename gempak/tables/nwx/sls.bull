@@ -1,0 +1,61 @@
+! SLS.BULL
+!
+! Location information for the following product:
+! Severe_Local_Storm_Watch_and_Areal_Outline.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+WWHW60 PHFO     HONOLULU                         HI US  2129 -15780     0
+WWMY60 PGUM     GUAM                             GU US  1347  14478     0
+WWUS61 KAKQ     WAKEFIELD                        VA US  3697  -7700     0
+WWUS61 KALY     ALBANY                           NY US  4268  -7383     0
+WWUS61 KBOX     TAUNTON                          MA US  4195  -7112     0
+WWUS61 KBTV     BURLINGTON                       VT US  4445  -7315     0
+WWUS61 KBUF     BUFFALO                          NY US  4293  -7870     0
+WWUS61 KCAR     CARIBOU                          ME US  4577  -6862     0
+WWUS61 KCLE     CLEVELAND                        OH US  4140  -8186     0
+WWUS61 KCTP     STATE_COLLEGE                    PA US  4079  -7786     0
+WWUS61 KGYX     GRAY                             ME US  4388  -7025     0
+WWUS61 KLWX     BALTIMORE_MD/_WASHINGTON_DC      VA US  3897  -7747     0
+WWUS61 KOKX     NEW_YORK                         NY US  4086  -7286     0
+WWUS61 KPBZ     PITTSBURGH                       PA US  4052  -8020     0
+WWUS61 KPHI     MOUNT_HOLLY                      NJ US  4000  -7480     0
+WWUS61 KRLX     CHARLESTON                       WV US  3831  -8170     0
+WWUS62 KCAE     COLUMBIA                         SC US  3393  -8112     0
+WWUS62 KFFC     PEACHTREE_CITY                   GA US  3336  -8455     0
+WWUS62 KMFL     MIAMI                            FL US  2575  -8037     0
+WWUS62 KRAH     RALEIGH                          NC US  3577  -7868     0
+WWUS63 KBIS     BISMARCK                         ND US  4677 -10075     0
+WWUS63 KDMX     DES_MOINES                       IA US  4172  -9372     0
+WWUS63 KDTX     DETROIT                          MI US  4268  -8347     0
+WWUS63 KFSD     SIOUX_FALLS                      SD US  4358  -9672     0
+WWUS63 KIND     INDIANAPOLIS                     IN US  3970  -8627     0
+WWUS63 KLMK     LOUISVILLE                       KY US  3811  -8563     0
+WWUS63 KLOT     CHICAGO                          IL US  4159  -8808     0
+WWUS63 KLSX     ST_LOUIS                         MO US  3868  -9068     0
+WWUS63 KMKX     MILWAUKEE/SULLIVAN               WI US  4295  -8854     0
+WWUS63 KMPX     TWIN_CITIES/CHANHASSEN           MN US  4484  -9355     0
+WWUS63 KOAX     OMAHA/VALLEY                     NE US  4131  -9636     0
+WWUS63 KTOP     TOPEKA                           KS US  3906  -9562     0
+WWUS64 KBMX     BIRMINGHAM                       AL US  3316  -8677     0
+WWUS64 KFWD     DALLAS/FORT_WORTH                TX US  3283  -9729     0
+WWUS64 KLIX     NEW_ORLEANS                      LA US  3032  -8981     0
+WWUS64 KLUB     LUBBOCK                          TX US  3352 -10187     0
+WWUS64 KLZK     LITTLE_ROCK                      AR US  3483  -9225     0
+WWUS64 KMEG     MEMPHIS                          TN US  3513  -8980     0
+WWUS64 KOUN     NORMAN                           OK US  3522  -9745     0
+WWUS65 KABQ     ALBUQUERQUE                      NM US  3502 -10662     0
+WWUS65 KBOI     BOISE                            ID US  4356 -11620     0
+WWUS65 KBOU     DENVER                           CO US  4000 -10526     0
+WWUS65 KCYS     CHEYENNE                         WY US  4115 -10480     0
+WWUS65 KPSR     PHOENIX                          AZ US  3343 -11201     0
+WWUS65 KREV     RENO                             NV US  3956 -11979     0
+WWUS65 KSLC     SALT_LAKE_CITY                   UT US  4077 -11194     0
+WWUS65 KTFX     GREAT_FALLS                      MT US  4745 -11137     0
+WWUS66 KLOX     LOS_ANGELES/OXNARD               CA US  3420 -11912     0
+WWUS66 KPQR     PORTLAND                         OR US  4556 -12252     0
+WWUS66 KSEW     SEATTLE                          WA US  4768 -12225     0
+WWUS66 KSTO     SACRAMENTO                       CA US  3859 -12137     0

@@ -1,0 +1,16 @@
+ 
+ 
+                 Grid Support (GR) Library 
+
+
+The grid support library subroutines allow manipulation of
+information in GEMPAK grid files.  Subroutines are available to
+create and decode analysis and navigation block information.  Also
+included are subroutines to open grid files, set the grid
+navigation in GEMPLT, check grid boundaries, and define contour
+levels. 
+
+GR_LIST is available to list all the grids in a file.  In the
+past, this subroutine would list grids based upon partial grid 
+specifications.  Currently, it lists all the grids in a file.
+

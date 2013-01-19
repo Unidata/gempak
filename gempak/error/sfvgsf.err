@@ -1,0 +1,10 @@
+!	SFVGSF error file
+!
++3	! Parameter !AS is not in the data set.
++2	! Station !AS cannot be added to the file.
+-1	! Fatal error initializing TAE.
+-2	! Fatal error reading TAE parameters.
+-3	! VG file !AS cannot be opened.
+-4	! The output file must be a standard SF file.
+-5	! One of the parameters must be STID or STNM.
+-6	! Time !AS cannot be added to data set.

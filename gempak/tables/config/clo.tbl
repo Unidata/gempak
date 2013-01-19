@@ -1,0 +1,145 @@
+!
+! CLO.TBL
+!
+! This table specifies the alias name for GEMPAK station table and boundary
+! info files used by the NMAP seek and locator functions.  Alias names defined 
+! in this table are referenced in the table "$GEMTBL/nmap/locator.tbl".
+! Note that both types of data sets can be used by the locator function,
+! whereas the seek function can only access the station table data sets.
+!  
+! The first column of this table, (ALIAS), specifies the alias name used
+! by the table "locator.tbl".
+!
+! The second column of this table, (FILE TYPE), specifies whether the
+! data set is a GEMPAK station table (0) or boundary info file (1).  
+! Note that boundary info files only contain information about the actual 
+! boundary files such as boundary names and pointers into the boundary files.
+!
+! The third column of this table, (TABLE NAME) is the actual file name
+! for the station table or boundary file.  Avaliable station tables are 
+! located in the directory "$GEMTBL/stns".  Available boundary info files are 
+! located in the directory "$GEMTBL/bounds".    
+!
+!!
+! Log:
+! D.W.Plummer/NCEP	01/00	Created						
+! A. Hardy/GSC		01/00	Added VOLCANO table
+! A. Hardy/GSC		03/00	Added ISLAND table
+! D.W.Plummer/NCEP	07/00	Mods for generalized boundary files
+! D.W.Plummer/NCEP	08/00	Added NEXRAD
+! T. Piper/GSC		08/00	Added CWA_BNDS
+! S. Schotz/NCEP	11/00	Added Western Region QPF points
+! S. Chiswell/Unidata	 1/01	Added ZONE bounds
+! D.W.Plummer/NCEP	 4/01	Added locowo, lakes and great lakes bnds
+! M. Li/SAIC		08/01	Added US_AK
+! D.W.Plummer/NCEP	 2/02	Added SSA (seamless surface analysis)
+! S. Schotz/NCEP	 4/02	Updated Documentation
+! D. Kidwell/NCEP        5/02   Added HCN_BNDS
+! R. Tian/SAIC		06/02	Added WFO
+! A. Hardy/NCEP		 9/02	Added PFZ
+! D. Kidwell/NCEP	 3/03	Added TROPCY_BRKS
+! D.W.Plummer/NCEP	 4/03	Added BWX1224
+! S. Jacobs/NCEP	 5/03	Added HPCSFC
+! D.W.Plummer/NCEP	 7/03	Added OPC_BNDS and OPC_BNDS_NOMEX
+! M. Gamazaychikov/SAIC	12/03	Added CPC_US
+! G. Grosshans/SPC      12/03   Added Firebounds and Fire zones
+! R. Tian/SAIC		 2/04	Added TZ_BNDS
+! D. Kidwell/NCEP        2/04   Added TCA_BKPTS
+! A. Hardy/NCEP		 3/04	Added MZ_CNTY and WBCMZ_BNDS
+! M. Gamazaychikov/SAIC	 4/04	Added UNIFIED_ANL
+! A. Hardy/NCEP		 6/04	Added BWUS_BND
+! B. Yin/SAIC            7/04   Added TCA_BKPTS_???
+! M. Gamazaychikov/SAIC	 9/04	Added FIR_BND
+! M. Gamazaychikov/SAIC	 9/04	Changed FIR_BND to FA_AREA_BNDS
+! R. Tian/SAIC		10/04	Added SIG_HIGH
+! B. Yin/SAIC            1/05   Added SNAP
+! T. Piper/SAIC		02/05	Added RFC_BNDS
+! J. Wu/SAIC		07/05	Added FA_REGION_BNDS
+! D.W.Plummer/NCEP	08/05	Added OUTLOOK
+! M. Li/SAIC		09/05	Replaced nhcbreaks.tbl with tcabkpt_ovl.tbl
+! B. Yin/SAIC		10/05	Added AIRMET_CSTL_BNDS
+! M. Li/SAIC		01/06	Added LAND_ZONES
+! M. Gamazaychikov/SAIC	05/06	Added MWO_AREAS, ENH_AREA
+! M. Gamazaychikov/SAIC 06/06   Added NAM_TOPO
+! M. Gamazaychikov/SAIC 10/06   Added BWUS_LABEL
+! M. Gamazaychikov/SAIC 10/06   Added TPC_BOUNDS
+! M. Gamazaychikov/SAIC 01/07   Added FA_AREAX_BND
+! J. Lewis/AWC		05/07	Added FIR_BNDS
+! L. Hinson/AWC         07/07   Added GFA_CONUS
+! T. Lee/SAIC		08/07	Added G2T (Grid to Text)
+! M. Gamazaychikov/SAIC 10/07   Added NAT_PSA and AK_PSA
+! T. Lee/SAIC		11/07	Removed G2T_NWC
+! M. Gamazaychikov/SAIC 12/07   Added HPC050_MED
+! M. Gamazaychikov/SAIC 11/08   Added VAACAR
+! L. Hinson/AWC         05/09   Added ARTCC_BOUNDS
+!--------------------------------------------------------------------------
+!
+!ALIAS NAME     FILE TYPE	TABLE NAME
+!---------------------------------------------
+ANCHOR		0		spcwatch.tbl
+VOR		0		vors.tbl
+SFSTNS		0		sfstns.tbl
+MARINE		0		marine.tbl
+COASTAL		0		coastal.tbl
+COUNTY		0		county.tbl
+CITIES		0		cities.tbl
+VOLCANO		0		volcano.tbl
+ISLAND		0		island.tbl
+NEXRAD		0		nexrad.tbl
+WR_QPF		0		wrqpf.tbl	
+CNTY_BNDS	1		countybnds.tbl.info
+CWA_BNDS	1		cwabnds.tbl.info
+GREAT_LAKES	1		greatlakesbnds.tbl.info
+LAKES		1		lakesbnds.tbl.info
+RFC_BNDS	1		rfcbnds.tbl.info
+STATE_BNDS	1		statebnds.tbl.info
+WORLD_BNDS	1		locowobnds.tbl.info
+ADJ_CSTL	1		adjcstlbnds.tbl.info
+US_AK		1		us_ak.tbl.info
+SSA		1		ssa_bnd.tbl.info
+CPC		1		cpcus_bnd.tbl.info
+HCN_BNDS        1               hcnbnds.tbl.info
+WFO	        0               wfo.tbl 
+PFZ             1               pfzbnds.tbl.info
+TROPCY_BRKS     0               tcabkpt_ovl.tbl
+BWX1224         1               bwx1224.tbl.info
+HPCSFC          1               hpcsfc.tbl.info
+OPC_BNDS        1               opcbnds.tbl.info
+OPC_BNDS_NOMEX  1               opcbnds_nomex.tbl.info
+FIRE_ZONES      0               firezones.tbl
+FIRE_BNDS       1               firebnds.tbl.info
+TZ_BNDS		1		tzbnds.tbl.info
+TCA_BKPTS       0               tcabkpt.tbl
+MZ_CNTY         0               mzcntys.tbl
+WBCMZ_BNDS      1               mzcntybnds.tbl.info
+UNIFIED_ANL     1               ua_bnd.tbl.info
+BWUS_BND        1               bwus_bnd.tbl.info
+BWUS_LABEL      1               bwus_label.tbl.info
+TCA_BKPTS_OFF   0               tcabkpt.tbl
+TCA_BKPTS_SUP   0               tcabkpt.tbl
+TCA_BKPTS_WAT   0               tcabkpt.tbl
+TCA_BKPTS_ISL   0               tcabkpt.tbl
+FA_AREA_BNDS    1               FA_Area.tbl.info
+FA_AREAX_BNDS   1               FA_AreaX.tbl.info
+SIG_HIGH	1		sig_high.bnd.info
+SNAP		0		snap.tbl
+FA_REGION_BNDS  1               FA_Region.tbl.info
+OUTLOOK         1               SPC_outlook_area.tbl.info
+AIRMET_CSTL_BNDS	1	airmetcstlbnds.tbl.info
+LAND_ZONES	0		zones.tbl
+MWO_AREAS       1               mwobnds.tbl.info
+ENH_AREA        1               enh_area.tbl.info
+NAM_TOPO        1               elev_NAM1000.tbl.info
+TPC_BOUNDS      1               tpcbounds.tbl.info
+FIR_BNDS        1               firbnds.tbl.info
+GFA_CONUS       1               gfa_conus.tbl.info
+G2T_PAC         1               g2t_pac_bnd.tbl.info
+G2T_ATL         1               g2t_atl_bnd.tbl.info
+G2T_TPC         1               g2t_tpc_bnd.tbl.info
+G2T_NWC         1               g2t_nwc.tbl.info
+NAT_PSA	 	1		npsabnds.tbl.info
+AK_PSA	 	1		akpsabnds.tbl.info
+ZONE_BNDS       1               zonebnds.tbl.info
+HPC050_MED      1               hpc050_med.tbl.info
+VAACAR	 	1		vaacarbnds.tbl.info
+ARTCC_BOUNDS    1               artccbnds.tbl.info

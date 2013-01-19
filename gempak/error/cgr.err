@@ -1,0 +1,11 @@
+!	This is the GEMLIB CGR error file
+!
+1       ! nin >= 2, no reduction possible
+-1 	! Too few points to compute the centroid.
+-2	! Area is zero, cannot compute the centroid.
+-3      ! Bad tolerance value ( < 0.0F )
+-4      ! Bad nin value ( < 1 )
+-5	! Invalid pointer in arguments
+-6	! More than one consecutive point at the same location
+-7	! Too few points to determine if concave.
+-8	! Second object is not a polygon

@@ -1,0 +1,23 @@
+!
+!
+!			README
+!
+!
+!  GUITST is a simple and general program whose primary purpose is 
+!  to assist programmers who want to test a relatively independent
+!  module, such as a library module, before it can be used in an 
+!  application program.  It is particularly suitable for testing modules 
+!  contained in a popup window.  All the initializations including 
+!  connection to GEMPAK have been done.  Programmers using GUITST need
+!  to copy everything in the current to his testing directory.
+!
+!  The basic program consists of a drawing canvas and a menubar having
+!  a single item, the 'Exit' button.  All interface between GUITST template
+!  program and user's module is done through user_func() function in
+!  user.c file.  A programmer can test his module by adding item(s) to 
+!  the menubar by calling guitst_AddUserItem() in user_func().  The
+!  programmer also needs to call guitst_Display() to display current
+!  pixmap and guitst_GetCanvasId() to get widget id of the drawing canvas.
+!  
+!  
+

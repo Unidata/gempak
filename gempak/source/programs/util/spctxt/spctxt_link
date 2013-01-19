@@ -1,0 +1,5 @@
+$CC $CFLAGS -c spctxt.c 
+$FC $LDFLAGS -o $OS_BIN/spctxt spctxt.o \
+		$GEMLIB $OS_LIB/textlib.a \
+		$CGEMLIB $GEMLIB -lm
+$RM *.o 

@@ -1,0 +1,8 @@
+!	This is the error file for DCNCON.
+!
++1	! Non-convective sigmet bulletin header error !AS
+-1	! Report is not a sigmet !AS
+-2	! Valid sigmet type not found !AS
+-3	! Valid sigmet start time not found !AS
+-4	! Valid sigmet end time not found !AS
+-6	! No sigmet bounds given !AS

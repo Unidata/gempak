@@ -1,0 +1,129 @@
+! GRIB2  - NCEP Local Parameter Table
+!
+! temperature
+!D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING
+!23|123|123|123|12345678901234567890123456789012|12345678901234567890|123456789012|12345|123456.89
+000 000 192 000 Snow Phase Change Heat Flux      W m**-2              FXSN             0  -9999.00
+!
+! mositure
+!D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING
+!23|123|123|123|12345678901234567890123456789012|12345678901234567890|123456789012|12345|123456.89
+000 001 192 008 Categorical rain                 0,1                  WXTR             0  -9999.00
+000 001 193 008 Categorical freezing rain        0,1                  WXTZ             0  -9999.00
+000 001 194 008 Categorical ice pellets          0,1                  WXTP             0  -9999.00
+000 001 195 008 Categorical snow                 0,1                  WXTS             0  -9999.00
+000 001 196 000 Convective precip rate           kg m**-2 s**-1       CPR--            0  -9999.00
+000 001 197 000 Horizontal moisture divergence   kg kg**-1 s**-1      MCNV             0  -9999.00
+000 001 198 000 Probability of precip, frozen    %                    POPZ             0  -9999.00
+000 001 199 000 Potential evaporation            kg m**-2             PEVAP            0  -9999.00
+000 001 200 000 Potential evaporation rate       W/m**2               PEVP             0  -9999.00
+000 001 201 000 Snow cover                       %                    SCVR             0  -9999.00
+000 001 202 000 Rain frctn of total liquid wtr   -                    FRAIN            0  -9999.00
+000 001 203 000 Rime factor                      -                    FRIME            0  -9999.00
+000 001 204 000 Total column-integrated rain     kg/m**2              TCOLR            0  -9999.00
+000 001 205 000 Total column-integrated snow     kg/m**2              TCOLS            0  -9999.00
+!
+! momentum
+!D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING
+!23|123|123|123|12345678901234567890123456789012|12345678901234567890|123456789012|12345|123456.89
+000 002 192 000 Vertical speed shear             s**-1                VWSH             0  -9999.00
+000 002 193 000 Momentum flux                    N m**-2              MFLX             0  -9999.00
+000 002 194 000 U-component of storm motion      m/s                  USTRM            0  -9999.00
+000 002 195 000 V-component of storm motion      m/s                  VSTRM            0  -9999.00
+000 002 196 000 Drag coefficient                 -                    DRAG             0  -9999.00
+000 002 197 000 Friction velocity                m s**-1              FRCV             0  -9999.00
+!
+! mass
+!D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING
+!23|123|123|123|12345678901234567890123456789012|12345678901234567890|123456789012|12345|123456.89
+000 003 192 000 MSLP (ETA reduction)             Pa                   EMSL            -2  -9999.00
+000 003 193 000 5-wave geopotential height       gpm                  HGHT5            0  -9999.00
+000 003 194 000 Zonal flux of gravity wav stress N/m**2               UGWD             0  -9999.00
+000 003 195 000 Meridional flux of grav wv strss N/m**2               VGWD             0  -9999.00
+000 003 196 000 Planetary boundary layer hght    m                    ZPBL             0  -9999.00
+000 003 197 000 5-wave geopotention hght anomaly gpm                  WAVA5            0  -9999.00
+!
+! short-wave radiation
+!D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING
+!23|123|123|123|12345678901234567890123456789012|12345678901234567890|123456789012|12345|123456.89
+000 004 192 008 Downward short wave rad flux     W m**-2              SWRD             0  -9999.00
+000 004 193 008 Upward short wave rad flux       W m**-2              SWRU             0  -9999.00
+!
+! long-wave radiation
+!D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING
+!23|123|123|123|12345678901234567890123456789012|12345678901234567890|123456789012|12345|123456.89
+000 005 192 008 Downward long wave rad flux      W m**-2              LWRD             0  -9999.00
+000 005 193 008 Upward long wave rad flux        W m**-2              LWRU             0  -9999.00
+!
+! cloud
+!D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING
+!23|123|123|123|12345678901234567890123456789012|12345678901234567890|123456789012|12345|123456.89
+000 006 192 000 Amt of non-convective cloud      %                    CLDA             0  -9999.00
+000 006 193 000 Cloud work function              J/kg                 CWRK             0  -9999.00
+000 006 194 000 Convective cloud efficiency      -                    CUEFI            0  -9999.00
+000 006 195 000 Total condensate                 kg/kg                TCOND            0  -9999.00
+000 006 196 000 Total column-integratd cloud wtr kg/m**2              TCOLW            0  -9999.00
+000 006 197 000 Total column-integratd cloud ice kg/m**2              TCOLI            0  -9999.00
+000 006 198 000 Total column-integrated condens  kg/m**2              TCOLC            0  -9999.00
+000 006 199 000 Ice fraction of total condensate -                    FICE             0  -9999.00
+!
+! thermodynamic stability indices 
+!D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING
+!23|123|123|123|12345678901234567890123456789012|12345678901234567890|123456789012|12345|123456.89
+000 007 192 000 Surface lifted index             K                    LIFT             0  -9999.00
+000 007 193 000 Best (4 layer) lifted index      K                    LFT4             0  -9999.00
+000 007 194 000 Richardson number                -                    RICH             0  -9999.00
+!
+! trace gases
+!D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING
+!23|123|123|123|12345678901234567890123456789012|12345678901234567890|123456789012|12345|123456.89
+000 014 192 000 Ozone mixing ratio               kg/kg                OZMR             0  -9999.00
+000 014 193 000 Ozone concentration              ppb                  OZCON            0  -9999.00
+000 014 193 008 Ozone concentration              ppb                  OZCON            0  -9999.00
+000 014 194 000 Ozone concentration category     -                    OZCAT            0  -9999.00
+!
+! physical atmospheric properties
+!D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING
+!23|123|123|123|12345678901234567890123456789012|12345678901234567890|123456789012|12345|123456.89
+000 019 192 000 Maximum snow albedo              %                    MXSALB           0  -9999.00
+000 019 193 000 Snow-free albedo                 %                    SNFALB           0  -9999.00
+!
+! Miscellaneous
+!D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING
+!23|123|123|123|12345678901234567890123456789012|12345678901234567890|123456789012|12345|123456.89
+!000 191 192 000 Latitude (-90 to +90)            Degree               LATD             0  -9999.00
+!000 191 193 000 East longitude (0 to 360)        Degree               LOND             0  -9999.00
+!
+! Hydrology basic products
+!D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING
+!23|123|123|123|12345678901234567890123456789012|12345678901234567890|123456789012|12345|123456.89
+001 000 192 000 Baseflow-groundwater runoff      kg m**-2             BFGR             0  -9999.00
+001 000 193 000 Storm surface runoff             kg m**-2             R--M             0  -9999.00
+!
+! vegetation/Biomass
+!D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING
+!23|123|123|123|12345678901234567890123456789012|12345678901234567890|123456789012|12345|123456.89
+002 000 192 000 Volumetric soil moisture content fraction             SOIM             0  -9999.00
+002 000 193 008 Ground heat flux                 W m**-2              GHFX             0  -9999.00
+002 000 194 000 Moisture availability            %                    MSAV             0  -9999.00
+002 000 195 000 Exchange coefficient             kg m**-3 m s**-1     SEXC             0  -9999.00
+002 000 196 000 Plant canopy surface water       kg m**-2             CSH2O            0  -9999.00
+002 000 197 000 Blackadar's mixing length        m                    LBLACK           0  -9999.00
+002 000 198 000 Vegetation type (SiB)            -                    VGTYP            0  -9999.00
+002 000 199 000 Canopy conductance               m/s                  CCOND            0  -9999.00
+002 000 200 000 Minimal stomatal resistance      s/m                  RSMIN            0  -9999.00
+002 000 201 000 Wilting point (0.0-1.0)          -                    WILT             0  -9999.00
+002 000 202 000 Solar prm in canopy conduct(0-1) -                    RCS              0  -9999.00
+002 000 203 000 Temp para in canopy conductance  -                    RCT              0  -9999.00
+002 000 204 000 Humidity para in canopy conduct  -                    RCQ              0  -9999.00
+002 000 205 000 Soil moist prm in canopy conduct -                    RCSOL            0  -9999.00
+!
+! Soil products
+!D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING
+!23|123|123|123|12345678901234567890123456789012|12345678901234567890|123456789012|12345|123456.89
+002 003 192 000 Liquid vol soil moist (0.0-1.)   -                    SOILL            0  -9999.00
+!002 003 193 000 No of soil layers in root zone   Index                XXXX             0  -9999.00
+002 003 194 000 Surface slope type               Index                SLTYP            0  -9999.00
+002 003 195 000 Transpiration stress-onset(0.-1.)-                    SMREF            0  -9999.00
+002 003 196 000 Direct evaporation cease (0.-1.) -                    SMDRY            0  -9999.00
+002 003 197 000 Soil porosity (0.0-1.0)          -                    POROS            0  -9999.00

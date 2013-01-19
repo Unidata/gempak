@@ -1,0 +1,28 @@
+AREA    Data area                                                               
+GAREA   Graphics area                                                           
+SATFIL  Satellite image filename(s)                                             
+RADFIL  Radar image filename(s)                                                 
+SFPARM  Surface parameter list                                                  
+DATTIM  Date/time                                                               
+SFFILE  Surface data file                                                       
+COLORS  Color list                                                              
+MAP     Map color/dash/width/filter flag                                        
+LATLON  Line color/dash/width/label/inc                                         
+TITLE   Title color/line/title                                                  
+CLEAR   Clear screen flag                                                       
+PANEL   Panel loc/color/dash/width/regn                                         
+DEVICE  Device|name|x size;y size|color type                                    
+PROJ    Map projection/angles/margins|drop flag                                 
+FILTER  Filter data factor                                                      
+TEXT    Size/fnt/wdth/brdr/N-rot/just/hw flg                                    
+LUTFIL  Enhancement lookup table filename                                       
+STNPLT  Txtc/txt attr|marker attr|stnfil                                        
+CLRBAR  Color/ornt/anch/x;y/ln;wd/freq                                          
+CNTRPRM Parameter to contour
+GAMMA   Convergence parameter
+WEIGHT  Barnes Weighting parameter
+LINE    Line color/type/width
+CONTUR  subbox/smooth
+NPASS   Number of barnes passes
+CINT    contour interval
+IMCBAR  Color/ornt/anch/x;y/ln;wd/freq|text_info

@@ -1,0 +1,215 @@
+                         GEMPAK MAP FILES
+
+
+GEMPAK map files are stored as direct access, packed binary files in
+a GEMPAK Standard Format (GSF).  This form was chosen for compactness
+and relatively rapid access.
+
+In addition, a Sequential Standard Format (SSF) is defined for storing
+maps as ASCII sequential files.  SSF files are used to create new maps,
+edit existing map files and transfer map files between computer
+systems.  Since these are ASCII files, they may be created or changed
+using a text editor.  The SSF files use the same format as the NCAR
+sequential map file.
+
+In both the GSF and SSF formats, latitude and longitude are given in
+degrees.  West longitude is negative; all longitudes must be between
+-180 and +180 degrees.  No map segment should cross the International
+Date Line.
+
+FORMAT OF THE SSF FILE:
+
+An SSF file contains map segments, each of which has a series of
+latitude / longitude points to be connected when the map is drawn.
+Each segment contains the following information:
+
+        NP2          INTEGER      Number of points (np) * 2
+        RMXLT        REAL         Maximum latitude in segment
+        RMNLT        REAL         Minimum latitude in segment
+        RMXLN        REAL         Maximum longitude in segment
+        RMNLN        REAL         Minimum longitude in segment
+        PTS (NP2)    REAL         LAT1 LON1 ... LATnp LONnp
+
+These segments are written and read with the FORTRAN format statement:
+
+        FORMAT  ( I4, 14X, 6F9.3, 8X, / ( 8F9.3, 8X ) )
+
+The maximum number of points which may be contained in any segment
+is 3000.
+
+
+FORMAT OF THE GSF FILE:
+
+These files are direct access file with a recordsize of 128 words.
+The data is written in blocks of two records or 256 words.  The first
+block is the file header, followed by data blocks.  Map segments are
+packed into the data blocks; no map segment spans blocks.
+
+The file header has 181 INTEGER*2 words containing:
+
+        NMBLK        INTEGER*2    Total number of blocks
+        LATPTR1      INTEGER*2    Latitude pointer for 90 degrees
+        LATPTR2      INTEGER*2    Latitude pointer for 89 degrees
+          ...
+        LATPTR180    INTEGER*2    Latitude pointer for -89 degrees
+
+The GSF files are sorted by maximum latitude.  The LATPTR array
+contains the first block to use given the maximum latitude on the
+plot.
+
+These INTEGER*2 values may be changed to INTEGER*4 if required.
+However, the changes must be made in the programs GSFSSF and SSFGSF
+described below, as well as in GDRMAP which is the GEMPLT subroutine
+used to draw maps.
+
+The data blocks contain only 4-byte integer or real words.  Each
+data block contains:
+
+        NMSEG        INTEGER      Number of segments
+        -----        ------       Unused
+        NP1          INTEGER      Number of points in segment 1
+        RMNLT1       REAL         Minimum latitude
+        RMNLN1       REAL         Minimum longitude
+        RMXLT1       REAL         Maximum latitude
+        RMXLN1       REAL         Maximum longitude
+        -----        ------       Unused
+        RLAT1 (1)    REAL         Latitude of point 1
+        RLON1 (1)    REAL         Longitude of point 1
+         ...
+        RLAT1 (np1)  REAL         Latitude of point np1
+        RLON1 (np1)  REAL         Longitude of point np1
+        NP2          INTEGER      Number of points in segment 2
+        RMNLT1       REAL         Minimum latitude
+         ...        
+
+
+CONVERTING A GSF TO AN SSF FILE:
+
+The program GSFSSF, which is in $GEMMAPS/programs, can be used to
+convert any GSF file to an SSF file.  The user is prompted for the
+existing GSF file name and a name for the SSF file to be created.
+
+
+CONVERTING AN SSF FILE TO A GSF FILE:
+
+The program SSFGSF, also in $GEMMAPS/programs, can be used to convert
+an SSF file to a GSF file.  The user is prompted for the existing SSF
+file name and a name for the GSF file to be created.  The user can also
+enter a latitude / longitude window to subset the data.  Any points
+outside the window will be eliminated from the output file.  However,
+no clipping is done.  The minimum and maximum latitude and longitude
+stored with each segment will be recomputed internally, so the
+values in the SSF file need not be correct.  The intermediate files,
+DAFIL.INT and SEQFIL.INT, are used by the program and may be deleted
+after completion.
+
+
+NAMING CONVENTIONS FOR GEMPAK MAP FILES:
+
+The map files are named by concatenating the resolution, map 
+boundaries, and area with the three-letter source file type.  For
+example, the medium-resolution political world map from Goddard
+Space Flight Center is called MEPOWO.GSF.
+
+  RESOLUTION         FEATURES             AREA           SOURCE
+
+    ToP		POlitical             WOrld             GSFc
+    HIgh	COastline             NW quadrant       NWS
+    MEdium	REgional              NE quadrant       CIA
+    LOw		CouNty                SE quadrant       USGeol survey
+    MiXed	CountrY               SW quadrant       NCeP
+		RiVers                North Hemisphere  RFC
+		InterState highways   South Hemisphere  CPC
+		U.s. Highways         US
+		State Highways        Us Oceans
+		RoaDs                 North America
+		River Forecast Cntrs  Atlantic North
+		County Watch Areas    Atlantic1
+		ZoNes                 Atlantic2
+		High Seas             Atlantic3
+		OffShore              Pacific North
+		Forecast Bounds       Pacific East
+		AViation              Pacific Surface
+		Flight Info region    Pacific1
+		Convective Sigmet Reg Pacific2
+		Tpc High seas         Pacific3
+		Tpc Sigmets           MarylanD
+		Tpc surface Bounds    Basic Weather
+		Tpc surface Analysis  Medium Range
+		Tpc aViation bounds   Qpf Verification
+		Continental Divide    Western Region
+		Mar pred ctr Offshore Arkansas-Red Basin
+		River fcst ctr Basins Lower Mississippi
+		Climate Zones         Middle Atlantic
+		Palmer climate Zones  Missouri Basin
+		STates                North Central
+		LaKes                 NorthEast
+                PRovinces             OHio
+                CORRidor              SouthEast
+                                      West Gulf
+				      AlasKa
+                                      CaNada
+
+The maps from GSFC were obtained for GEMPAK Version 1.0.  The history
+of these maps is unknown.  The CIA map files were created from a
+subset of the CIA map database.  The United States Geological Survey
+maps were converted from the USGS databases.  The NWS maps were
+obtained from the NWS/Modernization Systems Implementation Group.  The
+NCEP map files were developed at the NWS/National Centers for
+Environmental Prediction.  The RFC map files were provided by the
+Arkansas-Red Basin River Forecast Center.
+
+There are 5 maps designed to be used for the seamless surface analysis
+which shows the area of responsibility for the Tropical Prediction 
+Center, Marine Prediction Center and the Hydrometeorological Prediction 
+Center. Also, these maps have the numbers 050 and 215 in their names 
+which refer to the amount of time after the analysis time; 50 minutes 
+past and 2 hours and 15 minutes past the analysis time.
+
+
+CIA MAP FILE WITH NAMES:
+
+A subset of the CIA map database which has a geographical name attached 
+to each record is included in the complement of GEMPAK maps.  The names
+in this file were originally added by Joseph Fulson-Woytek at Goddard
+Space Flight Center.  The map file name is:  cia.nam.
+
+The program NAMSSF is included to convert a subset of this database
+into a sequential format file (SSF).  The program will prompt for the
+following inputs:
+
+     AREA:     This may be any geographic name or a range of
+               records specified by the start and stop records separated
+               with a "-".
+
+     REGION:   A character string listing the regions to be used (a
+               blank defaults to all) where the valid regions are:
+
+                   C  -  Continental borders
+                   I  -  Islands
+                   L  -  Lakes
+                   S  -  State borders
+                   N  -  National borders
+                   R  -  Rivers
+                   T  -  Tectonic plates
+                   M  -  Miscellaneous
+
+Example:  Create a map containing only Mexico borders
+
+          AREA:    mexico
+          REGION:  cn
+
+          Note that adding S will include "New Mexico" and I will 
+          include "Gulf of Mexico Islands".
+
+The program NAMPLT will plot individual records listing the record
+and waiting for a <CR> after each record.  This can be used for
+debugging the map file.  GPMAP must be run first to select the
+graphics area and device.
+
+The files doc.nam and rec.nam include the detailed documentation
+and a list of records for the map elements, respectively.  If changes
+are made to the data base, they should be returned to the GEMPAK
+developers in order to be included in the original dataset from which
+the map file was created.
+

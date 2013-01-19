@@ -1,0 +1,7 @@
+     ECHO
+ 
+     ECHO specifies whether to plot the grid box intesities. A value of 0
+     specifies no plotting of echoes; 1 specifies plotting only those
+     echoes from radars in precipitation mode; 2 specifies plotting
+     of echoes from radars in both precipitation and clear air mode.
+

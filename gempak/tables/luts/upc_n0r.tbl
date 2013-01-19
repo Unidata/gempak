@@ -1,0 +1,27 @@
+! upc_n0r.tbl
+!
+! Color table for NIDS Reflectivity composite
+!
+!Color name    Abrev   Red  Green   Blue  X color name
+                         0      0      0
+                         0      0     60
+                         0      0     80
+                         0      0    100
+                         0      0    120
+                         0      0    140
+                         0      0    160
+                         0    236    236
+                         0    160    246
+                        60     60    255
+                         0    255      0
+                         0    200      0
+                         0    144      0
+                       255    255      0
+                       231    192      0
+                       255    144      0
+                       255      0      0
+                       214      0      0
+                       192      0      0
+                       255      0    255
+                       153     85    201
+                       255    255    255

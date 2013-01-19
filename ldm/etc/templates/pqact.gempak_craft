@@ -1,0 +1,22 @@
+# CRAFT stored as raw bz2 for GEMPAK
+#
+# file the raw data to a temporary file beginning with "." so that autoupdate GUIs don't
+# get ugly partial volume plots
+CRAFT	^L2-BZIP2/(....)/([0-9][0-9][0-9][0-9][0-1][0-9][0-3][0-9])([0-2][0-9][0-5][0-9])([0-9][0-9])/([0-9]*)/
+	FILE	data/gempak/nexrad/craft/\1/.\1_\2_\3_\4
+#
+# Done to move file after last record is received "/E" to prevent
+# autoupdate from seeing partially received files (dccraft_move is a shell script copied from $NAWIPS/bin/scripts)
+CRAFT	^L2-BZIP2/(....)/([0-9][0-9][0-9][0-9][0-1][0-9][0-3][0-9])([0-2][0-9][0-5][0-9])([0-9][0-9])/[0-9]*/[0-9]*/E
+	EXEC	util/dccraft_move data/gempak/nexrad/craft/\1/.\1_\2_\3_\4 data/gempak/nexrad/craft/\1/\1_\2_\3
+#
+#
+# CRAFT stored uncompressed (not needed for GEMPAK 5.7.2p2 and later)
+#CRAFT	^L2-BZIP2/(KFTG)/([0-9][0-9][0-9][0-9][0-1][0-9][0-3][0-9])([0-2][0-9][0-5][0-9])([0-9][0-9])
+#	PIPE	decoders/dcnexr2 -s \1 -d /dev/null data/gempak/nexrad/craft_uncompressed/\1/\1_\2_\3
+#
+#
+# New Level2 format: ( S=Start, I=Intermediate, E=End)
+# L2-BZIP2/NOP3/20070917130409/11/1/S/V04/0
+# L2-BZIP2/NOP3/20070917125921/10/49/I/V04/0
+# L2-BZIP2/NOP3/20070917125921/10/50/E/V04/0

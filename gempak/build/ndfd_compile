@@ -1,0 +1,22 @@
+echo COMPILING NDFD LIBRARIES
+#########################################
+echo COMPILING MDLG2DEC
+echo INSTALLING as \"$OS_LIB/libmdlg2dec.a\"
+$RM $OS_LIB/libmdlg2dec.a
+cd $NAWIPS/extlibs/NDFD/mdlg2dec 
+$FC $FFLAGS -c *.f
+$CC $CFLAGS -c *.c
+$AR $ARFLAGS $OS_LIB/libmdlg2dec.a *.o
+$RM *.o
+#########################################
+echo COMPILING MDLG2ENC
+echo INSTALLING as \"$OS_LIB/libmdlg2enc.a\"
+$RM $OS_LIB/libmdlg2enc.a
+cd $NAWIPS/extlibs/NDFD/mdlg2enc
+$FC $FFLAGS -c *.f
+$CC $CFLAGS -c *.c
+$AR $ARFLAGS $OS_LIB/libmdlg2enc.a *.o
+$RM *.o
+#################################################
+echo "COMPILATION OF NDFD LIBRARIES IS COMPLETE."
+echo "------------------------------------------"

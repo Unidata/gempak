@@ -1,0 +1,106 @@
+!	This is the GEMPLT error file.
+!
+!	The file must have the error number in the first four columns.
+!	The message to be printed is found after the !.
+!	When this file is modified, corresponding modifications must
+!	be made to file ERROR.PRM.
+!
+  +3      ! NEVENT - This device does not support events.
+  +2      ! NDWTBL - No dwell table, use default
+  +1      ! NCTRLP - Broke out of contour loop.
+   0      ! NORMAL - Normal.
+  -1      ! NMBRER - Mailbox read.
+  -2      ! NMBWER - Mailbox write.
+  -3      ! NEXQUO - Exceed quota.
+  -4      ! NFNCCD - Invalid function code.
+  -5      ! NOMFIL - Invalid map file defined -- default used.
+  -6      ! NOCORD - Invalid coordinate system.
+  -7      ! NOBUFF - G buffer length exceeded.
+  -8      ! NDVICE - Device not set.
+  -9      ! NDCHAR - No device characteristics.
+ -10      ! NIVIEW - Invalid view region.
+ -11      ! NOLUN - Invalid logical unit number.
+ -12      ! NIMODE - Invalid mode.
+ -13      ! NINVAL - Invalid input parameter.
+ -14      ! NOGRAF - No graph defined.
+ -15      ! NIPROJ - Invalid projection specified.
+ -16      ! NIPBND - Invalid projection bounds.
+ -17      ! NIPOSN - Invalid position in projection.
+ -18      ! NIGDSZ - Invalid grid size.
+ -19      ! NOPFIL - No plot file.
+ -20      ! NGINIT - GINITP has not been initialized.
+ -21      ! NODEVC - Invalid device selected.
+ -22      ! NICOLR - Invalid color name selected.
+ -23      ! NOCOLR - Color component cannot be set.
+ -24      ! NOCTBL - No color table.
+ -25      ! NICNUM - Invalid color number.
+ -26      ! NOGFIL - No graphics file.
+ -27      ! NSATNV - Satellite navigation not defined.
+ -28      ! NOPNTS - Too few points to fit curve.
+ -29      ! NIPNTS - Too many points to fit curve.
+ -30      ! NOMONO - Points are not monotonic.
+ -31      ! NOIMGF - Invalid satellite image file.
+ -32      ! NONAVF - Invalid satellite navigation file.
+ -33      ! NOMAPP - No plotable points in map file.
+ -34      ! NOBNDS - No grids points in graphics area.
+ -35      ! NMAPFR - Map file read error.
+ -36      ! NLBLEX - Number of labels exceeds 530.
+ -37      ! NILOGP - Invalid LOG axis defined.
+ -38      ! NNPNTS - Too many points for polygon fill.
+ -39      ! NWSIZE - Device size has changed.
+ -40      ! NOINIT - GINITP has not been called.
+ -41      ! NGTPNT - Error getting cursor point
+ -42      ! NOMETA - Error opening metafile
+ -43      ! NMAXFR - Too many frames
+ -44      ! NMDATA - Too much data for metafile
+ -45      ! NWINDW - Too many windows.
+ -46      ! NCLRAL - Can not allocate read/write colors.
+ -47      ! NIWNAM - Invalid window name.
+ -48      ! NIMGFL - Can not open image file.
+ -49      ! NIMGTBL - Can not find image table file.
+ -50      ! NIMGENT - Can not find the image type entry.
+ -51      ! NWUSED - Window is already in use.
+ -52      ! NMEMRY - Memory allocation failure.
+ -53      ! BADATOM - Error in interning an atom of xw.
+ -54      ! NSRDAT - Can not get shared data.
+ -55      ! NGRAFCOL - Not enough graphic colors.
+ -56      ! NIMGTYP - Unknow image type.
+ -57      ! NICBANK - Invalid color bank ID.
+ -58      ! NFILENM - File name is too long.
+ -59      ! NIMGCOL - Not enough image colors.
+ -60      ! NIMCORD - Invalid image display coordinates.
+ -61      ! NIMGFMT - Invalid image format.
+ -62      ! ZEROCB - Zero number of colors specified.
+ -63      ! NIDSIZ - Invalid device size.
+ -64      ! NCBALOC - Color bank not allocated.
+ -65      ! NEWWIN - New window was created.
+ -66      ! NOPSFL - Error opening PostScript file.
+ -67      ! NOCLOS - Cannot close last window.
+ -68      ! NOFNTFL - No font file found
+ -69      ! NOBITMAP - No open bitmap found
+ -70      ! NORDOPN - Could not open raster for read
+ -71      ! NOWROPN - Could not open 6 bit for write
+ -72      ! NOPROD - No matching product in table
+ -73      ! NOTBL - Product table not found
+ -74      ! NOEDGE - Missing Edge table
+ -75      ! NOISCHD - No matching record in ISCHED array
+ -76      ! BADSUB - Bad or invalid subset requested
+ -77      ! BADPXV - Bad min/max pixel values in image table.
+ -78      ! NOUTFL - Cannot open UTF output file
+ -79      ! NAFSMX - Maximum size for AFOS file exceeded
+ -80      ! NROAM - Roam window out of pixmap bounds 
+ -81      ! NNMAPPT - Too many points in map
+ -82      ! NNMAPPL - Too many polygons in map
+ -83      ! NDISP - DISPLAY not set or invalid
+ -84      ! MOTIF - MOTIF version no longer supported
+
+-101      ! NOPROC - Nonexistent executable.
+-102      ! NSYSTM - System service error.
+-103      ! NSTRER - String error.
+-104      ! NNODEV - Nonexistent device.
+-105      ! NDEVNA - Device is not allocated.
+-106      ! NNOOWN - Device allocated by another process.
+-107      ! NXDBUF - Device buffer length exceeded.
+
+-120      ! FLENGF - Filename extension not .gif
+-121      ! NOCWIN - No current X Window displayed.

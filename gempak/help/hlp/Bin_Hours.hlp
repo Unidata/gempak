@@ -1,0 +1,65 @@
+                                BIN HOURS
+		
+Time binning of observational data has been added to NMAP.  The data types 
+that are available for time binning are: surface (SFC), surface-forecast (SFF),
+upper air observations (SND) or upper air forecast (SNF).  For all other 
+data types, the time binning button is insensitive to any action on it.
+
+
+The datatype table $GEMPAK/tables/config/datatype.tbl contains the BIN HOURS 
+in the ninth column. The entry is given as, T/BH:BM/AH:AM/M, where:
+                        T     - time binning 'ON' or 'OFF'
+                        BH:BM - hours:minutes before current time
+                        AH:HM - hours:minutes after current time
+			M     - only most recent flag 'ON' or 'OFF'
+The left most entry T for BIN HOURS is whether time binning is on or off by 
+default.  The next subfield BH:BM represents the number of hours:minutes
+'before' the current time to include in the binning.  The next subfield
+gives the number of hours:minutes 'after' the current time to use in the
+binning. Both the before and after bin hours:minutes are positive numbers.
+The last subfield M is a flag indicating whether only the most recent data is
+to be plotted.
+
+The 'Data Selection Window' in NMAP has a new button 'Bin Source' and a check 
+box to the left of this button.  If a data type is one of the four listed 
+above, the check box is active even though the 'Bin Source' button is 
+insensitive. When the check box is checked, the 'Bin Source' button is made 
+sensitive.  Selecting this button pops up a new GUI, 'Source Bin' and the 
+user may change the number of hours and minutes before the current time to
+display on a single frame and the number of hours and minutes after the
+current time (provided data is available) to display on the current frame. 
+The default setting for the text values are retrieved from the datatype.tbl 
+and the time before and time after values are displayed in their respective 
+text boxes in the GUI. The user may then edit the hours and minutes displayed
+in the text boxes.  There are also 4 buttons at the bottom of this GUI. Their
+actions are:
+
+    a) If there are no changes to the text boxes:
+        i. 'Accept' - The current values in the before and after values are 
+            not changed
+       ii. 'Default' - The default values for Hours/Minutes Before and
+	   Hours/Minutes After are read  from the datatype.tbl. 
+      iii. 'Cancel' -  The Hours and Minutes Before and Hours and Minutes
+	    After values from when the pop up first came up are used. Any
+	    changes made are ignored. 
+       iv. 'Help' - The help file for Bin Source is brought up.
+
+    b) If there are changes to the text boxes:
+        i. 'Accept' - The new before and after values are used.
+       ii. 'Default' - The default values for Hours/Minutes Before and
+	   Hours/Minutes After are read from the datatype.tbl. 
+      iii. 'Cancel' - The previous before and after values are restored. 
+       iv. 'Help' - The help file for Bin Source is brought up.
+
+
+Finally, the values for the time binning on/off flag, most recent only flag,
+hours/minutes to bin before and after the current time may be saved to an SP
+file.  The new SPF data attribute line looks like:
+	'<loop1_source1_timbin>	T/BH:BM/AH:AM/M', 
+
+where:
+     T     - time binning 'ON' or 'OFF'
+     BH:BM - hours:minutes before current time
+     AH:AM - hours:minutes after current time
+     M	   - only most recent flag 'ON' or 'OFF'
+

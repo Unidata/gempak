@@ -1,0 +1,37 @@
+!
+! Restore File : 850mb_wnd
+!
+! Log:
+! J.W. Carr/HPC 	 4/98	Initial creation
+!
+GDATTIM fall
+GLEVEL  850
+GVCORD  pres
+PANEL   0
+SKIP    0
+SCALE   0
+GDPFUN  kntv(wnd)
+TYPE    b
+CONTUR  1
+CINT    
+LINE    
+FINT    
+FLINE   
+HILO                                                                            
+HLSYM                                                                           
+CLRBAR  
+WIND    18/.8
+REFVEC  
+TITLE   5/-1/~ @ WIND!
+TEXT    1/21//hw                                                                
+CLEAR   yes                                                                     
+STNPLT                                                                          
+SATFIL                                                                          
+RADFIL                                                                          
+STREAM                                                                          
+POSN    4                                                                       
+COLORS  2                                                                       
+MARKER  2                                                                       
+GRDLBL  5                                                                       
+LUTFIL  none
+FILTER  no

@@ -1,0 +1,39 @@
+!
+! Restore File : 300-700_q-vctrs,thkn
+!
+! Log:
+! D.W.Plummer/NCEP	 2/97	Initial creation
+! D.W.Plummer/NCEP	 8/97	Added FILTER parameter and changed TEXT value
+! J. Carr/HPC            7/99   Turned filter off and skip on.
+!
+GDATTIM fall
+GLEVEL  300:700
+GVCORD  pres
+PANEL   0                                                                       
+SKIP    0/2;2
+SCALE   -1/0
+GDPFUN  sm5s(ldf(hght))//ldfh!smul(4e9,qvec(ldfh,sm5v(vlav(geo))))
+TYPE    c                    !a
+CONTUR  1                                                                       
+CINT    6
+LINE    22/1/3
+FINT    
+FLINE   
+HILO    3/W;K
+HLSYM   
+CLRBAR  
+WIND    27/.1/2//.5
+REFVEC  9
+TITLE   1/-1/~ @ Q-VECTORS and THICKNESS !0
+TEXT    1/22/2/hw
+CLEAR   yes                                                                     
+STNPLT                                                                          
+SATFIL                                                                          
+RADFIL                                                                          
+STREAM                                                                          
+POSN    4                                                                       
+COLORS  2                                                                       
+MARKER  2                                                                       
+GRDLBL  5                                                                       
+LUTFIL  none
+FILTER  no

@@ -1,0 +1,22 @@
+!	This is the error file for GDPROF.
+!
+ +3	! WARNING:  !AS not found.  CONTINUING---
+ +2     ! Surface value of GVCORD is not available.
+ +1	! WARNING.  There are no contour levels.
+ -1	! Fatal error initializing TAE.
+ -2	! Fatal error reading TAE parameters.
+ -3	! Fatal error initializing GEMPLT.
+ -4	! Input for CXSTNS is invalid.
+ -5	! Input for GDATTIM is invalid.
+ -6	! Input for GVCORD is invalid.
+ -7	! Input for PTYPE is invalid.
+ -8	! Graph coordinates are incorrectly defined.
+ -9	! No points found for cross section.
+-10     ! LOG is not possible for this vertical coordinate.
+-11     ! Cross-section coordinates are invalid.
+-12     ! No levels--check input for GDATTIM and GVCORD.
+-13	! @LEVEL in-line parameter is not allowed.
+-14     ! %VCORD in-line parameter is not allowed.
+-18     ! GVECT cannot be evaluated.
+-19     ! GFUNC cannot be evaluated.
+-20     ! Input for YAXIS is invalid.

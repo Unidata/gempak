@@ -1,0 +1,60 @@
+#!/bin/sh
+if  [ $# != 0 ]
+then
+  version=$1
+  path=$NAWIPS/extlibs/bzip2/$version
+  if  [ -d $path ]
+  then
+    echo "----->  BUILDING bzip2 LIBRARY $version"
+    cd $path
+
+#=========================================================
+
+#  Initialize "influential environment variables"
+
+    export  FC=""               # Fortran compiler command
+    export  F77=""              # Fortran 77 compiler command
+    export  F90=""              # Fortran 90 compiler command
+    export  CPP=""              # C prepocessor
+    export  CXX=""              # C++ compiler command
+    export  CXXCPP=""           # C++ preprocessor
+    if [ $OS = "HPUX" ]
+    then
+      export  CFLAGS="+DA1.1"	# C compiler flags
+    else
+      export  CFLAGS=""
+    fi
+    export  FCFLAGS=""		# Fortran compiler flags
+    export  FFLAGS=""		# Fortran 77/90 compiler flags
+    export  LDFLAGS=""          # linker flags
+    export  F90FLAGS=""         # Fortran 90 compiler flags
+    export  CXXFLAGS=""         # C++ compiler flags
+    export  CPPFLAGS="-DNDEBUG" # C/C++ preprocessor flags
+    export  PKG_CONFIG="$OS_BIN/pkg-config"
+
+#=====================================================================
+# Clean up after any previous make
+    if  [ -f example ]
+    then
+      make -s clean
+    fi
+
+# Compile, check, and install the package 
+    echo "----->  COMPILING bzip2 LIBRARY $version"
+    make -s
+    echo "----->  INSTALLING bzip2 LIBRARY as \"$OS_LIB/libbz2.a\""
+    make -s install PREFIX=$OS_ROOT
+
+# Clean up after this make
+    make -s clean
+    touch $OS_LIB/bzip2_$version
+
+############################################################
+    echo "----->  CREATION OF bzip2 LIBRARY $version IS COMPLETE."
+    echo "        ============================================"
+  else
+    echo "Directory \"$path\" does not exist!"
+  fi
+else
+  echo "Please include a valid bzip2 library version; e.g., v1.0.5"
+fi

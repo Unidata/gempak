@@ -1,0 +1,19 @@
+
+                             DWELL RATE
+
+
+The "Dwell Rate" pop-up sets the speed of animation.  This pop-up is activated 
+in NMAP with a selection from the "Option" menu.  In NSAT, NTRANS, and NAFOS it 
+is activated from the "Tool" menu or it may be invoked by pressing <ctrl-D>.
+
+The pop-up provides for five pre-set speeds as well as slider bars for an even 
+greater flexibility in setting the animation speeds.  Click on one of the 
+pre-set speeds and the three sliders adjust to the corresponding settings.  
+Alternately, adjust the slider bars individually by dragging them using the 
+mouse.  The numbers to the right of the slider bars indicate the dwell times 
+in seconds.
+
+The slider bar labeled "first" controls the length of pause on the first frame 
+in an animation sequence.  The "intermediate" slider bar controls the length of 
+pause between frames.  The "last" slider bar controls the length of pause on 
+the last frame.  Each slider bar has a range of 0.01 to 3 seconds per frame.

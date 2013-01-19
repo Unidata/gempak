@@ -1,0 +1,51 @@
+*********************************************************************************
+*										*
+*	the following changes were made to original fortran90 mdl grib2 	* 
+*	decoder subroutines to make them usable with f77 compiler		*
+*										*
+*********************************************************************************
+*										*
+	rdiee.f:
+		changed comment symbol from '!' to 'C'
+
+	unpk_refer.f:
+		substituted CASE statement with equivalent IF-ELSEIF-ENDIF
+		statement
+
+	unpksecdif.f:
+		1. substituted CASE statement with equivalent IF-ELSEIF-ENDIF
+		statement
+		2. explicitly set the dimention of array IWORK to 800000
+
+	unpk_sect2.f:
+		1. explicitly set the dimention of array IBMP to  100000
+		2. explicitly set the dimention of array RTEMP to 100000
+
+	unpk_sect3.f:
+                substituted CASE statement with equivalent IF-ELSEIF-ENDIF
+                statement
+
+	unpk_sect4.f:
+                substituted CASE statement with equivalent IF-ELSEIF-ENDIF
+                statement
+
+	unpk_sect7.f:
+                substituted CASE statement with equivalent IF-ELSEIF-ENDIF
+                statement
+
+	unpkcmbm.f:
+                substituted CASE statement with equivalent IF-ELSEIF-ENDIF
+                statement
+
+	unpk_cmplx.f:
+                - introduced new parameter LXSIZE for the size of the arrays:
+                1. JMIN 
+                2. LBIT
+                3. NOV
+                - set the parameter LXSIZE to 50000
+                - introduced new error code of 706 if the IS5(32) .GT. LXSIZE
+
+	unpklxbm.f:
+                1. substituted CASE statement with equivalent IF-ELSEIF-ENDIF
+                statement
+		2. replaced CYCLE statement with GOTO 1111 statement

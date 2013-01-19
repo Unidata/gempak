@@ -1,0 +1,27 @@
+export GEMPARM=$GEMPAK/parm
+
+pdfbld $GEMPDF SNCFIL
+###########################
+pdfbld $GEMPDF SNCROSS
+###########################
+pdfbld $GEMPDF SNDELT
+###########################
+pdfbld $GEMPDF SNDSLIST
+###########################
+pdfbld $GEMPDF SNEDIT
+###########################
+pdfbld $GEMPDF SNHODO
+###########################
+pdfbld $GEMPDF SNLIST
+###########################
+pdfbld $GEMPDF SNMAP
+###########################
+pdfbld $GEMPDF SNMOD
+###########################
+pdfbld $GEMPDF SNPROF
+###########################
+pdfbld $GEMPDF SNSTNS
+###########################
+pdfbld $GEMPDF SNTSER
+###########################
+echo ALL THE SN PDFs ARE BUILT.

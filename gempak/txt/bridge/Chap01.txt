@@ -1,0 +1,31 @@
+
+
+			      Overview
+
+
+1.1  Introduction
+
+The GEMPAK Bridge Programmer's Guide is a manual for software developers
+that write GEMPAK decoders.
+
+Other books in the GEMPAK documentation set include:
+
+  GEMPAK User's Manual		information on running GEMPAK programs
+  GEMPLT Programmer's Guide	information helpful in calling GEMPAK
+				    graphics subroutines or writing
+				    GEMPAK graphics programs and device
+				    drivers
+  GEMLIB Programmer's Guide	information on general GEMPAK functions
+				    helpful in writing stand-alone
+				    programs that use GEMPAK subroutines
+				    and functions
+  GEMPAK Installation Guide	information on bringing up GEMPAK at a
+				    site
+
+
+1.2  Common Features
+
+GEMPAK decoders share many functions.  The shared logic is included in
+the DC library.  A typical GEMPAK decoder is a combination of
+subroutines from a decoder-specific library (such as RS, RU, MT, and so
+on), subroutines from the DC library, and subroutines from GEMLIB.

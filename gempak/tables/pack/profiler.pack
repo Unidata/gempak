@@ -1,0 +1,18 @@
+!PROFILER.PACK
+!
+!This table is the packing table used to create a merged sounding file.
+!
+!*Log:
+!
+!
+HGHT     0.  16250.   1.
+PMOD     1.      2.   1.
+PFQC     0.     12.   1.
+PNM1     0.    100.   1.
+DRCT     0.    360.   .01
+SPED     0.    200.   .01
+SIGS     0.     50.   .01
+PNM2     0.     50.   .01
+POWR     0.    100.   .1
+WWND  -200.    200.   .01
+SIGW     0.     50.   .01

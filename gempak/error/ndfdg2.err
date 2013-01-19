@@ -1,0 +1,31 @@
+!	NDFDG2 error file
+!
+ +5	! GRIB version 0 cannot be decoded.
+ +4	! Parameter not found in table: !AS
+ +3	! GRIB2 unpacking warning !AS returned from unpk_grib2. 
+ +2	! Vertical coordinate !AS not supported.
+ +1	! WARNING: This grid is too large for GEMPAK programs.
+ -1	! Fatal error initializing TAE.
+ -2	! Fatal error reading TAE parameters.
+ -3	! Fatal error initializing GEMPLT.
+ -4	! Grid Definition Template number !AS not supported. 
+ -5	! Grid area !AS is invalid.
+ -6	! Grid size is invalid.
+ -7	! The grid file name may not be blank.
+ -8	! Source of Grid Definition !AS not supported.
+ -9	! Fatal GRIB2 unpacking error !AS returned from unpk_grib2. 
+-10	! Input for GEMPAK output file is blank.
+-11	! Error opening GEMPAK grid file.
+-12	! Error creating GEMPAK grid file.
+-13	! Discipline number !AS not supported. 
+-14	! Data type !AS not supported.
+-15	! Error opening GRIB file.
+-16	! Error getting next message.
+-17	! Error setting date/time.
+-18	! Invalid bitmap specification.
+-19	! Error reading GRIB file.
+-20	! Invalid input for GAREA.
+-21	! Grid is too large.
+-22	! Local section present, but not supported.
+-23	! No data present in grib message.
+-24	! GSKIP too large for size of grid.

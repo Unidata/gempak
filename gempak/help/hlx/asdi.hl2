@@ -1,0 +1,55 @@
+     ASDI
+
+     ASDI is the ending valid time for ASDI data, the mode of the display,
+     the time increments (in minutes going back from the ending time) and
+     the corresponding colors for the ASDI data.
+
+	End time|Mode|DepArr|( time increments/colors or height ranges/colors)|
+            time limit|SITES
+
+     The ending time is the latest time for which the ASDI data will be 
+     plotted.  The end time is given as a GEMPAK date/time string.
+
+     Where Mode can be set to "T" for time, "H" for height.
+     Where DepArr can be set to "D" for Departure, "A" for Arrival, "B"
+      for both.  Default = "D".
+     
+     If the Mode is "T", the time increments and colors may each be specified
+     using either a list separated by semicolons or a range in the form 
+     first-last-increment. Time increments are given in minutes going back
+     sequentially from the ending time.  The number of time increments must be 
+     the same as the number of colors.  If no time increment and color are 
+     given, a single time increment of 5 minutes with a default color of red 
+     will be used. If the range format is used for the time, an increment must
+     be specified. If the range format is used for the color and an increment
+     is not specified, an increment of one is used.
+     
+     If the Mode is "H" for height, the height range and colors may each be 
+     specified using a list separated by semicolons. Height ranges are in
+     hundreds of feet, separated by a "dash". The number of height ranges
+     must be the same as the number of colors.  Plotting is up to the time
+     limit specified in minutes.
+     
+     If SITES is specified, it may be specified as ALL, or a combination of
+     individual 3-letter site IDs separated by a ";". Valid site IDs are MCI,
+     ATL, ORD, LAX, DFW, PHX, DEN, LAS, IAH, MSP, DTW, JFK, SFO, EWR, MIA,
+     MCO, SEA, PHL, CLT, BOS, LGA, BWI, SLC, FLL, IAD, MDW, TPA, SAN, DCA,
+     MEM.  The default is to plot ALL sites.
+     
+     Examples:
+
+
+	ASDI  = 120501/0000|T|B|5;10;20;30/2;17;5;3
+
+ 		ASDI data for 120501/2355 to 120501/0000 will be plotted
+ 		in red; for 2350 to 2354 in orange; for 2340 to 2349 in yellow;
+ 		and for 2130 to 2340 in green.
+        
+        ASDI =  120501/0000|H|B|050;100;150;200;250;300;350;400;450/
+                12;2;16;17;19;22;23;24;27|12
+                
+                ASDI data Height Representation for Heights of 0 to 45000
+                feet in increment of 5000 feet, in colors of
+                pink, red, dark orange, orange, yellow, green, dark green,
+                navy blue, and cyan.
+                

@@ -1,0 +1,36 @@
+! COASTAL.TBL
+!
+!       This table contains coastal locations for MPC reference points.
+!!
+! Log:
+! J. Partain/MPC	 4/99
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!STID    STNM   NAME                             ST CO   LAT    LON  ELEV  PRI
+!(8)     (6)    (32)                            (2)(2)   (5)    (6)   (5)  (4)
+!
+CAFL1    724001 CAPE_FLATTERY                    WA US  4830 -12450    10  0
+CALO1    724002 CAPE_LOOKOUT                     OR US  4530 -12400    10  0
+CARO3    724009 CAPE_ARAGO                       OR US  4334 -12437    18  0
+PTSG1    724003 PT_ST_GEORGE                     CA US  4180 -12420    10  0
+CAME1    724004 CAPE_MENDOCINO                   CA US  4040 -12420    10  0
+PTAC1    724005 POINT_ARENA                      CA US  3896 -12374    17  0
+97Q      724959 POINT_REYES                      CA US  3800 -12302    87  0
+MTR      724915 MONTEREY_BAY                     CA US  3660 -12187     0  4
+PTSU1    724006 POINT_SUR                        CA US  3640 -12190    10  0
+PTGC1    724007 POINT_CONCEPTION                 CA US  3458 -12060    12  0
+SARO1    724008 SANTA_ROSA_ISLAND                CA US  3400 -12010    10  0
+SAN      722900 SAN_DIEGO/LINDBERG               CA US  3273 -11717     9 44
+ENSE1    760500 ENSENADA                         MX MX  3185 -11663     8 14
+GUAD1    761510 GUADALUPE_ISLAND                 MX MX  2917 -11832    25 14
+MISM1    994370 MATINICUS_ISLE                   ME US  4378  -6885    16  0
+ACK      725063 NANTUCKET_SHOALS                 MA US  4125  -7007    15 99
+ALSN6    994100 AMBROSE_LIGHT                    NY US  4047  -7383     0  0
+N91      745965 CAPE_MAY                         NJ US  3895  -7488     2  0
+CHLV2    994020 CHESAPEAKE_LIGHT                 VA US  3692  -7572     0  0
+HAT      723040 CAPE_HATTERAS                    NC US  3527  -7555     3  9
+CLKN7    994160 CAPE_LOOKOUT                     NC US  3462  -7652     5  0
+CAFR1    724010 CAPE_FEAR                        NC US  3412  -7753    10  0
+SVLS1    994380 SAVANNAH_LIGHT                   GA US  3195  -8068     0  0

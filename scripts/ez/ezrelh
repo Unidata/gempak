@@ -1,0 +1,80 @@
+#!/bin/csh
+#
+# EZRELH
+#
+# This script displays the relative humidity, winds and temperature at a
+# given level.
+#
+# The user must supply the level.
+#
+#	Syntax:  ezrelh level
+#
+#	Example: ezrelh 750
+#
+##
+# Log:
+# B. Colman/SEA		 1994
+# R. Miller/COMET	 1994
+# S. Jacobs/NMC		10/94	Clean up
+#
+
+if ( ${1}x == x ) then
+   echo " GEMPAK shell script to plot relative humidity, winds, and temp."
+   echo " The user must supply the level, "
+   echo " either on the command line or by prompting."
+
+   echo " "
+   echo " Enter the pressure level (e.g. 700)."
+   set lvl=$<
+
+else
+   set lvl  = $1
+endif
+
+# Source the file called settings.  This file contains commands to set
+# environment variables for the model name and device driver.
+
+source settings
+
+gdcntr << EOF
+GDATTIM = all
+GLEVEL  = $lvl
+GVCORD  = pres
+GFUNC   = relh
+CINT    = 20
+LINE    = 22/2/2
+TITLE   = 1=white/-3/@ RH (SHADED FOR 70, 80 and 90%)
+DEVICE  = $dev
+CLEAR   = yes
+PANEL   = 0
+SCALE   = 0
+CONTUR  =
+HILO    =
+SKIP    = /1
+FINT    = 10/70
+FLINE   = 101;21-23
+CTYPE   = f/c
+r
+
+CLEAR   = no
+GFUNC   = tmpc
+CINT    = 4/-44
+SCALE   = 0
+LINE    = 2/-2/2
+TITLE   = 1=white/-2/TEMPERATURE (C) AND WINDS (KTS)
+CTYPE   = c
+r
+
+ex
+EOF
+
+gdwind << EOFF
+GVECT   = wnd
+WIND    = bk20/1.0/2
+TITLE   = 1=white/-1/~  $model
+r
+
+;2
+;l
+ex
+EOFF

@@ -1,0 +1,45 @@
+				Roam
+
+
+The roam function provides a way of viewing an enlarged data region by 
+scrolling over the region.  The amount of data region magnification is 
+controlled by a user-selected roam factor.  Each loop can have different 
+roaming factors or no roaming at all.
+
+There are several ways to invoke roaming.  Click the "Roam" pull down below 
+the main NMAP title to immediately apply the desired roaming factor to the 
+visible loop.  Alternatively, the roam factor can be pre-selected for a loop
+by clicking the "Roam" button in the "Data Selection Window".  In this case,
+roaming is applied to the loop after the "Load" button is clicked.  Roam 
+factors for each loop can also be specified by using Stored Procedure 
+Files (SPFs).  See the "Procedures" help for additional details.  Finally, 
+roam factors may be shared among loops by using the "Apply/Get Map Settings" 
+buttons in the "Map Selection" GUI.  See the "Map-Selection" help for further 
+details.
+
+When roaming is activated, the "Roam Control" GUI is visible.  The "Roam 
+Control" GUI is used to pan across the roamed data region.  The position of 
+the white rectangle in the blue region of the GUI indicates what portion of the 
+enlarged data region is visible.  To roam, move the mouse cursor into the blue 
+region and drag the white rectangle using the left mouse button.  For more 
+precise roaming, click on the arrow keys in the GUI.  Alternatively, press 
+the key pad numbers 8, 6, 2, 4 to roam up, right, down, and left, respectively.  
+The key pad numbers are especially helpful if the user does not want to move 
+the mouse cursor while roaming.  The mouse cursor must be in the data display
+window, not in the "Roam Control" GUI, to use the key pad numbers.
+
+The amount of data region magnification is controlled by multiplying the data 
+region's area by the roam factor.  Thus, a roam factor of 2 (shown as 2 x 
+screen size in the pull down) produces an area with twice the number of pixels, 
+a roam factor of 3 produces an area with three times the number of pixels, and 
+so on.  Roam factors are specified in the table $GEMTBL/nmap/nmap_roam.tbl.  
+The table allows up to 19 roam factors with integer values ranging from 2 
+through 20.   For image data, a "Size of Image" roam factor is also available.  
+This roam factor creates a full resolution image covering the entire image 
+area.  For example, if an image data set is 2000 by 2000 pixels, selecting 
+"Size of Image" loads the entire 2000 by 2000 pixel into display memory for 
+roaming.
+ 
+Select the "Fit to Screen" to exit roaming.   This action will re-load the data
+region and fit it to the NMAP data display window.
+

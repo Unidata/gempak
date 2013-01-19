@@ -1,0 +1,9 @@
+     WINPOS
+
+     WINPOS specifies the position for plotting winds for vertical
+     profile plots.  Up to three separate wind profiles may be plotted.
+     The stability indices will also be positioned at the top of the
+     plot according to WINPOS.  Position 1 is the leftmost position.
+     The value of WINPOS will be incremented modulo 3 until the screen
+     is cleared or the program is run again.
+

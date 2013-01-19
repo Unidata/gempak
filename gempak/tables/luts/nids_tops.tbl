@@ -1,0 +1,22 @@
+! nids_tops.tbl
+!
+! Color table for NIDS Echo Tops
+! Appendix A, FMH-11 Part C
+!
+!Color name    Abrev   Red  Green   Blue  X color name
+BLACK           BLA      0      0      0  black
+BLACK           BLA      0      0      0  black
+DKGRAY          DGR    118    118    118
+LTBLUE          LTB      0    224    255
+LTMDBLUE        LMB      0    176    255
+DKMDBLUE        DMB      0    144    204
+DKBLUE          DKB     50      0    150
+LTGREEN         LTG      0    251    144
+MDGREEN         MDG      0    187      0
+BRGREEN         BRG      0    239      0
+TAN             TAN    254    191      0
+YELLOW          YEL    255    255      0  yellow
+DKRED           DKR    174      0      0
+RED             RED    255      0      0  red
+WHITE           WHI    255    255    255  white
+PURPLE          PRP    231      0    255

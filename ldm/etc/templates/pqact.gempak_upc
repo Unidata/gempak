@@ -1,0 +1,105 @@
+###############################################################################
+# GEMPAK SPECIFIC ACTIONS
+#
+# Steve Chiswell
+# Unidata Program Center
+#
+###############################################################################
+#
+# UPC specific actions
+#
+# These actions may serve as useful examples to Unidata site.
+# All patterns with specific mail addresses, or configurable
+# product IDs will need to be configured to local needs.
+#
+# These actions include
+#	NALARMS
+#	FIPS processing
+#	CONDUIT status message FILE'ing
+#	REDBOOK processing
+#
+################################################################################
+#
+# NAWIPS alarms. GUI signals when new product has arrived.
+WMO	^(W.....) (KDEN|KBOU) ([0-3][0-9])([0-2][0-9])([0-6][0-9]).*/p(.*)
+	FILE	data/gempak/alarms/chiz/(\3:yyyy)(\3:mm)\3\4\5_\6.\1_\2
+#
+#
+################################################################################
+# Watch the NEXRAD General Status Messages
+WMO	^NXUS6. .... ([0-3][0-9])([0-2][0-9])([0-6][0-9]).*/pGSM(...)
+	FILE	-close	data/gempak/nexrad/gsm/\4/%Y%m%d%H%M
+
+################################################################################
+# FIPS zone county identifiers mailed automatically
+#
+DDPLUS	^(WW|WR|WU|WF|RW|WG).* (KDEN|KBOU) ([0-3][0-9])([0-2][0-9])
+	PIPE	-close	decoders/fips COZ039 COC013 localweather@unidata
+#
+DDPLUS	^(WU|WF).... (KDEN|KBOU) ([0-3][0-9])([0-2][0-9])
+	PIPE	-close	decoders/fips COZ039 COC013 mytextmail@some_mobl.com
+#
+# Public notices from BOU
+DDPLUS	^...... .... ([0-3][0-9])([0-2][0-9]).*/pPNSBOU
+	PIPE	-close	/usr/bin/mail -s "Colorado Public Information" chiz@unidata
+#
+# Hazardous weather outlook for DEN (FLUS45 KBOU)
+DDPLUS	^FLUS45 KBOU ([0-3][0-9])([0-2][0-9]).*/pHWOBOU
+	PIPE	-close	/usr/bin/mail -s "Hazardous Weather Outlook" chiz@unidata
+#
+################################################################################
+# NCEP status logs
+CONDUIT	^.status\.(.*nccf.*) [0-9][0-9][0-9][0-9][0-9][0-9]
+	FILE	-close	data/gempak/logs/status/\1
+CONDUIT	^.status\.(.*TIGGE.*) [0-9][0-9][0-9][0-9][0-9][0-9]
+	FILE	-overwrite	-close	data/gempak/logs/status/\1
+# Log receipt of each sequence number
+#CONDUIT	^(data/nccf/.*) !(.*)! (.*)
+#	EXEC	util/conduit_sequence_log \1 \3
+#
+#
+# NAM 12km GRIB2 for WRF
+NGRID	grib2/ncep/NAM_84/.218/(200[5-9][01][0-9][0-3][0-9][0-2][0-9])..F(...)/
+	FILE	data/nam_12km/\1f\2.grib2
+################################################################################
+#
+# REDBOOK graphics processing
+#
+#HRS	^P..... (K[^WK]|KW[^A]|KWA[^L]|KK[^C]|KKC[^I])
+#	PIPE	-close	util/dcredbook_ps.csh
+#
+#HRS	^(P.....) (K[^WK]..|KW[^A].|KWA[^L]|KK[^C]|KKC[^I]) ([0-3][0-9][0-2][0-9][0-6][0-9])
+#	PIPE	-close	util/dcredbook.csh \1 \2 \3
+#
+#HRS	^P..... (K[^WK]|KW[^A]|KWA[^L]|KK[^C]|KKC[^I])
+#	PIPE	-close	util/dcredbook_vg.csh
+#
+# DFAX/GIF files
+HRS	^([PQ].....) (KKCI|PAWU|EGRR) ([0-3][0-9])([0-2][0-9])([0-6][0-9])
+	PIPE	-close	decoders/dcwmostrip -d data/logs/dcwmostrip.log
+	data/gempak/images/fax/(\3:yyyy)(\3:mm)\3_\4\5.\1_\2
+#HRS	^([PQ].....) (KKCI) ([0-3][0-9])([0-2][0-9])([0-6][0-9])
+#	FILE	-close	data/gempak/images/fax/(\3:yyyy)(\3:mm)\3_\4\5.\1_\2
+#
+#######################################################################################
+#
+# Quikscat BUFR
+HRS	^ISXX(..) KNES ([0-3][0-9])([0-2][0-9])([0-6][0-9])
+	FILE	data/gempak/qsct/(\2:yyyy)(\2:mm)\2\3.bufr
+#
+HRS	^ISXX(..) KNES ([0-3][0-9])([0-2][0-9])([0-6][0-9])
+	FILE	data/gempak/qsct_test/%Y%m%d%H.bufr
+#
+# DMSP SSM/I Surface Wind BUFR
+HRS	^ISXA.. KWNO ([0-3][0-9])([0-2][0-9])([0-6][0-9])
+	FILE	data/gempak/dmsp/(\1:yyyy)(\1:mm)\1\2.bufr
+#
+# SIGWX BUFR Charts
+HRS	^(JU.[DE]..) .... ([0-3][0-9])([0-2][0-9])([0-6][0-9])
+	FILE	data/gempak/sigwx/bufrfiles/\1.(\2:yyyy)(\2:mm)\2\3
+#######################################################################################
+#
+# COSMIC NetCDF files
+# eg: (wetPrf_C006.2007.240.16.05.G09_0001.0002_nc)
+EXP	cosmicrt/.*/(wetPrf_.*_nc)
+	FILE	-overwrite	-close	data/cosmic/\1

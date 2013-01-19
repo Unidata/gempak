@@ -1,0 +1,34 @@
+!	This is the PGEN error file
+!
+! log
+!------
+! H. Zeng/EAI		10/01	create
+! D.W.Plummer/NCEP	12/01	Added #5
+! E. Safford/SAIC	12/03	Added -1, -2, -3
+! J. Wu/SAIC		03/04	Added #8
+! J. Wu/SAIC		03/04	Added -4
+! E. Safford/SAIC	05/06	Added -5
+! H. Zeng/SAIC		11/05	Added  9
+! H. Zeng/SAIC		02/06	Added  10, 11
+! F. J. Yen/NCEP	02/06	Added  12
+! B. Yin/SAIC   	12/07	Added  13
+!
+
+  13	! Two different freezing level ranges are found!
+  12	! String size for WCL text is greater than !AS
+  11	! Number of CWAs limited to !AS
+  10	! Number of states limited to !AS
+  9	! Too many nearby WFOs. Only !AS are displayed.
+  8	! GFA elements cannot be grouped.
+  7	! Group "!AS" cannot be converted to pts file.
+  6	! Cannot display WFO !AS; watch too large.
+  5	! Number of counties limited to !AS
+  4	! The element is within a special group and cannot be grouped.
+  3	! Sigmet elements cannot be grouped.
+  2	! Track elements cannot be grouped.
+  1	! Watch elements cannot be grouped.
+  -1	! Unable to read element(s).
+  -2	! Error when trying to smear elements.
+  -3	! Incorrect number of elements selected.
+  -4	! Error when trying to interpolate elements.
+  -5    | Error found in airmet stylesheet.

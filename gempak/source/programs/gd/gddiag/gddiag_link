@@ -1,0 +1,8 @@
+$CC $CFLAGS -c gddiag.c
+$FC $LDFLAGS -o $OS_BIN/gddiag gddiag.o \
+	$OS_LIB/gddiag.a $OS_LIB/gdcfil.a \
+	$OS_LIB/ginitp_alt.o $OS_LIB/gendp_alt.o \
+	$GEMLIB $CGEMLIB $GPLT $DEVICE \
+	$OS_LIB/nc.a $OS_LIB/gn.a \
+	$CGEMLIB $GEMLIB -lm
+$RM *.o

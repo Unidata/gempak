@@ -1,0 +1,19 @@
+     G2TBLS
+
+     G2TBLS allows for specification of the GRIB2 decoding tables.
+     The format is G2TBLS=W;N;V;L:C, where W is the WMO decoding table
+     for standard parameters, N is the decoding table for local
+     parameters defined by the opriginating center, V is the vertical 
+     coordinate table for WMO defined levels, L is the vertical coordinate
+     table for local levels defined by the originating center, and C is 
+     the originating center table.
+     The defaults are 
+	$GEMTBL/grid/g2varswmoX.tbl, 
+	$GEMTBL/grid/g2varsYYYYZ.tbl,
+	$GEMTBL/grid/g2vcrdwmoX.tbl,
+	$GEMTBL/grid/g2vcrdYYYYZ.tbl,
+	$GEMTBL/grid/wmocenter.tbl,
+     where X is the master table version number in the GRIB message, 
+     Z is the local table version number,
+     and YYYY is the lower case abbreviation of the originating center in 
+     wmocenter.tbl.

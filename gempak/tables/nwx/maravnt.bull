@@ -1,0 +1,16 @@
+! MARAVNT.BULL
+!
+! This table contains the bulletin/station information to be used
+! with the Marine/Aviation_Tropical_Cyclone_Advisory bulletins.
+!
+! The format for the file is given below, with the
+! number of characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+!
+WTPA21 PHFO     HONOLULU/UNIV_OF_HI-MANOA_CAMPUS HI US  2130 -15782    20
+WTPA22 PHFO     HONOLULU/UNIV_OF_HI-MANOA_CAMPUS HI US  2150 -15802    20
+WTPA23 PHFO     HONOLULU/UNIV_OF_HI-MANOA_CAMPUS HI US  2170 -15822    20
+WTPA24 PHFO     HONOLULU/UNIV_OF_HI-MANOA_CAMPUS HI US  2190 -15842    20
+WTPA25 PHFO     HONOLULU/UNIV_OF_HI-MANOA_CAMPUS HI US  2210 -15862    20

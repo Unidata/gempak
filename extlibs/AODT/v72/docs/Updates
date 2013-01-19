@@ -1,0 +1,982 @@
+---------------------------------------------------------------------------------
+Advanced Dvorak Technique (ADT)  -- Version 7.2.1
+N-AWIPS ADT delivery information -- 16 November 2006
+---------------------------------------------------------------------------------
+Changes to the calling sequences for five routines have been made; four to
+ADT API routines and one to an ADT McIDAS interface routine.  The routines are :
+  - aodt_getforecastfile() - removed variable atcftype from calling sequence
+  - aodt_setforecastfile() - removed variable atcftype from calling sequence
+  - aodt_atcfoutputfile()  - added variable stormID to calling sequence
+  - aodt_historyfilefmt()  - added variable stormID to calling sequence
+  - mcidas_getinputs()     - changed variable atcftype to stormID
+Also added/removed memory allocation for stormID/atcftype variable.  Finally,
+some changes to the memory allocation "calloc" calls were integrated after 
+recommendations by the NOAA/CDB group (to make the ADT 64-bit compatable).
+- NOTE : ADT code has been analysed by VALGRIND.  All memory leaks have been
+  assessed and removed.  Two errors still remain in mcidas specific code, so
+  this will not affect NAWIPS ADT.
+Finally, implementation of a new topography file for utilization within land
+flagging routine has been performed.  The new file name is TOPOHRES.
+
+ODTAPPL
+odtappl.c
+- modified array allocation definitions to be 64-bit compatable (as suggested by
+  CDB programmers
+- added stormID in command line input subroutine call mcidas_getinputs();
+  removed ATCF forecast type value
+- modified subroutine calls aodt_get/setforecastfile() calls by removing
+  variable aatcftype (ATCF forecast type)
+- modified subroutine call for aodt_atcfoutputfile() by adding stormID
+  variable
+- modified subroutine call for aodt_historylistfmt() by adding stormID
+  variable
+- added memory allocation for variable stormID
+
+ODTAPI
+odtgsversion.c
+- changed version from 7.1 to 7.2.1
+odtatcfoutputfile.c
+- added variable to main subroutine calling sequence (stormID)
+- added variable to subroutine call aodt_atcffilename()
+odteyecloudtemp.c
+- added (void) to main subroutine calling sequence
+odtfreememory.c
+- added (void) to main subroutine calling sequence
+- removed memory release for variable atcftype
+odtgsforecastfile.c
+- removed variable from main subroutine calling sequences (atcftype)
+- removed assignment/acquisition of global variable atcftype
+odthistorylistfmt.c
+- added variable to main subroutine calling sequence (stormID)
+- added variable to subroutine call aodt_listhistory()
+odtinitialize.c
+- added (void) to main subroutine calling sequence
+odtintensityest.c
+- added (void) to main subroutine calling sequence
+
+ODTLIB
+------
+odtauto.c
+- modified array allocation definitions to be 64-bit compatable (as suggested by
+  CDB programmers
+- added new routines to determine false eyes/moat regions; subroutines
+  include : aodt_moatMaskCalc(), aodt_meshgrid(), aodt_bwimage(), and aodt_find()
+- modified call for ringFit() to add array for moat determination (moatFlagField)
+- removed check for ATCF forecat file type in aodt_readforecast() subroutine
+- added check for dateline cross in forecast longitude array
+- modified logic in aodt_pickfinallocation() subroutine; will check auto-location
+  score values for developing systems (maxci<5.0) starting at 3.0, but will
+  stop checking score values at 3.5 for weakening systems (maxci>5.0).  Will utilize
+  forecast position if thresholds are not met, otherwise will use spiral or combo
+  position for center fix.
+- removed all Laplacian analysis
+- added dateline cross logic for remapped data for auto-centering routines
+odtdata.c
+- modified array allocation definitions to be 64-bit compatable (as suggested by
+  CDB programmers
+- added check for minimum temperature in determination of coldest-warmest cloud
+  temperature determination (temp must be warmer than 160K... MTSAT calibration
+  errors)
+odtfft.c
+- added #include statement for ../inc/odtlibfuncs.h
+- removed variable definitions in aodt_dfft() subroutine; put variable
+  definitions in subroutine calling sequence (as should have been done)
+odtfuncs.c
+- modified array allocation definitions to be 64-bit compatable (as suggested by
+  CDB programmers
+- modified calling sequence for aodt_atcffilename() subroutine; added
+  stormID variable to sequence (so that it is properly included in ACTF
+  output file name definition)
+- removed ATCF file basin ID array; now included in stormID variable
+- removed autodetermination of ATCF storm subbasin ID value (for determination
+  of file basin ID array parameter)
+odthistory.c
+- modified array allocation definitions to be 64-bit compatable (as suggested by
+  CDB programmers
+- modified calling sequence for aodt_listhistory() subroutine call; added
+  stormID variable
+- corrected Rule 8 text output string for 18hr T# check
+- added east pacific rapid dissipation check and history file variable (rapiddiss)
+- added east pacific rapid dissipation text output string array (for listing)
+- removed autodetermination of ATCF storm subbasin ID value (for determination
+  of file basin ID array parameter); handled by stormID variable
+- modified lat/lon output value for ATCF file to always be positive
+- modified eye/cloud temperature output values for ATCF to not be value*10
+- modified fix type output value for ATCF to be intensity only "I", not "CI"
+  for intensity and center fix
+odtintensity.c
+- modified west pacific Eye baseline T# intensity array based on own regression
+  analysis (of old 1980's data); had been equal to atlantic numbers
+- added arrays for adjustment values to regression equations for different parameters
+  for EYE and non-EYE scene types (eye adjustment, cloud symmetry-eye and non-eye,
+  dark gray CDO size)
+- further modified eye scene regression equations.
+- modified use of Final T# (3 hour value) for EYE scenes to use 6hour Final T# value
+  if a gap of more than 3 hours occurs during EYE scene analysis
+- added logic to turn off rapid dissipation adjustment if weaking rate decreases
+  to below a 1.5/24 hour rate
+- modified latitude bias adjustment equation
+odtoutput.c
+- modified array allocation definitions to be 64-bit compatable (as suggested by
+  CDB programmers
+- corrected Rule 8 text output string for 18hr T# check
+- added east pacific rapid dissipation text output string array (for listing)
+- added call to aodt_version() to obtain version number (instead of hardcoded)
+- modified bulletin parameter listing order; moved latitude bias down in listing
+- added rapid dissipation parameter to bulletin listing
+odtscene.c
+- modified array allocation definitions to be 64-bit compatable (as suggested by
+  CDB programmers
+- modified logic to determine eye scene value to further reduce rapid scene type
+  fluctuations, over/underidentification of eye scenes, and increased lower limit
+  for eye scene value from 0.0 to 0.5.  Also modified cloud scene value to further
+  reduce over identification of eye scenes
+odttopo.c
+- modified routine to use high-resolution topography file (as requested by users).
+  will access file TOPOHRES.  Land is defined as 1x1 degree box containing 85% land
+  (pixels are at 1/10th degree resolution... 100 points in box).
+odtwinds.c
+- modified array allocation definitions to be 64-bit compatable (as suggested by
+  CDB programmers
+
+ODTMCIDAS
+---------
+odtmcerror.c
+- modified array allocation definitions to be 64-bit compatable (as suggested by
+  CDB programmers
+odtmcgrid.c
+- modified array allocation definitions to be 64-bit compatable (as suggested by
+  CDB programmers
+odtmcidas.c
+- modified array allocation definitions to be 64-bit compatable (as suggested by
+  CDB programmers
+- added void to subroutine call aodt_graphhistoryrec()
+- modified graph options to produce new storm title and storm file location/name
+- fixed error in definition of MTSAT2 internal (mcidas) satellite definition;
+  changed from 84 to 85
+odtmcinput.c
+- modified array allocation definitions to be 64-bit compatable (as suggested by
+  CDB programmers
+- added stormID in command line input subroutine call mcidas_getinputs();
+  removed ATCF forecast type value
+- modified ATCF keyword; first parameter is storm ID (e.g. 12L, 08W) instead of
+  just the number (12, 08)
+- modified listtype variable to only contain flags for ATCF raw and final T# value
+  outputs (removed storm ID value from definition)
+- modified AUTO keyword; removed ATCF forecast file type (atcftype)
+navcal routines 
+- added navigation files for new MTSAT HRIT format.
+
+ODTEXT
+------
+odtexterror.c
+- modified array allocation definitions to be 64-bit compatable (as suggested by
+  CDB programmers
+odtgrid.c
+- modified array allocation definitions to be 64-bit compatable (as suggested by
+  CDB programmers
+odtsst.c
+- no changes
+
+INC
+---
+odtapi.h
+- added parameter to subroutine calls aodt_get/setforecastfile()
+- added void to subroutine calls aodt_seteyecloudtemp(), aodt_scenetype(),
+  aodt_intensity(),aodt_initialize(), and aodt_freememory()
+- added parameter to subroutine call aodt_historylistfmt()
+- added parameter to subroutine call aodt_atcfoutputfile()
+odtextern.h
+- no changes
+odtlibdefs.h
+- removed char *atcftype
+odtlibdefs-x.h
+- removed char *atcftype
+odtlibfuncs.h
+- added parameter to subroutine call aodt_listhistory()
+odtlib.h
+- removed defunct #include definition
+odtmcidas.h
+- added void to subroutine call aodt_graphhistoryrec()
+odtremap.h
+- added void to subroutine call uinit()
+ 
+OTHER NOTES OF INTEREST:
+- Added new "false eye" checking routine, as developed by Tony Wimmers at CIMSS
+- Modified application of eye-cloud temperature parameter in regression equation.
+  Adjustment will only be applied once the cloud region temperature value becomes
+  colder than -70C, and will be "merged in" between -64C and -70C (0-100% 
+  application of adjustment value).
+- Added new land flag identification scheme utilizing high resolution topography
+  file TOPOHRES (.1 x .1 degree resolution).  1x1 degree box centered at storm
+  location must be 85% filled with land for box to be flagged as a land scene.
+- Code should be 64-bit compliant using suggestions from NOAA/CBS programmers.
+- ADT code has been analysed with VALGRIND.  All memory leaks have been removed
+  from ADT library code (two known errors still exist in mcidas-only code).
+
+---------------------------------------------------------------------------------
+Advanced Dvorak Technique (ADT)  -- Version 7.1.1
+N-AWIPS AODT delivery information -- 25 April 2006
+---------------------------------------------------------------------------------
+ODTAPPL
+- Two changes to function calling sequences have been made... one to 
+  aodt_get/setmiscoptions() (added one integer variable for manual entry of the
+  radius of maximum wind value) and one to mcidas_getinputs() (added one integer
+  variable for radius of maximum wind value).  Also removed the error/info 
+  statement output calls for the SST value since this value, as with the TIE 
+  Model, have been temporarily disabled for this version of the ADT.
+
+odtappl.c
+- added RMW parameter to calling sequence of mcidas_getinputs() and
+  aodt_setmiscoptions().
+- commented out SST notification/error reports.
+
+ODTAPI
+- See above note on aodt_get/setmiscoptions() function.
+
+odtatcfoutputfile.c
+- moved derivation of ATCF output file name to odtlib library function
+  subroutine aodt_atcffilename().
+                                                                                                                                                                               
+odtgsmiscopts.c
+- added parameter to calling sequence in aodt_get/setmiscoptions() for
+  RMW keyword option.
+                                                                                                                                                                               
+odtgsversion.c
+- changed version from 6.4.3 to 7.1.
+                                                                                                                                                                               
+odtmessages.c
+- commented out error return value for lack of sst file/value.
+                                                                                                                                                                               
+odtgssstvalue.c
+- commented out set/retrieval of sst value in history file structure.
+                                                                                                                                                                               
+No changes to all other routines.
+
+ODTMCIDAS
+- See above note on mcidas_getinputs() function.
+
+odtmcidas.c
+- modified #define parameters for history file length to reflect omission
+  of TIE parameters and sst values from read/write statements.
+- removed option of graphing TIE model output values.
+- changed eye scene ID parameter from 6 to 3 to reflect new eye
+  scene types.
+                                                                                                                                                                               
+odtmcinput.c
+- modified calling sequence for mcidas_getinputs() to add parameter for
+  RMW manual input.
+- added RMW keyword option for manual entry of radius of max wind entry
+  by user (for possible use with pinhole eye cases).
+- modified PLOT keyword input assignment to comment out TIE model
+  color level entry.
+- modified size of history file name record to allow for file names longer
+  than 12 characters in length.
+                                                                                                                                                                               
+odtmcgrid.c
+- minor changes.
+                                                                                                                                                                               
+odtmcerror.c
+- no changes made.
+
+ODTLIB
+- There have been many changes to the code, however many of which are within the
+  ADT library, so little impact to NAWIPS installation should be noted.  Many of 
+  the changes deal with modification to the scene type classification scheme and
+  the corresponding intensity estimation logic.  Also, some of the eye scene tyes
+  have been removed, specifically the RAGGED, OBSCURED, and LARGE RAGGED EYE 
+  scene types have been removed, leaving only the EYE, PINHOLE EYE, and LARGE EYE
+  scene types for valid eye scenes.  The cloud scene types have not been changed.
+
+odtauto.c
+- modified calling sequence parameter for aodt_slopecal call.
+- changed lower T# threshold for auto location search from 4.5 to 3.5.
+- modified for-loop min/max parameters for Fine Grid auto-location search.
+- removed time (time_t) determination system calls and print statements.
+                                                                                                                                                                               
+odtdata.c
+- no changes made.
+                                                                                                                                                                               
+odtfft.c
+- no changes made.
+
+odtfuncs.c
+- modified ID for itype parameter for aodt_slopecal; added ID for
+  adjusted Raw T# value for rapid dissipation determination.
+- added five levels for Raw T# values (extended from 8.0 to 8.5), so
+  modification of search boundary in aodt_getpwval() was needed
+  (72 to 75).  same with aodt_ptovmax().
+- modified boundary for indian ocean ID from -150 to -135 in
+  aodt_oceanbasin() in southern hemisphere.
+- added aodt_atcffilename() subroutine.  This was taken from API
+  routine aodt_atcfoutputfile() and moved within ADT library.
+- modified odtcurrent structure parameter name from eyesize to
+  eyecdosize in aodt_initcurrent().  also added initialization
+  of rapiddiss structure parameter, commented out TIE value
+  initializations (and sst parameter initialization), and added
+  logic to only initialize nextrec parameter if initializing for
+  the first time (not for "redo").
+                                                                                                                                                                               
+odthistory.c
+- modified #define parameters for history file length to reflect omission
+  of TIE parameters and sst values from read/write statements.
+- changed eyesize structure parameter name to eyecdosize.
+- added rapiddiss structure parameter to read/write statements.
+- modified Rule 9 display character strings (swapped WKN and ON) since
+  Rule 9 was modified.
+- removed unneeded character string initializations for eye types.
+- changed eye scene ID parameter from 6 to 3 to reflect new eye
+  scene types.
+
+odtintensity.c
+- commented out call for aodt_tieflag() subroutine.
+- added subroutine pinhole() and aodt_xlza(), which are actually not
+  used now, but kept for possible future use.
+- commented out value assignments for TIE method values.
+- modified eye and cdo intensity arrays for cloud temperature part
+  of regression equations.
+- modified shear intensity classification array.
+- extended arrays for eye and cdo scenes for -80C to -84C range
+  (10 to 11 temperature ranges).
+- added new logic for pinhole eye scenes to use the midpoint between
+  the observed eye temperature and +9C, which were recommended by
+  Mike Turk and Jack Beven, respectively.
+- modified curved band wrap<-->intensity relationship determination.
+- shear distance is now stored in eyecdosize parameter.
+- modified EYE and CDO scene intensity determinations using regression
+  based determination scheme.  also modified LARGE EYE adjustment and
+  removed LARGE RAGGED EYE adjustment.  also removed obscured and
+  ragged eye adjustments (now part of general eye determination).
+- added logic to adjust Raw T# value for CDO and Embedded Center
+  scene types based on current CI value.  for CDO, if CI# is above
+  4.5 or below 3.0, the Raw T# value is adjusted by up to +/- 1.0.
+  Similar adjustment for Embedded Center, but can be as much as +1.5.
+- modified adjustment/boundary for Irregular CDO.
+- added break in search of history file times to quit when current
+  time is exceeded (for shear adjustment flag and Rule 8 adjustments).
+- added rapid dissipation determination scheme for CI# intensity
+  calculation (only used in EastPac right now).  also modified
+  Rule 9 to utilize only Max's Rule during entire lifecycle of storm.
+  no determination of "significant strengthening" is done now.
+- commented out aodt_TIEmodel() subroutine and associated aodt_tieflag()
+  subroutine.
+- changed eye scene ID parameter from 6 to 3 to reflect new eye
+  scene types.
+                                                                                                                                                                               
+odtoutput.c
+- modified some logic for output of Rule 9 flag values.
+- modified RMW output value print statements.
+- commented out TIE Model output option.
+- changed eye scene ID parameter from 6 to 3 to reflect new eye
+  scene types.
+- changed version number from 6.4.3 to 7.1 and name from AODT to ADT.
+
+odtscene.c
+- changed name of aodt_eyeshearcalc() to aodt_cdoshearcalc().
+- added new parameters for determination of eye, cloud, and cwt
+  tempeature values.
+- overhauled logic to determine eye and cloud scene types.  removed
+  old decision tree logic based on fft and/or cloud categories and
+  replaced with eye/cloud threshold value scheme which assigns different
+  values to various environmental variables (same or similar to those
+  used in old scheme) and computes a sum based on all parameters.  this
+  has helped reduce the variability between successive scene type
+  determinations (flakeyness) and made them more consistant from one
+  estimate to another.
+- added new embedded center determination scheme based on log spiral
+  analysis of CDO region.
+- removed EYE scenes : OBSCURED, RAGGED, AND LARGE RAGGED.
+- added new pinhole eye determination scheme.
+- added new determination of CDO size for intensity estimation.
+- changed aodt_cdoshearcalc() to determine CDO size radius and
+  modified shear distance calculation determination.
+- changed eye scene ID parameter from 6 to 3 to reflect new eye
+  scene types.
+                                                                                                                                                                               
+odttopo.c
+- no changes made.
+                                                                                                                                                                               
+odtwinds.c
+- modified calling sequence for aodt_slopecal to reflect new parameter
+  ID values for latitude and longitude.
+
+ODTEXT
+- No changes have been made to any subroutines.
+
+INC
+- Several changes have been made resulting from the changes to the 
+  number of eye scene types.
+
+odtlibdefs.h
+- changed eye scene types from 6 to 3 (removed ragged, obscured, and
+  large ragged eye types).
+- expanded T# array to 8.5 from 8.0 (and corresponding pressure and
+  wind arrays).
+- added one additional threshold temperature for BD enhancement curve (-84C).
+- added rmwsizeman integer value.
+                                                                                                                                                                               
+odtlibdefs-x.h
+- increased arrays sized from 73 to 78.
+- added rmwsizeman integer value.
+                                                                                                                                                                               
+odtapi.h
+- added parameter to aodt_set/getmiscoptions() function call.
+- changed parameter name for irdata structure from eyesize to eyecdosize.
+- removed SST and TIE Model parameters from irdata structure.
+- added rapiddiss structure parameter for rapid dissipation flag.
+                                                                                                                                                                               
+odtmcidas.h
+- added parameter for mcidas_getinputs() function call.
+                                                                                                                                                                               
+odtlibfuncs.h
+- added function aodt_atcffilename().
+
+odtlib.h
+- changed parameter name for irdata structure from eyesize to eyecdosize.
+- removed SST and TIE Model parameters from irdata structure.
+- added rapiddiss structure parameter for rapid dissipation flag.
+
+OTHER NOTES OF INTEREST : 
+        - Modified the number of eye scene types from 6 to 3
+        - Modified the determination of the intensity for EYE and CDO scene types
+          to utilize a regression-based equation.  Also, new predictor values
+          were added to these equations, resulting in greatly improved 
+          correlations between estimated intensities and aircraft reconnaissance
+          for these scene types.  
+        - Decision tree logic for scene type determination was changed to an 
+          "equation-type" method utilizing many of the same parameters used 
+          previously.  This new scheme will reduce the variability noted in the
+          scene type determination from one image to another.  
+        - Added a "new" PINHOLE EYE determination scheme.
+        - Modified the Rule 9 scheme to utilize the "Max's Rule" for the entire
+          lifetime of the storm instead of just the formation stage.  Removed
+          the old Rule 9 "significant strengthening" logic.  This mimics what is 
+          done operationally at NHC (after recommendation by Jack Beven).
+                                                                                                                                                             209,9         Bot
+---------------------------------------------------------------------------------
+Advanced Objective Dvorak Technique (AODT)  -- Version 6.4.3
+N-AWIPS AODT delivery information -- 31 October 2005
+---------------------------------------------------------------------------------
+odtappl.c
+- There have been many updates to the code... mainly regarding calling sequences
+  to API and McIDAS/External routines which contained character string variables.
+  All character string variables with the format "variable[]" were replaced
+  with variables of the format "*variable", and corresponding malloc/free calls
+  were made within odtappl.c to allocate and free memory for these variables.  
+  All calling sequences in the inc directory include *.h files were also modified
+  to reflect these changes.
+
+API, LIB, EXT, and McIDAS directory (odtapi, odtlib, odtext, and odtmcidas)
+- Various changes were also made within the specific directories listed above
+  in many subroutines to more properly handle internal character strings in 
+  much the same way as handled in the odtappl routines.
+
+An additional change was made within odtlib/odthistory.c within the 
+aodt_inserthistoryrec() subroutine to copy the current history record structure
+element "odtcurrent" to a temporary one prior to insertion within the entire 
+history file structure "odthistoryfirst".  Previously, when odthistoryfirst was
+freed, it was also freeing odtcurrent since it had been inserted within the 
+odthistoryfirst structure.  The new logic will only free the temporary current
+structure element (newcurrent) when freeing odthistoryfirst, and odtcurrent will
+then be released correctly. 
+
+odtappl.c
+- added new EXTERNAL routine extern_writegrid(char *,int,float ***,int,int,int,int,int *)
+- added new APPLICATION routines allocvars() freevars()
+- added new McIDAS routines mcidas_initialize() and mcidas_freememory()
+- added navigation and calibration routines for MSG, MTSAT, and FY2C
+
+APPLICATION directory (odtappl)
+- allocvars()
+  New subroutine to allocate memory for internal character string variables
+- freevars()
+  New subroutine to free memory for internal character string variables
+
+McIDAS directory (odtmcidas)
+- mcidas_initialize()
+  New routine to allocate memory for internal character string variables used in
+  McIDAS routines
+- mcidas_freememory()
+  New subroutine to free memory for internal character string variables used in
+  McIDAS routines
+- navcal subdirectory
+  Added new routines to allow MSG, MTSAT, and FY2C imagery to be used with AODT
+
+EXTERNAL directory (odtext)
+- odtgrid.c (NEW ROUTINE)
+  New routine to write output 2D wind file grid to ascii file for output with
+  external plotting software (such as MatLab).
+  * extern_writegrid(char *gridpath,int gridfile,float *array,
+                     int nx,int ny,int date,int time,int *vcrit)
+    gridpath - character variable containing pathname for output grid file
+    gridfile - integer variable containing GRID file number (McIDAS)
+    array    - floating point array containting 2D wind field information
+    nx,ny    - integer variable containing X and Y dimensions of array
+    date     - integer variable containing Date in yyyyddd format
+    time     - integer variable containint Time in HHMMSS format
+    vcrit    - integer array containing auxilliary 2D wind field information
+
+
+NOTES OF INTEREST :
+New logic - EastPac weakening modification
+          - Rule 8 "merge in" logic
+          - Modified Rule 8 threshold boundaries 
+            (e.g. 1.0/6hrs now 1.2/6hrs, 1.5/12hrs now 1.7/12hrs, etc)
+          - Changed autolocation logic to nested grid search (searches
+            course 0.2 degree grid for max spiral point, then searches
+            fine 0.1 degree grid for final spiral analysis location).
+            Also modified remapping routine to utilize spline fitting 
+            routines instead of brute-force method.  These two changes
+            decreased execution time on local LINUX machine from about
+            15/15 to 4/2 seconds, respectively.
+
+---------------------------------------------------------------------------------
+Advanced Objective Dvorak Technique (AODT)  -- Version 6.4.2A
+N-AWIPS AODT delivery information -- 13 June 2005
+---------------------------------------------------------------------------------
+odtappl.c
+- modified calling sequence for mcidas_getinputs()
+  added ovrad (integer/logical) - 2D wind field indicator
+  added windgrid (integer) - 2D McIDAS GRID file number
+  added gridpath (character) - 2D wind field GRID file path name
+- added new API routine aodt_getwindprofile(int,float ***)
+- added new McIDAS routine mcidas_writegrid(char *,int,float ***,int,int,int,int)
+
+API directory (odtapi)
+- odtgetwindprofile.c (NEW ROUTINE)
+  New routine to determine 2D wind field around storm center using Jim Kossin's 
+  methodology.
+  * odt_getwindprofile(float *vcrit,float ***v2d)
+    vcrit - floating point variable containting critical wind radius array 
+            (35,50,65,100kt and RMW radii)
+    v2d   - floating point array containint 2D wind field information 
+            (latitude/longitude/speed)
+
+LIB direoctory (odtlib)
+- odtwinds.c (new routines)
+  New collection of subroutines which determine 2D wind field analysis using 
+  Jim Kossin's methodology to determine the array based on regression analysis.
+
+McIDAS directory (odtmcidas)
+- odtmcgrid.c (NEW ROUTINE)
+  New routine to write output 2D wind file grid to McIDAS GRID file for output.
+  * mcidas_writegrid(char *gridpath,int gridfile,float *array,
+                     int nx,int ny,int date,int time)
+    gridpath - character variable containing pathname for output grid file
+    gridfile - integer variable containing GRID file number (McIDAS)
+    array    - floating point array containting 2D wind field information
+    nx,ny    - integer variable containing X and Y dimensions of array
+    date     - integer variable containing Date in yyyyddd format
+    time     - integer variable containint Time in HHMMSS format
+
+---------------------------------------------------------------------------------
+Advanced Objective Dvorak Technique (AODT)  -- Version 6.4.2
+N-AWIPS AODT delivery information -- 1 April 2005
+---------------------------------------------------------------------------------
+Note : 
+* upgrades for 6.4.1 were most internal or related to McIDAS-only functions
+  (e.g. graphing routines)
+* additional 6.4.2 upgrades not listed here are internal to odtlib library
+  (auto-center fixing, history file length increase/parameter addition, etc)
+
+APPLICATION directory (odtappl)
+-------------------------------
+odtappl.c
+- modified calling sequence for mcidas_getinputs()
+  added ilisttype (integer) - ATCF listing information
+  added oatcf (integer/logical) - ATCF listing flag during intensity analysis
+  added atcfpath (character) - ATCF file output path (ODTOUTPUT env variable)
+  added atcfsrcID (character) - ATCF fix site/WMO ID 
+  added drawTRO (integer) - graph option
+- modified calling sequence for mcidas_setgraphoptions()
+  added drawTRO (integer) input variable
+- moved aodt_initialize() call 
+- modified calling sequence for mcidas_getsatdatainfo()
+  added cursat (integer) return variable
+- modified calling sequence for aodt_setIRimageinfo()
+  added cursat (integer) input variable
+- modified calling sequence for aodt_getIRimageinfo()
+  added cursat (integer) and ccursat (character) return variables
+- modified calling sequence for aodt_historylistfmt()
+  added ilisttype (integer) and atcfsrcID (character) input variables
+- added ATCF list output logic (oatcf) to intensity estimate derivation section
+- added NEW API routine : odt_atcfoutputfile(char [],integer,char [])
+- changed size of infomsg[] character string from 5000 to 50000
+  
+API directory (odtapi)
+----------------------
+- odtatcfoutputfile.c (NEW ROUTINE)
+  NEW routine will determine output file name for ATCF listing for each individual 
+  intensity analysis.  output file path is defined in "aodtenv" file with 
+  ODTOUTPUT environmental variable.
+  * odt_atcfoutputfile(char atcfpath[],integer ilisttype,char file[]
+    atcfpath[] - character string containing ATCF file output path (input)
+    ilisttype  - integer variable containing ATCF annual cyclone number value (input)
+    atcffile[] - character string containing ATCF file full path/file name (output)
+- odtgsIRimage.c
+  modified calling sequences for aodt_setIRimageinfo and aodt_getIRimageinfo()
+  * aodt_setIRimageinfo(imagedate,imagetime,cursat)
+    imagedate - satellite image date (julian date) (input)
+    imagetime - time in HHMMSS format (input)
+    cursat    - satellite ID (AODT specific - see NOTES below) (input) ** NEW
+  * aodt_getIRimageinfo(&imagedate,&imagetime,&xcursat,ccursat)
+    imagedate - satellite image date (julian date) (output)
+    imagetime - time in HHMMSS format (output)
+    xcursat   - satellite ID (AODT specific - see NOTES below) (output) ** NEW
+    ccursat   - satellite name (character string - see NOTES below) (output) ** NEW
+- odthistorylistfmt.c
+  modified calling sequence for aodt_historylistfmt()
+  * aodt_historylistfmt(historyrec,ilisttype,atcfsrcID,listing)
+    historyrec - pointer (integer) to record in history structure (input)
+    ilisttype  - integer variable containing ATCF annual cyclone number value (input) ** NEW
+    atcfsrcID  - character string containing ATCF fix site/WMO ID value (input) ** NEW
+    listing    - character string containing history file listing information (output)
+- odthistorygetnextrec.c
+  modified internal structure of routine to obtain odtcurrent history structure information
+  for output of current intensity analysis information in ATCF format output file.  Value 
+  of "-1" will obtain odtcurrent information (0=header for original listing format,
+  (+)value=list information in original listing format)
+
+Include files directory (inc)
+-----------------------------
+odtapi.h
+- redefined subroutine prototype for aodt_get/setIRimageinfo()
+  added satellite type integer variable to calling sequence
+- redefined subroutine prototype for aodt_historylistfmt()
+  added satellite type integer variable to calling sequence
+- added NEW subroutine prototype for aodt_atcfoutputfile()
+- added sattype integer value to history structure definition
+
+odtlibfuncs.h
+- modified subroutine prototype for aodt_listhistory()
+
+odtlib.h
+- added sattype integer value to history structure definition
+
+odtmcidas.h
+- modified subroutine prototype for mcidas_getinputs()
+  added ilisttype, oatcf, atcfpath, and atcfsrcID variables to calling sequence
+  added drawTRO to calling sequence
+- modified subroutine prototype for mcidas_getsatdatainfo()
+  added cursat integer variable to calling sequence
+- modified subroutine prototype for mcidas_setgraphoptions()
+  added drawTRO integer variable to calling sequence
+
+
+NOTES OF INTEREST :
+  * ATCF format output information can be produced in two different forms
+    - single record output for current intensity analysis 
+    - multiple record output for listing stored history file information
+    Method used is determined using ATCF keyword (in McIDAS, see below) in 
+    conjunction with various keywords.  If deriving an intensity estimate for
+    a single satellite image of a tropical cyclone, the ATCF output will be saved
+    in a output file (see below for location and file name structure) if the 
+    ATCF keyword is specified.  If listing an existing history file in ATCF 
+    format, keywords are defined as normal (previously defined, using HISTORY,
+    DATE, and other keywords) with ATCF keyword appended to the end of the command
+    line entry (output file, if desired, can be specified using OUTPUT keyword).
+    *** If a GUI is used to run the AODT, a new field containing a toggle switch to
+    output ATCF output is envisioned.  If listing an existing history file in ATCF
+    format, a new field will need to be added to the LIST option field/window to
+    indicate ATCF format.
+
+  * for McIDAS command line entry of ATCF keyword, the values are as follow :
+    ATCF=<cyclone#> <fix site> <RawT# flag> <FinalT# flag>
+      <cyclone#>     - ATCF Fixes Format (Common Fields) CY-annual cyclone number value
+      <fix site>     - ATCF Fixes Format (Common Fields) Fix site/WMO Identifier value
+      <RawT# flag>   - Flag value to output Adjusted Raw T# value (default) 
+                       or unadjusted Raw T# value.  0/X=Adj Raw T#,1=Raw T#
+                       Value is listed in ATCF DVTO-format "T num (raw)" field
+      <FinalT# flag> - Flag value to output 6-hr Weighted Final T# value (default) 
+                       or 3-hour Linear Final T# value.  0/X=Weighted,1=Linear
+                       Value is listed in ATCF DVTO-format "T num (average)", with
+                       corresponding "T num averaging time period - hours" and 
+                       "T num averaging derivation" fields containing appropriate
+                       values for method used (3/6 and L/T)
+
+  * output atcffile[] file name (from odt_atcfoutputfile() will be derived
+    automatically using satellite image date/time information and current
+    annual cyclone number value (see Common Field definitions for ATCF 
+    Fixes Format).  The name will be of the form : 
+      CIMSS_AODT_yyyymmddhhhh_ss_FIX
+      where : yyyy - year
+              mm   - month
+              dd   - day
+              hhhh - time (HH:MM UTC, e.g. 12:15UTC will be 1215)
+              ss   - annual cyclone number, from ATCF command line input 
+                     (stored in ilisttype value)
+
+  * cursat variable is an AODT internal code value for the current satellite 
+    being analyzed during the intensity estimation process.  The codes are
+    as follow :
+               code  satellite
+                  0      GOES8
+                  1      GOES9
+                  2     GOES10
+                  3     GOES11
+                  4     GOES12
+                  5       GMS5
+                  6     MTSAT1
+                  7     MTSAT2
+                  8       MET5
+                  9       MET6
+                 10       MET7
+                 11       MSG1
+                 12       MSG2
+                 13       MSG3
+                 14       FY2B
+                 15       FY2C
+                 16       FY2D
+
+  * history file size was increased to 38 variables (181 characters).  Internal
+    AODT satellite type was added to history file record for ATCF listing.
+
+---------------------------------------------------------------------------------
+Advanced Objective Dvorak Technique (AODT)  -- Version 6.4
+N-AWIPS AODT delivery information -- 28 January 2005
+---------------------------------------------------------------------------------
+*** OVERVIEW OF CHANGES FROM PREVIOUS AODT RELEASE ***
+Include files directory (inc)
+odtremap.h : function definitions for AODT image remapping routines found 
+             in odtlib/odtauto.c
+
+API routines directory (odtapi)
+New Routine :
+odthistorycomment.c : allow comments to be added to history file 
+- int aodt_historyaddcomment(char inchar[],int *modrec)
+  inchar[] : character string (up to 50 characters) to be added to history file
+             record as a comment (input)
+  *modrec  : record number of modified history file record (output)
+  Return   : -4=error finding record based on date/time information
+             68=successful modification 
+  Notes    : Comment is added to history file by defining the date and time of 
+             the record to be modified.  The date and time are passed into the API
+             with aodt_setdatetime().  The history file is passed into the API with
+             aodt_sethistoryfile().  The comment string will be truncated to 50 
+             characters before inclusion into history file.
+             Also modified Makefile to add odthsitorycomment.o for inclusion in
+             odtlibapi.a library file.
+             Comment (comment) and comment flag (ocommadd) were added to calling
+             sequence in mcidas_getinputs in odtappl/odtappl.c.  Obviously this 
+             only applies to the McIDAS version, but comment is passed as inchar[]
+             with aodt_historyaddcomment(), and ocommadd is a flag that is used
+             in odtappl.c to signal the need to call aodt_historyaddcomment().
+
+Modified Calling Sequences :
+- int aodt_automode2(float flat, float flon,float *retlat,float *retlon,int &retpos);
+  flat    - forecast interpolation latitude position (NEW) (input)
+  flon    - forecast interpolation longitude position (NEW) (input)
+  *retlat - auto-located storm center latitude position (output)
+  *retlon - auto-located storm center longitude position (output)
+  *retlon - auto-located storm center selection method (output)
+
+- int aodt_loadIRimage(float **temps,float **lats,float **lons,int numx,int numy )
+  **temps - temperature array (MODIFIED) (input)
+  **lats  - latitude position array (MODIFIED) (input)
+  **lons  - longitude position array (MODIFIED) (input)
+  numx    - number of columns in arrays (input)
+  numy    - number of rows in arrays (input)
+
+  Notes : the temps, lats, and lons arrays are now dynamically allocated arrays instead
+          of the "hardcoded" [][500] definitions I used previously.  I don't think
+          this is an issue, but I wanted to notify you just in case it matters.
+
+  Notes : We have added some new logic to supplement our auto-location finding routines
+          in odtauto.c.  These programs are fairly intensive since they involve remapping
+          any input data to rectilinear projection and performing a spiral band analysis
+          on the temperature data array/field.  This will be transparent to you, but one
+          important change that you will need to be aware of is that when reading the 
+          satellite data and passing it into the API using aodt_loadIRimage(), we have
+          been using a radius of 500km over which to read in the IR image data (defining
+          the temps, lats, and lons arrays).  Previously we had only used a radius of 190km
+          (which can still be used if the data is reloaded prior to calling the eye/cloud
+          temperature determination, the scene type determination, and the intensity determination
+          routines), but the size must be larger for the new auto-location determination
+          routine to work correctly.  If you look at the included odtappl/odtappl.c routine
+          you will see two calls to mcidas_getsatimagedata(), one prior to calling aodt_runautomode2()
+          and one prior to calling aodt_seteyecloudtemp().  The first one is where the larger
+          radius is needed.  I know you have your own routines to load the temps/lats/lons
+          arrays, so I'm not sure if you use two calls like I do or not, so this may be 
+          helpful or confusing depending on what you do in the NMAP routines. 
+
+*** OTHER NOTES OF INTEREST ***
+These are all transparent to you, but I thought you might like to know about
+the changes we have made to the AODT.  I will update the McIDAS Users' Guide
+on our webpage so you can have some additional information on some of these
+new aspects of the AODT.
+- As stated before, we have added some new auto-location determination 
+routines.  These are quite labor intensitive (taking about 15-20 seconds
+to run on my 1+ year old Linux machine).  This involves a remapping routine
+and two new routines to help autolocate the storm center once the storm 
+reaches a CI of 3.5 or greater.  Hopefully the users will not mind much
+(these obviously won't run if they don't utilize the auto-location capability
+of the AODT).
+- The history file has changed a bit.  We have added some new parameters and
+the comment capability.  
+- We have added/modified parameters in the AODT history file listing and the
+intensity bulletin.  The history file listing will be a bit longer now, mainly
+due to the comments feature, so you may need to expand any windows that the 
+history file is listed in (or at least have a scrollbar if not already there). 
+The intensity bulletin has also been modified to add a couple of new features
+like our new Radius of Max Winds calculation. 
+
+-----------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------
+Advanced Objective Dvorak Technique (AODT)  -- Version 6.3
+differences between final version (March 23) and secondary-part2 version (March 11)
+-----------------------------------------------------------------------------------
+- aodt_setforecast(char[],int,char[])  == added char variable to pass ATCF type
+- aodt_getforecast(char[],int *,char[]) == added char variable to pass ATCF type
+- aodt_setdatetime(int,int,char[],char[],int) == renamed from aodt_setdates(int,int,char[],char[])
+                                                 also added int variable to pass in delete flag
+- aodt_getdates(int *,int *,char[],char[]) == removed routine
+- aodt_setmiscoptions(int,int) == removed four variables from function call
+- aodt_getmiscoptions(int *,int *) == removed four variables from function call
+- aodt_setstartstr(int,float) == created routine to pass IC info to AODT library 
+                                 (removed from aodt_miscoptions)
+- aodt_getstartstr(int *,float *) == created routine to pass IC info from AODT library 
+                                     (removed from aodt_miscoptions)
+- aodt_initialize() == added routine to initialize all AODT analysis parameters
+- aodt_freememory() == added routine to free all malloced memory (if necessary)
+
+-------------------------------------------------------------------------------------
+Advanced Objective Dvorak Technique (AODT)  -- Version 6.3
+differences between secondary-part2 version (March 11) and secondary version (Feb 26)
+-------------------------------------------------------------------------------------
+
+API library function calls
+- aodt_setdomain(int)  == added input variable to pass domain variable to function
+- aodt_setIRimageinfo(int,int) == renamed from aodt_setIRimage(int,int)
+- aodt_getIRimageinfo(int,int) == renamed from godt_setIRimage(int,int)
+- aodt_historywritefile(int *) == added return variable for number of records written
+- aodt_historyrecordinsert(int *,int *) == added function
+- aodt_qmessage(int,int,char[],char[]) == added additional input character string
+
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Advanced Objective Dvorak Technique (AODT)  -- Version 6.3
+N-AWIPS AODT secondary delivery information -- 26 February 2004
+---------------------------------------------------------------------------------
+
+*** DIRECTORY CONTENTS ***
+top directory :
+aodtenv    - AODT enviromental parameter setup/definition file
+compileall - compile script (uses Makefile in this directory)
+Makefile   - Makefile
+TOPOLRES   - supplied topography file
+
+inc: Directory containing include files for API and AODT libraries
+odtapi.h       - function definitions for API routines
+odtextern.h    - function definitions for external data access routines used in APPL
+odtlibdefs.h   - variable definitions for AODT library routines 
+odtlibdefs-x.h - variable definitinos for AODT library routines (external defs)
+odtlibfuncs.h  - shared function definitions for AODT library routines
+odtlib.h       - AODT library #include, #define and structure definitions
+odtmcidas.h    - function definitions for McIDAS routines used in APPL
+
+lib: Directory containing all library files 
+libaodtapi.a    - AODT API routines library
+libaodtext.a    - external data access routines library
+libaodtf2c.a    - F2C library (for McIDAS nav/cal routines)
+libaodtlib.a    - AODT routines library 
+libaodtmcidas.a - AODT McIDAS routines library
+libaodtnav.a    - AODT McIDAS Nav/Cal routines library
+libmcidas.a     - McIDAS library
+
+odtapi: Directory containing AODT API routines
+Makefile  - compile all routines in this directory using "make all" command
+
+odtappl: Directory containing AODT McIDAS Application routine
+Makefile  - compile routine in this directory using "make" command
+
+odtext: Directory containing AODT routines for accessing external SST and Topography files
+Makefile  - compile all routines in this directory using "make all" command
+odtsst.c  - read GRIB format SST file and return value at location
+odttopo.c - read McIDAS topography file TOPOLRES and return flag value at location
+
+odtlib: Directory containing AODT library routines
+Makefile  - compile all routines in this directory using "make all" command
+
+odtmcidas: Directory containing all specific McIDAS routines
+Makefile  - compile all routines in this directory using "make all" command
+navcal    - directory containing McIDAS navigation/calibration and F2C libraries
+
+odttest: Directory containing AODT non-McIDAS Application routine (not complete yet)
+Makefile  - compile routine in this directory using "make" command
+
+*** MISCELLANEOUS INFORMATION ***
+- Individual library files can be compiled separately in the odtapi, odtext, odtlib, and
+odtmcidas directories.  Application routines can be compiled in the odtappl and odttest
+directories (odtappl need McIDAS library to compile) and will produce the application/executable
+files "naodt" and "naodttest", respectively (will be moved into the top directory).  Both
+application files need specific library files to be compile prior to compilation of the
+specific application/executable.
+
+- The file "compileall" script can be used to properly compile and link all library files
+for the production of the defined application executable file.  One parameter is required
+with the execution of the Korn Shell script, either "appl" or "test".  The "appl" will
+compile and create the "naodt" executable application, while "test" will compile and 
+create the "naodttest" executable application. 
+
+*** CHANGES FROM PRIMARY DISTRIBUTION ***
+Directory name/content changes
+- odtappl          -- renamed from odtapi  : contains main McIDAS APPL routine
+- odtapi           -- renamed from odtlib  : contains AODT API routines
+- odtlib           -- renamed from odtmain : contains AODT library routines
+- odttest          -- unchanged            : contains non-McIDAS APPL routine
+- odtext           -- added                : contains external data handling routines (SST and topography file)
+- odtmcidas        -- added                : contains all supplementary McIDAS APPL routines (data handling, etc.)
+
+API Program changes (in directory odtapi)
+- odtgsgraphopts.c -- removed
+- odtgslist.c      -- removed
+- odtgspaths.c     -- removed
+- odtgsunixflag.c  -- removed
+- odtlibmain.c     -- removed
+- odtgssstopts.c   -- renamed  : value now passed in/out with odtgssstvalue.c
+- odtgstopo.c      -- renamed  : value now passed in/out with odtgstopovalue.c
+- odtgsdomain.c    -- modified : added logic to determine idomain variable into setdomain function
+- odtgsIRimage.c   -- modified : removed set/return of datafile global variable (variable removed)
+- odtgslocation.c  -- modified : added set/return of autopositioning flag value
+- odtgsmiscopts.c  -- modified : removed several variable set/return assignments
+- odtgssstvalue.c  -- added 
+- odtgstopovalue.c -- added
+- odtinitialize.c  -- added
+- odtgsforecastfile.c -- added 
+- odtversion.c     -- unchanged
+
+APPL Program changes (in directory odtappl)
+- odtappl.c        -- renamed from odtapi.c 
+
+Include file changes
+- odtlibdefs.h     -- renamed from odtlibmain.h    : variable definitions and global variables in AODT library routines
+- odtlibdefs-x.h   -- renamed from odtlibmainex.h  : extern variables defined in odtlibdefs.h
+- odtmcidas.h      -- renamed from odtapi-mcidas.h : function definitions for supplementary AODT McIDAS APPL routines
+- odtlib.h         -- renamed from odtlibdefs.h    : #include, #define, and structure definitions in AODT library routines
+- odtapi.h         -- renamed from odtapilib.h     : function definitions for AODT API routines
+- odtlibfuncs.h    -- renamed from odtlib.h        : function definitions shared in AODT library routines
+- odtextern.h      -- added                        : function definitions for AODT external routines
+- odtsst.h         -- moved to odtext directory
+
+*** ADDITIONS TO API ROUTINES FOR SECONDARY AND FINAL DELIVERIES
+Secondary Library Functions
+- odthistorybullfmt.c -- aodt_bullfmt()      : format history record output in bulletin layout
+- odthistorylistfmt.c -- aodt_listfmt()      : format history record output in history file list layout
+- odthistorydelete.c  -- aodt_delete()       : delete records in history file within specified dates input by aodt_setdates()
+- odthistorynextrec.c -- aodt_getnexthist()  : retrieve/set pointer to next record in history file 
+- odtloadIRimage.c    -- aodt_loadIR()       : load IR image array data into AODT library
+- odterrormsg.c       -- aodt_qerror()       : convert numeric error codes to string format message (NOT COMPLETED YET)
+
+Final Library Functions (early delivery)
+- odtautomode1.c      -- aodt_autolocation() : perform first section of autolocation analysis (interpolate forcast position)
+- odtautomode2.c      -- aodt_autolocation() : perform second section of autolocation analysis (select final position)
+- odteyecloudtemp.c   -- aodt_part1()        : calculate eye and cloud region (C/W) eye temperatures
+- odtscenetype.c      -- aodt_part1()        : determine scene type
+- odtgsscenetypes.c   -- aodt_part1()        : pass/retrieve scene type from AODT library (for scene override)
+- odtwarmeyetemp.c    -- aodt_part1()        : determine warmest eye temperature (for autolocation)
+- odtintensity.c      -- aodt_part2()        : determine storm intensity
+- odthistorywrite.c   -- aodt_writehist()    : save latest intensity analysis to history file (modify history file)
+- odtbulletinoutput.c -- aodt_getresults()   : format latest intensity analysis in bulletin format (string returned)
+- odtdiagnostics.c    -- aodt_getmessages()  : retrieve all diagnostic messages generated during latest AODT computation

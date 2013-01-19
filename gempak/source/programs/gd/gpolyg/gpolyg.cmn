@@ -1,0 +1,72 @@
+C************************************************************************
+C* GPOLYG.CMN								*
+C*									*
+C* These common areas are used for oceanic warning polygons.		*
+C*									*
+C**									*
+C* Log:									*
+C* T. Lee/SAIC		 2/08						*
+C************************************************************************
+	INCLUDE		'GEMPRM.PRM'
+C
+	PARAMETER	(MAXGRP = 30)
+C			Maximum number of groups
+	PARAMETER	(MAXPTS = 2000)
+C			Maximum polygons/groups
+	PARAMETER	(MXBPTS = 300)
+C			Maximum vertices in a polygon
+	PARAMETER	(NCATEG = 4)
+C			Number of warning categories
+C
+        PARAMETER       (MXCHAR = 65)
+C                       Maximum characters per line.
+C
+C*	Grid information.
+C*	    ggrlat/ggrlon: lat/lon of the grid points
+C*	    pgrlat/pgrlon: grid lat/lon within the polygons
+C*	    gdattm: grid initial time YYMMDDHHHH
+C
+	INTEGER		igxd, igyd
+	REAL		ggrlat(LLMXGD), ggrlon(LLMXGD)
+	REAL		pgrlat(MAXPTS,MAXGRP,NCATEG) 
+	REAL		pgrlon(MAXPTS,MAXGRP,NCATEG) 
+	CHARACTER	gdattm*8
+	COMMON /grid/	ggrlat, ggrlon, pgrlat, pgrlon, gdattm,
+     +			igxd, igyd
+C
+C*	Polygon information.
+C*	    kgridu/kgridv: grid points within a polygon
+C*	    polygi/polygj: padding grid points on a polygon
+C*	    ngroup: number of groups at each category
+C*	    npoint: number of points at each group
+C*	    numpts: number of points after padding
+C*	    mpoint: number of points on a final polygon
+C*	    idxzon: OPC/TPC integer zone index
+C*	    cdxzon: OPC/TPC character zone index 
+C*	    distnm: minimum distance (nm) between polygons
+C*	    redist: maximum distance (nm) allowed from a new porint to a polygon
+C*	    redpct: maximum area increase after a point reduction
+C*	    npzon: numer of points on OPC/TPC zone
+C*	    zzlat: zone latitdue
+C*	    zzlon: zone longitude
+C
+	INTEGER		ngroup(NCATEG),npoint(MAXGRP,NCATEG)
+	INTEGER		numpts(MAXGRP,NCATEG),mpoint(MAXGRP,NCATEG)
+	INTEGER		kgridu(MAXPTS,MAXGRP,NCATEG) 
+	INTEGER		kgridv(MAXPTS,MAXGRP,NCATEG) 
+	INTEGER		polygi(MAXPTS,MAXGRP,NCATEG)
+	INTEGER		polygj(MAXPTS,MAXGRP,NCATEG)
+	INTEGER		isnake(MAXPTS,MAXGRP,NCATEG)
+	INTEGER		jsnake(MAXPTS,MAXGRP,NCATEG)
+	INTEGER		imargn(2,MAXGRP,NCATEG),jmargn(2,MAXGRP,NCATEG)
+	INTEGER		idxzon, npzon
+	REAL		zzlat(MXBPTS),zzlon(MXBPTS)
+	REAL		distnm, redpct, redist, skipct
+	REAL		wsca, wgale, wstrm, whurr
+	CHARACTER	cdxzon*3
+	LOGICAL		raw_on, map_on, fwarn, tbread
+	COMMON /poly/	kgridu, kgridv, polygi, polygj, isnake, jsnake, 
+     +			imargn, jmargn, numpts, mpoint, zzlat, zzlon, 
+     +			redpct, redist, distnm, skipct, wsca, wgale, 
+     +			wstrm, whurr, raw_on, map_on, fwarn, tbread, 
+     +			npoint, ngroup, npzon, idxzon, maxclp, cdxzon

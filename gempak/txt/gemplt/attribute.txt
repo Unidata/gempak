@@ -1,0 +1,61 @@
+
+
+                        Attribute Subroutines
+
+
+There are two types of attribute subroutines: Set and Query.  The Set
+subroutines are used to set the characteristics of items to be plotted.
+The Query subroutines, in turn, return the characteristics that are
+currently set.  The Set and Query subroutines come in pairs; for every
+Set subroutine there is a Query.  All Set subroutines are named "GSxxx"
+and all Query subroutines are named "GQxxx."
+
+In general, attribute Set routines control the size and the line width
+of items to be plotted.  When specified as a real number, the size of an
+item is a multiplier of the default size value.  For some plottables,
+additional attributes are also present.  For example, each category of 
+lines includes attributes that control the different line types.  Or, 
+some items can be optionally plotted on some devices using hardware 
+functions; the attributes include flags that select the hardware or the 
+software method.  Color can also be set, but color is handled (and 
+described) separately.  Assigning an attribute a value less than or 
+equal to zero means that no change will be made to that attribute's
+current value, unless explicity stated otherwise in the documentation.
+
+To set attributes of lines, several Set routines can be called as there
+are several categories of lines: simple lines, contours, special lines,
+and fronts.  Attributes for simple lines are set by a call to GSLINE.
+The attributes include selection of line width, selection of several
+predefined line patterns, and selection of software/hardware plotting
+methods.  Software line pattern characteristics are further controlled
+by calling GSLPAT.  The other line categories, contours, special lines,
+and fronts, are controlled by GSCNTR, GSSPLN, and GSFRNT.
+
+GSTEXT is called to set the text font, text size, text line width, and
+a flag specifying generation of software or hardware text.
+
+There are several groups of symbols that can be plotted, each group with
+an independent set of attributes.  The symbol groups include weather
+symbols, sky coverage, past weather, pressure tendency, cloud type,
+icing, turbulence, and special symbols.  The subroutines that set the
+symbol attributes include GSWTHR, GSSKY, GSPWTH, GSPTND, GSCTYP, GSICNG,
+GSTURB, and GSSPCL.
+
+GSMRKR sets marker characteristics.  Markers are similar to symbols.
+
+GSTICK sets the characteristics of tick marks for drawing graph axes.
+
+GSBARB and GSARRW set the wind barb and wind arrow attributes.
+
+The hardware plotting method option, when present, should be used
+cautiously.  If a hardware function is specified, and the currently set
+device is not capable of that hardware function, the equivalent software
+function is substituted automatically.  However, if a hardware function
+is specified, and the hardware function is available, but it is not
+capable of satisfying some of the other attribute settings, the hardware
+function is used regardless.  In those cases the hardware function may
+produce undesirable results.  For example, the hardware option does not
+draw dashed lines very well on many graphics devices when a large set of
+short line segments is drawn, such as is often used for drawing maps or
+contours.  Or, on some devices, rotated text does not come out rotated
+when hardware text is specified.

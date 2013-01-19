@@ -1,0 +1,49 @@
+#!/bin/csh
+#
+#       Script to produce a suite of plots from the MRF model.
+#
+#       The following products are plotted:
+#
+#       60, 84, 108, 132, 156, 180hr fcst from 00Z,
+#               MSLP
+#               500mb HGHT and VORT
+#               24hr 500mb HGHT difference
+#               700mb RH
+#
+#
+# Log :
+# D.W.Plummer/NCEP   2/97   Add log header
+# D.W.Plummer/NCEP   3/97   Removed forecast hours 156 and 180
+#
+
+if ( ${1} == "-h" || ${1} == "-help" )  then
+	echo "Usage: ${0} [printer] [yymmdd/cc]   		      "
+        echo "       printer - printer name (default by workstation)	      "
+        echo "       yymmdd/cc  - year, month, day and cycle (def most recent)"
+	exit
+endif
+
+set prt=${1}
+set ymdc=${2}
+
+`which prnt`  pmsl      mrf1  60 ${prt} ${ymdc}
+`which prnt`  500mb     mrf1  60 ${prt} ${ymdc}
+`which prnt`  500mbdiff mrf1  60 ${prt} ${ymdc}
+`which prnt`  700mb     mrf1  60 ${prt} ${ymdc}
+
+`which prnt`  pmsl      mrf1  84 ${prt} ${ymdc}
+`which prnt`  500mb     mrf1  84 ${prt} ${ymdc}
+`which prnt`  500mbdiff mrf1  84 ${prt} ${ymdc}
+`which prnt`  700mb     mrf1  84 ${prt} ${ymdc}
+
+`which prnt`  pmsl      mrf1 108 ${prt} ${ymdc}
+`which prnt`  500mb     mrf1 108 ${prt} ${ymdc}
+`which prnt`  500mbdiff mrf1 108 ${prt} ${ymdc}
+`which prnt`  700mb     mrf1 108 ${prt} ${ymdc}
+
+`which prnt`  pmsl      mrf1 132 ${prt} ${ymdc}
+`which prnt`  500mb     mrf1 132 ${prt} ${ymdc}
+`which prnt`  500mbdiff mrf1 132 ${prt} ${ymdc}
+`which prnt`  700mb     mrf1 132 ${prt} ${ymdc}
+
+exit

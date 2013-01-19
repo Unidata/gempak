@@ -1,0 +1,40 @@
+		DM FILE FORMAT
+
+
+		----->	FILE LABEL
+
+	kpdmgt	----->	DATA MANAGEMENT RECORD
+
+	kprkey	----->	KEYROW (NRKEYS)
+
+	kpckey		KEYCOL (NCKEYS)
+
+	kpfile		FHDNAM (NFHDRS)
+
+			IFHLEN (NFHDRS)
+
+			ITYFHD (NFHDRS)
+
+			FILHDR (IFHLEN,NFHDRS)
+
+	kphdrs	----->	KROWHD (NRKEYS, NROW)
+
+			KCOLHD (NCKEYS, NCOL)
+
+	kppart	----->	PRTNAM (NPRT)
+
+			LENHDR (NPRT)
+
+			ITYHDR (NPRT)
+
+			NPARMS (NPRT)
+
+			PRMNAM (NPARMS, NPRT)
+
+			ISCALE (NPARMS, NPRT)
+
+			IOFFST (NPARMS, NPRT)
+
+			NBITS  (NPARMS, NPRT)
+
+	kpdata	----->	DATA POINTERS (NPRT, NCOL, NROW)

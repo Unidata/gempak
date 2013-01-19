@@ -1,0 +1,27 @@
+!
+! Restore File : sfclifted_index
+!
+! Log:
+! J.Carr/HPC	 10/98	Initial creation
+! J. Carr/HPC     7/99  Inserted contur=2. Changed sm5s to sm9s.
+!
+GLEVEL  0
+GVCORD  none
+PANEL   0
+SCALE   0
+CONTUR  2
+GDPFUN  sm9s(lift)!sm9s(lift)!sm9s(lift)
+TYPE    c
+CINT    4/4       !-1000;0   !2/-100/-2
+LINE    20/1/2    !1/2/2     !2/1/2
+FINT    0
+FLINE   0
+HILO    0
+HLSYM   0
+CLRBAR  0
+WIND    0
+REFVEC  
+TITLE   1/-2/~ SFC LIFTED INDEX|~SFC LIFTED INDEX!0
+TEXT    1/21/1/hw
+CLEAR   yes
+FILTER  yes

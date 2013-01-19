@@ -1,0 +1,11 @@
+     THTALN
+
+     THTALN specifies the color, line type, line width, minimum, maximum, 
+     and increment for the background dry adiabats (potential temperature 
+     lines) on thermodynamic diagrams:
+
+	line color / line type / width / minimun / maximum / increment
+
+     The values should be separated by slashes.  If THTALN is blank, no
+     lines will be drawn.
+

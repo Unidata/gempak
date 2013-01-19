@@ -1,0 +1,26 @@
+     FLINE
+
+     FLINE is the color and fill type to be used for contour fill:
+
+	colr1;..;colrn/type1;..;typen
+
+     The number of fill colors and types needed is one greater than the 
+     number of fill levels in FINT.  The number of fill colors may be 
+     entered as a list of color numbers separated by semicolons or a 
+     range of colors.  The number of fill types may be entered as a list
+     of numbers separated by semicolons.  More information on color 
+     selection can be found in the help for COLORS. 
+
+     The fill type may be set any of the following values:
+
+		1		Solid
+		2		Slanted Dash
+		3		Wide-spaced Slanted Line
+		4		Medium-spaced Slanted Line
+		5		Zig-Zag Line
+		6		Dots
+		7		Thin-spaced Slanted Line
+     
+     If fill type is set to 0, soild fill is used. If the fill type is
+     set to a single negative number, negative values will use the
+     absolute value of the fill type, and positive values will be solid.

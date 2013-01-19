@@ -1,0 +1,19 @@
+
+                                NWX OVERVIEW
+
+
+NWX displays text products from the Family of Services (FOS) data feed.  A 
+Motif graphical user interface controls the program functions.
+
+A graphical method is used to select the text products for display.  NWX 
+utilizes two windows:  one displays a map with markers representing stations 
+that issue the desired text product, and the other displays the desired text.  
+Data types that can be represented at individual locations are plotted as 
+markers on a map.  The text products are displayed in a text window by 
+clicking on the desired location with the cursor mouse.  By default, the 
+latest products are displayed.  Earlier versions of the product may be viewed 
+by using the "Previous" and "Next" options.
+
+The displayed map region can be changed to accommodate different data types.  
+A number of predefined areas are listed in the MAP_AREA menu.  Zooming in on 
+any area is also supported by drawing a bounding box with the mouse cursor.

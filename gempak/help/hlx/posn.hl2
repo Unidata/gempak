@@ -1,0 +1,23 @@
+     POSN
+
+     POSN is the position number and the format of the text to be
+     used to plot data in GDMAP.
+
+     If the position number is 0, the data will be plotted centered 
+     at the station.  
+
+     The position numbers are:
+
+				7
+			1		3
+			2	0	4
+			5		6
+				8
+
+     The format to use for the plotted values is entered after the 
+     position number and a slash. 
+
+	WAFT		Used to plot temperature values for the
+			WAFS charts. Negative values do not get
+			a minus sign, but positive values do get
+			a plus sign.

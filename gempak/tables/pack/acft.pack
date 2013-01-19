@@ -1,0 +1,42 @@
+!ACFT.PACK
+!
+!This table is the packing table for DCACFT, which decodes aircraft data.
+!
+!*Log:
+!J. Ator/NP12		8/97
+!D. Kidwell/NCEP	9/97	Added ACRT
+!D. Kidwell/NCEP	4/98	Removed RELH, added PRES, changed max
+!                               and increment for HB and HT parms
+!D. Kidwell/NCEP	6/99	Added FQOT, TPOT, TPOI and cloud parms
+!D. Kidwell/NCEP	7/99	Changed all base and top parms to feet
+!D. Kidwell/NCEP	1/00	Added ATP1
+!				
+!
+DRCT         0.       360.      1.
+SKNT         0.       150.      1.
+TMPC      -100.        60.       .1
+DWPC      -100.        60.       .1
+VSBY         0.        99.      1. 
+PMSL       900.      1050.      1.
+PRES	     1.      1050.	1. 
+SSTC	   -20.	       40.	 .1
+TURB	     0.		8.	1.
+TBSE	     0.	    60000.     10.
+TTOP	     0.	    60000.     10.
+FQOT	     0.	        3.      1.
+TPOT	     0.	        4.      1.
+ICNG	     0.		8.	1.
+IBSE	     0.	    60000.     10.
+ITOP	     0.	    60000.     10.
+TPOI         0.        12.      1.
+WNUM	     0.	   512000.	1.
+WBSE	     0.	    60000.     10.
+WTOP	     0.	    60000.     10.
+CLC1         0.         9.      1.
+CBS1         0.     60000.     10
+CTP1         0.     60000.     10.
+CLC2         0.         9.      1.
+CBS2         0.     60000.     10
+CTP2         0.     60000.     10.
+ACRT         0.         7.      1.
+ATP1         0.   2559999.      1.     

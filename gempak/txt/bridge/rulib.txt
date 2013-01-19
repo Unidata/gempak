@@ -1,0 +1,31 @@
+
+
+                   Upper-Air Decoder (RU) Library
+
+
+The RU library contains subroutines to decode and store upper-air
+reports.  TT and PP reports of all types may be decoded.  Output can be
+written to a GEMPAK unmerged sounding data set.
+
+An upper-air decoder program must have access to bulletins of upper-air
+data.  Given an upper-air bulletin, RU_GRPT extracts reports.  RU_SHDR
+reads the report header, returning the station number and report day and
+hour.  RU_DECD decodes the report and writes the output to a previously
+opened file.  RU_DCD2 is a newer version of RU_DECD which includes the
+parameter ADDSTN.  If ADDSTN is false, reporting stations not included
+in the output file will be added to it.  RU_DECD always adds these
+stations to the file if there is room.
+
+Several subroutines are available to process the time, since it is
+necessary to store a full date/time field in the data set.  RU_RTIM
+combines a system or data reception time with the report day and hour
+to generate an observation time.  RU_ADJT can be used to adjust the
+time to the nearest 3-hour interval.
+
+The decoded output is in the order expected by an unmerged sounding
+file and by SN_WPRT, which writes the data to a file.  Data from PPAA
+and PPCC reports will be merged with mandatory data or stored as
+mandatory data without temperature, dewpoint or height.  Significant
+wind data are stored with a flag indicating whether the levels are
+height or pressure.  If both height and pressure data are received for
+a station, only the most recent are saved.

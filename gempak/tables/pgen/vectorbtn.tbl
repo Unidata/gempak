@@ -1,0 +1,21 @@
+! WINDBTN.TBL.
+!
+! This table provides the icons located in the winds button palette
+!
+! Log:
+! E. Wehner/EAi          6/97
+! W. Li/EAI		04/98	Added darr and hash in CLASS_WINDS 
+! E. Safford/GSC	04/01	reorder for horizontal layout
+!------------------------------------------------------------------------
+BEGIN
+!
+! Row 1
+!
+windarrw
+windbarb
+darr
+!
+! Row 2
+!
+hash
+END

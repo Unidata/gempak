@@ -1,0 +1,99 @@
+! WVM.BULL
+!
+! Location information for the following product:
+! Warning_Verification_Message.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+NWCA42 TJSJ     SAN_JUAN                         PR US  1843  -6600     0
+NWUS41 KAKQ     WAKEFIELD                        VA US  3697  -7700     0
+NWUS41 KALY     ALBANY                           NY US  4268  -7383     0
+NWUS41 KBGM     BINGHAMTON                       NY US  4220  -7598     0
+NWUS41 KBOX     TAUNTON                          MA US  4195  -7112     0
+NWUS41 KBTV     BURLINGTON                       VT US  4445  -7315     0
+NWUS41 KBUF     BUFFALO                          NY US  4293  -7870     0
+NWUS41 KCAR     CARIBOU                          ME US  4577  -6862     0
+NWUS41 KCLE     CLEVELAND                        OH US  4140  -8186     0
+NWUS41 KCTP     STATE_COLLEGE                    PA US  4079  -7786     0
+NWUS41 KGYX     GRAY                             ME US  4388  -7025     0
+NWUS41 KILN     WILMINGTON                       OH US  3941  -8381     0
+NWUS41 KLWX     BALTIMORE_MD/_WASHINGTON_DC      VA US  3897  -7747     0
+NWUS41 KOKX     NEW_YORK                         NY US  4086  -7286     0
+NWUS41 KPBZ     PITTSBURGH                       PA US  4052  -8020     0
+NWUS41 KPHI     MOUNT_HOLLY                      NJ US  4000  -7480     0
+NWUS41 KRLX     CHARLESTON                       WV US  3831  -8170     0
+NWUS41 KRNK     BLACKSBURG                       VA US  3720  -8041     0
+NWUS42 KCAE     COLUMBIA                         SC US  3393  -8112     0
+NWUS42 KCHS     CHARLESTON                       SC US  3288  -8001     0
+NWUS42 KGSP     GREENVILLE/SPARTANBURG           SC US  3488  -8222     0
+NWUS42 KILM     WILMINGTON                       NC US  3427  -7791     0
+NWUS42 KMHX     NEWPORT/MOREHEAD_CITY            NC US  3477  -7687     0
+NWUS42 KMLB     MELBOURNE                        FL US  2811  -8065     0
+NWUS42 KRAH     RALEIGH                          NC US  3577  -7868     0
+NWUS43 KABR     ABERDEEN                         SD US  4545  -9841     0
+NWUS43 KAPX     GAYLORD                          MI US  4490  -8470     0
+NWUS43 KARX     LA_CROSSE                        WI US  4381  -9119     0
+NWUS43 KBIS     BISMARCK                         ND US  4677 -10075     0
+NWUS43 KDDC     DODGE_CITY                       KS US  3775  -9995     0
+NWUS43 KDLH     DULUTH                           MN US  4683  -9220     0
+NWUS43 KDMX     DES_MOINES                       IA US  4172  -9372     0
+NWUS43 KDTX     DETROIT                          MI US  4268  -8347     0
+NWUS43 KDVN     QUAD_CITIES_IA                   IL US  4161  -9058     0
+NWUS43 KEAX     KANSAS_CITY/PLEASANT_HILL        MO US  3879  -9426     0
+NWUS43 KFGF     EASTERN_NORTH_DAKOTA             ND US  4791  -9708     0
+NWUS43 KFSD     SIOUX_FALLS                      SD US  4358  -9672     0
+NWUS43 KGID     HASTINGS                         NE US  4063  -9837     0
+NWUS43 KGLD     GOODLAND                         KS US  3936 -10169     0
+NWUS43 KGRB     GREEN_BAY                        WI US  4449  -8811     0
+NWUS43 KGRR     GRAND_RAPIDS                     MI US  4288  -8554     0
+NWUS43 KICT     WICHITA                          KS US  3765  -9744     0
+NWUS43 KILX     LINCOLN                          IL US  4015  -8933     0
+NWUS43 KIND     INDIANAPOLIS                     IN US  3970  -8627     0
+NWUS43 KIWX     NORTHERN_INDIANA                 IN US  4134  -8569     0
+NWUS43 KJKL     JACKSON                          KY US  3759  -8330     0
+NWUS43 KLBF     NORTH_PLATTE                     NE US  4113 -10069     0
+NWUS43 KLMK     LOUISVILLE                       KY US  3811  -8563     0
+NWUS43 KLOT     CHICAGO                          IL US  4159  -8808     0
+NWUS43 KLSX     ST_LOUIS                         MO US  3868  -9068     0
+NWUS43 KMKX     MILWAUKEE/SULLIVAN               WI US  4295  -8854     0
+NWUS43 KMPX     TWIN_CITIES/CHANHASSEN           MN US  4484  -9355     0
+NWUS43 KMQT     MARQUETTE                        MI US  4652  -8754     0
+NWUS43 KOAX     OMAHA/VALLEY                     NE US  4131  -9636     0
+NWUS43 KPAH     PADUCAH                          KY US  3706  -8876     0
+NWUS43 KSGF     SPRINGFIELD                      MO US  3722  -9340     0
+NWUS43 KTOP     TOPEKA                           KS US  3906  -9562     0
+NWUS43 KUNR     RAPID_CITY                       SD US  4406 -10320     0
+NWUS44 KMOB     MOBILE                           AL US  3067  -8823     0
+NWUS44 KMRX     MORRISTOWN                       TN US  3615  -8340     0
+NWUS45 KAKQ     WAKEFIELD                        VA US  3697  -7700     0
+NWUS45 KBOI     BOISE                            ID US  4356 -11620     0
+NWUS45 KBOU     DENVER                           CO US  4000 -10526     0
+NWUS45 KBYZ     BILLINGS                         MT US  4575 -10856     0
+NWUS45 KFGZ     FLAGSTAFF                        AZ US  3522 -11181     0
+NWUS45 KGGW     GLASGOW                          MT US  4820 -10662     0
+NWUS45 KGJT     GRAND_JUNCTION                   CO US  3911 -10851     0
+NWUS45 KLKN     ELKO                             NV US  4086 -11573     0
+NWUS45 KMSO     MISSOULA                         MT US  4691 -11408     0
+NWUS45 KPIH     POCATELLO/IDAHO_FALLS            ID US  4290 -11258     0
+NWUS45 KPSR     PHOENIX                          AZ US  3343 -11201     0
+NWUS45 KPUB     PUEBLO                           CO US  3827 -10451     0
+NWUS45 KREV     RENO                             NV US  3956 -11979     0
+NWUS45 KRIW     RIVERTON                         WY US  4306 -10847     0
+NWUS45 KSLC     SALT_LAKE_CITY                   UT US  4077 -11194     0
+NWUS45 KTFX     GREAT_FALLS                      MT US  4745 -11137     0
+NWUS45 KTWC     TUCSON                           AZ US  3222 -11094     0
+NWUS45 KVEF     LAS_VEGAS                        NV US  3604 -11518     0
+NWUS46 KEKA     EUREKA                           CA US  4079 -12416     0
+NWUS46 KHNX     SAN_JOAQUIN_VALLEY/HANFORD       CA US  3631 -11962     0
+NWUS46 KLOX     LOS_ANGELES/OXNARD               CA US  3420 -11912     0
+NWUS46 KMFR     MEDFORD                          OR US  4236 -12287     0
+NWUS46 KMTR     SAN_FRANCISCO                    CA US  3659 -12184     0
+NWUS46 KOTX     SPOKANE                          WA US  4768 -11762     0
+NWUS46 KPDT     PENDLETON                        OR US  4568 -11884     0
+NWUS46 KPQR     PORTLAND                         OR US  4556 -12252     0
+NWUS46 KSEW     SEATTLE                          WA US  4768 -12225     0
+NWUS46 KSGX     SAN_DIEGO                        CA US  3290 -11705     0
+NWUS46 KSTO     SACRAMENTO                       CA US  3859 -12137     0

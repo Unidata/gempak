@@ -1,0 +1,7 @@
+$CC $CFLAGS -c nagrib.c
+$FC $LDFLAGS -o $OS_BIN/nagrib_nc nagrib.o \
+		$OS_LIB/nagrib.a $OS_LIB/ginitp_alt.o \
+		$OS_LIB/gendp_alt.o $GEMLIB $CGEMLIB \
+		$GPLT $DEVICE $OS_LIB/nc.a $OS_LIB/gn.a \
+		$CGEMLIB $GEMLIB -lm
+$RM *.o

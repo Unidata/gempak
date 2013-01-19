@@ -1,0 +1,36 @@
+GDATTIM first                                                                                                                             
+GLEVEL  0                                                                                                                               
+GVCORD  none                                                                                                                            
+PANEL   0                                                                                                                               
+SKIP    0                                                                                                                               
+SCALE   0                                                                                                                               
+GDPFUN  mul(3.28,hght)!mul(3.28,hght)!mul(3.28,hght)!mul(3.28,hght)!mul(3.28,hght)!mul(3.28,hght)                                       
+TYPE    c                                                                                                                               
+CONTUR  1                                                                                                                               
+CINT    500;1000!1500;2000!2500;3000!3500;4000!1000/5000/8000!1000/8000                                                                 
+LINE    2/10/1/0!3/1/1/0!5/1/1/0!6/1/1/0!29/1/1/0!11/1/2/0                                                                              
+FINT                                                                                                                                    
+FLINE                                                                                                                                   
+HILO    0                                                                                                                               
+HLSYM   0                                                                                                                               
+CLRBAR  0                                                                                                                               
+WIND    bk0                                                                                                                             
+REFVEC                                                                                                                                  
+TITLE   0                                                                                                                               
+TEXT    .6/22/2/hw                                                                                                                      
+CLEAR   y                                                                                                                               
+GAREA   23.6;-119.9;46.0;-62.3                                                                                                          
+PROJ    STR/90.0;-105.0;0.0                                                                                                             
+MAP     1/1/2                                                                                                                           
+LATLON  0                                                                                                                               
+DEVICE  xw                                                                                                                              
+STNPLT                                                                                                                                  
+SATFIL                                                                                                                                  
+RADFIL                                                                                                                                  
+LUTFIL                                                                                                                                  
+STREAM                                                                                                                                  
+POSN    0                                                                                                                               
+COLORS  0;                                                                                                                              
+MARKER  0                                                                                                                               
+GRDLBL  0                                                                                                                               
+FILTER  3                                                                                                                               

@@ -1,0 +1,16 @@
+SFFILE  Surface data file                                                       
+GDFILE  Grid file                                                               
+SFPARM  Surface parameter list                                                  
+DATTIM  Date/time                                                               
+DTAAREA Data area for OA                                                        
+GUESS   Guess file                                                              
+GUESFUN Guess grid                                                              
+GAMMA   Convergence parameter                                                   
+SEARCH  Search radius/Extrapolation                                             
+NPASS   Number of passes                                                        
+QCNTL   Quality control threshold                                               
+OABND   Bounds file(s) to use for 'blocking'                                    
+GDATTIM Grid date/time                                                          
+GFUNC   Scalar grid                                                             
+GLEVEL  Grid level                                                              
+GVCORD  Grid vertical coordinate                                                

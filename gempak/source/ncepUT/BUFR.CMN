@@ -1,0 +1,45 @@
+	REAL*8		R8BFMS
+
+	PARAMETER	( R8BFMS = 10.0E10 )
+C*					"Missing" value for BUFR data
+C*
+	REAL*8		R8DIFD
+	PARAMETER	( R8DIFD = 10.0E6 )
+C*					Fuzziness to use when checking
+C*					for BUFR "missing"
+C*
+	PARAMETER	( MXBFRM = 20000 )
+C*					Maximum number of bytes in a
+C*					BUFR message
+C*
+	PARAMETER	( MXBFLV = 255 )
+C*					Maximum number of replications
+C*					(i.e. levels) of a particular
+C*					descriptor that can be stored
+C*					in BUFR using 8-bit delayed
+C*					replication
+C*
+	PARAMETER	( MXBFRR = ( MXBFLV * 8 ) )
+C*					Maximum number of bytes of a
+C*					character string that can be
+C*					stored in BUFR using 8-bit
+C*					delayed replication
+C*
+	PARAMETER	( MXBFLV16 = 1000 )
+C*					Current maximum number of
+C*					replications (i.e. levels) of
+C*					a particular descriptor that
+C*					will be stored in BUFR using
+C*					16-bit delayed replication
+C*					(since the size of an entire
+C*					BUFR message is currently 
+C*					limited to 20000 bytes!)
+C*
+	PARAMETER	( MXBFRR16 = ( MXBFLV16 * 8 ) )
+C*					Current maximum size in bytes
+C*					of a character string that will
+C*					be stored in BUFR using 16-bit
+C*					delayed replication
+C*					(since the size of an entire
+C*					BUFR message is currently 
+C*					limited to 20000 bytes!)

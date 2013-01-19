@@ -1,0 +1,22 @@
+     SNFILE
+
+     SNFILE is the filename for an upper air data set.
+
+     The input for SNFILE may also be a file type. The following file
+     type may be input:
+
+		UAIR		observed upper air
+
+     When this file type is input, the program searches locally for the 
+     most recent file. If no files are found locally, the program
+     searches remotely for the most recent file. The remote directories 
+     are specified in the table DATA.TBL.
+
+     An optional base time may be included with the file type name,
+     following a bar (|). For example:
+
+                SNFILE = uair | base time
+
+     The base time may be any valid format for a GEMPAK date/time. 
+     Any missing parts of the date/time will be supplied by the 
+     system time.

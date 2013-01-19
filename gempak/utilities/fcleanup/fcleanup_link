@@ -1,0 +1,2 @@
+$CC $CFLAGS -o fcleanup fcleanup.c
+$RM *.o

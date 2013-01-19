@@ -1,0 +1,31 @@
+!************************************************************************
+! FILTER.TBL
+!
+! This table contains FILTER information. The maximum length of strings 
+! is shown in parenthesis. The format of the time filter entries should
+! be the same as the format of the forecast hour entries in the airmat.tbl,
+! non_sigmet.tbl, and gfa.tbl.  
+!
+! Note: Entries for the same type of filter could be entered in multiple
+!       lines to avoid a single lengthy line. For example:
+! 
+! FILTER	TIME	0;3;6
+! FILTER	TIME	9;12
+! 
+! is equivalent to
+! 
+! FILTER	TIME	0;3;6;9;12
+!
+!!
+! Log:
+! J. Wu/SAIC		07/04	created
+! E. Safford/SAIC	08/04	update for AWC defaults
+! E. Safford/SAIC	11/04	add 9-12 for outlooks
+! B. Yin/SAIC		07/05	add 0-0, 3-3, and 6-6
+! J. Wu/SAIC		06/06	add 0+, 3+, AIRM, and OTLK
+!************************************************************************
+!
+! Name	Type	Value (max 50, each 7)
+!
+FILTER	TIME	0;0+;3;3+;6;9;12;0-0;3-3;6-6;0-3;0-6;3-6;6-9;6-12;9-12;AIRM;OTLK
+!

@@ -1,0 +1,94 @@
+#!/bin/csh
+#
+# EZTHETAE
+#
+# This script displays theta-e, wind barbs, Lifted Index, and convergence.
+# Note that the LI is the "most unstable" LI from the four lowest levels of
+# the model.
+#
+# The user must supply the level.
+#
+#	Syntax:  ezthetae level
+#
+#	Example: ezthetae 850
+#
+##
+# Log:
+# B. Colman/SEA		 1994
+# R. Miller/COMET	 1994
+# S. Jacobs/NMC		10/94	Clean up
+#
+
+if ( ${1}x == x ) then
+   echo " GEMPAK shell script to plot wind, theta-e, LI, and convergence."
+   echo " The user must supply the level, "
+   echo " either on the command line or by prompting."
+
+   echo " "
+   echo " Enter the pressure level (e.g. 700)."
+   set lvl=$<
+
+else
+   set lvl  = $1
+endif
+
+# Source the file called settings.  This file contains commands to set
+# environment variables for the model name and device driver.
+
+source settings
+
+gdcntr << EOF
+GDATTIM = all
+GLEVEL  = $lvl
+GVCORD  = pres
+GFUNC   = mul(-1.,div(wnd))
+CINT    = 1//0
+LINE    = 4/1/2
+TITLE   = 1=white/-3/~  $model  @ CONVERGENCE (SHADED)
+DEVICE  = $dev
+HILO    =
+CLEAR   = yes
+PANEL   = 0
+SCALE   = 5
+CONTUR  = 1/1
+SKIP    = /1
+FINT    = 1/0 
+FLINE   = 101;22-26;28;29
+CTYPE   = f
+r
+
+GFUNC   = thte(pres,tmpc,dwpc)
+CINT    = 4
+SCALE   = 0
+LINE    = 6/1/3
+CLEAR   = NO
+TITLE   = 1=white/-2/THETA-E (DEG K)
+CTYPE   = c
+r
+
+CTYPE   = c
+GLEVEL  = 8400:9800
+GVCORD  = sgma
+GFUNC   = sm5s[lft4]
+CLEAR   = no
+SCALE   = 0
+TITLE   = 1=white/-1/BEST LIs (SOLID CONTOURS), AND WINDS (KTS)
+CINT    = 2//0
+LINE    = 2/-3/2
+r
+
+ex
+EOF
+
+gdwind << EOFF
+GLEVEL  = $lvl
+GVCORD  = pres
+GVECT   = wnd
+WIND    = bk20/1.3/2
+TITLE   = 0
+r
+
+;2
+;l
+ex
+EOFF

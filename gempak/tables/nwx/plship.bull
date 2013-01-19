@@ -1,0 +1,35 @@
+! PLSHIP.BULL
+!
+! This table contains the bulletin/station information to be used
+! with the Plain Language ship reports text files     
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+!
+SXVD1  KBIX     KEESLER_AFB/BILOXI               MS US  3042  -8892    10
+SXVD01 KCLE     CLEVELAND/HOPKINS                OH US  4142  -8187   245
+SXVD1  KCRP     CORPUS_CHRISTI_INTL              TX US  2777  -9750    13
+SXVD01 KDTX     DETROIT_METRO                    MI US  4223  -8333   202
+SXVD1  KFMY     FORT_MYERS/PAGE_FLD              FL US  2658  -8187     5
+SXVD1  KGLS     GALVESTON/SCHOLES_&              TX US  2930  -9480    16
+SXVD1  KHOU     HOUSTON/WILL_HOBBY               TX US  2965  -9528    14
+SXVD1  KMIA     MIAMI_INTL_AIRPORT               FL US  2582  -8028     4
+SXVD1  KNEW     NEW_ORLEANS/LAKEFRO              LA US  3005  -9003     3
+SXVD1  KORF     NORFOLK_INTL_ARPT                VA US  3690  -7620     9
+SXVD1  KSAN     SAN_DIEGO/LINDBERG               CA US  3273 -11717     9
+SXVD1  KSAV     SAVANNAH_MUNICIPAL               GA US  3213  -8120    15
+SXVD1  PANC     ANCHORAGE_INTL_ARPT              AK US  6117 -15002    40
+SXUS82 KMFL     MIAMI                            FL US  2575  -8038     5
+SXVD40 KNMW     QUILLAYUTE_STATE                 WA US  4795 -12455    62
+SXVD82 KJAX     JACKSONVILLE                     FL US  3048  -8170     9
+SXVD82 KMLB     MELBOURNE_REGIO                  FL US  2810  -8065    11
+SXVD86 KSEW     SEATTLE-TACOMA                   WA  US 4745  -12230  137
+SXVD86 KPQR     PORTLAND_INTL_A                  OR  US 4560  -12260   12
+SXVD86 KEKA     EUREKA                           CA  US 4079  -12417   18
+SXVD86 KMTR     SAN_FRANCISCO_I                  CA  US 3761  -12238    5
+SXVD86 KLOX     LOS_ANGELES_INT                  CA  US 3393  -11840   32
+SXVD86 KSGX     SAN_DIEGO/LINDB                  CA  US 3192  -11657    9
+

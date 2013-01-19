@@ -1,0 +1,37 @@
+OPSYS = FreeBSD
+
+CC = cc
+FC = f77
+
+MOTIFINC  = -I/usr/X11R6/include
+MOTIFLIBS = /usr/X11R6/lib/libXm.a -lXmu -lSM -lICE -lXp -lXext
+#
+# use these if old freebsd version uses lesstif instead of openmotif
+#OPENMOTIFROOT = $(NAWIPS)/openmotif/$(NA_OS)
+#MOTIFINC  = -I$(OPENMOTIFROOT)/include
+#MOTIFLIBS = $(OPENMOTIFROOT)/lib/libXm.a -lXmu -lSM -lICE -lXp -lXext
+
+XWINCDIR  = -I/usr/X11R6/include
+
+COPT = -DUNDERSCORE -D$(OPSYS) $(GEMINC) $(MOTIFINC) $(XWINCDIR) -O # -g
+FOPT =  -fno-second-underscore -fd-lines-as-comments $(GEMINC) # -g
+FOPT_NOGLOB = -fno-globals -Wno-globals
+NCII = "-I../libsrc"
+NCOPT = "CPPFLAGS=-DNDEBUG -Df2cFortran" "FFLAGS=-O -Wno-globals" "CFLAGS=-O $(NCII)" "CXX= "
+JASPEROPT = '--disable-libjpeg'
+XML2OPT = 'CC=$(CC)' '--with-iconv'
+PKG-CONFIG-OPT='CFLAGS=-pthread'
+
+CFLAGS = $(COPT) 
+CFLAGS_DB = $(COPT)
+FFLAGS = $(FOPT)
+LDM_FLAGS = 
+
+
+X11LIBDIR = -L/usr/X11R6/lib
+
+BUFRFLAGS = -O -D_POSIX_SOURCE  -DNO_MSG_IPC
+
+SYSLIBS = 
+
+ARSLEEP = sleep 1 ;

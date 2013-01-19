@@ -1,0 +1,56 @@
+C************************************************************************
+C*  GEMPRM.LOG								*
+C*									*
+C*  Log file for changes to GEMPRM.XXX files				*
+C*									*
+C**									*
+C* Log:									*
+C* 				Changes not logged before 4/96		*
+C*									*
+C* G. Krueger/EAI	 4/96	Added TMCK for Kelvin to Celsius	*
+C*				conversions				*
+C* L. Sager/NCEP	 4/96	Changed OMEGA (angular velocity of the	*
+C*				Earth) to NCEP standard.		*
+C* S. Jacobs/NCEP	 5/96	Added LLMDGG from DGCMN.CMN		*
+C* S. Jacobs/NCEP	 5/96	Increased LLSTFL from 2000 to 3800	*
+C* S. Jacobs/NCEP	 6/96	Changed MFNONE to MFUNKN; Added MFTEXT	*
+C* S. Jacobs/NCEP	 7/96	Added IFINVD for invalid image format	*
+C* S. Jacobs/NCEP	 7/96	Removed: GEOTBL, PCVTBL, PRMFLG, SFSTBL,*
+C*					 SNSTBL, SNWTBL, GRDNAV, NMCPRM,*
+C*					 IMTYFL, GEMERR, GEMTBL, GEMEXE,*
+C*					 GEMGLB, GEMHLP, MAPLOC, GPLERR,*
+C*					 GEMPDF, GEMNTS			*
+C* S. Jacobs/NCEP	 8/96	Increased LLMXGD from 72000 to 97000,	*
+C*				and decreased LLMDGG from 2880000 to	*
+C*				2304000 for all UNIX systems		*
+C* M. Linda/GSC		12/96	Change IGDSZM from 2*LLMXPT to 5*LLMXPT	*
+C* S. Jacobs/NCEP	 2/97	Removed JOFLDT and JOFLST		*
+C* C. Lin/EAI            6/97   Add 'S' in sysup, syslo                 *
+C*                              Removed carray                          *
+C* C. Lin/EAI	 	 6/97	Changed NDVCHR from 20->24		*
+C* S. Maxwell/GSC 	 7/97	Added LLMXLN for input length		*
+C* T. Lee/GSC		10/97	Added MFCOUN for watch-by-county data	*
+C* I. Durham/GSC	12/97	Made NDVCHR=27 for GQSIZD addition.	*
+C* T. Lee/GSC		 7/98	Changed NDVCHR from 27->28 for CRVSCL	*
+C* T. Lee/GSC		 7/98	Changed NDVCHR to 27; DDEV not passed	*
+C* D. Kidwell/NCEP	 5/99	Increased LLSTFL from 3800 to 4800 and	*
+C*                              MMHDRS from 4000 to 5000                *
+C* S. Jacobs/NCEP	 8/99	Added CAT_* and SCAT_* parameters	*
+C* S. Law/GSC           11/99   CAT_MISC -> CAT_MSC                     *
+C* M. Li/GSC		05/00	Added MXFLSZ and MXNMFL			*
+C* R. Curtis/EAI         9/00   Added IFNCDF for NetCDF files           *
+C* S. Chiswell/Unidata	11/00	Added IFNEXZ for compressed NIDS files	*
+C* S. Jacobs/NCEP	 2/01	Made MTLNUX a separate machine type	*
+C* T. Piper/SAIC	07/04	Added M2SM, SM2M, M2NM, NM2M		*
+C* D. Kidwell/NCEP	 4/05	Increased MMPARM from 40 to 44          *
+C* T. Piper/SAIC	05/05	Increased LLMXPT from 10K to 50K	*
+C* T. Piper/SAIC	06/05	Increased LLMDGG from 2304000 to 4000000*
+C* T. Piper/SAIC        07/05   Increased LLMXPT from 50K to 80K        *
+C* m.gamazaychikov/SAIC	01/06	Added MXTMPL for template string length	*
+C* F. J. Yen/NCEP	 3/07	Added MAX_CNTY (mirror gemprm.h);&MAXWFO*
+C* S. Gilbert/NCEP	 8/07	Added MXXPTS for GDCROSS		*
+C* T. Piper/SAIC	08/07	Increased LLSTFL from 4800 to 30000	*
+C* T. Piper/SAIC	08/07	Redefined MMHDRS as LLSTFL + LLMXTM	*
+C* X. Guo/CWS           05/10   Added IFHINIDS                          *
+C************************************************************************
+

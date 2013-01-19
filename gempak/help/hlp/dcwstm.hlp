@@ -1,0 +1,74 @@
+
+DCWSTM
+
+DCWSTM decodes winter storm reports from a real-time data feed, 
+or from a file fed to the program through standard input, 
+and writes the data to an ASCII file.  The program is controlled 
+by inputs to the command line.
+
+The inputs are program options and the output file name or template.
+For example, for real-time data feeds:
+    
+	dcwstm [options] output_file
+
+If running the program interactively with standard input, the -c
+option must be used.  The input file must also be specified.
+For example:
+
+	dcwstm -c YYMMDD/HHNN [other_options] output_file < input_file
+    
+A template may be used to specify the output file name.  The file
+name template uses the date and time of the bulletin or report
+to replace the following characters.
+
+	YYYY or YY	Year with or without the century
+	MM		Month number
+	DD		Day
+	HH		Hour
+	NN		Minute
+
+
+The format of the output ASCII file is as follows:
+
+|Message|Start|Stop|Bulletin  |Weather|Corr/test|Cancel
+|type   |time |time|originator|type   |flag     | flag
+
+Zone table entries, one per line, formatted as shown in the example below
+(zone information lines should appear just as they do in $GEMTBL/stns/zones.tbl)
+.        .      .                                .  .   .     .         .  . .
+.        .      .                                .  .   .     .         .  . .
+.        .      .                                .  .   .     .         .  . .
+
+where:
+
+Message type is         WRN     warning
+                        WTC     watch
+                        ADV     advisory
+
+Start time is           YYMMDD/HHMM - GEMPAK date/time format
+Stop time is            YYMMDD/HHMM - GEMPAK date/time format
+
+Bulletin originator is  KALY, KBGM, etc. from 2nd field of 1st line of bulletin
+
+Weather type is         SNOW    snow
+                        ICE     ice
+                        SL      sleet
+                        FZRA    freezing rain
+                        SLFZ    sleet/freezing rain
+
+Corr/test flag is       0       Not a correction; not a test
+                        1       A correction; not a test
+                        2       Not a correction; a test
+                        3       A correction; a test
+
+Cancel flag is          0       Not a cancellation
+                        1       A cancellation
+
+Example
+-------
+
+|ADV|020425/0913|020425/1600|KBOX| |0|0
+MAZ005   210050 Western_Middlesex                MA US  4252  -7136     0  0 BOX
+MAZ006   210060 Western_Essex                    MA US  4270  -7100     0  0 BOX
+NHZ012   290120 Hillsborough                     NH US  4293  -7173     0  0 BOX
+

@@ -1,0 +1,17 @@
+! ICE.BULL
+!
+! Location information for the following product:
+! Ice_Forecast.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+! Log:
+! A. Hardy/NCEP		11/04	separated out the lat/lons
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+FZAK80 PAFC     ALASKA/PACIFIC_RFC               AK US  6115 -14997     0
+FZAK80 PAFC     ANCHORAGE                        AK US  6135 -14977     0
+FZUS81 KBUF     BUFFALO                          NY US  4293  -7870     0
+FZUS81 KCLE     CLEVELAND                        OH US  4140  -8186     0

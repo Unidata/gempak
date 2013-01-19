@@ -1,0 +1,58 @@
+
+                                 MANUAL GROUP
+
+
+This pop-up is located under the "Arrange" pull-down menu and can be invoked 
+by clicking "Manual-group," or by typing CTRL-G in the NTRANS panel.
+
+The "Frame Selection" panel allows selection of incremental search or string 
+search.  Radio buttons are provided for selection one of the searching methods.
+Incremental Searching is the default.
+
+In incremental searching, a starting frame number, an incremental step number 
+and an end frame number are required as input.  Once the "Apply" button in this 
+panel is clicked, the frames that correspond to the starting, ending and 
+incremental numbers will be highlighted in the "Frame List" Panel.  Hitting 
+the RETURN (ENTER) KEY when one of the input dialogue text boxes is active 
+will have the same effect as clicking the "Apply" button.
+
+String searching provides an easy alternative way to select frames.  The user 
+can type a key string into the "Search" dialogue box, then click the "Apply" 
+button or hit RETURN.  All the frames whose names contain the key string as 
+substring will be highlighted in the Frame List Panel.
+
+The "Clear" button is designed to de-select all of the current highlighted 
+items.
+
+     NOTE:  The desired selection method should be set first.
+
+The "List of Frames" panel consists of a scrolled list of frame titles.  All 
+the frame titles are listed with their frame order index.
+
+To select a frame, click on the chosen title with the left mouse button.  
+Each item is in toggle mode, which means if you click on the highlighted item, 
+that item will be de-selected.
+
+The "List of Groups" panel consists of a scrolled list of group names.  To 
+select a frame, click on the chosen title with the left mouse button.  Each 
+item is in toggle mode, which means if you click on the highlighted item, 
+that item will be de-selected.
+
+The "Group Name Dialogue Box" is used for entering the desired group name 
+for the currently selected group of frames.  A group name is required before 
+clicking the "Add & Display" or "Add to List" buttons.  Hit the RETURN key 
+when the mouse pointer is inside the text dialogue box to initiate the 
+"Add to Group List" button -- the currently defined group will be saved into 
+the group list and the system is ready for the next grouping process.
+
+The "Add to List" button assigns the current set of highlighted frames to 
+the group name in the Group Name Dialogue Box, and saves this group into 
+the Group List.  The frame selections are cleared so that a new group may 
+be defined.
+
+The "Add & Display" button will perform the "Add to Group List" function 
+and load the current group for viewing.  The group generation panel will 
+disappear.  When the main NTRANS menu bar becomes active, the group loading 
+process is finished.
+
+The "CANCEL" button de-activates the current pop-up window.

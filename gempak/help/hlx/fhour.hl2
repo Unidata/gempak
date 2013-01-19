@@ -1,0 +1,21 @@
+     FHOUR
+
+     FHOUR is the forecast hour, e.g., 18, or 24, which defines 
+     the "f" value in the BUFRFIL name, as follows:
+
+	FHOUR  		f
+	-----	       ---
+	0		A
+	6		B
+	12		C
+	18		D
+	24		E
+	30		F
+	36		G
+	42		H
+	48		I
+	60		J
+	72		K
+
+     It also defines the forecast hour for the ASCII intermediate 
+     input/output file, UKAFIL. 	

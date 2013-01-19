@@ -1,0 +1,84 @@
+Checklist for Making New Software Release
+-----------------------------------------
+
+Check each item, when completed, when updating the version of RSL.
+
+1. Change version number reference in index.html, in the directory doc/.
+
+2. Change README to indicate the new version number and freeze date.
+
+3. Change CHANGES, change FREEZE date.
+
+4. In doc/, change version number reference in RSL_radar_intro.html.
+
+5. In doc/, run 'netscape index.html'.
+
+6. Check that the structures in RSL_structures.html, RSL_ray_struct.html,
+   etc., match those in rsl.h.
+
+7. Change the version number in Makefile.am
+
+8. Change the version number in configure.in
+
+============================================================================
+The following are the steps for freezing a new version.
+
+1. Before freezing:
+
+   a. cd rsl
+   b. autoreconf
+   c. configure
+   d. setenv LD_LIBRARY_PATH `pwd`:$LD_LIBRARY_PATH
+   e. make
+   f. cd examples
+   g. make
+   h. run_tests
+
+2. cd rsl
+   make install
+   cvs commit   (Tagging is done in step 4.)
+
+3. make dist
+   Unpack it and try to build it -- 'make distcheck' will not work.
+
+*************************************************************
+*** run_tests contains, at least, the following commands. ***
+*************************************************************
+   any_to_gif /DATA2/merritt/nex.file.{2,1}
+   xv dz_sweep.gif   -- Look familiar?
+   killer_sweep /DATA2/merritt/nex.file.{2,1} | less  -- Check 'OUT OF ORDER'.
+   wsr88d_to_gif /DATA2/merritt/nex.file.{2,1}
+   xv dz_sweep.gif   -- Look familiar?
+   wsr_hist_uf_test /DATA2/merritt/nex.file.2
+   diff *.dat     (There should be no differences.)
+   bscan /DATA2/merritt/pafb_swap
+   bscan /DATA2/merritt/pafb_unswap
+
+4. make install
+   cvs rtag v1_? rsl    (Tag only when step 3 works.)
+
+5. scp rsl-v1.?.tgz trmm:/public/ftp/pub/software
+   (Reset rsl-LATEST to point to this new version).
+
+6. mv rsl-v1.?.tgz distributions/
+
+7. Copy the doc/ directory to the http on trmm:
+   
+   scp -r doc/* trmm:/public/httpd/htdocs/trmm_office/software/rsl
+   scp -r README trmm:/public/httpd/htdocs/trmm_office/software/rsl
+   scp -r CHANGES trmm:/public/httpd/htdocs/trmm_office/software/rsl
+
+8. Install on trmm
+   Install on raindrop1
+   Install on nyquist
+   Install on echo
+
+9. Make a patch.
+
+    cvs rdiff -r v1_10 rsl > rsl.v1.10_to_v1.11.patch
+    gzip rsl.v1.10_to_v1.11.patch
+    scp rsl.v1.10_to_v1.11.patch.gz trmm:/public/ftp/pub/software
+  
+10. Change the version number in the mainline distribution (rsl/) to
+    the next value.  That's in Makefile.am and configure.in.
+

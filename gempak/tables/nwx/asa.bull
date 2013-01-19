@@ -1,0 +1,80 @@
+! ASA.BULL
+!
+! Location information for the following product:
+! Air_Stagnation_Advisory.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+AECA42 TJSJ     SAN_JUAN                         PR US  1843  -6600     0
+AEUS41 KAKQ     WAKEFIELD                        VA US  3697  -7700     0
+AEUS41 KALY     ALBANY                           NY US  4268  -7383     0
+AEUS41 KBGM     BINGHAMTON                       NY US  4220  -7598     0
+AEUS41 KBOX     TAUNTON                          MA US  4195  -7112     0
+AEUS41 KBTV     BURLINGTON                       VT US  4445  -7315     0
+AEUS41 KBUF     BUFFALO                          NY US  4293  -7870     0
+AEUS41 KCAR     CARIBOU                          ME US  4577  -6862     0
+AEUS41 KCLE     CLEVELAND                        OH US  4140  -8186     0
+AEUS41 KCTP     STATE_COLLEGE                    PA US  4079  -7786     0
+AEUS41 KGYX     GRAY                             ME US  4388  -7025     0
+AEUS41 KLWX     BALTIMORE_MD/_WASHINGTON_DC      VA US  3897  -7747     0
+AEUS41 KOKX     NEW_YORK                         NY US  4086  -7286     0
+AEUS41 KPBZ     PITTSBURGH                       PA US  4052  -8020     0
+AEUS41 KPHI     MOUNT_HOLLY                      NJ US  4000  -7480     0
+AEUS41 KRLX     CHARLESTON                       WV US  3831  -8170     0
+AEUS41 KRNK     BLACKSBURG                       VA US  3720  -8041     0
+AEUS42 KCAE     COLUMBIA                         SC US  3393  -8112     0
+AEUS42 KCHS     CHARLESTON                       SC US  3288  -8001     0
+AEUS42 KFFC     PEACHTREE_CITY                   GA US  3336  -8455     0
+AEUS42 KGSP     GREENVILLE/SPARTANBURG           SC US  3488  -8222     0
+AEUS42 KILM     WILMINGTON                       NC US  3427  -7791     0
+AEUS42 KJAX     JACKSONVILLE                     FL US  3047  -8169     0
+AEUS42 KMFL     MIAMI                            FL US  2575  -8037     0
+AEUS42 KMHX     NEWPORT/MOREHEAD_CITY            NC US  3477  -7687     0
+AEUS42 KMLB     MELBOURNE                        FL US  2811  -8065     0
+AEUS42 KRAH     RALEIGH                          NC US  3577  -7868     0
+AEUS42 KTBW     TAMPA_BAY_AREA/RUSKIN            FL US  2770  -8240     0
+AEUS43 KBIS     BISMARCK                         ND US  4677 -10075     0
+AEUS43 KDDC     DODGE_CITY                       KS US  3775  -9995     0
+AEUS43 KDMX     DES_MOINES                       IA US  4172  -9372     0
+AEUS43 KDTX     DETROIT                          MI US  4268  -8347     0
+AEUS43 KEAX     KANSAS_CITY/PLEASANT_HILL        MO US  3879  -9426     0
+AEUS43 KFSD     SIOUX_FALLS                      SD US  4358  -9672     0
+AEUS43 KGLD     GOODLAND                         KS US  3936 -10169     0
+AEUS43 KICT     WICHITA                          KS US  3765  -9744     0
+AEUS43 KIND     INDIANAPOLIS                     IN US  3970  -8627     0
+AEUS43 KIWX     NORTHERN_INDIANA                 IN US  4134  -8569     0
+AEUS43 KLMK     LOUISVILLE                       KY US  3811  -8563     0
+AEUS43 KLOT     CHICAGO                          IL US  4159  -8808     0
+AEUS43 KLSX     ST_LOUIS                         MO US  3868  -9068     0
+AEUS43 KMKX     MILWAUKEE/SULLIVAN               WI US  4295  -8854     0
+AEUS43 KOAX     OMAHA/VALLEY                     NE US  4131  -9636     0
+AEUS43 KTOP     TOPEKA                           KS US  3906  -9562     0
+AEUS44 KBMX     BIRMINGHAM                       AL US  3316  -8677     0
+AEUS44 KFWD     DALLAS/FORT_WORTH                TX US  3283  -9729     0
+AEUS44 KJAN     JACKSON                          MS US  3231  -9008     0
+AEUS44 KLIX     NEW_ORLEANS                      LA US  3032  -8981     0
+AEUS44 KLUB     LUBBOCK                          TX US  3352 -10187     0
+AEUS44 KLZK     LITTLE_ROCK                      AR US  3483  -9225     0
+AEUS44 KMEG     MEMPHIS                          TN US  3513  -8980     0
+AEUS44 KMRX     MORRISTOWN                       TN US  3615  -8340     0
+AEUS44 KOUN     NORMAN                           OK US  3522  -9745     0
+AEUS45 KABQ     ALBUQUERQUE                      NM US  3502 -10662     0
+AEUS45 KBOI     BOISE                            ID US  4356 -11620     0
+AEUS45 KBOU     DENVER                           CO US  4000 -10526     0
+AEUS45 KCYS     CHEYENNE                         WY US  4115 -10480     0
+AEUS45 KGJT     GRAND_JUNCTION                   CO US  3911 -10851     0
+AEUS45 KPIH     POCATELLO/IDAHO_FALLS            ID US  4290 -11258     0
+AEUS45 KPSR     PHOENIX                          AZ US  3343 -11201     0
+AEUS45 KREV     RENO                             NV US  3956 -11979     0
+AEUS45 KSLC     SALT_LAKE_CITY                   UT US  4077 -11194     0
+AEUS45 KTFX     GREAT_FALLS                      MT US  4745 -11137     0
+AEUS45 KTWC     TUCSON                           AZ US  3222 -11094     0
+AEUS46 KLOX     LOS_ANGELES/OXNARD               CA US  3420 -11912     0
+AEUS46 KMTR     SAN_FRANCISCO                    CA US  3659 -12184     0
+AEUS46 KOTX     SPOKANE                          WA US  4768 -11762     0
+AEUS46 KPDT     PENDLETON                        OR US  4568 -11884     0
+AEUS46 KPQR     PORTLAND                         OR US  4556 -12252     0
+AEUS46 KSEW     SEATTLE                          WA US  4768 -12225     0

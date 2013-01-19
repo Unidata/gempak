@@ -1,0 +1,38 @@
+                     GDMLEV/GDMLEV_NC
+
+Derived from GDMAP, this utility plots data computed from GEMPAK grid
+files onto a map while making provisions to loop through a series of
+levels over a range of forecast times.  The software references the Y-AXIS 
+variable for the levels, and colorizes thedata by values assigned to 
+COLORS and CINT.
+
+At AWC the present day use of this application is with the RAP-ICE
+production software in producing NTRANS Meta-Files.  Its intent is to
+provide a diagnostic of the output from the RAP-ICE algorithms.  The data 
+from the RAP-ICE meta files can be looped through a range of levels for
+a constant time or on a constant level by forecast time.
+
+Usage example:  In this example we render the depiction for four different
+icing regimes with colors of 6,5,3 and 2.  Icing regimes are plotted with
+data values of 1,2,3 and 4.
+
+gdmlev_nc <<EOF
+   \$mapfil=hipowolgsf+tropfirs.awc+carrfa.awc+gulffa.awc+hifiwo.ncp
+   stnplt =
+   gdattim=$times
+   yaxis=1000/300
+   gfunc=ice
+   gdfile=$icegrid
+   gvcord=pres
+   garea=22.5;-117;46.5;-64
+   proj=str/90;-98;0/5;3;0;0
+   map=18//1+8//3+4//3+5//3+8//3
+   text=0.8/22//hw
+   cint=.8;1.8;2.8;3.8;4.8
+   colors=0;6;5;3;2
+   scale=0
+   device=nc|$NMETA2|1;0.73
+   title=6/-1/~^ @ $MDL, 1=GEN 2=UNSTBL 3=WRMST 4=ZR|^ @ Types ICG by Category
+   r <CR>
+   exit
+EOF

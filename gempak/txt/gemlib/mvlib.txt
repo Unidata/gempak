@@ -1,0 +1,23 @@
+
+
+                Data Conversion (MV) Library
+
+
+The GEMPAK data conversion library provides functions to convert
+data from one type of machine to another.  
+
+The functions, MV_SWP4 and MV_SWP2, swap bytes for data being
+transferred to or from VAX machines.
+
+Functions to convert 32-bit real numbers to and from IEEE, IBM, or
+VAX data types are also included.  These functions are called 
+MV_XY32 and convert from machine type X to machine type Y.  X and Y
+have the following meanings:
+
+            E      IEEE
+            I      IBM
+            V      VMS
+
+The subroutine, ST_ETOA, in the string library, can be used to
+convert EBCDIC to ASCII.
+

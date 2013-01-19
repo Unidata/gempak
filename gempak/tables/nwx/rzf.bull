@@ -1,0 +1,13 @@
+! RZF.BULL
+!
+! Location information for the following product:
+! Regional_zone_forecast.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+FPUS53 KGID     HASTINGS                         NE US  4063  -9837     0
+FPUS53 KLBF     NORTH_PLATTE                     NE US  4113 -10069     0
+FPUS53 KOAX     OMAHA/VALLEY                     NE US  4131  -9636     0

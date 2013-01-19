@@ -1,0 +1,8 @@
+!
+! NCARGRIB2.TBL -- GRIB 1 parameter conversion table version 2
+!
+!ID# NAME                             UNITS                GNAM         SCALE   MISSING  HZREMAP DIRECTION
+!
+201 Base reflectivity tile 0          dBZ                  N0R              0  -9999.00        0         0
+210 Echo Tops                         m                    NET              0  -9999.00        0         0
+255 Missing                           -                    MISS             0  -9999.00        0         0

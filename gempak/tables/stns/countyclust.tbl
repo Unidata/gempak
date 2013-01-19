@@ -1,0 +1,397 @@
+! COUNTYCLUST.TBL
+!
+! This table contains county clusters and independent city/county clusters.
+! For ease of visual maintenance only, the county clusters are organized by 
+! region, and alphabetically by WFO within a region. The independent city/
+! county clusters are organized by state and alphabetically by county which
+! encircles the cities.
+!
+! county cluster definition:
+! WFO|cluster name|cntyFIPScode1 + cntyFIPScode2 + ... + cntyFIPScodeN
+!
+! indepedent cities/county definition
+! State|county name|cntyFIPScode + cityFIPScode1 + cityFIPScode2 + ... + 
+!		    cityFIPscodeN
+!
+!   - WFO is the WFO 3-letter identifier
+!   - the cluster or county name may not exceed 32 characters
+!   - up to 50 FIPS codes may be listed
+!   - the entire definition may not exceed 256 characters
+!
+! Log:
+! D.W.Plummer/NCEP	02/01
+! T. Lee/SAIC		 6/02	Commented county clusters; Added county &
+!				independent cities
+! G. Grosshans/SPC	 7/03	Updated to add Bristol independent city
+!				in VA per WFO MRX MIC request 
+! G. Grosshans/SPC       6/04   Added St. Louis City and Dallas clusters
+! G. Grosshans/SPC       6/04   Added proposed Marine zone clustering
+! G. Grosshans/SPC	08/04	Removed marine clustering for JAX for
+!				Duval and Nassau counties, they were
+!				clusterd to mzone that was deleted.
+! A. Hardy/NCEP		 2/05	Removed permanent groups, put into own table
+!				and removed Clifton Forge, no longer ind.city
+! G. Grosshans/SPC	 7/07	Added NYC cluster per OKX and J. Franklin
+! G. Grosshans/SPC	 8/07	Deleted NYC cluster per Patrick Maloit email
+!				on 8/1/07 631-924-0383, SVR WX Pgm Leader
+!--------------------------------------------------------------------------
+!
+! Independant cities within counties
+!
+! State | County | City
+! Albemarle + Charlottesville
+VA|Albemarle|51003+51540
+!
+! Alleghany + Covington
+VA|Alleghany|51005 + 51580 
+!
+! Augusta + Staunton + Waynesboro
+VA|Augusta|51015 + 51790 + 51820
+!
+! Bedford + Bedford
+VA|Bedford|51019 + 51515
+!
+! Fairfax + Fairfax
+VA|Fairfax|51059 + 51600
+!
+! Frederick + Winchester
+VA|Frederick|51069 + 51840
+!
+! Greensville + Emporia
+VA|Greensville|51081 + 51595
+!
+! Henry + Martinsville
+VA|Henry|51089 + 51690
+!
+! Pittsylvania + Danville
+VA|Pittsylvania|51143 + 51590
+!
+! Prince William + Manassas + Manassas Park
+VA|Prince William|51153 + 51683 + 51685
+!
+! Roanoke + Salem + Roanoke
+VA|Roanoke|51161 + 51775 + 51770
+!
+! Rockingham + Harrisonburg
+VA|Rockingham| 51165 + 51660
+!
+! Rockbridge + Lexington + Buena Vista
+VA|Rockbridge|51163 + 51678 + 51530
+!
+! Washington + Bristol
+VA|Washington|51191 + 51520
+!
+! Wise + Norton
+VA|Wise|51195 + 51720
+!
+!--------------------------------------------------------------------------
+!
+! EASTERN REGION
+!
+! WFOs in ER below commented out will be added into the 
+! Optional clustering per Jason Franklin's email 
+! June 24, 2004
+!
+! AKQ - Southampton + Franklin counties in VA
+! Southampton + Franklin, VA
+AKQ|Southampton + Franklin, VA|51175 + 51620
+!
+! AKQ - Hampton + Newport_News counties in VA
+! Hampton + Newport_News, VA
+AKQ|Hampton + Newport_News, VA|51650 + 51700
+!
+! AKQ - Prince_George + Hopewell counties in VA
+! Prince_George + Hopewell, VA
+AKQ|Prince_George + Hopewell, VA|51149 + 51670
+!
+! AKQ - York + Poquoson counties in VA
+! York + Poquoson, VA
+AKQ|York + Poquoson, VA|51199 + 51735
+!
+! AKQ - Henrico + Richmond counites in VA
+! Henrico + Richmond, VA
+AKQ|Henrico + Richmond, VA|51087 + 51760
+!
+! AKQ - James_City + Williamsburg counites in VA
+! James_City + Williamsburg, VA
+AKQ|James_City + Williamsburg, VA|51095 + 51830
+!
+! AKQ - Currituck + Currituck Sound in NC
+! Currituck + Currituck Sound, NC
+AKQ|Currituck + Currituck Sound, NC|37053 + 676330
+!
+! ALY - Albany, NY Capital Region
+! Albany + Schenectady + Rensselaer + Saratoga
+! ALY|Albany, NY Capital Region|36001 + 36093 + 36083 + 36091
+!
+! BOX - Norfolk and Plymouth counties in MA 
+! Norfolk, MA + Plymouth, MA
+BOX|Norfolk + Plymouth, MA|25021 + 25023
+!
+! CAE - Columbia, SC Metro
+! Richland + Lexington
+! CAE|Columbia, SC Metro|45079 + 45063
+!
+! CAE - Augusta, GA Metro
+! Richmond + Columbia + Aiken (SC) + Edgefield (SC)
+! CAE|Augusta, GA Metro|13245 + 13073 + 45003 + 45037
+!
+! ILN - Columbus, OH Metro
+! Franklin + Union + Delaware + Licking + Fairfield
+! ILN|Columbus, OH Metro|39049 + 39159 + 39041 + 39089 + 39045
+!
+! ILN - Dayton, OH Metro
+! Montgomery + Greene
+! ILN|Dayton, OH Metro|39113 + 39057
+!
+! ILN - Cincinati, OH Metro
+! Hamilton + Butler + Clermont + Warren + 
+! Boone (KY) + Kenton (KY) + Campbell (KY) + Dearborn (IN)
+! ILN|Cincinati, OH Metro|39061+39017+39025+39165+21015+21117+21037+18029
+!
+! LWX - Washington, DC Metro
+! District of Columbia + Arlington (VA) + City of Alexandria (VA) + 
+! Fairfax (VA) + City of Fairfax (VA) + Prince William (VA) + 
+! City of Manassas (VA) + City of Manassas Park (VA) + Loudon (VA) + 
+! Prince Georges (MD) + Charles (MD) + Montgomery (MD) + Frederick (MD)
+! LWX|Washington, DC Metro|11001+51013+51510+51059+51600+51153+51683+51685+51107+24033+24017+24031+24021
+!
+! LWX - Baltimore, MD Metro
+! Baltimore + City of Baltimore + Anne Arundel + Howard + Harford + Carroll
+! LWX|Baltimore, MD Metro|24005 + 24510 + 24003 + 24027 + 24025 + 24013
+!
+! OKX - New York City, NY Metro
+! Bronx + New York (Manhattan) + Richmond (Staten Island) + 
+! Kings (Brooklyn) + Queens
+!OKX|New York City, NY Metro|36005 + 36061 + 36085 + 36047 + 36081
+!
+! PHI - Philadelphia, PA Metro
+! Philadelphia + Delaware + Montgomery + Bucks + 
+! Gloucester (NJ) + Camden (NJ) + Burlington (NJ)
+! PHI|Philadelphia, PA Metro|42101 + 42045 + 42091 + 42017 + 34015 + 34007 + 34005
+!
+!
+! SOUTHERN REGION
+!
+! BMX - Birmingham, AL Metro
+! Blount + Jefferson + St. Claire + Shelby
+! BMX|Birmingham, AL Metro|1009 + 1073 + 1115 + 1117
+!
+! BMX - Decatur, AL Metro
+! Morgan
+! BMX|Decatur, AL Metro|1103
+!
+! BMX - Florence, AL Metro
+! Colbert + Lauderdale
+! BMX|Florence, AL Metro|1033 + 1077
+!
+! BMX - Huntsville, AL Metro
+! Limestone + Madison
+! BMX|Huntsville, AL Metro|1083 + 1089
+!
+! BMX - Montgomery, AL Metro
+! Autauga + Elmore + Montgomery
+! BMX|Montgomery, AL Metro|1001 + 1051 + 1101
+!
+! FWD - Dallas/Fort Worth, TX Metro
+! Dallas + Tarrant
+FWD|Dallas/Fort Worth, TX Metro|48113 + 48439
+!
+! JAN - Jackson, MS Metro
+! Hinds + Madison + Rankin
+! JAN|Jackson, MS Metro|28049 + 28089 + 28121
+!
+! JAN - Columbus/Starkville, MS Metro
+! Clay + Lowndes + Oktibbeha
+! JAN|Columbus/Starkville, MS Metro|28025 + 28087 + 28105
+!
+! LCH - Beaumont, LA Metro
+! Jefferson
+! LCH|Beaumont, LA Metro|22051
+!
+! LCH - Lafayette, LA Metro
+! Lafayette
+! LCH|Lafayette, LA Metro|22055
+!
+! LIX - New Orleans, LA Metro
+! Jefferson + Orleans
+! LIX|New Orleans, LA Metro|22051 + 22071
+!
+! LIX - Baton Rouge, LA Metro
+! East Baton Rouge + West Baton Rouge
+! LIX|Baton Rouge, LA Metro|22033 + 22121
+!
+! MLB - Orlando, FL Metro
+! Orange + Seminole
+! MLB|Orlando, FL Metro|12095 + 12117
+!
+! MAF - Midland/Odessa, TX Metro
+! Ector + Midland
+! MAF|Midland/Odessa, TX Metro|48135 + 48329
+!
+! MOB - Mobile, AL Metro
+! Baldwin + Mobile
+! MOB|Mobile, AL Metro|1003 + 1097
+!
+! SHV - Shreveport, LA Metro
+! Bossier + Caddo
+! SHV|Shreveport, LA Metro|22015 + 22017
+!
+! TAE - Tallahassee, FL Metro
+! Gadsden + Leon
+! TAE|Tallahassee, FL Metro|12039 + 12073
+!
+! TBW - Tampa/St.Petersburg, FL Metro
+! Pinellas + Hillsborough
+! TBW|Tampa/St.Petersburg, FL Metro|12103 + 12057
+!
+! TBW - Sarasota/Brandenton, FL Metro
+! Sarasota + Manatee
+! TBW|Sarasota/Brandenton, FL Metro|12115 + 12081
+!
+! TBW - Ft. Myers, FL Metro
+! Lee
+! TBW|Ft. Myers, FL Metro|12071
+!
+! TBW - Port Charles, FL Metro
+! Charlotte
+! TBW|Port Charles, FL Metro|12015
+!
+! TSA - Ft. Smith, AR Metro
+! Sebastian + Crawford
+! TSA|Ft. Smith, AR Metro|5131 + 5033
+!
+!
+! CENTRAL REGION
+!
+! DVN - Quad cities IA/IL Metro
+! Scott IA + Rock Island IL
+DVN|Scott IA + Rock Is IL|19163 + 17161
+!
+! LSX - St. Louis, MO Metro
+! St. Charles + St. Louis + St. Louis City + Madison (IL) + St. Clair (IL)
+! LSX|St. Louis, MO Metro|29183 + 29189 + 29510 + 17119 + 17163
+! St. Louis + St. Louis City
+LSX|St. Louis, MO Metro|29189 + 29510
+!
+!
+! Optional Clusters as requested by the WFOs and Regional HQs
+!
+! AKQ - Norfolk + Portsmouth counties in VA
+! Norfolk + Portsmouth, VA
+!AKQ|Norfolk + Portsmouth, VA|51710 + 51740
+!
+! AKQ - Chesterfield + Colonial_Heights counites in VA
+! Chesterfield + Colonial_Heights, VA
+!AKQ|Chesterfield+Colonial_Hts|51041 + 51570
+!
+! CHS - Beaufort SC + AMZ352
+!CHS|Beaufort+AMZ352|45013 + 663520
+!
+! CHS - Charleston SC + AMZ350
+!CHS|Charleston+AMZ350|45019 + 663500
+!
+! CHS - Chatham GA + AMZ354
+!CHS|Chatham+AMZ354|13051 + 663540
+!
+! CHS - McIntosh GA + AMZ354
+!CHS|McIntosh+AMZ354|13191 + 663540
+!
+! PHI - Philadelphia + Delaware counties in PA
+! Philadelphia + Delaware, VA
+!PHI|Philadelphia + Delaware, VA|42101 + 42045
+!
+!
+! WESTERN REGION
+!
+! Following Western Region clusters
+! were acceptable as "Optional Clusters"
+! 
+! Removed since two CWAs cover this per
+! telco with Craig Schmidt June 29, 2004
+! LOX - Los Angeles, CA Metro
+! Los Angeles + Orange
+! LOX|Los Angeles, CA Metro|6037 + 6059
+!
+! SEW - Seattle-Takoma, WA Metro
+! Snohomish + King + Pierce
+! SEW|Seattle-Takoma, WA Metro|53061 + 53033 + 53053
+!
+! SEW - Tri-Cities, WA Metro
+! Franklin + Benton
+! SEW|Tri-Cities, WA Metro|53021 + 53005
+!
+! STO - Sacramento, CA Metro
+! Sacramento + Yolo + Placer
+! STO|Sacramento, CA Metro|6067 + 6113 + 6061
+!
+! STO - San Francisco, CA Metro
+! San Francisco + San Mateo
+! STO|San Francisco, CA Metro|6075 + 6081
+!
+! STO - Oakland, CA Metro
+! Contra Costa + Alameda
+! STO|Oakland, CA Metro|6013 + 6001
+!
+! STO - San Jose, CA Metro
+! Santa Cruz + Santa Clara
+! STO|San Jose, CA Metro|6087 + 6085
+!
+! CENTRAL REGION
+!
+! BIS - Bismarck/Mandan, ND Metro
+! Burleigh + Morton (ND)
+!BIS|Bismarck/Mandan, ND Metro|38015 + 38059
+!
+! DLH - Duluth/Superior, MN Metro
+! St. Louis + Douglas (WI)
+! DLH|Duluth/Superior, MN Metro|27137 + 55031
+!
+! FGF - Fargo/Moorhead, ND Metro
+! Cass + Clay (MN)
+! FGF|Fargo/Moorhead, ND Metro|38017 + 27027
+!
+! FSD - Sioux Falls, SD Metro
+! Lincoln + Minnehaha
+! FSD|Sioux Falls, SD Metro|46083 + 46099
+!
+! FSD - Sioux City, IA Metro
+! Woodbury + Dakota (NE) + Union (SD)
+! FSD|Sioux City, IA Metro|19193 + 31043 + 46127
+!
+! GRB - Door county and marine zones, WI
+! Door county + Bay of Green Bay and Rock Island Passage 
+!GRB|Door + Bay and marine passage|55029 + 645210 + 645410
+!
+! GRR - Lansing, MI Metro
+! Eaton + Ingham
+! GRR|Lansing, MI Metro|26045 + 26065
+!
+! ILX - Peoria, IL Metro
+! Peoria + Tazewell + Woodford
+! ILX|Peoria, IL Metro|17143 + 17179 + 17203
+!
+! LOT - Chicago, IL Metro
+! Cook and DuPage
+! LOT|Chicago, IL Metro|17031 + 17043
+!
+! MKX - Milwaukee, WI + two marine zones
+! Milwaukee county + two marine zones with  North Point Light
+!MKX|Milwaukee+N.Point Lgt zones|55079 + 646440 + 646450
+!
+! OAX - Omaha, NE Metro
+! Douglas + Sarpy + Pottawatamie (IA)
+! OAX|Omaha, NE Metro|31055 + 31153 + 19155
+!
+!
+! SOUTHERN REGION
+!
+! AMA - Amarillo, TX Metro
+! Potter + Randall
+!AMA|Amarillo, TX Metro|48375 + 48381
+!
+! AMA - Dalhart, TX Metro
+! Dallam + Hartley
+!AMA|Dalhart, TX Metro|48111 + 48205
+!
+

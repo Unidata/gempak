@@ -1,0 +1,58 @@
+     IMCBAR
+ 
+     IMCBAR specifies the characteristics of a color bar for images. 
+     The attributes are separated by slashes:
+
+	   color / orientation / anchor / x;y / length;width / 
+		        frequency 
+
+     Color is the color of the labels and the bounding box around the
+     color bar.  If color is negative, the bounding box will not be drawn, 
+     and labels will be drawn in colors corresponding to the color bar.
+     If the color is 0 or missing, no color bar is drawn.
+     
+     Orientation specifies a vertical or horizontal orientation of the
+     color bar where 'V' is a vertical bar and 'H' is a horizontal bar.
+     The default is 'V'.
+
+     Anchor describes the location on the color bar corresponding to
+     the location given in the next parameter.  Valid inputs are 
+     LL, LC, LR, CL, CC, CR, UL, UC, and UR for lower-left, lower-center, 
+     lower-right, center-left, centered, center-right, upper-left, 
+     upper-center, and upper-right, respectively.  For example, an 'LL' 
+     anchor point, with a x;y of .1,.1, will place the lower-left corner 
+     of the color bar at view coordinates .1, .1.  The default anchor 
+     point is 'LL'.
+
+     x;y is the position for the anchor point of the color bar in view
+     coordinates.  The default is .005, .05.
+     
+     Length;width are the length and width of the color bar, normalized to 
+     the view coordinates.  The defaults are .5 for the length, and .01 for 
+     the width.
+     
+     Frequency describes the levels to be labeled.  If the frequency is
+     positive, the labels are plotted on the right/top of the color bar.
+     If it is negative, the labels are plotted on the left/bottom of the
+     color bar.  The default is -1.
+
+
+     Examples:
+
+         IMCBAR = 1			text and bounding box in color 1; 
+					defaults for the rest of the input;
+
+         IMCBAR = 5/V/ /.25;.1/1	text and bounding box in color 5;
+					color bar plotted vertically;
+					length and width .25 and .1 of the
+					view window;
+					all intervals labeled along left
+					side of the color bar;
+					color bar anchor point at lower-left;
+
+         IMCBAR = 1//CL/.1;.5/.75;.1	text and bounding box in color 1;
+					length and width .75 and .1 of the 
+					view window;
+					center-left of the color bar
+					positioned at .1;.5 in view 
+					coordinates;

@@ -1,0 +1,37 @@
+!
+! Restore File : sfc_fnt
+!
+! Log:
+! J.W.Carr/HPC  	 9/98	Initial creation
+!
+GDATTIM last
+GLEVEL  0
+GVCORD  none
+PANEL   0                                                                       
+SKIP    0
+SCALE   1
+GDPFUN  sm9s(frnt(tmpc,wnd))!sm9s(frnt(tmpc,wnd))
+TYPE    c
+CONTUR  1                                                                       
+CINT    -30;-25;-20;-15;-10;-5!5/5
+LINE    6/1/2/1               !2/1/2/1
+FINT    
+FLINE   
+HILO    
+HLSYM   
+CLRBAR  
+WIND    
+REFVEC  
+TITLE   1/-1/~ FRONTOGENESIS!0
+TEXT    1/22/2/hw
+CLEAR   yes                                                                     
+STNPLT                                                                          
+SATFIL                                                                          
+RADFIL                                                                          
+STREAM                                                                          
+POSN    4                                                                       
+COLORS  2                                                                       
+MARKER  2                                                                       
+GRDLBL  5                                                                       
+LUTFIL  none
+FILTER  yes

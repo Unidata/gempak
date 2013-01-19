@@ -1,0 +1,105 @@
+#! /bin/csh
+
+#
+# Set Up Local Variables
+#
+
+set mdl=eta
+set dt=${1}
+set cycle=${2}
+
+set device=nc
+
+set grid=${MODEL}/"$mdl"/"$mdl"_$dt$cycle
+
+gdplot_nc << EOF >> "$mdl"_meta_out
+GDFILE	= $grid
+GDATTIM	= ALL
+DEVICE	= $device
+PANEL	= 0
+TEXT	= 1/21//hw
+CONTUR	= 1
+MAP	    = 1
+CLEAR	= yes
+CLRBAR  = 1
+
+GAREA	= #105
+PROJ	= str/90;-105;0
+LATLON	= 0
+
+restore nawips/pmsl_thkn.nts
+TITLE	= 5/-2/~ETA ^  MSL PRESSURE, 1000-500 MB THICKNESS|^ MSLP, 1000-500 THKN!0
+l
+ru
+
+
+restore nawips/850mb_hght_tmpc.nts
+TITLE	= 5/-2/~ETA ^  @  HGHTS, TEMPERATURE AND WIND (KTS)|^ @ HGHT, TMP, WIND!0!0!0
+l
+ru
+
+
+restore nawips/700mb_hght_relh_omeg.nts
+TITLE	= 5/-2/~ETA ^  @  HGHTS, REL HUMIDITY AND OMEGA|^ @ HGHT, RH AND OMEGA!0
+l
+ru
+
+
+restore nawips/500mb_hght_absv.nts
+TITLE	= 5//~ETA ^  @  HEIGHTS AND VORTICITY|^ @ HGHT AND VORTICITY!0
+l
+ru
+
+
+restore nawips/250mb_hght_wnd.nts
+TITLE	= 5/-2/~ETA ^  @  HEIGHTS, ISOTACHS AND WIND (KTS)|^ @ HGHT AND WIND!0
+l
+ru
+
+
+restore nawips/p06m_pmsl.nts
+GDATTIM	= F06-F48
+TITLE	= 5//~ETA ^  6-HOUR TOTAL PCPN, MSLP|^ 6-HOURLY TOTAL PCPN, MSLP!0
+l
+ru
+
+
+restore nawips/precip.nts
+GDATTIM	= F12-F48-6
+HILO    = 31;0/x#2////y
+HLSYM   = 1.5
+GFUNC	= (quo(p12m,25.4))
+TITLE	= 5//~ETA ^ 12-HOUR TOTAL PRECIPITATION (IN)|^ 12-HOURLY TOTAL PCPN
+l
+ru
+
+
+restore nawips/precip.nts
+GDATTIM	= F24-F48-12
+HILO    = 31;0/x#2////y
+HLSYM   = 1.5
+GFUNC	= (quo(p24m,25.4))
+TITLE	= 5//~ETA ^ 24-HOUR TOTAL PRECIPITATION (IN)|^ 24-HOURLY TOTAL PCPN
+l
+ru
+
+
+restore nawips/precip.nts
+GDATTIM	= F48
+HILO    = 31;0/x#2////y
+HLSYM   = 1.5
+GFUNC	= (quo(p48m,25.4))
+TITLE	= 5//~ETA ^ 48-HOUR TOTAL PRECIPITATION (IN)|^ 48-HOUR TOTAL PCPN
+l
+ru
+
+
+exit
+EOF
+
+
+if ( $device == "nc" ) then
+
+	mv Nmeta $NTRANS_META/"$mdl"/"$mdl"_"$dt"_"$cycle"
+
+endif

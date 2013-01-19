@@ -1,0 +1,56 @@
+! FXYSWMCLD.TBL
+!
+! This table contains the FXY descriptors for the SWM MCLOUD structure for
+! use by BUFR encoder program BUFRENC.
+!
+! Log:
+!
+! D. Kidwell/NCEP	 7/04	
+! S. Jacobs/NCEP	10/04	Changed to use Extended Turb
+!
+! FXY    DEFAULT   DESCRIPTION
+!
+MCLOUD
+001031 = 7       ! Originating center (NCEP)	
+008021 = 16      ! Time significance (analysis)
+004001           ! Year
+004002           ! Month
+004003           ! Day
+004004           ! Hour
+004005           ! Minute
+008021 = 4       ! Time significance (forecast)
+004001           ! Year
+004002           ! Month
+004003           ! Day
+004004           ! Hour 
+004005           ! Minute
+007002 = 3050    ! Height (in meters - base of chart layer)
+007002 = 13720   ! Height (in meters - top of chart layer)
+008011 = 12      ! Meteorological feature (cloud)
+008007 = 2       ! Dimensional significance (area)
+102000           ! Replication of 2 items
+031001           ! Delayed descriptor replication factor
+005002           ! Latitude
+006002           ! Longitude
+101000           ! Replication of 1 item
+031001           ! Delayed description replication factor
+020008           ! Cloud distribution (non-CB)
+101000           ! Replication of 1 item
+031001           ! Delayed description replication factor
+020012           ! Cloud type (non-CB)
+103000           ! Replication of 3 items
+031000           ! Delayed description replication factor (on/off)
+007010           ! Flight level (in meters - base of layer)
+007010           ! Flight level (in meters - top of layer)
+011030           ! Extended Degree of turbulence
+103000           ! Replication of 3 items
+031000           ! Delayed description replication factor (on/off)
+007010           ! Flight level (in meters - base of layer)
+007010           ! Flight level (in meters - top of layer)
+020041           ! Airframe icing
+104000           ! Replication of 4 items
+031000           ! Delayed description replication factor (on/off)
+007010           ! Flight level (in meters - base of layer)
+007010           ! Flight level (in meters - top of layer)
+020008           ! Cloud distribution (for CB)
+020012 = 9       ! Cloud type (CB)

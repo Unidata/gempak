@@ -1,0 +1,274 @@
+#!/bin/sh -f
+#-------------------------------------------------------------------------------
+#
+# cntloc - Source Code Line Counter (for one directory)
+#
+# Counts lines of source code (LOC) in one directory.
+#
+## Log:
+# M. Linda/GSC		 3/97	Original
+# S. Jacobs/NCEP	 4/97	Added -f and -c flags to count only FORTRAN or C
+#-------------------------------------------------------------------------------
+
+HINT='Invoke this utility with no arguments for help.'
+
+#-------------------------------------------------------------------------------
+
+USAGE='........................................'\
+'......................................\n'\
+'\n'\
+'NAME'\
+'\t     cntloc - Source Code Line Counter (for one directory)\n'\
+'\n'\
+'SYNOPSIS\n'\
+'\t     cntloc [-bndtfc] [path]\n'\
+'\n'\
+'DESCRIPTION\n'\
+'\t     This utility counts lines of source code (LOC) in one directory.\n'\
+'\t     It steps through all files in the directory specified by path.  If\n'\
+'\t     path is not given, the current directory is used.  Options control\n'\
+'\t     the amount of information displayed.  As a default, this utility\n'\
+'\t     displays detailed counts for all non-binary files in the directory.\n'\
+'\t     Options may be used to suppress selected detail down to a single\n'\
+'\t     line of summary totals.\n'\
+'\n'\
+'\t     The path specification may be prefixed with a back-slash (\) to\n'\
+'\t     avoid expansion of the path by the shell.  The back-slash makes\n'\
+'\t     the final output more concise when environment variables or home\n'\
+'\t     directory abbreviations (~ prefix) are used in the path\n'\
+'\t     specification.\n'\
+'\n'\
+'\t     -b   \tInclude binary files in the counting.\n'\
+'\n'\
+'\t     -n   \tSuppress column labels.\n'\
+'\n'\
+'\t     -d   \tDirectory summary only.  Displays only the single grand total\n'\
+'\t          \tfor the given directory (no detail is shown for the \n'\
+'\t          \tindividual files).\n'\
+'\n'\
+'\t     -t   \tSuppress the time stamp header.\n'\
+'\n'\
+'\t     -f   \tCount only the FORTRAN source code.\n'\
+'\n'\
+'\t     -c   \tCount only the C source code.\n'\
+'\n'\
+'EXAMPLE\n'\
+'\t     cntloc \$GEMPAK/source/gemlib/sn\n'\
+'\n'\
+'\t\t        Counts lines of source code (the -b option is not given) for\n'\
+'\t\t        all files in the given directory.  Displays detail counts for\n'\
+'\t\t        each file (the -d option is not given).  Also displays column\n'\
+'\t\t        headers (the -n and -t options are not given).\n'\
+'\n'\
+'SEE ALSO\n'\
+'\t     cntall, countf, countc\n'\
+'\n'\
+'........................................'\
+'......................................'
+
+#-------------------------------------------------------------------------------
+# Process the command line.
+
+if  [ "$1" = "" ] ; then
+    if  [ "$OS" != "SunOS" ] ; then
+	echo $USAGE
+    else
+	if  [ -f /usr/5bin/echo ] ; then
+	    /usr/5bin/echo $USAGE
+	else
+	    echo $USAGE | sed 's,\\n,@,g' | tr "@" "\012" | \
+			  sed 's,\\t,	,g'
+	fi
+    fi
+    exit 1
+else
+    if  [ "$OPTIND" = 1 ] ; then
+	while getopts "bndtfc" nextOption ; do
+	    case $nextOption in
+		b ) OPTb=$nextOption ;;
+		n ) OPTn=$nextOption ;;
+		d ) OPTd=$nextOption ;;
+		t ) OPTt=$nextOption ;;
+		f ) OPTf=$nextOption ;;
+		c ) OPTc=$nextOption ;;
+		* ) echo $HINT >&2 ; exit 1 ;;
+	    esac
+	done
+	shift `expr $OPTIND - 1`
+    else
+	while [ $# -gt 0 ] ; do
+	    case $1 in
+		-b ) OPTb=`echo $1 | sed 's/^-//'` ; shift ;;
+		-n ) OPTn=`echo $1 | sed 's/^-//'` ; shift ;;
+		-d ) OPTd=`echo $1 | sed 's/^-//'` ; shift ;;
+		-t ) OPTt=`echo $1 | sed 's/^-//'` ; shift ;;
+		-f ) OPTf=`echo $1 | sed 's/^-//'` ; shift ;;
+		-c ) OPTc=`echo $1 | sed 's/^-//'` ; shift ;;
+		-- ) shift ; break ;;
+		-* ) echo "$0: illegal option $1" >&2
+		     echo $HINT >&2
+		     exit 1
+		     ;;
+		 * ) if  [ $# -eq 1 ] ; then
+			 break
+		     else
+			 echo "$0: illegal option $1" >&2
+			 echo $HINT >&2
+			 exit 1
+		     fi
+		     ;;
+	    esac
+	done
+    fi
+
+    if  [ "$1" = "" -o "$1" = "." ] ; then
+	rawPath=`pwd`
+    else
+	rawPath="$1"
+    fi
+fi
+
+#-------------------------------------------------------------------------------
+# Initialize variables.
+
+curDir=`pwd`
+
+#-------------------------------------------------------------------------------
+# Display headers.
+
+if  [ "$OPTt" != "t" ] ; then
+    if  [ "$OS" = "SunOS" ] ; then
+	mon=h
+    else
+	mon=b
+    fi
+    dateTimeNow=`date "+%d %$mon %y %H:%M"`
+    echo ""
+    echo "$0 -- Lines of Code (LOC) Counter -- $dateTimeNow"
+    echo "LOC counts for directory $rawPath"
+
+    if  [ "$OPTb" != "b" ] ; then
+	echo "           Excluding ... all binary files"
+    fi
+    if  [ "$OPTf" = "f" ] ; then
+	echo "           Counting only FORTRAN source code"
+    fi
+    if  [ "$OPTc" = "c" ] ; then
+	echo "           Counting only C source code"
+    fi
+fi
+
+if  [ "$OPTn" != "n" -o "$OPTd" != "d" -o "$OPTt" != "t" ] ; then
+    echo ""
+fi
+
+if  [ "$OPTn" != "n" ] ; then
+    countf noFileName
+fi
+
+#-------------------------------------------------------------------------------
+# Expand the path using the C shell.
+
+expPath=`csh -fc "echo $rawPath"`;
+
+#-------------------------------------------------------------------------------
+# Initialize grand total counters.
+
+t1='0'
+t2='0'
+t3='0'
+t4='0'
+
+#-------------------------------------------------------------------------------
+
+# Get a list of all files in this directory.
+cd $expPath
+files=`/bin/ls -lo | grep -v '^total' | grep -v '^d' | tr -s " " " " | \
+       cut -d" " -f8`
+cd $curDir
+
+# Process one file at a time.
+for oneFile in $files
+do
+    # Skip if item is not a file or the file cannot be reached.
+    if  [ -f $expPath/$oneFile -a -r $expPath/$oneFile ] ; then
+	# Determine file type (given by file's extension).
+	fileExt=`echo $oneFile | cut -d"." -f2 | tr "[A-Z]" "[a-z]"`
+
+	# Activate a counter based on the file type.
+
+	if  [ \( \( "$fileExt" =     "f" \) -o \( "$fileExt" = "cmn" \) -o \
+	      \( "$fileExt" =   "prm" \) -o \( "$fileExt" = "fnc" \) -o \
+	      \( "$fileExt" =   "vms" \) -o \( "$fileExt" = "for" \) -o \
+	      \( "$oneFile" = "gemprm.AIX"    \) -o \
+	      \( "$oneFile" = "gemprm.HPUX"   \) -o \
+	      \( "$oneFile" = "gemprm.IRIX"   \) -o \
+	      \( "$oneFile" = "gemprm.OSF1"   \) -o \
+	      \( "$oneFile" = "gemprm.SunOS"  \) -o \
+	      \( "$oneFile" = "gemprm.ULTRIX" \) \) \
+	      -a "$OPTc" != "c" ] ; then
+	    if  [ "$OPTd" != "d" ] ; then
+		countf -n $expPath/$oneFile
+	    fi
+	    counts=`countf -n $expPath/$oneFile`
+
+	elif [ \( "$fileExt" = "c" -o "$fileExt" = "h" \)\
+		-a "$OPTf" != "f" ] ; then
+	    if  [ "$OPTd" != "d" ] ; then
+		countc -n $expPath/$oneFile
+	    fi
+	    counts=`countc -n $expPath/$oneFile`
+	else
+	    # Check if the file is a binary file.
+	    line=`tr -d "[\001-\177]" < $expPath/$oneFile`
+	    if  [ "$line" = "" ] ; then
+		fileType=text
+	    else
+		fileType=binary
+	    fi
+
+	    if  [ "$OPTb" = "b" -o "$fileType" = "text" ] ; then
+		s0=`wc -l $expPath/$oneFile`
+		s1=`echo " $s0" | tr -s " " " " | cut -d" " -f2`
+		if  [ "$OPTd" != "d" ] ; then
+		    echo "$s1"      | awk '{printf ("%11d", $1)}'
+		    echo " "        | awk '{printf ("%32s", $1)}'
+		    echo "$oneFile" | awk '{printf ("%s\n", $1)}'
+		fi
+		counts="$s1 0 0 0"
+	    elif [ "$fileType" = "binary" -a "$OPTd" != "d" ] ; then
+		echo "binary"   | awk '{printf ("%-43s", $0)}'
+		echo "$oneFile" | awk '{printf ("%s\n",  $1)}'
+		counts="0 0 0 0"
+	    else
+		counts="0 0 0 0"
+	    fi
+	fi
+
+	s1=`echo $counts | cut -d" " -f1`
+	s2=`echo $counts | cut -d" " -f2`
+	s3=`echo $counts | cut -d" " -f3`
+	s4=`echo $counts | cut -d" " -f4`
+
+	t1=`expr $t1 + $s1`
+	t2=`expr $t2 + $s2`
+	t3=`expr $t3 + $s3`
+	t4=`expr $t4 + $s4`
+    fi
+done
+
+if  [ "$OPTd" != "d" ] ; then
+    echo "------------------------------------------------------------"
+fi
+
+echo "$t1 $t2 $t3 $t4 $rawPath" | \
+     awk '{printf (" %10d%10d%10d%10d  %s\n", $1, $2, $3, $4, $5)}'
+
+#-------------------------------------------------------------------------------
+# Output trailing blank line.
+
+if  [ "$OPTn" != "n" -o "$OPTd" != "d" -o "$OPTt" != "t" ] ; then
+    echo ""
+fi
+
+#-------------------------------------------------------------------------------

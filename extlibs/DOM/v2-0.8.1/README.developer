@@ -1,0 +1,41 @@
+=============================================================
+How to add a module to gdome2
+=============================================================
+
+1. Create a directory under libgdome with the name of your module, e.g.
+events, xpath.  This will be the directory where the "private" code
+resides for your module.  The files in libgdome implement the
+"public" interface.
+
+2. Create an automake Makefile.am file in the newly created directory.
+The makefile will be automatically generated from this file when you
+run autogen.sh.
+
+3. Create an XML file for the interface specification in test/apigen.
+For example events.xml and xpath.xml are used to generate gdome-events.c
+and gdome-xpath.c in libgdome by running test/apigen/apigen.
+
+4. Create a header file in libgdome.  This file will contain "public"
+functions.  For example, see gdome-events.h and gdome-xpath.h.
+
+=============================================================
+How to add gtk documentation for a new module
+=============================================================
+1. cd to gtk-doc dir
+2. add in the gtk-doc/Makefile.am in the scan target
+    $(DOC_SOURCE_DIR)/<new_module>.h
+3. rebuild gtk-doc/Makefile.in and gtk-doc/Makefile by running 
+    autogen.sh in root dir.  cd back to gtk-doc dir
+4. run make templates
+5. now you have a new file called gdome2-unused.txt
+   open it the move the items that you want to document in the
+   gdome2-sections.txt
+   you'll have to add SECTION tags for each new interface implemented
+   don't worry if in the gdome2-unused.txt you leave some rows...
+6. run make templates
+7. then you have to edit by hand the gdome2-docs.sgml w.r.t. the
+   gtk-doc/tmpl new files created
+8. edit the new gtk-doc/tmpl files adding general documentation on
+    interfaces
+9. run make sgml
+10. run make html (this takes a while)

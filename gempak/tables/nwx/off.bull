@@ -1,0 +1,33 @@
+! OFF.BULL
+!
+! Location information for the following product:
+! Offshore_Forecast.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+FZAK61 PAFC     ANCHORAGE                        AK US  6115 -14500     0
+FZAK61 PAJK     JUNEAU                           AK US  5840 -13460     0
+FZAK62 PAFC     ANCHORAGE                        AK US  6115 -14600     0
+FZAK63 PAFC     ANCHORAGE                        AK US  6115 -14700     0
+FZAK64 PAFC     ANCHORAGE                        AK US  6115 -14800     0
+FZAK67 PAJK     JUNEAU                           AK US  5836 -13458     0
+FZAK69 PAFG     FAIRBANKS                        AK US  6484 -14783     0
+FZHW60 PHFO     HONOLULU                         HI US  2129 -15780     0
+FZNT21 KWBC     NCEP_MPC                         MA US  4237  -7103     9
+FZNT22 KWBC     NCEP_MPC                         VA US  3895  -7844    98
+FZNT23 KWNM     NCEP_MPC                         VA US  4050  -6860    98
+FZNT24 KWNM     NCEP_MPC                         VA US  3662  -7383    98
+FZNT25 KWNM     NCEP_MPC                         VA US  3232  -7765    98
+FZNT23 KNHC     MIAMI/TROPICAL_PREDICTION_CENTER FL US  2575  -8040     0
+FZNT24 KNHC     MIAMI/TROPICAL_PREDICTION_CENTER FL US  2675  -8140     0
+FZNT25 KNHC     MIAMI/TROPICAL_PREDICTION_CENTER FL US  2375  -8050     6
+FZNT26 KNHC     MIAMI/TROPICAL_PREDICTION_CENTER FL US  2825  -7750     6
+FZNT27 KNHC     MIAMI/TROPICAL_PREDICTION_CENTER FL US  2700  -8850     6
+FZPN22 KWNM     NCEP_MPC                         VA US  3340 -12240    98
+FZPN23 KWNM     NCEP_MPC                         VA US  3783 -12455    98
+FZPN24 KWNM     NCEP_MPC                         VA US  4560 -12650    98
+FZPN25 KWBC     NCEP_MPC                         WA US  4745 -12230   137
+FZPN26 KWBC     NCEP_MPC                         CA US  3762 -12238     5

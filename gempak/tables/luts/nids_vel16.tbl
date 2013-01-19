@@ -1,0 +1,22 @@
+! nids_vel16.tbl
+!
+! Color table for 16-level NIDS Mean Radial Velocity
+! Appendix A, FMH-11 Part C
+!
+!Color name    Abrev   Red  Green   Blue  X color name
+BLACK           BLA      0      0      0  black
+LTBLUE          LTB      0    224    255
+MDBLUE          MDB      0    128    255
+DKBLUE          DKB     50      0    150
+LTGREEN         LTG      0    251    144
+MDGREEN         MDG      0    187      0
+DKGREEN         DKG      0    143      0
+LTGRAY          LTG    205    192    159
+DKGRAY          DKG    118    118    118
+MDORANGE        MDO    248    135      0
+MDYELLOW        MDY    255    207      0
+YELLOW          YEL    255    255      0  yellow
+DKRED           DKR    174      0      0
+MDBROWN         MBR    208    112      0
+RED             RED    255      0      0
+DKPURPLE        DKP    119      0    125

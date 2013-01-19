@@ -1,0 +1,263 @@
+!
+! NCARNCEP1.TBL -- reanalysis parameter conversion table version 1
+!
+! Chiz/Unidata	07/98	Created for dcreanal
+!
+!ID# NAME                             UNITS                GNAM         SCALE   MISSING
+!
+000 undefined                                                               0  -9999.00
+001 Pressure                          Pa                   PRES            -2  -9999.00
+002 Pressure reduced to MSL           Pa                   PMSL            -2  -9999.00
+003 Pressure tendency                 Pa/s                 PTND            -2  -9999.00
+004 undefined                                                               0  -9999.00
+005 undefined                                                               0  -9999.00
+006 Geopotential                      m^2/s^2              GP               0  -9999.00
+007 Geopotential height               gpm                  HGHT             0  -9999.00
+008 Geometric height                  m                    DIST             0  -9999.00
+009 Standard deviation of height      m                    HSTDV            0  -9999.00
+010 Variance of height                m^2                  HVAR             0  -9999.00
+011 Temperature                       K                    TMPK             0  -9999.00
+012 Virtual temperature               K                    TVRK             0  -9999.00
+013 Potential temperature             K                    THTA             0  -9999.00
+014 Pseudo-adiabatic potential temper K                    THTE             0  -9999.00
+015 Maximum temperature               K                    TMAX             0  -9999.00
+016 Minimum temperature               K                    TMIN             0  -9999.00
+017 Dew point temperature             K                    DWPK             0  -9999.00
+018 Dew point depression              K                    DPDK             0  -9999.00
+019 Lapse rate                        K/m                  LAPR             0  -9999.00
+020 Visibility                        m                    VISIB            0  -9999.00
+021 Radar spectra (1)                 dimensionless        RDSP1            0  -9999.00
+022 Radar spectra (2)                 dimensionless        RDSP2            0  -9999.00
+023 Radar spectra (3)                 dimensionless        RDSP3            0  -9999.00
+024 undefined                                                               0  -9999.00
+025 Temperature anomaly               K                    TMPA             0  -9999.00
+026 Pressure anomaly                  Pa                   PRESA           -2  -9999.00
+027 Geopotential height anomaly       gpm                  GPA              0  -9999.00
+028 Wave spectra (1)                  dimensionless        WVSP1            0  -9999.00
+029 Wave spectra (2)                  dimensionless        WVSP2            0  -9999.00
+030 Wave spectra (3)                  dimensionless        WVSP3            0  -9999.00
+031 Wind direction                    deg                  DRCT             0  -9999.00
+032 Wind speed                        m/s                  SPED             0  -9999.00
+033 u wind                            m/s                  UREL             0  -9999.00
+034 v wind                            m/s                  VREL             0  -9999.00
+035 Stream function                   m^2/s                STRM             0  -9999.00
+036 Velocity potential                m^2/s                VPOT             0  -9999.00
+037 Montgomery stream function        m^2/s^2              PSYM            -2  -9999.00
+038 Sigma coord. vertical velocity    /s                   SGCVV            0  -9999.00
+039 Pressure vertical velocity        Pa/s                 OMEG            -2  -9999.00
+040 Geometric vertical velocity       m/s                  DZDT             0  -9999.00
+041 Absolute vorticity                /s                   AVOR             0  -9999.00
+042 Absolute divergence               /s                   ABSD             0  -9999.00
+043 Relative vorticity                /s                   VOR              0  -9999.00
+044 Relative divergence               /s                   DIV              0  -9999.00
+045 Vertical u shear                  /s                   VUCSH            0  -9999.00
+046 Vertical v shear                  /s                   VVCSH            0  -9999.00
+047 Direction of current              deg                  DIRC             0  -9999.00
+048 Speed of current                  m/s                  SPC              0  -9999.00
+049 u of current                      m/s                  UOGRD            0  -9999.00
+050 v of current                      m/s                  VOGRD            0  -9999.00
+051 Specific humidity                 kg/kg                SPFH             0  -9999.00
+052 Relative humidity                 %                    RELH             0  -9999.00
+053 Humidity mixing ratio             kg/kg                MIXR             0  -9999.00
+054 Precipitable water                kg/m^2               PWAT             0  -9999.00
+055 Vapor pressure                    Pa                   VAPR             0  -9999.00
+056 Saturation deficit                Pa                   SATD             0  -9999.00
+057 Evaporation                       kg/m^2               EVAP             0  -9999.00
+058 Cloud Ice                         kg/m^2               CICE             0  -9999.00
+059 Precipitation rate                kg/m^2/s             PCPR             0  -9999.00
+060 Thunderstorm probability          %                    TSTM             0  -9999.00
+061 Total precipitation               kg/m^2               APCP             0  -9999.00
+062 Large scale precipitation         kg/m^2               NCPCP            0  -9999.00
+063 Convective precipitation          kg/m^2               ACPCP            0  -9999.00
+064 Snowfall rate water equivalent    kg/m^2/s             SRWEQ            0  -9999.00
+065 Water equiv. of accum. snow depth kg/m^2               WEASD            0  -9999.00
+066 Snow depth                        m                    SNOD             0  -9999.00
+067 Mixed layer depth                 m                    MIXHT            0  -9999.00
+068 Transient thermocline depth       m                    TTHDP            0  -9999.00
+069 Main thermocline depth            m                    MTHD             0  -9999.00
+070 Main thermocline anomaly          m                    MTHA             0  -9999.00
+071 Total cloud cover                 %                    TCDC             0  -9999.00
+072 Convective cloud cover            %                    CDCON            0  -9999.00
+073 Low level cloud cover             %                    LCDC             0  -9999.00
+074 Mid level cloud cover             %                    MCDC             0  -9999.00
+075 High level cloud cover            %                    HCDC             0  -9999.00
+076 Cloud water                       kg/m^2               CWAT             0  -9999.00
+077 undefined                                                               0  -9999.00
+078 Convective snow                   kg/m^2               SNOC             0  -9999.00
+079 Large scale snow                  kg/m^2               SNOL             0  -9999.00
+080 Water temperature                 K                    WTMP             0  -9999.00
+081 Land-sea mask (1=land; 0=sea)     integer              LAND             0  -9999.00
+082 Deviation of sea level from mean  m                    DSLM             0  -9999.00
+083 Surface roughness                 m                    SFCR             0  -9999.00
+084 Albedo                            %                    ALBDO            0  -9999.00
+085 Soil temperature                  K                    TSOIL            0  -9999.00
+086 Soil moisture content             kg/m^2               SOILM            0  -9999.00
+087 Vegetation                        %                    VEG              0  -9999.00
+088 Salinity                          kg/kg                SALTY            0  -9999.00
+089 Density                           kg/m^3               DEN              0  -9999.00
+090 Runoff                            kg/m^2               RUNOF            0  -9999.00
+091 Ice concentration (ice=1; no ice= 1/0                  ICEC             0  -9999.00
+092 Ice thickness                     m                    ICETK            0  -9999.00
+093 Direction of ice drift            deg                  DICED            0  -9999.00
+094 Speed of ice drift                m/s                  SICED            0  -9999.00
+095 u of ice drift                    m/s                  UICE             0  -9999.00
+096 v of ice drift                    m/s                  VICE             0  -9999.00
+097 Ice growth rate                   m/s                  ICEG             0  -9999.00
+098 Ice divergence                    /s                   ICED             0  -9999.00
+099 Snow melt                         kg/m^2               SNOM             0  -9999.00
+100 Sig height of wind waves and swel m                    HTSGW            0  -9999.00
+101 Direction of wind waves           deg                  WVDIR            0  -9999.00
+102 Significant height of wind waves  m                    WVHGT            0  -9999.00
+103 Mean period of wind waves         s                    WVPER            0  -9999.00
+104 Direction of swell waves          deg                  SWDIR            0  -9999.00
+105 Significant height of swell waves m                    SWELL            0  -9999.00
+106 Mean period of swell waves        s                    SWPER            0  -9999.00
+107 Primary wave direction            deg                  DIRPW            0  -9999.00
+108 Primary wave mean period          s                    PERPW            0  -9999.00
+109 Secondary wave direction          deg                  DIRSW            0  -9999.00
+110 Secondary wave mean period        s                    PERSW            0  -9999.00
+111 Net short wave radiation (surface W/m^2                NSWRS            0  -9999.00
+112 Net long wave radiation (surface) W/m^2                NLWRS            0  -9999.00
+113 Net short wave radiation (top)    W/m^2                NSWRT            0  -9999.00
+114 Net long wave radiation (top)     W/m^2                NLWRT            0  -9999.00
+115 Long wave radiation               W/m^2                LWAVR            0  -9999.00
+116 Short wave radiation              W/m^2                SWAVR            0  -9999.00
+117 Global radiation                  W/m^2                GRAD             0  -9999.00
+118 undefined                                                               0  -9999.00
+119 undefined                                                               0  -9999.00
+120 undefined                                                               0  -9999.00
+121 Latent heat flux                  W/m^2                LHTFL            0  -9999.00
+122 Sensible heat flux                W/m^2                SHTFL            0  -9999.00
+123 Boundary layer dissipation        W/m^2                BLYDP            0  -9999.00
+124 Zonal component of momentum flux  N/m^2                UFLX             0  -9999.00
+125 Meridional component of momentum  N/m^2                VFLX             0  -9999.00
+126 Wind mixing energy                J                    WMIXE            0  -9999.00
+127 Image data                        integer              IMGD             0  -9999.00
+128 Mean sea level pressure (Std Atm) Pa                   MSLSA            0  -9999.00
+129 Mean sea level pressure (MAPS)    Pa                   MSLMA            0  -9999.00
+130 Mean sea level pressure (ETA mode Pa                   MSLET            0  -9999.00
+131 Surface lifted index              K                    LFTX             0  -9999.00
+132 Best (4-layer) lifted index       K                    4LFTX            0  -9999.00
+133 K index                           K                    KX               0  -9999.00
+134 Sweat index                       K                    SX               0  -9999.00
+135 Horizontal moisture divergence    kg/kg/s              MCONV            0  -9999.00
+136 Vertical speed shear              1/s                  VSSH             0  -9999.00
+137 3-hr pressure tendency            Pa/s                 TSLSA            0  -9999.00
+138 Brunt-Vaisala frequency squared   1/s^2                BVF2             0  -9999.00
+139 Potential vorticity (mass-weighte 1/s/m                PVMW             0  -9999.00
+140 Categorical rain (yes=1;no=0)     non-dim              CRAIN            0  -9999.00
+141 Categorical freezing rain (yes=1; non-dim              CFRZR            0  -9999.00
+142 Categorical ice pellets (yes=1;no non-dim              CICEP            0  -9999.00
+143 Categorical snow (yes=1;no=0)     non-dim              CSNOW            0  -9999.00
+144 Volumetric soil moisture content  fraction             SOILW            0  -9999.00
+145 Potential evaporation rate        W/m^2                PEVPR            0  -9999.00
+146 Cloud work function               J/Kg                 CWORK            0  -9999.00
+147 Zonal gravity wave stress         N/m^2                U-GWD            0  -9999.00
+148 Meridional gravity wave stress    N/m^2                V-GWD            0  -9999.00
+149 Potential vorticity               m^2/s/kg             PVOR             0  -9999.00
+150 undefined                                                               0  -9999.00
+151 undefined                                                               0  -9999.00
+152 undefined                                                               0  -9999.00
+153 Moisture flux divergence          gr/gr*m/s/m          MFXDV            0  -9999.00
+154 undefined                                                               0  -9999.00
+155 Ground heat flux                  W/m^2                GFLUX            0  -9999.00
+156 Convective inhibition             J/kg                 CIN              0  -9999.00
+157 Convective Available Potential En J/kg                 CAPE             0  -9999.00
+158 Turbulent kinetic energy          J/kg                 TKE              0  -9999.00
+159 Condensation pressure of lifted p Pa                   CONDP            0  -9999.00
+160 Clear sky upward solar flux       W/m^2                CSUSF            0  -9999.00
+161 Clear sky downward solar flux     W/m^2                CSDSF            0  -9999.00
+162 Clear sky upward long wave flux   W/m^2                CSULF            0  -9999.00
+163 Clear sky downward long wave flux W/m^2                CSDLF            0  -9999.00
+164 Cloud forcing net solar flux      W/m^2                CFNSF            0  -9999.00
+165 Cloud forcing net long wave flux  W/m^2                CFNLF            0  -9999.00
+166 Visible beam downward solar flux  W/m^2                VBDSF            0  -9999.00
+167 Visible diffuse downward solar fl W/m^2                VDDSF            0  -9999.00
+168 Near IR beam downward solar flux  W/m^2                NBDSF            0  -9999.00
+169 Near IR diffuse downward solar fl W/m^2                NDDSF            0  -9999.00
+170 U wind stress                     N/m^2                USTR             0  -9999.00
+171 V wind stress                     N/m^2                VSTR             0  -9999.00
+172 Momentum flux                     N/m^2                MFLX             0  -9999.00
+173 Mass point model surface          integer              LMH              0  -9999.00
+174 Velocity point model surface      integer              LMV              0  -9999.00
+175 Nearby model level                integer              SGLYR            0  -9999.00
+176 Latitude                          deg                  NLAT             0  -9999.00
+177 Longitude                         deg                  NLON             0  -9999.00
+178 Mass weighted u                   gm/m*K*s             UMAS             0  -9999.00
+179 Mass weighted v                   gm/m*K*s             VMAS             0  -9999.00
+180 corrected precip                  Kg/m^2/s             XPRATE           0  -9999.00
+181 x-gradient of log pressure        1/m                  LPSX             0  -9999.00
+182 y-gradient of log pressure        1/m                  LPSY             0  -9999.00
+183 x-gradient of height              m/m                  HGTX             0  -9999.00
+184 y-gradient of height              m/m                  HGTY             0  -9999.00
+185 Standard deviation of Geop. hgt.  m                    STDZ             0  -9999.00
+186 Standard deviation of zonal wind  m/s                  STDU             0  -9999.00
+187 Standard deviation of meridional  m/s                  STDV             0  -9999.00
+188 Standard deviation of spec. hum.  gm/gm                STDQ             0  -9999.00
+189 Standard deviation of temperature K                    STDT             0  -9999.00
+190 Covariance between u and omega    m/s*Pa/s             CBUW             0  -9999.00
+191 Covariance between v and omega    m/s*Pa/s             CBVW             0  -9999.00
+192 Covariance between u and specific m/s*gm/gm            CBUQ             0  -9999.00
+193 Covariance between v and specific m/s*gm/gm            CBVQ             0  -9999.00
+194 Covariance between T and omega    K*Pa/s               CBTW             0  -9999.00
+195 Covariance between spec. hum and  gm/gm*Pa/s           CBQW             0  -9999.00
+196 Covariance between v and u        m^2/s^2              CBMZW            0  -9999.00
+197 Covariance between u and T        K*m/s                CBTZW            0  -9999.00
+198 Covariance between v and T        K*m/s                CBTMW            0  -9999.00
+199 Standard deviation of Rel. Hum.   %                    STDRH            0  -9999.00
+200 Std dev of time tend of geop. hgt m                    SDTZ             0  -9999.00
+201 Ice-free water surface            %                    ICWAT            0  -9999.00
+202 Std dev of time tend of zonal win m/s                  SDTU             0  -9999.00
+203 Std dev of time tend of merid win m/s                  SDTV             0  -9999.00
+204 Downward solar radiation flux     W/m^2                DSWRF            0  -9999.00
+205 Downward long wave radiation flux W/m^2                DLWRF            0  -9999.00
+206 Std dev of time tend of spec. hum gm/gm                SDTQ             0  -9999.00
+207 Moisture availability             %                    MSTAV            0  -9999.00
+208 Exchange coefficient              kg*m/m^3/s           SFEXC            0  -9999.00
+209 Number of mixed layers next to sf integer              MIXLY            0  -9999.00
+210 Std dev of time tend of temperatu K                    SDTT             0  -9999.00
+211 Upward solar radiation flux       W/m^2                USWRF            0  -9999.00
+212 Upward long wave radiation flux   W/m^2                ULWRF            0  -9999.00
+213 Amount of non-convective cloud    %                    CDLYR            0  -9999.00
+214 Convective precipitation rate     kg/m^2/s             CPRAT            0  -9999.00
+215 Temperature tendency by all physi K/s                  TTDIA            0  -9999.00
+216 Temperature tendency by all radia K/s                  TTRAD            0  -9999.00
+217 Temperature tendency by nonrad ph K/s                  TTPHY            0  -9999.00
+218 Precipitation index               fraction             PREIX            0  -9999.00
+219 Std dev of IR T over 1x1 deg area K                    TSD1D            0  -9999.00
+220 Natural log of surface pressure   ln(kPa)              NLSGP            0  -9999.00
+221 Std dev of time tend of rel hum   %                    SDTRH            0  -9999.00
+222 5-wave geopotential height        gpm                  5WAVH            0  -9999.00
+223 Plant canopy surface water        kg/m^2               CNWAT            0  -9999.00
+224 Maximum stomato plant resistance  s/m                  PLTRS            0  -9999.00
+225 RH-type cloud cover               Percent              RHCLD            0  -9999.00
+226 Blackadar's mixing length scale   m                    BMIXL            0  -9999.00
+227 Asymptotic mixing length scale    m                    AMIXL            0  -9999.00
+228 Potential evaporation             kg/m^2               PEVAP            0  -9999.00
+229 Snow melt heat flux               W/m^2                SNOHF            0  -9999.00
+230 Snow sublimation heat flux        W/m^2                SNOEV            0  -9999.00
+231 Convective cloud mass flux        Pa/s                 MFLUX            0  -9999.00
+232 Downward total radiation flux     W/m^2                DTRF             0  -9999.00
+233 Upward total radiation flux       W/m^2                UTRF             0  -9999.00
+234 Baseflow-groundwater runoff       kg/m^2               BGRUN            0  -9999.00
+235 Storm surface runoff              kg/m^2               SSRUN            0  -9999.00
+236 undefined                                                               0  -9999.00
+237 Total column ozone concentration  Dobson               OZONE            0  -9999.00
+238 Snow cover                        %                    SNOWC            0  -9999.00
+239 Snow temperature                  K                    SNOT             0  -9999.00
+240 Permanent snow points             mask                 GLCR             0  -9999.00
+241 Large scale condensation heating  K/s                  LRGHR            0  -9999.00
+242 Deep convective heating rate      K/s                  CNVHR            0  -9999.00
+243 Deep convective moistening rate   kg/kg/s              CNVMR            0  -9999.00
+244 Shallow convective heating rate   K/s                  SHAHR            0  -9999.00
+245 Shallow convective moistening rat kg/kg/s              SHAMR            0  -9999.00
+246 Vertical diffusion heating rate   K/s                  VDFHR            0  -9999.00
+247 Vertical diffusion zonal accel    m/s/s                VDFUA            0  -9999.00
+248 Vertical diffusion meridional acc m/s/s                VDFVA            0  -9999.00
+249 Vertical diffusion moistening rat kg/kg/s              VDFMR            0  -9999.00
+250 Solar radiative heating rate      K/s                  SWHR             0  -9999.00
+251 Longwave radiative heating rate   K/s                  LWHR             0  -9999.00
+252 Drag coefficient                  dimensionless        CD               0  -9999.00
+253 Friction velocity                 m/s                  FRICV            0  -9999.00
+254 Richardson number                 dimensionless        RI               0  -9999.00
+255 undefined                                                               0  -9999.00

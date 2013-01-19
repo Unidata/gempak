@@ -1,0 +1,4 @@
+$CC $CFLAGS -c dcmetr.c
+$FC $LDFLAGS -o $OS_BIN/dcmetr dcmetr.o \
+	$BRIDGE $GEMLIB $CGEMLIB
+$RM *.o

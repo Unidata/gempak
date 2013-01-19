@@ -1,0 +1,16 @@
+! LSH.BULL
+!
+! Location information for the following product:
+! Lakeshore_Waring_or_Statement.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+WHUS61 KBUF     BUFFALO                          NY US  4293  -7870     0
+WHUS61 KCLE     CLEVELAND                        OH US  4140  -8186     0
+WHUS63 KAPX     GAYLORD                          MI US  4490  -8470     0
+WHUS63 KDLH     DULUTH                           MN US  4683  -9220     0
+WHUS63 KDTX     DETROIT                          MI US  4268  -8347     0
+WHUS63 KGRB     GREEN_BAY                        WI US  4449  -8811     0

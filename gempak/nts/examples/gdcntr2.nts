@@ -1,0 +1,27 @@
+GDATTIM all                                                                     
+GLEVEL  700                                                                     
+GVCORD  PRES                                                                    
+GFUNC   dwpc                                                                    
+GDFILE  $GEMPAK/data/HRCBOB.GRD                                                     
+CINT    5                                                                       
+LINE    17/-3/1/2                                                               
+MAP     0                                                                       
+TITLE   1//~  @  Temperature and Dewpoint                                             
+DEVICE  XW                                                                      
+SATFIL                                                                          
+RADFIL                                                                          
+PROJ    mer                                                                     
+GAREA   ny-                                                                     
+CLEAR   no                                                                      
+PANEL   0                                                                       
+TEXT    1                                                                       
+SCALE   999                                                                     
+LATLON  0                                                                       
+HILO                                                                            
+HLSYM                                                                           
+CLRBAR                                                                          
+CONTUR  3                                                                       
+SKIP    0                                                                       
+FINT    0                                                                       
+FLINE   10-20                                                                   
+CTYPE   C                                                                       

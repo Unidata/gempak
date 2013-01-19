@@ -1,0 +1,61 @@
+
+
+                     C File Access (CFL) Library
+
+
+The CFL library provides functions to access file streams.  This library
+is intended for C programmers.  The open functions return a file pointer
+that is used in subsequent calls to reference the file.
+
+The CFL library supports three types of files:  binary (general) files,
+temporary (binary) files, and text (table) files.
+
+Binary files are the most basic files.  File access functions that
+operate on binary files are general purpose and may be used to operate
+on the other file types as well.  The general purpose functions include
+testing whether a file exists (CFL_INQR), opening a file (CFL_AOPN,
+CFL_ROPN, CFL_UOPN, CFL_WOPN), reading and writing (CFL_READ, CFL_WRIT),
+and positioning (CFL_WHER, CFL_SEEK, CFL_SRCH).
+
+Temporary files are a special case of binary files.  The main difference
+is that temporary files do not have names.  The open function, CFL_TMPO,
+is called without a file name.  A temporary file is automatically
+deleted once closed.
+
+Text (table) files are a special case of binary files.  File records are
+organized into lines of text that are terminated with new-line
+characters.  A table file may include comment records.  The table open
+function (CFL_TBOP) searches for the file to open differently than the
+other file open functions.  Table files may be created using any text
+editor.
+
+Use CFL_TBOP to open a table file for reading.  To position a table
+file, use CFL_SRCH, CFL_SEEK, and CFL_WHER.  To read a table file, use
+CFL_RDLN (read next line) or CFL_TRLN (read next non-comment line).  A
+comment line is any record where the first non-white-space character is
+an exclamation point ('!').
+
+The single function, CFL_CLOS, is provided for closing any file opened
+by any CFL open function.  Check the return code after closing a file--
+it may indicate that the final I/O operation was incomplete.  For
+example, when writing data to a full disk, the buffers are not flushed
+until the file is closed successfully.
+
+Two file positioning functions, CFL_SEEK and CFL_SRCH, are provided.
+CFL_SEEK moves by the specified number of bytes, while CFL_SRCH locates
+the next occurrence of a specified text string.  The file position value
+from CFL_WHER may be used with CFL_SEEK to return to the current
+location in a file.
+
+Functions CFL_MNAM and CFL_MDAT are used to create and interpret file
+names related to time.  CFL_MNAM creates a file name from a date/time
+template.  Inversely, CFL_MDAT creates a GEMPAK date from a file name
+using a date/time template.
+
+Directories may be searched for file names and subdirectory names using
+CFL_RDIR or CFL_SCND.  CFL_SCND may be called from FORTRAN.
+
+Each of the CFL functions returns a condition code, IRET, that is the
+GEMPAK file (CFL) error number.  This error number may be processed by
+subroutines from the ER library.  For example, the error message text
+can be printed using ER_WMSG.

@@ -1,0 +1,16 @@
+     RADFIL
+
+     RADFIL is the name of a radar image file. 
+
+     For animation programs, a list of radar image files, separated by
+     semicolons, may be entered.  For long image names, part of the first
+     name may be separated by backslashes ( \ ); the following values in
+     the list will be substituted for the characters within the backslashes,
+
+     i.e.
+        $RADAR/REF_941017_12\00\;05;10;15
+
+     is interpreted as
+        $RADAR/REF_941017_1200;$RADAR/REF_941017_1205;$RADAR/REF_941017_1210;
+        $RADAR/REF_941017_1215
+

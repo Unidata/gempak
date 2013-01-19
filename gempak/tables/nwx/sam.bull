@@ -1,0 +1,61 @@
+! SAM.BULL
+!
+! Location information for the following product:
+! Monthly_Surface_Aviation_Weather_Summary.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+AWUS46 KMFR     MEDFORD                          OR US  4236 -12287     0
+AWUS61 KCAR     CARIBOU                          ME US  4577  -6862     0
+AWUS61 KOKX     NEW_YORK                         NY US  4086  -7286     0
+AWUS61 KPBZ     PITTSBURGH                       PA US  4052  -8020     0
+AWUS61 KPHI     MOUNT_HOLLY                      NJ US  4000  -7480     0
+AWUS61 KRLX     CHARLESTON                       WV US  3831  -8170     0
+AWUS62 KJAX     JACKSONVILLE                     FL US  3047  -8169     0
+AWUS62 KMFL     MIAMI                            FL US  2575  -8037     0
+AWUS62 KMLB     MELBOURNE                        FL US  2811  -8065     0
+AWUS62 KTAE     TALLAHASSEE                      FL US  3045  -8430     0
+AWUS63 KBIS     BISMARCK                         ND US  4677 -10075     0
+AWUS63 KDDC     DODGE_CITY                       KS US  3775  -9995     0
+AWUS63 KDLH     DULUTH                           MN US  4683  -9220     0
+AWUS63 KDMX     DES_MOINES                       IA US  4172  -9372     0
+AWUS63 KDVN     QUAD_CITIES_IA                   IL US  4161  -9058     0
+AWUS63 KFGF     EASTERN_NORTH_DAKOTA             ND US  4791  -9708     0
+AWUS63 KFSD     SIOUX_FALLS                      SD US  4358  -9672     0
+AWUS63 KGID     HASTINGS                         NE US  4063  -9837     0
+AWUS63 KGLD     GOODLAND                         KS US  3936 -10169     0
+AWUS63 KGRB     GREEN_BAY                        WI US  4449  -8811     0
+AWUS63 KICT     WICHITA                          KS US  3765  -9744     0
+AWUS63 KIND     INDIANAPOLIS                     IN US  3970  -8627     0
+AWUS63 KLBF     NORTH_PLATTE                     NE US  4113 -10069     0
+AWUS63 KLMK     LOUISVILLE                       KY US  3811  -8563     0
+AWUS63 KLOT     CHICAGO                          IL US  4159  -8808     0
+AWUS63 KMPX     TWIN_CITIES/CHANHASSEN           MN US  4484  -9355     0
+AWUS63 KPAH     PADUCAH                          KY US  3706  -8876     0
+AWUS63 KSGF     SPRINGFIELD                      MO US  3722  -9340     0
+AWUS63 KTOP     TOPEKA                           KS US  3906  -9562     0
+AWUS63 KUNR     RAPID_CITY                       SD US  4406 -10320     0
+AWUS64 KAMA     AMARILLO                         TX US  3522 -10169     0
+AWUS64 KBMX     BIRMINGHAM                       AL US  3316  -8677     0
+AWUS64 KBRO     BROWNSVILLE                      TX US  2590  -9741     0
+AWUS64 KCRP     CORPUS_CHRISTI                   TX US  2777  -9750     0
+AWUS64 KEPZ     EL_PASO_TX/SANTA_TERESA          NM US  3187 -10669     0
+AWUS64 KFWD     DALLAS/FORT_WORTH                TX US  3283  -9729     0
+AWUS64 KHGX     HOUSTON/GALVESTON                TX US  2946  -9506     0
+AWUS64 KJAN     JACKSON                          MS US  3231  -9008     0
+AWUS64 KLCH     LAKE_CHARLES                     LA US  3012  -9320     0
+AWUS64 KLZK     LITTLE_ROCK                      AR US  3483  -9225     0
+AWUS64 KMAF     MIDLAND/ODESSA                   TX US  3194 -10218     0
+AWUS64 KMOB     MOBILE                           AL US  3067  -8823     0
+AWUS64 KOHX     NASHVILLE                        TN US  3624  -8655     0
+AWUS64 KOUN     NORMAN                           OK US  3522  -9745     0
+AWUS64 KSHV     SHREVEPORT                       LA US  3245  -9383     0
+AWUS64 KTSA     TULSA                            OK US  3613  -9586     0
+AWUS65 KABQ     ALBUQUERQUE                      NM US  3502 -10662     0
+AWUS65 KBOU     DENVER                           CO US  4000 -10526     0
+AWUS65 KCYS     CHEYENNE                         WY US  4115 -10480     0
+AWUS65 KGJT     GRAND_JUNCTION                   CO US  3911 -10851     0
+AWUS65 KPUB     PUEBLO                           CO US  3827 -10451     0

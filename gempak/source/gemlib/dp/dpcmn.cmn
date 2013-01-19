@@ -1,0 +1,31 @@
+C************************************************************************
+C* DPCMN								*
+C* 									*
+C* This common block stores values used by the data packing (DP)	*
+C* subroutines.  Values are stored by DP_INIT.  DP_PACK and DP_UNPK	*
+C* use these values to pack and unpack data.  				*
+C**									*
+C* Log:									*
+C* G.C.Chatters/RDS	4/84						*
+C* M. desJardins/GSFC	3/86	Added values for alternate DP routines	*
+C* M. desJardins/GSFC	4/87	GEMPAK 4 version			*
+C************************************************************************
+	COMMON/ DPCMN / 
+     +		ndatac ( MMFLDP ), 		
+C!	                                        number of data values
+     +		scalec ( MMPARM, MMFLDP ),	
+C!	                                        scale factor
+     +		koffst ( MMPARM, MMFLDP ),	
+C!	                                        offset term
+     +		nbitsc ( MMPARM, MMFLDP ),	
+C!	                                        number of bits
+     +		imissc ( MMPARM, MMFLDP ), 	
+C!	                                        missing data value
+     +		iswrdc ( MMPARM, MMFLDP ),	
+C!	                                        start word for data
+     +		isbitc ( MMPARM, MMFLDP ),	
+C!	                                        start bit for data
+     +		nwordc ( MMFLDP ),		
+C!	 	                                total number of words
+     +		mskpat				
+C!	                                        mask with all bits set

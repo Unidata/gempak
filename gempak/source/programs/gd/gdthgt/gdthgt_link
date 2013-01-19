@@ -1,0 +1,4 @@
+$FC $FFLAGS $LDFLAGS -o $OS_BIN/gdthgt gdthgt.f \
+		$OS_LIB/gdthgt.a $GEMLIB $CGEMLIB \
+		$APPL $SYSLIB -lm
+$RM *.o

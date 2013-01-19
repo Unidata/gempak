@@ -1,0 +1,963 @@
+################################################################################
+# Beginning of New CID Patterns
+###############################################################################
+# Alerts and Administrative Messages
+#
+# ADA - Alarm/Alert_Admin_Message_(Urgent_Notification)
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(ADA)
+	FILE	data/newnwx/admin/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# ADM - Alert_Admin_Message
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(ADM)
+	FILE	data/newnwx/admin/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# SDM messages
+WMO	^NOUS42 KWNO ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(ADM)
+	FILE	data/newnwx/admin/\4/(\1:yyyy)(\1:mm)\1\2.\4
+WMO	^NOXX20 KWBC ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(ADM)
+	FILE	data/newnwx/admin/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# ADR - NWS_Admin_Message_(External)
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(ADR)
+	FILE	data/newnwx/admin/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# ADX - Admin_Alert_for_Nonreceipt_of_Transmission
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(ADX)
+	FILE	data/newnwx/admin/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# INI - Administr_[NOUS51_KWBC]
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(INI)
+	FILE	data/newnwx/admin/\4/(\1:yyyy)(\1:mm)\1\2.\4
+###############################################################################
+# Agricultural Products
+#
+#
+# AGF - Agriculture_Forecast
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(AGF)
+	FILE	data/newnwx/ag_prod/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# AGO - Agriculture_Observations
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(AGO)
+	FILE	data/newnwx/ag_prod/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# FWL - Land_management_Forecasts
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(FWL)
+	FILE	data/newnwx/ag_prod/\4/(\1:yyyy)(\1:mm)\1\2.\4
+WMO	^FNUS8[2-6] .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(FWL)
+	FILE	data/newnwx/ag_prod/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# SAF - Special_Agri_Wx_Fcst/Advisory/Flying_Farmer_Fcst_Outlook
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(SAF)
+	FILE	data/newnwx/ag_prod/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# WCR - Weekly_Weather_and_Crop_Report
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(WCR)
+	FILE	data/newnwx/ag_prod/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# WDA - Weekly_Data_for_Agriculture
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(WDA)
+	FILE	data/newnwx/ag_prod/\4/(\1:yyyy)(\1:mm)\1\2.\4
+###############################################################################
+# Air Quality Products
+#
+#
+# APG - Air_Stagnation_Guidance_Narrative
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(APG)
+	FILE	data/newnwx/air_qual/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# AQI - Air_Quality_Index_Statement
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(AQI)
+	FILE	data/newnwx/air_qual/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# ASA - Air_Stagnation_Advisory
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(ASA)
+	FILE	data/newnwx/air_qual/\4/(\1:yyyy)(\1:mm)\1\2.\4
+###############################################################################
+# ASOS Summaries and Control Messages
+#
+#
+# RR[67] - ASOS_Shef_Precip_Criteria_Message_Commissioned
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(RR[67])
+	FILE	data/newnwx/asos/\4/(\1:yyyy)(\1:mm)\1\2.\4
+###############################################################################
+# Avalanche Products
+#
+#
+# AVA - Avalanche_Watch
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(AVA)
+	FILE	data/newnwx/avalanche/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# AVM - Avalanche_Verification_Matrix
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(AVM)
+	FILE	data/newnwx/avalanche/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# AVW - Avalanche_Warning
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(AVW)
+	FILE	data/newnwx/avalanche/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# SAB - Snow_Avalanche_Bulletin
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(SAB)
+	FILE	data/newnwx/avalanche/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# SAG - Snow_Avalanche_Guidance
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(SAG)
+	FILE	data/newnwx/avalanche/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# SWE - Est._Snow_Water_Equivalent_by_Basin
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(SWE)
+	FILE	data/newnwx/avalanche/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# WSW - Winter_Weather_Warnings,_Watches,_Advisories
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(WSW)
+	FILE	data/newnwx/avalanche/\4/(\1:yyyy)(\1:mm)\1\2.\4
+###############################################################################
+# Aviation Products
+#
+# AWW - Aviation_Weather_Warning
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(AWW)
+	FILE	data/newnwx/aviation/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# FA[0-9] - Aviation_Area_forecast_(All_Areas)
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(FA[0-9])
+	FILE	data/newnwx/aviation/area/(\1:yyyy)(\1:mm)\1\2.area
+#
+# OAV - Other_Aviation_Products
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(OAV)
+	FILE	data/newnwx/aviation/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# RFR - Route_Forecast
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(RFR)
+	FILE	data/newnwx/aviation/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# SAD - Daily_Surface_Aviation_Weather_Summary
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(SAD)
+	FILE	data/newnwx/aviation/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# SAM - Monthly_Surface_Aviation_Weather_Summary
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(SAM)
+	FILE	data/newnwx/aviation/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# SIG - International_Sigment/Convective_Sigmet
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(SIG)
+	FILE	data/newnwx/aviation/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# WAM - Airmet_(All_Regions)
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(WA[0-9])
+	FILE	data/newnwx/aviation/airmet/(\1:yyyy)(\1:mm)\1\2.airm
+#
+# WSG - Sigmet_(All_Regions)
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(WS[0-9])
+	FILE	data/newnwx/aviation/sigmet/(\1:yyyy)(\1:mm)\1\2.sgmt
+#
+# WST - Tropical_Cyclone_Sigmet
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(WST)
+	FILE	data/newnwx/aviation/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# WSV - Volcanic_Activity_Sigmet
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(WSV)
+	FILE	data/newnwx/aviation/\4/(\1:yyyy)(\1:mm)\1\2.\4
+###############################################################################
+# Civil Advisory Products
+#
+# AWG - National_Attack_Warning
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(AWG)
+	FILE	data/newnwx/civil_advs/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# CAE - Child_Abduction_Emergency
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(CAE)
+	FILE	data/newnwx/civil_advs/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# CDW - Civil_Danger_Warning
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(CDW)
+	FILE	data/newnwx/civil_advs/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# CEM - Civil_Emergency_Message
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(CEM)
+	FILE	data/newnwx/civil_advs/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# EVI - Evacuation_Immediate
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(EVI)
+	FILE	data/newnwx/civil_advs/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# HMW - Hazardous_Materials_Warning
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(HMW)
+	FILE	data/newnwx/civil_advs/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# LAE - Local_Area_Emergency
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(LAE)
+	FILE	data/newnwx/civil_advs/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# LEW - Law_Enforcement_Warning
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(LEW)
+	FILE	data/newnwx/civil_advs/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# NUW - Nuclear_Power_Plant_Warning
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(NUW)
+	FILE	data/newnwx/civil_advs/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# RHW - Radiological_Hazard_Warning
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(RHW)
+	FILE	data/newnwx/civil_advs/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# SDS - Special_Dispersion_Statement
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(SDS)
+	FILE	data/newnwx/civil_advs/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# SPW - Shelter_In_Place_Warning
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(SPW)
+	FILE	data/newnwx/civil_advs/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# STO - Road_Condition_Report_(State_Agencies)
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(STO)
+	FILE	data/newnwx/civil_advs/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# TOE - 911_Telephone_Outage_Emergency
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(TOE)
+	FILE	data/newnwx/civil_advs/\4/(\1:yyyy)(\1:mm)\1\2.\4
+###############################################################################
+# Climate Products
+#
+# CF6 - WFO_Daily_Climate_Web_Page_Messages
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(CF6)
+	FILE	data/newnwx/climate/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# CLI - Climatological_Report_(Daily)
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(CLI)
+	FILE	data/newnwx/climate/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# CLM - Climatological_Report_(Misc,_including_monthly_reports)
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(CLM)
+	FILE	data/newnwx/climate/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# CMM - Coded_Climatotogical_Monthly_Means
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(CMM)
+	FILE	data/newnwx/climate/\4/(\1:yyyy)(\1:mm)\1\2.\4
+###############################################################################
+# Fire Weather Products
+#
+# FDI - Fire_Danger_Indices
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(FDI)
+	FILE	data/newnwx/fire/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# FRW - Fire_Warning
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(FRW)
+	FILE	data/newnwx/fire/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# FWA - Fire_Weather_Admin_Message
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(FWA)
+	FILE	data/newnwx/fire/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# FWE - Extended_Fire_Weather_Outlook
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(FWE)
+	FILE	data/newnwx/fire/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# FWF - Routine_Fire_Wx_Fcst_(with/without_6_to_10_day_outlook)
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(FWF)
+	FILE	data/newnwx/fire/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# FWM - Misc._Fire_Weather_Product
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(FWM)
+	FILE	data/newnwx/fire/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# FWN - Fire_Weather_Notification
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(FWN)
+	FILE	data/newnwx/fire/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# FWO - Fire_Weather_Observation
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(FWO)
+	FILE	data/newnwx/fire/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# FWS - Supression_Forecast
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(FWS)
+	FILE	data/newnwx/fire/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# FWW - Fire_Weather_Watch
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(FWW)
+	FILE	data/newnwx/fire/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# PBF - Prescribed_Burn_Forecast
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(PBF)
+	FILE	data/newnwx/fire/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# RFD - Rangeland_Fire_Danger_Forecast
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(RFD)
+	FILE	data/newnwx/fire/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# RFW - Red_Flag_Warning
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(RFW)
+	FILE	data/newnwx/fire/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# SMF - Smoke_Management_Weather_Forecast
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(SMF)
+	FILE	data/newnwx/fire/\4/(\1:yyyy)(\1:mm)\1\2.\4
+###############################################################################
+# Flood/Flash Flood Products
+#
+# ESF - Flood_Potential_Outlook
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(ESF)
+	FILE	data/newnwx/flood/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# FFA - Flash_Flood_Watch
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(FFA)
+	FILE	data/newnwx/flood/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# FFG - Flash_Flood_Guidance
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(FFG)
+	FILE	data/newnwx/flood/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# FFH - Headwater_Guidance
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(FFH)
+	FILE	data/newnwx/flood/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# FFS - Flash_Flood_Statement
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(FFS)
+	FILE	data/newnwx/flood/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# FFW - Flash_Flood_Warning
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(FFW)
+	FILE	data/newnwx/flood/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# FLN - National_Flood_summary
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(FLN)
+	FILE	data/newnwx/flood/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# FLS - Flood_Statement
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(FLS)
+	FILE	data/newnwx/flood/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# FLW - Flood_Warning
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(FLW)
+	FILE	data/newnwx/flood/\4/(\1:yyyy)(\1:mm)\1\2.\4
+###############################################################################
+# Coded Analysis/Forecast Products
+#
+# COD - Coded_Analysis_and_Forecasts
+WMO	^ASUS01  KWBC ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(COD)
+	FILE	data/newnwx/fronts/\4/(\1:yyyy)(\1:mm)\1\2.\4
+WMO	^FSUS02  KWBC ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(COD)
+	FILE	data/newnwx/fronts/\4/(\1:yyyy)(\1:mm)\1\2.\4
+###############################################################################
+# Hydrometeorological Messages/Discussions/Products
+#
+# HCM - Hydrometeorological_Coordination_Message
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(HCM)
+	FILE	data/newnwx/hydro/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# HMD - Hydrometeorological_Discussion
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(HMD)
+	FILE	data/newnwx/hydro/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# HYD - Daily_Hydrometeorological_Products
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(HYD)
+	FILE	data/newnwx/hydro/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# HYM - Monthly_Hydrometeorological_Plain_Language_Products
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(HYM)
+	FILE	data/newnwx/hydro/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# HYW - Weekly_Hydrometeorological_Plain_Language_Products
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(HYW)
+	FILE	data/newnwx/hydro/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# RR# - Hydrology/Meteorology_Data_Report_Part_1-9
+# RRA - Automatic_Hydrolic_Observation_station_Report_(AHOS)
+# RRM - Misc._Hydrology_Data
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(RR[1-9AM])
+	FILE	data/newnwx/hydro/\4/(\1:yyyy)(\1:mm)\1\2.\4
+###############################################################################
+# Coastal/Great Lakes/Offshore/Ice Marine Products
+#
+# CFW - Coastal_Flood_Warnings,_Watches_or_Statements
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(CFW)
+	FILE	data/newnwx/marine/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# CWF - Coastal_Waters_Forecast
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(CWF)
+	FILE	data/newnwx/marine/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# GLF - Great_Lakes_Forecast
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(GLF)
+	FILE	data/newnwx/marine/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# GLS - Great_Lakes_Storm_Summary
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(GLS)
+	FILE	data/newnwx/marine/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# HSF - High_seas_forecast
+WMO	^...... KWBC ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(HSF)
+	FILE	data/newnwx/marine/\4/(\1:yyyy)(\1:mm)\1\2.\4
+WMO	^...... PHFO ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(HSF)
+	FILE	data/newnwx/marine/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# ICE - Ice_Forecast
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(ICE)
+	FILE	data/newnwx/marine/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# IOB - Ice_Observations
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(IOB)
+	FILE	data/newnwx/marine/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# LSH - Lakeshore_Waring_or_Statement
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(LSH)
+	FILE	data/newnwx/marine/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# MAW - Ammended_Marine_Forecast
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(MAW)
+	FILE	data/newnwx/marine/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# MIM - Marine_Interpretation_Message
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(MIM)
+	FILE	data/newnwx/marine/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# MRP - Techniques_Development_Laboratory_Marine_Product
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(MRP)
+	FILE	data/newnwx/marine/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# MVF - Marine_Verification_Coded_Forecast
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(MVF)
+	FILE	data/newnwx/marine/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# MWS - Marine_Weather_Statement
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(MWS)
+	FILE	data/newnwx/marine/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# NSH - Nearshore_marine_forecast
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(NSH)
+	FILE	data/newnwx/marine/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# OCD - Oceanographic_Data
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(OCD)
+	FILE	data/newnwx/marine/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# OFF - Offshore_Forecast
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(OFF)
+	FILE	data/newnwx/marine/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# OMR - Other_Marine_Products
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(OMR)
+	FILE	data/newnwx/marine/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# OSW - Ocean_Surface_Winds
+WMO	^...... KWNO ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(OSW)
+	FILE	data/newnwx/marine/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# PLS - Plain_Language_Ship_Report
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(PLS)
+	FILE	data/newnwx/marine/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# SMW - Special_Marine_Warning
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(SMW)
+	FILE	data/newnwx/marine/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# SRF - Surf_Forecast
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(SRF)
+	FILE	data/newnwx/marine/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# TID - Tide_report
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(TID)
+	FILE	data/newnwx/marine/\4/(\1:yyyy)(\1:mm)\1\2.\4
+###############################################################################
+# Miscellaneous Products
+#
+# ESG - Extended_Streamflow_Guidance
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(ESG)
+	FILE	data/newnwx/misc/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# ESP - Extended_Streamflow_Prediction
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(ESP)
+	FILE	data/newnwx/misc/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# ESS - Water_Supply_Outlook
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(ESS)
+	FILE	data/newnwx/misc/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# GSM - General_Status_Message
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(GSM)
+	FILE	data/newnwx/misc/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# PMD - Prognostic_Meteorological_Discussion (Basic Weather)
+WMO	^FXCA20 KWBC ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(PMDCA)
+	FILE	data/newnwx/misc/\4/(\1:yyyy)(\1:mm)\1\2.\4
+WMO	^FXHW01 KWNH ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(PMDHI)
+	FILE	data/newnwx/misc/\4/(\1:yyyy)(\1:mm)\1\2.\4
+WMO	^FXSA20 KWBC ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(PMDSA)
+	FILE	data/newnwx/misc/\4/(\1:yyyy)(\1:mm)\1\2.\4
+WMO	^FXUS02 KWNH ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(PREEPD)
+	FILE	data/newnwx/misc/\4/(\1:yyyy)(\1:mm)\1\2.\4
+WMO	^FXUS02 KWBC ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(PMDEPD)
+	FILE	data/newnwx/misc/\4/(\1:yyyy)(\1:mm)\1\2.\4
+WMO	^FXUS03 KWNH ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(PMDEP3)
+	FILE	data/newnwx/misc/\4/(\1:yyyy)(\1:mm)\1\2.\4
+WMO	^FXUS04 KWNH ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(PMDEP4)
+	FILE	data/newnwx/misc/\4/(\1:yyyy)(\1:mm)\1\2.\4
+WMO	^FXUS05 KWNH ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(PMDEP5)
+	FILE	data/newnwx/misc/\4/(\1:yyyy)(\1:mm)\1\2.\4
+WMO	^FXUS06 KWNH ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(PMDEP6)
+	FILE	data/newnwx/misc/\4/(\1:yyyy)(\1:mm)\1\2.\4
+WMO	^FXUS07 KWNH ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(PMDEP7)
+	FILE	data/newnwx/misc/\4/(\1:yyyy)(\1:mm)\1\2.\4
+WMO	^FXUS01 KWBC ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(PMDSPD)
+	FILE	data/newnwx/misc/\4/(\1:yyyy)(\1:mm)\1\2.\4
+WMO	^FXUS21 KWNC ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(PMDTHR)
+	FILE	data/newnwx/misc/\4/(\1:yyyy)(\1:mm)\1\2.\4
+WMO	^FXUS10 KWNH ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(PMDHMD)
+	FILE	data/newnwx/misc/\4/(\1:yyyy)(\1:mm)\1\2.\4
+###############################################################################
+#
+# EFP - 3_to_5_Day_Extended_Forecast
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(EFP)
+	FILE	data/newnwx/extend/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# Extended Forecast Discussion
+WMO	^FXUS02 .... ([0-3][0-9])([0-2][0-9])
+	FILE	data/newnwx/extend/(\1:yyyy)(\1:mm)\1\2.extend
+#
+# Hemispheric Map Discussion AND 500mb Map Type Correlations
+WMO	^FXUS03 .... ([0-3][0-9])([0-2][0-9])
+	FILE	data/newnwx/hemi/(\1:yyyy)(\1:mm)\1\2.hemi
+#
+# STQ - Spot_Forecast_Request
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(STQ)
+	FILE	data/newnwx/misc/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# TWB - Transcribed_Weather_Broadcast
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(TWB)
+	FILE	data/newnwx/misc/\4/(\1:yyyy)(\1:mm)\1\2.\4
+###############################################################################
+# Model Products
+#
+# FAN - AVN_based_MOS_guidance
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(FAN)
+	FILE	data/newnwx/model/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# FMR - Forecast_Medium_Range_Guidance
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(FMR)
+	FILE	data/newnwx/model/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# FOH - ETA_FOUS_freezing_and_relative_humidity
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(FOH)
+	FILE	data/newnwx/model/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# FRH - ETA_FOUS_Relative_Humidity/Temperature_Guidance
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(FRH)
+	FILE	data/newnwx/model/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# FTJ - FOUS_Trajectory_Forecast
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(FTJ)
+	FILE	data/newnwx/model/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# FTP - FOUS_prog_max/min_temp/pop_guidance
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(FTP)
+	FILE	data/newnwx/model/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# FWC - FOUS_Wind/Cloud_Guidance
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(FWC)
+	FILE	data/newnwx/model/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# FZL - Freezing_Level_Forecast
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(FZL)
+	FILE	data/newnwx/model/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# MAV - MOS_Aviation_Based_Guidance_From_AVN_Model
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(MAV)
+	FILE	data/newnwx/model/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# MET - ETA
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(MET)
+	FILE	data/newnwx/model/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# MEX - MOS_Extended_Range_Guidance_From_MRF_Model
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(MEX)
+	FILE	data/newnwx/model/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# PFM - Point_Forecast_Matrices
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(PFM)
+	FILE	data/newnwx/model/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# RDF - Revised_Digital_Forecast
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(RDF)
+	FILE	data/newnwx/model/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# RDG - Revised_Digital_Guidance
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(RDG)
+	FILE	data/newnwx/model/\4/(\1:yyyy)(\1:mm)\1\2.\4
+###############################################################################
+# Non-Weather Events Products
+#
+# EQR - Earthquake_report
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(EQR)
+	FILE	data/newnwx/non_wx_events/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# EQW - Earthquake_warning
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(EQW)
+	FILE	data/newnwx/non_wx_events/\4/(\1:yyyy)(\1:mm)\1\2.\4
+###############################################################################
+# Observation Data Products
+#
+# LCO - Local_cooperative_observations
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(LCO)
+	FILE	data/newnwx/obs_data/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# SCD - Supplementary_Climatological_Data_(ASOS)
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(SCD)
+	FILE	data/newnwx/obs_data/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# TAF - Terminal_Aerodrome_Forecast
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(TAF)
+	FILE	data/newnwx/obs_data/\4/(\1:yyyy)(\1:mm)\1\2.\4
+###############################################################################
+# Outlook Products
+#
+# EOL - Average_6_to_10_Day_Weather_Outlook_(Local)
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(EOL)
+	FILE	data/newnwx/outlook/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# EON - Average_6_to_10_Day_Weather_Outlook_(National)
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(EON)
+	FILE	data/newnwx/outlook/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# HWO - Hazardous_Weather_Outlook
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(HWO)
+	FILE	data/newnwx/outlook/\4/(\1:yyyy)(\1:mm)\1\2.\4
+###############################################################################
+# Precipitation Products
+#
+# MAP - Mean_Areal_Precip
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(MAP)
+	FILE	data/newnwx/precip/\4/(\1:yyyy)(\1:mm)\1\2.\4
+###############################################################################
+# Public Products
+#
+# AFD - Area_Forecast_Discussions
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(AFD)
+	FILE	data/newnwx/pub_prod/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# AFM - Area_Forecast_Matrices
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(AFM)
+	FILE	data/newnwx/pub_prod/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# AFP - Area_Forecast_Product
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(AFP)
+	FILE	data/newnwx/pub_prod/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# AWS - Area_Weather_Summary
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(AWS)
+	FILE	data/newnwx/pub_prod/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# AWU - Area_Weather_Update
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(AWU)
+	FILE	data/newnwx/pub_prod/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# CCF - Coded_City_Forecast
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(CCF)
+	FILE	data/newnwx/pub_prod/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# LFP - Local_Forecast
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(LFP)
+	FILE	data/newnwx/pub_prod/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# LSR - Local_Storm_Report
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(LSR)
+	FILE	data/newnwx/pub_prod/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# MIS - Misc_Local_Product
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(MIS)
+	FILE	data/newnwx/pub_prod/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# NOW - Short_term_forecast
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(NOW)
+	FILE	data/newnwx/pub_prod/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# OPU - Other_Public_Products
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(OPU)
+	FILE	data/newnwx/pub_prod/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# PNS - Public_Information_Statement
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(PNS)
+	FILE	data/newnwx/pub_prod/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# REC - Recreational_Report
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(REC)
+	FILE	data/newnwx/pub_prod/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# RER - Record_Report
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(RER)
+	FILE	data/newnwx/pub_prod/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# RTP - Regional_Max/Min_Temp_and_Precip_Table
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(RTP)
+	FILE	data/newnwx/pub_prod/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# RWS - Regional_weather_summary
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(RWS)
+	FILE	data/newnwx/pub_prod/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# RZF - Regional_zone_forecast
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(RZF)
+	FILE	data/newnwx/pub_prod/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# SCC - Storm_Summary
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(SCC)
+	FILE	data/newnwx/pub_prod/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# SCS - Selected_Cities_Summary
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(SCS)
+	FILE	data/newnwx/pub_prod/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# SFP - State_Forecast
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(SFP)
+	FILE	data/newnwx/pub_prod/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# SFT - Tabular_State_Forecast
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(SFT)
+	FILE	data/newnwx/pub_prod/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# SLS - Severe_Local_Storm_Watch_and_Areal_Outline
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(SLS)
+	FILE	data/newnwx/pub_prod/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# SPS - Special_Weather_Statement
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(SPS)
+	FILE	data/newnwx/pub_prod/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# STP - State_Max/Min_Temp_and_Precip_Table
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(STP)
+	FILE	data/newnwx/pub_prod/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# SWR - State_Weather_Roundup
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(SWR)
+	FILE	data/newnwx/pub_prod/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# TAV - Travelers_Forecast_Table
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(TAV)
+	FILE	data/newnwx/pub_prod/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# TPT - Temp./Precip/table_(National_and_International)
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(TPT)
+	FILE	data/newnwx/pub_prod/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# TVL - Travelers_Forecast
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(TVL)
+	FILE	data/newnwx/pub_prod/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# WCN - Watch County Notification
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(WCN)
+	FILE	data/newnwx/pub_prod/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# WVM - Warning_Verification_Message
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(WVM)
+	FILE	data/newnwx/stats/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# ZFP - Zone_Forecast_Product
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(ZFP)
+	FILE	data/newnwx/pub_prod/\4/(\1:yyyy)(\1:mm)\1\2.\4
+###############################################################################
+# Quantitative Precipitation Forecast Products
+#
+# QPF - QPF - the PTR, RSA and STR products
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(QPF[PTR|RSA|STR])
+	FILE	data/newnwx/qpf/QPF/(\1:yyyy)(\1:mm)\1\2.QPF
+#
+# QPFERD - QPF - Excessive Rainfall
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(QPFERD)
+	FILE	data/newnwx/qpf/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# QPFHSD - QPF - Heavy Snowfall
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(QPFHSD)
+	FILE	data/newnwx/qpf/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# QPFPFD - QPF - Quantitative precipitation forecast discussion
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(QPFPFD)
+	FILE	data/newnwx/qpf/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# QPS - Quantitavive_Precipitation_Statement
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(QPS)
+	FILE	data/newnwx/qpf/\4/(\1:yyyy)(\1:mm)\1\2.\4
+###############################################################################
+# Radar Products
+#
+# FTM - WSR88_Radar_Outage_Notification/Free_Text_Message
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(FTM)
+	FILE	data/newnwx/radar/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# MRM - Missing_Radar_Message_(WSR_88D)
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(MRM)
+	FILE	data/newnwx/radar/\4/(\1:yyyy)(\1:mm)\1\2.\4
+###############################################################################
+# River Products
+#
+# RVA - River_Summary
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(RVA)
+	FILE	data/newnwx/river/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# RVD - Daily_River_Forecast
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(RVD)
+	FILE	data/newnwx/river/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# RVF - River_Forecast
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(RVF)
+	FILE	data/newnwx/river/\4/(\1:yyyy)(\1:mm)\1\2.\4
+# RVI - River_Ice_Statement
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(RVI)
+	FILE	data/newnwx/river/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# RVM - Misc._River_Product
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(RVM)
+	FILE	data/newnwx/river/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# RVR - River_Recreation_Statement
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(RVR)
+	FILE	data/newnwx/river/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# RVS - River_Statement
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(RVS)
+	FILE	data/newnwx/river/\4/(\1:yyyy)(\1:mm)\1\2.\4
+###############################################################################
+# Satellite Products
+#
+# SCP - Satellite_Cloud_Product
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(SCP)
+	FILE	data/newnwx/satellite/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# SCV - Satellite_areal_extent_of_snow_cover
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(SCV)
+	FILE	data/newnwx/satellite/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# SIM - Satellite_Interpretattion_Message
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(SIM)
+	FILE	data/newnwx/satellite/\4/(\1:yyyy)(\1:mm)\1\2.\4
+###############################################################################
+# Space Products
+#
+# MON - Routine_Space_Environment_Product_Issued_Monthly
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(MON)
+	FILE	data/newnwx/space/\4/(\1:yyyy)(\1:mm)\1\2.\4
+###############################################################################
+# Statistical Products
+#
+# MEF - AFOS_Forecast_Verification_Matrix
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(MEF)
+	FILE	data/newnwx/stats/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# PAR - Performance_Accompliment_Report
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(PAR)
+	FILE	data/newnwx/stats/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# PVM - Public_Verification_Matrix
+WMO	^...... ... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(PVM)
+	FILE	data/newnwx/stats/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# STA - Network_and_Severe_Weather_Statistical_Summaries
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(STA)
+	FILE	data/newnwx/stats/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# VER - Forecast_Verification_Statistics
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(VER)
+	FILE	data/newnwx/stats/\4/(\1:yyyy)(\1:mm)\1\2.\4
+###############################################################################
+# Tropical Products
+#
+# CHG - Computer_Hurricane_Guidance
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(CHG)
+	FILE	data/newnwx/tropical/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# DSA - Unumbered_Depression/Suspicious_Area_Advisory
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(DSA)
+	FILE	data/newnwx/tropical/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# HLS - Hurricane_Local_Statement
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(HLS)
+	FILE	data/newnwx/tropical/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# PSH - Post_Storm_Hurricane_Report
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(PSH)
+	FILE	data/newnwx/tropical/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# TCA - Tropical_Cyclone_Advisory
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(TCA)
+	FILE	data/newnwx/tropical/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# TCD - Tropical_Cyclone_Discussion
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(TCD)
+	FILE	data/newnwx/tropical/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# TCE - Tropical_Cyclone_Position_Estimate
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(TCE)
+	FILE	data/newnwx/tropical/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# TCM - Marine/aviation_Tropical_Cyclone_Advisory
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(TCM)
+	FILE	data/newnwx/tropical/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# TCP - Public_Tropical_Cyclone_Advisory
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(TCP)
+	FILE	data/newnwx/tropical/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# TCS - Satellite_Tropical_Cyclone_Summary
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(TCS)
+	FILE	data/newnwx/tropical/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# TCU - Tropical_Cyclone_Update
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(TCU)
+	FILE	data/newnwx/tropical/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# TMA - Tsunami_Tide/Seismic_Message_Acknowledgement
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(TMA)
+	FILE	data/newnwx/tropical/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# TSM - Tsunami_Tide/Seismic_Message
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(TSM)
+	FILE	data/newnwx/tropical/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# TSU - Tsunami_Watch/Warning
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(TSU)
+	FILE	data/newnwx/tropical/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# TWD - Tropical_Weather_Discussion
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(TWD)
+	FILE	data/newnwx/tropical/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# TWO - Tropical_Weather_Outlook_and_Summary
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(TWO)
+	FILE	data/newnwx/tropical/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# TWS - Tropical_Weather_Summary
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(TWS)
+	FILE	data/newnwx/tropical/\4/(\1:yyyy)(\1:mm)\1\2.\4
+###############################################################################
+# Ultraviolet Index Products
+#
+# UVI - UVI
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(UVI)
+	FILE	data/newnwx/uvi/\4/(\1:yyyy)(\1:mm)\1\2.\4
+###############################################################################
+# Volcano Products
+#
+# VAA - Volcanic_Activity_Advisory
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(VAA)
+	FILE	data/newnwx/volcano/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# VOW - Volcano_Warning
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(VOW)
+	FILE	data/newnwx/volcano/\4/(\1:yyyy)(\1:mm)\1\2.\4
+###############################################################################
+# Watch and Warning Products
+#
+# NPW - Nonprecip_warnings,_watches,_advisories
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(NPW)
+	FILE	data/newnwx/watch_warn/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# SVR - Severe_Thunderstorm_Warning
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(SVR)
+	FILE	data/newnwx/watch_warn/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# SVS - Severe_Weather_Statement
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(SVS)
+	FILE	data/newnwx/watch_warn/\4/(\1:yyyy)(\1:mm)\1\2.\4
+#
+# TOR - Tornado_Warning
+WMO	^...... .... ([0-3][0-9])([0-2][0-9])([0-5][0-9]).*/p(TOR)
+	FILE	data/newnwx/watch_warn/\4/(\1:yyyy)(\1:mm)\1\2.\4
+################################################################################
+# End of New CID Patterns
+###############################################################################

@@ -1,0 +1,8 @@
+echo LINKING RBK
+cp $GEMPAK/source/device/main/device.f .
+$FC $FFLAGS $LDFLAGS -o $OS_BIN/rbk device.f \
+        $GEMLIB $DEVICE \
+        $OS_LIB/rbk.a  $OS_LIB/gn.a $SYSLIB \
+        $CGEMLIB $GEMLIB -lm
+$RM *.o 
+$RM device.f

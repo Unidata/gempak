@@ -1,0 +1,210 @@
+
+                              NMAP2 DATA SELECTION 
+
+
+I. Summary
+
+The "Data Selection Window" selects and loads data sets into loops.  Multiple 
+data sets can be loaded into a loop, except for the case of images where 
+only one image data source can be selected for a given loop.  The 
+"Data Selection" window also specifies several display attributes including
+roam factor, station plotting model, and auto-update on/off options.  In 
+addition, a time line is shown in the window that allows the control of which 
+times appear in the loop.  Data set selection can be automated by clicking
+the "Restore Data Settings" button which loads pre-defined data sets using
+Stored Procedure Files (SPFs).  Selected data sets may be saved to an SPF for 
+future use by clicking the "Save Data Settings" button.  See help on 
+"Procedures" for additional information.  Clicking the "Map" icon allows the 
+selection of the geographic area and map overlay attributes.  See the 
+"Map-Selection" help for additional information.  
+
+Click the "Data" icon in the main NMAP window or press the right mouse button 
+to invoke the "Data Selection" window.  Clicking the "Load" button at the bottom 
+of the window loads the selected data sets for all loops that have data sets
+specified.  After loading, the most recent frame in the loop is shown except 
+in the case of model data, where the earliest forecast time is shown.
+
+II. "New Source" - Adding Data Sets to a Loop 
+
+Click the "New Source" button to add a data set to a loop.  This 
+button invokes the "Data Source" window which allows the choice of the type
+of data set to display, e.g., METAR, and the way the data is to be displayed,
+e.g, station model.  Choices are presented for each data category through the
+use of layered scroll lists.  The window vertically expands as desired choices
+for each data category are selected from the scroll list.  The number of scroll 
+list layers and their contents are a function of the type of data source, 
+e.g., image, observational, model.  See the "Data Access-Configuration" help 
+for a description of how each data source uses tables to define the list of 
+items that appear in the scroll lists.  
+
+Click the "Accept" button at the bottom of the "Data Source" window to add the 
+desired data set to the loop display list.  The selected data set name appears 
+in the "Data Source" pop-up.  Additional data sets are added to the display list 
+by re-clicking the "New Source" button and selecting desired data set and 
+display options from the scroll lists.  Data set names are added to the 
+"Data Source" pop up as they are selected.  Note that previous selections for 
+a particular data type, e.g., image, are "remembered" by the window to 
+facilitate data set selection. 
+
+Click the "Loop" button to select another loop for data selection.  Once data
+sets for all loops are specified, click the "Load" button to load all the
+selected data sets into their corresponding loops.
+
+III. Time Line
+
+The time line controls the time range, frame times and number of frames 
+that appear in a loop.  The time line and its controls appear in the bottom half 
+of the "Data Selection Window" surrounded by the black rectangular outline.
+
+The loop frame times are determined by the data set that appears in the
+"Dominant Source" pop-up.  The nominal times obtained from the dominant data set 
+are shown as blue tick marks on the time line.  The red tick marks indicate 
+which frames are currently selected.  By default, the most recent times are 
+selected. For model data, all available forecast times are selected. 
+
+All data sets selected for a loop are time-matched to the dominant data source's 
+nominal times.  The time matching is conducted by selecting the nearest time
+to the dominant data set time for each frame.   For example, if METAR data is 
+the dominant data source, the time line will show hourly frame times.  In this 
+case, if GOES East images are included in the loop, the GOES image that comes
+closest to the hour is selected for each frame.  Alternatively, if the dominant 
+data source is changed to the GOES East image data source, the time line will 
+show frame times matched with the temporal increment of GOES imagery.  In this 
+case the METAR data will be time-matched to the GOES imagery by finding the 
+METAR time closest to the GOES image time for each frame.  By default, the first 
+data set selected for a loop is the dominant source.  The dominant source may 
+be changed by clicking on the "Dominant Source" pop-up and selecting another 
+data set from the display list.
+
+By default, the time range is referenced to the current time defined as the 
+time that the NMAP program was started.  To update the current time to "now," 
+click on the "Current Time" radio button.  This causes the most recently 
+received data to become available for loading.  Alternately, click on the 
+"Set Time" radio button to define a time range for data sets older than what
+appears on the time line.  A set of date and time buttons appears.  Click on 
+any part of the date and time buttons to set the desired reference time.  The
+reference time is the most recent time shown on the time line.
+
+The time range, number of frames and increment can be modified in a 
+number of ways. The number of frames can be changed by moving the "Frames" 
+slider bar.  Alternatively, the black box surrounding the selected frames can be 
+stretched or shrunk by grabbing the end of the box with a left mouse click 
+and dragging the mouse.  The time range can be moved by selecting the box away 
+from the ends and dragging it to the desired position on the time line. The
+time increment can be changed by clicking on the "Skip" up/down arrows.  
+Specific frames may be selected on (red) or off (blue) for display by clicking 
+them on or off on the time line.
+
+The default time span, time increment, and number of frames selected are 
+obtained in part from the table $GEMTBL/config/datatype.tbl.  See the 
+"Data Access-Configuration" help to learn how the time line can be configured
+for different data types.  Note that the maximum number of frames that can 
+appear in the time line is 80.
+
+The "Single Time" button allows a loop to be loaded with different grid products
+valid at the same time. This capability allows various forecast products from a 
+model or different models to be loaded into a frame sequence.  Each grid product 
+is loaded into a separate frame in the loop.  Other data types, e.g., image or 
+observational data, are time-matched and overlaid on each grid product.  To 
+select a grid time for grid product matching, click the "Single Time" button 
+and select the desired time from the time line.  A gridded data set must be 
+dominant to enable the single time mode.
+
+IV. "Modify" - Replacing a Data Set
+
+Click the "Modify" button to replace the data set that appears in the
+"Data Source" pop-up with another data set.  The "Data Source" window is
+invoked with the selected data set highlighted.  Change the data source by
+selecting different categories in the window scroll lists.  Click the
+"Accept" button to replace the original data set with the new one.
+
+V. "Edit Source" - Editing Data Set Display Attributes
+
+Clicking the "Edit Source" button allows the modification of display attributes
+for the data set listed in the "Data Source" button.  Display attribute 
+modification is a function of data category.
+
+    A. Surface(SURF_OBS), Upper-Air(UAIR_OBS), Surface Forecast(SURF_FCST) 
+
+    Clicking the "Edit Source" button invokes a "Parm Edit" GUI that allows 
+    modification of the station display density and plotting model.  Adjust the 
+    the station display density by dragging the  "Filter"  slider bar.  Higher
+    values of the filter parameter correspond to lower density data displays.
+    Click the station model icon in the center of the GUI to invoke the "Station
+    Model Edit" GUI.  This GUI allows the modification of text attributes, 
+    parameter colors, and whether parameters are displayed.  Also, additional
+    parameters may be added or substituted by selecting them from the "Parameter
+    List" scroll list.  Click the desired station model position and then click
+    the desired parameter.  The list of available parameters in the "Parameter
+    List" scroll list is a function of the type of data being edited, e.g., 
+    METAR, SYNOP, etc.  Each data type's parameters are obtained from a table in 
+    $GEMTBL/nmap with the name of the data type concatenated with "_parms.tbl".
+    For example the parameter list tables for METAR and SYNOP are
+    metar_parms.tbl and synop_parms.tbl, respectively.  See these tables for
+    additional information.
+
+    B.  Miscellaneous (MISC) and VGF Data Types
+
+    The types of attributes that can be modified vary for each data type because
+    the display characteristics are quite different among the types.  Therefore, 
+    clicking on the "Edit Source" button invokes a unique GUI for each data
+    type with data set specific attributes to edit.  The default attributes
+    for each data type are specified in the table $GEMTBL/config/miscset.tbl.
+    See that table for additional information.
+
+
+VI.  "Clear Source" - Deleting A Data Set Selection
+
+A data set can be deleted from the display list and thus not loaded by
+clicking the "Clear Source" button.  Select the data set to be deleted by
+clicking on the "Data Source" button and choosing data set name.  If the
+deleted data set is the dominant one, the next data source listed in
+the "Data Source" pop up becomes dominant.
+
+VII. "Turn Source On/Off" -  Toggling a Data Set Selection On/Off
+
+A data set in the display list can be turned off for subsequent loading in 
+the loop.  Click the "Turn Source On/Off" button to toggle the selected data 
+source.  If a data source is turned off, the "(Off)" string appears ahead of 
+the source name in the "Data Source" GUI.  If a dominant data source is turned 
+off, the next data source listed in the GUI will automatically become dominant.
+
+VIII.  "Roam" - Setting Loop Roam Factors
+
+The "Roam" pull down specifies the roam factor that is applied to a loop upon
+loading.  Roaming allows viewing a larger portion of a data set than appears
+in the NMAP display by scrolling over the image.  The roam factors in the 
+pull-down are obtained from the table: $GEMTBL/nmap/nmap_roam.tbl.  See the 
+"Roam" help for additional information regarding how roam operates.
+
+IX. "Auto Update" - Setting Auto-update On/Off
+
+The "Auto Update" pop up controls whether auto-update is turned on or off.
+Auto-update currently only applies to loops that have image, i.e., radar
+or satellite, data sets as the dominant data source.  If auto-update is turned 
+on, NMAP checks the loops image data directory every thirty seconds for a new 
+image.  If a new image is found, it is loaded into the latest frame in the 
+loop.  The oldest frame is deleted to maintain the same number of frames 
+in the loop.   Other data sets in the loop are also re-loaded and time matched
+to the updated image.
+
+X.  Data Set Plotting Order
+
+Each frame may contain multiple data sets, map overlays, logos and product
+generation objects.  NMAP uses the following order in plotting when constructing
+a frame: 
+ 
+	Images
+	Grid 
+	Surface Observations
+	Sounding Observations
+	Surface Forecast 
+	Miscellaneous
+	VGF
+	Maps/Overlays/Lat/Lon Lines
+	Logos
+	Active Product Generation
+
+This order means that images are plotted first, then gridded data sets are 
+plotted second on top of images, then surface data, and so on.
+

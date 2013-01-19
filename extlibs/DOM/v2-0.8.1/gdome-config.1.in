@@ -1,0 +1,42 @@
+.TH GDOME2 1 "3 December 2001" Version @VERSION@
+.SH NAME
+gdome-config - script to get information about the installed version of gdome2
+.SH SYNOPSIS
+.B gdome-config
+[\-\-prefix\fI[=DIR]\fP] [\-\-exec-prefix\fI[=DIR]\fP] [\-\-libs] [\-\-cflags] [\-\-version] [\-\-help]
+.SH DESCRIPTION
+\fIgdome-config\fP is a tool that is used to determine the compile and
+linker flags that should be used to compile and link programs that use
+\fIgdome2\fP.
+.SH OPTIONS
+.l
+\fIgdome-config\fP accepts the following options:
+.TP 8
+.B  \-\-version
+Print the currently installed version of \fIgdome2\fP on the standard output.
+.TP 8
+.B  \-\-libs
+Print the linker flags that are necessary to link a \fIgdome2\fP program.
+.TP 8
+.B  \-\-cflags
+Print the compiler flags that are necessary to compile a \fIgdome2\fP program.
+.TP 8
+.B  \-\-prefix=DIR
+If specified, use DIR instead of the installation prefix that \fIgdome2\fP
+was built with when computing the output for the \-\-cflags and \-\-libs
+options. This option must be specified before any \-\-libs or \-\-cflags
+options.
+.TP 8
+.B  \-\-exec-prefix=DIR
+If specified, use DIR instead of the installation exec prefix that
+\fIgdome2\fP was built when computing the output for the \-\-cflags and
+\-\-libs options. This option must be specified before any \-\-libs or
+\-\-cflags options.
+.TP 8
+.B  \-\-help
+Print a short help text and exit.
+.SH AUTHOR
+This manual page was added by Enrico Zini <zinie@cs.unibo.it> for the Debian
+GNU/Linux system (but may be used by others).  The page was made editing the
+manpage written by Fredrik Hallenberg <hallon@lysator.liu.se> for the libxml2
+Debian GNU/Linux package.

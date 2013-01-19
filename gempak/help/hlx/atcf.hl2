@@ -1,0 +1,43 @@
+     ATCF
+
+     ATCF is the initial time for the ATCF forecast tracks, the colors
+     for each model track, the model names, flags for plotting the time,
+     the storm name or number, the forecast wind speeds and markers at each
+     forecast time, and an optional specific storm identifier.
+
+	Initial time|Model clrs|Model names|Time flg|Id flg|Speed flg|
+		 Marker flag|Name
+
+     ATCF forecast tracks valid for the initial time will be plotted on
+     the map.  Forecast tracks show points at 6 or 12 hour intervals from
+     0 through 126 hours, if available.  The actual storm track will be plotted
+     as a white line, solid up to the initial time and dashed after the
+     initial time (when data is available).  The initial time is given as
+     a GEMPAK date/time string.  Any missing items from the string will be
+     filled in by the system time.  The initial time may also be LAST.
+     LAST will use the system time to plot the most recent tracks whose
+     initial time is within 9 hours of the current time.  ALL is not accepted
+     as an initial time for ATCF data.
+
+     The colors are separated by a semi-colon, as are the four-character model
+     names.  If no colors or model names are given, all model tracks will be
+     plotted at default colors.  If specific model names are listed, only those
+     model tracks will be plotted.  Default colors will be used unless colors
+     are explicitly given, with a one-to-one correspondence between model names
+     and colors.  Specifying colors without model names has no effect.
+
+     The time flag is YES or NO and controls whether or not to plot the initial
+     time of the ATCF forecast tracks on the map.  The default is NO.
+
+     The storm id flag is YES or NO and controls whether or not to plot the 
+     storm name or number on the map.  The default is NO.
+
+     The speed flag is YES or NO and controls whether or not to plot the 
+     speed in knots, when given, at each forecast time.  The default is NO.
+
+     The marker flag is YES or NO and controls whether or not to plot a
+     marker at each forecast time on the map.  The default is NO.
+
+     The name or number of a tropical storm may be specified.  If one is given,
+     only tracks for that storm will be displayed for the date/time indicated. 
+     The default is all storms are plotted. 

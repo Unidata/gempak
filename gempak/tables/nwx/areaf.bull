@@ -1,0 +1,21 @@
+! AREAF.BULL
+!
+! This table contains the bulletin/station information to be used
+! with the Area Forecasts of the Aviation Forecasts
+!
+! The format for the file is given below, with the
+! number of characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+!
+FAAK1  PANC	ANCHORAGE_INTL                   AK US  6117 -15002    40
+FAAK1  PFAI	FAIRBANKS_INTL                   AK US  6481 -14787   138
+FAAK5  PAJN	JUNEAU_INTL_AIR                  AK US  5837 -13458     7
+FAHW31 PHFO     HONOLULU/UNIV_OF_HI-MANOA_CAMPUS HI US  2130 -15782    20
+FAUS5  KBOS	BOSTON/LOGAN_IN                  MA US  4237  -7103     9
+FAUS5  KCHI	CHICAGO/O'HARE                   IL US  4198  -8790   205
+FAUS5  KMIA	MIAMI_INTL_AIRP                  FL US  2582  -8028     4
+FAUS5  KSLC	SALT_LAKE_CITY                   UT US  4078 -11197  1288
+FAUS5  KSFO	SAN_FRANCISCO                    CA US  3761 -12238     5
+FAUS5  KDFW  	DALLAS/FT_WORTH                  TX US  3290  -9703   182

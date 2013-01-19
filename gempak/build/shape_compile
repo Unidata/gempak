@@ -1,0 +1,58 @@
+#!/bin/sh
+if  [ $# != 0 ]
+then
+  version=$1
+  path=$NAWIPS/extlibs/SHAPE/$version
+  if  [ -d $path ]
+  then
+    echo "----->  BUILDING SHAPE LIBRARY $version"
+    cd $path
+
+#==========================================================
+#  Initialize "influential environment variables"
+
+    export     FC=""               # Fortran compiler command
+    export     F77=""              # Fortran 77 compiler command
+    export     F90=""              # Fortran 90 compiler command
+    export     CPP=""              # C prepocessor
+    export     CXX=""              # C++ compiler command
+    export     CXXCPP=""           # C++ preprocessor
+    if [ $OS = "HPUX" ]
+    then
+      export   CFLAGS="+DA1.1"   # C compiler flags
+    else
+      export   CFLAGS=""
+    fi
+    export     FCFLAGS=""		# Fortran compiler flags
+    export     FFLAGS=""		# Fortran 77/90 compiler flags
+    export     LDFLAGS=""		# linker flags
+    export     F90FLAGS=""		# Fortran 90 compiler flags
+    export     CXXFLAGS=""		# C++ compiler flags
+    export     CPPFLAGS="-DNDEBUG"	# C/C++ preprocessor flags
+    export     PKG_CONFIG="$OS_BIN/pkg-config"
+
+#=====================================================================
+# Clean up
+    rm -f *.o
+    rm -f $OS_LIB/libSHAPE.a
+
+# Compile, check, and install the package
+    echo "----->  COMPILING SHAPE LIBRARY $version"
+    $CC $CFLAGS -c dbfopen.c shpopen.c
+    echo "----->  INSTALLING SHAPE LIBRARY as \"$OS_LIB/libSHAPE.a\""
+    $AR $ARFLAGS $OS_LIB/libSHAPE.a dbfopen.o shpopen.o
+    cp shapefil.h $GEMINC
+# Clean up
+    rm -f *.o
+    rm -f $OS_LIB/SHAPE_*
+    touch $OS_LIB/SHAPE_$version
+
+##########################################################################
+    echo "----->  CREATION OF SHAPE LIBRARY $version IS COMPLETE."
+    echo "        ==========================================="
+  else
+    echo "Directory \"$path\" does not exist!"
+  fi
+else
+  echo "Please include a valid SHAPE library version; e.g., v1.2"
+fi

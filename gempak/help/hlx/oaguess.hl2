@@ -1,0 +1,9 @@
+     OAGUESS
+
+     OAGUESS contains the information to use as a first guess for objective
+     analysis in the graph to grid function.  The name of the grid file 
+     containing the guess field and the time to be used to extract the field 
+     must be entered using * as a separator:
+
+                guess file * grid time
+

@@ -1,0 +1,22 @@
+     GGLIMS
+
+     GGLIMS is the parameter which controls the grid value limits and values.
+
+	 lochk;loval | hichk;hival | default
+
+     Grid values less than lochk are set to loval.
+     Grid values greater than hichk are set to hival.
+
+     If no contours are available in the CNTRFL file, the output grid
+     is assigned "default" at all grid point locations.
+
+     Example: for a precipitation grid, set all negative values to zero:
+
+	GGLIMS	0;0
+
+     Example: in previous example, if no contours are provided, set all
+              grid point values to zero:
+
+	GGLIMS	0;0 | | 0.0
+
+

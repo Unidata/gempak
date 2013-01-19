@@ -1,0 +1,11 @@
+! QPFHSD.BULL
+!
+! Location information for the following product:
+! QPFHSD - Heavy Snowfall
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+FOUS11 KWBC     NCEP_NMC                         MD US  3881  -7687     0

@@ -1,0 +1,91 @@
+#!/bin/csh
+#
+# EZDELTA
+#
+# This script displays the 12 hour change of a given field along with the
+# field itself.  If the user asks for the change in 700 mb temperature at 24-h,
+# the script will compute the change between the 12- and 24-h 700 mb
+# temperatures and display it, along with the 24-h temperature field.
+#
+# The user must supply the forecast time (from which 12 hrs will be subtracted
+# to compute the difference), level, and a field.
+#
+#	Syntax:   ezdelta fcst_hour level field
+#
+#	Examples: ezdelta 24 700 temp
+#		  ezdelta 36 500 hght
+#
+##
+# Log:
+# B. Colman/SEA		 1994
+# R. Miller/COMET	 1994
+# S. Jacobs/NMC		10/94	Clean up
+#
+
+if ( ${3}x == x ) then
+   echo " GEMPAK shell script to produce a difference field over 12 hrs.  The"
+   echo " user must supply the forecast time (from which 12 hrs will be "
+   echo " subtracted to compute the difference), level, and a field."
+
+   echo " "
+   echo " Enter the forecast hour (e.g. 24) which is the end of the time"
+   echo " difference.  (e.g., for a 12 to 24 hr difference, enter 24.)"
+   set fcst=$<
+
+   echo " "
+   echo " Enter the pressure level (e.g. 700)."
+   set lvl=$<
+
+   echo " "
+   echo " Enter the field to compute the difference (e.g., temp, hght, relh)"
+   set field=$<
+
+else
+   set fcst = $1
+   set lvl  = $2
+   set field = $3
+endif
+
+if ( $fcst < 12 ) then
+   echo " "
+   echo " ERROR.  Forecast hour must be 12 or greater."
+   echo " "
+   exit
+endif
+
+# Source the file called settings.  This file contains commands to set
+# environment variables for the model name and device driver.
+
+source settings
+
+@ n12 = $fcst - 12
+
+gdcntr << EOF
+GDATTIM = f$fcst
+GLEVEL  = $lvl
+GVCORD  = pres
+GFUNC   = sub($field,$field^f$n12)
+CINT    = 
+LINE    = 5/-2/2
+TITLE   = 1=white/-2/@ ${field}: ${fcst}-H MINUS ${n12}-H (Yellow)
+DEVICE  = $dev
+CLEAR   = yes
+PANEL   = 0
+SCALE   = 0
+CONTUR  = 1
+SKIP    =
+FINT    = 8/8
+FLINE   = 101;22-25
+CTYPE   = c
+HILO    = 5/+;-
+r
+
+TITLE   = 1=white/-3/$model  ~ @ ${field} (Green)
+CLEAR   = no
+GFUNC   = $field
+GDATTIM = f$fcst
+LINE    = 3/1/1
+r
+
+ex
+EOF

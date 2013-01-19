@@ -1,0 +1,52 @@
+     AIRM
+
+     AIRM is the ending valid time for the airmet, the colors for the
+     instrument flight rules, mountain obscuration, turbulence, icing,
+     sustained winds and low-level wind shear, and flags for plotting
+     symbols or airmet type, the end time, and the flight levels on the map.
+
+	End time|IR;MO;TB;IC;SW;WS clrs|TB color2|Flight lvl|
+        low;upper filter lvl| Symbol flg|Time flg|Flight lvl flg|Start time flg
+
+     Airmets that are valid at the ending time will be plotted on the map.
+     The ending time is given as a GEMPAK date/time string.  Any missing
+     items from the string will be filled in by the system time.  The
+     ending time may also be LAST or ALL.  LAST will use the system time
+     and plot all current airmets.  ALL will plot all the airmets in the data
+     files for the last ten days, whether they are active, cancelled, updated
+     or expired.
+
+     The colors are separated by a semi-colon.  If any color is set to 0,
+     that type of symbol will not be plotted.  If any color is missing, a 
+     default will be used.  Defaults are red for instrument flight rules,
+     yellow for mountain obscuration, light blue and magenta for turbulence,
+     green for icing, dark pink for sustained winds and cyan for low-level
+     wind shear.
+
+     TB color2 is the second color for turbulence. The color from the first
+     list will be used to plot Turbulence AIRMETs below the specified level.
+     The color listed as the second color will be for Turbulence AIRMETs
+     above the specified level.
+     
+     Flight lvl is the dividing level for the turbulence display. The value
+     is in hundreds of feet.       
+
+     The lower and upper filter levels are flight level values used to filter
+     the AIRM data display. If neither value is given, then all data is plotted.
+     If only the lower level is present, then only data above that level is
+     displayed. For the upper level only, data below this upper value are
+     displayed. If both values are given, then the data is plotted for levels
+     between the two boundary values.
+
+     The symbol flag is YES or NO and controls whether or not to plot a symbol
+     or identifying text for the airmet on the map.  The default is NO.
+
+     The time flag is YES or NO and controls whether or not to plot the end
+     time of the airmet on the map.  The default is NO.
+
+     The flight level flag is YES or NO and controls whether or not to plot the
+     flight level(s) in hundreds of feet on the map.  The default is NO.
+
+     The start time flag is YES or NO and controls whether or not to use the 
+     AIRMET issue time (YES) or the AIRMET beginning valid time (NO) for plotting 
+     the data.  The dafault is YES.

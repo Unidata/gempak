@@ -1,0 +1,11 @@
+!	Program GDDIAG
+!
++2	! No correction pass will be done.
++1	! WARNING--no surface pressure grid exists.
+-1	! Fatal error initializing TAE.
+-2	! Fatal error reading TAE parameters.
+-3	! Error initializing GEMPLT.
+-4	! Requested time is not available.
+-5      ! No pressure levels exist.
+-6	! The packing information is erroneous.
+-7	! Could not write output grid to the file.

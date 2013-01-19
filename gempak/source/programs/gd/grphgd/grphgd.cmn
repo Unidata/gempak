@@ -1,0 +1,168 @@
+C************************************************************************
+C* / GDNPRM / and / GDPPRM /						*
+C*									*
+C* This common block contains information stored for GRPHGD, the	*
+C* Graphics-to-Grid processing program.					*
+C**									*
+C* Log:									*
+C* D.W.Plummer/NCEP	 8/98						*
+C* D.W.Plummer/NCEP	 9/98	Increased MAXPPL			*
+C* D.W.Plummer/NCEP	 9/99	Increased MAXLIN from 50 to 200		*
+C* D.W.Plummer/NCEP	11/02	Added history flag parameter values	*
+C* D.W.Plummer/NCEP	07/03	Chgs for intersection efficiency	*
+C* D.W.Plummer/NCEP	09/03	Chgs for rel mm and bounds		*
+C* T. Lee/SAIC		08/04	Added vector data			*
+C* D.W.Plummer/NCEP	03/05	Increase max allowable intersections	*
+C* H. Zeng/SAIC		04/05	Added two new parameters		*
+C* M. Li/SAIC		05/05	Added nwnd to GGWIND			*
+C* D.W.Plummer/NCEP	07/05	Increase MAXINT to 50K			*
+C* M. Li/SAIC		04/07	Add visib				*
+C* M. Li/SAIC		04/07	Add bvalue, ddist and spec		*
+C************************************************************************
+C
+C*	History Flags
+C
+	INTEGER		INIT, BOUNDED, EXACT, RADIAL, CLSDCN, CLSDCNMM
+	INTEGER		LIKVALMM, LIKVAL, WEIGHTED, NOMMVALU, CLSD, OPEN
+C
+	PARAMETER ( INIT      = 0 )
+C				Grid pt initialized.
+	PARAMETER ( BOUNDED   = 1 )
+C				Grid pt inside bounded area.
+	PARAMETER ( EXACT     = 2 )
+C				Grid pt lies exactly on contour.
+	PARAMETER ( RADIAL    = 3 )
+C				Grid pt lies between contours of different
+C				values and assigned via gradient search.
+	PARAMETER ( CLSDCN    = 4 )
+C				Grid pt inside closed contour w/o minmax.
+	PARAMETER ( CLSDCNMM  = 5 )
+C				Grid pt inside closed contour w/  minmax.
+C				(not used at this time)
+	PARAMETER ( LIKVALMM  = 6 )
+C				Grid pt surrounded by like values w/  minmax.
+	PARAMETER ( LIKVAL    = 7 )
+C				Grid pt surrounded by like values w/o minmax 
+C				and assigned via gradient search.
+	PARAMETER ( WEIGHTED  = 8 )
+C				Grid pt assigned from surrounding grid pts.
+C
+	PARAMETER ( DLINE     = 9 )
+C				Grid pt lies to the right of a contour and 
+C				assigned the contour line value.
+	PARAMETER ( DLWEIGHTED  = 10 )
+C				Grid pt assigned from surrounding grid pts.
+	PARAMETER ( DLWDEFALT  = 11 )
+C				Grid pt assigned default value.
+C
+	PARAMETER ( NOMMVALU  = 0 )
+C				No value for innermost contour
+	PARAMETER ( CLSD  = 1 )
+C				Line is closed.
+	PARAMETER ( OPEN  = 0 )
+C				Line is open.
+C
+        PARAMETER       ( MAXLIN = 200 )
+C				Max number of lines
+        PARAMETER       ( MAXPPL = 500 )
+C				Max number of pts per line
+	PARAMETER	( MAXWND = 4000 )
+C				Max number of wind data
+        PARAMETER       ( MAXDIM = 2000 )
+C				Max dimension for holding intersections
+C       			(this allows for 1000x1000 grid)
+        PARAMETER       ( MAXINT = 50000 )
+C				Max number of intersections overall
+        PARAMETER       ( MAXMM = 50 )
+C				Max number of minima/maxima
+        PARAMETER       ( INT_X = 1, INT_Y = 2 )
+C				Intersection i and j
+        PARAMETER       ( INT_DRCT = 1, INT_INDX = 2, INT_LINE = 3 )
+C				Intersection direction, index and line number
+        PARAMETER       ( NINTS = 1, STPTR = 2 )
+C				Pointer indices number of ints and starting ptr
+        PARAMETER       ( GG_OUT = 0, GG_IN = 1 )
+C				Outside and Inside for BOUNDS check
+C
+C*	Line information arrays
+C
+        REAL            flat(MAXPPL, MAXLIN), flon(MAXPPL, MAXLIN)
+        REAL            fi(MAXPPL, MAXLIN), fj(MAXPPL, MAXLIN)
+        REAL            value(MAXLIN)
+        INTEGER         npts(MAXLIN), ismth(MAXLIN), closed(MAXLIN)
+        REAL            rngi(MAXLIN,2), rngj(MAXLIN,2)
+	INTEGER		inrmst(MAXLIN)
+C
+	COMMON  / GGLINE /  nlines, npts, value, ismth, closed,
+     +			    flat, flon, rngi, rngj, fi, fj, inrmst
+C
+C*	Wind information arrays
+C
+	REAL		wlat(MAXWND), wlon(MAXWND)
+	REAL		wdrct(MAXWND), wsped(MAXWND)
+	REAL		wi(MAXWND), wj(MAXWND)	
+	INTEGER		wcolr(MAXWND), wtype(MAXWND)
+	COMMON  / GGWIND /  wcolr, wtype, wlat, wlon, wdrct, wsped, 
+     +			    wi, wj, nwnd
+C
+C*	Min/max information arrays
+C
+        REAL            flatmm(MAXMM), flonmm(MAXMM)
+        REAL            fimm(MAXMM), fjmm(MAXMM)
+        REAL            valuemm(MAXMM)
+	INTEGER		mmline(MAXMM,8)
+C
+	COMMON  / GGMM /  nmm, valuemm, flatmm, flonmm, 
+     +			  fimm, fjmm, mmline
+C
+C*	Intersection information arrays
+C*	For variable array intdim:
+C*	'4' represents the number of intersection directions
+C*	    (col, row, forward diagonal, backward diagonal),
+C*	For variable array intsct:
+C*	'2' represents i and j,
+C*	For variable array intinfo:
+C*	'3' of array intinfo represents direction, index and line number,
+C*	For variable array intptrs:
+C*	'2' of array intptrs represents the number of ints and starting ptr.
+C*
+C*	intdim - the number of indices for each direction:
+C*		intdim(1) = number of columns
+C*		intdim(2) = number of rows
+C*		intdim(3) = number of rows+columns-1
+C*		intdim(4) = number of columns+rows-1
+C*	intsct - all the int i's and j's.
+C*	intinfo - all the int directions, index values and line numbers.
+C*	intptrs - all the number of ints and starting ptrs for
+C*		each direction's indices.
+C
+        INTEGER         intdim(4)
+        REAL            intsct(MAXINT,2)
+        INTEGER         intinfo(MAXINT,3)
+        INTEGER         intptrs(MAXDIM,4,2)
+C
+	COMMON  / GGINTR /  intdim, intsct, intinfo, intptrs
+C
+C*	Limits information
+C
+        REAL            lochk, loval, hichk, hival, defalt
+C*
+	COMMON  / GGLIMT /  lochk, loval, hichk, hival, defalt
+C
+C*	Bounds information
+C
+        CHARACTER	bnds*(128)
+C*
+	COMMON  / GBNDS /  bnds
+C*
+C*	visib  - flag to 'see' contour out of grid domain
+C*	bvalue - numeric contour value to assign to the boundary condition
+C*	ddist  - distance in rows/columns away form the closest "spec"
+C*	spec   - "c" for contour, or 'e' for a combination of contour and grid edges, whichever is greater
+C 	
+	LOGICAL		visib
+	REAL		bvalue(2)
+	INTEGER		ddist(2)
+	CHARACTER	spec
+C
+	COMMON	/ GGEOPT / visib, bvalue, ddist, spec

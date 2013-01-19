@@ -1,0 +1,35 @@
+! MCLOUD.TBL   
+!
+! This table provides the initial entries for Medium Level Cloud (MLC)
+! types, distribution codes, and thunderstorm types in the "Text Attributes"
+! window of NMAP product generation.  
+!  
+! The entries must be organized as following: 
+!     (1) MLC types - the first non-blank, non-comment line.
+!     (2) MLC distribution codes - the second non-blank, non-comment line.
+!     (3) MLC thunderstorm types - the third non-blank, non-comment line.
+!     (4) Each line can have up to 15 entries, separated by a semicolon ";".
+!
+! The check boxes in the MLC "Text Attrbutes" window for MLC types,
+! distribution codes, and MLC thunderstorm types will be arranged in the
+! in the same sequence as they appear in this table. Also, the same
+! sequence applies when saving/displaying an MLC text element.
+! 
+!
+!!
+! Log:
+! J. Wu/SAIC	 	02/03	create	
+!
+!------------------------------------------------------------------------
+!
+! Cloud Type   
+!
+CU;ST;SC;NS;AS;AC;CS;CC;CI
+!
+! Cloud Distribution Code (Amount)   
+!
+SKC;SCT;BKN;OVC;LYR
+!
+! Thunderstorm Type   
+!
+ISOL;OCNL;FRQ;EMBD

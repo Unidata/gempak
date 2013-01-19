@@ -1,0 +1,9 @@
+$CC $CFLAGS -c dcshef.c
+$FC $LDFLAGS -o $OS_BIN/dcshef dcshef.o \
+	$BRIDGE $OS_LIB/libOHSHEF.a $BRIDGE $GEMLIB \
+	$CGEMLIB -lncepBUFR -lncepUT -lncepBUFR \
+	$OS_LIB/ginitp_alt.o $OS_LIB/gendp_alt.o \
+	$OS_LIB/gplt.a $DEVICE $OS_LIB/gn.a \
+	$BRIDGE $GEMLIB $CGEMLIB $GEMLIB -lm
+$RM *.o
+

@@ -1,0 +1,15 @@
+!	SNMOD error file
+!
+ -1	! Fatal error initializing TAE.
+ -2	! Fatal error reading TAE parameters.
+ -3	! Output file cannot be unmerged type.
+ -4	! A new file cannot be created with no times.
+ -5	! A new file cannot be created with no stations.
+ -6	! Parameter !AS cannot be computed.
+ -7	! !AS is character type; cannot be added to file.
+ -8	! Output vertical coordinate !AS cannot be used.
+ -9	! No valid parameters were specified.
+-10	! Time !AS cannot be added to the output file.
+-11	! Station !AS cannot be added to output file.
+-12	! Parms do not match those in output data set.
+-13	! Output file name is blank.

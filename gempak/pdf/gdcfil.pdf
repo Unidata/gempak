@@ -1,0 +1,7 @@
+GDOUTF  Output grid file                                                        
+PROJ    Map projection/angles/margins|drop flag                                 
+GRDAREA Area covered by grid                                                    
+KXKY    Number of grid points in x;y                                            
+MAXGRD  Maximum number of grids                                                 
+CPYFIL  Grid file whose navigation is to be used in new grid file | subarea     
+ANLYSS  Grid analysis block                                                     

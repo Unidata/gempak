@@ -1,0 +1,23 @@
+GLEVEL  700                                                                     
+GVCORD  PRES                                                                    
+PANEL   0                                                                       
+SKIP    0              ! 1                                                      
+SCALE   0              !-1                                                      
+GFUNC   (relh)         !(hght)                                                  
+GDPFUN  (relh)         !(hght)                                                  
+CTYPE   c/f ! c                                                                 
+TYPE    c/f ! c                                                                 
+CONTUR  2                                                                       
+CINT    30;50;70;90 ! 3                                                         
+LINE    1/12/2 ! 1//3                                                          
+FINT    70;90                                                                   
+FLINE   0;18;14
+HILO                                                                            
+HLSYM                                                                           
+CLRBAR  1////0.5                                                                
+GVECT                                                                           
+WIND    bk0                                                                     
+REFVEC                                                                          
+TITLE   1/-1/FCST 700MB HGHTS/REL HUMIDITY VALID ~!0 
+TEXT    1//4/sw
+STNPLT                                                                          

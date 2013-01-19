@@ -1,0 +1,409 @@
+#!/bin/csh
+#
+#************************************************************************
+#									*
+#	Script to print various parameters from model data.		*
+#									*
+# Log :									*
+# D.W.Plummer/NCEP	 2/97						*
+# D.W.Plummer/NCEP	 3/97	Added 850mb plot option, changed 4-panel*	
+#                               methodology, added increment to ALL fhr,*
+#                               increased remove delay minutes to 30,   *
+#                               added UKMET and ECMWF to get NHem map,	*
+#                               added CLEAR=yes to most gdplot2 calls,	*
+#                               modified 500mb_diff gdplot2 sequence.	*
+#************************************************************************
+#
+
+set v=`echo ${1} | cut -c1-2`
+set prog=`echo ${0} | awk -F/ '{print $NF}'`
+
+if ( ${#argv} < 2 || ${v} == "-h" || ${v} == "h" )  then
+    cat `which prnt.hlp`
+    exit
+endif
+
+#
+#	Set plottype ${pt}
+#
+
+set pt=${1}
+shift
+
+#
+#	Check for partial file processing, set parameters accordingly.
+#
+
+set gdfile=""
+if ( `echo ${1} | cut -c7` != "" )  then
+    set gdfile=${1}
+    shift
+endif
+
+#
+#	Get model name.
+#
+
+set mod=${1}
+set moduc=`echo ${mod} | tr "[a-z]" "[A-Z]"`
+set modlc=`echo ${mod} | tr "[A-Z]" "[a-z]"`
+set mdl=`echo ${1} | tr "[a-z]" "[A-Z]"`
+if ( `echo ${mdl} | cut -c1-3` ==   "MRF" )  set mdl="MRF"
+if ( `echo ${mdl} | cut -c1-5` == "ECMWF" )  set mdl="ECMWF"
+if ( `echo ${mdl} | cut -c1-4` ==  "MESO" )  set mdl="MESO"
+set mdllc=`echo ${mdl} | tr "[A-Z]" "[a-z]"`
+
+#
+#	Get forecast hour.
+#
+
+set fhr=${2}
+if ( ${fhr} == "avail" )  then
+    if ( ${mdllc} == "all" )  then
+        echo "The following model files are available:"
+        /bin/ls -r $MODEL/avn/*
+        /bin/ls -r $MODEL/ecmwf/*
+        /bin/ls -r $MODEL/eta/*
+        /bin/ls -r $MODEL/mrf/*
+        /bin/ls -r $MODEL/ngm/*
+        /bin/ls -r $MODEL/ruc/*
+        /bin/ls -r $MODEL/ukmet/*
+    else
+        echo "The following files are available from the ${mdllc} model:"
+        /bin/ls -r $MODEL/${mdllc}/${mdllc}*
+    endif
+    exit
+else
+	set fhrtmp=${fhr}
+	set fhr=`echo ${fhrtmp} | awk -F- '{print $1}'`
+	set fhi=`echo ${fhrtmp} | awk -F- '{print $2}'`
+	if ( ${fhi}"." == "." )  set fhi="6"
+        if ( ${fhr} == "" || ${fhr} == "all" || ${fhr} == "ALL" ) set fhr="ALL"
+        if ( ${fhr} == "ALL" )  then
+		set fhr="f00-last-${fhi}"
+        	if ( ${mdl} ==   "RUC" )  set fhr="ALL"
+        	if ( ${mdl} ==   "MRF" )  set fhr="ALL"
+        	if ( ${mdl} == "ECMWF" )  set fhr="ALL"
+        	if ( ${mdl} == "UKMET" )  set fhr="ALL"
+	endif
+        if ( ${fhr} != "ALL" )  then
+                set c=`echo ${fhr} | cut -c1`
+                if ( ${c} != "f" && ${c} != "F" )  then
+                        set fhr="F${fhr}"
+                endif
+        endif
+endif
+
+#
+#	Get printer name (optional) and year-month-date-cycle (optional)
+#
+
+set printer=${3}
+set min="30"
+set sec=`expr ${min} \* 60`
+set ymdc=${4}
+
+set ymd=`echo ${ymdc} | awk -F/ '{print $1}'`
+set cyc=`echo ${ymdc} | awk -F/ '{print $2}'`
+
+#
+#	Set output plot file name and device.
+#
+
+set x=`echo ${fhr} | awk -F\; '{print $NF}'`
+set file="$HOME/${pt}_${x}.${$}.ps"
+/bin/rm -f ${file}
+set dev="ps|${file}|17;11|g"
+
+#
+#	Print out some messages.
+#
+
+if ( ${gdfile} == "" )  then
+	if ( ${ymdc} != "" )  then
+		set gdfile="$MODEL/${mod}/${mod}_${ymd}${cyc}"
+		if ( ${modlc} == "ecmwfg" )  then
+		    set gdfile="$MODEL/${mdllc}/${mdllc}_${ymd}${cyc}_global"
+		else if ( ${modlc} == "ecmwft" )  then
+		    set gdfile="$MODEL/${mdllc}/${mdllc}_${ymd}${cyc}_tropical"
+		else if ( ${modlc} == "mrf1" )  then
+		    set gdfile="$MODEL/${mdllc}/${mdllc}_${ymd}${cyc}_g1x1"
+		else if ( ${modlc} == "mrf2" )  then
+		    set gdfile="$MODEL/${mdllc}/${mdllc}_${ymd}${cyc}_g2.5x2.5"
+		endif
+		if ( ! -f ${gdfile} )  then
+			echo "Model file ${gdfile} unavailable."
+			exit
+		endif
+		echo "Creating ${fhr}-hr fcst ${pt} chart for the ${mod} model at ${cyc}Z ${ymd} (file ${gdfile})."
+	else
+		set gdfile=${mod}
+		echo "Creating ${fhr}-hr fcst ${pt} chart for the ${mod} model."
+	endif
+endif
+
+#
+#	set appropriate map area
+#
+
+set garea_etc="$NAWIPS/scripts/prnt/restore/garea_etc_us.nts"
+if ( ${mdl} == "MRF" || ${mdl} == "ECMWF" || ${mdl} == "UKMET" )  then
+	set garea_etc="$NAWIPS/scripts/prnt/restore/garea_etc_nh.nts"
+endif
+
+#
+#	now do appropriate gdplot2 sequence to create plot file
+#
+
+set prntout=${5}
+if ( ${prntout}"." == "." )  then
+	set prntout=/dev/null
+else
+	/bin/rm -f ${prntout}
+	echo "Print from GEMPAK will be saved in ${prntout}"
+endif
+
+if ( ${pt} == "pmsl" )  then
+
+#
+#	gdplot2 for pmsl chart
+#
+
+gdplot2  <<EOF  >>${prntout}
+GDFILE  = ${gdfile}
+GDATTIM = ${fhr}
+
+CLEAR   = yes
+
+restore ${garea_etc}
+restore $NAWIPS/scripts/prnt/restore/mslp_1000-500mb_thkn.nts
+DEVICE  = ${dev}
+PANEL   = 0/1//8
+TITLE   = 1/-1/${mdl} FCST SFC/1000-500 THICKNESS VALID ~!0
+l
+r
+
+EOF
+
+else if ( ${pt} == "1000mbTHKN" )  then
+
+#
+#	gdplot2 for 1000mbTHKN chart
+#
+
+gdplot2  <<EOF  >>${prntout}
+GDFILE  = ${gdfile}
+GDATTIM = ${fhr}
+
+CLEAR   = yes
+
+restore ${garea_etc}
+restore $NAWIPS/scripts/prnt/restore/1000-500mb_thkn.nts
+DEVICE  = ${dev}
+PANEL   = 0/1//8
+TITLE   = 1/-1/${mdl} FCST 1000-500 THICKNESS VALID ~!0
+l
+r
+
+EOF
+
+else if ( ${pt} == "4panel" )  then
+
+#
+#       gdplot2 for 4-panel chart
+#
+
+gdplot2   <<EOF   >>${prntout}
+GDFILE  = ${gdfile}
+GDATTIM = ${fhr}
+DEVICE  = ${dev}
+
+CLEAR   = yes
+
+restore $NAWIPS/scripts/prnt/restore/garea_etc_us.nts
+
+restore $NAWIPS/scripts/prnt/restore/4p.nts
+TITLE   = 1/-1/${mdl} VALID ~
+l
+r
+
+EOF
+
+else if ( ${pt} == "850mb" )  then
+
+#
+#       gdplot2 for 850mb chart
+#
+
+gdplot2  <<EOF   >>${prntout}
+GDFILE  = ${gdfile}
+GDATTIM = ${fhr}
+
+CLEAR   = yes
+
+restore ${garea_etc}
+restore $NAWIPS/scripts/prnt/restore/850mb_hght_tmpc.nts
+DEVICE  = ${dev}
+PANEL   = 0/1//8
+TITLE   = 1/-1/${mdl} FCST 850mb HEIGHTS and TEMPERATURES ~!0
+l
+r
+
+EOF
+
+else if ( ${pt} == "500mb" )  then
+
+#
+#       gdplot2 for 500mb chart
+#
+
+gdplot2  <<EOF   >>${prntout}
+GDFILE  = ${gdfile}
+GDATTIM = ${fhr}
+
+CLEAR   = yes
+
+restore ${garea_etc}
+restore $NAWIPS/scripts/prnt/restore/500mb_hght_avor.nts
+DEVICE  = ${dev}
+PANEL   = 0/1//8
+TITLE   = 1/-1/${mdl} FCST 500mb HEIGHTS and VORTICITY VALID ~!0
+l
+r
+
+EOF
+
+else if ( ${pt} == "500mb_gabsv" )  then
+
+#
+#       gdplot2 for 500mb chart
+#
+
+gdplot2  <<EOF   >>${prntout}
+GDFILE  = ${gdfile}
+GDATTIM = ${fhr}
+
+CLEAR   = yes
+
+restore ${garea_etc}
+restore $NAWIPS/scripts/prnt/restore/500mb_hght_gabsv.nts
+DEVICE  = ${dev}
+PANEL   = 0/1//8
+TITLE   = 1/-1/${mdl} FCST 500mb HEIGHTS and GEO ABS VORTICITY VALID ~!0
+l
+r
+
+EOF
+
+else if ( ${pt} == "500mbdiff" )  then
+
+#
+#       gdplot2 for 500mb diff chart
+#
+
+if ( ${fhr} == "ALL" || `echo ${fhr} | grep -c "-"` >= 1 )  then
+	echo "Unable to process fhr=ALL for 500mbdiff; use specific fhr"
+	exit
+endif
+
+set fhrval=`echo ${fhr} | cut -c2-`
+set fhrm24=F`expr ${fhrval} \- 24`
+if ( `echo ${fhrm24} | cut -c2-` < 0 )  then
+        echo "Forecast hour must be 24 or greater to perform 24-hr difference."
+        exit
+endif
+
+gdplot2  <<EOF  >>${prntout}
+GDFILE  = ${gdfile}
+GDATTIM = ${fhr}
+
+CLEAR   = yes
+
+PANEL   = 0/1//8
+DEVICE  = ${dev}
+restore ${garea_etc}
+restore $NAWIPS/scripts/prnt/restore/500mb_hght_24hrdiff.nts
+GDPFUN  = sub(hght^${fhr},hght^${fhrm24}) ! hght
+TITLE   = 1/-1/${mdl} FCST 500mb HEIGHTS and 24-hr DIFF VALID ~!0
+l
+r
+
+EOF
+
+else if ( ${pt} == "700mb" )  then
+
+#
+#       gdplot2 for 700mb chart
+#
+
+gdplot2  <<EOF  >>${prntout}
+GDFILE  = ${gdfile}
+GDATTIM = ${fhr}
+
+CLEAR   = yes
+
+restore ${garea_etc}
+restore $NAWIPS/scripts/prnt/restore/700mb_hght_rh.nts
+DEVICE  = ${dev}
+PANEL   = 0/1//8
+TITLE   = 1/-1/${mdl} FCST 700mb HEIGHTS and RELATIVE HUMIDITY VALID ~!0
+l
+r
+
+EOF
+
+
+
+else
+	
+	echo "Unable to plot requested parameter(s)."
+	exit
+
+endif
+
+#
+#	gpend
+#
+
+gpend
+
+#
+#	Check size of postscript file, print if big enough.
+#
+
+if ( -f ${file} )  then
+
+    set size=`/bin/ls -l ${file} | awk '{print $5}'`
+
+    if ( ${size} > 2000 )  then
+        if ( ${printer} == "" )  then
+            echo "Print file creation complete... "
+            echo "Sending print file ${file} to default printer."
+            $LP -s ${file}
+        else
+            echo "Print file creation complete... "
+	    if ( ${printer} != "NOPRNT" )  then
+                echo "Sending print file ${file} to printer ${printer}."
+                $LP -s $LPFLAG${printer}   ${file}
+	    else
+                echo "Print file ${file} will be held for ${min} minutes."
+	    endif
+        endif
+    else
+        echo "Probable error creating print file.  Check input parameters for accuracy."
+        cat `which prnt.hlp`
+    endif
+
+else
+    echo "Print file not created.  Check input parameters for accuracy."
+    echo "Product may not be available for the ${mdllc} model."
+    cat `which prnt.hlp`
+endif
+
+#
+#	Wait ${min} minute(s), then remove postscript file
+#
+
+( ( sleep ${sec}; /bin/rm -f ${file} ) & ) >/dev/null
+
+exit

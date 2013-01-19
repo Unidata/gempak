@@ -1,0 +1,22 @@
+! SDS.BULL
+!
+! Location information for the following product:
+! Special_Dispersion_Statement.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+FUUS51 KGYX     GRAY                             ME US  4388  -7025     0
+FUUS51 KPBZ     PITTSBURGH                       PA US  4052  -8020     0
+FUUS52 KCAE     COLUMBIA                         SC US  3393  -8112     0
+FUUS52 KFFC     PEACHTREE_CITY                   GA US  3336  -8455     0
+FUUS52 KMFL     MIAMI                            FL US  2575  -8037     0
+FUUS52 KMLB     MELBOURNE                        FL US  2811  -8065     0
+FUUS53 KDTX     DETROIT                          MI US  4268  -8347     0
+FUUS53 KUNR     RAPID_CITY                       SD US  4406 -10320     0
+FUUS54 KJAN     JACKSON                          MS US  3231  -9008     0
+FUUS54 KMEG     MEMPHIS                          TN US  3513  -8980     0
+FUUS55 KPSR     PHOENIX                          AZ US  3343 -11201     0
+FUUS55 KTFX     GREAT_FALLS                      MT US  4745 -11137     0

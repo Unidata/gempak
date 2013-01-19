@@ -1,0 +1,548 @@
+
+
+                       Introduction To GEMPLT
+
+
+This chapter presents information that a programmer must know in order
+to develop functioning application programs that use the GEMPLT
+subroutines.
+
+
+
+
+2.1  Initialization, Termination, And Modes
+
+
+GINITP is the first subroutine called by any program that uses GEMPLT.
+The first time this initialization routine is called, the GPLT sub-
+process is spawned and communication is set up between the program and
+the sub-process.  When, at a later time, a user executes another program
+from the same window, the second program's call to GINITP establishes
+communication with the GPLT sub-process spawned by the earlier program.
+
+As GINITP is called, a mode is specified.  Mode 1 indicates that
+plotting will be done in Earth (latitude/longitude) coordinates.  Mode 2
+is used for drawing graph (X/Y) plots.  Graphs may not be defined or
+drawn in Earth mode and map projections may not be defined or plotted in
+graph mode.  The transformations for both modes are retained in GPLT.
+
+The mode may be changed during a program's execution at any time by a
+call to GSMODE.  As the mode changes, the appropriate transformations
+are activated internally to GEMPLT.  The currently set mode is
+determined by calling GQMODE.
+
+GENDP is the last GEMPLT subroutine called by an application program.
+An option exists to terminate GPLT and the device driver sub-processes
+or to retain them for programs executed later.  GENDP also causes any
+data, buffered internally by GEMPLT, to be flushed.
+
+
+
+
+2.2  Control Of Plot Space
+
+
+GSDEVA is often the second subroutine called by an application program.
+It specifies the graphics device for plotting.  GSDEVA is called before
+any plotting begins because several transformations are not fully
+defined until a plotting device is established.  When the plotting
+device is identified, the associated device driver is installed.  The
+device driver becomes a separate sub-process spawned by GPLT.
+
+The plot space is the region of the graphics device that a program can
+drawn on.  This overall region may be subdivided or reduced.
+
+Subroutine GSVIEW specifies a view region within the plot space.  The
+view region is a fraction of the overall drawing area.  Point (0, 0) is
+the lower left corner and (1, 1) is the upper right corner of the plot
+space; the view region is any rectangular portion inside.  For example,
+the upper right quadrant is selected by placing the lower left corner of
+the view region at (0.5, 0.5) and the upper right corner at (1, 1).
+Except for square devices, these fractional units are not the same as
+the normalized coordinates (discussed later).
+
+Bounds of the currently set view region are returned by subroutine
+GQVIEW.  A view region, or any rectangular fraction of the plot space,
+is erased by a call to subroutine GCLPNL.
+
+Margins reduce the plot space.  As a default, there are no margins.
+GSMMGN defines margins for plotting in map mode; GSGMGN defines margins
+for the graph mode.  No margins apply when plotting on satellite or
+radar imagery.  The margins are usually set at about the same time as
+the M coordinate system is defined.  The margins remain set for the life
+of the coordinate system; calls to change the margins have no effect
+until the coordinate system is redefined.  Margins are specified as
+either fractions of the plot space or as multiples of the currently set
+text character size.  Currently set margins are queried by calls to
+GQMMGN and GQGMGN.
+
+
+
+2.3  Frames And Animation
+
+An application program may produce a single picture, or it may create a
+sequence of frames.  The sequence of frames may be a slide show (each
+frame in the sequence has no relation to adjacent frames), or it may
+form a movie loop (an animation sequence).
+
+When more than a single frame is plotted, subroutine GSTANM is usually
+the third subroutine called by an application program.  It establishes
+the start of a sequence of frames.  Plotting and drawing that follows is
+rendered to the first frame of the sequence until an explicit change to
+the next frame is made.
+
+After some drawing and plotting takes place to a frame, subroutine
+GEPLOT is called to flush the buffers.  If the currently set device
+driver is an interactive driver, such as a display screen, the plotted
+image appears on the screen when the buffers are flushed.
+
+Subroutine GCLEAR is used to clear the current frame.  A program may
+plot over and over to the same frame, calling GEPLOT and GCLEAR as often
+as desired, or the program may advance to the next frame and plot.
+
+A call to subroutine GSPLOT advances to a new frame.  Typically, a
+program calls GEPLOT to end one frame, GSPLOT to start the next frame,
+followed by more plotting commands.
+
+A frame may be given a title with a call to GMESG.
+
+To end a sequence of frames, the last frame is closed with a call to
+GEPLOT, then the frame sequence is ended with a call to GENANM.
+
+An interactive program, that has generated an animation frame sequence,
+may set the frames in motion for the viewer.  Subroutine GLOOPC provides
+the control functions.
+
+
+
+2.4  Windows
+
+
+Some drivers can handle several output channels simultaneously.  For
+example, the XW driver can have several windows open at the same time
+and plot to each one separately.  Every output channel is differentiated
+from the others by its unique name (the window name for XW).  A program,
+that has several output channels open, switches between them by calling
+subroutine GSLWIN.
+
+
+
+2.5  Coordinate Systems
+
+
+GEMPLT has several coordinate systems for plotting and drawing.
+Subroutine GTRANS transforms a list of X/Y points from any of the
+coordinate systems into any other system.  The coordinate systems are
+arranged in a hierarchy.  The D coordinate system is at the bottom while
+the G system is at the top.  It is advantageous for application programs
+to use the highest possible coordinate system that fits the application.
+
+When items are plotted, their locations are in units of one of the
+coordinate systems.  Every plot command identifies a coordinate system.
+When plotted items exceed the boundaries of the system in which they are
+plotted, the items are clipped.
+
+ o  D coordinates are the native coordinates of the currently selected
+    graphics device.  Every device is different.  For example, if a
+    device is a 1024 (tall) by 1280 (wide) display screen, the
+    coordinate units are screen pixels.  The diagonal corners of such a
+    display screen coordinate system are (0, 0) and (1280, 1024).
+    Vertex (0, 0) may be any of the four corners as defined by the
+    device.
+
+ o  N coordinates are normalized device coordinates.  N coordinate
+    limits range from 0 to 1 along the longest dimension and from 0 to a
+    value less than or equal to 1 along the other axis.  The limits are
+    determined as a linear scaling of the device coordinates.
+    Correction for the pixel aspect ratio is included in the
+    transformation from D to N coordinates.  Vertex (0, 0) is the lower
+    left corner of the plot space.
+
+    When a view region or margins are set, two clipped versions of N
+    coordinates result:
+
+    o  V coordinates, view coordinates, are the same as normalized
+       coordinates, but the clipping boundaries correspond to the view
+       region.
+
+    o  P coordinates, plot coordinates, are the same as normalized
+       coordinates, but the clipping boundaries correspond to the region
+       inside the margins.
+
+ o  M coordinates are the Earth or graph coordinates, depending on the
+    plotting mode (map or graph).  Clipping boundaries are the same as
+    for plot coordinates.
+
+    When plotting in map mode, M coordinates are the Earth's latitude/
+    longitude system.  Map projections are set to define a system that
+    transforms any point on the Earth into a (possibly infinite) plane,
+    a subregion that is scaled to the normalized coordinate system and
+    clipped as needed.
+
+    When plotting in graph mode, M coordinates are those coordinates
+    defined at the time that the graph is initially set.  For example,
+    if both graph axes are defined to range between 0 and 100, then a
+    point at (50, 50) is plotted in the center of the graph while a
+    point at (120, 300) is clipped.
+
+ o  G coordinates are grid coordinates.  The X and Y in this coordinate
+    system are the rows and columns of a grid.  Using the inverse of the
+    projection functions, grid point coordinates can be translated into
+    Earth coordinates.  The grid projection is independent of the map
+    coordinate projection; a grid can be displayed on a projection
+    different from the one native to the grid.  Clipping is the same as
+    for plot coordinates.
+
+In addition to the D, N, V, P, M, and G coordinate systems, there are
+additional coordinate systems used internally by GEMPLT.  For example,
+the plane into which M coordinates are transformed defines an L
+coordinate system that is linear.  Since the L system is different for
+each map projection, it is not generally used by application
+programmers.
+
+Subroutine GQBND is called to query the limits of any of the coordinate
+systems.  The bounds of the D, N, V, and P regions are returned exactly
+while the bounds of the M and G regions are estimates of the maximum and
+minimum values of the coordinates along each axis.
+
+Given a set of points in a particular coordinate system, subroutine
+GPTVIS tests which points will be visible and which points will be
+clipped if plotted.
+
+
+
+2.6  Maps And Projections
+
+
+In order to plot in Earth coordinates, the map mode is set (with GSMODE)
+and a map projection is defined.  GEMPLT includes a comprehensive set of
+projections.  Subroutine GSMMAP is used to set a projection using a
+simplified method.  Several parameters that define the projection are
+derived automatically from the simplified specifications.  Alternately,
+subroutine GSMPRJ provides the full capability to define a projection;
+it provides control over variables that can produce very complex
+results.
+
+Once a projection is defined, anything plotted in M coordinates (station
+model, marker, symbol, line, etc.) is geo-located relative to a map
+(whether the map is drawn or not).
+
+GEMPLT includes several map data files as discussed in Appendix B of
+this manual.  Subroutine GQMFIL returns the name of the currently set
+map file.  An alternate map file is specified by calling GSMFIL.
+
+Once a projection is defined and a map file is set, the map is drawn by
+calling GDRMAP.  A latitude/longitude grid is typically drawn at about
+the same time by calling GDRGRD.
+
+Currently set map projections are queried by calls to GQMMAP and GQMPRJ.
+
+
+
+2.7  Grids
+
+
+A grid is a two-dimensional data set.  GEMPLT supports grids that are
+evenly spaced on a map or graph projection.  To plot gridded data, the
+projection originally used, when the grid was created, must be first
+defined to GEMPLT.  If the grid was set on a graph projection,
+subroutine GSGGRF is called.  If the grid was set on a map projection,
+subroutine GSGMAP or GSGPRJ is called.
+
+Currently set grid projections are queried by calls to GQGGRF, GQGMAP,
+and GQGPRJ.
+
+After the grid projection is set, G coordinates may be transformed into
+any other coordinates.  For example, when a map projection is also set,
+a particular row/column location on the grid is transformed into
+latitude/longitude by GTRANS when a G-to-M transformation is carried
+out.  When plotting grid data, calling the plot functions with the
+points in G coordinates performs this transformation as the data points
+are plotted.
+
+
+
+2.8  Graphs
+
+
+X/Y plots of functions, polar (R/THETA) plots, and vertical profile
+plots are drawn in graph mode (set by GINITP or by GSMODE).
+
+Before the axes are drawn, the graph coordinates are defined by a call
+to GSGRAF.  Currently set graph coordinates are queried by a call to
+GQGRAF.  Margins around the graph are set and queried by calls to GSGMGN
+and GQGMGN.
+
+Graph axes are drawn by calls to GAAXIS or GDAXIS.
+
+The data on a graph may be drawn a number of ways.  Line graphs can be
+done using simple lines (GLINE).  Discrete points may be drawn with
+markers (GMARK).  Layers in a vertical profile may be filled polygons
+(GFILL).
+
+The appearance of graph axes and data points on a graph is controlled by
+changing attributes of lines, tick marks, text, and colors.
+
+
+
+2.9  Satellite And Radar Images
+
+
+A satellite or radar image is displayed by GEMPLT using the native
+projection of the image.  Anything plotted over the image, that is to be
+geo-located with the image, must be transformed into the same
+projection.  Therefore, when an image is rendered, its navigation
+defines the M coordinate system.
+
+An image's navigation is typically retrieved from the image file by
+calling subroutine IM_SIMG.  The image's navigation is defined to GEMPLT
+with a call to GSATMG.  Key information about the image is also sent to
+the device driver by a call to GSICMN.  Currently set navigation is
+queried with a call to GQSATN.
+
+An image is displayed with a call to GSATIM.
+
+For plotting maps, latitude/longitude grids, or weather data over an
+image, the map projection is set by a call to GSMMAP with the input
+parameter PROJ equal to DEF.
+
+
+
+2.10  Attributes
+
+
+There are two types of attribute subroutines: Set and Query.  The Set
+subroutines are used to set the characteristics of items to be plotted.
+The Query subroutines, in turn, return the characteristics that are
+currently set.  The Set and Query subroutines come in pairs; for every
+Set subroutine there is a Query.  All Set subroutines are named "GSxxx"
+and all Query subroutines are named "GQxxx."
+
+In general, attribute Set routines control the size and the line width
+of items to be plotted.  For some plottables, additional attributes are
+also present.  For example, each category of lines includes attributes
+that control the different line types.  Or, some items can be optionally
+plotted on some devices using hardware functions; the attributes include
+flags that select the hardware or the software method.  Color can also
+be set, but color is handled (and described) separately.
+
+To set attributes of lines, several Set routines can be called as there
+are several categories of lines: simple lines, contours, special lines,
+and fronts.  Attributes for simple lines are set by a call to GSLINE.
+The attributes include selection of line width, selection of several
+predefined line patterns, and selection of software/hardware plotting
+methods.  Software line pattern characteristics are further controlled
+by calling GSLPAT.  The other line categories, contours, special lines,
+and fronts, are controlled by GSCNTR, GSSPLN, and GSFRNT.
+
+GSTEXT is called to set the text font, text size, text line width, and a
+flag specifying generation of software or hardware text.
+
+There are several groups of symbols that can be plotted, each group with
+an independent set of attributes.  The symbol groups include weather
+symbols, sky coverage, past weather, pressure tendency, cloud type,
+icing, turbulence, and special symbols.  The subroutines that set the
+symbol attributes include GSWTHR, GSSKY, GSPWTH, GSPTND, GSCTYP, GSICNG,
+GSTURB, and GSSPCL.
+
+GSMRKR sets marker characteristics.  Markers are similar to symbols.
+
+GSTICK sets the characteristics of tick marks for drawing graph axes.
+
+GSBARB and GSARRW set the wind barb and wind arrow attributes.
+
+The hardware plotting method option, when present, should be used
+cautiously.  If a hardware function is specified, and the currently set
+device is not capable of that hardware function, the equivalent software
+function is substituted automatically in some (but not all) cases.  And,
+if a hardware function is specified, and the hardware function is
+available, but it is not capable of satisfying some of the other
+attribute settings, the hardware function is used regardless.
+Therefore, hardware functions sometimes produce incomplete results.  For
+example, the hardware option does not draw dashed lines very well on
+many graphics devices when a large set of short line segments is drawn,
+such as is often used for drawing maps or contours.  Or, on some
+devices, rotated text does not come out rotated when hardware text is
+specified.  When the hardware functions are used, it is wise to test all
+possible combinations of the attribute settings.
+
+
+
+2.11  Color
+
+
+Every graphics device is capable of some fixed number of simultaneously
+available colors.  The available colors are divided into groups.  Each
+group is allocated to a color bank.  GEMPLT supports three banks:
+Graphics, Satellite, and Radar.  The number of colors in each bank is
+chosen for each graphics device depending on the device's application.
+For the X Window device, for example, the banks are allowed to hold 33,
+95, and 20 colors respectively.  Some devices have all colors allocated
+only to a single bank, the Graphics color bank.  Parameters inside each
+device driver establish the banks.
+
+The Graphics color bank is the default bank.  It exists on every device
+while the other banks may not be present.  The Graphics bank is used for
+general drawing and plotting.  Routines that deal with color, and that
+do not explicitly provide a selection of a color bank, operate on the
+Graphics bank.  The Graphics bank is used for drawing graphs, plots, and
+overlays such as station models, contours, wind arrows, streamlines,
+geopolitical boundaries, latitude/longitude grids, titles and
+annotations, color bars, and anything else that is not an image.
+
+The Satellite and Radar banks, when present, are used to render images.
+
+Colors are specified by numbers from 1 to N where N is the maximum
+number of colors allowed in a color bank.  If a program requests a color
+number in the Graphics bank larger than N, the invalid color number is
+converted to a valid number by taking modulo-N.  In addition to the
+maximum number of colors in the Graphics color bank, there is an
+additional color, the background color, number 101.  After a graphics
+device is selected, the maximum number of colors permissible in the
+Graphics color bank (excluding the background color) is returned by
+subroutine GQNCOL.
+
+The Graphics bank is loaded with colors in a number of ways.  Subroutine
+GSCINT sets the colors to the defaults defined internally for each
+graphics device.  Alternately, the Graphics bank is loaded from a custom
+color table by calling GSCTBL.  The Graphics bank can also be set up one
+color at a time.  GEMPAK includes a table of predefined named colors.
+By calling GSCNAM, colors are selected from this table by name and
+assigned to color numbers in the Graphics bank.  Alternately, arbitrary
+colors can be created by specifying their RGB components and assigning
+the components to color numbers in the Graphics bank by calling GSCRGB.
+
+After the Graphics bank is loaded with colors, information about any one
+color is obtained by calling GQCOMP.
+
+To draw or plot using a particular color in the Graphics bank,
+subroutine GSCOLR sets the current color number.  The current color
+applies to all drawing and plotting until it is replaced by another
+color.  Routine GQCOLR returns the currently set Graphics bank drawing
+color number.
+
+When a device supports multiple color banks, the maximum number of
+colors permissible in a bank is returned by subroutine GQCLRS.
+
+A named bank, usually other than the Graphics bank, is loaded with
+colors by calling GSBRGB.
+
+To draw in a color bank other than the Graphics bank, for example when
+drawing a color key bar in the Satellite bank, subroutine GSCOLB sets
+the current drawing color.  GSCOLB is used like GSCOLR.  When the
+current drawing color is set in a bank other than the Graphics bank,
+GQCOLR returns zero.
+
+
+
+2.12  Drawing And Plotting Functions
+
+
+GEMPLT includes subroutines that draw and plot lines, circles, filled
+polygons, text, markers, winds, and various meteorological symbols.
+
+The simplest item to plot is a marker.  The location of the marker's
+center is given by its X and Y position in the coordinate system
+specified at the time of plotting.  The units of X and Y, and the limits
+of X and Y (the clipping boundaries) are dependent on the coordinate
+system.  When plotting in Earth coordinates, the X and Y are the
+latitude and longitude (in degrees).
+
+The plotting and drawing routines accept lists of X/Y pairs.  Each pair
+is a point.  The list is a group of points that share the currently set
+attributes.  The list is plotted as a unit (such as a line) or as a
+group (such as a group of markers).  The list of points is translated to
+the currently set device coordinates, the shapes of the plottable items
+are tested against the plot boundaries and clipped as necessary, and the
+rest is plotted.
+
+For lines and polygons, the list of X and Y coordinates is a (possibly
+large) set of points that are connected by straight line segments.
+Smooth curves are achieved by spacing the points close to one another.
+
+Symbols are plotted just like markers except that for each X and Y
+reference location there is an additional X and Y offset.  The reference
+location is given in terms of a coordinate system while the offsets are
+given in terms of the currently set text character size.
+
+Text is plotted either centered or justified relative to its X and Y
+reference location.  Offsets are defined for plotting text just like for
+symbols.
+
+Wind barbs and wind arrows are plotted exactly at the given X and Y
+locations.
+
+
+
+2.13  Utilities And Miscellaneous
+
+
+Several GEMPLT subroutines perform complex plotting functions; contours,
+streamlines, geopolitical maps, and lat/lon grids are plotted using
+GCONTR, GSTRML, GDRMAP, and GDRGRD, respectively.
+
+Subroutines GCURVE and GCYEVL are used to evaluate a set of points
+against a curve.
+
+For interactive programs, subroutine GGTPNT gets X and Y point pairs
+from a user's mouse button clicks.
+
+For certain devices, those that use an intermediate plot file,
+subroutines GCLOSP and GOUTP close and display the contents of such a
+plot file.
+
+
+
+2.14  Errors
+
+
+Every GEMPLT subroutine returns a status code, IRET.  When IRET is 0,
+the subroutine carried out its defined function normally.
+
+When IRET is a positive value, some non-fatal exception took place.  The
+normal function could not be executed and some alternate action was
+taken.  The alternate action is indicated by the positive code.
+
+When IRET is a negative number, there was a fatal error.  The
+subroutine's function could not be completed and the return parameters
+are not meaningful.
+
+The automatic substitution of software functions for hardware functions
+that are requested, but not available, is considered a normal condition.
+IRET is set to 0.
+
+All GEMPLT error codes have mnemonics (parameter names) defined for the
+integer code values.  For example, the parameter name for a 0 return
+code is NORMAL.  The parameter names are defined in the include file
+$GEMINC/error.prm .  Programmers may wish to include this file in their
+programs and use the mnemonics instead of integers when checking
+explicit conditions.
+
+Effort is made throughout GEMPAK to minimize the burden of error
+recovery that is thrust on the application user.  Instead, the software
+checks exception conditions and undertakes many alternate actions.
+Application programmers developing new programs should follow suit.
+When meaningful default conditions and default actions are defined, the
+user will deal with few, if any, errors.
+
+There are cases when automated recovery is not possible and the problems
+are displayed to the end user as an error message.  All GEMPLT error
+messages are listed in this manual's Appendix C.  An application program
+displays the error messages by calling ER_WMSG.  For example, following
+a call to GSATIM:
+
+      CALL GSATIM ( imgnam, iret )
+      IF  ( iret .ne. NORMAL ) THEN
+          CALL ER_WMSG ( 'GEMPLT', iret, imgnam, ier )
+          [give a suggestion to the user what to do to recover]
+      END IF
+
+
+Sometimes it is appropriate just to display the error message (perhaps
+as a progress message) and continue processing.  Or perhaps, nothing can
+be done at that time even if an error occurs.  Since ER_WMSG displays no
+message in case of the NORMAL code, the error processing can be coded
+simply.  For example, following a call to GENDP:
+
+      CALL  GENDP   ( 1, iret )
+      CALL  ER_WMSG ( 'GEMPLT', iret, '', ier )

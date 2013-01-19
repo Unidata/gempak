@@ -1,0 +1,57 @@
+C************************************************************************
+C*                                                                      *
+C* Log:                                                                 *
+C* A. Hardy/GSC		12/97                                           *
+C* A. Hardy/GSC		10/98	Added lat, long, elv and cor to intf    *
+C* D. Kidwell/NCEP	10/98	Moved data statements elsewhere         *
+C************************************************************************
+	PARAMETER	( MXWLYR = 3 )
+C*					Maximum number of layers of
+C*					present weather data that will be
+C*					decoded from an SCD report.
+C*
+C************************************************************************
+C*  / INTF /								*
+C*									*
+C*  This common area contains the interface arrays.			*
+C************************************************************************
+	PARAMETER 	( NRIMN  = 19 )
+	PARAMETER	( NRSIMN = 18 ) 
+C*					Number of real single-level
+C*					interface mnemonics
+C*
+	COMMON	/ RINTFP /
+     +	   irtdxc  , irtdnc  , irp06i  , irp24i  , irsnow  , irsnew  ,
+     +	   irweqs  , irmsun  , irctyl  , irctym  , irctyh  , ircfrt  ,
+     +	   ircfrl  , ircbas  , irslat  , irslon  , irselv  , ircorn  ,
+     +     irnpwx  
+C*					Pointers to relative locations of
+C*					real interface mnemonics within
+C*					rimnem ( ). These pointers will
+C*					be set by SC_IFSP and then used
+C*					as indices into the real
+C*					interface values array rivals ( )
+C*
+	REAL		rivals ( NRIMN )
+C*
+	COMMON	/ RINTFV /	rivals
+C*					Real interface values
+C*
+	PARAMETER 	( NCIMN = 4 )
+C*					# of character interface
+C*					mnemonics
+C*
+	COMMON	/ CINTFP /
+     +	   icstid ,  icwcod ( MXWLYR )
+C*					Pointers to relative locations of
+C*					character interface mnemonics 
+C*					within cimnem( ).  These pointers
+C*					will be set by SC_IFSP and then 
+C*					used as	indices into the char
+C*					interface values array civals ( )
+C*
+	CHARACTER	civals ( NCIMN ) * 8
+C*
+	COMMON	/ CINTFV /	civals
+C*					Character interface values
+C*

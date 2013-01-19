@@ -1,0 +1,12 @@
+! DSA.BULL
+!
+! Location information for the following product:
+! Unumbered_Depression/Suspicious_Area_Advisory.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+ACCA82 TJSJ     SAN_JUAN                         PR US  1843  -6600     0
+ACPA80 PHFO     HONOLULU                         HI US  2129 -15780     0

@@ -1,0 +1,5 @@
+$CC $CFLAGS -c testclo.c
+$FC $LDFLAGS -o $OS_BIN/testclo testclo.o \
+	$GEMLIB $CGEMLIB $APPL \
+	$SYSLIB $GEMLIB -lGPC -lm
+$RM *.o

@@ -1,0 +1,19 @@
+#!/bin/sh
+set -x
+export CGEMLIB=/export/cdbsrv/sgilbert/lib/${NA_OS}/cgemlib.a
+export GEMINC=/export/cdbsrv/sgilbert/gempak/include
+export GEMINCOS=/export/cdbsrv/sgilbert/gempak/include/$OS
+if [  $OS = 'AIX' ]
+then
+   cpluscom="-qcpluscmt"
+else
+   cpluscom=""
+fi
+$AC -I $GEMINC -I $GEMINCOS $ANSI_CFLAGS $cpluscom -DUSE_JPEG2000 -DUSE_PNG -c *.c
+if [  $OS = 'HPUX' ]
+then
+   $AC -I $GEMINC -I $GEMINCOS $ANSI_CFLAGS +e $cpluscom -DUSE_JPEG2000 -DUSE_PNG -c *jpeg2000*.c
+fi
+$AR $ARFLAGS $CGEMLIB *.o
+$RM *.o
+

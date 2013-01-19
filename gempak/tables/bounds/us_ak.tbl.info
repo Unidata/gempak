@@ -1,0 +1,20 @@
+!
+!    BOUNDARIES FILENAME 
+us_ak.tbl
+!
+!    TOTAL NUMBER OF BOUNDS
+2
+!
+!    MAX NUMBER OF POINTS per BOUND
+142
+!
+!    BOUNDARY STRUCTURE INFORMATION
+!
+!
+Alaska 0            61.34 -145.63 51.38 -177.66 71.31 -130.29 1    
+ID=AK
+	63           51.38 -177.66 71.31 -130.29 11       
+!
+United_States 319          38.51 -88.63 24.51 -124.71 49.42 -67.02 1    
+ID=US
+	382          24.51 -124.71 49.42 -67.02 142      

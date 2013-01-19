@@ -1,0 +1,17 @@
+! IOB.BULL
+!
+! Location information for the following product:
+! Ice_Observations.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+SVAK08 PASN     SAINT_PAUL_ISLAND                AK US  5715 -17022     0
+SVAK09 PABR     BARROW/POST-ROGERS               AK US  7130 -15677     0
+SVAK09 PAOM     NOME                             AK US  6450 -16542     0
+SVAK09 PAOT     KOTZEBUE/RALPH_WIEN              AK US  6687 -16263     0
+SVUS41 KBUF     BUFFALO                          NY US  4293  -7870     0
+SVUS41 KCLE     CLEVELAND                        OH US  4140  -8186     0
+SVUS43 KDTX     DETROIT                          MI US  4268  -8347     0

@@ -1,0 +1,8 @@
+     PRBTYP
+
+     PRBTYP specifies the probability type:
+
+	1 = cumulative probability
+	2 = probability density
+
+	The default is 1.

@@ -1,0 +1,36 @@
+!
+! Restore File : RCM reflectivity
+!
+! Log:
+!
+!GDATTIM last
+GLEVEL  0
+GVCORD  none
+PANEL   0                                                                       
+SKIP    0
+SCALE   0
+GDPFUN  slt(rdsp1,7)
+TYPE    f
+CONTUR  1                                                                       
+CINT    1
+LINE    5/1/1/0
+FINT    1;2;3;4;5;6
+FLINE   0;23;22;6;5;15;16
+HILO    
+HLSYM  
+CLRBAR                                                                         
+WIND    
+REFVEC                                                                          
+TITLE   5/-1/~ RDSP
+TEXT    1/21//hw                                                                
+CLEAR   yes                                                                     
+STNPLT                                                                          
+SATFIL                                                                          
+RADFIL                                                                          
+STREAM                                                                          
+POSN                                                                           
+COLORS  2                                                                       
+MARKER                                                                         
+GRDLBL  5                                                                       
+LUTFIL  none
+FILTER  yes

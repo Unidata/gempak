@@ -1,0 +1,18 @@
+SNFILE  Sounding data file                                                      
+DATTIM  Date/time                                                               
+TAXIS   Time1-time2-tinc;lbl;gln;tck                                            
+LEVELS  Vertical levels                                                         
+VCOORD  Vertical coordinate type                                                
+SNPARM  Sounding parameter list                                                 
+STNDEX  Stability indices                                                       
+AREA    Data area                                                               
+PTYPE   Plot type/h:w ratio/margins                                             
+YAXIS   Ystrt/ystop/yinc/lbl;gln;tck                                            
+BORDER  Background color/type/width                                             
+LINE    Color/type/width/label/smth/fltr/scflg                                  
+MARKER  Marker color/type/size/width/hw                                         
+TITLE   Title color/line/title                                                  
+CLEAR   Clear screen flag                                                       
+PANEL   Panel loc/color/dash/width/regn                                         
+TEXT    Size/fnt/wdth/brdr/N-rot/just/hw flg                                    
+DEVICE  Device|name|x size;y size|color type                                    

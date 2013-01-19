@@ -1,0 +1,24 @@
+!ACARS.PACK
+!
+!This table is the packing table used to create a merged sounding file.
+!
+!*Log:
+!
+!
+!ALAT   -90.     90.   .00001
+!ALON  -180.    180.   .00001
+PRES     0.   1050.   .01
+HGHT -1000.  30000.   .01
+DRCT     0.    360.   .01
+SPED     0.    200.   .01
+TMPC  -200.    200.   .01
+DWPC  -200.    200.   .01
+VACC  -100.    100.   .01
+SECS     0      61      1
+MACH     0.      1.   .00001
+HEAD     0.    360.   .01
+TURB     0.   1000.   .001
+TURX     0.   1000.   .001
+ORIG     0 1679615.   1
+DEST     0 1679615.   1
+RPTS     0 1679615.   1

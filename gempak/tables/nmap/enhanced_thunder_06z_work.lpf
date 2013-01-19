@@ -1,0 +1,52 @@
+! enhanced_thunder_06z_work.lpf
+!
+! Created by Jeremy Grams on 03/10/2009.
+! Modified to account for change from 00-04Z to 12-16Z. Still need ENH16 group type (01/04/2010 JSG).
+!
+! This layer product file displays work files for the 06z enhanced thunder lines. 
+!
+!--------------------------------------------------------------------------------
+!
+! layer 1: Enhanced Thunder 12-16Z Layer
+!
+<layer1_name>		ENH-16
+<layer1_file>  		WORK_ENH16.vgf	
+<layer1_output_file>	WORK_ENH16.vgf	
+<layer1_group_type>	ENH16
+<layer1_display_mode>	Off
+<layer1_color_mode>	Mono
+<layer1_color_id>	26
+<layer1_fill_mode>	On
+!
+! layer 2: Enhanced Thunder 16-20Z Layer
+!
+<layer2_name>		ENH-20
+<layer2_file>  		WORK_ENH20.vgf	
+<layer2_output_file>	WORK_ENH20.vgf	
+<layer2_group_type>	ENH20
+<layer2_display_mode>	Off
+<layer2_color_mode>	Mono
+<layer2_color_id>	22
+<layer2_fill_mode>	On
+!
+! layer 3: Enhanced Thunder 20-00Z Layer
+!
+<layer3_name>		ENH-00
+<layer3_file>  		WORK_ENH00.vgf
+<layer3_output_file>	WORK_ENH00.vgf	
+<layer3_group_type>	ENH00
+<layer3_display_mode>	Off
+<layer3_color_mode>	Mono
+<layer3_color_id>	24
+<layer3_fill_mode>	On
+!
+! Layer 4: Categorical Layer
+!
+<layer4_name>		GEN-TSTM
+<layer4_file>		WORK_GEN-TSTM.vgf
+<layer4_output_file>	WORK_GEN-TSTM.vgf
+<layer4_group_type>	OUTLOOK
+<layer4_display_mode>	Off
+<layer4_color_mode>	Mono
+<layer4_color_id>	20
+<layer4_fill_mode>	Off

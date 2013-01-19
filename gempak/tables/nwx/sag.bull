@@ -1,0 +1,11 @@
+! SAG.BULL
+!
+! Location information for the following product:
+! Snow_Avalanche_Guidance.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+FWUS45 KPIH     POCATELLO/IDAHO_FALLS            ID US  4290 -11258     0

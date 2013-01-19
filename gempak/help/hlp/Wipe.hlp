@@ -1,0 +1,13 @@
+			 	WIPE
+
+The wipe function clears all displayed data for the currently viewed loop.
+Click the icon with the hand symbol located on the top left hand side of the
+main NMAP GUI to invoke wipe.  A confirmation window is invoked to allow the
+cancellation of the wipe command.
+
+The wipe function only deletes data sets associated with the currently viewed
+loop.  Data sets loaded in other loops are not affected.  Product generation
+graphics are also not affected by the wipe function.  If image data are
+part of the displayed loop, then the wipe function re-sets the geographic
+area to the default after clearing the frames.  Otherwise, the geographic
+area defined for the loop is retained after clearing the frames.

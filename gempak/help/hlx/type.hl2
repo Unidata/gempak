@@ -1,0 +1,51 @@
+     TYPE
+ 
+     TYPE specifies the processing type for the GDPLOT2 GDPFUN parameter.
+     The TYPE list does not need separators, however slashes could be
+     used for clarity:
+
+		type 1 / type 2 / ... / type n
+
+     Valid inputs for type are:
+
+	SCALAR TYPEs:
+	C	the original GEMPAK contouring algorithm
+	F	contour fill algorithm
+	X	box algorithm -- same as contour fill, but draws lines 
+		around the polygons rather than filling in polygons.
+	P	plot grid point values
+	D	plot scaler as a directional arrow
+
+	VECTOR TYPEs:
+	A	wind arrows
+	B	wind barbs
+	S	streamlines
+
+	OTHER TYPEs:
+	M	plot grid point markers
+	G	plot grid indices (row/column numbers)
+
+
+     Note that contour attributes are specified in CONTUR.  The contour 
+     interval and line characteristics for types C, S and X are read
+     from CINT and LINE and for type F from FINT and FLINE.  The wind
+     arrow and barb characteristics are read from WIND.  The streamline
+     characteristics are read from STREAM.  The marker characteristics 
+     are read from MARKER.  The grid point index characteristics are 
+     read from GRDLBL.
+
+
+     Examples:
+
+	TYPE = C	--	draws contour lines
+
+	TYPE = C / F	--	draws filled contours overlaid with lines
+
+	TYPE = A	--	plots wind arrows
+
+	TYPE = BS	--	plots wind barbs and streamlines
+
+	TYPE = CFMP	--	draws contour lines and fill, plots a marker
+				at all grid point locations and the
+				grid point values at all locations
+

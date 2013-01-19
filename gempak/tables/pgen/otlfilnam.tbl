@@ -1,0 +1,38 @@
+!
+! OTLFILNAM.TBL
+!
+! This table maps the abbreviated group type names to their full names. 
+! When users save the outlook text product, the full group type will be
+! prepended to the template output file name.
+!
+!!
+! Log:
+! B. Yin/SAIC		01/04	Created
+! G. Grosshans/SPC 	11/04   Modified tornotlk, totl_svr & tstmolk 
+! F. J. Yen/NCEP	04/07	Added enh_pd1, enh_pd2
+! G. Grosshans/SPC	04/07	Added ext_fire
+! J. Grams/SPC          02/09   Modified enh_pd1, enh_pd2 & added 
+!                               enh_pd3, enh_pd4
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!
+! Group Type (8)	Filename Prefix
+  outlook		-
+  hailotlk		hail
+  tornotlk		torn
+  windotlk		wind
+  totl_svr		prob
+  fireoutl		fire
+  ext_fire		fire
+  catg_svr		category_severe
+  tstmolk		-	
+!  enh_pd1		enh20
+!  enh_pd2		enh00
+!  enh_pd3		enh04
+!  enh_pd4		enh12  
+  enh20                 enh20
+  enh00                 enh00
+  enh04                 enh04
+  enh12                 enh12
+  enh16                 enh16
+!  tstmolk		thunderstorm
+

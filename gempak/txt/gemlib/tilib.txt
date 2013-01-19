@@ -1,0 +1,66 @@
+
+
+                     Time (TI) Library 
+ 
+ 
+The GEMPAK TIME library subroutines process times for GEMPAK.
+ 
+The GEMPAK format for time is a character string,  YYMMDD/HHMM
+where:
+ 
+        YY is the last two digits of the year 
+        MM is the month                       
+        DD is the day of the month
+        /  is the date and time separator
+        HH is the hour                        
+        MM is the minutes past the hour
+ 
+The string before the / is the DATE; the string after the / is the 
+TIME. 
+ 
+A partial time may be entered in TI_FIND.  The latest date/time
+in the data set will be used to fill in the missing parts.  If the 
+input string does not contain the date and time separator, '/', 
+the input string is assumed to be a left-justified time (i.e., 12 
+is 1200 UTC). For example:
+
+        If the last time in the file is '840515/1200    ', 
+        the abbreviated forms will be translated into the 
+        following GEMPAK times:
+
+        13/11         ---->       840513/1100
+
+        13            ---->       840515/1300
+
+        13/           ---->       840513/1200
+
+        0412/1300     ---->       840412/1300
+
+In addition to the above date/time format, there are four symbols
+which may be entered in TI_FIND in place of a specific date/time:
+ 
+        LAST  returns the most recent time available
+        LIST  displays a list of the available times
+        ALL   returns all the available times
+        /ALL  returns all the times for a particular day
+
+In some GEMPAK subroutines, especially those doing real-time data
+ingest, it is more convenient to store the date/time information as
+integers.  In those subroutines, 5 integers are used to store the
+time:
+  
+        idtarr (1) = YYYY
+        idtarr (2) = MM
+        idtarr (3) = DD
+        idtarr (4) = HH
+        idtarr (5) = MM
+
+The subroutines TI_CTOI and TI_ITOC are provided to translate between
+integer and character times.
+
+Similarly, GEMPAK times are often stored in files as two integers
+representing the date and time.  Subroutines TI_CDTM and TI_IDTM
+translate between integer and character times.
+
+Note that grid times are now processed in the TG library.
+

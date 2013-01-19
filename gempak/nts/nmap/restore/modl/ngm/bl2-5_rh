@@ -1,0 +1,41 @@
+!
+! Restore File : bl2-5_rh
+!
+! Log:
+! D.W.Plummer/NCEP	 2/97	Initial creation
+! D.W.Plummer/NCEP	 8/97	Added FILTER parameter and changed TEXT value
+! T. Lee/GSC		 6/99	Increased omega contour range
+!
+GDATTIM fall                                                                    
+GLEVEL  8400:9800!8400:9800!9100:9400!0
+GVCORD  sgma!sgma!sgma!none
+PANEL   0                                                                       
+SKIP    0/1                                                                     
+SCALE   0!0!3!0
+GDPFUN  relh!relh!omeg!pmsl ! kntv(wnd@9700:10000%SGMA)
+TYPE    c/f!c!c!c ! b
+CONTUR  1                                                                       
+CINT    80;90;95!10;20;30;40;50;60;70!-25;-23;-21;-19;-17;-15;-13;-11;-9;-7;-5;-3;-1!0;1
+LINE    32//1!25//1!6//3!20
+FINT    70;80;90;95
+FLINE   0;24;23;22;14
+HILO    0!0!0!20/H#/L#
+HLSYM   0!0!0!1;1//22;22/3;3/hw
+CLRBAR  1/V/LL!0
+WIND    9/0.8/2/112
+REFVEC                                                                          
+TITLE   1/-1/~ BL2-5 (240-1200m) RH, BL3 (600m) OMEGA, WIND (KTS)!0
+TEXT    1/22/2/hw                                                             
+CLEAR   yes                                                                     
+DEVICE  xw                                                                      
+STNPLT                                                                          
+SATFIL                                                                          
+RADFIL                                                                          
+LUTFIL                                                                          
+STREAM                                                                          
+POSN    4                                                                       
+COLORS  2                                                                       
+MARKER  2                                                                       
+GRDLBL  5                                                                       
+LUTFIL  none
+FILTER  yes

@@ -1,0 +1,19 @@
+!	This is the GEMLIB NPF error file
+!
+! log
+!------
+! C. Bailey/HPC		05/05	Create.
+!
+
+  4	! End of file reached.
+  3	! No data is associated with the tag !AS, default value is used.
+  2	! NPF buffer is not loaded.
+  1	! File is opened as READ_ONLY.
+ -1	! NPF file !AS does not exist.
+ -2 	! NPF file !AS cannot be opened.
+ -3 	! Failed to create NPF file !AS.
+ -4 	! Read failure from NPF file !AS.
+ -5	! Write failure to NPF file !AS.
+ -6	! No NPF file has been opened.
+ -7	! Failure to allocate memory for NPF buffer.
+ -8	! Source !AS is invalid.

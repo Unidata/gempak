@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<!DOCTYPE TEST [
+  <!ELEMENT TEST ANY>
+  <!ENTITY foo "bar">
+]>
+<TEST>
+  &Uogon;
+  &foo;
+  &UpArrowDownArrow;
+</TEST>

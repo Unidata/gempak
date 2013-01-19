@@ -1,0 +1,5 @@
+$CC $CFLAGS -c mdp.c
+$FC $LDFLAGS -o $OS_BIN/mdp mdp.o \
+		$CGEMLIB $GEMLIB $GPLT $DEVICE $OS_LIB/gn.a \
+		$GEMLIB $CGEMLIB $GEMLIB -lm
+$RM *.o

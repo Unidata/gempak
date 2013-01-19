@@ -1,0 +1,2 @@
+$CC $CFLAGS $LDFLAGS -o $OS_BIN/freeColors freeColors.c $XLIBS
+$RM *.o

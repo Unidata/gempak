@@ -1,0 +1,28 @@
+     SHAPE
+
+     SHAPE is the object that the user wishes to plot on the current
+     graphics device.  Valid shapes include:
+
+          TEXT            A string of text.
+          POLYGON         An irregular polygon.
+          REGPOLY         A regular polygon.
+          ARC             An arc connected to the center point (pie).
+          CURVE           A smooth curve, or piecewise line.
+          LINE            A line segment.
+          ARROW           Two types of arrows.
+          COLDFRONT       A cold front.
+          WARMFRONT       A warm front.
+          OCCLFRONT       An occluded front.
+          STATFRONT       A stationary front.
+          WEATHER         Weather symbols.
+          CLOUD           Cloud type symbols.
+          SKY             Sky cover symbols.
+          TURB            Turbulence symbols.
+          ICNG            Icing symbols.
+          SPCL            Special symbols.
+          MARKER          Marker symbols.
+          PRESTEND        Pressure tendency symbols.
+          PASTWTHR        Past weather symbols.
+
+     For all SHAPEs the INFO, LOCI and FILL parameters must also
+     be specified.

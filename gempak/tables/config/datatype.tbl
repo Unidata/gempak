@@ -1,0 +1,547 @@
+!************************************************************************
+!* DATATYPE.TBL								*
+!*									*
+!* This table contains characteristics of the N-AWIPS data sets. These	*
+!* characteristics are the directory path to the data, the template	*
+!* used to generate the output filenames, the category and subcategory	*
+!* of the data, and the default number of frames, time line range,	*
+!* time interval and time matching scheme for NMAP.			* 
+!*									*
+!* This table along with others are used to control NMAP2 data access	*
+!* and display options.  See the NMAP help file				* 
+!* $NAWIPS/help/nmap/DataAccess_Conf.hlp for more information about how *
+!* tables are configured for NMAP2.					*
+!*									*
+!* The wild card "*" in templates cannot be followed immediately by	*
+!* any of the symbolic reserved character combinations shown below in   *
+!* templates that must be parsed for date-time information.		*
+!*									*
+!* Within templates, the following character combinations are reserved:	*
+!* comb - meaning		'metacharacters'	   example(s)	*
+!* YYYY - 4-digit year		'[0-9][0-9][0-9][0-9]'	   1999,2000,...*
+!* YY   - 2-digit year		'[0-9][0-9]'		   98,99,00,...	*
+!* MMM  - 3-char  month 	'[A-Za-z][A-Za-z][A-Za-z]' jan,...,dec	*
+!* MM   - 2-digit month 	'[0-9][0-9]'	   	   01,02,...,12	*
+!* DD   - 2-digit day 		'[0-9][0-9]'	   	   01,02,...	*
+!* HH   - 2-digit hour 		'[0-9][0-9]'	   	   00,01,...	*
+!* NN   - 2-digit minute	'[0-9][0-9]'	   	   00,01,...,59	*
+!* DWK  - 3-char  day of week  	'[A-Za-z][A-Za-z][A-Za-z]' sun,...,sat	*
+!* FFF  - 3-digit forecast hour	'[0-9][0-9][0-9]'	   000,...	*
+!* FF   - 2-digit forecast hour	'[0-9][0-9]'	   	   00,...	*
+!*									*
+!* The categories are used by NMAP to construct the user interface	*
+!* for data selection. They are defined as follows:			*
+!*	CAT_NIL		None						*
+!*	CAT_IMG		Imagery						*
+!*	CAT_SFC		Surface observations				*
+!*	CAT_SFF		Surface forecast				*
+!*	CAT_SND		Upper air observations				*
+!*	CAT_SNF		Upper air forecast				*
+!*	CAT_GRD		Gridded data					*
+!*	CAT_VGF		Vector graphics file				*
+!*	CAT_MSC		Miscellaneous					*
+!*									*
+!* The subcategories are used to identify how the data is stored in	*
+!* the files. They are defined as follows:				*
+!*	SCAT_NIL	None						*
+!*	SCAT_SFC	Surface obs in daily files			*
+!*	SCAT_SHP	Surface obs in hourly files			*
+!*	SCAT_SFF	Surface forecast				*
+!*	SCAT_FFG	Flash flood guidance (data at one time per day)	*
+!*	SCAT_SND	Upper air obs in daily files			*
+!*	SCAT_SNF	Upper air forecast				*
+!*	SCAT_FCT	Grid forecast					*
+!*	SCAT_ANL	Grid analysis					*
+!*									*
+!* The time information is used by NMAP for constructing the default	*
+!* time line for a particular type of data.				*
+!*									*
+!* The time matching scheme flag defines the way the time-matching is 	*
+!* done between the dominant data source and any other data source.  If	*
+!* the value is missing or invalid, then the time-matching flag from 	*
+!* prefs.tbl is used.							*
+!*     			FLAG    TIME MATCHING				*
+!*									*
+!*                      1       exact only				*
+!*                      2       closest before or equal			*
+!*                      3       closest after or equal			*
+!*                      4       closest before or after			*
+!*									*
+!* The BIN HRS field is used for time binning and has the format:	*
+!*    BINFLG/BH:BM/AH:AM/MSTRCT						*
+!*	BINFLG  Flag for time binning: "ON" or "OFF"; default is "OFF".	*
+!*	BH:BM	Time in hours:minutes before frame time to include in	*
+!*		the time binning. BH is the hours and BM is the minutes.*
+!*		(:BM is optional)					*
+!*	AH:AM	Time in hours:minutes after frame time to include in the*
+!*		time binning.  AH is the hours and AM is the minutes.	*	
+!*		(:AM is optional)					*
+!*	MSTRCT	Flag for plotting only the most recent:  "ON" or "OFF"; *
+!*		default is "OFF".					* 
+!*									*
+!**									*
+!* Log:									*
+!* S.Maxwell	 	 1/97	Changed table name.			*
+!* D.W.Plummer	 	 2/97	Added several model names.		*
+!* D.Kidwell		10/97	Added SHIP and ACFT observations        *
+!* T. Lee/GSC	 	 1/98	Added METAR				*
+!* D.W.Plummer/NCEP	 1/98	Added ETAF and NGMF for testing purposes*
+!* D.Kidwell		 2/98	Added SYNOP and SCD observations        *
+!* D.W.Plummer/NCEP	 2/98	Added RUC2				*
+!* D.W.Plummer/NCEP	 3/98	Added FCST columns			*
+!* J.W.Carr/HPC          4/98   Added RUC2			*
+!* J.W.Carr/HPC		 6/98	Added etasaudi and NOGAPS		*
+!* D.W.Plummer/NCEP	 8/98	Removed FCST columns			*
+!* S. Jacobs/NCEP	 9/98	Changed the path length			*
+!* J.L.Partain/MPC	 9/98	Added Newwave model			*
+!* J. Carr/HPC          10/98   Added ukmet2 and mrf_tdl model          *
+!* D.W.Plummer/NCEP	 2/99	Added template metacharacter doc	*
+!* J.L.Partain/MPC       2/99   Added NWW3 wave model                   *
+!* D. Kidwell/NCEP       3/99   Changed $OBS templates to 4-digit year  *
+!* S. Jacobs/NCEP	 5/99	Added WTCH and WARN			*
+!* D. Kidwell/NCEP       6/99   Removed WATCH                           *
+!* J. Carr/HPC		 7/99	Inserted ensembles			*
+!* S. Jacobs/NCEP	 8/99	Changed the contents and format		*
+!* A. Hardy/GSC		 9/99	Added HRCN				*
+!* D. Kidwell/NCEP      10/99   Added ISIG                              *
+!* S. Jacobs/NCEP	11/99	Added MM5				*
+!* S. Law/GSC		11/99	Changed CAT_MISC -> CAT_MSC		*
+!* D. Kidwell/NCEP      12/99   Added LTNG                              *
+!* D. Kidwell/NCEP       2/00   Added LTGO, LTGT                        *
+!* D.W.Plummer/NCEP	 4/00	Added F-ETA and F-AVN for testing	*
+!* D. Kidwell/NCEP       5/00   Added SHIP6HR                           *
+!* D. Kidwell/NCEP       5/00   Changed default range & intrvl for HRCN *
+!* S. Jacobs/NCEP	 6/00	Changed range for SAT data 2280->2880   *
+!* D. Kidwell/NCEP	 6/00	Added ATCF                              *
+!* S. Jacobs/NCEP	 6/00	Added AVN_SP				*
+!* S. Jacobs/NCEP	 7/00	Changed template for AVN, NGM, RUC2	*
+!* D. Kidwell/NCEP	 7/00	Added AIRM                              *
+!* J.L.Partain/MPC	 8/00	Added COFS, NWW3_GFDL; Del WAM,NEWWAVE	*
+!* D. Kidwell/NCEP	 8/00	Added NCON                              *
+!* S. Jacobs/NCEP	 9/00	Reconciled necessary model aliases	*
+!* D. Kidwell/NCEP	10/00	Added NEWMRFMOS, NEWAVNMOS              *
+!* F. J. Yen/NCEP	12/00	Added SVRL				*
+!* S. Jacobs/NCEP	 2/01	Changed model templates to use YYYY;	*
+!*				Updated for new data servers		*
+!* S. Jacobs/NCEP	 3/01	Added more model data and reorganized	*
+!* D. Kidwell/NCEP	 3/01	Added DROP                              *
+!* D.W.Plummer/NCEP	 3/01	Consolidated ensemble entries		*
+!* T. Lee/GSC		 4/01	Added AVNP, FNLP and MRFP		*
+!* F. J. Yen/NCEP        4/01   Added ATCO (Old ATCF) and updated ATCF  *
+!* S. Jacobs/NCEP	 5/01	Changed ETA Threats directory		*
+!* S. Jacobs/NCEP	 5/01	Added and reordered models		*
+!* D. Kidwell/NCEP	 5/01	Added HCNADV, HCNPRB                    *
+!* D. Kidwell/NCEP	 5/01	Changed subdirectory for ATCF, ATCO     *
+!* S. Jacobs/NCEP	 6/01	Added MM5AK, MM5US, FNMOCWAVE, FSLRUCS	*
+!* S. Jacobs/NCEP	 7/01	Added QSCT				*
+!* A. Hardy/SAIC	 1/02	Added SIGVGF18 and SIGVGF24             *
+!* D. Kidwell/NCEP	 1/02	Added SIGBUF18 and SIGBUF24             *
+!* S. Schotz/NCEP	 3/02	Minor update to prolog, set interval to *
+!*                              -1 for obs data, since it is not read   *
+!*                              from this table for this data type	*
+!* A. Hardy/NCEP	 8/02	Added CSIG				*
+!* M. Li/SAIC		 8/02	Added WSTM				*
+!* T. Lee/SAIC           9/02   Added IDFT                              *
+!* D. Kidwell/NCEP	 9/02	Added TAF                               *
+!* F. J. Yen/NCEP	 9/02	Added RDF                               *
+!* S. Jacobs/NCEP	12/02	Added model sounding and surface data	*
+!* A. Hardy/NCEP	 3/03	Added WOU and WCN			*
+!* S. Schotz/NCEP	 4/03	Added FIRWX model			*
+!* M. Li/SAIC		 8/03	Added QSCT_HI, SEAWND, and SEAWND_HI	*
+!* m.gamazaychikov/SAIC	10/03	Removed ATCO				*
+!* T. Lee/SAIC		10/03	Added NDFD				*
+!* m.gamazaychikov/SAIC	11/03	Removed MRFMOS and AVNMOS		*
+!*				changed NEWAVNMOS to GFSMOS		*
+!*				changed NEWMRFMOS to GFSXMOS		*
+!* T. Lee/SAIC		 2/04	Added GFS				*
+!* F. J. Yen/NCEP	 6/04	Removed SEAWND and SEAWND_HI		*
+!* F. J. Yen/NCEP	 7/04	Added AMBG1, AMBG2, AMBG3, and AMBG4	*
+!* T. Lee/SAIC		 9/04	New column for time binning		*
+!* R. Tian/SAIC		10/04	Added fFFF to NGPS template		*
+!* m.gamazaychikov/SAIC	12/04	Increased BIN HRS column size to 12,	*
+!*				Set new column default value to OFF/0/0	*
+!* T. Piper/SAIC	01/05	Major model cleanup			*
+!* S. Jacobs/NCEP	 3/05	Fixed GOESSST entry			*
+!* F. J. Yen/NCEP	 4/05	Added WCP				*
+!* m.gamazaychikov/SAIC 04/05   Added ENS_CYC                           *
+!* m.gamazaychikov/SAIC 06/05   Changed ENS_CYC name template           *
+!* m.gamazaychikov/SAIC	01/06	Increased FILE TEMPLATE column size = 48*
+!				Removed HIRESW, added WRF_CE, _CN, _HE	*
+!* S. Gilbert/NCEP	 2/06	Added HCNPUB     			*
+!* K. Brill/HPC		 4/06	Added GEFS,GEFC,VAFGFS,VAFNAM entries	*
+!* K. Brill/HPC          4/06   Added SREFEM,SREFETA,SREFNMM,SREFRSM    *
+!* C.Bailey/HPC          4/06   Added FFA                               *
+!* m.gamazaychikov/SAIC	05/06	Add new column for time matching scheme	*
+!* T. Piper/SAIC	07/06	Added SGWH and SSHA			*
+!* G.McFadden/SAIC       7/06   Added WSAT, including ambiguities       *
+!* F. J. Yen/NCEP	 1/07	Added SAW_RAW				*
+!* G. McFadden/SAIC	 3/07	Added ASCT				*
+!* F. J. Yen/NCEP	 7/07	Changed ASCT template ext. asct to ascat*
+!* G. McFadden/SAIC	 7/07	Added ASCT_HI				*
+!* G. McFadden/SAIC	 7/07	Added AAMBG1 and AAMBG2			*
+!* G. McFadden/SAIC	 7/07	Added AAMBG1_HI and AAMBG2_HI		*
+!* T. Lee/SAIC          10/07   Added NWW3ENP                           *
+!* S. Jacobs/NCEP	10/07	Fixed path for AAMBG1_HI and AAMBG2_HI	*
+!* m.gamazaychikov/SAIC	03/08	Add TAMDAR				*
+!* F. J. Yen/NCEP	 4/08	Increased column size for BIN HRS to 21 *
+!* F. J. Yen/NCEP	 7/08	Corrected VAFNAM (hy_nama_ to hy_nam_)	*
+!* G.McFadden/SAIC	 7/08	Added SGWHE (envi), SGWHG (gfo), and    *
+!*				SGWH2 (Jason2) significant wave height  *
+!* T. Piper/SAIC	09/08	Modified TAMDAR template		*
+!* G. McFadden/SAIC	12/08	Added TRAK1, TRAKE, and TRAK2		*
+!* S. Jacobs/NCEP	 6/09	Removed AAMBG1 and AAMBG2		*
+!* S. Jacobs/NCEP	 6/09	Changed path for ASCT, ASCT_HI,		*
+!*				AAMBG1_HI and AAMBG2_HI			*
+!* S. Jacobs/NCEP	 8/09	Added EXperimental ASCAT data types	*
+!* S. Jacobs/NCEP	 4/10	Added HWRF and HWRFNEST			*
+!* L. Hinson/AWC         4/10   Add GAIRM                               *
+!* G. McFadden/IMSG	 9/10	Added OSCT				*
+!* S. Jacobs/NCEP	12/10	Reconciled entries with actual data	*
+!* G. McFadden/IMSG	 1/11	New path for ASCT_HI, AAMBG1_HI and	*
+!*                              AAMBG2_HI				*
+!* G. McFadden/IMSG	 1/11	Added AAMBG3_HI and AAMBG4_HI		*
+!* L. Hinson/AWC	 4/11	Added LTGA ATDNet Lightning		*
+!* G.McFadden/SAIC	 7/11	Added SGWHC (CryoSat) sig wave height   *
+!* G.McFadden/SAIC	 1/12	Added OSCT_HI				*
+!* S. Jacobs/NCEP	 5/12	Added parallel hwrf and ghm		*
+!* S. Jacobs/NCEP	 5/12	Added all ESTOFS related models		*
+!* L. Hinson/AWC	 6/12	Added ASDI				*
+!* M. James/Unidata	 8/12   Added RAP; Preserved RUC entries        *
+!************************************************************************
+!
+!           |                         |                                                |        |        |DEF |DEF   |DEF   |            |TIME
+!FILE TYPE  |PATH                     |FILE TEMPLATE                                   |CATEGORY|SUBCAT  |#FRM|RANGE |INTRVL|BIN HRS     |MATCH
+!(12)       |(25)                     |(48)                                            |(8)     |(8)     |(4) |(6)   |(6)   |(12)        |(6)
+!           |                         |                                                |        |        |    |             |            |
+! Surface data
+METAR        $GEMDATA/surface          YYYYMMDD_sao.gem                                 CAT_SFC  SCAT_SFC   10   2880     -1      OFF/0/0      4
+SYNOP        $GEMDATA/syn              YYYYMMDD_syn.gem                                 CAT_SFC  SCAT_SFC    8   2880     -1      OFF/0/0      4
+SHIP         $GEMDATA/ship             YYYYMMDDHH_sb.gem                                CAT_SFC  SCAT_SHP   10   2880     -1      OFF/0/0      4
+SHIP6HR      $GEMDATA/ship6hr          YYYYMMDDHH_ship.gem                              CAT_SFC  SCAT_SHP    4   2880     -1      OFF/0/0      4
+SCD          $GEMDATA/scd              YYYYMMDD_scd.gem                                 CAT_SFC  SCAT_SFC   10   2880     -1      OFF/0/0      4
+FFG          $GEMDATA/ffg              YYYYMMDD_ffg.gem                                 CAT_SFC  SCAT_FFG    1   2880     -1      OFF/0/0      4
+!
+! Upper air data
+UAIR         $GEMDATA/upperair         YYYYMMDD_upa.gem                                 CAT_SND  SCAT_SND    4   2880     -1      OFF/0/0      4
+ACFT         $GEMDATA/acft             YYYYMMDDHH_acf.gem                               CAT_SND  SCAT_SHP   10   2880     -1      OFF/0/0      2
+DROP         $GEMDATA/drops            YYYYMMDD_drop.gem                                CAT_SND  SCAT_SND   10   2880     -1      OFF/0/0      4
+!
+! MOS
+NGMMOS       $GEMDATA/mos              YYYYMMDDHH_nmos.gem                              CAT_SFF  SCAT_SFF   -1     -1     -1      OFF/0/0      4
+GFSXMOS      $GEMDATA/mos              YYYYMMDDHH_xmos.gem                              CAT_SFF  SCAT_SFF   -1     -1     -1      OFF/0/0      4
+GFSMOS       $GEMDATA/mos              YYYYMMDDHH_gmos.gem                              CAT_SFF  SCAT_SFF   -1     -1     -1      OFF/0/0      4
+IDFT         $GEMDATA/idft             YYYYMMDDHH.idft                                  CAT_SFF  SCAT_SFF   -1     -1     -1      OFF/0/0      4
+TAF          $GEMDATA/taf              YYYYMMDDHH.taf                                   CAT_SFF  SCAT_SFF   -1     -1     -1      OFF/0/0      2
+RDF          $GEMDATA/rdf              YYYYMMDDHH.rdf                                   CAT_SFF  SCAT_SFF   -1     -1     -1      OFF/0/0      4
+!
+! Model Sounding and Surface data
+NAMSND       $MODEL_SND/nam            nam_YYYYMMDDHH.snd                               CAT_SNF  SCAT_SNF   -1     -1     -1      OFF/0/0      4
+NAMSFC       $MODEL_SFC/nam            nam_YYYYMMDDHH.sfc                               CAT_SFF  SCAT_SFF   -1     -1     -1      OFF/0/0      4
+NAMSFCA      $MODEL_SFC/nam            nam_YYYYMMDDHH.sfc_aux                           CAT_SFF  SCAT_SFF   -1     -1     -1      OFF/0/0      4
+!
+RUC2SND      $MODEL_SND/ruc2           ruc2_YYYYMMDDHH.snd                              CAT_SNF  SCAT_SNF   -1     -1     -1      OFF/0/0      4
+RUC2SFC      $MODEL_SFC/ruc2           ruc2_YYYYMMDDHH.sfc                              CAT_SFF  SCAT_SFF   -1     -1     -1      OFF/0/0      4
+RUC2SFCA     $MODEL_SFC/ruc2           ruc2_YYYYMMDDHH.sfc_aux                          CAT_SFF  SCAT_SFF   -1     -1     -1      OFF/0/0      4
+!
+RAPSND      $MODEL_SND/ruc2           ruc2_YYYYMMDDHH.snd                              CAT_SNF  SCAT_SNF   -1     -1     -1      OFF/0/0      4
+RAPSFC      $MODEL_SFC/ruc2           ruc2_YYYYMMDDHH.sfc                              CAT_SFF  SCAT_SFF   -1     -1     -1      OFF/0/0      4
+RAPSFCA     $MODEL_SFC/ruc2           ruc2_YYYYMMDDHH.sfc_aux                          CAT_SFF  SCAT_SFF   -1     -1     -1      OFF/0/0      4
+!
+RUCPTYPSND   $MODEL_SND/rucptyp        rucptyp_YYYYMMDDHH.snd                           CAT_SNF  SCAT_SNF   -1     -1     -1      OFF/0/0      4
+RUCPTYPSFC   $MODEL_SFC/rucptyp        rucptyp_YYYYMMDDHH.sfc                           CAT_SFF  SCAT_SFF   -1     -1     -1      OFF/0/0      4
+!
+! Misc data types
+WTCH         $GEMDATA/storm/wtch       YYYYMMDDHH_wtch.gem                              CAT_MSC  SCAT_NIL   -1    360     10      OFF/0/0      4
+WARN         $GEMDATA/storm/warn       YYYYMMDDHH_warn.gem                              CAT_MSC  SCAT_NIL   -1    360     10      OFF/0/0      4
+HRCN         $GEMDATA/storm/hrcn       YYYYMMDDHH.hrcn                                  CAT_MSC  SCAT_NIL   -1   2880    360      OFF/0/0      4
+ATCF         $GEMDATA/atcf             a*YYYY.dat                                       CAT_MSC  SCAT_NIL   -1   2880    360      OFF/0/0      4
+ISIG         $GEMDATA/isig             YYYYMMDDHH_isig.gem                              CAT_MSC  SCAT_NIL   -1    360     10      OFF/0/0      4
+AIRM         $GEMDATA/airm             YYYYMMDDHH_airm.gem                              CAT_MSC  SCAT_NIL   -1   1440     60      OFF/0/0      4
+GAIRM        $GEMDATA/gairm            YYYYMMDDHH_gairm.gem                             CAT_MSC  SCAT_NIL   -1   1440     60      OFF/0/0      4
+NCON         $GEMDATA/ncon             YYYYMMDDHH_sgmt.gem                              CAT_MSC  SCAT_NIL   -1   1440     60      OFF/0/0      4
+CSIG         $GEMDATA/csig             YYYYMMDDHH_conv.gem                              CAT_MSC  SCAT_NIL   -1   1440     60      OFF/0/0      4
+SVRL         $GEMDATA/storm/svrl       YYYYMMDDHH_svrl.gem                              CAT_MSC  SCAT_NIL   -1    360     10      OFF/0/0      4
+WSTM         $GEMDATA/storm/wstm       YYYYMMDDHH.wstm                                  CAT_MSC  SCAT_NIL   -1    720     30      OFF/0/0      4
+ASCT         $MISC_DATA/ascatd         YYYYMMDDHHNN.ascat                               CAT_MSC  SCAT_NIL   -1   1440     60      OFF/0/0      4
+ASCT_HI      $MSCDT/ascatd_hi          YYYYMMDDHHNN.ascat                               CAT_MSC  SCAT_NIL   -1   1440     60      OFF/0/0      4
+AAMBG1_HI    $MSCDT/ascatd_hi_ambig1   YYYYMMDDHHNN.ascat                               CAT_MSC  SCAT_NIL   -1   1440     60      OFF/0/0      4
+AAMBG2_HI    $MSCDT/ascatd_hi_ambig2   YYYYMMDDHHNN.ascat                               CAT_MSC  SCAT_NIL   -1   1440     60      OFF/0/0      4
+AAMBG3_HI    $MSCDT/ascatd_hi_ambig3   YYYYMMDDHHNN.ascat                               CAT_MSC  SCAT_NIL   -1   1440     60      OFF/0/0      4
+AAMBG4_HI    $MSCDT/ascatd_hi_ambig4   YYYYMMDDHHNN.ascat                               CAT_MSC  SCAT_NIL   -1   1440     60      OFF/0/0      4
+EXASCT       $MISC_DATA/ascat          YYYYMMDDHHNN.ascat                               CAT_MSC  SCAT_NIL   -1   1440     60      OFF/0/0      4
+EXASCT_HI    $MISC_DATA/ascat_hi       YYYYMMDDHHNN.ascat                               CAT_MSC  SCAT_NIL   -1   1440     60      OFF/0/0      4
+
+EXAAMBG2_HI  $MSCDT/ascat_hi_ambig2    YYYYMMDDHHNN.ascat                               CAT_MSC  SCAT_NIL   -1   1440     60      OFF/0/0      4
+OSCT         $GEMDATA/oscat            YYYYMMDDHHNN.oscat                               CAT_MSC  SCAT_NIL   -1   1440     60      OFF/0/0      4
+QSCT         $GEMDATA/qsct             YYYYMMDDHHNN.qsct                                CAT_MSC  SCAT_NIL   -1   1440     60      OFF/0/0      4
+QSCT_HI      $GEMDATA/qsct             YYYYMMDDHHNN.qsct_hi                             CAT_MSC  SCAT_NIL   -1   1440     60      OFF/0/0      4
+SEAWND       $GEMDATA/qsct             YYYYMMDDHHNN.swnd                                CAT_MSC  SCAT_NIL   -1   1440     60      OFF/0/0      4
+SEAWND_HI    $GEMDATA/qsct             YYYYMMDDHHNN.swnd_hi                             CAT_MSC  SCAT_NIL   -1   1440     60      OFF/0/0      4
+AMBG1        $GEMDATA/qsct             YYYYMMDDHHNN.ambig1                              CAT_MSC  SCAT_NIL   -1   1440     60      OFF/0/0      4
+AMBG2        $GEMDATA/qsct             YYYYMMDDHHNN.ambig2                              CAT_MSC  SCAT_NIL   -1   1440     60      OFF/0/0      4
+AMBG3        $GEMDATA/qsct             YYYYMMDDHHNN.ambig3                              CAT_MSC  SCAT_NIL   -1   1440     60      OFF/0/0      4
+AMBG4        $GEMDATA/qsct             YYYYMMDDHHNN.ambig4                              CAT_MSC  SCAT_NIL   -1   1440     60      OFF/0/0      4
+WSAT         $MISC_DATA/wsat           YYYYMMDDHHNN.wsat                                CAT_MSC  SCAT_NIL   -1   1440     60      OFF/0/0      4
+WAMBG1       $MISC_DATA/wsat_ambig1    YYYYMMDDHHNN.wsat                                CAT_MSC  SCAT_NIL   -1   1440     60      OFF/0/0      4
+WAMBG2       $MISC_DATA/wsat_ambig2    YYYYMMDDHHNN.wsat                                CAT_MSC  SCAT_NIL   -1   1440     60      OFF/0/0      4
+WAMBG3       $MISC_DATA/wsat_ambig3    YYYYMMDDHHNN.wsat                                CAT_MSC  SCAT_NIL   -1   1440     60      OFF/0/0      4
+WAMBG4       $MISC_DATA/wsat_ambig4    YYYYMMDDHHNN.wsat                                CAT_MSC  SCAT_NIL   -1   1440     60      OFF/0/0      4
+QBUF         $GEMDATA/qsct_test        YYYYMMDDHH.bufr                                  CAT_MSC  SCAT_NIL   -1   2880    300      OFF/0/0      4
+DMSPBUF      $GEMDATA/dmsp             YYYYMMDDHH.bufr                                  CAT_MSC  SCAT_NIL   -1   2880    300      OFF/0/0      4
+LTNG         $GEMDATA/ltng             YYYYMMDDHH.ltng                                  CAT_MSC  SCAT_NIL   -1    360     10      OFF/0/0      4
+LTGO         $GEMDATA/ltng             YYYYMMDDHHP.ltng                                 CAT_NIL  SCAT_NIL   -1    360     10      OFF/0/0      4
+LTGT         $OBS/ltng                 YYYYMMDDHHL.ltng                                 CAT_NIL  SCAT_NIL   -1    360     10      OFF/0/0      4
+SGWH         $GEMDATA/jason            YYYYMMDDHH.jason                                 CAT_MSC  SCAT_NIL   -1   1440     60      OFF/0/0      4
+SSHA         $MISC_DATA/alps           *YYYY_*                                          CAT_MSC  SCAT_NIL   -1  14400   1440      OFF/0/0      4
+WOU          $GEMDATA/storm/wou        YYYYMMDDHHNN.wou                                 CAT_MSC  SCAT_NIL   -1    360     10      OFF/0/0      4
+WCN          $GEMDATA/storm/wcn        YYYYMMDDHHNN.wcn                                 CAT_MSC  SCAT_NIL   -1    360     10      OFF/0/0      4
+WCP          $GEMDATA/storm/wcp        YYYYMMDDHH.wcp                                   CAT_MSC  SCAT_NIL   -1    360     10      OFF/0/0      4
+ENS_CYC      $GEMDATA/storm/enstrack   cyclone_YYYYMMDDHH                               CAT_MSC  SCAT_NIL   -1   2880    360      OFF/0/0      4
+FFA          $GEMDATA/storm/ffa        YYYYMMDDHH.ffa                                   CAT_MSC  SCAT_NIL   -1   1440     60      OFF/0/0      4
+!
+! Hurricane graphics
+HCNADV       $ADVS/mar                 *YYYY.fstadv.*                                   CAT_NIL  SCAT_NIL   -1     -1     -1      OFF/0/0      4
+HCNPRB       $ADVS/prb_tbl             *YYYY.prblty_tbl.*                               CAT_NIL  SCAT_NIL   -1     -1     -1      OFF/0/0      4
+HCNPUB       $ADVS/mar                 *YYYY.pubadv.*                                   CAT_NIL  SCAT_NIL   -1     -1     -1      OFF/0/0      4
+!
+! Climatology
+CLIMO        $GEMPAK/climo             climate_MM.mos                                   CAT_NIL  SCAT_NIL    1     -1     -1      OFF/0/0      4
+!
+! Images
+SAT          $SAT                      *_YYYYMMDD_HHNN                                  CAT_IMG  SCAT_NIL   10   2880     -1      OFF/0/0      4
+RAD          $RAD                      *_YYYYMMDD_HHNN                                  CAT_IMG  SCAT_NIL   10    180     -1      OFF/0/0      4
+!
+! VG files
+VGF          -                         -                                                CAT_VGF  SCAT_NIL   -1     -1     -1      OFF/0/0      4
+SIGVGF18     $SIGWX/vgfiles            YYYYMMDDHH_18_final.vgf                          CAT_NIL  SCAT_NIL   -1     -1     -1      OFF/0/0      4
+SIGVGF24     $SIGWX/vgfiles            YYYYMMDDHH_24_final.vgf                          CAT_NIL  SCAT_NIL   -1     -1     -1      OFF/0/0      4
+!
+! BUFR files
+SIGBUF18     $SIGWX/bufrfiles          JU*D*.YYYYMMDDHH                                 CAT_NIL  SCAT_NIL   -1     -1     -1      OFF/0/0      4
+SIGBUF24     $SIGWX/bufrfiles          JU*E*.YYYYMMDDHH                                 CAT_NIL  SCAT_NIL   -1     -1     -1      OFF/0/0      4
+!
+! Operational models and grid data
+COAMPS       $MODEL/coamps             coamps_YYYYMMDDHHfFFF                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+COAMPSP      $MODEL/coamps             coamps_YYYYMMDDHH_prcp                           CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+COFS         $MODEL/cofs               cofs_YYYYMMDDHH                                  CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+CPCAVN06     $MODEL/cpc                cpc_avn06_YYYYMMDD                               CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+CPCAVN12     $MODEL/cpc                cpc_avn12_YYYYMMDD                               CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+CPCAVN18     $MODEL/cpc                cpc_avn18_YYYYMMDD                               CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+CPCECM       $MODEL/cpc                cpc_ecm_YYYYMMDD                                 CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+CPCMRF       $MODEL/cpc                cpc_mrf_YYYYMMDD                                 CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+DGEX         $MODEL/dgex               YYYYMMDDHHfFFF_dgex.gem                          CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+ECMWFG       $MODEL/ecmwf              YYYYMMDDHH_ecmf1.gem                             CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+ECMWFP       $MODEL/ecmwf              ecmwf_YYYYMMDDHH_prcp                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+ECMWFT       $MODEL/ecmwf              YYYYMMDDHH_ecmf2.gem                             CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+FIREWX       $MODEL/firewx             fw_YYYYMMDDHHfFFF                                CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+FNL          $MODEL/fnl                YYYYMMDDHH_gdas003.gem                           CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+GDAS         $MODEL/gdas               gdas_YYYYMMDDHHfFFF                              CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+!GFDN         $MODEL/gfdn               gfdn_YYYYMMDDHHfFFF                              CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+GFS          $MODEL/gfs                YYYYMMDDHH_gfs003.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+GFSHD        $MODEL/gfs0.5deg          YYYYMMDDHHfFFF_gfs.gem                           CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+GHM          $MODEL/ghm                ghmg_YYYYMMDDHHfFFF_*                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+GHMNEST      $MODEL/ghm                ghmn_YYYYMMDDHHfFFF_*                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+HWRF         $MODEL/hwrf               hwrfp_YYYYMMDDHHfFFF_*                           CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+HWRFNEST     $MODEL/hwrf               hwrfn_YYYYMMDDHHfFFF_*                           CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+ICE          $MODEL/ice                ice_YYMMDDHH                                     CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+ICEACCR      $MODEL/iceaccr            iceaccr_YYYYMMDDHH                               CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+MRF          $MODEL/mrf                mrf_YYYYMMDDHHfFFF                               CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+NAM          $MODEL/nam                YYYYMMDDHH_nam211.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+ETA          $MODEL/nam                YYYYMMDDHH_nam211.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+NAM20        $MODEL/nam                YYYYMMDDHH_nam215.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+NAM40        $MODEL/nam                YYYYMMDDHH_nam212.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+NAM44        $MODEL/nam44              nam44_YYYYMMDDHHfFFF                             CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+NAMAWC       $MODEL/namawc             nam_YYYYMMDDHHfFFF                               CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+NAMPTS       $MODEL/nampts             nam_YYYYMMDDHHfFFF                               CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+NDFD         $MODEL/ndfd               YYYYMMDDHH_ndfd.gem                              CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+NGM          $MODEL/ngm                YYYYMMDDHH_ngm211.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+NWW3         $MODEL/nww                YYYYMMDDHH_wam002.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+NWW3AKW      $MODEL/nww3               nww3_YYYYMMDDHH_akw                              CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+NWW3WNA      $MODEL/nww3               nww3_YYYYMMDDHH_wna                              CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+RUC2         $MODEL/ruc                YYYYMMDDHH_ruc236.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+RAP          $MODEL/ruc                YYYYMMDDHH_ruc236.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+RUCS         $MODEL/ruc                YYYYMMDDHH_rucs.gem                              CAT_GRD  SCAT_ANL    4   1440     61      OFF/0/0      4
+SSTEPAC      $MODEL/sst                sst_YYYYMMDD_14km_epac                           CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+SSTWATL      $MODEL/sst                sst_YYYYMMDD_14km_watl                           CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+SST          $MODEL/sst                YYYYMMDDHH_sst.gem                               CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+UKMET        $MODEL/ukmet              YYYYMMDDHH_ukmet.gem                             CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+VAFTAD       $MODEL/vaftad             vaftad_YYYYMMDDHH_*                              CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+VAFGFS       $MODEL/vaftad             hy_gfs_YYYYMMDDHH_*                              CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+VAFNAM       $MODEL/vaftad             hy_nama_YYYYMMDDHH_*                             CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+!
+! Experimental models and grid data
+GFSPTAX      $MODEL/gfsptax            gfs_YYYYMMDDHH.*                                 CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+MRFX         $MODEL/mrf                YYYYMMDDHH_mrf.gem                               CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+NAMPTAX      $MODEL/namptax            nam_YYYYMMDDHH.*                                 CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+RUCPTAX      $MODEL/rucwd22kb          ruc_YYYYMMDDHH.spt                               CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+!
+! Global Ensembles
+CMC          $MODEL/cmc                YYYYMMDDHH_cmcreg.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+CMCPRCP      $MODEL/cmc                cmc_YYYYMMDDHH_prcp                              CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+ENS          $MODEL/ens                YYYYMMDDHHfFFF_ens002.gem                        CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+! NCEP Global ensemble members
+GEFS         $MODEL/ens                gefs_YYYYMMDDHH_gep*                             CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+! NCEP Global ensemble control runs
+GEFC         $MODEL/ens                gefs_YYYYMMDDHH_gec*                             CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+MREFSPC      $MODEL/mrefspc            spcmref_YYYYMMDDHHfFFF                           CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+SREF         $MODEL/sref               sref_YYYYMMDDHH_*                                CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+SREFEM       $MODEL/sref               sref_YYYYMMDDHH_em_*                             CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+SREFETA      $MODEL/sref               sref_YYYYMMDDHH_eta_*                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+SREFNMM      $MODEL/sref               sref_YYYYMMDDHH_nmm_*                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+SREFRSM      $MODEL/sref               sref_YYYYMMDDHH_rsm_*                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+SREFSPC      $MODEL/srefspc            spc*_YYYYMMDDHHfFFF                              CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+!
+! Global Ensembles derived products
+ENSMEAN      $MODEL/ensmean            ensmean_YYYYMMDDHH                               CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+ENSSPREAD    $MODEL/ensspread          ensspread_YYYYMMDDHH                             CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+RMOP         $MODEL/rmop               rmop_YYYYMMDDHH                                  CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+SREFMEAN     $MODEL/srefmean           sref_YYYYMMDDHH_mean                             CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+SREFPROB     $MODEL/srefprob           sref_YYYYMMDDHH_prob                             CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+SREFSPREAD   $MODEL/srefspread         sref_YYYYMMDDHH_spread                           CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+SREFX        $MODEL/srefx              srefx_YYYYMMDDHH_mean                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+SREFX_ETA    $MODEL/srefx              srefx_eta_YYYYMMDDHH                             CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+SREFX_RSM    $MODEL/srefx              srefx_rsm_YYYYMMDDHH                             CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+! ECMWF/TIGGE Global ensemble members
+TEEFS        $MODEL/tigge_ecmwf        tiggep0*_YYYYMMDDHHfFFF.gem                      CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+! ECMWF/TIGGE Global ensemble control runs
+TEEFC        $MODEL/tigge_ecmwf        tiggec*_YYYYMMDDHHfFFF.gem                       CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+! ECMWF/TIGGE
+TEEF         $MODEL/tigge_ecmwf        tigge_YYYYMMDDHHfFFF.gem                         CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+!
+! MDL grid data
+MDLGFSSVR    $MODEL/mdl                mdlgfssvr_YYYYMMDDHH                             CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+MDLNAMSVR    $MODEL/mdl                mdlnamsvr_YYYYMMDDHH                             CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+MDLNGM       $MODEL/mdl                ngm_YYYYMMDDHH                                   CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+MDLMRFSVR    $MODEL/tdl                mdlmrfsvr_YYYYMMDDHH                             CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+!
+! Misc Models
+COOPMOS      $MODEL/coopmos            coopmos_YYYYMMDDHH                               CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+NOGAPS       $MODEL/nogaps             YYYYMMDDHH_nogaps240.gem                         CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+NGPS_PRCP    $MODEL/nogaps             nogaps_YYYYMMDDHH_prcp                           CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+!
+MM5AK        $MODEL/mm5                mm5alaska_YYYYMMDDHHfFFF                         CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+MM5US        $MODEL/mm5                mm5conus_YYYYMMDDHHfFFF                          CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+FNMOCWAVE    $MODEL/fnmocwave          wave_YYYYMMDDHHfFFF                              CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+FSLRUC2      $MODEL/fslruc2            ruc2_YYYYMMDDHHfFFF                              CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+FSLRUCS      $MODEL/fslrucs            rucspgrb_YYYYMMDDHHfFFF                          CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+GOESSST      $MODEL/GoesSST            GoesSST_YYYYMMDDHH_*                             CAT_GRD  SCAT_ANL   10   7200     60      OFF/0/0      4
+GVIS         $MODEL/gvis               gvis_YYYMMDDHH                                   CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+!
+WRF_CE       $MODEL/hiresw             hiresw_centem_YYYYMMDDHHfFFF                     CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+WRF_CN       $MODEL/hiresw             hiresw_centnmm_YYYYMMDDHHfFFF                    CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+WRF_HE       $MODEL/hiresw             hiresw_hiem_YYYYMMDDHHfFFF                       CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+!
+WSETA        $MODEL/wseta              YYYYMMDDHHfFFF_wseta.gem                         CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+WSETAMEDR    $MODEL/wsetamedr          wsetamedr_YYYYMMDDHHfFFF                         CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+WSETASAM     $MODEL/wsetasam           wsetasam_YYYYMMDDHHfFFF                          CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+WSETASAMKF   $MODEL/wsetasamkf         wsetasamkf_YYYYMMDDHHfFFF                        CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+!
+! RFC grid data
+RFCFFG       $MODEL/rfcffg             rfcffg_YYYYMMDDHH                                CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+RFCQPE       $MODEL/rfcqpe             rfcqpe_YYYYMMDDHH                                CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+RFCQPF       $MODEL/rfcqpf             rfcqpf_YYYYMMDDHH                                CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+COSMIC       $GEMDATA/cosmic           YYYYMMDDHHNN_cosmic.gem                          CAT_SFC  SCAT_SFC    6    360     30       ON/1/0
+SUOMI        $GEMDATA/gps              YYYYMMDD_suomi.gem                               CAT_SFC  SCAT_SFC    1   2880     -1      OFF/0/0
+WPAC         $GEMDATA/storm/tropic     YYYYMMDD_wpac.gem                                CAT_SFC  SCAT_SFC    1   2880     -1      OFF/0/0
+NLDN         $GEMDATA/nldn             YYYYMMDDHHNN_nldn.gem                            CAT_SFC  SCAT_SFC    6    360      5      OFF/0/0
+USPLN        $GEMDATA/uspln            YYYYMMDDHHNN_uspln.gem                           CAT_SFC  SCAT_SFC    6    360      5      OFF/0/0
+ACARS        $GEMDATA/acars            YYYYMMDDHH_acars.gem                             CAT_SFC  SCAT_SFC    4    120      1      OFF/0/0
+SELS         $GEMDATA/storm/sels       YYYYMMDD_sels.gem                                CAT_SFC  SCAT_SFC   15   1440      1      OFF/0/0
+PRO6         $GEMDATA/profiler         YYYYMMDD_6min.gem                                CAT_SND  SCAT_SND    4   2880     -1      OFF/0/0
+PROF         $GEMDATA/profiler         YYYYMMDD_pro.gem                                 CAT_SND  SCAT_SND    4   2880     -1      OFF/0/0
+WSESND       $MODEL_SND/etaw           YYMMDDHH_wseta.snd                               CAT_SNF  SCAT_SNF   -1     -1     -1      OFF/0/0
+WSESFC       $MODEL_SFC/etaw           YYMMDDHH_wseta.sfc                               CAT_SFF  SCAT_SFF   -1     -1     -1      OFF/0/0
+WSESFCA      $MODEL_SFC/etaw           YYMMDDHH_wseta.sfc_aux                           CAT_SFF  SCAT_SFF   -1     -1     -1      OFF/0/0
+NAM12        $MODEL/nam12km            YYYYMMDDHHfFFF_nam218.gem                        CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
+NAM80        $MODEL/nam                YYYYMMDDHH_nam211.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
+ETA211       $MODEL/nam                YYYYMMDDHH_nam211.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
+ETA104       $MODEL/nam                YYYYMMDDHH_nam104.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
+NAM104       $MODEL/nam                YYYYMMDDHH_nam104.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
+ETA212       $MODEL/nam                YYYYMMDDHH_nam212.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
+ETA215       $MODEL/nam                YYYYMMDDHH_nam215.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
+ETA218       $MODEL/nam12km            YYYYMMDDHHfFFF_nam218.gem                        CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
+MESO         $MODEL/nam12km            YYYYMMDDHHfFFF_nam218.gem                        CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
+ETA_AK       $MODEL/nam-ak             YYYYMMDDHHfFFF_nam.gem                           CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
+ETA216       $MODEL/nam-ak             YYYYMMDDHH_nam216.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
+ETA217       $MODEL/nam-ak             YYYYMMDDHH_nam217.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
+ETA242       $MODEL/nam-ak             YYYYMMDDHHfFFF_nam242.gem                        CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
+ETA207       $MODEL/nam-ak             YYYYMMDDHH_nam207.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
+DGEX_AK      $MODEL/dgex-ak            YYYYMMDDHHfFFF_dgex.gem                          CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
+GFS002       $MODEL/gfs                YYYYMMDDHH_gfs002.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
+GFS003       $MODEL/gfs                YYYYMMDDHH_gfs003.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
+GFS004       $MODEL/gfs0.5deg          YYYYMMDDHHfFFF_gfs.gem                           CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
+GFS211       $MODEL/gfs                YYYYMMDDHH_gfs211.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
+GFS212       $MODEL/gfs                YYYYMMDDHH_gfs212.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
+GFSTHIN      $MODEL/gfs                YYYYMMDDHH_thin.gem                              CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
+AVN002       $MODEL/gfs                YYYYMMDDHH_gfs002.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
+AVN003       $MODEL/gfs                YYYYMMDDHH_gfs003.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
+AVN211       $MODEL/gfs                YYYYMMDDHH_gfs211.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
+AVNTHIN      $MODEL/gfs                YYYYMMDDHH_thin.gem                              CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
+AVN          $MODEL/gfs                YYYYMMDDHH_gfs003.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
+RUC          $MODEL/ruc                YYYYMMDDHH_ruc211.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
+#RUC_20      $MODEL/ruc                YYYYMMDDHH_ruc252.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
+RUC_20       $MODEL/ruc                YYYYMMDDHH_ruc.gem                               CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
+COAMPS_WATL  $MODEL/coamps             YYYYMMDDHH_coamps_watl                           CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
+COAMPS_EPAC  $MODEL/coamps             YYYYMMDDHH_coamps_epac                           CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
+COAMPS_CONUS $MODEL/coamps             YYYYMMDDHH_coamps_conus                          CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
+COAMPS_C_AM  $MODEL/coamps             YYYYMMDDHH_coamps_centam                         CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
+UKMET2       $MODEL/ukmet2             ukmet2_YYMMDDHH                                  CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
+ENSHR        $MODEL/ens                YYYYMMDDHHfFFF_ens003.gem                        CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
+ENSTHIN      $MODEL/ens                YYYYMMDDHH_ensthin.gem                           CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
+MOSGRID      $MODEL/mos                YYYYMMDDHH_gfsmos.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
+LAMP         $MODEL/mos                YYYYMMDDHH_lamp.gem                              CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
+RTMA         $MODEL/rtma               YYYYMMDDHH_rtma.gem                              CAT_GRD  SCAT_ANL    4    720     60      OFF/0/0
+MM5          $MODEL/mm5                mm5_YYMMDDHH                                     CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
+NHC          $MODEL/nhc                YYYYMMDDHH_forecast.gem                          CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
+QPE          $MODEL/qpf                YYYYMMDDHH_qpe218.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
+QPE_ALR      $MODEL/qpf                YYYYMMDDHH_kalr218.gem                           CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
+QPE_FWR      $MODEL/qpf                YYYYMMDDHH_kfwr218.gem                           CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
+QPE_KRF      $MODEL/qpf                YYYYMMDDHH_kkrf218.gem                           CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
+QPE_MSR      $MODEL/qpf                YYYYMMDDHH_kmsr218.gem                           CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
+QPE_ORN      $MODEL/qpf                YYYYMMDDHH_korn218.gem                           CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
+QPE_TAR      $MODEL/qpf                YYYYMMDDHH_ktar218.gem                           CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
+QPE_TIR      $MODEL/qpf                YYYYMMDDHH_ktir218.gem                           CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
+QPE_TUA      $MODEL/qpf                YYYYMMDDHH_ktua218.gem                           CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
+QPF          $MODEL/qpf                YYYYMMDDHH_*                                     CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
+!
+RCMG         $MODEL/radar              YYYYMMDD_radar.gem                               CAT_GRD  SCAT_ANL    4    720     30      OFF/0/0
+!NEXR         $GEMDATA/radar            YYYYMMDD_radr.gem                               CAT_GRD  SCAT_ANL    4    720     30      OFF/0/0
+NEXR         $GEMDATA/radar            YYYYMMDD_radr.gem                                CAT_GRD  SCAT_FCT    4    720     30      OFF/0/0
+NEX1K        $GEMDATA/radar            YYYYMMDD_rad1.gem                                CAT_GRD  SCAT_FCT    4    720     30      OFF/0/0
+CNEX1K       $GEMDATA/radar            YYYYMMDD_crad.gem                                CAT_GRD  SCAT_ANL    4    720     30      OFF/0/0
+NEXCOMB      $GEMDATA/radar            YYYYMMDD_comb.gem                                CAT_GRD  SCAT_FCT    4    720     30      OFF/0/0
+NEXL         $GEMDATA/radar            YYYYMMDD_local.gem                               CAT_GRD  SCAT_ANL    4    720     30      OFF/0/0
+NEXF         $GEMDATA/radar            YYYYMMDD_float_*                                 CAT_GRD  SCAT_ANL    4    720     30      OFF/0/0
+RFC          $MODEL/rfc                rfc_YYMMDDHH                                     CAT_GRD  SCAT_ANL    1      1     30      OFF/0/0
+SFCA         $MODEL/sfca               YYYYMMDD_sfc.gem                                 CAT_GRD  SCAT_ANL    4    720     60      OFF/0/0
+!
+! (convenience access)
+GINI-CONUS   $SAT/SUPER-NATIONAL       *_YYYYMMDD_HHNN                                  CAT_NIL  SCAT_NIL   10   2880     -1      OFF/0/0
+!
+! Text files for warnings (convenience access)
+TORNADOWARN  $TEXT_WARN/TOR            YYYYMMDDHH.TOR                                   CAT_NIL  SCAT_NIL   72   4320     60      OFF/0/0
+TSTORMWARN   $TEXT_WARN/SVR            YYYYMMDDHH.SVR                                   CAT_NIL  SCAT_NIL   72   4320     60      OFF/0/0
+NONPCPWARN   $TEXT_WARN/NPW            YYYYMMDDHH.NPW                                   CAT_NIL  SCAT_NIL   72   4320     60      OFF/0/0
+WINTERWARN   $TEXT_WARN/WSW            YYYYMMDDHH.WSW                                   CAT_NIL  SCAT_NIL   72   4320     60      OFF/0/0
+FLOODWARN    $TEXT_WARN/flood          YYYYMMDDHH.flood                                 CAT_NIL  SCAT_NIL   72   4320     60      OFF/0/0
+RCMDAT       $GEMDATA/../rcm           YYYYMMDDHH_rcm.dat                               CAT_NIL  SCAT_NIL   72   4320     60      OFF/0/0
+FRONTS       $TEXT_DATA/hpc/fronts     YYYYMMDDHH.front                                 CAT_NIL  SCAT_NIL   72   4320     60      OFF/0/0
+!
+! Local WRF
+! files in wrf directory are _arw.gem, nmm_primary.gem, nmm_alt1.gem, etc
+WRF          $MODEL/wrf                YYYYMMDDHHfFFF_*                                 CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
+!
+! Radar level 2 & 3 aliases
+NEXRII       $RAD/craft/%SITE%         %SITE%_YYYYMMDD_HHNN                             CAT_NIL  SCAT_NIL   10   2880      6      OFF/0/0
+NEXRIII      $RAD/NIDS/%SITE%/%PROD%   %PROD%_YYYYMMDD_HHNN                             CAT_NIL  SCAT_NIL   10   2880     -1      OFF/0/0
+N0RCOMP      $RAD/NEXRCOMP/1km/n0r     n0r_YYYYMMDD_HHNN                                CAT_NIL  SCAT_NIL   10   2880     -1      OFF/0/0
+CRADAR       $RAD/cradar/%SITE%/%PROD% %PROD%_YYYYMMDD_HHNN                             CAT_NIL  SCAT_NIL   10   2880     -1      OFF/0/0
+!
+EAST4KM_IR   $SAT/EAST-CONUS/4km/IR    IR_YYYYMMDD_HHNN                                 CAT_NIL  SCAT_NIL   10   2880     -1      OFF/0/0
+EAST4KM_3.9  $SAT/EAST-CONUS/4km/3.9   3.9_YYYYMMDD_HHNN                                CAT_NIL  SCAT_NIL   10   2880     -1      OFF/0/0
+G12-4KM_IR   $SAT/GOES-12/4km/IR       IR_YYYYMMDD_HHNN                                 CAT_NIL  SCAT_NIL   10   2880     -1      OFF/0/0
+G12-4KM_3.9  $SAT/GOES-12/4km/3.9      3.9_YYYYMMDD_HHNN                                CAT_NIL  SCAT_NIL   10   2880     -1      OFF/0/0
+G13-4KM_IR   $SAT/GOES-13/4km/IR       IR_YYYYMMDD_HHNN                                 CAT_NIL  SCAT_NIL   10   2880     -1      OFF/0/0
+G13-4KM_3.9  $SAT/GOES-13/4km/3.9      3.9_YYYYMMDD_HHNN                                CAT_NIL  SCAT_NIL   10   2880     -1      OFF/0/0
+SUPERNAT_IR  $SUPER_NATIONAL_IR        IR_YYYYMMDD_HHNN                                 CAT_NIL  SCAT_NIL   10   2880     -1      OFF/0/0
+NHEMMULTI_IR $NHEMMULTI_IR             IR_YYYYMMDD_HHNN                                 CAT_NIL  SCAT_NIL   10   2880     -1      OFF/0/0

@@ -1,0 +1,48 @@
+#! /bin/csh
+#
+# EZ850
+#
+# This script will plot the 850 mb temperatures, heights and winds for
+# all of the times for the given model.
+#
+#	Syntax:  ez850
+#
+##
+# Log:
+# D. Plummer/NMC	 1994
+# S. Jacobs/NMC		10/94		Clean up
+
+source settings
+
+gdcntr << EOF
+GDATTIM	= ALL
+DEVICE	= ${dev}
+!
+! Restore the 850 mb temperatures
+restore ez/850tmpc
+CLEAR   = yes
+TITLE	= 5/-2/${model} ~  @  HGHTS, TEMPERATURE AND WIND (KTS)|~ @ HGHT, TMP, WIND
+r
+
+!
+! Restore the 850 mb heights
+restore ez/850hght
+CLEAR   = no
+TITLE	= 0
+r
+
+ex
+EOF
+
+gdwind << EOFF
+!
+! Restore the 850 mb winds
+restore ez/850wind
+CLEAR   = no
+TITLE	= 0
+r
+
+;2
+;l
+ex
+EOFF

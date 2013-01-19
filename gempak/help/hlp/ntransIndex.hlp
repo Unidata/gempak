@@ -1,0 +1,31 @@
+#----------------------------------------------------------------------------
+#
+# ntransIndex.hlp
+#
+# This is the NTRANS help files table.  Each line consists of three fields.
+# The first field is a unique ID number assigned to the corresponding help
+# file.  The second field is the help panel title.  The third field is the
+# path to the help file.  Fields are separated by '|'.  Currently the
+# maximum number of help files is 30.
+#
+# Log:
+# S. Wang/GSC		 8/96	Original
+# M. Linda/GSC		12/96	Edited documentation, added common directory
+# S. Wang/GSC           03/97   Change name from ntrans.readme to current
+# T. Piper/SAIC		02/04	Renamed from ntransHlp.index and 
+#					moved help files to $GEMHLP/hlp
+#----------------------------------------------------------------------------
+#
+# ID | Help Panel Title		| Help File Path And Name
+#----------------------------------------------------------------------------
+02   | NTRANS Overview		| $GEMHLP/hlp/ntrans.hlp
+05   | User-Defined		| $GEMHLP/hlp/user_defined.hlp
+06   | Select Group	 	| $GEMHLP/hlp/select_group.hlp
+07   | Manual Group 		| $GEMHLP/hlp/manual_group.hlp
+08   | Select Model		| $GEMHLP/hlp/select_model.hlp
+09   | Printer Setup		| $GEMHLP/hlp/print.hlp
+10   | Select Frame 		| $GEMHLP/hlp/select_frame.hlp
+11   | Loop Control Buttons	| $GEMHLP/hlp/loop_ctrl.hlp
+12   | Dwell Rate		| $GEMHLP/hlp/dwell_rate.hlp
+13   | Colors			| $GEMHLP/hlp/color.hlp
+14   | Procedures               | $GEMHLP/hlp/NtransProcedures.hlp

@@ -1,0 +1,146 @@
+!
+! GWCGRIB2.TBL -- GRIB 1 parameter conversion table version 2
+!
+!ID# NAME                             UNITS                GNAM         SCALE   MISSING  HZREMAP DIRECTION
+!
+!128 Average 3-hr precip               ?                    PxxM            -2  -9999.00       0         0
+!129 Aerosol type                                           AERO             0  -9999.00       0         0
+!130 Hours since land                  ?                    HSLND           -2  -9999.00       0         0
+!
+131 Pressure                          mb                   PRES             0  -9999.00        0         0
+132 Mean sea level pressure           mb                   PRMSL            0  -9999.00        0         0
+133 Vertical velocity                 mb*s-1               VVEL             0  -9999.00        0         0
+!134 undefined                         -                                     0  -9999.00       0         0
+!135 undefined                         -                                     0  -9999.00       0         0
+!136 undefined                         -                                     0  -9999.00       0         0
+!137 undefined                         -                                     0  -9999.00       0         0
+!138 T-storm max tops                  ?                    MAXTOPS          0  -9999.00       0         0
+!139 T-storm coverage                  ?                    COVER            0  -9999.00       0         0
+!140 Ceiling                           ?                    CEILING          0  -9999.00       0         0
+!
+!141 undefined                         -                                     0  -9999.00       0         0
+!142 undefined                         -                                     0  -9999.00       0         0
+!143 undefined                         -                                     0  -9999.00       0         0
+!144 Precip category                   ?                    PTYPE            0  -9999.00       0         0
+!145 Contrail type 1 top               ?                    C1T              0  -9999.00       0         0
+!146 Contrail type 1 base              ?                    C1T              0  -9999.00       0         0
+!147 Contrail type 1 int               ?                    C1T              0  -9999.00       0         0
+!148 Contrail type 2 top               ?                    C2T              0  -9999.00       0         0
+!149 Contrail type 2 base              ?                    C2T              0  -9999.00       0         0
+!150 Contrail type 2 int               ?                    C2T              0  -9999.00       0         0
+!
+!151 Contrail type 3 top               ?                    C3T              0  -9999.00       0         0
+!152 Contrail type 3 base              ?                    C3T              0  -9999.00       0         0
+!153 Contrail type 3 int               ?                    C3T              0  -9999.00       0         0
+!154 IR transmissivity                 ?                    IRTRANS          0  -9999.00       0         0
+!155 Absolute humidity                 g/m^3                ABSH             0  -9999.00       0         0
+!156 IR visibility                     ?                    IRVIS            0  -9999.00       0         0
+!157 undefined                         -                                     0  -9999.00       0         0
+!158 undefined                         -                                     0  -9999.00       0         0
+!159 undefined                         -                                     0  -9999.00       0         0
+!160 undefined                         -                                     0  -9999.00       0         0
+!
+!161 undefined                         -                                     0  -9999.00       0         0
+162 Sea surface temperature           K                    SSTK             0  -9999.00        0         0
+!163 undefined                         -                                     0  -9999.00       0         0
+!164 undefined                         -                                     0  -9999.00       0         0
+!165 undefined                         -                                     0  -9999.00       0         0
+!166 undefined                         -                                     0  -9999.00       0         0
+!167 undefined                         -                                     0  -9999.00       0         0
+!168 undefined                         -                                     0  -9999.00       0         0
+!169 undefined                         -                                     0  -9999.00       0         0
+!170 undefined                         -                                     0  -9999.00       0         0
+!
+!171 undefined                         -                                     0  -9999.00       0         0
+!172 undefined                         -                                     0  -9999.00       0         0
+!173 undefined                         -                                     0  -9999.00       0         0
+174 Snow depth                        m                    SNDM             0  -9999.00        0         0
+!175 Snow age                          ?                    SNOA             0  -9999.00       0         0
+!176 Snow depth climatology            m                    SNODC            0  -9999.00       0         0
+!177 Visibility                        ?                    VIS              0  -9999.00       0         0
+178 Weather                           int                  WX               0  -9999.00        0         0
+!179 Layer cloud amount                -                    CLDA             0  -9999.00       0         0
+!180 Layer cloud base                  -                    CLDB             0  -9999.00       0         0
+!
+!181 Layer cloud top                   -                    CLDT             0  -9999.00       0         0
+!182 Layer cloud type                  -                    CLDTYP           0  -9999.00       0         0
+!183 Time of last update               -                    TMUPDT           0  -9999.00       0         0
+!184 Source data                       -                    SORCD            0  -9999.00       0         0
+!185 Icing top                         -                    ICTOP            0  -9999.00       0         0
+!186 Icing base                        -                    ICBAS            0  -9999.00       0         0
+!187 Icing                             -                    ICING            0  -9999.00       0         0
+!188 Turbulence top                    -                    TRBTOP           0  -9999.00       0         0
+!189 Turbulence base                   -                    TRBBAS           0  -9999.00       0         0
+!190 Turbulence                        -                    TURB             0  -9999.00       0         0
+!
+!191 Pstar                             -                    PSTAR            0  -9999.00       0         0
+!192 Ppres                             -                    PPRES            0  -9999.00       0         0
+!193 PBLreg                            -                    PBLREG           0  -9999.00       0         0
+!194 Ustar                             -                    USTAR            0  -9999.00       0         0
+!195 Graup                             -                    GRAUP            0  -9999.00       0         0
+!196 NCI                               -                    NCI              0  -9999.00       0         0
+!197 RADTEN                            -                    RADTEN           0  -9999.00       0         0
+!198 Turb                              -                    TURB             0  -9999.00       0         0
+!199 Mapsf                             -                    MAPSF            0  -9999.00       0         0
+!200 Upper layer soil temp             -                    ULSTK            0  -9999.00       0         0
+!
+!201 Upper layer soil moisture         -                    ULSMK            0  -9999.00       0         0
+!202 Lower layer soil moisture         -                    LLSMK            0  -9999.00       0         0
+!203 Merged precipitation              -                    MPRCP            0  -9999.00       0         0
+!204 Evapotranspiration                -                    EVAPT            0  -9999.00       0         0
+!205 Soil type                                              SOILT            0  -9999.00       0         0
+!206 undefined                         -                                     0  -9999.00       0         0
+!207 undefined                         -                                     0  -9999.00       0         0
+!208 undefined                         -                                     0  -9999.00       0         0
+!209 Altimeter setting                 in Hg                ALSTG            0  -9999.00       0         0
+210 K Index                           K                    KINX             0  -9999.00        0         0
+!
+211 KO Index                          K                    KOINX            0  -9999.00        0         0
+212 Total totals index                K                    TOTAL            0  -9999.00        0         0
+213 Sweat index                       dimensionless        SWET             0  -9999.00        0         0
+214 CAPE                              J kg**-1             CAPE             0  -9999.00        0         0
+215 Convective instability            J kg**-1             CINS
+216 Storm relative helicity           J kg**-1             HLCY             0  -9999.00        0         0
+217 Energy helicity index             dimensionless        EHI              0  -9999.00        0         0
+218 Integrated liquid water           g/m^2                ILW              0  -9999.00        0         0
+219 Condensate                        kg/kg                COND             0  -9999.00        0         0
+!220 Cloud water mixing ratio          kg/kg                CWMIXR           0  -9999.00       0         0
+!
+!221 Ice water mixing ratio            kg/kg                IWMIXR           0  -9999.00       0         0
+!222 Rain water mixing ratio           kg/kg                RWMIXR           0  -9999.00       0         0
+!223 Snow water mixing ratio           kg/kg                SWMIXR           0  -9999.00       0         0
+224 Heat index                        K                    HEAT             0  -9999.00        0         0
+225 Moisture convergence              kg/kg/s              MCONV            0  -9999.00        0         0
+226 Turbulence intensity              category             TKE              0  -9999.00        0         0
+!227 Cloud base                        m                    CLDB             0  -9999.00       0         0
+!228 Cloud top                         m                    CLDT             0  -9999.00       0         0
+!229 Total cloud cover                 %                    TCLDCV           0  -9999.00       0         0
+!230 Latitude                          degrees              LAT              0  -9999.00       0         1
+!
+!231 Longitude                         degrees              LON              0  -9999.00       0         1
+!232 Thickness                         m                    THKNS            0  -9999.00       0         0
+!233 Terrain height                    m                    SFCHT            0  -9999.00       0         0
+!234 Wind chill                        deg F                CHILL            0  -9999.00       0         0
+!235 D-values of height                ft                   DVAL             0  -9999.00       0         0
+!236 Max RH                            %                    MAXRH            0  -9999.00       0         0
+!237 Max absolute humidity             g/m^3                MAXARH           0  -9999.00       0         0
+!238 Max wind                          m/s                  MAXWND           0  -9999.00       0         0
+!239 Min dew point depression          K                    MINDEPR          0  -9999.00       0         0
+!240 Total precip                      in                   PxxI             0  -9999.00       0         0
+!
+!241 Land use                          category             LANDUSE          0  -9999.00       0         0
+!242 Snowfall                          -                    SNOWF            0  -9999.00       0         0
+!243 Total snowfall                    -                    TSNOWF           0  -9999.00       0         0
+244 Precip type                       category             PCPTYP           0  -9999.00        0         0
+245 Icing                             category             ICE              0  -9999.00        0         0
+!246 Radio refractivity                dimensionless        REFRCT           0  -9999.00       0         0
+!247 undefined                         -                                     0  -9999.00       0         0
+!248 undefined                         -                                     0  -9999.00       0         0
+!249 undefined                         -                                     0  -9999.00       0         0
+!250 undefined                         -                                     0  -9999.00       0         0
+!
+!251 undefined                         -                                     0  -9999.00       0         0
+!252 undefined                         -                                     0  -9999.00       0         0
+!253 undefined                         -                                     0  -9999.00       0         0
+!254 undefined                         -                                     0  -9999.00       0         0
+255 Missing                           -                    MISS             0  -9999.00        0         0

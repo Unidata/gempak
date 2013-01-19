@@ -1,0 +1,10 @@
+!	This is the error file for DCWSTM.
+!
++1	! Winter storm bulletin header error !AS
+-1	! No zone information found
+-2	! Valid message end time not found
+-3	! No message type found
+-4	! No 'NATIONAL WEATHER SERVICE' header found
+-5	! No local time found
+-6	! Error in local time
+-7	! Error in zone information string

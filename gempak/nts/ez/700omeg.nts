@@ -1,0 +1,18 @@
+GLEVEL  700
+GVCORD  PRES
+GFUNC   omeg
+CINT    -9;-7;-5;-3;-1;1;3;5;7;9
+LINE    6;6;6;6;6;24;24;24;24;24/1/1/1
+TITLE   5/-2/~  @  OMEGA|~ @ OMEGA
+CLEAR   yes
+PANEL   0
+TEXT    1/21//hw
+SCALE   3
+HILO     
+HLSYM    
+CLRBAR  1
+CONTUR  1
+SKIP    0
+FINT     
+FLINE    
+CTYPE   c

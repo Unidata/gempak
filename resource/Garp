@@ -1,0 +1,2775 @@
+! Module Resources
+
+Garp*foreground: black
+Garp*geometry: +150+5
+Garp*background: #e5e5e5e5e5e5
+
+! map_latlon_shell
+Garp*map_latlon_shell.title: Map & Lat/Lon Preferences
+
+! map_latlon_dialog
+Garp*map_latlon_dialog.dialogType: DIALOG_TEMPLATE
+
+! button125
+Garp*button125.labelString: Apply
+
+! button126
+Garp*button126.labelString: Close
+
+! label157
+Garp*label157.childType: FRAME_TITLE_CHILD
+Garp*label157.labelString: Lat/Lon Grid
+
+! latlonGridToggle
+Garp*latlonGridToggle.labelString: On
+
+! latlon_rc1
+Garp*latlon_rc1.numColumns: 4
+Garp*latlon_rc1.packing: PACK_COLUMN
+
+! label183
+Garp*label183.labelString: Lat Spacing
+
+! latIncrementW
+Garp*latIncrementW.columns: 6
+
+! label184
+Garp*label184.labelString: Lon Spacing
+
+! lonIncrementW
+Garp*lonIncrementW.columns: 6
+
+! label185
+Garp*label185.labelString: Label Frequency
+
+! latlonGridLabelIncW
+Garp*latlonGridLabelIncW.columns: 6
+
+! label186
+Garp*label186.labelString:    Sample Line
+
+! latlonGridSampleW
+Garp*latlonGridSampleW.width: 75
+
+! latlon_rc2
+Garp*latlon_rc2.orientation: HORIZONTAL
+
+! button93
+Garp*button93.labelString: 1
+
+! button94
+Garp*button94.labelString: 2
+
+! button111
+Garp*button111.labelString: 5
+
+! button127
+Garp*button127.labelString: 10
+
+! button129
+Garp*button129.labelString: 15
+
+! button130
+Garp*button130.labelString: 20
+
+! button131
+Garp*button131.labelString: 25
+
+! button132
+Garp*button132.labelString: 30
+
+! form78
+Garp*form78.resizePolicy: RESIZE_ANY
+
+! scrolledWin1
+Garp*scrolledWin1.height: 400
+Garp*scrolledWin1.scrollBarDisplayPolicy: AS_NEEDED
+Garp*scrolledWin1.scrollingPolicy: AUTOMATIC
+Garp*scrolledWin1.visualPolicy: VARIABLE
+
+! maplist_form
+
+! label164
+Garp*label164.childType: FRAME_TITLE_CHILD
+Garp*label164.labelString: Map Backgrounds
+
+! label162
+Garp*label162.labelString: Click the sample line to change its color/type/width
+
+! label163
+Garp*label163.labelString: \"Scale\" is the range of latitude over the GARP drawing window. A map\nthat is \"On\" will be drawn if the range is between Max and Min Scale.
+
+! label165
+Garp*label165.labelString: To display a map regardless of scale, set Max Scale negative or to 0.
+
+
+! line_attributes_shell
+Garp*line_attributes_shell.title: Line Attributes
+
+! line_attributes_dialog
+Garp*line_attributes_dialog.dialogType: DIALOG_TEMPLATE
+
+! lineAttributesApplyW
+Garp*lineAttributesApplyW.labelString: Apply
+
+! button128
+Garp*button128.labelString: Close
+
+! rowcol24
+Garp*rowcol24.width: 160
+Garp*rowcol24.numColumns: 2
+Garp*rowcol24.packing: PACK_COLUMN
+
+! lineW1
+Garp*lineW1.width: 80
+Garp*lineW1.height: 30
+Garp*lineW1.labelString:  
+
+! lineW2
+Garp*lineW2.height: 30
+Garp*lineW2.labelString:  
+
+! lineW3
+Garp*lineW3.height: 30
+Garp*lineW3.labelString:  
+
+! lineW4
+Garp*lineW4.height: 30
+Garp*lineW4.labelString:  
+
+! label191
+Garp*label191.childType: FRAME_TITLE_CHILD
+Garp*label191.labelString: Width
+
+! rowcol25
+Garp*rowcol25.numColumns: 2
+Garp*rowcol25.packing: PACK_COLUMN
+
+! lineT1
+Garp*lineT1.width: 80
+Garp*lineT1.height: 30
+Garp*lineT1.labelString:  
+
+! lineT2
+Garp*lineT2.labelString:  
+
+! lineT3
+Garp*lineT3.labelString:  
+
+! lineT4
+Garp*lineT4.labelString:  
+
+! lineT5
+Garp*lineT5.labelString:  
+
+! lineT6
+Garp*lineT6.labelString:  
+
+! lineT7
+Garp*lineT7.labelString:  
+
+! lineT8
+Garp*lineT8.labelString:  
+
+! lineT9
+Garp*lineT9.labelString:  
+
+! lineT10
+Garp*lineT10.labelString:  
+
+! label192
+Garp*label192.childType: FRAME_TITLE_CHILD
+Garp*label192.labelString: Type
+
+! rowcol26
+Garp*rowcol26.numColumns: 8
+Garp*rowcol26.orientation: HORIZONTAL
+Garp*rowcol26.packing: PACK_COLUMN
+
+! frame76
+Garp*frame76.width: 25
+Garp*frame76.height: 25
+Garp*frame76.shadowType: SHADOW_OUT
+
+! lineC1
+Garp*lineC1.width: 25
+Garp*lineC1.height: 25
+Garp*lineC1.labelString:  
+
+! frame77
+Garp*frame77.shadowType: SHADOW_OUT
+
+! lineC2
+Garp*lineC2.labelString:  
+
+! frame78
+Garp*frame78.shadowType: SHADOW_OUT
+
+! lineC3
+Garp*lineC3.labelString:  
+
+! frame79
+Garp*frame79.shadowType: SHADOW_OUT
+
+! lineC4
+Garp*lineC4.labelString:  
+
+! frame80
+Garp*frame80.shadowType: SHADOW_OUT
+
+! lineC5
+Garp*lineC5.labelString:  
+
+! frame81
+Garp*frame81.shadowType: SHADOW_OUT
+
+! lineC6
+Garp*lineC6.labelString:  
+
+! frame82
+Garp*frame82.shadowType: SHADOW_OUT
+
+! lineC7
+Garp*lineC7.labelString:  
+
+! frame83
+Garp*frame83.shadowType: SHADOW_OUT
+
+! lineC8
+Garp*lineC8.labelString:  
+
+! frame84
+Garp*frame84.shadowType: SHADOW_OUT
+
+! lineC9
+Garp*lineC9.labelString:  
+
+! frame85
+Garp*frame85.shadowType: SHADOW_OUT
+
+! lineC10
+Garp*lineC10.labelString:  
+
+! frame86
+Garp*frame86.shadowType: SHADOW_OUT
+
+! lineC11
+Garp*lineC11.labelString:  
+
+! frame87
+Garp*frame87.shadowType: SHADOW_OUT
+
+! lineC12
+Garp*lineC12.labelString:  
+
+! frame88
+Garp*frame88.shadowType: SHADOW_OUT
+
+! lineC13
+Garp*lineC13.labelString:  
+
+! frame89
+Garp*frame89.shadowType: SHADOW_OUT
+
+! lineC14
+Garp*lineC14.labelString:  
+
+! frame90
+Garp*frame90.shadowType: SHADOW_OUT
+
+! lineC15
+Garp*lineC15.labelString:  
+
+! frame91
+Garp*frame91.shadowType: SHADOW_OUT
+
+! lineC16
+Garp*lineC16.labelString:  
+
+! frame92
+Garp*frame92.shadowType: SHADOW_OUT
+
+! lineC17
+Garp*lineC17.labelString:  
+
+! frame93
+Garp*frame93.shadowType: SHADOW_OUT
+
+! lineC18
+Garp*lineC18.labelString:  
+
+! frame94
+Garp*frame94.shadowType: SHADOW_OUT
+
+! lineC19
+Garp*lineC19.labelString:  
+
+! frame95
+Garp*frame95.shadowType: SHADOW_OUT
+
+! lineC20
+Garp*lineC20.labelString:  
+
+! frame96
+Garp*frame96.shadowType: SHADOW_OUT
+
+! lineC21
+Garp*lineC21.labelString:  
+
+! frame97
+Garp*frame97.shadowType: SHADOW_OUT
+
+! lineC22
+Garp*lineC22.labelString:  
+
+! frame98
+Garp*frame98.shadowType: SHADOW_OUT
+
+! lineC23
+Garp*lineC23.labelString:  
+
+! frame99
+Garp*frame99.shadowType: SHADOW_OUT
+
+! lineC24
+Garp*lineC24.labelString:  
+
+! frame100
+Garp*frame100.shadowType: SHADOW_OUT
+
+! lineC25
+Garp*lineC25.labelString:  
+
+! frame101
+Garp*frame101.shadowType: SHADOW_OUT
+
+! lineC26
+Garp*lineC26.labelString:  
+
+! frame102
+Garp*frame102.shadowType: SHADOW_OUT
+
+! lineC27
+Garp*lineC27.labelString:  
+
+! frame103
+Garp*frame103.shadowType: SHADOW_OUT
+
+! lineC28
+Garp*lineC28.labelString:  
+
+! frame57
+Garp*frame57.shadowType: SHADOW_OUT
+
+! lineC29
+Garp*lineC29.labelString:  
+
+! frame60
+Garp*frame60.shadowType: SHADOW_OUT
+
+! lineC30
+Garp*lineC30.labelString:  
+
+! frame61
+Garp*frame61.shadowType: SHADOW_OUT
+
+! lineC31
+Garp*lineC31.labelString:  
+
+! frame62
+Garp*frame62.shadowType: SHADOW_OUT
+
+! lineC32
+Garp*lineC32.labelString:  
+
+! label193
+Garp*label193.childType: FRAME_TITLE_CHILD
+Garp*label193.labelString: Color
+
+! sampleLineW
+Garp*sampleLineW.width: 140
+Garp*sampleLineW.height: 30
+
+! label222
+Garp*label222.childType: FRAME_TITLE_CHILD
+Garp*label222.labelString: Sample
+
+
+! time_matching_shell
+Garp*time_matching_shell.title: Time Matching
+
+! time_matching_dialog
+Garp*time_matching_dialog.dialogType: DIALOG_TEMPLATE
+
+! button88
+Garp*button88.labelString: Close
+
+! tm_button1
+Garp*tm_button1.labelString: None
+
+! tm_button2
+Garp*tm_button2.labelString: Strict
+
+! tm_button3
+Garp*tm_button3.labelString: Closest
+
+! label131
+Garp*label131.childType: FRAME_TITLE_CHILD
+Garp*label131.labelString: Time Match
+
+! tm_button4
+Garp*tm_button4.labelString: All Times
+
+! tm_button5
+Garp*tm_button5.labelString: Analysis Only
+
+! label130
+Garp*label130.childType: FRAME_TITLE_CHILD
+Garp*label130.labelString: Model Times
+
+
+! sfc_model_shell_2
+Garp*sfc_model_shell_2.title: Define Station Parameters
+
+! sfc_model_dialog_2
+Garp*sfc_model_dialog_2.dialogType: DIALOG_TEMPLATE
+
+! button68
+Garp*button68.labelString: Close
+
+! label94
+Garp*label94.childType: FRAME_TITLE_CHILD
+Garp*label94.labelString: Station Layout
+
+! rowcol18
+Garp*rowcol18.numColumns: 5
+Garp*rowcol18.orientation: HORIZONTAL
+Garp*rowcol18.packing: PACK_COLUMN
+
+! label95
+Garp*label95.labelString:  
+
+! sfc_parm8
+Garp*sfc_parm8.columns: 4
+
+! label153
+Garp*label153.labelString:  
+
+! sfc_parm2
+Garp*sfc_parm2.columns: 4
+
+! sfc_parm10
+Garp*sfc_parm10.columns: 4
+
+! sfc_parm4
+Garp*sfc_parm4.columns: 4
+
+! sfc_parm3
+Garp*sfc_parm3.columns: 4
+
+! sfc_parm1
+Garp*sfc_parm1.columns: 4
+
+! sfc_parm5
+Garp*sfc_parm5.columns: 4
+
+! sfc_parm6
+Garp*sfc_parm6.columns: 4
+
+! sfc_parm11
+Garp*sfc_parm11.columns: 4
+
+! sfc_parm7
+Garp*sfc_parm7.columns: 4
+
+! label158
+Garp*label158.labelString:  
+
+! sfc_parm9
+Garp*sfc_parm9.columns: 4
+
+! label159
+Garp*label159.labelString:  
+
+! sfcparm_list
+Garp*sfcparm_listSW.sfcparm_list.height: 150
+Garp*sfcparm_listSW.sfcparm_list.selectionPolicy: SINGLE_SELECT
+Garp*sfcparm_listSW.sfcparm_list.listSizePolicy: CONSTANT
+
+! label160
+Garp*label160.childType: FRAME_TITLE_CHILD
+Garp*label160.labelString: Station Parameters
+
+! label161
+Garp*label161.labelString: Use the middle mouse button to drag\na parameter from the scrolled list\nto a textfield.
+
+! button67
+Garp*button67.labelString: Reset
+
+! sfc_marker_toggle
+Garp*sfc_marker_toggle.labelString: Marker
+
+! sfc_marker_om
+
+! sfc_marker_pm
+
+
+! log_shell
+Garp*log_shell.title: Garp Log
+
+! log_dialog
+Garp*log_dialog.dialogType: DIALOG_TEMPLATE
+
+! button2
+Garp*button2.labelString: Close
+
+! scrolledText1
+Garp*log_textSW.width: 700
+Garp*log_textSW.height: 200
+
+! log_text
+Garp*log_textSW.log_text.maxLength: 100000
+Garp*log_textSW.log_text.editMode: MULTI_LINE_EDIT
+
+
+! lw_pref_shell
+Garp*lw_pref_shell.title: Logging Window Preferences
+
+! lw_pref_dialog
+Garp*lw_pref_dialog.dialogType: DIALOG_TEMPLATE
+
+! button114
+Garp*button114.labelString: Display Log
+
+! button3
+Garp*button3.labelString: Close
+
+! lw_pref_error_0
+Garp*lw_pref_error_0.labelString: 0: Error Statements
+
+! lw_pref_error_1
+Garp*lw_pref_error_1.labelString: 1: Level 0 + Function Names
+
+! lw_pref_error_2
+Garp*lw_pref_error_2.labelString: 2: Level 1 + Function Information
+
+! lw_pref_error_3
+Garp*lw_pref_error_3.labelString: 3: Level 2 + Station Tables
+
+! label4
+Garp*label4.childType: FRAME_TITLE_CHILD
+Garp*label4.labelString: Verbose Level
+
+! lw_pref_log_1
+Garp*lw_pref_log_1.labelString: Standard Error
+
+! lw_pref_log_2
+Garp*lw_pref_log_2.labelString: Log Window
+
+! lw_pref_log_3
+Garp*lw_pref_log_3.labelString: File
+
+! label5
+Garp*label5.childType: FRAME_TITLE_CHILD
+Garp*label5.labelString: Log Messages
+
+
+! image_shell
+Garp*image_shell.title: Image Products
+
+! image_dialog
+Garp*image_dialog.dialogType: DIALOG_TEMPLATE
+
+! button5
+Garp*button5.labelString: Display & Close
+
+! button6
+Garp*button6.labelString: Display
+
+! button112
+Garp*button112.labelString: Refresh
+
+! button7
+Garp*button7.labelString: Close
+
+! frame3
+Garp*frame3.width: 600
+Garp*frame3.height: 150
+
+! label7
+Garp*label7.childType: FRAME_TITLE_CHILD
+Garp*label7.labelString: Data Source
+
+! image_source_sw
+Garp*image_source_sw.width: 600
+Garp*image_source_sw.height: 100
+Garp*image_source_sw.scrollingPolicy: AUTOMATIC
+
+! image_source_rc
+Garp*image_source_rc.numColumns: 4
+
+! label8
+Garp*label8.childType: FRAME_TITLE_CHILD
+Garp*label8.labelString: Data Scale
+
+! image_scale_sw
+Garp*image_scale_sw.width: 600
+Garp*image_scale_sw.height: 100
+Garp*image_scale_sw.scrollingPolicy: AUTOMATIC
+
+! image_scale_rc
+Garp*image_scale_rc.numColumns: 4
+Garp*image_scale_rc.packing: PACK_COLUMN
+
+! label9
+Garp*label9.childType: FRAME_TITLE_CHILD
+Garp*label9.labelString: Product Types
+
+! image_type_sw
+Garp*image_type_sw.width: 600
+Garp*image_type_sw.height: 100
+Garp*image_type_sw.scrollingPolicy: AUTOMATIC
+
+! image_type_rc
+Garp*image_type_rc.numColumns: 4
+
+! scrolledList1
+Garp*image_listSW.width: 200
+Garp*image_listSW.height: 300
+
+! image_list
+Garp*image_listSW.image_list.visibleItemCount: 14
+Garp*image_listSW.image_list.selectionPolicy: EXTENDED_SELECT
+Garp*image_listSW.image_list.scrollBarDisplayPolicy: STATIC
+Garp*image_listSW.image_list.listSizePolicy: CONSTANT
+
+! imageTimeListLabel
+Garp*imageTimeListLabel.childType: FRAME_TITLE_CHILD
+Garp*imageTimeListLabel.labelString: Available Times
+
+! colorbarDrawW
+Garp*colorbarDrawW.labelString: Color bar
+Garp*colorbarDrawW.marginLeft: 23
+Garp*colorbarDrawW.alignment: ALIGNMENT_BEGINNING
+
+
+! vp_option_shell
+Garp*vp_option_shell.title: Model Vertical Profile Options
+
+! vp_dialog_shell
+Garp*vp_dialog_shell.dialogType: DIALOG_TEMPLATE
+
+! button14
+Garp*button14.labelString: Close
+
+! vpt_linetype_om
+Garp*vpt_linetype_om.labelString: Type:
+
+! label17
+
+! vpt_linetype_pm
+
+! label18
+Garp*label18.childType: FRAME_TITLE_CHILD
+Garp*label18.labelString: Contour
+
+! vpt_vectorsym_om
+Garp*vpt_vectorsym_om.labelString: Type:
+
+! label19
+
+! vp_vectorsym_pm
+
+! label20
+Garp*label20.childType: FRAME_TITLE_CHILD
+Garp*label20.labelString: Vector Symbol
+
+! vp_scale_factor
+Garp*vp_scale_factor.columns: 4
+
+! label21
+Garp*label21.labelString: Factor:
+
+! label22
+Garp*label22.childType: FRAME_TITLE_CHILD
+Garp*label22.labelString: Scale
+
+! label23
+Garp*label23.labelString: Field Description:
+
+! vpt_description
+Garp*vpt_descriptionSW.vpt_description.width: 500
+Garp*vpt_descriptionSW.vpt_description.height: 100
+Garp*vpt_descriptionSW.vpt_description.editMode: MULTI_LINE_EDIT
+
+
+! vp_shell
+Garp*vp_shell.title: Model Vertical Profile
+
+! vp_dialog
+Garp*vp_dialog.dialogType: DIALOG_TEMPLATE
+
+! button15
+Garp*button15.labelString: Display & Close
+
+! button16
+Garp*button16.labelString: Display
+
+! button115
+Garp*button115.labelString: Refresh
+
+! button17
+Garp*button17.labelString: Close
+
+! button18
+Garp*button18.labelString: More >>
+
+! vpt_model_om
+
+! vpt_model_pm
+
+! vpt_vcoord_om
+
+! vpt_vcoord_pm
+
+! vpt_vcoord
+Garp*vpt_vcoord.columns: 4
+
+! rowcol23
+Garp*rowcol23.orientation: HORIZONTAL
+Garp*rowcol23.packing: PACK_COLUMN
+
+! label26
+Garp*label26.labelString: Level 1:
+
+! vpt_level1
+Garp*vpt_level1.columns: 6
+
+! label27
+Garp*label27.labelString: Level 2:
+
+! vpt_level2
+Garp*vpt_level2.columns: 6
+
+! label28
+Garp*label28.labelString: Position:
+
+! vpt_station
+
+! vpt_axistype_om
+Garp*vpt_axistype_om.labelString: Type:
+
+! label29
+
+! vpt_axistype_pm
+
+! button19
+Garp*button19.labelString: Info
+
+! modelVPTimeListLabel
+Garp*modelVPTimeListLabel.labelString: Available Times:
+
+! vpt_scalar_om
+Garp*vpt_scalar_om.labelString: Scalar:
+
+! label31
+
+! vpt_scalar_pm
+
+! vpt_vector_om
+Garp*vpt_vector_om.labelString: Vector:
+
+! label32
+
+! vpt_vector_pm
+
+! scrolledList4
+Garp*vpt_time_listSW.width: 200
+Garp*vpt_time_listSW.height: 300
+
+! vpt_time_list
+Garp*vpt_time_listSW.vpt_time_list.selectionPolicy: EXTENDED_SELECT
+Garp*vpt_time_listSW.vpt_time_list.listSizePolicy: CONSTANT
+
+! scrolledList5
+Garp*vpt_scalar_listSW.width: 200
+Garp*vpt_scalar_listSW.height: 300
+
+! vpt_scalar_list
+Garp*vpt_scalar_listSW.vpt_scalar_list.selectionPolicy: SINGLE_SELECT
+Garp*vpt_scalar_listSW.vpt_scalar_list.listSizePolicy: CONSTANT
+
+! scrolledList6
+Garp*vpt_vector_listSW.width: 200
+Garp*vpt_vector_listSW.height: 300
+
+! vpt_vector_list
+Garp*vpt_vector_listSW.vpt_vector_list.selectionPolicy: SINGLE_SELECT
+Garp*vpt_vector_listSW.vpt_vector_list.listSizePolicy: CONSTANT
+
+! vpt_fdf_label
+
+! vpt_fdf_text
+
+! radioBox3
+Garp*radioBox3.numColumns: 2
+Garp*radioBox3.spacing: 1
+
+! vpt_scalar_b
+Garp*vpt_scalar_b.labelString: Scalar
+
+! vpt_vector_b
+Garp*vpt_vector_b.labelString: Vector
+
+
+! th_option_shell
+Garp*th_option_shell.title: Model Time Height Options
+
+! th_option_dialog
+Garp*th_option_dialog.dialogType: DIALOG_TEMPLATE
+
+! button20
+Garp*button20.labelString: Close
+
+! tht_linetype_om
+Garp*tht_linetype_om.labelString: Type:
+
+! label33
+
+! tht_linetype_pm
+
+! tht_labelfreq_om
+Garp*tht_labelfreq_om.labelString: Label:
+
+! label34
+
+! tht_labelfreq_pm
+
+! rowcol1
+Garp*rowcol1.spacing: 18
+Garp*rowcol1.marginHeight: 10
+
+! label35
+Garp*label35.labelString: Interval:
+
+! label36
+Garp*label36.labelString: Minimum:
+
+! label37
+Garp*label37.labelString: Maximum:
+
+! tht_interval
+Garp*tht_interval.columns: 10
+
+! tht_minimum
+Garp*tht_minimum.columns: 10
+
+! tht_maximum
+Garp*tht_maximum.columns: 10
+
+! label38
+Garp*label38.childType: FRAME_TITLE_CHILD
+Garp*label38.labelString: Contour
+
+! tht_vectorsym_om
+Garp*tht_vectorsym_om.labelString: Symbol Type:
+
+! label39
+
+! th_vectorsym_pm
+
+! label40
+Garp*label40.childType: FRAME_TITLE_CHILD
+Garp*label40.labelString: Vector
+
+! label41
+Garp*label41.labelString: Factor:
+
+! th_scale_factor
+Garp*th_scale_factor.columns: 4
+
+! label42
+Garp*label42.childType: FRAME_TITLE_CHILD
+Garp*label42.labelString: Scale
+
+! tht_taxis_om
+Garp*tht_taxis_om.labelString: Direction:
+
+! label43
+
+! tht_taxis_pm
+
+! label44
+Garp*label44.childType: FRAME_TITLE_CHILD
+Garp*label44.labelString: Time Axis
+
+! label45
+Garp*label45.labelString: Field Description:
+
+! tht_description
+Garp*tht_descriptionSW.tht_description.width: 500
+Garp*tht_descriptionSW.tht_description.height: 100
+Garp*tht_descriptionSW.tht_description.editMode: MULTI_LINE_EDIT
+
+
+! th_shell
+Garp*th_shell.title: Model Time Height
+
+! th_dialog
+Garp*th_dialog.dialogType: DIALOG_TEMPLATE
+
+! button21
+Garp*button21.labelString: Display & Close
+
+! button22
+Garp*button22.labelString: Display
+
+! button116
+Garp*button116.labelString: Refresh
+
+! button23
+Garp*button23.labelString: Close
+
+! button24
+Garp*button24.labelString: More >>
+
+! tht_model_om
+
+! tht_model_pm
+
+! tht_vcoord_om
+
+! tht_vcoord_pm
+
+! tht_vcoord
+Garp*tht_vcoord.columns: 4
+
+! rowcol22
+Garp*rowcol22.orientation: HORIZONTAL
+Garp*rowcol22.packing: PACK_COLUMN
+
+! label48
+Garp*label48.labelString: Level 1:
+
+! tht_level1
+Garp*tht_level1.columns: 6
+
+! label49
+Garp*label49.labelString: Level 2:
+
+! tht_level2
+Garp*tht_level2.columns: 6
+
+! label50
+Garp*label50.labelString: Position:
+
+! tht_station
+
+! tht_axistype_om
+Garp*tht_axistype_om.labelString: Type:
+
+! label51
+
+! tht_axistype_pm
+
+! button25
+Garp*button25.labelString: Info
+
+! mdlTHTimeListLabel
+Garp*mdlTHTimeListLabel.labelString: Available Times:
+
+! tht_scalar_om
+Garp*tht_scalar_om.labelString: Scalar:
+
+! label53
+
+! tht_scalar_pm
+
+! tht_vector_om
+Garp*tht_vector_om.labelString: Vector:
+
+! label54
+
+! tht_vector_pm
+
+! scrolledList7
+Garp*tht_time_listSW.width: 200
+Garp*tht_time_listSW.height: 300
+
+! tht_time_list
+Garp*tht_time_listSW.tht_time_list.selectionPolicy: SINGLE_SELECT
+Garp*tht_time_listSW.tht_time_list.listSizePolicy: CONSTANT
+
+! scrolledList8
+Garp*tht_scalar_listSW.width: 200
+Garp*tht_scalar_listSW.height: 300
+
+! tht_scalar_list
+Garp*tht_scalar_listSW.tht_scalar_list.selectionPolicy: SINGLE_SELECT
+Garp*tht_scalar_listSW.tht_scalar_list.listSizePolicy: CONSTANT
+
+! scrolledList9
+Garp*tht_vector_listSW.width: 200
+Garp*tht_vector_listSW.height: 300
+
+! tht_vector_list
+Garp*tht_vector_listSW.tht_vector_list.selectionPolicy: SINGLE_SELECT
+Garp*tht_vector_listSW.tht_vector_list.listSizePolicy: CONSTANT
+
+! tht_fdf_label
+
+! tht_fdf_text
+
+! radioBox4
+Garp*radioBox4.numColumns: 2
+Garp*radioBox4.spacing: 1
+
+! tht_scalar_b
+Garp*tht_scalar_b.labelString: Scalar
+
+! tht_vector_b
+Garp*tht_vector_b.labelString: Vector
+
+
+! general_pref_shell
+Garp*general_pref_shell.title: Depictable Preferences
+
+! general_pref_dialog
+Garp*general_pref_dialog.dialogType: DIALOG_TEMPLATE
+
+! general_pref_apply
+Garp*general_pref_apply.labelString: Apply
+
+! general_pref_close
+Garp*general_pref_close.labelString: Close
+
+! rowcol27
+Garp*rowcol27.numColumns: 4
+Garp*rowcol27.spacing: 10
+Garp*rowcol27.marginHeight: 0
+Garp*rowcol27.orientation: HORIZONTAL
+Garp*rowcol27.packing: PACK_COLUMN
+Garp*rowcol27.entryAlignment: ALIGNMENT_CENTER
+
+! label55
+Garp*label55.childType: FRAME_TITLE_CHILD
+Garp*label55.labelString: Font Size
+
+! radioBox5
+Garp*radioBox5.marginHeight: 1
+Garp*radioBox5.orientation: HORIZONTAL
+
+! toggle1
+Garp*toggle1.labelString:  
+
+! toggle2
+Garp*toggle2.labelString:  
+
+! toggle3
+Garp*toggle3.labelString:  
+
+! toggle4
+Garp*toggle4.labelString:  
+
+! toggle5
+Garp*toggle5.labelString:  
+
+! label56
+Garp*label56.childType: FRAME_TITLE_CHILD
+Garp*label56.labelString: Symbol Size
+
+! radioBox6
+Garp*radioBox6.orientation: HORIZONTAL
+
+! toggle6
+Garp*toggle6.labelString:  
+
+! toggle7
+Garp*toggle7.labelString:  
+
+! toggle8
+Garp*toggle8.labelString:  
+
+! toggle9
+Garp*toggle9.labelString:  
+
+! toggle10
+Garp*toggle10.labelString:  
+
+! label57
+Garp*label57.childType: FRAME_TITLE_CHILD
+Garp*label57.labelString: Symbol Packing
+
+! radioBox7
+Garp*radioBox7.marginHeight: 5
+Garp*radioBox7.orientation: HORIZONTAL
+
+! toggle11
+Garp*toggle11.labelString:  
+
+! toggle12
+Garp*toggle12.labelString:  
+
+! toggle13
+Garp*toggle13.labelString:  
+
+! toggle14
+Garp*toggle14.labelString:  
+
+! toggle15
+Garp*toggle15.labelString:  
+
+! label58
+Garp*label58.childType: FRAME_TITLE_CHILD
+Garp*label58.labelString: Symbol Width
+
+! radioBox8
+Garp*radioBox8.marginHeight: 5
+Garp*radioBox8.orientation: HORIZONTAL
+
+! toggle16
+Garp*toggle16.labelString:  
+
+! toggle17
+Garp*toggle17.labelString:  
+
+! toggle18
+Garp*toggle18.labelString:  
+
+! toggle19
+Garp*toggle19.labelString:  
+
+! toggle20
+Garp*toggle20.labelString:  
+
+
+! xsec_option_shell
+Garp*xsec_option_shell.title: Model Cross-Section Options 
+
+! xsec_option_dialog
+Garp*xsec_option_dialog.dialogType: DIALOG_TEMPLATE
+
+! button26
+Garp*button26.labelString: Close
+
+! xs_line_toggle2
+Garp*xs_line_toggle2.labelString: Contour
+
+! xs_linetype_om
+Garp*xs_linetype_om.labelString: Type:
+
+! label59
+
+! xs_linetype_pm
+
+! xs_labelfreq_om
+Garp*xs_labelfreq_om.labelString: Label:
+
+! label60
+
+! xs_labelfreq_pm
+
+! rowcol3
+Garp*rowcol3.spacing: 18
+Garp*rowcol3.marginHeight: 10
+
+! label61
+Garp*label61.labelString: Interval:
+
+! label62
+Garp*label62.labelString: Minimum:
+
+! label63
+Garp*label63.labelString: Maximum:
+
+! xs_interval
+Garp*xs_interval.columns: 10
+
+! xs_minimum
+Garp*xs_minimum.columns: 10
+
+! xs_maximum
+Garp*xs_maximum.columns: 10
+
+! label64
+Garp*label64.childType: FRAME_TITLE_CHILD
+Garp*label64.labelString: Contour
+
+! xs_fill_toggle2
+Garp*xs_fill_toggle2.labelString: Color Fill
+Garp*optionMenu6.labelString: Table:
+
+! label65
+
+! xs_colorfill_pm
+
+! rowcol5
+Garp*rowcol5.spacing: 18
+Garp*rowcol5.marginHeight: 10
+
+! label66
+Garp*label66.labelString: Interval:
+
+! label67
+Garp*label67.labelString: Minimum:
+
+! label68
+Garp*label68.labelString: Maximum:
+
+! xs_fint
+Garp*xs_fint.columns: 10
+
+! xs_fmin
+Garp*xs_fmin.columns: 10
+
+! xs_fmax
+Garp*xs_fmax.columns: 10
+
+! label69
+Garp*label69.childType: FRAME_TITLE_CHILD
+Garp*label69.labelString: Fill
+
+! xs_vectorsym_om
+Garp*xs_vectorsym_om.labelString: Symbol Type:
+
+! label70
+
+! xs_vectorsym_pm
+
+! label71
+Garp*label71.childType: FRAME_TITLE_CHILD
+Garp*label71.labelString: Vector
+
+! xs_scale_factor
+Garp*xs_scale_factor.columns: 4
+
+! label72
+Garp*label72.labelString: Factor:
+
+! label73
+Garp*label73.childType: FRAME_TITLE_CHILD
+Garp*label73.labelString: Scale
+
+! label74
+Garp*label74.labelString: Field Description:
+
+! vcs_description
+Garp*vcs_descriptionSW.vcs_description.width: 500
+Garp*vcs_descriptionSW.vcs_description.height: 100
+Garp*vcs_descriptionSW.vcs_description.editMode: MULTI_LINE_EDIT
+
+
+! prf_shell
+Garp*prf_shell.title: Wind Profiler
+
+! prf_dialog
+Garp*prf_dialog.dialogType: DIALOG_TEMPLATE
+
+! button27
+Garp*button27.labelString: Display & Close
+
+! button28
+Garp*button28.labelString: Display
+
+! button120
+Garp*button120.labelString: Refresh
+
+! button29
+Garp*button29.labelString: Close
+
+! label75
+Garp*label75.labelString: Stations:
+
+! wpf_sw
+Garp*wpf_station_listSW.width: 300
+Garp*wpf_station_listSW.height: 300
+
+! wpf_station_list
+Garp*wpf_station_listSW.wpf_station_list.selectionPolicy: EXTENDED_SELECT
+Garp*wpf_station_listSW.wpf_station_list.listSizePolicy: CONSTANT
+
+! toggle21
+Garp*toggle21.labelString: Speed
+
+! label76
+Garp*label76.childType: FRAME_TITLE_CHILD
+Garp*label76.labelString: Color Code
+
+! rowcol7
+Garp*rowcol7.numColumns: 2
+Garp*rowcol7.packing: PACK_COLUMN
+
+! label77
+Garp*label77.labelString: Bottom ( meters )
+
+! label78
+Garp*label78.labelString: Top ( meters )
+
+! label1
+Garp*label1.labelString: Increment ( meters )
+
+! label79
+Garp*label79.labelString: End Time ( YYYYMMDD/HHMM )
+
+! label80
+Garp*label80.labelString: Time Period ( hours )
+
+! label81
+Garp*label81.labelString: Time Interval ( minutes )
+
+! wpf_bottom
+Garp*wpf_bottom.columns: 12
+Garp*wpf_bottom.value: 0
+
+! wpf_top
+Garp*wpf_top.columns: 12
+Garp*wpf_top.value: 10000
+
+! wpf_incr
+Garp*wpf_incr.value: 1000
+
+! wpf_end_time
+Garp*wpf_end_time.columns: 12
+
+! wpf_duration
+Garp*wpf_duration.columns: 12
+Garp*wpf_duration.value: 24
+
+! wpf_time_int
+Garp*wpf_time_int.columns: 12
+Garp*wpf_time_int.value: 60
+
+
+! model_level_shell
+Garp*model_level_shell.title: Model Levels
+
+! model_level_dialog
+Garp*model_level_dialog.dialogType: DIALOG_TEMPLATE
+
+! button30
+Garp*button30.labelString: Close
+
+! model_level_form
+Garp*model_level_form.initialResourcesPersistent: false
+
+! model_level_form1
+Garp*model_level_form1.initialResourcesPersistent: false
+
+! model_layer_form1
+Garp*model_layer_form1.initialResourcesPersistent: false
+
+
+! cross_section_shell
+Garp*cross_section_shell.title: Model Cross-Section
+
+! cross_section_dialog
+Garp*cross_section_dialog.dialogType: DIALOG_TEMPLATE
+
+! button31
+Garp*button31.labelString: Display & Close
+
+! button32
+Garp*button32.labelString: Display
+
+! button121
+Garp*button121.labelString: Refresh
+
+! button33
+Garp*button33.labelString: Close
+
+! button34
+Garp*button34.labelString: More >>
+
+! vcs_model_om
+
+! vcs_model_pm
+
+! vcs_vcoord_om
+
+! vcs_vcoord_pm
+
+! vcs_vcoord
+Garp*vcs_vcoord.columns: 4
+
+! rowcol20
+Garp*rowcol20.numColumns: 1
+Garp*rowcol20.orientation: HORIZONTAL
+Garp*rowcol20.packing: PACK_COLUMN
+
+! label86
+Garp*label86.labelString: Level 1:
+
+! vcs_level1
+Garp*vcs_level1.columns: 6
+
+! label87
+Garp*label87.labelString: Level 2:
+
+! vcs_level2
+Garp*vcs_level2.columns: 6
+
+! label88
+Garp*label88.labelString: Cross Section:
+
+! vcs_xsection
+
+! vcs_axistype_om
+Garp*vcs_axistype_om.labelString: Type:
+
+! label89
+
+! vcs_axistype_pm
+
+! xs_line_toggle1
+Garp*xs_line_toggle1.labelString: Contour
+
+! xs_fill_toggle1
+Garp*xs_fill_toggle1.labelString: Color Fill
+
+! label90
+Garp*label90.childType: FRAME_TITLE_CHILD
+Garp*label90.labelString: Plot
+
+! button35
+Garp*button35.labelString: Info
+
+! mdlCSTimeListLabel
+Garp*mdlCSTimeListLabel.labelString: Available Times:
+
+! vcs_scalar_om
+Garp*vcs_scalar_om.labelString: Scalar:
+
+! label92
+
+! vcs_scalar_pm
+
+! vcs_vector_om
+Garp*vcs_vector_om.labelString: Vector:
+
+! label93
+
+! vcs_vector_pm
+
+! vcs_time_sw
+Garp*vcs_time_listSW.width: 200
+Garp*vcs_time_listSW.height: 300
+
+! vcs_time_list
+Garp*vcs_time_listSW.vcs_time_list.selectionPolicy: EXTENDED_SELECT
+Garp*vcs_time_listSW.vcs_time_list.listSizePolicy: CONSTANT
+
+! vcs_scalar_sw
+Garp*vcs_scalar_listSW.width: 200
+Garp*vcs_scalar_listSW.height: 300
+
+! vcs_scalar_list
+Garp*vcs_scalar_listSW.vcs_scalar_list.selectionPolicy: SINGLE_SELECT
+Garp*vcs_scalar_listSW.vcs_scalar_list.listSizePolicy: CONSTANT
+
+! vcs_vector_sw
+Garp*vcs_vector_listSW.width: 200
+Garp*vcs_vector_listSW.height: 300
+
+! vcs_vector_list
+Garp*vcs_vector_listSW.vcs_vector_list.selectionPolicy: SINGLE_SELECT
+Garp*vcs_vector_listSW.vcs_vector_list.listSizePolicy: CONSTANT
+
+! vcs_fdf_label
+
+! vcs_fdf_text
+
+! radioBox10
+Garp*radioBox10.numColumns: 2
+Garp*radioBox10.spacing: 1
+
+! vcs_scalar_b
+Garp*vcs_scalar_b.labelString: Scalar
+
+! vcs_vector_b
+Garp*vcs_vector_b.labelString: Vector
+
+
+! dw_pref_shell
+Garp*dw_pref_shell.title: Display Window Preferences
+
+! dw_pref_dialog
+Garp*dw_pref_dialog.dialogType: DIALOG_TEMPLATE
+
+! button36
+Garp*button36.labelString: Close
+
+! toggle22
+Garp*toggle22.labelString: Plot fills window area
+
+! toggle26
+Garp*toggle26.labelString: Reset when loading images
+
+! toggle25
+Garp*toggle25.labelString: Display partial frames\n
+
+
+! upa_model_shell
+Garp*upa_model_shell.title: Upper-Air Station
+
+! upa_model_dialog
+Garp*upa_model_dialog.dialogType: DIALOG_TEMPLATE
+
+! button72
+Garp*button72.labelString: Close
+
+! upa_temp
+Garp*upa_temp.labelString: Temperature\n (C)
+
+! upa_dwpt
+Garp*upa_dwpt.labelString: Dew Point\nDepression (C)
+
+! upa_stid
+Garp*upa_stid.labelString: Station Identifier
+
+! upa_height
+Garp*upa_height.labelString: Geopotential Height (m)
+
+! upa_height_ch
+Garp*upa_height_ch.labelString: 12 hr Height Change (m)
+
+! button73
+Garp*button73.labelType: PIXMAP
+
+! upa_wind
+Garp*upa_wind.labelString: Wind
+
+! upa_knots
+Garp*upa_knots.labelString: knots
+
+! upa_ms
+Garp*upa_ms.labelString: m/s
+
+! label115
+Garp*label115.childType: FRAME_TITLE_CHILD
+Garp*label115.labelString: Units
+
+! upa_barb
+Garp*upa_barb.labelString: barb
+
+! upa_arrow
+Garp*upa_arrow.labelString: arrow
+
+! label116
+Garp*label116.childType: FRAME_TITLE_CHILD
+Garp*label116.labelString: Type
+
+
+! upa_profile_shell
+Garp*upa_profile_shell.title: Upper-Air Vertical Profile
+
+! upa_profile_dialog
+Garp*upa_profile_dialog.dialogType: DIALOG_TEMPLATE
+
+! button8
+Garp*button8.labelString: Display & Close
+
+! button9
+Garp*button9.labelString: Display
+
+! button113
+Garp*button113.labelString: Refresh
+
+! button10
+Garp*button10.labelString: Close
+
+! upf_projection_om
+Garp*upf_projection_om.labelString: View:
+
+! label11
+
+! upf_projection_b
+Garp*upf_projection_b.labelString: Vertical
+
+! button11
+Garp*button11.labelString: Plan
+
+! button12
+Garp*button12.labelString: Skew-T
+
+! button13
+Garp*button13.labelString: Stuve
+
+! upf_time_filter
+Garp*upf_time_filter.labelString: 00Z & 12Z Times Only
+
+! upaprofTimeListLabel
+Garp*upaprofTimeListLabel.labelString: Available Times:
+
+! scrolledList2
+Garp*upf_listSW.width: 200
+Garp*upf_listSW.height: 300
+
+! upf_list
+Garp*upf_listSW.upf_list.selectionPolicy: EXTENDED_SELECT
+Garp*upf_listSW.upf_list.scrollBarDisplayPolicy: AS_NEEDED
+Garp*upf_listSW.upf_list.listSizePolicy: CONSTANT
+
+! label14
+Garp*label14.labelString: Stations:
+
+! upf_station_list
+Garp*upf_station_listSW.upf_station_list.width: 400
+Garp*upf_station_listSW.upf_station_list.height: 200
+Garp*upf_station_listSW.upf_station_list.selectionPolicy: EXTENDED_SELECT
+Garp*upf_station_listSW.upf_station_list.scrollBarDisplayPolicy: STATIC
+Garp*upf_station_listSW.upf_station_list.listSizePolicy: CONSTANT
+
+! upf_linetype_om
+Garp*upf_linetype_om.labelString:  
+
+! label15
+
+! upf_linetype_pm
+
+! label16
+Garp*label16.childType: FRAME_TITLE_CHILD
+Garp*label16.labelString: Line Type
+
+
+! upa_shell
+Garp*upa_shell.title: Upper-Air Station
+
+! upa_dialog
+Garp*upa_dialog.dialogType: DIALOG_TEMPLATE
+
+! button74
+Garp*button74.labelString: Display & Close
+
+! button75
+Garp*button75.labelString: Display
+
+! button122
+Garp*button122.labelString: Refresh
+
+! button76
+Garp*button76.labelString: Close
+
+! upa_projection_om
+Garp*upa_projection_om.labelString: Type:
+
+! label117
+
+! upa_projection_b
+Garp*upa_projection_b.labelString: Plan
+
+! button77
+Garp*button77.labelString: Vertical
+
+! button78
+Garp*button78.labelString: Station Layout
+
+! button79
+Garp*button79.labelString: Pressure Level
+
+! upa_level_label
+Garp*upa_level_label.labelString: 500 mb
+
+! upa_time_filter
+Garp*upa_time_filter.labelString: 00Z & 12Z Times Only
+
+! upaTimeListLabel
+Garp*upaTimeListLabel.labelString: Available Times:
+
+! upa_time_sw
+Garp*upa_time_listSW.width: 200
+Garp*upa_time_listSW.height: 300
+
+! upa_time_list
+Garp*upa_time_listSW.upa_time_list.selectionPolicy: EXTENDED_SELECT
+Garp*upa_time_listSW.upa_time_list.scrollBarDisplayPolicy: AS_NEEDED
+Garp*upa_time_listSW.upa_time_list.listSizePolicy: CONSTANT
+
+
+! sat_enhancement_shell
+Garp*sat_enhancement_shell.title: Enhancement
+
+! sat_enhancement_dialog
+Garp*sat_enhancement_dialog.dialogType: DIALOG_TEMPLATE
+
+! button80
+Garp*button80.labelString: Close
+
+! sat_enhance_sw
+Garp*sat_enhance_listSW.width: 180
+Garp*sat_enhance_listSW.height: 225
+
+! sat_enhance_list
+Garp*sat_enhance_listSW.sat_enhance_list.selectionPolicy: SINGLE_SELECT
+Garp*sat_enhance_listSW.sat_enhance_list.scrollBarDisplayPolicy: STATIC
+Garp*sat_enhance_listSW.sat_enhance_list.listSizePolicy: CONSTANT
+
+! sat_enhance_but
+Garp*sat_enhance_but.labelString: Retain
+
+! sat_fade_scale
+Garp*sat_fade_scale.width: 120
+Garp*sat_fade_scale.titleString:        Fade
+Garp*sat_fade_scale.value: 50
+Garp*sat_fade_scale.orientation: HORIZONTAL
+Garp*sat_fade_scale.scaleMultiple: 1
+
+! sat_roll_scale
+Garp*sat_roll_scale.width: 120
+Garp*sat_roll_scale.titleString:         Roll
+Garp*sat_roll_scale.orientation: HORIZONTAL
+Garp*sat_roll_scale.scaleMultiple: 1
+
+! invert_b
+Garp*invert_b.labelString: Invert
+
+! reset_lut_but
+Garp*reset_lut_but.labelString: Reset Lut
+
+
+! rad_overlay_shell
+Garp*rad_overlay_shell.title: Radar Range Rings
+
+! rad_overlay_dialog
+Garp*rad_overlay_dialog.dialogType: DIALOG_TEMPLATE
+
+! button81
+Garp*button81.labelString: Display
+
+! button82
+Garp*button82.labelString: Close
+
+! button83
+Garp*button83.labelString: kilometers
+
+! button84
+Garp*button84.labelString: miles
+
+! button85
+Garp*button85.labelString: nautical miles
+
+! rowcol13
+Garp*rowcol13.orientation: HORIZONTAL
+
+! label120
+Garp*label120.labelString: Number of rings:
+
+! rring_number
+Garp*rring_number.columns: 3
+Garp*rring_number.value: 1
+
+! rowcol14
+Garp*rowcol14.numColumns: 2
+Garp*rowcol14.orientation: HORIZONTAL
+Garp*rowcol14.packing: PACK_COLUMN
+
+! label121
+Garp*label121.labelString: Minimum:
+
+! rring_minimum
+Garp*rring_minimum.columns: 4
+Garp*rring_minimum.value: 230
+
+! label122
+Garp*label122.labelString: Increment:
+
+! rring_increment
+Garp*rring_increment.columns: 4
+Garp*rring_increment.value: 230
+
+! rring_allstid
+Garp*rring_allstid.labelString: All stations
+
+! rring_onestid
+Garp*rring_onestid.labelString: Single
+
+! label123
+Garp*label123.labelString: Station ID:
+
+! rring_stid
+Garp*rring_stid.columns: 3
+
+! label124
+Garp*label124.childType: FRAME_TITLE_CHILD
+Garp*label124.labelString: Radar Range Ring
+
+
+! stn_overlay_shell
+Garp*stn_overlay_shell.title: Station Overlay
+
+! stn_overlay_dialog
+Garp*stn_overlay_dialog.dialogType: DIALOG_TEMPLATE
+
+! button86
+Garp*button86.labelString: Display
+
+! button87
+Garp*button87.labelString: Close
+
+! bak_station_om
+Garp*bak_station_om.labelString: Type:
+
+! label125
+
+! bak_station_pm
+
+! bak_parm_om
+Garp*bak_parm_om.labelString: Identifier:
+
+! label126
+
+! bak_parm_pm
+
+! label127
+Garp*label127.childType: FRAME_TITLE_CHILD
+Garp*label127.labelString: Station
+
+! mbg_circle
+Garp*mbg_circle.labelString: circle
+
+! mbg_triangle
+Garp*mbg_triangle.labelString: triangle
+
+! mbg_box
+Garp*mbg_box.labelString: box
+
+! mbg_diamond
+Garp*mbg_diamond.labelString: diamond
+
+! mbg_star
+Garp*mbg_star.labelString: star
+
+! label128
+Garp*label128.childType: FRAME_TITLE_CHILD
+Garp*label128.labelString: Marker
+
+! label129
+Garp*label129.childType: FRAME_TITLE_CHILD
+Garp*label129.labelString: Display
+
+! mbg_stid
+Garp*mbg_stid.labelString: Station Identifier
+
+! mbg_marker
+Garp*mbg_marker.labelString: Marker
+
+
+! point_plot_shell
+Garp*point_plot_shell.title: Surface Observations
+
+! point_plot_dialog
+Garp*point_plot_dialog.dialogType: DIALOG_TEMPLATE
+
+! button89
+Garp*button89.labelString: Display & Close
+
+! button90
+Garp*button90.labelString: Display
+
+! button123
+Garp*button123.labelString: Refresh
+
+! button91
+Garp*button91.labelString: Close
+
+! sfc_type_om
+Garp*sfc_type_om.labelString: Scale:
+
+! label132
+
+! sfc_type_pm
+
+! ss_layout
+Garp*ss_layout.labelString: Station Layout
+
+! ssm_color
+Garp*ssm_color.labelString: Multi-color
+
+! sfcTimeListLabel
+Garp*sfcTimeListLabel.labelString: Available Times:
+
+! sfc_time_sw
+Garp*sfc_time_listSW.width: 200
+Garp*sfc_time_listSW.height: 300
+
+! pd_vert_scrollbar
+
+! sfc_time_list
+Garp*sfc_time_listSW.sfc_time_list.selectionPolicy: EXTENDED_SELECT
+Garp*sfc_time_listSW.sfc_time_list.scrollBarDisplayPolicy: STATIC
+Garp*sfc_time_listSW.sfc_time_list.listSizePolicy: CONSTANT
+
+
+! garea_shell
+Garp*garea_shell.title: Define Area
+
+! garea_dialog
+Garp*garea_dialog.dialogType: DIALOG_TEMPLATE
+
+! button95
+Garp*button95.labelString: Apply
+
+! button96
+Garp*button96.labelString: Close
+
+! label134
+Garp*label134.labelString: Define Graphics Area:
+
+! label135
+Garp*label135.labelString: For example: 10;-130;50;-30
+
+! garea_textfield
+
+! label136
+Garp*label136.labelString: Define Map Projection:
+
+! label137
+Garp*label137.labelString: For example: NPS
+
+! proj_textfield
+
+
+! animation_shell
+Garp*animation_shell.title: Animation Preferences
+
+! animation_dialog
+Garp*animation_dialog.dialogType: DIALOG_TEMPLATE
+
+! button97
+Garp*button97.labelString: Close
+
+! animation_form
+
+! animation_frame
+
+! label138
+Garp*label138.childType: FRAME_TITLE_CHILD
+Garp*label138.labelString: Frame
+
+! label139
+Garp*label139.labelString: Current:
+
+! current_frame
+Garp*current_frame.labelString: 0
+
+! remove_frame_b
+Garp*remove_frame_b.labelString: Remove
+
+! undo_frame_b
+Garp*undo_frame_b.labelString: Undo
+
+! label140
+Garp*label140.childType: FRAME_TITLE_CHILD
+Garp*label140.labelString: Edit
+
+! dwell_first
+Garp*dwell_first.titleString:         After First Frame
+Garp*dwell_first.minimum: 0
+Garp*dwell_first.maximum: 100
+Garp*dwell_first.value: 0
+Garp*dwell_first.orientation: HORIZONTAL
+Garp*dwell_first.processingDirection: MAX_ON_LEFT
+Garp*dwell_first.decimalPoints: 2
+Garp*dwell_first.scaleMultiple: 1
+
+! dwell_middle
+Garp*dwell_middle.titleString:         Between Frames
+Garp*dwell_middle.minimum: 0
+Garp*dwell_middle.maximum: 100
+Garp*dwell_middle.value: 0
+Garp*dwell_middle.orientation: HORIZONTAL
+Garp*dwell_middle.processingDirection: MAX_ON_LEFT
+Garp*dwell_middle.decimalPoints: 2
+Garp*dwell_middle.scaleMultiple: 1
+
+! dwell_last
+Garp*dwell_last.titleString:         After Final Frame
+Garp*dwell_last.minimum: 0
+Garp*dwell_last.maximum: 100
+Garp*dwell_last.value: 0
+Garp*dwell_last.orientation: HORIZONTAL
+Garp*dwell_last.processingDirection: MAX_ON_LEFT
+Garp*dwell_last.decimalPoints: 2
+Garp*dwell_last.scaleMultiple: 1
+
+! label141
+Garp*label141.childType: FRAME_TITLE_CHILD
+Garp*label141.labelString: Pause Settings
+
+! rowcol15
+Garp*rowcol15.numColumns: 1
+Garp*rowcol15.orientation: HORIZONTAL
+Garp*rowcol15.packing: PACK_TIGHT
+
+! button98
+Garp*button98.labelString: 1
+
+! button99
+Garp*button99.labelString: 2
+
+! button100
+Garp*button100.labelString: 3
+
+! button101
+Garp*button101.labelString: 4
+
+! button102
+Garp*button102.labelString: 5
+
+! label142
+Garp*label142.labelString: Slow
+
+! label143
+Garp*label143.labelString: Fast
+
+! rowcol16
+Garp*rowcol16.x: 1
+Garp*rowcol16.y: 65
+Garp*rowcol16.numColumns: 1
+Garp*rowcol16.spacing: 10
+Garp*rowcol16.marginWidth: 0
+Garp*rowcol16.marginHeight: 0
+Garp*rowcol16.orientation: HORIZONTAL
+Garp*rowcol16.packing: PACK_COLUMN
+
+! anim_loop_backward
+Garp*anim_loop_backward.width: 15
+Garp*anim_loop_backward.height: 15
+Garp*anim_loop_backward.labelType: PIXMAP
+
+! anim_loop_forward
+Garp*anim_loop_forward.width: 15
+Garp*anim_loop_forward.height: 15
+Garp*anim_loop_forward.labelType: PIXMAP
+
+! anim_loop_forward_backward
+Garp*anim_loop_forward_backward.width: 15
+Garp*anim_loop_forward_backward.height: 15
+Garp*anim_loop_forward_backward.labelType: PIXMAP
+
+! anim_step_backward
+Garp*anim_step_backward.width: 15
+Garp*anim_step_backward.height: 15
+Garp*anim_step_backward.labelType: PIXMAP
+
+! anim_stop_loop
+Garp*anim_stop_loop.width: 15
+Garp*anim_stop_loop.height: 15
+Garp*anim_stop_loop.labelType: PIXMAP
+
+! anim_step_forward
+Garp*anim_step_forward.width: 15
+Garp*anim_step_forward.height: 15
+Garp*anim_step_forward.labelType: PIXMAP
+
+! label144
+Garp*label144.childType: FRAME_TITLE_CHILD
+Garp*label144.labelString: Animation Speed
+
+
+! grid_option_shell
+Garp*grid_option_shell.title: Model Plan View Options
+
+! grid_option_dialog
+Garp*grid_option_dialog.dialogType: DIALOG_TEMPLATE
+
+! button37
+Garp*button37.labelString: Close
+
+! hs_line_toggle2
+Garp*hs_line_toggle2.labelString: Line   or
+
+! hs_value_toggle
+Garp*hs_value_toggle.labelString: Value
+
+! hs_linetype_om
+Garp*hs_linetype_om.labelString: Type:
+
+! label96
+
+! hs_linetype_pm
+
+! hs_labelfreq_om
+Garp*hs_labelfreq_om.labelString: Label:
+
+! label97
+
+! hs_labelfreq_pm
+
+! rowcol8
+Garp*rowcol8.spacing: 18
+Garp*rowcol8.marginHeight: 10
+
+! label98
+Garp*label98.labelString: Interval:
+
+! label99
+Garp*label99.labelString: Minimum:
+
+! label100
+Garp*label100.labelString: Maximum:
+
+! hs_interval
+Garp*hs_interval.columns: 10
+
+! hs_minimum
+Garp*hs_minimum.columns: 10
+
+! hs_maximum
+Garp*hs_maximum.columns: 10
+
+! label101
+Garp*label101.childType: FRAME_TITLE_CHILD
+Garp*label101.labelString: Contour
+
+! hs_fill_toggle2
+Garp*hs_fill_toggle2.labelString: Color Fill
+Garp*optionMenu9.labelString: Table:
+
+! label102
+
+! hs_colorfill_pm
+
+! rowcol10
+Garp*rowcol10.spacing: 18
+Garp*rowcol10.marginHeight: 10
+
+! label103
+Garp*label103.labelString: Interval:
+
+! label104
+Garp*label104.labelString: Minimum:
+
+! label105
+Garp*label105.labelString: Maximum:
+
+! hs_fint
+Garp*hs_fint.columns: 10
+
+! hs_fmin
+Garp*hs_fmin.columns: 10
+
+! hs_fmax
+Garp*hs_fmax.columns: 10
+
+! label106
+Garp*label106.childType: FRAME_TITLE_CHILD
+Garp*label106.labelString: Fill
+
+! hs_hilow_toggle2
+Garp*hs_hilow_toggle2.labelString: Hi/Low Symbol
+
+! label107
+Garp*label107.childType: FRAME_TITLE_CHILD
+Garp*label107.labelString: Symbol
+
+! grd_vectorsym_om
+Garp*grd_vectorsym_om.labelString: Symbol Type:
+
+! label108
+
+! grd_vectorsym_pm
+
+! label109
+Garp*label109.childType: FRAME_TITLE_CHILD
+Garp*label109.labelString: Vector
+
+! label110
+Garp*label110.labelString: Factor:
+
+! hs_scale_factor
+Garp*hs_scale_factor.columns: 4
+
+! label111
+Garp*label111.childType: FRAME_TITLE_CHILD
+Garp*label111.labelString: Scale
+
+! label112
+Garp*label112.labelString: Field Description:
+
+! grd_description
+Garp*grd_descriptionSW.grd_description.width: 500
+Garp*grd_descriptionSW.grd_description.height: 100
+Garp*grd_descriptionSW.grd_description.editMode: MULTI_LINE_EDIT
+
+
+! horiz_grid_shell
+Garp*horiz_grid_shell.title: Model Plan View
+
+! horiz_grid_dialog
+Garp*horiz_grid_dialog.dialogType: DIALOG_TEMPLATE
+
+! button103
+Garp*button103.labelString: Display & Close
+
+! button104
+Garp*button104.labelString: Display
+
+! button124
+Garp*button124.labelString: Refresh
+
+! button105
+Garp*button105.labelString: Close
+
+! button106
+Garp*button106.labelString: More >>
+
+! horiz_grid_form
+
+! button107
+Garp*button107.labelString: Info
+
+! hs_line_toggle1
+Garp*hs_line_toggle1.labelString: Contour
+
+! hs_fill_toggle1
+Garp*hs_fill_toggle1.labelString: Color Fill
+
+! hs_hilow_toggle1
+Garp*hs_hilow_toggle1.labelString: Hi/Low Symbol
+
+! label145
+Garp*label145.childType: FRAME_TITLE_CHILD
+Garp*label145.labelString: Plot
+
+! grd_model_om
+Garp*grd_model_om.labelString:  
+
+! label146
+
+! grd_model_pm
+
+! grd_vcoord_om
+
+! grd_vcoord_pm
+
+! model_vcoord
+Garp*model_vcoord.columns: 4
+
+! hs_level1_b
+Garp*hs_level1_b.labelString: Level 1
+
+! hs_level2_b
+Garp*hs_level2_b.labelString: Level 2
+
+! model_level1_label
+Garp*model_level1_label.columns: 6
+
+! model_level2_label
+Garp*model_level2_label.columns: 6
+
+! grdTimeListLabel
+Garp*grdTimeListLabel.labelString: Available Times:
+
+! label149
+Garp*label149.labelString: Scalar:
+
+! grd_scalar_om
+Garp*grd_scalar_om.labelString: \n
+
+! label150
+
+! grd_scalar_pm
+
+! label151
+Garp*label151.labelString: Vector:
+
+! grd_vector_om
+Garp*grd_vector_om.labelString: \n
+
+! label152
+
+! grd_vector_pm
+
+! grd_time_sw
+Garp*grd_time_listSW.width: 200
+Garp*grd_time_listSW.height: 300
+
+! grd_time_list
+Garp*grd_time_listSW.grd_time_list.selectionPolicy: EXTENDED_SELECT
+Garp*grd_time_listSW.grd_time_list.listSizePolicy: CONSTANT
+
+! grd_scalar_sw
+Garp*grd_scalar_listSW.width: 200
+Garp*grd_scalar_listSW.height: 300
+
+! grd_scalar_list
+Garp*grd_scalar_listSW.grd_scalar_list.selectionPolicy: SINGLE_SELECT
+Garp*grd_scalar_listSW.grd_scalar_list.listSizePolicy: CONSTANT
+
+! grd_vector_sw
+Garp*grd_vector_listSW.width: 200
+Garp*grd_vector_listSW.height: 300
+
+! grd_vector_list
+Garp*grd_vector_listSW.grd_vector_list.selectionPolicy: SINGLE_SELECT
+Garp*grd_vector_listSW.grd_vector_list.listSizePolicy: CONSTANT
+
+! model_fdf_label
+
+! func_string
+
+! radioBox17
+Garp*radioBox17.numColumns: 2
+Garp*radioBox17.spacing: 1
+
+! model_scalar_b
+Garp*model_scalar_b.labelString: Scalar
+
+! model_vector_b
+Garp*model_vector_b.labelString: Vector
+Garp*model_vector_b.marginLeft: 23
+
+! radioBox18
+Garp*radioBox18.numColumns: 2
+Garp*radioBox18.spacing: 12
+
+! model_level_b
+Garp*model_level_b.labelString: Level
+
+! model_layer_b
+Garp*model_layer_b.labelString: Layer
+
+
+! sb_pref_shell
+Garp*sb_pref_shell.title: Status Bar Preferences
+
+! sb_pref_dialog
+Garp*sb_pref_dialog.dialogType: DIALOG_TEMPLATE
+
+! button1
+Garp*button1.labelString: Close
+
+! sb_clock_button
+Garp*sb_clock_button.labelString: Clock
+
+! sb_wincoords_button
+Garp*sb_wincoords_button.labelString: Window Coordinates
+
+! sb_plotcoords_button
+Garp*sb_plotcoords_button.labelString: Plot Coordinates
+
+! sb_pixval_button
+Garp*sb_pixval_button.labelString: Pixel Value
+
+! sb_distcalc_button
+Garp*sb_distcalc_button.labelString: Distance and Bearing
+
+! label118
+Garp*label118.childType: FRAME_TITLE_CHILD
+Garp*label118.labelString: Status Bar Items
+
+! sb_tempunits_om
+Garp*sb_tempunits_om.labelString: Temperature:
+
+! label2
+
+! sb_current_tempunits
+
+! degC_labelW
+Garp*degC_labelW.labelString: Celsius
+
+! degK_labelW
+Garp*degK_labelW.labelString: Kelvin
+
+! degF_labelW
+Garp*degF_labelW.labelString: Fahrenheit
+
+! sb_distunits_om
+Garp*sb_distunits_om.labelString: Distance:
+
+! label3
+
+! sb_current_distunits
+
+! km_labelW
+Garp*km_labelW.labelString: Kilometers
+
+! mi_labelW
+Garp*mi_labelW.labelString: Miles
+
+! nmi_labelW
+Garp*nmi_labelW.labelString: Nautical Miles
+
+! label91
+Garp*label91.childType: FRAME_TITLE_CHILD
+Garp*label91.labelString: Units
+
+
+! auto_update_shell
+Garp*auto_update_shell.title: Update Preferences
+
+! auto_update_dialog
+Garp*auto_update_dialog.dialogType: DIALOG_TEMPLATE
+
+! button117
+Garp*button117.labelString: Apply
+
+! button92
+Garp*button92.labelString: Close
+
+! updateToggleW
+Garp*updateToggleW.labelString: Auto Update On
+
+! updateScaleW
+Garp*updateScaleW.minimum: 1
+Garp*updateScaleW.maximum: 60
+Garp*updateScaleW.value: 28
+Garp*updateScaleW.orientation: HORIZONTAL
+Garp*updateScaleW.scaleMultiple: 1
+
+! label155
+Garp*label155.labelString: Interval (minutes)
+
+
+! description_shell
+Garp*description_shell.title: Garp Description
+
+! description_dialog
+Garp*description_dialog.dialogType: DIALOG_TEMPLATE
+
+! button4
+Garp*button4.labelString: Close
+
+! label6
+Garp*label6.labelString: 		GARP\nGEMPAK Analysis and Rendering Package\n\nDeveloped at the Cooperative Program for Operational\nMeterology, Education and Training (COMET).\n\nUCAR/UOP\n\nBoulder, Colorado\n\nFor more information, see the GARP web page at:\nhttp://www.comet.ucar.edu/garp
+
+
+! license_shell
+Garp*license_shell.title: GARP License
+
+! license_dialog
+Garp*license_dialog.dialogType: DIALOG_TEMPLATE
+
+! button135
+Garp*button135.labelString: Close
+
+! text8
+Garp*text8SW.text8.value: \nThis GEMPAK Analysis and Rendering Program (GARP), including source,\nexecutables, and documentation (Software), was developed by the University\nCorporation for Atmospheric Research (UCAR)/Cooperative Program for\nOperational Meteorology, Education and Training (COMET).\n\nThis is Software of the University Corporation for Atmospheric Research\nand the National Oceanic and Atmospheric Administration pursuant to NOAA\nAward Nos. NA37WD0018-01 and NA67WD0097.\n\nAccess to and the use of this Software shall impose the following\nobligations on the user.  The user is granted the right, without any\nfee or cost, to use, copy, modify, alter, and enhance this Software for\nany purpose whatsoever, except commercial purposes, provided that this\nentire notice appears on all copies of the Software.  This Software or\nany part thereof shall not be distributed or disseminated without the\nexpress written consent of UCAR.  Further, the user shall credit UCAR\nin any publications, presentations, or other derivative works that\nresult from the use of this Software. The University Corporation for\nAtmospheric Research (UCAR)/Cooperative Program for Operational\nMeteorology, Education and Training (COMET) shall not be used in any\nadvertising or publicity to endorse or promote any products or any\ncommercial entity unless specific written permission is granted from\nUCAR.  UCAR is not obligated to provide any support, consulting,\ntraining, or assistance of any kind with regard to the use of this\nSoftware and will not provide any updates, revisions, or new versions.\nThis Software is provided AS IS and any express or implied warranties,\nincluding but not limited to, the implied warranties of merchantability\nand fitness for a particular purpose are disclaimed.  In no event shall\nUCAR be liable for any special, indirect or consequential damages or\nany damages whatsoever, including but not limited to claims associated\nwith the loss of data or profits, which may result from an action in\ntort, contract, negligence, products liability, or other claim that\narises out of or in connection with the access, use, or performance of\nthis Software.\n\nThe user acknowledges that this Software is subject to U.S. export laws\nand regulations and any use or transfer of this Software must be authorized\nunder those regulations.  The user shall not use, distribute, transfer,\nor transmit the Software (even if incorporated into other products)\nexcept in compliance with U.S. export regulations.  If requested by\nUCAR, the user also agrees to sign written assurances and other\nexport-related documents as may be required to comply with U.S. export\nregulations.\n\n***\n\nCopyright c 1995 University Corporation for Atmospheric Research\nAll Rights Reserved\n\n\n***\n\n
+Garp*text8SW.text8.editMode: MULTI_LINE_EDIT
+
+
+! trademark_shell
+Garp*trademark_shell.title: Trademarks
+
+! trademark_dialog
+Garp*trademark_dialog.dialogType: DIALOG_TEMPLATE
+
+! button133
+Garp*button133.labelString: Close
+
+! label156
+Garp*label156.labelString: COMET is a registered \ntrademark of the\nUniversity Corporation \nfor Atmospheric Research.\n\nNOWrad is a registered trademark\nof WSI corporation.
+
+
+! main_shell
+Garp.title: Garp
+
+! main_form
+
+! main_menubar
+
+! cascade33
+Garp*cascade33.labelString: File
+
+! button38
+Garp*button38.labelString: Save
+
+! quit_button
+Garp*quit_button.labelString: Quit
+
+! cascade34
+Garp*cascade34.labelString: View
+
+! image_button
+Garp*image_button.labelString: Imagery
+
+! cascade35
+Garp*cascade35.labelString: Observations
+
+! button39
+Garp*button39.labelString: Surface
+
+! button40
+Garp*button40.labelString: Profiler
+
+! button41
+Garp*button41.labelString: Upper-Air
+
+! cascade36
+Garp*cascade36.labelString: Model
+
+! button42
+Garp*button42.labelString: Plan Projection
+
+! button43
+Garp*button43.labelString: Spatial Cross-Section
+
+! button44
+Garp*button44.labelString: Time Height Section
+
+! button45
+Garp*button45.labelString: Vertical Profile
+
+! button46
+Garp*button46.labelString: Clear
+
+! button47
+Garp*button47.labelString: Reset
+
+! area
+Garp*area.labelString: Area
+
+! garea_pm
+
+! cascade37
+Garp*cascade37.labelString: Time
+
+! button118
+Garp*button118.labelString: Auto Update
+
+! button119
+Garp*button119.labelString: Time Matching
+
+! cascade53
+Garp*cascade53.labelString: Set Time
+
+! button48
+Garp*button48.labelString: Real Time
+
+! cascade38
+Garp*cascade38.labelString: Back
+
+! button49
+Garp*button49.labelString: 1 hour
+
+! button50
+Garp*button50.labelString: 3 hours
+
+! button51
+Garp*button51.labelString: 6 hours
+
+! button52
+Garp*button52.labelString: 12 hours
+
+! button53
+Garp*button53.labelString: 24 hours
+
+! cascade39
+Garp*cascade39.labelString: Forward
+
+! button54
+Garp*button54.labelString: 1 hour
+
+! button55
+Garp*button55.labelString: 3 hours
+
+! button56
+Garp*button56.labelString: 6 hours
+
+! button57
+Garp*button57.labelString: 12 hours
+
+! button58
+Garp*button58.labelString: 24 hours
+
+! button59
+Garp*button59.labelString: Clock
+
+! button60
+Garp*button60.labelString: Stop
+
+! button61
+Garp*button61.labelString: Start
+
+! cascade40
+Garp*cascade40.labelString: Options
+
+! button62
+Garp*button62.labelString: Depictables
+
+! button63
+Garp*button63.labelString: Animation
+
+! button64
+Garp*button64.labelString: Enhancement
+
+! button108
+Garp*button108.labelString: Status Bar
+
+! button109
+Garp*button109.labelString: Logging
+
+! button110
+Garp*button110.labelString: Display Window
+
+! mapBackgroundsButton
+Garp*mapBackgroundsButton.labelString: Map Backgrounds
+
+! latlonGridButton
+Garp*latlonGridButton.labelString: Lat/Lon Grid
+
+! topoMapsButton
+Garp*topoMapsButton.labelString: Topographic Maps
+
+! contour_map_pm
+
+! overlaysButton
+Garp*overlaysButton.labelString: Overlays
+
+! button65
+Garp*button65.labelString: Station
+
+! button66
+Garp*button66.labelString: Radar Range
+
+! title_button
+Garp*title_button.labelString: Show Title
+
+! iconbar_button
+Garp*iconbar_button.labelString: Show Icon Bar
+
+! statusbar_button
+Garp*statusbar_button.labelString: Show Status Bar
+
+! help_cascade
+Garp*help_cascade.labelString: Help
+Garp*help_cascade.mnemonic: H
+
+! button71
+Garp*button71.labelString: About Garp
+
+! button136
+Garp*button136.labelString: User's Guide
+
+! button138
+Garp*button138.labelString: Case Studies
+
+! button134
+Garp*button134.labelString: Copyright
+
+! button140
+Garp*button140.labelString: Trademarks
+
+! icon_frame
+
+! icon_rowcol
+Garp*icon_rowcol.numColumns: 7
+Garp*icon_rowcol.orientation: HORIZONTAL
+Garp*icon_rowcol.packing: PACK_TIGHT
+
+! satellite_icon
+Garp*satellite_icon.labelType: PIXMAP
+
+! sfc_icon
+Garp*sfc_icon.labelType: PIXMAP
+
+! profiler_icon
+Garp*profiler_icon.labelType: PIXMAP
+
+! upperair_icon
+Garp*upperair_icon.labelType: PIXMAP
+
+! gridh_icon
+Garp*gridh_icon.labelType: PIXMAP
+
+! gridc_icon
+Garp*gridc_icon.labelType: PIXMAP
+
+! gridt_icon
+Garp*gridt_icon.labelType: PIXMAP
+
+! gridz_icon
+Garp*gridz_icon.labelType: PIXMAP
+
+! main_clear_icon
+Garp*main_clear_icon.labelType: PIXMAP
+
+! main_reset_icon
+Garp*main_reset_icon.labelType: PIXMAP
+
+! label113
+Garp*label113.labelString: Speed
+
+! speed_scale
+Garp*speed_scale.x: 55
+Garp*speed_scale.y: 0
+Garp*speed_scale.minimum: 0
+Garp*speed_scale.maximum: 100
+Garp*speed_scale.value: 0
+Garp*speed_scale.orientation: HORIZONTAL
+Garp*speed_scale.processingDirection: MAX_ON_LEFT
+Garp*speed_scale.decimalPoints: 2
+Garp*speed_scale.scaleMultiple: 10
+
+! label114
+Garp*label114.labelString: Fade
+
+! fade_scale
+Garp*fade_scale.x: 55
+Garp*fade_scale.y: 19
+Garp*fade_scale.value: 50
+Garp*fade_scale.orientation: HORIZONTAL
+
+! rowcol12
+Garp*rowcol12.x: 159
+Garp*rowcol12.y: 0
+Garp*rowcol12.numColumns: 2
+Garp*rowcol12.spacing: 0
+Garp*rowcol12.marginWidth: 0
+Garp*rowcol12.marginHeight: 0
+Garp*rowcol12.orientation: HORIZONTAL
+Garp*rowcol12.packing: PACK_COLUMN
+
+! loop_backward
+Garp*loop_backward.width: 15
+Garp*loop_backward.height: 15
+Garp*loop_backward.labelType: PIXMAP
+
+! loop_forward
+Garp*loop_forward.width: 15
+Garp*loop_forward.height: 15
+Garp*loop_forward.labelType: PIXMAP
+
+! loop_forward_backward
+Garp*loop_forward_backward.width: 15
+Garp*loop_forward_backward.height: 15
+Garp*loop_forward_backward.labelType: PIXMAP
+
+! step_backward
+Garp*step_backward.width: 15
+Garp*step_backward.height: 15
+Garp*step_backward.labelType: PIXMAP
+
+! stop_loop
+Garp*stop_loop.width: 15
+Garp*stop_loop.height: 15
+Garp*stop_loop.labelType: PIXMAP
+
+! step_forward
+Garp*step_forward.width: 15
+Garp*step_forward.height: 15
+Garp*step_forward.labelType: PIXMAP
+
+! loop_count
+Garp*loop_count.labelString:  0\nof\n 0
+Garp*loop_count.fontList: -adobe-courier-medium-r-normal--14-100-100-100-m-90-iso8859-1
+
+! garp_logo
+Garp*garp_logo.labelString: G A R P
+
+! statusbar_frame
+
+! frame_form
+
+! statusbar_label
+Garp*statusbar_label.width: 300
+Garp*statusbar_label.labelString:   Wed Sep 13 16:06:52 UTC 1995
+Garp*statusbar_label.alignment: ALIGNMENT_BEGINNING
+Garp*statusbar_label.fontList: -adobe-courier-bold-r-normal--14-100-100-100-m-90-iso8859-1
+
+! main_canvas
+Garp*main_canvas.width: 1098
+Garp*main_canvas.height: 748
+!Garp*main_canvas.background: black
+
+#include "Garp2"

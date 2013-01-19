@@ -1,0 +1,27 @@
+! LOGO.TBL
+!
+! This table contains the settings for plotting the NOAA logo.  The 
+! entries are composed of a name that will be shown to the user in
+! the user interface, the size, location (in normal coordintes) and
+! the color mode (1 for monochrome, 2 for full color).  Currently,
+! there can be up to 9 entries in the table.  If more are needed,
+! the parameter controlling the limit must be changed in the source.
+!
+! This table is only read at startup of NMAP/NMAP2.  Changes made
+! while NMAP/NMAP2 is running will not be applied.
+! 
+!!
+! Log:
+! S. Jacobs/NCEP	 5/00	Created
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!
+!NAME           SIZE     X_NORM   Y_NORM   COLOR_MODE
+!(15)          |(8)     |(8)     |(8)     |(4)
+!
+LL_SMALL            3.00     0.07     0.07    2
+LL_LARGE            4.50     0.09     0.09    2
+LL_SMALL_BW         3.00     0.07     0.07    1
+!
+UR_SMALL            3.00     0.93     0.66    2
+UR_LARGE            4.50     0.91     0.64    2
+UR_SMALL_BW         3.00     0.93     0.66    1

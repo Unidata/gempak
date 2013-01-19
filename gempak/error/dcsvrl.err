@@ -1,0 +1,10 @@
+!	This is the error file for DCSVRL.
+!
++2	! Probable bad end time.  So end time changed. !AS
++1	! Severe Local Storm bulletin header error !AS
+-1	! County string not found.  Possibly bad format. !AS
+-2	! Watch number not found.  !AS
+-3	! Unknown type  !AS
+-4	! SLS not found  !AS
+-5      ! Unable to determine bulletin time  !AS
+

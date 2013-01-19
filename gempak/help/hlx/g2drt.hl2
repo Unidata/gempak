@@ -1,0 +1,35 @@
+     G2DRT
+ 
+     G2DRT specifies the scaling and packing options when encoding the
+     GRIB2 message:
+ 
+        DRT number | decimal scale factor | binary scale factor | diff order |
+        Missing value Management | Lossy compression ratio
+ 
+     The DRT number is the Data Representation Template number used to pack 
+     the data field.  Current valid values are:
+          0 = Simple Packing (default)
+          2 = Group Packing
+          3 = Group Packing w/ differencing
+         40 = JPEG2000 encoding
+         41 = PNG encoding
+
+     All data values are multiplied by 10^n, where n is the decimal scale 
+     factor.  The default value is n=0.
+
+     The data values can also be scaled by dividing each value by 2^m, 
+     where m is the binary scale factor.  The default value is m=0.
+ 
+     The differencing order specifies how many times the difference of adjacent
+     data values is calculated, and it can be set to 1 or 2.  This option is
+     only valid when DRT number 3 is specified.  The default diff order is 1.
+
+     The missing value management flag determines whether missing values 
+     are packed along with the data or an appropriate bitmap is constructed.
+     A value of 1, use missing value management, is only valid for DRT
+     numbers 2 and 3.  A value of 0, use bitmap when needed, is the default.
+
+     A target lossy compression ratio can be specified only when using DRT 
+     number 40.  A value of m informs the JPEG2000 encoding algorithm to
+     attempt to compress to a ratio of m:1.  The default value of 255 
+     indicates only lossless compression should be used.

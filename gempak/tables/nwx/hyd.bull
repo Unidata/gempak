@@ -1,0 +1,66 @@
+! HYD.BULL
+!
+! Location information for the following product:
+! Daily_Hydrometeorological_Products.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+SXAK58 PACR     CIRCLE_CITY_AIRPORT              AK US  6583 -14407     0
+SXUS51 KAKQ     WAKEFIELD                        VA US  3697  -7700     0
+SXUS51 KALY     ALBANY                           NY US  4268  -7383     0
+SXUS51 KBGM     BINGHAMTON                       NY US  4220  -7598     0
+SXUS51 KBOX     TAUNTON                          MA US  4195  -7112     0
+SXUS51 KBTV     BURLINGTON                       VT US  4445  -7315     0
+SXUS51 KBUF     BUFFALO                          NY US  4293  -7870     0
+SXUS51 KCAR     CARIBOU                          ME US  4577  -6862     0
+SXUS51 KCLE     CLEVELAND                        OH US  4140  -8186     0
+SXUS51 KCTP     STATE_COLLEGE                    PA US  4079  -7786     0
+SXUS51 KGYX     GRAY                             ME US  4388  -7025     0
+SXUS51 KILN     WILMINGTON                       OH US  3941  -8381     0
+SXUS51 KLWX     BALTIMORE_MD/_WASHINGTON_DC      VA US  3897  -7747     0
+SXUS51 KOKX     NEW_YORK                         NY US  4086  -7286     0
+SXUS51 KPBZ     PITTSBURGH                       PA US  4052  -8020     0
+SXUS51 KPHI     MOUNT_HOLLY                      NJ US  4000  -7480     0
+SXUS51 KRHA     MIDDLE_ATLANTIC/STATE_COLLEGE    PA US  4079  -7786     0
+SXUS51 KRLX     CHARLESTON                       WV US  3831  -8170     0
+SXUS51 KRNK     BLACKSBURG                       VA US  3720  -8041     0
+SXUS51 KTAR     NORTHEAST_RFC/BOSTON             MA US  4195  -7112     0
+SXUS51 KTIR     OHIO_RFC/WILLIMINGTON            OH US  3941  -8381     0
+SXUS52 KALR     ATLANTA_RFC                      GA US  3336  -8455     0
+SXUS52 KCAE     COLUMBIA                         SC US  3393  -8112     0
+SXUS52 KCHS     CHARLESTON                       SC US  3288  -8001     0
+SXUS52 KGSP     GREENVILLE/SPARTANBURG           SC US  3488  -8222     0
+SXUS52 KILM     WILMINGTON                       NC US  3427  -7791     0
+SXUS52 KMHX     NEWPORT/MOREHEAD_CITY            NC US  3477  -7687     0
+SXUS52 KRAH     RALEIGH                          NC US  3577  -7868     0
+SXUS52 KTAE     TALLAHASSEE                      FL US  3045  -8430     0
+SXUS53 KFGF     EASTERN_NORTH_DAKOTA             ND US  4791  -9708     0
+SXUS53 KKRF     MISSOURI_RIVER_BASIN/KANSAS_CITY MO US  3879  -9426     0
+SXUS53 KMKX     MILWAUKEE/SULLIVAN               WI US  4295  -8854     0
+SXUS54 KBMX     BIRMINGHAM                       AL US  3316  -8677     0
+SXUS54 KFWR     WEST_GULF_RFC/FORT_WORTH         TX US  3283  -9729     0
+SXUS54 KORN     LOWER_MISSISSIPPI_RFC/SLIDEL     LA US  3032  -8981     0
+SXUS54 KTUA     ARKANSAS-RED_BAISN_RFC/TULSA     OK US  3613  -9586     0
+SXUS55 KBOI     BOISE                            ID US  4356 -11620     0
+SXUS55 KFGZ     FLAGSTAFF                        AZ US  3522 -11181     0
+SXUS55 KLKN     ELKO                             NV US  4086 -11573     0
+SXUS55 KPIH     POCATELLO/IDAHO_FALLS            ID US  4290 -11258     0
+SXUS55 KPSR     PHOENIX                          AZ US  3343 -11201     0
+SXUS55 KREV     RENO                             NV US  3956 -11979     0
+SXUS55 KSLC     SALT_LAKE_CITY                   UT US  4077 -11194     0
+SXUS55 KSTR     COLORADO_RFC/SALT_LAKE_CITY      UT US  4077 -11194     0
+SXUS55 KTWC     TUCSON                           AZ US  3222 -11094     0
+SXUS55 KVEF     LAS_VEGAS                        NV US  3604 -11518     0
+SXUS56 KEKA     EUREKA                           CA US  4079 -12416     0
+SXUS56 KHNX     SAN_JOAQUIN_VALLEY/HANFORD       CA US  3631 -11962     0
+SXUS56 KMFR     MEDFORD                          OR US  4236 -12287     0
+SXUS56 KMTR     SAN_FRANCISCO                    CA US  3659 -12184     0
+SXUS56 KOTX     SPOKANE                          WA US  4768 -11762     0
+SXUS56 KPDT     PENDLETON                        OR US  4568 -11884     0
+SXUS56 KPTR     NORTHWEST_RFC/PORTLAND           OR US  4556 -12252     0
+SXUS56 KRSA     CALIF-NEVADA_RFC/SACRAMENTO      CA US  3859 -12137     0
+SXUS56 KSEW     SEATTLE                          WA US  4768 -12225     0
+SXUS56 KSTO     SACRAMENTO                       CA US  3859 -12137     0

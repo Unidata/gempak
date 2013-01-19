@@ -1,0 +1,93 @@
+!
+! NMCGRIB2.TBL -- GRIB 1 parameter conversion table version 2
+!
+!ID# NAME                             UNITS                GNAM         SCALE   MISSING HZREMAP DIRECTION
+!
+128 MSLP (standard atm reduction)     Pa                                   -2  -9999.00       0         0
+129 MSLP (MAPS reduction)             Pa                   MMSL            -2  -9999.00       0         0
+130 MSLP (ETA reduction)              Pa                   EMSL            -2  -9999.00       0         0
+131 Surface lifted index              K                    LIFT             0  -9999.00       0         0
+132 Best (4 layer) lifted index       K                    LFT4             0  -9999.00       0         0
+133 K index                           K                    KINX             0  -9999.00       0         0
+134 Sweat index                       K                    SWET             0  -9999.00       0         0
+135 Horizontal moisture divergence    kg kg**-1 s**-1      MCNV             0  -9999.00       0         0
+136 Vertical speed shear              s**-1                VWSH             0  -9999.00       0         0
+137 3-hr pressure tendency (stdatm)   Pa s**-1                             -2  -9999.00       0         0
+138 Brunt-Vaisala freq (squared)      s**-2                BVSQ             0  -9999.00       0         0
+139 Potential vorticity (density wt)  s**-1 m**-1                           0  -9999.00       0         0
+140 Categorical rain                  0,1                  WXTR             0  -9999.00       1         0
+141 Categorical freezing rain         0,1                  WXTZ             0  -9999.00       1         0
+142 Categorical ice pellets           0,1                  WXTP             0  -9999.00       1         0
+143 Categorical snow                  0,1                  WXTS             0  -9999.00       1         0
+150 Covar merid-zonal wind            m**2 s**-2                            0  -9999.00       0         0
+151 Covar temp-zonal wind             K m s**-1                             0  -9999.00       0         0
+152 Covar temp-merid wind             K m s**-1                             0  -9999.00       0         0
+155 Ground heat flux                  W m**-2                               0  -9999.00       0         0
+156 Convective inhibition             J kg**-1             CINS             0  -9999.00       0         0
+157 CAPE                              J kg**-1             CAPE             0  -9999.00       0         0
+158 Turbulent kinetic energy          J kg**-1                              0  -9999.00       0         0
+159 Cond pres of parcel from a sfc    Pa                                   -2  -9999.00       0         0
+160 Clear sky upward solar flux       W m**-2                               0  -9999.00       0         0
+161 Clear sky downward solar flux     W m**-2                               0  -9999.00       0         0
+162 Clear sky upward longwave flux    W m**-2                               0  -9999.00       0         0
+163 Clear sky downward longwave flux  W m**-2                               0  -9999.00       0         0
+164 Cloud forcing net solar flux      W m**-2                               0  -9999.00       0         0
+165 Cloud forcing net longwave flux   W m**-2                               0  -9999.00       0         0
+166 Visible beam down solar flux      W m**-2                               0  -9999.00       0         0
+167 Visible difuse down solar flux    W m**-2                               0  -9999.00       0         0
+168 Near IR beam down solar flux      W m**-2                               0  -9999.00       0         0
+169 Near IR difuse down solar flux    W m**-2                               0  -9999.00       0         0
+172 Momentum flux                     N m**-2                               0  -9999.00       0         0
+173 Mass point model surface          -                                     0  -9999.00       0         0
+174 Velocity point model surface      -                                     0  -9999.00       0         0
+175 Model layer number                -                                     0  -9999.00       0         0
+176 Latitude (-90 to +90)             Degree                                0  -9999.00       0         1
+177 East longitude (0 to 360)         Degree                                0  -9999.00       0         1
+181 x-gradient of log pressure        m**-1                                 0  -9999.00       0         0
+182 y-gradient of log pressure        m**-1                                 0  -9999.00       0         0
+183 x-gradient of height              m m**-1                               0  -9999.00       0         0
+184 y-gradient of height              m m**-1                               0  -9999.00       0         0
+201 Ice-free water surface            %                    IFWS             0  -9999.00       0         0
+204 Downward short wave rad flux      W m**-2              SWRD             0  -9999.00       0         0
+205 Downward long wave rad flux       W m**-2              LWRD             0  -9999.00       0         0
+207 Moisture availability             %                    MSAV             0  -9999.00       0         0
+208 Exchange coefficient              kg m**-3 m s**-1     SEXC             0  -9999.00       0         0
+209 No of mixed layers next to sfc    -                    NMXL             0  -9999.00       0         0
+211 Upward short wave rad flux        W m**-2              SWRU             0  -9999.00       0         0
+212 Upward long wave rad flux         W m**-2              LWRU             0  -9999.00       0         0
+213 Amt of non-convective cloud       %                    CLDA             0  -9999.00       0         0
+214 Convective precip rate            kg m**-2 s**-1                        0  -9999.00       0         0
+215 Temp tendecy by all physics       K s**-1                               0  -9999.00       0         0
+216 Temp tendecy by all radiation     K s**-1              DTAR             0  -9999.00       0         0
+217 Temp tendecy by non-rad physics   K s**-1                               0  -9999.00       0         0
+218 Precip index (0.0-1.0)            -                                     0  -9999.00       0         0
+219 Std dev of IR T over 1x1 area     K                                     0  -9999.00       0         0
+220 Natural log of surface press      ln(kPa)                               0  -9999.00       0         0
+222 5-wave geopotential height        gpm                                   0  -9999.00       0         0
+223 Plant canopy surface water        kg m**-2                              0  -9999.00       0         0
+226 Blackadar's mixing length         m                                     0  -9999.00       0         0
+227 Asymptotic mixing length          m                                     0  -9999.00       0         0
+228 Potential evaporation             kg m**-2                              0  -9999.00       0         0
+229 Snow phase-change heat flux       W m**-2              FXSN             0  -9999.00       0         0
+231 Convective cloud mass flux        Pa s**-1                              0  -9999.00       0         0
+232 Downward total radiation flux     W m**-2                               0  -9999.00       0         0
+233 Upward total radiation flux       W m**-2                               0  -9999.00       0         0
+234 Baseflow-groundwater runoff       kg m**-2             BFGR             0  -9999.00       0         0
+235 Storm surface runoff              kg m**-2             R--M             0  -9999.00       0         0
+238 Snow cover                        %                                     0  -9999.00       0         0
+239 Snow temperature                  K                                     0  -9999.00       0         0
+241 Large scale condensat heat rate   K s**-1              DTGP             0  -9999.00       0         0
+242 Deep convective heating rate      K s**-1              DTCP             0  -9999.00       0         0
+243 Deep convective moistening rate   kg kg**-1 s**-1                       0  -9999.00       0         0
+244 Shallow convec heating rate       K s**-1                               0  -9999.00       0         0
+245 Shallow convec moistening rate    kg kg**-1 s**-1                       0  -9999.00       0         0
+246 Vertical diff heating rate        K s**-1                               0  -9999.00       0         0
+247 Vertical diff zonal accel         m s**-2                               0  -9999.00       0         0
+248 Vertical diff meridional accel    m s**-2                               0  -9999.00       0         0
+249 Vertical diff moistening rate     kg kg**-1 s**-1                       0  -9999.00       0         0
+250 Solar radiative heating rate      K s**-1              DTSW             0  -9999.00       0         0
+251 Longwave radiative heating rate   K s**-1              DTLW             0  -9999.00       0         0
+252 Drag coefficient                  -                                     0  -9999.00       0         0
+253 Friction velocity                 m s**-1                               0  -9999.00       0         0
+254 Richardson number                 -                    RICH             0  -9999.00       0         0
+255 Missing                           -                    MISS             0  -9999.00       0         0

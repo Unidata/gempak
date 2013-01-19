@@ -1,0 +1,24 @@
+! 
+!	PRO6_PARMS.TBL
+!
+! This table contains the available parameters used in the
+! station model editing panel in NMAP for PRO6 data types. 
+!
+!	pos_zero_flag:	1 = plot at position 0 only
+!			0 = plot at any position
+!
+! Log:
+!
+! parameter       pos_zero_flag  
+!
+brbk:1:2:112      1        
+brbm:1:2          1       
+hght              0      
+drct              0     
+sped              0    
+wwnd	          0   
+sigs              0  
+sigw              0        
+lmod              0       
+stid              0      
+stnm              0

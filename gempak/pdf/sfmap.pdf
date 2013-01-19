@@ -1,0 +1,23 @@
+AREA    Data area                                                               
+GAREA   Graphics area                                                           
+SATFIL  Satellite image filename(s)                                             
+RADFIL  Radar image filename(s)                                                 
+IMCBAR  Color/ornt/anch/x;y/ln;wd/freq                                          
+SFPARM  Surface parameter list                                                  
+DATTIM  Date/time                                                               
+SFFILE  Surface data file                                                       
+COLORS  Color list                                                              
+MAP     Map color/dash/width/filter flag                                        
+MSCALE  fgc;bgc;mask/units/lat;hide/values/anch/x;y/ln;wd/freq|text_info|title  
+LATLON  Line color/dash/width/freq/inc/label/format                             
+TITLE   Title color/line/title                                                  
+CLEAR   Clear screen flag                                                       
+PANEL   Panel loc/color/dash/width/regn                                         
+DEVICE  Device|name|x size;y size|color type                                    
+PROJ    Map projection/angles/margins|drop flag                                 
+FILTER  Filter data factor                                                      
+TEXT    Size/fnt/wdth/brdr/N-rot/just/hw flg                                    
+LUTFIL  Enhancement lookup table filename                                       
+STNPLT  Txtc/txt attr|marker attr|stnfil#col                                    
+CLRBAR  Color/ornt/anch/x;y/ln;wd/freq|text_info                                
+LSTPRM  Filtered parm|x;y|TEXT info                                             

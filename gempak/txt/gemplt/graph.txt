@@ -1,0 +1,29 @@
+
+
+                          Graph Subroutines
+
+
+X/Y plots of functions, polar (R/THETA) plots, and vertical profile
+plots are drawn in graph mode (set by GINITP or by GSMODE).
+
+Before the axes are drawn, the graph coordinates are defined by a call
+to GSGRAF.  Currently set graph coordinates are queried by a call to
+GQGRAF.  There may be margins around the graph.
+
+GSGMGN defines margins for the graph mode.  The margins are usually set
+at about the same time as the M coordinate system is defined.  The
+margins remain set for the life of the coordinate system; calls to
+change the margins have no effect until the coordinate system is
+redefined.  Margins are specified as either fractions of the plot space
+or as multiples of the currently set text character size.  Currently set
+graph margins are queried by calls to GQGMGN.
+
+Graph axes are drawn by calls to GAAXIS or GDAXIS.
+
+The data on a graph may be drawn a number of ways.  Line graphs can be
+done using simple lines (GLINE).  Discrete points may be drawn with
+markers (GMARK).  Layers in a vertical profile may be filled polygons
+(GFILL).
+
+The appearance of graph axes and data points on a graph is controlled by
+changing attributes of lines, tick marks, text, and colors.

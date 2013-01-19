@@ -1,0 +1,15 @@
+SNFILE                                                                          
+AREA                                                                            
+LINE    2/1/2                                                                   
+MARKER  2                                                                       
+BORDER  6/1/2                                                                   
+TITLE   2/                                                                      
+XAXIS   dset                                                                    
+YAXIS   dset                                                                    
+LEVELS  all                                                                     
+VCOORD  hght                                                                    
+DATTIM                                                                          
+CLEAR   YES                                                                     
+DEVICE  xw                                                                      
+PANEL   0                                                                       
+TEXT    1.3/23//HW                                                              

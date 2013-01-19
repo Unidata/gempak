@@ -1,0 +1,78 @@
+     AREA
+ 
+     AREA is the data area.  Only data within the area specified will be 
+     processed.
+
+     Areas may be defined containing subareas.  Subareas must be separated 
+     by slashes.  Each subarea is additive, +, or subtractive, -, depending 
+     on the first character following the slash, with + being the default.  
+     Additive subareas add stations to the list of valid stations; 
+     subtractive subareas eliminate stations which were previously valid.
+ 
+     Subareas may be specified in the following ways:
+ 
+     1.  lat1;lon1;lat2;lon2 
+         This defines a latitude/longitude range where (lat1, lon1) is the 
+         lower left corner and (lat2, lon2) is the upper right corner.  
+         West longitude is negative.
+   
+         #clat;clon;dlat;dlon
+         This defines a latitude/longitude range by the center latitude and 
+         longitude.  The lower left corner is (clat-dlat; clon-dlon); the 
+         upper right corner is (clat+dlat; clon+dlon).  No corrections are 
+         made for the poles or the International Date Line.
+ 
+     2.  GEOG
+         This is an abbreviation for a geographic area defined in the 
+         GEMPAK geographic table which includes abbreviations for states, 
+         provinces, and countries, as well as other names. A suffixed + or * 
+	 will decrease the extent of the geographic area. A suffixed - will 
+	 increase the extent of the geographic area. 
+ 
+     3.  STN
+         This defines an area centered on a station found in the GEMPAK 
+         station table.  A suffixed + or * will decrease the extent
+         of the geographic area.  A suffixed - will increase the extent
+         of the geographic area.
+ 
+     4.  DSET 
+         This includes all the stations in the current data set.
+ 
+     5.  @ST  
+         This area includes those stations located in the state, province 
+         or country defined by ST.  Only some countries are recognized 
+         (US,CN,MX,CI,BW,AU); other countries may be specified using method 6.
+ 
+     6.  @CN:C
+         This area includes those stations located in the country defined 
+         by CN.
+ 
+     7.  @STN1;STN2;...;STNn 
+         This area includes the stations listed, where STNi may be a station 
+         identifier or a station number.
+ 
+     8.  SHDR:iloval:ihival 
+         This area defines a range of integer values for the station header, 
+         SHDR.  Valid keywords for SHDR are:
+ 
+		COUN	--	country
+		SELV	--	elevation (in meters)
+		SLAT	--	latitude (in degrees x 100)
+		SLON	--	longitude (in degrees x 100, West is negative)
+		SPRI	--	priority
+		STAT	--	state
+		STID	--	character identifier
+				(6 digits for surface--usually the WMO
+				 5-digit number followed by a 0)
+ 
+         where COUN, STAT and STID are not very useful, since the integer 
+         representation of characters is system dependent.
+  
+         For example, SELV:0:2000 specifies stations whose elevations are 
+         less than 2000 meters.
+
+     9. GAREA
+	This area corresponds to a slightly larger area than that specified
+	by GAREA.  It will ensure that data will appear near the bounds of 
+	the view region.
+ 

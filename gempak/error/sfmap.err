@@ -1,0 +1,8 @@
+!	This is the error file for SFMAP
+!
+-1	! Fatal error initializing TAE.
+-2	! Fatal error reading TAE parameters.
+-3	! Fatal error initializing GEMPLT.
+-4	! Parameter !AS is not calculable.
+-5	! Winds are not calculable.
+-6      ! Multiple files do not allow multiple times.

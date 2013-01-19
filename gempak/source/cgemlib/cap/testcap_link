@@ -1,0 +1,3 @@
+$CC $CFLAGS -c testcap.c 
+$FC $LDFLAGS -o $OS_BIN/testcap testcap.o $GEMLIB $CGEMLIB $GEMLIB -lm
+$RM *.o

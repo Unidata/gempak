@@ -1,0 +1,73 @@
+<!-- ##### SECTION Title ##### -->
+GUnixConnection
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### SECTION Image ##### -->
+
+
+<!-- ##### STRUCT GUnixConnection ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### FUNCTION g_unix_connection_receive_fd ##### -->
+<para>
+
+</para>
+
+@connection: 
+@cancellable: 
+@error: 
+@Returns: 
+
+
+<!-- ##### FUNCTION g_unix_connection_send_fd ##### -->
+<para>
+
+</para>
+
+@connection: 
+@fd: 
+@cancellable: 
+@error: 
+@Returns: 
+
+
+<!-- ##### FUNCTION g_unix_connection_receive_credentials ##### -->
+<para>
+
+</para>
+
+@connection: 
+@cancellable: 
+@error: 
+@Returns: 
+
+
+<!-- ##### FUNCTION g_unix_connection_send_credentials ##### -->
+<para>
+
+</para>
+
+@connection: 
+@cancellable: 
+@error: 
+@Returns: 
+
+

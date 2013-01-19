@@ -1,0 +1,22 @@
+! nids_rsher.tbl
+!
+! Color table for 16-level NIDS Radial Shear
+! Appendix A, FMH-11 Part C
+!
+!Color name    Abrev   Red  Green   Blue  X color name
+BLACK           BLA      0      0      0  black
+BRYELLOW        BRY    255    239      0
+LTORANGE        LTO    255    144      0
+REDORANGE       ROR    255     34      0
+DKORANGE        DKO    221     51     51
+LTPURPLE        LTP    242    170    170
+MDPURPLE        MDP    210    119    153
+LTGRAY          LTG    186    186    186
+DKBROWN         DKB    136      0      0
+MDGRAY          MDG    119    119    144
+BRBLUE          BRB      0      0    255
+MDBLUE          MDB    136    130    255
+LTBLUE          LTB    202    202    255
+AWHITE          AWH    255    255    238
+MDPURPLE2       MP2    255      0    255
+DKPURPLE        DKP    119      0    125

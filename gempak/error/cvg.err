@@ -1,0 +1,60 @@
+!	This is the GEMLIB CVG error file
+!
+! log
+!------
+! E. Wehner/EAi		??/97	
+! E. Safford/GSC	10/98	added -47
+! J. Wu/SAIC		12/01	added -48
+! A. Hardy/SAIC		 1/02	added +4
+! E. Safford/SAIC	02/02	added -49, -50
+! S. Gilbert/NCEP	02/06	added -51
+! E. Safford/SAIC	02/02	added -53
+!
+
+   4    ! Number of offsets found is greater than maximum allowed.
+   3    ! VG element is too large.
+   2	! VG file !AS does not exist, creating now.
+   1	! VG file !AS does not exist
+  -1 	! VG file !AS cannot be created and/or opened.
+  -2	! Error closing VG file !AS.
+  -3	! Seek to a bad location.
+  -4	! Unknown VG record type encountered.
+  -5	! VG file !AS is empty.
+  -6	! Element not found.
+  -7	! No watch space available.
+  -8	! No VG file is open.
+  -9	! Error reading VG file !AS.
+ -11	! Number of bytes to output too big.
+ -12	! Error reading VG record from file !AS.
+ -13	! Error reading VG header from file !AS.
+ -14	! Error reading VG element from file !AS.
+ -15	! Error creating VG file.
+ -16	! Watch/warn box number and/or type not found.
+ -17	! Error writing VG record to file !AS.
+ -18	! Error locating space in VG file !AS.
+ -19	! Error saving record for front to VG file.
+ -20	! Error saving record for watch/warn box to VG file.
+ -24	! No VG header has been loaded.
+ -25	! Invalid VG header, check starting byte or for corrupt VG file.
+ -26	! VG header not found at this location.
+ -27	! Invalid watch/warn box type.
+ -28	! Invalid number of points.
+ -30	! Invalid color(s).
+ -31	! Invalid front attribute.
+ -32	! Invalid county FIPS.
+ -38	! Error saving record for contour line to VG file.
+ -39	! Error saving record for special line to VG file.
+ -40	! Error saving record for text to VG file.
+ -41	! Error saving record for line to VG file.
+ -42	! File too large.  Will display first !AS elements only.
+ -43	! Error saving record for symbol to VG file.
+ -44	! Error saving record for wind to VG file.
+ -45	! Invalid version of VG file: !AS
+ -46 	! VG file !AS was invalid version.  Created new.
+ -47    ! No VG file name specified.
+ -48    ! The element has already been deleted.
+ -49    ! Invalid value for vg_type.
+ -50	! Invalid value for new subtype.
+ -51	! Invalid TCA advisory number.
+ -52	! Could not allocate memory 
+ -53	! No block(s) allocated for element.

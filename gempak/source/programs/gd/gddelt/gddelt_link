@@ -1,0 +1,4 @@
+$FC $FFLAGS $LDFLAGS -o $OS_BIN/gddelt gddelt.f \
+		$OS_LIB/gddelt.a $GEMLIB \
+		$APPL $SYSLIB $CGEMLIB
+$RM *.o

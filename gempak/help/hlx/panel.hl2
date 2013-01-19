@@ -1,0 +1,49 @@
+     PANEL
+
+     PANEL specifies the panel location, panel outline color, line type 
+     and width separated with slashes:
+
+		panel location / outline color / line type / width / region
+
+     The panel location determines the location of the view region on the 
+     graphics device.  It may be specified using a number or abbreviation 
+     as follows:
+
+	NUMBER	ABBREVIATION	DESCRIPTION
+	0	ALL	 	Entire device
+	1	UL		Upper left quadrant
+	2	UR		Upper right quadrant
+	3	LL		Lower left quadrant
+	4	LR		Lower right quadrant
+	5	L		Left half
+	6	R		Right half
+	7	T		Top half
+	8	B		Bottom half
+
+     An easy 9-panel capability uses abbreviations M1,...,M9 which will
+     be laid out on the page as:
+
+		M1	M2	M3
+
+		M4	M5	M6
+     
+		M7	M8	M9
+
+     Horizontal or vertical panels which divide the screen into thirds or
+     fourths may be created using the syntax Tij where T is either V for
+     vertical or H for horizontal, i is 3 for thirds or 4 for fourths,
+     and j is the actual panel counting from the top or left.
+
+     The view region may also be specified as four numbers separated with 
+     semicolons, giving the lower left and upper right corners in fractions 
+     of the graphics display area.  The origin is in the lower left of the 
+     display.  For example, the lower left quadrant can be given as:
+
+		0;0;.5;.5 
+
+     If the panel location is unspecified, the current location is unchanged.
+
+     The panel outline color, line type and line width specify the values 
+     used to draw a box around the specified region.  The valid regions are
+     VIEW, PLOT and DEVICE.  If the color is 0 or unspecified, no box is drawn.
+

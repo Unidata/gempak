@@ -1,0 +1,108 @@
+! FFG.STN
+!
+! This table contains the station information to be used
+! with the Flash Flood Guidance data.
+!
+! The format for the file is given below, with the number of 
+! characters in parentheses.
+!
+!STID    STNM   NAME                             ST CO   LAT    LON  ELEV  PRI
+!(8)     (6)    (32)                            (2)(2)   (5)    (6)   (5)  (4)
+!
+FFGABQ   999999 ALBUQUERQUE                      NM US  3505 -10661  1631
+FFGABR   999999 ABERDEEN_REGION                  SD US  4545  -9843   396
+FFGAKQ   999999 WAKEFIELD                        VA US  3750  -7733    54
+FFGAMA   999999 AMARILLO                         TX US  3523 -10170  1099
+FFGAPN   999999 ALPENA_CO._REGIONAL              MI US  4507  -8357   211
+FFGATL   999999 ATLANTA                          GA US  3365  -8443   312
+FFGAZ    999999 ARIZONA                          AZ US  3420 -11140     0 
+FFGBHM   999999 BIRMINGHAM                       AL US  3356  -8675   196
+FFGBIS   999999 BISMARK                          ND US  4676 -10075   504
+FFGBNA   999999 NASHVILLE                        TN US  3613  -8668   180
+FFGBRO   999999 BROWNSVILLE                      TX US  2590  -9743     7
+FFGCA1   999999 CALIFORNIA_NORTH                 CA US  4000 -12200     0
+FFGCA2   999999 CALIFORNIA_SOUTH                 CA US  3600 -11950     0
+FFGCAE   999999 COLUMBIA                         SC US  3395  -8111    64
+FFGCHI   999999 CHICAGO                          IL US  4200  -8788   203
+FFGCHS   999999 CHARLESTOWN_MUNI                 SC US  3290  -8003    15
+FFGCO    999999 COLORADO                         CO US  3900 -10530     0 
+FFGCRP   999999 CORPUS_CHRISTI_INTL              TX US  2777  -9750    13
+FFGDDC   999999 DODGE_CITY                       KS US  3777  -9997   790
+FFGDE    999999 DELAWARE                         DE US  3890  -7550     0
+FFGDLH   999999 DULUTH_INTL_AIR                  MN US  4683  -9218   432
+FFGDSM   999999 DES_MOINES_INTL                  IA US  4153  -9365   294
+FFGDTX   999999 DETROIT                          MI US  4267  -8342   299
+FFGDVN   999999 DAVENPORT                        IA US  4161  -9058   229
+FFGELP   999999 EL_PASO                          TX US  3180 -10640  1194
+FFGFAR   999999 FARGO/HECTOR_FIELD               ND US  4690  -9680   274
+FFGFSD   999999 SIOUX_FALLS                      SD US  4356  -9673   435
+FFGFTW   999999 FT._WORTH                        TX US  3281  -9735   211
+FFGGJT   999999 GRAND_JUNCTION                   CO US  3911 -10853  1475
+FFGGLD   999999 GOODLAND                         KS US  3937 -10170  1124
+FFGGRB   999999 GREEN_BAY                        WI US  4448  -8813   214
+FFGGRR   999999 GRAND_RAPIDS_IN                  MI US  4288  -8552   245
+FFGGSP   999999 GREENVILLE/SPARTANB              SC US  3490  -8222   296
+FFGHOU   999999 HOUSTON                          TX US  2965  -9528    15
+FFGIA    999999 IOWA                             IA US  4190  -9330     0
+FFGICT   999999 WICHITA                          KS US  3765  -9743   408
+FFGIL    999999 ILLINOIS                         IL US  4000  -8900     0
+FFGILM   999999 WILMINGTON                       NC US  3427  -7790    10
+FFGIN    999999 INDIANA                          IN US  4000  -8600     0
+FFGJAN   999999 JACKSON                          MS US  3231  -9008    94
+FFGJAX   999999 JACKSONVILLE                     FL US  3050  -8170     9
+FFGKS    999999 KANSAS                           KS US  3850  -9820     0
+FFGKY    999999 KENTUCKY                         KY US  3750  -8540     0
+FFGLBB   999999 LUBBOCK                          TX US  3365 -10181   996
+FFGLCH   999999 LAKE_CHARLES                     LA US  3012  -9322    10
+FFGLIT   999999 LITTLE_ROCK                      AR US  3473  -9223    78
+FFGLSE   999999 LA_CROSSE                        WI US  4387  -9125   202 
+FFGMA    999999 MASSACHUSETTS                    MA US  4230  -7210     0
+FFGMAF   999999 MIDLAND                          TX US  3195 -10218   872
+FFGMCI   999999 KANSAS_CITY                      MO US  3932  -9472   312
+FFGMD    999999 MARYLAND                         MD US  3930  -7700     0
+FFGME    999999 MAINE                            ME US  4520  -6930     0
+FFGMEM   999999 MEMPHIS                          TN US  3505  -9000   101
+FFGMHX   999999 NEWPORT                          NC US  3478  -7688    11
+FFGMIA   999999 MIAMI                            FL US  2580  -8026     3
+FFGMKE   999999 MILWAUKEE                        WI US  4295  -8790   214
+FFGMLB   999999 MELBOURNE                        FL US  2810  -8063    10
+FFGMO    999999 MISSOURI                         MO US  3840  -9250     0
+FFGMOB   999999 MOBILE                           AL US  3068  -8825    67
+FFGMQT   999999 MARQUETTE_CO._A                  MI US  4653  -8755   434
+FFGMRX   999999 KNOXVILLE                        TN US  3582  -8398   299
+FFGMT    999999 MONTANA                          MT US  4690 -10960     0
+FFGND    999999 NORTH_DAKOTA                     ND US  4730 -10030     0
+FFGNE    999999 NEBRASKA                         NE US  4130  -9970     0
+FFGNEW   999999 NEW_ORLEANS_LAKE                 LA US  3003  -9003     3
+FFGNJ    999999 NEW_JERSEY                       NJ US  4010  -7450     0
+FFGNM    999999 NEW_MEXICO                       NM US  3430 -10590     0
+FFGNV    999999 NEVADA                           NV US  3900 -11960     0
+FFGNY    999999 NEW_YORK                         NY US  4320  -7570     0
+FFGNY2   999999 NEW_YORK_SOUTHERN_TIER           NY US  4217  -7690   291
+FFGNY1   999999 NEW_YORK_SOUTHWEST               NY US  4215  -7927   525
+FFGOH    999999 OHIO                             OH US  4010  -8270     0
+FFGOKC   999999 OKLAHOMA_CITY                    OK US  3540  -9760   391
+FFGPA2   999999 PENNSYLVANIA_EAST                PA US  4050  -7670     0
+FFGPA3   999999 PENNSYLVANIA_WEST                PA US  4035  -7993     0 
+FFGPAH   999999 PADUCAH                          KY US  3707  -8877   125
+FFGPUB   999999 PUEBLO_MEMORIAL                  CO US  3828 -10452  1439
+FFGRDU   999999 RALEIGH_DURHAM                   NC US  3586  -7878   133
+FFGRNK   999999 BLACKSBURG                       VA US  3720  -8042   653
+FFGSAT   999999 SAN_ANTONIO                      TX US  2953  -9846   246
+FFGSD    999999 SOUTH_DAKOTA                     SD US  4420 -10020     0
+FFGSGF   999999 SPRINGFIELD/MUNI                 MO US  3723  -9338   387
+FFGSHV   999999 SHREVEPORT                       LA US  3247  -9382    79
+FFGSJT   999999 SAN_ANGELO/MATHIS                TX US  3137 -10050   582
+FFGSLR   999999 SALT_LAKE_CITY                   UT US  4078 -11197  1288
+FFGSPI   999999 SPRINGFIELD                      IL US  3985  -8967   187
+FFGSTL   999999 ST._LOUIS/LAMBERT                MO US  3875  -9037   172
+FFGTBW   999999 TAMPA                            FL US  2770  -8240    13
+FFGTLH   999999 TALLAHASSEE                      FL US  3038  -8437    21
+FFGTN    999999 TENNESSEE                        TN US  3570  -8660     0
+FFGTOP   999999 TOPEKA                           KS US  3906  -9563   268
+FFGTUL   999999 TULSA                            OK US  3620  -9590   205
+FFGUT    999999 UTAH                             UT US  3910 -11150     0
+FFGVA    999999 VIRGINIA                         VA US  3740  -7880     0
+FFGWV    999999 WEST_VIRGINIA_WEST               WV US  3830  -8150     0
+FFGWV2   999999 WEST_VIRGINIA_PANHANDLE          WV US  3880  -7970     0
+FFGWY    999999 WYOMING                          WY US  4280 -10750     0

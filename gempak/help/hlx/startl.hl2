@@ -1,0 +1,9 @@
+     STARTL 
+
+     STARTL is the level in the input data file at which to begin the
+     search for the output vertical level in gdpvsf.  STARTL must be
+     a specific grid level in the input data file.  The search may 
+     proceed upward or downward, depending on the relative locations of
+     STARTL and STOPL.
+
+

@@ -1,0 +1,29 @@
+
+                            COLOR ENHANCEMENT
+
+
+The "Enh_list" pop-up allows images to be color-enhanced according to 
+pre-defined color lookup tables.  Different enhancement curves highlight 
+different meteorological features.  Activate this pop-up in NMAP with a 
+selection from the "Option" menu.  In NSAT, select from the "Tool" menu or 
+press <ctrl-E> on the keyboard.
+
+The pop-up presents a scroll list of enhancements.  Click on an enhancement to 
+apply it to the loaded images, even when the images are looping.
+
+Many of the enhancements in the scroll list are named according to their 
+intended application.  Names that start with "ir_" are intended for infrared 
+(IR) imagery.  Names that start with "wv_" are intended for water vapor imagery.
+Names that start with "vis" are intended for imagery from the visible channels.
+
+The "lingray" (linear gray scale) enhancement is the default.
+
+In NMAP, the overall image brightness may be changed in addition to the selected
+enhancement.  Use the "Fade" slider located on the main display window.  The 
+"half" and "none" buttons associated with the "Fade" slider permit the image to 
+be easily reset to the default (half) brightness or to no brightness (fully 
+faded out).
+
+If multiple applications are running under NTL control, then the color 
+enhancements and brightness levels selected in one application also apply to 
+images displayed in the other.

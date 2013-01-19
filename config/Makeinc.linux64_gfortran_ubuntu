@@ -1,0 +1,34 @@
+OPSYS = Linux
+
+MCHSYS = MCHPRM.$(OPSYS)_gfortran
+
+CC = gcc
+FC = gfortran
+
+MOTIFINC  = -I/usr/X11R6/include
+XWINCDIR  = -I/usr/X11R6/include
+
+COPT = -fno-stack-protector -DUNDERSCORE -D$(OPSYS) $(GEMINC) $(MOTIFINC) -DG_64BIT -g #-O # -g
+FOPT = -fno-stack-protector -fno-second-underscore -fno-range-check -fd-lines-as-comments $(GEMINC) -g #-O # -g
+NCII = "-I../libsrc"
+NCOPT = "CPPFLAGS=-DNDEBUG -Df2cFortran" "FFLAGS=-O -Wno-globals" "CFLAGS=-O $(NCII)" "CXX= "
+JASPEROPT = 'CC=$(CC)' 'CFLAGS=-O' '--disable-libjpeg'
+XML2OPT = 'CC=$(CC)' '--with-iconv'
+XMLDEP = -lpthread
+
+CFLAGS = $(COPT) 
+CFLAGS_DB = $(COPT)
+FFLAGS = $(FOPT)
+LDM_FLAGS = 
+
+# Static OpenMotif
+X11LIBDIR = -L/usr/X11R6/lib64
+#MOTIFLIBS = $(X11LIBDIR) -Wl,-static -lXm -Wl,-Bdynamic -lXmu -lSM -lICE -lXp -lXext -lXft -ljpeg -lpng
+
+# Dynamic OpenMotif
+#X11LIBDIR = -L/usr/X11R6/lib -Wl,--rpath /usr/X11R6/lib
+MOTIFLIBS = $(X11LIBDIR) -lXm
+
+BUFRFLAGS = -O -DNO_MSG_IPC -ansi
+
+SYSLIBS = 

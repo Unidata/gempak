@@ -1,0 +1,70 @@
+!* VGF.TBL
+!************************************************************************
+!*                                                                      *
+!*                 VGF user table in NMAP (vgf.tbl)			*
+!*                                                                      *
+!* This table is used for setting up the VGF user information in NMAP. 	*
+!*                                                                      *
+!* title:  title name shown in the data source selection box   		*
+!*                                                                      *
+!* user_login:  user login name   					*
+!*                                                                      *
+!* vgf_dir:  VGF file directory full path name for that user     	*
+!*                                                                      *
+!* LOG:                                                                 *
+!* C. Lin/EAI		05/97						*
+!* J. Carr/HPC		01/98	                      			*
+!* J. Carr/HPC		02/98                                           *
+!* J. Carr/HPC		06/98                                           *
+!* J. Carr/HPC		07/98                                           *
+!* S. Jacobs/NCEP	 9/98	Added medr3, sfc1, nppu3		*
+!* S. Jacobs/NCEP	 9/98	Changed pachs and atlhs			*
+!* S. Schotz/NCEP	 9/98	Changed modtdg to afos			*
+!* J. Carr/HPC		11/98	Changed some of the machines for HPC    *
+!* S. Schotz/NCEP	11/98	Updated sfc1 directory name for HPC	*
+!* J. Carr/HPC          12/98   Added prism data and updated HPC        *
+!*                              directory.                              *
+!* J. Carr/HPC           3/99   Added daily weather map and             *
+!*                              international desks accounts            *
+!* S. Jacobs/NCEP	 3/99	Fixed directory for DWM			*
+!* S. Jacobs/NCEP	 4/99	Added id5				*
+!* J. Carr/HPC           8/99   Edited id0 for a different machine      *
+!* S. Jacobs/NCEP	 3/00	Removed user_id column			*
+!* S. Jacobs/NCEP	 1/01	Updated sample HPC & MPC directories	*
+!************************************************************************
+!
+!
+!title		vgf_dir 
+!------------------------------------------------------------------------
+test_data	$GEMDATA/vgf
+bawx		/export/hbawx1/bawx
+eff1		/export/heff1/eff1
+eff2		/export/hww1/eff2
+eff3		/export/lnx159/eff3
+eff4		/export/lnx162/eff4
+nppu2		/export/hqpf1/nppu2
+nppu3		/export/hqpf2/nppu3
+medr		/export/hmedr2/medr
+medr3		/export/hmedr1/medr3
+avn3		/export/hdwm/avn3
+sfc1		/export/hsfc1/sfc1
+dwm		/export/hdwm/dwm
+id0		/export/sgi112/id0
+id1		/export/lnx114/id1
+id2		/export/lnx130/id2
+id3		/export/hp61/id3
+id5		/export/sgi20/id5
+id6		/export/sgi112/id6
+prism		/export-2/hp46/modtdg/joey/prism
+Pac_HS		/home/hp2/marine
+Atl_HS		/home/hp12/marine2
+Pac_Reg		/home/hp41/marine3
+Atl_Reg		/home/hp49/marine4
+HS_Outlook	/home/hp68/marine5
+!
+! nids STI product converted to VGF
+Storm_Tracks    $GEMDATA/images/vg/storm_tracks
+Mesocyclones    $GEMDATA/images/vg/meso
+!
+! Various redbook graphics converted to vgf
+SVR_REPORTS     $GEMDATA/images/vg/SVR-SEVERE_WEATHER_REPORTS

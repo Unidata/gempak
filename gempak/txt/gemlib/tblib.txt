@@ -1,0 +1,83 @@
+ 
+ 
+                    Table (TB) Library 
+ 
+ 
+The table library contains subroutines to access GEMPAK table files.
+A table file is a sequential file which may have leading comment 
+records.  A comment record is any record where the first non-blank  
+character is an exclamation point.  Table files may be created using 
+a text editor.
+
+The subroutine FL_TBOP may be used to open any table file for read
+access.  The file will be positioned after the last comment record.
+FL_SWOP will open a table file for write access.  FL_APND will
+position the file after the last record if information is to be
+added to the file.
+
+The following paragraphs describe the current GEMPAK tables which
+are located in subdirectories in $GEMTBL.
+
+GEOGRAPHIC TABLE
+
+The geographic table contains a list of geographic abbreviations, a
+full geographic name, centroid latitude and longitude, the latitude
+and longitude for the lower left and upper right corners of the
+geographic area, the default projection string (in the same form as
+in the PROJ variable).  The subroutine TB_FGEO will search the table
+for a geographic abbreviation or a full geographic name.  The local 
+file GEOG.TBL will be searched if it exists, otherwise the GEMPAK 
+table GEOG.TBL will be used. The format statement used to read or 
+write to the file is: ( A8, A18, 6F8.2, 1X, A30 ). 
+
+GRID NAVIGATION TABLE
+ 
+The grid navigation table associates a 4-character name with a 
+3-digit identification number and a complete set of grid navigation 
+parameters (projection name, 3 projection angles, 4 bounding lat/lon
+values, number of x and y grid points).  Grid numbers less than 300
+correspond to standard NMC grid numbers.  The table also contains
+the suggested DELTAN and EXTEND parameters for performing a Barnes
+analysis.  The subroutine TB_GRNV can be used to read the table;
+entries are free-format, but all 14 parameters must be non-blank.
+ 
+PARAMETER CONVERSION TABLE and PARAMETER FLAG TABLE
+
+These tables are used by the PC library to compute requested
+output parameters from the parameters contained in a data set.
+The subroutines TB_PCNV and TB_PRMT can be used to read the
+tables.  The GEMPAK tables are named PCCONV.TBL and PRMFLG.TBL.
+In general, these files may be modified to add new parameters, but
+the subroutines to read the files will be called only by the PC
+library subroutines. 
+
+SURFACE STATION TABLE, UPPER-AIR STATION TABLE, and
+WORLD UA STATION TABLE
+
+These tables contain surface and upper-air stations for the United
+States, Canada, Mexico and the Caribbean, which report on the Domestic
+Data line and upper-air data stations for the world.  The GEMPAK
+tables are SFSTNS.TBL, SNSTNS.TBL and SNWORLD.TBL.  Note that 
+SFSTNS.TBL was previously named STATIONS.TBL.  TB_RSTN will read
+a single record from the station file.  Each record of the file
+contains the station identifier, number, name, state, country, 
+latitude, longitude and elevation, and can be read with the format:
+( A4, 1X, I6, 1X, A32, 1X, A2, 1X, A2, 1X, I5, 1X, I6, 1X, I5 ).
+
+SURFACE DATA PACKING TABLE and UPPER-AIR DATA PACKING TABLE
+ 
+These packing tables contain recommended parameters and packing 
+information for data received from the 604-line or Domestic Data
+Service.  
+ 
+The current GEMPAK surface packing file is SFPACK.TBL.  The file is 
+read by DP_FILE, which is called by SF_CRFP when a packed surface 
+file is created.
+ 
+The current GEMPAK upper-air packing file is SNPACK.TBL .  Note that 
+the upper-air significant and mandatory reports are usually stored 
+separately in unmerged upper-air files.  The subroutine SN_CRUA,
+which creates such a file, may specify whether the data are to be 
+packed, but the packing information is predetermined.
+
+

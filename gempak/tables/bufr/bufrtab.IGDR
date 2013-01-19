@@ -1,0 +1,145 @@
+.------------------------------------------------------------------------------.
+| ------------   USER DEFINITIONS FOR TABLE-A TABLE-B TABLE D   -------------- |
+|------------------------------------------------------------------------------|
+| MNEMONIC | NUMBER | DESCRIPTION                                              |
+|----------|--------|----------------------------------------------------------|
+|          |        |                                                          |
+| NC012000 | A49024 | MSG TYPE 012-000 NAVOCEANO GFO NAVY IGDR WIND/WAVE RPTS  |
+|          |        |                                                          |
+| YYMMDD   | 301011 | DATE -- YEAR, MONTH, DAY                                 |
+| HHMM     | 301012 | TIME -- HOUR, MINUTE                                     |
+| IGDRID   | 301192 | IGDR IDENTIFICATION SEQUENCE                             |
+| IGDRLO   | 301193 | IGDR LOCATION SEQUENCE                                   |
+|          |        |                                                          |
+| IGSEQ1   | 361166 | IGDR BACKSCATTER SEQUENCE                                |
+| IGSEQ2   | 361167 | IGDR MEAN FREQUENCY/BRIGHTNESS TEMPERATURE SEQUENCE      |
+| IGSEQ3   | 361168 | IGDR WIND SEQUENCE                                       |
+| SSINSEQ  | 361169 | IGDR SATELLITE SENSOR INDICATOR SEQUENCE                 |
+|          |        |                                                          |
+| SAID     | 001007 | SATELLITE IDENTIFIER                                     |
+| OGCE     | 001033 | ORIGINATING/GENERATING CENTER                            |
+|          |        |                                                          |
+| SWCM     | 002023 | SATELLITE DERIVED WIND COMPUTATION METHOD                |
+| SSIN     | 002048 | SATELLITE SENSOR INDICATOR                               |
+| MEFR     | 002121 | MEAN FREQUENCY                                           |
+| SONA     | 002173 | SQUARE OF THE OFF-NADIR ANGLE                            |
+|          |        |                                                          |
+| YEAR     | 004001 | YEAR                                                     |
+| MNTH     | 004002 | MONTH                                                    |
+| DAYS     | 004003 | DAY                                                      |
+| HOUR     | 004004 | HOUR                                                     |
+| MINU     | 004005 | MINUTE                                                   |
+| SECW     | 004007 | SECOND WITHIN A MINUTE (MICROSECOND ACCURACY)            |
+|          |        |                                                          |
+| CLATH    | 005001 | LATITUDE (HIGH ACCURACY)                                 |
+| ORBN     | 005040 | ORBIT NUMBER                                             |
+|          |        |                                                          |
+| CLONH    | 006001 | LONGITUDE (HIGH ACCURACY)                                |
+|          |        |                                                          |
+| SELV     | 007001 | HEIGHT OF STATION                                        |
+| HINC     | 007005 | HEIGHT INCREMENT                                         |
+|          |        |                                                          |
+| LSQL     | 008012 | LAND/SEA QUALIFIER                                       |
+| FOST     | 008023 | FIRST ORDER STATISTICS                                   |
+| RSST     | 008029 | REMOTELY SENSED SURFACE TYPE                             |
+| AETP     | 008074 | ALTIMETER ECHO TYPE                                      |
+| TOBD     | 008076 | TYPE OF BAND                                             |
+|          |        |                                                          |
+| WS10     | 011012 | WIND SPEED AT 10 METERS                                  |
+|          |        |                                                          |
+| TMBR     | 012163 | BRIGHTNESS TEMPERATURE                                   |
+|          |        |                                                          |
+| RWVC     | 013090 | RADIOMETER WATER VAPOR CONTENT                           |
+| RLQC     | 013091 | RADIOMETER LIQUID CONTENT                                |
+|          |        |                                                          |
+| BKST     | 021062 | BACKSCATTER                                              |
+| NVPP     | 021128 | NO. VALID POINTS PER SEC. USED TO DERIVE PREV. PARAMS    |
+|          |        |                                                          |
+| SGWH     | 022070 | SIGNIFICANT WAVE HEIGHT                                  |
+|          |        |                                                          |
+| SWID     | 025060 | SOFTWARE IDENTIFICATION                                  |
+| ASFL     | 025095 | ALTIMETER STATE FLAG                                     |
+| RSFL     | 025096 | RADIOMETER STATE FLAG                                    |
+| EENO     | 025097 | 3-D ERROR ESTIMATE OF THE NAVIGATOR ORBIT                |
+|          |        |                                                          |
+| AFSI     | 031021 | ASSOCIATED FIELD SIGNIFICANCE                            |
+|          |        |                                                          |
+| TPQC     | 033255 | TEMP QC HOLDER                                           |
+|          |        |                                                          |
+|------------------------------------------------------------------------------|
+| MNEMONIC | SEQUENCE                                                          |
+|----------|-------------------------------------------------------------------|
+|          |                                                                   |
+| NC012000 | IGDRID  IGDRLO  CLATH  CLONH  RSST  AETP  LSQL  ASFL  RSFL  EENO  |
+| NC012000 | AFSI   TPQC   SGWH  FOST  SGWH  NVPP "IGSEQ1"2                    |
+| NC012000 | AFSI  TPQC    SONA  "IGSEQ2"3  "IGSEQ3"2  RWVC  RLQC              |
+|          |                                                                   |
+| IGDRID   | SAID  SWID  OGCE  "SSINSEQ"2  ORBN                                |
+| IGDRLO   | 201134 SELV 201000 202131 HINC 202000 YYMMDD HHMM SECW            |
+|          |                                                                   |
+| IGSEQ1   | TOBD  AFSI  TPQC  201129  BKST  201000  FOST  BKST                |
+| IGSEQ1   | AFSI  TPQC 201134  SELV  201000  202131  HINC                     |
+| IGSEQ1   | 202000  FOST  202131  SELV  202000  NVPP                          |
+|          |                                                                   |
+| IGSEQ2   | 201130  MEFR  201000  AFSI  TPQC  TMBR                            |
+|          |                                                                   |
+| IGSEQ3   | SWCM  202129  WS10  202000                                        |
+|          |                                                                   |
+| YYMMDD   | YEAR  MNTH  DAYS                                                  |
+| HHMM     | HOUR  MINU                                                        |
+|          |                                                                   |
+| SSINSEQ  | SSIN                                                              |
+|------------------------------------------------------------------------------|
+| MNEMONIC | SCAL | REFERENCE   | BIT | UNITS                    |-------------|
+|----------|------|-------------|-----|--------------------------|-------------|
+|          |      |             |     |                          |-------------|
+| SAID     |    0 |           0 |  10 | CODE TABLE               |-------------|
+| OGCE     |    0 |           0 |   8 | CODE TABLE C-1           |-------------|
+|          |      |             |     |                          |-------------|
+| SWCM     |    0 |           0 |   4 | CODE TABLE               |-------------|
+| SSIN     |    0 |           0 |   4 | CODE TABLE               |-------------|
+| MEFR     |   -8 |           0 |   7 | HERTZ                    |-------------|
+| SONA     |    4 |           0 |  10 | DEGREES**2               |-------------|
+|          |      |             |     |                          |-------------|
+| YEAR     |    0 |           0 |  12 | YEAR                     |-------------|
+| MNTH     |    0 |           0 |   4 | MONTH                    |-------------|
+| DAYS     |    0 |           0 |   6 | DAY                      |-------------|
+| HOUR     |    0 |           0 |   5 | HOUR                     |-------------|
+| MINU     |    0 |           0 |   6 | MINUTE                   |-------------|
+| SECW     |    6 |           0 |  26 | SECOND                   |-------------|
+|          |      |             |     |                          |-------------|
+| CLATH    |    5 |    -9000000 |  25 | DEGREES                  |-------------|
+| ORBN     |    0 |           0 |  24 | NUMERIC                  |-------------|
+|          |      |             |     |                          |-------------|
+| CLONH    |    5 |   -18000000 |  26 | DEGREES                  |-------------|
+|          |      |             |     |                          |-------------|
+| SELV     |    0 |        -400 |  15 | METERS                   |-------------|
+| HINC     |    0 |        -400 |  12 | METERS                   |-------------|
+|          |      |             |     |                          |-------------|
+| LSQL     |    0 |           0 |   2 | CODE TABLE               |-------------|
+| FOST     |    0 |           0 |   6 | CODE TABLE               |-------------|
+| RSST     |    0 |           0 |   8 | CODE TABLE               |-------------|
+| AETP     |    0 |           0 |   2 | CODE TABLE               |-------------|
+| TOBD     |    0 |           0 |   6 | CODE TABLE               |-------------|
+|          |      |             |     |                          |-------------|
+| WS10     |    1 |           0 |  12 | METERS/SECOND            |-------------|
+|          |      |             |     |                          |-------------|
+| TMBR     |    2 |           0 |  16 | DEGREES KELVIN           |-------------|
+|          |      |             |     |                          |-------------|
+| RWVC     |    1 |           0 |  10 | KG/M**2                  |-------------|
+| RLQC     |    2 |           0 |   8 | KG/M**2                  |-------------|
+|          |      |             |     |                          |-------------|
+| BKST     |    2 |       -5000 |  13 | DECIBELS                 |-------------|
+| NVPP     |    0 |           0 |   8 | NUMERIC                  |-------------|
+|          |      |             |     |                          |-------------|
+| SGWH     |    2 |           0 |  13 | METERS                   |-------------|
+|          |      |             |     |                          |-------------|
+| SWID     |    0 |           0 |  14 | NUMERIC                  |-------------|
+| ASFL     |    0 |           0 |   2 | FLAG TABLE               |-------------|
+| RSFL     |    0 |           0 |   5 | FLAG TABLE               |-------------|
+| EENO     |    0 |           0 |   4 | CODE TABLE               |-------------|
+|          |      |             |     |                          |-------------|
+| AFSI     |    0 |           0 |   6 | CODE TABLE               |-------------|
+|          |      |             |     |                          |-------------|
+| TPQC     |    0 |           0 |   1 | NUMERIC                  |-------------|
+`------------------------------------------------------------------------------'

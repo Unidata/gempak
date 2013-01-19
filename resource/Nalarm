@@ -1,0 +1,21 @@
+!
+! Nalarm
+!
+Nalarm*geometry:	75x125+0+650
+Nalarm*background:	grey75
+Nalarm*foreground:	black
+!
+Nalarm*button.background:	black
+Nalarm*button.foreground:	red
+Nalarm*button.labelString:	New\nProduct
+Nalarm*button.x:		0
+Nalarm*button.y:		0
+Nalarm*button.width:	75
+Nalarm*button.height:	75
+!
+Nalarm*Exit.background:	grey75
+Nalarm*Exit.foreground:	black
+Nalarm*Exit.width:	75
+Nalarm*Exit.height:	50
+Nalarm*Exit.x:		0
+Nalarm*Exit.y:		75

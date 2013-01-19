@@ -1,0 +1,34 @@
+!	NAGRIB2 error file
+!
++6	! WARNING: Resetting MAXGRD value to max limit !AS.
+! +5	! GRIB version 0 cannot be decoded.
+! +4	! Invalid parameter code table version.
+! +3	! No valid parameter found for !AS.
+! +2	! No valid vertical coordinate found for !AS.
+ +1	! WARNING: This grid is too large for GEMPAK programs.
+ -1	! Fatal error initializing TAE.
+ -2	! Fatal error reading TAE parameters.
+ -3	! Fatal error initializing GEMPLT.
+! -4	! Navigation information is invalid.
+! -5	! Grid area !AS is invalid.
+! -6	! Grid size is invalid.
+ -7	! The grid file name may not be blank.
+! -8	! Navigation table cannot be read.
+! -9	! Grid name !AS cannot be found in grid table.
+-10	! Input for GEMPAK output file is blank.
+-11	! Error opening GEMPAK grid file.
+-12	! Error creating GEMPAK grid file.
+!-13	! Cannot open GRIB vertical coordinate table.
+!-14	! Cannot open GRIB parameter table.
+-15	! Error opening GRIB file.
+-16	! EOF on input GRIB file
+!-17	! Error setting date/time.
+!-18	! Invalid bitmap specification.
+-19	! Error reading GRIB file.
+-20	! Invalid input for GAREA.
+-21	! Grid is too large.
+!-22	! Length of BDS section less than or equal to 0
+-25     ! Error unpacking GRIB2 metadata
+-26     ! Memory allocation error for next message
+-27     ! GRIB Message is not version 2
+-30	! Could not allocate space for grid.

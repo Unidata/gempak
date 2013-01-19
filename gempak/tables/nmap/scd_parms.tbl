@@ -1,0 +1,40 @@
+! 
+!	SCD_PARMS.TBL
+!
+! This table contains the available parameters used in the
+! station model editing panel in NMAP for the SCD data type. 
+!
+!	pos_zero_flag:	1 = plot at position 0 only
+!			0 = plot at any position
+!
+! Log:
+! A. Hardy/GSC		 4/00	From SYNOP_PARMS.TBL
+! D. Kidwell/NCEP	12/04	Replaced p12 with p24
+!
+!
+! parameter       pos_zero_flag     
+!
+cbas              0
+cfrt              0
+cfrl              0
+csyl              0
+csym              0
+csyh              0
+ctyl              0
+ctym              0
+ctyh              0
+msun              0
+p06i*100          0    
+p06m              0    
+p24i*100          0   
+p24m              0   
+stid              0     
+stnm              0     
+tdnc              0
+tdxc              0
+tdnf              0
+tdxf              0
+snow              0
+snew              0
+weqs              0
+wsym:1            0   

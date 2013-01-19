@@ -1,0 +1,13 @@
+! rad_gray8.tbl
+!
+! Gray-scale table for 8-level Radar Reflectivity
+!
+!Color name    Abrev   Red  Green   Blue  X color name
+                         0      0      0
+                        39     39     39
+                        75     75     75
+                       111    111    111
+                       147    147    147
+                       183    183    183
+                       219    219    219
+                       255    255    255

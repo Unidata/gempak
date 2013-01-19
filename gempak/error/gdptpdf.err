@@ -1,0 +1,12 @@
+!	This is the error file for GDPTPDF.
+!
+ -1	! Fatal error initializing TAE.
+ -2	! Fatal error reading TAE parameters.
+ -3	! Invalid vertical coordinate 	
+ -4	! Input for GPOINT is invalid.
+ -5	! Input for GDATTIM is invalid.
+ -7	! Input for PTYPE is invalid.
+ -8	! Error defining graph coordinates.
+-10	! Invalid data.
+-11     ! Input !AS for YAXIS is invalid.
+-12     ! Input !AS for XAXIS is invalid.

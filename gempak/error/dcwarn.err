@@ -1,0 +1,10 @@
+!	This is the error file for DCWARN.
+!
++4	! Unable to find polygon: !AS 
++3	! VTEC string error/not found: !AS 
++2	! Probable bad end time.  So end time changed.  !AS
+-1	! 'BULLETIN' not found.  Possibly bad format.  !AS
+-2	! Not a valid report type  !AS
+-3	! Invalid county/date string  !AS
+-4      ! Unable to determine bulletin time  !AS
+

@@ -1,0 +1,18 @@
+GLEVEL  250
+GVCORD  pres
+GFUNC   knts(mag(wnd))
+CINT    30;50;70;90;110;130;150
+LINE    27/5/2/1
+TITLE   5/-2/~  @  ISOTACHS|~ @ ISOTACHS
+CLEAR   yes
+PANEL   0
+TEXT    1/21//hw
+SCALE   0                                   
+HILO    27;0/J
+HLSYM   2;1.5//21//hw
+CLRBAR  1
+CONTUR  1
+SKIP    0
+FINT    70;90;110;130;150
+FLINE   0;25;24;29;7;15
+CTYPE   c/f

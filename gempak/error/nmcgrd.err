@@ -1,0 +1,22 @@
+!	Program NMCGRD
+!
++2	! Normal end of file with grid.
++1	! Normal end of file without grid.
+-1	! Fatal error initializing TAE.
+-2	! Fatal error reading TAE parameters.
+-3	! Error initializing GEMPLT.
+-4	! Grid navigation has no NMC grid number.
+-5	! Cannot open file !AS .
+-6	! CPYFIL could not be opened.
+-7	! Error creating output grid.
+-8	! Grid name !AS is not in the table.
+-9	! Table file open failed.
+-10	! Grid navigation is invalid.
+-11	! !AS is an invalid NMC file qualifier.
+-12	! EOF or error in reading grid starting at !AS .
+-13	! Error in writing grid !AS .
+-14	! Error in requesting target grid number.
+-15	! Subset grid points not at target grid points.
+-16	! Subset grid is not proper subset of target grid.
+-17	! Invalid packing type for grid.
+-18	! Subset grid size does not match output grid size.

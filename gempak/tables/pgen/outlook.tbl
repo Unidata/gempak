@@ -1,0 +1,86 @@
+! OUTLOOK.TBL
+!
+! This table contains the categories for the SPC outlook product.
+! Each entry contains two parts separated by a '|':
+!	1) Category abbreviation which appears on the graphic,
+!	2) Category descriptor which appears on the text product.
+!
+! Log:
+! D.W.Plummer/NCEP	 6/98						
+! G Grosshans/SPC	 2/99	Modified several categories
+! G Grosshans/SPC	 6/99	Modified exp outlk prob
+! G Grosshans/SPC	 2/00	Modified prob outlk
+! P.Bothwell/SPC         5/00   Modified for fire wx otlk
+! G Grosshans/SPC	 5/01	Commented out SEE TEXT 
+! D.W.Plummer/NCEP	12/01	Added third field for areal outlook processing
+! G. Grosshans/SPC      02/06   Changed Fire Weather outlooks to
+!                               handle new points product
+! G. Grosshans/SPC	04/07	Added labels for EXT_FIRE
+! G. Grosshans/SPC	09/07	Added 30%
+! G. Grosshans/SPC	05/08	Added 60%
+!
+!------------------------------------------------------------------------------
+HIGH|HIGH RISK|HIGH
+!
+MDT|MODERATE RISK|MDT
+!
+SLGT|SLIGHT RISK|SLGT
+!
+GEN|GENERAL THUNDERSTORM|TSTM
+!
+!SEE TEXT|SEE TEXT|STXT
+NO TSTMS FCST|NO TSTMS FCST|NONE
+!
+2%|2%|0.02
+5%|5%|0.05
+10%|10%|0.10
+15%|15%|0.15
+25%|25%|0.25
+30%|30%|0.30
+35%|35%|0.35
+40%|40%|0.40
+45%|45%|0.45
+50%|50%|0.50
+60%|60%|0.60
+70%|70%|0.70
+75%|75%|0.75
+!
+HATCHED|SIGNIFICANT SEVERE|SIGN
+AREA|SIGNIFICANT SEVERE|SIGN
+!
+!AREA-1|AREA 1 FIRE WEATHER|AREA-1
+!AREA-2|AREA 2 FIRE WEATHER|AREA-2
+!AREA-3|AREA 3 FIRE WEATHER|AREA-3
+!AREA-4|AREA 4 FIRE WEATHER|AREA-4
+!AREA-5|AREA 5 FIRE WEATHER|AREA-5
+!
+!1|AREA 1 FIRE WEATHER|1
+!2|AREA 2 FIRE WEATHER|2
+!3|AREA 3 FIRE WEATHER|3
+!4|AREA 4 FIRE WEATHER|4
+!5|AREA 5 FIRE WEATHER|5
+DRY-TSTM|DRY TSTM AREA FIRE WEATHER|DRY-TSTM
+CRITICAL|CRITICAL AREA FIRE WEATHER|CRITICAL
+EXTREME|EXTREMELY CRITICAL AREA FIRE WEATHER|EXTREME
+!
+D3|D3|D3
+D4|D4|D4
+D5|D5|D5
+D6|D6|D6
+D7|D7|D7
+D8|D8|D8
+D3-4|D3-4|D3-4
+D3-5|D3-5|D3-5
+D3-6|D3-6|D3-6
+D3-7|D3-7|D3-7
+D3-8|D3-8|D3-8
+D4-5|D4-5|D4-5
+D4-6|D4-6|D4-6
+D4-7|D4-7|D4-7
+D4-8|D4-8|D4-8
+D5-6|D5-6|D5-6
+D5-7|D5-7|D5-7
+D5-8|D5-8|D5-8
+D6-7|D6-7|D6-7
+D6-8|D6-8|D6-8
+D7-8|D7-8|D7-8

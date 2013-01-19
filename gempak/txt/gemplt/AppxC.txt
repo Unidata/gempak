@@ -1,0 +1,20 @@
+
+
+                        GEMPLT Error Messages
+
+
+Following is a list of the exceptions that can occur when calling GEMPLT
+subroutines.  The list includes the error code numbers, the error
+mnemonics used internally by GEMPLT, and the error messages.
+
+In general, positive error numbers indicate non-fatal conditions while
+negative numbers indicate fatal situations.  See Chapter 2 for a
+discussion of error processing.
+
+The error codes and error message texts in the list below come from file
+$GEMERR/gemplt.err.  The corresponding mnemonics are defined in file
+$GEMINC/error.prm.
+
+
+
+

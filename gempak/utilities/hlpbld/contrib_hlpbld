@@ -1,0 +1,12 @@
+GEMPARM=$GEMPAK/parm
+export GEMPARM
+GEMPTXT=$GEMPAK/txt/programs
+export GEMPTXT
+
+hlpbld $GEMHLP/hlp CPCGSTN
+###########################
+hlpbld $GEMHLP/hlp GPANOT
+###########################
+hlpbld $GEMHLP/hlp GPLTLN
+###########################
+echo ALL THE CONTRIB HLPs ARE BUILT.

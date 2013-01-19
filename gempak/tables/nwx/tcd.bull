@@ -1,0 +1,28 @@
+! TCD.BULL
+!
+! Location information for the following product:
+! Tropical_Cyclone_Discussion.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+! Log:
+! A. Hardy/NCEP		11/04	separated out the lat/lons
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+WTPA41 PHFO     HONOLULU                         HI US  2130 -15782     0
+WTPA42 PHFO     HONOLULU                         HI US  2150 -15802     0
+WTPA43 PHFO     HONOLULU                         HI US  2170 -15822     0
+WTPA44 PHFO     HONOLULU                         HI US  2190 -15842     0
+WTPA45 PHFO     HONOLULU                         HI US  2210 -15862     0
+WTNT41 KNHC     MIAMI/TROPICAL_PREDICTION_CENTER FL US  2570  -8038     0
+WTNT42 KNHC     MIAMI/TROPICAL_PREDICTION_CENTER FL US  2600  -8038     0
+WTNT43 KNHC     MIAMI/TROPICAL_PREDICTION_CENTER FL US  2630  -8038     0
+WTNT44 KNHC     MIAMI/TROPICAL_PREDICTION_CENTER FL US  2660  -8038     0
+WTNT45 KNHC     MIAMI/TROPICAL_PREDICTION_CENTER FL US  2690  -8038     0
+WTPZ41 KNHC     MIAMI/TROPICAL_PREDICTION_CENTER FL US  2570  -8138     0
+WTPZ42 KNHC     MIAMI/TROPICAL_PREDICTION_CENTER FL US  2600  -8138     0
+WTPZ43 KNHC     MIAMI/TROPICAL_PREDICTION_CENTER FL US  2630  -8138     0
+WTPZ44 KNHC     MIAMI/TROPICAL_PREDICTION_CENTER FL US  2660  -8138     0
+WTPZ45 KNHC     MIAMI/TROPICAL_PREDICTION_CENTER FL US  2690  -8138     0

@@ -1,0 +1,52 @@
+
+                           STATION MODEL EDITING
+
+
+The appearance of surface and upper-air station plots is controlled by two 
+levels of pop-ups, the "Parm Edit" and the "Station Model Edit."  "Parm Edit" 
+is invoked from the "Frame Set Definition" window ("Data" button).  When a 
+observational  data type is selected, it appears on the "data source" list 
+with the "edit" button enabled.  Click the "edit" button to bring up the 
+"Parm Edit" pop-up.
+
+The "Parm Edit" pop-up provides a "Filter" slider that controls the displayed 
+density of stations.  The lower the filter value, the more stations displayed.  
+The filter value may be varied between 0 and 2 with 0.9 the default.  For 
+upper-air data, the "Parm Edit" pop-up also provides a way to choose the 
+vertical coordinate and associated level.
+
+To bring up the "Station Model Edit" window, click the station model button 
+located on the "Parm Edit" pop-up.  Use the "Station Model Edit" window to 
+assign parameters to station model positions, to turn positions off and on, 
+and to change the colors and text of the station model.
+
+The simplest operations on the "Station Model Edit" pop-up are associated 
+with the "Clear" and "Default" buttons.  Press the "Clear" button to remove 
+all parameters from the 11 positions of the station model.  Click the "Default" 
+button to efficiently set up a commonly used pattern of parameters and colors.
+
+To change a parameter in any of the 11 positions, click on the large position 
+button that displays the parameter name (or the word "parm" when no parameter 
+is assigned).  The background of the button turns the color currently assigned 
+to that model position.  Scroll the "Parameter List" and select a parameter to 
+assign to that model position.  The names that appear in the scroll list are 
+names of GEMPAK parameters.  The parameters in the list are read from a table 
+gemparms.tbl.
+
+The text color for each assigned plot model position may be changed 
+independently by clicking on the center of the position and selecting from 
+the "Color" palette.
+
+A plot model position with an assigned parameter may be disabled.  A disabled 
+position does not appear on the final display, yet it retains the assigned 
+information.  To disable a position, click on that position's tiny colored 
+square so that it pops out and turns grey.  To enable a position that has an 
+assigned parameter, click on the same tiny square; enabled positions have the 
+tiny square colored the same as the parameter text.
+
+Text in all positions of the station model may be varied together in size, 
+font, and style using the three "Text" pop-up menus ("size," "font," and 
+"style") located near the top of the "Station Model Edit" window.
+
+To retain the changes, click "Accept" on the "Station Model Edit" pop-up and 
+"LOAD" on the "Parm Edit" pop-up.

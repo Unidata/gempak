@@ -1,0 +1,26 @@
+!RDF.PACK
+!
+!This table is the packing table for DCRDF, which 
+!decodes Regional Digital Forcasts.
+!
+!*Log:
+!
+!F. J. Yen/NCEP		 9/02
+!
+TMPF       -99.        150.      1.
+DWPF       -99.        150.      1.
+RELH         0.        100.      1.
+QP12         0.          6.      1.
+QPX2         0.          6.      1.
+SN12         0.          6.      1.
+PP12         0.        100.      1.
+TNTF      -100.        150.      1.
+TDYF      -100.        150.      1.
+SMPH         0.        200.      1.
+WCEQ       -99.        150.      1.
+HEAT       -99.        150.      1.
+DRCT         0.        360.      5.
+OVIS         0.          4.      1.
+CFRT         0.          9.      1.
+WNUM        -3.     512000.      1.
+WXPB         1.          5.      1.

@@ -1,0 +1,15 @@
+     FXYTBL
+
+     FXYTBL is the the FXY table file names in the format of
+
+	FXYTBL = ...;...;...
+	       or SWH
+	       or SWM
+
+     where the individual items are the FXY file names (e.g., 
+     fxyswhcld;fxyswhfrt) and the SWH is an alias which refers to 
+     all FXY files for the high level sigwx messages as listed in 
+     the master table, and the SWM is an alias which refers to all
+     FXY files for the mid level sigwx messages as listed in the
+     master table. If individual file names are used, they must
+     all be of one type (high or mid level).

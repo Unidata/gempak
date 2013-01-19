@@ -1,0 +1,35 @@
+                     OBSERVED DATA SOUNDINGS
+
+
+The OBSERVED SOUNDING SELECTION window allows the user to plot 
+soundings stored in GEMPAK upper air format data files. The
+data set choices are defined in $NAWIPS/tables/nsharp/nsharp_observed.tbl,
+and reference the datatype.tbl template/aliases. Any GEMPAK upper air 
+file may be used by choosing the "BROWSE" option in the file list. 
+Typical sources of observational soundings include radiosonde
+and dropsonde reports.
+
+After selecting the GEMPAK upper air source, the available times will 
+be displayed in the "Sounding times" list. The "00Z and 12Z only"
+toggle provides a shortcut for displaying the standard sounding times
+without other times received. A single or multiple times may be selected
+from the list. A range of times is selected by clicking a starting
+time and dragging the mouse pointer, or by selecting the first time
+and then depressing <SHIFT> while selecting the second time.
+Individual times may be added by depressing <CTRL> when selecting
+additional times.
+
+After selecting the desired times from the available times list, the 
+sounding location is selected using the available stations displayed on 
+the selection map. The available report locations from the most recent 
+selected time are displayed. The location for which soundings are computed 
+is obtained by positioning the mouse pointer over the desired point and clicking mouse button 1. 
+
+The map AREA may be set using the predefined map regions, while
+ZOOMing is accomplished through the use of a rubber band box.
+UNZOOMing will restore the image to the current AREA.
+
+Select "Cancel" to close the sounding selection window without
+changing the current sounding display. The sounding selection window will
+close after a sounding location is chosen from the map display.
+ 

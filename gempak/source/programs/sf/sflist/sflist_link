@@ -1,0 +1,4 @@
+$FC $FFLAGS $LDFLAGS -o $OS_BIN/sflist sflist.f \
+	$OS_LIB/sflist.a \
+	$GEMLIB $APPL $SYSLIB $CGEMLIB
+$RM *.o

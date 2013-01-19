@@ -1,0 +1,24 @@
+     PTYPE
+
+     PTYPE is the type of y axis plot to be used, the height-to-width 
+     ratio of the plot, and the margins, separated by slashes.
+
+     The valid inputs for type for the y axis are:
+
+	LIN	linear 
+	LOG	logarithmic 
+	STUVE	scaled by raising to KAPPA, 2/7, power
+	KAP	same as STUVE
+	SKEWT	logarithmic y-axis; skewed x-axis
+	SKEW	same as SKEWT
+ 
+     If the height-to-width ratio is 0, the entire screen will be used.  
+     This is also the default when ratio is not specified.
+ 
+     The margins are specified as:  left;bottom;right;top.  The values 
+     are multiples of the current character size.  If the margin 
+     specification is missing or incomplete, a default appropriate to 
+     the program will be used.  The default in the profile programs is:  
+     10;3;(6 times wind barb size);5.  The right margin allows room for 
+     plotting winds and typically has a value around 20.
+

@@ -1,0 +1,70 @@
+'\"
+'\" $Id: gribdump.1,v 1.1 1995/06/15 19:41:33 russ Exp $
+.TH GRIBDUMP 1 "8 June 1995"
+.SH NAME
+gribdump - Decode GRIB products and display as text
+.SH SYNOPSIS
+.HP
+.ft B
+gribtonc
+.nh
+\%[-h]
+\%[-b]
+\%[-p\ \fIprecision\fP]
+\%[-e\ \fIerrpath\fP]
+\%[-q\ \fIqspecs\fP]
+\%[\fIfiles ...\fP]
+.hy
+.ft
+.SH DESCRIPTION
+.LP
+This program decodes GRIB products (embedded in WMO product envelopes) on
+the NWS High-Resolution Data Service (HRS) feed, writing textual
+representations of the products or summaries of the products to standard
+output.
+.SH OPTIONS 
+.TP
+.B \-h
+Headers only.  Information from the Product Description Section and Grid
+Description Section is output, but no data values are output.  The default
+is to output both headers and data values.
+.TP
+.B \-b
+Brief output.  Only one line is output for each product, providing summary
+information of the parameter, grid, model, levels, time ranges, and other
+information.
+.TP
+.BI \-p " precision"
+Precision used for printing floating-point values, if other than the
+7-significant figure default is desired.
+.TP
+.BI \-e " errpath"
+If a GRIB product cannot be decoded, perhaps because it is truncated or
+otherwise corrupted, it is appended to this file.
+.TP
+.BI \-q " qspecs"
+Specification for how to expand so-called quasi-regular or thinned grids
+into rectangular grids.  This argument is a
+comma-delimited text string that specifies the method of interpolation used
+(currently \fBlin\fP for linear or \fBcub\fP for cubic), and the latitude
+and longitude
+increments in degrees for the resulting grid (e.g. \fBdlat=2.5,dlon=5.0\fP).
+.TP
+.I files
+The path name of one or more files of GRIB products used as input.
+If no filenames are provided, GRIB products are read from standard input.
+.SH EXAMPLE
+The command
+.RS +4
+.nf
+gribdump -q "lin,dlat=2.5,dlon=5.0" avn-x.wmo
+.fi
+.RE
+will decode and display values for the products in avn-x.wmo If the data
+contain quasi-regular grids, they will be expanded to full regular grids on
+a 2.5 by 5.0 degree grid before being written into the output file.
+.SH "SEE ALSO"
+gribtonc(1), netcdf(3), pqact(1), udunits(3), ulog(3)
+.SH DIAGNOSTICS
+Error messages and log messages are written to the log file.
+

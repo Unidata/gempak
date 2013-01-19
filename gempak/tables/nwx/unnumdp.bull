@@ -1,0 +1,13 @@
+! UNNUMDP.BULL
+!
+! This table contains the bulletin/station information to be used
+! with the Unnumbered_Depression_and_Suspicious_Area_Advisory bulletins.
+!
+! The format for the file is given below, with the
+! number of characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+!
+ACPA80 PHFO     HONOLULU/UNIV_OF_HI-MANOA_CAMPUS HI US  2130 -15782    20
+FZHW50 PHFO     HONOLULU/UNIV_OF_HI-MANOA_CAMPUS HI US  2150 -15802    20

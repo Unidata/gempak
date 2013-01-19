@@ -1,0 +1,35 @@
+OPSYS = AIX
+
+# if have vac --> XLCPATH = /usr/vac/bin/xlc
+XLCPATH = /usr/vac/bin/
+CC = $(XLCPATH)xlc
+COPT = -D$(OPSYS) $(GEMINC) -qnolm
+
+FC     = xlf
+FOPT   = $(GEMINC) -qnolm
+
+NCOPT = "CC=$(CC)" "FC= " "CXX= " "F90= "
+
+JASPEROPT = 'CC=$(CC)' '--disable-libjpeg'
+XML2OPT = 'CC=$(CC)' '--without-iconv'
+
+LDFLAGS =
+CFLAGS = $(COPT)
+CFLAGS_DB = $(COPT)
+FFLAGS = $(FOPT)
+
+CPLUS_COMMENT = -qcpluscmt
+
+
+LDM_FLAGS = -DLOGNAME_ISSOCK -D_BSD=43 -D_ALL_SOURCE -DSTDC 
+BUFRFLAGS = -O -D_SYS_TYPES_H
+
+
+MOTIFLIBS = -lXm
+MOTIFINC  = 
+INSTALL = cp
+AUXINSTALL = cp
+
+SYSLIBS = -lm
+
+ARSLEEP = sleep 1 ;

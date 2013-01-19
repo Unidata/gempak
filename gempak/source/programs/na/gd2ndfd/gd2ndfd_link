@@ -1,0 +1,4 @@
+$FC $FFLAGS $LDFLAGS -o $OS_BIN/gd2ndfd gd2ndfd.f \
+	$OS_LIB/gd2ndfd.a $GEMLIB $CGEMLIB \
+	$APPL $GEMLIB $SYSLIB -lmdlg2enc -lm
+$RM *.o

@@ -1,0 +1,24 @@
+SNFILE                                                                          
+DATTIM                                                                          
+AREA                                                                            
+SNPARM  tmpc;dwpc                                                               
+LINE    5/1;2/4/                                                                
+PTYPE   skewt                                                                   
+VCOORD  pres                                                                    
+STNDEX  lift                                                                    
+STNCOL  5                                                                       
+WIND    bk5/1/2                                                                 
+WINPOS  1                                                                       
+MARKER  0                                                                       
+BORDER  2/1/2                                                                   
+TITLE   2/-1                                                                    
+DEVICE  xw                                                                      
+YAXIS   dset                                                                    
+XAXIS   -30/40/10/1;1;1                                                         
+FILTER  yes                                                                     
+CLEAR   y                                                                       
+PANEL   0                                                                       
+TEXT    1.3/23/hw                                                               
+THTALN  24/1/2/                                                                 
+THTELN  1/2/2                                                                   
+MIXRLN  3/33/2                                                                  

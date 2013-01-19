@@ -1,0 +1,16 @@
+! WAA.BULL
+!
+! Location information for the following product:
+! Airmet_(All_Regions).
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+WAHW31 PHFO     HONOLULU                         HI US  2129 -15780     0
+WAUS1  KBOS     BOSTON/LOGAN_INTL                MA US  4236  -7102     0
+WAUS01 KBOS     BOSTON/LOGAN_INTL                MA US  4236  -7102     0
+WAAK01 PAJN     JUNEAU_INTL_AIRPORT              AK US  5836 -13458     0
+WAAK01 PANC     ANCHORAGE_INTL_ARPT              AK US  6116 -15002     0
+WAAK01 PAFA     FAIRBANKS_INTL_ARPT              AK US  6481 -14786     0

@@ -1,0 +1,14 @@
+! EOL.BULL
+!
+! Location information for the following product:
+! Average_6_to_10_Day_Weather_Outlook_(Local).
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+FEUS71 KCLE     CLEVELAND                        OH US  4140  -8186     0
+FEUS71 KLWX     BALTIMORE_MD/_WASHINGTON_DC      VA US  3897  -7747     0
+FEUS75 KCYS     CHEYENNE                         WY US  4115 -10480     0
+FEUS75 KTFX     GREAT_FALLS                      MT US  4745 -11137     0

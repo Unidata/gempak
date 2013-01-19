@@ -1,0 +1,16 @@
+RADFIL  Radar image filename(s)                                                 
+RADTIM  Radar composite current/dattim                                          
+TITLE   Title color/line/title                                                  
+PANEL   Panel loc/color/dash/width/regn                                         
+DEVICE  Device|name|x size;y size|color type                                    
+CLEAR   Clear screen flag                                                       
+TEXT    Size/fnt/wdth/brdr/N-rot/just/hw flg                                    
+COLORS  Color list                                                              
+WIND    Wind symbol/siz/wdth/typ/hdsz                                           
+LINE    Color/type/width/label/smth/fltr                                        
+CLRBAR  Color/ornt/anch/x;y/ln;wd/freq|text_info                                
+IMCBAR  Color/ornt/anch/x;y/ln;wd/freq                                          
+GAREA   Graphics area                                                           
+MAP     Map color/dash/width/filter flag                                        
+LATLON  Line color/dash/width/freq/inc/label/format                             
+OUTPUT  Output device/filename                                                  

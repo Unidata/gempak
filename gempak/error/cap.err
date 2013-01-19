@@ -1,0 +1,15 @@
+!       This is the GEMLIB CAP error file
+!
++4      ! Requested value is invalid since the object was not placed
++3      ! Iteration has gone past the end of the placement set
++2      ! Handle specified is already in the placement set
++1      ! At least one object in the placement set was not placed
+-1      ! Invalid pointer in argument list
+-2      ! The plot area for the placement set was not assigned
+-3      ! Could not allocate memory
+-4      ! Could not locate the handle specified in the placement set
+-5      ! An object to be placed cannot use itself as a reference
+-6      ! Number of retries must be not be negative
+-7      ! Invalid plot area defined
+-8      ! Invalid distance increment percentage
+-9      ! Value outside acceptable range

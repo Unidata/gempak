@@ -1,0 +1,41 @@
+
+                                USER-DEFINED
+
+
+This pop-up is a file selection utility that allows selection of metafiles 
+from user directories.  It is located under the "File" pull-down menu and may 
+be invoked by clicking on "User-Defined," or by typing CTRL-F in the NTRANS 
+panel.
+
+Specify the base directory in the dialogue box (Filter) of this file 
+selection utility to search for files.
+
+For example, the filter "/export/sgi19/user/meta/*.META" finds all files in 
+the directory /export/sgi19/user/meta (directory mask) whose names end with 
+".META" (search pattern).
+
+The user may edit the directory mask and search pattern in the filter 
+dialogue box.  The filter understands standard shell meta- characters such 
+as ?, ~, *, etc.  Changes to the filter will be saved internally for future 
+invocations of the file selection panel.
+
+A sub-directory list (Directories) and a file list (Files) are displayed under 
+the filter dialogue box.  The user may select a new directory by scrolling 
+through the list of directories and selecting one.  Double clicking the left 
+mouse button on a directory in the directory list, or selecting the directory 
+then clicking the "Search" button at the bottom of the pop-up window, will 
+initiate a search for files and sub-directories in the new directory using 
+the current search pattern.
+
+The default directory mask is the current working directory.
+
+The bottom dialogue box (Selection) displays the currently selected file.  
+Enter a file name here or select one with the left mouse button from the file 
+lists.  The user may select a new file as many times as desired.
+
+After selecting the desired file, click the "Select" button to complete the 
+file selection process.  Double clicking the desired file in the file list 
+will have the same effect.  The file selection pop-up window will disappear 
+and the specified file has been selected.
+
+The "CANCEL" button de-activates the file select pop-up window.

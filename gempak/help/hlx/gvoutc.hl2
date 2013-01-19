@@ -1,0 +1,19 @@
+     GVOUTC
+
+     GVOUTC is the vertical coordinate of the output grid.
+
+     The standard values are:
+ 
+	NONE	for surface data
+	PRES	data in pressure coordinates (millibars)
+	THTA	data in isentropic coordinates (Kelvin)
+	HGHT	data in height coordinates (meters)
+	SGMA	data in sigma coordinates
+
+     Any nonstandard value may be used as well, as long as it is four
+     characters long and includes only letters and/or numbers.  For
+     example, PVAB and PVBL may be used to represent PV as a vertical
+     coordinate, where PVAB is the PV surface found searching from above
+     and PVBL is the PV surface found searching from below.
+
+

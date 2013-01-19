@@ -1,0 +1,7 @@
+     QCNTL
+
+     QCNTL is the quality control threshold values.  It is used only
+     when the first-guess field exists. If the difference between 
+     the original data and the interpolated values from the first guess 
+     is greater than the threshold values, the data will be discarded.
+     Only positive threshold values are used. The default value is 0. 

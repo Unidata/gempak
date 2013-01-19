@@ -1,0 +1,4 @@
+$FC $FFLAGS $LDFLAGS -o $OS_BIN/gdcntr gdcntr.f \
+	$OS_LIB/gdcntr.a $GEMLIB $CGEMLIB $APPL $SYSLIB \
+	-lm -lnetcdf -lz
+$RM *.o

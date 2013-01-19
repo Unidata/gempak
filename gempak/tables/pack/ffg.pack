@@ -1,0 +1,14 @@
+!FFG.PACK 
+! 
+!This table is the packing table for DCFFGU, which decodes flash flood guidance.
+!
+!*Log:
+!
+!L. Sager  5/96
+!S. Maxwell  6/96   Renamed FFGUID.PACK to FFG.PACK
+!
+FF01         0.        100.       .1
+FF03         0.        100.       .1
+FF06         0.        100.       .1
+FF12         0.        100.       .1
+FF24         0.        100.       .1

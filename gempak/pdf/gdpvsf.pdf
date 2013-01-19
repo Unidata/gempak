@@ -1,0 +1,13 @@
+GDFILE  Grid file
+GDOUTF  Output grid file
+GFUNC   Grid function
+GDATTIM Grid date/time
+GVCORD  Grid vertical coordinate
+STARTL  Level to start search
+STOPL   Level to stop search
+DESIRE  Desired interpolation surface
+GDOUTL  Nominal output grid level
+GVOUTC  Nominal output vertical coordinate
+GPACK   Number of bits / packing type
+GLIST   List of grids to interpolate
+PMAX    Maximum pressure to search

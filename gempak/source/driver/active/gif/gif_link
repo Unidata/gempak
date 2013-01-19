@@ -1,0 +1,8 @@
+echo LINKING GIF
+cp $GEMPAK/source/device/main/device.f .
+$FC $FFLAGS $LDFLAGS -o $OS_BIN/gif device.f \
+            $DEVICE $OS_LIB/gif.a $OS_LIB/gn.a \
+            $SYSLIB $GEMLIB $CGEMLIB $GEMLIB \
+	    -lm -lnetcdf -lz
+$RM *.o device.f
+

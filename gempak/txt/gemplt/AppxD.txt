@@ -1,0 +1,414 @@
+
+
+                              Examples
+
+
+This appendix contains examples of GEMPLT subroutine use.  One program
+draws a map, another creates a graph, and a third shows an interactive
+animation frame sequence.
+
+These are simplified examples.  The programs do not check the return
+codes, variable IRET.  Real programs must check for non-zero return
+codes and follow with appropriate actions.
+
+Compiling the examples depends on the programming environment.  In the
+standard GEMPAK environment, the program MAP, that is in a source code
+file named "map.f," is compiled using the following commands:
+
+    $FC $FFLAGS $LDFLAGS -o map map.f $APPL $SYSLIB $GEMLIB
+
+On most systems the build commands translate into the following:
+
+    f77 -o map map.f $GEMOLB/appl.a $GEMOLB/syslib.a $GEMOLB/gemlib.a
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	PROGRAM MAP
+C************************************************************************
+C* MAP									*
+C*									*
+C* This program is a simplified example of how to use GEMPLT.  This	*
+C* example draws a map.							*
+C*									*
+C* Although fully functional, this example is more simple than real	*
+C* programs.  This program does not check any return codes (variable	*
+C* IRET).  Real programs should check for a non-zero return code and	*
+C* follow through with appropriate actions.				*
+C**									*
+C* Log:									*
+C* F. LastName/Org	 2/91						*
+C* F. LastName/Org	10/96	Changed to use the XW driver		*
+C************************************************************************
+C*
+	CHARACTER	device*2, cprj*3, filnam*72
+C------------------------------------------------------------------------
+C*	Initialize GEMPLT.  Set the mode to draw maps.
+C
+	mode = 1
+	CALL GINITP ( mode, istat, iret )
+C
+C*	Set device to an X Window named "win1", initial size 600 by 400.
+C
+	device = 'xw'
+	iunit  = 1
+	filnam = 'win1'
+	itype  = 0
+	xsize  = 600
+	ysize  = 400
+C
+	CALL GSDEVA ( device, iunit, filnam, itype, xsize, ysize, iret )
+C
+C*	Set map projection for a Mercator map of the US.
+C
+	cprj  = 'MER'
+	dlats =   25.
+	dlonw = -125.
+	dlatn =   50.
+	dlone =  -65.
+C
+	CALL GSMMAP ( cprj, dlats, dlonw, dlatn, dlone, iret )
+C
+C*	Draw the map.
+C
+	CALL GDRMAP ( iret )
+C
+C*	Flush the graphics buffers to render the image.
+C
+	CALL GEPLOT ( iret )
+C
+C*	End the GEMPLT plotting session.  Do not retain the GPLT process.
+C
+	ieop = 1
+	CALL GENDP ( ieop, iret )
+C*
+	END
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	PROGRAM GRAPH
+C************************************************************************
+C* GRAPH								*
+C*									*
+C* This program is a simplified example of how to use GEMPLT.  This	*
+C* example draws a graph.						*
+C*									*
+C* Although fully functional, this example is more simple than real	*
+C* programs.  This program does not check any return codes (variable	*
+C* IRET).  Real programs should check for a non-zero return code and	*
+C* follow through with appropriate actions.				*
+C**									*
+C* Log:									*
+C* F. LastName/Org	 2/91						*
+C* F. LastName/Org	10/96	Changed to use the XW driver		*
+C************************************************************************
+C*
+	CHARACTER	device*2, filnam*80, cmd*80
+	REAL		xaxis ( 11 ), yaxis ( 11 )
+	REAL		xpts ( 20 ), ypts ( 20 )
+	LOGICAL		laxis
+C
+	DATA	xpts /  0.,  5., 10., 15., 20., 25., 30., 35., 40., 45.,
+     +		       50., 55., 60., 65., 70., 75., 80., 85., 90., 95. /
+C
+	DATA	ypts / 16., 31., 45., 59., 71., 81., 89., 95., 99., 100.,
+     +		       99., 95., 89., 81., 71., 59., 45., 31., 16.,  0. /
+C------------------------------------------------------------------------
+C*	Initialize GEMPLT.  Set the mode to draw graphs.
+C
+	mode = 2
+	CALL GINITP ( mode, istat, iret )
+C
+C*	Set the device to the X window driver.  Default initial size.
+C
+	device = 'XW'
+	iunit  = 1
+	filnam = 'GEMPAK.xw'
+	itype  = 0
+	xsize  = -9999
+	ysize  = -9999
+C
+	CALL GSDEVA ( device, iunit, filnam, itype, xsize, ysize, iret )
+C
+C*	Set left and bottom margins to be four times the height of text.
+C
+	xl = 4.
+	yb = 4.
+	xr = 1.
+	yt = 1.
+C
+	CALL GSGMGN ( xl, yb, xr, yt, iret )
+C
+C*	Define the graph coordinate system.  The X and Y axes are linear
+C*	with limits from 0 to 100.  The plot is square by YSZXSZ = 1.
+C
+	ixtyp  = 1
+	iytyp  = 1
+	yszxsz = 1.
+	xlm    = 0.
+	ybm    = 0.
+	xrm    = 100.
+	ytm    = 100.
+C
+	CALL GSGRAF ( ixtyp, iytyp, yszxsz, xlm, ybm, xrm, ytm, iret )
+C
+C*	Fill the X axis coordinate array.
+C
+	np = 11
+	DO  i = 1, np
+	    xaxis ( i ) = 10. * ( i - 1 )
+	END DO
+C
+C*	Draw the X axis with labels below the line.  The X axis
+C*	intercepts the Y axis at point Y = 0.  Tick marks and labels are
+C*	on every other point along the X axis.  No grid lines are drawn.
+C*	Labels are integers.
+C
+	iaxis  = 1
+	axpos  = 0.
+	laxis  = .true.
+	lbstfq = 102
+	mtstfq = 102
+	lgstfq = 0
+	ndec   = 0
+C
+	CALL GDAXIS ( iaxis, axpos, laxis, lbstfq, mtstfq, lgstfq, ndec,
+     +		      np, xaxis, iret )
+C
+C*	Fill the Y axis coordinate array.
+C
+	DO  i = 1, np
+	    yaxis ( i ) = 10. * ( i - 1 )
+	END DO
+C
+C*	Draw the Y axis with labels left of the line.  The Y axis
+C*	intercepts the X axis at point X = 0.  Tick marks and labels are
+C*	on every point along the Y axis.  No grid lines are drawn.
+C*	Labels are integers.
+C
+	iaxis  = 2
+	axpos  = 0.
+	laxis  = .true.
+	lbstfq = 101
+	mtstfq = 101
+	lgstfq = 0
+	ndec   = 0
+C
+	CALL GDAXIS ( iaxis, axpos, laxis, lbstfq, mtstfq, lgstfq, ndec,
+     +		      np, yaxis, iret )
+C
+C*	Draw the array of data points on the graph.  The 'M' indicates
+C*	that the X and Y points are in units of the map coordinate system
+C*	defined earlier by the call to GSGRAF.
+C
+	npts = 20
+	CALL GLINE ( 'M', npts, xpts, ypts, iret )
+C
+C*	Flush the graphics buffers to render the image.
+C
+	CALL GEPLOT ( iret )
+C
+C*	Pause until the user wants to continue with cleanup.
+C
+	WRITE ( *, * ) 'Press ENTER to continue...'
+	READ  ( *, '(A)' ) cmd
+C
+C*	End the GEMPLT plotting session.  Do not retain the GPLT process.
+C
+	ieop = 1
+	CALL GENDP ( ieop, iret )
+C*
+	END
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	PROGRAM LOOP
+C************************************************************************
+C* LOOP									*
+C*									*
+C* This program is a simplified example of how to use GEMPLT.  This	*
+C* example creates an animation frame sequence.				*
+C*									*
+C* Although fully functional, this example is more simple than real	*
+C* programs.  This program does not check any return codes (variable	*
+C* IRET).  Real programs should check for a non-zero return code and	*
+C* follow through with appropriate actions.				*
+C**									*
+C* Log:									*
+C* F. LastName/Org	 5/97						*
+C************************************************************************
+C*
+	CHARACTER	device*2, cproj*3, filnam*20, mapfil*20
+	INTEGER		lblfrq ( 2 )
+C------------------------------------------------------------------------
+C*	Initialize GEMPLT.  Set the mode to draw maps.
+C
+	mode = 1
+	CALL GINITP ( mode, istat, iret )
+C
+C*	Set device to an X Window named "win1", initial size 450 by 400.
+C
+	device = 'xw'
+	iunit  = 1
+	filnam = 'win1'
+	itype  = 0
+	xsize  = 450
+	ysize  = 400
+C
+	CALL GSDEVA ( device, iunit, filnam, itype, xsize, ysize, iret )
+C
+C*	Set a low resolution map file.
+C
+	mapfil = 'locowo.gsf'
+C
+	CALL GSMFIL ( mapfil, iret )
+C
+C*	Establish the start of an animation frame sequence.
+C
+	CALL GSTANM ( iret )
+C
+C*	Create a number of frames.
+C
+	maxfrm = 50
+	DO  iframe = 1, maxfrm
+C
+C*	    Set the beginning of a frame.
+C
+	    IF ( iframe .ne. 1 ) CALL GSPLOT ( iret )
+C
+C*	    Set map projection for a globe.
+C
+	    rf = FLOAT ( iframe )
+	    rm = FLOAT ( maxfrm )
+C
+	    cproj  = 'ort'
+	    angle1 =   30. * COS ( 6.28 * rf / rm )
+	    angle2 = -100.
+	    angle3 =   15. * COS ( 6.28 * rf / rm )
+C
+	    dlatll =    0.
+	    dlonll =  180. - ( 360. * rf / rm )
+	    dlatur =    0.
+	    dlonur =  180. - ( 360. * rf / rm )
+C
+	    CALL GSMPRJ ( cproj, angle1, angle2, angle3, dlatll, dlonll,
+     +			  dlatur, dlonur, iret )
+C
+C*	    Draw a red latitude/longitude grid.
+C
+	    dellat = 20.
+	    dellon = 20.
+	    lblfrq ( 1 ) = 5
+	    lblfrq ( 2 ) = 5
+            blat = 50.0
+            blon = -100.0
+            ifrmat = 2
+C
+	    icolr = 2
+	    CALL GSCOLR ( icolr, iret )
+	    CALL GDRGRD ( dellat, dellon, lblfrq, blat, blon, 
+     +                    ifrmat, iret )
+C
+C*	    Draw a blue map.
+C
+	    icolr = 26
+	    CALL GSCOLR ( icolr, iret )
+	    CALL GDRMAP ( iret )
+C
+C*	    Flush the graphics buffers to complete the frame.
+C
+	    CALL GEPLOT ( iret )
+	END DO
+C
+C*	Establish the end of the animation frame sequence.
+C
+	CALL GENANM ( iret )
+C
+C*	Set the loop in motion.
+C
+	WRITE ( *, * ) 'Click left mouse button in the window to end...'
+C
+	icomm = 1
+	CALL GLOOPC ( icomm, iret )
+C
+C*	End the GEMPLT plotting session.  Do not retain the GPLT process.
+C
+	ieop = 1
+	CALL GENDP ( ieop, iret )
+C*
+	END

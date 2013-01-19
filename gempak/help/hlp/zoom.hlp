@@ -1,0 +1,21 @@
+
+                                    ZOOM
+
+
+"Zoom" enlarges a geographic region.
+
+To begin the zoom, click the "Zoom" button; the button turns red and the mouse 
+pointer changes to a cross-hair.  Next, specify the zoom area by rubber-banding 
+a box around the desired region:  move the mouse so that the pointer starts in 
+one corner of the area, hold down the left mouse button, and drag to the 
+opposite corner of the region.  After the left mouse button is released, the 
+enlarged graphic or image sequence is re-loaded.
+
+Zoom can be used with the pull-down option menu.  When the "Extended Zoom" is 
+ON (default), re-load attempts to fill the entire display area.  When the 
+"Extended Zoom" is OFF, the display area is defined by the selected lat/lon 
+corners.
+
+To cancel a zoom before an area is zoomed in (when the "Zoom" button is red), 
+click anywhere on the display area.  If you have already started to rubber-band,
+reduce the region so as to rubber-band a very small rectangle.

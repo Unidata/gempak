@@ -1,0 +1,12 @@
+! MODBIAS.BULL
+!
+! This table contains the bulletin/station information to be used
+! with Model Bias Discussions
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+!
+FXUS10 KWNH     NCEP                             MD US  3882  -7687    86

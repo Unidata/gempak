@@ -1,0 +1,68 @@
+#!/bin/sh
+if  [ $# != 0 ]
+then
+  version=$1
+  path=$NAWIPS/extlibs/GNU/gettext/$version
+  if  [ -d $path ]
+  then
+    echo "----->  BUILDING gettext LIBRARIES $version"
+    mkdir -p $OS_LIB/extlibs/gettext
+    cd $OS_LIB/extlibs/gettext
+
+#=========================================================
+
+#  Initialize "influential environment variables"
+
+    export  FC=""               # Fortran compiler command
+    export  F77=""              # Fortran 77 compiler command
+    export  F90=""              # Fortran 90 compiler command
+    export  CPP=""              # C prepocessor
+    export  CXX=""              # C++ compiler command
+    export  CXXCPP=""           # C++ preprocessor
+    if [ $OS = "HPUX" ]
+    then
+      export  CFLAGS="+DA1.1"
+    else
+      export  CFLAGS=""		# C compiler flags
+    fi
+    export  FCFLAGS=""		# Fortran compiler flags
+    export  FFLAGS=""		# Fortran 77/90 compiler flags
+    export  LDFLAGS=""		# linker flags
+    export  F90FLAGS=""		# Fortran 90 compiler flags
+    export  CXXFLAGS=""		# C++ compiler flags
+    export  CPPFLAGS="-DNDEBUG"	# C/C++ preprocessor flags
+    export  PKG_CONFIG="$OS_BIN/pkg-config"
+
+#=====================================================================
+# Clean up after any previous configure/make
+#    if  [ -f Makefile ]
+#    then
+#      make -k -s distclean
+#    fi
+
+# Run the configure script for this OS type
+    ${path}/configure --prefix=$OS_ROOT --disable-shared \
+		--disable-threads --disable-dependency-tracking \
+		--with-included-libcroco \
+		--with-included-libxml
+
+# Compile and install gettext
+    echo "----->  COMPILING gettext LIBRARIES $version"
+    make -k -s
+    echo "----->  INSTALLING gettext LIBRARIES in \"$OS_LIB\""
+    make -k -s install
+
+# Clean up after this configure/make
+#    make -k -s distclean
+    rm -f $OS_LIB/gettext_*
+    touch $OS_LIB/gettext_$version
+
+###################################################################
+    echo "----->  CREATION OF gettext LIBRARIES $version IS COMPLETE."
+    echo "        ==================================================="
+  else
+    echo "Directory \"$path\" does not exist!"
+  fi
+else
+  echo "Please include a valid gettext library version; e.g., v0.17"
+fi

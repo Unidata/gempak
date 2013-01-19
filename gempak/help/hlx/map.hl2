@@ -1,0 +1,29 @@
+     MAP
+
+     MAP is the map color, line type and line width separated by slashes:
+
+		map color / line type / line width / filter flag
+
+     If the color is 0, the map is not drawn.  If the map color, line 
+     type, or line width is blank, a default of 1 is used.
+
+     Additional help for colors is available in COLORS; help on line types
+     can be found in LINE.
+
+     The filter flag is used to reduce the number of points used to draw
+     the map lines.  Valid values for the filter flag are YES and NO.
+     The default is NO.
+
+     The attributes for multiple maps may be set by separating the settings
+     for each map with a plus sign (+).  If the number of attribute groups
+     is less than the number of map files, the last group of settings is
+     used for the remaining maps.
+
+     Examples:
+
+		MAP	= 1//2 + 2//3
+		$MAPFIL	= hicnus.nws + hipowo.cia
+
+		MAP	= 17
+		$MAPFIL	= hipowo.cia + lorvwo.cia + lakes.cia
+

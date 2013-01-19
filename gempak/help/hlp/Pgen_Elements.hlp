@@ -1,0 +1,65 @@
+
+                         PRODUCT GENERATION ELEMENTS
+
+
+The following is a description of some of more specialized elements available 
+in product generation, as well as instructions in their major features.
+
+
+Element		Class
+
+AIRMET		MET	Note that this is NOT the AIRMET under class SIGMET.
+
+	Airmets have an Area name, which is defined in the airmet.tbl (in 
+        $GEMTBL/pgen), a color, a Station, sequence number, forecast hour, and
+        two flight levels, top and bottom.  There is also a From Line which is
+	derived from the point locations after the AIRMET figure is drawn.
+
+        In product generation the AIRMET is displayed as a closed line with an
+	associated text box containing the AIRMET type, sequence number, flight
+	levels, and forecast hour.
+
+	To draw an AIRMET, click on Class MET, then Object AIRMET.  The AIRMET
+	attributes window will appear.  Click with the left mouse button on the
+	main window to identify the points of the AIRMET.  As the mouse is moved
+	between these points, the resulting figure will be temporarily drawn with
+	a white line.  Once all the points have been identified, click on the 
+	middle mouse button.  The From Line will now be calculated and will 
+	appear in the AIRMET attribute box.  The white line that temporarily 
+	described the AIRMET figure will be replaced with the real line in the
+	correct color and a white rectangle will appear and move with the mouse.  
+	This box roughly describes the dimensions of the AIRMET text box.  Move 
+	the mouse to the desired location and click on the left mouse button.  
+	The text will appear centered on that location.  
+
+	After one AIRMET is drawn another may be drawn using the same procedure
+	described above, or the draw mode may be exited by clicking on the 
+	middle mouse button.  The AIRMET attribute window will disappear at
+	this point.
+
+	To edit an AIRMET, click on class MET and action Select (arrow button)
+	and click on a previously drawn AIRMET in the main window.  The AIRMET 
+	attribute window will appear with the information from that airmet.  
+	In order to change the AIRMET's attributes, make the desired change(s)
+	in the attribute window and click on Apply.  In order to change the 
+	shape of the AIRMET, click on a point, keep the mouse button held
+	down (i.e. do not release the button) and move the mouse to the desired
+	location.  When the mouse button is released the AIRMET will be redrawn
+	with the new point location and the From Line will be updated.  To move
+	the text, click on Move Text on the attribute window.  The temporary 
+	text box will follow the cursor.  A left mouse button click identifies
+ 	the new location for the text.  
+
+	To create the From Line text file, click on the Save button.  A Save 
+	confirmation window will appear.  It will contain the AIRMET's from line
+	and file name.  Click on either Save to write this to the indicated 
+	file (all writes are to the local directory from which nmap2 was started) 
+	or Cancel to abort the operation.  The file name will be in this format:
+
+	 	ZULU_#.frm	for Icing
+		TANGO_#.frm	for Turbulence	
+		SIERRA_#.frm	for all other AIRMETs
+
+	The # will be the sequence number.
+
+

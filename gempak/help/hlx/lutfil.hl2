@@ -1,0 +1,16 @@
+     LUTFIL
+
+     LUTFIL specifies a lookup table file name used to enhance the colors for
+     satellite or radar images. Color enhancement allows certain features in a
+     satellite or radar image to be highlighted. 
+
+     Keywords may be specified for LUTFIL with the following definitions:
+
+	LUTFIL = DEFAULT	(Use the color enhancement specified for this
+				 image type in the table IMGTYP.TBL)
+	LUTFIL = 		(Same as DEFAULT)
+	LUTFIL = GRAY		(Image gray values, no enhancement)
+	LUTFIL = GREY		(Image gray values, no enhancement)
+	LUTFIL = RADAR		(Standard radar colors for reflectivity)
+	LUTFIL = NONE		(Use the current look up table with no changes)
+

@@ -1,0 +1,11 @@
+     SFFSRC 
+
+     SFFSRC is the surface file source. With this parameter, the type of
+     data the can be contained in the file is specified.
+
+     SFFSRC may be set to either decoded data (including UNKN, AIRW, 
+     METR, SHIP, BUOY, and SYNP) or TEXT. If both types are requested,
+     they are separated by a '|'. 
+   
+     The decoded file type MUST be specified first, otherwise a default
+     to a text only file will be created. 

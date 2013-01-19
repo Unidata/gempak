@@ -1,0 +1,125 @@
+C************************************************************************
+C*  / LOGMSG /								*
+C*									*
+C*  This common area contains a string used to hold messages that are	*
+C*  to be written to the decoder log.					*
+C************************************************************************
+	CHARACTER	logmsg*200
+C*
+	COMMON	/ LOGMSG /	logmsg
+C*					String to hold a message to be
+C*					written to decoder log
+C*
+C************************************************************************
+C*  / PASSBUFR /							*
+C*									*
+C*  This common area contains information about the output BUFR file.	*
+C************************************************************************
+	COMMON	/ PASSBUFR /	iunbfo
+C*					BUFR output file unit number
+C*
+C************************************************************************
+C*  This common area contains information about the output GEMPAK file. *
+C************************************************************************
+        COMMON  / PASSGEMP /    iungem
+C*                                      GEMPAK output file unit number
+C*
+C************************************************************************
+C*  / PASSBULL /							*
+C*									*
+C*  This common area contains information about the latest bulletin	*
+C*  that was read from the input pipe via DC_GBUL.			*
+C************************************************************************
+	CHARACTER	bull*(DCMXBF),
+     +			seqnum*8, buhd*8, cborg*8, bulldt*8, bbb*8
+C*
+	INTEGER		irundt (5)
+C*
+	COMMON	/ PASSBULL /	lenb,
+C*					Length of bulletin
+     +				ibptr,
+C*					Pointer within bulletin
+     +				bull,
+C*					Bulletin
+     +				seqnum,
+C*					Bulletin sequence number
+     +				buhd,
+C*					Bulletin header
+     +				cborg,
+C*					Bulletin originator
+     +				bulldt,
+C*					Bulletin date-time
+     +				bbb,
+C*					Bulletin BBB indicator
+     +				irundt
+C*					Bulletin receipt time
+C*
+C************************************************************************
+C*  / SHEFTB /								*
+C*									*
+C*  This common area contains information from the SHEF station table.	*
+C************************************************************************
+	PARAMETER	( MXSTBE = 60000 )
+C*
+	CHARACTER	shstid ( MXSTBE )*8,
+     +			shstyp ( MXSTBE )*8
+C*
+	REAL		shslat ( MXSTBE ), shslon ( MXSTBE ),
+     +			shselv ( MXSTBE )
+C*
+	COMMON	/ SHEFTB /	nste,
+C*					Number of table entries
+     +				shstid,
+C*					Station ID
+     +				shslat,
+C*					Latitude
+     +				shslon,
+C*					Longitude
+     +				shselv,
+C*					Elevation
+     +				shstyp
+C*					Station type
+C*
+C************************************************************************
+C*  / INTF /								*
+C*									*
+C*  This common area contains the interface arrays.			*
+C************************************************************************
+	PARAMETER	( MXIMN = 75 )
+C*					Maximum number of real and
+C*					character interface mnemonics
+C*
+	CHARACTER	cimnem ( MXIMN )*8, civals ( MXIMN )*8,
+     +			rimnem ( MXIMN )*8
+C*
+	REAL		rivals ( MXIMN )
+C*
+	COMMON	/ INTF /	cimnem,
+C*					Character interface mnemonics
+     +				civals,
+C*					Character interface values
+     +				rimnem,
+C*					Real interface mnemonics
+     +				rivals,
+C*					Real interface values
+     +				nimn,
+C*					Actual number of real and
+C*					character interface mnemonics
+     +                          iflagw
+C*                                      Flag to indicate whether the
+C*                                      output should be in BUFR for
+C*                                      iflagw = 1 or in GEMPAK (surface)
+C*                                      for iflagw = 2
+C************************************************************************
+C*  / PARGEM /                                                            *
+C*                                                                      *
+C*  This common area contains the GEMPAK parameter arrays.              *
+C************************************************************************
+C*
+        PARAMETER       ( MXPARM = 26 )
+
+        CHARACTER       cprms ( MXPARM )*4
+C*
+        COMMON / PARGEM /        cprms
+C*                                      Character GEMPAK parms chosen for output
+

@@ -1,0 +1,5 @@
+$CC $CFLAGS -c dcuair.c
+$FC $FFLAGS -c dcudcd.f
+$FC $LDFLAGS -o $OS_BIN/dcuair *.o \
+	$BRIDGE $GEMLIB $CGEMLIB
+$RM *.o

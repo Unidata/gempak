@@ -1,0 +1,66 @@
+! ATLHURR.BULL
+!
+! This table contains the bulletin/station information to be used
+! with the Atlantic Hurricane products
+!
+! The format for the file is given below, with the
+! number of characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)  (5)
+!
+ABNT20 KNHC     TROPICAL_WEATHER_OUTLOOK         FL US  2604  -8009    4
+ACCA62 TJSJ     TROPICAL_WEATHER_OTL_SPAN        -- US  1800  -6600    4
+WTNT21 KNHC     MARINE_ADVISORY                  FL US  2782  -8228    4
+WTNT22 KNHC     MARINE_ADVISORY                  FL US  2782  -8128    4
+WTNT23 KNHC     MARINE_ADVISORY                  FL US  2782  -8028    4
+WTNT24 KNHC     MARINE_ADVISORY                  FL US  2782  -7928    4
+WTNT25 KNHC     MARINE_ADVISORY                  FL US  2782  -7828    4
+WTNT31 KNHC     PUBLIC_ADVISORY                  FL US  2682  -8228    4
+WTNT32 KNHC     PUBLIC_ADVISORY                  FL US  2682  -8128    4
+WTNT33 KNHC     PUBLIC_ADVISORY                  FL US  2682  -8028    4
+WTNT34 KNHC     PUBLIC_ADVISORY                  FL US  2682  -7928    4
+WTNT35 KNHC     PUBLIC_ADVISORY                  FL US  2682  -7828    4
+WTCA41 TJSJ     PUBLIC_ADVISORY_SPANISH          -- US  1800  -6700    4
+WTCA42 TJSJ     PUBLIC_ADVISORY_SPANISH          -- US  1800  -6630    4
+WTCA43 TJSJ     PUBLIC_ADVISORY_SPANISH          -- US  1800  -6600    4
+WTCA44 TJSJ     PUBLIC_ADVISORY_SPANISH          -- US  1800  -6530    4
+WTCA45 TJSJ     PUBLIC_ADVISORY_SPANISH          -- US  1800  -6500    4
+WTNT41 KNHC     DISCUSSION                       FL US  2582  -8228    4
+WTNT42 KNHC     DISCUSSION                       FL US  2582  -8128    4
+WTNT43 KNHC     DISCUSSION                       FL US  2582  -8028    4
+WTNT44 KNHC     DISCUSSION                       FL US  2582  -7928    4
+WTNT45 KNHC     DISCUSSION                       FL US  2582  -7828    4
+WTNT71 KNHC     STRIKE_PROBABILITIES             FL US  2482  -8228    4
+WTNT72 KNHC     STRIKE_PROBABILITIES             FL US  2482  -8128    4
+WTNT73 KNHC     STRIKE_PROBABILITIES             FL US  2482  -8028    4
+WTNT74 KNHC     STRIKE_PROBABILITIES             FL US  2482  -7928    4
+WTNT75 KNHC     STRIKE_PROBABILITIES             FL US  2482  -7828    4
+AXNT20 KNHC     TROPICAL_WEATHER_DISCUSSION      FL US  2582  -8028    4
+WTNT51 KNHC     CYCLONE_POSITION_ESTIMATE        FL US  2582  -8028    4
+WTNT61 KNHC     CYCLONE_UPDATE                   FL US  2582  -8028    4
+WONT41 KNHC     SPECIAL_DISTURBANCE_STATEMENT    FL US  2582  -8028    4
+ABNT30 KNHC     TROPICAL_WEATHER_SUMMARY         FL US  2582  -8028    4
+TCCA21 KNHC     EASTERN_CARIBBEAN_RAINFALL       FL US  2582  -8028    4
+TCCA22 KNHC     CENTRAL_CARIBBEAN_RAINFALL       FL US  2582  -8028    4
+TCCA23 KNHC     WESTERN_CARIBBEAN_RAINFALL       FL US  2582  -8028    4
+URNT10 KWBC     RECCO_OBS_NONTROPICAL            VA US  3851  -7702   20
+URNT10 KNHC     RECCO_OBS_NON_TROPICAL           FL US  2582  -8028    4
+URNT10 KBIX     RECCO_OBS_NON_TROPICAL           MS US  3042  -8892    0
+URNT11 KNHC     RECCO_OBS_TROPICAL               FL US  2582  -8028    4
+URNT11 KWBC     RECCO_OBS_TROPICAL_KWBC          VA US  3851  -7702   20
+URNT11 KBIX     RECCO_OBS_TROPICAL_KBIX          MS US  3042  -8892    0
+URNT12 KWBC     VORTEX_HURRICANE_KWBC            VA US  3851  -7702   20
+URNT12 KBIX     VORTEX_HURRICANE_KBIX            MS US  3042  -8892    0
+URNT12 KNHC     VORTEX_HURRICANE                 FL US  2582  -8028    4
+URNT14 KNHC     SUPPLEMENTAL_VORTEX              FL US  2582  -8028    4
+UZNT13 KNHC     DROPS                            FL US  2582  -8028    4
+UZNT13 KWBC     DROPS_KWBC                       -- US  3851  -7702    0
+UZNT13 KBIX     DROPS_KBIX                       MS US  3042  -8892    0
+URNT40 KNHC     P3_ASDL                          FL US  2582  -8028    4
+URNT40 KWBC     P3_ASDL_KWBC                     VA US  3851  -7702   20
+NOUS42 KNHC     RECON_POD                        FL US  2582  -8028    4
+WTNT80 EGRR     UKMET_GUIDANCE                   -- UK  2582  -8178    4
+WHXX01 KMIA     ATLANTIC_GUIDANCE                -- US  2682  -8128    4
+WHXX04 KWBC     ATLANTIC_GUIDANCE                -- US  2682  -8028    4
+WHXX01 KWBC     ATLANTIC_GUIDANCE                -- US  2682  -7928    4

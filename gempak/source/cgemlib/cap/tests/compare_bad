@@ -1,0 +1,23 @@
+#!/bin/csh
+
+onintr cleanup
+
+touch /tmp/bad
+touch /tmp/result
+(./display.tcl -i /tmp/bad & ) >& /dev/null
+(./display.tcl -i /tmp/result & ) >& /dev/null
+
+foreach b (bad*)
+    echo "File: $b"
+    set n = `echo $b | sed 's/bad//'`
+    cp $b /tmp/bad
+    cp result$n /tmp/result
+    printf "Update windows and enter y to update ref, n to keep it as it is (default n): "
+    set k = $<
+    if ("$k" == "y" || "$k" == "Y") then
+        mv $b result$n
+    endif
+end
+
+cleanup:
+rm -f /tmp/bad /tmp/result

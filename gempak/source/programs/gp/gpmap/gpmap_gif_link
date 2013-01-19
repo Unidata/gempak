@@ -1,0 +1,8 @@
+$FC $FFLAGS $LDFLAGS -o $OS_BIN/gpmap_gif gpmap.f \
+	$OS_LIB/gpmap.a $OS_LIB/ginitp_alt.o \
+	$OS_LIB/gendp_alt.o $GEMLIB $CGEMLIB \
+	$GPLT $DEVICE $OS_LIB/gif.a $OS_LIB/gn.a \
+	$GEMLIB $CGEMLIB $GEMLIB -lGPC \
+	-lm -lnetcdf -lz
+
+$RM *.o

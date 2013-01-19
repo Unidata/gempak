@@ -1,0 +1,50 @@
+     LATLON
+
+     LATLON specifies the latitude and longitude grid lines to be drawn.  
+     The line color, line type, line width, label frequency and increment 
+     are separated by slashes:
+
+	color/line_type/line_width/x-freq;y-freq/x-inc;y-inc/lt_label;ln_label/format
+
+     The label frequency specification contains the latitude and longitude 
+     label frequencies separated by a semicolon.  The increment specification 
+     contains the latitude and longitude increments in degrees separated by 
+     a semicolon.
+
+     If the color is 0 or LATLON is blank, grid lines are not drawn.  The 
+     latitude and longitude increments will default to 10 degrees.  The 
+     label frequency defaults to 1.
+
+     The latitude and longitude labels refer to the latitude at which to label
+     the longitudes lines and the longitude at which to label the latitude lines.
+     The defaults for the latitude and longitude value placements if either or
+     both are not specified are usually the left side for latitude labeling
+     and the bottom for longitude labeling.
+
+     The format value specifies the current format of the labels.  If format is
+     equal to 1, the latitude and longitude labels have a '-' prepended to the
+     southern and western number labels.  If the format is equal to 2, 'N', 'S', 
+     'E' and 'W' are appended to the latitude and longitude labels. The default
+     is that the '-' will be prepended to the southern latitudes and western
+     longitudes.
+
+     Examples:
+
+	LATLON	= 1
+
+ 		Lat/lon grid lines are drawn every 10 degrees in color 1 using 
+ 		line type 1 and line width 1.
+
+	LATLON	= 4/8/3/2/5;5
+
+ 		Lat/lon grid lines are drawn every 5 degrees in color 4 using 
+ 		line type 8 and line width 3.  Every other line is labelled.
+
+	LATLON   = 24/12/1/2;2/4;4/48.;-100./2
+
+ 		Lat/lon grid lines are drawn every 4 degrees in color 24 using 
+ 		line type 12 and line width 1.  Every other line is labelled.
+ 		The latitude labels appear on 100.0 W longitude and the 
+ 	        longitude labels appear on 48 N latitude appended to the 
+ 	        numerical labels.
+

@@ -1,0 +1,62 @@
+
+
+                       Source Code Line Counters
+                       -------------------------
+                         M. Linda/GSC -- 3/97
+
+
+
+The source code line counters are a collection of utilities for counting 
+lines of GEMPAK FORTRAN or C.
+
+
+APPLICATION
+-----------
+   -  To count source code across several directories, use CNTALL.
+
+   -  To count source code in a single directory, use CNTLOC (or CNTALL).
+
+   -  To count source code in a single FORTRAN file, use COUNTF.
+
+   -  To count source code in a single C file, use COUNTC.
+
+For more information, see each of the individual utilities.  Each utility 
+includes a help panel that describes its operation.  To display the help
+panel, activate the utility with no parameters.
+
+
+BUILD GUIDE
+-----------
+The counter utilities are a combination of shell scripts and FORTRAN programs.
+To compile and link the programs, execute the COUNT_LINK script.  The FORTRAN
+code uses GEMPAK and therefore the build must be done on a system where 
+standard GEMPAK environment variables are set.
+
+
+DEFINITIONS
+-----------
+Each utility outputs 4 values for each file that it counts.  The first value,
+"total," is the total number of lines in the file.  This is the same number 
+as one would get using the "wc -l" UNIX command.
+
+The second value, "code," is the number of lines that form executable code.
+This count is derived by subtracting "comment" and "blank" lines from the 
+"total."  In FORTRAN files, each continuation line is included in this count 
+as an individual line.  In C files, a statement spanning several lines is 
+counted as several lines.
+
+The third value, "comment," is the number of comment lines in the file.  This
+count includes only comments that have substance (i.e., trivial comment lines 
+are not included--they are added to the "blank" count instead).
+
+The fourth value, "blank," is the number of blank or almost-blank lines.  It
+includes lines with only white space, comments that are one or two characters
+in length, separator lines (i.e., lines filled with stars or dashes), and
+(in C files) lines that include only a left or right bracket ("{" or "}").
+
+The counters were developed for GEMPAK source code.  They search for particular
+patterns characteristic of the GEMPAK programming style.  Although nothing 
+prevents the counters from being used on any file, the results may not be 
+accurate when such source does not follow GEMPAK coding conventions.
+
+                                  ***

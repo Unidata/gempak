@@ -1,0 +1,9 @@
+     ADDSTN
+
+     ADDSTN is a logical variable which indicates whether stations which 
+     are in STNFIL, but not already included in the data file, should be 
+     added to the data file.
+  
+     Enter YES to add stations.  Enter NO to update current stations but 
+     not add new ones.
+ 

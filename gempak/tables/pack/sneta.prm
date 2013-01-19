@@ -1,0 +1,16 @@
+PRES    .1    1090.    .01       .01      PRES
+TMPC  -140.    50.     .01      1.        TMPK
+DWPC  -150.    40.     .01      1.        UWND
+SPED    00.    300.    .01      1.        VWND
+DRCT    00.    360.    .01      1.        SPFH
+HGHT  -200.  50000.	.1      1.        OMEG
+OMEG   -30.     30.    .01      1.        CWTR
+CWTR    0.       1.    .00001  86400.     DTCP
+DTCP  -500.   500.     .1      86400.     DTGP
+DTGP  -500.   500.      .1     86400.     DTSW
+DTSW  -100.  100.      .01     86400.     DTLW
+DTLW  -100.  100.      .01      1.        CFRL
+CFRL   0.    101.      .1       1.        TKEL
+TKEL   0.     40.      .01      1.        IMXR
+IMXR   0.      1.      .00001 
+DTAR  -100.  100.      .01

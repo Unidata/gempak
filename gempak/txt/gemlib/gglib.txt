@@ -1,0 +1,16 @@
+ 
+ 
+                   Graphics (GG) Library 
+  
+
+The graphics library is used to simplify and standardize GEMPLT
+library calls.  Routines to initialize graphics, to set the
+graphics device and projection, and to draw maps and titles are
+included. 
+
+GG_MAPS is used to define both the projection type and graphics
+area.  It can be used for map, graph, and satellite overlay
+projections.  The current valid projections are listed in the
+documentation for GG_MAPS.  Details for defining map projections
+can be found in the GEMPLT documentation for GSMMAP and GSMPRJ. 
+

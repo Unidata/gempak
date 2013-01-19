@@ -1,0 +1,60 @@
+     WOU
+
+     WOU is the ending valid time for the watch outline update (WOU), 
+     the colors for the county bounds, a flag for plotting the start 
+     and stop times, a flag for plotting the county names for the 
+     WOU on the map, a flag to outline the county or union, a flag to
+     fill the county or union, and a union flag.
+
+        End time | Marker and outline colors | Time flag | Label flag |
+		Watch number | Color code flag | Marker flag |
+		Outline flag | Fill flag / fill colors | Union flag
+
+     WOUs that are valid at the ending time will be plotted on the map.
+     The ending time is given as a GEMPAK date/time string. Any missing
+     items from the string will be filled in by the system time. The
+     ending time may also be LAST and ALL. LAST will use the system time
+     and plot all current WOUs. ALL will plot all the WOU in the
+     data files, whether they are active, cancelled or expired.
+
+     The colors are separated by a semi-colon.  If any color is set to 0,
+     that type of symbol will not be plotted.  If any color is missing, a
+     default will be used.  Defaults are cyan for thunderstorm, red for
+     tornado.
+
+     The time flag is YES or NO and controls whether or not to plot
+     the start and stop times of the WOUs on the map. The default is NO.
+
+     The label flag is YES or NO and controls whether or not to plot
+     the county name of the WOUs on the map. This flag is not applicable
+     when the Union flag is set to YES.  The default is NO.
+
+     The watch number flag is YES or NO and controls whether or not to plot
+     the watch number of the WOUs on the map. The default is NO.
+
+     The color code flag is YES or NO, if YES, the colors are associated
+     with the last digit of the watch number, otherwise, based on the
+     weather type ( tornado or thunderstorm ).
+
+     The marker flag is YES or NO and controls whether or not to plot
+     the marker of the WOUs on the map.  If the input is missing, it 
+     will be set to YES.  If a WOU is a "test" only, and markers are 
+     selected, then a hollow marker will be plotted at the county centroid 
+     to indicate this.
+
+     The outline flag is YES or NO and controls whether to outline the
+     county or union. The default is NO. The outline colors are those
+     specified previously.
+
+     The fill flag is YES or NO and controls whether or not to fill the
+     county or union with the colors specified after the slash sign.
+     The colors are separated by a semi-colon. If the colors are not
+     specified, default colors from the miscset.tbl will be used.
+     The default is NO.
+
+     The union flag is YES or NO and controls whether or not to display
+     the union of the counties.  If the union flag is YES, then the
+     outline and fill flags apply to the union.  If both outline and fill
+     flags are NO, and the union flag is YES, then the union will be
+     outlined by default.  If the union flag is NO, then the outline and
+     fill flags apply to the individual counties.

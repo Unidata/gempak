@@ -1,0 +1,162 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>        
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.6 [en] (X11; U; Linux 2.2.11 i686) [Netscape]">
+   <title>TRMM Satellite Validation Office Web Site</title>
+</head>
+<body>
+<center><table BORDER=2 >
+
+<h2><center>TRMM Radar Software Library</center></h2>
+
+
+<tr>
+<td><img SRC="rsl3.gif" ></td>
+</tr>
+</table></center>
+
+<center>
+<p>
+<hr></center>
+
+<h2>
+Current RSL Version 1.37, released 6/19/2007</h2>
+
+In support of the <a href="http://trmm-fc.gsfc.nasa.gov">Tropical Rainfall
+Measuring Mission</a>'s (TRMM) <a href="http://trmm-fc.gsfc.nasa.gov/trmm_gv/index.html">Global
+Validation Program</a>, the NASA TRMM  Satellite Validation Office has developed a Radar Software
+Library for working with the various input radar formats. This is an object-oriented
+library written in C.
+<p>This library is an object oriented programming environment for writing
+software applicable to all RADAR data related to the <a href="http://trmm-fc.gsfc.nasa.gov/trmm_gv/index.html">TRMM
+GV</a> effort. This library reads the WSR88D, Lassen, Sigmet, McGill, UF,
+HDF, RAPIC, RADTEC and native RSL file formats. Additional functions are
+provided to manipulate the RSL objects. Nearly all of the functions return
+objects. When they don't, they usually perform actions like output, making
+images, etc. The most general object in RSL is <b>Radar</b>. The structure
+<b>Radar</b>
+is the method used to define the ideal or universal radar representation
+in RAM while keeping the natural resolution of the data unchanged. More
+simply, <b>Radar</b> represents the super set of all radar file formats.
+The <a href="RSL_structures.html">Radar structure</a> is hierarchically
+defined such that it is composed of <b>Volumes</b>, each containing one
+field type. <b>Volumes</b> are composed of <b>Sweeps</b>.
+<b>Sweeps</b>
+are composed of <b>Rays</b> and <b>Rays</b> contains a vector of the field
+type. Some field types are Reflectivity(DZ), Velocity(VR), Spectrum Width(SW),
+etc. There are approximately 20 field types. See the
+<a href="users_guide.html">Users
+Guide</a> for more information.&nbsp; Also, check out <a href="whats_new.html">What's
+New</a>.
+<center>
+<h4>
+<a href="quick_ref.html">Indexed Reference<br></a>
+<a href=download_log.php?dlfile=rsl-LATEST.tgz target=_new>Download latest version</a>
+</h4>
+
+<!--
+<a href="/cgi-bin/download/dl.pl?rsl-LATEST.tgz">Download latest version</a>
+<a href="ftp://trmm-fc.gsfc.nasa.gov/software/rsl-LATEST.tgz">Download
+latest version</a></h4>
+-->
+
+</center>
+
+<center>
+<hr></center>
+
+<center><table BORDER=2 WIDTH="400" >
+<caption>
+<h1>
+Supported Radar Data Formats</h1>
+</caption>
+
+<tr>
+<td><b>Format Type</b></td>
+
+<td><b>Input</b></td>
+
+<td><b>Output</b></td>
+</tr>
+
+<tr>
+<td>Lassen</td>
+
+<td>Yes</td>
+
+<td>No</td>
+</tr>
+
+<tr>
+<td>McGill</td>
+
+<td>Yes</td>
+
+<td>No</td>
+</tr>
+
+<tr>
+<td>Sigmet</td>
+
+<td>Yes</td>
+
+<td>No</td>
+</tr>
+
+<tr>
+<td>WSR-88D</td>
+
+<td>Yes</td>
+
+<td>No</td>
+</tr>
+
+<tr>
+<td>RAPIC</td>
+
+<td>Yes</td>
+
+<td>No</td>
+</tr>
+
+<tr>
+<td>UF - Universal Format</td>
+
+<td>Yes</td>
+
+<td>Yes</td>
+</tr>
+
+<tr>
+<td>HDF - Hierarchical Data Format</td>
+
+<td>Yes</td>
+
+<td>Yes</td>
+</tr>
+
+<tr>
+<td>RADTEC</td>
+
+<td>Yes</td>
+
+<td>No</td>
+</tr>
+
+<tr>
+<td>EDGE</td>
+
+<td>Yes</td>
+
+<td>No</td>
+</tr>
+</table></center>
+
+<hr>
+
+<script  src="/trmm_gv/trailer.js"></script>
+
+
+</HTML>
+

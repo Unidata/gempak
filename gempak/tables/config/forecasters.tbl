@@ -1,0 +1,49 @@
+!************************************************************************
+!* FORECASTERS.TBL							*
+!*                                                                      *
+!* This table contains the names of individual forecasters.		*
+!* This list is used when thunderstorm or tornado watchs are issued.    *
+!* The range lists may contain a maximum of 30 elements 		*
+!* of no more than 16 characters each.					*
+!*									*
+!**									*
+!* Log:									*
+!* D.W.Plummer	 	 3/99	Created					*
+!* G. Grosshans	 	10/99	Added Outlook forecasters		*
+!* G. Grosshans	 	11/99	Updated Outlook forecasters		*
+!* R. Curtis		 5/00   Increased max and removed key word      *
+!* G. Grosshans	 	 6/00	Added rest of forecasters		*
+!************************************************************************
+!
+!	Forecaster names 
+!	(maximum of 30 names, maximum of 16 characters each)
+!
+BANACOS
+BOTHWELL
+CARBIN
+CORFIDI
+CRAVEN
+DARROW
+DIAL
+EDWARDS
+EVANS
+GOSS
+HALES
+HART
+IMY
+JANISH
+JOHNS
+KERR
+McBEATH-PETERS
+McCARTHY
+NADEN
+NEWBY
+RACY
+REHBEIN
+ROGASH
+SCHNEIDER
+THOMPSON
+VESCIO
+WEISS
+AFWA
+SPC

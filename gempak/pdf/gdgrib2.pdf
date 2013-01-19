@@ -1,0 +1,16 @@
+GDFILE  Grid file                                                               
+GBFILE  GRIB data file name                                                     
+GFUNC   Scalar grid                                                             
+GDATTIM Grid date/time                                                          
+GLEVEL  Grid level                                                              
+GVCORD  Grid vertical coordinate                                                
+PROJ    Map projection/angles/margins|drop flag                                 
+GRDAREA Area covered by grid                                                    
+KXKY    Number of grid points in x;y                                            
+CPYFIL  Grid file whose navigation is to be used in new grid file | subarea     
+G2TBLS  Input GRIB2 decoding tables                                             
+G2IS    Info for GRIB2 Section 0 (Indicator Section)                            
+G2IDS   Info for GRIB2 Section 1 (Identification Section)                       
+G2PDT   Info for GRIB2 Section 4 (Product Definition Section)                   
+G2DRT   Packing/scaling info for GRIB2 Section 5 (Data Representation Section)  
+WMOHDR  WMO_ID/Origin_ID/DDHHMM                                                 

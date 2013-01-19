@@ -1,0 +1,72 @@
+!	Program GDGRIB
+!
+ +6	! WMO header center ID inconsistent with PDS byte 5.
+ +5	! CPYFIL not used to determine GRIB GDS navigation.
+ +4	! Warning:  grid not found in grdnav.tbl...continuing.
+ +3	! Warning:  decoding error in grdnav.tbl...continuing.
+ +2	! Warning:  error reading grdnav.tbl...continuing.
+ +1	! Warning:  cannot open grdnav.tbl...continuing.
+ -1	! Fatal error initializing TAE.
+ -2	! Fatal error reading TAE parameters.
+ -3	! Error initializing GEMPLT.
+ -4	! Grid file could not be opened.
+ -5	! Grid navigation could not be set in GEMPLT.
+ -6	! Grid diagnostics package initialization failed.
+ -7	! Error interpolating to output grid.
+ -8	! GRIB message is too long.
+ -9	! First 6 characters of WMO header must be given.
+-10	! User supplied WMO header is too long.
+-11	! Invalid grid navigation set in PROJ.
+-12	! Invalid grid area set in GRDAREA or CPYFIL.
+-13	! Invalid grid size.
+-14	! (i,j) -> lat/lon transformation failed.
+-15	! lat/lon -> (i,j) transformation failed.
+-16	! Cannot set output grid navigation.
+-17	! Cannot set input grid navigation.
+-18	! Invalid horizontal interpolation type.
+-19	! CPYFIL entry is not valid.
+! BDS errors:
+-21	! BDS section is too long.
+-22	! Number of packing bits is invalid.
+-23	! Data range is not valid.
+-24	! Binary scaling is invalid.
+-25	! Computation of the reference value failed.
+-26	! BDS array accomodation is too small.
+-27	! The calculation of the # of bits needed failed.
+-28	! All data is missing -- no GRIB message made.
+! BMS errors:
+-41	! BMS section is too long.
+-42	! BMS array allocation is too small.
+! GDS errors:
+-61	! Not enough bytes for the GDS.
+-62	! Number in i direction is too large.
+-63	! Number in j direction is too large.
+-64	! Latitude 1 is invalid.
+-65	! Longitude 1 is invalid.
+-66	! Latitude 2 is invalid.
+-67	! Longitude 2 is invalid.
+-68	! Rotated CED projection is not supported.
+-69	! Rotated STR projection is not supported.
+-70	! DX grid increment is invalid.
+-71	! DY grid increment is invalid.
+-72	! Central longitude is invalid.
+-73	! True latitudes are invalid.
+-74	! Rotated MER projection is not supported.
+-75	! Grid projection is not supported.
+! PDS errors:
+-83	! Cannot find parameter in tables.
+-84	! Parameter # found is not valid in GRIB.
+-85	! Vertical coordinate not found in table.
+-86	! Vertical coordinate is not valid in GRIB.
+-87	! Level value is too large for GRIB.
+-88	! Level is less than zero.
+-89	! Dual GEMPAK times not supported.
+-90	! 4-digit year required in in-line (^) DATTIM.
+-91	! Forecast must be in hours.
+-92	! Array allocation for PDS is too small.
+-93	! Decimal scale factor is too large.
+-94	! Parameter name is too long to be in table.
+-95	! GRID # in CPYFIL does not match navigation.
+-96	! GRID # in CPYFIL is an invalid PDS entry.
+-97	! Large forecast hour not divisible by 3, 6, or 12.
+-98	! Accum/diff interval not divisible by 3, 6, or 12.

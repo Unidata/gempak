@@ -1,0 +1,42 @@
+		 	  Product Generation Filter
+
+
+I.  Functionality
+
+The filter allows the selective display and edit of vg elements by element
+forecast time.  The filter facilitates creating a product or products that 
+spans multiple times, or using a previous time to generate a product at a new 
+time.  The filter only applies to elements with an embedded forecast time.  At 
+present this includes only the MET class elements of AIRMET, non-convective 
+SIGMET, and the GFA.  These elements may be selectively displayed and edited 
+by time.  All other elements are not affected by the filter and will always be 
+drawn and can be selected.
+
+
+II. Operation
+
+Click the "FILTER" button in the "Actions" section of the product
+generation palette ("pgpalette") to start the time filter.  The "Filter 
+Control" GUI is activated.  
+
+The "Filter Control" GUI remains visible while in product filtering mode.  This
+GUI controls which time or times is/are active by means of the check boxes.  
+The filter control starts with no times selected.  If there are any GFA 
+elements drawn, they will disappear when the filter control starts up.  The 
+elements still exist, however they are not displayed.  The user can select one 
+or more times to display by checking one or more check boxes on.  As soon as a 
+check box is turned on all GFA, AIRMETs and SIGMETs which have a forecast hour 
+that exactly matches one of the selected times will be displayed.  Please note 
+this is an exact match.  The "0" time matches the "0" forecast hour, while the 
+"0-6" time (a smear time) matches the forecast time of "0-6", and does not 
+match "0", "3", "6", etc.
+
+
+The "All On"/"All Off" button is a shortcut mechanism which turns all the
+filter check boxes on or off with a single click.  Note that this button starts
+as "All On".  It toggles to the opposite state after each click, so if it is 
+"All On" then it becomes "All Off" and vice versa.
+
+The Filter Control includes hot keys to enable the user to step from one time 
+to the next.  These are the "[" and "]" keys.  The "[" key steps the control 
+from right to left and the the "]" steps from left to right.  

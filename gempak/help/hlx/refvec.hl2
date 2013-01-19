@@ -1,0 +1,28 @@
+     REFVEC
+
+     REFVEC specifies the size and location on the screen of the
+     reference arrow using the following format:
+
+		Magnitude; x; y; text size/font/width/HW; string
+ 
+     Magnitude refers to the size of the reference wind arrow 
+     to be plotted.  For example, using 10.0 results in a 
+     reference arrow of 10.0 units being plotted.   
+
+     If the magnitude specified is 0, no reference arrow is plotted.
+     The default is 0.
+
+     The user specifies the location of the reference arrow by
+     entering values between 0.0 and 1.0 for x-location and y-     
+     location.  These values are normalized to the display so, for 
+     example, the center of the display is  0.5;0.5.  If no values
+     are entered, the reference arrow is plotted in the lower left
+     hand corner:  0.05;0.05.
+
+     The text attributes: size, font, width and HW flag; are 
+     applied only to the text displayed with the reference vector.
+     See the TEXT help for further details on these attributes.
+
+     The string specifies the label for the reference vector.  This 
+     text may contain any keyboard character.  If the string is
+     empty, an appropriate label will be generated.

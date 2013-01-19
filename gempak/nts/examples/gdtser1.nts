@@ -1,0 +1,18 @@
+GPOINT  bwi                                                                     
+GDATTIM all                                                                     
+GLEVEL  500                                                                     
+GVCORD  pres                                                                    
+GFUNC   tmpc                                                                    
+GDFILE  $GEMPAK/data/HRCBOB.GRD                                                     
+PTYPE   lin/.5                                                                  
+TAXIS   18/21-20/03                                                             
+YAXIS   -15/15/3                                                                 
+BORDER  1                                                                       
+LINE    3//3                                                                    
+MARKER  2/13/1.25/2                                                             
+TITLE   5//^  _  @  #                                                           
+CLEAR   yes                                                                     
+SCALE   0                                                                       
+PANEL   0                                                                       
+DEVICE  xw                                                                      
+TEXT    1                                                                       

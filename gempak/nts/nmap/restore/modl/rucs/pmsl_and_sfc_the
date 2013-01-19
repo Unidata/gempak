@@ -1,0 +1,37 @@
+!
+! Restore File : pmsl_and_sfc_the
+!
+! Log:
+! J.W.Carr/HPC  	 4/98	Initial creation
+!
+GDATTIM last
+GLEVEL  0
+GVCORD  none
+PANEL   0                                                                       
+SKIP    0!0/1;-1
+SCALE   0
+GDPFUN  sm5s(thte)!sm5s(thte)!sm5s(thte)!sm5s(pmsl)
+TYPE    c/f!c!c!c
+CONTUR  1                                                                       
+CINT    3/100/309!3/312/327!3/330!4
+LINE    30/1/2!29/1/2!32/1/2!5//3
+FINT    327;336;345;354
+FLINE   0;24;23;30;14
+HILO    0!0!0!5/H#;L#/1020-1070;900-1012
+HLSYM   0!0!0!1.5;1.5//22;22/3;3/hw
+CLRBAR  1/V/LL!0
+WIND    9/0.6/2/112
+REFVEC  
+TITLE   1/-1/~ PMSL & SFC THETA-E!0
+TEXT    1/22/2/hw
+CLEAR   yes                                                                     
+STNPLT                                                                          
+SATFIL                                                                          
+RADFIL                                                                          
+STREAM                                                                          
+POSN    4                                                                       
+COLORS  2                                                                       
+MARKER  2                                                                       
+GRDLBL  5                                                                       
+LUTFIL  none
+FILTER  yes

@@ -1,0 +1,26 @@
+! EFP.BULL
+!
+! Location information for the following product:
+! 3_to_5_Day_Extended_Forecast.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+FEUS63 KABR     ABERDEEN                         SD US  4545  -9841     0
+FEUS63 KBIS     BISMARCK                         ND US  4677 -10075     0
+FEUS63 KDDC     DODGE_CITY                       KS US  3775  -9995     0
+FEUS63 KDLH     DULUTH                           MN US  4683  -9220     0
+FEUS63 KFGF     EASTERN_NORTH_DAKOTA             ND US  4791  -9708     0
+FEUS63 KFSD     SIOUX_FALLS                      SD US  4358  -9672     0
+FEUS63 KGLD     GOODLAND                         KS US  3936 -10169     0
+FEUS63 KGRB     GREEN_BAY                        WI US  4449  -8811     0
+FEUS63 KICT     WICHITA                          KS US  3765  -9744     0
+FEUS63 KLMK     LOUISVILLE                       KY US  3811  -8563     0
+FEUS63 KPAH     PADUCAH                          KY US  3706  -8876     0
+FEUS63 KSGF     SPRINGFIELD                      MO US  3722  -9340     0
+FEUS63 KTOP     TOPEKA                           KS US  3906  -9562     0
+FEUS65 KCYS     CHEYENNE                         WY US  4115 -10480     0
+FEUS65 KGJT     GRAND_JUNCTION                   CO US  3911 -10851     0
+FEUS65 KPUB     PUEBLO                           CO US  3827 -10451     0

@@ -1,0 +1,12 @@
+! RVI.BULL
+!
+! Location information for the following product:
+! River_Ice_Statement.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+FIAK48 PACR     CIRCLE_CITY_AIRPORT              AK US  6583 -14407     0
+FIUS41 KBTV     BURLINGTON                       VT US  4445  -7315     0

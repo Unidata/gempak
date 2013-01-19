@@ -1,0 +1,11 @@
+! SWR.BULL
+!
+! Location information for the following product:
+! State_Weather_Roundup.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+ASHW40 PHFO     HONOLULU                         HI US  2129 -15780     0

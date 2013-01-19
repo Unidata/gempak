@@ -1,0 +1,23 @@
+! METBTN.TBL.
+!
+! This table provides the icons located in the MET button palette
+!
+! Log:
+! J. Wu/SAIC		10/03	created
+! J. Wu/SAIC		02/04	added airmet
+! J. Wu/SAIC		03/04	added non-convective sigmet
+! B. Yin/SAIC		03/04	added tca
+! J. Wu/SAIC		05/04	added gfa
+! J. Wu/SAIC		09/04	removed airmet/non-convective sigmet
+! E. Safford/SAIC	03/07	added gfa_p                     
+!------------------------------------------------------------------------
+BEGIN
+!
+! Row 1
+!
+jet
+tca
+gfa
+!
+gfa_p
+END

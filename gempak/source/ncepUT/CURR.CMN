@@ -1,0 +1,23 @@
+C************************************************************************
+C*  / CURR /								*
+C*									*
+C*  This common area contains output from subroutines UT_SEC3 and       *
+C*  UT_CURR, which decode, respectively, the subsurface current data    *
+C*  in section 3 of an FM64 TESAC or FM18 BUOY report.            	*
+C************************************************************************
+	PARAMETER	( MXCLYR = 200 )
+C*					Maximum number of groups 
+C*
+	COMMON	/ CURRENT /	rmrmv, rpocm, rdtcc, 
+     +                          rnddc,
+C*					Number of levels of current data
+C*
+     +				rdbsc ( MXCLYR ),
+C*					Selected and/or sig depth in meters
+C*
+     +				rdroc ( MXCLYR ),
+C*					Current direction in tens of degrees
+C*
+     +				rspoc ( MXCLYR ) 
+C*					Current speed in centimeters/sec.
+C*

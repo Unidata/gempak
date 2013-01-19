@@ -1,0 +1,59 @@
+# comment lines begin with #
+# File can create a gamet structure using the following
+# $ Start a Gamet
+# % Start an element type (may be > 1 / gamet )
+# ! Start an area (may be > 1 / element type )
+# !! End an area
+# %% End an element type
+# $$ End a Gamet
+# NOTE this is a freeze level type with no states, which is OK
+#START GAMET
+$
+KZLC
+KKCI
+SALT LAKE CITY FIR BLW FL450
+22
+18
+OR ID MT WY NV UT
+1
+Cat in Hat
+#-----
+%
+FZLVL
+4
+!
+#vor string 0
+40WNW FCA-50SSW YXH-50ENE HVR-30NE MLS-30S DIK
+#attr 1
+090
+#snap 2
+0 0 0
+#states 3
+
+#movement 4
+
+!!
+!
+50WSW BAM-50E PIH-40WNW DDY
+120
+0 0 0
+
+
+!!
+!
+40SE ILC-20SW BCE
+150
+0 0 
+
+
+!!
+!
+30S ILC-25SW BCE
+150
+0 0 0
+
+
+!!
+%%
+$$
+#END GAMET

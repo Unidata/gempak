@@ -1,0 +1,77 @@
+C************************************************************************
+C*  / LOGMSG /								*
+C*									*
+C*  This common area contains a string used to hold messages that are	*
+C*  to be written to the decoder log.					*
+C************************************************************************
+	CHARACTER	logmsg*200
+C*
+	COMMON	/ LOGMSG /	logmsg
+C*					String to hold a message to be
+C*					written to decoder log
+C*
+C************************************************************************
+C*  / INTF /								*
+C*									*
+C*  This common area contains the interface arrays.			*
+C************************************************************************
+	PARAMETER 	( NRSLMN = 31 )
+C*					Number of real interface
+C*					mnemonics
+C*
+	PARAMETER 	( MXBKST = 2 )
+C*					Max number of reps of backscatter 
+C*					and related parameters
+C*
+        PARAMETER       ( MLM1BK = ( ( MXBKST - 1 ) * 11 ) )
+C*
+	PARAMETER 	( MXFRTM = 3 )
+C*					Max number of reps of mean frequency
+C*					and brightness temperature 
+C*
+        PARAMETER       ( MLM1FT = ( ( MXFRTM - 1 ) * 3 ) )
+C*
+	PARAMETER 	( MXSWWS = 2 )
+C*					Max number of reps of 10 m wind spd 
+C*					and satellite derived wind calc method
+C*
+        PARAMETER       ( MLM1SW = ( ( MXSWWS - 1 ) * 2 ) )
+C*
+        PARAMETER       ( NRIMN = NRSLMN + ( ( 11 * MXBKST ) +
+     +                                       ( 3 * MXFRTM ) +
+     +                                       ( 2 * MXSWWS ) + 3 ) )
+	COMMON	/ RINTFP /
+     +	   iryear  , irmnth  , irdays  , irhour  , irminu  , irsecw  ,
+     +	   irslat  , irslon  , irsaid  , irswid  , irogce  , irorbn  ,
+     +     irselv  , irhinc  , irrsst  , iraetp  , irlsql  , irasfl  ,
+     +	   irrsfl  , ireeno  , ir1tqc  , irsgw1  , irfost  , irsgw2  ,
+     +     irnvpp  , ir2tqc  , irsona  , irrwvc  , irrlqc  , irssi1  ,
+     +     irssi2  ,
+     +     irnbks  , irtobd ( MXBKST ) ,  
+     +               irqcb1 ( MXBKST ) ,  
+     +               irbks1 ( MXBKST ) ,  
+     +               irfos1 ( MXBKST ) ,  
+     +               irbks2 ( MXBKST ) ,  
+     +               irqcb2 ( MXBKST ) ,  
+     +               irelb1 ( MXBKST ) ,  
+     +               irhinb ( MXBKST ) ,  
+     +               irfos2 ( MXBKST ) ,  
+     +               irelb2 ( MXBKST ) ,  
+     +               irnvpb ( MXBKST ) ,  
+     +     irnmef  , irmefr ( MXFRTM ) ,  
+     +               irqctm ( MXFRTM ) ,  
+     +               irtmbr ( MXFRTM ) ,  
+     +     irnsww  , irswcm ( MXSWWS ) ,  
+     +               irws10 ( MXSWWS )    
+C*					Pointers to relative locations of
+C*					real interface mnemonics within
+C*					rimnem ( ).  These pointers will
+C*					be set by IG_IFSP and then used as
+C*					indices into the real interface
+C*					values array rivals ( ).
+C*
+	REAL		rivals ( NRIMN )
+C*
+	COMMON	/ RINTFV /	rivals
+C*					Real interface values 
+C*

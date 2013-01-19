@@ -1,0 +1,11 @@
+MAP     1/7                                                                     
+GAREA   dset                                                                    
+PROJ    sat                                                                     
+SATFIL  $GEMPAK/data/VIS_910819_\18\01;19                                           
+RADFIL                                                                          
+LATLON  2/10/1/1/10;10                                                          
+PANEL   0                                                                       
+TITLE   1                                                                       
+TEXT    1                                                                       
+CLEAR   yes                                                                     
+DEVICE  xw|VIS                                                                  

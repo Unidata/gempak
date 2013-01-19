@@ -1,0 +1,24 @@
+SNFILE  $GEMPAK/data/HRCBOB.SND                                                     
+DATTIM  all                                                                     
+AREA    @hat                                                                    
+SNPARM  relh                                                                    
+LINE    3/1/3                                                                   
+PTYPE   log                                                                     
+VCOORD  PRES                                                                    
+STNDEX                                                                          
+STNCOL  1                                                                       
+WIND    0                                                                       
+WINPOS  1                                                                       
+MARKER                                                                          
+BORDER  1                                                                       
+TITLE   1                                                                       
+DEVICE  xw                                                                      
+YAXIS   1050/200                                                                
+XAXIS   0/100/20                                                                
+FILTER  no                                                                      
+CLEAR   yes                                                                     
+PANEL   0                                                                       
+TEXT    1                                                                       
+THTALN                                                                          
+THTELN                                                                          
+MIXRLN                                                                          

@@ -1,0 +1,4 @@
+$FC $FFLAGS $LDFLAGS -o $GEMEXE/gdmlev gdmlev.f \
+	$GEMOLB/gdmlev.a $GEMOLB/gdmap.a \
+	$GEMLIB $APPL $SYSLIB $GEMLIB $CGEMLIB $GEMOLB/libnetcdf.a
+$RM *.o

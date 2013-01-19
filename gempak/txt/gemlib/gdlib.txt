@@ -1,0 +1,150 @@
+ 
+ 
+                     Grid (GD) Library 
+
+
+The grid library subroutines allow the programmer to access GEMPAK
+grid files.  Subroutines are available to create new files and to 
+read and write information in existing files.  
+
+A grid file is a collection of grids; each grid is a two-dimensional
+array of numbers.  In general, each grid represents a quasi-
+horizontal slice through the atmosphere.  Each grid in the file has
+a grid identifier containing the time, vertical level, vertical 
+coordinate system and parameter name.
+
+
+GRID IDENTIFIER:
+
+    TIME    CHARACTER*20 (2)
+  
+        Time is formatted as the GEMPAK standard grid time, 
+ 
+                       YYMMDD/HHMMthhhmm
+        where:
+ 
+             YYMMDD is the year, month, day
+             HHMM   is the hour, minute
+             t      is the type  ( F=forecast, A=analysis, G=guess )
+             hhhmm  is the forecast hour, minute.
+
+        Two time fields may be included in the grid identifier.
+        These may be used, for example, for the difference of two 
+        times.  If only a single time is needed, TIME (2) = ' '.  
+        If t is blank, an analysis grid is assumed.  If hhhmm is 
+        blank, 00000 is assumed.  If hhhmm has one or two digits, 
+        they represent hours.  With three or more digits, zeros 
+        will be added at the beginning of the field.
+
+    VERTICAL LEVEL    INTEGER (2)
+          
+        The vertical level part of the grid identifier is stored 
+        as two integers.  If only a single level is needed, the 
+        second value is set to -1.
+  
+    VERTICAL COORDINATE    INTEGER
+  
+        The vertical coordinate is stored as an integer with the 
+        following values:
+ 
+            0 = NONE
+            1 = PRESSURE
+            2 = THETA
+            3 = HEIGHT
+   
+    PARAMETER NAME    CHARACTER*12
+   
+        For the basic meteorological parameters, the 4-character 
+        GEMPAK name is used.
+
+
+A grid may also be identified by a grid number, which is its current
+position in the grid file.  Use of the grid number may be convenient 
+when selecting grids from a list.  However, since grids are sorted
+before they are numbered, the number corresponding to a grid may
+change when grids are added to or deleted from the file.  
+
+
+GRID NAVIGATION BLOCK:
+
+All the grids in a file must be co-located--that is, the
+information locating the grid on the earth is defined once for the
+entire file.  The grid points must be evenly spaced in some
+coordinate system.  This location information is stored in a grid
+navigation block.  The subroutine GR_MNAV will pack the navigation
+information into a navigation block.  The navigation block should be
+declared 256 words long.
+
+Following is a list of the contents of a grid navigation block.
+Note that an evenly spaced latitude/longitude grid has projection 
+type "CED".  The numbers are all real numbers.
+
+    WORD                       CONTENTS
+    ----      ----------------------------------------------------
+      1       Grid definition type 
+                  1 = simple map projection
+                  2 = full map projection
+                  3 = graph
+      2       Projection         (3-char name packed in real word)
+      3       Left grid number   (always 1)
+      4       Bottom grid number (always 1)
+      5       Right grid number  (KX)
+      6       Top grid number    (KY)
+      7       Lower left latitude 
+      8       Lower left longitude
+      9       Upper right latitude
+     10       Upper right longitude
+     11       Projection angle 1
+     12       Projection angle 2
+     13       Projection angle 3
+ 14-256       Spares
+
+
+GRID ANALYSIS BLOCK:
+
+In addition to the grid navigation block, a single grid analysis 
+block may be saved with each file.  This block contains
+information used in performing an objective analysis.  The
+subroutine GR_MBAN packs information into a Barnes analysis block.
+The analysis block should be declared to be 128 words long.
+
+The grid analysis block for a Barnes analysis contains the following
+information.  The numbers are all real numbers.
+
+     WORD        CONTENTS FOR BARNES ON CED GRID
+    ------      ---------------------------------
+         1      Analysis type = 1.0
+         2      Deltan
+         3      Deltax
+         4      Deltay
+         5      Not used
+       6-9      Grid area bounds
+     10-13      Extend area bounds
+     14-17      Data area bounds
+    18-128      Spares
+
+
+     WORD        CONTENTS FOR GENERAL BARNES
+    ------      -----------------------------
+         1      Analysis type = 2.0
+         2      Deltan
+       3-6      Grid extension (grid units)
+      7-10      Grid area
+     11-14      Extend area bounds
+     15-18      Data area bounds
+    19-128      Spares
+
+
+GRID HEADER BLOCK:
+
+A grid header block may also be saved with each grid.  This header 
+contains information about the particular grid.  The GEMPAK grid 
+header contains two (integer) words to store the offset in half-grid 
+units of the current grid from the base grid defined by the 
+navigation block.  No GEMPAK programs currently use these words.
+
+    WORD                CONTENTS
+    ----       ---------------------------
+      1        X offset in half-grid units
+      2        Y offset in half-grid units
+

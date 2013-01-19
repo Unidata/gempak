@@ -1,0 +1,237 @@
+Following is a slightly revised implementation plan. There is 
+no interface change to the top (create_gamet_product) function.
+
+Please see gamet.h file for structure definitions and defines.
+
+
+FUNCTION HIERARCHY
+
+create_gamet_product (GametStruct *gamet, char *prod, char *errors)
+    create_header (GametStruct *gamet, int *retCode, char *header)
+        gamet_time (int day, int hour, int *retCode, char *gTime)
+    add_header_errors (int errorCode, char *errorStr);
+    for each element in the gamet structure
+        create_element (ElementStruct element, int issueHour, int eleNum,
+                        char *eleStr, char *errorStr)
+            element_string (ElementType type)
+            for each area in the element structure	
+                create_area (AreaStruct area, int hour, int *retCode,
+                             char *areaStr)
+                    validPeriod (AreaStruct *area, int issueHour, char *validStr)
+                add_area_errors (int errorCode, int elementNum, int areaNum,
+                                 char *errorStr)
+    
+
+
+FUNCTION DESCRIPTIONS
+
+/**********************************************************************
+create_gamet_product (GametStruct *gamet, char *prod, char *errors)
+    Function creates a gamet product string from the Gamet Structure
+    provided.  It is the caller's responsibility to provide
+    an output string long enough for the product and for the error list.
+    As subroutines are called to make strings for the header and
+    each element, they are copied to the product string.
+    The error string is built up as errors are encountered.
+    Caller should check return value to see if any errors occurred.
+  
+Input Parameters:
+    *gamet        GametStruct
+Output Parameters:
+    *prod         char           character string of gamet text
+    *errors       char           semi-coloned separated lists of
+                                 failed parts
+                                 If no errors occurred, errors string
+                                 is an empty string
+Functions Called:
+    create_header
+    add_header_errors
+    create_element
+Returns:  TRUE if a gamet product was created without errors, FALSE
+          if not. Caller should check return value for FALSE, and if
+          it is, examine the errors string.
+**********************************************************************/
+
+/**********************************************************************
+create_header (GametStruct *gamet, int *retCode, char *header)    
+    This function uses strings from the gamet structure (atsunit,
+    originator and fir) and the valid period created in gamet_time
+    and creates the gamet header string.
+    Example:
+    KZLC GAMET VALID 221800/230000 KKCI
+    SALT LAKE CITY FIR BLW FL450 
+    SECN I
+   It is the caller's responsibility to provide a string of
+   adequate length.
+
+Input Parameters:
+    gamet        GametStruct  Values for the following are taken from
+                              the gamet struct  
+                              atsunit: air traffic services unit
+                              originator: met office originating message
+                              fir: flight information region or subarea
+Output Parameters:
+    header       char         string containing constants and input information
+    retCode      int          Return code. Return code will indicate 
+                              any errors encountered during construction 
+                              of the header string.
+                              This is done by or'ing values:
+                              HEADER_NO_ERROR               0x00000000
+                              HEADER_BAD_VALID_HOUR         0x00000001
+                              HEADER_BAD_VALID_DAY          0x00000002
+                              HEADER_NO_SYSTEM_TIME         0x00000004
+                              HEADER_NULL_STRING            0x00000008
+                              HEADER_EMPTY_STRING           0x00000010
+Function Called:
+  gamet_time
+It is the caller's responsibility to check the value of retCode for
+errors.
+**********************************************************************/
+
+/**********************************************************************
+gamet_time (int day, int hour, int *retCode, char *gTime)
+    Function uses the issuance day and hour and creates a gamet
+    valid period string. As necessary the routine handles time
+    rollover.  It is the callers responsibility to provide a
+    character string long enough for the valid time.
+
+Input Parameters:
+    day           int         issuance Day from Gamet Structure
+    hour          int         issuance Hour from Gamet Structure
+OutPut Parameters:
+    gTime         char        character string of gamet valid time
+                                 example: 221800/230000
+   retCode        int         Return code. Return code will indicate 
+                              any errors encountered during construction 
+                              of the valid time string.
+                              This is done by or'ing values:
+                              HEADER_NO_ERROR               0x00000000
+                              HEADER_BAD_VALID_HOUR         0x00000001
+                              HEADER_BAD_VALID_DAY          0x00000002
+                              HEADER_NO_SYSTEM_TIME         0x00000004
+                              HEADER_NULL_STRING            0x00000008
+                              HEADER_EMPTY_STRING           0x00000010
+
+Assumptions:
+   Gamets are forecasts. Therefore It is assumed that the construction
+   of the gamet occurrs before the end hour of the valid period.
+   When the current system time is obtained via the "time" and 
+   "gmtime" calls that time is before the end hour of the valid period.
+Caller needs to check value of retCode, to see if errors occurred.
+
+**********************************************************************/
+
+/*********************************************************************
+add_header_errors (int errorCode, char *errorStr)
+    Based on bits set in errorCode, the function adds information
+    to the errorStr string. See "create_header" above for values.
+Input Parameters:
+    errorCode     int   
+Output Parameters:
+    errorStr      char  
+
+**********************************************************************/
+
+/**********************************************************************
+create_element (ElementStruct element, int issueHour, int eleNum,
+                char *eleStr, char *errorStr)
+    This function takes information contained in the
+    element structure and creates the string indicating the element
+    type and calls create_area for each area of this type.
+Input Parameters:
+    element      ElementStruct   
+    hour         int           issuance hour of gamet
+    eleNum       int           current element number
+Output Parameters:
+    elementString char         string of type and information on each area
+    errorStr      char         concatenated string of errors occurred while
+                               creating area string
+Functions Called:
+    element_string
+    create_area
+    add_area_errors
+
+**********************************************************************/
+
+/**********************************************************************
+element_string (ElementType type)
+    Function takes an enum value type of ElementType and returns the
+    character string for the type. See gamet.h for enum values.
+    Table lookup is:
+      char * ElementStrings[] = {
+      "SFC WSPD",
+      "SFC VIS",
+      "SIG WX",
+      "MT OBSCN",
+      "SIG_CLD",
+      "ICE",
+      "TURB",
+      "MTW",
+      "PSYS",
+      "CLD",
+      "FZLVL",
+      "VA",
+      "UNKNOWN"};
+Input Parameters:
+    type          ElementType
+Output Parameters:
+    string associated with type from above table
+
+**********************************************************************/
+
+/**********************************************************************
+create_area (AreaStruct area, int hour, int *retCode, char *areaStr)
+
+    Function creates a string from information in the Area Structure.
+    It is the caller's responsibility to provide a character
+    string of adequate length.
+Input Parameters:
+    area          AreaStruct
+    hour          hour gamet issued
+Output Parameters:
+    areaStr       character string with area information time, location
+                  and description of event
+    retCode       Return code. Return code will indicate any errors
+                  encountered during construction of the area string.
+                  This is done by or'ing values:
+                  AREA_NO_ERROR               0x00000000
+                  AREA_BAD_VALID_PERIOD       0x00000001
+                  AREA_INVALID_ATTRIBUTE      0x00000002
+                  AREA_INVALID_VOR_STRING     0x00000004
+
+             
+Function called:
+    valid_period
+**********************************************************************/
+
+/**********************************************************************
+valid_period (AreaStruct *area, int hour, char *valid)
+    Function uses the area structures snapshot array to determine valid
+    time for the gamet. The function handles time rollover as
+    necessary. It is the caller's responsibility to provide
+    an adequate character string.
+Input Parameters:
+    area          AreaStruct
+    hour          int
+Output Parameters:
+    valid         char string of valid time (if it is determined the
+                  event is for the entire 6 hour gamet period, the
+                  string will be empty)
+Returns: TRUE if able to create a valid period string, else FALSE.
+
+**********************************************************************/
+
+/*********************************************************************
+add_area_errors (int errorCode, int eleNum, int areaNum, char *errorStr)
+    Based on bits set in errorCode, the function adds information
+    to the errorStr string. See "create_area" above for possible
+    values of errorCode. Information includes the element number and
+    area number containing the error.
+Input Parameters:
+    errorCode     int
+    eleNum        int
+    areaNum       int
+Output Parameters:
+    errorStr      char
+
+**********************************************************************/

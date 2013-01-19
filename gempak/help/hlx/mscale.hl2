@@ -1,0 +1,103 @@
+     MSCALE
+ 
+     MSCALE specifies the characteristics of a scale legend associated with
+     map projections.  The attributes are separated by slashes:
+
+	   fgc;bgc;mask / units / latitude;hide / values / anchor / x;y /
+		   length;width / frequency | text_info | title
+
+     fgc is the foreground color which is used to color the labels and the 
+     bounding box around the scale legend as well as fill every other box 
+     starting with the second box.  bgc is the background color which is used to
+     color every other box starting with the first.  If the fgc is 0 or missing,
+     no scale legend is drawn.  If bgc is NOT specified it defaults to the 
+     default background color, 101.  If ONLY the bgc is specified, the fgc
+     defaults to 1.  Finally, a third color may optionally be given to specify 
+     a 'mask color'.  This color will be drawn 'underneath' the scale legend
+     to enhance its visibility.  If no mask color is given, no mask is drawn.
+
+     Units is the the units for the distance values.  Valid values are 'SM' 
+     (Statute Miles), 'NM' (Nautical Miles), and 'KM' (Kilometers).  The
+     default value if not specified is SM.
+     
+     Latitude is the true latitude used to calculate the distance.  If
+     missing or invalid, the latitude is computed by taking the average 
+     of the upper and lower latitudes of the plot region.  Valid values
+     are -85 to 85 inclusive.  'Hide' indicates whether the latitude legend
+     'True at' should not appear.  The legend will always be drawn unless the 
+     optional hide parameter's first character is Y.
+     
+     Values can either be an increment, an "increment - end" combination, or 
+     a list of values to display separated by a ';'.  If no values are
+     specified, the length field is used to calculate values assuming four
+     evenly divided increments.  The result is adjusted to be evenly 
+     divisable by four, ensuring that integer values are displayed.  
+     Similarly, if only an end is specified, four evenly divided increments
+     will be displayed.
+     
+     Anchor describes the location on the scale legend corresponding to
+     the location given in the next parameter.  Valid inputs are 
+     LL, LC, LR, CL, CC, CR, UL, UC, and UR for lower-left, lower-center, 
+     lower-right, center-left, centered, center-right, upper-left, 
+     upper-center, and upper-right, respectively.  For example, an 'LL' 
+     anchor point, with a x;y of .1,.1, will place the lower-left corner 
+     of the scale legend at view coordinates .1, .1.  The default anchor 
+     point is 'LL'.
+
+     x;y is the position for the anchor point of the scale legend in view
+     coordinates.  The default is 0.025, 0.005.
+     
+     Length;width are the length and width of the scale legend, normalized to 
+     the view coordinates.  The defaults are 0.4 for the length, and 0.01 for 
+     the width.  If no values are given, the length field is used to calculate 
+     values assuming four evenly divided increments.  The result is adjusted to 
+     be evenly divisable by four, ensuring that integer values are displayed.
+     
+     Frequency describes the distances to be labeled.  If the frequency is
+     positive, the labels are plotted on the top of the scale legend.  If
+     it is negative, the labels are plotted on the bottom of the scale
+     legend.  A value of 0 equals the default value.  The default is 1.
+
+     Text_info describes the scale legend label attributes.  These attributes
+     are of the same format as the TEXT parameter.  If any part of text_info 
+     is missing, then default text information is used.  The user may only 
+     change the font type, hardware/software flag, text size and text width.  
+     The default values are the bold courier hardware font and text size and 
+     text width of 1.
+
+     Title is an optional title (description) that can be added to the scale 
+     legend.  It will be placed on the side opposite the legend/labels.
+     
+     To disable the scale legend, set MSCALE = 0 or leave it blank.
+
+     Examples:
+
+         MSCALE = 1;4			text and bounding box in color 1; 
+					every other box in blue; defaults
+					for the rest of the input.
+
+         MSCALE = 5/KM/////.25;.1/2	text and bounding box in color 5;
+					units in kilometers; length and width 
+					.25 and .1 of the view window; every 
+					other interval labeled along top 
+					side of the scale legend; scale
+					legend anchor point at lower-left.
+
+         MSCALE = 1//30//CL/.1;.5	text and bounding box in color 1;
+				        units in statute miles; true latitude
+ 					at 30 north; center-left of the scale 
+					legend positioned at .1;.5 in view 
+					coordinates.
+
+         MSCALE = 3/NM//10;20;40;80/CL/.1;.5|.55/2/111/1/l/hw	
+
+					text and bounding box in color 3;
+					units in nautical miles; true latitude
+					computed from maps plot region; 
+					center-left of the scale legend 
+					positioned at .1;.5 in view 
+					coordinates;
+					text size of scale legend .55;
+					hardware helvetica font; text width
+					2; no box around text;left justified.
+

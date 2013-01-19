@@ -1,0 +1,98 @@
+! FWL.BULL
+!
+! Location information for the following product:
+! Land_management_forecasts.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+FNCA82 TJSJ     SAN_JUAN                         PR US  1843  -6600     0
+FNUS82 KCAE     COLUMBIA                         SC US  3393  -8112     0
+FNUS82 KKEY     KEY_WEST                         FL US  2457  -8178     0
+FNUS82 KFFC     PEACHTREE_CITY                   GA US  3336  -8455     0
+FNUS82 KJAX     JACKSONVILLE                     FL US  3047  -8169     0
+FNUS82 KMFL     MIAMI                            FL US  2575  -8037     0
+FNUS82 KMLB     MELBOURNE                        FL US  2811  -8065     0
+FNUS83 KABR     ABERDEEN                         SD US  4545  -9841     0
+FNUS83 KAPX     GAYLORD                          MI US  4490  -8470     0
+FNUS83 KARX     LA_CROSSE                        WI US  4381  -9119     0
+FNUS83 KBIS     BISMARCK                         ND US  4677 -10075     0
+FNUS83 KDDC     DODGE_CITY                       KS US  3775  -9995     0
+FNUS83 KDLH     DULUTH                           MN US  4683  -9220     0
+FNUS83 KDMX     DES_MOINES                       IA US  4172  -9372     0
+FNUS83 KDTX     DETROIT                          MI US  4268  -8347     0
+FNUS83 KDVN     QUAD_CITIES_IA                   IL US  4161  -9058     0
+FNUS83 KEAX     KANSAS_CITY/PLEASANT_HILL        MO US  3879  -9426     0
+FNUS83 KFGF     EASTERN_NORTH_DAKOTA             ND US  4791  -9708     0
+FNUS83 KFSD     SIOUX_FALLS                      SD US  4358  -9672     0
+FNUS83 KGID     HASTINGS                         NE US  4063  -9837     0
+FNUS83 KGLD     GOODLAND                         KS US  3936 -10169     0
+FNUS83 KGRB     GREEN_BAY                        WI US  4449  -8811     0
+FNUS83 KGRR     GRAND_RAPIDS                     MI US  4288  -8554     0
+FNUS83 KICT     WICHITA                          KS US  3765  -9744     0
+FNUS83 KILX     LINCOLN                          IL US  4015  -8933     0
+FNUS83 KIND     INDIANAPOLIS                     IN US  3970  -8627     0
+FNUS83 KIWX     NORTHERN_INDIANA                 IN US  4134  -8569     0
+FNUS83 KJKL     JACKSON                          KY US  3759  -8330     0
+FNUS83 KLBF     NORTH_PLATTE                     NE US  4113 -10069     0
+FNUS83 KLMK     LOUISVILLE                       KY US  3811  -8563     0
+FNUS83 KLOT     CHICAGO                          IL US  4159  -8808     0
+FNUS83 KLSX     ST_LOUIS                         MO US  3868  -9068     0
+FNUS83 KMKX     MILWAUKEE/SULLIVAN               WI US  4295  -8854     0
+FNUS83 KMPX     TWIN_CITIES/CHANHASSEN           MN US  4484  -9355     0
+FNUS83 KMQT     MARQUETTE                        MI US  4652  -8754     0
+FNUS83 KPAH     PADUCAH                          KY US  3706  -8876     0
+FNUS83 KSGF     SPRINGFIELD                      MO US  3722  -9340     0
+FNUS83 KTOP     TOPEKA                           KS US  3906  -9562     0
+FNUS83 KUNR     RAPID_CITY                       SD US  4406 -10320     0
+FNUS84 KAMA     AMARILLO                         TX US  3522 -10169     0
+FNUS84 KBMX     BIRMINGHAM                       AL US  3316  -8677     0
+FNUS84 KBRO     BROWNSVILLE                      TX US  2590  -9741     0
+FNUS84 KCRP     CORPUS_CHRISTI                   TX US  2777  -9750     0
+FNUS84 KEPZ     EL_PASO_TX/SANTA_TERESA          NM US  3187 -10669     0
+FNUS84 KEWX     AUSTIN/SAN_ANTONIO               TX US  2970  -9801     0
+FNUS84 KFWD     DALLAS/FORT_WORTH                TX US  3283  -9729     0
+FNUS84 KHGX     HOUSTON/GALVESTON                TX US  2946  -9506     0
+FNUS84 KHUN     HUNTSVILLE                       AL US  3472  -8665     0
+FNUS84 KJAN     JACKSON                          MS US  3231  -9008     0
+FNUS84 KLCH     LAKE_CHARLES                     LA US  3012  -9320     0
+FNUS84 KLIX     NEW_ORLEANS                      LA US  3032  -8981     0
+FNUS84 KLZK     LITTLE_ROCK                      AR US  3483  -9225     0
+FNUS84 KMEG     MEMPHIS                          TN US  3513  -8980     0
+FNUS84 KMOB     MOBILE                           AL US  3067  -8823     0
+FNUS84 KMRX     MORRISTOWN                       TN US  3615  -8340     0
+FNUS84 KOHX     NASHVILLE                        TN US  3624  -8655     0
+FNUS84 KOUN     NORMAN                           OK US  3522  -9745     0
+FNUS84 KSHV     SHREVEPORT                       LA US  3245  -9383     0
+FNUS84 KTSA     TULSA                            OK US  3613  -9586     0
+FNUS85 KBOI     BOISE                            ID US  4356 -11620     0
+FNUS85 KBOU     DENVER                           CO US  4000 -10526     0
+FNUS85 KBYZ     BILLINGS                         MT US  4575 -10856     0
+FNUS85 KCYS     CHEYENNE                         WY US  4115 -10480     0
+FNUS85 KFGZ     FLAGSTAFF                        AZ US  3522 -11181     0
+FNUS85 KGGW     GLASGOW                          MT US  4820 -10662     0
+FNUS85 KGJT     GRAND_JUNCTION                   CO US  3911 -10851     0
+FNUS85 KLKN     ELKO                             NV US  4086 -11573     0
+FNUS85 KMSO     MISSOULA                         MT US  4691 -11408     0
+FNUS85 KPIH     POCATELLO/IDAHO_FALLS            ID US  4290 -11258     0
+FNUS85 KPSR     PHOENIX                          AZ US  3343 -11201     0
+FNUS85 KPUB     PUEBLO                           CO US  3827 -10451     0
+FNUS85 KREV     RENO                             NV US  3956 -11979     0
+FNUS85 KRIW     RIVERTON                         WY US  4306 -10847     0
+FNUS85 KSLC     SALT_LAKE_CITY                   UT US  4077 -11194     0
+FNUS85 KTFX     GREAT_FALLS                      MT US  4745 -11137     0
+FNUS85 KTWC     TUCSON                           AZ US  3222 -11094     0
+FNUS85 KVEF     LAS_VEGAS                        NV US  3604 -11518     0
+FNUS86 KEKA     EUREKA                           CA US  4079 -12416     0
+FNUS86 KHNX     SAN_JOAQUIN_VALLEY/HANFORD       CA US  3631 -11962     0
+FNUS86 KLOX     LOS_ANGELES/OXNARD               CA US  3420 -11912     0
+FNUS86 KMFR     MEDFORD                          OR US  4236 -12287     0
+FNUS86 KMTR     SAN_FRANCISCO                    CA US  3659 -12184     0
+FNUS86 KOTX     SPOKANE                          WA US  4768 -11762     0
+FNUS86 KPDT     PENDLETON                        OR US  4568 -11884     0
+FNUS86 KPQR     PORTLAND                         OR US  4556 -12252     0
+FNUS86 KSEW     SEATTLE                          WA US  4768 -12225     0
+FNUS86 KSGX     SAN_DIEGO                        CA US  3290 -11705     0
+FNUS86 KSTO     SACRAMENTO                       CA US  3859 -12137     0

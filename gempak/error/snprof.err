@@ -1,0 +1,18 @@
+!	SNPROF error file
+!
+ +6	! Background lines cannot be drawn.
+ +5	! Stability indicies are specified with color = 0
+ +4	! Parameter !AS was requested with color set to 0.
+ +3	! Winds cannot be computed.
+ +2	! Parameter !AS is a character type.
+ +1	! Parameter !AS cannot be computed.
+ -1	! Fatal error initializing TAE.
+ -2	! Fatal error reading TAE parameters.
+ -3	! Fatal error initializing GEMPLT.
+ -4	! The plot type !AS is invalid.
+ -5	! The the x-axis range must be specified in XAXIS.
+ -6	! The two parms use different temperature units.
+ -7	! The vertical coordinate !AS cannot be computed.
+ -8	! The range along the x or y axis is invalid.
+ -9	! No valid stations were found.
+-10     ! SNPARM has not been specified.

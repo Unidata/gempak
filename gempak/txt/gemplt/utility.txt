@@ -1,0 +1,14 @@
+
+
+                         Utility Subroutines
+
+
+Once a projection is defined and a map file is set, the map is drawn by
+calling GDRMAP.  A latitude/longitude grid is typically drawn at the
+same time by calling GDRGRD.
+
+GEMPLT includes several map data files as discussed in Appendix B of
+this manual.  Subroutine GQMFIL returns the name of the currently set
+map file.  An alternate map file is set by calling GSMFIL.
+
+Streamlines are drawn by calling subroutine GSTRML.

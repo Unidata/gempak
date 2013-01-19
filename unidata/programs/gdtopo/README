@@ -1,0 +1,8 @@
+Header format 80 bytes for topography files:
+First lat   First lon NX/deg NY/deg DLAT DLON  
+
+5 minute global header:
+90.000000 -180.000000 12 12 180.000000 360.000000                              
+
+30 second global header
+90.000000 -180.000000 120 120 180.000000 360.000000                              

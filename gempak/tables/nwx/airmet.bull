@@ -1,0 +1,24 @@
+! AIRMET.BULL
+!
+! This table contains the bulletin/station information to be used
+! with the AIRMETS.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+! Log:
+! J. Lewis/AWC		04/05	Modify WMO headers and station identifiers
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+!
+WAHW31 PHFO     HONOLULU/UNIV_OF_HI-MANOA_CAMPUS HI US  2130 -15782    20
+WAUS41 KKCI     BOSTON/LOGAN_IN                  MA US  4237  -7103     9
+WAUS42 KKCI     MIAMI                            FL US  2582  -8028     4
+WAUS43 KKCI     CHICAGO                          IL US  4198  -8790   205
+WAUS44 KKCI     DALLAS/FT.WORTH                  TX US  3290  -9703   182
+WAUS45 KKCI     SALT_LAKE_CITY                   UT US  4078 -11197  1288
+WAUS46 KKCI     SAN_FRANCISCO                    CA US  3761 -12238     5
+WAAK47 PAWU     JUNEAU                           AK US  5837 -13458     7
+WAAK48 PAWU     ANCHORAGE                        AK US  6117 -15002    40
+WAAK49 PAWU     FAIRBANKS                        AK US  6482 -14787   138

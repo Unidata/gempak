@@ -1,0 +1,12 @@
+! TRPCYCP.BULL
+!
+! This table contains the bulletin/station information to be used
+! with the Tropical_Cyclone_Position_Estimate bulletins.
+!
+! The format for the file is given below, with the
+! number of characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+!
+WTPA50 PHFO     HONOLULU/UNIV_OF_HI-MANOA_CAMPUS HI US  2130 -15782    20

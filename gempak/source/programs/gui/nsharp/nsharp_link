@@ -1,0 +1,9 @@
+$CC $CFLAGS -c sharp95.c
+$FC $LDFLAGS -o $OS_BIN/nsharp sharp95.o $OS_LIB/nsharp.a \
+		$OS_LIB/ginitp_alt.o $OS_LIB/gendp_alt.o \
+		$OS_LIB/snlist.a $OS_LIB/sflist.a \
+		-lnxm $GEMLIB $CGEMLIB $GPLT $DEVICE \
+		$OS_LIB/xwp.a $OS_LIB/xw.a $OS_LIB/ps.a \
+		$OS_LIB/gn.a $GEMLIB $CGEMLIB -lm -lnetcdf \
+		$XLIBS -lz
+$RM *.o

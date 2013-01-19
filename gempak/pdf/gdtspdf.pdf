@@ -1,0 +1,26 @@
+GPOINT  Grid point                                                              
+GDATTIM Grid date/time                                                          
+GVCORD  Grid vertical coordinate                                                
+GLEVEL  Grid level
+GFUNC   Scalar grid                                                             
+GDFILE  Grid file                                                               
+PTYPE   Plot type/h:w ratio/margins                                             
+PRBTYP  Probability type
+CTYPE   Contour type:  C/F
+TAXIS   Time1-time2-tinc;lbl;gln;tck                                            
+YAXIS   Ystrt/ystop/yinc/lbl;gln;tck                                            
+BORDER  Background color/type/width                                             
+LINE    Color/type/width/label/smth/fltr/scflg                                  
+CINT    Contour interval/min/max                                                
+HILO    Color/symbol/rng/rad/cnt/intp
+HLSYM   HILO txt size/posn/font/wdth/hw
+FINT    Fill interval/min/max
+FLINE   Fill colors/fill types
+CLRBAR  Color/ornt/anch/x;y/ln;wd/freq|text_info
+TITLE   Title color/line/title                                                  
+CLEAR   Clear screen flag                                                       
+SCALE   Scalar scale / vector scale                                             
+PANEL   Panel loc/color/dash/width/regn                                         
+DEVICE  Device|name|x size;y size|color type                                    
+TEXT    Size/fnt/wdth/brdr/N-rot/just/hw flg                                    
+OUTPUT  Output device/filename

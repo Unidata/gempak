@@ -1,0 +1,34 @@
+     WCP
+
+     WCP is the ending valid time for the watches, the colors for the
+     severe thunderstorm and tornado watches and flags for plotting
+     the start and stop times and watch numbers for the watches on
+     the map.
+
+	End time|Watch colors|Time flag|Watch number flag
+	    |Color code flag
+
+     Watches that are valid at the ending time will be plotted on the map.
+     The ending time is given as a GEMPAK date/time string. Any missing
+     items from the string will be filled in by the system time. The
+     ending time may also be LAST and ALL. LAST will use the system time
+     and plot all current watches. ALL will plot all the watches in the
+     data files, whether they are active, cancelled or expired.
+
+     The colors are separated by a semi-colon.  If any color is set to 0,
+     that type of line will not be plotted.  If any color is missing, a 
+     default will be used.  Defaults are cyan for thunderstorm and red
+     for tornado.
+
+     The time flag is YES or NO. It controls whether or not to plot the
+     start and stop times of the watch on the map. The default is NO.
+
+     The watch number flag is YES or NO and controls whether or not to
+     plot the watch number. The default is NO.
+     
+     If the time or number flag is YES for watch box and missing for status
+     line, YES will be assigned to status line.
+
+     The color code flag is YES or NO, if YES, the colors are associated 
+     with the last digit of the watch number, otherwise, based on the
+     weather type ( tornado or thunderstorm ).

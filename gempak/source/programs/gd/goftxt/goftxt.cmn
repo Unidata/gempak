@@ -1,0 +1,127 @@
+C************************************************************************
+C* GOFTXT.CMN								*
+C*									*
+C* These common areas are used in the Offshore Text Formatter G2T	*
+C* (Grid to Text).							*
+C*									*
+C**									*
+C* Log:									*
+C* T. Lee/SAIC		11/06						*
+C* T. Lee/SAIC		11/07   Dimensionalized OFFTXT for combining	*
+C*				periods					*
+C* T. Lee/SAIC		11/07	OFFTXT*256 -> 512 for lesser values	*
+C* T. Lee/SAIC		12/07	Added porflg and pflag_d		*
+C************************************************************************
+	INCLUDE		'GEMPRM.PRM'
+C
+	PARAMETER	(MXTIME = 20)
+C			Maximum grid times
+	PARAMETER	(MXWHGT = 80)
+C			Maximum wave height
+	PARAMETER	(MXSPED = 160)
+C			Maximum wind speed
+	PARAMETER	(MAXZON = 12)
+C			Maximum zones for each bound type (alias)
+	PARAMETER	(MXSZON = 8)
+C			Maximum subzones
+	PARAMETER	(MXCHAR = 65)
+C			Maximum characters per line.
+	PARAMETER	(MXTRND = 2)
+C			Max trend
+	PARAMETER	(MXTYPE = 2)
+C			Data type: 1: wave, 2: wind
+	PARAMETER	(MAXMIN = 2)
+C			Max/Min values
+	PARAMETER	(NOFDIR = 2)
+C			Wind directions
+	PARAMETER	(MAXIDS = 36)
+C			Maximum ID length
+	PARAMETER	(MAXRNG = 10)
+C			Maximum wind/wave height range
+	PARAMETER	(MMRGAP = 4)
+C			Store four variables:
+C			Min value/Max value/Allowable range/Allowable gap
+C
+C*	Grid time and bound information
+C
+	CHARACTER	grdtm(MXTIME)*(MAXIDS)
+	CHARACTER	bndtag(MAXZON,MXSZON)*(MAXIDS)
+	CHARACTER	squad(MAXZON,MXSZON)*(MAXIDS)
+	CHARACTER	bndtyp*(MAXIDS)
+	INTEGER		nsubzn(MAXZON), ngrdtm, numzon, nthzon
+	LOGICAL		porflg(MAXZON,MXSZON), synop
+	COMMON	/G2TIM/ grdtm, bndtag, bndtyp, nsubzn, ngrdtm, squad, 
+     +			synop, numzon, nthzon, porflg
+C
+C*	Wave information
+C*
+C*	mxval_s/mnval_s: waves/wind saved from the grids.
+C*	mxval/mnval: waves/wind from the spectrum analysis
+C*	mxval_d/mxval_de: waves/wind trimming for trending
+C*	mnzflg: TRUE: EXCEPT part contains min wind/wave values.
+C
+
+	INTEGER		mxval(MXTYPE,MXSZON,MXTIME)
+	INTEGER		mnval(MXTYPE,MXSZON,MXTIME)
+	INTEGER		mxval_s(MXTYPE,MXSZON,MXTIME)
+	INTEGER		mnval_s(MXTYPE,MXSZON,MXTIME)
+	INTEGER		mxn_d(MXTYPE,MXTRND,MAXMIN)
+	INTEGER		mxn_de(MXTYPE,MXTRND,MAXMIN)
+	INTEGER		wavhst(MXSZON,MXTIME,MXWHGT)
+	INTEGER		icwave(MXSZON,MXTIME,MXWHGT)
+	REAL		wavpct(MXSZON,MXTIME,MXWHGT)
+	LOGICAL		eflag_d(MXTYPE,MXTRND), idflag
+	LOGICAL		pflag_d(MXTYPE,MXTRND), mnzflg(MXTYPE)
+	CHARACTER	id_d(MXTYPE,MXTRND)*(MAXIDS)
+	CHARACTER*2	wdir_d(NOFDIR,MXTRND), wdir_de(NOFDIR,MXTRND)
+	INTEGER		kdir_d(NOFDIR,MXTRND), kdir_de(NOFDIR,MXTRND)
+	INTEGER		mnwgap(MAXRNG,MMRGAP), llwgap, mnwdif, mxwdif
+C
+	COMMON	/G2TWAV/ mxval, mnval, wavpct, icwave, wavhst,
+     +			 mxval_s, mnval_s, mxn_d, mxn_de, eflag_d, 
+     +			 idflag, pflag_d, mnzflg, id_d, wdir_d, wdir_de, 
+     +			 kdir_d, kdir_de, mnwgap, llwgap, mnwdif, mxwdif
+C
+C*	Wind information
+C
+	INTEGER		winhst(MXSZON,MXTIME,MXSPED)
+	INTEGER		icwind(MXSZON,MXTIME,MXSPED)
+	REAL		winpct(MXSZON,MXTIME,MXSPED)
+	CHARACTER*2	wdrmod(NOFDIR,MXSZON,MXTIME)
+	INTEGER		kdrmod(NOFDIR,MXSZON,MXTIME)
+	INTEGER		mnsgap(MAXRNG,MMRGAP), llsgap, lghts
+	INTEGER		mclock, mnsdif, mxsdif
+C*
+	COMMON	/G2TWND/ winhst, icwind, winpct, wdrmod, kdrmod, mnsgap,
+     +			 llsgap, lghts, mclock, mnsdif, mxsdif
+C
+C*	Exception information.
+C
+	INTEGER		nbnd(MXTYPE,MXTIME)
+	CHARACTER	subid(MXTYPE,MXTIME)*(MAXIDS)
+	LOGICAL		fsuba(MXTYPE,MXTIME), fsuba_d(MXTYPE,MXTIME)
+C*
+	COMMON	/G2TEX/ nbnd, subid, fsuba, fsuba_d
+C
+C*	Gale/Storm flags
+C
+	LOGICAL		fgale(MXTIME), fstorm(MXTIME), fhurr(MXTIME) 
+	LOGICAL		fgale_s(MXTIME),fstorm_s(MXTIME),fhurr_s(MXTIME) 
+	COMMON	/GSFLAG/fgale, fstorm, fhurr, fgale_s, fstorm_s, fhurr_s
+C
+C*	Output text string.
+C
+	CHARACTER*512	offtxt(MXTIME)
+	COMMON /g2txt/	offtxt	
+C
+C*	Center and table read flags.  NCNTER = 1 (OPC), 2 (TPC)
+C
+	INTEGER		ncnter
+	LOGICAL		tbread
+	COMMON	/TBFLAG/ ncnter, tbread
+C
+C*	Rules.  (Temporary)
+C
+	LOGICAL		f_rule
+	CHARACTER*20	crules
+	COMMON	/RULES/ f_rule, crules

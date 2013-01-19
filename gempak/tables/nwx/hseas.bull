@@ -1,0 +1,20 @@
+! HSEAS.BULL
+!
+! This table contains the bulletin/station information to be used
+! with the High Seas Forecasts
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+!
+WWJP25 RJTD     TOKYO_INTL_AIRPORT               -- JP  3555  13978     8
+FZPN01 KWBC     WASHINGTON/DULLES                VA US  3895  -7747    98
+FZNT01 KWBC     WASHINGTON/DULLES                VA US  3895  -7745    98
+FZPN02 KWBC     WASHINGTON/DULLES                VA US  3125 -11835     0
+FZNT02 KNHC     MIAMI                            FL US  2575  -8038     0
+FZPN03 KNHC     MIAMI                            FL US  2575  -8040     0
+FPUK71 EGRR     LONDON/HEATHROW                  -- UK  5148    -45    24
+FZPN40 PHFO     HONOLULU/UNIV_OF_HI-MANOA_CAMPUS HI US  2150 -15782    20
+FZPS40 PHFO     HONOLULU/UNIV_OF_HI-MANOA_CAMPUS HI US  2130 -15802    20

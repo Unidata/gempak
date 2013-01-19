@@ -1,0 +1,13 @@
+#!/bin/csh
+$FC $FFLAGS -c  dinita2.f ggmap2.f ggsplt2.f \
+		imcbar2.f imdrop2.f imlutf2.f \
+		imnidh2.f imrtbl2.f
+set HPFLAG = ""
+if ( $OS == "HPUX" ) then
+    set HPFLAG = "+U77"
+endif
+$FC $HPFLAG $FFLAGS $LDFLAGS -o $OS_BIN/radmap_sw radmap_sw.f *.o \
+	    $OS_LIB/ginitp_alt.o $OS_LIB/gendp_alt.o \
+	    $GEMLIB $GPLT $DEVICE $OS_LIB/gif.a $OS_LIB/gn.a \
+	    $GEMLIB $CGEMLIB $GPLT $GEMLIB  -lm -lnetcdf -lz
+$RM *.o

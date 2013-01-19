@@ -1,0 +1,35 @@
+			       LOCATOR
+
+
+The locator text box (at the lower right hand corner of the main NMAP GUI)
+displays cursor location information.  As the cursor is moved within the 
+NMAP data display window, the locator display can show one of three types of
+location information:
+
+	1) the cursor latitude/longitude,
+	2) the cursor's position relative to discreet geographical locations 
+           stored in a GEMPAK station table format, e.g., distance and direction 
+           to the nearest city,
+	3) the name of the bounded geographic region, e.g., county name, that
+           the cursor is within.
+
+Click the arrow button to the right of the locator text box to select the
+desired station data set or bounded region.  A pop-up list of available
+choices appears.  Click the desired choice and the cursor position will
+be given relative to that data set.  
+
+The locator attributes such as distance and direction units can be modified.
+Click the "Edit..." button to invoke the "LOCATOR SELECT and EDIT" GUI.  This
+GUI allows the setting of distance units, e.g., nautical miles vs. kilometers,
+direction units, e.g., 16 degree compass, and distance rounding for station
+data sets.  The "DISPLAY" pop up provides a choice of what column of the
+station table to display, e.g., station ID vs. station name, and the 
+latitude/longitude units, decimal degrees vs. degrees and minutes.  Click the 
+"Defaults" button to set the attributes back to their default values for all 
+locator data sets.
+
+The list of available locator data sets is specified by the tables
+$GEMTBL/config/clo.tbl and $GEMTBL/nmap/locator.tbl.  The clo.tbl defines 
+alias names for the station and bounds data sets.  Any GEMPAK station table
+and bounded area data set can be specified.  The locator.tbl defines the 
+default display attributes.  See these tables for additional information.

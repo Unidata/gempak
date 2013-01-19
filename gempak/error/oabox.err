@@ -1,0 +1,7 @@
+!	OABOX error file
+!
+ -1	! Fatal error initializing TAE.
+ -2	! Fatal error reading TAE parameters.
+ -3	! Fatal error initializing GEMPLT.
+ -4	! No box will be drawn since the color is 0.
+ -5	! Invalid input for REGION.

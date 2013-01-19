@@ -1,0 +1,15 @@
+GDFILE                                                                          
+DELTAN  0                                                                       
+DELTAX  0                                                                       
+DELTAY  0                                                                       
+GRDAREA us                                                                      
+EXTEND  2;2;2;2                                                                 
+DTAAREA                                                                         
+SOURCE                                                                          
+SNFILE                                                                          
+SFFILE                                                                          
+SNPARM                                                                          
+SFPARM                                                                          
+DATTIM                                                                          
+LEVELS  all                                                                     
+MAXGRD  20                                                                      

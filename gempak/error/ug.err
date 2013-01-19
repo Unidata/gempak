@@ -1,0 +1,17 @@
+!	UG error messages
+!
+  10	! Report too long - no. chars is: !AS   	
+   9	! Invalid number of rsh values: !AS
+   8	! Invalid number of dchg values: !AS
+   7	! Invalid number of precip values: !AS
+   6	! Bad return code from ST_CLST: !AS
+   5	! Too many river stage height values: !AS
+   4	! Invalid number of wind values: !AS
+   3	! USGS station !AS not in station table
+   2	! Too many groups in report: !AS          
+   1	! !AS
+  -1	! Bad report length: !AS
+  -2	! Bad report - rejected: !AS
+  -3	! Bad group - reject rest of report: !AS
+  -4	! Bad station id: !AS
+  -5	! Format error in wave field: !AS

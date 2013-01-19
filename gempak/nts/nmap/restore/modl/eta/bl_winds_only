@@ -1,0 +1,38 @@
+!
+! Restore File : etawinds_only
+!
+! Log:
+! J.L.Partain/MPC	 6/98	Initial creation
+!
+GDATTIM fall                                                                    
+GLEVEL  0
+GVCORD  none
+PANEL   0                                                                       
+SKIP    0
+SCALE   0
+GDPFUN  kntv(wnd@30:0%pdly)
+TYPE    b
+CONTUR  1                                                                       
+CINT    
+LINE    
+FINT    
+FLINE   
+HILO    
+HLSYM   
+CLRBAR  0
+WIND    9/0.7/1.5/112
+REFVEC                                                                          
+TITLE   1/-1/~ BL WIND (40m; KTS)
+TEXT    1/22/2/hw                                                             
+CLEAR   yes                                                                     
+DEVICE  xw                                                                      
+STNPLT                                                                          
+SATFIL                                                                          
+RADFIL                                                                          
+STREAM                                                                          
+POSN    4                                                                       
+COLORS  2                                                                       
+MARKER  2                                                                       
+GRDLBL  5                                                                       
+LUTFIL  none
+FILTER  yes

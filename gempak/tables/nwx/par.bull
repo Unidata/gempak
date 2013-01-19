@@ -1,0 +1,34 @@
+! PAR.BULL
+!
+! Location information for the following product:
+! Performance_Accompliment_Report.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+NOUS41 KBTV     BURLINGTON                       VT US  4445  -7315     0
+NOUS43 KKRF     MISSOURI_RIVER_BASIN/KANSAS_CITY MO US  3879  -9426     0
+NOUS45 KBOI     BOISE                            ID US  4356 -11620     0
+NOUS45 KBYZ     BILLINGS                         MT US  4575 -10856     0
+NOUS45 KFGZ     FLAGSTAFF                        AZ US  3522 -11181     0
+NOUS45 KPIH     POCATELLO/IDAHO_FALLS            ID US  4290 -11258     0
+NOUS45 KPSR     PHOENIX                          AZ US  3343 -11201     0
+NOUS45 KREV     RENO                             NV US  3956 -11979     0
+NOUS45 KSLC     SALT_LAKE_CITY                   UT US  4077 -11194     0
+NOUS45 KSTR     COLORADO_RFC/SALT_LAKE_CITY      UT US  4077 -11194     0
+NOUS45 KTFX     GREAT_FALLS                      MT US  4745 -11137     0
+NOUS45 KTWC     TUCSON                           AZ US  3222 -11094     0
+NOUS45 KVEF     LAS_VEGAS                        NV US  3604 -11518     0
+NOUS46 KEKA     EUREKA                           CA US  4079 -12416     0
+NOUS46 KHNX     SAN_JOAQUIN_VALLEY/HANFORD       CA US  3631 -11962     0
+NOUS46 KLOX     LOS_ANGELES/OXNARD               CA US  3420 -11912     0
+NOUS46 KMFR     MEDFORD                          OR US  4236 -12287     0
+NOUS46 KMTR     SAN_FRANCISCO                    CA US  3659 -12184     0
+NOUS46 KOTX     SPOKANE                          WA US  4768 -11762     0
+NOUS46 KPDT     PENDLETON                        OR US  4568 -11884     0
+NOUS46 KPQR     PORTLAND                         OR US  4556 -12252     0
+NOUS46 KSEW     SEATTLE                          WA US  4768 -12225     0
+NOUS46 KSGX     SAN_DIEGO                        CA US  3290 -11705     0
+NOUS46 KSTO     SACRAMENTO                       CA US  3859 -12137     0

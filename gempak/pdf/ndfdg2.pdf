@@ -1,0 +1,7 @@
+GBFILE  GRIB data file name                                                     
+GDOUTF  Output grid file                                                        
+MAXGRD  Maximum number of grids                                                 
+GAREA   Graphics area                                                           
+GSKIP   Skip factor for GRIB2 files                                             
+OUTPUT  Output device/filename                                                  
+OVERWR  Overwr flag                                                             

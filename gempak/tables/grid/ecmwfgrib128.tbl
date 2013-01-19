@@ -1,0 +1,218 @@
+!
+! ECMWFGRIB128.TBL -- GRIB 1 parameter conversion table version 128
+!
+!ID# NAME                             UNITS                GNAM         SCALE   MISSING HZREMAP DIRECTION
+!
+001 Stream function                   m**2 s**-1           STRF             0  -9999.00       0         0
+002 Velocity potential                m**2 s**-1           VPOT             0  -9999.00       0         0
+003 Potential temperature             K                    THTA             0  -9999.00       0         0
+004 Equivalent potential temperature  K                    THTE             0  -9999.00       0         0
+005 Saturated equiv potential temp    K                    THTS             0  -9999.00       0         0
+!
+011 U component of divergent wind     m s**-1              UDVW             0  -9999.00       0         0
+012 V component of divergent wind     m s**-1              VDVW             0  -9999.00       0         0
+013 U component of rotational wind    m s**-1              URTW             0  -9999.00       0         0
+014 V component of rotational wind    m s**-1              VRTW             0  -9999.00       0         0
+!
+021 Unbalanced component of temp      K                    UCTP             0  -9999.00       0         0
+022 Unbalanced comp of log of surf    -                    UCLN             0  -9999.00       0         0
+023 Unbalanced comp of divergence     s**-1                UCDV             0  -9999.00       0         0
+!024 Reserved for future unbal. comp.  -                    X                0  -9999.00        0         0
+!025 Reserved for future unbal. comp.  -                    X                0  -9999.00        0         0
+026 Lake cover                        0-1                  CLAK             0  -9999.00       0         0
+027 Low vegetation cover              0-1                  CVEGL            0  -9999.00       0         0
+028 High vegetation cover             0-1                  CVEGH            0  -9999.00       0         0
+029 Type of low vegetation            -                    TVEGL            0  -9999.00       0         0
+!
+030 Type of high vegetation           -                    TVEGH            0  -9999.00       0         0
+031 Sea-ice cover                     (0-1)                CSICE            0  -9999.00       0         0
+032 Snow albedo                       (0-1)                ASNOW            0  -9999.00       0         0
+033 Snow density                      kg m**-3             RSNOW            0  -9999.00       0         0
+034 Sea surface temperature           K                    SSTK             0  -9999.00       0         0
+035 Ice surface temperature layer 1   K                    ISTL1            0  -9999.00       0         0
+036 Ice surface temperature layer 2   K                    ISTL2            0  -9999.00       0         0
+037 Ice surface temperature layer 3   K                    ISTL3            0  -9999.00       0         0
+038 Ice surface temperature layer 4   K                    ISTL4            0  -9999.00       0         0
+039 Volumetric soil water layer 1     m**3 m**-3           SWVL1            0  -9999.00       0         0
+!
+040 Volumetric soil water layer 2     m**3 m**-3           SWVL2            0  -9999.00       0         0
+041 Volumetric soil water layer 3     m**3 m**-3           SWVL3            0  -9999.00       0         0
+042 Volumetric soil water layer 4     m**3 m**-3           SWVL4            0  -9999.00       0         0
+043 Soil type                         -                    SOILT            0  -9999.00       0         0
+044 Snow evaporation                  m                    ESNOW            0  -9999.00       0         0
+045 Snowmelt                          m                    SMLT             0  -9999.00       0         0
+046 Solar duration                    s                    SDUR             0  -9999.00       0         0
+047 Direct solar radiation            w m**-2              DSRP             0  -9999.00       0         0
+048 Magnitude of surface stress       N m**-2 s            MAGSS            0  -9999.00       0         0
+049 Wind gust at 10 metres            m s**-1              GUST             0  -9999.00       0         0
+!
+050 Large-scale precip fraction       s                    LSPF             0  -9999.00       0         0
+051 Maximum 2 metre temperature       K                    TMXK24           0  -9999.00       0         0
+052 Minimum 2 metre temperature       K                    TMNK24           0  -9999.00       0         0
+053 Montgomery potential              m**2 s**-2           MONT             0  -9999.00       0         0
+054 Pressure                          Pa                   PRES             0  -9999.00       0         0
+055 Mean 2m temp.in past 24 hours     K                    MN2T24           0  -9999.00        0         0
+056 Mean 2m dewpt. temp. in past 24h  K                    MN2D24           0  -9999.00        0         0
+057 Downward UV radiation at sfc.     W m**-2 s            UVB              0  -9999.00        0         0
+058 Photo. active rad. at sfc.        W m**-2 s            PAR              0  -9999.00        0         0
+059 Convective available pot. energy  J kg**-1             CAPE             0  -9999.00        0         0
+!
+060 Potential vorticity               K m**2 kg**-1 s**-1  PVOR             0  -9999.00       0         0
+061 Total precipitation from obs.     mm*100+Nobs          TPO              0  -9999.00        0         0
+062 Observation count                 count                OBCT             0  -9999.00        0         0
+063 Start time for skin temp. diff.   s                    TSDIFS           0  -9999.00        0         0
+064 Finish time for skin temp. diff.  s                    TSDIFE           0  -9999.00        0         0
+065 Skin temperature difference       K                    TSDIF            0  -9999.00        0         0
+!
+!66 to 77 Unused
+!
+078 Total column liquid water         kg m**-2             TCLW             0  -9999.00        0         0
+079 Total column ice water            kg m**-2             TCIW             0  -9999.00        0         0
+!
+!80 to 120 Experimental products (contents may vary)
+!121 to 124 Unused
+125 Vert. integrated tot. energy      J m**-2              COLENR           0  -9999.00        0         0
+126 Param. for sensitive area pred.   -                    SENPRM           0  -9999.00        0         0
+!
+127 Atmospheric tide                  -                    ATIDE            0  -9999.00       0         0
+128 Budget values                     -                    BVAL             0  -9999.00       0         0
+129 Geopotential                      m**2 s**-2           HGHT             0  -9999.00       0         0
+!
+130 Temperature                       K                    TMPK             0  -9999.00       0         0
+131 U velocity                        m s**-1              UWND             0  -9999.00       0         0
+132 V velocity                        m s**-1              VWND             0  -9999.00       0         0
+133 Specific humidity                 kg kg**-1            SPCH             0  -9999.00       0         0
+134 Surface pressure                  Pa                   PRES             0  -9999.00       0         0
+135 Vertical velocity                 Pa s**-1             OMEG             0  -9999.00       0         0
+136 Total column water                kg m**-2             TCWTR            0  -9999.00       0         0
+137 Total column water vapour         kg m**-2             TCWV             0  -9999.00       0         0
+138 Vorticity (relative)              s**-1                VORT             0  -9999.00       0         0
+139 Soil temperature level 1          K                    STL1             0  -9999.00       0         0
+!
+140 Soil wetness level 1              m                    SWL1             0  -9999.00       0         0
+141 Snow depth                        m                    SNOWD            0  -9999.00       0         0
+142 Stratiform precipitation          m                    S--M             0  -9999.00       0         0
+143 Convective precipitation          m                    C--M             0  -9999.00       0         0
+144 Snowfall (convective+stratiform)  m                    SNOW             0  -9999.00       0         0
+145 Boundary layer dissipation        W m**-2 s            BLDS             0  -9999.00       0         0
+146 Surface sensible heat flux        W m**-2 s            SSHF             0  -9999.00       0         0
+147 Surface latent heat flux          W m**-2 s            SLHF             0  -9999.00       0         0
+148 Charnock                          -                    CHNK             0  -9999.00       0         0
+149 Surface net radiation             W m**-2 s            SNRAD            0  -9999.00       0         0
+!
+150 Top net radiation                 -                    TNRAD            0  -9999.00       0         0
+151 Mean sea-level pressure           Pa                   PMSL            -2  -9999.00       0         0
+152 Logarithm of surface pressure     -                    LNSP             0  -9999.00       0         0
+153 Short-wave heating rate           K                    SWHR             0  -9999.00       0         0
+154 Long-wave heating rate            K                    LWHR             0  -9999.00       0         0
+155 Divergence                        s**-1                DIVG             0  -9999.00       0         0
+156 Height                            m                    HGHT             0  -9999.00       0         0
+157 Relative humidity                 %                    RELH             0  -9999.00       0         0
+158 Tendency of surface pressure      Pa s**-1             TSPRES           0  -9999.00       0         0
+159 Boundary layer height             m                    BLHGHT           0  -9999.00       0         0
+!
+160 Standard deviation of orography   -                    SDOR             0  -9999.00       0         0
+161 Anisotropy of sub-gridscale orog  -                    ISOR             0  -9999.00       0         0
+162 Angle of sub-gridscale orog rad   -                    ANOR             0  -9999.00       0         0
+163 Slope of sub-gridscale orography  -                    SLOR             0  -9999.00       0         0
+164 Total cloud cover                 (0 - 1)              TCLD             0  -9999.00       0         0
+165 10 metre U wind component         m s**-1              UWND             0  -9999.00       0         0
+166 10 metre V wind component         m s**-1              VWND             0  -9999.00       0         0
+167 2 metre temperature               K                    TMPK             0  -9999.00       0         0
+168 2 metre dewpoint temperature      K                    DWPK             0  -9999.00       0         0
+169 Surface solar radiation downwards W m**-2 s            SSRD             0  -9999.00       0         0
+!
+170 Soil temperature level 2          K                    STL2             0  -9999.00       0         0
+171 Soil wetness level 2              m                    SWL2             0  -9999.00       0         0
+172 Land/sea mask                     (0, 1)               LAND             0  -9999.00       0         0
+173 Surface roughness                 m                    SROUGH           0  -9999.00       0         0
+174 Albedo                            (0 - 1)              ALBD             0  -9999.00       0         0
+175 Surface thermal rad downwards     W m**-2 s            STRD             0  -9999.00       0         0
+176 Surface solar radiation           W m**-2 s            SSRAD            0  -9999.00       0         0
+177 Surface thermal radiation         W m**-2 s            STRAD            0  -9999.00       0         0
+178 Top solar radiation               W m**-2 s            TSRAD            0  -9999.00       0         0
+179 Top thermal radiation             W m**-2 s            TTRAD            0  -9999.00       0         0
+!
+180 East/West surface stress          N m**-2 s            EWSS             0  -9999.00       0         0
+181 North/South surface stress        N m**-2 s            NSSS             0  -9999.00       0         0
+182 Evaporation                       m                    EVAP             0  -9999.00       0         0
+183 Soil temperature level 3          K                    STL3             0  -9999.00       0         0
+184 Soil wetness level 3              m                    SWL3             0  -9999.00       0         0
+185 Convective cloud cover            (0 - 1)              CCLD             0  -9999.00       0         0
+186 Low cloud cover                   (0 - 1)              LCLD             0  -9999.00       0         0
+187 Medium cloud cover                (0 - 1)              MCLD             0  -9999.00       0         0
+188 High cloud cover                  (0 - 1)              HCLD             0  -9999.00       0         0
+189 Sunshine duration                 s                    SUND             0  -9999.00       0         0
+!
+190 EW comp of subgrid orog var       m**2                 EWOV             0  -9999.00       0         0
+191 NS comp of subgrid orog var       m**2                 NSOV             0  -9999.00       0         0
+192 NWSE comp of subgrid orog var     m**2                 NWOV             0  -9999.00       0         0
+193 NESW comp of subgrid orog var     m**2                 NEOV             0  -9999.00       0         0
+194 Brightness temperature            K                    BTMP             0  -9999.00       0         0
+195 Lat. comp of gravity wave stress  N m**-2 s            LGWS             0  -9999.00       0         0
+196 Merid comp of gravity wave stress N m**-2 s            MGWS             0  -9999.00       0         0
+197 Gravity wave dissipation          W m**-2 s            GWDS             0  -9999.00       0         0
+198 Skin reservoir content            m of water           SKRC             0  -9999.00       0         0
+199 Vegetation fraction               (0 - 1)              VEGE             0  -9999.00       0         0
+!
+200 Var of sub-gridscale orography    m**2                 VSGO             0  -9999.00       0         0
+201 Max 2 metre temp since prev post  K                    TMXK             0  -9999.00       0         0
+202 Min 2 metre temp since prev post  K                    TMNK             0  -9999.00       0         0
+203 Ozone mass mixing ratio           kg kg**-1            OZMR             0  -9999.00       0         0
+204 Precipiation analysis weights     -                    PRAW             0  -9999.00       0         0
+205 Runoff                            m                    RUNOFF           0  -9999.00       0         0
+206 Total column ozone Dobson         m                    TCOZ             0  -9999.00       0         0
+207 10 meter windspeed                m s**-1              SPED             0  -9999.00       0         0
+208 Top net solar rad, clear sky      W m**-2              TSRC             0  -9999.00       0         0
+209 Top net thermal rad, clear sky    W m**-2              TTRC             0  -9999.00       0         0
+!
+210 Surface net solar rad, clear sky  W m**-2              SSRC             0  -9999.00       0         0
+211 Surface net thermal rad, clr sky  W m**-2              STRC             0  -9999.00       0         0
+212 Solar insolation                  W m**-2              SINSOL           0  -9999.00       0         0
+!213 Unused        0         0
+214 Diabatic heating by radiation     K                    DHRAD            0  -9999.00       0         0
+215 Diabatic heating by vertical diff K                    DHVD             0  -9999.00       0         0
+216 Diabatic heating by cumulus conv  K                    DHCC             0  -9999.00       0         0
+217 Diabatic heating large-scale cond K                    DHLC             0  -9999.00       0         0
+218 Vertical diffusion of zonal wind  m s**-1              VDZW             0  -9999.00       0         0
+219 Vertical diffusion of merid wind  m s**-1              VDMW             0  -9999.00       0         0
+!
+220 EW gravity wave drag tendency     m s**-1              EWGD             0  -9999.00       0         0
+221 NS gravity wave drag tendency     m s**-1              NSGD             0  -9999.00       0         0
+222 Convective tendency of zonal wind m s**-1              CTZW             0  -9999.00       0         0
+223 Convective tendency of merid wind m s**-1              CTMW             0  -9999.00       0         0
+224 Vertical diffusion of humidity    kg kg**-1            VDHUM            0  -9999.00       0         0
+225 Humidity tendency by cumulus conv kg kg**-1            HTCC             0  -9999.00       0         0
+226 Humidity tendency large-scale con kg kg**-1            HTLC             0  -9999.00       0         0
+227 Change from removing neg humidity kg kg**-1            CRNH             0  -9999.00       0         0
+228 Total precipitation               m                    P--M             0  -9999.00       0         0
+229 Instantaneous X surface stress    N m**-2              IEWS             0  -9999.00       0         0
+!
+230 Instantaneous Y surface stress    N m**-2              INSS             0  -9999.00       0         0
+231 Instantaneous surface heat flux   W m**-2              ISHF             0  -9999.00       0         0
+232 Instantaneous moisture flux       kg m**-2 s           MFLUX            0  -9999.00       0         0
+233 Apparent surface humidity         kg kg**-1            ASHUM            0  -9999.00       0         0
+234 Logarithm of surf rough len heat  -                    LSRH             0  -9999.00       0         0
+235 Skin temperature                  K                    SKTMP            0  -9999.00       0         0
+236 Soil temperature level 4          K                    STL4             0  -9999.00       0         0
+237 Soil wetness level 4              m                    SWL4             0  -9999.00       0         0
+238 Temperature of snow layer         K                    TSNOW            0  -9999.00       0         0
+239 Convective snowfall               m                    CSNOWF           0  -9999.00       0         0
+!
+240 Large-scale snowfall              m                    LSNOWF           0  -9999.00       0         0
+241 Accumulated cloud fraction tend   (-1 to 1)            ACLD             0  -9999.00       0         0
+242 Accumulated liquid water tend     (-1 to 1)            ALWTND           0  -9999.00       0         0
+243 Forecast albedo                   (0 - 1)              FALBD            0  -9999.00       0         0
+244 Forecast surface roughness        m                    FSROUGH          0  -9999.00       0         0
+245 Forecast log of surf rough heat   -                    FLSR             0  -9999.00       0         0
+246 Cloud liquid water content        kg kg**-1            CLWC             0  -9999.00       0         0
+247 Cloud ice water content           kg kg**-1            CIWC             0  -9999.00       0         0
+248 Cloud cover                       (0 - 1)              CLOUD            0  -9999.00       0         0
+249 Accumulated ice water tendency    (-1 to 1)            AIWTND           0  -9999.00       0         0
+250 Ice age                           1,0                  ICEAGE           0  -9999.00       0         0
+!
+251 Adiabatic tendency of temperature K                    ATTE             0  -9999.00       0         0
+252 Adiabatic tendency of humidity    kg kg**-1            ATHE             0  -9999.00       0         0
+253 Adiabatic tendency of zonal wind  m s**-1              ATZE             0  -9999.00       0         0
+254 Adiabatic tendency of merid wind  m s**-1              ATMW             0  -9999.00       0         0
+255 Missing                           -                    MISS             0  -9999.00       0         0

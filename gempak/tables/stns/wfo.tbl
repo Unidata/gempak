@@ -1,0 +1,137 @@
+! WFO.TBL
+!
+! This table contains the locations of the Weather Field Offices.
+!
+! The format for the file is given below, with the number of characters in
+! parentheses.
+!
+!!
+! Log:
+! S. Jacobs/NCEP	 6/02	Modified the names to match the WFO zone products
+! S. Jacobs/NCEP	 5/05	Added Huntsville
+!
+!STID    STNM   NAME                             ST CO   LAT    LON  ELV PRI
+!(8)     (6)    (32)                            (2)(2)   (5)    (6)   (5)(2)
+!
+ABQ      000050 ALBUQUERQUE                      NM US  3503 -10662     0  0
+ABR      000076 ABERDEEN                         SD US  4545  -9841     0  0
+AFC      000112 ANCHORAGE                        AK US  6115 -14998     0  0
+AFG      000131 FAIRBANKS                        AK US  6485 -14783     0  0
+AJK      000128 JUNEAU                           AK US  5837 -13459     0  0
+AKQ      000058 WAKEFIELD                        VA US  3698  -7700     0  0
+ALY      000126 ALBANY                           NY US  4269  -7383     0  0
+AMA      000004 AMARILLO                         TX US  3523 -10170     0  0
+APX      000122 GAYLORD                          MI US  4490  -8471     0  0
+ARX      000103 LA_CROSSE                        WI US  4382  -9119     0  0
+BGM      000032 BINGHAMTON                       NY US  4221  -7598     0  0
+BIS      000069 BISMARCK                         ND US  4677 -10075     0  0
+BMX      000042 BIRMINGHAM                       AL US  3317  -8678     0  0
+BOI      000026 BOISE                            ID US  4356 -11621     0  0
+BOU      000127 DENVER                           CO US  4000 -10526     0  0
+BOX      000040 TAUNTON                          MA US  4195  -7113     0  0
+BRO      000087 BROWNSVILLE                      TX US  2591  -9741     0  0
+BTV      000118 BURLINGTON                       VT US  4446  -7315     0  0
+BUF      000091 BUFFALO                          NY US  4294  -7871     0  0
+BYZ      000109 BILLINGS                         MT US  4575 -10857     0  0
+CAE      000035 COLUMBIA                         SC US  3394  -8112     0  0
+CAR      000012 CARIBOU                          ME US  4578  -6862     0  0
+CHS      000078 CHARLESTON                       SC US  3289  -8002     0  0
+CLE      000023 CLEVELAND                        OH US  4141  -8186     0  0
+CRP      000116 CORPUS_CHRISTI                   TX US  2777  -9750     0  0
+CTP      000033 STATE_COLLEGE                    PA US  4079  -7786     0  0
+CYS      000029 CHEYENNE                         WY US  4115 -10480     0  0
+DDC      000009 DODGE_CITY                       KS US  3776  -9996     0  0
+DLH      000123 DULUTH                           MN US  4683  -9221     0  0
+DMX      000027 DES_MOINES                       IA US  4173  -9372     0  0
+DTX      000017 DETROIT                          MI US  4268  -8347     0  0
+DVN      000084 QUAD_CITIES_IA                   IL US  4161  -9058     0  0
+EAX      000043 KANSAS_CITY/PLEASANT_HILL        MO US  3880  -9426     0  0
+EKA      000074 EUREKA                           CA US  4080 -12416     0  0
+EPZ      000105 EL_PASO_TX/SANTA_TERESA          NM US  3187 -10669     0  0
+EWX      000052 AUSTIN/SAN_ANTONIO               TX US  2970  -9802     0  0
+KEY      000386 KEY_WEST                         FL US  2455  -8178     0  0
+FFC      000054 PEACHTREE_CITY                   GA US  3336  -8456     0  0
+FGF      000121 EASTERN_NORTH_DAKOTA             ND US  4792  -9709     0  0
+FGZ      000101 FLAGSTAFF                        AZ US  3523 -11182     0  0
+FSD      000034 SIOUX_FALLS                      SD US  4358  -9672     0  0
+FWD      000041 DALLAS/FORT_WORTH                TX US  3283  -9729     0  0
+GGW      000110 GLASGOW                          MT US  4820 -10662     0  0
+GID      000018 HASTINGS                         NE US  4064  -9838     0  0
+GJT      000098 GRAND_JUNCTION                   CO US  3911 -10852     0  0
+GLD      000005 GOODLAND                         KS US  3936 -10170     0  0
+GRB      000051 GREEN_BAY                        WI US  4449  -8811     0  0
+GRR      000100 GRAND_RAPIDS                     MI US  4289  -8554     0  0
+GSP      000095 GREENVILLE/SPARTANBURG           SC US  3488  -8222     0  0
+GUA.WFO  000130 GUAM                             GU US  1347  14479     0  0
+GYX      000073 GRAY                             ME US  4389  -7025     0  0
+HFO      000097 HONOLULU                         HI US  2130 -15781     0  0
+HGX      000010 HOUSTON/GALVESTON                TX US  2947  -9507     0  0
+HNX      000081 SAN_JOAQUIN_VALLEY/HANFORD       CA US  3631 -11963     0  0
+HUN      000133 HUNTSVILLE                       AL US  3472  -8665     0  0
+ICT      000014 WICHITA                          KS US  3765  -9744     0  0
+ILM      000063 WILMINGTON                       NC US  3427  -7791     0  0
+ILN      000060 WILMINGTON                       OH US  3942  -8382     0  0
+ILX      000114 LINCOLN                          IL US  4015  -8933     0  0
+IND      000031 INDIANAPOLIS                     IN US  3970  -8628     0  0
+IWX      000129 NORTHERN_INDIANA                 IN US  4135  -8570     0  0
+JAN      000022 JACKSON                          MS US  3231  -9008     0  0
+JAX      000080 JACKSONVILLE                     FL US  3048  -8170     0  0
+JKL      000124 JACKSON                          KY US  3759  -8331     0  0
+LBF      000096 NORTH_PLATTE                     NE US  4113 -10070     0  0
+LCH      000120 LAKE_CHARLES                     LA US  3012  -9321     0  0
+LIX      000046 NEW_ORLEANS                      LA US  3033  -8982     0  0
+LKN      000107 ELKO                             NV US  4086 -11574     0  0
+LMK      000021 LOUISVILLE                       KY US  3811  -8564     0  0
+LOT      000013 CHICAGO                          IL US  4160  -8808     0  0
+LOX      000036 LOS_ANGELES/OXNARD               CA US  3420 -11913     0  0
+LSX      000008 ST_LOUIS                         MO US  3869  -9068     0  0
+LUB      000044 LUBBOCK                          TX US  3352 -10187     0  0
+LWX      000006 BALTIMORE_MD/_WASHINGTON_DC      VA US  3897  -7747     0  0
+LZK      000020 LITTLE_ROCK                      AR US  3483  -9225     0  0
+MAF      000079 MIDLAND/ODESSA                   TX US  3194 -10218     0  0
+MEG      000028 MEMPHIS                          TN US  3513  -8980     0  0
+MFL      000094 MIAMI                            FL US  2575  -8038     0  0
+MFR      000099 MEDFORD                          OR US  4237 -12288     0  0
+MHX      000057 NEWPORT/MOREHEAD_CITY            NC US  3477  -7687     0  0
+MKX      000003 MILWAUKEE/SULLIVAN               WI US  4296  -8854     0  0
+MLB      000002 MELBOURNE                        FL US  2811  -8065     0  0
+MOB      000049 MOBILE                           AL US  3067  -8823     0  0
+MPX      000088 TWIN_CITIES/CHANHASSEN           MN US  4484  -9356     0  0
+MQT      000104 MARQUETTE                        MI US  4653  -8754     0  0
+MRX      000064 MORRISTOWN                       TN US  3616  -8340     0  0
+MSO      000061 MISSOULA                         MT US  4692 -11409     0  0
+MTR      000066 SAN_FRANCISCO                    CA US  3659 -12185     0  0
+OAX      000055 OMAHA/VALLEY                     NE US  4132  -9636     0  0
+OHX      000075 NASHVILLE                        TN US  3624  -8656     0  0
+OKX      000038 NEW_YORK                         NY US  4086  -7286     0  0
+OTX      000113 SPOKANE                          WA US  4768 -11762     0  0
+OUN      000001 NORMAN                           OK US  3523  -9746     0  0
+PAH      000085 PADUCAH                          KY US  3706  -8877     0  0
+PBZ      000024 PITTSBURGH                       PA US  4053  -8021     0  0
+PDT      000092 PENDLETON                        OR US  4569 -11885     0  0
+PHI      000030 MOUNT_HOLLY                      NJ US  4001  -7481     0  0
+PIH      000090 POCATELLO/IDAHO_FALLS            ID US  4290 -11258     0  0
+PQR      000070 PORTLAND                         OR US  4556 -12253     0  0
+PSR      000011 PHOENIX                          AZ US  3343 -11202     0  0
+PUB      000072 PUEBLO                           CO US  3827 -10452     0  0
+RAH      000045 RALEIGH                          NC US  3577  -7868     0  0
+REV      000062 RENO                             NV US  3956 -11979     0  0
+RIW      000108 RIVERTON                         WY US  4306 -10847     0  0
+RLX      000093 CHARLESTON                       WV US  3831  -8171     0  0
+RNK      000071 BLACKSBURG                       VA US  3720  -8041     0  0
+SEW      000037 SEATTLE                          WA US  4768 -12225     0  0
+SGF      000077 SPRINGFIELD                      MO US  3723  -9340     0  0
+SGX      000115 SAN_DIEGO                        CA US  3291 -11706     0  0
+SHV      000082 SHREVEPORT                       LA US  3245  -9384     0  0
+SJT      000119 SAN_ANGELO                       TX US  3137 -10049     0  0
+SJU      000056 SAN_JUAN                         PR US  1843  -6600     0  0
+SLC      000067 SALT_LAKE_CITY                   UT US  4077 -11195     0  0
+STO      000102 SACRAMENTO                       CA US  3860 -12138     0  0
+TAE      000132 TALLAHASSEE                      FL US  3045  -8430    53  0
+TBW      000083 TAMPA_BAY_AREA/RUSKIN            FL US  2770  -8240     0  0
+TFX      000059 GREAT_FALLS                      MT US  4746 -11138     0  0
+TOP      000007 TOPEKA                           KS US  3907  -9563     0  0
+TSA      000015 TULSA                            OK US  3614  -9586     0  0
+TWC      000125 TUCSON                           AZ US  3222 -11095     0  0
+UNR      000117 RAPID_CITY                       SD US  4407 -10321     0  0
+VEF      000089 LAS_VEGAS                        NV US  3604 -11518     0  0

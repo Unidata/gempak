@@ -1,0 +1,32 @@
+! EPTKER.TBL
+!
+! This table contains the average track errors in nautical miles for the
+! Eastern Pacific Ocean.  The code does not use the FCST HR field
+!
+!!
+! Log:
+! A. Hardy/GSC		 2/01	Created
+! D. Kidwell/NCEP	10/01	Updated with new values, added 3 hr
+! D. Kidwell/NCEP	 4/02	Formatted columns ( I2, F8.1 )
+! D. Kidwell/NCEP	 3/03	Updated for 2003, out to 120 hours
+! M. Mainelli/TPC	 5/04	Updated for 2004, out to 120 hours
+! M. Mainelli/TPC	 5/05	Updated for 2005, out to 120 hours
+! M. Mainelli/TPC	 4/07	Updated for 2007, 2/3 Probability circle
+! M. Mainelli/TPC        3/08   Updated for 2008, 2/3 Probability circle
+! C. Lauer/TPC           2/09   Updated for 2009, 2/3 Probability circle
+! C. Lauer/TPC           4/10   Updated for 2010, 2/3 Probability circle
+! S. Jacobs/NCEP	 2/12	Updated for 2012, 2/3 Probability circle
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!
+!FCST  NM
+! HR
+!(I2) (F8.1)
+!
+ 3    17.0
+12    33.0
+24    52.0
+36    72.0
+48    89.0
+72   121.0
+96   170.0
+20   216.0

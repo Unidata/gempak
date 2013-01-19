@@ -1,0 +1,18 @@
+SNFILE  Sounding data file 
+SNOUTF  Output sounding file
+AREA    Data area
+DATTIM  Date/time 
+TIMSTN  Times/additional stations
+OUTPUT  Output device (TPF)
+WAVLEN  Wavelength of grav/lee wave
+WAVSPD  Wave speed (for SCORER calc)
+SYSTEM  System speed/direction
+ROTATE  Coordinate rotation
+TROPHT  Tropopause height
+TRPINT  Dist above trop for avg
+CBTOP   Cloud top height
+MXDPTH  Mixed layer depth
+SQUALL  Width of squall line for fluxes
+DELZ    Average delta Z in sounding
+FILTYP  Filter type
+SPLINE  Spline flag

@@ -1,0 +1,7 @@
+$CC $CFLAGS -c tcacancel.c
+$FC $LDFLAGS -o $OS_BIN/tcacancel tcacancel.o \
+		$OS_LIB/ginitp_alt.o \
+	        $GEMLIB $OS_LIB/textlib.a \
+		$CGEMLIB $GPLT $DEVICE $CGEMLIB \
+	        $GEMLIB $CGEMLIB $GPLT $DEVICE $OS_LIB/gn.a -lm 
+$RM *.o

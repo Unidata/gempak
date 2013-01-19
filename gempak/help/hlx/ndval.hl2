@@ -1,0 +1,6 @@
+     NDVAL
+
+     NDVAL is the data value to be used where NIDS producte report "ND"
+     (none detected). By default, tis is the RMISSD value of -9999.
+     For certain products, the user may wish to change this for
+     later computations..

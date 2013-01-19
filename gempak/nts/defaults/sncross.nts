@@ -1,0 +1,23 @@
+CXSTNS                                                                          
+SNPARM                                                                          
+SNFILE                                                                          
+DATTIM                                                                          
+VCOORD                                                                          
+PTYPE                                                                           
+YAXIS   dset                                                                    
+TAXIS   dset                                                                    
+LINE    4/1/2                                                                   
+BORDER  1                                                                       
+CINT    0                                                                       
+WIND                                                                            
+TITLE   1/-1                                                                    
+PANEL   0                                                                       
+DEVICE  xw                                                                      
+CLEAR   yes                                                                     
+FILTER  0                                                                       
+CURVE   2                                                                       
+TEXT    1.3/23//hw                                                              
+CONTUR  3/0                                                                       
+FINT    0                                                                       
+FLINE   30-18--1                                                                
+CTYPE   c/f                                                                     

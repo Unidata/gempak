@@ -1,0 +1,40 @@
+
+
+# comment lines begin with #
+# File can create a gamet structure using the following
+# $ Start a Gamet
+# % Start an element type (may be > 1 / gamet )
+# ! Start an area (may be > 1 / element type )
+# !! End an area
+# %% End an element type
+# $$ End a Gamet
+# Element ice with NIL info`
+#START GAMET
+$
+KZLC
+KKCI
+SALT LAKE CITY FIR BLW FL450
+22
+18
+OR ID MT WY NV UT
+1
+Cat in Hat
+#START ELEM
+%
+ice
+1
+#START AREA
+# 1st area of element ICE 
+!
+
+NIL
+#
+1 1 1
+
+#END AREA
+!!
+%%
+#END ELEMENT
+$$
+#END GAMET
+

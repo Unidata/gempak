@@ -1,0 +1,4 @@
+$FC $FFLAGS $LDFLAGS -o $OS_BIN/testlc testlc.f \
+	    $GEMLIB $CGEMLIB $GEMLIB $APPL $SYSLIB \
+	    -lm -lnetcdf -lz
+$RM *.o

@@ -1,0 +1,12 @@
+!	SNHODO error file
+!
+ -1	! Fatal error initializing TAE.
+ -2	! Fatal error reading TAE parameters.
+ -3	! Fatal error initializing GEMPLT.
+ -4	! The input for XAXIS is invalid.
+ -5	! The input for YAXIS is invalid.
+ -6	! Winds cannot be computed.
+ -7	! The vertical coordinate !AS cannot be computed.
+ -8	! The range along the x or y axis is invalid.
+ -9	! No winds can be plotted.
+-10	! No valid stations were found.

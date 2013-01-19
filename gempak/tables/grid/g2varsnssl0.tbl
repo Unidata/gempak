@@ -1,0 +1,6 @@
+! Forecast Radar Imagery category
+!D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING
+!23|123|123|123|12345678901234567890123456789012|12345678901234567890|123456789012|12345|123456.89
+000 015 192 000 refl backscatter from rain       mm6/m3               CREF             0  -9999.00
+000 015 192 008 refl backscatter from rain       mm6/m3               REFZR            0  -9999.00
+000 015 194 000 refl backscatter from rain       mm6/m3               MESH             0  -9999.00

@@ -1,0 +1,248 @@
+
+
+                           ATEST Tutorial
+
+
+As a programmer designs an application program, it is often useful to
+try out a sequence of GEMPLT subroutine calls before they are
+incorporated into the program.  The GEMPLT subroutines can be exercised
+individually under the control of a program called ATEST.  The sequence
+that follows is a simple interactive session with ATEST that illustrates
+how ATEST can be used.  Compare this session with the sample program MAP
+in Appendix D of this manual.  Both accomplish very similar results.
+
+
+
+Activate ATEST:
+
+	atest
+
+
+ATEST responds with a prompt:
+
+	GPLT>
+
+
+Initialize GEMPLT in the map mode (map mode = 1).  The interaction looks
+like this:
+
+	GPLT> GINITP
+	 GINITP - Enter mode:
+	1
+	 Creating process: gplt for queue 6250
+	 GINITP - istat, iret 0   0
+	GPLT>
+
+
+Set the XW graphics device:
+
+	GPLT> GSDEVA
+	 GSDEVA - Enter device:
+	xw
+	 Enter iunit
+	1
+	 Enter filnam
+	gempak.xw
+	 Enter itype
+	2
+	 Enter xsize
+	500
+	 Enter ysize
+	500
+	 Creating process: xw for queue 6251
+	 GSDEVA - iret 0
+	GPLT>
+
+
+Set a map projection:
+
+	GPLT> GSMMAP
+	 GSMMAP - Enter PROJ:
+	ced
+	 Enter DLATLL, DLONLL, DLATUR, DLONUR
+	-90   -24   90   -24
+	 GSMMAP - iret 0
+	GPLT>
+	Draw the map:
+	GPLT> GDRMAP
+	 GDRMAP - iret 0
+	GPLT>
+
+
+Draw a latitude and longitude grid:
+
+	GPLT> GDRGRD
+	 Enter lat/lon interval, lat/lon frequency
+	20   20   2   2
+	 GDRGRD iret 0
+	GPLT>
+
+
+Plot a title under the map:
+
+	GPLT> GTEXTC
+	 GTEXTC -Enter coordinate system ( D,N,V,P,M,G)
+	n
+	 Enter alignment type (-1, 0, 1):
+	0
+	 Enter the X and Y point to start text:
+	.5   .1
+	 Enter the character string:
+	Map Of The World
+	 Enter rotation angle, xoffset, and yoffset
+	0   0   0
+	 GTEXTC iret = 0
+
+
+	GPLT> GEPLOT
+	 GEPLOT iret = 0
+	GPLT>
+
+
+Clear the display:
+
+	GPLT> GCLEAR
+	 GCLEAR iret = 0
+
+
+	GPLT> GEPLOT
+	 GEPLOT iret = 0
+	GPLT>
+
+
+Draw a county map of Virginia:
+
+	GPLT> GSMFIL
+	 GSMFIL - Enter map file name
+	hicnus.nws
+	 GSMFIL iret 0
+
+
+	GPLT> GSMMAP
+	 GSMMAP - Enter PROJ:
+	NPS
+	 Enter DLATLL, DLONLL, DLATUR, DLONUR
+	32.25   -86.50   43.25   -70.50
+	 GSMMAP - iret 0
+
+
+	GPLT> GDRMAP
+	 GDRMAP - iret 0
+	GPLT>
+
+
+End the session and shut down GPLT and the driver:
+
+	GPLT> GENDP
+	 GENDP - Enter ieop:
+	1
+	 GENDP - iret 0
+
+
+
+
+
+
+
+The commands from the interactive session shown above can be put into a
+shell script.  This is convenient when testing--especially when testing
+newly developed device drivers.  The same test procedure can be repeated
+exactly and easily when it is put into a script.  The following C Shell
+script executes exactly the same procedure as the session shown above.
+
+
+
+	#!/bin/csh -f
+	#----------------------------------------------------
+
+	atest << EOF
+
+	GINITP
+	1
+
+	GSDEVA
+	xw
+	1
+	gempak.xw
+	2
+	500
+	500
+
+	GSMMAP
+	ced
+	-90   -24   90   -24
+
+	GDRMAP
+
+	GDRGRD
+	20   20   2   2
+
+	GTEXTC
+	n
+	0
+	.5   .1
+	Map Of The World
+	0   0   0
+
+	GEPLOT
+
+	GENDP
+	0
+
+	EOF
+
+	echo "Press RETURN to continue . . .\c"
+	set response = $<
+	#----------------------------------------------------
+
+	atest << EOF > /dev/null
+
+	GINITP
+	1
+
+	GSDEVA
+	xw
+	1
+	gempak.xw
+	2
+	500
+	500
+
+	GCLEAR
+	GEPLOT
+
+	GSMFIL
+	hicnus.nws
+
+	GSMMAP
+	NPS
+	32.25   -86.50   43.25   -70.50
+
+	GDRMAP
+
+	GENDP
+	0
+
+	EOF
+
+	echo "Press RETURN to continue . . .\c"
+	set response = $<
+	#----------------------------------------------------
+
+	atest << EOF > /dev/null
+
+	GINITP
+	1
+
+	GSDEVA
+	xw
+	1
+	gempak.xw
+	2
+	500
+	500
+
+	GENDP
+	1
+
+	EOF

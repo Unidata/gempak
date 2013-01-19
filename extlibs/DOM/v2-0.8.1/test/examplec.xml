@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<TEST>
+<NODE1>
+  <!-- Comment -->
+</NODE1>
+<NODE2>
+  <!-- Comment -->
+  <NODE3>
+    <!-- Comment -->
+    <NODE4>
+      <!-- Comment -->
+    </NODE4>
+    <NODE5>
+    </NODE5>
+    <!-- Comment -->
+    <!-- Comment -->
+  </NODE3>
+</NODE2>
+</TEST>

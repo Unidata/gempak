@@ -1,0 +1,53 @@
+ 
+ 
+               Data Management (DM) Library 
+
+
+The data management library is the support library for reading and
+writing all GEMPAK files.  In general, libraries specific to the
+various data types (SF, SN, GD) should be used by the applications
+programmer.  This documentation is provided to assist in writing
+these data-type-specific subroutines. 
+ 
+Each DM file has rows, columns and parts.  Rows and columns are
+identified by sequential numbers.  Each row and column has a
+header containing information about the entire row or column.  The
+keywords defining this information are specified when the data set
+is created and may be obtained using DM_KEYS.  Header information
+is always stored as an array of integer values.  For station data,
+the rows typically contain the date/time, while the columns
+typically contain information about individual stations.  Note
+that not all station data is stored in this way.  For example,
+ship data is stored in a single row with time and station
+information combined in a single header. 
+
+Parts in a DM file are identified by name.  For conventional upper-
+air data, the six reports (TTAA, TTBB, PPBB, TTCC, TTDD, PPDD) are
+stored as six parts. 
+ 
+Data in a DM file are identified by a row number, column number and
+part name.  If data are to be packed, the packing information must
+be provided when the file is created.  The data will be packed and
+unpacked within the DM library, so the programmer can access the
+data as real values using subroutines DM_RDTR and DM_WDTR. 
+
+Information about the entire file may be stored in file headers.  
+This information is stored using DM_WFHx and returned using DM_RFHx. 
+
+Subroutines to search for row and column headers meeting certain
+criteria are also available.  DM_PSRC is used to define a primary
+search.  The conditions for this search must always be met.  In
+addition, conditional searches may be defined using DM_CSRC.  These
+conditional searches may be additive or subtractive, meaning that
+rows/columns meeting the criteria will be added or subtracted from
+the list of valid rows/columns.  When using these subroutines,
+DM_NEXT will return the numbers of the next row and column meeting 
+the search criteria.  The applications programmer should use the 
+data-specific libraries and the location (LC) library to search DM 
+data sets.  DM_SRCH provides a simple search whose return code can 
+be used to determine if the search criteria are ever met. 
+
+The subroutines DM_LSTN, DM_LTIM and DM_GTIM are provided to
+simplify access to DM files by data-specific libraries. 
+
+

@@ -1,0 +1,48 @@
+! LOCAL.BULL
+!
+! This table contains the bulletin/station information to be used
+! with the Local Forecasts
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+!
+FPHW50 PHFO     HONOLULU/UNIV_OF_HI-MANOA_CAMPUS HI US  2130 -15782    20
+FLCA42 TJSJ     SAN_JUAN_INTL_A                  PU PU  1843  -6600    19
+FLUS42 KFFC     ATLANTA_INTL_AR                  GA US  3365  -8442   315
+FLUS43 KUNR     RAPID_CITY_REGIONAL_AIRPORT      SD US  4405 -10305   976
+FLUS84 KEWX     AUSTIN/MUELLER                   TX US  3030  -9770   189
+FLUS84 KCRP     CORPUS_CHRISTI                   TX US  2777  -9750    13
+FLUS83 KDLH     DULUTH_INTL_AIR                  MN US  4683  -9218   432
+FLUS83 KMPX     MINNEAPOLIS-ST                   MN US  4488  -9322   255
+FLUS84 KMAF     MIDLAND_REGIONA                  TX US  3195 -10218   872
+FLUS84 KHGX     GALVESTON/SCHOL                  TX US  2930  -9480    16
+FLUS84 KBRO     BROWNSVILLE_INT                  TX US  2590  -9743     6
+FLUS84 KEPZ     EL_PASO_INTL_AR                  TX US  3180 -10640  1194
+FLUS84 KSHV     SHREVEPORT_REGI                  LA US  3247  -9382    79
+FLUS83 KMKX     MILWAUKEE/MITCH                  WI US  4295  -8790   211
+FLUS44 KLUB     LUBBOCK_INTL_AR                  TX US  3365 -10182   988
+FLUS84 KSJT     SAN_ANGELO/MATH                  TX US  3137 -10050   582
+FLUS84 KBMX     HUNTSVILLE/MADI                  AL US  3465  -8677   196
+FLUS85 KTFX     GREAT_FALLS_INT                  MT US  4748 -11137  1115
+FLUS86 KSEW     SEATTLE-TACOMA                   WA US  4745 -12230   137
+FLUS86 KPQR     KLAMATH_FALLS/K                  OR US  4215 -12173  1247
+FLUS83 KLOT     CHICAGO                          IL US  4200  -8788   181
+FLUS44 KFTW     FORT_WORTH                       TX US  3290  -9703   182
+FLUS86 KMTR     SAN_FRANCISCO                    CA US  3762 -12238     5
+FPHW2  PHOG     KAHULUI                          HI US  2090 -15643    20
+FPAK11 PABR     BARROW                           AK US  7130 -15678     4
+FPAK11 PANC     ANCHORAGE                        AK US  6117 -15002    40
+FPAK11 PABE     BETHEL                           AK US  6078 -16180    46
+FPAK11 PADQ     KODIAK                           AK US  5775 -15250    34
+FPAK11 PAOM     NOME                             AK US  6450 -16543     7
+FPAK11 PAFA     FAIRBANKS                        AK US  6482 -14787   138
+FPAK11 PACD     COLD_BAY                         AK US  5520 -16272    31
+FPAK11 PAOT     KOTZEBUE                         AK US  6688 -16260     3
+FPAK11 PASN     ST_PAUL                          AK US  5715 -17022     9
+FPAK11 PAVD     VALDEZ                           AK US  6113 -14625    37
+FPAK11 PAKN     KING_SALMON                      AK US  5868 -15665    15
+FPAK11 PAMC     MCGRATH                          AK US  6297 -15562   103
+FPAK12 PANC     ANCHORAGE                        AK US  6128 -15010    40

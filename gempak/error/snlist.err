@@ -1,0 +1,14 @@
+!	SNLIST error file
+!
+ -1	! Fatal error initializing TAE.
+ -2	! Fatal error reading TAE parameters.
+ -3	! There are no parameters to be listed.
+ -4	! Level parameter !AS cannot be computed.
+ -5	! Parm !AS is character; cannot be listed.
+ -6	! Vertical coordinate !AS cannot be computed.
+ -7	! Station parameter !AS cannot be computed.
+ -8	! Parm !AS is character; cannot be listed.
+ -9	! No stations reported at these times.
+-10	! Too many parameters; !AS cannot be added.
+-11	! The data set is merged.
+-12	! No inputs for levels.

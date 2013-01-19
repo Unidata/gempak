@@ -1,0 +1,29 @@
+!	Program GDGRIB2
+!
+ -1	! Fatal error initializing TAE.
+ -2	! Fatal error reading TAE parameters.
+ -3	! Error initializing GEMPLT.
+ -4	! Grid file could not be opened.
+ -6	! Grid diagnostics package initialization failed.
+ -9     ! First 6 characters of WMO header must be given.
+-11	! Invalid grid navigation set in PROJ.
+-12	! Invalid grid area set in GRDAREA or CPYFIL.
+-13	! Invalid grid size.
+-16	! Cannot set output grid navigation.
+-17	! Cannot set input grid navigation.
+-18	! Invalid horizontal interpolation type.
+-19	! CPYFIL entry is not valid.SAG
+-20     ! Could not process GDATTIM information
+-21     ! Could not get next Date/Time stamp.
+-22     ! Could not get requested grid
+-23     ! Could not allocate space for grid.
+-24     ! Could not open output GRIB file.
+-25     ! Error writing to output GRIB file.
+-26     ! Could not allocate space for GRIB2 message.
+-27     ! Error encoding GRIB2 message.
+-28     ! Output GRIB file (GBFILE) not specified.
+-29     ! Invalid G2PDT parameter.
+-30     ! Could not read grid in CPYFIL from grdnav.tbl
+-31     ! Could not open grid file specified in CPYFIL.
+-32     ! Error setting output grid navigation
+-33     ! Error creating navigation block from PROJ, KXKY, GRDAREA

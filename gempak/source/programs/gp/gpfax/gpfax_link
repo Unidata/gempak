@@ -1,0 +1,4 @@
+$FC $FFLAGS $LDFLAGS -o $OS_BIN/gpfax gpfax.f \
+	$OS_LIB/gpfax.a $GEMLIB $CGEMLIB $APPL \
+	$SYSLIB $GEMLIB 
+$RM *.o

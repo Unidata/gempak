@@ -1,0 +1,103 @@
+! STSUM.BULL
+!
+! This table contains the bulletin/station information to be used
+! with the State Weather Summaries.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+!
+AWUS45 KABQ     ALBUQUERQUE/KIR                  NM US  3504 -10660  1613
+ABUS30 KABR     ABERDEEN_REGION                  SD US  4545  -9843   396
+ABUS30 KACY     ATLANTIC_CITY_INTL               NJ US  3945  -7457    20
+ABUS30 KALB     ALBANY_COUNTY_ARPT               NY US  4275  -7380    89
+ABUS30 KARB     ANN_ARBOR_MUNIC                  MI US  4222  -8375   256
+AWUS42 KFFC     PEACHTREE_CITY                   GA US  3336  -8456   246
+ABUS30 KBGM     BINGHAMTON/BROO                  NY US  4222  -7598   497
+AWUS44 KBMX     SHELBY_CO_AIRPT                  AL US  3317  -8677   178
+ABUS30 KBIS     BISMARCK_MUNICIPAL               ND US  4677 -10075   506
+AWUS44 KOHX     NASHVILLE_NEXRAD                 TN US  3675  -8657   206
+ABUS30 KBOI     BOISE_MUNICIPAL                  ID US  4357 -11622   874
+ABUS30 KBOS     BOSTON/LOGAN_IN                  MA US  4237  -7103     9
+ABUS30 KBRO     BROWNSVILLE_INT                  TX US  2590  -9743     6
+ABUS30 KBTV     BURLINGTON_INTL                  VT US  4447  -7315   104
+ABUS30 KBUF     BUFFALO_INTL_AR                  NY US  4293  -7873   215
+ABUS30 KBWI     BALTIMORE/WASH_INTL              MD US  3918  -7667    47
+ABUS30 KCAE     COLUMBIA_METRO                   SC US  3395  -8112    69
+ABUS30 KCHI     CHICAGO_(WSFO)                   IL US  4200  -8788   181
+ABUS30 KCHS     CHARLESTON_MUNI                  SC US  3290  -8003    15
+ABUS30 KCLE     CLEVELAND/HOPKINS                OH US  4142  -8187   245
+ABUS30 KCON     CONCORD_MUNICIP                  NH US  4320  -7150   105
+AWUS41 KRLX     CHARLESTON/KANA                  WV US  3836  -8159   299
+ABUS30 KCYS     CHEYENNE/WARREN                  WY US  4115 -10482  1872
+ABUS30 KDEN     DENVER/STAPLETON                 CO US  3975 -10487  1625
+ABUS30 KDSM     DES_MOINES_INTL                  IA US  4153  -9365   294
+ABUS30 KDTX     DETROIT/PONTIAC                  MI US  4270  -8347   329
+ABUS30 KEWK     NEWTON_(AWOS)                    KS US  3804  -9728   467
+ABUS30 KEWR     NEWARK_INTL_AIRPORT              NJ US  4070  -7417     9
+ABUS30 KFAI     FAIRBANKS_INTL                   AK US  6481 -14787   138
+ABUS30 KFSD     SIOUX_FALLS/FOS                  SD US  4358  -9673   435
+AWUS44 KFWD     FORT_WORTH                       TX US  3279  -9730   196
+ABUS30 KGGW     GLASGOW_INTL_AR                  MT US  4822 -10662   700
+ABUS30 KGJT     GRAND_JUNCTION                   CO US  3911 -10853  1475
+ABUS30 KGRB     GREEN_BAY/STRAU                  WI US  4448  -8813   214
+ABUS30 KGRR     GRAND_RAPIDS_IN                  MI US  4288  -8552   245
+ABUS30 KGSP     GREENVILLE/SPAR                  SC US  3490  -8222   296
+ABUS30 KGTF     GREAT_FALLS_INT                  MT US  4748 -11137  1115
+ABUS30 KHNL     HONOLULU_INTL/O                  HI US  2135 -15793     5
+ABUS30 KICT     WICHITA/CONTINE                  KS US  3765  -9743   408
+ABUS30 KILG     WILMINGTON_AIRPORT               DE US  3968  -7560    24
+ABUS30 KILM     WILMINGTON/NEW                   NC US  3427  -7790    10
+ABUS30 KILN     WILMINGTON_AIRPARK               OH US  3943  -8380   326
+ABUS30 KIND     INDIANAPOLIS_INTL                IN US  3973  -8627   246
+ABUS30 KJAN     JACKSON/THOMPSON                 MS US  3232  -9008   101
+ABUS30 KJNU     JUNEAU_INTL_AIR                  AK US  5837 -13458     7
+ABUS30 KLAX     LOS_ANGELES_INTL                 CA US  3393 -11840    32
+AWUS44 KLUB     LUBBOCK_INTL_AR                  TX US  3365 -10182   988
+ABUS30 KLBF     N._PLATTE/LEE_B                  NE US  4113 -10068   849
+AWUS44 KLZK     NORTH_LITTLE_RO                  AR US  3483  -9225   165
+ABUS30 KLZK     NORTH_LITTLE_ROCK                AR US  3483  -9225   165
+ABUS30 KMAF     MIDLAND_REGIONA                  TX US  3195 -10218   872
+AWUS44 KMEG     MEMPHIS                          TN US  3513  -8980    87
+ABUS30 KMFR     MEDFORD/JACKSON                  OR US  4237 -12287   405
+AWUS42 KMFL     MIAMI                            FL US  2575  -8038     5
+ABUS30 KMKC     KANSAS_CITY_MUN                  MO US  3911  -9460   231
+ABUS30 KMKE     MILWAUKEE/MITCHELL               WI US  4295  -8790   211
+ABUS30 KMKX     MILWAUKEE/MITCH                  WI US  4295  -8790   211
+ABUS30 KMLB     MELBOURNE_REGIO                  FL US  2810  -8065    11
+ABUS30 KMOB     MOBILE/BATES_FI                  AL US  3068  -8825    67
+ABUS30 KMQT     MARQUETTE_CO._A                  MI US  4653  -8755   434
+ABUS30 KMSO     MISSOULA/BELL_F                  MT US  4692 -11408   972
+ABUS30 KMSP     MINNEAPOLIS-ST                   MN US  4488  -9322   255
+ABUS30 KMSY     NEW_ORLEANS/MOI                  LA US  2998  -9025     9
+ABUS30 KNEW     NEW_ORLEANS/LAKEFRO              LA US  3005  -9003     3
+ABUS30 KNYC     NEW_YORK_CITY                    NY US  4077  -7398    27
+AWUS44 KOUN     NORMAN                           OK US  3522  -9747   362
+ABUS30 KOMA     OMAHA/EPPLEY_FIELD&              NE US  4130  -9590   299
+ABUS30 KOUN     NORMAN/WESTHEIMER_&              OK US  3522  -9745   357
+ABUS30 KPAH     PADUCAH/BARKLEY                  KY US  3707  -8877   126
+ABUS30 KPDT     PENDLETON_MUNIC                  OR US  4568 -11885   456
+ABUS30 KPDX     PORTLAND_INTL_ARPT               OR US  4560 -12260    12
+ABUS30 KPHL     PHILADELPHIA_INTL                PA US  3988  -7525     9
+ABUS30 KPHX     PHOENIX/SKY_HAR                  AZ US  3343 -11202   337
+ABUS30 KPIH     POCATELLO_MUNIC                  ID US  4292 -11260  1365
+ABUS30 KPIT     PITTSBURGH_INTL                  PA US  4050  -8022   373
+ABUS30 KPWM     PORTLAND_INTL_JET                ME US  4365  -7032    19
+ABUS30 KRDU     RALEIGH-DURHAM                   NC US  3586  -7878   134
+ABUS30 KRIC     RICHMOND/BYRD_FIELD              VA US  3750  -7733    54
+ABUS30 KRIW     RIVERTON_REGION                  WY US  4307 -10847  1684
+ABUS30 KRNO     RENO/CANNON_INTL                 NV US  3950 -11978  1341
+AWUS44 KEWX     SAN_ANTONIO                      TX US  2953  -9846   246
+ABUS30 KSDF     LOUISVILLE/STANDIFO              KY US  3818  -8573   149
+ABUS30 KSEA     SEATTLE-TACOMA                   WA US  4745 -12230   137
+ABUS30 KSFO     SAN_FRANCISCO_I                  CA US  3761 -12238     5
+ABUS30 KSHV     SHREVEPORT_REGI                  LA US  3247  -9382    79
+ABUS30 KSJU     LUIS_MUNOZ_MARIN                 PU PU  1845  -6600     3
+ABUS30 KSLC     SALT_LAKE_CITY_INTL              UT US  4078 -11197  1288
+ABUS30 KSTL     ST._LOUIS/LAMBERT                MO US  3875  -9037   172
+ABUS30 KTOP     TOPEKA/BILLARD                   KS US  3907  -9562   270
+ABAK1  PANC     ANCHORAGE_INTL_ARPT              AK US  6118 -15000    44
+AWCA42 TJSJ     SAN_JUAN_INTL_ARPT               PU PU  1843  -6600    19
+! AWCA62 TJSJ     SAN_JUAN_INTL_ARPT               PU PU  1843  -6600    19

@@ -1,0 +1,208 @@
+! NIDPRD.TBL
+!
+! This table contains product information necessary to interpret the
+! header of a NIDS radar image.
+!
+! LOCAL images are identified by a positive source ID less than 10000.
+! NATIONAL Mosaic images are identified by a source ID equal to 10000.
+! REGIONAL Mosaic images are identified by a source ID between 10001 and 10007,
+! inclusive.  Alaska Mosaic Site ID is 10051 and Hawaii Mosaic Site ID is 10052.
+!
+!!
+! Log:
+! S. Jacobs/NCEP	12/97
+! S. Jacobs/NCEP	 2/98	Updated per UNISYS product catalog
+! S. Jacobs/NCEP	 4/98	Fixed spelling of abbreviations
+! S. Jacobs/NCEP	11/02	Added product #74 - RCM
+! G. Grosshans/SPC	03/07	Added NSSL Level-II imagery
+! G. Grosshans/SPC	05/07	Added Level-II CAPPI imagery per Levit
+! G. Grosshans/SPC	05/07	Changed CAPPI imagery Prod ID numbers
+!				to unused numbers at the SPC.  Added
+!				1 and 2 HR CUM PCPN
+! J. Levit/SPC		10/07	Changed NSSL product ID numbers
+! T. Piper/SAIC		03/08	Updated for new Alaska and Hawaii mosaics
+! X. Guo/CWS		04/10   Updated 94 product
+! X. Guo/CWS            04/10   Updated 99,134 and 135 products
+! S. Jacobs/NCEP	 6/12	Added products 190, 191
+!------------------------------------------------------------------------
+!
+!Type    Name      Prod#   #Lvls Units    Res    Description
+!A8      A8           I6      I7 A8       F6.2   A20
+!2345678X12345678X123456X1234567X12345678X123.12X12345678901234567890
+! Used for the UNISYS data feed.
+LOCAL    BREF         19      16 DBZ        1.00 BASE_REFL_1KM_TILT
+LOCAL    BREF256      94     256 DBZ        1.00 BASE_REFL_1KM_TILT
+LOCAL    BREF         20      16 DBZ        2.00 BASE_REFL_2KM_TILT
+LOCAL    VEL          27      16 KNOTS      1.00 RAD_VEL_1KM_TILT
+LOCAL    CREFC        36       8 DBZ        4.00 COMP_REFL_CLR_4KM
+LOCAL    CREFP        38      16 DBZ        4.00 COMP_REFL_PRCP_4KM
+LOCAL    TOPS         41      16 KFT        4.00 ECHO_TOPS
+LOCAL    SRVEL        56      16 KNOTS      1.00 STORM_REL_VEL
+LOCAL    VIL          57      16 KG/M**2    4.00 PREC_WATER
+LOCAL    LMRF1        65       8 DBZ        4.00 LYR1_MAX_REFL
+LOCAL    LMRF2        66       8 DBZ        4.00 LYR2_MAX_REFL
+LOCAL    PRCP1        78      16 INCHES     2.00 PRECIP_1HR
+LOCAL    PRCP3        79      16 INCHES     2.00 PRECIP_3HR
+LOCAL    PRCPT        80      16 INCHES     2.00 PRECIP_TOTAL
+LOCAL    LMRF3        90       8 DBZ        4.00 LYR_MAX_REFL3
+!
+! Used for data from other vendors.
+LOCAL    BREF         16       8 DBZ        1.00 BASE_REFL_1KM_TILT
+LOCAL    BREF         17       8 DBZ        2.00 BASE_REFL_2KM_TILT
+LOCAL    BREF         18       8 DBZ        4.00 BASE_REFL_4KM_TILT
+LOCAL    BREF         21      16 DBZ        4.00 BASE_REFL_4KM_TILT
+LOCAL    VEL          22       8 KNOTS      0.25 RAD_VEL_.25KM_TILT
+LOCAL    VEL          23       8 KNOTS      0.50 RAD_VEL_.5KM_TILT
+LOCAL    VEL          24       8 KNOTS      1.00 RAD_VEL_1KM_TILT
+LOCAL    VEL          25      16 KNOTS      0.25 RAD_VEL_.25KM_TILT
+LOCAL    VEL          26      16 KNOTS      0.50 RAD_VEL_.5KM_TILT
+LOCAL    SPWID        28       8 KNOTS      0.25 SPEC_WIDTH_.25KM
+LOCAL    SPWID        29       8 KNOTS      0.50 SPEC_WIDTH_.5KM
+LOCAL    SPWID        30       8 KNOTS      1.00 SPEC_WIDTH_1KM
+LOCAL    DHR          32     256 DBZ        1.00 DIGITAL_HYBRID_REF
+LOCAL    CFC          34       2 DBZ        1.00 CLUTTER_FILTER_CONTROL
+LOCAL    CREFC        35       8 DBZ        1.00 COMP_REFL_CLR_1KM
+LOCAL    CREFP        37      16 DBZ        1.00 COMP_REFL_PRCP_1KM
+LOCAL    SVREF        43      16 DBZ        1.00 SVR_WX_REFL
+LOCAL    SVVEL        44      16 KNOTS      0.25 SVR_WX_VEL
+LOCAL    SVSPWID      45       8 KNOTS      0.25 SVR_WX_SPEC_WID
+LOCAL    SVSHR        46      16 1/S        0.50 SVR_WX_SHEAR
+LOCAL    VAD          48       5 KNOTS      5.00 VAD_WIND_PROFILE
+LOCAL    CMOM         49      16            0.50 COMB_MOMENT
+LOCAL    XSREF        50      16 DBZ        1.00 X-SECT_REFL
+LOCAL    XSVEL        51      16 KNOTS      1.00 X-SECT_VEL
+LOCAL    XSSPW        52       8 KNOTS      1.00 X-SECT_SPEC_WID
+LOCAL    WKECHO       53       8 DBZ        1.00 WEAK_ECHO
+LOCAL    SRVEL        55      16 KNOTS      0.50 STORM_REL_VEL
+LOCAL    LARF1        63       8 DBZ        4.00 LYR1_AVG_REFL
+LOCAL    LARF2        64       8 DBZ        4.00 LYR2_AVG_REFL
+LOCAL    LATB1        67       8            4.00 LYR1_AVG_TURB
+LOCAL    LATB2        68       8            4.00 LYR2_AVG_TURB
+LOCAL    LATB3        69       8            4.00 LYR3_AVG_TURB
+LOCAL    LMTB1        70       8            4.00 LYR1_MAX_TURB
+LOCAL    LMTB2        71       8            4.00 LYR2_MAX_TURB
+LOCAL    LMTB3        72       8            4.00 LYR3_MAX_TURB
+LOCAL    DPA          81     256 mm         1.00 DIGITAL_PRECIP
+LOCAL    SHEAR        87      16 1/S        2.00 COMB_SHEAR
+LOCAL    LARF3        89       8 DBZ        4.00 LYR_AVG_REFL3
+!------------------------------------------------------------------------
+! HD lvl3 
+LOCAL    BREF256      94     256 DBZ        1.00 DIGITAL_REFLECTIVITY
+LOCAL    VEL          99     256 KNOTS      0.25 DIGITAL_VELOCITY
+LOCAL    VIL         134     256 KG/M**2    1.00 PREC_WATER
+LOCAL    TOPS        135     199 KFT        1.00 ECHO_TOPS
+LOCAL    BREF256     138     256 mm         1.00 DIGITAL_STORM_PRECIP
+!LOCAL    BREFT       181      16 DBZ        0.15 TDWF_REFLECTIVITY
+LOCAL    BREFT       181      16 DBZ    0.148147 TDWR_REFLECTIVITY
+LOCAL    BVELT       182     256 KNOTS  0.148147 TDWR_VELOCITY
+LOCAL    BVELT       183      16 KNOTS  0.148147 TDWR_VELOCITY
+LOCAL    BREFT       186     256 DBZ    0.296296 TDWR_REFLECTIVITY
+LOCAL    BREFT       187      16 DBZ    0.296296 TDWR_REFLECTIVITY
+NATIONAL CREFW       190      16 DBZ        1.00 COMP_REFL_WSR-88D 
+NATIONAL CREFT       191      16 DBZ        1.00 COMP_REFL_TDWR
+!------------------------------------------------------------------------
+! Dual-Pol lvl2
+LOCAL    DIFF_REF    159     256 DB         0.25 DIFFERENTIAL_REFLECTIITY 
+LOCAL    CORR_COEF   161     256 CC         0.25 DIGITAL_CORRELATION_COEF 
+LOCAL    SPEC_DIFF   163     256 DEG/KM     0.25 SPEC_DIFFERENTIAL_PHASE 
+LOCAL    HYDR_CLSS   165     150 TYPE       0.25 HYDROMETEOR_CLASS 
+LOCAL    MELT_LYR    166     256 ML         0.25 MELTING_LAYER 
+LOCAL    ONE_HR_ACUM 169      16 IN         2.00 ONE_HR_ACCUMULATION 
+LOCAL    ACCUM_ARRAY 170     256 IN         0.25 DIGITAL_ACCUM_ARRAY 
+LOCAL    STACCUM     171      16 IN         2.00 STORM_TOT_ACCUM 
+LOCAL    DSTACCUM    172     256 IN         0.25 DIG_STORM_TOT_ACCUM 
+LOCAL    DUSACCUM    173     256 IN         0.25 DIG_USER_SELECT_ACCUM 
+LOCAL    ONE_HR_DIFF 174     256 IN         0.25 ONE_HOUR_DIFFERENCE 
+LOCAL    DSTACCUM    175     256 IN         0.25 STORM_TOT_DIFF_ACCUM 
+LOCAL    HYDR_CLSS   177     150 TYPE       0.25 HYBRID_HYDROMETEOR_CLASS 
+!------------------------------------------------------------------------
+! Used for the UNISYS data feed.
+NATIONAL CREF         27      16 DBZ        4.00 COMP_REFL_4KM
+NATIONAL CREF         28      16 DBZ        8.00 COMP_REFL_8KM
+NATIONAL CREF         30      16 DBZ        4.00 COMP_REFL_4KM
+NATIONAL CREF         35      16 DBZ        8.00 COMP_REFL_8KM
+NATIONAL CREF         50       8 DBZ        4.00 COMP_REFL_4KM
+NATIONAL CREF         65       8 DBZ        8.00 COMP_REFL_8KM
+NATIONAL PRCP1        89      16 INCHES     2.00 PRECIP_1HR_2KM
+NATIONAL PRCP1        90      16 INCHES     4.00 PRECIP_1HR_4KM
+NATIONAL PRCP1        91      16 INCHES     8.00 PRECIP_1HR_8KM
+NATIONAL TOPS         95      16 KFT        4.00 ECHO_TOPS_4KM
+NATIONAL TOPS         96      16 KFT        8.00 ECHO_TOPS_8KM
+NATIONAL PRCPC       101      16 INCHES     4.00 PRECIP_CMLTV_4KM
+NATIONAL PRCP24      102      16 INCHES     4.00 PRECIP_24HR_4KM
+NATIONAL CREF        103      16 DBZ        4.00 COMP_REFL_4KM
+NATIONAL CREF        104      16 DBZ        8.00 COMP_REFL_8KM
+NATIONAL PRCPC       105      16 INCHES     2.00 PRECIP_CMLTV_2KM
+NATIONAL PRCP24      106      16 INCHES     2.00 PRECIP_24HR_2KM
+NATIONAL PRCPC       107      16 INCHES     8.00 PRECIP_CMLTV_8KM
+NATIONAL PRCP24      108      16 INCHES     8.00 PRECIP_24HR_8KM
+NATIONAL BREF        137      16 DBZ        2.00 BASE_REFL_NFLT_2KM
+NATIONAL BREF        138      16 DBZ        2.00 BASE_REFL_NFLTC_2KM
+NATIONAL BREF        139      16 DBZ        1.00 BASE_REFL_1KM
+NATIONAL BREF        140      16 DBZ        2.00 BASE_REFL_2KM
+NATIONAL BREF        141      16 DBZ        4.00 BASE_REFL_4KM
+NATIONAL BREF        142      16 DBZ        8.00 BASE_REFL_8KM
+NATIONAL BREF        144      16 DBZ        4.00 BASE_REFL_ALB_4KM
+NATIONAL LARFL       145       8 DBZ        4.00 LYR_AVG_REFL_LOW
+NATIONAL LARFM       146       8 DBZ        4.00 LYR_AVG_REFL_MID
+NATIONAL LARFH       147       8 DBZ        4.00 LYR_AVG_REFL_HIGH
+NATIONAL VIL         148      16 KG/M**2    4.00 PREC_WATER_4KM
+NATIONAL VIL         149      16 KG/M**2    4.00 PREC_WATER_8KM
+!
+! Used for data from other vendors.
+NATIONAL CREF          5      16 DBZ        4.00 COMP_REFL_4KM
+NATIONAL CREF         10      16 DBZ        8.00 COMP_REFL_8KM
+NATIONAL CREF         13       8 DBZ        4.00 COMP_REFL_4KM
+NATIONAL CREF         25       8 DBZ        8.00 COMP_REFL_8KM
+NATIONAL CREF         26      16 DBZ        4.00 COMP_REFL_4KM
+NATIONAL BREF         70      16 DBZ        2.00 BASE_REFL_2KM
+NATIONAL BREF         75      16 DBZ        4.00 BASE_REFL_4KM
+NATIONAL BREF         80      16 DBZ        8.00 BASE_REFL_8KM
+!------------------------------------------------------------------------
+! Used for the UNISYS data feed.
+REGIONAL CREF         30      16 DBZ        4.00 COMP_REFL
+REGIONAL PRCPC       105      16 INCHES     2.00 PRECIP_CMLTV
+REGIONAL PRCP24      106      16 INCHES     2.00 PRECIP_24HR
+REGIONAL BREF        137      16 DBZ        2.00 BASE_REFL_NFLT_2KM
+REGIONAL BREF        138      16 DBZ        2.00 BASE_REFL_NFLTC_2KM
+REGIONAL BREF        139      16 DBZ        1.00 BASE_REFL_1KM
+REGIONAL BREF        140      16 DBZ        2.00 BASE_REFL_2KM
+REGIONAL BREF        141      16 DBZ        4.00 BASE_REFL_4KM
+!------------------------------------------------------------------------
+! Other products for identification only (not necessarily images)
+LOCAL    RCM          74       0 NONE       0.00 RADAR_CODED_MSG
+!------------------------------------------------------------------------
+! NSSL Level-II imagery
+NATIONAL PRCPC       200      16 INCHES     1.00 W2_PRECIP_CMLTV_1HR_1KM
+NATIONAL PRCPC       201      16 INCHES     1.00 W2_PRECIP_CMLTV_2HR_1KM
+NATIONAL CREF        202      16 DBZ        1.00 W2_COMP_REFL_1KM
+NATIONAL RALA        203      16 DBZ        1.00 W2_REFL_RALA_1KM
+NATIONAL RT10        204      16 S**-1      1.00 W2_ROTR_10MN_1KM
+NATIONAL RT30        205      16 S**-1      1.00 W2_ROTR_30MN_1KM
+NATIONAL RT60        206      16 S**-1      1.00 W2_ROTR_60MN_1KM
+NATIONAL POSH        207      16 PERCENT    1.00 W2_PROB_SEVERE_HAIL_1KM
+NATIONAL MESH        208      16 INCHES     1.00 W2_MAXM_SIZE_HAIL_1KM
+NATIONAL VIL         209      16 KG/M**2    1.00 W2_PREC_WATER_1KM
+NATIONAL ECHO        210      16 KFT        1.00 W2_ECHO_TOPS_1KM_18DBZ
+NATIONAL CREF        211      16 DBZ        1.00 W2_COMP_REFL_1KM
+NATIONAL ECHO        212      16 KFT        1.00 W2_ECHO_TOPS_1KM_30DBZ
+NATIONAL ECHO        213      16 KFT        1.00 W2_ECHO_TOPS_1KM_50DBZ
+NATIONAL CAPI        214      16 DBZ        1.00 W2_01KMCAPPI_1KM
+NATIONAL CAPI        215      16 DBZ        1.00 W2_02KMCAPPI_1KM
+NATIONAL CAPI        216      16 DBZ        1.00 W2_03KMCAPPI_1KM
+NATIONAL CAPI        217      16 DBZ        1.00 W2_04KMCAPPI_1KM
+NATIONAL CAPI        218      16 DBZ        1.00 W2_05KMCAPPI_1KM
+NATIONAL CAPI        219      16 DBZ        1.00 W2_06KMCAPPI_1KM
+NATIONAL CAPI        220      16 DBZ        1.00 W2_07KMCAPPI_1KM
+NATIONAL CAPI        221      16 DBZ        1.00 W2_08KMCAPPI_1KM
+NATIONAL CAPI        222      16 DBZ        1.00 W2_09KMCAPPI_1KM
+NATIONAL CAPI        223      16 DBZ        1.00 W2_10KMCAPPI_1KM
+NATIONAL CAPI        224      16 DBZ        1.00 W2_11KMCAPPI_1KM
+NATIONAL CAPI        225      16 DBZ        1.00 W2_12KMCAPPI_1KM
+NATIONAL CAPI        226      16 DBZ        1.00 W2_13KMCAPPI_1KM
+NATIONAL CAPI        227      16 DBZ        1.00 W2_14KMCAPPI_1KM
+NATIONAL CAPI        228      16 DBZ        1.00 W2_15KMCAPPI_1KM
+NATIONAL CAPI        229      16 DBZ        1.00 W2_16KMCAPPI_1KM
+NATIONAL CAPI        230      16 DBZ        1.00 W2_17KMCAPPI_1KM
+NATIONAL CAPI        231      16 DBZ        1.00 W2_18KMCAPPI_1KM
+NATIONAL CAPI        232      16 DBZ        1.00 W2_19KMCAPPI_1KM

@@ -1,0 +1,23 @@
+!	This is the GEMLIB CTB error file
+!
+  1	! More entries found than maximum number of interal times.
+  2	! Default value or mode used.
+  3     ! County/marine zone cluster !AS not properly formed.
+  4     ! Could not find UPDT_WOU_USE_VTEC tag in !AS, now defaulting to 2.
+  5     ! Could not find UPDT_WOU_PROD_CODE tag in !AS, now defaulting to E.
+  6     ! Could not find UPDT_WOU_OFFID tag in !AS, now defaulting to KWNS.
+  7     ! Could not find UPDT_WOU_SIGCD tag in !AS, now defaulting to A.
+  8     ! Could not find FINL_WOU_PROD_CODE_xxx tag in !AS, now defaulting to E.
+  9     ! Could not find UPDT_WOU_FNL_TIM tag in !AS, now defaulting to 15.
+ -1	! The table !AS does not exist or cannot be opened.
+ -2	! No valid records in layer product table.
+ -3	! Layer !AS out of range.
+ -4     ! GEMPAK variable with specified parameters not found in the table.
+ -5     ! No GEMPAK variable found in the table under specified name.
+ -6	! Tag !AS not found.
+ -7     ! NULL or zero length input issue type.
+ -8	! Input issue type(s) not found.
+ -9     ! The gfa.tbl file has not been read yet.
+ -10    ! The gfa.tbl does not contain an IFR hazard.
+ -11	! Requested Hershey Font cannot be found.
+ -12	! Cannot allocate memory for Hershey Fonts.

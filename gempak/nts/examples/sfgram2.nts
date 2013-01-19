@@ -1,0 +1,17 @@
+SFFILE  $GEMPAK/data/HRCBOB.SFC                                                     
+DATTIM  all                                                                     
+STATION pwm;bwi;hat                                                             
+TRACE1  tmpf;dwpf:3/2;3                                                         
+TRACE2  tmpf;dwpf:3/2;3                                                         
+TRACE3  tmpf;dwpf:3/2;3                                                         
+TRACE4                                                                          
+TRACE5                                                                          
+NTRACE  3                                                                       
+TAXIS   19/03-20/09                                                             
+BORDER  1                                                                       
+MARKER  3/12                                                                    
+TITLE   1                                                                       
+CLEAR   y                                                                       
+DEVICE  xw                                                                      
+PANEL   0                                                                       
+TEXT    1///sw                                                                  

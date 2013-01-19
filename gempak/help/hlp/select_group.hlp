@@ -1,0 +1,29 @@
+
+                                SELECT GROUP
+
+
+This pop-up loads product groups for a selected metafile.  A product group 
+is usually either a sequence of forecasts or a set of products at a valid time.
+This pop-up is invoked by pressing the right mouse button while the cursor is 
+in the data area.
+
+Click on the desired product group from the scroll list.  The selection is 
+highlighted.  Click on the appropriate button under "Load Panel" to load the 
+product sequence into the display memory.
+
+"Clear Screen" wipes clean all the available frames.
+
+Click "set" to assign a valid time to each frame based on the times within 
+the selected group.  Click "clear" to un-set any valid times previously 
+assigned.  Once a sequence of valid times has been set, all subsequent groups 
+will be loaded into the proper frames based on the times.  This capability 
+allows users to use multi-panel mode (described below) to compare various
+model runs with variable start times and still maintain a synchronized 
+animation sequence.
+
+Click on an option in the Panel structure section to specify how multiple 
+panels are arranged within the display area.  The selected structure is 
+reflected by the "Load panel" buttons.  Click with either the left or right 
+mouse button to load the selected group into that button's area of the display 
+window.  The right button will also remove the "Select Group" and "Select
+Model" pop-ups prior to beginning the load.

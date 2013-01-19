@@ -1,0 +1,39 @@
+C************************************************************************
+C* DCCMN								*
+C*									*
+C* This common block contains variables for the FORTRAN part of the 	*
+C* decoder bridge library.						*
+C*									*
+C**									*
+C* Log:									*
+C* S. Jacobs/NMC	 8/95						*
+C* S. Jacobs/NCEP	 7/96	Corrected variable descriptions		*
+C************************************************************************
+	INCLUDE		'GEMPRM.PRM'
+	PARAMETER	( MXFILE = MMFILE )
+C*
+	CHARACTER	filopn*132, prmfil*72, param*4
+C*
+	COMMON	/ DCCMN /
+     +		maxfil,
+C!					Max number of files requested
+     +		iftype,
+C!					Type of output file
+C!						1 = Surface land
+C!						2 = Surface ship
+C!						3 = Sounding unmerged
+C!						4 = Sounding merged
+C!						5 = Surface text only
+     +		filopn ( MXFILE ),
+C!					Array of open file names
+     +		lunopn ( MXFILE ),
+C!					Array of open file unit numbers
+     +		numopn ( MXFILE ),
+C!					Array of open file positions
+     +		prmfil,
+C!					Parameter packing table
+     +		kparm,
+C!					Number of parms in packing table
+     +		param ( MMPARM )
+C!					Names of parms in packing table
+C------------------------------------------------------------------------

@@ -1,0 +1,46 @@
+! FWO.BULL
+!
+! Location information for the following product:
+! Fire_Weather_Observation.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+NZUS90 KGRB     GREEN_BAY                        WI US  4449  -8811     0
+SHCA62 TJSJ     SAN_JUAN                         PR US  1843  -6600     0
+SHUS61 KALY     ALBANY                           NY US  4268  -7383     0
+SHUS62 KKEY     KEY_WEST                         FL US  2457  -8178     0
+SHUS62 KFFC     PEACHTREE_CITY                   GA US  3336  -8455     0
+SHUS62 KJAX     JACKSONVILLE                     FL US  3047  -8169     0
+SHUS62 KMFL     MIAMI                            FL US  2575  -8037     0
+SHUS62 KMLB     MELBOURNE                        FL US  2811  -8065     0
+SHUS62 KTBW     TAMPA_BAY_AREA/RUSKIN            FL US  2770  -8240     0
+SHUS63 KBIS     BISMARCK                         ND US  4677 -10075     0
+SHUS63 KFSD     SIOUX_FALLS                      SD US  4358  -9672     0
+SHUS63 KOAX     OMAHA/VALLEY                     NE US  4131  -9636     0
+SHUS63 KTOP     TOPEKA                           KS US  3906  -9562     0
+SHUS64 KAMA     AMARILLO                         TX US  3522 -10169     0
+SHUS64 KBMX     BIRMINGHAM                       AL US  3316  -8677     0
+SHUS64 KBRO     BROWNSVILLE                      TX US  2590  -9741     0
+SHUS64 KCRP     CORPUS_CHRISTI                   TX US  2777  -9750     0
+SHUS64 KEPZ     EL_PASO_TX/SANTA_TERESA          NM US  3187 -10669     0
+SHUS64 KEWX     AUSTIN/SAN_ANTONIO               TX US  2970  -9801     0
+SHUS64 KFWD     DALLAS/FORT_WORTH                TX US  3283  -9729     0
+SHUS64 KHGX     HOUSTON/GALVESTON                TX US  2946  -9506     0
+SHUS64 KJAN     JACKSON                          MS US  3231  -9008     0
+SHUS64 KLCH     LAKE_CHARLES                     LA US  3012  -9320     0
+SHUS64 KLUB     LUBBOCK                          TX US  3352 -10187     0
+SHUS64 KLZK     LITTLE_ROCK                      AR US  3483  -9225     0
+SHUS64 KMAF     MIDLAND/ODESSA                   TX US  3194 -10218     0
+SHUS64 KMEG     MEMPHIS                          TN US  3513  -8980     0
+SHUS64 KMOB     MOBILE                           AL US  3067  -8823     0
+SHUS64 KMRX     MORRISTOWN                       TN US  3615  -8340     0
+SHUS64 KOHX     NASHVILLE                        TN US  3624  -8655     0
+SHUS64 KOUN     NORMAN                           OK US  3522  -9745     0
+SHUS64 KSHV     SHREVEPORT                       LA US  3245  -9383     0
+SHUS64 KTSA     TULSA                            OK US  3613  -9586     0
+SHUS65 KCYS     CHEYENNE                         WY US  4115 -10480     0
+SHUS65 KGGW     GLASGOW                          MT US  4820 -10662     0
+SHUS66 KMFR     MEDFORD                          OR US  4236 -12287     0

@@ -1,0 +1,4 @@
+$FC $FFLAGS $LDFLAGS -o $OS_BIN/gptext gptext.f \
+	    $OS_LIB/gptext.a $GEMLIB $APPL \
+	    $GEMLIB $CGEMLIB $GEMLIB $SYSLIB
+$RM *.o

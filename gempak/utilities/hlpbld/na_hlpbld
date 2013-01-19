@@ -1,0 +1,18 @@
+GEMPARM=$GEMPAK/parm
+export GEMPARM
+GEMPTXT=$GEMPAK/txt/programs
+export GEMPTXT
+
+hlpbld $GEMHLP/hlp BFR2GP
+##########################
+hlpbld $GEMHLP/hlp NAGRIB
+##########################
+hlpbld $GEMHLP/hlp NAGRIB2
+##########################
+hlpbld $GEMHLP/hlp NAMSND
+##########################
+hlpbld $GEMHLP/hlp NDFDG2
+##########################
+hlpbld $GEMHLP/hlp GD2NDFD
+##########################
+echo ALL THE NA HLPs ARE BUILT.

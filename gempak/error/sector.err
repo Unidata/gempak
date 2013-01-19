@@ -1,0 +1,11 @@
+!	Program SECTOR
+!
+-1	! Fatal error initializing TAE.
+-2	! Fatal error reading TAE parameters.
+-3	! Error initializing GEMPLT.
+-4	! Input file is not a GINI image.
+-5	! File !AS does not exist.
+-6	! Too few points in the requested image.
+-7	! Requested image has no points from the original.
+-8	! Bad bounds for the requested image.
+-9	! Pixel resolution, !AS, is invalid

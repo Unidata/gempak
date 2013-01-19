@@ -1,0 +1,11 @@
+!METAR.PACK
+!
+!This table is the packing table for DCIDFT, which decodes Sea Ice data.
+!
+!*Log:
+!
+!T. Lee		 8/02
+!				
+!
+DRCT         0.        360.      1.
+DTNM         0.       1000.       .1

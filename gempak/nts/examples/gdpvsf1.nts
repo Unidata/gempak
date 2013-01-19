@@ -1,0 +1,13 @@
+GDFILE  $GEMDATA/HRCBOB.GRD        
+GDOUTF  $GEMDATA/HRCBOB.GRD
+GDATTM  F12   
+GFUNC   pvor(thta,obs)                                                         
+GVCORD  pres                                                                    
+STARTL  100                                                                     
+STOPL   700                                                                     
+DESIRE  .0000015                                                               
+GDOUTL  15                                                                      
+GPACK                                                                           
+GLIST   thta;urel;vrel;pres                                                     
+PMAX    700                                                                     
+GVOUTC  PVAB     

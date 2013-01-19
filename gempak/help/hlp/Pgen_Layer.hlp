@@ -1,0 +1,88 @@
+		 	  Product Generation Layering
+
+
+I.  Functionality
+
+Layering allows the display and editing of more than one product while in
+product generation.  This function facilitates creating more than one product
+at a time or using multiple products as guides in creating a new product.
+Each layer is associated with a set of objects and optionally may be 
+associated with a VGF.  Only one layer can be selected to be active at a 
+time.  When a layer is active, all product generation functions can operate 
+on it, whereas non-active layers can only be displayed.  The active layer 
+is displayed in full color with all of its fills applied.  Non-active layers 
+may be toggled on or off, displayed in full color or a user-selected 
+mono-color, and displayed with fills turned on or off.  Up to 10 layers can 
+be present in product generation. 
+
+A GUI allows the user to easily switch which layer is active.  Product
+generation actions are terminated when switching between layers.  For example,
+if an object is being drawn and the active layer is changed, the object is
+not drawn.
+
+Layers and their attributes can be pre-specified and loaded into product 
+generation using a Layer Product File (LPF).  See the Layer Product Files help
+for additional information.
+
+II. Operation
+
+Click the "START LAYER" button in the "Controls" section of the product
+generation palette ("pgpalette") to invoke layering.  The "Layer Control" 
+and "Layer Name" GUIs are activated.  Enter a layer name in the
+"Layer Name" text window to specify a layer name and click "Accept" to
+change the default layer name.  To add more layers, click the "ADD LAYER" 
+button on the product generation palette.  The "Layer Control" GUI expands
+vertically each time a layer is added, adding another row of buttons that
+correspond to the new layer.
+
+The "Layer Control" GUI remains visible while in product layering mode.  This
+GUI controls which layer is active and the display attributes of the 
+non-active layers by using its three columns of buttons.  
+
+The first column button, which lists the layer name, controls which layer is 
+active.  Click this button to select the desired active layer.  The active 
+layer is indicated by the button that is highlighted.  When a layer is active,
+all of its colors and fill patterns are displayed and all product generation
+actions can operate on its objects.  A particular VGF file may be associated
+with a layer by opening an existing VGF or saving a VGF while the layer is
+active.  A group type may be associated with a layer by selecting it with
+the "GROUP" action while the layer is active.  In this way, each layer may
+have its own group type when active.  
+
+The second column button is a checkbox (a toggle mechanism) that controls 
+whether elements on the layer are displayed when the layer is not active.  A 
+filled checkbox indicates that the layer is set to be on, whereas 
+an empty checkbox indicates the layer is turned off.  Elements on layers with a 
+checkbox set on will be displayed even when their layer is not the currently 
+active layer.  Layers set to off will not be displayed unless their layer is 
+the active layer.  Elements on the active layer are always displayed even if 
+the checkbox is set to off.
+
+The third column button controls whether a layer is displayed as monochrome, 
+the monochrome color choice and whether its fill patterns are visible when 
+the layer is not active.  Clicking this button invokes the "Layer Display" 
+GUI.  Click the "Mono Color" and "Fill" buttons to turn on/off mono-color and 
+fill, respectively.   To specify the color for mono-color display, click the 
+color square.  Then select the desired color from the "Color Palette" GUI.  
+The third column button label and color indicate the layer display state when 
+not active.  The "A" and "M" before the "/" indicate all colors and mono-color
+display, respectively.  The "F" and "N" after the "/" indicate fills shown
+and fills not shown, respectively.  The button color indicates the mono-color
+color choice for the layer.  
+
+The "All On" and "All Off" buttons are shortcut mechanisms which turn all the
+layer checkboxes on and off respectively.
+
+Additionally hotkeys provide a way to switch layers from the keyboard instead
+of clicking on the layer buttons in the Layer Control GUI.  Keys 1..0 switch 
+the active layer to layers 1 - 10.  The key combination of Shift and 1..0 
+switch the active layer to layers 11 - 20.
+
+The "Edit Name" button on the "Layer Control" GUI invokes the "Layer Name"
+GUI which allows the modification of a layer name.  The maximum number of 
+layer name characters is eight.
+
+Clicking the "Exit" button on the "Layer Control" GUI terminates layering.  
+If changes have been made to any layer objects without saving them to a 
+VGF, then the user is prompted to save the changes to a VGF.  Upon exit all 
+layer objects are combined and made active.  

@@ -1,0 +1,21 @@
+     SFOUTF
+
+     SFOUTF is the output surface data file.
+
+     SFOUTF is used in programs which create a new surface data file.  
+     It is also used in programs in which data is moved from an input 
+     file to an output file, in which case, SFFILE is the original file.
+
+     When used with program NAMSND, SFOUTF can be used to specify two
+     output surface files.  This is done by appending a + to the output 
+     file name.  In this case, the second file will have the same name 
+     as the first, with the suffix _aux.  The second file will contain 
+     surface data for the diagnostic or overflow parameters listed in 
+     the auxiliary surface packing file (described in SFPRMF).  For 
+     example,
+
+		SFOUTF = new.sfc+
+
+     will create output files new.sfc and new.sfc_aux, if both a primary
+     and an auxiliary surface packing file have been provided.
+ 

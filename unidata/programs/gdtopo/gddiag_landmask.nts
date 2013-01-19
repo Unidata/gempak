@@ -1,0 +1,16 @@
+GDFILE  nam_land.gem                                                                                                                    
+GDOUTF  nam_land.gem                                                                                                                    
+GFUNC   gwfs(bool(sgt(topo,0)),3)                                                                                                       
+GDATTIM 070101/0000                                                                                                                     
+GLEVEL  0                                                                                                                               
+GVCORD  none                                                                                                                            
+GRDNAM  land                                                                                                                            
+GRDTYP  s                                                                                                                               
+GPACK                                                                                                                                   
+GRDHDR                                                                                                                                  
+PROJ    lcc/40;-100;40                                                                                                                  
+GRDAREA dset                                                                                                                            
+KXKY                                                                                                                                    
+MAXGRD  200                                                                                                                             
+CPYFIL                                                                                                                                  
+ANLYSS  4/2;2;2;2                                                                                                                       

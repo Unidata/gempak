@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE TEST [
+  <!ELEMENT TEST ANY>
+  <!ELEMENT EL ANY>
+  <!ATTLIST EL
+    ITEM ID #REQUIRED
+  >
+]>
+<TEST>
+  <EL ITEM="0">
+    <EL ITEM="1">
+      <EL ITEM="2">
+        <EL ITEM="3">Test String</EL>
+      </EL>
+    </EL>
+  </EL>
+  <EL ITEM="4">
+    <EL ITEM="5"/>
+  </EL>
+</TEST>

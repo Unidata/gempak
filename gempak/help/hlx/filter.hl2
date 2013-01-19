@@ -1,0 +1,15 @@
+     FILTER
+
+     FILTER is a logical variable or real number which controls the
+     filtering of data in order to eliminate plotting of overlapping
+     data.
+
+     If FILTER is YES, the data will be filtered.
+
+     If FILTER is NO, 0, or blank, all data will be plotted.
+
+     If FILTER is set to a real number, the default filter will be scaled 
+     by that number.  FILTER = 1 corresponds to FILTER = YES.
+     0 < FILTER < 1 allows some data overlap.  FILTER > 1 causes data to 
+     be more widely spaced.
+

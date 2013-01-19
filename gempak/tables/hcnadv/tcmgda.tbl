@@ -1,0 +1,21 @@
+! TCMGDA.TBL
+!
+! This table contains the danger area radii values in nautical miles 
+! for the TPC and CPHC tropical cyclone marine graphics.  The radii 
+! values are added to the 34kt wind values at each forecast time to 
+! get the danger area.
+!
+!!
+! Log:
+! D. Kidwell/NCEP	 2/02	Created
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!
+!FCST   TPC     CPHC
+! HR     NM      NM
+!
+   0     0.0     0.0
+  12    50.0    50.0
+  24   100.0    80.0
+  36   150.0   125.0
+  48   200.0   180.0
+  72   300.0   250.0

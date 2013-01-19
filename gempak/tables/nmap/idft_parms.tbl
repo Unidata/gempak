@@ -1,0 +1,18 @@
+! 
+!	IDFT_PARMS.TBL
+!
+! This table contains the available parameters used in the
+! station model editing panel in NMAP for the ICE DRIFT data 
+! type. 
+!
+!	pos_zero_flag:	1 = plot at position 0 only
+!			0 = plot at any position
+!
+! Log:
+! T. Lee/SAIC		 9/02	
+!
+! parameter       pos_zero_flag     
+!
+darr:1:2:112      1  
+drct              0
+dtnm              0

@@ -1,0 +1,73 @@
+     HILO
+
+     HILO contains the information for plotting relative highs and lows
+     in the following format:
+
+	colorh;colorl/symbolh;symboll/rangeh;rangel/radius/counth;countl/interp
+
+     Colorh and colorl are the colors for the high and low symbols to be
+     plotted.  If only a single number is entered, it will be used for
+     both highs and lows.  The default for this entry is 0.
+
+     Symbolh and symboll specify the symbols to be plotted.  The format
+     for the symbol input is:
+		character # precision
+
+     where the character is the character to be plotted.  If the character
+     is an integer, markers corresponding to that number will be plotted.
+     If the character is an integer preceeded by the character 'S', special
+     symbols corresponding to that number will be plotted.
+     Information about markers can be found in the help for MARKER.  
+     The # is a flag to plot values beneath the marker.  The integer following
+     the # is the number of decimal places to display in the value.  If a
+     # is present without the following number, integer values are printed.
+     The default for the symbols is H;L.
+
+     Rangeh and rangel are ranges for highs and lows specified as:
+		minval - maxval
+
+     where minval and maxval are integers which specify the range of values 
+     to be considered for designation as a high or low.  The default is to 
+     consider all data.
+
+     The search radius is a sqaure region of grid points. The region is a
+     moving search area in which all points are compared to derive relative
+     extrema. The default is 3, which is generally the most effective. To
+     find more concentrated areas of highs and lows, use a smaller radius.
+     A large radius, such as 10 or higher, is not very effective. 
+
+     Counth and countl are integer values for the maximum number of
+     high and low values to be displayed.  The default is 20;20.
+
+     Interp is an interpolation flag which specifies whether the values and
+     locations of the highs and lows will be at grid points, or will be 
+     interpolated between grid points.  The default is NO.
+
+     In general, the above defaults are used if there is no entry for
+     a part.  For the parts which have values for both relative highs
+     and lows, a single entry will be used for both highs and lows.
+
+     Examples:
+
+	HILO = 1/H#;L#/1020-1040;980-1000/2/30;20
+
+        Color 1 for highs and lows.
+        H and L characters with numeric values plotted below.
+        Plot highs from 1020 to 1040; plot lows from 980 to 1000.
+        Search radius of 2.
+        Plot the 30 highest highs and the 20 lowest lows in the specified
+         range.
+
+
+	HILO = 2;4/X#;Y#//30/yes
+
+        Colors 2 and 4 for highs and lows.
+        X and L characters with numeric values plotted below.
+        Plot the 30 highest highs and 30 lowest lows.
+        Locations of highs and lows interpolated between
+        grid points.
+
+	HILO = 2;4/S12#;S13#//30/yes
+
+        Same as previous example except use special symbols 12 and 13
+        for indicating relative minima and maxima.

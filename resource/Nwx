@@ -1,0 +1,21 @@
+Nwx.geometry:		+47+0
+Nwx*texttop.x:		+605
+Nwx*texttop.y:		+0
+Nwx*background:		grey75
+Nwx*foreground:		black
+Nwx*fontList: -adobe-helvetica-*-r-normal-*-14-*-75-75-p-*-iso8859-1
+Nwx*text_f.fontList:	"8x13bold"
+Nwx*textwin.fontList:	"8x13bold"
+Nwx*text_label.fontList:	"8x13bold"
+Nwx*mapcanv.height:	545
+Nwx*mapcanv.width:	545
+Nwx*textwin.height:	740
+Nwx*textwin.width:	650
+Nwx*textwin.columns:	84
+Nwx*textform.noResize:   True
+Nwx*data_selection.noResize:   True
+Nwx*data_selection.defaultPosition:   False
+Nwx*data_selection.x:   +570
+Nwx*data_selection.y:   +150
+Nwx*mapcanv.translations:    #override\n\
+        <Btn3Down>, <Btn3Up>:   toggle_dataPopup()

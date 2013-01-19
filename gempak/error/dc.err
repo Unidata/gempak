@@ -1,0 +1,24 @@
+! DC error file
+!
++6	! Shutting down.
++5	! Normal termination.
++4	! The number of open files has been set to the max.
++3	! Starting up. !AS
++2	! !AS
++1	! Bad command line option.
+-2	! Error writing to decoder log file.
+-3	! Cannot open decoder log file.
+-4	! Cannot allocate space for the buffer.
+-5	! Error reading data into the buffer.
+-6	! A time out has occurred.
+-7	! The buffer has overflowed, no end of bulletin.
+-8	! Cannot get bulletin from an empty buffer.
+-9	! End of input data file.
+-10	! Unknown type of output file.
+-11	! No command line arguments found.
+-12	! Cannot get header information. Error in header format.
+-13	! Cannot open station table !AS.
+-14	! Cannot locate mnemonic !AS
+-15	! Report time does not match bulletin time
+-16	! Invalid time
+-17	! Cannot set environment variable: !AS

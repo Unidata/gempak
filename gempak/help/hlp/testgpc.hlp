@@ -1,0 +1,71 @@
+
+TESTGPC
+                                                                       
+  TESTGPC tests the GPC (General Polygon Clipper) library.
+
+  The complete documentation of the GPC library is located in the postscript file
+  $NAWIPS/doc/gpclib/gpc.ps.
+
+  Please note the following terminology:
+  The GPC library refers to 'contours' which are normally thought of as
+  'polygons'. As such, the GPC library extends the meaning of 'polygon' 
+  to be a set of 'contours'.
+
+
+INPUT FILE DESCRIPTIONS
+
+  In order to test the GPC, polygons and/or sets of vertices must be input
+  from external files. (Or in the case of vertices, they may be typed in.)
+
+  The two file formats are as follows:
+
+  1) GPC LIBRARY POLYGON FILES
+
+  A GPC polygon is stored in an ASCII file using the format:
+
+    <num-contours>
+    <num-vertices-in-first-contour>
+    [<first-contour-hole-flag>]
+    <vertex-list>
+    <num-vertices-in-second-contour>
+    [<second-contour-hole-flag>]
+    <vertex-list>
+    etc...
+
+  The hole-flag values are optional, their reading and writing being controlled 
+  by setting the second argument of gpc_read_polygon() and gpc_write_polygon() 
+  to 1 (TRUE) or 0 (FALSE). Clip operations will correctly set the contour hole 
+  flags of the result polygon. This information may be ignored by the user 
+  application if it is not required.
+
+
+  For example, a single polygon consisting of a triangular hole within a 
+  quadrilateral (with hole flags included) may take the form:
+
+          2
+          3
+          1
+            4.0   4.0
+            6.0   5.0
+            5.0   6.0
+          4
+          0
+            2.0   1.0
+            8.0   2.0
+            7.0   9.0
+            1.0   7.0
+
+
+  2) TESTGPC VERTEX FILES
+
+  This file format is provided for the GPC test program only. The file consists
+  of a simple list of coordinate pairs separated by whitespace only.
+
+  For example, a triangle would be represented in the file as:
+
+    0 0
+    1 0
+    1 1
+
+  The number of points in the vertext list is NOT included in the file. Rather
+  it is computed when the points are read in.

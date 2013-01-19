@@ -1,0 +1,9 @@
+!	This is the error file for DCAIRM.
+!
++1	! Airmet bulletin header error !AS
+-1	! Report is not an airmet !AS
+-2	! Valid airmet type not found !AS
+-3	! Valid airmet start time not found !AS
+-4	! Valid airmet end time not found !AS
+-5	! Found keyword AIRMET with no valid subtype !AS
+-6	! No airmet bounds given !AS

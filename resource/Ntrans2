@@ -1,0 +1,226 @@
+Ntrans2.geometry:               +112+0
+!
+!	graphic window size
+!
+Ntrans2*drawing_widget.width:		1145
+Ntrans2*drawing_widget.height:		870
+!
+!	file selection	
+!
+Ntrans2*select_meta_file.dialogTitle:   User-Defined	
+!
+!	model selection	
+!
+Ntrans2*ModelSelect.dialogTitle:	Select Model
+!
+!	frame selection	
+!
+Ntrans2*frameselect.dialogTitle:	Select Frame
+Ntrans2*FrameSelectRc.spacing:	        40
+Ntrans2*FrameSelectRc.marginWidth:	65
+!
+!	menubar	
+!
+Ntrans2*topmenubar.rightPosition:        70
+Ntrans2*topmenubar.spacing:		6
+Ntrans2*topmenubar.shadowThickness:      0
+Ntrans2*buttonrc.spacing:                10
+Ntrans2*buttonrc.marginWidth:            10
+Ntrans2*topmenubar.Help.mnemonic:	H
+Ntrans2*topmenubar.Exit.mnemonic:	E
+Ntrans2*topmenubar.File.mnemonic:	F
+Ntrans2*topmenubar.Arrange.mnemonic:	A
+Ntrans2*topmenubar.Tools.mnemonic:	T
+Ntrans2*topmenubar.View.mnemonic:	V
+Ntrans2*topmenubar*Open.mnemonic:	O
+Ntrans2*topmenubar*Exit.mnemonic:	E
+!
+!	drawing widget	
+!
+Ntrans2*drawing_widget.background:	black
+!
+!	colorbar	
+!
+Ntrans2*colrbar.height:		40
+!
+!	file selection box	
+!
+Ntrans2*select_meta_file.listVisibleItemCount:  	  25
+!
+!	local product selection	
+!
+Ntrans2*LocalProduct.dialogTitle:	Local Products
+Ntrans2*LocalProduct.noResize:            True
+Ntrans2*LocalProduct.allowOverlap:        False
+Ntrans2*LocalProduct.defaultPosition:     False
+Ntrans2*LocalProduct.x:	        	5	
+Ntrans2*LocalProduct.y:	        	500
+Ntrans2*LocalProduct.width:	        280
+Ntrans2*LocalProduct.height:	        400
+!
+!	group selection	
+!
+Ntrans2*groupselect.noResize:  	  	True
+Ntrans2*groupselect.allowOverlap:  	False
+Ntrans2*groupselect.defaultPosition:	False
+Ntrans2*groupselect.x:	        	122
+Ntrans2*groupselect.y:	        	102
+Ntrans2*groupselect.width: 	  	300
+Ntrans2*groupselect.dialogTitle:   Select Group 
+Ntrans2*fileLb.fontList: -adobe-courier-*-r-normal-*-14-*-*-*-m-90-iso8859-1
+Ntrans2*group_list.visibleItemCount:  8
+Ntrans2*Model_Group.x:                20
+Ntrans2*Model_Group.y:                10
+Ntrans2*Model_Group.spacing:          10
+Ntrans2*mpanelBLb.x:                5
+Ntrans2*mpanelBLb.y:                65
+Ntrans2*mpanelBRc.x:                130
+Ntrans2*mpanelBRc.y:                55
+Ntrans2*LoadGrpList.x:	5
+Ntrans2*LoadGrpList.y:	10
+Ntrans2*SaveGrpList.x:	170
+Ntrans2*SaveGrpList.y:	10
+Ntrans2*validtimeLb.x: 5
+Ntrans2*validtimeLb.y: 15
+Ntrans2*validtimeRc.x: 120
+Ntrans2*validtimeRc.y: 0
+Ntrans2*validtimeRc.spacing: 20
+Ntrans2*validtimeInfo.x: 5
+Ntrans2*validtimeInfo.y: 50
+Ntrans2*validtimeInfo.foreground:		red
+Ntrans2*validtimeInfo.fontList: -adobe-courier-*-r-normal-*-14-*-*-*-m-90-iso8859-1
+Ntrans2*structureLb.x:  85
+Ntrans2*structureLb.y:  0
+Ntrans2*patternsRc.x:  50
+Ntrans2*patternsRc.y:  35
+Ntrans2*rowLb.x:  5
+Ntrans2*rowLb.y:  75
+Ntrans2*rowRc.x:  120
+Ntrans2*rowRc.y:  70
+Ntrans2*rowTxt.x:	250
+Ntrans2*rowTxt.y:	65
+Ntrans2*colLb.x:  5
+Ntrans2*colLb.y:  120
+Ntrans2*colRc.x:  120
+Ntrans2*colRc.y:  115
+Ntrans2*columnTxt.x:    250
+Ntrans2*columnTxt.y:    115
+Ntrans2*mpanelSelLb.leftPosition:  30
+Ntrans2*mpanelSelLb.topPosition:  2
+Ntrans2*group_list.translations:	#override\n\
+	<Btn1Up>(2):    ok_select() \n\
+	<Btn1Down>, <Btn1Up>:	ListBeginSelect() ListEndSelect()
+Ntrans2*groupfile.translations:	#override\n\
+	<Key>Return:	save_group()
+!
+!	frame selection	
+!
+Ntrans2*frameselect.noResize:  	  	True
+Ntrans2*frameselect.allowOverlap:  	False
+Ntrans2*frameselect.defaultPosition:	False
+Ntrans2*frameselect.x:	        	20
+Ntrans2*frameselect.y:	        	150
+!
+!	group generation panel	
+!
+Ntrans2*group_panel.noResize:      	True
+Ntrans2*group_panel.allowOverlap:  	False
+Ntrans2*group_panel.defaultPosition:	False
+Ntrans2*group_panel.x:	        	20
+Ntrans2*group_panel.y:	        	150
+Ntrans2*group_panel.width: 	  	300
+Ntrans2*group_panel.dialogTitle:   Manual-group
+Ntrans2*frame_list.visibleItemCount: 15
+Ntrans2*group_nameW.columns:         25
+Ntrans2*GroupNameRc.topPosition:     80
+Ntrans2*GroupNameRc.leftPosition:     2
+Ntrans2*AddGroupListB.topPosition:     92
+Ntrans2*AddGroupListB.leftPosition:     10
+Ntrans2*AddDisplayB.topPosition:     92
+Ntrans2*AddDisplayB.leftPosition:     30
+Ntrans2*DeleteGroupB.topPosition:     82
+Ntrans2*DeleteGroupB.leftPosition:    78
+Ntrans2*LoadGroupListB.topPosition:     90
+Ntrans2*LoadGroupListB.leftPosition:     70
+Ntrans2*SaveGroupListB.topPosition:     90
+Ntrans2*SaveGroupListB.leftPosition:     85
+Ntrans2*ManualGroupCtrbRc.marginWidth:   350
+Ntrans2*ManualGroupCtrbRc.spacing:       100
+Ntrans2*frame_listW.scrollBarDisplayPolicy:  XmAS_NEEDED	
+Ntrans2*frame_listW.scrollingPolicy:  XmAUTOMATIC	
+Ntrans2*frame_list.translations:	#override\n\
+	<Btn1Up>(2):    view_frame() \n\
+	<Btn1Down>, <Btn1Up>:	ListBeginSelect() ListEndSelect()
+Ntrans2*search_nameW.translations:	#override\n\
+	<Key>Return:	setMode1() Search_Callback()
+Ntrans2*Inc_textW.translations:	#override\n\
+	<Key>Return:	setMode0() Search_Callback()
+Ntrans2*group_nameW.translations:	#override\n\
+	<Key>Return:	AddGpList_Callback()
+!
+!	model selection panel	
+!
+Ntrans2*ModelSelect.noResize:            True
+Ntrans2*ModelSelect.allowOverlap:        False
+Ntrans2*ModelSelect.defaultPosition:     False
+Ntrans2*ModelSelect.x:	        	459	
+Ntrans2*ModelSelect.y:	        	102
+Ntrans2*model_list.visibleItemCount:	8
+Ntrans2*model_list.background:		wheat
+Ntrans2*ModelRC.numColumns:              4
+!
+!	toplevel_form colors
+!
+Ntrans2*background:			grey75
+Ntrans2*foreground:			black
+Ntrans2*CascadeButtonGadget.foreground:	black
+Ntrans2*fontList: -adobe-times-bold-r-normal-*-18-180-75-75-p-*-iso8859-1
+!
+!	help background colors
+!
+Ntrans2*Helpw.background:			wheat
+!
+!	group panel colors
+!
+Ntrans2*Mode*selectColor:		blue
+Ntrans2*PrtOptions*selectColor:		red
+Ntrans2*frame_list.background:		wheat
+Ntrans2*search_nameW.background:	wheat
+Ntrans2*Inc_textW.background:		wheat
+Ntrans2*group_nameW.background:		wheat
+!
+!	group selection panel colors
+!
+Ntrans2*group_list.background:		wheat
+Ntrans2*popuptext.background:		wheat
+!
+! 	looping control 
+!
+Ntrans2*drawing_widget.translations:	#override\n\
+	<Key>minus:	NxmAnimationStepBackward() \n\
+	<Key>plus:	NxmAnimationStepForeward() \n\
+	<Key>underscore:	NxmAnimationStepBackward() \n\
+	<Key>equal:	NxmAnimationStepForeward() \n\
+	<Key>L:		NxmAnimationLoopForeward() \n\
+	<Key>l:		NxmAnimationLoopForeward() \n\
+	<Key>!:		NxmAnimationLoopForewardBackward() \n\
+	<Key>w:		toggle_menuWindow() \n\
+        <Btn3Down>, <Btn3Up>:   toggle_menuWindow()
+!
+! 	legend area 
+!
+Ntrans2*legend.height:			30
+Ntrans2*legendform.background:			wheat
+Ntrans2*framelabel.background:			wheat
+Ntrans2*filelabel.background:			wheat
+Ntrans2*grouplabel.background:			wheat
+Ntrans2*legend.foreground:			black
+Ntrans2*framelabel.fontList: -adobe-courier-*-r-normal-*-14-*-*-*-m-90-iso8859-1
+Ntrans2*filelabel.fontList: -adobe-courier-*-r-normal-*-14-*-*-*-m-90-iso8859-1
+Ntrans2*filelabel.leftPosition: 2
+Ntrans2*grouplabel.fontList: -adobe-courier-*-r-normal-*-14-*-*-*-m-90-iso8859-1
+Ntrans2*grouplabel.leftPosition: 50
+Ntrans2*filelabel.labelString:			File:
+Ntrans2*grouplabel.labelString:		Group:
+Ntrans2*HelpText.fontList: -adobe-helvetica-*-r-normal-*-14-*-75-75-p-*-iso8859-1
+Ntrans2*HelpTopic.fontList: -adobe-helvetica-*-r-normal-*-14-*-75-75-p-*-iso8859-1

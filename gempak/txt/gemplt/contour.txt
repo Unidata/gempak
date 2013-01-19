@@ -1,0 +1,10 @@
+
+
+                         Contour Subroutines
+
+
+Contours can be filled or not filled.  Subroutine GCLGRN draws the
+simplest (unfilled) contours through a grid of data.  Subroutine GCFILL
+draws filled contours.  And subroutine GCBOXX uses a "box fill" to fill
+contours.  The box fill (small boxes drawn with simple lines) comes out
+looking like a cross-hatch pattern.

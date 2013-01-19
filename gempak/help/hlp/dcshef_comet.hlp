@@ -1,0 +1,328 @@
+DCSHEF VERSION 2
+
+The GEMPAK DCSHEF program decodes raw SHEF reports from a real-time 
+data feed (via an LDM), or from a file containing raw SHEF reports.
+The data is written to a GEMPAK surface file.  
+
+The decoder is available in the file dcshef.tar.Z and includes:
+
+  exe/hpux/dcshef              DCSHEF decoder
+  exe/linux/dcshef             Available only in dcshef.linux.tar.Z
+  gempak/help/dcshef.hlp       Help file 
+  gempak/tables/... 
+     pack/shef.pack            Sample SHEF parameter packing file
+     pack/SHEFparms.txt        Text listing of all valid SHEF parms
+     stns/shefstns.tbl.master  Master SHEF station table 
+     stns/shefunits.tbl        Units conversion table
+  README/dcshef.README         This file.
+  README/dcshef.FAQ            FAQ to answer common questions about
+                               decoding and viewing SHEF data.
+
+
+Below, you will find a description of how the SHEF decoder works,
+and instructions on how to install DCSHEF.  If you do not care how 
+the decoder works, skip ahead to the installation steps.
+
+
+I. How DCSHEF decodes SHEF Reports
+----------------------------------
+
+
+General:
+
+The DCSHEF decoder will decode .A, .B, and .E SHEF reports. Data
+from different report types are stored together in the same output
+GEMPAK surface file.  DCSHEF does not distinguish between data 
+decoded from .A, .B, or .E reports.  
+
+When you configure DCSHEF to decode data, you have complete control
+over which stations are decoded, and what parameters are decoded.
+You can run multiple copies of DCSHEF, decoding different sets
+of parameters for different stations, as long as each configuration
+of DCSHEF has its own GEMPAK output file.  You may not write to the
+same GEMPAK output file from separate instances of DCSHEF.  See the
+installation steps below for more details.
+
+
+Time:
+
+All times in SHEF reports are converted to and stored in UTC time in
+the GEMPAK output file.  Often, SHEF data is reported in local time.
+But, since there is no way to indicate the time zone in a GEMPAK data
+file, all times are converted to UTC.  The only exception is the 
+special time of 2400.  In SHEF reports, 2400 is used to indicate the 
+end of a given time period.  For example, it may mean the end of a day
+or the end of a month.  When DCSHEF encounters the time 2400, the time 
+is not converted to UTC time.  Instead, the date time string 
+YYMMDD/2400 is assigned to the data.
+
+For .A & .B reports, the report time is rounded to the hour using
+the standard GEMPAK rounding rule.  That is, when the report time
+is greater than or equal to 45 minutes after the hour, the valid
+time is rounded to the next hour.  When the report time is less
+than 45 minutes after the hour, the valid time is rounded down
+to the current hour.  The actual report time is always available
+in the special GEMPAK parameter STIM.  STIM can be accessed like
+any other data parameter, even though it is not listed in the
+parameter packing file.
+
+For .E reports, the report time is rounded up to the nearest 15 
+minute interval.  Thus, valid times will be HH00, HH15, HH30,
+or HH45.  For .E reports with increments less than 15 minutes, 
+data is stored only when the valid time is unique.  Thus, for
+a report containing data every 5 minutes, only the data at HH00,
+HH05, HH20, HH35, and HH50 are stored at HH00, HH15, HH30, HH45 
+and (HH+1)00, respectively.  Again, the actual report time for
+each stored report is always available in the STIM variable.
+
+
+Parameters:
+
+DCSHEF will decode any valid SHEF parameter.  SHEF parameters can
+be up to 7 characters long, although usually they are only 2 or
+3 characters long.  The file $GEMTBL/pack/SHEFparms.txt contains
+text versions of Tables 1-4 from the SHEF Users Guide.
+(http://hsp.nws.noaa.gov/hrl/shef/contents.htm).  These tables 
+list the available codes used to create the parameters names.
+You can also look at some raw SHEF reports to see examples of
+the parameter names.
+
+DCSHEF will allow you to decode any of these parameters simply by 
+listing the parameter name in a GEMPAK parameter packing file.  
+For best results, you should use 4 characters to define a parameter
+in the GEMPAK parameter packing file.  If you use fewer than 4 
+characters, DCSHEF will expand the parameter name to 4 characters 
+using the default values for character 3 and 4 ("I" and "R", 
+respectively).  DCSHEF will expand the parameter names both in 
+the packing table and in the data, so that all the appropriate 
+data is decoded.  However, if you use fewer than 4 characters,
+you will not be able to use any of the mathematical functions
+on these data.  Therefore, I suggest that you expand all 2 and
+3 character parameter names to four characters by using the
+default values of "I" and "R" for characters 3 and 4, respectively.
+
+In the SOO distribution of NAWIPS/DCSHEF, up to 40 parameters may 
+be listed in a single parameter packing file.  If you want to 
+decode more than 40 SHEF parameters, you will have to create a 
+second packing table, and run two copies of the DCSHEF decoder
+from two entries in the LDM pattern action file.  Note that each 
+packing table requires it's own output GEMPAK data file, so you 
+will have to store the data in separate GEMPAK files.  Here's an 
+example: In shef.pack, I list some standard parameters like temps, 
+press, precip, and wind data.  I decode this data into the files 
+YYMMDD_shef.gem.  In addition, I create a second packing table 
+called shefriver.pack where I list river information such as stage 
+heights, gate openings, fish counts, water quality, and discharge 
+information.  I decode this data into the files YYMMDD_river.gem.
+
+You can change the parameters to decode at any time, by changing
+the parameter packing file. However, note that changes only take
+affect when the GEMPAK data file is created.  That is usually at
+the start of a new day.
+
+Finally, note that SHEF parameter names can use up to 7 characters.
+DCSHEF nor GEMPAK can distinguish between the SHEF parameter names 
+that differ in the 5th, 6th, or 7th character.  Thus, if a single
+report contains data for two different parameters whose names 
+differ only in characters 5-7, DCSHEF will decode only one of 
+those data.  Usually, this situation does not occur.
+
+
+Stations:
+
+There are 10s of thousands of stations in the US reporting data
+in SHEF.  The SOO distribution of NAWIPS & DCSHEF will only support
+up to 4700 stations per GEMPAK data file.  Therefore, you will
+have to choose your favorite 4700 (or fewer) stations to decode.
+
+The file $GEMTBL/stns/shefstns.tbl.master contains a list of 
+stations (ordered by state) which report precipitation data.
+This is the most complete list of stations I have been able to
+find.  You can start by selecting the stations of interest to
+you from this master station list.  Note, however that the 
+shefstns.tbl.master file may not be complete, and you may need
+to supplement this table with stations of your own.
+
+If you must decode SHEF reports from more than 4700 stations, 
+you will have to create two station tables, and run two copies 
+of the DCSHEF decoder from two entries in the LDM pattern action
+file.  Again, you must use separate file names for each copy of 
+DCSHEF.  For example, I may put all the stations reporting SHEF 
+data from Colorado in shefstnsco.tbl and decode that data into 
+YYMMDD_shefco.gem.  And, I may put all the stations reporting 
+SHEF data from Wyoming in shefstnswy.tbl and decode the data 
+into YYMMDD_shefwy.gem.
+
+Finally, there are some HADS stations that are not in the 
+shefstns.tbl.master file.  You may want to check the HADS list
+at http://hsp.nws.noaa.gov/oh/hads/hsas/hsas.htm, and add any
+stations of interest to your shefstns.tbl file.  Simply follow
+the existing format shown in shefstns.tbl.master.
+
+
+Units:
+
+SHEF data is stored in the output GEMPAK data file in English units.
+These units are the default for SHEF data, and are listed with the 
+parameter names in Table 1 of the SHEF Users Guide and in the file
+$GEMTBL/pack/SHEFparms.txt.   If the units function "DUS" is used 
+in a SHEF report, that means the data values are reported in S.I.
+units.  DCSHEF will then convert the data values from S.I. units 
+into English units and store them in the output GEMPAK data file.
+
+
+Data:
+
+Once the SHEF data is decoded into an output GEMPAK data file, you
+can view the data using any surface data plotting program.  You
+can create maps using SFMAP.  You can create meteograms using
+SFGRAM.  You can even do an objective analysis on the data using
+OABSFC to create gridded data.  (Be sure that the available SHEF
+data provides enough spatial coverage so that the objective 
+analysis is valid.)  You can list the SHEF data using the SFLIST
+program.
+
+SHEF data can also be viewed in GARP.  To configure GARP to view
+SHEF data, you must add a few keys to the 
+$NAWIPS/garp/config/Garp_defaults file.  For example:
+
+  sfc_keys : "surf,shb,shef"
+  sfc_labels : "Hourly/METAR,Ship/Buoy,SHEF"
+  sfc_tables : "sfcparms.lst,shbparms.lst,shefparms.lst"
+  shef_dir : $METDAT/gempak/shef
+  shef_parms: ";TAIR;TADR;TNIR;TXIR;PPPR;PPQR;STIM"
+
+Your "shef_parms" list will contain those data you routinely want
+plotted in GARP.  You should put your complete list of SHEF parameters
+(from your shef.pack file) in a $NAWIPS/garp/tables/shefparms.lst file.
+(You can use the $NAWIPS/garp/tables/sfcparms.lst file as a sample.)
+
+
+Performance:
+
+DCSHEF is a standard GEMPAK decoder.  It does quite a bit of string
+manipulation, and like other GEMPAK decoders, can be a little slow
+at times.  In the case of METAR or upper air decoding, this is not
+a big deal.  However, because of the overwhelming volume of data in
+SHEF, this can become an issue.  
+
+For most SOOs, who only receive reports from a few states, the 
+performance of DCSHEF will be fine.  However, if your office receives
+SHEF data from the entire country, you may run into slow decoding.
+For example, it took over 20 minutes to decode all the 12Z SHEF data
+on the NWS DD+ data feed. (The DD+ data feed includes most of the 
+reports from the entire US.) 
+
+If you see slow decoding of the SHEF data, you might consider 
+restricting the amount of data sent to DCSHEF by modifying the
+pattern in your pqact.conf file.  For example, you might change
+the (...)(RR.) pattern to (NMC|SEA)RR(M|A|S).
+
+
+Command line options:
+
+DCSHEF uses a number of command line options.  They are:
+
+    -v N   Set the verbosity level to "N".  As N goes up, more verbose
+           logging occurs.  The default is "0".  Level 1 will report
+           stations not decoded.  Level 2 will report stations & 
+           parameters not decoded.  Levels 3, 4, & 5 will include
+           Level 1 & 2 messages, along with additional debugging
+           messages.
+
+    -c curtim  "curtim" is the pseudo-current time.  This is a complete
+               GEMPAK format date/time (YYMMDD/HHMM) and is used as the 
+               system time when decoding archive data.  The default value 
+               for this variable is the system time.
+
+    -b nhours  "nhours" is the number of hours prior to the current time.
+               Only reports within this time period are decoded into 
+               the data file.  The default value for this variable is
+               24 hours.
+
+    -d decoder_log  "decoder_log" is the name and path of the decoder
+                    log file.  The default value is dcshef.log
+
+    -t time_out  "time_out" is the time-out value in seconds for the 
+                 decoder.  If no data is received within the specified
+                 time limit, the program will exit.  The default time-
+                 out value is 600 seconds.
+
+    -h         Print the usage statement and exit
+
+    -p prmfil  Set the parameter packing table to "prmfil".  The default
+               value is $GEMTBL/pack/shef.pack.
+
+    -s stntbl  Set the station table to "stntbl".  The default value
+               is $GEMTBL/stns/shefstns.tbl.
+
+    -a iadstn  Define the maximum number of additional stations (beyond
+               those in the station table specified in "-s stntbl") that 
+               can be added to the data file as "iadstn".  The default 
+               value is 0.
+
+    -m maxtim  Set the maximum number of times in a single data file
+               to "maxtim". The default value is 100. 
+
+    -g gemtbldir  Set the path to the GEMPAK tables ($GEMTBL).  This 
+                  is required when running the decoder from the LDM.
+                  This definition can also be used for the parameter
+                  table and station table entries.
+
+
+Limitations:
+
+DCSHEF will decode most SHEF reports.  There are a few exceptions:
+
+1) .E reports with time increments of less than 15 minutes will
+only decode those data values at unique valid times.  (See the "Times"
+section for more details.)
+
+2) In the same report, parameter names that differ only in the 5-7th
+character are not distinguishable.
+
+3) More than one date override function in the data or header section 
+of .B reports can not be handled.
+
+4) Data qualifier (DQ groups), duration information (DV groups), and
+creation date information (DC groups) are not decoded.
+
+Log:
+PB/NWS 7/29/98
+PB/NWS 8/20/98   Bug fix for reports with comments at end of line.
+PB/NWS 9/02/98   VERSION 2: Added code to append data to existing 
+                 reports in GEMPAK data file.
+PB/NWS 11/9/98   VERSION 2.1: Fixed bug in B reports with leading
+		 slash
+
+
+II. Usage Guide
+----------------------
+
+1) Set up the list of parameters to decode in the parameter
+packing file.  A sample packing file is included in the 
+distribution in the file $GEMTBL/pack/shef.pack.  You will
+find the complete list of valid SHEF parameters in the file
+$GEMTBL/pack/SHEFparm.txt, or in the on-line version of
+the SHEF Users Guide:
+   http://hsp.nws.noaa.gov/hrl/shef/contents.htm
+See the "Parameters" section above for more information.
+
+2) Set up a list of stations to decode in the station table
+file.  A master list of stations is included in the 
+distribution in the file $GEMTBL/stns/shefstns.tbl.master.
+You can copy up to 4700 stations into your station table.
+(default name $GEMTBL/stns/shefstns.tbl)  See the "Stations"
+section above for more information.
+
+3) Configure the pattern action file, pqact.conf, of your LDM
+to run DCSHEF upon receipt of a SHEF report.  Here is an
+example entry (watch the TABS):
+
+    AFOS  ^(...)RR.(..)
+	PIPE	dcshef -v 0 
+        -d /metdat/gempak/shef/dcshef.log 
+	-g /usr1/nawips/gempak/tables 
+        -p shef.pack 
+	-s shefstns.tbl 
+        /metdat/gempak/shef/YYMMDD_shef.gem

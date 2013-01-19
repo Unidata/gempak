@@ -1,0 +1,4 @@
+$CC $CFLAGS -c dcairm.c
+$FC $LDFLAGS -o $OS_BIN/dcairm dcairm.o \
+        $BRIDGE $GEMLIB $CGEMLIB -lm
+$RM *.o

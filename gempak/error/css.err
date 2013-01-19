@@ -1,0 +1,11 @@
+!	This is the GEMLIB CSS error file
+!
+!	This file must have the error number in the first four columns.
+!	The message to be printed is found after the !.
+!
+! The following values were defined for non-fatal errors found by the
+! GEMPAK CSS subroutines.
+!
+   2	! No symbols to replace in path !AS.
+  -1	! Null time string
+  -2	! Invalid time format

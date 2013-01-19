@@ -1,0 +1,22 @@
+ 
+ 
+             Diagnostic Grid (DG) Library 
+ 
+ 
+The DIAGNOSTIC GRID package provides subroutines to perform
+diagnostic computations on gridded fields.  DG_GRID computes scalar 
+quantities; DG_VECR and DG_VECT compute vector quantities in
+grid relative and north relative coordinates, respectively.
+ 
+The diagnostics package must be initialized each time new grid files
+are to be accessed.  Usually, DG_OFIL will be called to open the grid
+files and perform the initialization.  If only one file is to be
+opened, DG_INIT may be called instead.
+ 
+DG_GRID, DG_VECR and DG_VECT require the date/time, vertical level,
+vertical coordinate and grid diagnostic function that were input by
+the user.  Although input and intermediate grids may be either scalars
+or vectors, the output for DG_GRID must be a scalar, and for DG_VECR
+or DG_VECT must be a vector.
+
+ 

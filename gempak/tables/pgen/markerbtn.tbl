@@ -1,0 +1,56 @@
+! MARKERBTN.TBL.
+!
+! This table provides the icons located in the markers button palette
+!
+! Log:
+! M. Li/SAIC		10/01	created
+! A. Hardy/SAIC		10/01   Reordered markers
+!------------------------------------------------------------------------
+BEGIN
+! 
+! Row 1
+!
+marker3 
+marker18
+marker7
+! 
+! Row 2
+!
+marker4
+marker19
+marker13
+! 
+! Row 3
+!
+marker6
+marker20
+marker10
+! 
+! Row 4
+!
+marker14
+marker21
+marker12
+! 
+! Row 5
+!
+marker2
+marker17
+marker9
+! 
+! Row 6
+!
+marker5
+marker16
+marker8
+! 
+! Row 7
+!
+marker1
+marker22
+marker11
+! 
+! Row 8
+!
+marker15
+END

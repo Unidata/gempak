@@ -1,0 +1,7 @@
+     LSTALL
+
+     LSTALL is a flag indicating whether the full contents of a file
+     are to be listed.  For example, in GDINFO, if LSTALL=YES,
+     the grid identifiers will be listed; if LSTALL=NO, grid identifiers
+     will not be listed.
+

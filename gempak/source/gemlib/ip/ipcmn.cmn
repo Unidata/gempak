@@ -1,0 +1,40 @@
+C************************************************************************
+C* / IPCMN /								*
+C*									*
+C* This common block is used by the input parameters (IP) library.	*
+C*									*
+C* Variables:								*
+C*	CPARMN		CHAR*		Parameter names			*
+C*	CPARMV		CHAR*		Parameter values		*
+C*	IPLINK		INTEGER		Linked list of current parms	*
+C*	NCPARM		INTEGER		Number of parameters		*
+C*	IPLUN		INTEGER		Lun for GEMGLB.NTS file		*
+C*	CPROGM		CHAR*		Program name			*
+C*	CHELP1		CHAR*		Level 1 helps			*
+C*	IHEAD		INTEGER		First parm in linked list	*
+C*	ILAST		INTEGER		Last parm in linked list	*
+C*	FIRSTT		LOGICAL		First pass flag			*
+C*									*
+C* Parameters:								*
+C*	MXIPPM		INTEGER		Maximum number of parameters	*
+C*	IPFIL		CHAR*		Global save file name		*
+C**									*
+C* Log:									*
+C* M. desJardins/GSFC	 4/90	Added file name				*
+C* M. desJardins/GSFC	10/90	Added DISPLAY; change default file name	*
+C* D.W.Plummer/NCEP	 6/97	Increased cparmv length to 128		*
+C* D.W.Plummer/NCEP	 6/07	Increased MXIPPM from 200 to 250 	*
+C************************************************************************
+	CHARACTER	IPFIL*20
+	PARAMETER	( IPFIL  = 'GEMGLB.NTS' )
+C*
+	PARAMETER	( MXIPPM = 300 )
+C*
+	CHARACTER	cparmn (MXIPPM)*8, cparmv (MXIPPM)*128
+	CHARACTER	cprogm*8, chelp1 (MXIPPM)*32
+	INTEGER		iplink (MXIPPM)
+	LOGICAL		firstt
+C*
+	COMMON  / IPCMN /  cparmn, cparmv, iplink, ncparm, iplun, 
+     +			   cprogm, chelp1, ihead, ilast, firstt
+C------------------------------------------------------------------------

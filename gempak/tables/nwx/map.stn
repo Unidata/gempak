@@ -1,0 +1,70 @@
+! MAP.STN
+!
+! This table contains the station information to be used
+! with the precipitation data.
+!
+! The format for the file is given below, with the number of 
+! characters in parentheses.
+!
+!STID    STNM   NAME                             ST CO   LAT    LON  ELEV  PRI
+!(8)     (6)    (32)                            (2)(2)   (5)    (6)   (5)  (4)
+!
+MAPABQ   999999 ALBUQUERQUE                      NM US  3505 -10661  1631
+MAPABR   999999 ABERDEEN_REGION                  SD US  4545  -9843   396
+MAPAKQ   999999 WAKEFIELD                        VA US  3750  -7733    54
+MAPAMA   999999 AMARILLO                         TX US  3523 -10170  1099
+MAPAPN   999999 ALPENA_CO._REGIONAL              MI US  4507  -8357   211
+MAPALR   999999 ATLANTA_RFC                      GA US  3336  -8455     0
+MAPBIS   999999 BISMARK                          ND US  4676 -10075   504
+MAPBMX   999999 BIRMINGHAM                       AL US  3316  -8677     0
+MAPCAE   999999 COLUMBIA                         SC US  3395  -8111    64
+MAPCHI   999999 CHICAGO                          IL US  4200  -8788   203
+MAPCHS   999999 CHARLESTOWN_MUNI                 SC US  3290  -8003    15
+MAPDDC   999999 DODGE_CITY                       KS US  3777  -9997   790
+MAPDLH   999999 DULUTH_INTL_AIR                  MN US  4683  -9218   432
+MAPDSM   999999 DES_MOINES_INTL                  IA US  4153  -9365   294
+MAPDTX   999999 DETROIT                          MI US  4267  -8342   299
+MAPFAR   999999 FARGO/HECTOR_FIELD               ND US  4690  -9680   274
+MAPFSD   999999 SIOUX_FALLS                      SD US  4356  -9673   435
+MAPFWD   999999 DALLAS/FORT_WORTH                TX US  3283  -9729     0
+MACFFC   999999 PEACHTREE_CITY                   GA US  3336  -8455     0
+MAPFWA   999999 FORT_WAYNE                       IN US  4100  -8520   252
+MAPGRB   999999 GREEN_BAY                        WI US  4448  -8813   214
+MAPGRR   999999 GRAND_RAPIDS_IN                  MI US  4288  -8552   245
+MAPGSP   999999 GREENVILLE/SPARTANB              SC US  3490  -8222   296
+MAPICT   999999 WICHITA                          KS US  3765  -9743   408
+MAPILM   999999 WILMINGTON                       NC US  3427  -7790    10
+MAPJAN   999999 JACKSON                          MS US  3231  -9008    94
+MAPJAX   999999 JACKSONVILLE                     FL US  3050  -8170     9
+MAPLCH   999999 LAKE_CHARLES                     LA US  3012  -9322    10
+MAPLIX   999999 NEW_ORLEANS                      LA US  3032  -8981     0
+MAPLSE   999999 LA_CROSSE                        WI US  4387  -9125   202 
+MAPLSX   999999 ST_LOUIS                         MO US  3868  -9068     0
+MAPLUB   999999 LUBBOCK                          TX US  3352 -10187     0
+MAPLZK   999999 LITTLE_ROCK                      AR US  3483  -9225     0
+MAPMEG   999999 MEMPHIS                          TN US  3513  -8980     0
+MAPMFL   999999 MIAMI                            FL US  2575  -8037     0
+MAPMHX   999999 NEWPORT                          NC US  3478  -7688    11
+MAPMKE   999999 MILWAUKEE                        WI US  4295  -8790   214
+MAPMLB   999999 MELBOURNE                        FL US  2810  -8063    10
+MAPMLI   999999 MOLINE/QUAD_CITY                 IL US  4145  -9052     0
+MAPMOB   999999 MOBILE                           AL US  3068  -8825    67
+MAPMQT   999999 MARQUETTE_CO._A                  MI US  4653  -8755   434
+MAPMRX   999999 KNOXVILLE                        TN US  3582  -8398   299
+MAPMSP   999999 MINNEAPOLIS                      MN US  4488  -9322     0
+MAPOHX   999999 NASHVILLE                        TN US  3624  -8655     0
+MAPOUN   999999 NORMAN                           OK US  3522  -9745     0
+MAPPAH   999999 PADUCAH                          KY US  3707  -8877   125
+MAPPUB   999999 PUEBLO_MEMORIAL                  CO US  3828 -10452  1439
+MAPRNK   999999 BLACKSBURG                       VA US  3720  -8042   653
+MAPRAH   999999 RALEIGH                          NC US  3577  -7868     0
+MAPSGF   999999 SPRINGFIELD/MUNI                 MO US  3723  -9338   387
+MAPSHV   999999 SHREVEPORT                       LA US  3247  -9382    79
+MAPSJU   999999 LUIS_MUNOZ_MARIN                 PU PU  1845  -6600     0
+MAPSPI   999999 SPRINGFIELD                      IL US  3985  -8967   187
+MAPSTL   999999 ST._LOUIS/LAMBERT                MO US  3875  -9037   172
+MAPTAE   999999 TALLAHASSEE                      FL US  3045  -8430     0
+MAPTBW   999999 TAMPA                            FL US  2770  -8240    13
+MAPTOP   999999 TOPEKA                           KS US  3906  -9563   268
+MAPTSA   999999 TULSA                            OK US  3613  -9586     0
+

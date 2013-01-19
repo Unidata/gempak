@@ -1,0 +1,42 @@
+C************************************************************************
+C* / DRIVER /								*
+C*									*
+C* This common area holds the special device characteristics for the 	*
+C* GDR gif device driver.						*
+C*									*
+C* Log:									*
+C* D. Austin		 5/96   Modified for GIF driver			*
+C* T. Lee/GSC		 6/00	Renamed LUTS variables			*
+C* R. Tian/SAIC		05/02	Added ibgfax and ibwfax			*
+C************************************************************************
+	CHARACTER	filnam*132
+	LOGICAL		gfplot, opnfil, resetc
+C------------------------------------------------------------------------
+	COMMON  / DRIVER / 
+     +		filnam,		
+C!				File name
+     +		lastbl,		
+C!				Last color table name
+     +		opnfil,		
+C!				File open flag
+     +		gfplot,
+C!				Flag to indicate something has been
+C!				plotted
+     +		resetc
+C!				Current color components have been reset
+C------------------------------------------------------------------------
+	COMMON  / LUTS /
+     +		imgtyp,
+C!				Color bank ID. 1: satellite, 2: radar, 3: fax
+     +		ibgsat,		
+C!				Starting of colors for satellite
+     +		nbwsat,
+C!				Number of colors for satellite
+     +		ibgrad,
+C!				Starting of colors for radar
+     +		nbwrad,
+C!				Number of colors for radar
+     +		ibgfax,
+C!				Starting of colors for fax 
+     +		nbwfax
+C!				Number of colors for fax 

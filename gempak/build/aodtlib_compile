@@ -1,0 +1,95 @@
+#!/bin/sh
+#
+# AODT LIBRARY COMPILE SCRIPT
+#
+# Usage: aodtlib_compile
+#
+# To test this compile script in a local directory comparable to the
+# $GEMPAK level, usage: aodtlib_compile test
+#
+# This script will compile the 'odtlib' and odtapi' subdirectories after
+# performing a global substitution of 'aodt${version}_' for 'aodt_' in
+# both the source and inc directories.
+#
+#
+# Log:
+# D.Plummer/NCEP	02/04
+# T. Piper/SAIC		12/04  Re-wrote for bourne shell
+# T. Piper/SAIC		05/25  Re-wrote for extlibs dir
+
+if  [ $# = 0 ]
+then
+  root=$NAWIPS
+  mkdir -p $OS_INC
+  incdir=$OS_INC
+  mkdir -p $OS_LIB
+  objlib=$OS_LIB
+else
+  root=`pwd`
+  objlib=`pwd`
+fi
+
+if  [ -d $root/extlibs/AODT ]
+  then
+    if [ ! -e ${incdir}/AODT ]
+      then
+	mkdir ${incdir}/AODT
+    fi
+  unset ls
+
+  source_list="odtlib odtapi"
+
+  for  version in  `ls ${root}/extlibs/AODT`
+  do
+    echo "COMPILING AODT LIBRARY ${version}"
+    echo "INSTALLING as \"${objlib}/libAODT_${version}.a\""
+    $RM ${objlib}/libAODT_${version}.a
+#
+# First, sed the include files to change all occurrences of
+# "aodt_" to "aodt${version}_"
+#
+    cd ${root}/extlibs/AODT/${version}/inc
+
+    for  f in *.h
+    do
+      echo "$f"
+      sed "s/aodt_/aodt${version}_/g" ${f} > ${f}.tmp
+      mv ${f}.tmp ${f}
+    done
+
+    if [ ! -e ${incdir}/AODT/${version} ]
+      then
+	mkdir ${incdir}/AODT/${version}
+    fi
+
+    cp *.h ${incdir}/AODT/${version}
+#
+# Next, sed the source files to change all occurrences of
+# "aodt_" to "aodt${version}_"
+#
+    cd ..
+
+    for  d in ${source_list}
+    do
+      for  f in ${d}/*.c
+      do
+        echo "$f"
+        sed "s/aodt_/aodt${version}_/g" ${f} > ${f}.tmp
+        mv ${f}.tmp ${f}
+      done 
+
+##################################
+      $CC $CFLAGS -c ${d}/*.c
+#      echo "Creating/Adding to lib ${objlib}/libAODT_${version}.a from ${d}/*.c"
+      $AR $ARFLAGS ${objlib}/libAODT_${version}.a odt*.o
+      $RM *.o
+##################################
+
+    done 
+###################################################################
+    echo "COMPILATION OF AODT LIBRARY $version IS COMPLETE."
+    echo "============================================"
+  done    
+else
+  echo "Directory \"$root/extlibs/AODT\" does not exist!"
+fi

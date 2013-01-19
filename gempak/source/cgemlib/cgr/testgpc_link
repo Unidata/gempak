@@ -1,0 +1,5 @@
+$CC $CFLAGS -c testgpc.c
+$FC $LDFLAGS -o $OS_BIN/testgpc testgpc.o \
+		$GEMLIB -lGPC $CGEMLIB \
+		$GEMLIB -lm
+$RM *.o

@@ -1,0 +1,5 @@
+$CC $CFLAGS -c createccfp.c
+$FC $LDFLAGS -o $OS_BIN/createccfp createccfp.o \
+		$CGEMLIB $APPL $GEMLIB $CGEMLIB \
+		$APPL $SYSLIB -lm
+$RM *.o

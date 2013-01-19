@@ -1,0 +1,184 @@
+     DEVICE
+
+     DEVICE specifies the graphics device:
+
+	device | name | xsize ; ysize | color type
+
+     The following graphics devices are available:
+
+	XW		X Windows terminal
+	PS		PostScript
+	NC		NTRANS Computer Graphics Metafile
+	GF		GIF file using X-server
+	GIF		GIF file not using X-server
+	UTF		Universal Transmission Format (AFOS)
+	RBK		AWIPS RedBook Graphics
+	VG		Vector Graphics (N-AWIPS Product Generation)
+	XWP		Combination driver
+	FAX		Fax driver
+	TIFF		TIFF file
+
+     The following three PostScript device names are included for backward
+     compatibility only.  The appropriate settings for the PS device are
+     automatically selected based on the information below.
+
+	PS1		PostScript - Landscape / Letter / Monochrome
+	PSC		PostScript - Landscape / Letter / 32 Colors
+	PSP		PostScript - Portrait  / Letter / 20 Grays
+
+     The XWP driver combines the capabilities of several drivers.  Currently,
+     it includes the XW and the PS drivers.  XWP allows the user to display
+     graphics to a window, then, without closing the window, a PostScript file
+     may be created.
+
+     The UTF driver produces output for AFOS devices and the NAFOS product.
+     Note that while both AFOS and NAFOS read files in universal transmission 
+     format, the exact file formats for are not compatible.  The default
+     output is to an AFOS formatted file.  The color control (see below) is
+     used to switch between output types.
+
+     The RBK driver produces output for AWIPS devices and OSO products.  These 
+     products are created according to the Standard Formats for Weather Data 
+     Exchange format.  However, the OSO format has an extra transmission header
+     information section.  The default file is of an OSO format.  The color 
+     control (see below) is used to switch between output types.
+
+     The FAX driver produces an NMC 6 bit formatted file. 
+
+     The TIFF driver produces a TIFF file that uses the Group 4 Fax
+     compression scheme.  It can also optionally create a file with no
+     compression.
+
+     The VG driver produces a GEMPAK Vector Graphics file.  This file can then
+     be used in product generation for graphical editing of the elements.
+     When producing a VG file, CLEAR has no effect, i.e., all elements are
+     added to the output file regardless of the value of CLEAR.
+
+     NAME is the file or window name.  In the NC driver, if the file already
+     exists, new frames will be appended to it unless the default file name
+     of Nmeta is used.  In this case, the file is overwritten.  The PS driver
+     also uses the file name to generate plot files, however no appending is
+     attempted.  Files are always overwritten.  In the XW or XWP drivers, up to
+     five named windows may be opened.
+
+     If no file/window name is given, the following will be used:
+
+		XWP	GEMPAK
+		XW	GEMPAK
+		PS	ps.plt
+		NC	Nmeta
+		GF	gempak.gif
+		GIF	gempak.gif
+		VG	vgf.vgf
+		FAX	999X;0167 (produces the file 999X.6bt)
+		UTF	T01
+		RBK	T01
+		TIFF	AAAA00
+
+		PS1	ps1.plt
+		PSC	psc.plt
+		PSP	psp.plt
+
+     The UTF driver defaults to an AFOS test product PIL if no entry is given.
+     The file name may be the last three characters of a valid PIL, or a full
+     file name.  If the file name is a PIL, the product table is read for 
+     specific size and time attributes.  If a regular file name is given,
+     suitable defaults are chosen for the size and forecast time.  The user
+     may also give a base time for the product.  This is added to the file name
+     following a semi-colon, i.e., "T01;1200".  This product would have a base
+     time of 1200 GMT.  The forecast hour read from the product table is added
+     to the base time to give a valid time for the product.
+
+     The RBK driver defaults to an OSO formatted file if no entry is given.
+     The file name must be the last three characters of a valid AFOS PIL, or  
+     the test PIL id, T01.  The PIL id is used by the product table to find the 
+     specific size and time attributes.  The difference between the AWIPS format
+     and the OSO format is the information given at the beginning of the file
+     and that the AWIPS format does not have any padding of spaces at the end of
+     the file.  Similar to the UTF driver, the user may also give a base time 
+     for the product.  This is added to the file name following a semi-colon,
+     i.e., "93E;311200".  This product would have a base date of the 31st and a 
+     base time of 1200 GMT.  The base date may also be given in the full GEMPAK
+     date/time format, i.e., "9JH;000931/1200".  The forecast hour read from 
+     the product table is added to the base time to give a valid time for the 
+     product.  If the base date or time is not specified, then the system date 
+     or time will be used for the valid time.  
+
+     The FAX file name entry equates to a wheel and subset for the output 
+     product.  Every fax product must have an associated wheel and subset 
+     number.  The driver uses the supplied wheel and subset number to determine 
+     the dimensions of the product.  These dimensions are defined in the 
+     product table, faxprod.tbl.  This file will be named "XXXX.6bt" where 
+     XXXX represents the wheel number of the product.  The subset number is 
+     embedded in the compressed 6 bit image and is only meaningful to OSO 
+     systems that transmit products.
+
+     The TIFF file name entry is the WMO ID of the product.  The driver uses the
+     supplied ID to determine the dimensions of the product.  These dimensions 
+     are defined in the product table, tiffprod.tbl.  The output file will be 
+     named "AAAAII.tiff" where AAAAII represents the 4 character and 2 digit 
+     WMO ID of the product.
+
+     XSIZE and YSIZE are the device dimensions.  The specification of their 
+     values is a function of the device driver.
+
+     For XW or XWP, xsize and ysize may be (1) the number of pixels in the 
+     corresponding direction if the values are specified as integers, or (2) a 
+     fraction of the screen size if the values are specfied as reals > 0 and
+     < = 1.  
+
+     For the PS driver, xsize and ysize are the paper dimensions in inches.  If 
+     xsize is greater than ysize, then a landscape orientation is used.  For 
+     xsize less than ysize, the plot orientation is portrait.  
+
+     For UTF driver, xsize and ysize have no meaning, as the dimensions for the 
+     display are determined by the entry on the product table (product.tbl) 
+     that matches the user supplied pil. 
+
+     For the NC driver, xsize and ysize are fractions of the maximum dimension
+     of a NTRANS CGM file.  Their values must be > 0 and < = 1.  If both values
+     are less than 1, then the larger value is set to 1 and the smaller value
+     is increased proportionally to maintain the aspect value of the user
+     input values.
+     
+     If xsize and ysize are not specified the following defaults will be used:
+
+		XWP	.7;.7	(70 percent of the screen size)
+		XW	.7;.7	(70 percent of the screen size)
+		PS	11;8.5	(Standard letter size paper in landscape)
+		NC	1.0;1.0 (Standard square CGM plotting space)
+
+     COLOR TYPE is a flag for specifying the color scheme to use for the 
+     driver.  Currently, only PS will use the color type.  Color type may have
+     the following values:
+
+		C		32 Colors
+		G		20 Grays
+		M		Monochrome lines with color fills
+
+     The default is to use 20 grays.  The exceptions to this are noted below.
+
+     For UTF (which is a monochrome device), a value of C is used to switch the
+     output to an NAFOS formatted file.  Any other value for color type results
+     in an AFOS formatted file.  
+
+     For RBK (which is a monochrome device), a value of C is used to switch the
+     output to an AWIPS formatted file.  Any other value for color type results
+     in an OSO formatted file.  
+
+     For TIFF, the default is monochrome output with a white background and all
+     graphics drawn in black.  This type of output will be compressed using the
+     Group 4 Fax compression scheme.  A value of G will create an output file
+     that has a black background with all graphics drawn in white.  It will also
+     allow a grayscale image to be written to the output file.  This type of 
+     output will not be compressed.
+
+     The GF driver has the same options as the XW driver.  The differences in
+     execution are that the GF device will not display a graphics window, and
+     will create a separate file for each active frame either when the device 
+     is closed or a new file name is given.  The file names are based on the 
+     user supplied file name, with the frame number appended to the name after 
+     the initial file has been created.  That is, given the default name, the 
+     first GF file created will be named "gempak.gf", the following file will 
+     be named "gempak.gf.001".
+

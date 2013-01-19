@@ -1,0 +1,22 @@
+! HMD.BULL
+!
+! Location information for the following product:
+! Hydrometeorological_Discussion.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+AGAK78 PACR     CIRCLE_CITY_AIRPORT              AK US  6583 -14407     0
+AGUS71 KRHA     MIDDLE_ATLANTIC/STATE_COLLEGE    PA US  4079  -7786     0
+AGUS71 KTAR     NORTHEAST_RFC/BOSTON             MA US  4195  -7112     0
+AGUS71 KTIR     OHIO_RFC/WILLIMINGTON            OH US  3941  -8381     0
+AGUS72 KALR     ATLANTA_RFC                      GA US  3336  -8455     0
+AGUS73 KKRF     MISSOURI_RIVER_BASIN/KANSAS_CITY MO US  3879  -9426     0
+AGUS74 KFWR     WEST_GULF_RFC/FORT_WORTH         TX US  3283  -9729     0
+AGUS74 KORN     LOWER_MISSISSIPPI_RFC/SLIDEL     LA US  3032  -8981     0
+AGUS74 KTUA     ARKANSAS-RED_BAISN_RFC/TULSA     OK US  3613  -9586     0
+AGUS75 KSTR     COLORADO_RFC/SALT_LAKE_CITY      UT US  4077 -11194     0
+AGUS76 KPTR     NORTHWEST_RFC/PORTLAND           OR US  4556 -12252     0
+AGUS76 KRSA     CALIF-NEVADA_RFC/SACRAMENTO      CA US  3859 -12137     0

@@ -1,0 +1,10 @@
+!	This is the error file for GDTHGT.
+!
+ -1     ! Fatal error initializing TAE.
+ -2     ! Fatal error reading TAE parameters.
+ -3     ! Fatal error initializing GEMPLT.
+ -4	! Invalid vertical coordinate.
+ -7	! Invalid axis type.
+ -8	! Invalid vertical coordinate type.
+-14	! Input for GPOINT is invalid.
+-20     ! Input for YAXIS is invalid.

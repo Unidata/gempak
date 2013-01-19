@@ -1,0 +1,4 @@
+changes in kbprep (calling sequence in kb?opt())
+- changed (char*)&c1 to (char *)c1 for all calls
+changes to kb?visr.c in kb?optvisr_() routines 
+- added iout[12]=10 option

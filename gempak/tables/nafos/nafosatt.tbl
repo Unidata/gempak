@@ -1,0 +1,16 @@
+! NAFOSATT.TBL
+!
+! This table contains NAFOS defualt attributes.
+!
+! Log:
+! D. Keiser/GSC		11/96
+!------------------------------------------------------------------------------
+!PRODUCT  COLOR NUMBER  WIDTH NUMBER  STYLE NUMBER
+!(8)      (2)           (2)           (2)
+!------------------------------------------------------------------------------
+PRODUCT1  3             2             11
+PRODUCT2  5             2             11
+PRODUCT3  6             2             11
+PRODUCT4  7             2             11
+PRODUCT5  17            2             11 
+PRODUCT6  29            2             11 

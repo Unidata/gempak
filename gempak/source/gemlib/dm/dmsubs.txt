@@ -1,0 +1,87 @@
+		DM SUBROUTINE LIBRARY
+
+
+
+File access:
+  DM_CRET  ( filnam, iftype, ifsrce, nfhdrs, fhdnam, ifhlen, ifhtyp,
+             nrow,   nrkeys, keyrow, ncol,   nckeys, keycol, nprt,
+             prtnam, lenhdr, ityprt, nparms, prmnam, iscale, ioffst,
+             nbits,  / iflno, iret )
+
+  DM_OPEN  ( filnam, wrtflg, / iflno, iftype, ifsrce, nrow, ncol, nprt,
+             nfhdrs, iret )
+
+  DM_CLOS  ( iflno, / iret )
+
+Read and write row and column headers:
+
+  DM_RRWH  ( iflno, ipos, / iheadr, iret ) 
+  DM_RCLH  ( iflno, ipos, / iheadr, iret ) 
+  DM_WRWH  ( iflno, ipos, iheadr, / jpos, iret ) 
+  DM_WCLH  ( iflno, ipos, iheadr, / jpos, iret ) 
+
+Read and write data:
+
+	C = character    I = integer    R = real
+	idthdr = data header
+
+  DM_RDTC  ( iflno, irow, icol, part, / idthdr, cdata, nchar, iret )
+  DM_RDTI  ( iflno, irow, icol, part, / idthdr, idata, nword, iret )
+  DM_RDTR  ( iflno, irow, icol, part, / idthdr, rdata, nword, iret )
+
+  DM_WDTC  ( iflno, irow, icol, part, idthdr, cdata, nchar, / iret )
+  DM_WDTI  ( iflno, irow, icol, part, idthdr, idata, nword, / iret )
+  DM_WDTR  ( iflno, irow, icol, part, idthdr, rdata, nword, / iret )
+
+Read and write file headers:
+
+	fhdnam = file header name
+	xheadr = file header
+
+  DM_RFHC  ( iflno, fhdnam, mxchar, / cheadr, nchar, iret )
+  DM_RFHI  ( iflno, fhdnam, mxword, / iheadr, nword, iret )
+  DM_RFHR  ( iflno, fhdnam, mxword, / rheadr, nword, iret )
+
+  DM_WFHC  ( iflno, fhdnam, mxchar, cheadr, nchar, / iret )
+  DM_WFHI  ( iflno, fhdnam, mxword, iheadr, nword, / iret )
+  DM_WFHR  ( iflno, fhdnam, mxword, rheadr, nword, / iret )
+
+Return key names or find type (row or col) for key:
+
+  DM_KEYS  ( iflno, / nrkeys, keyrow, nckeys, keycol, iret )
+  DM_FKEY  ( iflno, keynam, / type, loc, iret )
+
+Return part names and part information:
+
+  DM_PNAM  ( iflno, / nprt, prtnam, iret )
+  DM_PART  ( iflno, prtnam, / lenhdr, ityprt, nparms, prmnam, iscale,
+             ioffst, nbits, iret )
+
+Flush write buffers:
+
+  DM_FWRT  ( iflno, / iret )
+
+Search (header) functions:
+
+	All searches will be made by checking whether header
+	values are within a specified range.  For each data set
+	a primary search may be defined.  This search condition
+	must always be met.  In addition, conditional search 
+	conditions may be specified.  The condition search 
+	conditions may be additive or subtractive.  If the search
+	is additive, the result of the conditional search will
+	be ORed with previous results.  If the condition is
+	subtractive, the result is true only if the previous
+	result was true and the conditional search result is false.
+
+  DM_PSRC  ( iflno, nkeys, keynam, iloval, ihival, / iret )
+  DM_CSRC  ( iflno, addsrc, nkeys, keynam, iloval, ihival, / iret )
+
+  DM_NEXT  ( iflno, / irow, icol, iret )
+
+  DM_BEGS  ( iflno, / iret ) -- reset search to beginning of file
+
+  Delete searches:
+
+  DM_DPSR  ( iflno, / iret )
+  DM_DCSR  ( iflno, / iret )

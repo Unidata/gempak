@@ -1,0 +1,22 @@
+! CPTKER.TBL
+!
+! This table contains the average track errors in nautical miles for the
+! Central Pacific Ocean.
+!
+!!
+! Log:
+! H. Norman/CPHC                 6/06   Created
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!
+!FCST  NM
+! HR
+!(I2) (F8.1)
+!
+ 3    10.8
+12    43.9
+24    74.4
+36   107.6
+48   141.1
+72   199.2
+96   226.7
+20   241.5

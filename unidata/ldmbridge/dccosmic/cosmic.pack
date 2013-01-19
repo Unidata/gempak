@@ -1,0 +1,15 @@
+!COSMIC.PACK
+!
+!This table is the packing table used to create a comsic ship file.
+!
+!*Log:
+!
+!
+!ALAT   -90.     90.   .00001
+!ALON  -180.    180.   .00001
+PRES     0.   1200.   .01
+HGHT  -100. 120000.   .01
+TMPC  -150.    100.   .01
+DWPC  -200.    100.   .01
+REFA     0.    500.   .01
+REFO     0.    500.   .01

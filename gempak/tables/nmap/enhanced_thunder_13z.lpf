@@ -1,0 +1,93 @@
+! enhanced_thunder_13z.lpf
+!
+! Created by Jeremy Grams on 02/02/2009.
+!
+! This layer product file displays 06z enhanced thunder lines and 03z calibrated 
+! SREF probabilities for the 13z enhanced thunder issuance. 
+!
+! Modified on 02/17/2010 to import SREF for 00-04Z ENHT layer.
+!
+!--------------------------------------------------------------------------------
+!
+! layer 1: Enhanced Thunder 16-20Z Layer
+!
+<layer1_name>		ENH-20
+<layer1_file>  		LAST_ENH20.vgf	
+<layer1_output_file>	WORK_ENH20.vgf	
+<layer1_group_type>	ENH20
+!<layer1_group_type>	OUTLOOK
+<layer1_display_mode>	Off
+<layer1_color_mode>	Mono
+<layer1_color_id>	22
+<layer1_fill_mode>	On
+!
+! layer 2: Enhanced Thunder 20-00Z Layer
+!
+<layer2_name>		ENH-00
+<layer2_file>  		LAST_ENH00.vgf	
+<layer2_output_file>	WORK_ENH00.vgf	
+<layer2_group_type>	ENH00
+!<layer2_group_type>	OUTLOOK
+<layer2_display_mode>	Off
+<layer2_color_mode>	Mono
+<layer2_color_id>	24
+<layer2_fill_mode>	On
+!
+! layer 3: Enhanced Thunder 00-04Z Layer
+!
+<layer3_name>		ENH-04
+<layer3_file>  		SREF_ENH04.vgf	
+<layer3_output_file>	WORK_ENH04.vgf	
+<layer3_group_type>	ENH04
+!<layer3_group_type>	OUTLOOK
+<layer3_display_mode>	Off
+<layer3_color_mode>	Mono
+<layer3_color_id>	28
+<layer3_fill_mode>	On
+!
+! layer 4: SREF 16-20Z Layer
+!
+<layer4_name>		SREF-20
+<layer4_file>  		SREF_ENH20.vgf	
+<layer4_output_file>	WORK_SREF20.vgf	
+<layer4_group_type>	ENH20
+!<layer4_group_type>	OUTLOOK
+<layer4_display_mode>	Off
+<layer4_color_mode>	Mono
+<layer4_color_id>	19
+<layer4_fill_mode>	On
+!
+! layer 5: SREF 20-00Z Layer
+!
+<layer5_name>		SREF-00
+<layer5_file>  		SREF_ENH00.vgf	
+<layer5_output_file>	WORK_SREF00.vgf	
+<layer5_group_type>	ENH00
+!<layer5_group_type>	OUTLOOK
+<layer5_display_mode>	Off
+<layer5_color_mode>	Mono
+<layer5_color_id>	9
+<layer5_fill_mode>	On
+!
+! layer 6: SREF 00-04Z Layer
+!
+<layer6_name>		SREF-04
+<layer6_file>  		SREF_ENH04.vgf	
+<layer6_output_file>	WORK_SREF04.vgf	
+<layer6_group_type>	ENH04
+!<layer6_group_type>	OUTLOOK
+<layer6_display_mode>	Off
+<layer6_color_mode>	Mono
+<layer6_color_id>	12
+<layer6_fill_mode>	On
+!
+! Layer 7: Categorical Layer
+!
+<layer7_name>		GEN-TSTM
+<layer7_file>		LAST_GEN-TSTM.vgf
+<layer7_output_file>	WORK_GEN-TSTM.vgf
+<layer7_group_type>	OUTLOOK
+<layer7_display_mode>	Off
+<layer7_color_mode>	Mono
+<layer7_color_id>	20
+<layer7_fill_mode>	Off

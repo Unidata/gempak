@@ -1,0 +1,20 @@
+! PVM.BULL
+!
+! Location information for the following product:
+! Public_Verification_Matrix.
+!
+! The format for the file is given below, with the number of
+! characters in parentheses.
+!
+! Log:
+! A. Hardy/NCEP		11/04	separated out the lat/lons
+!
+!BULL  KSTN     NAME                             ST CO   LAT    LON  ELEV
+!(6)   (8)      (32)                            (2)(2)   (5)    (6)   (5)
+FXAK41 PAFC     ALASKA/PACIFIC_RFC               AK US  6115 -14997     0
+FXAK41 PAFC     ANCHORAGE                        AK US  6135 -14977     0
+FXAK42 PAFC     ALASKA/PACIFIC_RFC               AK US  6155 -14957     0
+FXAK42 PAFC     ANCHORAGE                        AK US  6175 -14937     0
+FXUS44 KMRX     MORRISTOWN                       TN US  3615  -8340     0
+FXUS45 KPIH     POCATELLO/IDAHO_FALLS            ID US  4290 -11258     0
+FXUS46 KMTR     SAN_FRANCISCO                    CA US  3659 -12184     0

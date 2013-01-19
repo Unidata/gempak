@@ -1,0 +1,84 @@
+
+CLIPVGF
+                                                                       
+  CLIPVGF clips elements in a VGF file based on a bounds specification.  
+
+INPUT PARAMETERS
+
+  clipvgf input_filename clip_bound keep_flag output_filename
+
+  clipvgf		Program name
+  input_filename	VGF file to be clipped
+  clip_bound		Bounds name of geographical clipping area; format:
+	bound_name|<area_tag_name>area_tag_value
+  	and must be enclosed w/ quotes so the shell will ignore directives.
+  keep_flag		"keep" keeps all element points inside clip_bound;
+			anything else tosses element points inside clip_bound.
+  output_filename	Clipped VGF file
+  clip_accuracy		Either "rough" (default and fast) or "exact" (slower)
+                                                                       
+PROGRAM DESCRIPTION
+
+  CLIPVGF scans a VGF file and tests each element for clipping against a
+  bounds area. Users are given a choice of employing one of two clipping 
+  techniques.
+
+  CLIPPING TECHNIQUE (ACCURACY)
+  If "rough" clipping is requested, a simple clipping algorithm is used. 
+  Element (lat,lon) points are determined to be either inside or outside 
+  of the geographical clip area and are either kept or thrown away based 
+  on the input flag "keep_flag".  Note that linear elements such as fronts 
+  and lines will not be clipped precisely at the clip area boundary when
+  using this option.
+
+  If "exact" clipping is requested, a more accurate clip algorithm is
+  used.  The result is that linear objects are clipped precisely at the bounds'
+  edges.
+
+  NOTE: In both cases, the line's unsmoothed points are used to determine
+  the clip edges. Therefore if the line has a smoothing factor, the resulting 
+  line may not have precisely the same curvature as the original, unclipped 
+  line when the smoothing factor is re-applied.
+
+  LABELING
+  If a linear object is grouped with a text label, the resulting clipped 
+  object will also be grouped with the same text label even if this label 
+  must be created. Labels such as these will be located midway between the 
+  first and second points of the clipped line.  If a symbol is grouped with 
+  a text label, the text label will be either clipped or not depending on 
+  whether the symbol is clipped or not.
+
+  The following element classes are not processed:			
+  CLASS_WATCHES, CLASS_TRACKS, CLASS_SIGMETS				
+
+  The bounds area MUST be a single area, i.e., it may not have multiple parts
+  such as islands. The only bounds file designed specifically for clipping 
+  (only one part per bound area) is the seamless surface analysis (SSA) file.  
+  This bounds file contains the following areas:
+  AREA		SVC CNTR	
+  ----		--------
+  HPC050	HPC
+  OPC050_PAC	OPC
+  OPC050_ATL	OPC
+  OPC215_PAC	OPC
+  OPC215_ATL	OPC
+  TPC050	TPC
+  TPC215	TPC
+  PR		PR (Pacific Region)
+
+EXAMPLES
+
+  clipvgf input.vgf "SSA|<AREA>OPC050_ATL" keep output.vgf rough
+
+	- clips the VGF file "input.vgf" against the seamless surface analysis
+	  bounds area named "OPC050_ATL".  Element points within this bounds
+	  area are saved into the VGF file "output.vgf". Uses the simple
+	  clip algorithm.
+
+  clipvgf input.vgf "SSA|<AREA>TPC215" notkeep output.vgf exact
+
+	- clips the VGF file "input.vgf" against the seamless surface analysis
+	  bounds area named "TPC215".  Element points outside of this bounds
+	  area are saved into the VGF file "output.vgf". Linear objects are
+	  clipped exactly at the boundaries.
+
