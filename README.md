@@ -36,7 +36,7 @@ Creating a symbolic link NAWIPS in your home directory will allow you to maintai
 
 	ln -s GEMPAK6.7.0/ NAWIPS
 	
-Your **gempak** home directory should then look like
+Your **gempak** home directory should then contain the following:
 
 	/home/gempak/GEMPAK6.7.0
 	/home/gempak/NAWIPS -> GEMPAK6.7.0
