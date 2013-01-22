@@ -42,6 +42,7 @@ void cds_atdeflt ( int *iret )
  * B. Yin/SAIC		01/06	set default values to 0 for GFA		*
  * m.gamazaychikov/SAIC	07/07	added TCERR, TCTRK and TCBKL elements	*
  * L. Hinson/AWC        07/09   Added G_CALLOC for CCF                  *
+ * L. Hinson/AWC        01/12   Added G_CALLOC for SGWX; Set numUset 26 *
  ***********************************************************************/
 {
     int		jj, one=1;
@@ -56,7 +57,7 @@ void cds_atdeflt ( int *iret )
 	G_FREE(cdsUattr, Setting_t);
     }
     
-    numUset = 25;
+    numUset = 26;
     G_CALLOC(cdsUattr, Setting_t, numUset, "cdsUattr");
 
     for  ( jj = 0; jj <  numUset; jj++ ) {
@@ -173,6 +174,10 @@ void cds_atdeflt ( int *iret )
     cdsUattr[24].vg_class = CLASS_MET;
     cdsUattr[24].vg_type  = TCBKL_ELM;
     G_CALLOC(cdsUattr[24].info.tcb, TcbAttr, one, "cdsUattr[24].info.tcb");
+    
+    cdsUattr[25].vg_class = CLASS_MET;
+    cdsUattr[25].vg_type = SGWX_ELM;
+    G_CALLOC(cdsUattr[25].info.sgwx, SgwxAttr, one, "cdsUattr[25].info.sgwx");
 
 }
 

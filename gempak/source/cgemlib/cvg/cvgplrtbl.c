@@ -225,6 +225,7 @@ static int typestr2int(char *typestr)
  **
  * Log:
  * S.Danz/AWC            3/06   Created
+ * L. Hinson/AWC         1/12   Add SGWX_ELM
  ****************************************************************************/
  {
     int result  = 0;
@@ -252,6 +253,7 @@ static int typestr2int(char *typestr)
     else if (strcmp(typestr, "SIGINTL_ELM" ) == 0) result = SIGINTL_ELM;
     else if (strcmp(typestr, "SIGNCON_ELM" ) == 0) result = SIGNCON_ELM;
     else if (strcmp(typestr, "SIGOUTL_ELM" ) == 0) result = SIGOUTL_ELM;
+    else if (strcmp(typestr, "SGWX_ELM" ) == 0) result = SGWX_ELM;
     else if (strcmp(typestr, "SKSYM_ELM") == 0) result = SKSYM_ELM;
     else if (strcmp(typestr, "SPLN_ELM") == 0) result = SPLN_ELM;
     else if (strcmp(typestr, "SPSYM_ELM") == 0) result = SPSYM_ELM;
@@ -305,6 +307,7 @@ static int groupstr2int(char *groupstr)
      */
     if (ier == -1) {
         if (strcmp(groupstr, "CCFP") == 0) result = GRPTYP_CCF;
+        else if (strcmp(groupstr, "SGWX") == 0) result = GRPTYP_SGWX;
         else if (strcmp(groupstr, "WATCH") == 0) result = GRPTYP_WATCH;
         else if (strcmp(groupstr, "COMSYM") == 0) result = GRPTYP_COMSYM;
     }

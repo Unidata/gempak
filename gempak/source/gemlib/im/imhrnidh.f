@@ -19,6 +19,7 @@ C*					 -5 = Invalid image navigation	*
 C**									*
 C* Log:									*
 C* X. Guo/CWS           05/10   Copy from IM_NIDH                       *
+C* M. James/Unidata     07/11   Removed down-sampling to 8-bit          *
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 	INCLUDE		'IMGDEF.CMN'

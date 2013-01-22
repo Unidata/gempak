@@ -35,9 +35,9 @@ int	i;
 char	tcat[][9] = { "SCAT_NIL", "SCAT_SFC", "SCAT_SHP",
 		      "SCAT_SFF", "SCAT_FFG", "SCAT_SND",
 		      "SCAT_SNF", "SCAT_FCT", "SCAT_ANL" };
-char	ccat[][9] = { "CAT_NIL", "CAT_IMG", "CAT_SFC",
-		      "CAT_SFF", "CAT_SND", "CAT_SNF", "CAT_GRD",
-		      "CAT_VGF", "CAT_MSC" };
+char	ccat[][9] = { "CAT_NIL", "CAT_IMG", "CAT_SFC", "CAT_SFF",
+		      "CAT_SND", "CAT_SNF", "CAT_GRD", "CAT_VGF",
+		      "CAT_MSC" };
 
 /*---------------------------------------------------------------------*/
     *iret = 0;

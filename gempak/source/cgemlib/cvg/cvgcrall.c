@@ -19,6 +19,7 @@ void cvg_crttca( char *fname, int *iret );
 void cvg_crttce( char *fname, int *iret );
 void cvg_crttct( char *fname, int *iret );
 void cvg_crttcb( char *fname, int *iret );
+void cvg_crtsgwx( char *fname, int *iret );
 void cvg_crthdr( VG_DBStruct *el, int np, float *lat, float *lon, int *iret);
 void cvg_writv0_elm ( v0_VG_DBStruct *el, int start, int numbytes,  
                       char *fname, int *location, int *iret );
@@ -58,6 +59,7 @@ void cvg_writv5_elm ( v5_VG_DBStruct *el, int start, int numbytes,
  * cvg_crttct()		Creates MET->TCT element			*
  * cvg_crttcb()		Creates MET->TCB element			*
  * cvg_crthdr()		Creates a common header for an element		*
+ * cvg_crtsgwx()        Creates MET->SGWX element
  * cvg_writv0_elm()	Write version 0 elements to file           	*
  * cvg_writv1_elm()	Write version 1 elements to file           	*
  * cvg_writv2_elm()	Write version 2 elements to file           	*
@@ -81,6 +83,7 @@ void cvg_writv5_elm ( v5_VG_DBStruct *el, int start, int numbytes,
  * J. Wu/SAIC	09/03	add CLASS_MET -> JET_ELM        		*
  * T. Lee/SAIC	11/03	used cvgcmn.h					*
  * m.gamazaychikov/SAIC 04/07   add cvg_rdtce, cvg_rdtct and cvg_rdtcb  *
+ * L. Hinson/AWC 01/12  Add CLASS_MET -> SGWX_ELM                       *
  ***********************************************************************/
 
 /*=====================================================================*/
@@ -3074,6 +3077,7 @@ void cvg_crtmet ( char *fname, int *iret )
  * m.gamazaychikov/SAIC	04/07	added TCE element			*
  * m.gamazaychikov/SAIC	04/07	added TCT element			*
  * m.gamazaychikov/SAIC	05/07	added TCB element			*
+ * L. Hinson/AWC        10/11   add SGWX_ELM
  ***********************************************************************/
 {   
     int		np, ii, start, loc, ier, type, clos, filled, smth;
@@ -3093,8 +3097,8 @@ void cvg_crtmet ( char *fname, int *iret )
     el.hdr.vg_class = CLASS_MET;
 
     printf("Enter the type of MET element:\n");
-    printf ( "\t  JET\t %2d\n\t  GFA\t %2d\n\t  TCA\t %2d\n\t  TCE\t %2d\n\t  TCT\t %2d\n\t  TCB\t %2d\n", 
-	     JET_ELM, GFA_ELM, TCA_ELM, TCERR_ELM, TCTRK_ELM, TCBKL_ELM);
+    printf ( "\t  JET\t %2d\n\t  SGWX\t %2d\n\tGFA\t %2d\n\t  TCA\t %2d\n\t  TCE\t %2d\n\t  TCT\t %2d\n\t  TCB\t %2d\n", 
+	     JET_ELM, SGWX_ELM, GFA_ELM, TCA_ELM, TCERR_ELM, TCTRK_ELM, TCBKL_ELM);
 
     while ( !typflg ) {
         scanf ( " %s", sel );
@@ -3102,6 +3106,8 @@ void cvg_crtmet ( char *fname, int *iret )
         if ( type == JET_ELM )
             typflg = G_TRUE;
         else if ( type == GFA_ELM )
+            typflg = G_TRUE;
+        else if ( type == SGWX_ELM )
             typflg = G_TRUE;
         else if ( type == TCA_ELM )
             typflg = G_TRUE;
@@ -3124,7 +3130,10 @@ void cvg_crtmet ( char *fname, int *iret )
         cvg_crtgfa ( fname, &ier );
         return;
     }
-    else if ( el.hdr.vg_type == TCA_ELM ) {
+    if (el.hdr.vg_type == SGWX_ELM ) {
+        cvg_crtsgwx ( fname, &ier );
+        return;
+    } else if ( el.hdr.vg_type == TCA_ELM ) {
         cvg_crttca ( fname, &ier );
         return;
     }
@@ -3575,6 +3584,66 @@ void cvg_crtgfa ( char *fname, int *iret )
      */     
     cvg_freeElPtr ( &el );
 
+}
+
+/*=====================================================================*/
+
+void cvg_crtsgwx (char *fname, int *iret )
+/************************************************************************
+ * cvg_crtsgwx								*
+ *									*
+ * This function creates a SGWX element & writes to file		*
+ *									*
+ * cvg_crtsgwx ( fname, iret )	                                        *
+ *									*
+ * Input parameters:							*
+ *	*fname		char		VG file name to write element	*
+ *									*
+ * Output parameters:							*
+ *	*iret		int		Return code			*
+ *	 				-19 - error saving record	*
+ *					-28 = invalid number of points	*
+ *									*
+ **									*
+ * Log::                                                                *
+ * L. Hinson/AWC        01/12           Created                         *
+ ************************************************************************/
+{
+  int           np, ii, ier, start, loc;
+  float         lat[MAXPTS], lon[MAXPTS];
+  VG_DBStruct	el;
+  
+  *iret = G_NORMAL;
+  start = -1;
+  
+  el.hdr.vg_class = (char) CLASS_MET;
+  el.hdr.vg_type =  (char) SGWX_ELM;
+  el.elem.sgwx.info.npts = 0;
+  
+  printf ( "\nSGWX line attributes:\n\n" );
+  printf ("Enter the SGWX subtype (0 = TURB, 1 = CONV, 2=MIDLVL, 3=SYMBOL \n" );
+  scanf (" %i ", &el.elem.sgwx.info.subtype );
+  printf ("Enter the # of points for the SGWX area (0-128):\n" );
+  scanf ( " %i", &np );
+  if ( np <= 0 || np > 128 ) {
+    *iret = -28;
+    return;
+  }
+  printf ( "Enter %i coordinate pairs in MAP coordinates:\n", np );
+  for ( ii = 0; ii < np; ii++ )
+    scanf ( " %f %f", &(lat[ii]), &(lon[ii]) );
+  for (ii = 0; ii < np; ii++ ) {
+    el.elem.sgwx.latlon[ii] = lat[ii];
+    el.elem.sgwx.latlon[ii+np] = lon[ii];
+  }
+  el.hdr.filled = 0;
+  el.hdr.closed = 1;
+  el.hdr.smooth = 1;
+  el.elem.gfa.info.npts = np;
+  el.hdr.recsz = (int) ( sizeof(VG_HdrStruct) + + sizeof (SGWXType) );
+  cvg_crthdr ( &el, np, lat, lon, &ier); /* Set header */
+  cvg_writefD( &el, start, el.hdr.recsz, fname, &loc, &ier );
+  if ( ier < 0 ) *iret = -19;
 }
 
 /*=====================================================================*/

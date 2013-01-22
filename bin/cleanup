@@ -19,7 +19,7 @@ set OS_REL=`uname -r`
 
 if ( $#argv < 1 ) then
     echo Removing all CORE files
-    find $HOME -name core -exec rm {} \;
+    find $HOME -name "core*" -exec rm {} \;
 else
     if ( "$1" != "-c" ) then
 	echo Error: Type cleanup -c to turn off the CORE removal

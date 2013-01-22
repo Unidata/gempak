@@ -52,5 +52,7 @@ C* S. Gilbert/NCEP	 8/07	Added MXXPTS for GDCROSS		*
 C* T. Piper/SAIC	08/07	Increased LLSTFL from 4800 to 30000	*
 C* T. Piper/SAIC	08/07	Redefined MMHDRS as LLSTFL + LLMXTM	*
 C* X. Guo/CWS           05/10   Added IFHINIDS                          *
+C* S. Jacobs/NCEP	 5/12	Increased MXNMFL from 1000 to 2000	*
+C* S. Jacobs/NCEP	 9/12	Increased LLMXGT from 1000 to 2000	*
 C************************************************************************
 

@@ -145,6 +145,7 @@
 700mb_HGHT_WIND_DWPT             $NMAP_RESTORE/stnd/700mb_hght_wind_dwpt             qpf          dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;fnl;mrf;mrfx;ngm;ruc2;rap;fslruc2;ukmet;firewx
 700mb_WIND_AND_REL_VORT          $NMAP_RESTORE/stnd/700mb_wind_and_rel_vort          hurricane    dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;fnl;mrf;mrfx;ngm;ukmet;firewx
 700mb_WIND_AND_REL_VORT          $NMAP_RESTORE/stnd/700mb_wind_and_rel_vort          tropical     mrf;firewx
+700mb_EPV3D                      $NMAP_RESTORE/stnd/700mb_epv3d                      standard     dgex;gfs;gfshd;nam;nam20;nam40;nam44;fnl;mrf;mrfx;ukmet;nogaps;firewx
 700mb_STREAMLINES                $NMAP_RESTORE/stnd/700mb_streamlines                streamlines  dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;fnl;mrf;mrfx;ngm;ruc2;rap;fslruc2;firewx
 700mb_HGHT_WIND_TEMP             $NMAP_RESTORE/stnd/700mb_hght_tmp_wind              standard     dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;fnl;mrf;mrfx;ukmet;nogaps;firewx
 !

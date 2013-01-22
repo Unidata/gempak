@@ -51,6 +51,7 @@ void cds_rtbl ( char *attrfnam, int *iret )
  * L. Hinson/AWC        09/07   add color, fills, line type, arrowsize, *
  *                              text size, font, hw, width, alignment & *
  *                              text Layout for CCF                     *
+ * L. Hinson/AWC        01/12   Add CLASS_MET -> SGWX_ELM               *
  ***********************************************************************/
 {
     int		align_val, ialign, ier, ier1, ifnt, ii, indx, ithw;
@@ -655,6 +656,22 @@ void cds_rtbl ( char *attrfnam, int *iret )
                            &(cdsUattr[jj].info.gfa->info.iwidth),
                            &(cdsUattr[jj].info.gfa->info.ialign),
                            cdsUattr[jj].info.gfa->textLayout);
+		}
+		else if (strcmp(vg_typestr,"SGWX_ELM") == 0) {
+		  cdsUattr[jj].vg_type = SGWX_ELM;
+		  if (indx == -1) G_MALLOC(cdsUattr[jj].info.sgwx, SgwxAttr, one, "cdsUattr[jj].info.sgwx");
+		  sscanf(tstr, "%*s %*s %d %d %d %d %d %d %d %f %f %d %d %d %d",
+		  &(cdsUattr[jj].subtyp), &(cdsUattr[jj].smooth),
+                    &(cdsUattr[jj].maj_col), &(cdsUattr[jj].min_col),
+                    &(cdsUattr[jj].info.sgwx->lineelm),
+                    &(cdsUattr[jj].info.sgwx->linetype),
+                    &(cdsUattr[jj].info.sgwx->linewidth),
+                    &(cdsUattr[jj].info.sgwx->szarrow),
+                    &(cdsUattr[jj].info.sgwx->info.sztext),
+                    &(cdsUattr[jj].info.sgwx->info.itxfn),
+                    &(cdsUattr[jj].info.sgwx->info.ithw),
+                    &(cdsUattr[jj].info.sgwx->info.iwidth),
+                    &(cdsUattr[jj].info.sgwx->info.ialign));
 		}
 		else if (strcmp(vg_typestr, "TCA_ELM") == 0) {
 		    cdsUattr[jj].vg_type = TCA_ELM;

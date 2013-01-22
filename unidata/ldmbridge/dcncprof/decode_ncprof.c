@@ -7,10 +7,6 @@
 #include "proto_func.h"
 #include "ulog.h"
 
-extern void *decode_fsl1( int, long ,int * );
-extern void *decode_fsl2( int, long, int * );
-extern void *decode_rass( int, long, int * );
-
 sta_struct *
 decode_ncprof (char *infilnam, long miss, int *iret)
 {

@@ -42,6 +42,8 @@ void uka_ptrad ( FILE *ifpout, char *fname, FILE *fptr, long size,
  * D. Kidwell/NCEP	06/04	Increased length of symtyp              *
  * L. Hinson/AWC        03/12   Re-Engineer for RADIATION with Text LBL *
  *                              from ukaptvol.c                         *
+ * L. Hinson/AWC        09/12   Fix Problem with Encoding Other objects *
+ *                              of grptyp LABEL to RADIATION            *
  ***********************************************************************/
 {
     int 	istoff, sbtyp, ieloff, gpnum, flag;
@@ -53,6 +55,7 @@ void uka_ptrad ( FILE *ifpout, char *fname, FILE *fptr, long size,
     char        symtyp[10], radnam[24];
     char        cget;
     Boolean     done, memrad;
+    int         foundrad;
 
     volrad_t	*rad=NULL, *head, *new, *ptr, *ptr2;
     VG_DBStruct     el;
@@ -105,7 +108,7 @@ void uka_ptrad ( FILE *ifpout, char *fname, FILE *fptr, long size,
 	    * Begin looping through the individual elements with the 
 	    * same group type and group number.
 	    */
-
+            foundrad = 0;
             for ( ii = 0; ii < ingrp; ii++ ) {
 
 	        cvg_rdhdr ( fname, fptr, members[ii], (int)size, &el, 
@@ -119,16 +122,22 @@ void uka_ptrad ( FILE *ifpout, char *fname, FILE *fptr, long size,
 	        if (  el.hdr.vg_class == CLASS_SYMBOLS  &&
 	              el.hdr.vg_type == SPSYM_ELM       &&
                       G_DIFF(el.elem.sym.data.code[0], RAD_ELM) ) {
-
+                    foundrad = 1;
                     tmplat = el.elem.sym.data.latlon[0];
                     tmplon = el.elem.sym.data.latlon[0 + 
 			                       el.elem.sym.info.numsym];
                 }
-                else if (el.hdr.vg_class == CLASS_TEXT ) {
+                else if (el.hdr.vg_class == CLASS_TEXT  && foundrad) {
                   cget = CHLF;
                   cst_clst (el.elem.spt.text, cget, " ", 3, 40,
                             aryptr, &numstr, &ier );
+                            
                   strcpy (radnam, aryptr[0]);
+                  if (radnam[strlen(radnam)-1] == '-') {
+                    strcat(radnam,aryptr[1]);
+                  }
+                  
+                  
                 }
             }
 
@@ -137,7 +146,7 @@ void uka_ptrad ( FILE *ifpout, char *fname, FILE *fptr, long size,
 	    * information to missing.
             */
 
-            if ( ingrp > 0 ) {
+            if ( ingrp > 0 && foundrad) {
 		numrad++;
 		memrad = True;
                 new = (volrad_t *) malloc(sizeof(volrad_t));

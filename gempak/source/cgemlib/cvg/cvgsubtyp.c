@@ -29,6 +29,7 @@ void cvg_subtyp ( VG_DBStruct *el, int *subtyp, int *iret )
  * B. Yin/SAIC		02/04	added TCA_ELM				*
  * J. Wu/SAIC		10/04   get GFA sub type using cvg_getFld()	*
  * m.gamazaychikov/SAIC	07/07   add TCE, TCB, TCT elems			*
+ * L. Hinson/AWC        01/12   Add SGWX_ELM                            *
  ***********************************************************************/
 {
     int		ier;
@@ -122,6 +123,10 @@ void cvg_subtyp ( VG_DBStruct *el, int *subtyp, int *iret )
 	cvg_getFld ( el, TAG_GFA_SUBTYPE, value, &ier );
 	*subtyp = G_MAX ( atoi ( value ), 0 );
 	break;
+
+      case SGWX_ELM:
+        *subtyp = el->elem.sgwx.info.subtype;
+        break;
 
       case TCA_ELM:
 	*subtyp = 0;

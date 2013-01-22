@@ -16,7 +16,7 @@
 #  Please configure the following definitions to reflect your system:
 #
 # Top level directory:
-NAWIPS=/home/gempak/GEMPAK6.7.0
+NAWIPS=/home/gempak/GEMPAK6.8.0
 GARPHOME=/home/gempak/openGARP
 #
 # Make sure NAWIPS directory exists

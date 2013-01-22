@@ -468,7 +468,7 @@ if(argc < 3)
 
 tempnam[0] = '\0';
 sprintf(tempnam,"/tmp/.tmpfips.XXXXXX\0");
-mktemp(tempnam);
+mkstemp(tempnam);
 
 in_file = STDIN_FILENO;
 out_file = mkdirs_open(tempnam,O_WRONLY|O_CREAT|O_TRUNC,omode);

@@ -54,6 +54,7 @@ void cvg_todev ( VG_DBStruct *el, int *np, float *dx, float *dy, int *iret )
  * B. Yin/SAIC		05/04	Modified TCA_ELM case statement.	*
  * B. Yin/SAIC		07/04	Modified TCA case for water and islands	*
  * S. Gilbert/NCEP	11/05	Added Zero WW case for TCA_ELM          *
+ * L. Hinson/AWC        01/12   Add SGWX_ELM                            *
  ***********************************************************************/
 {
     int		ier;
@@ -278,6 +279,17 @@ void cvg_todev ( VG_DBStruct *el, int *np, float *dx, float *dy, int *iret )
 		   dx, dy, &ier,
 		   strlen(sys_M), strlen(sys_D));
 	    break;
+
+        case SGWX_ELM:
+            *np = el->elem.sgwx.info.npts;
+/*
+ *	    Convert all points in element to device...
+ */
+	    gtrans(sys_M, sys_D, np, &el->elem.sgwx.latlon[0], 
+		   &el->elem.sgwx.latlon[*np],
+		   dx, dy, &ier,
+		   strlen(sys_M), strlen(sys_D));
+	    break; 
 
 	case TCA_ELM:
 

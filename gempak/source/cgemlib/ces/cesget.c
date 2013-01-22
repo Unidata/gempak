@@ -63,6 +63,7 @@ void ces_get ( int subtyp, VG_DBStruct *el, int *iret )
  * L. Hinson/AWC        07/09   add fills, linetype, szarrow, text size *
  *                              font, hw, width, alignment, and text    *
  *                              Layout to CCF                           *
+ * L. Hinson/AWC        01/12   Add CLASS_MET -> SGWX_ELM               *
  ***********************************************************************/
 {
     char	logstr[10], grp[4], grp_typ[25], *ptr, widthStr[8];
@@ -322,7 +323,7 @@ void ces_get ( int subtyp, VG_DBStruct *el, int *iret )
 	    el->elem.jet.line.spl.info.splstr	= set[indx].info.jet->line.splstr;
 	    el->elem.jet.line.spl.info.spldir	= set[indx].info.jet->line.spldir;
 	    break;
-	    
+            
 	  case GFA_ELM:
 
 	      sprintf ( widthStr, "%d", set[indx].info.gfa->linwid );
@@ -360,6 +361,22 @@ void ces_get ( int subtyp, VG_DBStruct *el, int *iret )
 
 	      break;
 
+          case SGWX_ELM:
+            el->elem.sgwx.info.lineelm  = set[indx].info.sgwx->lineelm;
+            el->elem.sgwx.info.linetype = set[indx].info.sgwx->linetype;
+            el->elem.sgwx.info.linewidth = set[indx].info.sgwx->linewidth;
+            el->elem.sgwx.info.szarrow = set[indx].info.sgwx->szarrow;
+            el->elem.sgwx.spt.info.sztext = set[indx].info.sgwx->info.sztext;
+            el->elem.sgwx.spt.info.itxfn = set[indx].info.sgwx->info.itxfn;
+            el->elem.sgwx.spt.info.ithw = set[indx].info.sgwx->info.ithw;
+            el->elem.sgwx.spt.info.iwidth = set[indx].info.sgwx->info.iwidth;
+            el->elem.sgwx.spt.info.ialign = set[indx].info.sgwx->info.ialign;
+            el->elem.sgwx.spt.info.filcol = 0;
+            el->elem.sgwx.spt.info.txtcol = set[indx].maj_col;
+            el->hdr.smooth = 1;
+            el->hdr.closed = 1;
+            break;
+	    
 	  case TCA_ELM:
 	      break;
 

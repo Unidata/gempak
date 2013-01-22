@@ -78,6 +78,7 @@ void cvg_dump ( VG_DBStruct el, int size, int nout, int flag, int *iret )
  * S. Gilbert/NCEP      01/06   Changed format specifier for advisoryNum*
  * m.gamazaychikov/SAIC	05/07	Add TCE, TCB and TCT elements		*
  * m.gamazaychikov/SAIC	10/08	Modified dump of TCT elements		*
+ * L. Hinson/AWC        01/12   Add CLASS_MET -> SGWX_ELM               *
  ***********************************************************************/
 {
     int			ii, i, j, ier, counter;
@@ -189,6 +190,8 @@ void cvg_dump ( VG_DBStruct el, int size, int nout, int flag, int *iret )
 	    printf ("Vector graphic type:  JET \n");
 	else if ( el.hdr.vg_type == GFA_ELM)
 	    printf ("Vector graphic type:  GFA \n");
+        else if ( el.hdr.vg_type == SGWX_ELM)
+            printf ("Vector graphic type: SGWX \n");
 	else if ( el.hdr.vg_type == TCA_ELM)
 	    printf ("Vector graphic type:  TCA \n");
 	else if ( el.hdr.vg_type == TCERR_ELM)
@@ -869,6 +872,24 @@ void cvg_dump ( VG_DBStruct el, int size, int nout, int flag, int *iret )
 			  el.elem.gfa.latlon[j],
 		          el.elem.gfa.latlon[j + el.elem.gfa.info.npts] );	    
 	}
+	else if ( el.hdr.vg_type == SGWX_ELM ) {
+          printf ( "Type of SGWX: %d\n",
+                                        el.elem.sgwx.info.subtype );
+          printf ( "Number of points: %d\n",
+                                        el.elem.sgwx.info.npts );
+          printf ( "Line lat/lon points and times:\n" );
+          for ( j = 0; j < el.elem.sgwx.info.npts; j++ )
+            printf ( "	%f	%f\n",
+			el.elem.sgwx.latlon[j],
+			el.elem.sgwx.latlon[j+el.elem.sgwx.info.npts]);
+          if (el.elem.sgwx.info.subtype == 3) {
+            if (el.elem.sgwx.info.splsym > 0) {
+              printf( "Special Symbol Number =%d\n",el.elem.sgwx.info.splsym);
+            } else {
+              printf( "Weather Symbol Number =%d\n",el.elem.sgwx.info.wxsym);
+            }
+          }
+        }
 	else if ( el.hdr.vg_type == TCA_ELM ) {
 	    printf ( "Storm number:\t %d\n", el.elem.tca.info.stormNum );
 

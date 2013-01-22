@@ -6,7 +6,7 @@ void ccheck ( int *mproc, int *mbchan, int *iwact, int *iret )
  * ccheck								*
  *									*
  * This subroutine checks to see if a subprocess is attached to the	*
- * message queue specified by MPROC.				*
+ * message queue specified by MPROC.	 				*
  *									*
  * ccheck  ( mproc, mbchan, iwact, iret )				*
  *									*

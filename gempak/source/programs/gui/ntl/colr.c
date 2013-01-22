@@ -51,6 +51,7 @@ int colr_init ( int nbank, int banks[], Boolean verbose )
  * S. Chiswell/Unidata	9/02	Fixed bgcolr specification for 16/24	*
  * T. Piper/SAIC	01/04	Modified for changes to colr_rtbl	*
  * T. Piper/SAIC	07/04	Added <type>Cid indexing		*
+ * S. Jacobs/NCEP	11/12	Return if depth is not 8 bit		*
  ***********************************************************************/
 
 {
@@ -72,6 +73,10 @@ int		nbyte, numb;
 		printf("banks[%d] = %d\n", ii, banks[ii]);
 	}
 	xdpth = DefaultDepth((XtPointer)gemdisplay,DefaultScreen((XtPointer)gemdisplay));
+
+	/* Fix a problem with 16,24-bit color sharing */
+	if ( xdpth != 8 ) return;
+
 	ret_banks = (int *)malloc((size_t)nbank*sizeof(int));
         xcamgr(gemdisplay, gemmap, nbank, banks, ret_banks, &ret);
 
@@ -154,10 +159,12 @@ int		nbyte, numb;
 	        if( banks[ii] > 0 ) {
 	            for (jj = 0; jj < banks[ii]; jj++) {
 			icval = (unsigned int)ColorBanks.colrs[ii][jj];
-			/*printf("look val %d %d    %d %d %d %d [ test %d]\n",ii,jj,
-			   icval % 256, (icval >> 8 ) & 255,
-			   (icval >> 16) & 255, (icval >> 24) & 255,
-			   ( icval >> 24 ) );*/
+			if ( verbose ) {
+			    printf("look val %d %d    %d %d %d %d [ test %d]\n",ii,jj,
+			       icval % 256, (icval >> 8 ) & 255,
+			       (icval >> 16) & 255, (icval >> 24) & 255,
+			       ( icval >> 24 ) );
+			}
 	                mv_itob ( (int *)(&icval), &nbyte, &numb,
 				  sendcolr, &ret);
                         nbyte += numb;

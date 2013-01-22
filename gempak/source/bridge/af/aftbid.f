@@ -25,6 +25,7 @@ C* J. Ator/NP12		08/97	New interface format, style changes	*
 C* D. Kidwell/NCEP	 6/99	More abbrevs., use GEMPAK turb. values  *
 C* D. Kidwell/NCEP	 2/00	Added more abbreviations, restructured  *
 C* D. Kidwell/NCEP	 4/00	Added more abbreviations                *
+C* S. Jacobs/NCEP	 9/12	Set intensity = 0 if MTN is present	*
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 	INCLUDE		'afcmn.cmn'
@@ -77,7 +78,8 @@ C
      +			    ( bultyp .eq. AIREP ) )  )  THEN
 		dgot = 2.0
 	      ELSE IF  (  ( ctbid (1:3) .eq. 'NIL' ) .or.
-     +		          ( ctbid (1:3) .eq. 'NEG' )  )  THEN
+     +		          ( ctbid (1:3) .eq. 'NEG' ) .or.
+     +			  ( ctbid (1:3) .eq. 'MTN' )  )  THEN
 		dgot = 0.0
 	    END IF
 	    IF ( .not. ERMISS ( dgot ) )  RETURN

@@ -1,6 +1,6 @@
 # GEMPAK
 
-This document is intended to guide the user through the process of downloading, configuring and installing GEMPAK v6.7.0 for most common systems (32 and 64-bit Linux and Solaris). Specific instructions for <a href="http://www.unidata.ucar.edu/software/gempak/doc/install_osx.html">building on OS X</a> are available as well.
+This document is intended to guide the user through the process of downloading, configuring and installing GEMPAK v6.8.0 for most common systems (32 and 64-bit Linux and Solaris). Specific instructions for <a href="http://www.unidata.ucar.edu/software/gempak/doc/install_osx.html">building on OS X</a> are available as well.
 
 Last Updated January 2013
 
@@ -14,9 +14,9 @@ GEMPAK can be installed by an individual user, and root / superuser permission i
 	
 	Unpacking the archive in the gempak user home directory (assuming **/home/gempak**):
 
-		tar -xvzf gempak_upc6.7.0.tar.gz
+		tar -xvzf gempak_upc6.8.0.tar.gz
 
-	will create the directory **/home/gempak/GEMPAK6.7.0/** which contains all of the libraries, program source and configuration files, most notably the two Gemenviron and Gemenviron.profile.
+	will create the directory **/home/gempak/GEMPAK6.8.0/** which contains all of the libraries, program source and configuration files, most notably the two Gemenviron and Gemenviron.profile.
 
 	
 
@@ -27,24 +27,24 @@ GEMPAK can be installed by an individual user, and root / superuser permission i
 	
 		git clone git://github.com/Unidata/gempak.git
 
-	This will copy the GEMPAK source to the present working directory.  If downloaded from GitHub, ensure that the source is located in a directory under the user's home directory, such as **/home/gempak/GEMPAK6.7.0/**
+	This will copy the GEMPAK source to the present working directory.  If downloaded from GitHub, ensure that the source is located in a directory under the user's home directory, such as **/home/gempak/GEMPAK6.8.0/**
 
 ## Create the NAWIPS symbolic link
 
 Creating a symbolic link NAWIPS in your home directory will allow you to maintain a single command in **.cshrc** or **.profile** that sources the current GEMPAK installation:
 
 
-	ln -s GEMPAK6.7.0/ NAWIPS
+	ln -s GEMPAK6.8.0/ NAWIPS
 
 ## Gemenviron / Gemenviron.profile
 
-To build GEMPAK on your system, the environmental variable **$NAWIPS** must be defined at the top of **Gemenviron** [ for csh/tcsh ] or **Gemenviron.profile** [ for bash/ksh ]. These files contain definitions for the locations of various components used by GEMPAK. It is the responsibility of the GEMPAK administrator to confirm that **$NAWIPS** is defined correctly with the full path of the `GEMPAK6.7.0` directory. Other variables which point to the location of data directories, tables and can be tailored at your lesiure, but it's recommended that only **$NAWIPS** be modified as all other variables related to GEMPAK are dependant on **$NAWIPS**.
+To build GEMPAK on your system, the environmental variable **$NAWIPS** must be defined at the top of **Gemenviron** [ for csh/tcsh ] or **Gemenviron.profile** [ for bash/ksh ]. These files contain definitions for the locations of various components used by GEMPAK. It is the responsibility of the GEMPAK administrator to confirm that **$NAWIPS** is defined correctly with the full path of the `GEMPAK6.8.0` directory. Other variables which point to the location of data directories, tables and can be tailored at your lesiure, but it's recommended that only **$NAWIPS** be modified as all other variables related to GEMPAK are dependant on **$NAWIPS**.
 
 If you unpacked GEMPAK in **/home/gempak** and plan on compiling with gfortran, you can skip this step.
 
 If you unpacked and plan to install GEMPAK in an uncommon directory (such as **/opt/gempak/**), you'll need to edit the NAWIPS definition at the top of the appropriate file:
 
-	setenv NAWIPS /home/gempak/GEMPAK6.7.0
+	setenv NAWIPS /home/gempak/GEMPAK6.8.0
 
 ## Sourcing Environmental Variables
 
@@ -216,8 +216,8 @@ Any error messages involving missing Xm files (such as Xm/XmAll.h):
 
 <pre>
 > ...include/geminc.h:59:22: Xm/XmAll.h: No such file or directory
-> In file included from /home/gempak/GEMPAK6.7.0/include/proto.h:28,
->    from /home/gempak/GEMPAK6.7.0/include/gemprm.h:647,
+> In file included from /home/gempak/GEMPAK6.8.0/include/proto.h:28,
+>    from /home/gempak/GEMPAK6.8.0/include/gemprm.h:647,
 </pre>
 
 Indicate that openmotif and openmotif-devel were not found on your system. Either the motif libraries are not installed on your system, or the correct location has not been specified to the compiler. If the latter is the case, you will need to edit **$NAWIPS/config/Makeinc.linux_gfortran** (assuming a linux system using gfortran), where $NA_OS is your system architecture as determined in the Gemenviron configuration file.

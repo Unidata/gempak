@@ -52,6 +52,10 @@ void sigajet ( char *fhour, int numjet, jets_t *ptrj, int itime[],
  * T. Piper/SAIC    01/05	Removed unused variables difspd & lstspd*
  * M. Li/SAIC	    10/05	Added flvl				*
  * S. Danz/AWC      07/06	Switched to new cvg_writeD function	*
+ * L. Hinson/AWC    06/12       Revised Jet Hash Logic to plot hashes   *
+ *                                only if 10 m/s change in speed.       *
+ * L. Hinson/AWC    06/12       Fixed Flight Levels calc to round up    * 
+ * L. Hinson/AWC    08/12       Initialize "pivot" to 0 for each jet    *
  ***********************************************************************/
  {
     int   	    ii, ij, jj, kk, ier, len;
@@ -70,9 +74,9 @@ void sigajet ( char *fhour, int numjet, jets_t *ptrj, int itime[],
     int        	    mode, istat, iunit, itype;
     char            device[8], filnam[20];
     float           xsize, ysize;
-    float	    windir[MAXPTS];
+    float           windir[MAXPTS], initspeed;
     int		    njp, jpi[MAXPTS], nwnd, jwi[MAXPTS], iwnd[MAXPTS];
-    int		    nn, inz, nbp, nhp;
+    int		    nn, inz, nbp, nhp, pivot;
     Boolean	    delta;
 
     VG_DBStruct     el;
@@ -145,6 +149,7 @@ void sigajet ( char *fhour, int numjet, jets_t *ptrj, int itime[],
 
 
      for ( ii = 0; ii < numjet; ii++) {
+       pivot = 0;
 
        /* 
 	* Determine the maximum and minimum lat. and lon.
@@ -198,9 +203,13 @@ void sigajet ( char *fhour, int numjet, jets_t *ptrj, int itime[],
 	
 		if ( jj == 0 ) {
 		    xmxwnd = ptr->speed[kk];
+                    pivot = jj;
 		}
 		else {
-                    xmxwnd = G_MAX ( xmxwnd, ptr->speed[kk] );
+                    if ( ptr->speed[kk] > xmxwnd ) {
+                      xmxwnd = ptr->speed[kk];
+                      pivot = jj;
+                    }                    
 		}
             }
          }
@@ -216,7 +225,7 @@ void sigajet ( char *fhour, int numjet, jets_t *ptrj, int itime[],
 		break;
 	    } 
          }
-
+         if (inz == 0) { inz = pivot; }
 	/*
 	 * Barb at the maximum wind(s).
 	 */
@@ -225,71 +234,53 @@ void sigajet ( char *fhour, int numjet, jets_t *ptrj, int itime[],
 	    kk = jwi[jj];
 	    if ( iwnd[jj] == 0 &&  ptr->speed[kk] == xmxwnd ) iwnd[jj] = 1;
 	 }
-
-	/*
-	 * Alternate barb and hash points.
-	 */
-	
-	 for ( jj = inz+1; jj < nwnd - 1; jj++ ) {
-	     if ( iwnd[jj] != 0 ) continue;
-	     if ( iwnd[jj-1] != 0 || iwnd[jj+1] != 0 ) {
-	    	nn = iwnd[jj-1] + iwnd[jj+1];
-		if ( nn < 0 ) {
-		    iwnd[jj] = 1;
+         /**********************************
+          Revised Coding...Go forward along the jet
+         **********************************/
+         kk = jwi[inz];
+         initspeed = ptr->speed[kk];
+         for ( jj = inz+1; jj < nwnd; jj++ ) {
+            kk = jwi[jj];
+            /* Here we use hash marks if the speed diff is 10 m/s (20 kts)
+               or more */
+            if ( (ptr->speed[kk] - initspeed) <= -9.0 ) {	    
+	      if ( (jj + 1) < nwnd ) {
+	        if ( fabs(ptr->speed[jwi[jj+1]] - ptr->speed[kk]) > 9.0 ) {
+                  iwnd[jj] = -1;
+		} else {
+		  iwnd[jj] = 1;
 		}
-		else {
-		    iwnd[jj] = -1;
-		}
-	     }     
-	 }
-
-	 if ( inz >= 1 ) {
-	     for ( jj = inz; jj >= 1; jj-- ) {
-	         if ( iwnd[jj] != 0 ) continue;
-                 if ( iwnd[jj-1] != 0 || iwnd[jj+1] != 0 ) {
-                    nn = iwnd[jj-1] + iwnd[jj+1];
-                    if ( nn < 0 ) {
-                        iwnd[jj] = 1;
-                    }
-                    else {
-                        iwnd[jj] = -1;
-                    }
-                 }   
+	      } else {
+	        iwnd[jj] = -1;
+	      }
+            } else {
+              iwnd[jj] = 1;
+            }
+            initspeed = ptr->speed[kk];
+         }
+         initspeed = ptr->speed[jwi[inz]];
+         /***********************************
+          Revised Coding...Go reverse along the jet
+         ***********************************/
+         if (inz >= 1) {
+           for ( jj = inz-1; jj >= 0; jj-- ) {
+             kk = jwi[jj];
+             if ( (ptr->speed[kk] - initspeed) <= -9.0 ) {
+	       if ( ( jj - 1 ) >= 0 ) {
+	         if ( fabs(ptr->speed[jwi[jj-1]] - ptr->speed[kk]) > 9.0 ) {
+		   iwnd[jj] = -1;
+		 } else {
+		   iwnd[jj] = 1;
+		 }
+	       } else {
+	         iwnd[jj] = -1;
+	       }
+             } else {
+               iwnd[jj] = 1;                 
              }
-	 }
-
-	 if ( nwnd > 1 ) {
-
-	    /*
-	     * Check the end point.
-	     */
-
-	     if ( iwnd[nwnd-1] == 0 ) {
-	         if ( iwnd[nwnd-2] == 1 ) {
-		    iwnd[nwnd-1] = -1;
-	         }
-	         else {
-		    iwnd[nwnd-1] = 1;
-	         }
-	     }
-
-	    /*
-	     * Check the first point.
-	     */
-
-	     if ( iwnd[0] == 0 ) {
-                 if ( iwnd[1] == 1 ) {
-                    iwnd[0] = -1;
-                 }
-                 else {
-                    iwnd[0] = 1;
-                 }
-             }
-
-	     for ( jj = 0; jj < nwnd; jj++ ) {
-                 if ( iwnd[jj] == 0 ) iwnd[jj] = -1;
-             }
-	 }
+             initspeed = ptr->speed[kk];
+           }
+         }
 
 	 	
 	/* 
@@ -398,7 +389,7 @@ void sigajet ( char *fhour, int numjet, jets_t *ptrj, int itime[],
 			 else {
 			     if ( ptr->levabv[kk] != SIGRLMS ) {
                                  tmplv2 = pr_hgmf ( &(ptr->levabv[kk]) );
-                                 tmplv2 = tmplv2/100.F;
+                                 tmplv2 = tmplv2/100.F + 0.5;
                                  cst_inch ( (int) tmplv2, level3, &ier );
                              }
                              else {
@@ -407,7 +398,7 @@ void sigajet ( char *fhour, int numjet, jets_t *ptrj, int itime[],
 
                              if ( ptr->levblw[kk] != SIGRLMS ) {
                                  tmplv3 = pr_hgmf ( &(ptr->levblw[kk]) );
-                                 tmplv3 = tmplv3/100.F;
+                                 tmplv3 = tmplv3/100.F + 0.5;
                                  cst_inch ( (int) tmplv3, level2, &ier );
                              }
                              else {

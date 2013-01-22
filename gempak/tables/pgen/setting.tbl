@@ -138,6 +138,7 @@
 ! L. Hinson/AWC         04/09   Add GFA SIGMET Hazards
 ! L. Hinson/AWC         07/09   Extend CCF hazards
 ! L. Hinson/AWC         11/09   Add GFA
+! L. Hinson/AWC         07/12   Add SGWX
 !------------------------------------------------------------------------
 ! VGCLASS:  VGF object class (defined in $GEMINC/drwids.h)
 ! VGTYPE:   VGF object type (defined in $GEMINC/vgstruct.h)
@@ -500,3 +501,11 @@ CLASS_MET  GFA_ELM 245  12  12  1    1    3    1.00 17   1.0  1    2    1    0  
 !
 !			MAJ MIN  WIDTH  GRP(23 characters maximum)
 CLASS_MET  TCA_ELM  -99  0   0    0     LABEL  !default tca, these are not used at the moment
+!
+!                       SMTH MAJ MIN   LINE LINE LINE  ARRW TEXT TEXT TEXT TEXT TEXT  GRP(23 characters maximum)
+!                            HI  LO     ELM TYPE WIDTH SIZE SIZE FONT ITHW WDTH ALGN
+CLASS_MET  SGWX_ELM -99   0  1   1      1     1   1     1.0  1.0  2    1   1    0    LABEL    ! 
+CLASS_MET  SGWX_ELM   0   2  5   5      1     5   1     1.0  1.25 2    1   1    0    LABEL    ! TURB
+CLASS_MET  SGWX_ELM   1   2  6   6      20    3   1     1.0  1.25 2    1   1    0    LABEL    ! Clouds
+CLASS_MET  SGWX_ELM   2   2  6   6      20    3   2     1.0  1.07 1    2   1    0    LABEL    ! ICE/TURB
+CLASS_MET  SGWX_ELM   3   0  2   2      0     0   0     0.0  1.0  2    2   1    0    LABEL    ! SYMBOL

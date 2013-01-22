@@ -16,6 +16,7 @@
  
 #define MAX_SIGMET_SZ  	( HDR_SZ + (int)sizeof(SigmetType) )
 #define MAX_CCF_SZ	( HDR_SZ + (int)sizeof(CCFType) )
+#define MAX_SGWX_SZ     ( HDR_SZ + (int)sizeof(SGWXType) )
 #define MAX_ASH_SZ	( HDR_SZ + (int)sizeof(AshType) )
 #define MAX_VOL_SZ	( HDR_SZ + (int)sizeof(VolType) )
 #define MAX_TRACK_SZ    ( HDR_SZ + (int)sizeof(TrackType) )
@@ -81,6 +82,7 @@ void cvg_rdele ( VG_DBStruct *el, int el_start, int el_size,
  * J. Wu/SAIC		10/04	remove MAX_GFA_SZ			*
  * S. Danz/AWC          03/06   Add check for placement information     *
  * m.gamazaychikov/SAIC	04/07	add cvg_rdtce, cvg_rdtct and cvg_rdtcb	*
+ * L. Hinson/AWC        01/12   Add SGWX_ELM                            *
  ***********************************************************************/
 {
     int 	  *pnpts, ier, nbin, nbinfo, itrunc, max_version;
@@ -232,9 +234,12 @@ void cvg_rdele ( VG_DBStruct *el, int el_start, int el_size,
 		if (el->hdr.vg_type == JET_ELM &&
 		    el->hdr.recsz > MAX_JET_SZ) {
 		    *iret = -11;
-		}
-		
+		} else if (el->hdr.vg_type == SGWX_ELM &&
+                    el->hdr.recsz > MAX_SGWX_SZ) {
+                    *iret = -11;
+                }
 		break;
+
 	    default:
 	        break;
 

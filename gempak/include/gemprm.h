@@ -146,6 +146,8 @@
  *                              buffer size                             *
  * M. James/Unidata	11/10   Increased LLMXGT from 1000 to 2000	*
  * M. James/Unidata	11/10   Increased LLMXTM from 300 to 2000	*
+ * S. Jacobs/NCEP	 5/12	Increased MXNMFL from 1000 to 2000	*
+ * M. James/Unidata	 1/13	Increased MXNMFL from 2000 to 5000	*
  ***********************************************************************/
 
 #ifndef _GEMPRM_H
@@ -435,7 +437,6 @@ typedef unsigned int	G_Cardinal;
 
 #define LLBSIZ		(  1024 ) /* I/O Buffer size */
 #define LLSCRN		(    80 ) /* Size of screen input/output strings. */
-#define REPMAX		( 150000 ) /* Maximum text report size */
 #define MAXTYP		(   300 ) /* Maximum number of data types */
 #define MXERST		(   100 ) /* Maximum # of error messages in buffer */  
 

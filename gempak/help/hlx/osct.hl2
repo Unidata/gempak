@@ -10,7 +10,8 @@
        Type of wind vector | Skip | Time stamp interval | Time stamp color | 
        Line Width | Rain | Rain Colors | Rain Circles
 
-     The data type is OSCT.
+     The data type is a selection to plot OSCT or OSCT_HI, or ambiguities
+     OAMBG1_HI, OAMBG2_HI, OAMBG3_HI, or OAMBG4_HI.
 
      The end time is the latest time for which OScat data will be plotted. 
      The end time is given as a GEMPAK date/time string.  Any missing items

@@ -21,6 +21,7 @@ void	ash2tag ( VG_DBStruct *el, char *buffer, int *iret );
 void	vol2tag ( VG_DBStruct *el, char *buffer, int *iret );
 void	jet2tag ( VG_DBStruct *el, char *buffer, int *iret );
 void	gfa2tag ( VG_DBStruct *el, char *buffer, int *iret );
+void    sgwx2tag ( VG_DBStruct *el, char *buffer, int *iret );
 void	tca2tag ( VG_DBStruct *el, char *buffer, int *iret );
 
 
@@ -57,6 +58,7 @@ int	cvg_v2t ( VG_DBStruct *el, char *buffer, int *iret )
  * S. Jacobs/NCEP	 5/05	Added checks for 0 points in lines	*
  * S. Jacobs/NCEP	 5/05	Fixed check for multiple lines of text	*
  * S. Jacobs/NCEP	 4/10	Change < and > to &lt and &gt		*
+ * L. Hinson/AWC         1/12   Added sgwx2tag                          *
  ***********************************************************************/
 {
 int	ier;
@@ -138,7 +140,7 @@ int	ier;
 	case	SIGCCF_ELM:
 		ccf2tag ( el, buffer, &ier ); 
 		break;
-
+        
 	case	LIST_ELM:
 		lst2tag ( el, buffer, &ier ); 
 		break;
@@ -158,7 +160,11 @@ int	ier;
 	case	GFA_ELM:
 		gfa2tag ( el, buffer, &ier ); 
 		break;
-	
+
+	case    SGWX_ELM:
+                sgwx2tag ( el, buffer, &ier );
+                break;
+
 	case	TCA_ELM:
 		tca2tag ( el, buffer, &ier ); 
 		break;
@@ -1628,6 +1634,49 @@ size_t	blen;
     blen = strlen(buffer);
     buffer[blen-1] = '\0';
     
+}
+
+/*=====================================================================*/
+
+void	sgwx2tag ( VG_DBStruct *el, char *buffer, int *iret )
+{
+int	ii, npts, ier;
+size_t	blen;
+/*---------------------------------------------------------------------*/
+    *iret = 0;
+
+    /*  
+     *  SIGWX_ELM
+     */
+
+    hdr2tag ( el, buffer, &ier );
+
+    blen = strlen(buffer);
+    sprintf( &(buffer[blen]), 
+
+	"<subtype>%d"
+	"<npts>%d",
+	el->elem.sgwx.info.subtype,
+	el->elem.sgwx.info.npts
+	);
+
+    npts = el->elem.sgwx.info.npts;
+
+    blen = strlen(buffer);
+    sprintf( &(buffer[blen]), "<latlon>" );
+    for ( ii = 0; ii < npts; ii++ )  {
+        blen = strlen(buffer);
+	sprintf( &(buffer[blen]), "%6.2f,", el->elem.sgwx.latlon[ii] );
+    }
+    for ( ii = 0; ii < npts; ii++ )  {
+        blen = strlen(buffer);
+	sprintf( &(buffer[blen]), "%7.2f,", el->elem.sgwx.latlon[ii+npts] );
+    }
+
+    /*  remove final comma 	*/
+    blen = strlen(buffer);
+    buffer[blen-1] = '\0';
+
 }
 
 /*=====================================================================*/

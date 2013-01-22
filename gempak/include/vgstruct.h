@@ -90,6 +90,8 @@
  * m.gamazaychikov/SAIC	04/07	Add new TC error, TC track and 		*
  *				TC breakpoint line elements		*
  * m.gamazaychikov/SAIC	10/08	Add stSrc to TCT element 		*
+ * L. Hinson/AWC        01/12   Add SGWX Element and related            *
+ *                              definitions; Update MAX_RECTYPES        *
  ***********************************************************************/
 #ifndef _vgstruct_include
 #define _vgstruct_include
@@ -107,7 +109,7 @@
 #define MAX_DSCRPTN_LEN	50	/* Max length of GFA description string */
 #define MAX_TCT_STRING	50	/* Max length of TCTrack entry string */
 
-#define MAX_RECTYPES	42
+#define MAX_RECTYPES	43
 
 /*	Values for vg_type from struct vg_hdrstruct		*/
 #define LINE_ELM 	1	/* line 			*/
@@ -151,6 +153,7 @@
 #define TCERR_ELM	40      /* tc error-cone element       	*/
 #define TCTRK_ELM	41      /* tc track element       	*/
 #define TCBKL_ELM	42      /* tc break point line element	*/
+#define SGWX_ELM        43      /* SGWX Element                 */
 
 
 #define VGFHEAD_COMMENT "NAWIPS Vector Graphic Format \0"
@@ -198,6 +201,11 @@
 #define CCFGRW_POS	1
 #define CCFGRW_NC	2
 #define CCFGRW_NEG	3
+
+#define SGWX_TURB       0
+#define SGWX_CONV       1
+#define SGWX_ICETURB    2
+#define SGWX_SPSYM      3
 
 /* 
  * SIGMET subtypes
@@ -814,6 +822,7 @@ typedef struct ccftype {
     float	latlon[MAX_SIGMET*2];
 } CCFType;
 
+
 typedef struct tracktype {
     TrackInfo	info;
     float	latlon[MAX_TRACKS*2];
@@ -882,6 +891,26 @@ typedef struct gfatype {
     float	latlon[MAXPTS*2];
 } GfaType;
 
+typedef struct sgwxinfo {
+  int subtype;
+  int npts;
+  float textlat;
+  float textlon;
+  float arrowlat;
+  float arrowlon;
+  int lineelm;
+  int linetype;
+  int linewidth;
+  float szarrow;
+  int splsym;
+  int wxsym;
+} SGWXInfo;
+
+typedef struct sgwxtype {
+  SGWXInfo info;
+  SptxType spt;
+  float latlon[256];
+} SGWXType;
 
 typedef struct vg_hdrstruct
 {
@@ -933,6 +962,7 @@ typedef struct vg_dbstruct
 	TcerrType	tce;
 	TctrkType	tct;
 	TcbklType	tcb;
+        SGWXType        sgwx;
     } elem; 
 } VG_DBStruct;
 

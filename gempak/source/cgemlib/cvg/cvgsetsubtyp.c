@@ -27,6 +27,7 @@ void cvg_setsubtyp ( int new_subtyp, VG_DBStruct *el, int *iret )
  * J. Wu/SAIC		01/04   add GFA_ELM				*
  * B. Yin/SAIC		02/04	added TCA_ELM				*
  * J. Wu/SAIC		10/04   set GFA sub type using cvg_setFld()	*
+ * L. Hinson/AWC        01/12   Add SGWX_ELM                            *
  ***********************************************************************/
 {
     int		ier;
@@ -127,6 +128,10 @@ void cvg_setsubtyp ( int new_subtyp, VG_DBStruct *el, int *iret )
 	sprintf ( value, "%d", new_subtyp );
 	cvg_setFld ( el, TAG_GFA_SUBTYPE, value, &ier );
 	break;
+
+      case SGWX_ELM:
+        el->elem.sgwx.info.subtype = new_subtyp;
+        break;
 
       case TCA_ELM:
 	break;

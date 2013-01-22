@@ -47,7 +47,7 @@ C
 C*	nncolr = number of device colors.  ( A maximum of 32 colors may
 C*	be initialized.  nncolor may be larger. )
 C
-	nncolr = 32 
+	nncolr = 32
 C
 C*	nlthw = hw line type flag  ( 0 = sw only, 1 = hw available )
 C*	ntxhw = hw text flag       ( 0 = sw only, 1 = hw available )

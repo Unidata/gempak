@@ -1,4 +1,5 @@
 $FC $FFLAGS $LDFLAGS -o namplt namplt.f \
-			$GEMLIB $APPL $SYSLIB \
-			$GEMLIB $CGEMLIB $GEMLIB
+			-lgemlib -lappl -lsyslib -lgemlib -lcgemlib \
+			-lgemlib -lgridlib \
+			-lnetcdf -lxslt -lxml2 -liconv -lz -lm -lbz2
 $RM *.o

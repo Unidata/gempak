@@ -50,6 +50,7 @@ void cds_dspelm ( VG_DBStruct *el, int *iret )
  * J. Wu/SAIC		01/04	add CLASS_MET -> GFA_ELM		*
  * B. YIN/SAIC		02/04	added CLASS_MET -> TCA_ELM		*
  * m.gamazaychikov/SAIC	06/07	add CLASS_MET -> TCERR,TCTRK,TCBKL elms	*
+ * L. Hinson/AWC        01/12   Add CLASS_MET -> SGWX_ELM               *
  ***********************************************************************/
 {
     int		indx, igt, ign;
@@ -162,7 +163,10 @@ void cds_dspelm ( VG_DBStruct *el, int *iret )
 	}
 	else if (el->hdr.vg_type == GFA_ELM) {
 	    cds_gfa (el, indx, &ier);
-	}	
+	}
+        else if (el->hdr.vg_type == SGWX_ELM) {
+	    cds_sgwx (el, indx, &ier);
+	}        	
 	else if (el->hdr.vg_type == TCA_ELM) {
 	    cds_tca (el, &ier);
 	}	

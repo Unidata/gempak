@@ -21,6 +21,7 @@ void	tag2ash ( char *buffer, VG_DBStruct *el, int *iret );
 void	tag2vol ( char *buffer, VG_DBStruct *el, int *iret );
 void	tag2jet ( char *buffer, VG_DBStruct *el, int *iret );
 void	tag2gfa ( char *buffer, VG_DBStruct *el, int *iret );
+void    tag2sgwx ( char *buffer, VG_DBStruct *el, int *iret );
 void	tag2tca ( char *buffer, VG_DBStruct *el, int *iret );
 
 /* Local global variables 	*/
@@ -177,6 +178,11 @@ int	ier;
 	    case	GFA_ELM:
 		tag2gfa ( buffer, el, &ier );
 		break;
+            
+	    case        SGWX_ELM:
+                tag2sgwx ( buffer, el, &ier );
+                break;
+
 	    case	TCA_ELM:
 		tag2tca ( buffer, el, &ier );
 		break;
@@ -1837,6 +1843,42 @@ char	delim=',', *ptr1, *ptr2;
                             sizeof(char) * STD_STRLEN * nblks  +
 		            sizeof(float) * npts * 2 );
 
+}
+
+/*======================================================================*/
+
+void	tag2sgwx ( char *buffer, VG_DBStruct *el, int *iret )
+{
+int	ii, npts, nvals, ier;
+float	*fvals;
+char	delim=',';
+  *iret = 0;
+  cst_gtag ( "subtype", buffer, "0", _Data, &ier );
+  cst_numb ( _Data, &(el->elem.sgwx.info.subtype), &ier );
+
+  cst_gtag ( "npts", buffer, "1", _Data, &ier );
+  cst_numb ( _Data, &(el->elem.sgwx.info.npts), &ier );
+  npts = el->elem.sgwx.info.npts;
+  fvals = (float *)malloc((size_t)(npts*2)*sizeof(float));
+  cst_gtag ( "latlon", buffer, "0", _Data, &ier );
+  cst_rlst ( _Data, delim, RMISSD, npts*2, fvals, &nvals, &ier );
+  memmove ( el->elem.sgwx.latlon, fvals, (size_t)nvals*sizeof(float) );
+  free ( fvals );
+  el->hdr.range_min_lat =  FLT_MAX;
+  el->hdr.range_max_lat = -FLT_MAX;
+  el->hdr.range_min_lon =  FLT_MAX;
+  el->hdr.range_max_lon = -FLT_MAX;
+  for ( ii = 0; ii < npts; ii++ )  {
+        el->hdr.range_min_lat = 
+            G_MIN(el->hdr.range_min_lat, el->elem.sgwx.latlon[ii]);
+        el->hdr.range_max_lat = 
+            G_MAX(el->hdr.range_max_lat, el->elem.sgwx.latlon[ii]);
+        el->hdr.range_min_lon = 
+            G_MIN(el->hdr.range_min_lon, el->elem.sgwx.latlon[ii+npts]);
+        el->hdr.range_max_lon = 
+            G_MAX(el->hdr.range_max_lon, el->elem.sgwx.latlon[ii+npts]);
+  }
+  el->hdr.recsz = ( sizeof(VG_HdrStruct) + sizeof(SGWXType) );
 }
 
 /*======================================================================*/

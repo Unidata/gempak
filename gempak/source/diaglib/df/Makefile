@@ -65,6 +65,8 @@ COBJS = \
 	$(ALIB)(dfncdf.o) \
 	$(ALIB)(dfne.o) \
 	$(ALIB)(dfnint.o) \
+	$(ALIB)(dfnmax.o) \
+	$(ALIB)(dfnmin.o) \
 	$(ALIB)(dfnot.o) \
 	$(ALIB)(dfor.o) \
 	$(ALIB)(dfpaub.o) \
@@ -72,6 +74,7 @@ COBJS = \
 	$(ALIB)(dfprcl.o) \
 	$(ALIB)(dfpois.o) \
 	$(ALIB)(dfquo.o) \
+	$(ALIB)(dfrdfs.o) \
 	$(ALIB)(dfrelh.o) \
 	$(ALIB)(dfreli.o) \
 	$(ALIB)(dfsavs.o) \

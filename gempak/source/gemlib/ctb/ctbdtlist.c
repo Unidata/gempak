@@ -56,6 +56,5 @@ void ctb_dtlist ( int *catgry, char *list, int *count )
 	list[--len] = '\0';
     }
 
-
     return;
 }

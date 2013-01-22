@@ -42,6 +42,7 @@ void sigamcld ( char *fhour, int nummcld, mcloud_t *ptrm, int itime[],
  * M. Li/SAIC       01/05	                                 	*
  * S. Danz/AWC      07/06	Switched to new cvg_writeD function	*
  * M. Li/SAIC	    11/06	Check for longitude at 0 and 180 degree	*
+ * L. Hinson/AWC    06/12       Fixed check to see if line is closed    *
  ***********************************************************************/
  {
     int   	    ii, ij, jj, kk, ier, txtlen, len, iera, ierb;
@@ -153,7 +154,7 @@ void sigamcld ( char *fhour, int nummcld, mcloud_t *ptrm, int itime[],
 	 * Check if the line is closed.
 	 */
 
-	 if ( G_DIFF ( ptr->lat[0], ptr->lat[ptr->npt -1] ) ||
+	 if ( G_DIFF ( ptr->lat[0], ptr->lat[ptr->npt -1] ) &&
 	      G_DIFF ( ptr->lon[0], ptr->lon[ptr->npt -1] ) ) {
 	     iclos = 1;
 	 }

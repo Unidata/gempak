@@ -81,3 +81,5 @@
 -72	! ENS_ and LYR_ functions cannot occur together.
 -73     ! Memory allocation failed.
 -74     ! Home point not on grid.
+-75	! LAYER !AS must be a level.
+-76	! Invalid vector used !AS.

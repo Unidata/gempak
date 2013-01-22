@@ -168,6 +168,8 @@ int main ( int argc, char **argv )
  *                              to reduce multi-points                  *
  * X.Guo/CWS            09/11   Adjusted the number of points needed to *
  *                              be copied from bounds                   *
+ * S. Jacobs/NCEP	10/12	Restored previous calculation of the	*
+ * 				number of points copied			*
  ***********************************************************************/
 {
     int 	nn, ii, jj, kk, ier, nextEl, curPos, nseg;
@@ -3268,6 +3270,8 @@ static void p2c_CloseSingleCntr ( int *npIn, float *xIn,  float *yIn,
  *                              intersection points in other func       * 
  * X.Guo/CWS		09/11   Adjusted the number of points needed to *
  *                              be copied from bounds                   *
+ * S. Jacobs/NCEP	10/12	Restored previous calculation of the	*
+ * 				number of points copied			*
  ***********************************************************************/
 { 
     int         ier, ii, jj, ncp, nint1, nint2, npol2, intvrtx;
@@ -3371,9 +3375,8 @@ static void p2c_CloseSingleCntr ( int *npIn, float *xIn,  float *yIn,
      if ( nint1 > nint2 ) {
             npol2 = nint1-nint2 + 1;
      } else {
-/*            npol2 = _areaP-nint2+nint1+1;
-*/
-             npol2 = nint2-nint1+1;
+            npol2 = _areaP-nint2+nint1+1;
+	    /* npol2 = nint2-nint1+1; */
      }
 
     /*

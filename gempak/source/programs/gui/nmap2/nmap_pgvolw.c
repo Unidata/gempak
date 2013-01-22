@@ -3684,6 +3684,7 @@ void pgvolw_createProd ( VG_DBStruct *vol, char **filter, char *text,
  * R. Tian/SAIC		 2/06	Add reading VAA wordind text		*
  * J. Wu/SAIC		04/06		add parameter in cst_wrap 	*
  * H. Zeng/SAIC		04/06	changed to use month index number	*
+ * S. Jacobs/NCEP	10/12	Removed NNNN and preceding blank line	*
  ***********************************************************************/
 {
     int   vg_class, vg_type, adjust_min;
@@ -4068,16 +4069,23 @@ void pgvolw_createProd ( VG_DBStruct *vol, char **filter, char *text,
               }
 
               strcat ( text, next_adv );
-              strcat ( text, "\n\n" );
+              /* strcat ( text, "\n\n" ); */
+              strcat ( text, "\n" );
 	 }
 	 else {
 
 	      strcat ( text, filter[14] );
-	      strcat ( text, "\n\n"    );
+              /* strcat ( text, "\n\n" ); */
+              strcat ( text, "\n" );
          }
     }
 
-    strcat ( text, "NNNN\n" );
+    /*
+     * Removed the NNNN and the preceding blank line at the request
+     * of NESDIS. Left the code here until it is definitely the 
+     * appropriate fix.
+     */
+    /* strcat ( text, "NNNN\n" ); */
 
 /*
  *  Wrap SIGMET to maximum line_len.

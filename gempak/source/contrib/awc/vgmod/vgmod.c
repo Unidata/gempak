@@ -28,6 +28,9 @@ void set_fonttype ( VG_DBStruct *el, int fonttype );
 void set_color ( VG_DBStruct *el, int major_color, int minor_color,
 		 int fill_color );
 
+void set_line ( VG_DBStruct *el, int old_vg_type,
+		 int old_line_type, int new_vg_type, int new_line_type );
+
 int in_fcsthrrange (VG_DBStruct *el, char *fcsthrrange_in);
 
 int timeValidOvrHrRange(char *value, int hour1, int hour2);
@@ -35,6 +38,7 @@ int timeValidOvrHrRange(char *value, int hour1, int hour2);
 int DoIt ( char *in_file, char *out_file, int vg_class, int vg_type,
 	   int obj_type, int major_color, int minor_color,
 	   int fill_color, int blocking, int fonttype, int delete, int gfa,
+	   int old_vg_type, int old_line_type, int new_vg_type, int new_line_type,
 	   char region, char *cycle_in, char *cycle_out, char *fcsthr_in, 
            char *fcsthrrange_in, char *fcsthr_out, char *status,
            char *areaType, int subtype );
@@ -73,6 +77,7 @@ void Usage ( void );
    set_blocking()   Sets blocking on or off on VGF object.
    set_fonttype()   Set fonttype to software or hardware on VGF object.
    set_color()      Set the major/minor/fill color on VGF object.
+   set_line()       Change a line object.
    DoIt()           Major function to sequentially go through each VGF object
                     and conditionally test for matches.
    Usage()          Print Usage Statement
@@ -83,7 +88,8 @@ void Usage ( void );
   S.W.Danz/AWC 8/98        Created                                         
   J. Lewis & L. Hinson/AWC 2006-2008 Add GFA match checking                                  
   L. Hinson/AWC            06/08     Documented 
-  L. Hinson/AWC            05/09     Add -g switch to remove non GFA objects                              
+  L. Hinson/AWC            05/09     Add -g switch to remove non GFA objects 
+  J. Lewis                 03/10     Add -l switch to change line type                             
  *****************************************************************************/
 
 int obj_match ( VG_DBStruct *el, int vg_class, int vg_type, int obj_type )
@@ -667,6 +673,62 @@ Log:  S. Danz/AWC 1998        Created
 
 /*==========================================================================*/
 
+/*==========================================================================*/
+
+void set_line ( VG_DBStruct *el, int old_vg_type, 
+		int old_line_type, int new_vg_type, int new_line_type )
+
+/***************************************************************************
+ set_line
+
+ This routine changes the vg type and line type for line objects.
+
+****************************************************************************/
+{
+     int	nn, ii, recsz;
+     VG_DBStruct tmp_el;
+	
+     nn = 0;
+     recsz = 0;
+
+     if (old_line_type == 0)
+	 return;
+
+     if ((el->hdr.vg_type == old_vg_type) && (el->elem.lin.info.lintyp == old_line_type)) {
+	    
+         nn = el->elem.lin.info.numpts;
+/*
+ *	Save off the lat/lon points.
+ */
+	 for(ii = 0; ii < nn; ii++) {
+  	     tmp_el.elem.lin.latlon[ii] = el->elem.lin.latlon [ii];
+             tmp_el.elem.lin.latlon[ii+nn] = el->elem.lin.latlon [ii+nn];
+	 }
+
+	 for(ii = 0; ii < nn; ii++) {
+             el->elem.spl.latlon[ii] = tmp_el.elem.lin.latlon [ii];
+             el->elem.spl.latlon[ii+nn] = tmp_el.elem.lin.latlon [ii+nn];
+	 }
+/*
+ *	Check the new line type and set attributes.
+ */
+	 switch (new_vg_type) {
+	     case SPLN_ELM:
+	         recsz = ( (sizeof(float) * 2 * nn) + sizeof(VG_HdrStruct) +
+                            sizeof(SpLineInfo) );
+		 el->hdr.recsz = recsz;
+		 el->hdr.vg_type = new_vg_type;
+		 el->elem.spl.info.spltyp = new_line_type;
+		 el->elem.spl.info.splwid = 2;
+		 el->elem.spl.info.splsiz = 0.3;
+
+	     break;
+	  }
+   
+	}
+}
+/***************************************************************************/
+
 int DoIt ( 
     char    *in_file, 
     char    *out_file, 
@@ -680,6 +742,10 @@ int DoIt (
     int     fonttype,
     int     delete,
     int     gfa,
+    int     old_vg_type,
+    int     old_line_type,
+    int     new_vg_type,
+    int     new_line_type,
     char    region,
     char    *cycle_in,
     char    *cycle_out,
@@ -716,12 +782,13 @@ int DoIt (
    color - via function set_color
    blocking - via function set_blocking
    fonttype - via function set_fonttype
+   line - via function set_line
    
  **
  Log:   S. Danz/AWC                1998       Created
         J. Lewis & L. Hinson/AWC   2006-2007  Modified for GFA
-        L. Hinson                  05/09      Add -g switch to remove non-GFA
-                                              objects
+        L. Hinson                  05/09      Add -g switch to remove non-GFA objects
+	J. Lewis                   03/2010    Add -l switch to change line type
 ******************************************************************************/
 {
     int         iret;
@@ -788,6 +855,8 @@ int DoIt (
                     set_color(&el, major_color, minor_color, fill_color);
                     set_blocking(&el, blocking);
                     set_fonttype(&el, fonttype);
+		    set_line(&el, old_vg_type, old_line_type, new_vg_type, new_line_type);
+
 		}
 
 		if ((match && !delete) || (!match && !gfa)) {
@@ -819,6 +888,7 @@ Log:   S. Danz/AWC                1998       Created
     printf("Usage: vgmod < -o vg_class:vg_type:obj_type [-c maj:min] [-b #]file [file...] ...>\n" );
     printf("       -o : Object to modify.  The : are required, however a\n");
     printf("            blank field matches all objects.\n" );
+    printf("       -l : Change vg type and line type of line objects.\n" );
     printf("       -c : Change color to maj:min:fill.  If a value is\n" );
     printf("            blank that part of the color remains unchanged.\n" );
     printf("       -b : Blocking (if applicable). 0 - off, 1 - on, -1 - Don't Change.\n" );
@@ -872,6 +942,10 @@ Log:    S. Danz/AWC                1998       Created
     int     action;
     int     result;
     int     gfa;
+    int     old_vg_type;
+    int     old_line_type;
+    int     new_vg_type;
+    int     new_line_type;
     char    cycle_in[4];
     char    cycle_out[4];
     char    fcsthr_in[10];
@@ -886,8 +960,12 @@ Log:    S. Danz/AWC                1998       Created
     char    tmp_name[PATH_MAX];
     char    areatype[25];
     FILE    *outfile;
-
+    
     gfa    = 0;
+    old_vg_type = 0;
+    old_line_type = 0;
+    new_vg_type = 0;
+    new_line_type = 0;
     action = 0;
     delete = 0;
     vg_class = vg_type = obj_type = -1;                
@@ -903,7 +981,7 @@ Log:    S. Danz/AWC                1998       Created
     subtype = 0;
     optind = 1;
     while (optind < argc) {
-        opt = getopt(argc, argv, ":o:t:y:h:r:g:a:s:p:b:c:d:f:z");
+        opt = getopt(argc, argv, ":o:l:t:y:h:r:g:a:s:p:b:c:d:f:z");
         switch (opt) {
             case 'o':
                 vg_class = vg_type = obj_type = -1;                
@@ -993,6 +1071,33 @@ Log:    S. Danz/AWC                1998       Created
                 sscanf(optarg, "%d", &fonttype);
             break;
 
+	    case 'l':
+		arg = optarg;
+
+		sep = strchr(arg, ':');
+		if (sep) *sep = '\0';
+		sscanf(arg, "%d", &old_vg_type);
+
+		if (sep) {
+		    arg = sep+1;
+		    sep = strchr(arg, ':');
+		    if (sep) *sep = '\0';
+		    sscanf(arg, "%d", &old_line_type);
+		}
+		if (sep) {
+		    arg = sep+1;
+                    sep = strchr(arg, ':');
+                    if (sep) *sep = '\0';
+		    sscanf(arg, "%d", &new_vg_type);
+		}
+		if (sep) {
+                    arg = sep+1;
+                    sep = strchr(arg, ':');
+                    if (sep) *sep = '\0';
+                    sscanf(arg, "%d", &new_line_type);
+                }
+            break;
+
             case 'c':
                 major_color = minor_color = -1;                
                 arg = optarg;
@@ -1042,6 +1147,10 @@ Log:    S. Danz/AWC                1998       Created
                             fonttype,
                             delete,
                             gfa,
+			    old_vg_type,
+			    old_line_type,
+			    new_vg_type,
+			    new_line_type,
 			    region,
                             cycle_in,
                             cycle_out,
@@ -1092,3 +1201,5 @@ Log:    S. Danz/AWC                1998       Created
 
     return(0);
 }
+
+

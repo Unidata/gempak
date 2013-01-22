@@ -38,11 +38,12 @@ C*                              DATA statement                          *
 C* D. Kidwell/NCEP	 4/03	Allow ' OCNL ' to define a range        *
 C* A. Hardy/NCEP	 8/03	Added check for '-OCNL'			*
 C* D. Kidwell/NCEP	 8/05	Allowed blank to separate intens range  *
+C* S. Jacobs/NCEP	 9/12	Check for MTN and reset the intensity	*
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 	INCLUDE		'afcmn.cmn'
 C*
-	LOGICAL		gotalt
+	LOGICAL		gotalt, mtnflg
 C*
 	PARAMETER	( NTIDS = 3 )
 	CHARACTER	tids ( NTIDS )*4
@@ -75,6 +76,7 @@ C
 	htot = RMISSD
 	fqot = RMISSD
 	tpot = RMISSD
+	mtnflg = .false.
 C
 C*	Scan no further than the first "like-type" group of this
 C*	layer in order to locate a frequency indicator.
@@ -122,6 +124,9 @@ C*	    Check whether the next group is an intensity indicator.
 C
 	    CALL AF_TBID ( fields ( ifptr ) ( 1 : lensf ( ifptr ) ),
      +		           dgot2, iertbd )
+	    IF  ( fields(ifptr)(1:lensf(ifptr)) .eq. 'MTN' )  THEN
+		mtnflg = .true.
+	    END IF
 	    IF ( ERMISS ( dgot2 ) ) THEN
 C
 C*	        Does the next "like-type" group consist of a hyphen or
@@ -241,6 +246,12 @@ C
 	    END IF
 	    ii = ii + 1
 	END DO
+C
+	IF  ( mtnflg )  THEN
+	    dgot = RMISSD
+	    hbot = RMISSD
+	    htot = RMISSD
+	END IF
 C
 	iret = 0
 C*

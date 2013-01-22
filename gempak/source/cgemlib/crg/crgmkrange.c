@@ -10,6 +10,7 @@
 static void crg_settca ( VG_DBStruct *el, int joffset, int elnum, int *iret );
 static void crg_setccf ( VG_DBStruct *el, int joffset, int elnum, int *iret );
 static void crg_setgfa ( VG_DBStruct *el, int joffset, int elnum, int *iret );
+static void crg_setsgwx ( VG_DBStruct *el, int joffset, int elnum, int *iret);
 
 /*  
  * Public functions  
@@ -53,6 +54,7 @@ void crg_mkRange ( VG_DBStruct *el, int joffset, int elnum, int *iret )
  * S. Danz		08/06	Fixed indexing into lat/lon for GFA	*
  * J. Wu/SAIC		07/07	build second range record for GFA box	*
  * L. Hinson/AWC        07/09   Revise SIGCCF_ELM to call crg_setccf    *
+ * L. Hinson/AWC        01/12   Add SGWX_ELM
  ***********************************************************************/
 {
     int		ier, np;
@@ -189,6 +191,12 @@ void crg_mkRange ( VG_DBStruct *el, int joffset, int elnum, int *iret )
 	    crg_setgfa ( el, joffset, elnum, &ier );
  	    
 	    break;
+
+        case SGWX_ELM:
+            
+            crg_setsgwx (el, joffset, elnum, &ier );
+            
+            break;
 
 	case TCA_ELM:
 
@@ -378,7 +386,6 @@ static void crg_setccf ( VG_DBStruct *el, int joffset, int elnum, int *iret )
   }    
 }
 
-/*====================================================================*/
 
 /*=====================================================================*/
 
@@ -500,6 +507,68 @@ static void crg_setgfa ( VG_DBStruct *el, int joffset, int elnum, int *iret )
 	crg_sarec ( elnum, indx, &ier );
     }
     
+}
+
+/*====================================================================*/
+
+static void crg_setsgwx ( VG_DBStruct *el, int joffset, int elnum, int *iret)
+/*************************************************************************
+ crg_setsgwx
+ This function sets the range record for a SGWX element.
+ Note: joffset is the offset to the element in WORK_FILE.
+ static void crg_setsgwx (el, joffset, elnum, iret )
+ Input parameters:
+ 	*el		VG_DBStruct	Pointer to VG record structure	
+ 	joffset		int		Offset to element in WORK_FILE	
+ 	elnum		int		Index of elem. in range arrary	
+ 									
+  Output parameters:							
+ 	*iret		int		Return code			
+ 					0 - Normal			
+ 					-3 - Range array is full	
+**
+  Log:
+  L. Hinson/AWC         01/12       initial coding
+*************************************************************************/
+{
+  int		ier, np, ii, indx, inout[1], npls;
+  float	lat[ MAXPTS ], lon[ MAXPTS ], xpl[1], ypl[1];
+  VG_DBStruct eltmp;
+  Boolean	buildSecondRec;
+  
+  np = el->elem.sgwx.info.npts;
+	    
+  for ( ii = 0; ii < np; ii++ ) {
+	lat[ ii ] = el->elem.sgwx.latlon [ ii ];
+	lon[ ii ] = el->elem.sgwx.latlon [ ii + np ];	    
+  }
+  crg_setltln ( elnum, joffset, np, lat, lon, &ier );
+  buildSecondRec = False;
+  xpl[0] = el->elem.sgwx.info.textlat;
+  if ( el->hdr.closed == 0 ) {
+    buildSecondRec = True;
+  } else {
+    npls = 1;
+    ypl[0] = el->elem.sgwx.info.textlon;
+    cgr_inpoly (sys_M, &np, lat, lon, sys_M, &npls, xpl, ypl, inout, &ier );
+    if (inout[ 0 ] == 0 ) {
+      buildSecondRec = True;
+    }
+  }
+  if ( buildSecondRec ) {
+    cds_sgwxtxt ( el, &eltmp, &ier );
+    crg_gassocrec( elnum, &indx, &ier );
+    if ( ier !=0 || indx < 0 ) {
+      crg_newinx( &indx, &ier );
+      if (ier < 0 ) {
+        *iret = -3;
+        return;
+      }
+      crg_setauxrec( indx, &ier );
+    }
+    crg_settxt ( &eltmp, joffset, indx, &ier);
+    crg_sarec ( elnum, indx, &ier );
+  }    
 }
 
 /*=====================================================================*/

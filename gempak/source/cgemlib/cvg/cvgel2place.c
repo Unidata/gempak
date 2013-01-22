@@ -1,10 +1,12 @@
 #include "cvgcmn.h"
+#include "proto_uka.h"
 
 static void cvg_ashregpl(Handle id, VG_DBStruct *el, int *iret);
 static void cvg_ccfpregpl(Handle id, VG_DBStruct *el, int *iret);
 static void cvg_circleregpl(Handle id, VG_DBStruct *el, int *iret);
 static void cvg_frontregpl(Handle id, VG_DBStruct *el, int *iret);
 static void cvg_gfaregpl(Handle id, VG_DBStruct *el, int *iret);
+static void cvg_sgwxregpl(Handle id, VG_DBStruct *el, int *iret);
 static void cvg_jetregpl(Handle id, VG_DBStruct *el, int *iret);
 static void cvg_lineregpl(Handle id, VG_DBStruct *el, int *iret);
 static void cvg_listregpl(Handle id, VG_DBStruct *el, int *iret);
@@ -21,6 +23,7 @@ static void cvg_checkgrp(Handle id, VG_DBStruct *el, int *iret);
 static void cvg_unregpl(Handle id, VG_DBStruct *el, int *iret);
 static void cvg_checkrefmatch(Handle obj, int grptyp, int grpnum, int *iret);
 static void cvg_checkobjmatch(Handle ref, int grptyp, int grpnum, int *iret);
+static void registerBarbsAndHashes (Handle id, VG_DBStruct *el);
 
 void cvg_el2place(int elpos, VG_DBStruct *el, int *iret)
 /*****************************************************************************
@@ -151,6 +154,10 @@ void cvg_el2place(int elpos, VG_DBStruct *el, int *iret)
 
         case GFA_ELM:
             cvg_gfaregpl(id, el, iret);
+        break;
+
+        case SGWX_ELM:
+            cvg_sgwxregpl(id, el, iret);
         break;
 
         case TCA_ELM:
@@ -508,6 +515,73 @@ static void cvg_gfaregpl(Handle id, VG_DBStruct *el, int *iret)
     }
 }
 
+static void cvg_sgwxregpl(Handle id, VG_DBStruct *el, int *iret)
+/*****************************************************************************
+ * cvg_sgwxregpl
+ * 
+ * Processes the given VG element for use in the currently active CMD and CAP 
+ * data structures.
+ *
+ * Input parameters:
+ *  id          Handle          CMD/CAP handle coresponding to the VG element
+ *  *el         VG_DBStruct     VG element to process for CMD/CAP
+ *
+ * Output parameters:
+ *  *iret       int             Return code
+ *                                 0 = Function successful
+ *
+ * Return value:
+ *  None
+ **
+ * Log:
+ * L. Hinson/AWC        01/12   Created
+ ****************************************************************************/
+{
+  int         np;
+  Handle      txt_id;
+  float       dx[MAXPTS*2], dy[MAXPTS*2];
+  VG_DBStruct txt_el;
+  int subtype;
+  txt_id = id + 1;
+  *iret = 0;
+  if (el->hdr.delete) {
+        cvg_unregpl(id, el, iret);
+        cvg_unregpl(txt_id, el, iret);
+  } else {
+    cvg_todev2(el, &np, dx, dy, iret);
+    if ( el->hdr.closed && np < MAXPTS*2 ) {
+            dx[np]=dx[0];
+            dy[np]=dy[0];
+            np++;       
+    }
+    cmd_osaddob(cvg_metadata, id, dx, dy, np, iret);
+    /* Get the text information and create a box to be placed. */
+    cds_sgwxtxt(el, &txt_el, iret);
+    if (*iret == 0) {
+       cvg_textregpl(txt_id, &txt_el, iret);
+       if (cvg_cap_by_group[GRPTYP_SGWX].enabled) {
+         cvg_subtyp(el, &subtype, iret);
+         if (cvg_cap_by_group[GRPTYP_SGWX].obj_type ==
+           txt_el.hdr.vg_type &&
+             (cvg_cap_by_group[GRPTYP_SGWX].obj_subtype == subtype ||
+              cvg_cap_by_group[GRPTYP_SGWX].obj_subtype == -1)) {
+           /* Determine additional conditions... */
+           cap_psaddpl(cvg_placements, txt_id, id,
+             cvg_cap_by_group[GRPTYP_SGWX].inside,
+             cvg_cap_by_group[GRPTYP_SGWX].both_sides,
+             cvg_cap_by_group[GRPTYP_SGWX].attempts,
+             cvg_cap_by_group[GRPTYP_SGWX].increment,
+             cvg_cap_by_group[GRPTYP_SGWX].offset,
+             IMMEDIATE,
+             cvg_cap_by_group[GRPTYP_SGWX].point_center, iret
+           );
+         }
+
+       }
+    }
+  }
+}
+
 
 static void cvg_jetregpl(Handle id, VG_DBStruct *el, int *iret)
 /*****************************************************************************
@@ -530,26 +604,114 @@ static void cvg_jetregpl(Handle id, VG_DBStruct *el, int *iret)
  * Log:
  * S.Danz/AWC           03/06   Created
  * S.Danz/AWC           07/06   Remove element(s) if marked deleted
+ * L. Hinson/AWC        01/12   Add barbs, text, and hash marks.
  ****************************************************************************/
 {
     int     np;
     float   dx[MAXPTS], dy[MAXPTS];
+    
 /*---------------------------------------------------------------------*/
 
     *iret = 0;
-
-    /*
-     * FIXME: Add the barbs, text, and hash marks!
-     */
+    /* idcount = id; */
+    
     if (el->hdr.delete) {
+        /* printf("Jet id=%d is flagged with delete\n",id);
+	printf("Number of barbs=%d\n", el->elem.jet.nbarb); */
         cvg_unregpl(id, el, iret);
+	/* While the jet barbs and hashes should technically be unregistered...
+	   there is a bug with the el->elem structure as it was not populated.
+	   See cvgdelet.c which calls cvg_rdhdr only to populate the header.
+	   Consequently, the number of barbs and number of hashes could be
+	   set to huge large numbers, causing problems with NMAP2 management
+	   of the jets and other software going into a long loop.
+	*/
+	/*
+        for (i = 0; i < el->elem.jet.nbarb; i++) {
+  	  if (el->elem.jet.nbarb > 20) break;
+          idcount++;
+          cvg_unregpl(idcount, el, iret);
+          idcount++;
+          cvg_unregpl(idcount, el, iret);
+        }
+        for (i = 0; i< el->elem.jet.nhash; i++) {
+	  if (el->elem.jet.nhash > 20) break;
+          idcount++;
+          cvg_unregpl(idcount, el, iret);
+ 
+        }
+        */
+	
     } else {
         cvg_todev2(el, &np, dx, dy, iret);
-
+        
         cmd_osaddob(cvg_metadata, id, dx, dy, np, iret);
+        if (*iret != 0) {
+          printf("Jet id=%d not registered\n",id);
+        }
+        registerBarbsAndHashes(id,el);        
     }
 }
 
+static void registerBarbsAndHashes (Handle id, VG_DBStruct *el) 
+{
+    VG_DBStruct barb_el, text_el, hash_el;
+    VG_DBStruct *new_el;
+    int i, idcount, iret;
+    iret = 0;
+    idcount = id+1;
+    /**********************************/
+    /* Now we tweak the jets, such that under the condition that
+       there are only hash marks for that jet are in the view
+       window, that we register [and plot] at least one wind barb.
+    */
+    /* alterBarbsAndHashes(el,new_el);*/
+    new_el = el;
+    
+    
+    /*******************************************/
+     /* Add Wind barb... */     
+    for (i = 0; i < new_el->elem.jet.nbarb; i++) {
+      barb_el.hdr.vg_type = BARB_ELM;
+      barb_el.elem.wnd.info.numwnd = 1;
+      barb_el.elem.wnd.info.size = new_el->elem.jet.barb[i].wnd.info.size;
+      barb_el.elem.wnd.data.spddir[0] = new_el->elem.jet.barb[i].wnd.data.spddir[0];
+      barb_el.elem.wnd.data.spddir[1] = new_el->elem.jet.barb[i].wnd.data.spddir[1];
+      barb_el.elem.wnd.data.latlon[0] = new_el->elem.jet.barb[i].wnd.data.latlon[0];
+      barb_el.elem.wnd.data.latlon[1] = new_el->elem.jet.barb[i].wnd.data.latlon[1]; 
+      cvg_vectregpl(idcount, &barb_el, &iret);
+      idcount++;
+
+      /* Add associative text with the barb... */
+      text_el.hdr.vg_type = SPTX_ELM;
+      text_el.hdr.delete = 0;
+      sprintf(text_el.elem.spt.text,"%s",new_el->elem.jet.barb[i].spt.text);
+      text_el.elem.spt.info.sztext = new_el->elem.jet.barb[i].spt.info.sztext;
+      text_el.elem.spt.info.ithw = new_el->elem.jet.barb[i].spt.info.ithw;
+      text_el.elem.spt.info.itxfn = new_el->elem.jet.barb[i].spt.info.itxfn;
+      text_el.elem.spt.info.ialign = new_el->elem.jet.barb[i].spt.info.ialign;
+      text_el.elem.spt.info.offset_x = new_el->elem.jet.barb[i].spt.info.offset_x;
+      text_el.elem.spt.info.offset_y = new_el->elem.jet.barb[i].spt.info.offset_y;
+      text_el.elem.spt.info.rotn = new_el->elem.jet.barb[i].spt.info.rotn;
+      text_el.elem.spt.info.sptxtyp = new_el->elem.jet.barb[i].spt.info.sptxtyp;
+      text_el.elem.spt.info.lat = new_el->elem.jet.barb[i].spt.info.lat;
+      text_el.elem.spt.info.lon = new_el->elem.jet.barb[i].spt.info.lon;
+      cvg_textregpl(idcount,&text_el,&iret);
+      idcount++;
+
+    }
+    for (i = 0; i< new_el->elem.jet.nhash; i++) {
+      hash_el.hdr.vg_type = HASH_ELM;
+      hash_el.elem.wnd.info.numwnd = 1;
+      hash_el.elem.wnd.info.size = new_el->elem.jet.hash[i].wnd.info.size;
+      hash_el.elem.wnd.data.spddir[0] = new_el->elem.jet.hash[i].wnd.data.spddir[0];
+      hash_el.elem.wnd.data.spddir[1] = new_el->elem.jet.hash[i].wnd.data.spddir[1];
+      hash_el.elem.wnd.data.latlon[0] = new_el->elem.jet.hash[i].wnd.data.latlon[0];
+      hash_el.elem.wnd.data.latlon[1] = new_el->elem.jet.hash[i].wnd.data.latlon[1];
+      cvg_vectregpl(idcount, &hash_el, &iret);
+      idcount++;
+    }
+}
 
 static void cvg_lineregpl(Handle id, VG_DBStruct *el, int *iret)
 /*****************************************************************************
@@ -1029,12 +1191,15 @@ static void cvg_vectregpl(Handle id, VG_DBStruct *el, int *iret)
  * Log:
  * S.Danz/AWC           03/06   Created
  * S.Danz/AWC           07/06   Remove element(s) if marked deleted
+ * L. Hinson/AWC        01/12   Fixed math and logic for registering hashes
+ *                              and barbs on a jet.
  ****************************************************************************/
 {
     int     np;
     float   px[2], py[2], dx[MAXPTS], dy[MAXPTS];
     float   szmk, sztx, szwb, szws, szab, szah;
     float   rx, ry, angle, srotn, nrotn, speed, linelen;
+    float   offsetx, offsety;
 /*---------------------------------------------------------------------*/
 
     *iret = 0;
@@ -1078,19 +1243,55 @@ static void cvg_vectregpl(Handle id, VG_DBStruct *el, int *iret)
         ry = el->elem.wnd.data.latlon[1];
         gp_azdr (&srotn, &rx, &ry, &nrotn, iret );
         angle = (el->elem.wnd.data.spddir[1] - nrotn) * DTR;
-
+	
         if (el->hdr.vg_type == HASH_ELM) {
             /* Hash marks extend to both sides of the point */
+	    /* Here we recompute the angle, since the spddir[1] sub-element
+	       is the direction of the vector from, and not to.  The previous
+	       angle cacluation subtracted the rotation, which messed up the
+	       math calculations*/
+            angle = (el->elem.wnd.data.spddir[1] + nrotn) * DTR;
             px[0] = dx[0] - cos(angle) * linelen/2.0;
             py[0] = dy[0] - sin(angle) * linelen/2.0;
             px[1] = dx[0] + cos(angle) * linelen/2.0;
             py[1] = dy[0] + sin(angle) * linelen/2.0;
         } else {
-            /* Everything else starts at the point and extends */
-            px[0] = dx[0];
-            py[0] = dy[0];
-            px[1] = dx[0] + cos(angle) * linelen;
-            py[1] = dy[0] + sin(angle) * linelen;
+            if (el->hdr.vg_type == BARB_ELM) {
+	      /* Here we recompute the angle, since the spddir[1] sub-element
+	       is the direction of the vector from, and not to.  The previous
+	       angle cacluation subtracted the rotation, which messed up the
+	       math calculations*/
+              angle = (el->elem.wnd.data.spddir[1] + nrotn) * DTR;
+              /* Here we offset the Windbarb by 10 pixels displacement
+	         from its original location. This is so that we
+		 register a line tangent to the flags of the barb, 
+		 rather than a line tangent to the jet itself which has
+		 already been registered.
+		 
+		 NOTE:  This modification is specific to wind barbs
+		 on the jet. 
+		 		 
+		 If we are in the southern
+		 hemisphere, we multiply these offsets by -1.
+	      */
+		 
+              offsetx = cos(angle)*10;
+              offsety = sin(angle)*10;
+              if (rx < 0) {
+                offsetx *= -1.0;
+                offsety *= -1.0;
+              }              
+              px[0] = dx[0] + offsetx - sin(angle) * linelen;
+              py[0] = dy[0] + offsety + cos(angle) * linelen;
+              px[1] = dx[0] + offsetx + sin(angle) * linelen;
+              py[1] = dy[0] + offsety - cos(angle) * linelen;
+            } else {
+              /* Everything else starts at the point and extends */
+              px[0] = dx[0];
+              py[0] = dy[0];
+              px[1] = dx[0] + cos(angle) * linelen;
+              py[1] = dy[0] + sin(angle) * linelen;
+            }
         }
 
         cmd_osaddob(cvg_metadata, id, px, py, 2, iret);

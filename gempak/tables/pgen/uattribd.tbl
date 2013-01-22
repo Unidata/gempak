@@ -385,3 +385,11 @@ CLASS_MET  TCTRK_ELM  -99  0   0    0     -99
 !default tcb, not used at the moment
 !                         MAJ MIN  WIDTH  NEWSUBT
 CLASS_MET  TCBKL_ELM  -99  0   0    0     -99
+!                       SMTH MAJ MIN   LINE LINE LINE  ARRW TEXT TEXT TEXT TEXT TEXT  GRP(23 characters maximum)
+!                            HI  LO     ELM TYPE WIDTH SIZE SIZE FONT ITHW WDTH ALGN
+CLASS_MET  SGWX_ELM -99   0  1   1      1     1   1     1.0  1.0  2    1   1    0    LABEL    ! 
+CLASS_MET  SGWX_ELM   0   2  5   5      1     5   3     0.5  0.90 2    1   1    0    LABEL    ! TURB
+CLASS_MET  SGWX_ELM   1   2  15  15     20    3   2     0.5  0.70 2    1   1    0    LABEL    ! Clouds
+CLASS_MET  SGWX_ELM   2   2  15  15     20    3   2     0.5  0.70 2    1   1    0    LABEL    ! ICE/TURB
+CLASS_MET  SGWX_ELM   3   0  2   2      0     0   0     0.0  0.70 2    2   1    0    LABEL    ! SYMBOL
+!

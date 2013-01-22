@@ -44,7 +44,7 @@ DOM_build		v2-0.8.1
 
 #  netCDF used by many programs.
 #hdf5_build		v1.8.0
-netcdf_compile		v3.6.2
+netcdf_compile		v4.1.2
 
 #  JasPer and PNG libraries used only by nagrib2!
 jasper_compile		v1.900.1

@@ -29,6 +29,8 @@ COBJS = \
 	$(ALIB)(cdsscal.o) \
 	$(ALIB)(cdsscol.o) \
 	$(ALIB)(cdssfill.o) \
+	$(ALIB)(cdssgwx.o) \
+	$(ALIB)(cdssgwxtxt.o) \
 	$(ALIB)(cdssig.o) \
 	$(ALIB)(cdssymb.o) \
 	$(ALIB)(cdstc.o) \

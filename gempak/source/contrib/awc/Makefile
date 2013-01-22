@@ -6,7 +6,7 @@
 SUBDIRS = \
 	airmet_bufrvgf  airmet_vgfbufr \
 	gdmlev gpmxplt gprcm  \
-	gpanot  gpltln  vgappend vggrep  vgmod
+	gpanot  gpltln  vgappend vggrep  vgmod vgToSGWX
 
 all :
 	@for dir in NODIR $(SUBDIRS); do \

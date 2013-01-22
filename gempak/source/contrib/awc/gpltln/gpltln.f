@@ -34,6 +34,9 @@ C* M. Li/SAIC		11/03	Added color bar for images		*
 C* T. Piper/SAIC	08/04	Added gg_scal and mscale		*
 C* T. Piper/SAIC	07/05	Added cplus variable			*
 C* T. Piper/SAIC        01/08   Added GD_INIT; removed from IN_BDTA     *
+C* L. Hinson/AWC        11/11   Added CTB_PFREAD  and CES_GTRTBL to load*
+C*                              the prefs table and group table         *
+C*                              Done to enable placement, if requested  *
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 C*
@@ -57,6 +60,22 @@ C*  Initialize user interface and graphics.
 C
 	CALL IP_INIT  ( respnd, iperr )
 	IF  ( iperr .ne. 0 )  THEN
+	    CALL ER_WMSG  ( 'GPLTLN', -1, ' ', ier )
+	    CALL SS_EXIT
+	END IF
+C
+C*	Initialize preferences table.
+C
+	CALL CTB_PFREAD  ( iret )
+	IF  ( iret .ne. 0 )  THEN
+	    CALL ER_WMSG  ( 'GPLTLN', -1, ' ', ier )
+	    CALL SS_EXIT
+	END IF
+C
+C*	Initialize group id table
+C
+	CALL CES_GTRTBL  ( iret )
+	IF  ( iret .ne. 0 )  THEN
 	    CALL ER_WMSG  ( 'GPLTLN', -1, ' ', ier )
 	    CALL SS_EXIT
 	END IF

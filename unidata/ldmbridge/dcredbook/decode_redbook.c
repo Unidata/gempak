@@ -296,7 +296,7 @@ if(strlen(outfilenm) > 0)
 
    tempdev = (char *)malloc( strlen(P_tmpdir) + strlen(templstr) + 1);
    sprintf(tempdev, "%s%s\0",P_tmpdir,templstr);
-   mktemp ( tempdev );
+   mkstemp ( tempdev );
 
    sprintf(outdev,"%s|%s\0",DEV,tempdev);
    if(optparms != NULL) strcat(outdev,optparms);

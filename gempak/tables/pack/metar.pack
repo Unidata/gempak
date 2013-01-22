@@ -13,6 +13,7 @@
 !D. Kidwell  	 5/98		Change WNUM min; add CEIL          
 !D. Kidwell  	 1/99		Add P01I; change max for P03I and SNOW
 !A. Hardy/GSC    4/99		Changed accuracy for VSBY from .1 to .01
+!S. Jacobs/NCEP	 8/12		Added SNEW for new snowfall
 !				
 !
 PMSL       880.       1080.       .1
@@ -44,3 +45,4 @@ T6XC	  -100.         60.      .1
 T6NC      -100.         60.      .1
 CEIL         0.        800.      1.
 P01I         0.          5.1     .01
+SNEW	     0.	       254.0	 1.

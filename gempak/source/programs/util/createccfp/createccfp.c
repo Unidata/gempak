@@ -13,7 +13,7 @@ int main ( int argc, char **argv )
  * createccfp YYMMDD/HHHH file1 file2 file3 				*
  *									*
  * CCF VGF forecast filenames are assumed to be in order of forecast	*
- * hours 2, 4 and 6.							*
+ * hours 4, 6 and 8.							*
  *									*
  * The output ASCII information is sent to standard output.		*
  *									*
@@ -38,6 +38,7 @@ int main ( int argc, char **argv )
  * L. Hinson/AWC        07/09   Add support for High/Med coverage lines *
  *                              Write coverage value of 1 or 2 on Lines *
  *                              Drop extra read for separate SPTX elem. *
+ * L. Hinson/AWC        11/12   Revised for 4, 6, 8 hour forecast       *
  ***********************************************************************/
 {
 int         ii, jj, nt, np, more, pagflg, flag, ier;
@@ -80,7 +81,7 @@ FILE	    *fptr;
     ti_ctoi ( cycle_time, idtarr, &ier, strlen(cycle_time) );
     printf ( "CCFP %4d%02d%02d_%02d00 ", 
        	     idtarr[0], idtarr[1], idtarr[2], idtarr[3] );
-    mins = (nt-1)*120;
+    mins = (nt-1)*120 + 120;
     ti_addm ( idtarr, &mins, idtarr, &ier );
     printf ( "%4d%02d%02d_%02d00",
 	     idtarr[0], idtarr[1], idtarr[2], idtarr[3] );

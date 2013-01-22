@@ -56,6 +56,7 @@ void ces_set ( int subtyp, VG_DBStruct *el, int *iret )
  * T. Piper/SAIC	12/05	redone for new Sewtting_t structure	*
  * T. Piper/SAIC	12/05	fixed bug where splcol not set from el	*
  * B. Yin/SAIC		12/05	add line width for GFA			*
+ * L. Hinson/AWC        01/12   Add CLASS_MET->SGWX_ELM                 *
  ***********************************************************************/
 {
     char        grp[4], logstr[10], group_name[20], widthStr[32];
@@ -201,7 +202,7 @@ void ces_set ( int subtyp, VG_DBStruct *el, int *iret )
 
       case SIGCCF_ELM:
 	break;
-
+      
       case LIST_ELM:
 	set[indx].subtyp 	   = el->elem.lst.info.subtyp;
 	set[indx].info.lst->subtyp = el->elem.lst.info.subtyp;
@@ -269,6 +270,13 @@ void ces_set ( int subtyp, VG_DBStruct *el, int *iret )
 
 	break;
 
+      case SGWX_ELM:
+        set[indx].info.sgwx->lineelm = el->elem.sgwx.info.lineelm;
+        set[indx].info.sgwx->linetype = el->elem.sgwx.info.linetype;
+        set[indx].info.sgwx->linewidth = el->elem.sgwx.info.linewidth;
+	set[indx].info.sgwx->szarrow = el->elem.sgwx.info.szarrow;
+        break;
+	
       case TCA_ELM:
 	break;
 

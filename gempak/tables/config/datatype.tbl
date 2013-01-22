@@ -206,6 +206,8 @@
 !* S. Jacobs/NCEP	 5/12	Added parallel hwrf and ghm		*
 !* S. Jacobs/NCEP	 5/12	Added all ESTOFS related models		*
 !* L. Hinson/AWC	 6/12	Added ASDI				*
+!* G.McFadden/IMSG	 7/12	Added OAMBG1_HI, OAMBG2_HI, OAMBG3_HI,	*
+!*                              and OAMBG4_HI				*
 !* M. James/Unidata	 8/12   Added RAP; Preserved RUC entries        *
 !************************************************************************
 !
@@ -545,3 +547,19 @@ G13-4KM_IR   $SAT/GOES-13/4km/IR       IR_YYYYMMDD_HHNN                         
 G13-4KM_3.9  $SAT/GOES-13/4km/3.9      3.9_YYYYMMDD_HHNN                                CAT_NIL  SCAT_NIL   10   2880     -1      OFF/0/0
 SUPERNAT_IR  $SUPER_NATIONAL_IR        IR_YYYYMMDD_HHNN                                 CAT_NIL  SCAT_NIL   10   2880     -1      OFF/0/0
 NHEMMULTI_IR $NHEMMULTI_IR             IR_YYYYMMDD_HHNN                                 CAT_NIL  SCAT_NIL   10   2880     -1      OFF/0/0
+OAMBG1_HI    $MSCDT/oscat_hi_ambig1    YYYYMMDDHHNN.oscat                               CAT_MSC  SCAT_NIL   -1   1440     60 OFF/0/0                    4
+OAMBG2_HI    $MSCDT/oscat_hi_ambig2    YYYYMMDDHHNN.oscat                               CAT_MSC  SCAT_NIL   -1   1440     60 OFF/0/0                    4
+OAMBG3_HI    $MSCDT/oscat_hi_ambig3    YYYYMMDDHHNN.oscat                               CAT_MSC  SCAT_NIL   -1   1440     60 OFF/0/0                    4
+OAMBG4_HI    $MSCDT/oscat_hi_ambig4    YYYYMMDDHHNN.oscat                               CAT_MSC  SCAT_NIL   -1   1440     60 OFF/0/0                    4
+ESTOFS_SE    $MODEL/estofs             estofsse_YYYYMMDDHHfFFF                          CAT_GRD  SCAT_FCT   -1     -1     -1 OFF/0/0                    4
+ESTOFS_NE    $MODEL/estofs             estofsne_YYYYMMDDHHfFFF                          CAT_GRD  SCAT_FCT   -1     -1     -1 OFF/0/0                    4
+ESTOFS_GM    $MODEL/estofs             estofsgom_YYYYMMDDHHfFFF                         CAT_GRD  SCAT_FCT   -1     -1     -1 OFF/0/0                    4
+ESTOFS_PR    $MODEL/estofs             estofspr_YYYYMMDDHHfFFF                          CAT_GRD  SCAT_FCT   -1     -1     -1 OFF/0/0                    4
+ESTOFS_SRGSE $MODEL/estofs             estofsse_surge_YYYYMMDDHH                        CAT_GRD  SCAT_FCT   -1     -1     -1 OFF/0/0                    4
+ESTOFS_TIDSE $MODEL/estofs             estofsse_tides_YYYYMMDDHH                        CAT_GRD  SCAT_FCT   -1     -1     -1 OFF/0/0                    4
+ESTOFS_SRGNE $MODEL/estofs             estofsne_surge_YYYYMMDDHH                        CAT_GRD  SCAT_FCT   -1     -1     -1 OFF/0/0                    4
+ESTOFS_TIDNE $MODEL/estofs             estofsne_tides_YYYYMMDDHH                        CAT_GRD  SCAT_FCT   -1     -1     -1 OFF/0/0                    4
+ESTOFS_SRGGM $MODEL/estofs             estofsgom_surge_YYYYMMDDHH                       CAT_GRD  SCAT_FCT   -1     -1     -1 OFF/0/0                    4
+ESTOFS_TIDGM $MODEL/estofs             estofsgom_tides_YYYYMMDDHH                       CAT_GRD  SCAT_FCT   -1     -1     -1 OFF/0/0                    4
+ESTOFS_SRGPR $MODEL/estofs             estofspr_surge_YYYYMMDDHH                        CAT_GRD  SCAT_FCT   -1     -1     -1 OFF/0/0                    4
+ESTOFS_TIDPR $MODEL/estofs             estofspr_tides_YYYYMMDDHH                        CAT_GRD  SCAT_FCT   -1     -1     -1 OFF/0/0                    4

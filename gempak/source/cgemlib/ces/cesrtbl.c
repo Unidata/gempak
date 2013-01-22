@@ -76,6 +76,7 @@ void ces_rtbl ( int *iret )
  * L. Hinson/AWC        07/09   Add color, fills, linetype, szarrow,    *
  *                              text size, font, hw, width, alignment,  *
  *                              and text Layout to CCF                  *
+ * L. Hinson/AWC        01/12   Add CLASS_MET -> SGWX_ELM               *
  ***********************************************************************/
 {
     char	tstr[256], vg_classstr[64], vg_typestr[64], tmpstr[256];
@@ -717,6 +718,23 @@ void ces_rtbl ( int *iret )
                            set[jj].info.gfa->textLayout,
 			   set[jj].grp_typ );
 		}
+                else if ( strcmp(vg_typestr, "SGWX_ELM") == 0 ) {
+                  set[jj].vg_type = SGWX_ELM;
+                  G_MALLOC(set[jj].info.sgwx, SgwxAttr, one, "set[jj].info.sgwx");
+                  sscanf(tstr, "%*s %*s %d %d %d %d %d %d %d %f %f %d %d %d %d %s",
+                    &(set[jj].subtyp), &(set[jj].smooth),
+                    &(set[jj].maj_col), &(set[jj].min_col),
+                    &(set[jj].info.sgwx->lineelm),
+                    &(set[jj].info.sgwx->linetype),
+                    &(set[jj].info.sgwx->linewidth),
+                    &(set[jj].info.sgwx->szarrow),
+                    &(set[jj].info.sgwx->info.sztext),
+                    &(set[jj].info.sgwx->info.itxfn),
+                    &(set[jj].info.sgwx->info.ithw),
+                    &(set[jj].info.sgwx->info.iwidth),
+                    &(set[jj].info.sgwx->info.ialign),
+                    set[jj].grp_typ );
+                }
 		else if ( strcmp(vg_typestr, "TCA_ELM") == 0 ) {
 		    set[jj].vg_type = TCA_ELM;
 		    G_MALLOC(set[jj].info.tca, TcaInfo, one, "set[jj].info.tca");

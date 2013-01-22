@@ -8,7 +8,7 @@
 #include "profiler.h"
 #include "proto_func.h"
 
-void *
+sta_struct *
 decode_rass (int cdfid, long miss, int *iret)
 {
   int ndims, nvars, natts, nunlim;

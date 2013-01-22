@@ -199,6 +199,8 @@
 ! G. McFadden/IMSG	 7/11	Added SGWHC
 ! G. McFadden/IMSG	 1/12	Added OSCT_HI
 ! L. Hinson/AWC          5/12   Added ASDI_H, ASDI_T
+! G. McFadden/IMSG       7/12   Added OAMBG1_HI, OAMBG2_HI, OAMBG3_HI,
+!                               and OAMBG4_HI
 !
 !-------------------------------------------------------------------------
 !
@@ -1699,3 +1701,87 @@ FLAG Time                     1
 FLAG County/ Zone Name        0
 FLAG Immediate Cause          0
 FLAG Outline                  0
+ALIAS OAMBG1_HI
+TYPE Skip value               1//5
+TYPE Time Stamp Interval      1/31/30
+LINE 0.00/1
+TYPE Wind Speed 1             1/4;31/6
+ARRW .2/.4/1/5
+TYPE Wind Speed 2             1/4;31/12
+TYPE Wind Speed 3             1/4;31/17
+TYPE Wind Speed 4             1/4;31/23
+TYPE Wind Speed 5             1/4;31/27
+TYPE Wind Speed 6             1/4;31/33
+TYPE Wind Speed 7             1/4;31/42
+TYPE Wind Speed 8             1/4;31/48
+TYPE Wind Speed 9             1/4;31/56
+TYPE Wind Speed 10            1/4;31/63
+TYPE Wind Speed 11            1/4;31/74
+TYPE Wind Speed 12            1/4;31/150
+FLAG Rain Flag                1
+FLAG Use 2nd color for Rain   1
+FLAG Plot circles for Rain    1
+!
+ALIAS OAMBG2_HI
+TYPE Skip value               1//5
+TYPE Time Stamp Interval      1/31/30
+LINE 0.00/1
+TYPE Wind Speed 1             1/5;31/6
+ARRW .2/.4/1/5
+TYPE Wind Speed 2             1/5;31/12
+TYPE Wind Speed 3             1/5;31/17
+TYPE Wind Speed 4             1/5;31/23
+TYPE Wind Speed 5             1/5;31/27
+TYPE Wind Speed 6             1/5;31/33
+TYPE Wind Speed 7             1/5;31/42
+TYPE Wind Speed 8             1/5;31/48
+TYPE Wind Speed 9             1/5;31/56
+TYPE Wind Speed 10            1/5;31/63
+TYPE Wind Speed 11            1/5;31/74
+TYPE Wind Speed 12            1/5;31/150
+FLAG Rain Flag                1
+FLAG Use 2nd color for Rain   1
+FLAG Plot circles for Rain    1
+!
+ALIAS OAMBG3_HI
+TYPE Skip value               1//5
+TYPE Time Stamp Interval      1/31/30
+LINE 0.00/1
+TYPE Wind Speed 1             1/6;31/6
+ARRW .2/.4/1/5
+TYPE Wind Speed 2             1/6;31/12
+TYPE Wind Speed 3             1/6;31/17
+TYPE Wind Speed 4             1/6;31/23
+TYPE Wind Speed 5             1/6;31/27
+TYPE Wind Speed 6             1/6;31/33
+TYPE Wind Speed 7             1/6;31/42
+TYPE Wind Speed 8             1/6;31/48
+TYPE Wind Speed 9             1/6;31/56
+TYPE Wind Speed 10            1/6;31/63
+TYPE Wind Speed 11            1/6;31/74
+TYPE Wind Speed 12            1/6;31/150
+FLAG Rain Flag                1
+FLAG Use 2nd color for Rain   1
+FLAG Plot circles for Rain    1
+!
+ALIAS OAMBG4_HI
+TYPE Skip value               1//5
+TYPE Time Stamp Interval      1/31/30
+LINE 0.00/1
+TYPE Wind Speed 1             1/7;31/6
+ARRW .2/.4/1/5
+TYPE Wind Speed 2             1/7;31/12
+TYPE Wind Speed 3             1/7;31/17
+TYPE Wind Speed 4             1/7;31/23
+TYPE Wind Speed 5             1/7;31/27
+TYPE Wind Speed 6             1/7;31/33
+TYPE Wind Speed 7             1/7;31/42
+TYPE Wind Speed 8             1/7;31/48
+TYPE Wind Speed 9             1/7;31/56
+TYPE Wind Speed 10            1/7;31/63
+TYPE Wind Speed 11            1/7;31/74
+TYPE Wind Speed 12            1/7;31/150
+FLAG Rain Flag                1
+FLAG Use 2nd color for Rain   1
+FLAG Plot circles for Rain    1
+!

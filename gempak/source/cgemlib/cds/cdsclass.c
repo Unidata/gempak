@@ -27,6 +27,7 @@ void cds_class ( char *vg_classstr, const char *vg_typestr,
  * T. Piper/SAIC	12/05	Created					*
  * T. Piper/SAIC	12/05   redone with new Setting_t structure     *
  * m.gamazaychikov/SAIC	06/07	Added TCB, TCE, and TCT elements	*
+ * L. Hinson/AWC        01/12   Add SGWX Element                        *
  ***********************************************************************/
 {
     int		ier1, loglev;
@@ -139,6 +140,8 @@ void cds_class ( char *vg_classstr, const char *vg_typestr,
 	    *vg_type = JET_ELM;
 	else if (strcmp(vg_typestr, "GFA_ELM") == 0)
 	    *vg_type = GFA_ELM;
+	else if (strcmp(vg_typestr, "SGWX_ELM") == 0)
+	    *vg_type = SGWX_ELM;
 	else if (strcmp(vg_typestr, "TCA_ELM") == 0)
 	    *vg_type = TCA_ELM;
 	else if (strcmp(vg_typestr, "TCERR_ELM") == 0)

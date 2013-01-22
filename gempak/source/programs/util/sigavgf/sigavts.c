@@ -48,12 +48,14 @@ void sigavts ( char *fhour, int numstm, storm_t *ptrs, int numvlr,
  * M. Li/SAIC	     1/05	Added chlvl				*
  * S. Danz/AWC      07/06	Switched to new cvg_writeD function 	*
  * J. Lewis/AWC     11/07       Modified text font and font hw/sw flag  *
+ * L. Hinson/AWC    09/12       Enable Radiation Symbol Text Label      *
  ***********************************************************************/
  {
     int   	    ii, ij, ier, txtlen, len;
     FILE  	    *fptr;
     storm_t         *ptr; 
     volrad_t        *ptr2;
+    char            *ptr_char, *ptr_start;
 
     int		    numerr, leverr, wflg, tmptm, gpnum; 
     int             sizrec, start, iend;
@@ -308,95 +310,103 @@ void sigavts ( char *fhour, int numstm, storm_t *ptrs, int numvlr,
 	 start = sizrec + start;
 
         /*
-         * Assemble the volcano text string. 
+         * Assemble the volcano/radiation text string. 
          */
-
-	 if ( volcano ) {
-
-	     volstr[0] = '\0';
-	     tmplat = ptr2->lat;
-             if (  tmplat > 0.00F ) {
-	         strcpy ( ltn, "N" );
-	     }
-	     else if ( tmplat == 0.00F ) {
-	         strcpy ( ltn, " " );
-	     }
-	     else {
-	         tmplat = -1.0F * ptr2->lat;
-	         strcpy ( ltn, "S" );
-	     }
-	     tmplon =  ptr2->lon;
-             if (  tmplon > 0.00F ) {
-	         strcpy ( lne, "E" );
-	     }
-             else if (  tmplon > 0.00F ) {
-	         strcpy ( lne, " " );
-	     }
-	     else {
-	         tmplon = -1.0F * ptr2->lon;
-	         strcpy ( lne, "W" );
-	     }
-	     sprintf ( volstr,"%s\n%3.1f%s %4.1f%s", ptr2->name,
-	               tmplat, ltn, tmplon, lne ); 
-             cst_lstr ( volstr, &txtlen, &ier);
-
-	    /* 
-	     * Fill in volcano TEXT header information. 
-	     */
-
-             sizrec = (int)( sizeof( VG_HdrStruct ) + sizeof( SpTextInfo ) ) 
-				+ txtlen + 1;
-
-             el.hdr.delete   = 0;
-             el.hdr.vg_type  = SPTX_ELM;
-             el.hdr.vg_class = CLASS_TEXT;
-             el.hdr.maj_col  = 31;
-             el.hdr.min_col  = 31;
-             el.hdr.smooth   = 0;
-             el.hdr.version  = 0;
-             el.hdr.filled   = 0;
-             el.hdr.closed   = 0;
-             el.hdr.recsz    = sizrec; 
-             el.hdr.grptyp   = grpch;
-             el.hdr.grpnum   = gpnum;
-             el.hdr.range_min_lat = ptr2->lat;
-             el.hdr.range_min_lon = ptr2->lon;
-             el.hdr.range_max_lat = ptr2->lat;
-             el.hdr.range_max_lon = ptr2->lon;
-    
- 	    /* 
-	     * Fill in volcano TEXT element information. 
-	     */
-
-	     el.elem.spt.info.sptxtyp  = 3;
-	     el.elem.spt.info.turbsym  = 0;
-	     el.elem.spt.info.sztext   = 1.0F;
-	     el.elem.spt.info.itxfn    = 2;
-	     el.elem.spt.info.iwidth   = 1;
-	     el.elem.spt.info.rotn     = 0.0F;
-	     el.elem.spt.info.ialign   = 0;
-	     el.elem.spt.info.offset_x = 0;
-	     el.elem.spt.info.offset_y = -5;
-	     el.elem.spt.info.ithw     = 1;
-	     el.elem.spt.info.txtcol   = 5;
-	     el.elem.spt.info.filcol   = 5;
-	     el.elem.spt.info.lincol   = 5;
-	     el.elem.spt.info.lat      = ptr2->lat;
-	     el.elem.spt.info.lon      = ptr2->lon;
-	     strcpy ( el.elem.spt.text, volstr );
-
-  	    /* 
-	     * Write storm TEXT element information.
-	     */
-
-             cvg_writeD ( &el, start, sizrec, fptr, &ier);
-
-	    /* 
-	     * Advance pointer in link list and increment 'start'.
-	     */
-
-	     start = sizrec + start;
+	 
+	 volstr[0] = '\0';
+	 tmplat = ptr2->lat;
+         if (  tmplat > 0.00F ) {
+	     strcpy ( ltn, "N" );
 	 }
+	 else if ( tmplat == 0.00F ) {
+	     strcpy ( ltn, " " );
+	 }
+	 else {
+	     tmplat = -1.0F * ptr2->lat;
+	     strcpy ( ltn, "S" );
+	 }
+	 tmplon =  ptr2->lon;
+         if (  tmplon > 0.00F ) {
+	     strcpy ( lne, "E" );
+	 }
+         else if (  tmplon > 0.00F ) {
+	     strcpy ( lne, " " );
+	 }
+	 else {
+	     tmplon = -1.0F * ptr2->lon;
+	     strcpy ( lne, "W" );
+	 }
+         if (! volcano) {
+           /* Replace trailing "_" in Radiation symbol with space...*/
+           ptr_start = ptr2->name;
+           ptr_char = &ptr_start[strlen(ptr2->name)];
+           while ( ptr_char > ptr_start && strchr("_", *(ptr_char - 1)) != NULL ) {
+             ptr_char--;
+    
+           }
+           *ptr_char = '\0';
+         }
+	 sprintf ( volstr,"%s\n%3.1f%s %4.1f%s", ptr2->name,
+	           tmplat, ltn, tmplon, lne ); 
+         cst_lstr ( volstr, &txtlen, &ier);
+
+	/* 
+	 * Fill in volcano TEXT header information. 
+	 */
+
+         sizrec = (int)( sizeof( VG_HdrStruct ) + sizeof( SpTextInfo ) ) 
+			    + txtlen + 1;
+
+         el.hdr.delete   = 0;
+         el.hdr.vg_type  = SPTX_ELM;
+         el.hdr.vg_class = CLASS_TEXT;
+         el.hdr.maj_col  = 31;
+         el.hdr.min_col  = 31;
+         el.hdr.smooth   = 0;
+         el.hdr.version  = 0;
+         el.hdr.filled   = 0;
+         el.hdr.closed   = 0;
+         el.hdr.recsz    = sizrec; 
+         el.hdr.grptyp   = grpch;
+         el.hdr.grpnum   = gpnum;
+         el.hdr.range_min_lat = ptr2->lat;
+         el.hdr.range_min_lon = ptr2->lon;
+         el.hdr.range_max_lat = ptr2->lat;
+         el.hdr.range_max_lon = ptr2->lon;
+
+ 	/* 
+	 * Fill in volcano TEXT element information. 
+	 */
+
+	 el.elem.spt.info.sptxtyp  = 3;
+	 el.elem.spt.info.turbsym  = 0;
+	 el.elem.spt.info.sztext   = 1.0F;
+	 el.elem.spt.info.itxfn    = 2;
+	 el.elem.spt.info.iwidth   = 1;
+	 el.elem.spt.info.rotn     = 0.0F;
+	 el.elem.spt.info.ialign   = 0;
+	 el.elem.spt.info.offset_x = 0;
+	 el.elem.spt.info.offset_y = -5;
+	 el.elem.spt.info.ithw     = 1;
+	 el.elem.spt.info.txtcol   = 5;
+	 el.elem.spt.info.filcol   = 5;
+	 el.elem.spt.info.lincol   = 5;
+	 el.elem.spt.info.lat      = ptr2->lat;
+	 el.elem.spt.info.lon      = ptr2->lon;
+	 strcpy ( el.elem.spt.text, volstr );
+
+  	/* 
+	 * Write storm TEXT element information.
+	 */
+
+         cvg_writeD ( &el, start, sizrec, fptr, &ier);
+
+	/* 
+	 * Advance pointer in link list and increment 'start'.
+	 */
+
+	 start = sizrec + start;
+	 
 	 ptr2 = ptr2->next;
 
      }

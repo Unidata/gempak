@@ -37,6 +37,7 @@
  * H. Zeng/SAIC		01/06	added struct cwa_incInfo		*
  *				increased MXSTATES to 21		*
  * T. Piper/SAIC	01/08	Moved proto_nmaplib.h from proto.h	*
+ * L. Hinson/AWC        11/11   Add GRPTYP_SGWX                         *
  ***********************************************************************/
 #ifndef PGPRM_H
 #define PGPRM_H
@@ -53,6 +54,7 @@
 #define GRPTYP_COMSYM		         99	
 #define GRPTYP_WATCH 		         98	
 #define GRPTYP_CCF 		         97	
+#define GRPTYP_SGWX                      96
 
 #define GST_NORMAL			0
 #define GST_NEW_LINE			1

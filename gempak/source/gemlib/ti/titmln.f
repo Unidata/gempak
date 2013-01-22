@@ -4,7 +4,7 @@
 C************************************************************************
 C* TI_TMLN								*
 C*									*
-C* This subroutine returns the time steps for time line based on input	*
+C* This subroutine return the time steps for time line based on input	*
 C* time and interval.  If the interval is 0 or negative, all time	*
 C* steps will be returned.						*
 C*									*

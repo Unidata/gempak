@@ -81,7 +81,9 @@ PROGRAM DESCRIPTION
     colors for plotting, wind barb/arrow attributes, timestamp
     attributes and various plotting-related flags. The parameter ASCT 
     does the same for the ASCAT winds (ASCT, ASCT_HI, and the four
-    ambiguities, AAMBG1, AAMBG2, AAMBG1_HI, AAMBG2_HI).
+    ambiguities: AAMBG1, AAMBG2, AAMBG1_HI, AAMBG2_HI).  The parameter
+    OSCT does the same for the OSCAT winds (OSCT, OSCT_HI, and the four
+    ambiguities: OAMBG1_HI, OAMBG2_HI, OAMBG3_HI, OAMBG4_HI).
 
 EXAMPLES
 

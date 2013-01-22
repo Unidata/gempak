@@ -95,6 +95,7 @@
  * S. Jacobs/NCEP	12/09   Added cvg_rdjele and cvg_rdjrecnoc	*
  * X. Guo/CWS           01/10   Added pgaddpt_start()                   *
  * S. Jacobs/NCEP	 3/10   Added cvg_rdjhdr, cvg_v2x, vgfToXml	*
+ * L. Hinson/AWC         7/12   Added cds_sgwx and cds_sgwxtxt          *
  ***********************************************************************/
 
 #ifndef PROTO_VG
@@ -181,6 +182,14 @@ void	cds_gfa (	VG_DBStruct     *el,
                         int             *iret );
 
 void	cds_gfatxt (	VG_DBStruct     const *el,
+                        VG_DBStruct     *txt_el,
+                        int             *iret );
+
+void    cds_sgwx (      VG_DBStruct     *el,
+                        int             indx,
+                        int             *iret );
+
+void    cds_sgwxtxt (   VG_DBStruct     const *el,
                         VG_DBStruct     *txt_el,
                         int             *iret );
 
@@ -839,6 +848,6 @@ void	pgwsmw_setWatch (	VG_DBStruct	*el );
 void    pgaddpt_start (         VG_DBStruct     *el );
 
 int	vgfToXml (		char		*vgfile,
-				char		*asciifile );
+				char	*asciifile , char *activity, char *subActivity, char *contTbl);
 
 #endif	/* PROTO_VG */

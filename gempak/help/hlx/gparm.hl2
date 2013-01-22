@@ -14,9 +14,9 @@
      The following grids will be computed automatically from grids in the
      grid file, if possible:
  
-	TMPK    DWPK    TVRK    MIXR    THTA    DRCT    TMWK
-	TMPC    DWPC    TVRC    SMXR    STHA    SPED    TMWC
-	TMPF    DWPF    TVRF    MIXS    THTE    RELH    TMWF
+	TMPK    DWPK    TVRK    MIXR    THTA    DRCT    TMWK    THWK
+	TMPC    DWPC    TVRC    SMXR    STHA    SPED    TMWC    THWC
+	TMPF    DWPF    TVRF    MIXS    THTE    RELH    TMWF    THWF
                         THES    SMXS    STHE               
 
      Mixing ratios will be computed automatically from dewpoint
@@ -159,7 +159,11 @@
      which the theoretical response of a filter with normally distributed
      weights is 1/e = .3679.  In practice, the actual response function will
      exceed the theoretical values at all wavelengths.  The larger N is, the
-     stronger the filtering will be.
+     stronger the filtering will be.  The RDFS and RDFV filters are
+     resolution dependent filters that call the GWFS filter.  The parameter
+     N is computed from the requested effective output resolution (dx,km) so
+     that the 2 X dx amplitude is reduced to ~1/e of the original amplitude
+     on the fine resolution grid.
 
      The SGMX and SGMN functions return the maximum and minimum, respectively,
      found on the subset of the grid defined by GAREA and PROJ.  In GDDIAG,
@@ -267,6 +271,7 @@
 			SPED)	Fosberg index, also called Fire Weather Index
 	FRNT	(THTA,V)	Frontogenesis  
 	GWFS	(S,N)		Filter with normal distribution of weights
+	RDFS    (S,DX)		GWFS applied for given output resolution (dx,km)
 	HIGH	(S,RADIUS)	Relative maxima over a grid
 				    (RADIUS is expressed in grid points)
 	JCBN	(S1,S2)		Jacobian determinant
@@ -287,6 +292,10 @@
 	MTNG	(V,LAT,LON,
 			D,ST)	Magnitude of tangential wind
 	NORM	(V)		Normal component (for cross sections)
+	NMAX	(S,ROI) 	Neighborhood maximum value for a radius of influence
+				    (ROI is expressed in meters)
+	NMIN	(S,ROI)	        Neighborhood minimum value for a radius of influence
+				    (ROI is expressed in meters)
 	PLAT	(S)		Latitude at each point (POL)
 	PLON	(S)		Longitude at each point (POL)
         PLCL    (PRES,TMPC, 
@@ -295,6 +304,7 @@
 				    with boundary conditions
 	POLF	(S)		Coriolis force at each point (POL)
 	PVOR	(S,V)		Potential vorticity in a layer
+	PVR3	(S,V)		3-D Potential vorticity for a level
 	RELH	(TMPC,DWPT)	Relative humidity
 	RICH	(V)		Richardson stability number in a layer
 	ROSS	(V1,V2)		Rossby number  
@@ -349,6 +359,7 @@
 	GEO	(S)		Geostrophic wind  
 	GRAD	(S)		Gradient of a scalar  
 	GWFV	(V,N)		Filter with normal distribution of weights
+	RDFV    (V,DX)		GWFV applied for given output resolution (dx,km)
 	INAD	(V1,V2)		Inertial advective wind  
 	ISAL	(S)		Isallobaric wind  
 	KCRS	(V)		Curl of V

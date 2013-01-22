@@ -53,6 +53,7 @@ int main ( void )
  * B. Yin/SAIC		02/04   added CLASS_MET -> TCA_ELM		*
  * B. Yin/SAIC		03/04   fixed a bug in option 4 for tca		*
  * F. J. Yen/NCEP	04/07	Fixed print alignmnt & spelling of GROUP*
+ * L. Hinson/AWC        01/12   Add CLASS_MET -> SGWX_ELM               *
  ***********************************************************************/
 {
 int		cont, iret, numsub, ngrp, nlbl, ier;
@@ -779,6 +780,20 @@ void ces_clist ( int *iret )
 	            idx++;
 	        }
 		break;
+                
+              case SGWX_ELM:
+                printf ("\n\t\t\t  MAJ MIN\n");
+                curvgclass = set[idx].vg_class;
+                curvgtype = set[idx].vg_type;
+                while (idx < num_set && set[idx].vg_type == curvgtype) 
+	        {
+	            printf ("CLASS_MET\t%3i  %3i   %2i  %2i\n",
+                      set[idx].vg_type, set[idx].subtyp, set[idx].maj_col,
+                      set[idx].min_col );
+	            idx++;
+	        }
+		break;
+                
 	      case TCA_ELM:	        
 	        curvgclass = set[idx].vg_class;
 	        curvgtype = set[idx].vg_type;

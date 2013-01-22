@@ -38,7 +38,8 @@ void cvg_swap ( int flag, int readflg, VG_DBStruct elold,
  * J. Wu/SAIC		01/04	add GFA_ELM		 		*
  * H. Zeng/XTRIA	03/04	added VOLC_ELM and ASHCLD_ELM		*
  * J. Wu/SAIC		10/04	change GFA structure	 		*
- * m.gamazaychikov/SAIC	05/07	add TCERR, TCBKL and TCTRK ELEMs	* 
+ * m.gamazaychikov/SAIC	05/07	add TCERR, TCBKL and TCTRK ELEMs	*
+ * L. Hinson/AWC        01/12   Add SGWX_ELM                            * 
 ***********************************************************************/
 {
     int		ier, nswp, npts, npts2, ii;
@@ -688,6 +689,20 @@ void cvg_swap ( int flag, int readflg, VG_DBStruct elold,
 	    ier += mv_swp4( &npts, (elold.elem.gfa.latlon), 
 			    (elnew->elem.gfa.latlon) );
 	    break;
+	    
+          case SGWX_ELM:    /* SIGWX Type */
+            ier += mv_swp4 (&nswp, &(elold.elem.sgwx.info.subtype),
+                            &(elnew->elem.sgwx.info.subtype));
+            ier += mv_swp4 (&nswp, &(elold.elem.sgwx.info.npts),
+                            &(elnew->elem.sgwx.info.npts));
+            if (readflg == G_FALSE) {
+              npts = 2 * (elold.elem.sgwx.info.npts);
+            } else {
+              npts = 2 * (elnew->elem.sgwx.info.npts);
+            }
+            ier += mv_swp4 (&npts, (elold.elem.sgwx.latlon),
+                            &(elnew->elem.sgwx.latlon));
+            break;	    
 
           case TCERR_ELM: /* TCE Type */
                                                                                                                

@@ -6723,6 +6723,7 @@ void dataw_setImageNav ( void )
  * S. Jacobs/NCEP	10/01	Initial coding copied from other funcs	*
  * E. Safford/SAIC	05/04	get default LUT and save it to nim	*
  * S. Chiswell/Unidata  05/07   Add check for DEFAULT before adding .tbl*
+ * m.gamazaychikov/CWS	01/10	Fixed the bug with DEFAULT LUT		*
  ***********************************************************************/
 {
 

@@ -15,7 +15,7 @@
  * A. Hardy/NCEP	12/04	Increased GTBL_NPRD from 75 to 150	*
  * T. Piper/SAIC	10/05	Removed GTBL_NGRD, GTBL_NGRP, and	*
  *				GTBL_NPRD; dynamically allocating	*
- * M. Li/SAIC		02/08	Add modgrp_t & gtbl_readEnsTbl		*
+ * M. Li/SAIC		02/08	Add modgrp_t & gtbl_readEnsSel		*
  * M. Li/SAIC		05/08	Add selModLst to modgrp_t		*
  ***********************************************************************/
 

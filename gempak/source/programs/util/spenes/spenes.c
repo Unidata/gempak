@@ -46,6 +46,7 @@ int main ( int argc, char **argv )
  * 				Add new line after every 5th point	*
  * S. Jacobs/NCEP	 8/10	Added information to the template	*
  * S. Jacobs/NCEP	 9/11	Updated template from NESDIS request	*
+ * S. Jacobs/NCEP	 8/12	Updated NESDIS phone number		*
  ***********************************************************************/
 {
 int		ii, ix, iy, pagflg, ne, npts, ier, iret, ilen,
@@ -343,7 +344,7 @@ FILE		*ifptr, *ofptr;
     strcat ( bufferfinal,".\n" );
 
     strcat ( bufferfinal,"SATELLITE PRECIPITATION ESTIMATES..DATE/TIME ##/##/## ####Z\n" );
-    strcat ( bufferfinal,"SATELLITE ANALYSIS BRANCH/NESDIS---NPPU---TEL.301-763-8678\n" );
+    strcat ( bufferfinal,"SATELLITE ANALYSIS BRANCH/NESDIS---NPPU---TEL.301-683-1404\n" );
     strcat ( bufferfinal,"LATEST DATA USED: #######################\n" );
     strcat ( bufferfinal,".\n" );
 

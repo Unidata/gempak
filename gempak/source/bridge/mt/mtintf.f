@@ -25,6 +25,7 @@ C* D. Kidwell/NCEP	4/98	Adapted from LS_INTF - new interface    *
 C* D. Kidwell/NCEP	5/98	Added parameter CEIL                    *
 C* D. Kidwell/NCEP     10/98	Added intf mnemonics to calling sequence*
 C* D. Kidwell/NCEP	1/99	Added parameter P01I, 1-hour precip     *
+C* S. Jacobs/NCEP	8/12	Added parameter SNEW, new snowfall	*
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
         INCLUDE  	'mtcmn.cmn'
@@ -34,7 +35,7 @@ C*
 C*
         CHARACTER  	dprms (MMPARM)*4
 C*
-	PARAMETER	( NUMP = 29 )
+	PARAMETER	( NUMP = 30 )
 	PARAMETER	( NUMEXT = MMPARM - NUMP )
 C*
         DATA  		dprms / 'PMSL',  'ALTI',  'TMPC',  'DWPC',  
@@ -44,7 +45,7 @@ C*
      +               		'WEQS',  'P24I',  'TDXC',  'TDNC',  
      +                		'P03C',  'CTYL',  'CTYM',  'CTYH',
      +                		'P06I',  'T6XC',  'T6NC',  'CEIL',
-     +                		'P01I',  NUMEXT*' ' /
+     +                		'P01I',  'SNEW', NUMEXT*' ' /
 C-----------------------------------------------------------------------
         iret = 0
 C

@@ -1,4 +1,3 @@
 $FC $FFLAGS $LDFLAGS -o namssf namssf.f \
-			$GEMLIB $APPL $SYSLIB \
-			$GEMLIB $CGEMLIB $GEMLIB
+			-lgemlib -lappl -lsyslib -lgemlib -lcgemlib -lgemlib
 $RM *.o

@@ -19,17 +19,31 @@ C* M. desJardins/NMC	10/91						*
 C************************************************************************
 	REAL		rlat (100), rlon (100)
 	CHARACTER	name*64, namold*64, infile*80,
-     +			area*72, region*12, dummy*4
-	LOGICAL		range, done, good
+     +			area*72, region*12, garea*72, clear*12
+	LOGICAL		range, done, good, plot
 	INTEGER		iarr (2)
 C------------------------------------------------------------------------
 C*	Initialize GEMPAK.
 C
 	CALL IN_BDTA ( ier )
-	CALL GINITP  ( 1, istat, ier )
+	CALL GG_INIT ( 1, ier )
+	CALL GG_SDEV ( 'XW', ier )
+C
+	WRITE  ( 6, * ) 'Clear plot? (y/n)'
+	READ   ( 5, 2 )  clear
+	CALL ST_LCUC  ( clear, clear, ier )
+	IF  ( clear (1:1) .eq. 'Y')  THEN
+	    CALL GCLEAR ( ier )
+	END IF
+C
+	WRITE  ( 6, * ) 'Enter garea'
+	READ   ( 5, 2 )  garea
+	CALL GG_MAPS  ( 'CED', garea, ' ', idr, ier )
+C
 	WRITE  ( 6, * ) 'Enter color for plot'
 	READ   ( 5, * )  icolr
 	CALL GSCOLR  ( icolr, ier )
+C
         WRITE  ( 6, * ) 'Enter NAME map file to be converted: '
 	READ   ( 5, 2 )  infile
 2	FORMAT ( A ) 
@@ -197,20 +211,28 @@ C
 C
 C*		Find the max/min values.
 C
+	plot = .false.
 		DO  k = 1, ipt2
 		    rltmx = MAX ( rlat (k), rltmx )
 		    rlnmx = MAX ( rlon (k), rlnmx )
 		    rltmn = MIN ( rlat (k), rltmn )
 		    rlnmn = MIN ( rlon (k), rlnmn )
+	if ( ( rlat(k) .ge. 15.0 .and. rlat(k) .le. 25.0 ) .and.
+     +	     ( rlon(k) .ge. 10.0 .and. rlon(k) .le. 30.0 ) ) then
+	    plot = .true.
+	endif
 		END DO
 C
 C*		Write the data to the new SSF file.
 C
 		iout = ipt2 * 2
+		if ( plot ) then
 		CALL GLINE ( 'M', ipt2, rlat, rlon, ier )
 		CALL GEPLOT ( ier )
 		WRITE (6,*) 'Record: ', nrec, ': ', name (1:48)
-		READ  (5,2)  dummy
+		CALL TM_ACCP ( ier )
+		IF  ( ier .eq. 2 )  done = .true.
+		endif
 	    END IF
 C
 C*	    Save variable names.
@@ -219,5 +241,7 @@ C
 	    nptold = ipt2
 	  END IF
 	END DO
+C
+	CALL GENDP ( 0, iret )
 C*
 	END

@@ -32,10 +32,9 @@ C* Log:									*
 C* M. desJardins/GSFC	 3/89						*
 C* K. Brill/GSC		 2/90	Fix to find negative max on grid	*
 C* K. Brill/NMC		03/92	Fix for constant grid			*
-C* S. Chiswell/Unidata	10/02	Check for qmax-qmin > 2**32		*
-C* H. Zeng/SAIC         09/07   Fixed constant grib with missing data   *
-C* K. Brill/HPC         03/09   Fix infinite loop for NINT cycling      *
-C* K. Tyle/UAlbany      10/10   Fixed for case with all missing data    *
+C* H. Zeng/SAIC		09/07	Fixed constant grib with missing data	*
+C* K. Brill/HPC         03/09   Fix infinite loop for NINT cycling	*
+C* K. Tyle/UAlbany	10/10	Fixed for case with all missing data	*
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 C*

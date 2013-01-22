@@ -43,9 +43,11 @@ COBJS = \
 	$(ALIB)(dvnrmv.o) \
 	$(ALIB)(dvobs.o) \
 	$(ALIB)(dvpvor.o) \
+	$(ALIB)(dvpvr3.o) \
 	$(ALIB)(dvqvcl.o) \
 	$(ALIB)(dvqvec.o) \
 	$(ALIB)(dvrad.o) \
+	$(ALIB)(dvrdfv.o) \
 	$(ALIB)(dvrich.o) \
 	$(ALIB)(dvross.o) \
 	$(ALIB)(dvrot.o) \

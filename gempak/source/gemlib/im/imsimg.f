@@ -20,7 +20,7 @@ C*					 -3 = Invalid image file format *
 C*					 -4 = Invalid image product	*
 C*					 -5 = Invalid navigation	*
 C*					 -7 = Could not open imtyp table*
-C*									*
+C**									*
 C* Log:									*
 C* J. Cowie/COMET	 2/95	Modified from GG_SAT()			*
 C* C. Lin/EAI		 6/95	Restructure				*
@@ -43,11 +43,11 @@ C* S. Chiswell/Unidata	11/00	Added compressed NIDS format		*
 C* S. Chiswell/Unidata	 2/02	Added imcmn.cmn for imcalbar init	*
 C* J. Levit/NCEP        10/07   Increased amount of available radar     *
 C*                              products from 149 to 999.               *
-C* m.gamazaychikov/CWS  01/10   Add calls to IM_DBGINI2GM, IM_DBNIDS2GM,*
+C* m.gamazaychikov/CWS	01/10	Add calls to IM_DBGINI2GM, IM_DBNIDS2GM,*
 C*                              IM_DBMOSAIC2GM, IM_DBMCIDAS2GM providing*
-C*                              ability to display GINI, NIDS, MOSAIC   *
-C                               MCIDAS images stored in AWIPS II        *
-C*                              database                                *
+C*				ability to display GINI, NIDS, MOSAIC   *
+C                               MCIDAS images stored in AWIPS II	*
+C*				database				*
 C* M. James/Unidata      2/10   Modified imdoff def. for FOS/WMO hdrs   *
 C* X. Guo/CWS           04/10   Added codes to support 94 product       *
 C* X. Guo/CWS           04/10   Added codes to support 99,134 and 135   *

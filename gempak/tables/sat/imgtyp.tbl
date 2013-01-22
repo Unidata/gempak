@@ -64,9 +64,12 @@
 ! S. Jacobs/NCEP	 7/10	Added MTSAT2
 ! S. Jacobs/NCEP	 4/11	Added entries for OMI images for sat id = 100
 ! F. Achorn/OPC		10/11   Added RGB products per M. Folmer/OPC/HPC/SAB
-! K. Kempisty/NCEP	11/11   Added Goes-15
+! K. Kempisty/NCEP	11/11   Added GOES15
 ! F. Achorn/OPC		12/11	Added MODIS products per M. Folmer/OPC/HPC/SAB
 ! S. Jacobs/NCEP	 6/12	Added more GOESR-related entries
+! S. Jacobs/NCEP	 9/12	Added GOES14
+! S. Jacobs/NCEP	 9/12	Added an entry for DPD-GHE images
+! S. Jacobs/NCEP	10/12	Changed GOES14 to use data from GOESR testing
 !------------------------------------------------------------------------------
 !
 ! SATELLITE IMAGE TYPES
@@ -118,6 +121,36 @@ GMS                  VIS          30    220     12      1      1 GRAY
 GMS                  IR            0    255     13      2      1 GRAY
 GMS                  IR            0    255     13      8      1 GRAY
 GMS                  IR            0    255     13    128      1 GRAY
+!
+GOES14               VIS       -3000  28000    182      1      2 GRAY
+GOES14               IR4           0  23500    182      8      2 testir.tbl
+GOES14               WV        -3000  16000    182      4      2 testwv.tbl
+!
+!GOES14               VIS           0    255    182      1      1 GRAY
+!GOES14               IR2           0    255    182      2      1 GRAY
+!GOES14               IR3           0    255    182      4      1 watvap.tbl
+!GOES14               IR4           0    255    182      8      1 GRAY
+!GOES14               IR6           0    255    182     32      1 GRAY
+!GOES14               IR4           0    255    182    128      1 GRAY
+!GOES14               VIS           0   1023    182      1      2 GRAY
+!GOES14               IR2           0    255    182      2      2 GRAY
+!GOES14               IR3           0    255    182      4      2 watvap.tbl
+!GOES14               IR4           0    255    182      8      2 GRAY
+!GOES14               IR5           0    255    182     16      2 GRAY
+!GOES14               IR4           0    255    182    128      2 GRAY
+!GOES14 14.06         SOUNDER       0    255    183     43      1 GRAY 
+!GOES14 11.03         SOUNDER       0    255    183     48      1 GRAY 
+!GOES14 7.43          SOUNDER       0    255    183     50      1 GRAY 
+!GOES14 7.02          SOUNDER       0    255    183     51      1 GRAY 
+!GOES14 6.51          SOUNDER       0    255    183     52      1 GRAY 
+!GOES14 4.45          SOUNDER       0    255    183     55      1 GRAY 
+!GOES14 3.98          SOUNDER       0    255    183     57      1 GRAY 
+!GOES14 SVIS          SOUNDER       0    255    183     59      1 GRAY 
+!GOES14 LI            SOUNDER       0    255    183     16      1 GRAY
+!GOES14 PW            SOUNDER       0    255    183     17      1 GRAY
+!GOES14 SFCSKIN T     SOUNDER       0    255    183     18      1 GRAY
+!GOES14 CLD TOP H     SOUNDER       0    255    183     27      1 GRAY
+!GOES14 CLD AMT       SOUNDER       0    255    183     28      1 GRAY
 !
 GOES13               VIS           0    255     80      1      1 GRAY
 GOES13               IR2           0    255     80      2      1 GRAY
@@ -363,6 +396,7 @@ AQUA-MODIS           DUST          0     94    111  32768      1 dust.tbl
 !
 !------------------------------------------------------------------------------
 ! Derived products
+DPD                  GHE           0    255     10      8      1 ssmi_opc.tbl
 CAPE                 IR            0    255     77      8      1 gdpicape.tbl
 CINH                 IR            0    255     77     16      1 gdpicinh.tbl
 LI                   IR            0    255     77     32      1 gdpili.tbl

@@ -94,6 +94,9 @@ C* G. McFadden/IMSG	11/10	Added AAMBG3_HI and AAMBG4_HI		*
 C* G. McFadden/IMSG	 7/11	Added SGWHC                  		*
 C* G. McFadden/IMSG	 1/12	Added OSCT_HI                  		*
 C* L. Hinson/AWC         4/12   Add ASDI                                *
+C* G. McFadden/IMSG	 7/12	Added OAMBG1_HI, OAMBG2_HI, OAMBG3_HI,	*
+C*                              and OAMBG4_HI                       	*
+C* S. Jacobs/NCEP	10/12	Consolidate check for ASCT data types	*
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 C*
@@ -356,18 +359,10 @@ C
      +                     iflgs, windgr, ifcsth, newfil, ier )
 C
 C
-	  ELSE IF  ( alias .eq. 'ASCT' .or. alias .eq. 'ASCT_HI' .or. 
-     +               alias .eq. 'AAMBG1' .or. alias .eq. 'AAMBG2' .or.
-     +               alias .eq. 'AAMBG1_HI' .or. 
-     +               alias .eq. 'AAMBG2_HI' .or.
-     +               alias .eq. 'AAMBG3_HI' .or.
-     +               alias .eq. 'AAMBG4_HI' .or.
-     +	  	     alias .eq. 'EXASCT' .or.
-     +		     alias .eq. 'EXASCT_HI' .or. 
-     +               alias .eq. 'EXAAMBG1' .or.
-     +		     alias .eq. 'EXAAMBG2' .or.
-     +               alias .eq. 'EXAAMBG1_HI' .or. 
-     +               alias .eq. 'EXAAMBG2_HI' ) THEN
+	  ELSE IF  ( alias(1:4) .eq. 'ASCT' .or. 
+     +               alias(1:5) .eq. 'AAMBG' .or.
+     +	  	     alias(1:6) .eq. 'EXASCT' .or.
+     +               alias(1:7) .eq. 'EXAAMBG' ) THEN
 	    IF  ( iclrs(1) .eq. 0 )  THEN
 		iskip = 0
 	      ELSE
@@ -399,7 +394,12 @@ C
      +		   itmwid, iflgs, ier )
 C
 C
-	  ELSE IF  ( alias .eq. 'OSCT' .or. alias .eq. 'OSCT_HI' ) THEN
+	  ELSE IF  ( alias .eq. 'OSCT'      .or. 
+     +               alias .eq. 'OSCT_HI'   .or.
+     +               alias .eq. 'OAMBG1_HI' .or.
+     +               alias .eq. 'OAMBG2_HI' .or.
+     +               alias .eq. 'OAMBG3_HI' .or.
+     +               alias .eq. 'OAMBG4_HI' ) THEN
 	    IF  ( iclrs(1) .eq. 0 )  THEN
 		iskip = 0
 	      ELSE

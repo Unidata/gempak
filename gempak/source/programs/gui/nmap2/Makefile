@@ -185,7 +185,6 @@ $(PROG) : $(ALIB) nmap2.c
 		nmap2.o \
 		$(LIBINC) \
 		$(GUILIBS) $(ICONVLIB) -lm
-#	$(RM) nmap.o
 
 $(ALIB): $(NMAP_OBJS)
 	$(AR) $(ARFLAGS) $@ *.o

@@ -25,7 +25,7 @@ C* C. Caruso Magee/NCEP	02/06  Replace IUPBS1 with IUPBS01 and modify	*
 C*					input args appropriately.	*
 C* T. Piper/SAIC	03/06	Modified for ASCII output.		*
 C* S. Chiswell/Unidata	10/07	Added use of output file template	*
-C* T. Piper/SAIC        08/08   Modified to support output template     *
+C* T. Piper/SAIC	08/08	Modified to support output template	*
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 	INCLUDE		'BRIDGE.PRM'

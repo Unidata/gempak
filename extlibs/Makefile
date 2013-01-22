@@ -8,9 +8,8 @@ include $(CONFIGDIR)/$(MAKEINC)
 SUBDIRS = \
 	zlib \
 	PNG \
-	BZIP2 \
+	bzip2 \
 	HDF5 \
-	netCDF \
 	GPC \
 	AODT \
 	melBUFR \
@@ -24,11 +23,6 @@ SUBDIRS = \
 	SHAPE \
 	GAMET \
 	rsl
-
-#	pkg-config -
-#	gnu -
-#	glib -
-#	DOM -
 
 all : 
 	@for dir in NODIR $(SUBDIRS); do \

@@ -741,6 +741,7 @@ void pggfmt_ctlBtnCb ( Widget wid, long which, XtPointer call )
  * m.gamazaychikov/SAIC	12/05	Change CS for gg_update			*
  * m.gamazaychikov/SAIC	01/06	Added check for a blank CONTROL file	*
  * m.gamazaychikov/SAIC	02/06	Add check for n/err rtrn from gg_update *
+ * S. Jacobs/NCEP	10/12	Changed value of IJSKIP from yes to no	*
  ***********************************************************************/
 {
 #define	LEN	80
@@ -968,7 +969,7 @@ void pggfmt_ctlBtnCb ( Widget wid, long which, XtPointer call )
 	         gdpstp ( "CLRBAR", clrbar, &ier, strlen("CLRBAR"), strlen(clrbar) );
 	         gdpstp ( "CINT", cint, &ier, strlen("CINT"), strlen(cint) );
 	         gdpstp ( "LINE", line, &ier, strlen("LINE"), strlen(line) );
-	         gdpstp ( "IJSKIP", "yes", &ier, strlen("IJSKIP"), strlen("yes") );
+	         gdpstp ( "IJSKIP", "no", &ier, strlen("IJSKIP"), strlen("no") );
 	         gdpstp ( "SCALE", "0", &ier, strlen("SCALE"), strlen("0") );
 
 	         gdpstp ( "MAP", "0", &ier, strlen("MAP"), strlen("0") );

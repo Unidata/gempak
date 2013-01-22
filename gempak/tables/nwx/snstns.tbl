@@ -8,6 +8,7 @@ ENGM      01384 OSLO/GARDERMOEN                  -- NO  6020   1110   201  0
           01400 EKOFISK                          -- NO  5653    321    29  0                    
 ENZV      01415 STAVANGER/SOLA                   -- NO  5886    566    37  0                    
           02185 LULEA-KALLAX                     -- SN  6555   2213    34  0                    
+ESSI      02313 VISINGSO                         -- SN  5810   1440   110  0                    
           02365 SUNDSVALL-HARNOSAND_FPL          -- SN  6253   1745     6  0                    
           02527 GOTEBORG/LANDVETTER              -- SN  5766   1250   164  0                    
 ESQV      02591 VISBY_AEROLOGISKA_STN            -- SN  5765   1835    47  0                    
@@ -30,6 +31,7 @@ EGVN      03649 BRIZE_NORTON_RAF                 -- UK  5175   -158    88  0
           03693 SHOEBURYNESS                     -- UK  5155     85     3  0                    
           03743 LARKHILL                         -- UK  5120   -180   133  0                    
           03808 CAMBORNE                         -- UK  5021   -531    88  0                    
+          03814 LIZARD                           -- UK  4957    511    57  0                    
           03882 HERSTMONCEUX                     -- UK  5090     31     0  0                    
           03918 CASTOR_BAY                       -- UK  5450   -634    18  0                    
           03953 VALENTIA_OBSERVATORY             -- IE  5193  -1025    30  0                    
@@ -144,6 +146,7 @@ LCLK      17609 LARNACA_AIRPORT                  -- CY  3488   3363     2  0
           20674 OSTROV_DIKSON                    DK RA  7350   8040    47  0                    
           20744 MALYE_KARMAKULY                  DK RA  7236   5270    19  0                    
           20891 HATANGA                          DK RA  7198  10246    33  0                    
+          20892 HATANGA                          DK RA  7200  10257    26  0                    
           21432 OSTROV_KOTEL'NYJ                 DK RA  7600  13786     8  0                    
           21504 OSTROV_PREOBRAZENIJA             TK RA  7466  11293    57  0                    
           21647 MYS_SHALAUROVA                   TK RA  7318  14323    22  0                    
@@ -161,9 +164,11 @@ ULAA      22550 ARHANGEL'SK                      AR RS  6461   4050     4  0
           23022 AMDERMA                          DK RA  6975   6170    55  0                    
           23205 NAR'JAN-MAR                      AR RA  6763   5303    12  0                    
           23330 SALEHARD                         NO RA  6653   6666    16  0                    
+          23415 PECHORA                          AR RA  6512   5710    58  0                    
           23418 PECHORA                          AR RA  6511   5710    61  0                    
           23472 TURUHANSK                        NO RA  6578   8793    38  0                    
           23552 TARKO-SALE                       NO RA  6491   7781    27  0                    
+          23802 SYKTYVKAR                        AR RA  6168   5078   117  0                    
 UUYY      23804 SYKTYVKAR                        AR RA  6166   5085   116  0                    
           23884 BOR                              NO RA  6160   9001    58  0                    
           23921 IVDEL'                           SV RA  6068   6045    95  0                    
@@ -217,6 +222,7 @@ UWPP      27962 PENZA                            MS RS  5311   4501   172  0
           28661 KURGAN                           SV RA  5546   6540    74  0                    
           28698 OMSK                             NO RA  5493   7340    90  0                    
           28722 UFA                              SV RA  5471   5583   104  0                    
+          28951 KOSTANAI                         AK KZ  5323   6362   171  0                    
           28952 KUSTANAI                         AK KZ  5321   6361   156  0                    
           29231 KOLPASEVO                        NO RA  5831   8295    75  0                    
 UNII      29263 ENISEJSK                         NO RA  5845   9215    79  0                    
@@ -276,10 +282,13 @@ UUOO      34122 VORONEZ                          MS RS  5165   3925   104  0
           34172 SARATOV                          MS RS  5156   4603   166  0                    
           34247 KALAC                            MS RS  5041   4105    92  0                    
 UKHH      34300 KHARKIV                          KI UR  4996   3613   155  0                    
-URWW      34560 VOLGOGRAD                        TB RS  4878   4435   141  0                    
+URWW      34467 VOLGOGRAD                        TB RS  4868   4435   145  0                    
+          34560 VOLGOGRAD                        TB RS  4878   4435   141  0                    
 URRR      34731 ROSTOV-NA-DONU                   TB RS  4725   3981    78  0                    
           34858 DIVNOE                           TB RS  4591   4335    87  0                    
           34880 ASTRAHAN'                        TB RS  4628   4798   -21  0                    
+          34882 ASTRAKHAN                        TB RS  4627   4803   -22  0                    
+          34924 SLAVJANSK_NA_KUBANI              TB RS  4528   3812     9  0
           35121 ORENBURG                         AL RA  5168   5510   117  0                    
 UATT      35229 AKTJUBINSK                       AL KZ  5028   5715   219  0                    
           35394 KARAGANDA                        AL KZ  4980   7315   553  0                    
@@ -288,8 +297,11 @@ UATT      35229 AKTJUBINSK                       AL KZ  5028   5715   219  0
           36003 PAVLODAR                         AL KZ  5230   7693   122  0                    
           36096 KYZYL                            NO RA  5171   9450   628  0                    
 UAAA      36870 ALMATY                           AL KZ  4323   7693   851  0                    
+          36872 ALMATY                           AL KZ  4336   7700   663  0                    
+          37011 TUAPSE                           TB RS  4410   3907    41  0                    
           37018 TUAPSE                           TB RS  4410   3903    95  0                    
-URMM      37054 MINERAL'NYE_VODY                 TB RS  4421   4310   313  0                    
+          37054 MINERAL'NYE_VODY                 TB RS  4421   4310   313  0                    
+URMM      37055 MINERAL'NYE_VODY                 TB RS  4422   4310   314  0                    
           37260 SUHUMI                           TB GG  4286   4113    13  0                    
 UGGG      37549 TBILISI                          TB GG  4175   4476   427  0                    
           37735 GYANCA                           TB AJ  4071   4641   311  0                    
@@ -299,6 +311,7 @@ UGEE      37789 YEREVAN/YEREVAN-ARABKIR          TB AY  4013   4446  1113  0
 UBBB      37864 BAKU/BINE_AIRPORT                TB AJ  4045   5006     0  0                    
           37936 NAXCIVAN                         TB AJ  3920   4541   885  0                    
           37985 LANKARAN                         TB AJ  3873   4883   -12  0                    
+          38064 KYZYLORDA                        -- KZ  4477   6552   133  0                    
           38264 NUKUS                            TA UZ  4245   5961    77  0                    
           38341 ZHAMBYL                          AL KZ  4285   7138   651  0                    
 UAFF      38353 BISHKEK                          AL KZ  4283   7458   760  0                    
@@ -358,14 +371,15 @@ OYAA      41480 ADEN                             -- YE  1283   4503     3  0
 OYSQ      41494 SOCOTRA                          -- YE  1263   5390    47  0                    
 OPCH      41506 CHITRAL                          -- PK  3585   7183  1500  0                    
           41515 DROSH                            -- PK  3556   7178  1465  0                    
-          41516 GILGIT                           -- PK  3591   7433  1459  0                    
-          41517 SKARDU                           -- PK  3530   7568  2181  0                    
+OPGT      41516 GILGIT                           -- PK  3592   7433  1459  0                    
+OPSD      41517 SKARDU                           -- PK  3534   7553  2230  0                    
           41529 PESHAWAR                         -- PK  3403   7193   329  0                    
 OPPS      41530 PESHAWAR                         -- PK  3401   7158   360  0                    
           41532 MUZAFFAR_ABAD                    -- PK  3436   7348  2303  0                    
           41560 PARACHINAR                       -- PK  3386   7008  1726  0                    
 OPRN      41571 ISLAMABAD_AIRPORT                -- PK  3361   7310   508  0                    
-OPSR      41594 SARGODHA                         -- PK  3205   7266   188  0                    
+OPSR      41593 SARGODHA                         -- PK  3205   7267   187  0                    
+          41594 SARGODHA                         -- PK  3205   7266   188  0                    
           41598 JHELUM                           -- PK  3293   7371   234  0                    
           41620 ZHOB                             -- PK  3135   6946  1407  0                    
 OPDI      41624 DERA_ISMAIL_KHAN                 -- PK  3181   7091   173  0                    
@@ -494,6 +508,7 @@ VNKT      44454 KATHMANDU_AIRPORT                -- NP  2770   8536  1337  0
           45004 KING'S_PARK                      -- HK  2231  11416    66  0                    
           47041 HAMHEUNG                         -- KO  3993  12755    38  0                    
 ZKPY      47058 PYONGYANG                        -- KO  3903  12578    38  0                    
+          47101 CHUNCHEON                        -- KR  3790  12774    78  0                    
           47102 BAENGNYEONGDO                    -- KR  3797  12463   158  0                    
 RKSP      47103 PAENGNYONGDO_AB                  -- KR  3796  12466   177  0                    
 RKNN      47107 KANGNUNG_AB                      -- KR  3775  12895     6  0                    
@@ -502,6 +517,7 @@ RKSM      47111 SEOUL_AB                         -- KR  3743  12711    20  0
 RKNH      47118 HOENGSONG_AB                     -- KR  3743  12795   101  0                    
 RKSW      47120 SUWON_AB                         -- KR  3725  12400    24  0                    
 RKSO      47122 OSAN_AB                          -- KR  3710  12703    52  0                    
+RKSG      47127 PYONGTAEK                        -- KR  3697  12703    16  0                    
 RKTU      47128 CHONGJU_INTLARPT/CHONGJU         -- KR  3670  12750    58  0                    
 RKTY      47134 YECHON_AB                        -- KR  3663  12835   120  0                    
           47138 POHANG                           -- KR  3603  12938     6  0                    
@@ -509,6 +525,7 @@ RKTN      47142 TAEGU_AB                         -- KR  3588  12865    37  0
 RKPK      47153 KIMHAE_INT'L_AIRPORT             -- KR  3518  12893     6  0                    
 RKJJ      47158 KWANGJU_AB                       -- KR  3511  12681    13  0                    
 RKPS      47161 SACH'ON_AB                       -- KR  3508  12808     8  0                    
+RKJY      47167 YEOSU_AIRPORT                    -- KR  3484  12762    21  0                    
           47185 CHEJU_UPPER/RADAR                -- KR  3328  12616    73  0                    
           47401 WAKKANAI                         -- JP  4541  14168    11  0                    
           47412 SAPPORO                          -- JP  4305  14133    26  0                    
@@ -570,6 +587,7 @@ WMKK      48647 KUALA_LUMPUR/SUBANG              -- MS   311  10155    22  0
 WMKD      48657 KUANTAN                          -- MS   378  10321    16  0                    
 WSSS      48698 SINGAPORE/CHANGI_ARPT            -- SR   136  10398    16  0                    
 VVNB      48820 HA_NOI                           -- VS  2101  10580     7  0                    
+          48839 BACH_LONGVI                      -- VS  2013  10772     2  0                    
 VVDN      48855 DA_NANG                          -- VS  1603  10820     7  0                    
           48887 PHAN_THIET                       -- VS  1093  10810     5  0                    
 VVTS      48900 HO_CHI_MINH                      -- VS  1081  10666    10  0                    
@@ -687,6 +705,7 @@ DAUA      60620 ADRAR                            -- AL  2788    -18   283  0
           60630 IN-SALAH                         -- AL  2723    250   269  0                    
 DAOF      60656 TINDOUF                          -- AL  2770   -816   439  0                    
           60680 TAMANRASSET                      -- AL  2280    543  1364  0                    
+DATM      60686 BORDJ-BADJ-MOKHTAR               -- AL  2133     95   399  0                    
 DTTB      60714 BIZERTE                          -- TS  3725    980     3  0                    
 DTTA      60715 TUNIS-CARTHAGE                   -- TS  3683   1023     4  0                    
 DTTL      60720 KELIBIA                          -- TS  3685   1108    30  0                    
@@ -700,6 +719,7 @@ DTTZ      60760 TOZEUR                           -- TS  3391    810    93  0
 DTTJ      60769 DJERBA_MELLITA                   -- TS  3386   1076     4  0                    
 DTTD      60775 REMADA                           -- TS  3231   1040   301  0                    
 DTTR      60780 EL_BORMA                         -- TS  3168    916   259  0                    
+          60788 BRACH_AS                         -- LY  2750   1425   265  0                    
 DRRI      61017 BILMA                            -- NR  1868   1291   357  0                    
 DRZA      61024 AGADEZ                           -- NR  1696    798   502  0                    
 DRRT      61043 TAHOUA                           -- NR  1490    525   391  0                    
@@ -934,11 +954,16 @@ FABM      68461 BETHLEHEM                        -- SZ -2825   2833  1678  0
 FASB      68512 SPRINGBOK                        -- SZ -2966   1790  1007  0                    
           68538 DE_AAR                           -- SZ -3065   2400  1287  0                    
 FADN      68588 DURBAN_INTNL._AIRPORT            -- SZ -2996   3095    14  0                    
-FACT      68816 CAPE_TOWN_INTNL._ARPORT          -- SZ -3396   1860    42  0                    
+FALE      68592 KING_SHAKA                       -- SZ -2961   3112   109  0                    
+          68816 CAPE_TOWN_INTNL._ARPORT          -- SZ -3396   1860    42  0                    
 FAPE      68842 PORT_ELIZABETH                   -- SZ -3398   2561    61  0                    
 FAGE      68906 GOUGH_ISLAND                     -- SZ -4035   -988    54  0                    
 FAME      68994 MARION_ISLAND                    -- SZ -4688   3786    21  0                    
-PABR      70026 BARROW/W._POST_W.ROGERS          AK US  7130 -15678     4  0                    
+FACT      68999 CAPE_TOWN                        -- SZ -3360   1860    42  0                    
+KNXP      69015 TWENTYNINE_PALMS                 CA US  3430 -11616   626  0                    
+KNTK      69016 SANTA_ANA                        CA US  3370 -11783    17  0                    
+KQAA      69110 PRIZREN                          -- KV  4213   2045   460  0                    
+PABR      70026 BARROW/W._POST_W.ROGERS          AK US  7128 -15679    19  0                    
 PAOT      70133 KOTZEBUE,_RALPH_WIEN             AK US  6686 -16263     5  0                    
           70197 CENTRAL                          AK US  6548 -14466   252  0                    
 PAOM      70200 NOME                             AK US  6450 -16543     7  0                    
@@ -1058,7 +1083,7 @@ ABQ       72365 ALBUQUERQUE/INT                  NM US  3504 -10662  1619  0
 FGZ       72376 FLAGSTAFF                        AZ US  3523 -11182  2192  1                    
 EDW       72381 EDWARDS_AFB                      CA US  3490 -11788   702  0                    
 DRA       72387 MERCURY/DESERT_ROCK              NV US  3661 -11601  1009  0                    
-VEF       72388 LAS_VEGAS                        NV US  3605 -11518   693  0                    
+VEF       72388 LAS_VEGAS                        NV US  3605 -11518   697  0                    
 NTD       72391 POINT_MUGU                       CA US  3411 -11912     2  0                    
 VBG       72393 VANDENBERG_AFB                   CA US  3475 -12056   121  0                    
 WAL       72402 WALLOPS_ISLAND                   VA US  3793  -7547    12  0                    
@@ -1087,6 +1112,7 @@ LBF       72562 NORTH_PLATTE/LEE_BIRD            NE US  4113 -10068   849  0
 SLC       72572 SALT_LAKE_CITY/INTNL             UT US  4077 -11195  1289  0                    
 LKN       72582 ELKO                             NV US  4086 -11573  1608  1                    
 MFR       72597 MEDFORD/JACKSON                  OR US  4236 -12286   405  0                    
+SRP       72626 PHOENIX                          AZ US  3345 -11195   379  0                    
 DTX       72632 WHITE_LAKE                       MI US  4270  -8346   329  1                    
 APX       72634 GAYLORD                          MI US  4491  -8471   446  1                    
 GRB       72645 GREEN_BAY/STRAUBEL               WI US  4450  -8811   214  0                    
@@ -1214,6 +1240,7 @@ SVMI      80415 CARACAS/MAIQUETIA_AEROP          -- VN  1060  -6698    48  0
 SVBC      80419 BARCELONA                        -- VN  1011  -6468     7  0                    
 SVCU      80420 CUMANA                           -- VN  1045  -6418     4  0                    
           80421 PORLAMAR_(AEROO_INT)             -- VN  1091  -6396    19  0                    
+SVCP      80422 CARUPANO                         -- VN  1067  -6325    10  0                    
 SVMN      80425 MENE_GRANDE                      -- VN   981  -7093    28  0                    
 SVVL      80426 VALERA                           -- VN   935  -7061   582  0                    
 SVMT      80435 MATURIN                          -- VN   975  -6318    66  0                    
@@ -1260,6 +1287,7 @@ SBCG      83612 CAMPO_GRANDE_(AERO)              -- BZ -2046  -5466   567  0
           83650 TRINDADE_(ILHA)                  -- BZ -2050  -2931     4  0                    
           83660 MARAMBAIA                        -- BZ -2305  -4360    16  0                    
 SBGL      83746 GALEAO                           -- BZ -2281  -4325    42  0                    
+SBLO      83768 LONDRINA                         -- BZ -2333  -5113   569  0
 SBMT      83779 MARTE_CIV/MIL                    -- BZ -2352  -4663   722  0                    
 SBSP      83780 SAO_PAULO_(AEROPORTO)            -- BZ -2361  -4665   802  0                    
 SBFI      83827 FOZ_DO_IGUACU_(AERO)             -- BZ -2551  -5458   180  0                    
@@ -1268,11 +1296,13 @@ SBPA      83971 PORTO_ALEGRE_(AERO)              -- BZ -3000  -5118     3  0
 SEST      84008 SAN_CRISTOBAL(GALAPAGOS)         -- EQ   -43  -8960     6  0                    
 SPME      84370 TUMBES/PEDRO_CANGA               -- PR  -355  -8040    27  0                    
           84378 MORONA                           -- PR  -373  -7325   117  0                    
+SLBJ      85394 BERMEJO                          -- BO -2277  -6432   381  0                    
 SPIM      84628 LIMA-CALLAO/J._CHAVEZ            -- PR -1200  -7711    13  0                    
 SLLP      85201 LA_PAZ/ALTO                      -- BO -1651  -6818  4038  0                    
 SCFA      85442 ANTOFAGASTA                      -- CH -2343  -7045   137  0                    
 SCIP      85469 ISLA_DE_PASCUA                   -- CH -2716 -10943    41  0                    
 SCER      85543 QUINTERO                         -- CH -3278  -7151     8  0                    
+          85577 SANTIAGO(QUINTA_NORMAL)          -- CH -3345  -7068   520  0                    
 SCSN      85586 SANTO_DOMINGO                    -- CH -3365  -7161    75  0                    
 SCTE      85799 PUERTO_MONTT                     -- CH -4143  -7310    79  0                    
 SCCI      85934 PUNTA_ARENAS                     -- CH -5300  -7085    33  0                    
@@ -1305,16 +1335,16 @@ EGYP      88889 MOUNT_PLEASANT_AIRPORT           -- FK -5181  -5845    73  0
 PHLI      91165 LIHUE                            HI US  2199 -15934    30  0                    
 PHNL      91182 HONOLULU                         HI US  2135 -15793     5  0                    
 PHOG      91190 KAHULUI_ARPT                     HI US  2090 -15643    20  0                    
-PGUM      91212 GUAM_INTL_ARPT                   -- MY  1335  14480    91  0                    
+PGAC      91212 GUAM_INTL_ARPT                   -- MY  1348  14479    76  0                    
 PHTO      91285 HILO/GEN                         HI US  1972 -15505    12  0                    
 PHWH      91293 SOUTH_KONA                       HI US  1910 -15575   808  0                    
-PTKK      91334 TRUK                             -- KA   746  15185     2  0                    
-PTPN      91348 PONAPE                           -- KA   696  15821    46  0                    
+PTKK      91334 TRUK                             -- KA   746  15184     5  0                    
+PTPN      91348 PONAPE                           -- KA   696  15821    41  0                    
           91364 ROI-NAMUR                        -- MH   940  16747     4  0                    
 PKWA      91366 KWAJALEIN/BUCHOLZ                -- MH   873  16773     8  0                    
-PKMJ      91376 MAJURO/MARSHALL_IS               -- MH   708  17138     3  0                    
-PTRO      91408 KOROR,_PALAU_IS                  -- KA   733  13448    33  0                    
-PTYA      91413 YAP                              -- KA   948  13808    17  0                    
+PKMJ      91376 MAJURO/MARSHALL_IS               -- MH   707  17129     4  0                    
+PTRO      91408 KOROR,_PALAU_IS                  -- KA   734  13448    34  0                    
+PTYA      91413 YAP                              -- KA   950  13808    27  0                    
           91492 CHRISTMAS_ISLAND                 -- KI   200 -15740     3  0                    
           91517 HONIARA                          -- SO  -941  15996    56  0                    
           91532 REPUBLIC_OF_NAURU(ARCS2)         -- NA   -52  16692     7  0                    
@@ -1327,7 +1357,7 @@ NGFU      91643 FUNAFUTI                         -- TV  -851  17921     2  0
 NFFN      91680 NADI_AIRPORT                     -- FJ -1775  17745    18  0                    
           91701 KANTON_ISLAND                    -- PI  -276 -17171     2  0                    
 NSAP      91762 APIA                             -- ZS -1380 -17178     2  0                    
-NSTU      91765 PAGO_PAGO/INT.AIRP.              -- ZS -1433 -17071     3  0                    
+NSTU      91765 PAGO_PAGO/INT.AIRP.              -- ZS -1433 -17071     5  0                    
 NFTF      91792 FUA'AMOTU                        -- TO -2123 -17515    41  0                    
           91801 PENRHYN                          -- KU  -900 -15805     1  0                    
 NCRG      91843 RAROTONGA                        -- KU -2120 -15981     7  0                    

@@ -6,6 +6,7 @@ static void cvg_circleadj(Handle id, VG_DBStruct *el, int *iret);
 void cvg_filladj(Handle id, VG_DBStruct *el, int *iret);  /*  NOT used?  */
 static void cvg_frontadj(Handle id, VG_DBStruct *el, int *iret);
 static void cvg_gfaadj(Handle id, VG_DBStruct *el, int *iret);
+static void cvg_sgwxadj(Handle id, VG_DBStruct *el, int *iret);
 void cvg_groupadj(Handle id, VG_DBStruct *el, int *iret);  /*  NOT used?  */
 static void cvg_jetadj(Handle id, VG_DBStruct *el, int *iret);
 static void cvg_lineadj(Handle id, VG_DBStruct *el, int *iret);
@@ -43,6 +44,7 @@ void cvg_eladj(int elpos, VG_DBStruct *el, int *iret)
  **
  * Log:
  * S.Danz/AWC            3/06   Created
+ * L. Hinson/AWC         1/12   Add SGWX_ELM and cvg_sgwxadj
  ****************************************************************************/
 {
     Handle      id;
@@ -139,7 +141,11 @@ void cvg_eladj(int elpos, VG_DBStruct *el, int *iret)
             case GFA_ELM:
                 cvg_gfaadj(id, el, iret);
             break;
-
+            
+	    case SGWX_ELM:
+                cvg_sgwxadj(id, el, iret);
+            break;
+	    
             case TCA_ELM:
                 cvg_tcaadj(id, el, iret);
             break;
@@ -442,6 +448,72 @@ static void cvg_gfaadj(Handle id, VG_DBStruct *el, int *iret)
 
             sprintf(value, "%7.2f", dy[0]);
             cvg_setFld(el, TAG_GFA_ARROW_LON, value, iret);
+        }
+    }
+}
+
+/*======================================================================*/
+
+static void cvg_sgwxadj(Handle id, VG_DBStruct *el, int *iret)
+/*****************************************************************************
+ * cvg_sgwxadj
+ * 
+ * Adjusts the given VG element by the information given in the CAP data
+ * provided.
+ *
+ * Input parameters:
+ *  id          Handle          Handle for the 'base' part of the object
+ *  *el         VG_DBStruct     VG element to check for CAP information
+ *
+ * Output parameters:
+ *  *el         VG_DBStruct     Adjusted VG element 
+ *  *iret       int             Return code
+ *                                 0 = Function successful
+ *                                -1 = Invalid pointer in arguments
+ *
+ * Return value:
+ *  None
+ **
+ * Log:
+ * L. Hinson/AWC            1/12   Created
+ ****************************************************************************/
+{
+    Placement   place;
+    int         placed;
+    float     off_x, off_y, dx[MAXPTS], dy[MAXPTS], x_arrow[2], y_arrow[2];
+    int       np;  
+
+/*---------------------------------------------------------------------*/
+    id += 1;
+    cap_psgetpl(cvg_placements, id, &place, iret);
+    if (place) {
+        cap_plgetplaced(place, &placed, iret);
+        if (placed) {
+           cap_plgetoffset(place, &off_x, &off_y, iret);
+           
+           np = 1;
+           
+           dx[0] = el->elem.sgwx.info.textlat;
+           dy[0] = el->elem.sgwx.info.textlon;
+           
+           gtrans(sys_M, sys_D, &np, dx, dy,
+               &(dx[1]), &(dy[1]), iret, strlen(sys_M), strlen(sys_D));
+           dx[1] += off_x;
+           dy[1] += off_y;
+           gtrans(sys_D, sys_M, &np, &(dx[1]), &(dy[1]), 
+                   &(dx[0]), &(dy[0]), iret, strlen(sys_D), strlen(sys_M));
+           
+           el->elem.sgwx.info.textlat = dx[0];
+           el->elem.sgwx.info.textlon = dy[0];
+           
+           cap_plgetline(place, x_arrow, y_arrow, iret);
+           np = 1;
+           gtrans(sys_D, sys_M, &np, &(x_arrow[1]), &(y_arrow[1]), 
+                   &(dx[0]), &(dy[0]), iret, strlen(sys_D), strlen(sys_M));
+           
+           el->elem.sgwx.info.arrowlat = dx[0];
+           el->elem.sgwx.info.arrowlon = dy[0];
+                   
         }
     }
 }

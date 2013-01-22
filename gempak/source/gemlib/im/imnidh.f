@@ -42,8 +42,8 @@ C* S. Chiswell/Unidata	 6/04	Added non-raster/radial products	*
 C* S. Chiswell/Unidata	12/08	Added flip check when iprod lt 0	*
 C* S. Chiswell/Unidata	 2/10	Added TDWR/high res NIDS support        *
 C* M. James/Unidata	 2/10	Modified imdoff                         *
-C* M. James/Unidata     06/10   Moved label frequency logic to IMCBAR   *
-C* X. Guo/CWS           04/10   Added codes to support 94 product       *      
+C* M. James/Unidata	06/10	Moved label frequency logic to IMCBAR   *
+C* X. Guo/CWS		04/10   Added codes to support 94 product       *      
 C* X. Guo/CWS           05/10   Added IM_HRNIDH to handle the higher    *
 C*                              resolution products			*
 C************************************************************************
@@ -88,7 +88,7 @@ C*	Determine whether file needs bytes flipped. If so, swap and save
 C*	the four byte data values before flipping each two-byte pair.
 C*	The time variable crosses a word boundary, so treat it specially.
 C
-        IF ( ( iarr2 (1) .gt. 255 ) .or. ( iarr2 (1) .lt. 0 ) ) THEN
+        IF ( (iarr2 (1) .gt. 255) .or. (iarr2 (1) .lt. 0 )) THEN
             CALL MV_SWP4 ( 1, inhead (3), imlenf )
             CALL MV_SWP4 ( 1, inhead (6), iradlt )
             CALL MV_SWP4 ( 1, inhead (7), iradln )
@@ -245,7 +245,7 @@ C
      +		 ( iprod .eq. 51 ) .or.
      +		 ( iprod .eq. 52 ) .or.
      +		 ( iprod .eq. 85 ) .or.
-     +		 ( iprod .eq. 86 ) ) THEN
+     +		 ( iprod .eq. 86 )) THEN
 C
 		crossx = .true.
 C
@@ -299,7 +299,7 @@ C
 	isrc   = iarr2 (7)
 	CALL TB_NIDS  ( isrc, imtype, prdnam, nlev, units, res, desc,
      +			ierr )
-	IF  ( ierr .ne. 0 ) THEN
+	IF  ( ierr .ne. 0 )  THEN
 	    write(*,*) 'got a non-zero tbnids value ',iprod,ierr
 	    IF ( imrdfl .lt. 2 ) THEN
 		CALL ER_WMSG ( 'TB', ierr, ' ', ier )

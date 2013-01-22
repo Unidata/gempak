@@ -34,6 +34,8 @@ C*									*
 C**									*
 C* Log:									*
 C* G. McFadden/IMSG     09/10   Adapted from GG_ASCT                    *
+C* G. McFadden/IMSG     07/12   Added OAMBG1_HI, OAMBG2_HI, OAMBG3_HI,  *
+C*                              and OAMBG4_HI                           *
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 C*
@@ -228,11 +230,67 @@ C
 C
 C*	Draw the color bars.
 C
-	CALL GG_CBAR ( '1/H/UR/.95;.95/.35;.01/1|1/21//111///hw',
-     +			numclr, fwninc, icolrs, ier )
-	IF ( iflgs(1) .eq. 1 ) THEN
-            CALL GG_CBAR ('1/H/UR/.40;.95/.35;.01/1|1/21//111///hw',
-     +                   numclr, fwninc, icolrs2, ier )
+	IF ( filtyp .eq. 'OSCT' .or. filtyp .eq. 'OSCT_HI' ) THEN
+  	   CALL GG_CBAR ( '1/H/UR/.95;.95/.35;.01/1|1/21//111///hw',
+     +	                  numclr, fwninc, icolrs, ier )
+	ELSE
+C
+C*      Get plot bounds in View coordinates to determine ambiguity
+C*      label positions.  Save and set attributes for the labels.
+C
+         CALL GQBND ( 'V', xl, yb, xr, yt, ier )
+         xx = .725
+         xx = xx * ( xr - xl ) + xl
+         CALL GSCOLR ( 1, ier )
+         CALL GQTEXT ( itxfn, itxhw, sztext, itxwid, ibrdr,
+     +                 irrotn, ijust, iret )
+         CALL GSTEXT (21, 2, .85, 1, 111, 1, 1, ier)
+C
+         label1 = filtyp
+         IF ( filtyp .eq. 'OAMBG1_HI' ) THEN 
+            yy = .9 * ( yt - yb ) + yb
+            CALL GTEXT ( 'N', xx, yy, label1, 0., 0, 0, ier )
+            CALL GG_CBAR ( '1/H/UR/.98;.90/.2;.007/1|.714/21//111///hw',
+     +                     numclr, fwninc, icolrs, ier )
+         ELSE IF ( filtyp .eq. 'OAMBG2_HI' ) THEN 
+          yy = .865 * ( yt - yb ) + yb
+          CALL GTEXT ( 'N', xx, yy, label1, 0., 0, 0, ier )
+          CALL GG_CBAR ( '1/H/UR/.98;.865/.2;.007/1|.71/21//111///hw',
+     +                  numclr, fwninc, icolrs, ier )
+         ELSE IF ( filtyp .eq. 'OAMBG3_HI' ) THEN 
+          yy = .83 * ( yt - yb ) + yb
+          CALL GTEXT ( 'N', xx, yy, label1, 0., 0, 0, ier )
+          CALL GG_CBAR ( '1/H/UR/.98;.83/.2;.007/1|.714/21//111///hw',
+     +                   numclr, fwninc, icolrs, ier )
+         ELSE IF ( filtyp .eq. 'OAMBG4_HI' ) THEN
+          yy = .795 * ( yt - yb ) + yb
+          CALL GTEXT ( 'N', xx, yy, label1, 0., 0, 0, ier )
+          CALL GG_CBAR ( '1/H/UR/.98;.795/.2;.007/1|.72/21//111///hw',
+     +                  numclr, fwninc, icolrs, ier )
+         ENDIF
+         CALL GSTEXT ( itxfn, itxhw, sztext, itxwid, ibrdr,
+     +                 irrotn, ijust, iret )
+        ENDIF
+C
+C*	Draw the color bars for rained winds and rained ambiguities.
+C
+	IF ( iflgs(2) .eq. 1 ) THEN
+	   IF ( filtyp .eq. 'OSCT' .or. filtyp .eq. 'OSCT_HI' ) THEN
+              CALL GG_CBAR ('1/H/UR/.40;.95/.35;.01/1|1/21//111///hw',
+     +                      numclr, fwninc, icolrs2, ier )
+	   ELSE IF ( filtyp .eq. 'OAMBG1_HI' ) THEN
+            CALL GG_CBAR ('1/H/UR/.22;.90/.2;.007/1|.714/21//111///hw',
+     +                  numclr, fwninc, icolrs2, ier )
+ 	   ELSE IF ( filtyp .eq. 'OAMBG2_HI' ) THEN
+            CALL GG_CBAR ('1/H/UR/.22;.865/.2;.007/1|.714/21//111///hw',
+     +                  numclr, fwninc, icolrs2, ier )
+ 	   ELSE IF ( filtyp .eq. 'OAMBG3_HI' ) THEN
+            CALL GG_CBAR ('1/H/UR/.22;.83/.2;.007/1|.714/21//111///hw',
+     +                  numclr, fwninc, icolrs2, ier )
+ 	   ELSE IF ( filtyp .eq. 'OAMBG4_HI' ) THEN
+            CALL GG_CBAR ('1/H/UR/.22;.795/.2;.007/1|.714/21//111///hw',
+     +                  numclr, fwninc, icolrs2, ier )
+	   END IF
 	END IF
 C
 C*	Reset the saved attributes.

@@ -156,7 +156,6 @@ int main ( int argc, char **argv )
     dslw_readTable ("GRID", "mod_res.tbl");
     dslw_readTable ("VGF", "vgf.nmap");
     aodtw_readTable ( &iret );
-    /*nids_loadTable ( &iret );*/
 
 /*
  *  Initilize.

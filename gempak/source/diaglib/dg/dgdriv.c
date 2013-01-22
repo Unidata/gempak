@@ -95,6 +95,9 @@ void dg_driv ( const int *itype, int *iret )
  * G. McFadden/SAIC      3/09   Added DV_GCIR				*
  * G. McFadden/SAIC      9/09   Added DV_GCWV				*
  * K. Brill/HPC		12/10	Added DV_VESD				*
+ * C. Melick/SPC         8/11   Added DV_PVR3				*
+ * K. Brill/HPC         05/12	Added DF_RDFS and DV_RDFV		*
+ * C. Melick/SPC	 6/12	Added DF_NMAX, DF_NMIN			*
  ************************************************************************/
 {
     char func[17];
@@ -162,6 +165,8 @@ void dg_driv ( const int *itype, int *iret )
 		    df_sm5s ( iret );
 		} else if  ( strcmp ( func, "GWFS" ) == 0 ) {
 		    df_gwfs ( iret );
+		} else if  ( strcmp ( func, "RDFS" ) == 0 ) {
+		    df_rdfs ( iret );
 		} else if  ( strcmp ( func, "SM9S" ) == 0 ) {
 		    df_sm9s ( iret );
 		} else if ( strcmp ( func, "SAVS" ) == 0 ) {
@@ -328,12 +333,16 @@ void dg_driv ( const int *itype, int *iret )
 		    df_sgmx  ( iret );
 		} else if  ( strcmp ( func, "SGMN" ) == 0 )  {
 		    df_sgmn  ( iret );
-                } else if  ( strcmp ( func, "CAPE" ) == 0 )  {
-                    df_prcl  ( func, iret );
-                } else if  ( strcmp ( func, "CINS" ) == 0 )  {
-                    df_prcl  ( func, iret );
-                } else if  ( strcmp ( func, "RELI" ) == 0 ) {
-                    df_reli ( iret );
+		} else if  ( strcmp ( func, "NMAX" ) == 0 )  {
+		    df_nmax  ( iret );
+		} else if  ( strcmp ( func, "NMIN" ) == 0 )  {
+		    df_nmin  ( iret );
+		} else if  ( strcmp ( func, "CAPE" ) == 0 )  {
+		    df_prcl  ( func, iret );
+		} else if  ( strcmp ( func, "CINS" ) == 0 )  {
+		    df_prcl  ( func, iret );
+		} else if  ( strcmp ( func, "RELI" ) == 0 ) {
+		    df_reli ( iret );
 
 		/*
 		 * DV functions.
@@ -348,6 +357,8 @@ void dg_driv ( const int *itype, int *iret )
 		    dv_avor ( iret );
 		} else if ( strcmp ( func, "PVOR" ) == 0 ) {
 		    dv_pvor ( iret );
+		} else if ( strcmp ( func, "PVR3" ) == 0 ) {
+		    dv_pvr3 ( iret );
 		} else if ( strcmp ( func, "GEO" ) == 0 ) {
 		    dv_geo ( iret );
 		} else if ( strcmp ( func, "AGE" ) == 0 ) {
@@ -356,6 +367,8 @@ void dg_driv ( const int *itype, int *iret )
 		    dv_sm5v ( iret );
 		} else if  ( strcmp ( func, "GWFV" ) == 0 ) {
 		    dv_gwfv ( iret );
+		} else if  ( strcmp ( func, "RDFV" ) == 0 ) {
+		    dv_rdfv ( iret );
 		} else if ( strcmp ( func, "VAVS" ) == 0 ) {
 		    dv_vavs ( iret );
 		} else if  ( strcmp ( func, "GRAD" ) == 0 ) {

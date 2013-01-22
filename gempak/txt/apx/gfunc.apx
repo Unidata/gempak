@@ -16,9 +16,9 @@ a few exceptions:  Certain special parameters will be computed
 from other data in the grid file if the parameter name itself is
 not found in the grid file.  These special scalar parameters are 
 
-   TMPK    DWPK    TVRK    MIXR*   THTA*   DRCT    TMWK*
-   TMPC    DWPC    TVRC    SMXR    STHA    SPED    TMWC
-   TMPF    DWPF    TVRF    MIXS    THTE*   RELH    TMWF
+   TMPK    DWPK    TVRK    MIXR*   THTA*   DRCT    TMWK*   THWK 
+   TMPC    DWPC    TVRC    SMXR    STHA    SPED    TMWC    THWC*
+   TMPF    DWPF    TVRF    MIXS    THTE*   RELH    TMWF    THWF
                    THES*   SMXS    STHE               
 
 where * indicates names which also may be used as operators.
@@ -337,6 +337,28 @@ NORM  Scalar vector component normal to a cross section
                    on the left, the unit normal vector points 
                    into the cross section plane.
  
+NMAX  Neighborhood maximum value for a radius of influence
+      NMAX ( S, ROI ).  ROI is expressed in meters.
+      Note:  Masking could be used [e.g., SGT(S1,S2)] to subset
+      and filter the scalar grid (S) beforehand to allow for faster 
+      processing.
+      Warning: The radius of influence should be chosen wisely
+      on a high resolution grid where high computational costs could
+      result.  Any negative ROI will be set to zero (i.e. at the grid 
+      point) and half the distance in the X direction will serve as the 
+      upper limit.  
+
+NMIN  Neighborhood minimum value for a radius of influence
+      NMIN ( S, ROI ).  ROI is expressed in meters.
+      Note:  Masking could be used [e.g., SGT(S1,S2)] to subset
+      and filter the scalar grid (S) beforehand to allow for faster 
+      processing.
+      Warning: The radius of influence should be chosen wisely
+      on a high resolution grid where high computational costs could
+      result.  Any negative ROI will be set to zero (i.e. at the grid 
+      point) and half the distance in the X direction will serve as the
+      upper limit.
+
 PLAT  Latitude at each point in polar coordinates
       PLAT ( S )  Note: only the header, which contains the center
                         latitude and longitude, is used.
@@ -369,6 +391,16 @@ PVOR  Potential vorticity in a layer
 		   the scalar operand, S, is THTA, THTE, or THES.  In
 		   isentropic coordinates, the scalar operand, S, is
 		   PRES.  Multiplying by 10**6 gives standard PV units.
+
+PVR3  3-D Potential vorticity for a level
+      PVR3 ( S, V ) = - CONSTANT * 3D-VOR ( V ) * 3D-GRAD ( S ) 
+                   Units are Kelvins / meters / Pascals / seconds**3
+		   PVR3 works on a level in PRES or HGHT coordinates.  
+                   The constant used is GRAVTY in PRES and is inversly
+                   related to DDEN (density) in HGHT.  The scalar 
+                   operand, S, is THTA, THTE, THWK, or THES. The 
+                   vector, V, has to be GEO or WND.  Multiplying 
+                   by 10**6 gives standard PV units.
  
 RELH  Relative humidity
       RELH  ( TEMP, DWPT ) = PR_RELH ( TEMP, DWPT )

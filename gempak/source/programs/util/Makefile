@@ -23,6 +23,7 @@ SUBDIRS = \
 	mdp \
 	mdpspc \
 	mkelev \
+	ndinfo \
 	nesdis \
 	nodt \
 	prob2cat \
@@ -33,7 +34,6 @@ SUBDIRS = \
 	sfcsplt \
 	spenes \
 	spctxt \
-	tag2vgf \
 	tcacancel \
 	tpc2shp \
 	tran2fos \

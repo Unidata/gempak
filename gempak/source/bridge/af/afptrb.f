@@ -31,6 +31,8 @@ C* J. Ator/NP12		08/97	New interface format, style changes	*
 C* D. Kidwell/NCEP	 6/99	Added frequency, type, document turb.   *
 C* D. Kidwell/NCEP	 7/99	Used flight level if heights missing,   *
 C*				changed meters to feet in prologue      *
+C* S. Jacobs/NCEP	 9/12	Set heights to missing if intensity=0	*
+C*				or is itself missing			*
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 	INCLUDE		'afcmn.cmn'
@@ -78,9 +80,14 @@ C
 C
 C*		If heights are missing, use flight level.
 C
-		IF ( ERMISS ( hbot ) .and. ERMISS ( htot ) ) THEN
-		    hbot = rivals ( irflvl )
-		    htot = rivals ( irflvl )
+		IF ( dgot .gt. 0 ) THEN
+		    IF ( ERMISS ( hbot ) .and. ERMISS ( htot ) ) THEN
+			hbot = rivals ( irflvl )
+			htot = rivals ( irflvl )
+		    END IF
+		ELSE
+		    hbot = RMISSD
+		    htot = RMISSD
 		END IF
 C
 		ntrb = ntrb + 1

@@ -20,14 +20,17 @@ item1 *llist_bubble_sort_cloud_turb(item1 *curr2);
 item1 *llist_bubble_sort_contour_group(item1 *curr2);
 char  *getGroupType(int grptyp);
 char  *getSymType(VG_DBStruct *el);
+void getMatchContAttr(char *tblArray[], int *grpColor, char* contArray[], int tblArrayLen, int *ier);
+void getMatchGrptyp(char *lineGrptyp[], int *grptyp, int lineGrptypLen, char* grptypArray[], int *ier);
 void cgr_segdist ( int *np, float *xx, float *yy, float *fx, float *fy,
      float *distance, int *nearest_vrt, int *next_vrt, float *nx, float *ny, int *iret );
 
-void convertElm(item1 *curr2, char *buffer, FILE *ofptr);
+void convertElm(item1 *curr2, char *buffer, FILE *ofptr, char *tblArray[], int tblArrayLen);
+void getCcf(VG_DBStruct *el, char *buffer, int *ier);
 void getWatch(VG_DBStruct *el, char *buffer, int *grpNum, int *ier);
-void getContour(VG_DBStruct *el, char *buffer, int *contText, int *grpNum, int *grpColor, int *ier);
+void getContour(VG_DBStruct *el, char *buffer, int *contText, int *grpNum, int *grpColor, char *tblArray[], int tblArrayLen, int *ier);
 void getSymLab(VG_DBStruct *el, char *buffer, int *symText, int *grpNum, int *ier);
-void getOutlooks(VG_DBStruct *el, char *buffer, int *outlookText, int *grpNum, int *ier);
+void getOutlooks(VG_DBStruct *el, char *buffer, char* outType, int *outlookText, int *grpNum, int *ier);
 void getCommonCollection(VG_DBStruct *el, char *buffer, int *commonText, int *grpNum, int *ier);
 void getCloud(VG_DBStruct *el, char *buffer, int *cloudText, int *grpNum, int *grpInit, int *ier);
 void getTurb(VG_DBStruct *el, char *buffer, int *turbText, int *grpNum, int *grpInit, int *ier);
@@ -36,7 +39,7 @@ void writeEndingCollection(VG_DBStruct *el, FILE *ofptr, int *grpNum, int *grpIn
 void writeEndingAsh(VG_DBStruct *el, FILE *ofptr, int *ier);
 
 
-int vgfToXml(char *vgfn, char *asfn)
+int vgfToXml(char *vgfn, char *asfn, char *activity, char *subActivity, char *contTbl)
 
 /********************************************************************************
  * VGF2XML									*
@@ -46,22 +49,28 @@ int vgfToXml(char *vgfn, char *asfn)
  *										*
  *										*
  * Log: 									*
- * Q. Zhou/Chug         01/10   modified from vgf2tag to generate xml   	*
- * Q. Zhou/Chug         06/10   Added tag handling for collections      	*
- * Q. Zhou/Chug         09/10   Added method to read all els to a list. 	*
+ * Q.Zhou /Chug         01/10   modified from vgf2tag to generate xml   	*
+ * Q.Zhou /Chug         06/10   Added tag handling for collections      	*
+ * Q.Zhou /Chug         09/10   Added method to read all els to a list. 	*
  *                              Added method to sort the list           	*
- * Q. Zhou/Chug         10/10   Increased sort conditions for Cloud grp 	*
+ * Q.Zhou /Chug         10/10   Increased sort conditions for Cloud grp 	*
  *                              Added Cloud, Outlook, volcano, ccfp...  	*
- * Q. Zhou/Chug         12/10   Handle grptyp 5,6,8 to contour, symLabel	*
+ * Q.Zhou /Chug         12/10   Handle grptyp 5,6,8 to contour, symLabel	*
  *                              Symbol H,L with grptyp 5,6 are contour  	*
- * Q. Zhou/Chug         12/10   Added sort for contour w. grouped lines 	*
- * Q. Zhou/Chug         02/11   Handled contour line & text n*n match   	*
+ * Q.Zhou /Chug         12/10   Added sort for contour w. grouped lines 	*
+ * Q.Zhou /Chug         02/11   Handled contour line & text n*n match   	*
  *				Add common collection for cave non handled grps *
- * Q. Zhou/Chug         02/11   Added/modified watch box ending tag     	*
+ * Q.Zhou /Chug         02/11   Added/modified watch box ending tag     	*
  *				Modified common collection for cloud, outlook.. * 
- * Q. Zhou/Chug         04/11   Added grptyp 9(Tropical),27(Isobars) to contours*
+ * Q.Zhou /Chug         04/11   Added grptyp 9(Tropical),27(Isobars) to contours*
  *                              Refined contour, outlook, common collection rule*
- * 										*
+ * Q.Zhou /Chug		11/11   Added parameter activity and subActivity.       *
+ *                              Changed CCF to add collection and contents      *
+ * Q.Zhou /Chug		12/11   Added contour attrubutes. Added read from table *
+ * Q.Zhou /Chug		12/11   Handled vgf delete situation                    *
+ *                              Handled group with single symbol -- normal DE   *
+ * Q.Zhou /Chug		03/12   Added grptyp & contour to the commandline table *
+ * Q.Zhou /Chug         06/12   Added head only vgf conversion                  *
  ********************************************************************************/
 {
 int		nw, more, ier;
@@ -73,8 +82,10 @@ long		ifilesize;
 FILE		*ifptr, *ofptr;
 
 item1           *curr2, *head1, *head2; /* head1=begin, head2=end */
+
 /*---------------------------------------------------------------------*/
 
+/* Opening VGF file  */
     wrtflg = 0;
     cvg_openj ( vgfn, wrtflg, &(ifptr), &ier );
 
@@ -84,6 +95,7 @@ item1           *curr2, *head1, *head2; /* head1=begin, head2=end */
     }
 
     cfl_inqr ( vgfn, NULL, &ifilesize, ifname, &ier );
+
     ofptr = cfl_wopn ( asfn, &ier );
 
     nw = 0;
@@ -91,78 +103,130 @@ item1           *curr2, *head1, *head2; /* head1=begin, head2=end */
     curpos = 0;
     ifptr = (FILE *) cfl_ropn(ifname, "", &ier);
    
-    /* Read file header. if next record is volcano or ash, don't write the file header*/
-    cvg_rdjrecnoc( ifname, ifptr, curpos, &el, &ier );
-    if ( ier >= 0 && el.hdr.recsz == 424)  {  //file header
-	//check volcano, assume the file has volcano and ash only
-    	curpos += el.hdr.recsz;  /*424*/
-	cvg_rdjrecnoc( ifname, ifptr, curpos, &el, &ier );
+/* Get productType string  */
+    char *productType;
+    productType = (char *)malloc(128);
 
-	if ( ier >= 0 && el.hdr.vg_type !=  VOLC_ELM && el.hdr.vg_type != ASHCLD_ELM )  {
-
-	    //go back to first record
-	    curpos -= 424;
-	    cvg_rdjrecnoc( ifname, ifptr, curpos, &el, &ier );
-	    if (ier ==0)
- 	        cvg_v2x ( &el, buffer, &ier );
-
-	    if ( ier == 0)
-	    	cfl_writ ( ofptr, (int)strlen(buffer), (unsigned char*)buffer, &ier );
-	}
-
-	curpos = 424; /*header file size is 424.  SKIP header*/    
+    if (activity != NULL && strlen(activity) != 0 && strcmp(activity, "Default")!=0 && strcmp(activity, "default")!=0) {
+	if (subActivity != NULL && strlen(subActivity) != 0 
+		&& strcmp(subActivity, "Default")!=0 && strcmp(subActivity, "default")!=0)
+	    sprintf(productType, "%s%s%s%s", activity, "(", subActivity, ")");
+	else
+	    productType = activity;
     }
+    else {
+	productType = "Default";
+    }   
 
     
-    /*read rest of the file */
+/* Get contour table file if it is not empty  */
+    char *tblArray[64];   //store vgfConvert.tbl info
+    
+    int i = 0;
+    char fname[128], contTitle[256]=""; 
+    FILE *fptr;
+    long filesize;
+    int iret; 
+   
+    if (contTbl != NULL && strcmp(contTbl, "") != 0) {
+    	cfl_inqr ( contTbl, NULL, &filesize, fname, &iret );  	
+    	fptr = (FILE *) cfl_ropn(fname, "", &iret);
+
+    	if (iret == 0) {
+	    while (!feof ( fptr ) ) {
+
+    	    	cfl_rdln( fptr, sizeof(contTitle), contTitle, &iret );
+		if ( iret == 0 && contTitle[0] != '!') {
+		    tblArray[i] = (char*)malloc(sizeof(contTitle));
+		    strcpy(tblArray[i], contTitle);		
+		    
+		    i++;
+		} 
+	    }
+    	}
+	fclose(fptr);
+    }
+    //printf("nofile %s\n",*tblArray);
+
+/* Read file header */
+    cvg_rdjrecnoc( ifname, ifptr, curpos, &el, &ier );
+
+    if (el.hdr.vg_type == FILEHEAD_ELM) {   
+	
+    	sprintf( buffer, "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n  <Products xmlns:ns2=\"http://www.example.org/productType\" xmlns:ns3=\"group\">\n    <Product name=\"%s\" type=\"%s\" forecaster=\"Default\" center=\"Default\" onOff=\"true\" useFile=\"true\" filePath=\"\" fileName=\"\">\n      <Layer name=\"Default\" onOff=\"true\" monoColor=\"false\" filled=\"false\">\n        <Color red=\"255\" green=\"255\" blue=\"0\" alpha=\"255\"/>\n        <DrawableElement>\n", productType, productType);
+	
+    	cfl_writ ( ofptr, (int)strlen(buffer), (unsigned char*)buffer, &ier );
+   	curpos += el.hdr.recsz;  //424
+	//can't  free (productType);
+    }
+
+
+/* Read rest of the file */
     /*init list*/
     head1 = NULL;
     head2 = NULL;
     curr2 = NULL;
 
-    cvg_rdjrecnoc( ifname, ifptr, curpos, &el, &ier );
-    if ( ier == 0 )  {
-    	curpos += el.hdr.recsz;
-    	curr2 = (item1 *)malloc(sizeof(item1));
-    	curr2->el =el;
-    	head1 = head2 = curr2;
-    	head1->next = NULL;
-	nw = 1;
-
-    	while ( nw < MAX_EDITABLE_ELEMS && more == G_TRUE )  {
+    while ( nw < MAX_EDITABLE_ELEMS && more == G_TRUE )  {
 	    cvg_rdjrecnoc( ifname, ifptr, curpos, &el, &ier );
 
 	    if ( ier < 0 )  {
                 more = G_FALSE;
 	    }
 	    else {
-		if (curr2->el.hdr.vg_type != FILEHEAD_ELM) {
-	    	curpos += el.hdr.recsz;
-	    	curr2 = (item1 *)malloc(sizeof(item1));     		
-	    	curr2->el =el;
-	    	//add curr2		
-	    	head2->next = curr2;
-	    	head2 = curr2;
-	    	head2->next = NULL;
+		if (el.hdr.vg_type != FILEHEAD_ELM && el.hdr.delete ==0) {
+	    	    curpos += el.hdr.recsz;
+	    	    curr2 = (item1 *)malloc(sizeof(item1));     		
+	    	    curr2->el =el;
+
+	    	    //add curr2	to head1 head2 list
+		    if (head1 == NULL) {
+    			head1 = head2 = curr2;
+    			head1->next = NULL;
+		    }
+		    else {	
+	    	    	head2->next = curr2;
+	    	    	head2 = curr2;
+	    	    	head2->next = NULL;
+		    }
 		}
-		else
+		else if (el.hdr.vg_type == FILEHEAD_ELM && el.hdr.delete ==0) { //second FILEHEAD, stop
 		    break;
+		}
+		else {          // don't read if delete !=0
+		    curpos += el.hdr.recsz;
+		}
       	    }
  	    nw++;			
-    	}
     }
 
-    /* sort */
+    if (nw == 1) { //only FILEHEAD_ELM
+        sprintf( buffer, "        </DrawableElement>\n      </Layer>\n    </Product>\n  </Products>\n");
+
+    	cfl_writ ( ofptr, (int)strlen(buffer), (unsigned char*)buffer, &ier );
+    	printf("The vgf file %s has no Pgen content.\n", vgfn);
+    	fclose(ofptr);
+
+    	return ( 0 );
+    }
+
+/* sort */
     if (nw > 1) {
      	head1 = llist_bubble_sort(head1); 
-    
+   
     	/* sort cloud and turb further more */
      	head1 = llist_bubble_sort_cloud_turb(head1); 
     }
-   
+
     curr2 = head1;
-    convertElm(curr2, buffer, ofptr);
+    convertElm(curr2, buffer, ofptr, tblArray, i);
   
+    // free spaces
+    int j = 0;
+    for (j=0; j<i; j++)
+	free (tblArray[j]);
+
+    //can't free(curr2);
     fclose(ofptr);
     
     return ( 0 );
@@ -170,7 +234,7 @@ item1           *curr2, *head1, *head2; /* head1=begin, head2=end */
 }
 
 
-void convertElm(item1 *curr2, char *buffer, FILE *ofptr) {
+void convertElm(item1 *curr2, char *buffer, FILE *ofptr, char *tblArray[], int tblArrayLen) {
     int ier;
     int nw = 0;
     char *xml_end = "";   /* last few tags */
@@ -178,14 +242,51 @@ void convertElm(item1 *curr2, char *buffer, FILE *ofptr) {
     int hasOutlook = 0;   /* =1 means has outlook */
     int hasMultiLine = 0; /* =1 means contour lines have same grptyp and grpnum; */
     int hasSameElm = 1;   /* =1 means there are only lines, or texts, or makers. =0 means mixed */
+
     item1 *head;
+
+    int contText = 0;/* contour text flag. contText =1, line drawed. =2, text drawed; =3, sym drawed */
+    int symText = 0;    /* symbol label flag */  
+    int outlookText = 0;/* outlook text flag. outlookText =1, line drawed */
+    int commonText = 0; /* common collection label flag */  
+    int cloudText = 0;  /* cloud flag. cloudText =1, line drawed */
+    int turbText = 0;   /* turb flag. turbText =1, line drawed */
+
+    int grpNum = 0;  /* first collection indicator, associate with grpnum */
+    int grpColor =0; /* for contours. If grpColor incr. then contour number incr.*/
+    int grpInit = 0; /* for cloud, turb. sub collection indicator, inside one grpnum. */
+    int vol = 0;     /* volcano flag */
+    int ashFhr = -1; /* ash flag */
+    
+    char *lineGrptyp[32]; 	//store only the grptyp rows in vgfConvert.tbl
+    char* grptypArray[3] = {"0", "default", "default"}; //equivalent to one row of lineGrptyp
+   	
+    int i=0, j=0;
+    if (tblArrayLen != 0) {
+    	for (i=0; i<tblArrayLen; i++) {
+
+	    if (tblArray[i][0] == 'g') {
+	    	lineGrptyp[j] = (char*)malloc(strlen(tblArray[i])+1);
+	    	strcpy(lineGrptyp[j], tblArray[i]);	
+	
+	    	j++;
+	    }	
+	}
+    }
 
     /* already sorted to typ, num, vg_typ */
     /* check if it has contour: grptyp=8 and have line+tex in 1 group */
     head = curr2;
 
     while (curr2) {
-	if (curr2->el.hdr.grptyp ==8
+ 	/* find matching grptyp from vgfConvert.tbl. 
+		grptypArray[0]=grptyp, grptypArray[1]=convertToType, grptypArray[2]=pgenType. grptypArray default to 0, default, default.
+		Need to check convertTo type grptypArray[1] against 'default' */
+	    int gt = curr2->el.hdr.grptyp;
+	    if (j != 0 && gt >0 && curr2->el.hdr.grpnum >0)
+    	    	getMatchGrptyp(lineGrptyp, &gt, j, grptypArray, &ier);
+
+	if (curr2->el.hdr.grptyp ==8 && strcmp (grptypArray[1], "default") ==0
 	    && (curr2->el.hdr.vg_type == LINE_ELM || curr2->el.hdr.vg_type == CIRCLE_ELM 
 		|| curr2->el.hdr.vg_type == SPLN_ELM)
 	    && curr2->next != NULL && curr2->next->el.hdr.grptyp ==8 
@@ -194,19 +295,20 @@ void convertElm(item1 *curr2, char *buffer, FILE *ofptr) {
 	    && curr2->el.hdr.grpnum == curr2->next->el.hdr.grpnum ) {
 		
 	    	hasContour = 1;
-		printf("+++ Contours founded.\n");
+		grpColor = curr2->el.hdr.maj_col;
+		printf("+ Contours founded.\n");
 	    	break;
 	}
 
-	if ((curr2->el.hdr.grptyp ==7 || curr2->el.hdr.grptyp ==12 || curr2->el.hdr.grptyp ==13
+	if ((curr2->el.hdr.grptyp ==7 || curr2->el.hdr.grptyp ==9 || curr2->el.hdr.grptyp ==12 || curr2->el.hdr.grptyp ==13
 		|| curr2->el.hdr.grptyp ==14 || curr2->el.hdr.grptyp ==16 || curr2->el.hdr.grptyp ==24)
 	    && (curr2->el.hdr.vg_type == LINE_ELM || curr2->el.hdr.vg_type == SPLN_ELM)
 	    && curr2->next != NULL && curr2->el.hdr.grptyp == curr2->next->el.hdr.grptyp 
 	    && curr2->next->el.hdr.vg_type == SPTX_ELM
 	    && curr2->el.hdr.grpnum == curr2->next->el.hdr.grpnum ) {
 		
-	    	hasOutlook = 1;
-		printf("+++ Outlooks founded.\n");
+	    	hasOutlook = 1; //not used
+		printf("+ Outlooks founded.\n");
 	    	break;
 	}
 	curr2 = curr2->next;	
@@ -215,7 +317,8 @@ void convertElm(item1 *curr2, char *buffer, FILE *ofptr) {
     /* check if contour lines are grouped together */
     curr2 = head;
     while (curr2) {
-	if ((curr2->el.hdr.grptyp ==8 )
+	
+	if ((curr2->el.hdr.grptyp ==8 ) 
  	    && (curr2->el.hdr.vg_type == LINE_ELM || curr2->el.hdr.vg_type == SPLN_ELM
 	    	|| curr2->el.hdr.vg_type == CIRCLE_ELM )
 	    && curr2->next != NULL && (curr2->next->el.hdr.vg_type == LINE_ELM 
@@ -234,7 +337,7 @@ void convertElm(item1 *curr2, char *buffer, FILE *ofptr) {
     curr2 = head;
     while (curr2 ) {
 	if (curr2->el.hdr.vg_type == VOLC_ELM || curr2->el.hdr.vg_type == ASHCLD_ELM
-	    || curr2->el.hdr.vg_type == WBOX_ELM	    
+	    || curr2->el.hdr.vg_type == WBOX_ELM || curr2->el.hdr.vg_type == SIGCCF_ELM	    
 	    || (curr2->next != NULL //&& curr2->el.hdr.grptyp >0
 		//&& curr2->el.hdr.grpnum == curr2->next->el.hdr.grpnum
 		&& curr2->el.hdr.vg_type != curr2->next->el.hdr.vg_type)) {
@@ -246,37 +349,32 @@ void convertElm(item1 *curr2, char *buffer, FILE *ofptr) {
 	curr2 = curr2->next;
     }
 
+
     /* sort contour grouped lines to line,text,line,text order */
     curr2 = head;
     if (hasMultiLine ==1 && hasSameElm ==0)
     	head = llist_bubble_sort_contour_group(head);
 
-    /* test printing */
-    /*curr2 = head;
+    /* test sorting */
+/*    curr2 = head;
     while (curr2) {
 	printf("The elements after sort: %d\n", curr2->el.hdr.vg_type);
 	//printf("The lat: %f\n", curr2->el.elem.lin.latlon[0]);
 	curr2 = curr2->next;
-    }*/
-    	
+    }
+*/    	
 
     /* write xml */
-    int contText = 0;/* contour text flag. contText =1, line drawed. =2, text drawed; =3, sym drawed */
-    int symText = 0;    /* symbol label flag */  
-    int outlookText = 0;/* outlook text flag. outlookText =1, line drawed */
-    int commonText = 0; /* common collection label flag */  
-    int cloudText = 0;  /* cloud flag. cloudText =1, line drawed */
-    int turbText = 0;   /* turb flag. turbText =1, line drawed */
 
-    int grpNum = 0;  /* first collection indicator, associate with grpnum */
-    int grpColor =0; /* for contours. If grpColor incr. then contour number incr.*/
-    int grpInit = 0; /* for cloud, turb. sub collection indicator, inside one grpnum. */
-    int vol = 0;     /* volcano flag */
-    int ashFhr = -1; /* ash flag */
-    
     curr2 = head;    
     while (curr2) {
  	if ( curr2->el.hdr.recsz > 0 )  {
+	    /* find matching grptyp from vgfConvert.tbl. 
+		grptypArray[0]=grptyp, grptypArray[1]=convertToType, grptypArray[2]=pgenType. grptypArray default to 0, default, default.
+		Need to check convertTo type grptypArray[1] against 'default' */
+	    int gt = curr2->el.hdr.grptyp;
+	    if (j != 0 && gt >0 && curr2->el.hdr.grpnum >0)
+    	    	getMatchGrptyp(lineGrptyp, &gt, j, grptypArray, &ier);
 
 	    /* grptyp>0, but there are only lines, or texts, or one kind elements */
 	    if (hasSameElm ==1)
@@ -290,18 +388,19 @@ void convertElm(item1 *curr2, char *buffer, FILE *ofptr) {
 	    else if (curr2->el.hdr.vg_type == VOLC_ELM || curr2->el.hdr.vg_type == ASHCLD_ELM ) 
 		getVolc(&(curr2->el), buffer, &vol, &ashFhr, &ier);
 	 		   
+	    /* CCF */
+	    else if ( curr2->el.hdr.vg_type == SIGCCF_ELM) {
+		getCcf(&(curr2->el), buffer, &ier);}
+
 	    /* grptyp =0 and not collection  //curr2->el.hdr.grpnum <= 0*/
 	    else if ( curr2->el.hdr.grptyp == 0 || curr2->el.hdr.vg_type == GFA_ELM
-		|| curr2->el.hdr.vg_type == TCA_ELM ||curr2->el.hdr.vg_type == SIGCCF_ELM) 
+		|| curr2->el.hdr.vg_type == TCA_ELM )
 		cvg_v2x ( &(curr2->el), buffer, &ier ); 
 
 	    /* Cloud group */
-	    else if (curr2->el.hdr.grptyp == 1 ) {
+	    else if (curr2->el.hdr.grptyp == 1 || atoi(grptypArray[0]) == 1) {
 		// only cloud lines in a group
 		
-		    /*printf("+++ This record, starting with point ");
-		    printf("%f %f",curr2->el.elem.spl.latlon[0], curr2->el.elem.spl.latlon[curr2->el.elem.spl.info.numpts]);
-		    printf(", couldn't be converted to Cloud. Convert it to normal collection.\n");*/ 
 		if (cloudText != 0 //curr2->el.hdr.vg_type == SPTX_ELM 
 		    || (curr2->el.hdr.vg_type == SPLN_ELM && curr2->el.elem.spl.info.spltyp == 3)
 		    || (curr2->el.hdr.vg_type == SPLN_ELM && curr2->el.elem.spl.info.spltyp == 4 
@@ -309,25 +408,14 @@ void convertElm(item1 *curr2, char *buffer, FILE *ofptr) {
 		    getCloud(&(curr2->el), buffer, &cloudText, &grpNum, &grpInit, &ier);
 		}
 		else {
-		    printf("+++ Unexpected contents for group type CLOUD. Converting to default collection.\n");
+		    printf("+ Unexpected contents for group type CLOUD. Converting to default collection.\n");
 		    getCommonCollection(&(curr2->el), buffer, &commonText, &grpNum, &ier);
 		}
 	    }
 		
 	    /* Turb group */
-	    else if (curr2->el.hdr.grptyp == 2) {
-		// only cloud lines in a group
-		/*if (((curr2->el.hdr.vg_type == LINE_ELM || curr2->el.hdr.vg_type == SPLN_ELM)
-			&& curr2->next == NULL)
-		    || ((curr2->el.hdr.vg_type == LINE_ELM || curr2->el.hdr.vg_type == SPLN_ELM)
-			&& curr2->next != NULL 
-			&& (curr2->el.hdr.grptyp != curr2->next->el.hdr.grptyp 
-			    || curr2->el.hdr.grpnum != curr2->next->el.hdr.grpnum))) {
-
-		    printf("+++ This turbulence line is not a Turbulence. Convert it to normal collection.\n");
-		    getCommonCollection(&(curr2->el), buffer, &commonText, &grpNum, &ier);
-		} 
-		else */if (turbText != 0 //curr2->el.hdr.vg_type == SPTX_ELM 
+	    else if (curr2->el.hdr.grptyp == 2 || atoi(grptypArray[0]) == 2) {
+		if (turbText != 0 //curr2->el.hdr.vg_type == SPTX_ELM 
 		    || curr2->el.hdr.vg_type == LINE_ELM 
 		    || (curr2->el.hdr.vg_type == SPLN_ELM && curr2->el.elem.spl.info.spltyp ==4 
 			&& turbText !=0)) {
@@ -335,15 +423,57 @@ void convertElm(item1 *curr2, char *buffer, FILE *ofptr) {
 		    getTurb(&(curr2->el), buffer, &turbText, &grpNum, &grpInit, &ier);
 		}
 		else {
-		    printf("+++ Unexpected contents for group type TURB. Converting to default collection.\n");
+		    printf("+ Unexpected contents for group type TURB. Converting to default collection.\n");
 		    getCommonCollection(&(curr2->el), buffer, &commonText, &grpNum, &ier);
 		}
 	    }
+
+	    /* outlook group */
+	    else if (curr2->el.hdr.grptyp ==7 || atoi(grptypArray[0]) == 7
+			|| curr2->el.hdr.grptyp ==9 || atoi(grptypArray[0]) == 9
+			|| (curr2->el.hdr.grptyp >=12 && curr2->el.hdr.grptyp <=14) || (atoi(grptypArray[0]) >=12 && atoi(grptypArray[0]) <=14)
+			|| curr2->el.hdr.grptyp ==16 || atoi(grptypArray[0]) == 16 
+			|| curr2->el.hdr.grptyp ==24 || atoi(grptypArray[0]) == 24) {
+
+		// only outlook lines in a group
+		/*if (((curr2->el.hdr.vg_type == SPLN_ELM || curr2->el.hdr.vg_type == LINE_ELM) && curr2->next == NULL)
+		    || ((curr2->el.hdr.vg_type == SPLN_ELM || curr2->el.hdr.vg_type == LINE_ELM) && curr2->next != NULL 
+			&& ((curr2->next->el.hdr.vg_type == SPLN_ELM || curr2->next->el.hdr.vg_type == LINE_ELM)
+			    || curr2->el.hdr.grptyp != curr2->next->el.hdr.grptyp 
+			    || curr2->el.hdr.grpnum != curr2->next->el.hdr.grpnum))) {
+
+		    printf("+ This outlook line is not an Outlook. Convert it to normal collection.\n");
+		    getCommonCollection(&(curr2->el), buffer, &commonText, &grpNum, &ier);
+		} */
+		if ( ((curr2->el.hdr.vg_type == SPLN_ELM || curr2->el.hdr.vg_type == LINE_ELM)
+		    	&& curr2->next != NULL 
+			&& curr2->el.hdr.grpnum == curr2->next->el.hdr.grpnum 
+			&& (curr2->next->el.hdr.vg_type == SPTX_ELM 
+			    || curr2->el.hdr.vg_type == CTSYM_ELM || curr2->el.hdr.vg_type ==ICSYM_ELM
+			    || curr2->el.hdr.vg_type == PTSYM_ELM || curr2->el.hdr.vg_type == PWSYM_ELM
+			    || curr2->el.hdr.vg_type == SKSYM_ELM || curr2->el.hdr.vg_type == SPSYM_ELM
+			    || curr2->el.hdr.vg_type == TBSYM_ELM || curr2->el.hdr.vg_type == WXSYM_ELM
+			    || curr2->el.hdr.vg_type == MARK_ELM || curr2->el.hdr.vg_type == CMBSY_ELM
+			    || curr2->el.hdr.vg_type == LINE_ELM || curr2->el.hdr.vg_type == SPLN_ELM) )
+		    	|| outlookText != 0) {
 		
+		    	getOutlooks(&(curr2->el), buffer, grptypArray[2], &outlookText, &grpNum, &ier);		   
+		}
+		
+		else {
+		    printf("+ Unexpected contents for group type ");
+		    printf("%s", getGroupType(curr2->el.hdr.grptyp));
+		    printf(". Converting to default collection.\n");
+		    getCommonCollection(&(curr2->el), buffer, &commonText, &grpNum, &ier);
+		}
+	    }
+
 	    /* High, Low or Tropical group */ 
-	    else if (curr2->el.hdr.grptyp == 5 || curr2->el.hdr.grptyp == 6
-		    || curr2->el.hdr.grptyp == 9) {	
+	    else if (curr2->el.hdr.grptyp == 5 || atoi(grptypArray[0]) == 5 
+			|| curr2->el.hdr.grptyp == 6 || atoi(grptypArray[0]) == 6
+		    	|| curr2->el.hdr.grptyp == 9 || atoi(grptypArray[0]) == 9) {	
 	
+
 	 	if ((hasContour !=0 && curr2->next != NULL 
 			&& curr2->next->el.hdr.vg_type == SPTX_ELM
 			&& curr2->el.hdr.grpnum == curr2->next->el.hdr.grpnum
@@ -355,7 +485,23 @@ void convertElm(item1 *curr2, char *buffer, FILE *ofptr) {
 			    || curr2->el.hdr.vg_type == MARK_ELM || curr2->el.hdr.vg_type == CMBSY_ELM))
 		    || contText != 0)      /* last condition is for text, 1 or 2 */
 	 	
-		    getContour(&(curr2->el), buffer, &contText, &grpNum, &grpColor, &ier);
+		    getContour(&(curr2->el), buffer, &contText, &grpNum, &grpColor, tblArray, tblArrayLen, &ier);
+
+		else if ((curr2->el.hdr.vg_type == CTSYM_ELM || curr2->el.hdr.vg_type ==ICSYM_ELM
+			    || curr2->el.hdr.vg_type == PTSYM_ELM || curr2->el.hdr.vg_type == PWSYM_ELM
+			    || curr2->el.hdr.vg_type == SKSYM_ELM || curr2->el.hdr.vg_type == SPSYM_ELM
+			    || curr2->el.hdr.vg_type == TBSYM_ELM || curr2->el.hdr.vg_type == WXSYM_ELM
+			    || curr2->el.hdr.vg_type == MARK_ELM || curr2->el.hdr.vg_type == CMBSY_ELM)
+			&& curr2->next != NULL  
+			&& curr2->el.hdr.grpnum != curr2->next->el.hdr.grpnum
+			&& (curr2->next->el.hdr.vg_type == CTSYM_ELM || curr2->next->el.hdr.vg_type ==ICSYM_ELM
+			    || curr2->next->el.hdr.vg_type == PTSYM_ELM || curr2->next->el.hdr.vg_type == PWSYM_ELM
+			    || curr2->next->el.hdr.vg_type == SKSYM_ELM || curr2->next->el.hdr.vg_type == SPSYM_ELM
+			    || curr2->next->el.hdr.vg_type == TBSYM_ELM || curr2->next->el.hdr.vg_type == WXSYM_ELM
+			    || curr2->next->el.hdr.vg_type == MARK_ELM || curr2->next->el.hdr.vg_type == CMBSY_ELM)) {
+		    // only symbol in the grpnum, convert to normal DE
+		    cvg_v2x ( &(curr2->el), buffer, &ier ); 
+		}
 
 		else if ((hasContour ==0  && commonText ==0
 			&& curr2->next != NULL 
@@ -366,26 +512,32 @@ void convertElm(item1 *curr2, char *buffer, FILE *ofptr) {
 			    || curr2->el.hdr.vg_type == SKSYM_ELM || curr2->el.hdr.vg_type == SPSYM_ELM
 			    || curr2->el.hdr.vg_type == TBSYM_ELM || curr2->el.hdr.vg_type == WXSYM_ELM
 			    || curr2->el.hdr.vg_type == MARK_ELM || curr2->el.hdr.vg_type == CMBSY_ELM))
-		    || symText !=0) {
+		    || symText !=0) 
 
-		    getSymLab(&(curr2->el), buffer, &symText, &grpNum, &ier);}
+		    getSymLab(&(curr2->el), buffer, &symText, &grpNum, &ier);
 
-		/*else if (commonText !=0) {
-		    //printf("+++ This record is not a Contour. Convert it to normal collection.");
-		    getCommonCollection(&(curr2->el), buffer, &commonText, &grpNum, &ier);
-		}*/
+		
 		else {
-		    printf("+++ Unexpected contents for group type ");
+		    printf("+ Unexpected contents for group type ");
 		    printf("%s", getGroupType(curr2->el.hdr.grptyp));
 		    printf(". Converting to default collection.\n");
 		    getCommonCollection(&(curr2->el), buffer, &commonText, &grpNum, &ier);
 		}		    
 	    }
 
-	    /* Contour grptyp=8, grpnum>0 */
- 	    else if (curr2->el.hdr.grptyp == 8 || curr2->el.hdr.grptyp == 27) {
+	    /* Contour  */
+ 	    else if (curr2->el.hdr.grptyp == 8 || atoi(grptypArray[0]) == 8 
+			|| curr2->el.hdr.grptyp == 27 || atoi(grptypArray[0]) == 27) {
 
-		if ((hasContour !=0 && curr2->next != NULL 
+		if ( ((strcmp (grptypArray[1], "outlook") ==0) && curr2->next != NULL 
+			&& curr2->el.hdr.grpnum == curr2->next->el.hdr.grpnum
+			&& (curr2->el.hdr.vg_type == LINE_ELM || curr2->el.hdr.vg_type == SPLN_ELM
+		    	    || curr2->el.hdr.vg_type == CIRCLE_ELM) )
+		    || outlookText >0) {
+
+		    getOutlooks(&(curr2->el), buffer, grptypArray[2], &outlookText, &grpNum, &ier);}	 
+
+	    	else if ((hasContour !=0 && curr2->next != NULL 
 			&& curr2->el.hdr.grpnum == curr2->next->el.hdr.grpnum
 			//&& curr2->next->el.hdr.vg_type == SPTX_ELM // 1 line n text
 			&& strlen(curr2->next->el.elem.spt.text) == strspn(curr2->next->el.elem.spt.text, "0123456789.+-") 
@@ -399,7 +551,7 @@ void convertElm(item1 *curr2, char *buffer, FILE *ofptr) {
 		    	    || curr2->el.hdr.vg_type == CIRCLE_ELM))
 		    || contText != 0)       // last condition is for text, 1 or 2
 		
-		    getContour(&(curr2->el), buffer, &contText, &grpNum, &grpColor, &ier);
+		    getContour(&(curr2->el), buffer, &contText, &grpNum, &grpColor, tblArray, tblArrayLen, &ier); 
 
 		else if ((hasContour ==0  && commonText == 0
 			&& curr2->next != NULL 
@@ -410,16 +562,36 @@ void convertElm(item1 *curr2, char *buffer, FILE *ofptr) {
 			    || curr2->el.hdr.vg_type == SKSYM_ELM || curr2->el.hdr.vg_type == SPSYM_ELM
 			    || curr2->el.hdr.vg_type == TBSYM_ELM || curr2->el.hdr.vg_type == WXSYM_ELM
 			    || curr2->el.hdr.vg_type == MARK_ELM || curr2->el.hdr.vg_type == CMBSY_ELM))
-		    || symText !=0)
+		    || symText !=0) 
 
-		    getSymLab(&(curr2->el), buffer, &symText, &grpNum, &ier);
+		    getSymLab(&(curr2->el), buffer, &symText, &grpNum, &ier); 
 
-		/*else if (commonText !=0) {
-		    
-		    getCommonCollection(&(curr2->el), buffer, &commonText, &grpNum, &ier);
-		}*/
+		else if (hasContour ==0  && curr2->next != NULL //&& curr2->next != SPTX_ELM
+			&& curr2->el.hdr.grpnum != curr2->next->el.hdr.grpnum
+			&& (curr2->el.hdr.vg_type == CTSYM_ELM || curr2->el.hdr.vg_type ==ICSYM_ELM
+			    || curr2->el.hdr.vg_type == PTSYM_ELM || curr2->el.hdr.vg_type == PWSYM_ELM
+			    || curr2->el.hdr.vg_type == SKSYM_ELM || curr2->el.hdr.vg_type == SPSYM_ELM
+			    || curr2->el.hdr.vg_type == TBSYM_ELM || curr2->el.hdr.vg_type == WXSYM_ELM
+			    || curr2->el.hdr.vg_type == MARK_ELM || curr2->el.hdr.vg_type == CMBSY_ELM
+			    || curr2->el.hdr.vg_type == LINE_ELM || curr2->el.hdr.vg_type ==SPLN_ELM
+			    || curr2->el.hdr.vg_type == CIRCLE_ELM)) 
+			 
+		    // only symbol in the grpnum, no text, convert to normal DE
+		    cvg_v2x ( &(curr2->el), buffer, &ier ); 
+		
+		else if (hasContour ==0  && curr2->next == NULL
+			&& (curr2->el.hdr.vg_type == CTSYM_ELM || curr2->el.hdr.vg_type ==ICSYM_ELM
+			    || curr2->el.hdr.vg_type == PTSYM_ELM || curr2->el.hdr.vg_type == PWSYM_ELM
+			    || curr2->el.hdr.vg_type == SKSYM_ELM || curr2->el.hdr.vg_type == SPSYM_ELM
+			    || curr2->el.hdr.vg_type == TBSYM_ELM || curr2->el.hdr.vg_type == WXSYM_ELM
+			    || curr2->el.hdr.vg_type == MARK_ELM || curr2->el.hdr.vg_type == CMBSY_ELM
+			    || curr2->el.hdr.vg_type == LINE_ELM || curr2->el.hdr.vg_type ==SPLN_ELM
+			    || curr2->el.hdr.vg_type == CIRCLE_ELM)) 
+		    // symbol/line at end & grp>0 & no contour, convert to normal DE
+		    cvg_v2x ( &(curr2->el), buffer, &ier ); 
+		
 		else {
-		    printf("+++ Unexpected contents for group type ");
+		    printf("+ Unexpected contents for group type ");
 		    printf("%s", getGroupType(curr2->el.hdr.grptyp));
 		    printf(". Converting to default collection.\n");
 		    getCommonCollection(&(curr2->el), buffer, &commonText, &grpNum, &ier);
@@ -435,7 +607,7 @@ void convertElm(item1 *curr2, char *buffer, FILE *ofptr) {
 		    || symText !=0) {
 		    getSymLab(&(curr2->el), buffer, &symText, &grpNum, &ier); 
 		} else {
-		    printf("+++ Unexpected contents for group type FRONT. Converting to default collection.\n");
+		    printf("+ Unexpected contents for group type FRONT. Converting to default collection.\n");
 		    getCommonCollection(&(curr2->el), buffer, &commonText, &grpNum, &ier);
 		}
 	    }
@@ -445,49 +617,14 @@ void convertElm(item1 *curr2, char *buffer, FILE *ofptr) {
 		getCommonCollection(&(curr2->el), buffer, &commonText, &grpNum, &ier);
 	    }
 
-	    /* outlook group */
-	    else if (curr2->el.hdr.grptyp ==7 || curr2->el.hdr.grptyp ==12 || curr2->el.hdr.grptyp ==13
-		|| curr2->el.hdr.grptyp ==14 || curr2->el.hdr.grptyp ==16 || curr2->el.hdr.grptyp ==24) {
-
-		// only outlook lines in a group
-		/*if (((curr2->el.hdr.vg_type == SPLN_ELM || curr2->el.hdr.vg_type == LINE_ELM) && curr2->next == NULL)
-		    || ((curr2->el.hdr.vg_type == SPLN_ELM || curr2->el.hdr.vg_type == LINE_ELM) && curr2->next != NULL 
-			&& ((curr2->next->el.hdr.vg_type == SPLN_ELM || curr2->next->el.hdr.vg_type == LINE_ELM)
-			    || curr2->el.hdr.grptyp != curr2->next->el.hdr.grptyp 
-			    || curr2->el.hdr.grpnum != curr2->next->el.hdr.grpnum))) {
-
-		    printf("+++ This outlook line is not an Outlook. Convert it to normal collection.\n");
-		    getCommonCollection(&(curr2->el), buffer, &commonText, &grpNum, &ier);
-		} 
-		else */if ( ((curr2->el.hdr.vg_type == SPLN_ELM || curr2->el.hdr.vg_type == LINE_ELM)
-		    	&& curr2->next != NULL 
-			&& curr2->el.hdr.grpnum == curr2->next->el.hdr.grpnum 
-			&& (curr2->next->el.hdr.vg_type == SPTX_ELM 
-			    || curr2->el.hdr.vg_type == CTSYM_ELM || curr2->el.hdr.vg_type ==ICSYM_ELM
-			    || curr2->el.hdr.vg_type == PTSYM_ELM || curr2->el.hdr.vg_type == PWSYM_ELM
-			    || curr2->el.hdr.vg_type == SKSYM_ELM || curr2->el.hdr.vg_type == SPSYM_ELM
-			    || curr2->el.hdr.vg_type == TBSYM_ELM || curr2->el.hdr.vg_type == WXSYM_ELM
-			    || curr2->el.hdr.vg_type == MARK_ELM || curr2->el.hdr.vg_type == CMBSY_ELM) )
-		    || outlookText != 0) {
-
-		    getOutlooks(&(curr2->el), buffer, &outlookText, &grpNum, &ier);
-		} else {
-		    printf("+++ Unexpected contents for group type ");
-		    printf("%s", getGroupType(curr2->el.hdr.grptyp));
-		    printf(". Converting to default collection.\n");
-		    getCommonCollection(&(curr2->el), buffer, &commonText, &grpNum, &ier);
-		}
-	    }
-		
 
 	    /* Other group */
 	    else {
-		printf("+++ Unexpected contents for group type ");
+		printf("+ Unexpected contents for group type ");
 		printf("%s", getGroupType(curr2->el.hdr.grptyp));
 		printf(". Converting to default collection.\n");
 		getCommonCollection(&(curr2->el), buffer, &commonText, &grpNum, &ier);
 	    }
- 
 
 	    /* write buffer, don't write List, filehead */
 	    if (ier==0 && curr2->el.hdr.vg_type != LIST_ELM && curr2->el.hdr.vg_type != FILEHEAD_ELM) { 
@@ -507,23 +644,30 @@ void convertElm(item1 *curr2, char *buffer, FILE *ofptr) {
 
 	    /*Finishing collection ending tag when curr2->el.hdr.grptyp >0 */
 	    /* Watch grptyp is 0 or 98, LIST_ELM is skipped */
-	    
 	    if (( ((curr2->el.hdr.grptyp == 98 && curr2->el.hdr.vg_type == SPLN_ELM) 
 			|| curr2->el.hdr.vg_type == WBOX_ELM) 
 		    && curr2->next == NULL)
 		|| (curr2-> el.hdr.vg_type == WBOX_ELM  && curr2->next != NULL
-		    && (curr2->next-> el.hdr.vg_type == WBOX_ELM ||curr2->next-> el.hdr.vg_type == LIST_ELM))
+		    && (curr2->next-> el.hdr.vg_type == WBOX_ELM ||curr2->next-> el.hdr.vg_type == LIST_ELM
+			|| curr2->el.hdr.grptyp != 98)) //can't be status line
 		|| (curr2->el.hdr.grptyp == 98 && curr2->el.hdr.vg_type == SPLN_ELM 
 		    && curr2->next != NULL && curr2->next->el.hdr.vg_type != SPLN_ELM)){
 	   
 		writeEndingCollection(&(curr2->el), ofptr, &grpNum, &grpInit, &grpColor, &contText, &symText, &outlookText, &commonText, &cloudText, &turbText, &ier); }
 
+	    /* has same elements */
 	    else if (curr2-> el.hdr.grptyp >0 && hasSameElm !=1 && curr2->next == NULL 
+		&& curr2->el.hdr.grptyp != 8 && curr2->el.hdr.grptyp != 9 && curr2->el.hdr.grptyp != 27
 		&& curr2->el.hdr.vg_type != SIGCCF_ELM
-		&& curr2->el.hdr.vg_type != GFA_ELM && curr2->el.hdr.vg_type != TCA_ELM) 
-
+		&& curr2->el.hdr.vg_type != GFA_ELM && curr2->el.hdr.vg_type != TCA_ELM) {
+		 
 		writeEndingCollection(&(curr2->el), ofptr, &grpNum, &grpInit, &grpColor, &contText, &symText, &outlookText, &commonText, &cloudText, &turbText, &ier);
+	    }
 
+/*else 
+writeEndingCollection(&(curr2->el), ofptr, &grpNum, &grpInit, &grpColor, &contText, &symText, &outlookText, &commonText, &cloudText, &turbText, &ier);*/
+
+	    /* contours grpnum>0*/
 	    else if ((curr2-> el.hdr.grptyp ==5 || curr2-> el.hdr.grptyp ==6
 		    || curr2-> el.hdr.grptyp ==8 ||curr2-> el.hdr.grptyp ==9 ||curr2-> el.hdr.grptyp ==27)
 		&& curr2->el.hdr.vg_type == SPTX_ELM 
@@ -541,9 +685,18 @@ void convertElm(item1 *curr2, char *buffer, FILE *ofptr) {
 		    	&& curr2->next->el.hdr.vg_type != TBSYM_ELM && curr2->next->el.hdr.vg_type != MARK_ELM
 		    	&& curr2->next->el.hdr.vg_type != WXSYM_ELM && curr2->next->el.hdr.vg_type != CMBSY_ELM
 		    	&& curr2->next->el.hdr.vg_type != LINE_ELM && curr2->next->el.hdr.vg_type != CIRCLE_ELM
-		    	&& curr2->next->el.hdr.vg_type != SPLN_ELM )) ) 
+		    	&& curr2->next->el.hdr.vg_type != SPLN_ELM )) ) {
 		
-		writeEndingCollection(&(curr2->el), ofptr, &grpNum, &grpInit, &grpColor, &contText, &symText, &outlookText, &commonText, &cloudText, &turbText, &ier);
+		writeEndingCollection(&(curr2->el), ofptr, &grpNum, &grpInit, &grpColor, &contText, &symText, &outlookText, &commonText, &cloudText, &turbText, &ier);}
+
+	    else if (curr2-> el.hdr.grptyp ==8 && curr2->el.hdr.vg_type == SPTX_ELM 
+		&& curr2->next != NULL && outlookText ==2 
+		&& ( curr2->next->el.hdr.grptyp !=8 
+		    || (curr2->next->el.hdr.grptyp ==8 	&& curr2->next->el.hdr.vg_type != SPLN_ELM	    	
+		    	&& curr2->next->el.hdr.vg_type != LINE_ELM && curr2->next->el.hdr.vg_type != CIRCLE_ELM
+			&& curr2->next->el.hdr.vg_type != SPTX_ELM)) ) {
+		    	 		
+		writeEndingCollection(&(curr2->el), ofptr, &grpNum, &grpInit, &grpColor, &contText, &symText, &outlookText, &commonText, &cloudText, &turbText, &ier);}
 
 	    else if ((curr2-> el.hdr.grptyp ==5 || curr2-> el.hdr.grptyp ==6 
 		    || curr2->el.hdr.grptyp ==8 || curr2->el.hdr.grptyp ==9 || curr2->el.hdr.grptyp ==27)
@@ -562,6 +715,35 @@ void convertElm(item1 *curr2, char *buffer, FILE *ofptr) {
 		
 		writeEndingCollection(&(curr2->el), ofptr, &grpNum, &grpInit, &grpColor, &contText, &symText, &outlookText, &commonText, &cloudText, &turbText, &ier);}
 
+	    //added for last element or line without text
+	    else if ((curr2-> el.hdr.grptyp ==5 || curr2-> el.hdr.grptyp ==6 
+		    || curr2->el.hdr.grptyp ==8 || curr2->el.hdr.grptyp ==9 || curr2->el.hdr.grptyp ==27)
+		&& curr2->next == NULL ) {
+
+		if (contText != 0 && hasContour !=0){	
+		    char* xml_end = "              </DrawableElement>\n            </DECollection>\n          </Contours>\n";
+	    	    cfl_writ ( ofptr, (int)strlen(xml_end), (unsigned char*)xml_end, &ier );
+	    	    contText = 0;
+	    	    grpInit = 0;
+	    	    grpNum = 0;
+		}
+		else if (outlookText != 0 ) {
+		    char* xml_end = "              </DrawableElement>\n            </DECollection>\n          </Outlook>\n";
+	    	    cfl_writ ( ofptr, (int)strlen(xml_end), (unsigned char*)xml_end, &ier );
+	    	    outlookText = 0;
+	    	    grpNum = 0;
+		}
+		else if (symText != 0 || commonText != 0) {
+		    char* xml_end = "            </DrawableElement>\n          </DECollection>\n";
+	    	    cfl_writ ( ofptr, (int)strlen(xml_end), (unsigned char*)xml_end, &ier );
+	    	    symText = 0;
+	    	    commonText = 0;
+	    	    grpNum = 0;
+		}
+		//writeEndingCollection(&(curr2->el), ofptr, &grpNum, &grpInit, &grpColor, &contText, &symText, &outlookText, &commonText, &cloudText, &turbText, &ier);}
+	    }
+
+	    // outlook 
 	    else if ((curr2-> el.hdr.grptyp ==7 || curr2->el.hdr.grptyp ==12 || curr2->el.hdr.grptyp ==13
 		|| curr2->el.hdr.grptyp ==14 || curr2->el.hdr.grptyp ==16 || curr2->el.hdr.grptyp ==24)
 		&& curr2->el.hdr.vg_type == SPTX_ELM && outlookText ==2
@@ -587,6 +769,12 @@ void convertElm(item1 *curr2, char *buffer, FILE *ofptr) {
 		
 		writeEndingCollection(&(curr2->el), ofptr, &grpNum, &grpInit, &grpColor, &contText, &symText, &outlookText, &commonText, &cloudText, &turbText, &ier);
 
+	    else if ((curr2-> el.hdr.grptyp ==7 || curr2->el.hdr.grptyp ==12 || curr2->el.hdr.grptyp ==13
+		|| curr2->el.hdr.grptyp ==14 || curr2->el.hdr.grptyp ==16 || curr2->el.hdr.grptyp ==24)
+		&& curr2->next == NULL ){
+		
+		writeEndingCollection(&(curr2->el), ofptr, &grpNum, &grpInit, &grpColor, &contText, &symText, &outlookText, &commonText, &cloudText, &turbText, &ier);}
+
 	    else if (curr2-> el.hdr.grptyp >0 && hasSameElm !=1 && curr2->next != NULL 
 		&& curr2->el.hdr.vg_type != SIGCCF_ELM
 		&& curr2->el.hdr.vg_type != GFA_ELM && curr2->el.hdr.vg_type != TCA_ELM
@@ -600,8 +788,9 @@ void convertElm(item1 *curr2, char *buffer, FILE *ofptr) {
 	curr2 = curr2->next;
     } /*while */
  
-    free(curr2);
+    //free(curr2);
     
+/*  Ending  */
     if (nw > 0) {  
     	xml_end = "        </DrawableElement>\n";
     	cfl_writ ( ofptr, (int)strlen(xml_end), (unsigned char*)xml_end, &ier );
@@ -614,6 +803,96 @@ void convertElm(item1 *curr2, char *buffer, FILE *ofptr) {
     } 
 }
 
+
+void getCcf(VG_DBStruct *el, char *buffer, int *ier) {
+    char *collection;
+    //collectionName="CCFP_SIGMET:::10:::N:::null:::null:::40-74%:::300-340:::50-100%:::+:::Area"
+    char *dir, *cover, *tops, *prob, *growth, *stype;
+
+    if (el->elem.ccf.info.cover == 3)
+	cover = "25-39%";
+    else if (el->elem.ccf.info.cover == 2)
+	cover = "40-74%";
+    else if (el->elem.ccf.info.cover == 1)
+	cover = "75-100%";
+
+    if (el->elem.ccf.info.tops == 4)
+	tops = "250-290";
+    else if (el->elem.ccf.info.tops == 3)
+	tops = "300-340";
+    else if (el->elem.ccf.info.tops == 2)
+	tops = "350-390";
+    else if (el->elem.ccf.info.tops == 1)
+	tops = "400+";
+
+    if (el->elem.ccf.info.prob == 3)
+	prob = "25-49%";
+    else if (el->elem.ccf.info.prob == 1)
+	prob = "50-100%";
+    
+    if (el->elem.ccf.info.growth == 4)
+	growth = "-";
+    else if (el->elem.ccf.info.growth == 3)
+	growth = "NC";
+    else if (el->elem.ccf.info.growth == 2)
+	growth = "+";
+
+    if (el->elem.ccf.info.subtype == 0)
+	stype = "Area";
+    else if (el->elem.ccf.info.subtype == 1)
+	stype = "Line";
+    else if (el->elem.ccf.info.subtype == 2)
+	stype = "LineMed";
+
+    if (el->elem.ccf.info.dir == 0)
+	dir = "N";
+    else if (el->elem.ccf.info.dir == 22.5)
+	dir = "NNE";
+    else if (el->elem.ccf.info.dir == 45)
+	dir = "NE";
+    else if (el->elem.ccf.info.dir == 67.5)
+	dir = "ENE";
+    else if (el->elem.ccf.info.dir == 90)
+	dir = "E";
+    else if (el->elem.ccf.info.dir == 112.5)
+	dir = "ESE";
+    else if (el->elem.ccf.info.dir == 135)
+	dir = "SE";
+    else if (el->elem.ccf.info.dir == 157.5)
+	dir = "SSE";
+    else if (el->elem.ccf.info.dir == 180)
+	dir = "S";
+    else if (el->elem.ccf.info.dir == 202.5)
+	dir = "SSW";
+    else if (el->elem.ccf.info.dir == 225)
+	dir = "SW";
+    else if (el->elem.ccf.info.dir == 247.5)
+	dir = "WSW";
+    else if (el->elem.ccf.info.dir == 270)
+	dir = "W";
+    else if (el->elem.ccf.info.dir == 292.5)
+	dir = "WNW";
+    else if (el->elem.ccf.info.dir == 315)
+	dir = "NW";
+    else if (el->elem.ccf.info.dir == 337.5)
+	dir = "NNW";
+    else
+	dir = "N";
+
+    
+    collection = (char*)malloc(128*sizeof(char));
+    sprintf(collection, "%s%d%s%s%s%s%s%s%s%s%s%s%s%s", "CCFP_SIGMET:::", (int)el->elem.ccf.info.spd, ":::", dir,  
+    ":::null:::null:::", cover, ":::", tops, ":::", prob, ":::", growth, ":::", stype);
+
+    sprintf( buffer, "          <DECollection pgenCategory=\"SIGMET\" pgenType=\"CCFP_SIGMET\" collectionName=\"%s\">\n            <DrawableElement>\n",  collection);
+    
+    cvg_v2x ( el, &(buffer[strlen(buffer)]), ier );
+	
+    free(collection);
+
+    //put ccf ending tag here
+    sprintf( &(buffer[strlen(buffer)]), "            </DrawableElement>\n          </DECollection>\n");        		    		        
+}
 
 
 void getWatch(VG_DBStruct *el, char *buffer, int *grpNum, int *ier) {
@@ -628,18 +907,104 @@ void getWatch(VG_DBStruct *el, char *buffer, int *grpNum, int *ier) {
     }
 }
 
-void getContour(VG_DBStruct *el, char *buffer, int *contText, int *grpNum, int *grpColor, int *ier) {
+void getMatchContAttr(char *tblArray[], int *grpColor, char* contArray[], int tblArrayLen, int *ier) { //output contArray[]
+    char delims[] = " \t";
+    char *firstWd = NULL;
+    int i=0, j=0;
 
+    if (tblArrayLen ==0)
+   	return;
+
+    char *array[tblArrayLen]; 
+    for ( j=0; j< tblArrayLen; j++) {
+	array[j] = (char*)malloc(strlen(tblArray[j])+1); 	
+	strcpy(array[j], tblArray[j]);
+    }
+
+    if (*array != NULL && *array != '\0') {
+	for ( i=0; i< tblArrayLen; i++) {
+	    //printf("contArr %s\n", array[i]);
+	    firstWd = strtok( array[i], delims);
+	    if (atoi(firstWd) == *grpColor) {
+		break;
+	    }
+	}
+    	
+    	if (atoi(firstWd) == *grpColor) {  
+  	    contArray[0] = strtok( NULL, delims );
+	    contArray[1] = strtok( NULL, delims );
+	    contArray[2] = strtok( NULL, delims );
+	    contArray[3] = strtok( NULL, delims );
+	    contArray[4] = strtok( NULL, delims );
+	    contArray[5] = strtok( NULL, delims );
+	    contArray[6] = strtok( NULL, delims );
+	    //printf("contArray %s %s %s %s\n", array[i], contArray[0], contArray[1], contArray[2] );	
+	}
+    }
+
+    // free spaces
+    /*for (j=0; j< tblArrayLen; j++){
+	free (array[j]);
+    }*/	   
+}
+
+void getMatchGrptyp(char *lineGrptyp[], int *grptyp, int lineGrptypLen, char* grptypArray[], int *ier) {
+    char delims[] = " \t";
+    char *firstWd;
+    int i=0, j=0;
+
+    // init grptypArray
+    grptypArray[0] = "0";
+    grptypArray[1] = "default";
+    grptypArray[2] = "default";
+
+    if (lineGrptypLen ==0 || grptyp == 0)
+   	return;
+
+    char *array[lineGrptypLen];
+
+    for ( j=0; j< lineGrptypLen; j++) {
+	array[j] = (char*)malloc(strlen(lineGrptyp[j])+1); 	
+	strcpy(array[j], lineGrptyp[j]);
+    }
+
+    if (*array != NULL && *array != '\0') {
+	for ( i=0; i< lineGrptypLen; i++) {
+	    //printf("grpArr %s\n", array[i]);
+	    firstWd = strtok( array[i], delims);
+	    grptypArray[0] = strtok( NULL, delims );
+	    
+	    if (atoi(grptypArray[0]) == *grptyp) 
+		break;
+	}
+
+    	if (atoi(grptypArray[0]) == *grptyp) {  
+  	    grptypArray[1] = strtok( NULL, delims );
+	    grptypArray[2] = strtok( NULL, delims );
+	    //free ( array[i] );
+	    //printf("grpArray %s %s %s %s\n", array[i], grptypArray[0], grptypArray[1], grptypArray[2] );
+	}	
+    }
+}
+
+void getContour(VG_DBStruct *el, char *buffer, int *contText, int *grpNum, int *grpColor, char *tblArray[], int tblArrayLen, int *ier) {
+
+    char* contArray[7] = {"HGHT", "1000", "-1", "f000", "10", "20111213/1200", "-1"}; //array of 7 strings
+  
     if ( *grpNum ==0) {
-	/*only consider color when it's line or circle.
-	  contour can mix up line and sym, but don't consider sym */
+	/* Only change grpColor color when it's line or circle.  Although it can mix up line and sym. 
+	   *grpColor is first contour line color now. Next row may not change the color if the element is symbol.*/
 	if (el->hdr.vg_type == LINE_ELM || el->hdr.vg_type == SPLN_ELM 
 		|| el->hdr.vg_type == CIRCLE_ELM ) { //no el->hdr.vg_type == SPSYM_ELM
 	    *grpColor = el->hdr.maj_col;
 	}
-
 	*grpNum = el->hdr.grpnum;	//!=0    
-	sprintf(buffer, "          <Contours collectionName=\"Contours\" pgenCategory=\"MET\" pgenType=\"Contours\" parm=\"HGMT\" level=\"1000\" time=\"2010-03-22T12:45:08.981Z\" cint=\"10/0/100\">\n" );
+
+    	/* Get contour attributes from contTbl if it is not empty.  e.g. 2       TEMP    850     900     f006    10/0/100 */
+    	getMatchContAttr(tblArray, grpColor, contArray, tblArrayLen, ier);
+
+   
+	sprintf(buffer, "          <Contours collectionName=\"Contours\" pgenCategory=\"MET\" pgenType=\"Contours\" parm=\"%s\" level=\"%s\" level2=\"%s\" forecastHour=\"%s\" cint=\"%s\" time=\"%s\" time2=\"%s\">\n", contArray[0], contArray[1], contArray[2], contArray[3], contArray[4], contArray[5], contArray[6] );
 
 	if (el->hdr.vg_type == LINE_ELM || el->hdr.vg_type == SPLN_ELM) {
 	    sprintf( &(buffer[strlen(buffer)]), "            <DECollection collectionName=\"ContourLine\">\n              <DrawableElement>\n" );	
@@ -668,9 +1033,14 @@ void getContour(VG_DBStruct *el, char *buffer, int *contText, int *grpNum, int *
 		|| el->hdr.vg_type == SPLN_ELM )) {  // el->hdr.vg_type == CIRCLE_ELM
 		
 	*grpColor = el->hdr.maj_col;	
-	*grpNum = el->hdr.grpnum;    
+	*grpNum = el->hdr.grpnum; 
+
+   	/* Get contour attributes from contTbl if it is not empty.  e.g. 2       TEMP    850     900     f006    10/0/100 */
+    	getMatchContAttr(tblArray, grpColor, contArray, tblArrayLen, ier);
+
+   
 	sprintf( buffer, "              </DrawableElement>\n            </DECollection>\n          </Contours>\n");		    
-	sprintf(&(buffer[strlen(buffer)]), "          <Contours collectionName=\"Contours\" pgenCategory=\"MET\" pgenType=\"Contours\" parm=\"HGMT\" level=\"1000\" time=\"2010-03-22T12:45:08.981Z\" cint=\"10/0/100\">\n" );
+	sprintf(&(buffer[strlen(buffer)]), "          <Contours collectionName=\"Contours\" pgenCategory=\"MET\" pgenType=\"Contours\" parm=\"%s\" level=\"%s\" level2=\"%s\" forecastHour=\"%s\" cint=\"%s\" time=\"%s\" time2=\"%s\">\n", contArray[0], contArray[1], contArray[2], contArray[3], contArray[4], contArray[5], contArray[6]);
 	
 	if (el->hdr.vg_type == LINE_ELM || el->hdr.vg_type == SPLN_ELM) {		 
 	    sprintf( &(buffer[strlen(buffer)]), "            <DECollection collectionName=\"ContourLine\">\n              <DrawableElement>\n" );	
@@ -769,19 +1139,31 @@ void getSymLab(VG_DBStruct *el, char *buffer, int *symText, int *grpNum, int *ie
 }
 
  
-void getOutlooks(VG_DBStruct *el, char *buffer, int *outlookText, int *grpNum, int *ier) {
+void getOutlooks(VG_DBStruct *el, char *buffer, char* outType, int *outlookText, int *grpNum, int *ier) {
 
-    char* outlookType = getGroupType(el->hdr.grptyp);
+    char* outlookType;
+    if (strcmp(outType, "default") ==0)
+	outlookType = getGroupType(el->hdr.grptyp);
+    else
+	outlookType = outType;
+    
 
     if (*grpNum ==0 ) { //&& (el->hdr.vg_type == LINE_ELM || el->hdr.vg_type == SPLN_ELM)) {
 	*grpNum = el->hdr.grpnum;		    
-	sprintf(buffer, "          <Outlook outlookType=\"%s\" name=\"Outlook\" pgenCategory=\"Outlook\" pgenType=\"%s\" parm=\"HGMT\" level=\"1000\" time=\"2010-03-22T12:45:08.981Z\" cint=\"10/0/100\">\n", outlookType, outlookType );		 
+	sprintf(buffer, "          <Outlook outlookType=\"%s\" name=\"Outlook\" pgenCategory=\"MET\" pgenType=\"%s\" parm=\"HGMT\" level=\"1000\" time=\"2010-03-22T12:45:08.981Z\" cint=\"10/0/100\">\n", outlookType, outlookType );		 
 	sprintf( &(buffer[strlen(buffer)]), "            <DECollection collectionName=\"OutlookLine\">\n              <DrawableElement>\n" );	
         cvg_v2x ( el, &(buffer[strlen(buffer)]), ier );	
 	*outlookText = 1;	    
     }
     
     else if (el->hdr.grpnum != *grpNum) {// (el->hdr.vg_type == LINE_ELM || el->hdr.vg_type == SPLN_ELM)) {	
+	*grpNum = el->hdr.grpnum;		
+	sprintf( buffer, "              </DrawableElement>\n            </DECollection>\n            <DECollection collectionName=\"OutlookLine\">\n              <DrawableElement>\n" );
+	cvg_v2x ( el, &(buffer[strlen(buffer)]), ier );
+	*outlookText = 1;
+    }
+
+    else if (el->hdr.grpnum == *grpNum && (el->hdr.vg_type == LINE_ELM || el->hdr.vg_type == SPLN_ELM)) {	
 	*grpNum = el->hdr.grpnum;		
 	sprintf( buffer, "              </DrawableElement>\n            </DECollection>\n            <DECollection collectionName=\"OutlookLine\">\n              <DrawableElement>\n" );
 	cvg_v2x ( el, &(buffer[strlen(buffer)]), ier );
@@ -834,7 +1216,7 @@ void getCommonCollection(VG_DBStruct *el, char *buffer, int *commonText, int *gr
 
     if (el->hdr.vg_type == JET_ELM)
 	cvg_v2x ( el, buffer, ier );	
-
+    
     else if (*grpNum ==0 ) {
 	*grpNum = el->hdr.grpnum;
 			    		 
@@ -944,7 +1326,7 @@ void getTurb(VG_DBStruct *el, char *buffer, int *turbText, int *grpNum, int *grp
 	|| el->elem.spt.info.sptxtyp == 4 || el->elem.spt.info.sptxtyp == 5
 	|| el->elem.spt.info.sptxtyp == 10 || el->elem.spt.info.sptxtyp == 11
 	|| el->elem.spt.info.sptxtyp == 13 || el->elem.spt.info.sptxtyp == 14) {
-	    printf("+++ The text for the turbulence line is not an avn text.\n");
+	    printf("+ The text for the turbulence line is not an avn text.\n");
  	}
 	
 	sprintf( buffer, "              <DECollection collectionName=\"Label\">\n                <DrawableElement>\n" );
@@ -957,7 +1339,7 @@ void getTurb(VG_DBStruct *el, char *buffer, int *turbText, int *grpNum, int *grp
 	|| el->elem.spt.info.sptxtyp == 4 || el->elem.spt.info.sptxtyp == 5
 	|| el->elem.spt.info.sptxtyp == 10 || el->elem.spt.info.sptxtyp == 11
 	|| el->elem.spt.info.sptxtyp == 13 || el->elem.spt.info.sptxtyp == 14) {
-	    printf("+++ The text for the turbulence line is not an avn text.\n");
+	    printf("+ The text for the turbulence line is not an avn text.\n");
  	}
 	
 	*grpInit = 0;	
@@ -967,7 +1349,6 @@ void getTurb(VG_DBStruct *el, char *buffer, int *turbText, int *grpNum, int *grp
 }
 
 void getVolc(VG_DBStruct *el, char *buffer, int *vol, int *ashFhr, int *ier) {
-    char *strVol = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n  <Products>\n    <Product name=\"VOLCANO\" type=\"Volcano\" forecaster=\"Default\" center=\"Default\" onOff=\"true\" useFile=\"true\" filePath=\"\" fileName=\"\">\n      <Layer name=\"VOLCANO\" onOff=\"true\" monoColor=\"false\" filled=\"false\">\n        <Color red=\"255\" green=\"0\" blue=\"0\" alpha=\"255\"/>\n        <DrawableElement>\n";
 
     char *strAsh00 = "        </DrawableElement>\n      </Layer>\n      <Layer name=\"OBS\" onOff=\"true\" monoColor=\"false\" filled=\"false\">\n        <Color red=\"255\" green=\"255\" blue=\"0\" alpha=\"255\"/>\n        <DrawableElement>\n";
 
@@ -981,9 +1362,7 @@ void getVolc(VG_DBStruct *el, char *buffer, int *vol, int *ashFhr, int *ier) {
 
     if ( *vol == 0 && el->hdr.vg_type == VOLC_ELM ) {
 	*vol = 1;	
-	sprintf(buffer, "%s", strVol );	
-	 	
-        cvg_v2x ( el, &(buffer[strlen(buffer)]), ier );
+	cvg_v2x ( el, buffer, ier );
     }
 
     else if ( *vol == 1 && el->hdr.vg_type == VOLC_ELM ) {
@@ -995,16 +1374,16 @@ void getVolc(VG_DBStruct *el, char *buffer, int *vol, int *ashFhr, int *ier) {
 	*ashFhr = el->elem.ash.info.fhr;
 
 	if (el->elem.ash.info.fhr ==0) {
-	sprintf(buffer, "%s%s", strVol, strAsh00 );	
+	sprintf(buffer, "%s", strAsh00 );	
 	}
     	else if (el->elem.ash.info.fhr ==6) {
-	    sprintf( buffer, "%s%s%s", strVol, strAsh00, strAsh06);
+	    sprintf( buffer, "%s%s", strAsh00, strAsh06);
     	}
     	else if (el->elem.ash.info.fhr ==12) {
-	    sprintf( buffer, "%s%s%s%s", strVol, strAsh00, strAsh06, strAsh12);
+	    sprintf( buffer, "%s%s%s", strAsh00, strAsh06, strAsh12);
     	}
     	else if (el->elem.ash.info.fhr ==18) {
-	    sprintf( buffer, "%s%s%s%s%s", strVol, strAsh00, strAsh06, strAsh12, strAsh18);
+	    sprintf( buffer, "%s%s%s%s", strAsh00, strAsh06, strAsh12, strAsh18);
     	}
 
         cvg_v2x ( el, &(buffer[strlen(buffer)]), ier );
@@ -1045,6 +1424,44 @@ void writeEndingCollection(VG_DBStruct *el, FILE *ofptr, int *grpNum, int *grpIn
 	
     }
     else if ( el->hdr.grptyp ==1 || el->hdr.grptyp ==2 ) {  	
+	xml_end = "            </DrawableElement>\n          </DECollection>\n";
+	cfl_writ ( ofptr, (int)strlen(xml_end), (unsigned char*)xml_end, ier );
+	*grpInit = 0;
+	*grpNum = 0;
+ 	*commonText = 0;
+	*cloudText = 0;
+	*turbText = 0;
+    }
+
+else if (*outlookText != 0) {
+xml_end = "              </DrawableElement>\n            </DECollection>\n          </Outlook>\n";
+	cfl_writ ( ofptr, (int)strlen(xml_end), (unsigned char*)xml_end, ier );
+*outlookText = 0;
+*grpNum = 0;
+}
+else if (*contText == 2) {
+xml_end = "              </DrawableElement>\n            </DECollection>\n          </Contours>\n";
+	    cfl_writ ( ofptr, (int)strlen(xml_end), (unsigned char*)xml_end, ier );
+*contText = 0;
+*grpInit = 0;
+	*grpNum = 0;
+}
+else if (*symText == 2) {
+xml_end = "            </DrawableElement>\n          </DECollection>\n";
+	cfl_writ ( ofptr, (int)strlen(xml_end), (unsigned char*)xml_end, ier );
+*symText = 0;
+*grpNum = 0;
+}
+else if (*commonText != 0) {
+xml_end = "            </DrawableElement>\n          </DECollection>\n";
+	cfl_writ ( ofptr, (int)strlen(xml_end), (unsigned char*)xml_end, ier );
+*commonText = 0;
+*grpNum = 0;
+}
+
+
+
+/*    else if ( el->hdr.grptyp ==1 || el->hdr.grptyp ==2 ) {  	
 	xml_end = "            </DrawableElement>\n          </DECollection>\n";
 	cfl_writ ( ofptr, (int)strlen(xml_end), (unsigned char*)xml_end, ier );
 	*grpInit = 0;
@@ -1120,7 +1537,7 @@ void writeEndingCollection(VG_DBStruct *el, FILE *ofptr, int *grpNum, int *grpIn
 	xml_end = "            </DrawableElement>\n          </DECollection>\n";
 	cfl_writ ( ofptr, (int)strlen(xml_end), (unsigned char*)xml_end, ier );
 	*grpNum = 0;
-    }
+    }*/
 }
 
 void writeEndingAsh(VG_DBStruct *el, FILE *ofptr, int *ier) { // last ending tag will follow this
@@ -1437,6 +1854,7 @@ item1 *llist_bubble_sort_contour_group(item1 *curr2) {
 	curr2 = curr2->next;
     }	//while    
 	
+    
     curr2 = head;
     return curr2;
 }
@@ -1667,6 +2085,7 @@ char* getSymType(VG_DBStruct *el) {
 
     return pgenType;
 }
+
 
 /*void insert(item1 ** head, int sd){
 item1 ** ptr2=head;

@@ -36,6 +36,7 @@
  * L. Hinson/AWC        06/07   Extend GfaAttr structure for arrow size *
  * E. Safford/SAIC      07/07   increase MAX_SET for new GFA subtypes   *
  * L. Hinson/AWC        04/09   Increase MAX_SET for new GFA subtypes   *
+ * L. Hinson/AWC        01/12   Add SGWX struct                         *
  ***********************************************************************/
 #ifndef CESCMN_H
 #define CESCMN_H
@@ -56,6 +57,15 @@ typedef struct
     SpTextInfo  info;                   /* Special Text Info */
     char        textLayout[256];        /* Text Layout String */
 } GfaAttr;
+
+typedef struct
+{
+    int lineelm;
+    int linetype;
+    int linewidth;
+    float szarrow;
+    SpTextInfo info;
+} SgwxAttr;
 
 typedef struct
 {
@@ -163,6 +173,7 @@ typedef struct
 	VolAttr		*vol;
 	WboxAttr        *wbx;
 	WindInfo	*wnd;
+        SgwxAttr        *sgwx;
     } info;
 } Setting_t;
 

@@ -45,6 +45,7 @@ C*				(25km) ambiguities.			*
 C* F. J. Yen/NCEP	 4/08	Added bin mins & mstrct to CTB_DTGET CSC*
 C* S. Jacobs/NCEP	 8/09	Added EXperimental data file types	*
 C* G. McFadden/SAIC     02/11   Added AAMBG3_HI and AAMBG4_HI           *
+C* S. Jacobs/NCEP	10/12	Consolidate check for ASCT and EXASCT	*
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 C*
@@ -240,10 +241,8 @@ C
 C
 C*	Draw the color bars.
 C
-	IF ( filtyp .eq. 'ASCT' .or.
-     +	     filtyp .eq. 'ASCT_HI' .or.
-     +	     filtyp .eq. 'EXASCT' .or.
-     +	     filtyp .eq. 'EXASCT_HI' ) THEN
+	IF ( filtyp(1:4) .eq. 'ASCT' .or.
+     +	     filtyp(1:6) .eq. 'EXASCT'  ) THEN
 	  CALL GG_CBAR ( '1/H/UR/.95;.95/.35;.01/1|1/21//111///hw',
      +			numclr, fwninc, icolrs, ier )
 	 ELSE
@@ -301,10 +300,8 @@ C
      +                irrotn, ijust, iret )
 	END IF
 	IF ( iflgs(5) .eq. 1 ) THEN
-	  IF ( filtyp .eq. 'ASCT' .or.
-     +	       filtyp .eq. 'ASCT_HI' .or.
-     +	       filtyp .eq. 'EXASCT' .or.
-     +	       filtyp .eq. 'EXASCT_HI' ) THEN
+	  IF ( filtyp(1:4) .eq. 'ASCT' .or.
+     +	       filtyp(1:6) .eq. 'EXASCT'  ) THEN
             CALL GG_CBAR ('1/H/UR/.40;.95/.35;.01/1|1/21//111///hw',
      +                   numclr, fwninc, icolrs2, ier )
 	   ELSE IF ( filtyp .eq. 'AAMBG1' .or.

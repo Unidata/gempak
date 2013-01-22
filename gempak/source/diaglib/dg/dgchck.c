@@ -53,7 +53,7 @@ void dg_chck ( const char *time1, const char *time2, const int *level1,
  * M. desJardins/NMC	 3/92	Major clean up to change temp, vertical	*
  *				coordinate, mixing ratio calculations;	*
  *				eliminate unused scale terms		*
- * K. Brill/NMC		10/92	Add  PR_PRFT			*
+ * K. Brill/NMC		10/92	Add  PR_PRFT			        *
  * M. desJardins/NMC	11/92	DG_TMPC-->DG_DWPT in computation of THTE*
  * K. Brill/NMC		02/93	Check for S and C for precipitation	*
  * L. Saqer/NMC		 6/93	Move precipitation to end 		*
@@ -73,6 +73,7 @@ void dg_chck ( const char *time1, const char *time2, const int *level1,
  * T. Lee/SAIC		 6/03	Added LHAN, MHAN and HHAN		*
  * T. Lee/SAIC		10/05	Added DF_IGPT, DF_JGPT			*
  * R. Tian/SAIC		 2/06	Recoded from Fortran			*
+ * C. Melick/SPC        08/11   Added THWK, THWC, THWF                  *
  ************************************************************************/
 {
     char p[14], pp[14];
@@ -328,6 +329,42 @@ void dg_chck ( const char *time1, const char *time2, const int *level1,
 		    pd_thte ( _dggrid.dgg[np-1].grid, _dggrid.dgg[nt-1].grid,
 		  	      _dggrid.dgg[ntd-1].grid, &_dgfile.kxyd,
 		  	      _dggrid.dgg[(*num)-1].grid, &ier );
+		}
+		dg_frig ( &np, &ier );
+	    }
+	    dg_frig ( &ntd, &ier );
+	}
+	dg_frig ( &nt, &ier );
+    /*
+     ******************* WETBULB POTENTIAL TEMPERATURE ***************
+     */
+    } else if ( strncmp ( parm, "THW", 3 ) == 0 ) {
+        if ( ( strcmp ( parm, "THWK") != 0 ) && ( strcmp ( parm, "THWF") != 0 ) && 
+           ( strcmp ( parm, "THWC") != 0 ) ) {
+           return;
+        }
+	strcpy ( p, "TMPC" );
+	dg_nxts ( &nt, &ier );
+	dg_temp ( time1, time2, level1, level2, ivcord, p, &nt, iret );
+	if ( *iret == 0 ) {
+	    strcpy ( p, "DWPC" );
+	    dg_nxts ( &ntd, &ier );
+	    dg_dwpt ( time1, time2, level1, level2, ivcord, p, &ntd, iret );
+	    if ( *iret == 0 ) {
+	        strcpy ( p, "PRES" );
+		dg_nxts ( &np, &ier );
+		dg_vcrd ( time1, time2, level1, level2, ivcord, p, &np, iret );
+		if ( *iret == 0 ) {
+		    pd_thwc ( _dggrid.dgg[np-1].grid, _dggrid.dgg[nt-1].grid,
+		              _dggrid.dgg[ntd-1].grid, &_dgfile.kxyd, 
+		              _dggrid.dgg[(*num)-1].grid, &ier );
+                    if  ( strcmp (parm, "THWK") == 0 ) { 
+	                 pd_tmck ( _dggrid.dgg[(*num)-1].grid, &_dgfile.kxyd,
+		                   _dggrid.dgg[(*num)-1].grid, &ier);
+                    } else if  ( strcmp (parm, "THWF") == 0 ) {
+                         pd_tmcf ( _dggrid.dgg[(*num)-1].grid, &_dgfile.kxyd,
+                                   _dggrid.dgg[(*num)-1].grid, &ier);
+                    }
 		}
 		dg_frig ( &np, &ier );
 	    }
