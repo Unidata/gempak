@@ -34,16 +34,12 @@ GEMPAK can be installed by an individual user, and root / superuser permission i
 Creating a symbolic link NAWIPS in your home directory will allow you to maintain a single command in **.cshrc** or **.profile** that sources the current GEMPAK installation:
 
 
-<<<<<<< HEAD
 	ln -s GEMPAK6.8.0/ NAWIPS
-=======
-	ln -s GEMPAK6.7.0/ NAWIPS
 	
 Your **gempak** home directory should then contain the following:
 
-	/home/gempak/GEMPAK6.7.0
-	/home/gempak/NAWIPS -> GEMPAK6.7.0
->>>>>>> 420b776b9075f7ead8afaf820938c5171d232154
+	/home/gempak/GEMPAK6.8.0
+	/home/gempak/NAWIPS -> GEMPAK6.8.0
 
 ## Gemenviron / Gemenviron.profile
 
