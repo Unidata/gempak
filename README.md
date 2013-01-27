@@ -23,9 +23,11 @@ GEMPAK can be installed by an individual user, and root / superuser permission i
 
 * ### from GitHub
 
-	GEMPAK may be download from the <a href="https://github.com/Unidata/gempak"">GitHub repository</a> in a zip file, or with the command:
+	GEMPAK may be download from the <a href="https://github.com/Unidata/gempak"">GitHub repository</a> in a zip file, or via `git` on the command line.
 	
-		git clone git://github.com/Unidata/gempak.git
+	In **/home/gempak**, to clone into the directory **/home/gempak/GEMPAK6.8.0**:
+	
+		git clone git://github.com/Unidata/gempak.git GEMPAK6.8.0
 
 	This will copy the GEMPAK source to the present working directory.  If downloaded from GitHub, ensure that the source is located in a directory under the user's home directory, such as **/home/gempak/GEMPAK6.8.0/**
 
