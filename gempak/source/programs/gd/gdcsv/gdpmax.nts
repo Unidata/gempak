@@ -1,0 +1,7 @@
+GDATTIM f030                                                                                                                            
+GDFILE  nam12|1200+cmask.gem                                                                                                            
+GLEVEL  0                                                                                                                               
+GPOINT  bos                                                                                                                             
+GVCORD  none                                                                                                                            
+GFUNC   high(mask(gwfs(p24m,20),sge(cmask^060316/0000f000+2,1)),25)                                                                     
+SCALE   0                                                                                                                               

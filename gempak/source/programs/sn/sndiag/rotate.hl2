@@ -1,0 +1,5 @@
+     ROTATE
+
+     ROTATE is the angle of rotation for the coordinate axes. This
+     is used to determine the wind component in a user definded plane.
+     Default = 'blank' or 270 means no rotation.

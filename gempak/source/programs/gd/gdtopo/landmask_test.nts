@@ -1,0 +1,40 @@
+GDFILE  nam_base.gem + nam_land.gem                                                                                                     
+GDATTIM 070101/0000                                                                                                                     
+GLEVEL  0                                                                                                                               
+GVCORD  none                                                                                                                            
+PANEL   0                                                                                                                               
+SKIP    0                                                                                                                               
+SCALE   0                                                                                                                               
+GDPFUN  miss(mul(sge(land+2,.5),topo),miss(slt(topo,0),.1))                                                                             
+TYPE    c                                                                                                                               
+CONTUR  3/3                                                                                                                             
+CINT                                                                                                                                    
+LINE    3                                                                                                                               
+FINT    1                                                                                                                               
+FLINE   0;8                                                                                                                             
+HILO                                                                                                                                    
+HLSYM                                                                                                                                   
+CLRBAR                                                                                                                                  
+WIND    BM1                                                                                                                             
+REFVEC                                                                                                                                  
+TITLE   1                                                                                                                               
+TEXT    1                                                                                                                               
+CLEAR   YES                                                                                                                             
+GAREA   mi                                                                                                                              
+IJSKIP  0                                                                                                                               
+PROJ    LCC/40.0;-100.0;40.0                                                                                                            
+MAP     31/1/2                                                                                                                          
+MSCALE                                                                                                                                  
+LATLON  1                                                                                                                               
+DEVICE  XW                                                                                                                              
+STNPLT                                                                                                                                  
+SATFIL  testfil.gini                                                                                                                    
+RADFIL                                                                                                                                  
+IMCBAR                                                                                                                                  
+LUTFIL                                                                                                                                  
+STREAM                                                                                                                                  
+POSN    0                                                                                                                               
+COLORS  1                                                                                                                               
+MARKER  0                                                                                                                               
+GRDLBL  0                                                                                                                               
+FILTER  YES                                                                                                                             

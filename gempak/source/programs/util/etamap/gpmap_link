@@ -1,0 +1,7 @@
+$GEMPAK/install/setup_links
+$FC $FFLAGS $LDFLAGS  -o $OS_BIN/gpmap gpmap.f \
+	$OS_LIB/gpmap.a \
+	$GEMLIB $APPL $SYSLIB $GEMLIB 
+$STRIP $OS_BIN/gpmap
+$GEMPAK/install/remove_links
+$RM *.o

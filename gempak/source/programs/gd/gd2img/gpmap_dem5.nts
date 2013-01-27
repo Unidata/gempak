@@ -1,0 +1,39 @@
+MAP     1                                                                                                                               
+MSCALE                                                                                                                                  
+GAREA   dset                                                                                                                            
+PROJ    sat                                                                                                                             
+SATFIL  ustopo_dem5.gini                                                                                                                
+RADFIL                                                                                                                                  
+IMCBAR  1/////4                                                                                                                         
+LATLON  0                                                                                                                               
+PANEL   0                                                                                                                               
+TITLE                                                                                                                                   
+TEXT    1                                                                                                                               
+CLEAR   YES                                                                                                                             
+DEVICE  XW                                                                                                                              
+LUTFIL  default                                                                                                                         
+STNPLT                                                                                                                                  
+VGFILE                                                                                                                                  
+AFOSFL                                                                                                                                  
+AWPSFL                                                                                                                                  
+LINE    3                                                                                                                               
+WATCH                                                                                                                                   
+WARN                                                                                                                                    
+HRCN                                                                                                                                    
+ISIG                                                                                                                                    
+LTNG                                                                                                                                    
+ATCF                                                                                                                                    
+AIRM                                                                                                                                    
+NCON                                                                                                                                    
+CSIG                                                                                                                                    
+SVRL                                                                                                                                    
+BND     lakes/24                                                                                                                        
+TCMG                                                                                                                                    
+QSCT                                                                                                                                    
+WSTM                                                                                                                                    
+WOU                                                                                                                                     
+WCN                                                                                                                                     
+WCP                                                                                                                                     
+ENCY                                                                                                                                    
+FFA                                                                                                                                     
+WSAT                                                                                                                                    

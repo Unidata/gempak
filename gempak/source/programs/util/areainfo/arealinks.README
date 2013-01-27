@@ -1,0 +1,93 @@
+arealinks.README
+
+This package includes a script, called arealinks, and a copy of the 
+mcInfo program.  The script uses mcInfo to open the AREA files on your
+disk, read the header, and then create links defining user-friendly names 
+for each AREA file.  This will help you in matching the date and time
+of your satellite image files and any data you might want to overlay on
+top of the images.
+
+Arealinks sets up links to the directory containing McIDAS AREA files.  
+The links have the TDDHH file naming convention for the satellite image 
+files, where T is type (i=IR, v=VIS, w=Water Vapor, f=Floater and 
+c=Composite (antartic)), DD is the 2 digit day, and HH is the two digit 
+hour.  For example, here's a directory listing from my $AREA directory
+for October 4, 1994:
+
+c0309 c0400 f0406 f0412 i0405 i0411 v0323 v0412 w0312 w0403
+c0312 c0403 f0408 f0413 i0406 i0412 v0400 v0414 w0315 w0406
+c0315 c0406 f0409 f0414 i0408 i0414 v0401 v0415 w0318 w0409
+c0318 c0409 f0410 f0415 i0409 i0415 v0402 v0416 w0321 w0412
+c0321 c0412 f0411 f0416 i0410 i0416 v0403 v0417 w0400 w0415
+
+You may modify this script to change the naming convention if 
+you'd like.  
+
+The date and time used in the link is determined by opening the AREA file 
+and extracting the valid time information using a program called mcInfo
+written by Glenn Davis of the Unidata Program Center.  mcInfo is included
+with this software package.  If you are currently running mcInfo for WXP 
+or McIDAS, you do not need to rebuild the mcInfo executable.
+
+Note, you must have write permission in the GEMPAK area directory. 
+
+Run the script from cron after products arrive:
+
+#Create links from area files to user-friendly names 
+21 * * * * /bin/csh /home/nawips/bin/arealinks vis 1>>/dev/null 2>&1
+33 * * * * /bin/csh /home/nawips/bin/arealinks ir 1>>/dev/null 2>&1
+40 * * * * /bin/csh /home/nawips/bin/arealinks float 1>>/dev/null 2>&1
+55 * * * * /bin/csh /home/nawips/bin/arealinks wv 1>>/dev/null 2>&1
+59 * * * * /bin/csh /home/nawips/bin/arealinks comp  1>>/dev/null 2>&1
+
+
+usage:  arealinks [type]
+                  where type = vis   Visible area files (0120-0129)
+                               ir    IR area files (0130-0139)
+                               wv    Water Vapor area files (0170-0179)
+                               float Floater images (0160-0169)
+                               comp  Antartic composite images (0190-0199)
+
+ NOTE TO USER:  IN 1995 YOU MUST CHANGE ALL OCCURANCES OF THE NUMBER 94 
+ TO 95 IN THE AREALINKS SCRIPT.  THE SED SUBSTITUTE COMMAND CURRENTLY 
+ KEYS ON THE NUMBER 94 TO CREATE THE LINK.  SIMPLY CHANGE 94 TO 95, AND 
+ THE SCRIPT WILL KEEP WORKING!
+
+To install this package, untar it somewhere in your GEMPAK distribution.
+(We recommend the $NAWIPS directory):
+
+zcat arealinks.tar.Z | tar xvf -
+
+This will create a directory called arealinks.  In this directory, 
+you will find the mciInfo source code, the script arealinks, and
+this README file.  Edit the Makefile to configure it for your machine
+and run:
+
+make all
+make install
+make clean
+
+The make install command will install the mcInfo executable and 
+the arealinks script in the directory you specified in the Makefile
+as your BINDIR.  If you already have mcInfo compiled for use with
+WXP or McIDAS, you can copy the arealinks scripts to your bin
+directory by hand, and simply use the copy of mcInfo you already
+have installed.
+
+Finally, you must add entries to your cron table to run the
+arealinks script as your AREA files arrive.  A sample crontable
+is included above.
+
+Question & comments should be directed to me.
+________________________________________________________________________
+Peggy Bruehl					Unidata Program Center
+peggy@unidata.ucar.edu				UCAR, PO Box 3000
+(303) 497-8641					Boulder, CO 80307-3000
+----------------------------------------------------------------------------
+Unidata Mosaic Service			   URL http://www.unidata.ucar.edu/
+Unidata Gopher Service                     gopher.unidata.ucar.edu (port 70)
+****************************************************************************
+
+
+
+

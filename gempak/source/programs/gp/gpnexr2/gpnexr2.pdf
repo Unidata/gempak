@@ -1,0 +1,15 @@
+MAP     Map color/dash/width/filter flag                                        
+GAREA   Graphics area                                                           
+PROJ    Map projection/angles/margins|drop flag                                 
+RADFIL  Radar image filename(s)                                                 
+LATLON  Line color/dash/width/freq/inc/label/format                             
+PANEL   Panel loc/color/dash/width/regn                                         
+TITLE   Title color/line/title                                                  
+TEXT    Size/fnt/wdth/brdr/N-rot/just/hw flg                                    
+CLEAR   Clear screen flag                                                       
+DEVICE  Device|name|x size;y size|color type                                    
+LUTFIL  Enhancement lookup table filename                                       
+IMCBAR  Color/ornt/anch/x;y/ln;wd/freq|text_info                                
+TILT    Radar beam elevation/tilt number
+RADPARM Radar parameter (dz, vr, sw)
+RADTIM  Radar composite current/dattim

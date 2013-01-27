@@ -1,0 +1,8 @@
+     RADMODE
+
+     RADMODE allows the user to select whether to include radar data
+     from sites operating in (P) precipitation/storm mode, (C) clear
+     air mode, and/or (M) maintainence mode. The default, if none
+     are specified is data from all 3 modes (PCM). Multiple modes
+     may be specified.
+

@@ -1,0 +1,70 @@
+C************************************************************************
+C* sndiag.h								*
+C*									*
+C* This include file will set up the number of parameters and the	*
+C* individual parameter index numbers.					*
+C*									*
+C**									*
+C* Log:									*
+C* S. Jacobs/SSAI	 4/92						*
+C* J. Whistler/SSAI	 7/93	Changed format of include file		*
+C************************************************************************
+C!
+C!	Number of parameters.
+C!
+	PARAMETER	( NVAR = 26 )
+C!
+C!	Parameters
+C!
+	PARAMETER	( IHGHT = 1 )
+C!					Height
+	PARAMETER	( IPRES = 2 )
+C!					Pressure
+	PARAMETER	( ITEMP = 3 )
+C!					Temperature
+	PARAMETER	( IDWPT = 4 )
+C!					Dew point
+	PARAMETER	( IUWND = 5 )
+C!					U wind
+	PARAMETER	( IVWND = 6 )
+C!					V wind
+	PARAMETER	( ITHTV = 7 )
+C!					Virtual potential temperature
+	PARAMETER	( IBVIN = 8 )
+C!					Brunt-Vaisala freq / Intrinsic freq
+	PARAMETER	( IBVFQ = 9 )
+C!					Brunt-Vailsala frequency
+	PARAMETER	( IRICH = 10 )
+C!					Richardson Number
+	PARAMETER	( ISCOR = 11 )
+C!					Score parameter
+	PARAMETER	( ISCR1 = 12 )
+C!					Term 1 of the Scorer parameter
+	PARAMETER	( ISCR2 = 13 )
+C!					Term 2 of the Scorer parameter
+	PARAMETER	( IUCVR = 14 )
+C!					Wind curvature of the U component
+	PARAMETER	( IDUDZ = 15 )
+C!					U component of the shear
+	PARAMETER	( IDVDZ = 16 )
+C!					V component of the shear
+	PARAMETER	( IFLXA = 17 )
+C!					Air flux across a squall line
+	PARAMETER	( IFLXM = 18 )
+C!					Moisture flux across a squall line
+	PARAMETER	( IHELC = 19 )
+C!					Helicity
+	PARAMETER	( IUABS = 20 )
+C!					U-component of the non-rotated wind
+	PARAMETER	( IVABS = 21 )
+C!					V-component of the non-rotated wind
+	PARAMETER	( ISHRD = 22 )
+C!					Shear direction of the non-rotated wind
+	PARAMETER	( ISHRM = 23 )
+C!					Shear Magnitude of the non-rotated wind
+	PARAMETER	( IRRCH = 24 )
+C!					Relative richardson number
+	PARAMETER	( ILATI = 25 )
+C!					Balloon latitude ( if computable )
+	PARAMETER	( ILONI = 26 )
+C!					Balloon longitude ( if computable )

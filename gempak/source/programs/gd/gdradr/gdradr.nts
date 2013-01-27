@@ -1,0 +1,13 @@
+GRDAREA 23.5;-120;47.305655;-63.611056                                                                                                  
+PROJ    LCC/40.0;-100.0;40.0                                                                                                            
+KXKY    4800;3000                                                                                                                       
+GDPFUN  n0r ! net                                                                                                                       
+GDFILE  YYYYMMDD_radr.gem                                                                                                               
+RADTIM  current                                                                                                                         
+RADDUR  30                                                                                                                              
+RADFRQ                                                                                                                                  
+CPYFIL                                                                                                                                  
+STNFIL                                                                                                                                  
+MAXGRD  1000                                                                                                                            
+RADMODE PC                                                                                                                              
+NDVAL   -9999                                                                                                                           
