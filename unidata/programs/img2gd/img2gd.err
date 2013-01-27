@@ -1,9 +1,0 @@
-! This is the error file for IMG2GD.
-!
- -1	! Fatal error initializing TAE.
- -2	! Fatal error reading TAE parameters.
- -3	! Fatal error initializing GEMPLT.
- -4	! Failed to read grid projection !AS
- -5	! Could not create grid file !AS
- -6	! Could not open grid file !AS
- -7	! Warning: navigation block does not match file

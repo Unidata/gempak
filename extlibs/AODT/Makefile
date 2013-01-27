@@ -6,9 +6,6 @@
 include $(CONFIGDIR)/$(MAKEINC)
 
 SUBDIRS = \
-	v64/odtlib \
-	v64/odtapi \
-	v64/inc \
 	v72/odtlib \
 	v72/odtapi \
 	v72/inc

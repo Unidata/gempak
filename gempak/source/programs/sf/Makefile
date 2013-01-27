@@ -16,7 +16,9 @@ SUBDIRS = \
 	sfmap \
 	sfmod \
 	sfstns \
-	sfvgsf
+	sfvgsf \
+	sfcsplt \
+	sfctime
 
 all :
 	@for dir in NODIR $(SUBDIRS); do \

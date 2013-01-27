@@ -1,8 +1,0 @@
-ODTHOME=$PWD
-export ODTTOPO=$ODTHOME
-export ODTHISTORY=$ODTHOME/../history
-export ODTAUTO=$HOME/odt/data/forecasts
-export ODTOUTPUT=$ODTHOME/history
-export ODTSST=$HOME/odt/data/sst
-export ODTLSERVER=LOCAL
-export ODTLAREA=7777

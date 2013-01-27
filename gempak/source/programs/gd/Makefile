@@ -34,7 +34,16 @@ SUBDIRS = \
 	grphgd \
 	gdplot2 \
 	gdplot3 \
-	gpolyg
+	gpolyg \
+	gdbiint \
+	gdradr \
+	gdradrc \
+	gdobscnt \
+	gdtopo \
+	gdcsv \
+	gd2img \
+	img2gd \
+	gdpoint
 
 all :
 	@for dir in NODIR $(SUBDIRS); do \

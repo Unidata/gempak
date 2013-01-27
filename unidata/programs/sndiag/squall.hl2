@@ -1,9 +1,0 @@
-     SQUALL
-
-     SQUALL is the length of the squall line used for the air and
-     moisture flux calculations.The default value is 20000 m.
-     The coordinate rotation is implied in the calculation of the
-     fluxes, since only the V component of the wind is used in the
-     equations. Therefore, ROTATE should be set such that the long
-     axis of the sqall line is along X-axis.
-

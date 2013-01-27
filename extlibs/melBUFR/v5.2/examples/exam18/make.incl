@@ -1,9 +1,0 @@
-# program name
-PROGRAM	      =	ex18
-
-# installed destination of program
-DEST 	      =	
-
-# source files
-SRCS	      = ex18.c \
-                fill_array2.c 

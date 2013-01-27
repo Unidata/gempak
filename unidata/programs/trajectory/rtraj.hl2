@@ -1,8 +1,0 @@
-     RTRAJ
- 
-     RTRAJ is a logical variable which determines whether the trajectory
-     will start or end at the specified GPOINT.
-
-     Enter YES for the trajectory to end at GPOINT (reverse trajectory). 
-     Enter NO to begin at the specified GPOINT.
- 

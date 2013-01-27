@@ -31,7 +31,6 @@ SUBDIRS = \
 	sector \
 	sigavgf \
 	sigbufr \
-	sfcsplt \
 	spenes \
 	spctxt \
 	tcacancel \
@@ -43,7 +42,14 @@ SUBDIRS = \
 	wmostrip \
 	woupdt \
 	atest \
-	plotsyms
+	plotsyms \
+	fips \
+	areainfo \
+	acprof \
+	trajectory \
+	nmap_kiosk \
+	cwordsh \
+	etamap 
 
 
 all :

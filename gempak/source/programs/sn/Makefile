@@ -16,7 +16,8 @@ SUBDIRS = \
 	snmod \
 	snprof \
 	snstns \
-	sntser
+	sntser \
+	sndiag
 
 all :
 	@for dir in NODIR $(SUBDIRS); do \

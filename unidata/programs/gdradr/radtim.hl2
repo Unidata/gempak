@@ -1,8 +1,0 @@
-     RADTIM
-
-     RADTIM is the date and time to be used for RADAR composites.
-
-     RADTIM may either be an 11-character string entered as YYMMDD/HHMM
-     following the format of DATTIM, or the word "current" which refers to
-     the current SYSTEM time.
-

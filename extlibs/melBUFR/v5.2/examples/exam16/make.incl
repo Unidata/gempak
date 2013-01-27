@@ -1,6 +1,0 @@
-# program name
-PROGRAM	= ex16
-
-# source files
-SRCS          = ex16.c \
-                datsav2_io.c

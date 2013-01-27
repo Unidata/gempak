@@ -12,7 +12,9 @@ SUBDIRS = \
 	sn \
 	gd \
 	util \
-	gui
+	gui \
+	nexr \
+	upc
 
 all :
 	@for dir in NODIR $(SUBDIRS); do \

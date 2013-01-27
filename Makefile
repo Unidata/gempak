@@ -28,8 +28,7 @@ include $(CONFIGDIR)/$(MAKEINC)
 
 SUBDIRS = \
 	extlibs \
-	gempak \
-	unidata \
+	gempak 
 
 # .INIT: INSTALLDIRS
 

@@ -1,5 +1,0 @@
-f77  -o sndiag sndiag.f sndiag.a \
-     $GEMLIB $GPLT $DEVICE $IG $GEMLIB \
-     -ltools_s -lc_s
-strip sndiag
-

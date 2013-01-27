@@ -1,3 +1,0 @@
-f77 -c  *.f
-ar rv sndiag.a *.o
-rm *.o
