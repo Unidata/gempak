@@ -287,8 +287,6 @@ PATH=${PATH}:${OS_BIN}:${NAWIPS}/bin ; export PATH
    SIGWX=$GEMDATA/sigwx ; export SIGWX
    SPDATA=$GEMDATA ; export SPDATA
 
-   WS_ETA_GEM=/scratch/chiz/wseta/worketa/gempak ; export WS_ETA_GEM
-
    if [ $HOME ] ; then
       GRPHGD=$HOME
    else

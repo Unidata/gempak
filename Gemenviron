@@ -213,7 +213,6 @@ setenv PATH ${PATH}:${OS_BIN}:${NAWIPS}/bin
 #
 #  setenv GEMDATA       $GEMPAK/data
    setenv GEMDATA       /data/ldm/gempak
-#   setenv GEMDATA       /home/mjames/test/gempak
    setenv OBS           $GEMDATA
 #
 # Location of meta files (generated with NC decide driver)
@@ -261,8 +260,6 @@ setenv PATH ${PATH}:${OS_BIN}:${NAWIPS}/bin
    setenv RBKGPH	$GEMDATA/redbook
    setenv SIGWX		$GEMDATA/sigwx
    setenv SPDATA	$GEMDATA
-
-   setenv WS_ETA_GEM    /scratch/chiz/wseta/worketa/gempak
 
    if($?HOME) then
       setenv GRPHGD $HOME
