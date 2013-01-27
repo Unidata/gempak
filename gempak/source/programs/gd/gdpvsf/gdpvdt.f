@@ -15,9 +15,9 @@ C*	GVCORD		CHAR*		User input for vert coord	*
 C*	GFUNC		CHAR*		User input for grid function	*
 C*	FIRSTM		CHAR*		First time in file		*
 C*	LASTIM		CHAR*		Last time in file		*
+C*      TIME  (2)       CHAR*           Date/time                       *
 C*									*
 C* Output parameters:							*
-C*	TIME  (2)	CHAR*		Date/time			*
 C*	IVCORD		INTEGER		Vertical coordinate		*
 C*	IRET		INTEGER		Return code			*
 C*					  0 = normal return		*
@@ -30,9 +30,9 @@ C* M. desJardins/GSFC	 9/88	GEMPAK4					*
 C* M. desJardins/GSFC	 7/89	Recoded					*
 C* K. Brill/GSC         11/89   Added search for + in GFUNC		*
 C* K. Brill/NMC		05/93	CALL ST_LCUC before LV_CORD		*
-c* D. Knight		9/94	copied from 				*
-c*				gempak5.2/source/programs/gd/gdprof/gdpdtv.f
-
+C* D. Knight		 9/94	copied from 				*
+C*				5.2/source/programs/gd/gdprof/gdpdtv.f  *
+C* M. James/Unidata      1/13   Updated for new DG calls                *
 C************************************************************************
 	CHARACTER*(*)	gdatim, gvcord, gfunc, firstm, lastim, time (2)
 C*
@@ -88,23 +88,13 @@ C*
 	    END DO
 	END IF
 C
-C*	Change time into two parts.
+C*      Change time into two parts.
 C
-	CALL GR_GTIM  ( ctime, firstm, lastim, time (1), time (2), ier )
-	IF  ( ier .ne. 0 )  THEN
-	    print *,' Bad time found '
-	    print *,' gdatim ',gdatim
-	    print *,'ctime ',ctime
-	    print *,'firstm ', firstm
-	    print *,'lastim ',lastim
-	    print *,'time (1) ',time (1)
-	    print *,'time (2) ',time (2)
-	    print *,' ier from gr_gtim ',ier
-	    iret = -5
-	    RETURN
-	END IF
-d		print *,'processing time ',ctime
-d	    print *,' gdatim ',gdatim
+        CALL GR_GTIM  ( ctime, firstm, lastim, time (1), time (2), ier )
+        IF  ( ier .ne. 0 )  THEN
+            iret = -5
+            RETURN
+        END IF
 C
 C*	Check that vertical coordinate is valid.
 C

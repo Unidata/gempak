@@ -34,17 +34,19 @@ C* M. desJardins/NMC	10/91	Generalized vertical coordinate		*
 C* M. desJardins/NMC	 4/93	Improve efficiency			*
 C* K. Brill/NMC		 5/93	Use VP and remove CALL ST_LCUC		*
 C* F. J. Yen/NCEP	 7/08	Added HYBL				*
+C* M. James/Unidata	 1/13	Added PVBL and PVAB			*
 C************************************************************************
 	CHARACTER*(*)	 vcoord, vparm
 C*
 	LOGICAL		abrflg, check
 	CHARACTER	v*1, vp*4
 C*
-	PARAMETER	( NVERT= 7 )
+	PARAMETER	( NVERT= 9 )
 	CHARACTER	vert (NVERT)*4
 C*
 	DATA 		vert  / 'NONE', 'PRES', 'THTA', 'HGHT',
-     +				'SGMA', 'DPTH', 'HYBL'/
+     +				'SGMA', 'DPTH', 'HYBL',
+     +				'PVBL', 'PVAB'/
 C------------------------------------------------------------------------
 	vp = vcoord
 	iret  = 0

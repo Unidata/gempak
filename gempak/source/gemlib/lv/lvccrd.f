@@ -21,16 +21,18 @@ C* M. desJardins/GSFC	 4/89	From LV_CORD				*
 C* K. Brill/NMC		 4/91	Added SGMA and DPTH			*
 C* M. desJardins/NMC	10/91	Generalize vertical coordinate		*
 C* F. J. Yen/NCEP 	 7/08	Added HYBL				*
+C* M. James/Unidata 	 1/13	Added PVBL and PVAB			*
 C************************************************************************
 	CHARACTER*(*)	 vcoord
 C*
 	CHARACTER	v*1
 C*
-	PARAMETER	( NVERT= 7 )
+	PARAMETER	( NVERT= 9 )
 	CHARACTER	vert (NVERT)*4
 C*
 	DATA 		vert  / 'NONE', 'PRES', 'THTA', 'HGHT',
-     +				'SGMA', 'DPTH', 'HYBL' /
+     +				'SGMA', 'DPTH', 'HYBL', 
+     +				'PVBL', 'PVAB' /
 C------------------------------------------------------------------------
 	iret  = 0
 C

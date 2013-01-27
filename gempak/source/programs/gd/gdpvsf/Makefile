@@ -9,12 +9,11 @@ LIBINC =
 
 COBJS = 
 
-
 LOBJS = \
 	$(ALIB)(gdpvcl.o) \
 	$(ALIB)(gdpvdt.o) \
 	$(ALIB)(gdpvin.o) \
-	$(ALIB)(gdpvlv.o)
+	$(ALIB)(gdpvlv.o) 
 
 ALIB = $(GEMOLB)/gdpvsf.a
  

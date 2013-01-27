@@ -38,10 +38,13 @@ C* Log:									*
 C* J. Nielsen/SUNYA	12/90	Adapted from gdpdta.for			*
 C* J. N-G/TAMU		 5/96	Improved handling of missing levels	*
 C* K.Tyle/UAlbany        4/03   Remove "GEMINC:" in INCLUDE     	*
+C* M. James/Unidata      1/13   GD_GLEV --> DG_GLEV                  	*
+C*                              Call GDPVCL for gfunc / lavflg          *
+C*                              Loop to istop+1 instead of istop        *
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 C*
-	PARAMETER	(MAXLEV = 50)
+	PARAMETER	(MAXLEV = 100)
 	CHARACTER*(*)	gdatim, gvcord, gfunc, time (2), glist(*)
 	REAL		ogrid ( LLMXGD, * ), igrid ( LLMXGD )
 	LOGICAL		havsfc, lavflg, havgfs, gotone
@@ -55,7 +58,6 @@ C*
 C*
 	INCLUDE		'ERMISS.FNC'
 C------------------------------------------------------------------------
-d	type *,'in gdpvlv'
 	iret = 0
 	npts = 0
 	gotone=.false.
@@ -68,25 +70,27 @@ C
 C
 C*	Get levels which might have data.
 C*	First translate date/time and vertical coordinate.
-d	type *,'translating'
 C
 	dattim ( 1 ) = time ( 1 )
 	dattim ( 2 ) = ' '
-	CALL GD_GLEV  ( iflno, dattim, ivcord,
+C	CALL GD_GLEV  ( iflno, dattim, ivcord,
+	CALL DG_GLEV  ( iflno, dattim, ivcord,
      +			LLMXLV, level, nlev, ier )
         IF  ( ier .ne. 0 )  THEN
-            CALL ER_WMSG  ( 'DG', ier, pfunc, ier )
+            CALL ER_WMSG  ( 'GDU_GLEV', ier, pfunc, ier )
         ENDIF
 	IF  ( nlev .eq. 0 )  THEN
 	    iret = -10
-	    CALL ER_WMSG  ( 'GDPVSF', iret, 
-     +		'No data at this time and vertical coordinate.', ier )
+	    CALL ER_WMSG  ( 'GDPVLV', iret, 
+     +		'No input grids for given GDATTIM and GVCORD', ier )
 	    RETURN
 	ELSE IF  ( nlev .gt. 50 )  THEN
 	    iret = -10
-	    CALL ER_WMSG  ( 'GDPVSF', iret,
+	    CALL ER_WMSG  ( 'GDPVLV', iret,
      +		'Exceeded maximum of fifty levels.', ier )
 	    RETURN
+	ELSE
+	    print *, "Found ", nlev, " levels for ", dattim
 	END IF
 C
 C*	Float the levels for sorting and look for surface.
@@ -96,7 +100,6 @@ C
 	  rlvl ( i ) = FLOAT ( level ( 1, i ) )
 	  IF ( level ( 1, i ) .eq. 0 ) havsfc = .true.
 	END DO
-d	type *,'sorting'
 	CALL LV_SORT ( ivcord, nlev, rlvl, iret )
 C
 C*      If surface value exists, delete it.
@@ -118,15 +121,15 @@ C
 C*      Note: the following code is not always quite correct. -JN
 	DO WHILE ( i .lt. nlev .and.
      +           (istrt .eq. 0 .or. istop .eq. 0 ) )
-	  i = i + 1
 	  IF ( (ystrt .ge. rlvl ( i-1 ) .and. ystrt .lt. rlvl ( i ) )
      +                               .or.
-     +         (ystrt .le. rlvl ( i-1 ) .and. ystrt .gt. rlvl ( i ) ) ) 
+     +         (ystrt .le. rlvl ( i-1 ) .and. ystrt .gt. rlvl ( i ) ) )
      +      istrt = i - 1
 	  IF ( (ystop .gt. rlvl ( i-1 ) .and. ystop .le. rlvl ( i ) )
      +                               .or.
      +         (ystop .lt. rlvl ( i-1 ) .and. ystop .ge. rlvl ( i ) ) )
-     +      istop = i
+     +      istop = i + 1
+	  i = i + 1
 	END DO
 C
 C*	Orient search
@@ -152,9 +155,8 @@ C
 C
 C*	Loop through single levels finding data.
 C
-d	type *,'about to begin loop'
 	clev = RMISSD
-	DO  i = istrt,istop,idir
+	DO  i = istrt,istop+1,idir
 	    IF  ( ( i .ne. 1 ) .or. ( .not. lavflg) ) THEN
 C
 C*		Encode level and compute function.
@@ -175,12 +177,11 @@ C
 		  pint = float (i)
 	 	  CALL ST_INCH ( intlvl, glevel, ier )
 		END IF
-d	type *,'calling dggrid the first time'
 		CALL DG_GRID  ( gdatim, glevel, gvcord, gfunc, 
      +				pfunc,  grid,   kx, ky, dattim, lev, 
      +				jvcord, parm, ierdg )
                 IF  ( ierdg .ne. 0 )  THEN
-                  CALL ER_WMSG  ( 'DG', ierdg, pfunc, ier )
+                    CALL ER_WMSG  ( 'DG', ierdg, pfunc, ier )
 C
 C*		Second chance if layer quantity
 C
@@ -197,7 +198,6 @@ C
                     CALL ST_INLN ( ilvl1, glevel, lnth, ier )
 		    clev = float(ilvl1+ilvl2)/2.
 		    glevel = glevel(1:lnth) // ':' // cbuf
-d	type *,'calling dggrid the second time'
 		    CALL DG_GRID  ( gdatim, glevel, gvcord, gfunc,
      +                          pfunc,  grid,   kx, ky, dattim, lev,
      +                          jvcord, parm, ierdg )
@@ -220,6 +220,7 @@ C
 C
 C*		Compute pressure (if using ipmax)
 C
+	        CALL GDPVCL ( gfunc, lavflg, iret )
 		IF  ( ipmax .ne. 0 )  THEN
 		  IF  ( lavflg )  THEN
 		    gpfunc = 'LAV(PRES)'
@@ -230,17 +231,15 @@ C
      +				pfunc,  presgrid,   kx, ky, dattim, lev, 
      +				jvcord, parm, ierdg )
 		END IF
-D		type *,'grid',ierdg
 		IF  ( ierdg .ne. 0 )  THEN
 		  CALL ER_WMSG  ( 'DG', ierdg, pfunc, ier )
 		  iret = -1
-		  CALL ER_WMSG  ( 'GDPVSF', iret, ' ', ier )
+		  CALL ER_WMSG  ( 'DG_GRID', iret, ' ', ier )
 		  RETURN
 		END IF		  
 C
 C*		Do the interpolation
 C
-d	type *,'about to do the interpolation'
 		IF  ( plev .eq. RMISSD ) THEN
 C
 C*		First time through; initialize arrays
@@ -352,7 +351,7 @@ C*
 	igrids = 0
 	DO  j = 1, nlist
 	  gotone = .false.
-	  DO  i = istrt,istop,idir
+	  DO  i = istrt,istop+1,idir
 C
 C*	    Encode level and compute function.
 C
