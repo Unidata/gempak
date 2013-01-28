@@ -3,12 +3,11 @@
 #	P.Bruehl Unidata
 #
 include $(CONFIGDIR)/$(MAKEINC)
-LDMBRIDGE = ldmlog ldmbridge 
-UTILITIES =  programs
-WANTCDF=NO
-NETCDF = netcdf
 
-SUBDIRS = $(LDMBRIDGE) $(UTILITIES)
+SUBDIRS = \
+	ldmlog \
+	ldmbridge \
+	programs
 
 all :
 	@case $(NA_OS) in \
@@ -21,13 +20,6 @@ all :
 	             pwd ; $(MAKE) $(MFLAGS) $@ ; cd .. ; \
 	      done) ;; \
 	 esac
-	@case $(WANTCDF) in \
-	YES)	(for dir in $(NETCDF); do \
-		cd $$dir; echo -n "making in " ; \
-		pwd ; $(MAKE) $(MFLAGS) $@ ; cd .. ; \
-		done) ;; \
-	*) \
-	esac
 
 
 
@@ -42,13 +34,6 @@ install :
 	             pwd ; $(MAKE) $(MFLAGS) install ; cd ../ ; \
 	       done) ;; \
 	 esac
-	@case $(WANTCDF) in \
-	YES)	(for dir in $(NETCDF); do \
-		cd $$dir; echo -n "making in " ; \
-		pwd ; $(MAKE) $(MFLAGS) install ; cd .. ; \
-		done) ;; \
-	*) \
-	esac
 
 programs_gf:
 	@cd programs;  echo "Making $@ in `pwd`" ; \

@@ -45,8 +45,6 @@ SUBDIRS = \
 	plotsyms \
 	fips \
 	areainfo \
-	acprof \
-	trajectory \
 	nmap_kiosk \
 	cwordsh \
 	etamap 
