@@ -54,8 +54,6 @@ programs_nc : INSTALLDIRS
 programs_gf : INSTALLDIRS
 	@cd gempak;  echo "Making $@ in `pwd`" ; \
 		$(MAKE) $(MFLAGS) $@
-	@cd unidata;  echo "Making $@ in `pwd`" ; \
-		$(MAKE) $(MFLAGS) $@
 
 install : INSTALLDIRS
 	@case $(HAVEMOTIF) in \
