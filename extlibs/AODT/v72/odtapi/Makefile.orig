@@ -1,0 +1,29 @@
+SOURCES=  odtinitialize.o odtfreememory.o \
+	  odtgsdomain.o odtgshistory.o odtgsstartstr.o \
+	  odtgsIRimage.o odtgslocation.o odtgsmiscopts.o \
+	  odtgsforecastfile.o odtgsversion.o odtgsscenetypes.o \
+	  odtgssstvalue.o odtgstopovalue.o odtreadtopofile.o odtloadIRimage.o \
+	  odthistorylistfmt.o odthistorybullfmt.o odthistorynextrec.o \
+	  odthistorydelete.o odthistorywrite.o odthistoryinsertrec.o \
+	  odtbulletinoutput.o odtdiagnostics.o odtmessages.o \
+	  odtautomode1.o odtautomode2.o odtwarmeyetemp.o odtsetdatetime.o \
+	  odteyecloudtemp.o odtscenetype.o odtintensityest.o odtscenemap.o \
+	  odthistorycomment.o odtatcfoutputfile.o odtgetwindprofile.o
+
+CFLAGS= -w -ansi -pedantic -fno-common -g
+CC=gcc
+AR= ar
+ARFLAGS= ruv
+
+.SUFFIXES:	.c
+
+c.o:
+	$(CC) $(CFLAGS) -c $<
+AODTLIB = libaodtapi.a
+all     : src $(AODTLIB)
+src     : $(SOURCES)
+$(AODTLIB) : $(SOURCES)
+	$(AR) $(ARFLAGS) $@ $?
+clean :
+	rm -f $(SOURCES)
+

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE xsa PUBLIC "-//LM Garshol//DTD XML Software Autoupdate 1.0//EN//XML" "http://www.garshol.priv.no/download/xsa/xsa.dtd">
+<xsa>
+  <vendor>
+    <name>Daniel Veillard</name>
+    <email>daniel@veillard.com</email>
+    <url>http://veillard.com/</url>
+  </vendor>
+  <product id="libxml2">
+    <name>libxml2</name>
+    <version>2.6.30</version>
+    <last-release> Aug 23 2007</last-release>
+    <info-url>http://xmlsoft.org/</info-url>
+    <changes>   - Portability: Solaris crash on error handling, windows path fixes
+      (Roland Schwarz and Rob Richards), mingw build (Roland Schwarz)
+   - Bugfixes: xmlXPathNodeSetSort problem (William Brack), leak when
+      reusing a writer for a new document (Dodji Seketeli), Schemas
+      xsi:nil handling patch (Frank Gross), relative URI build problem
+      (Patrik Fimml), crash in xmlDocFormatDump, invalid char in comment
+      detection bug, fix disparity with xmlSAXUserParseMemory, automata
+      generation for complex regexp counts problems, Schemas IDC import
+      problems (Frank Gross), xpath predicate evailation error handling
+      (William Brack)
+
+</changes>
+  </product>
+</xsa>

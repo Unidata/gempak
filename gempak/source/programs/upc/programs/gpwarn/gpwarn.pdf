@@ -1,0 +1,18 @@
+MAP     Map color/dash/width
+GAREA   Graphics area
+PROJ    Map projection/angles/margins
+SATFIL  Satellite image filename(s)
+RADFIL  Radar image filename(s)
+LATLON  Line color/dash/width/label/inc
+PANEL   Panel loc/color/dash/width/regn
+TITLE   Title color/line/title
+TEXT    Text size/font/width/hw flag 
+CLEAR   Clear screen flag 
+DEVICE  Dev|name|X;Y|colormode|plotmode
+SVRL    End time|TS;TN clrs|Tm|Lb
+WWFIL   Watchbox data files/templates
+WWS     Watchbox current/dattim
+WWATT   Attributes min_prior/min_future
+LUTFIL  Enhancement lookup table filename
+IMCBAR  Color/ornt/anch/x;y/ln;wd/freq|text_info
+OUTPUT  Output device/filename

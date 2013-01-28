@@ -1,0 +1,10 @@
+RADFIL  Radar image filename(s)                                                 
+RADTIM  Radar composite current/dattim                                          
+WIND    Wind symbol/siz/wdth/typ/hdsz                                           
+TITLE   Title color/line/title                                                  
+PANEL   Panel loc/color/dash/width/regn                                         
+DEVICE  Device|name|x size;y size|color type                                    
+CLEAR   Clear screen flag                                                       
+TEXT    Size/fnt/wdth/brdr/N-rot/just/hw flg                                    
+CLRBAR  Color/ornt/anch/x;y/ln;wd/freq|text_info                                
+OUTPUT  Output device/filename
