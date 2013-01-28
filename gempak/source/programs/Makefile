@@ -13,7 +13,6 @@ SUBDIRS = \
 	gd \
 	util \
 	gui \
-	nexr \
 	upc
 
 all :

@@ -28,7 +28,7 @@ PROG_OBJS =  \
 	w3fc05.o \
 	w3ai39.o
 
-CFLAGS = $(COPT) -I$(GEMPAK)/source/bridge/dc -I$(NAWIPS)/unidata/ldmlog
+CFLAGS = $(COPT) -I$(GEMPAK)/source/bridge/dc -I$(GEMPAK)/source/programs/upc/ldmlog
 FFLAGS = $(FOPT) $(FOPT_NOGLOB)
 
 all : $(PROG) 

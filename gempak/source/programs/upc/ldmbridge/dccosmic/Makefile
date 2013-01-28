@@ -31,7 +31,7 @@ PROG_OBJS =  \
 	vapor_pres.o \
 	write_gempak.o
 
-CFLAGS = $(COPT) -DGEMPAK -I$(NETCDFINC) -I$(NAWIPS)/unidata/ldmlog
+CFLAGS = $(COPT) -DGEMPAK -I$(NETCDFINC) -I$(GEMPAK)/source/programs/upc/ldmlog
 FFLAGS = $(FOPT) -I$(GEMPAK)/source/gemlib/sf
 
 all : $(PROG) 

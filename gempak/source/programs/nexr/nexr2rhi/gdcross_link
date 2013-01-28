@@ -1,4 +1,0 @@
-$FC $FFLAGS $LDFLAGS -o $OS_BIN/gdcross gdcross.f \
-	$OS_LIB/gdcross.a \
-	$GEMLIB $APPL $SYSLIB $CGEMLIB
-$RM *.o

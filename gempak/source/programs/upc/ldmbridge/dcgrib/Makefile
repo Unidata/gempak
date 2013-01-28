@@ -72,7 +72,7 @@ SYMLINKS = \
 
 DECODEDIR = ../gribtonc_src
 
-CFLAGS = $(COPT) -DGEMPAK -I$(NAWIPS)/unidata/ldmlog
+CFLAGS = $(COPT) -DGEMPAK -I$(GEMPAK)/source/programs/upc/ldmlog
 
 all : $(SYMLINKS) nacmn.cmn gbcmn.h $(PROG)
 	

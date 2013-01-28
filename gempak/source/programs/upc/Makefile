@@ -3,10 +3,12 @@
 #	P.Bruehl Unidata
 #
 include $(CONFIGDIR)/$(MAKEINC)
+LDMBRIDGE = ldmlog ldmbridge 
+UTILITIES =  programs
 WANTCDF=NO
 NETCDF = netcdf
 
-SUBDIRS = ldmlog ldmbridge 
+SUBDIRS = $(LDMBRIDGE) $(UTILITIES)
 
 all :
 	@case $(NA_OS) in \

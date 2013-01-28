@@ -13,7 +13,7 @@ PROG_OBJS =  \
         read_nhc.o \
         read_guam.o
 
-CFLAGS = $(COPT) -I$(NAWIPS)/unidata/ldmlog
+CFLAGS = $(COPT) -I$(GEMPAK)/source/programs/upc/ldmlog
 
 all : $(PROG) 
 

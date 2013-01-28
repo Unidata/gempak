@@ -27,7 +27,7 @@ PROG_OBJS =  \
 	dcwwstore.o \
 	wwus40_tools.o
 
-CFLAGS = $(COPT) -I$(NAWIPS)/unidata/ldmlog
+CFLAGS = $(COPT) -I$(GEMPAK)/source/programs/upc/ldmlog
 
 all : $(PROG) 
 

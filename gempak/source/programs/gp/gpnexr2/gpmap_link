@@ -1,5 +1,0 @@
-$FC $FFLAGS $LDFLAGS  -o $OS_BIN/gpmap gpmap.f \
-	$OS_LIB/gpmap.a \
-	$GEMLIB $CGEMLIB $APPL $SYSLIB $GEMLIB \
-	$OS_LIB/libnetcdf.a $OS_LIB/libz.a -lm
-$RM *.o

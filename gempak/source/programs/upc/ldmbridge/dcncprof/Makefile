@@ -20,7 +20,7 @@ LIBS = \
 
 ####################
 
-CFLAGS = $(COPT) -DGEMPAK -I$(NETCDFINC) -I$(NAWIPS)/unidata/ldmlog
+CFLAGS = $(COPT) -DGEMPAK -I$(NETCDFINC) -I$(GEMPAK)/source/programs/upc/ldmlog
 
 PROG = dcncprof
 

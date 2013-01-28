@@ -17,7 +17,7 @@ LIBS = \
         $(GEMLIB) \
         $(CGEMLIB)
 
-CFLAGS = $(COPT) -I$(NAWIPS)/unidata/ldmlog -I$(NETCDFINC)
+CFLAGS = $(COPT) -I$(GEMPAK)/source/programs/upc/ldmlog -I$(NETCDFINC)
 FFLAGS = $(FOPT) -I$(GEMPAK)/source/griblib/na
 
 PROG = dcreanal
