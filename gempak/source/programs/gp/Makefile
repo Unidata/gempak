@@ -13,12 +13,7 @@ SUBDIRS = \
 	gpmap \
 	gptcww \
 	gptext \
-	gptpc \
-	gpfront \
-	gpwarn \
-	gpnexr2 \
-	gpvad \
-	gpnids
+	gptpc 
 
 all :
 	@for dir in NODIR $(SUBDIRS); do \
