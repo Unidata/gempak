@@ -250,7 +250,7 @@ This runtime error means the message queue is full, which typically occurs when 
 
 	cleanup -c
 
-This command will remove existing message queues (the "ipcrm" command is run to remove message queues found with "ipcs"). It will also look for running "**gplt**" processes and kill them.
+This command will remove existing message queues (the **ipcrm** command is run to remove message queues found with **ipcs**). It will also look for running **gplt** processes and kill them.
 
 ## Legal Disclaimer
 
