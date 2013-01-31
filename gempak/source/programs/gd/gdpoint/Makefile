@@ -45,7 +45,7 @@ programs_gf:
 
 programs_nc:
 	@echo "Not a graphic program, no _nc program needed"
-a
+
 install: $(PROG)
 	$(INSTALL) $(PROG) $(OS_BIN)
 	$(AUXINSTALL) $(PROG).pdf $(GEMPDF)
