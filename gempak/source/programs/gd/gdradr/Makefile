@@ -38,7 +38,9 @@ LIBINC = \
 	$(LIBBZ2)
 
 PROG = $(PROG.f:.f=)
+
 PROG_NC = $(PROG.f:.f=_nc)
+
 PROG_GF = $(PROG.f:.f=_gf)
 
 all : $(ALIB) $(PROG)
@@ -56,6 +58,11 @@ $(ALIB): $(FOBJS) $(COBJS)
 .f.a :
 	$(FC) $(FFLAGS) -c $<
 
+programs_gf:
+	@echo "Not a graphic program, no _gf program needed"
+
+programs_nc:
+	@echo "Not a graphic program, no _nc program needed"
 
 clean:
 	$(RM) $(PROG) *.o $(ALIB)

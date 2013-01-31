@@ -33,3 +33,7 @@ clean:
 	$(RM) $(FOBS) $(COBS) core sfctime
 
 programs_gf:
+	@echo "Not a graphic program, no _gf program needed"
+
+programs_nc:
+	@echo "Not a graphic program, no _nc program needed"

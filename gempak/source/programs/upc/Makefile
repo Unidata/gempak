@@ -39,6 +39,9 @@ programs_gf:
 	@cd programs;  echo "Making $@ in `pwd`" ; \
 		$(MAKE) $(MFLAGS) $@
 
+programs_nc:
+	@echo "Not a graphic program, no _nc program needed"
+
 clean:
 	 for dir in $(SUBDIRS) ; do \
 	      	    cd $$dir; echo -n "making clean in " ; \

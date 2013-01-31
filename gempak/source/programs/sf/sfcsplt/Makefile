@@ -39,6 +39,9 @@ $(PROG): $(LIBINC) $(PROG.c)
 	$(COMPILE.c) $(PROG.c) 
 	$(LINK.f) $(NOFORMAIN) $@.o $(LIBINC) $(SYSLIBS) -o $@
 
+programs_gf:
+	@echo "Not a graphic program, no _gf program needed"
+
 clean:
 	$(RM) *.o $(PROG)
 

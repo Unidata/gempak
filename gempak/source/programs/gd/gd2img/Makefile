@@ -39,6 +39,11 @@ $(PROG) : $(OBJS) $(LIBINC) $(PROG.f)
 clean:
 	$(RM) $(PROG) *.o
 
+programs_gf:
+	@echo "Not a graphic program, no _gf program needed"
+
+programs_nc:
+	@echo "Not a graphic program, no _nc program needed"
 
 install: $(PROG)
 	$(INSTALL) $(PROG) $(OS_BIN)

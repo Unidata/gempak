@@ -79,6 +79,11 @@ $(ALIB): $(FOBJS) $(COBJS)
 .f.a :
 	$(FC) $(FFLAGS) -c $<
 
+programs_gf:
+	@echo "Not a graphic program, no _gf program needed"
+
+programs_nc:
+	@echo "Not a graphic program, no _nc program needed"
 
 install: $(PROG)
 	$(INSTALL) $(PROG) $(OS_BIN)
