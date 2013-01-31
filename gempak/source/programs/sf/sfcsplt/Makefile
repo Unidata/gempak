@@ -19,20 +19,6 @@ LIBINC = \
 	$(APPL) \
 	$(SYSLIB)
 
-LIBINC_NC = \
-	$(GPLT_NC) \
-	$(GEMLIB) \
-	$(GPLT) \
-	$(DEVICE) \
-	$(NC) \
-	$(GN) \
-	$(SYSLIB) \
-	$(CGEMLIB) \
-	$(GEMLIB) \
-	$(CGEMLIB)
-
-PROG_NC = $(PROG)_nc
-
 all : $(PROG)
 
 $(PROG): $(LIBINC) $(PROG.c)
@@ -41,6 +27,9 @@ $(PROG): $(LIBINC) $(PROG.c)
 
 programs_gf:
 	@echo "Not a graphic program, no _gf program needed"
+
+programs_nc:
+	@echo "Not a graphic program, no _nc program needed"
 
 clean:
 	$(RM) *.o $(PROG)
