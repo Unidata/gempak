@@ -122,6 +122,8 @@
 000 001 192 000 Weather                          NA                   WX               0  -9999.00
 000 001 192 001 Weather                          NA                   WX               0  -9999.00
 000 001 192 011 Weather                          NA                   WX               0  -9999.00
+000 001 083 000 Albedo                           %                    ALBD             0  -9999.00
+000 001 084 000 Surface Roughness                m                    SRLM             0  -9999.00
 !
 ! momentum
 !D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING
