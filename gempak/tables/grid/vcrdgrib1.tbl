@@ -55,6 +55,7 @@
 213 Low cloud top level                                    LCTL     0
 214 Low cloud layer                                        LCLY     0
 215 Low level cloud ceiling                                CEIL     0
+219 Isobaric surface                  hPa                  PRES     0
 220 Planetary Boundary Layer(derived from Richardson num.) PBLRI    0
 222 Middle cloud bottom level                              MCBL     0
 223 Middle cloud top level                                 MCTL     0
