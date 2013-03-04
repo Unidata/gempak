@@ -1,0 +1,13 @@
+!
+! FNOCGRIB3.TBL -- GRIB 1 parameter conversion table version 3
+!
+!ID# NAME                             UNITS                GNAM         SCALE   MISSING  HZREMAP DIRECTION
+!
+133 Temperature of Ground or Sea      K                    GSTM             0  -9999.00        0         0
+218 Ground Wetness                    -                    GWET             0  -9999.00        0         0
+221 Sensible and Latent Heat Flux     W m**-2              SLHF             0  -9999.00        0         0
+222 Total Heat Flux                   W m**-2              THTF             0  -9999.00        0         0
+230 Freezing Height                   m                    FZHT             0  -9999.00        0         0
+238 Numeric Snow                      -                    NSNW             0  -9999.00        0         0
+248 Vertical diff meridional accel    m s**-2              VDFV             0  -9999.00        0         0
+255 Missing                           -                    MISS             0  -9999.00        0         0
