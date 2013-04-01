@@ -26,7 +26,7 @@
 NCEP_CONUS_Models       nam80;nam40;nam20;nam12;nam104;nam44;nam;ngm;ruc;ruc2;ruc_20
 NCEP_Global_Models      gfs;gfshd;gfs003;gfs002;gfs212;gfs211;gfsthin;dgex
 !
-International_Models    ukmet;cmc;nogaps;ecmwfg;ecmwft
+International_Models    ukmet;cmc;nogaps;navgem;ecmwfg;ecmwft
 !
 Ensemble_Models         sref;gefs;gefc;ens;enshr
 !

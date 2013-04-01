@@ -10,7 +10,7 @@ XWINCDIR  = -I/usr/X11R6/include
 
 COPT = -fno-stack-protector -DUNDERSCORE -D$(OPSYS) $(GEMINC) $(MOTIFINC) -g #-O # -g
 #FOPT =  -fno-second-underscore $(GEMINC) -ffixed-line-length-132 -O # -g
-FOPT =  -fno-stack-protector -fno-second-underscore -fno-range-check -fd-lines-as-comments $(GEMINC) -g # -O # -g
+FOPT =  -fno-whole-file -fno-stack-protector -fno-second-underscore -fno-range-check -fd-lines-as-comments $(GEMINC) -g # -O # -g
 NCII = "-I../libsrc"
 NCOPT = "CPPFLAGS=-DNDEBUG -Df2cFortran" "FFLAGS=-O -Wno-globals" "CFLAGS=-O $(NCII)" "CXX= "
 JASPEROPT = 'CC=$(CC)' 'CFLAGS=-O' '--disable-libjpeg'

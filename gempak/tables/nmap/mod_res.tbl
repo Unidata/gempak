@@ -83,6 +83,7 @@
 ! S. Jacobs/NCEP	 5/12	Added rap; Removed ruc2, fslruc2, rucs										*
 ! S. Jacobs/NCEP	 5/12	Added hwrfp, hwrfnestp, ghmp, ghmnestp										*
 ! S. Jacobs/NCEP	 5/12	Added all estofs models												*
+! M. James/Unidata	 3/13	Copied nogaps -> navgem												*
 !************************************************************************************************************************************************
 !
 ! PRODUCT NAME                 PATH/FILENAME                                         GROUP        MODELS
@@ -98,58 +99,58 @@
 !
 150mb_HGHT_WIND                  $NMAP_RESTORE/stnd/150mb_hght_wind                  standard     dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;fnl;mrf;ukmet;nam;nam12;nam20;nam40;nam44;wseta;wrf;ngm;ruc2;rap;fslruc2
 !
-200mb_HGHT_WIND                  $NMAP_RESTORE/stnd/200mb_hght_wind                  standard     dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;fnl;mrf;mrfx;ukmet;nam;nam12;nam20;nam40;nam44;wseta;wrf;ngm;ruc2;rap;fslruc2;nogaps
-200mb_DIV_ISOTACHS               $NMAP_RESTORE/stnd/200mb_div_isotachs               standard     dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;ruc2;rap;fslruc2;nogaps
+200mb_HGHT_WIND                  $NMAP_RESTORE/stnd/200mb_hght_wind                  standard     dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;fnl;mrf;mrfx;ukmet;nam;nam12;nam20;nam40;nam44;wseta;wrf;ngm;ruc2;rap;fslruc2;nogaps;navgem
+200mb_DIV_ISOTACHS               $NMAP_RESTORE/stnd/200mb_div_isotachs               standard     dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;ruc2;rap;fslruc2;nogaps;navgem
 !
 250mb_AGEO_DIV_ISOTACHS          $NMAP_RESTORE/stnd/250mb_ageo_div_isotachs          standard     dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;fnl;mrf;ngm;ruc2;rap;fslruc2;ukmet
 250mb_HGHT_ABSV                  $NMAP_RESTORE/stnd/250mb_hght_absv                  tropical     mrf
 250mb_HGHT_WIND                  $NMAP_RESTORE/stnd/250mb_hght_wind                  hurricane    dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;fnl;mrf;mrfx;ukmet;nam;nam12;nam20;nam40;nam44;wseta;wrf;ngm
-250mb_HGHT_WIND                  $NMAP_RESTORE/stnd/250mb_hght_wind                  standard     dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;fnl;mrf;mrfx;ukmet;nam;nam12;nam20;nam40;nam44;wseta;wrf;ngm;ruc2;rap;fslruc2;nogaps;mm5ak;mm5us
+250mb_HGHT_WIND                  $NMAP_RESTORE/stnd/250mb_hght_wind                  standard     dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;fnl;mrf;mrfx;ukmet;nam;nam12;nam20;nam40;nam44;wseta;wrf;ngm;ruc2;rap;fslruc2;nogaps;navgem;mm5ak;mm5us
 250mb_HGHT_WIND                  $NMAP_RESTORE/stnd/250mb_hght_wind                  tropical     mrf;mrfx
 250mb_HGHT_WIND_NCF              $NMAP_RESTORE/stnd/250mb_hght_wind_ncf              no_col-fill  dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;ngm;ruc2;rap;fslruc2
 250mb_WIND_AND_REL_VORT          $NMAP_RESTORE/stnd/250mb_wind_and_rel_vort          hurricane    dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;ngm
-250mb_WIND_AND_REL_VORT          $NMAP_RESTORE/stnd/250mb_wind_and_rel_vort          standard     dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;ngm;nogaps;ruc2;rap;fslruc2
+250mb_WIND_AND_REL_VORT          $NMAP_RESTORE/stnd/250mb_wind_and_rel_vort          standard     dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;ngm;nogaps;navgem;ruc2;rap;fslruc2
 250mb_STREAMLINES                $NMAP_RESTORE/stnd/250mb_streamlines                streamlines  dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;fnl;mrf;mrfx;ngm;ruc2;rap;fslruc2
 !
 300mb_AGEO_DIV_ISOTACHS          $NMAP_RESTORE/stnd/300mb_ageo_div_isotachs          qpf          dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;fnl;mrf;mrfx;ngm;ruc2;rap;fslruc2;ukmet
-300mb_DIV_ISOTACHS               $NMAP_RESTORE/stnd/300mb_div_isotachs               standard     dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nogaps
+300mb_DIV_ISOTACHS               $NMAP_RESTORE/stnd/300mb_div_isotachs               standard     dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nogaps;navgem
 300mb_HGHT_ABSV                  $NMAP_RESTORE/stnd/300mb_hght_absv                  standard     ruc2;fslruc2;rap
-300mb_HGHT_ABSV_ADV              $NMAP_RESTORE/stnd/300mb_hght_absv_adv              standard     dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;ngm;mrf;mrfx;nogaps;ruc2;rap;fslruc2
-300mb_HGHT_WIND                  $NMAP_RESTORE/stnd/300mb_hght_wind                  standard     dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;fnl;mrf;mrfx;ngm;ruc2;rap;fslruc2;ukmet;nogaps;mm5ak;mm5us
-300mb_HGHT_WIND_TEMP             $NMAP_RESTORE/stnd/300mb_hght_tmp_wind              standard     dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;fnl;mrf;mrfx;ukmet;nogaps
+300mb_HGHT_ABSV_ADV              $NMAP_RESTORE/stnd/300mb_hght_absv_adv              standard     dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;ngm;mrf;mrfx;nogaps;navgem;ruc2;rap;fslruc2
+300mb_HGHT_WIND                  $NMAP_RESTORE/stnd/300mb_hght_wind                  standard     dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;fnl;mrf;mrfx;ngm;ruc2;rap;fslruc2;ukmet;nogaps;navgem;mm5ak;mm5us
+300mb_HGHT_WIND_TEMP             $NMAP_RESTORE/stnd/300mb_hght_tmp_wind              standard     dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;fnl;mrf;mrfx;ukmet;nogaps;navgem
 !
 500mb_HGHT_ABSV                  $NMAP_RESTORE/stnd/500mb_hght_absv                  hurricane    dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;fnl;mrf;mrfx;ngm;ukmet;firewx
 500mb_HGHT_ABSV                  $NMAP_RESTORE/stnd/500mb_hght_absv                  marine       dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;fnl;mrf;mrfx;ngm;ukmet;firewx
-500mb_HGHT_ABSV                  $NMAP_RESTORE/stnd/500mb_hght_absv                  standard     dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;fnl;mrf;mrfx;ngm;ruc2;rap;fslruc2;ukmet;nogaps;ens;mm5ak;mm5us;firewx
+500mb_HGHT_ABSV                  $NMAP_RESTORE/stnd/500mb_hght_absv                  standard     dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;fnl;mrf;mrfx;ngm;ruc2;rap;fslruc2;ukmet;nogaps;navgem;ens;mm5ak;mm5us;firewx
 500mb_HGHT_ABSV                  $NMAP_RESTORE/stnd/500mb_hght_absv                  standard     gefs;gefc
-500mb_HGHT_ABSV                  $NMAP_RESTORE/stnd/500mb_hght_absv                  tropical     dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;ngm;mrf;mrfx;ngm;ukmet;nogaps;firewx
-500mb_HGHT_ABSV_WND              $NMAP_RESTORE/stnd/500mb_hght_absv_wnd              standard     dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;ngm;mrf;mrfx;ngm;ukmet;nogaps;firewx
-500mb_HGHT                       $NMAP_RESTORE/stnd/500mb_hght                       surface      dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;fnl;mrf;mrfx;ngm;ruc2;rap;fslruc2;ukmet;nogaps;firewx
-500mb_ABSV_NCF                   $NMAP_RESTORE/stnd/500mb_absv_ncf                   no_col-fill  dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;fnl;mrf;mrfx;ngm;ruc2;rap;fslruc2;ukmet;nogaps;firewx
-500mb_ABSV_NCF                   $NMAP_RESTORE/stnd/500mb_absv_ncf                   surface      dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;fnl;mrf;mrfx;ngm;ruc2;rap;fslruc2;ukmet;nogaps;firewx
-500mb_HGHT_ABSV_ADV              $NMAP_RESTORE/stnd/500mb_hght_absv_adv              standard     dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;ngm;mrf;mrfx;nogaps;ruc2;rap;fslruc2;firewx
+500mb_HGHT_ABSV                  $NMAP_RESTORE/stnd/500mb_hght_absv                  tropical     dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;ngm;mrf;mrfx;ngm;ukmet;nogaps;navgemfirewx
+500mb_HGHT_ABSV_WND              $NMAP_RESTORE/stnd/500mb_hght_absv_wnd              standard     dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;ngm;mrf;mrfx;ngm;ukmet;nogaps;navgem;firewx
+500mb_HGHT                       $NMAP_RESTORE/stnd/500mb_hght                       surface      dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;fnl;mrf;mrfx;ngm;ruc2;rap;fslruc2;ukmet;nogaps;navgem;firewx
+500mb_ABSV_NCF                   $NMAP_RESTORE/stnd/500mb_absv_ncf                   no_col-fill  dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;fnl;mrf;mrfx;ngm;ruc2;rap;fslruc2;ukmet;nogaps;navgem;firewx
+500mb_ABSV_NCF                   $NMAP_RESTORE/stnd/500mb_absv_ncf                   surface      dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;fnl;mrf;mrfx;ngm;ruc2;rap;fslruc2;ukmet;nogaps;navgem;firewx
+500mb_HGHT_ABSV_ADV              $NMAP_RESTORE/stnd/500mb_hght_absv_adv              standard     dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;ngm;mrf;mrfx;nogaps;navgem;ruc2;rap;fslruc2;firewx
 500mb_HGHT_ABSV_NCF              $NMAP_RESTORE/stnd/500mb_hght_absv_ncf              no_col-fill  dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;fnl;mrf;mrfx;ngm;ruc2;rap;fslruc2;ukmet;firewx
-500mb_HGHT_GEOABSV               $NMAP_RESTORE/stnd/500mb_hght_geoabsv               standard     dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;fnl;mrf;mrfx;ngm;ruc2;rap;fslruc2;ukmet;ecmwfg;nogaps;firewx
+500mb_HGHT_GEOABSV               $NMAP_RESTORE/stnd/500mb_hght_geoabsv               standard     dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;fnl;mrf;mrfx;ngm;ruc2;rap;fslruc2;ukmet;ecmwfg;nogaps;navgem;firewx
 500mb_WIND_AND_REL_VORT          $NMAP_RESTORE/stnd/500mb_wind_and_rel_vort          hurricane    dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;ngm
-500mb_HGHT_WIND                  $NMAP_RESTORE/stnd/500mb_hght_wind                  standard     dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;fnl;mrf;mrfx;ngm;ruc2;rap;fslruc2;ukmet;nogaps;firewx
-500mb_HGHT_COLOR                 $NMAP_RESTORE/stnd/500mb_hght_color                 standard     dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;fnl;mrf;mrfx;ngm;ruc2;rap;fslruc2;ukmet;nogaps;firewx
-500mb_HGHT_WIND_TEMP             $NMAP_RESTORE/stnd/500mb_hght_tmp_wind              standard     dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;fnl;mrf;mrfx;ukmet;nogaps;firewx
+500mb_HGHT_WIND                  $NMAP_RESTORE/stnd/500mb_hght_wind                  standard     dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;fnl;mrf;mrfx;ngm;ruc2;rap;fslruc2;ukmet;nogaps;navgem;firewx
+500mb_HGHT_COLOR                 $NMAP_RESTORE/stnd/500mb_hght_color                 standard     dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;fnl;mrf;mrfx;ngm;ruc2;rap;fslruc2;ukmet;nogaps;navgem;firewx
+500mb_HGHT_WIND_TEMP             $NMAP_RESTORE/stnd/500mb_hght_tmp_wind              standard     dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;fnl;mrf;mrfx;ukmet;nogaps;navgem;firewx
 500mb_STREAMLINES                $NMAP_RESTORE/stnd/500mb_streamlines                streamlines  dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;fnl;mrf;mrfx;ngm;ruc2;rap;fslruc2;firewx
 !
 600mb_HGHT_RH_OMEGA              $NMAP_RESTORE/stnd/600mb_hght_rh_omega              standard     dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;fnl;mrf;ngm;ruc2;rap;fslruc2
 !
-700mb_RH                         $NMAP_RESTORE/stnd/700mb_rh                         standard     dgex;ecmwfg;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;fnl;mrf;mrfx;ngm;ruc2;rap;fslruc2;ukmet;nogaps;mm5ak;mm5us;firewx
-850mb_RH                         $NMAP_RESTORE/stnd/850mb_rh                         standard     dgex;ecmwfg;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;fnl;mrf;mrfx;ngm;ruc2;rap;fslruc2;ukmet;nogaps;mm5ak;mm5us;firewx
-700mb_HGHT_RH_OMEGA              $NMAP_RESTORE/stnd/700mb_hght_rh_omega              standard     dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;fnl;mrf;mrfx;ngm;ruc2;rap;fslruc2;ukmet;nogaps;mm5ak;mm5us;firewx
+700mb_RH                         $NMAP_RESTORE/stnd/700mb_rh                         standard     dgex;ecmwfg;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;fnl;mrf;mrfx;ngm;ruc2;rap;fslruc2;ukmet;nogaps;navgem;mm5ak;mm5us;firewx
+850mb_RH                         $NMAP_RESTORE/stnd/850mb_rh                         standard     dgex;ecmwfg;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;fnl;mrf;mrfx;ngm;ruc2;rap;fslruc2;ukmet;nogaps;navgem;mm5ak;mm5us;firewx
+700mb_HGHT_RH_OMEGA              $NMAP_RESTORE/stnd/700mb_hght_rh_omega              standard     dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;fnl;mrf;mrfx;ngm;ruc2;rap;fslruc2;ukmet;nogaps;navgem;mm5ak;mm5us;firewx
 700mb_HGHT_RH_OMEGA_NCF          $NMAP_RESTORE/stnd/700mb_hght_rh_omega_ncf          no_col-fill  dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;ngm;ruc2;rap;fslruc2;mrf;ukmet;firewx
 700mb_HGHT_WIND_DWPT             $NMAP_RESTORE/stnd/700mb_hght_wind_dwpt             qpf          dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;fnl;mrf;mrfx;ngm;ruc2;rap;fslruc2;ukmet;firewx
 700mb_WIND_AND_REL_VORT          $NMAP_RESTORE/stnd/700mb_wind_and_rel_vort          hurricane    dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;fnl;mrf;mrfx;ngm;ukmet;firewx
 700mb_WIND_AND_REL_VORT          $NMAP_RESTORE/stnd/700mb_wind_and_rel_vort          tropical     mrf;firewx
-700mb_EPV3D                      $NMAP_RESTORE/stnd/700mb_epv3d                      standard     dgex;gfs;gfshd;nam;nam20;nam40;nam44;fnl;mrf;mrfx;ukmet;nogaps;firewx
+700mb_EPV3D                      $NMAP_RESTORE/stnd/700mb_epv3d                      standard     dgex;gfs;gfshd;nam;nam20;nam40;nam44;fnl;mrf;mrfx;ukmet;nogaps;navgem;firewx
 700mb_STREAMLINES                $NMAP_RESTORE/stnd/700mb_streamlines                streamlines  dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;fnl;mrf;mrfx;ngm;ruc2;rap;fslruc2;firewx
-700mb_HGHT_WIND_TEMP             $NMAP_RESTORE/stnd/700mb_hght_tmp_wind              standard     dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;fnl;mrf;mrfx;ukmet;nogaps;firewx
+700mb_HGHT_WIND_TEMP             $NMAP_RESTORE/stnd/700mb_hght_tmp_wind              standard     dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;fnl;mrf;mrfx;ukmet;nogaps;navgem;firewx
 !
-850mb_HGHT_TMP_WIND              $NMAP_RESTORE/stnd/850mb_hght_tmp_wind              standard     dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;fnl;mrf;mrfx;ngm;ruc2;rap;fslruc2;ukmet;nogaps;mm5ak;mm5us;firewx
+850mb_HGHT_TMP_WIND              $NMAP_RESTORE/stnd/850mb_hght_tmp_wind              standard     dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;fnl;mrf;mrfx;ngm;ruc2;rap;fslruc2;ukmet;nogaps;navgem;mm5ak;mm5us;firewx
 850mb_HGHT_TMP_WIND_NCF          $NMAP_RESTORE/stnd/850mb_hght_tmp_wind_ncf          no_col-fill  dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;ngm;ruc2;rap;fslruc2;firewx
 850mb_HGHT_WIND_DWPT             $NMAP_RESTORE/stnd/850mb_hght_wind_dwpt             qpf          dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;fnl;mrf;mrfx;ngm;ruc2;rap;fslruc2;ukmet;firewx
 850mb_THTAE_ADVECTION            $NMAP_RESTORE/stnd/850mb_thtae_advection            qpf          dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;fnl;mrf;mrfx;ngm;ruc2;rap;fslruc2;ukmet;firewx
@@ -161,17 +162,17 @@
 925mb_STREAMLINES                $NMAP_RESTORE/stnd/925mb_streamlines                streamlines  dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;fnl;mrf;ruc2;rap;fslruc2;firewx
 !
 1000mb_STREAMLINES               $NMAP_RESTORE/stnd/1000mb_streamlines               streamlines  dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;fnl;mrf;mrfx;ngm;ruc2;rap;fslruc2;firewx
-1000mb_HGHT_WIND_TEMP            $NMAP_RESTORE/stnd/1000mb_hght_tmp_wind             standard     dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;fnl;mrf;mrfx;ukmet;nogaps;firewx
+1000mb_HGHT_WIND_TEMP            $NMAP_RESTORE/stnd/1000mb_hght_tmp_wind             standard     dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;fnl;mrf;mrfx;ukmet;nogaps;navgem;firewx
 ! MULTI-LEVEL, STANDARD PARAMETERS
 !
 300-700_Q-VCTRS_THKN             $NMAP_RESTORE/misc/300-700_q-vctrs_thkn             misc         dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;fnl;mrf;mrfx;ngm;ruc2;rap;fslruc2
-1000-500_THKN                    $NMAP_RESTORE/misc/1000-500_thkn                    standard     dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;fnl;mrf;mrfx;ngm;ukmet;nogaps
-1000-500_THKN                    $NMAP_RESTORE/misc/1000-500_thkn                    surface      dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;fnl;mrf;mrfx;ngm;ruc2;rap;fslruc2;ukmet;nogaps
-1000-500_THKN                    $NMAP_RESTORE/misc/1000-500_thkn                    medr         dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;fnl;mrf;mrfx;ngm;ruc2;rap;fslruc2;ukmet;nogaps
-1000-850_THKN                    $NMAP_RESTORE/misc/1000-850_thkn                    standard     dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;fnl;mrf;mrfx;ngm;ruc2;rap;fslruc2;ukmet;nogaps
-1000-850_THKN                    $NMAP_RESTORE/misc/1000-850_thkn                    surface      dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;fnl;mrf;mrfx;ngm;ruc2;rap;fslruc2;ukmet;nogaps
-850-700_THKN                     $NMAP_RESTORE/misc/850-700_thkn                     standard     dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;fnl;mrf;mrfx;ngm;ruc2;rap;fslruc2;ukmet;nogaps
-850-700_THKN                     $NMAP_RESTORE/misc/850-700_thkn                     surface      dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;fnl;mrf;mrfx;ngm;ruc2;rap;fslruc2;ukmet;nogaps
+1000-500_THKN                    $NMAP_RESTORE/misc/1000-500_thkn                    standard     dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;fnl;mrf;mrfx;ngm;ukmet;nogaps;navgem
+1000-500_THKN                    $NMAP_RESTORE/misc/1000-500_thkn                    surface      dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;fnl;mrf;mrfx;ngm;ruc2;rap;fslruc2;ukmet;nogaps;navgem
+1000-500_THKN                    $NMAP_RESTORE/misc/1000-500_thkn                    medr         dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;fnl;mrf;mrfx;ngm;ruc2;rap;fslruc2;ukmet;nogaps;navgem
+1000-850_THKN                    $NMAP_RESTORE/misc/1000-850_thkn                    standard     dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;fnl;mrf;mrfx;ngm;ruc2;rap;fslruc2;ukmet;nogaps;navgem
+1000-850_THKN                    $NMAP_RESTORE/misc/1000-850_thkn                    surface      dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;fnl;mrf;mrfx;ngm;ruc2;rap;fslruc2;ukmet;nogaps;navgem
+850-700_THKN                     $NMAP_RESTORE/misc/850-700_thkn                     standard     dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;fnl;mrf;mrfx;ngm;ruc2;rap;fslruc2;ukmet;nogaps;navgem
+850-700_THKN                     $NMAP_RESTORE/misc/850-700_thkn                     surface      dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;fnl;mrf;mrfx;ngm;ruc2;rap;fslruc2;ukmet;nogaps;navgem
 !
 850-300mb_WIND_SHEAR             $NMAP_RESTORE/misc/850-300mb_wind_shear             hurricane    dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211
 850-300mb_WIND_SHEAR             $NMAP_RESTORE/misc/850-300mb_wind_shear             tropical     dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;fnl;mrf;mrfx
@@ -182,10 +183,10 @@ MLW_PMSL                         $NMAP_RESTORE/misc/mlw_pmsl                    
 !
 BL_THTE_WIND                     $NMAP_RESTORE/misc/bl_thte_wind                     tropical     dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;fnl;mrf;mrfx
 BL_THTE_WIND                     $NMAP_RESTORE/misc/bl_thte_wind                     basic_wx     dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;mrf;fnl;mrfx
-PMSL_THKN                        $NMAP_RESTORE/misc/pmsl_thkn                        standard     dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;fnl;mrf;mrfx;ngm;ukmet;nogaps;ens;mm5ak;mm5us
+PMSL_THKN                        $NMAP_RESTORE/misc/pmsl_thkn                        standard     dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;fnl;mrf;mrfx;ngm;ukmet;nogaps;navgem;ens;mm5ak;mm5us
 PMSL_THKN                        $NMAP_RESTORE/misc/pmsl_thkn                        standard     gefs;gefc
-PMSL                             $NMAP_RESTORE/misc/pmsl                             standard     dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;fnl;mrf;mrfx;ngm;ukmet;nogaps
-PMSL                             $NMAP_RESTORE/misc/pmsl                             surface      dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;fnl;mrf;mrfx;ngm;ukmet;nogaps
+PMSL                             $NMAP_RESTORE/misc/pmsl                             standard     dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;fnl;mrf;mrfx;ngm;ukmet;nogaps;navgem
+PMSL                             $NMAP_RESTORE/misc/pmsl                             surface      dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;fnl;mrf;mrfx;ngm;ukmet;nogaps;navgem
 PRECIP_WATER_PMSL                $NMAP_RESTORE/misc/precip_water_mslp                tropical     dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;fnl;mrf;mrfx
 !
 ! PRECIPITATION PARAMETERS
@@ -230,14 +231,14 @@ PRECIP_6hr_MSLPhilo              $NMAP_RESTORE/prcp/precip_6hr_mslphilo         
 !
 ! AVN, MRF1, MRF2, FNL, NOGAPS (GLOBAL) models
 !!
-POTVORT_300-200mb                $NMAP_RESTORE/modl/global/300-200mb_pv              standard     dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;mrf;mrfx;fnl;nogaps
-POTVORT_400-200mb                $NMAP_RESTORE/modl/global/400-200mb_pv              standard     dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;mrf;mrfx;fnl;nogaps
-POTVORT_400-250mb                $NMAP_RESTORE/modl/global/400-250mb_pv              standard     dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;mrf;mrfx;fnl;nogaps
-POTVORT_500-300mb                $NMAP_RESTORE/modl/global/500-300mb_pv              standard     dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;mrf;mrfx;fnl;nogaps
-POTVORT_500-250mb                $NMAP_RESTORE/modl/global/500-250mb_pv              standard     dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;mrf;mrfx;fnl;nogaps
+POTVORT_300-200mb                $NMAP_RESTORE/modl/global/300-200mb_pv              standard     dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;mrf;mrfx;fnl;nogaps;navgem
+POTVORT_400-200mb                $NMAP_RESTORE/modl/global/400-200mb_pv              standard     dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;mrf;mrfx;fnl;nogaps;navgem
+POTVORT_400-250mb                $NMAP_RESTORE/modl/global/400-250mb_pv              standard     dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;mrf;mrfx;fnl;nogaps;navgem
+POTVORT_500-300mb                $NMAP_RESTORE/modl/global/500-300mb_pv              standard     dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;mrf;mrfx;fnl;nogaps;navgem
+POTVORT_500-250mb                $NMAP_RESTORE/modl/global/500-250mb_pv              standard     dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;mrf;mrfx;fnl;nogaps;navgem
 PMSL_and_BL_WIND                 $NMAP_RESTORE/modl/global/pmsl_and_bl_wind          standard     dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;mrf;mrfx;fnl
-1000mb_HGHT_ABSV                 $NMAP_RESTORE/modl/global/1000mb_hght_absv          marine       dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;mrf;mrfx;fnl;nogaps;ukmet
-850mb_HGHT_ABSV                  $NMAP_RESTORE/modl/global/850mb_hght_absv           marine       dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;mrf;mrfx;fnl;nogaps;ukmet
+1000mb_HGHT_ABSV                 $NMAP_RESTORE/modl/global/1000mb_hght_absv          marine       dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;mrf;mrfx;fnl;nogaps;navgem;ukmet
+850mb_HGHT_ABSV                  $NMAP_RESTORE/modl/global/850mb_hght_absv           marine       dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;mrf;mrfx;fnl;nogaps;navgem;ukmet
 !
 850mb_H2O_TRANSPORT              $NMAP_RESTORE/modl/global/850mb_h2o_transport       qpf          dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;mrf;mrfx;fnl
 850mb_WIND_PW                    $NMAP_RESTORE/modl/global/850mb_wind_pw             qpf          dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;mrf;mrfx;fnl
@@ -268,9 +269,9 @@ GREAT_LAKES_SNOW                 $NMAP_RESTORE/modl/global/great_lakes_snow     
 GREAT_LAKES_SNOW2                $NMAP_RESTORE/modl/global/great_lakes_snow2         basic_wx     dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;fnl
 !!
 PMSL_and_BL_WIND                 $NMAP_RESTORE/modl/global/pmsl_and_bl_wind          marine       dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;mrf;mrfx;fnl
-PMSL_and_BL_WIND                 $NMAP_RESTORE/modl/nogaps/pmsl_and_bl_wind          marine       nogaps
+PMSL_and_BL_WIND                 $NMAP_RESTORE/modl/nogaps/pmsl_and_bl_wind          marine       nogaps;navgem
 PMSL_and_BL_WIND                 $NMAP_RESTORE/modl/ukmet/pmsl_and_bl_wind           marine       ukmet
-PMSL_1000-850_THK                $NMAP_RESTORE/modl/nogaps/pmsl_1000-850_thk         marine       nogaps
+PMSL_1000-850_THK                $NMAP_RESTORE/modl/nogaps/pmsl_1000-850_thk         marine       nogaps;navgem
 PMSL_1000-850_THK                $NMAP_RESTORE/modl/ukmet/pmsl_1000-850_thk          marine       ukmet
 PMSL_1000-850_THK                $NMAP_RESTORE/modl/global/pmsl_1000-850_thk         marine       dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;mrf;mrfx;fnl
 PMSL_BL_TEMP(C)_WIND             $NMAP_RESTORE/modl/global/pmsl_bl_temp_wind         marine       dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;mrf;mrfx;fnl
@@ -281,18 +282,18 @@ STABILITY_925mb_WND              $NMAP_RESTORE/modl/global/stability_925mb_wnd  
 MARINE_FRONTS                    $NMAP_RESTORE/modl/global/marine_fronts             exp_marine   dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;mrf;mrfx;fnl
 MARINE_FRONTS                    $NMAP_RESTORE/modl/eta/marine_fronts                exp_marine   nam;nam12;nam20;nam40;nam44;wseta;wrf
 MARINE_FRONTS                    $NMAP_RESTORE/modl/ngm/marine_fronts                exp_marine   ngm
-PMSL_ONLY                        $NMAP_RESTORE/stnd/pmsl_only                        exp_marine   dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;fnl;mrf;mrfx;ukmet;nam;nam12;nam20;nam40;nam44;wseta;wrf;ngm;ruc2;rap;fslruc2;nogaps
-PMSL_1000-850THK_NO_WIND         $NMAP_RESTORE/modl/global/pmsl_1000-850thk          exp_marine   dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;mrf;mrfx;ukmet;nogaps
+PMSL_ONLY                        $NMAP_RESTORE/stnd/pmsl_only                        exp_marine   dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;fnl;mrf;mrfx;ukmet;nam;nam12;nam20;nam40;nam44;wseta;wrf;ngm;ruc2;rap;fslruc2;nogaps;navgem
+PMSL_1000-850THK_NO_WIND         $NMAP_RESTORE/modl/global/pmsl_1000-850thk          exp_marine   dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;mrf;mrfx;ukmet;nogaps;navgem
 PMSL_1000-850THK_NO_WIND         $NMAP_RESTORE/modl/eta/pmsl_1000-850thk             exp_marine   nam;nam12;nam20;nam40;nam44;wseta;wrf
 PMSL_1000-850THK_NO_WIND         $NMAP_RESTORE/modl/ngm/pmsl_1000-850thk             exp_marine   ngm
-PMSL_1000-500THK_NO_WIND         $NMAP_RESTORE/modl/global/pmsl_1000-500thk          exp_marine   dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;mrf;mrfx;nogaps;ukmet;nogaps;nam;nam12;nam20;nam40;nam44;wseta;wrf;ngm
-1000-850THK_ONLY                 $NMAP_RESTORE/modl/global/1000-850thk_only          exp_marine   dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;mrf;mrfx;nogaps;ukmet;nogaps;nam;nam12;nam20;nam40;nam44;wseta;wrf;ngm
+PMSL_1000-500THK_NO_WIND         $NMAP_RESTORE/modl/global/pmsl_1000-500thk          exp_marine   dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;mrf;mrfx;nogaps;navgem;ukmet;nam;nam12;nam20;nam40;nam44;wseta;wrf;ngm
+1000-850THK_ONLY                 $NMAP_RESTORE/modl/global/1000-850thk_only          exp_marine   dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;mrf;mrfx;nogaps;navgem;ukmet;nam;nam12;nam20;nam40;nam44;wseta;wrf;ngm
 WINDS_ONLY                       $NMAP_RESTORE/modl/global/bl_winds_only             exp_marine   dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;mrf;mrfx
 WINDS_ONLY                       $NMAP_RESTORE/modl/eta/bl_winds_only                exp_marine   nam;nam12;nam20;nam40;nam44;wseta;wrf
 WINDS_ONLY                       $NMAP_RESTORE/modl/ngm/bl_winds_only                exp_marine   ngm
 WINDS_ONLY                       $NMAP_RESTORE/modl/ukmet/bl_winds_only              exp_marine   ukmet
-WINDS_ONLY                       $NMAP_RESTORE/modl/nogaps/bl_winds_only             exp_marine   nogaps
-500_VORT_ONLY                    $NMAP_RESTORE/stnd/500_vort_only                    exp_marine   dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;fnl;mrf;mrfx;ukmet;nam;nam12;nam20;nam40;nam44;wseta;wrf;ngm;ruc2;rap;fslruc2;nogaps
+WINDS_ONLY                       $NMAP_RESTORE/modl/nogaps/bl_winds_only             exp_marine   nogaps;navgem
+500_VORT_ONLY                    $NMAP_RESTORE/stnd/500_vort_only                    exp_marine   dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;fnl;mrf;mrfx;ukmet;nam;nam12;nam20;nam40;nam44;wseta;wrf;ngm;ruc2;rap;fslruc2;nogaps;navgem
 GRID_SIG_WAVE(M)_AVN_MSLP        $NMAP_RESTORE/modl/nww3/sig_wave_gridded_mslp_meters_nw exp_marine   nww3;fnmocwave
 GRID_SIG_WAVE(M)_SWELL_DIR       $NMAP_RESTORE/modl/nww3/sig_wave_gridded_meters_dir exp_marine   nww3;fnmocwave
 GRID_SIG_WAVE(M)_ONLY            $NMAP_RESTORE/modl/nww3/sig_wave_gridded_meters_only exp_marine   nww3;fnmocwave
@@ -529,10 +530,10 @@ BL_THTE_WIND                     $NMAP_RESTORE/modl/ngm/bl_thte_wind_mono       
 ! NOGAPS model
 ! ------------
 !
-12HR_PCPN                        $NMAP_RESTORE/modl/nogaps/precip_12hr               precip       nogaps
-12HR_PCPN_MM                     $NMAP_RESTORE/modl/nogaps/precip_12hr_mm            precip       nogaps
-PMSL_and_BL_WIND                 $NMAP_RESTORE/modl/nogaps/pmsl_and_bl_wind          standard     nogaps
-850mb_HGT_WIND                   $NMAP_RESTORE/modl/nogaps/850mb_hgt_wind            standard     nogaps
+12HR_PCPN                        $NMAP_RESTORE/modl/nogaps/precip_12hr               precip       nogaps;navgem
+12HR_PCPN_MM                     $NMAP_RESTORE/modl/nogaps/precip_12hr_mm            precip       nogaps;navgem
+PMSL_and_BL_WIND                 $NMAP_RESTORE/modl/nogaps/pmsl_and_bl_wind          standard     nogaps;navgem
+850mb_HGT_WIND                   $NMAP_RESTORE/modl/nogaps/850mb_hgt_wind            standard     nogaps;navgem
 !
 !
 ! RFC Coop Precip Obs
@@ -745,7 +746,7 @@ ESTOFS_GRIDS_COLORP            $NMAP_RESTORE/ESTOFS/oceanic/estofs_grids_colorP 
 ! Unidata Additions
 500mb_Q-G                        $NMAP_RESTORE/stnd/500mb_Q-G                        Q-G_Theory   dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;gfs002;gfs003;gfsthin;nam;nam12;nam20;nam40;wseta;wrf;ngm;ukmet;ruc
 Model_Comparison_AVN-UKM_500     $NMAP_RESTORE/modl/compare/ukmet_vs_avn_500mb_hght  comp         dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;gfs002;gfs003;gfsthin;ukmet
-Model_Comparison_AVN-UKM-NOGAPS  $NMAP_RESTORE/modl/compare/avn_ukmet_nogaps_500mb_hght comp         dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;gfs002;gfs003;gfsthin;ukmet;nogaps
+Model_Comparison_AVN-UKM-NOGAPS  $NMAP_RESTORE/modl/compare/avn_ukmet_nogaps_500mb_hght comp         dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;gfs002;gfs003;gfsthin;ukmet;nogaps;navgem
 Precip_rate                      $NMAP_RESTORE/prcp/precip_rate                      precip       ruc2;ruc_20;rap
 spc_cape_cin                     $NMAP_RESTORE/misc/spc_cape_cin                     qpf          nam;nam12;nam20;nam40;wseta;wrf;dgex
 !

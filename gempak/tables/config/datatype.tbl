@@ -209,6 +209,7 @@
 !* G.McFadden/IMSG	 7/12	Added OAMBG1_HI, OAMBG2_HI, OAMBG3_HI,	*
 !*                              and OAMBG4_HI				*
 !* M. James/Unidata	 8/12   Added RAP; Preserved RUC entries        *
+!* M. James/Unidata	 3/13   Copied NOGAPS -> NAVGEM                 *
 !************************************************************************
 !
 !           |                         |                                                |        |        |DEF |DEF   |DEF   |            |TIME
@@ -416,10 +417,12 @@ MDLNAMSVR    $MODEL/mdl                mdlnamsvr_YYYYMMDDHH                     
 MDLNGM       $MODEL/mdl                ngm_YYYYMMDDHH                                   CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
 MDLMRFSVR    $MODEL/tdl                mdlmrfsvr_YYYYMMDDHH                             CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
 !
-! Misc Models
+! Misc Models 
 COOPMOS      $MODEL/coopmos            coopmos_YYYYMMDDHH                               CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
 NOGAPS       $MODEL/nogaps             YYYYMMDDHH_nogaps240.gem                         CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+NAVGEM       $MODEL/navgem             YYYYMMDDHH_navgem056.gem                         CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
 NGPS_PRCP    $MODEL/nogaps             nogaps_YYYYMMDDHH_prcp                           CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+NVGM_PRCP    $MODEL/navgem             navgem_YYYYMMDDHH_prcp                           CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
 !
 MM5AK        $MODEL/mm5                mm5alaska_YYYYMMDDHHfFFF                         CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
 MM5US        $MODEL/mm5                mm5conus_YYYYMMDDHHfFFF                          CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
