@@ -1,6 +1,6 @@
 !
 ! FNOCGRIB3.TBL -- GRIB 1 parameter conversion table version 3
-!
+! M. James/Unidata	04/13	Created for NAVGEM
 !ID# NAME                             UNITS                GNAM         SCALE   MISSING  HZREMAP DIRECTION
 !
 133 Temperature of Ground or Sea      K                    GSTM             0  -9999.00        0         0
