@@ -326,7 +326,7 @@ HDS	^H..... EGRR
 #
 # FNMOC data available via IDD (NOGAPS & COAMPS models)
 # -------------------------
-NOGAPS	^US058
+FNMOC	^US058
 	PIPE	decoders/dcgrib2 -v 1 -d data/gempak/logs/dcgrib2_fnmoc.log
 	-e GEMTBL=@GEMTBL@
 #
