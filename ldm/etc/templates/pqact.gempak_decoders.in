@@ -121,9 +121,9 @@ HDS	(KWBG.*/mRUC)
 		-e GEMTBL=@GEMTBL@ 
 #
 #
-# CONDUIT RUC grids (currently this grid is a duplicate of grib2)
-# Grid #252 (20km) grib1:	prod/ruc2a.*#252
-CONDUIT	prod/ruc2a.*#252
+# CONDUIT RAP grids (currently this grid is a duplicate of grib2)
+# Grid #252 (20km) grib2d/ruc2a.*#252
+CONDUIT	prod/rap.*#awp252.*
 	PIPE	decoders/dcgrib2 -m 15000 -d data/gempak/logs/dcgrib2_RUC.log
 		-e GEMTBL=@GEMTBL@
 #
