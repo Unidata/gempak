@@ -1,5 +1,5 @@
 C************************************************************************
-C* MCHPRM.SunOS
+C* MCHPRM.X86
 C*
 C* This include file contains Solaris X86 OS specific parameter definitions
 C*	for the GEMPAK software.
@@ -9,6 +9,7 @@ C**
 C* Log:
 C* K. Brill/HPC		 8/02	Define LLMXTG                           *
 C* R. Tian/SAIC		 9/02	Increase LLMXGD from 97000 to 275000    *
+C* M.James/Unidata      07/13   Increased LLMXGD to 2M                  *
 C************************************************************************
 C!
 	PARAMETER	( MTMACH =  MTLNUX  )
@@ -58,7 +59,7 @@ C!						Tilda
 C!
 	PARAMETER	( LLMXPT = 80000 )
 C!						Max # lines, polygons, ...
-	PARAMETER	( LLMXGD = 1000000 )
+	PARAMETER	( LLMXGD = 2000000 )
 C!						Max # grid points
 C*	PARAMETER	( LLMXTG = LLMXGD )
 	PARAMETER	( LLMXTG = 9331200 )

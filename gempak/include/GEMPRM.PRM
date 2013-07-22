@@ -154,7 +154,7 @@ C!						Max # levels/station
 C!						Max # data points
 	PARAMETER	( LLMXST =    20   )
 C!						Max # stations in list
-	PARAMETER	( LLMXTM =  2000   )
+	PARAMETER	( LLMXTM =  5000   )
 C!						Max # times/dataset
 	PARAMETER	( LLNANL =   128   )
 C!						Grid anl block length
