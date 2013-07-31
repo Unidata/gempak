@@ -224,7 +224,7 @@ EXTEND_DISC  pmdepd.bull  B $TEXT_DATA/misc/PMDEPD                   PMDEPD
 EXTENDP_DISC preepd.bull  B $TEXT_DATA/misc/PREEPD                   PREEPD
 PROG_DISC    pmdspd.bull  B $TEXT_DATA/misc/PMDSPD                   PMDSPD
 HAWAII_DISC  pmdhi.bull   B $TEXT_DATA/misc/PMDHI                    PMDHI
-ALASKA_DISC  pmdak.bull   B $TEXT_DATA2/misc/PMDAK                   PMDAK
+ALASKA_DISC  pmdak.bull   B $TEXT_DATA/misc/PMDAK                    PMDAK
 SAM_DISC     pmdsa.bull   B $TEXT_DATA/misc/PMDSA                    PMDSA
 CRB_DISC     pmdca.bull   B $TEXT_DATA/misc/PMDCA                    PMDCA
 QPF_DISC     qpfpfd.bull  B $TEXT_DATA/qpf/QPFPFD                    QPFPFD
