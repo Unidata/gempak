@@ -15,6 +15,7 @@
 !                                                                                                                                               *
 ! M. Li/SAIC		02/07	Created                                                                                                  	*
 ! M. James/Unidata	04/13	Added NAVGEM													*
+! M. James/Unidata	08/13	Added GME and G3DVAR 												*
 !************************************************************************************************************************************************
 !
 !Global_Models          dgex;gfs;gefs;gfshd;nam;nam20;nam40;nam44;fnl;mrf;mrfx;ngm;ruc2
@@ -27,7 +28,7 @@
 NCEP_CONUS_Models       nam80;nam40;nam20;nam12;nam104;nam44;nam;ngm;ruc;ruc2;ruc_20
 NCEP_Global_Models      gfs;gfshd;gfs003;gfs002;gfs212;gfs211;gfsthin;dgex
 !
-International_Models    ukmet;cmc;nogaps;navgem;ecmwfg;ecmwft
+International_Models    ukmet;cmc;nogaps;navgem;ecmwfg;ecmwft;gme;g3dvar
 !
 Ensemble_Models         sref;gefs;gefc;ens;enshr
 !
