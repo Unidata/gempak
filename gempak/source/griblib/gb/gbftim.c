@@ -18,6 +18,7 @@ void gb_ftim ( int *itime, int *iaccm, int *iret )
  * Chiz/Unidata		 3/00   Created from gb_gpds                    *
  * M. Li/GSC		 5/00	Added iret and cleaned up		*
  * S. Jacobs/NCEP	 3/11	Added check for Canadian Ensembles	*
+ * M. James/Unidata	 8/13   Added check for DWD GME model           *
  ***********************************************************************/
 {
 	int		ifcst, iafgi, ihhh, imm, iyy,
@@ -67,10 +68,12 @@ void gb_ftim ( int *itime, int *iaccm, int *iret )
  		     *	Zero hour forecasts (initializations) are indicated
  		     *	as initialized analysis products.
 		     *
-		     *	Same for Canadian Ensembles.
- 		     */
+		     *	Same for Canadian Ensembles. 
+		     */
 		    if  ( ( pds.center == 57 && pds.process == 10 ) ||
-			  ( pds.center == 54 && pds.process == 71 ) )  {
+			  ( pds.center == 54 && pds.process == 71 ) ||
+			  ( pds.center == 78 ) || ( pds.center == 146 ) ||
+			  ( pds.center == 43 ) || ( pds.center == 46 ) )  {
 		        iafgi = 1;
 		        ifcst = pds.time_p1;
 		    }
