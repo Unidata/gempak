@@ -148,8 +148,7 @@
  * M. James/Unidata	11/10   Increased LLMXTM from 300 to 2000	*
  * S. Jacobs/NCEP	 5/12	Increased MXNMFL from 1000 to 2000	*
  * M. James/Unidata	 1/13	Increased MXNMFL from 2000 to 5000	*
- * M. James/Unidata     07/13   Increased LLMXGD to 2M                  *
- * M. James/Unidata     07/13   Increased LLMXTM to 5000		*
+ * M. James/Unidata	 8/13   Increased LLMXGD to 1.5 mil		*
  ***********************************************************************/
 
 #ifndef _GEMPRM_H
@@ -345,20 +344,20 @@ typedef unsigned int	G_Cardinal;
 #define	LLGDHD		(     128 )	/* Max grid hdr length */
 #define	LLMDGG		( 4000000 )	/* Max mem for intern grids */
 #define	LLMXDT		( MMPARM * LLMXLV ) /* Max # data points */
-#define	LLMXGD		( 2000000 )	/* Max # grid points */
+#define	LLMXGD		( 1500000 )	/* Max # grid points */
 #define	LLMXGT		(    2000 )	/* Max # grid times */
 #define	LLMXLN		( 128 + 1 )	/* Max length of input */
 #define	LLMXLV		(     500 )	/* Max # levels/station */
 #define	LLMXPT		(   80000 )	/* Max # lines, polygons, ... */
 #define	LLMXST		(      20 )	/* Max # stations in list */
 #define	LLMXTG		( 9331200 )	/* Ultimate max # grid points */
-#define	LLMXTM		(    5000 )	/* Max # times/dataset */
+#define	LLMXTM		(   25000 )	/* Max # times/dataset */
 #define	LLNANL		(     128 )	/* Grid anl block length */
 #define	LLNNAV		(     256 )	/* Grid nav block length */
 #define	LLOAGD		(     400 )	/* Max # grids from 1 OA */
-#define	LLSTFL		(   30000 )	/* Max # stations in file */
+#define	LLSTFL		(    2000 )	/* Max # stations in file */
 #define	LLSTHL		(      20 )	/* Max header size */
-#define	LLTMCX		(     300 )	/* Max # of time xsect pts */
+#define	LLTMCX		(   25000 )	/* Max # of time xsect pts */
 #define MAX_CNTY        (     400 )     /* Max # of counties in watch */
 #define	MAXTMPLT	(      50 )	/* Maximum data templates */
 #define	MXLOOP		(      30 )	/* Maximum frames in loop */
