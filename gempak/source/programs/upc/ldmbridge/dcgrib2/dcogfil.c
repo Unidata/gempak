@@ -106,6 +106,9 @@ else
       case 5:
          gproj = strproj;
          break;
+      case 10:
+	 gproj = merproj;
+         break;
       case 203:
          gproj = cedproj;
          break;
