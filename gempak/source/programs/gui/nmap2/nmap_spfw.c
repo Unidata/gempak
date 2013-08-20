@@ -2441,7 +2441,7 @@ void spfw_formatConf ( long flen, char *spftext, char *filstr, int *iret )
     int		lp, src, ier, catgNum, dom, ierr;
     char	tagStr[32], dataStr[256]; 
     char	pathStr[256], spfil[MXFLSZ], errStr[256];
-    char	tmpStr1[10], *tmpStr2 = NULL, *lpStr = NULL; 
+    char	tmpStr1[20], *tmpStr2 = NULL, *lpStr = NULL; 
     char	tabStr[] = "	", domStr[] = "     x	"; 
     Boolean	lp_hasSrc, lp_hasDom, src_exist;
 
