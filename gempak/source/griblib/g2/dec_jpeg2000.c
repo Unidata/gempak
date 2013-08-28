@@ -1,6 +1,7 @@
 #ifndef USE_JPEG2000
  void dummy(void) {}
 #else   /* USE_JPEG2000 */
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include "grib2.h"
@@ -71,7 +72,7 @@
 //       
     image=jpc_decode(jpcstream,opts);
     if ( image == 0 ) {
-       printf(" jpc_decode return = %d \n",ier);
+       printf(" jpc_decode return\n");
        return -3;
     }
     

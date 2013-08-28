@@ -4,15 +4,20 @@
 !
 ! The format for the file is given below, with the number of characters in
 ! parentheses.
+! ******************************************************************************
+! IF YOU CHANGE THIS TABLE YOU MUST CHECK BOTH THE snap.tbl AND THE coordPts.tbl
+! ******************************************************************************
 !
 !!
 ! Log:
-! G. Krueger/EAI	10/97
-! G. Krueger/EAI	 3/98	Added and deleted large no. of entries
+! G. Krueger/EAI       10/97
+! G. Krueger/EAI        3/98	Added and deleted large no. of entries
 ! G. Krueger/EAI	2/99	Updated several entries from AWC info.
-! S. Jacobs/NCEP	11/01	Added Alaskan VOR points
+! S. Jacobs/NCEP	11/01	Added Alaskan VOR points	
 ! B. Yin/SAIC		06/05	Per AWC replace MQT with SAW
-! J. Lewis/AWC		 7/06	Added HAwaian VOR points
+! J. Lewis/AWC           7/06   Added HAwaian VOR points
+! B. Entwistle/AWC       2/08   Changed 11 VOR points
+! J. Lewis/AWC		11/12	Changed VRB to TRV
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !
 !STID    STNM   NAME                             ST CO   LAT    LON  ELV PRI
@@ -69,7 +74,7 @@ EKN      000088 ELKINS                           WV US  3892  -8010     0  0
 EWC      000326 ELLWOOD_CITY                     PA US  4083  -8021     0  0
 ERI      000092 ERIE                             PA US  4202  -8030     0  0
 MIA      000176 MIAMI                            FL US  2580  -8030     0  0
-VRB      000276 VERO_BEACH                       FL US  2768  -8049     0  0
+TRV      000276 VERO_BEACH                       FL US  2768  -8049     0  0
 PSK      000369 DUBLIN                           VA US  3709  -8071     0  0
 AIR      000280 BELLAIRE                         OH US  4002  -8082     0  0
 CLT      000059 CHARLOTTE                        NC US  3522  -8093     0  0
@@ -81,7 +86,7 @@ BKW      000034 BECKLEY                          WV US  3778  -8112     0  0
 ORL      000204 ORLANDO                          FL US  2854  -8134     0  0
 CRG      000298 JACKSONVILLE                     FL US  3034  -8151     0  0
 EYW      000096 KEY_WEST                         FL US  2459  -8180     0  0
-FMY      000104 FT_MEYERS                        FL US  2658  -8187     0  0
+RSW      000104 LEE_COUNTY                       FL US  2653  -8178     0  0
 SPA      000380 SPARTANBURG                      SC US  3503  -8193     0  0
 HNN      000339 HENDERSON                        WV US  3875  -8203     0  0
 HMV      000337 HOLSTON_MOUNTAIN                 TN US  3644  -8213     0  0
@@ -102,7 +107,7 @@ VXV      000388 KNOXVILLE                        TN US  3590  -8389     0  0
 ROD      000373 ROSEWOOD                         OH US  4029  -8404     0  0
 MBS      000168 SAGINAW                          MI US  4353  -8408     0  0
 LOZ      000160 LONDON                           KY US  3703  -8412     0  0
-ABY      000004 ALBANY                           GA US  3165  -8430     0  0
+PZD      000004 PECAN                            GA US  3166  -8429     0  0
 SSM      000255 SAULT_STE_MARIE                  MI US  4641  -8431     0  0
 TLH      000264 TALLAHASSEE                      FL US  3056  -8437     0  0
 ATL      000019 ATLANTA                          GA US  3363  -8444     0  0
@@ -112,7 +117,7 @@ FWA      000109 FT_WAYNE                         IN US  4098  -8519     0  0
 LGC      000350 LA_GRANGE                        GA US  3305  -8521     0  0
 GRR      000332 GRAND_RAPIDS                     MI US  4279  -8550     0  0
 TVC      000270 TRAVERSE_CITY                    MI US  4467  -8555     0  0
-LOU      000159 LOUISVILLE                       KY US  3810  -8558     0  0
+IIU      000159 LOUISVILLE                       KY US  3810  -8558     0  0
 MKG      000179 MUSKEGON                         MI US  4317  -8604     0  0
 PMM      000366 PULLMAN                          MI US  4247  -8611     0  0
 GIJ      000330 NILES                            MI US  4177  -8632     0  0
@@ -134,7 +139,7 @@ JOT      000348 JOLIET                           IL US  4155  -8832     0  0
 SJI      000378 SEMMNES                          AL US  3073  -8836     0  0
 IGB      000133 BIGBEE                           MS US  3348  -8852     0  0
 MEI      000172 MERIDIAN                         MS US  3238  -8880     0  0
-DEC      000070 DECATUR                          IL US  3974  -8886     0  0
+AXC      000070 DECATUR                          IL US  3974  -8886     0  0
 YQT      000393 THUNDER_BAY                      ON CN  4837  -8932     0  0
 DYR      000083 DYERSBURG                        TN US  3602  -8932     0  0
 RHI      000228 RHINELANDER                      WI US  4563  -8945     0  0
@@ -143,7 +148,7 @@ DLL      000310 DELLS                            WI US  4355  -8976     0  0
 MEM      000173 MEMPHIS                          TN US  3506  -8998     0  0
 LEV      000349 GRAND_ISLE                       LA US  2918  -9010     0  0
 JAN      000142 JACKSON                          MS US  3251  -9017     0  0
-MSY      000195 NEW_ORLEANS                      LA US  3000  -9027     0  0
+HRV      000195 HARVEY                           LA US  2985  -9000     0  0
 FAM      000097 FARMINGTON                       MO US  3767  -9023     0  0
 MCB      000169 MC_COMB                          MS US  3130  -9026     0  0
 SQS      000381 SIDON                            MS US  3346  -9028     0  0
@@ -175,7 +180,7 @@ RZC      000374 RAZORBACK                        AR US  3625  -9412     0  0
 FSM      000108 FT_SMITH                         AR US  3538  -9427     0  0
 FOD      000105 FT_DODGE                         IA US  4261  -9429     0  0
 BUM      000045 BUTLER                           MO US  3827  -9449     0  0
-MKC      000177 KANSAS_CITY                      MO US  3928  -9459     0  0
+MCI      000177 KANSAS_CITY                      MO US  3929  -9474     0  0
 LFK      000155 LUFKIN                           TX US  3116  -9472     0  0
 GGG      000115 LONGVIEW                         TX US  3242  -9475     0  0
 BJI      000033 BEMIDJI                          MN US  4758  -9502     0  0
@@ -189,7 +194,7 @@ PWE      000222 PAWNEE_CITY                      NE US  4020  -9621     0  0
 PSX      000219 PALACIOS                         TX US  2876  -9631     0  0
 FSD      000107 SIOUX_FALLS                      SD US  4365  -9678     0  0
 FAR      000098 FARGO                            ND US  4675  -9685     0  0
-DFW      000072 DALLAS-FT_WORTH                  TX US  3287  -9703     0  0
+TTT      000072 MAVERICK                         TX US  3287  -9704     0  0
 ADM      000008 ARDMORE                          OK US  3421  -9717     0  0
 GFK      000114 GRAND_FORKS                      ND US  4795  -9719     0  0
 YWG      000397 WINNIPEG                         MB CN  4990  -9723     0  0
@@ -199,7 +204,7 @@ CRP      000065 CORPUS_CHRISTI                   TX US  2790  -9745     0  0
 ICT      000132 WICHITA                          KS US  3775  -9758     0  0
 OKC      000198 OKLAHOMA_CITY                    OK US  3536  -9761     0  0
 SLN      000251 SALINA                           KS US  3893  -9762     0  0
-AUS      000020 AUSTIN                           TX US  3030  -9770     0  0
+CWK      000020 CENTEX                           TX US  3038  -9753     0  0
 END      000321 VANCE_AFB                        OK US  3635  -9792     0  0
 OBH      000358 WOLBACH                          NE US  4138  -9835     0  0
 ABR      000003 ABERDEEN                         SD US  4542  -9837     0  0
@@ -209,7 +214,6 @@ ONL      000200 ONEILL                           NE US  4247  -9869     0  0
 LRD      000161 LAREDO                           TX US  2748  -9942     0  0
 JCT      000144 JUNCTION                         TX US  3060  -9982     0  0
 ABI      000001 ABILENE                          TX US  3248  -9986     0  0
-GAG      000110 GAGE                             OK US  3634  -9988     0  0
 ANW      000282 AINSWORTH                        NE US  4257  -9999     0  0
 PIR      000214 PIERRE                           SD US  4440 -10017     0  0
 HLC      000335 HILL_CITY                        KS US  3926 -10023     0  0
@@ -241,11 +245,11 @@ TCC      000262 TUCUMCARI                        NM US  3518 -10360     0  0
 ISN      000140 WILLISTON                        ND US  4818 -10363     0  0
 MRF      000190 MARFA                            TX US  3030 -10395     0  0
 PUB      000220 PUEBLO                           CO US  3829 -10443     0  0
-ROW      000233 ROSWELL                          NM US  3334 -10462     0  0
+CME      000233 CHISUM                           NM US  3334 -10462     0  0
 DEN      000071 DENVER                           CO US  3981 -10466     0  0
 CYS      000301 CHEYENNE                         WY US  4121 -10477     0  0
 CIM      000297 CIMARRON                         NM US  3649 -10487     0  0
-LVS      000163 LAS_VEGAS                        NM US  3566 -10514     0  0
+FTI      000163 FT_UNION                         NM US  3566 -10514     0  0
 LAR      000148 LARAMIE                          WY US  4133 -10572     0  0
 ALS      000013 ALAMOSA                          CO US  3735 -10582     0  0
 MLS      000182 MILES_CITY                       MT US  4638 -10595     0  0
@@ -261,7 +265,7 @@ TCS      000263 TRUTH_OR_CONSEQUENCES            NM US  3328 -10728     0  0
 CHE      000054 HAYDEN                           CO US  4052 -10731     0  0
 DMN      000076 DEMING                           NM US  3228 -10760     0  0
 YYN      000400 SWIFT_CURRENT                    SA CN  5028 -10768     0  0
-FMN      000103 FARMINGTON                       NM US  3675 -10810     0  0
+RSK      000103 RATTLESNAKE                      NM US  3675 -10810     0  0
 BOY      000290 BOYSEN_RESV.                     WY US  4346 -10830     0  0
 BIL      000031 BILLINGS                         MT US  4581 -10863     0  0
 JNC      000347 GRAND_JUNCTION                   CO US  3906 -10879     0  0
@@ -331,7 +335,7 @@ SNS      000253 SALINAS                          CA US  3666 -12160     0  0
 OAK      000356 OAKLAND                          CA US  3773 -12222     0  0
 RBL      000225 RED_BLUFF                        CA US  4010 -12224     0  0
 SEA      000243 SEATTLE                          WA US  4744 -12231     0  0
-BLI      000035 BELLINGHAM                       WA US  4895 -12258     0  0
+HUH      000035 WHATCOM                          WA US  4895 -12258     0  0
 PDX      000208 PORTLAND                         OR US  4558 -12260     0  0
 PYE      000371 POINT_REYES                      CA US  3808 -12287     0  0
 OED      000362 MEDFORD                          OR US  4248 -12291     0  0
@@ -391,7 +395,7 @@ OTZ           0 KOTZEBUE                         AK US  6688 -16260     0  0
 WLK           0 SELAWIK                          AK US  6660 -16000     0  0
 HSL           0 HUSLIA                           AK US  6571 -15637     0  0
 BSF           0 BRADSHAW                         HI US  1976 -15539     0  0
-UPP           0 UPOLU_POINT                      HI US  2020 -15584     0  0
+UPP           0 UPOLU POINT                      HI US  2020 -15584     0  0
 ITO           0 HILO                             HI US  1972 -15501     0  0
 HNL           0 HONOLULU                         HI US  2133 -15793     0  0
 OGG           0 MAUI                             HI US  2091 -15642     0  0

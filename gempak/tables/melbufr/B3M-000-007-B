@@ -472,8 +472,6 @@
   0; 21;  81;    3;           0;   10;           m; Open loop correction (height-time loop)
   0; 21;  82;    3;       -3000;   14;          dB; Open loop correction (auto gain control)
   0; 21;  85;    0;           0;    4;     Numeric; ATSR sea surface temperature across- track band number
-  0; 21; 109;    0;           0;   17;  Flag_Table; SEAWINDS wind vector cell quality
-  0; 21; 120;    3;           0;   10;     Numeric; Probability of rain
 # Class 22 - Oceanographic elements
   0; 22;   1;    0;           0;    9; Degree_true; Direction of waves 
   0; 22;   2;    0;           0;    9; Degree_true; Direction of wind waves 
@@ -658,10 +656,14 @@
   0; 31;  21;    0;           0;    6;  Code_Table; Associated field significance
   0; 31;  31;    0;           0;    1;  Flag_Table; Data present indicator
 # Class 33 - Quality information
-#  0; 33;   1;    ;           0;    1;           ; Reserved
+  0; 33;   1;    
+;           0;    1;           
+; Reserved
   0; 33;   2;    0;           0;    2;  Code_Table; Quality information
   0; 33;   3;    0;           0;    3;  Code_Table; Quality information
-#  0; 33;   4;    ;           0;    3;           ; Reserved
+  0; 33;   4;    
+;           0;    3;           
+; Reserved
   0; 33;   7;    0;           0;    7;           %; Per cent confidence
   0; 33;  20;    0;           0;    3;  Code_Table; Quality control indication of following value
   0; 33;  21;    0;           0;    2;  Code_Table; Quality of following value

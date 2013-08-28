@@ -2,6 +2,7 @@
  void dummy(void) {}
 #else   /* USE_PNG */
 
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <png.h>
@@ -87,7 +88,7 @@ int enc_png(char *data,g2int width,g2int height,g2int nbits,char *pngbuf)
 
 /*    Set new custom write functions    */
 
-    png_set_write_fn(png_ptr,(voidp)&write_io_ptr,(png_rw_ptr)user_write_data,
+    png_set_write_fn(png_ptr,(png_voidp)&write_io_ptr,(png_rw_ptr)user_write_data,
                     (png_flush_ptr)user_flush_data);
 /*    png_init_io(png_ptr, fptr);   */
 /*    png_set_compression_level(png_ptr, Z_BEST_COMPRESSION);  */

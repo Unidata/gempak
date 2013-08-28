@@ -39,7 +39,6 @@ all : $(ALIB) $(PROG)
 $(PROG): $(ALIB) $(LIBINC) $(PROG).c
 	$(COMPILE.c) $(PROG).c
 	$(LINK.f) $(NOFORMAIN) $(PROG).o $(ALIB) $(LIBINC) $(SYSLIBS) -lm -o $@
-	$(RM) *.o
 
 $(ALIB): $(LOBJS) $(COBJS)
 	-$(AR) $(ARFLAGS) $@ *.o

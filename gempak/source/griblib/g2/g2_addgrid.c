@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <stdlib.h>
 #include "grib2.h"
 
@@ -16,6 +17,7 @@ g2int g2_addgrid(unsigned char *cgrib,g2int *igds,g2int *igdstmpl,g2int *ideflis
 //
 // PROGRAM HISTORY LOG:
 // 2002-11-01  Gilbert
+// 2009-01-14  Vuong     Changed structure name template to gtemplate
 //
 // USAGE:    int g2_addgrid(unsigned char *cgrib,g2int *igds,g2int *igdstmpl,
 //                          g2int *ideflist,g2int idefnum)
@@ -80,7 +82,7 @@ g2int g2_addgrid(unsigned char *cgrib,g2int *igds,g2int *igdstmpl,g2int *ideflis
       static g2int one=1,three=3,miss=65535;
       g2int   lensec3,iofst,ibeg,lencurr,len;
       g2int   i,j,temp,ilen,isecnum,nbits;
-      template *mapgrid=0;
+      gtemplate *mapgrid=0;
  
       ierr=0;
 //
@@ -134,7 +136,7 @@ g2int g2_addgrid(unsigned char *cgrib,g2int *igds,g2int *igdstmpl,g2int *ideflis
 //
       if ( (isecnum!=1) && (isecnum!=2) && (isecnum!=7) ) {
         printf("g2_addgrid: Section 3 can only be added after Section 1, 2 or 7.\n");
-        printf("g2_addgrid: Section ',isecnum,' was the last found in given GRIB message.\n");
+        printf("g2_addgrid: Section %d was the last found in given GRIB message.\n", isecnum);
         ierr=-4;
         return(ierr);
       }
@@ -212,6 +214,7 @@ g2int g2_addgrid(unsigned char *cgrib,g2int *igds,g2int *igdstmpl,g2int *ideflis
            j++;
          }
       }
+      free(mapgrid);
       //
       //   If requested,
       //   Insert optional list of numbers defining number of points

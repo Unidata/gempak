@@ -302,6 +302,20 @@
 #define	cvg_rebun	cvg_rebun_	
 #define	cvg_rdfilter	cvg_rdfilter_	
 
+#define da_getdtc	da_getdtc_
+#define da_getdtr	da_getdtr_
+#define da_getdti	da_getdti_
+
+#define da_getheader	da_getheader_
+#define da_getlabel     da_getlabel_
+#define da_getname      da_getname_
+#define da_getnums      da_getnums_
+#define da_getparm	da_getparm_
+#define da_getpart	da_getpart_
+#define da_getsorc      da_getsorc_
+#define da_getvers      da_getvers_
+#define da_readxml      da_readxml_
+
 #define db_gsathdr      db_gsathdr_
 #define db_gradhdr      db_gradhdr_
 #define db_open         db_open_
@@ -1218,6 +1232,7 @@
 
 #define pd_ctot		pd_ctot_
 #define pd_dden		pd_dden_
+#define pd_sped		pd_sped_
 #define pd_drct		pd_drct_
 #define pd_dwpt		pd_dwpt_
 #define pd_fosb		pd_fosb_
@@ -1238,7 +1253,6 @@
 #define pd_sduv		pd_sduv_
 #define pd_shmr		pd_shmr_
 #define pd_slvp		pd_slvp_
-#define pd_sped		pd_sped_
 #define pd_swet		pd_swet_
 #define pd_thta		pd_thta_
 #define pd_thte		pd_thte_

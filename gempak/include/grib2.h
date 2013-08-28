@@ -2,9 +2,13 @@
 #define _grib2_H
 #include<stdio.h>
 
-#define G2_VERSION "g2clib-1.0.2"
+#define G2_VERSION "g2clib-1.4.0"
 /*                .      .    .                                       .
 //   PRGMMR: Gilbert         ORG: W/NP11    DATE: 2002-10-25
+//
+// PROGRAM HISTORY LOG:
+// 2002-10-25  Gilbert
+// 2009-01-14  Vuong     Changed struct template to gtemplate
 //
 //   Each element of structure gribfield is defined as:
 //   
@@ -156,7 +160,7 @@ typedef unsigned int g2intu;
 #endif
 typedef float g2float;
 
-struct template {
+struct gtemplate {
    g2int type;           /* 3=Grid Defintion Template.                       */
                          /* 4=Product Defintion Template.                    */
                          /* 5=Data Representation Template.                  */
@@ -172,7 +176,7 @@ struct template {
                          /*                      part of the template.       */
 };
 
-typedef struct template template;
+typedef struct gtemplate gtemplate;
 
 struct gribfield {
    g2int   version,discipline;
@@ -258,12 +262,12 @@ int g2_reduce(g2int *, g2int *, g2int *, g2int *, g2int *,
 			g2int *, g2int *, g2int *, g2int *,
 			g2int *, g2int *, g2int *, g2int *);
 void g2_rdieee(g2int *,g2float *,g2int );
-extern template *getpdstemplate(g2int);
-extern template *extpdstemplate(g2int,g2int *);
-extern template *getdrstemplate(g2int);
-extern template *extdrstemplate(g2int,g2int *);
-extern template *getgridtemplate(g2int);
-extern template *extgridtemplate(g2int,g2int *);
+extern gtemplate *getpdstemplate(g2int);
+extern gtemplate *extpdstemplate(g2int,g2int *);
+extern gtemplate *getdrstemplate(g2int);
+extern gtemplate *extdrstemplate(g2int,g2int *);
+extern gtemplate *getgridtemplate(g2int);
+extern gtemplate *extgridtemplate(g2int,g2int *);
 extern void compack(g2float *,g2int,g2int,g2int *,unsigned char *,g2int *);
 void misspack(g2float *,g2int ,g2int ,g2int *, unsigned char *, g2int *);
 void gbit(unsigned char *,g2int *,g2int ,g2int );

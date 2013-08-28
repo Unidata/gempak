@@ -27,6 +27,9 @@
 !				  communication with Richard Taufman/FAA
 !				  who indicated these locations are not
 !				  in the FAA RMSL file used by WARP.
+! G. Grosshans/SPC	 08/11	- Removed CGX per CWSU who called regarding
+!				  watch #694 indicating anchor point is no
+!				  longer valid (Chicago area).
 !                
 !                                 NOTE: THIS IS A DRAFT FOR WEB
 ! 
@@ -241,7 +244,7 @@ HOP      000335 FORT_CAMPBELL                    KY US  3667  -8748     0  0
 EVV      000264 EVANSVILLE                       IN US  3803  -8753     0  0
 MQT      000288 MARQUETTE                        MI US  4653  -8757     0  0
 DNV      000151 DANVILLE                         IL US  4020  -8760     0  0
-CGX      000157 MEIGS_FIELD                      IL US  4187  -8762     0  0
+!CGX      000157 MEIGS_FIELD                      IL US  4187  -8762     0  0
 MSL      000204 MUSCLE_SHOALS                    AL US  3475  -8762     0  0
 TCL      000206 TUSCALOOSA                       AL US  3322  -8762     0  0
 MTW      000303 MANITOWOC                        WI US  4413  -8768     0  0
@@ -722,3 +725,4 @@ VPZ      000000 VALPARAISO                       IN US  4145  -8700   235  0
 VVV      000000 ORTONVILLE                       MN US  4531  -9642   335  0  
 2WX      000000 BUFFALO                          SD US  4557 -10352   915  0  
 6R6      000000 DRYDEN                           TX US  3004 -10221   707  0
+

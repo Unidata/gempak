@@ -37,60 +37,16 @@ C* X. Guo/CWS           09/11   Increased recode size from 10M to 20M   *
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 	INCLUDE		'dmcmn.cmn'
-	INCLUDE		'dbcmn.cmn'
 C
 	CHARACTER*(*)	part
 	REAL		rdata (*)
 	INTEGER		idthdr (*)
-C
-        CHARACTER       qtype*8, src*21, part2*5, datauri*254
-        INTEGER         idtarr(5)
 C------------------------------------------------------------------------
-C*      For A2DB requests - set the parms for data query.
-C
 	nword = 0
-	IF ( dbread ) THEN 
-           IF (INDEX(dbdatasrc,'grid')  .gt. 0 ) THEN 
-              qtype="gridDat"
-              ione = 1
-              CALL ST_NULL ( qtype, qtype, lstr, iret)
-              CALL ST_LCUC ( dbdatasrc, src,ier )
-              CALL ST_NULL ( src, src, lstr, ier )
-              CALL ST_NULL ( part, part2, lstr, iret)
-              CALL ST_NULL ( dbstid, dbstid, lstr, iret)
-              CALL ST_NULL ( dburi, datauri, lstr, iret)
-              nsize = dimx*dimy
-              CALL ST_INCH ( nsize, dbdttm, iret)
-              CALL ST_NULL ( dbdttm, dbdttm, lstr, iret)
-              CALL DB_RDTR ( qtype, src, part2, dbdttm, dbstid,
-     +                       datauri, ione, rdata, nword, iret)
-              IF ( iret .ne. 0 ) THEN 
-                 iret = -7
-                 RETURN
-              END IF
-              idthdr(1) = dimx
-              idthdr(2) = dimy
-              RETURN
-           ELSE
-              qtype="obrvqry"
-              ione = 1
-              CALL ST_NULL ( qtype, qtype, lstr, iret)
-              CALL ST_LCUC ( dbdatasrc, src,ier )
-              CALL ST_NULL ( src, src, lstr, ier )
-              CALL ST_NULL ( part, part2, lstr, iret)
-              CALL ST_NULL ( dbdttm, dbdttm, lstr, iret)
-              CALL ST_NULL ( dbstid, dbstid, lstr, iret)
-c              CALL DB_RDTR ( qtype, src, part2, dbdttm, dbstid,
-c     +                    ione, rdata, nword, iret)
-              CALL TI_CTOI ( dbdttm, idtarr, iret ) 
-              idthdr(1) = idtarr(4) * 100 + idtarr(5)
-              RETURN
-           END IF
-        END IF
 C
 C*	Check that file is open.
 C
-        CALL DM_CHKF ( iflno, iret )
+	CALL DM_CHKF ( iflno, iret )
 	IF  ( iret .ne. 0 ) RETURN
 C
 C*	Check for valid row and column positions.
@@ -191,7 +147,6 @@ C
 	  ELSE
 	    iret = -15
 	END IF
-        
 C*
 	RETURN
 	END

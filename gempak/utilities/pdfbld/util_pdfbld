@@ -1,10 +1,9 @@
-GEMPARM=$GEMPAK/parm
-export GEMPARM
+export GEMPARM=$GEMPAK/parm
 
-pdfbld $GEMPAK/pdf BUFRENC
+pdfbld $GEMPDF BUFRENC
 ##########################
-pdfbld $GEMPAK/pdf SECTOR
+pdfbld $GEMPDF SECTOR
 ##########################
-pdfbld $GEMPAK/pdf VG2UKA
+pdfbld $GEMPDF VG2UKA
 ##########################
 echo ALL THE UTIL PDFs ARE BUILT.

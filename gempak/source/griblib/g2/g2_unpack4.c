@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <stdlib.h>
 #include "grib2.h"
 
@@ -14,6 +15,7 @@ g2int g2_unpack4(unsigned char *cgrib,g2int *iofst,g2int *ipdsnum,g2int **ipdstm
 //
 // PROGRAM HISTORY LOG:
 // 2002-10-31  Gilbert
+// 2009-01-14  Vuong	Changed structure name template to gtemplate
 //
 // USAGE:    int g2_unpack4(unsigned char *cgrib,g2int *iofst,g2int *ipdsnum,
 //                          g2int **ipdstmpl,g2int *mappdslen,
@@ -60,7 +62,7 @@ g2int g2_unpack4(unsigned char *cgrib,g2int *iofst,g2int *ipdsnum,g2int **ipdstm
       g2int *coordieee;
       g2int *lipdstmpl=0;
       g2float *lcoordlist;
-      template *mappds;
+      gtemplate *mappds;
 
       ierr=0;
       *ipdstmpl=0;    // NULL
@@ -126,7 +128,7 @@ g2int g2_unpack4(unsigned char *cgrib,g2int *iofst,g2int *ipdsnum,g2int **ipdstm
       //   extended.
       //   The number of values in a specific template may vary
       //   depending on data specified in the "static" part of the
-      //   template.
+      //   gtemplate.
       //
       if ( needext ==1 ) {
         free(mappds);

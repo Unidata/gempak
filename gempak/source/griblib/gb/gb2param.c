@@ -129,6 +129,12 @@ void gb2_param ( char *wmovartbl, char *lclvartbl, int prmext, Gribmsg *cmsg,
      */
     gb2_prob ( cmsg->gfld, g2var.gemname );
 
+    /* 
+     *  Adjust statistical information in parameter abbreviation,
+     *  if necessary.
+     */
+    gb2_stat ( cmsg->gfld, g2var.gemname );
+
     /*
      *  Add forecast or analysis error identifier, if necessary.
      */

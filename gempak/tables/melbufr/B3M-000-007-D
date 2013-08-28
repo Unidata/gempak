@@ -189,7 +189,7 @@
       3   1  23  Latitude and longitude (coarse accuracy)
      -1
 #  (Buoy/platform — moving)
-  3   1  35 
+  3   1035*
       0   1   5  Buoy/platform identifier
       0   1  12  Direction of motion of moving observing platform
       0   1  13  Speed of motion of moving observing platform
@@ -676,12 +676,12 @@
       0   2  35  Cable length
       0   2  36  Buoy type
      -1
-#  3   6  20
-#      3   6od or displacement, time increment"  "Tide station identification, date/time, water temperature, tide station tide data status, time period or displacement, time increment"
-#      1   2   6  Replicate 2 descriptors 6 times
-#      0  22  38  Tidal elevation with respect to local chart datum
-#      0  22  39  Meteorological residual tidal elevation
-#     -1
+  3   6  20
+      3   6od or displacement, time increment"  "Tide station identification, date/time, water temperature, tide station tide data status, time period or displacement, time increment"
+      1   2   6  Replicate 2 descriptors 6 times
+      0  22  38  Tidal elevation with respect to local chart datum
+      0  22  39  Meteorological residual tidal elevation
+     -1
   3   6  21
       0   1  75  Tide station alphanumeric identification
       3   1  11  "Year, month, day"
@@ -1534,35 +1534,6 @@
       0  22  99  Mean direction (wavelength > 731 m)
       0  22 100  Direction spread (wavelength > 731 m)
      -1
-#     (SEAWINDS QUIKSCAT data)
-3  12  28
-      3  1  46
-      3  1  11
-      3  1  13
-      3  1  23
-      0  8  25  Time difference qualifier
-      2  1  136  Change data width
-      0  4  6  Second
-      2  1  0  Change data width back to Table B
-      3  12  31
-      3  12  32
-      1  1  4  Next descriptor replicated four times
-      3  12  30
-      1  1  2  Next descriptor replicated two times
-      3  12  33
-      0  21  110  Number of inner-beam sigma-0 (forward of satellite)
-      3  1  23
-      3  21  28
-      0  21  111  Number of outer-beam sigma-0 (forward of satellite)
-      3  1  23
-      3  21  28
-      0  21  112  Number of inner-beam sigma-0 (aft of satellite)
-      3  1  23
-      3  21  28
-      0  21  113  Number of outer-beam sigma-0 (aft of satellite)
-      3  1  23
-      3  21  28
-      -1
 #  (Altitude)
   3  12  41
       2   1 141  Change width to 28 bits

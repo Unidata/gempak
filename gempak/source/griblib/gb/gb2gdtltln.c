@@ -18,9 +18,11 @@ void gb2_gdtltln( float *navblk, int *igdtmpl, int *iret )
  *                                    -36 = Projection not CED		*
  **                                                                     *
  * Log:                                                                 *
- * S. Gilbert/NCEP          08/05    Calculations taken from GDS_CED    *
- * S. Gilbert/NCEP          03/06    Chngs to remove compiler warnings  *
- * C. Bailey/HPC            01/07    Chngs to Dx calculation            *
+ * S. Gilbert/NCEP      08/05	Calculations taken from GDS_CED    	*
+ * S. Gilbert/NCEP      03/06	Chngs to remove compiler warnings  	*
+ * C. Bailey/HPC        01/07	Chngs to Dx calculation            	*
+ * S. Jacobs/NCEP	 6/13	Fixed check for dx calculation to	*
+ *				include 0.0 in the range for rlon1	*
  ***********************************************************************/
 {
 
@@ -65,7 +67,8 @@ void gb2_gdtltln( float *navblk, int *igdtmpl, int *iret )
         igdtmpl[11] = G_NINT(rlat1*1000000.0);
 					      /* Lat of 1st grid point   */
 	/* Calculate Dx */
-	if ( rlon1 > 0.0 && rlon2 < 0.0 ) {
+	/* If rlon1 is bigger than 0.0 or "equal to" 0.0 */
+	if ( ( rlon1 > 0.0 || G_DIFF(rlon1,0.0) ) && rlon2 < 0.0 ) {
             dx = ( (rlon2+360) - rlon1) / (nx-1);
         } else {
             dx = (rlon2 - rlon1) / (nx-1);

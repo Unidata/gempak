@@ -1,3 +1,9 @@
+! GRIB2 parameter table
+!
+!D#  = Discipline number
+!CT# = Category number (Octet 10, Code Table 4.2)
+!ID# = Parameter number (Octet 11)
+!PD# = Product Definition Template number (Octet 8-9, Code Table 4.0)
 !
 ! temperature
 !D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING  HZREMAP  DIRECTION
@@ -22,7 +28,7 @@
 !000 000 014 000 Minimum Dew Point Depression     K                    ????             0  -9999.00       0          0
 !000 000 015 000 Virtual Potential Temperature    K                    ????             0  -9999.00       0          0
 !
-! mositure 
+! moisture 
 !D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING  HZREMAP  DIRECTION
 !23|123|123|123|12345678901234567890123456789012|12345678901234567890|123456789012|12345|123456.89|12345678|1234567890
 000 001 000 000 Specific Humidity                kg kg**-1            SPFH             0  -9999.00        0          0
@@ -45,7 +51,7 @@
 000 001 013 000 Wat equiv of accum snow dep      kg m**-2             SWEM             0  -9999.00        0          0
 000 001 014 000 Convective snow                  kg m**-2             CSNO             0  -9999.00        0          0
 000 001 015 000 Large scale snow                 kg m**-2             LSNO             0  -9999.00        0          0
-000 001 016 008 Snow melt                        kg m**-2             N--M             0  -9999.00        0          0
+000 001 016 008 Snow melt                        kg m**-2             N--M             0     -0.01        0          0
 !000 001 017 000 Snow age                         day                  ????             ?  -9999.00       0          0
 !000 001 018 000 Absolute Humidity                kg m**-3             ????             ?  -9999.00       0          0
 !000 001 019 000 Precipitation Type               code table           ????             ?  -9999.00       0          0
@@ -58,9 +64,9 @@
 !000 001 026 000 Horizon Moisture Converg         kg kg**-1 s**-1      ????             ?  -9999.00       0          0
 !000 001 027 000 Maximum Relative Humidity        %                    ????             ?  -9999.00       0          0
 !000 001 028 000 Maximum Absolute Humidity        kg m**-3             ????             ?  -9999.00       0          0
-000 001 029 008 Total Snowfall                   m                    SNOW             0  -9999.00        0          0
+000 001 029 008 Total Snowfall                   m                    SNOW             3     -0.01        0          0
 !000 001 030 000 Precipitable water Category      code table           ????             ?  -9999.00       0          0
-!000 001 031 000 Hail                             m                    ????             ?  -9999.00       0          0
+000 001 031 000 Hail                             m                    H--M             3     -0.01        0          0
 !000 001 032 000 Graupel (snow pellets)           kg kg**-1            ????             ?  -9999.00       0          0
 000 001 192 000 Weather                          NA                   WX               0  -9999.00        0          0
 !        
@@ -180,7 +186,7 @@
 !000 015 002 000 Base Radial Velocity             m s**-1              ????             ?  -9999.00        0         0
 !000 015 003 000 Vertically-Integrated Liquid     kg m**-1             ????             ?  -9999.00        0         0
 !000 015 004 000 Layer-Max Base Reflectivity      dB                   ????             ?  -9999.00        0         0
-!000 015 005 000 Precipitation                    kg m**-2             ????             ?  -9999.00        0         0
+000 015 005 000 Precipitation                    kg m**-2             L--M             0     -0.01        0         0
 !000 015 006 000 Radar Spectra (1)                -                    ????             ?  -9999.00        0         0
 !000 015 007 000 Radar Spectra (2)                -                    ????             ?  -9999.00        0         0
 !000 015 008 000 Radar Spectra (3)                -                    ????             ?  -9999.00        0         0

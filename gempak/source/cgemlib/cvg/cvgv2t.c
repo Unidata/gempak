@@ -59,6 +59,7 @@ int	cvg_v2t ( VG_DBStruct *el, char *buffer, int *iret )
  * S. Jacobs/NCEP	 5/05	Fixed check for multiple lines of text	*
  * S. Jacobs/NCEP	 4/10	Change < and > to &lt and &gt		*
  * L. Hinson/AWC         1/12   Added sgwx2tag                          *
+ * L. Hinson/AWC         5/13   Fix jet2tag <line_latlon> to <latlon>   *
  ***********************************************************************/
 {
 int	ier;
@@ -1483,7 +1484,7 @@ size_t	blen;
     npts = el->elem.jet.line.spl.info.numpts;
 
     blen = strlen(buffer);
-    sprintf( &(buffer[blen]), "<line_latlon>" );
+    sprintf( &(buffer[blen]), "<latlon>" );
     for ( ii = 0; ii < npts; ii++ )  {
         blen = strlen(buffer);
 	sprintf( &(buffer[blen]), "%6.2f,", el->elem.jet.line.spl.latlon[ii] );

@@ -154,7 +154,7 @@ C!						Max # levels/station
 C!						Max # data points
 	PARAMETER	( LLMXST =    20   )
 C!						Max # stations in list
-	PARAMETER	( LLMXTM =  25000  )
+	PARAMETER	( LLMXTM =  2000   )
 C!						Max # times/dataset
 	PARAMETER	( LLNANL =   128   )
 C!						Grid anl block length
@@ -162,11 +162,11 @@ C!						Grid anl block length
 C!						Grid nav block length
 	PARAMETER	( LLOAGD =   400   )
 C!						Max # grids from 1 OA
-	PARAMETER	( LLSTFL =  30000  )
+	PARAMETER	( LLSTFL =  30000   )
 C!						Max # stations in file
 	PARAMETER	( LLSTHL =    20   )
 C!						Max header size
-	PARAMETER	( LLTMCX = 25000   )
+	PARAMETER	( LLTMCX = 2000    )
 C!						Max # of time xsect pts
 	PARAMETER	( MAX_CNTY =  400  )
 C!						Max # of counties in watch

@@ -1,7 +1,7 @@
-!* SPF.TBL
+!* SPF.nmap
 !************************************************************************
 !*                                                                      *
-!*                 SPF user table in NMAP (spf.tbl)			*
+!*                 SPF user table in NMAP (spf.nmap)			*
 !*                                                                      *
 !* This table is used for setting up the SPF user information in NMAP. 	*
 !*                                                                      *
@@ -12,13 +12,18 @@
 !* spf_dir:  SPF file directory full path name for that user     	*
 !*                                                                      *
 !* LOG:                                                                 *
-!* J. Wu/GSC          06/01   copy from vgf.tbl     			*
+!* J. Wu/GSC          06/01   copy from vgf.nmap     			*
 !************************************************************************
 !
 !
 !title		spf_dir 
 !------------------------------------------------------------------------
 test_data	$GEMDATA/spf
+Pac_HS          /export/opcph/pachs
+Atl_HS          /export/opcah/atlhs
+Pac_Reg         /export/opcpr/pacreg
+Atl_Reg         /export/opcar/atlreg
+OPC_Outlook     /export/opcol/outlook
 bawx		/export/hbawx1/bawx
 eff1		/export/heff1/eff1
 eff2		/export/hww1/eff2
@@ -38,8 +43,3 @@ id3		/export/hp61/id3
 id5		/export/sgi20/id5
 id6		/export/sgi112/id6
 prism		/export-2/hp46/modtdg/joey/prism
-Pac_HS		/home/hp2/marine
-Atl_HS		/home/hp12/marine2
-Pac_Reg		/home/hp41/marine3
-Atl_Reg		/home/hp49/marine4
-HS_Outlook	/home/hp68/marine5

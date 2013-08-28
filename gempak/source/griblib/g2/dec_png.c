@@ -2,6 +2,7 @@
  void dummy(void) {}
 #else   /* USE_PNG */
 
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <png.h>
@@ -87,7 +88,7 @@ int dec_png(unsigned char *pngbuf,g2int *width,g2int *height,char *cout)
 
 /*    Set new custom read function    */
 
-    png_set_read_fn(png_ptr,(voidp)&read_io_ptr,(png_rw_ptr)user_read_data);
+    png_set_read_fn(png_ptr,(png_voidp)&read_io_ptr,(png_rw_ptr)user_read_data);
 /*     png_init_io(png_ptr, fptr);   */
 
 /*     Read and decode PNG stream   */

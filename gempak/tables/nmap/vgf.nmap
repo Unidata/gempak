@@ -1,7 +1,7 @@
-!* VGF.TBL
+!* VGF.NMAP
 !************************************************************************
 !*                                                                      *
-!*                 VGF user table in NMAP (vgf.tbl)			*
+!*                 VGF user table in NMAP (vgf.nmap)			*
 !*                                                                      *
 !* This table is used for setting up the VGF user information in NMAP. 	*
 !*                                                                      *
@@ -31,12 +31,22 @@
 !* J. Carr/HPC           8/99   Edited id0 for a different machine      *
 !* S. Jacobs/NCEP	 3/00	Removed user_id column			*
 !* S. Jacobs/NCEP	 1/01	Updated sample HPC & MPC directories	*
+!* J. Carr/HPC          08/02   Added SPC vg files                      *
 !************************************************************************
 !
 !
 !title		vgf_dir 
 !------------------------------------------------------------------------
 test_data	$GEMDATA/vgf
+avn3            /export/lnx189/avn3
+avn2            /export/lnx75/avn2
+sdmlnx		/export/lnx129/sdmlnx
+SPC_CONVOUTLK   $MISC_DATA/vgf/SPC/convective_outlook
+SPC_PROBOFHAIL  $MISC_DATA/vgf/SPC/probofhail
+SPC_PROBOFSVR   $MISC_DATA/vgf/SPC/probofsevere
+SPC_PROBOFTORN  $MISC_DATA/vgf/SPC/proboftorn
+SPC_PROBOFWIND  $MISC_DATA/vgf/SPC/probofwind
+HPC_SFCANL      /export/hsfc1/sfc1
 bawx		/export/hbawx1/bawx
 eff1		/export/heff1/eff1
 eff2		/export/hww1/eff2
@@ -46,25 +56,7 @@ nppu2		/export/hqpf1/nppu2
 nppu3		/export/hqpf2/nppu3
 medr		/export/hmedr2/medr
 medr3		/export/hmedr1/medr3
-avn3		/export/hdwm/avn3
 sfc1		/export/hsfc1/sfc1
 dwm		/export/hdwm/dwm
-id0		/export/sgi112/id0
-id1		/export/lnx114/id1
-id2		/export/lnx130/id2
-id3		/export/hp61/id3
-id5		/export/sgi20/id5
-id6		/export/sgi112/id6
-prism		/export-2/hp46/modtdg/joey/prism
-Pac_HS		/home/hp2/marine
-Atl_HS		/home/hp12/marine2
-Pac_Reg		/home/hp41/marine3
-Atl_Reg		/home/hp49/marine4
-HS_Outlook	/home/hp68/marine5
-!
-! nids STI product converted to VGF
-Storm_Tracks    $GEMDATA/images/vg/storm_tracks
-Mesocyclones    $GEMDATA/images/vg/meso
-!
-! Various redbook graphics converted to vgf
-SVR_REPORTS     $GEMDATA/images/vg/SVR-SEVERE_WEATHER_REPORTS
+prism           /export-5/ncosrvnfs/hpcops/prism
+prism10         /export-5/ncosrvnfs/hpcops/prism10

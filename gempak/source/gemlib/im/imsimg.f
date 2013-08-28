@@ -52,7 +52,10 @@ C* M. James/Unidata      2/10   Modified imdoff def. for FOS/WMO hdrs   *
 C* X. Guo/CWS           04/10   Added codes to support 94 product       *
 C* X. Guo/CWS           04/10   Added codes to support 99,134 and 135   *
 C*                              product. Also set imftyp to IFHINIDS    *
-C* M. James/Unidata      1/11   Add support for both 4 & 8-bit NIDS     *
+C* S. Jacobs/NCEP       4/11    Removed AWIPS II database access        *
+C* M. James/Unidata     1/11    Add support for both 4 & 8-bit NIDS     *
+C* M. James/Unidata     8/13    Removed IM_DBGINI2GM, IM_DBNIDS2GM,     *
+C*                              IM_DBMOSAIC2GM, IM_DBMCIDAS2GM          *
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 	INCLUDE		'IMGDEF.CMN'

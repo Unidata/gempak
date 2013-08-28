@@ -31,3 +31,34 @@ g2libc-1.0.2 - December 2004 - WMO approved the JPEG2000 and PNG Data
                              Representation Templates 5.2 and 5.3 by adding
                              MDL/Glahn algorithm for determining effective
                              groupings.
+
+g2libc-1.0.3 - December 2005 - Two bug fixes:  1) Error encoding constant
+                               data field.  2)  Error encoding grid with
+                               large bitmap using DRT 5.40 - JPEG2000.
+
+g2libc-1.0.5 - August   2007 - Added GDT 3.204  Curvilinear Orthogonal Grid
+
+g2libc-1.1.7 - August   2008 - Added GDT 3.32768 Rot Lat/Lon E-grid (Arakawa)
+
+g2libc-1.1.8 - January  2009 - Initialize variable lencsec2 in routine g2_unpack2.c
+                               variable ndpts in routine g2_unpack7.c
+                             - Changed the structure name template to gtemplate to avoid 
+                               of reserved word in C++ 
+                             - Change routine seekgb.c to use 4 bytes instead of sizeof(g2int)
+
+g2libc-1.1.9 - June     2009 - Updated version jasper-1.900.1, libpng-1.2.35 and zlib-1.2.3
+                             - Fixed bug causing seg fault when using PNG 1.2.35
+
+g2libc-1.2.0 - March    2010 - Added PDT 4.31 Satellite Product
+                             - Added PDT 4.15 WAFS Product
+
+g2libc-1.2.1 - August   2010 - Added PDT 4.40,4.41,4.42,4.43 for Atmospheric Chemical Constituents
+                             - Added GDT 3.32769 Rot Lat/Lon None E-grid (Arakawa)
+                             - If section 2 has zero length, return IERR=0
+
+g2libc-1.2.2 - March    2011 - Corrected PDT 4.42,4.43 for Atmospheric Chemical Constituents
+
+g2libc-1.2.3 - November 2011 - Fixed bugs in routines dec_png.c and enc_png.c
+
+g2libc-1.4.0 - May      2012 - Added PDT 4.44,4.45,4.46,4.47,4.48 for Aerosol products
+                             - PDT 4.50,4.51,4.52 iand 4.91 for Categorical forecast at a horizonal

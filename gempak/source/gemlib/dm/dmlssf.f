@@ -44,32 +44,11 @@ C* m. gamazaychikov/CWS 04/11   Add code for A2DB connectivity          *
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 	INCLUDE		'dmcmn.cmn'
-	INCLUDE		'dbcmn.cmn'
 C
 	CHARACTER*(*)	sttype
 	CHARACTER*4	tstid, tstnm, tslat, tslon, tselv, tstat, tcoun
 	CHARACTER*4	tstd2, tspri, tswfo, twfo2
 C-----------------------------------------------------------------------
-C
-C*      For A2DB requests - set the locations for station information.
-C
-        IF ( dbread ) THEN
-           iret = 0
-           sttype = 'COL'
-           ilstid = 1
-           ilstnm = 2
-           ilslat = 3
-           ilslon = 4
-           ilselv = 5
-           ilstat = 6
-           ilcoun = 7
-           ilstd2 = 8
-           ilspri = 9
-           ilswfo = 0
-           ilwfo2 = 0
-           RETURN
-        END IF
-C
 C*	Initialize variables.
 C
 	iret   = 0

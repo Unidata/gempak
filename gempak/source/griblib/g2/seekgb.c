@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <stdlib.h>
 #include "grib2.h"
 
@@ -16,6 +17,7 @@ void seekgb(FILE *lugb,g2int iseek,g2int mseek,g2int *lskip,g2int *lgrib)
 //
 // PROGRAM HISTORY LOG:
 // 2002-10-28  GILBERT   Modified from Iredell's skgb subroutine
+// 2009-01-16  VUONG     Changed  lskip to 4 instead of sizof(g2int)
 //
 // USAGE:    seekgb(FILE *lugb,g2int iseek,g2int mseek,int *lskip,int *lgrib)
 //   INPUT ARGUMENTS:
@@ -33,7 +35,9 @@ void seekgb(FILE *lugb,g2int iseek,g2int mseek,g2int *lskip,g2int *lgrib)
 //
 //$$$
 {
-      g2int k,k4,ipos,nread,lim,start,vers,end,lengrib;
+      g2int  ret;
+      g2int k,k4,ipos,nread,lim,start,vers,lengrib;
+      int    end;
       unsigned char *cbuf;
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -49,8 +53,8 @@ void seekgb(FILE *lugb,g2int iseek,g2int mseek,g2int *lskip,g2int *lgrib)
 
 //  READ PARTIAL SECTION
 
-        fseek(lugb,ipos,SEEK_SET);
-        nread=(g2int)fread(cbuf,sizeof(unsigned char),mseek,lugb);
+        ret=fseek(lugb,ipos,SEEK_SET);
+        nread=fread(cbuf,sizeof(unsigned char),mseek,lugb);
         lim=nread-8;
 
 //  LOOK FOR 'GRIB...' IN PARTIAL SECTION
@@ -62,8 +66,9 @@ void seekgb(FILE *lugb,g2int iseek,g2int mseek,g2int *lskip,g2int *lgrib)
 //  LOOK FOR '7777' AT END OF GRIB MESSAGE
             if (vers == 1) gbit(cbuf,&lengrib,(k+4)*8,3*8);
             if (vers == 2) gbit(cbuf,&lengrib,(k+12)*8,4*8);
-            fseek(lugb,ipos+k+lengrib-4,SEEK_SET);
-            k4=(g2int)fread(&end,sizeof(g2int),1,lugb);
+            ret=fseek(lugb,ipos+k+lengrib-4,SEEK_SET);
+//          Hard code to 4 instead of sizeof(g2int)
+            k4=fread(&end,4,1,lugb);
             if (k4 == 1 && end == 926365495) {      //GRIB message found
                 *lskip=ipos+k;
                 *lgrib=lengrib;

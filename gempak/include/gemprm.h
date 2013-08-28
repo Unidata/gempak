@@ -147,6 +147,7 @@
  * M. James/Unidata	11/10   Increased LLMXGT from 1000 to 2000	*
  * M. James/Unidata	11/10   Increased LLMXTM from 300 to 2000	*
  * S. Jacobs/NCEP	 5/12	Increased MXNMFL from 1000 to 2000	*
+ * L. Hinson/AWC        12/12   Increased LLMXLN to 256+1               *
  * M. James/Unidata	 1/13	Increased MXNMFL from 2000 to 5000	*
  * M. James/Unidata	 8/13   Increased LLMXGD to 1.5 mil		*
  ***********************************************************************/
@@ -346,7 +347,7 @@ typedef unsigned int	G_Cardinal;
 #define	LLMXDT		( MMPARM * LLMXLV ) /* Max # data points */
 #define	LLMXGD		( 1500000 )	/* Max # grid points */
 #define	LLMXGT		(    2000 )	/* Max # grid times */
-#define	LLMXLN		( 128 + 1 )	/* Max length of input */
+#define	LLMXLN		( 256 + 1 )	/* Max length of input */
 #define	LLMXLV		(     500 )	/* Max # levels/station */
 #define	LLMXPT		(   80000 )	/* Max # lines, polygons, ... */
 #define	LLMXST		(      20 )	/* Max # stations in list */
@@ -355,7 +356,7 @@ typedef unsigned int	G_Cardinal;
 #define	LLNANL		(     128 )	/* Grid anl block length */
 #define	LLNNAV		(     256 )	/* Grid nav block length */
 #define	LLOAGD		(     400 )	/* Max # grids from 1 OA */
-#define	LLSTFL		(    2000 )	/* Max # stations in file */
+#define	LLSTFL		(   30000 )	/* Max # stations in file */
 #define	LLSTHL		(      20 )	/* Max header size */
 #define	LLTMCX		(   25000 )	/* Max # of time xsect pts */
 #define MAX_CNTY        (     400 )     /* Max # of counties in watch */
@@ -384,7 +385,7 @@ typedef unsigned int	G_Cardinal;
 
 /*  Data category and subcategory types */
 
-#define	CAT_NIL		( 0 )	/* None */
+#define	CAT_NIL		( 0 )	/* None - Not useful */
 #define	CAT_IMG		( 1 )	/* Images */
 #define	CAT_SFC		( 2 )	/* Surface observations */
 #define	CAT_SFF		( 3 )	/* Surface forecast (e.g., MOS, TAF) */

@@ -5,8 +5,6 @@
 #
 include $(CONFIGDIR)/$(MAKEINC)
 
-COBJS = 
-
 LOBJS = \
 	$(ALIB)(sfkdat.o) \
 	$(ALIB)(sfkhdr.o) \
@@ -21,13 +19,9 @@ PROG.f = sfchck.f
 
 LIBINC = \
 	$(GEMLIB) \
-	$(CGEMLIB) \
 	$(APPL) \
 	$(SYSLIB) \
-	$(GEMLIB) \
-	$(CGEMLIB) \
-	$(XMLLIB) \
-        $(ZLIB)
+	$(CGEMLIB)
 
 .PRECIOUS: $(ALIB)
 
@@ -39,22 +33,23 @@ $(PROG): $(LIBINC) $(PROG.f)
 	$(LINK.f) $(PROG.f) $(ALIB) $(LIBINC) $(SYSLIBS) -o $@
 	$(RM) *.o
 
+#$FC $FFLAGS $LDFLAGS -o $OS_BIN/sfchck sfchck.f \
+#	$OS_LIB/sfchck.a \
+#	$GEMLIB $APPL $SYSLIB $CGEMLIB
+#$RM *.o
+
 programs_nc:
 	@echo "Not a graphic program, no _nc program needed"
 
 programs_gf:
 	@echo "Not a graphic program, no _gf program needed"
 
-$(ALIB): $(LOBJS) $(COBJS)
+$(ALIB): $(LOBJS) 
 	$(AR) $(ARFLAGS) $@ *.o
 	$(RM) *.o
 
-.c.a :
-	$(CC) $(CFLAGS) -c $<
-
 .f.a :
-	$(FC) $(FFLAGS) -c $<
-
+	$(FC) $(FFLAGS) $(LDFLAGS) -c $<
 
 clean:
 	$(RM) *.o $(PROG)

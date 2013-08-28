@@ -54,5 +54,6 @@ C* T. Piper/SAIC	08/07	Redefined MMHDRS as LLSTFL + LLMXTM	*
 C* X. Guo/CWS           05/10   Added IFHINIDS                          *
 C* S. Jacobs/NCEP	 5/12	Increased MXNMFL from 1000 to 2000	*
 C* S. Jacobs/NCEP	 9/12	Increased LLMXGT from 1000 to 2000	*
+C* L. Hinson/AWC	12/12	Increased LLMXLN from 128 to 256	*
 C************************************************************************
 

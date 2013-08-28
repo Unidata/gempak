@@ -18,4 +18,4 @@ INSTALLDIR:
 install:
 
 clean:
-	-@cd libxml2; $(MAKE) distclean
+	-@cd libxml2; $(MAKE) distclean; rm -rf $(OS_LIB)/libxml2.*

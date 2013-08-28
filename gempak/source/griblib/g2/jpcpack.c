@@ -2,7 +2,6 @@
 #include "gemprm.h"
 #include "grib2.h"
 
-
 void jpcpack(g2float *fld,g2int width,g2int height,g2int *idrstmpl,
              unsigned char *cpack,g2int *lcpack)
 //$$$  SUBPROGRAM DOCUMENTATION BLOCK

@@ -1,56 +1,55 @@
-GEMPARM=$GEMPAK/parm
-export GEMPARM
+export GEMPDFARM=$GEMPDFAK/parm
 
-pdfbld $GEMPAK/pdf GDCFIL
+pdfbld $GEMPDF GDCFIL
 #########################
-pdfbld $GEMPAK/pdf GDCNTR
+pdfbld $GEMPDF GDCNTR
 #########################
-pdfbld $GEMPAK/pdf GDCROSS
+pdfbld $GEMPDF GDCROSS
 ##########################
-pdfbld $GEMPAK/pdf GDDELT
+pdfbld $GEMPDF GDDELT
 #########################
-pdfbld $GEMPAK/pdf GDDIAG
+pdfbld $GEMPDF GDDIAG
 #########################
-pdfbld $GEMPAK/pdf GDEDIT
+pdfbld $GEMPDF GDEDIT
 #########################
-pdfbld $GEMPAK/pdf GDFRZL
+pdfbld $GEMPDF GDFRZL
 #########################
-pdfbld $GEMPAK/pdf GDGRIB
+pdfbld $GEMPDF GDGRIB
 #########################
-pdfbld $GEMPAK/pdf GDGRIB2
+pdfbld $GEMPDF GDGRIB2
 #########################
-pdfbld $GEMPAK/pdf GDGSFC
+pdfbld $GEMPDF GDGSFC
 #########################
-pdfbld $GEMPAK/pdf GDINFO
+pdfbld $GEMPDF GDINFO
 #########################
-pdfbld $GEMPAK/pdf GDLIST
+pdfbld $GEMPDF GDLIST
 #########################
-pdfbld $GEMPAK/pdf GDMAP
+pdfbld $GEMPDF GDMAP
 ########################
-pdfbld $GEMPAK/pdf GDMOD
+pdfbld $GEMPDF GDMOD
 ########################
-pdfbld $GEMPAK/pdf GDOMEG
+pdfbld $GEMPDF GDOMEG
 #########################
-pdfbld $GEMPAK/pdf GDPLOT
+pdfbld $GEMPDF GDPLOT
 #########################
-pdfbld $GEMPAK/pdf GDPLOT2
+pdfbld $GEMPDF GDPLOT2
 ##########################
-pdfbld $GEMPAK/pdf GDPLOT3
+pdfbld $GEMPDF GDPLOT3
 ##########################
-pdfbld $GEMPAK/pdf GDPROF
+pdfbld $GEMPDF GDPROF
 #########################
-pdfbld $GEMPAK/pdf GDSTAT
+pdfbld $GEMPDF GDSTAT
 #########################
-pdfbld $GEMPAK/pdf GDSTREAM
+pdfbld $GEMPDF GDSTREAM
 ###########################
-pdfbld $GEMPAK/pdf GDTHGT
+pdfbld $GEMPDF GDTHGT
 #########################
-pdfbld $GEMPAK/pdf GDTSER
+pdfbld $GEMPDF GDTSER
 #########################
-pdfbld $GEMPAK/pdf GDVINT
+pdfbld $GEMPDF GDVINT
 #########################
-pdfbld $GEMPAK/pdf GDWIND
+pdfbld $GEMPDF GDWIND
 #########################
-pdfbld $GEMPAK/pdf GRPHGD
+pdfbld $GEMPDF GRPHGD
 #########################
 echo ALL THE GD PDFs ARE BUILT.

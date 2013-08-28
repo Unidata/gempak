@@ -59,6 +59,7 @@
 ! C. Lauer/NHC           4/09   Updated for 2009 Season
 ! C. Lauer/NHC           4/10   Updated for 2010 Season
 ! M. Brennan/NHC         1/12   Updated for 2012 Season
+! M. Brennan/NHC        12/12   Updated for 2013 Season
 !
 !STID    STNM   NAME                             ST CO   LAT    LON  ELV PRI TBCHRS  
 !(8)     (6)    (32)                            (2)(2)   (5)    (6)   (5)(2)   (20)
@@ -266,7 +267,7 @@ OCHLOC_R 102700 Ochlockonee_River                FL US  2996  -8440     0 10  FL
 PANACEA  102720 Panacea                          FL US  3004  -8439     0 19
 SPRING_C 102730 Spring_Creek                     FL US  3008  -8433     0 19
 ST_MARKS 102800 St_Marks                         FL US  3010  -8420     0 10  FL129     G775
-AUCILL_R 102900 Aucilla_River                    FL US  3004  -8392     0 10  FL065FL123G755
+AUCILL_R 102900 Aucilla_River                    FL US  3009  -8399     0 10  FL065FL123G755
 DEKLE_BE 102920 Dekle_Beach                      FL US  2985  -8362     0 19
 KEATON_B 102930 Keaton_Beach                     FL US  2982  -8360     0 10  FL123
 STEINH_R 103000 Steinhatchee_River               FL US  2967  -8340     0 10  FL123FL029G775
@@ -283,14 +284,15 @@ HERNANDO 103320 Hernando_Beach                   FL US  2847  -8258     0 19
 ARIPEKA  103325 Aripeka                          FL US  2843  -8266     0 10  FL053FL101
 HUDSON   103330 Hudson                           FL US  2836  -8269     0 19
 PORT_RIC 103340 Port_Richey                      FL US  2833  -8273     0 19
-ANCLO_KY 103400 Anclote_Key                      FL US  2818  -8280     0 10  FL101FL103G870G853
+ANCLO_RI 103400 Anclote_River                    FL US  2818  -8280     0 10  FL101FL103G870G853
          103412                                  FL US  2818  -8279     0 12            G873
-TARPON_S 103500 Tarpon_Springs                   FL US  2815  -8279     0 10  FL057FL103G830
+         103500                                  FL US  2815  -8279     0 12  FL057FL103G830
          103512                                  FL US  2815  -8278     0 12  FL057     G873
 PALM_HAR 103520 Palm_Harbor                      FL US  2808  -8276     0 19
 DUNEDIN  103524 Dunedin                          FL US  2802  -8277     0 19
 CLEARWAT 103530 Clearwater_Beach                 FL US  2797  -8280     0 19
 IND_ROCK 103534 Indian_Rocks_Beach               FL US  2788  -8285     0 19
+         103535                                  FL US  2785  -8285     0 15
 REDINGTO 103540 Redington_Beach                  FL US  2781  -8281     0 19
 MADEIRA_ 103544 Madeira_Beach                    FL US  2780  -8280     0 19
 TREASURE 103550 Treasure_Island                  FL US  2777  -8277     0 19
@@ -394,8 +396,8 @@ CRESCENT 106360 Crescent_Beach                   FL US  2977  -8125     0 19
 ST_AUGUS 106400 St_Augustine                     FL US  2989  -8127     0 10  FL109     M474M452
          106412                                  FL US  2989  -8128     0 12  FL031         
 VILANO_B 106420 Vilano_Beach                     FL US  2992  -8129     0 19
-SOUTH_PO 106430 South_Ponte_Vedra_Beach          FL US  3002  -8132     0 19
-PALM_VAL 106440 Palm_Valley                      FL US  3018  -8139     0 19
+PALM_VAL 106430 Palm_Valley                      FL US  3018  -8139     0 19
+PONTE_VE 106440 Ponte_Vedra_Beach                FL US  3024  -8138     0 10
 NEPTUNE_ 106450 Neptune_Beach                    FL US  3031  -8140     0 19
 ATL_BC_F 106460 Atlantic_Beach_FL                FL US  3033  -8140     0 19
 MAYPORT/ 106470 Mayport/St._Johns_River_Entrance FL US  3042  -8139     0 19

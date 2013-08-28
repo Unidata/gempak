@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <stdlib.h>
 #include "grib2.h"
 
@@ -12,6 +13,8 @@ g2int g2_unpack2(unsigned char *cgrib,g2int *iofst,g2int *lencsec2,unsigned char
 //
 // PROGRAM HISTORY LOG:
 // 2002-10-31  Gilbert
+// 2008-12-23  Wesley   - Initialize lencsec2 Length of Local Use data
+// 2010-08-05  Vuong    - If section 2 has zero length, ierr=0
 //
 // USAGE:    int g2_unpack2(unsigned char *cgrib,g2int *iofst,g2int *lencsec2,
 //                          unsigned char **csec2)
@@ -60,19 +63,22 @@ g2int g2_unpack2(unsigned char *cgrib,g2int *iofst,g2int *lencsec2,unsigned char
          return(ierr);
       }
 
-      if ( *lencsec2 > 0 ) {
-      	*csec2=(unsigned char *)malloc(*lencsec2);
-      	if (*csec2 == 0) {
+      if ( *lencsec2 == 0 ) {
+	  ierr = 0;
+	  return(ierr);
+      }
+
+      *csec2=(unsigned char *)malloc(*lencsec2+1);
+      if (*csec2 == 0) {
          ierr=6;
          *lencsec2=0;
          return(ierr);
-      	}
+      }
       
-      	//printf(" SAGIPO %d \n",(int)ipos);
+      //printf(" SAGIPO %d \n",(int)ipos);
 
-      	for (j=0;j<*lencsec2;j++) {
+      for (j=0;j<*lencsec2;j++) {
          *(*csec2+j)=cgrib[ipos+j];
-      	}
       }
       *iofst=*iofst+(*lencsec2*8);
 

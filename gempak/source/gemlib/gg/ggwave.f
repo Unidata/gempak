@@ -37,6 +37,9 @@ C* G. McFadden/SAIC	 6/08	Added support for Jason2 (SGWH2)	*
 C*                              significant wave height.	        *
 C* G. McFadden/IMSG	 7/11	Added support for CRYOSAT (SGWHC)	*
 C*                              significant wave height.	        *
+C* G. McFadden/IMSG	 7/13	Added support for Altika         	*
+C*                              significant wave height (SGWHA) and 	*
+C*                              wind speed (WSPDA).                 	*
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 C*
@@ -54,7 +57,8 @@ C*
 C-----------------------------------------------------------------------
 	IF ( filtyp .ne. "SGWH" .and. filtyp .ne. "SSHA" .and.
      +       filtyp .ne. "SGWHG" .and. filtyp .ne. "SGWHE" .and.
-     +       filtyp .ne. "SGWH2" .and. filtyp .ne. "SGWHC" )  THEN
+     +       filtyp .ne. "SGWH2" .and. filtyp .ne. "SGWHC" .and.
+     +       filtyp .ne. "SGWHA" .and. filtyp .ne. "WSPDA" )  THEN
 	    print *, "filtyp '", filtyp, "' unknown!"
 	    iret = -1
 	    return
@@ -164,11 +168,13 @@ C
 
 	CALL FL_SCND ( path, templ, iorder, nexp, files, nfile, ier )
 C
-C*  Display altimeter (Significant Wave Height) data.
+C*  Display altimeter (Significant Wave Height) or Altika
+C*  wind speed data.
 C
 	IF ( ier .eq. 0 .and. ( filtyp .eq. "SGWH" .or. 
      +       filtyp .eq. "SGWH2" .or. filtyp .eq. "SGWHE" .or.
-     +       filtyp .eq. "SGWHG" .or. filtyp .eq. "SGWHC" )   ) THEN
+     +       filtyp .eq. "SGWHG" .or. filtyp .eq. "SGWHC" .or.
+     +       filtyp .eq. "SGWHA" .or. filtyp .eq. "WSPDA" )   ) THEN
 C
 C*  This data source exists.  Make the file name for the
 C*  last file requested.

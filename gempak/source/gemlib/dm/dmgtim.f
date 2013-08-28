@@ -29,46 +29,11 @@ C* m. gamazaychikov/CWS 04/11   Add code for A2DB connectivity          *
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 	INCLUDE		'dmcmn.cmn'
-	INCLUDE		'dbcmn.cmn'
 C
 	CHARACTER*(*)	timlst (*)
-	CHARACTER	dttype*4, dt*20, timstr*10000, qtype*8,
-     +                  timlist(200)*21, src*21, qparm*10
+	CHARACTER	dttype*4, dt*20
 C-----------------------------------------------------------------------
-C
-C*      Get available data times for A2DB data requests.
-C
 	ntime = 0
-        IF ( dbread ) THEN
-           qtype = "dbTime"
-           CALL ST_NULL ( qtype, qtype, lenq, ier )
-           CALL ST_LCUC (dbdatasrc, src,ier)
-           CALL ST_NULL ( src, src, lenq, ier )
-           CALL ST_NULL ( qparm, qparm, lenq, ier )
-           CALL DB_GTIM ( qtype, src, qparm, 
-     +                    timstr, ltimstr, iret )
-           IF ( iret .ne. 0 ) THEN
-              iret = -27
-              RETURN
-           END IF
-           ntimex = ltimstr/11
-           CALL ST_CLSL (timstr(:ltimstr), '|', ' ', ntimex,
-     +                   timlist, ntx, iret)
-           IF (ntx .gt. 25 ) THEN
-              do itim=ntx-24, ntx  
-                timlst(itim-(ntx-24)+1)= timlist(itim)
-              end do
-              ntime = 25
-           ELSE
-              do itim=1, ntx
-                timlst(itim)= timlist(itim)
-              end do
-              ntime = ntx
-           END IF
-           iret = 0
-           CALL TI_YYYY ( ntime, timlst, timlst, iret )
-           RETURN
-        END IF
 C
 C*	Check that the file is open.
 C

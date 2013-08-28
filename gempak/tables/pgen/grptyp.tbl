@@ -172,10 +172,13 @@ TOTL_SVR  5%;15%;30%;45%;60%;SIG
 +         60%     31/2/0.5/0/0/0 | 31/small/22/2/121/s/l/hw 
 +         SIG     26/2/0.5/0/0/0 | 26/small/22/2/121/s/l/hw 
 !
-FIREOUTL  CRITICAL;EXTREME;DRY-TSTM
-+         CRITICAL  2/2/0.5/0/0/0 |  2/small/22/2/121/s/l/hw 
-+         EXTREME   2/2/0.5/0/0/0 |  2/small/22/2/121/s/l/hw 
-+         DRY-TSTM  2/2/0.5/0/0/0 |  2/small/22/2/121/s/l/hw 
+FIREOUTL  EXTREME;CRITICAL;ELEVATED;ISODRYT;SCTDRYT;DRY-TSTM
++         ELEVATED 17/2/0.5/0/0/1 | 17/small/22/2/121/s/l/hw 
++         CRITICAL  2/2/0.5/0/0/1 |  2/small/22/2/121/s/l/hw 
++         EXTREME   2/2/0.5/0/1/1 |  2/small/22/2/121/s/l/hw 
++         ISODRYT   8/2/0.5/0/0/1 |  8/small/22/2/121/s/l/hw 
++         SCTDRYT   2/2/0.5/0/0/1 |  2/small/22/2/121/s/l/hw 
++         DRY-TSTM  2/2/0.5/0/0/1 |  2/small/22/2/121/s/l/hw 
 !
 CATG_SVR  SLGT;MDT;HIGH
 +         SLGT    22/3/1.0/0/0/0 | 22/large/22/2/121/s/l/hw

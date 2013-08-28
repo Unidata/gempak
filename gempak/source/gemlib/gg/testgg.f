@@ -99,6 +99,8 @@ C* F. J. Yen/NCEP	 7/07	Initialize prefs.tbl due to GG_QSCT mods*
 C* T. Piper/SAIC	01/08	Added GD_INIT; removed from IN_BDTA	*
 C* T. Piper/SAIC	08/08	Increased array sizes for GG_NATC to 25	*
 C* S. Jacobs/NCEP	12/09	Added TRAK1, TRAKE and TRAK2		*
+C* L. Hinson/AWC        06/12   Add ASDI                                *
+C* L. Hinson/AWC        10/12   Add EDR                                 *
 C************************************************************************
         INCLUDE		'GEMPRM.PRM'
 	INCLUDE		'ggcmn.cmn'
@@ -116,6 +118,7 @@ C*
      +                  cnties(MAX_CNTY)*128, wfocty(MAX_CNTY)*128,
      +                  ircntm*20, sacod(100)*4, answ*1, usrtim2*20,
      +			wtnum*120, wfolst(180)
+        CHARACTER       mode*2, depdest*2, sites*125 
         REAL            xlat(20), xlon(20), wlevs(4) 
 	REAL		angle (3), zmarg (4), flvl (50), x(2), y(2),
      +			dlltln(2), alat (7), alon (7), ppmark (3), 
@@ -132,8 +135,11 @@ C*
      +                  icolr16(20), icolr17(20), iclr18(20), 
      +                  iclr19 (20), iclr20(20), iclr1k(20), iclrek(20), 
      +                  iclr2k(20), wcnty(MAX_CNTY)
-
-	LOGICAL		ang, etmchg
+        INTEGER         ktminc(2), kcolrs(2), htinc(2), htcolrs(2),
+     +                  numc, tlimit, ecolrs(2), esymb1(2), esymb2(2),
+     +                  esymbsz1(2), esymbsz2(2), enumc
+        REAL            evinc(2)
+	LOGICAL		ang, etmchg, aoa180fl
 	INTEGER		nums, itype
 C------------------------------------------------------------------------
 C*      Initialize GEMPAK common blocks 
@@ -160,7 +166,7 @@ C
      +       ' 41 = GG_WCVF  42 = GG_ZSRT  43 = GG_WWOU/GG_WWCN'/
      +       ' 44 = GG_WACT  45 = GG_WFPS  46 = GG_WWFO'/
      +       ' 50 = GCLEAR   51 = IN_TEXT  52 = GQMPRJ   53 = GG_WCP'/
-     +       ' 54 = GG_FFA' )
+     +       ' 54 = GG_FFA   55 = GG_ASDI  56 = GG_EDR')
 	    CALL TM_INT ( 'Select a subroutine number', .false.,
      +                     .false., 1, numsub, n, ier ) 
 	IF ( ier .eq. 2 ) THEN
@@ -1706,6 +1712,59 @@ C
                 CALL GEPLOT ( ier )
                 WRITE (6,*) 'IRET = ', iret
                 CALL ER_WMSG  ( 'GG', iret, ' ', ierr )
+            ELSE IF ( numsub .eq. 55) THEN
+              WRITE (6,*) 'Enter the frame time'
+              READ  (5,2) frametim
+              WRITE (6,*) 'Enter a time (mins) or height increment'
+              READ  (5,*) ktminc(1)
+              WRITE (6,*) 'Enter color for the time or height increment'
+              READ  (5,*) kcolrs(1)
+              WRITE (6,*) 'Enter a time limit'
+              READ  (5,*) tlimit
+              WRITE (6,*) 'Enter the mode T or H'
+              READ  (5,2) mode
+              WRITE (6,*) 'Enter D/A/B to plot Depart/Arrivals/Both'
+              READ  (5,2) depdest
+              WRITE (6,*) 'Enter ALL to plot all sites,or a 3-letter ID'
+              READ  (5,2) sites
+              numc = 1
+              CALL GG_ASDI ( frametim, ktminc, kcolrs, numc, tlimit,
+     +                       mode, depdest, sites, iret )
+              CALL GEPLOT ( ier )
+              WRITE (6,*) 'IRET = ', iret
+              CALL ER_WMSG ( 'GG', iret, ' ', ierr)
+            ELSE IF ( numsub .eq. 56) THEN
+              WRITE (6,*) 'Enter the frame time'
+              READ  (5,2) frametim
+              WRITE (6,*) 'Enter a height increment'
+              READ  (5,*) htinc(1)
+              WRITE (6,*) 'Enter color for height increment'
+              READ  (5,*) htcolrs(1)
+              WRITE (6,*) 'Enter a time limit'
+              READ  (5,*) tlimit
+              WRITE (6,*) 'Enter an EDR increment'
+              READ  (5,*) evinc(1)
+              WRITE (6,*) 'Enter an EDR Color'
+              READ  (5,*) ecolrs(1)
+              WRITE (6,*) 'Enter symbol number for BLO FL180'
+              READ  (5,*) esymb1(1)
+              WRITE (6,*) 'Enter symbol number for AOA FL180'
+              READ  (5,*) esymb2(1)
+              WRITE (6,*) 'Enter a symbol size for BLO FL180'
+              READ  (5,*) esymbsz1(1)
+              WRITE (6,*) 'Enter a symbol size for AOA FL180'
+              READ  (5,*) esymbsz2(1)
+              aoa180fl = .true.
+              numc = 1
+              enumc = 1
+              CALL GG_EDR ( frametim, ktminc, kcolrs, numc, tlimit,
+     +                      evinc, ecolrs, esymb1, esymb2, esymbsz1,
+     +                      esymbsz2, aoa180fl, iret)
+              CALL GEPLOT ( ier )
+              WRITE (6,*) 'IRET = ', iret
+              CALL ER_WMSG ( 'GG', iret, ' ', ierr )               
+C-----------------------------------------------------------------------
+              
 	    END IF
 	END DO
 C

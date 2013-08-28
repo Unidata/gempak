@@ -135,7 +135,6 @@ programs_nc: $(PROG_NC)
 
 $(ALIB): $(COMMON_OBJS) 
 	$(AR) $(ARFLAGS) $@ *.o
-	$(RM) *.o
 
 $(COMMON_OBJS) :
 	@$(AR) -x $(OS_LIB)/sncross.a $@

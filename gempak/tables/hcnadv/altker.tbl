@@ -17,6 +17,7 @@
 ! C. Lauer/TPC           2/09   Updated for 2009, 2/3 Probability circle
 ! C. Lauer/TPC           4/10   Updated for 2010, 2/3 Probability circle
 ! S. Jacobs/NCEP	 2/12	Updated for 2012, 2/3 Probability circle
+! M. Brennan/NHC	 2/13	Updated for 2013, 2/3 Probability circle
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !
 !FCST  NM
@@ -24,10 +25,10 @@
 !(I2) (F8.1)
 !
  3    16.0
-12    36.0
-24    56.0
-36    75.0
-48    95.0
-72   141.0
-96   180.0
-20   236.0
+12    33.0
+24    52.0
+36    72.0
+48    92.0
+72   128.0
+96   177.0
+20   229.0

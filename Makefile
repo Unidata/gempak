@@ -1,7 +1,7 @@
 #################################################################
 ###################################################################
 #
-#	Makefile for UPC GEMPAK 6.6.0
+#	Makefile for UPC GEMPAK 6.10
 #		Top level
 #
 ####################################################################
@@ -28,7 +28,7 @@ include $(CONFIGDIR)/$(MAKEINC)
 
 SUBDIRS = \
 	extlibs \
-	gempak 
+	gempak
 
 # .INIT: INSTALLDIRS
 

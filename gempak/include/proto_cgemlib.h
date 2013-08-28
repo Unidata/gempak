@@ -1623,6 +1623,15 @@ void	cst_clst ( 	char	*instr,
 			int	*numstr,
 			int	*iret );
 
+void	cst_clstws (	char	*instr,
+			char	sepr,
+			char	*def,
+			int	nexpv,
+			int	maxchr,
+			char	**aryptr,
+			int	*numstr,
+			int	*iret );
+
 void 	cst_crnm ( 	char	*str,
 			float	*value,
 			int	*iret );

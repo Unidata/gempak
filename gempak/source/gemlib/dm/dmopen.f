@@ -46,11 +46,9 @@ C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 	INCLUDE		'GMBDTA.CMN'
 	INCLUDE		'dmcmn.cmn'
-	INCLUDE		'dbcmn.cmn'
 C
 	CHARACTER*(*)	filnam
 	LOGICAL		wrtflg, shrflg
-        CHARACTER       carr1(25)*20, carr2(2)*20
 C------------------------------------------------------------------------
 C*	Get a file number for this file.  Return if there are no more
 C*	file numbers.
@@ -81,58 +79,6 @@ C*	Read the file label into common.
 C
 	CALL DM_RLBL ( iflno, iret )
 	IF  ( iret .ne. 0 ) GOTO 900
-C
-C*      Prepare needed output parms for DB source and return
-C
-        IF ( dbread ) THEN
-           IF ( INDEX(dbdatasrc,'metar') .gt. 0 )  THEN
-                iftype = MFSF
-                ifsrce = 102
-             ELSE IF ( INDEX(dbdatasrc,'bufrua') .gt. 0 ) THEN
-                iftype = MFSN
-                ifsrce = 102
-             ELSE IF ( INDEX(dbdatasrc,'grid') .gt. 0 ) THEN
-                iftype = MFGD
-                ifsrce = 6
-C
-C*              Get the grid name from the file name
-C
-C
-C*              changed the number of expected from 2 to 25
-C
-c                CALL ST_CLST ( filnam, '/', ' ', 2, carr1,
-                CALL ST_CLST ( filnam, '/', ' ', 25, carr1,
-     +                         num, ier )
-c                IF ( ier .eq. 0 .and. num .eq. 2 ) THEN
-                IF ( ier .eq. 0 ) THEN
-                   
-                   CALL ST_CLST ( carr1(num), '_', ' ', 2, carr2,
-     +                            num2, ier )
-                ELSE 
-C
-C*                 TODO - improve the error handling
-C  
-                   iret = -1
-                   RETURN
-                END IF
-                IF ( num2 .eq. 2 ) THEN
-c                   CALL ST_LCUC ( carr2(1), dbmodel, ier )
-                   CALL ST_LSTR ( carr2(1), icarr2, ier )
-                   dbmodel=carr2(1)(:icarr2)
-                ELSE
-C
-C*                 TODO - improve the error handling
-C
-                   iret = -1
-                   RETURN
-                END IF
-           END IF
-           nrow   = 100
-           ncol   = 25
-           nprt   = 10
-           nfhdrs = 3
-           RETURN
-        END IF
 C
 C*	Check that this is a valid machine.
 C

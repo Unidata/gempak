@@ -5,7 +5,7 @@
      +                      ltng, atcf, airm, gairm, ncon, csig, svrl,
      +                      bnd, tcmg, qsct, wstm, wou, wcn, wcp, ency,
      +                      ffa, wsat, asct, trkpd1, trkpde, trkpd2,
-     +                      osct, sgwh, asdi, iret)
+     +                      osct, sgwh, asdi, edr, wspda, iret)
 C************************************************************************
 C* GPMINP								*
 C*									*
@@ -15,7 +15,7 @@ C* GPMINP  ( DEVICE, MAP, MSCALE, GAREA, PROJ, SATFIL, RADFIL, PANEL, 	*
 C*	     TITLE, TEXT, IMCBAR, LATLON, CLEAR, LUTFIL, STNPLT, VGFILE,*
 C*	     AWPSFL, LINE, WATCH, WARN, HRCN, ISIG, LTNG, ATCF, AIRM, 	*
 C*           GAIRM, NCON, SVRL, BND, TCMG, QSCT, WSTM, WOU, WCN, WCP,   *
-C*           ENCY, FFA, WSAT, ASCT, OSCT, SGWH, ASDI, IRET)		        *
+C*           ENCY, FFA, WSAT, ASCT, OSCT, SGWH, ASDI, EDR, WSPDA, IRET) *
 C**									*
 C* Log:									*
 C* M. desJardins/GSFC	 7/88						*
@@ -55,6 +55,8 @@ C* L. Hinson/AWC        04/10   Added GAIRM                             *
 C* G. McFadden/IMSG	 9/10	Added OSCT				*
 C* G. McFadden/IMSG	 7/11	Added SGWH				*
 C* L. Hinson/AWC         5/12   Added ASDI                              *
+C* L. Hinson/AWC        10/12   Added EDR				*
+C* G. McFadden/IMSG	 7/13	Added WSPDA				*
 C************************************************************************
 	CHARACTER*(*)	device, map, garea, proj, panel, title, text,
      +			latlon, satfil, radfil, lutfil, stnplt, vgfile,
@@ -62,7 +64,7 @@ C************************************************************************
      +			ltng, atcf, airm, gairm, ncon, svrl, bnd, tcmg,
      +                  ency, qsct, csig, wstm, wou, wcn, wcp, ffa,
      +                  imcbar, mscale, wsat, asct, trkpd1, trkpde, 
-     +                  trkpd2, osct, sgwh, asdi
+     +                  trkpd2, osct, sgwh, asdi, edr, wspda
 	LOGICAL		clear
 C-----------------------------------------------------------------------
 	CALL IP_STR  ( 'DEVICE', device, ier1 )
@@ -112,6 +114,8 @@ C-----------------------------------------------------------------------
 	CALL IP_STR  ( 'OSCT',   osct,   ier45 )
 	CALL IP_STR  ( 'SGWH',   sgwh,   ier46 )
 	CALL IP_STR  ( 'ASDI',   asdi,   ier47 )
+        CALL IP_STR  ( 'EDR',    edr,    ier48 )
+        CALL IP_STR  ( 'WSPDA',  wspda,  ier49 )
 C
 	iret =  ier1 + ier2 + ier3 + ier4 + ier5 + ier6 + ier7 +
      +		ier8 + ier9 + ier10 + ier11 + ier12 + ier13 + ier14 +
@@ -119,7 +123,7 @@ C
      +		ier22 + ier23 + ier24 + ier25 + ier26 + ier27 + ier28 +
      +		ier29 + ier30 + ier31 + ier32 + ier33 + ier34 + ier35 +
      +		ier36 + ier37 + ier38 + ier39 + ier40 + ier41 + ier42 +
-     +		ier43 + ier44 + ier45 + ier46 + ier47
+     +		ier43 + ier44 + ier45 + ier46 + ier47 + ier48 + ier49
 	IF  ( iret .ne. 0 )  iret = -2
 C*
 	RETURN

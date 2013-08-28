@@ -6,13 +6,13 @@
 001 Pressure                          Pa                   PRES            -2  -9999.00        0         0
 002 Pressure reduced to MSL           Pa                   PMSL            -2  -9999.00        0         0
 003 Pressure tendency                 Pa s**-1             PTND            -2  -9999.00        0         0
-004 Potential vorticity               Km**2 kg**-1 s**-1   PVOR             0  -9999.00        0         0
-005 ICAO Std Atmosphere Ref Height    m                    ICAHT            0  -9999.00        0         0
+004 Potential vorticity               K m**2 kg**-1 s**-1  PVOR             0  -9999.00       0         0
+005 ICAO std atmos ref height         m                    ICAHT            0  -9999.00       0         0
 006 Geopotential                      m**2 s**-2           GP               0  -9999.00        0         0
 007 Geopotential height               gpm                  HGHT             0  -9999.00        0         0
 008 Geometrical height                m                    DIST             0  -9999.00        0         0
 009 Standard deviation of height      m                    HGHTSD           0  -9999.00        0         0
-010 Total ozone                       Dobson units         TOZO             0  -9999.00        0         0
+010 Total ozone                       Dobson units         TOZO             0  -9999.00       0         0
 !											        
 011 Temperature                       K                    TMPK             0  -9999.00        0         0
 012 Virtual temperature               K                    TVRK             0  -9999.00        0         0
@@ -23,7 +23,7 @@
 017 Dew-point temperature             K                    DWPK             0  -9999.00        0         0
 018 Dew-point depression(or deficit)  K                    DPDK             0  -9999.00        0         0
 019 Lapse rate                        K m**-1              LAPS             0  -9999.00        0         0
-020 Visibility                        m                    VSBY             0  -9999.00        0         0
+020 Visibility                        m                    VSBY             0  -9999.00       0         0
 !											        
 021 Radar spectra(1)                  -                    RDSP1            0  -9999.00        0         0
 022 Radar spectra(2)                  -                    RDSP2            0  -9999.00        0         0
@@ -31,7 +31,7 @@
 024 Parcel Lifted Index (to 500hPa)   K                    LIFT             0  -9999.00        0         0
 025 Temperature anomaly               K                    TMPKA            0  -9999.00        0         0
 026 Pressure anomaly                  Pa                   PRESA           -2  -9999.00        0         0
-027 Geopotential height anomaly       gpm                  HGHTA            0  -9999.00        0         0
+027 Geopotential height anomaly       gpm                  HGHTA            0  -9999.00       0         0
 028 Wave spectra(1)                   -                    WVSP1            0  -9999.00        0         0
 029 Wave spectra(2)                   -                    WVSP2            0  -9999.00        0         0
 030 Wave spectra(3)                   -                    WVSP3            0  -9999.00        0         0
@@ -80,7 +80,7 @@
 069 Main thermocline depth            m                    MTHDP            0  -9999.00        0         0
 070 Main thermocline anomaly          m                    MTHAN            0  -9999.00        0         0
 !											        
-071 Total cloud cover                 %                    TCLD             0  -9999.00        0         0
+071 Total cloud cover                 %                    TCLD             0  -9999.00       0         0
 072 Convective cloud cover            %                    CCLD             0  -9999.00        0         0
 073 Low cloud cover                   %                    CLDL             0  -9999.00        0         0
 074 Medium cloud cover                %                    CLDM             0  -9999.00        0         0
@@ -91,7 +91,7 @@
 079 Large scale snow                  kg m**-2             LSNO             0  -9999.00        0         0
 080 Water temperature                 K                    WTMPK            0  -9999.00        0         0
 !											        
-081 Land-sea mask (1=land,0=sea)      1,0                  LAND             0  -9999.00        0         0
+081 Land-sea mask (1=land,0=sea)      1,0                  LAND             0  -9999.00       0         0
 082 Deviation of sea-level from mean  m                    CLVLD            0  -9999.00        0         0
 083 Surface roughness                 m                    SRLM             0  -9999.00        0         0
 084 Albedo                            %                    ALBD             0  -9999.00        0         0
@@ -100,7 +100,7 @@
 087 Vegetation                        %                    VEG              0  -9999.00        0         0
 088 Salinity                          kg kg**-1            SLTY             0  -9999.00        0         0
 089 Density                           kg m**-3             DNTY             0  -9999.00        0         0
-090 Water runoff                      kg m**-2             RNOF             0  -9999.00        0         0
+090 Water runoff                      kg m**-2             RNOF             0  -9999.00       0         0
 !											        
 091 Ice concent (1=ice,0=no ice)      1,0                  ICE              0  -9999.00        0         0
 092 Ice thickness                     m                    ICET             0  -9999.00        0         0
@@ -138,7 +138,7 @@
 121 Latent heat flux                  W m**-2              FXLH             0  -9999.00        0         0
 122 Sensible heat flux                W m**-2              FXSH             0  -9999.00        0         0
 123 Boundary layer dissipation        W m**-2              BLDIS            0  -9999.00        0         0
-124 u-component of momentum flux      N m**-2              URELFX           0  -9999.00        0         0
-125 v-component of momentum flux      N m**-2              VRELFX           0  -9999.00        0         0
+124 u-component of momentum flux      N m**-2              URELFX           0  -9999.00       0         0
+125 v-component of momentum flux      N m**-2              VRELFX           0  -9999.00       0         0
 126 Wind mixing energy                J                    ENRG             0  -9999.00        0         0
 127 Image data                        -                    IMAG             0  -9999.00        0         0

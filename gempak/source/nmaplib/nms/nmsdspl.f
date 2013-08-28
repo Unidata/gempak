@@ -97,6 +97,8 @@ C* L. Hinson/AWC         4/12   Add ASDI                                *
 C* G. McFadden/IMSG	 7/12	Added OAMBG1_HI, OAMBG2_HI, OAMBG3_HI,	*
 C*                              and OAMBG4_HI                       	*
 C* S. Jacobs/NCEP	10/12	Consolidate check for ASCT data types	*
+C* L. Hinson/AWC        10/12   Add EDR                                 *
+C* G. McFadden/IMSG	 7/13	Added SGWHA and WSPDA        		*
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 C*
@@ -108,7 +110,12 @@ C*
      +			farrw(*)
 C*
 	CHARACTER	ttlstr*80, newfil*160, dirnam*160
-	INTEGER		ktminc(LLCLEV), kwninc(LLCLEV), jclrs(LLCLEV+1)
+	INTEGER		ktminc(LLCLEV), kwninc(LLCLEV), 
+     +                  jclrs(LLCLEV+1), htinc(LLCLEV+1),
+     +                  htclr(LLCLEV+1), evclr(LLCLEV+1),
+     +                  esymb1(LLCLEV+1), esymb2(LLCLEV+1)
+        REAL            evinc(LLCLEV+1), esymbsz1(LLCLEV+1),
+     +                  esymbsz2(LLCLEV+1)
 	INTEGER		jclrs2(LLCLEV+1), lvfil(2)
 	REAL		ppmark(3), pnmark(3), windgr(4)
 C
@@ -119,6 +126,7 @@ C
         CHARACTER       mode*2
         CHARACTER       depdest*2
         INTEGER         tlimit
+        LOGICAL         aoa180fl
 	CHARACTER       sites*120
 	CHARACTER       arpts(20)*12
         DATA            arpts / 'MCI', 'ATL', 'DEN', 'MSP', 'DTW',
@@ -334,6 +342,37 @@ C
 	    END IF	    
             CALL GG_ASDI ( dattim, ktminc, iclrs, nn, tlimit, mode,
      +                     depdest, sites, iret )
+          ELSE IF ( alias .eq. 'EDR' ) THEN
+C*          Assume 9 Height colors, followed by Time Limit, followed by 5
+C*          EDR colors.
+            nn = 9 - 1
+            DO i = 9, 1, -1
+        	htinc(i) = fvalu(i)
+                htclr(i) = iclrs(i)
+            END DO
+            
+            tlimit = fvalu(10)
+            
+            DO i = 15, 11, -1
+              evinc(i-10) = fvalu(i)
+              evclr(i-10) = iclrs(i)
+            END DO
+            
+            DO i = 11, 15
+              esymb1(i-10) = fsym1((i-1)*3+1)
+              esymb2(i-10) = fsym2((i-1)*3+1)
+              esymbsz1(i-10) = fsym1((i-1)*3+2)
+              esymbsz2(i-10) = fsym2((i-1)*3+2)
+            END DO
+
+            IF (iflgs(1) .eq. 1) THEN
+              aoa180fl = .true.
+            ELSE
+              aoa180fl = .false.
+            END IF  
+            CALL GG_EDR ( dattim, htinc, htclr, 9, tlimit, evinc,
+     +                    evclr, esymb1, esymb2, esymbsz1, esymbsz2, 5,
+     +                    aoa180fl, iret )
 C   
           ELSE IF  ( ( alias .eq. 'ATCF'   ) .or.
      +               ( alias .eq. 'ENS_CYC') )  THEN
@@ -502,7 +541,8 @@ C
 C
 	ELSE IF  ( alias .eq. 'SGWH' .or. alias .eq. 'SGWHE' .or. 
      +             alias .eq. 'SGWHG' .or. alias .eq. 'SSHA' .or.
-     +             alias .eq. 'SGWH2' .or. alias .eq. 'SGWHC' )  THEN
+     +             alias .eq. 'SGWH2' .or. alias .eq. 'SGWHC'.or.
+     +             alias .eq. 'SGWHA' .or. alias .eq. 'WSPDA' )  THEN
 	  IF  ( iclrs(1) .eq. 0 )  THEN
 		iskip = 0
 	      ELSE

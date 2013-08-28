@@ -50,7 +50,7 @@ void g2_rdieee(g2int *rieee,g2float *a,g2int num)
 //
 //  Extract sign bit, exponent, and mantissa
 //
-        isign=(long)((rieee[j]&msk1)>>31);
+        isign=(rieee[j]&msk1)>>31;
         iexp=(rieee[j]&msk2)>>23;
         imant=(rieee[j]&msk3);
         //printf("SAGieee= %ld %ld %ld\n",isign,iexp,imant);

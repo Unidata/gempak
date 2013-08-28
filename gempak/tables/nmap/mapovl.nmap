@@ -92,6 +92,7 @@
 ! m.gamazaychikov/SAIC	07/08	Add NE_Corr
 ! S. Jacobs/NCEP	 1/10	Add NWS_States
 ! S. Jacobs/NCEP	12/10	Add VAAC and volcano overlays
+! S. Jacobs/NCEP	11/12	Added Alaska Area of Resp outline map
 !
 !-------------------------------------------------------------------------------
 ! 
@@ -133,9 +134,9 @@ Offshore_US     1    offsh2              0     23      1      2
 Flight_Info     1    fir                 0      7      1      2
 ARTCC           1    artcc               0      7      1      2
 WR_QPF          2    wrqpf.tbl           0     15      1      1         2         2         1
-VAAC            1    dcvaac              0      2      1      2                   2
 Time_Zone       1    timezone            0     14      1      1
 Marine_Cnty     1    wbcmarine           0     22      1      2
+AK_Area_of_Resp 1    akarea              0      2      1      3
 AK_Desk         1    akdesk              0      2      1      3
 NE_Corr         1    necorr              0      3      1      3
 NWS_States      1    states              0      3      1      3

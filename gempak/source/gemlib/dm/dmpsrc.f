@@ -27,19 +27,11 @@ C* m. gamazaychikov/CWS 04/11   Add code for A2DB connectivity          *
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 	INCLUDE		'dmcmn.cmn'
-	INCLUDE		'dbcmn.cmn'
 C
 	CHARACTER*(*)	keynam (*)
 	INTEGER		iloval (*), ihival (*)
 	CHARACTER	type*4
 C------------------------------------------------------------------------
-C*      For A2DB requests - set the iret to 0 and return.
-C
-        IF  ( dbread ) THEN
-            iret = 0
-            RETURN
-        END IF
-C
 C*	Check that file is open.
 C
 	CALL DM_CHKF ( iflno, iret )

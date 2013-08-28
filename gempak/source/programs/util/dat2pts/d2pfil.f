@@ -24,6 +24,7 @@ C* S. Jacobs/NCEP	 4/02	Added extra check for the end of file	*
 C* F. J. Yen/NCEP	11/04	Enhanced with station relative output 	*
 C* G. Grosshans         01/06   Updated to include fire weather outlooks* 
 C* F. J. Yen/NCEP	10/07	Updated for extended fire wx outlooks	*
+C* S. Jacobs/NCEP	 7/13	Added new fire wx categories		*
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 C*
@@ -118,6 +119,12 @@ C
 			  cval = 'MDT '
 		         ELSE IF  ( label .eq. 'HIGH RISK' )  THEN
 			  cval = 'HIGH'
+                         ELSE IF  ( label .eq. 'ISOLATED DRY TSTM ' //
+     +				    'AREA FIRE WEATHER' )  THEN
+                          cval = 'IDRT'
+                         ELSE IF  ( label .eq. 'SCATTERED DRY TSTM ' //
+     +				    'AREA FIRE WEATHER' )  THEN
+                          cval = 'SDRT'
                          ELSE IF  ( label .eq. 'DRY TSTM AREA ' //
      +				    'FIRE WEATHER' )  THEN
                           cval = 'DTSM'
@@ -127,6 +134,9 @@ C
                          ELSE IF  ( label .eq. 'CRITICAL AREA ' //
      +				    'FIRE WEATHER' )  THEN
                           cval = 'CRIT'
+                         ELSE IF  ( label .eq. 'ELEVATED AREA ' //
+     +				    'FIRE WEATHER' )  THEN
+                          cval = 'ELEV'
                          ELSE
 			  cval = 'TSTM'
 			END IF

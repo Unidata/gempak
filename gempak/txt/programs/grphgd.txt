@@ -50,6 +50,8 @@ PROGRAM DESCRIPTION
 	GLEVEL   = GEMPAK vertical level value
 	GVCORD   = GEMPAK vertical coordinate
 	KEYCOL   = Key color
+	KEYLINE  = Key line (LINE or SPLN/subtyp)
+	OLKDAY   = Day of extended outlook
 	BOUNDS   = Bound area(s) to exclude or include
 	TYPE     = function processing type
         GAMMA    = Convergence parameter
@@ -72,7 +74,10 @@ PROGRAM DESCRIPTION
     lines, =n processes only lines with color n. BOUNDS determines whether
     to assign missing values to gridpoints inside (BOUNDS=...|...|false) or
     outside (BOUNDS=...|...|true) a bounded area. Up to ten bounds areas
-    may be specified by separating with '+'. 
+    may be specified by separating with '+'. KEYLINE is similar to KEYCOL
+    but is for line type.  It indicates which lines get processed; =0 
+    all line types are processed, =m/n, where m is the vgtype and n is
+    the subtyp of vgtype m.
 
     TYPE specifiies the processing type that is used similar to that of GDPLOT2 
     function. Valid TYPEs are 'c' for contour line processing, 'b' for wind 
@@ -83,7 +88,9 @@ PROGRAM DESCRIPTION
 
     CATMAP allows for mapping of alphanumeric contour labels to be mapped to 
     numeric-only values prior to the GRPHGD analysis. For instance, the contour
-    label 'LOW' could be mapped to the value '1', 'MED' to '2', etc.
+    label 'LOW' could be mapped to the value '1', 'MED' to '2', etc.  
+
+    OLKDAY indicates the day of the extended outlook to process.
 
     DISCRETE allows for the discrete representation of values on the final grid.
     For instance, all values inside a closed contour with value '0.5' could be

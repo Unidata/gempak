@@ -48,6 +48,7 @@ COBJS = \
 	$(ALIB)(gb2skparam.o) \
 	$(ALIB)(gb2skvar.o) \
 	$(ALIB)(gb2skvcord.o) \
+	$(ALIB)(gb2stat.o) \
 	$(ALIB)(gb2ugem.o) \
 	$(ALIB)(gb2vcrd.o) \
 	$(ALIB)(gb2vlev.o) \

@@ -62,11 +62,11 @@ LIBINC = \
 	$(APPL) \
 	$(SYSLIB) \
         $(XMLLIB) \
-        $(ZLIB) \
 	$(CGEMLIB) \
 	$(GEMLIB) \
 	$(LIBJASPER) \
-	$(PNGLIB)
+	$(PNGLIB) \
+        $(ZLIB)
 
 .PRECIOUS: $(ALIB)
 

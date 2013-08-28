@@ -21,18 +21,18 @@
 141 Categorical freezing rain         0,1                  WXTZ             0  -9999.00        1         0
 142 Categorical ice pellets           0,1                  WXTP             0  -9999.00        1         0
 143 Categorical snow                  0,1                  WXTS             0  -9999.00        1         0
-144 Volumetric soil moisture content  fraction             SOILM            0  -9999.00        0         0
-145 Potential evaporation rate        W/m**2               PEVP             0  -9999.00        0         0
-146 Cloud workfunction                J/kg                 CWRK             0  -9999.00        0         0
-147 Zonal flux of gravity wave stress N/m**2               UGWD             0  -9999.00        0         0
-148 Meridional flux of grav wav strss N/m**2               VGWD             0  -9999.00        0         0
+144 Volumetric soil moisture content  fraction             SOILM            0  -9999.00       0         0
+145 Potential evaporation rate        W/m**2               PEVP             0  -9999.00       0         0
+146 Cloud workfunction                J/kg                 CWRK             0  -9999.00       0         0
+147 Zonal flux of gravity wave stress N/m**2               UGWD             0  -9999.00       0         0
+148 Meridional flux of grav wav strss N/m**2               VGWD             0  -9999.00       0         0
 149 Potential vorticity               m**2/s/kg            PVOR             0  -9999.00        0         0
 150 Covar merid-zonal wind            m**2 s**-2           CMZW             0  -9999.00        0         0
 !
 151 Covar temp-zonal wind             K m s**-1            CTZW             0  -9999.00        0         0
 152 Covar temp-merid wind             K m s**-1            CTMW             0  -9999.00        0         0
-153 Cloud water                       kg/kg                CWTR             0  -9999.00        0         0
-154 Ozone mixing ratio                kg/kg                OZMR             0  -9999.00        0         0
+153 Cloud water                       kg/kg                CWTR             0  -9999.00       0         0
+154 Ozone mixing ratio                kg/kg                OZMR             0  -9999.00       0         0
 155 Ground heat flux                  W m**-2              GHFX             0  -9999.00        0         0
 156 Convective inhibition             J kg**-1             CINS             0  -9999.00        0         0
 157 CAPE                              J kg**-1             CAPE             0  -9999.00        0         0

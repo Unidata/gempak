@@ -13,7 +13,8 @@ COBJS = \
 	$(ALIB)(cvrduc.o)
 
 FOBJS = \
-	$(ALIB)(cvprmt.o)
+	$(ALIB)(cvprmt.o) \
+	$(ALIB)(cvprm3.o)
  
 GDIR = cv
 

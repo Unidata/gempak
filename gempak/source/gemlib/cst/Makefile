@@ -12,6 +12,7 @@ COBJS = \
 	$(ALIB)(cstalnm.o) \
 	$(ALIB)(cstcins.o) \
 	$(ALIB)(cstclst.o) \
+	$(ALIB)(cstclstws.o) \
 	$(ALIB)(cstcrnm.o) \
 	$(ALIB)(cstctod.o) \
 	$(ALIB)(cstctoi.o) \

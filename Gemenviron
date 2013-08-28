@@ -21,17 +21,7 @@
 #  Please configure the following definitions to reflect your system:
 #
 # Top level directory:
-   setenv NAWIPS /home/gempak/GEMPAK6.8.0
-   setenv GARPHOME /home/gempak/openGARP/build
-#
-# Path for Garp tables and configuration. You should only have to
-# modify GARP_PATH if you have unique Garp_defaults for specifc
-# data sets, such as case studies. In those cases, creating
-# a ntl.case startup script which sets those local environmental variables
-# is generally the best solution.
-#
-   setenv GARP_PATH $GARPHOME/config
-#
+   setenv NAWIPS /home/gempak/GEMPAK6.10
 #
 # Uncomment the following lines for using GCC compilers (Solaris/HP only)
 # set USEGCC_SOL=1
@@ -156,17 +146,11 @@ endif
 #
    setenv OS_ROOT	$NAWIPS/os/$NA_OS
    setenv OS_BIN	$OS_ROOT/bin
+   setenv GEMEXE $OS_BIN
    setenv OS_INC	$OS_ROOT/include
    setenv OS_LIB	$OS_ROOT/lib
+   setenv GEMLIB $OS_LIB
 
-#
-# Directory for storing object libraries (GEMPAK + related software):
-#
-   setenv GEMLIB    $OS_LIB
-#
-# Directory for executables (GEMPAK + related software):
-#
-   setenv GEMEXE    $OS_BIN
 #
 # Remaining directories used by GEMPAK  (leave as is):
 #
@@ -200,18 +184,34 @@ if ( -d $NAWIPS/resource ) then
 endif
 
 #
-# 
-# Set PATH to include $GEMEXE
+# Check for AWIPS2 Python
 #
-#setenv PATH ${PATH}:${GEMEXE}:${NAWIPS}/bin
-setenv PATH ${PATH}:${OS_BIN}:${NAWIPS}/bin
+if ( -d /awips2/python ) then
+	setenv PYHOME "/awips2/python"
+else
+	unsetenv PYHOME
+endif
+
+#
+# Set PATH to include $OS_BIN and $PYHOME
+#
+if ( $?PYHOME ) then
+	setenv PATH ${PATH}:${OS_BIN}:${PYHOME}/bin:${PATH}:${NAWIPS}/bin
+else
+	setenv PATH ${PATH}:${OS_BIN}:${PATH}:${NAWIPS}/bin
+endif
 
 #
 # --------------------------------------------------------------------
 # <<CONFIGURE>>
 # Data directories, either real time or the Hurricane Bob sample data set:
 #
-#  setenv GEMDATA       $GEMPAK/data
+# Case study data (hurricane Bob)
+#
+   setenv TEST_DATA     $GEMPAK/data
+#
+# Live data 
+#
    setenv GEMDATA       /data/ldm/gempak
    setenv OBS           $GEMDATA
 #

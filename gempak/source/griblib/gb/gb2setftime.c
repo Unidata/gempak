@@ -59,7 +59,7 @@ void gb2_setftime( char *dattim, int tint, int pdtnum, int *pdtmpl, int *iret )
             pdtmpl[8] = fmin;
         }
     }
-    else if ( pdtnum >= 8 && pdtnum <= 14 ) {
+    else if ( pdtnum >= 8 && pdtnum <= 15 ) {
         /* 
          *   Set starting fcst hr, end date/time, and interval 
          *   for PDTs 4.8 through 4.14

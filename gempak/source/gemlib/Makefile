@@ -12,7 +12,7 @@ SUBDIRS = \
 	cfl \
 	ctb \
 	cv \
-	db \
+	da \
 	dm \
 	dp \
 	er \

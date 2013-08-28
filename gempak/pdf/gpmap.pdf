@@ -45,3 +45,5 @@ TRAK2   Jason-2 Ground Track Prediction Plotting Attributes
 OSCT    OScat Plotting Attributes                                               
 SGWH    Significant Wave Heights Plotting Attributes                            
 ASDI    End time|Mode|DepArr|time increment/clrs or ht range/clrs|time lmt|SITES
+EDR     End time|ht ranges/clrs|time lmt|Edr ranges/clrs|symb1/symb2|aoa180flg  
+WSPDA   Altika Windspeed Plotting Attributes                                    

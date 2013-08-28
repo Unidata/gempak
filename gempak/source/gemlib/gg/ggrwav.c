@@ -48,6 +48,10 @@ void gg_rwav ( char *filtyp, char *filnam, float shainc[], int icolrs[],
  * 				Significant Wave Height			*
  * G. McFadden/IMSG	07/11	Added support for CRYOSAT		*
  * 				Significant Wave Height			*
+ * S. Jacobs/NCEP	 6/13	Added file close, if the read returns	*
+ * 				a non-zero value, before returnning	*
+ * G. McFadden/IMSG	07/13	Added support for Altika wind speeds	*
+ * 				and Significant Wave Height		*
  ***********************************************************************/
 {
 	int	blen, ier, imin, incr, itarr[5], jgrp, iyoff = 0,
@@ -57,7 +61,7 @@ void gg_rwav ( char *filtyp, char *filnam, float shainc[], int icolrs[],
 	FILE    *fptr;
 	char    buffer[256], textstr[8];
 	float   lat, lon, rotat = 0.0F;
-	double	day2min = 1440.0, days, dlat, dlon, minuts, data;
+	double	day2min = 1440.0, days, dlat, dlon, minuts, data, dum;
 	Boolean proc;
 /*---------------------------------------------------------------------*/
 /*
@@ -93,15 +97,21 @@ void gg_rwav ( char *filtyp, char *filnam, float shainc[], int icolrs[],
  */
 	    cfl_trln( fptr, 256, buffer, &ier );
 	    if ( ier != 0 ) {
+		if ( fptr != NULL ) cfl_clos ( fptr, &ier );
 		return;
 	    }
 	    if ( strcmp(filtyp, "SGWH") == 0 || strcmp(filtyp, "SGWHE") == 0 ||
                  strcmp(filtyp, "SGWHG") == 0 || strcmp(filtyp, "SGWH2") == 0 ||
-                 strcmp(filtyp, "SGWHC") == 0 ) {
-		sscanf( buffer, "%i %i %i %i %i %lf %lf %lf",
+                 strcmp(filtyp, "SGWHC") == 0 || strcmp(filtyp, "SGWHA") == 0 ) {
+		sscanf( buffer, "%i %i %i %i %i %lf %lf %lf %lf",
 			&itarr[0], &itarr[1], &itarr[2], &itarr[3],
-			&itarr[4], &dlat, &dlon, &data );
+			&itarr[4], &dlat, &dlon, &data, &dum );
 	    }
+            else if ( strcmp(filtyp, "WSPDA") == 0 ) {
+		sscanf( buffer, "%i %i %i %i %i %lf %lf %lf %lf",
+			&itarr[0], &itarr[1], &itarr[2], &itarr[3],
+			&itarr[4], &dlat, &dlon, &dum, &data );
+            }
 	    else {
 		cst_lstr (  buffer, &blen, &ier );
 		if ( ier == 0 && blen > 40 && blen < 60 ) {
@@ -155,7 +165,8 @@ void gg_rwav ( char *filtyp, char *filnam, float shainc[], int icolrs[],
 	    if  ( proc ) {
 		if ( strcmp(filtyp, "SGWH") == 0 || strcmp(filtyp, "SGWHE") == 0 ||
                      strcmp(filtyp, "SGWHG") == 0 || strcmp(filtyp, "SGWH2") == 0 ||
-                     strcmp(filtyp, "SGWHC") == 0 ) {
+                     strcmp(filtyp, "SGWHC") == 0 || strcmp(filtyp, "SGWHA") == 0 || 
+                     strcmp(filtyp, "WSPDA") == 0 ) {
 		    if ( ERMISS(data) ) {
 			sprintf(textstr, "M");
 		    }

@@ -37,7 +37,6 @@
 # S. Jacobs/NCEP	 7/01	Added NSHARP
 # M. Li/SAIC		12/01	Changed path
 # T. Piper/SAIC		11/03	Removed NMAP & NSAT
-# M. James/Unidata       2/11   Copied from ntl.tbl for separate GARP build
 ;
 ; Prog_name  icon_file		           foregrnd	backgrnd
 ;----------  -------------------           --------	--------
@@ -47,5 +46,4 @@ nwx	     $NAWIPS/icons/ntl/nwx.xbm	   white 	green4
 nalarm       $NAWIPS/icons/ntl/nalarm.xbm  white	green4 
 nsharp       $NAWIPS/icons/ntl/nsharp.xbm  white	green4
 ncolor       $NAWIPS/icons/ntl/ncolor.xbm  white	green4 
-garp         $NAWIPS/icons/ntl/garp.xbm    white        green4
 EXIT	     $NAWIPS/icons/ntl/exit.xbm	   red   	white

@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "grib2.h"
 
 g2int g2_gribend(unsigned char *cgrib)

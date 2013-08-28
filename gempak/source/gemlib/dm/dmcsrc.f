@@ -29,51 +29,12 @@ C* m. gamazaychikov/CWS	04/11	Add code for A2DB connectivity		*
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 	INCLUDE		'dmcmn.cmn'
-	INCLUDE		'dbcmn.cmn'
 C
 	CHARACTER*(*)	keynam (*)
 	INTEGER		iloval (*), ihival (*)
 	LOGICAL		addsrc
-	CHARACTER	type*4, garea*30, stinfo*100000, 
-     +                  qtype*8,
-     +                  sttninf(LLSTFL)*50, astnstr(4)*10
+	CHARACTER	type*4
 C------------------------------------------------------------------------
-C
-C*	Get station info for A2DB data requests.
-C
-        IF ( dbread ) THEN
-           CALL DB_GETGAREA (nkeys, keynam, iloval, ihival, garea, ier)
-           CALL ST_NULL ( garea, garea, lgarea, ier)
-           IF ( INDEX(dbdatasrc,'metar')  .gt. 0 ) qtype = "stidqry" 
-           IF ( INDEX(dbdatasrc,'bufrua') .gt. 0 ) qtype = "stnmqry" 
-           IF ( INDEX(dbdatasrc,'synop')  .gt. 0 ) qtype = "stnmqry" 
-           CALL ST_NULL ( qtype, qtype, lqtype, ier )
-           CALL DB_GETSTINFO (qtype, garea, stinfo, lstinfo, ier)
-           IF ( ier .ne. 0 ) THEN
-              iret = -14
-              RETURN
-           END IF
-           CALL ST_CLSL ( stinfo(:lstinfo), '|', ' ', LLSTFL, 
-     +                    sttninf, idbstns, iret)
-           
-           DO istn = 1, idbstns
-               CALL ST_CLST ( sttninf(istn), ';', ' ', 4,
-     +                    astnstr, iparts, iret)
-               dbstns(stnindx+istn) = astnstr(1)
-               CALL ST_NUMB ( astnstr(2), stnlat(stnindx+istn), ier)
-               CALL ST_NUMB ( astnstr(3), stnlon(stnindx+istn), ier)
-               CALL ST_NUMB ( astnstr(4), stnelv(stnindx+istn), ier)
-           END DO
-           IF ( idbstns .eq. 1 ) THEN 
-              stnindx = stnindx + 1
-              ntotstn = stnindx
-           ELSE 
-              stnindx = 0
-              ntotstn = idbstns
-           END IF
-           RETURN
-        END IF
-C
 C*	Check that file is open.
 C
 	CALL DM_CHKF ( iflno, iret )

@@ -33,22 +33,11 @@ C* m. gamazaychikov/CWS 04/11   Add code for A2DB connectivity          *
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 	INCLUDE		'dmcmn.cmn'
-	INCLUDE		'dbcmn.cmn'
 C
 	CHARACTER*(*)	fhdnam
 	REAL		rheadr (*)
 C------------------------------------------------------------------------
 	nword = 0
-C
-C*      For A2DB requests - get the grid navigation array.
-C
-        IF ( dbread ) THEN
-           IF ( INDEX(dbdatasrc,'grid') .gt. 0 ) THEN
-              CALL DM_GETGNAV ( iflno, fhdnam, mxword, rheadr, nword, 
-     +                          iret )
-              RETURN
-	   END IF
-	END IF
 C
 C*	Check that file is open.
 C

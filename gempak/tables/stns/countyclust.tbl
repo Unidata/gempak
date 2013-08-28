@@ -34,6 +34,8 @@
 ! G. Grosshans/SPC	 7/07	Added NYC cluster per OKX and J. Franklin
 ! G. Grosshans/SPC	 8/07	Deleted NYC cluster per Patrick Maloit email
 !				on 8/1/07 631-924-0383, SVR WX Pgm Leader
+! S. Jacobs/NCEP	 7/13	Removed Beford, VA cluster since the city
+!				was removed from the county map file
 !--------------------------------------------------------------------------
 !
 ! Independant cities within counties
@@ -47,9 +49,6 @@ VA|Alleghany|51005 + 51580
 !
 ! Augusta + Staunton + Waynesboro
 VA|Augusta|51015 + 51790 + 51820
-!
-! Bedford + Bedford
-VA|Bedford|51019 + 51515
 !
 ! Fairfax + Fairfax
 VA|Fairfax|51059 + 51600

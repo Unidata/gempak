@@ -85,14 +85,14 @@
  * R. Tian/SAIC		10/06	Removed na_*, added gd_cref, gg_proj,	*
  *                              gr_algn, gr_mbn2, gr_suba		*
  * S. Gilbert/NCEP    10/06     Added gr_vnav                           *
- * S. Chiswell/Unidata	1/07	Added pr_reli				*
- * S. Gilbert/NCEP    07/07     Set up GU library section               *
- * S. Gilbert/NCEP    10/07     Added gh_bkcal and gh_bkloc             *
- * E. Safford/SAIC      12/07   use G_Cardinal to rm X/Motif dependency *
- * E. Safford/SAIC      01/08   add prototypes for gmesg, gsatim        *
- * T. Piper/SAIC        01/08   Added gd_init                           *
- * T. Piper/SAIC        03/08   Added new UNISYS navigation routines    *
- * m.gamazaychikov/SAIC 04/08   Changed gh_bkpl prototype adding size_t *
+ * S. Chiswell/Unidata  01/07	Added pr_reli				*
+ * S. Gilbert/NCEP    07/07     Set up GU library section		*
+ * S. Gilbert/NCEP    10/07     Added gh_bkcal and gh_bkloc		*
+ * E. Safford/SAIC    12/07   use G_Cardinal to rm X/Motif dependency	*
+ * E. Safford/SAIC    01/08   add prototypes for gmesg, gsatim	*
+ * T. Piper/SAIC      01/08   Added gd_init				*
+ * T. Piper/SAIC      03/08   Added new UNISYS navigation routines	*
+ * m.gamazaychikov/SAIC 04/08   Changed gh_bkpl prototype adding size_t	*
  * J. Wu/SAIC           06/08   add "intensity" in inc_pgfatxt          *
  * J. Wu/SAIC           06/08   add "coverage" in inc_pgfatxt           *
  * J. Wu/SAIC           06/08   add "category/frequency" in inc_pgfatxt *
@@ -110,6 +110,7 @@
  *				db_getRData, db_rdtr, db_getstinfo.	*
  * 				Change prototype for db_runQuery.	*
  * S. Jacobs/NCO	04/12	Added gg_osrd				*
+ * S. Jacobs/NCEP	 5/12	Removed old DB functions; added da_runpy*
  ***********************************************************************/
 
 /* AW library */
@@ -168,26 +169,23 @@ void er_wbuf ( int *iret );
 void er_wmsg ( char *errgrp, int *numerr, char *errstr, int *iret, size_t, size_t );
 
 /* DB library */
-void db_getparm         ( char *plgn, int *iret,  size_t );
-void db_getcycle        ( char *cycle, int *iret,  size_t );
-void db_getQueryText    ( char *queryType, char *queryText, int *iret );
-void db_getduri         ( char *queryType, char *source, char *model, char *dattim,
-                          char *vcord, char *parm, int *level, char *dataURI,
-                          int *lDataURI, int *iret );
-void db_getgnav         ( char *queryType, char *source, char *gridName,
-                          char *gridNav, int *lGridNav, int *iret );
-void db_getRData        ( char *dbHost, char *fileName, float *rdata, int *nword,
-                          int *iret );
-int  db_gFileNames      ( const char *dir, struct dirent ***ret_namelist);
-void db_gtim            ( char *queryType, char *source, char *qparms,
-                          char *times, int *ltimes, int *iret );
-void db_rdtr            ( char *queryType, char *source, char *part, char *dattim,
-                          char *stid, char *dataUri, int *icnt, float *rdata, int *nword,
-                          int *iret );
-void db_runQuery        ( char *queryText, char *queryResult,
-                          int *iret );
-void db_getstinfo       ( char *qry, char *gemarea, char *stinfo,
-                          int *lstinfo, int *iret );
+void da_getdti ( char *station, char *time, int *partnum,
+		     int *idthdr, int *idata, int *nval, int *iret );
+void da_getdtc ( char *station, char *time, int *partnum,
+		     int *idthdr, char *cdata, int *nchr, int *iret );
+void da_getdtr ( char *station, char *time, int *partnum,
+		     int *idthdr, float *rdata, int *nval, int *iret );
+
+void da_getheader ( char *hdrtyp, int *nval, int *values, int *iret );
+void da_getlabel ( char *label, int *iret );
+void da_getname ( char *key, int *nkey1, int *nkey2, char *str, int *iret );
+void da_getnums ( int *rows, int *cols, int *prts, int *iret );
+void da_getparm ( int *npart, int *nparm, int *scale, int *offset, int *bits, int *iret );
+void da_getpart ( int *npart, int *type, int *nparm, int *iret );
+void da_getsorc ( int *type, int *source, int *iret );
+void da_getvers ( int *version, int *iret );
+void da_readxml ( char *filnam, int *iret );
+void da_runpy ( char *pyfile, char *pymeth, int *iret );
 
 /* DM library */
 void dm_rint ( int*, int*, int*, int*, int *iret );

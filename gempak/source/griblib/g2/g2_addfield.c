@@ -1,6 +1,6 @@
+#include <stdio.h>
 #include <stdlib.h>
 #include "grib2.h"
-
 
 g2int g2_addfield(unsigned char *cgrib,g2int ipdsnum,g2int *ipdstmpl,
                 g2float *coordlist,g2int numcoord,g2int idrsnum,g2int *idrstmpl,
@@ -32,6 +32,7 @@ g2int g2_addfield(unsigned char *cgrib,g2int ipdsnum,g2int *ipdstmpl,
 //                      - Added check to determine if packing algorithm failed.
 // 2005-05-10  Gilbert -  Imposed minimum size on cpack, used to hold encoded
 //                        bit string.
+// 2009-01-14  Vuong     Changed structure name template to gtemplate
 //
 // USAGE:    int g2_addfield(unsigned char *cgrib,g2int ipdsnum,g2int *ipdstmpl,
 //              g2float *coordlist,g2int numcoord,g2int idrsnum,g2int *idrstmpl,
@@ -117,7 +118,7 @@ g2int g2_addfield(unsigned char *cgrib,g2int ipdsnum,g2int *ipdstmpl,
       g2int   *coordieee;
       g2int   width,height,iscan,itemp;
       g2float *pfld;
-      template  *mappds,*mapdrs;
+      gtemplate  *mappds,*mapdrs;
       unsigned int allones=4294967295u;
  
       ierr=0;
@@ -261,6 +262,7 @@ g2int g2_addfield(unsigned char *cgrib,g2int ipdsnum,g2int *ipdstmpl,
            j++;
          }
       }
+      free(mappds);
       //
       //   Add Optional list of vertical coordinate values
       //   after the Product Definition Template, if necessary.
@@ -416,6 +418,7 @@ g2int g2_addfield(unsigned char *cgrib,g2int ipdsnum,g2int *ipdstmpl,
         }
         iofst=iofst+nbits;
       }
+      free(mapdrs);
       //
       //   Calculate length of section 5 and store it in octets
       //   1-4 of section 5.

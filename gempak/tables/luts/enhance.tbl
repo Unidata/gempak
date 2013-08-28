@@ -10,17 +10,19 @@
 !    T. Piper/GSC	 2/98	Added rad_gray8 & rad_gray16
 !    J. Carr/HPC	 5/98	Added watvap2
 !    J. Partain/MPC	12/98   Added ssmi_mpc
-!    J. Carr/HPC        02/01   Added goes_dpw
-!  m.gamazaychikov/SAIC 06/03	changed ssmi_mpc to ssmi_opc
-! T. Piper/SAIC		03/06	Added gdp*, micro*, and ssmiwind
-! S. Jacobs/NCEP	12/10	Added ssmiwnd_hi, tpw_cira, tpwpct_cira
-! S. Jacobs/NCEP	12/10	Added omiai and omiso2
+!    J. Carr/HPC	02/01   Added goes_dpw
+!    m.gamazaychikov/SAIC 06/03	changed ssmi_mpc to ssmi_opc
+!    T. Piper/SAIC	03/06	Added gdp*, micro*, and ssmiwind
+!    S. Jacobs/NCEP	12/10	Added ssmiwnd_hi, tpw_cira, tpwpct_cira
+!    S. Jacobs/NCEP	12/10	Added omiai and omiso2
+!    F. Achorn/OPC	10/11	Added RGB product enhancements
 !
 !image_type    lutfile_name 
 	1	gdpicape
 	1	gdpicinh
 	1	gdpili
 	1	gdpipw
+	1	ir_bd
 	1	ir_drgb
 	1	ir_nmc
 	1	ir_rgbv
@@ -50,6 +52,13 @@
 	1	omiai
 	1	omiso2
 	1	gray
+	1	airmass
+	1	dust
+	1	natural
+	1	daystrm
+	1	dymicro
+	1	ntmicro
+	1	snowfog	
 	2	nids_ref8
 	2	nids_ref16
 	2	nids_pre
@@ -62,11 +71,11 @@
 	2	nids_rsher
 	2	nids_swid
 	2	nids_wecho
-	2 	osf_ref8
-	2 	osf_ref16
-	2 	rad_gray8
-	2 	rad_gray16
-	2 	wsi_mosaic
+	2	osf_ref8
+	2	osf_ref16
+	2	rad_gray8
+	2	rad_gray16
+	2	wsi_mosaic
 !
 ! Unidata Additions
         1       upc_t_r_s

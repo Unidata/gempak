@@ -31,94 +31,10 @@ C* m. gamazaychikov/CWS 04/11   Add code for A2DB connectivity          *
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 	INCLUDE		'dmcmn.cmn'
-	INCLUDE		'dbcmn.cmn'
 C
 	CHARACTER*(*)	prtnam, prmnam (*)
 	INTEGER		iscale (*), ioffst (*), nbits (*)
-C
-        CHARACTER*4     mandpp (6), sigtpp (3), sigwpp (3), troppp (5),
-     +                  maxwpp (3)
-        DATA            mandpp  / 'PRES', 'TEMP', 'DWPT',
-     +                            'DRCT', 'SPED', 'HGHT' /
-        DATA            sigtpp  / 'PRES', 'TEMP', 'DWPT' /
-        DATA            sigwpp  / 'HGHT', 'DRCT', 'SPED' /
-        DATA            troppp  / 'PRES', 'TEMP', 'DWPT',
-     +                            'DRCT', 'SPED' /
-        DATA            maxwpp  / 'PRES', 'DRCT', 'SPED' /
 C-----------------------------------------------------------------------
-C*      For A2DB requests - set needed common block info.
-C
-        IF ( dbread ) THEN
-C
-C*         Get parameter list from packing file 
-C
-           IF ( INDEX(dbdatasrc,'metar') .gt. 0 .or.
-     +          INDEX(dbdatasrc,'synop') .gt. 0 ) THEN 
-              lenhdr = 1
-              ityprt = 4
-              CALL IN_PRMF  ( dbprmfile, nparms, prmnam, iscale,
-     +                        ioffst, nbits, pkflg, ier )
-              IF ( ier .eq. 0 ) THEN 
-                 iret = 0
-              ELSE 
-                 iret = ier
-                 RETURN
-              END IF
-           ELSE IF ( INDEX(dbdatasrc,'bufrua') .gt. 0 .and.
-     +               prtnam .eq. 'SNDT' ) THEN 
-              iret = -4
-           ELSE IF ( INDEX(dbdatasrc,'bufrua') .gt. 0 .and. 
-     +               prtnam .ne. 'SNDT' ) THEN 
-              lenhdr = 1
-              ityprt = 4
-              IF ( prtnam .eq. 'TTCC' .or. prtnam .eq. 'TTAA' ) THEN
-                 nparms = 6
-                 DO iparm = 1, nparms
-                    prmnam (iparm) = mandpp (iparm)
-                 END DO
-              ELSE IF (prtnam .eq. 'TRPC' .or. prtnam .eq. 'TRPA' ) THEN
-                 nparms = 5
-                 DO iparm = 1, nparms
-                    prmnam (iparm) = troppp (iparm)
-                 END DO
-              ELSE IF (prtnam .eq. 'MXWC' .or. prtnam .eq. 'MXWA' ) THEN
-                 nparms = 3
-                 DO iparm = 1, nparms
-                    prmnam (iparm) = maxwpp (iparm)
-                 END DO
-              ELSE IF (prtnam .eq. 'PPCC' .or. prtnam .eq. 'PPCA' ) THEN
-                 DO  i = 1, 3
-                    ii = i + 2
-                    IF ( i . eq. 1 ) ii = i
-                    prmnam (i) = mandpp (ii)
-                 END DO
-                 nparms = i
-              ELSE IF (prtnam .eq. 'TTDD' .or. prtnam .eq. 'TTBB' ) THEN
-                 nparms = 3
-                 DO iparm = 1, nparms
-                    prmnam (iparm) = sigtpp (iparm)
-                 END DO
-              ELSE IF (prtnam .eq. 'PPDD' .or. prtnam .eq. 'PPBB' ) THEN
-                 nparms = 3
-                 DO iparm = 1, nparms
-                    prmnam (iparm) = sigwpp (iparm)
-                 END DO
-              END IF
-              iret = 0
-           ELSE IF ( INDEX(dbdatasrc,'grid') .gt. 0 ) THEN 
-              lenhdr = 128
-              ityprt = 5
-              nparms = 1
-              prmnam(1) = 'GRID'
-              gridtmdb = .true.
-              igdtim = 1
-              DO ii = 1, 200
-                 dbtimes(ii) = ''
-              END DO
-           END IF
-           RETURN
-        END IF
-C
 C*	Check that the file is open.
 C
 	CALL DM_CHKF  ( iflno, iret )

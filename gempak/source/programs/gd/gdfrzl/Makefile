@@ -53,7 +53,6 @@ programs_nc:
 
 $(ALIB): $(LOBJS) $(COBJS)
 	$(AR) $(ARFLAGS) $@ *.o
-	$(RM) *.o
 
 .c.a :
 	$(CC) $(CFLAGS) -c $<

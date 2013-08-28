@@ -34,6 +34,7 @@ C* T. Lee/SAIC		12/04	Removed crtmem; added mbrnum to NFILE;	*
 C*				added iensmb () to DGGRID		*
 C* T. Piper/SAIC	 6/05	Increased NDGRD from 40 to 80		*
 C* m.gamazaychikov/SAIC	09/05	Added nfargs array to DGTABL block	*
+C* S. Jacobs/NCEP	 4/13	Increased NDGRD from 80 to 128		*
 C************************************************************************
 	INCLUDE	'GEMPRM.PRM'
 C************************************************************************
@@ -41,7 +42,7 @@ C*  / DGGRID /								*
 C*									*
 C* This common area contains the internal grids of the DG package.	*
 C************************************************************************
-	PARAMETER	( NDGRD = 80 )
+	PARAMETER	( NDGRD = 128 )
 	CHARACTER	dttimd*20, gparmd*12
 	LOGICAL		savflg
 	COMMON  / DGGRID /	

@@ -1,0 +1,245 @@
+##############################################################################
+#
+# BUFR Table 0
+#
+# Notes
+# -----
+#
+# * This table comes from GRIB Code Table 0 (Identification of center)
+#
+# * A value of 1 in the first column indicates a center that uses minor
+#   version numbers with local tables.  Since minor local table version
+#   numbers are stored in Section 1, Octet 18, the value in the first
+#   column must not be set if a center uses Section 1, Octet 18 for other
+#   purposes (i.e., ECMWF).
+#
+##############################################################################
+
+# Generated: 2013/02/25 16:46:12
+#
+0	0	WMO Secretariat
+0	1	Melbourne
+0	2	Melbourne
+0	3	Melbourne
+0	4	Moscow
+0	5	Moscow
+0	6	Moscow
+0	7	U.S. National Weather Service, National Centres for Environmental Prediction (NCEP)
+0	8	U.S. National Weather Service Telecommunications Gateway (NWSTG)
+0	9	U.S. National Weather Service - Other
+0	10	Cairo (RSMC)
+0	11	Cairo (RSMC)
+0	12	Dakar (RSMC)
+0	13	Dakar (RSMC)
+0	14	Nairobi (RSMC)
+0	15	Nairobi (RSMC)
+0	16	Casablanca (RSMC)
+0	17	Tunis (RSMC)
+0	18	Tunis Casablanca (RSMC)
+0	19	Tunis Casablanca (RSMC)
+0	20	Las Palmas
+0	21	Algiers (RSMC)
+0	22	ACMAD
+0	23	Mozambique (NMC)
+0	24	Pretoria (RSMC)
+0	25	La Réunion (RSMC)
+0	26	Khabarovsk (RSMC)
+0	27	Khabarovsk (RSMC)
+0	28	New Delhi (RSMC)
+0	29	New Delhi (RSMC)
+0	30	Novosibirsk (RSMC)
+0	31	Novosibirsk (RSMC)
+0	32	Tashkent (RSMC)
+0	33	Jeddah (RSMC)
+0	34	Tokyo (RSMC), Japan Meteorological Agency
+0	35	Tokyo (RSMC), Japan Meteorological Agency
+0	36	Bangkok
+0	37	Ulan Bator
+0	38	Beijing (RSMC)
+0	39	Beijing (RSMC)
+0	40	Seoul
+0	41	Buenos Aires (RSMC)
+0	42	Buenos Aires (RSMC)
+0	43	Brasilia (RSMC)
+0	44	Brasilia (RSMC)
+0	45	Santiago
+0	46	Brazilian Space Agency ­ INPE
+0	47	Colombia (NMC)
+0	48	Ecuador (NMC)
+0	49	Peru (NMC)
+0	50	Venezuela (NMC)
+0	51	Miami (RSMC)
+0	52	Miami (RSMC), National Hurricane Center
+0	53	Montreal (RSMC)
+0	54	Montreal (RSMC)
+0	55	San Francisco
+0	56	ARINC Centre
+0	57	U.S. Air Force Global Weather Central
+0	58	Fleet Numerical Meteorology and Oceanography Center, Monterey, CA, USA
+0	59	NOAA Forecast Systems Laboratory, Boulder, CO, USA
+0	60	United States National Centre for Atmospheric Research (NCAR)
+0	61	Service ARGOS - Landover
+0	62	U.S. Naval Oceanographic Office
+0	63	International Research Institute for Climate and Society (IRI)
+0	64	Honolulu (RSMC)
+0	65	Darwin (RSMC)
+0	66	Darwin (RSMC)
+0	67	Melbourne (RSMC)
+0	69	Wellington (RSMC)
+0	70	Wellington (RSMC)
+0	71	Nadi (RSMC)
+0	72	Singapore
+0	73	Malaysia (NMC)
+0	74	UK Meteorological Office, Exeter (RSMC)
+0	75	UK Meteorological Office, Exeter (RSMC)
+0	76	Moscow (RSMC)
+0	78	Offenbach (RSMC)
+0	79	Offenbach (RSMC)
+0	80	Rome (RSMC)
+0	81	Rome (RSMC)
+0	82	Norrköping
+0	83	Norrköping
+0	84	Toulouse (RSMC)
+0	85	Toulouse (RSMC)
+0	86	Helsinki
+0	87	Belgrade
+0	88	Oslo
+0	89	Prague
+0	90	Episkopi
+0	91	Ankara
+0	92	Frankfurt/Main
+0	93	London (WAFC)
+0	94	Copenhagen
+0	95	Rota
+0	96	Athens
+0	97	European Space Agency (ESA)
+0	98	European Centre for Medium-Range Weather Forecasts (ECMWF)
+0	99	De Bilt
+0	100	Brazzaville
+0	101	Abidjan
+0	102	Libyan Arab Jamahiriya (NMC)
+0	103	Madagascar (NMC)
+0	104	Mauritius (NMC)
+0	105	Niger (NMC)
+0	106	Seychelles (NMC)
+0	107	Uganda (NMC)
+0	108	Tanzania (NMC)
+0	109	Zimbabwe (NMC)
+0	110	Hong-Kong, China
+0	111	Afghanistan (NMC)
+0	112	Bahrain (NMC)
+0	113	Bangladesh (NMC)
+0	114	Bhutan (NMC)
+0	115	Cambodia (NMC)
+0	116	Democratic People's Republic of Korea (NMC)
+0	117	Islamic Republic of Iran (NMC)
+0	118	Iraq (NMC)
+0	119	Kazakhstan (NMC)
+0	120	Kuwait (NMC)
+0	121	Kyrgyzstan (NMC)
+0	122	Lao People's Democratic Republic (NMC)
+0	123	Macao, China
+0	124	Maldives (NMC)
+0	125	Myanmar (NMC)
+0	126	Nepal (NMC)
+0	127	Oman (NMC)
+0	128	Pakistan (NMC)
+0	129	Qatar (NMC)
+0	130	Republic of Yemen (NMC)
+0	131	Sri Lanka (NMC)
+0	132	Tajikistan (NMC)
+0	133	Turkmenistan (NMC)
+0	134	United Arab Emirates (NMC)
+0	135	Uzbekistan (NMC)
+0	136	Socialist Republic of Viet Nam (NMC)
+0	140	Bolivia (NMC)
+0	141	Guyana (NMC)
+0	142	Paraguay (NMC)
+0	143	Suriname (NMC)
+0	144	Uruguay (NMC)
+0	145	French Guyana
+0	146	Brazilian Navy Hydrographic Centre
+0	147	COmision Nacional de Actividades Espaciales (CONAE) - Argentina
+0	150	Antigua and Barbuda (NMC)
+0	151	Bahamas (NMC)
+0	152	Barbados (NMC)
+0	153	Belize (NMC)
+0	154	British Caribbean Territories Centre
+0	155	San Jose
+0	156	Cuba (NMC)
+0	157	Dominica (NMC)
+0	158	Dominican Republic (NMC)
+0	159	El Salvador (NMC)
+0	160	U.S. NOAA/NESDIS
+0	161	U.S. NOAA Office of Oceanic and Atmospheric Research
+0	162	Guatemala (NMC)
+0	163	Haiti (NMC)
+0	164	Honduras (NMC)
+0	165	Jamaica (NMC)
+0	166	Mexico
+0	167	Netherlands Antilles and Aruba (NMC)
+0	168	Nicaragua (NMC)
+0	169	Panama (NMC)
+0	170	Saint Lucia (NMC)
+0	171	Trinidad and Tobago (NMC)
+0	172	French Departments in RA IV
+0	173	U.S. National Aeronautics and Space Administration (NASA)
+0	174	Integrated System Data Management/Marine Environmental Data Service (ISDM/MEDS - Canada)
+0	176	U.S. Cooperative Institute for Meteorological Satellite Studies (CIMSS)
+0	177	U.S. NOAA National Ocean Service
+0	190	Cook Islands (NMC)
+0	191	French Polynesia (NMC)
+0	192	Tonga (NMC)
+0	193	Vanuatu (NMC)
+0	194	Brunei (NMC)
+0	195	Indonesia (NMC)
+0	196	Kiribati (NMC)
+0	197	Federated States of Micronesia (NMC)
+0	198	New Caledonia (NMC)
+0	199	Niue
+0	200	Papua New Guinea (NMC)
+0	201	Philippines (NMC)
+0	202	Samoa (NMC)
+0	203	Solomon Islands (NMC)
+0	204	National Institute of Water and Atmospheric Research  (NIWA – New Zealand)
+0	210	Frascati (ESA/ESRIN)
+0	211	Lannion
+0	212	Lisboa
+0	213	Reykiavik
+0	214	Madrid
+0	215	Zürich
+0	216	Service ARGOS Toulouse
+0	217	Bratislava
+0	218	Budapest
+0	219	Ljubljana
+0	220	Warsaw
+0	221	Zagreb
+0	222	Albania (NMC)
+0	223	Armenia (NMC)
+0	224	Austria (NMC)
+0	225	Azerbaijan (NMC)
+0	226	Belarus (NMC)
+0	227	Belgium (NMC)
+0	228	Bosnia and Herzegovina (NMC)
+0	229	Bulgaria (NMC)
+0	230	Cyprus (NMC)
+0	231	Estonia (NMC)
+0	232	Georgia (NMC)
+0	233	Dublin
+0	234	Israel (NMC)
+0	235	Jordan (NMC)
+0	236	Latvia (NMC)
+0	237	Lebanon (NMC)
+0	238	Lithuania (NMC)
+0	239	Luxembourg
+0	240	Malta (NMC)
+0	241	Monaco
+0	242	Romania (NMC)
+0	243	Syrian Arab Republic (NMC)
+0	244	The former Yugoslav Republic of Macedonia (NMC)
+0	245	Ukraine (NMC)
+0	246	Republic of Moldova (NMC)
+0	247	Operational Programme for the Exchange of weather RAdar information (OPERA) - EUMETNET
+0	250	COnsortium for Small scale MOdelling  (COSMO)
+0	254	EUMETSAT Operation Centre
+0	255	Missing value

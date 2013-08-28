@@ -5,13 +5,14 @@
 !
 !!
 ! Log:
-! B. Yin/SAIC	03/04	Created
-! B. Yin/SAIC	04/04	Changed advisory type and severity
-!			Corrected a typo
-! B. Yin/SAIC	05/04	Changed the order of the basin menu
-! B. Yin/SAIC	12/04	Added time zone
-! B. Yin/SAIC	04/05	Modified the last entry of issue status
-! B. Yin/SAIC	04/05	Changed the order of issue status
+! B. Yin/SAIC		03/04	Created
+! B. Yin/SAIC		04/04	Changed advisory type and severity
+!				Corrected a typo
+! B. Yin/SAIC		05/04	Changed the order of the basin menu
+! B. Yin/SAIC		12/04	Added time zone
+! B. Yin/SAIC		04/05	Modified the last entry of issue status
+! B. Yin/SAIC		04/05	Changed the order of issue status
+! S. Jacobs/NCEP	 3/13	Added Post-Tropical Cyclone
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !
 !	'Issuing Status' option menu
@@ -23,6 +24,7 @@ IssuingStatus	Experimental;Test;Operational;Experimental Operational;
 !
 StormType	Hurricane;Tropical Storm;Tropical Depression
 StormType	Subtropical Storm;Subtropical Depression
+StormType	Post-Tropical Cyclone
 !-----------------------------------------------------------------------------------
 !
 !	'Basin' option menu

@@ -13,7 +13,7 @@ Panel_str Mpanel;
 Boolean	  MpanelMode = 0;
 
 Boolean       ValidTimeSet;
-char          ValidTimeString[50][15];
+char          ValidTimeString[500][15];
 
 Widget rowText, colText, MpanelBb, MpanelSelFm, MultipanelFrame, MpanelRc;
 

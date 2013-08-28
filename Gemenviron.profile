@@ -16,8 +16,7 @@
 #  Please configure the following definitions to reflect your system:
 #
 # Top level directory:
-NAWIPS=/home/gempak/GEMPAK6.8.0
-GARPHOME=/home/gempak/openGARP
+NAWIPS=/home/gempak/GEMPAK6.10
 #
 # Make sure NAWIPS directory exists
 #
@@ -34,11 +33,6 @@ export NAWIPS
 # data sets, such as case studies. In those cases, creating
 # a ntl.case startup script which sets those local environmental variables
 # is generally the best solution.
-#
-export GARPHOME
-GARP_PATH=$GARPHOME/config
-export GARP_PATH
-#
 #
 # Uncomment the following lines for using GCC compilers (Solaris/HP only)
 # USEGCC_SOL=1

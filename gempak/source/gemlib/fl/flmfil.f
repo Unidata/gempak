@@ -49,6 +49,7 @@ C* m.gamazaychikov/SAIC 12/04   Added ion flag to CTB_DTGET CS          *
 C* m.gamazaychikov/SAIC 01/06   Changed tmplt string length to MXTMPL   *
 C* m.gamazaychikov/SAIC 04/06   Added idtmch flag to CTB_DTGET CS      	*
 C* F. J. Yen/NCEP   	 4/08   Added bin mins & mstrct to CTB_DTGET CSC*
+C* S. Jacobs/NCEP	 6/13	Added check for AWIPSDB aliases		*
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 C*
@@ -84,7 +85,7 @@ C
 	CALL CTB_DTGET ( fnull, rpath, tmplt, ic, is, if, ir, ii, ion, 
      +			 ihb, mnb, iha, mna, mstrct, idtmch, ier )
 	IF ( ier .ne. 0 )  found = .false. 
-	CALL ST_RNUL ( rpath, rpath, lens, ier )
+	CALL ST_RNUL ( rpath, rpath, lenr, ier )
 	CALL ST_RNUL ( tmplt, tmplt, lens, ier )
 C
 	IF  ( .not. found )  THEN
@@ -94,6 +95,14 @@ C
 	    filnam = filtyp
 C
 	ELSE
+C
+C*	    If the alias refers to the AWIPS Database, set the file name
+C*	    and return.
+C
+	    IF  ( rpath .eq. 'AWIPSDB' )  THEN
+		filnam = rpath(:lenr) // '/' // tmplt
+		RETURN
+	    END IF
 C
 C*	    If dattim is blank, get the system time.
 C

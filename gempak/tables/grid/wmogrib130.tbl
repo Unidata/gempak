@@ -80,7 +80,7 @@
 !069 Main thermocline depth            m                    MTHDP            0  -9999.00       0         0
 !070 Main thermocline anomaly          m                    MTHAN            0  -9999.00       0         0
 !											        
-071 Total cloud cover                 %                     TCLD             0  -9999.00       0         0
+071 Total cloud cover                 %                    TCLD             0  -9999.00       0         0
 !072 Convective cloud cover            %                    CCLD             0  -9999.00       0         0
 !073 Low cloud cover                   %                    CLDL             0  -9999.00       0         0
 !074 Medium cloud cover                %                    CLDM             0  -9999.00       0         0
@@ -101,7 +101,7 @@
 !088 Salinity                          kg kg**-1            SLTY             0  -9999.00       0         0
 !089 Density                           kg m**-3             DNTY             0  -9999.00       0         0
 090 Water runoff                      kg m**-2             RNOF             0  -9999.00       0         0
-!											       0         0
+!
 091 Ice concent (1=ice,0=no ice)      1,0                  ICE              0  -9999.00        0         0
 !092 Ice thickness                     m                    ICET             0  -9999.00       0         0
 !093 Direction of ice drift            Degree true          DRCTI            0  -9999.00       0         1

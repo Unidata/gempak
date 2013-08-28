@@ -1,7 +1,5 @@
-GEMPARM=$GEMPAK/parm
-export GEMPARM
-GEMPTXT=$GEMPAK/txt/programs
-export GEMPTXT
+export GEMPARM=$GEMPAK/parm
+export GEMPTXT=$GEMPAK/txt/programs
 
 hlpbld $GEMHLP/hlp BFR2GP
 ##########################

@@ -37,6 +37,8 @@ FOBJS = \
 	$(ALIB)(ggdltn.o) \
 	$(ALIB)(ggdmap.o) \
 	$(ALIB)(ggency.o) \
+	$(ALIB)(ggedr.o) \
+	$(ALIB)(ggedrp.o) \
 	$(ALIB)(ggfaxs.o) \
 	$(ALIB)(ggffa.o) \
 	$(ALIB)(gggairm.o) \

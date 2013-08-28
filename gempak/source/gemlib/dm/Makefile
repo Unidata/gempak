@@ -37,7 +37,6 @@ FOBJS = \
 	$(ALIB)(dmfspc.o) \
 	$(ALIB)(dmfwrt.o) \
 	$(ALIB)(dmgetf.o) \
-	$(ALIB)(dmgetgnav.o) \
 	$(ALIB)(dmggpm.o) \
 	$(ALIB)(dmgspc.o) \
 	$(ALIB)(dmgtim.o) \

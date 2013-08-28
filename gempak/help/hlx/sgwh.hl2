@@ -7,8 +7,8 @@
        Data type | End time | Height intervals | colors | Skip |
        Time stamp interval | Time stamp color 
 
-     The data type is a selection to plot SGWH (Jason-1), SGWHC (CryoSat),      
-     SGWHE (Envisat), SGWHG (GFO), or SGWH2 (Jason-2). 
+     The data type is a selection to plot SGWH (Jason-1), SGWHA (Altika), 
+     SGWHC (CryoSat), SGWHE (Envisat), SGWHG (GFO), or SGWH2 (Jason-2). 
 
      The ending time is the latest time for which SGWH data will be plotted. 
      The ending time is given as a GEMPAK date/time string.  Any missing items

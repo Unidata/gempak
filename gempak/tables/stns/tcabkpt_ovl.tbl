@@ -10,6 +10,7 @@
 ! M. Mainelli/TPC       03/08   BKPT updates for 2007 and 2008
 ! C. Lauer/NHC           4/09   Updated for 2009 Season
 ! M. Brennan/NHC         1/12   Updated for 2012 Season
+! M. Brennan/NHC        12/12   Updated for 2013 Season
 !
 !STID    STNM   NAME                             ST CO   LAT    LON  ELV PRI TBCHRS  
 !(8)     (6)    (32)                            (2)(2)   (5)    (6)   (5)(2)   (20)
@@ -46,15 +47,14 @@ INDIAN_P 102500 Indian_Pass                      FL US  2968  -8527     0 10
 APALACHI 102600 Apalachicola                     FL US  2973  -8499     0 10
 OCHLOC_R 102700 Ochlockonee_River                FL US  2996  -8438     0 10
 ST_MARKS 102800 St_Marks                         FL US  3010  -8420     0 10
-AUCILL_R 102900 Aucilla_River                    FL US  3004  -8392     0 10
+AUCILL_R 102900 Aucilla_River                    FL US  3009  -8399     0 10
 KEATON_B 102930 Keaton_Beach                     FL US  2982  -8359     0 10
 STEINH_R 103000 Steinhatchee_River               FL US  2967  -8340     0 10
 SUWANN_R 103100 Suwannee_River                   FL US  2930  -8317     0 10
 YANKEETO 103200 Yankeetown                       FL US  2903  -8275     0 10
 CHASSAHO 103310 Chassahowitzka                   FL US  2870  -8265     0 10
 ARIPEKA  103325 Aripeka                          FL US  2843  -8266     0 10
-ANCLO_KY 103400 Anclote_Key                      FL US  2818  -8285     0 10
-TARPON_S 103500 Tarpon_Springs                   FL US  2815  -8279     0 10
+ANCLO_RI 103400 Anclote_River                    FL US  2818  -8280     0 10
 A._M._IS 103600 Anna_Maria_Island                FL US  2753  -8273     0 10
 LONGB_KY 103700 Middle_of_Longboat_Key           FL US  2739  -8264     0 10
 ENGLEWOO 103800 Englewood                        FL US  2694  -8237     0 10
@@ -79,6 +79,7 @@ VALU_BRE 106110 Volusia_Brevard_County_Line      FL US  2879  -8073     0 10
 NEW_SM_B 106200 New_Smyrna_Beach                 FL US  2903  -8089     0 10
 FLAGLE_B 106300 Flagler_Beach                    FL US  2947  -8112     0 10
 ST_AUGUS 106400 St_Augustine                     FL US  2988  -8127     0 10
+PONTE_VE 106440 Ponte_Vedra_Beach                FL US  3024  -8138     0 10
 FERNAN_B 106500 Fernandina_Beach                 FL US  3066  -8144     0 10
 ALTAMAHA 106600 Altamaha_Sound                   GA US  3129  -8129     0 10
 SAVANNAH 106700 Savannah_River                   GA US  3203  -8086     0 10

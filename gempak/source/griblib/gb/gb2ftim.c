@@ -62,9 +62,11 @@ void gb2_ftim ( gribfield *gfld, char *gdattm, int *iaccm, int *iret )
 	    case 5:
 	    case 6:
 	    case 7:
+	    case 15:
 		    iafgi = 1;
             ifcst = gb2_fcsm((int)gfld->ipdtmpl[8],(int)gfld->ipdtmpl[7]);
 		    break;
+
 	    case 8:
 	    case 9:
 	    case 10:
@@ -108,6 +110,7 @@ void gb2_ftim ( gribfield *gfld, char *gdattm, int *iaccm, int *iret )
             ti_mdif(iend,istart,iaccm,&ier);
             *iaccm = *iaccm / 60;
 		    break;
+
 	    default:
 		    iafgi = 0;
 		    ifcst = 0;

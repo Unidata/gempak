@@ -36,7 +36,8 @@ void mkieee(g2float *a,g2int *rieee,g2int num)
 {
 
       g2int  j,n,ieee,iexp,imant;
-      double  alog2,atemp, flrtmp;
+      double  alog2,atemp;
+      //double  flrtmp;
 
       static double  two23,two126;
       static g2int test=0;
@@ -76,8 +77,20 @@ void mkieee(g2float *a,g2int *rieee,g2int num)
 //
 //  Determine exponent n with base 2
 //
-        flrtmp=floor(log(atemp)/alog2);
-        n=(g2int)flrtmp;
+	if ( atemp >= 1.0 ) {
+	    n = 0;
+	    while ( int_power(2.0,n+1) <= atemp ) {
+		n++;
+	    }
+	}
+	else {
+	    n = -1;
+	    while ( int_power(2.0,n) > atemp ) {
+		n--;
+	    }
+	}
+        //flrtmp=floor(log(atemp)/alog2);
+        //n=(g2int)flrtmp;
         iexp=n+127;
         if (n >  127) iexp=255;     // overflow
         if (n < -127) iexp=0;

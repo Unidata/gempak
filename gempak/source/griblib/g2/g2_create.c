@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "grib2.h"
 
 #define MAPSEC1LEN 13

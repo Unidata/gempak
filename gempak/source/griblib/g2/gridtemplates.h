@@ -28,10 +28,16 @@
 //   in this case would be the absolute value of the negative value in 
 //   mapgrid[].
 //  
+// PROGRAM HISTORY LOG:
+//
+// 2001-10-26  Gilbert
+// 2007-08-16  Vuong     -  Added GDT 3.204  Curvilinear Orthogonal Grid
+// 2008-07-08  Vuong     -  Added GDT 3.32768 Rot Lat/Lon E-grid (Arakawa)
+// 2010-05-11  Vuong     -  Added GDT 3.32769 Rotate Lat/Lon Non-E Staggered grid (Arakawa)
 //
 ////////////////////////////////////////////////////////////////////
 
-      #define MAXGRIDTEMP 23              /* maximum number of templates */
+      #define MAXGRIDTEMP 26              /* maximum number of templates */
       #define MAXGRIDMAPLEN 200           /* maximum template map length */
 
       struct gridtemplate
@@ -83,6 +89,12 @@
          {110, 16, 0, {1,1,4,1,4,1,4,4,4,-4,4,1,4,4,1,1} },
              // 3.120: Azimuth-range projection
          {120, 7, 1, {4,4,-4,4,4,4,1} },
+             // 3.204: Curvilinear Orthogonal Grid
+	 {204, 19, 0, {1,1,4,1,4,1,4,4,4,4,4,-4,4,1,-4,4,4,4,1} },
+	     // 3.32768: Rot Lat/Lon E-grid (Arakawa)
+         {32768, 19, 0, {1,1,4,1,4,1,4,4,4,4,4,-4,4,1,-4,4,4,4,1} },
+	     // 3.32769: Rot Lat/Lon Non-E Staggered grid (Arakawa)
+	 {32769, 21, 0, {1,1,4,1,4,1,4,4,4,4,4,-4,4,1,-4,4,4,4,1,4,4} },
              // 3.1000: Cross Section Grid
          {1000, 20, 1, {1,1,4,1,4,1,4,4,4,4,-4,4,1,4,4,1,2,1,1,2} },
              // 3.1100: Hovmoller Diagram Grid

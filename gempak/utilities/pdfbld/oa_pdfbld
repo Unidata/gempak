@@ -1,12 +1,11 @@
-GEMPARM=$GEMPAK/parm
-export GEMPARM
+export GEMPARM=$GEMPAK/parm
 
-pdfbld $GEMPAK/pdf OABOX
+pdfbld $GEMPDF OABOX
 ########################
-pdfbld $GEMPAK/pdf OABSFC
+pdfbld $GEMPDF OABSFC
 ########################
-pdfbld $GEMPAK/pdf OABSND
+pdfbld $GEMPDF OABSND
 ########################
-pdfbld $GEMPAK/pdf OAGRID
+pdfbld $GEMPDF OAGRID
 ########################
 echo ALL THE OA PDFs ARE BUILT.

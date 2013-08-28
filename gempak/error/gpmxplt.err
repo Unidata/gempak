@@ -1,0 +1,6 @@
+! This is the error file for GPMXPLT.
+!
+ -1     ! Fatal error initializing TAE.
+ -2     ! Fatal error reading TAE parameters.
+ -3     ! Fatal error initializing GPMXPLT.
+ -4     ! Fatal error computing area, there is a corner off the globe.

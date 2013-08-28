@@ -1,5 +1,5 @@
+#include <stdio.h>
 #include "grib2.h"
-
 
 g2int g2_addlocal(unsigned char *cgrib,unsigned char *csec2,g2int lcsec2)
 //$$$  SUBPROGRAM DOCUMENTATION BLOCK

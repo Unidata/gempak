@@ -1,6 +1,6 @@
 typedef struct {
         int     valid_tm_set;       /* Valid Time Set Using this Panel */
-        int	valid_tm_frames[50];
+        int	valid_tm_frames[500];
         } ValidTimeStr;
 
 typedef struct {

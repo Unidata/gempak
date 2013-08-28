@@ -1,6 +1,6 @@
+#include <stdio.h>
 #include <stdlib.h>
 #include "grib2.h"
-
 
 g2int jpcunpack(unsigned char *cpack,g2int len,g2int *idrstmpl,g2int ndpts,
                 g2float *fld)

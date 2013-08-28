@@ -65,33 +65,23 @@ int cfl_scandir ( const char *dir, const char *search,
  ***********************************************************************/
 {
     int iret, n_entries=0;
+
 /*---------------------------------------------------------------------*/
 
-   /*
-    * If the directory name contains A2DB get the directory content from
-    * db functions
-    */
-    if ( strstr (dir, "A2DB") != NULL ) {
-       if ( strstr (dir, "A2DB_CONF") != NULL ) {
-             n_entries = db_gFileNames ( search, namelist);
-       }
-    }
-    else {
-       css_envr(dir, _cflrdirPath, &iret);
-       if ( iret == G_NORMAL ) {
-	  if ( search != NULL ) {
-	      G_MALLOC(_cflrdirSchstr, char, strlen(search) + 1,
+    css_envr(dir, _cflrdirPath, &iret);
+    if ( iret == G_NORMAL ) {
+	if ( search != NULL ) {
+	    G_MALLOC(_cflrdirSchstr, char, strlen(search) + 1,
 				 "cfl_scandir:  _cflrdirSchstr");
-	      strcpy(_cflrdirSchstr, search);
-	  }
+	    strcpy(_cflrdirSchstr, search);
+	}
 #ifdef HPUX
-	  n_entries = scandir(_cflrdirPath, namelist, filter,
-	     (int(*)(const struct dirent **, const struct dirent **))compar);
+	n_entries = scandir(_cflrdirPath, namelist, filter,
+	(int(*)(const struct dirent **, const struct dirent **))compar);
 #else
-	  n_entries = scandir(_cflrdirPath, namelist, filter, compar);
+	n_entries = scandir(_cflrdirPath, namelist, filter, compar);
 #endif
-	  if ( _cflrdirSchstr != NULL ) G_FREE(_cflrdirSchstr, char);
-       }
+	if ( _cflrdirSchstr != NULL ) G_FREE(_cflrdirSchstr, char);
     }
     return(n_entries);
 }

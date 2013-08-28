@@ -1,0 +1,62 @@
+EDR
+
+EDR starts with the ending valid time for EDR data followed by corresponding
+colors for the EDR data over the time limit specified. EDR is broken down by
+the following sub-variables.
+
+  End time|height ranges/colors|time limit|edr ranges/colors|symbol blo 180/
+    symbol 180+|BegSize/EndSize|aoa180flag
+  
+The ending time is the latest time for which the EDR data will be plotted.
+The end time is given as a GEMPAK date/time string.
+
+The height range and colors may each be specified using a list separated by
+semicolons.  Height ranges are in hundreds of feet, separated by a "dash".
+The number of height ranges must be the same as the number of colors.  Plotting
+is up to the time limit specified in minutes.
+
+The EDR ranges and colors may each be specified using a list separated by
+semicolons.  EDR values are specified as real numbers ranging from 0 to 1.0
+(units= m^(2/3)sec(-1)). The number of EDR values must be the same as the 
+number of colors.
+
+The symbol number section references marker numbers to use for plotting 
+significant EDR values greater than the first EDR number threshold.   If two
+symbol numbers are specified separated by a slant, the first number is
+referenced to plot symbols for EDR values measure below FL180, with the
+second number referenced for symbols at or above FL180.  If one symbol number
+is specified, it is used for all EDR values above, equal to and below
+FL180.
+
+The BegSize is the lower sized threshold for the first significant EDR value
+plotted, and should be specified as a real number.  
+
+The EndSize is the upper sized threshold for the last significant EDR value
+plotted and is specified as a real number. Intermediary EDR value markers will 
+be scaled between the BegSize and EndSize values.
+
+If BegSize and EndSize are omitted, the default marker size for all markers
+plotted would be set to 1.0.
+
+The aoa180flag is used to cause gempak to plot EDR values at or above FL180
+only.  If set to 1, the EDR values below FL180 will be filtered out.
+
+Examples:
+
+  EDR = 121023/1500|050;100;150;200;250;300;350;400;450/
+        12;2;17;19;22;23;24;27|30|0.1;0.2;0.3;0.4;0.8/24;26;21;17;14|
+        20/19|0.5/2.0|0
+
+        Tracking Information and EDR data for 121023/1430 to 121023/1500 will
+        be plotted (30 minutes time interval).  Heights of 0 to 45000
+        feet with various intermidiate heights will be plotted in colors of
+        pink, red, orange, yellow, green, dark green, navy blue, and
+        cyan.  EDR value exceeding the threshold values of 0.1, 0.2, 0.3,
+        and 0.4 are plotted in colors of blue, light green, orange and red,
+        using the symbol marker number 20 (a diamond) for flight
+        levels below FL180, and 19 (a square) for flight levels at or above
+        FL180. The size of the squares will range from 0.5 up to 2.0 for
+        increasing EDR values.  The aoa180flag is set to 0 to insure that
+        EDR for all flight levels is reported.
+
+

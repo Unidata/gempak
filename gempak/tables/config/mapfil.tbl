@@ -39,11 +39,13 @@
 ! A. Hardy/NCEP		 3/04	Added Marine zones/Counties
 ! J. Morgan/OPC		 8/04	Added 1000 Fathom Line
 ! T. Piper/SAIC		 4/06	Removed sigwx.ncp
+! G. Gallina/SAB         9/07   Added MWO lines
 ! G. Grosshans/SPC	 9/07	Added spcout.ncp
 ! m.gamazaychikov/SAIC	12/07	Added akdesk.ncp
 ! m.gamazaychikov/SAIC	07/08	Added corrne.ncp
 ! m.gamazaychikov/SAIC  11/08   Added vaacar.ncp
 ! G. Grosshans/SPC	01/10	Added Fire Weather PSA areas
+! S. Jacobs/NCEP	11/12	Added akarea.hpc
 !
 !-----------------------------------------------------------------------------
 !ALIAS       DESCRIPTION              MAP FILE NAME
@@ -116,10 +118,13 @@ timezone     US Time Zone, NWS        hitzus.nws
 artcc        ARTCC Areas              artcc.gsf
 spcotlkbnd   SPC OUTLOOK BOUNDS       spcout.ncp
 akdesk       Alaska desk              akdesk.ncp
+akarea       Alaska area of resp      akarea.hpc
 necorr       NE Corridor              corrne.ncp
 vaacar       VAAC areas               vaacar.ncp
 hiakpsa      Alaska PSA Areas         hiakpsa.nws
 hinpsa       US PSA Areas             hinpsa.nws
+mwo          MWO                      mwo.nws
+vaacar	     VAAC (all) Boundaries    vaacar.ncp
 !
 ! Unidata additions
 rdis         Interstates              rdis.uni

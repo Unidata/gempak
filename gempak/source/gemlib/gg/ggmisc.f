@@ -5,7 +5,8 @@
      +                       lclrwp, lclrww, lclrwr, lclraw, lclrar, 
      +                       lclren, enmodl, lclrff, lclr1k, lclrek, 
      +                       lclr2k, lclrow, lclror, lclsg1, lclsgc,
-     +                       lclsge, lclsgg, lclsg2, iret )
+     +                       lclsge, lclsgg, lclsg2, lclsga, lclwsa,
+     +                       iret )
 C************************************************************************
 C* GG_MISC                                                              *
 C*                                                                      *
@@ -18,7 +19,7 @@ C*	     LCLRAM, LCLRGAM, LCLRNC, LCLRSV, LCLRTC, LCLRWS, LCLRWO,   *
 C*           LCLROF, LCLRWU, LCLRUF, LCLCSG, LCLRQW, LCLRQR, LCLRWP,    *
 C*           LCLRWW, LCLRWR, LCLRAW, LCLRAR, LCLREN, ENMODL, LCLRFF,    *
 C*           LCLR1K, LCLREK, LCLR2K, LCLROW, LCLROR, LCLSG1, LCLSGC,    *
-C*           LCLSGE, LCLSGG, LCLSG2, IRET )		                *
+C*           LCLSGE, LCLSGG, LCLSG2, LCLSGA, LCLWSA, IRET )		*
 C*                                                                      *
 C* Input parameters:                                                    *
 C*      NUMC            INTEGER		Maximum number of colors/models *
@@ -68,6 +69,10 @@ C*	LCLSGG(*)	INTEGER		Color numbers for GFO        	*
 C*	                                significant wave height      	*
 C*	LCLSG2(*)	INTEGER		Color numbers for Jason-2    	*
 C*	                                significant wave height      	*
+C*	LCLSGA(*)	INTEGER		Color numbers for Altika     	*
+C*	                                significant wave height      	*
+C*	LCLWSA(*)	INTEGER		Color numbers for Altika     	*
+C*	                                windspeed		      	*
 C*      IRET            INTEGER         Return code                     *
 C*                                         0 = normal return            *
 C*                                                                      *
@@ -102,6 +107,8 @@ C* G. McFadden/IMSG	 9/10	Added LCLROW and LCLROR and alias OSCT	*
 C* G. McFadden/IMSG	 7/11	Added LCLSG1, LCLSGC, LCLSGE, LCLSGG,   *
 C* 				LCLSG2, and aliases SGWH, SGWHC, SGWHE, *
 C*                              SGWHG, SGWH2                            *
+C* G. McFadden/IMSG	 7/13	Added LCLSGA, LCLWSA, and aliases SGWHA *
+C*                              and WSPDA                               *
 C************************************************************************
         CHARACTER*(*)   atmodl (*),  enmodl (*)
 	INTEGER		lclrwt (*), lclrwn (*), lclrhn (*), lclris (*),
@@ -112,9 +119,10 @@ C************************************************************************
      +                  lclrww(*), lclrwr(*),  lclraw (*), lclrar (*), 
      +                  lclren (*), lclrff (*),lclr1k (*), lclrek (*), 
      +                  lclr2k (*), lclrow (*), lclror (*), lclsg1 (*),
-     +                  lclsgc (*), lclsge (*), lclsgg (*), lclsg2 (*)
+     +                  lclsgc (*), lclsge (*), lclsgg (*), lclsg2 (*),
+     +                  lclsga (*), lclwsa (*)
 C*
-	PARAMETER	( NUMALS = 29 )
+	PARAMETER	( NUMALS = 31 )
 C*
         CHARACTER       alias(NUMALS)*7, buffer*80, carr(2)*8, 
      +			type(numc)*20
@@ -127,7 +135,7 @@ C*
      +                          'WCP', 'ENS_CYC', 'FFA', 'WSAT', 'ASCT',
      +                          'TRAK1', 'TRAKE', 'TRAK2', 'OSCT',
      +                          'SGWH', 'SGWHC', 'SGWHE', 'SGWHG',
-     +                          'SGWH2' /
+     +                          'SGWH2', 'SGWHA', 'WSPDA' /
 C------------------------------------------------------------------------
         iret = 0
 C
@@ -171,6 +179,8 @@ C
  	    lclsge ( ii ) = 1
  	    lclsgg ( ii ) = 1
  	    lclsg2 ( ii ) = 1
+ 	    lclsga ( ii ) = 1
+ 	    lclwsa ( ii ) = 1
 	END DO
 C
 C*      Open table.
@@ -298,6 +308,16 @@ C
 		    CALL GG_ALIS ( lun, numc, ldum1, ldum, type, ier )
                     DO ii = 1, numc - 2
                         lclsg2 (ii) = ldum1 (ii + 2)
+                    END DO
+		  ELSE IF ( carr ( 2 ) .eq. alias ( 30 ) ) THEN
+		    CALL GG_ALIS ( lun, numc, ldum1, ldum, type, ier )
+                    DO ii = 1, numc - 2
+                        lclsga (ii) = ldum1 (ii + 2)
+                    END DO
+		  ELSE IF ( carr ( 2 ) .eq. alias ( 31 ) ) THEN
+		    CALL GG_ALIS ( lun, numc, ldum1, ldum, type, ier )
+                    DO ii = 1, numc - 2
+                        lclwsa (ii) = ldum1 (ii + 2)
                     END DO
 		  ELSE
 		    found = .false.

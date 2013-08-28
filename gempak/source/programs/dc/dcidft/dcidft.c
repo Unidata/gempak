@@ -31,6 +31,8 @@ int main ( int argc, char *argv[] )
  * m.gamazaychikov/SAIC 07/05   Added parameters to CS of dc_gopt       *
  * H. Zeng/SAIC		08/05	Added parameters to CS of dc_gopt	*
  * L. Hinson/AWC        06/08   Added circflg parameter to dc_gopt      *
+ * S. Jacobs/NCEP	 5/13	Increased the number of stations from	*
+ * 				500 to 1200				*
  ***********************************************************************/
 {
 
@@ -51,7 +53,7 @@ int main ( int argc, char *argv[] )
 	char	*defprm = "idft.pack";
 	char	*defstn = "idft.tbl";
 	char	*dfstn2 = " ";
-	int	idfadd  = 500;
+	int	idfadd  = 1200;
 	int	idfmax  = 24;
 	int	ndfhr1  = 24;
 	int	ndfhr2  = 24;		

@@ -31,7 +31,6 @@
 !2345678X12345678X123456X1234567X12345678X123.12X12345678901234567890
 ! Used for the UNISYS data feed.
 LOCAL    BREF         19      16 DBZ        1.00 BASE_REFL_1KM_TILT
-LOCAL    BREF256      94     256 DBZ        1.00 BASE_REFL_1KM_TILT
 LOCAL    BREF         20      16 DBZ        2.00 BASE_REFL_2KM_TILT
 LOCAL    VEL          27      16 KNOTS      1.00 RAD_VEL_1KM_TILT
 LOCAL    CREFC        36       8 DBZ        4.00 COMP_REFL_CLR_4KM
@@ -45,6 +44,10 @@ LOCAL    PRCP1        78      16 INCHES     2.00 PRECIP_1HR
 LOCAL    PRCP3        79      16 INCHES     2.00 PRECIP_3HR
 LOCAL    PRCPT        80      16 INCHES     2.00 PRECIP_TOTAL
 LOCAL    LMRF3        90       8 DBZ        4.00 LYR_MAX_REFL3
+LOCAL    BREF         94     256 DBZ        1.00 BASE_REFL_1KM_TILT
+LOCAL    VEL          99     256 KNOTS      0.25 RAD_VEL_.25KM_TILT
+LOCAL    VIL         134     256 KG/M**2    1.00 PREC_WATER
+LOCAL    TOPS        135     199 KFT        1.00 ECHO_TOPS_1KM
 !
 ! Used for data from other vendors.
 LOCAL    BREF         16       8 DBZ        1.00 BASE_REFL_1KM_TILT
@@ -86,12 +89,22 @@ LOCAL    DPA          81     256 mm         1.00 DIGITAL_PRECIP
 LOCAL    SHEAR        87      16 1/S        2.00 COMB_SHEAR
 LOCAL    LARF3        89       8 DBZ        4.00 LYR_AVG_REFL3
 !------------------------------------------------------------------------
+! Used for the UNISYS data feed.
+ALASKA   CREF         30      16 DBZ        4.00 COMP_REFL_4KM
+ALASKA   PRCP1        89      16 INCHES     2.00 PRECIP_1HR_2KM
+ALASKA   PRCP1        90      16 INCHES     4.00 PRECIP_1HR_4KM
+ALASKA   TOPS         95      16 KFT        4.00 ECHO_TOPS_4KM
+ALASKA   PRCPC       101      16 INCHES     4.00 PRECIP_CMLTV_4KM
+ALASKA   PRCP24      102      16 INCHES     4.00 PRECIP_24HR_4KM
+ALASKA   PRCPC       105      16 INCHES     2.00 PRECIP_CMLTV_2KM
+ALASKA   PRCP24      106      16 INCHES     2.00 PRECIP_24HR_2KM
+ALASKA   BREF        137      16 DBZ        2.00 BASE_REFL_NFLT_2KM
+ALASKA   BREF        138      16 DBZ        2.00 BASE_REFL_NFLTC_2KM
+ALASKA   BREF        139      16 DBZ        1.00 BASE_REFL_1KM
+ALASKA   BREF        140      16 DBZ        2.00 BASE_REFL_2KM
+ALASKA   VIL         148      16 KG/M**2    4.00 PREC_WATER_4KM
 ! HD lvl3 
-LOCAL    BREF256      94     256 DBZ        1.00 DIGITAL_REFLECTIVITY
-LOCAL    VEL          99     256 KNOTS      0.25 DIGITAL_VELOCITY
-LOCAL    VIL         134     256 KG/M**2    1.00 PREC_WATER
-LOCAL    TOPS        135     199 KFT        1.00 ECHO_TOPS
-LOCAL    BREF256     138     256 mm         1.00 DIGITAL_STORM_PRECIP
+LOCAL    BREF        138     256 mm         1.00 DIGITAL_STORM_PRECIP
 !LOCAL    BREFT       181      16 DBZ        0.15 TDWF_REFLECTIVITY
 LOCAL    BREFT       181      16 DBZ    0.148147 TDWR_REFLECTIVITY
 LOCAL    BVELT       182     256 KNOTS  0.148147 TDWR_VELOCITY
@@ -101,6 +114,20 @@ LOCAL    BREFT       187      16 DBZ    0.296296 TDWR_REFLECTIVITY
 NATIONAL CREFW       190      16 DBZ        1.00 COMP_REFL_WSR-88D 
 NATIONAL CREFT       191      16 DBZ        1.00 COMP_REFL_TDWR
 !------------------------------------------------------------------------
+! Used for the UNISYS data feed.
+HAWAII   CREF         30      16 DBZ        4.00 COMP_REFL_4KM
+HAWAII   PRCP1        89      16 INCHES     2.00 PRECIP_1HR_2KM
+HAWAII   PRCP1        90      16 INCHES     4.00 PRECIP_1HR_4KM
+HAWAII   TOPS         95      16 KFT        4.00 ECHO_TOPS_4KM
+HAWAII   PRCPC       101      16 INCHES     4.00 PRECIP_CMLTV_4KM
+HAWAII   PRCP24      102      16 INCHES     4.00 PRECIP_24HR_4KM
+HAWAII   PRCPC       105      16 INCHES     2.00 PRECIP_CMLTV_2KM
+HAWAII   PRCP24      106      16 INCHES     2.00 PRECIP_24HR_2KM
+HAWAII   BREF        137      16 DBZ        2.00 BASE_REFL_NFLT_2KM
+HAWAII   BREF        138      16 DBZ        2.00 BASE_REFL_NFLTC_2KM
+HAWAII   BREF        139      16 DBZ        1.00 BASE_REFL_1KM
+HAWAII   BREF        140      16 DBZ        2.00 BASE_REFL_2KM
+HAWAII   VIL         148      16 KG/M**2    4.00 PREC_WATER_4KM
 ! Dual-Pol lvl2
 LOCAL    DIFF_REF    159     256 DB         0.25 DIFFERENTIAL_REFLECTIITY 
 LOCAL    CORR_COEF   161     256 CC         0.25 DIGITAL_CORRELATION_COEF 
@@ -168,6 +195,9 @@ REGIONAL BREF        138      16 DBZ        2.00 BASE_REFL_NFLTC_2KM
 REGIONAL BREF        139      16 DBZ        1.00 BASE_REFL_1KM
 REGIONAL BREF        140      16 DBZ        2.00 BASE_REFL_2KM
 REGIONAL BREF        141      16 DBZ        4.00 BASE_REFL_4KM
+!
+NATIONAL CREFW       190      16 DBZ        1.00 COMP_REFL_WSR-88D 
+NATIONAL CREFT       191      16 DBZ        1.00 COMP_REFL_TDWR
 !------------------------------------------------------------------------
 ! Other products for identification only (not necessarily images)
 LOCAL    RCM          74       0 NONE       0.00 RADAR_CODED_MSG

@@ -23,6 +23,7 @@ void wclosp ( char *filnam, int *gfplot, int *iret )
  * S. Jacobs/NCEP	 1/02	Moved free of string			*
  * S. Danz/AWC   	11/03	Check if *gfplot is set, not the ptr    *
  *				Only attempt to free if Current is set  *
+ * S. Jacobs/NCEP	 7/13	Added file name to error output		*
  ***********************************************************************/
 {
 	char *space;
@@ -52,7 +53,8 @@ void wclosp ( char *filnam, int *gfplot, int *iret )
 
 	    outfile =  cfl_wopn ( Current->fname, &ier );
 	    if ( outfile == NULL ) {
-		printf ( " Cannot open output file.\n" );
+		printf ( " Error: %d - Cannot open output file: %s\n",
+		       	ier, Current->fname );
 		exit (-1);
 	    }
 

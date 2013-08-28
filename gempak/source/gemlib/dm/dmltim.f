@@ -25,22 +25,10 @@ C* m. gamazaychikov/CWS 04/11   Add code for A2DB connectivity          *
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 	INCLUDE		'dmcmn.cmn'
-	INCLUDE		'dbcmn.cmn'
 C
 	CHARACTER*(*)	dttype
 	CHARACTER	tdate*4, ttime*4
 C-----------------------------------------------------------------------
-C
-C*      For A2DB requests - set the locations for DATE, TIME keywords.
-C
-        IF ( dbread ) THEN  
-            dttype = 'ROW'
-            ildate = 1
-            iltime = 2
-            iret   = 0
-            RETURN
-        END IF
-C
 C*	Check that the file is open.
 C
 	CALL DM_CHKF  ( iflno, iret )

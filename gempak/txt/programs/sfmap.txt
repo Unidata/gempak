@@ -12,9 +12,15 @@ PROGRAM DESCRIPTION
     for the parameters.  The conditions are documented in the
     SFPARM documentation.  Data may be plotted in any
     valid GEMPAK projection and may be overlaid on images.
+    A set of multiple surface files separated with a '+' may be
+    given for SFFILE. The string length of multiple files should
+    not exceed 128 characters. 
 
     A list of times may be given in DATTIM allowing animation of
-    surface plots.
+    surface plots for a single file. Multiple files containing
+    different observations can be filtered with a common filter
+    for a single DATTIM. Multiple files will not work for multiple
+    times.
 
     The order of the input parameters determines their location 
     on the plot.  Parameters are separated by semicolons.  A 
@@ -167,5 +173,34 @@ EXAMPLES
 	STNPLT   =
 	CLABAR   =
 	LSTPRM   = 
+
+    4.  Different example using the multiple files for SFFILE = synop + metar
+        setting DATTIM = 12, SFPARM = SKYC;TMPF;WSYM;PMSL;;DWPF;BRBK and the
+        edge plotting of TMPF data LSTPRM = TMPF|0.8;0.9|0.75
+        Edge plotting of data is available only for the first file "synop".
+
+        AREA     = WV
+        GAREA    = WV
+        SATFIL   =
+        RADFIL   =
+        IMCBAR   =
+        SFFILE   = synop + metar
+        DATTIM   = 12
+        SFPARM   = SKYC;TMPF;WSYM;PMSL;;DWPF;BRBK
+        LSTPRM   = tmpf|0.8;0.9|0.75
+        COLORS   = 23;2;3
+        MAP      = 1
+        MSCALE   = 0
+        LATLON   =
+        TITLE    = 1
+        CLEAR    = yes
+        PANEL    = 0
+        DEVICE   = gif|sfmap_synop_metar.gif | 1800;1300
+        PROJ     = MER
+        FILTER   = 1.0
+        TEXT     = 1
+        LUTFIL   =
+        STNPLT   =
+        CLRBAR   =
 
 ERROR MESSAGES

@@ -12,7 +12,7 @@ int		model_vldTime;
 int		file_vldTime;
 extern Widget	group_listW, model_toplevel;
 
-int           ValidTimeFrame[50];
+int           ValidTimeFrame[500];
 Widget ValidTimeInfoW;
 Widget loadPanelLb;
 
@@ -512,6 +512,8 @@ void create_selectMpanel ( void )
  *      C. Bailey/HPC		05/05	  add PanelSrc and moved	*
  *					     multipanel button code to	*
  *						createMpFrame() 	*
+ * S. Jacobs/NCEP	 5/13	Increased the valid time array from 	*
+ * 				50 to 500				*
  ***********************************************************************/
 {
 int    ii, jj, iret;
@@ -530,7 +532,7 @@ static int first = 1;
         for (ii = 0; ii < 36; ii++ ) {
             panelSrc.flag[ii] = 0;
 	    panelSrc.valid_time[ii].valid_tm_set = 0;
-	    for (jj = 0; jj < 50; jj++ ) {
+	    for (jj = 0; jj < 500; jj++ ) {
 		panelSrc.valid_time[ii].valid_tm_frames[jj] = -1;
 	    }
 	}

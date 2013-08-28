@@ -41,6 +41,7 @@
 ! D. Kidwell/NCEP	 4/05	Added PKWK, BRPK
 ! M. Li/SAIC		 7/06	Added CLDB
 ! R. Jones/NCEP		 9/06	Added DPDX
+! S. Jacobs/NCEP	 6/11	Modified DPRN to use PR24
 !
 !       Temperature, moisture functions
 !
@@ -348,7 +349,7 @@ P12I = PR_MMIN ( P12M )
 P18I = PR_MMIN ( P18M )
 P24I = PR_MMIN ( P24M )
 DPRC = PT_DPRC ( DPRN )
-DPRN = PR_DPRN ( P24I, PR6X )
+DPRN = PR_DPRN ( P24I, PR24 )
 P01M = PR_INMM ( P01I )
 P03M = PR_INMM ( P03I )
 P06M = PR_INMM ( P06I )

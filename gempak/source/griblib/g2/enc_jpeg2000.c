@@ -2,6 +2,7 @@
  void dummy(void) {}
 #else   /* USE_JPEG2000 */
 
+#include <stdio.h>
 #include <stdlib.h>
 #include "grib2.h"
 #include "jasper/jasper.h"
