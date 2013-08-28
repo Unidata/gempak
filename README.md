@@ -2,7 +2,7 @@
 
 This document is intended to guide the user through the process of downloading, configuring and installing GEMPAK v6.10 for most common systems (32 and 64-bit Linux and Solaris). Specific instructions for <a href="http://www.unidata.ucar.edu/software/gempak/doc/install_osx.html">building on OS X</a> are available as well.
 
-Last Updated January 2013
+Last Updated August 2013
 
 ## Download
 
