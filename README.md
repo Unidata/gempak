@@ -14,7 +14,7 @@ GEMPAK can be installed by an individual user, and root / superuser permission i
 	
 	Unpacking the archive in the gempak user home directory (assuming **/home/gempak**):
 
-		tar -xvzf gempak_upc6.10.tar.gz
+		tar -xvzf gempak-6.10-1.tar.gz
 
 	will create the directory **/home/gempak/GEMPAK6.10/** which contains all of the libraries, program source and configuration files, most notably the two Gemenviron and Gemenviron.profile.
 
