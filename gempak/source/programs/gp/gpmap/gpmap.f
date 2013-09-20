@@ -127,6 +127,8 @@ C* L. Hinson/AWC	 4/11	Extended ISORC Flag Array to support	*
 C*				ATDNet Lightning data			*
 C* G. McFadden/IMSG	 7/11	Added SGWH, SGWHC, SGWHE, SGWHG, SGWH2	*
 C* L. Hinson/AWC         5/12   Added ASDI                              *
+C* L. Hinson/AWC        10/12   Added EDR                               *
+C* G. McFadden/IMSG	 7/13	Added SGWHA, WSPDA			*
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 C*
@@ -147,7 +149,7 @@ C*
      +			ency*(LLMXLN), ffa*(LLMXLN), trkpd1*(LLMXLN),
      +			trkpde*(LLMXLN), trkpd2*(LLMXLN),
      +			gairm*(LLMXLN), osct*(LLMXLN), sgwh*(LLMXLN),
-     +			asdi*(LLMXLN), outstr*(LLMXLN)
+     +                  asdi*(LLMXLN), edr*(LLMXLN), wspda*(LLMXLN)
 C*
 	PARAMETER	( NM = 25, NW = 13, NN =  3, NH =  4, NI = 16, 
      +			  NA = 25, NR =  6, NC =  4, NS = 12, NT = 12,
@@ -160,8 +162,9 @@ C*
      +			atmodl(NM)*20, usrmdl(NM)*20, qarr(16)*132,
      +			wsarr(13)*132, asarr(16)*132, tparr(4)*132, 
      +			osarr(13)*132, wflg(2)*72, enmodl(NM)*20,
-     +			ewndc(4)*3, sgwh_arr(7)*132, ee*1,
-     +                  mode*2, depdest*2, sites*125
+     +			ewndc(4)*3, sgwh_arr(7)*132, wspda_arr(7)*132,
+     +                  ee*1, mode*2, depdest*2, sites*125, rarr(2)*5, 
+     +                  sarr(2)*5
 	INTEGER		iwclr(NM), mrktyp(NM), iwidth(NM), iflag(NG),
      +			ihclr(NM), ihsym(NM), lwidth(NM), iawdth(NM),
      +			itminc(LLCLEV), itmclr(LLCLEV), isorc(6),
@@ -175,12 +178,18 @@ C*
      +                  lclr1k(LLCLEV), lclrek(LLCLEV), lclr2k(LLCLEV),
      +			lclrow(LLCLEV), lclror(LLCLEV), lclsg1(LLCLEV),
      +			lclsgc(LLCLEV), lclsge(LLCLEV), lclsgg(LLCLEV),
-     +			lclsg2(LLCLEV), 
+     +			lclsg2(LLCLEV), lclsga(LLCLEV), lclwsa(LLCLEV), 
      +			lclrof(NM), lclruf(NM), lclren (NM), tcolor,
-     +			ipos, tlimit
-	LOGICAL		respnd, done, first, proces, found, scflag
+     +                  tlimit, numf, ihtinc(LLCLEV), htclr(LLCLEV),
+     +                  evclr(LLCLEV), symb1, symb2, esymb1(LLCLEV),
+     +                  esymb2(LLCLEV), enumc, aoa180int
+	LOGICAL		respnd, done, first, proces, found, scflag,
+     +                  aoa180fl
 	REAL		ppmark(3), pnmark(3), tminc(LLCLEV), ssize(NM),
-     +			arwsiz(NM), ahdsiz(NM), wind(4), ewind(4)
+     +			arwsiz(NM), ahdsiz(NM), wind(4), ewind(4),
+     +                  esymbsz1(LLCLEV), esymbsz2(LLCLEV)
+        REAL            htinc(LLCLEV), evinc(LLCLEV), esymbsz(LLCLEV) 
+        REAL            lsize, usize, m
 	DATA		imgfls / MXLOOP*' '/
 
 C-----------------------------------------------------------------------
@@ -231,7 +240,7 @@ C
      +		lclrqr, lclrwp, lclrww, lclrwr, lclraw, lclrar,
      +		lclren, enmodl, lclrff, lclr1k, lclrek, lclr2k,
      +		lclrow, lclror, lclsg1, lclsgc, lclsge, lclsgg,
-     +		lclsg2, ier )
+     +		lclsg2, lclsga, lclwsa, ier )
 C
 	DO WHILE  ( .not. done )
 C	
@@ -248,7 +257,7 @@ C
      +                     ltng, atcf, airm, gairm, ncon, csig, svrl,
      +                     bnd, tcmg, qsct, wstm, wou, wcn, wcp, ency,
      +                     ffa, wsat, asct, trkpd1, trkpde, trkpd2, 
-     +                     osct, sgwh, asdi, iperr)
+     +                     osct, sgwh, asdi, edr, wspda, iperr)
 C
 	    IF  ( iperr .eq. 0 )  THEN
 C
@@ -338,11 +347,7 @@ C
 C*			    Draw map, lat/lon lines, and station 
 C*			    ID/marker.
 C
-			    CALL ST_RMST ( radfil, 'NVW', 
-     +				       ipos, outstr, iret )
- 			    IF ( ipos .eq. 0 ) THEN
-				CALL GG_MAP  ( map, iret )
-			    END IF
+			    CALL GG_MAP  ( map, iret )
 			    CALL GG_LTLN ( latlon, iret )
 			    CALL GG_SPLT ( stnplt, iret )
 			    CALL GG_SCAL ( mscale, iret )
@@ -1373,6 +1378,96 @@ C
                                 END IF
 			      END IF			      
 			    END IF
+                            IF ( edr .ne. ' ' ) THEN
+                              CALL ST_CLST ( edr, '|', ' ', 7,
+     +                                       warr, numw, ier)
+                              CALL ST_LSTR ( warr(2), lens, ier )
+                              IF (lens .gt. 0) THEN
+                                varr (1) = '(' // warr(2) ( :lens )
+     +                                      // ')'
+                                CALL IN_CCLR (varr(1), LLCLEV,
+     +                                        htinc, htclr, numc,
+     +                                        cc, ee, ier )
+                                IF (ier .eq. 0) numc = numc - 1
+                              ELSE
+                                numc = 0
+                                ier = 0
+                              END IF
+                              
+                              IF ( ier .ne. -15) THEN
+                                CALL ST_NUMB (warr(3), tlimit, iret)
+                              END IF
+                              IF ( ier .ne. -15) THEN
+                                CALL ST_LSTR ( warr(4), lens, ier )
+                                IF (lens .gt. 0) THEN
+                                  varr (2) = '(' // warr(4) ( :lens )
+     +                                        // ')'
+                                  CALL IN_CCLR (varr(2), LLCLEV,
+     +                                          evinc, evclr, enumc,
+     +                                          cc, ee, ier )
+                                  IF (ier .eq. 0) enumc = enumc - 1
+                                END IF
+                                IF ( ier .ne. -15) THEN
+                                 
+                                  DO ii = 1, numc
+                                    ihtinc (ii) = NINT (htinc(ii) )
+                                  END DO
+                                  
+                                  CALL ST_LSTR(warr(5), lens, ier )
+                                  IF (lens .gt. 0) THEN
+                                    CALL ST_CLST (warr(5),'/',' ',
+     +                                2, sarr, numf, ier)                                    
+                                    CALL ST_NUMB(sarr(1), symb1, iret)
+                                    CALL ST_NUMB(sarr(2), symb2, iret)
+                                    IF (numf .eq. 1) THEN
+                                      symb2 = symb1
+                                    END IF
+                                  ELSE
+                                    symb1 = 19
+                                    symb2 = 19                                   
+                                  END IF
+                                  DO ii = 1, numc
+                                    esymb1(ii) = symb1
+                                    esymb2(ii) = symb2
+                                  END DO
+                                  CALL ST_LSTR(warr(6), lens, iret )
+                                  IF (lens .gt. 0) THEN
+                                    CALL ST_CLST (warr(6), '/',' ',
+     +                                 2, rarr, numf, ier)
+                                    CALL ST_CRNM (rarr(1), lsize, iret)
+                                    CALL ST_CRNM (rarr(2), usize, iret)
+                                    m = (usize-lsize)/(enumc - 1)
+                                    DO ii = 1, enumc
+                                      esymbsz1(ii) = m*(ii-1)+lsize
+                                      esymbsz2(ii) = esymbsz1(ii)
+                                    END DO
+                                  ELSE
+                                    DO ii = 1, enumc
+                                      esymbsz1(ii) = 1.0
+                                      esymbsz2(ii) = 1.0
+                                    END DO
+                                  END IF
+                                  CALL ST_LSTR(warr(7), lens, iret )
+                                  IF ( lens .gt. 0) THEN
+                                    CALL ST_NUMB(warr(7), aoa180int, 
+     +                                           iret)
+                                    IF (aoa180int .eq. 1) THEN
+                                      aoa180fl = .true.
+                                    ELSE
+                                      aoa180fl = .false.
+                                    END IF
+                                  ELSE
+                                    aoa180fl = .false.
+                                  END IF                                  
+                                  CALL GG_EDR ( warr (1),
+     +                                          ihtinc, htclr, numc,
+     +                                          tlimit, evinc, evclr,
+     +                                          esymb1, esymb2,
+     +                                          esymbsz1, esymbsz2, 
+     +                                          enumc, aoa180fl, iret)
+                                END IF
+                              END IF
+                            END IF
 C
 C*			    Plot the non-convective sigmets.
 C
@@ -1942,6 +2037,11 @@ C
 				        DO ii = numclr+1, numv 
 					    itmclr (ii) = lclsg2 (ii)
 				        END DO
+				    ELSE IF ( sgwh_arr(1) .eq. 'SGWHA' )
+     +                              THEN
+				        DO ii = numclr+1, numv 
+					    itmclr (ii) = lclsga (ii)
+				        END DO
 				    END IF
                                 END IF
 
@@ -1956,7 +2056,41 @@ C
      +                                         iskip, interv, ilnclr,
      +                                         ier )
 			    END IF
+C
+C*			    Plot the Altika wind speed data.
+C
+			    IF 	( wspda.ne. ' ' ) THEN
+				CALL ST_CLST ( wspda, '|', ' ', 7,
+     +					       wspda_arr, numsg, ier )
+				CALL ST_RLST ( wspda_arr (3), ';', 0.,
+     +                                         LLCLEV, tminc, numv, 
+     +                                         ier )
+				CALL ST_ILST ( wspda_arr(4), ';', -1,
+     +                                    LLCLEV, itmclr, numclr, ier )
+				IF ( numv .gt. NZ ) numv = NZ
+				DO ii = 1, numv
+				    itminc (ii) = NINT ( tminc (ii) )
+				END DO
+C
+				IF ( numclr .lt. numv ) THEN
+				    DO ii = numclr+1, numv 
+					    itmclr (ii) = lclwsa (ii)
+				    END DO
+                                END IF
 
+                                CALL ST_NUMB ( wspda_arr(5), iskip,
+     +                                         ier )
+                                CALL ST_NUMB ( wspda_arr(6), interv, 
+     +                                         ier )
+                                CALL ST_NUMB ( wspda_arr(7), ilnclr,
+     +                                         ier )
+                                CALL GG_WAVE ( wspda_arr(1),
+     +                                         wspda_arr(2),
+     +                                         itminc, itmclr, numv,
+     +                                         mrktyp, sizmrk, mrkwid,
+     +                                         iskip, interv, ilnclr,
+     +                                         ier )
+			    ENDIF
 C
 C*			    Plot AFOS file.
 C
