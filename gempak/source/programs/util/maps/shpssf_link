@@ -1,6 +1,0 @@
-$CC $CFLAGS -c shpssf.c
-$FC $LDFLAGS -o $OS_BIN/shpssf shpssf.o \
-                $OS_LIB/ginitp_alt.o $OS_LIB/gendp_alt.o \
-		$CGEMLIB $GPLT $DEVICE $OS_LIB/nc.a \
-        	$OS_LIB/gn.a $GEMLIB $CGEMLIB $GEMLIB -lm
-$RM *.o

@@ -1,5 +1,0 @@
-$CC $CFLAGS -c ssfgsf.c
-$FC $FFLAGS -c map_ssfgsf.f
-$FC $LDFLAGS -o $OS_BIN/ssfgsf ssfgsf.o map_ssfgsf.o \
-	$GEMLIB $CGEMLIB $GEMLIB
-$RM *.o

@@ -1,48 +1,44 @@
 #
-#	Makefile for GEMPAK 6.0
-#		Builds program makefiles
+#	Makefile for GEMPAK 6.0 
+#		Follows each limb of util tree
 #		Unidata 11/99 Chiz
 #
-include $(CONFIGDIR)/$(MAKEINC)
+SUBDIRS = \
+	gsfssf shp  shpcv  shpssf  ssfgsf
 
-COBJS = 
+all :
+	@for dir in NODIR $(SUBDIRS); do \
+		case $$dir in \
+			NODIR) ;; \
+			*) (cd $$dir; echo -n "making in " ; \
+				pwd ; $(MAKE) $(MFLAGS) $@) ;; \
+		esac ; \
+	done
 
-LOBJS = map_ssfgsf.o
- 
-ALIB = 
-
-PROGS = ssfgsf
- 
-CPROGS = shpcv shpssf
- 
-
-LIBINC = \
-	$(GEMLIB) \
-	$(CGEMLIB) \
-	$(GEMLIB)
-
-all : $(PROGS) $(CPROGS)
-
-programs_gf:
 
 programs_nc:
+	@echo "Nothing to make for programs_nc in programs/util"
 
-ssfgsf: $(LOBJS)
-	$(COMPILE.c) $@.c
-	$(LINK.f) $(NOFORMAIN) -o $@ $@.o $? $(GEMLIB) $(CGEMLIB) $(GEMLIB)
-	$(INSTALL) $@ $(OS_BIN)
+programs_gf:
+	@echo "Nothing to make for programs_gf in programs/util"
 
-
-$(CPROGS):
-	$(COMPILE.c) $@.c
-	$(LINK.f) $(NOFORMAIN) $@.o $(GPLT_NC) $(CGEMLIB) $(GPLT) \
-		$(DEVICE) $(NC) $(GN) $(GEMLIB) \
-		$(CGEMLIB) $(GEMLIB) -lm -o $@
-	$(INSTALL) $@ $(OS_BIN)
-	$(RM) *.o
+install:
+	@for dir in NODIR $(SUBDIRS); do \
+		case $$dir in \
+			NODIR) ;; \
+			*) (cd $$dir; echo -n "installing in " ; \
+				pwd ; $(MAKE) $(MFLAGS) $@) ;; \
+		esac ; \
+	done
 
 clean:
-	$(RM) *.o $(CPROGS) $(PROGS)
+	@for dir in NODIR $(SUBDIRS); do \
+		case $$dir in \
+			NODIR) ;; \
+		*) (cd $$dir; echo -n "making clean in " ; \
+				pwd ; $(MAKE) $(MFLAGS) $@) ;; \
+		esac ; \
+	done
 
-install: all
-
+makefiles:
+	genmake.csh
