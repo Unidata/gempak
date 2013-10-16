@@ -18,7 +18,6 @@ SUBDIRS = \
 	rfop \
 	freeColors \
 	joinvgf \
-	mapsshp \
 	maps \
 	mdp \
 	mdpspc \
