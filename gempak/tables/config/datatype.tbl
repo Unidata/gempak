@@ -213,6 +213,7 @@
 !* M. James/Unidata	 8/12   Added RAP; Preserved RUC entries        *
 !* M. James/Unidata	 4/13   Copied NOGAPS to NAVGEM                 *
 !* G.McFadden/IMSG	07/13	Added SGWHA and WSPDA			*
+! M. James/Unidata      10/13   Added OPC lightning density grids       *
 !************************************************************************
 !
 !           |                         |                                                |        |        |DEF |DEF   |DEF   |                     |TIME
@@ -223,6 +224,9 @@
 A2METAR      AWIPSDB                   metar.xml                                        CAT_SFC  SCAT_SFC   10   2880     -1      OFF/0/0                4
 A2SYNOP      AWIPSDB                   synop.xml                                        CAT_SFC  SCAT_SFC   10   2880     -1      OFF/0/0                4
 A2UAIR       AWIPSDB                   uair.xml                                         CAT_SND  SCAT_SND    4   2880     -1      OFF/0/0      4
+!
+! OPC Lightning Strike Density Grids
+OPCLTNG      $MODEL/opc	               YYYYMMDDHHNN.30.grd                              CAT_GRD  SCAT_ANL   -1    720      1      OFF/0/0      4
 !
 ! Surface data
 METAR        $GEMDATA/surface          YYYYMMDD_sao.gem                                 CAT_SFC  SCAT_SFC   10   2880     -1      OFF/0/0      4
@@ -597,6 +601,7 @@ QPE_TAR      $MODEL/qpf                YYYYMMDDHH_ktar218.gem                   
 QPE_TIR      $MODEL/qpf                YYYYMMDDHH_ktir218.gem                           CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
 QPE_TUA      $MODEL/qpf                YYYYMMDDHH_ktua218.gem                           CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
 QPF          $MODEL/qpf                YYYYMMDDHH_*                                     CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
+!
 !
 RCMG         $MODEL/radar              YYYYMMDD_radar.gem                               CAT_GRD  SCAT_ANL    4    720     30      OFF/0/0
 !NEXR         $GEMDATA/radar            YYYYMMDD_radr.gem                               CAT_GRD  SCAT_ANL    4    720     30      OFF/0/0

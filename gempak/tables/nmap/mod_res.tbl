@@ -85,10 +85,14 @@
 ! S. Jacobs/NCEP	 5/12	Added all estofs models												*
 ! M. James/Unidata	 4/13	Copied nogaps -> navgem												*
 ! M. James/Unidata       8/13   Added GME (DWD) and G3DVAR (INPE)         									*
+! M. James/Unidata	10/13   Added OPC lightning density grids										*
 !************************************************************************************************************************************************
 !
 ! PRODUCT NAME                 PATH/FILENAME                                         GROUP        MODELS
 !
+! OPC Lightning Density Grids
+LTNG_DENSITY_CONTOUR		 $NMAP_RESTORE/stnd/ltng_density_contour             standard     opcltng
+LTNG_DENSITY_FILLED		 $NMAP_RESTORE/stnd/ltng_density_filled              standard     opcltng
 !
 ! SINGLE-LEVEL, STANDARD PARAMETERS
 !
