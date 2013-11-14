@@ -776,23 +776,30 @@ DMSP-PWAT            PRXX          0    255     94  2**28      1 micropw.tbl
 FIRE_WEATHER_PROD    FIRE_WX       0    255     78 -2**31      1 wfabba.tbl
 !------------------------------------------------------------------------------
 ! Unidata GINI composite RADAR (ranges as defined in unidata/nex2gini.tbl)
-RADAR                N0Q           0    255     11  2**32      1 upc_n0q.tbl 
-RADAR                DVL           0    255     11  2**33      1 upc_dvl.tbl
-RADAR                EET           0    255     11  2**34      1 upc_net.tbl
-RADAR                N0Z           0    255     11  2**24      1 osf_ref16.tbl
-RADAR                NET           0    255     11  2**25      1 upc_net.tbl
-RADAR                N0R           0    105     11  2**26      1 upc_rad24.tbl
-RADAR                NCR           0    105     11  2**27      1 upc_rad24.tbl
-RADAR                NVL           0    255     11  2**28      1 upc_nvl.tbl
-RADAR                N1P           0    255     11  2**29      1 upc_n1p.tbl
-RADAR                NTP           0    255     11  2**30      1 upc_ntp.tbl
+!
+! national composites
+!HHC       25    1 na,0,255,0,150             TICZ99 CHIZ
+!EET       26    1 KFt,0,255,0,85             TICZ99 CHIZ
+!N0Q       27    1 dBZ,0,255,-32,95           TICZ99 CHIZ
+!DHR       28    1 dBZ,0,255,-32,95           TICZ99 CHIZ
+!DVL       29    1 Kg/m**2,0,255,0,85         TICZ99 CHIZ
+!DPA       30    3 inches,10,110,0,2;110,210,2,6;210,255,6,12      TICZ99 CHIZ
+!DSP       31    3 inches,10,110,0,4;110,220,4,12;210,255,12,24     TICZ99 CHIZ
+!
+RADAR                HHC           0    150     11  2**24      1 upc_dhc.tbl
+RADAR                EET           0    199     11  2**25      1 upc_eet.tbl
+RADAR                N0Q           0    255     11  2**26      1 upc_n0q.tbl
+RADAR                DHR           0    255     11  2**27      1 upc_n0q.tbl
+RADAR                DVL           0    255     11  2**28      1 upc_dvl.tbl
+RADAR                DAA           0    255     11  2**29      1 upc_dst.tbl
+RADAR                OPA           0    255     11  2**31      1 upc_n1p.tbl
 !------------------------------------------------------------------------------
 ! NEXRAD High-Res Level III
 LOCAL  1 KM  BASE    REFLECT       0    255      7     94      1 upc_n0q.tbl 
 LOCAL .25 KM  RADIAL VELOCITY      0    255      7     99      1 upc_vel256.tbl
 LOCAL  1 KM  DIGITAL VIL           0    255      7    134      1 upc_dvl.tbl
 LOCAL  1 KM  ECHO    TOPS          0    199      7    135      1 upc_eet.tbl
-LOCAL  2 KM  HYBRID  PRECIP        0    255      7    138      1 goes_dpw.tbl
+LOCAL  2 KM  HYBRID  PRECIP        0    255      7    138      1 upc_dst.tbl
 LOCAL .15 KM  BASE   TDWR_REFLECT  0     15      7    181      1 osf_ref16.tbl
 LOCAL .15 KM  BASE   TDWR_VELOCITY 0    255      7    182      1 upc_vel256.tbl
 LOCAL .15 KM  BASE   TDWR_VELOCITY 0     15      7    183      1 osf_vel16.tbl

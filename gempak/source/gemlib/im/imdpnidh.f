@@ -274,6 +274,7 @@ C
                  cmblev ( idl ) = dhc ( dhci )
                  dhci = dhci + 1
               END DO
+C       now fill last with RF
               cmblev ( imndlv ) = 'RF'
 C
 C* 170 - Digital Accumulation Array

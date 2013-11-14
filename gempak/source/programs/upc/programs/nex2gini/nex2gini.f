@@ -5,10 +5,12 @@ C*									*
 C* This program creates a GINI format RADAR mosaic from NEXRAD products.*
 C**									*
 C* Log:									*
-C* Chiz/Unidata		 3/01	Initial coding				*
-C* Chiz/Unidata		 2/02	Modified from GDRADR to write GINI 	*
+C* Chiz/Unidata         3/01	Initial coding				*
+C* Chiz/Unidata         2/02	Modified from GDRADR to write GINI 	*
 C*				format images with optional compression.*
-C* James/Unidata         6/10   Added bin mins & mstrct to CTB_DTGET    * 
+C* M. James/Unidata     6/10    Added bin mins & mstrct to CTB_DTGET    * 
+C* M. James/Unidata     11/13   Added gflg to notify radar_grid of      *
+C*                              data file type                          *
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 	INCLUDE		'IMGDEF.CMN'
@@ -29,7 +31,7 @@ C*
      +			tpath*(256), tplate*(80), ctmpl*(10)
                        
 C*
-	INTEGER		kx, ky, ignhdr(135), idtarr(5)
+	INTEGER		kx, ky, ignhdr(135), idtarr(5), gflg
 C*
 	LOGICAL		gsflag, respnd, done, exist, proces, viewable,
      +			opmode, compress
@@ -298,7 +300,17 @@ C
 			             IF ( (ier .ne. 0 ) .or. 
      +				        ( i .eq. 1 ) ) rarr(i) = RMISSD
 			          END DO
-			          CALL radar_grid(kx,ky,grid,rarr)
+C                               Need a flag for radar_grid function
+C                               (HHC,DVL, other high-res products)
+                                  gflg = 0
+                                  IF ( ( gfunc(1:3) .eq. 'DVL' ) .or.
+     +				     ( gfunc(1:3) .eq. 'DSP' ) .or.
+     +				     ( gfunc(1:3) .eq. 'HHC' ) ) THEN
+                                     gflg = 1
+                                  ELSE
+                                     gflg = 0
+                                  END IF
+			          CALL radar_grid(gflg,kx,ky,grid,rarr)
 			       ELSE
 				  WRITE (errstr,1000) stid,immode
 1000				  FORMAT (A,1x,I1)
@@ -314,13 +326,13 @@ C
 		      IF (ilun .gt. 0) CALL FL_CLOS(ilun, iret)
 		      CALL ER_WMSG  ( 'NEX2GINI', 4, curtim, ier )
                       CALL TI_CTOI (curtim, idtarr, ier)
-		      write(headerid,2000) 'TICZ99 CHIZ',
+		      write(headerid,2000) 'TICZ99 UCAR',
      +			((idtarr(3)*100)+idtarr(4))*100+idtarr(5)
 2000		      FORMAT(A,1x,I6)
 C
 C*		      Check for leading zero in time
 C
-		      IF (headerid(13:13) .eq. ' ')
+		      iF (headerid(13:13) .eq. ' ')
      +			  headerid(13:13) = '0'
 C
                       CALL ST_LSTR(headerid, lens, ier)
