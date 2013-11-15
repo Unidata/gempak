@@ -13,37 +13,20 @@
 !		* 4-12 inches = 110-220
 !		* 12-24 inches = 210-255
 !
-!N0Z      25    1 dBZ,0,105,-30,75           TICZ99 CHIZ
-!NET      26    1 KFt,0,255,0,85             TICZ99 CHIZ
-!N0R      27    1 dBZ,0,105,-30,75           TICZ99 CHIZ
-!NCR      28    1 dBZ,0,105,-30,75           TICZ99 CHIZ
-!NVL      29    1 Kg/m**2,0,255,0,85         TICZ99 CHIZ
-!N1P       30    1 inches,20,255,0,11.75      TICZ99 CHIZ
-!NTP       31    1 inches,10,250,0,24.00      TICZ99 CHIZ
-!
-!
 
-! so we will do (for 2013)
-! EET = 26
-! N0R = 27 (preserved)
-! DHR = 28
-! DVL = 29
-! N1P = 30 (preserved)
-! NTP = 31 (preserved)
-! HHC = 32
-! 
-! ready
-!
-HHC	  25	1 cat,1,150,1,150	TICZ99 CHIZ
-EET	  26	2 KFt,0,72,0,70;130,200,0,70	     TICZ99 CHIZ
-DHR	  28	1 dBZ,0,255,-32,94.5	     TICZ99 CHIZ
-!N0Q	  27	1 dBZ,0,255,-32,94.5	     TICZ99 CHIZ
+HHC        25    1 cat,1,150,1,150      TICZ99 CHIZ
+EET        26    2 KFt,0,72,0,70;130,200,0,70        TICZ99 CHIZ
+N0R        27    1 dBZ,0,105,-30,75     TICZ99 CHIZ
+DHR        28    1 dBZ,0,255,-32,94.5   TICZ99 CHIZ
+DVL        29    5 Kg/m**2,2,20,0,0.189;20,60,0.189,0.54;60,100,0.54,1.51;100,140,1.51,4.23;140,254,4.23,80     TICZ99 CHIZ
+N1P        30    1 inches,20,255,0,11.75        TICZ99 CHIZ
+NTP        31    1 inches,10,250,0,24.00        TICZ99 CHIZ
 !
 ! testing
 !
-DST	  30	3 inches,0,110,0,2;110,210,2,6;210,255,6,12	  TICZ99 CHIZ
+!DST	  30	3 inches,0,110,0,2;110,210,2,6;210,255,6,12	  TICZ99 CHIZ
 !DVL	  29	1 Kg/m**2,0,254,0,4.5	TICZ99 CHIZ
-DVL	  29	5 Kg/m**2,2,20,0,0.189;20,60,0.189,0.54;60,100,0.54,1.51;100,140,1.51,4.23;140,254,4.23,80	TICZ99 CHIZ
+!DVL	  29	5 Kg/m**2,2,20,0,0.189;20,60,0.189,0.54;60,100,0.54,1.51;100,140,1.51,4.23;140,254,4.23,80	TICZ99 CHIZ
 !DVL	  29	5 Kg/m**2,0,20,0,0.189;20,60,0.189,0.54;60,100,0.54,1.51;100,140,1.51,4.23;140,254,4.23,80	TICZ99 CHIZ
 !
 ! other
@@ -65,8 +48,5 @@ DVL	  29	5 Kg/m**2,2,20,0,0.189;20,60,0.189,0.54;60,100,0.54,1.51;100,140,1.51,4
 !NET	  26	1 KFt,0,255,0,85	     TICZ99 CHIZ
 !NVL	  29	1 Kg/m**2,0,255,0,85	     TICZ99 CHIZ
 !NCR	  28	1 dBZ,0,105,-30,75	     TICZ99 CHIZ
-!N0R	  27	1 dBZ,0,105,-30,75	     TICZ99 CHIZ
-!N1P	   30	 1 inches,20,255,0,11.75      TICZ99 CHIZ
-!NTP	   31	 1 inches,10,250,0,24.00      TICZ99 CHIZ
 !TOPO	    2	 1 m,0,255,-1000,5000	      TICZ99 TOPO
 !CTMPK	    1	 2 K,0,175,330,242.5;176,255,242,163	     TICZ99 TMPK
