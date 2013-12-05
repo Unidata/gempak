@@ -302,7 +302,6 @@ for ( i=xstart; i<=xstop; i++ )
 
             // assign rval to level specified by imgData number
             if ( (int)gflg == 1) {
-            if ( (int)gflg > 0) {
             	rval = (int)imgData[it];
             } else {
 		rval = rlev[(int)imgData[it]];

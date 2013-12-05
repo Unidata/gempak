@@ -302,7 +302,7 @@ C     +				  ( imntn_mode .gt. 0 ) ) opmode = .true.
 C                               Need a flag for radar_grid function
 C                               (HHC,DVL, other high-res products)
                                   SELECT CASE (imtype)
-                                    CASE (177,138)
+                                    CASE (177,138,134)
                                       gflg = 1
                                     CASE DEFAULT
                                       gflg = 0
