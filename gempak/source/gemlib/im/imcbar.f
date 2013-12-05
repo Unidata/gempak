@@ -29,15 +29,21 @@ C* T. Piper/SAIC	07/06	Changed GTEXT for units label; top,	*
 C*				horizontal case; 2nd to last arg 1 to -2*
 C* S. Chiswell/Unidata	11/06	Added parsing of text attributes	*
 C* M. James/Unidata     06/10   Moved label frequency logic from IMNIDH *
+C* M. James/Unidata     11/13   Hydrometeor classification labeling and *
+C*                              national composite GINI support added.  *
 C************************************************************************
 	INCLUDE		'IMGDEF.CMN'
 C*
-	CHARACTER*(*)	clrbar
-	INTEGER		idcols (256), clevst, clevsp
+	CHARACTER*(*)	clrbar, dhc(16)*4
+	INTEGER		idcols (256), clevst, clevsp, dhci, idx
 C*
 	CHARACTER	orient*1, label*10, clrtxt(2)*128
 	REAL		size (2), pos (2), xbox (5), ybox (5)
 	LOGICAL		cbrflg, hrulim
+        DATA            dhc  / 'ND', 'BI', 'GC', 'IC',
+     +                         'DS', 'WS', 'RA', 'HR',
+     +                         'BD', 'GR', 'HA', '',
+     +                         '', '', 'UK', 'RF' /
 C------------------------------------------------------------------------
 	iret = 0
 C
@@ -114,7 +120,7 @@ C
 C
 C*	Create data level numbers for the color bar
 C
-        IF ( imtype .eq. 135 ) THEN
+        IF ( imtype .eq. 135) THEN
            imndlv = 199 
         END IF
 	CALL GQCLRS ( imbank, ncolr, ier )
@@ -135,6 +141,35 @@ C
             clevst = 1
             clevsp = nflvl
         END IF
+
+C HHC composite GINI 2*24,  use: 2**(24 - 1)
+        IF ( imtype .eq. 2**(24) ) THEN
+            DO idx = 1, imndlv
+                cmblev ( idx ) = ''
+            END DO
+            dhci = 1
+            DO idx = 1, imndlv,10 
+                cmblev ( idx ) = dhc ( dhci )
+                dhci = dhci + 1
+            END DO
+            cmblev ( imndlv ) = 'RF'
+C EET composite GINI 2**25
+        ELSE IF ( imtype .eq. 2**(25) ) THEN
+            DO idx = 1,nflvl
+                cmblev ( idx ) = ''
+            END DO
+            DO idx = 2,72,10
+                val = idx - 2
+                CALL ST_INCH ( int(val), cmblev (idx), ier )
+            END DO
+            DO idx = 130,199,10
+                val = idx - 130
+                CALL ST_INCH ( int(val), cmblev (idx), ier )
+            END DO
+            CALL ST_INCH ( int(70), cmblev (199), ier )
+            cmblev ( 130 ) = 'TOP'
+        END IF
+
 	DO  i = clevst, clevsp 
 	    knt = knt + 1
 	    IF  ( orient .ne. 'H' )  THEN

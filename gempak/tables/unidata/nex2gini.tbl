@@ -1,21 +1,52 @@
 !
+!Prod	band ncal units,Calval_1;....;calval_n	Prod_header
+! Since these are essentially spoofed satellite images,
+! we have to give them unique ids to be matched in imgtyp.tbl
 !
-!Prod   band ncal units,Calval_1;....;calval_n  Prod_header
-N0Q       32    1 dBZ,0,255,-32,95           TICZ99 CHIZ
-DVL       33    1 Kg/m**2,0,255,0,85         TICZ99 CHIZ
-EET       34    1 KFt,0,255,0,85             TICZ99 CHIZ
-N0Z       25    1 dBZ,0,105,-30,75           TICZ99 CHIZ
-NET       26    1 KFt,0,255,0,85             TICZ99 CHIZ
-N0R       27    1 dBZ,0,105,-30,75           TICZ99 CHIZ
-NCR       28    1 dBZ,0,105,-30,75           TICZ99 CHIZ
-NVL       29    1 Kg/m**2,0,255,0,85         TICZ99 CHIZ
-!N1P       30    1 inches,20,255,0,11.75      TICZ99 CHIZ
-N1P       30    3 inches,10,110,0,2;110,210,2,6;210,255,6,12      TICZ99 CHIZ
-!NTP       31    1 inches,10,250,0,24.00      TICZ99 CHIZ
-NTP       31    3 inches,10,110,0,4;110,220,4,12;210,255,12,24     TICZ99 CHIZ
-TOPO       3    2 m,0,8,-7000,0;8,95,0,5000         TICZ99 TOPO
-HGHT       3    2 m,0,8,-7000,0;8,95,0,5000         TICZ99 TOPO
-!TOPO       2    1 m,0,255,-1000,5000         TICZ99 TOPO
-!CTMPK      1    2 K,0,175,330,242.5;176,255,242,163         TICZ99 TMPK
-CTMPK     16    2 K,255,176,163,242;175,0,242.5,330         TICZ99 TMPK
-TCOMP      7    4 m,0,7,-7000,0;8,75,0,3851;76,77,3851,10141;78,94,10141,10256         TICZ99 TOPO
+!  Prod = Product identified 3-alpha-numeric
+!  band = unique "satellite id"
+!  ncal = number of calibration units
+!  units = calibration value, such as "1 dBZ" for reflectivity
+!	* then followed by calibration ranges.	for DPA:
+!	- 3 calibration ranges:
+!		* 0-4 inches = 10-110
+!		* 4-12 inches = 110-220
+!		* 12-24 inches = 210-255
+!
+
+HHC        25    1 cat,1,150,1,150      TICZ99 CHIZ
+EET        26    2 KFt,0,72,0,70;130,200,0,70        TICZ99 CHIZ
+N0R        27    1 dBZ,0,105,-30,75     TICZ99 CHIZ
+DHR        28    1 dBZ,0,255,-32,94.5   TICZ99 CHIZ
+DVL        29    5 Kg/m**2,2,20,0,0.189;20,60,0.189,0.54;60,100,0.54,1.51;100,140,1.51,4.23;140,254,4.23,80     TICZ99 CHIZ
+N1P        30    1 inches,20,255,0,11.75        TICZ99 CHIZ
+NTP        31    1 inches,10,250,0,24.00        TICZ99 CHIZ
+!
+! testing
+!
+!DST	  30	3 inches,0,110,0,2;110,210,2,6;210,255,6,12	  TICZ99 CHIZ
+!DVL	  29	1 Kg/m**2,0,254,0,4.5	TICZ99 CHIZ
+!DVL	  29	5 Kg/m**2,2,20,0,0.189;20,60,0.189,0.54;60,100,0.54,1.51;100,140,1.51,4.23;140,254,4.23,80	TICZ99 CHIZ
+!DVL	  29	5 Kg/m**2,0,20,0,0.189;20,60,0.189,0.54;60,100,0.54,1.51;100,140,1.51,4.23;140,254,4.23,80	TICZ99 CHIZ
+!
+! other
+!
+!N0Q	  27	1 dBZ,0,255,-32,94.5	     TICZ99 CHIZ
+!DVL	  29	13 Kg/m**2,2,20,0.05,0.189;20,40,0.189,0.32;40,60,0.33,0.54;60,80,0.54,0.9;80,100,0.9,1.5;100,120,1.5,2.53;120,140,2.53,4.23;140,160,4.23,7;160,180,7,12;180,200,12,20;200,220,20,33;220,240,33,55;240,254,55,80	TICZ99 CHIZ
+!!DVL	  29	1 Kg/m**2,0,254,0,4.5	TICZ99 CHIZ
+!DPA	  30	3 inches,0,110,0,2;110,210,2,6;210,255,6,12	  TICZ99 CHIZ
+!DSP	  31	3 inches,0,110,0,4;110,220,4,12;210,255,12,24	   TICZ99 CHIZ
+!DSP	  31	3 mm,0,110,0,4;110,220,4,12;210,255,12,24	   TICZ99 CHIZ
+!OPA	  32	3 inches,0,110,0,4;110,220,4,12;210,255,12,24	   TICZ99 CHIZ
+! other stuff
+!TOPO	   3	2 m,0,8,-7000,0;8,95,0,5000	    TICZ99 TOPO
+!HGHT	   3	2 m,0,8,-7000,0;8,95,0,5000	    TICZ99 TOPO
+!CTMPK	  16	2 K,255,176,163,242;175,0,242.5,330	    TICZ99 TMPK
+!TCOMP	   7	4 m,0,7,-7000,0;8,75,0,3851;76,77,3851,10141;78,94,10141,10256	       TICZ99 TOPO
+! previously used
+!N0Z	  25	1 dBZ,0,105,-30,75	     TICZ99 CHIZ
+!NET	  26	1 KFt,0,255,0,85	     TICZ99 CHIZ
+!NVL	  29	1 Kg/m**2,0,255,0,85	     TICZ99 CHIZ
+!NCR	  28	1 dBZ,0,105,-30,75	     TICZ99 CHIZ
+!TOPO	    2	 1 m,0,255,-1000,5000	      TICZ99 TOPO
+!CTMPK	    1	 2 K,0,175,330,242.5;176,255,242,163	     TICZ99 TMPK

@@ -15,6 +15,11 @@
 
 /*
  * These pointers are defined in the IM library
+ *
+ * M. James/Unidata	11/13	Changed num < ncal to num < ncal+1
+ * 				to stop calibration range error when
+ * 				num = ncal
+ * M. James/Unidata	11/13	Changed CHIZ header to UCAR
  */
 extern unsigned char *imdata;
 extern unsigned char *imndat;
@@ -91,7 +96,7 @@ for(j=*ky-1;j>=0;j--)
             {
 	    num = 0;
 	    while((num < ncal) && (grid[k] > calptr[num].maxval)) num++;
-	    if(num < ncal)
+	    if(num < ncal+1)
 	       {
 	       pxoffset = calptr[num].minpx;
 	       offset = calptr[num].minval;
@@ -181,7 +186,7 @@ fp = cfl_tbop ( "nex2gini.tbl", "unidata", &ier);
 if(fp == NULL)
   {
   printf("warning: could not open nex2gini.tbl configuration table\n");
-  sprintf(header,"TICZ99 CHIZ %02d%02d%02d\0",tarr[2],tarr[3], tarr[4] );
+  sprintf(header,"TICZ99 UCAR %02d%02d%02d\0",tarr[2],tarr[3], tarr[4] );
   }
 else
    {
@@ -209,7 +214,7 @@ else
    if(FOUND == 0) 
       {
       printf("warning: no calibration found in nex2gini configuration table\n"); 
-      sprintf(header,"TICZ99 CHIZ %02d%02d%02d\0",tarr[2],tarr[3], tarr[4] );
+      sprintf(header,"TICZ99 UCAR %02d%02d%02d\0",tarr[2],tarr[3], tarr[4] );
       }
    }
 

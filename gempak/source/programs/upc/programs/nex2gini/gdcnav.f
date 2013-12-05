@@ -38,7 +38,7 @@ C*
 	CHARACTER	cdproj*30
 	REAL		zmarg (4), rarr (2), rltln (4), grdout (4),
      +			angle (3), centrd (2)
-	INTEGER		iarr  (2)
+	INTEGER		iarr  (2), kx, ky
 	LOGICAL		angflg, space, valid
 C------------------------------------------------------------------------
 	iret = 0
