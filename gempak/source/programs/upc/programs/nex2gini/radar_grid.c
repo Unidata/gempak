@@ -301,10 +301,10 @@ for ( i=xstart; i<=xstop; i++ )
          if ( ( imgData[it] >= immnpx ) && ( imgData[it] <= immxpx ) ) {
 
             // assign rval to level specified by imgData number
-            if ( (int)gflg == 1) {
-            	rval = (int)imgData[it];
-            } else {
+            if ( (int)gflg > 0) {
 		rval = rlev[(int)imgData[it]];
+            } else {
+            	rval = (int)imgData[it];
             }
 	    //rval = rlev[(int)imgData[it]];
             //printf("rval=%d,%d\n", (int)imgData[it], rlev[(int)imgData[it]]);

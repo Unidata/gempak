@@ -11,6 +11,7 @@ C*	  RADFRQ, CPYFIL, STNFIL, RADMODE, COMPRESS, IRET)		*
 C**									*
 C* Log:									*
 C* Chiz/Unidata	 3/01	Developed from GPMAP				*
+C* M. James/Unidata     12/13   Remove radmode                          *
 C************************************************************************
 	CHARACTER*(*)	proj, gdarea, kxky, gfunc, satfil, radtim,
      +			raddur, radfrq, cpyfil, stnfil
