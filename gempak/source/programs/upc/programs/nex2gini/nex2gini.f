@@ -5,10 +5,12 @@ C*									*
 C* This program creates a GINI format RADAR mosaic from NEXRAD products.*
 C**									*
 C* Log:									*
-C* Chiz/Unidata		 3/01	Initial coding				*
-C* Chiz/Unidata		 2/02	Modified from GDRADR to write GINI 	*
+C* Chiz/Unidata         3/01	Initial coding				*
+C* Chiz/Unidata         2/02	Modified from GDRADR to write GINI 	*
 C*				format images with optional compression.*
-C* James/Unidata         6/10   Added bin mins & mstrct to CTB_DTGET    * 
+C* M. James/Unidata     6/10    Added bin mins & mstrct to CTB_DTGET    * 
+C* M. James/Unidata     11/13   Added gflg to notify radar_grid of      *
+C*                              data file type                          *
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 	INCLUDE		'IMGDEF.CMN'
@@ -18,8 +20,7 @@ C*
 	CHARACTER*(LLMXLN)	device, satfil, radtim, raddur, radfrq,
      +				stnfil, cpyfil, cpytmp, proj, gdarea, 
      +				kxky, filnam, cpyf(2), gfunc, filpath,
-     +				outstr, templ, newfil, gemfil, anlyss,
-     +				radmode
+     +				outstr, templ, newfil, gemfil, anlyss
 C*
 	CHARACTER	curtim*15, stid*8, stnnam*32, coun*2, stat*2, 
      +			tbchars*20, gname*20, cprj*10, errstr*24,
@@ -29,7 +30,7 @@ C*
      +			tpath*(256), tplate*(80), ctmpl*(10)
                        
 C*
-	INTEGER		kx, ky, ignhdr(135), idtarr(5)
+	INTEGER		kx, ky, ignhdr(135), idtarr(5), gflg
 C*
 	LOGICAL		gsflag, respnd, done, exist, proces, viewable,
      +			opmode, compress
@@ -94,7 +95,7 @@ C*	    Get input parameters.
 C
 	    CALL GPINP  ( proj, gdarea, kxky, gfunc, satfil, radtim,
      +                    raddur, radfrq, cpyfil, stnfil, 
-     +			  radmode, compress, iperr )	
+     +			  compress, iperr )	
 
 	    CALL ST_LCUC (gfunc, gfunc, ier)
 C*
@@ -109,15 +110,15 @@ C*
 		CALL ER_WMSG  ( 'NEX2GINI', 3, stnfil, ier )
 	    END IF
 
-	    CALL ST_LCUC ( radmode, radmode, ier )
-	    icair_mode = INDEX ( radmode, 'C')
-	    iprcp_mode = INDEX ( radmode, 'P')
-	    imntn_mode = INDEX ( radmode, 'M')
-	    IF ( icair_mode + iprcp_mode + imntn_mode .eq. 0 ) THEN
-		icair_mode = 1
-		iprcp_mode = 1
-		imntn_mode = 1
-	    END IF
+C	    CALL ST_LCUC ( radmode, radmode, ier )
+C	    icair_mode = INDEX ( radmode, 'C')
+C	    iprcp_mode = INDEX ( radmode, 'P')
+C	    imntn_mode = INDEX ( radmode, 'M')
+C	    IF ( icair_mode + iprcp_mode + imntn_mode .eq. 0 ) THEN
+C		icair_mode = 1
+C		iprcp_mode = 1
+C		imntn_mode = 1
+C	    END IF
 
 	    IF  ( iperr .eq. 0 )  THEN
 C
@@ -283,14 +284,14 @@ C
 C
 C*			       Determine if radar mode is acceptable
 C
-			       opmode = .false.
-			       IF ( ( immode .eq. 2 ) .and. 
-     +				  ( iprcp_mode .gt. 0 ) ) opmode = .true.
-			       IF ( ( immode .eq. 1 ) .and. 
-     +				  ( icair_mode .gt. 0 ) ) opmode = .true.
-			       IF ( ( immode .eq. 0 ) .and. 
-     +				  ( imntn_mode .gt. 0 ) ) opmode = .true.
-C
+C			       opmode = .false.
+C			       IF ( ( immode .eq. 2 ) .and. 
+C     +				  ( iprcp_mode .gt. 0 ) ) opmode = .true.
+C			       IF ( ( immode .eq. 1 ) .and. 
+C     +				  ( icair_mode .gt. 0 ) ) opmode = .true.
+C			       IF ( ( immode .eq. 0 ) .and. 
+C     +				  ( imntn_mode .gt. 0 ) ) opmode = .true.
+                               opmode = .true.
 			       IF ( opmode ) THEN
 			          CALL ER_WMSG  ( 'NEX2GINI', 0, imgfls, ier )
 			          DO i=1,imndlv
@@ -298,7 +299,15 @@ C
 			             IF ( (ier .ne. 0 ) .or. 
      +				        ( i .eq. 1 ) ) rarr(i) = RMISSD
 			          END DO
-			          CALL radar_grid(kx,ky,grid,rarr)
+C                               Need a flag for radar_grid function
+C                               (HHC,DVL, other high-res products)
+                                  SELECT CASE (imtype)
+                                    CASE (177,138)
+                                      gflg = 1
+                                    CASE DEFAULT
+                                      gflg = 0
+                                  END SELECT
+			          CALL radar_grid(glfg,kx,ky,grid,rarr)
 			       ELSE
 				  WRITE (errstr,1000) stid,immode
 1000				  FORMAT (A,1x,I1)
@@ -314,13 +323,13 @@ C
 		      IF (ilun .gt. 0) CALL FL_CLOS(ilun, iret)
 		      CALL ER_WMSG  ( 'NEX2GINI', 4, curtim, ier )
                       CALL TI_CTOI (curtim, idtarr, ier)
-		      write(headerid,2000) 'TICZ99 CHIZ',
+		      write(headerid,2000) 'TICZ99 UCAR',
      +			((idtarr(3)*100)+idtarr(4))*100+idtarr(5)
 2000		      FORMAT(A,1x,I6)
 C
 C*		      Check for leading zero in time
 C
-		      IF (headerid(13:13) .eq. ' ')
+		      iF (headerid(13:13) .eq. ' ')
      +			  headerid(13:13) = '0'
 C
                       CALL ST_LSTR(headerid, lens, ier)

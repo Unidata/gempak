@@ -167,8 +167,7 @@ xin[1] = imrght; yin[1] = imbot;
 xin[2] = imleft; yin[2] = imtop;
 xin[3] = imrght; yin[3] = imtop;
 gtrans(msys, gsys, &np, xin, yin, xout, yout, iret, strlen(gsys), strlen(msys));
-/*printf("look ier %d outs %f %f   %f %f   %f %f   %f %f\n",
-      ier,xout[0],yout[0],xout[1],yout[1],xout[2],yout[2],xout[3],yout[3]);*/
+//printf("look ier outs %f %f   %f %f   %f %f   %f %f\n",xout[0],yout[0],xout[1],yout[1],xout[2],yout[2],xout[3],yout[3]);
 
 if(*iret == 0)
    {
@@ -213,7 +212,7 @@ else
    XL = XR = YB = YT = RMISSD;
    }
    
-/*printf("look points %f %f %f %f\n",XL,XR,YB,YT);*/
+//printf("look points %f %f %f %f\n",XL,XR,YB,YT);
 gbounds[numstats][0] = XL;
 gbounds[numstats][1] = YB;
 gbounds[numstats][2] = XR;
@@ -233,7 +232,7 @@ numstats++;
  *
  */
 
-void radar_grid(int *kx, int *ky, float *fdata, float *rlev)
+void radar_grid(int *gflg, int *kx, int *ky, float *fdata, float *rlev)
 {
 char *radarea;
 int lens, ier, i, j, np, ip, x, y, it;
@@ -302,18 +301,23 @@ for ( i=xstart; i<=xstop; i++ )
          if ( ( imgData[it] >= immnpx ) && ( imgData[it] <= immxpx ) ) {
 
             // assign rval to level specified by imgData number
-            rval = rlev[(int)imgData[it]];
-            //rval = (int)imgData[it];
-            if ( rval > rvalmx ) {
+            if ( (int)gflg == 1) {
+            	rval = (int)imgData[it];
+            } else {
+		rval = rlev[(int)imgData[it]];
+            }
+	    //rval = rlev[(int)imgData[it]];
+            //printf("rval=%d,%d\n", (int)imgData[it], rlev[(int)imgData[it]]);
+	    if ( rval > rvalmx ) {
                rvalmx = rval;
-//               printf("rvalmx=%f\n", rvalmx);
+               //printf("rvalmx=%f\n", rvalmx);
             }
             // if rval is great than existing value, replace
             if ( rval > fdata[ip] ) {
                fdata[ip] = rval;
-               if ( imgData[it] > 11 ) {
-//                  printf("x=%d y=%d np=%d it=%d imgData[it]=%d rval=%f rvalmx=%f \n", x, y, np, it, imgData[it], rval, rvalmx);
-               }
+               //if ( imgData[it] > 11 ) {
+               //   printf("x=%d y=%d np=%d it=%d imgData[it]=%d rval=%f rvalmx=%f \n", x, y, np, it, imgData[it], rval, rvalmx);
+               //}
             }
          } else
             printf("%d %d %d   %d %d %d   %d [%d %d]\n", x,y,np, i,j,ip, imgData[it],immnpx, immxpx);
