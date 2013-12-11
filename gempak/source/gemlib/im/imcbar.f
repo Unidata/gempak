@@ -142,8 +142,9 @@ C
             clevsp = nflvl
         END IF
 
-C HHC composite GINI 2*24,  use: 2**(24 - 1)
-        IF ( imtype .eq. 2**(24) ) THEN
+        SELECT CASE (imtype)
+C HHC 
+          CASE ( 2**(31) )
             DO idx = 1, imndlv
                 cmblev ( idx ) = ''
             END DO
@@ -154,7 +155,7 @@ C HHC composite GINI 2*24,  use: 2**(24 - 1)
             END DO
             cmblev ( imndlv ) = 'RF'
 C EET composite GINI 2**25
-        ELSE IF ( imtype .eq. 2**(25) ) THEN
+          CASE ( 2**(25) )
             DO idx = 1,nflvl
                 cmblev ( idx ) = ''
             END DO
@@ -168,7 +169,7 @@ C EET composite GINI 2**25
             END DO
             CALL ST_INCH ( int(70), cmblev (199), ier )
             cmblev ( 130 ) = 'TOP'
-        END IF
+        END SELECT
 
 	DO  i = clevst, clevsp 
 	    knt = knt + 1

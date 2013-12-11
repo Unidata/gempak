@@ -58,8 +58,25 @@ C
         iminpix = int(minpx + 1)
         imaxpix = int(maxpx + 1)
 
-	DO i=iminpix, imaxpix
-           IF ( ( i .ge. iminpix ) .and. ( i .le. imaxpix ) ) THEN
+
+        SELECT CASE (imtype)
+C DHR
+          CASE (2**(27),2**(26))
+            DO i=iminpix,imaxpix
+              cmblev(i) = ''
+              level = nint( (i-iminpix) * ratio) + iminval
+              IF (mod(level,10) .eq. 0 .and. 
+     +             cmblev(i-1) .eq. '') THEN
+                IF (level .ge. 0 .and. level .le. 80) THEN
+                  CALL ST_INCH ( level/iscaleval,
+     +                          cmblev (i), ier )
+                END IF
+              END IF
+            END DO
+            cmblev(1) = 'ND'
+          CASE DEFAULT
+	    DO i=iminpix, imaxpix
+               IF ( ( i .ge. iminpix ) .and. ( i .le. imaxpix ) ) THEN
                  IF ( ( mod ( i - 1, 5 ) .eq. 0).or.
      +		    ( i .eq. imaxpix ) ) THEN
 		     IF (np .eq. 0) THEN
@@ -75,8 +92,9 @@ C
                  ELSE
                      cmblev (i) = ' '
                  END IF
-           END IF
-        END DO
+               END IF
+            END DO
+        END SELECT
 
 	iret = 0
 

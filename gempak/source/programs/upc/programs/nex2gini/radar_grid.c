@@ -232,7 +232,7 @@ numstats++;
  *
  */
 
-void radar_grid(int *gflg, int *kx, int *ky, float *fdata, float *rlev)
+void radar_grid(int *prodid, int *kx, int *ky, float *fdata, float *rlev)
 {
 char *radarea;
 int lens, ier, i, j, np, ip, x, y, it;
@@ -301,7 +301,7 @@ for ( i=xstart; i<=xstop; i++ )
          if ( ( imgData[it] >= immnpx ) && ( imgData[it] <= immxpx ) ) {
 
             // assign rval to level specified by imgData number
-            if ( (int)gflg > 0) {
+            if ( *prodid > 0) {
 		rval = rlev[(int)imgData[it]];
             } else {
             	rval = (int)imgData[it];
