@@ -20,7 +20,8 @@ C*
 	CHARACTER*(LLMXLN)	device, satfil, radtim, raddur, radfrq,
      +				stnfil, cpyfil, cpytmp, proj, gdarea, 
      +				kxky, filnam, cpyf(2), gfunc, filpath,
-     +				outstr, templ, newfil, gemfil, anlyss
+     +				outstr, templ, newfil, gemfil, anlyss,
+     +				radmode
 C*
 	CHARACTER	curtim*15, stid*8, stnnam*32, coun*2, stat*2, 
      +			tbchars*20, gname*20, cprj*10, errstr*24,
@@ -95,7 +96,7 @@ C*	    Get input parameters.
 C
 	    CALL GPINP  ( proj, gdarea, kxky, gfunc, satfil, radtim,
      +                    raddur, radfrq, cpyfil, stnfil, 
-     +			  compress, iperr )	
+     +			  radmode, compress, iperr )	
 
 	    CALL ST_LCUC (gfunc, gfunc, ier)
 C*
@@ -110,15 +111,15 @@ C*
 		CALL ER_WMSG  ( 'NEX2GINI', 3, stnfil, ier )
 	    END IF
 
-C	    CALL ST_LCUC ( radmode, radmode, ier )
-C	    icair_mode = INDEX ( radmode, 'C')
-C	    iprcp_mode = INDEX ( radmode, 'P')
-C	    imntn_mode = INDEX ( radmode, 'M')
-C	    IF ( icair_mode + iprcp_mode + imntn_mode .eq. 0 ) THEN
-C		icair_mode = 1
-C		iprcp_mode = 1
-C		imntn_mode = 1
-C	    END IF
+	    CALL ST_LCUC ( radmode, radmode, ier )
+	    icair_mode = INDEX ( radmode, 'C')
+	    iprcp_mode = INDEX ( radmode, 'P')
+	    imntn_mode = INDEX ( radmode, 'M')
+	    IF ( icair_mode + iprcp_mode + imntn_mode .eq. 0 ) THEN
+		icair_mode = 1
+		iprcp_mode = 1
+		imntn_mode = 1
+	    END IF
 
 	    IF  ( iperr .eq. 0 )  THEN
 C
@@ -284,14 +285,14 @@ C
 C
 C*			       Determine if radar mode is acceptable
 C
-C			       opmode = .false.
-C			       IF ( ( immode .eq. 2 ) .and. 
-C     +				  ( iprcp_mode .gt. 0 ) ) opmode = .true.
-C			       IF ( ( immode .eq. 1 ) .and. 
-C     +				  ( icair_mode .gt. 0 ) ) opmode = .true.
-C			       IF ( ( immode .eq. 0 ) .and. 
-C     +				  ( imntn_mode .gt. 0 ) ) opmode = .true.
-                               opmode = .true.
+			       opmode = .false.
+			       IF ( ( immode .eq. 2 ) .and. 
+     +				  ( iprcp_mode .gt. 0 ) ) opmode = .true.
+			       IF ( ( immode .eq. 1 ) .and. 
+     +				  ( icair_mode .gt. 0 ) ) opmode = .true.
+			       IF ( ( immode .eq. 0 ) .and. 
+     +				  ( imntn_mode .gt. 0 ) ) opmode = .true.
+C                               opmode = .true.
 			       IF ( opmode ) THEN
 			          CALL ER_WMSG  ( 'NEX2GINI', 0, imgfls, ier )
 			          DO i=1,imndlv

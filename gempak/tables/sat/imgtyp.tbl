@@ -787,7 +787,8 @@ FIRE_WEATHER_PROD    FIRE_WX       0    255     78 -2**31      1 wfabba.tbl
 !DSP       31    3 inches,10,110,0,4;110,220,4,12;210,255,12,24     TICZ99 CHIZ
 !
 RADAR                EET           0    199     11  2**25      1 upc_eet.tbl
-RADAR                N0Q           0    255     11  2**26      1 upc_dhr.tbl
+!RADAR                N0Q           0    255     11  2**26      1 upc_dhr.tbl
+RADAR                N0R           0    105     11  2**26      1 upc_rad24.tbl
 RADAR                DHR           0    255     11  2**27      1 upc_dhr.tbl
 RADAR                DVL           0    255     11  2**28      1 upc_dvl.tbl
 RADAR                N1P           0    255      11  2**29      1 upc_n1p.tbl

@@ -1,5 +1,5 @@
 	SUBROUTINE GPINP  ( proj, gdarea, kxky, gfunc, satfil, radtim, 
-     +                      raddur, radfrq, cpyfil, stnfil, 
+     +                      raddur, radfrq, cpyfil, stnfil, radmode,
      +			    compress, iret )
 C************************************************************************
 C* GPINP								*
@@ -11,10 +11,9 @@ C*	  RADFRQ, CPYFIL, STNFIL, RADMODE, COMPRESS, IRET)		*
 C**									*
 C* Log:									*
 C* Chiz/Unidata	 3/01	Developed from GPMAP				*
-C* M. James/Unidata     12/13   Remove radmode                          *
 C************************************************************************
 	CHARACTER*(*)	proj, gdarea, kxky, gfunc, satfil, radtim,
-     +			raddur, radfrq, cpyfil, stnfil
+     +			raddur, radfrq, cpyfil, stnfil, radmode
 	LOGICAL		compress
 C-----------------------------------------------------------------------
 	CALL IP_STR  ( 'PROJ',    proj,   ier1 )
@@ -27,10 +26,11 @@ C-----------------------------------------------------------------------
 	CALL IP_STR  ( 'RADFRQ',  radfrq, ier8 )
 	CALL IP_STR  ( 'CPYFIL',  cpyfil, ier9 )
 	CALL IP_STR  ( 'STNFIL',  stnfil, ier10 )
-	CALL IP_LOG  ( 'COMPRESS', compress, ier11 )
+	CALL IP_STR  ( 'RADMODE', radmode, ier11 )
+	CALL IP_LOG  ( 'COMPRESS', compress, ier12 )
 C
 	iret =  ier1 + ier2 + ier3 + ier4 + ier5 + ier6 + ier7 + ier8 
-     +		+ ier9 + ier10 + ier11 
+     +		+ ier9 + ier10 + ier11 + ier12
 
 	IF  ( iret .ne. 0 )  iret = -2
 C*

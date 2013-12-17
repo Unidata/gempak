@@ -61,7 +61,7 @@ C
 
         SELECT CASE (imtype)
 C DHR
-          CASE (2**(27),2**(26))
+          CASE (2**(27))
             DO i=iminpix,imaxpix
               cmblev(i) = ''
               level = nint( (i-iminpix) * ratio) + iminval
