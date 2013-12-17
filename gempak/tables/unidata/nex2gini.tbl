@@ -14,7 +14,6 @@
 !		* 12-24 inches = 210-255
 !
 
-HHC        25    1 cat,1,150,1,150      TICZ99 CHIZ
 EET        26    2 KFt,0,72,0,70;130,200,0,70        TICZ99 CHIZ
 N0R        27    1 dBZ,0,105,-30,75     TICZ99 CHIZ
 DHR        28    1 dBZ,0,255,-32,94.5   TICZ99 CHIZ
@@ -22,6 +21,7 @@ DVL        29    1 Kg/m**2,0,255,0,80         TICZ99 CHIZ
 !DVL        29    5 Kg/m**2,2,20,0,0.189;20,60,0.189,0.54;60,100,0.54,1.51;100,140,1.51,4.23;140,254,4.23,80     TICZ99 CHIZ
 N1P        30    1 inches,20,255,0,11.75        TICZ99 CHIZ
 NTP        31    1 inches,10,250,0,24.00        TICZ99 CHIZ
+HHC        32    1 cat,1,150,1,150      TICZ99 CHIZ
 !
 ! testing
 !
