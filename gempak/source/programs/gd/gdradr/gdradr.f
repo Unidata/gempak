@@ -411,7 +411,7 @@ C
 C
 C*			Depricated Call to gd_clos?
 C
-		        CALL gd_clos(igdfln, ier)
+C		        CALL gd_clos(igdfln, ier)
 C
 		     END IF
 		  END IF
