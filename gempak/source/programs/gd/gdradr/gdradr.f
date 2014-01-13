@@ -7,6 +7,7 @@ C**									*
 C* Log:									*
 C* Chiz/Unidata		 3/01	Initial coding				*
 C* James/Unidata	 2/09   Added bin mins & mstrct to CTB_DTGET CSC*
+C* James/Unidata	 1/14   Removed deprecated GD_CLOS call         *
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 	INCLUDE		'IMGDEF.CMN'
@@ -409,7 +410,7 @@ C
      +			    gdattim(1), gdattim(2), parm, nbits,
      +			    ipktyp, ier)
 C
-C*			Depricated Call to gd_clos?
+C*			Depricated Call to gd_clos
 C
 C		        CALL gd_clos(igdfln, ier)
 C
