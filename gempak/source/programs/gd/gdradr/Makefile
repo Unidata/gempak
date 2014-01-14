@@ -31,9 +31,7 @@ LIBINC = \
 	$(GEMLIB) \
 	$(NETCDF) \
 	$(PNGLIB) \
-        $(XMLLIB) \
         $(ZLIB) \
-        $(CGEMLIB) \
 	$(RSLLIB) \
 	$(LIBBZ2)
 
