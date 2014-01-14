@@ -604,8 +604,7 @@ QPF          $MODEL/qpf                YYYYMMDDHH_*                             
 !
 !
 RCMG         $MODEL/radar              YYYYMMDD_radar.gem                               CAT_GRD  SCAT_ANL    4    720     30      OFF/0/0
-!NEXR         $GEMDATA/radar            YYYYMMDD_radr.gem                               CAT_GRD  SCAT_ANL    4    720     30      OFF/0/0
-NEXR         $GEMDATA/radar            YYYYMMDD_radr.gem                                CAT_GRD  SCAT_FCT    4    720     30      OFF/0/0
+NEXR         $GEMDATA/radar            YYYYMMDDHH_radr.gem                              CAT_GRD  SCAT_FCT    4    720     30      OFF/0/0
 NEX1K        $GEMDATA/radar            YYYYMMDD_rad1.gem                                CAT_GRD  SCAT_FCT    4    720     30      OFF/0/0
 CNEX1K       $GEMDATA/radar            YYYYMMDD_crad.gem                                CAT_GRD  SCAT_ANL    4    720     30      OFF/0/0
 NEXCOMB      $GEMDATA/radar            YYYYMMDD_comb.gem                                CAT_GRD  SCAT_FCT    4    720     30      OFF/0/0
