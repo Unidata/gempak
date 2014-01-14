@@ -30,6 +30,13 @@
 ! G. Grosshans/SPC	 08/11	- Removed CGX per CWSU who called regarding
 !				  watch #694 indicating anchor point is no
 !				  longer valid (Chicago area).
+! G. Grosshans/SPC	 08/13	- Commented out RQB, Roben Hood, MI per
+!				  OPS Branch Chief Bill Bunting.  Weiss and
+!				  Bill think this reference is too confusing
+!				  since its the name of an airport and not
+!				  Big Rapids, MI, where the airport is located.
+!				  Its still a "valid" anchor point, it just
+!				  will NOT be a anchor point fcsts can pick.
 !                
 !                                 NOTE: THIS IS A DRAFT FOR WEB
 ! 
@@ -708,7 +715,7 @@ RAC      000000 RACINE                           WI US  4276  -8781   205  0
 REO      000000 ROME                             OR US  4259 -11787  1234  0  
 RKR      000000 POTEAU                           OK US  3502  -9462   138  0  
 ROX      000000 ROSEAU                           MN US  4885  -9570   323  0  
-RQB      000000 ROBEN_HOOD                       MI US  4372  -8550   302  0  
+!RQB      000000 ROBEN_HOOD                       MI US  4372  -8550   302  0  
 RUE      000000 RUSSELLVILLE                     AR US  3525  -9309   120  0  
 RZZ      000000 ROANOKE_RAPIDS                   NC US  3644  -7771    77  0  
 SDA      000000 SHENANDOAH                       IA US  4075  -9542   296  0  
@@ -725,4 +732,3 @@ VPZ      000000 VALPARAISO                       IN US  4145  -8700   235  0
 VVV      000000 ORTONVILLE                       MN US  4531  -9642   335  0  
 2WX      000000 BUFFALO                          SD US  4557 -10352   915  0  
 6R6      000000 DRYDEN                           TX US  3004 -10221   707  0
-

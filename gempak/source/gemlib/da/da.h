@@ -37,7 +37,7 @@ typedef struct hash {
 typedef struct parm {
     char	*name;
     int		scale;
-    int		offset;
+    float	offset;
     int		bits;
     char	*key;
 } parm_t;
@@ -52,6 +52,16 @@ typedef struct part {
     int		numparms;
     parm_t	parms[MMPARM];
 } part_t;
+
+/* Substructure for the part information */
+typedef struct fhdr {
+    char	*name;
+    int		type;
+    int		length;
+    char	*pyfile;
+    char	*pymeth;
+    char	*dbkey;
+} fhdr_t;
 
 /* Structure for the information to emulate a GEMPAK file */
 typedef struct info {
@@ -73,6 +83,8 @@ typedef struct info {
     char	*cols[MMKEY];
     int		numparts;
     part_t	parts[MMPRT];
+    int		numfhdrs;
+    fhdr_t	fhdrs[MMPRT];
 } CommonInfo_t;
 
 /* Macros */
@@ -112,6 +124,7 @@ Hash_t dtype[] = { {"MDREAL",MDREAL},
 #define DAEXT extern
 extern Hash_t ftype[];
 extern Hash_t source[];
+extern Hash_t dtype[];
 #endif
 
 /* Type of data to return */
@@ -132,4 +145,4 @@ DAEXT	int	danumf;
 DAEXT	float	*daoutf;
 
 /* The file info structure */
-DAEXT	CommonInfo_t common;
+DAEXT	CommonInfo_t common[MMFILE];

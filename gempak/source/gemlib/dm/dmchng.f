@@ -23,6 +23,7 @@ C* K. Brill/NMC		08/90						*
 C* J. Whistler/SSAI	05/91		Changed .eq. to .eqv. for 	*
 C*					logical comparison		*
 C* J. Whistler/SSAI	07/91		Changed irecsz to MBLKSZ	*
+C* S. Jacobs/NCEP	 8/13		Added error for non-gempak file	*
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 	INCLUDE		'GMBDTA.CMN'
@@ -33,6 +34,13 @@ C*
 	CHARACTER	filnam*72
 C------------------------------------------------------------------------
 	iret = 0
+C
+C*	Check for a standard GEMPAK file.
+C
+	IF  ( .not. stdgem(iflno) )  THEN
+	    iret = -36
+	    RETURN
+	END IF
 C
 C*	Check that the file is open.
 C

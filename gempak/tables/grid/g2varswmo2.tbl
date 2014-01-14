@@ -378,8 +378,8 @@
 !
 ! Product Discipline 10 - Oceanographic Products
 ! CATEGORY 0 - Waves category
-!D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING  HZREMAP  DIRECTION
-!23|123|123|123|12345678901234567890123456789012|12345678901234567890|123456789012|12345|123456.89|12345678|1234567890
+!D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING 
+!23|123|123|123|12345678901234567890123456789012|12345678901234567890|123456789012|12345|123456.89
 010 000 000 000 Wave Spectra (1)                 -                    WVSP1            0  -9999.00
 010 000 001 000 Wave Spectra (2)                 -                    WVSP2            0  -9999.00
 010 000 002 000 Wave Spectra (3)                 -                    WVSP3            0  -9999.00
@@ -417,3 +417,8 @@
 010 004 001 000 Main Thermocline Anomaly         m                    MTHAN            0  -9999.00            
 010 004 002 000 Transient Thermocline Depth      m                    TTHDP            0  -9999.00            
 010 004 003 000 Salinity                         kg kg**-1            SLTY             0  -9999.00            
+! CATEGORY 2 - Ice
+!D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING
+!23|123|123|123|12345678901234567890123456789012|12345678901234567890|123456789012|12345|123456.89
+010 020 006 000 Ice Growth Rate                  m/s                  ICEG             0  -9999.00
+

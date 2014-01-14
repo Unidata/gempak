@@ -43,6 +43,7 @@ void dgc_nfil ( const char *gdfile, const char *gdoutf, int *iret )
  * T. Piper/SAIC        04/07   Modified for cfl_scnt CSC               *
  * M. Li/SAIC		10/07   Add check for files found after cfl_scnt*
  * F. J. Yen/NCEP	 4/08	Added bin mins & mstrct to CTG_DTGET CSC*
+ * S. Jacobs/NCEP	10/13	Added check for AWIPSDB data source	*
  ***********************************************************************/
 {
     char tmpfil[MXFLSZ], filnam[MXFLSZ], cpath[MXFLSZ], tmplt[65],
@@ -185,12 +186,14 @@ void dgc_nfil ( const char *gdfile, const char *gdoutf, int *iret )
 	    ctb_dtget ( tmpfil, cpath, tmplt, &ic, &is, &iff, &ir, &iint, 
 	        &ion, &ihb, &mnb, &iha, &mna, &mstrct, &idtmch, &ier );
 	    if ( ier != 0 ) exist = G_FALSE;
-	    cfl_inqr ( cpath, NULL, &flen, filnam, &ier );
-	    if ( ier != 0 ) exist = G_FALSE;
-	    if ( exist == G_FALSE ) { 
-		cmm_free2d( (void **)filnms, &ier );
-		*iret = -51;
-		return;
+	    if ( strcmp ( cpath, "AWIPSDB" ) != 0 ) {
+		cfl_inqr ( cpath, NULL, &flen, filnam, &ier );
+		if ( ier != 0 ) exist = G_FALSE;
+		if ( exist == G_FALSE ) { 
+		    cmm_free2d( (void **)filnms, &ier );
+		    *iret = -51;
+		    return;
+		}
 	    }
 
 /*

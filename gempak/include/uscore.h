@@ -166,6 +166,7 @@
  *				db_getgnav, db_gtim			*
  * S. Jacobs/NCEP	 4/11	Added shn_dcod				*
  * S. Jacobs/NCEP	 4/12	Added gg_osrd				*
+ * S. Jacobs/NCEP	 9/13	Added DA library functions		*
  ***********************************************************************/
 #ifdef UNDERSCORE
 
@@ -303,9 +304,15 @@
 #define	cvg_rdfilter	cvg_rdfilter_	
 
 #define da_getdtc	da_getdtc_
-#define da_getdtr	da_getdtr_
 #define da_getdti	da_getdti_
+#define da_getdtr	da_getdtr_
+#define da_getdtrgd	da_getdtrgd_
 
+#define da_getfilhdc	da_getfilhdc_
+#define da_getfilhdi	da_getfilhdi_
+#define da_getfilhdr	da_getfilhdr_
+
+#define da_getfhdr	da_getfhdr_
 #define da_getheader	da_getheader_
 #define da_getlabel     da_getlabel_
 #define da_getname      da_getname_
@@ -315,17 +322,6 @@
 #define da_getsorc      da_getsorc_
 #define da_getvers      da_getvers_
 #define da_readxml      da_readxml_
-
-#define db_gsathdr      db_gsathdr_
-#define db_gradhdr      db_gradhdr_
-#define db_open         db_open_
-#define db_rdtr         db_rdtr_
-#define db_getstinfo    db_getstinfo_
-#define db_getcycle     db_getcycle_
-#define db_getparm      db_getparm_
-#define db_getduri      db_getduri_
-#define db_getgnav      db_getgnav_
-#define db_gtim         db_gtim_
 
 #define dc_dcls		dc_dcls_
 #define dc_dira         dc_dira_

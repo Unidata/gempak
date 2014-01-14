@@ -17,6 +17,7 @@ C*					 -6 = write error		*
 C**									*
 C* Log:									*
 C* M. desJardins/GSFC	 3/87						*
+C* S. Jacobs/NCEP	 8/13	Do not flush if no write access		*
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 	INCLUDE		'GMBDTA.CMN'
@@ -26,6 +27,13 @@ C*	Check that the file is open.
 C
 	CALL DM_CHKF  ( iflno, iret )
 	IF  ( iret .ne. 0 )  RETURN
+C
+C*	Check that user has write access to file.
+C
+	IF  ( .not. wflag (iflno) )  THEN
+	    iret = -13
+	    RETURN
+	END IF
 C
 C*	Check each buffer in cache to see if it belongs to this file 
 C*	number and should be written.

@@ -57,6 +57,7 @@ C*					-16 = invalid packing terms	*
 C**									*
 C* Log:									*
 C* M. desJardins/GSFC	 3/87						*
+C* S. Jacobs/NCEP	 8/13	Added flag for standard gempak file	*
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 	INCLUDE		'GMBDTA.CMN'
@@ -98,6 +99,7 @@ C
 	    lundm  ( iflno ) = lun
 	    wflag  ( iflno ) = .true.
 	    kshare ( iflno ) = .false.
+	    stdgem ( iflno ) = .true.
 	END IF
 C
 C*	Save all data management values in common except first free word.

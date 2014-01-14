@@ -3,7 +3,24 @@
 #include "pgprm.h"
 #include "vgstruct.h"
 
+/*
+ *---------------------------------------------------------------------*
+ *          Functions used by vgfToXml from other libraries            *
+ *---------------------------------------------------------------------*
+ */
+void cvg_openj ( char *filnam, int wrtflg, FILE **fptr, int *iret );
+void cvg_rdjrecnoc ( char *fname, FILE *fptr, int fpos, VG_DBStruct *el, int *iret );
+int  cvg_v2x ( VG_DBStruct *el, char *buffer, int *iret );
+void cgr_segdist ( int *np, float *xx, float *yy, float *fx, float *fy,
+     float *distance, int *nearest_vrt, int *next_vrt, float *nx, float *ny, int *iret );
 
+
+/*
+ *---------------------------------------------------------------------*
+ *          Private functions and macros defined by vgfToXml              *
+ *---------------------------------------------------------------------*
+ */ 
+ 
 struct list_el {
    VG_DBStruct el;
    struct list_el * next;
@@ -11,9 +28,6 @@ struct list_el {
 typedef struct list_el item1;
 
 void insert(item1 ** head, int sd);
-void cvg_openj ( char *filnam, int wrtflg, FILE **fptr, int *iret );
-void cvg_rdjrecnoc ( char *fname, FILE *fptr, int fpos, VG_DBStruct *el, int *iret );
-int  cvg_v2x ( VG_DBStruct *el, char *buffer, int *iret );
 
 item1 *llist_bubble_sort(item1 *curr2);
 item1 *llist_bubble_sort_cloud_turb(item1 *curr2);
@@ -22,8 +36,6 @@ char  *getGroupType(int grptyp);
 char  *getSymType(VG_DBStruct *el);
 void getMatchContAttr(char *tblArray[], int *grpColor, char* contArray[], int tblArrayLen, int *ier);
 void getMatchGrptyp(char *lineGrptyp[], int *grptyp, int lineGrptypLen, char* grptypArray[], int *ier);
-void cgr_segdist ( int *np, float *xx, float *yy, float *fx, float *fy,
-     float *distance, int *nearest_vrt, int *next_vrt, float *nx, float *ny, int *iret );
 
 void convertElm(item1 *curr2, char *buffer, FILE *ofptr, char *tblArray[], int tblArrayLen);
 void getCcf(VG_DBStruct *el, char *buffer, int *ier);
@@ -39,13 +51,26 @@ void writeEndingCollection(VG_DBStruct *el, FILE *ofptr, int *grpNum, int *grpIn
 void writeEndingAsh(VG_DBStruct *el, FILE *ofptr, int *ier);
 
 
+/************************************************************************
+ * vgf2xml.c								*
+ *									*
+ * CONTENTS:								*
+ ***********************************************************************/
+/*
+ *---------------------------------------------------------------------*
+ *                   Public interface for vgfToXML                     *
+ *---------------------------------------------------------------------*
+ */
+
+/*=====================================================================*/
+
 int vgfToXml(char *vgfn, char *asfn, char *activity, char *subActivity, char *contTbl)
 
 /********************************************************************************
- * VGF2XML									*
+ * vgfToXml									*
  *										*
- * This program is a re-write of VGF2TAG.                               	*
- * It converts a file of pgen elements in VGF format into an XML file.		*
+ * This program is a re-write of VGF2TAG. It converts a file of pgen elements 	*
+ * in VGF format into an XML file.						*
  *										*
  *										*
  * Log: 									*
@@ -71,21 +96,24 @@ int vgfToXml(char *vgfn, char *asfn, char *activity, char *subActivity, char *co
  *                              Handled group with single symbol -- normal DE   *
  * Q.Zhou /Chug		03/12   Added grptyp & contour to the commandline table *
  * Q.Zhou /Chug         06/12   Added head only vgf conversion                  *
+ * Q.Zhou /Chug         08/12   Sigmet line width unit changed                  *
  ********************************************************************************/
 {
-int		nw, more, ier;
-int		wrtflg, curpos;
-VG_DBStruct	el ; 
-char		buffer[10000]; 
-char		infile[128], ifname[128];
-long		ifilesize;
-FILE		*ifptr, *ofptr;
+    int		nw, more, ier;
+    int		wrtflg, curpos;
+    VG_DBStruct	el ; 
+    char		buffer[10000]; 
+    char		infile[128], ifname[128];
+    long		ifilesize;
+    FILE		*ifptr, *ofptr;
 
-item1           *curr2, *head1, *head2; /* head1=begin, head2=end */
+    item1           *curr2, *head1, *head2; /* head1=begin, head2=end */
 
 /*---------------------------------------------------------------------*/
 
-/* Opening VGF file  */
+    /*
+     *  Opening the input VGF file  
+     */
     wrtflg = 0;
     cvg_openj ( vgfn, wrtflg, &(ifptr), &ier );
 
@@ -103,7 +131,10 @@ item1           *curr2, *head1, *head2; /* head1=begin, head2=end */
     curpos = 0;
     ifptr = (FILE *) cfl_ropn(ifname, "", &ier);
    
-/* Get productType string  */
+    
+    /*
+     * Get productType string - activity(subActivity). 
+     */
     char *productType;
     productType = (char *)malloc(128);
 
@@ -118,8 +149,33 @@ item1           *curr2, *head1, *head2; /* head1=begin, head2=end */
 	productType = "Default";
     }   
 
-    
-/* Get contour table file if it is not empty  */
+   
+    /*
+     *  Load the specified table - This is used for converting Contours or
+     *  converting a group type 8 (LABEL) into a CAVE outlook element - normally
+     *  a group type 8 will be converted into Contours element in CAVE. 
+     *  
+     *  If a VGF file contains grouped lines and labels, they will be checked for 
+     *  group type against this table. If a match is found, the matching information 
+     *  will be used to perform the conversion. 
+     *
+     *  groupIndicator		groupType	convertTo	convertedTypeName
+     *  group				8	outlook		FLOOD
+     *
+     * Contour conversion information
+     * To get contour parameter, level, forecast hour ... according to the contour line color
+     * 
+     * If a VGF file contains contour lines, they will be checked against the contour 
+     * color on this table. If a match is found, the information from the rest of the 
+     * row will be used to convert into an XML file.
+     * 
+     * color  	param   level1    level2    fcstHr  cint 		time1    time2
+     * 5  	HGHT    1000        -1      f000    60/0/100	20111213/1200    -1
+     * 6     	HGHT    1000       500      f024     6/0/100	20111213/1200    -1
+     * 2     	TEMP     850        -1      f018     3/0/100	20111213/1200    -1
+     * 3     	PRES       0        -1      f012     4/0/100	20111213/1200 	 -1
+     *  
+     */
     char *tblArray[64];   //store vgfConvert.tbl info
     
     int i = 0;
@@ -127,28 +183,36 @@ item1           *curr2, *head1, *head2; /* head1=begin, head2=end */
     FILE *fptr;
     long filesize;
     int iret; 
-   
+       
     if (contTbl != NULL && strcmp(contTbl, "") != 0) {
-    	cfl_inqr ( contTbl, NULL, &filesize, fname, &iret );  	
-    	fptr = (FILE *) cfl_ropn(fname, "", &iret);
+	cfl_inqr ( contTbl, NULL, &filesize, fname, &iret );
+	if ( iret == 0 ) {	
+    	    fptr = (FILE *) cfl_ropn(fname, "", &iret);
 
-    	if (iret == 0) {
-	    while (!feof ( fptr ) ) {
+    	    if (iret == 0) {
+	        while (!feof ( fptr ) ) {
 
-    	    	cfl_rdln( fptr, sizeof(contTitle), contTitle, &iret );
-		if ( iret == 0 && contTitle[0] != '!') {
-		    tblArray[i] = (char*)malloc(sizeof(contTitle));
-		    strcpy(tblArray[i], contTitle);		
+    	    	    cfl_rdln( fptr, sizeof(contTitle), contTitle, &iret );
+		    if ( iret == 0 && contTitle[0] != '!') {
+		       tblArray[i] = (char*)malloc(sizeof(contTitle));
+		       strcpy(tblArray[i], contTitle);		
 		    
-		    i++;
-		} 
+		       i++;
+		    } 
+	        }
 	    }
+	    
+	    fclose(fptr);
     	}
-	fclose(fptr);
+	else {
+            printf( "Warning: cannot find %s in current directory!\n", fname );	
+	}
     }
-    //printf("nofile %s\n",*tblArray);
 
-/* Read file header */
+
+    /*
+     * Read VG file header and write out an XML header. 
+     */
     cvg_rdjrecnoc( ifname, ifptr, curpos, &el, &ier );
 
     if (el.hdr.vg_type == FILEHEAD_ELM) {   
@@ -161,46 +225,52 @@ item1           *curr2, *head1, *head2; /* head1=begin, head2=end */
     }
 
 
-/* Read rest of the file */
-    /*init list*/
+    /*
+     * Read all other elements in the VG file 
+     */
     head1 = NULL;
     head2 = NULL;
     curr2 = NULL;
 
     while ( nw < MAX_EDITABLE_ELEMS && more == G_TRUE )  {
-	    cvg_rdjrecnoc( ifname, ifptr, curpos, &el, &ier );
+	cvg_rdjrecnoc( ifname, ifptr, curpos, &el, &ier );
 
-	    if ( ier < 0 )  {
-                more = G_FALSE;
+	if ( ier < 0 )  {
+            more = G_FALSE;
+	}
+	else {
+	    if (el.hdr.vg_type != FILEHEAD_ELM && el.hdr.delete ==0) {
+	    	curpos += el.hdr.recsz;
+	    	curr2 = (item1 *)malloc(sizeof(item1));     		
+	    	curr2->el =el;
+
+	    	//add curr2 to head1 head2 list
+		if (head1 == NULL) {
+    		    head1 = head2 = curr2;
+    		    head1->next = NULL;
+		}
+		else {	
+	    	    head2->next = curr2;
+	    	    head2 = curr2;
+	    	    head2->next = NULL;
+		}
 	    }
-	    else {
-		if (el.hdr.vg_type != FILEHEAD_ELM && el.hdr.delete ==0) {
-	    	    curpos += el.hdr.recsz;
-	    	    curr2 = (item1 *)malloc(sizeof(item1));     		
-	    	    curr2->el =el;
+	    else if (el.hdr.vg_type == FILEHEAD_ELM && el.hdr.delete ==0) { //second FILEHEAD, stop
+		break;
+	    }
+	    else {          // don't read if delete !=0
+		curpos += el.hdr.recsz;
+	    }
+      	}
 
-	    	    //add curr2	to head1 head2 list
-		    if (head1 == NULL) {
-    			head1 = head2 = curr2;
-    			head1->next = NULL;
-		    }
-		    else {	
-	    	    	head2->next = curr2;
-	    	    	head2 = curr2;
-	    	    	head2->next = NULL;
-		    }
-		}
-		else if (el.hdr.vg_type == FILEHEAD_ELM && el.hdr.delete ==0) { //second FILEHEAD, stop
-		    break;
-		}
-		else {          // don't read if delete !=0
-		    curpos += el.hdr.recsz;
-		}
-      	    }
- 	    nw++;			
+ 	nw++;			
     }
-
-    if (nw == 1) { //only FILEHEAD_ELM
+    
+    /*
+     *  If there is only a header in the VG file, end the XML file.
+     *  Otherwise, sort the list of VG elements.
+     */
+    if ( nw <= 1 ) {
         sprintf( buffer, "        </DrawableElement>\n      </Layer>\n    </Product>\n  </Products>\n");
 
     	cfl_writ ( ofptr, (int)strlen(buffer), (unsigned char*)buffer, &ier );
@@ -209,19 +279,24 @@ item1           *curr2, *head1, *head2; /* head1=begin, head2=end */
 
     	return ( 0 );
     }
-
-/* sort */
-    if (nw > 1) {
+    else {
      	head1 = llist_bubble_sort(head1); 
    
-    	/* sort cloud and turb further more */
+    	// sort cloud and turb further more
      	head1 = llist_bubble_sort_cloud_turb(head1); 
     }
+    
 
+    /*
+     *  Convert VG element list into CAVE elements in XML.
+     */
     curr2 = head1;
     convertElm(curr2, buffer, ofptr, tblArray, i);
+
   
-    // free spaces
+    /*
+     * free spaces
+     */
     int j = 0;
     for (j=0; j<i; j++)
 	free (tblArray[j]);
@@ -234,7 +309,20 @@ item1           *curr2, *head1, *head2; /* head1=begin, head2=end */
 }
 
 
-void convertElm(item1 *curr2, char *buffer, FILE *ofptr, char *tblArray[], int tblArrayLen) {
+
+/*----------------------------------------------------------------------*
+ *                   Private functions for vgfToXml                     *
+ *----------------------------------------------------------------------*
+ */
+ 
+void convertElm(item1 *curr2, char *buffer, FILE *ofptr, char *tblArray[], int tblArrayLen)
+/********************************************************************************
+ * convertElm									*
+ *										*
+ * Subroutine to convert a sorted list of VG elements into CAVE elements in XML.*
+ *										*
+ ********************************************************************************/
+{
     int ier;
     int nw = 0;
     char *xml_end = "";   /* last few tags */
@@ -277,14 +365,15 @@ void convertElm(item1 *curr2, char *buffer, FILE *ofptr, char *tblArray[], int t
     /* already sorted to typ, num, vg_typ */
     /* check if it has contour: grptyp=8 and have line+tex in 1 group */
     head = curr2;
-
+    int noutlook = 0;
     while (curr2) {
  	/* find matching grptyp from vgfConvert.tbl. 
-		grptypArray[0]=grptyp, grptypArray[1]=convertToType, grptypArray[2]=pgenType. grptypArray default to 0, default, default.
-		Need to check convertTo type grptypArray[1] against 'default' */
-	    int gt = curr2->el.hdr.grptyp;
-	    if (j != 0 && gt >0 && curr2->el.hdr.grpnum >0)
-    	    	getMatchGrptyp(lineGrptyp, &gt, j, grptypArray, &ier);
+	 * grptypArray[0]=grptyp, grptypArray[1]=convertToType, grptypArray[2]=pgenType. grptypArray default to 0, default, default.
+	 * Need to check convertTo type grptypArray[1] against 'default' 
+	 */
+	int gt = curr2->el.hdr.grptyp;
+	if ( j != 0 && gt >0 && curr2->el.hdr.grpnum > 0 )
+    	     getMatchGrptyp(lineGrptyp, &gt, j, grptypArray, &ier);
 
 	if (curr2->el.hdr.grptyp ==8 && strcmp (grptypArray[1], "default") ==0
 	    && (curr2->el.hdr.vg_type == LINE_ELM || curr2->el.hdr.vg_type == CIRCLE_ELM 
@@ -307,12 +396,14 @@ void convertElm(item1 *curr2, char *buffer, FILE *ofptr, char *tblArray[], int t
 	    && curr2->next->el.hdr.vg_type == SPTX_ELM
 	    && curr2->el.hdr.grpnum == curr2->next->el.hdr.grpnum ) {
 		
+		noutlook++;
 	    	hasOutlook = 1; //not used
-		printf("+ Outlooks founded.\n");
+                printf("Outlooks founded.\n" );
 	    	break;
 	}
 	curr2 = curr2->next;	
     }
+
 
     /* check if contour lines are grouped together */
     curr2 = head;
@@ -356,13 +447,13 @@ void convertElm(item1 *curr2, char *buffer, FILE *ofptr, char *tblArray[], int t
     	head = llist_bubble_sort_contour_group(head);
 
     /* test sorting */
-/*    curr2 = head;
-    while (curr2) {
-	printf("The elements after sort: %d\n", curr2->el.hdr.vg_type);
-	//printf("The lat: %f\n", curr2->el.elem.lin.latlon[0]);
-	curr2 = curr2->next;
-    }
-*/    	
+    /*    curr2 = head;
+	while (curr2) {
+	    printf("The elements after sort: %d\n", curr2->el.hdr.vg_type);
+	    //printf("The lat: %f\n", curr2->el.elem.lin.latlon[0]);
+	    curr2 = curr2->next;
+	}
+    */    	
 
     /* write xml */
 
@@ -434,6 +525,7 @@ void convertElm(item1 *curr2, char *buffer, FILE *ofptr, char *tblArray[], int t
 			|| (curr2->el.hdr.grptyp >=12 && curr2->el.hdr.grptyp <=14) || (atoi(grptypArray[0]) >=12 && atoi(grptypArray[0]) <=14)
 			|| curr2->el.hdr.grptyp ==16 || atoi(grptypArray[0]) == 16 
 			|| curr2->el.hdr.grptyp ==24 || atoi(grptypArray[0]) == 24) {
+		
 
 		// only outlook lines in a group
 		/*if (((curr2->el.hdr.vg_type == SPLN_ELM || curr2->el.hdr.vg_type == LINE_ELM) && curr2->next == NULL)
@@ -445,6 +537,7 @@ void convertElm(item1 *curr2, char *buffer, FILE *ofptr, char *tblArray[], int t
 		    printf("+ This outlook line is not an Outlook. Convert it to normal collection.\n");
 		    getCommonCollection(&(curr2->el), buffer, &commonText, &grpNum, &ier);
 		} */
+		
 		if ( ((curr2->el.hdr.vg_type == SPLN_ELM || curr2->el.hdr.vg_type == LINE_ELM)
 		    	&& curr2->next != NULL 
 			&& curr2->el.hdr.grpnum == curr2->next->el.hdr.grpnum 
@@ -456,7 +549,7 @@ void convertElm(item1 *curr2, char *buffer, FILE *ofptr, char *tblArray[], int t
 			    || curr2->el.hdr.vg_type == MARK_ELM || curr2->el.hdr.vg_type == CMBSY_ELM
 			    || curr2->el.hdr.vg_type == LINE_ELM || curr2->el.hdr.vg_type == SPLN_ELM) )
 		    	|| outlookText != 0) {
-		
+		        		           
 		    	getOutlooks(&(curr2->el), buffer, grptypArray[2], &outlookText, &grpNum, &ier);		   
 		}
 		
@@ -664,10 +757,12 @@ void convertElm(item1 *curr2, char *buffer, FILE *ofptr, char *tblArray[], int t
 		writeEndingCollection(&(curr2->el), ofptr, &grpNum, &grpInit, &grpColor, &contText, &symText, &outlookText, &commonText, &cloudText, &turbText, &ier);
 	    }
 
-/*else 
-writeEndingCollection(&(curr2->el), ofptr, &grpNum, &grpInit, &grpColor, &contText, &symText, &outlookText, &commonText, &cloudText, &turbText, &ier);*/
+	    /*
+	      else 
+		writeEndingCollection(&(curr2->el), ofptr, &grpNum, &grpInit, &grpColor, &contText, &symText, &outlookText, &commonText, &cloudText, &turbText, &ier);
+	     */
 
-	    /* contours grpnum>0*/
+	    /* contours grpnum>0 */
 	    else if ((curr2-> el.hdr.grptyp ==5 || curr2-> el.hdr.grptyp ==6
 		    || curr2-> el.hdr.grptyp ==8 ||curr2-> el.hdr.grptyp ==9 ||curr2-> el.hdr.grptyp ==27)
 		&& curr2->el.hdr.vg_type == SPTX_ELM 
@@ -751,7 +846,7 @@ writeEndingCollection(&(curr2->el), ofptr, &grpNum, &grpInit, &grpColor, &contTe
 		&& curr2-> el.hdr.grptyp != curr2->next-> el.hdr.grptyp )
 		
 		writeEndingCollection(&(curr2->el), ofptr, &grpNum, &grpInit, &grpColor, &contText, &symText, &outlookText, &commonText, &cloudText, &turbText, &ier);
-//temp need lin tx lin tx
+	    //temp need lin tx lin tx
 	    else if ((curr2-> el.hdr.grptyp ==7 || curr2->el.hdr.grptyp ==12 || curr2->el.hdr.grptyp ==13
                 || curr2->el.hdr.grptyp ==14 || curr2->el.hdr.grptyp ==16 || curr2->el.hdr.grptyp ==24)
                 //&& curr2->el.hdr.vg_type == SPLN_ELM
@@ -790,8 +885,10 @@ writeEndingCollection(&(curr2->el), ofptr, &grpNum, &grpInit, &grpColor, &contTe
  
     //free(curr2);
     
-/*  Ending  */
-    if (nw > 0) {  
+    /* 
+     * End the XML.
+     */
+    if ( nw > 0 ) {  
     	xml_end = "        </DrawableElement>\n";
     	cfl_writ ( ofptr, (int)strlen(xml_end), (unsigned char*)xml_end, &ier );
     	xml_end = "      </Layer>\n";
@@ -803,8 +900,16 @@ writeEndingCollection(&(curr2->el), ofptr, &grpNum, &grpInit, &grpColor, &contTe
     } 
 }
 
+/*---------------------------------------------------------------------*/   
 
-void getCcf(VG_DBStruct *el, char *buffer, int *ier) {
+void getCcf(VG_DBStruct *el, char *buffer, int *ier)
+/********************************************************************************
+ * getCcf									*
+ *										*
+ * Subroutine to convert a VG CCFP element into CAVE CCFP_SIGMET in XML		*
+ *										*
+ ********************************************************************************/
+{
     char *collection;
     //collectionName="CCFP_SIGMET:::10:::N:::null:::null:::40-74%:::300-340:::50-100%:::+:::Area"
     char *dir, *cover, *tops, *prob, *growth, *stype;
@@ -894,8 +999,16 @@ void getCcf(VG_DBStruct *el, char *buffer, int *ier) {
     sprintf( &(buffer[strlen(buffer)]), "            </DrawableElement>\n          </DECollection>\n");        		    		        
 }
 
+/*---------------------------------------------------------------------*/   
 
-void getWatch(VG_DBStruct *el, char *buffer, int *grpNum, int *ier) {
+void getWatch(VG_DBStruct *el, char *buffer, int *grpNum, int *ier) 
+/********************************************************************************
+ * getWatch									*
+ *										*
+ * Subroutine to convert a VG Watch element into CAVE Watch element in XML.	*
+ *										*
+ ********************************************************************************/
+{
     if ( el->hdr.vg_type == WBOX_ELM ) { 
 	
 	sprintf( buffer, "          <DECollection collectionName=\"Watch\">\n            <DrawableElement>\n" );	
@@ -907,7 +1020,16 @@ void getWatch(VG_DBStruct *el, char *buffer, int *grpNum, int *ier) {
     }
 }
 
-void getMatchContAttr(char *tblArray[], int *grpColor, char* contArray[], int tblArrayLen, int *ier) { //output contArray[]
+/*---------------------------------------------------------------------*/   
+
+void getMatchContAttr(char *tblArray[], int *grpColor, char* contArray[], int tblArrayLen, int *ier)
+/********************************************************************************
+ * getMatchContAttr								*
+ *										*
+ * Subroutine to get specified information to convert Contours.			*
+ *										*
+ ********************************************************************************/
+{
     char delims[] = " \t";
     char *firstWd = NULL;
     int i=0, j=0;
@@ -948,7 +1070,16 @@ void getMatchContAttr(char *tblArray[], int *grpColor, char* contArray[], int tb
     }*/	   
 }
 
-void getMatchGrptyp(char *lineGrptyp[], int *grptyp, int lineGrptypLen, char* grptypArray[], int *ier) {
+/*---------------------------------------------------------------------*/   
+
+void getMatchGrptyp(char *lineGrptyp[], int *grptyp, int lineGrptypLen, char* grptypArray[], int *ier)
+/********************************************************************************
+ * getMatchGrptyp								*
+ *										*
+ * Subroutine to get specified group type conversion.				*
+ *										*
+ ********************************************************************************/
+{
     char delims[] = " \t";
     char *firstWd;
     int i=0, j=0;
@@ -987,7 +1118,17 @@ void getMatchGrptyp(char *lineGrptyp[], int *grptyp, int lineGrptypLen, char* gr
     }
 }
 
-void getContour(VG_DBStruct *el, char *buffer, int *contText, int *grpNum, int *grpColor, char *tblArray[], int tblArrayLen, int *ier) {
+/*---------------------------------------------------------------------*/   
+
+void getContour(VG_DBStruct *el, char *buffer, int *contText, int *grpNum, 
+                int *grpColor, char *tblArray[], int tblArrayLen, int *ier)
+/********************************************************************************
+ * getWatch									*
+ *										*
+ * Subroutine to convert a VG contour into CAVE Contours element in XML.	*
+ *										*
+ ********************************************************************************/
+{
 
     char* contArray[7] = {"HGHT", "1000", "-1", "f000", "10", "20111213/1200", "-1"}; //array of 7 strings
   
@@ -1091,8 +1232,17 @@ void getContour(VG_DBStruct *el, char *buffer, int *contText, int *grpNum, int *
     }
 }
 
+/*---------------------------------------------------------------------*/   
 
-void getSymLab(VG_DBStruct *el, char *buffer, int *symText, int *grpNum, int *ier) {
+void getSymLab(VG_DBStruct *el, char *buffer, int *symText, int *grpNum, int *ier)
+/********************************************************************************
+ * getSymLab									*
+ *										*
+ * Subroutine to convert a VG symbol, marker, front element into CAVE labeled   *
+ * symbol, marker, front element in XML.					*
+ *										*
+ ********************************************************************************/
+{
     char *category = "";
     char* pgenType = "";
     char* pgenName = "";
@@ -1138,8 +1288,17 @@ void getSymLab(VG_DBStruct *el, char *buffer, int *symText, int *grpNum, int *ie
     }
 }
 
+/*---------------------------------------------------------------------*/   
  
-void getOutlooks(VG_DBStruct *el, char *buffer, char* outType, int *outlookText, int *grpNum, int *ier) {
+void getOutlooks(VG_DBStruct *el, char *buffer, char* outType, int *outlookText, 
+                 int *grpNum, int *ier) 
+/********************************************************************************
+ * getOutlooks									*
+ *										*
+ * Subroutine to convert a VG outlook into CAVE Outlook element in XML.		*
+ *										*
+ ********************************************************************************/
+{
 
     char* outlookType;
     if (strcmp(outType, "default") ==0)
@@ -1147,7 +1306,6 @@ void getOutlooks(VG_DBStruct *el, char *buffer, char* outType, int *outlookText,
     else
 	outlookType = outType;
     
-
     if (*grpNum ==0 ) { //&& (el->hdr.vg_type == LINE_ELM || el->hdr.vg_type == SPLN_ELM)) {
 	*grpNum = el->hdr.grpnum;		    
 	sprintf(buffer, "          <Outlook outlookType=\"%s\" name=\"Outlook\" pgenCategory=\"MET\" pgenType=\"%s\" parm=\"HGMT\" level=\"1000\" time=\"2010-03-22T12:45:08.981Z\" cint=\"10/0/100\">\n", outlookType, outlookType );		 
@@ -1174,9 +1332,20 @@ void getOutlooks(VG_DBStruct *el, char *buffer, char* outType, int *outlookText,
 	cvg_v2x ( el, buffer, ier );
 	*outlookText = 2;
     }
+    
 }
 
-void getCommonCollection(VG_DBStruct *el, char *buffer, int *commonText, int *grpNum, int *ier) {
+/*---------------------------------------------------------------------*/   
+
+void getCommonCollection(VG_DBStruct *el, char *buffer, int *commonText, 
+                         int *grpNum, int *ier) 
+/********************************************************************************
+ * getCommonCollection								*
+ *										*
+ * Subroutine to convert a VG element into a common CAVE collection		*
+ *										*
+ ********************************************************************************/
+{
     char* pgenCate = "";
     char* pgenType = "";
     char* pgenName = getGroupType(el->hdr.grptyp); 
@@ -1238,7 +1407,17 @@ void getCommonCollection(VG_DBStruct *el, char *buffer, int *commonText, int *gr
     }
 }
 
-void getCloud(VG_DBStruct *el, char *buffer, int *cloudText, int *grpNum, int *grpInit, int *ier) {
+/*---------------------------------------------------------------------*/   
+
+void getCloud(VG_DBStruct *el, char *buffer, int *cloudText, int *grpNum, 
+              int *grpInit, int *ier) 
+/********************************************************************************
+ * getCloud									*
+ *										*
+ * Subroutine to convert a VG cloud into CAVE Cloud element in XML.		*
+ *										*
+ ********************************************************************************/
+{
 
     /* draw Scollop line(3) */
     if ( *grpNum ==0 && el->hdr.vg_type == SPLN_ELM && el->elem.spl.info.spltyp == 3) {
@@ -1287,7 +1466,17 @@ void getCloud(VG_DBStruct *el, char *buffer, int *cloudText, int *grpNum, int *g
     }
 }
 
-void getTurb(VG_DBStruct *el, char *buffer, int *turbText, int *grpNum, int *grpInit, int *ier) {
+/*---------------------------------------------------------------------*/   
+
+void getTurb(VG_DBStruct *el, char *buffer, int *turbText, int *grpNum, 
+             int *grpInit, int *ier) 
+/********************************************************************************
+ * getTurb									*
+ *										*
+ * Subroutine to convert a VG Turb into CAVE Turb element in XML.		*
+ *										*
+ ********************************************************************************/
+{
 
     /* draw Turb line(dashed_line) */
     if ( *grpNum ==0 && el->hdr.vg_type == LINE_ELM ) {
@@ -1348,7 +1537,16 @@ void getTurb(VG_DBStruct *el, char *buffer, int *turbText, int *grpNum, int *grp
     }
 }
 
-void getVolc(VG_DBStruct *el, char *buffer, int *vol, int *ashFhr, int *ier) {
+/*---------------------------------------------------------------------*/   
+
+void getVolc(VG_DBStruct *el, char *buffer, int *vol, int *ashFhr, int *ier) 
+/********************************************************************************
+ * getVolc									*
+ *										*
+ * Subroutine to convert a VG volcano into CAVE Volcano element in XML.		*
+ *										*
+ ********************************************************************************/
+{
 
     char *strAsh00 = "        </DrawableElement>\n      </Layer>\n      <Layer name=\"OBS\" onOff=\"true\" monoColor=\"false\" filled=\"false\">\n        <Color red=\"255\" green=\"255\" blue=\"0\" alpha=\"255\"/>\n        <DrawableElement>\n";
 
@@ -1413,8 +1611,18 @@ void getVolc(VG_DBStruct *el, char *buffer, int *vol, int *ashFhr, int *ier) {
     }
 }
 
+/*---------------------------------------------------------------------*/   
 
-void writeEndingCollection(VG_DBStruct *el, FILE *ofptr, int *grpNum, int *grpInit, int *grpColor, int *contText, int *symText, int *outlookText, int *commonText, int *cloudText, int *turbText, int *ier) {
+void writeEndingCollection( VG_DBStruct *el, FILE *ofptr, int *grpNum, int *grpInit, 
+                            int *grpColor, int *contText, int *symText, int *outlookText, 
+			    int *commonText, int *cloudText, int *turbText, int *ier) 
+/********************************************************************************
+ * writeEndingCollection							*
+ *										*
+ * Subroutine to wirte ending XML tags.						*
+ *										*
+ ********************************************************************************/
+{
     char *xml_end = "        </DrawableElement>\n";
 
     if ((el->hdr.grptyp == 98 && el->hdr.vg_type == SPLN_ELM )
@@ -1432,36 +1640,36 @@ void writeEndingCollection(VG_DBStruct *el, FILE *ofptr, int *grpNum, int *grpIn
 	*cloudText = 0;
 	*turbText = 0;
     }
-
-else if (*outlookText != 0) {
-xml_end = "              </DrawableElement>\n            </DECollection>\n          </Outlook>\n";
+    else if (*outlookText != 0) {
+	xml_end = "              </DrawableElement>\n            </DECollection>\n          </Outlook>\n";
 	cfl_writ ( ofptr, (int)strlen(xml_end), (unsigned char*)xml_end, ier );
-*outlookText = 0;
-*grpNum = 0;
-}
-else if (*contText == 2) {
-xml_end = "              </DrawableElement>\n            </DECollection>\n          </Contours>\n";
-	    cfl_writ ( ofptr, (int)strlen(xml_end), (unsigned char*)xml_end, ier );
-*contText = 0;
-*grpInit = 0;
+	*outlookText = 0;
 	*grpNum = 0;
-}
-else if (*symText == 2) {
-xml_end = "            </DrawableElement>\n          </DECollection>\n";
+    }
+    else if (*contText == 2) {
+	xml_end = "              </DrawableElement>\n            </DECollection>\n          </Contours>\n";
+        cfl_writ ( ofptr, (int)strlen(xml_end), (unsigned char*)xml_end, ier );
+	*contText = 0;
+	*grpInit = 0;
+	*grpNum = 0;
+    }
+    else if (*symText == 2) {
+	xml_end = "            </DrawableElement>\n          </DECollection>\n";
 	cfl_writ ( ofptr, (int)strlen(xml_end), (unsigned char*)xml_end, ier );
-*symText = 0;
-*grpNum = 0;
-}
-else if (*commonText != 0) {
-xml_end = "            </DrawableElement>\n          </DECollection>\n";
+	*symText = 0;
+	*grpNum = 0;
+    }
+    else if (*commonText != 0) {
+	xml_end = "            </DrawableElement>\n          </DECollection>\n";
 	cfl_writ ( ofptr, (int)strlen(xml_end), (unsigned char*)xml_end, ier );
-*commonText = 0;
-*grpNum = 0;
-}
+	*commonText = 0;
+	*grpNum = 0;
+    }
 
 
 
-/*    else if ( el->hdr.grptyp ==1 || el->hdr.grptyp ==2 ) {  	
+/*  The following was commented out 
+    else if ( el->hdr.grptyp ==1 || el->hdr.grptyp ==2 ) {  	
 	xml_end = "            </DrawableElement>\n          </DECollection>\n";
 	cfl_writ ( ofptr, (int)strlen(xml_end), (unsigned char*)xml_end, ier );
 	*grpInit = 0;
@@ -1537,10 +1745,22 @@ xml_end = "            </DrawableElement>\n          </DECollection>\n";
 	xml_end = "            </DrawableElement>\n          </DECollection>\n";
 	cfl_writ ( ofptr, (int)strlen(xml_end), (unsigned char*)xml_end, ier );
 	*grpNum = 0;
-    }*/
+    }
+*/
+
 }
 
-void writeEndingAsh(VG_DBStruct *el, FILE *ofptr, int *ier) { // last ending tag will follow this
+/*---------------------------------------------------------------------*/
+  
+void writeEndingAsh(VG_DBStruct *el, FILE *ofptr, int *ier) 
+/********************************************************************************
+ * writeEndingAsh								*
+ *										*
+ * Subroutine to end an CAVE Ash/Volcano elemnet in XML.			*
+ *										*
+ ********************************************************************************/
+{
+ 
     char xmlStr[800] = " ";
     char *endAsh00 = "        </DrawableElement>\n      </Layer>\n      <Layer name=\"F00\" onOff=\"true\" monoColor=\"false\" filled=\"false\">\n        <Color red=\"255\" green=\"255\" blue=\"0\" alpha=\"255\"/>\n        <DrawableElement>\n";
     char *endAsh06 = "        </DrawableElement>\n      </Layer>\n      <Layer name=\"F06\" onOff=\"true\" monoColor=\"false\" filled=\"false\">\n        <Color red=\"0\" green=\"255\" blue=\"0\" alpha=\"255\"/>\n        <DrawableElement>\n";
@@ -1572,26 +1792,33 @@ void writeEndingAsh(VG_DBStruct *el, FILE *ofptr, int *ier) { // last ending tag
 	    cfl_writ ( ofptr, (int)strlen(xmlStr), (unsigned char*)xmlStr, ier );
     }
 
-    /* may not need these since after sort, they are not be used again 
+    /* may not need these since after sort, they are not used again 
     *vol = 0;
     *ashFhr = -1:
     */
 }
 
+/*---------------------------------------------------------------------*/
 
-/* Bubble sort on linked list, cloud will be sorted to dashed_line, scalloped_line, pointed_line, text */
-item1 *llist_bubble_sort(item1 *curr2){ 
+item1 *llist_bubble_sort( item1 *curr2 ) 
+/********************************************************************************
+ * llist_bubble_sort								*
+ *										*
+ * Bubble sort on linked list, cloud is sorted to dashed_line, scalloped_line	*
+ * pointed_line, and text							*
+ *										*
+ ********************************************************************************/
+{ 
     item1 *a = NULL; //curr
     item1 *b = NULL; //next
     item1 *c = NULL; //begin
     item1 *e = NULL; //end
     item1 *tmp = NULL;  
 
- /* 
-  * the `c' node precedes the `a' and `e' node pointing up 
-  * the node to which the comparisons are being made.  
-  */
-    
+   /* 
+    * the `c' node precedes the `a' and `e' node pointing up 
+    * the node to which the comparisons are being made.  
+    */    
     while (e != curr2->next) { 
  	c = a = curr2;
  	b = a->next;
@@ -1654,19 +1881,27 @@ item1 *llist_bubble_sort(item1 *curr2){
     return curr2;
 }
 
-/* Bubble sort on linked list for cloud and turb.  
- * Continue sort pointed_line and text, so closed line and text are together */
-item1 *llist_bubble_sort_cloud_turb(item1 *curr2){ 
-  item1 *a = NULL; //curr
-  item1 *b = NULL; //next
-  item1 *c = NULL; //begin
-  item1 *e = NULL; //end
-  item1 *tmp = NULL;  
+/*---------------------------------------------------------------------*/
 
- /* 
-  * the `c' node precedes the `a', and `e' node pointing up 
-  * the node to which the comparisons are being made.  
-  */
+item1 *llist_bubble_sort_cloud_turb( item1 *curr2 )
+/********************************************************************************
+ * llist_bubble_sort								*
+ *										*
+ * Bubble sort on linked list for cloud and turb.  				*
+ * Continue sort pointed_line and text, so closed line and text are together	*
+ *										*
+ ********************************************************************************/
+{ 
+    item1 *a = NULL; //curr
+    item1 *b = NULL; //next
+    item1 *c = NULL; //begin
+    item1 *e = NULL; //end
+    item1 *tmp = NULL;  
+
+    /* 
+     * the `c' node precedes the `a', and `e' node pointing up 
+     * the node to which the comparisons are being made.  
+     */
     while (e != curr2->next) {
 	c = a = curr2;
  	b = a->next;
@@ -1706,7 +1941,11 @@ item1 *llist_bubble_sort_cloud_turb(item1 *curr2){
 				+ fabs(a->el.elem.spl.latlon[0] - b->el.elem.spt.info.lat) >3 )
 
 			    || (a->el.hdr.vg_type == SPTX_ELM && b->el.hdr.vg_type == SPTX_ELM )
-			    ) )
+	    /* 
+     * the `c' node precedes the `a', and `e' node pointing up 
+     * the node to which the comparisons are being made.  
+     */
+		    ) )
 		) {
 
     		if(a == curr2) {
@@ -1737,8 +1976,16 @@ item1 *llist_bubble_sort_cloud_turb(item1 *curr2){
     return curr2;
 }
 
-/* In same groupNum, sort to line, text, line, text ... */
-item1 *llist_bubble_sort_contour_group(item1 *curr2) {
+/*---------------------------------------------------------------------*/
+
+item1 *llist_bubble_sort_contour_group( item1 *curr2 )
+/********************************************************************************
+ * llist_bubble_sort_contour_group						*
+ *										*
+ * Bubble sort on same groupNum, sort to line, text, line, text ...		*
+ *										*
+ ********************************************************************************/
+{ 
     item1 *tmp = NULL;
     item1 *head = NULL;  
 
@@ -1795,7 +2042,7 @@ item1 *llist_bubble_sort_contour_group(item1 *curr2) {
 
 	    if (lastText != NULL && lineCnt <= textCnt) {
 	    	while (text != NULL && text->next != NULL && text != lastText ) { // from lastLin(text) to lastText is the text element's number
-//printf("text %p\n",text); printf("next %p\n",text->next);printf("minDistPt %p\n",minDistPt);
+
 		    numpts = curr2->el.elem.lin.info.numpts;
 
     		    for (i=0; i<numpts; i++){
@@ -1859,8 +2106,20 @@ item1 *llist_bubble_sort_contour_group(item1 *curr2) {
     return curr2;
 }
 
+/*---------------------------------------------------------------------*/
 
-char * getGroupType(int grptyp) {
+char* getGroupType(int grptyp) 
+/********************************************************************************
+ * getGroupType									*
+ *										*
+ * Get the name of the group type.						*
+ *										*
+ * Note: 									*
+ *    This could be replaced by ces_gtgnam ( int grpid, char *grpnam, int *iret)*							*
+ *										*
+ ********************************************************************************/
+{ 
+
     char *outlookType = "";
 
     if (grptyp == 1)
@@ -1935,7 +2194,17 @@ char * getGroupType(int grptyp) {
     return outlookType;
 }
 
-char* getSymType(VG_DBStruct *el) {
+/*---------------------------------------------------------------------*/
+
+char* getSymType(VG_DBStruct *el) 
+/********************************************************************************
+ * getSymType									*
+ *										*
+ * Get the name of the symbol type.						*
+ *										*
+ *										*
+ ********************************************************************************/
+{
     char *pgenType = "";
 
     if ( el->hdr.vg_type == SPSYM_ELM && el->elem.sym.data.code[0] == 12.0 )
@@ -2086,24 +2355,29 @@ char* getSymType(VG_DBStruct *el) {
     return pgenType;
 }
 
+/*---------------------------------------------------------------------*/
 
-/*void insert(item1 ** head, int sd){
-item1 ** ptr2=head;
-if(*ptr2==NULL){
+/*
+void insert(item1 ** head, int sd){
+    item1 ** ptr2=head;
+    
+    if(*ptr2==NULL){
 	(*ptr2)=(item1*)malloc(sizeof(item1));
 	(*ptr2)->sd=sd;
 	(*ptr2)->next=NULL;
-}else{
+    }else{
 	while(*ptr2 != NULL){
 		ptr2 = &(*ptr2)->next;
 	}
 	(*ptr2)=(item1*)malloc(sizeof(item1));
 	(*ptr2)->sd=sd;
 	(*ptr2)->next=NULL;
+    }
 }
-}*/
+*/
 
-/*double getMinDistance(int n, double[] linx, double[] liny, double texx, double texy, int n, double distance){
+/*
+double getMinDistance(int n, double[] linx, double[] liny, double texx, double texy, int n, double distance){
     double temp = 0;
     int i=0;
     for (i=0; i<n; i++){
@@ -2114,4 +2388,5 @@ if(*ptr2==NULL){
 	    distance = temp;
     }
     return distance;
-}*/
+}
+*/

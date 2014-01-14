@@ -34,6 +34,7 @@ C**									*
 C* Log:									*
 C* T. Lee/GSC		 5/00	Initial coding				*
 C* D. Kidwell/NCEP	 4/05	Replaced 40 with MMPARM                 *
+C* T. Lee/NCWCP		10/13	Fixed interpolation bugs		*
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 C*
@@ -198,16 +199,17 @@ C
 	plog1  = ALOG ( pp ( 1 ) )
 	plog2  = ALOG ( pp ( 2 ) )
 	plog15 = ALOG ( 15. )
-	zjan =  hh ( 1 ) + ( hh ( 1 ) - hh ( 2 ) ) / 15.
+
+	zjan =  hh ( 1 ) + ( hh ( 2 ) - hh ( 1 ) ) / 15.
      +		* ( plat - rloc ( 1 ) )
-	pjan =  pp ( 1 ) * EXP ( ( plog1 - plog2 ) / plog15
+	pjan =  pp ( 1 ) * EXP ( ( plog2 - plog1 ) / plog15
      +		* ( ALOG ( plat ) - ALOG ( rloc ( 1 ) ) ) )
 C
 	plog3 = ALOG ( pp (3) )
 	plog4 = ALOG ( pp (4) )
-	zjul =  hh ( 3 ) + ( hh ( 3 ) - hh ( 4 ) ) / 15.
+	zjul =  hh ( 3 ) + ( hh ( 4 ) - hh ( 3 ) ) / 15.
      +		* ( plat - rloc ( 3 ) )
-	pjul =  pp ( 3 ) * EXP ( ( plog3 - plog4 ) / plog15
+	pjul =  pp ( 3 ) * EXP ( ( plog4 - plog3 ) / plog15
      +		* ( ALOG ( plat ) - ALOG ( rloc ( 3 ) ) ) )
 C
 C*	Interpolate to the data time. 

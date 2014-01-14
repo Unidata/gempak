@@ -18,6 +18,7 @@
 ! J. Lewis/AWC           7/06   Added HAwaian VOR points
 ! B. Entwistle/AWC       2/08   Changed 11 VOR points
 ! J. Lewis/AWC		11/12	Changed VRB to TRV
+! L. Hinson/AWC         09/13   Changed JAN to MHZ
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !
 !STID    STNM   NAME                             ST CO   LAT    LON  ELV PRI
@@ -147,7 +148,7 @@ BDF      000024 BRADFORD                         IL US  4116  -8959     0  0
 DLL      000310 DELLS                            WI US  4355  -8976     0  0
 MEM      000173 MEMPHIS                          TN US  3506  -8998     0  0
 LEV      000349 GRAND_ISLE                       LA US  2918  -9010     0  0
-JAN      000142 JACKSON                          MS US  3251  -9017     0  0
+MHZ      000142 MAGNOLIA                         MS US  3243  -9010     0  0
 HRV      000195 HARVEY                           LA US  2985  -9000     0  0
 FAM      000097 FARMINGTON                       MO US  3767  -9023     0  0
 MCB      000169 MC_COMB                          MS US  3130  -9026     0  0

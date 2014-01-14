@@ -9,6 +9,7 @@ C* M. desJardins/GSFC	 3/89	Added grid packing			*
 C* M. desJardins/NMC	 5/91	Added logical vars for data types	*
 C* K. Brill/HPC		11/02	ksgrid (LLMXGD) -> ksgrid (LLMXTG)	*
 C* D.W.Plummer/NCEP	09/06	Remove ksgrid entirely			*
+C* S. Jacobs/NCEP	 6/13	Added flag for standard GEMPAK files	*
 C************************************************************************
 	LOGICAL		kvmst, kieeet, mvmst, mieeet
 C*
@@ -160,13 +161,15 @@ C*									*
 C* This common area stores file information for the DM subroutines.	*
 C**									*
 C************************************************************************
-	LOGICAL		wflag, kshare
+	LOGICAL		wflag, kshare, stdgem
 C
 	COMMON  /DMFILE/
      +		wflag   (MMFILE),
 C!						! write flag
-     +		kshare  (MMFILE)
+     +		kshare  (MMFILE),
 C!						! shared access flag
+     +		stdgem  (MMFILE)
+C!						! standard file flag
 C
 C------------------------------------------------------------------------
 C************************************************************************

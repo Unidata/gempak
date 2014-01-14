@@ -6,7 +6,10 @@ ANOTYP
 AWPSFL                                                                                                                                  
 ANLYSS  4/2;2;2;2                                                                                                                       
 AREA    WV                                                                                                                              
+ASCT                                                                                                                                    
+ASDI                                                                                                                                    
 ATCF                                                                                                                                    
+BND                                                                                                                                     
 BORDER  1                                                                                                                               
 BOXLIN                                                                                                                                  
 BUFRFIL                                                                                                                                 
@@ -14,6 +17,7 @@ CENTER
 CINT    0                                                                                                                               
 CLEAR   YES                                                                                                                             
 CLRBAR                                                                                                                                  
+CNTR                                                                                                                                    
 CNTRFL                                                                                                                                  
 COLORS  1                                                                                                                               
 COLUMN  1                                                                                                                               
@@ -29,24 +33,29 @@ DELTAN
 DELTAX                                                                                                                                  
 DELTAY                                                                                                                                  
 DEVICE  XW                                                                                                                              
+DITHER                                                                                                                                  
 DTAAREA                                                                                                                                 
+ECHO                                                                                                                                    
 EDGEOPTS                                                                                                                                
+EDR                                                                                                                                     
 ENCY                                                                                                                                    
 EXTEND  2;2;2;2                                                                                                                         
+FFA                                                                                                                                     
 FHOUR                                                                                                                                   
+FHR                                                                                                                                     
 FILTER  YES                                                                                                                             
 FINT    0                                                                                                                               
 FLINE   10-20                                                                                                                           
 FXYTBL                                                                                                                                  
+GAIRM                                                                                                                                   
 GAMMA   0.3                                                                                                                             
 GAREA   WV                                                                                                                              
-IJSKIP                                                                                                                                  
 GBDIAG                                                                                                                                  
 GBFILE                                                                                                                                  
 GBTBLS                                                                                                                                  
 GDATTIM LAST                                                                                                                            
 GDEFIL  GDLIST.FIL                                                                                                                      
-GDFILE  $GEMPAK/data/hrcbob.grd                                                                                                             
+GDFILE  $GEMDATA/HRCBOB.GRD                                                                                                             
 GDNUM   LIST                                                                                                                            
 GDOUTF                                                                                                                                  
 GDPFUN  TMPC                                                                                                                            
@@ -77,6 +86,8 @@ HISTGRD NO
 HLSYM                                                                                                                                   
 HRCN                                                                                                                                    
 IDNTYP  STID                                                                                                                            
+IJSKIP                                                                                                                                  
+IMBAR                                                                                                                                   
 IMCBAR                                                                                                                                  
 INDXFL                                                                                                                                  
 INFO                                                                                                                                    
@@ -96,12 +107,15 @@ MAP     1
 $MAPFIL HIPOWO.CIA                                                                                                                      
 MARKER  0                                                                                                                               
 MAXGRD  200                                                                                                                             
+MAXTOP                                                                                                                                  
+MESO                                                                                                                                    
 MIXRLN  0                                                                                                                               
 MSCALE  0                                                                                                                               
 MRGDAT  YES                                                                                                                             
 NCON                                                                                                                                    
 NPASS   2                                                                                                                               
 NTRACE  5                                                                                                                               
+OSCT                                                                                                                                    
 OUTFIL                                                                                                                                  
 OUTPUT  T                                                                                                                               
 OVERWR  NO                                                                                                                              
@@ -115,7 +129,11 @@ PROJ    MER
 PTYPE   LOG                                                                                                                             
 QCNTL                                                                                                                                   
 QSCT                                                                                                                                    
+RADDUR                                                                                                                                  
 RADFIL                                                                                                                                  
+RADINFO                                                                                                                                 
+RADTIM                                                                                                                                  
+RCMFIL                                                                                                                                  
 REGION  VIEW                                                                                                                            
 REFVEC                                                                                                                                  
 $RESPONDYES                                                                                                                             
@@ -125,11 +143,17 @@ SAVFIL
 SCALE   999                                                                                                                             
 SEARCH  20                                                                                                                              
 SFEFIL  SFLIST.FIL                                                                                                                      
-SFFILE  $GEMPAK/data/hrcbob.sfc                                                                                                             
+SFFILE  $GEMDATA/HRCBOB.SFC                                                                                                             
 SFFSRC                                                                                                                                  
 SFOUTF                                                                                                                                  
 SFPARM  SKYC;TMPF;WSYM;PMSL;;DWPF;BRBK                                                                                                  
 SFPRMF  METAR.PACK                                                                                                                      
+SGWH                                                                                                                                    
+SGWHA                                                                                                                                   
+SGWHC                                                                                                                                   
+SGWHE                                                                                                                                   
+SGWHG                                                                                                                                   
+SGWH2                                                                                                                                   
 SHAPE                                                                                                                                   
 SHIPFL  NO                                                                                                                              
 SHRTTL                                                                                                                                  
@@ -137,11 +161,12 @@ SKIP    0
 SKPMIS  NO                                                                                                                              
 SNBUFR                                                                                                                                  
 SNEFIL  SNLIST.FIL                                                                                                                      
-SNFILE  $GEMPAK/data/hrcbob.snd                                                                                                             
+SNFILE  $GEMDATA/HRCBOB.SND                                                                                                             
 SNOUTF                                                                                                                                  
 SNPARM  ;TMPC;;HGHT;DWPC;BRBM                                                                                                           
 SNPRMF  SNMERG.PACK                                                                                                                     
 SOURCE  SF                                                                                                                              
+STAT                                                                                                                                    
 STATION BWI                                                                                                                             
 STNCOL  1                                                                                                                               
 STNDEX  SHOW                                                                                                                            
@@ -151,6 +176,7 @@ STNTYP  A
 STREAM                                                                                                                                  
 STRMID                                                                                                                                  
 SVRL                                                                                                                                    
+TAG                                                                                                                                     
 TAXIS                                                                                                                                   
 TCMG                                                                                                                                    
 TEXT    1                                                                                                                               
@@ -166,6 +192,7 @@ TRACE5  CLDS;;WSYM/6
 TRAK1                                                                                                                                   
 TRAK2                                                                                                                                   
 TRAKE                                                                                                                                   
+TVS                                                                                                                                     
 TXTCOL                                                                                                                                  
 TXTFIL                                                                                                                                  
 TXTLOC                                                                                                                                  
@@ -185,7 +212,4 @@ WOU
 WCN                                                                                                                                     
 WCP                                                                                                                                     
 WSAT                                                                                                                                    
-FHR                                                                                                                                     
-TAG                                                                                                                                     
-STAT                                                                                                                                    
-ASCT                                                                                                                                    
+WSPDA                                                                                                                                   

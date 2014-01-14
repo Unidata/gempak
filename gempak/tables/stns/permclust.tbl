@@ -37,6 +37,13 @@
 !                               St. Mary's County: ANZ534 and ANZ537
 !                               so the change is add 542 to Calvert and remove
 !                               534 from Calvert, since its w/St. Mary's
+! G. Grosshans/SPC	06/11	Updated per WFO CAR WCN Noelle Runyan to uncluster Hancock and
+!				Washington counties from coastal waters:
+!				CAR|Hancock+costal_waters|23009+670500
+!				CAR|Washington+costal_waters|23029+670500
+! G. Grosshans/SPC	08/13	Updated per WFO BOU MIC Nezette and SPC Bill Bunting
+!				to perm cluster Broomfield county/city to Jefferson
+!				county...email July 2013.
 !--------------------------------------------------------------------------
 !
 ! MARINE ZONES GREAT LAKES
@@ -48,14 +55,15 @@
 ! then the marine zone will ALWAYS be in.
 !BUF|Erie|36029+630200
 !BUF|Niagara|36063+630200
+BOU|Jefferson+Broomfield|8059 + 8014
 BOX|Bristol+Newport+Narag Bay|44001 + 44005 + 672360
 BOX|Norfolk + Boston Harbor|25021 + 672300
 BOX|Dukes+Vineyard&Nantucket Snd|25007 + 672320 + 672330
 BOX|Washington + Block Isl Snd|44009 + 672370
 BOX|Suffolk + Boston Harbor|25025 + 672300
 BOX|Plymouth+Boston Harbor|25023+672300
-CAR|Hancock+costal_waters|23009+670500
-CAR|Washington+costal_waters|23029+670500
+!CAR|Hancock+costal_waters|23009+670500
+!CAR|Washington+costal_waters|23029+670500
 CHS|Charleston|45019+663300
 CLE|Cuyahoga|39035+631460
 CRP|Calhoun + Bays|48057 + 682350

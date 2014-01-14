@@ -24,3 +24,5 @@ GVCORD  none
 GDPFUN  tmxf
 !GDPFUN  add(32,mul(1.8,sub(tmxk,273.15)))!add(32,mul(1.8,sub(tmxk,273.15)))
 TITLE   1/-2/~ ? NDFD MAX TEMP |~MAX TEMP
+FILTER  NO
+IJSKIP  NO

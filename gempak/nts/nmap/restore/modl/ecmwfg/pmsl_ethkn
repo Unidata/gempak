@@ -26,3 +26,5 @@ REFVEC
 TITLE   5/-2/~ PMSL, EST 1000-500 MB THICKNESS|~MSLP, EST 1000-500 THKN!
 TEXT    1/21//hw                                                                
 CLEAR   yes                                                                     
+FILTER  NO
+IJSKIP  NO

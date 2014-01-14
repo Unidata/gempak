@@ -101,7 +101,7 @@ void da_runpy ( char *pyfile, char *pymeth, int *iret )
 
 		    case DAFLOAT:
 			danumf = PyList_Size(pValue);
-			daoutf = (float *)malloc(danumi*sizeof(float));
+			daoutf = (float *)malloc(danumf*sizeof(float));
 			for ( ii = 0; ii < danumf; ii++ ) {
 			    daoutf[ii] = (float)PyFloat_AsDouble(
 				    		PyList_GetItem(pValue,ii));

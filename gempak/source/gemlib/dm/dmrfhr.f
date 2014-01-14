@@ -30,6 +30,7 @@ C* Log:									*
 C* M. desJardins/GSFC	 4/87						*
 C* M. desJardins/GSFC	 5/90	Add translation for diff machines	*
 C* m. gamazaychikov/CWS 04/11   Add code for A2DB connectivity          *
+C* S. Jacobs/NCEP	 8/13	Call DA lib for non-gempak files	*
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 	INCLUDE		'dmcmn.cmn'
@@ -43,6 +44,14 @@ C*	Check that file is open.
 C
 	CALL DM_CHKF ( iflno, iret )
 	IF  ( iret .ne. 0 ) RETURN
+C
+C*	Check for non-standard file.
+C
+	IF  ( .not. stdgem(iflno) )  THEN
+	    CALL DA_RFHR ( iflno, fhdnam, mxword,
+     +			   rheadr, nword, iret )
+     	    RETURN
+	END IF
 C
 C*	Check that this is a valid file header name.
 C

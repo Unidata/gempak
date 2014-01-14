@@ -10,8 +10,27 @@ ALIB = $(OS_LIB)/libxml2.a
 CFLAGS += -I$(OS_INC)/libxml2
 
 COBJS = \
-	$(ALIB)(dareadxml.o) \
-	$(ALIB)(darunpy.o)
+        $(ALIB)(dainfo.o) \
+        $(ALIB)(daopen.o) \
+        $(ALIB)(dardtc.o) \
+        $(ALIB)(dardti.o) \
+        $(ALIB)(dardtr.o) \
+        $(ALIB)(dardtrgd.o) \
+        $(ALIB)(darfhc.o) \
+        $(ALIB)(darfhi.o) \
+        $(ALIB)(darfhr.o) \
+        $(ALIB)(dagetdtc.o) \
+        $(ALIB)(dagetdti.o) \
+        $(ALIB)(dagetdtr.o) \
+        $(ALIB)(dagetdtrgd.o) \
+        $(ALIB)(dagetfilhdc.o) \
+        $(ALIB)(dagetfilhdi.o) \
+        $(ALIB)(dagetfilhdr.o) \
+        $(ALIB)(dagetheader.o) \
+        $(ALIB)(dagetinfo.o) \
+        $(ALIB)(dareadxml.o) \
+        $(ALIB)(darunpy.o) \
+        $(ALIB)(testda.o) \
 
 GDIR = da
 

@@ -24,20 +24,28 @@ C*					 -9 = invalid location		*
 C*					-10 = invalid part name		*
 C**									*
 C* Log:									*
-C* M. desJardins/GSFC	7/87						*
+C* M. desJardins/GSFC	 7/87						*
+C* S. Jacobs/NCEP	 8/13	Added checks for non-gempak files	*
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 	INCLUDE		'dmcmn.cmn'
 C
 	CHARACTER*(*)	part
 	LOGICAL		datflg
-C------------------------------------------------------------------------	
+C------------------------------------------------------------------------
 	datflg = .false.
 C
 C*	Check that file is open.
 C
 	CALL DM_CHKF ( iflno, iret )
 	IF  ( iret .ne. 0 ) RETURN
+C
+C*	Check for a standard file.
+C
+	IF  ( .not. stdgem(iflno) )  THEN
+	    iret = -36
+	    RETURN
+	END IF
 C
 C*	Check for valid row and column positions.
 C

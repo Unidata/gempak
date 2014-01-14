@@ -19,6 +19,7 @@ void df_nmin ( int *iret )
  **									*
  * Log:									*
  * C. Melick/SPC	06/12						*
+ * C. Melick/SPC        08/13   Correction to gnumn for missing data    *
  ************************************************************************/
 {
     int num1, num2, num3, num, kxd, kyd, ksub1, ksub2, zero, indx, ier;
@@ -158,7 +159,8 @@ void df_nmin ( int *iret )
                         if ( ERMISS ( gnum1[boxindx] ) ) {
                            if (dist[boxindx] <= radius) {
                              if ( ERMISS ( gnumn[boxindx] ) ) {
-                                 gnumn[boxindx] = gnumn[indx]; 
+                          /*  gnumn[boxindx] = gnumn[indx];  */
+                                 gnumn[boxindx] = gnum1[indx]; 
                              } else if ( gnum1[indx] < gnumn[boxindx] ) {
                                  gnumn[boxindx] = gnum1[indx];
                              }

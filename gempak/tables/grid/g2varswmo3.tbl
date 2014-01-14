@@ -292,3 +292,8 @@
 010 000 012 000 Secondary Wave Direction         Degree True          DIRSW            0  -9999.00
 010 000 013 000 Secondary Wave Mean Period       s                    PERSW            0  -9999.00
 010 000 192 000 Wave Steepness                   -                    WSTP             0  -9999.00
+!
+! CATEGORY 2 - Ice
+!D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING
+!23|123|123|123|12345678901234567890123456789012|12345678901234567890|123456789012|12345|123456.89
+010 020 006 000 Ice Growth Rate                  m/s                  ICEG             0  -9999.00

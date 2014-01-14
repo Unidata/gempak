@@ -1,0 +1,33 @@
+GDATTIM all
+GLEVEL  6000:0
+GVCORD  hght
+PANEL   0
+SKIP    0
+SCALE   15
+GDPFUN  vash
+TYPE    f
+CONTUR  0
+CINT          
+LINE          
+FINT    .01;.1;1;10;100
+FLINE   0;26;3;5;17;2
+HILO          
+HLSYM         
+CLRBAR  1     
+WIND    BM1
+REFVEC        
+TITLE   5/-2/~  Low Lvl  Volc Ash Concen
+TEXT    1/21/hw
+CLEAR   YES
+DEVICE  XW
+STNPLT        
+SATFIL        
+RADFIL        
+LUTFIL        
+STREAM        
+POSN    0
+COLORS  1
+MARKER  0
+GRDLBL  0
+FILTER  YES
+IJSKIP  NO

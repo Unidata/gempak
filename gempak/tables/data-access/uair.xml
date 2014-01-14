@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:GempakDataAccess xmlns:tns="http://www.example.org/GempakDataAccess" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/GempakDataAccess GempakDataAccess.xsd ">
+
+    <filelabel text="AWIPS DB CONFIGURATION FILE" version="1" />
+    <filetype type="MFSN" source="MFRAOB" />
+    <dbserver host="nco-lw-msmith" />
+    <dbtable name="bufrua" />
+    <rows pyfile="TimeRetriever" pymeth="gettimes" dbkey="refHour">
+	<row name="DATE" />
+	<row name="TIME" />
+    </rows>
+    <columns pyfile="StationRetriever" pymeth="getstations" dbkey="-">
+	<column name="STID" />
+	<column name="STNM" />
+	<column name="SLAT" />
+	<column name="SLON" />
+	<column name="SELV" />
+	<column name="STAT" />
+	<column name="COUN" />
+	<column name="STD2" />
+	<column name="SPRI" />
+    </columns>
+    <parts>
+	<part name="TTAA" type="MDREAL" pyfile="StationDataRetriever" pymethdata="getleveldata" pymethhdr="getheader">
+	    <parameters>
+		<parameter name="PRES" scale="-2" offset="0" bits="0" key="prMan" />
+		<parameter name="TEMP" scale="0" offset="-273.15" bits="0" key="tpMan" />
+		<parameter name="DWPT" scale="0" offset="-273.15" bits="0" key="tdMan" />
+		<parameter name="DRCT" scale="0" offset="0" bits="0" key="wdMan" />
+		<parameter name="SPED" scale="0" offset="0" bits="0" key="wsMan" />
+		<parameter name="HGHT" scale="0" offset="0" bits="0" key="htMan" />
+	    </parameters>
+	</part>
+	<part name="TTBB" type="MDREAL" pyfile="StationDataRetriever" pymethdata="getleveldata" pymethhdr="getheader">
+	    <parameters>
+		<parameter name="PRES" scale="-2" offset="0" bits="0" key="prSigT" />
+		<parameter name="TEMP" scale="0" offset="-273.15" bits="0" key="tpSigT" />
+		<parameter name="DWPT" scale="0" offset="-273.15" bits="0" key="tdSigT" />
+	    </parameters>
+	</part>
+	<part name="PPBB" type="MDREAL" pyfile="StationDataRetriever" pymethdata="getleveldata" pymethhdr="getheader">
+	    <parameters>
+		<parameter name="HGHT" scale="0" offset="0" bits="0" key="htSigW" />
+		<parameter name="DRCT" scale="0" offset="0" bits="0" key="wdSigW" />
+		<parameter name="SPED" scale="0" offset="0" bits="0" key="wsSigW" />
+	    </parameters>
+	</part>
+	<part name="TTCC" type="MDREAL" pyfile="StationDataRetriever" pymethdata="getleveldata" pymethhdr="getheader">
+	    <parameters>
+		<parameter name="PRES" scale="-2" offset="0" bits="0" key="prMan" />
+		<parameter name="TEMP" scale="0" offset="-273.15" bits="0" key="tpMan" />
+		<parameter name="DWPT" scale="0" offset="-273.15" bits="0" key="tdMan" />
+		<parameter name="DRCT" scale="0" offset="0" bits="0" key="wdMan" />
+		<parameter name="SPED" scale="0" offset="0" bits="0" key="wsMan" />
+		<parameter name="HGHT" scale="0" offset="0" bits="0" key="htMan" />
+	    </parameters>
+	</part>
+	<part name="TTDD" type="MDREAL" pyfile="StationDataRetriever" pymethdata="getleveldata" pymethhdr="getheader">
+	    <parameters>
+		<parameter name="PRES" scale="-2" offset="0" bits="0" key="prSigT" />
+		<parameter name="TEMP" scale="0" offset="-273.15" bits="0" key="tpSigT" />
+		<parameter name="DWPT" scale="0" offset="-273.15" bits="0" key="tdSigT" />
+	    </parameters>
+	</part>
+	<part name="PPDD" type="MDREAL" pyfile="StationDataRetriever" pymethdata="getleveldata" pymethhdr="getheader">
+	    <parameters>
+		<parameter name="HGHT" scale="0" offset="0" bits="0" key="htSigW" />
+		<parameter name="DRCT" scale="0" offset="0" bits="0" key="wdSigW" />
+		<parameter name="SPED" scale="0" offset="0" bits="0" key="wsSigW" />
+	    </parameters>
+	</part>
+    </parts>
+
+</tns:GempakDataAccess>

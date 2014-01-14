@@ -24,6 +24,8 @@ void jpcpack(g2float *fld,g2int width,g2int height,g2int *idrstmpl,
 //                       options.
 // 2005-05-10  Gilbert - Imposed minimum size on cpack, used to hold encoded
 //                       bit string.
+// 2013-09-11  Jacobs - Modified check for min and max the same to account
+//                      for scaling
 //
 // USAGE:    jpcpack(g2float *fld,g2int width,g2int height,g2int *idrstmpl,
 //                   unsigned char *cpack,g2int *lcpack);
@@ -99,7 +101,7 @@ void jpcpack(g2float *fld,g2int width,g2int height,g2int *idrstmpl,
 //  value (rmin) is the value for each point in the field and
 //  set nbits to 0.
 //
-      if ( ! G_DIFF (rmin, rmax)  &&  maxdif != 0 ) {
+      if ( ! G_DIFF (rmin*dscale, rmax*dscale)  &&  maxdif != 0 ) {
         ifld=(g2int *)malloc(ndpts*sizeof(g2int));
         //
         //  Determine which algorithm to use based on user-supplied 

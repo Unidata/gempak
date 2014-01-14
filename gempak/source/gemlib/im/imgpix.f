@@ -64,6 +64,7 @@ C* D.W.Plummer/NCEP	 3/03	Changes for 10-bit GVAR imagery		*
 C* T. Lee/SAIC		 4/03	Allowed T-12h for THTE search		*
 C* T. Lee/SAIC		 5/03	Initialized variables			*
 C* D.W.Plummer/NCEP	 6/04	Calling seq chg to GSATPX, add IM_ICMN	*
+C* T. Lee/NCWCP		10/13	Passed dattim to sn_ghgt		*
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 	INCLUDE		'IMGDEF.CMN'
@@ -184,7 +185,7 @@ C
 C*	    Get pressure and height from the sounding table. 
 C
 	    dtime = ' '
-	    CALL SN_GHGT  ( lun, nparms, dtime, rlat, rlon, tmpk, 
+	    CALL SN_GHGT  ( lun, nparms, dattim, rlat, rlon, tmpk, 
      +			    MXPT, maxdst, tblflg, mstflg, clmflg,
      +			    stid, dist, pres, hght, npt, iret )
 	    IF  ( iret .ne. 0 )  THEN

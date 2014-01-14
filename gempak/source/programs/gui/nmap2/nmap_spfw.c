@@ -2436,6 +2436,7 @@ void spfw_formatConf ( long flen, char *spftext, char *filstr, int *iret )
  * J. Wu/GSC		07/01	validate dom. src 			*
  * J. Wu/SAIC		08/01	report invalid sources 			*
  * R. Tian/SAIC		01/02	fixed bug when loading large SPF file   *
+ * K. Tyle/UAlbany	08/13   increased size of tmpStr1               *
  ***********************************************************************/
 {
     int		lp, src, ier, catgNum, dom, ierr;
@@ -2600,6 +2601,7 @@ static void spfw_saveSrcAttr ( dsrc_t *datasrc, FILE *fptr, int lp,
  * m.gamazaychikov/SAIC 04/06   add dtmch flag to ctb_dtget CS          *
  * S. Gilbert/NCEP	 5/06	Increased size of types and flags       *
  * F. J. Yen/NCEP	 4/08	Added bin mins & mstrct to ctb_dtget CSC*
+ * S. Jacobs/NCEP	 9/13	Increased string sizes 512 to 2046	*
  ***********************************************************************/
 {
     int		isbcat, isub, d3, d4, d5, d6, d7, d7m, d8, d8m, mstrct,
@@ -2610,9 +2612,9 @@ static void spfw_saveSrcAttr ( dsrc_t *datasrc, FILE *fptr, int lp,
     char	level[73], text[40], filter[10], alias[81], cycle[123];
     char	typestr[20], d1[256], d2[256];
     char	imtype[81], iminfo[81], imlutf[81];
-    char	tagStr[32], attrStr[512], tmpStr[32], newtagStr[32];
-    char	typStr[512], linStr[512], sym1Str[512], sym2Str[512];
-    char	arrwStr[512], flgStr[256], fmtStr[] = "\n\t\t\t\t";
+    char	tagStr[32], attrStr[2046], tmpStr[32], newtagStr[32];
+    char	typStr[2046], linStr[2046], sym1Str[2046], sym2Str[2046];
+    char	arrwStr[2046], flgStr[256], fmtStr[] = "\n\t\t\t\t";
     char	fmt1[] = "%s|\n\t\t\t\t%s|\n\t\t\t\t%s|\n\t\t\t\t%s|\n\t\t\t\t%s|\n\t\t\t\t%s",
     		fmt2[] = "%s|\n\t\t\t\t%s|\n\t\t\t\t%s|\n\t\t\t\t%s";
     NMS_types	types[25];
@@ -2675,9 +2677,8 @@ static void spfw_saveSrcAttr ( dsrc_t *datasrc, FILE *fptr, int lp,
         case CAT_MSC:
             nms_qatt ( datasrc->attridx, alias, &isbcat, filnam,
                        &ntype, types, &nflag, flags, &ier );
-			     	    
-	    sprintf( attrStr, "%s|%d|%d", filnam, ntype, nflag ); 
 
+	    sprintf( attrStr, "%s|%d|%d", filnam, ntype, nflag ); 
             spf_write( fptr, tagStr, attrStr, &ier );
 	    
 	    /*

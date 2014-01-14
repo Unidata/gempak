@@ -34,6 +34,7 @@ C* M. desJardins/GSFC	 3/89	Modified for grid packing		*
 C* K. Tyle/GSC		 1/97	Check for excessive record length	*
 C* m. gamazaychikov/CWS 04/11   Add code for A2DB connectivity          *
 C* X. Guo/CWS           09/11   Increased recode size from 10M to 20M   *
+C* S. Jacobs/NCEP	 8/13	Call DA lib for non-gempak files	*
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 	INCLUDE		'dmcmn.cmn'
@@ -48,6 +49,19 @@ C*	Check that file is open.
 C
 	CALL DM_CHKF ( iflno, iret )
 	IF  ( iret .ne. 0 ) RETURN
+C
+C*	Check for non-standard file.
+C
+	IF  ( .not. stdgem(iflno) )  THEN
+	    IF  ( kftype(iflno) .eq. MFGD )  THEN
+		CALL DA_RDTRGD ( iflno, irow, icol, part,
+     +			   idthdr, rdata, nword, iret )
+	    ELSE
+		CALL DA_RDTR ( iflno, irow, icol, part,
+     +			   idthdr, rdata, nword, iret )
+	    ENDIF
+     	    RETURN
+	END IF
 C
 C*	Check for valid row and column positions.
 C

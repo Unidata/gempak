@@ -42,6 +42,7 @@ C* S. Jacobs/EAI	10/93	Added check for ALPHA machine		*
 C* S. Jacobs/NCEP	 2/01	Made MTLNUX a separate machine type	*
 C* T. Lee/SAIC		 2/05	Handle error message			*
 C* m. gamazaychikov/CWS 04/11   Add code for A2DB connectivity          *
+C* S. Jacobs/NCEP	 8/13	Added check for non-gempak files	*
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 	INCLUDE		'GMBDTA.CMN'
@@ -56,15 +57,37 @@ C
 	CALL DM_GETF  ( iflno, iret )
 	IF  ( iret .ne. 0 ) RETURN
 C
+C*	Check for non-standard "files".
+C
+	ipos = INDEX ( filnam, 'AWIPSDB' )
+	IF  ( ipos .eq. 0 )  THEN
+	    stdgem ( iflno ) = .true.
+	  ELSE
+	    stdgem ( iflno ) = .false.
+	END IF
+C
 C*	Open the file.  For open error, print error message and return.
 C
-	IF  ( wrtflg .and. shrflg )  THEN
-	    CALL FL_DSOP  ( filnam, MBLKSZ, lun, iret )
-	    kshare ( iflno ) = .true.
+	IF  ( stdgem(iflno) )  THEN
+	    IF  ( wrtflg .and. shrflg )  THEN
+		CALL FL_DSOP  ( filnam, MBLKSZ, lun, iret )
+		kshare ( iflno ) = .true.
+	      ELSE
+		CALL FL_DOPN  ( filnam, MBLKSZ, wrtflg, lun, iret )
+		kshare ( iflno ) = .false.
+	    END IF
 	  ELSE
-	    CALL FL_DOPN  ( filnam, MBLKSZ, wrtflg, lun, iret )
-	    kshare ( iflno ) = .false.
+	    IF  ( wrtflg )  THEN
+		iret = -13
+		RETURN
+	      ELSE
+		CALL DA_OPEN ( filnam, iflno, lun, iret )
+		kshare ( iflno ) = .false.
+	    END IF
 	END IF
+C
+C*	Check return code from the appropriate open function.
+C
 	IF  ( iret .eq. 0 )  THEN
 	    lundm  (iflno) = lun
 	    wflag  (iflno) = wrtflg
@@ -75,54 +98,64 @@ C
 	    RETURN
 	END IF
 C
-C*	Read the file label into common.
+C*	Load the DM common blocks
 C
-	CALL DM_RLBL ( iflno, iret )
-	IF  ( iret .ne. 0 ) GOTO 900
+	IF  ( .not. stdgem(iflno) )  THEN
 C
-C*	Check that this is a valid machine.
+C*	    Get the information from the non-standard data source
 C
-	IF  ( ( kmachn ( iflno ) .ne. MTMACH ) .and.
-     +	      ( kmachn ( iflno ) .ne. MTVAX  ) .and.
-     +	      ( kmachn ( iflno ) .ne. MTSUN  ) .and.
-     +	      ( kmachn ( iflno ) .ne. MTAPOL ) .and.
-     +	      ( kmachn ( iflno ) .ne. MTIRIS ) .and.
-     +	      ( kmachn ( iflno ) .ne. MTIGPH ) .and.
-     +	      ( kmachn ( iflno ) .ne. MTULTX ) .and.
-     +	      ( kmachn ( iflno ) .ne. MTIBM  ) .and.
-     +        ( kmachn ( iflno ) .ne. MTHP   ) .and.
-     +        ( kmachn ( iflno ) .ne. MTLNUX ) .and.
-     +	      ( kmachn ( iflno ) .ne. MTALPH ) )  THEN
-	    IF  ( wrtflg )  THEN
-		iret = -32
-		CALL ST_LSTR ( filnam, nf, ier )
-		CALL ER_WMSG  ( 'DM', iret, filnam (:nf), ier )
-		RETURN
+	    CALL DA_INFO ( iflno, iret )
+	ELSE
+C
+C*	    Read the file label into common.
+C
+	    CALL DM_RLBL ( iflno, iret )
+	    IF  ( iret .ne. 0 ) GOTO 900
+C
+C*	    Check that this is a valid machine.
+C
+	    IF  ( ( kmachn ( iflno ) .ne. MTMACH ) .and.
+     +	      	  ( kmachn ( iflno ) .ne. MTVAX  ) .and.
+     +	      	  ( kmachn ( iflno ) .ne. MTSUN  ) .and.
+     +	      	  ( kmachn ( iflno ) .ne. MTAPOL ) .and.
+     +	      	  ( kmachn ( iflno ) .ne. MTIRIS ) .and.
+     +	      	  ( kmachn ( iflno ) .ne. MTIGPH ) .and.
+     +	      	  ( kmachn ( iflno ) .ne. MTULTX ) .and.
+     +	      	  ( kmachn ( iflno ) .ne. MTIBM  ) .and.
+     +        	  ( kmachn ( iflno ) .ne. MTHP   ) .and.
+     +        	  ( kmachn ( iflno ) .ne. MTLNUX ) .and.
+     +	      	  ( kmachn ( iflno ) .ne. MTALPH ) )  THEN
+		IF  ( wrtflg )  THEN
+		    iret = -32
+		    CALL ST_LSTR ( filnam, nf, ier )
+		    CALL ER_WMSG  ( 'DM', iret, filnam (:nf), ier )
+		    RETURN
+		END IF
 	    END IF
+C
+C*	    Read the data management record.
+C
+	    CALL DM_RDMG ( iflno, iret )
+C
+C*	    Read all keys from the file into common.
+C
+	    CALL DM_RKEY ( iflno, iret )
+	    IF  ( iret .ne. 0 ) GOTO 900
+C
+C*	    Read headers from file.
+C
+	    CALL DM_RHDA ( iflno, iret )
+	    IF  ( iret .ne. 0 ) GOTO 900
+C
+C*	    Read part information.
+C
+	    CALL DM_RPRT ( iflno, iret )
+	    IF  ( iret .ne. 0 ) GOTO 900
+C
+C*	    Read file information.
+C
+	    CALL DM_RFIL ( iflno, iret )
 	END IF
-C
-C*	Read the data management record.
-C
-	CALL DM_RDMG ( iflno, iret )
-C
-C*	Read all keys from the file into common.
-C
-	CALL DM_RKEY ( iflno, iret )
-	IF  ( iret .ne. 0 ) GOTO 900
-C
-C*	Read headers from file.
-C
-	CALL DM_RHDA ( iflno, iret )
-	IF  ( iret .ne. 0 ) GOTO 900
-C
-C*	Read part information.
-C
-	CALL DM_RPRT ( iflno, iret )
-	IF  ( iret .ne. 0 ) GOTO 900
-C
-C*	Read file information.
-C
-	CALL DM_RFIL ( iflno, iret )
 	IF  ( iret .ne. 0 ) GOTO 900
 C
 C*	Set search information in common.

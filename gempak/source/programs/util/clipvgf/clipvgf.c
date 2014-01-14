@@ -69,6 +69,8 @@ int main ( int argc, char **argv )
                                 for GFA elements                        *
  * X.Guo/CWS		10/10   Bug fix - Low level graphic don't make  *
  *                              it all the way north in central US      *
+ * L. Hinson/AWC        09/13   Fixed improperly clipped JET_ELM Barbs  *
+ *                              and hashes                              *
  ***********************************************************************/
 {
 int    	ii, jj, ip, ibeg, iend, loc, ne, found, found_txt, joffset, kept, ier;
@@ -93,8 +95,7 @@ char	errgrp[8];
 int	ninout;
 float	xinout[LLMXPT], yinout[LLMXPT];
 char	precision[8];
-float	distance, nx, ny;
-int	tltpts, nbarb, nhash, nearest_vrt, nxt_vrt;
+int	tltpts, nbarb, nhash;
 int     tmaxpts, tnpts, tnclip;
 char    hazList[ STD_STRLEN ];
 
@@ -683,12 +684,8 @@ int	ninxarr, inxarr[100];
 		                            cgr_inpoly ( "M", &npts, &flat, &flon, "M", &npoly, px, py, tinout, &ier );
 		                            if (( tinout[0] == 1 && strcmp(keep,"keep") == 0 )  ||
 			                        ( tinout[0] == 0 && strcmp(keep,"keep") != 0 ) ) {
-					        cgr_segdist ( &tltpts, plat, plon, &flat, &flon, &distance, &nearest_vrt, &nxt_vrt, &nx, &ny, &ier );
-						if ( ( nearest_vrt >= ibeg && nearest_vrt <= iend ) &&
-						     ( nxt_vrt     >= ibeg && nxt_vrt     <= iend ) ) {
-						    memcpy ( &(el_t.elem.jet.barb[nbarb]), &(el.elem.jet.barb[ii]), sizeof(BarbAttr) );
-						    nbarb++;
-					        }
+                                                 memcpy ( &(el_t.elem.jet.barb[nbarb]), &(el.elem.jet.barb[ii]), sizeof(BarbAttr) );
+						 nbarb++;
 					    }
 					}
 					el_t.elem.jet.nbarb = nbarb;
@@ -701,12 +698,8 @@ int	ninxarr, inxarr[100];
 		                            cgr_inpoly ( "M", &npts, &flat, &flon, "M", &npoly, px, py, tinout, &ier );
 		                            if (( tinout[0] == 1 && strcmp(keep,"keep") == 0 )  ||
 			                        ( tinout[0] == 0 && strcmp(keep,"keep") != 0 ) ) {
-					        cgr_segdist ( &tltpts, plat, plon, &flat, &flon, &distance, &nearest_vrt, &nxt_vrt, &nx, &ny, &ier );
-						if ( ( nearest_vrt >= ibeg && nearest_vrt <= iend ) &&
-						     ( nxt_vrt     >= ibeg && nxt_vrt     <= iend ) ) {
-						    memcpy ( &(el_t.elem.jet.hash[nhash]), &(el.elem.jet.hash[ii]), sizeof(HashAttr) );
-						    nhash++;
-					        }
+                                                memcpy ( &(el_t.elem.jet.hash[nhash]), &(el.elem.jet.hash[ii]), sizeof(HashAttr) );
+                                                nhash++;
 					    }
 					}
 					el_t.elem.jet.nhash = nhash;

@@ -65,6 +65,7 @@ C* D.W.Plummer/NCEP	01/07	Increase IWNDMX from 1000 to 1500	*
 C* S.Gilbert/NCEP	06/07	Moved all grid processing to GDPLTC     *
 C* S.Gilbert/NCEP       07/07   Changed DG_SUBG to DG_SUBGN             *
 C* S.Gilbert/NCEP       07/07   Removed DG_KXKY query			*
+C* S. Jacobs/NCEP	 8/13	Initialized scavld and vctvld		*
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 	INCLUDE         'gdplot.cmn'
@@ -102,6 +103,10 @@ C
 	INCLUDE		'ERMISS.FNC'
 C*
 C-----------------------------------------------------------------------
+C*	Initialize variables
+C
+	scavld = .false.
+	vctvld = .false.
 C
 C*	nbangs is the number of user-input overlays
 C*	as indicated by exclamation points (bangs).

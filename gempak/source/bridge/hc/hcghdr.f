@@ -56,6 +56,8 @@ C* B. Yin/SAIC           3/04  	Changed SS_GTIM to CSS_GTIM     	*
 C* D. Kidwell/NCEP	 5/04	Fixed year for JTWC reports     	*
 C* D. Kidwell/NCEP	 6/04	Skipped decode of JTWC reports if ep, cp*
 C* S. Gilbert/NCEP       5/06   Accept new date/time issuance line      *
+C* S. Jacobs/NCEP	 8/13	Removed check for E and C storms	*
+C*				issued by the JTWC (PGTW)		*
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 C*
@@ -317,18 +319,23 @@ C
                 good = .false.
             END IF
 C
+C*	    (No longer true....SJ)
 C*	    Do not decode eastern Pacific or central Pacific advisories
 C*	    issued by JTWC.  They are inexact duplicates of TPC and
 C*	    CPHC advisories.  Only decode western Pacific advisories
 C*	    from JTWC.
 C
-	    IF ( good ) THEN
-		IF ( ( ocnstm ( 1:1 ) .eq. 'E' ) .or.
-     +		     ( ocnstm ( 1:1 ) .eq. 'C' ) ) THEN
-		    good = .false.
-		    iret = -2
-		END IF
-	    END IF
+C*	    Remove the check for East and Central Pacific storms. JTWC
+C*	    is not re-sending the same reports from CPHC.
+C*	    Leaving the code here in case this becomes a problem again.
+C
+C--	    IF ( good ) THEN
+C--		IF ( ( ocnstm ( 1:1 ) .eq. 'E' ) .or.
+C--     +		     ( ocnstm ( 1:1 ) .eq. 'C' ) ) THEN
+C--		    good = .false.
+C--		    iret = -2
+C--		END IF
+C--	    END IF
 C
 C*          Convert the time string to a GEMPAK time.
 C

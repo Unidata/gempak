@@ -32,6 +32,8 @@ C* A. Hardy/NCEP	 8/02	Created					*
 C* A. Hardy/NCEP         8/02   Fixed insty, IS single station decoding *
 C* A. Hardy/NCEP         5/04   Corrected DCCIG -> DCCSIG		*
 C* J. Lewis/AWC		 8/07   Change search for 'TS' to ' TS '	*
+C* L. Hinson/AWC         9/13   Fix to correctly Process VCNTY remarks  *
+*                               for ISOL TS                             *
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 C*
@@ -177,8 +179,13 @@ C
 C
 C*                      Don't have a distance/direction, only station ID.
 C
+                        IF ((INDEX(tarr(ii+1),'VCNTY') .gt. 0) .and.
+     +                       (ii+2 .le. numwds)) THEN
+                          tmpch = tarr(ii+2)
+                        ELSE
+                          tmpch = tarr(ii+1)
+                        END IF
                         numwds = 1
-                        tmpch = tarr(ii+1) 
                         CALL ST_RXBL ( tmpch, tmpch, lent, ier )
                         carr(1) = tmpch
                         found = .true.

@@ -110,7 +110,8 @@
  *				db_getRData, db_rdtr, db_getstinfo.	*
  * 				Change prototype for db_runQuery.	*
  * S. Jacobs/NCO	04/12	Added gg_osrd				*
- * S. Jacobs/NCEP	 5/12	Removed old DB functions; added da_runpy*
+ * S. Jacobs/NCEP	 5/13	Removed old DB functions; added da_runpy*
+ * S. Jacobs/NCEP	 9/13	Added more DA functions			*
  ***********************************************************************/
 
 /* AW library */
@@ -169,22 +170,39 @@ void er_wbuf ( int *iret );
 void er_wmsg ( char *errgrp, int *numerr, char *errstr, int *iret, size_t, size_t );
 
 /* DB library */
-void da_getdti ( char *station, char *time, int *partnum,
+void da_getdti ( char *station, char *time, int *partnum, int *iflno,
 		     int *idthdr, int *idata, int *nval, int *iret );
-void da_getdtc ( char *station, char *time, int *partnum,
+void da_getdtc ( char *station, char *time, int *partnum, int *iflno,
 		     int *idthdr, char *cdata, int *nchr, int *iret );
-void da_getdtr ( char *station, char *time, int *partnum,
+void da_getdtr ( char *station, char *time, int *partnum, int *iflno,
 		     int *idthdr, float *rdata, int *nval, int *iret );
+void da_getdtrgd ( char *cycle, char* forecast,
+		    char *level1, char *level2,
+		    char *gvcord, char *gparm, int *iflno,
+		    int *idthdr, float *rdata, int *nval, int *iret );
 
-void da_getheader ( char *hdrtyp, int *nval, int *values, int *iret );
-void da_getlabel ( char *label, int *iret );
-void da_getname ( char *key, int *nkey1, int *nkey2, char *str, int *iret );
-void da_getnums ( int *rows, int *cols, int *prts, int *iret );
-void da_getparm ( int *npart, int *nparm, int *scale, int *offset, int *bits, int *iret );
-void da_getpart ( int *npart, int *type, int *nparm, int *iret );
-void da_getsorc ( int *type, int *source, int *iret );
-void da_getvers ( int *version, int *iret );
-void da_readxml ( char *filnam, int *iret );
+void da_getfilhdc ( int *iflno, char *fhdnam, int *mxchar,
+			char *cheadr, int *nchar, int *iret );
+void da_getfilhdi ( int *iflno, char *fhdnam, int *mxword,
+			int *iheadr, int *nword, int *iret );
+void da_getfilhdr ( int *iflno, char *fhdnam, int *mxword,
+			float *rheadr, int *nword, int *iret );
+
+void da_getfhdr ( int *iflno, int *nfhdr, int *type, int *fhlen, int *iret );
+void da_getheader ( int *iflno, char *hdrtyp, int *nval, int *values,
+       			int *iret );
+void da_getlabel ( int *iflno, char *label, int *iret );
+void da_getname ( int *iflno, char *key, int *nkey1, int *nkey2, char *str,
+       			int *iret );
+void da_getnums ( int *iflno, int *rows, int *cols, int *prts, int *fhds,
+       			int *iret );
+void da_getparm ( int *iflno, int *npart, int *nparm, int *scale,
+       			int *offset, int *bits, int *iret );
+void da_getpart ( int *iflno, int *npart, int *type, int *nparm, int *iret );
+void da_getsorc ( int *iflno, int *type, int *source, int *iret );
+void da_getvers ( int *iflno, int *version, int *iret );
+void da_readxml ( char *filnam, int *iflno, int *iret );
+
 void da_runpy ( char *pyfile, char *pymeth, int *iret );
 
 /* DM library */
@@ -780,12 +798,3 @@ void oabsdr ( float *gelat, float *gelon, float *coslat, float *data, int *infof
 /* G2G library */
 void gg_update ( char *vname, char *iname, int *cur_layer, char *catmap, int *plt_ext, int *iret );
 void gg_rdvgf  ( char *vname, char *iname, char *catmap, int *iret );
-
-void    clo_dddec (     char    *locnam,
-                        int     *format,
-                        char    *string,
-                        int     *nexp,
-                        float   flat[],
-                        float   flon[],
-                        int     *nstn,
-                        int     *iret );

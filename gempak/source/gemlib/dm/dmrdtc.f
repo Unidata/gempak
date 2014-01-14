@@ -32,6 +32,7 @@ C* Log:									*
 C* M. desJardins/GSFC	 4/87						*
 C* M. desJardins/GSFC	 5/90	Add translation for diff machines	*
 C* K. Tyle/GSC		 1/97	Check for excessive record length	*
+C* S. Jacobs/NCEP	 8/13	Call DA lib for non-gempak files	*
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 	INCLUDE		'dmcmn.cmn'
@@ -46,6 +47,14 @@ C*	Check that file is open.
 C
 	CALL DM_CHKF ( iflno, iret )
 	IF  ( iret .ne. 0 ) RETURN
+C
+C*	Check for non-standard file.
+C
+	IF  ( .not. stdgem(iflno) )  THEN
+	    CALL DA_RDTC ( iflno, irow, icol, part,
+     +			   idthdr, cdata, nchar, iret )
+     	    RETURN
+	END IF
 C
 C*	Check for valid row and column positions.
 C

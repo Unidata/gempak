@@ -8,7 +8,7 @@ GDATTIM fall
 GLEVEL  9950                            ! 850:1000
 GVCORD  sgma                            ! pres
 PANEL   0
-SKIP    
+SKIP    0
 SCALE   7                               ! -1
 GDPFUN  sdiv(mixr(dwpc;pres@0%none),obs ! (sub(hght@850,hght@1000) ! kntv(wnd@9950%sgma)
 TYPE    c/f                             ! c                        ! b
@@ -36,3 +36,4 @@ MARKER  2
 GRDLBL  5                                                                       
 LUTFIL  none
 FILTER  yes
+IJSKIP  NO

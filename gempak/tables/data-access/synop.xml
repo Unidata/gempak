@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:GempakDataAccess xmlns:tns="http://www.example.org/GempakDataAccess" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/GempakDataAccess GempakDataAccess.xsd ">
+
+    <filelabel text="AWIPS DB CONFIGURATION FILE" version="1" />
+    <filetype type="MFSF" source="MFSYNP" rawtext="MFTEXT" />
+    <dbserver host="nco-lw-msmith" />
+    <dbtable name="sfcobs" />
+    <rows pyfile="TimeRetriever" pymeth="gettimes" dbkey="refHour">
+	<row name="DATE" />
+	<row name="TIME" />
+    </rows>
+    <columns pyfile="StationRetriever" pymeth="getstations" dbkey="-">
+	<column name="STID" />
+	<column name="STNM" />
+	<column name="SLAT" />
+	<column name="SLON" />
+	<column name="SELV" />
+	<column name="STAT" />
+	<column name="COUN" />
+	<column name="STD2" />
+	<column name="SPRI" />
+    </columns>
+    <parts>
+	<part name="SFDT" type="MDREAL" pyfile="StationDataRetriever" pymethdata="getstationdata" pymethhdr="getheader">
+	    <parameters>
+		<parameter name="PMSL" scale="-2" offset="0" bits="0" key="seaLevelPress" />
+		<parameter name="TMPK" scale="0" offset="0" bits="0" key="temperature" />
+		<parameter name="DWPK" scale="0" offset="0" bits="0" key="dewpoint" />
+		<parameter name="SPED" scale="0" offset="0" bits="0" key="windSpeed" />
+		<parameter name="DRCT" scale="0" offset="0" bits="0" key="windDir" />
+	    </parameters>
+	</part>
+	<part name="SFTX" type="MDCHAR" pyfile="StationDataRetriever" pymethdata="getstationtext" pymethhdr="getheader">
+	    <parameters>
+		<parameter name="TEXT" scale="0" offset="0" bits="0" key="rawReport" />
+	    </parameters>
+	</part>
+    </parts>
+
+</tns:GempakDataAccess>

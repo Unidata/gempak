@@ -38,6 +38,8 @@ C* R. Tian/SAIC          4/05   Fixed a bug for dual time		*
 C* m.gamazaychikov/SAIC 04/06   Added idtmch flag to CTB_DTGET CS       *
 C* T. Piper/SAIC        01/08   Added GD_INIT; removed from IN_BDTA     *
 C* F. J. Yen/NCEP        4/08   Added bin mins & mstrct to CTB_DTGET CSC*
+C* S. Jacobs/NCEP	10/13	Added check for reading data from 	*
+C*				the AWIPS database			*
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 C*
@@ -55,6 +57,7 @@ C*
 	REAL		rlevel (LLMXLV,2)
 	INTEGER		luns (4)
 	LOGICAL		respnd, done, proces, pause, title, exist
+	LOGICAL		awpflg
 	REAL		anl (LLNANL), rnav (LLNNAV)
 C-----------------------------------------------------------------------
 C*  Initialize TAE.
@@ -155,8 +158,14 @@ C
 		    CALL ST_RNUL ( path, path, lens, ier )
 		    CALL ST_RNUL ( tmplt, tmplt, lens, ier )
 		    CALL FL_INQR ( path, exist, filnam, ier )
-		    proces = exist
-		    path = filnam
+		    IF  ( path .eq. 'AWIPSDB' )  THEN
+			proces = .true.
+			awpflg = .true.
+		    ELSE
+			proces = exist
+			path   = filnam
+			awpflg = .false.
+		    END IF
 		    CALL ST_LSTR ( path, lp, ier )
 C
 C*		    Loop through times.
@@ -196,7 +205,8 @@ C
 			IF  ( lstall )  THEN
 			    title = .true.
 			    IF ( nt .gt. 1 )  title = .false.
-			    IF ( gdattim .eq. 'ALL' ) THEN
+			    IF ( ( gdattim .eq. 'ALL' ) .and.
+     +				 ( .not. awpflg ) ) THEN
                                 CALL GR_LIST ( LLMXLV, nlun, luns,
      +				    iflno, pause, ' ', title, levtyp,
      +                              nlev, rlevel, icord, nparm, prmlst,

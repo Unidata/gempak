@@ -65,6 +65,9 @@ C*				passed in tau				*
 C* A. Krautkramer	10/10   Corrected initial point inconsistency   *
 C* 				with the calculation of dvlbl and tcdvlp*
 C* A. Krautkramer/NHC   09/11   Added 'Post-Tropical Cyclone'           *
+C* S. Jacobs/NCEP	 4/13	Added smoothing for the track and cone	*
+C* S. Jacobs/NCEP	 9/13	Fixed problem with VG output for track	*
+C*				less than 3 days			*
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 	INCLUDE		'ghcmn.cmn'
@@ -108,7 +111,7 @@ C*
      +			numb(4), ibkpts(4,100), iarea(4,100),
      +                  isev(50), iadvtp(50), igeog(50), icnt (4, 50),
      +			jtarr(5),ibkcur(MAXBK), iarcur(MAXBK),
-     +			nppart(20)
+     +			nppart(20), kpos(MXPTS)
 	CHARACTER	cmin*2,cyear*5,cmonth*3,cday*3
         INTEGER		tau0, len, leny, lenm, lend, lenmn
 C Start Krautkramer 10/10 modification
@@ -120,7 +123,9 @@ C*
      +			slnlt6(MXPTS), slnln6(MXPTS), dist(NUMHR),
      +			bplat(100), bplon(100), 
      +			lbklat(20,MAXBK), lbklon(20,MAXBK),
-     +			bkplat(MAXBK), bkplon(MAXBK)
+     +			bkplat(MAXBK), bkplon(MAXBK),
+     +			blat(MXPTS), blon(MXPTS), bdst(MXPTS),
+     +			bx(MXPTS), by(MXPTS), dx(NUMHR), dy(NUMHR)
 C*
 	LOGICAL		hvbkpt, finish, plotit, first, extra
 C*
@@ -277,13 +282,42 @@ C
 		    IF ( jj .gt. 1 ) ddate (nltln) = fdate(jj-1,im)
                 END IF
             END DO
+C
+C*	    Smooth the central track line and the track error distances.
+C
+	    CALL GTRANS ( 'M', 'D', nltln, alat, alon, dx, dy, iergt )
+	    dens = 5.0
+	    cscl = 30.0
+	    is = 0
+	    ie = nltln+1
+	    CALL CV_PRM3 ( nltln, dx, dy, dist, dens, MXPTS, cscl,
+     +			   is, ie, nout, bx, by, bdst, iercv )
+	    CALL GTRANS ( 'D', 'M', nout, bx, by, blat, blon, iergt )
+C
+C*	    Find the original points in the smoothed line.
+C
+C	    knumh2 = nout
+	    DO  kk = 1, nout
+	        kpos(kk) = 0
+		DO  nn = 1, nltln
+		    IF  ( ( ABS(blat(kk)-alat(nn)) .lt. 0.0005 ) .and.
+     +			  ( ABS(blon(kk)-alon(nn)) .lt. 0.0005 ) )  THEN
+			kpos(kk) = nn
+			IF ( nn .eq. NUMH2 ) knumh2 = kk
+		    END IF
+		END DO
+	    END DO
+C
+C*	    Calculate the area under the cone.
+C
             IF ( iertb .ge. 0 ) THEN
 		plotit = .true.
 		inner  = MIN0 ( nltln, NUMH2 )
-                CALL GH_KGAT ( alat, alon, inner, dist, MXPTS, slnlt6, 
+		minpt  = MIN0 ( nout, knumh2 )
+                CALL GH_KGAT ( blat, blon, nout, bdst, MXPTS, slnlt6, 
      +                         slnln6, numln6, ier )
-		IF ( nltln .gt. NUMH2 ) THEN
-                    CALL GH_KGAT ( alat, alon, nltln, dist, MXPTS, 
+		IF ( nout .gt. knumh2 .and. knumh2 .ne. 0 ) THEN
+                    CALL GH_KGAT ( blat, blon, nout, bdst, MXPTS, 
      +                             slnlat, slnlon, numln, ier )
 		  ELSE
 		    numln = numln6
@@ -378,7 +412,7 @@ C
      +                            ilclr, iltyp, ifclr, iftyp,
      +                            numln6, slnlt6, slnln6,
      +                            iret)
-                  IF ( nknt .gt. NUMH2 ) THEN
+                  IF ( nout .gt. knumh2 .and. knumh2 .ne. 0 ) THEN
 C
 C*                    5day track error cone.
 C
@@ -589,7 +623,7 @@ C
      +                         spdstr6, dtlstr6, srcstr6,
      +                         iret)	 
      
-                 IF ( nltln .gt. NUMH2 ) THEN
+                 IF ( nout .gt. knumh2 .and. knumh2 .ne. 0 ) THEN
 C
 C*                  5day track.
 C

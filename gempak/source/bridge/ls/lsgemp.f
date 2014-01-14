@@ -36,6 +36,7 @@ C* D. Kidwell/NCEP      3/98	Rounded time to 3 hrs, new call sequence*
 C* A. Hardy/GSC         3/99    Added priority parameter to SF_QSTN     *
 C* A. Hardy/GSC         3/99    Removed ispri = 0                       *
 C* D. Kidwell/NCEP      4/00	Added text output                       *
+C* S. Jacobs/NCEP	8/13	Added check for creating a 1 hour file	*
 C************************************************************************
 	INCLUDE 	'GEMPRM.PRM'
         INCLUDE  	'lscmn.cmn'
@@ -57,22 +58,27 @@ C
         krptdt ( 5 ) = 0
         jhr = irptdt ( 4 )
 C
-        IF ( MOD ( jhr, 3 ) .eq. 1 ) THEN
-            krptdt ( 4 ) = jhr - 1
-	  ELSE IF ( MOD ( jhr, 3 ) .eq. 2 ) THEN
-	    krptdt ( 4 ) = jhr + 1
-            IF ( krptdt ( 4 ) .ge. 24 ) THEN
-                DO i = 1, 3
-                    jrptdt ( i ) = krptdt ( i )
-                END DO
-                jrptdt ( 4 ) = 0
-                jrptdt ( 5 ) = 0
+C*	Check for the value of iadstn that indicates to create a
+C*	1-hour file. Any other value will create a 3-hour file.
 C
-C*              Add one day to report time.
+	IF ( iadstn .ne. 1 ) THEN
+	    IF ( MOD ( jhr, 3 ) .eq. 1 ) THEN
+		krptdt ( 4 ) = jhr - 1
+	      ELSE IF ( MOD ( jhr, 3 ) .eq. 2 ) THEN
+		krptdt ( 4 ) = jhr + 1
+		IF ( krptdt ( 4 ) .ge. 24 ) THEN
+		    DO i = 1, 3
+			jrptdt ( i ) = krptdt ( i )
+		    END DO
+		    jrptdt ( 4 ) = 0
+		    jrptdt ( 5 ) = 0
 C
-                CALL TI_ADDD ( jrptdt, krptdt, ier )
-            END IF
-        END IF
+C*                  Add one day to report time.
+C
+		    CALL TI_ADDD ( jrptdt, krptdt, ier )
+		END IF
+	    END IF
+	END IF
 C
 C*      Convert report observation time to GEMPAK time.
 C

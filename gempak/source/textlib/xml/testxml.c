@@ -15,6 +15,8 @@ int main( void )
  * E. Safford/SAIC	06/04	remove directory prompt for file loads  *
  * E. Safford/SAIC	11/05	add xml_count, xml_value, xml_getSubDoc *
  * E. Safford/SAIC	04/05	add xml_readTable			*
+ * S. Jacobs/NCEP	 9/13	Increased the file sizes from LLSCRN	*
+ *				to FILE_FULLSZ (80 to 4196)		*
  ***********************************************************************/
  {
     unsigned char	*buf, *bigStr, *xmlOut = NULL;
@@ -29,8 +31,8 @@ int main( void )
 
     char	fileName[ FILE_FULLSZ ];
     char	select[ LLSCRN ];
-    char	xmlFile[ LLSCRN ];
-    char	xsltFile[ LLSCRN ], xsltCheckFile[ LLSCRN ];
+    char	xmlFile[ FILE_FULLSZ ];
+    char	xsltFile[ FILE_FULLSZ ], xsltCheckFile[ FILE_FULLSZ ];
 
     char	elName[ LLSCRN ], readElValue[ LLSCRN], *elValue = NULL;
     char	readChildName[ LLSCRN ], *childName = NULL;
@@ -45,7 +47,7 @@ int main( void )
 
     Boolean	cont, xmlDocSet, xsltDocSet;
 
-    xmlChar	xpathExpr[ LLSCRN ], *expr;
+    xmlChar	xpathExpr[ FILE_FULLSZ ], *expr;
     xmlXPathObjectPtr	xpathObj;
     xmlDocPtr 		doc; 
 
@@ -118,8 +120,8 @@ int main( void )
                     }
                     printf( "\n\n" );
 
-                    G_FREE( bigStr, unsigned char );
-		    G_FREE( buf, unsigned char );
+		    if ( bigStr ) G_FREE( bigStr, unsigned char );
+		    if ( buf )    G_FREE( buf, unsigned char );
                 }
             }
         }
