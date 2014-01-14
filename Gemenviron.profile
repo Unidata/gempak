@@ -16,7 +16,7 @@
 #  Please configure the following definitions to reflect your system:
 #
 # Top level directory:
-NAWIPS=/home/gempak/GEMPAK6.10
+NAWIPS=/home/gempak/GEMPAK7
 #
 # Make sure NAWIPS directory exists
 #
