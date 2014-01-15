@@ -23,8 +23,8 @@ LOBJS = \
 	$(ALIB)(wrdesc.o) \
 	$(ALIB)(adn30.o) \
 	$(ALIB)(atrcpt.o) \
-	$(ALIB)(bfrini.o) \
 	$(ALIB)(blocks.o) \
+	$(ALIB)(bfrini.o) \
 	$(ALIB)(bort2.o) \
 	$(ALIB)(bort.o) \
 	$(ALIB)(bvers.o) \
@@ -173,8 +173,8 @@ LOBJS = \
 	$(ALIB)(readmm.o) \
 	$(ALIB)(readmt.o) \
 	$(ALIB)(readns.o) \
-	$(ALIB)(reads3.o) \
 	$(ALIB)(readsb.o) \
+	$(ALIB)(reads3.o) \
 	$(ALIB)(rewnbf.o) \
 	$(ALIB)(rjust.o) \
 	$(ALIB)(rsvfvm.o) \
