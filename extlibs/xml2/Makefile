@@ -8,7 +8,7 @@ $(OS_LIB)/libxml2.a:
 
 _xml2: clean INSTALLDIR 
 	@(cd libxml2; echo "Making in `pwd`"; \
-	./configure '--prefix=$(OS_ROOT)' --disable-shared --without-debug '--with-zlib=$(OS_ROOT)' $(XML2OPT); \
+	./configure '--prefix=$(OS_ROOT)' --without-python --disable-shared --without-debug '--with-zlib=$(OS_ROOT)' $(XML2OPT); \
 	$(MAKE) install )
 
 INSTALLDIR:

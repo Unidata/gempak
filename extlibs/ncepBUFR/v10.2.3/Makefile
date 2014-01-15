@@ -258,10 +258,13 @@ $(ALIB): $(LOBJS)
 .f.a :
 	$(FC) $(FFLAGS) -c $<
 
+bufrlib.prm : bufrlib.PRM.template
+	cpp -P  $? $@
+
 install:
 
 clean:
-	$(RM) *.o 
+	$(RM) *.o  bufrlib.prm
 
 programs_nc:
 
