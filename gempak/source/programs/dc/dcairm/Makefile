@@ -14,7 +14,9 @@ OBJS = \
 LIBINC = \
 	$(BRIDGE) \
 	$(GEMLIB) \
-	$(CGEMLIB) 
+	$(CGEMLIB) \
+	$(XMLLIB) \
+	$(ZLIB)
 
 all : $(PROG)
 

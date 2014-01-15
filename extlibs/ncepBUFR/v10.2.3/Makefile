@@ -7,6 +7,9 @@ include $(CONFIGDIR)/$(MAKEINC)
 
 ALIB = $(OS_LIB)/libncepBUFR.a
 
+CFLAGS += -DUNDERSCORE
+
+
 LOBJS = \
 	$(ALIB)(bort_exit.o) \
 	$(ALIB)(ccbfl.o) \
@@ -91,6 +94,7 @@ LOBJS = \
 	$(ALIB)(iok2cpy.o) \
 	$(ALIB)(ipkm.o) \
 	$(ALIB)(ipks.o) \
+	$(ALIB)(irev.o) \
 	$(ALIB)(ireadmg.o) \
 	$(ALIB)(ireadmm.o) \
 	$(ALIB)(ireadns.o) \
@@ -237,6 +241,7 @@ LOBJS = \
 	$(ALIB)(valx.o) \
 	$(ALIB)(wrcmps.o) \
 	$(ALIB)(wrdxtb.o) \
+	$(ALIB)(wrdlen.o) \
 	$(ALIB)(writcp.o) \
 	$(ALIB)(writdx.o) \
 	$(ALIB)(writlc.o) \
@@ -247,24 +252,23 @@ LOBJS = \
 
 .PRECIOUS: $(ALIB)
 
-all :  bufrlib.prm $(ALIB)
+all : $(ALIB)
 
 $(ALIB): $(LOBJS)
 	$(AR) $(ARFLAGS) $@ *.o
-	$(RM) *.o bufrlib.prm
+	$(RM) *.o 
 
 .c.a :
 	$(CC) $(CFLAGS) -c $<
 .f.a :
 	$(FC) $(FFLAGS) -c $<
-
-bufrlib.prm : bufrlib.PRM.template
-	cpp -P  $? $@
+.F.a :
+	$(FC) $(FFLAGS) -c $<
 
 install:
 
 clean:
-	$(RM) *.o  bufrlib.prm
+	$(RM) *.o 
 
 programs_nc:
 

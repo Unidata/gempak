@@ -19,8 +19,6 @@ LIBINC = \
 	$(CGEMLIB) \
         $(XMLLIB) \
         $(ZLIB) \
-        $(GEMLIB) \
-        $(CGEMLIB)
 
 all : $(PROG)
 

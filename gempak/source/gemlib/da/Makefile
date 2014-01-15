@@ -5,7 +5,7 @@
 #
 include $(CONFIGDIR)/$(MAKEINC)
 
-ALIB = $(OS_LIB)/libxml2.a
+ALIB = $(GEMLIB) 
 
 CFLAGS += -I$(OS_INC)/libxml2
 
@@ -43,6 +43,8 @@ $(ALIB): $(COBJS)
 
 .c.a :
 	$(CC) $(CFLAGS) -c $<
+.f.a :
+	$(FC) $(FFLAGS) -c $<
 
 clean:
 	$(RM) *.o 
