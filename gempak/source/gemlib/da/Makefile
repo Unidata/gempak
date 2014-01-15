@@ -30,7 +30,6 @@ COBJS = \
         $(ALIB)(dagetinfo.o) \
         $(ALIB)(dareadxml.o) \
         $(ALIB)(darunpy.o) \
-        $(ALIB)(testda.o) \
 
 GDIR = da
 
