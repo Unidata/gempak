@@ -11,11 +11,11 @@ LIBS = \
 	$(GN) \
 	$(BRIDGE) \
 	$(LDMLOG) \
-	$(XMLLIB) \
-        $(ZLIB) \
 	$(CGEMLIB) \
 	$(GEMLIB) \
 	$(NETCDF) \
+	$(XMLLIB) \
+        $(ZLIB) \
 	$(CSYSLIB) -lm
 
 ####################

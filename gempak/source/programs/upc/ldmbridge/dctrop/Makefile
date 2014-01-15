@@ -1,7 +1,7 @@
 #
 include $(CONFIGDIR)/$(MAKEINC)
 
-LIBS = $(BRIDGE) $(CGEMLIB) $(GEMLIB) $(LDMLOG)
+LIBS = $(BRIDGE) $(CGEMLIB) $(GEMLIB) $(LDMLOG) $(XMLLIB) $(ZLIB)
 
 ####################
 

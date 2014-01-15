@@ -5,7 +5,7 @@
 
 include $(CONFIGDIR)/$(MAKEINC)
 
-LIBS = $(BRIDGE) $(GEMLIB) $(CGEMLIB) $(GEMLIB)
+LIBS = $(BRIDGE) $(GEMLIB) $(CGEMLIB) $(GEMLIB) $(XMLLIB) $(ZLIB)
 
 PROG = dcuspln
 

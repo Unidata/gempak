@@ -21,7 +21,7 @@ LIBINC = \
 	$(GEMLIB) \
 	$(APPL) \
 	$(SYSLIB) \
-	$(CGEMLIB)
+	$(CGEMLIB) $(XMLLIB) $(ZLIB)
 
 .PRECIOUS: $(ALIB)
 
