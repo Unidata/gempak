@@ -1,0 +1,42 @@
+<varlistentry id="opt-memsize"><term><option>-m</option> </term>
+<listitem><para>Sets the amount of memory 
+tries to grab on startup. The amount may be given as
+<variablelist>
+<varlistentry><term><replaceable>nnnnnnn</replaceable></term>
+<listitem><simpara>measured in bytes
+</simpara></listitem></varlistentry>
+<varlistentry>
+<term><replaceable>nnnn</replaceable><command>K</command></term>
+<term><replaceable>nnnn</replaceable><command>KB</command></term>
+<listitem><simpara>measured in kilobytes
+</simpara></listitem></varlistentry>
+<varlistentry>
+<term><command>M</command></term>
+<term><command>MB</command></term>
+<listitem><simpara>measured in megabytes
+</simpara></listitem></varlistentry></variablelist>
+The default is 3 megabytes.
+<!-- #if (oint_addr_len+addr_shift==24) -->
+The argument is constrained between 100 KB and 16 MB.
+<!-- #elif (oint_addr_len+addr_shift==26) -->
+The argument is constrained between 100 KB and 64 MB.
+<!-- #elif (oint_addr_len+addr_shift==28) -->
+The argument is constrained between 100 KB and 256 MB.
+<!-- #else -->
+The argument is constrained above 100 KB.
+<!-- #endif -->
+</para><simpara>This version of 
+<!-- #if defined(SPVW_MIXED) && defined(SPVW_BLOCKS) -->
+<!-- #ifdef GENERATIONAL_GC -->
+is not likely to actually use the entire since ion will
+periodically reduce the amount of used memory.
+It is therefore common to specify 10 MB even if only 2 MB are going
+to be used.
+<!-- #else -->
+eventually uses the entire .
+<!-- #endif -->
+<!-- #else -->
+allocates memory dynamically. is essentially ignored
+(except that it determines the Lisp size).
+<!-- #endif -->
+</simpara></listitem></varlistentry>

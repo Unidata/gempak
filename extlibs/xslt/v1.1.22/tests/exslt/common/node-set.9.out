@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title></title><meta name="generator" content="DocBook XSL Stylesheets V1.72.0" /></head><body><dt><a id="opt-memsize"></a><span class="term"><code class="option">-m</code> </span></dt><dd><p>Sets the amount of memory 
+tries to grab on startup. The amount may be given as
+</p><div class="variablelist"><dl><dt><span class="term"><em class="replaceable"><code>nnnnnnn</code></em></span></dt><dd>measured in bytes
+</dd><dt><span class="term"><em class="replaceable"><code>nnnn</code></em><span><strong class="command">K</strong></span>, </span><span class="term"><em class="replaceable"><code>nnnn</code></em><span><strong class="command">KB</strong></span></span></dt><dd>measured in kilobytes
+</dd><dt><span class="term"><span><strong class="command">M</strong></span>, </span><span class="term"><span><strong class="command">MB</strong></span></span></dt><dd>measured in megabytes
+</dd></dl></div><p>
+The default is 3 megabytes.
+<!-- #if (oint_addr_len+addr_shift==24) -->
+The argument is constrained between 100 KB and 16 MB.
+<!-- #elif (oint_addr_len+addr_shift==26) -->
+The argument is constrained between 100 KB and 64 MB.
+<!-- #elif (oint_addr_len+addr_shift==28) -->
+The argument is constrained between 100 KB and 256 MB.
+<!-- #else -->
+The argument is constrained above 100 KB.
+<!-- #endif -->
+</p><p>This version of 
+<!-- #if defined(SPVW_MIXED) && defined(SPVW_BLOCKS) -->
+<!-- #ifdef GENERATIONAL_GC -->
+is not likely to actually use the entire since ion will
+periodically reduce the amount of used memory.
+It is therefore common to specify 10 MB even if only 2 MB are going
+to be used.
+<!-- #else -->
+eventually uses the entire .
+<!-- #endif -->
+<!-- #else -->
+allocates memory dynamically. is essentially ignored
+(except that it determines the Lisp size).
+<!-- #endif -->
+</p></dd></body></html>
