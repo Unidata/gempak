@@ -11,6 +11,7 @@
  * D.W.Plummer/NCEP	 2/03   Added area descriptors, linked to	*
  *				imgtyp.tbl, added comments, reorg code	*
  * S. Jacobs/NCEP	 3/09	Changed all longs to ints		*
+ * M. James/Unidata	01/14	Added Sector Source Number to output	*
  ***********************************************************************/
 
 #include "geminc.h"
@@ -47,7 +48,7 @@ int main ( int argc, char **argv )
 int 		ch, ii, i, onum=0, ier;
 unsigned int 	area[AREASIZE];
 char 		nav[5];
-char 		order[10], imtyp[9], satname[21];
+char 		order[11], imtyp[9], satname[21];
 char 		*infile;
 unsigned char 	*chs;
 FILE 		*ifl;
@@ -127,7 +128,7 @@ char area_desc[][32] = {"Record valid if zero        ",
 	/* 
 	 *  Get command-line arguments 
 	 */
-	while ((ch = getopt(argc, argv, "abdijnrstm")) != EOF)
+	while ((ch = getopt(argc, argv, "abdijnrstmx")) != EOF)
 		switch (ch) {
 		
 		case 'a':
@@ -159,6 +160,9 @@ char area_desc[][32] = {"Record valid if zero        ",
 			break;
 		case 'm':
 			order[onum++] = 'm';
+			break;
+		case 'x':
+			order[onum++] = 'x';
 			break;
 		case '?':
 			usage ( argc, argv );
@@ -380,6 +384,10 @@ char area_desc[][32] = {"Record valid if zero        ",
  		case 'm':		/* Min/max pixel values		*/
 
 			minmax ( infile, area );
+			break;
+		case 'x':		/* Sensor source number */
+
+			printf ( "Source Number = %d\n",area[2]);
 			break;
  		}
  	}
