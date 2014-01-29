@@ -20,6 +20,7 @@ C**									*
 C* Log:									*
 C* X. Guo/CWS           05/10   Copy from IM_NIDH                       *
 C* M. James/Unidata     07/11   Removed down-sampling to 8-bit          *
+C* M. James/Unidata     01/14   Fixed reflectivity scale and flagged    *
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 	INCLUDE		'IMGDEF.CMN'
@@ -197,6 +198,7 @@ C
 
         SELECT CASE (iprod)
            CASE (134)
+C      DVL 
 C
 C*        0 = below threshold
 C*        1 = flagged
@@ -223,15 +225,29 @@ C
               cmblev(1) = 'ND'
               imndlv = nlev
            CASE (32,94,99)
+C    32 = DHR
+C    94 = digital reflectivity (N0Q)
+C    99 = digital velocity 
+C
+C*      8-bit reflectivity
+C*      0 = missing data = -9999
+C*      1 = flagged data = -9999
+C*      2-255 = dBZ values
+C
+C*      for idl = 1, imndlv, imndlv = 256, 
+C*      so begin at idl = 3
+C
               DO idl = 1, imndlv
                  IF ( idl .eq. 1 ) THEN
                     cmblev (idl) = 'ND'
-                 ELSE
-                    val = amin + ( idl - 1 ) * ainc
+                 ELSE IF ( idl .gt. 2 ) THEN
+                    val  = amin + ( idl - 3 ) * ainc
                     CALL ST_INCH ( int(val), cmblev (idl), ier )
                  END IF
               END DO
            CASE (135)
+C       135 = EET Enhanced Echo Tops
+C
               DO i = 1,nlev
                  cmblev ( i ) = ''
               END DO
@@ -254,6 +270,19 @@ C
               CALL ST_INCH ( int(70), cmblev (199), ier )
               cmblev ( 130 ) = 'TOP'
            CASE (138)
+C
+C*      138 = DSP
+C
+C*      0 = no accumulation
+C* for max accumulation =< 2.55
+C*      1-255 = accumulation in steps of 0.01 inches 
+C* for max accumulation > 2.55 and =< 5.10
+C*      1-255 = accumulation in steps of 0.02 inches
+C* for max accumulation > 5.10 and =< 7.65
+C*      1-255 = accumulation in steps of 0.03 inches
+C*      and so on...
+C
+C*      this is a to-do
               iinc = imndlv / 16.
               DO idl = 1, imndlv
                  val = amin + ( idl - 1 ) * ainc  
@@ -265,6 +294,8 @@ C
               END DO
               cmblev ( 1 ) = 'ND'
            CASE DEFAULT 
+C       OTHER
+C
 	      DO idl = 1, imndlv
                  IF ( idl .eq. 1 ) THEN
                     cmblev (idl) = 'ND'

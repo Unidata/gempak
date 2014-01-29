@@ -183,20 +183,15 @@ strncpy(prodid,lprod,*lenp);
 prodid[*lenp] = '\0';
 
 fp = cfl_tbop ( "nex2gini.tbl", "unidata", &ier);
-if(fp == NULL)
-  {
+if(fp == NULL) {
   printf("warning: could not open nex2gini.tbl configuration table\n");
   sprintf(header,"TICZ99 UCAR %02d%02d%02d\0",tarr[2],tarr[3], tarr[4] );
-  }
-else
-   {
+} else {
    FOUND = 0;
-   while((FOUND == 0)&&(fgets(line,512,fp)!= NULL))
-      {
+   while((FOUND == 0)&&(fgets(line,512,fp)!= NULL)) {
       if(line[0] == '!') continue;
       slen = strcspn(line," \t"); 
-      if(strncmp(prodid,line,slen) == 0)
-         {
+      if(strncmp(prodid,line,slen) == 0) {
          FOUND = 1;
          if(line[strlen(line)-1] == '\n') line[strlen(line)-1] = '\0';
          cst_clst(line, ' ', defstr,nstrings,MAXSTR,arrptr, &numstr, &ier);
@@ -208,23 +203,21 @@ else
          printf("look header %d %s \n",iband,header);*/
 	 calblock = arrptr[3];
 	 sscanf(arrptr[2],"%d",&ncal);
-         }
-      }
-   fclose(fp);
-   if(FOUND == 0) 
-      {
-      printf("warning: no calibration found in nex2gini configuration table\n"); 
-      sprintf(header,"TICZ99 UCAR %02d%02d%02d\0",tarr[2],tarr[3], tarr[4] );
       }
    }
+   fclose(fp);
+   if(FOUND == 0) {
+      printf("warning: no calibration found in nex2gini configuration table\n"); 
+      sprintf(header,"TICZ99 UCAR %02d%02d%02d\0",tarr[2],tarr[3], tarr[4] );
+   }
+}
 
 lenhd = strlen(header);
-if(lenhd > sizeof(headstr)-6)
-   {
+if(lenhd > sizeof(headstr)-6) {
    printf("warning header being truncated to %d characters\n",
       sizeof(headstr)-6);
    lenhd = sizeof(headstr);
-   }
+}
 
 memset(headstr,' ',sizeof(headstr));
 memcpy(headstr,header,lenhd);

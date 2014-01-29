@@ -315,7 +315,6 @@ C##      135     EET (High-Res Enhanced Echo Tops)
                                     CASE DEFAULT
 			              CALL radar_grid(1,kx,ky,grid,rarr)
                                   END SELECT
-C			          CALL radar_grid(imtype,kx,ky,grid,rarr)
 			       ELSE
 				  WRITE (errstr,1000) stid,immode
 1000				  FORMAT (A,1x,I1)

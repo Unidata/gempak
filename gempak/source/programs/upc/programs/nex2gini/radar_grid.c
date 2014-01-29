@@ -52,7 +52,7 @@ struct dirent **namelist=NULL;
   ti_ctoi(gemtim,tarr1,ier,15);
   if(*ier != 0) return;
 
-    /* create the name for which we will compare against */
+  /* create the name for which we will compare against */
   cfl_mnam(cgemtim, templ, fmnam, &iret);
 
   /* return list of files reverse sorted (newest time first) */
@@ -226,13 +226,14 @@ numstats++;
 /* radar_grid
  * 
  * INPUTS
+ * 	prodflg	product flag 0 or 1
  * 	kx, ky  grid size
  * 	fdata   grid
  * 	rlev	data levels
  *
  */
 
-void radar_grid(int *prodid, int *kx, int *ky, float *fdata, float *rlev)
+void radar_grid(int *prodflg, int *kx, int *ky, float *fdata, float *rlev)
 {
 char *radarea;
 int lens, ier, i, j, np, ip, x, y, it;
@@ -297,21 +298,23 @@ for ( i=xstart; i<=xstop; i++ )
          it = ((y - 1) * imnpix) + x - 1;
          ip = ((j - 1) * (*kx)) + i - 1;
 
-         // If imgData is between 0 and 16 (or 255 for HiRes)
+         // If imgData is between min and max (0 and 16 for 4 bit 0 and 255 for HiRes 8 bit)
          if ( ( imgData[it] >= immnpx ) && ( imgData[it] <= immxpx ) ) {
 
             // assign rval to level specified by imgData number
-            if ( *prodid > 0) {
+            if ( *prodflg > 0) {
 		rval = rlev[(int)imgData[it]];
             } else {
             	rval = (int)imgData[it];
             }
+            	
 	    //rval = rlev[(int)imgData[it]];
             //printf("rval=%d,%d\n", (int)imgData[it], rlev[(int)imgData[it]]);
 	    if ( rval > rvalmx ) {
                rvalmx = rval;
                //printf("rvalmx=%f\n", rvalmx);
             }
+            //printf("x=%d y=%d np=%d it=%d imgData[it]=%d rval=%f rvalmx=%f \n", x, y, np, it, imgData[it], rval, rvalmx);
             // if rval is great than existing value, replace
             if ( rval > fdata[ip] ) {
                fdata[ip] = rval;

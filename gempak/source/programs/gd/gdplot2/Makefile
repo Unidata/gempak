@@ -98,6 +98,26 @@ LIBINC_GF = \
 	$(RSLLIB) \
 	$(LIBBZ2)
 
+LIBINC_GF = \
+        $(GEMOLB)/sfmap.a \
+        $(GEMOLB)/gdstream.a \
+        $(GEMOLB)/gdmap.a \
+        $(GPLT_NC) \
+        $(GEMLIB) \
+        $(GPLT) \
+        $(DEVICE) \
+	$(GF) \
+	$(GN) \
+        $(GEMLIB) \
+        $(CGEMLIB) \
+        $(NETCDF) \
+        $(LIBJASPER) \
+        $(PNGLIB) \
+        $(XMLLIB) \
+        $(ZLIB) \
+        $(RSLLIB) \
+        $(LIBBZ2)
+
 LIBINC_GIF = \
 	$(OS_LIB)/sfmap.a \
 	$(OS_LIB)/gdstream.a \
@@ -113,6 +133,7 @@ LIBINC_GIF = \
 	$(NETCDF) \
 	$(LIBJASPER) \
 	$(PNGLIB) \
+        $(XMLLIB) \
 	$(ZLIB) \
 	$(RSLLIB) \
 	$(LIBBZ2)
@@ -165,6 +186,7 @@ PROG_PS = $(PROG)_ps
 
 .PRECIOUS: $(ALIB)
 
+
 all : $(ALIB) $(PROG)
 
 $(PROG): $(ALIB) $(LIBINC) $(PROG.f)
@@ -181,11 +203,11 @@ $(PROG_GIF) : $(ALIB) $(LIBINC_GIF) $(PROG.f)
 
 $(PROG_GF) : $(ALIB) $(LIBINC_GF) $(PROG.f)
 	$(LINK.f) $(PROG.f) $(ALIB) $(LIBINC_GF) \
-		$(X11LIBDIR) $(X11LIB) $(SYSLIBS) $(SYSLIBS) -lm -o $(OS_BIN)/$@
+		$(X11LIBDIR) $(X11LIB) $(SYSLIBS) -lm -o $(OS_BIN)/$@
 
 $(PROG_XW) : $(ALIB) $(LIBINC_XW) $(PROG.f)
 	$(LINK.f) $(PROG.f) $(ALIB) $(LIBINC_XW) \
-		$(X11LIBDIR) $(X11LIB) $(SYSLIBS) $(SYSLIBS) -lm -o $(OS_BIN)/$@
+		$(X11LIBDIR) $(X11LIB) $(SYSLIBS) -lm -o $(OS_BIN)/$@
 
 programs_gf: $(PROG_GF)
 

@@ -61,7 +61,7 @@ $(ALIB): $(FOBJS) $(COBJS)
 
 
 clean:
-	$(RM) $(PROG) *.o $(ALIB)
+	$(RM) $(PROG) *.o 
 
 
 install: $(PROG) 

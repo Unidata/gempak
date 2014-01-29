@@ -2,6 +2,10 @@
 /* RADAR_GRID.C						*/
 /* Chiz/Unidata	02/01					*/
 /*							*/
+/* Updates						*/
+/* M. James/Unidata	09/10 Updated bounds check for  */
+/*			      MAXNEX increase           */
+/*							*/
 /********************************************************/
 #include <geminc.h>
 #include <gemprm.h>
@@ -19,13 +23,27 @@
 /*#define dump_bounds	dump_bounds_*/
 #endif
 
+// next_radar is called for each station
+// 
+// INPUTS	DESC		EXAMPLE
+// filpath	file path	$RAD/NIDS/AMA/N0Q
+// templ	file template	N0Q_YYYYMMDD_HHNN
+// gemtim       current time	100929/2147
+//
+// OUTPUTS
+// filnm	filename	$RAD/NIDS/AMA/N0Q/N0Q_20100929_2137
+// numc		number of chars to end of filename string
+// idelt
+// ier		error
+//
+
 void next_radar(char *filpath, char *templ, char *gemtim, char *filnm, 
                 int *numc, int *idelt, int *ier)
 {
 int i, nfile, iret;
 int tarr1[5], tarr2[5];
 char fname[FILE_FULLSZ],fmnam[80],outtim[20], cgemtim[16];
-struct dirent   **namelist=NULL;
+struct dirent **namelist=NULL;
 
   *idelt = 0;
 
@@ -148,11 +166,8 @@ xin[0] = imleft; yin[0] = imbot;
 xin[1] = imrght; yin[1] = imbot;
 xin[2] = imleft; yin[2] = imtop;
 xin[3] = imrght; yin[3] = imtop;
-/*printf("look left %d right %d bot %d top %d\n",
-	imleft, imrght, imbot, imtop);*/
 gtrans(msys, gsys, &np, xin, yin, xout, yout, iret, strlen(gsys), strlen(msys));
-/*printf("look ier %d outs %f %f   %f %f   %f %f   %f %f\n",
-      *iret,xout[0],yout[0],xout[1],yout[1],xout[2],yout[2],xout[3],yout[3]);*/
+//printf("look ier outs %f %f   %f %f   %f %f   %f %f\n",xout[0],yout[0],xout[1],yout[1],xout[2],yout[2],xout[3],yout[3]);
 
 if(*iret == 0)
    {
@@ -197,6 +212,7 @@ else
    XL = XR = YB = YT = RMISSD;
    }
    
+//printf("look points %f %f %f %f\n",XL,XR,YB,YT);
 gbounds[numstats][0] = XL;
 gbounds[numstats][1] = YB;
 gbounds[numstats][2] = XR;
@@ -207,22 +223,31 @@ numstats++;
 
 }
 
-void radar_grid(int *kx, int *ky, float *fdata, float *rlev)
+/* radar_grid
+ * 
+ * INPUTS
+ * 	prodflg	product flag 0 or 1
+ * 	kx, ky  grid size
+ * 	fdata   grid
+ * 	rlev	data levels
+ *
+ */
+
+void radar_grid(int *prodflg, int *kx, int *ky, float *fdata, float *rlev)
 {
 char *radarea;
 int lens, ier, i, j, np, ip, x, y, it;
 
 char fname[LLMXLN];
 char gsys[]="G", msys[]="L";
-float xl, yb, xr, yt, rval;
+float xl, yb, xr, yt, rval, rvalmx;
 int xstart,xstop,ystart,ystop;
 int imode=0, iarea=0, ipix;
 static int xcsiz=0;
 static float *xin=NULL,*xout=NULL,*yin=NULL, *yout=NULL;
 
-
-if(xin == NULL)
-   {
+// Allocate memory
+if ( xin == NULL ) {
    xin = (float *)malloc(MAXNEX * sizeof(float));
    xout = (float *)malloc(MAXNEX * sizeof(float));
    yin = (float *)malloc(MAXNEX * sizeof(float));
@@ -232,14 +257,13 @@ if(xin == NULL)
    if(yin == NULL) printf("failed to malloc yin\n");
    if(yout == NULL) printf("failed to malloc your\n");
    xcsiz = MAXNEX;
-   }
+}
 
 xstart = (int)XL; xstop = (int)XR;
 ystart = (int)YB; ystop = (int)YT;
-/*printf("look xstart %d xstop %d ystart %d ystop %d\n",xstart,xstop,ystart,ystop);*/
 
-if(((xstop - xstart + 1)*(ystop - ystart + 1)) > xcsiz)
-   {
+// Reallocate memory if new grid size exceeds MAXNEX
+if ( ( ( xstop - xstart + 1 ) * ( ystop - ystart + 1 ) ) > xcsiz ) {
    xcsiz = (xstop - xstart + 1)*(ystop - ystart + 1);
    printf("increasing MAXNEX to %d [%d %d %d %d]\n",xcsiz,xstop,xstart,ystop,ystart);
    xin = (float *)realloc(xin, xcsiz*sizeof(float));
@@ -250,40 +274,59 @@ if(((xstop - xstart + 1)*(ystop - ystart + 1)) > xcsiz)
    if(xout == NULL) printf("failed to realloc xout\n");
    if(yin == NULL) printf("failed to realloc yin\n");
    if(yout == NULL) printf("failed to realloc your\n");
-   }
+}
 
 
 np = 0;
-for(i=xstart;i<=xstop;i++)
-   for(j=ystart;j<=ystop;j++)
-   {
-   xin[np] = i; yin[np] = j;
-   np++;
+for ( i=xstart; i<=xstop; i++ )
+   for ( j=ystart; j<=ystop; j++ ) {
+      xin[np] = i; yin[np] = j;
+      np++;
    }
+
+// Convert grid from G to L
 gtrans(gsys, msys, &np, xin, yin, xout, yout, &ier, strlen(gsys), strlen(msys));
 
 np = 0;
-for(i=xstart;i<=xstop;i++)
-   for(j=ystart;j<=ystop;j++)
-      {
-      if((xout[np] >= 1)&&(xout[np] <= imnpix)&&
-         (yout[np] >= 1)&&(yout[np] <= imnlin))
-         {
-         x = (int) rint(xout[np]); y = (int) rint(yout[np]);
+rvalmx = RMISSD;
+for ( i=xstart; i<=xstop; i++ )
+   for ( j=ystart; j<=ystop; j++ ) {
+      if ( ( xout[np] >= 1 ) && ( xout[np] <= imnpix ) &&
+           ( yout[np] >= 1 ) && ( yout[np] <= imnlin ) ) {
+         x = (int) rint(xout[np]);
+         y = (int) rint(yout[np]);
          it = ((y - 1) * imnpix) + x - 1;
          ip = ((j - 1) * (*kx)) + i - 1;
 
-         if((imgData[it] >= immnpx)&&(imgData[it] <= immxpx))
-            {
-            rval = rlev[(int)imgData[it]];
-            if(rval > fdata[ip]) fdata[ip] = rval;
+         // If imgData is between min and max (0 and 16 for 4 bit 0 and 255 for HiRes 8 bit)
+         if ( ( imgData[it] >= immnpx ) && ( imgData[it] <= immxpx ) ) {
+
+            // assign rval to level specified by imgData number
+            if ( *prodflg > 0) {
+		rval = rlev[(int)imgData[it]];
+            } else {
+            	rval = (int)imgData[it];
             }
-         else
-            printf("%d %d %d   %d %d %d   %d [%d %d]\n", x,y,np, i,j,ip, imgData[it],
-		immnpx, immxpx);
-         }
-      np++;
+            	
+	    //rval = rlev[(int)imgData[it]];
+            //printf("rval=%d,%d\n", (int)imgData[it], rlev[(int)imgData[it]]);
+	    if ( rval > rvalmx ) {
+               rvalmx = rval;
+               //printf("rvalmx=%f\n", rvalmx);
+            }
+            //printf("x=%d y=%d np=%d it=%d imgData[it]=%d rval=%f rvalmx=%f \n", x, y, np, it, imgData[it], rval, rvalmx);
+            // if rval is great than existing value, replace
+            if ( rval > fdata[ip] ) {
+               fdata[ip] = rval;
+               //if ( imgData[it] > 11 ) {
+               //   printf("x=%d y=%d np=%d it=%d imgData[it]=%d rval=%f rvalmx=%f \n", x, y, np, it, imgData[it], rval, rvalmx);
+               //}
+            }
+         } else
+            printf("%d %d %d   %d %d %d   %d [%d %d]\n", x,y,np, i,j,ip, imgData[it],immnpx, immxpx);
       }
+      np++;
+   }
 
 }
 

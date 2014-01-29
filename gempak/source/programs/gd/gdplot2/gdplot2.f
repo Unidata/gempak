@@ -55,6 +55,7 @@ C* R. Tian/SAIC          2/04   Removed nuflg fromo DG_INTL call        *
 C* T. Piper/SAIC	08/04	Added mscale				*
 C* R. Tian/SAIC         12/04   Removed call to DG_CLAL			*
 C* T. Piper/SAIC        01/08   Added GD_INIT; removed from IN_BDTA     *
+C* M. James/Unidata     01/14   Added IN_COLR for NEXP COLORS input     *
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 	INCLUDE		'gdplot.cmn'
@@ -95,6 +96,8 @@ C*
 C*
 	CHARACTER	gdfilx*256, prfxtt*20
 C*
+        PARAMETER       ( NEXP = 32 )
+        INTEGER         icolr ( NEXP )
 C-----------------------------------------------------------------------
 C*  Initialize TAE.
 C
@@ -147,6 +150,15 @@ C
 C*	    Set up the graphics device.
 C
 	    CALL GG_SDEV  ( device, iret )
+C
+C*          Check that device was set; if so, set colors.
+C
+            IF  ( iret .eq. 0 )  THEN
+C
+C*              Get a set of color numbers.
+C
+                CALL IN_COLR ( colors, NEXP, icolr, iret )
+            END IF
 	    IF  ( iret .ne. 0 )  proces = .false.
 C
 	    proces = iret .eq. 0
