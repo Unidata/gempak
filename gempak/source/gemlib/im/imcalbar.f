@@ -76,18 +76,28 @@ C*      DHR = 2**(27)
             END DO
             cmblev(1) = 'ND'
 C*      DVL = 2**(28)
-          CASE (2**(28))
-            DO i=iminpix,imaxpix
-              cmblev(i) = ''
-              level = nint( (i-iminpix) * ratio) + iminval
-              IF (mod(i-1,15) .eq. 0 ) THEN
-                IF (level .ge. 0 .and. level .le. 80) THEN
-                  CALL ST_INCH ( level/iscaleval,
-     +                          cmblev (i), ier )
-                END IF
-              END IF
+C*      N1P = 2**(29)
+C*      NTP = 2**(30)
+          CASE (2**(28),2**(29),2**(30))
+            DO i=iminpix, imaxpix
+               IF ( ( i .ge. iminpix ) .and. ( i .le. imaxpix ) ) THEN
+                 IF ( mod ( i - 1, 15 ) .eq. 0) THEN
+                     IF (np .eq. 0) THEN
+                        level = nint( (i-iminpix) * ratio) + iminval
+                        CALL ST_INCH ( level/iscaleval,
+     +                              cmblev (i), ier )
+                     ELSE
+                        flevel = (i - 1 - minpx) * ratio + minval
+                        CALL ST_RLCH ( flevel/scaleval, np,
+     +                              tmplev, ier )
+                        cmblev(i) = tmplev(1:8)
+                     END IF
+                 ELSE
+                     cmblev (i) = ' '
+                 END IF
+               END IF
             END DO
-            cmblev(1) = '0'
+            cmblev(1) = 'ND'
           CASE DEFAULT
 	    DO i=iminpix, imaxpix
                IF ( ( i .ge. iminpix ) .and. ( i .le. imaxpix ) ) THEN

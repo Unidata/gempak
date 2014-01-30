@@ -1,9 +1,8 @@
-! upc_n1p.tbl
+! upc_dvl.tbl
 !
-! Color table for NIDS N1P composite product (Unidata)
+! Color table for NIDS DVL composite product (Unidata)
 !
 !Color name    Abrev   Red  Green   Blue  X color name
-                         0      0      0
                          0      0      0
 !
                        154    255    154  PaleGreen1
@@ -58,4 +57,4 @@ MAGENTA         MAG    255      0    255  magenta1
                        154     50    205  DarkOrchid3
                        104     34    139  DarkOrchid4
 !
-!                       255    255    255
+                       255    255    255
