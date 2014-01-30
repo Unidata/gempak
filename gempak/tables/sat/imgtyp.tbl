@@ -680,14 +680,15 @@ QSCAT                IR            0    255     10     64      1 ir_nmc.tbl
 !
 ! Unidata NEXRAD Composites
 !
+RADAR                HHC           0    150     11  2**24      1 upc_dhc.tbl
+RADAR                EET           0    199     11  2**25      1 upc_eet.tbl
+RADAR                N0R           0    105     11  2**26      1 upc_rad24.tbl
 RADAR                DHR           0    255     11  2**27      1 upc_dhr.tbl
 RADAR                DVL           0    255     11  2**28      1 upc_dvl.tbl
-RADAR                EET           0    199     11  2**25      1 upc_eet.tbl
-RADAR                HHC           0    150     11  2**31      1 upc_dhc.tbl
-RADAR-IRSAT          COMPOS        0     95     11   2**8      1 upc_t_r_s.tbl
-RADAR                N0R           0    105     11  2**26      1 upc_rad24.tbl
 RADAR                N1P           0    255     11  2**29      1 upc_n1p.tbl
 RADAR                NTP           0    255     11  2**30      1 upc_ntp.tbl
+!
+RADAR-IRSAT          COMPOS        0     95     11   2**8      1 upc_t_r_s.tbl
 RCOMP                RAD_TOPO      0     94     11   2**6      1 upc3_rcomp.tbl
 REGIONAL  2 KM  24HR PRECIP        0     15      9    106      1 nids_pre.tbl
 REGIONAL  2 KM  BASE REFLECT       0     15      9    137      1 osf_ref16.tbl

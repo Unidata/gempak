@@ -144,7 +144,7 @@ C
 
         SELECT CASE (imtype)
 C HHC 
-          CASE ( 2**(31) )
+          CASE ( 2**(24) )
             DO idx = 1, imndlv
                 cmblev ( idx ) = ''
             END DO

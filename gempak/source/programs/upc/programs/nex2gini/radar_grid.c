@@ -5,6 +5,7 @@
 /* Updates						*/
 /* M. James/Unidata	09/10 Updated bounds check for  */
 /*			      MAXNEX increase           */
+/* M. James/Unidata	01/14 Updates for DVL		*/
 /*							*/
 /********************************************************/
 #include <geminc.h>
@@ -308,21 +309,13 @@ for ( i=xstart; i<=xstop; i++ )
             	rval = (int)imgData[it];
             }
             	
-	    //rval = rlev[(int)imgData[it]];
-            //printf("rval=%d,%d\n", (int)imgData[it], rlev[(int)imgData[it]]);
 	    if ( rval > rvalmx ) {
                rvalmx = rval;
-               //printf("rvalmx=%f\n", rvalmx);
             }
- 	    /*if (imgData[it] > 0 ) {
-                printf("x=%d y=%d np=%d it=%d imgData[it]=%d rval=%f rvalmx=%f rlev[imgData[it]]=%f\n", x, y, np, it, imgData[it], rval, rvalmx, rlev[(int)imgData[it]]);
-	    }*/
+            //printf("x=%d y=%d np=%d it=%d imgData[it]=%d rval=%f rvalmx=%f rlev[imgData[it]]=%f\n", x, y, np, it, imgData[it], rval, rvalmx, rlev[(int)imgData[it]]);
             // if rval is great than existing value, replace
             if ( rval > fdata[ip] ) {
                fdata[ip] = rval;
-               //if ( imgData[it] > 11 ) {
-               //   printf("x=%d y=%d np=%d it=%d imgData[it]=%d rval=%f rvalmx=%f \n", x, y, np, it, imgData[it], rval, rvalmx);
-               //}
             }
          } else
             printf("%d %d %d   %d %d %d   %d [%d %d]\n", x,y,np, i,j,ip, imgData[it],immnpx, immxpx);
