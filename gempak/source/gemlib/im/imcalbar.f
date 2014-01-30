@@ -60,13 +60,14 @@ C
 
 
         SELECT CASE (imtype)
-C DHR
+C*      DHR = 2**(27)
           CASE (2**(27))
             DO i=iminpix,imaxpix
               cmblev(i) = ''
               level = nint( (i-iminpix) * ratio) + iminval
               IF (mod(level,10) .eq. 0 .and. 
-     +             cmblev(i-1) .eq. '') THEN
+     +             cmblev(i-1) .eq. '' .and.
+     +             cmblev(i-2) .eq. '') THEN
                 IF (level .ge. 0 .and. level .le. 80) THEN
                   CALL ST_INCH ( level/iscaleval,
      +                          cmblev (i), ier )
@@ -74,6 +75,19 @@ C DHR
               END IF
             END DO
             cmblev(1) = 'ND'
+C*      DVL = 2**(28)
+          CASE (2**(28))
+            DO i=iminpix,imaxpix
+              cmblev(i) = ''
+              level = nint( (i-iminpix) * ratio) + iminval
+              IF (mod(i-1,15) .eq. 0 ) THEN
+                IF (level .ge. 0 .and. level .le. 80) THEN
+                  CALL ST_INCH ( level/iscaleval,
+     +                          cmblev (i), ier )
+                END IF
+              END IF
+            END DO
+            cmblev(1) = '0'
           CASE DEFAULT
 	    DO i=iminpix, imaxpix
                IF ( ( i .ge. iminpix ) .and. ( i .le. imaxpix ) ) THEN

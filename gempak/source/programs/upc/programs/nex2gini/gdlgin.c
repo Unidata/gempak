@@ -9,7 +9,7 @@
 #define freeimg	freeimg_
 #endif
 
-#define	MAXSTR	128
+#define	MAXSTR	512
 #define DEFBAND	25
 
 
@@ -154,7 +154,7 @@ char defstr[]=" ",*cpos;
 int iband,numstr;
 float fvals[4];
 FILE *fp;
-static int nstrings=6,init=-1;
+static int nstrings=10,init=-1;
 static char **arrptr;
 char *calblock;
 

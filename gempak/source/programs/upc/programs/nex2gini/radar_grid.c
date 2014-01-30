@@ -314,7 +314,9 @@ for ( i=xstart; i<=xstop; i++ )
                rvalmx = rval;
                //printf("rvalmx=%f\n", rvalmx);
             }
-            //printf("x=%d y=%d np=%d it=%d imgData[it]=%d rval=%f rvalmx=%f \n", x, y, np, it, imgData[it], rval, rvalmx);
+ 	    /*if (imgData[it] > 0 ) {
+                printf("x=%d y=%d np=%d it=%d imgData[it]=%d rval=%f rvalmx=%f rlev[imgData[it]]=%f\n", x, y, np, it, imgData[it], rval, rvalmx, rlev[(int)imgData[it]]);
+	    }*/
             // if rval is great than existing value, replace
             if ( rval > fdata[ip] ) {
                fdata[ip] = rval;

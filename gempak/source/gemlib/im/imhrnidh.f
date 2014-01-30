@@ -213,7 +213,8 @@ C
               DO i = 1,nlev
                  cmblev ( i ) = ''
               END DO
-              DO idl = 10,nlev,10
+C              DO idl = 10,nlev,10
+              DO idl = 1,nlev,1
                  IF ( ( idl - 1 ) .lt. flogstart ) THEN
                     fval = ( (idl - 1 ) - foffset ) / fscale 
                  ELSE
