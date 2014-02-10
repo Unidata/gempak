@@ -154,9 +154,33 @@ LIBINC_PS = \
 	$(NETCDF) \
 	$(LIBJASPER) \
 	$(PNGLIB) \
+        $(XMLLIB) \
 	$(ZLIB) \
 	$(RSLLIB) \
 	$(LIBBZ2)
+
+LIBINC_PNG = \
+        $(OS_LIB)/sfmap.a \
+        $(OS_LIB)/gdstream.a \
+        $(OS_LIB)/gdmap.a \
+        $(GPLT_NC) \
+        $(GEMLIB) \
+        $(CGEMLIB) \
+        $(GPLT) \
+        $(DEVICE) \
+	$(OS_LIB)/png.a \
+        $(GN) \
+        $(CGEMLIB) \
+        $(GPLT) \
+        $(GEMLIB) \
+        $(NETCDF) \
+        $(LIBJASPER) \
+        $(PNGLIB) \
+        $(RSLLIB) \
+        $(XMLLIB) \
+        $(ZLIB) \
+        $(LIBBZ2) \
+        $(CGEMLIB)
 
 LIBINC_XW = \
 	$(OS_LIB)/sfmap.a \
@@ -174,6 +198,7 @@ LIBINC_XW = \
 	$(NETCDF) \
 	$(LIBJASPER) \
 	$(PNGLIB) \
+        $(XMLLIB) \
 	$(ZLIB) \
 	$(RSLLIB) \
 	$(LIBBZ2)
@@ -183,6 +208,7 @@ PROG_GF = $(PROG)_gf
 PROG_GIF = $(PROG)_gif
 PROG_XW = $(PROG)_xw
 PROG_PS = $(PROG)_ps
+PROG_PNG = $(PROG)_png
 
 .PRECIOUS: $(ALIB)
 
@@ -197,6 +223,9 @@ $(PROG_NC) : $(ALIB) $(LIBINC_NC) $(PROG.f)
 
 $(PROG_PS) : $(ALIB) $(LIBINC_PS) $(PROG.f)
 	$(LINK.f) $(PROG.f) $(ALIB) $(LIBINC_PS) $(SYSLIBS) -lm -o $(OS_BIN)/$@
+
+$(PROG_PNG) : $(ALIB) $(PROG.f)
+	$(LINK.f) $(PROG.f) $(ALIB) $(LIBINC_PNG) $(RSLLIB) $(LIBBZ2) $(X11LIBDIR) $(X11LIB) $(SYSLIBS) -lm -o $(OS_BIN)/$@
 
 $(PROG_GIF) : $(ALIB) $(LIBINC_GIF) $(PROG.f)
 	$(LINK.f) $(PROG.f) $(ALIB) $(LIBINC_GIF) $(SYSLIBS) -lm -o $(OS_BIN)/$@
@@ -218,6 +247,8 @@ programs_xw: $(PROG_XW)
 programs_nc: $(PROG_NC)
 
 programs_ps: $(PROG_PS)
+
+programs_png: $(PROG_PNG)
 
 $(ALIB): $(LOBJS) $(COBJS)
 	$(AR) $(ARFLAGS) $@ *.o
