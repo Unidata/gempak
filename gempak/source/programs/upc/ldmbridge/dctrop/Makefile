@@ -18,7 +18,7 @@ CFLAGS = $(COPT) -I$(GEMPAK)/source/programs/upc/ldmlog
 all : $(PROG) 
 
 $(PROG) : $(PROG_OBJS)
-	$(LINK.f) $(NOFORMAIN) $(PROG_OBJS) $(LIBS) -o $@
+	$(LINK.f) $(NOFORMAIN) $(PROG_OBJS) $(LIBS) $(SYSLIBS) -o $@
 
 install : $(PROG)
 	$(INSTALL) $(PROG) $(OS_BIN)
