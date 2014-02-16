@@ -27,8 +27,6 @@ COBJS = \
 	$(ALIB)(utfstrip.o)
 
 LOBJS =	\
-	$(ALIB)(gpmafs.o) \
-	$(ALIB)(gpmaws.o) \
 	$(ALIB)(gpminp.o) \
 	$(ALIB)(gpmopt.o)
 
@@ -209,7 +207,7 @@ $(PROG_GF) : $(ALIB) $(PROG.f)
 	$(LINK.f) $(PROG.f) $(ALIB) $(LIBINC_GF) $(X11LIBDIR) $(X11LIB) $(SYSLIBS) -o $(OS_BIN)/$@
 	$(LINK.f) $(PROG.f) $(ALIB) $(LIBINC_GIF) $(SYSLIBS) -o $(OS_BIN)/$(PROG)_gif
 
-$(ALIB): $(LOBJS) $(COBJS)
+$(ALIB): $(LOBJS) 
 	-$(AR) $(ARFLAGS) $@ *.o
 	$(RM) *.o
 
@@ -220,7 +218,7 @@ $(ALIB): $(LOBJS) $(COBJS)
 
 
 clean:
-	$(RM) *.o $(PROG) $(OS_LIB)/gpscat.a
+	$(RM) *.o $(PROG) 
 
 install: $(PROG)
 	$(INSTALL) $(PROG) $(OS_BIN)

@@ -220,7 +220,7 @@ $(ALIB): $(LOBJS) $(COBJS)
 
 
 clean:
-	$(RM) *.o $(PROG)
+	$(RM) *.o $(PROG) 
 
 install: $(PROG)
 	$(INSTALL) $(PROG) $(OS_BIN)
