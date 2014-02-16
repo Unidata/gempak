@@ -429,8 +429,9 @@ C
 		jclrs2 (i-2) = iclrs2(i)
 	    END DO
 C
-	    CALL GG_ASCT ( alias, dattim, kwninc, jclrs, jclrs2, nn, 
-     +		   brbsiz, ibwid, ahsiz, ityp, iskip, interv, itmclr,
+            maxback = ''
+	    CALL GG_ASCT ( alias, dattim, maxback, kwninc, jclrs, jclrs2,
+     +		   nn, brbsiz, ibwid, ahsiz, ityp, iskip, interv, itmclr,
      +		   itmwid, iflgs, ier )
 C
 C
@@ -466,8 +467,9 @@ C
 		jclrs2 (i-2) = iclrs2(i)
 	    END DO
 C
-	    CALL GG_OSCT ( alias, dattim, kwninc, jclrs, jclrs2, nn, 
-     +		   brbsiz, ibwid, ahsiz, ityp, iskip, interv, itmclr,
+            maxback = ''
+	    CALL GG_OSCT ( alias, dattim, maxback, kwninc, jclrs, jclrs2,
+     +		   nn, brbsiz, ibwid, ahsiz, ityp, iskip, interv, itmclr,
      +		   itmwid, iflgs, ier )
 C
 C
