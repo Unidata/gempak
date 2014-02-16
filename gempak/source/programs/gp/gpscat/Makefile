@@ -10,22 +10,6 @@ ALIB = $(OS_LIB)/gpscat.a
 PROG = gpscat
 PROG.f = gpscat.f
 
-COBJS = \
-	$(ALIB)(utfclos.o) \
-	$(ALIB)(utfdtext.o) \
-	$(ALIB)(utfdump.o) \
-	$(ALIB)(utfdvctr.o) \
-	$(ALIB)(utfdvev.o) \
-	$(ALIB)(utfgphgd.o) \
-	$(ALIB)(utfopen.o) \
-	$(ALIB)(utfplot.o) \
-	$(ALIB)(utfptext.o) \
-	$(ALIB)(utfpvctr.o) \
-	$(ALIB)(utfpvev.o) \
-	$(ALIB)(utfread.o) \
-	$(ALIB)(utfsize.o) \
-	$(ALIB)(utfstrip.o)
-
 LOBJS =	\
 	$(ALIB)(gpminp.o) \
 	$(ALIB)(gpmopt.o)
