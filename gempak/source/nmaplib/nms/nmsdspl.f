@@ -99,6 +99,7 @@ C*                              and OAMBG4_HI                       	*
 C* S. Jacobs/NCEP	10/12	Consolidate check for ASCT data types	*
 C* L. Hinson/AWC        10/12   Add EDR                                 *
 C* G. McFadden/IMSG	 7/13	Added SGWHA and WSPDA        		*
+C* M. James/Unidata     02/14   Opened up GG_OSCT and GG_ASCT time req. *
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 C*
