@@ -280,31 +280,40 @@ CSIG         $GEMDATA/csig             YYYYMMDDHH_conv.gem                      
 SVRL         $GEMDATA/storm/svrl       YYYYMMDDHH_svrl.gem                              CAT_MSC  SCAT_NIL   -1    360     10      OFF/0/0      4
 WSTM         $GEMDATA/storm/wstm       YYYYMMDDHH.wstm                                  CAT_MSC  SCAT_NIL   -1    720     30      OFF/0/0      4
 !
-! Scatterometer data types
-ASCT         $GEMDATA/ascatd           YYYYMMDDHHNN.ascat                               CAT_MSC  SCAT_NIL   -1   1440     60      OFF/0/0      4
 ASCT_HI      $GEMDATA/ascatd_hi        YYYYMMDDHHNN.ascat                               CAT_MSC  SCAT_NIL   -1   1440     60      OFF/0/0      4
+OSCT_HI      $GEMDATA/scat/osct_hi      YYYYMMDDHHNN.oscat                               CAT_MSC  SCAT_NIL   -1   1440     60 OFF/0/0                    4
+SGWH2        $GEMDATA/scat/sgwh2       jason2_YYYYMMDDHH.sgwh                           CAT_MSC  SCAT_NIL   -1   1440     60 OFF/0/0                    4
+! Scatterometer data types
+!ASCT         $GEMDATA/ascat            YYYYMMDDHHNN.ascat                               CAT_MSC  SCAT_NIL   -1   1440     60      OFF/0/0      4
+!ASCT         /machine/mj/asct           YYYYMMDDHHNN*.ascat                               CAT_MSC  SCAT_NIL   -1   1440     60      OFF/0/0      4
+!ASCT_HI      /machine/mj/asct           YYYYMMDDHHNN.ascat                               CAT_MSC  SCAT_NIL   -1   1440     60      OFF/0/0      4
+!EXASCT       /machine/mj/asct           YYYYMMDDHHNN.ascat                               CAT_MSC  SCAT_NIL   -1   1440     60      OFF/0/0      4
+!EXASCT_HI    /machine/mj/asct           YYYYMMDDHHNN.ascat                               CAT_MSC  SCAT_NIL   -1   1440     60      OFF/0/0      4
+!OSCT         /machine/mj/asct           YYYYMMDDHHNN.oscat                               CAT_MSC  SCAT_NIL   -1   1440     60      OFF/0/0      4
+!QSCT         /machine/mj/asct           YYYYMMDDHHNN.qsct                                CAT_MSC  SCAT_NIL   -1   1440     60      OFF/0/0      4
+!QSCT_HI      /machine/mj/asct           YYYYMMDDHHNN.qsct_hi                             CAT_MSC  SCAT_NIL   -1   1440     60      OFF/0/0      4
 !AAMBG1_HI    $GEMDATA/ascatd_hi        YYYYMMDDHHNN.ambig1                              CAT_MSC  SCAT_NIL   -1   1440     60      OFF/0/0      4
 !AAMBG2_HI    $GEMDATA/ascatd_hi        YYYYMMDDHHNN.ambig2                              CAT_MSC  SCAT_NIL   -1   1440     60      OFF/0/0      4
 !AAMBG3_HI    $GEMDATA/ascatd_hi        YYYYMMDDHHNN.ambig3                              CAT_MSC  SCAT_NIL   -1   1440     60      OFF/0/0      4
 !AAMBG4_HI    $GEMDATA/ascatd_hi        YYYYMMDDHHNN.ambig4                              CAT_MSC  SCAT_NIL   -1   1440     60      OFF/0/0      4
-EXASCT       $GEMDATA/ascat            YYYYMMDDHHNN.ascat                               CAT_MSC  SCAT_NIL   -1   1440     60      OFF/0/0      4
-EXASCT_HI    $GEMDATA/ascat_hi         YYYYMMDDHHNN.ascat                               CAT_MSC  SCAT_NIL   -1   1440     60      OFF/0/0      4
+!EXASCT       $GEMDATA/ascat            YYYYMMDDHHNN.ascat                               CAT_MSC  SCAT_NIL   -1   1440     60      OFF/0/0      4
+!EXASCT_HI    $GEMDATA/ascat_hi         YYYYMMDDHHNN.ascat                               CAT_MSC  SCAT_NIL   -1   1440     60      OFF/0/0      4
 !EXAAMBG2_HI  $GEMDATA/ascat_hi         YYYYMMDDHHNN.ambig2                              CAT_MSC  SCAT_NIL   -1   1440     60      OFF/0/0      4
-OSCT         $GEMDATA/oscat            YYYYMMDDHHNN.oscat                               CAT_MSC  SCAT_NIL   -1   1440     60      OFF/0/0      4
-OSCT_HI      $GEMDATA/oscat_hi         YYYYMMDDHHNN.oscat                               CAT_MSC  SCAT_NIL   -1   1440     60 OFF/0/0                    4
+!OSCT         $GEMDATA/oscat            YYYYMMDDHHNN.oscat                               CAT_MSC  SCAT_NIL   -1   1440     60      OFF/0/0      4
+!OSCT_HI      $GEMDATA/oscat_hi         YYYYMMDDHHNN.oscat                               CAT_MSC  SCAT_NIL   -1   1440     60 OFF/0/0                    4
 !OAMBG1_HI    $GEMDATA/oscat_hi         YYYYMMDDHHNN.ambig1                              CAT_MSC  SCAT_NIL   -1   1440     60 OFF/0/0                    4
 !OAMBG2_HI    $GEMDATA/oscat_hi         YYYYMMDDHHNN.ambig2                              CAT_MSC  SCAT_NIL   -1   1440     60 OFF/0/0                    4
 !OAMBG3_HI    $GEMDATA/oscat_hi         YYYYMMDDHHNN.ambig3                              CAT_MSC  SCAT_NIL   -1   1440     60 OFF/0/0                    4
 !OAMBG4_HI    $GEMDATA/oscat_hi         YYYYMMDDHHNN.ambig4                              CAT_MSC  SCAT_NIL   -1   1440     60 OFF/0/0                    4
-QSCT         $GEMDATA/qsct             YYYYMMDDHHNN.qsct                                CAT_MSC  SCAT_NIL   -1   1440     60      OFF/0/0      4
-QSCT_HI      $GEMDATA/qsct             YYYYMMDDHHNN.qsct_hi                             CAT_MSC  SCAT_NIL   -1   1440     60      OFF/0/0      4
-SEAWND       $GEMDATA/qsct             YYYYMMDDHHNN.swnd                                CAT_MSC  SCAT_NIL   -1   1440     60      OFF/0/0      4
-SEAWND_HI    $GEMDATA/qsct             YYYYMMDDHHNN.swnd_hi                             CAT_MSC  SCAT_NIL   -1   1440     60      OFF/0/0      4
+!QSCT         $GEMDATA/qsct             YYYYMMDDHHNN.qsct                                CAT_MSC  SCAT_NIL   -1   1440     60      OFF/0/0      4
+!QSCT_HI      $GEMDATA/qsct             YYYYMMDDHHNN.qsct_hi                             CAT_MSC  SCAT_NIL   -1   1440     60      OFF/0/0      4
+!SEAWND       $GEMDATA/qsct             YYYYMMDDHHNN.swnd                                CAT_MSC  SCAT_NIL   -1   1440     60      OFF/0/0      4
+!SEAWND_HI    $GEMDATA/qsct             YYYYMMDDHHNN.swnd_hi                             CAT_MSC  SCAT_NIL   -1   1440     60      OFF/0/0      4
 !AMBG1        $GEMDATA/qsct             YYYYMMDDHHNN.ambig1                              CAT_MSC  SCAT_NIL   -1   1440     60      OFF/0/0      4
 !AMBG2        $GEMDATA/qsct             YYYYMMDDHHNN.ambig2                              CAT_MSC  SCAT_NIL   -1   1440     60      OFF/0/0      4
 !AMBG3        $GEMDATA/qsct             YYYYMMDDHHNN.ambig3                              CAT_MSC  SCAT_NIL   -1   1440     60      OFF/0/0      4
 !AMBG4        $GEMDATA/qsct             YYYYMMDDHHNN.ambig4                              CAT_MSC  SCAT_NIL   -1   1440     60      OFF/0/0      4
-WSAT         $GEMDATA/wsat             YYYYMMDDHHNN.wsat                                CAT_MSC  SCAT_NIL   -1   1440     60      OFF/0/0      4
+!WSAT         $GEMDATA/wsat             YYYYMMDDHHNN.wsat                                CAT_MSC  SCAT_NIL   -1   1440     60      OFF/0/0      4
 !WAMBG1       $GEMDATA/wsat             YYYYMMDDHHNN.ambig1                               CAT_MSC  SCAT_NIL   -1   1440     60      OFF/0/0      4
 !WAMBG2       $GEMDATA/wsat             YYYYMMDDHHNN.ambig2                              CAT_MSC  SCAT_NIL   -1   1440     60      OFF/0/0      4
 !WAMBG3       $GEMDATA/wsat             YYYYMMDDHHNN.ambig3                              CAT_MSC  SCAT_NIL   -1   1440     60 OFF/0/0                    4
@@ -315,17 +324,17 @@ QBUF         $GEMDATA/qsct_test        YYYYMMDDHH.bufr                          
 DMSPBUF      $GEMDATA/dmsp             YYYYMMDDHH.bufr                                  CAT_MSC  SCAT_NIL   -1   2880    300 OFF/0/0                    4
 !
 !SGWH         $GEMDATA/sgwh             *_YYYYMMDDHH.sgwh                                CAT_MSC  SCAT_NIL   -1   1440     60 OFF/0/0                    4
-SGWH         $GEMDATA/jason            YYYYMMDDHH.jason                                 CAT_MSC  SCAT_NIL   -1   1440     60 OFF/0/0                    4
-SGWHC        $GEMDATA/sgwh_cryosat     *_YYYYMMDDHH.sgwh                                CAT_MSC  SCAT_NIL   -1   1440     60 OFF/0/0                    4
-SGWHE        $GEMDATA/sgwh_envi        *_YYYYMMDDHH.sgwh                                CAT_MSC  SCAT_NIL   -1   1440     60 OFF/0/0                    4
-SGWHG        $GEMDATA/sgwh_gfo         *_YYYYMMDDHH.sgwh                                CAT_MSC  SCAT_NIL   -1   1440     60 OFF/0/0                    4
-SGWH2        $GEMDATA/sgwh2            *_YYYYMMDDHH.sgwh                                CAT_MSC  SCAT_NIL   -1   1440     60 OFF/0/0                    4
-SGWHA        $GEMDATA/sgwh_altika      altika_YYYYMMDDHH.sgwh                           CAT_MSC  SCAT_NIL   -1   1440     60 OFF/0/0                    4
-WSPDA        $GEMDATA/sgwh_altika      altika_YYYYMMDDHH.sgwh                           CAT_MSC  SCAT_NIL   -1   1440     60 OFF/0/0                    4
+!SGWH         $GEMDATA/jason            YYYYMMDDHH.jason                                 CAT_MSC  SCAT_NIL   -1   1440     60 OFF/0/0                    4
+!SGWHC        $GEMDATA/sgwh_cryosat     *_YYYYMMDDHH.sgwh                                CAT_MSC  SCAT_NIL   -1   1440     60 OFF/0/0                    4
+!SGWHE        $GEMDATA/sgwh_envi        *_YYYYMMDDHH.sgwh                                CAT_MSC  SCAT_NIL   -1   1440     60 OFF/0/0                    4
+!SGWHG        $GEMDATA/sgwh_gfo         *_YYYYMMDDHH.sgwh                                CAT_MSC  SCAT_NIL   -1   1440     60 OFF/0/0                    4
+!SGWH2        $GEMDATA/sgwh2            *_YYYYMMDDHH.sgwh                                CAT_MSC  SCAT_NIL   -1   1440     60 OFF/0/0                    4
+!SGWHA        $GEMDATA/sgwh_altika      altika_YYYYMMDDHH.sgwh                           CAT_MSC  SCAT_NIL   -1   1440     60 OFF/0/0                    4
+!WSPDA        $GEMDATA/sgwh_altika      altika_YYYYMMDDHH.sgwh                           CAT_MSC  SCAT_NIL   -1   1440     60 OFF/0/0                    4
 TRAK1        $GEMDATA/trak1            jsn1c_YYYYMMDDHH.trak                            CAT_MSC  SCAT_NIL   -1   1440     60 OFF/0/0                    4
 TRAK2        $GEMDATA/trak2            jsn2_YYYYMMDDHH.trak                             CAT_MSC  SCAT_NIL   -1   1440     60 OFF/0/0                    4
 TRAKE        $GEMDATA/trake            env_YYYYMMDDHH.trak                              CAT_MSC  SCAT_NIL   -1   1440     60 OFF/0/0                    4
-SSHA         $GEMDATA/alps             *YYYY_*                                          CAT_MSC  SCAT_NIL   -1  14400   1440      OFF/0/0      4
+!SSHA         $GEMDATA/alps             *YYYY_*                                          CAT_MSC  SCAT_NIL   -1  14400   1440      OFF/0/0      4
 !
 ! Other Misc
 LTNG         $GEMDATA/ltng             YYYYMMDDHH.ltng                                  CAT_MSC  SCAT_NIL   -1    360     10      OFF/0/0      4

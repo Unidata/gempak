@@ -11,6 +11,7 @@ SUBDIRS = \
 	gpend \
 	gpfax \
 	gpmap \
+	gpscat \
 	gptcww \
 	gptext \
 	gptpc 

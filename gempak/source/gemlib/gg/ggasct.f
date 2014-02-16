@@ -1,6 +1,6 @@
-	SUBROUTINE GG_ASCT ( filtyp, dattim, kwninc, kcolrs, kcolrs2,
-     +	                     numc, brbsiz, ibwid, hdsiz, ityp, iskip,
-     +			     interv, itmclr, itmwid, iflgs, iret )
+	SUBROUTINE GG_ASCT ( filtyp, dattim, maxback, kwninc, kcolrs, 
+     +	                     kcolrs2, numc, brbsiz, ibwid, hdsiz, ityp, 
+     +			     iskip, interv, itmclr, itmwid, iflgs, iret )
 C************************************************************************
 C* GG_ASCT								*
 C*									*
@@ -46,10 +46,12 @@ C* F. J. Yen/NCEP	 4/08	Added bin mins & mstrct to CTB_DTGET CSC*
 C* S. Jacobs/NCEP	 8/09	Added EXperimental data file types	*
 C* G. McFadden/SAIC     02/11   Added AAMBG3_HI and AAMBG4_HI           *
 C* S. Jacobs/NCEP	10/12	Consolidate check for ASCT and EXASCT	*
+C* M. James/Unidata     02/14   Added inline min definition to          *
+C                               override prefs.tbl                      *
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 C*
-	CHARACTER*(*)	filtyp, dattim
+	CHARACTER*(*)	filtyp, dattim, maxback
 	INTEGER		kwninc (*), kcolrs (*), kcolrs2(*), iflgs (*),
      +			interv, itmclr, itmwid
 C*
@@ -110,12 +112,19 @@ C
 C*      Compute stime, the start time of the range by subtracting
 C*      minutes in SAT_WIND_START from the frame time.
 C
-        CALL ST_NULL ( 'SAT_WIND_START', cstmin, lens, ier )
-        cval = ' '
-        CALL CTB_PFSTR ( cstmin, cval, ier1 )  
-        CALL ST_NUMB ( cval, mins, ier2 )
-        IF ( (ier1 .ne. 0) .or. (ier2 .ne. 0) .or. (mins .lt. 0) ) THEN
-            mins = 6 * 60
+        IF ( maxback .eq. '' ) THEN
+            CALL ST_NULL ( 'SAT_WIND_START', cstmin, lens, ier )
+            CALL CTB_PFSTR ( cstmin, cval, ier1 )  
+            CALL ST_NUMB ( cval, mins, ier2 )
+            cval = ' '
+            IF ( (ier1 .ne. 0) .or. (ier2 .ne. 0) 
+     +            .or. (mins .lt. 0) ) THEN
+                mins = 6 * 60
+            END IF
+        ELSE
+            cstmin = maxback
+            CALL ST_NUMB ( cstmin, mins, ier2 )
+            cval = ' '
         END IF
         CALL TI_CTOI ( dattm2, itarr, ier )
         CALL TI_SUBM ( itarr, mins, jtarr, ier )
@@ -184,6 +193,7 @@ C
 	CALL GSLINE ( 1, 0, itmwid, 0, ier )
 	CALL GSTEXT ( 21, 2, 1.0, 1, 111, 1, 1, ier )
 
+	IF ( interv .eq. 0 ) interv = 36000
 	IF ( interv .le. 0 ) interv = 30
 C
 C*	Scan the directory for all of the ASCAT data files.
