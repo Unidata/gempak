@@ -1,4 +1,4 @@
-	SUBROUTINE GG_WAVE ( filtyp, dattim, kwninc, kcolrs,
+	SUBROUTINE GG_WAVE ( filtyp, dattim, maxback, kwninc, kcolrs,
      +			     numc, mrktyp, sizmrk, mrkwid, iskip,
      +			     interv, itmclr, iret )
 C************************************************************************
@@ -43,7 +43,7 @@ C*                              wind speed (WSPDA).                 	*
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 C*
-	CHARACTER*(*)	filtyp, dattim
+	CHARACTER*(*)	filtyp, dattim, maxback
 	INTEGER		kwninc (*), kcolrs (*)
 C*
 	CHARACTER	path*25, templ*(MXTMPL), cday*3, cdttm*20,
@@ -107,12 +107,17 @@ C
 C*      Compute stime, the start time of the range by subtracting
 C*      minutes in SAT_WIND_START from the frame time.
 C
-        CALL ST_NULL ( 'SAT_WIND_START', cstmin, lens, ier )
         cval = ' '
-        CALL CTB_PFSTR ( cstmin, cval, ier1 )
-        CALL ST_NUMB ( cval, mins, ier2 )
-        IF ( (ier1 .ne. 0) .or. (ier2 .ne. 0) .or. (mins .lt. 0) ) THEN
-            mins = 6 * 60
+        IF ( maxback .eq. '' ) THEN
+                CALL ST_NULL ( 'SAT_WIND_START', cstmin, lens, ier )
+                CALL CTB_PFSTR ( cstmin, cval, ier1 )
+                CALL ST_NUMB ( cval, mins, ier2 )
+                IF ((ier1.ne.0) .or. (ier2.ne.0) .or. (mins.lt.0)) THEN
+                    mins = 6 * 60
+                END IF
+        ELSE
+                cstmin = maxback
+                CALL ST_NUMB ( cstmin, mins, ier2 )
         END IF
         CALL TI_CTOI ( dattm2, itarr, ier )
         CALL TI_SUBM ( itarr, mins, jtarr, ier )

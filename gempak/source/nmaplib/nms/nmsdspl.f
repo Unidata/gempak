@@ -109,7 +109,8 @@ C*
 	REAL		fvalu(*), fline(*), fsym1(*), fsym2(*),
      +			farrw(*)
 C*
-	CHARACTER	ttlstr*80, newfil*160, dirnam*160
+	CHARACTER	ttlstr*80, newfil*160, dirnam*160,
+     +                  maxback
 	INTEGER		ktminc(LLCLEV), kwninc(LLCLEV), 
      +                  jclrs(LLCLEV+1), htinc(LLCLEV+1),
      +                  htclr(LLCLEV+1), evclr(LLCLEV+1),
@@ -567,8 +568,9 @@ C
 		jclrs (i-2) = iclrs(i)
 	    END DO
 C
-	    CALL GG_WAVE ( alias, dattim, kwninc, jclrs, nn,
-     +		mrktyp, sizmrk, mrkwid, iskip, interv, itmclr,
+            maxback = ''
+	    CALL GG_WAVE ( alias, dattim, maxback, kwninc, jclrs,
+     +		nn, mrktyp, sizmrk, mrkwid, iskip, interv, itmclr,
      +		ier )
 C
 C

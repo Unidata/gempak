@@ -45,7 +45,7 @@ C*
      +			atmodl(NM)*20, usrmdl(NM)*20, qarr(16)*132,
      +			wsarr(13)*132, asarr(17)*132, tparr(4)*132, 
      +			osarr(13)*132, wflg(2)*72, enmodl(NM)*20,
-     +			ewndc(4)*3, sgwh_arr(7)*132, wspda_arr(7)*132,
+     +			ewndc(4)*3, sgwh_arr(15)*132, wspda_arr(7)*132,
      +                  ee*1, mode*2, depdest*2, sites*125, rarr(2)*5, 
      +                  sarr(2)*5
 	INTEGER		iwclr(NM), mrktyp(NM), iwidth(NM), iflag(NG),
@@ -607,45 +607,46 @@ C
 C
 C*			    Plot the significant wave height data.
 C
-			    IF 	( scat(1:4) .eq. 'SGWH' ) THEN
-				CALL ST_CLST ( sgwh, '|', ' ', 7,
+			    IF 	( scat .eq. 'SGWH2' ) THEN
+				CALL ST_CLST ( scttyp, '|', ' ', 6,
      +					       sgwh_arr, numsg, ier )
-				CALL ST_RLST ( sgwh_arr (3), ';', 0.,
-     +                                         LLCLEV, tminc, numv, 
+                                CALL ST_RLST ( spdint, ';', 0.,
+     +                                         LLCLEV, tminc, numv,
      +                                         ier )
-				CALL ST_ILST ( sgwh_arr(4), ';', -1,
-     +                                    LLCLEV, itmclr, numclr, ier )
+                                CALL ST_ILST ( colr1, ';', -1,
+     +                                    LLCLEV, itmclr, num1, ier )
+
 				IF ( numv .gt. NZ ) numv = NZ
 				DO ii = 1, numv
 				    itminc (ii) = NINT ( tminc (ii) )
 				END DO
 C
 				IF ( numclr .lt. numv ) THEN
-				    IF ( sgwh_arr(1) .eq. 'SGWH' ) THEN
+				    IF ( scat .eq. 'SGWH' ) THEN
 				        DO ii = numclr+1, numv 
 					    itmclr (ii) = lclsg1 (ii)
 				        END DO
-				    ELSE IF ( sgwh_arr(1) .eq. 'SGWHC' )
+				    ELSE IF ( scat .eq. 'SGWHC' )
      +                              THEN
 				        DO ii = numclr+1, numv 
 					    itmclr (ii) = lclsgc (ii)
 				        END DO
-				    ELSE IF ( sgwh_arr(1) .eq. 'SGWHE' )
+				    ELSE IF ( scat .eq. 'SGWHE' )
      +                              THEN
 				        DO ii = numclr+1, numv 
 					    itmclr (ii) = lclsge (ii)
 				        END DO
-				    ELSE IF ( sgwh_arr(1) .eq. 'SGWHG' )
+				    ELSE IF ( scat .eq. 'SGWHG' )
      +                              THEN
 				        DO ii = numclr+1, numv 
 					    itmclr (ii) = lclsgg (ii)
 				        END DO
-				    ELSE IF ( sgwh_arr(1) .eq. 'SGWH2' )
+				    ELSE IF ( scat .eq. 'SGWH2' )
      +                              THEN
 				        DO ii = numclr+1, numv 
 					    itmclr (ii) = lclsg2 (ii)
 				        END DO
-				    ELSE IF ( sgwh_arr(1) .eq. 'SGWHA' )
+				    ELSE IF ( scat .eq. 'SGWHA' )
      +                              THEN
 				        DO ii = numclr+1, numv 
 					    itmclr (ii) = lclsga (ii)
@@ -653,16 +654,22 @@ C
 				    END IF
                                 END IF
 
-                                CALL ST_NUMB ( sgwh_arr(5), iskip, ier )
-                                CALL ST_NUMB ( sgwh_arr(6), interv, 
+                                CALL ST_NUMB ( sgwh_arr(1), iskip, ier )
+                                CALL ST_NUMB ( sgwh_arr(2), interv, 
      +                                         ier )
-                                CALL ST_NUMB ( sgwh_arr(7), ilnclr,
+                                CALL ST_NUMB ( sgwh_arr(3), ilnclr,
      +                                         ier )
-                                CALL GG_WAVE ( sgwh_arr(1), sgwh_arr(2),
-     +                                         itminc, itmclr, numv,
-     +                                         mrktyp, sizmrk, mrkwid,
-     +                                         iskip, interv, ilnclr,
-     +                                         ier )
+
+                                CALL ST_LCUC (scat, sgwh_arr(4), ier)
+                                CALL ST_LCUC (scttim, sgwh_arr(5),ier)
+                                CALL ST_LCUC (sctmin, sgwh_arr(6),ier)
+
+                                CALL GG_WAVE (sgwh_arr(4),sgwh_arr(5),
+     +                                        sgwh_arr(6), itminc, 
+     +                                        itmclr, numv,
+     +                                        mrktyp, sizmrk, mrkwid,
+     +                                        iskip, interv, ilnclr,
+     +                                        ier )
 			    END IF
 C
 C*			    Plot the Altika wind speed data.

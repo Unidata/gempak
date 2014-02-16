@@ -162,7 +162,7 @@ C*
      +			atmodl(NM)*20, usrmdl(NM)*20, qarr(16)*132,
      +			wsarr(13)*132, asarr(17)*132, tparr(4)*132, 
      +			osarr(15)*132, wflg(2)*72, enmodl(NM)*20,
-     +			ewndc(4)*3, sgwh_arr(7)*132, wspda_arr(7)*132,
+     +			ewndc(4)*3, sgwh_arr(8)*132, wspda_arr(7)*132,
      +                  ee*1, mode*2, depdest*2, sites*125, rarr(2)*5, 
      +                  sarr(2)*5
 	INTEGER		iwclr(NM), mrktyp(NM), iwidth(NM), iflag(NG),
@@ -2009,12 +2009,12 @@ C
 C*			    Plot the significant wave height data.
 C
 			    IF 	( sgwh .ne. ' ' ) THEN
-				CALL ST_CLST ( sgwh, '|', ' ', 7,
+				CALL ST_CLST ( sgwh, '|', ' ', 8,
      +					       sgwh_arr, numsg, ier )
-				CALL ST_RLST ( sgwh_arr (3), ';', 0.,
+				CALL ST_RLST ( sgwh_arr (4), ';', 0.,
      +                                         LLCLEV, tminc, numv, 
      +                                         ier )
-				CALL ST_ILST ( sgwh_arr(4), ';', -1,
+				CALL ST_ILST ( sgwh_arr(5), ';', -1,
      +                                    LLCLEV, itmclr, numclr, ier )
 				IF ( numv .gt. NZ ) numv = NZ
 				DO ii = 1, numv
@@ -2054,12 +2054,13 @@ C
 				    END IF
                                 END IF
 
-                                CALL ST_NUMB ( sgwh_arr(5), iskip, ier )
-                                CALL ST_NUMB ( sgwh_arr(6), interv, 
+                                CALL ST_NUMB ( sgwh_arr(6), iskip, ier )
+                                CALL ST_NUMB ( sgwh_arr(7), interv, 
      +                                         ier )
-                                CALL ST_NUMB ( sgwh_arr(7), ilnclr,
+                                CALL ST_NUMB ( sgwh_arr(8), ilnclr,
      +                                         ier )
                                 CALL GG_WAVE ( sgwh_arr(1), sgwh_arr(2),
+     +                                         sgwh_arr(3),
      +                                         itminc, itmclr, numv,
      +                                         mrktyp, sizmrk, mrkwid,
      +                                         iskip, interv, ilnclr,
