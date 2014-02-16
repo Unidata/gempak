@@ -221,14 +221,14 @@ C
 C
 C*			    Plot the QuikScat wind data.
 C
-			    IF 	( scat .eq. 'qsct ' ) THEN
-				CALL ST_CLST ( qsct, '|', ' ', 16,
+                            IF  ( scat .eq. 'qsct') THEN
+				CALL ST_CLST ( scttyp, '|', ' ', 12,
      +					       qarr, numq, ier )
-				CALL ST_RLST ( qarr (3), ';', 0., LLCLEV,
+				CALL ST_RLST ( spdint, ';', 0., LLCLEV,
      +                                             tminc, numv, ier )
-				CALL ST_ILST ( qarr(4), ';', -1,
+				CALL ST_ILST ( colr1, ';', -1,
      +                                    LLCLEV, itmclr, num1, ier )
-				CALL ST_ILST ( qarr(5), ';', -1,
+				CALL ST_ILST ( colr2, ';', -1,
      +                                    LLCLEV, itmclr2, num2, ier )
 C
 				IF ( numv .gt. NQ ) numv = NQ
@@ -247,60 +247,50 @@ C
                                     END DO
                                 END IF
 C
-				CALL ST_RLST ( qarr (6), ';', 0., 4,
+				CALL ST_RLST ( marker, ';', 0., 4,
      +				               wind, num, ier )
 				szbrb = wind (1)
 				ibwid = NINT ( wind (2) )
 				hdsiz = wind (3)
 				ityp  = NINT ( wind (4) )
 C
-				CALL ST_NUMB ( qarr(7), iskip, ier )
-C
-				CALL ST_NUMB ( qarr(8), interv, ier)
-				CALL ST_NUMB ( qarr(9), ilnclr, ier)
-			 	CALL ST_NUMB ( qarr(10), ilnwid,ier)
-C
-				CALL ST_LCUC (qarr(11), qarr(11),ier)
-				CALL ST_LCUC (qarr(12), qarr(12),ier)
-				CALL ST_LCUC (qarr(13), qarr(13),ier)
-				CALL ST_LCUC (qarr(14), qarr(14),ier)
-				CALL ST_LCUC (qarr(15), qarr(15),ier)
-				CALL ST_LCUC (qarr(16), qarr(16),ier)
+				CALL ST_NUMB ( qarr(1), iskip, ier )
+				CALL ST_NUMB ( qarr(2), interv, ier)
+				CALL ST_NUMB ( qarr(3), ilnclr, ier)
+			 	CALL ST_NUMB ( qarr(4), ilnwid,ier)
+				CALL ST_LCUC (qarr(5), qarr(5),ier)
+				CALL ST_LCUC (qarr(6), qarr(6),ier)
+				CALL ST_LCUC (qarr(7), qarr(7),ier)
+				CALL ST_LCUC (qarr(8), qarr(8),ier)
 
-				IF  ( qarr(11)(1:1) .eq. 'Y' )  THEN
+				IF  ( qarr(5)(1:1) .eq. 'Y' )  THEN
 				    iflag(1) = 1
 				  ELSE
 				    iflag(1) = 0
 				END IF
-				IF  ( qarr(12)(1:1) .eq. 'Y' )  THEN
+				IF  ( qarr(6)(1:1) .eq. 'Y' )  THEN
 				    iflag(2) = 1
 				  ELSE
 				    iflag(2) = 0
 				END IF
-				IF  ( qarr(13)(1:1) .eq. 'Y' )  THEN
+				IF  ( qarr(7)(1:1) .eq. 'Y' )  THEN
                                     iflag(3) = 1
                                   ELSE
                                     iflag(3) = 0
                                 END IF
-				IF  ( qarr(14)(1:1) .eq. 'Y' )  THEN
+				IF  ( qarr(8)(1:1) .eq. 'Y' )  THEN
 				    iflag(4) = 1
 				  ELSE
 				    iflag(4) = 0
 				END IF
-				IF  ( qarr(15)(1:1) .eq. 'Y' )  THEN
-                                    iflag(5) = 1
-                                  ELSE
-                                    iflag(5) = 0
-                                END IF
-				IF  ( qarr(16)(1:1) .eq. 'Y' )  THEN
-                                    iflag(6) = 1
-                                  ELSE
-                                    iflag(6) = 0
-                                END IF
 C
-				CALL GG_QSCT ( qarr(1), qarr(2),
-     +					   itminc, itmclr, itmclr2, numv,
-     +					   szbrb, ibwid, hdsiz, ityp,
+                                CALL ST_LCUC ( scat, qarr(9), ier )
+                                CALL ST_LCUC ( scttim, qarr(10), ier )
+                                CALL ST_LCUC ( sctmin, qarr(11), ier )
+C
+				CALL GG_QSCT ( qarr(9), qarr(10),
+     +					   qarr(11), itminc, itmclr, itmclr2,
+     +					   numv, szbrb, ibwid, hdsiz, ityp,
      +					   iskip, interv, ilnclr, ilnwid,
      +					   iflag, iret )
 			    END IF
@@ -380,28 +370,17 @@ C
 C ASCT, ASCT_HI, AAMBG1_HI, AAMBG2_HI, 
 C     AAMBG3_HI, or AAMBG4_HI data.
 C
-C SCAT    ASCT_HI                                                                                                     
-C SCTTIM  last                                                                                                                       
-C SCTMIN  360                                                                                                                          
-C SPDINT  6;12;18;24;30;36;42;48;54;60                                                                                                   
-C COLR1   30;6;26;24;21;23;5;17;8;14                                                                                               
-C COLR2   31;31;31;31;31;31;31;31;31;31                                                                                              
-C MARKER  .2;.4;1;5                                                                                                                  
+C SCAT    ASCT_HI 
+C SCTTIM  last
+C SCTMIN  360
+C SPDINT  6;12;18;24;30;36;42;48;54;60 
+C COLR1   30;6;26;24;21;23;5;17;8;14
+C COLR2   31;31;31;31;31;31;31;31;31;31 
+C MARKER  .2;.4;1;5 
 C SCTTYP  0|0|1|1|Y|Y|Y|Y
-C TRAK1                                                                                                                            
-C TRAKE                                                                                                                                  
+C TRAK1    
+C TRAKE    
 C TRAK2 
-C
-C       Data type | End time | Min back | Speed intervals | colors1 | colors2 |
-C       Arrow/Barb shaft size;Arrow/Barb width;Arrow head size;
-C       Type of wind vector | Skip | Time stamp interval | Time stamp
-C       color |
-C       Line Width | High Spd | Low Spd | QC Fail | Redundant |
-C       QC Fail Colors | Plot Circles
-C  
-C
-C ${1}|last|${2}|6;12;18;24;30;36;42;48;54;60|30;6;26;24;21;23;5;17;8;14|31;31;31;31;31;31;31;31;31;31|.2;.4;1;5|0|0|1|1|Y|Y|Y|Y
-C
 C
 			    IF 	( (scat .eq. 'ASCT_HI') .or.
      +                          (scat .eq. 'asct_hi') ) THEN
