@@ -1,5 +1,6 @@
 !
 !Prod	band ncal units,Calval_1;....;calval_n	Prod_header
+!
 ! Since these are essentially spoofed satellite images,
 ! we have to give them unique ids to be matched in imgtyp.tbl
 !
@@ -13,27 +14,43 @@
 !		* 4-12 inches = 110-220
 !		* 12-24 inches = 210-255
 !
+! Current products
 !
 HHC        25    1 cat,1,150,1,150      TICZ99 CHIZ
 EET        26    4 KFt,0,1,-9999,-9995;2,71,0,70;72,129,-9999,-9999;130,199,0,70        TICZ99 CHIZ
 N0R        27    1 dBZ,0,105,-30,75     TICZ99 CHIZ
 DHR        28    2 dBZ,0,1,-9999,-9995;2,255,-32,94.5   TICZ99 CHIZ
 DVL        29    8 Kg/M**2,0,1,-9999,-9995;2,19,0,0.1875;20,110,0.1875,1.96;111,155,1.96,6.23;156,200,6.23,19.8;201,220,19.8,33.1;221,240,33.1,55.4;241,254,55.4,80 TICZ99 CHIZ
-!
-! DVL - approximate exponential
-!       * -9999 Missing Data = 0
-!       * -9995 Bad Data = 1
-!       * 2-19 = 0 - 0.1875
-!       * 20-110 = 0.1875 - 1.96
-!       * 111-155 = 1.96 - 6.23
-!       * 156-200 = 6.23 - 19.8
-!       * 201-220 = 19.8 - 33.1
-!       * 221-240 = 33.1 - 55.4
-!       * 241-254 = 55.4 - 80
-!
-!
 N1P        30    4 inches,0,9,-9999,-9999;10,100,0,0.5;101,200,0.5,5;201,255,5,12        TICZ99 CHIZ
 NTP        31    4 inches,0,9,-9999,-9999;10,100,0,3;101,200,3,10;201,250,10,24.00        TICZ99 CHIZ
+!
+!
+! HHC - Hybrid Hydrometeor Classification
+! EET - Enhanced Echo Tops
+! N0R -bit 1km reflectivity
+! DHR - 8-bit 1km reflectivity
+! DVL - approximate exponential
+!   -9999 Missing Data = 0
+!   -9995 Bad Data = 1
+!             2-19 = 0 - 0.1875
+!           20-110 = 0.1875 - 1.96
+!         111-155 = 1.96 - 6.23
+!         156-200 = 6.23 - 19.8
+!         201-220 = 19.8 - 33.1
+!         221-240 = 33.1 - 55.4
+!         241-254 = 55.4 - 80
+! N1P - 4-bit 1 hour precipitation
+! NTP - 4-bit Storm total precipitation
+!
+!
+! Bad/Missing Data Values
+!
+! -9995 = 'BD' -- Bad Data
+! -9996 = 'RF' -- Range Folding
+! -9997 = 'ND' -- None Displayed
+! -9998 = 'TH' -- THreshold
+! -9999 = 'ND' -- Missing (aka No Data)
+!
 !
 ! other stuff
 !
@@ -42,7 +59,6 @@ NTP        31    4 inches,0,9,-9999,-9999;10,100,0,3;101,200,3,10;201,250,10,24.
 !DSP	  31	3 mm,0,110,0,4;110,220,4,12;210,255,12,24	   TICZ99 CHIZ
 !OPA	  32	3 inches,0,110,0,4;110,220,4,12;210,255,12,24	   TICZ99 CHIZ
 !DST	  30	3 inches,0,110,0,2;110,210,2,6;210,255,6,12	  TICZ99 CHIZ
-!
 !TOPO	   3	2 m,0,8,-7000,0;8,95,0,5000	    TICZ99 TOPO
 !HGHT	   3	2 m,0,8,-7000,0;8,95,0,5000	    TICZ99 TOPO
 !CTMPK	  16	2 K,255,176,163,242;175,0,242.5,330	    TICZ99 TMPK
