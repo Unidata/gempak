@@ -98,6 +98,28 @@ C*      NTP = 2**(30)
                END IF
             END DO
             cmblev(1) = 'ND'
+C*      DAA = 2**(21)
+          CASE (2**(21))
+            DO i=iminpix, imaxpix
+               IF ( ( i .ge. iminpix ) .and. ( i .le. imaxpix ) ) THEN
+                 IF ( mod ( i - 1, 15 ) .eq. 0) THEN
+                     IF (np .eq. 0) THEN
+                        level = nint( (i-iminpix) * ratio) + iminval
+                        CALL ST_INCH ( level/iscaleval,
+     +                              cmblev (i), ier )
+                     ELSE
+                        flevel = (i - 1 - minpx) * ratio + minval
+                        CALL ST_RLCH ( flevel/scaleval, np,
+     +                              tmplev, ier )
+                        cmblev(i) = tmplev(1:8)
+                     END IF
+                 ELSE
+                     cmblev (i) = ' '
+                 END IF
+               END IF
+            END DO
+            cmblev(1) = 'ND'
+
           CASE DEFAULT
 	    DO i=iminpix, imaxpix
                IF ( ( i .ge. iminpix ) .and. ( i .le. imaxpix ) ) THEN

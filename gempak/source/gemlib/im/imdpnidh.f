@@ -283,13 +283,14 @@ C* 173 - Digital User-Selectable Accumulation
 C
            CASE (170, 172, 173)
               DO idl = 1, imndlv
-                 val = ( amin + ( idl - 1 ) * ainc ) / 10
+                 val = ( amin + ( idl - 1 ) * ainc ) / 10 
                  IF ( idl .eq. 1 ) THEN
                     cmblev ( idl ) = 'ND'
-                 ELSE IF ( MOD ( ( idl - 1 ), iinc ) .eq. 0 ) THEN
-                    CALL ST_RLCH ( val, 1, cmblev ( idl ), ier )
+C                 ELSE IF ( MOD ( ( idl - 1 ), iinc ) .eq. 0 ) THEN
+C                    CALL ST_RLCH ( val, 1, cmblev ( idl ), ier )
                  ELSE
-                    cmblev ( idl ) = ' '
+C                    cmblev ( idl ) = ' '
+                    CALL ST_RLCH ( val, 1, cmblev ( idl ), ier )
                  END IF
               END DO
 C 
