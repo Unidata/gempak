@@ -98,6 +98,16 @@ C
 		IF ( carr ( ipos - 1 ) .ne. 'TAF' ) num = ipos - 1
 	    END IF
 	  ELSE
+C
+C*          Check for a remark section and exclude it from processing.
+C
+C*          At least one station issued a report for another station
+C*          and marked with with a "BY xxxx" clause that was not
+C*          preceded by a RMK. So, look for BY or RMK to signify
+C*          a remark. 
+C
+	    CALL ST_FIND ( 'BY', carr, num, ipos, ier )
+	    IF ( ipos .gt. 0 ) num = ipos - 1
 	    CALL ST_FIND ( 'RMK', carr, num, ipos, ier )
 	    IF ( ipos .gt. 0 ) num = ipos - 1
 	END IF
