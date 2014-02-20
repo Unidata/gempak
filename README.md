@@ -8,33 +8,48 @@ Last Updated January 2014
 
 GEMPAK can be installed by an individual user, and root / superuser permission is not required. It's assumed for this guide and throughout other online documentation that GEMPAK is installed for a gempak user account in the home directory.
 
-* ### from Unidata
+### from GitHub
 
-	The current release of GEMPAK is provided as a gzip/tarball archive and can found on the <a href="http://www.unidata.ucar.edu/downloads/gempak/">Unidata GEMPAK download page</a>. 
+GEMPAK may be download from the <a href="https://github.com/Unidata/gempak"">GitHub repository</a> in a zip file, or via `git` on the command line.
+
+In **/home/gempak**, to clone into the directory **/home/gempak/GEMPAK7**:
+
+        git clone git://github.com/Unidata/gempak.git GEMPAK7
+
+This will copy the GEMPAK source to the present working directory.   It also has the advantage of easily setting up <code>git pull</code> to automatically update your local GEMPAK7 repository with the remote Unidata repository.
+
+If downloaded from GitHub, ensure that the source is located in a directory under the user's home directory, such as **/home/gempak/GEMPAK7/**
+
+### Source code from Unidata
+
+The current release of GEMPAK is provided as a gzip/tarball archive and can found on the <a href="http://www.unidata.ucar.edu/downloads/gempak/">Unidata GEMPAK download page</a>. 
 	
-	Unpacking the archive in the gempak user home directory (assuming **/home/gempak**):
+Unpacking the archive in the gempak user home directory (assuming **/home/gempak**):
 
-		tar -xvzf gempak-7-1.tar.gz
+	tar -xvzf gempak-7.tar.gz
 
-	will create the directory **/home/gempak/GEMPAK7/** which contains all of the libraries, program source and configuration files, most notably the two Gemenviron and Gemenviron.profile.
+will create the directory **/home/gempak/GEMPAK7/** which contains all of the libraries, program source and configuration files, most notably the two Gemenviron and Gemenviron.profile.
 
+### Binary Releases
+
+
+
+| ------------- |:-------------:|-----| 
+| linux  | gcc-gfortran-4.1.2 | CentOS 5 |
+| linux64  | gcc-gfortran-4.4.4 | Fedora 12 |
+| x86 | Sun Fortran 95 8.6 and Sun C 5.12 | SunOs 5.11 |
+| Darwin | clang/LLVM 5 and gfortran/gcc 4.7.2 | OS X 10.9 Mavericks |
+
+
+The OS X 10.9 binary required **MacPorts** and package `openmotif` be installed:
 	
-
-
-* ### from GitHub
-
-	GEMPAK may be download from the <a href="https://github.com/Unidata/gempak"">GitHub repository</a> in a zip file, or via `git` on the command line.
-	
-	In **/home/gempak**, to clone into the directory **/home/gempak/GEMPAK7**:
-	
-		git clone git://github.com/Unidata/gempak.git GEMPAK7
-
-	This will copy the GEMPAK source to the present working directory.  If downloaded from GitHub, ensure that the source is located in a directory under the user's home directory, such as **/home/gempak/GEMPAK7/**
+1. Download and install MacPorts
+2. run `sudo port install openmotif` to install Open Motif and its dependencies.
+3. run `nmap2` to make sure Motif libraries are installed.
 
 ## Create the NAWIPS symbolic link
 
-Creating a symbolic link NAWIPS in your home directory will allow you to maintain a single command in **.cshrc** or **.profile** that sources the current GEMPAK installation:
-
+After installing or building from source, but before running any GEMAPK programs, you should create a symbolic link NAWIPS in your home directory to maintain a single command in **.cshrc** or **.profile** that sources the current GEMPAK installation:
 
 	ln -s GEMPAK7/ NAWIPS
 	
@@ -43,13 +58,14 @@ Your **gempak** home directory should then contain the following:
 	/home/gempak/GEMPAK7
 	/home/gempak/NAWIPS -> GEMPAK7
 
+If you unpacked and plan to install GEMPAK in an uncommon directory (such as **/opt/gempak/**), you'll need to edit the NAWIPS definition at the top of the appropriate Gemenviron file.
+
 ## Gemenviron / Gemenviron.profile
 
 To build GEMPAK on your system, the environmental variable **$NAWIPS** must be defined at the top of **Gemenviron** [ for csh/tcsh ] or **Gemenviron.profile** [ for bash/ksh ]. These files contain definitions for the locations of various components used by GEMPAK. It is the responsibility of the GEMPAK administrator to confirm that **$NAWIPS** is defined correctly with the full path of the `GEMPAK7` directory. Other variables which point to the location of data directories, tables and can be tailored at your lesiure, but it's recommended that only **$NAWIPS** be modified as all other variables related to GEMPAK are dependant on **$NAWIPS**.
 
 If you unpacked GEMPAK in **/home/gempak** and plan on compiling with gfortran, you can skip this step.
 
-If you unpacked and plan to install GEMPAK in an uncommon directory (such as **/opt/gempak/**), you'll need to edit the NAWIPS definition at the top of the appropriate file:
 
 	setenv NAWIPS /home/gempak/GEMPAK7
 
