@@ -32,14 +32,12 @@ will create the directory **/home/gempak/GEMPAK7/** which contains all of the li
 
 ### Binary Releases
 
-
-
-| ------------- |:-------------:|-----| 
-| linux  | gcc-gfortran-4.1.2 | CentOS 5 |
-| linux64  | gcc-gfortran-4.4.4 | Fedora 12 |
-| x86 | Sun Fortran 95 8.6 and Sun C 5.12 | SunOs 5.11 |
-| Darwin | clang/LLVM 5 and gfortran/gcc 4.7.2 | OS X 10.9 Mavericks |
-
+| System   | compilers                           | flavor     |
+|---------:|:-----------------------------------|:-----------|
+| linux    | gcc-gfortran-4.1.2                  | CentOS 5   |
+| linux64  | gcc-gfortran-4.4.4                  | Fedora 12  |
+| x86      | Sun Fortran 95 8.6 and Sun C 5.12   | SunOs 5.11 |
+| Darwin   | clang/LLVM 5 and gfortran/gcc 4.7.2 | OS X 10.9 Mavericks |
 
 The OS X 10.9 binary required **MacPorts** and package `openmotif` be installed:
 	
