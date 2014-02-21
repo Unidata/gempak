@@ -193,7 +193,7 @@
 000 003 001 002 Pressure Reduced to MSL          Pa                   PMSL            -2  -9999.00
 000 003 001 011 Pressure Reduced to MSL          Pa                   PMSL            -2  -9999.00
 000 003 002 000 Pressure Tendency                Pa s**-1             PTND            -2  -9999.00
-!000 003 003 000 ICAO Standard Atm Ref Height    m                     ????             ?  -9999.00
+000 003 003 000 ICAO Standard Atm Ref Height     m                    ICAH             0  -9999.00
 000 003 004 000 Geopotential                     m**2 s**-2           GP               0  -9999.00
 000 003 005 000 Geopotential Height              gpm                  HGHT             0  -9999.00
 000 003 005 001 Geopotential Height              gpm                  HGHT             0  -9999.00
@@ -209,6 +209,7 @@
 !000 003 012 000 Thickness                        ????                 ????             ?  -9999.00
 !000 003 013 000 Pressure Altitude                ????                 ????             ?  -9999.00
 !000 003 014 000 Density Altitude                 ????                 ????             ?  -9999.00
+000 003 200 000 P most unstable parcel 300mb agl Pa                   PLPL             0  -9999.00
 !
 ! short-wave radiation
 !D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING

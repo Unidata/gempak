@@ -175,7 +175,7 @@ if(infilnam == 0)
       {
       tempnam = (char *)malloc(19);
       tempnam[0] = '\0';
-      sprintf(tempnam,".tmp_netcdf.XXXXXX\0");
+      sprintf(tempnam,".tmp_dcsuomi_netcdf.XXXXXX\0");
       mkstemp(tempnam);
       udebug("creating temporary netcdf file %s\0",tempnam);
       /* create temp file in directory of output  (get path to ofil)*/

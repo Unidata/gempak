@@ -36,6 +36,7 @@
 000 001 195 005 Categorical snow                 0,1                  WXTS             0  -9999.00
 000 001 195 008 Categorical snow                 0,1                  WXTS             0  -9999.00
 000 001 196 000 Convective precip rate           kg m**-2 s**-1       CPR--            0  -9999.00
+000 001 196 008 Convective precip rate           kg m**-2 s**-1       CPR--            0  -9999.00
 000 001 197 000 Horizontal moisture divergence   kg kg**-1 s**-1      MCNV             0  -9999.00
 000 001 198 000 Probability of precip, frozen    %                    POPZ             0  -9999.00
 000 001 199 000 Potential evaporation            kg m**-2             PEVAP            0  -9999.00
@@ -56,6 +57,8 @@
 ! momentum
 !D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING
 !23|123|123|123|12345678901234567890123456789012|12345678901234567890|123456789012|12345|123456.89
+000 002 002 000 u-component of wind              m s**-1              UREL             0  -9999.00
+000 002 003 000 v-component of wind              m s**-1              VREL             0  -9999.00
 000 002 192 000 Vertical speed shear             s**-1                VWSH             0  -9999.00
 000 002 193 000 Momentum flux                    N m**-2              MFLX             0  -9999.00
 000 002 194 000 U-component of storm motion      m/s                  USTRM            0  -9999.00
@@ -77,9 +80,12 @@
 000 003 192 000 MSLP (ETA reduction)             Pa                   EMSL            -2  -9999.00
 000 003 193 000 5-wave geopotential height       gpm                  HGHT5            0  -9999.00
 000 003 194 000 Zonal flux of gravity wav stress N/m**2               UGWD             0  -9999.00
+000 003 194 008 Zonal flux of gravity wav stress N/m**2               UGWD             0  -9999.00
 000 003 195 000 Meridional flux of grav wv strss N/m**2               VGWD             0  -9999.00
+000 003 195 008 Meridional flux of grav wv strss N/m**2               VGWD             0  -9999.00
 000 003 196 000 Planetary boundary layer hght    m                    ZPBL             0  -9999.00
 000 003 197 000 5-wave geopotention hght anomaly gpm                  WAVA5            0  -9999.00
+000 003 200 000 P most unstable parcel 300mb agl Pa                   PLPL             0  -9999.00
 !
 ! short-wave radiation
 !D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING
@@ -90,6 +96,8 @@
 000 004 193 008 Upward short wave rad flux       W m**-2              SWRU             0  -9999.00
 000 004 193 011 Upward short wave rad flux       W m**-2              SWRU             0  -9999.00
 000 004 193 012 Upward short wave rad flux       W m**-2              SWRU             0  -9999.00
+000 004 194 008 UV-B downward solar flux         W m**-2              DUVB             0  -9999.00
+000 004 195 008 Clear sky UV-B downward flux     W m**-2              CDUVB            0  -9999.00
 000 004 197 008 Shrt wave radiative heating rate K s**-1              SWHR             0  -9999.00
 !
 ! long-wave radiation
@@ -112,12 +120,14 @@
 000 006 192 000 Amt of non-convective cloud      %                    CLDA             0  -9999.00
 000 006 192 008 Amt of non-convective cloud      %                    CLDA             0  -9999.00
 000 006 193 000 Cloud work function              J/kg                 CWRK             0  -9999.00
+000 006 193 008 Cloud work function              J/kg                 CWRK             0  -9999.00
 000 006 194 000 Convective cloud efficiency      -                    CUEFI            0  -9999.00
 000 006 195 000 Total condensate                 kg/kg                TCOND            0  -9999.00
 000 006 196 000 Total column-integratd cloud wtr kg/m**2              TCOLW            0  -9999.00
 000 006 197 000 Total column-integratd cloud ice kg/m**2              TCOLI            0  -9999.00
 000 006 198 000 Total column-integrated condens  kg/m**2              TCOLC            0  -9999.00
 000 006 199 000 Ice fraction of total condensate -                    FICE             0  -9999.00
+000 006 201 000 Sunshine duration                s                    SUNSD            0  -9999.00
 !
 ! thermodynamic stability indices 
 !D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING
@@ -188,6 +198,7 @@
 002 003 195 000 Transpiration stress-onset(0.-1.)-                    SMREF            0  -9999.00
 002 003 196 000 Direct evaporation cease (0.-1.) -                    SMDRY            0  -9999.00
 002 003 197 000 Soil porosity (0.0-1.0)          -                    POROS            0  -9999.00
+002 003 203 000 Field capacity			 -                    FLDCP            0  -9999.00
 !
 ! Product Discipline 10 - Oceanographic Products
 ! CATEGORY 0 - Waves category

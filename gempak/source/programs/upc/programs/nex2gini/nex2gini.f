@@ -303,10 +303,11 @@ C                               opmode = .true.
 C                               Need a flag for radar_grid function
 C                               (HHC,DVL, other high-res products)
 C##      134     DVL (High-Res Digital Vertically Integrated Liquid)
+C##      170     DAA (Digital Accum Array)
 C##      138     DSP (High-Res Digital Storm Total Precipitation)
 C##      177     HHC (Hybrid Scan Hydrometeor Classification)
                                   SELECT CASE (imtype)
-                                    CASE (177,138,135)
+                                    CASE (81,177,138,135)
 			              CALL radar_grid(0,kx,ky,grid,rarr)
 C##      32      DHR (Digital Hybrid Scan Reflectivity)
 C##      81      DPA (High-Res Hourly Digital Precipitation Array)
