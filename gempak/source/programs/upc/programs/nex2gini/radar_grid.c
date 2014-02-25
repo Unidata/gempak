@@ -287,6 +287,7 @@ for ( i=xstart; i<=xstop; i++ )
 
 // Convert grid from G to L
 gtrans(gsys, msys, &np, xin, yin, xout, yout, &ier, strlen(gsys), strlen(msys));
+printf("hello");
 
 np = 0;
 rvalmx = RMISSD;
@@ -300,6 +301,7 @@ for ( i=xstart; i<=xstop; i++ )
          ip = ((j - 1) * (*kx)) + i - 1;
 
          // If imgData is between min and max (0 and 16 for 4 bit 0 and 255 for HiRes 8 bit)
+         //printf("x=%d y=%d np=%d it=%d imgData[it]=%d rval=%f rvalmx=%f rlev[imgData[it]]=%f\n", x, y, np, it, imgData[it], rval, rvalmx, rlev[(int)imgData[it]]);
          if ( ( imgData[it] >= immnpx ) && ( imgData[it] <= immxpx ) ) {
 
             // assign rval to level specified by imgData number
@@ -315,7 +317,14 @@ for ( i=xstart; i<=xstop; i++ )
             //printf("x=%d y=%d np=%d it=%d imgData[it]=%d rval=%f rvalmx=%f rlev[imgData[it]]=%f\n", x, y, np, it, imgData[it], rval, rvalmx, rlev[(int)imgData[it]]);
             // if rval is great than existing value, replace
             if ( rval > fdata[ip] ) {
-               fdata[ip] = rval;
+		if ( rval > 128 ) {
+		   printf("x=%d y=%d np=%d it=%d imgData[it]=%d rval=%f rvalmx=%f rlev[imgData[it]]=%f\n", x, y, np, it, imgData[it], rval, rvalmx, rlev[(int)imgData[it]]);
+	        }
+		if ( imtype == 135 ) {
+		   rval = rlev[(int)imgData[it]]; 
+		   //printf("x=%d y=%d np=%d it=%d imgData[it]=%d rval=%f rvalmx=%f rlev[imgData[it]]=%f\n", x, y, np, it, imgData[it], rval, rvalmx, rlev[(int)imgData[it]]);
+		}
+                fdata[ip] = rval;
             }
          } else
             printf("%d %d %d   %d %d %d   %d [%d %d]\n", x,y,np, i,j,ip, imgData[it],immnpx, immxpx);

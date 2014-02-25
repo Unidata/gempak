@@ -1,0 +1,91 @@
+#include "geminc.h"
+#include "gemprm.h"
+
+#include "grib2.h"
+
+/* convenience routine to get grid number for grib2
+   Todo: use lookup table instead of hardcoded values
+ */
+
+int ced_num ( g2int *gdtmpl, g2int gdtlen)
+{
+
+if ( gdtlen < 18 ) return(255);
+
+if ( ( gdtmpl[7] == 720 ) && ( gdtmpl[8] == 361 )  &&
+     ( gdtmpl[11] == 90000000 ) && ( gdtmpl[12] == 0 ) &&
+     ( gdtmpl[14] == -90000000 ) && ( gdtmpl[15] == 359500000 ) &&
+     ( gdtmpl[16] == 500000 ) && ( gdtmpl[17] == 500000 ) )
+     return ( 4 );
+
+return ( 255 );
+}
+
+int lcc_num ( g2int *gdtmpl, g2int gdtlen)
+{
+
+if ( gdtlen < 21 ) return(255);
+
+if ( ( gdtmpl[7] == 491 ) && ( gdtmpl[8] == 303 )  &&
+     ( gdtmpl[9] == 19943000 ) && ( gdtmpl[10] == 234907000 ) &&
+     ( gdtmpl[12] == 40000000 ) && ( gdtmpl[13] == 262000000 ) &&
+     ( gdtmpl[14] == 12000000 ) && ( gdtmpl[15] == 12000000 ) )
+     return ( 185 );
+
+if ( ( gdtmpl[7] == 185 ) && ( gdtmpl[8] == 129 )  &&
+     ( gdtmpl[9] == 12190000 ) && ( gdtmpl[10] == 226541000 ) &&
+     ( gdtmpl[12] == 25000000 ) && ( gdtmpl[13] == 265000000 ) &&
+     ( gdtmpl[14] == 12190000 ) && ( gdtmpl[15] == 12190000 ) )
+     return ( 212 );
+
+if ( ( gdtmpl[7] == 614 ) && ( gdtmpl[8] == 428 )  &&
+     ( gdtmpl[9] == 12190000 ) && ( gdtmpl[10] == 226541000 ) &&
+     ( gdtmpl[12] == 25000000 ) && ( gdtmpl[13] == 265000000 ) &&
+     ( gdtmpl[14] == 12191000 ) && ( gdtmpl[15] == 12191000 ) )
+     return ( 218 );
+
+return ( 255 );
+}
+
+int str_num ( g2int *gdtmpl, g2int gdtlen)
+{
+
+if ( gdtlen < 18 ) return(255);
+
+if ( ( gdtmpl[7] == 377 ) && ( gdtmpl[8] == 237 )  &&
+     ( gdtmpl[9] == 44196000 ) && ( gdtmpl[10] == 174759000 ) &&
+     ( gdtmpl[12] == 60000000 ) && ( gdtmpl[13] == 203000000 ) &&
+     ( gdtmpl[14] == 11945000 ) && ( gdtmpl[15] == 11945000 ) )
+     return ( 186 );
+
+if ( ( gdtmpl[7] == 553 ) && ( gdtmpl[8] == 425 )  &&
+     ( gdtmpl[9] == 30000000 ) && ( gdtmpl[10] == 187000000 ) &&
+     ( gdtmpl[12] == 60000000 ) && ( gdtmpl[13] == 225000000 ) &&
+     ( gdtmpl[14] == 11250000 ) && ( gdtmpl[15] == 11250000 ) )
+     return ( 242 );
+
+return ( 255 );
+}
+
+int decode_g2gnum ( gribfield *gfld )
+{
+int gnum=255;
+
+switch ( gfld->igdtnum )
+   {
+   case 0:
+	gnum = ced_num ( gfld->igdtmpl, gfld->igdtlen);
+	break;
+   case 20:
+	gnum = str_num ( gfld->igdtmpl, gfld->igdtlen);
+	break;
+   case 30:
+	gnum = lcc_num ( gfld->igdtmpl, gfld->igdtlen);
+	break;
+   }
+
+
+return gnum;
+
+}
+

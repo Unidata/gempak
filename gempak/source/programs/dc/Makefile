@@ -3,13 +3,19 @@
 #		Follows each limb of DC tree
 #		Unidata 11/99 Chiz
 #
+include $(CONFIGDIR)/$(MAKEINC)
+
 SUBDIRS = \
+	dcacars \
 	dcacft \
 	dcairm \
+	dccosmic \
 	dccsig \
 	dcffa \
 	dcffg \
 	dcgmos \
+	dcgrib \
+	dcgrib2 \
 	dchrcn \
 	dcidft \
 	dcigdr \
@@ -18,19 +24,32 @@ SUBDIRS = \
 	dcmetr \
 	dcmsfc \
 	dcncon \
+	dcncprof \
+	dcnexr2 \
+	dcnldn \
 	dcnmos \
+	dcprof \
 	dcrdf \
+	dcreanal \
+	dcreanal2 \
+	dcredbook \
 	dcscd \
 	dcshef \
+	dcsuomi \
+	dcstorm \
 	dcsvrl \
 	dctaf \
+	dctrop \
 	dcxmos \
 	dcuair \
+	dcuspln \
 	dcwarn \
+	dcwatch \
 	dcwcn \
 	dcwcp \
 	dcwou \
 	dcwstm \
+	dcwmostrip \
 	dcwtch
 
 all :

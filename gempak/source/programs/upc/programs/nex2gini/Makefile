@@ -62,7 +62,7 @@ $(ALIB): $(FOBJS) $(COBJS)
 
 
 clean:
-	$(RM) $(PROG) *.o 
+	$(RM) $(PROG) *.o $(OS_LIB)/nex2gini.a
 
 
 install: $(PROG) 

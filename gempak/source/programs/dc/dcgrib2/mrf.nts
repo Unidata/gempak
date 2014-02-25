@@ -1,0 +1,29 @@
+GDATTIM f084                                                                                                                            
+GLEVEL  500                                                                                                                             
+GVCORD  pres                                                                                                                            
+GFUNC   hght                                                                                                                            
+GDFILE  1999120800_mrf.gem                                                                                                              
+CINT    60                                                                                                                              
+LINE    3                                                                                                                               
+MAP     1                                                                                                                               
+TITLE   1                                                                                                                               
+DEVICE  xw                                                                                                                              
+SATFIL                                                                                                                                  
+RADFIL                                                                                                                                  
+PROJ    ced                                                                                                                             
+GAREA   -90;-180;90;180                                                                                                                 
+CLEAR   YES                                                                                                                             
+PANEL   0                                                                                                                               
+TEXT    1                                                                                                                               
+SCALE   0                                                                                                                               
+LATLON  0                                                                                                                               
+HILO                                                                                                                                    
+HLSYM                                                                                                                                   
+CLRBAR                                                                                                                                  
+CONTUR  3/3                                                                                                                             
+SKIP    0                                                                                                                               
+FINT    0                                                                                                                               
+FLINE   10-20                                                                                                                           
+CTYPE   C                                                                                                                               
+LUTFIL                                                                                                                                  
+STNPLT                                                                                                                                  
