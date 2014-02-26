@@ -155,20 +155,26 @@ C HHC
             END DO
             cmblev ( imndlv ) = 'RF'
 C EET composite GINI 2**25
+C
+C - this is only for labelling, not data values.  data values range from 
+C   2-71 (69 increments) for 0 <= EET < 70k ft
+C   0 = Missing data
+C   1 = Bad data / flagged
+C
           CASE ( 2**(25) )
             DO idx = 1,nflvl
                 cmblev ( idx ) = ''
             END DO
-            DO idx = 2,72,10
-                val = idx - 2
+            DO idx = 3,73,10
+                val = idx - 3 
                 CALL ST_INCH ( int(val), cmblev (idx), ier )
             END DO
-            DO idx = 130,199,10
-                val = idx - 130
+            DO idx = 131,200,10
+                val = idx - 131
                 CALL ST_INCH ( int(val), cmblev (idx), ier )
             END DO
             CALL ST_INCH ( int(70), cmblev (199), ier )
-            cmblev ( 130 ) = 'TOP'
+            cmblev ( 131 ) = 'TOP'
         END SELECT
 
 	DO  i = clevst, clevsp 

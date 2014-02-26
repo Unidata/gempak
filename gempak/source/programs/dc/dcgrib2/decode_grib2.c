@@ -118,8 +118,8 @@ decode_grib2 (unsigned char *cgrib, int lenbul,
 
       if (ier != 0)
 	{
-	  sprintf (errstr, "%d - Could not determine parameter name %d %d %d %d [%d]\0",
-		   ier, curr_g2.gfld->discipline, curr_g2.gfld->ipdtmpl[0],
+	  sprintf (errstr, "Could not determine parameter name %d %d %d %d [%d]\0",
+		   curr_g2.gfld->discipline, curr_g2.gfld->ipdtmpl[0],
 		   curr_g2.gfld->ipdtmpl[1],curr_g2.gfld->ipdtnum, curr_gem.vcord);
 	  dc_wclg (0, errgrp, ier, errstr, &iret);
 	  g2_free (curr_g2.gfld);

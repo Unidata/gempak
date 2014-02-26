@@ -247,6 +247,11 @@ C
               END DO
            CASE (135)
 C       135 = EET Enhanced Echo Tops
+C halfword 31 contains the DATA_MASK 127 or 0x7f (hex) identifying the
+C    data bits
+C halfword 32 contains the DATA_SCALE 1
+C halfword 33 contains the DATA_OFFSET 2
+C halfword 34 contains the TOPPED_MASK 128 or 0x80
 C
               DO i = 1,nlev
                  cmblev ( i ) = ''
@@ -255,19 +260,20 @@ C
               dscal = idlvls ( 2 ) 
               doffs = idlvls ( 3 ) 
               tmask = idlvls ( 4 ) 
-              DO idl = 2,72,10
-                 val = ( idl / dscal ) - doffs
+              DO idl = 2,71
+                 val = ( IAND( idl , dmask ) / dscal ) - doffs
                  CALL ST_INCH ( int(val), cmblev (idl), ier )
               END DO
-              DO idl = 130,199,10 
+              DO idl = 130,199 
                  val = ( IAND( idl , dmask ) / dscal ) - doffs
-                 IF ( ( IAND(idl , tmask ) .ne. 0 ) .and.
-     +           (val > 70.0 ) ) THEN
-                    val = 1
-                 END IF
+C                 IF ( ( IAND(idl , tmask ) .ne. 0 ) .and.
+C     +           (val > 70.0 ) ) THEN
+C                    val = 1
+C                 END IF
                  CALL ST_INCH ( int(val), cmblev (idl), ier )
               END DO
               CALL ST_INCH ( int(70), cmblev (199), ier )
+              CALL ST_INCH ( int(70), cmblev (71), ier )
               cmblev ( 130 ) = 'TOP'
            CASE (138)
 C

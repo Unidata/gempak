@@ -1,4 +1,3 @@
-#
 #       Makefile for LDM4-GEMPAK 5.1 Bridge Software
 #	P.Bruehl Unidata
 #
@@ -6,7 +5,6 @@ include $(CONFIGDIR)/$(MAKEINC)
 
 SUBDIRS = \
 	ldmlog \
-	ldmbridge \
 	programs
 
 all :

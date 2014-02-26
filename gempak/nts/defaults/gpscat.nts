@@ -1,0 +1,24 @@
+SCAT    asct_hi 
+SCTTIM  last    
+SCTMIN  360     
+SPDINT  6;12;18;24;30;36;42;48;54;60    
+COLR1   30;6;26;24;21;23;5;17;8;14      
+COLR2   31;31;31;31;31;31;31;31;31;31   
+MARKER  .2;.4;1;5           
+SCTTYP  0|0|0|0|n|n|n       
+GAREA   us--    
+PROJ    mer     
+LATLON          
+PANEL   0       
+TITLE   1       
+TEXT    1       
+CLEAR   YES     
+DEVICE  gif|gpscat.gif|900;600          
+IMCBAR          
+LINE    3       
+BND 
+MAP     1       
+MSCALE  0       
+TRAK1           
+TRAKE           
+TRAK2           

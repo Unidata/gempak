@@ -178,10 +178,10 @@ if(infilnam == 0)
    {
    if(outfilnam == 0) /* create a temporary file name */
       {
-      tempnam = (char *)malloc(19);
+      tempnam = (char *)malloc(32);
       tempnam[0] = '\0';
       sprintf(tempnam,".tmp_dcncprof_netcdf.XXXXXX\0");
-      mkstemp(tempnam);
+      mktemp(tempnam);
       udebug("creating temporary netcdf file %s\0",tempnam);
       /* create temp file in directory of output  (get path to ofil)*/
       dpos = strrchr(ofil,'/');
@@ -189,7 +189,7 @@ if(infilnam == 0)
          outfilnam = tempnam;
       else
          {
-         outfilnam = (char *)malloc(strlen(ofil)+20);
+         outfilnam = (char *)malloc(strlen(ofil)+33);
          outfilnam[0] = '\0';
          strncat(outfilnam,ofil,dpos-ofil);
          strncat(outfilnam,"/",1);
