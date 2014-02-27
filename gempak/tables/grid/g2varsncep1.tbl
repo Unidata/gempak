@@ -198,7 +198,7 @@
 002 003 195 000 Transpiration stress-onset(0.-1.)-                    SMREF            0  -9999.00
 002 003 196 000 Direct evaporation cease (0.-1.) -                    SMDRY            0  -9999.00
 002 003 197 000 Soil porosity (0.0-1.0)          -                    POROS            0  -9999.00
-002 003 203 000 Field capacity			 -                    FLDCP            0  -9999.00
+002 003 203 000 Field capacity                   -                    FLDCP            0  -9999.00
 !
 ! Product Discipline 10 - Oceanographic Products
 ! CATEGORY 0 - Waves category

@@ -21,6 +21,7 @@ C**									*
 C* Log:									*
 C* M. desJardins/GSFC	 3/89	Modified for grid packing		*
 C* T. Piper/GSC		 7/01	Added 'if (irw .eq. 3)' check		*
+C* S. Chiswell/Unidata	 7/05	Added MDGRB2 type			*
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 	INCLUDE		'dmcmn.cmn'
@@ -53,6 +54,9 @@ C
 	IF  ( ipktyp .eq. MDGDIF )  THEN
 	    iiw = 4
 	    irw = 3
+	  ELSE IF ( ipktyp .eq. MDGRB2 ) THEN
+	    iiw = 4
+	    irw = 1
 	  ELSE
 	    iiw = 3
 	    irw = 2
@@ -65,6 +69,22 @@ C
 	IF  ( iret .ne. 0 )  RETURN
 	iiword = iiword + irw
 	lendat = lendat - irw
+C
+C*	Read and unpack GRIB2 data
+C
+	IF  ( ipktyp .eq. MDGRB2 )  THEN
+C
+C*	    Set Machine type to current machine so that byte data is
+C*	    not translated.
+C
+	    mmsave = kmachn ( iflno )
+	    kmachn ( iflno ) = MTMACH
+C
+	    CALL DM_RPKGC2 ( iflno, iiword, lendat, iarray, rarray, 
+     &				mword, rdata, iret )
+	    kmachn ( iflno ) = mmsave
+	    RETURN
+	END IF
 C*
 	nbits  = iarray (1) 
 	misflg = iarray (2)
