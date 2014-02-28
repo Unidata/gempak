@@ -2,8 +2,8 @@ OPSYS = Darwin
 
 #
 # Using MacPort's gcc and gfortran
-CC = /opt/local/bin/gcc
-FC = /opt/local/bin/gfortran
+CC = clang
+FC = /usr/local/bin/gfortran
 
 #MOTIFINC  = -I$(NAWIPS)/openmotif/$(NA_OS)/include
 MOTIFINC  = -I/opt/local/include
