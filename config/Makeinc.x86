@@ -6,10 +6,8 @@ MOTIFLIBS = -L/usr/dt/lib -lXm
 MOTIFINC  = -I/usr/dt/include
 XWINCDIR  = -I/usr/openwin/include
 
-#COPT = -DUNDERSCORE -DNO_NANOSLEEP -D$(OPSYS) $(GEMINC) $(MOTIFINC) $(XWINCDIR) -xO2 # -g # -O
-COPT = -DUNDERSCORE -DNO_NANOSLEEP -D$(OPSYS) $(GEMINC) $(MOTIFINC) $(XWINCDIR) #-xO2 # -g # -O
-#FOPT =  $(GEMINC) -xO2 # -g (NB: WS5.2 fails using -O)
-FOPT =  $(GEMINC) # -g (NB: WS5.2 fails using -O)
+COPT = -DUNDERSCORE -DNO_NANOSLEEP -D$(OPSYS) $(GEMINC) $(MOTIFINC) $(XWINCDIR) # -g # -O
+FOPT =  $(GEMINC) # -xO2 -g (NB: WS5.2 fails using -O)
 
 NCOPT = "CC=$(CC)" "FC= " "CXX= " "F90= "
 

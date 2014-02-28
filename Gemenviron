@@ -129,6 +129,11 @@ if($?NA_OS == 0) then
            echo "OS reported $TMP_OS"
            exit
    endsw
+else
+   switch ($NA_OS)
+      case x86:
+	   setenv MAKEINC "Makeinc.common_sol"
+   endsw
 endif
 
 # --------------------------------------------------------------------
