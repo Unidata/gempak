@@ -18,7 +18,7 @@ COBJS = \
  
 GDIR = xml
 
-CFLAGS = $(COPT) -I$(OS_INC)/libxslt -I$(OS_INC)/libxml2 
+CFLAGS = $(COPT) -I$(XMLINC)/libxslt -I$(XMLINC)/libxml2 
 
 .PRECIOUS: $(ALIB)
 

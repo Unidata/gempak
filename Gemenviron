@@ -42,7 +42,8 @@ if ( ! -d $NAWIPS ) then
 endif
 
 #try to determine operating system: command uname must be in path
-#
+
+setenv XMLINC $OS_INC
 setenv EXTLIBMK "extliball"
 setenv MAKEINC "Makeinc.common"
 if($?NA_OS == 0) then
@@ -76,6 +77,7 @@ if($?NA_OS == 0) then
            uac p noprint # supress warnings in xw driver for unaligned access
            breaksw
         case sunos:
+	   setenv XMLINC /usr/include
 	   setenv EXTLIBMK "sol"
 	   setenv MAKEINC "Makeinc.common_sol"
            set OS_MAJOR=`uname -r | sed 's/\..*//'`
@@ -134,6 +136,7 @@ if($?NA_OS == 0) then
 else
    switch ($NA_OS)
       case x86:
+	   setenv XMLINC /usr/include
 	   setenv EXTLIBMK "sol"
 	   setenv MAKEINC "Makeinc.common_sol"
    endsw

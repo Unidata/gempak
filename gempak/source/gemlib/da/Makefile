@@ -7,7 +7,7 @@ include $(CONFIGDIR)/$(MAKEINC)
 
 ALIB = $(GEMLIB) 
 
-CFLAGS += -I$(OS_INC)/libxml2
+CFLAGS += -I$(XMLINC)/libxml2
 
 COBJS = \
         $(ALIB)(dainfo.o) \
