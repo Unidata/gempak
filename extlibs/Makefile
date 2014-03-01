@@ -53,13 +53,13 @@ extliball :
 	done
 
 sol :
-        @for dir in NODIR $(SUBDIRS_sol); do \
-                case $$dir in \
-                        NODIR) ;; \
-                        *) (cd $$dir; echo -n "making in " ; \
-                                pwd ; $(MAKE) $(MFLAGS) all) ;; \
-                esac ; \
-        done
+	@for dir in NODIR $(SUBDIRS_sol); do \
+		case $$dir in \
+			NODIR) ;; \
+			*) (cd $$dir; echo -n "making in " ; \
+				pwd ; $(MAKE) $(MFLAGS) all) ;; \
+		esac ; \
+	done
 
 programs_nc : 
 

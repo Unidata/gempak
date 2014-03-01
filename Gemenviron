@@ -43,6 +43,7 @@ endif
 
 #try to determine operating system: command uname must be in path
 #
+setenv EXTLIBMK "extliball"
 setenv MAKEINC "Makeinc.common"
 if($?NA_OS == 0) then
    set TMP_OS=`uname -s | tr '[A-Z]' '[a-z]'`
@@ -75,6 +76,7 @@ if($?NA_OS == 0) then
            uac p noprint # supress warnings in xw driver for unaligned access
            breaksw
         case sunos:
+	   setenv EXTLIBMK "sol"
 	   setenv MAKEINC "Makeinc.common_sol"
            set OS_MAJOR=`uname -r | sed 's/\..*//'`
            set HARDWARE=`uname -i | tr '[A-Z]' '[a-z]'`
@@ -132,6 +134,7 @@ if($?NA_OS == 0) then
 else
    switch ($NA_OS)
       case x86:
+	   setenv EXTLIBMK "sol"
 	   setenv MAKEINC "Makeinc.common_sol"
    endsw
 endif
