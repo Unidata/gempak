@@ -1,5 +1,5 @@
 #
-#	Makefile for GEMPAK 6.0
+#	Makefile for GEMPAK7
 #		Follows each limb of source tree
 #		Unidata 11/99 Chiz
 #

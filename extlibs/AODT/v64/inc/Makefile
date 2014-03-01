@@ -1,5 +1,5 @@
 #
-#	Makefile for GEMPAK 6.0
+#	Makefile for GEMPAK7
 #		Builds melbufr.a library archive
 #		Unidata 11/99 Chiz
 #
