@@ -25,5 +25,5 @@ LDM_FLAGS = -D_DEV_CONSLOG
 INSTALL = /usr/ucb/install -s
 AUXINSTALL = /usr/ucb/install
 
-SYSLIBS = -lm -lsocket -lnsl -lgen -lxml2
-CSYSLIB = -lm -lsocket -lnsl -lgen -lxml2
+SYSLIBS = -lm -lsocket -lnsl -lgen 
+CSYSLIB = -lm -lsocket -lnsl -lgen

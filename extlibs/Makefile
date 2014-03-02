@@ -24,40 +24,12 @@ SUBDIRS = \
 	GAMET \
 	rsl
 
-SUBDIRS_sol = \
-        zlib \
-        PNG \
-        bzip2 \
-        HDF5 \
-        GPC \
-        AODT \
-        melBUFR \
-        ncepBUFR \
-        netCDF \
-        OHSHEF \
-        JasPer \
-        NDFD \
-        SHAPE \
-        GAMET \
-        rsl
-
-all : $(EXTLIBMK)
-
-extliball : 
+all : 
 	@for dir in NODIR $(SUBDIRS); do \
 		case $$dir in \
 			NODIR) ;; \
 			*) (cd $$dir; echo -n "making in " ; \
-				pwd ; $(MAKE) $(MFLAGS) all) ;; \
-		esac ; \
-	done
-
-sol :
-	@for dir in NODIR $(SUBDIRS_sol); do \
-		case $$dir in \
-			NODIR) ;; \
-			*) (cd $$dir; echo -n "making in " ; \
-				pwd ; $(MAKE) $(MFLAGS) all) ;; \
+				pwd ; $(MAKE) $(MFLAGS) $@) ;; \
 		esac ; \
 	done
 
