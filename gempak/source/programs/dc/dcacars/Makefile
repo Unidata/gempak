@@ -15,8 +15,7 @@ LIBS = \
 	$(GEMLIB) \
 	$(NETCDF) \
 	$(XMLLIB) \
-        $(ZLIB) \
-	$(CSYSLIB) -lm
+        $(ZLIB) 
 
 ####################
 
@@ -37,7 +36,7 @@ all : $(PROG)
 $(PROG) : $(PROG_OBJS)
 	@case $(NA_OS) in \
 	osf) \
-	$(LINK.c) $(PROG_OBJS) $(LIBS) -lUfor -lfor -lots -lm -o $@ ;; \
+	$(LINK.c) $(PROG_OBJS) $(LIBS) $(CSYSLIB) -lUfor -lfor -lots -lm -o $@ ;; \
 	*) \
 	$(LINK.f) $(NOFORMAIN) $(PROG_OBJS) $(LIBS) -o $@ ;; \
 	esac

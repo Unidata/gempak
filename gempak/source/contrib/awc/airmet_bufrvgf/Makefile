@@ -44,7 +44,7 @@ CFLAGS = $(COPT) $(BUFRFLAGS) \
         -DIGNORE_NESTING=1 \
         -DMEMORY_DEBUG=0 \
         -DTRACE_PRINT=1 \
-        -I$(XMLINC)/libxml2
+        -I$(OS_INC)/libxml2
 
 
 all : $(ALIB) $(PROG)

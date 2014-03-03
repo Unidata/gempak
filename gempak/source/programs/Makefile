@@ -4,7 +4,6 @@
 #		Unidata 11/99 Chiz
 #
 SUBDIRS = \
-	dc \
 	gp \
 	na \
 	oa \
@@ -13,7 +12,8 @@ SUBDIRS = \
 	gd \
 	util \
 	gui \
-	upc
+	upc \
+	dc
 
 all :
 	@for dir in NODIR $(SUBDIRS); do \
