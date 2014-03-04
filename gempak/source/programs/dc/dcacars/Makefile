@@ -13,9 +13,10 @@ LIBS = \
 	$(LDMLOG) \
 	$(CGEMLIB) \
 	$(GEMLIB) \
-	$(NETCDF) \
 	$(XMLLIB) \
-        $(ZLIB) 
+        $(ZLIB) \
+	$(NETCDF) \
+	$(CSYSLIB) -lm
 
 ####################
 
