@@ -379,85 +379,79 @@ LI                   IR            0    255     77     32      1 gdpili.tbl
 LOCAL .15 KM  BASE   TDWR_REFLECT  0     15      7    181      1 osf_ref16.tbl
 LOCAL .15 KM  BASE   TDWR_VELOCITY 0     15      7    183      1 osf_vel16.tbl
 LOCAL .15 KM  BASE   TDWR_VELOCITY 0    255      7    182      1 upc_vel256.tbl
-! 1 km
-LOCAL  1 KM  BASE    REFLECT       0     15      7     19      1 osf_ref16.tbl
-LOCAL  1 KM  BASE    REFLECT       0    255      7     94      1 upc_n0q.tbl 
+! 
 LOCAL  1 KM  BASE    REFLECT       0      7      7     16      1 osf_ref8.tbl
-LOCAL  1 KM  COMP    REFLECT       0     15      7     37      1 osf_ref16.tbl
-LOCAL  1 KM  COMP    REFLECT       0     15      7     37      1 osf_ref8.tbl
-LOCAL  1 KM  COMP    REFLECT       0      7      7     35      1 osf_ref8.tbl
-LOCAL  1 KM  DIGITAL HY_REF        0    255      7     32      1 upc_n0q.tbl
-LOCAL  1 KM  DIGITAL VIL           0    255      7    134      1 upc_dvl.tbl
-LOCAL  1 KM  ECHO    TOPS          0    199      7    135      1 upc_eet.tbl
-LOCAL  1 KM  RADIAL  VELOCITY      0     15      7     27      1 nids_vel16.tbl
-LOCAL  1 KM  RADIAL  VELOCITY      0      7      7     24      1 nids_vel8.tbl
-LOCAL  1 KM  SPCTRM  WIDTH         0      7      7     30      1 nids_swid.tbl
-LOCAL  1 KM  STM REL VELOCITY      0     15      7     56      1 nids_vel16.tbl
-LOCAL  1 KM SVR WX   REFLECT       0     15      7     43      1 osf_ref16.tbl
-LOCAL  1 KM WK ECHO  REGION        0      7      7     53      1 nids_wecho.tbl
-LOCAL  1 KM X-SECT   REFLECT       0     15      7     50      1 osf_ref16.tbl
-LOCAL  1 KM X-SECT   SWIDTH        0      7      7     52      1 nids_swid.tbl
-LOCAL  1 KM X-SECT   VELOCITY      0     15      7     51      1 nids_vel16.tbl
-! .25 km
-LOCAL .25 KM  DAA     DUAL-POL     0    255      7    170      1 upc_dst.tbl 
-LOCAL .25 KM  DCC     DUAL-POL     0    255      7    161      1 upc_dcc.tbl 
-LOCAL .25 KM  DHC     DUAL-POL     0    150      7    165      1 upc_dhc.tbl 
-LOCAL .25 KM  DOD     DUAL-POL     0    255      7    174      1 upc_od.tbl 
-LOCAL .25 KM  DSD     DUAL-POL     0    255      7    175      1 upc_od.tbl 
-LOCAL .25 KM  DTA     DUAL-POL     0    255      7    172      1 upc_dst.tbl 
-LOCAL .25 KM  DUA     DUAL-POL     0    255      7    173      1 upc_dst.tbl 
-LOCAL .25 KM  HHC     DUAL-POL     0    150      7    177      1 upc_dhc.tbl 
-LOCAL .25 KM  INST    PRECIP_RT    0    255      7    176      1 upc_dpr.tbl 
-LOCAL .25 KM  KDP     DUAL-POL     0    255      7    163      1 upc_kdp.tbl 
-LOCAL .25 KM  RADIAL VELOCITY      0     15      7     25      1 nids_vel16.tbl
-LOCAL .25 KM  RADIAL VELOCITY      0    255      7     99      1 upc_vel256.tbl
+LOCAL  2 KM  BASE    REFLECT       0      7      7     17      1 osf_ref8.tbl
+LOCAL  4 KM  BASE    REFLECT       0      7      7     18      1 osf_ref8.tbl
+LOCAL  1 KM  BASE    REFLECT       0     15      7     19      1 osf_ref16.tbl
+LOCAL  2 KM  BASE    REFLECT       0     15      7     20      1 osf_ref16.tbl
+LOCAL  4 KM  BASE    REFLECT       0     15      7     21      1 osf_ref16.tbl
 LOCAL .25 KM  RADIAL VELOCITY      0      7      7     22      1 nids_vel8.tbl
+LOCAL .50 KM  RADIAL VELOCITY      0      7      7     23      1 nids_vel8.tbl
+LOCAL  1 KM  RADIAL  VELOCITY      0      7      7     24      1 nids_vel8.tbl
+LOCAL .25 KM  RADIAL VELOCITY      0     15      7     25      1 nids_vel16.tbl
+LOCAL .50 KM  RADIAL VELOCITY      0     15      7     26      1 nids_vel16.tbl
+LOCAL  1 KM  RADIAL  VELOCITY      0     15      7     27      1 nids_vel16.tbl
 LOCAL .25 KM SPCTRM  WIDTH         0      7      7     28      1 nids_swid.tbl
-LOCAL .25KM SVR WX   SWIDTH        0      7      7     45      1 nids_swid.tbl
+LOCAL .50 KM SPCTRM  WIDTH         0      7      7     29      1 nids_swid.tbl
+LOCAL  1 KM  SPCTRM  WIDTH         0      7      7     30      1 nids_swid.tbl
+LOCAL  1 KM  DIGITAL HY_REF        0    255      7     32      1 upc_n0q.tbl
+LOCAL  1 KM  COMP    REFLECT       0      7      7     35      1 osf_ref8.tbl
+LOCAL  4 KM  COMP    REFLECT       0      7      7     36      1 osf_ref8.tbl
+LOCAL  1 KM  COMP    REFLECT       0     15      7     37      1 osf_ref16.tbl
+LOCAL  4 KM  COMP    REFLECT       0     15      7     38      1 osf_ref16.tbl
+LOCAL  4 KM  ECHO    TOPS          0     15      7     41      1 nids_tops.tbl
+LOCAL  1 KM SVR WX   REFLECT       0     15      7     43      1 osf_ref16.tbl
 LOCAL .25KM SVR WX   VELOCITY      0     15      7     44      1 nids_vel16.tbl
-LOCAL .25 KM  ZDR     DUAL-POL     0    255      7    159      1 upc_zdr.tbl 
-! 2 km
+LOCAL .25KM SVR WX   SWIDTH        0      7      7     45      1 nids_swid.tbl
+LOCAL .50KM SVR WX   SHEAR         0     15      7     46      1 nids_rsher.tbl
+LOCAL  4 KM  VAD WIND PROFILE      0     15      7     48      1 nids_vel16.tbl
+LOCAL .50KM COMBINED MOMENT        0     15      7     49      1 nids_cmref.tbl
+LOCAL  1 KM X-SECT   REFLECT       0     15      7     50      1 osf_ref16.tbl
+LOCAL  1 KM X-SECT   VELOCITY      0     15      7     51      1 nids_vel16.tbl
+LOCAL  1 KM X-SECT   SWIDTH        0      7      7     52      1 nids_swid.tbl
+LOCAL  1 KM WK ECHO  REGION        0      7      7     53      1 nids_wecho.tbl
+LOCAL .50 KM STM REL VELOCITY      0     15      7     55      1 nids_vel16.tbl
+LOCAL  1 KM  STM REL VELOCITY      0     15      7     56      1 nids_vel16.tbl
+LOCAL  4 KM          VIL           0     15      7     57      1 nids_vil.tbl
+LOCAL  4 KM  L1 REFL AVE           0      7      7     63      1 osf_ref8.tbl
+LOCAL  4 KM  L2 REFL AVE           0      7      7     64      1 osf_ref8.tbl
+LOCAL  4 KM  L1 REFL MAX           0      7      7     65      1 osf_ref8.tbl
+LOCAL  4 KM  L2 REFL MAX           0      7      7     66      1 osf_ref8.tbl
+LOCAL  4 KM  L1 TURB AVE           0      7      7     67      1 osf_ref8.tbl
+LOCAL  4 KM  L2 TURB AVE           0      7      7     68      1 osf_ref8.tbl
+LOCAL  4 KM  L3 TURB AVE           0      7      7     69      1 osf_ref8.tbl
+LOCAL  4 KM  L1 TURB MAX           0      7      7     70      1 osf_ref8.tbl
+LOCAL  4 KM  L2 TURB MAX           0      7      7     71      1 osf_ref8.tbl
+LOCAL  4 KM  L3 TURB MAX           0      7      7     72      1 osf_ref8.tbl
 LOCAL  2 KM  1HR PCP ACCUM         0     15      7     78      1 nids_pre.tbl
 LOCAL  2 KM  3HR PCP ACCUM         0     15      7     79      1 nids_pre.tbl
-LOCAL  2 KM  BASE    REFLECT       0     15      7     20      1 osf_ref16.tbl
-LOCAL  2 KM  BASE    REFLECT       0      7      7     17      1 osf_ref8.tbl
-LOCAL  2 KM  DIGITAL PRCP ARRAY    0    255      7     81      1 upc_n1p.tbl
-LOCAL  2 KM  HYBRID  PRECIP        0    255      7    138      1 upc_dst.tbl
-LOCAL   2 KM  OHA     DUAL-POL     0     16      7    169      1 upc_st.tbl 
-LOCAL   2 KM  PTA     DUAL-POL     0     16      7    171      1 upc_st.tbl 
 LOCAL  2 KM  TOT PCP ACCUM         0     15      7     80      1 nids_pre.tbl
-! .3 km
-LOCAL .30 KM  BASE   TDWR_REFLECT  0     15      7    187      1 osf_ref16.tbl
-LOCAL .30 KM  BASE   TDWR_REFLECT  0    255      7    186      1 upc_n0q.tbl
-! 4 km
-LOCAL  4 KM  BASE    REFLECT       0     15      7     21      1 osf_ref16.tbl
-LOCAL  4 KM  BASE    REFLECT       0      7      7     18      1 osf_ref8.tbl
-LOCAL  4 KM  COMP    REFLECT       0     15      7     38      1 osf_ref16.tbl
-LOCAL  4 KM  COMP    REFLECT       0      7      7     36      1 osf_ref8.tbl
-LOCAL  4 KM  ECHO    TOPS          0     15      7     41      1 nids_tops.tbl
-LOCAL  4 KM  L1 REFL AVE           0      7      7     63      1 osf_ref8.tbl
-LOCAL  4 KM  L1 REFL MAX           0      7      7     65      1 osf_ref8.tbl
-LOCAL  4 KM  L1 TURB AVE           0      7      7     67      1 osf_ref8.tbl
-LOCAL  4 KM  L1 TURB MAX           0      7      7     70      1 osf_ref8.tbl
-LOCAL  4 KM  L2 REFL AVE           0      7      7     64      1 osf_ref8.tbl
-LOCAL  4 KM  L2 REFL MAX           0      7      7     66      1 osf_ref8.tbl
-LOCAL  4 KM  L2 TURB AVE           0      7      7     68      1 osf_ref8.tbl
-LOCAL  4 KM  L2 TURB MAX           0      7      7     71      1 osf_ref8.tbl
+LOCAL  2 KM  DIGITAL PRCP ARRAY    0    255      7     81      1 upc_n1p.tbl
+LOCAL  COMBINED      SHEAR         0     15      7     87      1 nids_csher.tbl
 LOCAL  4 KM  L3 REFL AVE           0      7      7     89      1 osf_ref8.tbl
 LOCAL  4 KM  L3 REFL MAX           0      7      7     90      1 osf_ref8.tbl
-LOCAL  4 KM  L3 TURB AVE           0      7      7     69      1 osf_ref8.tbl
-LOCAL  4 KM  L3 TURB MAX           0      7      7     72      1 osf_ref8.tbl
-LOCAL  4 KM  LAYER CREF NO AP      0      7      7     67      1 osf_ref8.tbl
-LOCAL  4 KM  VAD WIND PROFILE      0     15      7     48      1 nids_vel16.tbl
-LOCAL  4 KM          VIL           0     15      7     57      1 nids_vil.tbl
-! .5 km
-LOCAL .50KM COMBINED MOMENT        0     15      7     49      1 nids_cmref.tbl
-LOCAL .50 KM  RADIAL VELOCITY      0     15      7     26      1 nids_vel16.tbl
-LOCAL .50 KM  RADIAL VELOCITY      0      7      7     23      1 nids_vel8.tbl
-LOCAL .50 KM SPCTRM  WIDTH         0      7      7     29      1 nids_swid.tbl
-LOCAL .50 KM STM REL VELOCITY      0     15      7     55      1 nids_vel16.tbl
-LOCAL .50KM SVR WX   SHEAR         0     15      7     46      1 nids_rsher.tbl
-LOCAL  COMBINED      SHEAR         0     15      7     87      1 nids_csher.tbl
+LOCAL  1 KM  BASE    REFLECT       0    255      7     94      1 upc_n0q.tbl 
+LOCAL .25 KM  RADIAL VELOCITY      0    255      7     99      1 upc_vel256.tbl
+LOCAL  1 KM  DIGITAL VIL           0    255      7    134      1 upc_dvl.tbl
+LOCAL  1 KM  ECHO    TOPS          0    199      7    135      1 upc_eet.tbl
+LOCAL  2 KM  HYBRID  PRECIP        0    255      7    138      1 upc_dst.tbl
+LOCAL .25 KM  ZDR     DUAL-POL     0    255      7    159      1 upc_zdr.tbl 
+LOCAL .25 KM  DCC     DUAL-POL     0    255      7    161      1 upc_dcc.tbl 
+LOCAL .25 KM  KDP     DUAL-POL     0    255      7    163      1 upc_kdp.tbl 
+LOCAL .25 KM  DHC     DUAL-POL     0    150      7    165      1 upc_dhc.tbl 
+LOCAL   2 KM  OHA     DUAL-POL     0     16      7    169      1 upc_st.tbl 
+LOCAL .25 KM  DAA     DUAL-POL     0    255      7    170      1 upc_dst.tbl 
+LOCAL   2 KM  PTA     DUAL-POL     0     16      7    171      1 upc_st.tbl 
+LOCAL .25 KM  DTA     DUAL-POL     0    255      7    172      1 upc_dst.tbl 
+LOCAL .25 KM  DUA     DUAL-POL     0    255      7    173      1 upc_dst.tbl 
+LOCAL .25 KM  DOD     DUAL-POL     0    255      7    174      1 upc_od.tbl 
+LOCAL .25 KM  DSD     DUAL-POL     0    255      7    175      1 upc_od.tbl 
+LOCAL .25 KM  INST    PRECIP_RT    0    255      7    176      1 upc_dpr.tbl 
+LOCAL .25 KM  HHC     DUAL-POL     0    150      7    177      1 upc_dhc.tbl 
+LOCAL .30 KM  BASE   TDWR_REFLECT  0    255      7    186      1 upc_n0q.tbl
+LOCAL .30 KM  BASE   TDWR_REFLECT  0     15      7    187      1 osf_ref16.tbl
+! 
 LOW LEVEL CREF       MOSAIC        0    255      7    243      1 upc_radimg.tbl
 MAX EST HAIL SIZE    MOSAIC        0    255      7    247      1 upc_ramp.tbl
 MDR_PRODUCT          MDR           0    255      2      1      1 mdr.tbl
