@@ -92,12 +92,16 @@ C
 
 	    CALL ST_RPST ( tmplt, 'DD', '??',
      +			ipos, tmplt, iret )
-
+C
+C * This will break product HHC, need to fix as in nex2gini
+C
 	    CALL ST_RPST ( tmplt, 'HH', '??',
      +			ipos, tmplt, iret )
 
 	    CALL ST_RPST ( tmplt, 'NN', '??',
      +			ipos, tmplt, iret )
+C
+C * If blank then do not append
 C
 	    IF ( carr(2) .ne. ' ' ) THEN
 	        CALL ST_RPST ( templt, '%SITE%', carr(2), ipos, templt, 

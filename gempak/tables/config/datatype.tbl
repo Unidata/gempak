@@ -634,7 +634,9 @@ WRF          $MODEL/wrf                YYYYMMDDHHfFFF_*                         
 ! Radar level 2 & 3 aliases
 NEXRII       $RAD/craft/%SITE%         %SITE%_YYYYMMDD_HHNN                             CAT_NIL  SCAT_NIL   10   2880      6      OFF/0/0
 NEXRIII      $RAD/NIDS/%SITE%/%PROD%   %PROD%_YYYYMMDD_HHNN                             CAT_NIL  SCAT_NIL   10   2880     -1      OFF/0/0
-N0RCOMP      $RAD/NEXRCOMP/1km/n0r     n0r_YYYYMMDD_HHNN                                CAT_NIL  SCAT_NIL   10   2880     -1      OFF/0/0
+NEXRCOMP     $NEXCOMP/%SITE%/%PROD%    %PROD%_YYYYMMDD_HHNN                             CAT_NIL  SCAT_NIL   10   2880     -1      OFF/0/0
+! old 
+N0RCOMP      $NEXCOMP/1km/n0r          n0r_YYYYMMDD_HHNN                                CAT_NIL  SCAT_NIL   10   2880     -1      OFF/0/0
 CRADAR       $RAD/cradar/%SITE%/%PROD% %PROD%_YYYYMMDD_HHNN                             CAT_NIL  SCAT_NIL   10   2880     -1      OFF/0/0
 !
 EAST4KM_IR   $SAT/EAST-CONUS/4km/IR    IR_YYYYMMDD_HHNN                                 CAT_NIL  SCAT_NIL   10   2880     -1      OFF/0/0

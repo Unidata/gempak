@@ -234,6 +234,8 @@ endif
 #
    setenv SAT  		$GEMDATA/images/sat
    setenv RAD		$GEMDATA/nexrad
+   setenv RAD		$GEMDATA/nexrad
+   setenv NEXCOMP 	$SAT/NEXRCOMP
 #
 #
 # Below follow variables for data locations (site specific)

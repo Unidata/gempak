@@ -21,7 +21,7 @@ C*
 	CHARACTER	outdev (4)*1, gname*20, cprj*10
 	CHARACTER	ttlstr*(LLMXLN)
 	LOGICAL		proces, respnd, done, idrpfl
-	CHARACTER	tplate*(80), 
+	CHARACTER	tplate*(80), fnarr(3)*(LLMXLN),
      +			radfls(MXLOOP)*132,
      +			tmlst(MXLOOP)*20, tarr(2)*20
 
@@ -64,6 +64,7 @@ C
 	    IF  ( iret .ne. 0 ) THEN
 		done = .true.
 	      ELSE
+                CALL ST_CLST ( radfil, '|', ' ', 3, fnarr, num, ier)
 C
 C*		Set up the graphics device.
 C
@@ -151,7 +152,7 @@ C
 		   level(1) = 0
 		   level(2) = 1
 		   CALL GR_TITL ( ttlstr, tarr, false, level, 
-     +			0, 'NEXRAD', 0, ' ', ttlstr, shrttl, ier)
+     +			0, fnarr(1), 0, ' ', ttlstr, shrttl, ier)
 		   IF  ( clear )  CALL GMESG ( shrttl, ier )
 		   IF  ( icttl .gt. 0 )  THEN
 		       CALL GSCOLR  ( icttl, ier )
