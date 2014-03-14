@@ -31,6 +31,7 @@ C* S. Chiswell/Unidata	11/06	Added parsing of text attributes	*
 C* M. James/Unidata     06/10   Moved label frequency logic from IMNIDH *
 C* M. James/Unidata     11/13   Hydrometeor classification labeling and *
 C*                              national composite GINI support added.  *
+C* M. James/Unidata     04/14   High-res NEXRCOMP reworked              *
 C************************************************************************
 	INCLUDE		'IMGDEF.CMN'
 C*
@@ -175,7 +176,7 @@ C
             END DO
             CALL ST_INCH ( int(70), cmblev (199), ier )
             cmblev ( 131 ) = 'TOP'
-            cmblev ( 1 ) = 'ND'
+            cmblev ( 1 ) = ' '
         END SELECT
 
 	DO  i = clevst, clevsp 
@@ -289,8 +290,6 @@ C
                         END IF
                      CASE DEFAULT 
                         label = cmblev (i)
-C     +                    ( MOD ( i - 8, 10 ) .eq. 0 ) .or. 
-C                        label = cmblev (i)
                   END SELECT 
                ELSE
                   label = cmblev (i)

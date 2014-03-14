@@ -23,6 +23,7 @@ C*					 -1 = bad brightness range	*
 C**                                                                     *
 C* Log:                                                                 *
 C* Chiz/Unidata		04/02		Created 			*
+C* M. James/Unidata     03/14           Updated for high-res NEXRCOMP   *
 C************************************************************************
 
 	INTEGER		iret
@@ -58,41 +59,27 @@ C
         iminpix = int(minpx + 1)
         imaxpix = int(maxpx + 1)
 
-
+C
+C* EET and HHC composites labeling are handled in
+C* imcbar.f
+C
         SELECT CASE (imtype)
 C
 C* NEXRCOMP GINI product N0R = 2**(26)
-C
-          CASE (2**(26))
-            DO i=iminpix,imaxpix
-              cmblev(i) = ''
-              level = nint( (i-iminpix) * ratio) + iminval
-              IF ( ( mod(level,10) .eq. 0 ) .and. 
-     +          (level .ge. minval) .and. 
-     +          (level .le. maxval) ) THEN
-                  CALL ST_INCH ( level/iscaleval,
-     +                          cmblev (i), ier )
-              END IF
-            END DO
-            cmblev(1) = 'ND'
-C
 C* NEXRCOMP GINI product DHR = 2**(27)
 C
-          CASE (2**(27))
+          CASE (2**(26),2**(27))
             DO i=iminpix,imaxpix
-              cmblev(i) = ''
-              level = nint( (i-iminpix) * ratio) + iminval
-              IF (mod(level,10) .eq. 0 .and.
-     +             cmblev(i-1) .eq. '' .and.
-     +             cmblev(i-2) .eq. '') THEN
-                IF (level .ge. 0 .and. level .le. 80) THEN
-                  CALL ST_INCH ( level/iscaleval,
-     +                          cmblev (i), ier )
-                END IF
-              END IF
+               cmblev(i) = ''
+               flevel = (i - 1 - minpx) * ratio + minval
+               IF ( ( mod(flevel,10.) .eq. 0 ) .and. 
+     +           (flevel .ge. (minval+3)) .and. 
+     +           (flevel .le. maxval) ) THEN
+                   CALL ST_INCH ( int(flevel)/iscaleval,
+     +                           cmblev (i), ier )
+               END IF
             END DO
             cmblev(1) = 'ND'
-
 C
 C* NEXRCOMP GINI product DVL = 2**(28)
 C*                       N1P = 2**(29)
@@ -101,7 +88,7 @@ C
           CASE (2**(28),2**(29),2**(30))
             DO i=iminpix, imaxpix
                IF ( ( i .ge. iminpix ) .and. ( i .le. imaxpix ) ) THEN
-                 IF ( mod ( i - 1, 15 ) .eq. 0) THEN
+                  IF ( mod ( i - 1, 15 ) .eq. 0) THEN
                      IF (np .eq. 0) THEN
                         level = nint( (i-iminpix) * ratio) + iminval
                         CALL ST_INCH ( level/iscaleval,
@@ -112,9 +99,9 @@ C
      +                              tmplev, ier )
                         cmblev(i) = tmplev(1:8)
                      END IF
-                 ELSE
+                  ELSE
                      cmblev (i) = ' '
-                 END IF
+                  END IF
                END IF
             END DO
             cmblev(1) = 'ND'
@@ -124,7 +111,7 @@ C
           CASE (2**(21))
             DO i=iminpix, imaxpix
                IF ( ( i .ge. iminpix ) .and. ( i .le. imaxpix ) ) THEN
-                 IF ( mod ( i - 1, 15 ) .eq. 0) THEN
+                  IF ( mod ( i - 1, 15 ) .eq. 0) THEN
                      IF (np .eq. 0) THEN
                         level = nint( (i-iminpix) * ratio) + iminval
                         CALL ST_INCH ( level/iscaleval,
@@ -135,9 +122,9 @@ C
      +                              tmplev, ier )
                         cmblev(i) = tmplev(1:8)
                      END IF
-                 ELSE
+                  ELSE
                      cmblev (i) = ' '
-                 END IF
+                  END IF
                END IF
             END DO
             cmblev(1) = 'ND'
@@ -147,7 +134,7 @@ C
           CASE (225)
 	    DO i=iminpix, imaxpix
                IF ( ( i .ge. iminpix ) .and. ( i .le. imaxpix ) ) THEN
-                 IF ( ( mod ( i - 1, 5 ) .eq. 2 ).or.
+                  IF ( ( mod ( i - 1, 5 ) .eq. 2 ).or.
      +		    ( i .eq. imaxpix ) ) THEN
 		     IF (np .eq. 0) THEN
                         level = nint( (i-iminpix) * ratio) + iminval
@@ -159,9 +146,9 @@ C
      +                              tmplev, ier )
 			cmblev(i) = tmplev(1:8)
 		     END IF
-                 ELSE
+                  ELSE
                      cmblev (i) = ' '
-                 END IF
+                  END IF
                END IF
             END DO
 C
@@ -171,8 +158,8 @@ C
          CASE (226,227)
             DO i=iminpix, imaxpix
                IF ( ( i .ge. iminpix ) .and. ( i .le. imaxpix ) ) THEN
-                 IF ( ( mod ( i , 10 ) .eq. 9 ).or.
-     +              ( i .eq. imaxpix ) ) THEN
+                  IF ( ( mod ( i , 10 ) .eq. 9 ).or.
+     +               ( i .eq. imaxpix ) ) THEN
                      IF (np .eq. 0) THEN
                         level = nint( (i-iminpix) * ratio) + iminval
                         CALL ST_INCH ( level/iscaleval,
@@ -183,9 +170,9 @@ C
      +                              tmplev, ier )
                         cmblev(i) = tmplev(1:8)
                      END IF
-                 ELSE
+                  ELSE
                      cmblev (i) = ' '
-                 END IF
+                  END IF
                END IF
             END DO
 C
@@ -193,20 +180,20 @@ C* Default for everything else passing through
 C
         CASE DEFAULT
            DO i=iminpix,imaxpix
-                IF ( mod ( i, 10 ) .eq. 0 ) THEN
-                   IF (np .eq. 0) THEN
-                        level = nint( (i-iminpix) * ratio) + iminval
-                        CALL ST_INCH ( level/iscaleval,
-     +                              cmblev (i), ier )
-                     ELSE
-                        flevel = (i - 1 - minpx) * ratio + minval
-                        CALL ST_RLCH ( flevel/scaleval, np,
-     +                              tmplev, ier )
-                        cmblev(i) = tmplev(1:8)
-                     END IF
-                ELSE
-                   cmblev (i) = ' '
-                END IF
+              IF ( mod(i,10) .eq. 0 ) THEN
+                 IF (np .eq. 0) THEN
+                    level = nint( (i-iminpix) * ratio) + iminval
+                    CALL ST_INCH ( level/iscaleval,
+     +                          cmblev (i), ier )
+                 ELSE
+                    flevel = (i - 1 - minpx) * ratio + minval
+                    CALL ST_RLCH ( flevel/scaleval, np,
+     +                          tmplev, ier )
+                    cmblev(i) = tmplev(1:8)
+                 END IF
+              ELSE
+                 cmblev (i) = ' '
+              END IF
            END DO 
         END SELECT
 
