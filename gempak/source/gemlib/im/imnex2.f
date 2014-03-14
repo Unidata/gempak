@@ -182,7 +182,7 @@ C
 	   imndlv = 108
 	else if ( imtype .eq. 226 ) then
            cmbunt = 'm s**-1'
-	   if (1 .eq. 1 .or. vel_res .eq. .5 ) then
+	   if (vel_res .eq. .5 ) then
 	      CALL IM_CALBAR ( 0., 255., -63.5, 63.5, ier )
 	   else
 	      iminval = -127.
