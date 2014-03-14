@@ -61,13 +61,28 @@ C
 
         SELECT CASE (imtype)
 C
+C* NEXRCOMP GINI product N0R = 2**(26)
+C
+          CASE (2**(26))
+            DO i=iminpix,imaxpix
+              cmblev(i) = ''
+              level = nint( (i-iminpix) * ratio) + iminval
+              IF ( ( mod(level,10) .eq. 0 ) .and. 
+     +          (level .ge. minval) .and. 
+     +          (level .le. maxval) ) THEN
+                  CALL ST_INCH ( level/iscaleval,
+     +                          cmblev (i), ier )
+              END IF
+            END DO
+            cmblev(1) = 'ND'
+C
 C* NEXRCOMP GINI product DHR = 2**(27)
-C*
+C
           CASE (2**(27))
             DO i=iminpix,imaxpix
               cmblev(i) = ''
               level = nint( (i-iminpix) * ratio) + iminval
-              IF (mod(level,10) .eq. 0 .and. 
+              IF (mod(level,10) .eq. 0 .and.
      +             cmblev(i-1) .eq. '' .and.
      +             cmblev(i-2) .eq. '') THEN
                 IF (level .ge. 0 .and. level .le. 80) THEN
@@ -77,6 +92,7 @@ C*
               END IF
             END DO
             cmblev(1) = 'ND'
+
 C
 C* NEXRCOMP GINI product DVL = 2**(28)
 C*                       N1P = 2**(29)
