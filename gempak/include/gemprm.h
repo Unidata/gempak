@@ -352,7 +352,7 @@ typedef unsigned int	G_Cardinal;
 #define	LLMXPT		(   80000 )	/* Max # lines, polygons, ... */
 #define	LLMXST		(      20 )	/* Max # stations in list */
 #define	LLMXTG		( 9331200 )	/* Ultimate max # grid points */
-#define	LLMXTM		(   25000 )	/* Max # times/dataset */
+#define	LLMXTM		(     200 )	/* Max # times/dataset */
 #define	LLNANL		(     128 )	/* Grid anl block length */
 #define	LLNNAV		(     256 )	/* Grid nav block length */
 #define	LLOAGD		(     400 )	/* Max # grids from 1 OA */
