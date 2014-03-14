@@ -128,12 +128,34 @@ C
 C
 C*      For Higher Resolution product, call IM_HRNIDH.
 C
+C 32 = DHR
+C 94 = N0Q
+C 99 = N0U
+C 134 = DVL
+C 135 = EET
+C 138 = DSP
+C
         SELECT CASE (iprod)
-           CASE (94,99,134,135,138,32) 
+           CASE (32,94,99,134,135,138) 
               CALL IM_HRNIDH (imgfil, ihdr, iret)
               imdoff = 2 * isymof
               RETURN
-           CASE (159,161,163,165,170,172,173,174,175,176,177)
+C
+C *     Dual pol products
+C
+C 159 = ZDR
+C 161 = DCC
+C 163 = KDP
+C 165 = DHC
+C 170 = DAA
+C 172 = DTA
+C 173 = DUA
+C 174 = DOD
+C 175 = DSD
+C 176 = INST/DPR (not supported)
+C 177 = HHC
+C
+           CASE (159,161,163,165,170,172,173,174,175,177)
               CALL IM_DPNIDH (imgfil, ihdr, iret)
               imdoff = 2 * isymof
               RETURN
@@ -149,6 +171,9 @@ C        END IF
 C
 C*	Check for products using compression
 C
+C
+C 171 = PTA
+C 171 = PTA
 	IF ( ( iprod .eq. 48 ) .or.
      +		( iprod .eq. 149 ) .or. ( iprod .eq. 152 ) .or.
      +		( iprod .eq. 153 ) .or. ( iprod .eq. 154 ) .or.

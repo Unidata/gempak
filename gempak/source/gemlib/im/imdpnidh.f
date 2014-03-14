@@ -15,7 +15,23 @@ C* Output parameters:							*
 C*	IRET		INTEGER		Return code			*
 C*					  0 = normal return		*
 C*					 -4 = Invalid image product	*
-C*					 -5 = Invalid image navigation	*
+C* Data Files Supported Here	 	 -5 = Invalid image navigation	*
+C*      159	ZDR							*
+C*      161	DCC							*
+C*      163	KDP							*
+C*      165	DHC							*
+C*      170	DAA							*
+C*      171	PTA							*
+C*      172	DTA						*
+C*      173	DUA						*
+C*      174	DOD						*
+C*	175	DSD						*
+C*      176     DPR/INST
+C*	177	HHC						*
+C*								*
+C*								*
+C*									*
+C*									*
 C**									*
 C* Log:									*
 C* M. James/Unidata           09/11   Modified from IM_HRNIDH           *
@@ -116,17 +132,9 @@ C
            END IF
         END IF
        
-        SELECT CASE (iprod)
-           CASE (170, 172, 173, 174, 175) 
-              idlvls (1) = 100 * fphead (16)
-              idlvls (2) = 100 * fphead (17)
-              idlvls (3) = iarr2 (36)
-           CASE DEFAULT
-              idlvls (1) = fphead (16)
-              idlvls (2) = fphead (17)
-              idlvls (3) = iarr2 (36)
-        END SELECT 
-C
+        idlvls (1) = fphead (16)
+        idlvls (2) = fphead (17)
+        idlvls (3) = iarr2 (36)
         ipkcd1 = iarr2 (69)
 C
 C*	Radial product-specific variables
@@ -189,78 +197,29 @@ C
 	imndlv = nlev
 	cmbunt = units
 C
-	IF ( ( iprod .ge. 159 ) .and. ( iprod .le. 177) ) THEN
-           SELECT CASE (iprod)
-              CASE (170, 172, 173)
-                 amin = ( 1 - real( idlvls (2)) / 10. )
-     +		 / ( real( idlvls (1)) / 10. )
-	         ainc = 1 / ( real( idlvls (1)) / 10. )
-              CASE (174, 175)
-                 amin = ( 1 - real( idlvls (2)) / 100. )
-     +		 / ( real( idlvls (1)) / 100. )
-	         ainc = 1 / ( real( idlvls (1)) / 100. )
-              CASE DEFAULT  
-	         amin = ( 1 - real( idlvls (2) )  ) 
-     +		 / real( idlvls (1) )   
-	         ainc = 1 / real( idlvls (1) )  
-           END SELECT
-	ELSE
-	   amin = idlvls ( 1 ) / 10.
-	   ainc = idlvls ( 2 ) / 10.
-	END IF
+C	IF ( ( iprod .ge. 159 ) .and. ( iprod .le. 177) ) THEN
+C           SELECT CASE (iprod)
+C              CASE (170, 172, 173)
+C                 amin = ( 1 - real( idlvls (2)) / 10. )
+C     +		 / ( real( idlvls (1)) / 10. )
+C	         ainc = 1 / ( real( idlvls (1)) / 10. )
+C              CASE (174, 175)
+C                 amin = ( 1 - real( idlvls (2)) / 100. )
+C     +		 / ( real( idlvls (1)) / 100. )
+C	         ainc = 1 / ( real( idlvls (1)) / 100. )
+C              CASE DEFAULT  
+C	         amin = ( 1 - real( idlvls (2) )  ) 
+C     +		 / real( idlvls (1) )   
+C	         ainc = 1 / real( idlvls (1) )  
+C           END SELECT
+C	ELSE
+C	   amin = idlvls ( 1 ) / 10.
+C	   ainc = idlvls ( 2 ) / 10.
+C	END IF
 	imndlv = idlvls ( 3 )
         iinc = imndlv / 8 
 
         SELECT CASE (iprod)
-C
-C* 159 - Digital Differential Reflectivity
-C
-           CASE (159)
-              iinc = imndlv / 16
-	      DO idl = 1, imndlv
-                 val = amin + ( idl - 1 ) * ainc
-                 IF ( idl .eq. 1 ) THEN
-                    cmblev ( idl ) = 'ND' 
-                 ELSE IF ( MOD ( val, 1. ) .eq. 0 ) THEN 
-                    CALL ST_RLCH ( val, 1, cmblev ( idl ), ier )
-                 ELSE
-                    cmblev ( idl ) = ' '
-                 END IF
-	      END DO
-              cmblev ( imndlv ) = 'RF'
-C
-C* 161 - Digital Correlation Coefficient
-C
-           CASE (161)
-              DO idl = 1, imndlv
-                 val = amin + ( idl - 1 ) * ainc
-                 IF ( idl .eq. 1 ) THEN
-                    cmblev ( idl ) = 'ND'
-                 ELSE IF ( MOD ( ( idl - 1 ), iinc ) .eq. 0 ) THEN 
-                    CALL ST_RLCH ( val, 1, cmblev ( idl ), ier )
-                 ELSE
-                    cmblev ( idl ) = ' '
-                 END IF
-              END DO
-              cmblev ( imndlv ) = 'RF'
-C
-C* 163 - Digital Specific Differential Phase
-C
-           CASE (163)
-              iinc =  10 
-              DO idl = 1, imndlv
-                 val = amin + ( idl - 1 ) * ainc
-                 IF ( idl .eq. 1 ) THEN
-                    cmblev ( idl ) = 'ND'
-                 ELSE IF ( ( MOD ( ( idl - 2 ), iinc ) .eq. 0 ) .and. 
-     +                     ( val .ge. -2.0 ) .and.
-     +                     ( val .le. 9.5 ) ) THEN
-                    CALL ST_RLCH ( val, 1, cmblev ( idl ), ier )
-                 ELSE
-                    cmblev ( idl ) = ' '
-                 END IF
-              END DO
-              cmblev ( imndlv ) = 'RF'
 C
 C* 165 - Digital Hydrometeor Classification
 C* 177 - Hybrid Hydrometeor Classification
@@ -277,37 +236,45 @@ C
 C       now fill last with RF
               cmblev ( imndlv ) = 'RF'
 C
+C* 159 - Differential Reflectivity
+C* 161 - Correelation Coefficient
+C* 163 - Specific Differential Phase 
+C
+           CASE (159,163)
+              cmblev ( 1 ) = 'ND'
+              DO idl = 3, imndlv
+                 val =  ( idl - idlvls(2) ) / idlvls(1) 
+                 CALL ST_INCH ( int(val), cmblev ( idl ), ier )
+              END DO
+           CASE (161)
+              cmblev ( 1 ) = 'ND'
+              DO idl = 3, imndlv
+                 val =  ( REAL(idl) - idlvls(2) ) / idlvls(1) 
+                 CALL ST_RLCH ( val , 2, cmblev ( idl ), ier )
+              END DO
+           CASE (175)
+              cmblev ( 1 ) = 'ND'
+              DO idl = 3, imndlv
+                 val =  ( REAL(idl) - idlvls(2) ) / idlvls(1) 
+                 CALL ST_RLCH ( val , 2, cmblev ( idl ), ier )
+              END DO
+           CASE (170,172,173,174)
+C
 C* 170 - Digital Accumulation Array
 C* 172 - Digital Storm Total Accumulation
 C* 173 - Digital User-Selectable Accumulation
-C
-           CASE (170, 172, 173)
-              DO idl = 1, imndlv
-                 val = ( amin + ( idl - 1 ) * ainc ) / 10 
-                 IF ( idl .eq. 1 ) THEN
-                    cmblev ( idl ) = 'ND'
-C                 ELSE IF ( MOD ( ( idl - 1 ), iinc ) .eq. 0 ) THEN
-C                    CALL ST_RLCH ( val, 1, cmblev ( idl ), ier )
-                 ELSE
-C                    cmblev ( idl ) = ' '
-                    CALL ST_RLCH ( val, 1, cmblev ( idl ), ier )
-                 END IF
-              END DO
-C 
 C* 174 - Digital One-Hour Difference Accumulation
 C* 175 - Digital Storm Total Difference Accumulation
+C
+C* 176 - Dig. Instantaneous Precip. Rate not supported
+C
 C* Physical Units: 0.01 inches, requiring scaling by 100
 C* for display in inches 
-C        
-           CASE (174, 175)
-              iinc = 11
-              DO idl = 1,imndlv 
-                 val = ( amin + ( idl - 1 ) * ainc ) / 100. 
-                 IF ( MOD ( ( idl - 1 ), iinc ) .eq. 0 ) THEN
-                    CALL ST_RLCH ( val, 1, cmblev ( idl ), ier )
-                 ELSE
-                    cmblev ( idl ) = ' '
-                 END IF
+C
+              cmblev ( 1 ) = 'ND'
+              DO idl = 2, imndlv
+                 val =  ( idl - idlvls(2) ) / idlvls(1) 
+                 CALL ST_RLCH ( val / 100, 2, cmblev ( idl ), ier )
               END DO
         END SELECT
 C

@@ -16,6 +16,30 @@ C*	IRET		INTEGER		Return code			*
 C*					  0 = normal return		*
 C*					 -4 = Invalid image product	*
 C*					 -5 = Invalid image navigation	*
+C*                                                                      *
+C* High Res Data Files Supported by this routine:                       *
+C 32 = DHR
+C 94 = N0Q
+C 99 = N0U
+C 134 = DVL
+C 135 = EET
+C 138 = DSP
+C
+C * Full high res product list 
+C*      32 DHR                                                          *
+C*      81 DPA
+C*      93 ??
+C*      94 N0U,N1U,...  
+C*      99 N0Q,N1Q,...   
+C*      134 DVL
+C*      135 EET
+C*      138 DSP
+C*      153 ??
+C*      154 ??
+C*      155 ??
+C*      194 ??
+C*      195 ??
+C*      199 ??
 C**									*
 C* Log:									*
 C* X. Guo/CWS           05/10   Copy from IM_NIDH                       *
@@ -213,7 +237,7 @@ C
               DO i = 1,nlev
                  cmblev ( i ) = ''
               END DO
-              DO idl = 1,nlev,1
+              DO idl = 1,nlev
                  IF ( ( idl - 1 ) .lt. flogstart ) THEN
                     fval = ( (idl - 1 ) - foffset ) / fscale 
                  ELSE
@@ -266,10 +290,6 @@ C
               END DO
               DO idl = 130,199 
                  val = ( IAND( idl , dmask ) / dscal ) - doffs
-C                 IF ( ( IAND(idl , tmask ) .ne. 0 ) .and.
-C     +           (val > 70.0 ) ) THEN
-C                    val = 1
-C                 END IF
                  CALL ST_INCH ( int(val), cmblev (idl), ier )
               END DO
               CALL ST_INCH ( int(70), cmblev (199), ier )
@@ -293,7 +313,7 @@ C*      this is a to-do
               DO idl = 1, imndlv
                  val = amin + ( idl - 1 ) * ainc  
                  IF ( MOD ( ( idl - 1 ), iinc ) .eq. 0 ) THEN
-                    CALL ST_RLCH ( val, 1, cmblev ( idl ), ier )
+                    CALL ST_RLCH ( val, 2, cmblev ( idl ), ier )
                  ELSE
                     cmblev ( idl ) = ' '
                  END IF

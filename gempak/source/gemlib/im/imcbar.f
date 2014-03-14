@@ -133,8 +133,8 @@ C*	Fill the color boxes
 C
 	knt = 0
         IF ( ( imtype .eq. 94 ) .or. ( imtype .eq. 32 ) ) THEN
-            clevst = 64
-            clevsp = 216
+            clevst = 66
+            clevsp = 217
             nflvl = clevsp - clevst 
         ELSE
 	    nflvl = imndlv
@@ -175,6 +175,7 @@ C
             END DO
             CALL ST_INCH ( int(70), cmblev (199), ier )
             cmblev ( 131 ) = 'TOP'
+            cmblev ( 1 ) = 'ND'
         END SELECT
 
 	DO  i = clevst, clevsp 
@@ -223,24 +224,73 @@ C
                IF ( imftyp .eq. 13 ) THEN
                   SELECT CASE ( imtype ) 
                      CASE (94,32)
-                        IF ( ( i .gt. clevst+1 ) .and.
-     +                    ( i .lt. clevsp ) .and. 
-     +                    ( MOD ( i - 5, 10 ) .eq. 0 ) ) THEN
+                        IF ( ( i .eq. clevsp ) .or.
+     +                    ( MOD ( i + 3 , 10 ) .eq. 0 ) ) THEN
                            label = cmblev (i)
-                        ELSE IF ( i .eq. clevst ) THEN
-                           label = 'ND'
                         ELSE
                            label = ' '
                         END IF
                      CASE (99)
-                        IF ( ( i .eq. 1 ) .or.
-     +                    ( MOD ( i - 8, 10 ) .eq. 0 ) ) THEN
+                        IF ( MOD ( i-10 , 20 ) .eq. 0 ) THEN
                            label = cmblev (i)
                         ELSE
                            label = ' '
                         END IF
+                     CASE (170,172,173,174,175) 
+                        IF ( ( i .eq. 1 ) .or.
+     +                    ( MOD ( i , 20 ) .eq. 0  ) ) THEN 
+                           label = cmblev (i)
+                        ELSE
+                           label = ' '
+                        END IF
+                     CASE (159) 
+                        IF ( MOD ( i , 16 ) .eq. 0   ) THEN 
+                           label = cmblev (i)
+                        ELSE
+                           label = ' '
+                        END IF
+                     CASE (163) 
+                        IF ( MOD ( i , 20 ) .eq. 3   ) THEN 
+                           label = cmblev (i)
+                        ELSE
+                           label = ' '
+                        END IF
+                     CASE (161) 
+                        IF ( ( i .eq. 1 ) .or.
+     +                    ( MOD ( i , 30 ) .eq. 0  ) ) THEN 
+                           label = cmblev (i)
+                        ELSE
+                           label = ' '
+                        END IF
+                     CASE (134)
+                        IF ( ( i .eq. 1 ) .or. 
+     +                    ( MOD ( i , 12 ) .eq. 0 ) ) THEN
+                           label = cmblev (i)
+                        ELSE
+                           label = ''
+                        END IF
+                     CASE (135)
+                        IF ( ( i .ge. 3 )  .and.
+     +                    ( i .le. 73 ) .and.
+     +                    ( MOD ( i , 10 ) .eq. 2) ) THEN
+                           label = cmblev (i)
+                        ELSE IF ( ( i .ge. 131 ) .and.
+     +                    ( i .le. 200 ) .and.
+     +                    ( MOD ( i , 10 ) .eq. 0 ) ) THEN
+                           label = cmblev (i)
+                        ELSE IF ( i .eq. 2 ) THEN
+                           label = cmblev (i)
+                        ELSE IF ( ( i .eq. 71 ) .or. 
+     +                    ( i .eq. 199 ) .or.
+     +                    ( i .eq. 130 )  ) THEN
+                           label = cmblev (i)
+                        ELSE
+                           label = ''
+                        END IF
                      CASE DEFAULT 
                         label = cmblev (i)
+C     +                    ( MOD ( i - 8, 10 ) .eq. 0 ) .or. 
+C                        label = cmblev (i)
                   END SELECT 
                ELSE
                   label = cmblev (i)
