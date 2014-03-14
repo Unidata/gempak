@@ -37,7 +37,7 @@ all : $(PROG)
 $(PROG) : $(PROG_OBJS)
 	@case $(NA_OS) in \
 	osf) \
-	$(LINK.c) $(PROG_OBJS) $(LIBS) $(CSYSLIB) -lUfor -lfor -lots -lm -o $@ ;; \
+	$(LINK.c) $(PROG_OBJS) $(LIBS) $(CSYSLIB) -lUfor -lfor -lots -o $@ ;; \
 	*) \
 	$(LINK.f) $(NOFORMAIN) $(PROG_OBJS) $(LIBS) -o $@ ;; \
 	esac
