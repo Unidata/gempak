@@ -133,15 +133,9 @@ C
 C*	Fill the color boxes
 C
 	knt = 0
-        IF ( ( imtype .eq. 194 ) .or. ( imtype .eq. 132 ) ) THEN
-            clevst = 66
-            clevsp = 217
-            nflvl = clevsp - clevst 
-        ELSE
-	    nflvl = imndlv
-            clevst = 1
-            clevsp = nflvl
-        END IF
+	nflvl = imndlv
+        clevst = 1
+        clevsp = nflvl
 
         SELECT CASE (imtype)
 C HHC 

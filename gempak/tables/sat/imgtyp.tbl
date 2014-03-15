@@ -395,7 +395,7 @@ LOCAL  1 KM  RADIAL  VELOCITY      0     15      7     27      1 nids_vel16.tbl
 LOCAL .25 KM SPCTRM  WIDTH         0      7      7     28      1 nids_swid.tbl
 LOCAL .50 KM SPCTRM  WIDTH         0      7      7     29      1 nids_swid.tbl
 LOCAL  1 KM  SPCTRM  WIDTH         0      7      7     30      1 nids_swid.tbl
-LOCAL  1 KM  DIGITAL HY_REF        0    255      7     32      1 upc_n0q.tbl
+LOCAL  1 KM  DIGITAL HY_REF        0    255      7     32      1 upc_ref.tbl
 LOCAL  1 KM  COMP    REFLECT       0      7      7     35      1 osf_ref8.tbl
 LOCAL  4 KM  COMP    REFLECT       0      7      7     36      1 osf_ref8.tbl
 LOCAL  1 KM  COMP    REFLECT       0     15      7     37      1 osf_ref16.tbl
@@ -431,7 +431,7 @@ LOCAL  2 KM  DIGITAL PRCP ARRAY    0    255      7     81      1 upc_n1p.tbl
 LOCAL  COMBINED      SHEAR         0     15      7     87      1 nids_csher.tbl
 LOCAL  4 KM  L3 REFL AVE           0      7      7     89      1 osf_ref8.tbl
 LOCAL  4 KM  L3 REFL MAX           0      7      7     90      1 osf_ref8.tbl
-LOCAL  1 KM  BASE    REFLECT       0    255      7     94      1 upc_n0q.tbl 
+LOCAL  1 KM  BASE    REFLECT       0    255      7     94      1 upc_ref.tbl 
 LOCAL .25 KM  RADIAL VELOCITY      0    255      7     99      1 upc_vel256.tbl
 LOCAL  1 KM  DIGITAL VIL           0    255      7    134      1 upc_dvl.tbl
 LOCAL  1 KM  ECHO    TOPS          0    199      7    135      1 upc_eet.tbl
@@ -449,7 +449,7 @@ LOCAL .25 KM  DOD     DUAL-POL     0    255      7    174      1 upc_od.tbl
 LOCAL .25 KM  DSD     DUAL-POL     0    255      7    175      1 upc_od.tbl 
 LOCAL .25 KM  INST    PRECIP_RT    0    255      7    176      1 upc_dpr.tbl 
 LOCAL .25 KM  HHC     DUAL-POL     0    150      7    177      1 upc_dhc.tbl 
-LOCAL .30 KM  BASE   TDWR_REFLECT  0    255      7    186      1 upc_n0q.tbl
+LOCAL .30 KM  BASE   TDWR_REFLECT  0    255      7    186      1 upc_ref.tbl
 LOCAL .30 KM  BASE   TDWR_REFLECT  0     15      7    187      1 osf_ref16.tbl
 ! 
 LOW LEVEL CREF       MOSAIC        0    255      7    243      1 upc_radimg.tbl
