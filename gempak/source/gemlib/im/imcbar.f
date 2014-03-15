@@ -133,7 +133,7 @@ C
 C*	Fill the color boxes
 C
 	knt = 0
-        IF ( ( imtype .eq. 94 ) .or. ( imtype .eq. 32 ) ) THEN
+        IF ( ( imtype .eq. 194 ) .or. ( imtype .eq. 132 ) ) THEN
             clevst = 66
             clevsp = 217
             nflvl = clevsp - clevst 
@@ -251,7 +251,8 @@ C
                            label = ' '
                         END IF
                      CASE (163) 
-                        IF ( MOD ( i , 20 ) .eq. 3   ) THEN 
+                        IF ( MOD ( i , 20 ) .eq. 3   .or.
+     +                   (i .eq. 33) .or. (i .eq. 12)) THEN 
                            label = cmblev (i)
                         ELSE
                            label = ' '

@@ -16,9 +16,9 @@ C*	IRET		INTEGER		Return code			*
 C*					  0 = normal return		*
 C*					 -4 = Invalid image product	*
 C* Data Files Supported Here	 	 -5 = Invalid image navigation	*
-C*      159	ZDR							*
-C*      161	DCC							*
-C*      163	KDP							*
+C*      159	N0X/ZDR							*
+C*      161	N0C/DCC							*
+C*      163	N0K/KDP							*
 C*      165	DHC							*
 C*      170	DAA							*
 C*      171	PTA							*
@@ -240,20 +240,31 @@ C* 159 - Differential Reflectivity
 C* 161 - Correelation Coefficient
 C* 163 - Specific Differential Phase 
 C
-           CASE (159,163)
+           CASE (159)
               cmblev ( 1 ) = 'ND'
+              cmblev ( 2 ) = ' '
               DO idl = 3, imndlv
                  val =  ( idl - idlvls(2) ) / idlvls(1) 
                  CALL ST_INCH ( int(val), cmblev ( idl ), ier )
               END DO
            CASE (161)
               cmblev ( 1 ) = 'ND'
+              cmblev ( 2 ) = ' '
               DO idl = 3, imndlv
                  val =  ( REAL(idl) - idlvls(2) ) / idlvls(1) 
                  CALL ST_RLCH ( val , 2, cmblev ( idl ), ier )
               END DO
+           CASE (163)
+              cmblev ( 1 ) = 'ND'
+              cmblev ( 2 ) = ' '
+              DO idl = 3, imndlv
+                 val =  ( REAL(idl) - idlvls(2) ) / idlvls(1) 
+                 CALL ST_RLCH ( val, 1, cmblev ( idl ), ier )
+              END DO
+              cmblev ( imndlv ) = 'RF'
            CASE (175)
               cmblev ( 1 ) = 'ND'
+              cmblev ( 2 ) = ' '
               DO idl = 3, imndlv
                  val =  ( REAL(idl) - idlvls(2) ) / idlvls(1) 
                  CALL ST_RLCH ( val , 2, cmblev ( idl ), ier )
