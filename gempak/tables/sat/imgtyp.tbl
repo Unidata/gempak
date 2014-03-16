@@ -378,7 +378,7 @@ LI                   IR            0    255     77     32      1 gdpili.tbl
 ! .15 km
 LOCAL .15 KM  BASE   TDWR_REFLECT  0     15      7    181      1 osf_ref16.tbl
 LOCAL .15 KM  BASE   TDWR_VELOCITY 0     15      7    183      1 osf_vel16.tbl
-LOCAL .15 KM  BASE   TDWR_VELOCITY 0    255      7    182      1 upc_vel256.tbl
+LOCAL .15 KM  BASE   TDWR_VELOCITY 0    255      7    182      1 upc_vel.tbl
 ! 
 LOCAL  1 KM  BASE    REFLECT       0      7      7     16      1 osf_ref8.tbl
 LOCAL  2 KM  BASE    REFLECT       0      7      7     17      1 osf_ref8.tbl
@@ -432,7 +432,7 @@ LOCAL  COMBINED      SHEAR         0     15      7     87      1 nids_csher.tbl
 LOCAL  4 KM  L3 REFL AVE           0      7      7     89      1 osf_ref8.tbl
 LOCAL  4 KM  L3 REFL MAX           0      7      7     90      1 osf_ref8.tbl
 LOCAL  1 KM  BASE    REFLECT       0    255      7     94      1 upc_ref.tbl 
-LOCAL .25 KM  RADIAL VELOCITY      0    255      7     99      1 upc_vel256.tbl
+LOCAL .25 KM  RADIAL VELOCITY      0    255      7     99      1 upc_vel.tbl
 LOCAL  1 KM  DIGITAL VIL           0    255      7    134      1 upc_dvl.tbl
 LOCAL  1 KM  ECHO    TOPS          0    199      7    135      1 upc_eet.tbl
 LOCAL  2 KM  HYBRID  PRECIP        0    255      7    138      1 upc_dst.tbl
@@ -615,8 +615,8 @@ NATL 1 KM CAPI(17KM) REFLECT       0     15      8    230      1 osf_ref16.tbl
 NATL 1 KM CAPI(18KM) REFLECT       0     15      8    231      1 osf_ref16.tbl
 NATL 1 KM CAPI(19KM) REFLECT       0     15      8    232      1 osf_ref16.tbl
 NEXRAD Level II BASE REFLECT       0    107      7    225      1 upc_radimg.tbl
-NEXRAD Level II      SPECTRUM      0    255      7    227      1 upc_vel256.tbl
-NEXRAD Level II      VELOCITY      0    255      7    226      1 upc_vel256.tbl
+NEXRAD Level II      SPECTRUM      0    255      7    227      1 upc_vel.tbl
+NEXRAD Level II      VELOCITY      0    255      7    226      1 upc_vel.tbl
 NRL_37H              F15           0    255    272      4      1 rainbow.tbl
 NRL_37H              F16           0    255    273      4      1 rainbow.tbl
 NRL_37H              F17           0    255    274      4      1 rainbow.tbl
