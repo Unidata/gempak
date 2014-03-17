@@ -235,7 +235,7 @@ void dc_init ( char *prgnam, int argc, char **argv, int numexp,
 **	Send a start up message to the decoder log.
 */
 	ss_vers ( version, &ier, sizeof(version) );
-	dc_wclg ( 0, "DC", 3, version, &ier );
+	dc_wclg ( 0, "DCINIT", 3, version, &ier );
 
 /*
 **	Set all of the environment variables.
@@ -244,7 +244,7 @@ void dc_init ( char *prgnam, int argc, char **argv, int numexp,
 	while ( envobj != NULL ) {
 	    if  ( putenv ( envobj->env ) != 0 )  {
 		strcpy ( errstr, envobj->env );
-		dc_wclg ( 0, "DC", -17, errstr, &ier );
+		dc_wclg ( 0, "DCINIT", -17, errstr, &ier );
 	    }
 	    envobj = envobj->next;
 	}
@@ -273,7 +273,7 @@ void dc_init ( char *prgnam, int argc, char **argv, int numexp,
 **	    with an error.
 */
 	    *iret = -11;
-	    dc_wclg ( 0, "DC", *iret, " ", &ier );
+	    dc_wclg ( 0, "DCINIT", *iret, " ", &ier );
 	}
 	else
 	{
