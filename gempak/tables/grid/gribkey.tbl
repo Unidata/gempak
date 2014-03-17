@@ -118,7 +118,7 @@
 !
 !center sub modelid grid   Output grid file name                   max_grids
 ! FNOC NAVGEM
-058   x   ???      056    data/gempak/model/navgem/YYYYMMDDHH_navgem@@@.gem 15000
+058   x   ???       056    data/gempak/model/navgem/YYYYMMDDHH_navgem@@@.gem 15000
 ! FNOC NOGAPS/COAMPS
 058   x   041,58    @@@    data/gempak/model/navgem/YYYYMMDDHH_navgem@@@.gem 15000
 058   x   082       020    data/gempak/model/coamps/YYYYMMDDHH_coamps_conus  1500
