@@ -57,11 +57,7 @@ $(PROG) : $(OBJS)
 
 install : 
 	$(INSTALL) $(PROG) $(OS_BIN)
-	$(AUXINSTALL) dcgrib.tbl $(GEMTBL)/grid
-	$(AUXINSTALL) gribkey.tbl $(GEMTBL)/grid
 	$(AUXINSTALL) dcgrib2.hlp $(GEMHLP)/hlp
-	$(AUXINSTALL) ncepsubcenters.tbl $(GEMTBL)/grid
-	$(AUXINSTALL) nwssubcenters.tbl $(GEMTBL)/grid
 
 clean: testclean
 	$(RM) $(OBJS) $(PROG) *.c~
