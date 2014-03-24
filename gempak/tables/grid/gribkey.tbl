@@ -123,6 +123,7 @@
 058   x   027       186    data/gempak/model/coamps/YYYYMMDDHH_coamps_centam 1500
 058   x   060       188    data/gempak/model/coamps/YYYYMMDDHH_coamps_epac   1500
 058   x   063       187    data/gempak/model/coamps/YYYYMMDDHH_coamps_watl   1500
+058   x   110       240    data/gempak/model/navgem/YYYYMMDDHH_ww3.gem       1500
 !
 ! FNMOC conus and NOGAPS are no longer run.  left here for archive data.
 058   x   082       020    data/gempak/model/coamps/YYYYMMDDHH_coamps_conus  1500
