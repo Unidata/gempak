@@ -213,7 +213,8 @@
 !* M. James/Unidata	 8/12   Added RAP; Preserved RUC entries        *
 !* M. James/Unidata	 4/13   Copied NOGAPS to NAVGEM                 *
 !* G.McFadden/IMSG	07/13	Added SGWHA and WSPDA			*
-! M. James/Unidata      10/13   Added OPC lightning density grids       *
+!* M. James/Unidata	10/13	Added OPC lightning density grids	*
+!* M. James/Unidata	03/14	Updates for COAMPS and NAVGEM		*
 !************************************************************************
 !
 !           |                         |                                                |        |        |DEF |DEF   |DEF   |                     |TIME
@@ -510,7 +511,7 @@ MDLMRFSVR    $MODEL/tdl                mdlmrfsvr_YYYYMMDDHH                     
 COOPMOS      $MODEL/coopmos            coopmos_YYYYMMDDHH                               CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
 NOGAPS       $MODEL/nogaps             YYYYMMDDHH_nogaps240.gem                         CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
 NGPS_PRCP    $MODEL/nogaps             nogaps_YYYYMMDDHH_prcp                           CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
-NAVGEM       $MODEL/navgem             YYYYMMDDHH_navgem056.gem                         CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+NAVGEM       $MODEL/navgem             YYYYMMDDHH_navgem.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
 NVGM_PRCP    $MODEL/navgem             navgem_YYYYMMDDHH_prcp                           CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
 !
 MM5AK        $MODEL/mm5                mm5alaska_YYYYMMDDHHfFFF                         CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
@@ -583,6 +584,7 @@ RUC_20       $MODEL/ruc                YYYYMMDDHH_ruc.gem                       
 COAMPS_WATL  $MODEL/coamps             YYYYMMDDHH_coamps_watl                           CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
 COAMPS_EPAC  $MODEL/coamps             YYYYMMDDHH_coamps_epac                           CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
 COAMPS_CONUS $MODEL/coamps             YYYYMMDDHH_coamps_conus                          CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
+COAMPS_EURO  $MODEL/coamps             YYYYMMDDHH_coamps_europe                         CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
 COAMPS_C_AM  $MODEL/coamps             YYYYMMDDHH_coamps_centam                         CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
 UKMET2       $MODEL/ukmet2             ukmet2_YYMMDDHH                                  CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
 ENSHR        $MODEL/ens                YYYYMMDDHHfFFF_ens003.gem                        CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0

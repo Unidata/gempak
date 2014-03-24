@@ -116,16 +116,17 @@
 ! FSL RUC
 059   x   105       @@@    data/gempak/model/ruc/YYYYMMDDHH_ruc@@@.gem    7500
 !
+! FNOC NAVGEM/COAMPS - updated 20140324
 !center sub modelid grid   Output grid file name                   max_grids
-! FNOC NAVGEM
-058   x   ???       056    data/gempak/model/navgem/YYYYMMDDHH_navgem@@@.gem 15000
-! FNOC NOGAPS/COAMPS
-058   x   041,58    @@@    data/gempak/model/navgem/YYYYMMDDHH_navgem@@@.gem 15000
-058   x   082       020    data/gempak/model/coamps/YYYYMMDDHH_coamps_conus  1500
+058   x   018       056    data/gempak/model/navgem/YYYYMMDDHH_navgem.gem    15000
+058   x   022       179    data/gempak/model/coamps/YYYYMMDDHH_coamps_europe 1500
 058   x   027       186    data/gempak/model/coamps/YYYYMMDDHH_coamps_centam 1500
-058   x   063       187    data/gempak/model/coamps/YYYYMMDDHH_coamps_watl   1500
 058   x   060       188    data/gempak/model/coamps/YYYYMMDDHH_coamps_epac   1500
-058   x   ???       @@@    data/gempak/model/coamps/YYYYMMDDHH_coamps###_@@@ 1500
+058   x   063       187    data/gempak/model/coamps/YYYYMMDDHH_coamps_watl   1500
+!
+! FNMOC conus and NOGAPS are no longer run.  left here for archive data.
+058   x   082       020    data/gempak/model/coamps/YYYYMMDDHH_coamps_conus  1500
+058   x   058       @@@    data/gempak/model/nogaps/YYYYMMDDHH_nogaps@@@.gem 15000
 !
 ! NDFD 
 008 65535 000       @@@    data/gempak/model/ndfd/YYYYMMDDHH_ndfd.gem       100
