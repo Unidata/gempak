@@ -1,4 +1,6 @@
 ! M. James/Unidata	04/13	Added NAVGEM
+!			03/14	Added fFFF to split NAVGEM global
+!
 !center sub modelid grid   Output grid file name                   max_grids
 !
 ! DGEX
@@ -116,7 +118,7 @@
 ! FSL RUC
 059   x   105       @@@    data/gempak/model/ruc/YYYYMMDDHH_ruc@@@.gem    7500
 !
-! FNOC NAVGEM/COAMPS - updated 20140324
+! FNOC NAVGEM/COAMPS 
 !center sub modelid grid   Output grid file name                   max_grids
 058   x   018       056    data/gempak/model/navgem/YYYYMMDDHHfFFF_navgem.gem 500
 058   x   022       179    data/gempak/model/coamps/YYYYMMDDHH_coamps_europe 1500
