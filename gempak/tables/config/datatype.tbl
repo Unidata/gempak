@@ -366,7 +366,7 @@ SIGVGF24     $SIGWX/vgfiles            YYYYMMDDHH_24_final.vgf                  
 !
 ! BUFR files
 SIGBUF18     $SIGWX/bufrfiles          JU*D*.YYYYMMDDHH                                 CAT_NIL  SCAT_NIL   -1     -1     -1      OFF/0/0      4
-SIGBUF24     $SIGWX/bufrfiles          JU*E*.YYYYMMDDHH                                 CAT_NIL  SCAT_NIL   -1     -1     -1      OFF/0/0      4
+SIGBUF24     $SIGWX/24bufrfiles        JU*E*.YYYYMMDDHH                                 CAT_NIL  SCAT_NIL   -1     -1     -1      OFF/0/0      4
 !
 ! Operational models and grid data
 COAMPS       $MODEL/coamps             coamps_YYYYMMDDHHfFFF                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
@@ -511,7 +511,7 @@ MDLMRFSVR    $MODEL/tdl                mdlmrfsvr_YYYYMMDDHH                     
 COOPMOS      $MODEL/coopmos            coopmos_YYYYMMDDHH                               CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
 NOGAPS       $MODEL/nogaps             YYYYMMDDHH_nogaps240.gem                         CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
 NGPS_PRCP    $MODEL/nogaps             nogaps_YYYYMMDDHH_prcp                           CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
-NAVGEM       $MODEL/navgem             YYYYMMDDHH_navgem.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+NAVGEM       $MODEL/navgem             YYYYMMDDHHfFFF_navgem.gem                        CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
 NVGM_PRCP    $MODEL/navgem             navgem_YYYYMMDDHH_prcp                           CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
 !
 MM5AK        $MODEL/mm5                mm5alaska_YYYYMMDDHHfFFF                         CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
@@ -586,6 +586,7 @@ COAMPS_EPAC  $MODEL/coamps             YYYYMMDDHH_coamps_epac                   
 COAMPS_CONUS $MODEL/coamps             YYYYMMDDHH_coamps_conus                          CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
 COAMPS_EURO  $MODEL/coamps             YYYYMMDDHH_coamps_europe                         CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
 COAMPS_C_AM  $MODEL/coamps             YYYYMMDDHH_coamps_centam                         CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
+FNMOC_WW3    $MODEL/coamps             YYYYMMDDHH_ww3.gem                               CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
 UKMET2       $MODEL/ukmet2             ukmet2_YYMMDDHH                                  CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
 ENSHR        $MODEL/ens                YYYYMMDDHHfFFF_ens003.gem                        CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
 ENSTHIN      $MODEL/ens                YYYYMMDDHH_ensthin.gem                           CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0

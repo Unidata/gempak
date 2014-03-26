@@ -118,7 +118,7 @@
 !
 ! FNOC NAVGEM/COAMPS - updated 20140324
 !center sub modelid grid   Output grid file name                   max_grids
-058   x   018       056    data/gempak/model/navgem/YYYYMMDDHH_navgem.gem    15000
+058   x   018       056    data/gempak/model/navgem/YYYYMMDDHHfFFF_navgem.gem 500
 058   x   022       179    data/gempak/model/coamps/YYYYMMDDHH_coamps_europe 1500
 058   x   027       186    data/gempak/model/coamps/YYYYMMDDHH_coamps_centam 1500
 058   x   060       188    data/gempak/model/coamps/YYYYMMDDHH_coamps_epac   1500
