@@ -209,7 +209,7 @@
 000 003 009 000 Geopotential Height Anomaly      gpm                  HGHTA            0  -9999.00
 000 003 010 000 Density                          kg m**-3             DNTY             0  -9999.00
 !000 003 011 000 Altimeter Setting                ????                 ????             ?  -9999.00
-!000 003 012 000 Thickness                        ????                 ????             ?  -9999.00
+000 003 012 000 Thickness                        m                    THKNS             ?  -9999.00
 !000 003 013 000 Pressure Altitude                ????                 ????             ?  -9999.00
 !000 003 014 000 Density Altitude                 ????                 ????             ?  -9999.00
 000 003 200 000 P most unstable parcel 300mb agl Pa                   PLPL             0  -9999.00
@@ -382,6 +382,15 @@
 !
 !
 002 003 000 000 Soil Type (as in Zobler)         -                    SOTYP            0  -9999.00
+!
+! Fire Weather
+!D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING
+!23|123|123|123|12345678901234567890123456789012|12345678901234567890|123456789012|12345|123456.89
+! Haines index should be parameter 2, not 3.  This is an artifact of grib1 -> grib2 conversion 
+002 004 000 000 Fire Outlook                     -                    FIREOLK          0  -9999.00
+002 004 001 000 Fire Outlook Due to Dry Trw      -                    FIREODT          0  -9999.00
+002 004 002 000 Haines index                     -                    HINDEX           0  -9999.00
+002 004 003 000 Haines index                     -                    HINDEX           0  -9999.00
 !
 ! Product Discipline 10 - Oceanographic Products
 ! CATEGORY 0 - Waves category

@@ -177,6 +177,7 @@
 000 006 198 000 Total column-integrated condens  kg/m**2              TCOLC            0  -9999.00
 000 006 199 000 Ice fraction of total condensate -                    FICE             0  -9999.00
 000 006 201 000 Sunshine duration                s                    SUNSD            0  -9999.00
+000 006 201 001 Sunshine duration                s                    SUNSD            0  -9999.00
 !
 ! thermodynamic stability indices 
 !D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING
@@ -241,6 +242,7 @@
 002 000 199 000 Canopy conductance               m/s                  CCOND            0  -9999.00
 002 000 200 000 Minimal stomatal resistance      s/m                  RSMIN            0  -9999.00
 002 000 201 000 Wilting point (0.0-1.0)          -                    WILT             0  -9999.00
+002 000 201 001 Wilting point (0.0-1.0)          -                    WILT             0  -9999.00
 002 000 202 000 Solar prm in canopy conduct(0-1) -                    RCS              0  -9999.00
 002 000 203 000 Temp para in canopy conductance  -                    RCT              0  -9999.00
 002 000 204 000 Humidity para in canopy conduct  -                    RCQ              0  -9999.00
@@ -258,12 +260,14 @@
 002 003 196 000 Direct evaporation cease (0.-1.) -                    SMDRY            0  -9999.00
 002 003 197 000 Soil porosity (0.0-1.0)          -                    POROS            0  -9999.00
 002 003 203 000 Field capacity                   -                    FLDCP            0  -9999.00
+002 003 203 001 Field capacity                   -                    FLDCP            0  -9999.00
 !
 ! Product Discipline 10 - Oceanographic Products
 ! CATEGORY 0 - Waves category
 !D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING
 !23|123|123|123|12345678901234567890123456789012|12345678901234567890|123456789012|12345|123456.89
 010 000 192 000 Wave Steepness                   -                    WSTP             0  -9999.00
+010 003 000 000 Water Temperature                K                    WTMP             0  -9999.00
 010 003 192 000 Hurricane Storm Surge            m                    HCNSRG           0  -9999.00
 010 003 193 000 Extra Tropical Storm Surge       m                    ETSRG            0  -9999.00
 010 003 194 000 Ocean Surface Elev Rel to Geoid  m                    OCELEV           0  -9999.00
