@@ -32,7 +32,7 @@
 000 000 011 011 Sensible Heat Net Flux           W m**-2              FXSH             0  -9999.00
 000 000 011 012 Sensible Heat Net Flux           W m**-2              FXSH             0  -9999.00
 000 000 012 000 Heat Index                       K                    HEAT             0  -9999.00
-!000 000 013 000 Wind Chill Factor                K                    ????             0  -9999.00
+000 000 013 000 Wind Chill Factor                K                    CHILL            0  -9999.00
 !000 000 014 000 Minimum Dew Point Depression     K                    ????             0  -9999.00
 !000 000 015 000 Virtual Potential Temperature    K                    ????             0  -9999.00
 !

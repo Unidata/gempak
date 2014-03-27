@@ -14,9 +14,8 @@
 #
 # HDS products ^[HOYZ] originate from NOAAPORT
 # CONDUIT products ^/afs originate from NWS CONDUIT feed
-# NOGAPS products (nogaps & coamps models) originate at FNMOC
 # CMC products (gem model) inserted at CMC
-#HDS|CONDUIT|NOGAPS|CMC	(^[HOYZ]|^/afs|^US058|CMC_GEM_reg)
+#HDS|CONDUIT|CMC	(^[HOYZ]|^/afs|CMC_GEM_reg)
 #	PIPE	decoders/dcgrib2 -v 1 -d data/gempak/logs/dcgrib.log
 #	-e GEMTBL=@GEMTBL@
 #
@@ -326,7 +325,7 @@ HDS	^H..... EGRR
 #
 # FNMOC data available via IDD (NOGAPS & COAMPS models)
 # -------------------------
-FNMOC	^US058
+FNMOC	^US058.*(0018_0056|0022_0179|0027_0186|0060_0188|0063_0187|0110_0240)_.*
 	PIPE	decoders/dcgrib2 -v 1 -d data/gempak/logs/dcgrib2_fnmoc.log
 	-e GEMTBL=@GEMTBL@
 #

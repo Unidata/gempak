@@ -50,7 +50,7 @@
 000 000 011 011 Sensible Heat Net Flux           W m**-2              FXSH             0  -9999.00
 000 000 011 012 Sensible Heat Net Flux           W m**-2              FXSH             0  -9999.00
 000 000 012 000 Heat Index                       K                    HEAT             0  -9999.00
-!000 000 013 000 Wind Chill Factor                K                    ????             0  -9999.00
+000 000 013 000 Wind Chill Factor                K                    CHILL            0  -9999.00
 !000 000 014 000 Minimum Dew Point Depression     K                    ????             0  -9999.00
 000 000 015 000 Virtual Potential Temperature    K                    THTV             0  -9999.00
 000 000 017 000 Skin Temperature                 K                    SKTMP            0  -9999.00
@@ -91,6 +91,7 @@
 000 001 011 000 Snow depth                       m                    SNDM             0  -9999.00
 000 001 011 001 Snow depth                       m                    SNDM             0  -9999.00
 000 001 011 002 Snow depth                       m                    SNDM             0  -9999.00
+000 001 011 008 Snow depth                       m                    SNDM             0  -9999.00
 000 001 012 008 Snowfall rate water equiv        kg m**-2 s**-1       SR--             0  -9999.00
 000 001 013 000 Wat equiv of accum snow dep      kg m**-2             SWEM             0  -9999.00
 000 001 013 001 Wat equiv of accum snow dep      kg m**-2             SWEM             0  -9999.00
@@ -132,6 +133,8 @@
 000 001 192 000 Weather                          NA                   WX               0  -9999.00
 000 001 192 001 Weather                          NA                   WX               0  -9999.00
 000 001 192 011 Weather                          NA                   WX               0  -9999.00
+001 000 193 008 Storm surface runoff             kg m**-2             R--M             0  -9999.00
+000 001 199 008 Potential evaporation            kg m**-2             PEVAP            0  -9999.00
 000 001 083 000 Albedo                           %                    ALBD             0  -9999.00
 000 001 084 000 Surface Roughness                m                    SRLM             0  -9999.00
 !
@@ -215,6 +218,7 @@
 !D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING
 !23|123|123|123|12345678901234567890123456789012|12345678901234567890|123456789012|12345|123456.89
 000 004 000 000 Net Short-Wave Rad (sfc)         W m**-2              SNIR             0  -9999.00
+000 004 000 008 Net Short-Wave Rad (sfc)         W m**-2              SNIR             0  -9999.00
 000 004 001 000 Net Short-Wave Rad (toa)         W m**-2              SWRT             0  -9999.00
 000 004 002 000 Short-Wave Radiation Flux        W m**-2              SWAVR            0  -9999.00
 000 004 003 000 Global radiation Flux            W m**-2              GRAD             0  -9999.00
@@ -222,7 +226,8 @@
 000 004 005 000 Radiance (w/r to wave nmber)     W m**-1 sr**-1       LWRAD            0  -9999.00
 000 004 006 000 Radiance (w/r to wave length)    W m**-3 sr**-1       SWRAD            0  -9999.00
 000 004 007 000 Downward Short-Wave Rad. Flux    W m**-2              DSWRF            0  -9999.00
-000 004 008 000 Upward Short-Wave Rad. Flux      W m**-2              USWRF
+000 004 007 008 Downward Short-Wave Rad. Flux    W m**-2              DSWRF            0  -9999.00
+000 004 008 000 Upward Short-Wave Rad. Flux      W m**-2              USWRF            0  -9999.00
 000 004 009 000 Net Solar Rad                    W m**-2 s            SRAD             0  -9999.00
 000 004 009 001 Net Solar Rad                    W m**-2 s            SRAD             0  -9999.00
 000 004 009 011 Net Solar Rad                    W m**-2 s            SRAD             0  -9999.00
@@ -231,6 +236,7 @@
 !D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING
 !23|123|123|123|12345678901234567890123456789012|12345678901234567890|123456789012|12345|123456.89
 000 005 000 000 Net Long-Wave Rad (sfc)          W m**-2              SNOR             0  -9999.00
+000 005 000 008 Net Long-Wave Rad (sfc)          W m**-2              SNOR             0  -9999.00
 000 005 001 000 Net Long-Wave Rad (toa)          W m**-2              LWRT             0  -9999.00
 !000 005 002 000 Long-Wave Radiation Flux         W m**-2              ????             0  -9999.00
 000 005 005 000 Outgoing Long-Wave Rad Flux      W m**-2              LWRU             0  -9999.00

@@ -10,15 +10,6 @@ ALIB = $(GEMLIB)
 CFLAGS += -I$(OS_INC)/libxml2
 
 COBJS = \
-        $(ALIB)(dainfo.o) \
-        $(ALIB)(daopen.o) \
-        $(ALIB)(dardtc.o) \
-        $(ALIB)(dardti.o) \
-        $(ALIB)(dardtr.o) \
-        $(ALIB)(dardtrgd.o) \
-        $(ALIB)(darfhc.o) \
-        $(ALIB)(darfhi.o) \
-        $(ALIB)(darfhr.o) \
         $(ALIB)(dagetdtc.o) \
         $(ALIB)(dagetdti.o) \
         $(ALIB)(dagetdtr.o) \
@@ -29,7 +20,18 @@ COBJS = \
         $(ALIB)(dagetheader.o) \
         $(ALIB)(dagetinfo.o) \
         $(ALIB)(dareadxml.o) \
-        $(ALIB)(darunpy.o) \
+        $(ALIB)(darunpy.o)
+
+FOBJS = \
+	$(ALIB)(dainfo.o) \
+	$(ALIB)(daopen.o) \
+	$(ALIB)(dardtc.o) \
+	$(ALIB)(dardti.o) \
+	$(ALIB)(dardtr.o) \
+	$(ALIB)(dardtrgd.o) \
+	$(ALIB)(darfhc.o) \
+	$(ALIB)(darfhi.o) \
+	$(ALIB)(darfhr.o) 
 
 GDIR = da
 
@@ -37,7 +39,7 @@ GDIR = da
 
 all : $(ALIB)
 
-$(ALIB): $(COBJS) 
+$(ALIB): $(FOBJS) $(COBJS) 
 	$(AR) $(ARFLAGS) $@ *.o
 	$(RM) *.o
 
