@@ -77,14 +77,15 @@ C*
      +			gvcord*(LLMXLN), gdpfun*(LLMXLN),
      +			map*(LLMXLN), title*(LLMXLN), 
      +			proj*(LLMXLN), garea*(LLMXLN), 
-     +			text*(LLMXLN), 
-     +			shrttl*(LLMXLN), 
+     +			text*(LLMXLN), projc*(LLMXLN),
+     +			shrttl*(LLMXLN), angles*(LLMXLN),
      +			ijskip*(LLMXLN)
 C*
 	CHARACTER	time (2)*20, ttlstr*128, garout*(LLMXLN),
      +			parm*12, 
      +			imgfil*256, 
      +			newfil*256
+        CHARACTER       ag (3)*72
 	LOGICAL		proces, ttlvld
 	LOGICAL		scavld, vctvld
 C*
@@ -93,6 +94,7 @@ c	REAL		fi(IWNDMX), fj(IWNDMX), s(IWNDMX), d(IWNDMX)
 	LOGICAL		exist
 	LOGICAL		pltmap(MAXB), mapp
 	CHARACTER	prfxtt*(*), prjout*(LLMXLN)
+        REAL            anlblk(LLNANL), rnav(LLNNAV)
 C
 	INCLUDE		'ERMISS.FNC'
 C*
@@ -197,10 +199,27 @@ C
 	    END IF
 	    CALL DG_INXT ( .true., .true., time, iret )
 	    proces = ( iret .eq. 0 )
+
 C
-C*          Set the map projection and graphics area.
+C*          .
 C
             IF  ( proces .and. lprmap )  THEN
+                IF  ( proj(1:3) .eq. 'DEF' ) THEN
+                    CALL DG_QREF ( LLNANL, LLNNAV, anlblk, rnav,
+     +                                      mxgrd, iret )
+                    CALL ST_ITOC  ( rnav (2), 1, projc, ier )
+                    IF ( ( projc(1:3) .eq. 'STR' ) .or.
+     +                   ( projc(1:3) .eq. 'LCC' ) .or.
+     +                   ( projc(1:3) .eq. 'SCC' ) ) THEN
+                        CALL ST_LSTF ( rnav(11:13), 3, ';', 1, 
+     +                      angles, ier)
+                        CALL ST_LCUC ( projc(1:3) // '/' // angles, 
+     +                      projc, ier)
+                    END IF
+	            CALL ST_LCUC ( projc, proj, ier )
+                END IF
+C
+C*          Set the map projection and graphics area.
 C
                 IF  ( ( proj(1:3) .ne. 'SAT' ) .and.
      +                ( proj(1:3) .ne. 'RAD' ) )  THEN
