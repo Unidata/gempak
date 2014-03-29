@@ -85,7 +85,6 @@ C*
      +			parm*12, 
      +			imgfil*256, 
      +			newfil*256
-        CHARACTER       ag (3)*72
 	LOGICAL		proces, ttlvld
 	LOGICAL		scavld, vctvld
 C*
