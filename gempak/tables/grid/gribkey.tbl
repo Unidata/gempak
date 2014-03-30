@@ -81,7 +81,9 @@
 007   x   123       @@@    data/gempak/model/nww/YYYYMMDDHH_wave@@@.gem    500
 !
 ! ICE
-007   x   120       @@@    data/gempak/model/ice/YYYYMMDDHH_ice@@@.gem     200
+007   x   120       135    data/gempak/model/ice/YYYYMMDDHH_ice.gem        10
+007   x   120       219    data/gempak/model/ice/YYYYMMDDHH_ice219.gem     10
+007   x   120       220    data/gempak/model/ice/YYYYMMDDHH_ice220.gem     10
 !
 ! UKMET Thinned grids
 074   x   15,44,45  037    data/gempak/model/ukmet/YYYYMMDDHH_ukmet.gem     1500

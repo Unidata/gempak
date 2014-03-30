@@ -66,7 +66,7 @@ void gb2_polr ( gribfield *gfld, float *gdsarr, int *scan_mode, int *iret )
 	 */
 	Lo1e = (int)gfld->igdtmpl[10];
         Lo1 = Lo1e;
-        /*if ( Lo1 > 180000000 ) Lo1 = Lo1 - 360000000;*/
+        /* if ( Lo1 > 180000000 ) Lo1 = Lo1 - 360000000; */
         Lo1 = Lo1 - 360000000;
 	lon1 = ( Lo1 / 1000000.0 ) * DTR;
 
@@ -85,8 +85,9 @@ void gb2_polr ( gribfield *gfld, float *gdsarr, int *scan_mode, int *iret )
 	 */
 	LoVe = (int)gfld->igdtmpl[13];
         LoV = LoVe;
-        /*if ( LoV > 180000000 ) LoV = LoV - 360000000;*/
+        /* if ( LoV > 180000000 ) LoV = LoV - 360000000; */
         LoV = LoV - 360000000;
+        if ( LoV < -180000000 ) LoV = LoV + 180000000;
 	loncnt = ( LoV / 1000000.00 ) * DTR;
 
 	/*
@@ -206,7 +207,7 @@ void gb2_polr ( gribfield *gfld, float *gdsarr, int *scan_mode, int *iret )
 		      atan2 ( sqrt ( pow (Xur,2.0) + pow (Yur,2.0) ),
 			      RADIUS ) ) * RTD;
 		rtemp = loncnt + atan2 ( Xur,  Yur );
-	}
+}
 
 	if ( rtemp > PI )
 	    gdsarr[6] = ( rtemp - TWOPI ) * RTD;
