@@ -75,15 +75,18 @@
 007   x   010       024    data/gempak/model/nww/YYYYMMDDHH_nww.gem        500
 !
 007   x   010       @@@    data/gempak/model/nww/YYYYMMDDHH_wave@@@.gem    500
-007   x   044       @@@    data/gempak/model/nww/YYYYMMDDHH_ocn.gem        500
+007   x   044       @@@    data/gempak/model/nww/YYYYMMDDHH_ocn@@@.gem     500
+007   x   120       @@@    data/gempak/model/nww/YYYYMMDDHH_wave@@@.gem    500
 007   x   121       @@@    data/gempak/model/nww/YYYYMMDDHH_wave@@@.gem    500
 007   x   122       @@@    data/gempak/model/nww/YYYYMMDDHH_wave@@@.gem    500
 007   x   123       @@@    data/gempak/model/nww/YYYYMMDDHH_wave@@@.gem    500
+007   x   124       @@@    data/gempak/model/nww/YYYYMMDDHH_wave@@@.gem    500
+007   x   125       @@@    data/gempak/model/nww/YYYYMMDDHH_wave@@@.gem    500
 !
 ! ICE
-007   x   120       135    data/gempak/model/ice/YYYYMMDDHH_ice.gem        10
-007   x   120       219    data/gempak/model/ice/YYYYMMDDHH_ice219.gem     10
-007   x   120       220    data/gempak/model/ice/YYYYMMDDHH_ice220.gem     10
+007   x   120       @@@    data/gempak/model/ice/YYYYMMDDHH_ice@@@.gem     10
+!007   x   120       219    data/gempak/model/ice/YYYYMMDDHH_ice219.gem     10
+!007   x   120       220    data/gempak/model/ice/YYYYMMDDHH_ice220.gem     10
 !
 ! UKMET Thinned grids
 074   x   15,44,45  037    data/gempak/model/ukmet/YYYYMMDDHH_ukmet.gem     1500
@@ -120,18 +123,23 @@
 ! FSL RUC
 059   x   105       @@@    data/gempak/model/ruc/YYYYMMDDHH_ruc@@@.gem    7500
 !
-! FNOC NAVGEM/COAMPS 
+! FNMOC NAVGEM and COAMPS
 !center sub modelid grid   Output grid file name                   max_grids
-058   x   018       056    data/gempak/model/navgem/YYYYMMDDHHfFFF_navgem.gem 500
-058   x   022       179    data/gempak/model/coamps/YYYYMMDDHH_coamps_europe 1500
-058   x   027       186    data/gempak/model/coamps/YYYYMMDDHH_coamps_centam 1500
-058   x   060       188    data/gempak/model/coamps/YYYYMMDDHH_coamps_epac   1500
-058   x   063       187    data/gempak/model/coamps/YYYYMMDDHH_coamps_watl   1500
-058   x   110       240    data/gempak/model/navgem/YYYYMMDDHH_ww3.gem       1500
+058   x   018       056    data/gempak/model/fnmoc/navgem/YYYYMMDDHHfFFF_navgem.gem 500
+058   x   022       179    data/gempak/model/fnmoc/coamps/YYYYMMDDHH_coamps_europe.gem 1500
+058   x   027       186    data/gempak/model/fnmoc/coamps/YYYYMMDDHH_coamps_centam.gem 1500
+058   x   060       188    data/gempak/model/fnmoc/coamps/YYYYMMDDHH_coamps_epac.gem   1500
+058   x   063       187    data/gempak/model/fnmoc/coamps/YYYYMMDDHH_coamps_watl.gem   1500
+! FNMOC WW3
+058   x   110       240    data/gempak/model/fnmoc/ww3/YYYYMMDDHH_fnmoc_ww3_global.gem   1500
+058   x   111       179    data/gempak/model/fnmoc/ww3/YYYYMMDDHH_fnmoc_ww3_europe.gem   1500
+! FNMOC FAROP and NCODA
+058   x   135       240    data/gempak/model/fnmoc/farop/YYYYMMDDHH_fnmoc_farop.gem      1500
+058   x   078       200    data/gempak/model/fnmoc/ncoda/YYYYMMDDHH_fnmoc_ncoda.gem      1500
 !
 ! FNMOC conus and NOGAPS are no longer run.  left here for archive data.
-058   x   082       020    data/gempak/model/coamps/YYYYMMDDHH_coamps_conus  1500
-058   x   058       @@@    data/gempak/model/nogaps/YYYYMMDDHH_nogaps@@@.gem 15000
+058   x   082       020    data/gempak/model/fnmoc/coamps/YYYYMMDDHH_coamps_conus.gem  1500
+058   x   058       @@@    data/gempak/model/fnmoc/nogaps/YYYYMMDDHH_nogaps@@@.gem 15000
 !
 ! NDFD 
 008 65535 000       @@@    data/gempak/model/ndfd/YYYYMMDDHH_ndfd.gem       100

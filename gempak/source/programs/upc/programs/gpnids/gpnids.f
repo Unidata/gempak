@@ -13,7 +13,7 @@ C*
      +			panel, text, radtim, clrbar, output, proj,
      +			garea, colors, map, latlon, line, imcbar
 C*
-	INTEGER		level(2), luns(4), nlun, icolor, kx, ky
+	INTEGER		level(2), luns(4), nlun, kx, ky
 	REAL            rltln(4),rnvblk(LLNNAV),anlblk(LLNANL)
 C*
 	LOGICAL		clear, scflag
@@ -92,7 +92,7 @@ C
 		if ( ier .eq. 0 )
      +		   CALL im_nids_output_luns ( nlun, luns )
 C
-		CALL IN_COLR ( colors, 1, icolor, ier )
+C		CALL IN_COLR ( colors, 1, icolor, ier )
 		CALL vad_colors ( icolor, ier )
 C
 c		CALL ST_LSTR  ( imcbar, lens, ier )

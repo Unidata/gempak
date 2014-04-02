@@ -135,6 +135,8 @@ C
         idlvls (1) = fphead (16)
         idlvls (2) = fphead (17)
         idlvls (3) = iarr2 (36)
+        ioffset = idlvls (1)
+        iscale  = idlvls (2) 
         ipkcd1 = iarr2 (69)
 C
 C*	Radial product-specific variables
@@ -269,23 +271,20 @@ C
                  val =  ( REAL(idl) - idlvls(2) ) / idlvls(1) 
                  CALL ST_RLCH ( val , 2, cmblev ( idl ), ier )
               END DO
-           CASE (170,172,173,174)
-C
 C* 170 - Digital Accumulation Array
 C* 172 - Digital Storm Total Accumulation
 C* 173 - Digital User-Selectable Accumulation
 C* 174 - Digital One-Hour Difference Accumulation
 C* 175 - Digital Storm Total Difference Accumulation
-C
-C* 176 - Dig. Instantaneous Precip. Rate not supported
-C
-C* Physical Units: 0.01 inches, requiring scaling by 100
-C* for display in inches 
-C
+           CASE (170,172,173,174,175)
               cmblev ( 1 ) = 'ND'
               DO idl = 2, imndlv
-                 val =  ( idl - idlvls(2) ) / idlvls(1) 
-                 CALL ST_RLCH ( val / 100, 2, cmblev ( idl ), ier )
+                 IF ( idlvls(1) .gt. 0 ) THEN
+                   val = ( idl - idlvls(2) ) / idlvls(1) 
+                 ELSE
+                   val = 0.
+                 END IF
+                 CALL ST_RLCH ( val / 100 , 2, cmblev ( idl ), ier )
               END DO
         END SELECT
 C
