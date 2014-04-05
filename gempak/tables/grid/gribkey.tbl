@@ -68,25 +68,41 @@
 007   x   078,80,82,94 @@@ data/gempak/model/mrf/YYYYMMDDHH_mrf@@@.gem    1500
 !
 ! OCEAN
-! combine these with mrf grids 21-24
+! _nww combine these with mrf grids 21-24
 007   x   010       021    data/gempak/model/nww/YYYYMMDDHH_nww.gem        500
 007   x   010       022    data/gempak/model/nww/YYYYMMDDHH_nww.gem        500
 007   x   010       023    data/gempak/model/nww/YYYYMMDDHH_nww.gem        500
 007   x   010       024    data/gempak/model/nww/YYYYMMDDHH_nww.gem        500
-!
-007   x   010       @@@    data/gempak/model/nww/YYYYMMDDHH_wave@@@.gem    500
+007   x   010       @@@    data/gempak/model/nww/YYYYMMDDHH_wave@@@.gem            500
+! _wave
+007   x   121,122,123,124,125 233 data/gempak/model/nww/ww3_global_YYYYMMDDHH.gem  500
+007   x   121,122,123,124,125 238 data/gempak/model/nww/ww3_wnatl_YYYYMMDDHH.gem   500
+007   x   121,122,123,124,125 239 data/gempak/model/nww/ww3_alaska_YYYYMMDDHH.gem  500
+007   x   121,122,123,124,125 244 data/gempak/model/nww/ww3_wnatl_hurr_YYYYMMDDHH.gem    500
+007   x   121,122,123,124,125 253 data/gempak/model/nww/ww3_enpac_YYYYMMDDHH.gem   500
+! _ocn
+007   x   044       021    data/gempak/model/nww/YYYYMMDDHH_ocn5deg.gem     500
+007   x   044       022    data/gempak/model/nww/YYYYMMDDHH_ocn5deg.gem     500
+007   x   044       023    data/gempak/model/nww/YYYYMMDDHH_ocn5deg.gem     500
+007   x   044       024    data/gempak/model/nww/YYYYMMDDHH_ocn5deg.gem     500
+007   x   044       061    data/gempak/model/nww/YYYYMMDDHH_ocn1deg.gem     500
+007   x   044       062    data/gempak/model/nww/YYYYMMDDHH_ocn1deg.gem     500
+007   x   044       063    data/gempak/model/nww/YYYYMMDDHH_ocn1deg.gem     500
+007   x   044       064    data/gempak/model/nww/YYYYMMDDHH_ocn1deg.gem     500
+007   x   044       037    data/gempak/model/nww/ocn_1p25deg_YYYYMMDDHH.gem 500
+007   x   044       038    data/gempak/model/nww/ocn_1p25deg_YYYYMMDDHH.gem 500
+007   x   044       039    data/gempak/model/nww/ocn_1p25deg_YYYYMMDDHH.gem 500
+007   x   044       040    data/gempak/model/nww/ocn_1p25deg_YYYYMMDDHH.gem 500
+007   x   044       041    data/gempak/model/nww/ocn_1p25deg_YYYYMMDDHH.gem 500
+007   x   044       042    data/gempak/model/nww/ocn_1p25deg_YYYYMMDDHH.gem 500
+007   x   044       043    data/gempak/model/nww/ocn_1p25deg_YYYYMMDDHH.gem 500
+007   x   044       044    data/gempak/model/nww/ocn_1p25deg_YYYYMMDDHH.gem 500
 007   x   044       @@@    data/gempak/model/nww/YYYYMMDDHH_ocn@@@.gem     500
-007   x   120       @@@    data/gempak/model/nww/YYYYMMDDHH_wave@@@.gem    500
-007   x   121       @@@    data/gempak/model/nww/YYYYMMDDHH_wave@@@.gem    500
-007   x   122       @@@    data/gempak/model/nww/YYYYMMDDHH_wave@@@.gem    500
-007   x   123       @@@    data/gempak/model/nww/YYYYMMDDHH_wave@@@.gem    500
-007   x   124       @@@    data/gempak/model/nww/YYYYMMDDHH_wave@@@.gem    500
-007   x   125       @@@    data/gempak/model/nww/YYYYMMDDHH_wave@@@.gem    500
-!
+! _ice
 ! ICE
-007   x   120       @@@    data/gempak/model/ice/YYYYMMDDHH_ice@@@.gem     10
-!007   x   120       219    data/gempak/model/ice/YYYYMMDDHH_ice219.gem     10
-!007   x   120       220    data/gempak/model/ice/YYYYMMDDHH_ice220.gem     10
+007   x   120       @@@    data/gempak/model/ice/YYYYMMDDHH_ice@@@.gem     100
+!007   x   120       219    data/gempak/model/ice/YYYYMMDDHH_ice219.gem     100
+!007   x   120       220    data/gempak/model/ice/YYYYMMDDHH_ice220.gem     100
 !
 ! UKMET Thinned grids
 074   x   15,44,45  037    data/gempak/model/ukmet/YYYYMMDDHH_ukmet.gem     1500
@@ -129,10 +145,10 @@
 058   x   022       179    data/gempak/model/fnmoc/coamps/YYYYMMDDHH_coamps_europe.gem 1500
 058   x   027       186    data/gempak/model/fnmoc/coamps/YYYYMMDDHH_coamps_centam.gem 1500
 058   x   060       188    data/gempak/model/fnmoc/coamps/YYYYMMDDHH_coamps_epac.gem   1500
-058   x   063       187    data/gempak/model/fnmoc/coamps/YYYYMMDDHH_coamps_watl.gem   1500
+058   x   063       187    data/gempak/model/fnmoc/coamps/YYYYMMDDHH_coamps_watl.gem     1500
 ! FNMOC WW3
-058   x   110       240    data/gempak/model/fnmoc/ww3/YYYYMMDDHH_fnmoc_ww3_global.gem   1500
-058   x   111       179    data/gempak/model/fnmoc/ww3/YYYYMMDDHH_fnmoc_ww3_europe.gem   1500
+058   x   110       240    data/gempak/model/fnmoc/ww3/fnmoc_ww3_YYYYMMDDHH          1500
+058   x   111       179    data/gempak/model/fnmoc/ww3/fnmoc_ww3_europe_YYYYMMDDHH   1500
 ! FNMOC FAROP and NCODA
 058   x   135       240    data/gempak/model/fnmoc/farop/YYYYMMDDHH_fnmoc_farop.gem      1500
 058   x   078       200    data/gempak/model/fnmoc/ncoda/YYYYMMDDHH_fnmoc_ncoda.gem      1500
@@ -151,14 +167,17 @@
 054   x   036       @@@    data/gempak/model/cmc/YYYYMMDDHH_cmcreg.gem    1000
 !
 ! RFC products
-! NWS Flash Flood Guidence
+! HDS NWS Flash Flood Guidence subcenter ID 155
 009   x   151       @@@    data/gempak/model/ffg/YYYYMMDDHH_%subc%@@@.gem      500
 !
-! NCEP QPF
-009   x   180       @@@    data/gempak/model/qpf/YYYYMMDDHH_%subc%@@@.gem      500
-007   5   180       218    data/gempak/model/qpf/YYYYMMDDHH_qpe@@@.gem         500
-007   5   181       218    data/gempak/model/qpf/YYYYMMDDHH_qpe@@@.gem         500
-007   5   183       215    data/gempak/model/qpf/YYYYMMDDHH_qpe@@@.gem         500
+! HDS NWS QPF - duplicate of NGRID subcenter ID 154
+009   x   180       218    data/gempak/model/qpf/qpf_YYYYMMDDHH.gem      500
+!009   x   180       @@@    data/gempak/model/qpf/YYYYMMDDHH_%subc%@@@.gem      500
+!
+! NGRID NCEP QPF from HPC subcenter 5
+007   5   180       218    data/gempak/model/qpf/qpe_YYYYMMDDHH.gem         500
+007   5   181       218    data/gempak/model/qpf/qpe_YYYYMMDDHH.gem         500
+007   5   183       215    data/gempak/model/qpf/qpe_YYYYMMDDHH.gem         500
 !
 ! SNOW cover, Transpiration
 009   x   185       @@@    data/gempak/model/nohrsc/YYYYMMDDHH_kmsr@@@.gem     500
@@ -167,7 +186,7 @@
 007   8   191       255    data/gempak/model/awc/YYYYMMDD_icing.gem    10000
 !
 ! KWNO
-007  14   000       @@@    data/gempak/model/%subc%/YYYYMMDDHHNN_###_@@@.gem   200
+007  14   000       @@@    data/gempak/model/%subc%/YYYYMMDDHHNNfFFF_###_@@@.gem   200
 !
 ! RTMA (precip is subcenter 0, other fields subcenter 4)
 007   x   109       255    data/gempak/model/rtma/YYYYMMDDHH_rtma.gem  200

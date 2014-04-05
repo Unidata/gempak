@@ -64,6 +64,25 @@ LIBINC_GF = \
 	$(RSLLIB) \
 	$(LIBBZ2)
 
+LIBINC_GIF = \
+        $(GPLT_NC) \
+        $(GEMLIB) \
+        $(CGEMLIB) \
+        $(GPLT) \
+        $(DEVICE) \
+        $(GIF) \
+        $(GN) \
+        $(CGEMLIB) \
+        $(GPLT) \
+        $(GEMLIB) \
+        $(NETCDF) \
+        $(PNGLIB) \
+        $(XMLLIB) \
+        $(ZLIB) \
+        $(CGEMLIB) \
+	$(RSLLIB) \
+	$(LIBBZ2)
+
 LIBINC_VG = \
 	$(GPLT_NC) \
 	$(GEMLIB) \
@@ -99,6 +118,7 @@ $(PROG) : $(LIBINC) $(ALIB) $(PROG.f)
 
 $(PROG_GF) : $(LIBINC_GF) $(ALIB) $(PROG.f)
 	$(LINK.f) $(PROG.f) $(ALIB) $(LIBINC_GF) $(X11LIBDIR) $(X11LIB) $(SYSLIBS) -o $(OS_BIN)/$@
+	$(LINK.f) $(PROG.f) $(ALIB) $(LIBINC_GIF) $(RSLLIB) $(LIBBZ2) $(SYSLIBS) -o $(OS_BIN)/$(PROG)_gif
 
 $(PROG_VG) : $(LIBINC_VG) $(ALIB) $(PROG.f)
 	$(COMPILE.f) $(PROG.f)
