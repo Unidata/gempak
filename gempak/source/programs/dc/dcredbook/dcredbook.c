@@ -14,15 +14,16 @@ int main ( int argc, char *argv[] )
 /************************************************************************
  * DCREDBOOK								*
  *									*
- * This program decodes REDBOOK graphics files and outputs them as 	*
+ * This program decodes Redbook graphics files and outputs them as 	*
  * standard graphics format files from GEMPAK device drivers.		*
  *									*
  *  Command line:							*
- *  dcgrib [options] device						*
+ *  dcredbook [options] device						*
  *      device		output file device                       	*
  **									*
  * Log:									*
  * Chiz/Unidata		 8/00						*
+ * M. James/Unidata	04/14	Updated					*
  ***********************************************************************/
 {
 /*
@@ -88,8 +89,6 @@ int main ( int argc, char *argv[] )
 		  &txtflg, &crcflg, &iwndht, &iret );
 
 /*
-**	The if the output file name is not present, use gribkey table
-**
 **	Change this section for the specific decoder.
 */
 	strcpy ( gemdev, parms[0] );

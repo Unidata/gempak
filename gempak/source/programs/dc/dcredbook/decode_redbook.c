@@ -34,19 +34,19 @@ float lat[4],lon[4],fproj[3];
 struct tm redtime;
 time_t prodtime;
 
-char *outtemp, *tempdev, templstr[15];
+char *outtemp, *outdev, *tempdev, templstr[15];
 
 char outfilenm[256],outtmpl[256],*pos,*cpos,*tempfil,buf[512],tstr[128],outrstr[512];
-char DEV[10],*optparms=NULL,outdev[512];
+char DEV[10],*optparms=NULL;
 char pnam[7],ptype[10];
-char PIL[10],TITLE[256],prod1[80],prod2[80];
+char PIL[10],TITLE[256],prod1[180],prod2[180];
 char sysline[512];
 char **aryptr;
 static char proj[50];
-char map[80];
+char map[180];
 char garea[30];
 char gemtime[20];
-char errstr[81];
+char errstr[181];
 static char imgfls[] = " ";
 static char subtok[]="%P";
 static char dbug[] = " ";
@@ -58,36 +58,34 @@ FILE *fp;
 
 aryptr = (char **) malloc(sizeof(char *) * MXREDTBL);
 for(i=0;i<MXREDTBL;i++)
-   aryptr[i] = (char *)malloc(80);
+   aryptr[i] = (char *)malloc(180);
 
 outfilenm[0] = '\0';
 DEV[0] = '\0';
 
-sprintf(map,"2/1/1 \0");
+sprintf(map,"31/1/1 \0");
 
 
 pos = (char *)cst_split(device,'|',9,DEV,&ier);
-if(ier != 0)
-   {
+if(ier != 0) {
    sprintf(errstr, "error determining device driver name %s\0",DEV);
    dc_wclg(0, "DCREDBOOK", -1, errstr, &ier);
    *iret = -1;
    return;
-   }
+}
 
-if(pos != NULL)
-   {
+if(pos != NULL) {
    optparms = (char *)cst_split(pos,'|',256,outfilenm,&ier);
    if(optparms != NULL) optparms--;
-   }
+}
 
 
 in_file = STDIN_FILENO;
 
 if( P_tmpdir[strlen(P_tmpdir) - 1] == '/')
-   sprintf (templstr, ".rdbkXXXXXX\0");
+   sprintf (templstr, ".rdbk_XXXXXX\0");
 else
-   sprintf (templstr, "/.rdbkXXXXXX\0");   
+   sprintf (templstr, "/.rdbk_XXXXXX\0");   
 
 outtemp = (char *)malloc( strlen(P_tmpdir) + strlen(templstr) + 1);
    
@@ -100,39 +98,34 @@ else
    out_file = -1;
 
 
-if(out_file < 0)
-   {
+if(out_file < 0) {
    sprintf(errstr,"could not open temporary file\0");
    dc_wclg(0,"DCREDBOOK",-1,errstr,&ier);
    *iret = -1;
    if(outtemp != NULL) free(outtemp);
    return;
-   }
+}
 
 tstr[0] = '\0';
-while((i = read(in_file,buf,512)) > 0) 
-   {
+while((i = read(in_file,buf,512)) > 0)  {
    write(out_file,buf,i);
-   if(START == 0)
-      {
+   if(START == 0) {
       START++;
       lat[0] = -9999; lon[0] = -9999; fproj[0] = -9999; pnam[0] = '\0';
       redbook_header(buf,tstr,lat,lon,fproj,pnam,&ier);
-      if(ier != 0)
-         {
+      if(ier != 0) {
 	 close(out_file);
 	 unlink(outtemp);
 	 free(outtemp);
 	 *iret = ier;
 	 return;
-         }
       }
    }
+}
 close(out_file);
 
 sprintf(errstr,"created temp input file %s\0",outtemp);
 dc_wclg(2,"DCREDBOOK",5,errstr,&ier);
-
 
 /*
 ** Set up graphics mode and initialize ip interface for mapfil
@@ -173,20 +166,15 @@ else
 
 
 PIL[0] = '\0'; TITLE[0] = '\0';
-if(tstr[0] != '\0')
-   {
-   if((cpos = strstr(tstr,"NMCGPH")) != NULL)
-      {
+if(tstr[0] != '\0') {
+   if((cpos = strstr(tstr,"NMCGPH")) != NULL) {
       strncat(PIL,cpos+6,3);
       fp = (FILE *)cfl_tbop("redbook.tbl","nafos",&ier);
-      if(fp != NULL)
-         {
+      if(fp != NULL) {
          ier = 0;
-         while(ier == 0)
-            {
+         while(ier == 0) {
             cfl_trln(fp,255,buf,&ier);
-            if(strncmp(buf,PIL,strlen(PIL)) == 0)
-               {
+            if(strncmp(buf,PIL,strlen(PIL)) == 0) {
                cpos = strchr(buf,' ');
                if(cpos == NULL)
                   strcat(TITLE,buf);
@@ -231,42 +219,34 @@ if(tstr[0] != '\0')
       strncat(prod1,tstr+1,i);
       sprintf(TITLE,"UNKNOWN_%s\0",prod1);
       fp = (FILE *)cfl_tbop("afosgraph.tbl","nafos",&ier);
-      if(fp != NULL)
-         {
+      if(fp != NULL) {
          ier = 0;
-         while(ier == 0)
-            {
+         while(ier == 0) {
             cfl_trln(fp,255,buf,&ier);
-            if(strncmp(buf,prod1,strlen(prod1)) == 0)
-               {
+            if(strncmp(buf,prod1,strlen(prod1)) == 0) {
                TITLE[0] = '\0';
                cpos = strchr(buf,' ');
                cst_nocc(prod1,'/',1,0,&i,&ier);
 	       strncat(TITLE,prod1,i);
                cst_nocc(buf,'-',1,0,&i,&ier);
-               if(cpos == NULL)
-                  {
+               if(cpos == NULL) {
                   strcat(TITLE,buf+i);
-                  }
-               else
-                  {
+               } else {
                   strncat(TITLE,buf+i,cpos-buf-i);
                   while((cpos[0] != '\n') && isspace(cpos[0])) cpos++;
                   cst_clst(cpos,' ',garea,1,80,aryptr,&i,&ier);
                   if((i > 0)&&(strcmp(aryptr[0],"*") != 0)) sprintf(garea,"%s\0",aryptr[0]);
-                  }
-               ier = -10;
                }
+               ier = -10;
             }
-         cfl_clos(fp,&ier);
          }
-      dc_wclg(1,"DCREDBOOK",2,TITLE,&ier);
+         cfl_clos(fp,&ier);
       }
-   else
-      {
+      dc_wclg(1,"DCREDBOOK",2,TITLE,&ier);
+   } else {
       sprintf(TITLE,"UNKNOWN\0");
       dc_wclg(1,"DCREDBOOK",3,TITLE,&ier);
-      }
+   }
  
    cst_nocc(tstr,'/',3,0,&i,&ier);
    gemtime[0] = '\0';
@@ -275,38 +255,34 @@ if(tstr[0] != '\0')
    strncat(gemtime,tstr+i+10,4);
    cfl_mnam(gemtime,outfilenm,outtmpl,&ier);
    strcpy(outfilenm,outtmpl);
-   }
+}
 
 
 ier = 0;
 while((strstr(outfilenm,subtok) != 0)&&(ier == 0))
    cst_rpst(outfilenm,subtok,TITLE,outfilenm,&ier);
 
-if(strlen(outfilenm) > 0)
-   {
+if(strlen(outfilenm) > 0) {
    pos = strrchr(outfilenm,'/');
-   if(pos != NULL)
-      { 
+   if(pos != NULL) {
       char stripped[PATH_MAX+1];
       i = pos - outfilenm;
       memcpy(stripped, outfilenm, i);
       stripped[i] = 0;
       ier = mkdirs(stripped,(omode | 0111));
-      }
+   }
 
    tempdev = (char *)malloc( strlen(P_tmpdir) + strlen(templstr) + 1);
    sprintf(tempdev, "%s%s\0",P_tmpdir,templstr);
-   mkstemp ( tempdev );
+   mktemp ( tempdev );
 
    sprintf(outdev,"%s|%s\0",DEV,tempdev);
    if(optparms != NULL) strcat(outdev,optparms);
    gg_sdev(outdev, &ier, strlen(outdev));
-   }
-else
-   {
+} else {
    gg_sdev(device, &ier, strlen(device));
    tempdev = NULL;
-   }
+}
 
 
 
