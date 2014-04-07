@@ -1,0 +1,102 @@
+#!/bin/bash 
+
+# Date         Engineer    Description
+# ------------ ----------  ----------- --------------------------
+# 02/09/12     J. Zeng     Adding shapefile to NCEP database
+
+usage(){
+    cat <<EOF
+    	---------------------------------------------------------------------
+    	This script is to add a shapefile into NCEP database bounds with default geometry 
+   		simplification levels '0.064,0.016,0.004,0.001', the higher value the lower resolution 
+   		Note:
+    	     1: postgresql is running
+    	     2: NCEP database has been installed
+    	     3: If there was the same table name in NCEP database, 
+    	     	the original one will be deleted automatically
+			 4: For more option, or use your own 
+    	--------------------------------------------------------------------
+    	Usage: shp2ncep shpDir [simplev [binDir [dbUser [dbPort [installDir [logFile]]]]]] 
+     	   	 1: shpDir    - directory for shapefile stored
+    	     2: simplev	  - geometry simplification levels 
+    	     			  - default: 0.08,0.04,0.02,0.01
+    	   	 3: binDir    - directory for postgresql bin 
+    	 		        	default: /awips2/postgresql
+    	     4: dbUser    - database user id
+    	 					default: awips 
+    	     5: dbPort    - database port number
+    	 					default: 5432 
+    	     6: installDir- directory to awips installation
+    	 					default: /awips2/database/sqlScripts/share/sql/ncep  
+    	  	 7: logFile   - optional log file 
+     	  					default: ncep_sql_install.log 
+		Example: 
+				shp2ncep /home/usrname/countyShp
+				shp2ncep /home/usrname/countyShp 0.064
+ 	    Help: shp2ncep -h 	   	  					
+    	  
+EOF
+    exit 
+}
+
+if [ $# -lt 1 ] ; then
+   usage
+fi
+
+if [ "$1" == "-h" ] ; then
+   usage
+fi
+
+shpDir=$1
+
+if [ -z $2 ] ; then
+   SIMPLEV='0.064,0.016,0.004,0.001'
+else 
+   SIMPLEV=${2}
+fi 
+
+if [ -z $3 ] ; then
+  PGBINDIR=/awips2/postgresql
+else 
+  PGBINDIR=${3}
+fi 
+#echo "Bin: $PGBINDIR/bin" 
+
+if [ -z $4 ] ; then
+    PGUSER=awips
+else
+    PGUSER=${4}
+fi
+
+if [ -z $5 ] ; then
+    PGPORT=5432
+else
+    PGPORT=${5}
+fi
+
+if [ -z $6 ] ; then
+    PGHOME=/awips2/database/sqlScripts/share/sql/ncep
+else 
+    PGHOME=${6}
+fi
+
+if [ -z $7 ] ; then
+    LOGFILE=${PGHOME}/ncep_addshp.log
+else 
+    LOGFILE=${6}/${7}
+fi
+
+base=`basename $shpDir`
+shpFile=`find $shpDir -name "*.shp"`
+
+
+${PGHOME}/importNcepShapeFile.sh $shpFile bounds $base "$SIMPLEV" $PGUSER $PGPORT ${PGBINDIR} $LOGFILE
+
+if [ -n "$LOGFILE" ] ; then
+    ${PGBINDIR}/bin/vacuumdb -d ncep -U ${PGUSER} -p ${PGPORT} -vz >> $LOGFILE 2>&1
+else
+    ${PGBINDIR}/bin/vacuumdb -d ncep -U ${PGUSER} -p ${PGPORT} -vz
+fi
+
+
+

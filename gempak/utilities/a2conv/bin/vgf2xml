@@ -1,0 +1,54 @@
+#!/bin/sh
+# By J. Zeng
+
+usage(){
+    cat <<EOF
+      This scripts is used to convert vgf file to xml file.
+
+      Usage: vgf2xml sourcePath[or sourceFile] destinationPath [-a activity[ subActivity]] [-t tableName]
+      - <sourcedf>: the source directory or the source file.
+      - <target>: the target directory
+      - “-a” is the Pgen configuration option followed by the activity
+		and subActivity names. The activity and subActivity are separated
+		by a space. The subActivity can be omitted or after the activity.
+	  - “-t” is the contour table option followed by the table name.
+		It is user's responsibility to provide their tables. The table has 8 
+		columns of contour color, contour parameter, level1, level2, 
+		forcastHour, cint and time1, time2. See a sample table in 
+		${GEMPAK}/utilities/a2conv/distVC/table/sampleContour.tbl.
+      - The converted file has the same name with .xml ending.
+EOF
+    exit
+}
+
+if [ $NA_OS == "linux2.6.32_x86_64" -o $NA_OS == "linux2.6.32_i686" ]; then
+    echo " "
+    echo "This script will not currently work on RHEL6"
+    echo "Sorry for any inconvenience"
+    echo " "
+    exit
+fi
+
+srcpath=$1
+tgtpath=$2
+
+
+if [ $# -lt 2 ];  then
+     usage
+fi
+
+mkdir -p $tgtpath
+
+if [ $NA_OS == "linux2.6.18_x86_64" ]; then
+    file -L `which java` | grep "64-bit" > /dev/null
+    if [ $? -eq 0 ]; then
+	export LD_LIBRARY_PATH=${OS_LIB}:${GEMPAK}/utilities/a2conv/distVC/lib:$LD_LIBRARY_PATH
+    else
+	export LD_LIBRARY_PATH=${NAWIPS}/os/linux2.6.18_i686/lib:${GEMPAK}/utilities/a2conv/distVC/lib:$LD_LIBRARY_PATH
+    fi
+else
+    export LD_LIBRARY_PATH=${OS_LIB}:${GEMPAK}/utilities/a2conv/distVC/lib:$LD_LIBRARY_PATH
+fi
+
+java -jar ${GEMPAK}/utilities/a2conv/distVC/vgfConverter.jar $srcpath $tgtpath  $3 $4 $5 $6 $7
+

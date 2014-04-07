@@ -6,6 +6,7 @@
 include $(CONFIGDIR)/$(MAKEINC)
 
 SUBDIRS = \
+	a2conv \
 	bounds \
 	hlpbld \
 	pdfbld

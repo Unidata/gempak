@@ -1,0 +1,33 @@
+#!/bin/sh
+
+# Date         Engineer    Description
+# ------------ ----------  ----------- --------------------------
+# 02/09/12     J. Zeng     convert bounds table in *.tbl to shapefile.
+
+
+usage(){
+    cat <<EOF
+      This script is used to convert bounds table in *.tbl to a shapefile.
+      Usage: bound2shp <boundsTable>  <shapeDir>
+      		1: boundsTable: the source file with absolute path.
+      		2: shapeDir:   the full directory to store converted shapefile and related files.
+                      	   The properly converted files should have six extension:
+		     		   	   *.dbf, *.fix, *.prj, *.qix, *.shp, *.shx
+	  Help: bound2shp -h 		   
+EOF
+    exit
+}
+
+srcpath=$1
+tgtpath=$2
+
+if [ $# -lt 2 ];  then
+     usage
+fi
+
+if [ "$1" == "-h" ];  then
+     usage
+fi
+
+java -jar ${GEMPAK}/utilities/a2conv/bnd2shp/bndConverter.jar $srcpath $tgtpath
+

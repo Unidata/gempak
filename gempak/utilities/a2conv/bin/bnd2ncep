@@ -1,0 +1,38 @@
+#!/bin/sh
+
+# Date         Engineer    Description
+# ------------ ----------  ----------- --------------------------
+# 02/09/12     J. Zeng     convert bounds table in *.tbl to shapefile,
+#						   and put the shapefile to the NCEP database
+
+usage(){
+    cat <<EOF
+      This scripts is used to convert bounds table in *.tbl to shapefile.
+      and put the converted shapefile to the NCEP database
+      
+      Usage: bnd2ncep <boundsTable>  <shapeDir>
+      			- <boundsTable>: the source file.
+      			- <shapeDir>:   the directory to store converted shapefile, and
+      				  put those converted shapefile to the NCEP DB
+      for more help, please type
+      		    - bound2shp -h
+      		    - shp2ncep -h
+      
+EOF
+    exit
+}
+
+srcpath=$1
+tgtpath=$2
+
+if [ $# -lt 2 ];  then
+     usage
+fi
+
+if [ "$1" == "-h" ];  then
+     usage
+fi
+
+bound2shp $1 $2
+
+shp2ncep $2
