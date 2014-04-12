@@ -62,6 +62,8 @@ C*
      +			lclrow(LLCLEV), lclror(LLCLEV), lclsg1(LLCLEV),
      +			lclsgc(LLCLEV), lclsge(LLCLEV), lclsgg(LLCLEV),
      +			lclsg2(LLCLEV), lclsga(LLCLEV), lclwsa(LLCLEV), 
+     +                  lclws2(LLCLEV), lclwsc(LLCLEV), lclrsk(LLCLEV),
+     +                  lclrck(LLCLEV),
      +			lclrof(NM), lclruf(NM), lclren (NM), tcolor,
      +                  tlimit, numf, ihtinc(LLCLEV), htclr(LLCLEV),
      +                  evclr(LLCLEV), symb1, symb2, esymb1(LLCLEV),
@@ -126,7 +128,8 @@ C
      +		lclrqr, lclrwp, lclrww, lclrwr, lclraw, lclrar,
      +		lclren, enmodl, lclrff, lclr1k, lclrek, lclr2k,
      +		lclrow, lclror, lclsg1, lclsgc, lclsge, lclsgg,
-     +		lclsg2, lclsga, lclwsa, ier )
+     +		lclsg2, lclsga, lclwsa, lclws2, lclwsc, lclrsk, lclrck, ier )
+
 C
 	DO WHILE  ( .not. done )
 C	
