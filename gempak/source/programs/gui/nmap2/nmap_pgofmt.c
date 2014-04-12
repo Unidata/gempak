@@ -523,11 +523,14 @@ void pgofmt_update ( int *iret )
  * G. Grosshans/SPC	02/10	Added ENH16				*
  * G. Grosshans/SPC	02/10	Added Fire Day 1 and Fire Day 2		*
  *				and moved Fire Day 3-8 down		*
+ * G. Grosshans/SPC	12/13	Updated for Day 4-8 changes.		*
+ * 				The LAYER NAMES (i.e. LPF) are NOW 	*
+ * 				hard-coded to work.			*
  ***********************************************************************/
 {
     int         which_day;
     int		ier;
-    char	str[LSTR], *tmp[2]; 
+    char	str[LSTR], *tmp[2], *layer_name; 
 /*---------------------------------------------------------------------*/
 
     *iret = 0;
@@ -543,6 +546,12 @@ void pgofmt_update ( int *iret )
     which_day = _dayOpt+1;
     if ( which_day == 4 ) {
 	which_day = 48 ;
+	layer_name = pglayer_getName (_bulkProcess.curr_layer);
+	if ( strcasecmp(layer_name, "DAY_4") == 0 ) which_day = 4;
+	if ( strcasecmp(layer_name, "DAY_5") == 0 ) which_day = 5;
+	if ( strcasecmp(layer_name, "DAY_6") == 0 ) which_day = 6;
+	if ( strcasecmp(layer_name, "DAY_7") == 0 ) which_day = 7;
+	if ( strcasecmp(layer_name, "DAY_8") == 0 ) which_day = 8;
     }
     else if ( which_day == 5 || which_day == 6 || which_day == 7 ||
               which_day == 8 || which_day == 9 ) {
@@ -727,6 +736,10 @@ void pgofmt_ctlBtnCb ( Widget wid, long which, XtPointer cbs )
  * H. Zeng/SAIC		04/07	added processing for "Otlk All"		*
  * G. Grosshans/SPC	02/09	Added logic to skip Prob2cat layer,	*
  *				similar to the GEN-TSTM.		*
+ * G. Grosshans/SPC	12/13	Updated for Day 4-8 changes.		*
+ * 				NEEDED to handle NON-OTLK-ALL option.	*
+ * 				The LAYER NAMES (i.e. LPF) are now 	*
+ * 				hard-coded to work.			*
  ***********************************************************************/
 {
     char	mesg[128], *ptr, *layer_name, *pvalue, tmzn[4];
@@ -737,6 +750,16 @@ void pgofmt_ctlBtnCb ( Widget wid, long which, XtPointer cbs )
     switch(which) {
 
       case 0:	/* Continue */
+	/*
+	 * Need to check and see if there are LAYERS and if there are
+	 * LAYERS see if its for Day 4-8 and handle appropriately.
+	 */
+
+        _bulkProcess.start_layer   = pglayer_getCurLayer();
+        _bulkProcess.curr_layer    = _bulkProcess.start_layer;
+        _bulkProcess.total_layers  = pglayer_getNumLayers();
+	layer_name = pglayer_getName (_bulkProcess.curr_layer);
+
       case 1:	/* Otlk All */
 
         /*

@@ -53,6 +53,7 @@ void dc_init ( char *prgnam, int argc, char **argv, int numexp,
  * H. Zeng/SAIC		08/05	Added second station table		*
  * L. Hinson/AWC        06/08   Add -r circular flag switch             *
  * S. Jacobs/NCEP	 3/12	Add $HOME to the logs directory		*
+ * S. Jacobs/NCEP	12/13	Added more options for log location	*
  ***********************************************************************/
 {
 	int	ch, i, errflg, ier;
@@ -223,8 +224,17 @@ void dc_init ( char *prgnam, int argc, char **argv, int numexp,
 */
 	if  ( !logflg && irltim )
 	{
-	    strcpy ( dcdlog, "$HOME/logs/" );
-	    strcat ( dcdlog, tdclog );
+	    if ( tdclog[0] == '/' ) {
+		strcpy ( dcdlog, tdclog );
+	    }
+	    else if ( getenv("GEMPAK_DECODER_LOGS") ) {
+		strcpy ( dcdlog, "$GEMPAK_DECODER_LOGS/" );
+		strcat ( dcdlog, tdclog );
+	    }
+	    else {
+		strcpy ( dcdlog, "$HOME/" );
+		strcat ( dcdlog, tdclog );
+	    }
 	}
 	else
 	{

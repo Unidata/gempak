@@ -188,6 +188,7 @@ void msc_setAttr ( dsrc_t *dsrc )
  * S. Jacobs/NCEP	 3/00	Changed variable names to avoid conflict*
  * S. Gilbert/NCEP	 5/06	increased dimension of typ and flg      *
  * L. Hinson/AWC         5/12   Increased dimension of flg to 35        *
+ * L. Hinson/AWC        10/12   Allow Symbol markers to plot with EDR   *
  ***********************************************************************/
 {
     int		isub, idx, ier;
@@ -1697,7 +1698,8 @@ void msc_createSymb ( void )
 	      ( strcmp ( _alias, "SVRL" ) == 0 ) ||
 	      ( strcmp ( _alias, "WSTM" ) == 0 ) ||
 	      ( strcmp ( _alias, "WOU" ) == 0 )  ||
-	      ( strcmp ( _alias, "WCN" ) == 0 ) )  {
+	      ( strcmp ( _alias, "WCN" ) == 0 )  ||
+              ( strcmp ( _alias, "EDR" ) == 0 ))  {
 	    if  ( ( _syCode < FIRST_MRK ) ||
 	    	  ( _syCode >= (FIRST_MRK+NUM_MARK) ) )  {
 		_syCode = FIRST_MRK;
@@ -1738,7 +1740,8 @@ void msc_createSymb ( void )
 	      ( strcmp ( _alias, "SVRL" ) == 0 ) ||
 	      ( strcmp ( _alias, "WSTM" ) == 0 ) ||
               ( strcmp ( _alias, "WOU" ) == 0 )  ||
-              ( strcmp ( _alias, "WCN" ) == 0 ) )  {
+              ( strcmp ( _alias, "WCN" ) == 0 )  ||
+              ( strcmp ( _alias, "EDR" ) == 0 ) ) {
 
 	    rc_code = XtVaCreateWidget ( " ",
 			    xmRowColumnWidgetClass, pane_symb,

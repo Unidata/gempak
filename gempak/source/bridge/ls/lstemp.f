@@ -55,8 +55,8 @@ C* D. Kidwell/NCEP      5/98   TDXC --> MXTM, TDNC --> MITM, for max/min*
 C* C. Caruso Magee/NCEP 3/07    Correct indicators for sign of wet-bulb *
 C*                              for values 2 and 7 (iced bulb) to       *
 C*                              negative (were positive previously).    *
-C* M. James/Unidata     10/08   Modified lines 210-211 to correct       *
-C*                              'Cannot assign to a named constant at'  *
+C* M. James/Unidata     10/08   Some fix                                * 
+C* M. James/Unidata     04/14   Review of fix but unsure what it does   *
 C************************************************************************
 	INCLUDE         'GEMPRM.PRM' 
 	INCLUDE         'lscmn.cmn' 
@@ -209,13 +209,9 @@ C
                 ipr = maxtbl ( ii, kwmo )
                 IF ( ipr .eq. 99 ) RETURN
                 rivals ( irdtv1 ) = FLOAT ( ipr )
-C
-C*         Added RETURN to the following line to correct 
-C*         'Error: Cannot assign to a named constant at' problem
-C
                 IF ( ipr .lt. 24 ) RETURN
                 rivals ( irt12x ) = rivals ( irmxtm )
-            ELSE IF ( iparam .eq. 6 ) THEN
+              ELSE IF ( iparam .eq. 6 ) THEN
 C
 C*              Get period of min temperature.
 C

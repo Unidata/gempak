@@ -71,6 +71,8 @@ int	cvg_v2x ( VG_DBStruct *el, char *buffer, int *iret )
  *                              Handled vector width>100 situation              *
  * Q.Zhou /Chug		12/11   Handled |longitude|>180 situation               *
  * L. Hinson/AWC        07/12   Add sgwx2tag for SGWX_ELM.                      *
+ * J. Wu/SGT        	11/13   Set special line 24/25 to KINK_LINE_1 & 2.      *
+ * Q.Zhou /SGT          02/14   Adjusted for 64 bit
  ********************************************************************************/
 {
 int	ier;
@@ -93,6 +95,7 @@ int	ier;
 		break;
 
 	case	SPLN_ELM:     /*20*/
+
 		spl2tag ( el, buffer, &ier );
 		break;
 
@@ -229,7 +232,7 @@ char*	category (VG_DBStruct *el )
 	else if ( el->hdr.vg_type == SPSYM_ELM )
 	    cate = "Symbol"; //SPECIAL SYMBOL
 	else if ( el->hdr.vg_type == TBSYM_ELM )
-	    cate = "Symbol"; //"TURBULENCE SYMBOL"; ??
+	    cate = "Symbol"; //"TURBULENCE SYMBOL"; 
 	else if ( el->hdr.vg_type == TEXT_ELM )
 	    cate = "Text";  
 	else if ( el->hdr.vg_type == TEXTC_ELM )
@@ -939,17 +942,29 @@ char *indent = "";
     else if ( el->elem.spl.info.spltyp == 10 )
 	pgenType = "LINE_FILLED_CIRCLE_ARROW";
     else if ( el->elem.spl.info.spltyp == 24 )
-	pgenType = "LINE_Z_LINE_OPEN_ARROW";
+	pgenType = "KINK_LINE_1";
     else if ( el->elem.spl.info.spltyp == 25 )
-	pgenType = "LINE_Z_LINE_FILLED_ARROW";
+	pgenType = "KINK_LINE_2";
     else
 	pgenType = "POINTED_ARROW";
 
-
-    sprintf( buffer, "%s          <Line pgenType=\"%s\" pgenCategory=\"%s\" lineWidth=\"%d\" sizeScale=\"%4.1f\" smoothFactor=\"%d\" closed=\"%s\" filled=\"%s\" fillPattern=\"%s\" flipSide=\"%s\">\n", 
-indent, pgenType, category(el), el->elem.spl.info.splwid, el->elem.spl.info.splsiz,
-el->hdr.smooth, el->hdr.closed==0 ?"false":"true", el->hdr.filled==0 ?"false":"true",
-fill_pattern(el), "false" );
+    if ( el->elem.spl.info.spltyp == 24 || el->elem.spl.info.spltyp == 25 ) {
+        
+	float kinkPos = el->elem.spl.info.splstr / 100.0;
+	char* arrowhead = "OPEN";
+	if ( el->elem.spl.info.spltyp == 25 ) arrowhead = "FILLED";
+        sprintf( buffer, "%s          <Line pgenType=\"%s\" pgenCategory=\"%s\" lineWidth=\"%d\" sizeScale=\"%4.1f\" smoothFactor=\"%d\" closed=\"%s\" filled=\"%s\" fillPattern=\"%s\" flipSide=\"%s\" kinkPosition=\"%4.2f\" arrowHeadType=\"%s\">\n", 
+            indent, pgenType, category(el), el->elem.spl.info.splwid, el->elem.spl.info.splsiz,
+            el->hdr.smooth, el->hdr.closed==0 ?"false":"true", el->hdr.filled==0 ?"false":"true",
+            fill_pattern(el), "false", kinkPos, arrowhead );
+	
+    }
+    else {
+        sprintf( buffer, "%s          <Line pgenType=\"%s\" pgenCategory=\"%s\" lineWidth=\"%d\" sizeScale=\"%4.1f\" smoothFactor=\"%d\" closed=\"%s\" filled=\"%s\" fillPattern=\"%s\" flipSide=\"%s\">\n", 
+            indent, pgenType, category(el), el->elem.spl.info.splwid, el->elem.spl.info.splsiz,
+            el->hdr.smooth, el->hdr.closed==0 ?"false":"true", el->hdr.filled==0 ?"false":"true",
+            fill_pattern(el), "false" );
+    }
 
     blen = strlen(buffer);
     sprintf( &(buffer[blen]), "%s            %s\n", indent, getColorTag(el->hdr.maj_col));
@@ -1094,14 +1109,14 @@ char pointVor[30], pointAnc[30];
 
 
 /* change time format to 2010-03-30T15:15:00.000Z*/
-    wExpT = (char*)malloc(24);		// was 04/13/2010/0300/
-    wIssT = (char*)malloc(24);
-    wsmExpT = (char*)malloc(24);	// was 130300
-    wsmIssT = (char*)malloc(24);
+    wExpT = (char*)malloc(32);		// was 04/13/2010/0300/
+    wIssT = (char*)malloc(32);
+    wsmExpT = (char*)malloc(32);	// was 130300
+    wsmIssT = (char*)malloc(32);
     char* timeExp = (char*)malloc(16);   
     char* timeIss = (char*)malloc(16);
-    char* yearMonExp = (char*)malloc(8);
-    char* yearMonIss = (char*)malloc(8);
+    char* yearMonExp = (char*)malloc(16);
+    char* yearMonIss = (char*)malloc(16);
 
     time_watch ( el->elem.wbx.info.w_exp_t, wExpT ); 
     time_watch ( el->elem.wbx.info.w_iss_t, wIssT );
@@ -1110,7 +1125,7 @@ char pointVor[30], pointAnc[30];
     	strcpy(wsmExpT, "");
     else {
 	memcpy( yearMonExp, wExpT, 8 );
-	//strncpy(yearMonExp, wExpT, 8);
+	//strncpy(yearMonExp, wExpT, 8);	
 	*(yearMonExp+8) = '\0';
     }
     if (strcmp(wIssT, "") ==0)
@@ -1118,7 +1133,7 @@ char pointVor[30], pointAnc[30];
     else {
     	memcpy(yearMonIss, wIssT, 8);
 	//strncpy(yearMonIss, wIssT, 8);
-   	*(yearMonIss+8) = '\0';
+	*(yearMonIss+8) = '\0';
     }
 
     time_watch_stat ( el->elem.wbx.info.wsm_exp_t, timeExp ); // 121955
@@ -1156,7 +1171,6 @@ el->elem.wbx.info.w_adjarea, el->elem.wbx.info.w_msmv_s, el->elem.wbx.info.w_msm
 el->elem.wbx.info.w_tops, el->elem.wbx.info.w_windg, hail, 
 el->elem.wbx.info.w_timezone, severity, wExpT, wIssT, stat, el->elem.wbx.info.w_mrksiz,    
 el->elem.wbx.info.w_mrkwid, mktype, el->hdr.filled==0 ?"false":"true", shape );
-   
 
     free(wExpT);
     free(wIssT);
@@ -1208,21 +1222,16 @@ el->elem.wbx.info.w_mrkwid, mktype, el->hdr.filled==0 ?"false":"true", shape );
     	blen = strlen(buffer);
     	sprintf( &(buffer[blen]), "                <Status statusForecaster=\"%s\" statusExpTime=\"%s\" statusValidTime=\"%s\"  mesoDiscussionNumber=\"%s\" fromLine=\"%s\"/>\n", el->elem.wbx.info.wsm_fcstr, wsmExpT, wsmIssT, el->elem.wbx.info.wsm_meso, el->elem.wbx.info.wsm_from);
     }
-
+ 
     free(wsmExpT);
     free(wsmIssT);
     wsmExpT = NULL;
     wsmIssT = NULL;
 
+
     blen = strlen(buffer);
     sprintf( &(buffer[blen]), "              </WatchBox>\n");
 
-
-    /*if ( el->hdr.grpnum ==0) {
-    	
-    	blen = strlen(buffer);
-    	sprintf( &(buffer[blen]), "            </DrawableElement>\n          </DECollection>\n");
-    }*/
 
 }
 
@@ -1943,6 +1952,7 @@ void	wnd2tag ( VG_DBStruct *el, char *buffer, int *iret )
 int	ii, npts;
 size_t	blen;
 char *pgenType;
+char *Directional;
 /*---------------------------------------------------------------------*/
 
     *iret = 0;
@@ -1950,20 +1960,24 @@ char *pgenType;
     /*
      *  BARB_ELM, ARROW_ELM, DARR_ELM, HASH_ELM
      */
-    if ( el->hdr.vg_type == 9 )
+    if ( el->hdr.vg_type == 9 ) {
 	pgenType = "Arrow";
-    else if ( el->hdr.vg_type == 8 )
+	Directional = "false";
+    } else if ( el->hdr.vg_type == 8 ) {
 	pgenType = "Barb";
-    else if ( el->hdr.vg_type == 23 )
+	Directional = "false";
+    } else if ( el->hdr.vg_type == 23 ) {
 	pgenType = "Directional";
-    else if ( el->hdr.vg_type == 24 )
+	Directional = "true";
+    } else if ( el->hdr.vg_type == 24 ) {
 	pgenType = "Hash";
+	Directional = "false";
+    }
 
     int width = el->elem.wnd.info.width; //801
-  
-
+   
     sprintf( buffer, "          <Vector pgenCategory=\"%s\"" " pgenType=\"%s\"" " lineWidth=\"%d\" " "sizeScale=\"%5.1f\"" " direction=\"%10.6f\"" " speed=\"%10.6f\"" " arrowHeadSize=\"%5.2f\"" " directionOnly=\"%s\"" " clear=\"%s\">\n",
-category(el), pgenType, width>=100 ?(width%100):width, el->elem.wnd.info.size, (el->elem.wnd.data.spddir[1]), (el->elem.wnd.data.spddir[0]), el->elem.wnd.info.hdsiz, (pgenType=="Directional" ?"true":"false"), el->elem.wnd.info.wndtyp==114 ?"true":"false" ); //112, 1: false
+category(el), pgenType, width>=100 ?(width%100) :width, el->elem.wnd.info.size, (el->elem.wnd.data.spddir[1]), (el->elem.wnd.data.spddir[0]), el->elem.wnd.info.hdsiz, Directional, el->elem.wnd.info.wndtyp==114 ?"true":"false" ); //112, 1: false 
 
     blen = strlen(buffer);
     sprintf( &(buffer[blen]), "            %s\n", getColorTag(el->hdr.maj_col));
@@ -3423,7 +3437,7 @@ void	jet2tag ( VG_DBStruct *el, char *buffer, int *iret )
 {
 int	ii, npts;
 size_t	blen;
-char *result, *pgenType;
+char *result;
 char * mask = "false";
 char * displayType = "NORMAL";
 /*---------------------------------------------------------------------*/
@@ -3543,8 +3557,7 @@ mask, displayType, el->elem.jet.barb[ii].spt.info.offset_y, el->elem.jet.barb[ii
     	blen = strlen(buffer);
 	//width =801, 803
     	sprintf( &(buffer[blen]), "                  <Vector pgenCategory=\"Vector\" pgenType=\"%s\" lineWidth=\"%d\" sizeScale=\"%5.1f\" direction=\"%10.6f\" speed=\"%10.6f\" arrowHeadSize=\"%5.2f\" directionOnly=\"%s\" clear=\"%s\">\n",
-"Barb", el->elem.jet.barb[ii].wnd.info.width >=100?(el->elem.jet.barb[ii].wnd.info.width%100) :el->elem.jet.barb[ii].wnd.info.width, el->elem.jet.barb[ii].wnd.info.size, el->elem.jet.barb[ii].wnd.data.spddir[1], el->elem.jet.barb[ii].wnd.data.spddir[0], el->elem.jet.barb[ii].wnd.info.hdsiz, "false", //((pgenType=="Directional" || pgenType=="Hash") ?"true":"false"), 
-el->elem.jet.barb[ii].wnd.info.width >=800 ?"true" :"false"
+"Barb", el->elem.jet.barb[ii].wnd.info.width >=100?(el->elem.jet.barb[ii].wnd.info.width%100) :el->elem.jet.barb[ii].wnd.info.width, el->elem.jet.barb[ii].wnd.info.size, el->elem.jet.barb[ii].wnd.data.spddir[1], el->elem.jet.barb[ii].wnd.data.spddir[0], el->elem.jet.barb[ii].wnd.info.hdsiz, "false", el->elem.jet.barb[ii].wnd.info.width >=800 ?"true" :"false"
  	);
 
     	blen = strlen(buffer);
@@ -3588,7 +3601,7 @@ fill_pattern(el), "FILLED_ARROW"
     for ( ii = 0; ii < npts; ii++ )  {
      	blen = strlen(buffer);
     	sprintf( &(buffer[blen]), "              <Vector pgenCategory=\"Vector\"" " pgenType=\"%s\"" " lineWidth=\"%d\" " "sizeScale=\"%5.1f\"" " direction=\"%10.6f\"" " speed=\"%10.6f\"" " arrowHeadSize=\"%5.2f\"" " directionOnly=\"%s\"" " clear=\"%s\">\n",
-"Hash", el->elem.jet.hash[ii].wnd.info.width, el->elem.jet.hash[ii].wnd.info.size, (180 - el->elem.jet.hash[ii].wnd.data.spddir[1]), el->elem.jet.hash[ii].wnd.data.spddir[0], el->elem.jet.hash[ii].wnd.info.hdsiz, ((pgenType=="Directional" || pgenType=="Hash") ?"true":"false"), el->elem.jet.hash[ii].wnd.info.wndtyp ==114 ?"true":"false"
+"Hash", el->elem.jet.hash[ii].wnd.info.width, el->elem.jet.hash[ii].wnd.info.size, (180 - el->elem.jet.hash[ii].wnd.data.spddir[1]), el->elem.jet.hash[ii].wnd.data.spddir[0], el->elem.jet.hash[ii].wnd.info.hdsiz, "false", el->elem.jet.hash[ii].wnd.info.wndtyp ==114 ? "true" : "false"
  	);
 
     	blen = strlen(buffer);

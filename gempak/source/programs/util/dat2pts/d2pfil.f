@@ -25,6 +25,7 @@ C* F. J. Yen/NCEP	11/04	Enhanced with station relative output 	*
 C* G. Grosshans         01/06   Updated to include fire weather outlooks* 
 C* F. J. Yen/NCEP	10/07	Updated for extended fire wx outlooks	*
 C* S. Jacobs/NCEP	 7/13	Added new fire wx categories		*
+C* S. Jacobs/NCEP	11/13	Added MRGL and ENH categories		*
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 C*
@@ -113,8 +114,12 @@ C*			abbreviated value and store it in cval.
 C
 		        IF  ( label .eq. 'SIGNIFICANT SEVERE' )  THEN
 			  cval = 'SIGN'
+		         ELSE IF  ( label .eq. 'MARGINAL RISK' )  THEN
+			  cval = 'MRGL'
 		         ELSE IF  ( label .eq. 'SLIGHT RISK' )  THEN
 			  cval = 'SLGT'
+		         ELSE IF  ( label .eq. 'ENHANCED RISK' )  THEN
+			  cval = 'ENH '
 		         ELSE IF  ( label .eq. 'MODERATE RISK' )  THEN
 			  cval = 'MDT '
 		         ELSE IF  ( label .eq. 'HIGH RISK' )  THEN

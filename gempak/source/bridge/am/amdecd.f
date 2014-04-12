@@ -36,6 +36,7 @@ C* J. Lewis/AWC		05/05 	CSC to remove org; CSC for AM_HDR call; *
 C* 				org -> reg for AM_OUT                   *
 C* D. Kidwell/NCEP	 7/05	Check for NEW and assign higher seq. no.*
 C* J. Lewis		02/07	Added check for LLWS			*
+C* L. Hinson            01/22   Fix for missing LLWS                    *
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 	INCLUDE		'BRIDGE.PRM'
@@ -112,8 +113,8 @@ C
 	    inew = 0
 	    DO WHILE ( ( ierr .eq. 0 ) .and. ( .not. done ) ) 
 		indx = 0
- 		iair = INDEX ( string ( :lens ), 'AIRMET' )
-		llws = INDEX ( string ( :lens ), 'LLWS' )
+ 		iair = INDEX ( string ( :lens ), 'AIRMET ' )
+		llws = INDEX ( string ( :lens ), 'LLWS POTENTIAL' )
 		IF ( iair .gt. 0 ) THEN
 		    indx = iair
 		    incr =  5

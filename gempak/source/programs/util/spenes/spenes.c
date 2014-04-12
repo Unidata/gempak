@@ -47,6 +47,8 @@ int main ( int argc, char **argv )
  * S. Jacobs/NCEP	 8/10	Added information to the template	*
  * S. Jacobs/NCEP	 9/11	Updated template from NESDIS request	*
  * S. Jacobs/NCEP	 8/12	Updated NESDIS phone number		*
+ * S. Jacobs/NCEP	 4/13	Updated line spacing for product	*
+ * S. Jacobs/NCEP	 1/14	Updated SSD web address			*
  ***********************************************************************/
 {
 int		ii, ix, iy, pagflg, ne, npts, ier, iret, ilen,
@@ -365,15 +367,16 @@ FILE		*ifptr, *ofptr;
     strcat ( bufferfinal,"SATELLITE ANALYSIS AND TRENDS...##############\n" );
     strcat ( bufferfinal,".\n" );
 
-    strcat ( bufferfinal,"AN ANNOTATED SATELLITE GRAPHIC SHOWING THE HEAVY PRECIPITATION THREAT AREA\n");
-    strcat ( bufferfinal,"SHOULD BE AVAILABLE ON THE INTERNET ADDRESS LISTED BELOW IN APPROXIMATELY\n");
-    strcat ( bufferfinal,"10-15 MINUTES.\n");
+    strcat ( bufferfinal,"AN ANNOTATED SATELLITE GRAPHIC SHOWING THE HEAVY PRECIPITATION\n");
+    strcat ( bufferfinal,"THREAT AREA SHOULD BE AVAILABLE ON THE INTERNET ADDRESS LISTED\n");
+    strcat ( bufferfinal,"BELOW IN APPROXIMATELY 10-15 MINUTES.\n");
     strcat ( bufferfinal,".\n");
 
-    strcat ( bufferfinal,"SHORT TERM OUTLOOK VALID ####-####Z...####### CONFIDENCE FACTOR IN SHORT\n");
-    strcat ( bufferfinal,"TERM OUTLOOK...######\n");
+    strcat ( bufferfinal,"SHORT TERM OUTLOOK VALID ####-####Z...####### CONFIDENCE FACTOR\n");
+    strcat ( bufferfinal,"IN SHORT TERM OUTLOOK...######\n");
     strcat ( bufferfinal,".\n");
 
+    strcat ( bufferfinal,"....NESDIS IS A MEMBER OF NWSCHAT (NESDISSATELLITEPRECIP)....\n" );
     strcat ( bufferfinal,"....NESDIS IS A MEMBER OF 12 PLANET....\n" );
     strcat ( bufferfinal,".\n" );
 
@@ -383,7 +386,7 @@ FILE		*ifptr, *ofptr;
     strcat ( bufferfinal,".\n" );
 
     strcat ( bufferfinal,"FOR PRECIP MESSAGES AND GRAPHICS ON THE WEB:\n" );
-    strcat ( bufferfinal,"http://www.ssd.noaa.gov/PS/PCPN/\n" );
+    strcat ( bufferfinal,"http://www.ospo.noaa.gov/Products/atmosphere/spe/\n" );
     strcat ( bufferfinal,".\n" );
 
     strcat ( bufferfinal,"FOR AUTOMATED SATELLITE PRECIPITATION ESTIMATES ON THE WEB:\n" );

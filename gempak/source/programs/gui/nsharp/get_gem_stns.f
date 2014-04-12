@@ -24,7 +24,7 @@ C*
 	CHARACTER	stn_list(*)*18, arecur*48, stncnt*48
 	CHARACTER	snfcur*72, pmdset (MMPARM)*4, voutc*4, snparm*72
 	CHARACTER	prmlst (MMPARM)*4, stnprm (MMPARM)*4, stid*8
-	CHARACTER	stat*4, coun*4, cstnm*8, area*16
+	CHARACTER	stat*4, coun*4, cstnm*6, area*16
 	REAL		data (LLMXDT), sta_lat(*), sta_lon(*)
 	LOGICAL		newfil, mrgflg
 C------------------------------------------------------------------------

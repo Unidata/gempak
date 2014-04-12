@@ -25,6 +25,8 @@ C* M. desJardins/GSFC	 4/85						*
 C* M. desJardins/GSFC	 8/88	GEMPAK4 Version				*
 C* M. desJardins/NMC	 4/91	Add call to GR_RBAN			*
 C* K. Brill/NMC		01/93	Write blank line at end			*
+C* K. Brill/HPC         02/13   Enhance precision for grd corner output;*
+C*				allow more digits for KX & KY		*
 C************************************************************************
 	CHARACTER*(*)	gdfile
 	REAL		anl (*), rnav (*)
@@ -63,9 +65,9 @@ C
  2002		    FORMAT ( 5X, 'ANGLES:', T25, 3F8.1 )
 		END IF
 		WRITE  ( lunout, 2003 )  kx, ky, ( rnav (j), j = 7, 10 )
- 2003		FORMAT ( 5X, 'GRID SIZE:', T25, 2I4 /
-     +                   5X, 'LL CORNER:', T25, 2F10.2 /
-     +                   5X, 'UR CORNER:', T25, 2F10.2 / )
+ 2003		FORMAT ( 5X, 'GRID SIZE:', T25, 2I8 /
+     +                   5X, 'LL CORNER:', T25, 2F10.4 /
+     +                   5X, 'UR CORNER:', T25, 2F10.4 / )
 	      ELSE
 		WRITE  ( lunout, 2010 )
  2010		FORMAT ( 5X, ' UNKNOWN GRID NAVIGATION ' )

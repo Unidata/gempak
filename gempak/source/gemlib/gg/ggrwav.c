@@ -52,7 +52,9 @@ void gg_rwav ( char *filtyp, char *filnam, float shainc[], int icolrs[],
  * 				a non-zero value, before returnning	*
  * G. McFadden/IMSG	07/13	Added support for Altika wind speeds	*
  * 				and Significant Wave Height		*
- ***********************************************************************/
+ * G. McFadden/IMSG     11/13   Moved support for Altika wind speeds to *
+ * 				gg_rwsp 				*
+*************************************************************************/
 {
 	int	blen, ier, imin, incr, itarr[5], jgrp, iyoff = 0,
 		ixoff = -10, jj, ktime, ktime0 = -9999, lincnt = 0,
@@ -107,11 +109,6 @@ void gg_rwav ( char *filtyp, char *filnam, float shainc[], int icolrs[],
 			&itarr[0], &itarr[1], &itarr[2], &itarr[3],
 			&itarr[4], &dlat, &dlon, &data, &dum );
 	    }
-            else if ( strcmp(filtyp, "WSPDA") == 0 ) {
-		sscanf( buffer, "%i %i %i %i %i %lf %lf %lf %lf",
-			&itarr[0], &itarr[1], &itarr[2], &itarr[3],
-			&itarr[4], &dlat, &dlon, &dum, &data );
-            }
 	    else {
 		cst_lstr (  buffer, &blen, &ier );
 		if ( ier == 0 && blen > 40 && blen < 60 ) {
@@ -165,8 +162,7 @@ void gg_rwav ( char *filtyp, char *filnam, float shainc[], int icolrs[],
 	    if  ( proc ) {
 		if ( strcmp(filtyp, "SGWH") == 0 || strcmp(filtyp, "SGWHE") == 0 ||
                      strcmp(filtyp, "SGWHG") == 0 || strcmp(filtyp, "SGWH2") == 0 ||
-                     strcmp(filtyp, "SGWHC") == 0 || strcmp(filtyp, "SGWHA") == 0 || 
-                     strcmp(filtyp, "WSPDA") == 0 ) {
+                     strcmp(filtyp, "SGWHC") == 0 || strcmp(filtyp, "SGWHA") == 0 ) { 
 		    if ( ERMISS(data) ) {
 			sprintf(textstr, "M");
 		    }

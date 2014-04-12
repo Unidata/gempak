@@ -1,0 +1,20 @@
+     WSPDALT
+
+     WSPDALT is the ending valid time for the altimeter-derived wind
+     speed data, the speed intervals and colors, and time stamp intervals
+     and colors.
+     Skip is a value that indicates how many rows and data points
+     to skip when plotting.
+
+       Data type | End time | Speed intervals | Speed colors |
+       Skip | Time stamp interval | Time stamp color |
+
+     The data type is a selection to plot. Currently there are three data
+     types, WSPDA (Altika), WSPDC (Cryosat), and WSPD2 (Jason-2).
+
+     The ending time is the latest time for which the wind speed data will 
+     be plotted.  The ending time is given as a GEMPAK date/time string.  Any
+     missing items from the string will be filled in by the system time.  The
+     ending time may also be LAST.  LAST will use the system time and plot all
+     WSPDALT data for the preceding 4 hours. ALL is not accepted as an ending
+     time for WPSDALT data.

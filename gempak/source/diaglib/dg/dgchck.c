@@ -74,6 +74,7 @@ void dg_chck ( const char *time1, const char *time2, const int *level1,
  * T. Lee/SAIC		10/05	Added DF_IGPT, DF_JGPT			*
  * R. Tian/SAIC		 2/06	Recoded from Fortran			*
  * C. Melick/SPC        08/11   Added THWK, THWC, THWF                  *
+ * K. Brill/WPC		04/13	Check WIZAHGNRL types to call dg_prft	*
  ************************************************************************/
 {
     char p[14], pp[14];
@@ -974,7 +975,10 @@ void dg_chck ( const char *time1, const char *time2, const int *level1,
     /*
      ********************** PRECIPITATION *******************************
      */
-    } else if ( parm[0] == 'P' || parm[0] == 'S' || parm[0] == 'C' ) {
+    } else if ( parm[0] == 'P' || parm[0] == 'S' || parm[0] == 'C' ||
+		parm[0] == 'W' || parm[0] == 'I' || parm[0] == 'Z' ||
+		parm[0] == 'A' || parm[0] == 'H' || parm[0] == 'G' ||
+                parm[0] == 'N' || parm[0] == 'R' || parm[0] == 'L' ) {
 	dg_prft ( time1, time2, level1, level2, ivcord, parm, num, iret );
 
     /*

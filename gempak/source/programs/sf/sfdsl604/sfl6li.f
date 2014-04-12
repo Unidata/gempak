@@ -37,7 +37,6 @@ C* J. Wu/GSC             7/00   Moved INCLUDE 'ERMISS.FNC' before the   *
 C*                              DATA statement                          *
 C* S. Lilly/SIB         09/10   Match the column count with the new     *  
 C*                              order of the parameter list             *  
-C* M. James/Unidata     10/11   Fixed line length fortran 72 char limit *
 C************************************************************************
 	SAVE		oldtim
 	INCLUDE		'GEMPRM.PRM'
@@ -127,22 +126,21 @@ C*
 C
 C*	Add altimeter.
 C
-	  IF  ( cmpflg ( 9 ) .and. ( .not. ERMISS(rdata ( 9 ) ))) THEN
+	  IF  ( cmpflg ( 9 ) .and. ( .not. ERMISS ( rdata ( 9 ) ))) THEN
 	    WRITE  ( outbuf ( 49: ), 530, IOSTAT = ier )  rdata ( 9 )
 530	    FORMAT ( F5.2 )
 	  END IF
 C
 C*	  Add PMSL.
 C
-	  IF  ( cmpflg ( 10 ) .and. ( .not. ERMISS(rdata ( 10 ) ))) THEN
+	  IF  ( cmpflg ( 10 ) .and. ( .not. ERMISS ( rdata ( 10 ) ))) THEN
 	    WRITE  ( outbuf ( 55 : ), 510, IOSTAT = ier )  rdata ( 10 )
 510	    FORMAT ( F6.1 )
 	  END IF
 C
 C*	Add the pressure tendency.
 C
-	  IF  ( cmpflg ( 11 ) .and. ( .not. ERMISS ( rdata ( 11 ) )))
-     +								THEN
+	  IF ( cmpflg ( 11 ) .and. ( .not. ERMISS ( rdata ( 11 ) ))) THEN
 	    WRITE  ( outbuf ( 62 : ), 540, IOSTAT = ier ) rdata ( 11 )
 540	    FORMAT ( F4.1 )
 	  END IF
@@ -200,8 +198,7 @@ C
 C
 C*	Add the snow data.
 C
-	  IF  ( cmpflg ( 16 ) .and. ( .not. ERMISS ( rdata ( 16 ) )))
-     +								THEN
+	  IF ( cmpflg ( 16 ) .and. ( .not. ERMISS ( rdata ( 16 ) ))) THEN
 	    isnow = NINT ( rdata ( 16 ) )
 	    WRITE  ( outbuf ( 78: ), 420, IOSTAT = ier ) isnow
 	  END IF

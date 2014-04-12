@@ -1,0 +1,122 @@
+! EXAMPLE.LPF
+!
+! This file is an example Layer Product File (LPF).  It describes the LPF
+! format and processing rules.
+!
+! An LPF allows the specification of product generation layers and their 
+! attributes.  When an LPF is selected using the NMAP "OPEN PROD" action,
+! the layers and their attributes in the LPF are loaded into product generation.
+! See the NMAP Product Generation-LPF help for additional details.
+!
+! An LPF has two columns.  The first column is a reserved keyword enclosed in
+! angle brackets that indicates the layer attribute.  The second column is the 
+! value for that attribute.  Keywords and their values are grouped by layer in 
+! the file.  The exclamation point, !, precedes comment lines in the file. 
+!
+! The following table lists the reserved keyword, its format or valid values,
+! and a brief description. Note that N is the layer number from 1 through 10.
+!
+! KEYWORD		FORMAT/VALID VALUES		DESCRIPTION
+!==============================================================================
+! <layerN_name> 	String up to 8 characters	Layer name
+!
+! <layerN_file>		String				VGF name
+!
+! <layerN_group_type>   Group name                      Group name assigned to
+!                                                       the layer, see
+!                                                       $GEMTBL/pgen/grptyp.tbl
+!
+! <layerN_display_mode>	On | Off			Layer toggle when the 
+!							layer is not active
+!
+! <layerN_color_mode>   All | Mono                      Color mode when the
+!                                                       layer is not active,
+!							all, all colors shown,
+!							mono, one color shown
+!
+! <layerN_color_id>	GEMPAK color ID (1-32)		Layer mono color when  
+!							the layer is not active
+!
+! <layerN_fill_mode>	On | Off			Fill toggle when
+!							the layer is not 
+!                                                       active 
+!
+! The following rules apply:
+!
+! 	1. The key words can be in any order for a given layer. 
+!
+!	2. An empty VGF is created in the local directory if the VGF does not
+!	   exist.  The VGF is opened for the layer.
+!	
+!	3. The following defaults are used if a layer attribute is not specified
+!          or if its value is invalid:
+!
+!		<layerN_name>   	layer_N, If the name is > 8 characters,
+!                                       it is truncated 
+!		<layerN_file>	        No default, no VGF opened for the layer 
+!		<layerN_display_mode>	On
+!		<layerN_color_id>	19
+!		<layerN_color_mode>	All
+!		<layerN_fill_mode>	On
+!		<layerN_group_type>     The first group type in 
+!                                       $GEMTBL/pgen/grptyp.tbl is used 
+!
+!!
+! Log:
+! T. Lee/SAIC		5/02	Created
+! S. Schotz/NCEP	6/02	Updated documentation, added more examples
+! S. Schotz/NCEP 	6/02    Corrected group default rule
+!
+!--------------------------------------------------------------------------------
+!
+!
+! layer 1: Day 4 Layer
+<layer1_name>		DAY_4
+<layer1_file>  		WORK_DAY_4_ALLPROB.vgf	
+<layer1_output_file>	WORK_DAY_4_ALLPROB.vgf	
+<layer1_group_type>	EXT_SVR
+<layer1_display_mode>	Off
+<layer1_color_mode>	Mono
+<layer1_color_id>	24
+<layer1_fill_mode>	On
+!
+! layer 2: Day 5 Layer
+<layer2_name>		DAY_5
+<layer2_file>  		WORK_DAY_5_ALLPROB.vgf	
+<layer2_output_file>	WORK_DAY_5_ALLPROB.vgf	
+<layer2_group_type>	EXT_SVR
+<layer2_display_mode>	Off
+<layer2_color_mode>	Mono
+<layer2_color_id>	24
+<layer2_fill_mode>	On
+!
+! layer 3: Day 6 Layer
+<layer3_name>		DAY_6
+<layer3_file>  		WORK_DAY_6_ALLPROB.vgf	
+<layer3_output_file>	WORK_DAY_6_ALLPROB.vgf	
+<layer3_group_type>	EXT_SVR
+<layer3_display_mode>	Off
+<layer3_color_mode>	Mono
+<layer3_color_id>	24
+<layer3_fill_mode>	On
+!
+! layer 4: Day 7 Layer
+<layer4_name>		DAY_7
+<layer4_file>  		WORK_DAY_7_ALLPROB.vgf	
+<layer4_output_file>	WORK_DAY_7_ALLPROB.vgf	
+<layer4_group_type>	EXT_SVR
+<layer4_display_mode>	Off
+<layer4_color_mode>	Mono
+<layer4_color_id>	24
+<layer4_fill_mode>	On
+!
+! layer 5: Day 8 Layer
+<layer5_name>		DAY_8
+<layer5_file>  		WORK_DAY_8_ALLPROB.vgf	
+<layer5_output_file>	WORK_DAY_8_ALLPROB.vgf	
+<layer5_group_type>	EXT_SVR
+<layer5_display_mode>	Off
+<layer5_color_mode>	Mono
+<layer5_color_id>	24
+<layer5_fill_mode>	On
+!

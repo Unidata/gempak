@@ -21,6 +21,7 @@ void da_getfilhdr ( int *iflno, char *fhdnam, int *mxword,
  *	iret		int*		Return code			*
  **									*
  * S. Jacobs/NCEP	 6/13	Created					*
+ * S. Jacobs/NCEP	12/13	Save NX and NY for later use		*
  ************************************************************************/
 {
     int		ii, jj, gflnum, ier;
@@ -62,6 +63,12 @@ void da_getfilhdr ( int *iflno, char *fhdnam, int *mxword,
 	rheadr[ii] = daoutf[ii];
     }
     *nword = danumf;
+
+    /* If this is a grid navigation, save the number of points */
+    if ( strcmp ( fhdnam, "NAVB" ) == 0 ) {
+	dacmn.nx = rheadr[4];
+	dacmn.ny = rheadr[5];
+    }
 
     /* Free all allocated memory */
     for ( ii = 0 ; ii < danarg; ii++ ) {

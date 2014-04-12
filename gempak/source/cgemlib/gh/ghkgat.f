@@ -32,6 +32,7 @@ C* D. Kidwell/NCEP	10/01	Rewrote to interpolate for smoothing    *
 C* D. Kidwell/NCEP	 2/02	Removed idrop from GG_TCSH call sequence*
 C* D. Kidwell/NCEP	 3/03	Increased num. points; check msg dside  *
 C* D. Kidwell/NCEP	 5/03	Added argument iptsm to GG_TCSM call    *
+C* S. Jacobs/NCEP	 4/13	Increased working array sizes		*
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 C*
@@ -41,8 +42,8 @@ C*
      +	                dside (*)
 C*
         LOGICAL         okay
-	REAL		side (NUMHR), tlat (NUMHR), tlon (NUMHR), 
-     +			tside (NUMHR),
+	REAL		side (LLMXPT), tlat (LLMXPT), tlon (LLMXPT), 
+     +			tside (LLMXPT),
      +			dlat (MXINTP), dlon (MXINTP), xside (MXINTP),
      +			blat (361), blon (361), olat (MXWORK), 
      +			olon (MXWORK), wlat (MXWORK), wlon (MXWORK)

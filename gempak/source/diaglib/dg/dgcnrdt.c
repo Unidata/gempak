@@ -49,6 +49,7 @@ void dgc_nrdt ( const int *ifpn, const char *time1, const char *time2,
  * R. Tian/SAIC		11/04	Added check for PARM == DRCT		*
  * R. Tian/SAIC		 2/06	Recoded from Fortran			*
  * D.W.Plummer/NCEP	10/06	Dynamically allocate transfer grid	*
+ * S. Jacobs/NCEP	 2/13	Add check before freeing memory		*
  ************************************************************************/
 {
     char filnam[MXFLSZ+1], tmpnam[MXFLSZ+1], uparm[14];
@@ -118,7 +119,9 @@ void dgc_nrdt ( const int *ifpn, const char *time1, const char *time2,
 
     }
 
-    G_FREE ( transfer_grid, float );
+    if ( transfer_grid != NULL ) {
+	G_FREE ( transfer_grid, float );
+    }
 
     return;
 }

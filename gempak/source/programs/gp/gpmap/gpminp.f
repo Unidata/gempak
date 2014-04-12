@@ -4,8 +4,8 @@
      +                      awpsfl, line, watch, warn, hrcn, isig,
      +                      ltng, atcf, airm, gairm, ncon, csig, svrl,
      +                      bnd, tcmg, qsct, wstm, wou, wcn, wcp, ency,
-     +                      ffa, wsat, asct, trkpd1, trkpde, trkpd2,
-     +                      osct, sgwh, asdi, edr, wspda, iret)
+     +                      ffa, wsat, asct, trak, osct, sgwh, asdi, 
+     +                      edr, wspdalt, iret)
 C************************************************************************
 C* GPMINP								*
 C*									*
@@ -15,7 +15,8 @@ C* GPMINP  ( DEVICE, MAP, MSCALE, GAREA, PROJ, SATFIL, RADFIL, PANEL, 	*
 C*	     TITLE, TEXT, IMCBAR, LATLON, CLEAR, LUTFIL, STNPLT, VGFILE,*
 C*	     AWPSFL, LINE, WATCH, WARN, HRCN, ISIG, LTNG, ATCF, AIRM, 	*
 C*           GAIRM, NCON, SVRL, BND, TCMG, QSCT, WSTM, WOU, WCN, WCP,   *
-C*           ENCY, FFA, WSAT, ASCT, OSCT, SGWH, ASDI, EDR, WSPDA, IRET) *
+C*           ENCY, FFA, WSAT, ASCT, TRAK, OSCT, SGWH, ASDI, EDR,        *
+C*           WSPDALT, IRET)                                             *
 C**									*
 C* Log:									*
 C* M. desJardins/GSFC	 7/88						*
@@ -57,14 +58,16 @@ C* G. McFadden/IMSG	 7/11	Added SGWH				*
 C* L. Hinson/AWC         5/12   Added ASDI                              *
 C* L. Hinson/AWC        10/12   Added EDR				*
 C* G. McFadden/IMSG	 7/13	Added WSPDA				*
+C* G. McFadden/IMSG	11/13	Changed WSPDA to WSPDALT		*
+C* G. McFadden/IMSG	 1/14	Folded TRAK1, TRAKE, and TRAK2 into TRAK*
 C************************************************************************
 	CHARACTER*(*)	device, map, garea, proj, panel, title, text,
      +			latlon, satfil, radfil, lutfil, stnplt, vgfile,
      +			afosfl, awpsfl, line, watch, warn, hrcn, isig,
      +			ltng, atcf, airm, gairm, ncon, svrl, bnd, tcmg,
      +                  ency, qsct, csig, wstm, wou, wcn, wcp, ffa,
-     +                  imcbar, mscale, wsat, asct, trkpd1, trkpde, 
-     +                  trkpd2, osct, sgwh, asdi, edr, wspda
+     +                  imcbar, mscale, wsat, asct, trak, osct, sgwh, 
+     +                  asdi, edr, wspdalt
 	LOGICAL		clear
 C-----------------------------------------------------------------------
 	CALL IP_STR  ( 'DEVICE', device, ier1 )
@@ -108,14 +111,12 @@ C-----------------------------------------------------------------------
 	CALL IP_STR  ( 'FFA',    ffa,    ier39 )
 	CALL IP_STR  ( 'WSAT',   wsat,   ier40 )
 	CALL IP_STR  ( 'ASCT',   asct,   ier41 )
-	CALL IP_STR  ( 'TRAK1',  trkpd1, ier42 )
-	CALL IP_STR  ( 'TRAKE',  trkpde, ier43 )
-	CALL IP_STR  ( 'TRAK2',  trkpd2, ier44 )
-	CALL IP_STR  ( 'OSCT',   osct,   ier45 )
-	CALL IP_STR  ( 'SGWH',   sgwh,   ier46 )
-	CALL IP_STR  ( 'ASDI',   asdi,   ier47 )
-        CALL IP_STR  ( 'EDR',    edr,    ier48 )
-        CALL IP_STR  ( 'WSPDA',  wspda,  ier49 )
+	CALL IP_STR  ( 'TRAK',   trak,   ier42 )
+	CALL IP_STR  ( 'OSCT',   osct,   ier43 )
+	CALL IP_STR  ( 'SGWH',   sgwh,   ier44 )
+	CALL IP_STR  ( 'ASDI',   asdi,   ier45 )
+        CALL IP_STR  ( 'EDR',    edr,    ier46 )
+        CALL IP_STR  ( 'WSPDALT',  wspdalt,  ier47 )
 C
 	iret =  ier1 + ier2 + ier3 + ier4 + ier5 + ier6 + ier7 +
      +		ier8 + ier9 + ier10 + ier11 + ier12 + ier13 + ier14 +
@@ -123,7 +124,7 @@ C
      +		ier22 + ier23 + ier24 + ier25 + ier26 + ier27 + ier28 +
      +		ier29 + ier30 + ier31 + ier32 + ier33 + ier34 + ier35 +
      +		ier36 + ier37 + ier38 + ier39 + ier40 + ier41 + ier42 +
-     +		ier43 + ier44 + ier45 + ier46 + ier47 + ier48 + ier49
+     +		ier43 + ier44 + ier45 + ier46 + ier47
 	IF  ( iret .ne. 0 )  iret = -2
 C*
 	RETURN

@@ -291,11 +291,14 @@ void NxmAnimationLoopBackward ( void )
  * Log:                                                                 *
  * C. Lin/EAI       05/94                                               *
  * C. Lin/EAI       02/95   add NXMloopTimeoutId                        *
+ * S. Jacobs/NCEP	 2/14	Make sure something was loaded before	*
+ *				trying to step				*
  ***********************************************************************/
 {
 int                 i;
 /*---------------------------------------------------------------------*/
 
+  if ( NXMpixmapData.total > 0 ) {
     if(!NXManimationFlags.loopfrwd && !NXManimationFlags.loopfrwdbkwd) {
 		
 /*
@@ -347,6 +350,7 @@ int                 i;
 
 	}
     }
+  }
 }
 
 /*=====================================================================*/
@@ -372,11 +376,14 @@ void NxmAnimationLoopForeward ( void )
  * Log:                                                                 *
  * C. Lin/EAI       05/94                                               *
  * C. Lin/EAI       02/95   add NXMloopTimeoutId                        *
+ * S. Jacobs/NCEP	 2/14	Make sure something was loaded before	*
+ *				trying to step				*
  ***********************************************************************/
 {
     int ii;
 /*---------------------------------------------------------------------*/
 
+  if ( NXMpixmapData.total > 0 ) {
     if(!NXManimationFlags.loopback && !NXManimationFlags.loopfrwdbkwd) {
 
 /*
@@ -424,6 +431,7 @@ void NxmAnimationLoopForeward ( void )
 		        (XtPointer)NULL);
 	}
     }
+  }
 }
 
 /*======================================================================*/
@@ -449,11 +457,14 @@ void NxmAnimationLoopForewardBackward ( void )
  * Log:                                                                 *
  * C. Lin/EAI       05/94                                               *
  * C. Lin/EAI       02/95   add NXMloopTimeoutId                        *
+ * S. Jacobs/NCEP	 2/14	Make sure something was loaded before	*
+ *				trying to step				*
  ***********************************************************************/
 {
 int                 ii;
 /*---------------------------------------------------------------------*/
 
+  if ( NXMpixmapData.total > 0 ) {
     if(!NXManimationFlags.loopfrwd && !NXManimationFlags.loopback) {
 
 /*
@@ -501,6 +512,7 @@ int                 ii;
 	        (XtPointer)NULL);
 	}
     }
+  }
 }
 
 /*=====================================================================*/
@@ -524,10 +536,13 @@ void NxmAnimationStepBackward ( void )
  *                                                                      *
  **                                                                     *
  * Log:                                                                 *
- * C. Lin/EAI       05/94                                               *
+ * C. Lin/EAI		05/94						*
+ * S. Jacobs/NCEP	 2/14	Make sure something was loaded before	*
+ *				trying to step				*
  ***********************************************************************/
 {
 
+  if ( NXMpixmapData.total > 0 ) {
     if(!NXManimationFlags.loopfrwd && !NXManimationFlags.loopback &&
 	!NXManimationFlags.loopfrwdbkwd ) {
 
@@ -536,6 +551,7 @@ void NxmAnimationStepBackward ( void )
 
 	NxmDisplayPixmap();
     }
+  }
 }
 
 /*======================================================================*/
@@ -559,10 +575,13 @@ void NxmAnimationStepForeward ( void )
  *                                                                      *
  **                                                                     *
  * Log:                                                                 *
- * C. Lin/EAI       05/94                                               *
+ * C. Lin/EAI		05/94						*
+ * S. Jacobs/NCEP	 2/14	Make sure something was loaded before	*
+ *				trying to step				*
  ***********************************************************************/
 {
 
+  if ( NXMpixmapData.total > 0 ) {
     if(!NXManimationFlags.loopfrwd && !NXManimationFlags.loopback &&
 		!NXManimationFlags.loopfrwdbkwd ) {
 
@@ -572,6 +591,7 @@ void NxmAnimationStepForeward ( void )
 	NxmDisplayPixmap();
 
     }
+  }
 }
 
 /*======================================================================*/

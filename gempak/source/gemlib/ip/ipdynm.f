@@ -35,6 +35,7 @@ C* K. Tyle/GSC		 7/96	Renamed from NT_DYNM			*
 C* K. Tyle/GSC		 8/96	Check for FIRSTT and RESP		*
 C* D.W.Plummer/NCEP	 6/97	Increased string lengths from 80 to 164	*
 C* C. Bailey/HPC	 1/05	Added GSAVE option			*
+C* S. Jacobs/NCEP	 3/13	Allow mixed case for restoring NTS files*
 C************************************************************************
 	INCLUDE		'ipcmn.cmn'
 C*
@@ -194,7 +195,7 @@ C
 		ELSE IF  ( wsav )  THEN
 		  CALL IP_SAVE  ( secnd, .false., ier )
 		ELSE IF  ( rest )  THEN
-		  CALL IP_REST  ( secnd, ier )
+		  CALL IP_REST  ( scndnc, ier )
 		ELSE IF  ( phlp )  THEN
 		  CALL IP_HELP  ( secnd, .true., ier )
 		ELSE IF  ( curs )  THEN

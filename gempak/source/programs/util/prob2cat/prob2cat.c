@@ -529,7 +529,9 @@ int main ( int argc, char **argv )
       for ( ii = 0; ii < np2cgrp; ii++ ) {
         G_FREE ( p2cGrp[ii].high, VG_DBStruct * );
         G_FREE ( p2cGrp[ii].mdrt, VG_DBStruct * );
+        G_FREE ( p2cGrp[ii].enhc, VG_DBStruct * );
         G_FREE ( p2cGrp[ii].slgt, VG_DBStruct * );
+        G_FREE ( p2cGrp[ii].mrgl, VG_DBStruct * );
         G_FREE ( p2cGrp[ii].text, VG_DBStruct * );
       }
       G_FREE ( iclozd, int );
@@ -681,11 +683,15 @@ static void p2c_Elms2Grps ( int nin, VG_DBStruct *el_in,
 
         (*p2cGrp)[*ngrp].nhigh = 0;
         (*p2cGrp)[*ngrp].nmdrt = 0;
+        (*p2cGrp)[*ngrp].nenhc = 0;
         (*p2cGrp)[*ngrp].nslgt = 0;
+        (*p2cGrp)[*ngrp].nmrgl = 0;
         (*p2cGrp)[*ngrp].ntext = 0;
         (*p2cGrp)[*ngrp].high = (VG_DBStruct **)NULL;
         (*p2cGrp)[*ngrp].mdrt = (VG_DBStruct **)NULL;
+        (*p2cGrp)[*ngrp].enhc = (VG_DBStruct **)NULL;
         (*p2cGrp)[*ngrp].slgt = (VG_DBStruct **)NULL;
+        (*p2cGrp)[*ngrp].mrgl = (VG_DBStruct **)NULL;
         (*p2cGrp)[*ngrp].text = (VG_DBStruct **)NULL;
 
         iprob1 = 0;
@@ -715,11 +721,23 @@ static void p2c_Elms2Grps ( int nin, VG_DBStruct *el_in,
             (*p2cGrp)[*ngrp].mdrt[0] = &el_in[ii];
             ( (*p2cGrp)[*ngrp].nmdrt )++;
         }
+        else if ( strcmp (cat1, "_ENHC") == 0 ) {
+            G_MALLOC ( (*p2cGrp)[*ngrp].enhc, VG_DBStruct *, one,
+                                   "p2c_elms2grp: p2cGrp.enhc" );
+            (*p2cGrp)[*ngrp].enhc[0] = &el_in[ii];
+            ( (*p2cGrp)[*ngrp].nenhc )++;
+        }
         else if ( strcmp (cat1, "_SLGT") == 0 ) {
             G_MALLOC ( (*p2cGrp)[*ngrp].slgt, VG_DBStruct *, one,
                                    "p2c_elms2grp: p2cGrp.slgt" );
             (*p2cGrp)[*ngrp].slgt[0] = &el_in[ii];
             ( (*p2cGrp)[*ngrp].nslgt )++;
+        }
+        else if ( strcmp (cat1, "_MRGL") == 0 ) {
+            G_MALLOC ( (*p2cGrp)[*ngrp].mrgl, VG_DBStruct *, one,
+                                   "p2c_elms2grp: p2cGrp.mrgl" );
+            (*p2cGrp)[*ngrp].mrgl[0] = &el_in[ii];
+            ( (*p2cGrp)[*ngrp].nmrgl )++;
         }
         else if ( strcmp (cat1, "_TEXT") == 0 ) {
             G_MALLOC ( (*p2cGrp)[*ngrp].text, VG_DBStruct *, one,
@@ -752,7 +770,7 @@ static void p2c_Elms2Grps ( int nin, VG_DBStruct *el_in,
             }
 
             p2c_GetCat ( &el_in[ jj ], iprob2, hazType2, cat2, &ier );
-                                                                                 
+
             if ( (strcasecmp ( cat1, cat2 ) == 0 ) &&
                  ( cat1[0]  != '\0' ) ) {
 
@@ -784,6 +802,20 @@ static void p2c_Elms2Grps ( int nin, VG_DBStruct *el_in,
                    ( (*p2cGrp)[*ngrp].nmdrt )++;
                    grouped[ jj ] = True;
                }
+               else if ( strcmp (cat2, "_ENHC") == 0 ) {
+                   if ( (*p2cGrp)[*ngrp].nenhc == 0 ) {
+                     G_MALLOC ( (*p2cGrp)[*ngrp].enhc, VG_DBStruct *, one,
+                                "p2c_elms2grp: p2cGrp.enhc" );
+                   }
+                   else {
+                     G_REALLOC ( (*p2cGrp)[*ngrp].enhc, VG_DBStruct *,
+                                 (*p2cGrp)[*ngrp].nenhc + 1,
+                                  "p2c_elms2grp: p2cGrp.enhc" );
+                   }
+                   (*p2cGrp)[*ngrp].enhc[ (*p2cGrp)[*ngrp].nenhc ] = &el_in[ jj ];
+                    ( (*p2cGrp)[*ngrp].nenhc )++;
+                   grouped[ jj ] = True;
+               }
                else if ( strcmp (cat2, "_SLGT") == 0 ) {
                    if ( (*p2cGrp)[*ngrp].nslgt == 0 ) {
                      G_MALLOC ( (*p2cGrp)[*ngrp].slgt, VG_DBStruct *, one,
@@ -796,6 +828,20 @@ static void p2c_Elms2Grps ( int nin, VG_DBStruct *el_in,
                    }
                    (*p2cGrp)[*ngrp].slgt[ (*p2cGrp)[*ngrp].nslgt ] = &el_in[ jj ];
                     ( (*p2cGrp)[*ngrp].nslgt )++;
+                   grouped[ jj ] = True;
+               }
+               else if ( strcmp (cat2, "_MRGL") == 0 ) {
+                   if ( (*p2cGrp)[*ngrp].nmrgl == 0 ) {
+                     G_MALLOC ( (*p2cGrp)[*ngrp].mrgl, VG_DBStruct *, one,
+                                "p2c_elms2grp: p2cGrp.mrgl" );
+                   }
+                   else {
+                     G_REALLOC ( (*p2cGrp)[*ngrp].mrgl, VG_DBStruct *,
+                                 (*p2cGrp)[*ngrp].nmrgl + 1,
+                                  "p2c_elms2grp: p2cGrp.mrgl" );
+                   }
+                   (*p2cGrp)[*ngrp].mrgl[ (*p2cGrp)[*ngrp].nmrgl ] = &el_in[ jj ];
+                    ( (*p2cGrp)[*ngrp].nmrgl )++;
                    grouped[ jj ] = True;
                }
                else if ( strcmp (cat2, "_TEXT") == 0 ) {
@@ -862,10 +908,24 @@ static void p2c_Grp2Out ( int ngrp, P2C_Grp *p2cGrp, VG_DBStruct **outlk,
                         nout, outlk, &ier );
         }
 
+        if ( p2cGrp[ ii ].enhc != (VG_DBStruct **)NULL ) {
+         strcpy (cat, "ENH");
+         iclr = 23;
+         p2c_PolyClip ( p2cGrp[ii].nenhc, p2cGrp[ii].enhc, cat, iclr,
+                        nout, outlk, &ier );
+        }
+
         if ( p2cGrp[ ii ].slgt != (VG_DBStruct **)NULL ) {
          strcpy (cat, "SLGT");
          iclr = 23;
          p2c_PolyClip ( p2cGrp[ii].nslgt, p2cGrp[ii].slgt, cat, iclr,
+                        nout, outlk, &ier );
+        }
+
+        if ( p2cGrp[ ii ].mrgl != (VG_DBStruct **)NULL ) {
+         strcpy (cat, "MRGL");
+         iclr = 23;
+         p2c_PolyClip ( p2cGrp[ii].nmrgl, p2cGrp[ii].mrgl, cat, iclr,
                         nout, outlk, &ier );
         }
 
@@ -1359,7 +1419,8 @@ static void p2c_GetCat ( VG_DBStruct *el, int prob, char *haz, char *cat,
  *                                                                      *
  * Output parameters:                                                   *
  *      *haz            char            Hazard type (TORN, WIND, HAIL)	*
- *      *value          char            Category (HIGH, MDRT, SLGT)	*
+ *      *value          char            Category (HIGH, MDRT, ENHC,
+ *					 	  SLGT, MRGL)		*
  *      *iret           int             Return code                     *
  *                                      -1 - Wrong type                 *
  *                                      -2 - Search failed              *
@@ -1373,7 +1434,8 @@ static void p2c_GetCat ( VG_DBStruct *el, int prob, char *haz, char *cat,
     int         done, icat;
     char        day[6], value[10], tag[25], tblnam[12], dirnam[5], tagtmp[25];
     char        tagbmp[25], bmpcat[6];
-    char        _Prob_ctgr[4][6] = {"_HIGH", "_MDRT", "_SLGT", "_TEXT"};
+    char        _Prob_ctgr[6][6] = {"_HIGH", "_MDRT", "_EHNC",
+       				    "_SLGT", "_MRGL", "_TEXT"};
 /*---------------------------------------------------------------------*/
 
     *iret = 0;
@@ -1449,7 +1511,7 @@ static void p2c_GetCat ( VG_DBStruct *el, int prob, char *haz, char *cat,
 
      strcpy ( tagtmp, tag );
 
-     for ( ii = 0; ii < 4; ii++ ) {
+     for ( ii = 0; ii < 6; ii++ ) {
          strcpy ( value, "" );
          ilow = 0;
          ihgh = 0;

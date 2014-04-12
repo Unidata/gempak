@@ -8,6 +8,8 @@ C* K. Brill/NMC		 8/93	Add DM_LSSF for surface file keys	*
 C*				DM_LSTN does only sounding file keys	*
 C* T. Lee/GSC		10/97	Added SWFO and WFO2 in DM_LSSF calling	*
 C*				sequences				*
+C* S. Jacobs/NCEP	 8/13	Added printing part information in 	*
+C*				DMPART common variable section		*
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 	INCLUDE		'dmcmn.cmn'
@@ -712,12 +714,14 @@ C------------------------------------------------------------------------
 		IHD = 0
 		DO I = 1, KROW (IFLNO)
 		  IHD = IHD + 1
-		  WRITE (6,*) (KHEADR (J,IHD,IFLNO),J=0,KRKEYS(IFLNO))
+		  WRITE (6,*) IHD,
+     +				(KHEADR (J,IHD,IFLNO),J=0,KRKEYS(IFLNO))
 		END DO
 		WRITE (6,*) 'COL HEADERS---------------'
 		DO I = 1, KCOL (IFLNO)
 		  IHD = IHD + 1
-		  WRITE (6,*) (KHEADR (J,IHD,IFLNO),J=0,KCKEYS(IFLNO))
+		  WRITE (6,*) IHD,
+     +				(KHEADR (J,IHD,IFLNO),J=0,KCKEYS(IFLNO))
 		END DO
 C------------------------------------------------------------------------
 	      ELSE IF (INPUT .EQ. 'DMCACH' ) THEN
@@ -751,6 +755,13 @@ C------------------------------------------------------------------------
 		WRITE (6,*) (KPKNO(I,IFLNO),I=1,NPRT)
 		WRITE (6,*) ' PACKED WORDS'
 		WRITE (6,*) (KWORDP(I,IFLNO),I=1,NPRT)
+		DO  J = 1, NPRT
+		    WRITE (6,*) ' PARAMETER NAMES: ', KPRTNM(J,IFLNO)
+		    WRITE (6,3) (KPRMNM(I,J,IFLNO),I=1,KPARMS(J,IFLNO))
+		    WRITE (6,*) (KSCALE(I,J,IFLNO),I=1,KPARMS(J,IFLNO))
+		    WRITE (6,*) (KOFFST(I,J,IFLNO),I=1,KPARMS(J,IFLNO))
+		    WRITE (6,*) (KBITS(I,J,IFLNO),I=1,KPARMS(J,IFLNO))
+		END DO
 C------------------------------------------------------------------------
 	      ELSE IF ( INPUT .EQ. 'DMFHDR' ) THEN
 		WRITE (6,*) 'ENTER IFLNO'

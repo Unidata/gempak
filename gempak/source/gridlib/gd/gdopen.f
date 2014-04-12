@@ -24,7 +24,7 @@ C*                                                                      *
 C* Output parameters:                                                   *
 C*	IACSS		INTEGER		Access number to do I/O on file	*
 C*	BKANL (MXANL)	REAL		Analysis block data array	*
-C*	BKNAV (MXNAV)	REAL		Navigation block data array	*	
+C*	BKNAV (MXNAV)	REAL		Navigation block data array	*
 C*	MXGRD		INTEGER		Maximum number of grids		*
 C*      IRET            INTEGER         Return code                     *
 C*                                        0 = normal return             *
@@ -35,6 +35,8 @@ C* Log:                                                                 *
 C* R. Tian/SAIC		 1/04						*
 C* R. Tian/SAIC		 3/04		Recoded				*
 C* R. Tian/SAIC		 3/05		Added mgrid			*
+C* K. Brill/HPC          1/13		Close & reopen if necessary to	*
+C*					establish write access		*
 C************************************************************************
         INCLUDE         'GEMPRM.PRM'
         INCLUDE         'GMBDTA.CMN'
@@ -64,7 +66,19 @@ C*	Check if the file has already been opened.
 C
 	avail = .false.
 	DO i = 1, MMFILE
-	    IF ( ffnam .eq. gdflnm (i) ) THEN
+	    IF ( ffnam .eq. gdflnm (i) .and. .not. wrtfg ) THEN
+	      igdfln = i
+	      iacss = iflacc (i)
+	      avail = .true.
+	    ELSE IF ( ffnam .eq. gdflnm (i) .and. wrtfg .and.
+     +		      .not. gdwrt (i) ) THEN
+C
+C*	      This file is open for READONLY access.  It
+C*	      must be closed and re-opened for WRITE access.
+C
+	      CALL GD_CLOS ( iacss, ier )
+C*
+	    ELSE IF ( ffnam .eq. gdflnm (i) ) THEN
 	      igdfln = i
 	      iacss = iflacc (i)
 	      avail = .true.

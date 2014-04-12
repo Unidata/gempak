@@ -11,10 +11,10 @@
  * Prototype for Fortran decoder driver.
  */
 
-void tf_dcod ( char *curtim, char *gemfil, char *stntbl, char *prmfil, 
-		  int *iadstn, int *maxtim, int *nhours, int *circflg,
-                  int *iret, 
-                  int, int, int, int );
+void tf_dcod ( char *curtim, char *gemfil, char *stntbl, char *stntb2,
+	       char *prmfil, int *iadstn, int *maxtim, int *nhours,
+	       int *circflg, int *iret, 
+                  int, int, int, int, int );
 
 int main ( int argc, char *argv[] )
 /************************************************************************
@@ -35,6 +35,7 @@ int main ( int argc, char *argv[] )
  * L. Lin/NCEP 		04/08	Modified fcst times from 24 to 30	*
  * L. Hinson/AWC        06/08   Added circflg to dc_gopt and call to    *
  *                              tf_dcod                                 *
+ * S. Jacobs/NCEP	 3/14	Added black list station table		*
  ***********************************************************************/
 {
 
@@ -54,7 +55,7 @@ int main ( int argc, char *argv[] )
 
 	char	*defprm = "taf.pack";
 	char	*defstn = "tafstn.tbl";
-	char	*dfstn2 = " ";
+	char	*dfstn2 = "tafblacklist.tbl";
 	int	idfadd  = 25;
 /*      idfmax was set to 24 - default number of forecast time
 **      now it has been changed to 30
@@ -113,10 +114,10 @@ int main ( int argc, char *argv[] )
 **	for the specific decoder.
 */
 
-	tf_dcod ( curtim, gemfil, stntbl, prmfil, 
+	tf_dcod ( curtim, gemfil, stntbl, stntb2, prmfil, 
 		  &iadstn, &maxtim, &nhours, &circflg, &iret, 
                   strlen(curtim), strlen(gemfil), strlen(stntbl), 
-                  strlen(prmfil) );
+                  strlen(stntb2), strlen(prmfil) );
 /*
 **	Send a shut down message to the logs and close the log files.
 */

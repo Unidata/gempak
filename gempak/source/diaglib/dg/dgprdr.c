@@ -49,6 +49,8 @@ void dg_prdr ( const char *time1, const char *time2, const int *level1,
  * T. Lee/GSC		 4/96	Single dimension for dgg		*
  * K. Brill/HPC		11/02	Eliminate use of the SUBA logical array	*
  * R. Tian/SAIC          2/06   Recoded from Fortran                    *
+ * K. Brill/WPC		04/13   Return with -7 if not P, S, or C as	*
+ *                              the first character			*
  ************************************************************************/
 {
     char prm[14];
@@ -109,6 +111,14 @@ void dg_prdr ( const char *time1, const char *time2, const int *level1,
 	dg_grdr ( time1, time2, level1, level2, ivcord, prm, num, &ier );
 	if ( ier != 0 ) return;
 	signp = -1.;
+    } else {
+	/*
+	 * This must be a precipitation type accumulation beginning with
+	 * W, I, Z, A, H, G, N, R, or L; therefore, return with -7.
+	 *
+	 */
+	*iret = -7;
+	return;
     }
 
     /*

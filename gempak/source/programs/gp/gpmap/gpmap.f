@@ -129,6 +129,11 @@ C* G. McFadden/IMSG	 7/11	Added SGWH, SGWHC, SGWHE, SGWHG, SGWH2	*
 C* L. Hinson/AWC         5/12   Added ASDI                              *
 C* L. Hinson/AWC        10/12   Added EDR                               *
 C* G. McFadden/IMSG	 7/13	Added SGWHA, WSPDA			*
+C* G. McFadden/IMSG	11/13	Changed WSPDA to WSPDALT                *
+C*				Added WSPDA, WSPD2, WSPDC		*
+C* G. McFadden/IMSG	 1/14	Moved TRAK1, TRAKE, and TRAK2 into TRAK	*
+C*				added TRAKC and TRAKS to TRAK		*
+C* M. James/Unidata	 4/14	Added time back to GG_WAVE and GG_ASCT	*
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 C*
@@ -146,10 +151,9 @@ C*
      +			title*(LLMXLN), vgfile*(LLMXLN), watch*(LLMXLN),
      +			warn*(LLMXLN), wcn*(LLMXLN), wsat*(LLMXLN),
      +			wstm*(LLMXLN), wou*(LLMXLN), wcp*(LLMXLN),
-     +			ency*(LLMXLN), ffa*(LLMXLN), trkpd1*(LLMXLN),
-     +			trkpde*(LLMXLN), trkpd2*(LLMXLN),
+     +			ency*(LLMXLN), ffa*(LLMXLN), trak*(LLMXLN),
      +			gairm*(LLMXLN), osct*(LLMXLN), sgwh*(LLMXLN),
-     +                  asdi*(LLMXLN), edr*(LLMXLN), wspda*(LLMXLN)
+     +                  asdi*(LLMXLN), edr*(LLMXLN), wspdalt*(LLMXLN)
 C*
 	PARAMETER	( NM = 25, NW = 13, NN =  3, NH =  4, NI = 16, 
      +			  NA = 25, NR =  6, NC =  4, NS = 12, NT = 12,
@@ -162,7 +166,7 @@ C*
      +			atmodl(NM)*20, usrmdl(NM)*20, qarr(16)*132,
      +			wsarr(13)*132, asarr(17)*132, tparr(4)*132, 
      +			osarr(15)*132, wflg(2)*72, enmodl(NM)*20,
-     +			ewndc(4)*3, sgwh_arr(8)*132, wspda_arr(7)*132,
+     +			ewndc(4)*3, sgwh_arr(8)*132, wspdalt_arr(7)*132,
      +                  ee*1, mode*2, depdest*2, sites*125, rarr(2)*5, 
      +                  sarr(2)*5
 	INTEGER		iwclr(NM), mrktyp(NM), iwidth(NM), iflag(NG),
@@ -179,6 +183,8 @@ C*
      +			lclrow(LLCLEV), lclror(LLCLEV), lclsg1(LLCLEV),
      +			lclsgc(LLCLEV), lclsge(LLCLEV), lclsgg(LLCLEV),
      +			lclsg2(LLCLEV), lclsga(LLCLEV), lclwsa(LLCLEV), 
+     +			lclws2(LLCLEV), lclwsc(LLCLEV), lclrsk(LLCLEV), 
+     +			lclrck(LLCLEV), 
      +			lclrof(NM), lclruf(NM), lclren (NM), tcolor,
      +                  tlimit, numf, ihtinc(LLCLEV), htclr(LLCLEV),
      +                  evclr(LLCLEV), symb1, symb2, esymb1(LLCLEV),
@@ -243,7 +249,8 @@ C
      +		lclrqr, lclrwp, lclrww, lclrwr, lclraw, lclrar,
      +		lclren, enmodl, lclrff, lclr1k, lclrek, lclr2k,
      +		lclrow, lclror, lclsg1, lclsgc, lclsge, lclsgg,
-     +		lclsg2, lclsga, lclwsa, ier )
+     +		lclsg2, lclsga, lclwsa, lclws2, lclwsc, lclrsk,
+     +          lclrck, ier )
 C
 	DO WHILE  ( .not. done )
 C	
@@ -259,8 +266,8 @@ C
      +			   awpsfl, line, watch, warn, hrcn, isig,
      +                     ltng, atcf, airm, gairm, ncon, csig, svrl,
      +                     bnd, tcmg, qsct, wstm, wou, wcn, wcp, ency,
-     +                     ffa, wsat, asct, trkpd1, trkpde, trkpd2, 
-     +                     osct, sgwh, asdi, edr, wspda, iperr)
+     +                     ffa, wsat, asct, trak, osct, sgwh, asdi,
+     +                     edr, wspdalt, iperr)
 C
 	    IF  ( iperr .eq. 0 )  THEN
 C
@@ -1955,54 +1962,30 @@ C
      +                                     ilnwid, iflag, iret )
 			    END IF
 C
-C*			    Plot Altimetric Satellite (Jason-1) Ground 
+C*			    Plot Altimetric Satellite Ground 
 C*			    Track predictions.
 C
-			    IF 	( trkpd1 .ne. ' ' ) THEN
-				CALL ST_CLST ( trkpd1, '|', ' ', 3,
+			    IF 	( trak .ne. ' ' ) THEN
+				CALL ST_CLST ( trak, '|', ' ', 4,
      +					       tparr, numtp, ier )
-                                IF ( tparr(2) .eq. '' ) THEN
-                                   tcolor = lclr1k(1)
+                                IF ( tparr(3) .eq. '' ) THEN
+                                  IF ( tparr(1) .eq. 'TRAK1' ) then
+                                      tcolor = lclr1k(1)
+                                  ELSE IF ( tparr(1) .eq. 'TRAKE' ) then
+                                      tcolor = lclrek(1)
+                                  ELSE IF ( tparr(1) .eq. 'TRAK2' ) then 
+                                      tcolor = lclr2k(1)
+                                  ELSE IF ( tparr(1) .eq. 'TRAKS' ) then 
+                                      tcolor = lclrsk(1)
+                                  ELSE IF ( tparr(1) .eq. 'TRAKC' ) then 
+                                      tcolor = lclrck(1)
+                                  END IF
                                 ELSE 
-                                   CALL ST_NUMB ( tparr(2), tcolor, 
+                                   CALL ST_NUMB ( tparr(3), tcolor, 
      +                                            ier )
                                 ENDIF
-				CALL ST_NUMB ( tparr(3), iskip, ier )
-				CALL GG_TRAK ( 'TRAK1', tparr(1),
-     +					   tcolor, iskip, iret )
-			    END IF
-C
-C*			    Plot Altimetric Satellite (ENVISAT) Ground
-C*			    Track predictions.
-C
-			    IF 	( trkpde .ne. ' ' ) THEN
-				CALL ST_CLST ( trkpde, '|', ' ', 3,
-     +					       tparr, numtp, ier )
-                                IF ( tparr(2) .eq. '' ) THEN
-                                   tcolor = lclrek(1)
-                                ELSE 
-                                   CALL ST_NUMB ( tparr(2), tcolor, 
-     +                                            ier )
-                                ENDIF
-				CALL ST_NUMB ( tparr(3), iskip, ier )
-				CALL GG_TRAK ( 'TRAKE', tparr(1),
-     +					   tcolor, iskip, iret )
-			    END IF
-C
-C*			    Plot Altimetric Satellite (Jason-2) Ground
-C*			    Track predictions.
-C
-			    IF 	( trkpd2 .ne. ' ' ) THEN
-				CALL ST_CLST ( trkpd2, '|', ' ', 3,
-     +					       tparr, numtp, ier )
-                                IF ( tparr(2) .eq. '' ) THEN
-                                   tcolor = lclr2k(1)
-                                ELSE 
-                                   CALL ST_NUMB ( tparr(2), tcolor, 
-     +                                            ier )
-                                ENDIF
-				CALL ST_NUMB ( tparr(3), iskip, ier )
-				CALL GG_TRAK ( 'TRAK2', tparr(1),
+				CALL ST_NUMB ( tparr(4), iskip, ier )
+				CALL GG_TRAK ( tparr(1), tparr(2),
      +					   tcolor, iskip, iret )
 			    END IF
 C
@@ -2067,15 +2050,15 @@ C
      +                                         ier )
 			    END IF
 C
-C*			    Plot the Altika wind speed data.
+C*			    Plot the altimeter-derived wind speed data.
 C
-			    IF 	( wspda.ne. ' ' ) THEN
-				CALL ST_CLST ( wspda, '|', ' ', 7,
-     +					       wspda_arr, numsg, ier )
-				CALL ST_RLST ( wspda_arr (3), ';', 0.,
+			    IF 	( wspdalt .ne. ' ' ) THEN
+				CALL ST_CLST ( wspdalt, '|', ' ', 7,
+     +					       wspdalt_arr, numsg, ier )
+				CALL ST_RLST ( wspdalt_arr (3), ';', 0.,
      +                                         LLCLEV, tminc, numv, 
      +                                         ier )
-				CALL ST_ILST ( wspda_arr(4), ';', -1,
+				CALL ST_ILST ( wspdalt_arr(4), ';', -1,
      +                                    LLCLEV, itmclr, numclr, ier )
 				IF ( numv .gt. NZ ) numv = NZ
 				DO ii = 1, numv
@@ -2083,21 +2066,30 @@ C
 				END DO
 C
 				IF ( numclr .lt. numv ) THEN
-				    DO ii = numclr+1, numv 
+                                IF ( wspdalt_arr(1) .eq.'WSPDA' ) THEN
+				        DO ii = numclr+1, numv 
 					    itmclr (ii) = lclwsa (ii)
-				    END DO
+				        END DO
+                                ELSE IF ( wspdalt_arr(1).eq.'WSPDC')THEN
+				        DO ii = numclr+1, numv 
+					    itmclr (ii) = lclwsc (ii)
+				        END DO
+                                ELSE IF ( wspdalt_arr(1).eq.'WSPD2')THEN
+				        DO ii = numclr+1, numv 
+					    itmclr (ii) = lclws2 (ii)
+				        END DO
+                                END IF
                                 END IF
 
-                                CALL ST_NUMB ( wspda_arr(5), iskip,
+                                CALL ST_NUMB ( wspdalt_arr(5), iskip,
      +                                         ier )
-                                CALL ST_NUMB ( wspda_arr(6), interv, 
+                                CALL ST_NUMB ( wspdalt_arr(6), interv, 
      +                                         ier )
-                                CALL ST_NUMB ( wspda_arr(7), ilnclr,
+                                CALL ST_NUMB ( wspdalt_arr(7), ilnclr,
      +                                         ier )
-                                CALL GG_WAVE ( wspda_arr(1),
-     +                                         wspda_arr(2),
+                                CALL GG_WSPD ( wspdalt_arr(1),
+     +                                         wspdalt_arr(2),
      +                                         itminc, itmclr, numv,
-     +                                         mrktyp, sizmrk, mrkwid,
      +                                         iskip, interv, ilnclr,
      +                                         ier )
 			    ENDIF

@@ -43,6 +43,7 @@ C* L. Lin/NCEP   	 4/08	Allows fcst hours to 30 with new format *
 C* L. Lin/NCEP   	 4/08	Accepts the mixture of new or old report*
 C*                              time format and treats "BECM" or "BEC"  *
 C*                              as "BECMG"                              *
+C* S. Jacobs/NCEP	 1/14	Added BY as a valid start of remark	*
 C************************************************************************
 	INCLUDE 	'GEMPRM.PRM'
 C*
@@ -99,15 +100,16 @@ C
 	    END IF
 	  ELSE
 C
-C*          Check for a remark section and exclude it from processing.
+C*	    Check for a remark section and exclude it from processing.
 C
-C*          At least one station issued a report for another station
-C*          and marked with with a "BY xxxx" clause that was not
-C*          preceded by a RMK. So, look for BY or RMK to signify
-C*          a remark. 
+C*	    At least one station issued a report for another station
+C*	    and marked with with a "BY xxxx" clause that was not
+C*	    preceded by a RMK. So, look for BY or RMK to signify
+C*	    a remark. 
 C
 	    CALL ST_FIND ( 'BY', carr, num, ipos, ier )
 	    IF ( ipos .gt. 0 ) num = ipos - 1
+C
 	    CALL ST_FIND ( 'RMK', carr, num, ipos, ier )
 	    IF ( ipos .gt. 0 ) num = ipos - 1
 	END IF

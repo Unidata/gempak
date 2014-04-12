@@ -24,6 +24,8 @@ C*					  '1' = monochrome		*
 C*					  '2' = color			*
 C*	ILOGO		INTEGER		Emblem ID			*
 C*					  '1' = NOAA			*
+C*					  '2' = NWS			*
+C*					  '3' = NOAA w/o text		*
 C*									*
 C* Output parameters:							*
 C*	IRET		INTEGER		Return code			*

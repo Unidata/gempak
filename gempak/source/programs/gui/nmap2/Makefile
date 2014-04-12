@@ -129,7 +129,8 @@ NMAP_OBJS = \
 	$(ALIB)(nmap_vgf.o) \
 	$(ALIB)(nmap_vtbl.o) \
 	$(ALIB)(nmap_zoomw.o)  \
-	$(ALIB)(image_props.o)
+	$(ALIB)(image_props.o) \
+	$(ALIB)(imgpix.o)
 
 DEVLIBS = \
 	$(OS_LIB)/xwp.a \

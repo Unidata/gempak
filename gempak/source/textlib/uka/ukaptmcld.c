@@ -180,10 +180,18 @@ void uka_ptmcld ( FILE *ifpout, char *fname, FILE *fptr, long size,
 			        tmpdis = 12;
 		            }
 		            else if ( strcmp (aryptr[0], "OCNL") == 0 ) {
-		    	        tmpdis = 11;
+                                if ( strcmp(aryptr[1], "EMBD") == 0 ) {
+		    	          tmpdis = 11;
+                                } else {
+                                  tmpdis = 10;
+                                }
 		            }
                             else if ( strcmp (aryptr[0], "ISOL") == 0 ) {
-			        tmpdis = 9;
+                                if ( strcmp(aryptr[1], "EMBD") == 0 ) {
+			          tmpdis = 9;
+                                } else {
+                                  tmpdis = 8;
+                                }
 		            }
 
 		           /* 

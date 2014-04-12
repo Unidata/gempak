@@ -36,6 +36,7 @@ C* Log:									*
 C* G. McFadden/IMSG     09/10   Adapted from GG_ASCT                    *
 C* G. McFadden/IMSG     07/12   Added OAMBG1_HI, OAMBG2_HI, OAMBG3_HI,  *
 C*                              and OAMBG4_HI                           *
+C* M. James/Unidata     04/14   Added time control column 2             *
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 C*

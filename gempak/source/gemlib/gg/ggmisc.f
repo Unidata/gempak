@@ -6,7 +6,7 @@
      +                       lclren, enmodl, lclrff, lclr1k, lclrek, 
      +                       lclr2k, lclrow, lclror, lclsg1, lclsgc,
      +                       lclsge, lclsgg, lclsg2, lclsga, lclwsa,
-     +                       iret )
+     +                       lclws2, lclwsc, lclrsk, lclrck, iret )
 C************************************************************************
 C* GG_MISC                                                              *
 C*                                                                      *
@@ -19,7 +19,8 @@ C*	     LCLRAM, LCLRGAM, LCLRNC, LCLRSV, LCLRTC, LCLRWS, LCLRWO,   *
 C*           LCLROF, LCLRWU, LCLRUF, LCLCSG, LCLRQW, LCLRQR, LCLRWP,    *
 C*           LCLRWW, LCLRWR, LCLRAW, LCLRAR, LCLREN, ENMODL, LCLRFF,    *
 C*           LCLR1K, LCLREK, LCLR2K, LCLROW, LCLROR, LCLSG1, LCLSGC,    *
-C*           LCLSGE, LCLSGG, LCLSG2, LCLSGA, LCLWSA, IRET )		*
+C*           LCLSGE, LCLSGG, LCLSG2, LCLSGA, LCLWSA, LCLWS2, LCLWSC,    *
+C*           LCLRSK, LCLRCK, IRET )	                                *
 C*                                                                      *
 C* Input parameters:                                                    *
 C*      NUMC            INTEGER		Maximum number of colors/models *
@@ -72,7 +73,13 @@ C*	                                significant wave height      	*
 C*	LCLSGA(*)	INTEGER		Color numbers for Altika     	*
 C*	                                significant wave height      	*
 C*	LCLWSA(*)	INTEGER		Color numbers for Altika     	*
-C*	                                windspeed		      	*
+C*	                                wind speed		      	*
+C*	LCLWS2(*)	INTEGER		Color numbers for Jason-2    	*
+C*	                                wind speed		      	*
+C*	LCLWSC(*)	INTEGER		Color numbers for Cryosat     	*
+C*	                                wind speed		      	*
+C*	LCLRSK(*)	INTEGER		Color number for TRAKS		*
+C*	LCLRCK(*)	INTEGER		Color number for TRAKC		*
 C*      IRET            INTEGER         Return code                     *
 C*                                         0 = normal return            *
 C*                                                                      *
@@ -102,6 +109,7 @@ C* G. McFadden/SAIC	01/07	Added LCLRAW and LCLRAR and alias ASCT	*
 C* G. McFadden/SAIC	07/07	Changed description of LCLRAR from rain *
 C* 				to quality control (QC) fail	 	*
 C* G. McFadden/SAIC	12/08	Added LCLR1K, LCLREK, and LCLR2K        *
+C*                              and aliases TRAK1, TRAKE, and TRAK2     *
 C* L. Hinson/AWC        04/10   Add LCLRGAM for G-AIRMET                *
 C* G. McFadden/IMSG	 9/10	Added LCLROW and LCLROR and alias OSCT	*
 C* G. McFadden/IMSG	 7/11	Added LCLSG1, LCLSGC, LCLSGE, LCLSGG,   *
@@ -109,6 +117,10 @@ C* 				LCLSG2, and aliases SGWH, SGWHC, SGWHE, *
 C*                              SGWHG, SGWH2                            *
 C* G. McFadden/IMSG	 7/13	Added LCLSGA, LCLWSA, and aliases SGWHA *
 C*                              and WSPDA                               *
+C* G. McFadden/IMSG	11/13	Added LCLWS2, LCLWSC, and aliases WSPD2 *
+C*                              and WSPDC                               *
+C* G. McFadden/IMSG	 1/14	Added LCLRSK, LCLRCK, and aliases TRAKS *
+C*                              and TRAKC                               *
 C************************************************************************
         CHARACTER*(*)   atmodl (*),  enmodl (*)
 	INTEGER		lclrwt (*), lclrwn (*), lclrhn (*), lclris (*),
@@ -120,9 +132,10 @@ C************************************************************************
      +                  lclren (*), lclrff (*),lclr1k (*), lclrek (*), 
      +                  lclr2k (*), lclrow (*), lclror (*), lclsg1 (*),
      +                  lclsgc (*), lclsge (*), lclsgg (*), lclsg2 (*),
-     +                  lclsga (*), lclwsa (*)
+     +                  lclsga (*), lclwsa (*), lclws2 (*), lclwsc (*),
+     +                  lclrsk (*), lclrck (*)
 C*
-	PARAMETER	( NUMALS = 31 )
+	PARAMETER	( NUMALS = 35 )
 C*
         CHARACTER       alias(NUMALS)*7, buffer*80, carr(2)*8, 
      +			type(numc)*20
@@ -135,7 +148,8 @@ C*
      +                          'WCP', 'ENS_CYC', 'FFA', 'WSAT', 'ASCT',
      +                          'TRAK1', 'TRAKE', 'TRAK2', 'OSCT',
      +                          'SGWH', 'SGWHC', 'SGWHE', 'SGWHG',
-     +                          'SGWH2', 'SGWHA', 'WSPDA' /
+     +                          'SGWH2', 'SGWHA', 'WSPDA', 'WSPD2',
+     +                          'WSPDC', 'TRAKS', 'TRAKC' /
 C------------------------------------------------------------------------
         iret = 0
 C
@@ -181,6 +195,10 @@ C
  	    lclsg2 ( ii ) = 1
  	    lclsga ( ii ) = 1
  	    lclwsa ( ii ) = 1
+ 	    lclws2 ( ii ) = 1
+ 	    lclwsc ( ii ) = 1
+            lclrsk ( ii ) = 1
+            lclrck ( ii ) = 1
 	END DO
 C
 C*      Open table.
@@ -319,6 +337,20 @@ C
                     DO ii = 1, numc - 2
                         lclwsa (ii) = ldum1 (ii + 2)
                     END DO
+		  ELSE IF ( carr ( 2 ) .eq. alias ( 32 ) ) THEN
+		    CALL GG_ALIS ( lun, numc, ldum1, ldum, type, ier )
+                    DO ii = 1, numc - 2
+                        lclws2 (ii) = ldum1 (ii + 2)
+                    END DO
+		  ELSE IF ( carr ( 2 ) .eq. alias ( 33 ) ) THEN
+		    CALL GG_ALIS ( lun, numc, ldum1, ldum, type, ier )
+                    DO ii = 1, numc - 2
+                        lclwsc (ii) = ldum1 (ii + 2)
+                    END DO
+		  ELSE IF ( carr ( 2 ) .eq. alias ( 34 ) ) THEN
+		    CALL GG_ALIS ( lun, numc, lclrsk, ldum, type, ier )
+		  ELSE IF ( carr ( 2 ) .eq. alias ( 35 ) ) THEN
+		    CALL GG_ALIS ( lun, numc, lclrck, ldum, type, ier )
 		  ELSE
 		    found = .false.
 		END IF

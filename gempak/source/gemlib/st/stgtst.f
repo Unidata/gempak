@@ -26,13 +26,14 @@ C*					 -2 = substr not found in tmplt	*
 C**									*
 C* Log:									*
 C* D.W.Plummer/NCEP	 3/00						*
+C* S. Jacobs/NCEP	10/13	Increased interal strings size: 32->40	*
 C************************************************************************
 	PARAMETER	( NF = 20 )
 C
 	CHARACTER*(*)	template, string, substr, delim, outstr
 C*
 	CHARACTER	tmplt*256, str*256, sep*1
-	CHARACTER*32	ctmplt(NF), cstr(NF)
+	CHARACTER*40	ctmplt(NF), cstr(NF)
 C------------------------------------------------------------------------
 	iret = 0
 	tmplt  = template

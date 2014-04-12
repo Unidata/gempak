@@ -98,8 +98,9 @@ C* G. McFadden/IMSG	 7/12	Added OAMBG1_HI, OAMBG2_HI, OAMBG3_HI,	*
 C*                              and OAMBG4_HI                       	*
 C* S. Jacobs/NCEP	10/12	Consolidate check for ASCT data types	*
 C* L. Hinson/AWC        10/12   Add EDR                                 *
-C* G. McFadden/IMSG	 7/13	Added SGWHA and WSPDA        		*
-C* M. James/Unidata     02/14   Opened up GG_OSCT and GG_ASCT time req. *
+C* G. McFadden/IMSG	11/13	Added SGWHA, WSPDA, WSPD2, WSPDC, and   *
+C*                              GG_WSPD                                 *
+C* G. McFadden/IMSG	01/14	Added TRAKS and TRAKC                   *
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 C*
@@ -110,8 +111,7 @@ C*
 	REAL		fvalu(*), fline(*), fsym1(*), fsym2(*),
      +			farrw(*)
 C*
-	CHARACTER	ttlstr*80, newfil*160, dirnam*160,
-     +                  maxback
+	CHARACTER	ttlstr*80, newfil*160, dirnam*160
 	INTEGER		ktminc(LLCLEV), kwninc(LLCLEV), 
      +                  jclrs(LLCLEV+1), htinc(LLCLEV+1),
      +                  htclr(LLCLEV+1), evclr(LLCLEV+1),
@@ -430,9 +430,8 @@ C
 		jclrs2 (i-2) = iclrs2(i)
 	    END DO
 C
-            maxback = ''
-	    CALL GG_ASCT ( alias, dattim, maxback, kwninc, jclrs, jclrs2,
-     +		   nn, brbsiz, ibwid, ahsiz, ityp, iskip, interv, itmclr,
+	    CALL GG_ASCT ( alias, dattim, kwninc, jclrs, jclrs2, nn, 
+     +		   brbsiz, ibwid, ahsiz, ityp, iskip, interv, itmclr,
      +		   itmwid, iflgs, ier )
 C
 C
@@ -468,9 +467,8 @@ C
 		jclrs2 (i-2) = iclrs2(i)
 	    END DO
 C
-            maxback = ''
-	    CALL GG_OSCT ( alias, dattim, maxback, kwninc, jclrs, jclrs2,
-     +		   nn, brbsiz, ibwid, ahsiz, ityp, iskip, interv, itmclr,
+	    CALL GG_OSCT ( alias, dattim, kwninc, jclrs, jclrs2, nn, 
+     +		   brbsiz, ibwid, ahsiz, ityp, iskip, interv, itmclr,
      +		   itmwid, iflgs, ier )
 C
 C
@@ -545,8 +543,8 @@ C
 C
 	ELSE IF  ( alias .eq. 'SGWH' .or. alias .eq. 'SGWHE' .or. 
      +             alias .eq. 'SGWHG' .or. alias .eq. 'SSHA' .or.
-     +             alias .eq. 'SGWH2' .or. alias .eq. 'SGWHC'.or.
-     +             alias .eq. 'SGWHA' .or. alias .eq. 'WSPDA' )  THEN
+     +             alias .eq. 'SGWH2' .or. alias .eq. 'SGWHC' .or.
+     +             alias .eq. 'SGWHA' )  THEN
 	  IF  ( iclrs(1) .eq. 0 )  THEN
 		iskip = 0
 	      ELSE
@@ -571,14 +569,38 @@ C
 		jclrs (i-2) = iclrs(i)
 	    END DO
 C
-            maxback = ''
-	    CALL GG_WAVE ( alias, dattim, maxback, kwninc, jclrs,
-     +		nn, mrktyp, sizmrk, mrkwid, iskip, interv, itmclr,
+	    CALL GG_WAVE ( alias, dattim, kwninc, jclrs, nn,
+     +		mrktyp, sizmrk, mrkwid, iskip, interv, itmclr,
      +		ier )
 C
 C
+	ELSE IF  ( alias .eq. 'WSPDA' .or. alias .eq. 'WSPD2' .or. 
+     +             alias .eq. 'WSPDC' ) THEN 
+	  IF  ( iclrs(1) .eq. 0 )  THEN
+		iskip = 0
+	      ELSE
+		iskip = NINT ( fvalu(1) )
+	    END IF
+	    IF  ( iclrs(2) .eq. 0 )  THEN
+		interv = 0
+	      ELSE
+		interv = NINT ( fvalu(2) )
+	    END IF
+	    itmclr = iclrs(2)
+C
+	    nn = numc - 2
+	    DO  i = numc, 3, -1
+		kwninc(i-2) = fvalu(i)
+		jclrs (i-2) = iclrs(i)
+	    END DO
+C
+	    CALL GG_WSPD ( alias, dattim, kwninc, jclrs, nn,
+     +		iskip, interv, itmclr, ier )
+C
+C
 	  ELSE IF  ( alias .eq. 'TRAK1' .or. alias .eq. 'TRAKE' .or.
-     +               alias .eq. 'TRAK2' )  THEN
+     +               alias .eq. 'TRAK2' .or. alias .eq. 'TRAKS' .or.
+     +               alias .eq. 'TRAKC' ) THEN
             icolor = iclrs(1)
 	    IF  ( iclrs(1) .eq. 0 )  THEN
 		iskip = 0

@@ -153,7 +153,7 @@ void gg_rtrk ( char *filtyp, char *filnam, char *stime, char *etime,
 
 Boolean PathTimeCheck ( char *time, char *stime, char *etime )
 /************************************************************************
- * WaveTimeCheck                                                        *
+ * PathTimeCheck                                                        *
  *                                                                      *
  * This function uses the start and end times to determine if the       *
  * data is within the time range and may be plotted.                    *
@@ -171,6 +171,8 @@ Boolean PathTimeCheck ( char *time, char *stime, char *etime )
  **                                                                     *
  * Log:                                                                 *
  * G. McFadden/SAIC       12/08         Based on QStimeCheck            *
+ * G. McFadden/IMSG       01/14         Corrected function name in this *
+ *                                      documentation block.            *
  ***********************************************************************/
 {
 

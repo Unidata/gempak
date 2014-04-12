@@ -1915,11 +1915,15 @@ void mix_height ( float *mh_mb, float *mh_drct, float *mh_sped,
  *                                                           		*
  *  Called by 	xwvid1.c: draw_skewt()                        		*
  *  Called by 	xwvid3.c: show_mixheight()                    		*
+ *									*
+ *  T. Lee/NCWCP	2/14	Fixed surface-based and layer-based	*
+ * 				parameters always have same values	*
  ***********************************************************************/
 {
 short ii, bb, b_1;
 float thresh, lapser, lapser_1, mdrct, msped, drct, sped;
 float dt, dz;
+Boolean first_level=True;
 		
 /*----------------------------------------------------------------------*/
 
@@ -1944,7 +1948,7 @@ float dt, dz;
 		
     for  ( ii = 0; ii < sndgp->numlev-1; ii++ ) {
 
-        if  ( qc( sndgp->sndg[ii+1].temp ) && qc( sndgp->sndg[ii].temp )) {
+        if  ( qc( sndgp->sndg[ii+1].temp ) ) {
 /* ----- Set Method Values ----- */
 	    if( flag == 0 ) {
 	        bb  = 0;
@@ -1954,48 +1958,79 @@ float dt, dz;
 	        bb  = ii;
 	        b_1 = ii-1;
 	    }
+
+	    if ( first_level ) {
+	        *mh_drct	= sndgp->sndg[0].drct;
+	        *mh_sped	= sndgp->sndg[0].sped;
+		mdrct		= sndgp->sndg[0].drct;
+		msped		= sndgp->sndg[0].sped;
+	    }
 		
-/* ----- Calculate Lapse Rate ----- */
-	    dt = sndgp->sndg[ii+1].temp - sndgp->sndg[bb].temp;
-	    dz = sndgp->sndg[ii+1].hght - sndgp->sndg[bb].hght;
+/* 
+ *	    Calculate Lapse Rate ----- Temperature may be missing due to below
+ * 	    ground mandatory levels.  If that happens, lapse rate is computed
+ *	    from the ground level up.
+ */
+	    if ( qc ( sndgp->sndg[bb].temp ) ) {
+	    	dt = sndgp->sndg[ii+1].temp - sndgp->sndg[bb].temp;
+	    	dz = sndgp->sndg[ii+1].hght - sndgp->sndg[bb].hght;
+	    } else {
+	    	dt = sndgp->sndg[ii+1].temp - sndgp->sndg[0].temp;
+	    	dz = sndgp->sndg[ii+1].hght - sndgp->sndg[0].hght;
+	    }
 	    lapser = (dt / dz)*-1000;
 				
-/* ----- Test Lapse Rate ----- */
+/* -------- Test Lapse Rate ----- */
 	    if  ( lapser > thresh ) {
+		first_level = False;
 							
-/* ----- Store Maximum Wind Data ----- */
-	        drct = sndgp->sndg[ii].drct;
-	        sped = sndgp->sndg[ii].sped;
-	        if  ( drct > mdrct ) { 
-	            mdrct = drct; 
-	            msped = sped;
+/* ------------ Store Maximum Wind Data ----- */
+		if ( qc(sndgp->sndg[ii+1].drct) ) {
+	            drct = sndgp->sndg[ii+1].drct;
+	            sped = sndgp->sndg[ii+1].sped;
+	            if  ( sped >= msped ) { 
+	                mdrct = drct; 
+	                msped = sped;
+		    }
 	        }
             }
-            else if( ii == 0 ) {  /* ----- Surface Test failed, Mixing Height=Surface ----- */
-	        *mh_mb   = sndgp->sndg[ii].pres;
-	        *mh_drct = sndgp->sndg[ii].drct;
-	        *mh_sped = sndgp->sndg[ii].sped;
-	        *mh_dC	= -(sndgp->sndg[ii+1].temp - sndgp->sndg[ii].temp);
+
+/* -------- Surface Test failed, Mixing Height is at the surface ----- */
+            else if( first_level ) {  
+	        *mh_mb   = sndgp->sndg[0].pres;
+	        *mh_drct = sndgp->sndg[0].drct;
+	        *mh_sped = sndgp->sndg[0].sped;
+	        *mh_dC	= -(sndgp->sndg[ii+1].temp - sndgp->sndg[0].temp);
 	        *mh_lr	= lapser;
-	        *mh_drct_max = sndgp->sndg[ii].drct;
-	        *mh_sped_max = sndgp->sndg[ii].sped;
+	        *mh_drct_max = sndgp->sndg[0].drct;
+	        *mh_sped_max = sndgp->sndg[0].sped;
 	        return;
 	    }
-	    else if( ii > 0 ) { /* ----- Above Mixing Height ----- */
-/* ----- Calculate Previous Rate ----- */
-	        dt = sndgp->sndg[ii].temp - sndgp->sndg[b_1].temp;
-	        dz = sndgp->sndg[ii].hght - sndgp->sndg[b_1].hght;
-	        lapser_1 = (dt / dz)*-1000;
-	    }		
 
-	    *mh_mb   	= sndgp->sndg[ii-1].pres;
-	    *mh_drct	= sndgp->sndg[ii-1].drct;
-	    *mh_sped	= sndgp->sndg[ii-1].sped;
-	    *mh_dC		= -(sndgp->sndg[ii].temp - sndgp->sndg[b_1].temp);
-	    *mh_lr		= lapser_1;
-	    *mh_drct_max 	= mdrct;
-	    *mh_sped_max 	= msped;
-	    return;
+/* -------- Above Mixing Height ----- */
+	    else if( ii > 0 ) { 
+	        if ( qc ( sndgp->sndg[b_1].temp ) ) {
+	            dt = sndgp->sndg[ii].temp - sndgp->sndg[b_1].temp;
+	            dz = sndgp->sndg[ii].hght - sndgp->sndg[b_1].hght;
+		} else {
+	            dt = sndgp->sndg[ii].temp - sndgp->sndg[0].temp;
+	            dz = sndgp->sndg[ii].hght - sndgp->sndg[0].hght;
+		}
+	        *mh_dC = - dt;
+	        if ( dz != 0. ) lapser_1 = (dt / dz)*-1000;
+	        *mh_mb   = sndgp->sndg[ii].pres;
+	        if ( qc ( sndgp->sndg[ii].drct ) ) {
+	    	    *mh_drct  = sndgp->sndg[ii].drct;
+	    	    *mh_sped  = sndgp->sndg[ii].sped;
+	        } else {
+		    *mh_drct  = drct;
+	 	    *mh_sped  = sped;
+	        }
+	        *mh_lr		= lapser_1;
+	        *mh_drct_max 	= mdrct;
+	        *mh_sped_max 	= msped;
+    		return;
+	    }
 	}
     }
 }

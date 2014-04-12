@@ -20,6 +20,7 @@ C*									*
 C**									*
 C* Log:									*
 C* G. McFadden/SAIC	12/08	Modeled after gg_qsct.f			*
+C* G. McFadden/IMSG	01/14	Added TRAKS (SARAL) and TRAKC (Cryosat2)*
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 C*
@@ -33,7 +34,8 @@ C*
 	LOGICAL		done
 C-----------------------------------------------------------------------
 	IF ( filtyp .ne. "TRAK1" .and. filtyp .ne. "TRAKE" .and.
-     +       filtyp .ne. "TRAK2" ) THEN
+     +       filtyp .ne. "TRAK2" .and. filtyp .ne. "TRAKS" .and.
+     +       filtyp .ne. "TRAKC" ) THEN
 	    print *, "filtyp '", filtyp, "' unknown!"
 	    iret = -1
 	    return
@@ -97,7 +99,8 @@ C
 	IF ( ier .eq. 0 ) THEN
 
             IF ( filtyp .eq. "TRAK1" .or. filtyp .eq. "TRAKE" .or.
-     +           filtyp .eq. "TRAK2" ) THEN
+     +           filtyp .eq. "TRAK2" .or. filtyp .eq. "TRAKS" .or. 
+     +           filtyp .eq. "TRAKC" ) THEN
 
                 CALL FL_MNAM ( dattm2, templ, filnam, ier )
 

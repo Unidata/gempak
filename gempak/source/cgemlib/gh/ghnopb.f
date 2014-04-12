@@ -20,6 +20,7 @@ C* A. Hardy/GSC		 4/01	Created					*
 C* A. Hardy/GSC		 5/01	Modified text string to have name/adv # *
 C* A. Hardy/GSC		 6/01   Cleaned up prolog			*
 C* A. Hardy/NCEP	 9/02   Added Subtropical Depression		*
+C* S. Jacobs/NCEP	 3/13	Added Post-Tropical Cyclone		*
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 C
@@ -61,6 +62,8 @@ C
             type = 'SUBTROPICAL DEPRESSION'
 	  ELSE IF ( stype .eq. 'SS' ) THEN
             type = 'SUBTROPICAL STORM'
+	  ELSE IF ( stype .eq. 'PT' ) THEN
+            type = 'POST-TROPICAL CYCLONE'
         END IF
 C
         ixoff = 0

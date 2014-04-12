@@ -9,7 +9,7 @@ ALIB =
 
 COBJS = 
 
-FOBJS = 
+FOBJS = $(ALIB)(ggcwcp.o)
 
 PROG = woupdt
 PROG.f = woupdt.f

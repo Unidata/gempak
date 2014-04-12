@@ -29,6 +29,7 @@ void da_getdtrgd ( char *cycle, char* forecast,
  *	iret		int*		Return code			*
  **									*
  * S. Jacobs/NCEP	 6/13	Created					*
+ * S. Jacobs/NCEP	12/13	Added NX and NY to the script call	*
  ************************************************************************/
 {
     int		ii, gflnum, ier;
@@ -39,7 +40,7 @@ void da_getdtrgd ( char *cycle, char* forecast,
     gflnum = *iflno - 1;
 
     /* Set the arguments for input to the request script */
-    danarg = 9;
+    danarg = 11;
     daargs = (char **) malloc ( danarg * sizeof(char *) );
     for ( ii = 0; ii < danarg; ii++ ) {
 	daargs[ii] = (char *) malloc ( STRSIZE * sizeof(char) );
@@ -54,6 +55,8 @@ void da_getdtrgd ( char *cycle, char* forecast,
     strcpy ( daargs[ii], level2 ); 		ii++;
     strcpy ( daargs[ii], gvcord ); 		ii++;
     strcpy ( daargs[ii], gparm ); 		ii++;
+    sprintf ( daargs[ii], "%d", dacmn.nx ); 	ii++;
+    sprintf ( daargs[ii], "%d", dacmn.ny ); 	ii++;
 
     /* Get the data header */
     /* Run the Python script to make the actual request */

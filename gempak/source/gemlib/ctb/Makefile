@@ -41,7 +41,6 @@ COBJS = \
 	$(ALIB)(ctbg2rdlvl.o) \
 	$(ALIB)(ctbg2rdvar.o) \
 	$(ALIB)(ctbg2read.o) \
-	$(ALIB)(ctbgfa.o) \
 	$(ALIB)(ctbhfdump.o) \
 	$(ALIB)(ctbhfgetfont.o) \
 	$(ALIB)(ctbhfread.o) \

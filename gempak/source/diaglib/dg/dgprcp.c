@@ -12,6 +12,26 @@ void dg_prcp ( const char *time1, const char *time2, const int *level1,
  * it will convert from inches to millimeters or vice versa.  Finally,	*
  * it will try to compute precipitation from a rate.			*
  *									*
+ * This subroutine will also accumulate precipitation by type in a	*
+ * similar way, with the initial letter denoting the type according to  *
+ * the following:							*
+ *									*
+ *     Initial Letter      Precipitation Type				*
+ *          W                  Snowfall					*
+ *          I                  Ice pellets				*
+ *          Z                  Freezing rain                            *
+ *          A                  Rain  					*
+ *          H                  Hail 					*
+ *          G                  Graupel					*
+ *          N                  Snow melt				*
+ *          R                  Storm surface runoff			*
+ *          L                  Total liquid equivalent precipitation    *
+ *									*
+ * The last letter of the parameter name follows the accumulation	*
+ * interval and denotes inches or millimeters by I or M, respectively.  *
+ * Conversion from inches to millimeters or vice versa is supported	*
+ * for these variables as well.						*
+ *									*
  * dg_prcp ( time1, time2, level1, level2, ivcord, parm, num, iret )    *
  *									*
  * Input parameters:							*
@@ -40,6 +60,7 @@ void dg_prcp ( const char *time1, const char *time2, const int *level1,
  * T. Lee/GSC		 4/96	Single dimension for dgg		*
  * K. Brill/HPC		11/02	Eliminate use of the SUBA logical array	*
  * R. Tian/SAIC          2/06   Recoded from Fortran                    *
+ * K. Brill/WPC          4/13   Document accumulation for precip types	*
  ************************************************************************/
 {
     char pp[14], lstchr;
@@ -48,7 +69,8 @@ void dg_prcp ( const char *time1, const char *time2, const int *level1,
     *iret = -7;
 
     /*
-     * Read in the precipitation and convert between P, S, and C.
+     * Read in the precipitation and convert between P, S, and C, or
+     * read in a precipitation type accumulation (W,I,Z,A,H,G,N,R,L).
      */
     dg_prdr ( time1, time2, level1, level2, ivcord, parm, num, iret );
     if ( *iret == 0 ) return;

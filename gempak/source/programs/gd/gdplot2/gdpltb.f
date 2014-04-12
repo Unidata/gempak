@@ -65,6 +65,7 @@ C* S.Gilbert/NCEP	06/07	Moved all grid processing to GDPLTC     *
 C* S.Gilbert/NCEP	07/07	Changed DG_SUBG to DG_SUBGN		*
 C* S.Gilbert/NCEP	07/07	Removed DG_KXKY query			*
 C* S. Jacobs/NCEP	 8/13	Initialized scavld and vctvld		*
+C* M. James/Unidata     04/14   Fix for default projection on grids     *
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 	INCLUDE         'gdplot.cmn'

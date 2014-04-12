@@ -33,19 +33,20 @@ C**									*
 C* Log:									*
 C* K. Tyle/GSC		12/96	Based on ER_WMSG			*
 C* S. Maxwell/GSC	 6/97	Documentation changes			*
-C* Chiz/Unidata		11/99	Allow numerr=0				*
 C* T. Piper/SAIC	02/04	Calling sequence change for er_smsg	*
+C* S. Jacobs/NCEP	 1/14	Use larger string when adding NULL	*
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 	INCLUDE 	'ercmn.cmn'
 C*
 	CHARACTER*(*)  	errgrp, errstr 
 	CHARACTER*128	outmsg
+	CHARACTER*132	outnll
 C------------------------------------------------------------------------
 C*      Return if error number is 0 or level of error exceeds IELEVL.
 C
         iret = 0
-C       IF ( numerr .eq. 0 )  RETURN
+        IF ( numerr .eq. 0 )  RETURN
 	IF ( leverr .gt. ielevl ) RETURN
 	IF ( iebuff .eq. -1 ) RETURN
 C
@@ -56,8 +57,8 @@ C
 C
 C*	    Write the error message to the buffer.
 C
-	    CALL ST_NULL ( outmsg, outmsg, lens, ier )
-	    CALL ER_SMSG ( outmsg, ier )
+	    CALL ST_NULL ( outmsg, outnll, lens, ier )
+	    CALL ER_SMSG ( outnll, ier )
 	  ELSE
 C
 C*	    Write the error message to the terminal.

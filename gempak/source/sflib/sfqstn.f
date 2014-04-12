@@ -11,7 +11,7 @@ C* SF_QSTN  ( ISFFLN, STID, ISTNM, SLAT, SLON, SELV, ISPRI, STAT,       *
 C*            COUN, IRET )						*
 C*									*
 C* Input parameters:							*
-C*	ISFFLN		INTEGER		Sounding file number		*
+C*	ISFFLN		INTEGER		Surface file number		*
 C*									*
 C* Output parameters:							*
 C*	STID		CHAR*8		Station identifier		*
@@ -31,6 +31,7 @@ C* Log:									*
 C* M. desJardins/GSFC	 8/87						*
 C* K. Brill/NMC		 8/93	Changes for 8-char stn id (STD2) 	*
 C* A. Hardy/GSC          3/99   Changed calling sequence; added ispri   *
+C* M. James/Unidata      4/14   Changed input parameter description     *
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 	INCLUDE		'GMBDTA.CMN'

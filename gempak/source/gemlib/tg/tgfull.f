@@ -25,12 +25,12 @@ C* M. desJardins/GSFC	 4/89	Changed grid time routines		*
 C* M. desJardins/GSFC	 5/89	Add last time if only Fxx is entered	*
 C*				Add I time				*
 C* M. desJardins/GSFC	12/89	Fixed // for Apollo			*
-C* J. Whistler/SSAI	 4/91	Dont assume same grid type as lasttm	*
+C* J. Whistler/SSAI	 4/91	Don't assume same grid type as lasttm	*
 C*				if not specified in time, assume 'A'	*
 C************************************************************************
 	CHARACTER*(*)	gdattm, firstm, lasttm, fulltm
 C*
-	CHARACTER	ttime*20, time*20, ftype*1, ftime*8, ttt*20
+	CHARACTER	time*20, ftype*1, ftime*8, ttt*20
 	INTEGER		intdtf (3)
 C------------------------------------------------------------------------
 	iret   = 0
@@ -117,9 +117,8 @@ C
 C
 C*	Get the full GEMPAK time.  TIME was reset to the date/time part.
 C
-	CALL TI_STAN  ( time, lasttm, ttime, iret )
-	time = ttime
-        IF  ( iret .ne. 0 )  RETURN
+	CALL TI_STAN  ( time, lasttm, time, iret )
+	IF  ( iret .ne. 0 )  RETURN
 C
 C*	Build the full grid time.
 C

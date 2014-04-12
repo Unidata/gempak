@@ -84,6 +84,7 @@ void dir_getflist ( struct datatype_list *dtyp_info, int idtyp,
  * T. Piper/SAIC	03/04	fixed logic on scandir status		*
  * M. Li/SAIC		01/08	_selectdir -> _select_dir		*
  * T. Piper/SAIC	02/08	Initialize namelist to NULL		*
+ * S. Jacobs/NCEP	 4/13	Added checks for TAFS_DEC 		*
  * M. James/Unidata	10/09	changed _exten for "_" file exts	*	
  ***********************************************************************/
 {
@@ -113,21 +114,33 @@ struct date_time_info	curtim;
 	else {
 	    SET_DTTM(startdttm, curtim);
 	    if ( dtyp_info[idtyp].bsflag[0] == 'O' ) {
-		sprintf( _sdttm, "%04d%02d%02d",
+		if ( strcmp ( dtyp_info[idtyp].datatyp, "TAFS_DEC" ) == 0 ) {
+		  sprintf( _sdttm, "%04d%02d%02d%02d",
+                      startdttm.year, startdttm.month,
+                      startdttm.day,  startdttm.hour );
+              }
+              else {
+                   sprintf( _sdttm, "%04d%02d%02d",
 	      		startdttm.year, startdttm.month,
 	      		startdttm.day );
+	        }
 	    }
 	    else {
 		sprintf( _sdttm, "%04d%02d%02d%02d",
 	      		startdttm.year, startdttm.month,
 	      		startdttm.day,  startdttm.hour );
-	    }
+	     }
 	}
 
 /*
  * set the ending time 
  */
 	SET_DTTM(enddttm, curtim);
+	if ( strcmp ( dtyp_info[idtyp].datatyp, "TAFS_DEC" ) == 0 ) {
+	    sprintf( _edttm, "%04d%02d%02d%02d",
+                  enddttm.year, enddttm.month,
+                  enddttm.day,  enddttm.hour );
+        }
 	if ( dtyp_info[idtyp].bsflag[0] == 'O' ) {
 		sprintf( _edttm, "%04d%02d%02d",
 		      enddttm.year, enddttm.month,

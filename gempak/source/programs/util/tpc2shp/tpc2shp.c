@@ -177,6 +177,8 @@ FILE* OpenKmlFile ( char *filename, char *dataType);
  * 				international dateline.  The changes are 
  * 				isolated to 2 new functions: DateLine and 
  * 				DateLineCone.  
+ * S. Jacobs/NCEP	 3/13	Initialized kml_fptr to NULL to avoid
+ * 				Seg Fault errors
  ***********************************************************************/
 int main ( int argc, char **argv )
 
@@ -194,7 +196,7 @@ int main ( int argc, char **argv )
 	char		wwkml[132], lkml[132], pgnkml[132];
 	long		ifilesize;
 	int		c,i,nl,np,npgn, vgfType;
-	FILE		*ifptr, *kml_fptr;
+	FILE		*ifptr, *kml_fptr=NULL;
 	DBFHandle pDBF;		/* handle for point dBase file */
 	DBFHandle lDBF;		/* handle for line dBase file */
 	DBFHandle pgnDBF;	/* handle for polygon dBase file */

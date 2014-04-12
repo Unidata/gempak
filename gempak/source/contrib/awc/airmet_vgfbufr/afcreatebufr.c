@@ -432,6 +432,7 @@ void initBUFR(BUFR_Info_t *bufr_info, char *bufrfilename, char *dateStamp,
   L. Hinson/AWC     01/06
   L. Hinson/AWC     01/10    Changed to reference version 13 tables
   S. Jacobs/NCO     05/13    Changed to reference version 19 tables
+  S. Jacobs/NCO     10/13    Changed to reference version 13 tables, again
   ****************************************************************************/
 
   /* Initialize the BUFR information structure. */
@@ -451,7 +452,7 @@ void initBUFR(BUFR_Info_t *bufr_info, char *bufrfilename, char *dateStamp,
   bufr_info->DataCategory = 13;            /* GFA - Set to 13 - Forecasts -
 Table A */
   bufr_info->DataSubCategory = (int)tp + 1;  /* BUFR message sub-type */
-  bufr_info->VersionNumberOfMasterTables = 19;
+  bufr_info->VersionNumberOfMasterTables = 13;
   bufr_info->VersionNumberOfLocalTables  = 0; /* No local tables */
   bufr_info->Century                     = 20;
   bufr_info->Num_Data_Sets               = 1;

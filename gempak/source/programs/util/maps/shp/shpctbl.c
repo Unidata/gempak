@@ -305,6 +305,7 @@ static void tbl_mari ( shp_record *shprec, int numrec, int *iret )
  **                                                                     *
  * Log:                                                                 *
  * R. Tian/SAIC          3/04   	Initial coding                  *
+ * S. Gilbert/NCEP      11/13       Restrict fulnam to 250 chars        *
  ***********************************************************************/
 {
     shp_record *currec;
@@ -313,7 +314,7 @@ static void tbl_mari ( shp_record *shprec, int numrec, int *iret )
      * specification.
      */
     char id[7], fulnam[251], shrnam[33], wfonam[4], stabbr[3];
-    int ifips, istno, izone, ilat, ilon;
+    int ifips, istno, izone, ilat, ilon, fullen=250;
     int irec, jfld, len, ier;
     char *tblnam = MARINETBL;
     float shplat, shplon;
@@ -332,8 +333,8 @@ static void tbl_mari ( shp_record *shprec, int numrec, int *iret )
         for ( jfld = 0; jfld < currec->numfld; jfld++ ) {
             if ( strncmp ( currec->fields[jfld].name, "ID",
                 strlen("ID") ) == 0 ) {
-		strncpy ( id, currec->fields[jfld].data, 6 );
-		id[6] = '\0';
+		        strncpy ( id, currec->fields[jfld].data, 6 );
+		        id[6] = '\0';
                 strncpy ( stabbr, currec->fields[jfld].data, 2 );
                 stabbr[2] = '\0';
                 izone = atoi ( currec->fields[jfld].data + 3 );
@@ -346,18 +347,23 @@ static void tbl_mari ( shp_record *shprec, int numrec, int *iret )
             } else if ( strncmp ( currec->fields[jfld].name, "WFO",
                 strlen ( "WFO" ) ) == 0 ) {
                 strncpy ( wfonam, currec->fields[jfld].data, 3 );
-		wfonam[3] = '\0';
+		        wfonam[3] = '\0';
             } else if ( strncmp ( currec->fields[jfld].name, "NAME",
                 strlen ( "NAME" ) ) == 0 ) {
-                strcpy ( fulnam, currec->fields[jfld].data );
-		cst_lstr ( fulnam, &len, &ier );
-		fulnam[len] = '\0';
+        		if (strlen(currec->fields[jfld].data) <= fullen )
+                    strcpy ( fulnam, currec->fields[jfld].data );
+        		else {
+        			strncpy ( fulnam, currec->fields[jfld].data, fullen );
+        		    fulnam[fullen]='\0';
+                }
+		        cst_lstr ( fulnam, &len, &ier );
+		        fulnam[len] = '\0';
                 cst_rspc ( fulnam, &ier );
-		abbreviate ( fulnam, 32, shrnam, &ier );
-	    } else if ( strncmp ( currec->fields[jfld].name, "LAT",
+		        abbreviate ( fulnam, 32, shrnam, &ier );
+	        } else if ( strncmp ( currec->fields[jfld].name, "LAT",
                 strlen("LAT") ) == 0 ) {
                 shplat = atof ( currec->fields[jfld].data );
-	    } else if ( strncmp ( currec->fields[jfld].name, "LON",
+	        } else if ( strncmp ( currec->fields[jfld].name, "LON",
                 strlen("LON") ) == 0 ) {
                 shplon = atof ( currec->fields[jfld].data );
             }

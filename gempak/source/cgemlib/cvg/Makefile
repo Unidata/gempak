@@ -107,7 +107,9 @@ COBJS = \
 	$(ALIB)(cvgwritgfa.o) \
 	$(ALIB)(cvgwrittc.o) \
 	$(ALIB)(cvgwrittca.o) \
-	$(ALIB)(compareVgf.o)
+	$(ALIB)(compareVgf.o) \
+	$(ALIB)(ggdvgf.o) \
+	$(ALIB)(ctbgfa.o)
 
 GDIR = cvg
 

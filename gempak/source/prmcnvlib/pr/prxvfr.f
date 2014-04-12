@@ -23,10 +23,18 @@ C* Log:									*
 C* J. Green/AWC		6/99	Original source code			*
 C* D. Kidwell/NCEP	7/99	Restructured         			*
 C* D. Kidwell/NCEP	5/00	Added LIFR (Low Instrument Flight Rules)*
-C* S. Chiswell/Unidata	3/07	Check for floating point fuzziness	*
+C* L. Hinson/AWC        1/14    Added fix for comparisons to CIG/VSBY   *
+C*                              on borderline MVFR thresholds.          *
 C************************************************************************
         INCLUDE         'GEMPRM.PRM'
         INCLUDE         'ERMISS.FNC'
+C       This parameter is used in the .le. comparisons to VSBY/CIG
+C       on borderline MVFR conditions.  There was a problem found with
+C       system not storing 5 SM as exactly 5.0, but something slightly
+C       higher causing problems with .le comparisons.  This caused 
+C       certain TAFs/METARs to read VFR, when they should be MVFR.
+C
+        PARAMETER       ( EPS = .01 )
 C------------------------------------------------------------------------
 C*      Check for missing values.
 C
@@ -45,9 +53,10 @@ C
 		vc = 0.
               ELSE IF ( ceil .lt. 10. ) THEN
 		vc = 1.
-	      ELSE IF ( ceil .le. 30.001 ) THEN
+	      ELSE IF ( ceil .le. (30. + EPS) ) THEN
 		vc = 2.
-	      ELSE IF ( ( vsby .gt. 5. ) .or. ( vsby .lt. 0. ) .or.
+	      ELSE IF ( ( vsby .gt. (5. + EPS) ) .or. 
+     +                  ( vsby .lt. 0. ) .or.
      +			( ERMISS ( vsby ) ) ) THEN
 		PR_XVFR = 3.
 		RETURN
@@ -63,7 +72,7 @@ C
 		vs = 0.
 	      ELSE IF ( vsby .lt. 3. ) THEN
 		vs = 1.
-	      ELSE IF ( vsby .le. 5.001 ) THEN 
+	      ELSE IF ( vsby .le. (5. + EPS) ) THEN 
 		vs = 2.
 	      ELSE
 		vs = 3.

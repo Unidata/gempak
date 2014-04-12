@@ -13,6 +13,7 @@ C*									*
 C* Input parameters:							*
 C*	FILTYP		CHAR*		File type; i.e., 'SGWH', 'SSHA'	*
 C*	DATTIM		CHAR*		Ending time for WAVE		*
+C*	MAXBACK		CHAR*		Time back to display (mins)	*
 C*	KWNINC(*)	INTEGER		WAVE increments			*
 C*	KCOLRS(*)	INTEGER		Color for each WAVE increment	*
 C*	NUMC		INTEGER		Number of WAVE intervals	*
@@ -40,6 +41,10 @@ C*                              significant wave height.	        *
 C* G. McFadden/IMSG	 7/13	Added support for Altika         	*
 C*                              significant wave height (SGWHA) and 	*
 C*                              wind speed (WSPDA).                 	*
+C* G. McFadden/IMSG     11/13   Moved support for Altika windspeed to   *
+C*                              GG_WSPD                                 *
+C* M. James/Unidata      4/14   Added input parm for maximum time back  *
+C*                              to display.                             *
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 C*
@@ -47,7 +52,7 @@ C*
 	INTEGER		kwninc (*), kcolrs (*)
 C*
 	CHARACTER	path*25, templ*(MXTMPL), cday*3, cdttm*20,
-     +			dattm2*20, dattm3*20, tfile*128, cyyyy*4,
+     +			dattm2*20, tfile*128, cyyyy*4,
      +			flstrt*160
 	CHARACTER*(MXFLSZ)      filnam, files(MXNMFL), fnull
 	CHARACTER cstmin*(20), cval*(20), stime*(20)
@@ -58,7 +63,7 @@ C-----------------------------------------------------------------------
 	IF ( filtyp .ne. "SGWH" .and. filtyp .ne. "SSHA" .and.
      +       filtyp .ne. "SGWHG" .and. filtyp .ne. "SGWHE" .and.
      +       filtyp .ne. "SGWH2" .and. filtyp .ne. "SGWHC" .and.
-     +       filtyp .ne. "SGWHA" .and. filtyp .ne. "WSPDA" )  THEN
+     +       filtyp .ne. "SGWHA" )  THEN
 	    print *, "filtyp '", filtyp, "' unknown!"
 	    iret = -1
 	    return
@@ -179,7 +184,7 @@ C
 	IF ( ier .eq. 0 .and. ( filtyp .eq. "SGWH" .or. 
      +       filtyp .eq. "SGWH2" .or. filtyp .eq. "SGWHE" .or.
      +       filtyp .eq. "SGWHG" .or. filtyp .eq. "SGWHC" .or.
-     +       filtyp .eq. "SGWHA" .or. filtyp .eq. "WSPDA" )   ) THEN
+     +       filtyp .eq. "SGWHA" )   ) THEN
 C
 C*  This data source exists.  Make the file name for the
 C*  last file requested.

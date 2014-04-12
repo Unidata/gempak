@@ -1,5 +1,5 @@
-	SUBROUTINE TF_DCOD ( curtim, gemfil, stntbl, prmfil, iadstn,
-     +			     maxtim, nhours, cirflg, iret )
+	SUBROUTINE TF_DCOD ( curtim, gemfil, stntbl, blktbl, prmfil,
+     +			     iadstn, maxtim, nhours, cirflg, iret )
 C************************************************************************
 C* TF_DCOD								*
 C*									*
@@ -7,13 +7,14 @@ C* This routine decodes TAF bulletins and writes the data to a GEMPAK   *
 C* surface forecast file.  See WMO alphanumeric code type FM 51 for     *
 C* documentation on the TAF format.			 		*
 C*									*
-C* TF_DCOD ( CURTIM, GEMFIL, STNTBL, PRMFIL, IADSTN, MAXTIM, NHOURS,	*
-C*	     IRET )					                *
+C* TF_DCOD ( CURTIM, GEMFIL, STNTBL, BLKTBL, PRMFIL, IADSTN, MAXTIM,	*
+C*	     NHOURS, IRET )					        *
 C*									*
 C* Input parameters:							*
 C*	CURTIM		CHAR*		Current time for input data	*
 C*	GEMFIL		CHAR*		Output file name template	*
 C*	STNTBL		CHAR*		Station table			*
+C*	BLKTBL		CHAR*		Black-list table		*
 C*	PRMFIL		CHAR*		Parameter packing table		*
 C*	IADSTN		INTEGER		Number of additional stations	*
 C*	MAXTIM		INTEGER		Number of times allowed		*
@@ -40,11 +41,12 @@ C*                              with time records validated against     *
 C*                              current time via call to TF_VTIM        *
 C* L. Lin/NCEP        11/08     Allow gempak file to span available slot*
 C*                              up to 30 hour                           *
+C* S. Jacobs/NCEP      3/14	Added black-list station table		*
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 	INCLUDE		'BRIDGE.PRM'
 C*
-	CHARACTER*(*)	curtim, gemfil, stntbl, prmfil
+	CHARACTER*(*)	curtim, gemfil, stntbl, blktbl, prmfil
 C*
 	CHARACTER	bull*(DCMXBF), rpt*(DCMXBF), bulsav*(DCMXBF),
      +			sysdt*12, dattmp*12, filnam*132, errstr*80,
@@ -60,6 +62,12 @@ C*
      +			pkflg, vtimflg
 	REAL		rdata (48,MMPARM), adata (MMPARM), 
      +			obscmt (LLSTFL)
+C*
+	CHARACTER	stidb(LLSTFL)*8, stnamb(LLSTFL)*32,
+     +			statb(LLSTFL)*2, counb(LLSTFL)*2,
+     +			tbchb(LLSTFL)*20, cpos*8
+	INTEGER		istnmb(LLSTFL), isprb(LLSTFL)
+	REAL		slatb(LLSTFL), slonb(LLSTFL), selvb(LLSTFL)
 C*
 	PARAMETER	( NUMPRM = 26 )
 	PARAMETER	( NUMEXT = MMPARM - NUMPRM )
@@ -87,6 +95,19 @@ C
 	addstn = .true.
 	iflsrc = MFUNKN + MFTEXT 
 	offtim = .false.
+C
+C*	Read the list of stations in the black list. These stations
+C*	will not be processed. 
+C
+	CALL FL_TBOP ( blktbl, 'stns', lunb, ier )
+	IF  ( ier .eq. 0 )  THEN
+	    CALL TB_ASTN ( lunb, LLSTFL, nblk, stidb, stnamb, istnmb,
+     +			statb, counb, slatb, slonb, selvb, isprb,
+     +			tbchb, ierb )
+	    CALL FL_CLOS ( lunb, ier )
+	ELSE
+	    nblk = 0
+	END IF
 C
 C*	Get the mountain obscuration values.
 C
@@ -210,6 +231,14 @@ C
 		        CALL TF_GRPT ( bull ( ibptr:lenb ), lpart, iptr,
      +		                       rpt ( :lenb ), lenr, stid, cntry,
      +				       iret )
+C
+			IF  ( iret .eq. 0 )  THEN
+			    CALL ST_FIND ( stid, stidb, nblk,
+     +					   ipos, ier )
+			    IF  ( ipos .ne. 0 )  THEN
+				iret = -1
+			    END IF
+			END IF
 			iptr = iptr + ibptr
 		      ELSE
 			iret = -2

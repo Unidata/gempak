@@ -77,6 +77,7 @@ void gg_update ( char *vname, char *iname, int *cur_layer, char *catmap,
  * D.W.Plummer/NCEP	02/06	Don't call crg_build if .DEFAULT.vgf	*
  * G.McFadden/SAIC	08/07	Added group WHFT			*
  * F. J. Yen/NCEP	01/08	Added groups EXT_FIRE and EXT_SVR	*
+ * S. Jacobs/NCEP	 4/13	Added groups ENHxx for enhanced thunder	*
  ***********************************************************************/
 {
 int             ii, ier, ng, ne, nn, nint, nel, nelm, fpos, el_layer;
@@ -94,7 +95,8 @@ float           fnum, cint[200];
                                    "HAILOTLK", "TORNOTLK", "WINDOTLK",
                                    "TOTL_SVR", "FIREOUTL", "CATG_SVR",
                                    "TSTMOLK", "WHFT", "EXT_FIRE",
-				   "EXT_SVR" };
+				   "EXT_SVR", "ENH20", "ENH00", "ENH04",
+				   "ENH12", "ENH16" };
 int             ngrp, numgrp;
 
 FILE           *ggfpt;

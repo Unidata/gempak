@@ -25,11 +25,13 @@ C**								        *
 C* Log:								        *
 C* D. Kidwell/NCEP       9/02                                           *
 C* L. Lin/NCEP           4/08 Fixed bugs - IPTRH may out of range in rpt*
+C* L. Hinson/AWC         12/13  Fix decode issue with Milatary TAFS     *
 C************************************************************************
 	CHARACTER*(*)	rpt
 C*
 	CHARACTER	strdat*11, carr (5)*20
 	LOGICAL 	numer6 (2)
+        LOGICAL         dttmchk
 C------------------------------------------------------------------------
         iret  = -1 
 	iptrh = 1
@@ -111,6 +113,29 @@ C
 		iptrh = INDEX ( rpt ( :lenr ), carr ( 1 ) ( :6 ) )
 		iret  = 1
 	    END IF
+            IF ( iret .eq. -1 ) THEN
+C*            Check if Military TAF format, where we have starting forecast
+C*            time group in DDHH/DDHH format.
+              CALL ST_LSTR ( carr ( 1 ), lens, ier )
+              dttmchk = .true.
+              IF ( lens .eq. 9 ) THEN
+                 DO jj = 1, 4
+                    CALL ST_ALNM (carr (1) (jj:jj), ityp, ier )
+                    IF (ityp .ne. 1) dttmchk = .false.
+                 ENDDO
+                 DO jj = 6, 9        
+                   CALL ST_ALNM (carr(1) (jj:jj), ityp, ier )
+                   IF (ityp .ne. 1) dttmchk = .false.
+                 END DO
+                 IF (carr(1) (5:5) .ne. '/') dttmchk = .false.
+              ELSE
+                dttmchk = .false.
+              END IF
+              IF (dttmchk) THEN
+                 iptrh = INDEX ( rpt ( :lenr ), carr ( 1 ) ( :8 ) )
+                 iret = 1
+              END IF
+            END IF              
 	END IF
 C*
 	RETURN

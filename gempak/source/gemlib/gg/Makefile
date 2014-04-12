@@ -8,14 +8,14 @@ include $(CONFIGDIR)/$(MAKEINC)
 ALIB = $(GEMLIB)
 
 COBJS = \
-	$(ALIB)(ggdvgf.o) \
 	$(ALIB)(ggosrd.o) \
 	$(ALIB)(ggqbrd.o) \
 	$(ALIB)(ggqsrd.o) \
 	$(ALIB)(ggrtrk.o) \
 	$(ALIB)(ggwcpb.o) \
 	$(ALIB)(ggwcvf.o) \
-	$(ALIB)(ggwlso.o)
+	$(ALIB)(ggwlso.o) \
+	$(ALIB)(ggrwsp.o)
 
 FOBJS = \
 	$(ALIB)(ggairm.o) \
@@ -90,6 +90,7 @@ FOBJS = \
 	$(ALIB)(ggwsat.o) \
 	$(ALIB)(ggwsrd.o) \
 	$(ALIB)(ggwstm.o) \
+	$(ALIB)(ggwspd.o) \
 	$(ALIB)(ggwstr.o) \
 	$(ALIB)(ggwtch.o) \
 	$(ALIB)(ggwusc.o) \

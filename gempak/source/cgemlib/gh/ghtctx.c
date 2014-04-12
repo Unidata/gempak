@@ -275,6 +275,7 @@ static void gh_rdvg ( char * fileName, char * stType, char * validTime,
  * S. Gilbert/NCEP	10/07   Added return of pacific coast sbkpts    *
  * m.gamazaychikov/SAIC	12/07   Added return of Hawaiian islands bkpts  *
  * C. Lauer/NHC         03/11   Add PuertoRico, change US Virgin Islands*
+ * S. Jacobs/NCEP	 3/13	Add check for storm type 5 = PT		*
  ***********************************************************************/
 {
    int 		iret, stormNum, year, basin, stormType, wwNum;
@@ -562,6 +563,11 @@ static void gh_rdvg ( char * fileName, char * stType, char * validTime,
           case 4:
 		
 		strcpy ( stType, "SD" );
+		break;
+
+          case 5:
+		
+		strcpy ( stType, "PT" );
 		break;
 
 	  default:

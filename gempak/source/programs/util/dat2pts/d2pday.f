@@ -31,6 +31,7 @@ C* F. J. Yen/NCEP	11/04	Generalized D2PDAY1, D2PDAY2, & D2PDAY3 *
 C* G. Grosshans         01/06   Updated to include fire weather outlooks*
 C* F. J. Yen/NCEP	10/07	Added Day 3-8 fire wx & Day 4-8 svr wx  *
 C* G. Grosshans/SPC	02/10	Added Enh TSTM outlooks			*
+C* G. Grosshans/SPC     12/13   Updated Day 4-8 processing              *
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 C*
@@ -42,7 +43,8 @@ C*
      +			edate(NFILE,6)*30,
      +			filnam*(MXFLSZ), buffer*(LLMXLN),
      +			range*(LLMXLN), infile*(MXFLSZ),
-     +			fcstr*(LLMXLN), chday(5)*2, chday2(5)*3
+     +			fcstr*(LLMXLN), chday(9)*2, chday2(9)*3
+C*     +			fcstr*(LLMXLN), chday(5)*2, chday2(5)*3
         CHARACTER       otlktyp*1 
         CHARACTER       idate*2, ndate*2, ehour*4
 	LOGICAL		found, catflg
@@ -70,8 +72,10 @@ C*
      +				5*' ',
      +				'1200', '1600', '2000', '0000',
      +				'0400' /
-	DATA		chday  / '1', '2', '3', '38', '48' /
-	DATA		chday2 / '1', '2', '3', '3-8', '4-8' /
+C*	DATA		chday  / '1', '2', '3', '38', '48' /
+C*	DATA		chday2 / '1', '2', '3', '3-8', '4-8' /
+	DATA		chday  / '1', '2', '3', '38', '4', '5', '6', '7', '8' /
+	DATA		chday2 / '1', '2', '3', '3-8', '4', '5', '6', '7', '8' /
 C------------------------------------------------------------------------
 	iret = 0
 	fcstr = ' '
@@ -114,7 +118,7 @@ C
 	        ndx  = 1
                 inumndx = 0
 	      ELSE IF ( iday .eq. 48 ) THEN
-	        nfil = 1
+	        nfil = 5
 	        ndx  = 5
                 inumndx = 0
 	      ELSE
@@ -166,8 +170,14 @@ C
 C
 C*	    Get the necessary string lengths.
 C
-	    CALL ST_LSTR ( dattyp(i,ndx), lent, ier )
-	    CALL ST_LSTR ( filtyp(i,ndx), lenf, ier )
+            IF ( otlktyp .ne. 'E' .and. iday .eq. 48 .and. 
+     +           i .ge. 2 ) THEN   
+	      CALL ST_LSTR ( dattyp(1,ndx), lent, ier )
+	      CALL ST_LSTR ( filtyp(1,ndx), lenf, ier )
+            ELSE
+	      CALL ST_LSTR ( dattyp(i,ndx), lent, ier )
+	      CALL ST_LSTR ( filtyp(i,ndx), lenf, ier )
+            END IF
 C
 C*	    Create the input file name.
 C*          For Enhanced TSTM outlooks its a day 1 so
@@ -179,8 +189,10 @@ C
 	        lday = 2
 	        l2day = 3
 	      ELSE IF ( iday .eq. 48 ) THEN
-		jday = 5	
-	        lday = 2
+C*		jday = 5	
+C*	        lday = 2
+                jday = i + 4
+	        lday = 1
 	        l2day = 3
 	      ELSE
 		jday = iday
@@ -188,9 +200,17 @@ C
 	        l2day = 1
 	    END IF
 
-            IF ( otlktyp .ne. 'E' ) THEN
+C*
+C*          Handle Day 4-8 first
+C*
+            IF ( otlktyp .ne. 'E' .and. iday .eq. 48 .and. 
+     +           i .ge. 2 ) THEN   
+               filnam = 'ext_svroutlook_DAY' //
+     +         chday(jday)(:lday) // '_' // date(:lend) // 'Z.dat'
+            ELSE IF ( otlktyp .ne. 'E' ) THEN
 	       filnam = filtyp(i+inumndx,ndx)(:lenf) // '_DAY' // 
      +	       chday(jday)(:lday) // '_' // date(:lend) // 'Z.dat'
+
             ELSE
 C*
 C*	       ENHANCED TSTM OUTLOOK
@@ -249,7 +269,7 @@ C
 C*	    	If this is the first file, write the valid times to the
 C*	    	output file.  If this is ENH-TSTM product then write
 C*		valid times for each time-period/file.
-C
+C*C
 		IF  ( (i .ge. 2 ) .AND. ( otlktyp .eq. 'E' ))  THEN
 		    WRITE ( lun, 1009 )
 1009		    FORMAT ( ' ', A , / )
@@ -283,16 +303,27 @@ C*		  Categorical header to the output file and set the
 C*		  categorical flag catflg.  (Since it is not the first
 C*		  file, it won't be for an extended outlook.)
 C
-                  ELSE IF  ( (i .eq. nfil) .and.
-     +                       (otlktyp .eq. 'C') ) THEN
-		    WRITE ( lun, 1040 ) chday2 (iday)
-1040		    FORMAT ( /, 'CATEGORICAL OUTLOOK POINTS DAY ', a1 )
-		    catflg = .true.
+                ELSE IF ( otlktyp .ne. 'E' .and. iday .eq. 48 .and. 
+     +                    i .ge. 2 .and. i .le. nfil ) THEN   
+C*                 DAY 4-8 SEVERE WEATHER OUTLOOK POINTS LABEL     
+		   WRITE ( lun, 1009 )
+       		   WRITE ( lun, 1020 ) chday2 (jday) (:l2day)
+
+                ELSE IF  ( (i .eq. nfil) .and. iday .ne. 48 .and.
+     +                     (otlktyp .eq. 'C') ) THEN
+		   WRITE ( lun, 1040 ) chday2 (iday)
+1040		   FORMAT ( /, 'CATEGORICAL OUTLOOK POINTS DAY ', a1 )
+		   catflg = .true.
 		END IF
 C
 C*	    	Write the data type to the output file.
 C
-		WRITE ( lun, 1030 ) dattyp(i,ndx)(:lent)
+                IF ( otlktyp .ne. 'E' .and. iday .eq. 48 .and. 
+     +               i .ge. 2 ) THEN   
+		  WRITE ( lun, 1030 ) dattyp(1,ndx)(:lent)
+                ELSE
+		  WRITE ( lun, 1030 ) dattyp(i,ndx)(:lent)
+                END IF
 1030	    	FORMAT ( /, '... ', A, ' ...', / )
 C
 C*	    	Process the labels and points of the outlook lines.

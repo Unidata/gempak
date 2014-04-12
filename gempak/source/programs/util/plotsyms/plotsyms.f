@@ -55,6 +55,7 @@ C* S. Jacobs/NCEP	 5/09	Added special symbols 55, 56		*
 C* S. Jacobs/NCEP	 5/09	Set XW window size to 1000x770		*
 C* L. Hinson/AWC        07/09   Add special symbols 57 & 58             *
 C* S. Jacobs/NCEP	 4/10	Use XW dimensions for the GF driver	*
+C* S. Jacobs/NCEP	 2/14	Added GIF driver as an option		*
 C************************************************************************
 	CHARACTER	str*32, device*12, filnam*72
 	CHARACTER	title*64, info*32, csize*12, cwidth*12
@@ -231,6 +232,10 @@ C
 		  ELSE IF ( device .eq. 'NC' )  THEN
 		    filnam = 'Nmeta'
 		  ELSE IF ( device .eq. 'GF' )  THEN
+		    filnam = 'gempak.gif'
+		    xsize  = 1000
+		    ysize  =  770
+		  ELSE IF ( device .eq. 'GIF' )  THEN
 		    filnam = 'gempak.gif'
 		    xsize  = 1000
 		    ysize  =  770

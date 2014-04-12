@@ -107,6 +107,7 @@ C* X. Guo/CWS		04/10   Fixed POST-TROP point display problem   *
 C* X. Guo/CWS		05/10   Changed "DISSIPATING" to "DISSIPATED"   *
 C* X. Guo/CWS           05/10   Added idays to GH_TCLB                  *
 C* S. Jacobs/NCEP	 6/10	Re-added flag for plotting the scale	*
+C* S. Jacobs/NCEP	 4/13	Added smoothing for the track and cone	*
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 	INCLUDE		'ghcmn.cmn'
@@ -132,17 +133,18 @@ C*
 C*
 	INTEGER	        numbkp(50),numb(4), ibkpts(4,100),
      +                  iarea(4,100),isev(50), iadvtp(50),
-     +                  igeog(50), icnt (4, 50),
+     +                  igeog(50), icnt (4, 50), kpos(MXPTS),
      +                  ibkcur(MAXBK), iarcur(MAXBK), nppart(20)
 C*
-        REAL            slat(NUMHR), slon(NUMHR), alat(NUMHR), 
-     +			alon(NUMHR), slnlat(MXPTS), slnlon(MXPTS), 
+        REAL            alat(NUMHR), alon(NUMHR),
+     +			slnlat(MXPTS), slnlon(MXPTS), 
      +			xkey (5), ykey (5),
      +			slnlt6(MXPTS), slnln6(MXPTS), dist(NUMHR),
      +			bplat(100), bplon(100),
      +                  lbklat(20,MAXBK), lbklon(20,MAXBK),
-     +                  bkplat(MAXBK), bkplon (MAXBK)
-
+     +                  bkplat(MAXBK), bkplon (MAXBK),
+     +			blat(MXPTS), blon(MXPTS), bdst(MXPTS),
+     +			bx(MXPTS), by(MXPTS), dx(NUMHR), dy(NUMHR)
 C*
 	LOGICAL		hvbkpt, done, finish, plotit, extra
 C*
@@ -275,13 +277,41 @@ C
 		    IF ( jj .gt. 1 ) ddate (nltln) = fdate(jj-1,im)
                 END IF
             END DO
+C
+C*	    Smooth the central track line and the track error distances.
+C
+	    CALL GTRANS ( 'M', 'D', nltln, alat, alon, dx, dy, iergt )
+	    dens = 5.0
+	    cscl = 30.0
+	    is = 0
+	    ie = nltln+1
+	    CALL CV_PRM3 ( nltln, dx, dy, dist, dens, MXPTS, cscl,
+     +			   is, ie, nout, bx, by, bdst, iercv )
+	    CALL GTRANS ( 'D', 'M', nout, bx, by, blat, blon, iergt )
+C
+C*	    Find the original points in the smoothed line.
+C
+	    knumh2 = nout
+	    DO  kk = 1, nout
+	        kpos(kk) = 0
+		DO  mm = 1, nltln
+		    IF  ( ( ABS(blat(kk)-alat(mm)) .lt. 0.0005 ) .and.
+     +			  ( ABS(blon(kk)-alon(mm)) .lt. 0.0005 ) )  THEN
+			kpos(kk) = mm
+			IF ( mm .eq. NUMH2 ) knumh2 = kk
+		    END IF
+		END DO
+	    END DO
+C
+C*	    Calculate the area under the cone.
+C
             IF ( iertb .ge. 0 ) THEN
 		plotit = .true.
-		inner  = MIN0 ( nltln, NUMH2 )
-                CALL GH_KGAT ( alat, alon, inner, dist, MXPTS, slnlt6, 
+		inner  = MIN0 ( nout, knumh2 )
+                CALL GH_KGAT ( blat, blon, inner, bdst, MXPTS, slnlt6, 
      +                         slnln6, numln6, ier )
-		IF ( nltln .gt. NUMH2 ) THEN
-                    CALL GH_KGAT ( alat, alon, nltln, dist, MXPTS, 
+		IF ( nout .gt. knumh2 ) THEN
+                    CALL GH_KGAT ( blat, blon, nout, bdst, MXPTS, 
      +                             slnlat, slnlon, numln, ier )
 		  ELSE
 		    numln = numln6
@@ -611,7 +641,7 @@ C
 	            CALL GSCOLR ( iblk, ier )
                     CALL GSLINE ( 1, 0, 3, 0, ier )
                     CALL GSSMTH ( 2, dens, ier )
-		    IF ( nltln .gt. NUMH2 ) THEN
+		    IF ( nout .gt. knumh2 ) THEN
 C
 C*			Use slanted dashed line fill for 5 day forecast.
 C
@@ -690,11 +720,7 @@ C*	    Plot the forecasted track.
 C*	    Set the color and symbol for the current location.
 C
             IF ( plotit .and. ( idisp .ge. 0 ) ) THEN
-                ip = nstrm
-                DO kk = 1, nknt
-                    slat(kk) = rlat(kk,ip)
-                    slon(kk) = rlon(kk,ip)
-                END DO
+		ip = nstrm
 C
 C*		Draw line to connect the points.
 C
@@ -708,10 +734,10 @@ C
                       IF ( ilcol .eq. 31 ) ilcol = 32 
 		   END IF
                    CALL GSLINE ( ltype (1), 0, iline, 0, ier )
-		   n3 = MIN0 ( nknt, NUMH2 )
+		   n3 = MIN0 ( nout, knumh2 )
                    CALL GSCOLR ( ilcol, ier )
-                   CALL GLINE ( 'M', n3, slat, slon, ier )
-		   IF ( nknt .gt. NUMH2 ) THEN
+                   CALL GLINE ( 'M', n3, blat, blon, ier )
+		   IF ( nout .gt. knumh2 ) THEN
                       iline = lwidth (2)
                       ilcol = lcolor (2)
                       IF  ( ddev(1:2) .eq. 'PS' ) THEN 
@@ -720,9 +746,9 @@ C
                          IF ( ilcol .eq. 31 ) ilcol = 32 
 		      END IF
                       CALL GSLINE ( ltype (2) , 0, iline, 0, ier )
-		      next = nknt - NUMH2 + 1
+		      next = nout - knumh2 + 1
                       CALL GSCOLR ( ilcol, ier )
-		      CALL GLINE ( 'M', next, slat(NUMH2), slon(NUMH2),
+		      CALL GLINE ( 'M', next, blat(knumh2), blon(knumh2),
      +				 ier )
 		   END IF
                    CALL GSCOLR ( iblk, ier )

@@ -31,6 +31,7 @@ void gb2_polr ( gribfield *gfld, float *gdsarr, int *scan_mode, int *iret )
  * D.W.Plummer/NCEP      2/96      	Cleanup GBDIAGs and comments	*
  * S. Jacobs/NCEP	12/00	Added prototypes			*
  * S. Gilbert           11/04       Modified from gb_polr for use w/ GRIB2  *
+ * M. James/Unidata	04/14	Fix for south pole grids		*
  ***********************************************************************/
 {
         int	Dx, Dy, flag2, mode, Nx, Ny, La1, Lo1, LoV;
