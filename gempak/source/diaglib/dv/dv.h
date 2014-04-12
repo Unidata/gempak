@@ -29,6 +29,8 @@ void dv_dsub  ( int *iret );
 void dv_dvdx ( int *iret );
 void dv_dvdy ( int *iret );
 void dv_frnt ( int *iret );
+void dv_gcir ( int *iret );
+void dv_gcwv ( int *iret );
 void dv_geo  ( int *iret );
 void dv_grad ( int *iret );
 void dv_gwfv ( int *iret );

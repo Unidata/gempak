@@ -2,7 +2,7 @@
 #	Makefile for GEMPAK 6.0
 #		Builds program makefiles
 #		Unidata 11/99 Chiz
-#
+#CFLAGS += -I$(GEMPAK)/source/cgemlib/clo
 include $(CONFIGDIR)/$(MAKEINC)
 
 COBJS = 
@@ -10,6 +10,7 @@ COBJS =
 PROG = createbinfo
 PROG.c = createbinfo.c
  
+CFLAGS += -I$(GEMPAK)/source/cgemlib/clo
 
 LIBINC = \
 	$(CGEMLIB)

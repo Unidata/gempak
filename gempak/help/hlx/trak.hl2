@@ -1,0 +1,24 @@
+     TRAK
+
+     TRAK is the ending time for the Altimetric Satellite Ground 
+     Track Prediction data, and the color of the prediction.  Skip 
+     is a value that indicates how many data points to skip when plotting.
+
+       Data type | End time | Color | Skip
+
+     The data type is a selection to plot. Currently there are five data
+     types, TRAK1 (Jason-1), TRAK2 (Jason-2), TRAKE (Envisat), TRAKS 
+     (Saral/Altika), and TRAKC (Cryosat).
+
+     The ending time is the latest time for which prediction data will be 
+     plotted.  The ending time is given as a GEMPAK date/time string.  Any
+     missing items from the string will be filled in by the system time.  The 
+     ending time may also be LAST.  LAST will use the system time and plot all
+     TRAK data for the preceding 6 hours. ALL is not accepted as an ending 
+     time for TRAK data.
+
+     The Color may each be specified using a GEMPAK color in the range of
+     1 - 32. If the color is missing, a defalut will be used.
+
+     The Skip value is an integer used for skipping datapoints when plotting 
+     the predictions. If the skip value is missing a default will be used.

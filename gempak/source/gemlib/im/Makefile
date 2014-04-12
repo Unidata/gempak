@@ -37,7 +37,6 @@ FOBJS = \
 	$(ALIB)(imgi2gm.o) \
 	$(ALIB)(imgihd.o) \
 	$(ALIB)(imgm2gi.o) \
-	$(ALIB)(imgpix.o) \
 	$(ALIB)(imisub.o) \
 	$(ALIB)(imlabl.o) \
 	$(ALIB)(imlutf.o) \

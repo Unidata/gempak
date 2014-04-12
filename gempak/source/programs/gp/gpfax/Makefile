@@ -5,7 +5,7 @@
 #
 include $(CONFIGDIR)/$(MAKEINC)
 
-COBJS =	\
+COBJS =	$(ALIB)(imrfax.o)
 
 LOBJS = \
 	$(ALIB)(gpfinp.o) \

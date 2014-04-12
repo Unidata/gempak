@@ -6,6 +6,7 @@
  **									*
  * Log:									*
  * S. Jacobs/NCEP	 5/13	Initial coding				*
+ * S. Jacobs/NCEP	12/13	Added structure for saved values (NX,NY)*
  ***********************************************************************/
 
 /* Common include files */
@@ -87,6 +88,12 @@ typedef struct info {
     fhdr_t	fhdrs[MMPRT];
 } CommonInfo_t;
 
+/* Structure for any information that needs to be saved for later use */
+typedef struct cmn {
+    int		nx;
+    int		ny;
+} dacmn_t;
+
 /* Macros */
 /* Find the value for the given key in the hash table */
 #define FIND_KEY(thisvalue,thiskey,strname,strtype) \
@@ -146,3 +153,6 @@ DAEXT	float	*daoutf;
 
 /* The file info structure */
 DAEXT	CommonInfo_t common[MMFILE];
+
+/* The saved info structure */
+DAEXT	dacmn_t dacmn;
