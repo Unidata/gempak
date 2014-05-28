@@ -264,13 +264,13 @@ C
                  CALL ST_RLCH ( val, 1, cmblev ( idl ), ier )
               END DO
               cmblev ( imndlv ) = 'RF'
-           CASE (175)
-              cmblev ( 1 ) = 'ND'
-              cmblev ( 2 ) = ' '
-              DO idl = 3, imndlv
-                 val =  ( REAL(idl) - idlvls(2) ) / idlvls(1) 
-                 CALL ST_RLCH ( val , 2, cmblev ( idl ), ier )
-              END DO
+C           CASE (175)
+C              cmblev ( 1 ) = 'ND'
+C              cmblev ( 2 ) = ' '
+C              DO idl = 3, imndlv
+C                 val =  ( REAL(idl) - idlvls(2) ) / idlvls(1) 
+C                 CALL ST_RLCH ( val , 2, cmblev ( idl ), ier )
+C              END DO
 C* 170 - Digital Accumulation Array
 C* 172 - Digital Storm Total Accumulation
 C* 173 - Digital User-Selectable Accumulation
