@@ -72,7 +72,6 @@ C
 		CALL GG_SDEV  ( device, ier )
 		IF  ( ier .ne. 0 )  proces = .false.
 		IF  ( proces )  THEN
-		  CALL IN_COLR ( map, ier )
 		  CALL IN_TEXT ( text, ier )
 C
 C*		  If projection=RAD, see if multiple image
