@@ -203,6 +203,9 @@
 !                               and OAMBG4_HI
 ! L. Hinson/AWC          10/12  Added EDR
 ! G.McFadden/IMSG	 07/13	Added SGWHA, WSPDA
+! G.McFadden/IMSG	 01/14	Added WSPD2, WSPDC
+! G.McFadden/IMSG	 01/14	Added TRAKS, TRAKC
+! M.James/Unidata	 04/14	Added more ATCF model names
 !
 !-------------------------------------------------------------------------
 !
@@ -672,6 +675,213 @@ TYPE 24BAMS                   1/5
 LINE 0.00/3
 SYM1 1/1.00/1
 TYPE 25EGR2                   1/7
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 26AEM2                   1/6
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 27AEMI                   1/6
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 28AEMN                   1/7
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 29AP01                   1/7
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 30AP02                   1/7
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 31AP03                   1/7
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 32AP04                   1/7
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 33AP05                   1/7
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 34AP06                   1/7
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 35AP07                   1/7
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 36AP08                   1/7
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 37AP09                   1/7
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 38AP10                   1/7
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 39AP11                   1/7
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 40AP12                   1/7
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 41AP13                   1/7
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 42AP14                   1/7
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 43AP15                   1/7
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 44AP16                   1/7
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 45AP17                   1/7
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 46AP18                   1/7
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 47AP19                   1/7
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 48AP20                   1/7
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 49AVN2                   1/7
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 50AVNI                   1/7
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 51CEMN                   1/7
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 52CLP5                   1/7
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 53CMC                    1/6
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 54CMC2                   1/7
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 55CMCI                   1/7
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 56DRCL                   1/7
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 57DSHP                   1/7
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 58EGRR                   1/7
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 59GFD2                   1/7
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 60GFDI                   1/7
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 61GFDL                   1/7
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 62GFDT                   1/7
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 63GFT2                   1/7
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 64GFTI                   1/7
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 65GHM2                   1/7
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 66HWFI                   1/7
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 67HWRF                   1/7
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 68ICON                   1/7
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 69IV15                   1/7
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 70IVCN                   1/7
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 71LBAR                   1/7
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 72LGEM                   1/7
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 73MRCL                   1/7
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 74 NAM                   1/7
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 75 NGX                   1/7
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 76NGX2                   1/7
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 77NGXI                   1/7
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 78OCD5                   1/7
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 79OFC2                   1/7
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 80OFCI                   1/7
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 81OFCL                   1/7
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 82RI25                   1/7
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 83RI30                   1/7
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 84RI35                   1/7
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 85RI40                   1/7
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 86SHF5                   1/7
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 87SHFR                   1/7
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 88SHIP                   1/7
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 89TCOA                   1/7
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 90TCOE                   1/7
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 91TV15                   1/7
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 92TVCA                   1/7
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 93TVCE                   1/7
+LINE 0.00/3
+SYM1 1/1.00/1
+TYPE 94XTRP                   1/7
 LINE 0.00/3
 SYM1 1/1.00/1
 FLAG Time                     1
@@ -1598,6 +1808,40 @@ TYPE Wind Speed 11            1/2/74
 TYPE Wind Speed 12            1/2/150
 !
 !
+ALIAS WSPD2
+TYPE Skip value                1//10
+TYPE Time Stamp Interval       1/12/1
+TYPE WSPD2 1                   1/31/6
+TYPE WSPD2 2                   1/6/12
+TYPE WSPD2 3                   1/26/17
+TYPE WSPD2 4                   1/24/23
+TYPE WSPD2 5                   1/21/27
+TYPE WSPD2 6                   1/23/33
+TYPE WSPD2 7                   1/5/42
+TYPE WSPD2 8                   1/17/48
+TYPE WSPD2 9                   1/8/56
+TYPE WSPD2 10                  1/14/63
+TYPE WSPD2 11                  1/2/74
+TYPE WSPD2 12                  1/2/150
+!
+!
+ALIAS WSPDC
+TYPE Skip value                1//10
+TYPE Time Stamp Interval       1/31/1
+TYPE WSPDC 1                   1/31/6
+TYPE WSPDC 2                   1/6/12
+TYPE WSPDC 3                   1/26/17
+TYPE WSPDC 4                   1/24/23
+TYPE WSPDC 5                   1/21/27
+TYPE WSPDC 6                   1/23/33
+TYPE WSPDC 7                   1/5/42
+TYPE WSPDC 8                   1/17/48
+TYPE WSPDC 9                   1/8/56
+TYPE WSPDC 10                  1/14/63
+TYPE WSPDC 11                  1/2/74
+TYPE WSPDC 12                  1/2/150
+!
+!
 ALIAS SSHA
 TYPE Skip value               1//5
 TYPE Time Stamp Interval      1/31/30
@@ -1631,6 +1875,16 @@ TYPE Skip value               1//40
 !
 ALIAS TRAK2
 TYPE TRAK2                    1/6
+TYPE Skip value               1//40
+!
+!
+ALIAS TRAKS
+TYPE TRAKS                    1/5
+TYPE Skip value               1//40
+!
+!
+ALIAS TRAKC
+TYPE TRAKC                    1/10
 TYPE Skip value               1//40
 !
 !
@@ -1788,69 +2042,3 @@ FLAG Rain Flag                1
 FLAG Availability Flag        1
 FLAG Use 2nd color for Rain   0
 FLAG Plot circles for Rain    1
-!
-ALIAS ASCT
-TYPE Skip value               1//5
-TYPE Time Stamp Interval      1/31/30
-LINE 0.00/1
-TYPE Wind Speed 1             1/1;31/6
-ARRW .2/.4/1/5
-TYPE Wind Speed 2             1/6;31/12
-TYPE Wind Speed 3             1/26;31/17
-TYPE Wind Speed 4             1/24;31/23
-TYPE Wind Speed 5             1/21;31/27
-TYPE Wind Speed 6             1/23;31/33
-TYPE Wind Speed 7             1/5;31/42
-TYPE Wind Speed 8             1/17;31/48
-TYPE Wind Speed 9             1/8;31/56
-TYPE Wind Speed 10            1/14;31/63
-TYPE Wind Speed 11            1/2;31/74
-TYPE Wind Speed 12            1/2;31/150
-!
-ALIAS ASCT_HI
-TYPE Skip value               1//5
-TYPE Time Stamp Interval      1/31/30
-LINE 0.00/1
-TYPE Wind Speed 1             1/1;31/6
-ARRW .2/.4/1/5
-TYPE Wind Speed 2             1/6;31/12
-TYPE Wind Speed 3             1/26;31/17
-TYPE Wind Speed 4             1/24;31/23
-TYPE Wind Speed 5             1/21;31/27
-TYPE Wind Speed 6             1/23;31/33
-TYPE Wind Speed 7             1/5;31/42
-TYPE Wind Speed 8             1/17;31/48
-TYPE Wind Speed 9             1/8;31/56
-TYPE Wind Speed 10            1/14;31/63
-TYPE Wind Speed 11            1/2;31/74
-TYPE Wind Speed 12            1/2;31/150
-FLAG High Wind Speed          1
-FLAG Low Wind Speed           1
-FLAG Quality Control Fail     1
-FLAG Redundancy Flag          1
-FLAG 2nd color for QC Fail    0
-FLAG Plot circles for QC Fail 1
-!
-ALIAS AAMBG2_HI
-TYPE Skip value               1//5
-TYPE Time Stamp Interval      1/31/30
-LINE 0.00/1
-TYPE Wind Speed 1             1/5;31/6
-ARRW .2/.4/1/5
-TYPE Wind Speed 2             1/5;31/12
-TYPE Wind Speed 3             1/5;31/17
-TYPE Wind Speed 4             1/5;31/23
-TYPE Wind Speed 5             1/5;31/27
-TYPE Wind Speed 6             1/5;31/33
-TYPE Wind Speed 7             1/5;31/42
-TYPE Wind Speed 8             1/5;31/48
-TYPE Wind Speed 9             1/5;31/56
-TYPE Wind Speed 10            1/5;31/63
-TYPE Wind Speed 11            1/5;31/74
-TYPE Wind Speed 12            1/5;31/150
-FLAG High Wind Speed          1
-FLAG Low Wind Speed           1
-FLAG Quality Control Fail     1
-FLAG Redundancy Flag          1
-FLAG 2nd color for QC Fail    0
-FLAG Plot circles for QC Fail 1
