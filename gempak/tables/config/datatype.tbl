@@ -366,7 +366,7 @@ SIGVGF24     $SIGWX/vgfiles            YYYYMMDDHH_24_final.vgf                  
 !
 ! BUFR files
 SIGBUF18     $SIGWX/bufrfiles          JU*D*.YYYYMMDDHH                                 CAT_NIL  SCAT_NIL   -1     -1     -1      OFF/0/0      4
-SIGBUF24     $SIGWX/24bufrfiles        JU*E*.YYYYMMDDHH                                 CAT_NIL  SCAT_NIL   -1     -1     -1      OFF/0/0      4
+SIGBUF24     $SIGWX/bufrfiles          JU*E*.YYYYMMDDHH                                 CAT_NIL  SCAT_NIL   -1     -1     -1      OFF/0/0      4
 !
 ! Operational models and grid data
 COAMPS       $MODEL/coamps             coamps_YYYYMMDDHHfFFF                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
