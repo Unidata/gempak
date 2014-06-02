@@ -1,5 +1,6 @@
 
-NEXRCOMP creates a GINI format image composite of NEXRAD level III products.
+NEXRCOMP creates a GINI format image and grid composite of NEXRAD 
+level III products.
 
 INPUT PARAMETERS
  
@@ -17,6 +18,10 @@ PROGRAM DESCRIPTION
 
    SATFIL specifies the output GINI file. If the file already exists, 
    it is overwritten.
+
+   GDFILE specifies the output grid file. If the file does not already
+   exist, the file is created using the grid defined by CPYFIL,
+   or if CPYFIL is not defined then by PROJ, GRDAREA, and KXKY.
 
    CPYFIL may provide either an existing grid file to read the projection
    information from, or a grid number (#nnn) defined in grdnav.tbl.
@@ -72,26 +77,27 @@ PROGRAM DESCRIPTION
 
  
 EXAMPLES
- 
-    1.  Create a 1km National composite of NEXRAD base reflectivity (N0R).
+
+    1.  Create a 1km National composite of NEXRAD base reflectivity (N0Q).
         Use the current time with a 30 minute window for data. Rerun the
         mosaic creation continuously with a 5 minute wait period between
-        each update. Use the nexrad.tbl station table. Create the GINI
+        each update. Use the nexrad.tbl station table. Create the
         output file using the rad_YYYYMMDD_HHNN file name template.
         Accept data from radars operating in precipitation and
-        clear air mode. Do not write the GINI output using compression.
+        clear air mode.
 
         GRDAREA  = 23;-120;47.2634;-63.5664
         PROJ     = lcc/40;-100;40
         KXKY     = 4736;3000
-        CPYFIL   =  
-        GFUNC    = n0r
+        CPYFIL   =
+        GFUNC    = n0q
         RADTIM   = current
         RADDUR   = 30
-        RADFRQ   = 5 
+        RADFRQ   = 5
         STNFIL   = nexrad.tbl
         RADMODE  = PC
         SATFIL   = rad_YYYYMMDD_HHNN
-        COMPRESS = no
+        GDFILE   = YYYYMMDD_radr.gem
+        MAXGRD   = 1000
 
 ERROR MESSAGES

@@ -12,7 +12,10 @@ INPUT PARAMETERS
     RADFRQ    Update Frequency
     STNFIL    Station information file
     RADMODE   Radar operational mode
-    RADFIL    Radar image filename(s)
+    SATFIL    Radar image filename(s)
+    GDFILE    Grid file
+    NDVAL     Replacement value for "ND" (default RMISSD)
+    MAXGRD    Maximum number of grids
     COMPRESS  Write output in compressed format
  
  
@@ -22,15 +25,20 @@ PROGRAM DESCRIPTION
    NEXRCOMP samples NEXRAD Level III (NIDS) products to a common
    grid projection. Then creates a GINI format image with
    appropriate header information using the grid as the
-   image raster. NEXRCOMP is not limited by the traditional LLMXGD
+   image raster, before saving the grid to a GEMPAK grid file.
+   NEXRCOMP is not limited by the traditional LLMXGD
    limitation for grid files.
 
    NEXRCOMP uses a suplemental table $GEMTBL/unidata/nex2gini.tbl to specify 
    configurations for product identifiers so that the generated images
    are correctly identified for enhancement tables in $GEMTBL/sat/imgtyp.tbl.
 
-   RADFIL specifies the output GIF file. If the file already exists,
+   SATFIL specifies the output GIF file. If the file already exists,
    it is overwritten.
+
+   GDFILE specifies the output grid file. If the file does not already
+   exist, the file is created using the grid defined by CPYFIL,
+   or if CPYFIL is not defined then by PROJ, GRDAREA, and KXKY.
 
    CPYFIL may provide either an existing grid file to read the projection
    information from, or a grid number (#nnn) defined in grdnav.tbl.
@@ -87,7 +95,7 @@ PROGRAM DESCRIPTION
 
 EXAMPLES
  
-    1.  Create a 1km National composite of NEXRAD base reflectivity (N0R).
+    1.  Create a 1km National composite of NEXRAD base reflectivity (N0Q).
         Use the current time with a 30 minute window for data. Rerun the
         mosaic creation continuously with a 5 minute wait period between
         each update. Use the nexrad.tbl station table. Create the 
@@ -99,13 +107,15 @@ EXAMPLES
         PROJ     = lcc/40;-100;40
         KXKY     = 4736;3000
         CPYFIL   =
-        GFUNC    = n0r
+        GFUNC    = n0q
         RADTIM   = current
         RADDUR   = 30
         RADFRQ   = 5
         STNFIL   = nexrad.tbl
         RADMODE  = PC
-        RADFIL   = rad_YYYYMMDD_HHNN
+        SATFIL   = rad_YYYYMMDD_HHNN
+        GDFILE   = YYYYMMDD_radr.gem
+	MAXGRD   = 1000
 
 ERROR MESSAGES
  

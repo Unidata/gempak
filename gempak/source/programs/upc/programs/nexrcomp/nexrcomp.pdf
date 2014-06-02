@@ -10,3 +10,6 @@ STNFIL  Station information file
 RADMODE Radar operational mode                                                  
 SATFIL  Satellite image filename(s)                                             
 COMPRESSWrite output in compressed format                                       
+GDFILE  Grid file                                                               
+MAXGRD  Maximum number of grids                                                 
+NDVAL   Replacement value for "ND" (default RMISSD)

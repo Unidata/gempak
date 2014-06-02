@@ -71,8 +71,6 @@ install: $(PROG)
 	$(AUXINSTALL) nexrcomp.err $(GEMERR)
 	$(AUXINSTALL) nexrcomp.hlp $(GEMHLP)/hlp
 	$(AUXINSTALL) nexrcomp.txt $(GEMPTXT)
-	$(AUXINSTALL) compress.hl1 $(GEMHLP)/hlx
-	$(AUXINSTALL) compress.hl2 $(GEMHLP)/hlx
 
 #
 #	These should come from gdradr
