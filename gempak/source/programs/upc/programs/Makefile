@@ -9,6 +9,7 @@ UTILITIES = gpfront \
 	trajectory \
 	nex2gini \
 	nex2img \
+	nexrcomp \
 	gpnexr2 \
 	nexr2rhi \
 	gpvad \
