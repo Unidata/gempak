@@ -1,0 +1,12 @@
+GRDAREA 23;-120;47.2634;-63.5664                                                                                                        
+PROJ    lcc/40;-100;40                                                                                                                  
+KXKY    4736;3000                                                                                                                       
+CPYFIL                                                                                                                                  
+GFUNC   n0r                                                                                                                             
+RADTIM  current                                                                                                                         
+RADDUR  30                                                                                                                              
+RADFRQ                                                                                                                                  
+STNFIL  test.tbl                                                                                                                        
+RADMODE pc                                                                                                                              
+SATFIL  testme8.gini                                                                                                                    
+COMPRESSyes                                                                                                                             

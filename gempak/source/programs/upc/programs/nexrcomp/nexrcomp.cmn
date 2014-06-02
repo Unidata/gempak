@@ -1,0 +1,13 @@
+C************************************************************************
+C* NEXRCOMP.CMN								*
+C*									*
+C* This common block contains variables for the FORTRAN part of the 	*
+C* decoder bridge library.						*
+C*									*
+C**									*
+C* Log:									*
+C************************************************************************
+	INTEGER		GINISZ
+	PARAMETER	( GINISZ = 14400000 )
+C*
+C------------------------------------------------------------------------
