@@ -1,0 +1,142 @@
+!
+!  MDLGRIB2.TBL -- GRIB conversion table for GEMPAK, used for MOS variables  SEP, 2001
+!
+!The following 9 parameters are from the WMO decoding table and are included for reference
+!ID# NAME                           UNITS                 GNAM           SCALE MISSING
+!011 TEMPERATURE (Kelvin)             K                    TMP             0  -9999.00
+!017 DEWPOINT (Kelvin)                K                    DPT             0  -9999.00
+!018 DEWPOINT DEPRESSION (Kelvin)     K                    DEPR            0  -9999.00 
+!031 WIND DIRECTION                  deg true              WDIR            0  -9999.00
+!032 WIND SPEED (meter/sec)          m/s                   WIND            0  -9999.00
+!033 U-comp of wind                  m/s                   UGRD            0  -9999.00
+!034 V-comp of wind                  m/s                   VGRD            0  -9999.00
+!052 RELATIVE HUMIDITY                %                    RH              0  -9999.00
+!060 PROB OF TSTMS (LTNG)             %                    TSTM            0  -9999.00
+
+!ID# NAME                           UNITS                  GNAM         SCALE MISSING
+128 TEMPERATURE (Fahrenheit)          F                    TMPF            0  -9999.00
+129 DAYTIME MAX TEMP (MAX) (Kelvin)   K                    MAXK            0  -9999.00
+130 DAYTIME MAX TEMP (MAX) (deg F)    F                    MAXF            0  -9999.00
+131 NORMAL MAX TEMPERATURE (Kelvin)   K                    NMAXK           0  -9999.00
+132 NORMAL MAX TEMPERATURE (deg F)    F                    NMAXF           0  -9999.00
+133 DEPARTURE FROM NORMAL MAX (K)     K                    DMAXK           0  -9999.00
+134 DEPARTURE FROM NORMAL MAX (deg F) F                    DMAXF           0  -9999.00
+135 NIGHTTIME MIN TEMP (MIN) (Kelvin) K                    MINK            0  -9999.00
+136 NIGHTTIME MIN TEMP (MIN) (deg F)  F                    MINF            0  -9999.00
+137 NORMAL MIN TEMPERATURE (Kelvin)   K                    NMINK           0  -9999.00
+138 NORMAL NIGHTTIME MIN TEMP (deg F) F                    NMINF           0  -9999.00
+139 DEPARTURE FROM NORMAL MIN (K)     K                    DMINK           0  -9999.00
+140 DEPARTURE FROM NORMAL MIN (deg F) F                    DMINF           0  -9999.00
+141 DEW POINT TEMPERATURE (deg F)     F                    DWPF            0  -9999.00
+142 DEW POINT DEPRESSION (deg F)      F                    DPDF            0  -9999.00
+143 HEAT INDEX (deg F)                F                    HTINF           0  -9999.00
+144 WIND CHILL (deg F)                F                    WNCHF           0  -9999.00
+!145 RESERVED
+146 PROB OF 0.01 IN. OF PRECIP (PoP)  %                    POP             0  -9999.00
+147 PROB OF QPF >= 0.10 INCHES        %                    PQPF2           0  -9999.00
+148 PROB OF QPF >= 0.25 INCHES        %                    PQPF3           0  -9999.00
+149 PROB OF QPF >= 0.50 INCHES        %                    PQPF4           0  -9999.00
+150 PROB OF QPF >= 1.00 INCHES        %                    PQPF5           0  -9999.00
+151 PROB OF QPF >= 2.00 INCHES        %                    PQPF6           0  -9999.00
+152 PROB OF QPF >= 3.00 INCHES FUTURE %                    PQPF7           0  -9999.00
+153 BEST CATEGORY OF QPF             num                   BQPF            0  -9999.00
+154 NML REL. FREQ. OF 0.01 IN OF PCP  %                    NPOP            0  -9999.00
+155 DEPARTURE FROM NML OF 0.01 POP    %                    DPOP            0  -9999.00
+156 EXPECTED VALUE OF PRECIPITATION   mm                   PCPM            0  -9999.00
+157 EXPECTED VALUE OF PRECIPITATION   in                   PCPI            0  -9999.00
+158 CONDITIONAL EXPECTED PRECIP AMT   mm                   CPCPM           0  -9999.00
+159 CONDITIONAL EXPECTED PRECIP AMT   in                   CPCPI           0  -9999.00
+160 PROB OF SNOW AMOUNT >= 0.10       %                    PSNA1           0  -9999.00
+161 PROB OF SNOW AMOUNT >= 2 INCHES   %                    PSNA2           0  -9999.00
+162 PROB OF SNOW AMOUNT >= 4 INCHES   %                    PSNA3           0  -9999.00
+163 PROB OF SNOW AMOUNT >= 6 INCHES   %                    PSNA4           0  -9999.00
+164 PROB OF SNOW AMOUNT >= 8 INCHES   %                    PSNA5           0  -9999.00
+165 BEST CATEGORY FOR SNOW AMOUNT    num                   BSNA            0  -9999.00
+166 EXPECTED VALUE OF SNOW AMOUNT     mm                   SNWM            0  -9999.00
+167 EXPECTED VALUE OF SNOW AMOUNT     in                   SNWI            0  -9999.00
+168 INFLATED MAX WIND SPEED (knots)  kts                   MWSPK           0  -9999.00
+169 INFLATED WIND SPEED (meter/sec)  m/s                   IWSPM           0  -9999.00
+170 INFLATED WIND SPEED (knots)      kts                   SKNT            0  -9999.00
+171 PROB OF MAX WIND SPEED  0-12 kts  %                    PWSP1           0  -9999.00
+172 PROB OF MAX WIND SPEED 13-21 kts  %                    PWSP2           0  -9999.00
+173 PROB OF MAX WIND SPEED 22-31 kts  %                    PWSP3           0  -9999.00
+174 PROB OF MAX WIND SPEED  >=32 kts  %                    PWSP4           0  -9999.00
+175 CATEGORICAL MAX WIND SPEED       num                   WSPDC           0  -9999.00
+176 EXPECTED VALUE OF MAX WIND SPEED m/s                   XSPDM           0  -9999.00
+177 EXPECTED VALUE OF MAX WIND SPEED kts                   XSPDK           0  -9999.00
+178 PROB OF WIND DIRECTION NORTH      %                    PWDRN           0  -9999.00
+179 PROB OF WIND DIRECTION NORTHEAST  %                    PWDRNE          0  -9999.00
+180 PROB OF WIND DIRECTION EAST       %                    PWDRE           0  -9999.00
+181 PROB OF WIND DIRECTION SOUTHEAST  %                    PWDRSE          0  -9999.00
+182 PROB OF WIND DIRECTION SOUTH      %                    PWDRS           0  -9999.00
+183 PROB OF WIND DIRECTION SOUTHWEST  %                    PWDRSW          0  -9999.00
+184 PROB OF WIND DIRECTION WEST       %                    PWDRW           0  -9999.00
+185 PROB OF WIND DIRECTION NORTHWEST  %                    PWDRNW          0  -9999.00
+186 CATEGORICAL WIND DIRECTION       num                   WDIRC           0  -9999.00
+!187 RESERVED                                                              0  -9999.00
+188 PROB OF TOTAL SKY:CLEAR           %                    PSKCL           0  -9999.00
+189 PROB OF TOTAL SKY:FEW (FUTURE)    %                    PSKFW           0  -9999.00
+190 PROB OF TOTAL SKY:SCATTERED       %                    PSKSC           0  -9999.00
+191 PROB OF TOTAL SKY:BROKEN          %                    PSKBK           0  -9999.00
+192 PROB OF TOTAL SKY:OVERCAST        %                    PSKOV           0  -9999.00
+193 CATEGORICAL TOTAL SKY COVER      num                   SKYC            0  -9999.00
+194 PROB MEAN SKY CVR:CLEAR   FUTURE  %                    MSKCL           0  -9999.00
+195 PROB MEAN SKY CVR:OVERCAST FUTURE %                    MSKOV           0  -9999.00
+196 PROB MEAN SKY CVR:MOSTLY CLR      %                    MSKMC           0  -9999.00
+197 PROB MEAN SKY CVR:PARTLY CLDY     %                    MSKPC           0  -9999.00
+198 PROB MEAN SKY CVR:MOSTLY CLDY     %                    MSKMO           0  -9999.00
+199 CATEGORICAL MEAN SKY COVER       num                   MSKYC           0  -9999.00
+200 PROB OF CIG HGT < 200 FT          %                    PCIG1           0  -9999.00
+201 PROB OF CIG HGT 200-400 FT        %                    PCIG2           0  -9999.00
+202 PROB OF CIG HGT 500-900 FT        %                    PCIG3           0  -9999.00
+203 PROB OF CIG HGT 1000-3000 FT      %                    PCIG4           0  -9999.00
+204 PROB OF CIG HGT 3100-6500 FT      %                    PCIG5           0  -9999.00
+205 PROB OF CIG HGT 6600-12000 FT     %                    PCIG6           0  -9999.00
+206 PROB OF CIG HGT > 12000 FT        %                    PCIG7           0  -9999.00
+207 BEST CATEGORY OF CEILING HEIGHT  num                   BCIG            0  -9999.00
+208 PROB OF VIS <=1/4 MILE            %                    PVIS1           0  -9999.00
+209 PROB OF VIS <=1/2 MILE            %                    PVIS2           0  -9999.00
+210 PROB OF VIS <=7/8 MILE            %                    PVIS3           0  -9999.00
+211 PROB OF VIS <=2 3/4 MILES         %                    PVIS4           0  -9999.00
+212 PROB OF VIS <=5 MILES             %                    PVIS5           0  -9999.00
+213 PROB OF VIS <=6 MILES             %                    PVIS6           0  -9999.00
+214 CATEGORICAL VISIBILITY           num                   VISC            0  -9999.00
+215 PROB OF OBSTRUCTION TO VIS: NONE  %                    POBVN           0  -9999.00
+216 PROB OF OBSTRUCTION TO VIS: HAZE  %                    POBVH           0  -9999.00
+217 PROB OF OBSTRUCTION TO VIS: MIST  %                    POBVM           0  -9999.00
+218 PROB OF OBSTRUCTION TO VIS: FOG   %                    POBVF           0  -9999.00
+219 PROB OF BLOWING OBVIS             %                    POVBL           0  -9999.00
+220 BEST CATEGORY OF OBVIS           num                   OBVC            0  -9999.00
+!221 RESERVED                                                              0  -9999.00
+222 NORMAL PROB OF THUNDERSTORMS      %                    NTSM            0  -9999.00
+223 COND PROB OF SEVERE WEATHER       %                    CSVR            0  -9999.00
+224 UNCOND PROB OF SEVERE WX          %                    USVR            0  -9999.00
+225 NORMAL PROB OF SEVERE WX          %                    NSVR            0  -9999.00
+226 UNCONDITIONAL PROB OF HAIL        %                    UHAI            0  -9999.00
+227 UNCONDITIONAL PROB OF TORNADO     %                    UTOR            0  -9999.00
+228 UNCOND PROB OF DAMAGING WIND      %                    UTSW            0  -9999.00
+229 COND PROB FRZING PRECIP (INSTANT) %                    CFZI            0  -9999.00
+230 UNCND PROB FRZING PRECIP (INSTNT) %                    UFZI            0  -9999.00
+231 COND PROB FROZEN PRECIP (INSTANT) %                    CZNI            0  -9999.00
+232 UNCND PROB FROZEN PRECIP (INSTNT) %                    UZNI            0  -9999.00
+233 COND PROB LIQUID PRECIP (INSTANT) %                    CLQI            0  -9999.00
+234 UNCND PROB LIQUID PRECIP (INSTNT) %                    ULQI            0  -9999.00
+235 CATEGORICAL PRECIP TYPE (INSTANT)num                   PTYPI           0  -9999.00
+236 COND PROB OF FRZING PRECIP        %                    CPOZP           0  -9999.00
+237 UNCOND PROB OF FRZING PRECIP      %                    UPOZP           0  -9999.00
+238 COND PROB OF SNOW (CPoS)          %                    CPOS            0  -9999.00
+239 UNCOND PROB OF SNOW (CPoS)        %                    UPOS            0  -9999.00
+240 COND PROB OF RAIN/SNOW MIXED      %                    CPORS           0  -9999.00
+241 UNCOND PROB OF RAIN/SNOW MIXED    %                    UPORS           0  -9999.00
+242 COND PROB OF RAIN                 %                    CPORA           0  -9999.00
+244 BEST CATEGORY OF PRECIP TYPE     num                   BPCPT           0  -9999.00
+245 POPO PRECIP OCCURRING AT AN HOUR  %                    POPOH           0  -9999.00
+246 POPO PRECIP DURING A PERIOD       %                    POPOP           0  -9999.00
+247 COND PROB OF DRIZZLE              %                    CPDRZ           0  -9999.00
+248 COND PROB OF CONT (STEADY) PRECIP %                    CPSTY           0  -9999.00
+249 COND PROB OF SHOWERS              %                    CPSHW           0  -9999.00
+250 BEST CAT PRECIP CHARACTERISTIC   num                   BPCHR           0  -9999.00
+251 PERCENT OF POSSIBLE SUNSHINE      %                    SUNSH           0  -9999.00
+252 HOURS OF SUNSHINE                hrs                   HRSUN           0  -9999.00
+253 SCAN 0-3H CATEGORICAL QPF        num                   SCQP            0  -9999.00
+254 SCAN 0-3H C-G LIGHTNING PROB      %                    SCTS            0  -9999.00

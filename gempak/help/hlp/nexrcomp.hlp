@@ -1,27 +1,40 @@
-GDRADR creates a gridded composite of NEXRAD level III products.
+NEXRCOMP creates a GINI format image composite of NEXRAD level III products.
 
 INPUT PARAMETERS
  
     GRDAREA   Area covered by grid
     PROJ      Map projection/angles/margins|drop flag
     KXKY      Number of grid points in x;y
-    GDPFUN    Scalar grid or vector grid function
-    GDFILE    Grid file
+    CPYFIL    Grid file whose navigation is to be used in new grid file | subare
+    GFUNC     Scalar grid
     RADTIM    Radar composite current/dattim
     RADDUR    Radar time window (minutes prior to RADTIM)
     RADFRQ    Update Frequency
-    CPYFIL    Grid file whose navigation is to be used in new grid file | subare
     STNFIL    Station information file
-    MAXGRD    Maximum number of grids
     RADMODE   Radar operational mode
+    SATFIL    Radar image filename(s)
+    GDFILE    Grid file
     NDVAL     Replacement value for "ND" (default RMISSD)
+    MAXGRD    Maximum number of grids
+    COMPRESS  Write output in compressed format
  
  
 
 PROGRAM DESCRIPTION
  
-   GDRADR samples NEXRAD Level III (NIDS) products to a common
-   grid projection.
+   NEXRCOMP samples NEXRAD Level III (NIDS) products to a common
+   grid projection. Then creates a GINI format image with
+   appropriate header information using the grid as the
+   image raster, before saving the grid to a GEMPAK grid file.
+   NEXRCOMP is not limited by the traditional LLMXGD
+   limitation for grid files.
+
+   NEXRCOMP uses a suplemental table $GEMTBL/unidata/nex2gini.tbl to specify 
+   configurations for product identifiers so that the generated images
+   are correctly identified for enhancement tables in $GEMTBL/sat/imgtyp.tbl.
+
+   SATFIL specifies the output GIF file. If the file already exists,
+   it is overwritten.
 
    GDFILE specifies the output grid file. If the file does not already
    exist, the file is created using the grid defined by CPYFIL,
@@ -31,13 +44,15 @@ PROGRAM DESCRIPTION
    information from, or a grid number (#nnn) defined in grdnav.tbl.
 
    PROJ, GRDAREA, and KXKY define a grid navigation as in GDCFIL if
-   the output file does not already exist, and CPYFIL is blank.
+   CPYFIL is blank. The GINI format has additional restrictions
+   which limit which GEMPAK projections may be used. These are,
+   LCC tangent projection (eg la1 and la2 are the same), STR, and CED.
 
    STNFIL is the station table which supplies radar IDs to be searched
    for the composite. If STNFIL is blank, then 'nexrad.tbl' is used
    by default.
 
-   GDPFUN is a list of data parameters for which composites are created.
+   GFUNC is the data parameter which the composite is created for.
    The NEXRAD file naming is assumed to be such that the site identifier
    and the product type are both present in the directory/file naming
    structure. The datatype.tbl template NEXRIII is used to provide the
@@ -46,7 +61,7 @@ PROGRAM DESCRIPTION
    where the root directory $RAD/NIDS contains a tree structure supporting
    %SITE%/%PROD%/%PROD%_YYYYMMDD_HHNN file names. The %SITE% template
    will be replaced by the site IDs in the STNFIL table. The %PROD% will
-   be replaced by the GDPFUN product name. The GEMPAK data/time template
+   be replaced by the GFUNC product name. The GEMPAK data/time template
    will be used with RADTIM and RADDUR to determine which NEXRAD products
    are in the valid time range.
 
@@ -60,7 +75,7 @@ PROGRAM DESCRIPTION
    used if RADDUR is blank.
 
    RADFRQ is the frequency in minutes at which the program will run.
-   When RADFRQ is defined, GDRADR will wait for the specified time
+   When RADFRQ is defined, NEXRCOMP will wait for the specified time
    before rerunning. This option is most useful when RADTIM is
    set to 'current'. When the program is sleeping, ctrl-c can be
    used to exit the loop and return to the dynamic tutor. If
@@ -73,60 +88,45 @@ PROGRAM DESCRIPTION
    are specified is data from all 3 modes (PCM). Multiple modes
    may be specified.
 
+   COMPRESS allows the user to optionally write the GINI file using PNG
+   compression for the image raster. The GINI header will identify the
+   image as a compressed product.
+
 
 EXAMPLES
  
-    1.  Create a 4km National composite of NEXRAD base reflectivity (N0Q)
-        and echo tops (NET). Use the current time with a 30 minute window
-        for data. Rerun the mosaic creation continuously with a 5 minute
-        wait period between each update. Use the nexrad.tbl station table.
-        Create the grid output file using the YYYYMMDD_radar.gem file name
-        template. Accept data only from radars operating in precipitation
-        mode.
+    1.  Create a 1km National composite of NEXRAD base reflectivity (N0Q).
+        Use the current time with a 30 minute window for data. Rerun the
+        mosaic creation continuously with a 5 minute wait period between
+        each update. Use the nexrad.tbl station table. Create the 
+        output file using the rad_YYYYMMDD_HHNN file name template.
+        Accept data from radars operating in precipitation and
+        clear air mode. 
 
-        PROJ     = lcc/25;-103;60
-        GRDAREA  = 23.0;-120.0;47.0;-65.0
-        KXKY     = 720;500
-        GDPFUN   = n0q ! net
-        GDFILE   = YYYYMMDD_radr.gem
+        GRDAREA  = 23;-120;47.2634;-63.5664
+        PROJ     = lcc/40;-100;40
+        KXKY     = 4736;3000
+        CPYFIL   =
+        GFUNC    = n0q
         RADTIM   = current
         RADDUR   = 30
         RADFRQ   = 5
-        CPYFIL   =
         STNFIL   = nexrad.tbl
-        MAXGRD   = 1000
-	RADMODE  = P
-
-    2.  Create a radar mosaic using grid #218 for the total precipitation
-        nexrad product (NTP). Use the default radar station table.
-        Use a 15 minute time window ending at to 010302/1200.
-
-        PROJ     =
-        GRDAREA  =
-        KXKY     =
-        GDPFUN   = ntp
-        GDFILE   = YYYYMMDD_ntp.gem
-        RADTIM   = 010302/1200
-        RADDUR   = 15
-        RADFRQ   =
-        CPYFIL   = #218
-        STNFIL   =
-        MAXGRD   = 500
-	RADMODE  =
+        RADMODE  = PC
+        SATFIL   = rad_YYYYMMDD_HHNN
+        GDFILE   = YYYYMMDD_radr.gem
+	MAXGRD   = 1000
 
 ERROR MESSAGES
  
-    [GDRADR  +5]   Mode rejected: ...
-    [GDRADR  +4]    Write grid ...
-    [GDRADR  +3]    Using default station file ...
-    [GDRADR  +2]    NEXRIII template not found using ...
-    [GDRADR  +1]    Too old: ...
-    [GDRADR  0]    Using:   ...
-    [GDRADR  -1]    Fatal error initializing TAE.
-    [GDRADR  -2]    Fatal error reading TAE parameters.
-    [GDRADR  -3]    Fatal error initializing GEMPLT.
-    [GDRADR  -4]    Failed to read grid projection ...
-    [GDRADR  -5]    Could not create grid file ...
-    [GDRADR  -6]    Could not open grid file ...
-    [GDRADR  -7]    Warning: navigation block does not match file
-    [GDRADR  -8]    Station table ... not found
+    [NEXRCOMP  +5] Mode rejected: ...
+    [NEXRCOMP  +4]  Write image ...
+    [NEXRCOMP  +3]  Using default station file ...
+    [NEXRCOMP  +2]  NEXRIII template not found using ...
+    [NEXRCOMP  +1]  Too old: ...
+    [NEXRCOMP  0]  Using:   ...
+    [NEXRCOMP  -1]  Fatal error initializing TAE.
+    [NEXRCOMP  -2]  Fatal error reading TAE parameters.
+    [NEXRCOMP  -3]  Fatal error initializing GEMPLT.
+    [NEXRCOMP  -4]  Failed to read grid projection ...
+    [NEXRCOMP  -8]  Station table ... not found

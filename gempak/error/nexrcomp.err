@@ -1,0 +1,13 @@
+! This is the error file for NEXRCOMP
+!
+ +5     ! Mode rejected: !AS
+ +4	! Write image !AS
+ +3	! Using default station file !AS
+ +2	! NEXRIII template not found using !AS
+ +1	! Too old: !AS
+  0	! Using:   !AS
+ -1	! Fatal error initializing TAE.
+ -2	! Fatal error reading TAE parameters.
+ -3	! Fatal error initializing GEMPLT.
+ -4	! Failed to read grid projection !AS
+ -8	! Station table !AS not found

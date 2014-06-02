@@ -1,0 +1,15 @@
+GRDAREA Area covered by grid                                                    
+PROJ    Map projection/angles/margins|drop flag                                 
+KXKY    Number of grid points in x;y                                            
+CPYFIL  Grid file whose navigation is to be used in new grid file | subarea     
+GFUNC   Scalar grid                                                             
+RADTIM  Radar composite current/dattim                                          
+RADDUR  Radar time window (minutes prior to RADTIM)                             
+RADFRQ  Update Frequency                                                        
+STNFIL  Station information file                                                
+RADMODE Radar operational mode                                                  
+SATFIL  Satellite image filename(s)                                             
+COMPRESSWrite output in compressed format                                       
+GDFILE  Grid file                                                               
+MAXGRD  Maximum number of grids                                                 
+NDVAL   Replacement value for "ND" (default RMISSD)
