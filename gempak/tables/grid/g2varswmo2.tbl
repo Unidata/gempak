@@ -316,6 +316,9 @@
 !000 015 006 000 Radar Spectra (1)                -                    ????             ?  -9999.00
 !000 015 007 000 Radar Spectra (2)                -                    ????             ?  -9999.00
 !000 015 008 000 Radar Spectra (3)                -                    ????             ?  -9999.00
+000 015 009 000 Digital Hybrid Reflectivity      dB                   DHR              0  -9999.00
+000 015 010 000 Digital VIL                      kg m**-2             DVL              0  -9999.00
+000 015 011 000 Enhanced Echo Tops               kft                  EET              0  -9999.00
 !
 ! electrodynamics
 !D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING
