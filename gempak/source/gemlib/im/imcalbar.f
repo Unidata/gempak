@@ -65,10 +65,11 @@ C* imcbar.f
 C
         SELECT CASE (imtype)
 C
+C* NEXRCOMP GINI product N0Q = 2**(23)
 C* NEXRCOMP GINI product N0R = 2**(26)
 C* NEXRCOMP GINI product DHR = 2**(27)
 C
-          CASE (2**(26),2**(27))
+          CASE (2**(23),2**(26),2**(27))
             DO i=iminpix,imaxpix
                cmblev(i) = ''
                flevel = (i - 1 - minpx) * ratio + minval

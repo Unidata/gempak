@@ -312,11 +312,11 @@ C*      this is a to-do
               iinc = imndlv / 16.
               DO idl = 1, imndlv
                  val = amin + ( idl - 1 ) * ainc  
-                 IF ( MOD ( ( idl - 1 ), iinc ) .eq. 0 ) THEN
+C                 IF ( MOD ( ( idl - 1 ), iinc ) .eq. 0 ) THEN
                     CALL ST_RLCH ( val, 2, cmblev ( idl ), ier )
-                 ELSE
-                    cmblev ( idl ) = ' '
-                 END IF
+C                 ELSE
+C                    cmblev ( idl ) = ' '
+C                 END IF
               END DO
               cmblev ( 1 ) = 'ND'
            CASE DEFAULT 

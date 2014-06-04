@@ -44,10 +44,11 @@ C*
 	INTEGER 	ihdr (39)
 C*
 	BYTE     	ibarr (36)
-	INTEGER		idtarr (3), idlvls (16), dhci
+	INTEGER		idtarr (3), dhci
 	INTEGER*2	iarr2 (78), ivtim2 (2),  ibzsiz2 (2)
 	INTEGER*4	inhead (39), ivtim4, ibzsiz4, bzarr(9)
-        REAL*4          fphead (39), amin, ainc, val
+        REAL*4          fphead (39), amin, ainc, val, idlvls (16)
+        REAL*4          ioffset, iscale
 	CHARACTER       prdnam*8, units*8, desc*20, dhc(16)*4
         DATA            dhc  / 'ND', 'BI', 'GC', 'IC',
      +                         'DS', 'WS', 'RA', 'HR',
@@ -135,8 +136,8 @@ C
         idlvls (1) = fphead (16)
         idlvls (2) = fphead (17)
         idlvls (3) = iarr2 (36)
-        ioffset = idlvls (1)
-        iscale  = idlvls (2) 
+        ioffset = idlvls (2)
+        iscale  = idlvls (1) 
         ipkcd1 = iarr2 (69)
 C
 C*	Radial product-specific variables
@@ -264,27 +265,35 @@ C
                  CALL ST_RLCH ( val, 1, cmblev ( idl ), ier )
               END DO
               cmblev ( imndlv ) = 'RF'
-C           CASE (175)
-C              cmblev ( 1 ) = 'ND'
-C              cmblev ( 2 ) = ' '
-C              DO idl = 3, imndlv
-C                 val =  ( REAL(idl) - idlvls(2) ) / idlvls(1) 
-C                 CALL ST_RLCH ( val , 2, cmblev ( idl ), ier )
-C              END DO
 C* 170 - Digital Accumulation Array
 C* 172 - Digital Storm Total Accumulation
 C* 173 - Digital User-Selectable Accumulation
 C* 174 - Digital One-Hour Difference Accumulation
 C* 175 - Digital Storm Total Difference Accumulation
-           CASE (170,172,173,174,175)
+C  
+C* Halfwords 31 and 32 contain the Scale
+C* Halfwords 33/34 contain the Offset
+C
+           CASE (170,172,173)
               cmblev ( 1 ) = 'ND'
               DO idl = 2, imndlv
-                 IF ( idlvls(1) .gt. 0 ) THEN
-                   val = ( idl - idlvls(2) ) / idlvls(1) 
+                 IF ( iscale .gt. 0 ) THEN
+                   val = ( idl - ioffset ) / iscale 
                  ELSE
                    val = 0.
                  END IF
-                 CALL ST_RLCH ( val / 100 , 2, cmblev ( idl ), ier )
+                 CALL ST_RLCH ( val / 100. , 2, cmblev ( idl ), ier )
+              END DO
+           CASE (174,175)
+              ioffset = 128.0
+              cmblev ( 1 ) = 'ND'
+              DO idl = 2, imndlv
+                 IF ( iscale .gt. 0 ) THEN
+                   val = ( idl - ioffset ) / iscale 
+                 ELSE
+                   val = 0.
+                 END IF
+                 CALL ST_RLCH ( val / 100. , 2, cmblev ( idl ), ier )
               END DO
         END SELECT
 C
