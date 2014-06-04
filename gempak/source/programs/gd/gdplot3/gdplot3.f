@@ -56,7 +56,6 @@ C* T. Piper/SAIC	08/04	Added mscale				*
 C* R. Tian/SAIC         12/04   Removed call to DG_CLAL			*
 C* T. Lee/SAIC		01/06	GDPLOT3					*
 C* T. Piper/SAIC        01/08   Added GD_INIT; removed from IN_BDTA     *
-C* M. James/Unidata     02/14   Added call to IN_COLR for COLORS        *
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 	INCLUDE		'gdplot.cmn'
@@ -159,12 +158,6 @@ C
 C*	    Set up the graphics device.
 C
 	    CALL GG_SDEV  ( device, iret )
-            IF  ( iret .eq. 0 )  THEN
-C
-C*              Get a set of color numbers.
-C
-                CALL IN_COLR ( colors, NEXP, icolr, iret )
-            END IF
 	    IF  ( iret .ne. 0 )  proces = .false.
 C
 	    proces = iret .eq. 0
