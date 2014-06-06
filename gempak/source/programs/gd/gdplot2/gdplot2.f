@@ -153,6 +153,10 @@ C
 C*          Check that device was set; if so, set colors.
 C
 	    IF  ( iret .ne. 0 )  proces = .false.
+	    IF  ( colors .ne. "" ) THEN
+	        CALL IN_COLR  ( colors, NEXP, icolr, iret )
+	    END IF
+
 C
 	    proces = iret .eq. 0
 C

@@ -186,12 +186,8 @@ void xsatim ( char *imgnam, int *xispace0, int *yispace0,
 	    break;
 
 	  case IFNIDS:  /* NIDS radar files */
-            crnids (imgnam, &ier ); 
-            break;
-
           case IFHINIDS: /*Higher Resolution NIDS radar files*/
             crnids (imgnam, &ier ); 
-            /*crnids (imgnam, &ier ); */
             break;
 	   
 	  case IFNOWR:  /* WSI NOWRAD radar files */

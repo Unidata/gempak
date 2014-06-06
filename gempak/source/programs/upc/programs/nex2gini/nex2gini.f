@@ -9,8 +9,6 @@ C* Chiz/Unidata         3/01	Initial coding				*
 C* Chiz/Unidata         2/02	Modified from GDRADR to write GINI 	*
 C*				format images with optional compression.*
 C* M. James/Unidata     6/10    Added bin mins & mstrct to CTB_DTGET    * 
-C* M. James/Unidata     11/13   Added gflg to notify radar_grid of      *
-C*                              data file type                          *
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 	INCLUDE		'IMGDEF.CMN'
@@ -31,7 +29,7 @@ C*
      +			tpath*(256), tplate*(80), ctmpl*(10)
                        
 C*
-	INTEGER		kx, ky, ignhdr(135), idtarr(5), gflg
+	INTEGER		kx, ky, ignhdr(135), idtarr(5)
 C*
 	LOGICAL		gsflag, respnd, done, exist, proces, viewable,
      +			opmode, compress

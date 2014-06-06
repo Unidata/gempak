@@ -300,18 +300,12 @@ C
 			             CALL ST_C2R(cmblev(i),1,rarr(i),num,ier)
                                      IF (ier .ne. 0) rarr(i) = RMISSD
 			          END DO
-C                               Need a flag for radar_grid function
-C                               (HHC,DVL, other high-res products)
-C##      134     DVL (High-Res Digital Vertically Integrated Liquid)
+C##      81      DPA (High-Res Hourly Digital Precipitation Array)
 C##      138     DSP (High-Res Digital Storm Total Precipitation)
 C##      177     HHC (Hybrid Scan Hydrometeor Classification)
                                   SELECT CASE (imtype)
-                                    CASE (177,138,134,135)
+                                    CASE (81,177,138)
                                       CALL radar_grid(0,kx,ky,grid,rarr)
-C##      32      DHR (Digital Hybrid Scan Reflectivity)
-C##      81      DPA (High-Res Hourly Digital Precipitation Array)
-C##      94      N0Q (High-Res Base Reflectivity, 0.5)
-C##      135     EET (High-Res Enhanced Echo Tops)
                                     CASE DEFAULT
                                       CALL radar_grid(1,kx,ky,grid,rarr)
                                   END SELECT

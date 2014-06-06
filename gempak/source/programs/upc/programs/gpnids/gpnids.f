@@ -92,7 +92,7 @@ C
 		if ( ier .eq. 0 )
      +		   CALL im_nids_output_luns ( nlun, luns )
 C
-C		CALL IN_COLR ( colors, 1, icolor, ier )
+		CALL IN_COLR ( colors, 1, icolor, ier )
 		CALL vad_colors ( icolor, ier )
 C
 c		CALL ST_LSTR  ( imcbar, lens, ier )

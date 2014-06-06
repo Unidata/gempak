@@ -5,6 +5,7 @@
 /* Updates						*/
 /* M. James/Unidata	09/10 Updated bounds check for  */
 /*			      MAXNEX increase           */
+/* M. James/Unidata	01/14 Updates for DVL		*/
 /*							*/
 /********************************************************/
 #include <geminc.h>
@@ -121,17 +122,6 @@ numstats = 0;
 /*load_bounds();*/
 }
 
-/*
-void dump_bounds()
-{
-int i;
-for(i=0;i<numstats;i++)
-   {
-   printf("%6d %15.4f %15.4f %15.4f %15.4f\n",stnums[i],
-      gbounds[i][0],gbounds[i][1],gbounds[i][2],gbounds[i][3]);
-   }
-}
-*/
 
 void radar_bounds(int *istnm, int *kx, int *ky, int *iret)
 {
@@ -167,7 +157,6 @@ xin[1] = imrght; yin[1] = imbot;
 xin[2] = imleft; yin[2] = imtop;
 xin[3] = imrght; yin[3] = imtop;
 gtrans(msys, gsys, &np, xin, yin, xout, yout, iret, strlen(gsys), strlen(msys));
-//printf("look ier outs %f %f   %f %f   %f %f   %f %f\n",xout[0],yout[0],xout[1],yout[1],xout[2],yout[2],xout[3],yout[3]);
 
 if(*iret == 0)
    {
@@ -212,7 +201,6 @@ else
    XL = XR = YB = YT = RMISSD;
    }
    
-//printf("look points %f %f %f %f\n",XL,XR,YB,YT);
 gbounds[numstats][0] = XL;
 gbounds[numstats][1] = YB;
 gbounds[numstats][2] = XR;
@@ -299,28 +287,25 @@ for ( i=xstart; i<=xstop; i++ )
          ip = ((j - 1) * (*kx)) + i - 1;
 
          // If imgData is between min and max (0 and 16 for 4 bit 0 and 255 for HiRes 8 bit)
+
          if ( ( imgData[it] >= immnpx ) && ( imgData[it] <= immxpx ) ) {
 
             // assign rval to level specified by imgData number
+
             if ( *prodflg > 0) {
 		rval = rlev[(int)imgData[it]];
             } else {
             	rval = (int)imgData[it];
             }
             	
-	    //rval = rlev[(int)imgData[it]];
-            //printf("rval=%d,%d\n", (int)imgData[it], rlev[(int)imgData[it]]);
 	    if ( rval > rvalmx ) {
                rvalmx = rval;
-               //printf("rvalmx=%f\n", rvalmx);
             }
-            //printf("x=%d y=%d np=%d it=%d imgData[it]=%d rval=%f rvalmx=%f \n", x, y, np, it, imgData[it], rval, rvalmx);
+
             // if rval is great than existing value, replace
+
             if ( rval > fdata[ip] ) {
-               fdata[ip] = rval;
-               //if ( imgData[it] > 11 ) {
-               //   printf("x=%d y=%d np=%d it=%d imgData[it]=%d rval=%f rvalmx=%f \n", x, y, np, it, imgData[it], rval, rvalmx);
-               //}
+                fdata[ip] = rval;
             }
          } else
             printf("%d %d %d   %d %d %d   %d [%d %d]\n", x,y,np, i,j,ip, imgData[it],immnpx, immxpx);

@@ -133,7 +133,7 @@ else
 
 }
 
-#define MAXSTR  128
+#define MAXSTR  512
 #define DEFBAND 25
 
 void calinit(char *prodid, int *iret)
@@ -143,7 +143,7 @@ char line[512], defstr[]=" ";
 int iband,numstr;
 float fvals[4];
 FILE *fp;
-static int nstrings=6,init=-1;
+static int nstrings=10,init=-1;
 static char **arrptr;
 char *calblock, *cpos;
 int FOUND=0, ier;

@@ -133,7 +133,7 @@ void crnids ( char *imgnam, int *iret )
 
         if ( ier != 0 ) {
    	    /* not a bzip compressed packet */
-	    printf("expecting bzip2 compression, not found %d\n", ier);
+	    printf("ERROR: expecting bzip2 compression, not found %d\n", ier);
             *iret = G_NIMGFL;
             return;
         }
