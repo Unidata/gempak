@@ -674,6 +674,7 @@ QSCAT                IR            0    255     10     64      1 ir_nmc.tbl
 !
 ! Unidata NEXRAD Composites
 !
+RADAR                OHA           0    255     11  2**17      1 upc_n1p.tbl
 RADAR                DSP           0    255     11  2**18      1 upc_n1p.tbl
 RADAR                DTA           0    255     11  2**19      1 upc_n1p.tbl
 RADAR                DAA           0    255     11  2**20      1 upc_n1p.tbl
