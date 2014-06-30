@@ -50,9 +50,10 @@
 007   x   077,81,96 043    data/gempak/model/gfs/YYYYMMDDHH_thin.gem      2000
 007   x   077,81,96 044    data/gempak/model/gfs/YYYYMMDDHH_thin.gem      2000
 007   x   077,81,96 002    data/gempak/model/gfs/YYYYMMDDHH_gfs@@@.gem    9000
-007   x   077,81,96 003    data/gempak/model/gfs/YYYYMMDDHH_gfs@@@.gem   29000
+007   x   077,81,96 003    data/gempak/model/gfs/YYYYMMDDHH_gfs003.gem   29000
+007   x   077,81,96 703    data/gempak/model/gfs/YYYYMMDDHH_gfs703.gem   29000
 007   x   077,81,96 004    data/gempak/model/gfs0.5deg/YYYYMMDDHHfFFF_gfs.gem   29000
-007   x   077,81,96 @@@    data/gempak/model/gfs/YYYYMMDDHH_gfs@@@.gem   10000
+!007   x   077,81,96 @@@    data/gempak/model/gfs/YYYYMMDDHH_gfs@@@.gem   10000
 !
 ! MRF
 ! combine these with ocn grids 21-24
