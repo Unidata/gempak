@@ -1,0 +1,39 @@
+!
+! Restore File : bl_winds_only
+!
+! Log:
+! J.L.Partain/MPC	 2/99	Initial creation
+! J.L.Partain/MPC	03/00	Chg GLEVEL from 19 to 10
+!
+GLEVEL  10
+GVCORD  hght
+PANEL   0                                                                       
+SKIP    0
+SCALE   0
+GDPFUN  kntv(wnd)
+TYPE    b
+CONTUR  1                                                                       
+CINT    
+LINE    
+FINT    
+FLINE   
+HILO    
+HLSYM   
+CLRBAR  0
+WIND    9/0.7/1.5/112
+REFVEC                                                                          
+TITLE   1/-1/~ BL WIND (10m; KTS)
+TEXT    1/22/2/hw                                                             
+CLEAR   yes                                                                     
+DEVICE  xw                                                                      
+STNPLT                                                                          
+SATFIL                                                                          
+RADFIL                                                                          
+STREAM                                                                          
+POSN    4                                                                       
+COLORS  2                                                                       
+MARKER  2                                                                       
+GRDLBL  5                                                                       
+LUTFIL  none
+FILTER  yes
+IJSKIP  NO

@@ -215,6 +215,7 @@
 !* G.McFadden/IMSG	07/13	Added SGWHA and WSPDA			*
 !* M. James/Unidata	10/13	Added OPC lightning density grids	*
 !* M. James/Unidata	03/14	Updates for COAMPS and NAVGEM		*
+!* M. James/Unidata	06/14	Added COSMO				*
 !************************************************************************
 !
 !           |                         |                                                |        |        |DEF |DEF   |DEF   |                     |TIME
@@ -369,6 +370,7 @@ SIGBUF18     $SIGWX/bufrfiles          JU*D*.YYYYMMDDHH                         
 SIGBUF24     $SIGWX/bufrfiles          JU*E*.YYYYMMDDHH                                 CAT_NIL  SCAT_NIL   -1     -1     -1      OFF/0/0      4
 !
 ! Operational models and grid data
+COSMO        $MODEL/cosmo              YYYYMMDDHH_cosmo.gem                             CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
 COAMPS       $MODEL/coamps             coamps_YYYYMMDDHHfFFF                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
 COAMPSP      $MODEL/coamps             coamps_YYYYMMDDHH_prcp                           CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
 COFS         $MODEL/cofs               cofs_YYYYMMDDHH                                  CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4

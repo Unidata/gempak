@@ -1,0 +1,39 @@
+!
+! Restore File : pmsl_and_dew_point
+!
+! Log:
+! D.W.Plummer/NCEP	 2/97	Initial creation
+! D.W.Plummer/NCEP	 8/97	Added FILTER parameter and changed TEXT value
+!
+GDATTIM last
+GLEVEL  0
+GVCORD  none
+PANEL   0                                                                       
+SKIP    0!0/1;-1
+SCALE   0
+GDPFUN  dwpc!dwpc!sm5s(pmsl) ! kntv(wnd)
+TYPE    c/f !c   !c          ! b
+CONTUR  1                                                                       
+CINT    2/-4/10!2/12!4
+LINE    23!32//2!6/1/2
+FINT    10;14;18;22;26
+FLINE   0;24;23;22;15;2
+HILO    0!0!6/H#;L#/1020-1070;900-1012//y
+HLSYM   0!0!1;1//22;22/2;2/hw
+CLRBAR  1/V/LL!0
+WIND    9/0.6/2/112
+REFVEC  
+TITLE   1/-1/~ MSL PRESSURE, SFC WIND (KTS) & DEW POINT!0
+TEXT    1/22/2/hw
+CLEAR   yes                                                                     
+STNPLT                                                                          
+SATFIL                                                                          
+RADFIL                                                                          
+STREAM                                                                          
+POSN    4                                                                       
+COLORS  2                                                                       
+MARKER  2                                                                       
+GRDLBL  5                                                                       
+LUTFIL  none
+FILTER  yes
+IJSKIP  NO

@@ -86,6 +86,7 @@
 ! M. James/Unidata	 4/13	Copied nogaps -> navgem												*
 ! M. James/Unidata       8/13   Added GME (DWD) and G3DVAR (INPE)         									*
 ! M. James/Unidata	10/13   Added OPC lightning density grids										*
+! M. James/Unidata	 7/14   Added Cosmo South America grid parm support									*
 !************************************************************************************************************************************************
 !
 ! PRODUCT NAME                 PATH/FILENAME                                         GROUP        MODELS
@@ -188,6 +189,23 @@ MLW_PMSL                         $NMAP_RESTORE/misc/mlw_pmsl                    
 !
 BL_THTE_WIND                     $NMAP_RESTORE/misc/bl_thte_wind                     tropical     dgex;gme;g3dvar;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;fnl;mrf;mrfx
 BL_THTE_WIND                     $NMAP_RESTORE/misc/bl_thte_wind                     basic_wx     dgex;gme;g3dvar;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;mrf;fnl;mrfx
+!
+! Cosmo
+!
+SFC_THTE_WIND                    $NMAP_RESTORE/modl/cosmo/sfc_thte_wind              basic_wx     cosmo
+PMSL_and_BL_WIND                 $NMAP_RESTORE/modl/cosmo/pmsl_and_bl_wind           surface      cosmo
+PMSL_BL_TEMP(C)_WIND             $NMAP_RESTORE/modl/cosmo/pmsl_bl_temp_wind          basic_wx     cosmo
+PMSL_and_BL_WIND                 $NMAP_RESTORE/modl/cosmo/pmsl_and_bl_wind           surface      cosmo
+WINDS_ONLY                       $NMAP_RESTORE/modl/cosmo/bl_winds_only              surface      cosmo
+BL_2-METER_12HRMAX_TEMP_C        $NMAP_RESTORE/modl/cosmo/bl_2-meter_12hrmax_temp_c  surface      cosmo
+BL_2-METER_12HRMIN_TEMP_C        $NMAP_RESTORE/modl/cosmo/bl_2-meter_12hrmin_temp_c  surface      cosmo
+BL_RH                            $NMAP_RESTORE/modl/cosmo/bl_rh                      surface      cosmo
+10m_wind_analysis                $NMAP_RESTORE/modl/cosmo/wndk_10m                   surface      cosmo
+SFC_TEMP                         $NMAP_RESTORE/modl/cosmo/sfc_temp                   surface      cosmo 
+SFC_DWPC                         $NMAP_RESTORE/modl/cosmo/sfc_dwpc                   surface      cosmo
+SFC_FNT                          $NMAP_RESTORE/modl/cosmo/sfc_fnt                    surface      cosmo
+SFC_MOIST_CONV                   $NMAP_RESTORE/modl/cosmo/sfc_moist_conv             surface      cosmo
+!
 PMSL_THKN                        $NMAP_RESTORE/misc/pmsl_thkn                        standard     dgex;gme;g3dvar;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;fnl;mrf;mrfx;ngm;ukmet;nogaps;navgem;ens;mm5ak;mm5us
 PMSL_THKN                        $NMAP_RESTORE/misc/pmsl_thkn                        standard     gefs;gefc
 PMSL                             $NMAP_RESTORE/misc/pmsl                             standard     dgex;gme;g3dvar;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;nam;nam12;nam20;nam40;nam44;wseta;wrf;fnl;mrf;mrfx;ngm;ukmet;nogaps;navgem
@@ -241,7 +259,7 @@ POTVORT_400-200mb                $NMAP_RESTORE/modl/global/400-200mb_pv         
 POTVORT_400-250mb                $NMAP_RESTORE/modl/global/400-250mb_pv              standard     dgex;gme;g3dvar;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;mrf;mrfx;fnl;nogaps;navgem
 POTVORT_500-300mb                $NMAP_RESTORE/modl/global/500-300mb_pv              standard     dgex;gme;g3dvar;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;mrf;mrfx;fnl;nogaps;navgem
 POTVORT_500-250mb                $NMAP_RESTORE/modl/global/500-250mb_pv              standard     dgex;gme;g3dvar;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;mrf;mrfx;fnl;nogaps;navgem
-PMSL_and_BL_WIND                 $NMAP_RESTORE/modl/global/pmsl_and_bl_wind          standard     dgex;gme;g3dvar;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;mrf;mrfx;fnl
+PMSL_and_BL_WIND                 $NMAP_RESTORE/modl/global/pmsl_and_bl_wind          standard     dgex;gme;g3dvar;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;mrf;mrfx;fnl;nogaps;navgem
 1000mb_HGHT_ABSV                 $NMAP_RESTORE/modl/global/1000mb_hght_absv          marine       dgex;gme;g3dvar;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;mrf;mrfx;fnl;nogaps;navgem;ukmet;gme;g3dvar;gme_3dv
 850mb_HGHT_ABSV                  $NMAP_RESTORE/modl/global/850mb_hght_absv           marine       dgex;gme;g3dvar;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211;mrf;mrfx;fnl;nogaps;navgem;ukmet
 !
@@ -639,6 +657,10 @@ MAX_TEMP_FILL                    $NMAP_RESTORE/modl/ndfd/max_temp_fill          
 MIN_TEMP_FILL                    $NMAP_RESTORE/modl/ndfd/min_temp_fill               ndfd         ndfd
 POP_12HR_FILL                    $NMAP_RESTORE/modl/ndfd/pops_12hr_fill              ndfd         ndfd
 !
+! COSMO
+! -----
+!
+!
 !
 ! UKMET model
 ! -----------
@@ -787,8 +809,8 @@ tmpc                             $NMAP_RESTORE/obj/surface/tmpc                 
 !
 ! RTMA
 RTMA_2m_temperature              $NMAP_RESTORE/modl/rtma/tmpf_2m                     basic_wx     rtma
-RTMA_2m_dpt_temperature          $NMAP_RESTORE/modl/rtma/dwpf_2m                     basic_wx     rtma
-RTMA_10m_wind_analysis           $NMAP_RESTORE/modl/rtma/wndk_10m                    basic_wx     rtma
+RTMA_2m_dpt_temperature          $NMAP_RESTORE/modl/rtma/dwpf_2m                     basic_wx     rtma;cosmo
+RTMA_10m_wind_analysis           $NMAP_RESTORE/modl/rtma/wndk_10m                    basic_wx     rtma;cosmo
 ! SREF
 SREF_CAPE_precipitation          $NMAP_RESTORE/modl/sref/prob_precip_cape            misc         sref
 SREF_CAPE_probability            $NMAP_RESTORE/modl/sref/prob_cape                   misc         sref
