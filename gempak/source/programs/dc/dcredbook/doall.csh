@@ -1,6 +1,6 @@
 #!/bin/csh -f
 
-source /home/gempak/Gemenviron
+source ~gempak/NAWIPS/Gemenviron
 
 set TOP=$cwd
 set REDBOOK=$GEMDATA/afos/rbk

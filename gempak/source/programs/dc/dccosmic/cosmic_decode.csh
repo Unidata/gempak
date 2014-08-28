@@ -1,6 +1,6 @@
 #!/bin/csh -f
 
-source ~gempak/Gemenviron
+source ~gempak/NAWIPS/Gemenviron
 
 cd ~ldm/data/cosmic
 

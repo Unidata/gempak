@@ -21,7 +21,7 @@
 #  Please configure the following definitions to reflect your system:
 #
 # Top level directory:
-   setenv NAWIPS /home/gempak/GEMPAK7
+   setenv NAWIPS /home/gempak/NAWIPS
 #
 # Uncomment the following lines for using GCC compilers (Solaris/HP only)
 # set USEGCC_SOL=1

@@ -7,7 +7,7 @@
 # Steve Chiswell	 2/2003
 ###########################################################
 
-source ~gempak/Gemenviron
+source ~gempak/NAWIPS/Gemenviron
 
 cd $GEMDATA/logs
 
