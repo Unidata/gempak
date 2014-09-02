@@ -236,27 +236,28 @@ C
 	    ELSE IF  ( ier .eq. -3 )  THEN
 		iret   = -3
 	    ELSE IF  ( ier .eq. -4 )  THEN
-                IF ( LEN_TRIM(loc) .eq. 3) THEN
-                    loc = 'K' // loc
-                END IF
+C
+C*              Construct 4-char ICAO and check again
+C 
+                IF ( LEN_TRIM(loc) .eq. 3 ) loc = 'K' // loc
+                CALL LC_FSTN  ( 'sfstns.tbl', loc, cenlat, cenlon, ier )
+                IF  ( ier .eq. 0 )  THEN
+                    diflat = 4.0
+                    diflon = 7.0
+                    iartyp = 2
+                    stn(1) = loc
+                    IF ( cenlat .gt. 25. ) THEN
+                        cdproj = 'NPS'
+                    ELSE IF ( cenlat .lt. -25. ) THEN
+                        cdproj = 'SPS'
+                    ELSE
+                        cdproj = 'MER'
+                    END IF
+                    iret   = 0
+                ELSE IF  ( ier .eq. -3 )  THEN
+                    iret   = -3
+                ENDIF
 	    ENDIF
-            CALL LC_FSTN  ( 'sfstns.tbl', loc, cenlat, cenlon, ier )
-            IF  ( ier .eq. 0 )  THEN
-                diflat = 4.0
-                diflon = 7.0
-                iartyp = 2
-                stn(1) = loc
-                IF ( cenlat .gt. 25. ) THEN
-                    cdproj = 'NPS'
-                ELSE IF ( cenlat .lt. -25. ) THEN
-                    cdproj = 'SPS'
-                ELSE
-                    cdproj = 'MER'
-                END IF
-                iret   = 0
-            ELSE IF  ( ier .eq. -3 )  THEN
-                iret   = -3
-            ENDIF
 	ENDIF
 C
 C*	If area has been found--compute bounds with zoom factors.
