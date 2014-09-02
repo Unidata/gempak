@@ -235,11 +235,12 @@ C
 		iret   = 0
 	    ELSE IF  ( ier .eq. -3 )  THEN
 		iret   = -3
-	    ELSE IF  ( ier .eq. -4 )  THEN
+	    ELSE IF  ( ( ier .eq. -4 ) .and.
+     +          ( LEN_TRIM(loc) .eq. 3 ) ) THEN
 C
 C*              Construct 4-char ICAO and check again
 C 
-                IF ( LEN_TRIM(loc) .eq. 3 ) loc = 'K' // loc
+                loc = 'K' // loc
                 CALL LC_FSTN  ( 'sfstns.tbl', loc, cenlat, cenlon, ier )
                 IF  ( ier .eq. 0 )  THEN
                     diflat = 4.0
