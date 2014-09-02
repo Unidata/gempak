@@ -58,6 +58,7 @@ C* S. Jacobs/NMC	 7/94	Added SFSTBL to call to LC_FSTN		*
 C* D. Keiser/GSC	12/95	Changed SFSTBL to 'sfstns.tbl'		*
 C* G. Krueger/EAI	 6/96	Add corner points, default projection	*
 C* K. Tyle/GSC		 7/96	Added case for AREA = GAREA		*
+C* M. James/UCAR	 9/14	Construct 4-char IACO from 3-char	*
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 C
