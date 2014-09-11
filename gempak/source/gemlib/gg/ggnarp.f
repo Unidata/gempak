@@ -42,10 +42,11 @@ C* F. J. Yen/NCEP	 6/01   Plot all forecast hours.		*
 C* B. Yin/SAIC           3/04   Changed SS_GTIM to CSS_GTIM             *
 C* m.gamazaychikov/SAIC 07/08	Changed the size of tlat, tlon to 500   *
 C* T. Piper/SAIC	09/08	Increased NA to 25 as in gg_natc	*
+C* M.James/Unidata	08/14	Increased hours to 240, NPTS to 41	*
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 C*
-	PARAMETER	( NA = 25, NPTS = 22 )
+	PARAMETER	( NA = 25, NPTS = 41 )
 	PARAMETER	( JTIM = 1, JNAM = 2, JSPD = 3, JMKR = 4 )
 C*
 	CHARACTER*(*)	trkfil, dattm2, strnam, models(*)
@@ -217,15 +218,15 @@ C
      +					icolor ( ii ) .gt. 0 ) THEN
 C
 C*				    Check if the forecast period is in
-C*				    the set:  (0, 6, 12, 18, ... 126).
+C*				    the set:  (0, 6, 12, 18, ... 240).
 C*				    and determine the position to be
-C*				    stored (1, 2, 3, 4, ... 22)
+C*				    stored (1, 2, 3, 4, ... 41)
 C*				    respectively.
 C
 				    tau = buffer ( 31:33)
 				    CALL ST_RMBL ( tau, tau, ln, ier )
 				    CALL ST_INTG ( tau(1:ln), itau, ier)
-				    IF ( itau .ge. 0 .and. itau .le. 126 ) THEN
+				    IF ( itau .ge. 0 .and. itau .le. 240 ) THEN
 				        IF (MOD (itau, 6) .eq. 0) THEN
 					    ip = itau / 6 + 1
 			            	    record (ip,ii) = buffer
