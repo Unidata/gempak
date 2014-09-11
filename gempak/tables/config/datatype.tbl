@@ -387,6 +387,7 @@ ECMWFT       $MODEL/ecmwf              YYYYMMDDHH_ecmf2.gem                     
 ECMWF_HIRES  $MODEL/ecmwf_hr           ecmwf_hr_YYYYMMDDHHfFFF                          CAT_GRD  SCAT_FCT   -1     -1     -1 OFF/0/0                    4
 EC_HIRES_PCP $MODEL/ecmwf_hr           ecmwf_hr_YYYYMMDDHH_pcpn                         CAT_GRD  SCAT_FCT   -1     -1     -1 OFF/0/0                    4
 GDAS         $MODEL/gdas               gdas_YYYYMMDDHHfFFF                              CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+HRRR         $MODEL/hrrr               YYYYMMDDHHfFFF_hrrr.gem                          CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
 GFS          $MODEL/gfs                YYYYMMDDHH_gfs003.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
 GFSP         $MODEL/gfsp               gfs_YYYYMMDDHHfFFF                               CAT_GRD  SCAT_FCT   -1     -1     -1 OFF/0/0                    4
 GFSHD        $MODEL/gfs0.5deg          YYYYMMDDHHfFFF_gfs.gem                           CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4

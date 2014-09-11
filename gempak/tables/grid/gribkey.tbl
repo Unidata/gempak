@@ -55,6 +55,7 @@
 007   x   077,81,96 004    data/gempak/model/gfs0.5deg/YYYYMMDDHHfFFF_gfs.gem   29000
 !007   x   077,81,96 @@@    data/gempak/model/gfs/YYYYMMDDHH_gfs@@@.gem   10000
 !
+! HRRR
 ! MRF
 ! combine these with ocn grids 21-24
 007   x   78,80,94  021    data/gempak/model/nww/YYYYMMDDHH_nww.gem        500
@@ -138,7 +139,9 @@
 098   x   ???       @@@    data/gempak/model/ecmwf/YYYYMMDDHH_ecmwf@@@.gem   100
 !
 ! FSL RUC
-059   x   105       @@@    data/gempak/model/ruc/YYYYMMDDHH_ruc@@@.gem    7500
+059   x   105       @@@    data/gempak/model/ruc/YYYYMMDDHH_ruc@@@.gem      7500
+! FSL HRRR
+059   x   125       @@@    data/gempak/model/hrrr/YYYYMMDDHHfFFF_hrrr.gem   7500
 !
 ! FNMOC NAVGEM and COAMPS
 !center sub modelid grid   Output grid file name                   max_grids

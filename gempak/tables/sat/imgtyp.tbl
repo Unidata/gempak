@@ -395,7 +395,7 @@ LOCAL  1 KM  RADIAL  VELOCITY      0     15      7     27      1 nids_vel16.tbl
 LOCAL .25 KM SPCTRM  WIDTH         0      7      7     28      1 nids_swid.tbl
 LOCAL .50 KM SPCTRM  WIDTH         0      7      7     29      1 nids_swid.tbl
 LOCAL  1 KM  SPCTRM  WIDTH         0      7      7     30      1 nids_swid.tbl
-LOCAL  1 KM  DIGITAL HY_REF        0    255      7     32      1 upc_ref.tbl
+LOCAL  1 KM  DIGITAL HY_REF        0    255      7     32      1 upc_dhr.tbl
 LOCAL  1 KM  COMP    REFLECT       0      7      7     35      1 osf_ref8.tbl
 LOCAL  4 KM  COMP    REFLECT       0      7      7     36      1 osf_ref8.tbl
 LOCAL  1 KM  COMP    REFLECT       0     15      7     37      1 osf_ref16.tbl
