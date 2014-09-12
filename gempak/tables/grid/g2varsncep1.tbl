@@ -8,14 +8,22 @@
 ! temperature
 !D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING
 !23|123|123|123|12345678901234567890123456789012|12345678901234567890|123456789012|12345|123456.89
+000 000 021 000 Apparent Temperature             K                    APTMP            0  -9999.00
 000 000 192 000 Snow Phase Change Heat Flux      W m**-2              FXSN             0  -9999.00
 000 000 192 001 Snow Phase Change Heat Flux      W m**-2              FXSN             0  -9999.00
 000 000 192 008 Max horiz. wind 10m AGLpast hour m s**-1              MAXUW            0  -9999.00
+000 000 193 008 Temp. tend. by all radiation     K s**-1              TTRAD            0  -9999.00
+000 000 194 008 Relative Error Variance          -                    REV              0  -9999.00
 000 000 195 008 Large scale condensate heat rate K s**-1              LRGHR            0  -9999.00
 000 000 196 008 Deep convective heating rate     K s**-1              CNVHR            0  -9999.00
+000 000 197 008 Total Downward Heat Flux at Sfc  W m**-2              THFLX            0  -9999.00
 000 000 198 008 Temp tendency by all physics     K s**-1              TTDIA            0  -9999.00
+000 000 199 008 Temp tendency by non-rad physics K s**-1              TTPHY            0  -9999.00
+000 000 200 008 Standard dev of IRtemp 1deg area K                    TSD1D            0  -9999.00
 000 000 201 008 Shallow convective heating rate  K s**-1              SHAHR            0  -9999.00
 000 000 202 008 Vertical diffusion heating rate  K s**-1              VDFHR            0  -9999.00
+000 000 203 008 Pot temp top of viscous sublayer K                    THZ0             0  -9999.00
+000 000 204 008 Tropical Cyclone Heat Potential  J m**-2              TCHP             0  -9999.00
 !
 ! moisture
 !D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING
@@ -70,15 +78,29 @@
 000 001 213 008 Deep convective moistening rate  kg kg**-1 s**-1      CNVMR            0  -9999.00
 000 001 214 008 Shallow convec moistening rate   kg kg**-1 s**-1      SHAMR            0  -9999.00
 000 001 215 008 Vertical diff moistening rate    kg kg**-1 s**-1      VDFMR            0  -9999.00
+000 001 216 008 Condens. pres of parcali lifted  Pa                   CONDP            0  -9999.00
 000 001 217 008 Large scale moistening rate      kg kg**-1 s**-1      LRGMR            0  -9999.00
-000 001 225 008 Freezing rain accumulation       kg/m**2              Z--M             0     -0.01
-000 001 227 008 Frozen rain (sleet) accum        kg/m**2              I--M             0     -0.01
+000 001 218 008 Sp hum top of viscous sublayer   kg kg**-1            QZ0              0  -9999.00
+000 001 219 008 Maximum specific humidity at 2m  kg kg**-1            QMAX             0  -9999.00
+000 001 220 008 Minimum specific humidity at 2m  kg kg**-1            QMIN             0  -9999.00
+000 001 221 008 Liquid precipitation (Rainfall)  kg m**-2             ARAIN            0  -9999.00
+000 001 222 008 Snow temperature, depth-avg      K                    SNOWT            0  -9999.00
+000 001 223 008 Total precip nearest grid point  kg m**-2             APCPN            0  -9999.00
+000 001 224 008 Convec precip nearest grid point kg m**-2             ACPCPN           0  -9999.00
+000 001 225 008 Freezing rain accumulation       kg m**-2             Z--M             0     -0.01
+000 001 226 008 Predominant Weather              non-dim              PWTHER           0  -9999.00
+000 001 227 008 Frozen rain (sleet) accum        kg m**-2             I--M             0     -0.01
+000 001 241 008 Total Snow                       kg m**-2             TSNOW            0  -9999.00 
+000 001 242 008 RELH wrt precipitable water      %                    RHPW             0  -9999.00 
 !
 ! momentum
 !D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING
 !23|123|123|123|12345678901234567890123456789012|12345678901234567890|123456789012|12345|123456.89
 000 002 002 000 u-component of wind              m s**-1              UREL             0  -9999.00
 000 002 003 000 v-component of wind              m s**-1              VREL             0  -9999.00
+000 002 036 000 Amp. func Rossby Wave Mer. Wind  m s**-1              AFRWE            0  -9999.00
+000 002 037 000 Northward Turbulent Sfc Stress   N m**-2 s**-1        NTSS             0  -9999.00
+000 002 038 000 Eastward Turbulent Sfc Stress    N m**-2 s**-1        ETSS             0  -9999.00
 000 002 192 000 Vertical speed shear             s**-1                VWSH             0  -9999.00
 000 002 192 001 Vertical speed shear             s**-1                VWSH             0  -9999.00
 000 002 193 000 Momentum flux                    N m**-2              MFLX             0  -9999.00
@@ -199,6 +221,8 @@
 000 014 198 008 Ozone production from Temp       kg kg**-1 s**-1      OZPRDTMP         0  -9999.00
 000 014 199 008 Ozone production from Column     kg kg**-1 s**-1      OZPRDCOL         0  -9999.00
 !
+000 017 000 000 Lightning Strike Density         m**2/s               LTNGSD           0  -9999.00
+!
 ! physical atmospheric properties
 !D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING
 !23|123|123|123|12345678901234567890123456789012|12345678901234567890|123456789012|12345|123456.89
@@ -209,12 +233,14 @@
 ! Miscellaneous
 !D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING
 !23|123|123|123|12345678901234567890123456789012|12345678901234567890|123456789012|12345|123456.89
+000 191 003 000 Days Since Last Observation      d                    DSLOBSM          0  -9999.00
 000 191 192 000 Latitude (-90 to +90)            Degree               LATD             0  -9999.00
 000 191 193 000 East longitude (0 to 360)        Degree               LOND             0  -9999.00
 !
 ! Hydrology basic products
 !D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING
 !23|123|123|123|12345678901234567890123456789012|12345678901234567890|123456789012|12345|123456.89
+001 000 007 000 Discharge from Rivers or Streams m**3 s**-1           DISRS            0  -9999.00
 001 000 192 000 Baseflow-groundwater runoff      kg m**-2             BFGR             0  -9999.00
 001 000 192 008 Baseflow-groundwater runoff      kg m**-2             BFGR             0  -9999.00
 001 000 193 000 Storm surface runoff             kg m**-2             R--M             0     -0.01
@@ -223,13 +249,17 @@
 ! Hydrology Probabilities category
 !D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING
 001 001 192 008 Prob of freezing of precip       %                    POPF             0  -9999.00
-001 001 193 000 Prob of Frozen Precipitation     %                    POPZ             0  -9999.00
-001 001 193 008 Prob of Frozen Precipitation     %                    POPZ             0  -9999.00
+001 001 193 000 Percent of Frozen Precipitation  %                    POPZ             0  -9999.00
+001 001 193 008 Percent of Frozen Precipitation  %                    POPZ             0  -9999.00
 001 001 194 008 Prob precip exceeding FFG        %                    PEFG--           0  -9999.00
 !
 ! vegetation/Biomass
 !D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING
 !23|123|123|123|12345678901234567890123456789012|12345678901234567890|123456789012|12345|123456.89
+002 000 029 000 Evergreen Forest Cover           %                    EVGFC            0  -9999.00
+002 000 030 000 Deciduous Forest Cover           %                    DECFC            0  -9999.00
+002 000 033 000 Water Runoff and Drainage        kg m**-2             WROD             0  -9999.00
+002 000 034 000 Surface Water Runoff             kg m**-2             SFCWRO           0  -9999.00
 002 000 192 000 Volumetric soil moisture content fraction             SOIM             0  -9999.00
 002 000 192 001 Volumetric soil moisture content fraction             SOIM             0  -9999.00
 002 000 192 002 Volumetric soil moisture content fraction             SOIM             0  -9999.00
@@ -261,14 +291,55 @@
 002 003 197 000 Soil porosity (0.0-1.0)          -                    POROS            0  -9999.00
 002 003 203 000 Field capacity                   -                    FLDCP            0  -9999.00
 002 003 203 001 Field capacity                   -                    FLDCP            0  -9999.00
+002 004 004 000 Fosberg Index                    Numeric              FOSINDX          0  -9999.00
+!
+003 001 194 000 Scatterometer Wind Quality       -                    SWQI             0  -9999.00
+003 192 014 000 SRF for ABI GOES16 Band-1        -                    SRFA161          0  -9999.00
+003 192 015 000 SRF for ABI GOES16 Band-2        -                    SRFA162          0  -9999.00
+003 192 016 000 SRF for ABI GOES16 Band-3        -                    SRFA163          0  -9999.00
+003 192 017 000 SRF for ABI GOES16 Band-4        -                    SRFA164          0  -9999.00
+003 192 018 000 SRF for ABI GOES16 Band-5        -                    SRFA165          0  -9999.00
+003 192 019 000 SRF for ABI GOES16 Band-6        -                    SRFA166          0  -9999.00
+003 192 020 000 SBT for ABI GOES16 Band-7        K                    SBTA167          0  -9999.00
+003 192 021 000 SBT for ABI GOES16 Band-8        K                    SBTA168          0  -9999.00
+003 192 022 000 SBT for ABI GOES16 Band-9        K                    SBTA169          0  -9999.00
+003 192 023 000 SBT for ABI GOES16 Band-10       K                    SBTA1610         0  -9999.00
+003 192 024 000 SBT for ABI GOES16 Band-11       K                    SBTA1611         0  -9999.00
+003 192 025 000 SBT for ABI GOES16 Band-12       K                    SBTA1612         0  -9999.00
+003 192 026 000 SBT for ABI GOES16 Band-13       K                    SBTA1613         0  -9999.00
+003 192 027 000 SBT for ABI GOES16 Band-14       K                    SBTA1614         0  -9999.00
+003 192 028 000 SBT for ABI GOES16 Band-15       K                    SBTA1615         0  -9999.00
+003 192 029 000 SBT for ABI GOES16 Band-16       K                    SBTA1616         0  -9999.00
+003 192 030 000 SRF for ABI GOES17 Band-1        -                    SRFA171          0  -9999.00
+003 192 031 000 SRF for ABI GOES17 Band-2        -                    SRFA172          0  -9999.00
+003 192 032 000 SRF for ABI GOES17 Band-3        -                    SRFA173          0  -9999.00
+003 192 033 000 SRF for ABI GOES17 Band-4        -                    SRFA174          0  -9999.00
+003 192 034 000 SRF for ABI GOES17 Band-5        -                    SRFA175          0  -9999.00
+003 192 035 000 SRF for ABI GOES17 Band-6        -                    SRFA176          0  -9999.00
+003 192 036 000 SBT for ABI GOES17 Band-7        K                    SBTA177          0  -9999.00
+003 192 037 000 SBT for ABI GOES17 Band-8        K                    SBTA178          0  -9999.00
+003 192 038 000 SBT for ABI GOES17 Band-9        K                    SBTA179          0  -9999.00
+003 192 039 000 SBT for ABI GOES17 Band-10       K                    SBTA1710         0  -9999.00
+003 192 040 000 SBT for ABI GOES17 Band-11       K                    SBTA1711         0  -9999.00
+003 192 041 000 SBT for ABI GOES17 Band-12       K                    SBTA1712         0  -9999.00
+003 192 042 000 SBT for ABI GOES17 Band-13       K                    SBTA1713         0  -9999.00
+003 192 043 000 SBT for ABI GOES17 Band-14       K                    SBTA1714         0  -9999.00
+003 192 044 000 SBT for ABI GOES17 Band-15       K                    SBTA1715         0  -9999.00
+003 192 045 000 SBT for ABI GOES17 Band-16       K                    SBTA1716         0  -9999.00
+
 !
 ! Product Discipline 10 - Oceanographic Products
 ! CATEGORY 0 - Waves category
 !D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING
 !23|123|123|123|12345678901234567890123456789012|12345678901234567890|123456789012|12345|123456.89
+010 000 044 000 Benjamin-Feir Index              -                    BENINX           0  -9999.00
 010 000 192 000 Wave Steepness                   -                    WSTP             0  -9999.00
+010 002 010 000 Zonal vector comp/VIIce int pres Pa/m                 ZVCICEP          0  -9999.00
+010 002 011 000 Mer vector comp/VIIce int pres   Pa/m                 MVCICEP          0  -9999.00
+010 002 012 000 Compressive Ice Strength         N/m                  CICES            0  -9999.00
 010 003 000 000 Water Temperature                K                    WTMP             0  -9999.00
 010 003 192 000 Hurricane Storm Surge            m                    HCNSRG           0  -9999.00
 010 003 193 000 Extra Tropical Storm Surge       m                    ETSRG            0  -9999.00
 010 003 194 000 Ocean Surface Elev Rel to Geoid  m                    OCELEV           0  -9999.00
 010 003 250 000 ExtraTropStrmSrg Cmb Surge_Tide  m                    ETCWL            0  -9999.00
+010 191 003 000 Days Since Last Observation      d                    DSLOBSO          0  -9999.00

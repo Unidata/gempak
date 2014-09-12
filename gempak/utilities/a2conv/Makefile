@@ -12,3 +12,5 @@ cpBin: ${GEMPAK}/utilities/a2conv
 
 mvLib: ${GEMPAK}/utilities/a2conv/buildfile.sh 
 	sh ${GEMPAK}/utilities/a2conv/buildfile.sh
+
+clean:
