@@ -3,7 +3,7 @@
 
     <filelabel text="AWIPS DB CONFIGURATION FILE" version="1" />
     <filetype type="MFSF" source="MFSYNP" rawtext="MFTEXT" />
-    <dbserver host="nco-lw-msmith" />
+    <dbserver host="edex" />
     <dbtable name="sfcobs" />
     <rows pyfile="TimeRetriever" pymeth="gettimes" dbkey="refHour">
 	<row name="DATE" />

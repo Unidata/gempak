@@ -28,13 +28,16 @@ LIBINC = \
 	$(GEMLIB) \
 	$(APPL) \
 	$(SYSLIB) \
+	$(PYLIB) \
+	$(TEXTLIB) \
+	$(PYLIB) \
 	$(CGEMLIB) \
-	$(GEMLIB) \
 	$(LIBJASPER) \
 	$(PNGLIB) \
+	$(XSLTLIB) \
 	$(XMLLIB) \
         $(ZLIB) \
-	$(CGEMLIB)
+	$(GEMLIB)
 
 
 .PRECIOUS: $(ALIB)
