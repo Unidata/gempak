@@ -23,6 +23,7 @@ void gb2_prob( gribfield *gfld, char *param )
  * S. Gilbert/NCEP      10/05   Corrected overwrite error w/ param name *
  * S. Chiswell/Unidata	 4/07	Updated case 2 sprintf format 		*
  * K. Tyle/UAlbany      11/13	Updated case 1 sprintf format 		*
+ * M. James/Unidata     09/14	Updated case 1 sprintf format 		*
  ***********************************************************************/
 {
     int	prob_type;
@@ -56,7 +57,9 @@ void gb2_prob( gribfield *gfld, char *param )
 		     * Special Case if scale factor results in a number
 		     * with too many characters to fit in param string
 		     */
+		    /* Commented out for now to fix SREF scaling error
  		    if (scale < -2.0 ) sfact= 1.0;
+		     */
                     upper = (float)(gfld->ipdtmpl[21]) * sfact;
                     sprintf( cpds, "%04dPA", (int) upper );
                     break;
