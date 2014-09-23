@@ -144,6 +144,7 @@
 ! mass
 !D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING
 !23|123|123|123|12345678901234567890123456789012|12345678901234567890|123456789012|12345|123456.89
+000 003 005 000 Geopotential Height              gpm                  HGT              0  -9999.00
 000 003 192 000 MSLP (ETA reduction)             Pa                   EMSL            -2  -9999.00
 000 003 193 000 5-wave geopotential height       gpm                  HGHT5            0  -9999.00
 000 003 194 000 Zonal flux of gravity wav stress N/m**2               UGWD             0  -9999.00
@@ -152,6 +153,7 @@
 000 003 195 008 Meridional flux of grav wv strss N/m**2               VGWD             0  -9999.00
 000 003 196 000 Planetary boundary layer hght    m                    ZPBL             0  -9999.00
 000 003 197 000 5-wave geopotention hght anomaly gpm                  WAVA5            0  -9999.00
+000 003 198 000 MSLP (MAPS System Reduction)     Pa                   MSLMA            0  -9999.00
 000 003 200 000 P most unstable parcel 300mb agl Pa                   PLPL             0  -9999.00
 !
 ! short-wave radiation
@@ -279,6 +281,8 @@
 002 000 205 000 Soil moist prm in canopy conduct -                    RCSOL            0  -9999.00
 002 000 206 000 Rate of water canopy to ground   -                    RDRIP            0  -9999.00
 002 000 207 000 Ice-free water surface           %                    ICWAT            0  -9999.00
+002 000 229 000 Canopy water evaporation         W m**-2              EVCW             0  -9999.00
+002 000 230 000 Transpiration                    W m**-2              TRANS            0  -9999.00
 !
 ! Soil products
 !D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING
@@ -289,11 +293,30 @@
 002 003 195 000 Transpiration stress-onset(0.-1.)-                    SMREF            0  -9999.00
 002 003 196 000 Direct evaporation cease (0.-1.) -                    SMDRY            0  -9999.00
 002 003 197 000 Soil porosity (0.0-1.0)          -                    POROS            0  -9999.00
+002 003 198 000 Direct Evap. from Bare Soil      W m**-2              EVBS             0  -9999.00
+002 003 199 000 Land Surface Precip Accumulation kg m**-2             LSPA             0  -9999.00
+002 003 200 000 Bare Soil Surface Skin Temp      K                    BARET            0  -9999.00
+002 003 201 000 Average Surface Skin Temp        K                    AVSFT            0  -9999.00
+002 003 202 000 Effective Radiative Skin Temp    K                    RADT             0  -9999.00
 002 003 203 000 Field capacity                   -                    FLDCP            0  -9999.00
 002 003 203 001 Field capacity                   -                    FLDCP            0  -9999.00
 002 004 004 000 Fosberg Index                    Numeric              FOSINDX          0  -9999.00
 !
 003 001 194 000 Scatterometer Wind Quality       -                    SWQI             0  -9999.00
+003 192 000 000 SBT for GOES 12 Channel 2        K                    SBT122           0  -9999.00
+003 192 001 000 SBT for GOES 12 Channel 3        K                    SBT123           0  -9999.00
+003 192 002 000 SBT for GOES 12 Channel 4        K                    SBT124           0  -9999.00
+003 192 003 000 SBT for GOES 12 Channel 6        K                    SBT126           0  -9999.00
+003 192 004 000 SBC for GOES 12 Channel 3        Byte                 SBC123           0  -9999.00
+003 192 005 000 SBC for GOES 12 Channel 4        Byte                 SBC124           0  -9999.00
+003 192 006 000 SBT for GOES 11 Channel 2        K                    SBT112           0  -9999.00
+003 192 007 000 SBT for GOES 11 Channel 3        K                    SBT113           0  -9999.00
+003 192 008 000 SBT for GOES 11 Channel 4        K                    SBT114           0  -9999.00
+003 192 009 000 SBT for GOES 11 Channel 5        K                    SBT115           0  -9999.00
+003 192 010 000 SBT for AMSRE on Aqua Channel 9  K                    AMSRE9           0  -9999.00
+003 192 011 000 SBT for AMSRE on Aqua Channel 10 K                    AMSRE10          0  -9999.00
+003 192 012 000 SBT for AMSRE on Aqua Channel 11 K                    AMSRE11          0  -9999.00
+003 192 013 000 SBT for AMSRE on Aqua Channel 12 K                    AMSRE12          0  -9999.00
 003 192 014 000 SRF for ABI GOES16 Band-1        -                    SRFA161          0  -9999.00
 003 192 015 000 SRF for ABI GOES16 Band-2        -                    SRFA162          0  -9999.00
 003 192 016 000 SRF for ABI GOES16 Band-3        -                    SRFA163          0  -9999.00
