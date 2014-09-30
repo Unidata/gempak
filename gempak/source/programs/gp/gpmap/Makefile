@@ -32,20 +32,27 @@ LOBJS =	\
 	$(ALIB)(gpminp.o) \
 	$(ALIB)(gpmopt.o)
 
-LIBINC =	\
-	$(GEMLIB) \
-	$(CGEMLIB) \
-	$(APPL) \
-	$(SYSLIB) \
-	$(GEMLIB) \
-	$(CGEMLIB) \
-	$(LIBGPC) \
-	$(NETCDF) \
+LIBINC =        \
+        $(GEMLIB) \
+        $(CGEMLIB) \
+        $(GEMLIB) \
+        $(GRIDLIB) \
+        $(APPL) \
+        $(CGEMLIB) \
+        $(GEMLIB) \
+        $(GPLT) \
+        $(GPLTDEV) \
+        $(SYSLIB) \
+        $(LIBGPC) \
+        $(NETCDF) \
 	$(OS_LIB)/libmel_bufr.a \
+        $(DEVICE) \
+        $(GN) \
+        $(XW) \
         $(XMLLIB) \
-	$(ZLIB) \
+        $(ZLIB) \
 	$(RSLLIB) \
-	$(LIBBZ2)
+        $(LIBBZ2)
 
 LIBINC_NC = \
 	$(GPLT_NC) \
@@ -60,7 +67,6 @@ LIBINC_NC = \
         $(GEMLIB) \
         $(LIBGPC) \
         $(NETCDF) \
-        $(OS_LIB)/libmel_bufr.a \
         $(XMLLIB) \
         $(PNGLIB) \
         $(ZLIB) \
@@ -80,7 +86,6 @@ LIBINC_GF = \
         $(GEMLIB) \
         $(LIBGPC) \
         $(NETCDF) \
-        $(OS_LIB)/libmel_bufr.a \
         $(XMLLIB) \
         $(PNGLIB) \
         $(ZLIB) \
@@ -100,7 +105,6 @@ LIBINC_XW = \
         $(GEMLIB) \
         $(LIBGPC) \
         $(NETCDF) \
-        $(OS_LIB)/libmel_bufr.a \
         $(XMLLIB) \
         $(PNGLIB) \
         $(ZLIB) \
@@ -120,7 +124,6 @@ LIBINC_GIF = \
         $(GEMLIB) \
         $(LIBGPC) \
         $(NETCDF) \
-        $(OS_LIB)/libmel_bufr.a \
         $(XMLLIB) \
         $(PNGLIB) \
         $(ZLIB) \
@@ -139,7 +142,6 @@ LIBINC_PS = \
         $(GEMLIB) \
         $(LIBGPC) \
         $(NETCDF) \
-        $(OS_LIB)/libmel_bufr.a \
         $(XMLLIB) \
         $(PNGLIB) \
         $(ZLIB) \
@@ -158,7 +160,6 @@ LIBINC_VG = \
         $(GEMLIB) \
         $(LIBGPC) \
         $(NETCDF) \
-        $(OS_LIB)/libmel_bufr.a \
         $(XMLLIB) \
         $(PNGLIB) \
         $(ZLIB) \

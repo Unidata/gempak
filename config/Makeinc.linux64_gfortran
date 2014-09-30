@@ -15,7 +15,6 @@ NCOPT = "CPPFLAGS=-DNDEBUG -Df2cFortran" "FFLAGS=-O -Wno-globals" "CFLAGS=-O $(N
 JASPEROPT = 'CC=$(CC)' 'CFLAGS=-O' '--disable-libjpeg'
 XML2OPT = 'CC=$(CC)' '--with-iconv'
 XMLDEP = -lpthread
-PYDEP = -lpthread -ldl -lutil
 
 CFLAGS = $(COPT) 
 CFLAGS_DB = $(COPT)
@@ -32,5 +31,5 @@ MOTIFLIBS = $(X11LIBDIR) -lXm
 
 BUFRFLAGS = -O -DNO_MSG_IPC -ansi
 
-SYSLIBS = $(PYLIB) $(PYDEP)
-CSYSLIB = $(PYLIB) $(PYDEP)
+#SYSLIBS = $(PYLIB) $(PYDEP)
+#CSYSLIB = $(PYLIB) $(PYDEP)
