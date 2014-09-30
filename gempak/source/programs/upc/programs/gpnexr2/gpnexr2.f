@@ -125,16 +125,6 @@ C
 			    CALL GSPLOT ( ier )
 			END IF
 C
-C*			Display user options, allow program exit.
-C
-c			IF  ( first ) THEN
-c      			    CALL GPMOPT ( device, proj, garea, map, 
-c     +					  title, panel, latlon, clear, 
-c     +					  imgfls, numimg, radparm, ctilt, 
-c     +					  ier )
-c			END IF
-			IF  ( ier .ne. 0 )  proces = .false.
-C
 			IF  ( proces )  THEN
                             CALL GG_MAPS ( proj, garea, imgfls (ifile),
      +				idrpfl, ier )
@@ -162,12 +152,7 @@ C
 C*			    Draw map, lat/lon lines, and station 
 C*			    ID/marker.
 C
-                            CALL ST_RMST ( radfil, 'NVW',
-     +                                    ipos, outstr, iret )
-                            IF ( ipos .eq. 0 ) THEN
-                               CALL GG_MAP  ( map, iret )
-                            END IF
-C			    CALL GG_MAP  ( map, iret )
+			    CALL GG_MAP  ( map, iret )
 			    CALL GG_LTLN ( latlon, iret )
 C
 C*			    Reset the text attributes.
