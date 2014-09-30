@@ -21,12 +21,16 @@ OBJS = \
 LIBINC = \
 	$(BRIDGE) \
 	$(GEMLIB) \
-	$(CGEMLIB) 
+	$(CGEMLIB) \
+	$(OS_LIB)/libncepBUFR.a \
+	$(OS_LIB)/libncepUT.a \
+	$(OS_LIB)/libncepBUFR.a \
+	$(GEMLIB)
 
 all : $(PROG)
 
 $(PROG): $(LIBINC) $(OBJS) 
-	$(LINK.f) $(NOFORMAIN) -o $@ $(OBJS) $(LIBINC) -L$(OS_LIB) -lncepBUFR -lncepUT -lncepBUFR -lm
+	$(LINK.f) $(NOFORMAIN) -o $@ $(OBJS) $(LIBINC) $(SYSLIBS) -L$(OS_LIB) -lm
 
 programs_nc :
 	@echo -n "Not a graphics program - no nc version needed"
