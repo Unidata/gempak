@@ -3,7 +3,7 @@
 
     <filelabel text="AWIPS DB CONFIGURATION FILE" version="1" />
     <filetype type="MFGD" source="MFGRID" />
-    <dbserver host="nco-lw-msmith" />
+    <dbserver host="edex" />
     <dbtable name="grid" />
     <rows pyfile="GridInfoRetriever" pymeth="getrow" dbkey="GFS230">
 	<row name="GRID" />

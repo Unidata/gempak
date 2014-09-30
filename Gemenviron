@@ -203,7 +203,7 @@ endif
 #if ( $?PYHOME ) then
 #	setenv PATH ${PATH}:${OS_BIN}:${PYHOME}/bin:${PATH}:${NAWIPS}/bin
 #else
-setenv PATH ${OS_BIN}:${PATH}:${NAWIPS}/bin
+setenv PATH ${PATH}:${OS_BIN}:${NAWIPS}/bin
 #endif
 
 #
@@ -316,7 +316,7 @@ if ($?PYHOME ) then
     set pv = `$PYHOME/bin/python -V |& cut -c8- | cut -d. -f1`
     set pr = `$PYHOME/bin/python -V |& cut -c8- | cut -d. -f2`
     setenv PYINC "-I${PYHOME}/include/python${pv}.${pr}"
-    setenv PYLIB "-lpython${pv}.${pr}"
+    setenv PYLIB "-L/awips2/python/lib -lpython${pv}.${pr}"
     setenv WITHPY "-DWITHPYTHON"
 
     # Add to the PYTHONPATH for finding the scripts

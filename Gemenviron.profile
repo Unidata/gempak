@@ -336,7 +336,7 @@ else
     pv="`$PYHOME/bin/python -V 2>&1 | cut -c8- | cut -d. -f1`"
     pr="`$PYHOME/bin/python -V 2>&1 | cut -c8- | cut -d. -f2`"
     export PYINC="-I/awips2/python/include/python${pv}.${pr}"
-    export PYLIB="-lpython${pv}.${pr}"
+    export PYLIB="-L/awips2/python/lib -lpython${pv}.${pr}"
     export WITHPY="-DWITHPYTHON"
 
     # Add to the PYTHONPATH for finding the scripts

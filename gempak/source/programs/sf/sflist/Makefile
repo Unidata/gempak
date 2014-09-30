@@ -28,9 +28,7 @@ LIBINC = \
 	$(GEMLIB) \
 	$(APPL) \
 	$(SYSLIB) \
-	$(PYLIB) \
 	$(TEXTLIB) \
-	$(PYLIB) \
 	$(CGEMLIB) \
 	$(LIBJASPER) \
 	$(PNGLIB) \

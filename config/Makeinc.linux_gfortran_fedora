@@ -8,33 +8,29 @@ FC = gfortran
 MOTIFINC  = -I/usr/X11R6/include
 XWINCDIR  = -I/usr/X11R6/include
 
-COPT = -DUNDERSCORE -D$(OPSYS) $(GEMINC) $(MOTIFINC) -g #-O # -g
-FOPT = -fno-whole-file -fno-second-underscore -fno-range-check -fd-lines-as-comments $(GEMINC) -g # -O # -g
+COPT = -DUNDERSCORE -D$(OPSYS) $(GEMINC) $(MOTIFINC) $(PYINC) $(WITHPY) -O2 -fPIC -g
+FOPT = -fno-whole-file -fno-second-underscore -fno-range-check -fd-lines-as-comments $(GEMINC) $(PYINC) -g #-O
 NCII = "-I../libsrc"
 NCOPT = "CPPFLAGS=-DNDEBUG -Df2cFortran" "FFLAGS=-O -Wno-globals" "CFLAGS=-O $(NCII)" "CXX= "
 JASPEROPT = 'CC=$(CC)' 'CFLAGS=-O' '--disable-libjpeg'
 XML2OPT = 'CC=$(CC)' '--with-iconv'
 XMLDEP = -lpthread
+PYDEP = -lpthread -ldl -lutil
 
 CFLAGS = $(COPT) 
 CFLAGS_DB = $(COPT)
 FFLAGS = $(FOPT)
-LDFLAGS = -Wl,--hash-style=both
 LDM_FLAGS = 
 
-#
-# use to link Motif library static to avoid lestif conflicts on user systems
-# where openmotif hasn't been installed
+# Static OpenMotif
 X11LIBDIR = -L/usr/X11R6/lib
-#MOTIFLIBS = $(X11LIBDIR) -Wl,-static -lXm -Wl,-Bdynamic -lSM -lICE -lXp -lXext -lXft
-#MOTIFLIBS = $(X11LIBDIR) -lXm -lSM -lICE -lXp -lXext -lXft
 
-#
-# ok to link dynamic on Unidata systems
-#X11LIBDIR = -L/usr/X11R6/lib -Wl,--rpath /usr/X11R6/lib
+# Dynamic OpenMotif
 MOTIFLIBS = $(X11LIBDIR) -lXm
 
 BUFRFLAGS = -O -DNO_MSG_IPC -ansi
 
-SYSLIBS = 
+SYSLIBS = $(PYLIB) $(PYDEP)
+CSYSLIB = $(PYLIB) $(PYDEP)
+LDFLAGS = -Wl,--hash-style=both
 ARSLEEP = sleep 1;
