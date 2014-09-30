@@ -67,6 +67,7 @@ LIBINC_NC = \
         $(GEMLIB) \
         $(LIBGPC) \
         $(NETCDF) \
+	$(OS_LIB)/libmel_bufr.a \
         $(XMLLIB) \
         $(PNGLIB) \
         $(ZLIB) \
@@ -86,6 +87,7 @@ LIBINC_GF = \
         $(GEMLIB) \
         $(LIBGPC) \
         $(NETCDF) \
+	$(OS_LIB)/libmel_bufr.a \
         $(XMLLIB) \
         $(PNGLIB) \
         $(ZLIB) \
@@ -105,6 +107,7 @@ LIBINC_XW = \
         $(GEMLIB) \
         $(LIBGPC) \
         $(NETCDF) \
+	$(OS_LIB)/libmel_bufr.a \
         $(XMLLIB) \
         $(PNGLIB) \
         $(ZLIB) \
@@ -124,6 +127,7 @@ LIBINC_GIF = \
         $(GEMLIB) \
         $(LIBGPC) \
         $(NETCDF) \
+	$(OS_LIB)/libmel_bufr.a \
         $(XMLLIB) \
         $(PNGLIB) \
         $(ZLIB) \
@@ -142,6 +146,7 @@ LIBINC_PS = \
         $(GEMLIB) \
         $(LIBGPC) \
         $(NETCDF) \
+	$(OS_LIB)/libmel_bufr.a \
         $(XMLLIB) \
         $(PNGLIB) \
         $(ZLIB) \
@@ -160,6 +165,7 @@ LIBINC_VG = \
         $(GEMLIB) \
         $(LIBGPC) \
         $(NETCDF) \
+	$(OS_LIB)/libmel_bufr.a \
         $(XMLLIB) \
         $(PNGLIB) \
         $(ZLIB) \
