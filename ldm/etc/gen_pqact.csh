@@ -60,10 +60,11 @@ if ( ( ! $PQACT ) && ( $cwd != $NAWIPS_LDM/templates ) ) then
 endif
 
 
-cat $NAWIPS_LDM/templates/pqact.gempak_decoders.in | sed 's@\@GEMTBL\@@'${GEMTBL}'@g' | \
+cat $NAWIPS_LDM/templates/pqact.gempak_decoders_grid | sed 's@\@GEMTBL\@@'${GEMTBL}'@g' | \
    sed 's@\@GEMPAK\@@'${GEMPAK}'@g' >! $DECODERS
 
-
+cat $NAWIPS_LDM/templates/pqact.gempak_decoders.in | sed 's@\@GEMTBL\@@'${GEMTBL}'@g' | \
+   sed 's@\@GEMPAK\@@'${GEMPAK}'@g' >>! $DECODERS
 #
 # NWX FILE actions
 #
