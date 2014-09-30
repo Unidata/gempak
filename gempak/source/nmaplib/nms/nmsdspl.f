@@ -430,7 +430,7 @@ C
 		jclrs2 (i-2) = iclrs2(i)
 	    END DO
 C
-	    CALL GG_ASCT ( alias, dattim, kwninc, jclrs, jclrs2, nn, 
+	    CALL GG_ASCT ( alias, dattim, 360, kwninc, jclrs, jclrs2, nn, 
      +		   brbsiz, ibwid, ahsiz, ityp, iskip, interv, itmclr,
      +		   itmwid, iflgs, ier )
 C

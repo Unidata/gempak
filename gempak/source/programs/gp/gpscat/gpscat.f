@@ -6,6 +6,7 @@ C* lat/lon lines, and a title.						*
 C**									*
 C* Log:									*
 C* M. James/ Unidata     02/14  Copied from GPMAP                       * 
+C* M. James/ Unidata     09/14  Title string fix and string matching    * 
 C*  needed inputs
 C               SCTNAM = Data type
 C               TIMEND = last
@@ -77,7 +78,7 @@ C*
         REAL            lsize, usize, m
 C*
         PARAMETER       ( NEXP = 32 )
-        INTEGER         icolr ( NEXP )
+        INTEGER         icolr ( NEXP ), maxback
 	DATA		imgfls / MXLOOP*' '/
 
 C-----------------------------------------------------------------------
@@ -223,6 +224,9 @@ C
 			    CALL GG_SCAL ( mscale, iret )
 C
 C*			    Plot the QuikScat wind data.
+C
+C                           TODO: string to upper case,
+C                           check first 4 chars
 C
                             IF  ( scat .eq. 'qsct') THEN
 				CALL ST_CLST ( scttyp, '|', ' ', 12,
@@ -386,7 +390,9 @@ C TRAKE
 C TRAK2 
 C
 			    IF 	( (scat .eq. 'ASCT_HI') .or.
-     +                          (scat .eq. 'asct_hi') ) THEN
+     +                          (scat .eq. 'asct_hi')  .or. 
+     +                          (scat .eq. 'ASCT') .or.
+     +                          (scat .eq. 'asct') ) THEN
 				CALL ST_CLST ( scttyp, '|', ' ', 8,
      +					       asarr, numa, ier )
 				CALL ST_RLST ( spdint, ';', 0., 
@@ -455,9 +461,10 @@ C
                                   ELSE
                                     iflag(4) = 0
                                 END IF
+                                CALL ST_NUMB ( asarr(11), maxback, ier )
 C
 				CALL GG_ASCT (asarr(9),asarr(10),
-     +				           asarr(11), itminc, itmclr, itmclr2, 
+     +				           maxback, itminc, itmclr, itmclr2, 
      +					   numv, szbrb, ibwid, hdsiz,
      +					   ityp, iskip, interv, ilnclr,
      +                                     ilnwid, iflag, iret )
@@ -710,9 +717,7 @@ C
 			    END IF
 			    CALL IN_TITL ( ttlinp, -3, ititl, linttl, 
      +					   ttlstr, iret )
-			    IF  ( ( ucproj (1:3) .eq. 'SAT' .or. 
-     +				    ucproj (1:3) .eq. 'RAD' ) .and.
-     +				  ( ttlstr .eq. ' ' ) )  THEN
+     			    IF  ( ttlstr .eq. ' ' ) THEN
 				CALL GG_STTL ( ttlstr, iret )
 			    END IF
 			    IF  ( clear ) CALL GMESG ( shrttl, iret )

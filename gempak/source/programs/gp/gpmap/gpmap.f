@@ -188,7 +188,7 @@ C*
      +			lclrof(NM), lclruf(NM), lclren (NM), tcolor,
      +                  tlimit, numf, ihtinc(LLCLEV), htclr(LLCLEV),
      +                  evclr(LLCLEV), symb1, symb2, esymb1(LLCLEV),
-     +                  esymb2(LLCLEV), enumc, aoa180int
+     +                  esymb2(LLCLEV), enumc, aoa180int, maxback
 	LOGICAL		respnd, done, first, proces, found, scflag,
      +                  aoa180fl
 	REAL		ppmark(3), pnmark(3), tminc(LLCLEV), ssize(NM),
@@ -1879,9 +1879,10 @@ C
                                   ELSE
                                     iflag(6) = 0
                                 END IF
+                                CALL ST_NUMB ( asarr(3), maxback, iret )
 C
 				CALL GG_ASCT ( asarr(1), asarr(2),
-     +					   asarr(3), itminc, itmclr, itmclr2, 
+     +					   maxback, itminc, itmclr, itmclr2, 
      +					   numv, szbrb, ibwid, hdsiz,
      +					   ityp, iskip, interv, ilnclr,
      +                                     ilnwid, iflag, iret )

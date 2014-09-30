@@ -51,9 +51,9 @@ C                               override prefs.tbl                      *
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 C*
-	CHARACTER*(*)	filtyp, dattim, maxback
+	CHARACTER*(*)	filtyp, dattim
 	INTEGER		kwninc (*), kcolrs (*), kcolrs2(*), iflgs (*),
-     +			interv, itmclr, itmwid
+     +			interv, itmclr, itmwid, maxback
 C*
 	CHARACTER	path*25, templ*(MXTMPL), cdttm*20, dattm2*20,
      +			tfile*128, stime*20, flstrt*160, dtime*20
@@ -112,7 +112,7 @@ C
 C*      Compute stime, the start time of the range by subtracting
 C*      minutes in SAT_WIND_START from the frame time.
 C
-        IF ( maxback .eq. '' ) THEN
+        IF ( maxback .eq. 0 ) THEN
             CALL ST_NULL ( 'SAT_WIND_START', cstmin, lens, ier )
             CALL CTB_PFSTR ( cstmin, cval, ier1 )  
             CALL ST_NUMB ( cval, mins, ier2 )
@@ -122,8 +122,10 @@ C
                 mins = 6 * 60
             END IF
         ELSE
-            cstmin = maxback
-            CALL ST_NUMB ( cstmin, mins, ier2 )
+C            cstmin = maxback
+C            CALL ST_NUMB ( cstmin, mins, ier2 )
+            mins = maxback
+            CALL ST_INCH ( maxback, cstmin, ier2 )
             cval = ' '
         END IF
         CALL TI_CTOI ( dattm2, itarr, ier )
