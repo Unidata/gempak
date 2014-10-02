@@ -41,6 +41,7 @@
 ! F. J. Yen/NCEP	 7/08	Added comment-ASTG (grid 255) for staggered grid
 !
 !ID    # PRJ  A1   A2  A3     LLT      LLN     ULT      ULN  KX  KY DELN X
+HRRR   1 LCC  25  -95  25  20.192 -121.550  50.110  -60.890 2145 1377 4.00 0
 NDFD   1 LCC  25  -95  25  20.190 -121.550  50.110  -60.890 1073 689 4.00 0
 MRF    2 CED   0    0   0 -90.000    0.000  90.000   -2.500 144  73 4.00 0
 GFS    3 CED   0    0   0 -90.000    0.000  90.000   -1.000 360 181 2.00 0
