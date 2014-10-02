@@ -216,6 +216,7 @@
 000 007 192 000 Surface lifted index             K                    LIFT             0  -9999.00
 000 007 193 000 Best (4 layer) lifted index      K                    LFT4             0  -9999.00
 000 007 194 000 Richardson number                -                    RICH             0  -9999.00
+000 007 199 000 Hourly Max Updraft Helicity2-5km m**2 s**-2           MXUPHL           0  -9999.00
 !
 ! trace gases
 !D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING
@@ -373,3 +374,6 @@
 010 003 194 000 Ocean Surface Elev Rel to Geoid  m                    OCELEV           0  -9999.00
 010 003 250 000 ExtraTropStrmSrg Cmb Surge_Tide  m                    ETCWL            0  -9999.00
 010 191 003 000 Days Since Last Observation      d                    DSLOBSO          0  -9999.00
+000 016 195 000 Reflectivity 1km AGL             dbZ                  BREF             0  -9999.00
+000 016 198 008 Max. hourly refl. 1km agl        dbZ                  MXBREF           0  -9999.00
+000 017 192 008 Max Ltng Threat 3                fl*km^-2/5min        LTG3             0  -9999.00

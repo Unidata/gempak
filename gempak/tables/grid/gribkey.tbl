@@ -1,8 +1,13 @@
 ! M. James/Unidata	04/13	Added NAVGEM
 !			03/14	Added fFFF to split NAVGEM global
+!			10/14	Added NGRID HRRR, renamed FSL HRRR directory 
 !
 !center sub modelid grid   Output grid file name                   max_grids
 !
+! 007 = NCEP
+!
+! HRRR
+007   x   083       @@@    data/gempak/model/hrrr/YYYYMMDDHHfFFF_hrrr.gem   1000
 ! DGEX
 007   x   115       185    data/gempak/model/dgex/YYYYMMDDHHfFFF_dgex.gem  1000
 007   x   115       186    data/gempak/model/dgex-ak/YYYYMMDDHHfFFF_dgex.gem  1000
@@ -53,7 +58,6 @@
 007   x   077,81,96 003    data/gempak/model/gfs/YYYYMMDDHH_gfs@@@.gem   29000
 007   x   077,81,96 004    data/gempak/model/gfs0.5deg/YYYYMMDDHHfFFF_gfs.gem   29000
 !
-! HRRR
 ! MRF
 ! combine these with ocn grids 21-24
 007   x   78,80,94  021    data/gempak/model/nww/YYYYMMDDHH_nww.gem        500
@@ -136,10 +140,12 @@
 098   x   ???       008    data/gempak/model/ecmwf/YYYYMMDDHH_ecmf2.gem     1500
 098   x   ???       @@@    data/gempak/model/ecmwf/YYYYMMDDHH_ecmwf@@@.gem   100
 !
+! 058 = FSL
+!
 ! FSL RUC
 059   x   105       @@@    data/gempak/model/ruc/YYYYMMDDHH_ruc@@@.gem      7500
 ! FSL HRRR
-059   x   125       @@@    data/gempak/model/hrrr/YYYYMMDDHHfFFF_hrrr.gem   7500
+059   x   125       @@@    data/gempak/model/fsl/hrrr/YYYYMMDDHHfFFF_hrrr.gem   7500
 !
 ! FNMOC NAVGEM and COAMPS
 !center sub modelid grid   Output grid file name                   max_grids

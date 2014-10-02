@@ -591,6 +591,12 @@ NGRID	E.H.88 KWBJ (..)(..)
 	-e GEMTBL=@GEMTBL@
 	data/gempak/model/nww3/nww3_YYYYMMDDHH_coastal_east_coast
 
+# FSL2 HRRR
 #FSL2	^GRIB2.*HRRR\.1905141_Lambert.*\.(..........)00.*
 #	PIPE	dcgrib2 -v 1 -d data/gempak/logs/dcgrib2_hrrr.log
 #	-e GEMTBL=@GEMTBL@
+
+# NOAAport HRRR
+NGRID	Y.C.[0-9][0-9] KWBY
+	PIPE	dcgrib2 -v 1 -d data/gempak/logs/dcgrib2_NGRIDhrrr.log
+	-e GEMTBL=@GEMTBL@
