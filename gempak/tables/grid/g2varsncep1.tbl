@@ -91,6 +91,7 @@
 000 001 226 008 Predominant Weather              non-dim              PWTHER           0  -9999.00
 000 001 227 008 Frozen rain (sleet) accum        kg m**-2             I--M             0     -0.01
 000 001 241 008 Total Snow                       kg m**-2             TSNOW            0  -9999.00 
+000 001 242 000 RELH wrt precipitable water      %                    RHPW             0  -9999.00 
 000 001 242 008 RELH wrt precipitable water      %                    RHPW             0  -9999.00 
 !
 ! momentum
@@ -378,3 +379,5 @@
 000 016 198 008 Max. hourly refl. 1km agl        dbZ                  MXBREF           0  -9999.00
 000 017 192 000 Max Ltng Threat 3                fl*km^-2/5min        LTG3             0  -9999.00
 000 017 192 008 Max Ltng Threat 3                fl*km^-2/5min        LTG3             0  -9999.00
+000 016 196 000 Composite Reflectivity           dbZ                  CREF             0  -9999.00
+255 255 255 000 RH wrt PW in column              %                    RHCOL            0  -9999.00

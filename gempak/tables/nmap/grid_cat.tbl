@@ -25,10 +25,10 @@
 !
 !
 ! Unidata test
-NCEP_CONUS_Models       nam80;nam40;nam20;nam12;nam104;nam44;nam;ngm;ruc;ruc2;ruc_20
+NCEP_CONUS_Models       nam80;nam40;nam20;nam12;nam104;nam44;nam;ngm;rap;hrrr
 NCEP_Global_Models      gfs;gfshd;gfs003;gfs002;gfs212;gfs211;gfsthin;dgex
 !
-International_Models    cosmo;ukmet;cmc;nogaps;navgem;ecmwfg;ecmwft;gme;g3dvar
+International_Models    cosmo;ukmet;cmc;ecmwfg;ecmwft;gme;g3dvar
 !
 Ensemble_Models         sref;gefs;gefc;ens;enshr
 !
@@ -36,4 +36,4 @@ Local_Mesoscale_Models  wseta;wrf
 !
 NDFD_Grids              rtma;ndfd
 !
-Ocean_Models            nww3;GoesSST
+Ocean_Models            nww3;GoesSST;navgem

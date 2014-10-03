@@ -812,6 +812,9 @@ tmpc                             $NMAP_RESTORE/obj/surface/tmpc                 
 RTMA_2m_temperature              $NMAP_RESTORE/modl/rtma/tmpf_2m                     basic_wx     rtma
 RTMA_2m_dpt_temperature          $NMAP_RESTORE/modl/rtma/dwpf_2m                     basic_wx     rtma;cosmo
 RTMA_10m_wind_analysis           $NMAP_RESTORE/modl/rtma/wndk_10m                    basic_wx     rtma;cosmo
+2m_temperature                   $NMAP_RESTORE/modl/rtma/tmpf_2m                     basic_wx     hrrr
+2m_dpt_temperature               $NMAP_RESTORE/modl/rtma/dwpf_2m                     basic_wx     hrrr
+10m_wind_analysis                $NMAP_RESTORE/modl/rtma/wndk_10m                    basic_wx     hrrr
 ! SREF
 SREF_CAPE_precipitation          $NMAP_RESTORE/modl/sref/prob_precip_cape            misc         sref
 SREF_CAPE_probability            $NMAP_RESTORE/modl/sref/prob_cape                   misc         sref
