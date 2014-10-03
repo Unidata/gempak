@@ -117,7 +117,7 @@
 000 001 027 008 Maximum Relative Humidity        %                    MAXRH            0  -9999.00
 000 001 028 000 Maximum Absolute Humidity        kg m**-3             MAXAH            0  -9999.00
 000 001 028 008 Maximum Absolute Humidity        kg m**-3             MAXAH            0  -9999.00
-000 001 029 008 Total Snowfall                   m                    SNOW             0     -0.01
+000 001 029 008 Total Snowfall                   m                    SNOW             3     -0.01
 !000 001 030 000 Precipitable water Category      code table           ????             ?  -9999.00
 000 001 031 000 Hail                             m                    H--M             3     -0.01
 000 001 032 000 Graupel (snow pellets)           kg kg**-1            GRMR             0  -9999.00
