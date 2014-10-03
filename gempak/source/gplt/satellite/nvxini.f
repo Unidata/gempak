@@ -21,6 +21,7 @@ C* J. Cowie/COMET	12/00	Added RADR nav				*
 C* S. Chiswell/Unidata	 2/02	Added MSAT, GMSX, MOLL nav		*
 C* S. Chiswell/Unidata	 8/06	Added MSG				*
 C* T. Piper/SAIC	03/07	Changed MSGINI to MSG_INI		*
+C* M. James/Unidata	10/14	Added RECT				*
 C************************************************************************
 	INCLUDE		'ERROR.PRM'
 	INCLUDE		'SATDEF.CMN'
@@ -45,6 +46,8 @@ C
 	   iret = GMSXINI ( ifunc, nav )
 	ELSE IF ( nvtypa .eq. 'MCMOLL' ) THEN
 	   iret = MOLLINI ( ifunc, nav )
+	ELSE IF ( nvtypa .eq. 'MCRECT' ) THEN
+	   iret = RECTINI ( ifunc, nav )
 	ELSE
 	    iret = -1
 	END IF

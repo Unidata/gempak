@@ -20,6 +20,7 @@ LOBJS = \
 	$(ALIB)(nvxgoes.o) \
 	$(ALIB)(nvxgvar.o) \
 	$(ALIB)(nvxmoll.o) \
+	$(ALIB)(nvxrect.o) \
 	$(ALIB)(nvxmsat.o) \
 	$(ALIB)(nvxmsg.o) \
 	$(ALIB)(nvxradr.o) \

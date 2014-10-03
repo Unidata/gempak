@@ -26,6 +26,7 @@ C* J. Cowie/COMET	 1/95	Added to allow GVAR nav			*
 C* J. Cowie/COMET	12/00	Added RADR projection type		*
 C* S. Chiswell/Unidata	 2/02	Added MSAT, GMSX, MOLL  projection type	*
 C* S. Chiswell/Unidata	 8/06	Added MSG  projection type		*
+C* M. James/Unidata	10/14	Added RECT projection type		*
 C************************************************************************
 	INCLUDE		'ERROR.PRM'
 	INCLUDE		'SATDEF.CMN'
@@ -50,6 +51,8 @@ C
 	   iret = GMSXEAS ( xlat, ylon, zdum, xlin, xele, xdum )
 	ELSE IF ( nvtypa .eq. 'MCMOLL' ) THEN
 	   iret = MOLLEAS ( xlat, ylon, zdum, xlin, xele, xdum )
+	ELSE IF ( nvtypa .eq. 'MCRECT' ) THEN
+	   iret = RECTEAS ( xlat, ylon, zdum, xlin, xele, xdum )
 	ELSE
 	   iret = -1
 	END IF

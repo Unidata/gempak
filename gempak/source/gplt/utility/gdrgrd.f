@@ -66,6 +66,7 @@ C* S. Jacobs/NCEP	 2/01	Changed label for 0 lat & 0,180 lon	*
 C* S. Chiswell/Unidata	 2/02	Added MCMSAT, MCGMSX, MCMOLL projection	*
 C* T. Lee/SAIC		 4/03	Fixed latitude plot when pole is in view*
 C* S. Jacobs/NCEP	 9/05	Check both X & Y for lat/lon label loc	*
+C* M. James/Unidata	10/14	Added MCRECT projection	                *
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 	INCLUDE		'ERROR.PRM'
@@ -120,6 +121,7 @@ C
      +			( navtyp .ne. 'MCMSAT' ) .and.
      +			( navtyp .ne. 'MCGMSX' ) .and.
      +			( navtyp .ne. 'MCMOLL' ) .and.
+     +			( navtyp .ne. 'MCRECT' ) .and.
      +			( navtyp .ne. 'MCRADR' ) ) RETURN
 	    END IF
 C
