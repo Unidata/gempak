@@ -111,10 +111,13 @@
 000 001 023 000 Ice water Mixing Ratio           kg kg**-1            ICMR             0  -9999.00
 000 001 024 000 Rain Mixing Ratio                kg kg**-1            RNMX             0  -9999.00
 000 001 025 000 Snow Mixing Ratio                kg kg**-1            SNMR             0  -9999.00
-!000 001 026 000 Horizon Moisture Converg         kg kg**-1 s**-1      ????             ?  -9999.00
-!000 001 027 000 Maximum Relative Humidity        %                    ????             ?  -9999.00
-!000 001 028 000 Maximum Absolute Humidity        kg m**-3             ????             ?  -9999.00
-000 001 029 008 Total Snowfall                   m                    SNOW             3     -0.01
+000 001 026 000 Horizon Moisture Converg         kg kg**-1 s**-1      MCONV            0  -9999.00
+000 001 026 008 Horizon Moisture Converg         kg kg**-1 s**-1      MCONV            0  -9999.00
+000 001 027 000 Maximum Relative Humidity        %                    MAXRH            0  -9999.00
+000 001 027 008 Maximum Relative Humidity        %                    MAXRH            0  -9999.00
+000 001 028 000 Maximum Absolute Humidity        kg m**-3             MAXAH            0  -9999.00
+000 001 028 008 Maximum Absolute Humidity        kg m**-3             MAXAH            0  -9999.00
+000 001 029 008 Total Snowfall                   m                    SNOW             0     -0.01
 !000 001 030 000 Precipitable water Category      code table           ????             ?  -9999.00
 000 001 031 000 Hail                             m                    H--M             3     -0.01
 000 001 032 000 Graupel (snow pellets)           kg kg**-1            GRMR             0  -9999.00
@@ -307,11 +310,11 @@
 ! radar
 !D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING
 !23|123|123|123|12345678901234567890123456789012|12345678901234567890|123456789012|12345|123456.89
-!000 015 000 000 Base Spectrum Width              m s**-1              ????             ?  -9999.00
-000 015 001 000 Base Reflectivity                dB                   N0R              0  -9999.00
-!000 015 002 000 Base Radial Velocity             m s**-1              ????             ?  -9999.00
-!000 015 003 000 Vertically-Integrated Liquid     kg m**-1             ????             ?  -9999.00
-!000 015 004 000 Layer-Max Base Reflectivity      dB                   ????             ?  -9999.00
+000 015 000 000 Base Spectrum Width              m s**-1              BSWID            0  -9999.00
+000 015 001 000 Base Reflectivity                dB                   BREF             0  -9999.00
+000 015 002 000 Base Radial Velocity             m s**-1              BRVEL            0  -9999.00
+000 015 003 000 Vertically-Integrated Liquid     kg m**-1             VIL              0  -9999.00
+000 015 004 000 Layer-Max Base Reflectivity      dB                   ????             ?  -9999.00
 000 015 005 000 Precipitation                    kg m**-2             L--M             0     -0.01
 !000 015 006 000 Radar Spectra (1)                -                    ????             ?  -9999.00
 !000 015 007 000 Radar Spectra (2)                -                    ????             ?  -9999.00
@@ -441,3 +444,6 @@
 !23|123|123|123|12345678901234567890123456789012|12345678901234567890|123456789012|12345|123456.89
 010 020 006 000 Ice Growth Rate                  m/s                  ICEG             0  -9999.00
 
+000 002 224 000 Ventilation Rate                 m**2 s**-1           VRATE            0  -9999.00
+000 002 224 008 Ventilation Rate                 m**2 s**-1           VRATE            0  -9999.00
+000 002 224 009 Ventilation Rate                 m**2 s**-1           VRATE            0  -9999.00

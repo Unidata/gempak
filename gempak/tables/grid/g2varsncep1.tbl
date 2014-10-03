@@ -177,7 +177,9 @@
 000 004 193 012 Upward short wave rad flux       W m**-2              SWRU             0  -9999.00
 000 004 194 008 UV-B downward solar flux         W m**-2              DUVB             0  -9999.00
 000 004 195 008 Clear sky UV-B downward flux     W m**-2              CDUVB            0  -9999.00
+000 004 196 000 Clear Sky Downward Solar Flux    W m**-2              CSDSF            0  -9999.00
 000 004 197 008 Shrt wave radiative heating rate K s**-1              SWHR             0  -9999.00
+000 004 197 000 Shrt wave radiative heating rate K s**-1              SWHR             0  -9999.00
 !
 ! long-wave radiation
 !D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING
@@ -190,9 +192,13 @@
 000 005 193 008 Upward long wave rad flux        W m**-2              LWRU             0  -9999.00
 000 005 193 011 Upward long wave rad flux        W m**-2              LWRU             0  -9999.00
 000 005 193 012 Upward long wave rad flux        W m**-2              LWRU             0  -9999.00
+000 005 194 000 Long Wave radiative heating rate K s**-1              LWHR             0  -9999.00
 000 005 194 008 Long Wave radiative heating rate K s**-1              LWHR             0  -9999.00
+000 005 195 000 Clear sky upward long wave flux  W m**-2              CSLWRU           0  -9999.00
 000 005 195 008 Clear sky upward long wave flux  W m**-2              CSLWRU           0  -9999.00
+000 005 196 000 Clear sky dnward long wave flux  W m**-2              CSLWRD           0  -9999.00
 000 005 196 008 Clear sky dnward long wave flux  W m**-2              CSLWRD           0  -9999.00
+000 005 197 000 Cloud forcing net long wave flux W m**-2              CFNLWF           0  -9999.00
 000 005 197 008 Cloud forcing net long wave flux W m**-2              CFNLWF           0  -9999.00
 !
 ! cloud
@@ -217,6 +223,7 @@
 000 007 192 000 Surface lifted index             K                    LIFT             0  -9999.00
 000 007 193 000 Best (4 layer) lifted index      K                    LFT4             0  -9999.00
 000 007 194 000 Richardson number                -                    RICH             0  -9999.00
+000 007 197 000 Updraft Helicity                 m**2 s**-2           UPHL             0  -9999.00
 000 007 199 008 Hourly Max Updraft Helicity2-5km m**2 s**-2           MXUPHL           0  -9999.00
 !
 ! trace gases
@@ -231,6 +238,12 @@
 000 014 197 008 Ozone tendency                   kg kg**-1 s**-1      OZTND            0  -9999.00
 000 014 198 008 Ozone production from Temp       kg kg**-1 s**-1      OZPRDTMP         0  -9999.00
 000 014 199 008 Ozone production from Column     kg kg**-1 s**-1      OZPRDCOL         0  -9999.00
+!
+! radar
+000 015 003 000 Vert Integrated Liquid Water     kg m**-2             VIL              0  -9999.00
+!
+! Forecast Radar Imagery
+000 016 197 000 Echo Top                         m                    RETOP            0  -9999.00
 !
 000 017 000 000 Lightning Strike Density         m**2/s               LTNGSD           0  -9999.00
 !
@@ -274,6 +287,7 @@
 002 000 192 000 Volumetric soil moisture content fraction             SOIM             0  -9999.00
 002 000 192 001 Volumetric soil moisture content fraction             SOIM             0  -9999.00
 002 000 192 002 Volumetric soil moisture content fraction             SOIM             0  -9999.00
+002 000 193 000 Ground heat flux                 W m**-2              GHFX             0  -9999.00
 002 000 193 008 Ground heat flux                 W m**-2              GHFX             0  -9999.00
 002 000 194 000 Moisture availability            %                    MSAV             0  -9999.00
 002 000 195 000 Exchange coefficient             kg m**-3 m s**-1     SEXC             0  -9999.00
@@ -358,7 +372,6 @@
 003 192 043 000 SBT for ABI GOES17 Band-14       K                    SBTA1714         0  -9999.00
 003 192 044 000 SBT for ABI GOES17 Band-15       K                    SBTA1715         0  -9999.00
 003 192 045 000 SBT for ABI GOES17 Band-16       K                    SBTA1716         0  -9999.00
-
 !
 ! Product Discipline 10 - Oceanographic Products
 ! CATEGORY 0 - Waves category
@@ -381,3 +394,4 @@
 000 017 192 008 Max Ltng Threat 3                fl*km^-2/5min        LTG3             0  -9999.00
 000 016 196 000 Composite Reflectivity           dbZ                  CREF             0  -9999.00
 255 255 255 000 RH wrt PW in column              %                    RHCOL            0  -9999.00
+000 001 198 008 Max. hourly refl. 1km agl        dbZ                  MXBREF           0  -9999.00
