@@ -25,7 +25,7 @@
 !
 !
 ! Unidata test
-NCEP_CONUS_Models       hrrr;rap;rap20;rap13;nam80;nam40;nam20;nam12;nam104;nam
+NCEP_CONUS_Models       hrrr;rap;rap20;rap13;nam4;nam80;nam40;nam20;nam12;nam104;nam
 NCEP_Global_Models      gfs;gfshd;gfs003;gfs002;gfs212;gfs211;gfsthin;dgex
 !
 International_Models    cosmo;ukmet;cmc;ecmwfg;ecmwft;gme;g3dvar
