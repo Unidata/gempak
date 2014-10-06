@@ -441,7 +441,6 @@ NWW3_AK      $MODEL/nww3               nww3_YYYYMMDDHH_alaska                   
 NWW3_CAK     $MODEL/nww3               nww3_YYYYMMDDHH_coastal_alaska                   CAT_GRD  SCAT_FCT   -1     -1     -1 OFF/0/0                    4
 NWW3_CWEST   $MODEL/nww3               nww3_YYYYMMDDHH_coastal_west_coast               CAT_GRD  SCAT_FCT   -1     -1     -1 OFF/0/0                    4
 NWW3_CEAST   $MODEL/nww3               nww3_YYYYMMDDHH_coastal_east_coast               CAT_GRD  SCAT_FCT   -1     -1     -1 OFF/0/0                    4
-!RAP          $MODEL/ruc                YYYYMMDDHH_ruc236.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
 RAP          $MODEL/rap                YYYYMMDDHH_rap40km.gem                           CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
 RAP40        $MODEL/rap                YYYYMMDDHH_rap40km.gem                           CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
 RAP13        $MODEL/rap                YYYYMMDDHH_rap13km.gem                           CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
@@ -449,7 +448,7 @@ RAP20        $MODEL/rap                YYYYMMDDHH_rap20km.gem                   
 SSTEPAC      $MODEL/sst                sst_YYYYMMDD_14km_epac                           CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
 SSTWATL      $MODEL/sst                sst_YYYYMMDD_14km_watl                           CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
 UKMET        $MODEL/ukmet              YYYYMMDDHH_ukmet.gem                             CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
-EGRR         $MODEL/ukmet              YYYYMMDDHH_egrr255.gem                           CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+EGRR         $MODEL/ukmet              YYYYMMDDHH_egrr.gem                              CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
 UKMET_HIRES  $MODEL/ukmet_hiresp       ukmet_hr_YYYYMMDDHHfFFF                          CAT_GRD  SCAT_FCT   -1     -1     -1 OFF/0/0                    4
 VAFTAD       $MODEL/vaftad             hysplit_YYYYMMDDHH_*                             CAT_GRD  SCAT_FCT   -1     -1     -1 OFF/0/0                    4
 VAFGFS       $MODEL/vaftad             hy_gfs_YYYYMMDDHH_*                              CAT_GRD  SCAT_FCT   -1     -1     -1 OFF/0/0                    4
@@ -459,7 +458,7 @@ VAFNAM       $MODEL/vaftad             hy_nam_YYYYMMDDHH_*                      
 NAM-FIRE     $MODEL/nam-firewx         YYYYMMDDHH_firewxnest.gem                        CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
 FIREWX       $MODEL/firewx             fw_YYYYMMDDHHfFFF                                CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
 FNL          $MODEL/fnl                YYYYMMDDHH_gdas003.gem                           CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
-NWWWAM      $MODEL/nww                YYYYMMDDHH_wam002.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+NWWWAM       $MODEL/nww                YYYYMMDDHH_wam002.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
 MRF          $MODEL/mrf                mrf_YYYYMMDDHHfFFF                               CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
 GFDN         $MODEL/gfdn               gfdn_YYYYMMDDHHfFFF                              CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
 NGM          $MODEL/ngm                YYYYMMDDHH_ngm211.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
@@ -579,6 +578,7 @@ PROF         $GEMDATA/profiler         YYYYMMDD_pro.gem                         
 WSESND       $MODEL_SND/etaw           YYMMDDHH_wseta.snd                               CAT_SNF  SCAT_SNF   -1     -1     -1      OFF/0/0
 WSESFC       $MODEL_SFC/etaw           YYMMDDHH_wseta.sfc                               CAT_SFF  SCAT_SFF   -1     -1     -1      OFF/0/0
 WSESFCA      $MODEL_SFC/etaw           YYMMDDHH_wseta.sfc_aux                           CAT_SFF  SCAT_SFF   -1     -1     -1      OFF/0/0
+NAM4         $MODEL/nam4km             YYYYMMDDHHfFFF_nam4km.gem                        CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
 NAM12        $MODEL/nam12km            YYYYMMDDHHfFFF_nam218.gem                        CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
 NAM218       $MODEL/nam12km            YYYYMMDDHHfFFF_nam218.gem                        CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
 ETA104       $MODEL/nam                YYYYMMDDHH_nam104.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0

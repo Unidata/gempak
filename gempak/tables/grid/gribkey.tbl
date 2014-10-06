@@ -120,9 +120,9 @@
 074   x   15,44,45  044    data/gempak/model/ukmet/YYYYMMDDHH_ukmet.gem     1500
 !
 ! UKMET Other
-074   x   015       @@@    data/gempak/model/ukmet/YYYYMMDDHH_egrr@@@.gem   1000
-074   x   019       @@@    data/gempak/model/ukmet/YYYYMMDDHH_ukm###@@@.gem 1000
-074   x   089       @@@    data/gempak/model/ukmet/YYYYMMDDHH_ukmwav@@@.gem 1000
+074   x   015,19,89 @@@    data/gempak/model/ukmet/YYYYMMDDHH_egrr.gem      1000
+!074   x   019       @@@    data/gempak/model/ukmet/YYYYMMDDHH_ukm###@@@.gem 1000
+!074   x   089       @@@    data/gempak/model/ukmet/YYYYMMDDHH_ukmwav@@@.gem 1000
 !
 ! ECMWF
 ! ECMWF changes their model id so often, best to match any modelid from 

@@ -117,7 +117,7 @@
 000 001 027 008 Maximum Relative Humidity        %                    MAXRH            0  -9999.00
 000 001 028 000 Maximum Absolute Humidity        kg m**-3             MAXAH            0  -9999.00
 000 001 028 008 Maximum Absolute Humidity        kg m**-3             MAXAH            0  -9999.00
-000 001 029 008 Total Snowfall                   m                    SNOW             3     -0.01
+000 001 029 008 Total Snowfall                   m                    W--M             3     -0.01
 !000 001 030 000 Precipitable water Category      code table           ????             ?  -9999.00
 000 001 031 000 Hail                             m                    H--M             3     -0.01
 000 001 032 000 Graupel (snow pellets)           kg kg**-1            GRMR             0  -9999.00
@@ -133,9 +133,9 @@
 000 001 060 000 Water equiv of accum snow depth  kg m**-2             WEASD            0  -9999.00
 000 001 060 001 Water equiv of accum snow depth  kg m**-2             WEASD            0  -9999.00
 000 001 060 011 Water equiv of accum snow depth  kg m**-2             WEASD            0  -9999.00
-000 001 192 000 Weather                          NA                   WX               0  -9999.00
-000 001 192 001 Weather                          NA                   WX               0  -9999.00
-000 001 192 011 Weather                          NA                   WX               0  -9999.00
+000 001 192 000 Weather                          NA                   WTHR             0  -9999.00
+000 001 192 001 Weather                          NA                   WTHR             0  -9999.00
+000 001 192 011 Weather                          NA                   WTHR             0  -9999.00
 001 000 193 008 Storm surface runoff             kg m**-2             R--M             0  -9999.00
 000 001 199 008 Potential evaporation            kg m**-2             PEVAP            0  -9999.00
 000 001 083 000 Albedo                           %                    ALBD             0  -9999.00
