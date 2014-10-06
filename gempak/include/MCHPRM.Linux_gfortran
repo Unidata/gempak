@@ -10,6 +10,7 @@ C* Log:
 C* K. Brill/HPC		 8/02	Define LLMXTG                           *
 C* R. Tian/SAIC		 9/02	Increase LLMXGD from 97000 to 275000    *
 C* M. James/Unidata     08/13   Increased LLMXGD to 1.5M                *
+C* M. James/Unidata     10/14   LLMDGG to 5000000, LLMXGD to 2000000    *
 C************************************************************************
 C!
 	PARAMETER	( MTMACH =  MTLNUX  )
@@ -59,7 +60,7 @@ C!						Tilda
 C!
 	PARAMETER	( LLMXPT = 80000 )
 C!						Max # lines, polygons, ...
-	PARAMETER	( LLMXGD = 1500000 )
+	PARAMETER	( LLMXGD = 2000000 )
 C!						Max # grid points
 C*	PARAMETER	( LLMXTG = LLMXGD )
 	PARAMETER	( LLMXTG = 9331200 )

@@ -19,6 +19,7 @@ C* T. Piper/SAIC        07/05   Increased LLMXPT to 80K                 *
 C* D.W.Plummer/NCEP	07/06	Increased LLMXGD to 750000		*
 C* D.W.Plummer/NCEP     07/06   Increased LLMXGD & LLMXTG to 1M         *
 C* M. James/Unidata     08/13   Increased LLMXGD to 1.5M                *
+C* M. James/Unidata     10/14   LLMDGG to 5000000, LLMXGD to 2000000    *
 C************************************************************************
 C!
 	PARAMETER	( MTMACH =  MTLNUX )
@@ -68,7 +69,7 @@ C!						Tilda
 C!
 	PARAMETER	( LLMXPT = 80000 )
 C!						Max # lines, polygons, ...
-	PARAMETER	( LLMXGD = 1500000 )
+	PARAMETER	( LLMXGD = 2000000 )
 C!						Max # grid points
 	PARAMETER	( LLMXTG = 9331200 )
 C!						Max # transfer grid pnts

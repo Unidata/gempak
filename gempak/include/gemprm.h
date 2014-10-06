@@ -150,6 +150,7 @@
  * L. Hinson/AWC        12/12   Increased LLMXLN to 256+1               *
  * M. James/Unidata	 1/13	Increased MXNMFL from 2000 to 5000	*
  * M. James/Unidata	 8/13   Increased LLMXGD to 1.5 mil		*
+ * M. James/Unidata	10/14   LLMDGG to 5000000, LLMXGD to 2000000	*
  ***********************************************************************/
 
 #ifndef _GEMPRM_H
@@ -343,9 +344,9 @@ typedef unsigned int	G_Cardinal;
 #define	LLAXIS		(      64 )	/* Max # of axis labels */
 #define	LLCLEV		(      50 )	/* Max # of contour lvls */
 #define	LLGDHD		(     128 )	/* Max grid hdr length */
-#define	LLMDGG		( 4000000 )	/* Max mem for intern grids */
+#define	LLMDGG		( 5000000 )	/* Max mem for intern grids */
 #define	LLMXDT		( MMPARM * LLMXLV ) /* Max # data points */
-#define	LLMXGD		( 1500000 )	/* Max # grid points */
+#define	LLMXGD		( 2000000 )	/* Max # grid points */
 #define	LLMXGT		(    2000 )	/* Max # grid times */
 #define	LLMXLN		( 256 + 1 )	/* Max length of input */
 #define	LLMXLV		(     500 )	/* Max # levels/station */

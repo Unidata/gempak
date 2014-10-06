@@ -68,7 +68,7 @@ C!						Tilda
 C!
 	PARAMETER	( LLMXPT = 80000 )
 C!						Max # lines, polygons, ...
-	PARAMETER	( LLMXGD = 1500000 )
+	PARAMETER	( LLMXGD = 2000000 )
 C!						Max # grid points
 	PARAMETER	( LLMXTG = 9331200 )
 C!						Max # transfer grid pnts
