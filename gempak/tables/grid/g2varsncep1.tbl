@@ -388,7 +388,7 @@
 010 003 194 000 Ocean Surface Elev Rel to Geoid  m                    OCELEV           0  -9999.00
 010 003 250 000 ExtraTropStrmSrg Cmb Surge_Tide  m                    ETCWL            0  -9999.00
 010 191 003 000 Days Since Last Observation      d                    DSLOBSO          0  -9999.00
-000 016 195 000 Reflectivity 1km AGL             dbZ                  BREF             0  -9999.00
+000 016 195 000 Reflectivity                     dbZ                  REFD             0  -9999.00
 000 016 198 008 Max. hourly refl. 1km agl        dbZ                  MXBREF           0  -9999.00
 000 017 192 000 Max Ltng Threat 3                fl*km^-2/5min        LTG3             0  -9999.00
 000 017 192 008 Max Ltng Threat 3                fl*km^-2/5min        LTG3             0  -9999.00
