@@ -250,9 +250,44 @@
 ! physical atmospheric properties
 !D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING
 !23|123|123|123|12345678901234567890123456789012|12345678901234567890|123456789012|12345|123456.89
-000 019 192 000 Maximum snow albedo              %                    MXSALB           0  -9999.00
-000 019 193 000 Snow-free albedo                 %                    SNFALB           0  -9999.00
+!
+000 019 192 000 Maximum Snow Albedo              %                    MXSALB           0  -9999.00
+000 019 193 000 Snow-Free Albedo                 %                    SNFALB           0  -9999.00
+000 019 194 000 Slight risk convective outlook   cat                  SRCONO           0  -9999.00
+000 019 194 008 Slight risk convective outlook   cat                  SRCONO           0  -9999.00
+000 019 195 000 Moderate risk convective outlook cat                  MRCONO           0  -9999.00
+000 019 196 000 High risk convective outlook     cat                  HRCONO           0  -9999.00
+000 019 197 009 Tornado probability              %                    TORPROB          0  -9999.00
+000 019 198 009 Hail probability                 %                    HAILPROB         0  -9999.00
+000 019 199 009 Wind probability                 %                    WINDPROB         0  -9999.00
+000 019 200 009 Significant Tornado probability  %                    STORPROB         0  -9999.00
+000 019 201 009 Significant Hail probability     %                    SHAILPRO         0  -9999.00
+000 019 202 009 Significant Wind probability     %                    SWINDPRO         0  -9999.00
+000 019 203 000 Categorical Thunderstorm         cat                  TSTMC            0  -9999.00
+000 019 204 000 Number of mixed layers next to   NA                   MIXLY            0  -9999.00
+000 019 205 000 Flight Category                  cat                  FLGHT            0  -9999.00
+000 019 206 000 Confidence - Ceiling             NA                   CICEL            0  -9999.00
+000 019 207 000 Confidence - Visibility          NA                   CIVIS            0  -9999.00
+000 019 208 000 Confidence - Flight Category     NA                   CIFLT            0  -9999.00
+000 019 209 000 Low-Level aviation interest      NA                   LAVNI            0  -9999.00
+000 019 210 000 High-Level aviation interest     NA                   HAVNI            0  -9999.00
+000 019 211 000 Visible, Black Sky Albedo        %                    SBSALB           0  -9999.00
+000 019 212 000 Visible, White Sky Albedo        %                    SWSALB           0  -9999.00
+000 019 213 000 Near IR, Black Sky Albedo        %                    NBSALB           0  -9999.00
+000 019 214 000 Near IR, White Sky Albedo        %                    NWSALB           0  -9999.00
+000 019 215 000 Total Probability of Severe Thun %                    PRSVR            0  -9999.00
+000 019 216 000 Total Probability of Extreme Sev %                    PRSIGSVR         0  -9999.00
+000 019 217 000 Supercooled Large Droplet (SLD)  cat                  SIPD             0  -9999.00
+000 019 218 000 Radiative emissivity             NA                   EPSR             0  -9999.00
+000 019 219 000 Turbulence Potential             NA                   TURB             0  -9999.00
 000 019 219 005 Turbulence Potential             NA                   TURB             0  -9999.00
+000 019 220 000 Categorical Severe Thunderstorm  cat                  SVRTS            0  -9999.00
+000 019 221 000 Probability of Convection        %                    PROCON           0  -9999.00
+000 019 222 000 Convection Potential             cat                  CONVP            0  -9999.00
+!000 019 223-231 000 Reserved                                                               0  -9999.00
+000 019 232 000 Volcanic Ash Forecast Transport  log10(kg*m-3)        VAFTD            0  -9999.00
+000 019 233 000 Icing probability                non-dim              ICPRB            0  -9999.00
+000 019 234 000 Icing severity                   non-dim              ICSEV            0  -9999.00
 !
 ! Miscellaneous
 !D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING

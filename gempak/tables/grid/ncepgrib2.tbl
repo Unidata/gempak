@@ -27,10 +27,10 @@
 147 Zonal flux of gravity wave stress N/m**2               UGWD             0  -9999.00       0         0
 148 Meridional flux of grav wav strss N/m**2               VGWD             0  -9999.00       0         0
 149 Potential vorticity               m**2/s/kg            PVOR             0  -9999.00        0         0
-150 Covar merid-zonal wind            m**2 s**-2           CMZW             0  -9999.00        0         0
+150 Covar merid-zonal wind            m**2 s**-2          COVMZ             0  -9999.00        0         0
 !
-151 Covar temp-zonal wind             K m s**-1            CTZW             0  -9999.00        0         0
-152 Covar temp-merid wind             K m s**-1            CTMW             0  -9999.00        0         0
+151 Covar temp-zonal wind             K m s**-1           COVTZ             0  -9999.00        0         0
+152 Covar temp-merid wind             K m s**-1           COVTM             0  -9999.00        0         0
 153 Cloud water                       kg/kg                CWTR             0  -9999.00       0         0
 154 Ozone mixing ratio                kg/kg                OZMR             0  -9999.00       0         0
 155 Ground heat flux                  W m**-2              GHFX             0  -9999.00        0         0
@@ -141,6 +141,6 @@
 !											        
 251 Longwave radiative heating rate   K s**-1              DTLW             0  -9999.00        0         0
 252 Drag coefficient                  -                    DRAG             0  -9999.00        0         0
-253 Friction velocity                 m s**-1              FRCV             0  -9999.00        0         0
+253 Friction velocity                 m s**-1             FRICV             0  -9999.00        0         0
 254 Richardson number                 -                    RICH             0  -9999.00        0         0
 255 Missing                           -                    MISS             0  -9999.00        0         0

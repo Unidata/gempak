@@ -245,7 +245,8 @@
 237 Total column ozone concentration  Dobson               OZONE            0  -9999.00
 238 Snow cover                        %                    SNOWC            0  -9999.00
 239 Snow temperature                  K                    SNOT             0  -9999.00
-240 Permanent snow points             mask                 GLCR             0  -9999.00
+!240 Permanent snow points             mask                 GLCR             0  -9999.00
+240 Covariance btw temp and z-wind    K*m/s                COVTW            0  -9999.00
 241 Large scale condensation heating  K/s                  LRGHR            0  -9999.00
 242 Deep convective heating rate      K/s                  CNVHR            0  -9999.00
 243 Deep convective moistening rate   kg/kg/s              CNVMR            0  -9999.00
