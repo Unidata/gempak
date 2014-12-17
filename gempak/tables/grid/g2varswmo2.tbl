@@ -447,3 +447,22 @@
 000 002 224 000 Ventilation Rate                 m**2 s**-1           VRATE            0  -9999.00
 000 002 224 008 Ventilation Rate                 m**2 s**-1           VRATE            0  -9999.00
 000 002 224 009 Ventilation Rate                 m**2 s**-1           VRATE            0  -9999.00
+001 000 002 000 Remotely Sensed Snow Cover       cat                  RSSC             0  -9999.00
+000 007 011 000 Best (4 layer) Lifted Index      K                    4LFTX            0  -9999.00
+000 005 004 000 Upward Long-Wave Rad. Flux       W m -2               ULWRF            0  -9999.00
+000 005 003 000 Downward Long-Wave Rad. Flux     W m -2               DLWRF            0  -9999.00
+000 005 003 008 Downward Long-Wave Rad. Flux     W m -2               DLWRF            0  -9999.00
+000 001 060 000 Snow Depth Water Equivalent      kg m -2              SDWE             0  -9999.00
+000 001 061 000 Snow Density                     kg m -3              SDEN             0  -9999.00
+000 001 062 000 Snow Evaporation                 kg m -2              SEVAP            0  -9999.00
+!000 001 063 000 Reserved                                                               0  -9999.00
+000 001 064 000 Total Column Integrated Water Va kg m -2              TCIWV            0  -9999.00
+000 001 065 000 Rain Precipitation Rate          kg m -2 s -1         RPRATE           0  -9999.00
+000 001 065 008 Rain Precipitation Rate          kg m -2 s -1         RPRATE           0  -9999.00
+000 001 066 000 Snow Precipitation Rate          kg m -2 s -1         SPRATE           0  -9999.00
+000 001 066 008 Snow Precipitation Rate          kg m -2 s -1         SPRATE           0  -9999.00
+000 001 067 000 Freezing Rain Precipitation Rate kg m -2 s -1         FPRATE           0  -9999.00
+000 001 067 008 Freezing Rain Precipitation Rate kg m -2 s -1         FPRATE           0  -9999.00
+000 001 068 000 Ice Pellets Precipitation Rate   kg m -2 s -1         IPRATE           0  -9999.00
+000 001 068 008 Ice Pellets Precipitation Rate   kg m -2 s -1         IPRATE           0  -9999.00
+000 001 069 000 Total Column Integrate Cloud Wat kg m -2              TCOLW            0  -9999.00

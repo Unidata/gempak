@@ -183,6 +183,8 @@
 ! HDS NWS Flash Flood Guidence subcenter ID 155
 009   x   151       @@@    data/gempak/model/ffg/YYYYMMDDHH_%subc%@@@.gem      500
 !
+! HDS NESDIS 1 hr Automated Satellite Precipitation Estimation
+009 170   190       @@@    data/gempak/model/qpf/YYYYMMDDHH_spe.gem      10
 ! HDS NWS QPF - duplicate of NGRID subcenter ID 154
 009   x   180       218    data/gempak/model/qpf/qpf_YYYYMMDDHH.gem      500
 !009   x   180       @@@    data/gempak/model/qpf/YYYYMMDDHH_%subc%@@@.gem      500

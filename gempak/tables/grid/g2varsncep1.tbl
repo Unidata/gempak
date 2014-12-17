@@ -8,10 +8,12 @@
 ! temperature
 !D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING
 !23|123|123|123|12345678901234567890123456789012|12345678901234567890|123456789012|12345|123456.89
+000 000 000 009 Temperature                      K                    TMP              0  -9999.00
 000 000 021 000 Apparent Temperature             K                    APTMP            0  -9999.00
 000 000 192 000 Snow Phase Change Heat Flux      W m**-2              FXSN             0  -9999.00
 000 000 192 001 Snow Phase Change Heat Flux      W m**-2              FXSN             0  -9999.00
 000 000 192 008 Max horiz. wind 10m AGLpast hour m s**-1              MAXUW            0  -9999.00
+000 000 193 000 Temp. tend. by all radiation     K s**-1              TTRAD            0  -9999.00
 000 000 193 008 Temp. tend. by all radiation     K s**-1              TTRAD            0  -9999.00
 000 000 194 008 Relative Error Variance          -                    REV              0  -9999.00
 000 000 195 008 Large scale condensate heat rate K s**-1              LRGHR            0  -9999.00
@@ -28,6 +30,37 @@
 ! moisture
 !D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING
 !23|123|123|123|12345678901234567890123456789012|12345678901234567890|123456789012|12345|123456.89
+000 001 019 000 Precipitation Type               cat                  PTYPE            0  -9999.00
+000 001 019 005 Precipitation Type               cat                  PTYPE            0  -9999.00
+000 001 030 000 Precipitable Water Category      cat                  PWCAT            0  -9999.00
+000 001 031 000 Hail                             m                    HAIL             0  -9999.00
+000 001 032 000 Graupel                          kg*kg^-1             GRLE             0  -9999.00
+000 001 033 000 Categorical Rain                 cat                  CRAIN            0  -9999.00
+000 001 034 000 Categorical Freezing Rain        cat                  CFRZR            0  -9999.00
+000 001 035 000 Categorical Ice Pellets          cat                  CICEP            0  -9999.00
+000 001 036 000 Categorical Snow                 cat                  CSNOW            0  -9999.00
+000 001 037 000 Convective Precipitation Rate    kg m^-2 s^-1         CPRAT            0  -9999.00
+000 001 038 000 Horizontal Moisture Divergence   kg kg^-1 s^-1        MCONV            0  -9999.00
+000 001 039 000 Percent frozen precipitation     %                    CPOFP            0  -9999.00
+000 001 060 000 Water equiv of accum snow depth  kg m**-2             WEASD            0  -9999.00
+000 001 060 001 Water equiv of accum snow depth  kg m**-2             WEASD            0  -9999.00
+000 001 060 011 Water equiv of accum snow depth  kg m**-2             WEASD            0  -9999.00
+000 001 060 000 Snow Depth Water Equivalent      kg m -2              SDWE             0  -9999.00
+000 001 061 000 Snow Density                     kg m -3              SDEN             0  -9999.00
+000 001 062 000 Snow Evaporation                 kg m -2              SEVAP            0  -9999.00
+!000 001 063 000 Reserved                                                               0  -9999.00
+000 001 064 000 Total Column Integrated Water Va kg m -2              TCIWV            0  -9999.00
+000 001 065 000 Rain Precipitation Rate          kg m -2 s -1         RPRATE           0  -9999.00
+000 001 065 008 Rain Precipitation Rate          kg m -2 s -1         RPRATE           0  -9999.00
+000 001 066 000 Snow Precipitation Rate          kg m -2 s -1         SPRATE           0  -9999.00
+000 001 066 008 Snow Precipitation Rate          kg m -2 s -1         SPRATE           0  -9999.00
+000 001 067 000 Freezing Rain Precipitation Rate kg m -2 s -1         FPRATE           0  -9999.00
+000 001 067 008 Freezing Rain Precipitation Rate kg m -2 s -1         FPRATE           0  -9999.00
+000 001 068 000 Ice Pellets Precipitation Rate   kg m -2 s -1         IPRATE           0  -9999.00
+000 001 068 008 Ice Pellets Precipitation Rate   kg m -2 s -1         IPRATE           0  -9999.00
+000 001 069 000 Total Column Integrate Cloud Wat kg m -2              TCOLW            0  -9999.00
+000 001 074 000 Total Column Integrate Graupel   kg m^-2              TCOLG            0  -9999.00
+000 001 074 008 Total Column Integrate Graupel   kg m^-2              TCOLG            0  -9999.00
 000 001 192 000 Categorical rain                 0,1                  WXTR             0  -9999.00
 000 001 192 001 Categorical rain                 0,1                  WXTR             0  -9999.00
 000 001 192 002 Categorical rain                 0,1                  WXTR             0  -9999.00
@@ -60,6 +93,7 @@
 000 001 196 008 Convective precip rate           kg m**-2 s**-1       CPR--            0  -9999.00
 000 001 197 000 Horizontal moisture divergence   kg kg**-1 s**-1      MCNV             0  -9999.00
 000 001 198 000 Probability of precip, frozen    %                    POPZ             0  -9999.00
+000 001 198 008 Max. hourly refl. 1km agl        dbZ                  MXBREF           0  -9999.00
 000 001 199 000 Potential evaporation            kg m**-2             PEVAP            0  -9999.00
 000 001 199 008 Potential evaporation            kg m**-2             PEVAP            0  -9999.00
 000 001 200 000 Potential evaporation rate       W/m**2               PEVP             0  -9999.00
@@ -97,6 +131,7 @@
 ! momentum
 !D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING
 !23|123|123|123|12345678901234567890123456789012|12345678901234567890|123456789012|12345|123456.89
+000 002 001 008 Wind Speed                       m s**-1              WIND             0  -9999.00
 000 002 002 000 u-component of wind              m s**-1              UREL             0  -9999.00
 000 002 002 001 u-component of wind              m s**-1              UREL             0  -9999.00
 000 002 002 008 u-component of wind              m s**-1              UREL             0  -9999.00
@@ -105,6 +140,17 @@
 000 002 003 001 v-component of wind              m s**-1              VREL             0  -9999.00
 000 002 003 008 v-component of wind              m s**-1              VREL             0  -9999.00
 000 002 003 009 v-component of wind              m s**-1              VREL             0  -9999.00
+000 002 009 008 Vertical Velocity (Geometric)    m s^-1               DZDT             0  -9999.00
+000 002 020 000 Boundary Layer Dissipation       W m^-2               BLYDP            0  -9999.00
+000 002 021 000 Maximum Wind Speed *             m s^-1               MAXGUST          0  -9999.00
+000 002 022 000 Wind Speed (Gust)                m s^-1               GUST             0  -9999.00
+000 002 023 000 U-Component of Wind (Gust)       m s^-1               UGUST            0  -9999.00
+000 002 024 000 V-Component of Wind (Gust)       m s^-1               VGUST            0  -9999.00
+000 002 025 000 Vertical Speed Shear             s^-1                 VWSH             0  -9999.00
+000 002 026 000 Horizontal Momentum Flux         N m^-2               MFLX             0  -9999.00
+000 002 027 000 U-Component Storm Motion         m s^-1               USTM             0  -9999.00
+000 002 028 000 V-Component Storm Motion         m s^-1               VSTM             0  -9999.00
+000 002 029 000 Drag Coefficient                 Numeric              CD               0  -9999.00
 000 002 036 000 Amp. func Rossby Wave Mer. Wind  m s**-1              AFRWE            0  -9999.00
 000 002 037 000 Northward Turbulent Sfc Stress   N m**-2 s**-1        NTSS             0  -9999.00
 000 002 038 000 Eastward Turbulent Sfc Stress    N m**-2 s**-1        ETSS             0  -9999.00
@@ -153,6 +199,7 @@
 !D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING
 !23|123|123|123|12345678901234567890123456789012|12345678901234567890|123456789012|12345|123456.89
 000 003 005 000 Geopotential Height              gpm                  HGT              0  -9999.00
+000 003 018 000 Planetary Boundary Layer Height  m                    HPBL             0  -9999.00
 000 003 192 000 MSLP (ETA reduction)             Pa                   EMSL            -2  -9999.00
 000 003 193 000 5-wave geopotential height       gpm                  HGHT5            0  -9999.00
 000 003 194 000 Zonal flux of gravity wav stress N/m**2               UGWD             0  -9999.00
@@ -184,6 +231,9 @@
 ! long-wave radiation
 !D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING
 !23|123|123|123|12345678901234567890123456789012|12345678901234567890|123456789012|12345|123456.89
+000 005 004 000 Upward Long-Wave Rad. Flux       W m -2               ULWRF            0  -9999.00
+000 005 003 000 Downward Long-Wave Rad. Flux     W m -2               DLWRF            0  -9999.00
+000 005 003 008 Downward Long-Wave Rad. Flux     W m -2               DLWRF            0  -9999.00
 000 005 192 000 Downward long wave rad flux      W m**-2              LWRD             0  -9999.00
 000 005 192 008 Downward long wave rad flux      W m**-2              LWRD             0  -9999.00
 000 005 192 011 Downward long wave rad flux      W m**-2              LWRD             0  -9999.00
@@ -204,6 +254,7 @@
 ! cloud
 !D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING
 !23|123|123|123|12345678901234567890123456789012|12345678901234567890|123456789012|12345|123456.89
+000 006 001 000 Total Cloud Cover                %                    TCDC             0  -9999.00
 000 006 192 000 Amt of non-convective cloud      %                    CLDA             0  -9999.00
 000 006 192 008 Amt of non-convective cloud      %                    CLDA             0  -9999.00
 000 006 193 000 Cloud work function              J/kg                 CWRK             0  -9999.00
@@ -220,6 +271,8 @@
 ! thermodynamic stability indices 
 !D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING
 !23|123|123|123|12345678901234567890123456789012|12345678901234567890|123456789012|12345|123456.89
+000 007 010 000 Surface Lifted Index             K                    LFT X            0  -9999.00
+000 007 011 000 Best (4 layer) Lifted Index      K                    4LFTX            0  -9999.00
 000 007 192 000 Surface lifted index             K                    LIFT             0  -9999.00
 000 007 193 000 Best (4 layer) lifted index      K                    LFT4             0  -9999.00
 000 007 194 000 Richardson number                -                    RICH             0  -9999.00
@@ -243,6 +296,11 @@
 000 015 003 000 Vert Integrated Liquid Water     kg m**-2             VIL              0  -9999.00
 !
 ! Forecast Radar Imagery
+!000 016 192-254 000 Reserved for Local Use                                                 0  -9999.00
+000 016 003 000 Echo Top (See Note 1)            m                    RETOP            0  -9999.00
+000 016 192 000 Equivalent radar reflectivity fa m m 6 m -3           REFZR            0  -9999.00
+000 016 193 000 Equivalent radar reflectivity fa m m 6 m -3           REFZI            0  -9999.00
+000 016 194 000 Equivalent radar reflectivity fa m m 6 m -3           REFZC            0  -9999.00
 000 016 197 000 Echo Top                         m                    RETOP            0  -9999.00
 !
 000 017 000 000 Lightning Strike Density         m**2/s               LTNGSD           0  -9999.00
@@ -264,6 +322,7 @@
 000 019 201 009 Significant Hail probability     %                    SHAILPRO         0  -9999.00
 000 019 202 009 Significant Wind probability     %                    SWINDPRO         0  -9999.00
 000 019 203 000 Categorical Thunderstorm         cat                  TSTMC            0  -9999.00
+000 019 203 008 Categorical Thunderstorm         cat                  TSTMC            0  -9999.00
 000 019 204 000 Number of mixed layers next to   NA                   MIXLY            0  -9999.00
 000 019 205 000 Flight Category                  cat                  FLGHT            0  -9999.00
 000 019 206 000 Confidence - Ceiling             NA                   CICEL            0  -9999.00
@@ -276,14 +335,18 @@
 000 019 213 000 Near IR, Black Sky Albedo        %                    NBSALB           0  -9999.00
 000 019 214 000 Near IR, White Sky Albedo        %                    NWSALB           0  -9999.00
 000 019 215 000 Total Probability of Severe Thun %                    PRSVR            0  -9999.00
+000 019 215 009 Total Probability of Severe Thun %                    PRSVR            0  -9999.00
 000 019 216 000 Total Probability of Extreme Sev %                    PRSIGSVR         0  -9999.00
+000 019 216 009 Total Probability of Extreme Sev %                    PRSIGSVR         0  -9999.00
 000 019 217 000 Supercooled Large Droplet (SLD)  cat                  SIPD             0  -9999.00
 000 019 218 000 Radiative emissivity             NA                   EPSR             0  -9999.00
 000 019 219 000 Turbulence Potential             NA                   TURB             0  -9999.00
 000 019 219 005 Turbulence Potential             NA                   TURB             0  -9999.00
 000 019 220 000 Categorical Severe Thunderstorm  cat                  SVRTS            0  -9999.00
 000 019 221 000 Probability of Convection        %                    PROCON           0  -9999.00
+000 019 221 008 Probability of Convection        %                    PROCON           0  -9999.00
 000 019 222 000 Convection Potential             cat                  CONVP            0  -9999.00
+000 019 222 008 Convection Potential             cat                  CONVP            0  -9999.00
 !000 019 223-231 000 Reserved                                                               0  -9999.00
 000 019 232 000 Volcanic Ash Forecast Transport  log10(kg*m-3)        VAFTD            0  -9999.00
 000 019 233 000 Icing probability                non-dim              ICPRB            0  -9999.00
@@ -299,6 +362,13 @@
 ! Hydrology basic products
 !D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING
 !23|123|123|123|12345678901234567890123456789012|12345678901234567890|123456789012|12345|123456.89
+001 000 000 000 Flash Flood Guidance (Encoded as kg m**-2             FFLDG            0  -9999.00
+001 000 001 000 Flash Flood Runoff (Encoded as a kg m**-2             FFLDRO           0  -9999.00
+001 000 002 000 Remotely Sensed Snow Cover       cat                  RSSC             0  -9999.00
+001 000 003 000 Elevation of Snow Covered Terrai cat                  ESCT             0  -9999.00
+001 000 004 000 Snow Water Equivalent Percent of %                    SWEPON           0  -9999.00
+001 000 005 000 Baseflow-Groundwater Runoff      kg m**-2             BGRUN            0  -9999.00
+001 000 006 000 Storm Surface Runoff             kg m**-2             SSRUN            0  -9999.00
 001 000 007 000 Discharge from Rivers or Streams m**3 s**-1           DISRS            0  -9999.00
 001 000 192 000 Baseflow-groundwater runoff      kg m**-2             BFGR             0  -9999.00
 001 000 192 008 Baseflow-groundwater runoff      kg m**-2             BFGR             0  -9999.00
@@ -353,6 +423,7 @@
 002 003 197 000 Soil porosity (0.0-1.0)          -                    POROS            0  -9999.00
 002 003 198 000 Direct Evap. from Bare Soil      W m**-2              EVBS             0  -9999.00
 002 003 199 000 Land Surface Precip Accumulation kg m**-2             LSPA             0  -9999.00
+002 003 199 008 Land Surface Precip Accumulation kg m**-2             LSPA             0  -9999.00
 002 003 200 000 Bare Soil Surface Skin Temp      K                    BARET            0  -9999.00
 002 003 201 000 Average Surface Skin Temp        K                    AVSFT            0  -9999.00
 002 003 202 000 Effective Radiative Skin Temp    K                    RADT             0  -9999.00
@@ -429,4 +500,3 @@
 000 017 192 008 Max Ltng Threat 3                fl*km^-2/5min        LTG3             0  -9999.00
 000 016 196 000 Composite Reflectivity           dbZ                  CREF             0  -9999.00
 255 255 255 000 RH wrt PW in column              %                    RHCOL            0  -9999.00
-000 001 198 008 Max. hourly refl. 1km agl        dbZ                  MXBREF           0  -9999.00
