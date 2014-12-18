@@ -592,7 +592,7 @@ PROF         $GEMDATA/profiler         YYYYMMDD_pro.gem                         
 WSESND       $MODEL_SND/etaw           YYMMDDHH_wseta.snd                               CAT_SNF  SCAT_SNF   -1     -1     -1      OFF/0/0
 WSESFC       $MODEL_SFC/etaw           YYMMDDHH_wseta.sfc                               CAT_SFF  SCAT_SFF   -1     -1     -1      OFF/0/0
 WSESFCA      $MODEL_SFC/etaw           YYMMDDHH_wseta.sfc_aux                           CAT_SFF  SCAT_SFF   -1     -1     -1      OFF/0/0
-NAM4         $MODEL/nam4km             YYYYMMDDHHfFFF_nam4km.gem                        CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
+NAM5         $MODEL/nam5km             YYYYMMDDHHfFFF_nam5km.gem                        CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
 NAM221       $MODEL/nam                YYYYMMDDHHfFFF_nam221.gem                        CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
 NAM12        $MODEL/nam12km            YYYYMMDDHHfFFF_nam218.gem                        CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
 NAM218       $MODEL/nam12km            YYYYMMDDHHfFFF_nam218.gem                        CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0

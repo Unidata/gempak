@@ -18,17 +18,17 @@
 ! M. James/Unidata	08/13	Added GME and G3DVAR 												*
 !************************************************************************************************************************************************
 !
-!Global_Models          dgex;gfs;gefs;gfshd;nam;nam20;nam40;nam44;fnl;mrf;mrfx;ngm;ruc2
+!Global_Models          gfs;gefs;gfshd;gfs003,gfs002;navgem;ukmet;fnl;mrf;mrfx;ngm
 !Global_Ensembles       nam;nam20;nam40;nam44;ngm;dgex;gfs;gfshd;mrf;mrfx;ens;mm5ak;mm5us
-!Ocean_Models           GoesSST
-!OPC_Grids              ruc2;fslruc2;ngm;nam20;nam40;nam44;ghm
+!Ocean_Models           nww3;ncoda;farop;ww3;nww;GoesSST
+!OPC_Grids              fslruc2;ngm;nam20;nam40;nam44;ghm
 !
 !
-! Unidata test
-NCEP_CONUS_Models       hrrr;rap;rap20;rap13;nam4;nam80;nam40;nam20;nam12;nam104;nam
-NCEP_Global_Models      gfs;gfshd;gfs003;gfs002;gfs212;gfs211;gfsthin;dgex
+! Unidata 
+NCEP_CONUS_Models       dgex;hrrr;rap;rap20;rap13;nam5;nam221;nam80;nam40;nam20;nam12;nam104;nam;nam243;rap40
+NCEP_Global_Models      gfs;gfshd;gfs003;gfs002;gfs212;gfs211;gfsthin
 !
-International_Models    cosmo;ukmet;cmc;ecmwfg;ecmwft;gme;g3dvar
+International_Models    cosmo;ukmet;cmc;ecmwfg;ecmwft;gme;g3dvar;ecmwf
 !
 Ensemble_Models         sref;gefs;gefc;ens;enshr
 !
