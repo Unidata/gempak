@@ -25,6 +25,8 @@
 007   x   084,085   216    data/gempak/model/nam-ak/YYYYMMDDHH_nam@@@.gem   18000
 007   x   084,085   217    data/gempak/model/nam-ak/YYYYMMDDHH_nam@@@.gem   5000
 007   x   084,085   242    data/gempak/model/nam-ak/YYYYMMDDHHfFFF_nam@@@.gem   1000
+007   x   084,085   221    data/gempak/model/nam/YYYYMMDDHHfFFF_nam221.gem    2000
+007   0   084       255    data/gempak/model/nam/YYYYMMDDHH_nam243.gem    24000
 007   x   084,085   @@@    data/gempak/model/nam/YYYYMMDDHH_nam@@@.gem    5000
 !
 ! NAM/ICWF
@@ -209,3 +211,5 @@
 ! Unidata RADAR mosaic
 060   1     1       @@@    YYYYMMDDHHNN_nexr.gem 500
 060   1     2       @@@    YYYYMMDDHHNN_nexf.gem 500
+! ESTOFS
+007   4   014       255    data/gempak/model/estofs/YYYYMMDDHH_estofs.gem   1000

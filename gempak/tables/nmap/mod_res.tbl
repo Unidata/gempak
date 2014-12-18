@@ -736,14 +736,14 @@ GOES-SST_ENH_EPAC                $NMAP_RESTORE/GOESSST/oceanic/goessst_fill_enh_
 ! ESTOFS
 !**********************
 !
-TIDES_CONTOURSP                $NMAP_RESTORE/ESTOFS/oceanic/tides_contoursP               oceanic   estofs_tidse;estofs_tidne;estofs_tidgm;estofs_tidpr
-HI_TIDES_CONTOURSP             $NMAP_RESTORE/ESTOFS/oceanic/high_tides_contoursP          oceanic   estofs_tidse;estofs_tidne;estofs_tidgm;estofs_tidpr
-SURGE+TIDES_CONTOURSP          $NMAP_RESTORE/ESTOFS/oceanic/surge+tides_contoursP         oceanic   estofs_se;estofs_ne;estofs_gm;estofs_pr
-SURGE+TIDES_CONTOURSP_NOFILL   $NMAP_RESTORE/ESTOFS/oceanic/surge+tides_contoursP_nofill  oceanic   estofs_se;estofs_ne;estofs_gm
-HI_SURGE+TIDES_CONTOURSP       $NMAP_RESTORE/ESTOFS/oceanic/hi_surge+tides_contoursP      oceanic   estofs_se;estofs_ne;estofs_gm;estofs_pr
-SURGE_CONTOURSP                $NMAP_RESTORE/ESTOFS/oceanic/estofs_surge_contoursP        oceanic   estofs_srgse;estofs_srgne;estofs_srggm;estofs_srgpr
-SURGE_GRIDS_COLORP             $NMAP_RESTORE/ESTOFS/oceanic/surge_grids_colorP            oceanic   estofs_srgse;estofs_srgne;estofs_srggm;estofs_srgpr
-ESTOFS_GRIDS_COLORP            $NMAP_RESTORE/ESTOFS/oceanic/estofs_grids_colorP           oceanic   estofs_se;estofs_ne;estofs_gm;estofs_pr
+TIDES_CONTOURSP                $NMAP_RESTORE/ESTOFS/oceanic/tides_contoursP               oceanic   estofs;estofs_tidse;estofs_tidne;estofs_tidgm;estofs_tidpr
+HI_TIDES_CONTOURSP             $NMAP_RESTORE/ESTOFS/oceanic/high_tides_contoursP          oceanic   estofs;estofs_tidse;estofs_tidne;estofs_tidgm;estofs_tidpr
+SURGE+TIDES_CONTOURSP          $NMAP_RESTORE/ESTOFS/oceanic/surge+tides_contoursP         oceanic   estofs;estofs_se;estofs_ne;estofs_gm;estofs_pr
+SURGE+TIDES_CONTOURSP_NOFILL   $NMAP_RESTORE/ESTOFS/oceanic/surge+tides_contoursP_nofill  oceanic   estofs;estofs_se;estofs_ne;estofs_gm
+HI_SURGE+TIDES_CONTOURSP       $NMAP_RESTORE/ESTOFS/oceanic/hi_surge+tides_contoursP      oceanic   estofs;estofs_se;estofs_ne;estofs_gm;estofs_pr
+SURGE_CONTOURSP                $NMAP_RESTORE/ESTOFS/oceanic/estofs_surge_contoursP        oceanic   estofs;estofs_srgse;estofs_srgne;estofs_srggm;estofs_srgpr
+SURGE_GRIDS_COLORP             $NMAP_RESTORE/ESTOFS/oceanic/surge_grids_colorP            oceanic   estofs;estofs_srgse;estofs_srgne;estofs_srggm;estofs_srgpr
+ESTOFS_GRIDS_COLORP            $NMAP_RESTORE/ESTOFS/oceanic/estofs_grids_colorP           oceanic   estofs;estofs_se;estofs_ne;estofs_gm;estofs_pr
 !************************************************************************************************************************************************
 !																		*
 !	mod_res.upc																*
