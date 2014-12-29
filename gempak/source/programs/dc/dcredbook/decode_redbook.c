@@ -34,16 +34,16 @@ float lat[4],lon[4],fproj[3];
 struct tm redtime;
 time_t prodtime;
 
-char *outtemp, *outdev, *tempdev, templstr[15];
+char *outtemp,  *tempdev, templstr[25];
 
 char outfilenm[256],outtmpl[256],*pos,*cpos,*tempfil,buf[512],tstr[128],outrstr[512];
-char DEV[10],*optparms=NULL;
+char DEV[10],*optparms=NULL,outdev[512];
 char pnam[7],ptype[10];
-char PIL[10],TITLE[256],prod1[180],prod2[180];
+char PIL[10],TITLE[256],prod1[120],prod2[120];
 char sysline[512];
 char **aryptr;
 static char proj[50];
-char map[180];
+char map[80];
 char garea[30];
 char gemtime[20];
 char errstr[181];
