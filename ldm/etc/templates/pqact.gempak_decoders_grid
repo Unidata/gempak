@@ -3,7 +3,7 @@
 #
 # Michael James
 # Unidata Program Center
-# last updated 09/2014
+# last updated 01/14/2015
 #
 ###############################################################################
 # Begin GEMPAK decoder section
@@ -74,8 +74,11 @@ HDS	(/mNAM|/mNMM).*#211
 		-e GEMTBL=@GEMTBL@ 
 #
 # NAM #212 40km grid CONUS
-HDS|CONDUIT	((/mNAM|/mNMM).*#212|prod/nam.*awip3d)
-	PIPE	dcgrib2 -d data/gempak/logs/dcgrib2_NAM212.log
+#HDS	(/mNAM|/mNMM)
+#	PIPE	dcgrib2 -d data/gempak/logs/dcgrib2_NAM212_hds.log
+#		-e GEMTBL=@GEMTBL@ 
+CONDUIT	(prod/nam.*awip3d)
+	PIPE	dcgrib2 -d data/gempak/logs/dcgrib2_NAM212_conduit.log
 		-e GEMTBL=@GEMTBL@ 
 #
 # NAM #215 20km grid CONUS
@@ -127,43 +130,46 @@ HDS	(KWBG.*/mRUC)
 		-e GEMTBL=@GEMTBL@ 
 #
 #
-# CONDUIT RUC grids 
+# NGRID RUC grids 
 #
-# grid #130 (13km)	rap.tXXz.awp130pgrbfHH
-CONDUIT	prod/rap.*awp130.*
-	PIPE	dcgrib2 -m 15000 -d data/gempak/logs/dcgrib2_CONDUIT_rap.log
+# grid #130 (13km)
+NGRID	^[LM].D... KWB. .....*RUC2/#130
+	PIPE	dcgrib2 -m 6000 -d data/gempak/logs/dcgrib2_NGRID_rap.log
 		-e GEMTBL=@GEMTBL@
 		data/gempak/model/rap/YYYYMMDDHH_rap13km.gem
+# CONDUIT RUC grids 
 #
 # grid #252 (20km) 	rap.tXXz.awp252pgrbfHH
 CONDUIT	prod/rap.*awp252.*
-	PIPE	dcgrib2 -m 15000 -d data/gempak/logs/dcgrib2_CONDUIT_rap.log
+	PIPE	dcgrib2 -m 18000 -d data/gempak/logs/dcgrib2_CONDUIT_rap.log
 		-e GEMTBL=@GEMTBL@
 		data/gempak/model/rap/YYYYMMDDHH_rap20km.gem
 #
 # grid	#236 (40km) 	rap.tXXz.awp236pgrbfHH
 CONDUIT	prod/rap.*awp236.*
-	PIPE	dcgrib2 -m 15000 -d data/gempak/logs/dcgrib2_CONDUIT_rap.log
+	PIPE	dcgrib2 -m 8000 -d data/gempak/logs/dcgrib2_CONDUIT_rap.log
 		-e GEMTBL=@GEMTBL@
 		data/gempak/model/rap/YYYYMMDDHH_rap40km.gem
 #
+# Deprecated
+#
 # 32 km full domain 	rap.tXXz.awip32fHH.grib2.
-CONDUIT	prod/rap.*awp32.*
-	PIPE	dcgrib2 -m 15000 -d data/gempak/logs/dcgrib2_CONDUIT_rap.log
-		-e GEMTBL=@GEMTBL@
-		data/gempak/model/rap/YYYYMMDDHH_rap_32km.gem
+#CONDUIT	prod/rap.*awp32.*
+#	PIPE	dcgrib2 -m 15000 -d data/gempak/logs/dcgrib2_CONDUIT_rap.log
+#		-e GEMTBL=@GEMTBL@
+#		data/gempak/model/rap/YYYYMMDDHH_rap_32km.gem
 #
 # 11 km Alaska		rap.tXXz.awp242fHH.grib2.
-CONDUIT	prod/rap.*awp242.*
-	PIPE	dcgrib2 -m 15000 -d data/gempak/logs/dcgrib2_CONDUIT_rap.log
-		-e GEMTBL=@GEMTBL@
-		data/gempak/model/rap/YYYYMMDDHH_rap_ak.gem
+#CONDUIT	prod/rap.*awp242.*
+#	PIPE	dcgrib2 -m 15000 -d data/gempak/logs/dcgrib2_CONDUIT_rap.log
+#		-e GEMTBL=@GEMTBL@
+#		data/gempak/model/rap/YYYYMMDDHH_rap_ak.gem
 #
 # 16 km Puerto Rico	rap.tXXz.awp200fHH.grib2.
-CONDUIT	prod/rap.*awp200.*
-	PIPE	dcgrib2 -m 15000 -d data/gempak/logs/dcgrib2_CONDUIT_rap.log
-		-e GEMTBL=@GEMTBL@
-		data/gempak/model/rap/YYYYMMDDHH_rap_pr.gem
+#CONDUIT	prod/rap.*awp200.*
+#	PIPE	dcgrib2 -m 15000 -d data/gempak/logs/dcgrib2_CONDUIT_rap.log
+#		-e GEMTBL=@GEMTBL@
+#		data/gempak/model/rap/YYYYMMDDHH_rap_pr.gem
 #
 # NGM model output 
 # -----------------------
@@ -270,15 +276,11 @@ NGRID	^E.W... KWBI
 # CONDUIT GFS grids
 # ----------------------------------------------
 #
+# 0.5 degree GFS data - updated 20140114 for new CONDUIT headers
 # 1.0 degree GFS data
 # 2.5 degree GFS data
-CONDUIT	prod/gfs.*pgrb[^2]
-	PIPE	dcgrib2 -d data/gempak/logs/dcgrib2_CONDUITgfs.log
-	-e GEMTBL=@GEMTBL@
-#
-# 0.5 degree GFS data
 CONDUIT	prod/gfs.*pgrb2
-	PIPE	dcgrib2 -d data/gempak/logs/dcgrib2_CONDUITgfs2.log
+	PIPE	dcgrib2 -d data/gempak/logs/dcgrib2_CONDUITgfs.log
 	-e GEMTBL=@GEMTBL@
 #
 # CONDUIT ensemble products
@@ -326,7 +328,7 @@ HDS	^[YZ]..... KKCI.*/mAWC_NCWD
 		-e GEMTBL=@GEMTBL@
 		data/gempak/model/awc/YYYYMMDD_ncwd.gem
 #
-HDS	^[YZ]..... KKCI.*/mAWC_CIP
+HDS	^Y[AIJL][WX]... KKCI.*/AWC_CIP
 	PIPE	dcgrib2 -d data/gempak/logs/dcgrib2_AWC_CIP.log
 		-e GEMTBL=@GEMTBL@
 		data/gempak/model/awc/YYYYMMDD_cip.gem
@@ -346,8 +348,17 @@ HDS	^Z.W..8 KWNO
 	PIPE	dcgrib2 -v 1 -d data/gempak/logs/dcgrib2_NWS236.log
 		-e GEMTBL=@GEMTBL@
 #
+# KMSR NWS_25 (YSQA88, YEQA88, ZSQA88, ZEQA88)
+HDS	^[YZ][SE]QA KMSR.*!grib2.*
+	PIPE	dcgrib2 -v 1 -d data/gempak/logs/dcgrib2_NWS25.log
+		-e GEMTBL=@GEMTBL@
 # NOAAport NWS grid #255 NWS_152, NWS_160, NWS_161, NWS_171, NWS_172
 HDS	^ZETA98 K...
+	PIPE	dcgrib2 -v 1 -d data/gempak/logs/dcgrib2_NWS255.log
+		-e GEMTBL=@GEMTBL@
+#
+# NOAAport grid #190 (AWIPS grid 240) NESDIS Sat. Precip Estimate
+HDS	^ZETA98 K[NW][EN][ES] 
 	PIPE	dcgrib2 -v 1 -d data/gempak/logs/dcgrib2_NWS255.log
 		-e GEMTBL=@GEMTBL@
 #
@@ -363,7 +374,7 @@ HDS	^Y..... K([^WK]..|W[^B].|K[^C].)
 #
 # US CONUS Radar Coded Message grid mosaic
 HDS	^HAXA00 K...
-	PIPE	-close	dcgrib2 -d data/gempak/logs/dcgrib2_rcm.log
+	PIPE	dcgrib2 -d data/gempak/logs/dcgrib2_rcm.log
 		-e GEMTBL=@GEMTBL@
 #
 #
@@ -384,8 +395,24 @@ HDS	^H..... EGRR
 #
 # FNMOC data available via IDD (NAVGEM & COAMPS models)
 #US058GMET-GR1mdl.0135_0240_00000F0OF2014032418_0001_000000-000000aero_optdep
+# 0018_0056 = NAVGEM
+# 0022_0179 = COAMPS europe
+# 0063_0187 = COAMPS watl
+# 0110_0240 = WW3
+# 0111_0179 = WW3 Europe
+# 0135_0240 = FAROP
+# 0078_0200 = NCODA 1 deg ocean model
+# COAMPS-EQAM = COAMPS Equatorial America
+# COAMPS-SOCAL = COAMPS Southern California
+# COAMPS-NEPAC = COAMPS NE Pacific 
+# CENCOOS = ???
+#    FNMOC 000  US058GMET-GR1dyn.COAMPS-CENCOOS_CENCOOS-n3-c1_00000F0NL2014121600_0100_002000-000000air_temp
 # -------------------------
-FNMOC	^US058.*(0018_0056|0022_0179|0027_0186|0060_0188|0063_0187|0110_0240|0111_0179|0135_0240|0078_0200)_.*
+# discontinued:
+# 0060_0188 = COAMPS epac
+# 0027_0186 = COAMPS cent. america
+#               (      | FAROP   | NAVGEM  |  COeuro | COwatl  |  WW3    | WW3euro |  NCODA  )
+FNMOC	^US058.*(COAMPS|0135_0240|0018_0056|0022_0179|0063_0187|0110_0240|0111_0179|0078_0200)_.*
 	PIPE	dcgrib2 -d data/gempak/logs/dcgrib2_fnmoc.log
 	-e GEMTBL=@GEMTBL@
 #
@@ -395,23 +422,22 @@ CMC	CMC_reg
 	PIPE	dcgrib2 -d data/gempak/logs/dcgrib2_cmc.log
 	-e GEMTBL=@GEMTBL@
 #
-# National radar composite generated by GDRADR for IDD
-FNEXRAD	^radar_mosaic_national
-	PIPE	dcgrib2 -d data/gempak/logs/dcgrib2_radar.log
-	-e GEMTBL=@GEMTBL@
-	data/gempak/radar/YYYYMMDD_radr.gem
-#
 # 1km National radar composite generated by GDRADR for IDD
 FNEXRAD	^radar_mosaic_nathr
-	PIPE	-close	dcgrib2 -v 1 -d data/gempak/logs/dcgrib2_radarhr.log
+	PIPE	dcgrib2 -v 1 -d data/gempak/logs/dcgrib2_radarhr.log
 	-e GEMTBL=@GEMTBL@
-	data/gempak/radar/YYYYMMDD_rad1.gem
+#
+# National radar composite generated by GDRADR for IDD
+#FNEXRAD	^radar_mosaic_national
+#	PIPE	dcgrib2 -d data/gempak/logs/dcgrib2_radar.log
+#	-e GEMTBL=@GEMTBL@
+#	data/gempak/radar/YYYYMMDD_radr.gem
 #
 # Regional/Floater radar composite generated by GDRADR for IDD
-FNEXRAD	^radar_mosaic_regional_(.*) !.*!
-	PIPE	dcgrib2 -d data/gempak/logs/dcgrib2_radar_region.log
-	-e GEMTBL=@GEMTBL@
-	data/gempak/radar/YYYYMMDD_float_\1.gem
+#FNEXRAD	^radar_mosaic_regional_(.*) !.*!
+#	PIPE	dcgrib2 -d data/gempak/logs/dcgrib2_radar_region.log
+#	-e GEMTBL=@GEMTBL@
+#	data/gempak/radar/YYYYMMDD_float_\1.gem
 #
 ############################################################################
 # NCEP Gridded data from NWS server CONDUIT/NMC2 feed 
@@ -426,19 +452,19 @@ FNEXRAD	^radar_mosaic_regional_(.*) !.*!
 # Other GRIB2 decoding from DVB-S NOAAPORT datastream
 #
 #
-# RTMA Grid 227 CONUS 5km
+# RTMA Grid 197 CONUS 5km
 NGRID	^[LM].M... KWBR
 	PIPE	dcgrib2 -m 200 -d data/gempak/logs/dcgrib2_rtma.log
 	-e GEMTBL=@GEMTBL@
 	data/gempak/model/rtma/YYYYMMDDHH_rtma_5km.gem
 #
-# RTMA CONUS 2.5 km
+# RTMA Grid 255 CONUS 2.5 km
 NGRID	^[LM].I... KWBR
 	PIPE	dcgrib2 -m 200 -d data/gempak/logs/dcgrib2_rtma.log
 	-e GEMTBL=@GEMTBL@
 	data/gempak/model/rtma/YYYYMMDDHH_rtma.gem
 #
-# RTMA GUAM 2.5 km
+# RTMA Grid 199 GUAM 2.5 km
 NGRID	^[LM].G... KWBR
 	PIPE	dcgrib2 -m 200 -d data/gempak/logs/dcgrib2_rtma.log
 	-e GEMTBL=@GEMTBL@
@@ -479,12 +505,20 @@ CONDUIT	grib2/nwstg/NWS_0/..../(........)(....)
 # Q PACIFICSOUTHWEST
 # U CONUS
 # CONDUIT 002  data/ndfd/LMUZ97_KWNS_011625.grib2 !grib2/nwstg/NWS_0/#000/201111011700F139/OLTKS/0 - NONE! 000002
+# CONDUIT 001  data2/ndfd/LLUZ98_KWNS_161751.grib2 !grib2/nwstg/NWS_0/#000/201412161800F066/PRSIGSVR0000/0 - NONE! 00000
 #
-CONDUIT	L.UZ9[78]_KWNS.*grib2/nwstg/NWS_0/..../(........)(....)
-	PIPE	dcgrib2 -d data/gempak/logs/ndfd.log
-	-e GEMTBL=@GEMTBL@
-	data/gempak/model/ndfd/firewx_conus_YYYYMMDDHH.gem
+#CONDUIT	L.UZ9[78]_KWNS.*grib2/nwstg/NWS_0/..../(........)(....)
+#	PIPE	dcgrib2 -d data/gempak/logs/ndfd_firewx.log
+#	-e GEMTBL=@GEMTBL@
+#	data/gempak/model/ndfd/firewx_conus_YYYYMMDDHH.gem
 ##################################################################
+#
+# SPC Convective Probability Grids
+# HDS 76848992  LDIZ30 KWNS 161711 !grib2/ncep/0/#001/201412171200F024/PRSVR0000PA/0 - NON
+#
+HDS	^LDIZ.. KWNS
+	PIPE	dcgrib2 -v 1 -d data/gempak/logs/dcgrib2_spc.log
+	-e GEMTBL=@GEMTBL@ 
 #
 # LAMP (Local Awips MOS Products)
 NGRID	^[LM].U... KWNO
@@ -590,13 +624,23 @@ NGRID	E.H.88 KWBJ (..)(..)
 	PIPE	dcgrib2 -v 1 -d data/gempak/logs/dcgrib2_nww3.log
 	-e GEMTBL=@GEMTBL@
 	data/gempak/model/nww3/nww3_YYYYMMDDHH_coastal_east_coast
-
-# FSL2 HRRR
+#
+# FSL2 GSD HRRR
+#
 #FSL2	^GRIB2.*HRRR\.1905141_Lambert.*\.(..........)00.*
 #	PIPE	dcgrib2 -v 1 -d data/gempak/logs/dcgrib2_hrrr.log
 #	-e GEMTBL=@GEMTBL@
-
+#
 # NOAAport HRRR
+#
 NGRID	Y.C.[0-9][0-9] KWBY
 	PIPE	dcgrib2 -v 1 -d data/gempak/logs/dcgrib2_NGRIDhrrr.log
 	-e GEMTBL=@GEMTBL@
+#
+# HIRES
+#
+# NGRID 16530432  LTBA86 KWBS 180000 !grib2/ncep/WRF_NMM/#255/201412180000F000/TMPK/90-60 hPa PDLY
+#
+#NGRID	[LM].[AB]... KWBS ...... !grib2/ncep/(.*)/#(.*)/([0-9]{12})F(...)/(.*)/.*
+#	PIPE	dcgrib2 -v 1 -d data/gempak/logs/dcgrib2_NGRIDhiresw.log
+#	-e GEMTBL=@GEMTBL@
