@@ -7,7 +7,7 @@ MOTIFINC  = -I/usr/dt/include
 XWINCDIR  = -I/usr/openwin/include
 
 COPT = -DUNDERSCORE -DNO_NANOSLEEP -D$(OPSYS) $(GEMINC) $(MOTIFINC) $(XWINCDIR) # -g # -O
-FOPT =  $(GEMINC) # -xO2 -g (NB: WS5.2 fails using -O)
+FOPT = -fno-second-underscore -fno-range-check -fd-lines-as-comments $(GEMINC) # -xO2 -g (NB: WS5.2 fails using -O)
 
 NCOPT = "CC=$(CC)" "FC= " "CXX= " "F90= "
 

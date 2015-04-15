@@ -22,8 +22,8 @@
 ####################################################################
 GEMPAKHOME       = $(NAWIPS)/gempak
 SHELL            = /bin/sh
-FC               = f77
-CC               = cc 
+FC               = gfortran
+CC               = gcc 
 AR               = ar
 ARFLAGS          = rv
 RANLIB           = ranlib
