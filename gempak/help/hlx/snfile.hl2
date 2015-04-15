@@ -20,3 +20,10 @@
      The base time may be any valid format for a GEMPAK date/time. 
      Any missing parts of the date/time will be supplied by the 
      system time.
+
+     Access to upper air data in the AWIPS database is accomplished by
+     setting SNFILE to an alias found in datatype.tbl. Each entry for
+     upper air data references an XML control file that needs to be 
+     created to specify the attributes of the metadata in the database.
+     For example, the alias A2UAIR uses the XML file 
+     $GEMTBL/data-access/uair.xml.

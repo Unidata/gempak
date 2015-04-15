@@ -54,6 +54,7 @@ int main ( int argc, char *argv[] )
  * T. Piper/SAIC        01/06   Call ip_help if inputs incorrect        *
  * H. Zeng/SAIC		07/07	added calling to shp_rdException()	*
  * S. Jacobs/NCEP	 3/11	Added debug_flag and print statements	*
+ * S. Jacobs/NCEP	 6/14	Moved split func to after dump output	*
  ***********************************************************************/
 {
     dbf_header dbfhdr;
@@ -245,12 +246,6 @@ int main ( int argc, char *argv[] )
 /*======================= Starting Post-Process =======================*/
 
     /*
-     * Split record part if it has more than MAXOUT number of points
-     * or it crosses the international dateline.
-     */
-    shp_splt ( reclst, numrec, &ier );
-
-    /*
      * Dump shapefile records.
      */
     if ( dump == G_TRUE ) {
@@ -264,6 +259,12 @@ int main ( int argc, char *argv[] )
         shp_mfreeall ( );
 	exit ( 0 );
     }
+
+    /*
+     * Split record part if it has more than MAXOUT number of points
+     * or it crosses the international dateline.
+     */
+    shp_splt ( reclst, numrec, &ier );
 
     /*
      * Detect the map type.

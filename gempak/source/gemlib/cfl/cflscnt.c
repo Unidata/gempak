@@ -29,6 +29,7 @@ void cfl_scnt ( const char *path, const char *tmplt, int isort,
  * R. Tian/SAIC		 1/06	From FL_SCND				*
  * T. Piper/SAIC	04/07	Modified to use cfl_scandir		*
  * M. James/Unidata	11/13	Stopped HH alias from breaking HHC nids * 
+ * S. Jacobs/NCEP      8/14   Added support for FFFFF template          *
  ***********************************************************************/
 {
     int ier;
@@ -49,6 +50,7 @@ void cfl_scnt ( const char *path, const char *tmplt, int isort,
     cst_rpst ( templ, "XXC", "HHC", templ, &ier );
     cst_rpst ( templ, "NN", "[0-9][0-9]", templ, &ier );
     cst_rpst ( templ, "DWK", "[A-Za-z][A-Za-z][A-Za-z]", templ, &ier );
+    cst_rpst ( templ, "FFFFF", "[0-9][0-9][0-9][0-9][0-9]", templ, &ier );
     cst_rpst ( templ, "FFF", "[0-9][0-9][0-9]", templ, &ier );
     cst_rpst ( templ, "FF", "[0-9][0-9]", templ, &ier );
 

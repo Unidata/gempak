@@ -14,8 +14,8 @@ ndfd_compile
 #						 sigbufr, and melbufr.
 melbufr_build		v5.2
 
-#  NCEP BUFR library used by bfr2gp, cwordsh, dcigdr, and namsnd.
-ncepbufr_compile	20080825	
+#  NCEP BUFR library used by bfr2gp, cwordsh, dctama, dcshef, dcigdr, and namsnd.
+ncepbufr_compile	v10.2.3
 
 # OHSHEF library used only by dcshef!
 ohshef_compile
@@ -26,7 +26,8 @@ shape_compile		v1.2
 #  Tools for building GNU-based libraries -- Do NOT remove.
 GNUmake_build		v3.81
 pkg-config_build	v0.23
-zlib_compile		v1.2.3
+#zlib_compile		v1.2.3
+zlib_compile		v1.2.6
 bzip2_compile		v1.0.5
 libiconv_build		v1.12
 if [ $OS != Linux ]
@@ -44,11 +45,13 @@ DOM_build		v2-0.8.1
 
 #  netCDF used by many programs.
 #hdf5_build		v1.8.0
-netcdf_compile		v4.1.2
+#netcdf_compile		v3.6.2
+netcdf_compile		v4.1.3
 
 #  JasPer and PNG libraries used only by nagrib2!
 jasper_compile		v1.900.1
-png_compile		v1.2.25
+#png_compile		v1.2.25
+png_compile		v1.2.34
 
 ##########################################################
 echo "----->  CREATION OF EXTERNAL LIBRARIES IS COMPLETE."

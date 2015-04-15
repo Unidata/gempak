@@ -16,6 +16,7 @@ C*	HH		Hour						*
 C*	NN		Minute						*
 C*	DWK		Day of the week 3 letter abbreviation		*
 C*	DWU		Day of the week 3 letter abbreviation, all caps	*
+C*	fFFFFF		5-character representation of forecast hour/min	*
 C*	fFFF		3-character representation of forecast hour	*
 C*	fFF		2-character representation of forecast hour	*
 C*									*
@@ -31,7 +32,8 @@ C*                                      -1 - Not a file name template 	*
 C*									*
 C**									*
 C* Log:									*
-C* M. Li/SAIC		02/02						*	
+C* M. Li/SAIC		02/02						*
+C* S. Jacobs/NCEP	 8/14	Added support for FFFFF template 	*
 C************************************************************************
 	CHARACTER*(*)	string
 C*
@@ -117,6 +119,14 @@ C
 C*      Check if DWU is in the string.
 C
         ip = INDEX ( string, 'DWU' )
+        IF  ( ip .ne. 0 )  THEN
+            istp = .true.
+            RETURN  
+        END IF
+C
+C*      Check if FFFFF is in the string.
+C
+        ip = INDEX ( string, 'FFFFF' )
         IF  ( ip .ne. 0 )  THEN
             istp = .true.
             RETURN  

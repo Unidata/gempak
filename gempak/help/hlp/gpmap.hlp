@@ -45,12 +45,12 @@ INPUT PARAMETERS
     FFA       End time|FF;FA clrs|Tm|Lb|Ic|Outline/FF;FA lwidth
     WSAT      WindSAT Plotting Attributes
     ASCT      AScat Plotting Attributes
-    TRAK1     Jason-1 Ground Track Prediction Plotting Attributes
-    TRAKE     ENVISAT Ground Track Prediction Plotting Attributes
-    TRAK2     Jason-2 Ground Track Prediction Plotting Attributes
     OSCT      OScat Plotting Attributes
+    TRAK      Altimetric Satellite Ground Track Prediction Plotting Attributes
     SGWH      Significant Wave Heights Plotting Attributes
     ASDI      End time|Mode|DepArr|time increment/clrs or ht range/clrs|time lmt
+    EDR       End time|ht ranges/clrs|time lmt|Edr ranges/clrs|symb1/symb2|aoa18
+    WSPDALT   Altimeter-derived Windspeed Plotting Attributes
  
  
 PROGRAM DESCRIPTION
@@ -125,8 +125,15 @@ PROGRAM DESCRIPTION
     colors for plotting, wind barb/arrow attributes, timestamp
     attributes and various plotting-related flags. The parameter ASCT
     does the same for the ASCAT winds (ASCT, ASCT_HI, and the four
-    ambiguities, AAMBG1, AAMBG2, AAMBG1_HI, AAMBG2_HI).  The parameter
-    OSCT does the same for the OSCAT winds (OSCT and OSCT_HI).
+    ambiguities: AAMBG1, AAMBG2, AAMBG1_HI, AAMBG2_HI).  The parameter
+    OSCT does the same for the OSCAT winds (OSCT, OSCT_HI, and the four
+    ambiguities: OAMBG1_HI, OAMBG2_HI, OAMBG3_HI, OAMBG4_HI).
+
+    GPMAP can also plot altimeter-derived wind speeds. The parameter
+    WSPDALT sets the source of the wind speeds: WSPDA (Altika),
+    WSPDC (Cryosat), and WSPD2 (Jason-2); the ending time of the wind
+    speed data, as well as the wind speed increments, color for each
+    increment, skip value, time stamp interval, and time stamp color.
 
  
 EXAMPLES
@@ -171,9 +178,12 @@ EXAMPLES
         FFA      =
         WSAT     =
         ASCT     =
-        TRAK1    =
-        TRAKE    =
-        TRAK2    =
+        OSCT     =
+        TRAK     =
+        SGWH     =
+        ASDI     =
+        EDR      =
+        WSPDALT  =
 
     2.  Display two infrared satellite images in a second window
 	named "IR".  Overlay the VGF test.vgf.  In addition, display
@@ -185,7 +195,7 @@ EXAMPLES
 	MAP	 =  1/7
 	GAREA	 =  dset
 	PROJ	 =  sat
-	SATFIL	 =  $GEMPAK/data/IR_910819_\18\01;19
+	SATFIL	 =  $GEMDATA/IR_910819_\18\01;19
 	RADFIL	 =
 	IMCBAR   =  1/V/LL/0.001;0.04/0.925;0.0125/1
 	LATLON	 =  2/10/1/1/10;10
@@ -218,10 +228,12 @@ EXAMPLES
         FFA      =
         WSAT     =
         ASCT     =
-        TRAK1    =
-        TRAKE    =
-        TRAK2    =
         OSCT     =
+        TRAK     =
+        SGWH     =
+        ASDI     =
+        EDR      =
+        WSPDALT  =
 
     3.  Display two visible satellite images in a third window
 	named "VIS".  Overlay the AFOS test product T01 in
@@ -230,7 +242,7 @@ EXAMPLES
 	MAP	 =  1/7
 	GAREA	 =  dset
 	PROJ	 =  sat
-	SATFIL	 =  $GEMPAK/data/VIS_910819_\18\01;19
+	SATFIL	 =  $GEMDATA/VIS_910819_\18\01;19
 	RADFIL	 =
 	IMCBAR   =  1/V/LL/0.001;0.04/0.925;0.0125/1
 	LATLON	 =  2/10/1/1/10;10
@@ -263,10 +275,12 @@ EXAMPLES
         FFA      =
         WSAT     =
         ASCT     =
-        TRAK1    =
-        TRAKE    =
-        TRAK2    =
         OSCT     =
+        TRAK     =
+        SGWH     =
+        ASDI     =
+        EDR      =
+        WSPDALT  =
 
     4.  Postprocess an NMAP VGF to create an AWIPS Redbook Graphics file.
 	Change selected object attributes by using the table attrib.xmp
@@ -307,10 +321,12 @@ EXAMPLES
         FFA      =
         WSAT     =
         ASCT     =
-        TRAK1    =
-        TRAKE    =
-        TRAK2    =
         OSCT     =
+        TRAK     =
+        SGWH     =
+        ASDI     =
+        EDR      =
+        WSPDALT  =
 
     Where
 

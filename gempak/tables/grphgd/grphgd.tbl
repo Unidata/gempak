@@ -53,10 +53,36 @@
 !!
 ! Log:
 ! D.W.Plummer/NCEP	 3/00	
+! G. Grosshans/SPC	12/13	Updated for Day 4-8 Outlook changes
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !
 !NAME		RESTORE_FILENAME
 !
+FIRE_DAY1       firewx_day1_old.tbl
+FIRE_DRY_DAY1   firewx_dry_day1_old.tbl
+FIRE_DAY2       firewx_day2_old.tbl
+FIRE_DRY_DAY2   firewx_dry_day2_old.tbl
+!
+FIRE_DAY1______new   firewx_day1_new.tbl
+FIRE_DRY_DAY1_new   firewx_dry_day1_new.tbl
+FIRE_DAY2______new   firewx_day2_new.tbl
+FIRE_DRY_DAY2_new   firewx_dry_day2_new.tbl
+!
+!FIRE_DAY1       firewx_day1.tbl
+!FIRE_DRY_DAY1   firewx_dry_day1.tbl
+!FIRE_DAY2       firewx_day2.tbl
+!FIRE_DRY_DAY2   firewx_dry_day2.tbl
+!
+FIRE_DAY3       firewx_day3.tbl
+HAIL     	$GEMTBL/grphgd/hail.tbl
+!SIG_HAIL        $GEMTBL/grphgd/sighail.tbl
+TORN            $GEMTBL/grphgd/torn.tbl
+!SIG_TORN        $GEMTBL/grphgd/sigtorn.tbl
+WIND	        $GEMTBL/grphgd/wind.tbl
+!SIG_WIND        $GEMTBL/grphgd/sigwind.tbl
+CATEGORICAL	$GEMTBL/grphgd/cat.tbl
+PROB_DAY2-3     $GEMTBL/grphgd/day23.tbl
+PROB_DAY4-8     $GEMTBL/grphgd/day48.tbl
+!SIG_DAY2-3      $GEMTBL/grphgd/sigday23.tbl
+ENH             $GEMTBL/grphgd/enh.tbl
 QPF		$GEMTBL/grphgd/qpf.tbl
-TEST		$GEMTBL/grphgd/test.tbl
-CMASK		$GEMTBL/grphgd/cmask_example.tbl

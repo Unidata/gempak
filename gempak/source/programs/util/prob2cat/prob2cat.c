@@ -31,6 +31,8 @@ float           _areaX[MAX_BOUND_PT], _areaY[MAX_BOUND_PT];
  *			  performs interpolation for 01Z cycle		*
  *	p2c_AdjustLbl   - adjust the positions of the labels to avoid	*
  *			  overlapping					*
+ *	p2c_AddOrig2Grp - adds the original outlooks that will be bumped*
+ *			  into the P2C_Grp group 			*
  *	p2c_BumpCat	- bumps outlook category to next level		*
  *	p2c_CloseCntr	- closes the contour if it is open		*
  *      p2c_CloseSingleCntr     - closes single contour if it is open   *
@@ -60,6 +62,10 @@ static void p2c_AddGenT   ( int interp_enh, int nGt, VG_DBStruct *elGt,
 
 static void p2c_AdjustLbl ( int nin, VG_DBStruct *el_in, int *iret);
 
+static void p2c_AddOrig2Grp ( int *ngrp, P2C_Grp **p2cGrp, int nbump,
+			      VG_DBStruct *origEl, char **origCat, 
+			      int *iret );
+
 static void p2c_BumpCat   ( VG_DBStruct *el, int ind, char *newcat, int *done,
                             int *iret);
 
@@ -80,7 +86,8 @@ static void p2c_CopyLbl   ( VG_DBStruct *el_in, VG_DBStruct *el_out,
 static void p2c_CorctCntr ( VG_DBStruct *el_in, int *iret);
 
 static void p2c_Elms2Grps ( int nin, VG_DBStruct *el_in, int *ngrp,
-                            P2C_Grp **p2cGrp, int *iret );
+                            P2C_Grp **p2cGrp, VG_DBStruct *origEl, 
+			    int *iret );
                                                                                      
 static void p2c_Elm2Poly  ( VG_DBStruct el, gpc_polygon *gpc_poly, 
                             int *iret );
@@ -91,7 +98,8 @@ static void p2c_ExtendCntr ( int *pointFirst, int *pointLast,
                              int *iret);
 
 static void p2c_GetCat	  ( VG_DBStruct *el, int prob, char *haz,
-                            char *cat, int *iret );
+                            char *cat, int *nbump, VG_DBStruct **origEl, 
+			    char ***origCat, int bumpFlag, int *iret );
 
 static void p2c_GetGenT   ( char *Gt_str, int nInEnh, VG_DBStruct *elEnh,
                             int *nout, VG_DBStruct **el_Gt, int *iret );
@@ -170,6 +178,7 @@ int main ( int argc, char **argv )
  *                              be copied from bounds                   *
  * S. Jacobs/NCEP	10/12	Restored previous calculation of the	*
  * 				number of points copied			*
+ * B. Yin/SGT		11/14	Fixed issues on bumped outlooks		* 				
  ***********************************************************************/
 {
     int 	nn, ii, jj, kk, ier, nextEl, curPos, nseg;
@@ -191,7 +200,7 @@ int main ( int argc, char **argv )
     VG_DBStruct el;
     VG_DBStruct *el_enh = NULL, *elGt = NULL;
     VG_DBStruct *outlk  = NULL, *out_gent = NULL, *outlk2 = NULL,
-                *elInClosed=NULL, *elInTemp;
+                *elInClosed=NULL, *elInTemp, *origEl = NULL;
 
     int          np2cgrp;
     P2C_Grp      *p2cGrp = NULL;
@@ -209,6 +218,7 @@ int main ( int argc, char **argv )
     char	proj[ 4 ] = "str";
 /*---------------------------------------------------------------------*/
 
+    printf ( "\n*** prob2cat: Last modified on Feb. 11, 2015 ***\n" );
     /*
      *  Check if the number of input arguments is correct.
      */
@@ -451,7 +461,7 @@ int main ( int argc, char **argv )
      /*
       * Conversion prob to cat for individual hazards
       */
-      p2c_Elms2Grps ( nn, elIn, &np2cgrp, &p2cGrp, &ier );
+      p2c_Elms2Grps ( nn, elIn, &np2cgrp, &p2cGrp, origEl, &ier );
 
      /*
       * Get the unions of contours for each risk category 
@@ -534,6 +544,7 @@ int main ( int argc, char **argv )
         G_FREE ( p2cGrp[ii].mrgl, VG_DBStruct * );
         G_FREE ( p2cGrp[ii].text, VG_DBStruct * );
       }
+      G_FREE ( origEl, VG_DBStruct );
       G_FREE ( iclozd, int );
       G_FREE ( p2cGrp, P2C_Grp );
       G_FREE ( elIn, VG_DBStruct );
@@ -624,8 +635,8 @@ int main ( int argc, char **argv )
 
 /*=====================================================================*/
 
-static void p2c_Elms2Grps ( int nin, VG_DBStruct *el_in,
-                int *ngrp, P2C_Grp **p2cGrp, int *iret )
+static void p2c_Elms2Grps ( int nin, VG_DBStruct *el_in, int *ngrp, 
+		P2C_Grp **p2cGrp, VG_DBStruct *origEl, int *iret )
 /************************************************************************
  * p2c_Elms2Grps                                                        *
  *                                                                      *
@@ -636,25 +647,46 @@ static void p2c_Elms2Grps ( int nin, VG_DBStruct *el_in,
  * Output parameters:                                                   *
  *      *ngrp           int             number of output elements       *
  *      **p2cGrp        P2C_Grp         array of P2C_Grp elements	*
+ *      *origEl         VG_DBStruct     array of original elements      *
  *      *iret           int             Return code                     *
  *                                       0: normal return               *
  **                                                                     *
  * Log:                                                                 *
  * m.gamazaychikov/SAIC	10/06	Created                         	*
+ * B.Yin/SGT		11/14	Added the original into groups.       	*
  ***********************************************************************/
 {
     int                 kk, ii, jj, ier, one = 1, iprob1, iprob2;
     char                hazType1[8], hazType2[8], cat1[6], cat2[6];
-    int                 *grouped;
+    char		**origCat;
+    int                 *grouped, nbump;
 /*---------------------------------------------------------------------*/
     *iret = 0;
 
+    origCat = NULL;
+    nbump = 0;
+
     /*
      *  Set the flags - each SPLN element should only be grouped once.
+     *  Make a copy of all outlooks that will be bumped.
      */
     G_MALLOC ( grouped, int, nin, "p2c_elms2grp: grouped" );
     for ( ii = 0; ii < nin; ii++ ) {
          grouped[ ii ] = G_FALSE;
+
+        iprob1 = 0;
+        for ( kk = 0; kk < nin; kk++ ) {
+           if (  el_in[ kk ].hdr.vg_type == SPTX_ELM && 
+                (el_in[ ii ].hdr.grptyp == el_in[ kk ].hdr.grptyp)  &&
+                (el_in[ ii ].hdr.grpnum == el_in[ kk ].hdr.grpnum) ) {
+              iprob1 = atoi ( el_in[ kk ].elem.spt.text );
+           }
+        }
+
+        strcpy (cat1, "");
+        if ( el_in[ii].hdr.filled ) continue;
+        p2c_GetCat ( &el_in[ ii ], iprob1, hazType1, cat1, &nbump, 
+			&origEl, &origCat, 0, &ier );
     }
 
     /*
@@ -704,7 +736,8 @@ static void p2c_Elms2Grps ( int nin, VG_DBStruct *el_in,
         }
 
         strcpy (cat1, "");
-        p2c_GetCat ( &el_in[ ii ], iprob1, hazType1, cat1, &ier );
+        p2c_GetCat ( &el_in[ ii ], iprob1, hazType1, cat1, &nbump, 
+			&origEl, &origCat, 1, &ier );
 
         /*
          * Find records of Different Categories
@@ -726,6 +759,7 @@ static void p2c_Elms2Grps ( int nin, VG_DBStruct *el_in,
                                    "p2c_elms2grp: p2cGrp.enhc" );
             (*p2cGrp)[*ngrp].enhc[0] = &el_in[ii];
             ( (*p2cGrp)[*ngrp].nenhc )++;
+
         }
         else if ( strcmp (cat1, "_SLGT") == 0 ) {
             G_MALLOC ( (*p2cGrp)[*ngrp].slgt, VG_DBStruct *, one,
@@ -769,7 +803,8 @@ static void p2c_Elms2Grps ( int nin, VG_DBStruct *el_in,
               }
             }
 
-            p2c_GetCat ( &el_in[ jj ], iprob2, hazType2, cat2, &ier );
+            p2c_GetCat ( &el_in[ jj ], iprob2, hazType2, cat2, &nbump, 
+				&origEl, &origCat, 1, &ier );
 
             if ( (strcasecmp ( cat1, cat2 ) == 0 ) &&
                  ( cat1[0]  != '\0' ) ) {
@@ -864,6 +899,193 @@ static void p2c_Elms2Grps ( int nin, VG_DBStruct *el_in,
         (*ngrp)++;    /* increment the number of output elements */
     }
     G_FREE ( grouped, int );
+
+    /*
+     * Added the original outlooks that have been bumped in the group
+     */  
+    p2c_AddOrig2Grp (ngrp, p2cGrp, nbump, origEl, origCat, &ier );
+
+}
+/*=====================================================================*/
+
+static void p2c_AddOrig2Grp ( int *ngrp, P2C_Grp **p2cGrp, int nbump,
+			      VG_DBStruct *origEl, char **origCat, int *iret )
+/************************************************************************
+ * p2c_AddOrig2Grp							*
+ *                                                                      *
+ * Adds the original outlooks that will be bumped to higher category    *
+ * into the P2C_Grp group. (The intersaction between the original and   *
+ * the filled area will be bumped in a higher category, but the original*
+ * will be treated as one of its original category.)			*
+ *                                                                      *
+ *                                                                      *
+ * Input parameters:                                                    *
+ *      nbump           int             number of bumped el        	*
+ *      **origEl        VG_DBStruct     original elements of the bumped *
+ *      **origCat       char     	original categories of bumped el*
+ *                                                                      *
+ * Input/Output parameters:                                             *
+ *      *ngrp           int             number of P2C_Grp        	*
+ *      *p2cGrp         P2C_Grp  	array of P2C_Grp         	*
+ *                                                                      *
+ * Output parameters:                                                   *
+ *      *iret           int             Return code                     *
+ *                                       0: normal return               *
+ **                                                                     *
+ * Log:                                                                 *
+ * B. Yin/SGT		11/14		Created                        	*
+ * B. Yin/SGT		02/15		Don't free origEl              	*
+ ***********************************************************************/
+{
+    int 	ii, jj, added, one = 1;
+ /*---------------------------------------------------------------------*/
+
+    *iret = 0;
+    added = 0;
+
+    if ( nbump != 0 ) { 
+       /*
+ 	* Loop through all original outlooks that will be bumped.
+ 	*/  
+       for ( ii = 0; ii < nbump; ii++ ) {
+	 added  = 0;
+	 /*
+ 	  * Add the original into ithe grouip of its category 
+ 	  */
+         for ( jj = 0; jj < *ngrp; jj++ ) {
+               if      ( strcmp (origCat[ii], "_HIGH") == 0 ) {
+                   if ( (*p2cGrp)[jj].nhigh != 0 ) {
+                      G_REALLOC ( (*p2cGrp)[jj].high, VG_DBStruct *,
+                                (*p2cGrp)[jj].nhigh + 1,
+                                 "p2c_AddOrig2Grp: p2cGrp.high" );
+                   (*p2cGrp)[jj].high[ (*p2cGrp)[jj].nhigh ] = &origEl[ ii ];
+                   ( (*p2cGrp)[jj].nhigh )++;
+		   added = 1;
+		  }
+               }
+               else if ( strcmp (origCat[ii], "_MDRT") == 0 ) {
+                   if ( (*p2cGrp)[jj].nmdrt != 0 ) {
+                     G_REALLOC ( (*p2cGrp)[jj].mdrt, VG_DBStruct *,
+                                 (*p2cGrp)[jj].nmdrt + 1,
+                                  "p2c_AddOrig2Grp: p2cGrp.mdrt" );
+                   (*p2cGrp)[jj].mdrt[ (*p2cGrp)[jj].nmdrt ] = &origEl[ ii ];
+                   ( (*p2cGrp)[jj].nmdrt )++;
+		   added = 1;
+                   }
+               }
+               else if ( strcmp (origCat[ii], "_ENHC") == 0 ) {
+                   if ( (*p2cGrp)[jj].nenhc != 0 ) {
+                     G_REALLOC ( (*p2cGrp)[jj].enhc, VG_DBStruct *,
+                                 (*p2cGrp)[jj].nenhc + 1,
+                                  "p2c_AddOrig2Grp: p2cGrp.enhc" );
+                   (*p2cGrp)[jj].enhc[ (*p2cGrp)[jj].nenhc ] = &origEl[ ii ];
+                    ( (*p2cGrp)[jj].nenhc )++;
+		   added = 1;
+                   }
+               }
+               else if ( strcmp (origCat[ii], "_SLGT") == 0 ) {
+                   if ( (*p2cGrp)[jj].nslgt != 0 ) {
+                     G_REALLOC ( (*p2cGrp)[jj].slgt, VG_DBStruct *,
+                                 (*p2cGrp)[jj].nslgt + 1,
+                                  "p2c_AddOrig2Grp: p2cGrp.slgt" );
+                   (*p2cGrp)[jj].slgt[ (*p2cGrp)[jj].nslgt ] = &origEl[ ii ];
+                    ( (*p2cGrp)[jj].nslgt )++;
+		   added = 1;
+                   }
+               }
+               else if ( strcmp (origCat[ii], "_MRGL") == 0 ) {
+                   if ( (*p2cGrp)[jj].nmrgl != 0 ) {
+                     G_REALLOC ( (*p2cGrp)[jj].mrgl, VG_DBStruct *,
+                                 (*p2cGrp)[jj].nmrgl + 1,
+                                  "p2c_AddOrig2Grp: p2cGrp.mrgl" );
+                   (*p2cGrp)[jj].mrgl[ (*p2cGrp)[jj].nmrgl ] = &origEl[ ii ];
+                    ( (*p2cGrp)[jj].nmrgl )++;
+		   added = 1;
+		    }
+               }
+               else if ( strcmp (origCat[ii], "_TEXT") == 0 ) {
+                   if ( (*p2cGrp)[jj].ntext != 0 ) {
+                     G_REALLOC ( (*p2cGrp)[jj].text, VG_DBStruct *,
+                                 (*p2cGrp)[jj].ntext + 1,
+                                  "p2c_AddOrig2Grp: p2cGrp.text" );
+                   (*p2cGrp)[jj].text[ (*p2cGrp)[jj].ntext ] = &origEl[ ii ];
+                   ( (*p2cGrp)[jj].ntext )++;
+		   added = 1;
+                   }
+               }
+	}
+
+	if ( added  == 0 ) {
+           /*
+            *  Add a new P2C_Grp element
+            */
+           if ( *ngrp == 0 ) {
+              G_MALLOC ( (*p2cGrp), P2C_Grp, one, "p2c_AddOrig2Grp: p2cGrp" );
+           }  
+           else {
+              G_REALLOC ( (*p2cGrp), P2C_Grp, *ngrp + 1, "p2c_AddOrig2Grp: p2cGrp" );
+           } 
+
+           (*p2cGrp)[*ngrp].nhigh = 0;
+           (*p2cGrp)[*ngrp].nmdrt = 0;
+           (*p2cGrp)[*ngrp].nenhc = 0;
+           (*p2cGrp)[*ngrp].nslgt = 0;
+           (*p2cGrp)[*ngrp].nmrgl = 0;
+           (*p2cGrp)[*ngrp].ntext = 0;
+           (*p2cGrp)[*ngrp].high = (VG_DBStruct **)NULL;
+           (*p2cGrp)[*ngrp].mdrt = (VG_DBStruct **)NULL;
+           (*p2cGrp)[*ngrp].enhc = (VG_DBStruct **)NULL;
+           (*p2cGrp)[*ngrp].slgt = (VG_DBStruct **)NULL;
+           (*p2cGrp)[*ngrp].mrgl = (VG_DBStruct **)NULL;
+           (*p2cGrp)[*ngrp].text = (VG_DBStruct **)NULL;
+
+           if      ( strcmp (origCat[ii], "_HIGH") == 0 ) {
+              G_MALLOC ( (*p2cGrp)[*ngrp].high, VG_DBStruct *, one,
+                                   "p2c_AddOrig2Grp: p2cGrp.high" );
+              (*p2cGrp)[*ngrp].high[0] = &origEl[ ii ];
+              ( (*p2cGrp)[*ngrp].nhigh )++;
+           }
+           else if ( strcmp (origCat[ii], "_MDRT") == 0 ) {
+              G_MALLOC ( (*p2cGrp)[*ngrp].mdrt, VG_DBStruct *, one,
+                                   "p2c_AddOrig2Grp: p2cGrp.mdrt" );
+              (*p2cGrp)[*ngrp].mdrt[0] = &origEl[ ii ];
+              ( (*p2cGrp)[*ngrp].nmdrt )++;
+           }
+           else if ( strcmp (origCat[ii], "_ENHC") == 0 ) {
+              G_MALLOC ( (*p2cGrp)[*ngrp].enhc, VG_DBStruct *, one,
+                                   "p2c_AddOrig2Grp: p2cGrp.enhc" );
+              (*p2cGrp)[*ngrp].enhc[0] = &origEl[ ii ];
+              ( (*p2cGrp)[*ngrp].nenhc )++;
+           }
+           else if ( strcmp (origCat[ii], "_SLGT") == 0 ) {
+              G_MALLOC ( (*p2cGrp)[*ngrp].slgt, VG_DBStruct *, one,
+                                   "p2c_AddOrig2Grp: p2cGrp.slgt" );
+              (*p2cGrp)[*ngrp].slgt[0] = &origEl[ ii ];
+              ( (*p2cGrp)[*ngrp].nslgt )++;
+           }
+           else if ( strcmp (origCat[ii], "_MRGL") == 0 ) {
+              G_MALLOC ( (*p2cGrp)[*ngrp].mrgl, VG_DBStruct *, one,
+                                   "p2c_AddOrig2Grp: p2cGrp.mrgl" );
+              (*p2cGrp)[*ngrp].mrgl[0] = &origEl[ ii ];
+              ( (*p2cGrp)[*ngrp].nmrgl )++;
+           }
+           else if ( strcmp (origCat[ii], "_TEXT") == 0 ) {
+              G_MALLOC ( (*p2cGrp)[*ngrp].text, VG_DBStruct *, one,
+                                   "p2c_AddOrig2Grp: p2cGrp.text" );
+              (*p2cGrp)[*ngrp].text[0] = &origEl[ ii ];
+              ( (*p2cGrp)[*ngrp].ntext )++;
+           }
+	   (*ngrp)++;
+
+	}
+
+     }
+     
+     for ( ii = 0; ii < nbump; ii++ ){
+    		G_FREE ( origCat[ii], char );
+     }
+     G_FREE ( origCat, char* );
+   }
 }
 
 /*=====================================================================*/
@@ -910,7 +1132,7 @@ static void p2c_Grp2Out ( int ngrp, P2C_Grp *p2cGrp, VG_DBStruct **outlk,
 
         if ( p2cGrp[ ii ].enhc != (VG_DBStruct **)NULL ) {
          strcpy (cat, "ENH");
-         iclr = 23;
+         iclr = 17;
          p2c_PolyClip ( p2cGrp[ii].nenhc, p2cGrp[ii].enhc, cat, iclr,
                         nout, outlk, &ier );
         }
@@ -924,7 +1146,7 @@ static void p2c_Grp2Out ( int ngrp, P2C_Grp *p2cGrp, VG_DBStruct **outlk,
 
         if ( p2cGrp[ ii ].mrgl != (VG_DBStruct **)NULL ) {
          strcpy (cat, "MRGL");
-         iclr = 23;
+         iclr = 6;
          p2c_PolyClip ( p2cGrp[ii].nmrgl, p2cGrp[ii].mrgl, cat, iclr,
                         nout, outlk, &ier );
         }
@@ -1072,7 +1294,7 @@ static void p2c_PolyClip ( int ncntrs, VG_DBStruct **cntrs, char *cat, int iclr,
                                      inout, &ier );
                         npsmall = np2;
                    }
-                   else if ( area_kk < area_jj ) {
+                   else if ( area_kk <= area_jj ) {
                         G_MALLOC ( inout, int, np1, "p2c_PolyClip: inout" );
                         cgr_inpoly ( sys_M, &np1, xnormal1, ynormal1, 
                                      sys_M, &np2, xnormal2, ynormal2,
@@ -1407,19 +1629,27 @@ static void p2c_Elm2Poly ( VG_DBStruct el, gpc_polygon *gpc_poly, int *iret )
 /*=====================================================================*/
 
 static void p2c_GetCat ( VG_DBStruct *el, int prob, char *haz, char *cat, 
-                         int *iret )
+                         int *nbump, VG_DBStruct **origEl, char ***origCat, 
+			 int bumpFlag, int *iret )
 /************************************************************************
  * p2c_GetCat                                                           *
  *                                                                      *
  * Input parameters:                                                    *
  *      prob            int             Prob                            *
+ *      bumpFlag	int		If the flag is set, it will bump*
+ *      				the el. If not, it will make a  *
+ *      				copy of the original and put it *
+ *      				in the origEl array.		*
  *                                                                      *
  * Input/Output parameters:                                             *
  *      *el             VG_DBStruct     Pointer to the VG record        *
+ *      *nbump          int     	Pointer to # of bumped El       *
+ *	**origEl	VG_DBStruct	Array of original El if bumped	*
+ *	***origCat	char		Array of original Cat if bumped	*
  *                                                                      *
  * Output parameters:                                                   *
  *      *haz            char            Hazard type (TORN, WIND, HAIL)	*
- *      *value          char            Category (HIGH, MDRT, ENHC,
+ *      *value          char            Category (HIGH, MDRT, ENHC,	*
  *					 	  SLGT, MRGL)		*
  *      *iret           int             Return code                     *
  *                                      -1 - Wrong type                 *
@@ -1428,13 +1658,15 @@ static void p2c_GetCat ( VG_DBStruct *el, int prob, char *haz, char *cat,
  **                                                                     *
  * Log:                                                                 *
  * m.gamazaychikov/SAIC	10/06	Created                         	*
+ * B.Yin/SGT            11/14	Added bumpflag and output the originals *
+ * 				if bumpflag is not set.			*
  ***********************************************************************/
 {
     int         *int_ptr, ii, ier, ihgh, ilow, ibmp, idef=100, nexp=2, num;
-    int         done, icat;
+    int         done, icat, one = 1;
     char        day[6], value[10], tag[25], tblnam[12], dirnam[5], tagtmp[25];
-    char        tagbmp[25], bmpcat[6];
-    char        _Prob_ctgr[6][6] = {"_HIGH", "_MDRT", "_EHNC",
+    char        tagbmp[25], bmpcat[6], *cat0;
+    char        _Prob_ctgr[6][6] = {"_HIGH", "_MDRT", "_ENHC",
        				    "_SLGT", "_MRGL", "_TEXT"};
 /*---------------------------------------------------------------------*/
 
@@ -1489,7 +1721,21 @@ static void p2c_GetCat ( VG_DBStruct *el, int prob, char *haz, char *cat,
 
      strcat ( tagbmp, "_BUMP" );
 
-     if ( strcmp (_Day_out, "DAY2") == 0 ) {
+     if ( strcmp (_Day_out, "DAY1") == 0 ) {
+         ilow = 0;
+         ihgh = 0;
+         ibmp = 0;
+         ctb_rdprf ( tblnam, dirnam, tagbmp, value, &ier );
+         int_ptr = (int *)malloc((size_t)nexp * sizeof(int));
+         cst_ilst( value, ';', idef, nexp, int_ptr, &num, &ier );
+         ilow = int_ptr [0];
+         ihgh = int_ptr [1];
+         if ( int_ptr ) free  ( int_ptr );
+         if (  prob == ilow ) ibmp = ilow;
+         if (  prob == ihgh ) ibmp = ihgh;
+         strcpy ( value, "" );
+     }
+     else if ( strcmp (_Day_out, "DAY2") == 0 ) {
          ilow = 0;
          ihgh = 0;
          ibmp = 0;
@@ -1531,6 +1777,7 @@ static void p2c_GetCat ( VG_DBStruct *el, int prob, char *haz, char *cat,
          }
      }
 
+
      if ( prob == ibmp ) {
        done = G_FALSE;
        ii = 0;
@@ -1539,13 +1786,44 @@ static void p2c_GetCat ( VG_DBStruct *el, int prob, char *haz, char *cat,
                ( ( strcmp (_Day_out, "DAY1") == 0 ) &&
                  ( (elIn[ ii ].hdr.grptyp == el->hdr.grptyp) &&
                    (elIn[ ii ].hdr.vg_type == SPLN_ELM) &&
-                   (el->hdr.grptyp != 13) && (elIn[ ii ].hdr.filled) ) )
+                   (elIn[ ii ].hdr.filled) ) )
                ||
                ( ( strcmp (_Day_out, "DAY1") != 0 ) &&
                  ( (elIn[ ii ].hdr.vg_type == SPLN_ELM) &&
                    (el->hdr.grptyp != 13) && (elIn[ ii ].hdr.filled) ) )
              ) {
-              p2c_BumpCat ( el, ii, bmpcat, &done, &ier);
+
+		if ( bumpFlag ) {
+		   /*
+ 		    * Bump the category
+ 		    */ 
+              	   p2c_BumpCat ( el, ii, bmpcat, &done, &ier);
+		}
+		else {
+
+	      	   /*
+ 		    * Make a copy of the original El 
+ 		    */
+
+            	   cat0 = (char*) malloc( 6*sizeof(char));
+              	   strcpy ( cat0, cat );
+
+	  	   if ( *nbump == 0 ) {
+            		G_MALLOC ( *origEl, VG_DBStruct, one, "p2c_getCat: origEl" );
+            	        *origCat = (char**) malloc( sizeof(char*));
+            		//G_MALLOC ( *origCat, char **, one, "p2c_getCat: origCat" );
+	  	   } 
+	  	   else {
+                      G_REALLOC ( *origEl, VG_DBStruct ,
+                                *nbump + 1, "p2c_getCat: origEl" );
+            	      *origCat = (char**) realloc( *origCat,(*nbump + 1)*sizeof(char*));
+            	      //G_REALLOC ( origCat, char **, *nbump + 1, "p2c_getCat: origCat" );
+	  	   } 
+	  	   memcpy ( &((*origEl)[*nbump]), el, sizeof(VG_DBStruct) );
+		   (*origCat)[*nbump] = cat0;
+	  	   (*nbump)++;
+		   done = G_TRUE;
+		}
           }
           ii++;
        }

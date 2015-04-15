@@ -28,6 +28,7 @@ C* S. Jacobs/NCEP	 8/98						*
 C* S. Jacobs/NCEP	 8/99	Added sorting order to call sequence	*
 C* M. Li/GSC		 5/00	Set a maximum to nfile			*
 C* A. Hardy/SAIC         2/02   Added variable nexp to call sequence	*
+C* S. Jacobs/NCEP	 8/14	Added support for FFFFF template 	*
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 C*
@@ -51,6 +52,8 @@ C
 	CALL ST_RPST  ( templ, 'HH', '[0-9][0-9]', ipos, templ, ier )
 	CALL ST_RPST  ( templ, 'NN', '[0-9][0-9]', ipos, templ, ier )
 	CALL ST_RPST  ( templ, 'DWK', '[A-Za-z][A-Za-z][A-Za-z]',
+     +			ipos, templ, ier )
+	CALL ST_RPST  ( templ, 'FFFFF', '[0-9][0-9][0-9][0-9][0-9]',
      +			ipos, templ, ier )
 	CALL ST_RPST  ( templ, 'FFF', '[0-9][0-9][0-9]',
      +			ipos, templ, ier )

@@ -56,18 +56,21 @@ C* Log:									*
 C* m.gamazaychikov/SAIC	06/07	From GH_TCWW				*
 C* m.gamazaychikov/SAIC	10/07	Fixed the misspelling of "Storm"	*
 C* m.gamazaychikov/SAIC	10/08	Cleaned up, added stsrc strings to 	*
-C*				gh_wtct CS, updated cyint and cylong    *
+C*				gh_wtct CS, updated cyint and cylong	*
 C* A. Krautkramer/NHC	 5/09	Properly set storm type and time zone	*
-C* X. Guo/CWS		03/10   Removed argument rmnt and ilegend  	*
-C* A. Krautkramer/NHC   6/09    Add variable definition, replace the	*
+C* X. Guo/CWS		03/10	Removed argument rmnt and ilegend  	*
+C* A. Krautkramer/NHC	 6/09	Add variable definition, replace the	*
 C*				first element of the tau array with the	*
 C*				passed in tau				*
-C* A. Krautkramer	10/10   Corrected initial point inconsistency   *
+C* A. Krautkramer	10/10	Corrected initial point inconsistency	*
 C* 				with the calculation of dvlbl and tcdvlp*
-C* A. Krautkramer/NHC   09/11   Added 'Post-Tropical Cyclone'           *
+C* A. Krautkramer/NHC	09/11	Added 'Post-Tropical Cyclone'		*
 C* S. Jacobs/NCEP	 4/13	Added smoothing for the track and cone	*
 C* S. Jacobs/NCEP	 9/13	Fixed problem with VG output for track	*
 C*				less than 3 days			*
+C* M. Sardi/NHC		 7/14	Fixed problem with 3 day cone by	*
+C*				reverting first GH_KGAT call.		*
+C* S. Jacobs/NCEP	 8/14	Removed previous change - did not work	*
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 	INCLUDE		'ghcmn.cmn'

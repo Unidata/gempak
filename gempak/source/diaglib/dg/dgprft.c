@@ -2,6 +2,7 @@
 
 #define NDT		14
 #define NDTM		5
+#define NP1             12
 
 void dg_prft ( const char *time1, const char *time2, const int *level1,
                const int *level2, const int *ivcord, const char *parm,
@@ -13,6 +14,20 @@ void dg_prft ( const char *time1, const char *time2, const int *level1,
  * The time period is hh hours given in the parameter name which has	*
  * the form PhhM or PhhI.  Conversions to inches or millimeters will	*
  * be automatic.							*
+ *									*
+ * This subroutine also supports accumulations and conversions for	*
+ * precipitation type accumulations according to the following:		*
+ *									*
+ *     Initial Letter      Precipitation Type				*
+ *          W                  Snowfall					*
+ *          I                  Ice pellets				*
+ *          Z                  Freezing rain                            *
+ *          A                  Rain  					*
+ *          H                  Hail 					*
+ *          G                  Graupel					*
+ *          N                  Snow melt				*
+ *          R                  Storm surface runoff			*
+ *          L                  Total liquid equivalent precipitation    *
  *									*
  * The following assumptions are made:					*
  *									*
@@ -61,8 +76,14 @@ void dg_prft ( const char *time1, const char *time2, const int *level1,
  * S. Jacobs/NCEP	 9/05	Fixed counter when in CANADIAN mode	*
  * R. Tian/SAIC          2/06   Recoded from Fortran                 	*
  * S. Jacobs/NCEP	 8/09	Added 1hr to major interval list	*
+ * K. Brill/WPC          4/13   Add WIZAHGNRL to first letter checks	*
  ************************************************************************/
 {
+    /*
+     * Set possible first characters for parameter names:
+     */
+    char cp1[NP1][2] = { "P", "S", "C", "W", "I", "Z", "A",
+                         "H", "G", "N", "R", "L" };
     /*
      * Set possible subinterval accumulation periods.
      */
@@ -83,7 +104,7 @@ void dg_prft ( const char *time1, const char *time2, const int *level1,
     float rmult, signp;
     int intdtf[3], jvcord, iacc, lenstr, ihrs, ihhlst, iptime, lenst,
         numsub, nummaj, majts, iz, itet, i, ier, ierr;
-    int done;
+    int found, done;
 /*----------------------------------------------------------------------*/
     *iret = -7;
 
@@ -107,11 +128,20 @@ void dg_prft ( const char *time1, const char *time2, const int *level1,
 
     /*
      * Check that precipitation in form P|S|C nnn I|M has been requested.
+     * Also include checks for first character from WIZAHGNRL precip types.
      */
     cst_lstr ( (char *)parm, &lenstr, &ier );
     if ( lenstr <= 2 ) return;
     fstchr = parm[0];
-    if ( ( fstchr != 'P' ) && ( fstchr != 'S' ) && ( fstchr != 'C' ) ) return;
+
+    i = -1;
+    found = G_FALSE;
+    while ( ( found == G_FALSE ) && ( i < NP1 - 1 ) ) {
+	i++;
+	found = ( fstchr == cp1[i][0] );
+    }
+    if ( found == G_FALSE ) return;
+
     lstchr = parm[lenstr-1];
     if ( ( lstchr != 'I' ) && ( lstchr != 'M' ) ) return;
 
@@ -127,6 +157,7 @@ void dg_prft ( const char *time1, const char *time2, const int *level1,
      * Check to see if precipitation can be found as a rate or as a
      * combination of P, S, C precipitation values.
      */
+
     dg_prcp ( time1, time2, level1, level2, &jvcord, parm, num, iret );
     if ( *iret == 0 ) return;
 

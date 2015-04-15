@@ -33,3 +33,10 @@
      SFFILE may also be entered as a file template for the SFGRAM
      program. The program searches for all the files with the 
      specified path and template.
+
+     Access to surface data in the AWIPS database is accomplished by
+     setting SFFILE to an alias found in datatype.tbl. Each entry for
+     surface data references an XML control file that needs to be 
+     created to specify the attributes of the metadata in the database.
+     For example, the alias A2METAR uses the XML file 
+     $GEMTBL/data-access/metar.xml.

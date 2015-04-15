@@ -14,6 +14,7 @@ C*	MM		Month number					*
 C*	DD		Day						*
 C*	HH		Hour						*
 C*	NN		Minute						*
+C*	FFFFF		5-character forecast hour/min			*
 C*	FFF		3-character forecast hour			*
 C*	FF		2-character forecast hour			*
 C*									*
@@ -38,6 +39,7 @@ C* S. Jacobs/NCEP	 9/99	Changed call to accept default date/time*
 C* D.W.Plummer/NCEP	11/99	Added error checking while decoding	*
 C* K. Brill/HPC		03/06	First replace *'s in template with the	*
 C*				corresponding strings from the file	*
+C* S. Jacobs/NCEP	 8/14	Added support for FFFFF template 	*
 C***********************************************************************/
 	INCLUDE		'GEMPRM.PRM'
 C*
@@ -101,7 +103,7 @@ C
 C*		    The only unambiguous case is for '*' followed by
 C*		    a non-symbolic string.  This condition could
 C*		    be relaxed by checking here for strings like YY,
-C*		    YYYY, MM, DD, DWK,  HH, FF, or FFF following '*'
+C*		    YYYY, MM, DD, DWK,  HH, FF, FFF or FFFFF following '*'
 C*		    and trying to parse past them.  That is not done
 C*		    in this implementation (03/06).
 C
@@ -145,7 +147,7 @@ C
 	    END IF
 	END IF
 C
-C*	Extract the last 2 digits of a YYYY year from the file name.
+C*	Extract the last 4 digits of a YYYY year from the file name.
 C
 	ipyy = INDEX ( tplate, 'YYYY' )
 	IF ( ipyy .ne. 0 )  THEN
@@ -230,10 +232,26 @@ C
 	    END IF
 	END IF
 C
-C*	Extract the 3 digits of an FFF forecast hour from the file name.
+C*	Extract the 5 digits of an FFFFF forecast hour+min
+C*	from the file name.
 C
-	ipfff = INDEX ( tplate, 'FFF' )
-	IF ( ipfff .ne. 0 )  THEN
+	ipfffff = INDEX ( tplate, 'FFFFF' )
+	IF ( ipfffff .ne. 0 )  THEN
+	    tstr = pname (ipfffff:ipfffff+4)
+	    CALL ST_NUMB ( tstr, inumb, ier )
+	    IF ( ier .ne. 0 )  THEN
+		iret = -14
+		RETURN
+	    ELSE
+	        dattim (12:12) = 'F'
+	        dattim (13:17) = pname (ipfffff:ipfffff+4)
+	    END IF
+	ELSE
+C
+C*	  Extract the 3 digits of an FFF forecast hour from the file name.
+C
+	  ipfff = INDEX ( tplate, 'FFF' )
+	  IF ( ipfff .ne. 0 )  THEN
 	    tstr = pname (ipfff:ipfff+2)
 	    CALL ST_NUMB ( tstr, inumb, ier )
 	    IF ( ier .ne. 0 )  THEN
@@ -243,7 +261,7 @@ C
 	        dattim (12:12) = 'F'
 	        dattim (13:15) = pname (ipfff:ipfff+2)
 	    END IF
-	ELSE
+	  ELSE
 C
 C*	    Extract the 2 digits of an FF forecast hour from the file name.
 C
@@ -259,6 +277,7 @@ C
 	            dattim (14:15) = pname (ipff:ipff+1)
 	        END IF
 	    END IF
+	  END IF
 	END IF
 C*
 	RETURN

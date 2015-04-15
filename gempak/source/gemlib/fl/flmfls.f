@@ -72,6 +72,7 @@ C* m.gamazaychikov/SAIC 12/04   Added ion flag to CTB_DTGET CS          *
 C* m.gamazaychikov/SAIC 01/06   Changed tmplt string length to MXTMPL   *
 C* m.gamazaychikov/SAIC 04/06   Added idtmch flag to CTB_DTGET CS       *
 C* F. J. Yen/NCEP	 4/08	Added bin mins & mstrct to CTB_DTGET CSC*
+C* S. Jacobs/NCEP	 8/14	Added support for FFFFF template	*
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 C*
@@ -81,7 +82,8 @@ C*
 	CHARACTER	ryymdhn*12, ryymdh*10, ryymd*8
 	CHARACTER       path*25, tmplt*(MXTMPL), gtime*20, filcyc*40, 
      +      		ndttm*20
-	CHARACTER	cfhr3*3, cfhr2*2, cent*2, fnull*(MXFLSZ)
+	CHARACTER	cfhr5*5, cfhr3*3, cfhr2*2, cent*2,
+     +			fnull*(MXFLSZ)
 	INTEGER		rngtyp, itype
 	LOGICAL		found, wild, ftmplt, timchr
 C------------------------------------------------------------------------
@@ -180,6 +182,7 @@ C
                 ryymd   = '????????'
                 cfhr2   = '??'
                 cfhr3   = '???'
+                cfhr5   = '?????'
 C
 C*		Add cycle time to the file alias.  If range type is 2 
 C*		or cycle is '*', do nothing.
@@ -192,8 +195,17 @@ C
 		    CALL ST_LSTR ( ndttm, lenn, iret )
 		    lenf = lenn - indxf
 		    IF ( indxf .ne. 0 )  THEN
-			IF ( lenf .eq. 3 )  THEN
+			IF ( lenf .eq. 5 )  THEN
+ 		          cfhr5  = ndttm(indxf+1:indxf+5)
  		          cfhr3  = ndttm(indxf+1:indxf+3)
+ 		          IF ( ndttm(indxf+3:indxf+3) .eq. ' ' )  THEN
+       			    cfhr2  = ndttm(indxf+1:indxf+2)
+ 		          ELSE
+       			    cfhr2  = ndttm(indxf+2:indxf+3)
+ 		          END IF
+			ELSE IF ( lenf .eq. 3 )  THEN
+ 		          cfhr3  = ndttm(indxf+1:indxf+3)
+			  cfhr5  = cfhr3 // '00'
  		          IF ( ndttm(indxf+3:indxf+3) .eq. ' ' )  THEN
        			    cfhr2  = ndttm(indxf+1:indxf+2)
  		          ELSE
@@ -202,10 +214,12 @@ C
 			ELSE IF ( lenf .eq. 2 )  THEN
        			  cfhr2  = ndttm(indxf+1:indxf+2)
        			  cfhr3  = '0' // cfhr2
+       			  cfhr5  = '0' // cfhr2 // '00'
 			END IF
 			IF ( INDEX ( ndttm, 'FALL' ) .ne. 0 )  THEN
        			  cfhr2  = '??'
        			  cfhr3  = '???'
+       			  cfhr5  = '?????'
 			END IF
  		    END IF
 C
@@ -249,8 +263,16 @@ C
      +				    tmplt, iret )
 		END IF
 C
-		kpos = INDEX ( tmplt, 'FFFF' )
+		kpos = INDEX ( tmplt, 'FFFFFF' )
 		IF  ( kpos .ne. 0 )  THEN
+		    CALL ST_RPST  ( tmplt, 'FFFFFF', 'F' // cfhr5,
+     +				    ipos, tmplt, iret )
+C
+		  ELSE IF ( INDEX ( tmplt, 'fFFFFF' ) .ne. 0 )  THEN
+		    CALL ST_RPST  ( tmplt, 'fFFFFF', 'f' // cfhr5,
+     +				    ipos, tmplt, iret )
+C
+		  ELSE IF ( INDEX ( tmplt, 'FFFF' ) .ne. 0 )  THEN
 		    CALL ST_RPST  ( tmplt, 'FFFF', 'F' // cfhr3,
      +				    ipos, tmplt, iret )
 C

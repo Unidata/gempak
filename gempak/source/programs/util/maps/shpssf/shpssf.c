@@ -39,6 +39,7 @@ int main ( int argc, char *argv[] )
  * T. Piper/SAIC	01/06	Call ip_help if inputs incorrect	*
  * S. Jacobs/NCEP	 3/10	Fixed wording of error messages		*
  * S. Jacobs/NCEP        3/11   Added debug_flag and print statements   *
+ * S. Jacobs/NCEP	 6/14	Added more debug output			*
  ***********************************************************************/
 {
     dbf_header dbfhdr;
@@ -189,20 +190,35 @@ int main ( int argc, char *argv[] )
         /*
          * Read shape record and construct an internal list.
          */
+	if ( debug_flag ) {
+	    printf ( "Total number of records = %d\n", dbfhdr.nrec );
+	}
         for ( rec = 0; rec < dbfhdr.nrec; rec++ ) {
+	    if ( debug_flag ) {
+		printf ( "Processing record %d\n", rec );
+	    }
 	    /*
 	     * Read record field data.
 	     */
+	    if ( debug_flag ) {
+		printf ( "Reading record field data\n" );
+	    }
             shp_rdbf ( dbffp, rec, &dbfhdr, &ier );
 
             /*
 	     * Read record index.
 	     */
+	    if ( debug_flag ) {
+		printf ( "Reading record index\n" );
+	    }
 	    shp_rshx ( shxfp, rec, &shxrec, &ier );
 
             /*
 	     * Read record data.
 	     */
+	    if ( debug_flag ) {
+		printf ( "Reading record data\n" );
+	    }
 	    shp_rshp ( shpfp, &dbfhdr, &shxrec, &newrec, &ier );
 
 	    /*

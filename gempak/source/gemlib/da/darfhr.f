@@ -20,6 +20,7 @@ C*	IRET		INTEGER		Return code			*
 C**									*
 C* Log:									*
 C* S. Jacobs/NCEP	 8/13	Created					*
+C* S. Gilbert/NCEP	 6/14	Fixed calling sequence for da_getfilhdr     *
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 	INCLUDE		'../dm/dmcmn.cmn'
@@ -34,7 +35,7 @@ C
 C*	Request the data
 C
 	CALL ST_NULL ( fhdnam, fhdn, lenf, ier )
-	CALL DA_GETFILHDR ( fhdn, mxword, rheadr, nword, iret )
+	CALL DA_GETFILHDR ( iflno, fhdn, mxword, rheadr, nword, iret )
 C*
 	RETURN
 	END

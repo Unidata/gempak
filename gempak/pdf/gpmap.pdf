@@ -39,11 +39,9 @@ ENCY    Time|colors|models|Tm|Prs|Mkr|Ccd;wlevs|Fcst_Hour
 FFA     End time|FF;FA clrs|Tm|Lb|Ic|Outline/FF;FA lwidth                       
 WSAT    WindSAT Plotting Attributes                                             
 ASCT    AScat Plotting Attributes                                               
-TRAK1   Jason-1 Ground Track Prediction Plotting Attributes                     
-TRAKE   ENVISAT Ground Track Prediction Plotting Attributes                     
-TRAK2   Jason-2 Ground Track Prediction Plotting Attributes                     
 OSCT    OScat Plotting Attributes                                               
+TRAK    Altimetric Satellite Ground Track Prediction Plotting Attributes        
 SGWH    Significant Wave Heights Plotting Attributes                            
 ASDI    End time|Mode|DepArr|time increment/clrs or ht range/clrs|time lmt|SITES
 EDR     End time|ht ranges/clrs|time lmt|Edr ranges/clrs|symb1/symb2|aoa180flg  
-WSPDA   Altika Windspeed Plotting Attributes                                    
+WSPDALT Altimeter-derived Windspeed Plotting Attributes                         

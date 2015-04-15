@@ -40,6 +40,7 @@ C* m.gamazaychikov/SAIC 03/06   Made changes to account for WFO Key West*
 C* m.gamazaychikov/SAIC 12/07   Add code to account for Hawaiian islnds	*
 C* S. Jacobs/NCEP	 8/08	Added islands other than HI and VI	*
 C* m.gamazaychikov/SAIC	09/08	Replaced GH_FSTN w/ CLO_FINDSTNW	*
+C* s. gilbert           08/14   Fix bug with HI zone codes              *
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 	INCLUDE		'ghcmn.cmn'
@@ -244,7 +245,7 @@ C
                             IF (icurr .gt. 0  .and. icurr .le. 9) THEN
                                 cpref = 'Z00'
                                 CALL ST_LSTR (cpref, lencp, ier)
-                              ELSE IF ( icurr .gt. 10 ) THEN
+                              ELSE IF ( icurr .ge. 10 ) THEN
                                 cpref = 'Z0'
                                 CALL ST_RMBL (cpref, cpref, lencp, ier)
                             ENDIF 

@@ -18,17 +18,10 @@
      datatype.tbl, for the actual file types that can be used.
 
 		NAM		NAM model grid
-		NGM		NGM model grid
-                ENS             GFS ensemble
+                GEFS            GFS ensemble
 		GFS		GFS model grid
-		MRF		MRF model grid
-		ECMWFG		ECMWF model grid (global)
-		ECMWFT		ECMWF model grid (tropical)
-		FNL		Final analysis
-		RUC2		Rapid update cycle
-		RUCS		Rapid update cycle surface
+		RAP		Rapid update cycle
                 SREF            Short Range Ensemble
-		UKMET		UKMET model grid
 
       When one of these file types is input, the program searches
       locally for the most recent file first.  If no files are found
@@ -122,3 +115,9 @@
       In each GDFILE entry, the name following the colon is the string
       for which the asterisk stands in the template of the datatype.tbl
       entry.
+
+      Access to grid data in AWIPS database is accomplished by setting
+      GDFILE to an alias found in datatype.tbl. Each entry for grid data
+      references an XML control file that needs to be created to specify
+      the attributes of the metadata in the database. For example, the 
+      alias A2GFS uses the XML file $GEMTBL/data-access/gfs.xml.

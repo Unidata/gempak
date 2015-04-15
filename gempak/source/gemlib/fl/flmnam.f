@@ -17,6 +17,7 @@ C*	HH		Hour						*
 C*	NN		Minute						*
 C*	DWK		Day of the week 3 letter abbreviation		*
 C*	DWU		Day of the week 3 letter abbreviation, all caps	*
+C*	fFFFFF		5-character representation of forecast hour/min	*
 C*	fFFF		3-character representation of forecast hour	*
 C*	fFF		2-character representation of forecast hour	*
 C*									*
@@ -41,6 +42,7 @@ C* D.W.Plummer/NCEP	 1/98	Added forecast hour processing		*
 C* S. Jacobs/NCEP	 4/99	Added UC ver of month and day-of-week	*
 C* M. Li/SAIC		02/02	Added check for the length of date/time	*
 C* M. Li/SAIC		03/02	Modified the forecast time processing	*
+C* S. Jacobs/NCEP	 8/14	Added support for FFFFF template	*
 C************************************************************************
 	CHARACTER*(*)	dattim, templt, filnam
 C*
@@ -164,6 +166,18 @@ C
 	    ELSE IF (lf .eq. 1) THEN
 	    	tfc = '00' // fcst
 	    	fcst = tfc
+	    END IF
+C
+C*	    Substitute the 5 character forecast hour/min for fFFFFF.
+C
+	    ipfffff = INDEX ( filnam, 'FFFFF' )
+	    IF  ( ipfffff .ne. 0 )  THEN
+		CALL ST_LSTR(fcst, lf, ier)
+		IF  ( lf .lt. 5 ) THEN
+		    tfc = fcst(1:lf) // '00'
+		    fcst = tfc
+		END IF
+     	        filnam (ipfffff:ipfffff+4) = fcst (1:5)
 	    END IF
 C
 C*	    Substitute the 3 character forecast hour for fFFF.

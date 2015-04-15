@@ -85,6 +85,10 @@ void af_fmtFROMLines ( int ngrp, GFA_SmrOlk_Grp *gfaGrp,
  * E. Safford/SAIC	08/06	moved from afcreate.c			*
  * B. Yin/SAIC		12/07	Set lowest fzlvl to 0 if a surface fzlvl*
  *				intersects the FA area			*
+ * J. Wu/SGT         	05/14   fix potential infinite loop in          *
+ *				af_getIntlPt() when none of the points  *
+ *                              in the clipped polygon is an orginal    *
+ *                              point of the international bound        *
  ***********************************************************************/
 {
     int 		ii, jj, nbf, ier, sfcFzl[ NUM_FA_AREAS ];    
@@ -1090,7 +1094,7 @@ static void af_getIntlPt ( VG_DBStruct *el, int *nip,  float *xip,
  *   or a point of the original polygon.
  */    
     np1 = el->elem.gfa.info.npts;
-
+    int hasOrigPt = 0;
     for ( ii = 0; ii < np; ii++ ) {
 	
 	ptFlag[ ii ] = NEW_POINT;
@@ -1113,6 +1117,7 @@ static void af_getIntlPt ( VG_DBStruct *el, int *nip,  float *xip,
 	    if ( G_DIST( elat[ ii ], elon[ ii ], el->elem.gfa.latlon[ jj ],
 		         el->elem.gfa.latlon[ jj + np1 ] ) < SMALLF ) {
 		ptFlag[ ii ] = ORG_POINT;
+                hasOrigPt = 1;
 		continue;                    
 	    }
 	}
@@ -1121,19 +1126,21 @@ static void af_getIntlPt ( VG_DBStruct *el, int *nip,  float *xip,
 /*
  *   Shift the array to let it start with an original point.
  */    
-    while (  ptFlag[ 0 ] != ORG_POINT ) {            
-	tlat = elat[ 0 ];
-	tlon = elon[ 0 ];
-	eflag = ptFlag[0];
+    if ( hasOrigPt == 1 ) {
+        while (  ptFlag[ 0 ] != ORG_POINT ) {            
+	    tlat = elat[ 0 ];
+	    tlon = elon[ 0 ];
+	    eflag = ptFlag[0];
 	
-	memmove ( &(elat[0]), &(elat[1]), (np-1)*sizeof(float) );
-	memmove ( &(elon[0]), &(elon[1]), (np-1)*sizeof(float) );
-	memmove ( &(ptFlag[0]), &(ptFlag[1]), (np-1)*sizeof(int) );
+	    memmove ( &(elat[0]), &(elat[1]), (np-1)*sizeof(float) );
+	    memmove ( &(elon[0]), &(elon[1]), (np-1)*sizeof(float) );
+	    memmove ( &(ptFlag[0]), &(ptFlag[1]), (np-1)*sizeof(int) );
 	
-	elat[np-1]   = tlat;
-	elon[np-1]   = tlon;        
-	ptFlag[np-1] = eflag;        
-    }	
+	    elat[np-1]   = tlat;
+	    elon[np-1]   = tlon;        
+	    ptFlag[np-1] = eflag;        
+        }	
+    }
     
 /*
  *   Sanp and match any new points.

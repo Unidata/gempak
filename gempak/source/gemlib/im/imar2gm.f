@@ -223,7 +223,7 @@ C*	******************************************
 C
 	IF  ( navtyp .eq. 'GOES' .or. navtyp .eq. 'GVAR' .or.
      +	      navtyp .eq. 'RADR' .or. navtyp .eq. 'MSAT' .or.
-     +	      navtyp .eq. 'MSG' .or.
+     +	      navtyp .eq. 'MSG' .or. navtyp .eq. 'RECT' .or.
      +	      navtyp .eq. 'GMSX' .or. navtyp .eq. 'MOLL' )  THEN
 C
 	    CALL GSATMG ( imgfil, iadir, ianav, imleft, imtop, imrght,

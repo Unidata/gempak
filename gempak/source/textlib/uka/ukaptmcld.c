@@ -36,6 +36,9 @@ void uka_ptmcld ( FILE *ifpout, char *fname, FILE *fptr, long size,
  * M. Li/SAIC		 8/04	Created                 		*	
  * M. Li/SAIC		 8/04	Expanded check for cloud distribution	*
  * M. Li/SAIC		 9/04	Added a check for more turb. definition	*
+ * L. Hinson/AWC         1/14   Fixed Codes for OCNL/OCNL EMBD/ISOL/    *
+ *                              ISOL EMBD ON CBs                        *
+ * L. Hinson/AWC         4/14   Fixed Code Checks for Severe Icing      *
  ***********************************************************************/
 {
     int 	istoff, sbtyp, ieloff, gpnum, flag;
@@ -280,7 +283,7 @@ void uka_ptmcld ( FILE *ifpout, char *fname, FILE *fptr, long size,
 			if ( nic == 5 || nic == 6 ) {
 			    dic = 5;
 			}
-			else if ( nic == 7 ) {
+			else if ( nic == 7 || nic == 8 ) {
 			    dic = 8;
 			}
 

@@ -189,9 +189,7 @@ TRACE2  PMSL/4
 TRACE3  SKNT;GUST;DARR/1                                                                                                                
 TRACE4  VSBY/7                                                                                                                          
 TRACE5  CLDS;;WSYM/6                                                                                                                    
-TRAK1                                                                                                                                   
-TRAK2                                                                                                                                   
-TRAKE                                                                                                                                   
+TRAK                                                                                                                                    
 TVS                                                                                                                                     
 TXTCOL                                                                                                                                  
 TXTFIL                                                                                                                                  
@@ -212,4 +210,4 @@ WOU
 WCN                                                                                                                                     
 WCP                                                                                                                                     
 WSAT                                                                                                                                    
-WSPDA                                                                                                                                   
+WSPDALT                                                                                                                                 

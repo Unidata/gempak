@@ -1,11 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tns:GempakDataAccess xmlns:tns="http://www.example.org/GempakDataAccess" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/GempakDataAccess GempakDataAccess.xsd ">
+<tns:GempakDataAccess xmlns:tns="http://www.example.org/GempakDataAccess"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.example.org/GempakDataAccess/GempakDataAccess.xsd ">
 
+    <!--
+    This is the control file for accessing the AWIPS II Database from the GEMPAK
+    applications. Most of the file should not need to be changed. Only the DBKEY
+    value, which references the specific name of the data set, will change for
+    each control file.
+    -->
+
+    <!-- The file label used to identify the database control file :: DO NOT CHANGE -->
     <filelabel text="AWIPS DB CONFIGURATION FILE" version="1" />
+
+    <!-- The filetype attributes define this as a SOUNDING data set :: DO NOT CHANGE -->
     <filetype type="MFSN" source="MFRAOB" />
-    <dbserver host="edex" />
+
+    <!-- The host where the EDEX is running :: This may change for each site -->
+    <dbserver host="ec" />
+
+    <!-- The database table name :: DO NOT CHANGE -->
     <dbtable name="bufrua" />
-    <rows pyfile="TimeRetriever" pymeth="gettimes" dbkey="refHour">
+
+    <!-- The Rows, Columns, Headers and Parts identify the Python scripts and
+	 equate information to the GEMPAK data structure :: 
+      	 The list of parameters may change depending on the data set. The KEY
+	 names may be found in the AWIPS II Database -->
+    <rows pyfile="TimeRetriever" pymeth="gettimes" dbkey="dataTime.refTime">
 	<row name="DATE" />
 	<row name="TIME" />
     </rows>

@@ -18,6 +18,7 @@ void cfl_mdat ( char *filnam, char *templt, char *defdat,
  *	DD		Day						*
  *	HH		Hour						*
  *	NN		Minute						*
+ *	FFFFF           5-character forecast hour/min                   *
  *	FFF             3-character forecast hour                       *
  *      FF              2-character forecast hour			*
  *									*
@@ -43,12 +44,13 @@ void cfl_mdat ( char *filnam, char *templt, char *defdat,
  *				corresponding strings from the file	*
  * S. Jacobs/NCEP	 8/06	Counted correctly for adding fcst time	*
  * m.gamazaychikov/CWS	03/11	Add A2DB code				*
+ * S. Jacobs/NCEP	 8/14	Added support for FFFFF template	*
  ***********************************************************************/
 {
 	int	intg, istar, len, ier;
 	char	tstr[8], tplate[MXFLSZ];
 	char	*pslash, *pcolon, *pname, *pstar;
-	char	*pmonth, *pyy, *pmm, *pdd, *phh, *pmn, *pff, *pfff;
+	char	*pmonth, *pyy, *pmm, *pdd, *phh, *pmn, *pff, *pfff, *pfffff;
 	char	monames[48] =
 		    "JAN/FEB/MAR/APR/MAY/JUN/JUL/AUG/SEP/OCT/NOV/DEC";
         char    *pplate, temptplate[MXFLSZ], tempfname[MXFLSZ];
@@ -219,11 +221,31 @@ void cfl_mdat ( char *filnam, char *templt, char *defdat,
 	}
 
 	if ( strlen( dattim ) > (size_t)11 )  {
+
+/*
+ *	    Extract the 5 digits of an FFFFF forecast hour+minute
+ *	    from the file name.
+ */
+	    pfffff = strstr ( tplate, "FFFFF" );
+	    if ( pfffff != NULL )  {
+	        memcpy ( tstr, pname + (pfffff - tplate), 5 );
+	        tstr[5] = CHNULL;
+	        cst_numb ( tstr, &intg, &ier );
+	        if ( ier != 0 )  {
+		    *iret = -12;
+		    return;
+	        }
+	        else  {
+		    dattim[11] = 'F';
+		    memcpy ( dattim + 12, tstr, 6 );
+	        }
+	    }
+	    else {
 /*
  *	    Extract the 3 digits of an FFF forecast hour from the file name.
  */
-	    pfff = strstr ( tplate, "FFF" );
-	    if ( pfff != NULL )  {
+	      pfff = strstr ( tplate, "FFF" );
+	      if ( pfff != NULL )  {
 	        memcpy ( tstr, pname + (pfff - tplate), 3 );
 	        tstr[3] = CHNULL;
 	        cst_numb ( tstr, &intg, &ier );
@@ -233,10 +255,10 @@ void cfl_mdat ( char *filnam, char *templt, char *defdat,
 	        }
 	        else  {
 		    dattim[11] = 'F';
-		    memcpy ( dattim + 12, tstr, 3 );
+		    memcpy ( dattim + 12, tstr, 4 );
 	        }
-	    }
-	    else  {
+	      }
+	      else  {
 /*
  *	        Extract the 2 digits of an FF forecast hour from the file name.
  */
@@ -252,9 +274,10 @@ void cfl_mdat ( char *filnam, char *templt, char *defdat,
 	            else  {
 		        dattim[11] = 'F';
 		        dattim[12] = '0';
-		        memcpy ( dattim + 13, tstr, 2 );
+		        memcpy ( dattim + 13, tstr, 3 );
 	            }
 	        }
+	      }
 	    }
 
 	}

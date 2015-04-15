@@ -60,10 +60,10 @@ C!						Tilda
 C!
 	PARAMETER	( LLMXPT = 80000 )
 C!						Max # lines, polygons, ...
-	PARAMETER	( LLMXGD = 2000000 )
+	PARAMETER	( LLMXGD = 10000000 )
 C!						Max # grid points
 C*	PARAMETER	( LLMXTG = LLMXGD )
-	PARAMETER	( LLMXTG = 9331200 )
+	PARAMETER	( LLMXTG = 10000000 )
 C!						Max # transfer grid pnts
 C!
 C!	FORTRAN specific PARAMETERS

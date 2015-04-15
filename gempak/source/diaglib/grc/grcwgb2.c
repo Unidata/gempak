@@ -50,9 +50,10 @@ void grc_wgb2 ( FILE **fps, const int *nfps, const int *title,
  * T. Piper/SAIC        05/03   Fixed title format statement and made   *
  *                              integer variables actually integers!    *
  * R. Tian/SAIC		 9/06	Recoded from Fortran			*
+ * S. Jacobs/NCEP	 6/14	Fixed size of date/time displayed	*
  ************************************************************************/
 {
-    char vcord[5], dt[17], pm[13], lev[7];
+    char vcord[5], dt[21], pm[13], lev[7];
     int ii, ier;
 /*----------------------------------------------------------------------*/
     *iret = 0;
@@ -65,8 +66,8 @@ void grc_wgb2 ( FILE **fps, const int *nfps, const int *title,
     /*
      * Move character strings into variables with correct length.
      */
-    strncpy ( dt, gdattm1, 16 );
-    dt[16] = '\0';
+    strncpy ( dt, gdattm1, 20 );
+    dt[20] = '\0';
     strncpy ( pm, parm, 12 );
     pm[12] = '\0';
 
@@ -94,7 +95,7 @@ void grc_wgb2 ( FILE **fps, const int *nfps, const int *title,
 	/*
 	 * Write the grid identifier.
 	 */
-	fprintf ( fps[ii], "%5d  %3d  %3d  %3d  %3d  %3d  %3d   %16.16s%6d %-6.6s %-4.4s %-12.12s\n", *num, *igdn, *idis, *icat, *iidn, *ipdn, *ivco, dt, *level1, lev, vcord, pm );
+	fprintf ( fps[ii], "%5d  %3d  %3d  %3d  %3d  %3d  %3d   %20.20s%6d %-6.6s %-4.4s %-12.12s\n", *num, *igdn, *idis, *icat, *iidn, *ipdn, *ivco, dt, *level1, lev, vcord, pm );
     }
 
     return;

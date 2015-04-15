@@ -40,7 +40,7 @@ then
     fi
 
 # Run the configure script for this OS type
-    ./configure --prefix=$OS_ROOT --disable-netcdf-4
+    ./configure --prefix=$OS_ROOT --disable-netcdf-4 --disable-dap
 
 # Compile, check, and install the package
     echo "----->  COMPILING netCDF LIBRARY $version"

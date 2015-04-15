@@ -16,6 +16,7 @@
 !    S. Jacobs/NCEP	12/10	Added ssmiwnd_hi, tpw_cira, tpwpct_cira
 !    S. Jacobs/NCEP	12/10	Added omiai and omiso2
 !    F. Achorn/OPC	10/11	Added RGB product enhancements
+!    M. Brennan/NHC	 6/14	Added new color table - ir_bd_cc
 !
 !image_type    lutfile_name 
 	1	gdpicape
@@ -23,6 +24,7 @@
 	1	gdpili
 	1	gdpipw
 	1	ir_bd
+	1	ir_bd_cc
 	1	ir_drgb
 	1	ir_nmc
 	1	ir_rgbv

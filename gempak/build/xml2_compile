@@ -43,7 +43,7 @@ then
     ./configure --prefix=$OS_ROOT --disable-shared \
 		--disable-dependency-tracking \
 		--without-debug --without-threads \
-		--with-iconv=$OS_ROOT --with-zlib=$OS_ROOT
+		--with-iconv=$OS_ROOT --without-zlib
 
 # Compile, check, and install the package
     echo "----->  COMPILING XML2 LIBRARY $version"
