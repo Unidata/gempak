@@ -18,7 +18,6 @@
 ! J. Lewis/AWC           7/06   Added HAwaian VOR points
 ! B. Entwistle/AWC       2/08   Changed 11 VOR points
 ! J. Lewis/AWC		11/12	Changed VRB to TRV
-! L. Hinson/AWC         09/13   Changed JAN to MHZ
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !
 !STID    STNM   NAME                             ST CO   LAT    LON  ELV PRI
@@ -347,6 +346,7 @@ HQM      000127 HOQUIAM                          WA US  4695 -12415     0  0
 FOT      000106 FORTUNA                          CA US  4067 -12423     0  0
 TOU      000265 NEAH_BAY                         WA US  4830 -12463     0  0
 YQV      000402 YORKTON                          SA CN  5127 -10247     0  0
+MMB      000110 GAGE                             OK US  3634 -9988      0  0
 ANN           0 ANNETTE_ISLAND                   AK US  5505 -13157     0  0
 LVD           0 LEVEL_ISLAND                     AK US  5647 -13308     0  0
 BKA           0 BIORKA_ISLAND                    AK US  5686 -13555     0  0
