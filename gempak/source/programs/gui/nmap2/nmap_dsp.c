@@ -978,6 +978,7 @@ void dsp_loadFrame ( int lp, int frm, int pxm, dattm_t ctime,
  * m.gamazaychikov/SAIC 04/06   change way time matching scheme is set  *
  * M. Li/SAIC		03/08	Added case CAT_ENS			*
  * F. J. Yen/NCEP	04/08	Get bin mins & most recent flag to pass	*
+ * M. James/Unidata	04/15	Added check to not plot map for VAD  	*
  ***********************************************************************/
 {
     int		kk, ier, which, ignore; 
@@ -1004,6 +1005,7 @@ void dsp_loadFrame ( int lp, int frm, int pxm, dattm_t ctime,
 
     static Boolean	sat_lutset = FALSE;
     static Boolean	rad_lutset = FALSE;
+    static Boolean	nvw = FALSE;
 /*---------------------------------------------------------------------*/
 
     if (nsrcs <= 0) {
@@ -1075,7 +1077,15 @@ void dsp_loadFrame ( int lp, int frm, int pxm, dattm_t ctime,
         frmsrc = plot_ordr[kk];
 
 	dsrc = dataw_getDataSrc(lp, frmsrc);
-	    
+/*
+ * Check for NVW product and set flag to NOT draw map 
+ * and latlon for VAD display (kludgy but works)
+ */
+        if ( strstr(dsrc->path,"NVW") != NULL ) {
+            nvw = TRUE;
+        } else {
+            nvw = FALSE;
+	}
 /*
  * Get the table entry info for this data source.
  */
@@ -1257,7 +1267,10 @@ void dsp_loadFrame ( int lp, int frm, int pxm, dattm_t ctime,
 		&jjust, &ier );
 	gstext (&_ifnt, &_ihwsw, &_tsize, &_iwid, &_ibrdr, &_irot, 
 		&_ijust, &ier );
-	nmp_plot(lp, (Pixmap)pxm, plot_area, &ier);  
+	
+	if (!nvw) {
+	    nmp_plot(lp, (Pixmap)pxm, plot_area, &ier);  
+	}
 	gstext (&jtxfn, &jtxhw, &ssztxt, &jtxwid, &jbrdr, &jrrotn, 
 		&jjust, &ier );
     }

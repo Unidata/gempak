@@ -32,6 +32,7 @@ C* M. James/Unidata     06/10   Moved label frequency logic from IMNIDH *
 C* M. James/Unidata     11/13   Hydrometeor classification labeling and *
 C*                              national composite GINI support added.  *
 C* M. James/Unidata     04/14   High-res NEXRCOMP reworked              *
+C* M. James/Unidata     04/15   Colorbar fix for TDWR                   *
 C************************************************************************
 	INCLUDE		'IMGDEF.CMN'
 C*
@@ -218,14 +219,14 @@ C
 	    IF ( ilblfq .ne. 0 .and. cmblev (i) .ne. ' ' ) THEN
                IF ( imftyp .eq. 13 ) THEN
                   SELECT CASE ( imtype ) 
-                     CASE (94,32)
+                     CASE (94,32,180,186)
                         IF ( ( i .eq. clevsp ) .or.
      +                    ( MOD ( i + 3 , 10 ) .eq. 0 ) ) THEN
                            label = cmblev (i)
                         ELSE
                            label = ' '
                         END IF
-                     CASE (99)
+                     CASE (99,182)
                         IF ( MOD ( i-10 , 20 ) .eq. 0 ) THEN
                            label = cmblev (i)
                         ELSE

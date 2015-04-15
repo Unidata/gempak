@@ -61,6 +61,7 @@ void im_nexz ( char filnam[], int *nline, int *itype, int *ioff, int *iret )
  * X. Guo/CWS           04/10   Added code to handle 94 product with FOS*
  *                              or WMO header                           *
  * X. Guo/CWS		05/10   Added 99, 134 and 135 products          *
+ * M. James/Unidata	04/15   Added TDWR fix                          *
  ***********************************************************************/
 {
         FILE    	*fptr;
@@ -146,8 +147,8 @@ void im_nexz ( char filnam[], int *nline, int *itype, int *ioff, int *iret )
 		mv_btoi ( barr, &istart, &j, &negflg, &ival2, &ierr );
 
 		if  ( ( ival1 == ival2 ) &&
-		      ( ival1 >= 16 ) && ( ival1 <= 179 ) )  {
-                    if ( ( (ival1 >= 94) && (ival1 <= 179) && 
+		      ( ival1 >= 16 ) && ( ival1 <= 187 ) )  {
+                    if ( ( (ival1 >= 94) && (ival1 <= 187) && 
                            (ival1 != 171) && (ival1 != 169) ) || 
                           (ival1 == 32) ) {
                         //im_nexbzwmo (filnam,barr+i,nbytes-i,itype,ioff,iret);
