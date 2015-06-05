@@ -376,6 +376,7 @@ LI                   IR            0    255     77     32      1 gdpili.tbl
 ! Local NEXRAD
 !
 ! .15 km
+LOCAL .15 KM  BASE   TDWR_REFLECT  0    255      7    180      1 osf_ref16.tbl
 LOCAL .15 KM  BASE   TDWR_REFLECT  0     15      7    181      1 osf_ref16.tbl
 LOCAL .15 KM  BASE   TDWR_VELOCITY 0     15      7    183      1 osf_vel16.tbl
 LOCAL .15 KM  BASE   TDWR_VELOCITY 0    255      7    182      1 upc_vel.tbl
