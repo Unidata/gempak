@@ -57,6 +57,7 @@ C*                              for values 2 and 7 (iced bulb) to       *
 C*                              negative (were positive previously).    *
 C* M. James/Unidata     10/08   Some fix                                * 
 C* M. James/Unidata     04/14   Review of fix but unsure what it does   *
+C* M. James/Unidata     06/15   Syntax fix for 24 hour min temps        *
 C************************************************************************
 	INCLUDE         'GEMPRM.PRM' 
 	INCLUDE         'lscmn.cmn' 
@@ -218,8 +219,8 @@ C
                 ipr = mintbl ( ii, kwmo )
                 IF ( ipr .eq. 99 ) RETURN
                 rivals ( irdtv2 ) = FLOAT ( ipr )
-                IF ( ipr .lt. 24 )
-     +             rivals (irt12n ) = rivals ( irmitm )
+                IF ( ipr .lt. 24 ) RETURN
+                rivals (irt12n ) = rivals ( irmitm )
             END IF
         END IF
 C*
