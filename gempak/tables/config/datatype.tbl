@@ -216,6 +216,7 @@
 !* M. James/Unidata	10/13	Added OPC lightning density grids	*
 !* M. James/Unidata	03/14	Updates for COAMPS and NAVGEM		*
 !* M. James/Unidata	06/14	Added COSMO				*
+!* M. James/Unidata	08/15	Added GFS25				*
 !************************************************************************
 !
 !           |                         |                                                |        |        |DEF |DEF   |DEF   |                     |TIME
@@ -392,6 +393,7 @@ HRRR         $MODEL/hrrr               YYYYMMDDHHfFFF_hrrr.gem                  
 GFS          $MODEL/gfs                YYYYMMDDHH_gfs003.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
 GFSP         $MODEL/gfsp               gfs_YYYYMMDDHHfFFF                               CAT_GRD  SCAT_FCT   -1     -1     -1 OFF/0/0                    4
 GFSHD        $MODEL/gfs0.5deg          YYYYMMDDHHfFFF_gfs.gem                           CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+GFS25        $MODEL/gfs0.25deg         YYYYMMDDHHfFFF_gfs.gem                           CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
 GHM          $MODEL/ghm                ghmg_YYYYMMDDHHfFFF_*                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
 GHMNEST      $MODEL/ghm                ghmn_YYYYMMDDHHfFFF_*                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
 GHM6TH       $MODEL/ghm                ghm6th_YYYYMMDDHHfFFF_*                          CAT_GRD  SCAT_FCT   -1     -1     -1 OFF/0/0                    4
@@ -592,7 +594,7 @@ PROF         $GEMDATA/profiler         YYYYMMDD_pro.gem                         
 WSESND       $MODEL_SND/etaw           YYMMDDHH_wseta.snd                               CAT_SNF  SCAT_SNF   -1     -1     -1      OFF/0/0
 WSESFC       $MODEL_SFC/etaw           YYMMDDHH_wseta.sfc                               CAT_SFF  SCAT_SFF   -1     -1     -1      OFF/0/0
 WSESFCA      $MODEL_SFC/etaw           YYMMDDHH_wseta.sfc_aux                           CAT_SFF  SCAT_SFF   -1     -1     -1      OFF/0/0
-NAM5         $MODEL/nam5km             YYYYMMDDHHfFFF_nam5km.gem                        CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
+NAM4KM       $MODEL/nam4km             YYYYMMDDHHfFFF_nam4km.gem                        CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
 NAM221       $MODEL/nam                YYYYMMDDHHfFFF_nam221.gem                        CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
 NAM12        $MODEL/nam12km            YYYYMMDDHHfFFF_nam218.gem                        CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
 NAM218       $MODEL/nam12km            YYYYMMDDHHfFFF_nam218.gem                        CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0

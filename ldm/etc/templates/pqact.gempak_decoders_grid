@@ -276,7 +276,8 @@ NGRID	^E.W... KWBI
 # CONDUIT GFS grids
 # ----------------------------------------------
 #
-# 0.5 degree GFS data - updated 20140114 for new CONDUIT headers
+# 0.25 degree GFS data - updated 20150804 for new CONDUIT headers
+# 0.5 degree GFS data  - updated 20140114 for new CONDUIT headers
 # 1.0 degree GFS data
 # 2.5 degree GFS data
 CONDUIT	prod/gfs.*pgrb2
