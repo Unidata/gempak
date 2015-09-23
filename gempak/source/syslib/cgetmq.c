@@ -32,6 +32,7 @@ void cgetmq ( int mproc, int idebug, int initmq, int *jsatty, int *key,
  * S. Jacobs/EAI	 9/93	IBM specific code			*
  * L. Williams/EAI	 7/94	Reformat header				*
  * S. Chiswell/UCAR	 3/04	Added perror				*
+ * M. James/UCAR	 9/15	Append getuid to message queue key	*
  ***********************************************************************/
 {
   int    mq, nkey, semid;
@@ -54,9 +55,10 @@ void cgetmq ( int mproc, int idebug, int initmq, int *jsatty, int *key,
   if ( isatty (2) ) {
 
 /*
- *	Get the terminal and use as a file name in ftok to create a
- *	unique key for this terminal. This is used for interactive
- *	session, including scripts executed from the command line.
+ *	Get the terminal and use as a file name in ftok and userid to 
+ *	create a unique key for this terminal. This is used for 
+ *	interactive session, including scripts executed from the
+ *	command line.
  *
  *	This section is machine specific. Most machines will use this
  *	algorithm. There is a different algorithm for IBM machines.
@@ -68,7 +70,7 @@ void cgetmq ( int mproc, int idebug, int initmq, int *jsatty, int *key,
     else
       id = 'D';
     
-    nkey  =  ftok ( device, id );
+    nkey  =  ftok ( device, id ) + getuid();
     
     *jsatty = 1;
   }
