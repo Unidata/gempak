@@ -74,6 +74,14 @@ void gb2_ornt ( int kx, int ky, int scan_mode, float *ingrid,
         for ( jcnt=jbeg; (0<=jcnt&&jcnt<ky); jcnt+=jinc ) {
             for ( icnt=ibeg; (0<=icnt&&icnt<kx); icnt+=iinc ) {
                idxarr = kx * jcnt + icnt;
+		/* 
+ 	       if ( kcnt >= 1509821 ) {
+		  printf("kcnt = %d\n", kcnt);
+		  printf("idxarr = %d\n", idxarr);
+		  printf("jcnt = %d\n", jcnt);
+		  printf("icnt = %d\n", icnt);
+		  printf("sizeOf = %d\n", sizeof(ingrid));
+	       } */
                fgrid[kcnt] = ingrid[idxarr];
                kcnt++;
             }
