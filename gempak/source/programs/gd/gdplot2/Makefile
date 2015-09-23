@@ -238,7 +238,7 @@ $(PROG_XW) : $(ALIB) $(LIBINC_XW) $(PROG.f)
 	$(LINK.f) $(PROG.f) $(ALIB) $(LIBINC_XW) \
 		$(X11LIBDIR) $(X11LIB) $(SYSLIBS) -lm -o $(OS_BIN)/$@
 
-programs_gf: $(PROG_GF)
+programs_gf: $(PROG_GF) $(PROG_GIF)
 
 programs_gif: $(PROG_GIF)
 
