@@ -28,7 +28,7 @@ C************************************************************************
 	CHARACTER	IPFIL*20
 	PARAMETER	( IPFIL  = 'GEMGLB.NTS' )
 C*
-	PARAMETER	( MXIPPM = 300 )
+	PARAMETER	( MXIPPM = 250 )
 C*
 	CHARACTER	cparmn (MXIPPM)*8, cparmv (MXIPPM)*128
 	CHARACTER	cprogm*8, chelp1 (MXIPPM)*32
