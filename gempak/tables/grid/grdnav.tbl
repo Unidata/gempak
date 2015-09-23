@@ -39,8 +39,14 @@
 ! D.W.Plummer/NCEP	 3/05	Added NDFD
 ! D.W.Plummer/NCEP	11/05	Supplement documentation
 ! F. J. Yen/NCEP	 7/08	Added comment-ASTG (grid 255) for staggered grid
+! M. James/UCAR		 6/13	Fixed GFS 003 vs. 703
+! M. James/UCAR		10/14	Added HRRR
+! M. James/UCAR		12/14	Added A173
+! M. James/UCAR		 8/15	Added GFE 0.25 degree
+! M. James/UCAR          9/15   Added NEXR 
 !
 !ID    # PRJ  A1   A2  A3     LLT      LLN     ULT      ULN  KX  KY DELN X
+NEXR 255 LCC  40 -100  40  23.000 -120.000  47.264  -63.566 4736 3000 4.00 0
 HRRR   1 LCC  25  -95  25  20.192 -121.550  50.110  -60.890 2145 1377 4.00 0
 NDFD   1 LCC  25  -95  25  20.190 -121.550  50.110  -60.890 1073 689 4.00 0
 MRF    2 CED   0    0   0 -90.000    0.000  90.000   -2.500 144  73 4.00 0

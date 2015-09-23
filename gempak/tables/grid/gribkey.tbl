@@ -1,6 +1,7 @@
 ! M. James/Unidata	04/13	Added NAVGEM
 !			03/14	Added fFFF to split NAVGEM global
 !			10/14	Added NGRID HRRR, renamed FSL HRRR directory 
+!			09/15	Fixed FNEXRAD entries
 !
 !center sub modelid grid   Output grid file name                   max_grids
 !
@@ -210,7 +211,8 @@
 007   x   109       255    data/gempak/model/rtma/YYYYMMDDHH_rtma.gem  200
 !
 ! Unidata RADAR mosaic
-060   1     1       @@@    YYYYMMDDHHNN_nexr.gem 500
-060   1     2       @@@    YYYYMMDDHHNN_nexf.gem 500
+060   1     1       @@@    data/gempak/radar/YYYYMMDDHHNN_nexr.gem 500
+060   1   255       @@@    data/gempak/radar/YYYYMMDD_nexr.gem 500
+060   1     2       @@@    data/gempak/radar/YYYYMMDDHHNN_nexf.gem 500
 ! ESTOFS
 007   4   014       255    data/gempak/model/estofs/YYYYMMDDHH_estofs.gem   1000
