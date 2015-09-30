@@ -140,13 +140,11 @@ EXAMPLES
          ECHO     = 1
          CLRBAR   = 1
          LUTFIL   =
-         IMBAR    =
-	 OUTPUT   = T
 
     2.  Overlay the IR satellite imagery with RCM data for the US west coast.
         Use a DITHER value of 2 to for moderate transparency. Plot the radar
         CLRBAR horizontally above title. Satellite CLRBAR will be vertical along
-        the left side of the image (default location from IMBAR).
+        the left side of the image.
 
          GAREA    = ca-
          PROJ     = sat
@@ -170,40 +168,6 @@ EXAMPLES
          ECHO     = 1
          CLRBAR   = 1/h/cc/.46;.06
          LUTFIL   = default
-         IMBAR    = 1
-	 OUTPUT   = T
-
-    3.  Display the current RCM data using the RCMDAT file template and allow
-        searching back 90 minutes. Do not filter TVS plotting, use a filter
-        of .3 for MESO plotting, a filter of .5 for CNTR, and 1.0 (aka YES)
-        for MAXTOP plotting. Send summary output to the terminal as well as
-        to a file named rcm.summary.
-
-         MAP      = 8
-         GAREA    = us
-         PROJ     = str/90;-105;0
-         SATFIL   =
-         RADFIL   =
-         LATLON   = 0
-         PANEL    = 0
-         TITLE    = 1/-1/Radar Summary
-         TEXT     = .9/22/1/hw
-         CLEAR    = YES
-         DEVICE   = xw
-         RCMFIL   = rcmdat
-         RADTIM   = current
-         RADDUR   = 90
-         DITHER   = 0
-         MESO     = 2/1/1/1/hw;.3
-         TVS      = 2/2/1/2/hw;n
-         CNTR     = 1/.7/1;.5
-         MAXTOP   = 6;y
-         RADINFO  = 5
-         ECHO     = 1
-         CLRBAR   = 0
-         LUTFIL   =
-         IMBAR    =
-         OUTPUT   = tf/rcm.summary
 
 
 ERROR MESSAGES

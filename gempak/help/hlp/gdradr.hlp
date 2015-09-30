@@ -76,7 +76,7 @@ PROGRAM DESCRIPTION
 
 EXAMPLES
  
-    1.  Create a 4km National composite of NEXRAD base reflectivity (N0R)
+    1.  Create a 4km National composite of NEXRAD base reflectivity (N0Q)
         and echo tops (NET). Use the current time with a 30 minute window
         for data. Rerun the mosaic creation continuously with a 5 minute
         wait period between each update. Use the nexrad.tbl station table.
@@ -87,7 +87,7 @@ EXAMPLES
         PROJ     = lcc/25;-103;60
         GRDAREA  = 23.0;-120.0;47.0;-65.0
         KXKY     = 720;500
-        GDPFUN   = n0r ! net
+        GDPFUN   = n0q ! net
         GDFILE   = YYYYMMDD_radr.gem
         RADTIM   = current
         RADDUR   = 30

@@ -22,4 +22,4 @@ ECHO    Plot radar echoes (0,1,2)
 CLRBAR  Color/ornt/anch/x;y/ln;wd/freq|text_info                                
 LUTFIL  Enhancement lookup table filename                                       
 IMBAR   Color/ornt/anch/x;y/ln;wd/freq|text_info                                
-OUTPUT  Output device/filename                                                  
+OUTPUT  Output device/filename
