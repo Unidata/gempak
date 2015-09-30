@@ -23,7 +23,6 @@ SUBDIRS = \
 	gdplot \
 	gdprof \
 	gdptpdf \
-	gdpvsf \
 	gdstat \
 	gdstream \
 	gdthgt \

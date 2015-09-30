@@ -65,7 +65,6 @@ C* S.Gilbert/NCEP	06/07	Moved all grid processing to GDPLTC     *
 C* S.Gilbert/NCEP	07/07	Changed DG_SUBG to DG_SUBGN		*
 C* S.Gilbert/NCEP	07/07	Removed DG_KXKY query			*
 C* S. Jacobs/NCEP	 8/13	Initialized scavld and vctvld		*
-C* M. James/Unidata     04/14   Fix for default projection on grids     *
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 	INCLUDE         'gdplot.cmn'
@@ -78,8 +77,8 @@ C*
      +			gvcord*(LLMXLN), gdpfun*(LLMXLN),
      +			map*(LLMXLN), title*(LLMXLN), 
      +			proj*(LLMXLN), garea*(LLMXLN), 
-     +			text*(LLMXLN), projc*(LLMXLN),
-     +			shrttl*(LLMXLN), angles*(LLMXLN),
+     +			text*(LLMXLN), 
+     +			shrttl*(LLMXLN), 
      +			ijskip*(LLMXLN)
 C*
 	CHARACTER	time (2)*20, ttlstr*128, garout*(LLMXLN),
@@ -94,7 +93,6 @@ c	REAL		fi(IWNDMX), fj(IWNDMX), s(IWNDMX), d(IWNDMX)
 	LOGICAL		exist
 	LOGICAL		pltmap(MAXB), mapp
 	CHARACTER	prfxtt*(*), prjout*(LLMXLN)
-        REAL            anlblk(LLNANL), rnav(LLNNAV)
 C
 	INCLUDE		'ERMISS.FNC'
 C*
@@ -199,27 +197,10 @@ C
 	    END IF
 	    CALL DG_INXT ( .true., .true., time, iret )
 	    proces = ( iret .eq. 0 )
-
-C
-C*          .
-C
-            IF  ( proces .and. lprmap )  THEN
-                IF  ( proj(1:3) .eq. 'DEF' ) THEN
-                    CALL DG_QREF ( LLNANL, LLNNAV, anlblk, rnav,
-     +                                      mxgrd, iret )
-                    CALL ST_ITOC  ( rnav (2), 1, projc, ier )
-                    IF ( ( projc(1:3) .eq. 'STR' ) .or.
-     +                   ( projc(1:3) .eq. 'LCC' ) .or.
-     +                   ( projc(1:3) .eq. 'SCC' ) ) THEN
-                        CALL ST_LSTF ( rnav(11:13), 3, ';', 1, 
-     +                      angles, ier)
-                        CALL ST_LCUC ( projc(1:3) // '/' // angles, 
-     +                      projc, ier)
-                    END IF
-	            CALL ST_LCUC ( projc, proj, ier )
-                END IF
 C
 C*          Set the map projection and graphics area.
+C
+            IF  ( proces .and. lprmap )  THEN
 C
                 IF  ( ( proj(1:3) .ne. 'SAT' ) .and.
      +                ( proj(1:3) .ne. 'RAD' ) )  THEN
