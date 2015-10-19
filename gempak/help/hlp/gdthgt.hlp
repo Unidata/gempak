@@ -64,7 +64,7 @@ EXAMPLES
 	GVCORD	 =  PRES
 	GFUNC	 =  temp
 	GVECT	 =  wnd
-	GDFILE	 =  $GEMPAK/data/HRCBOB.GRD
+	GDFILE	 =  $GEMPAK/data/hrcbob.grd
 	PTYPE	 =  log
 	TAXIS	 =
 	YAXIS	 =  /50
@@ -90,7 +90,7 @@ EXAMPLES
 	GVCORD	 =  PRES
 	GFUNC	 =  adv(avor(obs);obs)
 	GVECT	 =  wnd/G
-	GDFILE	 =  $GEMPAK/data/HRCBOB.GRD
+	GDFILE	 =  $GEMPAK/data/hrcbob.grd
 	PTYPE	 =  log
 	TAXIS	 =
 	YAXIS	 =  /50

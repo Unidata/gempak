@@ -2,7 +2,7 @@ GDATTIM f24
 GLEVEL  850                                                                     
 GVCORD  PRES                                                                    
 GVECT   wnd                                                                     
-GDFILE  $GEMPAK/data/HRCBOB.GRD                                                     
+GDFILE  $GEMPAK/data/hrcbob.grd                                                     
 GAREA   oh-                                                                     
 SATFIL                                                                          
 RADFIL                                                                          

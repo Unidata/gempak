@@ -3,7 +3,7 @@ GDATTIM all
 GLEVEL  500                                                                     
 GVCORD  pres                                                                    
 GFUNC   tmpc                                                                    
-GDFILE  $GEMPAK/data/HRCBOB.GRD                                                     
+GDFILE  $GEMPAK/data/hrcbob.grd                                                     
 PTYPE   lin/.5                                                                  
 TAXIS   18/21-20/03                                                             
 YAXIS   -15/15/3                                                                 

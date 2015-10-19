@@ -2,7 +2,7 @@ GDATTIM /f24
 GLEVEL  300                                                                     
 GVCORD  PRES                                                                    
 GFUNC   div(wnd)                                                                
-GDFILE  $GEMPAK/data/HRCBOB.GRD                                                     
+GDFILE  $GEMPAK/data/hrcbob.grd                                                     
 GAREA   east                                                                    
 PROJ    lcc                                                                     
 SCALE   999                                                                     

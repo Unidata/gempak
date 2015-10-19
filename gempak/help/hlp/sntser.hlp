@@ -65,7 +65,7 @@ EXAMPLES
 	hardware font 2 for the text and plot the relative
 	humidity using a solid green line.
 
-	SNFILE	 =  $GEMPAK/data/HRCBOB.SND
+	SNFILE	 =  $GEMPAK/data/hrcbob.snd
 	DATTIM	 =  all
 	TAXIS	 =
 	LEVELS	 =  850
@@ -88,7 +88,7 @@ EXAMPLES
 	18/00 and 20/00.  Plot the line with a thick short
 	dashed pattern.  Use asterisks for the markers.
 
-	SNFILE	 =  $GEMPAK/data/HRCBOB.SND
+	SNFILE	 =  $GEMPAK/data/hrcbob.snd
 	DATTIM	 =  all
 	TAXIS	 =  18/00-20/00
 	LEVELS	 =  850

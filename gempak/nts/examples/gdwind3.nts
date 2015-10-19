@@ -2,7 +2,7 @@ GDATTIM f18
 GLEVEL  850                                                                     
 GVCORD  PRES                                                                    
 GVECT   grad(tmpc)                                                              
-GDFILE  $GEMPAK/data/HRCBOB.GRD                                                     
+GDFILE  $GEMPAK/data/hrcbob.grd                                                     
 GAREA   ny-                                                                     
 SATFIL                                                                          
 RADFIL                                                                          

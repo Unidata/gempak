@@ -31,7 +31,7 @@ EXAMPLES
     1.	List the parameters in the data set for the stations IAD
 	and ACY for the last time in the data file.
 
-	SNFILE	 =  $GEMPAK/data/HRCBOB.SND
+	SNFILE	 =  $GEMPAK/data/hrcbob.snd
 	AREA	 =  @iad;acy
 	DATTIM	 =  last
 	OUTPUT	 =  t

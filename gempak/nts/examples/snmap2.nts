@@ -6,7 +6,7 @@ SNPARM  ;;tmpc<-8;;hght;;;;;lift*10
 DATTIM  all                                                                     
 LEVELS  500                                                                     
 VCOORD  pres                                                                    
-SNFILE  $GEMPAK/data/HRCBOB.SND                                                     
+SNFILE  $GEMPAK/data/hrcbob.snd                                                     
 COLORS  2;5;3                                                                   
 MAP     1                                                                       
 LATLON  2/10/1/1/10;10                                                          

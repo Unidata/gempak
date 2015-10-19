@@ -4,7 +4,7 @@ SATFIL  $GEMPAK/data/VIS_910819_1801
 RADFIL                                                                          
 SFPARM  skyc:.75;tmpf;wsym:.75;smsl;ptnd;dwpf;stid;;vsby*10;brbk:1:2            
 DATTIM  910819/1800                                                             
-SFFILE  $GEMPAK/data/HRCBOB.SFC                                                     
+SFFILE  $GEMPAK/data/hrcbob.sfc                                                     
 COLORS  26;2;7;25;20;22;18;24;6                                                 
 MAP     1                                                                       
 LATLON  2/10/1/1/5;5                                                            

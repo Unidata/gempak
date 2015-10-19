@@ -27,7 +27,7 @@ EXAMPLES
 	to 100 mb.  Use hardware font 2 for the text and display 
 	the hodograph in a XW window named snhodo.
 
-	SNFILE	 =  $GEMPAK/data/HRCBOB.SND
+	SNFILE	 =  $GEMPAK/data/hrcbob.snd
 	AREA	 =  @chh
 	LINE	 =  3
 	MARKER	 =  1 
@@ -48,7 +48,7 @@ EXAMPLES
 	24000 meters.  Draw the x and y axes from -10 to
 	40 meters/sec.
  
-	SNFILE	 =  $GEMPAK/data/HRCBOB.SND
+	SNFILE	 =  $GEMPAK/data/hrcbob.snd
 	AREA	 =  @chh
 	LINE	 =  3
 	MARKER	 =  1 

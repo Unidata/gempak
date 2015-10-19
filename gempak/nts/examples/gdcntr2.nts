@@ -2,7 +2,7 @@ GDATTIM all
 GLEVEL  700                                                                     
 GVCORD  PRES                                                                    
 GFUNC   dwpc                                                                    
-GDFILE  $GEMPAK/data/HRCBOB.GRD                                                     
+GDFILE  $GEMPAK/data/hrcbob.grd                                                     
 CINT    5                                                                       
 LINE    17/-3/1/2                                                               
 MAP     0                                                                       

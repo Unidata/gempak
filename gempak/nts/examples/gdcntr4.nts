@@ -2,7 +2,7 @@ GDATTIM f24
 GLEVEL  700                                                                     
 GVCORD  PRES                                                                    
 GFUNC   avor(wnd)                                                               
-GDFILE  $GEMPAK/data/HRCBOB.GRD                                                     
+GDFILE  $GEMPAK/data/hrcbob.grd                                                     
 CINT    2                                                                       
 LINE    2/1/2                                                                   
 MAP     1                                                                       

@@ -3,7 +3,7 @@ GDATTIM f06
 GVCORD  pres                                                                    
 GFUNC   tmpc                                                                    
 GVECT   wnd                                                                     
-GDFILE  $GEMPAK/data/HRCBOB.GRD                                                     
+GDFILE  $GEMPAK/data/hrcbob.grd                                                     
 WIND    bm6//2                                                                  
 REFVEC  10                                                                      
 PTYPE   log                                                                     

@@ -59,7 +59,7 @@ EXAMPLES
 	thunderstorms and dewpoint temperatures greater than
 	65 degrees Fahrenheit.
 
-	SFFILE	 =  $GEMPAK/data/HRCBOB.SFC
+	SFFILE	 =  $GEMPAK/data/hrcbob.sfc
 	AREA	 =  @PA
 	DATTIM	 =  /05-06
 	SFPARM	 =  tmpf;dwpf>65;pmsl;wthr=t

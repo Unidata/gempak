@@ -100,7 +100,7 @@ EXAMPLES
 	at the bottom and the weather symbols at the top in color
 	6.
 
-	SFFILE	 =  $GEMPAK/data/HRCBOB.SFC
+	SFFILE	 =  $GEMPAK/data/hrcbob.sfc
 	DATTIM	 =  all
 	STATION	 =  pwm
 	TRACE1	 =  tmpf;dwpf:3/2;3
@@ -122,7 +122,7 @@ EXAMPLES
 	is plotted with a solid line using color 2 and DWPF is
 	plotted with a dashed line using color 3.
 
-	SFFILE	 =  $GEMPAK/data/HRCBOB.SFC
+	SFFILE	 =  $GEMPAK/data/hrcbob.sfc
 	DATTIM	 =  all
 	STATION	 =  pwm;bwi;hat
 	TRACE1	 =  tmpf;dwpf:3/2;3

@@ -41,7 +41,7 @@ EXAMPLES
     1.	List the data for all stations in Pennsylvania at
 	the most recent time.
 
-	SFFILE	 =  $GEMPAK/data/HRCBOB.SFC
+	SFFILE	 =  $GEMPAK/data/hrcbob.sfc
 	AREA	 =  @pa
 	DATTIM	 =  last
 	OUTPUT	 =  t
@@ -51,7 +51,7 @@ EXAMPLES
 
     2.	List the data for all times at PHL.
 
-	SFFILE	 =  $GEMPAK/data/HRCBOB.SFC
+	SFFILE	 =  $GEMPAK/data/hrcbob.sfc
 	AREA	 =  @phl
 	DATTIM	 =  all
 	OUTPUT	 =  t
@@ -62,7 +62,7 @@ EXAMPLES
     3.	List all stations in Pennsylvania, including nonreporting
 	stations for the last time.
 
-	SFFILE	 =  $GEMPAK/data/HRCBOB.SFC
+	SFFILE	 =  $GEMPAK/data/hrcbob.sfc
 	AREA	 =  @pa
 	DATTIM	 =  last
 	OUTPUT	 =  t
@@ -73,7 +73,7 @@ EXAMPLES
     4.	List all stations in Pennsylvania where there are reported
 	thunderstorms.
 
-	SFFILE	 =  $GEMPAK/data/HRCBOB.SFC
+	SFFILE	 =  $GEMPAK/data/hrcbob.sfc
 	AREA	 =  @pa
 	DATTIM	 =  LAST
 	OUTPUT	 =  t

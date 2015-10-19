@@ -1,4 +1,4 @@
-SFFILE  $GEMPAK/data/HRCBOB.SFC                                                     
+SFFILE  $GEMPAK/data/hrcbob.sfc                                                     
 AREA    @pit;bwi                                                                
 DATTIM  /05-06                                                                  
 SFPARM  tmpf;dwpf;pmsl;wthr                                                     

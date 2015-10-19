@@ -6,7 +6,7 @@ SNPARM  brbk:1:2:112;tmpc;;stdz;;dpdc;stid
 DATTIM  all                                                                     
 LEVELS  850                                                                     
 VCOORD  pres                                                                    
-SNFILE  $GEMPAK/data/HRCBOB.SND                                                     
+SNFILE  $GEMPAK/data/hrcbob.snd                                                     
 COLORS  6;2;5;3;18                                                              
 MAP     1                                                                       
 LATLON  2/10/1/1/10;10                                                          

@@ -1,5 +1,5 @@
-GDFILE  $GEMDATA/HRCBOB.GRD        
-GDOUTF  $GEMDATA/HRCBOB.GRD
+GDFILE  $GEMPAK/data/hrcbob.grd        
+GDOUTF  $GEMPAK/data/hrcbob.grd
 GDATTM  F12   
 GFUNC   pvor(thta,obs)                                                         
 GVCORD  pres                                                                    

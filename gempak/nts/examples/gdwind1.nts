@@ -2,7 +2,7 @@ GDATTIM f18
 GLEVEL  850                                                                     
 GVCORD  PRES                                                                    
 GVECT   WND                                                                     
-GDFILE  $GEMPAK/data/HRCBOB.GRD                                                     
+GDFILE  $GEMPAK/data/hrcbob.grd                                                     
 GAREA   dset                                                                    
 SATFIL  $GEMPAK/data/VIS_910819_1801                                                
 RADFIL                                                                          

@@ -55,7 +55,7 @@ GBFILE
 GBTBLS                                                                                                                                  
 GDATTIM LAST                                                                                                                            
 GDEFIL  GDLIST.FIL                                                                                                                      
-GDFILE  $GEMDATA/HRCBOB.GRD                                                                                                             
+GDFILE  $GEMPAK/data/hrcbob.grd                                                                                                             
 GDNUM   LIST                                                                                                                            
 GDOUTF                                                                                                                                  
 GDPFUN  TMPC                                                                                                                            
@@ -143,7 +143,7 @@ SAVFIL
 SCALE   999                                                                                                                             
 SEARCH  20                                                                                                                              
 SFEFIL  SFLIST.FIL                                                                                                                      
-SFFILE  $GEMDATA/HRCBOB.SFC                                                                                                             
+SFFILE  $GEMPAK/data/hrcbob.sfc                                                                                                             
 SFFSRC                                                                                                                                  
 SFOUTF                                                                                                                                  
 SFPARM  SKYC;TMPF;WSYM;PMSL;;DWPF;BRBK                                                                                                  
@@ -161,7 +161,7 @@ SKIP    0
 SKPMIS  NO                                                                                                                              
 SNBUFR                                                                                                                                  
 SNEFIL  SNLIST.FIL                                                                                                                      
-SNFILE  $GEMDATA/HRCBOB.SND                                                                                                             
+SNFILE  $GEMPAK/data/hrcbob.snd                                                                                                             
 SNOUTF                                                                                                                                  
 SNPARM  ;TMPC;;HGHT;DWPC;BRBM                                                                                                           
 SNPRMF  SNMERG.PACK                                                                                                                     

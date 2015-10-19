@@ -2,7 +2,7 @@ GDATTIM /f24
 GLEVEL  850                                                                     
 GVCORD  PRES                                                                    
 GFUNC   dwpc                                                                    
-GDFILE  $GEMPAK/data/HRCBOB.GRD                                                     
+GDFILE  $GEMPAK/data/hrcbob.grd                                                     
 GAREA   ny*                                                                     
 PROJ    lcc                                                                     
 SCALE   999                                                                     

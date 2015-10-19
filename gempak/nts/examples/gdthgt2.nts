@@ -3,7 +3,7 @@ GDATTIM all
 GVCORD  PRES                                                                    
 GFUNC   adv(avor(obs);obs)                                                      
 GVECT   wnd                                                                     
-GDFILE  $GEMPAK/data/HRCBOB.GRD                                                     
+GDFILE  $GEMPAK/data/hrcbob.grd                                                     
 PTYPE   log                                                                     
 TAXIS                                                                           
 YAXIS   /50                                                                     

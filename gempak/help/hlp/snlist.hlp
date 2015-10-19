@@ -49,7 +49,7 @@ EXAMPLES
 	and ACY at the mandatory levels.  Also list the Showalter,
 	lifted and K indices.
 
-	SNFILE	 =  $GEMPAK/data/HRCBOB.SND
+	SNFILE	 =  $GEMPAK/data/hrcbob.snd
 	AREA	 =  @iad;acy
 	DATTIM	 =  last
 	SNPARM	 =  dset
@@ -61,7 +61,7 @@ EXAMPLES
 
     2.	List the unmerged data from IAD.
 
-	SNFILE	 =  $GEMPAK/data/HRCBOB.SND
+	SNFILE	 =  $GEMPAK/data/hrcbob.snd
 	AREA	 =  @iad
 	DATTIM	 =  last
 	SNPARM	 =  dset
@@ -76,7 +76,7 @@ EXAMPLES
         surfaces from 300 to 400 degrees in 10-degree increments.
         Change the station to ACY.
 
-	SNFILE	 =  $GEMPAK/data/HRCBOB.SND
+	SNFILE	 =  $GEMPAK/data/hrcbob.snd
 	AREA	 =  @acy
 	DATTIM	 =  last
 	SNPARM	 =  pres;mixr;uwnd;vwnd;psym

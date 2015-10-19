@@ -2,7 +2,7 @@ GDATTIM f18
 GLEVEL  850                                                                     
 GVCORD  pres                                                                    
 GFUNC   sub(tmpc,dwpc)                                                          
-GDFILE  $GEMPAK/data/HRCBOB.GRD                                                     
+GDFILE  $GEMPAK/data/hrcbob.grd                                                     
 GAREA   ne                                                                      
 SATFIL                                                                          
 RADFIL                                                                          

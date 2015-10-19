@@ -3,7 +3,7 @@ GDATTIM f06
 GVCORD  pres                                                                    
 GFUNC   adv(avor(wnd),wnd)                                                      
 GVECT   circ(age;omeg)                                                          
-GDFILE  $GEMPAK/data/HRCBOB.GRD                                                     
+GDFILE  $GEMPAK/data/hrcbob.grd                                                     
 WIND    am6//2//.75                                                             
 REFVEC  5;.05;.2                                                                
 PTYPE   log/.25                                                                 
