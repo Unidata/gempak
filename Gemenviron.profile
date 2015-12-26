@@ -16,7 +16,7 @@
 #  Please configure the following definitions to reflect your system:
 #
 # Top level directory:
-NAWIPS=/home/gempak/NAWIPS
+NAWIPS=/Users/mj/gempak
 #
 # Make sure NAWIPS directory exists
 #

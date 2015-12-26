@@ -1,4 +1,3 @@
-#
 #	Makefile for GEMPAK 6.0
 #		Builds program makefiles
 #		Unidata 11/99 Chiz
@@ -49,7 +48,7 @@ all : $(ALIB) $(PROG)
 
 $(PROG): $(COBJS) $(LIBINC) $(PROG.c)
 	$(COMPILE.c) $(PROG.c)
-	$(LINK.f) $(NOFORMAIN) $@.o $(COBJS) $(LIBINC) $(XMLDEP) -lm -lrt -o $@
+	$(LINK.f) $(NOFORMAIN) $@.o $(COBJS) $(LIBINC) $(XMLDEP) -lm -o $@
 
 clean:
 	$(RM) *.o $(PROG)

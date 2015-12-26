@@ -185,7 +185,7 @@ $(PROG) : $(ALIB) nmap2.c
 	$(LINK.f) -o $@ $(NOFORMAIN) \
 		nmap2.o \
 		$(LIBINC) \
-		$(GUILIBS) $(ICONVLIB) $(SYSLIBS) -lm -lrt
+		$(GUILIBS) $(ICONVLIB) $(SYSLIBS) -lm 
 
 $(ALIB): $(NMAP_OBJS)
 	$(AR) $(ARFLAGS) $@ *.o

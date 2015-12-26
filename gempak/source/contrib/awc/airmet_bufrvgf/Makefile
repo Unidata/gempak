@@ -51,7 +51,7 @@ all : $(ALIB) $(PROG)
 
 $(PROG): $(COBJS) $(LIBINC) $(PROG.c)
 	$(COMPILE.c) $(PROG.c)
-	$(LINK.f) $(NOFORMAIN) $@.o $(COBJS) $(LIBINC) $(XMLDEP) -lm -lrt -o $@
+	$(LINK.f) $(NOFORMAIN) $@.o $(COBJS) $(LIBINC) $(XMLDEP) -lm -o $@
 
 clean:
 	$(RM) *.o $(PROG)
