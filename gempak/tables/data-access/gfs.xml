@@ -17,7 +17,7 @@
     <filetype type="MFGD" source="MFGRID" />
 
     <!-- The host where the EDEX is running :: This may change for each site -->
-    <dbserver host="ec" />
+    <dbserver host="edex-cloud.unidata.ucar.edu" />
 
     <!-- The database table name :: DO NOT CHANGE -->
     <dbtable name="grid" />
@@ -25,10 +25,10 @@
     <!-- The Rows, Columns, Headers and Parts identify the Python scripts and
     	 equate information to the GEMPAK data structure ::
     	 ONLY change the DBKEY value in each section -->
-    <rows pyfile="GridInfoRetriever" pymeth="getrow" dbkey="GFS230">
+    <rows pyfile="GridInfoRetriever" pymeth="getrow" dbkey="GFS40">
 	<row name="GRID" />
     </rows>
-    <columns pyfile="GridInfoRetriever" pymeth="getinfo" dbkey="GFS230">
+    <columns pyfile="GridInfoRetriever" pymeth="getinfo" dbkey="GFS40">
 	<column name="GDT1" />
 	<column name="GTM1" />
 	<column name="GDT2" />
@@ -41,8 +41,8 @@
 	<column name="GPM3" />
     </columns>
     <headers>
-	<header name="NAVB" type="MDREAL" length="256" pyfile="GridNavRetriever" pymeth="getnavb" dbkey="GFS230" />
-	<header name="ANLB" type="MDREAL" length="128" pyfile="GridNavRetriever" pymeth="getanlb" dbkey="GFS230" />
+	<header name="NAVB" type="MDREAL" length="256" pyfile="GridNavRetriever" pymeth="getnavb" dbkey="GFS40" />
+	<header name="ANLB" type="MDREAL" length="128" pyfile="GridNavRetriever" pymeth="getanlb" dbkey="GFS40" />
     </headers>
     <parts>
 	<part name="GRID" type="MDGRID" pyfile="GridDataRetriever" pymethdata="getgriddata" pymethhdr="getheader">

@@ -227,6 +227,7 @@
 A2METAR      AWIPSDB                   metar.xml                                        CAT_SFC  SCAT_SFC   10   2880     -1      OFF/0/0                4
 A2SYNOP      AWIPSDB                   synop.xml                                        CAT_SFC  SCAT_SFC   10   2880     -1      OFF/0/0                4
 A2UAIR       AWIPSDB                   uair.xml                                         CAT_SND  SCAT_SND    4   2880     -1      OFF/0/0      4
+A2GFS        AWIPSDB                   gfs.xml                                          CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
 !
 ! OPC Lightning Strike Density Grids
 OPCLTNG      $MODEL/opc	               YYYYMMDDHHNN.30.grd                              CAT_GRD  SCAT_ANL   -1    720      1      OFF/0/0      4
@@ -621,6 +622,7 @@ GFS004       $MODEL/gfs0.5deg          YYYYMMDDHHfFFF_gfs.gem                   
 GFS160       $MODEL/gfs                YYYYMMDDHH_gfs160.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
 GFS161       $MODEL/gfs                YYYYMMDDHH_gfs161.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
 GFS211       $MODEL/gfs                YYYYMMDDHH_gfs211.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
+GFS40        $MODEL/gfs                YYYYMMDDHH_gfs212.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
 GFS212       $MODEL/gfs                YYYYMMDDHH_gfs212.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
 GFS213       $MODEL/gfs                YYYYMMDDHH_gfs213.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
 GFS254       $MODEL/gfs                YYYYMMDDHH_gfs254.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
