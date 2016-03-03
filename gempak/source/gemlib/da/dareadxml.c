@@ -24,8 +24,8 @@ void da_readxml ( char *filename, int *iflno, int *iret )
  **									*
  * Log:									*
  * S. Jacobs/NCEP	 6/13	Created					*
- * M. James/UCAR	 3/16	Removed dbserver from A2 xml files and	*
- * 				use envvar for EDEX server		*
+ * M. James/UCAR	 3/16	Made dbserver optional to overwrite 	*
+ * 				envvar EDEX_SERVER			*
  ************************************************************************/
 {
     xmlDoc	*doc = NULL;
@@ -49,12 +49,13 @@ void da_readxml ( char *filename, int *iflno, int *iret )
     if (strlen(getenv("EDEX_SERVER")) > 0) {
 	common[gflnum].dbserver = (char *)malloc(strlen(getenv("EDEX_SERVER")));
 	strcpy ( common[gflnum].dbserver, getenv("EDEX_SERVER") );
-	printf("%s\n",common[gflnum].dbserver);
     }
 
     /* Get the root element node and start the processing */
     root_element = xmlDocGetRootElement(doc); 
     process_elements(root_element);
+
+    printf(" Requesting from %s\n",common[gflnum].dbserver);
 
     /* Clean up the XML reader when finished */
     xmlFreeDoc ( doc );
@@ -127,7 +128,6 @@ static void process_elements ( xmlNode *a_node )
  		    if ( strcmp((char *)attr->name,"host") == 0 ) {
  			common[gflnum].dbserver = (char *)malloc(strlen((char *)attr->children->content));
  			strcpy ( common[gflnum].dbserver, (char *)attr->children->content );
-			printf("%s\n",common[gflnum].dbserver);
  		    }
  		}
  	    }

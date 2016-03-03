@@ -38,6 +38,8 @@ C
 C
 C*	Read the contents of the configuration file into the structure
 C
+	WRITE(*,*) ""
+	WRITE(*,*) "Using ", fullname
 	CALL DA_READXML ( fullname, iflno, ierr )
 	IF  ( ierr .ne. 0 )  THEN
 	    CALL ER_WMSG ( 'DA', ierr, fullname, ier )
