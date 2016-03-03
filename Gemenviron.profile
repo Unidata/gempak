@@ -1,7 +1,7 @@
 # Gemenviron file for GEMPAK
 #
 # Please configure the following definitions to reflect your system:
-NAWIPS=/home/awips/gempak
+NAWIPS=/home/gempak/NAWIPS
 export EDEX_SERVER="edex-cloud.unidata.ucar.edu"
 #
 #		Sets environment variables used in running GEMPAK
