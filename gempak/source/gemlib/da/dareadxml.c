@@ -24,6 +24,8 @@ void da_readxml ( char *filename, int *iflno, int *iret )
  **									*
  * Log:									*
  * S. Jacobs/NCEP	 6/13	Created					*
+ * M. James/UCAR	 3/16	Removed dbserver from A2 xml files and	*
+ * 				use envvar for EDEX server		*
  ************************************************************************/
 {
     xmlDoc	*doc = NULL;
@@ -113,14 +115,8 @@ static void process_elements ( xmlNode *a_node )
 	    }
 
 	    /* Save the AWIPS database server name */
-	    if ( strcmp((char *)cur_node->name,"dbserver") == 0 ) {
-		for (attr = cur_node->properties; attr; attr = attr->next) {
-		    if ( strcmp((char *)attr->name,"host") == 0 ) {
-			common[gflnum].dbserver = (char *)malloc(strlen((char *)attr->children->content));
-			strcpy ( common[gflnum].dbserver, (char *)attr->children->content );
-		    }
-		}
-	    }
+	    common[gflnum].dbserver = (char *)malloc(strlen(getenv("EDEX_SERVER")));
+	    strcpy ( common[gflnum].dbserver, getenv("EDEX_SERVER") );
 
 	    /* Save the AWIPS database table name */
 	    if ( strcmp((char *)cur_node->name,"dbtable") == 0 ) {

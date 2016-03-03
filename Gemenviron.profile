@@ -1,5 +1,9 @@
 # Gemenviron file for GEMPAK
 #
+# Please configure the following definitions to reflect your system:
+NAWIPS=/home/awips/gempak
+export EDEX_SERVER="edex-cloud.unidata.ucar.edu"
+#
 #		Sets environment variables used in running GEMPAK
 #               Modified  3/04 for Gempak5.7/NAWIPS (Chiz)
 #---------------------------------------------------------------------
@@ -13,10 +17,6 @@
 # To build GEMPAK on your system, you should set the NAWIPS variable 
 # below to the top level of the source distribution tree on your system.
 #
-#  Please configure the following definitions to reflect your system:
-#
-# Top level directory:
-NAWIPS=/home/gempak/NAWIPS
 #
 # Make sure NAWIPS directory exists
 #
@@ -317,8 +317,8 @@ else
       ARCH="64"
     fi
 fi
-
-export LD_LIBRARY_PATH=/lib${ARCH}:/usr/lib${ARCH}:${OS_LIB}
+# this is needed for the build, and not required at runtime
+export LD_LIBRARY_PATH=/lib${ARCH}:/usr/lib${ARCH}:${OS_LIB}:${LD_LIBRARY_PATH}
 export PYINC="-I${PYHOME}/include/python${pv}.${pr}"
 export PYLIB="-L${PYHOME}/lib${ARCH} -lpython${pv}.${pr}"
 export WITHPY="-DWITHPYTHON"

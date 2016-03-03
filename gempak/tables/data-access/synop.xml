@@ -16,9 +16,6 @@
     <!-- The filetype attributes define this as a SURFACE data set :: DO NOT CHANGE -->
     <filetype type="MFSF" source="MFSYNP" rawtext="MFTEXT" />
 
-    <!-- The host where the EDEX is running :: This may change for each site -->
-    <dbserver host="ec" />
-
     <!-- The database table name :: DO NOT CHANGE -->
     <dbtable name="sfcobs" />
 

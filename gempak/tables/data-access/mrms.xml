@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tns:GempakDataAccess xmlns:tns="http://www.example.org/GempakDataAccess" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/GempakDataAccess GempakDataAccess.xsd ">
-
+<tns:GempakDataAccess xmlns:tns="http://www.example.org/GempakDataAccess"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.example.org/GempakDataAccess/GempakDataAccess.xsd ">
     <filelabel text="AWIPS DB CONFIGURATION FILE" version="1" />
     <filetype type="MFGD" source="MFGRID" />
     <dbtable name="grid" />
-    <rows pyfile="GridInfoRetriever" pymeth="getrow" dbkey="NAM12">
+    <rows pyfile="GridInfoRetriever" pymeth="getrow" dbkey="MRMS_1000">
 	<row name="GRID" />
     </rows>
-    <columns pyfile="GridInfoRetriever" pymeth="getinfo" dbkey="NAM12">
+    <columns pyfile="GridInfoRetriever" pymeth="getinfo" dbkey="MRMS_1000">
 	<column name="GDT1" />
 	<column name="GTM1" />
 	<column name="GDT2" />
@@ -20,8 +21,8 @@
 	<column name="GPM3" />
     </columns>
     <headers>
-	<header name="NAVB" type="MDREAL" length="256" pyfile="GridNavRetriever" pymeth="getnavb" dbkey="NAM12" />
-	<header name="ANLB" type="MDREAL" length="128" pyfile="GridNavRetriever" pymeth="getanlb" dbkey="NAM12" />
+	<header name="NAVB" type="MDREAL" length="256" pyfile="GridNavRetriever" pymeth="getnavb" dbkey="MRMS_1000" />
+	<header name="ANLB" type="MDREAL" length="128" pyfile="GridNavRetriever" pymeth="getanlb" dbkey="MRMS_1000" />
     </headers>
     <parts>
 	<part name="GRID" type="MDGRID" pyfile="GridDataRetriever" pymethdata="getgriddata" pymethhdr="getheader">
@@ -30,5 +31,4 @@
 	    </parameters>
 	</part>
     </parts>
-
 </tns:GempakDataAccess>
