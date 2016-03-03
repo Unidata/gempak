@@ -46,6 +46,12 @@ void da_readxml ( char *filename, int *iflno, int *iret )
 	return;
     }
 
+    if (strlen(getenv("EDEX_SERVER")) > 0) {
+	common[gflnum].dbserver = (char *)malloc(strlen(getenv("EDEX_SERVER")));
+	strcpy ( common[gflnum].dbserver, getenv("EDEX_SERVER") );
+	printf("%s\n",common[gflnum].dbserver);
+    }
+
     /* Get the root element node and start the processing */
     root_element = xmlDocGetRootElement(doc); 
     process_elements(root_element);
@@ -115,8 +121,17 @@ static void process_elements ( xmlNode *a_node )
 	    }
 
 	    /* Save the AWIPS database server name */
-	    common[gflnum].dbserver = (char *)malloc(strlen(getenv("EDEX_SERVER")));
-	    strcpy ( common[gflnum].dbserver, getenv("EDEX_SERVER") );
+
+	    if ( strcmp((char *)cur_node->name,"dbserver") == 0 ) {
+ 		for (attr = cur_node->properties; attr; attr = attr->next) {
+ 		    if ( strcmp((char *)attr->name,"host") == 0 ) {
+ 			common[gflnum].dbserver = (char *)malloc(strlen((char *)attr->children->content));
+ 			strcpy ( common[gflnum].dbserver, (char *)attr->children->content );
+			printf("%s\n",common[gflnum].dbserver);
+ 		    }
+ 		}
+ 	    }
+
 
 	    /* Save the AWIPS database table name */
 	    if ( strcmp((char *)cur_node->name,"dbtable") == 0 ) {

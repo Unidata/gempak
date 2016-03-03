@@ -2,6 +2,8 @@
 <tns:GempakDataAccess xmlns:tns="http://www.example.org/GempakDataAccess"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.example.org/GempakDataAccess/GempakDataAccess.xsd ">
+    <!-- optional -->
+    <!-- <dbserver host="edex-cloud.unidata.ucar.edu" /> -->
     <filelabel text="AWIPS DB CONFIGURATION FILE" version="1" />
     <filetype type="MFGD" source="MFGRID" />
     <dbtable name="grid" />
