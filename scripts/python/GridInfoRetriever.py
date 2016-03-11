@@ -2,7 +2,7 @@ import os
 import sys
 from datetime import datetime
 from operator import itemgetter, attrgetter
-from ufpy import ThriftClient
+from awips import ThriftClient
 from dynamicserialize.dstypes.gov.noaa.nws.ncep.common.dataplugin.gempak.request import GetGridInfoRequest
 
 class GridInfoRetriever:

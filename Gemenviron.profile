@@ -308,7 +308,7 @@ else
     pr="`${PYHOME}/bin/python -V 2>&1 | cut -c8- | cut -d. -f2`"
     if [[ ${pv}${pr} -lt 27 ]] ; then
       echo "python${pv}.${pr} is not supported for GEMPAK. Install python2.7+"
-      exit
+      return
     fi
     export PYTHONPATH="${PYHOME}/lib64/python${pv}.${pr}/site-packages:${PYHOME}/lib/python${pv}.${pr}/site-packages:${NAWIPS}/scripts/python"
     MACHTEST=${MACHTYPE:=`uname -m`}
@@ -318,7 +318,7 @@ else
     fi
 fi
 # this is needed for the build, and not required at runtime
-export LD_LIBRARY_PATH=/lib${ARCH}:/usr/lib${ARCH}:${OS_LIB}:${LD_LIBRARY_PATH}
+export LD_LIBRARY_PATH=/lib${ARCH}:/usr/lib${ARCH}:${OS_LIB}
 export PYINC="-I${PYHOME}/include/python${pv}.${pr}"
 export PYLIB="-L${PYHOME}/lib${ARCH} -lpython${pv}.${pr}"
 export WITHPY="-DWITHPYTHON"

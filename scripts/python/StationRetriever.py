@@ -1,6 +1,6 @@
 import os
 import sys
-from ufpy import ThriftClient
+from awips import ThriftClient
 from dynamicserialize.dstypes.gov.noaa.nws.ncep.common.dataplugin.gempak.request import GetStationsRequest
 
 

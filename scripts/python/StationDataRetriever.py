@@ -1,7 +1,7 @@
 import os
 import sys
 from datetime import datetime
-from ufpy import ThriftClient
+from awips import ThriftClient
 from dynamicserialize.dstypes.com.raytheon.uf.common.time import DataTime
 from dynamicserialize.dstypes.com.raytheon.uf.common.time import TimeRange
 from dynamicserialize.dstypes.gov.noaa.nws.ncep.common.dataplugin.gempak.request import StationDataRequest

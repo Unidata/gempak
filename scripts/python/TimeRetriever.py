@@ -1,6 +1,6 @@
 import os
 from datetime import datetime
-from ufpy import ThriftClient
+from awips import ThriftClient
 from dynamicserialize.dstypes.java.util import GregorianCalendar
 from dynamicserialize.dstypes.gov.noaa.nws.ncep.common.dataplugin.gempak.request import GetTimesRequest
 from dynamicserialize.dstypes.gov.noaa.nws.ncep.common.dataplugin.gempak.request import GetTimesResponse

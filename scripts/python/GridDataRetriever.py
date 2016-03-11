@@ -1,7 +1,7 @@
 import os
 import numpy
 from datetime import datetime
-from ufpy import ThriftClient
+from awips import ThriftClient
 from dynamicserialize.dstypes.gov.noaa.nws.ncep.common.dataplugin.gempak.request import GetGridDataRequest
 
 class GridDataRetriever:
