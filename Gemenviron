@@ -281,14 +281,18 @@ else
     setenv PYHOME "/usr"
     set pv = `$PYHOME/bin/python -V |& cut -c8- | cut -d. -f1`
     set pr = `$PYHOME/bin/python -V |& cut -c8- | cut -d. -f2`
-    if ( ${pv}${pr} -lt 27) then
+    if ( ${pv}${pr} < 27) then
       echo "python${pv}.${pr} is not supported for GEMPAK. Install python2.7+"
       exit
     endif
     setenv PYTHONPATH "${PYHOME}/lib64/python${pv}.${pr}/site-packages:${PYHOME}/lib/python${pv}.${pr}/site-packages:${NAWIPS}/scripts/python"
-    MACHTEST=${MACHTYPE:=`uname -m`}
-    IS64=`echo $MACHTEST | grep -c "_64"`
-    if ( ${IS64} -gt 0 ) then
+    if ( ! $?MACHTYPE ) then
+      # set the MACHTYPE
+      set MACHTYPE = `uname -m`
+    endif 
+    set MACHTEST = `echo $MACHTYPE | grep -c "_64"`
+    set IS64 = `echo $MACHTEST | grep -c "_64"`
+    if ( ${IS64} > 0 ) then
       set ARCH = "64"
     endif
 endif
