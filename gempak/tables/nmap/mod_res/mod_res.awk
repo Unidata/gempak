@@ -38,8 +38,9 @@ chapter["D1"] = "OA_SFC";
 }
 
 
-# ! S. Chiswell/Unidata   10/05   replaced nam;nam20;nam40;nam44 with nam;nam12;nam20;nam40;nam44;wseta;wrf                                       *
-# ! S. Chiswell/Unidata   10/05   replaced dgex;gfs;gfshd with dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211                                 *
+# ! S. Chiswell/Unidata   10/05   replaced nam;nam20;nam40;nam44 with nam;nam12;nam20;nam40;nam44;wseta;wrf
+# ! S. Chiswell/Unidata   10/05   replaced dgex;gfs;gfshd with dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211
+# ! M. James/Unidata      05/16   added gfs215
 
 { 
 	if ( index($0,"\!") == 1 ) { 
@@ -60,7 +61,7 @@ chapter["D1"] = "OA_SFC";
 	      }
 	      printf "%-32s %-51s %s.%-12s ", astr[1], astr[2], chapnum, astr[3]; 
 	      sub("nam;nam20;nam40;nam44","nam;nam12;nam20;nam40;nam44;wseta;wrf",astr[4]);
-              sub("dgex;gfs;gfshd","dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs211",astr[4]);
+              sub("dgex;gfs;gfshd","dgex;gfs;gfshd;gfs002;gfs003;gfsthin;gfs212;gfs215;gfs211",astr[4]);
 	      im = split(astr[4],mlist,";"); 
               if ( im == 0 ) { 
 		printf "%16s\n", astr[4]; 

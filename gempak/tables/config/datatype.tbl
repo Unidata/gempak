@@ -217,6 +217,7 @@
 !* M. James/Unidata	03/14	Updates for COAMPS and NAVGEM		*
 !* M. James/Unidata	06/14	Added COSMO				*
 !* M. James/Unidata	08/15	Added GFS25				*
+!* M. James/Unidata	05/16	Added GFS20/GFS215			*
 !************************************************************************
 !
 !           |                         |                                                |        |        |DEF |DEF   |DEF   |                     |TIME
@@ -228,7 +229,7 @@ A2METAR      AWIPSDB                   metar.xml                                
 A2SYNOP      AWIPSDB                   synop.xml                                        CAT_SFC  SCAT_SFC   10   2880     -1      OFF/0/0                4
 A2UAIR       AWIPSDB                   uair.xml                                         CAT_SND  SCAT_SND    4   2880     -1      OFF/0/0      4
 A2GFS        AWIPSDB                   gfs.xml                                          CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
-A2GFS40      AWIPSDB                   gfs40.xml                                        CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+A2GFS20      AWIPSDB                   gfs20.xml                                        CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
 A2GFS80      AWIPSDB                   gfs80.xml                                        CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
 A2RAP        AWIPSDB                   rap.xml                                          CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
 A2NAM        AWIPSDB                   nam.xml                                          CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
@@ -635,6 +636,8 @@ GFS004       $MODEL/gfs0.5deg          YYYYMMDDHHfFFF_gfs.gem                   
 GFS160       $MODEL/gfs                YYYYMMDDHH_gfs160.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
 GFS161       $MODEL/gfs                YYYYMMDDHH_gfs161.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
 GFS211       $MODEL/gfs                YYYYMMDDHH_gfs211.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
+GFS20        $MODEL/gfs                YYYYMMDDHH_gfs215.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
+GFS215       $MODEL/gfs                YYYYMMDDHH_gfs215.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
 GFS40        $MODEL/gfs                YYYYMMDDHH_gfs212.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
 GFS212       $MODEL/gfs                YYYYMMDDHH_gfs212.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
 GFS213       $MODEL/gfs                YYYYMMDDHH_gfs213.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
