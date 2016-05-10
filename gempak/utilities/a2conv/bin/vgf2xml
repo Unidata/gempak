@@ -3,31 +3,36 @@
 
 usage(){
     cat <<EOF
-      This scripts is used to convert vgf file to xml file.
+      This scripts is used to convert vgf/lpf file to xml file.
 
       Usage: vgf2xml sourcePath[or sourceFile] destinationPath [-a activity[ subActivity]] [-t tableName]
-      - <sourcedf>: the source directory or the source file.
-      - <target>: the target directory
-      - “-a” is the Pgen configuration option followed by the activity
+      - <sourcedf>: the source directory or the source file (ending with .vgf).
+      - <target>: the target directory or the target file (ending with .xml)
+      - -a is the Pgen configuration option followed by the activity
 		and subActivity names. The activity and subActivity are separated
 		by a space. The subActivity can be omitted or after the activity.
-	  - “-t” is the contour table option followed by the table name.
-		It is user's responsibility to provide their tables. The table has 8 
+      - -t: the contour table option followed by the table name.
+		It is users' responsibility to provide their tables. The table has 8 
 		columns of contour color, contour parameter, level1, level2, 
 		forcastHour, cint and time1, time2. See a sample table in 
-		${GEMPAK}/utilities/a2conv/distVC/table/sampleContour.tbl.
+		${GEMPAK}/utilities/a2conv/distVC/table/vgfConvert.tbl.
+    	
+		Also, the user could define a given group type of elements to be converted 
+		into a specific Outlook type in CAVE. See vgfConvert_EXCE_RAIN.tbl and 
+		vgfConvert_FLOOD.tbl for examples.
+      -M/-m: the flag for converting LPF from existing xmls. By default, VGFs in an LPF will be 
+	     automatically converted into XMLs before combining into a multi-layer xml, but the user
+             could not specify table for each single VGF. With this flag, the user could first use 
+             "-t" flag to specify a table for each single VGF. Then combine the resulting xmls using 
+             a command like "vgf2xml lpfFile . -M".
+      - -s: site/center, e.g., OAX, OPC. Default as "Default".
+      - -f: forecaster. Default as "Default".
+      - -u: activity status. Default as "UNKNOWN".
+		
       - The converted file has the same name with .xml ending.
 EOF
     exit
 }
-
-if [ $NA_OS == "linux2.6.32_x86_64" -o $NA_OS == "linux2.6.32_i686" ]; then
-    echo " "
-    echo "This script will not currently work on RHEL6"
-    echo "Sorry for any inconvenience"
-    echo " "
-    exit
-fi
 
 srcpath=$1
 tgtpath=$2
@@ -37,18 +42,51 @@ if [ $# -lt 2 ];  then
      usage
 fi
 
-mkdir -p $tgtpath
+# make directory in vgfConverter=>convert.java, not here.
+#mkdir -p $tgtpath
 
 if [ $NA_OS == "linux2.6.18_x86_64" ]; then
     file -L `which java` | grep "64-bit" > /dev/null
     if [ $? -eq 0 ]; then
-	export LD_LIBRARY_PATH=${OS_LIB}:${GEMPAK}/utilities/a2conv/distVC/lib:$LD_LIBRARY_PATH
-    else
-	export LD_LIBRARY_PATH=${NAWIPS}/os/linux2.6.18_i686/lib:${GEMPAK}/utilities/a2conv/distVC/lib:$LD_LIBRARY_PATH
+	    export LD_LIBRARY_PATH=${OS_LIB}:${GEMPAK}/utilities/a2conv/distVC/lib:$LD_LIBRARY_PATH
+     else
+	    export LD_LIBRARY_PATH=${NAWIPS}/os/linux2.6.18_i686/lib:${GEMPAK}/utilities/a2conv/distVC/lib:$LD_LIBRARY_PATH
     fi
 else
     export LD_LIBRARY_PATH=${OS_LIB}:${GEMPAK}/utilities/a2conv/distVC/lib:$LD_LIBRARY_PATH
 fi
 
-java -jar ${GEMPAK}/utilities/a2conv/distVC/vgfConverter.jar $srcpath $tgtpath  $3 $4 $5 $6 $7
+#
+#  Determine if /tmp is mounted with noexec flag.  If it is, need to
+#  specify an alternative temp directory for for JAVA JNA to work properly.
+#
+filesystem=`df /tmp | tail -n +2 | head -1 | awk '{print $1}'`
+grep $filesystem /etc/mtab | grep -q noexec
+has_noexec=$?
+if [ $has_noexec == "0" ]; then
+   #echo "/tmp is mounted with noexec flag."
+   temp_jna_dir=`mktemp -d --tmpdir=$HOME .jna_XXXXXXXXXXXXXXXXXXXX`
+   #echo "Created JNA temp directory: $temp_jna_dir"
+   export _JAVA_OPTIONS="-Djava.io.tmpdir=$temp_jna_dir"
+   export IBM_JAVA_OPTIONS="-Djava.io.tmpdir=$temp_jna_dir"
+fi
 
+#
+# Since this script is a wrapper for a java command, it may mess up the escaping of the arguments when passing onto the real program. 
+# A correct wrapper script should pass all its arguments on as ${1+"$@"}, any other version is most likely a bug with regards 
+# to being able to handle embedded spaces properly. The reason for the not so intuitive syntax ${1+"$@"} is that the original 
+# $* joined all arguments as "$1 $2 $3 ..." which did not work for embedded spaces. Then "$@" was introduced #that (correctly) 
+# expanded to "$1" "$2" "$3" ... for all parameters and if no parameters are given it should expand to nothing. Unfortunately 
+# some unix vendor messed up and made #"$@" expand to "" even in case of no arguments, and to work around this the clever 
+# (but not so readable) hack of writing ${1+"$@"} was invented, making "$@" only expand if #parameter $1 is set (i.e. avoiding 
+# expansion in case of no arguments) - J. Wu(08/2014) - http://stackoverflow.com/questions/743454/space-in-java-command-line-arguments
+
+#java -jar ${GEMPAK}/utilities/a2conv/distVC/vgfConverter.jar $srcpath $tgtpath  $3 $4 $5 $6 $7
+
+java -jar ${GEMPAK}/utilities/a2conv/distVC/vgfConverter.jar ${1+"$@"}
+
+#  Cleanup temp JNA directory if it was used
+if [ -d "$temp_jna_dir" ]; then
+    #echo "Removing JNA temp directory: $temp_jna_dir"
+    rmdir $temp_jna_dir
+fi

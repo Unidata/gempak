@@ -23,6 +23,7 @@ void gb2_gdtltln( float *navblk, int *igdtmpl, int *iret )
  * C. Bailey/HPC        01/07	Chngs to Dx calculation            	*
  * S. Jacobs/NCEP	 6/13	Fixed check for dx calculation to	*
  *				include 0.0 in the range for rlon1	*
+ * J. Wu/SGT         03/15	Checked dx calc. for all 9 cases(R6160) *
  ***********************************************************************/
 {
 
@@ -66,12 +67,17 @@ void gb2_gdtltln( float *navblk, int *igdtmpl, int *iret )
         igdtmpl[10] = 0;                      /* Subdivision             */
         igdtmpl[11] = G_NINT(rlat1*1000000.0);
 					      /* Lat of 1st grid point   */
-	/* Calculate Dx */
-	/* If rlon1 is bigger than 0.0 or "equal to" 0.0 */
-	if ( ( rlon1 > 0.0 || G_DIFF(rlon1,0.0) ) && rlon2 < 0.0 ) {
-            dx = ( (rlon2+360) - rlon1) / (nx-1);
+   	    /*
+   	     * Calculate Dx - there are nine cases here with rlon1 >0, <0, =0.0
+   	     *                where rlon2 could be >0, <0, =0.0 as well. All cases
+   	     *                should produce a positive dx that is greater than 0
+   	     *                but less than or equal to { 360.0/(nx-1) } - R6160.
+   	     */
+        if ( (( rlon1 > 0.0 || G_DIFF(rlon1,0.0) ) && ( rlon2 < 0.0 || G_DIFF(rlon2,0.0) ))
+        	   || ( (rlon1 < 0 && rlon2 < 0) && (rlon1 > rlon2) ) ) {
+             dx = ( (rlon2+360) - rlon1) / (nx-1);
         } else {
-            dx = (rlon2 - rlon1) / (nx-1);
+             dx = (rlon2 - rlon1) / (nx-1);
         }
 
         if ( rlon1 < 0.0 ) rlon1 += 360.0;

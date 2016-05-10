@@ -19,6 +19,7 @@ INPUT PARAMETERS
     G2PDT     Info for GRIB2 Section 4 (Product Definition Section)
     G2DRT     Packing/scaling info for GRIB2 Section 5 (Data Representation Sect
     WMOHDR    WMO_ID/Origin_ID/DDHHMM
+    G2CONV    Table containing parameters for a series conversions
  
  
 
@@ -87,7 +88,13 @@ PROGRAM DESCRIPTION
     in parameter G2IDS) define the originating center and local tables
     version, respectively.  The defaults are YYYY = "ncep" and Z = 1.
 
- 
+    G2CONV specifies a table containing all the parameter information for 
+    a series of conversions. The existence of a value for G2CONV would 
+    signal the program to perform bulk processing. The program would take 
+    the parameters from the table and perform the bulk conversions. If 
+    G2CONV is not specified (empty), the program would take the parameters 
+    from user input and perform a single conversion. 
+
 EXAMPLES
  
     1.  Compute the average absolute vorticity of the 250- and 300-

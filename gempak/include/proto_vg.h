@@ -184,11 +184,11 @@ void	cds_gfa (	VG_DBStruct     *el,
 void	cds_gfatxt (	VG_DBStruct     const *el,
                         VG_DBStruct     *txt_el,
                         int             *iret );
-
+			
 void    cds_sgwx (      VG_DBStruct     *el,
                         int             indx,
                         int             *iret );
-
+			
 void    cds_sgwxtxt (   VG_DBStruct     const *el,
                         VG_DBStruct     *txt_el,
                         int             *iret );
@@ -613,12 +613,6 @@ void	pgactv_setActvElm (	VG_DBStruct	*el,
 void	pgccfw_popup (		VG_DBStruct	*el,
 				XtCallbackProc	callback );
 
-void	pgccfw_saveEdit (	VG_DBStruct	*cur_el,
-				int		el_location,
-				int		np,
-				float		*lats,
-				float		*lons );
-
 void	pgccfw_getAttr (	VG_DBStruct	*el );
 
 
@@ -848,6 +842,7 @@ void	pgwsmw_setWatch (	VG_DBStruct	*el );
 void    pgaddpt_start (         VG_DBStruct     *el );
 
 int	vgfToXml (		char		*vgfile,
-				char	*asciifile , char *activity, char *subActivity, char *contTbl);
+				char	*asciifile , char *activity, char *subActivity,
+				char *site, char *forecaster, char *status, char *contTbl);
 
 #endif	/* PROTO_VG */

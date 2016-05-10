@@ -1,13 +1,16 @@
-GLEVEL  6100:0
+GLEVEL  6096:0
 GVCORD  hght
 PANEL   0
 SKIP    0
 SCALE   0 
-GDPFUN  vash01
+GDPFUN  sgt(vaftd01,-99)
+GDPFUN  vaftd01
 TYPE    f
 CONTUR  2
 CINT    1
 LINE    6     
+!FINT    -21;-20;-19;-18;-17;-16;-15;-14;-13
+!FLINE    11;12;14;16;17;18;19;20;21;23
 FINT    -19;-18;-17;-16;-15
 FLINE    0;26;3;5;17;2
 HILO          
@@ -27,4 +30,4 @@ COLORS  2
 MARKER  0
 GRDLBL  0
 FILTER  YES
-IJSKIP  0
+ijskip  0

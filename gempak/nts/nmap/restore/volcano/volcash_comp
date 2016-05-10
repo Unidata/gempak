@@ -1,9 +1,10 @@
-GLEVEL  16800:0
+GLEVEL  16764:0
 GVCORD  hght
 PANEL   0
 SKIP    0
 SCALE   0 
-GDPFUN  vash01
+!GDPFUN  sgt(vaftd01,-99)
+GDPFUN  vaftd01
 TYPE    f
 CONTUR  0
 CINT     1
@@ -27,4 +28,4 @@ COLORS  2
 MARKER  0
 GRDLBL  0
 FILTER  YES
-IJSKIP  0
+ijskip  0

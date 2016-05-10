@@ -71,7 +71,8 @@ int isOutlookLike(int grp_type);
 
 /*=====================================================================*/
 
-int vgfToXml(char *vgfn, char *asfn, char *activity, char *subActivity, char *contTbl)
+int vgfToXml(char *vgfn, char *asfn, char *activity, char *subActivity, char *site,
+             char *forecaster, char *status, char *contTbl)
 
 /********************************************************************************
  * vgfToXml									*
@@ -107,6 +108,9 @@ int vgfToXml(char *vgfn, char *asfn, char *activity, char *subActivity, char *co
  * Q.Zhou /SGT          09/13   Fixed converting symbol without text to contours*
  * Q.Zhou /SGT          02/14   Sort contours by color      			*   
  * Q.Zhou /SGT          02/14   Remove grouped single line/text out of contours *
+ * J. Wu  /SGT          08/14   Convert time in "Contours" into proper format   *
+ * J. Wu  /SGT          02/15   Convert Gempak time in format "YYYYMMDD/HH"  	*
+ * J. Wu  /SGT          03/15   R6872-add site/forecaster/status in command line*
  ********************************************************************************/
 {
     int		nw, more, ier;
@@ -147,18 +151,21 @@ int vgfToXml(char *vgfn, char *asfn, char *activity, char *subActivity, char *co
      */
     char *productType;
     productType = (char *)malloc(128);
+   
 
     if (activity != NULL && strlen(activity) != 0 && strcmp(activity, "Default")!=0 && strcmp(activity, "default")!=0) {
-	if (subActivity != NULL && strlen(subActivity) != 0 
-		&& strcmp(subActivity, "Default")!=0 && strcmp(subActivity, "default")!=0)
+	
+        if (subActivity != NULL && strlen(subActivity) != 0 
+		&& strcmp(subActivity, "Default")!=0 && strcmp(subActivity, "default")!=0) {
 	    sprintf(productType, "%s%s%s%s", activity, "(", subActivity, ")");
-	else
-	    productType = activity;
+	}
+        else {
+	    productType = activity;           
+        }
     }
     else {
 	productType = "Default";
     }   
-
    
     /*
      *  Load the specified table - This is used for converting Contours or
@@ -220,6 +227,34 @@ int vgfToXml(char *vgfn, char *asfn, char *activity, char *subActivity, char *co
 	}
     }
 
+    /*
+     * Get activity site, forecaster, and status. 
+     */
+    char *asite, *aforecaster, *astatus;
+    asite = (char *)malloc(128);
+    aforecaster = (char *)malloc(128);
+    astatus = (char *)malloc(128);   
+
+    if (site != NULL && strlen(site) != 0 ) {
+        strcpy( asite, site );
+    }
+    else {
+        asite = "Default";
+    }
+
+    if (forecaster != NULL && strlen(forecaster) != 0 ) {
+        strcpy( aforecaster, forecaster );
+    }
+    else {
+        forecaster = "Default";
+    }
+
+    if (status != NULL && strlen(status) != 0 ) {
+        strcpy( astatus, status );
+    }
+    else {
+        astatus = "UNKNOWN";
+    }
 
     /*
      * Read VG file header and write out an XML header. 
@@ -228,13 +263,12 @@ int vgfToXml(char *vgfn, char *asfn, char *activity, char *subActivity, char *co
 
     if (el.hdr.vg_type == FILEHEAD_ELM) {   
 	
-    	sprintf( buffer, "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n  <Products xmlns:ns2=\"http://www.example.org/productType\" xmlns:ns3=\"group\">\n    <Product name=\"%s\" type=\"%s\" forecaster=\"Default\" center=\"Default\" onOff=\"true\" useFile=\"true\" filePath=\"\" fileName=\"\">\n      <Layer name=\"Default\" onOff=\"true\" monoColor=\"false\" filled=\"false\">\n        <Color red=\"255\" green=\"255\" blue=\"0\" alpha=\"255\"/>\n        <DrawableElement>\n", productType, productType);
+    	sprintf( buffer, "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n  <Products xmlns:ns2=\"http://www.example.org/productType\">\n    <Product name=\"%s\" type=\"%s\" forecaster=\"%s\" center=\"%s\" status=\"%s\" onOff=\"true\" useFile=\"true\" filePath=\"\" fileName=\"\">\n      <Layer name=\"Default\" onOff=\"true\" monoColor=\"false\" filled=\"false\">\n        <Color red=\"255\" green=\"255\" blue=\"0\" alpha=\"255\"/>\n        <DrawableElement>\n", productType, productType, aforecaster, asite, astatus);
 	
     	cfl_writ ( ofptr, (int)strlen(buffer), (unsigned char*)buffer, &ier );
    	curpos += el.hdr.recsz;  //424
 	//can't  free (productType);
     }
-
 
     /*
      * Read all other elements in the VG file 
@@ -276,6 +310,7 @@ int vgfToXml(char *vgfn, char *asfn, char *activity, char *subActivity, char *co
 
  	nw++;			
     }
+
     
     /*
      *  If there is only a header in the VG file, end the XML file.
@@ -302,7 +337,6 @@ int vgfToXml(char *vgfn, char *asfn, char *activity, char *subActivity, char *co
      */
     curr2 = head1;
     convertElm(curr2, buffer, ofptr, tblArray, i);
-
   
     /*
      * free spaces
@@ -1130,11 +1164,6 @@ void getMatchContAttr(char *tblArray[], int *grpColor, char* contArray[], int tb
 	    //printf("contArray %s %s %s %s\n", array[i], contArray[0], contArray[1], contArray[2] );	
 	}
     }
-
-    // free spaces
-    /*for (j=0; j< tblArrayLen; j++){
-	free (array[j]);
-    }*/	   
 }
 
 /*---------------------------------------------------------------------*/   
@@ -1186,18 +1215,65 @@ void getMatchGrptyp(char *lineGrptyp[], int *grptyp, int lineGrptypLen, char* gr
 }
 
 /*---------------------------------------------------------------------*/   
+void getXmlTimeString(char *xmlTime, char *gempakTimeStr )
+/********************************************************************************
+ * getXmlTimeString								*
+ *										*
+ * Subroutine to convert a gempak format time string "YYYYMMDD/HHMM" or 	*
+ * "YYYYMMDD/HH" into a JAXB XML format as "YYYY-MM-DDTHH:MM:SS.mmmZ"		*
+ *										*
+ ********************************************************************************/
+{   
+     if ( gempakTimeStr != NULL ) {
+        xmlTime[0] = '\0'; 
+        if ( strchr(gempakTimeStr, '/') != NULL && (strlen(gempakTimeStr) >= 11 ) ) {        
+            
+            strncpy(xmlTime, gempakTimeStr, 4);
+ 
+            xmlTime[4]='-';
+            xmlTime[5]=gempakTimeStr[4];
+            xmlTime[6]=gempakTimeStr[5];
+            xmlTime[7]='-';
+            xmlTime[8]=gempakTimeStr[6];
+            xmlTime[9]=gempakTimeStr[7];        
+            xmlTime[10]='T';
+            xmlTime[11]=gempakTimeStr[9];
+            xmlTime[12]=gempakTimeStr[10];
+            if ( strlen(gempakTimeStr) < 13 ) {
+                strcat(xmlTime,":00");
+            }
+            else {        
+                xmlTime[13]=':';
+                xmlTime[14]=gempakTimeStr[11];
+                xmlTime[15]=gempakTimeStr[12];      
+                xmlTime[16]='\0';
+            }     
+  
+            strcat(xmlTime, ":00.000Z");
+        }
+        else {
+            if ( gempakTimeStr != NULL ) {
+                strcpy(xmlTime, gempakTimeStr);
+            }
+        }
+    }  
+}
+
+
+/*---------------------------------------------------------------------*/   
 
 void getContour(VG_DBStruct *el, char *buffer, int *contText, int *grpNum, 
                 int *grpColor, char *tblArray[], int tblArrayLen, int *ier)
 /********************************************************************************
- * getWatch									*
+ * getContour									*
  *										*
  * Subroutine to convert a VG contour into CAVE Contours element in XML.	*
  *										*
  ********************************************************************************/
 {
-
-    char* contArray[7] = {"HGHT", "1000", "-1", "f000", "10", "20111213/1200", "-1"}; //array of 7 strings
+    char* contArray[7] = {"HGHT", "1000", "-1", "f000", "10", "20110131/1200", "-1"}; //array of 7 strings
+    char *time1 = NULL, *time2 = NULL;
+    char  xmltime1[32], xmltime2[32];
   
     if ( *grpNum ==0) {
 	/* Only change grpColor color when it's line or circle.  Although it can mix up line and sym. 
@@ -1209,9 +1285,26 @@ void getContour(VG_DBStruct *el, char *buffer, int *contText, int *grpNum,
 
     	/* Get contour attributes from contTbl if it is not empty.  e.g. 2       TEMP    850     900     f006    10/0/100 */
     	getMatchContAttr(tblArray, grpColor, contArray, tblArrayLen, ier);
+        
+        /*
+         * The time should be in format as "YYYY-MM-DDTHH:MM:SS.mmmZ"
+         *  If input in table is "YYYYMMDD/HHMM" we need to convert it.
+         */
+        time1 = (char*)malloc(strlen(contArray[5])+1); 
+	strcpy(time1,contArray[5] );
+        if ( atoi(contArray[6]) < 0 ) {
+            time2 = (char*)malloc(strlen(time1)+1); 
+	    strcpy(time2,time1 );
+        }
+        else {
+            time2 = (char*)malloc(strlen(contArray[6])+1); 
+	    strcpy(time2,contArray[6] );
+        }
 
-   
-	sprintf(buffer, "          <Contours collectionName=\"Contours\" pgenCategory=\"MET\" pgenType=\"Contours\" parm=\"%s\" level=\"%s\" level2=\"%s\" forecastHour=\"%s\" cint=\"%s\" time=\"%s\" time2=\"%s\">\n", contArray[0], contArray[1], contArray[2], contArray[3], contArray[4], contArray[5], contArray[6] );
+        getXmlTimeString(xmltime1, time1);
+        getXmlTimeString(xmltime2, time2);
+
+	sprintf(buffer, "          <Contours collectionName=\"Contours\" pgenCategory=\"MET\" pgenType=\"Contours\" parm=\"%s\" level=\"%s\" level2=\"%s\" forecastHour=\"%s\" cint=\"%s\" time1=\"%s\" time2=\"%s\">\n", contArray[0], contArray[1], contArray[2], contArray[3], contArray[4], xmltime1, xmltime2 );
 
 	if (isOutlookLineLike(el->hdr.vg_type) == 1) {
 	    sprintf( &(buffer[strlen(buffer)]), "            <DECollection collectionName=\"ContourLine\">\n              <DrawableElement>\n" );	
@@ -1241,9 +1334,26 @@ void getContour(VG_DBStruct *el, char *buffer, int *contText, int *grpNum,
    	/* Get contour attributes from contTbl if it is not empty.  e.g. 2       TEMP    850     900     f006    10/0/100 */
     	getMatchContAttr(tblArray, grpColor, contArray, tblArrayLen, ier);
 
+        /*
+         * The time should be in format as "YYYY-MM-DDTHH:MM:SS.mmmZ"
+         *  If input in table is "YYYYMMDD/HHMM" we need to convert it.
+         */
+        time1 = (char*)malloc(strlen(contArray[5])+1); 
+	strcpy(time1,contArray[5] );
+        if ( atoi(contArray[6]) < 0 ) {
+            time2 = (char*)malloc(strlen(time1)+1); 
+	    strcpy(time2,time1 );
+        }
+        else {
+            time2 = (char*)malloc(strlen(contArray[6])+1); 
+	    strcpy(time2,contArray[6] );
+        }
+
+        getXmlTimeString(xmltime1, time1);
+        getXmlTimeString(xmltime2, time2);
    
 	sprintf( buffer, "              </DrawableElement>\n            </DECollection>\n          </Contours>\n");		    
-	sprintf(&(buffer[strlen(buffer)]), "          <Contours collectionName=\"Contours\" pgenCategory=\"MET\" pgenType=\"Contours\" parm=\"%s\" level=\"%s\" level2=\"%s\" forecastHour=\"%s\" cint=\"%s\" time=\"%s\" time2=\"%s\">\n", contArray[0], contArray[1], contArray[2], contArray[3], contArray[4], contArray[5], contArray[6]);
+	sprintf(&(buffer[strlen(buffer)]), "          <Contours collectionName=\"Contours\" pgenCategory=\"MET\" pgenType=\"Contours\" parm=\"%s\" level=\"%s\" level2=\"%s\" forecastHour=\"%s\" cint=\"%s\" time1=\"%s\" time2=\"%s\">\n", contArray[0], contArray[1], contArray[2], contArray[3], contArray[4], xmltime1, xmltime2);
 	
 	if (isOutlookLineLike(el->hdr.vg_type) == 1) {		 
 	    sprintf( &(buffer[strlen(buffer)]), "            <DECollection collectionName=\"ContourLine\">\n              <DrawableElement>\n" );	
@@ -2230,7 +2340,7 @@ char* getGroupType(int grptyp)
  * Get the name of the group type.						*
  *										*
  * Note: 									*
- *    This could be replaced by ces_gtgnam ( int grpid, char *grpnam, int *iret)*							*
+ *    This could be replaced by ces_gtgnam ( int grpid, char *grpnam, int *iret)*
  *										*
  ********************************************************************************/
 { 

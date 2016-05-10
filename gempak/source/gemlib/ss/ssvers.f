@@ -57,6 +57,7 @@ C* M. James/UCAR	 4/15		Updated to 7.2.0		*
 C* M. James/UCAR	 6/15		Updated to 7.2.1		*
 C* M. James/UCAR	 9/15		Updated to 7.2.2		*
 C* M. James/UCAR	 3/16		Updated to 7.2.3		*
+C* M. James/UCAR         5/16           Updated to 7.3.0                *
 C************************************************************************
 	CHARACTER*(*)	vmsg
 C------------------------------------------------------------------------
@@ -64,7 +65,7 @@ C------------------------------------------------------------------------
 C
 C*	Set the version string and add a null to the end.
 C
-	vmsg = 'Version 7.2.3'
+	vmsg = 'Version 7.3.0'
 	CALL ST_NULL ( vmsg, vmsg, lens, ier )
 C*
 	RETURN

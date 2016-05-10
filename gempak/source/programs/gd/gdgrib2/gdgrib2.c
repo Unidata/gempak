@@ -14,11 +14,11 @@ int main ( void )
  * S. Gilbert/NCEP           5/2005   Orig                              *
  * S. Gilbert/NCEP           3/2006   Replaced dg_clal with dg_nend     *
  * T. Piper/SAIC        01/08   Added GD_INIT; removed from IN_BDTA     *
+ * B. Yin/ERT           09/15   Added bulk processing from table        *
  ***********************************************************************/
 {
 
     int    respond, ret, ier, mode=1, done, skip, j;
-    float  minval, maxval;
 
     int    g2len;                     /* Length of GRIB2 message  */
     unsigned char  *g2msg;            /* GRIB2 message            */
@@ -78,10 +78,18 @@ int main ( void )
  *  Get user input info
  */
         gdg2in( &input, &ret );
+
         if ( ret != 0 ) {
             er_wmsg("GDGRIB2",&ret," ",&ier,7,1);
             continue;
         }
+        else if ((strlen(input.g2conv) != (size_t)0) && (ret == 0)) {
+/*
+ *  Skip program prompt and get input from conversion table 
+ */
+           skip = 1;
+        }
+
         if ( strlen(input.g2file) == (size_t)0 ) {
             ret=-28;
             er_wmsg("GDGRIB2",&ret," ",&ier,7,1);
@@ -95,13 +103,6 @@ int main ( void )
         if ( ret != 0 ) {
             er_wmsg("GDGRIB2",&ret," ",&ier,7,1);
             continue;
-        }
-
-        maxval=gemgrid.grid[0];
-        minval=gemgrid.grid[0];
-        for ( j=1; j < gemgrid.kx*gemgrid.ky; j++ ) {
-            if ( gemgrid.grid[j] < minval ) minval=gemgrid.grid[j];
-            if ( gemgrid.grid[j] > maxval ) maxval=gemgrid.grid[j];
         }
 
 /*

@@ -1,0 +1,8 @@
+These scripts are used to print xml configuration output files for TCA.
+The output should be redirected to xml files. usage ie:
+
+usall tcabkptlz.tbl > CoastBreakpoints.xml
+islands tcabkptlz.tbl > IslandBreakpoints.xml
+water tcabkptlz.tbl > WaterBreakpoints.xml
+
+

@@ -43,6 +43,7 @@ C* T. Piper/SAIC	06/07	Extract warning polygon from bulletin	*
 C* T. Piper/SAIC	08/07	Format change; ignore TIME...MOT...LOC	*
 C* F. J. Yen/NCEP	 3/08	Added ETN; made polygon search robust;  *
 C*				added correction letter to cor/test flag*
+C* S. Guan.NCEP         04/15   Increased sections (starry) from 5 to 15*
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 	INCLUDE		'BRIDGE.PRM'
@@ -50,7 +51,7 @@ C*
 	CHARACTER*(*)	curtim, gemfil, prmfil, stntbl
 C*
 	CHARACTER	bultin*(DCMXBF), parms(MMPARM)*4, errstr*80,
-     +			starry(5)*2800, filnam*132, wtype*3,
+     +			starry(15)*2800, filnam*132, wtype*3,
      +			wfrom*3, dattim*11, bultim*12, wmohdr*8,
      +			oristn*8, seqnum*4, cnties*700, edttim*6,
      +			sysdt*12, dattmp*12, county(LLSTFL)*6,
@@ -58,7 +59,7 @@ C*
 	CHARACTER	adstn(LLSTFL)*8, stnnam(LLSTFL)*32,
      +			stat(LLSTFL)*2, coun(LLSTFL)*2,
      +			tbchrs(LLSTFL)*20
-	INTEGER	istarr (5), irdtar (5)
+	INTEGER	istarr (15), irdtar (15)
 	INTEGER	istnm(LLSTFL), ispri(LLSTFL), itype
 	REAL		adlat(LLSTFL), adlon(LLSTFL), selv(LLSTFL)
 	LOGICAL		more
@@ -94,10 +95,11 @@ C
 		more = .true.
 		CALL DC_TEST ( bultin, lenbul, itest, ier )
 C
-C*  Break bulletin into 5 strings.
+C*  Break bulletin into 15 strings.
 C
-		CALL ST_CLSL ( bultin, '*', ' ', 5, starry, inumb,
+		CALL ST_CLSL ( bultin, '*', ' ', 15, starry, inumb,
      +								ierr )
+          write(*,*) "inumb,   ", inumb
 C
 C*  Parse the header info from the bulletin.
 C
@@ -127,7 +129,7 @@ C
      +					errstr(:len1), ier )
 			more = .false.
 		    END IF
-		    IF ( inumb .ge. 1 .and. inumb.le. 5 ) THEN
+		    IF ( inumb .ge. 1 .and. inumb.le. 15 ) THEN
 C*
 C*			The polygon should be in the fifth (last),
 C*			section.  If there is no fifth section, then
@@ -146,6 +148,7 @@ C*
      +					'TIME...MOT...LOC')
 			        IF (itim .gt. 0) iend = ibeg + itim - 3
 			        poly = starry(inumb)(ibeg:iend)
+                                write(*,*) "tt  ", poly
 			    ELSE
 				ierr = 4
 				mnln = MIN (lens,48)

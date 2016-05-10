@@ -1,3 +1,4 @@
+#define PARAMETERS_GLOBAL
 #include "gdgrib2.h"
 
 void gdg2in( GDG2_input *input, int *iret )
@@ -14,36 +15,64 @@ void gdg2in( GDG2_input *input, int *iret )
  *    *input        GDG2_input          Structure to hold user input    *
  *    *iret         int                 Error return                    *
  *                                      0  = Successfull                *
+ *                                      1  = Reach conversion table end *
  *                                      -2 = Error getting one or more  *
  *                                           variables                  *
+ *                                     -34 = Error opening conversion   *     
+ *                                           table                      *
  *                                                                      *
  **                                                                     *
  * Log:                                                                 *
  * S. Gilbert/NCEP          05/2005                                     *
+ * B. Yin/ERT               09/2015     Added bulk processing           *
+ * B. Yin/ERT               11/2015     Changed gd_rdln calling sequence*
  ***********************************************************************/
 {
     int ret1, ret2, ret3, ret4, ret5, ret6, ret7, ret8, ret9, ret10;
-    int ret11, ret12, ret13, ret14, ret15, ret16;
-    int sumret, len, num, i;
-    static int ivarlen=8;
-    const int numtbls=5;
+    int ret11, ret12, ret13, ret14, ret15, ret16, ret17;
+    int sumret, len, num, i, ire, ire1;
+    static int ivarlen=VAR_LEN;
+    const int numtbls=NUM_TBLS;
+    char line[512];
+    static FILE *convPtr = 0;
 
-    char gdfile[]  = "GDFILE  ";
-    char g2file[]  = "GBFILE  ";
-    char gfunc[]   = "GFUNC   ";
-    char gdattim[] = "GDATTIM ";
-    char glevel[]  = "GLEVEL  ";
-    char gvcord[]  = "GVCORD  ";
-    char proj[]    = "PROJ    ";
-    char grdarea[] = "GRDAREA ";
-    char kxky[]    = "KXKY    ";
-    char cpyfil[]  = "CPYFIL  ";
-    char g2tbls[]  = "G2TBLS  ";
-    char g2is[]    = "G2IS    ";
-    char g2ids[]   = "G2IDS   ";
-    char g2pdt[]   = "G2PDT   ";
-    char g2drt[]   = "G2DRT   ";
-    char wmohdr[]  = "WMOHDR  ";
+    /*
+     * Continue reading from the conversion table.
+     */ 
+    if ( convPtr != 0 ) {
+        if ( !feof ( convPtr ) ) {
+            gd_rdln( input, &convPtr, &ire );
+            *iret = ire;
+        }
+        else {
+	   cfl_clos( convPtr, &ire );
+	   convPtr = 0;
+           *iret = 1;
+        }
+        return;
+    }
+
+    /*
+     *  Get G2CONV
+     */
+    memset( input->g2conv, 0, LLMXLN);
+    ip_str( g2conv, input->g2conv, &ret17,ivarlen,LLMXLN);
+    st_null( input->g2conv, input->g2conv, &len, iret, LLMXLN, LLMXLN );
+
+    if ( strlen( input->g2conv ) != (size_t)0 ) {
+        convPtr = cfl_tbop( input->g2conv, "", &ire);
+        if ( ire == 0 ) {
+            gd_rdln( input, &convPtr, &ire );
+            *iret = ire;
+        }
+        else {
+            /*
+             * Error opening the conversion table.
+             */  
+            *iret= -34;
+        }
+        return;   
+    }
 
     /*
      *  Get GDFILE
@@ -167,7 +196,7 @@ void gdg2in( GDG2_input *input, int *iret )
 
 
     sumret= ret1+ret2+ret3+ret4+ret5+ret6+ret7+ret8+ret9+ret10+ret11+ret12;
-    sumret= sumret + ret13 + ret14 + ret15 + ret16;
+    sumret= sumret + ret13 + ret14 + ret15 + ret16 + ret17;
 
     if ( sumret == 0 ) *iret = 0;
     else *iret = -2;

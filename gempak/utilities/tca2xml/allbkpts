@@ -1,0 +1,9 @@
+
+all.pl ${1-tcabkptlz.tbl} | awk ' { 
+        if ($9 ~ /^10/ ) print "        </segment>\n        <segment>\n            <breakpoint name=""\042"$3"\042"" state=""\042"$4"\042"" country=""\042"$5"\042"" location=""\042"$7/100","$6/100"\042"" official=\042true\042/>" 
+	if ($9 ~ /^19/ ) print "        </segment>\n        <segment>\n            <breakpoint name=""\042"$3"\042"" state=""\042"$4"\042"" country=""\042"$5"\042"" location=""\042"$7/100","$6/100"\042"" official=\042false\042/>"
+	if (/path|landZone/) print $0
+} 
+END{ printf "        </segment>\n" }
+' | tail -n+3
+

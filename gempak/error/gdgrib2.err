@@ -1,5 +1,6 @@
 !	Program GDGRIB2
 !
+ +1     ! Reach the end of the conversion table.
  -1	! Fatal error initializing TAE.
  -2	! Fatal error reading TAE parameters.
  -3	! Error initializing GEMPLT.
@@ -27,3 +28,5 @@
 -31     ! Could not open grid file specified in CPYFIL.
 -32     ! Error setting output grid navigation
 -33     ! Error creating navigation block from PROJ, KXKY, GRDAREA
+-34     ! Error opening the conversion table.
+-35     ! Error reading the conversion table.

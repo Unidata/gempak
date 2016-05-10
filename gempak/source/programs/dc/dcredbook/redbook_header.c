@@ -25,28 +25,27 @@ int read_short1(x,value)
 void get_block(bpos,FF,blen,mode,submode)
 char *bpos;
 char *FF;
-int *blen,*mode,*submode;
-{
-int iret;
-char chvalue;
-short sval;
+int *blen,*mode,*submode;{
+	int iret;
+	char chvalue;
+	short sval;
 
-*blen = 0;
-
-iret = read_char1(bpos,&chvalue);
-
-*FF = (chvalue >> 6) ;
-if(*FF == 3)
-   {
-   /*printf("FF flag 3 mode %d\n",chvalue & 0x3F );*/
-   }
-iret = read_short1(bpos,&sval); bpos+=2;
-*blen = sval & 0x3FFF;
-iret = read_char1(bpos,&chvalue); bpos++;
-*mode = chvalue;
-iret = read_char1(bpos,&chvalue); bpos++;
-*submode = chvalue;
-/*printf("FF %d len %d mode %d sub %d\n",*FF,*blen,*mode,*submode);*/
+	*blen = 0;
+	
+	iret = read_char1(bpos,&chvalue);
+	
+	*FF = (chvalue >> 6) ;
+	if(*FF == 3)
+	   {
+	   /*printf("FF flag 3 mode %d\n",chvalue & 0x3F );*/
+	   }
+	iret = read_short1(bpos,&sval); bpos+=2;
+	*blen = sval & 0x3FFF;
+	iret = read_char1(bpos,&chvalue); bpos++;
+	*mode = chvalue;
+	iret = read_char1(bpos,&chvalue); bpos++;
+	*submode = chvalue;
+	/*printf("FF %d len %d mode %d sub %d\n",*FF,*blen,*mode,*submode);*/
 }
 
 char cstr1[10],cstr2[7],dstr[14],cpilid[10];

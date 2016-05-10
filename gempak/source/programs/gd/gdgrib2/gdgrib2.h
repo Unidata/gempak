@@ -31,6 +31,7 @@ struct gdg2_input {
     char g2pdt[LLMXLN];           /*  Info for GRIB2 PDT - Section 4         */
     char g2drt[LLMXLN];           /*  Info for GRIB2 DRT - Sections 5, 7     */
     char wmohdr[LLMXLN];          /*  WMO header info                        */
+    char g2conv[LLMXLN];          /*  Conversion table                       */
 };
 typedef struct gdg2_input GDG2_input;
 
@@ -49,6 +50,8 @@ typedef struct gdg2_gemgrid GDG2_gemgrid;
 
 
 /*-------------------   Prototypes  ------------------*/
+void gdconvert( GDG2_input, char *, FILE **, int *);
+
 void gdg2in( GDG2_input *, int *);
 
 void gdgetgrid ( GDG2_input *, GDG2_gemgrid *, int *);
@@ -62,6 +65,8 @@ void gdmakepdt ( GDG2_input *, GDG2_gemgrid *, int *,
 
 void gdmakewmo ( GDG2_input *, GDG2_gemgrid *, char *, int *);
 
+void gdparseparm ( GDG2_input *, char *, int * );
+
 void gdsetsect1 ( GDG2_input *, GDG2_gemgrid *, int *, int *);
 
 void gdsetsect4 ( GDG2_input *, GDG2_gemgrid *, int *, int *,
@@ -69,4 +74,52 @@ void gdsetsect4 ( GDG2_input *, GDG2_gemgrid *, int *, int *,
 
 void gdsetsect5 ( GDG2_input *, int *, int *, int *);
 
+/*-------------------   gdgrib2 input parameters  ------------------*/
+#define NUM_TBLS 5
+#define VAR_LEN 8
+#define MAX_CHAR_PER_LINE 512
+
+#ifdef PARAMETERS_GLOBAL
+
+char gdfile[]  = "GDFILE  ";
+char g2file[]  = "GBFILE  ";
+char gfunc[]   = "GFUNC   ";
+char gdattim[] = "GDATTIM ";
+char glevel[]  = "GLEVEL  ";
+char gvcord[]  = "GVCORD  ";
+char proj[]    = "PROJ    ";
+char grdarea[] = "GRDAREA ";
+char kxky[]    = "KXKY    ";
+char cpyfil[]  = "CPYFIL  ";
+char g2tbls[]  = "G2TBLS  ";
+char g2is[]    = "G2IS    ";
+char g2ids[]   = "G2IDS   ";
+char g2pdt[]   = "G2PDT   ";
+char g2drt[]   = "G2DRT   ";
+char wmohdr[]  = "WMOHDR  ";
+char g2conv[]  = "G2CONV  ";
+
+#else
+
+extern char gdfile[];
+extern char g2file[];
+extern char gfunc[];
+extern char gdattim[];
+extern char glevel[];
+extern char gvcord[];
+extern char proj[];
+extern char grdarea[];
+extern char kxky[];
+extern char cpyfil[];
+extern char g2tbls[];
+extern char g2is[];
+extern char g2ids[];
+extern char g2pdt[];
+extern char g2drt[];
+extern char wmohdr[];
+extern char g2conv[];
+
+#endif   /* PARAMETERS_GLOBAL */
+
 #endif   /*  GDGRIB2_H  */
+

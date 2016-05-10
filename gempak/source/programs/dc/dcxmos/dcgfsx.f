@@ -27,6 +27,7 @@ C* Log:									*
 C* m.gamazaychikov/SAIC	11/03	Copied from DCMRFM                      *
 C* B. Yin/SAIC           3/04   Changed SS_GTIM to CSS_GTIM             *
 C* m.gamazaychikov/SAIC	07/05	Added irhour to CS for MS_DCDM, MS_CLIM	*
+C* s. Jacobs/NCEP	 6/15	Commented out call to MS_CLIM 		*
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 	INCLUDE		'BRIDGE.PRM'
@@ -280,15 +281,22 @@ C
 			      ELSE
 				cstid = stid
 			    END IF
-			    CALL MS_CLIM ( cstid, climtm, parms, nparm,
-     +					   iflsrc, stntbl, iadstn,
-     +					   maxtim, IFCSTM, prmscl, 
-     +					   nprmcl, irhour, rdata, ierr )
-			    IF ( ierr .ne. 0 ) THEN
-			        errstr = stid // climtm
-      				CALL DC_WLOG ( 2, 'MS', ierr, errstr, 
-     +					       ier )
-			    END IF
+C--			    
+C--*			    Commented out the call to MS_CLIM. The climo
+C--*			    files are very much out of date and the
+C--*			    users determined that the climatology data
+C--*			    from the MOS report is better to use.
+C--
+C--			    CALL MS_CLIM ( cstid, climtm, parms, nparm,
+C--     +				   iflsrc, stntbl, iadstn,
+C--     +				   maxtim, IFCSTM, prmscl, 
+C--     +				   nprmcl, irhour, rdata, ierr )
+C--			    IF ( ierr .ne. 0 ) THEN
+C--			        errstr = stid // climtm
+C--      			CALL DC_WLOG ( 2, 'MS', ierr, errstr, 
+C--     +				       ier )
+C--			    END IF
+C--
 			    DO i = 1, IFCSTM
 C
 C*				Set the station and time in output file.

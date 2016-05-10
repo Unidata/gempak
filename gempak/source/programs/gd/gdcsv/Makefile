@@ -53,5 +53,4 @@ install: $(PROG)
 	$(INSTALL) $(PROG) $(OS_BIN)
 	-$(AUXINSTALL) $(PROG).pdf $(GEMPDF)
 	-$(AUXINSTALL) $(PROG).prm $(GEMPARM)
-	-$(AUXINSTALL) $(PROG).hlp $(GEMHLP)/hlp
 

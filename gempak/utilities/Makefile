@@ -6,11 +6,11 @@
 include $(CONFIGDIR)/$(MAKEINC)
 
 SUBDIRS = \
-	a2conv \
 	bounds \
 	hlpbld \
+	tca2xml \
 	pdfbld
-
+#	a2conv
 #	cities
 #	cntcod
 #	xbm

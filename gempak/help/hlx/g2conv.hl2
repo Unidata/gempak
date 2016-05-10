@@ -1,0 +1,14 @@
+     G2CONV
+
+     G2CONV specifies a table that contains all the parameter information 
+     for a series of conversions. Each line in the table contains a set 
+     of parameters required by GDGRIB2 for a single conversion. The table
+     format is field-based (as opposed to column-based) with white space 
+     being the separator. Each filed contains a paramter name, a "=", and 
+     the value of the parameter, for instance, GDFILE=infile. No white 
+     space is allowed within the fields.  The value of a parameter can be 
+     empty. If a parameter is not found, the default value is a empty 
+     string.
+
+     Example:
+     GDFILE=fin GBFILE=fout GFUNC=HGHT GDATTIM=F00 GLEVEL=500 GVCORD=PRES

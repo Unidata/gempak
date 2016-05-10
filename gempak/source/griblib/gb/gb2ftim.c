@@ -25,6 +25,7 @@ void gb2_ftim ( gribfield *gfld, char *gdattm, int *iaccm, int *iret )
  * Chiz/Unidata		 3/00   Created from gb_gpds                    *
  * M. Li/GSC		 5/00	Added iret and cleaned up		*
  * S. Gilbert        1/04   Modified from gb_ftim for use with GRIB2.   *
+ * J. Wu/SGT         03/15	Add a check for analysis grid idsect[2](R6790) *
  ***********************************************************************/
 {
     int    ier;
@@ -118,7 +119,16 @@ void gb2_ftim ( gribfield *gfld, char *gdattm, int *iaccm, int *iret )
 		    break;
 	}
 
-        /*
+
+	    /*
+	     *   Check if it is analysis grid
+	     */
+	    if ( (int)gfld->idsect[12] == 0 ) {
+	        iafgi = 0;
+	        ifcst = 0;
+	    }
+
+	    /*
          *  If PDT number is less than 20, adjust fcst hour, if necessary.
          */
         ihhh = ifcst/60;
@@ -129,6 +139,7 @@ void gb2_ftim ( gribfield *gfld, char *gdattm, int *iaccm, int *iret )
         itime[2] = iafgi * 100000 + ihhh * 100 + imm;
 
         tg_itoc( itime, gdattm, &ier, 20);
+
 }
 
 

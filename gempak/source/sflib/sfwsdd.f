@@ -38,6 +38,7 @@ C* M. desJardins/GSFC	 6/88	Documentation				*
 C* K. Brill/NMC		 8/93	Changes for 8-char stn ID		*
 C* D. Kidwell/NCEP	 7/99	Save row, col to common                 *
 C* S. Jacobs/NCEP	 2/01	Added error check after DM_WCLH		*
+C* M. James/Unidata	 5/16	Don't reassign returned error val	*
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 	INCLUDE		'GMBDTA.CMN'
@@ -120,7 +121,7 @@ C*	Add header to file.
 C
 	CALL DM_WCLH  ( isffln, 0, iheadr, icol, ier )
 	IF  ( ier .ne. 0 )  THEN
-	    iret = -12
+	    iret = ier
 	    RETURN
 	END IF
 	kcol ( isffln ) = icol
@@ -132,7 +133,7 @@ C
 	idthdr (1) = ihhmm
 	CALL DM_WDTR  ( isffln, irow, icol, 'SFDT', ihhmm, sfdata, 
      +			kparm (isffln), ier )
-	IF  ( ier .ne. 0 )  iret = -12
+	IF  ( ier .ne. 0 )  iret = ier
 C*
 	RETURN
 	END

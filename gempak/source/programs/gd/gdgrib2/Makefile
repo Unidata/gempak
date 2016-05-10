@@ -15,6 +15,8 @@ COBJS = \
 	$(ALIB)(gdmakeg2.o) \
 	$(ALIB)(gdmakepdt.o) \
 	$(ALIB)(gdmakwmo.o) \
+	$(ALIB)(gdparseparm.o) \
+	$(ALIB)(gdrdln.o) \
 	$(ALIB)(gdsetnav.o) \
 	$(ALIB)(gdsetsect1.o) \
 	$(ALIB)(gdsetsect4.o) \
