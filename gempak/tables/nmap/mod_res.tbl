@@ -88,6 +88,7 @@
 ! M. James/Unidata	10/13   Added OPC lightning density grids										*
 ! M. James/Unidata	 7/14   Added Cosmo South America grid parm support									*
 ! M. James/Unidata	10/14   Added hrrr													*
+! P. O'Reilly/NCO       02/15   Added 0.5 deg GFS VAFTAD grids                                                                                  *
 ! M. James/Unidata	08/15   Added gfs25													*
 ! M. James/Unidata	05/16   Added gfs20/gfs215												*
 !************************************************************************************************************************************************
@@ -692,6 +693,13 @@ VOLCANIC_ASH_COMP                $NMAP_RESTORE/volcano/volcash_comp             
 VOLCANIC_ASH_LOW_LVL             $NMAP_RESTORE/volcano/volcash_low_lvl               volcash      vaftad;vafgfs;vafnam
 VOLCANIC_ASH_MID_LVL             $NMAP_RESTORE/volcano/volcash_mid_lvl               volcash      vaftad;vafgfs;vafnam
 VOLCANIC_ASH_HIGH_LVL            $NMAP_RESTORE/volcano/volcash_high_lvl              volcash      vaftad;vafgfs;vafnam
+!
+! HYSPLIT PARA model
+!
+VOLCANIC_ASH_COMP              $NMAP_RESTORE/volcano/volcash_comp                    volcash      hysplitp_gfs;hysplitp_nam;vaftad_gfsh
+VOLCANIC_ASH_LOW_LVL           $NMAP_RESTORE/volcano/volcash_low_lvl                 volcash      hysplitp_gfs;hysplitp_nam;vaftad_gfsh
+VOLCANIC_ASH_MID_LVL           $NMAP_RESTORE/volcano/volcash_mid_lvl                 volcash      hysplitp_gfs;hysplitp_nam;vaftad_gfsh
+VOLCANIC_ASH_HIGH_LVL          $NMAP_RESTORE/volcano/volcash_high_lvl                volcash      hysplitp_gfs;hysplitp_nam;vaftad_gfsh
 !
 !
 ! GHM model

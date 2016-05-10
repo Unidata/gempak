@@ -67,6 +67,7 @@
 ! M. Brennan/NHC         2/12   Updated for 2012 Season
 ! M. Brennan/NHC        12/12   Updated for 2013 Season
 ! M. Brennan/NHC         2/14   Updated for 2014 Season
+! M. Brennan/NHC         3/15   Updated for 2015 Season
 !
 !
 !STID    STNM   NAME                             ST CO   LAT    LON  ELV PRI TBCHRS
@@ -94,8 +95,8 @@ PT_ARANS 100500 Port_Aransas                     TX US  2783  -9707     0 1011TX
          100512                                  TX US  2783  -9708     0 12  TX246
 ARANSAS_ 100520 Aransas_Pass                     TX US  2791  -9715     0 19
 ESTES    100530 Estes                            TX US  2796  -9710     0 19
+MESQUI_B 100535 Mesquite_Bay                     TX US  2806  -9685     0 10 
 LAMAR    100540 Lamar                            TX US  2814  -9701     0 19
-         100545                                  TX US  2810  -9690     0 15
 AUSTWELL 100550 Austwell                         TX US  2839  -9684     0 19
 SEADRIFT 100560 Seadrift                         TX US  2842  -9671     0 19
 PT_OCONN 100600 Port_OConnor                     TX US  2839  -9641     0 1012TX247TX235
@@ -214,9 +215,9 @@ GAUTIER  101870 Gautier                          MS US  3039  -8861     0 19
 PASCAGOU 101900 Pascagoula                       MS US  3035  -8855     0 10  MS082
 ORANGE_G 101920 Orange_Grove                     MS US  3042  -8846     0 19
 PECAN    101930 Pecan                            MS US  3044  -8843     0 19
-MS/AL    102000 MS/AL_border                     -- US  3040  -8840     0 10  MS082AL061
-         102012                                  -- US  3038  -8833     0 12  AL062AL063
-GRAND_BA 102020 Grand_Bay                        AL US  3048  -8834     0 19
+MS/AL    102000 MS/AL_border                     -- US  3040  -8840     0 10  MS082AL263
+         102012                                  -- US  3038  -8833     0 12  AL265
+GRAND_BA 102020 Grand_Bay                        AL US  3048  -8834     0 19  AL264
 CODEN    102024 Coden                            AL US  3038  -8824     0 19
          102025                                  AL US  3033  -8820     0 15
 DAUPHIN_ 102030 Dauphin_Island                   AL US  3026  -8811     0 19
@@ -229,8 +230,8 @@ FORT_MOR 102050 Fort_Morgan                      AL US  3023  -8802     0 19
 GULF_SHO 102054 Gulf_Shores                      AL US  3025  -8770     0 19
 ORANGE_B 102060 Orange_Beach                     AL US  3029  -8757     0 19
 PERDIDO_ 102064 Perdido_Beach                    AL US  3034  -8751     0 19
-AL/FL    102100 AL/FL_border                     -- US  3027  -8755     0 10  AL064FL004
-         102114                                  -- US  3030  -8743     0 12  FL005
+AL/FL    102100 AL/FL_border                     -- US  3027  -8755     0 10  AL266FL202
+         102114                                  -- US  3030  -8743     0 12  FL204
 PENSACOL 102120 Pensacola                        FL US  3042  -8722     0 19
 PENSAC_P 102130 Pensacola_Pass                   FL US  3033  -8731     0 19
          102135                                  FL US  3053  -8713     0 15
@@ -239,7 +240,7 @@ PENSAC_B 102150 Pensacola_Beach                  FL US  3033  -8714     0 19
 NAVARRE_ 102160 Navarre_Beach                    FL US  3038  -8686     0 19
 MARY_EST 102170 Mary_Esther                      FL US  3041  -8666     0 19
 FT_WAL_B 102180 Fort_Walton_Beach                FL US  3041  -8662     0 19
-DESTIN   102300 Destin                           FL US  3039  -8650     0 10  FL006FL108
+DESTIN   102300 Destin                           FL US  3039  -8650     0 10  FL206FL108
          102315                                  FL US  3048  -8633     0 15
 PORTLND  102320 Portland_FL                      FL US  3051  -8620     0 19
 MID_BAY_ 102324 Mid_Bay_Bridge                   FL US  3043  -8643     0 19
@@ -385,27 +386,27 @@ MELBOURN 105930 Melbourne                        FL US  2808  -8060     0 19
 INDIAN_H 105940 Indian_Harbour_Beach             FL US  2815  -8059     0 19
 COCOA_BE 106000 Cocoa_Beach                      FL US  2832  -8061     0 10  FL047FL147
 TITUSVIL 106100 Titusville                       FL US  2864  -8063     0 19
-VALU_BRE 106110 Volusia_Brevard_County_Line      FL US  2879  -8073     0 10  FL147FL141
+VOLU_BRE 106110 Volusia_Brevard_County_Line      FL US  2879  -8073     0 10  FL147FL141
 SCOTTSMO 106120 Scottsmoor                       FL US  2877  -8088     0 19
 NEW_SM_B 106200 New_Smyrna_Beach                 FL US  2903  -8089     0 10  FL141
 DAYTONA_ 106220 Daytona_Beach                    FL US  2921  -8102     0 19
-FLAGLE_B 106300 Flagler_Beach                    FL US  2947  -8112     0 10  FL141FL038
+FLAG_VOL 106300 Flagler_Volusia_County_Line      FL US  2943  -8111     0 10  FL141FL038
 BEVERLY_ 106320 Beverly_Beach                    FL US  2951  -8114     0 19
 PALM_COA 106330 Palm_Coast                       FL US  2958  -8121     0 19
-MARINELA 106340 Marineland                       FL US  2967  -8121     0 19
-MATANZAS 106350 Matanzas_Inlet                   FL US  2970  -8122     0 19
-CRESCENT 106360 Crescent_Beach                   FL US  2977  -8125     0 19
-ST_AUGUS 106400 St_Augustine                     FL US  2988  -8127     0 10  FL033
+MARINELA 106340 Marineland                       FL US  2967  -8121     0 10
+MATANZAS 106350 Matanzas_Inlet                   FL US  2970  -8122     0 19  
+CRESCENT 106360 Crescent_Beach                   FL US  2977  -8125     0 10  FL033
+ST_AUGUS 106400 St_Augustine                     FL US  2988  -8127     0 10  
 VILANO_B 106420 Vilano_Beach                     FL US  2992  -8129     0 19
 PALM_VAL 106430 Palm_Valley                      FL US  3018  -8139     0 19
-PONTE_VE 106440 Ponte_Vedra_Beach                FL US  3024  -8138     0 10  FL033FL025
+PONTE_VE 106440 Ponte_Vedra_Beach                FL US  3024  -8138     0 10  FL033FL125
 NEPTUNE_ 106450 Neptune_Beach                    FL US  3031  -8140     0 19
 ATL_BC_F 106460 Atlantic_Beach_FL                FL US  3033  -8140     0 19
 MAYPORT/ 106470 Mayport/St._Johns_River_Entrance FL US  3042  -8139     0 19
-NASSAU_S 106480 Nassau_Sound                     FL US  3051  -8143     0 19
-FERNAN_B 106500 Fernandina_Beach                 FL US  3066  -8144     0 10  FL024GA166
-ST._MARY 106520 St._Marys                        GA US  3073  -8155     0 19  GA165GA153
-ST._ANDR 106530 St._Andrews_Sound                GA US  3099  -8142     0 19
+NASSAU_S 106480 Nassau_Sound                     FL US  3051  -8143     0 10
+FERNAN_B 106500 Fernandina_Beach                 FL US  3066  -8144     0 10  FL124GA166
+ST._MARY 106520 St._Marys                        GA US  3073  -8155     0 19  
+ST_ANDRE 106530 St_Andrews_Sound                 GA US  3099  -8142     0 10  GA165GA153
          106535                                  GA US  3111  -8150     0 15
 BRUNSWIC 106540 Brunswick_GA                     GA US  3115  -8149     0 19
 ST._SIMO 106550 St._Simons_Island                GA US  3115  -8137     0 19
@@ -469,7 +470,7 @@ SALVO    107830 Salvo                            NC US  3554  -7547     0 19
 OREGO_IN 107900 Oregon_Inlet                     NC US  3577  -7553     0 10  NC103
 NAGS_HEA 107920 Nags_Head                        NC US  3596  -7562     0 19
 KITTY_HA 107930 Kitty_Hawk                       NC US  3606  -7571     0 19
-DUCK     108000 Duck                             NC US  3623  -7577     0 10  NC103NC017
+DUCK     108000 Duck                             NC US  3623  -7577     0 10  NC103NC102
 CURR_B_L 108010 Currituck_Beach_Light            NC US  3638  -7583     0 19  
 COROLLA  108020 Corolla                          NC US  3638  -7584     0 19
 ELIZABET 108030 Elizabeth_City                   NC US  3630  -7622     0 19
@@ -479,7 +480,7 @@ NC/VA    108100 NC/VA_border                     -- US  3655  -7587     0 10  NC
 PUNGO    108120 Pungo                            VA US  3672  -7602     0 19
 VIRGINIA 108124 Virginia_Beach                   VA US  3685  -7598     0 19
 CAPE_HEN 108130 Cape_Henry                       VA US  3693  -7601     0 19
-BRDG_TUN 108132 Monitor_Merrimac_Bridge_Tunnel   VA US  3694  -7639     0 19  VA095VA097
+BRDG_TUN 108132 Monitor_Merrimac_Bridge_Tunnel   VA US  3694  -7639     0 19  
 NEWPORT_ 108134 Newport_News                     VA US  3698  -7643     0 19
 HAMPTON  108140 Hampton                          VA US  3703  -7635     0 19
 POQUOSON 108144 Poquoson                         VA US  3712  -7635     0 19
@@ -791,8 +792,9 @@ NAIN     171710 Nain                             -- CN  5658  -6200     0 10
 !
 !TEXAS/ME 200100 Texas/Mexico_border              -- --  2597  -9714     0 20
 BARRA_EL 200200 Barra_El_Mezquital               -- MX  2523  -9743     0 20
-BOCA_DE_ 200300 Boca_De_Catan                    -- MX  2428  -9771     0 20
+BOCA_DEC 200300 Boca_De_Catan                    -- MX  2428  -9771     0 20
 LA_PESCA 200400 La_Pesca                         -- MX  2377  -9774     0 20
+BARRA_DE 200450 Barra_Del_Tordo                  -- MX  2289  -9776     0 20
 PUERTO_  200500 Puerto_De_Altamira               -- MX  2249  -9786     0 20
 RIO_PANU 200600 Rio_Paunco                       -- MX  2226  -9778     0 20
 CABO_ROJ 200700 Cabo_Rojo                        -- MX  2156  -9732     0 20
@@ -800,10 +802,11 @@ TUXPAN   200800 Tuxpan                           -- MX  2097  -9731     0 20
 TECOLUTL 200900 Tecolutla                        -- MX  2048  -9701     0 20
 NAUTLA   201000 Nautla                           -- MX  2021  -9676     0 20
 LAGUNA_V 201100 Laguna_Verde                     -- MX  1972  -9641     0 20
-PUERTO_D 201150 Puerto_De_Veracruz               -- MX  1920  -9612     0 20
+PUERTO_V 201150 Puerto_Veracruz                  -- MX  1920  -9612     0 20
 ALVARADO 201200 Alvarado                         -- MX  1879  -9575     0 20 
+ROCA_PAR 201250 Roca_Partida                     -- MX  1870  -9518     0 20 
 COATZACO 201300 Coatzacoalcos                    -- MX  1816  -9441     0 20
-PUERTO_D 201400 Puerto_De_Dos_Bocas              -- MX  1844  -9320     0 20 
+PUERTO_D 201400 Puerto_Dos_Bocas                 -- MX  1844  -9320     0 20 
 FRONTERA 201500 Frontera                         -- MX  1861  -9270     0 20 
 CIUDAD_C 201600 Ciudad_Del_Carmen                -- MX  1863  -9183     0 20
 SABANCUY 201700 Sabancuy                         -- MX  1897  -9118     0 20 
@@ -1219,16 +1222,15 @@ POINT_PB 600000 Point_Piedras_Blancas            CA US  3566 -12129     0 60  CA
 POINT_SA 600050 Point_Sal                        CA US  3490 -12067     0 60  CA034CA035
          600060                                  CA US  3457 -12062     0 65  
 POINT_CO 600100 Point_Conception                 CA US  3445 -12045     0 60  CA035CA039
-         600110                                  CA US  3445 -12045     0 65  
-         600120                                  CA US  3441 -11968     0 65
+         600110                                  CA US  3445 -12045     0 65  CA549
+         600120                                  CA US  3441 -11968     0 65  CA550
 POINT_MU 600200 Point_Mugu                       CA US  3411 -11912     0 60  CA040CA041
          600210                                  CA US  3411 -11912     0 65  
          600220                                  CA US  3403 -11857     0 65
          600230                                  CA US  3382 -11840     0 65
          600240                                  CA US  3379 -11815     0 65
 MOUTH_OF 600250 Mouth_of_San_Gabriel_River       CA US  3375 -11811     0 60  CA041CA087
-         600260                                  CA US  3339 -11765     0 65
-SAN_MATE 600300 San_Mateo_Point                  CA US  3338 -11760     0 60  CA042CA043
+SAN_ONOF 600300 San_Onofre_State_Beach           CA US  3339 -11759     0 60  CA552CA043
          600310                                  CA US  3254 -11715     0 65
 MOUTH_TI 600400 Mouth_of_Tijuana_River           CA US  3253 -11712     0 60  CA043
 MX_CA_BO 600450 Mexico_California_Border         -- MX  3252 -11713     0 60
@@ -1244,11 +1246,14 @@ PUNTA_AB 600900 Punta_Abreojos                   -- MX  2669 -11356     0 60
          600910                                  -- MX  2642 -11278     0 65
 PUERTO_S 601000 Puerto_San_Andresito             -- MX  2579 -11213     0 60
 CABO_SA_ 601100 Cabo_San_Lazaro                  -- MX  2475 -11226     0 60
+PUERT_CO 601150 Puerto_Cortes                    -- MX  2450 -11184     0 60
 SANTA_FE 601200 Santa_Fe                         -- MX  2410 -11113     0 60
          601250                                  -- MX  2362 -11038     0 65
+TODOS_SA 601270 Todos_Santos                     -- MX  2344 -11022     0 60
 CABO_SAN 601300 Cabo_San_Lucas                   -- MX  2284 -10991     0 60
          601310                                  -- MX  2321 -10940     0 65
-         601320                                  -- MX  2367 -10969     0 65
+         601320                                  -- MX  2350 -10945     0 65
+LOS_BARR 601350 Los_Barriles                     -- MX  2368 -10969     0 60
          601330                                  -- MX  2405 -10981     0 65
 LA_PAZ   601400 La_Paz                           -- MX  2416 -11030     0 60
          601410                                  -- MX  2428 -11062     0 65
@@ -1262,6 +1267,7 @@ BAHIA_SA 601800 Bahia_San_Juan_Bautista          -- MX  2802 -11280     0 60
 BAHIA_DE 601900 Bahia_De_Los_Angeles             -- MX  2890 -11354     0 60
          601910                                  -- MX  2942 -11380     0 65
          601920                                  -- MX  2977 -11430     0 65
+ISLA_SAN 601950 Isla_San_Luis                    -- MX  2990 -11445     0 60 
 SAN_FELP 602000 San_Felipe                       -- MX  3096 -11483     0 60
          602010                                  -- MX  3181 -11478     0 65
 PRTO_PEN 602100 Puerto_Penasco                   -- MX  3128 -11353     0 60
@@ -1277,13 +1283,14 @@ HUATABAM 602500 Huatabampito                     -- MX  2667 -10967     0 60
 TOPOLOBA 602600 Topolobampo                      -- MX  2557 -10907     0 60
          602610                                  -- MX  2515 -10827     0 65
 ALTATA   602700 Altata                           -- MX  2463 -10792     0 60
+BAHIA_TE 602750 Bahia_Tempehuaya                 -- MX  2407 -10715     0 60 
 MAZATLAN 602800 Mazatlan                         -- MX  2320 -10642     0 60
 ESCUINAP 602850 Escuinapa                        -- MX  2282 -10600     0 60 
 EL_ROBLI 602900 El_Roblito                       -- MX  2239 -10569     0 60
          602920                                  -- MX  2194 -10562     0 65  
 SAN_BLAS 603000 San_Blas                         -- MX  2152 -10527     0 60
          603010                                  -- MX  2100 -10534     0 65
-         603020                                  -- MX  2074 -10531     0 65
+PUNTA_MI 603050 Punta_Mita                       -- MX  2077 -10551     0 60 
 CABO_COR 603100 Cabo_Corrientes                  -- MX  2042 -10568     0 60
 PLAYA_PE 603200 Playa_Perula                     -- MX  1957 -10514     0 60
 MANZANIL 603300 Manzanillo                       -- MX  1905 -10433     0 60
@@ -1301,6 +1308,7 @@ BAHIAS_D 604200 Bahias_De_Huatulco               -- MX  1569  -9623     0 60
 SALINA_C 604300 Salina_Cruz                      -- MX  1616  -9520     0 60
 BARRA_TO 604400 Barra_De_Tonala                  -- MX  1600  -9399     0 60
 BOCA_DE_ 604500 Boca_De_Pijijiapan               -- MX  1558  -9332     0 60
+PUERT_CH 604550 Puerto_Chiapas                   -- MX  1471  -9245     0 60 
 MX/GUATE 605000 MX/Guatemala_border              -- --  1452  -9222     0 60
 SIPACATE 605060 Sipacate                         -- GU  1392  -9119     0 60
 GUAT/EL_ 605100 Guatemala/El_Salvador_border     -- --  1374  -9012     0 60
@@ -1436,10 +1444,10 @@ NZE_ALBM 800170 No_Zones_East_Albemarle_Sound    NC US  3606  -7673     0 80 3
          800171                                  NC US  3591  -7576     0 81 3
          800172                                  NC US  3591  -7576     0 85 3
          800173                                  NC US  3591  -7576     0 85 3
-CB_NPTCM 808410 Chesapeake_Bay_New_Point_Comfort VA US  3730  -7628     0 80 4VA091VA093
-         808411                                  VA US  3730  -7626     0 81 4VA094VA095
-         808412                                  VA US  3730  -7600     0 85 4VA096VA097
-         808413                                  VA US  3690  -7595     0 85 4VA098
+CB_NPTCM 808410 Chesapeake_Bay_New_Point_Comfort VA US  3730  -7628     0 80 4VA095VA097
+         808411                                  VA US  3730  -7626     0 81 4VA525
+         808412                                  VA US  3730  -7600     0 85 4
+         808413                                  VA US  3690  -7595     0 85 4
          808414                                  VA US  3693  -7638     0 85 4
          808415                                  VA US  3730  -7628     0 85 4
 CB_WNDPT 808420 Chesapeake_Bay_Windmill_Point    VA US  3761  -7628     0 80 4VA084VA085

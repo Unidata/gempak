@@ -211,13 +211,17 @@
 !*                              and OAMBG4_HI				*
 !* L. Hinson/AWC        10/12   Added EDR                               *
 !* M. James/Unidata	 8/12   Added RAP; Preserved RUC entries        *
+!* J. Carr/NCO          03/13   Added NAM32                             *
 !* M. James/Unidata	 4/13   Copied NOGAPS to NAVGEM                 *
 !* G.McFadden/IMSG	07/13	Added SGWHA and WSPDA			*
 !* M. James/Unidata	10/13	Added OPC lightning density grids	*
 !* M. James/Unidata	03/14	Updates for COAMPS and NAVGEM		*
+!* J. Carr/NCO          06/14   Added HRW Conus;removed E/W             *
 !* M. James/Unidata	06/14	Added COSMO				*
+!* P. O'Reilly/NCO      02/15   Added 0.5 deg GFS VAFTAD grids          *
 !* M. James/Unidata	08/15	Added GFS25				*
 !* M. James/Unidata	05/16	Added GFS20/GFS215			*
+!* M. James/Unidata     05/16   Preserved HRW E/W			*
 !************************************************************************
 !
 !           |                         |                                                |        |        |DEF |DEF   |DEF   |                     |TIME
@@ -424,6 +428,8 @@ HRW_PR_ARW   $MODEL/hiresw             hiresw_prarw_YYYYMMDDHHfFFF              
 HRW_PR_NMM   $MODEL/hiresw             hiresw_prnmm_YYYYMMDDHHfFFF                      CAT_GRD  SCAT_FCT   -1     -1     -1 OFF/0/0                    4
 HRW_HI_ARW   $MODEL/hiresw             hiresw_hiarw_YYYYMMDDHHfFFF                      CAT_GRD  SCAT_FCT   -1     -1     -1 OFF/0/0                    4
 HRW_HI_NMM   $MODEL/hiresw             hiresw_hinmm_YYYYMMDDHHfFFF                      CAT_GRD  SCAT_FCT   -1     -1     -1 OFF/0/0                    4
+HRW_US_NMMB  $MODEL/hiresw             hiresw_conusnmmb_YYYYMMDDHHfFFF                  CAT_GRD  SCAT_FCT   -1     -1     -1 OFF/0/0                    4
+HRW_US_ARW   $MODEL/hiresw             hiresw_conusarw_YYYYMMDDHHfFFF                   CAT_GRD  SCAT_FCT   -1     -1     -1 OFF/0/0                    4
 HWRF         $MODEL/hwrf               hwrfp_YYYYMMDDHHfFFF_*                           CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
 HWRFNEST     $MODEL/hwrf               hwrfn_YYYYMMDDHHfFFF_*                           CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
 KMSR         $MODEL/nohrsc             YYYYMMDDHH_kmsr255.gem                           CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
@@ -443,6 +449,7 @@ NAM215       $MODEL/nam                YYYYMMDDHH_nam215.gem                    
 NAM40        $MODEL/nam                YYYYMMDDHH_nam212.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
 NAM212       $MODEL/nam                YYYYMMDDHH_nam212.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
 NAM237       $MODEL/nam                YYYYMMDDHH_nam237.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+NAM32        $MODEL/nam32              YYYYMMDDHHfFFF_nam32.gem                         CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
 NCWD         $MODEL/awc                YYYYMMDD_ncwd.gem                                CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
 TURB         $MODEL/awc                YYYYMMDD_turb.gem                                CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
 CIP          $MODEL/awc                YYYYMMDD_cip.gem                                 CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
@@ -476,6 +483,7 @@ UKMET        $MODEL/ukmet              YYYYMMDDHH_ukmet.gem                     
 EGRR         $MODEL/ukmet              YYYYMMDDHH_egrr.gem                              CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
 UKMET_HIRES  $MODEL/ukmet_hiresp       ukmet_hr_YYYYMMDDHHfFFF                          CAT_GRD  SCAT_FCT   -1     -1     -1 OFF/0/0                    4
 VAFTAD       $MODEL/vaftad             hysplit_YYYYMMDDHH_*                             CAT_GRD  SCAT_FCT   -1     -1     -1 OFF/0/0                    4
+VAFTAD_GFSH  $MODEL/vaftad             hy_gfsh_YYYYMMDDHH_*                             CAT_GRD  SCAT_FCT   -1     -1     -1 OFF/0/0                    4
 VAFGFS       $MODEL/vaftad             hy_gfs_YYYYMMDDHH_*                              CAT_GRD  SCAT_FCT   -1     -1     -1 OFF/0/0                    4
 VAFNAM       $MODEL/vaftad             hy_nam_YYYYMMDDHH_*                              CAT_GRD  SCAT_FCT   -1     -1     -1 OFF/0/0                    4
 !
