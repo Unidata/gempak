@@ -95,6 +95,7 @@ C
 C
 C*	    Write the WCN information to the ASCII file. 
 C
+	    BACKSPACE(lunf)
 	    WRITE(lunf,20)wloc
  20         FORMAT (A)
 C

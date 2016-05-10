@@ -34,6 +34,7 @@ C**									*
 C* Log:									*
 C* A. Hardy/NCEP	 8/02	Created					*
 C* A. Hardy/NCEP	 1/04	Put IF condition around lat/lon DO loop *
+C* M. James/UCAR        05/16   gfortran 4.6+ fix for writing files     *
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 C*
@@ -69,6 +70,7 @@ C
 C
  	CALL ST_LSTR ( string, lens, ier )
 C
+ 	BACKSPACE(lunf)
  	WRITE ( lunf, 10 ) string
   10	FORMAT ( A )
 C

@@ -27,6 +27,7 @@ C*									*
 C**									*
 C* Log:									*
 C* F. J. Yen/NCEP	 4/05						*
+C* M. James/UCAR        05/16   gfortran 4.6+ fix for writing files     *
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 C*
@@ -53,6 +54,7 @@ C
 C
 C*	Write the WCP information to the ASCII file. 
 C
+	BACKSPACE(lunf)
 	WRITE ( lunf, 20 ) string
  20     FORMAT ( A )
 C

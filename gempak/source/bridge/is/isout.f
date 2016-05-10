@@ -41,6 +41,7 @@ C* A. Hardy/GSC          7/00   Added press/max wind string display     *
 C* A. Hardy/SAIC	 9/01	Added check for press/max wind 		*
 C* A. Hardy/NCEP	 9/02	Added originating station id		*
 C* F. J. Yen/NCEP	10/03	Allowed for 'SFC' & 'FZLVL' for FL lvl.	*
+C* M. James/UCAR        05/16   gfortran 4.6+ fix for writing files     *
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 C*
@@ -133,6 +134,7 @@ C
      +		 '|' // isp ( :lensp ) // '|' // stname ( :lennam ) //
      +		 '|' // corr
 C
+	BACKSPACE(lunf) 
 	WRITE ( lunf, 10 ) string
    10	FORMAT ( A )
 C

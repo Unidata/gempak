@@ -29,6 +29,7 @@ C* Log:									*
 C* D. Kidwell/NCEP	 5/99	                                        *
 C* D. Kidwell/NCEP	 7/99	Added replacement watch type RP         *
 C* D. Kidwell/NCEP	 8/99	Added status report type ST             *
+C* M. James/UCAR        05/16   gfortran 4.6+ fix for writing files     *
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 C*
@@ -60,6 +61,7 @@ C
      +		 stptim ( :lenstp ) // '|' // wnum // '|' // corr //
      +		 '|' // cancl
 C
+	BACKSPACE(lunf)
 	WRITE ( lunf, 10 ) string
    10	FORMAT ( A )
 C

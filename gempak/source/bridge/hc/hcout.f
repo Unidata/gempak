@@ -59,6 +59,7 @@ C* A. Hardy/NCEP	10/02	Added check for valid lat/lon		*
 C* D. Kidwell/NCEP	 2/03	Added subtropical storm flag            *
 C* D. Kidwell/NCEP	 2/03	Added argument nfcst                    *
 C* A. Hardy/NCEP	10/03	Added 'HUT' for TYPHOON storm type	*
+C* M. James/UCAR        05/16   gfortran 4.6+ fix for writing files     *
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 C*
@@ -118,6 +119,7 @@ C
      +           '|' // direc ( :lendir) // '|' // speed ( :lenspd) // 
      +           '|' // minpres ( :lenpres)// '|' // corr
 C
+	BACKSPACE ( lunf )
 	WRITE ( lunf, 10 ) string
    10	FORMAT ( A )
 C

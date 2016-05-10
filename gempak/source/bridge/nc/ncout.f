@@ -27,6 +27,7 @@ C*									*
 C**									*
 C* Log:									*
 C* D. Kidwell/NCEP	 8/00	                                        *
+C* M. James/UCAR        05/16   gfortran 4.6+ fix for writing files     *
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 C*
@@ -51,6 +52,7 @@ C
      +		 // '|' // flvl (2) ( :lenfl2 ) // '|'
      +		 // corr
 C
+	BACKSPACE(lunf)
 	WRITE ( lunf, 10 ) string
    10	FORMAT ( A )
 C

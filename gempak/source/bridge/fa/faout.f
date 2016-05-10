@@ -63,6 +63,7 @@ C*									*
 C**									*
 C* Log:									*
 C* H. Zeng/SAIC		07/05		Copied from wc_out		*
+C* M. James/UCAR        05/16   gfortran 4.6+ fix for writing files     *
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 C*
@@ -104,6 +105,7 @@ C
 C
 C*	    Write the Flash Flood watch to the ASCII file. 
 C
+	    BACKSPACE(lunf)
 	    WRITE(lunf,20)wloc
  20         FORMAT (A)
 C

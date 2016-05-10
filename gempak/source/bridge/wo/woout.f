@@ -53,6 +53,7 @@ C* A. Hardy/NCEP	 2/03		Added 'tissue' to output string *
 C* A. Hardy/NCEP	 2/03		Increased wloc 80->120		*
 C* A. Hardy/NCEP	 2/03		Write out time zone		*
 C* F. J. Yen/NCEP	10/06		Checked length of wloc		*
+C* M. James/UCAR        05/16   gfortran 4.6+ fix for writing files     *
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 C*
@@ -93,6 +94,7 @@ C*	    Write the storm information to the ASCII file.
 C
 	    CALL ST_LSTR ( wloc, lenstr, ier)
 	    IF ( lenstr .le. 120 ) THEN
+	        BACKSPACE(lunf)
 	        WRITE(lunf,20)wloc
  20             FORMAT (A)
 	      ELSE

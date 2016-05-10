@@ -47,6 +47,7 @@ C* A. Hardy/GSC		12/00	Cleaned up iret values			*
 C* F. J. Yen/NCEP	 1/01	Added parameters to replace common block*
 C* T. Piper/SAIC	06/07	Added storm-based polygon parameter	*
 C* F. J. Yen/NCEP	 3/08	Added ETN and modified corr (CSC)	*
+C* M. James/UCAR        05/16   gfortran 4.6+ fix for writing files     *
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 C*
@@ -71,6 +72,7 @@ C
 C
 C*  Write the warning information to the ASCII file. 
 C
+	BACKSPACE(lunf)
 	WRITE (lunf, 20) wloc
  20     FORMAT (A)
 C

@@ -45,6 +45,7 @@ C* Log:									*
 C* F. J. Yen/NCEP	12/00	Created from WN_OUT.			*
 C* F. J. Yen/NCEP	 1/01	Added parameters to replace common block*
 C* F. J. Yen/NCEP	 4/01	Added watch state abbreviation to header*
+C* M. James/UCAR        05/16   gfortran 4.6+ fix for writing files     *
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 C*
@@ -71,6 +72,7 @@ C
 C
 C*	    Write the warning information to the ASCII file. 
 C
+	    BACKSPACE(lunf)
 	    WRITE(lunf,20)wloc
  20         FORMAT (A)
 	END IF

@@ -45,6 +45,7 @@ C**									*
 C* Log:									*
 C* M. Li/SAIC		08/02						*
 C* M. Li/SAIC		02/03	Increase dim to handle 2 headlines	*
+C* M. James/UCAR        05/16   gfortran 4.6+ fix for writing files     *
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 C*
@@ -76,6 +77,7 @@ C
 C
 C*	   Write the storm information to the ASCII file. 
 C
+	   BACKSPACE(lunf)
 	   WRITE(lunf,20)wloc
  20        FORMAT (A)
 C
