@@ -211,13 +211,21 @@ HDS	^[YZ].[AIJQHG]... KWB. ([0-3][0-9])([0-2][0-9]).*/m(AVN|GFS|SSIAVN|SSIGFS)
 # GRIB2 GFS
 # AWIPS grids
 # Grid #212 CONUS 40km: ^[LM].R... KWBC
+# Grid #215 CONUS 20km: ^[YZ].N... KWBC
 # Grid #160 Alaska 47.5km: ^[LM].G... KWBC
 # Grid #254 Pacific 40km: ^[LM].O... KWBC
 # Grid #161 Puerto Rico 0.5 degree: ^[LM].T... KWBC
-NGRID	^[LM].R... KWBC
+#
+# GFS212/GFS40 removed from NOAAport 05/11/2016
+#NGRID	^[LM].R... KWBC
+#	PIPE	dcgrib2 -m 20000 -d data/gempak/logs/dcgrib2_GFS2conus.log
+#		-e GEMTBL=@GEMTBL@
+#		data/gempak/model/gfs/YYYYMMDDHH_gfs212.gem
+#
+NGRID	^[LM].N... KWBC
 	PIPE	dcgrib2 -m 20000 -d data/gempak/logs/dcgrib2_GFS2conus.log
 		-e GEMTBL=@GEMTBL@
-		data/gempak/model/gfs/YYYYMMDDHH_gfs212.gem
+		data/gempak/model/gfs/YYYYMMDDHH_gfs215.gem
 #
 NGRID	^[LM].G... KWBC
 	PIPE	dcgrib2 -m 20000 -d data/gempak/logs/dcgrib2_GFS2alaska.log
