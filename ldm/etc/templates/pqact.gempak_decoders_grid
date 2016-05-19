@@ -222,7 +222,7 @@ HDS	^[YZ].[AIJQHG]... KWB. ([0-3][0-9])([0-2][0-9]).*/m(AVN|GFS|SSIAVN|SSIGFS)
 #		-e GEMTBL=@GEMTBL@
 #		data/gempak/model/gfs/YYYYMMDDHH_gfs212.gem
 #
-NGRID	^[LM].N... KWBC
+NGRID	^[YZ].N... KWBC
 	PIPE	dcgrib2 -m 20000 -d data/gempak/logs/dcgrib2_GFS2conus.log
 		-e GEMTBL=@GEMTBL@
 		data/gempak/model/gfs/YYYYMMDDHH_gfs215.gem
