@@ -10,40 +10,24 @@ GEMPAK can be installed by an individual user, and root / superuser permission i
 
 ### from GitHub
 
-GEMPAK may be download from the <a href="https://github.com/Unidata/gempak"">GitHub repository</a> in a zip file, or via `git` on the command line.
-
-In **/home/gempak**, to clone into the directory **/home/gempak/GEMPAK7**:
+<a href="https://github.com/Unidata/gempak"">GEMPAK releases hosted on GitHub</a> can be downloaded as zip or tar files, or cloned on the command line:
 
         git clone git://github.com/Unidata/gempak.git GEMPAK7
 
-This will copy the GEMPAK source to the present working directory.   It also has the advantage of easily setting up <code>git pull</code> to automatically update your local GEMPAK7 repository with the remote Unidata repository.
-
-If downloaded from GitHub, ensure that the source is located in a directory under the user's home directory, such as **/home/gempak/GEMPAK7/**
 
 ### Source code from Unidata
 
-The current release of GEMPAK is provided as a gzip/tarball archive and can found on the <a href="http://www.unidata.ucar.edu/downloads/gempak/">Unidata GEMPAK download page</a>. 
+The current release of GEMPAK (<a href="http://www.unidata.ucar.edu/downloads/gempak/latest/gempak-7.3.0.tar.gz">v7.3.0</a>) is provided as a gzip/tarball archive and can found on the <a href="http://www.unidata.ucar.edu/downloads/gempak/">Unidata GEMPAK download page</a>. 
 	
 Unpacking the archive in the gempak user home directory (assuming **/home/gempak**):
 
-	tar -xvzf gempak-7.tar.gz
+	tar -xvzf gempak-7.3.0.tar.gz
 
 will create the directory **/home/gempak/GEMPAK7/** which contains all of the libraries, program source and configuration files, most notably the two Gemenviron and Gemenviron.profile.
 
 ### Binary Releases
 
-| System   | compilers                           | flavor     |
-|---------:|:-----------------------------------|:-----------|
-| linux    | gcc-gfortran-4.1.2                  | CentOS 5   |
-| linux64  | gcc-gfortran-4.4.4                  | Fedora 12  |
-| x86      | Sun Fortran 95 8.6 and Sun C 5.12   | SunOs 5.11 |
-| Darwin   | clang/LLVM 5 and gfortran/gcc 4.7.2 | OS X 10.9 Mavericks |
-
-The OS X 10.9 binary required **MacPorts** and package `openmotif` be installed:
-	
-1. Download and install MacPorts
-2. run `sudo port install openmotif` to install Open Motif and its dependencies.
-3. run `nmap2` to make sure Motif libraries are installed.
+A Linux x86_64 binary is available from the <a href="http://www.unidata.ucar.edu/downloads/gempak/">Unidata downloads page</a>, built with gcc-gfortran 4.4.7 and Python 2.7 (required in order tto use the <a href="http://python-awips.readthedocs.io/en/latest/index.html">Python AWIPS Data Access Framework</a>)
 
 ## Create the NAWIPS symbolic link
 
@@ -66,8 +50,6 @@ If you unpacked GEMPAK in **/home/gempak** and plan on compiling with gfortran, 
 
 
 	setenv NAWIPS /home/gempak/GEMPAK7
-
-## Sourcing Environmental Variables
 
 ### csh/tcsh
 
@@ -96,33 +78,11 @@ The last definition, **$GEMDATA**, points to the **/data/ldm/gempak** but can be
 
 ## Required Libraries
 
-If your system uses standard locations for its compilers, X11/Motif libraries and make utilities, you do not needto change any settings. It's assumed both an ansi compatible C compiler and a Fortran 77 compatible compiler are available.
+If your system uses standard locations for its compilers, X11/Motif libraries and make utilities, you do not needto change any settings. It's assumed both an ansi compatible C compiler and a Fortran 77 compatible compiler are available. Some operating systems provide the MOTIF libraries, but some only install them as an option. 
 
-To build locally from source, you must have the developer environments installed for X11, Open Motif and libXp.
+The Open Motif 2.3.4 source tarball can be downloaded from the <a href="http://sourceforge.net/projects/motif/files/">motif sourceforge page</a>. Binary packages are also available for <a href="http://sourceforge.net/projects/motif/files/">Red Hat, Fedora and Ubuntu</a> operating systems.
 
-### X11
-
-* libX11
-* libX11-devel
-
-### Open Motif
-
-* openmotif
-* openmotif-devel
-
-The Open Motif 2.3.4 source tarball can be downloaded from the <a href="http://sourceforge.net/projects/motif/files/">motif sourceforge page</a>.
-
-Binary packages are also available for <a href="http://sourceforge.net/projects/motif/files/">Red Hat, Fedora and Ubuntu</a> operating systems.
-
-Some operating systems provide the MOTIF libraries, but some only install them as an option. 
-### libXp
-
-* libXp
-* libXp-devel
-
-### Full List of Required Libraries
-
-Some systems, most notably recent releases of Fedora Core (fc16 and fc17) require a number of packages be installed in order to successfully build OpenMotif and GEMPAK. Below is a list of all required packages, followed by a single yum install command to take care of them in one instance: 
+The package <b>python-devel</b> is required to build GEMPAK against system Python or <a href="http://python-awips.readthedocs.io/en/latest/about.html#awips-ii-python-stack">AWIPS Python</a>. The Python package <b>python-awips</b> is not required to build GEMPAK, but is required at run-time when requesting EDEX grids such as <b>A2NAM</b> and <b>A2GFS</b>.
 
 * gcc
 * gcc-c++
@@ -135,6 +95,7 @@ Some systems, most notably recent releases of Fedora Core (fc16 and fc17) requir
 * libXp-devel
 * libXft-devel
 * libXtst-devel
+* python-devel
 * xorg-x11-xbitmaps
 * flex
 * byacc
@@ -144,7 +105,7 @@ To install all at once:
 
 	yum install gcc gcc-c++ gcc-gfortran libX11 libX11-devel libXt-devel \
 	libXext-devel libXp libXp-devel libXft-devel libXtst-devel \
-	xorg-x11-xbitmaps flex byacc *fonts-ISO8859-* -y
+	xorg-x11-xbitmaps flex byacc *fonts-ISO8859-* python-devel -y
 
 ## Build Options
 

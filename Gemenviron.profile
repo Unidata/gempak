@@ -295,14 +295,15 @@ PATH=${PATH}:${OS_BIN}:${NAWIPS}/bin ; export PATH
 ##
 ## PYTHON for GEMPAK
 ##
-# Set up the variables used during the build
-
-if [ -d /awips2/python ]; then
+COMMAND=`rpm -q awips2-python`
+if [ $? -eq 0 ]; then
+    # use AWIPS Python
     export PYHOME="/awips2/python"
     pv="`${PYHOME}/bin/python -V 2>&1 | cut -c8- | cut -d. -f1`"
     pr="`${PYHOME}/bin/python -V 2>&1 | cut -c8- | cut -d. -f2`"
     export PYTHONPATH="${PYHOME}/lib/python${pv}.${pr}/site-packages:${NAWIPS}/scripts/python"
 else
+    # use system Python
     export PYHOME="/usr"
     pv="`${PYHOME}/bin/python -V 2>&1 | cut -c8- | cut -d. -f1`"
     pr="`${PYHOME}/bin/python -V 2>&1 | cut -c8- | cut -d. -f2`"
@@ -318,7 +319,7 @@ else
     fi
 fi
 # this is needed for the build, and not required at runtime
-export LD_LIBRARY_PATH=/lib${ARCH}:/usr/lib${ARCH}:${OS_LIB}
+export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/lib${ARCH}:/usr/lib${ARCH}:${OS_LIB}
 export PYINC="-I${PYHOME}/include/python${pv}.${pr}"
 export PYLIB="-L${PYHOME}/lib${ARCH} -lpython${pv}.${pr}"
 export WITHPY="-DWITHPYTHON"
