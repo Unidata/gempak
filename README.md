@@ -8,12 +8,16 @@ GEMPAK can be installed by an individual user, and root / superuser permission i
 
 ### from GitHub
 
+<a href="https://github.com/Unidata/gempak/releases">https://github.com/Unidata/gempak/releases</a>
+
 <a href="https://github.com/Unidata/gempak"">GEMPAK releases hosted on GitHub</a> can be downloaded as zip or tar files, or cloned on the command line:
 
         git clone git://github.com/Unidata/gempak.git GEMPAK7
 
 
 ### Source code from Unidata
+
+<a href="http://www.unidata.ucar.edu/downloads/gempak/index.jsp">http://www.unidata.ucar.edu/downloads/gempak/</a>
 
 The current release of GEMPAK (<a href="http://www.unidata.ucar.edu/downloads/gempak/latest/gempak-7.3.0.tar.gz">v7.3.0</a>) is provided as a gzip/tarball archive and can found on the <a href="http://www.unidata.ucar.edu/downloads/gempak/">Unidata GEMPAK download page</a>. 
 	
