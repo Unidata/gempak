@@ -1,7 +1,7 @@
 # Gemenviron file for GEMPAK
 #
 # Please configure the following definitions to reflect your system:
-NAWIPS=/home/gempak/NAWIPS
+NAWIPS=c/Users/IEUser/git/gempak
 export EDEX_SERVER="edex-cloud.unidata.ucar.edu"
 #
 #		Sets environment variables used in running GEMPAK
@@ -24,7 +24,7 @@ if [ ! -d $NAWIPS ] ; then
     echo "Can not find NAWIPS distribution."
     echo 'Check Gemenviron NAWIPS definition ->' $NAWIPS
     unset NAWIPS
-    exit
+    #exit
 fi
 export NAWIPS
 #
@@ -54,96 +54,8 @@ export USE_GFORTRAN
 #try to determine operating system: command uname must be in path
 #
 MAKEINC="Makeinc.common"
-if [ ! $NA_OS ] ; then
-   TMP_OS=`uname -s | tr '[A-Z]' '[a-z]'`
-   case $TMP_OS in
-        aix )
-           NA_OS="aix"
-	   OS_MAJOR=`uname -v`
-           if [ $OS_MAJOR == '5' ] ; then
-              AIX_NO_GEMPAK_SCANDIR=1
-	      export AIX_NO_GEMPAK_SCANDIR
-           fi
-           ;;
-        hp-ux )
-	   OS_MAJOR=`uname -r | cut -f1,2 -d.`
-           if [ $OS_MAJOR == 'B.11' ] ; then
-              XCFLAGS="-DSYSLOG_RETURNS_INT"
-	      export XCFLAGS
-           fi
-	   if [ $USEGCC_HPUX ] ; then
-	      NA_OS="hpux_gcc"
-           else
-              NA_OS= "hpux"
-           fi
-           b;;
-        irix64 )
-           XCFLAGS="-o32"
-	   export XCFLAGS
-	   ;;
-        irix )
-           NA_OS="irix"
-           ;;
-        osf1 )
-           NA_OS="osf"
-           uac p noprint # supress warnings in xw driver for unaligned access
-           ;;
-        sunos )
-	   MAKEINC="Makeinc.common_sol"
-           OS_MAJOR=`uname -r | sed 's/\..*//'`
-           HARDWARE=`uname -i | tr '[A-Z]' '[a-z]' | sed 's/\,.*//'`
-           NA_OS="sunos"
-           #if [ [ $OS_MAJOR == 5 ] && [ $USEGCC_SOL ] ] ; then
-           if [ $OS_MAJOR == 5 ] && [ $USEGCC_SOL ] ; then
-              NA_OS="sol_gcc"
-	   else
-              NA_OS="sol"
-           fi
-           #if [ [ $NA_OS == 'sol' ] && [ $HARDWARE == 'i86pc' ] ] ; then
-           if [ $NA_OS == 'sol' ] && [ $HARDWARE == 'i86pc' ] ; then
-              NA_OS="x86"
-           fi
-           ;;
-        ultrix )
-           NA_OS="ultrix"
-           ;;
-	linux )
-	   NA_OS="linux"
-           if [ $USE_G77 ] ; then
-              GEM_COMPTYPE="g77"
-           fi
-           if [ $USE_GFORTRAN ] ; then
-              GEM_COMPTYPE="gfortran"
-           fi
-           if [ $USE_PGI ] ; then
-              GEM_COMPTYPE="pgi"
-           fi
-           export GEM_COMPTYPE
-	   #
-	   # See if MACHTYPE is set, otherwise set it
-	   MACHTEST=${MACHTYPE:=`uname -m`}
-	   # search for _64 in x86_64
-           IS64=`echo $MACHTEST | grep -c "_64"`
-	   if [ ${IS64} -gt 0 ] ; then
-              NA_OS="linux64"
-           fi
-	   ;;
-	freebsd )
-	   NA_OS="freebsd"
-	   ;;
-	cygwin )
-	   NA_OS="cygwin"
-	   ;;
-	darwin )
-	   NA_OS="darwin"
-	   ;;
-        * )
-           echo "trouble determining operating system configuration"
-           echo "OS reported $TMP_OS"
-           exit
-   esac
-   export NA_OS
-fi
+NA_OS="cygwin"
+export NA_OS
 export MAKEINC
 # --------------------------------------------------------------------
 #
@@ -291,36 +203,3 @@ PATH=${PATH}:${OS_BIN}:${NAWIPS}/bin ; export PATH
 #  Print command and flags for systems
    LP="lp -c" ; export LP
    LPFLAG="-d" ; export LPFLAG
-
-##
-## PYTHON for GEMPAK
-##
-COMMAND=`rpm -q awips2-python`
-if [ $? -eq 0 ]; then
-    # use AWIPS Python
-    export PYHOME="/awips2/python"
-    pv="`${PYHOME}/bin/python -V 2>&1 | cut -c8- | cut -d. -f1`"
-    pr="`${PYHOME}/bin/python -V 2>&1 | cut -c8- | cut -d. -f2`"
-    export PYTHONPATH="${PYHOME}/lib/python${pv}.${pr}/site-packages:${NAWIPS}/scripts/python"
-else
-    # use system Python
-    export PYHOME="/usr"
-    pv="`${PYHOME}/bin/python -V 2>&1 | cut -c8- | cut -d. -f1`"
-    pr="`${PYHOME}/bin/python -V 2>&1 | cut -c8- | cut -d. -f2`"
-    if [[ ${pv}${pr} -lt 27 ]] ; then
-      echo "python${pv}.${pr} is not supported for GEMPAK. Install python2.7+"
-      return
-    fi
-    export PYTHONPATH="${PYHOME}/lib64/python${pv}.${pr}/site-packages:${PYHOME}/lib/python${pv}.${pr}/site-packages:${NAWIPS}/scripts/python"
-    MACHTEST=${MACHTYPE:=`uname -m`}
-    IS64=`echo $MACHTEST | grep -c "_64"`
-    if [ ${IS64} -gt 0 ] ; then
-      ARCH="64"
-    fi
-fi
-# this is needed for the build, and not required at runtime
-export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/lib${ARCH}:/usr/lib${ARCH}:${OS_LIB}
-export PYINC="-I${PYHOME}/include/python${pv}.${pr}"
-export PYLIB="-L${PYHOME}/lib${ARCH} -lpython${pv}.${pr}"
-export WITHPY="-DWITHPYTHON"
-export PYDEP="-lpthread -ldl -lutil"

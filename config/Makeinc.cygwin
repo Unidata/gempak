@@ -1,13 +1,13 @@
 OPSYS = Cygwin
 
 CC = gcc
-FC = g77
+FC = gfortran
 
 MOTIFINC  = -I/usr/X11R6/include
 XWINCDIR  = -I/usr/X11R6/include
 
 COPT = -DUNDERSCORE -DNO_NANOSLEEP -D$(OPSYS) $(GEMINC) $(MOTIFINC) -O # -g
-FOPT =  -fno-second-underscore $(GEMINC) -O # -g
+FOPT = -fno-range-check -fd-lines-as-comments -fno-second-underscore $(GEMINC) -O # -g
 FOPT_NOGLOB = -fno-globals -Wno-globals
 NCII = "-I../libsrc"
 NCOPT = "CPPFLAGS=-DNDEBUG -Df2cFortran" "FFLAGS=-O -Wno-globals" "CFLAGS=-O $(NCII)" "CXX= "

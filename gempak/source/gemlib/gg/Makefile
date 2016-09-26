@@ -9,7 +9,6 @@ ALIB = $(GEMLIB)
 
 COBJS = \
 	$(ALIB)(ggosrd.o) \
-	$(ALIB)(ggqbrd.o) \
 	$(ALIB)(ggqsrd.o) \
 	$(ALIB)(ggrtrk.o) \
 	$(ALIB)(ggwcpb.o) \

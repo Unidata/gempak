@@ -1,27 +1,18 @@
 C************************************************************************
-C* MCHPRM.Cygwin							*
-C*									*
-C* This include file contains Cygwin specific parameter definitions	*
-C* for the GEMPAK software.						*
-C*									*
-C* Cygwin								*
-C**									*
-C* Log:									*
-C* S. Jacobs/NCEP	 2/01	Made MTLNUX a separate machine type	*
-C* K. Brill/HPC		 8/02	Define LLMXTG				*
-C* R. Tian/SAIC          9/02   Increase LLMXGD from 97000 to 275000    *
-C* K. Brill/HPC		11/02	Set LLMXTG = 1000000			*
-C* T. Piper/SAIC         3/03   Increased LLMXTG to 4000000             *
-C* S. Jacobs/NCEP	 3/03	Reduced LLMXTG back to 1000000		*
-C* S. Jacobs/NCEP	 3/03	Reduced LLMXTG to 750000		*
-C* T. Piper/SAIC        05/05   Increased LLMXPT from 10K to 50K        *
-C* T. Piper/SAIC        07/05   Increased LLMXPT to 80K                 *
-C* D.W.Plummer/NCEP	07/06	Increased LLMXGD to 750000		*
-C* D.W.Plummer/NCEP     07/06   Increased LLMXGD & LLMXTG to 1M         *
+C* MCHPRM.SunOS
+C*
+C* This include file contains Solaris X86 OS specific parameter definitions
+C*	for the GEMPAK software.
+C*
+C* Solaris X86 Version
+C**
+C* Log:
+C* K. Brill/HPC		 8/02	Define LLMXTG                           *
+C* R. Tian/SAIC		 9/02	Increase LLMXGD from 97000 to 275000    *
 C* M. James/Unidata     08/13   Increased LLMXGD to 1.5M                *
 C************************************************************************
 C!
-	PARAMETER	( MTMACH =  MTLNUX )
+	PARAMETER	( MTMACH =  MTLNUX  )
 C!						Machine type
 C!						Raob, VAS data source
 	PARAMETER	( MMRECL =     4   )
@@ -35,41 +26,42 @@ C!
 	CHARACTER*1	CHCR,   CHCAN,  CHESC,  CHFS,   CHGS,  CHRS
 	CHARACTER*1	CHUS,   CHSPAC, CHTLDA
 C!
-	PARAMETER	( CHNULL = '00'X )
+	PARAMETER	( CHNULL = CHAR (0) )
 C!						Null
-	PARAMETER	( CHCTLA = '01'X )
+	PARAMETER	( CHCTLA = CHAR (1) )
 C!						Control A
-	PARAMETER	( CHCTLC = '03'X )
+	PARAMETER	( CHCTLC = CHAR (3) )
 C!						Control C
-	PARAMETER	( CHTAB  = '09'X )
+	PARAMETER	( CHTAB  = CHAR (9) )
 C!						Tab
-	PARAMETER	( CHLF   = '0A'X)
+	PARAMETER	( CHLF   = CHAR (10) )
 C!						Line feed
-	PARAMETER	( CHFF   = '0C'X)
+	PARAMETER	( CHFF   = CHAR (12) )
 C!						Form feed
-	PARAMETER	( CHCR   = '0D'X)
+	PARAMETER	( CHCR   = CHAR (13) )
 C!						Carriage return
-	PARAMETER	( CHCAN  = '18'X )
+	PARAMETER	( CHCAN  = CHAR (24) )
 C!						Cancel (CAN)
-	PARAMETER	( CHESC  = '1B'X )
+	PARAMETER	( CHESC  = CHAR (27) )
 C!						Escape
-	PARAMETER	( CHFS   = '1C'X )
+	PARAMETER	( CHFS   = CHAR (28) )
 C!						FS
-	PARAMETER	( CHGS   = '1D'X )
+	PARAMETER	( CHGS   = CHAR (29) )
 C!						GS
-	PARAMETER	( CHRS   = '1E'X )
+	PARAMETER	( CHRS   = CHAR (30) )
 C!						Record Separator
-	PARAMETER	( CHUS   = '1F'X )
+	PARAMETER	( CHUS   = CHAR (31) )
 C!						US
-	PARAMETER	( CHSPAC = '20'X )
+	PARAMETER	( CHSPAC = CHAR (32) )
 C!						Space
-	PARAMETER	( CHTLDA = '7E'X )
+	PARAMETER	( CHTLDA = CHAR (126) )
 C!						Tilda
 C!
 	PARAMETER	( LLMXPT = 80000 )
 C!						Max # lines, polygons, ...
 	PARAMETER	( LLMXGD = 10000000 )
 C!						Max # grid points
+C*	PARAMETER	( LLMXTG = LLMXGD )
 	PARAMETER	( LLMXTG = 10000000 )
 C!						Max # transfer grid pnts
 C!
@@ -79,14 +71,14 @@ C!-----------------------GPLT BUFFER SIZE--------------------------------
 	PARAMETER	( IGBSZM  = 20 + ( 4 * LLMXGD ) )
 C!					Min desired GPLT buffer size
 C!
-	PARAMETER	( IGBSIZ = (128*(1+((IGBSZM-1)/128))))
+	PARAMETER	( IGBSIZ = (128*(1+INT((IGBSZM-1)/128))))
 C!					Makes buffer size mul. of 128
 C!
 C!-----------------------DEVICE BUFFER SIZE------------------------------
 	PARAMETER	( IGDSZM = 20 + ( 5 * LLMXPT ) )
 C!					Min desired DEVICE buffer size
 C!
-	PARAMETER	( IGDSIZ = (128*(1+((IGDSZM-1)/128))))
+	PARAMETER	( IGDSIZ = (128*(1+INT((IGDSZM-1)/128))))
 C!					Makes buffer size mul. of 128
 C!
 

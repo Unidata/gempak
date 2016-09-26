@@ -234,16 +234,9 @@ C
 			CALL ST_NULL ( dattm2, dattm2, lens, ier )
 			CALL ST_NULL ( dtime,  dtime,  lens, ier )
 C
-                        IF ( ( filtyp .eq. 'QBUF' ) .or.
-     +                      ( filtyp .eq. 'DMSPBUF' ) ) THEN
-                            CALL GG_QBRD ( tfile, stime, dattm2, dtime,
-     +                                  fwninc, icolrs, icolrs2, numclr,
-     +                                  iflgs, ityp, ier )
-                        ELSE
-			    CALL GG_QSRD ( filtyp, tfile, stime, dattm2,
-     +			       dtime, fwninc, icolrs, icolrs2, numclr,
-     +			       iskip, interv, itmclr, iflgs, ityp, ier )
-                        END IF
+			CALL GG_QSRD ( filtyp, tfile, stime, dattm2,
+     +			   dtime, fwninc, icolrs, icolrs2, numclr,
+     +			   iskip, interv, itmclr, iflgs, ityp, ier )
 		    END IF
 		END IF
 		ifl = ifl + 1

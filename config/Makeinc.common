@@ -1,1 +1,120 @@
-Makeinc.common_linux
+###################################################################
+###################################################################
+#
+#       Makefile for GEMPAK6
+#               Unidata 11/99 Chiz - configured for UPC distribution
+#
+####################################################################
+####################################################################
+####################################################################
+#   The following shell environment variables *MUST* be defined before
+#   invoking this Makefile:
+#
+#   $NAWIPS  - points to the toplevel of the NAWIPS directory tree.
+#   $GEMPAKHOME  - points to the toplevel of the gempak part
+#              of the NAWIPS tree.  Usually directly under $NAWIPS.
+#
+#   $NA_OS   - Used in $(NAWIPS)/config/Makeinc.common to decide which
+#              OS specific Makeinc.* to include.  It also cooresponds
+#              to the directories in the NAWIPS tree where the executables
+#              and libraries are installed.
+#
+####################################################################
+GEMPAKHOME       = $(NAWIPS)/gempak
+SHELL            = /bin/sh
+FC               = gfortran
+CC               = gcc 
+AR               = ar
+ARFLAGS          = rv
+RANLIB           = ranlib
+RM               = rm -f
+#INSTALL          = install -s
+INSTALL          = install
+AUXINSTALL       = install
+LN               = ln -s
+STRIP            = strip
+CP               = cp
+COMPILE.c        = $(CC) $(CFLAGS) -c
+COMPILE.f        = $(FC) $(FFLAGS) -c
+LINK.c           = $(PURIFY) $(CC) $(CFLAGS) $(LDFLAGS)
+LINK.f           = $(PURIFY) $(FC) $(FFLAGS) $(LDFLAGS)
+
+LDM_FLAGS        =
+
+OS_ROOT          = $(NAWIPS)/os/$(NA_OS)
+OS_BIN           = $(OS_ROOT)/bin
+OS_INC           = $(OS_ROOT)/include
+OS_LIB           = $(OS_ROOT)/lib
+
+MCHSYS           = MCHPRM.$(OPSYS)
+
+#GEMOLB           = $(NAWIPS)/lib/$(NA_OS)
+#GEMEXE           = $(NAWIPS)/bin/$(NA_OS)
+GEMOLB           = $(OS_LIB)
+GEMEXE           = $(OS_BIN)
+
+INCDIR           = $(GEMPAK)/include
+GEMINC           = -I$(INCDIR) -I$(OS_INC)
+SCRIPTS_EXE      = $(NAWIPS)/bin/scripts
+
+APPL             = $(OS_LIB)/appl.a
+DEVICE           = $(OS_LIB)/device.a
+GEMLIB           = $(OS_LIB)/gemlib.a
+CGEMLIB          = $(OS_LIB)/cgemlib.a
+NXMLIB           = $(OS_LIB)/Nxmlib.a
+BRIDGE           = $(OS_LIB)/bridge.a
+LDMLOG           = $(OS_LIB)/ldmlog.a
+GPLT             = $(OS_LIB)/gplt.a
+GPLT_NC          = $(OS_LIB)/ginitp_alt.o $(OS_LIB)/gendp_alt.o
+GPLTDEV          = $(OS_LIB)/gpltdev.a
+SYSLIB           = $(OS_LIB)/syslib.a
+TEXTLIB		 = $(OS_LIB)/textlib.a
+XMLLIB           = $(OS_LIB)/textlib.a $(OS_LIB)/libxml2.a $(OS_LIB)/libxslt.a
+XSLTLIB          = $(OS_LIB)/libxslt.a
+
+GN               = $(OS_LIB)/gn.a
+XW               = $(OS_LIB)/xw.a
+GF               = $(OS_LIB)/gf.a
+GIF              = $(OS_LIB)/gif.a
+PS               = $(OS_LIB)/ps.a
+NC               = $(OS_LIB)/nc.a
+FAX              = $(OS_LIB)/fax.a
+RBK              = $(OS_LIB)/rbk.a
+TIFF             = $(OS_LIB)/tiff.a
+VG               = $(OS_LIB)/vg.a
+XWP              = $(OS_LIB)/xwp.a
+UTF              = $(OS_LIB)/utf.a
+
+X11LIB           = -lX11
+GUILIBS          = $(MOTIFLIBS) $(X11LIBDIR) -lXt -lX11
+#NETCDFHOME       = $(NAWIPS)/netcdf/$(NA_OS)
+#NETCDFINC        = $(NETCDFHOME)/include
+#NETCDF           = $(NETCDFHOME)/lib/libnetcdf.a
+NETCDFINC         = $(OS_INC)
+NETCDF            = $(OS_LIB)/libnetcdf.a
+
+ZLIB             = $(OS_LIB)/libz.a
+ZLIBINC          = $(OS_INC)
+PNGLIB           = $(OS_LIB)/libpng.a
+PNGINC           = $(OS_INC)
+
+#RSLINC           = /scratch/chiz/rsl/include
+#RSLLIB           = -L/scratch/chiz/rsl/lib -lrsl
+RSLINC           = $(NAWIPS)/extlibs/rsl/include
+RSLLIB           = $(OS_LIB)/rsl.a
+
+LIBJASPER	= $(OS_LIB)/libjasper.a
+
+LIBBZ2		= $(OS_LIB)/libbz2.a
+
+LIBAODT		= $(OS_LIB)/libaodt.a
+LIBGPC		= $(OS_LIB)/libgpc.a
+LIBNCEPBUFR	= $(OS_LIB)/libncepBUFR.a
+
+BUFRFLAGS        = -O
+
+HAVEMOTIF        = yes
+
+CONFIGURE_OPTS   = 'CC=$(CC)' 'CFLAGS=-I$(OS_INC)' 'FC=$(FC)' 'LD_LIBRARY_PATH=$(OS_LIB)'
+
+include $(NAWIPS)/config/Makeinc.$(NA_OS)
