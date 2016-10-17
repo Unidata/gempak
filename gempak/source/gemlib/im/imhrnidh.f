@@ -266,7 +266,7 @@ C
                     cmblev (idl) = 'ND'
                  ELSE IF ( idl .gt. 2 ) THEN
                     val  = amin + ( idl - 3 ) * ainc
-                    CALL ST_INCH ( int(val), cmblev (idl), ier )
+                    CALL ST_RLCH ( val, 2, cmblev (idl), ier )
                  END IF
               END DO
            CASE (135)
