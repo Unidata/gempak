@@ -31,5 +31,7 @@ ssfgsf: $(LOBJS)
 clean:
 	$(RM) *.o $(CPROGS) $(PROGS)
 
-install: all
+install: $(PROGS)
+	$(INSTALL) $(PROGS) $(GEMEXE)
+
 

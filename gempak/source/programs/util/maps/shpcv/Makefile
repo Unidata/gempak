@@ -29,5 +29,4 @@ $(CPROGS):
 clean:
 	$(RM) *.o $(CPROGS) $(PROGS)
 
-install: all
-
+install: $(CPROGS)

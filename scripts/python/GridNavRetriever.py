@@ -159,7 +159,6 @@ class GridNavRetriever:
 	nav = []
 
 	for record in resp:
-	    #print record
 	    unit = record['spacingunit']
 
 	    sk = record['spatialkey']
@@ -297,16 +296,15 @@ if __name__ == '__main__':
     #srv = 'nco-lw-sgilbert'
     tbl = 'grid_info'
     #mdl = 'GFS230'
-    #print 'Should be:', 2., 1.66247625E-19, 1., 1., 720., 361.,-90., 0., 90.,-0.5, 0., 0., 0.
     mdl = 'nam'
-    print 'Should be:', 2., 1.78155924E-19, 1., 1., 147., 110.,-0.268000007,-139.475006, 32.7470016,-14.599, 90.,-105., 0.
+    print('Should be:', 2., 1.78155924E-19, 1., 1., 147., 110.,-0.268000007,-139.475006, 32.7470016,-14.599, 90.,-105., 0.)
 
-    #print createConic('N',-95.0,12.19,-133.459,12.191,12.191,'km',614,428,25.0,25.0)
-    #print 'Should be:',  12.1899996, -133.459, 57.3285179, -49.4154358
+    #print(createConic('N',-95.0,12.19,-133.459,12.191,12.191,'km',614,428,25.0,25.0))
+    #print('Should be:',  12.1899996, -133.459, 57.3285179, -49.4154358)
     #mdl = 'ETA218'
-    #print 'Should be:',  2., 1.65394091E-19, 1., 1., 614., 428., 12.1899996, -133.459, 57.3285179, -49.4154358, 25., -95., 25.
+    #print('Should be:',  2., 1.65394091E-19, 1., 1., 614., 428., 12.1899996, -133.459, 57.3285179, -49.4154358, 25., -95., 25.)
 
     navlen='256'
-    print getnavb(srv,tbl,mdl,navlen)
+    print(getnavb(srv,tbl,mdl,navlen))
     anllen='128'
-    print getanlb(srv,tbl,mdl,anllen)
+    print(getanlb(srv,tbl,mdl,anllen))

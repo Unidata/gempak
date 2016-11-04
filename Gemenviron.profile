@@ -1,7 +1,7 @@
 # Gemenviron file for GEMPAK
 #
 # Please configure the following definitions to reflect your system:
-NAWIPS=/home/gempak/NAWIPS
+NAWIPS=/home/gempak/GEMPAK7
 export EDEX_SERVER="edex-cloud.unidata.ucar.edu"
 #
 #		Sets environment variables used in running GEMPAK
@@ -293,31 +293,31 @@ PATH=${PATH}:${OS_BIN}:${NAWIPS}/bin ; export PATH
    LP="lp -c" ; export LP
    LPFLAG="-d" ; export LPFLAG
 
-##
-## PYTHON for GEMPAK
-##
+# Python for GEMPAK
 COMMAND=`rpm -q awips2-python`
 if [ $? -eq 0 ]; then
-    echo "using AWIPS Python"
     export PYHOME="/awips2/python"
     pv="`${PYHOME}/bin/python -V 2>&1 | cut -c8- | cut -d. -f1`"
     pr="`${PYHOME}/bin/python -V 2>&1 | cut -c8- | cut -d. -f2`"
     export PYTHONPATH="${PYHOME}/lib/python${pv}.${pr}/site-packages:${NAWIPS}/scripts/python"
 else
-    echo "using system Python"
     export PYHOME="/usr"
     pv="`${PYHOME}/bin/python -V 2>&1 | cut -c8- | cut -d. -f1`"
     pr="`${PYHOME}/bin/python -V 2>&1 | cut -c8- | cut -d. -f2`"
-    export PYTHONPATH="${PYHOME}/lib64/python${pv}.${pr}/site-packages:${PYHOME}/lib/python${pv}.${pr}/site-packages:${NAWIPS}/scripts/python"
     MACHTEST=${MACHTYPE:=`uname -m`}
     IS64=`echo $MACHTEST | grep -c "_64"`
     if [ ${IS64} -gt 0 ] ; then
 	ARCH="64"
     fi
+    export PYTHONPATH="${PYHOME}/lib64/python${pv}.${pr}/site-packages:${PYHOME}/lib/python${pv}.${pr}/site-packages:${NAWIPS}/scripts/python"
+    export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/lib${ARCH}
 fi
-# this is needed for the build, and not required at runtime
+
 export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:${OS_LIB}
+
+# this is needed for the build, not required at runtime
 export PYINC="-I${PYHOME}/include/python${pv}.${pr}"
-export PYLIB="-L${PYHOME}/lib${ARCH} -lpython${pv}.${pr}"
+export PYLIB="-lpython${pv}.${pr}"
 export WITHPY="-DWITHPYTHON"
 export PYDEP="-lpthread -ldl -lutil"
+export LDFLAGS="-L${PYHOME}/lib -L$OS_LIB -s"

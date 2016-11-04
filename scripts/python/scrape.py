@@ -51,7 +51,6 @@ def opensoup(url):
   return soup
 
 def asciify(s):
-  #print "DEBUG[", type(s), "]"
   return unicodedata.normalize('NFKD', s).encode('ascii', 'ignore')
 
 # remove extra whitespace, including stripping leading and trailing whitespace.
@@ -61,15 +60,14 @@ def condense(s):
 
 # this gets rid of tags and condenses whitespace
 def striptags(s):
-  #print "DEBUG[", type(s), "]"
   s = re.sub(r"\<span\s+style\s*\=\s*\"display\:none[^\"]*\"[^\>]*\>[^\<]*\<\/span\>",
              "", s)
   s = re.sub(r"\&\#160\;", " ", s)
   return condense(re.sub(r"\<[^\>]*\>", " ", s))
 
 if(len(sys.argv) == 1):  # called with no arguments
-  print "Usage: ", sys.argv[0], " url [n]"
-  print "  (where n indicates which html table to parse)"
+  print("Usage: ", sys.argv[0], " url [n]")
+  print("  (where n indicates which html table to parse)")
   exit(1)
 
 def getUrlArgs(parseUrl):
@@ -80,7 +78,6 @@ def run(url):
   tables = soup.findAll("table")  #, {"class":"wikitable sortable"})
   for table in tables:
     ct=0
-#    print "!23|123|123|123|12345678901234567890123456789012|12345678901234567890|123456789012|12345|123456.89"
     for r in table.findAll('tr'):
       rl = []
       for c in r.findAll(re.compile('td|th')):
@@ -92,7 +89,7 @@ def run(url):
         rl[1] = rl[1][:32].ljust(32)
         rl[2] = rl[2].ljust(20)
         rl[3] = rl[3].ljust(12) + "     0  -9999.00"
-        if ct: print " ".join(rl)
+        if ct: print(" ".join(rl))
       ct += 1
 
 if __name__ == '__main__':

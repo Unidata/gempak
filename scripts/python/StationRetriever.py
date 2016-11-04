@@ -71,17 +71,10 @@ if __name__ == '__main__':
     #srv = 'nco-lw-sgilbert'
     key = '-'
 
-    print ' '
-    print 'OBS - METAR'
+    print('OBS - METAR')
     tbl = 'obs'
-    print getstations(srv,tbl,key)
+    print(getstations(srv,tbl,key))
     
-    print ' '
-    print 'SFCOBS - SYNOP'
+    print('SFCOBS - SYNOP'
     tbl = 'sfcobs'
-    print getstations(srv,tbl,key)
-    
-    #print ' '
-    #print 'UAIR'
-    #tbl = 'bufrua'
-    #print getstations(srv,tbl,key)
+    print(getstations(srv,tbl,key))

@@ -50,17 +50,13 @@ class GridInfoRetriever:
               parm2 = (ord(s[4]) << 24) + (ord(s[5]) << 16) + (ord(s[6]) << 8) + ord(s[7])
               parm3 = (ord(s[8]) << 24) + (ord(s[9]) << 16) + (ord(s[10]) << 8) + ord(s[11])
               
-          #print '>' + s + '<', parm1, parm2, parm3
 
           dt = datetime.strptime(record['reftime'], '%Y-%m-%d %H:%M:%S.%f')
           dattim = dt.month * 100000000 + dt.day * 1000000 + (dt.year%100) * 10000 + dt.hour * 100 + dt.minute
           fcsth = (int(record['fcstsec']) / 60) / 60
           fcstm = (int(record['fcstsec']) / 60) % 60
           fcst = 100000 + fcsth * 100 + fcstm
-          #print dt.month, dt.day, dt.year%100, dt.hour, dt.minute, dattim, fcsth, fcstm, fcst
-          #print dattim, fcst
 
-          #print record['vcoord'], float(record['level1']), float(record['level2'])
           lv1 = float(record['level1'])
           if lv1 == -999999.0:
               lv1 = -1.0
@@ -103,7 +99,6 @@ class GridInfoRetriever:
                   if lv2 >= 0.0:
                       lv2 = lv2 * 1000.0
 
-	    #print vcd, ivcd, int(lv1), int(lv2)
 
 #---------FOR TESTING-----------------
           returnedTime = str(dt) + "f" +str(fcsth)
@@ -129,16 +124,16 @@ class GridInfoRetriever:
               break
 
 #---------FOR TESTING-----------------
-       for key in timeDict:
-           print "GetGridInfoRequest returned " + str(timeDict[key]) + " entries for " + key
+#       for key in timeDict:
+#           print("GetGridInfoRequest returned " + str(timeDict[key]) + " entries for " + key)
 #---------FOR TESTING-----------------
        
        return grids
              
 def getinfo(server,table,model,cycle,forecast):
-    print "Server = ",server
-    print "Table = ",table
-    print "MODEL = ",model
+    #print("Server = ",server)
+    #print("Table = ",table)
+    #print("Name = ",model)
     gir = GridInfoRetriever(server,table,model,cycle,forecast)
     return gir.getInfo()
              
@@ -160,5 +155,5 @@ if __name__ == '__main__':
     mdl = 'rap32'
     #mdl = 'ETA218'
 
-    print getrow(srv,tbl,mdl)
-    print getinfo(srv,tbl,mdl)
+    print(getrow(srv,tbl,mdl))
+    print(getinfo(srv,tbl,mdl))
