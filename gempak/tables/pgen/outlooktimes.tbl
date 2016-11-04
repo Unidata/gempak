@@ -21,17 +21,18 @@
 !                               added ENH_PD3
 ! G. Grosshans/SPC	02/10	Added Day 1 & 2 Fire Weather Outlook 
 !				entries to handle daytime updates.
+! G. Grosshans/SPC	03/10	Changed to forecaster preferences of 1 hr lag
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !
 !    Clock Time Range     Initial Time     Expiration Time
 !     ----------------     ------------     ---------------
 !       FROM    TO         HHMM  DAY ADJ.    HHMM  DAY ADJ.
-DAY1    2201   2359        0100     1        1200     1
-DAY1    1801   2200        2000     0        1200     1
-DAY1    1431   1800        1630     0        1200     1
-DAY1    1100   1430        1300     0        1200     1
-DAY1    0301   1059        1200     0        1200     1
-DAY1    0000   0300        0100     0        1200     0
+DAY1    2101   2359        0100     1        1200     1
+DAY1    1731   2100        2000     0        1200     1
+DAY1    1401   1730        1630     0        1200     1
+DAY1    0701   1400        1300     0        1200     1
+DAY1    0201   0700        1200     0        1200     1
+DAY1    0000   0200        0100     0        1200     0
 DAY2    0200   2359        1200     1        1200     2
 DAY2    0000   0159        1200     0        1200     1
 DAY3    0200   2359        1200     2        1200     3

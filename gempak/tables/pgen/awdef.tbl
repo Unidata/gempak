@@ -45,6 +45,7 @@
 ! L. Sager/NCO   	 10/06	Added 14 NCO Air Pollution Redbook graphics for AWIPS
 ! H. Zeng/SAIC		 07/06  Changed originator from KWNO to KWBC for PTWA93
 ! G. Grosshans/SPC	 09/07	Added extended SPC outlook products, 48O and FW3
+! G. Grosshans/SPC	 09/12	Added SPC enhanced thunderstorm outlook products
 !--------------------------------------------------------------------------------------------------------
 !Nam AWIPS id   Org  Flg graphic id ext     WMO   MapBk  PI Cord Scale  Area Label Cordfg Count Valid Map
 !--------------------------------------------------------------------------------------------------------
@@ -325,6 +326,21 @@ OA2 0101700056 KWNS U 00 HPXS0048CN PRBAOL PGNI00 PNAM02 21  2   20 00   33   0 
 OR2 0101700057 KWNS U 00 HPXS0048CN PRBROL PZNI00 PNAM02 21  2   20 00   33   0      0      4    48    1
 OA3 0101700058 KWNS U 00 HPXS0072CN PRBAOL PZNK00 PNAM02 21  2   20 00   33   0      0      4    72    1
 OR3 0101700059 KWNS U 00 HPXS0072CN PRBROL PZNK00 PNAM02 21  2   20 00   33   0      0      4    72    1
+!
+!   ENHANCED THUNDERSTORM OUTLOOKS
+!   301 would ideally be 300 but is being used by another National Center
+104 0101700071 KWNS U 00 HPXS0024CN ENHOL1 PMNA01 PNAM02 21  2   20 00   33   0      0      4    24    1
+012 0101700072 KWNS U 00 HPXS0024CN ENHOL2 PMNB01 PNAM02 21  2   20 00   33   0      0      4    24    1
+016 0101700073 KWNS U 00 HPXS0024CN ENHOL3 PMNB02 PNAM02 21  2   20 00   33   0      0      4    24    1
+120 0101700074 KWNS U 00 HPXS0024CN ENHOL4 PMNB03 PNAM02 21  2   20 00   33   0      0      4    24    1
+216 0101700075 KWNS U 00 HPXS0024CN ENHOL5 PMNC01 PNAM02 21  2   20 00   33   0      0      4    24    1
+220 0101700076 KWNS U 00 HPXS0024CN ENHOL6 PMNC02 PNAM02 21  2   20 00   33   0      0      4    24    1
+100 0101700077 KWNS U 00 HPXS0024CN ENHOL7 PMNC03 PNAM02 21  2   20 00   33   0      0      4    24    1
+320 0101700078 KWNS U 00 HPXS0024CN ENHOL8 PMND01 PNAM02 21  2   20 00   33   0      0      4    24    1
+200 0101700079 KWNS U 00 HPXS0024CN ENHOL9 PMND02 PNAM02 21  2   20 00   33   0      0      4    24    1
+204 0101700080 KWNS U 00 HPXS0024CN ENHO10 PMND03 PNAM02 21  2   20 00   33   0      0      4    24    1
+301 0101700081 KWNS U 00 HPXS0024CN ENHO11 PMNE01 PNAM02 21  2   20 00   33   0      0      4    24    1
+304 0101700082 KWNS U 00 HPXS0024CN ENHO12 PMNE02 PNAM02 21  2   20 00   33   0      0      4    24    1
 !
 !   MD SUMMARY 
 MCD 0101700060 KWNS U 00 HPXSF001CN MCDSUM PGNA00 PNAM02 21  2   20 00   33   0      0      4    00    1

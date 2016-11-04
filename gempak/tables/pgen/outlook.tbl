@@ -18,13 +18,18 @@
 ! G. Grosshans/SPC	04/07	Added labels for EXT_FIRE
 ! G. Grosshans/SPC	09/07	Added 30%
 ! G. Grosshans/SPC	05/08	Added 60%
+! S. Jacobs/NCEP	11/13	Added MRGL and ENH
 !
 !------------------------------------------------------------------------------
 HIGH|HIGH RISK|HIGH
 !
 MDT|MODERATE RISK|MDT
 !
+ENH|ENHANCED RISK|ENH
+!
 SLGT|SLIGHT RISK|SLGT
+!
+MRGL|MARGINAL RISK|MRGL
 !
 GEN|GENERAL THUNDERSTORM|TSTM
 !
