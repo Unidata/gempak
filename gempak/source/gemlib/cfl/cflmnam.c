@@ -19,6 +19,7 @@ void cfl_mnam ( char *dattim, char *templt, char *filnam, int *iret )
  *	NN		Minute						*
  *	DWK		Day of the week 3 letter abbreviation		*
  *	DWU		Day of the week 3 letter abbreviation, all caps	*
+ *	fFFFFF		Forecast hour/min (5 digits)			*
  *	fFFF		Forecast hour (3 digits)			*
  *      fFF             Forecast hour (2 digits)                        *
  *									*
@@ -41,6 +42,7 @@ void cfl_mnam ( char *dattim, char *templt, char *filnam, int *iret )
  * D.W.Plummer/NCEP	 3/00	Added FFF forecast hour processing	*
  * M. Li/SAIC		02/02	Added check for the length of data/time	*
  * M. Li/SAIC		03/01	Modified the forecast time processing	*
+ * S. Jacobs/NCEP	 8/14	Added support for FFFFF template	*
  ***********************************************************************/
 {
 	int	dtyear, dtmonth, idtarr[5], idaywk, lf, ier;
@@ -154,6 +156,18 @@ void cfl_mnam ( char *dattim, char *templt, char *filnam, int *iret )
                 strcpy(fcst, tfc);
 	    }
 		
+/*
+ *	    Substitute the 5-digit forecast hour+minute for fFFFFF
+ */
+	    pfff = strstr ( filnam, "FFFFF" );
+	    if ( pfff != NULL )  {
+		if ( strlen(fcst) < 5 ) {
+		    strcpy(tfc, fcst);
+		    strcat(tfc, "00");
+		    strcpy(fcst, tfc);
+		}
+		memcpy(pfff, fcst, 5);
+	    }
 /*
  *	    Substitute the 3-digit forecast hour for fFFF
  */

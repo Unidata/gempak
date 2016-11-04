@@ -1,6 +1,6 @@
 #include "da.h"
 
-void da_getheader ( int *iflno, char *hdrtyp, int *nval, int *values,
+void da_getheader ( int *iflno, char *hdrtyp, char *cycle, char* forecast, int *nval, int *values,
 		    int *iret )
 /************************************************************************
  * da_getheader								*
@@ -50,7 +50,7 @@ void da_getheader ( int *iflno, char *hdrtyp, int *nval, int *values,
 
     /* Set the arguments for input to the request script */
     datype = DAINT;
-    danarg = 3;
+    danarg = 5;
     daargs = (char **) malloc ( danarg * sizeof(char *) );
     for ( ii = 0; ii < danarg; ii++ ) {
 	daargs[ii] = (char *) malloc ( STRSIZE * sizeof(char) );
@@ -59,6 +59,8 @@ void da_getheader ( int *iflno, char *hdrtyp, int *nval, int *values,
     strcpy ( daargs[ii], common[gflnum].dbserver );	ii++;
     strcpy ( daargs[ii], common[gflnum].dbtable );	ii++;
     strcpy ( daargs[ii], dbkey );		ii++;
+    strcpy ( daargs[ii], cycle );		ii++;
+    strcpy ( daargs[ii], forecast ); 		ii++;
 
     /* Run the Python script to make the actual request */
     da_runpy ( pyfile, pymeth, &ier );

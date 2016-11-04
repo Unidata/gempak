@@ -60,7 +60,7 @@ class StationRetriever:
 
          return stns
              
-def getstations(server,table,key):
+def getstations(server,table,key,dummy,dummy2):
     sr = StationRetriever(server,table)
     return sr.getStations()
 

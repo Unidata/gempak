@@ -31,18 +31,19 @@ C*					-23 = wrong machine type	*
 C*					-32 = invalid machine for write	*
 C**									*
 C* Log:									*
-C* M. desJardins/GSFC	 5/87						*
-C* M. desJardins/GSFC	 7/87	Added record length to OPEN		*
-C* M. desJardins/GSFC	 5/90	Check for files from other machines	*
-C* M. desJardins/NMC	 4/91	Write to files from other machines	*
-C* M. desJardins/NMC	 5/91	Flags for machine types			*
-C* S. Jacobs/EAI	 8/92	Added check for ULTRIX machine		*
-C* K. Brill/NMC		 5/93	Added check for HP machine		*
-C* S. Jacobs/EAI	10/93	Added check for ALPHA machine		*
-C* S. Jacobs/NCEP	 2/01	Made MTLNUX a separate machine type	*
-C* T. Lee/SAIC		 2/05	Handle error message			*
+C* M. desJardins/GSFC	 5/87						                    *
+C* M. desJardins/GSFC	 7/87	Added record length to OPEN		        *
+C* M. desJardins/GSFC	 5/90	Check for files from other machines	    *
+C* M. desJardins/NMC	 4/91	Write to files from other machines	    *
+C* M. desJardins/NMC	 5/91	Flags for machine types			        *
+C* S. Jacobs/EAI	 8/92	Added check for ULTRIX machine		        *
+C* K. Brill/NMC		 5/93	Added check for HP machine		            *
+C* S. Jacobs/EAI	10/93	Added check for ALPHA machine		        *
+C* S. Jacobs/NCEP	 2/01	Made MTLNUX a separate machine type	        *
+C* T. Lee/SAIC		 2/05	Handle error message			            *
 C* m. gamazaychikov/CWS 04/11   Add code for A2DB connectivity          *
-C* S. Jacobs/NCEP	 8/13	Added check for non-gempak files	*
+C* S. Jacobs/NCEP	 8/13	Added check for non-gempak files	        *
+C* S. Gilbert/NCEP   9/15   Passed filnam to DA_INFO                    *
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 	INCLUDE		'GMBDTA.CMN'
@@ -104,7 +105,7 @@ C
 C
 C*	    Get the information from the non-standard data source
 C
-	    CALL DA_INFO ( iflno, iret )
+	    CALL DA_INFO ( filnam, iflno, iret )
 	ELSE
 C
 C*	    Read the file label into common.

@@ -19,11 +19,11 @@ GEMPAK can be installed by an individual user, and root / superuser permission i
 
 <a href="http://www.unidata.ucar.edu/downloads/gempak/index.jsp">http://www.unidata.ucar.edu/downloads/gempak/</a>
 
-The current release of GEMPAK (<a href="http://www.unidata.ucar.edu/downloads/gempak/latest/gempak-7.3.0.tar.gz">v7.3.0</a>) is provided as a gzip/tarball archive and can found on the <a href="http://www.unidata.ucar.edu/downloads/gempak/">Unidata GEMPAK download page</a>. 
+The current release of GEMPAK (<a href="http://www.unidata.ucar.edu/downloads/gempak/latest/gempak-7.3.1.tar.gz">v7.3.1</a>) is provided as a gzip/tarball archive and can found on the <a href="http://www.unidata.ucar.edu/downloads/gempak/">Unidata GEMPAK download page</a>. 
 	
 Unpacking the archive in the gempak user home directory (assuming **/home/gempak**):
 
-	tar -xvzf gempak-7.3.0.tar.gz
+	tar -xvzf gempak-7.3.1.tar.gz
 
 will create the directory **/home/gempak/GEMPAK7/** which contains all of the libraries, program source and configuration files, most notably the two Gemenviron and Gemenviron.profile.
 

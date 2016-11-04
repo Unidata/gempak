@@ -112,6 +112,7 @@
  * S. Jacobs/NCO	04/12	Added gg_osrd				*
  * S. Jacobs/NCEP	 5/13	Removed old DB functions; added da_runpy*
  * S. Jacobs/NCEP	 9/13	Added more DA functions			*
+ * S. Gilbert/NCEP       2/16   Added cycle,fcst args to da_getheader   *
  ***********************************************************************/
 
 /* AW library */
@@ -189,8 +190,8 @@ void da_getfilhdr ( int *iflno, char *fhdnam, int *mxword,
 			float *rheadr, int *nword, int *iret );
 
 void da_getfhdr ( int *iflno, int *nfhdr, int *type, int *fhlen, int *iret );
-void da_getheader ( int *iflno, char *hdrtyp, int *nval, int *values,
-       			int *iret );
+void da_getheader ( int *iflno, char *hdrtyp, char *cycle, char* forecast, int *nval, int *values,
+                        int *iret );
 void da_getlabel ( int *iflno, char *label, int *iret );
 void da_getname ( int *iflno, char *key, int *nkey1, int *nkey2, char *str,
        			int *iret );
