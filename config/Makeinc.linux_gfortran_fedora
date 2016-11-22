@@ -30,6 +30,6 @@ MOTIFLIBS = $(X11LIBDIR) -lXm
 BUFRFLAGS = -O -DNO_MSG_IPC -ansi
 
 SYSLIBS = $(PYLIB) $(PYDEP)
-CSYSLIB = $(PYLIB) $(PYDEP)
+CSYSLIB =
 LDFLAGS = -Wl,--hash-style=both
 ARSLEEP = sleep 1;

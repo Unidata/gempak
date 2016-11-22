@@ -5,7 +5,7 @@
 #
 include $(CONFIGDIR)/$(MAKEINC)
 
-ALIB = $(GEMLIB) 
+ALIB = $(DALIB) 
 
 CFLAGS += -I$(OS_INC)/libxml2
 

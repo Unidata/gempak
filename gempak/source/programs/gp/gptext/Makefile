@@ -22,6 +22,7 @@ LIBINC = \
 	$(CGEMLIB) \
 	$(APPL) \
 	$(SYSLIB) \
+        $(DALIB) \
 	$(GEMLIB)
 
 LIBINC_NC = \
@@ -34,6 +35,7 @@ LIBINC_NC = \
 	$(GN) \
 	$(CGEMLIB) \
 	$(GPLT) \
+        $(DALIB) \
 	$(GEMLIB)
 
 LIBINC_VG = \
@@ -46,6 +48,7 @@ LIBINC_VG = \
 	$(GN) \
 	$(CGEMLIB) \
 	$(GPLT) \
+        $(DALIB) \
 	$(GEMLIB)
 
 PROG_NC = $(PROG)_nc
