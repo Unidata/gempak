@@ -23,6 +23,7 @@ LIBINC = \
 	$(APPL) \
 	$(SYSLIB) \
 	$(GEMLIB) \
+        $(DALIB) \
 	$(CGEMLIB) \
 	$(NETCDF) \
         $(XMLLIB) \

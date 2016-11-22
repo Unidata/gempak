@@ -60,6 +60,7 @@ SCRIPTS_EXE      = $(NAWIPS)/bin/scripts
 APPL             = $(OS_LIB)/appl.a
 DEVICE           = $(OS_LIB)/device.a
 GEMLIB           = $(OS_LIB)/gemlib.a
+DALIB            = $(OS_LIB)/dalib.a
 CGEMLIB          = $(OS_LIB)/cgemlib.a
 NXMLIB           = $(OS_LIB)/Nxmlib.a
 BRIDGE           = $(OS_LIB)/bridge.a
