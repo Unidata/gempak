@@ -45,7 +45,7 @@ class TimeRetriever:
 	 # in this array -- [9999, DATE, TIME] -- repeated
 	 return times[0:600]
              
-def gettimes(server,table,key):
+def gettimes(server,table,key,dummy,dummy2):
     tr = TimeRetriever(server,table,key)
     return tr.getTimes()
 
