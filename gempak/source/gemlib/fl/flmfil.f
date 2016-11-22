@@ -24,32 +24,33 @@ C*					  -11 = no file for time range	*
 C*					  -13 = no file for given type	*
 C**									*
 C* Log:									*
-C* S. Jacobs/NCEP	 8/98	Copied from FL_MFIL			*
-C* S. Jacobs/NCEP	 9/98	Increased the num of file names 100->200*
-C* S. Jacobs/NCEP	 9/98	Increased the size of the path variable	*
-C* T. Lee/GSC		 4/99	Renamed from FL_FFIL			*
-C* T. Lee/GSC		 7/99	Changed files to 300; Checked fcst hrs	*
-C* S. Jacobs/NCEP	 8/99	Changed call to FL_SCND			*
-C* S. Jacobs/NCEP	 8/99	Changed call to FL_TMPL			*
-C* S. Jacobs/NCEP	 9/99	Changed call to FL_MDAT			*
-C* S. Jacobs/NCEP	11/99	Removed check for previous day data	*
-C* S. Jacobs/NCEP	12/99	Added check for same forecast base times*
-C* D.W.Plummer/NCEP	12/99	Fix for filenames w/o century (Y2K bug)	*
-C* S. Jacobs/NCEP	 1/00	Set minmin to minimum value		*
-C* M. Li/GSC		 5/00	Added MXFLSZ and MXNMFL			*
-C* S. Jacobs/NCEP	 3/01	Increased file template to 48 chars	*
-C* S. Jacobs/NCEP	 7/01	Added check for minutes in the template	*
-C* A. Hardy/SAIC         2/02   Changed call FL_SCND			*
+C* S. Jacobs/NCEP	 8/98	Copied from FL_MFIL			                *
+C* S. Jacobs/NCEP	 9/98	Increased the num of file names 100->200    *
+C* S. Jacobs/NCEP	 9/98	Increased the size of the path variable	    *
+C* T. Lee/GSC		 4/99	Renamed from FL_FFIL			            *
+C* T. Lee/GSC		 7/99	Changed files to 300; Checked fcst hrs	    *
+C* S. Jacobs/NCEP	 8/99	Changed call to FL_SCND			            *
+C* S. Jacobs/NCEP	 8/99	Changed call to FL_TMPL			            *
+C* S. Jacobs/NCEP	 9/99	Changed call to FL_MDAT			            *
+C* S. Jacobs/NCEP	11/99	Removed check for previous day data	        *
+C* S. Jacobs/NCEP	12/99	Added check for same forecast base times    *
+C* D.W.Plummer/NCEP	12/99	Fix for filenames w/o century (Y2K bug)	    *
+C* S. Jacobs/NCEP	 1/00	Set minmin to minimum value		            *
+C* M. Li/GSC		 5/00	Added MXFLSZ and MXNMFL			            *
+C* S. Jacobs/NCEP	 3/01	Increased file template to 48 chars	        *
+C* S. Jacobs/NCEP	 7/01	Added check for minutes in the template	    *
+C* A. Hardy/SAIC         2/02   Changed call FL_SCND			        *
 C* B. Yin/SAIC           3/04   Changed SS_GTIM to CSS_GTIM             *
-C* T. Lee/SAIC		 9/04	Replaced FL_TMPL with CTB_DTGET		*
-C* T. Lee/SAIC		10/04	Fixed return code			*
-C* A. Hardy/NCEP	11/04   Added calls to ST_RNUL			*
-C* S. Jacobs/NCEP	12/04	Increased size of fnull to 256		*
+C* T. Lee/SAIC		 9/04	Replaced FL_TMPL with CTB_DTGET		        *
+C* T. Lee/SAIC		10/04	Fixed return code			                *
+C* A. Hardy/NCEP	11/04   Added calls to ST_RNUL			            *
+C* S. Jacobs/NCEP	12/04	Increased size of fnull to 256		        *
 C* m.gamazaychikov/SAIC 12/04   Added ion flag to CTB_DTGET CS          *
 C* m.gamazaychikov/SAIC 01/06   Changed tmplt string length to MXTMPL   *
 C* m.gamazaychikov/SAIC 04/06   Added idtmch flag to CTB_DTGET CS      	*
 C* F. J. Yen/NCEP   	 4/08   Added bin mins & mstrct to CTB_DTGET CSC*
-C* S. Jacobs/NCEP	 6/13	Added check for AWIPSDB aliases		*
+C* S. Jacobs/NCEP	 6/13	Added check for AWIPSDB aliases		        *
+C* S. Gilbert/NCEP   9/15   Added cycle to filename for AWIPSDB aliases *
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 C*
@@ -100,20 +101,23 @@ C*	    If the alias refers to the AWIPS Database, set the file name
 C*	    and return.
 C
 	    IF  ( rpath .eq. 'AWIPSDB' )  THEN
-		filnam = rpath(:lenr) // '/' // tmplt
-		RETURN
+		  filnam = rpath(:lenr) // '/' // tmplt
+		  IF ( nfarr == 2 ) THEN
+		    filnam = filnam // '/' // farr(2)
+          END IF
+		  RETURN
 	    END IF
 C
 C*	    If dattim is blank, get the system time.
 C
 	    IF  ( dattim .eq. ' ' )  THEN
-		itime = 1
-		CALL CSS_GTIM ( itime, ndttm, ier )
+		  itime = 1
+		  CALL CSS_GTIM ( itime, ndttm, ier )
 	    ELSE
 C
 C*		Otherwise, set the input dattim to "now".
 C
-		CALL ST_LCUC ( dattim, ndttm, ier )
+		  CALL ST_LCUC ( dattim, ndttm, ier )
 C
 	    END IF
 C
@@ -121,12 +125,12 @@ C*	    If the user added a cycle time to the file alias, create
 C*	    a full GEMPAK time from the input and the "now" time.
 C
 	    IF  ( nfarr .eq. 2 )  THEN
-		CALL TI_STAN ( farr(2), ndttm, bdttm, ier )
-		IF  ( INDEX ( tmplt, 'NN' ) .eq. 0 )  THEN
+		  CALL TI_STAN ( farr(2), ndttm, bdttm, ier )
+		  IF  ( INDEX ( tmplt, 'NN' ) .eq. 0 )  THEN
 		    bdttm(10:11) = '00'
-	      	END IF
-	      ELSE
-		bdttm = ndttm
+	      END IF
+	    ELSE
+		  bdttm = ndttm
 	    END IF
 C
 C*	    Get all of the file names in the directory.
@@ -135,15 +139,15 @@ C*	    no files locally, then search in the remote path.
 C
 	    lpath = '.'
 	    iord  = -1
-            nexp  = MXNMFL
+        nexp  = MXNMFL
 	    CALL FL_SCND ( lpath, tmplt, iord, nexp, files, nfile,
      +                     ier )
 	    IF  ( nfile .eq. 0 )  THEN
-		CALL FL_SCND ( rpath, tmplt, iord, nexp, files, nfile, 
+		  CALL FL_SCND ( rpath, tmplt, iord, nexp, files, nfile, 
      +                         ier )
-		path = rpath
-	      ELSE
-		path = lpath
+		  path = rpath
+	    ELSE
+		  path = lpath
 	    END IF
 	    CALL ST_LSTR ( path, lenp, ier )
 C
@@ -185,8 +189,8 @@ C
 C*	    If a file was not found return with an error.
 C
 	    IF  ( minmin .eq. IMISSD )  THEN
-		filnam = ' '
-		iret   = -13
+		  filnam = ' '
+		  iret   = -13
 	    END IF
 C
 	END IF

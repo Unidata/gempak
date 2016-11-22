@@ -5123,9 +5123,10 @@ void pgvolw_setVolLys ( int rec_loc )
  * H. Zeng/XTRIA	02/04	initial coding				*
  * H. Zeng/XTRIA	02/04	allowed directory for vgf files		*
  * S. Danz/AWC		07/06	Update to new cvg_writef() parameter    *
+ * S. Gilbert/SIB   04/14   Added some padding to size of lpf_str   *
  ***********************************************************************/
 { 
-    int		ignore, lyr_idx, length, ier, start=-1;
+    int		ignore, lyr_idx, length, ier, start=-1, extra=1000;
     char	vgf_nm[256], lpf_nm[256], tag[25], *lpf_str; 
     long	lpf_size;
     FILE	*infp, *outfp;
@@ -5141,7 +5142,7 @@ void pgvolw_setVolLys ( int rec_loc )
         fprintf (stderr, "Failed to read template lpf file!\n");
 	return;
     }
-    G_CALLOC(lpf_str, char, lpf_size+1, "pgvolw_setVolLys:  lpf_str");
+    G_CALLOC(lpf_str, char, lpf_size+extra, "pgvolw_setVolLys:  lpf_str");
     cfl_read (infp, (int)lpf_size, (unsigned char*)lpf_str, &ignore, &ier);
     fclose   (infp);
 

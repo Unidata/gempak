@@ -1,1 +1,0 @@
-$(BINDIR)/testctb: -lcgemlib -lgemlib

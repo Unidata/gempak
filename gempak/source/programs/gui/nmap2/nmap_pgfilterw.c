@@ -424,6 +424,7 @@ static void pgfilterw_updateFilter ( void )
  * E. Safford/SAIC	05/07	fix gfa' connection			*
  * E. Safford/SAIC	06/07	fix bug in preFilterOn determination	*
  * B. Yin/SAIC		12/07	set GFA hr to last selected filter time	*
+ * J. Wu/SGT		06/14	Unset operation for a new selection 	*
  ***********************************************************************/
 {
     int 	ii, filternum, ier, cur_obj, cur_loc, newel_loc, num;
@@ -624,7 +625,12 @@ static void pgfilterw_updateFilter ( void )
 		_offByHotkey = False;
 	    }
         } /* End "if" in edit mode */
-    }   
+    } 
+    // Need to reset the operation to allow a new selection.
+    else {
+        pgevt_unsetOper ( FALSE );
+    } 
+  
     cvg_freeElPtr( &cur_el );
     _fromGfa = False;
 }

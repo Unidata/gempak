@@ -5,12 +5,13 @@
 #include "vgstruct.h"
 #include "drwids.h"
 
-#define	NUMPROB	 4
+#define	NUMPROB	 5
 #define	NOPROB	-1
-#define	SLGT	 0
-#define	MDT	 1
-#define	HIGH	 2
-#define	EXCEED5	 3
+#define MRGL     0
+#define	SLGT	 1
+#define	MDT	 2
+#define	HIGH	 3
+#define	EXCEED5	 4
 
 typedef struct xrlineinfo
 {
@@ -74,6 +75,7 @@ void pgxrain_update ( char *fname, int *iret )
  * T. Piper/SAIC	12/05	Made lat and lon pointers		*
  * T. Piper/SAIC	12/05	Initialize line pointers; move counter	*
  * T. Piper/SAIC	12/05	Initialize *lat and *lon		*
+ * S. GUAN/NCEP          4/16   Added a MRGL contour.                   *
  ***********************************************************************/
 {
 int    		ier, ne, fpos, npts, cur_layer, el_layer;
@@ -200,7 +202,8 @@ VG_DBStruct     el;
 				    prob = HIGH;
 				    break;
 			    	case 'M':
-				    prob = MDT;
+                                    if (str[1] == 'R') prob = MRGL;
+                                    if (str[1] == 'D') prob = MDT;
 				    break;
 			    	case 'S':
 				    prob = SLGT;
@@ -358,6 +361,7 @@ void pgxrain_udlist ( int npts, int prob, float *lat, float *lon, int *iret )
  * S. Jacobs/NCEP	 3/03	Added extra blank lines to product	*
  * S. Jacobs/NCEP	12/04	Changed input var raintyp to prob;	*
  * 				Changed wording of output text		*
+ * S. GUAN/NCEP          4/16   Added a MRGL RISK                       *				
  ***********************************************************************/
 {
 int    	np, ier, nptout, recpos, distsm5, icmp;
@@ -365,7 +369,8 @@ int	maxreclen = 65;
 float	distm, dir;
 char	textstr[80], cmpdir[4];
 char	id[20], idsav[20], stn[20];
-char	raintext [] [20] = { "SLIGHT RISK ",
+char	raintext [] [20] = { "MARGINAL RISK ",
+                             "SLIGHT RISK ",
 			     "MODERATE RISK ",
 			     "HIGH RISK " };
 
@@ -386,6 +391,7 @@ char	raintext5inch [] = "TOTAL RAINFALL AMOUNTS OF FIVE INCHES WILL BE POSSIBLE 
     	case HIGH:
 	case MDT:
 	case SLGT:
+        case MRGL:
 	    recpos = 0;
 	    pgprd_putstr (raintext[prob], &ier);
 	    pgprd_putstr (raintextend, &ier);

@@ -346,13 +346,13 @@ typedef unsigned int	G_Cardinal;
 #define	LLGDHD		(     128 )	/* Max grid hdr length */
 #define	LLMDGG		(100000000)	/* Max mem for intern grids */
 #define	LLMXDT		( MMPARM * LLMXLV ) /* Max # data points */
-#define	LLMXGD		( 2000000 )	/* Max # grid points */
+#define	LLMXGD		(20000000 )	/* Max # grid points */
 #define	LLMXGT		(    2000 )	/* Max # grid times */
 #define	LLMXLN		( 256 + 1 )	/* Max length of input */
 #define	LLMXLV		(     500 )	/* Max # levels/station */
 #define	LLMXPT		(   80000 )	/* Max # lines, polygons, ... */
 #define	LLMXST		(      20 )	/* Max # stations in list */
-#define	LLMXTG		(10000000 )	/* Ultimate max # grid points */
+#define	LLMXTG		(50000000 )	/* Ultimate max # grid points */
 #define	LLMXTM		(     200 )	/* Max # times/dataset */
 #define	LLNANL		(     128 )	/* Grid anl block length */
 #define	LLNNAV		(     256 )	/* Grid nav block length */

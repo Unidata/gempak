@@ -38,6 +38,7 @@ C************************************************************************
 	PARAMETER	( CP = AKAPPA * RDGAS )
 C*
 	REAL		grid (*)
+	REAL		hght (kxky)
 	REAL            ovcsfc (kxky)
 	REAL            sfcval (kxky,np)
 	REAL            rlnpo (kxky,nlo)
@@ -102,6 +103,7 @@ C*	    Compute Montgomery Stream Function.
 C
 	    rth = FLOAT ( lev (1) ) * covpok
 	    DO ij = 1, kxky
+	        hght (ij) = grid (ij)
 		IF ( .not. ERMISS ( rlnpo ( ij,klev) ) .and. 
      +	             .not. ERMISS ( grid (ij) ) ) THEN
 		    prs = EXP ( rlnpo (ij,klev) )
@@ -132,6 +134,13 @@ C
      +			grid (ij) = grid (ij) / 100.
 	    END DO
 	    nbits = 16
+	    CALL GD_WPGD ( igdflo, hght, kx, ky, ighdr, gdttm, lev,
+     +			   igvco,'HGHT', .false., MDGGRB, nbits,
+     +			   ier )
+	print*,'Wrote HGHT grid to file, ier = ',ier
+	    IF ( ier .ne. 0 ) THEN
+	    	CALL ER_WMSG ( 'GD', ier, ' ', irr )
+	    END IF
 	    CALL GD_WPGD ( igdflo, grid, kx, ky, ighdr, gdttm, lev,
      +			   igvco, NPSYM, .false., MDGGRB, nbits,
      +			   ier )

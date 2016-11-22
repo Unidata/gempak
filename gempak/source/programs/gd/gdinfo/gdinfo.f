@@ -22,24 +22,25 @@ C*				use filnam in call to GDIGEN		*
 C* S. Maxwell/GSC	10/96	Changed GR_LIST, added parameters for 	*
 C*				matching				*
 C* S. Maxwell/GSC        7/97   Increased input character length        *
-C* D.W.Plummer/NCEP	 4/00	Changes for multiple fcst hour files	*
-C* D.W.Plummer/NCEP	 5/00	Re-code to remove need for GPLT		*
-C* D.W.Plummer/NCEP	 5/00	Add cycle processing; EXIT for mult fhr	*
+C* D.W.Plummer/NCEP	 4/00	Changes for multiple fcst hour files	    *
+C* D.W.Plummer/NCEP	 5/00	Re-code to remove need for GPLT		        *
+C* D.W.Plummer/NCEP	 5/00	Add cycle processing; EXIT for mult fhr     *
 C* S. Jacobs/NCEP        6/00   Change gdclst size from 256 to 12*LLMXGT*
 C* B.E.McDonald/NCEP            Change cycles from 100 to LLMXGT        *
 C*                              Change ST_CLST to ST_CLSL               *
-C* T. Lee/GSC		11/00	Checked blank file			*
-C* S. Jacobs/NCEP	 1/01	Added to check for blank file name	*
-C* T. Lee/SAIC		 9/04	Replaced FL_TMPL with CTB_DTGET		*
-C* A. Hardy/NCEP	11/04   Added calls to ST_RNUL			*
-C* m.gamazaychikov/SAIC	12/04	Added ionoff flag to CTB_DTGET CS	*
+C* T. Lee/GSC		11/00	Checked blank file			                *
+C* S. Jacobs/NCEP	 1/01	Added to check for blank file name	        *
+C* T. Lee/SAIC		 9/04	Replaced FL_TMPL with CTB_DTGET		        *
+C* A. Hardy/NCEP	11/04   Added calls to ST_RNUL			            *
+C* m.gamazaychikov/SAIC	12/04	Added ionoff flag to CTB_DTGET CS	    *
 C* R. Tian/SAIC          3/05   Changes for time/file mngmnt            *
-C* R. Tian/SAIC          4/05   Fixed a bug for dual time		*
+C* R. Tian/SAIC          4/05   Fixed a bug for dual time		        *
 C* m.gamazaychikov/SAIC 04/06   Added idtmch flag to CTB_DTGET CS       *
 C* T. Piper/SAIC        01/08   Added GD_INIT; removed from IN_BDTA     *
 C* F. J. Yen/NCEP        4/08   Added bin mins & mstrct to CTB_DTGET CSC*
-C* S. Jacobs/NCEP	10/13	Added check for reading data from 	*
-C*				the AWIPS database			*
+C* S. Jacobs/NCEP	10/13	Added check for reading data from 	        *
+C*				the AWIPS database			                            *
+C* S. Gilbert/NCEP   9/15   Added cycle to filename for AWIPSDB         *
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 C*
@@ -183,6 +184,10 @@ C
 			END IF
 			CALL FL_MNAM ( tmpdtm, tmplt, filnam, ier )
 			filnam = path(:lp) // '/' // filnam
+            IF ( awpflg ) THEN
+                CALL ST_LSTR( filnam, lf, ier)
+                filnam = filnam(:lf) // '/' // tmpdtm
+			END IF
 C
 C*			Open the grid file.
 C

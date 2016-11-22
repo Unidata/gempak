@@ -72,6 +72,7 @@
 ! M. Gamazaychikov/SAIC 12/07   Added HPC050_MED
 ! M. Gamazaychikov/SAIC 11/08   Added VAACAR
 ! L. Hinson/AWC         05/09   Added ARTCC_BOUNDS
+! S. Guan/NCEP          02/16   Added WPC_PAC, WPC_ATL
 !--------------------------------------------------------------------------
 !
 !ALIAS NAME     FILE TYPE	TABLE NAME
@@ -142,4 +143,6 @@ AK_PSA	 	1		akpsabnds.tbl.info
 ZONE_BNDS       1               zonebnds.tbl.info
 HPC050_MED      1               hpc050_med.tbl.info
 VAACAR	 	1		vaacarbnds.tbl.info
+WPC_ATL         1               ua_opc_wpc_atl.tbl.info
 ARTCC_BOUNDS    1               artccbnds.tbl.info
+WPC_PAC         1               ua_opc_wpc_pac.tbl.info

@@ -2296,10 +2296,11 @@ static void pggfawp_txtPressEh ( Widget wid, XtPointer clnt,
  * S. Danz/AWC          08/06   New flag to pgvgf_saveNewElm to place el*
  * E. Safford/SAIC	04/07	rm call to pggfawp_getAttr()		*
  * J. Wu/SAIC		04/08	Free _gfaElm only if text is inactive	*
+ * J. Wu/SGT		06/14	Update the type selection for C&V 	*
  ***********************************************************************/
 {
     int		ntxt = 1, np, ier, xoff, yoff, ii, location, num;
-    char	value[32];
+    char	value[32], *value1;
     float	xx, yy, lats[MAXPTS], lons[MAXPTS], newlat, newlon;
     float	llx, lly, urx, ury;
     VG_DBStruct	el;
@@ -2321,6 +2322,14 @@ static void pggfawp_txtPressEh ( Widget wid, XtPointer clnt,
  */
     location = pgactv_getElmLoc ();
     pgutls_prepNew ( location, &_gfaElm, &llx, &lly, &urx, &ury, &ier );    
+
+/*
+ *  Update the type selection for C&V.
+ */
+    if ( strcasecmp ( _areaTyp[ _areaTypeIndex ], "C&V" ) == 0 ) {
+        value1 = XmTextGetString( _currentPanel2->typeText );
+        cvg_setFld (&_gfaElm , "<Type>", value1, &ier );
+    }
 
 /*
  *  Catch the GFA attribute box's final location
@@ -6759,13 +6768,19 @@ static void pggfawp_setApplyBtn ( Boolean enable )
  **									*
  * Log:									*
  *  B. Yin/SAIC		01/06	Created 				*
+ *  J. Wu/SGT		06/14	Enable "Apply" only if there are 	*
+ *                              element(s) selected			*
  ***********************************************************************/
 {
-    int 	ier;
+    int 	ier, nsel;
     Pixel 	bgColor;
 /*---------------------------------------------------------------------*/
-
-    if ( enable ) {
+    /*
+     *  Only enable when there is at least one element selected!
+     */
+    nsel = pghdlb_elemSelected();
+    
+    if ( enable && nsel > 0 ) {
 
        XtSetSensitive ( _ctlButtons[ 0 ], True );        
 

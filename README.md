@@ -1,35 +1,59 @@
-# GEMPAK
+GEMPAK, the GEneral Meteorology PAcKage, is an analysis, display, and product generation package for meteorological data.   Originally developed by NCEP for
+use by the National Centers (SPC, TPC, AWC, HPC, OPC, SWPC, etc.) in producing operational forecast and analysis products.  UCAR's Unidata Program Center releases and support a non-operational version of GEMPAK for use in research and education.
 
 This document is intended to guide the user through the process of downloading, configuring and installing GEMPAK v7 for most common systems (32 and 64-bit Linux and Solaris). Specific instructions for <a href="http://www.unidata.ucar.edu/software/gempak/doc/install_osx.html">building on OS X</a> are available as well.
 
 ## Download
 
-GEMPAK can be installed by an individual user, and root / superuser permission is not required. It's assumed for this guide and throughout other online documentation that GEMPAK is installed for a gempak user account in the home directory.
+GEMPAK can be installed by an individual user, and root / superuser permission is not required. It's assumed for this guide and throughout other online documentation that GEMPAK is installed for a **gempak** user account in the home directory.
+
+## x86_64 Linux RPM
+
+from the command line:
+
+	sudo rpm -ivh http://www.unidata.ucar.edu/downloads/gempak/latest/gempak-7.3.1-1.x86_64.rpm
+
+to install to a custom directory (`--prefix=/home/user` will install to **/home/user/GEMPAK7/**)
+
+	sudo rpm -ivh --prefix=/home/user http://www.unidata.ucar.edu/downloads/gempak/latest/gempak-7.3.1-1.x86_64.rpm
 
 ### from GitHub
 
-<a href="https://github.com/Unidata/gempak/releases">https://github.com/Unidata/gempak/releases</a>
+* tarball download
 
-<a href="https://github.com/Unidata/gempak"">GEMPAK releases hosted on GitHub</a> can be downloaded as zip or tar files, or cloned on the command line:
+	<a href="https://github.com/Unidata/gempak/releases">https://github.com/Unidata/gempak/releases</a>
+
+* git clone
 
         git clone git://github.com/Unidata/gempak.git GEMPAK7
 
 
 ### Source code from Unidata
 
-<a href="http://www.unidata.ucar.edu/downloads/gempak/index.jsp">http://www.unidata.ucar.edu/downloads/gempak/</a>
-
-The current release of GEMPAK (<a href="http://www.unidata.ucar.edu/downloads/gempak/latest/gempak-7.3.0.tar.gz">v7.3.0</a>) is provided as a gzip/tarball archive and can found on the <a href="http://www.unidata.ucar.edu/downloads/gempak/">Unidata GEMPAK download page</a>. 
+The current release of GEMPAK (<a href="http://www.unidata.ucar.edu/downloads/gempak/latest/gempak-7.3.1.tar.gz">v7.3.1</a>) is provided as a gzip/tarball archive and can found on the <a href="http://www.unidata.ucar.edu/downloads/gempak/">Unidata GEMPAK download page</a>. 
 	
 Unpacking the archive in the gempak user home directory (assuming **/home/gempak**):
 
-	tar -xvzf gempak-7.3.0.tar.gz
+	tar -xvzf gempak-7.3.1.tar.gz
 
 will create the directory **/home/gempak/GEMPAK7/** which contains all of the libraries, program source and configuration files, most notably the two Gemenviron and Gemenviron.profile.
 
-### Binary Releases
+### Binary Release
 
-A Linux x86_64 binary is available from the <a href="http://www.unidata.ucar.edu/downloads/gempak/">Unidata downloads page</a>, built with gcc-gfortran 4.4.7 and Python 2.7 (required in order tto use the <a href="http://python-awips.readthedocs.io/en/latest/index.html">Python AWIPS Data Access Framework</a>)
+A Linux x86_64 binary is available from the <a href="http://www.unidata.ucar.edu/downloads/gempak/">Unidata downloads page</a>, built with gcc-gfortran 4.4.7. 
+
+## Quick Source Code build (*bash*)
+
+	cd GEMPAK7
+	. Gemenviron.profile
+	make everything
+
+## Quick Source Code build against Python
+
+	cd GEMPAK7
+	. Gemenviron.profile
+	. gem_python.sh
+	make everything
 
 ## Create the NAWIPS symbolic link
 

@@ -6,33 +6,12 @@
 ! S. Jacobs/NCEP	 8/99	Created
 ! M. Li/GSC		 7/00	Added PHFO
 ! J. Lewis/AWC		 4/05   Removed KBOS,KCHI,KDFW,KMIA,KSLC,KSFO,PGUM,
-! 				PHNL,PAFA,PAJN,PANCR,KMKC,PANC
+!				PHNL,PAFA,PAJN,PANCR,KMKC,PANC
 !				Added KKCI, PAWU
-! A. Little/UWA         10/08   Added VIDP,ABRF,VECC,RUVV,NZKL,RUSP,LEMM,EIDB,
-!                                     FCBB,RURD,LGAT,ZLLL,RUPK,SBCW,FMMI,ASRF,
-!                                     RUNW,RUKR,ENMI,EPWA,EGJJ,LPMG,BICC,AMMC,
-!                                     EETN,ZLXY,ZPPP,EDZH,LIIB,RUAA,VABB,EVRA,
-!				      EDZM,LMMM,DTTA,RKSI,OLBA,EHDB,LLBG,EDZF,
-!                                     AMHF,EGRR,APRF,AMRF,RUEK,WIII,RUIR,RUMU,
-!                                     LDZM,LJLJ,LWSK,LHBM,LSSW,LYBM,EKCH,UGTB,
-!                                     EDZB,LOWW,UAFM,RUAM,LBSM,RUCH,RUDS,RUHB,
-!                                     RUMG,RUOM,RUPV,RUSH,SBRE,RUUF,RUYK,UAAA,
-!                                     UACC,LUKK,APRM,LROM,RUKG,RUKZ,RUNN,RUSM,
-!                                     ESWI,RUMS,LTAA,LTBA,UKBB,UKLL,UKOO,UKFF,
-!                                     ALAK,UKHH,UTTT,SCCI
 !
-99999  ABRF    BRISBANE_RFC                      AU  AU  -2727   15302     67
 94294  ABTL    TOWNSVILLE(CIV/MIL)               AU  AU  -1925   14675      6
-99999  ALAK    AKTJUBINSK                        KZ  KZ   5017    5713    227  
-99999  AMHF    HOBART_REGIONAL                   AU  AU  -4252   14723     38
-99999  AMMC    WORLD_MET_CENTRE/MELBOURNE        AU  AU  -3749   14457     21
-99999  AMRF    MELBOURNE_RFC                     AU  AU  -3748   14456     28
-99999  APRF    PERTH_RFC                         AU  AU  -3156   11550    143
-99999  APRM    ADELAIDE/RFC                      AU  AU  -3455   13837    163 
-99999  ASRF    SYDNEY/RFC                        AU  AU  -3352   15112    180
 94035  AYPY    PORT_MORESBY_INTL                 NG  NG   -943   14722     47
 04231  BGSF    SONDRE_STROMFJORD                 GL  GL   6700   -5080     53
-99999  BICC    REYKJAVIK_GUFUNES_COM_CENTRE      IS  IS   6407   -2154    111
 99999  CWEG    ALBERTA_WX_CENTRE_&               CN  CN   5350  -11350  -9999
 99999  CWHX    MARITIMES_WX_CENTRE               CN  CN   4473   -6367  -9999
 99999  CWTO    TORONTO_AES_HQ____&               CN  CN   4378   -7947    187
@@ -42,23 +21,8 @@
 71053  CWXK    CLINTON_POINT                     CN  CN   6958  -12080    101
 99999  CYQX    GANDER_INTL_AIRPORT               CN  CN   4895   -5457    151
 99999  CYXY    WHITEHORSE_AIRPORT                CN  CN   6072  -13507    703
-60715  DTTA    TUNIS/CARTHAGE                    TN  TN   3649    1013      4    
 06451  EBBR    BRUSSELS_NATIONAL                 BX  BX   5090     453     58
-99999  EDZB    BERLIN_MET_REG_CENTER             DE  DE   5249     955     70
-99999  EDZF    MAIN_MET_REG_CENTER/FRANKFURT     DE  DE   5006     844    336 
-99999  EDZH    GAERMERSDORF                      DE  DE   4925    1154    419
-99999  EDZM    MUNCHEN_MET_REG_CENTER            DE  DE   4809    1132   1693
-26038  EETN    TALLINN                           EE  EE   5924    2449     40
 02974  EFHK    HELSINKI/VANTAA                   FI  FI   6032    2497     56
-03895  EGJJ    JERSEY_AIRPORT                    GB  GB   4913     212     84
-03763  EGRR    UK_MET_EXETER			 GB  GB   5065    -343     27
-06260  EHDB    DE_BILT                           NL  NL   5206     510      4
-06180  EKCH    COPENHAGEN/KASTR                  DK  DK   5537    1240	    5
-01327  ENMI    NORWEGIAN_MET_INSTITUTE/OSLO      NO  NO   5956    1043    327
-99999  EIDB    DUBLIN(COM_CENTRE)                IE  IE   5325    -615     85
-12375  EPWA    WARSAW/OKECIE                     PL  PL   5210    2058    107
-99999  ESWI    STOCKHOLM/ARLAND                  SE  SE   5938    1756     61
-99999  EVRA    RIGA AIRPORT                      LV  LV   5655    2358     10
 68442  FABL    BLOEMFONTEIN/HERTZO               ZA  ZA  -2910    2630   1348
 68816  FACT    CAPETOWN/DF_MALAN                 ZA  ZA  -3398    1860     42
 68588  FADN    DURBAN/LOUIS_BOTHA                ZA  ZA  -2997    3095      8
@@ -66,39 +30,19 @@
 68368  FAJS    JAN_SMUTS                         ZA  ZA  -2613    2823   1700
 68842  FAPE    PORT_ELIZABETH                    ZA  ZA  -3398    2560     60
 68262  FAPR    PRETORIA_(MET)                    ZA  ZA  -2573    2818   1322
-O4450  FCBB    BRAZZAVILLE/MAYA                  CG  CG   -415    1515    316
 61980  FMEE    ST._DENIS/GILLOT                  RE  RE  -2088    5552     25
-67083  FMMI    ANTANANARIVO/IVA                  KM  KM  -1848    4728   1276
 60155  GMMC    CASABLANCA/ANFA                   MC  MC   3357    -767     62
 61641  GOOY    DAKAR/YOFF                        SG  SG   1473   -1750     24
 62366  HECA    CAIRO_INTL_AIRPORT                EG  EG   3013    3140     74
 99999  KKCI    AVIATION_WEATHER_CENTER           MO  US   3912   -9460    231
 99999  KNHC    NATIONAL_HURRICANE_CENTER(TPC)    FL  US   2582   -8028      4
 99999  KWBC    WASHINGTON/DULLES                 VA  US   3895   -7745     98
-99999  LBSM    SOFIA_MET_COM_CENTRE              BG  BG   4238    2322    595
-99999  LDZM    ZAGREB                            HR  HR   4549    1602    123
-99999  LEMM    MADRID(MET_CENTRE)                ES  ES   4025    -330   1836
 99999  LFPW    PARIS_MET_CENTER                  FR  FR   4883     233     75
-16716  LGAT    ATHENS/HELLENKIO                  GR  GR   3753    2343     21
-12840  LHBM    BUDAPEST_MET_CENTER               HU  HU   4731    1902    423
-99999  LIIB    MET_COMM_CENTRE/ROMA              IT  IT   4149    1216      7
-14014  LJLJ    LJUBLJANA/BRNIK                   SI  SI   4613    1428    385
 11518  LKPR    PRAGUE/RUZYNE                     CZ  CZ   5010    1428    366
-40180  LLBG    BEN_GURION(CIV/MIL)               IL  IL   3200    3453     49
-99999  LMMM    MALTA_ACC                         MT  MT   3553    1431     95
-11036  LOWW    VIENNA/SCHWECHAT                  AT  AT   4807    1634    190
-99999  LPMG    MET_COM_CENTRE/LISBOA             PO  PO   3843    -909    219
 08536  LPPT    LISBON/PORTELA                    PO  PO   3878    -913    123
-99999  LROM    BUCRESTI/OTOPENI                  RO  RO   4432    2606     95
-99999  LSSW    ZURICH_MET_COM_CENTRE             CH  CH   4723     834    432
-99999  LTAA    ANKARA(SEHIR_CITY)                TU  TU   4000    3200   2842
 17128  LTAC    ANKARA/ESENBOGA                   TU  TU   4012    3298    949
-17060  LTBA    ISTANBUL/ATATURK                  TU  TU   4058    2849     37
-99999  LUKK    CHISINAU                          MD  MD   4656    2856    122
-13586  LWSK    SKOPJE/PETROVAC                   MK  MK   4158    2138    239
 13272  LYBE    BELGRADE/SURCIN                   YG  YG   4482    2028     99
-13274  LYBM    BEOGRAD				 YG  YG   4448    2028    433 
-11816  LZIB    BRATISLAVA_IVANKA                 SK  SK   4820    1720    130
+11816  LZIB    BRATISLAVA_IVANKA                 CZ  CZ   4820    1720    130
 78485  MDSD    CAUCEDO/DE_LAS_AMER               DR  DR   1843   -6967     18
 76679  MMEX    MEXICO_CITY/JUAREZ                MX  MX   1943   -9908   2234
 99999  MMMX    MEXICO_CITY/LICENCI               MX  MX   1943   -9910   2238
@@ -109,57 +53,25 @@ O4450  FCBB    BRAZZAVILLE/MAYA                  CG  CG   -415    1515    316
 99999  MZBZ    BELIZE_INTL_AIRPORT               BH  BH   1753   -8830      5
 91680  NFFN    NANDI/NADI_INTL                   FJ  FJ  -1775   17745     18
 91938  NTAA    TAHITI_ISLAND/FAAA                PF  PF  -1755  -14962      2
-99999  NZKL    WELLINGTON/KELBURN                NZ  NZ  -4119   17448     40
 93436  NZWN    WELLINGTON_INTL                   NZ  NZ  -4133   17480      7
 41150  OBBI    BAHRAIN_INTL_ARPT_&               BN  BN   2627    5065      2
 41026  OEJD    JEDDAH____________&               SD  SD   2150    3920     15
-40100  OLBA    BEIRUT(CIV/MIL)                   LB  LB   3349    3528     19
 41217  OMAA    ABU_DHABI_INTL____&               ER  ER   2443    5465     27
 41404  OYSN    SANA'A                            YE  YE   1538    4420   2200
 99999  PAWU    ALASKA_AVIATION_WEATHER_UNIT      AK  US   6118  -15000     44
 99999  PHFO    HONOLULU/UNIV_OF_HI-MANOA_CAMPUS  HI  US   2190  -15842     20
 46686  RCTP    CHIANG_KAI_SHEK                   TW  TW   2508   12122     33
 47686  RJAA    NEW_TOKYO_INTL_ARPT               JP  JP   3577   14038     44
-47662  RJTD    TOKYO                             JP  JP   3540   13946     36
-99999  RKSI    CHAJANG_NI                        KR  KR   3728   12627      7
 98429  RPMM    NINOY_AQUINO_INTL                 PH  PH   1452   12100     21
-99999  RUAA    ARKHANGELSK                       RU  RU   6436    4043     54
-99999  RUAM    AMDERMA                           RU  RU   6945    6142     49
-99999  RUCH    CITA/KADALA                       RU  RU   5201   11319    685
-99999  RUDS    DICKSON/KHATANGA                  RU  RU   7159   10228     33
-99999  RUEK    EKATERINBURG                      RU  RU   5647    6042    734
-99999  RUHB    KHABAROVSK/NOVY                   RU  RU   4831   13509     72
-99999  RUIR    IRKUTSK                           RU  RU   5746   10804    826
-99999  RUKG    KALININGRAD                       RU  RU   5443    2030     21
-99999  RUKR    KRASNOYARSK                       RU  RU   5600    9252    277 
-99999  RUKZ    KAZAN                             RU  RU   5547    4912    126
-99999  RUMG    MAGADAN                           RU  RU   5955   15043    118
-99999  RUMS    ASKHABAD                          TM  TM   3759    5822    210
-99999  RUMU    MURMANSK                          RU  RU   6858    3302     51
-99999  RUNN    NIZHNY_NOVGOROD                   RU  RU   5614    4347     73
-99999  RUNW    NOVOSIBIRSK                       RU  RU   5505    8259    177
-99999  RUOM    OMSK                              RU  RU   5458    7319     95
-99999  RUPK    PETROPAVLOVSK_KAMCHATSKI          RU  RU   5310   15827     40  
-99999  RUPV    PEVEK                             RU  RU   6942   17017      4 
-99999  RURD    ROSTOV_ON_DON                     RU  RU   4715    3949     77
-99999  RUSH    YUZHNO_SAKHALINSK                 RU  RU   4655   14243     31   
-99999  RUSM    SAMARA/KURUMOCH                   RU  RU   5330    5010    146
-99999  RUSP    ST_PETERSBURG                     RU  RU   5948    3015     78
-99999  RUUF    UFA                               RU  RU   5444    5556    137 
-99999  RUVV    VLADIVOSTOK                       RU  RU   4307   15154    361
-99999  RUYK    YAKUTSK                           RU  RU   6204   12945    103
 87576  SAEZ    BUENOS_AIRES/EZEIZA               AG  AG  -3482   -5853     20
 87155  SARE    RESISTENCIA_AIRPORT               AG  AG  -2745   -5905     52
 82193  SBBE    BELEM/VAL_DE_CAES                 BZ  BZ   -138   -4848     16
 82111  SBEG    EDUARDO_GOMES_INTL                BZ  BZ   -303   -6005      2
 83378  SBBR    BRASILIA_(CIV/MIL)                BZ  BZ  -1587   -4793   1061
-99999  SBCW    CURITIBA                          BZ  BZ  -2540   -4923    923
 83746  SBGL    GALEAO/RIO(CIV/MIL)               BZ  BZ  -2282   -4325      6
 99999  SBGR    GUARULHOS_(CIV/MIL)               BZ  BZ  -2343   -4647    750
-99999  SBRE    RECIFE/CINDACTA_III               BZ  BZ  -0804   -3451     19
 82899  SBRF    RECIFE/GUARARAPES                 BZ  BZ   -807   -3485     19
 85574  SCEL    PUDAHUEL/ARTURO_MER               CH  CH  -3338   -7078    476
-85934  SCCI    PUNTA_ARENAS/PRE                  CH  CH  -5318   -7049    118
 85201  SLLP    LA_PAZ/JFK_INTL                   BO  BO  -1652   -6818   4014
 81405  SOCA    CAYENNE/ROCHAMBEAU                FG  FG    483   -5237      9
 84628  SPIM    LIMA/JORGE_CHAVEZ                 PR  PR  -1200   -7712     13
@@ -167,27 +79,10 @@ O4450  FCBB    BRAZZAVILLE/MAYA                  CG  CG   -415    1515    316
 78954  TBPB    GRANTLEY_ADAMS_INTL               BR  BR   1307   -5948     56
 78988  TNCC    HATO_ARPT_(CIV/MIL)               NU  NU   1220   -6897     67
 78970  TTPP    PIARCO_INTL_AIRPORT               TD  TD   1062   -6135     15
-36870  UAAA    ALMA-ATA/AKTYUBINSK               KZ  KZ   4313    7655    847
-99999  UACC    ASTANA                            KZ  KZ   5112    7127    355
-99999  UAFM    BISHKEK/MANAS                     KZ  KZ   4251    7435    760
 37789  UGEE    YEREVAN/ZVARTNOTS                 RS  RS   4013    4447    890
-37549  UGTB    TBILISI/NOVO-AL                   GE  GE   4140    4457    495
-34300  UKHH    HAR'KOV/OSNOVA                    UA  UA   4955    3617    155
-33347  UKBB    BORISPOL'/KEIV                    UA  UA   5019    3058    119
-33946  UKFF    SIMFEROPOL'                       UA  UA   4502    3359    188
-33393  UKLL    L_VIV                             UA  UA   4949    2356    325
-33837  UKOO    ODESSA/TSENTRALN                  UA  UA   4625    3046     35
 26850  UMMS    MINSK                             BY  BY   5387    2753    234
-38457  UTTT    TASKENT/YUZNI                     TM  TM   4116    6916    489
-43003  VABB    BOMBAY/SANTACRUZ                  IN  IN   1907    7250      8
 43450  VCBI    COLOMBO/KATUNAYAKE                SB  SB    717    7988      8
-42809  VECC    CALCUTTA_DUM/DUM                  IN  IN   2238    8827      6
 41922  VGZR    KURMITOLA/ZIA_INTL                BW  BW   2385    9040     10
 45007  VHHH    HONG_KONG_INTL_ARPT               HK  HK   2233   11418     24
-42181  VIDP    INDIRA_GANDHI/DE                  IN  IN   2834    7707    233 
 48900  VVTS    HO_CHI_MINH/TANSONN               VS  VS   1082   10667     19
-96749  WIII    JAKARTA/SOEKARNO_HATTA_INTL       ID  ID   -607   10639      8
 48698  WSSS    SINGAPORE/CHANGI                  SR  SR    137   10398     16
-52889  ZLLL    LANZHOU                           CN  CN   3631   10337   1947
-99999  ZLXY    XIANYANG                          CN  CN   3426   10845    479
-56778  ZPPP    KUNMING/WUJIABA                   CN  CN   2501   10240   1892

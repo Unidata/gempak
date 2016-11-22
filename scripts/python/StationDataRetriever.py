@@ -100,8 +100,7 @@ if __name__ == '__main__':
     srv = 'nco-lw-sgilbert'
     key = '-'
     
-    print ' '
-    print 'OBS - METAR'
+    print('OBS - METAR')
     tbl = 'obs'
     #stn = 'KBWI'
     #time = '130823/0600'
@@ -109,25 +108,23 @@ if __name__ == '__main__':
     time = '130823/1700'
     parm = 'seaLevelPress,temperature,dewpoint,windSpeed,windDir'
     part = '0'
-    print getheader(srv,tbl,stn,time,parm,part)
-    print getstationdata(srv,tbl,stn,time,parm,part)
+    print(getheader(srv,tbl,stn,time,parm,part))
+    print(getstationdata(srv,tbl,stn,time,parm,part))
     parm = 'rawMETAR'
-    print getstationtext(srv,tbl,stn,time,parm,part)
+    print(getstationtext(srv,tbl,stn,time,parm,part))
 
-    print ' '
-    print 'SFCOBS - SYNOP'
+    print('SFCOBS - SYNOP')
     tbl = 'sfcobs'
     stn = '72403'
     time = '130823/1800'
     parm = 'seaLevelPress,temperature,dewpoint,windSpeed,windDir'
     part = '0'
-    print getheader(srv,tbl,stn,time,parm,part)
-    print getstationdata(srv,tbl,stn,time,parm,part)
+    print(getheader(srv,tbl,stn,time,parm,part))
+    print(getstationdata(srv,tbl,stn,time,parm,part))
     parm = 'rawReport'
-    print getstationtext(srv,tbl,stn,time,parm,part)
+    print(getstationtext(srv,tbl,stn,time,parm,part))
 
-    print ' '
-    print 'UAIR'
+    print('UAIR')
     tbl = 'bufrua'
     #stn = '72403'
     stn = '72469'
@@ -135,10 +132,10 @@ if __name__ == '__main__':
     #parm = 'numMand,prMan,htMan,tpMan,tdMan,wdMan,wsMan'
     parm = 'prMan,htMan,tpMan,tdMan,wdMan,wsMan'
     part = '2020'
-    print getleveldata(srv,tbl,stn,time,parm,part)
+    print(getleveldata(srv,tbl,stn,time,parm,part))
     parm = 'prSigT,tpSigT,tdSigT'
     part = '2022'
-    print getleveldata(srv,tbl,stn,time,parm,part)
+    print(getleveldata(srv,tbl,stn,time,parm,part))
     parm = 'htSigW,wsSigW,wdSigW'
     part = '2021'
-    print getleveldata(srv,tbl,stn,time,parm,part)
+    print(getleveldata(srv,tbl,stn,time,parm,part))

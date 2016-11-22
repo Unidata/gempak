@@ -52,7 +52,6 @@ def opensoup(url):
   return soup
 
 def asciify(s):
-  #print "DEBUG[", type(s), "]"
   return unicodedata.normalize('NFKD', s).encode('ascii', 'ignore')
 
 # remove extra whitespace, including stripping leading and trailing whitespace.
@@ -68,7 +67,6 @@ def stripurl(s):
 
 # this gets rid of tags and condenses whitespace
 def striptags(s):
-  #print "DEBUG[", type(s), "]"
   s = re.sub(r"\<span\s+style\s*\=\s*\"display\:none[^\"]*\"[^\>]*\>[^\<]*\<\/span\>",
              "", s)
   s = re.sub(r"\&\#160\;", " ", s)
@@ -79,8 +77,8 @@ def getUrlArgs(parseUrl):
   return re.search('grib2_table4-2-(\d+)-(\d+).shtml', parseUrl).groups()
 
 if(len(sys.argv) == 1):  # called with no arguments
-  print "Usage: ", sys.argv[0], " url [n]"
-  print "  (where n indicates which html table to parse)"
+  print("Usage: ", sys.argv[0], " url [n]")
+  print("  (where n indicates which html table to parse)")
   exit(1)
 
 url = sys.argv[1]
@@ -94,6 +92,6 @@ for table in tables:
     for c in r.findAll(re.compile('td|th')):
       rl.append(striptags(c.renderContents()))
     if len(rl) > 1 and "href" in rl[1]:
-      print '! ' + stripurl(rl[1])
+      print('! ' + stripurl(rl[1]))
       scrapeUrl='http://www.nco.ncep.noaa.gov/pmb/docs/grib2/grib2_table4-2-' + getUrlArgs(rl[1])[0] + "-" + getUrlArgs(rl[1])[1] + '.shtml'
       scrape.run(scrapeUrl)

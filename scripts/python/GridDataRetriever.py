@@ -134,5 +134,5 @@ if __name__ == '__main__':
     #vcd = 'NONE'
     #prm = 'WXTZ'
 
-    print getheader(srv,tbl,mdl,cyc,fcs,lv1,lv2,vcd,prm,nx,ny)
-    print getgriddata(srv,tbl,mdl,cyc,fcs,lv1,lv2,vcd,prm,nx,ny)
+    print(getheader(srv,tbl,mdl,cyc,fcs,lv1,lv2,vcd,prm,nx,ny))
+    print(getgriddata(srv,tbl,mdl,cyc,fcs,lv1,lv2,vcd,prm,nx,ny))

@@ -55,7 +55,7 @@ void da_readxml ( char *filename, int *iflno, int *iret )
     root_element = xmlDocGetRootElement(doc); 
     process_elements(root_element);
 
-    printf(" Requesting from %s\n",common[gflnum].dbserver);
+    //printf(" Requesting from %s\n",common[gflnum].dbserver);
 
     /* Clean up the XML reader when finished */
     xmlFreeDoc ( doc );

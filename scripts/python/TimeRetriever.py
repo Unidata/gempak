@@ -56,26 +56,17 @@ if __name__ == '__main__':
     #srv = 'nco-lw-msmith'
     srv = 'nco-lw-sgilbert'
 
-    print ' '
-    print 'OBS - METAR'
+    print('OBS - METAR')
     tbl = 'obs'
     key = 'refHour'
-    print gettimes(srv,tbl,key)
+    print(gettimes(srv,tbl,key))
 
-    print ' '
-    print 'SFCOBS - SYNOP'
+    print('SFCOBS - SYNOP')
     tbl = 'sfcobs'
     key = 'refHour'
-    print gettimes(srv,tbl,key)
+    print(gettimes(srv,tbl,key))
 
-    print ' '
-    print 'BUFRUA'
+    print('BUFRUA')
     tbl = 'bufrua'
     key = 'dataTime.refTime'
-    print gettimes(srv,tbl,key)
-
-    #print ' '
-    #print 'BUFRMOS'
-    #tbl = 'bufrmos'
-    #key = 'refHour'
-    #print gettimes(srv,tbl,key)
+    print(gettimes(srv,tbl,key))

@@ -1,4 +1,4 @@
-#ifdef WITHPYTHON /* Is AWIPS Python available? */
+#ifdef WITHPYTHON /* Is Python available? */
 #include "Python.h"
 #endif
 
@@ -13,7 +13,8 @@ void da_runpy ( char *pyfile, char *pymeth, int *iret )
  * 									*
  * Sample code used in creating this function, and a detailed		*
  * explanation of calling Python from C may be found at:		*
- * http://docs.python.org/2.7/contents.html				*
+ * https://docs.python.org/2.7/extending/extending.html                 *
+ *    #calling-python-functions-from-c                                  *
  * 									*
  * da_runpy ( pyfile, pymeth, iret )					*
  * 									*
@@ -28,7 +29,7 @@ void da_runpy ( char *pyfile, char *pymeth, int *iret )
  * S. Jacobs/NCEP	 5/13	Initial coding				*
  ***********************************************************************/
 {
-#ifdef WITHPYTHON /* Is AWIPS Python available? */
+#ifdef WITHPYTHON /* Is Python available? */
     int		ii;
     PyObject	*pName, *pModule, *pFunc, *pArgs, *pValue;
     char	*lclchr;
@@ -151,7 +152,7 @@ void da_runpy ( char *pyfile, char *pymeth, int *iret )
     /* Do not call Py_Finalize() */
     /* Multiple calls to Intialize and Finalize do not work properly. */
 
-#else /* If the AWIPS Python is not available, return with an error */
+#else /* If Python is not available, return with an error */
     *iret = -1;
 #endif
 
