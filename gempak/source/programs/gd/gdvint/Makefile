@@ -73,7 +73,7 @@ LIBINC = \
 all : $(ALIB) $(PROG)
 
 $(PROG): $(ALIB) $(LIBINC) $(PROG.f)
-	$(LINK.f) $(PROG.f) $(ALIB) $(LIBINC) $(SYSLIBS) $(CSYSLIB) -o $@
+	$(LINK.f) $(PROG.f) $(ALIB) $(LIBINC) $(CSYSLIB) -o $@
 
 programs_gf:
 	@echo "Not a graphic program, no _gf version needed"

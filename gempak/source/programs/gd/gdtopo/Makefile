@@ -34,7 +34,7 @@ PROG = $(PROG.f:.f=)
 all : $(PROG) 
 
 $(PROG) : $(OLIB) $(LIBINC) $(PROG.f)
-	$(LINK.f) $(PROG.f) $(OLIB) $(LIBINC) $(SYSLIBS) $(CSYSLIB) -lm -o $@
+	$(LINK.f) $(PROG.f) $(OLIB) $(LIBINC) $(CSYSLIB) -lm -o $@
 
 $(OLIB) : $(FLIBMODS) 
 	$(AR) $(ARFLAGS) $@ *.o

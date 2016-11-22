@@ -20,7 +20,6 @@ LIBINC =	\
 	$(APPL) \
 	$(SYSLIB) \
 	$(GEMLIB) \
-        $(DALIB) \
 	$(CGEMLIB) \
 	$(LIBGPC) \
 	$(NETCDF) \
@@ -41,7 +40,6 @@ LIBINC_NC = \
         $(GEMLIB) \
         $(CGEMLIB) \
         $(GEMLIB) \
-        $(DALIB) \
         $(LIBGPC) \
         $(NETCDF) \
         $(OS_LIB)/libmel_bufr.a \
@@ -62,7 +60,6 @@ LIBINC_GF = \
         $(GEMLIB) \
         $(CGEMLIB) \
         $(GEMLIB) \
-        $(DALIB) \
         $(LIBGPC) \
         $(NETCDF) \
         $(OS_LIB)/libmel_bufr.a \
@@ -83,7 +80,6 @@ LIBINC_XW = \
         $(GEMLIB) \
         $(CGEMLIB) \
         $(GEMLIB) \
-        $(DALIB) \
         $(LIBGPC) \
         $(NETCDF) \
         $(OS_LIB)/libmel_bufr.a \
@@ -104,7 +100,6 @@ LIBINC_GIF = \
         $(GEMLIB) \
         $(CGEMLIB) \
         $(GEMLIB) \
-        $(DALIB) \
         $(LIBGPC) \
         $(NETCDF) \
         $(OS_LIB)/libmel_bufr.a \
@@ -124,7 +119,6 @@ LIBINC_PS = \
         $(GN) \
         $(CGEMLIB) \
         $(GEMLIB) \
-        $(DALIB) \
         $(LIBGPC) \
         $(NETCDF) \
         $(OS_LIB)/libmel_bufr.a \
@@ -144,7 +138,6 @@ LIBINC_VG = \
         $(GN) \
         $(CGEMLIB) \
         $(GEMLIB) \
-        $(DALIB) \
         $(LIBGPC) \
         $(NETCDF) \
         $(OS_LIB)/libmel_bufr.a \
