@@ -142,7 +142,7 @@ C!						Max # of contour lvls
 C!						Max grid hdr length
 	PARAMETER	( LLMAXD =   128   )
 C!						Max # of background grid
-	PARAMETER	( LLMDGG = 1000000000 )
+	PARAMETER	( LLMDGG = 100000000 )
 C!						Max mem for intern grids
 	PARAMETER	( LLMXGT =  2000   )
 C!						Max # grid times
