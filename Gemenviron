@@ -266,3 +266,27 @@ setenv PATH ${PATH}:${OS_BIN}:${NAWIPS}/bin
 #
 # getenv("OS") used by cfl_iret()
    setenv OS $NA_OS
+set ARCH = ""
+if ( -d /awips2/python ) then
+    setenv PYHOME "/awips2/python"
+    set pv = `$PYHOME/bin/python -V |& cut -c8- | cut -d. -f1`
+    set pr = `$PYHOME/bin/python -V |& cut -c8- | cut -d. -f2`
+    setenv PYTHONPATH "${PYHOME}/lib/python${pv}.${pr}/site-packages:${NAWIPS}/scripts/python"
+else
+    setenv PYHOME "/usr"
+    set pv = `$PYHOME/bin/python -V |& cut -c8- | cut -d. -f1`
+    set pr = `$PYHOME/bin/python -V |& cut -c8- | cut -d. -f2`
+    setenv PYTHONPATH "${PYHOME}/lib64/python${pv}.${pr}/site-packages:${PYHOME}/lib/python${pv}.${pr}/site-packages:${NAWIPS}/scripts/python"
+    if ( ! $?MACHTYPE ) then
+      # set the MACHTYPE
+      set MACHTYPE = `uname -m`
+    endif 
+    set MACHTEST = `echo $MACHTYPE | grep -c "_64"`
+    set IS64 = `echo $MACHTEST | grep -c "_64"`
+    if ( ${IS64} > 0 ) then
+      set ARCH = "64"
+    endif
+    setenv LD_LIBRARY_PATH ${LD_LIBRARY_PATH}:/usr/lib${ARCH}
+endif
+setenv LD_LIBRARY_PATH ${LD_LIBRARY_PATH}:${OS_LIB}
+

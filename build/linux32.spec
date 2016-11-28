@@ -1,17 +1,14 @@
 #
-# Unidata GEMPAK Spec File
-# 
-# Nov 22, 2016  mjames  7.3.1
+# GEMPAK LDM Spec File
 #
 %define __prelink_undo_cmd %{nil}
-%define gem_home /machine/GEMPAK7
 %define prefix /home/gempak
-%define version 7.3.1
+%define version 7.1.0
 %define version_core 7
-Name: gempak
+Name: gempak 
 Summary: Unidata Program Center GEMPAK
 Version: %{version}
-Release: 1
+Release: 1 
 Prefix: %{prefix}
 Group: GEMPAK
 BuildRoot: /tmp
@@ -23,25 +20,29 @@ Packager: Michael James
 Requires: libX11-devel, libXt-devel, libXext, libXp-devel
 Requires: libXft-devel, libXtst-devel, xorg-x11-xbitmaps
 Requires: flex, byacc
-BuildRequires: openmotif, openmotif-devel
 AutoReq: no
 provides: gempak
 
 %description
-Unidata GEMPAK Distribution
+GEMPAK Distribution
 
 %prep
-# This is a somewhat manual RPM build where we copy the latest source code 
-# release from github, but bundle the $NAWIPS/os directory (there is no 
-# make performed by this spec file).
+# We cannot safely build gempak on a machine gempak
+# is already installed on.
+if rpm -q gempak
+then
+   echo "ERROR: the gempak rpm is already installed"
+   exit 1
+fi
 
 %build
 
 %install
-WORKSPACE_DIR="/machine/rpmbuild"
-SOURCE_DIR=${WORKSPACE_DIR}/SOURCES/%{version_core}/
-SPEC_DIR=${WORKSPACE_DIR}/SPECS/
-SRC_TAR=gempak-%{version}.tar.gz
+# define source package
+WORKSPACE_DIR="/home/mjames/rpmbuild"
+GEM_TAR_DIR=$WORKSPACE_DIR/SOURCES/7
+
+GEM_TAR_FILE="master.zip"
 
 # Verify That The User Has Specified A BuildRoot.
 if [ "${RPM_BUILD_ROOT}" = "/tmp" ]
@@ -57,35 +58,42 @@ if [ -d ${RPM_BUILD_ROOT}/home/gempak ]; then
 fi
 mkdir -p ${RPM_BUILD_ROOT}/home/gempak
 
-# wget the latest source tarball
+# Copy the base src to the build directory.
+cp -r ${GEM_TAR_DIR}/${GEM_TAR_FILE} ${RPM_BUILD_ROOT}/home/gempak/${GEM_TAR_FILE}
 cd ${RPM_BUILD_ROOT}/home/gempak
-if [ ! -f %{gem_home}/${SRC_TAR} ]; then
-  wget -O ${RPM_BUILD_ROOT}/home/gempak/${SRC_TAR} https://github.com/Unidata/gempak/archive/%{version}.tar.gz
-else
-  cp %{gem_home}/${SRC_TAR} .
-fi
-tar -xvzf ${SRC_TAR}
-rm -rf ${SRC_TAR}
-mv gempak-%{version} GEMPAK%{version_core}
+unzip ${GEM_TAR_FILE}
+rm -rf ${GEM_TAR_FILE}
+mv gempak-master GEMPAK%{version_core}
 cd GEMPAK%{version_core}/
-cp -r %{gem_home}/os ${RPM_BUILD_ROOT}/home/gempak/GEMPAK%{version_core}/
+cp ${GEM_TAR_DIR}/linux32.os.tar ${RPM_BUILD_ROOT}/home/gempak/GEMPAK%{version_core}/
+tar -xvf linux32.os.tar
+rm -rf linux32.os.tar
+
+# remove external libraries and OS tarball
+rm -rf extlibs
 
 # create soft link to the current gempak directory
 cd ..
 ln -s GEMPAK%{version_core} NAWIPS
 
 %pre
+echo -e "\e[1;34m--------------------------------------------------------------------------------\e[m"
 echo -e "\e[1;34m\| Installing GEMPAK%{version_core}...\e[m"
+echo -e "\e[1;34m--------------------------------------------------------------------------------\e[m"
 
 %post
+echo -e "\e[1;32m--------------------------------------------------------------------------------\e[m"
 echo -e "\e[1;32m\| GEMPAK%{version_core} Installation - COMPLETE\e[m"
+echo -e "\e[1;32m--------------------------------------------------------------------------------\e[m"
 
-# TODO: re-write Gemenviron files for prefix given on install
+# re-write Gemenviron files for prefix given on install
 #sed -i 's/home\/gempak/${PREFIX_ESC}/g' %{prefix}/GEMPAK%{version_core}/Gemenviron
 #sed -i 's/home\/gempak/${PREFIX_ESC}/g' %{prefix}/GEMPAK%{version_core}/Gemenviron.profile
 
 %postun
+echo -e "\e[1;34m--------------------------------------------------------------------------------\e[m"
 echo -e "\e[1;34m\| GEMPAK%{version_core} Has Been Successfully Removed\e[m"
+echo -e "\e[1;34m--------------------------------------------------------------------------------\e[m"
 
 %clean
 rm -rf ${RPM_BUILD_ROOT}/*
@@ -95,4 +103,3 @@ rm -rf ${RPM_BUILD_ROOT}/*
 %dir %{prefix}/GEMPAK%{version_core}/
 %{prefix}/GEMPAK%{version_core}/*
 %attr(755,gempak,-) %{prefix}/NAWIPS
-

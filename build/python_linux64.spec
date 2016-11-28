@@ -8,7 +8,7 @@
 %define prefix /home/gempak
 %define version 7.3.1
 %define version_core 7
-Name: gempak
+Name: gempak-python
 Summary: Unidata Program Center GEMPAK
 Version: %{version}
 Release: 1
