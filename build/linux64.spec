@@ -41,7 +41,7 @@ Unidata GEMPAK Distribution
 WORKSPACE_DIR="/machine/rpmbuild"
 SOURCE_DIR=${WORKSPACE_DIR}/SOURCES/%{version_core}/
 SPEC_DIR=${WORKSPACE_DIR}/SPECS/
-SRC_TAR=gempak-%{version}.tar.gz
+SRC_ZIP=master.zip
 
 # Verify That The User Has Specified A BuildRoot.
 if [ "${RPM_BUILD_ROOT}" = "/tmp" ]
@@ -57,16 +57,16 @@ if [ -d ${RPM_BUILD_ROOT}/home/gempak ]; then
 fi
 mkdir -p ${RPM_BUILD_ROOT}/home/gempak
 
-# wget the latest source tarball
+# wget the latest source
 cd ${RPM_BUILD_ROOT}/home/gempak
-if [ ! -f %{gem_home}/${SRC_TAR} ]; then
-  wget -O ${RPM_BUILD_ROOT}/home/gempak/${SRC_TAR} https://github.com/Unidata/gempak/archive/%{version}.tar.gz
+if [ ! -f %{gem_home}/${SRC_ZIP} ]; then
+  wget -O ${RPM_BUILD_ROOT}/home/gempak/${SRC_ZIP} https://github.com/Unidata/gempak/archive/master.zip
 else
-  cp %{gem_home}/${SRC_TAR} .
+  cp %{gem_home}/${SRC_ZIP} .
 fi
-tar -xvzf ${SRC_TAR}
-rm -rf ${SRC_TAR}
-mv gempak-%{version} GEMPAK%{version_core}
+unzip ${SRC_ZIP}
+rm -rf ${SRC_ZIP}
+mv gempak-master GEMPAK%{version_core}
 cd GEMPAK%{version_core}/
 cp -r %{gem_home}/os ${RPM_BUILD_ROOT}/home/gempak/GEMPAK%{version_core}/
 
