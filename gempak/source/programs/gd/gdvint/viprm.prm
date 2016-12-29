@@ -68,7 +68,7 @@ C************************************************************************
 
 	PARAMETER ( MAXLVL = 200 )
 C!						Maximum number of lvls
-	PARAMETER ( MAXPRM = 10 )
+	PARAMETER ( MAXPRM = 20 )
 C!						Maximum number of parms
 	PARAMETER ( MXSFVC = 4 )
 C!						Maximum number of extra

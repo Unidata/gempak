@@ -99,7 +99,7 @@ C*
      +			clrbar*(LLMXLN), shrttl*(LLMXLN),
      +			lutfil*(LLMXLN), stnplt*(LLMXLN),
      +			ijskip*(LLMXLN), mscale*(LLMXLN)
-	CHARACTER	timlst (LLMXGT)*36, timfnd*36, trange*36
+	CHARACTER	timlst (LLMXGT)*36, timfnd*36, trange*50
 	LOGICAL		clear, gottm, gotol, scflag
 C*
 	CHARACTER	time (2)*20, ttlstr*72, garout*72, prjout*72,
