@@ -19,6 +19,7 @@ void gb_ftim ( int *itime, int *iaccm, int *iret )
  * M. Li/GSC		 5/00	Added iret and cleaned up		*
  * S. Jacobs/NCEP	 3/11	Added check for Canadian Ensembles	*
  * M. James/Unidata	 9/13	Added more center checks for fcst hours	*
+ * M. James/Unidata	 6/17	Add center 7 process 84 for hds nam212	*
  ***********************************************************************/
 {
 	int		ifcst, iafgi, ihhh, imm, iyy,
@@ -73,6 +74,7 @@ void gb_ftim ( int *itime, int *iaccm, int *iret )
  		     */
 		    if  ( ( pds.center == 57 && pds.process == 10 ) ||
 			  ( pds.center == 54 && pds.process == 71 ) ||
+			  ( pds.center == 7  && pds.process == 84 ) ||
 			  ( pds.center == 78 ) ||
 			  ( pds.center == 146 ) ||
 			  ( pds.center == 43 ) ||
