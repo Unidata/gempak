@@ -12,6 +12,7 @@
  *									* 
  * Chiz/Unidata	02/01							* 
  * Chiz/Unidata 02/02		Removed gqbnd() call for perfomance	*
+ * mjames/Unidata 06/02		Product flag for dual pol		*
  ***********************************************************************/
 #include <geminc.h>
 #include <gemprm.h>
@@ -202,8 +203,16 @@ stnums[numstats] = *istnm;
 numstats++;
 
 }
-
-void radar_grid(int *kx, int *ky, float *rlev)
+/* radar_grid
+ * 
+ * INPUTS
+ *      prodflg product flag 0 or 1
+ *      kx, ky  grid size
+ *      grid   grid
+ *      rlev    data levels
+ *
+ */
+void radar_grid(int *prodflg, int *kx, int *ky, float *rlev)
 {
 int ier, i, j, np, ip, x, y, it;
 
@@ -261,12 +270,14 @@ for(i=xstart;i<=xstop;i++)
          it = ((y - 1) * imnpix) + x - 1;
          ip = ((j - 1) * (*kx)) + i - 1;
 
-         if((imgData[it] >= immnpx)&&(imgData[it] <= immxpx))
-            {
-            rval = rlev[(int)imgData[it]];
+         if((imgData[it] >= immnpx)&&(imgData[it] <= immxpx)){
+	    if ( *prodflg > 0) {
+                rval = rlev[(int)imgData[it]];
+	    } else {
+		rval = (int)imgData[it];
+	    }
             if(rval > grid[ip]) grid[ip] = rval;
-            }
-         else
+         } else
             printf("%d %d %d   %d %d %d   %d\n", x,y,np, i,j,ip, imgData[np]);
          }
       np++;

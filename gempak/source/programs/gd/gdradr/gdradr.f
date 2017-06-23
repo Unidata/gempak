@@ -8,6 +8,7 @@ C* Log:									*
 C* Chiz/Unidata		 3/01	Initial coding				*
 C* James/Unidata	 2/09   Added bin mins & mstrct to CTB_DTGET CSC*
 C* James/Unidata	 1/14   Removed deprecated GD_CLOS call         *
+C* James/Unidata	 6/17   Product flag for dual pol               *
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 	INCLUDE		'IMGDEF.CMN'
@@ -323,6 +324,7 @@ C
 			         END IF
 			      END IF
 C
+			      viewable = .true.
 			      IF  ( viewable )  THEN
 C
 C*			         Determine if radar mode is acceptable
@@ -362,7 +364,14 @@ C
      +				          ( rarr(i) .ne. RMISSD ) )
      +						qmax = rarr(i)
 			            END DO
-			            CALL radar_grid (kx, ky, rarr)
+C                               Need a flag for radar_grid function
+C                               (HHC,DVL, other high-res products)
+                                  SELECT CASE (imtype)
+                                    CASE (81,177)
+			              CALL radar_grid(0,kx, ky, rarr)
+                                    CASE DEFAULT
+                                      CALL radar_grid(1,kx,ky,rarr)
+                                  END SELECT
 			         ELSE
 				    WRITE (errstr,1000) stid,immode
 1000				    FORMAT (A,1x,I1)
