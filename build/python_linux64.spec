@@ -1,12 +1,12 @@
 #
 # Unidata GEMPAK Spec File
 # 
-# Nov 22, 2016  mjames  7.3.1
+# Nov 22, 2016  mjames  7.3.2
 #
 %define __prelink_undo_cmd %{nil}
 %define gem_home /machine/GEMPAK7
 %define prefix /home/gempak
-%define version 7.3.1
+%define version 7.3.2
 %define version_core 7
 Name: gempak-python
 Summary: Unidata Program Center GEMPAK

@@ -11,11 +11,11 @@ GEMPAK can be installed by an individual user, and root / superuser permission i
 
 from the command line:
 
-	sudo rpm -ivh http://www.unidata.ucar.edu/downloads/gempak/latest/gempak-7.3.1-1.x86_64.rpm
+	sudo rpm -ivh http://www.unidata.ucar.edu/downloads/gempak/latest/gempak-7.3.2-1.x86_64.rpm
 
 to install to a custom directory (`--prefix=/home/user` will install to **/home/user/GEMPAK7/**)
 
-	sudo rpm -ivh --prefix=/home/user http://www.unidata.ucar.edu/downloads/gempak/latest/gempak-7.3.1-1.x86_64.rpm
+	sudo rpm -ivh --prefix=/home/user http://www.unidata.ucar.edu/downloads/gempak/latest/gempak-7.3.2-1.x86_64.rpm
 
 ### from GitHub
 
@@ -30,11 +30,11 @@ to install to a custom directory (`--prefix=/home/user` will install to **/home/
 
 ### Source code from Unidata
 
-The current release of GEMPAK (<a href="http://www.unidata.ucar.edu/downloads/gempak/latest/gempak-7.3.1.tar.gz">v7.3.1</a>) is provided as a gzip/tarball archive and can found on the <a href="http://www.unidata.ucar.edu/downloads/gempak/">Unidata GEMPAK download page</a>. 
+The current release of GEMPAK (<a href="http://www.unidata.ucar.edu/downloads/gempak/latest/gempak-7.3.2.tar.gz">v7.3.2</a>) is provided as a gzip/tarball archive and can found on the <a href="http://www.unidata.ucar.edu/downloads/gempak/">Unidata GEMPAK download page</a>. 
 	
 Unpacking the archive in the gempak user home directory (assuming **/home/gempak**):
 
-	tar -xvzf gempak-7.3.1.tar.gz
+	tar -xvzf gempak-7.3.2.tar.gz
 
 will create the directory **/home/gempak/GEMPAK7/** which contains all of the libraries, program source and configuration files, most notably the two Gemenviron and Gemenviron.profile.
 
@@ -44,6 +44,13 @@ A Linux x86_64 binary is available from the <a href="http://www.unidata.ucar.edu
 
 ## Quick Source Code build (*bash*)
 
+Install all prerequisites:
+
+	sudo yum install openmotif-devel gcc gcc-c++ gcc-gfortran libX11-devel libXt-devel \
+	libXext-devel libXp-devel libXft-devel libXtst-devel xorg-x11-xbitmaps flex byacc *fonts-ISO8859-* python-devel -y
+
+Now build all libraries and programs:
+
 	cd GEMPAK7
 	. Gemenviron.profile
 	make everything
@@ -52,7 +59,7 @@ A Linux x86_64 binary is available from the <a href="http://www.unidata.ucar.edu
 
 	cd GEMPAK7
 	. Gemenviron.profile
-	. gem_python.sh
+	. source_python.sh
 	make everything
 
 ## Create the NAWIPS symbolic link
@@ -110,28 +117,10 @@ The Open Motif 2.3.4 source tarball can be downloaded from the <a href="http://s
 
 The package <b>python-devel</b> is required to build GEMPAK against system Python or <a href="http://python-awips.readthedocs.io/en/latest/about.html#awips-ii-python-stack">AWIPS Python</a>. The Python package <b>python-awips</b> is not required to build GEMPAK, but is required at run-time when requesting EDEX grids such as <b>A2NAM</b> and <b>A2GFS</b>.
 
-* gcc
-* gcc-c++
-* gcc-gfortran
-* libX11
-* libX11-devel
-* libXt-devel
-* libXext-devel
-* libXp
-* libXp-devel
-* libXft-devel
-* libXtst-devel
-* python-devel
-* xorg-x11-xbitmaps
-* flex
-* byacc
-* \*fonts-ISO8859-\*
+## Install all prerequisites
 
-To install all at once: 
-
-	yum install gcc gcc-c++ gcc-gfortran libX11 libX11-devel libXt-devel \
-	libXext-devel libXp libXp-devel libXft-devel libXtst-devel \
-	xorg-x11-xbitmaps flex byacc *fonts-ISO8859-* python-devel -y
+	sudo yum install openmotif-devel gcc gcc-c++ gcc-gfortran libX11-devel libXt-devel \
+	libXext-devel libXp-devel libXft-devel libXtst-devel xorg-x11-xbitmaps flex byacc *fonts-ISO8859-* python-devel -y
 
 ## Build Options
 
