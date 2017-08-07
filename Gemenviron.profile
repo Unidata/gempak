@@ -304,13 +304,7 @@ else
     export PYHOME="/usr"
     pv="`${PYHOME}/bin/python -V 2>&1 | cut -c8- | cut -d. -f1`"
     pr="`${PYHOME}/bin/python -V 2>&1 | cut -c8- | cut -d. -f2`"
-    MACHTEST=${MACHTYPE:=`uname -m`}
-    IS64=`echo $MACHTEST | grep -c "_64"`
-    if [ ${IS64} -gt 0 ] ; then
-	ARCH="64"
-    fi
     export PYTHONPATH="${PYHOME}/lib64/python${pv}.${pr}/site-packages:${PYHOME}/lib/python${pv}.${pr}/site-packages:${NAWIPS}/scripts/python"
-    export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/lib${ARCH}
 fi
 
 export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:${OS_LIB}
