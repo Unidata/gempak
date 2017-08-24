@@ -292,17 +292,9 @@ PATH=${PATH}:${OS_BIN}:${NAWIPS}/bin ; export PATH
    LPFLAG="-d" ; export LPFLAG
 
 # Python for GEMPAK
-COMMAND=`rpm -q awips2-python`
-if [ $? -eq 0 ]; then
-    export PYHOME="/awips2/python"
-    pv="`${PYHOME}/bin/python -V 2>&1 | cut -c8- | cut -d. -f1`"
-    pr="`${PYHOME}/bin/python -V 2>&1 | cut -c8- | cut -d. -f2`"
-    export PYTHONPATH="${PYHOME}/lib/python${pv}.${pr}/site-packages:${NAWIPS}/scripts/python"
-else
-    export PYHOME="/usr"
-    pv="`${PYHOME}/bin/python -V 2>&1 | cut -c8- | cut -d. -f1`"
-    pr="`${PYHOME}/bin/python -V 2>&1 | cut -c8- | cut -d. -f2`"
-    export PYTHONPATH="${PYHOME}/lib64/python${pv}.${pr}/site-packages:${PYHOME}/lib/python${pv}.${pr}/site-packages:${NAWIPS}/scripts/python"
-fi
+export PYHOME="/usr"
+pv="`${PYHOME}/bin/python -V 2>&1 | cut -c8- | cut -d. -f1`"
+pr="`${PYHOME}/bin/python -V 2>&1 | cut -c8- | cut -d. -f2`"
+export PYTHONPATH="${PYHOME}/lib64/python${pv}.${pr}/site-packages:${PYHOME}/lib/python${pv}.${pr}/site-packages:${NAWIPS}/scripts/python"
 
 export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:${OS_LIB}
