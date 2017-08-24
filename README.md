@@ -1,46 +1,28 @@
+
+
+
 GEMPAK, the GEneral Meteorology PAcKage, is an analysis, display, and product generation package for meteorological data.   Originally developed by NCEP for
 use by the National Centers (SPC, TPC, AWC, HPC, OPC, SWPC, etc.) in producing operational forecast and analysis products.  UCAR's Unidata Program Center releases and support a non-operational version of GEMPAK for use in research and education.
 
-This document is intended to guide the user through the process of downloading, configuring and installing GEMPAK v7 for most common systems (32 and 64-bit Linux and Solaris). Specific instructions for <a href="http://www.unidata.ucar.edu/software/gempak/doc/install_osx.html">building on OS X</a> are available as well.
+64-bit Red Hat-flavored Linux (RHEL, CentOS, Fedora) is recommened for source builds, but GEMPAK can be built from source on nearly any Unix-based system. Specific instructions for <a href="http://www.unidata.ucar.edu/software/gempak/doc/install_osx.html">building on OS X</a> are available as well.
 
-## Download
+GEMPAK can be installed by an individual user, and root / superuser permission is not required. For this guide and throughout other online documentation it is assumed that GEMPAK is installed for a **gempak** user account in the home directory `/home/gempak/GEMPAK7`.
 
-GEMPAK can be installed by an individual user, and root / superuser permission is not required. It's assumed for this guide and throughout other online documentation that GEMPAK is installed for a **gempak** user account in the home directory.
+**It is important that you read this entire document if you are building from source**.
 
-## x86_64 Linux RPM
-
-from the command line:
-
-	sudo rpm -ivh http://www.unidata.ucar.edu/downloads/gempak/latest/gempak-7.3.2-1.x86_64.rpm
-
-to install to a custom directory (`--prefix=/home/user` will install to **/home/user/GEMPAK7/**)
-
-	sudo rpm -ivh --prefix=/home/user http://www.unidata.ucar.edu/downloads/gempak/latest/gempak-7.3.2-1.x86_64.rpm
-
-### from GitHub
-
-* tarball download
-
-	<a href="https://github.com/Unidata/gempak/releases">https://github.com/Unidata/gempak/releases</a>
-
-* git clone
+## GitHub Clone
 
         git clone git://github.com/Unidata/gempak.git GEMPAK7
 
+<a href="#quick-source-code-build-bash">See below</a> for mor details source code build instructions.
 
-### Source code from Unidata
+## RPM and Source Code Tarball
 
-The current release of GEMPAK (<a href="http://www.unidata.ucar.edu/downloads/gempak/latest/gempak-7.3.2.tar.gz">v7.3.2</a>) is provided as a gzip/tarball archive and can found on the <a href="http://www.unidata.ucar.edu/downloads/gempak/">Unidata GEMPAK download page</a>. 
-	
-Unpacking the archive in the gempak user home directory (assuming **/home/gempak**):
+See the <a href="https://github.com/Unidata/gempak/releases">GEMPAK Releases on GitHub</a> for the latest version.  GEMPAK source code is also available from the <a href="http://www.unidata.ucar.edu/downloads/gempak/">Unidata download page</a>.
 
-	tar -xvzf gempak-7.3.2.tar.gz
+To install the latest RPM to a custom directory use the `--prefix` argument, where `--prefix=/home/user` will install to `/home/user/GEMPAK7/`
 
-will create the directory **/home/gempak/GEMPAK7/** which contains all of the libraries, program source and configuration files, most notably the two Gemenviron and Gemenviron.profile.
-
-### Binary Release
-
-A Linux x86_64 binary is available from the <a href="http://www.unidata.ucar.edu/downloads/gempak/">Unidata downloads page</a>, built with gcc-gfortran 4.4.7. 
+	sudo rpm -ivh --prefix=/home/user gempak-XXX-1.x86_64.rpm
 
 ## Quick Source Code build (*bash*)
 
