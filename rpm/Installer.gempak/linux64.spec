@@ -44,7 +44,8 @@ cd ${RPM_BUILD_ROOT}%{gem_home}
 cp -r /gempak/* .
 export NAWIPS=`pwd`
 . rpm/Installer.gempak/Gemenviron.profile
-make all
+make extlibs
+make gempak
 make install
 make programs_gf
 make programs_nc

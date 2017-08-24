@@ -40,7 +40,13 @@ all : INSTALLDIRS
 
 All : all
 
-container: all install programs_nc programs_gf
+extlibs: INSTALLDIRS
+	@cd extlibs; echo "Making all in `pwd`" ; \
+	$(MAKE) $(MFLAGS) all;
+
+gempak: INSTALLDIRS
+	@cd gempak; echo "Making all in `pwd`"; \
+	$(MAKE) $(MFLAGS) all;
 
 everything: distclean all install programs_nc programs_gf
 Everything: everything
