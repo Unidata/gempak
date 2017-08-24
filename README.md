@@ -1,7 +1,7 @@
 
 # GEMPAK
 
-[![Travis Badge](https://travis-ci.org/Unidata/gempak.svg?branch=master)](https://travis-ci.org/Unidata/gempak) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/4796566fc6b145bcbf73697998b437d3)](https://www.codacy.com/app/mjames/gempak)
+[![GitHub release](https://img.shields.io/github/release/Unidata/gempak.svg)]() https://img.shields.io/github/license/Unidata/gempak.svg [![Travis Badge](https://travis-ci.org/Unidata/gempak.svg?branch=master)](https://travis-ci.org/Unidata/gempak) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/4796566fc6b145bcbf73697998b437d3)](https://www.codacy.com/app/mjames/gempak)
 
 GEMPAK, the GEneral Meteorology PAcKage, is an analysis, display, and product generation package for meteorological data.   Originally developed by NCEP for
 use by the National Centers (SPC, TPC, AWC, HPC, OPC, SWPC, etc.) in producing operational forecast and analysis products.  UCAR's Unidata Program Center releases and support a non-operational version of GEMPAK for use in research and education.
