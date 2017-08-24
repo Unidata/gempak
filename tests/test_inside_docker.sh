@@ -7,8 +7,8 @@ ls -l /home
 # Clean the yum cache
 yum -y clean all
 yum -y clean expire-cache
-yum groupinstall "Development tools" -y
-yum install libxslt git rpm-build openmotif-devel gcc gcc-c++ gcc-gfortran libX11-devel libXt-devel libXext-devel libXp-devel libXft-devel libXtst-devel xorg-x11-xbitmaps flex byacc *fonts-ISO8859-* python-devel -y
+yum groupinstall "Development tools" -y >& /dev/null
+yum install libxslt git rpm-build openmotif-devel gcc gcc-c++ gcc-gfortran libX11-devel libXt-devel libXext-devel libXp-devel libXft-devel libXtst-devel xorg-x11-xbitmaps flex byacc *fonts-ISO8859-* python-devel -y >& /dev/null
 
 # Prepare the RPM environment
 mkdir -p /tmp/rpmbuild/{BUILD,RPMS,SOURCES,SPECS,SRPMS}
