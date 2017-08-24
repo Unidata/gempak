@@ -75,6 +75,6 @@ if __name__ == '__main__':
     tbl = 'obs'
     print(getstations(srv,tbl,key))
     
-    print('SFCOBS - SYNOP'
+    print('SFCOBS - SYNOP')
     tbl = 'sfcobs'
     print(getstations(srv,tbl,key))
