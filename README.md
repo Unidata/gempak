@@ -1,5 +1,15 @@
 
+# GEMPAK
 
+|Travis| |Codacy|
+
+.. |Travis| image:: https://travis-ci.org/Unidata/gempak.svg?branch=master
+        :target: https://travis-ci.org/Unidata/gempak
+        :alt: Travis Build Status
+
+.. |Codacy| image:: https://api.codacy.com/project/badge/Grade/4796566fc6b145bcbf73697998b437d3
+        :target: https://www.codacy.com/app/mjames/gempak
+        :alt: Codacy issues
 
 GEMPAK, the GEneral Meteorology PAcKage, is an analysis, display, and product generation package for meteorological data.   Originally developed by NCEP for
 use by the National Centers (SPC, TPC, AWC, HPC, OPC, SWPC, etc.) in producing operational forecast and analysis products.  UCAR's Unidata Program Center releases and support a non-operational version of GEMPAK for use in research and education.
@@ -12,7 +22,9 @@ GEMPAK can be installed by an individual user, and root / superuser permission i
 
 ## <a href="https://github.com/Unidata/gempak/releases">Latest Release</a>
 
-Download current and previous releases from <a href="https://github.com/Unidata/gempak/releases">https://github.com/Unidata/gempak/releases</a>.
+Download current and previous releases from <a href="https://github.com/Unidata/gempak/releases">https://github.com/Unidata/gempak/releases</a>
+
+These packages can also be found on the <a href="http://www.unidata.ucar.edu/downloads/gempak/">Unidata download page</a>.
 
 ## GitHub Clone
 
@@ -22,7 +34,7 @@ Download current and previous releases from <a href="https://github.com/Unidata/
 
 ## RPM and Source Code Tarball
 
-See the <a href="https://github.com/Unidata/gempak/releases">GEMPAK Releases on GitHub</a> for the latest version.  GEMPAK source code is also available from the <a href="http://www.unidata.ucar.edu/downloads/gempak/">Unidata download page</a>.
+See the <a href="https://github.com/Unidata/gempak/releases">GEMPAK Releases on GitHub</a> for the latest version.  
 
 To install the latest RPM to a custom directory use the `--prefix` argument, where `--prefix=/home/user` will install to `/home/user/GEMPAK7/`
 
