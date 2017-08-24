@@ -44,7 +44,11 @@ cd ${RPM_BUILD_ROOT}%{gem_home}
 cp -r /gempak/* .
 export NAWIPS=`pwd`
 . rpm/Installer.gempak/Gemenviron.profile
-make container 2>&1 | tee gempak-make-everything.log
+make all
+make install
+make programs_gf
+make programs_nc
+make clean
 
 # create soft link to the current gempak directory
 cd ..
