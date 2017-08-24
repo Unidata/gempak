@@ -2,7 +2,7 @@
 # Unidata GEMPAK Spec File
 # 
 # Nov 22, 2016  mjames  Created
-# Aug 24, 2017  mjames  7.4.0 local build RPM
+# Aug 24, 2017  mjames  7.4.0 docker rpm builds w traviscl
 #
 %define __prelink_undo_cmd %{nil}
 %define gem_home /home/gempak/GEMPAK7
@@ -41,8 +41,7 @@ if [ -d ${RPM_BUILD_ROOT}%{gem_home} ]; then
 fi
 mkdir -p ${RPM_BUILD_ROOT}%{gem_home}
 cd ${RPM_BUILD_ROOT}%{gem_home}
-tar -xvzf /tmp/rpmbuild/SOURCES/gempak-%{version}.tar.gz -C .  --strip 1
-
+cp -r /gempak/* .
 export NAWIPS=`pwd`
 . rpm/Installer.gempak/Gemenviron.profile
 make extlibs >& /dev/null

@@ -12,20 +12,16 @@ yum install libxslt git rpm-build openmotif-devel gcc gcc-c++ gcc-gfortran libX1
 
 # Prepare the RPM environment
 mkdir -p /tmp/rpmbuild/{BUILD,RPMS,SOURCES,SPECS,SRPMS}
-cat >> /etc/rpm/macros.dist << EOF
-%dist .osg.el${OS_VERSION}
-%osg 1
-EOF
 
-cp gempak/rpm/Installer.gempak/linux64.spec /tmp/rpmbuild/SPECS
+cp gempak/rpm/Installer.gempak/docker.spec /tmp/rpmbuild/SPECS
 ln -s /home/gempak/GEMPAK7 gempak
 pushd gempak
-package_version=`grep "define version" rpm/Installer.gempak/linux64.spec | grep -v version_core| awk '{print $3}'`
+package_version=`grep "define version" rpm/Installer.gempak/docker.spec | grep -v version_core| awk '{print $3}'`
 git archive --format=tar --prefix=gempak-${package_version}/ HEAD  | gzip >/tmp/rpmbuild/SOURCES/gempak-${package_version}.tar.gz
 popd
 
 # Build the RPM
-rpmbuild --define '_topdir /tmp/rpmbuild' -ba /tmp/rpmbuild/SPECS/linux64.spec
+rpmbuild --define '_topdir /tmp/rpmbuild' -ba /tmp/rpmbuild/SPECS/docker.spec
 
 # After building the RPM, try to install it
 # Fix the lock file error on EL7.  /var/lock is a symlink to /var/run/lock
