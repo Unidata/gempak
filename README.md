@@ -10,6 +10,10 @@ GEMPAK can be installed by an individual user, and root / superuser permission i
 
 **It is important that you read this entire document if you are building from source**.
 
+## <a href="https://github.com/Unidata/gempak/releases">Latest Release</a>
+
+Download current and previous releases from <a href="https://github.com/Unidata/gempak/releases">https://github.com/Unidata/gempak/releases</a>.
+
 ## GitHub Clone
 
         git clone git://github.com/Unidata/gempak.git GEMPAK7
@@ -22,38 +26,38 @@ See the <a href="https://github.com/Unidata/gempak/releases">GEMPAK Releases on 
 
 To install the latest RPM to a custom directory use the `--prefix` argument, where `--prefix=/home/user` will install to `/home/user/GEMPAK7/`
 
-	sudo rpm -ivh --prefix=/home/user gempak-XXX-1.x86_64.rpm
+        sudo rpm -ivh --prefix=/home/user gempak-XXX-1.x86_64.rpm
 
 ## Quick Source Code build (*bash*)
 
 Install all prerequisites:
 
-	sudo yum install openmotif-devel gcc gcc-c++ gcc-gfortran libX11-devel libXt-devel \
-	libXext-devel libXp-devel libXft-devel libXtst-devel xorg-x11-xbitmaps flex byacc *fonts-ISO8859-* python-devel -y
+        sudo yum install openmotif-devel gcc gcc-c++ gcc-gfortran libX11-devel libXt-devel \
+        libXext-devel libXp-devel libXft-devel libXtst-devel xorg-x11-xbitmaps flex byacc *fonts-ISO8859-* python-devel -y
 
 Now build all libraries and programs:
 
-	cd GEMPAK7
-	. Gemenviron.profile
-	make everything
+        cd GEMPAK7
+        . Gemenviron.profile
+        make everything
 
 ## Quick Source Code build against Python
 
-	cd GEMPAK7
-	. Gemenviron.profile
-	. source_python.sh
-	make everything
+        cd GEMPAK7
+        . Gemenviron.profile
+        . source_python.sh
+        make everything
 
 ## Create the NAWIPS symbolic link
 
 After installing or building from source, but before running any GEMAPK programs, you should create a symbolic link NAWIPS in your home directory to maintain a single command in **.cshrc** or **.profile** that sources the current GEMPAK installation:
 
-	ln -s GEMPAK7/ NAWIPS
-	
+        ln -s GEMPAK7/ NAWIPS
+        
 Your **gempak** home directory should then contain the following:
 
-	/home/gempak/GEMPAK7
-	/home/gempak/NAWIPS -> GEMPAK7
+        /home/gempak/GEMPAK7
+        /home/gempak/NAWIPS -> GEMPAK7
 
 If you unpacked and plan to install GEMPAK in an uncommon directory (such as **/opt/gempak/**), you'll need to edit the NAWIPS definition at the top of the appropriate Gemenviron file.
 
@@ -63,31 +67,30 @@ To build GEMPAK on your system, the environmental variable **$NAWIPS** must be d
 
 If you unpacked GEMPAK in **/home/gempak** and plan on compiling with gfortran, you can skip this step.
 
-
-	setenv NAWIPS /home/gempak/GEMPAK7
+        setenv NAWIPS /home/gempak/GEMPAK7
 
 ### csh/tcsh
 
 source the full path of Gemenviron in your .cshrc
 
-	source /home/gempak/NAWIPS/Gemenviron
+        source /home/gempak/NAWIPS/Gemenviron
 
 ### bash
 
 add the following to .profile
 
-	. /home/gempak/NAWIPS/Gemenviron.profile
+        . /home/gempak/NAWIPS/Gemenviron.profile
 
 Important environmental variable to be familiar with are:
 
-	$NAWIPS as defined above
-	$GEMPAK points to $NAWIPS/gempak
-	$GEMTBL points to $GEMPAK/tables
-	$OS_BIN points to $GEMPAK/os/$NA_OS/bin
-	$OS_LIB points to $GEMPAK/os/$NA_OS/lib
-	$GEMMAPS points to $GEMPAK/maps
-	$GEMDATA points to /data/ldm/gempak
-	$NA_OS is determined by Gemenviron (linux, linux64, x86, SunOS, Darwin, etc. )
+        $NAWIPS as defined above
+        $GEMPAK points to $NAWIPS/gempak
+        $GEMTBL points to $GEMPAK/tables
+        $OS_BIN points to $GEMPAK/os/$NA_OS/bin
+        $OS_LIB points to $GEMPAK/os/$NA_OS/lib
+        $GEMMAPS points to $GEMPAK/maps
+        $GEMDATA points to /data/ldm/gempak
+        $NA_OS is determined by Gemenviron (linux, linux64, x86, SunOS, Darwin, etc. )
 
 The last definition, **$GEMDATA**, points to the **/data/ldm/gempak** but can be changed depending on how you <a href="http://www.unidata.ucar.edu/software/gempak/doc/configuration.html">install and configure the LDM</a>.
 
@@ -101,8 +104,8 @@ The package <b>python-devel</b> is required to build GEMPAK against system Pytho
 
 ## Install all prerequisites
 
-	sudo yum install openmotif-devel gcc gcc-c++ gcc-gfortran libX11-devel libXt-devel \
-	libXext-devel libXp-devel libXft-devel libXtst-devel xorg-x11-xbitmaps flex byacc *fonts-ISO8859-* python-devel -y
+        sudo yum install openmotif-devel gcc gcc-c++ gcc-gfortran libX11-devel libXt-devel \
+        libXext-devel libXp-devel libXft-devel libXtst-devel xorg-x11-xbitmaps flex byacc *fonts-ISO8859-* python-devel -y
 
 ## Build Options
 
@@ -110,7 +113,7 @@ The package <b>python-devel</b> is required to build GEMPAK against system Pytho
 
 To change the GCC compiler, edit the **USE_GFORTRAN**, **USE_PGI** and **USE_G77** definitions in **Gemenviron** or **Gemenviron.profile** (**gfortran** is the default):
 
-	set USE_GFORTRAN=1
+        set USE_GFORTRAN=1
 
 ## Makeinc.common
 
@@ -124,8 +127,8 @@ Bundled cc is not ansi compatible, so SunOS users should make sure SUNWspro/bin/
 
 Ubuntu builds require the compiler flag `-fno-stack-protector` be added to **COPT** (C compiler options) and FOPT (fortran compiler options). Ubuntu-specific Makeinc files are provided in **$NAWIPS/config/** that include this compiler flag:
 
-	$NAWIPS/config/Makeinc.linux_gfortran_ubuntu
-	$NAWIPS/config/Makeinc.linux64_gfortran_ubuntu
+        $NAWIPS/config/Makeinc.linux_gfortran_ubuntu
+        $NAWIPS/config/Makeinc.linux64_gfortran_ubuntu
 
 ### Mac OS X
 
@@ -139,21 +142,21 @@ This document will guide users through building GEMPAK on Intel Mac OS X 10.6 (S
 
 GEMPAK and various bundled libearies are compiled from source by the Make tool, using the Fortran and C compilers specified in the above configuration files. From $NAWIPS issue the command
 
-	make all >& make.out
+        make all >& make.out
 
 The redirection command `>&` sends **STDOUT** to the log file make.out. The Make process takes several minutes to complete, first compiling libraries such as netCDF, ncepBUFR, HDF5 and zlib, followed by the GEMPAK source. In another terminal you can follow the STDOUT log with the command
 
-	tail -f make.out
+        tail -f make.out
 
 or attach an ampersand to send make to the background and tail the log instantly
 
-	make all >& make.out & tail -f make.out
+        make all >& make.out & tail -f make.out
 
 This process allows you to examine the build as it runs but preserves the output in the event something goes horribly wrong. If seeking help from Unidata, attach some or all of this make.out log. One should note that with the Makefile installation, only fatal errors (errors that cause the build to end prematurely) are significant, and most "warnings" can be ignored.
 
 ## Install & Clean
 
-	make install; make clean
+        make install; make clean
 
 Executables are installed to **$OS_BIN** and libraries should already be located in **$OS_LIB**.
 
@@ -165,23 +168,23 @@ If your distribution is modified by patches or other edits and updates and you h
 
 In the event that core definitions change and libraries must be built from scratch, a the entire install for your system will need to be cleaned:
 
-	make distclean
+        make distclean
 
 This full clean will delete all objects and executables as well as all libraries built for the current system.
 
 ### Everything
 
-	make everything
+        make everything
 
 This command will combine the steps of make all, make install and make clean to build and install the package, but will not log **STDOUT** to file. The command also runs the `make programs_nc` and `make programs_gf` targets mentioned below.
 
 ### GF & NC Programs
 
-	make programs_nc
+        make programs_nc
 
 and
 
-	make programs_gf
+        make programs_gf
 
 build versions of programs which link directly to device drivers (eliminating the gplt/message queue interface). These are primarily used for projects where multiple scripts are run at scheduled times, as in the cron, and don't require user interaction.
 
@@ -220,7 +223,7 @@ indicates that your environmental variables are not sourced correctly (type comm
 
 This runtime error means the message queue is full, which typically occurs when executing GEMPAK programs in batch mode from scripts. To fix, exit GEMPAK and run
 
-	cleanup -c
+        cleanup -c
 
 This command will remove existing message queues (the **ipcrm** command is run to remove message queues found with **ipcs**). It will also look for running **gplt** processes and kill them.
 
