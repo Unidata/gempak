@@ -5,7 +5,7 @@ void da_getfilhdi ( int *iflno, char *fhdnam, int *mxword,
 /************************************************************************
  * da_getfilhdi								*
  *									*
- * This function reads the real values for the given file header from	*
+ * This function reads the integer values for the given file header from	*
  * a non-GEMPAK data source.						*
  *									*
  * da_getfilhdi ( iflno, fhdnam, mxword, iheadr, nword, iret )		*
@@ -69,4 +69,5 @@ void da_getfilhdi ( int *iflno, char *fhdnam, int *mxword,
     }
     free ( daargs );
     free ( daouti );
+
 }

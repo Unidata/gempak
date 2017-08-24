@@ -16,6 +16,8 @@ COBJS = \
         $(ALIB)(dagetdtrgd.o) \
         $(ALIB)(dagetfilhdc.o) \
         $(ALIB)(dagetfilhdi.o) \
+        $(ALIB)(dagetdata.o) \
+        $(ALIB)(darunpyonce.o) \
         $(ALIB)(dagetfilhdr.o) \
         $(ALIB)(dagetheader.o) \
         $(ALIB)(dagetinfo.o) \

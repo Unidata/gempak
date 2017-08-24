@@ -61,6 +61,7 @@ C*				backup site processing; fixed EP to be	*
 C*				either NHC or CPHC			*
 C* X. Guo/CWS           04/11   PHFO uses "CP" for "cp" or "ep"         *
 C* S. Jacobs/NCEP	 3/13	Added Post-Tropical Cyclone to the text	*
+C* M. Onderlinde/NHC     9/16   Added Potential Tropical Cyclone to text*
 C************************************************************************
 	INCLUDE         'GEMPRM.PRM'
 C*
@@ -72,8 +73,9 @@ C*
         CHARACTER	doubd*2, stime*12, etime*12, acod(12)*3, sid*5,
      +			stid*1, hhmm*4, hhmmp*5, yymmdd*6, cyear*4,
      +			phs(12)*4, filnam*8, ddnew*3, hhnew*3, mmnew*3,
-     +			chlin1*12, chlin4*25, chlin5*42, cwtyp4*21,
-     +			cwtyp1*19, cwtyp2*14, cwtyp3*9, cztime*12,
+     +			chlin1*12, chlin4*25, chlin5*42,
+     +			cwtyp1*19, cwtyp2*14, cwtyp3*9, cwtyp4*21,
+     +                  cwtyp5*26, cztime*12,
      +			cwfos*13, value*6, tag*25, cstmid*8,
      +			dirsym*160, tblnam*72, btime*12, wnam*16,
      +			prall(2)*36, btmp*55, st1 (14)*3, st2 (14)*3,
@@ -110,6 +112,7 @@ C*
 	DATA	cwtyp2	/ 'TROPICAL STORM' /
 	DATA	cwtyp3	/ 'HURRICANE' /
 	DATA	cwtyp4	/ 'POST-TROPICAL CYCLONE' /
+        DATA    cwtyp5  / 'POTENTIAL TROPICAL CYCLONE' /
 	DATA	cztime	/ '000000T0000Z' /
 	DATA	test	/ '...THIS IS ONLY A TEST...' /
 	DATA 	doubd	/ '$$' /
@@ -399,6 +402,8 @@ C
             hlin8 = '.SUB' // cwtyp1 // ' ' // wnam
           ELSE IF (wtype .eq. 'PT') THEN
             hlin8 = '.' // cwtyp4 // ' ' // wnam
+          ELSE IF (wtype .eq. 'PTC') THEN
+            hlin8 = '.' // cwtyp5 // ' ' // wnam
           ELSE
             hlin8 = '. ' // wnam
         END IF

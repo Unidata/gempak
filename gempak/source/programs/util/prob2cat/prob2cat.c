@@ -1,7 +1,7 @@
 #include "p2c.h"
 
 
-#define PROB2CAT_TIE_DIST_IN_MAP         ( 0.2 ) /* Tie distance for two points in
+#define PROB2CAT_TIE_DIST_IN_MAP         ( 0.001 ) /* Tie distance for two points in
                                                 map coordinate */
 /*
  *  Global variables
@@ -179,6 +179,10 @@ int main ( int argc, char **argv )
  * S. Jacobs/NCEP	10/12	Restored previous calculation of the	*
  * 				number of points copied			*
  * B. Yin/SGT		11/14	Fixed issues on bumped outlooks		* 				
+ * S. Guan/NCEP         05/16   Modified PROB2CAT_TIE_DIST_IN_MAP and   *
+ *                              tol2                                    *
+ * S. Guan/NCEP         06/8    Fixed the bug caused because            *
+ *                              line is fliped                          *
  ***********************************************************************/
 {
     int 	nn, ii, jj, kk, ier, nextEl, curPos, nseg;
@@ -216,9 +220,11 @@ int main ( int argc, char **argv )
 
     char        device[ 3 ] = "GN", dfilnam[ 20 ] = "prob2cat";
     char	proj[ 4 ] = "str";
+    float       temp1, temp2;
+    int         kt;
 /*---------------------------------------------------------------------*/
 
-    printf ( "\n*** prob2cat: Last modified on Feb. 11, 2015 ***\n" );
+    printf ( "\n*** prob2cat: Last modified on June 15, 2016 ***\n" );
     /*
      *  Check if the number of input arguments is correct.
      */
@@ -408,7 +414,21 @@ int main ( int argc, char **argv )
                          elInTemp[jj].hdr.grptyp == 13 ||		
                          elInTemp[jj].hdr.grptyp == 14 ||
                        ( elInTemp[jj].hdr.grptyp == 0 && elInTemp[jj].hdr.filled ) ) ) {
-
+                 /*
+                   Check whether a probabilistic contour is flipped, if it is flipped, flip it again.
+                 */ 
+                  if ((int)elInTemp[jj].hdr.vg_type == SPLN_ELM && (int)elInTemp[jj].elem.spl.info.spldir == -1  ) {
+                    kt =  elInTemp[jj].elem.spl.info.numpts;
+                    for ( kk = 0; kk < kt/2; kk++ ) {
+                      temp1 = elInTemp[jj].elem.spl.latlon[kk];
+                      temp2 = elInTemp[jj].elem.spl.latlon[kk+kt];
+                      elInTemp[jj].elem.spl.latlon[kk] = elInTemp[jj].elem.spl.latlon[kt-1-kk];
+                      elInTemp[jj].elem.spl.latlon[kt-1-kk] = temp1;
+                      elInTemp[jj].elem.spl.latlon[kk+kt]  = elInTemp[jj].elem.spl.latlon[kt+kt-1-kk];
+                      elInTemp[jj].elem.spl.latlon[kt+kt-1-kk] = temp2;
+                    }        
+                    elInTemp[jj].elem.spl.info.spldir = 0;
+                  }
                   if ( (int)elInTemp[jj].hdr.vg_type == SPLN_ELM && (!elInTemp[jj].hdr.closed) ) {
                     nElInClosed = 0;
                     p2c_CloseCntr ( &elInTemp[jj], &elInClosed, &nElInClosed, &ier);
@@ -1184,6 +1204,7 @@ static void p2c_PolyClip ( int ncntrs, VG_DBStruct **cntrs, char *cat, int iclr,
  * m.gamazaychikov/SAIC	05/08	Set the label group to contour group,	*
  * 				set label offset, cleaned up		*
  * m.gamazaychikov/SAIC	05/08	Changed the label location		*
+ * S. Guan/NCEP         06/16   Fixed a logical bug                     *
  ***********************************************************************/
 {
     int         jj, kk, ier, lens,nip, one = 1, npu, nuni;
@@ -1326,6 +1347,16 @@ static void p2c_PolyClip ( int ncntrs, VG_DBStruct **cntrs, char *cat, int iclr,
                           &gpc_poly_tmp[nint] );
                      gpc_free_polygon ( &gpc_poly_0 );
                      gpc_free_polygon ( &gpc_poly_1 );
+                     if (nint >= 1) {
+                        if (hazint[nint] == hazint[nint-1] && hazgrp[nint] == hazgrp[nint-1] ){
+                        /*
+                         * Should do GPC_INT immediately   
+                         */ 
+                            gpc_polygon_clip ( GPC_INT, &gpc_poly_tmp[nint], &gpc_poly_tmp[nint-1],
+                                 &gpc_poly_tmp[nint-1] );
+                            continue;
+                        }
+                     }
                      nint++;
                      continue;
                    }
@@ -2355,6 +2386,7 @@ static void p2c_OpenCntr ( VG_DBStruct *el_in, VG_DBStruct **el_out, int *nout,
  *                              fixed a bug when one point was excluded *
  * m.gamazaychikov/CWS  06/09   Fixed a bug when adding a point		*
  * X.Guo/CWS		03/10   Fixed bugs for ticket 20                * 
+ * S. Guan              05/16   Fixed bugs for ticket 7796              *
  ***********************************************************************/
 { 
     int         ii, jj, kk, ier, jst, jfn, npseg, nip, one=1, two=2;
@@ -2377,7 +2409,7 @@ static void p2c_OpenCntr ( VG_DBStruct *el_in, VG_DBStruct **el_out, int *nout,
     float       dstnseg2;
     float       x_int[MAXPTS], y_int[MAXPTS];
     float       *xQrol, *yQrol, tol=0.000001F;
-    float       *areaxN, *areayN, *linexN, *lineyN, tol2=0.002;
+    float       *areaxN, *areayN, *linexN, *lineyN, tol2=0.0002;
 
     Boolean     don=G_FALSE, found1=G_FALSE, found0=G_FALSE, addOnePoint;
 #define LLSCAL  100

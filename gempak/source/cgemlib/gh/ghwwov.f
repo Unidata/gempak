@@ -24,6 +24,11 @@ C*	IRET		INTEGER		Return code                     *
 C*									*
 C* Log:									*
 C* D. Kidwell/NCEP	11/03						*
+C* M. Onderlinde/NHC    11/16           Fixed bug when part of TR.W and *
+C*                                      HU.A are cancelled but the TR.W *
+C*                                      VTEC cancellation line is not   *
+C*                                      added to the TCV                *
+C*                                                                      *
 C************************************************************************
      	INTEGER		jvtec (3,*), jbkseg (2,*), mvtec (3,*), 
      +			mbkseg (2,*)
@@ -103,7 +108,21 @@ C
      +					 mvtec ( 3,ii ) = jvtec ( 2,jj )
 				    END IF
 				  ELSE
-				    mvtec ( 3, ii ) = ncd
+
+C
+C*                                  Matt Onderlinde - Nov 2016
+C*                                  Bug fix here for missing TR.W cancellation VTEC line
+C
+C*                                  mvtec ( 3, ii ) = ncd  ---> Notice this line now commented out
+C*                                                              and instead listed inside ELSE statement 7 lines below
+C
+                                    IF ( mvtec(3,ii) .eq. 11 .and. 
+     +                                   ncd .eq. 10 ) THEN
+                                        mvtec (3,ii) = mvtec (3,ii)
+                                    ELSE
+				        mvtec ( 3, ii ) = ncd
+                                    END IF
+
 				END IF
 			      ELSE IF ( jbkseg ( 1, ii ) .eq.
      +					jbkseg ( 1, jj ) ) THEN

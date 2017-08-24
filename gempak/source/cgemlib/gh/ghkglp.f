@@ -42,7 +42,9 @@ C*                              unnamed storm in EP/CP to E		*
 C* m.gamazaychikov/SAIC	09/08	CSC - added nabk, abklat, abklon	*
 C* S. Jacobs/NCEP	 8/09	Make the storm name mixed case		*
 C* X. Guo/CWS 		03/10  Removed unused arguments                 *
-C* A. Krautkramer/NHC    09/11  Check 'DB' and 'PT'                      * 
+C* A. Krautkramer/NHC   09/11  Check 'DB' and 'PT'                      * 
+C* M. Sardi/NHC         08/15  For EPAC TD tname strings, leave the 'E' *
+C*                             to the right of the hypen capitalized.   *
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 C*
@@ -70,7 +72,14 @@ C
         END IF
 C
 	tname = sname
-	CALL ST_UCLC ( tname(2:), tname(2:), ier )
+        CALL ST_LSTR ( tname, lens, ier )
+C
+        IF  ( tname (lens-1:lens-1) .eq. '-' ) THEN
+            CALL ST_UCLC ( tname(2:lens-2), tname(2:lens-2), ier )
+        ELSE
+            CALL ST_UCLC ( tname(2:), tname(2:), ier )
+        END IF
+C
         CALL ST_LSTR ( storm, lens, ier )
         namstr = storm(:lens)//' '//tname
 C

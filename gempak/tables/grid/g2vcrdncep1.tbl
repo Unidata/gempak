@@ -6,6 +6,7 @@
 !
 200 255 Entire atmosphere as a layer      -                    NONE     0
 201 255 Entire ocean as a layer           -                    NONE     0
+204 255 Highest tropospheric freezing lvl -                    HTFL     0
 209 255 Boundary layer cloud bottom level -                    BCBL     0
 210 255 Boundary layer cloud top level    -                    BCTL     0
 211 255 Boundary layer cloud layer        -                    BCLY     0
@@ -13,6 +14,7 @@
 213 255 Low cloud top level               -                    LCTL     0
 214 255 Low cloud layer                   -                    LCLY     0
 215 255 Cloud Ceiling                     -                    CEIL     0
+220 255 Planetary Boundary layer          -                    PBLY     0
 222 255 Middle cloud bottom level         -                    MCBL     0
 223 255 Middle cloud top level            -                    MCTL     0
 224 255 Middle cloud layer                -                    MCLY     0
@@ -29,7 +31,6 @@
 !
 ! Unidata Additions
 200   0 Entire atmosphere as a layer      -                    NONE     0
-204 255 Level of 0 deg C isotherm (high)  -                    FRZH     0
 206 255 Grid scale cloud bottom level     -                    GCBL     0
 207 255 Grid scale cloud top level        -                    GCTL     0
 245 255 Lowest level of the wet bulb zero -                    LLTW     0

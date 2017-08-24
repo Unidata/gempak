@@ -77,6 +77,8 @@ void dgc_subg ( const char *ijskip, int *maxgrid, int *imll, int *jmll,
  * S. Gilbert/NCEP	 5/07	Added maxgrid argument                  *
  * S. Jacobs/NCEP	 5/12	Reduce LLMXTH from 1000000 to 15000 to 	*
  *				allow for more auto skipping		*
+ * K. Brill/IMSG         1/16   For non-rotated CED, set ag2=0 for	*
+ * 				gsgprj					*
  ************************************************************************/
 {
     char gprj[5], cnum[5];
@@ -505,6 +507,11 @@ void dgc_subg ( const char *ijskip, int *maxgrid, int *imll, int *jmll,
         rgln[0] = 180.;
     if ( G_ABS ( rgln[0] - rgln[1]) < 0.01 )
         rgln[1] = rgln[0];
+    /*
+     * Set ag2 = 0 for non-rotated CED projections.
+     */
+    if ( strcmp ( _dgfile.cprj, "CED" ) == 0 && G_ABS ( ag1 ) < .001  && G_ABS ( ag3 ) < .001 )
+        ag2 = 0.0;
     gsgprj ( _dgfile.cprj, &ag1, &ag2, &ag3, &_dgfile.kxd, &_dgfile.kyd, 
         &rglt[0], &rgln[0], &rglt[1], &rgln[1], &ier, strlen(_dgfile.cprj) );
     if ( ier != 0 ) {

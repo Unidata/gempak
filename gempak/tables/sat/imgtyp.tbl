@@ -70,6 +70,7 @@
 ! S. Jacobs/NCEP	 9/12	Added GOES14
 ! S. Jacobs/NCEP	 9/12	Added an entry for DPD-GHE images
 ! S. Jacobs/NCEP	10/12	Changed GOES14 to use data from GOESR testing
+! M. Folmer/OPC		 4/13	Added VIIRS and other derived products
 ! M. James/Unidata	01/14	Reorganization for new UNIWISC products
 !------------------------------------------------------------------------------
 !
@@ -747,3 +748,15 @@ VIL DENSITY          MOSAIC        0    255      7    245      1 upc_ramp.tbl
 VIL                  MOSAIC        0    255      7    250      1 upc_ramp.tbl
 WSI NOWRAD  2 KM US  MOSAIC        0     15      7      2      1 osf_ref16.tbl
 WSI NOWRAD  8 KM US  MOSAIC        0     15      7      1      1 osf_ref16.tbl
+NPP-VIIRS            TRUECLR       0     94     40      8      1 trueclr.tbl
+NPP-VIIRS            VIS           0    255     40      1      1 GRAY
+NPP-VIIRS            IR            0    255     40      2      1 GRAY
+NPP-VIIRS            DNBRAD        0     94     40      4      1 GRAY
+NPP-VIIRS            FALSESN       0     94     40     16      1 flseclr.tbl
+NPP-VIIRS            DNBRADBIR     0     94     40     32      1 dnbir.tbl
+NPP-VIIRS            DNBREFIR      0     94     40   2048      1 dnbir.tbl
+NPP-VIIRS            DUST          0     94     40     64      1 dust.tbl
+NPP-VIIRS            NTMICRO       0     94     40    128      1 ntmicro.tbl
+NPP-VIIRS            AIRMASS       0     94     40    256      1 airmass.tbl
+NPP-VIIRS            SWIR          0    255     40    512      1 GRAY
+NPP-VIIRS            DNBREF        0    255     40   1024      1 GRAY

@@ -13,18 +13,19 @@
 ! B. Yin/SAIC		04/05	Modified the last entry of issue status
 ! B. Yin/SAIC		04/05	Changed the order of issue status
 ! S. Jacobs/NCEP	 3/13	Added Post-Tropical Cyclone
+! M. Onderlinde/NHC	 9/16	Added Potential-Tropical Cyclone
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !
 !	'Issuing Status' option menu
 !
-IssuingStatus	Experimental;Test;Operational;Experimental Operational;         
+IssuingStatus	Operational;Experimental;Test;Experimental Operational;         
 !-----------------------------------------------------------------------------------
 !
 !	'Strom Type' option menu
 !
 StormType	Hurricane;Tropical Storm;Tropical Depression
 StormType	Subtropical Storm;Subtropical Depression
-StormType	Post-Tropical Cyclone
+StormType       Post-Tropical Cyclone;Potential Tropical Cyclone
 !-----------------------------------------------------------------------------------
 !
 !	'Basin' option menu

@@ -8,6 +8,7 @@
 ! D. Kidwell/NCEP	 7/05	Added Orange Co., Sipacate, Dry Tort. Isl.
 ! C. Lauer/NHC           4/09   Updated for 2009 Season
 ! C. Lauer/NHC           4/10   Updated for 2010 Season
+! M. Brennan/NHC        12/16   Updated for 2017 Season
 !
 !STID    STNM   NAME                             ST CO   LAT    LON  ELV PRI TBCHRS
 !(8)     (6)    (32)                            (2)(2)   (5)    (6)   (5)(2)   (20)
@@ -24,15 +25,15 @@ L_MAUREP 808080 Lake_Maurepas                    LA US  3025  -9054     0 80
 L_PONTCH 808090 Lake_Pontchartrain               LA US  3020  -9013     0 80
 L_OKEECH 800020 Lake_Okeechobee                  FL US  2695  -8080     0 80
 PAMLICO  800030 Pamlico_Sound                    NC US  3535  -7585     0 80
-N_PMLCO  800040 North_Pamlico_Sound              NC US  3526  -7604     0 80
-S_PMLCO  800050 South_Pamlico_Sound              NC US  3524  -7604     0 80
+!N_PMLCO  800040 North_Pamlico_Sound              NC US  3526  -7604     0 80
+!S_PMLCO  800050 South_Pamlico_Sound              NC US  3524  -7604     0 80
 ALBEMARL 800040 Albemarle_Sound                  NC US  3605  -7610     0 80
-E_ALBMRL 800070 East_Albemarle_Sound             NC US  3605  -7590     0 80
-NZPAMLI  800130 No_Zones_Pamlico_Sound           NC US  3535  -7618     0 80
-NZN_PML  800140 No_Zones_North_Pamlico_Sound     NC US  3526  -7660     0 80
-NZS_PML  800150 No_Zones_South_Pamlico_Sound     NC US  3524  -7660     0 80
-NZS_ALB  800160 No_Zones_Albemarle_Sound         NC US  3605  -7690     0 80
-NZE_ALBM 800170 No_Zones_East_Albemarle_Sound    NC US  3606  -7673     0 80
+!E_ALBMRL 800070 East_Albemarle_Sound             NC US  3605  -7590     0 80
+!NZPAMLI  800130 No_Zones_Pamlico_Sound           NC US  3535  -7618     0 80
+!NZN_PML  800140 No_Zones_North_Pamlico_Sound     NC US  3526  -7660     0 80
+!NZS_PML  800150 No_Zones_South_Pamlico_Sound     NC US  3524  -7660     0 80
+!NZS_ALB  800160 No_Zones_Albemarle_Sound         NC US  3605  -7690     0 80
+!NZE_ALBM 800170 No_Zones_East_Albemarle_Sound    NC US  3606  -7673     0 80
 CB_NPTCM 808410 Chesapeake_Bay_New_Point_Comfort VA US  3710  -7615     0 80
 CB_WNDPT 808420 Chesapeake_Bay_Windmill_Point    VA US  3745  -7610     0 80
 CB_SMTPT 808430 Chesapeake_Bay_Smith_Point       VA US  3775  -7605     0 80
@@ -46,3 +47,8 @@ TP_INDHD 808490 Tidal_Potomac_Indian_Head        MD US  3840  -7710     0 80
 TP_KEYBR 808496 Tidal_Potomac_Key_Bridge         MD US  3880  -7705     0 80
 DELBAY_S 809010 Delaware_Bay_South               DE US  3895  -7510     0 80
 DELBAY_N 809110 Delaware_Bay_North               DE US  3910  -7525     0 80
+NIHOA    810000 Nihoa_to_French_Frigate_Shoals   HI US  2306 -16192     0 80 
+FFSMARO  810100 French_Frigate_Shoals_to_Maro    HI US  2386 -16627     0 80 
+MAROLIS  810200 Maro_Reef_to_Lisianski_Island    HI US  2533 -17050     0 80 
+LISIAN   810300 Lisianski_Island_to_Pearl_Hermes HI US  2608 -17400     0 80 
+

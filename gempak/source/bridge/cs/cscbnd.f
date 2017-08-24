@@ -33,7 +33,13 @@ C* A. Hardy/NCEP         8/02   Fixed insty, IS single station decoding *
 C* A. Hardy/NCEP         5/04   Corrected DCCIG -> DCCSIG		*
 C* J. Lewis/AWC		 8/07   Change search for 'TS' to ' TS '	*
 C* L. Hinson/AWC         9/13   Fix to correctly Process VCNTY remarks  *
-*                               for ISOL TS                             *
+C*                               for ISOL TS                            *
+C* L. Hinson/AWC         5/15   Fixed decoding issues with ISOL TS when *
+C*                                movement is 'MOV LTL' or states line  *
+C*                                contains 'CSTL WTRS' or               *
+C*                                'AND CSTL WTRS'                       *
+C*                              Fixed decoding issue with LINE TS when  *
+C*                                when movement is 'MOV LTL'            *
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 C*
@@ -130,6 +136,9 @@ C*	If a line area, find the distance.
 C        
         IF ( type .eq. 'LN' ) THEN
             ikts = INDEX ( string ,'KT') 
+            IF ( ikts .eq. 0 ) THEN
+              ikts = INDEX ( string, 'LTL')
+            END IF
             its = INDEX ( string (:ikts),' TS ') 
             idst = INDEX ( string (:ikts),'NM WIDE') 
             IF ( its .lt. idst ) THEN
@@ -144,6 +153,9 @@ C*      location.
 C        
         IF ( type .eq. 'IS' ) THEN
             ikts = INDEX ( string ,'KT') 
+            IF ( ikts .eq. 0 ) THEN
+              ikts = INDEX ( string, 'LTL')
+            END IF
             its = INDEX ( string (:ikts),'TS D') 
             idst = INDEX ( string (:ikts),'MOV') 
             IF ( its .ne. 0 ) THEN
@@ -163,6 +175,19 @@ C*              Search for the 2 character states.
 C
                 CALL ST_LSTR ( tarr(ii), lens, ier )
                 IF ( ( lens .eq. 2 ) .and.  (ii .lt. numwds ) ) THEN
+C
+C*                  Check for CSTL WTRS wording after 2-Letter State ID.
+C
+                    IF (tarr(ii+1) .eq. "CSTL") THEN
+                      ii = ii + 2
+                    END IF
+C
+C*                  Check for AND CSTL WTRS wording after 2-Letter State
+C*                  ID.
+C
+                    IF (tarr(ii+1) .eq. "AND") THEN
+                      ii = ii + 3
+                    END IF
                     CALL ST_ALNM ( tarr(ii+1)(1:1), ikind, ier)
 C
 C*                  Check to see if the next array is the distance

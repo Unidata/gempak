@@ -29,14 +29,13 @@
 104 104 Layer between two sigma levels    sigma values         SGMA     4
 105 255 Hybrid level                      -                    HYBL     0
 105 105 Layer between two hybrid levels   -                    HYBL     0
-106 255 Depth below land surface          m                    DPTH     0
-!106 106 Layer btwn 2 dpths below lnd sfc  m                    DPTH     0
+106 255 Depth below land surface          m                    DPTH     2
 106 106 Layer btwn 2 dpths below lnd sfc  m                    DPTH     2
 107 255 Isentropic (theta) level          K                    THTA     0
 107 107 Layer between two isent levels    K                    THTA     0
 108 255 Level at press diff from ground   Pa                   PDLV    -2
 108 108 Pressure difference layer         Pa                   PDLY    -2
-109 255 Potential vorticity surface       K*m**2*kg-1*s-1      POTV     6
+109 255 Potential vorticity surface       K*m**2*kg-1*s-1      POTV     9
 111 255 ETA level                         -                    ELVL     0
 111 111 ETA layer                         -                    ELYR     0
 !117 255 Mixed layer depth                 m  

@@ -76,4 +76,5 @@ void da_getfilhdr ( int *iflno, char *fhdnam, int *mxword,
     }
     free ( daargs );
     free ( daoutf );
+
 }

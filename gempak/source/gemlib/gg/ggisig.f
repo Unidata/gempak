@@ -202,7 +202,7 @@ C
                             END IF
 
                             IF ( ( torg .eq. 'KZMA' ) .or.
-     +                           ( torg .eq. 'KZNY' ) .or.
+     +                           ( torg .eq. 'KZWY' ) .or.
      +                           ( torg .eq. 'KZHU' ) .or.
      +                           ( torg .eq. 'TJZS' ) ) THEN
                                   tocn = 'A'
@@ -312,7 +312,7 @@ C
 C
 C*				    Find out if this is in the Atlantic
 C
-				    IF ( ( orgid ( jsig ) .eq. 'KZNY' ) .or.
+				    IF ( ( orgid ( jsig ) .eq. 'KZWY' ) .or.
      +				         ( orgid ( jsig ) .eq. 'KZMA' ) .or.
      +				         ( orgid ( jsig ) .eq. 'KZHU' ) .or.
      +				         ( orgid ( jsig ) .eq. 'TJZS' ) ) THEN

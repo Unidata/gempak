@@ -108,6 +108,9 @@ C* X. Guo/CWS		05/10   Changed "DISSIPATING" to "DISSIPATED"   *
 C* X. Guo/CWS           05/10   Added idays to GH_TCLB                  *
 C* S. Jacobs/NCEP	 6/10	Re-added flag for plotting the scale	*
 C* S. Jacobs/NCEP	 4/13	Added smoothing for the track and cone	*
+C* D. Zelinsky/NCEP/NHC 10/15   Added time zones (P/M/C) to EastPac     *
+C* M. Sardi/NCEP/NHC    11/15   Above change required fix to ensure     *
+C*                              GH_KGAR only called for AL systems.     *
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 	INCLUDE		'ghcmn.cmn'
@@ -233,7 +236,16 @@ C
                 END IF
               ELSE IF ( wocen(1:2)  .eq. 'EP' ) THEN
                 table = 'eptker.tbl'
-                tzone = 'P'
+                IF ( rlon(1,nstrm) .gt. -106.0 ) THEN
+                    tzone = 'C'
+                  ELSE IF ( rlon(1,nstrm) .gt. -115.0 ) THEN
+                    tzone = 'M'
+                  ELSE
+                    tzone = 'P'
+                END IF
+
+C*               Used to be always Pacific
+C                tzone = 'P'
               ELSE IF ( wocen(1:2)  .eq. 'CP' ) THEN
                 table = 'cptker.tbl'
                 tzone = 'H'
@@ -381,12 +393,7 @@ C
                     xmnlon =  xmnlon - 6.0 
                 END IF
 C
-                IF ( tzone .eq. 'P')  THEN
-                    rmxlat =  xmxlat 
-                    rmnlat =  xmnlat 
-                    rmxlon =  xmxlon 
-                    rmnlon =  xmnlon 
-                ELSE IF ( tzone .eq. 'H')  THEN
+                IF ( tzone .eq. 'H')  THEN
 C
 C*                  Make Sure Hawaiian islands are plotted
 C
@@ -400,6 +407,11 @@ C
                     rmxlon =  -140.
                     rmxlon =  xmxlon
                     IF ( rmxlon .lt. -152. ) rmxlon = -152.0
+                ELSE IF ( wocen(1:2)  .eq. 'EP' )  THEN
+                    rmxlat =  xmxlat 
+                    rmnlat =  xmnlat 
+                    rmxlon =  xmxlon 
+                    rmnlon =  xmnlon 
                 ELSE
                     CALL GH_KGAR (xmnlat, xmnlon, xmxlat, xmxlon, 
      +                            rmnlat, rmnlon, rmxlat, rmxlon, ier )

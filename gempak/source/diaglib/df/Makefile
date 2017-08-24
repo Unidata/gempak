@@ -27,6 +27,14 @@ COBJS = \
 	$(ALIB)(dfdden.o) \
 	$(ALIB)(dfddt.o) \
 	$(ALIB)(dfddx.o) \
+	$(ALIB)(dfgkdes.o) \
+	$(ALIB)(dfnavg.o) \
+	$(ALIB)(dfncge.o) \
+	$(ALIB)(dfncle.o) \
+	$(ALIB)(dfnfge.o) \
+	$(ALIB)(dfnfle.o) \
+	$(ALIB)(dfnsum.o) \
+	$(ALIB)(dfnwavg.o) \
 	$(ALIB)(dfddy.o) \
 	$(ALIB)(dfeor.o) \
 	$(ALIB)(dfeq.o) \

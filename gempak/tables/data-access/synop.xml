@@ -39,7 +39,7 @@
 	<column name="SPRI" />
     </columns>
     <parts>
-	<part name="SFDT" type="MDREAL" pyfile="StationDataRetriever" pymethdata="getstationdata" pymethhdr="getheader">
+	<part name="SFDT" type="MDREAL" pyfile="StationDataRetriever" pymethdata="getstationdata" pymethhdr="getsurfacedata">
 	    <parameters>
 		<parameter name="PMSL" scale="-2" offset="0" bits="0" key="seaLevelPress" />
 		<parameter name="TMPK" scale="0" offset="0" bits="0" key="temperature" />
@@ -48,7 +48,7 @@
 		<parameter name="DRCT" scale="0" offset="0" bits="0" key="windDir" />
 	    </parameters>
 	</part>
-	<part name="SFTX" type="MDCHAR" pyfile="StationDataRetriever" pymethdata="getstationtext" pymethhdr="getheader">
+	<part name="SFTX" type="MDCHAR" pyfile="StationDataRetriever" pymethdata="getstationtext" pymethhdr="getsurfacedata">
 	    <parameters>
 		<parameter name="TEXT" scale="0" offset="0" bits="0" key="rawReport" />
 	    </parameters>

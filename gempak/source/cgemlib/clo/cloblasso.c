@@ -46,6 +46,9 @@ void clo_blasso ( char *bndtyp, char *key, int *npts, char *btags,
  * J. Wu/SAIC            6/05   remove reference to LLMXPT              *
  * F.Yen&D.Plummer/NCEP  7/05   Redesigned for performance.		*  
  * D.W.Plummer/NCEP	 8/05	Add final GPC_UNION to rm spurious pts	*
+ * S. Guan              9/16    Set GPC_EPSILON to 0.001 instead of     * 
+ *                              using  default 0.01 in gpc.h to fix WOU *
+ *                              issue (erroneously depicts the outline) *
  ***********************************************************************/
 
 {
@@ -175,6 +178,7 @@ void clo_blasso ( char *bndtyp, char *key, int *npts, char *btags,
     /*
      * union the polygon with a NULL polygon (union) to get the union
      */
+    gpc_set_epsilon(0.001);
     gpc_polygon_clip (GPC_UNION, &polygon, union_poly, union_poly );
     gpc_free_polygon ( &polygon);
     gpc_polygon_clip (GPC_UNION, &polygon, union_poly, union_poly );

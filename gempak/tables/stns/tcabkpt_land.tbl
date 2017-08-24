@@ -11,6 +11,8 @@
 ! M. Brennan/NHC        12/12   Updated for 2013 Season
 ! M. Brennan/NHC         2/14   Updated for 2014 Season
 ! M. Brennan/NHC         2/15   Updated for 2015 Season
+! M. Sardi/NHC           6/16   Bug fix for MS/AL_border and Rio_Panuco breakpoints
+! M. Brennan/NHC        11/16   Updated for 2017 Season
 ! 
 !STID    STNM   NAME                             ST CO   LAT    LON  ELV PRI TBCHRS
 !(8)     (6)    (32)                            (2)(2)   (5)    (6)   (5)(2)   (20)
@@ -38,10 +40,10 @@ GRAND_IS 101600 Grand_Isle                       LA US  2925  -8996     0 10
 MTH_MS_R 101700 Mouth_Mississippi_River          LA US  2912  -8910     0 10
 MTH_PR_R 101800 Mouth_Pearl_River                LA US  3015  -8960     0 10
 PASCAGOU 101900 Pascagoula                       MS US  3035  -8855     0 10
-MS/AL    102000 MS/AL_border                     -- US  3040  -8840     0 10
+MS/AL    102000 MS/AL_border                     -- US  3038  -8832     0 10
 AL/FL    102100 AL/FL_border                     -- US  3027  -8755     0 10
-DESTIN   102300 Destin                           FL US  3039  -8650     0 10
-WALT_BAY 102356 Walton_Bay_County_line           FL US  3028  -8598     0 10
+OKAL_WAL 102300 Okaloosa_Walton_County_Line      FL US  3038  -8640     0 10
+WALT_BAY 102356 Walton_Bay_County_Line           FL US  3028  -8598     0 10
 PANA_CTY 102400 Panama_City                      FL US  3012  -8570     0 10
 MEXICO_B 102460 Mexico_Beach                     FL US  2993  -8539     0 10
 INDIAN_P 102500 Indian_Pass                      FL US  2968  -8527     0 10
@@ -56,6 +58,7 @@ YANKEETO 103200 Yankeetown                       FL US  2903  -8275     0 10
 CHASSAHO 103310 Chassahowitzka                   FL US  2870  -8265     0 10
 ARIPEKA  103325 Aripeka                          FL US  2843  -8266     0 10
 ANCLO_RI 103400 Anclote_River                    FL US  2818  -8280     0 10
+EGMONT_K 103575 Egmont_Key                       FL US  2759  -8276     0 10
 A._M._IS 103600 Anna_Maria_Island                FL US  2753  -8273     0 10
 LONGB_KY 103700 Middle_of_Longboat_Key           FL US  2739  -8264     0 10
 ENGLEWOO 103800 Englewood                        FL US  2694  -8237     0 10
@@ -257,7 +260,7 @@ BOCA_DEC 200300 Boca_De_Catan                    -- MX  2428  -9771     0 20
 LA_PESCA 200400 La_Pesca                         -- MX  2377  -9774     0 20
 BARRA_DE 200450 Barra_Del_Tordo                  -- MX  2289  -9776     0 20
 PUERTO_  200500 Puerto_De_Altamira               -- MX  2249  -9786     0 20
-RIO_PANU 200600 Rio_Paunco                       -- MX  2226  -9778     0 20
+RIO_PANU 200600 Rio_Panuco                       -- MX  2226  -9778     0 20
 CABO_ROJ 200700 Cabo_Rojo                        -- MX  2156  -9732     0 20
 TUXPAN   200800 Tuxpan                           -- MX  2097  -9731     0 20
 TECOLUTL 200900 Tecolutla                        -- MX  2048  -9701     0 20
@@ -291,7 +294,7 @@ PUNTA_CA 202940 Punta_Castilla                   -- HO  1600  -8600     0 20
 PUNTA_PA 202960 Punta_Patuca                     -- HO  1580  -8430     0 20
 HON/NIC  203000 Border_of_Hon/Nic                -- --  1500  -8313     0 20
 P._CABEZ 203100 P._Cabezas                       -- NK  1403  -8336     0 20
-SANDYBAY 203130 Sandy_Bay_Syrpe                  -- NK  1290  -8350     0 20           
+SANDYBAY 203130 Sandy_Bay_Sirpi                  -- NK  1290  -8350     0 20                    
 LAGUNA_P 203160 Laguna_de_Perlas                 -- NK  1230  -8360     0 20
 BLUEFIEL 203200 Bluefields                       -- NK  1200  -8375     0 20
 NIC/CR   203300 Border_of_Nic/CR                 -- --  1092  -8365     0 20

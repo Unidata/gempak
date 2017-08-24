@@ -31,6 +31,7 @@
 ! J. Lewis/AWC		05/07	removed forecaster names
 ! J. Lewis/AWC		05/07	changed Anchorage_Oceanic to Anchorage
 ! S. Jacobs/NCEP	 3/10	Changed KZOA to KZAK
+! S. Guan/NCEP           11/16   Changed KZNY to KZWY
 !************************************************************************
 !
 !		Communications Identifiers	(max 20, each 4)
@@ -93,7 +94,7 @@ ALL	DIRECT	N;NNE;NE;ENE;E;ESE;SE;SSE;S;SSW;SW;WSW;W;WNW;NW;NNW
 INTL    FIR     PAZA|ANCHORAGE
 INTL    FIR     KZHU|HOUSTON_OCEANIC
 INTL    FIR     KZMA|MIAMI_OCEANIC
-INTL    FIR     KZNY|NEW_YORK_OCEANIC
+INTL    FIR     KZWY|NEW_YORK_OCEANIC
 INTL    FIR     KZAK|OAKLAND_OCEANIC
 INTL    FIR     TJZS|SAN_JUAN
 !

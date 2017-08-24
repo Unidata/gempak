@@ -328,7 +328,7 @@ static void af_getXmlDocHdr ( char *area, char *day, char *cycle,
     }
 
     _capacity = ONEBLOCK;
-    G_MALLOC ( *outputXml, char, strSize, "af_getXmlDocHdr outputXml" );
+    G_MALLOC ( *outputXml, char, strSize * 2, "af_getXmlDocHdr outputXml" );
 
     sprintf( *outputXml, "%s", XML_HDR );
     af_catStr ( outputXml, "<gfaInfo " );

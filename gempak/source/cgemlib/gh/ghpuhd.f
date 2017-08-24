@@ -26,6 +26,7 @@ C* S. Gilbert/NCEP	 1/06	MOdified from GH_RDHD                   *
 C* m.gamazaychikov/SAIC	04/06	Skipped storm ID in the advisory header	*
 C* S. Gilbert/NCEP	 7/06	Added check for Honolulu HI             *
 C* S. Gilbert/NCEP       8/06   Remove extraneous info from advisory no.*
+C* M. Sardi/NHC          9/16   Decoded 'POST-TROPICAL' and 'REMNANTS'  *
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 C*
@@ -58,9 +59,13 @@ C
 	END IF
         iddhh  = INDEX ( record(:ifore) , 'SUBTROPICAL' ) 
         IF ( iddhh .eq. 0 ) 
+     +          iddhh = INDEX ( record(:ifore) , 'POST-TROPICAL' ) 
+        IF ( iddhh .eq. 0 ) 
      +          iddhh = INDEX ( record(:ifore) , 'TROPICAL' ) 
         IF ( iddhh .eq. 0 ) 
      +          iddhh = INDEX ( record(:ifore) , 'HURRICANE' )
+        IF ( iddhh .eq. 0 ) 
+     +          iddhh = INDEX ( record(:ifore) , 'REMNANTS' ) 
         string = record(iddhh:ifore-1)
  	CALL ST_LSTR ( string, lens, ier )
         CALL ST_CLST  (string(:lens), ' ', ' ', 7, charr, n, ier )
@@ -94,6 +99,20 @@ C
             sname   = charr(3)
             sadvnum  = charr(6)
             IF ( charr(4) .eq. 'INTERMEDIATE' ) sadvnum  = charr(7)
+        END IF
+C
+        IF ( charr(1) .eq. 'POST-TROPICAL' ) THEN
+             stype   = 'PT'
+             sname   = charr(3)
+             sadvnum  = charr(6)
+           IF ( charr(4) .eq. 'INTERMEDIATE' ) sadvnum  = charr(7)
+        END IF
+C
+        IF ( charr(1) .eq. 'REMNANTS' ) THEN
+             stype   = 'DB'
+             sname   = charr(3)
+             sadvnum  = charr(6)
+           IF ( charr(4) .eq. 'INTERMEDIATE' ) sadvnum  = charr(7)
         END IF
 C
 C*	Check if advisory number is followed by extraneous text

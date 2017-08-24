@@ -5,7 +5,7 @@ void da_getdti ( char *station, char *time, int *partnum, int *iflno,
 /************************************************************************
  * da_getdti								*
  *									*
- * This function reads real data from a non-GEMPAK data	source for the	*
+ * This function reads integer data from a non-GEMPAK data source for the	*
  * given station and time.						*
  *									*
  * da_getdti ( station, time, idthdr, idata, nval, iret )		*
@@ -110,4 +110,5 @@ void da_getdti ( char *station, char *time, int *partnum, int *iflno,
     }
     free ( daargs );
     free ( daouti );
+
 }

@@ -32,6 +32,8 @@ void de_cval ( const char *uarg, char *stprm, int *iret )
  * K. Brill/HPC      20080131   Add intrinsic weight computations; fix	*
  *   				eliminate duplicates coding error	*
  * K. Brill/HPC      20101118   Check for single value order stats case *
+ * K. Brill/IMSG     20161222   Check against bounds when psum exactly  *
+ *				equals the specified cumulative prob    *
  ************************************************************************/
 {
     char tname[13], pdum[13], time1[21], time2[21];
@@ -343,6 +345,8 @@ void de_cval ( const char *uarg, char *stprm, int *iret )
 	     */
 	    if ( G_DIFF ( gigp[ll], psum ) ) {
 		gigo[ll] = _ensdiag.emvalu[kk];
+		if ( ! ERMISS(gilwr[ll]) && gigo[ll] < gilwr[ll] ) gigo[ll] = gilwr[ll];
+		if ( ! ERMISS(giupr[ll]) && gigo[ll] > giupr[ll] ) gigo[ll] = giupr[ll];
 		break;
 	    }
 

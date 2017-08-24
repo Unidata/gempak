@@ -79,6 +79,7 @@ C*                              forecast legend                         *
 C* S. Jacobs/NCEP	 6/10	Re-added flag for plotting the scale	*
 C* S. Jacobs/NCEP	 8/10	Added minutes to the time, if not 00	*
 C* S. Jacobs/NCEP	11/10	Removed "TPC" from the label		*
+C* M. Sardi/NHC	        10/02   Set 115 kts wind to 130 mph		*
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 C*
@@ -260,13 +261,13 @@ C
 C
 C*	    Create the max sustained wind string. Round wind speed
 C*          to the 5 mph. If the wind speed is equal to 115 knots then
-C*          it will be automatically set to 135 mph.
+C*          it will be automatically set to 130 mph.
 C
 	    CALL ST_LSTR ( wind, lens, ier )
 	    CALL ST_CRNM ( wind(:lens), fwnd, ier )
 	    wnd = PR_KNMH ( fwnd )
 	    IF ( ( wnd .gt. 131.18 ) .and. ( wnd .lt. 133.0 ) ) THEN
-		imswnd = 135
+		imswnd = 130
 	    ELSE
 		mswnd = NINT ( wnd )
 		imswnd = ( mswnd / 5 ) * 5

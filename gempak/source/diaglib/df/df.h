@@ -8,6 +8,9 @@
  * R. Tian/SAIC          2/06   Created                                 *
  * R. Tian/SAIC		 9/06	Removed grc.h, fortran_wrappers.h	*
  * K. Brill/HPC          4/08   Added df_incd; df_bncdf; df_ibncd	*
+ * C. Melick/SPC         9/16   Added df_gkdes; df_navg; df_ncge;       *
+ *                              df_ncle; df_nfge; df_nfle; df_nsum;     *
+ *                              df_nwavg                                *
  ***********************************************************************/
 
 #ifndef DF_H_
@@ -46,6 +49,7 @@ void df_fosb ( int *iret );
 void df_ge ( int *iret );
 void df_gele ( int *iret );
 void df_gelt ( int *iret );
+void df_gkdes ( int *iret );
 void df_gt ( int *iret );
 void df_gtle ( int *iret );
 void df_gtlt ( int *iret );
@@ -78,6 +82,13 @@ void df_ne ( int *iret );
 void df_nint ( int *iret );
 void df_nmax ( int *iret );
 void df_nmin ( int *iret );
+void df_navg ( int *iret );
+void df_nwavg ( int *iret );
+void df_ncge ( int *iret );
+void df_nfge ( int *iret );
+void df_ncle ( int *iret );
+void df_nfle ( int *iret );
+void df_nsum ( int *iret );
 void df_not ( int *iret );
 void df_or ( const int *nargs, int *iret );
 void df_paub ( int *iret );

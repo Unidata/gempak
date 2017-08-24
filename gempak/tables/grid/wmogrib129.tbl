@@ -57,7 +57,7 @@
 !048 Speed of current                  m s**-1              SPEDC            0  -9999.00       0         0
 !049 u-component of current            m s**-1              URELC            0  -9999.00       0         0
 !050 v-component of current            m s**-1              VRELC            0  -9999.00       0         0
-!
+!											        
 051 Specific humidity                 kg kg**-1            SPFH             0  -9999.00        0         0
 052 Relative humidity                 %                    RELH             0  -9999.00        0         0
 053 Humidity mixing ratio             kg kg**-1            MIXR             3  -9999.00        0         0

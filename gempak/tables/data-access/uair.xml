@@ -39,7 +39,7 @@
 	<column name="SPRI" />
     </columns>
     <parts>
-	<part name="TTAA" type="MDREAL" pyfile="StationDataRetriever" pymethdata="getleveldata" pymethhdr="getheader">
+	<part name="TTAA" type="MDREAL" pyfile="StationDataRetriever" pymethdata="getleveldata" pymethhdr="getupperairdata">
 	    <parameters>
 		<parameter name="PRES" scale="-2" offset="0" bits="0" key="prMan" />
 		<parameter name="TEMP" scale="0" offset="-273.15" bits="0" key="tpMan" />
@@ -49,21 +49,21 @@
 		<parameter name="HGHT" scale="0" offset="0" bits="0" key="htMan" />
 	    </parameters>
 	</part>
-	<part name="TTBB" type="MDREAL" pyfile="StationDataRetriever" pymethdata="getleveldata" pymethhdr="getheader">
+	<part name="TTBB" type="MDREAL" pyfile="StationDataRetriever" pymethdata="getleveldata" pymethhdr="getupperairdata">
 	    <parameters>
 		<parameter name="PRES" scale="-2" offset="0" bits="0" key="prSigT" />
 		<parameter name="TEMP" scale="0" offset="-273.15" bits="0" key="tpSigT" />
 		<parameter name="DWPT" scale="0" offset="-273.15" bits="0" key="tdSigT" />
 	    </parameters>
 	</part>
-	<part name="PPBB" type="MDREAL" pyfile="StationDataRetriever" pymethdata="getleveldata" pymethhdr="getheader">
+	<part name="PPBB" type="MDREAL" pyfile="StationDataRetriever" pymethdata="getleveldata" pymethhdr="getupperairdata">
 	    <parameters>
 		<parameter name="HGHT" scale="0" offset="0" bits="0" key="htSigW" />
 		<parameter name="DRCT" scale="0" offset="0" bits="0" key="wdSigW" />
 		<parameter name="SPED" scale="0" offset="0" bits="0" key="wsSigW" />
 	    </parameters>
 	</part>
-	<part name="TTCC" type="MDREAL" pyfile="StationDataRetriever" pymethdata="getleveldata" pymethhdr="getheader">
+	<part name="TTCC" type="MDREAL" pyfile="StationDataRetriever" pymethdata="getleveldata" pymethhdr="getupperairdata">
 	    <parameters>
 		<parameter name="PRES" scale="-2" offset="0" bits="0" key="prMan" />
 		<parameter name="TEMP" scale="0" offset="-273.15" bits="0" key="tpMan" />
@@ -73,14 +73,14 @@
 		<parameter name="HGHT" scale="0" offset="0" bits="0" key="htMan" />
 	    </parameters>
 	</part>
-	<part name="TTDD" type="MDREAL" pyfile="StationDataRetriever" pymethdata="getleveldata" pymethhdr="getheader">
+	<part name="TTDD" type="MDREAL" pyfile="StationDataRetriever" pymethdata="getleveldata" pymethhdr="getupperairdata">
 	    <parameters>
 		<parameter name="PRES" scale="-2" offset="0" bits="0" key="prSigT" />
 		<parameter name="TEMP" scale="0" offset="-273.15" bits="0" key="tpSigT" />
 		<parameter name="DWPT" scale="0" offset="-273.15" bits="0" key="tdSigT" />
 	    </parameters>
 	</part>
-	<part name="PPDD" type="MDREAL" pyfile="StationDataRetriever" pymethdata="getleveldata" pymethhdr="getheader">
+	<part name="PPDD" type="MDREAL" pyfile="StationDataRetriever" pymethdata="getleveldata" pymethhdr="getupperairdata">
 	    <parameters>
 		<parameter name="HGHT" scale="0" offset="0" bits="0" key="htSigW" />
 		<parameter name="DRCT" scale="0" offset="0" bits="0" key="wdSigW" />

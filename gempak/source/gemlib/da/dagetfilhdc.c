@@ -5,7 +5,7 @@ void da_getfilhdc ( int *iflno, char *fhdnam, int *mxchar,
 /************************************************************************
  * da_getfilhdc								*
  *									*
- * This function reads the real values for the given file header from	*
+ * This function reads the char values for the given file header from	*
  * a non-GEMPAK data source.						*
  *									*
  * da_getfilhdc ( iflno, fhdnam, mxchar, cheadr, nchar, iret )		*
@@ -67,4 +67,5 @@ void da_getfilhdc ( int *iflno, char *fhdnam, int *mxchar,
     }
     free ( daargs );
     free ( daoutc );
+
 }

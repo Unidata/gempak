@@ -8,6 +8,7 @@
 ! D. Kidwell/NCEP	 7/05	Added Orange Co., Sipacate, Dry Tort. Isl.
 ! C. Lauer/NHC           4/09   Updated for 2009 Season
 ! M. Brennan/NHC         2/12   Updated for Block Isl, Nantucket, and Martha's Vinyrd
+! M. Brennan/NHC        12/16   Cleanup and updates for 2017
 !
 !STID    STNM   NAME                             ST CO   LAT    LON  ELV PRI TBCHRS  
 !(8)     (6)    (32)                            (2)(2)   (5)    (6)   (5)(2)   (20)
@@ -46,6 +47,7 @@ VENEZUEL 502700 Venezuela_(Isla_de_Margarita)    -- VN  1100  -6400     0 50
 BAYISLAN 502750 Bay_Islands_(Honduras)           -- HO  1637  -8648     0 50
 BRIT_V_I 502800 Virgin_Is._(British)             -- VI  1855  -6445     0 50    
 !
+!  U.S. Virgin Islands, Puerto Rico, Vieques, and Culebra
 !  Do not change STID for US_VRG_I, to get correct UGCs
 !
 !US_VRG_I 502900 Virgin_Is._(U.S.)                -- VI  1805  -6480     0 50
@@ -54,6 +56,9 @@ VIEQUES  502930 Vieques                          PR US  1812  -6543     0 50
 CULEBRA  502940 Culebra                          PR US  1832  -6528     0 50
 ST_TH_JO 502950 St_Thomas_and_St_John            VI US  1833  -6485     0 50
 ST_CROIX 502960 St_Croix                         VI US  1774  -6473     0 50
+! 
+! Isle of Youth and Dry Tortugas
+!
 ISLE_YTH 503000 Isle_of_Youth_(Cuba)             -- CU  2170  -8285     0 50    
 DRY_ISLE 504400 Dry_Tortugas_Island              FL US  2467  -8285     0 50
 !
@@ -66,11 +71,45 @@ DRY_ISLE 504400 Dry_Tortugas_Island              FL US  2467  -8285     0 50
 !KY_LARGO 904800 Key_Largo                        FL US  2509  -8044     0 90
 !OCEAN_RF 904900 Ocean_Reef                       FL US  2533  -8026     0 90
 !
-! New England Islands
+! New England islands
+!
 BLOCK_IS 506000 Block_Island                     RI US  4116  -7156     0 50
 NANTUKCT 506100 Nantucket                        MA US  4127  -7004     0 50
 MRT_VYRD 506200 Marthas_Vineyard                 MA US  4138  -7063     0 50
+! 
+! Main Hawaiian Islands
 !
+HAWAII   505000 Hawaii                           -- HI  1965 -15550     0 50
+KAUAI    505100 Kauai_Niihau                     -- HI  2206 -15951     0 50
+MAUI     505200 Maui_Molokai_Lanai_Kahoolawe     -- HI  2080 -15635     0 50
+OAHU     505300 Oahu                             -- HI  2146 -15800     0 50
+!
+! Other Pacific islands
+!
+JOHNSTON 505400 Johnston_Atoll                   -- --  1675 -16950     0 50
+MIDWAY   505500 Midway_Island                    -- --  2822 -17737     0 50
+KURE     505600 Kure_Atoll                       -- --  2842 -17833     0 50
+!
+! Atlantic Canada islands
+! 
 MAGDALEN 509200 Magdalen_Islands                 -- CN  4746  -6178     0 50
 ANTICOST 509300 Anticosti_Island                 -- CN  4949  -6308     0 50
 PR_ED_IS 509400 Prince_Edward_Island             -- CN  4634  -6335     0 50
+!
+!  Azores Islands and Cape Verde Islands - Added September 2016 - Matt Onderlinde - NHC
+!
+AZORE_SE 510000 Azores_(Southeast)               -- AZ  3845  -2762     0 50
+AZORE_NW 510055 Azores_(Northwest)               -- AZ  3950  -3119     0 50
+CAPVRD_S 510100 Cape_Verde_(South)               -- CV  1506  -2395     0 50
+CAPVRD_N 510115 Cape_Verde_(North)               -- CV  1653  -2360     0 50
+!
+!  Add Palmyra Atoll, Teraina Atoll (also known as Washington Island), 
+!  Tabuaeran Atoll (also known as Fanning Island) and Kiritimati Island for CPHC
+!  --- Matt Onderlinde - Nov 2016
+!
+PLM_ATOL 520000 Palmyra_Atoll                    -- CP  0589 -16208     0 50
+TER_ATOL 520015 Teraina_Atoll                    -- CP  0468 -16037     0 50
+TAB_ATOL 520030 Tabuaeran_Atoll                  -- CP  0387 -15932     0 50
+KIRTI_IS 520045 Kiritimati_(Christmas)_Island    -- CP  0187 -15742     0 50
+
+

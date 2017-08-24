@@ -245,6 +245,8 @@ static void gh_rdvg ( char * fileName, char * stType, char * validTime,
  *                                  TD: Tropical Depression             *
  *                                  SS: Subtropical Storm               *
  *                                  SD: Subtropical Depression          *
+ *                                  PT: Post-Tropical Cyclone           *
+ *                                 PTC: Potential Tropical Cyclone      *
  *	*validTime	char	time string in gempak format		*
  *	*stormName	char	storm name				*
  *	*stormId	char	basin + storm number + year		*
@@ -276,6 +278,7 @@ static void gh_rdvg ( char * fileName, char * stType, char * validTime,
  * m.gamazaychikov/SAIC	12/07   Added return of Hawaiian islands bkpts  *
  * C. Lauer/NHC         03/11   Add PuertoRico, change US Virgin Islands*
  * S. Jacobs/NCEP	 3/13	Add check for storm type 5 = PT		*
+ * M. Onderlinde/NHC     9/16   Add check for storm type 6 = PTC        *
  ***********************************************************************/
 {
    int 		iret, stormNum, year, basin, stormType, wwNum;
@@ -568,6 +571,11 @@ static void gh_rdvg ( char * fileName, char * stType, char * validTime,
           case 5:
 		
 		strcpy ( stType, "PT" );
+		break;
+
+          case 6:
+
+		strcpy ( stType, "PTC" );
 		break;
 
 	  default:

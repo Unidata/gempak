@@ -40,6 +40,7 @@ C* m.gamazaychikov/SAIC	06/06	Added code to handle CP storms		*
 c* S. Gilbert/NCEP      07/06   Added new argument origc                *
 C* X. Guo/CWS		02/10   Used Post-Tropical instead of           *
 C*                               Extratropical                          *
+C* D. Zelinsky/NCEP/NHC 10/15   Commented out tzone assignment for EP   * 
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 C*
@@ -196,7 +197,7 @@ C
 C*	    Add titles.
 C
             IF ( ocean(1:2) .eq. 'CP' ) tzone = 'H'
-            IF ( ocean(1:2) .eq. 'EP' ) tzone = 'P'
+C            IF ( ocean(1:2) .eq. 'EP' ) tzone = 'P'
             IF ( origc(1:4) .eq. 'CPHC' ) tzone = 'H'
             timest = curtim(:lens)
             CALL ST_LSTR ( timest, lent, ier)

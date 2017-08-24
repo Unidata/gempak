@@ -62,6 +62,9 @@
 ! M. Brennan/NHC        12/12   Updated for 2013 Season
 ! M. Brennan/NHC         2/14   Updated for 2014 Season
 ! M. Brennan/NHC         2/15   Updated for 2015 Season
+! M. Brennan/NHC         5/15   Bug fix for Port Aransas and Port O'Connor breakpoints
+! M. Onderlinde/NHC     11/16   Added Azores, Cape Verde, and CPHC Atoll Islands
+! M. Brennan/NHC        11/16   Updated for 2017 Season
 !
 !STID    STNM   NAME                             ST CO   LAT    LON  ELV PRI TBCHRS  
 !(8)     (6)    (32)                            (2)(2)   (5)    (6)   (5)(2)   (20)
@@ -84,7 +87,7 @@ CHAPMAN_ 100340 Chapman_Ranch                    TX US  2759  -9745     0 19
 PADRE_IS 100400 N_Entrance_Padre_Island_NS       TX US  2747  -9729     0 10  TX273TX355G270
          100412                                  TX US  2767  -9720     0 12            G230
 INGLESID 100420 Ingleside                        TX US  2788  -9721     0 19
-PT_ARANS 100500 Port_Aransas                     TX US  2783  -9707     0 1011TX409     G250G255
+PT_ARANS 100500 Port_Aransas                     TX US  2783  -9707     0 10  TX409     G250G255
          100512                                  TX US  2783  -9708     0 12  TX391TX007G235
 ARANSAS_ 100520 Aransas_Pass                     TX US  2791  -9715     0 19
 ESTES    100530 Estes                            TX US  2796  -9710     0 19
@@ -93,7 +96,7 @@ LAMAR    100540 Lamar                            TX US  2814  -9701     0 19
          100545                                  TX US  2810  -9690     0 15
 AUSTWELL 100550 Austwell                         TX US  2839  -9684     0 19
 SEADRIFT 100560 Seadrift                         TX US  2842  -9671     0 19
-PT_OCONN 100600 Port_OConnor                     TX US  2839  -9641     0 1012TX057TX239G275G350
+PT_OCONN 100600 Port_OConnor                     TX US  2839  -9641     0 10  TX057TX239G275G350
          100612                                  TX US  2839  -9642     0 12            G330
 INDIANOL 100620 Indianola                        TX US  2851  -9649     0 19
 MAGNOL_B 100630 Magnolia_Beach                   TX US  2856  -9654     0 19
@@ -234,7 +237,7 @@ PENSAC_B 102150 Pensacola_Beach                  FL US  3033  -8714     0 19
 NAVARRE_ 102160 Navarre_Beach                    FL US  3038  -8686     0 19
 MARY_EST 102170 Mary_Esther                      FL US  3041  -8666     0 19
 FT_WAL_B 102200 Fort_Walton_Beach                FL US  3041  -8662     0 19
-DESTIN   102300 Destin                           FL US  3039  -8650     0 10  FL091FL131G675G750
+OKAL_WAL 102300 Okaloosa_Walton_County_Line      FL US  3038  -8640     0 10  FL091FL131G675G750
          102315                                  FL US  3048  -8633     0 15
 PORTLND  102320 Portland_FL                      FL US  3051  -8620     0 19
 MID_BAY_ 102324 Mid_Bay_Bridge                   FL US  3043  -8643     0 19
@@ -304,6 +307,7 @@ ST._PETE 103560 St._Petersburg                   FL US  2773  -8274     0 19
 TAMPA    103564 Tampa                            FL US  2795  -8246     0 19
 APOLLO_B 103570 Apollo_Beach                     FL US  2777  -8241     0 19
 RUSKIN   103574 Ruskin                           FL US  2772  -8243     0 19
+EGMONT_K 103575 Egmont_Key                       FL US  2759  -8276     0 10
 PALMETTO 103580 Palmetto                         FL US  2752  -8257     0 19
 A._M._IS 103600 Anna_Maria_Island                FL US  2753  -8273     0 10  FL081     G853
 HOLMES_B 103620 Holmes_Beach                     FL US  2750  -8271     0 19
@@ -441,7 +445,7 @@ OCEAN_IS 107130 Ocean_Isle_Beach                 NC US  3389  -7843     0 19
 SHALLOTT 107140 Shallotte_Inlet                  NC US  3390  -7838     0 19
 HOLDEN_B 107150 Holden_Beach                     NC US  3390  -7825     0 19
 LOCKWOOD 107160 Lockwoods_Folly_Inlet            NC US  3391  -7825     0 19
-CASWELL_ 107170 Caswell_Beach                    NC US  3390  -3390     0 19
+CASWELL_ 107170 Caswell_Beach                    NC US  3390  -7805     0 19
 CAPE_FEA 107200 Cape_Fear                        NC US  3385  -7797     0 10  NC019NC129M252M250
 WILMINGT 107220 Wilmington_Beach                 NC US  3402  -7790     0 19
 WRIGHTSV 107230 Wrightsville_beach               NC US  3421  -7780     0 19
@@ -618,7 +622,7 @@ NEWPORT  109950 Newport                          RI US  4149  -7131     0 19
 SAKONNET 109960 Sakonnet                         RI US  4146  -7120     0 19
 !NANTUKCT 109970 Nantucket                        MA US  4127  -7004     0 10  MA024
 !MRT_VYRD 109980 Marthas_Vineyard                MA US  4138  -7063     0 10  MA023
-WESTPORT 110000 Westport                         MA US  4145  -7120     0 10  MA005     N235
+WESTPORT 110000 Westport                         MA US  4150  -7111     0 10  MA005     N235
          110012                                  MA US  4145  -7119     0 12  MA023MA007N255N233
 HORSENEC 110020 Horseneck_Beach                  MA US  4151  -7108     0 19
 NEW_BEDF 110030 New_Bedford                      MA US  4164  -7093     0 19
@@ -801,7 +805,7 @@ BOCA_DEC 200300 Boca_De_Catan                    -- MX  2428  -9771     0 20
 LA_PESCA 200400 La_Pesca                         -- MX  2377  -9774     0 20
 BARRA_DE 200450 Barra_Del_Tordo                  -- MX  2289  -9776     0 20
 PUERTO_  200500 Puerto_De_Altamira               -- MX  2249  -9786     0 20
-RIO_PANU 200600 Rio_Paunco                       -- MX  2226  -9778     0 20
+RIO_PANU 200600 Rio_Panuco                       -- MX  2226  -9778     0 20
 CABO_ROJ 200700 Cabo_Rojo                        -- MX  2156  -9732     0 20
 TUXPAN   200800 Tuxpan                           -- MX  2097  -9731     0 20
 TECOLUTL 200900 Tecolutla                        -- MX  2048  -9701     0 20
@@ -839,7 +843,7 @@ PUNTA_CA 202940 Punta_Castilla                   -- HO  1600  -8600     0 20
 PUNTA_PA 202960 Punta_Patuca                     -- HO  1580  -8430     0 20
 HON/NIC  203000 Border_of_Hon/Nic                -- --  1500  -8313     0 20
 P._CABEZ 203100 P._Cabezas                       -- NK  1403  -8336     0 20
-SANDYBAY 203130 Sandy_Bay_Syrpe                  -- NK  1290  -8350     0 20           
+SANDYBAY 203130 Sandy_Bay_Sirpi                  -- NK  1290  -8350     0 20                      
 LAGUNA_P 203160 Laguna_de_Perlas                 -- NK  1230  -8360     0 20
 BLUEFIEL 203200 Bluefields                       -- NK  1200  -8375     0 20
 NIC/CR   203300 Border_of_Nic/CR                 -- --  1092  -8365     0 20
@@ -1217,6 +1221,48 @@ PR_ED_IS 509400 Prince_Edward_Island             -- CN  4634  -6335     0 50
          509471 West_Point                       -- CN  4665  -6440     0 51
          509480 Victoria                         -- CN  4622  -6348     0 55
 !
+!  Azores Islands and Cape Verde Islands - Added September 2016 - Matt Onderlinde - NHC
+!
+AZORE_SE 510000 Azores_(Southeast)               -- AZ  3845  -2762     0 50
+         510005                                  -- AZ  3700  -2520     0 51
+         510010                                  -- AZ  3692  -2499     0 55
+         510015                                  -- AZ  3794  -2591     0 51
+         510020                                  -- AZ  3775  -2557     0 55
+         510025                                  -- AZ  3786  -2506     0 55
+         510030                                  -- AZ  3858  -2690     0 51
+         510035                                  -- AZ  3915  -2814     0 55
+         510040                                  -- AZ  3858  -2904     0 51
+         510045                                  -- AZ  3840  -2768     0 55
+         510050                                  -- AZ  3888  -2833     0 55
+AZORE_NW 510055 Azores_(Northwest)               -- AZ  3950  -3119     0 50
+         510060                                  -- AZ  3922  -3128     0 51
+         510065                                  -- AZ  3991  -3106     0 55
+CAPVRD_S 510100 Cape_Verde_(South)               -- CV  1506  -2395     0 50
+         510105                                  -- CV  1480  -2516     0 51
+         510110                                  -- CV  1536  -2275     0 55
+CAPVRD_N 510115 Cape_Verde_(North)               -- CV  1653  -2360     0 50
+         510120                                  -- CV  1725  -2557     0 51
+         510125                                  -- CV  1598  -2258     0 51
+         510130                                  -- CV  1704  -2315     0 55
+!
+!  Add Palmyra Atoll, Teraina Atoll (also known as Washington Island), 
+!  Tabuaeran Atoll (also known as Fanning Island) and Kiritimati Island for CPHC
+!  --- Matt Onderlinde - Nov 2016
+!
+PLM_ATOL 520000 Palmyra_Atoll                    -- CP  0589 -16208     0 50
+         520005                                  -- CP  0594 -16220     0 51
+         520010                                  -- CP  0584 -16196     0 55
+TER_ATOL 520015 Teraina_Atoll                    -- CP  0468 -16037     0 50
+         520020                                  -- CP  0480 -16050     0 51
+         520025                                  -- CP  0460 -16025     0 55
+TAB_ATOL 520030 Tabuaeran_Atoll                  -- CP  0387 -15932     0 50
+         520035                                  -- CP  0395 -15945     0 51
+         520040                                  -- CP  0375 -15920     0 55
+KIRTI_IS 520045 Kiritimati_(Christmas)_Island    -- CP  0187 -15742     0 50
+         520050                                  -- CP  0210 -15770     0 51
+         520055                                  -- CP  0165 -15700     0 55
+
+!
 !  Southern California, west coast of Mexico, Central America - area IPACIF = 6
 !
 POINT_PB 600000 Point_Piedras_Blancas            CA US  3566 -12129     0 60
@@ -1398,48 +1444,11 @@ PAMLICO  800030 Pamlico_Sound                    NC US  3535  -7585     0 80 3NC
          800034                                  NC US  3555  -7577     0 85 3
          800035                                  NC US  3580  -7567     0 85 3
          800036                                  NC US  3545  -7565     0 85 3
-N_PMLCO  800040 North_Pamlico_Sound              NC US  3526  -7604     0 80 3NC047
-         800041                                  NC US  3545  -7565     0 81 3NC080
-         800042                                  NC US  3510  -7635     0 85 3NC081
-         800043                                  NC US  3510  -7635     0 85 3
-S_PMLCO  800050 South_Pamlico_Sound              NC US  3524  -7604     0 80 3NC093
-         800051                                  NC US  3545  -7565     0 81 3NC094
-         800052                                  NC US  3510  -7635     0 85 3NC095
-         800053                                  NC US  3510  -7635     0 85 3
 ALBEMARL 800040 Albemarle_Sound                  NC US  3605  -7610     0 80 3NC055NC177M130
          800041                                  NC US  3590  -7575     0 81 3NC187NC053
          800042                                  NC US  3600  -7650     0 85 3NC029NC139
          800043                                  NC US  3611  -7590     0 85 3NC143
          800044                                  NC US  3590  -7575     0 85 3
-E_ALBMRL 800070 East_Albemarle_Sound             NC US  3605  -7590     0 80 3NC015NC016
-         800071                                  NC US  3590  -7575     0 81 3NC046NC047
-         800072                                  NC US  3590  -7575     0 85 3NC032
-         800073                                  NC US  3590  -7575     0 85 3
-NZPAMLI  800130 No_Zones_Pamlico_Sound           NC US  3535  -7618     0 80 3
-         800131                                  NC US  3546  -7566     0 81 3
-         800132                                  NC US  3511  -7636     0 85 3
-         800133                                  NC US  3519  -7648     0 85 3
-         800134                                  NC US  3556  -7578     0 85 3
-         800135                                  NC US  3581  -7568     0 85 3
-         800136                                  NC US  3546  -7566     0 85 3
-NZN_PML  800140 No_Zones_North_Pamlico_Sound     NC US  3526  -7660     0 80 3
-         800141                                  NC US  3546  -7566     0 81 3
-         800142                                  NC US  3511  -7636     0 85 3
-         800143                                  NC US  3511  -7636     0 85 3
-NZS_PML  800150 No_Zones_South_Pamlico_Sound     NC US  3524  -7660     0 80 3
-         800151                                  NC US  3546  -7566     0 81 3
-         800152                                  NC US  3511  -7636     0 85 3
-         800153                                  NC US  3511  -7636     0 85 3
-NZS_ALB  800160 No_Zones_Albemarle_Sound         NC US  3605  -7690     0 80 3
-         800161                                  NC US  3591  -7576     0 81 3
-         800162                                  NC US  3601  -7651     0 85 3
-         800163                                  NC US  3612  -7591     0 85 3
-         800164                                  NC US  3591  -7576     0 85 3
-         800165                                  NC US  3591  -7576     0 85 3
-NZE_ALBM 800170 No_Zones_East_Albemarle_Sound    NC US  3606  -7673     0 80 3
-         800171                                  NC US  3591  -7576     0 81 3
-         800172                                  NC US  3591  -7576     0 85 3
-         800173                                  NC US  3591  -7576     0 85 3
 CB_NPTCM 808410 Chesapeake_Bay_New_Point_Comfort VA US  3710  -7615     0 80 4VA710VA740N632
          808411                                  VA US  3730  -7628     0 81 4VA550VA800
          808412                                  VA US  3730  -7600     0 85 4VA093VA700
@@ -1506,6 +1515,9 @@ DELBAY_N 809110 Delaware_Bay_North               DE US  3910  -7525     0 80 5DE
          809112                                  NJ US  3920  -7502     0 85 5
          809113                                  DE US  3892  -7530     0 85 5
          809114                                  DE US  3920  -7530     0 85 5
+!
+! Northwest Hawaiian Island segments
+!
 NIHOA    810000 Nihoa_to_French_Frigate_Shoals   HI US  2306 -16192     0 80 7
          810010                                  HI US  2306 -16192     0 81 7
          810020                                  HI US  2386 -16627     0 85 7

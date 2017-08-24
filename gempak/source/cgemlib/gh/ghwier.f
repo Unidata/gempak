@@ -34,6 +34,7 @@ C* A. Hardy/SAIC	 8/01   Fixed if only current wind is reported  *
 C* A. Hardy/NCEP	 8/02   Set 115 kts wind to 135 mph		*
 C* m.gamazaychikov/SAIC	06/06	Added probability table for CP storms	*
 C* S. Gilbert/NCEP	 7/06   Added new argument origc                *
+C* M. Sardi/NHC	        10/02   Set 115 kts wind to 130 mph		*
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 C*
@@ -81,7 +82,7 @@ C
 C
 C*	Set the time/date, max winds at 3, 12, 24, 36, 48 and 72 hrs.
 C*      Also, convert the max wind from knots to MPH. Set all 115 knot
-C*      to 135 mph.
+C*      to 130 mph.
 C
         iwind = 0
         proces = .true.
@@ -90,7 +91,7 @@ C
             CALL ST_NUMB ( wwnd, fctwnd (1), ier)
             rwnd  = PR_KNMH (FLOAT(fctwnd(1) ) )
             IF ( ( rwnd .gt. 131.18 ) .and. ( rwnd .lt. 133.0 ) ) THEN
-                fctwnd(1) = 135
+                fctwnd(1) = 130
               ELSE
                 itpwnd  = INT ( rwnd )
                 iwind = ( itpwnd / 5 ) * 5
@@ -108,7 +109,7 @@ C
                     rwnd  = PR_KNMH (FLOAT(mxwd(jj,nstrm) ) )
                     IF ( ( rwnd .gt. 131.18 ) .and. 
      +				           ( rwnd .lt. 133.0 ) ) THEN
-                        fctwnd(im) = 135
+                        fctwnd(im) = 130
                       ELSE
                         itpwnd  = INT ( rwnd )
                         iwind = ( itpwnd / 5 ) * 5

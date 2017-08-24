@@ -7,7 +7,7 @@ void da_getdtrgd ( char *cycle, char* forecast,
 /************************************************************************
  * da_getdtrgd								*
  *									*
- * This function reads real data from a non-GEMPAK data	source for the	*
+ * This function reads real grid data from a non-GEMPAK data	source for the	*
  * given station and time.						*
  *									*
  * da_getdtrgd ( cycle, forecast, level1, level2, gvcord, gparm,	*
@@ -90,4 +90,5 @@ void da_getdtrgd ( char *cycle, char* forecast,
     }
     free ( daargs );
     free ( daoutf );
+
 }

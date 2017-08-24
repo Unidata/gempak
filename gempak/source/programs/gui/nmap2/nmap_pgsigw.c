@@ -3532,6 +3532,7 @@ void pgsigw_getSIGMET ( char *sigmet )
  * S. Jacobs/NCEP	 3/10	Added FIR ID to info line2		*
  * S. Jacobs/NCEP	 9/10	Removed FIR ID from line2		*
  * S. Jacobs/NCEP	 9/10	Removed AREA BOUNDED BY from product	*
+ * S. Guan/NCEP         11/16   Changed KZNY to KZWY                    *
  ***********************************************************************/
 {
 const int line_len=65;
@@ -3797,7 +3798,7 @@ XmString  xmstr;
 
 	        if ( ( strncmp ( fir, "KZHU", 4 ) == 0 ) ||
 	             ( strncmp ( fir, "KZMA", 4 ) == 0 ) ||
-	             ( strncmp ( fir, "KZNY", 4 ) == 0 ) ||
+	             ( strncmp ( fir, "KZWY", 4 ) == 0 ) ||
 	             ( strncmp ( fir, "TJZS", 4 ) == 0 ) ) {
 	            strcpy ( hdrocn, "NT" );
 	            strcpy ( hdrwmo, "NT" );

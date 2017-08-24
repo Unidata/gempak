@@ -101,7 +101,7 @@
 !088 Salinity                          kg kg**-1            SLTY             0  -9999.00       0         0
 !089 Density                           kg m**-3             DNTY             0  -9999.00       0         0
 090 Water runoff                      kg m**-2             RNOF             0  -9999.00       0         0
-!
+!											        
 091 Ice concent (1=ice,0=no ice)      1,0                  ICE              0  -9999.00        0         0
 !092 Ice thickness                     m                    ICET             0  -9999.00       0         0
 !093 Direction of ice drift            Degree true          DRCTI            0  -9999.00       0         1

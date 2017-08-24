@@ -80,6 +80,7 @@ void cvg_dump ( VG_DBStruct el, int size, int nout, int flag, int *iret )
  * m.gamazaychikov/SAIC	10/08	Modified dump of TCT elements		*
  * L. Hinson/AWC        01/12   Add CLASS_MET -> SGWX_ELM               *
  * S. Jacobs/NCEP	 3/13	Added Post-Trop Cycl for a type of TCA	*
+ * M. Onderlinde/NHC     9/16   Added Potential Trop Cycl for a TCA     *
  ***********************************************************************/
 {
     int			ii, i, j, ier, counter;
@@ -949,6 +950,9 @@ void cvg_dump ( VG_DBStruct el, int size, int nout, int flag, int *iret )
 			break;
 		case 5:
 			printf( "Storm type:\t Post-Tropical Cyclone\n" );
+			break;
+		case 6:
+			printf( "Storm type:\t Potential Tropical Cyclone\n" );
 			break;
 		default:
 			printf( "Storm type:\t unknown\n" );

@@ -72,10 +72,13 @@ int	cvg_v2x ( VG_DBStruct *el, char *buffer, int *iret )
  * Q.Zhou /Chug		12/11   Handled |longitude|>180 situation               *
  * L. Hinson/AWC        07/12   Add sgwx2tag for SGWX_ELM.                      *
  * J. Wu/SGT        	11/13   Set special line 24/25 to KINK_LINE_1 & 2.      *
- * Q.Zhou /SGT          02/14   Adjusted for 64 bit
+ * Q.Zhou /SGT          02/14   Adjusted for 64 bit				*
+ * J. Wu/SGT        	10/14   Sanity check for line/front/special line with.  *
+ *                              points less than 2.				*
+ * J. Wu/SGT        	02/15   R6158 preserve iwidth/ithw for Text		*
  ********************************************************************************/
 {
-int	ier;
+int	ier, npts;
 /*---------------------------------------------------------------------*/
 
     *iret = 0;
@@ -87,16 +90,24 @@ int	ier;
 		break;
 
 	case	LINE_ELM:     /*1*/ 
-		lin2tag ( el, buffer, &ier );
+                npts = el->elem.lin.info.numpts; 
+                if ( npts >= 2 ) {
+		    lin2tag ( el, buffer, &ier );
+                }
 		break;
 
 	case	FRONT_ELM:    /*2*/
-		frt2tag ( el, buffer, &ier );
+                npts = el->elem.frt.info.numpts; 
+                if ( npts >= 2 ) {
+		   frt2tag ( el, buffer, &ier ); 
+                }
 		break;
 
 	case	SPLN_ELM:     /*20*/
-
-		spl2tag ( el, buffer, &ier );
+                npts = el->elem.spl.info.numpts; 
+                if ( npts >= 2 ) {
+		    spl2tag ( el, buffer, &ier );
+                }
 		break;
 
 	case	WBOX_ELM:     /*6*/
@@ -105,7 +116,6 @@ int	ier;
 
 	case	WSM_ELM:
 		wsm2tag ( el, buffer, &ier );
-printf("WSM_ELM %d\n", WSM_ELM);
 		break;
 
 	case	WXSYM_ELM: /*5*/
@@ -130,7 +140,6 @@ printf("WSM_ELM %d\n", WSM_ELM);
 
 	case	TEXT_ELM:
 	case	TEXTC_ELM:
-printf("TEXTC_ELM %d\n", TEXTC_ELM);
 		txt2tag ( el, buffer, &ier );
 		break;
 
@@ -2337,9 +2346,9 @@ char *r1="", *r2="", *r7="", *t;
 	    result = "";
 	}
 
-    	sprintf( buffer, "%s          <MidCloudText pgenCategory=\"%s\" pgenType=\"%s\" fontSize=\"%s\" fontName=\"%s\" style=\"%s\" justification=\"%s\" cloudAmounts=\"%s\" cloudTypes=\"%s\" icingLevels=\"%s\" icingType=\"%s\" turbulenceLevels=\"%s\" turbulenceType=\"%s\" tstormLevels=\"%s\" tstormTypes=\"%s\">\n",
+    	sprintf( buffer, "%s          <MidCloudText pgenCategory=\"%s\" pgenType=\"%s\" fontSize=\"%s\" fontName=\"%s\" style=\"%s\" justification=\"%s\" iwidth=\"%d\""  " ithw=\"%d\""  " cloudAmounts=\"%s\" cloudTypes=\"%s\" icingLevels=\"%s\" icingType=\"%s\" turbulenceLevels=\"%s\" turbulenceType=\"%s\" tstormLevels=\"%s\" tstormTypes=\"%s\">\n",
 indent, category(el), pgenType, getSztext(el->elem.spt.info.sztext),  
-font, style, getIalign(el->elem.spt.info.ialign), r2, r1,  result4, result3, result6, result5, result, r7);
+font, style, getIalign(el->elem.spt.info.ialign), el->elem.spt.info.iwidth, el->elem.spt.info.ithw,r2, r1,  result4, result3, result6, result5, result, r7);
     }
 
 //general text
@@ -2387,9 +2396,9 @@ font, style, getIalign(el->elem.spt.info.ialign), r2, r1,  result4, result3, res
 		tstormLevel[strlen(tstormLevel)-1] = '\0';
 
 
-	    sprintf( buffer, "%s          <MidCloudText pgenCategory=\"%s\" pgenType=\"%s\" fontSize=\"%s\" fontName=\"%s\" style=\"%s\" justification=\"%s\" cloudAmounts=\"%s\" cloudTypes=\"%s\" icingLevels=\"%s\" icingType=\"%s\" turbulenceLevels=\"%s\" turbulenceType=\"%s\" tstormLevels=\"%s\" tstormTypes=\"%s\">\n",
+	    sprintf( buffer, "%s          <MidCloudText pgenCategory=\"%s\" pgenType=\"%s\" fontSize=\"%s\" fontName=\"%s\" style=\"%s\" justification=\"%s\" iwidth=\"%d\""  " ithw=\"%d\""  " cloudAmounts=\"%s\" cloudTypes=\"%s\" icingLevels=\"%s\" icingType=\"%s\" turbulenceLevels=\"%s\" turbulenceType=\"%s\" tstormLevels=\"%s\" tstormTypes=\"%s\">\n",
 indent, category(el), "MID_LEVEL_CLOUD", getSztext(el->elem.spt.info.sztext), font, style,
-getIalign(el->elem.spt.info.ialign), cloudAmn, cloudType, "","","","", tstormLevel, tstormType);
+getIalign(el->elem.spt.info.ialign), el->elem.spt.info.iwidth, el->elem.spt.info.ithw, cloudAmn, cloudType, "","","","", tstormLevel, tstormType);
 
 	}
 
@@ -2399,17 +2408,17 @@ getIalign(el->elem.spt.info.ialign), cloudAmn, cloudType, "","","","", tstormLev
 		if (result2 == NULL)
 	    	    result2 = "";
 
-	    sprintf( buffer, "%s          <AvnText pgenCategory=\"%s\"" " pgenType=\"%s\"" "  symbolPatternName=\"%s\"" " fontSize=\"%s\"" " fontName=\"%s\"" " style=\"%s\"" " justification=\"%s\"" " bottomValue=\"%s\""  " topValue=\"%s\""  " avnTextType=\"%s\">\n",
+	    sprintf( buffer, "%s          <AvnText pgenCategory=\"%s\"" " pgenType=\"%s\"" "  symbolPatternName=\"%s\"" " fontSize=\"%s\"" " fontName=\"%s\"" " style=\"%s\"" " justification=\"%s\"" " iwidth=\"%d\""  " ithw=\"%d\""  " bottomValue=\"%s\""  " topValue=\"%s\""  " avnTextType=\"%s\">\n",
 indent, category(el), "AVIATION_TEXT", symbolPatternName, getSztext(el->elem.spt.info.sztext), //symbolPatternName is default
-font, style, getIalign(el->elem.spt.info.ialign), result2, result, avnTextType); //avnTextType is default
+font, style, getIalign(el->elem.spt.info.ialign),  el->elem.spt.info.iwidth, el->elem.spt.info.ithw, result2, result, avnTextType); //avnTextType is default
 	}
 
 	else {
 	    /* (el->elem.spt.info.rotn -1000) is to keep drawing the same */
-	    sprintf( buffer, "%s          <Text pgenCategory=\"%s\"" " pgenType=\"%s\"" "  rotation=\"%f\"" " fontSize=\"%s\"" " fontName=\"%s\"" " style=\"%s\"" " justification=\"%s\"" " rotationRelativity=\"%s\""  " mask=\"%s\""  " displayType=\"%s\""  " hide=\"%s\""  " auto=\"%s\""  " yOffset=\"%d\""  " xOffset=\"%d\">\n",
+	    sprintf( buffer, "%s          <Text pgenCategory=\"%s\"" " pgenType=\"%s\"" "  rotation=\"%f\"" " fontSize=\"%s\"" " fontName=\"%s\"" " style=\"%s\"" " justification=\"%s\"" " rotationRelativity=\"%s\""  " mask=\"%s\""  " displayType=\"%s\""  " iwidth=\"%d\""  " ithw=\"%d\""  " hide=\"%s\""  " auto=\"%s\""  " yOffset=\"%d\""  " xOffset=\"%d\">\n",
 indent, category(el), pgenType, el->elem.spt.info.rotn>=1000 ?(el->elem.spt.info.rotn -1000) :el->elem.spt.info.rotn, 
 getSztext(el->elem.spt.info.sztext), font, style, getIalign(el->elem.spt.info.ialign),
-el->elem.spt.info.rotn>=1000 ?"NORTH_RELATIVE" :"SCREEN_RELATIVE", mask, displayType, "false", "true",
+el->elem.spt.info.rotn>=1000 ?"NORTH_RELATIVE" :"SCREEN_RELATIVE", mask, displayType, el->elem.spt.info.iwidth, el->elem.spt.info.ithw, "false", "true",
 el->elem.spt.info.offset_y, el->elem.spt.info.offset_x );
 	}
     }
@@ -2422,9 +2431,9 @@ el->elem.spt.info.offset_y, el->elem.spt.info.offset_x );
 	    result2 = "XXX";
 
 
-    	sprintf( buffer, "%s          <AvnText pgenCategory=\"%s\"" " pgenType=\"%s\"" "  symbolPatternName=\"%s\"" " fontSize=\"%s\"" " fontName=\"%s\"" " style=\"%s\"" " justification=\"%s\"" " bottomValue=\"%s\""  " topValue=\"%s\""  " avnTextType=\"%s\">\n",
+    	sprintf( buffer, "%s          <AvnText pgenCategory=\"%s\"" " pgenType=\"%s\"" "  symbolPatternName=\"%s\"" " fontSize=\"%s\"" " fontName=\"%s\"" " style=\"%s\"" " justification=\"%s\"" " iwidth=\"%d\""  " ithw=\"%d\""  " bottomValue=\"%s\""  " topValue=\"%s\""  " avnTextType=\"%s\">\n",
 indent, category(el), pgenType, symbolPatternName, getSztext(el->elem.spt.info.sztext), 
-font, style, getIalign(el->elem.spt.info.ialign), result2, result, avnTextType);
+font, style, getIalign(el->elem.spt.info.ialign), el->elem.spt.info.iwidth, el->elem.spt.info.ithw, result2, result, avnTextType);
     }
 
     free(font);
@@ -3488,9 +3497,9 @@ char * displayType = "NORMAL";
 	    rotn = el->elem.jet.barb[ii].spt.info.rotn;
 
 	blen = strlen(buffer);
-    	sprintf( &(buffer[blen]), "                  <Text pgenCategory=\"Text\" pgenType=\"General Text\"  rotation=\"%10.6f\" fontSize=\"%s\" fontName=\"%s\" style=\"%s\" justification=\"%s\" rotationRelativity=\"%s\" mask=\"%s\" displayType=\"%s\" yOffset=\"%d\" xOffset=\"%d\" hide=\"%s\" auto=\"%s\">\n",
+    	sprintf( &(buffer[blen]), "                  <Text pgenCategory=\"Text\" pgenType=\"General Text\"  rotation=\"%10.6f\" fontSize=\"%s\" fontName=\"%s\" style=\"%s\" justification=\"%s\" iwidth=\"%d\""  " ithw=\"%d\""  " rotationRelativity=\"%s\" mask=\"%s\" displayType=\"%s\" yOffset=\"%d\" xOffset=\"%d\" hide=\"%s\" auto=\"%s\">\n",
 rotn, getSztext(el->elem.jet.barb[ii].spt.info.sztext), font, style, 
-getIalign(el->elem.jet.barb[ii].spt.info.ialign), el->elem.jet.barb[ii].spt.info.rotn >=1000 ?"NORTH_RELATIVE" :"SCREEN_RELATIVE", 
+getIalign(el->elem.jet.barb[ii].spt.info.ialign), el->elem.jet.barb[ii].spt.info.iwidth,  el->elem.jet.barb[ii].spt.info.ithw, el->elem.jet.barb[ii].spt.info.rotn >=1000 ?"NORTH_RELATIVE" :"SCREEN_RELATIVE", 
 mask, displayType, el->elem.jet.barb[ii].spt.info.offset_y, el->elem.jet.barb[ii].spt.info.offset_x, "false", "false");
 
 	free(font);

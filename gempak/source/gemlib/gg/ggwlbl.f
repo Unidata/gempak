@@ -26,10 +26,11 @@ C* Log:									*
 C* D. Kidwell/NCEP	 4/99	                                        *
 C* D. Kidwell/NCEP	 5/99	Changed constant to .17 for 10 minutes  *
 C* D. Kidwell/NCEP	11/99	Revised for SIGMETs; call GG_CTRD       *
+C* S. Guan/NCEP         02/17   Incrase dimesion of indx from 20 to 500 *
 C************************************************************************
 	REAL		rlat (*), rlon (*)
 C*
-	INTEGER		indx (20)
+	INTEGER		indx (500)
 C------------------------------------------------------------------------
 	iret  = 0
 	npm1 = np - 1

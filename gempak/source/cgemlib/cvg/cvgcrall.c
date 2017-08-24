@@ -769,6 +769,7 @@ void cvg_crtsig ( char *fname, int *iret )
  * H. Zeng/XTRI 	11/03	modified a field for ASHCLD&VOLC	*
  * S. Danz/AWC		07/06	Switch to new cvg_writefD() function    *
  * S. Jacobs/NCEP	 3/10	Changed KZOA to KZAK			*
+ * S. Guan/NCEP         11/16   Changed KZNY to KZWY                    *
  ***********************************************************************/
 {
     int			np, ii, jj, start, loc, ier, type;
@@ -785,7 +786,7 @@ void cvg_crtsig ( char *fname, int *iret )
                             "KMIA", "PHNL", "PANC", "PAFA", "PAJN" };
     
     char  *fir_27[ 6 ] = { "PAZA", "KZMA", "KZAK", 
-                           "KZHU", "KZNY", "TJZS" };
+                           "KZHU", "KZWY", "TJZS" };
 			    
     char  *msgid_27[ 13 ] = { "ALFA", "BRAVO", "CHARLIE", "DELTA", 
                               "ECHO", "FOXTROT", "GOLF", "HOTEL", 

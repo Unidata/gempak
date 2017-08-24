@@ -3949,6 +3949,7 @@ static int pgtca_getMenuInfo ( void )
  * B. Yin/SAIC		 4/05	Changed the order of issue status	*
  * X. Guo/CWS           04/11   Add PHFO menu                           *
  * S. Jacobs/NCEP	 3/13	Added Post-Tropical Cyclone		*
+ * M. Onderlinde/NHC     9/16   Added Potential Tropical Cyclone        *
  ***********************************************************************/
 {
     FILE 	*tblFile = NULL;
@@ -3991,7 +3992,7 @@ static int pgtca_getMenuInfo ( void )
 	 ( _entryNum[ STORM_TYPE ] = pgtca_getMenuEntries ( tblFile, row, 
                 "StormType", &_menuEntryStr[ STORM_TYPE ] )) <= 0 ) {
 
-       	_entryNum[ STORM_TYPE ] = 6;
+       	_entryNum[ STORM_TYPE ] = 7;
 
 	if ( pgtca_allocEntryStr( _entryNum[ STORM_TYPE ], 
 			&_menuEntryStr[ STORM_TYPE ]) != 0) return -1;
@@ -4002,6 +4003,7 @@ static int pgtca_getMenuInfo ( void )
         strcpy( _menuEntryStr[ STORM_TYPE ][ 3 ], "Subtropical Storm" );
         strcpy( _menuEntryStr[ STORM_TYPE ][ 4 ], "Subtropical Depression" );
         strcpy( _menuEntryStr[ STORM_TYPE ][ 5 ], "Post-Tropical Cyclone" );
+        strcpy( _menuEntryStr[ STORM_TYPE ][ 6 ], "Potential-Tropical Cyclone" );
     }
 
 

@@ -30,8 +30,7 @@
 105 255 Hybrid level                      -                    HYBL     0
 105 105 Layer between two hybrid levels   -                    HYBL     0
 106 255 Depth below land surface          m                    DPTH     0
-!106 106 Layer btwn 2 dpths below lnd sfc  m                    DPTH     0
-106 106 Layer btwn 2 dpths below lnd sfc  m                    DPTH     2
+106 106 Layer btwn 2 dpths below lnd sfc  m                    DPTH     0
 107 255 Isentropic (theta) level          K                    THTA     0
 107 107 Layer between two isent levels    K                    THTA     0
 108 255 Level at press diff from ground   Pa                   PDLV    -2
