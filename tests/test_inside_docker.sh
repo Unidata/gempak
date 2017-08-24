@@ -7,7 +7,7 @@ ls -l /home
 # Clean the yum cache
 yum -y clean all
 yum -y clean expire-cache
-yum groupinstall "Development tools"
+yum groupinstall "Development tools" -y
 yum install libxslt git rpm-build openmotif-devel gcc gcc-c++ gcc-gfortran libX11-devel libXt-devel libXext-devel libXp-devel libXft-devel libXtst-devel xorg-x11-xbitmaps flex byacc *fonts-ISO8859-* python-devel -y
 
 # Prepare the RPM environment
