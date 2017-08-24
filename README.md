@@ -12,6 +12,8 @@ GEMPAK can be installed by an individual user, and root / superuser permission i
 
 ## <a href="https://github.com/Unidata/gempak/releases">Latest Release</a>
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/4796566fc6b145bcbf73697998b437d3)](https://www.codacy.com/app/mjames/gempak?utm_source=github.com&utm_medium=referral&utm_content=Unidata/gempak&utm_campaign=badger)
+
 Download current and previous releases from <a href="https://github.com/Unidata/gempak/releases">https://github.com/Unidata/gempak/releases</a>.
 
 ## GitHub Clone
