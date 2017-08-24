@@ -40,6 +40,8 @@ all : INSTALLDIRS
 
 All : all
 
+container: all install programs_nc programs_gf
+
 everything: distclean all install programs_nc programs_gf
 Everything: everything
 
