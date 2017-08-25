@@ -40,7 +40,7 @@ mv gempak-%{version} GEMPAK7
 
 %install
 # create build root directory
-cd %{gem_home}
+pushd %{gem_home}
 export NAWIPS=`pwd`
 . rpm/Installer.gempak/Gemenviron.profile
 
@@ -52,6 +52,7 @@ make programs_nc >& /dev/null
 make clean
 
 mkdir -p ${RPM_BUILD_ROOT}/home/gempak/
+cd ..
 mv GEMPAK7 ${RPM_BUILD_ROOT}/home/gempak/
 
 %pre
