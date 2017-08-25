@@ -4,7 +4,7 @@ ls -l /home
 
 # Required packages
 apt-get update -y >& /dev/null
-apt-get install build-essential gfortran git gcc g++ libx11-dev libxt-dev libxext-dev libxft-dev libxtst-dev flex byacc python-dev libmotif-dev libxml2-dev libxslt-dev libz-dev autoconf  -y >% /dev/null
+apt-get install build-essential gfortran git gcc g++ libx11-dev libxt-dev libxext-dev libxft-dev libxtst-dev flex byacc python-dev libmotif-dev libxml2-dev libxslt-dev libz-dev autoconf  -y >& /dev/null
 
 # Package GEMPAK source from HEAD
 pushd /gempak
