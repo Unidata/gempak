@@ -33,7 +33,7 @@ Unidata GEMPAK Distribution
 %prep
 mkdir -p %{prefix}
 pushd %{prefix}
-tar -xvzf /tmp/rpmbuild/SOURCES/gempak-%{version}.tar.gz -C %{prefix}/
+tar -xvzf /tmp/rpmbuild/SOURCES/gempak-%{version}.tar.gz -C %{prefix}/ >& /dev/null
 mv gempak-%{version} GEMPAK7
 
 %build
