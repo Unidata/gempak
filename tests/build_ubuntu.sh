@@ -3,9 +3,8 @@
 ls -l /home
 
 # Required packages
-apt-get update -y
-#apt-get install git -y
-apt-get install build-essential gfortran git gcc g++ libx11-dev libxt-dev libxext-dev libxft-dev libxtst-dev flex byacc python-dev libmotif-dev libxml2-dev libxslt-dev libz-dev autoconf  -y
+apt-get update -y >& /dev/null
+apt-get install build-essential gfortran git gcc g++ libx11-dev libxt-dev libxext-dev libxft-dev libxtst-dev flex byacc python-dev libmotif-dev libxml2-dev libxslt-dev libz-dev autoconf  -y >% /dev/null
 
 # Package GEMPAK source from HEAD
 pushd /gempak
@@ -18,11 +17,18 @@ mkdir -p /tmp/gempak-${package_version}/
 cp -r /gempak/rpm/DEBIAN /tmp/gempak-${package_version}/
 
 mkdir -p /home/gempak/
-tar -xvzf /tmp/gempak-${package_version}.tar.gz -C /home/gempak
+tar -xvzf /tmp/gempak-${package_version}.tar.gz -C /home/gempak >& /dev/null
 pushd /home/gempak
 mv gempak-${package_version} GEMPAK7
 cd GEMPAK7
 . Gemenviron.profile
+
+pushd config
+
+rm -rf Makeinc.linux64_gfortran
+ln -s Makeinc.linux64_gfortran_ubuntu Makeinc.linux64_gfortran
+popd
+
 make extlibs >& /dev/null
 make gempak >& /dev/null
 make install >& /dev/null
