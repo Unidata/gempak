@@ -7,12 +7,12 @@ os_type=$1
 os_version=$2
 
  # Run tests in Container
-if [[ "$os_type" = "centos" ]]; then
-    if [[ "$os_version" = "centos6" ]]; then
+if [ "$os_type" = "centos" ]; then
+    if [ "$os_version" = "centos6" ]; then
 
         sudo docker run --rm=true -v `pwd`:/gempak:rw ${os_type}:${os_version} /bin/bash -c "bash -xe /gempak/tests/build_rhel.sh ${os_type} ${os_version}"
 
-    elif [[ "$os_version" = "centos7" ]]; then
+    elif [ "$os_version" = "centos7" ]; then
 
         docker run --privileged -d -ti -e "container=docker"  -v /sys/fs/cgroup:/sys/fs/cgroup -v `pwd`:/gempak:rw  ${os_type}:${os_version}   /usr/sbin/init
         DOCKER_CONTAINER_ID=$(docker ps | grep ${os_type} | awk '{print $1}')
@@ -24,7 +24,7 @@ if [[ "$os_type" = "centos" ]]; then
 
     fi
 
-elif [[ "$os_type" = "ubuntu" ]]; then
+elif [ "$os_type" = "ubuntu" ]; then
 
     sudo docker run --rm=true -v `pwd`:/gempak:rw ${os_type}:${os_version} /bin/bash -c "bash -xe /gempak/tests/build_ubuntu.sh "
 
