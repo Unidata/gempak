@@ -19,6 +19,8 @@ git archive --format=tar --prefix=gempak-${package_version}/ HEAD  | gzip >/tmp/
 popd
 
 # Build the RPM
+useradd gempak
+
 rpmbuild --define '_topdir /tmp/rpmbuild' -ba /tmp/rpmbuild/SPECS/docker.spec
 
 # After building the RPM, try to install it
