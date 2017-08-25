@@ -11,7 +11,7 @@
 Name: gempak
 Summary: Unidata GEMPAK
 Version: %{version}
-Release: 1
+Release: 1%{?dist}
 Prefix: %{prefix}
 Group: GEMPAK
 BuildRoot: /tmp
@@ -45,11 +45,11 @@ export NAWIPS=`pwd`
 . rpm/Installer.gempak/Gemenviron.profile
 
 make extlibs >& /dev/null
-make gempak
+make gempak >& /dev/null
 make install >& /dev/null
 make programs_gf >& /dev/null
 make programs_nc >& /dev/null
-make clean
+make clean >& /dev/null
 
 mkdir -p ${RPM_BUILD_ROOT}/home/gempak/
 cd ..

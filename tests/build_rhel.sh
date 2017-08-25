@@ -1,6 +1,6 @@
 #!/bin/sh -xe
-
-OS_VERSION=$1
+OS_TYPE=$1
+OS_VERSION=$2
 
 ls -l /home
 
@@ -27,6 +27,11 @@ mkdir -p /var/run/lock
 
 yum localinstall -y /tmp/rpmbuild/RPMS/x86_64/gempak*
 
-
-
+# Run checks
+#. /home/gempak/NAWIPS/Gemenviron.profile
+#gdlist << EOF
+#r
+#
+#e
+#EOF
 

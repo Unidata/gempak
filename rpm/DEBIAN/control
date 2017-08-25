@@ -1,0 +1,7 @@
+Package: gempak
+Version: 7.4.0
+Maintainer: Michael James
+Architecture: all
+Description: Unidata GEMPAK Distribution
+Depends: libx11-dev, libxt-dev, libxext, libxft-dev, libxtst-dev, flex, byacc, libmotif, libxml2, libxslt, libz
+Homepage: http://www.unidata.ucar.edu/software/gempak/
