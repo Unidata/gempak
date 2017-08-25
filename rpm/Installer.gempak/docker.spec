@@ -31,19 +31,19 @@ provides: gempak
 Unidata GEMPAK Distribution
 
 %prep
+mkdir -p %{prefix}
+pushd %{prefix}
+tar -xvzf /tmp/rpmbuild/SOURCES/gempak-%{version}.tar.gz -C %{prefix}/
+mv gempak-%{version} GEMPAK7
 
 %build
 
 %install
 # create build root directory
-if [ -d ${RPM_BUILD_ROOT}%{gem_home} ]; then
-   rm -rf ${RPM_BUILD_ROOT}%{gem_home}
-fi
-mkdir -p ${RPM_BUILD_ROOT}%{gem_home}
-cd ${RPM_BUILD_ROOT}%{gem_home}
-cp -r /gempak/* .
+cd %{gem_home}
 export NAWIPS=`pwd`
 . rpm/Installer.gempak/Gemenviron.profile
+
 make extlibs >& /dev/null
 make gempak
 make install >& /dev/null
@@ -51,15 +51,13 @@ make programs_gf >& /dev/null
 make programs_nc >& /dev/null
 make clean
 
-# create soft link to the current gempak directory
-cd ..
-ln -s GEMPAK7 NAWIPS
-
-sed -i '\/tmp\/rpmbuild\/BUILDROOT\/gempak-%{version}-%{release}.x86_64//' ${OS_INC}/xsltconfig.h
+mkdir -p ${RPM_BUILD_ROOT}/home/gempak/
+mv GEMPAK7 ${RPM_BUILD_ROOT}/home/gempak/
 
 %pre
 
 %post
+ln -s %{prefix}/GEMPAK7 %{prefix}/NAWIPS
 
 %postun
 
@@ -67,7 +65,5 @@ sed -i '\/tmp\/rpmbuild\/BUILDROOT\/gempak-%{version}-%{release}.x86_64//' ${OS_
 
 %files
 %defattr(-,gempak,-,-)
-%dir %{prefix}/GEMPAK7/
-%{prefix}/GEMPAK7/*
-%attr(755,gempak,-) %{prefix}/NAWIPS
+%{prefix}/GEMPAK7
 

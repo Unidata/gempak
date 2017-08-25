@@ -12,10 +12,8 @@ yum install libxslt git rpm-build openmotif-devel gcc gcc-c++ gcc-gfortran libX1
 
 # Prepare the RPM environment
 mkdir -p /tmp/rpmbuild/{BUILD,RPMS,SOURCES,SPECS,SRPMS}
-
-cp gempak/rpm/Installer.gempak/docker.spec /tmp/rpmbuild/SPECS
-ln -s /home/gempak/GEMPAK7 gempak
-pushd gempak
+pushd /gempak
+cp rpm/Installer.gempak/docker.spec /tmp/rpmbuild/SPECS
 package_version=`grep "define version" rpm/Installer.gempak/docker.spec | grep -v version_core| awk '{print $3}'`
 git archive --format=tar --prefix=gempak-${package_version}/ HEAD  | gzip >/tmp/rpmbuild/SOURCES/gempak-${package_version}.tar.gz
 popd
