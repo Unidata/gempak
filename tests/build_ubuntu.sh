@@ -39,7 +39,7 @@ make clean >& /dev/null
 ls -la $OS_BIN|wc -l
 
 mkdir -p /tmp/gempak-${package_version}/home
-cp -r /home/gempak /home/gempak/gempak-${package_version}/home/
+cp -r /home/gempak /tmp/gempak-${package_version}/home/
 
 pushd /tmp
 
