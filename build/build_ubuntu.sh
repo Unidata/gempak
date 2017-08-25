@@ -8,13 +8,13 @@ apt-get install build-essential gfortran git gcc g++ libx11-dev libxt-dev libxex
 
 # Package GEMPAK source from HEAD
 pushd /gempak
-package_version=`grep "define version" rpm/Installer.gempak/docker.spec | grep -v version_core| awk '{print $3}'`
+package_version=`grep "define version" build/Installer.gempak/gempak.spec | grep -v version_core| awk '{print $3}'`
 git archive --format=tar --prefix=gempak-${package_version}/ HEAD  | gzip >/tmp/gempak-${package_version}.tar.gz
 
 # Prepare the environment
 mkdir -p /tmp/gempak-${package_version}/
 
-cp -r /gempak/rpm/DEBIAN /tmp/gempak-${package_version}/
+cp -r /gempak/build/DEBIAN /tmp/gempak-${package_version}/
 
 mkdir -p /home/gempak/
 tar -xvzf /tmp/gempak-${package_version}.tar.gz -C /home/gempak >& /dev/null
@@ -48,3 +48,4 @@ dpkg-deb --build gempak-${package_version}
 
 dpkg -i gempak-${package_version}.deb
 
+cp gempak-${package_version}.deb /gempak/build/

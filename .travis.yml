@@ -16,5 +16,5 @@ before_install:
   - sudo docker pull ${OS_TYPE}:${OS_VERSION}
 
 script:
- # Run tests in Container
-- tests/setup_tests.sh ${OS_TYPE} ${OS_VERSION}
+ # Run builds in Container
+- build/setup.sh ${OS_TYPE} ${OS_VERSION}

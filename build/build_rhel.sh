@@ -13,15 +13,15 @@ yum install libxslt git rpm-build openmotif-devel gcc gcc-c++ gcc-gfortran libX1
 # Prepare the RPM environment
 mkdir -p /tmp/rpmbuild/{BUILD,RPMS,SOURCES,SPECS,SRPMS}
 pushd /gempak
-cp rpm/Installer.gempak/docker.spec /tmp/rpmbuild/SPECS
-package_version=`grep "define version" rpm/Installer.gempak/docker.spec | grep -v version_core| awk '{print $3}'`
+cp build/Installer.gempak/gempak.spec /tmp/rpmbuild/SPECS
+package_version=`grep "define version" build/Installer.gempak/gempak.spec | grep -v version_core| awk '{print $3}'`
 git archive --format=tar --prefix=gempak-${package_version}/ HEAD  | gzip >/tmp/rpmbuild/SOURCES/gempak-${package_version}.tar.gz
 popd
 
 # Build the RPM
 useradd gempak
 
-rpmbuild --define '_topdir /tmp/rpmbuild' -ba /tmp/rpmbuild/SPECS/docker.spec
+rpmbuild --define '_topdir /tmp/rpmbuild' -ba /tmp/rpmbuild/SPECS/gempak.spec
 
 # After building the RPM, try to install it
 # Fix the lock file error on EL7.  /var/lock is a symlink to /var/run/lock
@@ -29,11 +29,6 @@ mkdir -p /var/run/lock
 
 yum localinstall -y /tmp/rpmbuild/RPMS/x86_64/gempak*
 
-# Run checks
-#. /home/gempak/NAWIPS/Gemenviron.profile
-#gdlist << EOF
-#r
-#
-#e
-#EOF
-
+cp /tmp/rpmbuild/SOURCES/gempak-${package_version}.tar.gz /gempak/build/
+cp /tmp/rpmbuild/RPMS/x86_64/gempak*.rpm /gempak/build/
+cp /tmp/rpmbuild/SRPMS/gempak*.src.rpm /gempak/build/

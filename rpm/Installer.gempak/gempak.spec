@@ -42,7 +42,7 @@ mv gempak-%{version} GEMPAK7
 # create build root directory
 pushd %{gem_home}
 export NAWIPS=`pwd`
-. rpm/Installer.gempak/Gemenviron.profile
+. build/Installer.gempak/Gemenviron.profile
 
 make extlibs >& /dev/null
 make gempak >& /dev/null
