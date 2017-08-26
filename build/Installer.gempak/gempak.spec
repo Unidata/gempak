@@ -20,10 +20,10 @@ License: N/A
 Distribution: N/A
 Vendor: Unidata
 Packager: Michael James
-Requires: libX11-devel, libXt-devel, libXext, libXp-devel
-Requires: libXft-devel, libXtst-devel, xorg-x11-xbitmaps
-Requires: flex, byacc
-BuildRequires: openmotif, openmotif-devel
+BuildRequires: libX11-devel, libXt-devel, libXext, libXp-devel
+BuildRequires: libXft-devel, libXtst-devel, xorg-x11-xbitmaps
+BuildRequires: flex, byacc, openmotif-devel
+Requires: openmotif, libX11, libXt, libXext, libXp, libXft, libXtst,  xorg-x11-xbitmaps
 AutoReq: no
 provides: gempak
 
@@ -34,7 +34,6 @@ Unidata GEMPAK Distribution
 mkdir -p %{prefix}
 pushd %{prefix}
 tar -xvzf /tmp/rpmbuild/SOURCES/gempak-%{version}.tar.gz -C %{prefix}/ >& /dev/null
-mv gempak-%{version} GEMPAK7
 
 %build
 
@@ -43,6 +42,8 @@ mv gempak-%{version} GEMPAK7
 pushd %{gem_home}
 export NAWIPS=`pwd`
 . build/Installer.gempak/Gemenviron.profile
+pwd
+ls -al
 . source_python.sh
 
 make extlibs >& /dev/null
@@ -55,6 +56,8 @@ make clean >& /dev/null
 mkdir -p ${RPM_BUILD_ROOT}/home/gempak/
 cd ..
 mv GEMPAK7 ${RPM_BUILD_ROOT}/home/gempak/
+cd ${RPM_BUILD_ROOT}/home/gempak/GEMPAK7
+rm -rf extlibs config .gitignore .travis.yml build
 
 %pre
 

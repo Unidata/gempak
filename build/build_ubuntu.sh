@@ -37,6 +37,9 @@ make programs_gf >& /dev/null
 make programs_nc >& /dev/null
 make clean >& /dev/null
 
+rm -rf extlibs config .gitignore .travis.yml build
+
+
 ls -la $OS_BIN|wc -l
 
 mkdir -p /tmp/gempak-${package_version}/home
@@ -45,11 +48,10 @@ cp -r /home/gempak /tmp/gempak-${package_version}/home/
 pushd /tmp
 
 # Build the RPM
-dpkg-deb --verbose --build gempak-${package_version}
+dpkg-deb --nocheck --debug --verbose --build gempak-${package_version}
 cp gempak-${package_version}.deb /gempak/build/
 
 # Install with dependencies
 apt-get update -y
 dpkg -i gempak-${package_version}.deb
-#apt-get install libgfortran3 libx11-6 libxm4 libxtst6 libxt6
 apt-get -f install
