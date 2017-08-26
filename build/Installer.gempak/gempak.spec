@@ -41,10 +41,9 @@ tar -xvzf /tmp/rpmbuild/SOURCES/gempak-%{version}.tar.gz -C %{prefix}/ >& /dev/n
 # create build root directory
 pushd %{gem_home}
 export NAWIPS=`pwd`
+cat source_python.sh
+cat source_python.sh >> build/Installer.gempak/Gemenviron.profile
 . build/Installer.gempak/Gemenviron.profile
-pwd
-ls -al
-. source_python.sh
 
 make extlibs >& /dev/null
 make gempak >& /dev/null

@@ -3,10 +3,9 @@
 
 [![GitHub release](https://img.shields.io/github/release/Unidata/gempak.svg)]() [![license](https://img.shields.io/github/license/Unidata/gempak.svg)]() [![Travis Badge](https://travis-ci.org/Unidata/gempak.svg?branch=master)](https://travis-ci.org/Unidata/gempak) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/4796566fc6b145bcbf73697998b437d3)](https://www.codacy.com/app/mjames/gempak)
 
-GEMPAK, the GEneral Meteorology PAcKage, is an analysis, display, and product generation package for meteorological data.   Originally developed by NCEP for
-use by the National Centers (SPC, TPC, AWC, HPC, OPC, SWPC, etc.) in producing operational forecast and analysis products.  UCAR's Unidata Program Center releases and support a non-operational version of GEMPAK for use in research and education.
+GEMPAK (GEneral Meteorology PAcKage) is a set of programs to decode, analyze, and render meteorological data.  UCAR's Unidata Program Center maintains an open-source, non-operational release for use in the geoscience community.
 
-64-bit Red Hat-flavored Linux (RHEL, CentOS, Fedora) is recommened for source builds, but GEMPAK can be built from source on nearly any Unix-based system. Specific instructions for <a href="http://www.unidata.ucar.edu/software/gempak/doc/install_osx.html">building on OS X</a> are available as well.
+GEMPAK is easily built on a number of Unix-based systems: RedHat/CentOS/Fedora, Ubuntu/Debian, <a href="http://www.unidata.ucar.edu/software/gempak/doc/install_osx.html">macOS</a>. The recommended installation (available as a Docker container) is CentOS 6 Linux with gfortran and gcc compilers. 
 
 GEMPAK can be installed by an individual user, and root / superuser permission is not required. For this guide and throughout other online documentation it is assumed that GEMPAK is installed for a **gempak** user account in the home directory `/home/gempak/GEMPAK7`.
 

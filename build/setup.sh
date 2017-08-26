@@ -1,5 +1,4 @@
 #!/bin/sh -xe
-
 # This script starts docker and systemd (if el7)
 
 # Version of CentOS/RHEL
@@ -8,9 +7,14 @@ os_version=$2
 
  # Run builds in Container
 if [ "$os_type" = "centos" ]; then
-    if [ "$os_version" = "centos6" ]; then
 
-        sudo docker run --rm=true -v `pwd`:/gempak:rw ${os_type}:${os_version} /bin/bash -c "bash -xe /gempak/build/build_rhel.sh ${os_type} ${os_version}"
+    if [ "$os_version" = "container" ]; then
+
+        sudo docker build -t unidata/gempak -f build/docker/Dockerfile.gempak .
+
+    elif [ "$os_version" = "centos6" ]; then
+
+        sudo docker build -t unidata/gempak --rm=true -v `pwd`:/gempak:rw ${os_type}:${os_version} /bin/bash -c "bash -xe /gempak/build/build_rhel.sh ${os_type} ${os_version}"
 
     elif [ "$os_version" = "centos7" ]; then
 

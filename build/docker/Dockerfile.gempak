@@ -1,0 +1,17 @@
+FROM unidata/ldm-docker
+MAINTAINER Michael James <mjames@ucar.edu>
+
+# Install latest GEMPAK binary
+RUN useradd -ms /bin/bash -G ldm gempak
+ENV HOME /home/gempak
+RUN yum install byacc flex openmotif-devel xorg-x11-xbitmaps libXtst-devel libXft-devel libXp-devel libXt-devel libX11-devel  -y
+RUN rpm -ivh http://www.unidata.ucar.edu/downloads/gempak/latest/gempak-latest.el7.centos.x86_64.rpm
+RUN . /home/gempak/GEMPAK7/Gemenviron.profile
+RUN $NAWIPS/ldm/etc/single_pqact.csh
+RUN cp $NAWIPS/ldm/etc/pqact.gempak /home/ldm/etc/pqact.conf
+USER root
+RUN cd /home/gempak/GEMPAK7/ldm/
+RUN cp /home/gempak/GEMPAK7/os/linux64/bin/dc* /home/ldm/bin/
+RUN chown ldm:ldm /home/ldm/bin/dc*
+USER ${CUSER}
+# sudo docker run -p 388:388 -it unidata/gempak
