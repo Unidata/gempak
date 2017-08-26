@@ -4,6 +4,7 @@ env:
   - OS_TYPE=centos OS_VERSION=centos6 
   - OS_TYPE=centos OS_VERSION=centos7
   - OS_TYPE=ubuntu OS_VERSION=latest
+  - OS_TYPE=fedora OS_VERSION=latest
 
 services:
   - docker

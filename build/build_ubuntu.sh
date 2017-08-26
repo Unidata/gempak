@@ -4,7 +4,7 @@ ls -l /home
 
 # Required packages
 apt-get update -y >& /dev/null
-apt-get install build-essential gfortran git gcc g++ libx11-dev libxt-dev libxext-dev libxft-dev libxtst-dev flex byacc python-dev libmotif-dev libxml2-dev libxslt-dev libz-dev autoconf  -y >& /dev/null
+apt-get install build-essential gfortran git gcc g++ libx11-dev libxt-dev libxext-dev libxft-dev libxtst-dev flex byacc python-dev libmotif-dev libxml2-dev libxslt-dev libz-dev autoconf -y
 
 # Package GEMPAK source from HEAD
 pushd /gempak
@@ -44,8 +44,11 @@ cp -r /home/gempak /tmp/gempak-${package_version}/home/
 pushd /tmp
 
 # Build the RPM
-dpkg-deb --build gempak-${package_version}
-
-dpkg -i gempak-${package_version}.deb
-
+dpkg-deb --verbose --build gempak-${package_version}
 cp gempak-${package_version}.deb /gempak/build/
+
+# Install with dependencies
+apt-get update -y
+dpkg -i gempak-${package_version}.deb
+#apt-get install libgfortran3 libx11-6 libxm4 libxtst6 libxt6
+apt-get -f install
