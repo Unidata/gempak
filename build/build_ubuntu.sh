@@ -22,6 +22,7 @@ pushd /home/gempak
 mv gempak-${package_version} GEMPAK7
 cd GEMPAK7
 . Gemenviron.profile
+. source_python.sh
 
 pushd config
 

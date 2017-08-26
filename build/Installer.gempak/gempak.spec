@@ -43,6 +43,7 @@ mv gempak-%{version} GEMPAK7
 pushd %{gem_home}
 export NAWIPS=`pwd`
 . build/Installer.gempak/Gemenviron.profile
+. source_python.sh
 
 make extlibs >& /dev/null
 make gempak >& /dev/null
