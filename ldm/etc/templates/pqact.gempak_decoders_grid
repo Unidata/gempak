@@ -535,11 +535,43 @@ NGRID	^[LM].U... KWNO
 	-e GEMTBL=@GEMTBL@
 	data/gempak/model/mos/YYYYMMDDHH_lamp.gem
 #
-# GFS MOS
-NGRID	^[LM].U... KWBQ
+# 2.5km GFSMOS CONUS
+# NOTE: some fields are still 2145 x 1377 (same proj and res)
+# 2145 x 1377 (legacy?)
+NGRID	^M[ABC]U... KWBQ
 	PIPE	dcgrib2 -v 1 -d data/gempak/logs/gfsmos.log
 	-e GEMTBL=@GEMTBL@
+	data/gempak/model/mos/YYYYMMDDHH_gfsmos-2145x1377.gem
+NGRID	^Y[LMNZ]U... KWBQ
+	PIPE	dcgrib2 -v 1 -d data/gempak/logs/gfsmos.log
+	-e GEMTBL=@GEMTBL@
+	data/gempak/model/mos/YYYYMMDDHH_gfsmos-2145x1377.gem
+# 2145 x 1597 (updated)
+NGRID	^Y[A-JRSU-Y]U... KWBQ
+	PIPE	dcgrib2 -v 1 -d data/gempak/model/mos/gfsmo
+	-e GEMTBL=@GEMTBL@
 	data/gempak/model/mos/YYYYMMDDHH_gfsmos.gem
+#
+# GFSMOS Alaska 1649 x 1105 STR
+#
+HDS|NGRID	^[LMY].R... KWBQ
+	PIPE	dcgrib2 -v 1 -d data/gempak/logs/gfsmos.log
+	-e GEMTBL=@GEMTBL@
+	data/gempak/model/mos/YYYYMMDDHH_gfsmos-ak.gem
+#
+# GFSMOS Hawaii 625 x 561 MER
+#
+NGRID	^L.S... KWBQ
+	PIPE	dcgrib2 -v 1 -d data/gempak/logs/gfsmos.log
+	-e GEMTBL=@GEMTBL@
+	data/gempak/model/mos/YYYYMMDDHH_gfsmos-hi.gem
+#
+# 5km GFSMOS legacy
+#
+HDS	^L.U... KWBQ
+	PIPE	dcgrib2 -v 1 -d data/gempak/logs/gfsmos.log
+	-e GEMTBL=@GEMTBL@
+	data/gempak/model/mos/YYYYMMDDHH_gfsmos5.gem
 #
 # KNHC Forecaster grids
 NGRID	^[LM].G... KNHC
@@ -647,8 +679,6 @@ NGRID	Y.C.[0-9][0-9] KWBY
 	-e GEMTBL=@GEMTBL@
 #
 # HIRES
-#
-# NGRID 16530432  LTBA86 KWBS 180000 !grib2/ncep/WRF_NMM/#255/201412180000F000/TMPK/90-60 hPa PDLY
 #
 #NGRID	[LM].[AB]... KWBS ...... !grib2/ncep/(.*)/#(.*)/([0-9]{12})F(...)/(.*)/.*
 #	PIPE	dcgrib2 -v 1 -d data/gempak/logs/dcgrib2_NGRIDhiresw.log
