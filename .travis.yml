@@ -9,9 +9,9 @@ env:
   matrix:
   - OS_TYPE=centos OS_VERSION=centos6 
   - OS_TYPE=centos OS_VERSION=centos7
-  - OS_TYPE=ubuntu OS_VERSION=latest
   - OS_TYPE=fedora OS_VERSION=latest
-  - OS_TYPE=centos OS_VERSION=container
+#  - OS_TYPE=ubuntu OS_VERSION=latest # this causes travis build to "fail" since it lasts more than 10min unresponsive
+#  - OS_TYPE=centos OS_VERSION=container # run this manually to create new dockerhub image
 
 before_install:
   - sudo apt-get update
