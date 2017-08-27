@@ -81,6 +81,7 @@
 000 001 007 000 Precipitation rate               kg m**-2 s**-1       PR--             0  -9999.00
 000 001 007 008 Precipitation rate               kg m**-2 s**-1       PR--             0  -9999.00
 000 001 008 008 Total precipitation              kg m**-2             P--M             0     -0.01
+000 001 008 005 Precipitation Probability        %                    PP--             0  -9999.00
 000 001 008 009 Precipitation Probability        %                    PP--             0  -9999.00
 000 001 008 011 Total precipitation              kg m**-2             P--M             0     -0.01
 000 001 008 012 Total precipitation              kg m**-2             P--M             0     -0.01
@@ -145,6 +146,7 @@
 000 001 199 008 Potential evaporation            kg m**-2             PEVAP            0  -9999.00
 000 001 083 000 Albedo                           %                    ALBD             0  -9999.00
 000 001 084 000 Surface Roughness                m                    SRLM             0  -9999.00
+000 001 226 000 Predominant Weather              non-dim              PWTHER           0  -9999.00
 !
 ! momentum
 !D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING
@@ -496,5 +498,6 @@
 000 002 001 008 Wind Speed                       m s**-1              WIND             0  -9999.00
 000 001 039 000 Percent frozen precipitation     %                    CPOFP            0  -9999.00
 255 255 255 000 RH wrt PW in column              %                    RHCOL            0  -9999.00
+000 001 019 000 Precipitation Type               cat                  PTYPE            0  -9999.00
 000 001 019 005 Precipitation Type               cat                  PTYPE            0  -9999.00
 000 000 000 009 Temperature                      K                    TMP              0  -9999.00

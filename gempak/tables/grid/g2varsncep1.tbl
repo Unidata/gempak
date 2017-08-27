@@ -122,6 +122,7 @@
 000 001 223 008 Total precip nearest grid point  kg m**-2             APCPN            0  -9999.00
 000 001 224 008 Convec precip nearest grid point kg m**-2             ACPCPN           0  -9999.00
 000 001 225 008 Freezing rain accumulation       kg m**-2             Z--M             0     -0.01
+000 001 226 000 Predominant Weather              non-dim              PWTHER           0  -9999.00
 000 001 226 008 Predominant Weather              non-dim              PWTHER           0  -9999.00
 000 001 227 008 Frozen rain (sleet) accum        kg m**-2             I--M             0     -0.01
 000 001 241 008 Total Snow                       kg m**-2             TSNOW            0  -9999.00 
