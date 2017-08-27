@@ -1,5 +1,8 @@
 #
 # Unidata GEMPAK Spec File
+#
+# The GEMPAK RPM appears to require being build in /home/gempak
+# (rather than ${BUILD_RPM_ROOT}/home/gempak due to static linking.
 # 
 # Nov 22, 2016  mjames  Created
 # Aug 24, 2017  mjames  7.4.0 docker rpm builds w traviscl
@@ -15,8 +18,8 @@ Release: 1%{?dist}
 Prefix: %{prefix}
 Group: GEMPAK
 BuildRoot: /tmp
-URL: N/A
-License: N/A
+URL: http://www.unidata.ucar.edu/software/gempak/
+License: Open Source
 Distribution: N/A
 Vendor: Unidata
 Packager: Michael James
@@ -44,6 +47,7 @@ export NAWIPS=`pwd`
 cat source_python.sh
 cat source_python.sh >> build/Installer.gempak/Gemenviron.profile
 . build/Installer.gempak/Gemenviron.profile
+# TODO: ". source_python.sh" doesn't seem to work from spec file
 
 make extlibs >& /dev/null
 make gempak >& /dev/null
@@ -62,6 +66,7 @@ rm -rf extlibs config .gitignore .travis.yml build
 
 %post
 ln -s %{prefix}/GEMPAK7 %{prefix}/NAWIPS
+chown gempak %{prefix}/NAWIPS
 
 %postun
 

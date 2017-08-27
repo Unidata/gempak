@@ -1,6 +1,8 @@
 
 # GEMPAK
 
+[http://www.unidata.ucar.edu/software/gempak/](http://www.unidata.ucar.edu/software/gempak/)
+
 [![GitHub release](https://img.shields.io/github/release/Unidata/gempak.svg)]() [![license](https://img.shields.io/github/license/Unidata/gempak.svg)]() [![Travis Badge](https://travis-ci.org/Unidata/gempak.svg?branch=master)](https://travis-ci.org/Unidata/gempak) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/4796566fc6b145bcbf73697998b437d3)](https://www.codacy.com/app/mjames/gempak)
 
 GEMPAK (GEneral Meteorology PAcKage) is a set of programs to decode, analyze, and render meteorological data.  UCAR's Unidata Program Center maintains an open-source, non-operational release for use in the geoscience community.
@@ -16,6 +18,13 @@ GEMPAK can be installed by an individual user, and root / superuser permission i
 Download current and previous releases from <a href="https://github.com/Unidata/gempak/releases">https://github.com/Unidata/gempak/releases</a>
 
 These packages can also be found on the <a href="http://www.unidata.ucar.edu/downloads/gempak/">Unidata download page</a>.
+
+### Linux Binaries
+
+#### CentOS/RH 7 [gempak-latest.el7.centos.x86_64.rpm](http://www.unidata.ucar.edu/downloads/gempak/latest/gempak-latest.el7.centos.x86_64.rpm)
+#### CentOS/RH 6 [gempak-latest.el6.x86_64.rpm](http://www.unidata.ucar.edu/downloads/gempak/latest/gempak-latest.el6.x86_64.rpm)
+#### Fedora Core [gempak-latest.fc.x86_64.rpm](http://www.unidata.ucar.edu/downloads/gempak/latest/gempak-latest.fc.x86_64.rpm)
+#### Ubuntu/Debian [gempak-latest.deb](http://www.unidata.ucar.edu/downloads/gempak/latest/gempak-latest.deb)
 
 ## GitHub Clone
 
