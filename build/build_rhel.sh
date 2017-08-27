@@ -29,5 +29,5 @@ mkdir -p /var/run/lock
 
 yum localinstall -y /tmp/rpmbuild/RPMS/x86_64/gempak*
 
-cp /tmp/rpmbuild/SOURCES/gempak-${package_version}.tar.gz /gempak/build/
-cp /tmp/rpmbuild/RPMS/x86_64/gempak*.rpm /gempak/build/
+cp /tmp/rpmbuild/SOURCES/gempak-${package_version}.tar.gz /gempak/build/dist/
+cp /tmp/rpmbuild/RPMS/x86_64/gempak*.rpm /gempak/build/dist/

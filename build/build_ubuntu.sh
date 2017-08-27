@@ -30,11 +30,11 @@ rm -rf Makeinc.linux64_gfortran
 ln -s Makeinc.linux64_gfortran_ubuntu Makeinc.linux64_gfortran
 popd
 
-make extlibs >& /dev/null
-make gempak >& /dev/null
-make install >& /dev/null
-make programs_gf >& /dev/null
-make programs_nc >& /dev/null
+make extlibs
+make gempak
+make install
+make programs_gf
+make programs_nc
 make clean >& /dev/null
 
 rm -rf extlibs config .gitignore .travis.yml build
@@ -49,7 +49,7 @@ pushd /tmp
 
 # Build the RPM
 dpkg-deb --nocheck --debug --verbose --build gempak-${package_version}
-cp gempak-${package_version}.deb /gempak/build/
+cp gempak-${package_version}.deb /gempak/build/dist/
 
 # Install with dependencies
 apt-get update -y
