@@ -10,7 +10,7 @@ if [ "$os_type" = "centos" ]; then
 
     if [ "$os_version" = "container" ]; then
 
-        sudo docker build -t unidata/gempak -f build/docker/Dockerfile.gempak .
+        sudo docker build -t unidata/gempak -f build/docker/Dockerfile.gempak build/docker
 
     elif [ "$os_version" = "centos6" ]; then
 

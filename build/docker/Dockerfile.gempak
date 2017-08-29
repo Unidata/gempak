@@ -1,43 +1,53 @@
 FROM unidata/ldm-docker
 MAINTAINER Michael James <mjames@ucar.edu>
 
-RUN useradd -ms /bin/bash gempak
-ENV HOME /home/gempak
+ENV HOME /home/ldm
+
+WORKDIR $HOME
 
 #
 # GEMPAK dependencies
 #
-RUN yum install openmotif libX11 libXt libXext libXp libXft libXtst xorg-x11-xbitmaps -y
+
+RUN yum install openmotif libX11 libXt libXext libXp libXft libXtst xorg-x11-xbitmaps csh -y
+
 #
 # GEMPAK binary
 #
+
 RUN rpm -ivh http://www.unidata.ucar.edu/downloads/gempak/latest/gempak-latest.el7.centos.x86_64.rpm
-RUN ls -la /home/
-RUN ls -la /home/gempak/
-RUN . /home/gempak/GEMPAK7/Gemenviron.profile
-RUN env |grep GEM
+
 #
 # Create single pqact file for GEMPAK decoders
 #
-RUN $NAWIPS/ldm/etc/single_pqact.csh
-RUN cp $NAWIPS/ldm/etc/pqact.gempak /home/ldm/etc/pqact.conf
+COPY gempakConfig.sh $HOME/bin/
+RUN gempakConfig.sh
 
 #
 # Copy GEMPAK decoders to ldm/bin
 #
+
 USER root
+RUN chown ldm:ldm /home/gempak/GEMPAK7
 RUN cd /home/gempak/GEMPAK7/ldm/
-RUN cp /home/gempak/GEMPAK7/os/linux64/bin/dc* /home/ldm/bin/
-RUN chown ldm:ldm /home/ldm/bin/dc*
+RUN cp /home/gempak/GEMPAK7/os/linux64/bin/dc* $HOME/bin/
+RUN chown ldm:ldm $HOME/bin/dc*
 
 #
 # Full ldmd.conf
 #
-COPY ldmd.conf /home/ldm/etc/
+
+COPY ldmd.conf $HOME/etc/
+
+#
+# GEMPAK version replacement runldm.sh
+#
+COPY runldm.sh $HOME/bin/
 
 #
 # entrypoint
 #
+
 COPY entrypoint.sh /
 RUN chmod +x /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
@@ -45,4 +55,5 @@ ENTRYPOINT ["/entrypoint.sh"]
 #
 # Execute script
 #
+
 CMD ["runldm.sh"]
