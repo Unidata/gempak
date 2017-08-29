@@ -7,8 +7,6 @@ include $(CONFIGDIR)/$(MAKEINC)
 
 all : $(LIBJASPER)
 
-install: all
-
 clean: _jasper_clean
 
 $(LIBJASPER): jasper/configure
@@ -18,6 +16,7 @@ _jasper :
 	@-cd jasper; \
 	pwd; \
 	$(MAKE) distclean; \
+	export echo=echo
 	./configure '--prefix=$(OS_ROOT)' $(JASPEROPT) ; \
 	$(MAKE) all install
 

@@ -20,6 +20,7 @@ void gdparseparm ( GDG2_input *input, char *line, int *iret )
  **                                                                     *
  * Log:                                                                 *
  * B. Yin/ERT                9/2015   Initial creation                  *
+ * M. James/Unidata          8/2017   strsep to strtok                  *
  ***********************************************************************/
 {
     int ier;
@@ -49,7 +50,7 @@ void gdparseparm ( GDG2_input *input, char *line, int *iret )
 
     while ( (ptr != NULL) && (*iret == 0)) {
 
-        key = strsep( &ptr, "=" );
+        key = strtok( &ptr, "=" );
         value = ptr;
 
         if ( key != NULL ) {

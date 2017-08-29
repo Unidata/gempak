@@ -21,10 +21,11 @@ These packages can also be found on the <a href="http://www.unidata.ucar.edu/dow
 
 ### Linux Binaries
 
-#### CentOS/RH 7 [gempak-latest.el7.centos.x86_64.rpm](http://www.unidata.ucar.edu/downloads/gempak/latest/gempak-latest.el7.centos.x86_64.rpm)
-#### CentOS/RH 6 [gempak-latest.el6.x86_64.rpm](http://www.unidata.ucar.edu/downloads/gempak/latest/gempak-latest.el6.x86_64.rpm)
-#### Fedora Core [gempak-latest.fc.x86_64.rpm](http://www.unidata.ucar.edu/downloads/gempak/latest/gempak-latest.fc.x86_64.rpm)
-#### Ubuntu/Debian [gempak-latest.deb](http://www.unidata.ucar.edu/downloads/gempak/latest/gempak-latest.deb)
+#### 64-bit CentOS/RH 7 [gempak-latest.el7.centos.x86_64.rpm](http://www.unidata.ucar.edu/downloads/gempak/latest/gempak-latest.el7.centos.x86_64.rpm)
+#### 64-bit CentOS/RH 6 [gempak-latest.el6.x86_64.rpm](http://www.unidata.ucar.edu/downloads/gempak/latest/gempak-latest.el6.x86_64.rpm)
+#### 64-bit Fedora Core [gempak-latest.fc.x86_64.rpm](http://www.unidata.ucar.edu/downloads/gempak/latest/gempak-latest.fc.x86_64.rpm)
+#### 64-bit Ubuntu/Debian [gempak-latest.deb](http://www.unidata.ucar.edu/downloads/gempak/latest/gempak-latest.deb)
+#### x86 Solaris [gempak-latest.sol.tar.gz](http://www.unidata.ucar.edu/downloads/gempak/latest/gempak-latest.sol.tar.gz)
 
 ## GitHub Clone
 

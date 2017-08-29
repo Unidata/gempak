@@ -13,8 +13,6 @@ all :
 		$(MAKE) $(MFLAGS) $@ ) ; \
 	done
 
-install: all
-
 clean:
 	@for dir in $(SUBDIRS); do \
 	( cd libncepBUFR; echo "making $@ in `pwd`" ; \
