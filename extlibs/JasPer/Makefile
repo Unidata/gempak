@@ -16,7 +16,6 @@ _jasper :
 	@-cd jasper; \
 	pwd; \
 	$(MAKE) distclean; \
-	export echo=echo
 	./configure '--prefix=$(OS_ROOT)' $(JASPEROPT) ; \
 	$(MAKE) all install
 

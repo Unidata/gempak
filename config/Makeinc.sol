@@ -22,6 +22,7 @@ CFLAGS_DB = $(COPT)
 FFLAGS = $(FOPT) 
 LDFLAGS = -xildoff
 LDM_FLAGS = -D_DEV_CONSLOG
+export echo=echo
 
 
 INSTALL = /usr/ucb/install -s
