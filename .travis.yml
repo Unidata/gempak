@@ -14,7 +14,7 @@ env:
   - OS_TYPE=centos OS_VERSION=centos6 
   - OS_TYPE=centos OS_VERSION=centos7
   - OS_TYPE=fedora OS_VERSION=latest
-#  - OS_TYPE=ubuntu OS_VERSION=latest # this causes travis build to "fail" since it lasts more than 10min unresponsive
+  - OS_TYPE=ubuntu OS_VERSION=latest
 #  - OS_TYPE=centos OS_VERSION=container # run this manually to create new dockerhub image
 
 before_install:
@@ -25,4 +25,4 @@ before_install:
   - sudo docker pull ${OS_TYPE}:${OS_VERSION}
 
 script:
-  - travis_wait build/setup.sh ${OS_TYPE} ${OS_VERSION}
+  - build/setup.sh ${OS_TYPE} ${OS_VERSION}
