@@ -25,4 +25,4 @@ before_install:
   - sudo docker pull ${OS_TYPE}:${OS_VERSION}
 
 script:
-  - build/setup.sh ${OS_TYPE} ${OS_VERSION}
+  - travis_wait build/setup.sh ${OS_TYPE} ${OS_VERSION}
