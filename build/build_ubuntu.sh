@@ -30,14 +30,16 @@ rm -rf Makeinc.linux64_gfortran
 ln -s Makeinc.linux64_gfortran_ubuntu Makeinc.linux64_gfortran
 popd
 
-make extlibs
-make gempak
-make install
-make programs_gf
-make programs_nc
+make extlibs 2>&1 | tee -a make.extlibs.log | grep --line-buffered "making all in"
+make gempak 2>&1 | tee -a make.gempak.log | grep --line-buffered "making all in"
+make install >& /dev/null
+make programs_gf >& /dev/null
+make programs_nc >& /dev/null
 make clean >& /dev/null
 
-rm -rf extlibs config .gitignore .travis.yml build
+grep -i error make.gempak.log
+
+rm -rf extlibs config .gitignore .travis.yml build make.*.log
 
 
 ls -la $OS_BIN|wc -l

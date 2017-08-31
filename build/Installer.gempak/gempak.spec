@@ -49,12 +49,14 @@ cat source_python.sh >> build/Installer.gempak/Gemenviron.profile
 . build/Installer.gempak/Gemenviron.profile
 # TODO: ". source_python.sh" doesn't seem to work from spec file
 
-make extlibs >& /dev/null
-make gempak >& /dev/null
+make extlibs 2>&1 | tee -a make.extlibs.log | grep --line-buffered "making all in"
+make gempak >& make.gempak
 make install >& /dev/null
 make programs_gf >& /dev/null
 make programs_nc >& /dev/null
 make clean >& /dev/null
+
+grep -i error make.gempak
 
 mkdir -p ${RPM_BUILD_ROOT}/home/gempak/
 cd ..
