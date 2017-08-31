@@ -215,11 +215,6 @@
 000 001 199 008 Potential evaporation            kg m**-2             PEVAP            0  -9999.00
 000 001 226 000 Predominant Weather              non-dim              PWTHER           0  -9999.00
 000 001 255 000 Missing                                                                0  -9999.00
-
-
-
-
-
 !
 ! momentum
 !D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING
@@ -658,7 +653,6 @@
 !000 191 004-191 000 Reserved                                                           0  -9999.00
 !000 191 192-254 000 Reserved for local use                                             0  -9999.00
 000 191 255 000 Missing                                                                0  -9999.00
-!
 !
 ! hydrology
 !D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING
