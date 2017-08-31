@@ -152,6 +152,7 @@
 000 002 027 000 U-Component Storm Motion         m s^-1               USTM             0  -9999.00
 000 002 028 000 V-Component Storm Motion         m s^-1               VSTM             0  -9999.00
 000 002 029 000 Drag Coefficient                 Numeric              CD               0  -9999.00
+000 002 030 000 Frictional Velocity              m s**-1              FRICV            0  -9999.00
 000 002 036 000 Amp. func Rossby Wave Mer. Wind  m s**-1              AFRWE            0  -9999.00
 000 002 037 000 Northward Turbulent Sfc Stress   N m**-2 s**-1        NTSS             0  -9999.00
 000 002 038 000 Eastward Turbulent Sfc Stress    N m**-2 s**-1        ETSS             0  -9999.00
@@ -256,6 +257,7 @@
 !D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING
 !23|123|123|123|12345678901234567890123456789012|12345678901234567890|123456789012|12345|123456.89
 000 006 001 000 Total Cloud Cover                %                    TCDC             0  -9999.00
+000 006 029 000 Number Concentration Cloud Ice   kg**-1               NCCICE           0  -9999.00
 000 006 192 000 Amt of non-convective cloud      %                    CLDA             0  -9999.00
 000 006 192 008 Amt of non-convective cloud      %                    CLDA             0  -9999.00
 000 006 193 000 Cloud work function              J/kg                 CWRK             0  -9999.00
@@ -369,7 +371,9 @@
 001 000 003 000 Elevation of Snow Covered Terrai cat                  ESCT             0  -9999.00
 001 000 004 000 Snow Water Equivalent Percent of %                    SWEPON           0  -9999.00
 001 000 005 000 Baseflow-Groundwater Runoff      kg m**-2             BGRUN            0  -9999.00
+001 000 005 008 Baseflow-Groundwater Runoff      kg m**-2             BGRUN            0  -9999.00
 001 000 006 000 Storm Surface Runoff             kg m**-2             SSRUN            0  -9999.00
+001 000 006 008 Storm Surface Runoff             kg m**-2             SSRUN            0  -9999.00
 001 000 007 000 Discharge from Rivers or Streams m**3 s**-1           DISRS            0  -9999.00
 001 000 192 000 Baseflow-groundwater runoff      kg m**-2             BFGR             0  -9999.00
 001 000 192 008 Baseflow-groundwater runoff      kg m**-2             BFGR             0  -9999.00
@@ -383,25 +387,57 @@
 001 001 193 008 Percent of Frozen Precipitation  %                    POPZ             0  -9999.00
 001 001 194 008 Prob precip exceeding FFG        %                    PEFG--           0  -9999.00
 !
-! vegetation/Biomass
+! Vegetation/Biomass
+! http://www.nco.ncep.noaa.gov/pmb/docs/grib2/grib2_table4-2-2-0.shtml
 !D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING
 !23|123|123|123|12345678901234567890123456789012|12345678901234567890|123456789012|12345|123456.89
+002 000 000 000 Land Cover (0=sea, 1=land)       Proportion           LAND             0  -9999.00
+002 000 001 000 Surface Roughness                m                    SFCR             0  -9999.00
+002 000 002 000 Soil Temperature                 K                    TSOIL            0  -9999.00
+002 000 003 000 Soil Moisture Content            kg m**-2             SOILM            0  -9999.00
+002 000 004 000 Vegetation                       %                    VEG              0  -9999.00
+002 000 005 000 Water Runoff                     kg m**-2             WATR             0  -9999.00
+002 000 006 000 Evapotranspiration               kg**-2 s**-1         EVAPT            0  -9999.00
+002 000 007 000 Model Terrain Height             m                    MTERH            0  -9999.00
+002 000 008 000 Land Use                         cat                  LANDU            0  -9999.00
+002 000 009 000 Volumetric Soil Moisture Content Proportion           SOILW            0  -9999.00
+002 000 010 000 Ground Heat Flux                 W m**-2              GFLUX            0  -9999.00
+002 000 011 000 Moisture Availability            %                    MSTAV            0  -9999.00
+002 000 012 000 Exchange Coefficient             kg m**-2 s**-1       SFEXC            0  -9999.00
+002 000 013 000 Plant Canopy Surface Water       kg m**-2             CNWAT            0  -9999.00
+002 000 014 000 Blackadar's Mixing Length Scale  m                    BMIXL            0  -9999.00
+002 000 015 000 Canopy Conductance               m s**-1              CCOND            0  -9999.00
+002 000 016 000 Minimal Stomatal Resistance      s m**-1              RSMIN            0  -9999.00
+002 000 017 000 Wilting Point                    Proportion           WILT             0  -9999.00
+002 000 018 000 Solar parameter in canopy conduc Proportion           RCS              0  -9999.00
+002 000 019 000 Temperature parameter in canopy  Proportion           RCT              0  -9999.00
+002 000 020 000 Humidity parameter in canopy con Proportion           RCQ              0  -9999.00
+002 000 021 000 Soil moisture parameter in canop Proportion           RCSOL            0  -9999.00
+002 000 022 000 Soil Moisture                    kg m**-3             SOILM            0  -9999.00
+002 000 023 000 Column-Integrated Soil Water     kg m**-2             CISOILW          0  -9999.00
+002 000 024 000 Heat Flux                        W m**-2              HFLUX            0  -9999.00
+002 000 025 000 Volumetric Soil Moisture         m**3 m**-3           VSOILM           0  -9999.00
+002 000 026 000 Wilting Point                    kg m**-3             WILT             0  -9999.00
+002 000 027 000 Volumetric Wilting Point         m**3 m**-3           VWILTP           0  -9999.00
+002 000 028 000 Leaf Area Index                  Numeric              LEAINX           0  -9999.00
 002 000 029 000 Evergreen Forest Cover           %                    EVGFC            0  -9999.00
 002 000 030 000 Deciduous Forest Cover           %                    DECFC            0  -9999.00
+002 000 031 000 Normalized Differential Vegetati Numeric              NDVINX           0  -9999.00
+002 000 032 000 Root Depth of Vegetation         m                    RDVEG            0  -9999.00
 002 000 033 000 Water Runoff and Drainage        kg m**-2             WROD             0  -9999.00
 002 000 034 000 Surface Water Runoff             kg m**-2             SFCWRO           0  -9999.00
-002 000 192 000 Volumetric soil moisture content fraction             SOIM             0  -9999.00
-002 000 192 001 Volumetric soil moisture content fraction             SOIM             0  -9999.00
-002 000 192 002 Volumetric soil moisture content fraction             SOIM             0  -9999.00
-002 000 193 000 Ground heat flux                 W m**-2              GHFX             0  -9999.00
-002 000 193 008 Ground heat flux                 W m**-2              GHFX             0  -9999.00
-002 000 194 000 Moisture availability            %                    MSAV             0  -9999.00
-002 000 195 000 Exchange coefficient             kg m**-3 m s**-1     SEXC             0  -9999.00
-002 000 196 000 Plant canopy surface water       kg m**-2             CSH2O            0  -9999.00
-002 000 197 000 Blackadar's mixing length        m                    LBLACK           0  -9999.00
+002 000 192 000 Volumetric soil moisture content fraction             SOILW            0  -9999.00
+002 000 192 001 Volumetric soil moisture content fraction             SOILW            0  -9999.00
+002 000 192 002 Volumetric soil moisture content fraction             SOILW            0  -9999.00
+002 000 193 000 Ground heat flux                 W m**-2              GFLUX            0  -9999.00
+002 000 193 008 Ground heat flux                 W m**-2              GFLUX            0  -9999.00
+002 000 194 000 Moisture availability            %                    MSTAV            0  -9999.00
+002 000 195 000 Exchange coefficient             (kg m**-3) (m s**-1) SFEXC            0  -9999.00
+002 000 196 000 Plant canopy surface water       kg m**-2             CNWAT            0  -9999.00
+002 000 197 000 Blackadar's mixing length        m                    BMIXL            0  -9999.00
 002 000 198 000 Vegetation type (SiB)            -                    VGTYP            0  -9999.00
-002 000 199 000 Canopy conductance               m/s                  CCOND            0  -9999.00
-002 000 200 000 Minimal stomatal resistance      s/m                  RSMIN            0  -9999.00
+002 000 199 000 Canopy conductance               m s**-1              CCOND            0  -9999.00
+002 000 200 000 Minimal stomatal resistance      s m**-1              RSMIN            0  -9999.00
 002 000 201 000 Wilting point (0.0-1.0)          -                    WILT             0  -9999.00
 002 000 201 001 Wilting point (0.0-1.0)          -                    WILT             0  -9999.00
 002 000 202 000 Solar prm in canopy conduct(0-1) -                    RCS              0  -9999.00
@@ -410,6 +446,27 @@
 002 000 205 000 Soil moist prm in canopy conduct -                    RCSOL            0  -9999.00
 002 000 206 000 Rate of water canopy to ground   -                    RDRIP            0  -9999.00
 002 000 207 000 Ice-free water surface           %                    ICWAT            0  -9999.00
+002 000 208 000 Surface exchange coefficients fo m s**-1              AKHS             0  -9999.00
+002 000 209 000 Surface exchange coefficients fo m s**-1              AKMS             0  -9999.00
+002 000 210 000 Vegetation canopy temperature    K                    VEGT             0  -9999.00
+002 000 211 000 Surface water storage            Kg m**-2             SSTOR            0  -9999.00
+002 000 212 000 Liquid soil moisture content (no Kg m**-2             LSOIL            0  -9999.00
+002 000 213 000 Open water evaporation (standing W m**-2              EWATR            0  -9999.00
+002 000 214 000 Groundwater recharge             Kg m**-2             GWREC            0  -9999.00
+002 000 215 000 Flood plain recharge             Kg m**-2             QREC             0  -9999.00
+002 000 216 000 Roughness length for heat        m                    SFCRH            0  -9999.00
+002 000 217 000 Normalized Difference Vegetation -                    NDVI             0  -9999.00
+002 000 218 000 Land-sea coverage (n neighbor)   -                    LANDN            0  -9999.00
+002 000 219 000 Asymptotic mixing length scale   m                    AMIXL            0  -9999.00
+002 000 220 000 Water vapor added by precip assi Kg m**-2             WVINC            0  -9999.00
+002 000 221 000 Water condensate added by precip Kg m**-2             WCINC            0  -9999.00
+002 000 222 000 Water Vapor Flux Convergance (Ve Kg m**-2             WVCONV           0  -9999.00
+002 000 223 000 Water Condensate Flux Converganc Kg m**-2             WCCONV           0  -9999.00
+002 000 224 000 Water Vapor Zonal Flux (Vertical Kg m**-2             WVUFLX           0  -9999.00
+002 000 225 000 Water Vapor Meridional Flux (Ver Kg m**-2             WVVFLX           0  -9999.00
+002 000 226 000 Water Condensate Zonal Flux (Ver Kg m**-2             WCUFLX           0  -9999.00
+002 000 227 000 Water Condensate Meridional Flux Kg m**-2             WCVFLX           0  -9999.00
+002 000 228 000 Aerodynamic conductance          m s**-1              ACOND            0  -9999.00
 002 000 229 000 Canopy water evaporation         W m**-2              EVCW             0  -9999.00
 002 000 230 000 Transpiration                    W m**-2              TRANS            0  -9999.00
 !

@@ -222,6 +222,7 @@
 000 003 012 000 Thickness                        m                    THKNS             ?  -9999.00
 !000 003 013 000 Pressure Altitude                ????                 ????             ?  -9999.00
 !000 003 014 000 Density Altitude                 ????                 ????             ?  -9999.00
+000 003 018 000 Planetary Boundary Layer Height  m                    HPBL             0  -9999.00
 000 003 200 000 P most unstable parcel 300mb agl Pa                   PLPL             0  -9999.00
 !
 ! short-wave radiation
@@ -348,29 +349,45 @@
 ! physical atmospheric properties
 !D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING
 !23|123|123|123|12345678901234567890123456789012|12345678901234567890|123456789012|12345|123456.89
-000 019 000 000 Visibility                       m                    VSBY             0  -9999.00
-000 019 000 005 Visibility                       m                    VSBY             0  -9999.00
-000 019 001 000 Albedo                           %                    ALBD             0  -9999.00
-000 019 001 008 Albedo                           %                    ALBD             0  -9999.00
-000 019 002 000 Thunderstorm probability         %                    TSTM             0  -9999.00
-000 019 002 008 Thunderstorm probability         %                    TSTM             0  -9999.00
-000 019 003 000 Mixed layer depth                m                    MIXL             0  -9999.00
-!000 019 004 000 Volcanic Ash                     code table           ????             ?  ?????.??
-!000 019 005 000 Icing Top                        m                    ????             ?  ?????.??
-!000 019 006 000 Icing Base                       m                    ????             ?  ?????.??
-!000 019 007 000 Icing                            code table           ????             ?  ?????.??
-!000 019 008 000 Turbulence Top                   m                    ????             ?  ?????.??
-!000 019 009 000 Turbulence Base                  m                    ????             ?  ?????.??
-!000 019 010 000 Turbulence                       code table           ????             ?  ?????.??
-000 019 011 000 Turbulent Kinetic Energy         J kg**-1             TRKE             0  -9999.00
-!000 019 012 000 Planet Boundary Layer Regime     code table           ????             ?  ?????.??
-!000 019 013 000 Contrails Intencity              code table           ????             ?  ?????.??
-!000 019 014 000 Contrails Engine Type            code table           ????             ?  ?????.??
-!000 019 015 000 Contrails Top                    m                    ????             ?  ?????.??
-!000 019 016 000 Contrails Base                   m                    ????             ?  ?????.??
-000 019 020 015 Icing                             %                   ICIP             0  -9999.00
-000 019 021 015 In-Cloud Turbulence               %                   TURB             0  -9999.00
-000 019 022 015 Clear Air Turbulence              %                   CATRB            0  -9999.00
+000 019 000 000 Visibility                       m                    VIS              0  -9999.00
+000 019 000 005 Visibility                       m                    VIS              0  -9999.00
+000 019 001 000 Albedo                           %                    ALBDO            0  -9999.00
+000 019 001 008 Albedo                           %                    ALBDO            0  -9999.00
+000 019 001 011 Albedo                           %                    ALBDO            0  -9999.00
+000 019 002 000 Thunderstorm Probability         %                    TSTM             0  -9999.00
+000 019 002 008 Thunderstorm Probability         %                    TSTM             0  -9999.00
+000 019 003 000 Mixed Layer Depth                m                    MIXHT            0  -9999.00
+000 019 004 000 Volcanic Ash                     code table           VOLASH           0  -9999.00
+000 019 005 000 Icing Top                        m                    ICIT             0  -9999.00
+000 019 006 000 Icing Base                       m                    ICIB             0  -9999.00
+000 019 007 000 Icing                            code table           ICI              0  -9999.00
+000 019 008 000 Turbulence Top                   m                    TURBT            0  -9999.00
+000 019 009 000 Turbulence Base                  m                    TURBB            0  -9999.00
+000 019 010 000 Turbulence                       code table           TURB             0  -9999.00
+000 019 011 000 Turbulent Kinetic Energy         J kg**-1             TKE              0  -9999.00
+000 019 012 000 Planetary Boundary Layer Regime  code table           PBLREG           0  -9999.00
+000 019 013 000 Contrail Intensity               code table           CONTI            0  -9999.00
+000 019 014 000 Contrail Engine Type             code table           CONTET           0  -9999.00
+000 019 015 000 Contrail Top                     m                    CONTT            0  -9999.00
+000 019 016 000 Contrail Base                    m                    CONTB            0  -9999.00
+000 019 017 000 Maximum Snow Albedo see Note 1   %                    MXSALB           0  -9999.00
+000 019 018 000 Snow-Free Albedo                 %                    SNFALB           0  -9999.00
+000 019 019 000 Snow Albedo                      %                    SALBD            0  -9999.00
+000 019 020 000 Icing                            %                    ICIP             0  -9999.00
+000 019 020 015 Icing                            %                    ICIP             0  -9999.00
+000 019 021 000 In-Cloud Turbulence              %                    CTP              0  -9999.00
+000 019 021 015 In-Cloud Turbulence              %                    CTP              0  -9999.00
+000 019 022 000 Clear Air Turbulence (CAT)       %                    CAT              0  -9999.00
+000 019 022 015 Clear Air Turbulence (CAT)       %                    CAT              0  -9999.00
+000 019 023 000 Supercooled Large Droplet Probab %                    SLDP             0  -9999.00
+000 019 024 000 Convective Turbulent Kinetic Ene J kg**-1             CONTKE           0  -9999.00
+000 019 025 000 Weather                          code table           WIWW             0  -9999.00
+000 019 026 000 Convective Outlook               code table           CONVO            0  -9999.00
+000 019 027 000 Icing Scenario                   code table           ICESC            0  -9999.00
+000 019 028 000 Mtn Wave Turb (eddy disp rate)   m**2/3 s**-1         MWTURB           0  -9999.00
+!000 019 028-191 000 Reserved                                                           0  -9999.00
+!000 019 192-254 000 Reserved for local use                                             0  -9999.00
+000 019 255 000 Missing                                                                0  -9999.00
 !
 ! Unidata Addition - Hydrology
 001 001 002 008 Prob of 0.01 inch of precip POP  %                    POP              0  -9999.00
@@ -486,18 +503,28 @@
 000 001 068 000 Ice Pellets Precipitation Rate   kg m -2 s -1         IPRATE           0  -9999.00
 000 001 068 008 Ice Pellets Precipitation Rate   kg m -2 s -1         IPRATE           0  -9999.00
 000 001 069 000 Total Column Integrate Cloud Wat kg m -2              TCOLW            0  -9999.00
-!000 016 192-254 000 Reserved for Local Use                                                 0  -9999.00
-000 016 192 000 Equivalent radar reflectivity fa m m 6 m -3           REFZR            0  -9999.00
-000 016 193 000 Equivalent radar reflectivity fa m m 6 m -3           REFZI            0  -9999.00
 000 019 012 000 Planetary Boundary Layer Regime  cat                  PBLREG           0  -9999.00
-002 003 199 000 Land Surface Precipitation Accum kg m -2              LSPA             0  -9999.00
+002 003 199 000 Land Surface Precipitation Accum kg m**-2             LSPA             0  -9999.00
 002 003 199 008 Land Surface Precip Accumulation kg m**-2             LSPA             0  -9999.00
 000 007 010 000 Surface Lifted Index             K                    LFT X            0  -9999.00
-000 002 009 008 Vertical Velocity (Geometric)    m s^-1               DZDT             0  -9999.00
-000 002 028 000 V-Component Storm Motion         m s^-1               VSTM             0  -9999.00
+000 002 009 008 Vertical Velocity (Geometric)    m s**-1              DZDT             0  -9999.00
+000 002 027 000 U-Component Storm Motion         m s**-1              USTM             0  -9999.00
+000 002 028 000 V-Component Storm Motion         m s**-1              VSTM             0  -9999.00
 000 002 001 008 Wind Speed                       m s**-1              WIND             0  -9999.00
 000 001 039 000 Percent frozen precipitation     %                    CPOFP            0  -9999.00
 255 255 255 000 RH wrt PW in column              %                    RHCOL            0  -9999.00
 000 001 019 000 Precipitation Type               cat                  PTYPE            0  -9999.00
 000 001 019 005 Precipitation Type               cat                  PTYPE            0  -9999.00
 000 000 000 009 Temperature                      K                    TMP              0  -9999.00
+!
+! Forecast Radar Imagery category
+!D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING
+!23|123|123|123|12345678901234567890123456789012|12345678901234567890|123456789012|12345|123456.89
+000 016 000 000 Equiv reflectivity rain          m m**6 m**-3         REFZR            0  -9999.00
+000 016 001 000 Equiv reflectivity snow          m m**6 m**-3         REFZI            0  -9999.00
+000 016 002 000 Equiv reflectivity param convec  m m**6 m**-3         REFZL            0  -9999.00
+000 016 003 000 Echo Top                         m                    RETOP            0  -9999.00
+000 016 004 000 Reflectivity                     dB                   REFD             0  -9999.00
+000 016 005 000 Composite reflectivity           dB                   REFC             0  -9999.00
+!000 016 006-191 000 Reserved                                                           0  -9999.00
+000 016 255 000 Missing                                                                0  -9999.00
