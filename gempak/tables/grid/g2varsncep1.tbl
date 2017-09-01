@@ -100,6 +100,14 @@
 000 001 069 000 Total Column Integrate Cloud Wat kg m -2              TCOLW            0  -9999.00
 000 001 074 000 Total Column Integrate Graupel   kg m**-2             TCOLG            0  -9999.00
 000 001 074 008 Total Column Integrate Graupel   kg m**-2             TCOLG            0  -9999.00
+000 001 100 000 Specific Num Concen. of Rain     kg**-1               SPNCR            0  -9999.00
+000 001 101 000 Specific Num Concen. of Snow     kg**-1               SPNCS            0  -9999.00
+000 001 102 000 Specific Num Concen. of Graupel  kg**-1               SPNCG            0  -9999.00
+000 001 103 000 Specific Num Concen. of Hail     kg**-1               SPNCH            0  -9999.00
+000 001 104 000 Number Density of Rain           m**-3                NUMDR            0  -9999.00
+000 001 105 000 Number Density of Snow           m**-3                NUMDS            0  -9999.00
+000 001 106 000 Number Density of Graupel        m**-3                NUMDG            0  -9999.00
+000 001 107 000 Number Density of Hail           m**-3                NUMDH            0  -9999.00
 !
 000 001 192 000 Categorical rain                 0,1                  WXTR             0  -9999.00
 000 001 192 001 Categorical rain                 0,1                  WXTR             0  -9999.00

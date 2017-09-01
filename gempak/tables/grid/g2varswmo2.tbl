@@ -177,9 +177,13 @@
 !000 001 063 000 Reserved                                                              0  -9999.00
 000 001 064 000 Total Column Integrated Water Va kg m**-2             TCIWV            0  -9999.00
 000 001 065 000 Rain Precipitation Rate          kg m**-2 s**-1       RPRATE           0  -9999.00
+000 001 065 008 Rain Precipitation Rate          kg m**-2 s**-1       RPRATE           0  -9999.00
 000 001 066 000 Snow Precipitation Rate          kg m**-2 s**-1       SPRATE           0  -9999.00
+000 001 066 008 Snow Precipitation Rate          kg m**-2 s**-1       SPRATE           0  -9999.00
 000 001 067 000 Freezing Rain Precipitation Rate kg m**-2 s**-1       FPRATE           0  -9999.00
+000 001 067 008 Freezing Rain Precipitation Rate kg m**-2 s**-1       FPRATE           0  -9999.00
 000 001 068 000 Ice Pellets Precipitation Rate   kg m**-2 s**-1       IPRATE           0  -9999.00
+000 001 068 008 Ice Pellets Precipitation Rate   kg m**-2 s**-1       IPRATE           0  -9999.00
 000 001 069 000 Total Column Integrate Cloud Wat kg m**-2             TCOLW            0  -9999.00
 000 001 070 000 Total Column Integrate Cloud Ice kg m**-2             TCOLI            0  -9999.00
 000 001 071 000 Hail Mixing Ratio                kg kg**-1            HAILMXR          0  -9999.00
@@ -207,6 +211,14 @@
 000 001 092 000 V-component (meridional) Kinemat kg kg**-1 m s**-1    VKMFLX           0  -9999.00
 000 001 093 000 Relative humidity wrt water      %                    RHWAT            0  -9999.00
 000 001 094 000 Relative humidity wrt ice        %                    RHICE            0  -9999.00
+000 001 100 000 Specific Num Concen. of Rain     kg**-1               SPNCR            0  -9999.00
+000 001 101 000 Specific Num Concen. of Snow     kg**-1               SPNCS            0  -9999.00
+000 001 102 000 Specific Num Concen. of Graupel  kg**-1               SPNCG            0  -9999.00
+000 001 103 000 Specific Num Concen. of Hail     kg**-1               SPNCH            0  -9999.00
+000 001 104 000 Number Density of Rain           m**-3                NUMDR            0  -9999.00
+000 001 105 000 Number Density of Snow           m**-3                NUMDS            0  -9999.00
+000 001 106 000 Number Density of Graupel        m**-3                NUMDG            0  -9999.00
+000 001 107 000 Number Density of Hail           m**-3                NUMDH            0  -9999.00
 !000 001 095-191 000 Reserved                                                           0  -9999.00
 !000 001 192-254 000 Reserved for local use                                             0  -9999.00
 000 001 192 000 Weather                          NA                   WX               0  -9999.00
@@ -304,6 +316,7 @@
 000 003 005 001 Geopotential Height              gpm                  HGHT             0  -9999.00
 000 003 005 002 Geopotential Height              gpm                  HGHT             0  -9999.00
 000 003 005 005 Geopotential Height              gpm                  HGHT             0  -9999.00
+000 003 005 008 Geopotential Height              gpm                  HGHT             0  -9999.00
 000 003 005 011 Geopotential Height              gpm                  HGHT             0  -9999.00
 000 003 006 000 Geometric Height                 m                    DIST             0  -9999.00
 000 003 007 000 Standard Deviation of Height     m                    HGHTSD           0  -9999.00
@@ -663,7 +676,9 @@
 001 000 003 000 Elev of Snow Covered Terrain     m                    ESCT             0  -9999.00
 001 000 004 000 Snow Water Equiv Pct of Normal   %                    SWEPON           0  -9999.00
 001 000 005 000 Baseflow-Groundwater Runoff      kg m**-2             BGRUN            0  -9999.00
+001 000 005 008 Baseflow-Groundwater Runoff      kg m**-2             BGRUN            0  -9999.00
 001 000 006 000 Storm Surface Runoff             kg m**-2             SSRUN            0  -9999.00
+001 000 006 008 Storm Surface Runoff             kg m**-2             SSRUN            0  -9999.00
 001 000 007 000 Discharge from Rivers or Streams m**3 s**-1           DISRS            0  -9999.00
 001 000 193 008 Storm surface runoff             kg m**-2             R--M             0  -9999.00
 001 000 255 000 Missing                                                                0  -9999.00
