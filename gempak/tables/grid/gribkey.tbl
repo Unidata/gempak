@@ -77,14 +77,15 @@
 007   x   078,80,82,94 @@@ data/gempak/model/mrf/YYYYMMDDHH_mrf@@@.gem    1500
 !
 ! OCEAN
-! _nww combine these with mrf grids 21-24
+! _nww 
 007   x   010       021    data/gempak/model/nww/YYYYMMDDHH_nww.gem        500
 007   x   010       022    data/gempak/model/nww/YYYYMMDDHH_nww.gem        500
 007   x   010       023    data/gempak/model/nww/YYYYMMDDHH_nww.gem        500
 007   x   010       024    data/gempak/model/nww/YYYYMMDDHH_nww.gem        500
-007   x   010       @@@    data/gempak/model/nww/YYYYMMDDHH_wave@@@.gem            500
+007   x   010       @@@    data/gempak/model/nww/YYYYMMDDHH_wave@@@.gem    500
+007   x   010       233    data/gempak/model/nww/ww3_global_YYYYMMDDHH.gem 500
 ! _wave
-007   x   121,122,123,124,125 233 data/gempak/model/nww/ww3_global_YYYYMMDDHH.gem  500
+!007   x   121,122,123,124,125 233 data/gempak/model/nww/ww3_global_YYYYMMDDHH.gem  500
 007   x   121,122,123,124,125 238 data/gempak/model/nww/ww3_wnatl_YYYYMMDDHH.gem   500
 007   x   121,122,123,124,125 239 data/gempak/model/nww/ww3_alaska_YYYYMMDDHH.gem  500
 007   x   121,122,123,124,125 244 data/gempak/model/nww/ww3_wnatl_hurr_YYYYMMDDHH.gem    500
