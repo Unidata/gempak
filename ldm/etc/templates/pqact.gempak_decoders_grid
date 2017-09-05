@@ -115,7 +115,7 @@ HDS	(/mNAM|/mNMM).*#2([^1]|1[^1256])
 CONDUIT	^data/nccf/com/nam/prod/nam\.(........)/nam.t(..)z\.firewxnest
 	PIPE	dcgrib2 -d data/gempak/logs/dcgrib2_NAMfirewxnest.log
 		-e GEMTBL=@GEMTBL@ 
-		data/gempak/model/nam-firewx/YYYYMMDDHH_firewxnest.gem
+		data/gempak/model/nam-firewx/YYYYMMDDHHfFFF_firewxnest.gem
 #
 # NamDNG 2.5 km (NGRID)
 NGRID	^[LM].I... KWBE
@@ -181,20 +181,20 @@ HDS	^[LM].N... KWB.
 #
 # grid #130 (13km)
 NGRID	^[LM].D... KWB. .....*RUC2/#130
-	PIPE	dcgrib2 -m 6000 -d data/gempak/logs/dcgrib2_NGRID_rap.log
+	PIPE	dcgrib2 -m 30000 -d data/gempak/logs/dcgrib2_NGRID_rap.log
 		-e GEMTBL=@GEMTBL@
 		data/gempak/model/rap/YYYYMMDDHH_rap13km.gem
 # CONDUIT RAP grids 
 #
 # grid #252 (20km) 	rap.tXXz.awp252pgrbfHH
 CONDUIT	prod/rap.*awp252.*
-	PIPE	dcgrib2 -m 18000 -d data/gempak/logs/dcgrib2_CONDUIT_rap.log
+	PIPE	dcgrib2 -m 30000 -d data/gempak/logs/dcgrib2_CONDUIT_rap20.log
 		-e GEMTBL=@GEMTBL@
 		data/gempak/model/rap/YYYYMMDDHH_rap20km.gem
 #
 # grid	#236 (40km) 	rap.tXXz.awp236pgrbfHH
 CONDUIT	prod/rap.*awp236.*
-	PIPE	dcgrib2 -m 8000 -d data/gempak/logs/dcgrib2_CONDUIT_rap.log
+	PIPE	dcgrib2 -m 30000 -d data/gempak/logs/dcgrib2_CONDUIT_rap40.log
 		-e GEMTBL=@GEMTBL@
 		data/gempak/model/rap/YYYYMMDDHH_rap40km.gem
 #
@@ -210,7 +210,7 @@ HDS	^[YZ].[AIJQHG]... KWB. ([0-3][0-9])([0-2][0-9]).*/m(AVN|GFS|SSIAVN|SSIGFS)
 NGRID	^[YZ].N... KWBC
 	PIPE	dcgrib2 -m 20000 -d data/gempak/logs/dcgrib2_GFS2conus.log
 		-e GEMTBL=@GEMTBL@
-		data/gempak/model/gfs/YYYYMMDDHH_gfs20km.gem
+		data/gempak/model/gfs/YYYYMMDDHH_gfs215.gem
 #
 # GFS Grid #217 Alaska 22.5km
 #
@@ -269,7 +269,7 @@ HDS	^H.[T-W]
 NGRID	^E.W... KWBI
 	PIPE	dcgrib2 -v 1 -d data/gempak/logs/dcgrib2_sst.log
 		-e GEMTBL=@GEMTBL@
-		data/gempak/model/sst/YYYYMMDDHH_sst.gem
+		data/gempak/model/sst/YYYYMMDD_sst.gem
 #
 # CONDUIT GFS grids
 # ----------------------------------------------
@@ -318,12 +318,12 @@ HDS	^ZDIA98 KKCI
 		data/gempak/model/awc/YYYYMMDD_ncwd.gem
 # Current icing product
 HDS	^Y[AIJL][WX]... KKCI.*/AWC_CIP
-	PIPE	dcgrib2 -d data/gempak/logs/dcgrib2_AWC_CIP.log
+	PIPE	dcgrib2 -m 8000 -d data/gempak/logs/dcgrib2_AWC_CIP.log
 		-e GEMTBL=@GEMTBL@
 		data/gempak/model/awc/YYYYMMDD_cip.gem
 # Turbulence
 NGRID	^[YZ]..... KKCI.*/RUC2
-	PIPE	dcgrib2 -d data/gempak/logs/dcgrib2_AWC_TURB.log
+	PIPE	dcgrib2 -m 22000 -d data/gempak/logs/dcgrib2_AWC_TURB.log
 		-e GEMTBL=@GEMTBL@
 		data/gempak/model/awc/YYYYMMDD_turb.gem
 #
@@ -441,7 +441,7 @@ FNEXRAD	^radar_mosaic_nathr
 NGRID	^[LM].M... KWBR
 	PIPE	dcgrib2 -m 200 -d data/gempak/logs/dcgrib2_rtma.log
 	-e GEMTBL=@GEMTBL@
-	data/gempak/model/rtma/YYYYMMDDHH_rtma_5km.gem
+	data/gempak/model/rtma/YYYYMMDDHH_rtma5.gem
 #
 # RTMA Grid 255 CONUS 2.5 km
 NGRID	^[LM].I... KWBR
@@ -453,35 +453,23 @@ NGRID	^[LM].I... KWBR
 NGRID	^[LM].G... KWBR
 	PIPE	dcgrib2 -m 200 -d data/gempak/logs/dcgrib2_rtma.log
 	-e GEMTBL=@GEMTBL@
-	data/gempak/model/rtma/YYYYMMDDHH_rtma-guam.gem
-#
-# DGEX Grid 185 CONUS 12km
-NGRID	^[LM].E... KWBD ([0-3][0-9])([0-2][0-9][0-6][0-9])
-	PIPE	dcgrib2 -m 200 -d data/gempak/logs/ngrib.log
-	-e GEMTBL=@GEMTBL@
-	data/gempak/model/dgex/YYYYMMDDHHfFFF_dgex.gem
-#
-# DGEX Grid 186 Alaska 12km
-NGRID	^[LM].F... KWBD ([0-3][0-9])([0-2][0-9][0-6][0-9])
-	PIPE	dcgrib2 -d data/gempak/logs/ngrib.log
-	-e GEMTBL=@GEMTBL@
-	data/gempak/model/dgex-ak/YYYYMMDDHHfFFF_dgex-ak.gem
+	data/gempak/model/rtma/YYYYMMDDHH_guam.gem
 #
 ##################################################################
 #
 # NDFD grids
 #
 # NDFD Grid 215
-NGRID	^[LM].U... KWBN
-	PIPE	dcgrib2 -v 1 -d data/gempak/logs/ndfd.log
-	-e GEMTBL=@GEMTBL@
-	data/gempak/model/ndfd/YYYYMMDDHH_ndfd.gem
+#NGRID	^[LM].U... KWBN
+#	PIPE	dcgrib2 -v 1 -d data/gempak/logs/ndfd.log
+#	-e GEMTBL=@GEMTBL@
+#	data/gempak/model/ndfd/YYYYMMDDHH_ndfd.gem
 #
 # NDFD CONUS 5km CONDUIT
 CONDUIT	grib2/nwstg/NWS_0/..../(........)(....)
 	PIPE	dcgrib2 -d data/gempak/logs/ndfd.log
 	-e GEMTBL=@GEMTBL@
-	data/gempak/model/ndfd/YYYYMMDDHH_ndfd_conduit.gem
+	data/gempak/model/ndfd/YYYYMMDDHH_ndfd.gem
 #
 # NDFD fire weather data comes from SPC with CCCC=KWNS
 # B NORTHEAST
@@ -509,7 +497,7 @@ HDS	^LDIZ.. KWNS
 NGRID	^[LM].U... KWNO
 	PIPE	dcgrib2 -v 1 -d data/gempak/logs/dcgrib2_lamp.log
 	-e GEMTBL=@GEMTBL@
-	data/gempak/model/mos/YYYYMMDDHH_lamp.gem
+	data/gempak/model/mos/YYYYMMDD_lamp.gem
 #
 # 2.5km GFSMOS CONUS
 # NOTE: some fields are still 2145 x 1377 (same proj and res)
@@ -524,7 +512,7 @@ NGRID	^Y[LMNZ]U... KWBQ
 	data/gempak/model/mos/YYYYMMDDHH_gfsmos-2145x1377.gem
 # 2145 x 1597 (updated)
 NGRID	^Y[A-JRSU-Y]U... KWBQ
-	PIPE	dcgrib2 -v 1 -d data/gempak/model/mos/gfsmo
+	PIPE	dcgrib2 -v 1 -d data/gempak/logs/gfsmos.log
 	-e GEMTBL=@GEMTBL@
 	data/gempak/model/mos/YYYYMMDDHH_gfsmos.gem
 #
