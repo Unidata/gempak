@@ -618,9 +618,11 @@ WSESND       $MODEL_SND/etaw           YYMMDDHH_wseta.snd                       
 WSESFC       $MODEL_SFC/etaw           YYMMDDHH_wseta.sfc                               CAT_SFF  SCAT_SFF   -1     -1     -1      OFF/0/0
 WSESFCA      $MODEL_SFC/etaw           YYMMDDHH_wseta.sfc_aux                           CAT_SFF  SCAT_SFF   -1     -1     -1      OFF/0/0
 NAM4KM       $MODEL/nam4km             YYYYMMDDHHfFFF_nam4km.gem                        CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
+NAM4         $MODEL/nam4km             YYYYMMDDHHfFFF_nam4km.gem                        CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
 NAM221       $MODEL/nam                YYYYMMDDHHfFFF_nam221.gem                        CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
 NAM12        $MODEL/nam12km            YYYYMMDDHHfFFF_nam218.gem                        CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
 NAM218       $MODEL/nam12km            YYYYMMDDHHfFFF_nam218.gem                        CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
+NAMDNG       $MODEL/namdng             YYYYMMDDHH_namdng.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
 ETA104       $MODEL/nam                YYYYMMDDHH_nam104.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
 NAM104       $MODEL/nam                YYYYMMDDHH_nam104.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
 ETA212       $MODEL/nam                YYYYMMDDHH_nam212.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
