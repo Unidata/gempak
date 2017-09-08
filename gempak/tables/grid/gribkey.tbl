@@ -7,7 +7,6 @@
 !
 ! 007 = NCEP
 !
-! HRRR
 007   x   083       @@@    data/gempak/model/hrrr/YYYYMMDDHHfFFF_hrrr.gem   1000
 ! DGEX
 007   x   115       185    data/gempak/model/dgex/YYYYMMDDHHfFFF_dgex.gem  1000
@@ -25,7 +24,7 @@
 007   x   084,085   207    data/gempak/model/nam-ak/YYYYMMDDHH_nam@@@.gem   5000
 007   x   084,085   216    data/gempak/model/nam-ak/YYYYMMDDHH_nam@@@.gem   18000
 007   x   084,085   217    data/gempak/model/nam-ak/YYYYMMDDHH_nam@@@.gem   5000
-007   x   084,085   242    data/gempak/model/nam-ak/YYYYMMDDHHfFFF_nam@@@.gem   1000
+007   x   084,085   242    data/gempak/model/nam-ak/YYYYMMDDHH_nam242.gem   18000
 007   x   084,085   221    data/gempak/model/nam/YYYYMMDDHHfFFF_nam221.gem    2000
 007   0   084       255    data/gempak/model/nam/YYYYMMDDHH_nam243.gem    24000
 007   x   084,085   @@@    data/gempak/model/nam/YYYYMMDDHH_nam@@@.gem    5000
@@ -36,9 +35,9 @@
 ! NGM
 007   x   039       @@@    data/gempak/model/ngm/YYYYMMDDHH_ngm@@@.gem    2000
 !
-! RUC
-007   x   105       @@@    data/gempak/model/rap/YYYYMMDDHH_rap@@@.gem   15000
-007   x   086       @@@    data/gempak/model/rap/YYYYMMDDHH_rap@@@.gem    2000
+! RAP
+007   x   105       @@@    data/gempak/model/rap/YYYYMMDDHH_rap@@@.gem   40000
+007   x   086       @@@    data/gempak/model/rap/YYYYMMDDHH_rap@@@.gem   40000
 !
 ! Ensemble spectral AVN/MRF grids
 007   2   ???          037 data/gempak/model/ens/YYYYMMDDHH_ensthin.gem  20000
@@ -60,8 +59,8 @@
 007   x   077,81,96 044    data/gempak/model/gfs/YYYYMMDDHH_thin.gem      2000
 007   x   077,81,96 002    data/gempak/model/gfs/YYYYMMDDHH_gfs@@@.gem    9000
 007   x   077,81,96 003    data/gempak/model/gfs/YYYYMMDDHH_gfs@@@.gem   29000
-007   x   077,81,96 004    data/gempak/model/gfs0.5deg/YYYYMMDDHHfFFF_gfs.gem   2000
-007   x   077,81,96 193    data/gempak/model/gfs0.25deg/YYYYMMDDHHfFFF_gfs.gem   2000
+007   x   077,81,96 004    data/gempak/model/gfs0.5deg/YYYYMMDDHHfFFF_gfs.gem   5000
+007   x   077,81,96 193    data/gempak/model/gfs0.25deg/YYYYMMDDHHfFFF_gfs.gem   5000
 !
 ! MRF
 ! combine these with ocn grids 21-24
@@ -77,14 +76,15 @@
 007   x   078,80,82,94 @@@ data/gempak/model/mrf/YYYYMMDDHH_mrf@@@.gem    1500
 !
 ! OCEAN
-! _nww combine these with mrf grids 21-24
+! _nww 
 007   x   010       021    data/gempak/model/nww/YYYYMMDDHH_nww.gem        500
 007   x   010       022    data/gempak/model/nww/YYYYMMDDHH_nww.gem        500
 007   x   010       023    data/gempak/model/nww/YYYYMMDDHH_nww.gem        500
 007   x   010       024    data/gempak/model/nww/YYYYMMDDHH_nww.gem        500
-007   x   010       @@@    data/gempak/model/nww/YYYYMMDDHH_wave@@@.gem            500
+007   x   010       @@@    data/gempak/model/nww/YYYYMMDDHH_wave@@@.gem    500
+007   x   010       233    data/gempak/model/nww/ww3_global_YYYYMMDDHH.gem 500
 ! _wave
-007   x   121,122,123,124,125 233 data/gempak/model/nww/ww3_global_YYYYMMDDHH.gem  500
+!007   x   121,122,123,124,125 233 data/gempak/model/nww/ww3_global_YYYYMMDDHH.gem  500
 007   x   121,122,123,124,125 238 data/gempak/model/nww/ww3_wnatl_YYYYMMDDHH.gem   500
 007   x   121,122,123,124,125 239 data/gempak/model/nww/ww3_alaska_YYYYMMDDHH.gem  500
 007   x   121,122,123,124,125 244 data/gempak/model/nww/ww3_wnatl_hurr_YYYYMMDDHH.gem    500
@@ -109,10 +109,7 @@
 007   x   044       @@@    data/gempak/model/nww/YYYYMMDDHH_ocn@@@.gem     500
 ! _ice
 ! ICE
-007   x   120       235    data/gempak/model/ice/YYYYMMDDHH_ice.gem        1
-007   x   120       @@@    data/gempak/model/ice/YYYYMMDDHH_ice@@@.gem     1
-!007   x   120       219    data/gempak/model/ice/YYYYMMDDHH_ice219.gem     100
-!007   x   120       220    data/gempak/model/ice/YYYYMMDDHH_ice220.gem     100
+007   x   120       @@@    data/gempak/model/ice/YYYYMMDDHH_ice@@@.gem     100
 !
 ! SPC
 007   9   ???       001    data/gempak/model/spc/YYYYMMDDHH_spc.gem         100
@@ -181,7 +178,7 @@
 008   x   000       @@@    data/gempak/model/radar/YYYYMMDD_radar.gem        100
 !
 ! Canadian Meteorological Service
-054   x   036       @@@    data/gempak/model/cmc/YYYYMMDDHH_cmcreg.gem    1500
+054   x   036       @@@    data/gempak/model/cmc/YYYYMMDDHH_cmcreg.gem    10000
 !
 ! RFC products
 ! HDS NWS Flash Flood Guidence subcenter ID 155

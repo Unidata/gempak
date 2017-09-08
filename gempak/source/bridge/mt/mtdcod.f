@@ -61,6 +61,7 @@ C* B. Yin/SAIC         3/04  Changed SS_GTIM to CSS_GTIM                *
 C* D. Kidwell/NCEP     9/05  CSC for MT_GRPT to add corflg              *
 C* D. Kidwell/NCEP    10/05  Changed log level on return from DC_GHDR   *
 C* M. Li/SAIC	      06/07  Add a check for Candadian stations		*
+C* M. James/UCAR      09/17  Don't log every tenth record		*
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 	INCLUDE		'BRIDGE.PRM'
@@ -117,7 +118,6 @@ C
 C*	Loop until a timeout occurs.
 C
 	iperr  = 0
-	irpcnt = 0
 	DO WHILE ( iperr .eq. 0 )
 C
 C*	    Get the bulletin.
@@ -198,15 +198,6 @@ C
 		    CALL MT_GRPT ( bultin ( :lenb), lenb, bultyp, ibpnt,
      +		                   rpttyp, report ( :lenb), lenr, 
      +				   corflg, iret )
-		    IF ( iret .ne. -2 ) THEN
-		    	irpcnt = irpcnt + 1
-C
-C*			Write every tenth report to the log.
-C
-			IF ( ( MOD ( irpcnt, 10 ) .eq. 0 ) ) 
-     +			    CALL DC_WLOG ( 2, 'DCMETR', 2,
-     +					    report( :lenr ), ier )	
-		    END IF
 		    irpntr = 1
 		    good   = .true.
 		    IF ( .not. corflg ) corflg = corbul 
