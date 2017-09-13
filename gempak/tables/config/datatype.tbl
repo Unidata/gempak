@@ -671,6 +671,7 @@ ENSHR        $MODEL/ens                YYYYMMDDHHfFFF_ens003.gem                
 ENSTHIN      $MODEL/ens                YYYYMMDDHH_ensthin.gem                           CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
 MOSGRID      $MODEL/mos                YYYYMMDDHH_gfsmos.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
 LAMP         $MODEL/mos                YYYYMMDD_lamp.gem                                CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
+URMA         $MODEL/rtma               YYYYMMDDHH_urma.gem                              CAT_GRD  SCAT_ANL    4    720     60      OFF/0/0
 RTMA         $MODEL/rtma               YYYYMMDDHH_rtma.gem                              CAT_GRD  SCAT_ANL    4    720     60      OFF/0/0
 RTMA_5KM     $MODEL/rtma               YYYYMMDDHH_rtma5.gem                             CAT_GRD  SCAT_ANL    4    720     60      OFF/0/0
 RTMA_AK      $MODEL/rtma               YYYYMMDDHH_rtma-ak.gem                           CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0 
