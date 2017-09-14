@@ -648,8 +648,8 @@ NGRID	Y.C.[0-9][0-9] KWBY
 #	PIPE	dcgrib2 -v 1 -d data/gempak/logs/dcgrib2_NGRIDhiresw.log
 #	-e GEMTBL=@GEMTBL@
 #
-# NationalBlend model
-NGRID	^L[ABCDEFGHILRSTWZ]AZ9[0-9] KWEA
-	PIPE	dcgrib2 -v 1 -d data/gempak/logs/dcgrib2_NationalBlend.log
+# National Blend of Models
+NGRID	^Y.A... KWE[AB]
+	PIPE	dcgrib2 -m 1000 -v 1 -d data/gempak/logs/dcgrib2_nbm.log
 	-e GEMTBL=@GEMTBL@
-	data/gempak/model/NationalBlend/YYYYMMDDHH_NationalBlend.gem
+	data/gempak/model/nbm/YYYYMMDDHH_nbm.gem
