@@ -292,6 +292,7 @@
 000 001 225 000 Freezing Rain                    kg m**-2             FRZR             0  -9999.00
 000 001 226 000 Predominant Weather              non-dim              PWTHER           0  -9999.00
 000 001 227 000 Frozen Rain                      kg m**-2             FROZR            0  -9999.00
+!000 001 230 000 
 000 001 241 000 Total Snow                       kg m**-2             TSNOW            0  -9999.00
 000 001 242 000 Relative Humidity w.r.t. PW      %                    RHPW             0  -9999.00
 000 001 242 005 Relative Humidity w.r.t. PW      %                    RHPW             0  -9999.00
@@ -418,7 +419,9 @@
 !D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING
 !23|123|123|123|12345678901234567890123456789012|12345678901234567890|123456789012|12345|123456.89
 000 004 000 000 Net Short-Wave Rad (sfc)         W m**-2              SNIR             0  -9999.00
+000 004 000 008 Net Short-Wave Rad (sfc)         W m**-2              SNIR             0  -9999.00
 000 004 001 000 Net Short-Wave Rad (toa)         W m**-2              SWRT             0  -9999.00
+000 004 001 008 Net Short-Wave Rad (toa)         W m**-2              SWRT             0  -9999.00
 000 004 002 000 Short-Wave Radiation Flux        W m**-2              SWAVR            0  -9999.00
 000 004 002 002 Short-Wave Radiation Flux        W m**-2              SWAVR            0  -9999.00
 000 004 003 000 Global radiation Flux            W m**-2              GRAD             0  -9999.00
@@ -449,6 +452,7 @@
 000 005 001 000 Net Long-Wave Rad (toa)          W m**-2              LWRT             0  -9999.00
 000 005 002 000 Long-Wave Radiation Flux         W m**-2              LWAVR            0  -9999.00
 000 005 003 000 Downward Long-Wave Rad. Flux     W m**-2              DLWRF            0  -9999.00
+000 005 003 008 Downward Long-Wave Rad. Flux     W m**-2              DLWRF            0  -9999.00
 000 005 004 000 Upward Long-Wave Rad. Flux       W m**-2              ULWRF            0  -9999.00
 000 005 005 000 Net Long-Wave Radiation Flux     W m**-2              NLWRF            0  -9999.00
 000 005 005 001 Net Long-Wave Radiation Flux     W m**-2              NLWRF            0  -9999.00
@@ -542,6 +546,17 @@
 000 007 015 000 Updraft Helicity                 m**2 s**-2           UPHL             0  -9999.00
 !000 007 016-191 000 Reserved                                                           0  -9999.00
 !000 007 192-254 000 Reserved for Local Use                                             0  -9999.00
+000 007 192 000 Surface lifted index             K                    LIFTX            0  -9999.00
+000 007 192 001 Surface lifted index             K                    LIFTX            0  -9999.00
+000 007 193 000 Best (4 layer) lifted index      K                    4LFTX            0  -9999.00
+000 007 193 001 Best (4 layer) lifted index      K                    4LFTX            0  -9999.00
+000 007 194 000 Richardson number                -                    RI               0  -9999.00
+000 007 195 000 Convective Weather Detect, Indx  -                    CWDI             0  -9999.00
+000 007 196 000 Ultra Violet Index               -                    UVI              0  -9999.00
+000 007 197 000 Updraft Helicity                 m**2 s**-2           UPHL             0  -9999.00
+000 007 198 000 Leaf Area Index                  -                    LAI              0  -9999.00
+000 007 199 000 Hrly Max Up Helicity 2km-5km AGL m**2 s**-2           MXUPHL           0  -9999.00
+000 007 199 008 Hrly Max Up Helicity 2km-5km AGL m**2 s**-2           MXUPHL           0  -9999.00
 000 007 255 000 Missing                                                                0  -9999.00
 !
 ! aerosols 
