@@ -62,6 +62,9 @@
 000 000 019 000 Turbulent Transfer Coefficient f Numeric              TTCHT            0  -9999.00
 000 000 020 000 Turbulent Diffusion Coefficient  m**2 s**-1           TDCHT            0  -9999.00
 000 000 021 000 Apparent Temperature             K                    APTMP            0  -9999.00
+000 000 027 000 Wet Bulb Temperature             K                    WETBT            0  -9999.00
+000 000 028 000 Unbalanced Component of Temp     K                    UCTMP            0  -9999.00
+000 000 029 000 Temperature Advection            K s**-1              TMPADV           0  -9999.00
 !000 000 102 000 Snow Phase Change Heat Flux      K                    SNOHF            0  -9999.00
 !
 ! mositure
