@@ -31,7 +31,7 @@ class GridDataRetriever:
 	dt = datetime.strptime(self.cycle, '%y%m%d/%H%M')
 	ct = datetime.strftime(dt, '%Y-%m-%d %H:%M:%S')
 	req.setReftime(ct)
-	req.setFcstSec(self.forecast)
+	req.setFcstsec(self.forecast)
 
 	if self.level1 == '-1':
 	    f1 = -999999.0
