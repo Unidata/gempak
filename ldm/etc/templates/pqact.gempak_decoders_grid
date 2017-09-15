@@ -650,6 +650,6 @@ NGRID	Y.C.[0-9][0-9] KWBY
 #
 # National Blend of Models
 NGRID	^Y.A... KWE[AB]
-	PIPE	dcgrib2 -m 1000 -v 1 -d data/gempak/logs/dcgrib2_nbm.log
+	PIPE	dcgrib2 -v 1 -d data/gempak/logs/dcgrib2_nbm.log
 	-e GEMTBL=@GEMTBL@
 	data/gempak/model/nbm/YYYYMMDDHH_nbm.gem
