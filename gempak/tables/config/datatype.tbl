@@ -447,7 +447,7 @@ NAM40        $MODEL/nam                YYYYMMDDHH_nam212.gem                    
 NAM212       $MODEL/nam                YYYYMMDDHH_nam212.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
 NAM237       $MODEL/nam                YYYYMMDDHH_nam237.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
 NAM32        $MODEL/nam32              YYYYMMDDHHfFFF_nam32.gem                         CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
-NBM          $MODEL/nbm                YYYYMMDDHHfFFF_nbm.gem                           CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+NBM          $MODEL/nbm                YYYYMMDDHH_nbm.gem                               CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
 NCWD         $MODEL/awc                YYYYMMDD_ncwd.gem                                CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
 TURB         $MODEL/awc                YYYYMMDD_turb.gem                                CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
 CIP          $MODEL/awc                YYYYMMDD_cip.gem                                 CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
