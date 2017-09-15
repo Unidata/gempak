@@ -62,6 +62,9 @@
 000 000 019 000 Turbulent Transfer Coefficient f Numeric              TTCHT            0  -9999.00
 000 000 020 000 Turbulent Diffusion Coefficient  m**2 s**-1           TDCHT            0  -9999.00
 000 000 021 000 Apparent Temperature             K                    APTMP            0  -9999.00
+000 000 027 000 Wet Bulb Temperature             K                    WETBT            0  -9999.00
+000 000 028 000 Unbalanced Component of Temp     K                    UCTMP            0  -9999.00
+000 000 029 000 Temperature Advection            K s**-1              TMPADV           0  -9999.00
 !000 000 102 000 Snow Phase Change Heat Flux      K                    SNOHF            0  -9999.00
 !
 ! mositure
@@ -117,6 +120,7 @@
 000 001 017 000 Snow Age                         d                    SNOAG            0  -9999.00
 000 001 018 000 Absolute Humidity                kg m**-3             ABSH             0  -9999.00
 000 001 019 000 Precipitation Type               code table           PTYPE            0  -9999.00
+000 001 019 005 Precipitation Type               code table           PTYPE            0  -9999.00
 000 001 020 000 Integrated Liquid Water          kg m**-2             ILIQW            0  -9999.00
 000 001 021 000 Condensate                       kg kg**-1            TCOND            0  -9999.00
 000 001 022 000 Cloud Mixing Ratio               kg kg**-1            CWTR             0  -9999.00
@@ -221,11 +225,77 @@
 000 001 107 000 Number Density of Hail           m**-3                NUMDH            0  -9999.00
 !000 001 095-191 000 Reserved                                                           0  -9999.00
 !000 001 192-254 000 Reserved for local use                                             0  -9999.00
-000 001 192 000 Weather                          NA                   WX               0  -9999.00
-000 001 192 001 Weather                          NA                   WX               0  -9999.00
-000 001 192 011 Weather                          NA                   WX               0  -9999.00
+000 001 192 000 Categorical rain                 0,1                  CRAIN            0  -9999.00
+000 001 192 001 Categorical rain                 0,1                  CRAIN            0  -9999.00
+000 001 192 002 Categorical rain                 0,1                  CRAIN            0  -9999.00
+000 001 192 005 Categorical rain                 0,1                  CRAIN            0  -9999.00
+000 001 192 008 Categorical rain                 0,1                  CRAIN            0  -9999.00
+000 001 192 011 Categorical rain                 0,1                  CRAIN            0  -9999.00
+000 001 192 012 Categorical rain                 0,1                  CRAIN            0  -9999.00
+000 001 193 000 Categorical freezing rain        0,1                  CFRZR            0  -9999.00
+000 001 193 001 Categorical freezing rain        0,1                  CFRZR            0  -9999.00
+000 001 193 002 Categorical freezing rain        0,1                  CFRZR            0  -9999.00
+000 001 193 005 Categorical freezing rain        0,1                  CFRZR            0  -9999.00
+000 001 193 008 Categorical freezing rain        0,1                  CFRZR            0  -9999.00
+000 001 193 011 Categorical freezing rain        0,1                  CFRZR            0  -9999.00
+000 001 193 012 Categorical freezing rain        0,1                  CFRZR            0  -9999.00
+000 001 194 000 Categorical ice pellets          0,1                  CICEP            0  -9999.00
+000 001 194 001 Categorical ice pellets          0,1                  CICEP            0  -9999.00
+000 001 194 002 Categorical ice pellets          0,1                  CICEP            0  -9999.00
+000 001 194 005 Categorical ice pellets          0,1                  CICEP            0  -9999.00
+000 001 194 008 Categorical ice pellets          0,1                  CICEP            0  -9999.00
+000 001 194 011 Categorical ice pellets          0,1                  CICEP            0  -9999.00
+000 001 194 012 Categorical ice pellets          0,1                  CICEP            0  -9999.00
+000 001 195 000 Categorical snow                 0,1                  CSNOW            0  -9999.00
+000 001 195 001 Categorical snow                 0,1                  CSNOW            0  -9999.00
+000 001 195 002 Categorical snow                 0,1                  CSNOW            0  -9999.00
+000 001 195 005 Categorical snow                 0,1                  CSNOW            0  -9999.00
+000 001 195 008 Categorical snow                 0,1                  CSNOW            0  -9999.00
+000 001 195 011 Categorical snow                 0,1                  CSNOW            0  -9999.00
+000 001 195 012 Categorical snow                 0,1                  CSNOW            0  -9999.00
+000 001 196 000 Convective precip rate           kg m**-2 s**-1       CPRAT            0  -9999.00
+000 001 196 008 Convective precip rate           kg m**-2 s**-1       CPRAT            0  -9999.00
+000 001 196 011 Convective precip rate           kg m**-2 s**-1       CPRAT            0  -9999.00
+000 001 197 000 Horizontal moisture divergence   kg kg**-1 s**-1      MCONV            0  -9999.00
+000 001 198 000 Minimum Relative Humidity        %                    MINRH            0  -9999.00
+000 001 198 008 Minimum Relative Humidity        %                    MINRH            0  -9999.00
+000 001 199 000 Potential evaporation            kg m**-2             PEVAP            0  -9999.00
 000 001 199 008 Potential evaporation            kg m**-2             PEVAP            0  -9999.00
+000 001 200 000 Potential evaporation rate       W/m**2               PEVPR            0  -9999.00
+000 001 200 001 Potential evaporation rate       W/m**2               PEVPR            0  -9999.00
+000 001 200 008 Potential evaporation rate       W/m**2               PEVPR            0  -9999.00
+000 001 201 000 Snow cover                       %                    SNOWC            0  -9999.00
+000 001 202 000 Rain frctn of total liquid wtr   -                    FRAIN            0  -9999.00
+000 001 203 000 Rime factor                      -                    RIME             0  -9999.00
+000 001 204 000 Total column-integrated rain     kg m**-2             TCOLR            0  -9999.00
+000 001 205 000 Total column-integrated snow     kg m**-2             TCOLS            0  -9999.00
+000 001 206 000 Total Icing Potential Diagnostic non-dim              TIPD             0  -9999.00
+000 001 206 005 Total Icing Potential Diagnostic non-dim              TIPD             0  -9999.00
+000 001 207 000 Number conc. for ice particles   non-dim              NCIP             0  -9999.00
+000 001 208 000 Snow temperature                 K                    SNOT             0  -9999.00
+000 001 209 000 Total column-int supercooled H2O kg m**-2             TCLSW            0  -9999.00
+000 001 210 000 Total column-int melting ice     kg m**-2             TCOLM            0  -9999.00
+000 001 211 000 Evaporation - Precipitation      cm day**-1           EMNP             0  -9999.00
+000 001 212 000 Sublimation                      W m**-2              SBSNO            0  -9999.00
+000 001 213 000 Deep Convective Moistening Rate  kg kg**-1 s**-1      CNVMR            0  -9999.00
+000 001 214 000 Shallow Convective Moistening Rt kg kg**-1 s**-1      SHAMR            0  -9999.00
+000 001 215 000 Vertical Diffusion Moistening Rt kg kg**-1 s**-1      VDFMR            0  -9999.00
+000 001 216 000 Condensation Pressure of Parcali Pa                   CONDP            0  -9999.00
+000 001 217 000 Large scale moistening rate      kg kg**-1 s**-1      LRGMR            0  -9999.00
+000 001 218 000 Specific humidity at top of visc kg kg**-1            QZ0              0  -9999.00
+000 001 219 000 Maximum specific humidity at 2m  kg kg**-1            QMAX             0  -9999.00
+000 001 220 000 Minimum specific humidity at 2m  kg kg**-1            QMIN             0  -9999.00
+000 001 221 000 Liquid precipitation (Rainfall)  kg m**-2             ARAIN            0  -9999.00
+000 001 222 000 Snow temperature, depth-avg      K                    SNOWT            0  -9999.00
+000 001 223 000 Total precipitation              kg m**-2             APCPN            0  -9999.00
+000 001 224 000 Convective precipitation         kg m**-2             ACPCPN           0  -9999.00
+000 001 225 000 Freezing Rain                    kg m**-2             FRZR             0  -9999.00
 000 001 226 000 Predominant Weather              non-dim              PWTHER           0  -9999.00
+000 001 227 000 Frozen Rain                      kg m**-2             FROZR            0  -9999.00
+!000 001 230 000 
+000 001 241 000 Total Snow                       kg m**-2             TSNOW            0  -9999.00
+000 001 242 000 Relative Humidity w.r.t. PW      %                    RHPW             0  -9999.00
+000 001 242 005 Relative Humidity w.r.t. PW      %                    RHPW             0  -9999.00
 000 001 255 000 Missing                                                                0  -9999.00
 !
 ! momentum
@@ -349,7 +419,9 @@
 !D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING
 !23|123|123|123|12345678901234567890123456789012|12345678901234567890|123456789012|12345|123456.89
 000 004 000 000 Net Short-Wave Rad (sfc)         W m**-2              SNIR             0  -9999.00
+000 004 000 008 Net Short-Wave Rad (sfc)         W m**-2              SNIR             0  -9999.00
 000 004 001 000 Net Short-Wave Rad (toa)         W m**-2              SWRT             0  -9999.00
+000 004 001 008 Net Short-Wave Rad (toa)         W m**-2              SWRT             0  -9999.00
 000 004 002 000 Short-Wave Radiation Flux        W m**-2              SWAVR            0  -9999.00
 000 004 002 002 Short-Wave Radiation Flux        W m**-2              SWAVR            0  -9999.00
 000 004 003 000 Global radiation Flux            W m**-2              GRAD             0  -9999.00
@@ -380,6 +452,7 @@
 000 005 001 000 Net Long-Wave Rad (toa)          W m**-2              LWRT             0  -9999.00
 000 005 002 000 Long-Wave Radiation Flux         W m**-2              LWAVR            0  -9999.00
 000 005 003 000 Downward Long-Wave Rad. Flux     W m**-2              DLWRF            0  -9999.00
+000 005 003 008 Downward Long-Wave Rad. Flux     W m**-2              DLWRF            0  -9999.00
 000 005 004 000 Upward Long-Wave Rad. Flux       W m**-2              ULWRF            0  -9999.00
 000 005 005 000 Net Long-Wave Radiation Flux     W m**-2              NLWRF            0  -9999.00
 000 005 005 001 Net Long-Wave Radiation Flux     W m**-2              NLWRF            0  -9999.00
@@ -473,6 +546,17 @@
 000 007 015 000 Updraft Helicity                 m**2 s**-2           UPHL             0  -9999.00
 !000 007 016-191 000 Reserved                                                           0  -9999.00
 !000 007 192-254 000 Reserved for Local Use                                             0  -9999.00
+000 007 192 000 Surface lifted index             K                    LIFTX            0  -9999.00
+000 007 192 001 Surface lifted index             K                    LIFTX            0  -9999.00
+000 007 193 000 Best (4 layer) lifted index      K                    4LFTX            0  -9999.00
+000 007 193 001 Best (4 layer) lifted index      K                    4LFTX            0  -9999.00
+000 007 194 000 Richardson number                -                    RI               0  -9999.00
+000 007 195 000 Convective Weather Detect, Indx  -                    CWDI             0  -9999.00
+000 007 196 000 Ultra Violet Index               -                    UVI              0  -9999.00
+000 007 197 000 Updraft Helicity                 m**2 s**-2           UPHL             0  -9999.00
+000 007 198 000 Leaf Area Index                  -                    LAI              0  -9999.00
+000 007 199 000 Hrly Max Up Helicity 2km-5km AGL m**2 s**-2           MXUPHL           0  -9999.00
+000 007 199 008 Hrly Max Up Helicity 2km-5km AGL m**2 s**-2           MXUPHL           0  -9999.00
 000 007 255 000 Missing                                                                0  -9999.00
 !
 ! aerosols 
@@ -570,6 +654,7 @@
 000 019 001 011 Albedo                           %                    ALBDO            0  -9999.00
 000 019 002 000 Thunderstorm Probability         %                    TSTM             0  -9999.00
 000 019 002 008 Thunderstorm Probability         %                    TSTM             0  -9999.00
+000 019 002 009 Thunderstorm Probability         %                    TSTM             0  -9999.00
 000 019 003 000 Mixed Layer Depth                m                    MIXHT            0  -9999.00
 000 019 004 000 Volcanic Ash                     code table           VOLASH           0  -9999.00
 000 019 005 000 Icing Top                        m                    ICIT             0  -9999.00
@@ -601,6 +686,55 @@
 000 019 028 000 Mtn Wave Turb (eddy disp rate)   m**2/3 s**-1         MWTURB           0  -9999.00
 !000 019 028-191 000 Reserved                                                           0  -9999.00
 !000 019 192-254 000 Reserved for local use                                             0  -9999.00
+000 019 192 000 Maximum snow albedo              %                    MXSALB           0  -9999.00
+000 019 193 000 Snow-free albedo                 %                    SNFALB           0  -9999.00
+000 019 194 000 Slight risk convective outlook   categorical          OLTKS            0  -9999.00
+000 019 194 008 Slight risk convective outlook   categorical          OLTKS            0  -9999.00
+000 019 195 000 Moderate risk convective outlook categorical          OTLKM            0  -9999.00
+000 019 195 000 Moderate risk convective outlook categorical          OTLKM            0  -9999.00
+000 019 196 000 High risk convective outlook     categorical          OTLKH            0  -9999.00
+000 019 196 008 High risk convective outlook     categorical          OTLKH            0  -9999.00
+000 019 197 000 Tornado probability              %                    PTORN            0  -9999.00
+000 019 197 009 Tornado probability              %                    PTORN            0  -9999.00
+000 019 198 000 Hail probability                 %                    PHAIL            0  -9999.00
+000 019 198 009 Hail probability                 %                    PHAIL            0  -9999.00
+000 019 199 000 Wind probability                 %                    PWIND            0  -9999.00
+000 019 199 009 Wind probability                 %                    PWIND            0  -9999.00
+000 019 200 000 Significant Tornado probability  %                    PSTORN           0  -9999.00
+000 019 200 009 Significant Tornado probability  %                    PSTORN           0  -9999.00
+000 019 201 000 Significant Hail probability     %                    PSHAIL           0  -9999.00
+000 019 201 009 Significant Hail probability     %                    PSHAIL           0  -9999.00
+000 019 202 000 Significant Wind probability     %                    PSWIND           0  -9999.00
+000 019 202 009 Significant Wind probability     %                    PSWIND           0  -9999.00
+000 019 203 000 Cat. Thunderstorm (1-yes, 0-no)  categorical          CTSTM            0  -9999.00
+000 019 203 008 Cat. Thunderstorm (1-yes, 0-no)  categorical          CTSTM            0  -9999.00
+000 019 204 000 Num mixed layers next to surface integer              MIXLY            0  -9999.00
+000 019 205 000 Flight Category                                       FLGHT            0  -9999.00
+000 019 206 000 Confidence - Ceiling                                  CICEL            0  -9999.00
+000 019 207 000 Confidence - Visibility                               CIVIS            0  -9999.00
+000 019 208 000 Confidence - Flight Category                          CIFLT            0  -9999.00
+000 019 209 000 Low-Level aviation interest                           LAVNI            0  -9999.00
+000 019 210 000 High-Level aviation interest                          HAVNI            0  -9999.00
+000 019 211 000 Visible, Black Sky Albedo        %                    SBSALB           0  -9999.00
+000 019 212 000 Visible, White Sky Albedo        %                    SWSALB           0  -9999.00
+000 019 213 000 Near IR, Black Sky Albedo        %                    NBSALB           0  -9999.00
+000 019 214 000 Near IR, White Sky Albedo        %                    NWSALB           0  -9999.00
+000 019 215 000 Total Prob of Severe Tstorms     %                    PRSVR            0  -9999.00
+000 019 215 009 Total Prob of Severe Tstorms     %                    PRSVR            0  -9999.00
+000 019 216 000 Total Prob of Extrm Sev Tstorms  %                    PRSIGSVR         0  -9999.00
+000 019 216 009 Total Prob of Extrm Sev Tstorms  %                    PRSIGSVR         0  -9999.00
+000 019 217 000 Supercooled Large Droplet Icing  non-dim              SIPD             0  -9999.00
+000 019 218 000 Radiative emissivity                                  EPSR             0  -9999.00
+000 019 219 005 Turbulence Potential Fcst Index  NA                   TPFI             0  -9999.00
+000 019 220 000 Categorical Severe Thunderstorm  code table           SVRTS            0  -9999.00
+000 019 221 008 Probability of Convection        %                    PROCON           0  -9999.00
+000 019 222 008 Convection Potential             NA                   CONVP            0  -9999.00
+!000 019 223-231 000 Reserved                                                           0  -9999.00
+000 019 232 000 Volcanic Ash Forecast Transport  log10 (kg m**-3)     VAFTD            0  -9999.00
+000 019 233 000 Icing probability                non-dim              ICPRB            0  -9999.00
+000 019 234 000 Icing severity                   non-dim              ICSEV            0  -9999.00
+000 019 235 000 Joint Fire Weather Probability   %                    JFWPRB           0  -9999.00
+000 019 242 000 Mislabeled RH wrt PW             %                    RHPW             0  -9999.00
 000 019 255 000 Missing                                                                0  -9999.00
 !
 ! Atmospheric Chemical Constituents

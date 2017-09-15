@@ -18,7 +18,7 @@
 !
 ! NAM
 007   x   084,085   104    data/gempak/model/nam/YYYYMMDDHH_nam@@@.gem   30000
-007   x   084,085   212    data/gempak/model/nam/YYYYMMDDHH_nam@@@.gem   24000
+007   x   084,085   212    data/gempak/model/nam/YYYYMMDDHH_nam@@@.gem   30000
 007   x   084,085   227    data/gempak/model/nam4km/YYYYMMDDHHfFFF_nam4km.gem   1000
 007   x   084,085   218    data/gempak/model/nam12km/YYYYMMDDHHfFFF_nam@@@.gem  1000
 007   x   084,085   207    data/gempak/model/nam-ak/YYYYMMDDHH_nam@@@.gem   5000
@@ -58,7 +58,7 @@
 007   x   077,81,96 043    data/gempak/model/gfs/YYYYMMDDHH_thin.gem      2000
 007   x   077,81,96 044    data/gempak/model/gfs/YYYYMMDDHH_thin.gem      2000
 007   x   077,81,96 002    data/gempak/model/gfs/YYYYMMDDHH_gfs@@@.gem    9000
-007   x   077,81,96 003    data/gempak/model/gfs/YYYYMMDDHH_gfs@@@.gem   29000
+007   x   077,81,96 003    data/gempak/model/gfs/YYYYMMDDHHfFFF_gfs@@@.gem   5000
 007   x   077,81,96 004    data/gempak/model/gfs0.5deg/YYYYMMDDHHfFFF_gfs.gem   5000
 007   x   077,81,96 193    data/gempak/model/gfs0.25deg/YYYYMMDDHHfFFF_gfs.gem   5000
 !
@@ -183,6 +183,8 @@
 ! RFC products
 ! HDS NWS Flash Flood Guidence subcenter ID 155
 009   x   151       @@@    data/gempak/model/ffg/YYYYMMDDHH_%subc%@@@.gem      500
+009   x   159       @@@    data/gempak/model/ffg/YYYYMMDDHH_%subc%@@@_159.gem      100
+009   x   162       @@@    data/gempak/model/ffg/YYYYMMDDHH_%subc%@@@_162.gem      100
 !
 ! HDS NESDIS 1 hr Automated Satellite Precipitation Estimation
 009 170   190       @@@    data/gempak/model/qpf/YYYYMMDDHH_spe.gem      10

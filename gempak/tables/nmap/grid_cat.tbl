@@ -26,15 +26,15 @@
 !
 !
 ! Unidata 
-NCEP_CONUS_Models       dgex;hrrr;rap;rap20;rap13;nam5;nam221;nam80;nam40;nam20;nam12;nam104;nam;nam243;rap40;gfs212;gfs215;gfs211
-NCEP_Global_Models      gfs;gfshd;gfs003;gfs002;gfsthin
+NCEP_CONUS_Models       hrrr;rap13;rap20;rap40;nam;nam4;nam12,nam20;nam40;namdng;nam221;nam104;nam243;gfs212;gfs215;gfs211;rtma;urma
+NCEP_Global_Models      gfs;gfshd;gfs25;gfs003;gfsthin
 !
 International_Models    cosmo;ukmet;cmc;ecmwfg;ecmwft;gme;g3dvar;ecmwf
 !
-Ensemble_Models         sref;gefs;gefc;ens;enshr
+Ensemble_Models         sref;gefs;gefc;ens;enshr;nbm
 !
 Local_Mesoscale_Models  wseta;wrf
 !
 NDFD_Grids              rtma;ndfd
 e
-Ocean_Models            nww3;GoesSST;navgem
+Ocean_Models            nww3;GoesSST;navgem;estofs;nww

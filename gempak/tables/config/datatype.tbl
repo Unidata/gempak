@@ -447,6 +447,7 @@ NAM40        $MODEL/nam                YYYYMMDDHH_nam212.gem                    
 NAM212       $MODEL/nam                YYYYMMDDHH_nam212.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
 NAM237       $MODEL/nam                YYYYMMDDHH_nam237.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
 NAM32        $MODEL/nam32              YYYYMMDDHHfFFF_nam32.gem                         CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+NBM          $MODEL/nbm                YYYYMMDDHHfFFF_nbm.gem                           CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
 NCWD         $MODEL/awc                YYYYMMDD_ncwd.gem                                CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
 TURB         $MODEL/awc                YYYYMMDD_turb.gem                                CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
 CIP          $MODEL/awc                YYYYMMDD_cip.gem                                 CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
@@ -637,7 +638,7 @@ NAM216       $MODEL/nam-ak             YYYYMMDDHH_nam216.gem                    
 NAM217       $MODEL/nam-ak             YYYYMMDDHH_nam217.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
 NAM242       $MODEL/nam-ak             YYYYMMDDHH_nam242.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
 GFS002       $MODEL/gfs                YYYYMMDDHH_gfs002.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
-GFS003       $MODEL/gfs                YYYYMMDDHH_gfs003.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
+GFS003       $MODEL/gfs                YYYYMMDDHHfFFF_gfs003.gem                        CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
 GFS703       $MODEL/gfs                YYYYMMDDHH_gfs703.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
 GFS004       $MODEL/gfs0.5deg          YYYYMMDDHHfFFF_gfs.gem                           CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
 GFS160       $MODEL/gfs                YYYYMMDDHH_gfs160.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
@@ -651,10 +652,10 @@ GFS254       $MODEL/gfs                YYYYMMDDHH_gfs254.gem                    
 GFS703       $MODEL/gfs                YYYYMMDDHH_gfs703.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
 GFSTHIN      $MODEL/gfs                YYYYMMDDHH_thin.gem                              CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
 AVN002       $MODEL/gfs                YYYYMMDDHH_gfs002.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
-AVN003       $MODEL/gfs                YYYYMMDDHH_gfs003.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
+AVN003       $MODEL/gfs                YYYYMMDDHHfFFF_gfs003.gem                        CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
 AVN211       $MODEL/gfs                YYYYMMDDHH_gfs211.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
 AVNTHIN      $MODEL/gfs                YYYYMMDDHH_thin.gem                              CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
-AVN          $MODEL/gfs                YYYYMMDDHH_gfs003.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
+AVN          $MODEL/gfs                YYYYMMDDHHfFFF_gfs003.gem                        CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
 RUC          $MODEL/ruc                YYYYMMDDHH_ruc211.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
 !RUC_20      $MODEL/ruc                YYYYMMDDHH_ruc252.gem                            CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
 RUC_20       $MODEL/ruc                YYYYMMDDHH_ruc.gem                               CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
