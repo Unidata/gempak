@@ -278,5 +278,10 @@ else
     set pr = `$PYHOME/bin/python -V |& cut -c8- | cut -d. -f2`
     setenv PYTHONPATH "${PYHOME}/lib64/python${pv}.${pr}/site-packages:${PYHOME}/lib/python${pv}.${pr}/site-packages:${NAWIPS}/scripts/python"
 endif
-setenv LD_LIBRARY_PATH ${LD_LIBRARY_PATH}:${OS_LIB}
+
+if($?LD_LIRBARY_PATH) then
+  setenv LD_LIBRARY_PATH ${LD_LIBRARY_PATH}:${OS_LIB}
+else
+  setenv LD_LIBRARY_PATH ${OS_LIB}
+endif
 
