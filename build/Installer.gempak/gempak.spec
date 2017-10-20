@@ -57,12 +57,13 @@ make programs_nc >& /dev/null
 make clean >& /dev/null
 
 grep -i error make.gempak
+rm -rf make.gempak make.extlibs.log
 
 mkdir -p ${RPM_BUILD_ROOT}/home/gempak/
 cd ..
 mv GEMPAK7 ${RPM_BUILD_ROOT}/home/gempak/
 cd ${RPM_BUILD_ROOT}/home/gempak/GEMPAK7
-rm -rf extlibs config .gitignore .travis.yml build
+rm -rf extlibs .gitignore .travis.yml build
 
 %pre
 
