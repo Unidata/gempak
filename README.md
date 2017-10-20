@@ -11,6 +11,26 @@ GEMPAK is easily built on a number of Unix-based systems: RedHat/CentOS/Fedora, 
 
 GEMPAK can be installed by an individual user, and root / superuser permission is not required. For this guide and throughout other online documentation it is assumed that GEMPAK is installed for a **gempak** user account in the home directory `/home/gempak/GEMPAK7`.
 
+# Documentation
+
+* [GEMPAK Online Tutorial](http://www.unidata.ucar.edu/software/gempak/tutorial/index.html)
+  * [User Interface](http://www.unidata.ucar.edu/software/gempak/tutorial/gempak_user_interface.html)
+  * [Surface Data](http://www.unidata.ucar.edu/software/gempak/tutorial/surface_data_mapping.html)
+  * [Sounding Data](http://www.unidata.ucar.edu/software/gempak/tutorial/sounding_data_mapping.html)
+  * [GPMAP](http://www.unidata.ucar.edu/software/gempak/tutorial/gpmap.html)
+  * [Map Aesthetics](http://www.unidata.ucar.edu/software/gempak/tutorial/map_aesthetics.html)
+  * [Gridded Data Mapping](http://www.unidata.ucar.edu/software/gempak/tutorial/gridded_data_mapping.html)
+  * [Grid Diagnostics](http://www.unidata.ucar.edu/software/gempak/tutorial/grid_diagnostics.html)
+  * [Grid Interpolation](http://www.unidata.ucar.edu/software/gempak/tutorial/grid_interpolation.html)
+  * [Importing Data](http://www.unidata.ucar.edu/software/gempak/tutorial/importing_data.html)
+  * [Objective Analysis](http://www.unidata.ucar.edu/software/gempak/tutorial/objective_analysis.html)
+  * [Vertical Plotting](http://www.unidata.ucar.edu/software/gempak/tutorial/vertical_plotting.html)
+  * [Radar Programs](http://www.unidata.ucar.edu/software/gempak/tutorial/radar_programs.html)
+* [GEMPAK Program Index](http://www.unidata.ucar.edu/software/gempak/tutorial/gempak_programs.html)
+* [Grid Catalog - Projections and Parameters](http://www.unidata.ucar.edu/software/gempak/grids/)
+
+# Build or Install
+
 **It is important that you read this entire document if you are building from source**.
 
 ## <a href="https://github.com/Unidata/gempak/releases">Latest Release</a>
