@@ -31,17 +31,15 @@ These packages can also be found on the <a href="http://www.unidata.ucar.edu/dow
 
         git clone git://github.com/Unidata/gempak.git GEMPAK7
 
-<a href="#quick-source-code-build-bash">See below</a> for mor details source code build instructions.
+<a href="#quick-source-code-build-bash">See below</a> for full build-from-source instructions.
 
 ## RPM and Source Code Tarball
 
-See the <a href="https://github.com/Unidata/gempak/releases">GEMPAK Releases on GitHub</a> for the latest version.  
-
 To install the latest RPM to a custom directory use the `--prefix` argument, where `--prefix=/home/user` will install to `/home/user/GEMPAK7/`
 
-        sudo rpm -ivh --prefix=/home/user gempak-XXX-1.x86_64.rpm
+        sudo rpm -ivh --prefix=/home/user gempak-*x86_64.rpm
 
-## Quick Source Code build (*bash*)
+## Source Code Build (*bash*)
 
 Install all prerequisites:
 
@@ -54,14 +52,14 @@ Now build all libraries and programs:
         . Gemenviron.profile
         make everything
 
-## Quick Source Code build against Python
+## Source Code build against Python
 
         cd GEMPAK7
         . Gemenviron.profile
         . source_python.sh
         make everything
 
-## Create the NAWIPS symbolic link
+## /home/gempak/NAWIPS symbolic link
 
 After installing or building from source, but before running any GEMAPK programs, you should create a symbolic link NAWIPS in your home directory to maintain a single command in **.cshrc** or **.profile** that sources the current GEMPAK installation:
 
