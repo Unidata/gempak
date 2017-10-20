@@ -9,7 +9,8 @@ GEMPAK (GEneral Meteorology PAcKage) is a set of programs to decode, analyze, an
 
 GEMPAK is easily built on a number of Unix-based systems: RedHat/CentOS/Fedora, Ubuntu/Debian, <a href="http://www.unidata.ucar.edu/software/gempak/doc/install_osx.html">macOS</a>. The recommended installation (available as a Docker container) is CentOS 6 Linux with gfortran and gcc compilers. 
 
-GEMPAK can be installed by an individual user, and root / superuser permission is not required. For this guide and throughout other online documentation it is assumed that GEMPAK is installed for a **gempak** user account in the home directory `/home/gempak/GEMPAK7`.
+
+<img src="http://www.unidata.ucar.edu/software/gempak/tutorial/gdcross2.gif" height="192" hspace=5><img src="http://www.unidata.ucar.edu/software/gempak/tutorial/color_temp.gif" height="192" hspace=5><img src="http://www.unidata.ucar.edu/software/gempak/tutorial/gdplot2.gif" height="192" hspace=5>
 
 # Documentation
 
@@ -30,6 +31,8 @@ GEMPAK can be installed by an individual user, and root / superuser permission i
 * [Grid Catalog - Projections and Parameters](http://www.unidata.ucar.edu/software/gempak/grids/)
 
 # Build or Install
+
+GEMPAK can be installed by an individual user, and root / superuser permission is not required. For this guide and throughout other online documentation it is assumed that GEMPAK is installed for a **gempak** user account in the home directory `/home/gempak/GEMPAK7`.
 
 **It is important that you read this entire document if you are building from source**.
 
