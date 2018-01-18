@@ -3,12 +3,11 @@
 
 [http://www.unidata.ucar.edu/software/gempak/](http://www.unidata.ucar.edu/software/gempak/)
 
-[![GitHub release](https://img.shields.io/github/release/Unidata/gempak.svg)]() [![license](https://img.shields.io/github/license/Unidata/gempak.svg)]() [![Travis Badge](https://travis-ci.org/Unidata/gempak.svg?branch=master)](https://travis-ci.org/Unidata/gempak) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/4796566fc6b145bcbf73697998b437d3)](https://www.codacy.com/app/mjames/gempak)
+[![GitHub release](https://img.shields.io/github/release/Unidata/gempak.svg)]() [![license](https://img.shields.io/github/license/Unidata/gempak.svg)]() [![Travis Badge](https://travis-ci.org/Unidata/gempak.svg?branch=master)](https://travis-ci.org/Unidata/gempak) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/4796566fc6b145bcbf73697998b437d3)](https://www.codacy.com/app/mjames/gempak) 
 
 GEMPAK (GEneral Meteorology PAcKage) is a set of programs to decode, analyze, and render meteorological data.  UCAR's Unidata Program Center maintains an open-source, non-operational release for use in the geoscience community.
 
-GEMPAK is easily built on a number of Unix-based systems: RedHat/CentOS/Fedora, Ubuntu/Debian, <a href="http://www.unidata.ucar.edu/software/gempak/doc/install_osx.html">macOS</a>. The recommended installation (available as a Docker container) is CentOS 6 Linux with gfortran and gcc compilers. 
-
+GEMPAK is easily built on a number of Unix-based systems: RedHat/CentOS/Fedora, Ubuntu/Debian, <a href="http://www.unidata.ucar.edu/software/gempak/doc/install_osx.html">macOS</a>. The recommended installation is CentOS 7 Linux with gfortran and gcc compilers, which is [provided as a Docker Container Image](https://hub.docker.com/r/unidata/gempak/), allowing for GEMPAK to be run on any docker-supported host machine.
 
 <img src="http://www.unidata.ucar.edu/software/gempak/tutorial/gdcross2.gif" height="192" hspace=5><img src="http://www.unidata.ucar.edu/software/gempak/tutorial/color_temp.gif" height="192" hspace=5><img src="http://www.unidata.ucar.edu/software/gempak/tutorial/gdplot2.gif" height="192" hspace=5>
 
@@ -29,6 +28,7 @@ GEMPAK is easily built on a number of Unix-based systems: RedHat/CentOS/Fedora, 
   * [Radar Programs](http://www.unidata.ucar.edu/software/gempak/tutorial/radar_programs.html)
 * [GEMPAK Program Index](http://www.unidata.ucar.edu/software/gempak/tutorial/gempak_programs.html)
 * [Grid Catalog - Projections and Parameters](http://www.unidata.ucar.edu/software/gempak/grids/)
+* [GEMPAK Docker Container Image](https://hub.docker.com/r/unidata/gempak/)
 
 # Build or Install
 
