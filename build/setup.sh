@@ -18,7 +18,6 @@ if [ "$os_type" = "centos" ]; then
 
     elif [ "$os_version" = "centos7" ]; then
 
-        #sudo docker run --privileged -d -ti -e "container=docker"  -v /sys/fs/cgroup:/sys/fs/cgroup -v `pwd`:/gempak:rw  ${os_type}:${os_version}   /usr/sbin/init
         sudo docker run --privileged -d -ti -e "container=docker" -v `pwd`:/gempak:rw  ${os_type}:${os_version}   /usr/sbin/init
         DOCKER_CONTAINER_ID=$(sudo docker ps | grep ${os_version} | awk '{print $1}' | head -1 )
         sudo docker logs $DOCKER_CONTAINER_ID
