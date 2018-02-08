@@ -273,10 +273,11 @@ if ( -d /awips2/python ) then
     set pr = `$PYHOME/bin/python -V |& cut -c8- | cut -d. -f2`
     setenv PYTHONPATH "${PYHOME}/lib/python${pv}.${pr}/site-packages:${NAWIPS}/scripts/python"
 else
-    setenv PYHOME "/usr"
-    set pv = `$PYHOME/bin/python -V |& cut -c8- | cut -d. -f1`
-    set pr = `$PYHOME/bin/python -V |& cut -c8- | cut -d. -f2`
-    setenv PYTHONPATH "${PYHOME}/lib64/python${pv}.${pr}/site-packages:${PYHOME}/lib/python${pv}.${pr}/site-packages:${NAWIPS}/scripts/python"
+    if($?PYTHONPATH) then
+        setenv PYTHONPATH "${NAWIPS}/scripts/python:${PYTHONPATH}"
+    else
+        setenv PYTHONPATH "${NAWIPS}/scripts/python"
+    endif
 endif
 
 if($?LD_LIRBARY_PATH) then
