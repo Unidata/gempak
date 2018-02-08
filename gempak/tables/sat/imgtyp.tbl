@@ -79,6 +79,24 @@
 !(20)               |(8)     |   (6)|   (6)|   (6)|   (6)|   (6)|      (14)    |
 !                   |        |      |      |      |      |      |              |
 !------------------------------------------------------------------------------
+!------------------------------------------------------------------------------
+GOES16 CH01          0.47um        0    255    186      1      1 GRAY
+GOES16 CH02          0.64um        0    255    186      2      1 GRAY
+GOES16 CH03          0.87um        0    255    186      4      1 GRAY
+GOES16 CH04          1.38um        0    255    186      8      1 GRAY
+GOES16 CH05          1.61um        0    255    186     16      1 GRAY
+GOES16 CH06          2.25um        0    255    186     32      1 GRAY
+GOES16 CH07          3.9um         0    255    186     64      1 GRAY
+GOES16 CH08          6.19um        0    255    186    128      1 GRAY
+GOES16 CH09          6.95um        0    255    186    256      1 GRAY
+GOES16 CH10          7.34um        0    255    186    512      1 GRAY
+GOES16 CH11          8.5um         0    255    186   1024      1 GRAY
+GOES16 CH12          9.61um        0    255    186  2**11      1 GRAY
+GOES16 CH13          10.35um       0   1023    186  2**12      2 GRAY
+GOES16 CH14          11.2um        0    255    186  2**13      1 GRAY
+GOES16 CH15          12.3um        0    255    186  2**14      1 GRAY
+GOES16 CH16          13.3um        0    255    186  2**15      1 GRAY
+!
 AIRS                 CO            3    253    240      2      1 rainbow.tbl
 AIRS                 O3            3    253    240      1      1 rainbow.tbl
 ALASKA  1 KM  BASE   REFLECT       0     15      6    139      1 osf_ref16.tbl
