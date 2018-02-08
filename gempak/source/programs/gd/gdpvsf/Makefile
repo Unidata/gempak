@@ -5,22 +5,19 @@
 #
 include $(CONFIGDIR)/$(MAKEINC)
 
-LIBINC =
-
-COBJS = 
-
+ALIB = $(OS_LIB)/gdpvsf.a
+ 
 LOBJS = \
 	$(ALIB)(gdpvcl.o) \
 	$(ALIB)(gdpvdt.o) \
 	$(ALIB)(gdpvin.o) \
 	$(ALIB)(gdpvlv.o) 
 
-ALIB = $(GEMOLB)/gdpvsf.a
- 
 PROG = gdpvsf
 PROG.f = gdpvsf.f
- 
 
+
+ 
 LIBINC = \
 	$(GEMLIB) \
 	$(APPL) \
@@ -28,18 +25,18 @@ LIBINC = \
 	$(CGEMLIB) \
 	$(GEMLIB) \
 	$(LIBJASPER) \
-        $(XMLLIB) \
+	$(XMLLIB) \
 	$(CGEMLIB) \
 	$(PNGLIB) \
 	$(ZLIB)
+ 
 
 .PRECIOUS: $(ALIB)
 
-all : $(ALIB) $(PROG)
+all: $(ALIB) $(PROG)
 
 $(PROG): $(ALIB) $(LIBINC) $(PROG.f)
 	$(LINK.f) $(PROG.f) $(ALIB) $(LIBINC) $(SYSLIBS) -o $@
-
 
 programs_nc:
 	@echo "Not a graphic program, no_nc version needed"
@@ -47,19 +44,16 @@ programs_nc:
 programs_gf:
 	@echo "Not a graphic program, no_gf version needed"
 
-$(ALIB): $(LOBJS) $(COBJS)
+$(ALIB): $(LOBJS) 
 	$(AR) $(ARFLAGS) $@ *.o
 	$(RM) *.o
-
-.c.a :
-	$(CC) $(CFLAGS) -c $<
 
 .f.a :
 	$(FC) $(FFLAGS) -c $<
 
-
 clean:
+	$(RM) $(ALIB)
 	$(RM) *.o $(PROG)
 
 install: $(PROG)
-	$(INSTALL) $(PROG) $(GEMEXE)
+	$(INSTALL) $(PROG) $(OS_BIN)

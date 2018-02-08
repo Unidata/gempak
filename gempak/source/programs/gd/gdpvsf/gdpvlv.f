@@ -41,20 +41,22 @@ C* K.Tyle/UAlbany        4/03   Remove "GEMINC:" in INCLUDE     	*
 C* M. James/Unidata      1/13   GD_GLEV --> DG_GLEV                  	*
 C*                              Call GDPVCL for gfunc / lavflg          *
 C*                              Loop to istop+1 instead of istop        *
+C* M. James/Unidata      2/18   Set MAXGRD                        	*
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 C*
 	PARAMETER	(MAXLEV = 100)
+	PARAMETER	(MAXGRD = 2700000)
 	CHARACTER*(*)	gdatim, gvcord, gfunc, time (2), glist(*)
-	REAL		ogrid ( LLMXGD, * ), igrid ( LLMXGD )
+	REAL		ogrid( MAXGRD , * ), igrid( MAXGRD )
 	LOGICAL		havsfc, lavflg, havgfs, gotone
 C*
 	CHARACTER	dattim (2)*20, glevel*20, pfunc*80 
 	CHARACTER	cbuf*8, parm*12, gpfunc*12
-	REAL		grid ( LLMXGD ), pgrid ( LLMXGD ), rlvl ( MAXLEV )
-	REAL		tgrid ( LLMXGD, MAXLEV ), presgrid ( LLMXGD )
+	REAL		grid(MAXGRD), pgrid(MAXGRD), rlvl(MAXGRD)
+	REAL		tgrid(MAXGRD,MAXLEV), presgrid (MAXGRD)
 C*
-	INTEGER		level ( 2, MAXLEV )
+	INTEGER		level(2,MAXLEV)
 C*
 	INCLUDE		'ERMISS.FNC'
 C------------------------------------------------------------------------
