@@ -1,7 +1,5 @@
 #!/bin/sh -xe
-# This script starts docker and systemd (if el7)
-
-# Version of CentOS/RHEL
+# Version (e.g. "./build/setup.sh centos centos7")
 os_type=$1
 os_version=$2
 
