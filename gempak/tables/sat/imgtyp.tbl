@@ -72,6 +72,7 @@
 ! S. Jacobs/NCEP	10/12	Changed GOES14 to use data from GOESR testing
 ! M. Folmer/OPC		 4/13	Added VIIRS and other derived products
 ! M. James/Unidata	01/14	Reorganization for new UNIWISC products
+! M. James/Unidata	 3/18	Added GOES16
 !------------------------------------------------------------------------------
 !
 !                   |IMG     |      |      |SAT ID|IMGTYP| PIXEL| DEFAULT      |
@@ -87,15 +88,16 @@ GOES16 CH04          1.38um        0    255    186      8      1 GRAY
 GOES16 CH05          1.61um        0    255    186     16      1 GRAY
 GOES16 CH06          2.25um        0    255    186     32      1 GRAY
 GOES16 CH07          3.9um         0    255    186     64      1 GRAY
-GOES16 CH08          6.19um        0    255    186    128      1 GRAY
-GOES16 CH09          6.95um        0    255    186    256      1 GRAY
-GOES16 CH10          7.34um        0    255    186    512      1 GRAY
-GOES16 CH11          8.5um         0    255    186   1024      1 GRAY
-GOES16 CH12          9.61um        0    255    186  2**11      1 GRAY
-GOES16 CH13          10.35um       0   1023    186  2**12      2 GRAY
-GOES16 CH14          11.2um        0    255    186  2**13      1 GRAY
-GOES16 CH15          12.3um        0    255    186  2**14      1 GRAY
-GOES16 CH16          13.3um        0    255    186  2**15      1 GRAY
+GOES16 CH08          6.19um        0    255    186    128      1 WVCIMSS.tbl
+GOES16 CH09          6.95um        0    255    186    256      1 WVCIMSS.tbl
+GOES16 CH10          7.34um        0    255    186    512      1 WVCIMSS.tbl
+GOES16 CH11          8.5um         0    255    186   1024      1 ir_sab.tbl
+GOES16 CH12          9.61um        0    255    186  2**11      1 ir_sab.tbl
+GOES16 CH13          10.35um       0    255    186  2**12      1 ir_sab.tbl
+GOES16 CH14          11.2um        0    255    186  2**13      1 ir_sab.tbl
+GOES16 CH15          12.3um        0    255    186  2**14      1 ir_sab.tbl
+GOES16 CH16          13.3um        0    255    186  2**15      1 ir_sab.tbl
+GOES16 ABI           13M6          0    255    186  2**16      1 fogcira.tbl
 !
 AIRS                 CO            3    253    240      2      1 rainbow.tbl
 AIRS                 O3            3    253    240      1      1 rainbow.tbl
@@ -351,17 +353,6 @@ GOES9                WV            0    255     72      4      2 wv_tpc.tbl
 GOES9                IR            0    255     72     16      1 ir_sab.tbl
 GOES9                IR            0    255     72     16      2 ir_sab.tbl
 GOES9                IR            0    255     72    128      1 ir_sab.tbl
-GOESR-ABI            13M6          0    255    186  2**16      1 fogcira.tbl
-GOESR-ABI            BAND08        0    255    186    128      1 WVCIMSS.tbl
-GOESR-ABI            BAND09        0    255    186    256      1 WVCIMSS.tbl
-GOESR-ABI            BAND10        0    255    186    512      1 WVCIMSS.tbl
-GOESR-ABI            BAND11        0    255    186   1024      1 ir_sab.tbl
-GOESR-ABI            BAND12        0    255    186  2**11      1 ir_sab.tbl
-GOESR-ABI            BAND13        0    255    186  2**12      1 ir_sab.tbl
-GOESR-ABI            BAND14        0    255    186  2**13      1 ir_sab.tbl
-GOESR-ABI            BAND15        0    255    186  2**14      1 ir_sab.tbl
-GOESR-ABI            BAND16        0    255    186  2**15      1 ir_sab.tbl
-GOESR-ABI            VIS2          0    255    186      2      1 GRAY
 HAWAII  1 KM  BASE   REFLECT       0     15      5    139      1 osf_ref16.tbl
 HAWAII  1 KM  BREF Unfil WSR-88D   0    255      8    223      1 osf_ref16.tbl
 HAWAII  1 KM  BREF WSR-88D         0    255      8    220      1 osf_ref16.tbl
