@@ -122,6 +122,7 @@ MIS_LCL_PROD mis.bull     B $TEXT_DATA2/pub_prod/MIS                 MIS
 ALM_ALRT_MSG ada.bull     B $TEXT_DATA2/admin/ADA                    ADA
 SVR_STORM    stations.tbl W $TEXT_DATA2/watch_warn/SVR               SVR
 TORN_WARN    stations.tbl W $TEXT_DATA2/watch_warn/TOR               TOR
+SQW_WARN     stations.tbl W $TEXT_DATA2/watch_warn/SQW               SQW
 REG_WX_SUMM  stations.tbl W $TEXT_DATA2/pub_prod/RWS                 RWS
 WINTER_WWA   stations.tbl W $TEXT_DATA2/avalanche/WSW                WSW
 SPCL_WX_STAT stations.tbl W $TEXT_DATA2/pub_prod/SPS                 SPS
