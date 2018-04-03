@@ -21,7 +21,7 @@ C*	WTYPE		CHAR*		Warning type                    *
 C*	WFROM		CHAR*		Issuing station id		*
 C*	CNTIES		CHAR*		Counties in the warning		*
 C*	EDTTIM		CHAR*		Expiration time                 *
-C*	NCHAR		INTEGER		Number of chars in the header	*
+C*	NCHAR		INTEGER		VTEC indicator          	*
 C*	ETN		CHAR*		Event Tracking Number           *
 C*	IRET		INTEGER		Return code			*
 C*					  0 = Normal return		*
@@ -45,6 +45,7 @@ C* F. J. Yen/NCEP        3/02	Reworked stop time string and checked	*
 C*			 	length.  Renumbered err codes.		*
 C* F. J. Yen/NCEP	 3/08	Added Event Tracking Number (CSC)	*
 C* F. J. Yen/NCEP	 4/08	Added call to BR_VTEC			*
+C* S. Guan/NCEP         11/17   Modified to add snow squall warn (SQW)  *
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 	INCLUDE		'BRIDGE.PRM'
@@ -66,10 +67,10 @@ C
         CALL ST_UNPR ( bultin, lenbul, btin, lenb, ier)  
         ibuldex = INDEX ( btin(:lenb), 'BULLETIN')
 C
-        IF ( ibuldex .eq. 0 ) THEN
-            iret = -1  
-	    RETURN
-        END IF
+C        IF ( ibuldex .eq. 0 ) THEN
+C            iret = -1  
+C	    RETURN
+C        END IF
 C
 C*	Check for a VTEC line beginning with '/' and adjust
 C*	header string length accordingly.  Also get the VTEC string.
@@ -78,6 +79,9 @@ C
 	vtec = ' '
 	etn = ' '
 	islash = INDEX ( btin ( : ibuldex ), '/' )
+        IF ( islash .eq. 0 ) THEN
+           islash = INDEX ( btin ( : lenb ), '/' )
+        END IF
 	IF ( islash .gt. 0 ) THEN
 	    vtecp1 = btin ( islash + 1: islash + 2 )
       	    IF ( vtecp1 .eq. 'O.' .or. vtecp1 .eq. 'T.' .or.
@@ -118,22 +122,27 @@ C
         isvridx = INDEX ( btin(:ibuldex), 'SVR')
         itoridx = INDEX ( btin(:ibuldex), 'TOR')
         iffwidx = INDEX ( btin(:ibuldex), 'FFW')
-
+        isqwidx = INDEX ( btin(:ibuldex), 'SQW')
         IF ( isvridx .ne. 0 )  THEN 
             itypidx = isvridx
           ELSE IF ( itoridx .ne. 0 )  THEN 
             itypidx = itoridx
           ELSE IF ( iffwidx .ne. 0 ) THEN
             itypidx = iffwidx
+          ELSE IF ( isqwidx .ne. 0 ) THEN
+            itypidx = isqwidx
 	  ELSE
 	    itypidx = 0
         END IF
 C
-        IF ( itypidx .ne. 0 ) THEN
-            wtype = btin ( itypidx:itypidx+2 )
-            wfrom = btin ( itypidx+3:itypidx+5 )
-C
-            ictybeg = itypidx+7 
+        IF ( (itypidx .ne. 0) .or. (nchar .ne. 1) ) THEN
+            IF ( nchar .eq. 1 ) THEN
+                wtype = btin ( itypidx:itypidx+2 )
+                wfrom = btin ( itypidx+3:itypidx+5 )
+                ictybeg = itypidx+7
+            ELSE
+                ictybeg = 1
+            END IF
 C
 C*	    Find the counties and ending time.
 C
@@ -172,6 +181,7 @@ C
           ELSE
             iret = -2
         END IF 
+        nchar = INDEX ( btin (islash + 2 : lenb ), '/O.' )
 C*
 	RETURN
 	END

@@ -55,11 +55,11 @@ C* S. Jacobs/NCEP	 4/14		Updated to 7.2.0		*
 C* S. Gilbert/NCEP	 4/14		Backdated to 7.1.1		*
 C* S. Jacobs/NCEP	 6/14		Updated to 7.2.0		*
 C* S. Jacobs/NCEP	 6/15		Updated to 7.2.0-3		*
-C* S. Gilbert/NCEP  10/15       Updated to 7.3.0        *
-C* S. Gilbert/NCEP  02/16       Updated to 7.3.1        *
-C* S. Gilbert/NCEP  12/16       Updated to 7.4.0        *
-C* M. James/UCAR     9/17       Updated to 7.4.1        *
-C* M. James/UCAR     2/18       Updated to 7.4.2        *
+C* S. Gilbert/NCEP      10/15           Updated to 7.3.0                *
+C* S. Gilbert/NCEP      02/16           Updated to 7.3.1                *
+C* S. Gilbert/NCEP      12/16           Updated to 7.4.0                *
+C* J. Huber/NCEP        08/17           Updated to 7.4.1                *
+C* S. Guan/NCEP         12/17           Updated to 7.4.2                *
 C************************************************************************
 	CHARACTER*(*)	vmsg
 C------------------------------------------------------------------------

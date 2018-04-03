@@ -134,6 +134,7 @@ C*				Added WSPDA, WSPD2, WSPDC		*
 C* G. McFadden/IMSG	 1/14	Moved TRAK1, TRAKE, and TRAK2 into TRAK	*
 C*				added TRAKC and TRAKS to TRAK		*
 C* M. James/Unidata	 4/14	Added time back to GG_WAVE and GG_ASCT	*
+C* S. GUAN/NCEP         11/17   Change NN to NH for warn                *
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 C*
@@ -425,9 +426,9 @@ C
 			    IF 	( warn .ne. ' ' ) THEN
 				CALL ST_CLST ( warn, '|', ' ', 6,
      +					       warr, numw, ier )
-				CALL ST_ILST ( warr(2), ';', -1, NN,
+				CALL ST_ILST ( warr(2), ';', -1, NH,
      +					       iwclr, numc, ier )
-				DO ii = 1, NN
+				DO ii = 1, NH
 				    IF ( iwclr ( ii ) .lt. 0 )
      +					 iwclr ( ii ) = lclrwn ( ii )
 				END DO
@@ -455,12 +456,12 @@ C
                                   ELSE
                                     iflag(4) = 0
                                 END IF
-				DO  i = 1, NN
+				DO  i = 1, NH
 				    mrktyp(i) = 0
 				    ssize(i)  = 0.0
 				    iwidth(i) = 0
 				END DO
-				CALL GG_WARN ('WARN', warr(1), NN, iwclr, 
+				CALL GG_WARN ('WARN', warr(1), NH, iwclr, 
      +					   mrktyp, ssize, iwidth, iflag, 
      +					   iret )
 			    END IF
