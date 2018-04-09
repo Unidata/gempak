@@ -1,0 +1,12 @@
+!WMOHDLIGH.TBL
+! This table contains WMO headers of lighting data
+! ltgdecode will decode all data listed in this table.
+!
+! Log:
+! S. Guan/NCEP           9/17   Created
+!
+! (6)
+SFUS41
+SFVB41
+SFPA41
+SFPA42

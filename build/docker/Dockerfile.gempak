@@ -1,59 +1,23 @@
-FROM unidata/ldm-docker
+FROM centos:7
 MAINTAINER Michael James <mjames@ucar.edu>
 
-ENV HOME /home/ldm
+# User account
+RUN useradd -ms /bin/bash gempak
 
-WORKDIR $HOME
+# Dependencies
+RUN yum --enablerepo=extras install epel-release -y
+RUN yum clean all
+RUN yum install openmotif libX11 libXt libXext libXp libXft libXtst xorg-x11-xbitmaps csh libgfortran which python-pip -y
 
-#
-# GEMPAK dependencies
-#
-
-RUN yum install openmotif libX11 libXt libXext libXp libXft libXtst xorg-x11-xbitmaps csh -y
-
-#
-# GEMPAK binary
-#
-
+# Latest RPM for CentOS 7
 RUN rpm -ivh http://www.unidata.ucar.edu/downloads/gempak/latest/gempak-latest.el7.centos.x86_64.rpm
 
-#
-# Create single pqact file for GEMPAK decoders
-#
-COPY gempakConfig.sh $HOME/bin/
-RUN gempakConfig.sh
+# Python AWIPS Data Acess Framework
+RUN pip install python-awips six shapely numpy
 
-#
-# Copy GEMPAK decoders to ldm/bin
-#
+# Testing script and Gemenviron
+COPY rungempak.sh /home/gempak/
+RUN echo ". /home/gempak/GEMPAK7/Gemenviron.profile" >> /home/gempak/.bashrc
 
-USER root
-RUN chown ldm:ldm /home/gempak/GEMPAK7
-RUN cd /home/gempak/GEMPAK7/ldm/
-RUN cp /home/gempak/GEMPAK7/os/linux64/bin/dc* $HOME/bin/
-RUN chown ldm:ldm $HOME/bin/dc*
-
-#
-# Full ldmd.conf
-#
-
-COPY ldmd.conf $HOME/etc/
-
-#
-# GEMPAK version replacement runldm.sh
-#
-COPY runldm.sh $HOME/bin/
-
-#
-# entrypoint
-#
-
-COPY entrypoint.sh /
-RUN chmod +x /entrypoint.sh
-ENTRYPOINT ["/entrypoint.sh"]
-
-#
-# Execute script
-#
-
-CMD ["runldm.sh"]
+USER gempak
+WORKDIR /home/gempak

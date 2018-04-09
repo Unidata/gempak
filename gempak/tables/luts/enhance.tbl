@@ -67,6 +67,24 @@
 	1	flseclr
 	1	dnbir
 	1	ciralwd
+	1	abiam
+	1	abiash
+	1	abidayccon
+	1	abidayconv
+	1	abidaycp
+	1	abidaylcf
+	1	abidaylc
+	1	abidaymicro
+	1	abidayocc
+	1	abidaysnowf
+	1	abidiffwv
+	1	abidust
+	1	abifiretemp
+	1	abintmicadv
+	1	abipsnatur
+	1	abisimplewv
+	1	abiso2
+	1	geocolor_g16
 	2	nids_ref8
 	2	nids_ref16
 	2	nids_pre
@@ -84,27 +102,3 @@
 	2	rad_gray8
 	2	rad_gray16
 	2	wsi_mosaic
-!
-! Unidata Additions
-        1       upc_t_r_s
-        1       cape_upc
-        1       ctp_upc
-        1       li_upc
-        1       ozone_upc
-        1       pw_upc
-        1       sst_upc
-        1       ir_upc
-        1       ir_upc2
-        1       ir_upc3
-        1       vis_upc
-        1       wv_upc
-        1       wv_upc2
-        1       upc_comp
-        1       upc_topo
-        1       upc_rad24
-        1       upc_radimg
-        1       upc_velimg
-        1       upc_ramp
-        2       upc_rad24
-        2       upc_ramp
-        2       upc_radimg

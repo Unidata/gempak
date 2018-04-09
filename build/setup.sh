@@ -1,7 +1,5 @@
 #!/bin/sh -xe
-# This script starts docker and systemd (if el7)
-
-# Version of CentOS/RHEL
+# Version (e.g. "./build/setup.sh centos centos7")
 os_type=$1
 os_version=$2
 
@@ -18,7 +16,6 @@ if [ "$os_type" = "centos" ]; then
 
     elif [ "$os_version" = "centos7" ]; then
 
-        #sudo docker run --privileged -d -ti -e "container=docker"  -v /sys/fs/cgroup:/sys/fs/cgroup -v `pwd`:/gempak:rw  ${os_type}:${os_version}   /usr/sbin/init
         sudo docker run --privileged -d -ti -e "container=docker" -v `pwd`:/gempak:rw  ${os_type}:${os_version}   /usr/sbin/init
         DOCKER_CONTAINER_ID=$(sudo docker ps | grep ${os_version} | awk '{print $1}' | head -1 )
         sudo docker logs $DOCKER_CONTAINER_ID

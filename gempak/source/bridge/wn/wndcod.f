@@ -3,8 +3,8 @@
 C************************************************************************
 C* WN_DCOD								*
 C*									*
-C* This subroutine decodes tornado, thunderstorm and flash flood	*
-C* warning bulletins and writes the data to an ASCII file.		*
+C* This subroutine decodes tornado, thunderstorm, snow squall, and      * 
+C* flash flood warning bulletins and writes the data to an ASCII file.  *
 C*									*
 C* WN_DCOD ( CURTIM, GEMFIL, STNTBL, PRMFIL, IADSTN, MAXTIM, NHOURS,	*
 C*		IRET )							*
@@ -43,7 +43,8 @@ C* T. Piper/SAIC	06/07	Extract warning polygon from bulletin	*
 C* T. Piper/SAIC	08/07	Format change; ignore TIME...MOT...LOC	*
 C* F. J. Yen/NCEP	 3/08	Added ETN; made polygon search robust;  *
 C*				added correction letter to cor/test flag*
-C* S. Guan.NCEP         04/15   Increased sections (starry) from 5 to 15*
+C* S. Guan/NCEP         04/15   Increased sections (starry) from 5 to 15*
+C* S. Guan/NCEP         11/17   Modified to add snow squall warn (SQW)  *
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 	INCLUDE		'BRIDGE.PRM'
@@ -99,7 +100,6 @@ C*  Break bulletin into 15 strings.
 C
 		CALL ST_CLSL ( bultin, '*', ' ', 15, starry, inumb,
      +								ierr )
-          write(*,*) "inumb,   ", inumb
 C
 C*  Parse the header info from the bulletin.
 C
@@ -110,9 +110,21 @@ C
 		    more = .false.
 		END IF
 C
-		IF ( more ) THEN
+C*              To handle partial cancellation with two VETC lines     
+C*              nchar indicates whether there is more than one vtec exist
+C
+                nchar = 1
+                iierr = 0
+                DO WHILE ( ( nchar .gt. 0 ) .and. ( iierr .eq. 0 ) )
+                  IF ( nchar .gt. 1) THEN
+                     islash = INDEX (bultin, '$$')
+                     bultin = bultin(islash:lenbul)
+                     CALL ST_CLSL ( bultin, '*', ' ', 15, starry,
+     +                                               inumb, ierr )
+                  END IF
+		  IF ( more ) THEN
 		    CALL WN_GHDR ( starry(1), icor, wtype, wfrom,
-     +			           cnties, edttim, nchar, etn, ierr )
+     +			           cnties, edttim, nchar, etn, iierr )
 		    IF (  bbb .eq. 'COR'  ) THEN
 			icor = 1
 		      ELSE IF ( bbb(1:2) .eq. 'CC' ) THEN
@@ -148,7 +160,6 @@ C*
      +					'TIME...MOT...LOC')
 			        IF (itim .gt. 0) iend = ibeg + itim - 3
 			        poly = starry(inumb)(ibeg:iend)
-                                write(*,*) "tt  ", poly
 			    ELSE
 				ierr = 4
 				mnln = MIN (lens,48)
@@ -164,7 +175,7 @@ C*
 			    more = .false.
 		        END IF
 		    END IF
-		END IF
+		  END IF
 C
 		IF ( more ) THEN
 C
@@ -263,6 +274,7 @@ C
 			    IF ( more ) THEN
 				IF ( ( wtype .eq. 'SVR' ) .or.
      +					( wtype .eq. 'TOR' ) .or.
+     +                                  ( wtype .eq. 'SQW' ) .or.
      +					( wtype .eq. 'FFW' ) ) THEN
 				    IF ( wtype .eq. 'FFW' ) THEN
 					minalw = 480
@@ -295,7 +307,8 @@ C
 			END IF
 		    END IF
 		END IF 
-		CALL DC_FCLS ( ier )
+              END DO
+	      CALL DC_FCLS ( ier )
 	    END IF
 	END DO
 C

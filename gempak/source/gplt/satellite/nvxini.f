@@ -22,12 +22,13 @@ C* S. Chiswell/Unidata	 2/02	Added MSAT, GMSX, MOLL nav		*
 C* S. Chiswell/Unidata	 8/06	Added MSG				*
 C* T. Piper/SAIC	03/07	Changed MSGINI to MSG_INI		*
 C* M. James/Unidata	10/14	Added RECT				*
+C* M. James/Unidata	 2/18	Added ABIN				*
 C************************************************************************
 	INCLUDE		'ERROR.PRM'
 	INCLUDE		'SATDEF.CMN'
 C*
 	INTEGER		nav(640), GOSINI, GVRINI, RDRINI, MSATINI,
-     +			GMSXINI, MOLLINI
+     +			GMSXINI, MOLLINI, ABININI
 C------------------------------------------------------------------------
 C
 C*	Call appropriate routine
@@ -36,6 +37,8 @@ C
 	   iret = GOSINI ( ifunc, nav )
 	ELSE IF ( nvtypa .eq. 'MCGVAR' ) THEN
 	   iret = GVRINI ( ifunc, nav )
+	ELSE IF ( nvtypa .eq. 'MCABIN' ) THEN
+	   iret = ABININI ( ifunc, nav )
 	ELSE IF ( nvtypa .eq. 'MCRADR' ) THEN
 	   iret = RDRINI ( ifunc, nav )
 	ELSE IF ( nvtypa .eq. 'MCMSAT' ) THEN

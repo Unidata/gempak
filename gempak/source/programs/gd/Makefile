@@ -21,6 +21,7 @@ SUBDIRS = \
 	gdmod \
 	gdomeg \
 	gdplot \
+	gdpvsf \
 	gdprof \
 	gdptpdf \
 	gdstat \

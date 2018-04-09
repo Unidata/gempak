@@ -66,12 +66,13 @@ C* F. J. Yen/NCEP	 3/08	Corrected index for polygon;removed dups*
 C*				to fix bug with corrections; used ETN in*
 C*				corrections; processed correction letter*
 C* F. J. Yen/NCEP        4/08   Added bin mins & mstrct to CTB_DTGET CSC*
+C* S. GUAN/NCEP         11/17   Modified to add snow squall warn (SQW)  *
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 C*
 	PARAMETER	( NW = 3000, NC = 100 )
 C*
-	PARAMETER	( JSVR = 1, JTOR = 2, JFFW = 3 )
+	PARAMETER	( JSVR = 1, JTOR = 2, JFFW = 3, JSQW = 4 )
 	PARAMETER	( JTIM = 1, JLAB = 2, JFIL = 3, JCLC = 4 )
 C*
 	CHARACTER*(*)	filtyp, dattim
@@ -505,6 +506,8 @@ C
 		    jtype = JSVR
 		ELSE IF  ( wtype(ip) .eq. 'FFW' )  THEN
 		    jtype = JFFW
+                ELSE IF  ( wtype(ip) .eq. 'SQW' )  THEN
+                    jtype = JSQW
 		ELSE
 		    jtype = 0
 		END IF

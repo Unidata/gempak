@@ -28,12 +28,13 @@ C* J. Cowie/COMET	12/00	Added RADR projection type		*
 C* S. Chiswell/Unidata	 2/02	Added MSAT, MOLL, GMSX projection type	*
 C* S. Chiswell/Unidata	 8/06	Added MSG				*
 C* M. James/Unidata	10/14	Added RECT				*
+C* M. James/Unidata	02/18	Added ABIN				*
 C************************************************************************
 	INCLUDE		'ERROR.PRM'
 	INCLUDE		'SATDEF.CMN'
 C
 	INTEGER		GOSSAE, GVRSAE, RDRSAE, MSATSAE, GMSXSAE,
-     +			MOLLSAE, MSGSAE
+     +			MOLLSAE, MSGSAE, ABINSAE
 C------------------------------------------------------------------------
 C
 C*	Call appropriate routine
@@ -54,6 +55,8 @@ C
 	   iret = MOLLSAE ( xlin, xele, xdum, xlat, ylon, zdum )
 	ELSE IF ( nvtypa .eq. 'MCRECT' ) THEN
 	   iret = RECTSAE ( xlin, xele, xdum, xlat, ylon, zdum )
+	ELSE IF ( nvtypa .eq. 'MCABIN' ) THEN
+	   iret = ABINSAE ( xlin, xele, xdum, xlat, ylon, zdum )
 	ELSE
 	   iret = -1
 	END IF

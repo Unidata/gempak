@@ -98,6 +98,9 @@ void dg_driv ( const int *itype, int *iret )
  * C. Melick/SPC         8/11   Added DV_PVR3				*
  * K. Brill/HPC         05/12	Added DF_RDFS and DV_RDFV		*
  * C. Melick/SPC	 6/12	Added DF_NMAX, DF_NMIN			*
+ * C. Melick/SPC         9/16   Added DF_GKDES, DF_NAVG, DF_NCGE        *
+ *                              DF_NCLE, DF_NFGE, DF_NFLE, DF_NSUM      *
+ *                              DF_NWAVG                                *
  ************************************************************************/
 {
     char func[17];
@@ -165,6 +168,8 @@ void dg_driv ( const int *itype, int *iret )
 		    df_sm5s ( iret );
 		} else if  ( strcmp ( func, "GWFS" ) == 0 ) {
 		    df_gwfs ( iret );
+		} else if  ( strcmp ( func, "GKDES" ) == 0 ) {
+		    df_gkdes ( iret );
 		} else if  ( strcmp ( func, "RDFS" ) == 0 ) {
 		    df_rdfs ( iret );
 		} else if  ( strcmp ( func, "SM9S" ) == 0 ) {
@@ -343,6 +348,21 @@ void dg_driv ( const int *itype, int *iret )
 		    df_prcl  ( func, iret );
 		} else if  ( strcmp ( func, "RELI" ) == 0 ) {
 		    df_reli ( iret );
+		} else if  ( strcmp ( func, "NCGE" ) == 0 )  {
+		    df_ncge  ( iret );
+		} else if  ( strcmp ( func, "NFGE" ) == 0 )  {
+		    df_nfge  ( iret );
+		} else if  ( strcmp ( func, "NCLE" ) == 0 )  {
+		    df_ncle  ( iret );
+		} else if  ( strcmp ( func, "NFLE" ) == 0 )  {
+		    df_nfle  ( iret );
+		} else if  ( strcmp ( func, "NSUM" ) == 0 )  {
+		    df_nsum  ( iret );
+		} else if  ( strcmp ( func, "NAVG" ) == 0 )  {
+		    df_navg  ( iret );
+		} else if  ( strcmp ( func, "NWAVG" ) == 0 )  {
+		    df_nwavg  ( iret );
+
 
 		/*
 		 * DV functions.
