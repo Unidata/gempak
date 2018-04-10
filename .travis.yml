@@ -13,7 +13,7 @@ env:
   matrix:
   - OS_TYPE=centos OS_VERSION=centos6 
   - OS_TYPE=centos OS_VERSION=centos7
-  - OS_TYPE=fedora OS_VERSION=latest
+#  - OS_TYPE=fedora OS_VERSION=latest
 #  - OS_TYPE=ubuntu OS_VERSION=latest
 #  - OS_TYPE=centos OS_VERSION=container # run this manually to create new dockerhub image
 
