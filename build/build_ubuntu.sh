@@ -4,7 +4,7 @@ ls -l /home
 
 # Required packages
 apt-get update -y >& /dev/null
-apt-get install build-essential gfortran git gcc g++ libx11-dev libxt-dev libxext-dev libxft-dev libxtst-dev flex byacc python-dev libmotif-dev libxml2-dev libxslt-dev libz-dev autoconf -y
+apt-get install build-essential gfortran git gcc libtool g++ libx11-dev libxt-dev libxext-dev libxft-dev libxtst-dev flex byacc python python-dev libmotif-dev libxml2-dev libxslt-dev libz-dev autoconf -y
 
 # Package GEMPAK source from HEAD
 pushd /gempak
@@ -22,7 +22,12 @@ pushd /home/gempak
 mv gempak-${package_version} GEMPAK7
 cd GEMPAK7
 . Gemenviron.profile
-. source_python.sh
+#. source_python.sh
+export PYINC="-I/usr/include/python2.7"
+export PYLIB="-lpython2.7"
+export WITHPY="-DWITHPYTHON"
+export PYDEP="-lpthread -ldl -lutil"
+export LDFLAGS="-L/usr/lib -L$OS_LIB -s"
 
 pushd config
 
@@ -30,16 +35,19 @@ rm -rf Makeinc.linux64_gfortran
 ln -s Makeinc.linux64_gfortran_ubuntu Makeinc.linux64_gfortran
 popd
 
-make extlibs 2>&1 | tee -a make.extlibs.log | grep --line-buffered "making all in"
-make gempak 2>&1 | tee -a make.gempak.log | grep --line-buffered "making all in"
+gemlog="/gempak/build/dist/make.gempak.log"
+make extlibs 2>&1 | tee -a /gempak/build/dist/make.extlibs.log
+#make extlibs 2>&1 | tee -a make.extlibs.log | grep --line-buffered "making all in"
+#make gempak 2>&1 | tee -a $gemlog | grep --line-buffered "making all in"
+make gempak 2>&1 | tee -a $gemlog
 make install >& /dev/null
 make programs_gf >& /dev/null
 make programs_nc >& /dev/null
 make clean >& /dev/null
 
-grep -i error make.gempak.log
+grep -i error $gemlog
 
-rm -rf extlibs config .gitignore .travis.yml build make.*.log
+rm -rf extlibs config .gitignore .travis.yml build
 
 
 ls -la $OS_BIN|wc -l
