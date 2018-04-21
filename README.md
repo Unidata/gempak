@@ -3,7 +3,7 @@
 
 [http://www.unidata.ucar.edu/software/gempak/](http://www.unidata.ucar.edu/software/gempak/)
 
-[![GitHub release](https://img.shields.io/github/release/Unidata/gempak.svg)]() [![license](https://img.shields.io/github/license/Unidata/gempak.svg)]() [![Travis Badge](https://travis-ci.org/Unidata/gempak.svg?branch=master)](https://travis-ci.org/Unidata/gempak) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/4796566fc6b145bcbf73697998b437d3)](https://www.codacy.com/app/mjames/gempak) 
+[![GitHub release](https://img.shields.io/github/release/Unidata/gempak.svg)]() [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause) [![Travis Badge](https://travis-ci.org/Unidata/gempak.svg?branch=master)](https://travis-ci.org/Unidata/gempak) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/4796566fc6b145bcbf73697998b437d3)](https://www.codacy.com/app/mjames/gempak) 
 
 GEMPAK (GEneral Meteorology PAcKage) is a set of programs to decode, analyze, and render meteorological data.  UCAR's Unidata Program Center maintains an open-source, non-operational release for use in the geoscience community.
 
