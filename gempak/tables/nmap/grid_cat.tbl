@@ -17,16 +17,17 @@
 ! M. James/Unidata	04/13	Added NAVGEM													*
 ! M. James/Unidata	08/13	Added GME and G3DVAR 												*
 ! M. James/Unidata	05/16	Added GFS20/GFS215 												*
+! M. James/UCAR          4/18   nam/nam12 cleanup 												*
 !************************************************************************************************************************************************
 !
 !Global_Models          gfs;gefs;gfshd;gfs003,gfs002;navgem;ukmet;fnl;mrf;mrfx;ngm
-!Global_Ensembles       nam;nam20;nam40;nam44;ngm;dgex;gfs;gfshd;mrf;mrfx;ens;mm5ak;mm5us
+!Global_Ensembles       nam12;nam20;nam40;nam44;ngm;dgex;gfs;gfshd;mrf;mrfx;ens;mm5ak;mm5us
 !Ocean_Models           nww3;ncoda;farop;ww3;nww;GoesSST
 !OPC_Grids              fslruc2;ngm;nam20;nam40;nam44;ghm
 !
 !
 ! Unidata 
-NCEP_CONUS_Models       hrrr;rap13;rap20;rap40;nam;nam4;nam12,nam20;nam40;namdng;nam221;nam104;nam243;gfs212;gfs215;gfs211;rtma;urma
+NCEP_CONUS_Models       hrrr;rap13;rap20;rap40;nam4;nam12,nam20;nam40;namdng;nam221;nam104;nam243;gfs212;gfs215;gfs211;rtma;urma
 NCEP_Global_Models      gfs;gfshd;gfs25;gfs003;gfsthin
 !
 International_Models    cosmo;ukmet;cmc;ecmwfg;ecmwft;gme;g3dvar;ecmwf
