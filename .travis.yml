@@ -11,8 +11,8 @@ services:
 
 env:
   matrix:
-  - OS_TYPE=centos OS_VERSION=centos6 
-  - OS_TYPE=centos OS_VERSION=centos7
+  - OS_TYPE=centos OS_VERSION=6
+  - OS_TYPE=centos OS_VERSION=7
 #  - OS_TYPE=fedora OS_VERSION=latest
 #  - OS_TYPE=ubuntu OS_VERSION=latest
 #  - OS_TYPE=centos OS_VERSION=container # run this manually to create new dockerhub image
@@ -25,4 +25,5 @@ before_install:
   - sudo docker pull ${OS_TYPE}:${OS_VERSION}
 
 script:
+#  - build/setup_extlibs.sh ${OS_TYPE} ${OS_VERSION}
   - build/setup.sh ${OS_TYPE} ${OS_VERSION}
