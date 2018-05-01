@@ -17,14 +17,14 @@ We create and use the Docker image `unidata/gempak-devel` to build the various R
 
 Packages in **$NAWIPS/extlibs** generally do not change between GEMPAK releases, they take a long time to compile, and some (or most) should probably be off-loaded to OS-managed dependencies.
 
-`$NAWIPS/build/Installer.gempak/extlibs.spec` is invoked by the script `$NAWIPS/build/setup_extlibs.sh ${OS_TYPE} ${OS_VERSION}`
+`$NAWIPS/build/Installer.gempak/extlibs.spec` is invoked by the script `$NAWIPS/build/extlibs/setup_extlibs.sh ${OS_TYPE} ${OS_VERSION}`
 
 `$NAWIPS/build/Installer.gempak/gempak.spec` is invoked by the script `$NAWIPS/build/setup.sh ${OS_TYPE} ${OS_VERSION}` to build the full GEMPAK RPM.
 
     cd $NAWIPS
-    ./build/setup_extlibs.sh centos 7
-    ./build/setup_extlibs.sh centos 6
-    ./build/setup_extlibs.sh fedora latest
+    ./build/extlibs/setup_extlibs.sh centos 7
+    ./build/extlibs/setup_extlibs.sh centos 6
+    ./build/extlibs/setup_extlibs.sh fedora latest
 
 ### Building GEMPAK RPMs
 
