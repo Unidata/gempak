@@ -1,33 +1,33 @@
 
 # GEMPAK
 
-[http://www.unidata.ucar.edu/software/gempak/](http://www.unidata.ucar.edu/software/gempak/)
+[https://www.unidata.ucar.edu/software/gempak/](https://www.unidata.ucar.edu/software/gempak/)
 
 [![GitHub release](https://img.shields.io/github/release/Unidata/gempak.svg)]() [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause) [![Travis Badge](https://travis-ci.org/Unidata/gempak.svg?branch=master)](https://travis-ci.org/Unidata/gempak) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/4796566fc6b145bcbf73697998b437d3)](https://www.codacy.com/app/mjames/gempak) 
 
 GEMPAK (GEneral Meteorology PAcKage) is a set of programs to decode, analyze, and render meteorological data.  UCAR's Unidata Program Center maintains an open-source, non-operational release for use in the geoscience community.
 
-GEMPAK is easily built on a number of Unix-based systems: RedHat/CentOS/Fedora, Ubuntu/Debian, <a href="http://www.unidata.ucar.edu/software/gempak/doc/install_osx.html">macOS</a>. The recommended installation is CentOS 7 Linux with gfortran and gcc compilers, which is [provided as a Docker Container Image](https://hub.docker.com/r/unidata/gempak/), allowing for GEMPAK to be run on any docker-supported host machine.
+GEMPAK is easily built on a number of Unix-based systems: RedHat/CentOS/Fedora, Ubuntu/Debian, <a href="https://www.unidata.ucar.edu/software/gempak/doc/install_osx.html">macOS</a>. The recommended installation is CentOS 7 Linux with gfortran and gcc compilers, which is [provided as a Docker Container Image](https://hub.docker.com/r/unidata/gempak/), allowing for GEMPAK to be run on any docker-supported host machine.
 
-<img src="http://www.unidata.ucar.edu/software/gempak/tutorial/gdcross2.gif" height="192" hspace=5><img src="http://www.unidata.ucar.edu/software/gempak/tutorial/color_temp.gif" height="192" hspace=5><img src="http://www.unidata.ucar.edu/software/gempak/tutorial/gdplot2.gif" height="192" hspace=5>
+<img src="https://www.unidata.ucar.edu/software/gempak/tutorial/gdcross2.gif" height="192" hspace=5><img src="https://www.unidata.ucar.edu/software/gempak/tutorial/color_temp.gif" height="192" hspace=5><img src="https://www.unidata.ucar.edu/software/gempak/tutorial/gdplot2.gif" height="192" hspace=5>
 
 # Documentation
 
-* [GEMPAK Online Tutorial](http://www.unidata.ucar.edu/software/gempak/tutorial/index.html)
-  * [User Interface](http://www.unidata.ucar.edu/software/gempak/tutorial/gempak_user_interface.html)
-  * [Surface Data](http://www.unidata.ucar.edu/software/gempak/tutorial/surface_data_mapping.html)
-  * [Sounding Data](http://www.unidata.ucar.edu/software/gempak/tutorial/sounding_data_mapping.html)
-  * [GPMAP](http://www.unidata.ucar.edu/software/gempak/tutorial/gpmap.html)
-  * [Map Aesthetics](http://www.unidata.ucar.edu/software/gempak/tutorial/map_aesthetics.html)
-  * [Gridded Data Mapping](http://www.unidata.ucar.edu/software/gempak/tutorial/gridded_data_mapping.html)
-  * [Grid Diagnostics](http://www.unidata.ucar.edu/software/gempak/tutorial/grid_diagnostics.html)
-  * [Grid Interpolation](http://www.unidata.ucar.edu/software/gempak/tutorial/grid_interpolation.html)
-  * [Importing Data](http://www.unidata.ucar.edu/software/gempak/tutorial/importing_data.html)
-  * [Objective Analysis](http://www.unidata.ucar.edu/software/gempak/tutorial/objective_analysis.html)
-  * [Vertical Plotting](http://www.unidata.ucar.edu/software/gempak/tutorial/vertical_plotting.html)
-  * [Radar Programs](http://www.unidata.ucar.edu/software/gempak/tutorial/radar_programs.html)
-* [GEMPAK Program Index](http://www.unidata.ucar.edu/software/gempak/tutorial/gempak_programs.html)
-* [Grid Catalog - Projections and Parameters](http://www.unidata.ucar.edu/software/gempak/grids/)
+* [GEMPAK Online Tutorial](https://www.unidata.ucar.edu/software/gempak/tutorial/index.html)
+  * [User Interface](https://www.unidata.ucar.edu/software/gempak/tutorial/gempak_user_interface.html)
+  * [Surface Data](https://www.unidata.ucar.edu/software/gempak/tutorial/surface_data_mapping.html)
+  * [Sounding Data](https://www.unidata.ucar.edu/software/gempak/tutorial/sounding_data_mapping.html)
+  * [GPMAP](https://www.unidata.ucar.edu/software/gempak/tutorial/gpmap.html)
+  * [Map Aesthetics](https://www.unidata.ucar.edu/software/gempak/tutorial/map_aesthetics.html)
+  * [Gridded Data Mapping](https://www.unidata.ucar.edu/software/gempak/tutorial/gridded_data_mapping.html)
+  * [Grid Diagnostics](https://www.unidata.ucar.edu/software/gempak/tutorial/grid_diagnostics.html)
+  * [Grid Interpolation](https://www.unidata.ucar.edu/software/gempak/tutorial/grid_interpolation.html)
+  * [Importing Data](https://www.unidata.ucar.edu/software/gempak/tutorial/importing_data.html)
+  * [Objective Analysis](https://www.unidata.ucar.edu/software/gempak/tutorial/objective_analysis.html)
+  * [Vertical Plotting](https://www.unidata.ucar.edu/software/gempak/tutorial/vertical_plotting.html)
+  * [Radar Programs](https://www.unidata.ucar.edu/software/gempak/tutorial/radar_programs.html)
+* [GEMPAK Program Index](https://www.unidata.ucar.edu/software/gempak/tutorial/gempak_programs.html)
+* [Grid Catalog - Projections and Parameters](https://www.unidata.ucar.edu/software/gempak/grids/)
 * [GEMPAK Docker Container Image](https://hub.docker.com/r/unidata/gempak/)
 
 # Build or Install
@@ -40,15 +40,15 @@ GEMPAK can be installed by an individual user, and root / superuser permission i
 
 Download current and previous releases from <a href="https://github.com/Unidata/gempak/releases">https://github.com/Unidata/gempak/releases</a>
 
-These packages can also be found on the <a href="http://www.unidata.ucar.edu/downloads/gempak/">Unidata download page</a>.
+These packages can also be found on the <a href="https://www.unidata.ucar.edu/downloads/gempak/">Unidata download page</a>.
 
 ### Linux Binaries
 
-#### 64-bit CentOS/RH 7 [gempak-latest.el7.centos.x86_64.rpm](http://www.unidata.ucar.edu/downloads/gempak/latest/gempak-latest.el7.centos.x86_64.rpm)
-#### 64-bit CentOS/RH 6 [gempak-latest.el6.x86_64.rpm](http://www.unidata.ucar.edu/downloads/gempak/latest/gempak-latest.el6.x86_64.rpm)
-#### 64-bit Fedora Core [gempak-latest.fc.x86_64.rpm](http://www.unidata.ucar.edu/downloads/gempak/latest/gempak-latest.fc.x86_64.rpm)
-#### 64-bit Ubuntu/Debian [gempak-latest.deb](http://www.unidata.ucar.edu/downloads/gempak/latest/gempak-latest.deb)
-#### x86 Solaris [gempak-latest.sol.tar.gz](http://www.unidata.ucar.edu/downloads/gempak/latest/gempak-latest.sol.tar.gz)
+#### 64-bit CentOS/RH 7 [gempak-latest.el7.centos.x86_64.rpm](https://www.unidata.ucar.edu/downloads/gempak/latest/gempak-latest.el7.centos.x86_64.rpm)
+#### 64-bit CentOS/RH 6 [gempak-latest.el6.x86_64.rpm](https://www.unidata.ucar.edu/downloads/gempak/latest/gempak-latest.el6.x86_64.rpm)
+#### 64-bit Fedora Core [gempak-latest.fc.x86_64.rpm](https://www.unidata.ucar.edu/downloads/gempak/latest/gempak-latest.fc.x86_64.rpm)
+#### 64-bit Ubuntu/Debian [gempak-latest.deb](https://www.unidata.ucar.edu/downloads/gempak/latest/gempak-latest.deb)
+#### x86 Solaris [gempak-latest.sol.tar.gz](https://www.unidata.ucar.edu/downloads/gempak/latest/gempak-latest.sol.tar.gz)
 
 ## GitHub Clone
 
@@ -126,7 +126,7 @@ Important environmental variable to be familiar with are:
         $GEMDATA points to /data/ldm/gempak
         $NA_OS is determined by Gemenviron (linux, linux64, x86, SunOS, Darwin, etc. )
 
-The last definition, **$GEMDATA**, points to the **/data/ldm/gempak** but can be changed depending on how you <a href="http://www.unidata.ucar.edu/software/gempak/doc/configuration.html">install and configure the LDM</a>.
+The last definition, **$GEMDATA**, points to the **/data/ldm/gempak** but can be changed depending on how you <a href="https://www.unidata.ucar.edu/software/gempak/doc/configuration.html">install and configure the LDM</a>.
 
 ## Required Libraries
 
@@ -166,7 +166,7 @@ Ubuntu builds require the compiler flag `-fno-stack-protector` be added to **COP
 
 ### Mac OS X
 
-<a href="http://www.unidata.ucar.edu/software/gempak/doc/install_osx.html">Mac OS X GEMPAK Installation Guide</a> by Kevin Tyle, University of Albany.
+<a href="https://www.unidata.ucar.edu/software/gempak/doc/install_osx.html">Mac OS X GEMPAK Installation Guide</a> by Kevin Tyle, University of Albany.
 
 This document will guide users through building GEMPAK on Intel Mac OS X 10.6 (Snow Leopard) with GCC 4.4 compilers. The same procedure should also work for 10.5 (Leopard), but earlier versions/CPU's of OS X remain untested.
 
@@ -222,7 +222,7 @@ and
 
 build versions of programs which link directly to device drivers (eliminating the gplt/message queue interface). These are primarily used for projects where multiple scripts are run at scheduled times, as in the cron, and don't require user interaction.
 
-Everything Okay? Continue on to <a href="http://www.unidata.ucar.edu/software/gempak/doc/configuration.html">LDM & GEMPAK Setup</a>
+Everything Okay? Continue on to <a href="https://www.unidata.ucar.edu/software/gempak/doc/configuration.html">LDM & GEMPAK Setup</a>
 
 ## Troubleshooting
 
