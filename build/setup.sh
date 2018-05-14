@@ -1,7 +1,12 @@
 #!/bin/sh -xe
-# Version (e.g. "./build/setup.sh centos centos7")
+# ./setup.sh centos 7
+# ./setup.sh centos 6
+# ./setup.sh fedora latest
+# ./setup.sh ubuntu latest
+
 os_type=$1
 os_version=$2
+TAG=${os_type}${os_version}
 
  # Run builds in Container
 if [ "$os_type" = "centos" ]; then
@@ -10,13 +15,13 @@ if [ "$os_type" = "centos" ]; then
 
         sudo docker build -t unidata/gempak -f build/docker/Dockerfile.gempak build/docker
 
-    elif [ "$os_version" = "centos6" ]; then
+    elif [ "$os_version" = "6" ]; then
 
-        sudo docker run --rm=true -v `pwd`:/gempak:rw ${os_type}:${os_version} /bin/bash -c "bash -xe /gempak/build/build_rhel.sh ${os_type} ${os_version}"
+        sudo docker run --rm=true -v `pwd`:/gempak:rw unidata/gempak-devel:$TAG /bin/bash -c "bash -xe /gempak/build/build_rhel.sh ${os_type} ${os_version}"
 
-    elif [ "$os_version" = "centos7" ]; then
+    elif [ "$os_version" = "7" ]; then
 
-        sudo docker run --privileged -d -ti -e "container=docker" -v `pwd`:/gempak:rw  ${os_type}:${os_version}   /usr/sbin/init
+        sudo docker run --privileged -d -ti -e "container=docker" -v `pwd`:/gempak:rw unidata/gempak-devel:$TAG /usr/sbin/init
         DOCKER_CONTAINER_ID=$(sudo docker ps | grep ${os_version} | awk '{print $1}' | head -1 )
         sudo docker logs $DOCKER_CONTAINER_ID
         sudo docker exec -ti $DOCKER_CONTAINER_ID /bin/bash -xec "bash -xe /gempak/build/build_rhel.sh ${os_type} ${os_version}";
@@ -28,10 +33,10 @@ if [ "$os_type" = "centos" ]; then
 
 elif [ "$os_type" = "ubuntu" ]; then
 
-    sudo docker run --rm=true -v `pwd`:/gempak:rw ${os_type}:${os_version} /bin/bash -c "bash -xe /gempak/build/build_ubuntu.sh "
+    sudo docker run --rm=true -v `pwd`:/gempak:rw unidata/gempak-devel:ubuntu /bin/bash -c "bash -xe /gempak/build/build_ubuntu.sh "
 
 elif [ "$os_type" = "fedora" ]; then
 
-    sudo docker run --rm=true -v `pwd`:/gempak:rw ${os_type}:${os_version} /bin/bash -c "bash -xe /gempak/build/build_rhel.sh ${os_type} ${os_version}"
+    sudo docker run --rm=true -v `pwd`:/gempak:rw unidata/gempak-devel:fedora /bin/bash -c "bash -xe /gempak/build/build_rhel.sh ${os_type} ${os_version}"
 
 fi

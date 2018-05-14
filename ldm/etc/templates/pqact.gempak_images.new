@@ -10,7 +10,22 @@
 # Unidata-Wisconsin products FILEd into a GEMPAK directory/name hierarchy
 #
 #
-# ---------------- GOES-East and West Image Sectors ----------------
+# ---------------- GOES-16 Image Sectors ----------------
+#
+# CONUS
+UNIWISC	^pnga2area Q. CNC(..) (.*) (.*)_IMG (.*)um (.*) (........) (....)
+	FILE	-close	data/gempak/images/sat/\3/CONUS/Ch\1-\4/\4_\6_\7
+# Full Disk
+UNIWISC	^pnga2area Q. FDC(..) (.*) (.*)_IMG (.*)um (.*) (........) (....)
+	FILE	-close	data/gempak/images/sat/\3/FullDisk/Ch\1-\4/\4_\6_\7
+# Meso1
+UNIWISC	^pnga2area Q. M1C(..) (.*) (.*)_IMG (.*)um (.*) (........) (....)
+	FILE	-close	data/gempak/images/sat/\3/Mesoscale1/Ch\1-\4/\4_\6_\7
+# Meso2
+UNIWISC	^pnga2area Q. M2C(..) (.*) (.*)_IMG (.*)um (.*) (........) (....)
+	FILE	-close	data/gempak/images/sat/\3/Mesoscale2/Ch\1-\4/\4_\6_\7
+#
+# ---------------- GOES-13 and GOES-15 Image Sectors ----------------
 #
 # GOES Visible
 UNIWISC	^pnga2area Q. (EV|UV|U9) (.*) (.*)_IMG (.*)um (.*) (........) (....)
