@@ -13,7 +13,7 @@ _lhdf5: INSTALLDIR
 	-@cd libhdf; \
 	pwd; \
 	$(MAKE) distclean ; \
-	./configure '--prefix=$(OS_ROOT)' --disable-shared '--with-zlib=$(OS_ROOT)' --disable-debug --disable-trace ; \
+	./configure '--prefix=$(OS_ROOT)' '--with-zlib=$(OS_ROOT)' --disable-debug --disable-trace ; \
 	$(MAKE) all install
 
 INSTALLDIR:

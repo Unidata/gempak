@@ -14,7 +14,7 @@ clean: _zlib_clean
 $(ZLIB):
 	( cd zlib; echo "making $@ in `pwd`" ; \
 		make -s distclean ; \
-		CC=$(CC) && export CC && ./configure --prefix=$(OS_ROOT); \
+		CC=$(CC) && export CC && ./configure --static -s --prefix=$(OS_ROOT); \
 		make -s all install ; \
 		make -s distclean )
 
