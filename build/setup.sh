@@ -9,11 +9,17 @@ os_version=$2
 TAG=${os_type}${os_version}
 
  # Run builds in Container
-if [ "$os_type" = "centos" ]; then
+
+if [ "$os_type" = "dev" ]; then
+	
+	# sudo docker run --entrypoint=/bin/bash --privileged -d -ti -e "container=docker" -v /awips2/repo/${dn}:/awips2/repo/${dn} $imgname:$imgvers-$os_version
+        sudo docker run -v `pwd`:/gempak:rw unidata/gempak-devel:centos6 /bin/bash -c "bash -xe /gempak/build/build_dev.sh"
+
+elif [ "$os_type" = "centos" ]; then
 
     if [ "$os_version" = "container" ]; then
 
-        sudo docker build -t unidata/gempak -f build/docker/Dockerfile.gempak build/docker
+        sudo docker build -t unidata/gempak-devel -f build/docker/Dockerfile.gempak build/docker
 
     elif [ "$os_version" = "6" ]; then
 
