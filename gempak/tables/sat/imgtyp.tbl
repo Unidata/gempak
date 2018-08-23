@@ -88,11 +88,11 @@ GOES16 CH05 1.61um   NIR           0    255    186     16      1 GRAY
 GOES16 CH06 2.25um   NIR           0    255    186     32      1 GRAY
 GOES16 CH07 3.9um    SWIR          0    255    186     64      1 GRAY
 GOES16 CH08 6.19um   WV            0    255    186    128      1 wvcimss.tbl
-GOES16 CH09 6.95um   WV            0    255    186    256      1 wvcimss.tbl
+GOES16 CH09 6.95um   WV            0    255    186    256      1 yellow.tbl
 GOES16 CH10 7.34um   WV            0    255    186    512      1 wvcimss.tbl
 GOES16 CH11 8.5um    IR            0    255    186   1024      1 ir_sab.tbl
 GOES16 CH12 9.61um   IR            0    255    186  2**11      1 ir_sab.tbl
-GOES16 CH13 10.35um  IR            0    255    186  2**12      1 ir_sab.tbl
+GOES16 CH13 10.35um  IR            0    255    186  2**12      1 ir_awips.tbl
 GOES16 CH14 11.2um   IR            0    255    186  2**13      1 ir_sab.tbl
 GOES16 CH15 12.3um   IR            0    255    186  2**14      1 ir_sab.tbl
 GOES16 CH16 13.3um   IR            0    255    186  2**15      1 ir_sab.tbl
