@@ -79,6 +79,7 @@ C*	Check for valid coordinate systems.
 C
 	IF  ( ( indin .eq. 0 ) .or. ( indout .eq. 0 ) ) THEN
 	    iret = NOCORD
+	    print *, "NO VALID COORDINATE SYSTEM FOUND"
 	    RETURN
 	END IF
 C
