@@ -91,7 +91,7 @@ C!						Maximum file name size
 C!						(not including path)
 	PARAMETER	( MXNMFL =  5000   )
 C!						Max # of files per dir.
-	PARAMETER	( MXTMPL =  48   )
+	PARAMETER	( MXTMPL =  256   )
 C!						Max template size.
 C!
 	PARAMETER	( MMFLDP = MMFILE * MMPRT )

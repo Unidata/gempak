@@ -46,6 +46,7 @@ C*			 	length.  Renumbered err codes.		*
 C* F. J. Yen/NCEP	 3/08	Added Event Tracking Number (CSC)	*
 C* F. J. Yen/NCEP	 4/08	Added call to BR_VTEC			*
 C* S. Guan/NCEP         11/17   Modified to add snow squall warn (SQW)  *
+C* S. Guan/NCEP         05/18   Fixed producing spurious warns bug      *
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 	INCLUDE		'BRIDGE.PRM'
@@ -60,6 +61,7 @@ C*
 C------------------------------------------------------------------------
         iret = 0
         icor = 0
+        wtype = ' '
 C
 C*	Find the length of the header string.
 C
@@ -102,7 +104,7 @@ C*	        Bad vtec, but set vtec for DC_WLOG only
 C*
 		vtec = btin (islash+1:islash+40)
 	    END IF
-	    ibuldex = islash
+	    ibuldex = islash 
 	END IF
         IF ( vtec .eq. ' ' .or. ierv .ne. 0 ) THEN 
             iret = 3
@@ -135,12 +137,14 @@ C
 	    itypidx = 0
         END IF
 C
-        IF ( (itypidx .ne. 0) .or. (nchar .ne. 1) ) THEN
-            IF ( nchar .eq. 1 ) THEN
+        IF ( (itypidx .ne. 0) .or. 
+     +    ( INDEX (btin(:ibuldex+20), '.SQ.W.') .ne. 0) ) THEN
+            IF ( itypidx .ne. 0 ) THEN 
                 wtype = btin ( itypidx:itypidx+2 )
                 wfrom = btin ( itypidx+3:itypidx+5 )
                 ictybeg = itypidx+7
             ELSE
+                wtype = 'SQW'
                 ictybeg = 1
             END IF
 C
