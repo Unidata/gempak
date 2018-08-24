@@ -37,6 +37,7 @@ tar -xvzf /tmp/rpmbuild/SOURCES/gempak-%{version}.tar.gz -C %{prefix}/ >& /dev/n
 pushd %{gem_home}
 export NAWIPS=`pwd`
 . build/Installer.gempak/Gemenviron.profile
+make distclean
 make extlibs
 make clean >& /dev/null
 mkdir -p ${RPM_BUILD_ROOT}/home/gempak/GEMPAK7
