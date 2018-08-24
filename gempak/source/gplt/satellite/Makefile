@@ -11,6 +11,7 @@ FOBJS = \
 	$(ALIB)(gqsatn.o) \
 	$(ALIB)(gsatim.o) \
 	$(ALIB)(gsatmg.o) \
+	$(ALIB)(gsatmg4.o) \
 	$(ALIB)(gsatpx.o) \
 	$(ALIB)(gsicmn.o) \
 	$(ALIB)(nvxini.o)

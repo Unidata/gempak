@@ -16,6 +16,7 @@ COBJS = \
 	$(ALIB)(imnexz.o) \
 	$(ALIB)(imaroff.o) \
 	$(ALIB)(imrcdf.o) \
+	$(ALIB)(imrcdf4.o)
 	$(ALIB)(imrgin.o) \
 	$(ALIB)(imrqpe.o) \
 	$(ALIB)(imrtbl.o) \
@@ -37,6 +38,7 @@ FOBJS = \
 	$(ALIB)(imgi2gm.o) \
 	$(ALIB)(imgihd.o) \
 	$(ALIB)(imgm2gi.o) \
+	$(ALIB)(imgossae4.o) \
 	$(ALIB)(imisub.o) \
 	$(ALIB)(imlabl.o) \
 	$(ALIB)(imlutf.o) \
@@ -44,6 +46,7 @@ FOBJS = \
 	$(ALIB)(imnidh.o) \
 	$(ALIB)(imhrnidh.o) \
 	$(ALIB)(imdpnidh.o) \
+	$(ALIB)(imncdf4.o) \
 	$(ALIB)(imnihd.o) \
 	$(ALIB)(imnohd.o) \
 	$(ALIB)(imqimg.o) \
