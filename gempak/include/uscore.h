@@ -167,7 +167,6 @@
  * S. Jacobs/NCEP	 4/11	Added shn_dcod				*
  * S. Jacobs/NCEP	 4/12	Added gg_osrd				*
  * S. Jacobs/NCEP	 9/13	Added DA library functions		*
- * S. Guan//NCEP         6/15   Added im_rcdf4 and  gossae4		*
  ***********************************************************************/
 #ifdef UNDERSCORE
 
@@ -593,8 +592,6 @@
 #define gmesg		gmesg_
 #define wgem_gmesg	wgem_gmesg_
 
-#define gossae4         gossae4_
-
 #define gp_azdr		gp_azdr_
 #define gp_draz		gp_draz_
 
@@ -737,7 +734,6 @@
 #define im_qsiz		im_qsiz_
 #define im_qtim		im_qtim_
 #define im_rcdf		im_rcdf_
-#define im_rcdf4        im_rcdf4_
 #define im_rqnm		im_rqnm_
 #define im_rqpe         im_rqpe_
 #define im_rgin		im_rgin_

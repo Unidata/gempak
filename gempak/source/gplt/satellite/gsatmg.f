@@ -188,8 +188,8 @@ C*	Check for the left longitude greater than the right longitude.
 C*	If so, set to -180 and +180.
 C
 	IF  ( blonw .ge. blone )  THEN
-            blonw = -180.
-            blone = 180.
+	    blonw = -180.
+	    blone =  180.
 	END IF
 C
 C*	Assign min/max coords to common block variables

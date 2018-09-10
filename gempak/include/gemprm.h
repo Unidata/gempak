@@ -151,7 +151,6 @@
  * M. James/Unidata	 1/13	Increased MXNMFL from 2000 to 5000	*
  * M. James/Unidata	 8/13   Increased LLMXGD to 1.5 mil		*
  * M. James/Unidata	10/14   LLMDGG to 5000000, LLMXGD to 2000000	*
- * S. Guan/NCEP          2/18   Increased MXTMPL from 100 to 256	*
  ***********************************************************************/
 
 #ifndef _GEMPRM_H
@@ -239,7 +238,7 @@ typedef unsigned int	G_Cardinal;
 #define FILE_NAMESZ ( MXFLSZ ) /* Largest file name */
 #define FILE_FULLSZ ( LLPATH + MXFLSZ ) /* Largest full (path + file) name */
 #define	MXNMFL	(  5000 )	/* Maximum number of files per directory       */
-#define	MXTMPL	( 256 + 1 )	/* Maximum template size (not including path) */
+#define	MXTMPL	( 48 + 1 )	/* Maximum template size (not including path) */
 #define	MMFLDP	( MMFILE * MMPRT )
 
 /*---------------------------------------------------------------------*/

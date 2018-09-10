@@ -82,7 +82,7 @@ C*
 	CHARACTER	path*25, templ*(MXTMPL), cdttm*20, dattm2*20, 
      +			buffer*128, tfile*128, wlabel*80, dattm4*20, 
      +			tmstp4*20, tmstr4*20, carr(7)*20, ttype*3, 
-     +			poly*512, tstrt*20, tstn*7, tstpt*20 
+     +			poly*512, tstrt*20, tstn*7
 	CHARACTER*(MXFLSZ)      filnam, files(MXNMFL), fnull
 C*
 	CHARACTER	wstn(NW)*7, timstr(NW)*20, timstp(NW)*20,
@@ -255,7 +255,6 @@ C
 			    END IF
 			    ttype = carr(2)
 			    tstrt = carr(3)
-                            tstpt = carr(4)
 			    tstn  = carr(5)
 C
 C*			    Check for duplicates.  Note that if jetn
@@ -277,8 +276,7 @@ C
 			        IF ( jetn  .eq. iwetn (kw) .and.
      +				     tstn  .eq. wstn (kw)  .and.
      +				     ttype .eq. wtype (kw) ) THEN
-				    IF ( tstrt .eq. timstr (kw) .and.
-     +                                   tstpt .eq. timstp (kw) ) THEN
+				    IF ( tstrt .eq. timstr (kw) ) THEN
 					IF ( jcorr .eq. 0 ) THEN
 C
 C*					    Flag as duplicate only if
