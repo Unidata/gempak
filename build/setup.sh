@@ -19,7 +19,7 @@ elif [ "$os_type" = "centos" ]; then
 
     if [ "$os_version" = "container" ]; then
 
-        sudo docker build -t unidata/gempak-devel -f build/docker/Dockerfile.gempak build/docker
+        sudo docker build -t unidata/gempak-devel:centos6 -f build/docker/Dockerfile.gempak build/docker
 
     elif [ "$os_version" = "6" ]; then
 
@@ -39,7 +39,7 @@ elif [ "$os_type" = "centos" ]; then
 
 elif [ "$os_type" = "ubuntu" ]; then
 
-    sudo docker run --rm=true -v `pwd`:/gempak:rw unidata/gempak-devel:ubuntu /bin/bash -c "bash -xe /gempak/build/build_ubuntu.sh "
+    sudo docker run --rm=true -v `pwd`:/gempak:rw ubuntu:latest /bin/bash -c "bash -xe /gempak/build/build_ubuntu.sh "
 
 elif [ "$os_type" = "fedora" ]; then
 
