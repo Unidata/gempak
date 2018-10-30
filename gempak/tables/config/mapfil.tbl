@@ -46,6 +46,7 @@
 ! m.gamazaychikov/SAIC  11/08   Added vaacar.ncp
 ! G. Grosshans/SPC	01/10	Added Fire Weather PSA areas
 ! S. Jacobs/NCEP	11/12	Added akarea.hpc
+! M. Sardi/NHC           2/18   Added hioffep.ncp (NHC EPAC Offshore Zones)
 !
 !-----------------------------------------------------------------------------
 !ALIAS       DESCRIPTION              MAP FILE NAME
@@ -105,11 +106,12 @@ qpfver       QPF Verification         mefbqv.ncp
 fir          Flight Information Regn  hifiwo.ncp
 convsigmet   Convective Sigmet Bounds tpcsus.ncp
 wregion      Western Region Bounds    tpfbwr.ncp
-tpcsfc       TPC Surface Analysis     tptana.ncp
-tpcsfcbnd    TPC Surface Boundary     tptbna.ncp
-tpchsf       TPC High Seas            tpthna.ncp
-tpcsig       TPC SigMets              tptsna.ncp
-tpcavn       TPC Aviation             tptvna.ncp
+tpcsfc       NHC Surface Analysis     tptana.ncp
+tpcsfcbnd    NHC Surface Boundary     tptbna.ncp
+tpchsf       NHC High Seas            tpthna.ncp
+tpcsig       NHC SigMets              tptsna.ncp
+tpcavn       NHC Aviation             tptvna.ncp
+nhcoffep     NHC EPAC Offshore Zones  hioffep.ncp
 dcvaac       DC VAAC Boundary         dcvaac.ncp
 hpcsfc       HPC SFC Anl Boundary     hpcsfc.ncp
 firezones    US Fire WX Zones, NWS    tpfzus.nws
