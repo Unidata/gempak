@@ -148,7 +148,7 @@ c     call mctrace(1,'ABINSAE','OUT: LON ='//cval)
 
 C -----------------------------------------------------------
 
-      FUNCTION ABINEAS(XLAT,XLON,Z,XLIN,XELE,XDUM)
+      INTEGER FUNCTION ABINEAS(XLAT,XLON,Z,XLIN,XELE,XDUM)
       COMMON/ABIN/ITYPE
 
       ABINEAS=0

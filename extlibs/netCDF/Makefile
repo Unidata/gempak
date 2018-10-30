@@ -17,7 +17,7 @@ lnetcdf: INSTALLDIR
 	pwd; \
 	touch macros.make; \
 	$(MAKE) distclean ; \
-	./configure --disable-dap --disable-netcdf-4 '--prefix=$(OS_ROOT)'; \
+	./configure --disable-dap '--prefix=$(OS_ROOT)'; \
 	$(MAKE) all install
 
 INSTALLDIR:
