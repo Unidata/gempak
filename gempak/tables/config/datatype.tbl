@@ -235,8 +235,8 @@ A2UAIR       AWIPSDB                   uair.xml                                 
 A2GFS        AWIPSDB                   gfs.xml                                          CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
 A2GFS20      AWIPSDB                   gfs20.xml                                        CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
 A2GFS80      AWIPSDB                   gfs80.xml                                        CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
-A2RAP        AWIPSDB                   rap.xml                                          CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
-A2NAM        AWIPSDB                   nam.xml                                          CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+A2RAP13      AWIPSDB                   rap13.xml                                        CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+A2NAM12      AWIPSDB                   nam12.xml                                          CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
 A2NamDNG     AWIPSDB                   namdng.xml                                       CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
 A2NAVGEM     AWIPSDB                   navgem.xml                                       CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
 A2HRRR       AWIPSDB                   hrrr.xml                                         CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
