@@ -113,7 +113,6 @@
  * S. Jacobs/NCEP	 5/13	Removed old DB functions; added da_runpy*
  * S. Jacobs/NCEP	 9/13	Added more DA functions			*
  * S. Gilbert/NCEP       2/16   Added cycle,fcst args to da_getheader   *
- * S. Guan//NCEP        6/15    ADDed im_rcdf4				*
  ***********************************************************************/
 
 /* AW library */
@@ -435,10 +434,6 @@ void im_rcdf ( char imgfil[], int *kx, int *ky, int *isorc, int *itype,
                 int *idate, int *itime, int *iproj, float *clat,
                 float *clon, float *xmin, float *xmax, float *ymin,
                 float *ymax, int *iret );
-void im_rcdf4 ( char imgfil[], int area[64], int nav[640], int *isorc, int *itype,
-                int *idate, int *itime, int *iproj, float *clat,
-                float *clon, int *ixmin, int *ixmax, int *iymin,
-                int *iymax, int *iret );
 void im_rfax ( char *filnam, int *lenfil, int *isize, int *ixlen,
                                                   int *iylen, int *iret );
 /* void im_rgin ( char filnam[], int *lenf, int *offset, int *lendat, int *iret ); */

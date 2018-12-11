@@ -30,7 +30,6 @@ class GridInfoRetriever:
             req.setReftime(ct)
 
         req.setFcstsec(self.forecast)
-        print(req)
         resp = self.client.sendRequest(req)
 
         # Take care of bytestring encodings in python3

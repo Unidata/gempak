@@ -93,14 +93,13 @@ C* T. Lee/SAIC		10/01	Added fill types to GCFILL calling seq.	*
 C* D. Kidwell/NCEP	 6/02	Added GSGTGN                            *
 C* D.W.Plummer/NCEP	 9/02	Chg GFLBND to GPLBND & add more parms.	*
 C* D.W.Plummer/NCEP	 6/04	Chgs for GSATPX				*
-C* R. McTaggart-Cowan/SUNY 01/05 Add semaphore locks for IPC queues.    *
+C* R. McTaggart-Cowan/SUNY 01/05 Add semaphore locks for IPC queues.	*
 C* C. Bailey/HPC	 1/05	Added GGSAVE				*
 C* C. Bailey/HPC	 6/06	Added contour label array to call to 	*
 C*				GCNTLN & GCLGRN				*
 C* S. Gilbert/NCEP	 8/06	Increased sysstr to 12			*
 C* C. Bailey/HPC	10/06	Added scflag to GCNTLN & GCLGRN		*
 C* S. Gilbert/NCEP	 4/07	Removed CONTOR group                    *
-C* S. Guan/NCEP          1/18   Added GSATMG4 for NETCDF4 Himawari data *
 C************************************************************************
 	INCLUDE		'FUNCCODE.PRM'
 	INCLUDE		'ERROR.PRM'
@@ -115,11 +114,10 @@ C
 	CHARACTER	ctblnm*64, filnam*72, xname*80, wname*72
 	CHARACTER	cprj*4, navtyp*8, imgnam*256, fil*80, satfil*132
 	CHARACTER	mapnam*80, chrary (530)*24, messag*64
-	CHARACTER	cbuf1*400, goe4*4
+	CHARACTER	cbuf1*400
 C*
 C
 	INTEGER		icmnarr (NIMCMN)
-        EQUIVALENCE     ( igbuff (67 + 64),  goe4 )
 	EQUIVALENCE	( icmnarr, imftyp )
 C------------------------------------------------------------------------
 C*	Initialize the GPLT subprocess.
@@ -146,17 +144,17 @@ C*	Initialize common areas.
 C
 	CALL GINIT
 C
-C*     Obtain semaphore lock on IPC message queues.
+C*	Obtain semaphore lock on IPC message queues.
 C
-       mproc = 0
-       CALL GSGRAB  ( mproc, igrab, isemid, iret )
-       IF ( igrab .ne. 1 ) THEN
-           CALL ER_WMSG  ( 'GPLT', -1, ' ', iret )
-           iout = igbuff (1) + 1
-           igbuff ( iout ) = 2
-           CALL GPUTB  ( igbuff (iout), iret )
-           STOP
-       END IF
+	mproc = 0
+	CALL GSGRAB  ( mproc, igrab, isemid, iret )
+	IF ( igrab .ne. 1 ) THEN
+	    CALL ER_WMSG  ( 'GPLT', -1, ' ', iret )
+	    iout = igbuff (1) + 1
+	    igbuff ( iout ) = 2
+	    CALL GPUTB  ( igbuff (iout), iret )
+	    STOP
+	END IF
 C
 C*	Check for and terminate any device driver processes on UNIX machines.
 C
@@ -1106,23 +1104,13 @@ C*
 C*
                   ELSE IF ( ifunc .eq. FSATMG ) THEN
 		    CALL ST_ITOS  ( igbuff (3), 64, nc, imgnam, ier )
-                    IF ( goe4 .eq. 'GOE4' ) THEN
-                       CALL GSATMG4 ( imgnam, igbuff (67),
+                    CALL GSATMG ( imgnam, igbuff (67),
      +				  igbuff (67 + 64),
      +				  igbuff (67 + 64 + 640 ),
      +				  igbuff (67 + 64 + 640 + 1),
      +				  igbuff (67 + 64 + 640 + 2),
      +				  igbuff (67 + 64 + 640 + 3),
      +				  igbuff (iout+1) )
-                    ELSE
-                       CALL GSATMG ( imgnam, igbuff (67),
-     +                            igbuff (67 + 64),
-     +                            igbuff (67 + 64 + 640 ),
-     +                            igbuff (67 + 64 + 640 + 1),
-     +                            igbuff (67 + 64 + 640 + 2),
-     +                            igbuff (67 + 64 + 640 + 3),
-     +                            igbuff (iout+1) )
-                    END IF        
 C*
                   ELSE IF ( ifunc .eq. FSATIM ) THEN
 		    CALL ST_ITOS  ( igbuff (3), 33, nc, satfil, ier )
@@ -1158,13 +1146,13 @@ C
 	    CALL GPUTB  ( igbuff (iout), iret )
 	END DO
 C
-C*     Free semaphore lock on IPC message queues.
+C*	Free semaphore lock on IPC message queues.
 C
-       mproc = 0
-       CALL GSFREE  ( mproc, isemid, ifree, iret )
-       IF ( ifree .ne. 1 ) THEN
-           CALL ER_WMSG  ( 'GPLT', -2, ' ', iret )
-           STOP
-       END IF
+	mproc = 0
+	CALL GSFREE  ( mproc, isemid, ifree, iret )
+	IF ( ifree .ne. 1 ) THEN
+	    CALL ER_WMSG  ( 'GPLT', -2, ' ', iret )
+	    STOP
+	END IF
 C*
 	END

@@ -26,20 +26,17 @@ C* S. Jacobs/NCEP	11/98	Added check for MER proj to use GSMMAP	*
 C* E. Safford/GSC	05/00	Removed check for MER proj		*
 C* S. Jacobs/NCEP	 6/00	Increased imgnam from 80 to 256 chars	*
 C* S. Jacobs/NCEP	 6/00	Changed to check projection set to SAT	*
-C* S. Guan/NCEP          1/16   Modified for NETCDF4 Himawari data      *
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 	INCLUDE		'IMGDEF.CMN'
 	INCLUDE		'AREAFL.CMN'
-        INCLUDE         'SATDEF.CMN'
 C*
 	CHARACTER*(*)	garea
 C*
 	CHARACTER	nvtype*8, imgnam*256, loc*132, cproj*4,
-     +			cdproj*30, goe4*4
+     +			cdproj*30
 	REAL		gltln(4), xin(2), xout(2), yin(2), yout(2)
 	REAL		centrd (2)
-        EQUIVALENCE     ( ianav(1),  goe4 )
 C------------------------------------------------------------------------
 C
 	iret = 0
@@ -63,13 +60,7 @@ C
 	xin (2) = gltln (3)
 	yin (1) = gltln (2)
 	yin (2) = gltln (4)
-C
-C       For NETCDF4 Himawari data 
-        IF ( goe4 .eq. 'GOE4' ) THEN
-           yin (1) = (-1.0) *gltln (4)
-           yin (2) = (-1.0) *gltln (2)
-        END IF 
-C
+	
 	CALL GTRANS ( 'M', 'P', 2, xin, yin, xout, yout, ier )
 C
 C*	Check for bad garea plot bounds
@@ -113,18 +104,8 @@ C
 C
 	    IF ( nvtype(1:2) .eq. 'MC') THEN
 C
-C              For NETCDF4 Himawari data
-               IF ( goe4 .eq. 'GOE4' ) THEN
-                  itmp = imleft
-                  imleft = imrght
-                  imrght = itmp  
-	          CALL GSATMG4 ( imgnam, iadir, ianav, imleft, imbot,
-     +              imrght, imtop, ier )	
-               ELSE
-                  CALL GSATMG ( imgnam, iadir, ianav, imleft, imtop,
-     +                          imrght, imbot, ier )
-               END IF
-
+	       CALL GSATMG ( imgnam, iadir, ianav, imleft, imtop,
+     +			  	imrght, imbot, ier )	
 	    END IF
 C
 	ELSE

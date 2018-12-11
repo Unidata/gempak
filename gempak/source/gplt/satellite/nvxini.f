@@ -23,21 +23,18 @@ C* S. Chiswell/Unidata	 8/06	Added MSG				*
 C* T. Piper/SAIC	03/07	Changed MSGINI to MSG_INI		*
 C* M. James/Unidata	10/14	Added RECT				*
 C* M. James/Unidata	 2/18	Added ABIN				*
-C* S. Guan/NCEP          2/18   Added GOE4                              *
 C************************************************************************
 	INCLUDE		'ERROR.PRM'
 	INCLUDE		'SATDEF.CMN'
 C*
 	INTEGER		nav(640), GOSINI, GVRINI, RDRINI, MSATINI,
-     +			GMSXINI, MOLLINI, ABININI, GOSINI4
+     +			GMSXINI, MOLLINI, ABININI
 C------------------------------------------------------------------------
 C
 C*	Call appropriate routine
 C
 	IF ( nvtypa .eq. 'MCGOES' ) THEN
 	   iret = GOSINI ( ifunc, nav )
-	ELSE IF ( nvtypa .eq. 'MCGOE4' ) THEN
-	   iret = GOSINI4 ( ifunc, nav )
 	ELSE IF ( nvtypa .eq. 'MCGVAR' ) THEN
 	   iret = GVRINI ( ifunc, nav )
 	ELSE IF ( nvtypa .eq. 'MCABIN' ) THEN

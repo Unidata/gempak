@@ -1,7 +1,4 @@
 #!/bin/sh -xe
-OS_TYPE=$1
-OS_VERSION=$2
-
 # Prepare the RPM environment
 mkdir -p /tmp/rpmbuild/{BUILD,RPMS,SOURCES,SPECS,SRPMS}
 pushd /gempak

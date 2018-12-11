@@ -2,7 +2,7 @@
 %define __prelink_undo_cmd %{nil}
 %define gem_home /home/gempak/GEMPAK7
 %define prefix /home/gempak
-%define version 7.5.1
+%define version 7.4.3
 Name: gempak-extlibs
 Summary: Unidata GEMPAK
 Version: %{version}
@@ -37,6 +37,7 @@ tar -xvzf /tmp/rpmbuild/SOURCES/gempak-%{version}.tar.gz -C %{prefix}/ >& /dev/n
 pushd %{gem_home}
 export NAWIPS=`pwd`
 . build/Installer.gempak/Gemenviron.profile
+make distclean
 make extlibs
 make clean >& /dev/null
 mkdir -p ${RPM_BUILD_ROOT}/home/gempak/GEMPAK7

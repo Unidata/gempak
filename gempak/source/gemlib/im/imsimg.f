@@ -56,7 +56,6 @@ C* S. Jacobs/NCEP       4/11    Removed AWIPS II database access        *
 C* M. James/Unidata     1/11    Add support for both 4 & 8-bit NIDS     *
 C* M. James/Unidata     8/13    Removed IM_DBGINI2GM, IM_DBNIDS2GM,     *
 C*                              IM_DBMOSAIC2GM, IM_DBMCIDAS2GM          *
-C* S. Guan/NCEP         06/15   Added code for NETCDF4 file             *
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 	INCLUDE		'IMGDEF.CMN'
@@ -319,29 +318,6 @@ C
 		END IF
 	    END IF
 	END IF
-C
-        IF  ( .not. found )  THEN
-C
-C*          Check for NetCDF4 images. 211   H   D   F 
-C
-            CALL MV_SWP2 ( 1, iarr4(1), ipflip )
-            IF  ( ( (  iarr2(1) .eq. 18569 ) .and.
-     +              (  iarr2(2) .eq. 17988 ) ) .or.
-     +            ( ( ipflip(1) .eq. 18569 ) .and.
-     +              ( ipflip(2) .eq. 17988 ) ) )  THEN
-C
-                imftyp = IFNCDF
-                found  = .true.
-C
-C*              Read header and set navigation for NetCDF4 products.
-C
-                CALL IM_NCDF4 ( temfil, iret )
-                IF  ( iret .ne. 0 )  THEN
-                    imftyp = IFINVD
-                    found  = .false.
-                END IF
-            END IF
-        END IF
 C
 	IF  ( .not. found )  THEN
 C

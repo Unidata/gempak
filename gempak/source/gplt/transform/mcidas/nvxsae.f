@@ -29,21 +29,18 @@ C* S. Chiswell/Unidata	 2/02	Added MSAT, MOLL, GMSX projection type	*
 C* S. Chiswell/Unidata	 8/06	Added MSG				*
 C* M. James/Unidata	10/14	Added RECT				*
 C* M. James/Unidata	02/18	Added ABIN				*
-C* S. Guan/NCEP          2/18   Added GOE4                              *
 C************************************************************************
 	INCLUDE		'ERROR.PRM'
 	INCLUDE		'SATDEF.CMN'
 C
 	INTEGER		GOSSAE, GVRSAE, RDRSAE, MSATSAE, GMSXSAE,
-     +			MOLLSAE, MSGSAE, ABINSAE, GOSSAE4
+     +			MOLLSAE, MSGSAE, ABINSAE
 C------------------------------------------------------------------------
 C
 C*	Call appropriate routine
 C
 	IF ( nvtypa .eq. 'MCGOES' ) THEN
 	   iret = GOSSAE ( xlin, xele, xdum, xlat, ylon, zdum  )
-	ELSE IF ( nvtypa .eq. 'MCGOE4' ) THEN
-	   iret = GOSSAE4 ( xlin, xele, xdum, xlat, ylon, zdum )
 	ELSE IF ( nvtypa .eq. 'MCGVAR' ) THEN
 	   iret = GVRSAE ( xlin, xele, xdum, xlat, ylon, zdum )
 	ELSE IF ( nvtypa .eq. 'MCRADR' ) THEN
