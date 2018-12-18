@@ -28,6 +28,7 @@ X11LIBDIR = -L/usr/X11R6/lib64
 # Dynamic OpenMotif
 #X11LIBDIR = -L/usr/X11R6/lib -Wl,--rpath /usr/X11R6/lib
 MOTIFLIBS = $(X11LIBDIR) -lXm
+NETCDF = $(OS_LIB)/libnetcdf.a -ldl -lz $(OS_LIB)/libhdf5_hl.a $(OS_LIB)/libhdf5.a
 
 BUFRFLAGS = -O -DNO_MSG_IPC -ansi
 
