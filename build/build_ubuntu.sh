@@ -36,32 +36,30 @@ ln -s Makeinc.linux64_gfortran_ubuntu Makeinc.linux64_gfortran
 popd
 
 gemlog="/gempak/build/dist/make.gempak.log"
-make extlibs 2>&1 | tee -a /gempak/build/dist/make.extlibs.log
-#make extlibs 2>&1 | tee -a make.extlibs.log | grep --line-buffered "making all in"
-#make gempak 2>&1 | tee -a $gemlog | grep --line-buffered "making all in"
-make gempak 2>&1 | tee -a $gemlog
-make install >& /dev/null
-make programs_gf >& /dev/null
-make programs_nc >& /dev/null
-make clean >& /dev/null
+#make extlibs 2>&1 | tee -a /gempak/build/dist/make.extlibs.log
+#make gempak 2>&1 | tee -a $gemlog
+#make install >& /dev/null
+#make programs_gf >& /dev/null
+#make programs_nc >& /dev/null
+#make clean >& /dev/null
 
-grep -i error $gemlog
+#grep -i error $gemlog
 
-rm -rf extlibs config .gitignore .travis.yml build
+#rm -rf extlibs config .gitignore .travis.yml build
 
 
-ls -la $OS_BIN|wc -l
+#ls -la $OS_BIN|wc -l
 
-mkdir -p /tmp/gempak-${package_version}/home
-cp -r /home/gempak /tmp/gempak-${package_version}/home/
+#mkdir -p /tmp/gempak-${package_version}/home
+#cp -r /home/gempak /tmp/gempak-${package_version}/home/
 
-pushd /tmp
+#pushd /tmp
 
 # Build the RPM
-dpkg-deb --nocheck --debug --verbose --build gempak-${package_version}
-cp gempak-${package_version}.deb /gempak/build/dist/
+#dpkg-deb --nocheck --debug --verbose --build gempak-${package_version}
+#cp gempak-${package_version}.deb /gempak/build/dist/
 
 # Install with dependencies
-apt-get update -y
-dpkg -i gempak-${package_version}.deb
-apt-get -f install
+#apt-get update -y
+#dpkg -i gempak-${package_version}.deb
+#apt-get -f install
