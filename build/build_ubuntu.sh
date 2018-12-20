@@ -20,6 +20,7 @@ mkdir -p /home/gempak/
 tar -xvzf /tmp/gempak-${package_version}.tar.gz -C /home/gempak >& /dev/null
 pushd /home/gempak
 mv gempak-${package_version} GEMPAK7
+cp -r /gempak/config/* /home/gempak/GEMPAK7/config/
 cd GEMPAK7
 . Gemenviron.profile
 #. source_python.sh
@@ -30,36 +31,34 @@ export PYDEP="-lpthread -ldl -lutil"
 export LDFLAGS="-L/usr/lib -L$OS_LIB -s"
 
 pushd config
-
 rm -rf Makeinc.linux64_gfortran
 ln -s Makeinc.linux64_gfortran_ubuntu Makeinc.linux64_gfortran
+ls -la 
 popd
-
 gemlog="/gempak/build/dist/make.gempak.log"
-#make extlibs 2>&1 | tee -a /gempak/build/dist/make.extlibs.log
-#make gempak 2>&1 | tee -a $gemlog
-#make install >& /dev/null
-#make programs_gf >& /dev/null
-#make programs_nc >& /dev/null
-#make clean >& /dev/null
+make extlibs 2>&1 | tee -a /gempak/build/dist/make.extlibs.log
+make gempak 2>&1 | tee -a $gemlog
+make install >& /dev/null
+make programs_gf >& /dev/null
+make programs_nc >& /dev/null
+make clean >& /dev/null
 
-#grep -i error $gemlog
+grep -i error $gemlog
 
-#rm -rf extlibs config .gitignore .travis.yml build
+rm -rf extlibs config .gitignore .travis.yml build
 
+ls -la $OS_BIN|wc -l
 
-#ls -la $OS_BIN|wc -l
+mkdir -p /tmp/gempak-${package_version}/home
+cp -r /home/gempak /tmp/gempak-${package_version}/home/
 
-#mkdir -p /tmp/gempak-${package_version}/home
-#cp -r /home/gempak /tmp/gempak-${package_version}/home/
+pushd /tmp
 
-#pushd /tmp
+# Build the deb package
+dpkg-deb --nocheck --debug --verbose --build gempak-${package_version}
+cp gempak-${package_version}.deb /gempak/build/dist/
 
-# Build the RPM
-#dpkg-deb --nocheck --debug --verbose --build gempak-${package_version}
-#cp gempak-${package_version}.deb /gempak/build/dist/
-
-# Install with dependencies
-#apt-get update -y
-#dpkg -i gempak-${package_version}.deb
-#apt-get -f install
+# Confirm install with dependencies
+apt-get update -y
+dpkg -i gempak-${package_version}.deb
+apt-get -f install
