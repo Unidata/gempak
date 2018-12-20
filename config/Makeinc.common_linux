@@ -87,8 +87,8 @@ UTF              = $(OS_LIB)/utf.a
 
 X11LIB           = -lX11
 GUILIBS          = $(MOTIFLIBS) $(X11LIBDIR) -lXt -lX11
-NETCDFINC         = $(OS_INC)
-NETCDF            = $(OS_LIB)/libnetcdf.a -ldl -lz $(OS_LIB)/libhdf5_hl.a $(OS_LIB)/libhdf5.a
+NETCDFINC        = $(OS_INC)
+NETCDF           = $(OS_LIB)/libnetcdf.a -ldl -lz $(OS_LIB)/libhdf5_hl.a $(OS_LIB)/libhdf5.a
 
 ZLIB             = $(OS_LIB)/libz.a
 ZLIBINC          = $(OS_INC)

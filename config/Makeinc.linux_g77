@@ -10,7 +10,7 @@ COPT = -DUNDERSCORE -D$(OPSYS) $(GEMINC) $(MOTIFINC) -O # -g
 FOPT =  -fno-second-underscore $(GEMINC) -O # -g
 FOPT_NOGLOB = -fno-globals -Wno-globals
 NCII = "-I../libsrc"
-NCOPT = "CPPFLAGS=-DNDEBUG -Df2cFortran" "FFLAGS=-O -Wno-globals" "CFLAGS=-O $(NCII)" "CXX= "
+NCOPT = "CPPFLAGS=-DNDEBUG -Df2cFortran -I$(OS_INC)" "FFLAGS=-O -Wno-globals" "CFLAGS=-O $(NCII)" "CXX= "
 JASPEROPT = 'CC=$(CC)' 'CFLAGS=-O' '--disable-libjpeg'
 XML2OPT = 'CC=$(CC)' '--with-iconv'
 XMLDEP = -lpthread

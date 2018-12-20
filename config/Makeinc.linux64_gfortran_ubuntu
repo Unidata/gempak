@@ -8,10 +8,10 @@ FC = gfortran
 MOTIFINC  = -I/usr/X11R6/include
 XWINCDIR  = -I/usr/X11R6/include
 
-COPT = -fno-stack-protector -DUNDERSCORE -D$(OPSYS) $(GEMINC) $(MOTIFINC) -DG_64BIT -g #-O
-FOPT = -fno-stack-protector -fno-second-underscore -fno-range-check -fd-lines-as-comments $(GEMINC) -g #-O
+COPT = -fno-stack-protector -DUNDERSCORE -D$(OPSYS) $(GEMINC) $(MOTIFINC) $(PYINC) $(WITHPY) -DG_64BIT -g -O2
+FOPT = -fno-stack-protector -fno-second-underscore -fno-range-check -fd-lines-as-comments $(GEMINC) $(PYINC) -g -O
 NCII = "-I../libsrc"
-NCOPT = "CPPFLAGS=-DNDEBUG -Df2cFortran" "FFLAGS=-O -Wno-globals" "CFLAGS=-O $(NCII)" "CXX= "
+NCOPT = "CPPFLAGS=-DNDEBUG -Df2cFortran -I$(OS_INC)" "FFLAGS=-O -Wno-globals" "CFLAGS=-O $(NCII)" "CXX= "
 JASPEROPT = 'CC=$(CC)' 'CFLAGS=-O' '--disable-libjpeg'
 XML2OPT = 'CC=$(CC)' '--with-iconv'
 XMLDEP = -lpthread
@@ -28,7 +28,6 @@ X11LIBDIR = -L/usr/X11R6/lib64
 # Dynamic OpenMotif
 #X11LIBDIR = -L/usr/X11R6/lib -Wl,--rpath /usr/X11R6/lib
 MOTIFLIBS = $(X11LIBDIR) -lXm
-NETCDF = $(OS_LIB)/libnetcdf.a -ldl -lz $(OS_LIB)/libhdf5_hl.a $(OS_LIB)/libhdf5.a
 
 BUFRFLAGS = -O -DNO_MSG_IPC -ansi
 

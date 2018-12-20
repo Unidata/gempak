@@ -11,7 +11,7 @@ XWINCDIR  = -I/usr/X11R6/include
 COPT = -DUNDERSCORE -D$(OPSYS) $(GEMINC) $(MOTIFINC) $(PYINC) $(WITHPY) -DG_64BIT -g -O2 -fPIC
 FOPT = -fno-second-underscore -fno-range-check -fd-lines-as-comments $(GEMINC) $(PYINC) -g -O
 NCII = "-I../libsrc"
-NCOPT = "CPPFLAGS=-DNDEBUG -Df2cFortran" "FFLAGS=-O -Wno-globals" "CFLAGS=-O $(NCII)" "CXX= "
+NCOPT = "CPPFLAGS=-DNDEBUG -Df2cFortran -I$(OS_INC)" "FFLAGS=-O -Wno-globals" "CFLAGS=-O $(NCII)" "CXX= "
 JASPEROPT = 'CC=$(CC)' 'CFLAGS=-O' '--disable-libjpeg'
 XML2OPT = 'CC=$(CC)' '--with-iconv'
 XMLDEP = -lpthread

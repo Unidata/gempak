@@ -16,7 +16,7 @@ XML2OPT = 'CC=$(CC)' '--with-iconv'
 XMLDEP = -lpthread
 HDFOPT = "CFLAGS=$(XCFLAGS)" "FFLAGS=$(XCFLAGS)" "FC= " \
 	 "F77= " "F90= " "CPP= " "CXX= " "CXXCPP= " "LDFLAGS= " \
-	 "CPPFLAGS=-DNDEBUG" "PKG_CONFIG=$(OS_BIN)/pkg-config"
+	 "CPPFLAGS=-DNDEBUG -I$(OS_INC)" "PKG_CONFIG=$(OS_BIN)/pkg-config"
 
 #WITH-LIBICONV='--with-libiconv=no'
 WITH-LIBICONV='--without-iconv'

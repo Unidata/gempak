@@ -14,7 +14,7 @@ COPT =  -fno-common -DUNDERSCORE -D$(OPSYS) $(GEMINC) $(GEMINC)/$(OPSYS) $(XWINC
 FOPT =  -fno-second-underscore $(GEMINC) -O -g #
 FOPT_NOGLOB =
 NCII = "-I../libsrc"
-NCOPT = "CPPFLAGS=-DNDEBUG -Df2cFortran" "FFLAGS=-O" "CFLAGS=-O $(NCII)" "CXX= "
+NCOPT = "CPPFLAGS=-DNDEBUG -Df2cFortran -I$(OS_INC)" "FFLAGS=-O" "CFLAGS=-O $(NCII)" "CXX= "
 JASPEROPT = '--disable-libjpeg'
 XML2OPT = 'CC=$(CC)' '--with-iconv'
 ICONVLIB = -liconv

@@ -9,7 +9,7 @@ XWINCDIR  = -I/usr/X11R6/include
 COPT = -DUNDERSCORE -D$(OPSYS) $(GEMINC) $(MOTIFINC) -g
 FOPT =  $(GEMINC) -g
 NCII = "-I../libsrc"
-NCOPT = "CC=$(CC)" "FC=$(FC)" "CPPFLAGS=-DNDEBUG -DpgiFortran" "FFLAGS=-O -w" "CFLAGS=-O $(NCII)" "CXX= "
+NCOPT = "CC=$(CC)" "FC=$(FC)" "CPPFLAGS=-DNDEBUG -DpgiFortran -I$(OS_INC)" "FFLAGS=-O -w" "CFLAGS=-O $(NCII)" "CXX= "
 
 CFLAGS = $(COPT) 
 CFLAGS_DB = $(COPT)
