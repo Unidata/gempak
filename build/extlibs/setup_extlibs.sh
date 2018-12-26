@@ -12,11 +12,7 @@ TAG=${os_type}${os_version}
  # Run builds in Container
 if [ "$os_type" = "centos" ]; then
 
-    if [ "$os_version" = "container" ]; then
-
-        sudo docker build -t unidata/gempak -f build/docker/Dockerfile.gempak build/docker
-
-    elif [ "$os_version" = "6" ]; then
+    if [ "$os_version" = "6" ]; then
 
         sudo docker run --rm=true -v `pwd`:/gempak:rw unidata/$IMAGE:$TAG /bin/bash -c "bash -xe /gempak/build/extlibs/build_extlibs.sh"
 

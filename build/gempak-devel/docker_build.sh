@@ -1,4 +1,5 @@
 #!/bin/bash
+release="7.5.1"
 dir="$( cd "$(dirname "$0")" ; pwd -P )"
 
 if [ -z "$1" ]; then

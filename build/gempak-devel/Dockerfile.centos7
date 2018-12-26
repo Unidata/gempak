@@ -26,4 +26,4 @@ RUN yum install -y \
   python-devel
 
 # Bootstrap install extlibs...
-RUN rpm -ivh https://www.unidata.ucar.edu/downloads/gempak/latest/gempak-extlibs-latest.el7.centos.x86_64.rpm
+RUN rpm -ivh https://www.unidata.ucar.edu/downloads/gempak/latest/gempak-extlibs-7.5.1-1.el7.centos.x86_64.rpm
