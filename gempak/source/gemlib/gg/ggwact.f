@@ -78,6 +78,7 @@ C* 				#46 by removing dup cnties. Checked size*
 C*				of sacod.Replaced NC &LLSTFL w/ MAX_CNTY*
 C* F. J. Yen/NCEP        4/08   Added bin mins & mstrct to CTB_DTGET CSC*
 C* F. J. Yen/NCEP	 7/08	Look back 2 days instead of 1 day	*
+C* S. Guan/NCEP          1/18   Hard code for LEZ061 and CLE            *
 C************************************************************************
         INCLUDE		'GEMPRM.PRM'
 C*
@@ -825,7 +826,14 @@ C
                     DO il = 1, ifnd
                         wstn = find(il)
                         DO iii = 1, knt
-                            IF ( wstn .eq. wfocty(iii)(90:92) ) THEN
+                            IF ( wstn .eq. "CLE" .and. wfocty(iii)(1:6)
+     +                         .eq. "LEZ061") THEN
+C 
+C*                          BUF ONLY has CONVECTIVE WATCH responsibility for
+C*                          LEZ061, and all other responsibilities are handled
+C*                          by WFO CLE.
+C
+                            ELSE IF ( wstn .eq. wfocty(iii)(90:92)) THEN 
 				IF ( ncnty .lt. MAX_CNTY ) THEN
                                     ncnty = ncnty + 1
                                     cnties(ncnty) = wfocty(iii)

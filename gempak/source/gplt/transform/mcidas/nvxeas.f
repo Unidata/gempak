@@ -28,18 +28,21 @@ C* S. Chiswell/Unidata	 2/02	Added MSAT, GMSX, MOLL  projection type	*
 C* S. Chiswell/Unidata	 8/06	Added MSG  projection type		*
 C* M. James/Unidata	10/14	Added RECT projection type		*
 C* M. James/Unidata	02/18	Added ABIN fixed grid projection type	*
+C* S. Guan/NCEP          2/18   Added GOE4 for Netcd4 Himawari          *
 C************************************************************************
 	INCLUDE		'ERROR.PRM'
 	INCLUDE		'SATDEF.CMN'
 C
 	INTEGER		GOSEAS, GVREAS, RDREAS, MSATEAS, GMSXEAS,
-     +			MOLLEAS, MSGEAS, ABINEAS
+     +			MOLLEAS, MSGEAS, ABINEAS, GOSEAS4
 C------------------------------------------------------------------------
 C
 C*	Call appropriate routine
 C
 	IF ( nvtypa .eq. 'MCGOES' ) THEN
 	   iret = GOSEAS ( xlat, ylon, zdum, xlin, xele, xdum )
+	ELSE IF ( nvtypa .eq. 'MCGOE4' ) THEN
+	   iret = GOSEAS4 ( xlat, ylon, zdum, xlin, xele, xdum )
 	ELSE IF ( nvtypa .eq. 'MCGVAR' ) THEN
 	   iret = GVREAS ( xlat, ylon, zdum, xlin, xele, xdum )
 	ELSE IF ( nvtypa .eq. 'MCRADR' ) THEN

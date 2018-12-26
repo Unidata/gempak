@@ -45,6 +45,7 @@ C* F. J. Yen/NCEP	 3/08	Added ETN; made polygon search robust;  *
 C*				added correction letter to cor/test flag*
 C* S. Guan/NCEP         04/15   Increased sections (starry) from 5 to 15*
 C* S. Guan/NCEP         11/17   Modified to add snow squall warn (SQW)  *
+C* S. Guan/NCEP         05/18   Initialized bultin                      *   
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 	INCLUDE		'BRIDGE.PRM'
@@ -88,6 +89,12 @@ C
 	iperr = 0
 	DO WHILE ( iperr .eq. 0 )
 	    icor = 0
+C
+C* Initialize bultin
+C
+            DO I = 1, DCMXBF
+               bultin(I:I) =' '
+            END DO 
 C
 C*  Get the bulletin.
 C

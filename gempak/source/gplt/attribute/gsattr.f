@@ -32,6 +32,8 @@ C* S. Jacobs/NCEP	 6/98	Changed call to GSFRNT to use REAL size	*
 C* A. Hardy/GSC         10/98	Added DSCMBO                            *
 C* S. Jacobs/NCEP	 5/99	Added DSRDUC				*
 C* S. Jacobs/NCEP	 6/00	Added check for SAT proj, call GSATMG	*
+C* S. Guan/NCEP          5/17   Modified for NETCDF4 Himawari data      *
+C*                              Add goe4, call GSATMG4                  *
 C************************************************************************
 	INCLUDE		'ERROR.PRM'
 	INCLUDE		'DEVCHR.CMN'
@@ -40,6 +42,7 @@ C************************************************************************
 	INCLUDE		'DEVWIN.CMN'
 	INCLUDE		'XYDEF.CMN'
 C------------------------------------------------------------------------
+        CHARACTER goe4*4
 	iret = NORMAL
 C
 C*      Move the screen bounds into /XYDEF/.
@@ -152,16 +155,23 @@ C
 		ytmmgn = umarg ( ncurwn, 4 )
 		cszm   = uszm  ( ncurwn )
 C
+                CALL ST_ITOC ( nnav(1,ncurwn), 1, goe4, ier )
 		IF  ( wcproj(ncurwn) .ne. 'SAT' )  THEN
 		    CALL GSMPRJ ( wcproj(ncurwn), uangle(ncurwn,1),
      +				  uangle(ncurwn,2), uangle(ncurwn,3),
      +				  ulatll(ncurwn), ulonll(ncurwn),
      +				  ulatur(ncurwn), ulonur(ncurwn), ier )
-		  ELSE
-		    CALL GSATMG ( wsatfl(ncurwn), narea(1,ncurwn),
+		ELSE IF ( goe4 .eq. 'GOE4' ) THEN
+C       For NETCDF4 Himawari data
+		    CALL GSATMG4 ( wsatfl(ncurwn), narea(1,ncurwn),
      +				  nnav(1,ncurwn), nixlef(ncurwn),
      +				  niytop(ncurwn), nixrit(ncurwn),
      +				  niybot(ncurwn), ier )
+                ELSE
+                    CALL GSATMG ( wsatfl(ncurwn), narea(1,ncurwn),
+     +                            nnav(1,ncurwn), nixlef(ncurwn),
+     +                            niytop(ncurwn), nixrit(ncurwn),
+     +                            niybot(ncurwn), ier ) 
 		END IF
 C
 	    ELSE IF  ( nmode (ncurwn) .eq. 2 ) THEN
