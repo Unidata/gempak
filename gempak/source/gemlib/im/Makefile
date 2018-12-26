@@ -16,7 +16,7 @@ COBJS = \
 	$(ALIB)(imnexz.o) \
 	$(ALIB)(imaroff.o) \
 	$(ALIB)(imrcdf.o) \
-	$(ALIB)(imrcdf4.o)
+	$(ALIB)(imrcdf4.o) \
 	$(ALIB)(imrgin.o) \
 	$(ALIB)(imrqpe.o) \
 	$(ALIB)(imrtbl.o) \
