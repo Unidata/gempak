@@ -33,8 +33,8 @@ export LDFLAGS="-L/usr/lib -L$OS_LIB -s"
 pushd config
 rm -rf Makeinc.linux64_gfortran
 ln -s Makeinc.linux64_gfortran_ubuntu Makeinc.linux64_gfortran
-ls -la 
 popd
+
 gemlog="/gempak/build/dist/make.gempak.log"
 make extlibs 2>&1 | tee -a /gempak/build/dist/make.extlibs.log
 make gempak 2>&1 | tee -a $gemlog

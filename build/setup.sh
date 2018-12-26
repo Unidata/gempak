@@ -43,6 +43,6 @@ elif [ "$os_type" = "ubuntu" ]; then
 
 elif [ "$os_type" = "fedora" ]; then
 
-    sudo docker run --rm=true -v `pwd`:/gempak:rw unidata/gempak-devel:fedora /bin/bash -c "bash -xe /gempak/build/build_rhel.sh ${os_type} ${os_version}"
+    sudo docker run --rm=true -v `pwd`:/gempak:rw unidata/gempak-devel:fedora /bin/bash -c "bash -xe /gempak/build/build_fedora.sh ${os_type} ${os_version}"
 
 fi
