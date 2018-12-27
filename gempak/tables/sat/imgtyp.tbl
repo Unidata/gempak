@@ -88,14 +88,34 @@ GOES16 CH05 1.61um   NIR           0    255    186     16      1 GRAY
 GOES16 CH06 2.25um   NIR           0    255    186     32      1 GRAY
 GOES16 CH07 3.9um    SWIR          0    255    186     64      1 GRAY
 GOES16 CH08 6.19um   WV            0    255    186    128      1 wvcimss.tbl
-GOES16 CH09 6.95um   WV            0    255    186    256      1 yellow.tbl
+GOES16 CH09 6.95um   WV            0    255    186    256      1 wvcimss.tbl
 GOES16 CH10 7.34um   WV            0    255    186    512      1 wvcimss.tbl
-GOES16 CH11 8.5um    IR            0    255    186   1024      1 ir_sab.tbl
-GOES16 CH12 9.61um   IR            0    255    186  2**11      1 ir_sab.tbl
-GOES16 CH13 10.35um  IR            0    255    186  2**12      1 ir_awips.tbl
-GOES16 CH14 11.2um   IR            0    255    186  2**13      1 ir_sab.tbl
-GOES16 CH15 12.3um   IR            0    255    186  2**14      1 ir_sab.tbl
-GOES16 CH16 13.3um   IR            0    255    186  2**15      1 ir_sab.tbl
+GOES16 CH11 8.5um    IR            0    255    186   1024      1 GRAY
+GOES16 CH12 9.61um   IR            0    255    186  2**11      1 GRAY
+GOES16 CH13 10.35um  IR            0    255    186  2**12      1 GRAY
+GOES16 CH14 11.2um   IR            0    255    186  2**13      1 GRAY
+GOES16 CH15 12.3um   IR            0    255    186  2**14      1 GRAY
+GOES16 CH16 13.3um   IR            0    255    186  2**15      1 GRAY
+!
+! netCDF4 GOES16/17 (ldm-alchemy)
+!
+GOES16 CH01 0.47um   VIS           0    255     70      1      1 GRAY
+GOES16 CH02 0.64um   VIS           0    255     70      2      1 GRAY
+GOES16 CH03 0.87um   NIR           0    255     70      4      1 GRAY
+GOES16 CH04 1.38um   NIR           0    255     70      8      1 GRAY
+GOES16 CH05 1.61um   NIR           0    255     70     16      1 GRAY
+GOES16 CH06 2.25um   NIR           0    255     70     32      1 GRAY
+GOES16 CH07 3.9um    SWIR          0    255     70     64      1 GRAY
+GOES16 CH08 6.19um   WV            0    255     70    128      1 wvcimss.tbl
+GOES16 CH09 6.95um   WV            0    255     70    256      1 wvcimss.tbl
+GOES16 CH10 7.34um   WV            0    255     70    512      1 wvcimss.tbl
+GOES16 CH11 8.5um    IR            0    255     70   1024      1 GRAY
+GOES16 CH12 9.61um   IR            0    255     70  2**11      1 GRAY
+GOES16 CH13 10.35um  IR            0    255     70  2**12      1 GRAY
+GOES16 CH14 11.2um   IR            0    255     70  2**13      1 GRAY
+GOES16 CH15 12.3um   IR            0    255     70  2**14      1 GRAY
+GOES16 CH16 13.3um   IR            0    255     70  2**15      1 GRAY
+!
 GOES16 ABI           13M6          0    255    186  2**16      1 fogcira.tbl
 GOES16 RGB           AIRMASS       0     94    390   2**0      1 abiam.tbl
 GOES16 RGB           NTMICROA      0     94    390   2**1      1 abintmicadv.tbl
@@ -111,6 +131,33 @@ GOES16 RGB           DAYSNOWF      0     94    390   2**10     1 abidaysnowf.tbl
 GOES16 RGB           SIMPLEWV      0     94    390   2**11     1 abisimplewv.tbl
 GOES16 RGB           SO2           0     94    390   2**12     1 abiso2.tbl
 GOES16 RGB           GEOCOLOR      0     95    390   2**13     1 geocolor_g16.tbl
+!
+HIMAWARI-8 CH01      VIS_0.46      0    255     86      1      1 GRAY
+HIMAWARI-8 CH02      VIS_0.51      0    255     86      2      1 GRAY
+HIMAWARI-8 CH03      VIS_0.64      0    255     86      4      1 GRAY
+HIMAWARI-8 CH04      NIR_0.86      0    255     86      8      1 GRAY
+HIMAWARI-8 CH05      NIR_1.6       0    255     86     16      1 GRAY
+HIMAWARI-8 CH06      NIR_2.3       0    255     86     32      1 GRAY
+HIMAWARI-8 CH07      SWIR_3.9      0    255     86     64      1 GRAY
+HIMAWARI-8 CH08      WV_6.2        0    255     86    128      1 WVCIMSS.tbl
+HIMAWARI-8 CH09      WV_6.9        0    255     86    256      1 WVCIMSS.tbl
+HIMAWARI-8 CH10      WV_7.3        0    255     86    512      1 WVCIMSS.tbl
+HIMAWARI-8 CH11      IR_8.6        0    255     86   1024      1 GRAY
+HIMAWARI-8 CH12      IR_9.6        0    255     86   2048      1 GRAY
+HIMAWARI-8 CH13      IR_10.4       0    255     86   4096      1 GRAY
+HIMAWARI-8 CH14      IR_11.2       0    255     86   8192      1 GRAY
+HIMAWARI-8 CH15      IR_12.3       0    255     86  16384      1 GRAY
+HIMAWARI-8 CH16      IR_13.3       0    255     86  32768      1 GRAY
+!
+HIMAWARI-8 RGB       GEOCOLOR      0     95     86  65536      1 geoc_ahi96.tbl
+HIMAWARI-8 RGB       AIRMASS       0     94    384  2**13      1 airmass.tbl
+HIMAWARI-8 RGB       NTMICRO       0     94    384  2**14      1 ntmicro.tbl
+HIMAWARI-8 RGB       DUST          0     94    384  2**15      1 dust.tbl
+HIMAWARI-8 RGB       DAYSTRM       0     94    384  2**16      1 daystrm.tbl
+HIMAWARI-8 RGB       24HRMICRO     0     94    384  2**17      1 24hrmicro.tbl
+HIMAWARI-8 RGB       DYMICRO       0     94    384  2**18      1 dymicro.tbl
+HIMAWARI-8 RGB       NATCOLOR      0     94    384  2**19      1 natural.tbl
+HIMAWARI-8 RGB       VOLASH        0     94    384  2**20      1 ash.tbl
 !
 AIRS                 CO            3    253    240      2      1 rainbow.tbl
 AIRS                 O3            3    253    240      1      1 rainbow.tbl
@@ -344,19 +391,7 @@ GOES7-RAW            WV            0  18000     33    512      2 wv_tpc.tbl
 GOES7                VIS          30    220     32      1      1 GRAY
 GOES7                VISPC         0    255     32    128      1 GRAY
 GOES7                WV            0    255     33    512      1 wv_tpc.tbl
-GOES8                IR            0    255     70    128      1 GRAY
-GOES8                IR            0    255     70    128      2 GRAY
-GOES COMPOSITE       IR            0    255     70      8      1 ir_rgbv.tbl
-GOES8                IR            0    255     70      8      2 GRAY
-GOES8                IR2           0    255     70      2      1 GRAY
-GOES8                IR2           0    255     70      2      2 GRAY
-GOES8                IR5           0    255     70     16      1 GRAY
-GOES8                IR5           0    255     70     16      2 GRAY
 GOES8                SND           0    255     71      1      1 GRAY
-GOES8                VIS           0   1023     70      1      2 GRAY
-GOES COMPOSITE       VIS          30    220     70      1      1 GRAY
-GOES COMPOSITE       WV            0    255     70      4      1 wv_tpc.tbl
-GOES8                WV            0    255     70      4      2 wv_tpc.tbl
 GOES9                IR            0    255     72      8      2 ir_sab.tbl
 GOES9                IR            0    255     72    128      2 ir_sab.tbl
 GOES9                VIS           0   1023     72      1      2 GRAY
@@ -732,11 +767,10 @@ SOUNDER              CTP           0    255     70  2**26      1 ctp_upc.tbl
 SOUNDER              CTP           0    255     71  2**26      1 ctp_upc.tbl
 SOUNDER              CTP           0    255     75  2**26      1 ctp_upc.tbl
 SOUNDER              CTP           0    255     77  2**26      1 ctp_upc.tbl
-SOUNDER              LI            0    255    185  2**28      1 snd_li.tbl
-SOUNDER              LI            0    255     70  2**15      1 snd_li.tbl
-SOUNDER              LI            0    255     71  2**28      1 snd_li.tbl
-SOUNDER              LI            0    255     75  2**28      1 snd_li.tbl
-SOUNDER              LI            0    255     77  2**28      1 snd_li.tbl
+SOUNDER1             LI            0    255    185  2**28      1 snd_li.tbl
+SOUNDER3             LI            0    255     71  2**28      1 snd_li.tbl
+SOUNDER4             LI            0    255     75  2**28      1 snd_li.tbl
+SOUNDE5R             LI            0    255     77  2**28      1 snd_li.tbl
 SOUNDER              OZONE         0    255    185  2**30      1 ozone_upc.tbl
 SOUNDER              OZONE         0    255     71  2**30      1 ozone_upc.tbl
 SOUNDER              OZONE         0    255     75  2**30      1 ozone_upc.tbl
