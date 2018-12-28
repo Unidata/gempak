@@ -20,10 +20,8 @@ mkdir -p /home/gempak/
 tar -xvzf /tmp/gempak-${package_version}.tar.gz -C /home/gempak >& /dev/null
 pushd /home/gempak
 mv gempak-${package_version} GEMPAK7
-cp -r /gempak/config/* /home/gempak/GEMPAK7/config/
 cd GEMPAK7
 . Gemenviron.profile
-#. source_python.sh
 export PYINC="-I/usr/include/python2.7"
 export PYLIB="-lpython2.7"
 export WITHPY="-DWITHPYTHON"
@@ -33,6 +31,7 @@ export LDFLAGS="-L/usr/lib -L$OS_LIB -s"
 pushd config
 rm -rf Makeinc.linux64_gfortran
 ln -s Makeinc.linux64_gfortran_ubuntu Makeinc.linux64_gfortran
+ls -latr
 popd
 
 gemlog="/gempak/build/dist/make.gempak.log"
