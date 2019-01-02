@@ -72,7 +72,7 @@
 ! S. Jacobs/NCEP	10/12	Changed GOES14 to use data from GOESR testing
 ! M. Folmer/OPC		 4/13	Added VIIRS and other derived products
 ! M. James/Unidata	01/14	Reorganization for new UNIWISC products
-! M. James/Unidata	 3/18	Added GOES16
+! M. James/Unidata	 1/19	Added GOES16/17
 !------------------------------------------------------------------------------
 !
 !                   |IMG     |      |      |SAT ID|IMGTYP| PIXEL| DEFAULT      |
@@ -96,27 +96,28 @@ GOES16 CH13 10.35um  IR            0    255    186  2**12      1 GRAY
 GOES16 CH14 11.2um   IR            0    255    186  2**13      1 GRAY
 GOES16 CH15 12.3um   IR            0    255    186  2**14      1 GRAY
 GOES16 CH16 13.3um   IR            0    255    186  2**15      1 GRAY
-!
-! netCDF4 GOES16/17 (ldm-alchemy)
-!
-GOES16 CH01 0.47um   VIS           0    255     70      1      1 GRAY
-GOES16 CH02 0.64um   VIS           0    255     70      2      1 GRAY
-GOES16 CH03 0.87um   NIR           0    255     70      4      1 GRAY
-GOES16 CH04 1.38um   NIR           0    255     70      8      1 GRAY
-GOES16 CH05 1.61um   NIR           0    255     70     16      1 GRAY
-GOES16 CH06 2.25um   NIR           0    255     70     32      1 GRAY
-GOES16 CH07 3.9um    SWIR          0    255     70     64      1 GRAY
-GOES16 CH08 6.19um   WV            0    255     70    128      1 wvcimss.tbl
-GOES16 CH09 6.95um   WV            0    255     70    256      1 wvcimss.tbl
-GOES16 CH10 7.34um   WV            0    255     70    512      1 wvcimss.tbl
-GOES16 CH11 8.5um    IR            0    255     70   1024      1 GRAY
-GOES16 CH12 9.61um   IR            0    255     70  2**11      1 GRAY
-GOES16 CH13 10.35um  IR            0    255     70  2**12      1 GRAY
-GOES16 CH14 11.2um   IR            0    255     70  2**13      1 GRAY
-GOES16 CH15 12.3um   IR            0    255     70  2**14      1 GRAY
-GOES16 CH16 13.3um   IR            0    255     70  2**15      1 GRAY
-!
+! untested
 GOES16 ABI           13M6          0    255    186  2**16      1 fogcira.tbl
+!
+GOES17 CH01 0.47um   VIS           0    255    188      1      1 GRAY
+GOES17 CH02 0.64um   VIS           0    255    188      2      1 GRAY
+GOES17 CH03 0.87um   NIR           0    255    188      4      1 GRAY
+GOES17 CH04 1.38um   NIR           0    255    188      8      1 GRAY
+GOES17 CH05 1.61um   NIR           0    255    188     16      1 GRAY
+GOES17 CH06 2.25um   NIR           0    255    188     32      1 GRAY
+GOES17 CH07 3.9um    SWIR          0    255    188     64      1 GRAY
+GOES17 CH08 6.19um   WV            0    255    188    128      1 wvcimss.tbl
+GOES17 CH09 6.95um   WV            0    255    188    256      1 wvcimss.tbl
+GOES17 CH10 7.34um   WV            0    255    188    512      1 wvcimss.tbl
+GOES17 CH11 8.5um    IR            0    255    188   1024      1 GRAY
+GOES17 CH12 9.61um   IR            0    255    188  2**11      1 GRAY
+GOES17 CH13 10.35um  IR            0    255    188  2**12      1 GRAY
+GOES17 CH14 11.2um   IR            0    255    188  2**13      1 GRAY
+GOES17 CH15 12.3um   IR            0    255    188  2**14      1 GRAY
+GOES17 CH16 13.3um   IR            0    255    188  2**15      1 GRAY
+! untested
+GOES17 ABI           13M6          0    255    188  2**16      1 fogcira.tbl
+!
 GOES16 RGB           AIRMASS       0     94    390   2**0      1 abiam.tbl
 GOES16 RGB           NTMICROA      0     94    390   2**1      1 abintmicadv.tbl
 GOES16 RGB           DAYLANDC      0     94    390   2**2      1 abidaylc.tbl

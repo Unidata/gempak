@@ -38,6 +38,7 @@ void im_rcdf4 ( char imgfil[], int area[64], int nav[640], int *isorc, int *ityp
  **									*
  * Log:									*
  * S. Guan/NCEP          6/15   Created                                 *
+ * M. James/UCAR         1/19   Account for GOES-16 and GOES-17		*
  ***********************************************************************/
 {
 	int		ncid, xy_id, ncret, i;
@@ -137,34 +138,7 @@ void im_rcdf4 ( char imgfil[], int area[64], int nav[640], int *isorc, int *ityp
         nc_get_att_double ( ncid, NC_GLOBAL, "bit_depth", &bit_depth );
 
         *imdpth =  ( int ) bit_depth;  
-/*
- *       ITYPE  Channel String(s)                            channel
- *      -----------------------------
-HIMAWARI             VIS_0.46      0    255     86      1      1 GRAY
-HIMAWARI             VIS_0.51      0    255     86      2      1 GRAY
-HIMAWARI             VIS_0.64      0    255     86      4      1 GRAY
-HIMAWARI             NIR_0.86      0    255     86      8      1 GRAY
-HIMAWARI             NIR_1.6       0    255     86     16      1 GRAY
-HIMAWARI             NIR_2.3       0    255     86     32      1 GRAY
-HIMAWARI             SWIR_3.9      0    255     86     64      1 GRAY
-HIMAWARI             WV_6.2        0    255     86    128      1 WVCIMSS.tbl
-HIMAWARI             WV_6.9        0    255     86    256      1 WVCIMSS.tbl
-HIMAWARI             WV_7.3        0    255     86    512      1 WVCIMSS.tbl
-HIMAWARI             IR_8.6        0    255     86   1024      1 GRAY
-HIMAWARI             IR_9.6        0    255     86   2048      1 GRAY
-HIMAWARI             IR_10.4       0    255     86   4096      1 GRAY
-HIMAWARI             IR_11.2       0    255     86   8192      1 GRAY
-HIMAWARI             IR_12.3       0    255     86  16384      1 GRAY
-HIMAWARI             IR_13.3       0    255     86  32768      1 GRAY
-HIMAWARI             GEOCOLOR      0     95     86  65536      1 geoc_ahi96.tbl
-HIMAWARI             AIRMASS       0     94    384  2**13      1 airmass.tbl
-HIMAWARI             NTMICRO       0     94    384  2**14      1 ntmicro.tbl
-HIMAWARI             DUST          0     94    384  2**15      1 dust.tbl
-HIMAWARI             DAYSTRM       0     94    384  2**16      1 daystrm.tbl
-HIMAWARI             24HRMICRO     0     94    384  2**17      1 24hrmicro.tbl
-HIMAWARI             DYMICRO       0     94    384  2**18      1 dymicro.tbl
-HIMAWARI             NATCOLOR      0     94    384  2**19      1 natural.tbl
- */
+
 /*
  *	Get the projection and central lat/lon.
  */
@@ -177,13 +151,21 @@ HIMAWARI             NATCOLOR      0     94    384  2**19      1 natural.tbl
         }
 
 /*
- *	If the center longitude is east of -100, assume that the image
+ *      Check for GOES-16/17 satellite_lon written by ldm-alchemy:
+ *        * 188 is used for GOES-S(17)
+ *	  see: https://gitlab.ssec.wisc.edu/mug/mcidasv/commit/74e299db9965350e29b52f30f50c486ed55da3d3#9f5abd1215318eaffaef36ef1e69c81a940ce18b_1227_1255
+ *
+ *	If not GOES-16/17, and the center longitude is east of -100, assume that the image
  *	is from GOES-8. Otherwise, assume that it is from GOES-9.
+ *
  */
-	if  ( sat_lon  > 100.0 )  {
+	if ( sat_lon == -137.0 ) {
+	    *isorc = 188;
+        } else if ( sat_lon == -75.0 ) {
+            *isorc = 186;
+	} else if ( sat_lon  > 100.0 )  {
 	    *isorc = 86;
-	}
-	else {
+	} else {
 	    *isorc = 70;
 	}
 /*
