@@ -1,1 +1,194 @@
-pqact.gempak_images.new
+##############################################################################
+# GEMPAK SPECIFIC ACTIONS
+#
+# Michael James
+# Unidata Program Center
+# Last Updated April 2014
+# 
+##############################################################################
+# 
+# Unidata-Wisconsin products FILEd into a GEMPAK directory/name hierarchy
+#
+#
+# ---------------- GOES-16 Image Sectors ----------------
+#
+# CONUS
+UNIWISC	^pnga2area Q. CNC(..) (.*) (.*)_IMG (.*)um (.*) (........) (....)
+	FILE	-close	data/gempak/images/sat/\3/CONUS/Ch\1-\4/\4_\6_\7
+# Full Disk
+UNIWISC	^pnga2area Q. FDC(..) (.*) (.*)_IMG (.*)um (.*) (........) (....)
+	FILE	-close	data/gempak/images/sat/\3/FullDisk/Ch\1-\4/\4_\6_\7
+# Meso1
+UNIWISC	^pnga2area Q. M1C(..) (.*) (.*)_IMG (.*)um (.*) (........) (....)
+	FILE	-close	data/gempak/images/sat/\3/Mesoscale1/Ch\1-\4/\4_\6_\7
+# Meso2
+UNIWISC	^pnga2area Q. M2C(..) (.*) (.*)_IMG (.*)um (.*) (........) (....)
+	FILE	-close	data/gempak/images/sat/\3/Mesoscale2/Ch\1-\4/\4_\6_\7
+#
+# ---------------- GOES-13 and GOES-15 Image Sectors ----------------
+#
+# GOES Visible
+UNIWISC	^pnga2area Q. (EV|UV|U9) (.*) (.*)_IMG (.*)um (.*) (........) (....)
+	FILE	-close	data/gempak/images/sat/\3/\5/VIS/VIS_\6_\7
+# GOES Water Vapor
+UNIWISC	^pnga2area Q. (UW|UB) (.*) (.*)_IMG (.*)um (.*) (........) (....)
+	FILE	-close	data/gempak/images/sat/\3/\5/WV/WV_\6_\7
+# GOES Thermal Infrared
+UNIWISC	^pnga2area Q. (UI|U5) (.*) (.*)_IMG (.*)um (.*) (........) (....)
+	FILE	-close	data/gempak/images/sat/\3/\5/IR/IR_\6_\7
+# GOES other
+UNIWISC	^pnga2area Q. (UD|UE|U7|U8|) (.*) (.*)_IMG (.*)um (.*) (........) (....)
+	FILE	-close
+	data/gempak/images/sat/\3/\5/\4/\4_\6_\7
+#
+# ---------------- Floating Sectors (inactive) ------------------
+#
+# 
+# Educational Floater-I (inactive)
+UNIWISC	^pnga2area Q. (UA) (.*) (.*)_IMG (.*)um (.*) (........) (....)
+	FILE	-close
+	data/gempak/images/sat/\3_fl1/\5/\4/\4_\6_\7
+# 
+# Educational Floater-II (inactive)
+UNIWISC	^pnga2area Q. (UC|UR) (.*) (.*)_IMG (.*)um (.*) (........) (....)
+	FILE	-close
+	data/gempak/images/sat/\3_fl2/\5/\4/\4_\6_\7
+#
+# -------- GOES-East/West Northern Hemisphere Composites --------
+#
+# 
+# GOES-East/West VIS composites
+UNIWISC	^pnga2area Q. (CV) (.*) (.*) (.*) (.*) (........) (....)
+	FILE	-close
+	data/gempak/images/sat/GEWCOMP/\5/VIS/VIS_\6_\7
+# 
+# GOES-East/West 3.9 um composites
+UNIWISC	^pnga2area Q. (CS) (.*) (.*) (.*) (.*) (........) (....)
+	FILE	-close
+	data/gempak/images/sat/GEWCOMP/\5/3.9/3.9_\6_\7
+# 
+# GOES-East/West WV composites
+UNIWISC	^pnga2area Q. (CW) (.*) (.*) (.*) (.*) (........) (....)
+	FILE	-close
+	data/gempak/images/sat/GEWCOMP/\5/WV/WV_\6_\7
+# 
+# GOES-East/West IR composites
+UNIWISC	^pnga2area Q. (CI) (.*) (.*) (.*) (.*) (........) (....)
+	FILE	-close
+	data/gempak/images/sat/GEWCOMP/\5/IR/IR_\6_\7
+# 
+# GOES-East/West 13.3 um composites
+UNIWISC	^pnga2area Q. (CL) (.*) (.*) (.*) (.*) (........) (....)
+	FILE	-close
+	data/gempak/images/sat/GEWCOMP/\5/13.3/13.3_\6_\7
+#
+# ------------------- SSEC Global Composites -------------------
+# 
+# Global WV composite
+UNIWISC	^pnga2area Q. (GW) (.*) (.*) (.*) (.*) (........) (....)
+	FILE	-close
+	data/gempak/images/sat/GLOBAL/\5/WV/WVCOMP_\6_\7
+# 
+# Global IR composites
+UNIWISC	^pnga2area Q. (GI) (.*) (.*) (.*) (.*) (........) (....)
+	FILE	-close
+	data/gempak/images/sat/GLOBAL/\5/IR/IRCOMP_\6_\7
+#
+# ----------------- Mollweide Global Composites -----------------
+#
+# Mollweide Global Water Vapor
+UNIWISC	^pnga2area Q. (UY) (.*) (.*)_IMG (.*)um (.*) (........) (....)
+	FILE	-close
+	data/gempak/images/sat/MOLLWEIDE/30km/WV/MOLLWV_\6_\7
+# 
+# Mollweide Global IR
+UNIWISC	^pnga2area Q. (UX) (.*) (.*)_IMG (.*)um (.*) (........) (....)
+	FILE	-close
+	data/gempak/images/sat/MOLLWEIDE/30km/IR/MOLLIR_\6_\7
+#
+# -------------------- AMRC Arctic Composites --------------------
+# 
+# Arctic 
+UNIWISC	^pnga2area Q. (U[LNGHO]) (.*) (.*) (.*)um (.*) (........) (....)
+	FILE	-close
+	data/gempak/images/sat/ARCTIC/4km/\4/\4_\6_\7
+#
+# ------------------ AMRC Antarctic Composites ------------------
+#
+# Antarctic VIS Composite
+UNIWISC	^pnga2area Q. (UJ) (.*) (.*)_IMG (.*) (.*) (........) (....)
+	FILE	-close
+	data/gempak/images/sat/ANTARCTIC/4km/VIS/VIS_\6_\7
+# 
+# Antarctic PCOL Composite
+UNIWISC	^pnga2area Q. (UK) (.*) (.*)_IMG (.*) (.*) (........) (....)
+	FILE	-close
+	data/gempak/images/sat/ANTARCTIC/4km/PCOL/PCOL_\6_\7
+# 
+# Antarctic WV Composite
+UNIWISC	^pnga2area Q. (UF) (.*) (.*)_IMG (.*) (.*) (........) (....)
+	FILE	-close
+	data/gempak/images/sat/ANTARCTIC/4km/WV/WV_\6_\7
+# 
+# Antarctic Composite IR
+UNIWISC	^pnga2area Q. (U1) (.*) (.*)_IMG (.*) (.*) (........) (....)
+	FILE	-close
+	data/gempak/images/sat/ANTARCTIC/4km/IR/IR_\6_\7
+#
+# ------------------ Manually Digitized Radar ------------------
+# 
+# Manually Digitized Radar
+UNIWISC	^pnga2area Q. (U3) (.*) (.*) (.*) (.*) (........) (....)
+	FILE	-close
+	data/gempak/images/sat/MDR/\5/MDR/MDR_\6_\7
+#
+# ---------------- CIMSS Multichannel Products -----------------
+# 
+# CIMSS CAPE - McIDAS product code CE
+UNIWISC	^pnga2area Q0 CE .... (.*) (.*) (.*) (........) (....)
+	FILE	-close
+	data/gempak/images/sat/SOUNDER/\3/CAPE/\4/CAPE_\4_\5
+# 
+# CIMSS Cloud Top Pressure - McIDAS product code CA
+UNIWISC	^pnga2area Q0 CA .... (.*) (.*) (.*) (........) (....)
+	FILE	-close
+	data/gempak/images/sat/SOUNDER/\3/CTP/\4/CTP_\4_\5
+# 
+# CIMSS Lifted Index - McIDAS product code CD
+UNIWISC	^pnga2area Q0 CD .... (.*) (.*) (.*) (........) (....)
+	FILE	-close
+	data/gempak/images/sat/SOUNDER/\3/LI/\4/LI_\4_\5
+# 
+# CIMSS Ozone - McIDAS product code CF
+UNIWISC	^pnga2area Q0 CF .... (.*) (.*) (.*) (........) (....)
+	FILE	-close
+	data/gempak/images/sat/SOUNDER/\3/OZONE/\4/OZONE_\4_\5
+# 
+# CIMSS Total Column Precipitable Water - McIDAS product code CB
+UNIWISC	^pnga2area Q0 CB .... (.*) (.*) (.*) (........) (....)
+	FILE	-close
+	data/gempak/images/sat/SOUNDER/\3/PW/\4/PW_\4_\5
+# 
+# CIMSS Sea Surface Temperature - McIDAS product code CC
+UNIWISC	^pnga2area Q0 CC .... (.*) (.*) (.*) (........) (....)
+	FILE	-close
+	data/gempak/images/sat/SOUNDER/\3/SST/\4/SST_\4_\5
+# 
+# CIMSS Northern Hemisphere Wildfire ABBA - McIDAS product code CG (inactive)
+UNIWISC	^pnga2area Q0 CG (.*) (.*) (.*) (.*) (........) (....)
+	FILE	-close
+	data/gempak/images/sat/SOUNDER/\3/FIRESNH/\4/FIRESNH_\4_\5
+# CIMSS Southern Hemisphere Wildfire ABBA - McIDAS product code CH (inactive)
+UNIWISC	^pnga2area Q0 CH (.*) (.*) (.*) (.*) (........) (....)
+	FILE	-close
+	data/gempak/images/sat/SOUNDER/\3/FIRESSH/\4/FIRESSH_\4_\5
+# ---------------- NOAAport Satellite Imagery -----------------
+#
+# NOAAPORT GINI Images in NIMAGE feed
+NIMAGE	^satz/ch[0-9]/.*/(.*)/([12][0-9])([0-9][0-9])([01][0-9])([0-3][0-9]) ([0-2][0-9])([0-5][0-9])/(.*)/(.*km)/
+	FILE	-close	data/gempak/images/sat/\8/\9/\1/\1_\2\3\4\5_\6\7
+#
+# NetCDF4 GOES16/17 ABI
+#
+#EXP	^/data/ldm/pub/native/satellite/GOES/(.*)/([^/]*)/([^/]*)/([0-9]{8})/GOES(16|17)_([^/]*)_([0-9]{8})_([0-9]{4})(..)_([^/]*).nc4
+#	FILE	-close	/data/ldm/gempak/images/sat/\1/\2/\3/\3_\7_\8
