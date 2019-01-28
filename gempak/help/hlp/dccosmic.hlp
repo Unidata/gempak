@@ -1,11 +1,11 @@
 
-DCACARS (Unidata)
+DCCOSMIC (Unidata)
 
-    DCACARS is a decoder for use with the NetCDF format ACARS data
-    files from NOAA/FSL. DCACARS places the individual aircraft reports 
-    of altitude, temperature, wind speed and direction and relative 
-    humidity (RH is reported by a few aircraft) into Gempak surface
-    ship format files.
+    DCCOSMIC is a decoder for use with NetCDF format COSMIC data from UCAR. 
+    COSMIC (Constellation of Observing System for Meteorology, Ionosphere 
+    and Climate) data come from a series of US/JPL satellites used for 
+    GPS-based atmospheric soundings of refractivity and bending angle based 
+    on radio occultation.
 
     In order to read the NetCDF file from standard input, a temporary
     file is created on disk consiting of the NetCDF product. Upon completion,
@@ -18,13 +18,13 @@ The program is controlled by inputs to the command line.
     The inputs are program options, and the output file name or template.
     For example, for real-time data feeds:
     
-	dcacars [options] output_file
+	dccosmic [options] output_file
 
 
     When decoding existing files, the input file name can be specified using the
     "-f filename" argument. 
 
-	dcacars -f input_file [options] output_file
+	dccosmic -f input_file [options] output_file
     
     A template may be used to specify the output file name.  The file
     name template uses the date and time of the observations within the
@@ -37,10 +37,10 @@ The program is controlled by inputs to the command line.
 	HH		Hour
 	NN		Minute
 
-    Command line options specific to DCACARS:
+    Command line options specific to DCCOSMIC:
 	-f input_file		Read NetCDF file from disk instead of STDIN
 	-n output_netcdf file	Save NetCDF file from STDIN to disk
 
     The following ancillary tables are used:
-	$GEMTBL/pack/acars.pack	Packing file
+	$GEMTBL/pack/cosmic.pack	Packing file
 
