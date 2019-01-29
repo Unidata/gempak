@@ -1,0 +1,71 @@
+site_name: GEMPAK User Manual
+site_description: Documentation for all things GEMPAK
+site_author: mjames@ucar.edu
+site_url: http://unidata.github.io/gempak
+repo_url: https://github.com/Unidata/gempak
+edit_uri: edit/master
+docs_dir: docs
+
+# Configuration
+theme:
+  name: 'material'
+
+# Options
+extra:
+  palette:
+    primary: 'blue grey'
+    accent: 'light blue'
+  corner_logo: 'images/cave.png'
+  feature:
+    tabs: false
+  social:
+    - type: globe
+      link: https://www.unidata.ucar.edu/software/gempak
+    - type: github-alt
+      link: https://github.com/Unidata/gempak
+    - type: twitter
+      link: https://twitter.com/Unidata
+    - type: facebook
+      link: https://facebook.com/Unidata
+
+# Page tree
+nav:
+- Download/Install: install.md
+- Ch 1 About NAWIPS: chapter1.md
+- Ch 2 User Interface: user-interface.md
+- Ch 3 GEMPAK Variables: chapter3.md
+- Ch 4 GEMPAK Programs: programs.md
+- Ch 5 GUI Programs: chapter5.md
+- Ch 6 Data Decoders: decoders.md
+- App A GEMPAK Parameters: parameters.md
+- App B Grid Diagnostic Functions: appendixB.md
+- App C Symbols, Lines, and Markers: appendixC.md
+- App D GEMPAK Tutorial: appendixD.md
+- App E Restore Files and Scripts: appendixE.md
+
+
+- Map Projections: map-projections.md
+- Surface Data Mapping: surface-data.md
+- Sounding Data Mapping: sounding-data.md
+- GPMAP Overview: gpmap.md
+- Map Aesthetics: maps.md
+- Gridded Data Mapping: gridded-data.md
+- Grid Dignostics: grid-diagnostics.md
+- Interpolation / Transformation: interpolation-transformation.md
+- Import Data into GEMPAK: import-data.md
+- Objective Analysis: objective-analysis.md
+- Vertical Plotting: vertical-plotting.md
+- Radar Programs: radar-programs.md
+- GEMPAK Program Index: program-index.md
+- Data Analysis Exercises: exercises.md
+
+extra_css:
+    - css/extra.css
+
+markdown_extensions:
+    - fontawesome_markdown:
+    - toc:
+        permalink: 
+    - admonition:
+
+copyright: Copyright &copy; 2019 Unidata Program Center.

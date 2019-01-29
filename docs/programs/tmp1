@@ -1,0 +1,217 @@
+acprof.md:36:ACPROF draws profiles of ACARS data. The program is derived from
+acprof.md:37:SNPROF to use ACARS data stored in ship format files. If AREA
+acprof.md:43:behavior is similar to SNPROF.
+bfr2gp.md:22:BFR2GP transfers data in Jack Woollen's BUFR format to GEMPAK
+bfr2gp.md:32:before running BFR2GP.
+bufrenc.md:15:BUFRENC is a table-driven BUFR encoder program which reads
+cpcgstn.md:17:CPCGSTN lists all stations in a given station table, and
+cpcgstn.md:29:input to SFEDIT.
+gd2ndfd.md:19:GD2NDFD converts a GEMPAK grid to an NDFD GRIB2 file.
+gd2ndfd.md:25:The parameter CENTER allows the GD2NDFD user to specify the
+gdbiint.md:19:GDBIINT uses bi-linear interpolation to convert
+gdbiint.md:22:The output file must be created first using GDCFIL.
+gdcntr.md:44:GDCNTR draws contour lines through a scalar grid computed
+gdcross.md:38:GDCROSS draws a vertical cross section between two points
+gdcross.md:64:contours are specified as in GDCNTR.   CLRBAR allows a color bar to
+gddelt.md:17:GDDELT deletes grids from GEMPAK grid files.
+gddiag.md:29:GDDIAG computes a scalar/vector diagnostic grid and saves the
+gddiag.md:35:does not exist, GDDIAG will use PROJ, GRDAREA, KXKY, MAXGRD,
+gdedit.md:16:GDEDIT reads grids from a sequential text edit file and adds
+gdedit.md:19:in GDLIST.
+gdedit.md:86:1.  Add the grids in the edit file GDLIST.FIL to the grid
+gdfrzl.md:49:GDFRZL create a VG file that contains GFA FZLVL elements.
+gdgrib.md:162:    already on grid #6, GDGRIB will detect this and not do
+gdgrib.md:28:GDGRIB computes a diagnostic grid and saves the result in
+gdgrib.md:290:    will not be handled correctly by NAGRIB because NAGRIB
+gdgrib.md:293:    NAGRIB, use the following specification in grid diagnostic
+gdgrib.md:49:GDGRIB will interpolate scalar fields horizontally to a
+gdgrib.md:58:beyond the capability of the current version of GDGRIB.  North-
+gdgrib2.md:165:    already on grid #6, GDGRIB will detect this and not do
+gdgrib2.md:30:GDGRIB2 computes a diagnostic grid and saves the result in
+gdgrib2.md:30:GDGRIB2 computes a diagnostic grid and saves the result in
+gdgrib2.md:54:GDGRIB2 will interpolate scalar fields horizontally to a
+gdgrib2.md:54:GDGRIB2 will interpolate scalar fields horizontally to a
+gdgrib2.md:63:beyond the capability of the current version of GDGRIB2.  North-
+gdgrib2.md:63:beyond the capability of the current version of GDGRIB2.  North-
+gdinfo.md:19:GDINFO lists information about GEMPAK grid files.
+gdlist.md:21:GDLIST lists a diagnostic grid computed from the grids in a
+gdmap.md:40:GDMAP plots data computed from GEMPAK grid files on a map.
+gdmod.md:20:GDMOD moves grids from an input grid file to an output
+gdobscnt.md:14:GDOBSCNT produces a grid for each time found in a surface file.
+gdobscnt.md:30:    The grid file (obs.grd) has already been created with GDCFIL.
+gdomeg.md:16:GDOMEG computes kinematic vertical motions from gridded wind
+gdplot.md:46:GDPLOT draws contours through scalar grids and wind barbs
+gdplot2.md:158:way as it filters station models in the program SFMAP.  If
+gdplot2.md:18:    TYPE      GDPLOT2 function processing type
+gdplot2.md:18:    TYPE      GDPLOT2 function processing type
+gdplot2.md:55:GDPLOT2 draws contours through scalar grids and streamlines
+gdplot2.md:55:GDPLOT2 draws contours through scalar grids and streamlines
+gdplot2.md:61:GDPLOT2 can also generate plots for multiple times.  The
+gdplot2.md:61:GDPLOT2 can also generate plots for multiple times.  The
+gdplot3.md:172:way as it filters station models in the program SFMAP.  If
+gdplot3.md:19:    TYPE      GDPLOT2 function processing type
+gdplot3.md:19:    TYPE      GDPLOT2 function processing type
+gdplot3.md:68:GDPLOT3 draws contours through scalar grids and streamlines
+gdplot3.md:68:GDPLOT3 draws contours through scalar grids and streamlines
+gdplot3.md:74:GDPLOT3 can generate multiple sets of plots for each frame.  It can
+gdplot3.md:74:GDPLOT3 can generate multiple sets of plots for each frame.  It can
+gdprof.md:38:GDPROF draws vertical profiles at a point.  Data from each
+gdptpdf.md:33:GDPTPDF draws the probabilty at a fixed point, time 
+gdpvsf.md:23:GDPVSF interpolates grid data vertically to an arbitrary 
+gdpvsf.md:34:GDOUTF must be an already-existing grid file.  GDPVSF will 
+gdpvsf.md:36:can use GDDIAG to create the necessary grids for GDPVSF.
+gdpvsf.md:36:can use GDDIAG to create the necessary grids for GDPVSF.
+gdpvsf.md:47:GDPVSF will not produce an interpolated grid of the input
+gdradr.md:25:GDRADR samples NEXRAD Level III (NIDS) products to a common
+gdradr.md:35:PROJ, GRDAREA, and KXKY define a grid navigation as in GDCFIL if
+gdradr.md:65:When RADFRQ is defined, GDRADR will wait for the specified time
+gdradrc.md:24:GDRADRC samples ascii products to a common grid projection.
+gdradrc.md:24:GDRADRC samples ascii products to a common grid projection.
+gdradrc.md:33:PROJ, GRDAREA, and KXKY define a grid navigation as in GDCFIL if
+gdradrc.md:63:When RADFRQ is defined, GDRADR will wait for the specified time
+gdstat.md:19:GDSTAT computes the maximum, minimum, average, standard
+gdstream.md:36:GDSTREAM draws streamlines through any vector grid computed
+gdthgt.md:32:GDTHGT is a user contributed program that draws a
+gdtopo.md:20:GDTOPO will create a GEMPAK GRID file of data values.
+gdtser.md:30:GDTSER draws a time series of a scalar parameter at a
+gdtspdf.md:40:GDTSPDF displays contours or color fills of a time series of
+gdvint.md:95:are not available, GDVINT extrapolates values to the
+gdwind.md:37:GDWIND draws wind barbs or arrows at each grid point of a
+gpclose.md:12:GPCLOSE closes the graphics output window or file
+gpfax.md:15:GPFAX reads a 6-bit FAX file and creates an output product in
+gpfront.md:32:GPFRONT is derived from the standard GEMPAK program GPMAP.
+gpfront.md:32:GPFRONT is derived from the standard GEMPAK program GPMAP.
+gpltln.md:32:GPLTLN draws a map and/or latitude/longitude lines in every 10
+gpltln.md:36:on images.  GPLTLN also post-processes NMAP Vector Graphics Files
+gpltln.md:47:GPLTLN can post-process NMAP VGFs to create products in different
+gpltln.md:58:details.  GPLTLN can also scale attributes for an entire class of
+gpmap.md:123:GPMAP can also plot QuikScat and ASCAT ocean vector wind data.
+gpmap.md:134:GPMAP can also plot altimeter-derived wind speeds. The parameter
+gpmap.md:60:GPMAP draws a map and/or latitude/longitude lines for a specified
+gpmap.md:62:may be overlaid on images.  GPMAP also post-processes NMAP
+gpmap.md:64:supported by GEMPAK device drivers.  In addition, GPMAP displays
+gpmap.md:78:GPMAP can post-process NMAP VGFs to create products in different
+gpmap.md:89:details.  GPMAP can also scale attributes for an entire class of
+gpmap.md:94:GPMAP can also plot the current thunderstorm and tornado watches.
+gpnexr2.md:27:GPNEXR2 displays NEXRAD Level II products in ARCHIVE2 format.
+gpnids.md:28:GPNIDS plots NEXRAD Level III products.
+gprcm.md:107:GPRCM utilizes the `nexrad.tbl` station table to determine the radar
+gprcm.md:38:GPRCM is derived from the standard GEMPAK program GPMAP.
+gprcm.md:38:GPRCM is derived from the standard GEMPAK program GPMAP.
+gpscat.md:10:may be overlaid on images.  Unlike GPMAP, GPSCAT can not display 
+gpscat.md:10:may be overlaid on images.  Unlike GPMAP, GPSCAT can not display 
+gpscat.md:8:GPSCAT draws a map and/or latitude/longitude lines for a specified 
+gptcww.md:14:GPTCWW will plot the track error watch/warn plot for each tropical
+gptcww.md:45:(GPTCWW does not use the fifth field of the STRMID parameter.)
+gptext.md:20:GPTEXT draws text read from an ASCII text file to the
+gptext.md:31:defined by another GEMPAK application such as GPMAP.
+gptpc.md:18:GPTPC will plot up to four graphics for each tropical system
+gptpc.md:53:(GPTPC does not use the fourth or fifth fields of the STRMID
+gptraj.md:35:GPTRAJ computes horizontal trajectories from user supplied vector
+gpvad.md:22:GPVAD plots the NEXRAD Level III wind profile product.
+gpvad.md:45:Colors for the axes and wind vectors drawn by GPVAD are specified
+gpwarn.md:134:In addition to plotting warnings, GPWARN also provides the
+gpwarn.md:136:the SVRL parameter as used in GPMAP. The files for SVRL are
+gpwarn.md:139:Color and line types for the areas drawn by GPWARN are specified
+gpwarn.md:31:GPWARN is derived from the standard GEMPAK program GPMAP.
+gpwarn.md:31:GPWARN is derived from the standard GEMPAK program GPMAP.
+gpwarn.md:48:GPWARN finds the UGC line following the pil line in the
+gpwarn.md:82:GPWARN will search for the files by checking for a template, and
+gpwarn.md:99:GPWARN will use the time in WWS to determine if a bulletin
+grphgd.md:103:intended to be used identically as in the programs GDCFIL and NAGRIB.
+grphgd.md:103:intended to be used identically as in the programs GDCFIL and NAGRIB.
+grphgd.md:116:TYPE specifiies the processing type that is used similar to that of GDPLOT2
+grphgd.md:116:TYPE specifiies the processing type that is used similar to that of GDPLOT2
+grphgd.md:124:numeric-only values prior to the GRPHGD analysis. For instance, the contour
+grphgd.md:154:The GRPHGD contour line algorithm
+grphgd.md:156:GRPHGD loosely follows an algorithm originally described in TDL OFFICE
+grphgd.md:174:The GRPHGD wind barb/arrow algorithm
+grphgd.md:27:    TYPE      GDPLOT2 function processing type
+grphgd.md:27:    TYPE      GDPLOT2 function processing type
+grphgd.md:43:GRPHGD generates a grid from contours drawn via NMAP product generation.
+grphgd.md:47:2) The saved coordinates are passed into GRPHGD for
+grphgd.md:64:file which will be passed into GRPHGD.
+grphgd.md:66:Note that NMAP now invokes the GRPHGD program directly when the user
+grphgd.md:71:To generate a gridded field from contour data, use the program GRPHGD.
+img2gd.md:26:IMG2GD converts an image to a grid.
+img2gd.md:35:PROJ, GRDAREA, and KXKY define a grid navigation as in GDCFIL if
+nagrib.md:26:NAGRIB will convert gridded data which is in GRIB files to
+nagrib2.md:25:NAGRIB2 will convert gridded data which is in GRIB2 files to
+nagrib2.md:25:NAGRIB2 will convert gridded data which is in GRIB2 files to
+namsnd.md:19:NAMSND transfers model profile output in BUFR to GEMPAK
+namsnd.md:25:NAMSND reads the table from the first BUFR message to get
+ndfdg2.md:19:NDFDG2 will convert NDFD gridded data which is in GRIB2 files to
+nex2gini.md:24:NEX2GINI samples NEXRAD Level III (NIDS) products to a common
+nex2gini.md:27:image raster. NEX2GINI is not limited by the traditional LLMXGD
+nex2gini.md:30:NEX2GINI uses a suplemental table `$GEMTBL/unidata/nex2gini.tbl` to specify 
+nex2gini.md:40:PROJ, GRDAREA, and KXKY define a grid navigation as in GDCFIL if
+nex2gini.md:72:When RADFRQ is defined, NEX2GINI will wait for the specified time
+nex2img.md:24:NEX2IMG samples NEXRAD Level III (NIDS) products to a common
+nex2img.md:26:NEX2IMG is not limited by the traditional LLMXGD
+nex2img.md:29:NEX2IMG uses a suplemental table `$GEMTBL/unidata/nex2gini.tbl` `to specify configurations for data to pixel mappings.
+nex2img.md:37:PROJ, GRDAREA, and KXKY define a grid navigation as in GDCFIL if
+nex2img.md:66:When RADFRQ is defined, NEX2IMG will wait for the specified time
+nexr2rhi.md:33:NEXR2RHI displays NEXRAD Level II vertical cross sections for
+nexr2rhi.md:34:data in ARCHIVE2 format. This program is adopted from GDCROSS to
+nexr2rhi.md:53:CXSTNS is the cross section axis (as in GDCROSS). A grid coordinate
+nexr2rhi.md:61:Other parameters as in GDCROSS.
+nexrcomp.md:27:NEXRCOMP samples NEXRAD Level III (NIDS) products to a common
+nexrcomp.md:31:NEXRCOMP is not limited by the traditional LLMXGD
+nexrcomp.md:34:NEXRCOMP uses a suplemental table `$GEMTBL/unidata/nex2gini.tbl` to specify 
+nexrcomp.md:48:PROJ, GRDAREA, and KXKY define a grid navigation as in GDCFIL if
+nexrcomp.md:80:When RADFRQ is defined, NEXRCOMP will wait for the specified time
+oabsfc.md:28:OABSFC performs a Barnes objective analysis on surface
+oabsnd.md:27:OABSND performs a Barnes objective analysis on upper air
+oagrid.md:64:GDCFIL can also be used to create grid files.  OAGRID creates
+oagrid.md:64:GDCFIL can also be used to create grid files.  OAGRID creates
+oagrid.md:67:GDCFIL creates grid files for grids in any projection, but
+sector.md:16:SECTOR subsets a GINI satellite image in area and pixel
+sfcfil.md:18:SFCFIL creates a GEMPAK surface file.  The file may be a
+sfchck.md:20:SFCHCK can be used to quickly determine which stations report
+sfcntr.md:40:SFCNTR is a special version of SFMAP which optionally
+sfcntr.md:40:SFCNTR is a special version of SFMAP which optionally
+sfcntr.md:44:SFCNTR uses the mean station spacing as provided in OAGRID
+sfcntr.md:44:SFCNTR uses the mean station spacing as provided in OAGRID
+sfcntr.md:47:method as given in OABSFC. Finally, contours are drawn as in
+sfcntr.md:48:the GDCNTR program.
+sfcntr.md:50:SFMAP plots data at station locations on a map.  Any
+sfdelt.md:15:SFDELT deletes data from a surface data file.  The stations
+sfdsl604.md:20:SFDSL604 lists data from a surface file in a format designed
+sfedit.md:15:SFEDIT adds information from a sequential text file to an
+sfedit.md:22:GEMPAK program SFLIST or by generating the file with a text
+sfedit.md:32:made using the GEMPAK program, SFSTNS.
+sfedit.md:42:program SFSTNS can be used to add station latitudes, longitudes
+sfedit.md:53:    The file `SFLIST.FIL` follows.  Note that the title line
+sfgram.md:29:SFGRAM draws a time series plot for surface data.  Up to
+sfl604.md:19:SFL604 lists data from a surface file in a format designed to
+sflist.md:18:SFLIST lists any parameters which can be derived from the data
+sfmap.md:35:SFMAP plots data at station locations on a map.  Any
+sfmod.md:19:SFMOD takes data from an existing GEMPAK surface file,
+sfmod.md:25:program, SFCFIL, can be used to create a surface file.  If the
+sfmod.md:33:by TIMSTN in SFCFIL.
+sfstns.md:16:SFSTNS updates the station information in a GEMPAK surface
+sfstns.md:26:for US, Canadian and Mexican stations is SFSTNS.TBL.
+sfstns.md:32:allow for stations to be added, run the program SFCFIL. Set
+sfvgsf.md:18:SFVGSF adds information from a Vector Graphics file to an
+sfvgsf.md:30:device driver in the GEMPAK program SFMAP or by generating the
+sfvgsf.md:44:program SFSTNS can be used to add station latitudes, longitudes
+sncfil.md:17:SNCFIL creates a GEMPAK sounding file.  The file may be
+sncross.md:36:SNCROSS draws cross sections using upper-air sounding data.
+sndelt.md:15:SNDELT deletes data from a sounding data file.  The stations
+sndslist.md:18:SNLIST lists parameters derived from an upper air data set for
+snedit.md:15:SNEDIT adds information from a sequential file to a
+snedit.md:21:file can be created using F as the output device in SNLIST.
+snedit.md:22:MRGDAT, which can be set in SNLIST, is a flag indicating
+snedit.md:41:Note that the output of SNLIST is SNPARM = xxxx;yyyy;..., which
+snedit.md:59:elevation will not be changed.  Note that program SNSTNS can
+snedit.md:65:1.  Add the data in the edit file, `SNLIST.FIL`, to the file,
+snedit.md:72:	The file `SNLIST.FIL` follows:
+snhodo.md:27:SNHODO draws a hodograph which represents the vertical
+snlist.md:22:SNLIST lists parameters derived from an upper air data set for
+snmap.md:35:SNMAP plots sounding data parameters at station locations
+snmod.md:23:SNMOD takes data from a GEMPAK sounding file, SNFILE, and
+snprof.md:36:SNPROF draws profiles of upper air data.
+snstns.md:16:SNSTNS updates the station information in a GEMPAK upper air
+snstns.md:25:table for US, Canadian and Mexican stations is SNSTNS.TBL.
+sntser.md:30:SNTSER draws a time series plot for a sounding station.
+vg2uka.md:18:VG2UKA is a table-driven GEMPAK program with parameter input,

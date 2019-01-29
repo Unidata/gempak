@@ -1,0 +1,10 @@
+# Create full conda environment for development, including some useful tools
+name: gempak-docs
+channels:
+  - conda-forge
+dependencies:
+  - python=2.7
+  - pip
+  - pip:
+    - mkdocs-material==3.0.3
+    - fontawesome_markdown
