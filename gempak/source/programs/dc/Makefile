@@ -39,6 +39,7 @@ SUBDIRS = \
 	dcstorm \
 	dcsvrl \
 	dctaf \
+        dctama \
 	dctrop \
 	dcxmos \
 	dcuair \

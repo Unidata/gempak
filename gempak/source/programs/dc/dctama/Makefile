@@ -2,6 +2,9 @@
 #	Makefile for GEMPAK 6.0
 #		Builds program makefiles
 #		Unidata 11/99 Chiz
+# $(BINDIR)/dctama: -ldctama -lbridge -lsnlib -lgemlib -lprmcnvlib \
+#                   -lncepBUFR -lncepUT -lncepBUFR \
+#                                     -ltextlib -lgemlib $(PYLIB) -lxslt -lxml2 -liconv -lz -lm
 #
 include $(CONFIGDIR)/$(MAKEINC)
 
@@ -17,17 +20,23 @@ OBJS = \
 	taifsp.o \
 	tatmst.o
 
- 
-
 LIBINC = \
-	$(BRIDGE) \
-	$(GEMLIB) \
-	$(CGEMLIB) 
+        $(BRIDGE) \
+        $(GEMLIB) \
+        $(CGEMLIB) \
+        $(OS_LIB)/libncepBUFR.a \
+        $(OS_LIB)/libncepUT.a \
+        $(OS_LIB)/libncepBUFR.a \
+	$(XMLLIB) \
+	$(LIBJASPER) \
+	$(PNGLIB) \
+	$(ZLIB)
+ 
 
 all : $(PROG)
 
 $(PROG): $(LIBINC) $(OBJS) 
-	$(LINK.f) $(NOFORMAIN) -o $@ $(OBJS) $(LIBINC) $(CSYSLIB)
+	$(LINK.f) $(NOFORMAIN) -o $@ $(OBJS) $(LIBINC) $(CSYSLIB) $(SYSLIB)
 
 programs_nc :
 	@echo -n "Not a graphics program - no nc version needed"

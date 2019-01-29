@@ -1,0 +1,19 @@
+
+DCIDFT
+
+DCIDFT decodes sea ice reports and writes the output to a
+GEMPAK surface file. The program is controlled by inputs 
+to the command line.
+
+The inputs are program options and the output file name or template.
+For example, for real-time data feeds:
+    
+	dcidft [options] output_file
+
+If running the program interactively with standard input, the -c
+option must be used.  The input file must also be specified.
+For example:
+
+	dcidft -c YYMMDD/HHNN [other_options]
+		  output_file < input_file
+    
