@@ -23,6 +23,7 @@ C* S. Schotz/GSC	 5/90	Fixed for sub-directory case		*
 C* K. Tyle/GSC		 7/96	Renamed from NT_SAVF			*
 C* D.W.Plummer/NCEP	 6/97	Increased string length from 72 to 128	*
 C* M. Linda/GSC		10/97	Corrected the prologue format		*
+C* M. James/UCAR	 6/19	Lowercase NTS file extension		*
 C************************************************************************
 	INCLUDE		'ipcmn.cmn'
 C*
@@ -40,14 +41,14 @@ C
 	    filnam = file
 	END IF
 C
-C*	If there is no file type, add .NTS .
+C*	If there is no file type, add .nts .
 C
 	ibrc = 1
 	idot = INDEX ( filnam ( ibrc: ), '.' )
 	IF  ( idot .eq. 0 )  THEN
 	    CALL ST_LSTR  ( filnam, lenf, ier )
 	    fff    = filnam
-	    filnam = fff ( : lenf ) // '.NTS'
+	    filnam = fff ( : lenf ) // '.nts'
 	END IF
 C*
 	RETURN

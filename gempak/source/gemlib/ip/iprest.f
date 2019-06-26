@@ -37,6 +37,7 @@ C* S. Jacobs/NCEP	12/97	Changed file checking and selection	*
 C* S. Jacobs/NCEP	12/97	Added check for blank input file name	*
 C* S. Jacobs/NCEP	12/97	Fixed check for a local file		*
 C* A. Hardy/NCEP	12/04	Check for leading spaces in file name	*
+C* M. James/UCAR	 6/19	Lowercase NTS ext., new search order	*
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 	INCLUDE		'ipcmn.cmn'
@@ -93,29 +94,7 @@ C
 C
 	name = patfil
 C
-C*	Check for the file locally.
-C
-	CALL ST_LSTR ( filnam, lenf, ier )
-	CALL FL_INQR ( filnam, exist, newfil, ierr )
-	IF  ( exist )  THEN
-	    name  = filnam(1:lenf)
-	    found = .true.
-	END IF
-C
-C*	Check for the file locally, with ".nts" added.
-C
-	IF  ( .not. found )  THEN
-	    CALL IP_SAVF ( filnam, tfil, ier )
-	    IF  ( filnam .ne. tfil )  THEN
-		CALL FL_INQR ( tfil, exist, newfil, ierr )
-		IF  ( exist )  THEN
-		    name  = tfil
-		    found = .true.
-		END IF
-	    END IF
-	END IF
-C
-C*	Check for the file in the given path.
+C*      If path is given, check first, check for the file in the given path.
 C
 	IF  ( ( .not. found ) .and. ( path .ne. ' ' ) )  THEN
 	    CALL FL_INQR ( patfil, exist, newfil, ierr )
@@ -130,6 +109,31 @@ C
 	IF  ( ( .not. found ) .and. ( path .ne. ' ' ) )  THEN
 	    CALL IP_SAVF ( patfil, tfil, ier )
 	    IF  ( patfil .ne. tfil )  THEN
+		CALL FL_INQR ( tfil, exist, newfil, ierr )
+		IF  ( exist )  THEN
+		    name  = tfil
+		    found = .true.
+		END IF
+	    END IF
+	END IF
+
+C
+C*	Check for the file locally.
+C
+	IF  ( .not. found )  THEN
+	    CALL ST_LSTR ( filnam, lenf, ier )
+	    CALL FL_INQR ( filnam, exist, newfil, ierr )
+	    IF  ( exist )  THEN
+	        name  = filnam(1:lenf)
+	        found = .true.
+	    END IF
+	END IF
+C
+C*	Check for the file locally, with ".nts" added.
+C
+	IF  ( .not. found )  THEN
+	    CALL IP_SAVF ( filnam, tfil, ier )
+	    IF  ( filnam .ne. tfil )  THEN
 		CALL FL_INQR ( tfil, exist, newfil, ierr )
 		IF  ( exist )  THEN
 		    name  = tfil
