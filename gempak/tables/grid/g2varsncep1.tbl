@@ -48,13 +48,14 @@
 
 000 001 000 000 Specific Humidity                kg kg**-1            SPFH             0  -9999.00
 000 001 001 000 Relative Humidity                %                    RH               0  -9999.00
+000 001 001 008 Relative Humidity                %                    RH               0  -9999.00
 000 001 003 000 Precipitable Water               kg m**-2             PWAT             0  -9999.00
 000 001 003 002 Precipitable Water               kg m**-2             PWAT             0  -9999.00
 000 001 007 000 Precipitation Rate               kg m**-2 s**-1       PRATE            0  -9999.00
-000 001 008 008 Total Precipitation              kg m**-2             APCP             0  -9999.00
-000 001 008 009 Total Precipitation              kg m**-2             APCP             0  -9999.00
-000 001 008 011 Total Precipitation              kg m**-2             APCP             0  -9999.00
-000 001 008 012 Total Precipitation              kg m**-2             APCP             0  -9999.00
+000 001 008 008 Total Precipitation              kg m**-2             P--M             0  -9999.00
+000 001 008 009 Total Precipitation              kg m**-2             P--M             0  -9999.00
+000 001 008 011 Total Precipitation              kg m**-2             P--M             0  -9999.00
+000 001 008 012 Total Precipitation              kg m**-2             P--M             0  -9999.00
 000 001 009 008 Large-Scale Precip (non-conv)    kg m**-2             NCPCP            0  -9999.00
 000 001 010 000 Convective Precipitation         kg m**-2             ACPCP            0  -9999.00
 000 001 010 008 Convective Precipitation         kg m**-2             ACPCP            0  -9999.00
@@ -166,17 +167,25 @@
 000 001 217 008 Large scale moistening rate      kg kg**-1 s**-1      LRGMR            0  -9999.00
 000 001 218 008 Sp hum top of viscous sublayer   kg kg**-1            QZ0              0  -9999.00
 000 001 219 008 Maximum specific humidity at 2m  kg kg**-1            QMAX             0  -9999.00
+000 001 220 000 Minimum specific humidity at 2m  kg kg**-1            QMIN             0  -9999.00
 000 001 220 008 Minimum specific humidity at 2m  kg kg**-1            QMIN             0  -9999.00
+000 001 221 000 Liquid precipitation (Rainfall)  kg m**-2             ARAIN            0  -9999.00
 000 001 221 008 Liquid precipitation (Rainfall)  kg m**-2             ARAIN            0  -9999.00
+000 001 222 000 Snow temperature, depth-avg      K                    SNOWT            0  -9999.00
 000 001 222 008 Snow temperature, depth-avg      K                    SNOWT            0  -9999.00
+000 001 223 000 Total precip nearest grid point  kg m**-2             APCPN            0  -9999.00
 000 001 223 008 Total precip nearest grid point  kg m**-2             APCPN            0  -9999.00
+000 001 224 000 Convec precip nearest grid point kg m**-2             ACPCPN           0  -9999.00
 000 001 224 008 Convec precip nearest grid point kg m**-2             ACPCPN           0  -9999.00
+000 001 225 000 Freezing Rain                    kg m**-2             FRZL             0  -9999.00
 000 001 225 008 Freezing Rain                    kg m**-2             FRZL             0  -9999.00
 000 001 225 009 Freezing Rain                    kg m**-2             FRZL             0  -9999.00
 000 001 225 010 Freezing Rain                    kg m**-2             FRZL             0  -9999.00
 000 001 226 000 Predominant Weather              non-dim              PWTHER           0  -9999.00
 000 001 226 008 Predominant Weather              non-dim              PWTHER           0  -9999.00
+000 001 227 000 Frozen rain (sleet) accum        kg m**-2             I--M             0     -0.01
 000 001 227 008 Frozen rain (sleet) accum        kg m**-2             I--M             0     -0.01
+000 001 241 000 Total Snow                       kg m**-2             TSNOW            0  -9999.00 
 000 001 241 008 Total Snow                       kg m**-2             TSNOW            0  -9999.00 
 000 001 242 000 RELH wrt precipitable water      %                    RHPW             0  -9999.00 
 000 001 242 008 RELH wrt precipitable water      %                    RHPW             0  -9999.00 
@@ -378,6 +387,7 @@
 000 007 009 000 Energy Helicity Index            Numeric              EHLX             0  -9999.00
 000 007 010 000 Surface lifted index             K                    LFTX             0  -9999.00
 000 007 011 000 Best (4 layer) Lifted Index      K                    4LFTX            0  -9999.00
+000 007 015 008 Updraft Helicity                 m**2 s**-2           UPHL             0  -9999.00
 !
 000 007 192 000 Surface lifted index             K                    LIFT             0  -9999.00
 000 007 192 001 Surface lifted index             K                    LIFT             0  -9999.00
@@ -427,8 +437,10 @@
 000 016 001 000 Equiv reflectivity snow          m m**6 m**-3         REFZI            0  -9999.00
 000 016 002 000 Equiv reflectivity param convec  m m**6 m**-3         REFZL            0  -9999.00
 000 016 003 000 Echo Top                         m                    RETOP            0  -9999.00
-000 016 004 000 Reflectivity                     dB                   REFD             0  -9999.00
+000 016 004 000 Derived Reflectivity             dB                   REFD             0  -9999.00
+000 016 004 008 Derived Reflectivity             dB                   REFD             0  -9999.00
 000 016 005 000 Composite reflectivity           dB                   REFC             0  -9999.00
+000 016 005 008 Composite reflectivity           dB                   REFC             0  -9999.00
 !
 000 016 192 000 refl backscatter from rain       mm6/m3               REFZR            0  -9999.00
 000 016 193 000 refl backscatter from ice        mm6/m3               REFZI            0  -9999.00
