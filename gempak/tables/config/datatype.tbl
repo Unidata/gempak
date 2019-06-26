@@ -234,6 +234,8 @@ A2SYNOP      AWIPSDB                   synop.xml                                
 A2UAIR       AWIPSDB                   uair.xml                                         CAT_SND  SCAT_SND    4   2880     -1      OFF/0/0      4
 A2GFS        AWIPSDB                   gfs.xml                                          CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
 A2GFS20      AWIPSDB                   gfs20.xml                                        CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+A2WRFCO      AWIPSDB                   wrfco.xml                                        CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
+WRFCO        $MODEL/wrf_co             YYYYMMDDHHfFFF_wrf_co.gem                        CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0
 A2GFS80      AWIPSDB                   gfs80.xml                                        CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
 A2RAP        AWIPSDB                   rap13.xml                                        CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
 A2RAP13      AWIPSDB                   rap13.xml                                        CAT_GRD  SCAT_FCT   -1     -1     -1      OFF/0/0      4
