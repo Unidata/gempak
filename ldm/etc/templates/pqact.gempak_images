@@ -190,5 +190,5 @@ NIMAGE	^satz/ch[0-9]/.*/(.*)/([12][0-9])([0-9][0-9])([01][0-9])([0-3][0-9]) ([0-
 #
 # NetCDF4 GOES16/17 ABI
 #
-NIMAGE	^/data/ldm/pub/native/satellite/GOES/(.*)/([^/]*)/([^/]*)/([0-9]{8})/GOES(16|17)_([^/]*)_([0-9]{8})_([0-9]{4})(..)_([^/]*).nc4
-	FILE	-close	data/gempak/images/sat/\1/\2/\3/\3_\7_\8
+NIMAGE	^.*/(GOES1.)/Products/CloudAndMoistureImagery/([^/]*)/([^/]*)/([0-9]{8})/OR_ABI-L2-.*-M6C.._G1._s20.....(....)..._.*.nc
+	FILE	-close	data/gempak/images/sat/\1/\2/\3/\3_\4_\5
