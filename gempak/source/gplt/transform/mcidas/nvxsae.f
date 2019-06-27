@@ -35,15 +35,15 @@ C************************************************************************
 	INCLUDE		'SATDEF.CMN'
 C
 	INTEGER		GOSSAE, GVRSAE, RDRSAE, MSATSAE, GMSXSAE,
-     +			MOLLSAE, MSGSAE, ABINSAE, GOSSAE4
+     +			MOLLSAE, MSGSAE, GOSSAE4, RECTSAE, ABINSAE
 C------------------------------------------------------------------------
 C
 C*	Call appropriate routine
 C
-	IF ( nvtypa .eq. 'MCGOES' ) THEN
+        IF ( nvtypa .eq. 'MCGOE4' ) THEN
+           iret = GOSSAE4 ( xlin, xele, xdum, xlat, ylon, zdum  )
+	ELSE IF ( nvtypa .eq. 'MCGOES' ) THEN
 	   iret = GOSSAE ( xlin, xele, xdum, xlat, ylon, zdum  )
-	ELSE IF ( nvtypa .eq. 'MCGOE4' ) THEN
-	   iret = GOSSAE4 ( xlin, xele, xdum, xlat, ylon, zdum )
 	ELSE IF ( nvtypa .eq. 'MCGVAR' ) THEN
 	   iret = GVRSAE ( xlin, xele, xdum, xlat, ylon, zdum )
 	ELSE IF ( nvtypa .eq. 'MCRADR' ) THEN

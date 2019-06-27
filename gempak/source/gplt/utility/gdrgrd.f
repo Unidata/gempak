@@ -118,6 +118,7 @@ C
 		CALL GQSATN ( navtyp, imgnam, ier )
 		IF  ( ( navtyp .ne. 'MCIDAS' ) .and.
      +			( navtyp .ne. 'MCGOES' ) .and.
+     +			( navtyp .ne. 'MCGOE4' ) .and.
      +			( navtyp .ne. 'MCGVAR' ) .and.
      +			( navtyp .ne. 'MCMSAT' ) .and.
      +			( navtyp .ne. 'MCGMSX' ) .and.
