@@ -25,7 +25,8 @@ LIBINC = \
 	$(PNGLIB) \
         $(XMLLIB) \
         $(ZLIB) \
-	$(CGEMLIB)
+	$(CGEMLIB) \
+	$(LIBREADLINE)
 
 all : $(ALIB) $(PROG)
 

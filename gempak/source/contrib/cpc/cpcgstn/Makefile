@@ -29,7 +29,8 @@ LIBINC = \
 	$(CGEMLIB) \
 	$(GPLT) \
 	$(DEVICE) \
-	$(GN)
+	$(GN) \
+	$(LIBREADLINE)
 
 .PRECIOUS: $(ALIB)
 

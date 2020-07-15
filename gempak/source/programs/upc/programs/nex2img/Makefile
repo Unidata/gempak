@@ -36,7 +36,8 @@ LIBINC = \
 	$(PNGLIB) \
         $(XMLLIB) \
         $(ZLIB) \
-	$(CGEMLIB)
+	$(CGEMLIB) \
+	$(LIBREADLINE)
 
 PROG = $(PROG.f:.f=)
 PROG_NC = $(PROG.f:.f=_nc)

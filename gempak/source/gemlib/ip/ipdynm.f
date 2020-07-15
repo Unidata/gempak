@@ -36,7 +36,9 @@ C* K. Tyle/GSC		 8/96	Check for FIRSTT and RESP		*
 C* D.W.Plummer/NCEP	 6/97	Increased string lengths from 80 to 164	*
 C* C. Bailey/HPC	 1/05	Added GSAVE option			*
 C* S. Jacobs/NCEP	 3/13	Allow mixed case for restoring NTS files*
+C* S. Decker/Rutgers     7/20   Use GNU Readline for prompt             *
 C************************************************************************
+	USE IP_READ
 	INCLUDE		'ipcmn.cmn'
 C*
 	LOGICAL         done, resp
@@ -75,13 +77,8 @@ C*	  Loop until user enters EXIT or RUN.
 C
 	  more = .true.
 	  DO WHILE  ( more )
-	    WRITE  ( 6, 1000 ) tutor ( 1 : lent )
-1000	    FORMAT ( 1X, A, $ )
-	    READ   ( 5, 1001, IOSTAT = iostat ) input
-1001	    FORMAT ( A )
-	    IF  ( iostat .ne. 0 )  input = 'EXIT'
-
-C
+	    CALL GET_INPUT_LINE ( tutor ( 1 : lent ), input )
+C       
 C*	    Check whether the user wants to exit or run program.
 C
 	    CALL ST_LDSP  ( input, input, nc, ier )
