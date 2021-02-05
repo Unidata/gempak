@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:GempakDataAccess xmlns:tns="http://www.example.org/GempakDataAccess"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.example.org/GempakDataAccess/GempakDataAccess.xsd ">
+
+    <!--
+    This is the control file for accessing the AWIPS II Database from the GEMPAK
+    applications. Most of the file should not need to be changed. Only the DBKEY
+    value, which references the specific name of the data set, will change for
+    each control file.
+    -->
+
+    <!-- The file label used to identify the database control file :: DO NOT CHANGE -->
+    <filelabel text="AWIPS DB CONFIGURATION FILE" version="1" />
+
+    <!-- The filetype attributes define this as a GRID data set :: DO NOT CHANGE -->
+    <filetype type="MFGD" source="MFGRID" />
+
+    <!-- The host where the EDEX is running :: This may change for each site -->
+    <dbserver host="ec" />
+
+    <!-- The database table name :: DO NOT CHANGE -->
+    <dbtable name="grid" />
+
+    <!-- The Rows, Columns, Headers and Parts identify the Python scripts and
+    	 equate information to the GEMPAK data structure ::
+	 ONLY change the DBKEY value in each section -->
+    <rows pyfile="GridInfoRetriever" pymeth="getrow" dbkey="nam">
+	<row name="GRID" />
+    </rows>
+    <columns pyfile="GridInfoRetriever" pymeth="getinfo" dbkey="nam">
+	<column name="GDT1" />
+	<column name="GTM1" />
+	<column name="GDT2" />
+	<column name="GTM2" />
+	<column name="GLV1" />
+	<column name="GLV2" />
+	<column name="GVCD" />
+	<column name="GPM1" />
+	<column name="GPM2" />
+	<column name="GPM3" />
+    </columns>
+    <headers>
+	<header name="NAVB" type="MDREAL" length="256" pyfile="GridNavRetriever" pymeth="getnavb" dbkey="nam" />
+	<header name="ANLB" type="MDREAL" length="128" pyfile="GridNavRetriever" pymeth="getanlb" dbkey="nam" />
+    </headers>
+    <parts>
+	<part name="GRID" type="MDGRID" pyfile="GridDataRetriever" pymethdata="getgriddata" pymethhdr="getheader">
+	    <parameters>
+		<parameter name="GRID" scale="0" offset="0" bits="0" key="-" />
+	    </parameters>
+	</part>
+    </parts>
+
+</tns:GempakDataAccess>

@@ -1,0 +1,15 @@
+!WMOHDLIGH.TBL
+! This table contains WMO headers of lighting data
+! ltgdecode will decode all data listed in this table.
+!
+! Log:
+! S. Guan/NCEP           9/17   Created
+! S. Guan/NCEP           6/19   Column 8-9 must be 41 or 42 now. Need to
+!                               modify ltgdecode.c to add other parameters.
+! (6)
+!234567890
+SFUS41 41
+SFVB41 41
+SFPA42 42
+SFPA41 41
+SFPA99 41

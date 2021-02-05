@@ -23,6 +23,8 @@
 ! M. Brennan/NHC         3/16   Updated for 2016, 2/3 Probability circle
 ! S. Guan/NCEP           3/17   Updated for 2017, 2/3 Probability circle
 ! S. Guan/NCEP           4/18   Updated for 2018, 2/3 Probability circle
+! B. Hebbard/NCEP v/NHC  5/19   Updated for 2019, 2/3 Probability circle
+! B. Hebbard/NCEP v/NHC  4/20   Updated for 2020, 2/3 Probability circle
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !
 !FCST  NM
@@ -31,10 +33,11 @@
 !
  3    16.0
 12    26.0
-24    43.0
-36    56.0
-48    74.0
+24    41.0
+36    55.0
+48    69.0
+60    86.0
 72   103.0
 96   151.0
-20   198.0
+20   196.0
 
