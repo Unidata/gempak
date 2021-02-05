@@ -40,6 +40,29 @@ DAY1_HAIL_MRGL             5-15
 !DAY1_HAIL_TEXT              5-6
 DAY1_HAIL_BUMP             45
 !
+DAY2_TORN_HIGH             30-100
+DAY2_TORN_MDRT             15-30
+DAY2_TORN_ENHC             10-15
+DAY2_TORN_SLGT             5-10
+DAY2_TORN_MRGL             2-5
+!DAY2_TORN_TEXT              2-3
+!
+DAY2_WIND_HIGH             60-100
+DAY2_WIND_MDRT             45-60
+DAY2_WIND_ENHC             30-45
+DAY2_WIND_SLGT             15-30
+DAY2_WIND_MRGL             5-15
+!DAY2_WIND_TEXT              5-6
+DAY2_WIND_BUMP             60
+!
+DAY2_HAIL_HIGH
+DAY2_HAIL_MDRT             45-100
+DAY2_HAIL_ENHC             30-45
+DAY2_HAIL_SLGT             15-30
+DAY2_HAIL_MRGL             5-15
+!DAY2_HAIL_TEXT              5-6
+DAY2_HAIL_BUMP             45
+!
 DAY2_HIGH                  60-100
 DAY2_MDRT                  45-60
 DAY2_ENHC                  30-45

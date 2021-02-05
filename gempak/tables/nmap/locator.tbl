@@ -28,8 +28,9 @@
 !                                              
 !  5 - nearest 5    0 - omit     0 - omit      0 - degrees
 ! 10 - nearest 10   1 - NM       1 - 16 point  1 - decimal/minutes
-!                   2 - SM       2 - degrees   2 - 1st column
-!                   3 - KM             	       4 - 3rd column
+!                   2 - SM       2 - degrees   2 - stn ID or bound FIPS
+!                   3 - KM             	       4 - stn name or bound name
+!                                              6 - WFO ID assoc. w/ bound
 !
 ! The ROUNDING code sets the default distance relative to a station table 
 ! data set to the nearest 5 or 10 distance units.
@@ -41,10 +42,12 @@
 ! compass display or degrees for a station data set.
 !
 ! The DISPLAY code 0 and 1 specify degrees and degrees/minutes for the
-! latitude and longitude display units, respectively.  The codes 2 and 4
-! specify whether the first or third column of the station table is 
-! displayed by default.  The first column is usually the station ID and the
-! third column is usually the station name.
+! latitude and longitude display units, respectively.  For station data,
+! the codes 2 and 4 specify whether the first or third column of the station
+! table is displayed by default; the first column is usually the station ID
+! and the third column is usually the station name.  For bounds data,
+! the codes 2, 4, and 6 specify whether the FIPS code, name, or associated
+! WFO ID is displayed, respectively.
 !
 !!
 ! Log:
@@ -65,6 +68,7 @@
 ! A. Hardy/NCEP		 6/04	Change MZ_CNTY->WBCMZ_BNDS;0002->0004
 ! T. Piper/SAIC		02/05	Added RFC_BNDS
 ! M. Gamazayachikov	06/06	Added ELEVATION
+! B. Hebbard/NCEP	12/19	Added MARINE_WFO
 !----------------------------------------------------------------------
 !
 !NAME          ALIAS         FORMAT
@@ -77,6 +81,7 @@ LATLON           -             0000
 COUNTY_NAME    CNTY_BNDS       0004
 COUNTY_FIPS    CNTY_BNDS       0002
 CWA_NAME       CWA_BNDS        0004
+MARINE_WFO     MZ_BNDS         0006
 ANCHOR         ANCHOR          5212
 VOR            VOR             5212
 SFSTNS         SFSTNS          0002 

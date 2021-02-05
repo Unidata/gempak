@@ -29,7 +29,6 @@
 ! D.W.Plummer/NCEP	08/00	Added NEXRAD
 ! T. Piper/GSC		08/00	Added CWA_BNDS
 ! S. Schotz/NCEP	11/00	Added Western Region QPF points
-! S. Chiswell/Unidata	 1/01	Added ZONE bounds
 ! D.W.Plummer/NCEP	 4/01	Added locowo, lakes and great lakes bnds
 ! M. Li/SAIC		08/01	Added US_AK
 ! D.W.Plummer/NCEP	 2/02	Added SSA (seamless surface analysis)
@@ -73,6 +72,7 @@
 ! M. Gamazaychikov/SAIC 11/08   Added VAACAR
 ! L. Hinson/AWC         05/09   Added ARTCC_BOUNDS
 ! S. Guan/NCEP          02/16   Added WPC_PAC, WPC_ATL
+! B. Hebbard/NCEP       12/19   Added MZ_BNDS
 !--------------------------------------------------------------------------
 !
 !ALIAS NAME     FILE TYPE	TABLE NAME
@@ -111,6 +111,7 @@ FIRE_ZONES      0               firezones.tbl
 FIRE_BNDS       1               firebnds.tbl.info
 TZ_BNDS		1		tzbnds.tbl.info
 TCA_BKPTS       0               tcabkpt.tbl
+MZ_BNDS         1               mzbnds.tbl.info
 MZ_CNTY         0               mzcntys.tbl
 WBCMZ_BNDS      1               mzcntybnds.tbl.info
 UNIFIED_ANL     1               ua_bnd.tbl.info
@@ -137,10 +138,8 @@ GFA_CONUS       1               gfa_conus.tbl.info
 G2T_PAC         1               g2t_pac_bnd.tbl.info
 G2T_ATL         1               g2t_atl_bnd.tbl.info
 G2T_TPC         1               g2t_tpc_bnd.tbl.info
-G2T_NWC         1               g2t_nwc.tbl.info
 NAT_PSA	 	1		npsabnds.tbl.info
 AK_PSA	 	1		akpsabnds.tbl.info
-ZONE_BNDS       1               zonebnds.tbl.info
 HPC050_MED      1               hpc050_med.tbl.info
 VAACAR	 	1		vaacarbnds.tbl.info
 WPC_ATL         1               ua_opc_wpc_atl.tbl.info

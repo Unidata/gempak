@@ -93,6 +93,7 @@
 ! S. Jacobs/NCEP	 1/10	Add NWS_States
 ! S. Jacobs/NCEP	12/10	Add VAAC and volcano overlays
 ! S. Jacobs/NCEP	11/12	Added Alaska Area of Resp outline map
+! B. Hebbard/NCEP       11/20   Added Public Zones and Fire Zones display
 !
 !-------------------------------------------------------------------------------
 ! 
@@ -145,12 +146,5 @@ VAACs           1    vaacar              0      5      1      2                 
 Volcano         2    volcano.tbl         0      3      18     1         0         0
 Volcano_Names   2    volcano_names.tbl   0      3      3      1         1         1
 MWO             1    mwo                 0      4      1      2
-!
-! Unidata Additions
-Interstates     1    rdis                0     15      1      2
-US_Highways     1    rdus                0     22      1      2
-State_Highways  1    rdsh                0     23      1      1
-Arterial_roads  1    rdar                0     23      1      1
-Local_streets   1    hirdlo              0     23      1      1
-Brazil_States   1    brazil              0      8      1      1
-Argentina_State 1    argentina           0      8      1      1
+Public_Wx_Zones 1    pubzones            0     22      1      2
+Fire_Wx_Zones   1    firezones           0     13      1      2

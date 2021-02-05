@@ -17,8 +17,6 @@
 021 Unbalanced component of temp      K                    UCTP             0  -9999.00       0         0
 022 Unbalanced comp of log of surf    -                    UCLN             0  -9999.00       0         0
 023 Unbalanced comp of divergence     s**-1                UCDV             0  -9999.00       0         0
-!024 Reserved for future unbal. comp.  -                    X                0  -9999.00        0         0
-!025 Reserved for future unbal. comp.  -                    X                0  -9999.00        0         0
 026 Lake cover                        0-1                  CLAK             0  -9999.00       0         0
 027 Low vegetation cover              0-1                  CVEGL            0  -9999.00       0         0
 028 High vegetation cover             0-1                  CVEGH            0  -9999.00       0         0
@@ -51,28 +49,8 @@
 052 Minimum 2 metre temperature       K                    TMNK24           0  -9999.00       0         0
 053 Montgomery potential              m**2 s**-2           MONT             0  -9999.00       0         0
 054 Pressure                          Pa                   PRES             0  -9999.00       0         0
-055 Mean 2m temp.in past 24 hours     K                    MN2T24           0  -9999.00        0         0
-056 Mean 2m dewpt. temp. in past 24h  K                    MN2D24           0  -9999.00        0         0
-057 Downward UV radiation at sfc.     W m**-2 s            UVB              0  -9999.00        0         0
-058 Photo. active rad. at sfc.        W m**-2 s            PAR              0  -9999.00        0         0
-059 Convective available pot. energy  J kg**-1             CAPE             0  -9999.00        0         0
 !
 060 Potential vorticity               K m**2 kg**-1 s**-1  PVOR             0  -9999.00       0         0
-061 Total precipitation from obs.     mm*100+Nobs          TPO              0  -9999.00        0         0
-062 Observation count                 count                OBCT             0  -9999.00        0         0
-063 Start time for skin temp. diff.   s                    TSDIFS           0  -9999.00        0         0
-064 Finish time for skin temp. diff.  s                    TSDIFE           0  -9999.00        0         0
-065 Skin temperature difference       K                    TSDIF            0  -9999.00        0         0
-!
-!66 to 77 Unused
-!
-078 Total column liquid water         kg m**-2             TCLW             0  -9999.00        0         0
-079 Total column ice water            kg m**-2             TCIW             0  -9999.00        0         0
-!
-!80 to 120 Experimental products (contents may vary)
-!121 to 124 Unused
-125 Vert. integrated tot. energy      J m**-2              COLENR           0  -9999.00        0         0
-126 Param. for sensitive area pred.   -                    SENPRM           0  -9999.00        0         0
 !
 127 Atmospheric tide                  -                    ATIDE            0  -9999.00       0         0
 128 Budget values                     -                    BVAL             0  -9999.00       0         0
@@ -169,7 +147,6 @@
 210 Surface net solar rad, clear sky  W m**-2              SSRC             0  -9999.00       0         0
 211 Surface net thermal rad, clr sky  W m**-2              STRC             0  -9999.00       0         0
 212 Solar insolation                  W m**-2              SINSOL           0  -9999.00       0         0
-!213 Unused        0         0
 214 Diabatic heating by radiation     K                    DHRAD            0  -9999.00       0         0
 215 Diabatic heating by vertical diff K                    DHVD             0  -9999.00       0         0
 216 Diabatic heating by cumulus conv  K                    DHCC             0  -9999.00       0         0
