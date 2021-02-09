@@ -67,7 +67,8 @@ void srcho_fosdGetrep ( srchinfo_t *srchinfo, int called_from,
  * T. Piper/SAIC	12/05	Updated cst_wrap for CSC		*
  * J. Wu/SAIC		04/06	Added parameter in cst_wrap 		*
  * E. Safford/SAIC	12/07	make no_stid G_Boolean			*
- * M. James/Unidata	10/09	changed cst_ilst to allow for _ sep	*
+ * B. Hebbard/NCEP	01/21	Changed century breakpoint from		*
+ *				2020/2021 to 2040/2041 (iyr)		*
  ***********************************************************************/
 {
 int		ii, last_flg, wrap_len = 74;
@@ -177,30 +178,28 @@ static struct	date_time_info _endd_save;
  */
 
 		strcpy(tmpstr, (char*)strrchr(srchinfo->file_info.filnam,'/') );
-		
-                if  ( ( srchInfo.smethod == OBS )  &&
+		if  ( ( srchInfo.smethod == OBS )  &&
 		    ( ( strcmp ( datatype, "SFC_HRLY" ) == 0 ) ||
 		      ( strcmp ( datatype, "SND_DATA" ) == 0 ) ||
 		      (	strcmp ( datatype, "SYN_DATA" ) == 0 ) ) ) {
+		    cst_ilst ( &tmpstr[1], '_', IMISSD, 2, iarr, &num, &ier );
 
-	            cst_ilst ( &tmpstr[1], '_', IMISSD, 2, iarr, &num, &ier );
-		    
-                    idy = iarr[0] % 100;
+		    idy = iarr[0] % 100;
 		    imn = ( iarr[0] / 100 ) % 100;
 		    iyr = iarr[0] / 10000;
-		    if  ( iyr <= 20 )  iyr += 2000;
+		    if  ( iyr <= 40 )  iyr += 2000;
 		    if  ( iyr < 100 )  iyr += 1900;
 
 		    sprintf ( dattimx, "%04d%02d%02d", iyr, imn, idy );
 
 		}
 		else {
-                    cst_ilst ( &tmpstr[1], '.', IMISSD, 2, iarr, &num, &ier );
+		    cst_ilst ( &tmpstr[1], '.', IMISSD, 2, iarr, &num, &ier );
 
 		    idy = ( iarr[0] / 100 ) % 100;
 		    imn = ( iarr[0] / 10000 ) % 100;
 		    iyr = iarr[0] / 1000000;
-		    if  ( iyr <= 20 )  iyr += 2000;
+		    if  ( iyr <= 40 )  iyr += 2000;
 		    if  ( iyr < 100 )  iyr += 1900;
 
 		    sprintf ( dattimx, "%04d%02d%02d",
