@@ -405,7 +405,9 @@ void im_rcdf4 ( char imgfil[], int area[64], int nav[640], int *isorc, int *ityp
                 int *iymax, int *iret );
 void im_rfax ( char *filnam, int *lenfil, int *isize, int *ixlen,
                                                   int *iylen, int *iret );
-void im_rgin ( char filnam[], int *lenf, int *offset, int *lendat, int *iret );
+/* void im_rgin ( char filnam[], int *lenf, int *offset, int *lendat, int *iret ); */
+/* S. Chiswell - modified im_rgin for compressed gini in NOAAPORT */
+void im_rgin ( char filnam[], int *lenf, int *imcflg, int *offset, int *lendat, int *iret );
 void im_rtbl ( int *iret );
 void im_sbgn ( int *kx, int *ky, int *ixlef, int *iytop, int *ixrit,
                                         int *iybot, int *ipix, int *iret );
