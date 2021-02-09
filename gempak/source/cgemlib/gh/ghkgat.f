@@ -33,11 +33,13 @@ C* D. Kidwell/NCEP	 2/02	Removed idrop from GG_TCSH call sequence*
 C* D. Kidwell/NCEP	 3/03	Increased num. points; check msg dside  *
 C* D. Kidwell/NCEP	 5/03	Added argument iptsm to GG_TCSM call    *
 C* S. Jacobs/NCEP	 4/13	Increased working array sizes		*
+C* B. Hebbard/NCEP	 5/20	Update for new 60hr forecast - SCN20-20	*
+C*                              by increasing PARAMETER NUMHR 8 -> 9    *
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 C*
         PARAMETER       ( MXINTP = 2000, MXWORK = 20000, INCDEG = 3 )
-	PARAMETER	( NUMHR = 8 )
+	PARAMETER	( NUMHR = 9 )
 	REAL		xlat (*), xlon (*), rlat (*), rlon (*),
      +	                dside (*)
 C*

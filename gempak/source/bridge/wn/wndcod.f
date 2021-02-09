@@ -46,6 +46,8 @@ C*				added correction letter to cor/test flag*
 C* S. Guan/NCEP         04/15   Increased sections (starry) from 5 to 15*
 C* S. Guan/NCEP         11/17   Modified to add snow squall warn (SQW)  *
 C* S. Guan/NCEP         05/18   Initialized bultin                      *   
+C* B. Hebbard/NCEP      04/20   NAWIPS-128: Ignore new IBW tags after   *
+C*                              warning polygon point list (SCN19-60)   *
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 	INCLUDE		'BRIDGE.PRM'
@@ -60,11 +62,11 @@ C*
      +			strtim*11, stptim*11, bbb*4, poly*512, etn*4
 	CHARACTER	adstn(LLSTFL)*8, stnnam(LLSTFL)*32,
      +			stat(LLSTFL)*2, coun(LLSTFL)*2,
-     +			tbchrs(LLSTFL)*20
+     +			tbchrs(LLSTFL)*20, tstchr*1
 	INTEGER	istarr (15), irdtar (15)
 	INTEGER	istnm(LLSTFL), ispri(LLSTFL), itype
 	REAL		adlat(LLSTFL), adlon(LLSTFL), selv(LLSTFL)
-	LOGICAL		more
+	LOGICAL		more, done
 C------------------------------------------------------------------------
 	iret = 0
 C
@@ -117,7 +119,7 @@ C
 		    more = .false.
 		END IF
 C
-C*              To handle partial cancellation with two VETC lines     
+C*              To handle partial cancellation with two VTEC lines     
 C*              nchar indicates whether there is more than one vtec exist
 C
                 nchar = 1
@@ -148,7 +150,7 @@ C
      +					errstr(:len1), ier )
 			more = .false.
 		    END IF
-		    IF ( inumb .ge. 1 .and. inumb.le. 15 ) THEN
+		    IF ( inumb .ge. 1 .and. inumb .le. 15 ) THEN
 C*
 C*			The polygon should be in the fifth (last),
 C*			section.  If there is no fifth section, then
@@ -160,12 +162,26 @@ C*
 		        ibeg = INDEX(starry(inumb), 'LAT...LON')
 		        IF ( ibeg .gt. 0 )  THEN
 			    ibeg = ibeg + 10
-			    iend = INDEX(starry(inumb)(ibeg:), '$$')
+C*                  "iend" needs to be index of end of polygon string.  Set it to point to character
+C*                  *before* the first non-numeric, non-blank character encountered
+                            iend = ibeg
+                            done = .false.
+                            DO WHILE ( .not. done )
+                                tstchr = starry(inumb)(iend:iend)
+C*                              If this character is numeric or a blank, go to next character
+                                IF ( ((tstchr .ge. '0') .and. 
+     +                                (tstchr .le. '9')) .or. 
+     +                                (tstchr .eq. ' ') ) THEN
+                                    iend = iend + 1
+C*                              Otherwise we've found the first non-numeric, non-blank character, 
+C*                              so back up iend one to previous character (last numeric or blank)
+                                ELSE
+                                    iend = iend -1
+                                    done = .true.
+                                END IF
+                            END DO
+ 
 			    IF ( iend .gt. 0 )  THEN
-			        iend = ibeg + iend - 3
-			        itim = INDEX(starry(inumb)(ibeg:iend),
-     +					'TIME...MOT...LOC')
-			        IF (itim .gt. 0) iend = ibeg + itim - 3
 			        poly = starry(inumb)(ibeg:iend)
 			    ELSE
 				ierr = 4

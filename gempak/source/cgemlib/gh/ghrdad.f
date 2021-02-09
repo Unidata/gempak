@@ -74,6 +74,8 @@ C*                              and Remnant Low.Removed argument remnlo *
 C* A. Krautkramer	04/10   Add variable definition, change the 	*
 C*				calculation the time difference, change	*
 C*				the call to TO_CTOI			*
+C* B. Hebbard/NCEP	 5/20	Update for new 60hr forecast - SCN20-20	*
+C* 				increased PARAMETER NFCST 7 -> 8	*
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 C*
@@ -84,7 +86,7 @@ C*
         INTEGER         mxwd(nl,*), fgst(nl,*)
         REAL            rlat(nl,*), rlon(nl,*), sylat (*), sylon (*)
 C*
-	PARAMETER	( NFCST = 7 ) 
+	PARAMETER	( NFCST = 8 ) 
 	CHARACTER*(MXFLSZ)      filnam, files (MXNMFL)
 	CHARACTER	path*25, templ*(MXTMPL), tfile*128,
      +                  adnum*3, record*10000, rec*128

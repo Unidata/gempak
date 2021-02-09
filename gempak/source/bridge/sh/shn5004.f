@@ -18,6 +18,7 @@ C*					 -1 = unable to determine NMIN	*
 C**									*
 C* Log:									*
 C* J. Ator/NCEP		04/05						*
+C* S. Guan/NCEP		07/20	Added tzone as an input of TI_DST       *  
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 	INCLUDE		'BRIDGE.PRM'
@@ -25,9 +26,34 @@ C************************************************************************
 C*
 	INTEGER		idtarr (5), jdtarr (5)
 C*
+        CHARACTER       tzone*3
+C*
 	LOGICAL		dst
 C-----------------------------------------------------------------------
 	iret = -1 
+C
+C*      Determine timezone
+C 
+        idst = 0
+        CALL SHN_DFHR ( idst, rivals (6), rivals (7), idiff, ierdhr )
+        IF ( ierdhr .ne. 0 ) THEN
+            RETURN
+        END IF
+C*
+        IF ( idiff .eq. -5 ) THEN
+            tzone = 'E' 
+        ELSE IF ( idiff .eq. -6 ) THEN
+            tzone = 'C'
+        ELSE IF ( idiff .eq. -7 ) THEN
+            tzone = 'M'
+        ELSE IF ( idiff .eq. -8 ) THEN
+            tzone = 'P' 
+        ELSE
+C*          Outside CONUS zones, default to Eastern for initial
+C*          TI_DST call only (preserves legacy TI_DST behavior)
+            tzone = 'E' 
+        END IF
+           
 C
 C*	Determine whether the current report date-time occurs during
 C*	Daylight Savings Time.
@@ -37,7 +63,7 @@ C
 	idtarr (3) = INT ( rivals (3) )
 	idtarr (4) = INT ( rivals (4) )
 	idtarr (5) = INT ( rivals (5) )
-	CALL TI_DST ( idtarr, dst, ierdst )
+        CALL TI_DST  ( idtarr, tzone, dst, ierdst ) 
 	IF ( ierdst .ne. 0 ) THEN
 	    CALL UT_EMSG ( 2, 'TI_DST', ierdst )
 	    RETURN

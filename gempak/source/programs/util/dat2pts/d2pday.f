@@ -32,6 +32,9 @@ C* G. Grosshans         01/06   Updated to include fire weather outlooks*
 C* F. J. Yen/NCEP	10/07	Added Day 3-8 fire wx & Day 4-8 svr wx  *
 C* G. Grosshans/SPC	02/10	Added Enh TSTM outlooks			*
 C* G. Grosshans/SPC     12/13   Updated Day 4-8 processing              *
+C* S. Guan/NCEP         06/19   Made DAY2 input with Hail, Wind and     *
+C*                              Tornado probabilities (similar to DAY1) *
+C*                              works.                                  *
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 C*
@@ -50,7 +53,8 @@ C*     +			fcstr*(LLMXLN), chday(5)*2, chday2(5)*3
 	LOGICAL		found, catflg
 C*
 	DATA		filtyp / 'tornoutlook', 'hailoutlook',
-     +				 'windoutlook', 'outlook', ' ',
+     +				 'windoutlook', 'proboutlook', 
+     +                           'outlook',
      +				 'proboutlook', 'outlook', 3*' ', 
      +				  'fireoutlook',  4*' ',
      +				 'fireoutlook',  4*' ',
@@ -59,7 +63,7 @@ C*
      +				 'enh00outlook', 'enh04outlook',
      +				 'enh12outlook'/
 	DATA		dattyp / 'TORNADO', 'HAIL', 'WIND',
-     +				 'CATEGORICAL', ' ', 
+     +				 'PROB', 'CATEGORICAL', 
      +                           'ANY SEVERE', 'CATEGORICAL', 3*' ', 
      +				 'FIRE WEATHER CATEGORICAL', 4*' ',
      +				 'CRITICAL FIRE WEATHER AREA', 4*' ',
@@ -113,8 +117,8 @@ C
 C*	    otlktyp is 'Convective'
 C
         IF ( otlktyp .eq. 'C' ) THEN
-	    IF  (iday .eq. 1 ) THEN
-	        nfil = 4
+	    IF  (iday .le. 2 ) THEN
+	        nfil = 5
 	        ndx  = 1
                 inumndx = 0
 	      ELSE IF ( iday .eq. 48 ) THEN

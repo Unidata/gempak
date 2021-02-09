@@ -216,6 +216,8 @@ C
             CALL TI_CTOI ( tmstr4, idtarr, ier )
             CALL TI_ADDM ( idtarr, mndif, idtarr, ier )
             CALL TI_ITOC ( idtarr, tmstr4, ier )
+            CALL TI_CTOI ( tmstp4, idtarr, ier )
+            CALL TI_ITOC ( idtarr, tmstp4, ier )
 C
             IF ( (dattim .eq. 'ALL' ) .or.
      +          ( ( tmstp4 .ge. dattm4 ) .and.

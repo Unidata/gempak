@@ -6,8 +6,8 @@ void cti_yyyy ( int ntime, char **timin, char **outime, int *iret )
  * cti_yyyy								*
  *									*
  * This subroutine reorders a list of GEMPAK times so that times in the *
- * 20th century (YY greater than 20) precede those in the 21st century  *
- * (YY less than or equal to 20).  The input and output arrays may be   *
+ * 20th century (YY greater than 40) precede those in the 21st century  *
+ * (YY less than or equal to 40).  The input and output arrays may be   *
  * the same.  The input times must be sorted smallest to largest.  The  *
  * output times will be sorted earliest to latest.                      *
  *									*
@@ -28,6 +28,7 @@ void cti_yyyy ( int ntime, char **timin, char **outime, int *iret )
  * T. Piper/SAIC	 4/02	Fixed UMR; checked for ntime < 1	*
  * T. Piper/SAIC	09/07	Re-write in 'C'				*
  * S. Jacobs/NCEP	11/07	Fix check on counter vs number of times	*
+ * B. Hebbard/NCEP	 3/18   Moved century break from 2020 to 2040   *
  ***********************************************************************/
 {
     int ier, ii, imove, jj, length;
@@ -68,7 +69,7 @@ void cti_yyyy ( int ntime, char **timin, char **outime, int *iret )
 	    ii = 0;
 	    found = FALSE; 
             while ( ! found ) {
-	        if ( strncmp(timin[ii], "20", 2) > 0 ) {
+	        if ( strncmp(timin[ii], "40", 2) > 0 ) {
 		    found = TRUE;
 		    if ( ii > ( ntime / 2 ) ) {
 		        down  = TRUE;

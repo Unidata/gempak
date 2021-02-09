@@ -39,6 +39,7 @@ C* M. desJardins/NMC	12/91	Renamed: CDRAWC-->CCDRAW		*
 C* C. Bailey/HPC	 6/06	Added contour label string		*
 C* C. Bailey/HPC	10/06	Added suppress small contour flag	*
 C* S. Gilbert/NCEP      03/07   Added work arrays to call sequence      *
+C* S. Guan/NCEP         09/18   Increase limit on DO WHILE loop to 8192 *
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 	INCLUDE		'CONTUR.CMN'
@@ -75,7 +76,12 @@ C
 	knt = 0
 	DO WHILE  ( ( .not. edge ) .and. ( .not. closed ) )
 	    knt = knt + 1
-	    IF ( knt .gt. 2048 ) THEN
+C
+C           knt is times of DO WHILE loop, its limit is 8192 (previous
+C           is 2048). Incresing the limit solve the problem of segmented
+C           lines.
+C
+	    IF ( knt .gt. 8192) THEN
 	      iret = - 5
               RETURN
             END IF

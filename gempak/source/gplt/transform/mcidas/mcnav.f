@@ -126,15 +126,16 @@ C FUNC VAL (REAL*8) IS TIME DIFFERENCE IN MINUTES (POSITIVE IF
 C FIRST DAY/TIME IS THE EARLIER OF THE TWO).
 C
 C --- Fixed for Y2K - D. Kidwell/NCEP   5/99
+C --- Fixed for Y2K21 - B. Hebbard/NCEP 1/21
 C
       DOUBLE PRECISION TIMDIF,D1,D2,T1,T2
       IY1=MOD(IYRDA1/1000,100)
-      IF ( iy1 .le. 20 ) iy1 = iy1 + 100
+      IF ( iy1 .le. 40 ) iy1 = iy1 + 100
       ID1=MOD(IYRDA1,1000)
       IFAC1=(IY1-1)/4+1
       D1=365*(IY1-1)+IFAC1+ID1-1
       IY2=MOD(IYRDA2/1000,100)
-      IF ( iy2 .le. 20 ) iy2 = iy2 + 100
+      IF ( iy2 .le. 40 ) iy2 = iy2 + 100
       ID2=MOD(IYRDA2,1000)
       IFAC2=(IY2-1)/4+1
       D2=365*(IY2-1)+IFAC2+ID2-1
@@ -246,7 +247,7 @@ C $$ CARTLL = COORDINATES,LATITUDE,LONGITUDE,NAVIGATION
 C                                                                       
 C                                                                       
       XLAT=100.0                                                        
-      XLON=200.0                                                        
+      XLON=0.0                                                        
       IF(X.EQ.0..AND.Y.EQ.0..AND.Z.EQ.0.) GO TO 90                      
       A=ATAN(Z/SQRT(X*X+Y*Y))                                           
 C-----CONVERT TO GEODETIC LATITUDE IF KCORD > 0                         

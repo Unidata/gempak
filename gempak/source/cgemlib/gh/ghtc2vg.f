@@ -71,11 +71,14 @@ C*				less than 3 days			*
 C* M. Sardi/NHC		 7/14	Fixed problem with 3 day cone by	*
 C*				reverting first GH_KGAT call.		*
 C* S. Jacobs/NCEP	 8/14	Removed previous change - did not work	*
+C* B. Hebbard/NCEP	 5/20	Update for new 60hr forecast - SCN20-20	*
+C*                              by increasing PARAMETER NUMHR 8 -> 9    *
+C*                              and adding '60' value to DATA tau       *
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 	INCLUDE		'ghcmn.cmn'
 C*
-	PARAMETER	( NUMHR = 8, MXPTS = 500 )
+	PARAMETER	( NUMHR = 9, MXPTS = 500 )
 	PARAMETER	( NUMH2 = NUMHR - 2 )
 C*
 	CHARACTER*(*)	device, wname, timstr, wtype, wsped, tnam, 
@@ -140,7 +143,8 @@ C*
      +				 'Tropical Storm', 
      +				 'Tropical Depression',
      +                           'Remnant Low' /
-	DATA		tau / '0','12','24','36','48','72','96','120'/
+	DATA		tau / '0','12','24','36','48',
+     +                        '60','72','96','120'/
 C-----------------------------------------------------------------------
 	iret = 0
 C

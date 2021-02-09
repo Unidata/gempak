@@ -4,8 +4,8 @@ C* TI_YYMD								*
 C*									*
 C* This subroutine converts an integer 2-digit year, month and day to   *
 C* an integer 4-digit year, month and day.  Any 2-digit year less than  *
-C* or equal to 20 will be assumed to be in the 21st century; years      *
-C* greater than 20 will be assumed to be in the 20th century.  If the   *
+C* or equal to 40 will be assumed to be in the 21st century; years      *
+C* greater than 40 will be assumed to be in the 20th century.  If the   *
 C* year is greater than 99, it is assumed to be a 4-digit year already. *
 C*									*
 C* TI_YYMD  ( IYYMD, IYYYMD, IRET )					*
@@ -21,6 +21,7 @@ C*				     -7 = invalid year			*
 C**									*
 C* Log:									*
 C* D. Kidwell/NCEP	 3/99               				*
+C* B. Hebbard/NCEP       3/18   Moved century break from 2020 to 2040   *
 C************************************************************************
 	iret = 0
 C

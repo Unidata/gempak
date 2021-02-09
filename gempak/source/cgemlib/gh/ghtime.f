@@ -26,6 +26,7 @@ C**									*
 C* Log:									*
 C* A. Hardy/GSC		 2/01   					*
 C* m.gamazaychikov/SAIC	06/06	Added HST for zone2			*
+C* S. Guan/NCEP		07/20	Added tzone as an input of TI_DST       *  
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 C*
@@ -59,9 +60,9 @@ C
             RETURN
         END IF
 C
-C*      Check for standard time.
+C*      Check for daylight saving vs. standard time.
 C
-        CALL TI_DST ( itarr, dst, iret )
+        CALL TI_DST ( itarr, tzone, dst, iret )
         IF ( dst ) THEN
             sd = 'D'
           ELSE

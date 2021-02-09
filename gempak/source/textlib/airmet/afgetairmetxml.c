@@ -173,6 +173,9 @@ void af_getAirmetXml ( char *vgFile, int nAreas, char areas[][ 8 ], int nTypes,
  *				different freezing level ranges		*
  * B. Yin/SAIC		03/08	set override time flag for each FA area	*
  * B. Yin/SAIC		01/09	close the workfile			*
+ * B. Hebbard/NCEP      05/18   Jira NAWIPS-32 Redmine 14150:  Double   *
+ *                              allocated size of outputXml array pera  *
+ *                              AWC request, to relieve crash issues.   *
  ***********************************************************************/
 {
     int		ii, iarea, itype, ier;
@@ -328,7 +331,7 @@ static void af_getXmlDocHdr ( char *area, char *day, char *cycle,
     }
 
     _capacity = ONEBLOCK;
-    G_MALLOC ( *outputXml, char, strSize * 2, "af_getXmlDocHdr outputXml" );
+    G_MALLOC ( *outputXml, char, strSize * 4, "af_getXmlDocHdr outputXml" );
 
     sprintf( *outputXml, "%s", XML_HDR );
     af_catStr ( outputXml, "<gfaInfo " );
@@ -2153,13 +2156,14 @@ static void af_getIssueTimes( int *firstIssueTm, int *lastIssueTm,
  * Log:                                                                 *
  * B. Yin/SAIC          02/07   Created	                         	*
  * B. Yin/SAIC          05/07   Added first/last cycles to output	*
+ * S. Guan/NCEP	        07/20   Added tzone as an input of TI_DST       *  
  ***********************************************************************/
 {
 
     int         ii, tmType, ier, tmArray[ 5 ], isDst, nCycles, tmpint;
     int		nSortedCycle;
     char        **cycles, issueTm[ 32 ];
-    char        dattim[ 20 ];
+    char        dattim[ 20 ], tzone[2];
 /*---------------------------------------------------------------------*/
                                                                                       
     *iret = 0;
@@ -2167,10 +2171,13 @@ static void af_getIssueTimes( int *firstIssueTm, int *lastIssueTm,
     /*
      *  Read the cycle times from the airmet table
      */
-    tmType = 0;
+    tmType = 1;
     css_gtim ( &tmType, dattim, &ier );
     ti_ctoi ( dattim, tmArray, &ier, strlen ( dattim ) );
-    ti_dst ( tmArray, &isDst, &ier );
+    /* Central Time zone assumed for this code specific to AWC. */
+    tzone[0] = 'C';
+    tzone[1] = '\0';
+    ti_dst ( tmArray, tzone, &isDst, &ier );
 
     ctb_airmetGetCycleTms( (isDst != 0), &nCycles, &cycles, &ier );
 

@@ -3,8 +3,8 @@ C************************************************************************
 C* TI_YY24								*
 C*									*
 C* This subroutine converts a 2-digit year to a 4-digit year.           *
-C* Any 2-digit year less than or equal to 20 will be assumed to be in   *
-C* the 21st century; years greater than 20 will be assumed to be in the *
+C* Any 2-digit year less than or equal to 40 will be assumed to be in   *
+C* the 21st century; years greater than 40 will be assumed to be in the *
 C* 20th century.  If the year is greater than 999, it is not changed.   *
 C*									*
 C* TI_YY24  ( IYY, IYYYY, IRET )					*
@@ -21,6 +21,7 @@ C**									*
 C* Log:									*
 C* D. Kidwell/NCEP	 3/99               				*
 C* D. Kidwell/NCEP	 4/99 	Do not allow 3-digit years     		*
+C* B. Hebbard/NCEP       3/18   Moved century break from 2020 to 2040   *
 C************************************************************************
 	iret = 0
 	iyyyy = iyy
@@ -28,7 +29,7 @@ C
 	IF ( iyy .gt. 999 ) THEN
 	  ELSE IF ( iyy .lt. 0 ) THEN
 	    iret  = -7
-	  ELSE IF ( iyy .le. 20 ) THEN
+	  ELSE IF ( iyy .le. 40 ) THEN
 	    iyyyy = 2000 + iyy
 	  ELSE IF ( iyy .le. 99 ) THEN
 	    iyyyy = 1900 + iyy

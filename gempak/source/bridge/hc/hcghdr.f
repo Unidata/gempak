@@ -1,6 +1,6 @@
 	SUBROUTINE HC_GHDR  ( bultin, lenbul, curtim, stype, sname, 
      +                        advnum, time, ocnstm, icorr, datadv, 
-     +                        isbflg, iret )
+     +                        isbflg, isjtwc, iret )
 C************************************************************************
 C* HC_GHDR								*
 C*									*
@@ -12,7 +12,7 @@ C* have all control characters present for this routine to function     *
 C* properly.								*
 C*									*
 C* HC_GHDR  ( BULTIN, LENBUL, CURTIM, STYPE, SNAME, ADVNUM, TIME,       *
-C*	      OCNSTM, ICORR, DATADV, ISBFLG, IRET )		        *
+C*	      OCNSTM, ICORR, DATADV, ISBFLG, ISJTWC, IRET )		*
 C*									*
 C* Input parameters:							*
 C*	BULTIN		CHAR*		WMO bulletin w/ control chars	*
@@ -28,6 +28,7 @@ C*	OCNSTM          CHAR*           Ocean storm number          	*
 C*	ICORR		INTEGER		Correction indicator		*
 C*	DATADV		CHAR*		GEMPAK time                     *
 C*	ISBFLG		INTEGER		Flag for subtropical storm      *
+C*	ISJTWC		INTEGER		Flag for JTWC report 		*
 C*	IRET		INTEGER		Return code			*
 C*					  1 = could not get time        *
 C*					  0 = normal return		*
@@ -58,6 +59,7 @@ C* D. Kidwell/NCEP	 6/04	Skipped decode of JTWC reports if ep, cp*
 C* S. Gilbert/NCEP       5/06   Accept new date/time issuance line      *
 C* S. Jacobs/NCEP	 8/13	Removed check for E and C storms	*
 C*				issued by the JTWC (PGTW)		*
+C* B. Hebbard/NCEP	 6/20	Added ISJTWC return flag for JTWC	*
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 C*
@@ -80,6 +82,7 @@ C------------------------------------------------------------------------
 	iret   = 0
 	icorr  = 0
 	isbflg = 0
+        isjtwc = 0
         found  = .false.
         good   = .true.
 C
@@ -155,6 +158,10 @@ C
      +         ( ( wmohdr(6:6) .ge. '1') .and. 
      +         ( wmohdr(6:6) .le. '5') ) ) THEN
 C
+C*	    Have a report from either NHC or CPHC (not JTWC).
+C
+            isjtwc = 0
+C
 C*	    Check for a time that is too long. If it is more than six
 C*	    characters, it probably has a '-' at the end of the line.
 C
@@ -216,7 +223,7 @@ C
      +					      charr ( n ) ( 7:8 )
 	    END IF
 C
-C*          Convert the time string to a GEMPAK time.
+C*          Convert the MND time string to a GEMPAK time.
 C
 	    CALL ST_CLST  ( tarr(7), ' ', ' ', 6, charr, n, ier )
 	    datadv = ' '
@@ -238,6 +245,7 @@ C
 C
 C*	    Have a report from JTWC. Locate the storm type line.
 C
+            isjtwc = 1
             itn = 0
 	    datadv = ' '
             IF ( tarr(7)(:2) .eq. '1.' ) THEN
@@ -262,6 +270,7 @@ C
                         ocnstm  = ' '
                         datadv  = ' '
                         isbflg  = 0
+                        isjtwc  = 0
                         icorr   = 0
                         iret    = -12
                         RETURN
@@ -360,7 +369,7 @@ C
                 IF ( ier .eq. 0 ) THEN
 		    ocnstm ( 5:6 ) = datadv ( 1:2 )
 		  ELSE
-		    iret = 1
+		    iret = 1 
 		END IF
               ELSE
                 IF ( iret .eq. 0 ) iret = -12
@@ -377,6 +386,7 @@ C
                 ocnstm  = ' '
                 datadv  = ' '
                 isbflg  = 0
+                isjtwc  = 0
                 icorr   = 0
         END IF
 C*

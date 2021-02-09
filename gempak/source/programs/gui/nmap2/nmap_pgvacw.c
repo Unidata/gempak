@@ -98,6 +98,7 @@ void pgvacw_create ( Widget parent )
  * H. Zeng/SAIC		03/05	added more types			*
  * T. Piper/SAIC	10/05	declared ii & nn long			*
  * T. Piper/SAIC	12/07	Change dir to free form text widget	*
+ * B. Hebbard/NCEP	03/20	NAWIPS-125 cond. disable LINE option	*
  ***********************************************************************/
 {
     int		jj, mm;
@@ -145,6 +146,11 @@ void pgvacw_create ( Widget parent )
     _typePb = (WidgetList)XtMalloc((size_t)nn*sizeof(Widget));
 
     for (ii = 0; ii < nn; ii++) {
+
+#ifndef DISPLAY_LINE_OPTION
+        if (ii == ASHCLD_LINE) continue;
+#endif
+
 	_typePb[ii] = XtVaCreateManagedWidget (typstr[ii],
 				xmToggleButtonWidgetClass, rc1,
 				XmNhighlightThickness,       0,
@@ -153,8 +159,8 @@ void pgvacw_create ( Widget parent )
 	XtAddCallback (_typePb[ii], XmNarmCallback, 
 		       (XtCallbackProc)pgvacw_typeCb, (XtPointer) ii);
 
+#ifdef  DISPLAY_LINE_OPTION
 	if (ii == ASHCLD_LINE) {
-
 /*
  * Distance text field.
  */
@@ -182,8 +188,8 @@ void pgvacw_create ( Widget parent )
 
             XtAddCallback (_distText, XmNlosingFocusCallback, 
 		   (XtCallbackProc)pgvacw_distanceCb, (XtPointer) NULL);
-
 	}
+#endif
 
 	if (ii == ASHCLD_OTHERS) {
 
@@ -407,7 +413,9 @@ void pgvacw_popup ( VG_DBStruct *el )
         pgvacw_updtType ( _subType );
 
 	XtSetSensitive ( _typePb[ASHCLD_AREA],    TRUE  );
+#ifdef  DISPLAY_LINE_OPTION
 	XtSetSensitive ( _typePb[ASHCLD_LINE],    TRUE  );
+#endif
 	XtSetSensitive ( _typePb[ASHCLD_NOTSEEN], TRUE  );
 	XtSetSensitive ( _typePb[ASHCLD_OTHERS],  TRUE  );
 
@@ -429,7 +437,9 @@ void pgvacw_popup ( VG_DBStruct *el )
         else {
 	     sprintf (curr_dist, "%-6.0f", zero);
         }
+#ifdef  DISPLAY_LINE_OPTION
         XmTextSetString (_distText,  curr_dist);
+#endif
 
         _fhrStrc.current = 0;
         XtVaSetValues (_fhrStrc.menu, 
@@ -497,21 +507,27 @@ void pgvacw_popup ( VG_DBStruct *el )
 	if ( _subType == ASHCLD_AREA || _subType == ASHCLD_LINE ) {
 
 	     XtSetSensitive ( _typePb[ASHCLD_AREA],    TRUE  );
+#ifdef  DISPLAY_LINE_OPTION
 	     XtSetSensitive ( _typePb[ASHCLD_LINE],    TRUE  );
+#endif
 	     XtSetSensitive ( _typePb[ASHCLD_NOTSEEN], FALSE );
 	     XtSetSensitive ( _typePb[ASHCLD_OTHERS],  FALSE );
 	}
         else if ( _subType == ASHCLD_NOTSEEN ) {
 
 	     XtSetSensitive ( _typePb[ASHCLD_AREA],    FALSE );
+#ifdef  DISPLAY_LINE_OPTION
 	     XtSetSensitive ( _typePb[ASHCLD_LINE],    FALSE );
+#endif
 	     XtSetSensitive ( _typePb[ASHCLD_NOTSEEN], TRUE  );
 	     XtSetSensitive ( _typePb[ASHCLD_OTHERS],  FALSE );
 	}
         else if ( _subType >= ASHCLD_OTHERS ) {
 
 	     XtSetSensitive ( _typePb[ASHCLD_AREA],    FALSE );
+#ifdef  DISPLAY_LINE_OPTION
 	     XtSetSensitive ( _typePb[ASHCLD_LINE],    FALSE );
+#endif
 	     XtSetSensitive ( _typePb[ASHCLD_NOTSEEN], FALSE );
 	     XtSetSensitive ( _typePb[ASHCLD_OTHERS],  TRUE  );
 
@@ -531,7 +547,9 @@ void pgvacw_popup ( VG_DBStruct *el )
  
 	_currDist = el->elem.ash.info.distance;
         sprintf (curr_dist, "%-6.0f", _currDist);
+#ifdef  DISPLAY_LINE_OPTION
         XmTextSetString (_distText,  curr_dist);
+#endif
 
         sprintf (fhr_str, "F%02d", el->elem.ash.info.fhr);
 	_fhrStrc.current = 0;
@@ -665,9 +683,11 @@ void pgvacw_typeCb ( Widget wid, long clnt, XtPointer cbs )
     else {
 	 sprintf (curr_dist, "%-6.0f", zero);
     }
-    XmTextSetString (_distText,  curr_dist);  
 
+#ifdef  DISPLAY_LINE_OPTION
+    XmTextSetString (_distText,  curr_dist);  
     XtSetSensitive ( _distForm, (_subType == ASHCLD_LINE));
+#endif
 
     XtSetSensitive ( _typStrc.form, 
 		     (_subType != ASHCLD_AREA && 
@@ -739,7 +759,9 @@ void pgvacw_distanceCb ( Widget wid, XtPointer clnt, XtPointer cbs )
     char	*dstr, newstr[8];
 /*---------------------------------------------------------------------*/
 
+#ifdef  DISPLAY_LINE_OPTION
     dstr = XmTextGetString (_distText);
+#endif
 
     if ( sscanf (dstr, "%f", &dist) == 1 ) {
 
@@ -757,7 +779,9 @@ void pgvacw_distanceCb ( Widget wid, XtPointer clnt, XtPointer cbs )
     }
 
     cst_rmbl ( newstr, newstr, &lenstr, &ier );
+#ifdef  DISPLAY_LINE_OPTION
     XmTextSetString (_distText, newstr);
+#endif
 
     XtFree (dstr);
 }

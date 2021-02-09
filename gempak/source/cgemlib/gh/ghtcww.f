@@ -111,11 +111,14 @@ C* S. Jacobs/NCEP	 4/13	Added smoothing for the track and cone	*
 C* D. Zelinsky/NCEP/NHC 10/15   Added time zones (P/M/C) to EastPac     *
 C* M. Sardi/NCEP/NHC    11/15   Above change required fix to ensure     *
 C*                              GH_KGAR only called for AL systems.     *
+C* S. Guan/NCEP         07/18   Change hipowo.cia to hipowo.nws         *
+C* B. Hebbard/NCEP	05/20	Update for new 60hr forecast - SCN20-20	*
+C*                              by increasing PARAMETER NUMHR 8 -> 9    *
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 	INCLUDE		'ghcmn.cmn'
 C*
-	PARAMETER	( NUMHR = 8, MXPTS = 500 )
+	PARAMETER	( NUMHR = 9, MXPTS = 500 )
 	PARAMETER	( NUMH2 = NUMHR - 2 )
 C*
 	CHARACTER*(*)	device, wname, timstr, wtype, wsped, tnam, 
@@ -693,7 +696,7 @@ C
                 latlon = cblk(:lens) // '/1/1//5;5//2'
                 mapstr = cblk(:lens) // '/1/1'
 C
- 	        CALL IP_SVAR ( '$MAPFIL=hipowo.cia', ier )
+ 	        CALL IP_SVAR ( '$MAPFIL=hipowo.nws', ier )
                 CALL GG_MAP  ( mapstr, ier )
 C
 C*              Draw latitude/longitude lines.

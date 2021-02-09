@@ -47,6 +47,8 @@ C* F. J. Yen/NCEP	 3/08	Added Event Tracking Number (CSC)	*
 C* F. J. Yen/NCEP	 4/08	Added call to BR_VTEC			*
 C* S. Guan/NCEP         11/17   Modified to add snow squall warn (SQW)  *
 C* S. Guan/NCEP         05/18   Fixed producing spurious warns bug      *
+C* S. Guan/NCEP         01/20   Added codes to hand '/' before a VTEC   *
+C*                              line                                    * 
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 	INCLUDE		'BRIDGE.PRM'
@@ -78,12 +80,27 @@ C*	Check for a VTEC line beginning with '/' and adjust
 C*	header string length accordingly.  Also get the VTEC string.
 C
 	ierv = 1
+        ivtec = 0
 	vtec = ' '
 	etn = ' '
 	islash = INDEX ( btin ( : ibuldex ), '/' )
         IF ( islash .eq. 0 ) THEN
            islash = INDEX ( btin ( : lenb ), '/' )
         END IF
+C
+C*      The following DO WHILE loop hand the case where '/' exists 
+C*      before a VTEC line.
+C
+        islash1 = islash
+        DO WHILE ( (ivtec .eq. 0) .and. ( (islash1+46) .lt. lenb ) 
+     +     .and. ( islash .gt. 0 ) )               
+           IF ( btin (islash+46:islash+47) .eq. 'Z/' ) ivtec = 1
+           IF ( ivtec .eq. 0) THEN
+              islash1 = islash1 + 1
+              islash = INDEX ( btin ( islash1: lenb ), '/' )
+              IF ( islash .gt. 0 ) islash = islash + islash1 - 1
+           END IF
+        END DO
 	IF ( islash .gt. 0 ) THEN
 	    vtecp1 = btin ( islash + 1: islash + 2 )
       	    IF ( vtecp1 .eq. 'O.' .or. vtecp1 .eq. 'T.' .or.

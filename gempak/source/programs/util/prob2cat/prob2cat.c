@@ -74,6 +74,7 @@ static void p2c_CloseCntr ( VG_DBStruct *el_in, VG_DBStruct **el_out, int *nOut,
 
 static void p2c_CloseSingleCntr ( int *npIn, float *xIn,  float *yIn,
                                   int *nClp, float *xClp, float *yClp,
+                                  Boolean *InOut,
                                   int *nOut, float *xOut, float *yOut,
                                   int *iret );
 
@@ -181,7 +182,7 @@ int main ( int argc, char **argv )
  * B. Yin/SGT		11/14	Fixed issues on bumped outlooks		* 				
  * S. Guan/NCEP         05/16   Modified PROB2CAT_TIE_DIST_IN_MAP and   *
  *                              tol2                                    *
- * S. Guan/NCEP         06/8    Fixed the bug caused because            *
+ * S. Guan/NCEP         06/16    Fixed the bug caused because            *
  *                              line is fliped                          *
  ***********************************************************************/
 {
@@ -224,7 +225,7 @@ int main ( int argc, char **argv )
     int         kt;
 /*---------------------------------------------------------------------*/
 
-    printf ( "\n*** prob2cat: Last modified on June 15, 2016 ***\n" );
+    printf ( "\n*** prob2cat: Last modified on May. 7, 2019 ***\n" );
     /*
      *  Check if the number of input arguments is correct.
      */
@@ -241,7 +242,7 @@ int main ( int argc, char **argv )
          printf("reads VGF files containing risk of severe weather probabilities\n"
                 "for DAY1, DAY2 and DAY3 outlooks and creates output VGF file\n"
                 "containing categorical outlooks of severe weather risk.\n"
-                "\nDAY1 input files include outlooks for individual hazards:\n"
+                "\nDAY1 and DAY2 input files include outlooks for individual hazards:\n"
                 "tornado (TORN), hail (HAIL) and high winds (WIND)\n"
                 "as well as enhanced thunderstorm outlook file.\n"
                 "\nDAY2 and DAY3 input files contain probabilities of:\n"
@@ -1691,6 +1692,9 @@ static void p2c_GetCat ( VG_DBStruct *el, int prob, char *haz, char *cat,
  * m.gamazaychikov/SAIC	10/06	Created                         	*
  * B.Yin/SGT            11/14	Added bumpflag and output the originals *
  * 				if bumpflag is not set.			*
+ * S. Guan/NCEP         04/19   Made DAY2 input with Hail, Wind and     * 
+ *                              Tornado probabilities (similar to DAY1) * 
+ *                              work.  	                                *
  ***********************************************************************/
 {
     int         *int_ptr, ii, ier, ihgh, ilow, ibmp, idef=100, nexp=2, num;
@@ -1814,14 +1818,14 @@ static void p2c_GetCat ( VG_DBStruct *el, int prob, char *haz, char *cat,
        ii = 0;
        while ( (!done) && (ii < nIn) ) {
           if (
-               ( ( strcmp (_Day_out, "DAY1") == 0 ) &&
-                 ( (elIn[ ii ].hdr.grptyp == el->hdr.grptyp) &&
+               ( ( (elIn[ ii ].hdr.grptyp == el->hdr.grptyp) &&
                    (elIn[ ii ].hdr.vg_type == SPLN_ELM) &&
                    (elIn[ ii ].hdr.filled) ) )
                ||
                ( ( strcmp (_Day_out, "DAY1") != 0 ) &&
                  ( (elIn[ ii ].hdr.vg_type == SPLN_ELM) &&
-                   (el->hdr.grptyp != 13) && (elIn[ ii ].hdr.filled) ) )
+                   (el->hdr.grptyp != 12) && (el->hdr.grptyp != 13) &&
+                   (el->hdr.grptyp != 14) && (elIn[ ii ].hdr.filled) ) )
              ) {
 
 		if ( bumpFlag ) {
@@ -1984,7 +1988,7 @@ static void p2c_CloseCntr ( VG_DBStruct *el_in, VG_DBStruct **el_out,
             * Close the contour. 
             */
             p2c_CloseSingleCntr ( &npline,  line_lats, line_lons, 
-                                  &nclp,    xclp,      yclp,
+                                  &nclp,    xclp,      yclp, InOut,
                                   &nclosed, xclosed,   yclosed, &ier );
             *nOut = 1;
             G_MALLOC ( (*el_out), VG_DBStruct, one, "p2c_CloseCntr: el_out" );
@@ -2055,7 +2059,7 @@ static void p2c_CloseCntr ( VG_DBStruct *el_in, VG_DBStruct **el_out,
             * Close the contour. 
             */
             p2c_CloseSingleCntr ( &npline,  line_lats, line_lons, 
-                                  &nclp,    xclp,      yclp,
+                                  &nclp,    xclp,      yclp, InOut,
                                   &nclosed, xclosed,   yclosed, &ier );
             *nOut = 1;
             G_MALLOC ( (*el_out), VG_DBStruct, one, "p2c_CloseCntr: el_out" );
@@ -2135,7 +2139,7 @@ static void p2c_CloseCntr ( VG_DBStruct *el_in, VG_DBStruct **el_out,
                    * Close the contour. 
                    */
                    p2c_CloseSingleCntr ( &npSeg,  line_lats, line_lons, 
-                                         &nclp,    xclp,      yclp,
+                                         &nclp,    xclp,      yclp, InOut,
                                          &nclosed, xclosed,   yclosed, &ier );
 
                   /*
@@ -3620,6 +3624,7 @@ static void p2c_ExtendCntr ( int *firstPoint, int *lastPoint,
 
 static void p2c_CloseSingleCntr ( int *npIn, float *xIn,  float *yIn, 
                                   int *nClp, float *xClp, float *yClp, 
+                                  Boolean *InOut,
                                   int *nOut, float *xOut, float *yOut,  
                                   int *iret )
 /************************************************************************
@@ -3644,10 +3649,15 @@ static void p2c_CloseSingleCntr ( int *npIn, float *xIn,  float *yIn,
  *                              be copied from bounds                   *
  * S. Jacobs/NCEP	10/12	Restored previous calculation of the	*
  * 				number of points copied			*
+ * S. Guan/NCEP         10/18  	Fixed the problem when nint1 = nint2    *
+ * S. Guan/NCEP         11/18   Added InOut and adjust xClp and yClp    *  
+ *                              to make sure coordinates of             * 
+ *                              intersection points right.              * 
  ***********************************************************************/
 { 
     int         ier, ii, jj, ncp, nint1, nint2, npol2, intvrtx;
     int         rol, clsd=0, indx[MAXPTS];
+    int         ncp1, ncp2; 
 
     float       nx2[MAXPTS], ny2[MAXPTS], dstns;
     float       comptol = 0.0F;
@@ -3664,10 +3674,28 @@ static void p2c_CloseSingleCntr ( int *npIn, float *xIn,  float *yIn,
              nx2[ii] = _areaX[indx[ii]];
              ny2[ii] = _areaY[indx[ii]];
      }
+    /*
+     * Adjust xClp and yClp to make sure that 
+     *  xClp[1]      yClp[1]      - coordinates of intersection point 1
+     *  xClp[nClp-2], yClp[nClp-2] - coordinates of intersection point 2
+     */
+     for (ii = 0; ii < *nClp-1; ii++) {
+         if (InOut[ii] == False && InOut[ii+1] == True )  ncp1 = ii; 
+         if (InOut[ii] == True  && InOut[ii+1] == False ) ncp2 = ii;
+     }
+     if ( ncp1 > 1 ) {
+         ii=1;
+         for ( jj = ncp1; jj < ncp2+2; jj++) {
+             xClp[ii] = xClp[jj];
+             yClp[ii] = yClp[jj];
+             ii++;
+         }
+     }
+     *nClp = ncp2 + 4 - ncp1;
 
     /*
      *  Find the segments of boundary where the intersection points fall into
-     *  xClp[1],      yClp[1]      - coordinates of intersection point 1
+     *  xClp[1]      yClp[1]      - coordinates of intersection point 1
      *  xClp[nClp-2], yClp[nClp-2] - coordinates of intersection point 2
      *  intvrtx                    - closest vertex index 
      *  nint1                      - starting index of point in boundary
@@ -3744,7 +3772,7 @@ static void p2c_CloseSingleCntr ( int *npIn, float *xIn,  float *yIn,
      * Calculate the number of points needed to be copied over from boundary
      */
      jj = nint2;
-     if ( nint1 > nint2 ) {
+     if ( nint1 >= nint2 ) {
             npol2 = nint1-nint2 + 1;
      } else {
             npol2 = _areaP-nint2+nint1+1;
@@ -3756,7 +3784,7 @@ static void p2c_CloseSingleCntr ( int *npIn, float *xIn,  float *yIn,
      */
      xOut[0] = xClp[1];
      yOut[0] = yClp[1];
-     ncp = 0;
+     ncp = 1;
 
      for (ii = 2; ii < *nClp-2; ii++) {
              xOut[ncp] = xClp[ii];
@@ -3767,6 +3795,7 @@ static void p2c_CloseSingleCntr ( int *npIn, float *xIn,  float *yIn,
     /*
      *  Get points from boundary
      */
+     if ( nint1 == nint2) npol2 = 2;
      for (ii = 0; ii<npol2;ii++) {
              if ( jj == _areaP ) jj=0;
              xOut[ncp] = nx2[jj];

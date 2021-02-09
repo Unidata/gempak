@@ -40,11 +40,12 @@ C* m.gamazaychikov/SAIC 01/06   Changed templ string length to MXTMPL   *
 C* m.gamazaychikov/SAIC 04/06   Added idtmch flag to CTB_DTGET CS       *
 C* m.gamazaychikov/SAIC 04/08   Add code to plot extratropical          *
 C* F. J. Yen/NCEP        4/08   Added bin mins & mstrct to CTB_DTGET CSC*
+C* M. Sardi/NHC          5/20   Increased ITRACK to 7 (plot HR 60 pt)   *
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 C*
 	PARAMETER	( NW = 500 )
-	PARAMETER	( NCLR = 12, ITRACK = 6 )
+	PARAMETER	( NCLR = 12, ITRACK = 7 )
 C*
 	PARAMETER	( JHUR = 1, JTSM = 2, JREM = 3 )
      	PARAMETER	( JSYM = 1, JARR = 2 )

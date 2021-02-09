@@ -387,13 +387,14 @@ static void pgcycle_createPanel1 ( void )
  **                                                                     *
  * Log:                                                                 *
  * E. Safford/SAIC	07/07	initial coding                     	*
+ * S. Guan/NCEP		07/20	Added tzone as an input of TI_DST       *  
  ***********************************************************************/
 {
     int         tmType, ier, tmArray[ 5 ], isDst, strLen;
     int         nearest, minDiff, intCycle, minCycle, minCycleIndex;
     long        ii;
     char        **cycles;
-    char        dayStr[ 3 ], dattim[ 20 ];
+    char        dayStr[ 3 ], dattim[ 20 ], tzone[2];
 
     time_t      tt;
     struct tm   *tStruct;
@@ -451,10 +452,19 @@ static void pgcycle_createPanel1 ( void )
     /*
      *  Read the cycle times from the airmet table
      */
+    tmType = 1;
+    css_gtim ( &tmType, dattim, &ier );
+    ti_ctoi ( dattim, tmArray, &ier, strlen ( dattim ) );
+    /* Central Time zone assumed for this code specific to AWC. */
+    tzone[0] = 'C';
+    tzone[1] = '\0';
+    ti_dst ( tmArray, tzone, &isDst, &ier );
+    /*
+     *   Use local time
+     */
     tmType = 0;
     css_gtim ( &tmType, dattim, &ier );
     ti_ctoi ( dattim, tmArray, &ier, strlen ( dattim ) );
-    ti_dst ( tmArray, &isDst, &ier );
     ctb_airmetGetCycleTms( (isDst != 0), &_nCycles, &cycles, &ier );
 
     if ( ier < 0 ) {

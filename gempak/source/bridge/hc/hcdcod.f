@@ -40,22 +40,26 @@ C* A. Hardy/NCEP	11/03	Added lenbul to HC_GHDR			*
 C* A. Hardy/NCEP	12/03	Added 'curtim' to HC_GHDR		*
 C* B. Yin/SAIC           3/04   Changed SS_GTIM to CSS_GTIM             *
 C* D. Kidwell/NCEP 	 5/04	Fixed year for ocnstm in JTWC reports   *
+C* B. Hebbard/NCEP	 4/20	Update for new 60hr forecast - SCN20-20	*
+C* 				increased PARAMETER NFCST 7 -> 8	*
+C* B. Hebbard/NCEP	 6/20   Make 'nfcst' variable:  8 for NHC/CPHC  *
+C*				(SCN20-20), but retain 7 for JTWC;	*
+C*				use WMO header time for JTWC timestamp	*
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 	INCLUDE		'BRIDGE.PRM'
 C*
 	CHARACTER*(*)	curtim, gemfil, prmfil, stntbl
 C*
-	PARAMETER	( NFCST = 7 )
 	CHARACTER	bultin*(DCMXBF), parms(MMPARM)*4,
      +			filnam*132, errstr*80, dattim*11, sysdt*12, 
-     +                  dattmp*12, sname*15, advnum*4, stype*10, 
-     +                  posnm*3, direc*3, speed*3, strmtim*13,
-     +                  temptim*7, time*6, minpres*5, ocnstm*6, 
-     +                  sixty*50, fifty*50, thirty*50, seaft*40,
-     +			f34kt(20)*50, datadv*11, fstype(20)*2,
-     +			f50kt(20)*50, f64kt(20)*50
-        INTEGER         istarr (5), irdtar (5), itype
+     +			dattmp*12, sname*15, advnum*4, stype*10, 
+     +			posnm*3, direc*3, speed*3, strmtim*13, 
+     +			temptim*7, time*6, minpres*5, 
+     +			ocnstm*6, sixty*50, fifty*50, thirty*50,
+     +			seaft*40, datadv*11, fstype(20)*2,
+     +			f34kt(20)*50, f50kt(20)*50, f64kt(20)*50
+        INTEGER         istarr (5), irdtar (5), itype, nfcst
         REAL            flat(20), flon(20)
 	LOGICAL		more
 C------------------------------------------------------------------------
@@ -85,8 +89,15 @@ C*		Parse the header info from the bulletin.
 C
  		CALL HC_GHDR ( bultin, lenbul, curtim, stype, sname, 
      +                         advnum, time, ocnstm, icor, datadv, 
-     +                         isbflg, iterr )
+     +                         isbflg, isjtwc, iterr )
                 IF ( iterr .lt. 0 ) more = .false.
+C*              JTWC bulletins currently have up to 7 forecast points;
+C*              NHC/CPHC (post-SCN20-20, with F60) have up to 8.
+                IF ( isjtwc .eq. 1 ) THEN
+                    nfcst = 7
+                ELSE
+                    nfcst = 8
+                END IF
 C
                 IF ( more ) THEN
 		    icor = icor + itest
@@ -150,18 +161,39 @@ C
 C
 C*		        Sending the report to be decoded.
 C
- 	                    CALL HC_DECD ( bultin, lenbul, NFCST,
+ 	                    CALL HC_DECD ( bultin, lenbul, nfcst,
      +					   temptim, rlat, rlon, posnm,
      +				           direc, speed, minpres,
      +					   sixty, fifty, thirty, seaft,
      +                                     flat, flon, icind, fstype,
      +                                     f34kt, f50kt, f64kt, iexflg,
      +                                     iret )
+C
 			    IF ( iterr .eq. 0 ) THEN
-				strmtim = datadv
-			      ELSE
+C
+C*                              Got header, with time.
+C*                              For decoder output header line, want
+C*                              the timestamp to be nominal (not actual)
+C*                              issue time...
+                                IF ( isjtwc .eq. 1) THEN
+C*                                  ...for JTWC, it's WMO header time
+                                    strmtim = dattim
+C*				    Get the year for storm ID.
+				    IF ( ( ocnstm ( 2:2 ) .eq. 'P' ) .and.
+     +				         ( ocnstm ( 5:6 ) .eq. ' ' ) )
+     +				           ocnstm ( 5:6 ) = strmtim ( 1:2 )
+                                ELSE
+C*                                  ...for TCM, use MND time
+				    strmtim = datadv
+C*                                  (in this case, WMO is actual)
+                                END IF
+
+			    ELSE
 C
 C*				Try to get the time from the report.
+C*                              (temptim is the valid time associated
+C*                              with the first (observed/analysis) time,
+C*                              as returned by HC_DECD.)
 C
  	                        CALL HC_CTIM ( istarr, temptim, strmtim, 
      +					       iret )
@@ -192,7 +224,7 @@ C
      +					 icor, sixty, fifty, thirty, 
      +                                   seaft, flat, flon, fstype, 
      +					 f34kt, f50kt, f64kt, iexflg,
-     +					 isbflg, NFCST, iret )
+     +					 isbflg, nfcst, iret )
                         END IF
                     END IF
                 END IF 

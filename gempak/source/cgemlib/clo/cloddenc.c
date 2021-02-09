@@ -19,11 +19,9 @@ void clo_ddenc ( char *type, int format, float lat, float lon, char *str,
  *                                              			*
  *  5 - nearest 5    0 - omit     0 - omit      0 - degrees		*
  * 10 - nearest 10   1 - NM       1 - 16 point  1 - decimal/minutes   	*
- *                   2 - SM       2 - degrees   2 - 1st column		*
- *                   3 - KM             	4 - 3rd column		*
- *									*
- * For DISPLAY, the 1st column is usually the station id and the 3rd    *
- * column is the name of the station, city or county.			* 
+ *                   2 - SM       2 - degrees   2 - stn ID or bound FIPS*
+ *                   3 - KM             	4 - stn or bound name   *
+ *                                              6 - bound assoc. WFO ID *
  *                                                                      *
  * clo_ddenc ( type, format, lat, lon, str, iret)                       *
  *                                                                      *
@@ -50,6 +48,7 @@ void clo_ddenc ( char *type, int format, float lat, float lon, char *str,
  * T. Piper/GSC		 3/01	Fixed IRIX6 compiler warnings		*
  * D.W.Plummer/NCEP	 8/01	Repl clo_bqinfo w/ cst_gtag		*
  * D.W.Plummer/NCEP	 6/05	Tens digit sets # decimals for lat,lon	*
+ * B. Hebbard/NCEP      12/19   Add "---6" format to display WFO ID     *
  ***********************************************************************/
 {
     int		idist, icmp, nh, ier;
@@ -66,7 +65,7 @@ void clo_ddenc ( char *type, int format, float lat, float lon, char *str,
     iwidth = 16;
 
    /*
-    * Parse out format into it's components.
+    * Parse out format into its components.
     */
 
     ione  = format % 10;
@@ -121,7 +120,6 @@ void clo_ddenc ( char *type, int format, float lat, float lon, char *str,
 	    */
 
 	    if ( ione == 2) {          
-
 	        if (strcmp ( pidx,"-") != 0 ) {
 		    clo_bginfo ( type, 0, info, &ier );
 		    cst_gtag ( "FIPS", info, "?", str, &ier );
@@ -132,6 +130,15 @@ void clo_ddenc ( char *type, int format, float lat, float lon, char *str,
 	    }
 	    if ( ione == 4) {  /* Save the bound name */
 	        cst_split (pidx, ' ', 14, str, &ier);
+	    }
+	    if ( ione == 6) {          
+	        if (strcmp ( pidx,"-") != 0 ) {
+		    clo_bginfo ( type, 0, info, &ier );
+		    cst_gtag ( "WFO", info, "?", str, &ier );
+		}
+		else {
+	            cst_split (pidx, ' ', 14, str, &ier);
+		}
 	    }
 	}
 

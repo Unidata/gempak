@@ -1,7 +1,7 @@
 	SUBROUTINE GG_EDRP (lunf, dattm2, datfil, datgrp, nhts, 
      +			    htinc, htcolrs, tlimit, enumc, evinc,
      +                      esymb1, esymb2, esymbsz1, esymbsz2, 
-     +                      evcolrs, aoa180fl, iret)
+     +                      evcolrs, aoa180fl, tracksfl, iret)
 C************************************************************************
 C* GG_EDRP                                                              *
 C*                                                                      *
@@ -28,7 +28,8 @@ C*      ESYMB2(*)       INTEGER         Symbols AOA FL180               *
 C*      ESYMBSZ1(*)     REAL            Symbol size BLO 180             *
 C*      ESYMBSZ2(*)     REAL            Symbol size AOA FL180           *
 C*      EVCOLRS(*)      INTEGER         Color for each EDR Value        *
-C*      AOA180FL        LOGICAL         FLAG to Plot 18 KFT +           * 
+C*      AOA180FL        LOGICAL         FLAG to Plot 18 KFT +           *
+C*      TRACKSFL        LOGICAL         FLAG to Plot Tracks             * 
 C*                                                                      *
 C* Output parameters:							*
 C*	IRET		INTEGER		Return code			*
@@ -36,6 +37,7 @@ C*                                                                      *
 C**                                                                     *
 C* Log:                                                                 *
 C* L. Hinson/AWC        09/12                                           *
+C* L. Hinson/AWC        10/18 Updated to add tracks flag                *
 C************************************************************************ 
 	INCLUDE 'GEMPRM.PRM'
 C*
@@ -49,6 +51,7 @@ C*
         REAL            esymbsz1 (*), esymbsz2 (*)
         INTEGER         evcolrs (*)
         LOGICAL         aoa180fl
+        LOGICAL         tracksfl
         INTEGER         ht, ixoff, iyoff
 C*
 	PARAMETER	( MAXSTK = LLMXPT * 2 )
@@ -105,33 +108,35 @@ C*            Read the lat/lon coordinates from the file.
 C           DO QC here, and return ier=0 for success...
 C           Plot Line Segments First, EDR Intensities 2nd.       
             IF ( ier .eq. 0 ) THEN
-              DO ii = 1, numpts
-                IF ( ii .eq. 1 ) THEN
-                  latw(1) = lats(ii)
-                  lonw(1) = lons(ii)
-                ELSE
-                  latw(2) = lats(ii)
-                  lonw(2) = lons(ii)
-                  age2 = ages(ii)
-                  ht = hts(ii)
-                  IF (ht .gt. 0 .and. ht .lt. htinc(1)) THEN
-                      ic = htcolrs(1)
-                  ELSE 
-                    DO jj = 1, nhts - 1
-                      IF (ht .gt. htinc(jj)) THEN
-                        ic = htcolrs (jj+1)
-                      END IF
-                    END DO
+              IF ( tracksfl ) THEN
+                DO ii = 1, numpts
+                  IF ( ii .eq. 1 ) THEN
+                    latw(1) = lats(ii)
+                    lonw(1) = lons(ii)
+                  ELSE
+                    latw(2) = lats(ii)
+                    lonw(2) = lons(ii)
+                    age2 = ages(ii)
+                    ht = hts(ii)
+                    IF (ht .gt. 0 .and. ht .lt. htinc(1)) THEN
+                        ic = htcolrs(1)
+                    ELSE 
+                      DO jj = 1, nhts - 1
+                        IF (ht .gt. htinc(jj)) THEN
+                          ic = htcolrs (jj+1)
+                        END IF
+                      END DO
+                    END IF
+                    IF (age2 .lt. tlimit) THEN
+                      CALL GSCOLR (ic, ier)
+                      CALL GSLINE ( iltyp, 0, ilwidth, 0, ier )
+		      CALL GLINE ( 'M', 2, latw, lonw, ier )
+                    END IF
+                    latw(1) = latw(2)
+                    lonw(1) = lonw(2)
                   END IF
-                  IF (age2 .lt. tlimit) THEN
-                    CALL GSCOLR (ic, ier)
-                    CALL GSLINE ( iltyp, 0, ilwidth, 0, ier )
-		    CALL GLINE ( 'M', 2, latw, lonw, ier )
-                  END IF
-                  latw(1) = latw(2)
-                  lonw(1) = lonw(2)
-                END IF
-              ENDDO
+                ENDDO
+              END IF
 C             Now Plot the Intensities, if any...
 C             Cycle through the intensities primary,
 C               Actual observation second to accomplish layer effect...

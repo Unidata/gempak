@@ -60,10 +60,19 @@ C* S. Gilbert/NCEP      02/16           Updated to 7.3.1                *
 C* S. Gilbert/NCEP      12/16           Updated to 7.4.0                *
 C* J. Huber/NCEP        08/17           Updated to 7.4.1                *
 C* S. Guan/NCEP         12/17           Updated to 7.4.2                *
-C* M. James/UCAR         4/18           Updated to 7.4.3                *
-C* M. James/UCAR        10/18           Updated to 7.4.4                *
-C* M. James/UCAR        12/18           Updated to 7.4.5                *
-C* M. James/UCAR        12/18           Updated to 7.5.1                *
+C* S. Guan/NCEP         04/18           Updated to 7.5.0                *
+C* S. Guan/NCEP         05/18           Updated to 7.5.1                *
+C* S. Guan/NCEP         12/18           Updated to 7.6.0                *
+C* B. Hebbard/NCEP      06/19           Updated to 7.7.0                *
+C* B. Hebbard/NCEP      07/19           Updated to 7.7.1                *
+C* B. Hebbard/NCEP      08/19           Updated to 7.8.0                *
+C* B. Hebbard/NCEP      10/19           Updated to 7.9.0                *
+C* B. Hebbard/NCEP      05/20           Updated to 7.9.1                *
+C* B. Hebbard/NCEP      04/20           Updated to 7.10.0               *
+C* B. Hebbard/NCEP      10/20           Updated to 7.11.0               *
+C* B. Hebbard/NCEP      10/20           Updated to 7.12.0               *
+C* B. Hebbard/NCEP      01/21           Updated to 7.12.1               *
+C* B. Hebbard/NCEP      10/20           Updated to 8.0.0                *
 C************************************************************************
 	CHARACTER*(*)	vmsg
 C------------------------------------------------------------------------
@@ -71,7 +80,7 @@ C------------------------------------------------------------------------
 C
 C*	Set the version string and add a null to the end.
 C
-	vmsg = 'Version 7.5.1'
+	vmsg = 'Version 7.12.1'
 	CALL ST_NULL ( vmsg, vmsg, lens, ier )
 C*
 	RETURN

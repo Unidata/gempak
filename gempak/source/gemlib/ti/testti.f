@@ -30,13 +30,14 @@ C* D. Kidwell/NCEP	 7/02	Added TI_LOCL                           *
 C* A. Hardy/NCEP	 8/03	Added TI_ELCL				*
 C* A. Hardy/NCEP	 9/03   Added 'zone' to TI_ELCL call sequence	*
 C* m.gamazaychikov/SAIC	 3/06   Added noonmid to TI_ELCL call sequence	*
+C* S. Guan/NCEP		 7/20   Added tzone to TI_DST call sequence	*  
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 	CHARACTER 	time1*48, time2*20, timout*20, d1*20, d2*20,
      +			dattim*40, strtim*20, endtim*20 
      	CHARACTER	timarr (LLMXTM)*20, timar1 (LLMXTM)*20
 	CHARACTER	parms (MMPARM)*4, file*72, tzon1*3, tzon2*3,
-     +			cent*2, zone*4, ans*1
+     +			cent*2, zone*4, ans*1 
 	INTEGER 	idtarr (5), jdtarr (5)
 	LOGICAL		mrgdat, wrtflg, dst, noonmid
 	DATA 		wrtflg /.false./, nt /0/
@@ -291,9 +292,11 @@ C------------------------------------------------------------------------
 		CALL ER_WMSG ( 'TI',  iret, ' ', ier )
 C------------------------------------------------------------------------
 	      ELSE IF (numsub .eq. 27) THEN
+                WRITE (6, *) ' Enter TZONE'
+                READ  (5, 4) zone
 		WRITE (6, *) ' Enter IDTARR'
 	        READ  (5, *)  idtarr
-		CALL TI_DST ( idtarr, dst, iret )
+		CALL TI_DST ( idtarr, zone, dst, iret )
 		WRITE (6, *) 'IRET = ', iret
 		IF  ( dst )  THEN
 		    WRITE (6, *) 'Daylight Saving Time'

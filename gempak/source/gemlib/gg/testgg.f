@@ -101,6 +101,7 @@ C* T. Piper/SAIC	08/08	Increased array sizes for GG_NATC to 25	*
 C* S. Jacobs/NCEP	12/09	Added TRAK1, TRAKE and TRAK2		*
 C* L. Hinson/AWC        06/12   Add ASDI                                *
 C* L. Hinson/AWC        10/12   Add EDR                                 *
+C* L. Hinson/AWC        11/18   Update EDR for conditional track plots  *
 C************************************************************************
         INCLUDE		'GEMPRM.PRM'
 	INCLUDE		'ggcmn.cmn'
@@ -139,7 +140,7 @@ C*
      +                  numc, tlimit, ecolrs(2), esymb1(2), esymb2(2),
      +                  esymbsz1(2), esymbsz2(2), enumc
         REAL            evinc(2)
-	LOGICAL		ang, etmchg, aoa180fl
+	LOGICAL		ang, etmchg, aoa180fl, tracksfl
 	INTEGER		nums, itype
 C------------------------------------------------------------------------
 C*      Initialize GEMPAK common blocks 
@@ -1755,11 +1756,12 @@ C
               WRITE (6,*) 'Enter a symbol size for AOA FL180'
               READ  (5,*) esymbsz2(1)
               aoa180fl = .true.
+              tracksfl = .true.
               numc = 1
               enumc = 1
               CALL GG_EDR ( frametim, ktminc, kcolrs, numc, tlimit,
      +                      evinc, ecolrs, esymb1, esymb2, esymbsz1,
-     +                      esymbsz2, aoa180fl, iret)
+     +                      esymbsz2, aoa180fl, tracksfl, iret)
               CALL GEPLOT ( ier )
               WRITE (6,*) 'IRET = ', iret
               CALL ER_WMSG ( 'GG', iret, ' ', ierr )               

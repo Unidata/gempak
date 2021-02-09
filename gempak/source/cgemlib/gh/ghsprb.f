@@ -38,6 +38,7 @@ C*				changed GSCNTR arg.; changed PS check   *
 C* D. Kidwell/NCEP	5/02 	Changed name of land bounds file        *
 C* T. Piper/SAIC	12/04	Added GG_SCAL				*
 C* T. Piper/SAIC	01/05	Added title and mask color		*
+C* S. Guan/NCEP         07/18   Change hipowo.cia to hipowo.nws         *
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 C*
@@ -310,7 +311,7 @@ C
             CALL ST_INCH ( iblk, cblk, ier)
             CALL ST_LSTR ( cblk, lens, ier)
             mapstr = cblk(:lens) // '/1/1'
-	    CALL IP_SVAR ( '$MAPFIL=hipowo.cia', ier )
+	    CALL IP_SVAR ( '$MAPFIL=hipowo.nws', ier )
             CALL GG_MAP  ( mapstr, ier )
             CALL GG_LTLN ( latlon, ier )
 	    CALL GG_SCAL ( mscale, ier )

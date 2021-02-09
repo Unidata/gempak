@@ -101,6 +101,7 @@ C* L. Hinson/AWC        10/12   Add EDR                                 *
 C* G. McFadden/IMSG	11/13	Added SGWHA, WSPDA, WSPD2, WSPDC, and   *
 C*                              GG_WSPD                                 *
 C* G. McFadden/IMSG	01/14	Added TRAKS and TRAKC                   *
+C* L. Hinson/AWC        10/18   Update EDR with tracksfl                *
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 C*
@@ -129,6 +130,7 @@ C
         CHARACTER       depdest*2
         INTEGER         tlimit
         LOGICAL         aoa180fl
+        LOGICAL         tracksfl
 	CHARACTER       sites*120
 	CHARACTER       arpts(20)*12
         DATA            arpts / 'MCI', 'ATL', 'DEN', 'MSP', 'DTW',
@@ -371,10 +373,15 @@ C*          EDR colors.
               aoa180fl = .true.
             ELSE
               aoa180fl = .false.
-            END IF  
+            END IF
+            IF (iflgs(2) .eq. 1) THEN
+              tracksfl = .true.
+            ELSE
+              tracksfl = .false.
+            END IF
             CALL GG_EDR ( dattim, htinc, htclr, 9, tlimit, evinc,
      +                    evclr, esymb1, esymb2, esymbsz1, esymbsz2, 5,
-     +                    aoa180fl, iret )
+     +                    aoa180fl, tracksfl, iret )
 C   
           ELSE IF  ( ( alias .eq. 'ATCF'   ) .or.
      +               ( alias .eq. 'ENS_CYC') )  THEN
@@ -430,7 +437,7 @@ C
 		jclrs2 (i-2) = iclrs2(i)
 	    END DO
 C
-	    CALL GG_ASCT ( alias, dattim, 360, kwninc, jclrs, jclrs2, nn, 
+	    CALL GG_ASCT ( alias, dattim, kwninc, jclrs, jclrs2, nn, 
      +		   brbsiz, ibwid, ahsiz, ityp, iskip, interv, itmclr,
      +		   itmwid, iflgs, ier )
 C

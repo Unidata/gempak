@@ -41,6 +41,8 @@ C* A. Hardy/NCEP	10/03	Modified to decode JTWC messages	*
 C* D. Kidwell/NCEP       6/04	Updated comments for JTWC max wind      *
 C* m.gamazaychikov/SAIC	07/05	Added check to get the correct JTWC lats*
 C* m.gamazaychikov/SAIC	04/08	Add code to decode EXTRATROPICAL string *
+C* B. Hebbard/NCEP	06/20	Fix duplicate points and missing wind	*
+C*				radii for JTWC < nfcst 			*
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 	INCLUDE         'BRIDGE.PRM'
@@ -49,7 +51,8 @@ C*
      +			f64kt (*)
         REAL            flat(*), flon(*)
 C*
-	CHARACTER       advstr*(DCMXBF), t34*50, t50*50, t64*50, dum*1
+	CHARACTER       advstr*(DCMXBF), t34*50, t50*50, t64*50, dum*1,
+     +                  marker*9
 	LOGICAL		west
 C------------------------------------------------------------------------
 	iret = 0
@@ -57,18 +60,24 @@ C------------------------------------------------------------------------
         iext = 0 
         advstr = advise
         CALL ST_LSTR( advstr, ilen, iret) 
+
+C*      Use the string 'VALID AT:' to delimit forecast groups if it
+C*      appears (JTWC).  Otherwise just use 'VALID' (NHC/CPHC TCM).
+
+        IF ( INDEX ( advise(:ilen), 'VALID AT:') .gt. 0 ) THEN
+            marker = 'VALID AT:'
+        ELSE
+            marker = 'VALID'
+        END IF
+        CALL ST_LSTR ( marker, mkrlen, iret )
+
 C
 C*	Find the forecast latitude and longitude, storm type and wind 
 C*	radii at all forecast times.
 C
         DO i = 1, nfcst
 C
-            CALL ST_NOCC ( advise(:ilen), 'VALID AT:', 
-     +                     i, ipos, iret)
-            IF ( ipos .eq. 0 ) THEN
-                CALL ST_NOCC ( advise(:ilen), 'VALID', 
-     +                        i, ipos, iret)
-            END IF
+            CALL ST_NOCC (advise(:ilen), marker(:mkrlen), i, ipos, iret)
             ityp  = 0 
 	    inlat = 0
 	    idiss = 0
@@ -151,7 +160,8 @@ C
                 IF ( advise(ipos+iwlon-1:ipos+iwlon-1) .eq. 'W' )
      +               flon(i) = -flon(i)
 		ipos = ipos + iwlon
-		ivalid = INDEX ( advise ( ipos:ilen ), 'VALID' )
+		ivalid = INDEX ( advise ( ipos:ilen ), 
+     +                marker(:mkrlen ) )
 		IF ( ivalid .eq. 0 ) ivalid = ilen - ipos
 C
 C*		Get the forecast wind radii.

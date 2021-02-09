@@ -28,6 +28,8 @@ C* J. Cowie/COMET	 4/96	Add calib setting			*
 C* J. Cowie/COMET	 1/97	Changed IMGDEF common variable names	*
 C* J. Cowie/COMET	12/97	Added imradf, removed immode, imraw	*
 C* T. Piper/GSC		11/98	Updated prolog				*
+C* B. Hebbard/NCEP	12/20	Changed century breakpoint from		*
+C*				2020/2021 to 2040/2041			*
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 	INCLUDE		'IMGDEF.CMN'
@@ -123,7 +125,7 @@ C
 		IF ( ipos .gt. 0 ) THEN
 		    CALL ST_NUMB ( label(ipos-2:ipos-1), iday, ier )
 		    CALL ST_NUMB ( label(ipos+5:ipos+6), iyear, ier)
-		    IF ( iyear .le. 20 ) THEN
+		    IF ( iyear .le. 40 ) THEN
 			iyear = 2000 + iyear
 		    ELSE
 		        iyear = 1900 + iyear
