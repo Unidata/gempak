@@ -114,7 +114,8 @@ C
 1030	        FORMAT (/, 'DAY ', I1,' CONVECTIVE OUTLOOK AREAL OUTLINE')
             ELSE IF  ( otlktyp .eq. 'E' ) THEN
 	        WRITE ( lun, 1032 ) iday
-1032	        FORMAT (/, 'DAY ', I1,' ENHANCED CONVECTIVE OUTLOOK AREAL OUTLINE')
+1032	        FORMAT (/, 'DAY ', I1,' ENHANCED CONVECTIVE &
+     + OUTLOOK AREAL OUTLINE')
               ELSE
 	        WRITE ( lun, 1035 ) iday
 1035	        FORMAT (/,'DAY ',I1,' FIRE WEATHER OUTLOOK AREAL OUTLINE')
