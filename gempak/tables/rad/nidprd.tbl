@@ -24,6 +24,9 @@
 ! X. Guo/CWS		04/10   Updated 94 product
 ! X. Guo/CWS            04/10   Updated 99,134 and 135 products
 ! S. Jacobs/NCEP	 6/12	Added products 190, 191
+! G. Grosshans/SPC	12/20	Added MRMS v12.1 radar products
+! B. Hebbard/NCEP	 1/21	Corrected MRMS radar ID to 5
+! B. Hebbard/NCEP	 2/21	MRMS updates - w/ T. Lee
 !------------------------------------------------------------------------
 !
 !Type    Name      Prod#   #Lvls Units    Res    Description
@@ -85,7 +88,25 @@ LOCAL    LMTB3        72       8            4.00 LYR3_MAX_TURB
 LOCAL    SHEAR        87      16 1/S        2.00 COMB_SHEAR
 LOCAL    LARF3        89       8 DBZ        4.00 LYR_AVG_REFL3
 !------------------------------------------------------------------------
+!
+! MRMS v12.1 radar for ALASKA
+!
+ALASKA   CREF         50      16 DBZ        1.00 CREF_1KM
+ALASKA   PRCP1        51      16 INCHES     1.00 PRECIP_1HR_1KM
+ALASKA   PRCP24       54      16 INCHES     1.00 PRECIP_24HR_1KM
+ALASKA   PRCPC        55      16 INCHES     1.00 PRCPC_SINCE_12Z_1KM
+ALASKA   TOPS18       56      16 KFT        1.00 ECHO_TOPS_18_1KM
+ALASKA   TOPS30       57      16 KFT        1.00 ECHO_TOPS_30_1KM
+ALASKA   TOPS50       58      16 KFT        1.00 ECHO_TOPS_50_1KM
+ALASKA   BREFNOQC     59      16 DBZ        1.00 BASE_REFL_NFLT_1KM
+ALASKA   BREF         60      16 DBZ        1.00 BASE_REFL_1KM
+ALASKA   VIL          61      16 KG/M**2    1.00 PREC_WATER_1KM
+ALASKA   VIL2         62      16 KG/M**2    1.00 W2_VIL_2HR_1KM
+ALASKA   VIL24        63      16 KG/M**2    1.00 W2_VIL_24HR_1KM
+!------------------------------------------------------------------------
+!
 ! Used for the UNISYS data feed.
+!
 ALASKA   CREF         30      16 DBZ        4.00 COMP_REFL_4KM
 ALASKA   PRCP1        89      16 INCHES     2.00 PRECIP_1HR_2KM
 ALASKA   PRCP1        90      16 INCHES     4.00 PRECIP_1HR_4KM
@@ -100,7 +121,25 @@ ALASKA   BREF        139      16 DBZ        1.00 BASE_REFL_1KM
 ALASKA   BREF        140      16 DBZ        2.00 BASE_REFL_2KM
 ALASKA   VIL         148      16 KG/M**2    4.00 PREC_WATER_4KM
 !------------------------------------------------------------------------
+!
+! MRMS v12.1 radar for Hawaii
+!
+HAWAII   CREF         50      16 DBZ        1.00 CREF_1KM
+HAWAII   PRCP1        51      16 INCHES     1.00 PRECIP_1HR_1KM
+HAWAII   PRCP24       54      16 INCHES     1.00 PRECIP_24HR_1KM
+HAWAII   PRCPC        55      16 INCHES     1.00 PRCPC_SINCE_12Z_1KM
+HAWAII   TOPS18       56      16 KFT        1.00 ECHO_TOPS_18_1KM
+HAWAII   TOPS30       57      16 KFT        1.00 ECHO_TOPS_30_1KM
+HAWAII   TOPS50       58      16 KFT        1.00 ECHO_TOPS_50_1KM
+HAWAII   BREFNOQC     59      16 DBZ        1.00 BREF_NOFLT_1KM
+HAWAII   BREF         60      16 DBZ        1.00 BREF_FLT_1KM
+HAWAII   VIL          61      16 KG/M**2    1.00 PREC_WATER_1KM
+HAWAII   VIL2         62      16 KG/M**2    1.00 W2_VIL_2HR_1KM
+HAWAII   VIL24        63      16 KG/M**2    1.00 W2_VIL_24HR_1KM
+!------------------------------------------------------------------------
+!
 ! Used for the UNISYS data feed.
+!
 HAWAII   CREF         30      16 DBZ        4.00 COMP_REFL_4KM
 HAWAII   PRCP1        89      16 INCHES     2.00 PRECIP_1HR_2KM
 HAWAII   PRCP1        90      16 INCHES     4.00 PRECIP_1HR_4KM
@@ -114,8 +153,50 @@ HAWAII   BREF        138      16 DBZ        2.00 BASE_REFL_NFLTC_2KM
 HAWAII   BREF        139      16 DBZ        1.00 BASE_REFL_1KM
 HAWAII   BREF        140      16 DBZ        2.00 BASE_REFL_2KM
 HAWAII   VIL         148      16 KG/M**2    4.00 PREC_WATER_4KM
+!
+! MRMS v12.1 radar for CONUS
+!
+NATIONAL PRCPC       200      16 INCHES     1.00 W2_PRECIP_CMLTV_1HR_1KM
+NATIONAL PRCPC       201      16 INCHES     1.00 W2_PRECIP_CMLTV_3HR_1KM
+NATIONAL CREF        202      16 DBZ        1.00 W2_CREF_1KM
+NATIONAL RALA        203      16 DBZ        1.00 W2_REFL_RALA_1KM
+NATIONAL VIL2HR      204      16 KG/M**2    1.00 W2_VIL_1KM
+NATIONAL VIL24HR     205      16 KG/M**2    1.00 W2_VIL_1KM
+NATIONAL PRCPC       206      16 INCHES     1.00 W2_PRECIP_CMLTV_6HR_1KM
+NATIONAL POSH        207      16 PERCENT    1.00 W2_PROB_SEVERE_HAIL_1KM
+NATIONAL MESH        208      16 INCHES     1.00 W2_MAXM_SIZE_HAIL_1KM
+NATIONAL VIL         209      16 KG/M**2    1.00 W2_PREC_WATER_1KM
+NATIONAL ECHO        210      16 KFT        1.00 W2_ECHO_TOPS_1KM_18DBZ
+NATIONAL CREF        211      16 DBZ        1.00 W2_CREF_1KM
+NATIONAL ECHO        212      16 KFT        1.00 W2_ECHO_TOPS_1KM_30DBZ
+NATIONAL ECHO        213      16 KFT        1.00 W2_ECHO_TOPS_1KM_50DBZ
+NATIONAL CAPI        214      16 DBZ        1.00 W2_01KMCAPPI_1KM
+NATIONAL CAPI        215      16 DBZ        1.00 W2_02KMCAPPI_1KM
+NATIONAL CAPI        216      16 DBZ        1.00 W2_03KMCAPPI_1KM
+NATIONAL CAPI        217      16 DBZ        1.00 W2_04KMCAPPI_1KM
+NATIONAL CAPI        218      16 DBZ        1.00 W2_05KMCAPPI_1KM
+NATIONAL CAPI        219      16 DBZ        1.00 W2_06KMCAPPI_1KM
+NATIONAL CAPI        220      16 DBZ        1.00 W2_07KMCAPPI_1KM
+NATIONAL CAPI        221      16 DBZ        1.00 W2_08KMCAPPI_1KM
+NATIONAL CAPI        222      16 DBZ        1.00 W2_09KMCAPPI_1KM
+NATIONAL CAPI        223      16 DBZ        1.00 W2_10KMCAPPI_1KM
+NATIONAL CAPI        224      16 DBZ        1.00 W2_11KMCAPPI_1KM
+NATIONAL CAPI        225      16 DBZ        1.00 W2_12KMCAPPI_1KM
+NATIONAL CAPI        226      16 DBZ        1.00 W2_13KMCAPPI_1KM
+NATIONAL CAPI        227      16 DBZ        1.00 W2_14KMCAPPI_1KM
+NATIONAL CAPI        228      16 DBZ        1.00 W2_15KMCAPPI_1KM
+NATIONAL CAPI        229      16 DBZ        1.00 W2_16KMCAPPI_1KM
+NATIONAL CAPI        230      16 DBZ        1.00 W2_17KMCAPPI_1KM
+NATIONAL CAPI        231      16 DBZ        1.00 W2_18KMCAPPI_1KM
+NATIONAL CAPI        232      16 DBZ        1.00 W2_19KMCAPPI_1KM
+NATIONAL BREF        250      16 DBZ        1.00 BASE_REFL_1KM
+NATIONAL BREF_NOQC   258      16 DBZ        1.00 BASE_REFL_NOQC_1KM
+NATIONAL PRCPC       255      16 INCHES     1.00 W2_PRECIP_CMLTV_24HR_1KM
+NATIONAL PRCPC       266      16 INCHES     1.00 PRCP_SINCE_12Z_1KM
 !------------------------------------------------------------------------
+!
 ! Used for the UNISYS data feed.
+!
 NATIONAL CREF         27      16 DBZ        4.00 COMP_REFL_4KM
 NATIONAL CREF         28      16 DBZ        8.00 COMP_REFL_8KM
 NATIONAL CREF         30      16 DBZ        4.00 COMP_REFL_4KM
