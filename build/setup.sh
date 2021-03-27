@@ -35,13 +35,12 @@ elif [[ "$os_type" = "centos" ]]; then
         sudo docker stop $DOCKER_CONTAINER_ID
         sudo docker rm -v $DOCKER_CONTAINER_ID
     fi
-elif [[ "$os_type" =~ ^(ubuntu|fedora)$ ]]; then 
-#elif [ "$os_type" = "ubuntu" ]; then
+elif [ "$os_type" = "ubuntu" ]; then
 
     sudo docker run --rm=true -v `pwd`:/gempak:rw unidata/gempak-devel:$os_type /bin/bash -c "bash -xe /gempak/build/build_${os_type}.sh "
 
-#elif [[ "$os_type" = "fedora" ]]; then
+elif [[ "$os_type" = "fedora" ]]; then
 
-#    sudo docker run --rm=true -v `pwd`:/gempak:rw unidata/gempak-devel:$os_type /bin/bash -c "bash -xe /gempak/build/build_${os_type}.sh"
+    sudo docker run --rm=true -v `pwd`:/gempak:rw unidata/gempak-devel:$os_type /bin/bash -c "bash -xe /gempak/build/build_${os_type}.sh"
 
 fi
