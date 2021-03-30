@@ -77,6 +77,8 @@
 ! G. Grosshans/SPC	12/20	Added MRMS v12.1 radar products
 ! B. Hebbard/NCEP	 1/21	Correct MRMS radar ID to 5
 ! B. Hebbard/NCEP        2/21   MRMS updates - w/ T. Lee
+! B. Hebbard/NCEP        3/21   Move Unisys entries after MRMS; comment out 
+!				duplicates; "MRMS12.1"->"REFLECT" (NAWIPS-172)
 !------------------------------------------------------------------------------
 !
 ! SATELLITE IMAGE TYPES
@@ -628,6 +630,48 @@ GOESR-ABI            13M6          0    255    186  2**16      1 fogcira.tbl
 !RAD ID             |TYP     |   MIN|   MAX|NUMBER|NUMBER| DEPTH| LUT FILE     |
 !(20)               |(8)     |   (6)|   (6)|   (6)|   (6)|   (6)|    (14)      |
 !------------------------------------------------------------------------------
+!
+! MRMS radar for CONUS
+!
+NATIONAL  1 KM  01HR PRECIP        0     15      8    200      1 nids_pre.tbl
+NATIONAL  1 KM  03HR PRECIP        0     15      8    201      1 nids_pre.tbl
+NATIONAL  1 KM  CREF REFLECT       0     15      8    202      1 osf_ref16.tbl
+NATIONAL  1 KM  RALA REFLECT       0     15      8    203      1 osf_ref16.tbl
+NATIONAL  1 KM  2HR  VIL           0     15      8    204      1 osf_ref16.tbl
+NATIONAL  1 KM  24HR VIL           0     15      8    205      1 osf_ref16.tbl
+NATIONAL  1 KM  06HR PRECIP        0     15      8    206      1 nids_pre.tbl
+NATIONAL  1 KM       POSH          0     15      8    207      1 osf_ref16.tbl
+NATIONAL  1 KM       MESH          0     15      8    208      1 osf_ref16.tbl
+NATIONAL  1 KM       VIL           0     15      8    209      1 osf_ref16.tbl
+NATIONAL  1 KM  ECHO TOPS          0     15      8    210      1 osf_ref16.tbl
+NATIONAL  1 KM  CREF REFLECT       0     15      8    211      1 osf_ref16.tbl
+NATIONAL  1 KM  ECHO TOPS          0     15      8    212      1 osf_ref16.tbl
+NATIONAL  1 KM  ECHO TOPS          0     15      8    213      1 osf_ref16.tbl
+NATIONAL  1 KM  BREF FILTERED      0     15      8    250      1 osf_ref16.tbl
+NATIONAL  1 KM  24HR PRECIP        0     15      8    255      1 nids_pre.tbl
+NATIONAL  1 KM  CREF NOFILTER      0     15      8    257      1 osf_ref16.tbl
+NATIONAL  1 KM  BREF NOFILTER      0     15      8    258      1 osf_ref16.tbl
+NATIONAL  1 KM  PRCPC PRECIP       0     15      8    266      1 nids_pre.tbl
+NATL 1 KM 4API(01KM) REFLECT       0     15      8    214      1 osf_ref16.tbl
+NATL 1 KM CAPI(02KM) REFLECT       0     15      8    215      1 osf_ref16.tbl
+NATL 1 KM CAPI(03KM) REFLECT       0     15      8    216      1 osf_ref16.tbl
+NATL 1 KM CAPI(04KM) REFLECT       0     15      8    217      1 osf_ref16.tbl
+NATL 1 KM CAPI(05KM) REFLECT       0     15      8    218      1 osf_ref16.tbl
+NATL 1 KM CAPI(06KM) REFLECT       0     15      8    219      1 osf_ref16.tbl
+NATL 1 KM CAPI(07KM) REFLECT       0     15      8    220      1 osf_ref16.tbl
+NATL 1 KM CAPI(08KM) REFLECT       0     15      8    221      1 osf_ref16.tbl
+NATL 1 KM CAPI(09KM) REFLECT       0     15      8    222      1 osf_ref16.tbl
+NATL 1 KM CAPI(10KM) REFLECT       0     15      8    223      1 osf_ref16.tbl
+NATL 1 KM CAPI(11KM) REFLECT       0     15      8    224      1 osf_ref16.tbl
+NATL 1 KM CAPI(12KM) REFLECT       0     15      8    225      1 osf_ref16.tbl
+NATL 1 KM CAPI(13KM) REFLECT       0     15      8    226      1 osf_ref16.tbl
+NATL 1 KM CAPI(14KM) REFLECT       0     15      8    227      1 osf_ref16.tbl
+NATL 1 KM CAPI(15KM) REFLECT       0     15      8    228      1 osf_ref16.tbl
+NATL 1 KM CAPI(16KM) REFLECT       0     15      8    229      1 osf_ref16.tbl
+NATL 1 KM CAPI(17KM) REFLECT       0     15      8    230      1 osf_ref16.tbl
+NATL 1 KM CAPI(18KM) REFLECT       0     15      8    231      1 osf_ref16.tbl
+NATL 1 KM CAPI(19KM) REFLECT       0     15      8    232      1 osf_ref16.tbl
+!------------------------------------------------------------------------------
 ! Used for the UNISYS data feed.
 NATIONAL  4 KM  COMP REFLECT       0     15      8     27      1 osf_ref16.tbl
 NATIONAL  4 KM  COMP REFLECT       0     15      8     28      1 osf_ref16.tbl
@@ -669,14 +713,14 @@ NATIONAL  4 KM       VIL           0     15      8    148      1 nids_vil.tbl
 NATIONAL  8 KM       VIL           0     15      8    149      1 nids_vil.tbl
 NATIONAL  1 KM  CREF WSR-88D       0     15      8    190      1 osf_ref16.tbl
 NATIONAL  1 KM  CREF TDWR          0     15      8    191      1 osf_ref16.tbl
-NATIONAL  1 KM  CREF 1X1KM         0     15      8    203      1 osf_ref16.tbl
-NATIONAL  1 KM  CREF 1X1KM         0     15      8    209      1 osf_ref16.tbl
+!NATIONAL  1 KM  CREF 1X1KM         0     15      8    203      1 osf_ref16.tbl
+!NATIONAL  1 KM  CREF 1X1KM         0     15      8    209      1 osf_ref16.tbl
 !NATIONAL  1 KM  BREF 1x1KM         0    255      8    216      1 osf_ref16.tbl
 !NATIONAL  1 KM  BREF WSR-88D       0    255      8    220      1 osf_ref16.tbl
-NATIONAL  2 KM  BREF WSR-88D       0    255      8    221      1 osf_ref16.tbl
-NATIONAL  1 KM  BREF UNFIL WSR-88D 0    255      8    223      1 osf_ref16.tbl
-NATIONAL  1 KM  BREF FILTERED WSR  0    255      8    225      1 osf_ref16.tbl
-NATIONAL  2 KM  BREF FILTERED WSR  0    255      8    226      1 osf_ref16.tbl
+!NATIONAL  2 KM  BREF WSR-88D       0    255      8    221      1 osf_ref16.tbl
+!NATIONAL  1 KM  BREF UNFIL WSR-88D 0    255      8    223      1 osf_ref16.tbl
+!NATIONAL  1 KM  BREF FILTERED WSR  0    255      8    225      1 osf_ref16.tbl
+!NATIONAL  2 KM  BREF FILTERED WSR  0    255      8    226      1 osf_ref16.tbl
 !------------------------------------------------------------------------------
 ! Used for data from other vendors.
 NATIONAL  4 KM  COMP REFLECT       0     15      8      5      1 osf_ref16.tbl
@@ -732,9 +776,9 @@ LOCAL  2 KM  BASE VELOCITY 48NM    0     15      7    182      1 osf_ref16.tbl
 LOCAL  2 KM  BREF 225NM            0     15      7    186      1 osf_ref16.tbl
 !------------------------------------------------------------------------------
 !
-! MRMS v12.1 radar for Alaska
+! MRMS radar for Alaska
 !
-ALASKA  1 KM  CREF   MRMS12.1      0     15      6     50      1 osf_ref16.tbl
+ALASKA  1 KM  CREF   REFLECT       0     15      6     50      1 osf_ref16.tbl
 ALASKA  1 KM  1HR    PRECIP        0     15      6     51      1 nids_pre.tbl
 ALASKA  1 KM  24HR   PRECIP        0     15      6     54      1 nids_pre.tbl
 ALASKA  1 KM  PTOTL  SINCE12Z      0     15      6     55      1 nids_pre.tbl
@@ -742,7 +786,7 @@ ALASKA  1 KM  ECHO   TOPS18        0     15      6     56      1 nids_tops.tbl
 ALASKA  1 KM  ECHO   TOPS30        0     15      6     57      1 nids_tops.tbl
 ALASKA  1 KM  ECHO   TOPS50        0     15      6     58      1 nids_tops.tbl
 ALASKA  1 KM  BREF   NOFILTER      0     15      6     59      1 osf_ref16.tbl
-ALASKA  1 KM  BREF   MRMS12.1      0     15      6     60      1 osf_ref16.tbl
+ALASKA  1 KM  BREF   REFLECT       0     15      6     60      1 osf_ref16.tbl
 ALASKA  1 KM         VIL           0     15      6     61      1 nids_vil.tbl
 ALASKA  1 KM   2HR   VIL           0     15      6     62      1 nids_vil.tbl
 ALASKA  1 KM  24HR   VIL           0     15      6     63      1 nids_vil.tbl
@@ -775,9 +819,9 @@ ALASKA  2 KM  BREF WSR-88D         0    255      8    221      1 osf_ref16.tbl
 ALASKA  1 KM  BREF Unfil WSR-88D   0    255      8    223      1 osf_ref16.tbl
 !------------------------------------------------------------------------------
 !
-! MRMS v12.1 radar for Hawaii
+! MRMS radar for Hawaii
 !
-HAWAII  1 KM  CREF   MRMS12.1      0     15      5     50      1 osf_ref16.tbl
+HAWAII  1 KM  CREF   REFLECT       0     15      5     50      1 osf_ref16.tbl
 HAWAII  1 KM  1HR    PRECIP        0     15      5     51      1 nids_pre.tbl
 HAWAII  1 KM  24HR   PRECIP        0     15      5     54      1 nids_pre.tbl
 HAWAII  1 KM  PTOTL  SINCE12Z      0     15      5     55      1 nids_pre.tbl
@@ -785,7 +829,7 @@ HAWAII  1 KM  ECHO   TOPS18        0     15      5     56      1 nids_tops.tbl
 HAWAII  1 KM  ECHO   TOPS30        0     15      5     57      1 nids_tops.tbl
 HAWAII  1 KM  ECHO   TOPS50        0     15      5     58      1 nids_tops.tbl
 HAWAII  1 KM  BREF   NOFILTER      0     15      5     59      1 osf_ref16.tbl
-HAWAII  1 KM  BREF   MRMS12.1      0     15      5     60      1 osf_ref16.tbl
+HAWAII  1 KM  BREF   REFLECT       0     15      5     60      1 osf_ref16.tbl
 HAWAII  1 KM         VIL           0     15      5     61      1 nids_vil.tbl
 HAWAII  1 KM   2HR   VIL           0     15      5     62      1 nids_vil.tbl
 HAWAII  1 KM  24HR   VIL           0     15      5     63      1 nids_vil.tbl
@@ -818,6 +862,7 @@ HAWAII  2 KM  BREF WSR-88D         0    255      8    221      1 osf_ref16.tbl
 HAWAII  1 KM  BREF Unfil WSR-88D   0    255      8    223      1 osf_ref16.tbl
 !----------------------------------------------------------------------------
 ! Used for data from other vendors.
+!
 LOCAL  1 KM  BASE    REFLECT       0      7      7     16      1 osf_ref8.tbl
 LOCAL  2 KM  BASE    REFLECT       0      7      7     17      1 osf_ref8.tbl
 LOCAL  4 KM  BASE    REFLECT       0      7      7     18      1 osf_ref8.tbl
@@ -852,45 +897,4 @@ LOCAL  4 KM  L2 TURB MAX           0      7      7     71      1 osf_ref8.tbl
 LOCAL  4 KM  L3 TURB MAX           0      7      7     72      1 osf_ref8.tbl
 LOCAL  COMBINED      SHEAR         0     15      7     87      1 nids_csher.tbl
 LOCAL  4 KM  L3 REFL AVE           0      7      7     89      1 osf_ref8.tbl
-!------------------------------------------------------------------------------
-!
-! MRMS v12.1 radar for CONUS
-!
-NATIONAL  1 KM  01HR PRECIP        0     15      8    200      1 nids_pre.tbl
-NATIONAL  1 KM  03HR PRECIP        0     15      8    201      1 nids_pre.tbl
-NATIONAL  1 KM  CREF MRMS12.1      0     15      8    202      1 osf_ref16.tbl
-NATIONAL  1 KM  RALA REFLECT       0     15      8    203      1 osf_ref16.tbl
-NATIONAL  1 KM  2HR  VIL           0     15      8    204      1 osf_ref16.tbl
-NATIONAL  1 KM  24HR VIL           0     15      8    205      1 osf_ref16.tbl
-NATIONAL  1 KM  06HR PRECIP        0     15      8    206      1 nids_pre.tbl
-NATIONAL  1 KM       POSH          0     15      8    207      1 osf_ref16.tbl
-NATIONAL  1 KM       MESH          0     15      8    208      1 osf_ref16.tbl
-NATIONAL  1 KM       VIL           0     15      8    209      1 osf_ref16.tbl
-NATIONAL  1 KM  ECHO TOPS          0     15      8    210      1 osf_ref16.tbl
-NATIONAL  1 KM  CREF MRMS12.1      0     15      8    211      1 osf_ref16.tbl
-NATIONAL  1 KM  ECHO TOPS          0     15      8    212      1 osf_ref16.tbl
-NATIONAL  1 KM  ECHO TOPS          0     15      8    213      1 osf_ref16.tbl
-NATIONAL  1 KM  BREF FILTERED      0     15      8    250      1 osf_ref16.tbl
-NATIONAL  1 KM  24HR PRECIP        0     15      8    255      1 nids_pre.tbl
-NATIONAL  1 KM  CREF NOFILTER      0     15      8    257      1 osf_ref16.tbl
-NATIONAL  1 KM  BREF NOFILTER      0     15      8    258      1 osf_ref16.tbl
-NATIONAL  1 KM  PRCPC PRECIP       0     15      8    266      1 nids_pre.tbl
-NATL 1 KM 4API(01KM) REFLECT       0     15      8    214      1 osf_ref16.tbl
-NATL 1 KM CAPI(02KM) REFLECT       0     15      8    215      1 osf_ref16.tbl
-NATL 1 KM CAPI(03KM) REFLECT       0     15      8    216      1 osf_ref16.tbl
-NATL 1 KM CAPI(04KM) REFLECT       0     15      8    217      1 osf_ref16.tbl
-NATL 1 KM CAPI(05KM) REFLECT       0     15      8    218      1 osf_ref16.tbl
-NATL 1 KM CAPI(06KM) REFLECT       0     15      8    219      1 osf_ref16.tbl
-NATL 1 KM CAPI(07KM) REFLECT       0     15      8    220      1 osf_ref16.tbl
-NATL 1 KM CAPI(08KM) REFLECT       0     15      8    221      1 osf_ref16.tbl
-NATL 1 KM CAPI(09KM) REFLECT       0     15      8    222      1 osf_ref16.tbl
-NATL 1 KM CAPI(10KM) REFLECT       0     15      8    223      1 osf_ref16.tbl
-NATL 1 KM CAPI(11KM) REFLECT       0     15      8    224      1 osf_ref16.tbl
-NATL 1 KM CAPI(12KM) REFLECT       0     15      8    225      1 osf_ref16.tbl
-NATL 1 KM CAPI(13KM) REFLECT       0     15      8    226      1 osf_ref16.tbl
-NATL 1 KM CAPI(14KM) REFLECT       0     15      8    227      1 osf_ref16.tbl
-NATL 1 KM CAPI(15KM) REFLECT       0     15      8    228      1 osf_ref16.tbl
-NATL 1 KM CAPI(16KM) REFLECT       0     15      8    229      1 osf_ref16.tbl
-NATL 1 KM CAPI(17KM) REFLECT       0     15      8    230      1 osf_ref16.tbl
-NATL 1 KM CAPI(18KM) REFLECT       0     15      8    231      1 osf_ref16.tbl
-NATL 1 KM CAPI(19KM) REFLECT       0     15      8    232      1 osf_ref16.tbl
+

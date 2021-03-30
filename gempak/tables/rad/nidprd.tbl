@@ -89,7 +89,7 @@ LOCAL    SHEAR        87      16 1/S        2.00 COMB_SHEAR
 LOCAL    LARF3        89       8 DBZ        4.00 LYR_AVG_REFL3
 !------------------------------------------------------------------------
 !
-! MRMS v12.1 radar for ALASKA
+! MRMS radar for ALASKA
 !
 ALASKA   CREF         50      16 DBZ        1.00 CREF_1KM
 ALASKA   PRCP1        51      16 INCHES     1.00 PRECIP_1HR_1KM
@@ -122,7 +122,7 @@ ALASKA   BREF        140      16 DBZ        2.00 BASE_REFL_2KM
 ALASKA   VIL         148      16 KG/M**2    4.00 PREC_WATER_4KM
 !------------------------------------------------------------------------
 !
-! MRMS v12.1 radar for Hawaii
+! MRMS radar for Hawaii
 !
 HAWAII   CREF         50      16 DBZ        1.00 CREF_1KM
 HAWAII   PRCP1        51      16 INCHES     1.00 PRECIP_1HR_1KM
@@ -154,7 +154,7 @@ HAWAII   BREF        139      16 DBZ        1.00 BASE_REFL_1KM
 HAWAII   BREF        140      16 DBZ        2.00 BASE_REFL_2KM
 HAWAII   VIL         148      16 KG/M**2    4.00 PREC_WATER_4KM
 !
-! MRMS v12.1 radar for CONUS
+! MRMS radar for CONUS
 !
 NATIONAL PRCPC       200      16 INCHES     1.00 W2_PRECIP_CMLTV_1HR_1KM
 NATIONAL PRCPC       201      16 INCHES     1.00 W2_PRECIP_CMLTV_3HR_1KM

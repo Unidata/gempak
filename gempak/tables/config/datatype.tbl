@@ -212,12 +212,12 @@
 !* L. Hinson/AWC        10/12   Added EDR                               *
 !* G.McFadden/IMSG	07/13	Added SGWHA and WSPDA			*
 !* S. Jacobs/NCEP	 8/13	Added AWIPS Database entries		*
-!* G.McFadden/IMSG	 1/14	Added WSPD2 and WSPDC			*/nam20
-
+!* G.McFadden/IMSG	 1/14	Added WSPD2 and WSPDC			*
 !* G. McFadden/IMSG	 1/14	Added TRAKC, TRAKS             		*
 !* J. Carr/NCO          03/13   Added NAM32                             *
 !* J. Carr/NCO          06/14   Added HRW Conus;removed E/W             *
 !* P. O'Reilly/NCO      02/15   Added 0.5 deg GFS VAFTAD grids          *
+!* B. Hebbard/NCO       03/21   Chgd. $MODEL/gfs-->/gfsatmos for GFSv16 *
 !************************************************************************
 !
 !           |                         |                                                |        |        |DEF |DEF   |DEF   |                     |TIME
@@ -369,7 +369,7 @@ ECMWFT       $MODEL/ecmwf              ecmwf_trop_YYYYMMDDHH                    
 ECMWF_HIRES  $MODEL/ecmwf_hr           ecmwf_hr_YYYYMMDDHHfFFF   			CAT_GRD  SCAT_FCT   -1     -1     -1 OFF/0/0                    4
 EC_HIRES_PCP $MODEL/ecmwf_hr           ecmwf_hr_YYYYMMDDHH_pcpn                         CAT_GRD  SCAT_FCT   -1     -1     -1 OFF/0/0                    4
 GDAS         $MODEL/gdas               gdas_YYYYMMDDHHfFFF                              CAT_GRD  SCAT_FCT   -1     -1     -1 OFF/0/0                    4
-GFS          $MODEL/gfs                gfs_YYYYMMDDHHfFFF                               CAT_GRD  SCAT_FCT   -1     -1     -1 OFF/0/0                    4
+GFS          $MODEL/gfsatmos           gfs_YYYYMMDDHHfFFF                               CAT_GRD  SCAT_FCT   -1     -1     -1 OFF/0/0                    4
 GFSP         $MODEL/gfsp               gfs_YYYYMMDDHHfFFF                               CAT_GRD  SCAT_FCT   -1     -1     -1 OFF/0/0                    4
 GFSHD        $MODEL/gfshd              gfshd_YYYYMMDDHHfFFF                             CAT_GRD  SCAT_FCT   -1     -1     -1 OFF/0/0                    4
 GHM          $MODEL/ghm                ghmg_YYYYMMDDHHfFFF_*                            CAT_GRD  SCAT_FCT   -1     -1     -1 OFF/0/0                    4
