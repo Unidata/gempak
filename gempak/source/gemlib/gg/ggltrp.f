@@ -30,6 +30,7 @@ C* Log:									*
 C* D. Kidwell/NCEP	 2/00	                                        *
 C* S. Jacobs/NCEP	 3/00	Added Pos and Neg flags as input	*
 C* S. Jacobs/NCEP	 3/00	Changed 0 polarity to use negative sym	*
+C* B. Hebbard/NCEP  12/18   Increase capacity:  MAXSTK, idata size by x5
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 C*
@@ -37,10 +38,10 @@ C*
 	INTEGER		icolrs (*), mark (*)
 	REAL		szmrkr (*)
 C*
-	PARAMETER	( MAXSTK = LLMXPT * 2 )
+	PARAMETER	( MAXSTK = LLMXPT * 10 )
 C*
 	CHARACTER	datmin*20, cmin*2
-	INTEGER		idata (LLMXPT*4), iptr (0:62),
+	INTEGER		idata (LLMXPT*20), iptr (0:62),
      +			istrtp (0:60), istrtn (0:60), icolor (0:60)
 	REAL		rlat (MAXSTK,2), rlon (MAXSTK,2)
 	LOGICAL		found

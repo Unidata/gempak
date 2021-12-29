@@ -1,3 +1,6 @@
+DPG       74003 DUGWAY_PROVING_GROUNDS           UT US  4018 -11292  1325  0 
+QAG       74001 REDSTONE/HUNTSVILLE              AL US  3468  -8668   209  0
+KREE      72267 REESE_MESONET                    TX US  3361 -10205  1020  0
 ENJA      01001 JAN_MAYEN                        -- NO  7093   -866     9  0                    
 ENAS      01004 NY-ALESUND_II                    -- NO  7891   1193     8  0                    
 ENAN      01010 ANDOYA                           -- NO  6930   1613    14  0                    
@@ -745,7 +748,7 @@ GQNN      61442 NOUAKCHOTT                       -- MT  1810  -1595     3  0
 GQNI      61497 NEMA                             -- MT  1660   -726   269  0                    
 GQNF      61498 KIFFA                            -- MT  1663  -1140   115  0                    
 GOSS      61600 SAINT-LOUIS                      -- SG  1605  -1645     4  0                    
-GOOY      61641 DAKAR/YOFF                       -- SG  1473  -1750    24  0                    
+GOOY      61660 DAKAR-DIAS                       -- SG  1467  -1707    86  0                    
 GOTT      61687 TAMBACOUNDA                      -- SG  1376  -1368    50  0                    
 GOGG      61695 ZIGUINCHOR                       -- SG  1255  -1626    23  0                    
 GBYD      61701 BANJUL/YUNDUM                    -- GB  1320  -1663    33  0                    
@@ -1118,7 +1121,7 @@ APX       72634 GAYLORD                          MI US  4491  -8471   446  1
 GRB       72645 GREEN_BAY/STRAUBEL               WI US  4450  -8811   214  0                    
 MPX       72649 CHANHASSEN                       MN US  4485  -9356   287  1                    
 ABR       72659 ABERDEEN/REG                     SD US  4545  -9843   396  0                    
-RAP       72662 RAPID_CITY                       SD US  4408 -10321  1029  0                    
+UNR       72662 RAPID_CITY                       SD US  4408 -10321  1029  0                    
 RIW       72672 RIVERTON                         WY US  4306 -10848  1703  1                    
 BOI       72681 BOISE/MUN                        ID US  4356 -11621   874  0                    
 SLE       72694 SALEM/MCNARY                     OR US  4491 -12300    61  0                    
@@ -1129,6 +1132,7 @@ GGW       72768 GLASGOW/INT                      MT US  4821 -10661   700  0
 TFX       72776 GREAT_FALLS                      MT US  4746 -11139  1134  1                    
 OTX       72786 SPOKANE                          WA US  4768 -11763   728  1                    
 UIL       72797 QUILLAYUTE                       WA US  4795 -12455    62  0                    
+AWE       73110 SHEARWATER                       NS CN  4463  -6350    38  0                    
 APG       74002 ABERDEEN_PRV_GRND_&              MD US  3947  -7607     5  0                    
 1Y7       74004 YUMA_PRV_GRND_&                  AZ US  3285 -11440    98  0                    
           74341 WOOD_LAKE                        MN US  4466  -9545   319  0                    
@@ -1157,7 +1161,7 @@ ILX       74560 LINCOLN                          IL US  4015  -8933   178  1
           74604 VANDENBERG_AFB                   CA US  3478 -12053   170  1                    
 VBG       74606 VANDENBERG_AFB                   CA US  3465 -12057   112  1                    
 NID       74612 CHINA_LAKE,_NAF                  CA US  3568 -11768   696  0                    
-          74626 WFO_PHOENIX                      AZ US  3345 -11195   384  0                    
+PSR       74626 WFO_PHOENIX                      AZ US  3345 -11195   384  0                    
           74629 WHITE_SANDS                      NM US  3240 -10633  1224  0                    
           74635 AZTEC                            NM US  3683 -10790  1902  0                    
           74640 VICI                             OK US  3606  -9921   648  0                    

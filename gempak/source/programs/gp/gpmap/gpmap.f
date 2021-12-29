@@ -130,11 +130,12 @@ C* L. Hinson/AWC         5/12   Added ASDI                              *
 C* L. Hinson/AWC        10/12   Added EDR                               *
 C* G. McFadden/IMSG	 7/13	Added SGWHA, WSPDA			*
 C* G. McFadden/IMSG	11/13	Changed WSPDA to WSPDALT                *
-C*				Added WSPDA, WSPD2, WSPDC		*
+C*                              Added WSPDA, WSPD2, WSPDC		*
 C* G. McFadden/IMSG	 1/14	Moved TRAK1, TRAKE, and TRAK2 into TRAK	*
-C*				added TRAKC and TRAKS to TRAK		*
-C* M. James/Unidata	 4/14	Added time back to GG_WAVE and GG_ASCT	*
+C*                              added TRAKC and TRAKS to TRAK   	*
 C* S. GUAN/NCEP         11/17   Change NN to NH for warn                *
+C* L. Hinson/AWC        11/18   Revised GPMAP to support EDR with       *
+C*                              conditional track plotting              *
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 C*
@@ -165,9 +166,9 @@ C*
      +			vgf4*72, imgfls(MXLOOP)*132, ucproj*72,
      +			varr(4)*72, warr(10)*72, harr(26)*72, cc*1,
      +			atmodl(NM)*20, usrmdl(NM)*20, qarr(16)*132,
-     +			wsarr(13)*132, asarr(17)*132, tparr(4)*132, 
-     +			osarr(15)*132, wflg(2)*72, enmodl(NM)*20,
-     +			ewndc(4)*3, sgwh_arr(8)*132, wspdalt_arr(7)*132,
+     +			wsarr(13)*132, asarr(16)*132, tparr(4)*132, 
+     +			osarr(13)*132, wflg(2)*72, enmodl(NM)*20,
+     +			ewndc(4)*3, sgwh_arr(7)*132, wspdalt_arr(7)*132,
      +                  ee*1, mode*2, depdest*2, sites*125, rarr(2)*5, 
      +                  sarr(2)*5
 	INTEGER		iwclr(NM), mrktyp(NM), iwidth(NM), iflag(NG),
@@ -189,17 +190,14 @@ C*
      +			lclrof(NM), lclruf(NM), lclren (NM), tcolor,
      +                  tlimit, numf, ihtinc(LLCLEV), htclr(LLCLEV),
      +                  evclr(LLCLEV), symb1, symb2, esymb1(LLCLEV),
-     +                  esymb2(LLCLEV), enumc, aoa180int, maxback
+     +                  esymb2(LLCLEV), enumc, aoa180int, tracksint
 	LOGICAL		respnd, done, first, proces, found, scflag,
-     +                  aoa180fl
+     +                  aoa180fl, tracksfl
 	REAL		ppmark(3), pnmark(3), tminc(LLCLEV), ssize(NM),
      +			arwsiz(NM), ahdsiz(NM), wind(4), ewind(4),
      +                  esymbsz1(LLCLEV), esymbsz2(LLCLEV)
         REAL            htinc(LLCLEV), evinc(LLCLEV), esymbsz(LLCLEV) 
         REAL            lsize, usize, m
-C*
-        PARAMETER       ( NEXP = 32 )
-        INTEGER         icolr ( NEXP )
 	DATA		imgfls / MXLOOP*' '/
 
 C-----------------------------------------------------------------------
@@ -1390,7 +1388,7 @@ C
 			      END IF			      
 			    END IF
                             IF ( edr .ne. ' ' ) THEN
-                              CALL ST_CLST ( edr, '|', ' ', 7,
+                              CALL ST_CLST ( edr, '|', ' ', 8,
      +                                       warr, numw, ier)
                               CALL ST_LSTR ( warr(2), lens, ier )
                               IF (lens .gt. 0) THEN
@@ -1469,13 +1467,26 @@ C
                                     END IF
                                   ELSE
                                     aoa180fl = .false.
-                                  END IF                                  
+                                  END IF
+                                  CALL ST_LSTR(warr(8), lens, iret )
+                                  IF ( lens .gt. 0) THEN
+                                    CALL ST_NUMB(warr(8), tracksint, 
+     +                                           iret)
+                                    IF (tracksint .eq. 1) THEN
+                                      tracksfl = .true.
+                                    ELSE
+                                      tracksfl = .false.
+                                    END IF
+                                  ELSE
+                                    tracksfl = .false.
+                                  END IF                                      
                                   CALL GG_EDR ( warr (1),
      +                                          ihtinc, htclr, numc,
      +                                          tlimit, evinc, evclr,
      +                                          esymb1, esymb2,
      +                                          esymbsz1, esymbsz2, 
-     +                                          enumc, aoa180fl, iret)
+     +                                          enumc, aoa180fl,
+     +                                          tracksfl, iret)
                                 END IF
                               END IF
                             END IF
@@ -1804,14 +1815,14 @@ C
 C*			    Plot the ASCAT wind data.
 C
 			    IF 	( asct .ne. ' ' ) THEN
-				CALL ST_CLST ( asct, '|', ' ', 17,
+				CALL ST_CLST ( asct, '|', ' ', 16,
      +					       asarr, numa, ier )
-				CALL ST_RLST ( asarr (4), ';', 0., 
+				CALL ST_RLST ( asarr (3), ';', 0., 
      +                                         LLCLEV, tminc, numv,
      +                                         ier )
-				CALL ST_ILST ( asarr(5), ';', -1,
+				CALL ST_ILST ( asarr(4), ';', -1,
      +                                    LLCLEV, itmclr, num1, ier )
-				CALL ST_ILST ( asarr(6), ';', -1,
+				CALL ST_ILST ( asarr(5), ';', -1,
      +                                    LLCLEV, itmclr2, num2, ier )
 C
 				IF ( numv .gt. NY ) numv = NY
@@ -1830,60 +1841,59 @@ C
                                     END DO
                                 END IF
 C
-				CALL ST_RLST ( asarr (7), ';', 0., 4,
+				CALL ST_RLST ( asarr (6), ';', 0., 4,
      +				               wind, num, ier )
 				szbrb = wind (1)
 				ibwid = NINT ( wind (2) )
 				hdsiz = wind (3)
 				ityp  = NINT ( wind (4) )
 C
-				CALL ST_NUMB ( asarr(8), iskip, ier )
+				CALL ST_NUMB ( asarr(7), iskip, ier )
 C
-				CALL ST_NUMB ( asarr(9), interv, ier)
-				CALL ST_NUMB ( asarr(10), ilnclr, ier)
-			 	CALL ST_NUMB ( asarr(11), ilnwid,ier)
+				CALL ST_NUMB ( asarr(8), interv, ier)
+				CALL ST_NUMB ( asarr(9), ilnclr, ier)
+			 	CALL ST_NUMB ( asarr(10), ilnwid,ier)
 C
+				CALL ST_LCUC (asarr(11), asarr(11),ier)
 				CALL ST_LCUC (asarr(12), asarr(12),ier)
 				CALL ST_LCUC (asarr(13), asarr(13),ier)
 				CALL ST_LCUC (asarr(14), asarr(14),ier)
 				CALL ST_LCUC (asarr(15), asarr(15),ier)
 				CALL ST_LCUC (asarr(16), asarr(16),ier)
-				CALL ST_LCUC (asarr(17), asarr(17),ier)
 C
-				IF  ( asarr(12)(1:1) .eq. 'Y' )  THEN
+				IF  ( asarr(11)(1:1) .eq. 'Y' )  THEN
 				    iflag(1) = 1
 				  ELSE
 				    iflag(1) = 0
 				END IF
-				IF  ( asarr(13)(1:1) .eq. 'Y' )  THEN
+				IF  ( asarr(12)(1:1) .eq. 'Y' )  THEN
 				    iflag(2) = 1
 				  ELSE
 				    iflag(2) = 0
 				END IF
-				IF  ( asarr(14)(1:1) .eq. 'Y' )  THEN
+				IF  ( asarr(13)(1:1) .eq. 'Y' )  THEN
                                     iflag(3) = 1
                                   ELSE
                                     iflag(3) = 0
                                 END IF
-				IF  ( asarr(15)(1:1) .eq. 'Y' )  THEN
+				IF  ( asarr(14)(1:1) .eq. 'Y' )  THEN
                                     iflag(4) = 1
                                   ELSE
                                     iflag(4) = 0
                                 END IF
-				IF  ( asarr(16)(1:1) .eq. 'Y' )  THEN
+				IF  ( asarr(15)(1:1) .eq. 'Y' )  THEN
                                     iflag(5) = 1
                                   ELSE
                                     iflag(5) = 0
                                 END IF
-				IF  ( asarr(17)(1:1) .eq. 'Y' )  THEN
+				IF  ( asarr(16)(1:1) .eq. 'Y' )  THEN
                                     iflag(6) = 1
                                   ELSE
                                     iflag(6) = 0
                                 END IF
-                                CALL ST_NUMB ( asarr(3), maxback, iret )
 C
 				CALL GG_ASCT ( asarr(1), asarr(2),
-     +					   maxback, itminc, itmclr, itmclr2, 
+     +					   itminc, itmclr, itmclr2, 
      +					   numv, szbrb, ibwid, hdsiz,
      +					   ityp, iskip, interv, ilnclr,
      +                                     ilnwid, iflag, iret )
@@ -1892,14 +1902,14 @@ C
 C*			    Plot the OSCAT wind data.
 C
 			    IF 	( osct .ne. ' ' ) THEN
-				CALL ST_CLST ( osct, '|', ' ', 15,
+				CALL ST_CLST ( osct, '|', ' ', 13,
      +					       osarr, numo, ier )
-				CALL ST_RLST ( osarr (4), ';', 0., 
+				CALL ST_RLST ( osarr (3), ';', 0., 
      +                                         LLCLEV, tminc, numv,
      +                                         ier )
-				CALL ST_ILST ( osarr(5), ';', -1,
+				CALL ST_ILST ( osarr(4), ';', -1,
      +                                    LLCLEV, itmclr, num1, ier )
-				CALL ST_ILST ( osarr(6), ';', -1,
+				CALL ST_ILST ( osarr(5), ';', -1,
      +                                    LLCLEV, itmclr2, num2, ier )
 C
 				IF ( numv .gt. NY ) numv = NY
@@ -1918,48 +1928,42 @@ C
                                     END DO
                                 END IF
 C
-				CALL ST_RLST ( osarr (7), ';', 0., 4,
+				CALL ST_RLST ( osarr (6), ';', 0., 4,
      +				               wind, num, ier )
 				szbrb = wind (1)
 				ibwid = NINT ( wind (2) )
 				hdsiz = wind (3)
 				ityp  = NINT ( wind (4) )
 C
-				CALL ST_NUMB ( osarr(8), iskip, ier )
+				CALL ST_NUMB ( osarr(7), iskip, ier )
 C
-				CALL ST_NUMB ( osarr(9), interv, ier)
-				CALL ST_NUMB ( osarr(10), ilnclr, ier)
-			 	CALL ST_NUMB ( osarr(11), ilnwid,ier)
+				CALL ST_NUMB ( osarr(8), interv, ier)
+				CALL ST_NUMB ( osarr(9), ilnclr, ier)
+			 	CALL ST_NUMB ( osarr(10), ilnwid,ier)
 C
+				CALL ST_LCUC (osarr(11), osarr(11),ier)
 				CALL ST_LCUC (osarr(12), osarr(12),ier)
 				CALL ST_LCUC (osarr(13), osarr(13),ier)
-				CALL ST_LCUC (osarr(14), osarr(14),ier)
-				CALL ST_LCUC (osarr(15), osarr(15),ier)
 C
-				IF  ( osarr(12)(1:1) .eq. 'Y' )  THEN
+				IF  ( osarr(11)(1:1) .eq. 'Y' )  THEN
 				    iflag(1) = 1
 				  ELSE
 				    iflag(1) = 0
 				END IF
-				IF  ( osarr(13)(1:1) .eq. 'Y' )  THEN
+				IF  ( osarr(12)(1:1) .eq. 'Y' )  THEN
 				    iflag(2) = 1
 				  ELSE
 				    iflag(2) = 0
 				END IF
-				IF  ( osarr(14)(1:1) .eq. 'Y' )  THEN
+				IF  ( osarr(13)(1:1) .eq. 'Y' )  THEN
                                     iflag(3) = 1
                                   ELSE
                                     iflag(3) = 0
                                 END IF
-                                IF  ( osarr(15)(1:1) .eq. 'Y' )  THEN
-                                    iflag(4) = 1
-                                  ELSE
-                                    iflag(4) = 0
-                                END IF
 C
 				CALL GG_OSCT ( osarr(1), osarr(2),
-     +					   osarr(3), itminc, itmclr, 
-     +					   itmclr2,numv,szbrb,ibwid,hdsiz,
+     +					   itminc, itmclr, itmclr2, 
+     +					   numv, szbrb, ibwid, hdsiz,
      +                                     ityp, iskip, interv, ilnclr,
      +                                     ilnwid, iflag, iret )
 			    END IF
@@ -1994,12 +1998,12 @@ C
 C*			    Plot the significant wave height data.
 C
 			    IF 	( sgwh .ne. ' ' ) THEN
-				CALL ST_CLST ( sgwh, '|', ' ', 8,
+				CALL ST_CLST ( sgwh, '|', ' ', 7,
      +					       sgwh_arr, numsg, ier )
-				CALL ST_RLST ( sgwh_arr (4), ';', 0.,
+				CALL ST_RLST ( sgwh_arr (3), ';', 0.,
      +                                         LLCLEV, tminc, numv, 
      +                                         ier )
-				CALL ST_ILST ( sgwh_arr(5), ';', -1,
+				CALL ST_ILST ( sgwh_arr(4), ';', -1,
      +                                    LLCLEV, itmclr, numclr, ier )
 				IF ( numv .gt. NZ ) numv = NZ
 				DO ii = 1, numv
@@ -2039,13 +2043,12 @@ C
 				    END IF
                                 END IF
 
-                                CALL ST_NUMB ( sgwh_arr(6), iskip, ier )
-                                CALL ST_NUMB ( sgwh_arr(7), interv, 
+                                CALL ST_NUMB ( sgwh_arr(5), iskip, ier )
+                                CALL ST_NUMB ( sgwh_arr(6), interv, 
      +                                         ier )
-                                CALL ST_NUMB ( sgwh_arr(8), ilnclr,
+                                CALL ST_NUMB ( sgwh_arr(7), ilnclr,
      +                                         ier )
                                 CALL GG_WAVE ( sgwh_arr(1), sgwh_arr(2),
-     +                                         sgwh_arr(3),
      +                                         itminc, itmclr, numv,
      +                                         mrktyp, sizmrk, mrkwid,
      +                                         iskip, interv, ilnclr,

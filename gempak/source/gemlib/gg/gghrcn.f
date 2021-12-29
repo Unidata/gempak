@@ -72,10 +72,14 @@ C* S. Gilbert/NCEP	04/06	added 6hr wind radii plots              *
 C* S. Gilbert/NCEP	07/06	fixed fcst hours to be calculated from  *
 C*                              synoptic time and not issuance time.    *
 C* F. J. Yen/NCEP	 4/08	Added bin mins & mstrct to CTB_DTGET CSC*
+C* B. Hebbard/NCEP       5/20   Modify for new 60-hr fcst in TCM        *
+C*                              (SCN20-20) (now 8 fcst times)           *
+C* B. Hebbard/NCEP       6/20   Synthesize F60 data for JTWC; fix wind  *
+C*                              radii times; ensure synoptic minutes 0  *
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 C*
-	PARAMETER	( NW = 500, NC = 25, NFCST = 7 )
+	PARAMETER	( NW = 500, NC = 25, NFCST = 8 )
 	PARAMETER	( ITRACK = NFCST + 1 )
 	PARAMETER	( MXNWFT = ITRACK * 3 + 1 )
 C*
@@ -100,7 +104,7 @@ C*
 	CHARACTER*(MXFLSZ)      filnam, files (MXNMFL)
 C*
 	CHARACTER	wname(NW)*12, timstr(NW)*20, wtype(NW)*3
-	INTEGER		itest(NW), istrt(5), icflg(NW)
+	INTEGER		itest(NW), istrt(5), icflg(NW), numpts(NW)
 	REAL		rlat(NC,NW), rlon(NC,NW), dirnum
 	CHARACTER	wdir(NW)*3, wsped(NW)*2, wpres(NW)*4, 
      +                  wocen(NW)*6, wadnm(NW)*3, wcorr(NW), 
@@ -303,6 +307,11 @@ C
                             END IF
                         END DO
 C
+C*                      Remember the number of points actually read 
+C*                      in for this report
+C
+                        numpts(jw) = nknt
+C
 C*			Read the wind radii and sea feet information.
 C
 			nwft  = nknt * 3 + 1
@@ -442,6 +451,83 @@ C
             END DO
             nwrn = icnt - 1
         END IF
+C
+C*      Handle the cases of decoded reports that have exactly 8 points,
+C*      (1 analysis/observed + 7 forecast) instead of the 9 points
+C*      (1 analysis/observed + 8 forecast) assumed by the display code 
+C*      below.  We assume such reports do not (yet) have F60 forecast
+C*      position and radii, which were added to NHC/CPHC-issued TCM 
+C*      products about 15 May 2020 per SCN20-20, but were not added to
+C*      JTWC.  (Note that the decoder will always output 9 points for
+C*      NHC/CPHC and 8 points for JTWC, even if the original bulletin
+C*      contained fewer than that number of points; in the case of, 
+C*      say, a storm that dissipated before F120, the missing points 
+C*      are still reported, but with 'missing' value flags (e.g., -9999).
+C*
+C*      If/after JTWC also adds F60 forecast data and the decoder is
+C*      changed accordingly (nfcst=8), then this section of code could 
+C*      (although need not) be removed.
+C
+        DO ip = 1, nwrn
+C
+            IF ((numpts(ip) .eq. 8)) THEN
+C
+C*              [ Optional:  Consider adding sanity check here that
+C*              this is a JTWC-reported storm.  For example, could 
+C*              check that first point has longitude west of 180
+C*              ((rlon(1,ip) .gt. 0.0), although must be careful that
+C*              for storms crossing 180 westward between F00 and F03,
+C*              CPHC will likely issue the advisory (based on F00 
+C*              "initial position" [per M. Brennan]), while the first
+C*              point (observed position) will be F03, west of 180.
+C*              Thus may want to allow for some westward travel (say,
+C*              up to three hours motion) in such a check.  Eastward
+C*              crossings will not have this issue, since first point
+C*              for JTWC reports is at F00, when AOR is determined. ]
+C*              --
+C
+C*              Shift so new points 7 through 9 become the ones read in
+C*              as points 6 through 8.  These are for F72, F96, F120.
+C
+                DO k = 9, 7, -1
+                    rlat(k,ip) = rlat(k-1,ip)
+                    rlon(k,ip) = rlon(k-1,ip)
+                    fstype(k,ip) = fstype(k-1,ip)
+                END DO
+C
+C*              Then interpolate the new point 6 (F60) between points 
+C*              5 and 7, and carry the fstype for 6 forward from 5. 
+C*              Note that this will provide exactly what the user
+C*              would have seen if F60 were manually enabled before.
+C
+                rlat(6,ip) = (rlat(5,ip) + rlat(7,ip)) / 2.0
+                rlon(6,ip) = (rlon(5,ip) + rlon(7,ip)) / 2.0
+                fstype(6,ip) = fstype(5,ip)
+C
+C*              Now we need to do the same for wind/seas radii groups.
+C*              Shift the 3 lines of each new group 7 through 9 from
+C*              those read in as groups 6 through 8.  (Equivalent to
+C*              shifting lines 17-25 to 20-28, nondestructively; but
+C*              this shows how those numbers are derived.)
+C
+                DO mgroup = 9, 7, -1
+                    DO mline = 1, 3
+                        windft(1 + (mgroup-1)*3 + mline, ip) =
+     +                  windft(1 + (mgroup-2)*3 + mline, ip)
+                    END DO
+                END DO
+C
+C               Finally carry 3 lines of new group 6 (F60) forward from 
+C               group 5 (F48), again replicating legacy 'interpolation'
+C               behavior.  (Equivalent to copying lines 14-16 to fill
+C               in the vacated lines 17-19.)
+C
+                DO mline = 1, 3
+                    windft(1 + (6-1)*3 + mline, ip) =
+     +              windft(1 + (5-1)*3 + mline, ip)
+                END DO
+            END IF
+        END DO
 C
 C*	Query current settings.
 C
@@ -676,9 +762,15 @@ C
                         DO ihr = I00HR, I120HR
                           IF ( iflags(ihr) .NE. 0 ) THEN
 C
-C*                          Determine synoptic time
+C*                          Infer synoptic hour, assuming that the
+C*                          provided time stamp resembles nominal issuance 
+C*                          time 3 hours later.
 C
 	                    CALL TI_CTOI ( timstr(ip), jtarr, ier )
+C*                          [Note:  Could consider decreasing comparison hours
+C*                           (3, 8, 9, 14, etc.) by 1 to compensate if timstr
+C*                           is actual intead of nominal issue time, and so a
+C*                           bit before intermediate synoptic hour.]
                             IF ( jtarr(4) .ge. 3 .AND. 
      +                           jtarr(4) .le. 8 ) THEN
                                jtarr(4) = 0
@@ -693,9 +785,12 @@ C
                                jtarr(4) = 18
                             ELSE IF ( jtarr(4) .ge. 0 .AND. 
      +                                jtarr(4) .le. 2 ) THEN
+C                              1800Z of previous day
                                minsub = 60 * ( 6 + jtarr(4)  )
                                CALL TI_SUBM( jtarr, minsub, jtarr, ier )
                             ENDIF
+C*                          Synoptic hour ==> minutes are zero.
+                            jtarr(5) = 0
 C
                             nradii = 3
                             IF ( ihr .EQ. I00HR ) THEN
@@ -757,64 +852,60 @@ C
                                 mins = 60 * 54
                                 istart = 14
                                 fstypep = fstype(5,ip)
-                                rlatp = ( 3.*rlat(5,ip) ) + rlat(6,ip)
-                                rlatp = rlatp / 4.0
-                                rlonp = ( 3.*rlon(5,ip) ) + rlon(6,ip)
-                                rlonp = rlonp / 4.0
-                            ELSEIF ( ihr .EQ. I60HR ) THEN
-                                mins = 60 * 60
-                                istart = 14
-                                fstypep = fstype(5,ip)
                                 rlatp = (rlat(5,ip) + rlat(6,ip)) / 2.0
                                 rlonp = (rlon(5,ip) + rlon(6,ip)) / 2.0
-                            ELSEIF ( ihr .EQ. I66HR ) THEN
-                                mins = 60 * 66
-                                istart = 14
-                                fstypep = fstype(5,ip)
-                                rlatp = rlat(5,ip) + ( 3.*rlat(6,ip) )
-                                rlatp = rlatp / 4.0
-                                rlonp = rlon(5,ip) + ( 3.*rlon(6,ip) )
-                                rlonp = rlonp / 4.0
-                            ELSEIF ( ihr .EQ. I72HR ) THEN
-                                mins = 60 * 72
+                            ELSEIF ( ihr .EQ. I60HR ) THEN
+                                mins = 60 * 60
                                 istart = 17
                                 fstypep = fstype(6,ip)
                                 rlatp = rlat(6,ip)
                                 rlonp = rlon(6,ip)
-                            ELSEIF ( ihr .EQ. I78HR ) THEN
-                                mins = 60 * 78
-                                istart = 17
-                                fstypep = fstype(6,ip)
-                                rlatp = ( 3.*rlat(6,ip) ) + rlat(7,ip)
-                                rlatp = rlatp / 4.0
-                                rlonp = ( 3.*rlon(6,ip) ) + rlon(7,ip)
-                                rlonp = rlonp / 4.0
-                            ELSEIF ( ihr .EQ. I84HR ) THEN
-                                mins = 60 * 84
+                            ELSEIF ( ihr .EQ. I66HR ) THEN
+                                mins = 60 * 66
                                 istart = 17
                                 fstypep = fstype(6,ip)
                                 rlatp = (rlat(6,ip) + rlat(7,ip)) / 2.0
                                 rlonp = (rlon(6,ip) + rlon(7,ip)) / 2.0
-                            ELSEIF ( ihr .EQ. I90HR ) THEN
-                                mins = 60 * 90
-                                istart = 17
-                                fstypep = fstype(6,ip)
-                                rlatp = rlat(6,ip) + ( 3.*rlat(7,ip) )
-                                rlatp = rlatp / 4.0
-                                rlonp = rlon(6,ip) + ( 3.*rlon(7,ip) )
-                                rlonp = rlonp / 4.0
-                            ELSEIF ( ihr .EQ. I96HR ) THEN
-                                mins = 60 * 96
+                            ELSEIF ( ihr .EQ. I72HR ) THEN
+                                mins = 60 * 72
                                 istart = 20
                                 fstypep = fstype(7,ip)
                                 rlatp = rlat(7,ip)
                                 rlonp = rlon(7,ip)
-                            ELSEIF ( ihr .EQ. I120HR ) THEN
-                                mins = 60 * 120
+                            ELSEIF ( ihr .EQ. I78HR ) THEN
+                                mins = 60 * 78
+                                istart = 20
+                                fstypep = fstype(7,ip)
+                                rlatp = ( 3.*rlat(7,ip) ) + rlat(8,ip)
+                                rlatp = rlatp / 4.0
+                                rlonp = ( 3.*rlon(7,ip) ) + rlon(8,ip)
+                                rlonp = rlonp / 4.0
+                            ELSEIF ( ihr .EQ. I84HR ) THEN
+                                mins = 60 * 84
+                                istart = 20
+                                fstypep = fstype(7,ip)
+                                rlatp = (rlat(7,ip) + rlat(8,ip)) / 2.0
+                                rlonp = (rlon(7,ip) + rlon(8,ip)) / 2.0
+                            ELSEIF ( ihr .EQ. I90HR ) THEN
+                                mins = 60 * 90
+                                istart = 20
+                                fstypep = fstype(7,ip)
+                                rlatp = rlat(7,ip) + ( 3.*rlat(8,ip) )
+                                rlatp = rlatp / 4.0
+                                rlonp = rlon(7,ip) + ( 3.*rlon(8,ip) )
+                                rlonp = rlonp / 4.0
+                            ELSEIF ( ihr .EQ. I96HR ) THEN
+                                mins = 60 * 96
                                 istart = 23
                                 fstypep = fstype(8,ip)
                                 rlatp = rlat(8,ip)
                                 rlonp = rlon(8,ip)
+                            ELSEIF ( ihr .EQ. I120HR ) THEN
+                                mins = 60 * 120
+                                istart = 26
+                                fstypep = fstype(9,ip)
+                                rlatp = rlat(9,ip)
+                                rlonp = rlon(9,ip)
                             ENDIF
 C
 C*                          plot storm position

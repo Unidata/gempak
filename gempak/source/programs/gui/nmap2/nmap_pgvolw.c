@@ -203,7 +203,7 @@ void	pgvolw_rdVAATbl( int * );
  *	pgvolw_clearEditForm()  clear volcano edit window		*
  *	pgvolw_attrSave()	save attr. on GUI into element		*
  *	pgvolw_insertObsTime()	update obs time info for fcst ash cloud *
- *	pgvolw_createProd()	create VAA text product and file name	*
+ *	pgvolw_createProdOBS()	create VAA text product and file name	*
  *      pgvolw_createObs()	create observation from ash cloud ele.  *
  *	pgvolw_getGrptyp()	get the group type info.		*
  *	pgvolw_getAttr()	get the attribute info. from GUI	*
@@ -265,13 +265,13 @@ Widget pgvolw_create ( Widget parent )
  * H. Zeng/XTRIA	01/04   added pgvolw_obsCreate()		*
  * H. Zeng/XTRIA	02/04	added a new btn				*
  * H. Zeng/XTRIA	02/04	added special product form		*
+ * B. Hebbard/NCEP      03/20   NAWIPS-125 rmv "Create VAA Volcano" btn *
  ***********************************************************************/
 {
     Widget	pane, volc_form, number_rc, area_rc, elev_rc;
     Widget	loc_rc, go_btn;
     int		nn, iret, toff = 5, loff = 2;
-    char	*btnstrs[] = {"Create VAA Volcano",
-			      "Create Volcano in Layers", "Cancel"};
+    char	*btnstrs[] = {"Create Volcano in Layers", "Cancel"};
 /*---------------------------------------------------------------------*/
 /*
  *  Read in watch format base information.
@@ -2384,6 +2384,7 @@ void pgvolw_volcMenuCb ( Widget wid, long which, XtPointer call )
  * H. Zeng/XTRIA	07/03	initial coding				*
  * H. Zeng/XTRIA	08/03   made non-editable in certain situations *
  * H. Zeng/XTRIA	10/03   changed for new location format		*
+ * B. Hebbard/NCEP  08/18   round instead of truncate lat&lon (*100)
  ***********************************************************************/
 {
     char	*ptext=NULL, area[30], elev_str[20];
@@ -2445,7 +2446,7 @@ void pgvolw_volcMenuCb ( Widget wid, long which, XtPointer call )
          XmTextSetString(_volcTxtW, ptext);
 
 /*
- * Automatiically fill in other info. of this particular volcano
+ * Automatically fill in other info. of this particular volcano
  * from volcano table.
  */
          index = NxmVolcano_getIdx (ptext);
@@ -2460,7 +2461,7 @@ void pgvolw_volcMenuCb ( Widget wid, long which, XtPointer call )
 	      strcat (loca, "S");
          }
 
-	 sprintf (loca+strlen(loca), "%04d", (int)fabs(lat*100) );
+	 sprintf (loca+strlen(loca), "%04d", (int) round(fabs(lat*100)) );
 
          if ( lon >= 0 ) {
               strcat (loca, "E");
@@ -2469,7 +2470,7 @@ void pgvolw_volcMenuCb ( Widget wid, long which, XtPointer call )
 	      strcat (loca, "W");
          }
 
-	 sprintf (loca+strlen(loca), "%05d", (int)fabs(lon*100) );
+	 sprintf (loca+strlen(loca), "%05d", (int) round(fabs(lon*100)) );
 
          XmTextSetString(_locTxtW, loca );
 
@@ -2828,27 +2829,7 @@ void pgvolw_createCtlBtnCb ( Widget wid, long which, XtPointer call )
 
     switch(which) {
 
-      case 0:	/* Create VAA Volcano */
-
-        latitude[0]  = _volLat;
-	longitude[0] = _volLon;	
-
-	np = 1;
-	pgnew_getGrpInfo (&grptyp, &grpnum);
-        pgvgf_save(grptyp, grpnum, np, latitude, longitude,
-			                &location, &ier );
-
-        if (ier == 0) {
-	    pgundo_newStep();
-	    pgundo_storeThisLoc (location, UNDO_ADD, &ier2);
-            pgundo_endStep();
-        }
-
-        pgvolw_popdown();
-
-	break;
-
-      case 1:	/* Create Volcano in Layers */
+      case 0:	/* Create Volcano in Layers */
 
         latitude[0]  = _volLat;
 	longitude[0] = _volLon;	
@@ -2870,7 +2851,7 @@ void pgvolw_createCtlBtnCb ( Widget wid, long which, XtPointer call )
 
 	break;
 
-      case 2:	/* Cancel */   
+      case 1:	/* Cancel */   
         pgvolw_popdown();    
 
 	break;
@@ -3685,6 +3666,7 @@ void pgvolw_createProd ( VG_DBStruct *vol, char **filter, char *text,
  * J. Wu/SAIC		04/06		add parameter in cst_wrap 	*
  * H. Zeng/SAIC		04/06	changed to use month index number	*
  * S. Jacobs/NCEP	10/12	Removed NNNN and preceding blank line	*
+ * B. Hebbard/NCEP	11/19	If obsdate/time NIL, dflt OAC->NOT AVBL	*
  ***********************************************************************/
 {
     int   vg_class, vg_type, adjust_min;
@@ -3943,7 +3925,15 @@ void pgvolw_createProd ( VG_DBStruct *vol, char **filter, char *text,
 
          if ( strcmp(filter[9], "USE_DEFAULT") == 0 ) {
 
-              strcat ( text, vol->elem.vol.info.obsashcld );
+              if ( strcmp(vol->elem.vol.info.obsdate, "NIL") == 0 || 
+                   strcmp(vol->elem.vol.info.obstime, "NIL") == 0    ) {
+
+                   strcat ( text, "NOT AVBL" );
+              }
+              else {
+
+                   strcat ( text, vol->elem.vol.info.obsashcld );
+              }
               strcat ( text, "\n\n" );
 	 }
 	 else {

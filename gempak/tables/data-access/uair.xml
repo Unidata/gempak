@@ -16,6 +16,9 @@
     <!-- The filetype attributes define this as a SOUNDING data set :: DO NOT CHANGE -->
     <filetype type="MFSN" source="MFRAOB" />
 
+    <!-- The host where the EDEX is running :: This may change for each site -->
+    <dbserver host="ec" />
+
     <!-- The database table name :: DO NOT CHANGE -->
     <dbtable name="bufrua" />
 

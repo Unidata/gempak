@@ -29,7 +29,7 @@ C* Log:									*
 C* L. Williams/EAI	 4/94	Converted to a subroutine from GPMAP	*
 C* S. Jacobs/NMC	 7/94	Copied for use with the NWX program	*
 C* E. Safford/SAIC	12/07	wrap the gemplot calls			*
-C* K. Tyle/UAlbany	10/10	Fit lines to 72 columns		*
+C* S. Guan/NCEP         07/18   Change hipowo.cia to hipowo.nws         *
 C************************************************************************
 	INCLUDE 'GEMPRM.PRM'
 	CHARACTER*(*)	map, garea, proj, latlon, panel, text,
@@ -44,9 +44,8 @@ C
 C*	Set the map file.
 C
 C--	CALL WGEM_GSMFIL ( 'mepowo.gsf', ier )
-	CALL WGEM_GSMFIL ( 'hipowo.cia', ier )
-	IF  ( ier .ne. 0 )
-     +	    CALL WGEM_ER_WMSG ( 'GEMPLT', ier, ' ', ierr )
+	CALL WGEM_GSMFIL ( 'hipowo.nws', ier )
+	IF  ( ier .ne. 0 )  CALL WGEM_ER_WMSG ( 'GEMPLT', ier, ' ', ierr )
 C
 C*      Set the projection.
 C

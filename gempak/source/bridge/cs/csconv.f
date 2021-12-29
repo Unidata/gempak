@@ -30,6 +30,8 @@ C**									*
 C* Log:									*
 C* A. Hardy/NCEP	 8/02	Created					*
 C* A. Hardy/NCEP	 1/04   Modified to decode nil type reports	*
+C* L. Hinson/AWC via	 1/20   Remove unneeded tests, to fix problem	*
+C* B. Hebbard/NCEP	        when "KT" in FROM & "MOV LTL" in body	*
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 	INCLUDE		'BRIDGE.PRM'
@@ -132,12 +134,6 @@ C
                 spd = ' '
                 itop = INDEX ( conar ( iptr:lenc), 'TOPS' ) 
                 ikt = INDEX ( conar ( iptr:iptr+itop), 'KT.' ) 
-                IF ( ikt .eq. 0 ) THEN
-                    ikt = INDEX ( conar ( iptr:iptr+itop), 'KT ' )
-                    IF ( ikt .eq. 0 ) THEN
-                        ikt = INDEX ( conar ( iptr:iptr+itop), 'KT' )
-                    END IF
-                END IF
                 IF ( ikt .ne. 0 ) THEN
                     dir = conar ( iptr+ikt-6:iptr+ikt-4)
                     spd = conar ( iptr+ikt-3:iptr+ikt-2)

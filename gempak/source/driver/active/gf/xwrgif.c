@@ -36,6 +36,8 @@ void xwrgif ( int *iret )
  * S. Chiswell/Unidata	 8/02	Modified for 16/24 bit depth		*
  * S. Jacobs/NCEP	 5/03	Fixed 16 bit error for line padding	*
  * T. Piper/SAIC	11/03	Check image->depth prior to destroying	*
+ * S. Guan/NCEP          4/19   Modified cloop->pxm_wdth n order to work*
+ *                              for 8 bits on RHEL 7                    *
  ***********************************************************************/
 {
     XColor		colors[256];
@@ -102,16 +104,35 @@ void xwrgif ( int *iret )
 	    ipxm  = cwin->curpxm[cwin->curr_loop];
 	    pxmap = cwin->pxms[cwin->curr_loop][ipxm];
 
+/*
+ *   To find the image depth.
+ */
 	    image = XGetImage( gemdisplay, pxmap, 0, 0,
 			       (unsigned int)cwin->width,
 			       (unsigned int)cwin->height,
 			       AllPlanes, ZPixmap );
 
+            nBpp = image->bits_per_pixel / 8;
+            linbyte = image->width * nBpp;
+            if ((image->depth <= 16) && (image->bytes_per_line != linbyte))
+            {
+            /*
+             When the default display color depth is set to 8 bit or 16 bit 
+             color the GIF exports are sometimes distorted on RHEL 7. There 
+             is no distortion if the bytes per line of an image are equal to 
+             its bytes per pixel times its width.
+            */
+                cwin->width =  floor(cwin->width/4.0) * 4;
+                XDestroyImage ( image );
+                image = XGetImage( gemdisplay, pxmap, 0, 0,
+                       (unsigned int)cwin->width,
+                       (unsigned int)cwin->height,
+                       AllPlanes, ZPixmap );
+            }
+
 	    /*
 	     *   Remove any padding bytes at the end of each line
 	     */
-	    nBpp = image->bits_per_pixel / 8;
-	    linbyte = image->width * nBpp;
 
 	    if ( image->bytes_per_line > linbyte )
 	    {

@@ -26,7 +26,7 @@ C* G. Grosshans		03/06	Updated MND header for compliance with	*
 C*				10-512 directive			*
 C* F. J. Yen		10/07	Added Day 3-8 Fire Wx & Day 4-8 SVR Wx  *
 C* G. Grosshans/SPC	02/10	Added ENH-TSTM				*
-C* K. Tyle/UAlbany 	10/10	Fitted Labels 1030,1035 to 72 columns	*
+C* S. Guan/NCEP		07/20	Added tzone as an input of TI_DST	*  
 C************************************************************************
 	CHARACTER	systim*20, dattim*20, tzone*3, ampm*2,
      +			hdrtpl*40, hdrtim*40, wmotpl*8, wmotim*8
@@ -44,7 +44,9 @@ C
 C
 C*	Determine if this is Daylight Saving Time.
 C
-	CALL TI_DST  ( itarr, dst, ier )
+C       (Central Time zone assumed for this code specific to SPC.)
+        tzone = 'C'
+	CALL TI_DST  ( itarr, tzone, dst, ier )
 C
 C*	Set the appropriate time zone.
 C
@@ -109,14 +111,14 @@ C
 	  ELSE
             IF  ( otlktyp .eq. 'C' ) THEN
 	        WRITE ( lun, 1030 ) iday
-1030	FORMAT (/, 'DAY ', I1,' CONVECTIVE OUTLOOK AREAL OUTLINE')
+1030	        FORMAT (/, 'DAY ', I1,' CONVECTIVE OUTLOOK AREAL OUTLINE')
             ELSE IF  ( otlktyp .eq. 'E' ) THEN
 	        WRITE ( lun, 1032 ) iday
 1032	        FORMAT (/, 'DAY ', I1,' ENHANCED CONVECTIVE &
      + OUTLOOK AREAL OUTLINE')
               ELSE
 	        WRITE ( lun, 1035 ) iday
-1035    FORMAT (/,'DAY ',I1,' FIRE WEATHER OUTLOOK AREAL OUTLINE')
+1035	        FORMAT (/,'DAY ',I1,' FIRE WEATHER OUTLOOK AREAL OUTLINE')
 	    END IF
 	END IF
 C

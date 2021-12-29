@@ -11,7 +11,6 @@
 !D. Kidwell/NCEP	 4/98	Removed RELH
 !D. Kidwell/NCEP	 4/98	Removed TMWC
 !D. Kidwell/NCEP	10/99	Removed WWMA, PWWA; changed WWMO limit
-!S. Chiswell/Unidata     8/01   Added T12X and T12N for regional 12hr max/min
 !
 PMSL       850.       1100.       .1
 PRES       700.       1100.       .1
@@ -30,8 +29,6 @@ P18M         0.       1000.      1.
 P24M         0.       1000.      1.  
 TDXC       -85.         62.       .1
 TDNC       -85.         62.       .1
-T12X       -85.         62.       .1
-T12N       -85.         62.       .1
 WWMO         0.        203.      1.
 PWWM         0.          9.      1.
 CFRT         0.          9.      1.

@@ -43,6 +43,8 @@ C* S. Jacobs/NCEP	 4/99	Added UC ver of month and day-of-week	*
 C* M. Li/SAIC		02/02	Added check for the length of date/time	*
 C* M. Li/SAIC		03/02	Modified the forecast time processing	*
 C* S. Jacobs/NCEP	 8/14	Added support for FFFFF template	*
+C* B. Hebbard/NCEP	12/20	Changed century breakpoint from		*
+C*				2020/2021 to 2040/2041			*
 C************************************************************************
 	CHARACTER*(*)	dattim, templt, filnam
 C*
@@ -83,7 +85,7 @@ C
 	IF  ( ipyy .ne. 0 )  THEN
 	    tstr = dattim (1:2)
 	    CALL ST_NUMB ( tstr, iyear, ier )
-	    IF  ( iyear .le. 20 )  THEN
+	    IF  ( iyear .le. 40 )  THEN
 		filnam (ipyy:ipyy+1) = '20'
 	      ELSE
 		filnam (ipyy:ipyy+1) = '19'

@@ -28,11 +28,6 @@
 ! S. Jacobs/NCEP	 1/01	Fixed CDB printer names; Removed 4th flr
 ! T. Piper/SAIC		09/04	Fixed CDB printer names again...
 !
-!HPLJ5_302        hplj5_302       g        *
-!HPLJ4V           hplj4v          g        *
-!PH750_COLOR      ph750_cob       *        s
-!
-! Unidata Printers
-HP8000           fp              g       *
-HPColorJet       cp              *       s
-HPIII            hp              g       s
+HPLJ5_302        hplj5_302       g        *
+HPLJ4V           hplj4v          g        *
+PH750_COLOR      ph750_cob       *        s

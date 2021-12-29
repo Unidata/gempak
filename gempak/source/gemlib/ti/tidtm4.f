@@ -4,8 +4,8 @@ C* TI_DTM4								*
 C*									*
 C* This subroutine modifies a standard GEMPAK time to include a four-   *
 C* digit year, instead of a 2-digit year.  Any 2-digit year less than or*
-C* equal to 20 will be assumed to be in  the 21st century; years greater*
-C* than 20 will be assumed to be in the 20th century.                   *
+C* equal to 40 will be assumed to be in  the 21st century; years greater*
+C* than 40 will be assumed to be in the 20th century.                   *
 C*									*
 C* TI_DTM4  ( DATTIM, DATTM4, IRET )					*
 C*									*
@@ -22,6 +22,7 @@ C**									*
 C* Log:									*
 C* D. Kidwell/NCEP	 3/99               				*
 C* D. Kidwell/NCEP	 4/99 	Added 4-digit year check; fixed prologue*
+C* B. Hebbard/NCEP       3/18   Moved century break from 2020 to 2040   *
 C************************************************************************
 	CHARACTER*(*)	dattim, dattm4
 C*

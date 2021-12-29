@@ -1,6 +1,6 @@
 	SUBROUTINE GG_EDR ( dattim, htinc,  htcolrs, numc, tlimit,
      +                      evinc,  ecolrs, esymb1, esymb2, esymbsz1,
-     +                      esymbsz2, enumc, aoa180fl, iret )
+     +                      esymbsz2, enumc, aoa180fl, tracksfl, iret )
 C*
 C************************************************************************
 C* GG_EDR                                                               *
@@ -25,12 +25,14 @@ C*      ESYMBSZ1(*)     REAL            Size for each EDR VALUE BLO 180 *
 C*      ESYMBSZ2(*)     REAL            Size for EDR Values AOA FL180   *
 C*	ENUMC           INTEGER         Number of Colors                *
 C*      AOA180FL        INTEGER         FLAG to Plot 180 Feet+ Only     *
+C*      TRACKSFL        INTEGER         FLAG to Plot EDR with tracks    *
 C* Output parameters:							*
 C*	IRET		INTEGER		Return code			*
 C*                                                                      *
 C**                                                                     *
 C* Log:                                                                 *
 C* L. Hinson/AWC        09/12                                           *
+C* L. Hinson/AWC        10/18 Updated to add tracks flag                *
 C************************************************************************ 
 	INCLUDE 'GEMPRM.PRM'
         
@@ -45,6 +47,7 @@ C************************************************************************
         REAL          esymbsz2 (*)
         INTEGER       enumc
         LOGICAL       aoa180fl
+        LOGICAL       tracksfl
 	PARAMETER	( NUMSRC = 1 )
 C*
 	CHARACTER	path*25, templ*(MXTMPL), cdttm*20, dattm2*20, 
@@ -188,7 +191,7 @@ C
      +                                nhts, htinc2, htcolrs2, tlimit,
      +                                enumclr, evinc2, esymb1, esymb2,
      +                                esymbsz1, esymbsz2, ecolrs2, 
-     +                                aoa180fl, ier )
+     +                                aoa180fl, tracksfl, ier )
                     END IF		      
 C
 	        END IF

@@ -3162,19 +3162,24 @@ void pgsigw_ctlPbCb ( Widget wid, long clnt, XtPointer cbs )
 	if (_vgType == SIGINTL_ELM )
 	    pgsigw_setFIRs(_currPts, _currLat, _currLon);
         
-	pgsigw_getSIGMET ( newsig );
+	    pgsigw_getSIGMET ( newsig );
 
-	XmTextSetString (_newsigText, newsig);
+        if (strlen(newsig) > 0) {
+	        XmTextSetString (_newsigText, newsig);
+	        pgsigw_getFname (fname);
+	        XmTextSetString (_svfileText, fname);
+        }
 
-	pgsigw_getFname (fname);
+	    pgsigw_popdown ();
 
-	XmTextSetString (_svfileText, fname);
+        if (strlen(newsig) > 0) {
+	        XtManageChild (_svfileForm);
+        }
+        else {
+	        _editCbFunc (NULL, &one, NULL);
+        }
 
-	pgsigw_popdown ();
-
-	XtManageChild (_svfileForm);
-
-	break;
+	    break;
 
       case 1:		/* Apply */
 	if (_origSubType != _subType) {
@@ -3533,6 +3538,17 @@ void pgsigw_getSIGMET ( char *sigmet )
  * S. Jacobs/NCEP	 9/10	Removed FIR ID from line2		*
  * S. Jacobs/NCEP	 9/10	Removed AREA BOUNDED BY from product	*
  * S. Guan/NCEP         11/16   Changed KZNY to KZWY                    *
+ * B. Hebbard/NCEP      12/18   Jira NAWIPS-13:  In case where "SIGMET  *
+ *                              polygon does not intersect any FIRs for *
+ *                              selected MWO", show error dialog        *
+ *                              instead of producing incorrectly        * 
+ *                              formatted SIGMET                        *
+ * B. Hebbard/NCEP      10/19   Jira NAWIPS-112:  Per AWC, exempt       *
+ *                              MDCS MKJK MMFO MMFR MUFH TTZP from      *
+ *                              above (NAWIPS-13-added) error message   *
+ *                              since AWC has these as valid use cases  *
+ *                              in which the resulting formatting is    *
+ *                              fixed by AWC's builder software.        *
  ***********************************************************************/
 {
 const int line_len=65;
@@ -3810,37 +3826,55 @@ XmString  xmstr;
 	            strcpy ( hdrwmo, "PN" );
 	            strcpy ( hdrawp, "P0" );
 	        }
+	        else if ( ( strncmp ( fir, "MDCS", 4 ) == 0 ) ||
+	                  ( strncmp ( fir, "MKJK", 4 ) == 0 ) ||
+	                  ( strncmp ( fir, "MMFO", 4 ) == 0 ) ||
+	                  ( strncmp ( fir, "MMFR", 4 ) == 0 ) ||
+	                  ( strncmp ( fir, "MUFH", 4 ) == 0 ) ||
+	                  ( strncmp ( fir, "TTZP", 4 ) == 0 ) ) { 
+	            hdrocn[0] = '\0'; 
+	            hdrwmo[0] = '\0'; 
+	            hdrawp[0] = '\0'; 
+	            strcpy(sigmet,""); 
+	        }
 	        else {
+                /*
+                 *  Error:  SIGMET polygon does not intersect any FIRs for selected MWO
+                 */
+                    NxmErr_update();
+                    NxmWarn_show ((Widget)mcanvw_getDrawingW(), 
+                            "SIGMET polygon does not intersect any FIRs for selected MWO");
 	            hdrocn[0] = '\0';
 		    hdrwmo[0] = '\0';
-		    hdrawp[0] = '\0';	
+		    hdrawp[0] = '\0';
+	            strcpy(sigmet, "");
+                    return;	
 	        }
 
-                if ( strncmp ( area, "KKCI", 4 ) == 0 ) { 
-                    strcpy ( idnode, "MKC" );
-                }
-                else {
-                    strcpy ( idnode, "NHC" );
-                }
-
-            } 
-            else if ( strncmp ( area, "PHFO", 4 ) == 0 ) {
-                strcpy ( hdrwmo, "PA" );
-                strcpy ( hdrawp, "PA" );
-                strcpy ( idnode, "HFO" );
-	        inum      = idinit[0] - 77;
-            }
-            else if ( strncmp ( area, "PAWU", 4 ) == 0 ) {
-                strcpy ( hdrwmo, "AK");
-                strcpy ( hdrawp, "AK");
-                strcpy ( idnode, "ANC");
-		inum      = idinit[0] - 72;
+            if ( strncmp ( area, "KKCI", 4 ) == 0 ) { 
+                strcpy ( idnode, "MKC" );
             }
             else {
-		hdrwmo[0] = '\0';
-		hdrawp[0] = '\0';
-		idnode[0] = '\0';
+                strcpy ( idnode, "NHC" );
             }
+        } 
+        else if ( strncmp ( area, "PHFO", 4 ) == 0 ) {
+            strcpy ( hdrwmo, "PA" );
+            strcpy ( hdrawp, "PA" );
+            strcpy ( idnode, "HFO" );
+	        inum = idinit[0] - 77;
+        }
+        else if ( strncmp ( area, "PAWU", 4 ) == 0 ) {
+            strcpy ( hdrwmo, "AK");
+            strcpy ( hdrawp, "AK");
+            strcpy ( idnode, "ANC");
+		    inum = idinit[0] - 72;
+        }
+        else {
+		    hdrwmo[0] = '\0';
+		    hdrawp[0] = '\0';
+		    idnode[0] = '\0';
+        }
             
             sprintf ( wmo, "W%c%s%02d %s %s",
            	     wmophen, hdrwmo, inum, area, stime_str );

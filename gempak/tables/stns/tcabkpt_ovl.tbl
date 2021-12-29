@@ -16,6 +16,8 @@
 ! M. Sardi/NHC           6/16   Bug fix for MS/AL_border and Rio_Panuco breakpoints
 ! M. Onderlinde/NHC     11/16   Added Azores, Cape Verde, and CPHC Atoll Islands
 ! M. Brennan/NHC        12/16   Updated for 2017 Season
+! M. Brennan/NHC         4/19   Updated for 2019 Season
+! M. Brennan/NHC         1/20   Updated for 2020 Season
 !
 !STID    STNM   NAME                             ST CO   LAT    LON  ELV PRI TBCHRS  
 !(8)     (6)    (32)                            (2)(2)   (5)    (6)   (5)(2)   (20)
@@ -42,9 +44,11 @@ MORGAN_C 101500 Morgan_City                      LA US  2948  -9129     0 10
 GRAND_IS 101600 Grand_Isle                       LA US  2925  -8996     0 10
 MTH_MS_R 101700 Mouth_Mississippi_River          LA US  2912  -8910     0 10
 MTH_PR_R 101800 Mouth_Pearl_River                LA US  3015  -8960     0 10
-PASCAGOU 101900 Pascagoula                       MS US  3035  -8855     0 10
+BAY_ST_L 101900 Bay_St_Louis                     MS US  3031  -8933     0 10
+OCEAN_SP 101950 Ocean_Springs                    MS US  3040  -8882     0 10
 MS/AL    102000 MS/AL_border                     -- US  3038  -8832     0 10
 AL/FL    102100 AL/FL_border                     -- US  3027  -8755     0 10
+NAVARRE  102160 Navarre                          FL US  3038  -8686     0 10
 OKAL_WAL 102300 Okaloosa_Walton_County_Line      FL US  3038  -8640     0 10
 WALT_BAY 102356 Walton_Bay_County_line           FL US  3028  -8598     0 10
 PANA_CTY 102400 Panama_City                      FL US  3012  -8570     0 10
@@ -90,7 +94,7 @@ CRESCENT 106360 Crescent_Beach                   FL US  2977  -8125     0 10
 ST_AUGUS 106400 St_Augustine                     FL US  2988  -8127     0 10
 PONTE_VE 106440 Ponte_Vedra_Beach                FL US  3024  -8138     0 10
 NASSAU_S 106440 Nassau_Sound                     FL US  3051  -8143     0 10 
-FERNAN_B 106500 Fernandina_Beach                 FL US  3066  -8144     0 10
+MOUTH_SM 106500 Mouth_of_St_Marys_River          -- US  3071  -8144     0 10
 ST_ANDRE 106530 St_Andrews_Sound                 GA US  3099  -8142     0 10
 ALTAMAHA 106600 Altamaha_Sound                   GA US  3129  -8129     0 10
 SAVANNAH 106700 Savannah_River                   GA US  3203  -8086     0 10
@@ -126,23 +130,22 @@ PT_JEF_H 109600 Port_Jefferson_Harbor            NY US  4096  -7308     0 10
 NEW_HAVE 109700 New_Haven                        CT US  4130  -7291     0 10
 BLOCK_IS 109795 Block_Island                     RI US  4116  -7156     0 10
 WATCH_HI 109800 Watch_Hill                       RI US  4131  -7186     0 10
-PT_JUDIT 109900 Point_Judith                     RI US  4135  -7149     0 10
+PT_JUDIT 109900 Point_Judith                     RI US  4136  -7148     0 10
 NANTUKCT 109970 Nantucket                        MA US  4127  -7004     0 10
 MRT_VYRD 109980 Martha's Vineyard                MA US  4138  -7063     0 10
-WESTPORT 110000 Westport                         MA US  4150  -7111     0 10
+WESTPORT 110000 Westport                         MA US  4150  -7112     0 10
 WOODS_HO 110100 Woods_Hole                       MA US  4152  -7068     0 10
 CHATHAM  110200 Chatham                          MA US  4167  -6995     0 10
 SAGAMORE 110250 Sagamore Beach                   MA US  4180  -7053     0 10
-PLYMOUTH 110300 Plymouth                         MA US  4198  -7065     0 10
 PROVITWN 110325 Provincetown                     MA US  4206  -7025     0 10
 HULL     110362 Hull                             MA US  4230  -7091     0 10
 GLOUCEST 110400 Gloucester                       MA US  4258  -7066     0 10
-MERRIM_R 110500 Merrimack_River                  MA US  4284  -7082     0 10
+MERRIM_R 110500 Merrimack_River                  MA US  4282  -7084     0 10
 PORTSMOU 110600 Portsmouth                       NH US  4305  -7072     0 10
 CAPE_ELZ 110700 Cape_Elizabeth                   ME US  4356  -7019     0 10
 PORT_CLY 110800 Port_Clyde                       ME US  4392  -6925     0 10
-STONINGT 110900 Stonington_ME                    ME US  4416  -6864     0 10
-BAR_HARB 111000 Bar_Harbor                       ME US  4439  -6820     0 10
+STONINGT 110900 Stonington_ME                    ME US  4416  -6867     0 10
+PETIT_MA 111000 Petit_Manan_Point                ME US  4440  -6790     0 10
 EASTPORT 111100 Eastport                         ME US  4492  -6700     0 10
 !
 !  Canada
@@ -151,11 +154,11 @@ EASTPORT 111100 Eastport                         ME US  4492  -6700     0 10
 !  updated Feb. 2012, M. Brennan, NHC
 !
 US/CAN   120710 US_Canadian_Border               -- --  4492  -6698     0 10
-ST._ANDR 120715 St._Andrews                      -- CN  4507  -6710     0 15
+ST._ANDR 120715 St._Andrews                      -- CN  4507  -6710     0 10
 POINT_LE 120720 Point_Lepreau                    -- CN  4509  -6645     0 10
 FUNDY_NA 120730 Fundy_National_Park              -- CN  4557  -6501     0 10
 FORT_LAW 130140 Fort_Lawrence                    -- CN  4582  -6427     0 10
-CAPE_CHI 130141 Cape_Chignecto                   -- CN  4533  -6493     0 15
+CAPE_CHI 130141 Cape_Chignecto                   -- CN  4533  -6493     0 10
 FIVE_ISL 130170 Five_Islands                     -- CN  4540  -6409     0 10
 ONSLOW   130200 Onslow                           -- CN  4536  -6339     0 10
 AVONPORT 130230 Avonport                         -- CN  4512  -6422     0 10
@@ -166,35 +169,35 @@ LOWER_EA 130360 Lower_East_Pubnico               -- CN  4360  -6577     0 10
 PORT_L'H 130390 Port_l'Hebert                    -- CN  4383  -6490     0 10
 MEDWAY_H 130420 Medway_Harbour                   -- CN  4413  -6455     0 10
 HUBBARDS 130450 Hubbards                         -- CN  4462  -6407     0 10
-KETCH_HA 130451 Ketch_Harbour                    -- CN  4458  -6355     0 15
+KETCH_HA 130451 Ketch_Harbour                    -- CN  4458  -6355     0 10
 PORTER'S 130480 Porter's_Lake                    -- CN  4468  -6322     0 10
 ECUM_SEC 130510 Ecum_Secum                       -- CN  4497  -6217     0 10
-CANSO    130511 Canso                            -- CN  4533  -6097     0 15
+CANSO    130511 Canso                            -- CN  4533  -6097     0 10
 POINT_TU 130540 Point_Tupper                     -- CN  4558  -6135     0 10
 FOURCHU  130570 Fourchu                          -- CN  4572  -6027     0 10
-MAIN-A-D 130571 Main-a-Dieu                      -- CN  4600  -5985     0 15
+MAIN-A-D 130571 Main-a-Dieu                      -- CN  4600  -5985     0 10
 POINT_AC 130600 Point_Aconi                      -- CN  4632  -6032     0 10
 MEAT_COV 130630 Meat_Cove                        -- CN  4700  -6053     0 10
 MABOU    130660 Mabou                            -- CN  4610  -6148     0 10
 AULDS_CO 130690 Aulds_Cove                       -- CN  4563  -6143     0 10
-CAPE_GEO 130691 Cape_George                      -- CN  4587  -6193     0 15
+CAPE_GEO 130691 Cape_George                      -- CN  4587  -6193     0 10
 LISMORE  130720 Lismore                          -- CN  4570  -6223     0 10
 BRULE    130750 Brule                            -- CN  4573  -6313     0 10
 MALAGASH 130780 Malagash                         -- CN  4575  -6338     0 10
 TIDNISH  130710 Tidnish                          -- CN  4600  -6403     0 10
 SHEDIAC  150780 Shediac                          -- CN  4626  -6453     0 10
 POINT_ES 150810 Point_Escuminac                  -- CN  4706  -6484     0 10
-MIRAMICH 150811 Miramichi                        -- CN  4700  -6547     0 15
+MIRAMICH 150811 Miramichi                        -- CN  4700  -6547     0 10
 SHEILA   150840 Sheila                           -- CN  4732  -6497     0 10
-MISCOU_I 150841 Miscou_Island                    -- CN  4800  -6450     0 15
+MISCOU_I 150841 Miscou_Island                    -- CN  4800  -6450     0 10
 GRAND-AN 150870 Grand-Anse                       -- CN  4780  -6523     0 10
 BELLEDUN 150900 Belledune                        -- CN  4790  -6587     0 10
-POINTE-A 160021 Pointe-a-la-Croix                -- CN  4800  -6670     0 15
+POINTE-A 160021 Pointe-a-la-Croix                -- CN  4800  -6670     0 10
 NEW_CARL 160120 New_Carlisle                     -- CN  4802  -6533     0 10
 GRANDE-R 160190 Grande-Riviere                   -- CN  4840  -6447     0 10
-CAP-DES- 160231 Cap-des-Rosiers                  -- CN  4883  -6427     0 15
+CAP-DES- 160231 Cap-des-Rosiers                  -- CN  4883  -6427     0 10
 CLORIDOM 160260 Cloridome                        -- CN  4912  -6475     0 10
-CAP_MADE 160291 Cap_Madeliene                    -- CN  4925  -6533     0 15
+CAP_MADE 160291 Cap_Madeliene                    -- CN  4925  -6533     0 10
 CAP_CHAT 160300 Cap_Chat                         -- CN  4912  -6665     0 10
 MATANE   160330 Matane                           -- CN  4880  -6760     0 10
 SAINT-SI 160370 Saint-Simon                      -- CN  4828  -6897     0 10
@@ -205,55 +208,55 @@ SAINT-SI 160460 Saint-Simeon                     -- CN  4785  -6988     0 10
 LES_BERG 160490 Les_Bergeronnes                  -- CN  4825  -6950     0 10
 BETSIAMI 160500 Betsiamites                      -- CN  4902  -6863     0 10
 PORT_CAR 160530 Port_Cartier                     -- CN  4932  -6738     0 10
-SEPT-ILE 160561 Sept-Iles                        -- CN  5017  -6643     0 15
+SEPT-ILE 160561 Sept-Iles                        -- CN  5017  -6643     0 10
 SHELDRAK 160590 Sheldrake                        -- CN  5027  -6500     0 10
 JOHAN_BE 160600 Johan_Beetz_Bay                  -- CN  5030  -6300     0 10
 MUSQUARO 160630 Musquaro                         -- CN  5022  -6100     0 10
-POINTE-A 160641 Pointe-a-Maurier                 -- CN  5033  -5990     0 15
+POINTE-A 160641 Pointe-a-Maurier                 -- CN  5033  -5990     0 10
 MUTTON_B 160670 Mutton_Bay                       -- CN  5087  -5900     0 10
 L'ANSE-A 170020 L'Anse-au-Clair                  -- CN  5145  -5718     0 10
-FLOWERS_ 170471 Flowers_Cove                     -- CN  5132  -5672     0 15
+FLOWERS_ 170471 Flowers_Cove                     -- CN  5132  -5672     0 10
 HAWKE'S_ 170500 Hawke's_Bay                      -- CN  5058  -5738     0 10
 PARSON'S 170530 Parson's_Pond                    -- CN  4998  -5773     0 10
-CAPE_ST. 170560 Cape_St._Gregory                 -- CN  4938  -5823     0 10
+CAPE_STG 170560 Cape_St._Gregory                 -- CN  4938  -5823     0 10
 FOX_ISLA 170590 Fox_Island_River                 -- CN  4877  -5863     0 10
-CAPE_ST. 170591 Cape_St._George                  -- CN  4848  -5925     0 15
-STEPHENV 170592 Stephenville                     -- CN  4853  -5853     0 15
+CAPE_ST. 170591 Cape_St._George                  -- CN  4848  -5925     0 10
+STEPHENV 170592 Stephenville                     -- CN  4853  -5853     0 10
 CAPE_ANG 170593 Cape_Anguille                    -- CN  4788  -5940     0 10
-PORT_AUX 171110 Port_aux_Basques                 -- CN  4762  -5924     0 15
+PORT_AUX 171110 Port_aux_Basques                 -- CN  4762  -5924     0 10
 IN_HR_NF 171120 Indian_Harbour_Newfoundland      -- CN  4766  -5838     0 10 
 FRANCOIS 171130 Francois                         -- CN  4758  -5672     0 10 
 STONE'S_ 171170 Stone's_Cove                     -- CN  4760  -5513     0 10
-LAMALINE 171171 Lamaline                         -- CN  4697  -5600     0 15
-ST._LAWR 171172 St._Lawrence                     -- CN  4692  -5528     0 15
+LAMALINE 171171 Lamaline                         -- CN  4697  -5600     0 10
+ST._LAWR 171172 St._Lawrence                     -- CN  4692  -5528     0 10
 ARNOLD'S 171200 Arnold's_Cove                    -- CN  4782  -5407     0 10
-CAPE_ST. 171201 Cape_St._Mary's                  -- CN  4682  -5418     0 15
+CAPE_STM 171201 Cape_St._Mary's                  -- CN  4682  -5418     0 10
 COLINET  171202 Colinet                          -- CN  4720  -5355     0 10
-ST._SHOT 171203 St._Shotts                       -- CN  4663  -5360     0 15
+ST._SHOT 171203 St._Shotts                       -- CN  4663  -5360     0 10
 CAPE_RAC 171204 Cape_Race                        -- CN  4665  -5305     0 10
-POUCH_CO 171231 Pouch_Cove                       -- CN  4780  -5278     0 15
+POUCH_CO 171231 Pouch_Cove                       -- CN  4780  -5278     0 10
 CHAPELS_ 171232 Chapels_Cove                     -- CN  4742  -5312     0 10
-GRATES_C 171233 Grates_Cove                      -- CN  4817  -5293     0 15
-LONG_COV 171234 Long_Cove                        -- CN  4757  -5368     0 15
+GRATES_C 171233 Grates_Cove                      -- CN  4817  -5293     0 10
+LONG_COV 171234 Long_Cove                        -- CN  4757  -5368     0 10
 JONES_HA 171260 Jones_Harbour                    -- CN  4792  -5370     0 10
 NEW_BONA 171290 New_Bonaventure                  -- CN  4825  -5350     0 10
-BONAVIST 171291 Bonavista                        -- CN  4867  -5308     0 15
+BONAVIST 171291 Bonavista                        -- CN  4867  -5308     0 10
 CHARLOTT 171320 Charlottetown                    -- CN  4837  -5390     0 10
 HARE_BAY 171350 Hare_Bay                         -- CN  4890  -5398     0 10
-WESLEYVI 171351 Wesleyville                      -- CN  4925  -5348     0 15
+WESLEYVI 171351 Wesleyville                      -- CN  4925  -5348     0 10 
 FOGO_ISL 171380 Fogo_Island                      -- CN  4963  -5420     0 10
 TRITON   171410 Triton                           -- CN  4942  -5565     0 10
-MIDDLE_A 171411 Middle_Arm                       -- CN  4970  -5605     0 15
-LA_SCIE  171412 La_Scie                          -- CN  4995  -5560     0 15
-PARTRIDG 171413 Partridge_Point                  -- CN  5015  -5617     0 15
-THE_BEAC 171414 The_Beaches                      -- CN  4958  -5682     0 15
+MIDDLE_A 171411 Middle_Arm                       -- CN  4970  -5605     0 10
+LA_SCIE  171412 La_Scie                          -- CN  4995  -5560     0 10
+PARTRIDG 171413 Partridge_Point                  -- CN  5015  -5617     0 10
+THE_BEAC 171414 The_Beaches                      -- CN  4958  -5682     0 10
 HARBOUR_ 171440 Harbour_Deep                     -- CN  5023  -5653     0 10
-ST._ANTH 171441 St._Anthony                      -- CN  5155  -5543     0 15
+ST._ANTH 171441 St._Anthony                      -- CN  5155  -5543     0 10
 BOAT_HAR 171470 Boat_Harbour                     -- CN  5158  -5595     0 10
 MARY'S_H 171621 Mary's_Harbour                   -- CN  5228  -5583     0 10
 BATTEAU  171650 Batteau                          -- CN  5347  -5608     0 10
 WEST_BAY 171651 West_Bay                         -- CN  5417  -5743     0 10
-RIGOLET  171652 Rigolet                          -- CN  5420  -5817     0 15
+RIGOLET  171652 Rigolet                          -- CN  5420  -5817     0 10
 IN_HR_LB 171653 Indian_Harbour_Labrador          -- CN  5457  -5737     0 10
 HOPEDALE 171680 Hopedale                         -- CN  5528  -6043     0 10
 NAIN     171710 Nain                             -- CN  5658  -6200     0 10
@@ -272,7 +275,7 @@ TUXPAN   200800 Tuxpan                           -- MX  2097  -9731     0 20
 TECOLUTL 200900 Tecolutla                        -- MX  2048  -9701     0 20
 NAUTLA   201000 Nautla                           -- MX  2021  -9676     0 20
 LAGUNA_V 201100 Laguna_Verde                     -- MX  1972  -9641     0 20
-PUERTO_V 201150 Puerto_Veracruz                  -- MX  1920  -9612     0 20
+PUERTO_V 201150 Puerto_Veracruz                  -- MX  1920  -9612     0 20 
 ALVARADO 201200 Alvarado                         -- MX  1879  -9575     0 20 
 ROCA_PAR 201250 Roca_Partida                     -- MX  1870  -9518     0 20 
 COATZACO 201300 Coatzacoalcos                    -- MX  1816  -9441     0 20
@@ -422,8 +425,8 @@ KAUAI    505100 Kauai                            -- HI  2206 -15951     0 50
 MAUI     505200 Maui                             -- HI  2080 -15635     0 50
 OAHU     505300 Oahu                             -- HI  2146 -15800     0 50
 JOHNSTON 505400 Johnston_Atoll                   --     1675 -16950     0 50
-MIDWAY   505500 Midway_Island                    --     2822 -17737     0 50
-KURE     505600 Kure_Atoll                       --     2842 -17833     0 50
+MIDWAY   505500 Midway_Island                    --     2821 -17737     0 50
+KURE     505600 Kure_Atoll                       --     2840 -17830     0 50
 !
 !  Southern California, west coast of Mexico, Central America
 !
@@ -431,9 +434,9 @@ POINT_PB 600000 Point_Piedras_Blancas            CA US  3566 -12129     0 60
 POINT_SA 600050 Point_Sal                        CA US  3490 -12067     0 60
 POINT_CO 600100 Point_Conception                 CA US  3445 -12045     0 60
 POINT_MU 600200 Point_Mugu                       CA US  3411 -11912     0 60
-MOUTH_OF 600250 Mouth_of_San_Gabriel_River       CA US  3375 -11811     0 60
-SAN_ONOF 600300 San_Onofre_State_Beach           CA US  3339 -11759     0 60
-MOUTH_TI 600400 Mouth_of_Tijuana_River           CA US  3253 -11712     0 60
+ORNG_LAC 600250 Orange_Los_Angeles_Co_Line       CA US  3375 -11811     0 60
+SAN_ORGC 600300 San_Diego_Orange_Co_Line         CA US  3339 -11759     0 60
+US_MEXIC 600400 US_Mexico_Border                 CA US  3253 -11712     0 60
 MX_CA_BO 600450 Mexico_California_Border         -- MX  3252 -11713     0 60
 ENSENADA 600500 Ensenada                         -- MX  3184 -11662     0 60 
 CABO_SAQ 600600 Cabo_San_Quintin                 -- MX  3043 -11602     0 60
@@ -548,10 +551,10 @@ DELBAY_N 809110 Delaware_Bay_North_of_Slaughtr_B DE US  3910  -7525     0 80
 !
 !  Northwest Hawaiian Island Segments
 !
-NIHOA    810000 Nihoa_to_French_Frigate_Shoals   HI US  2306 -16192     0 80
+NIHOA    810000 Nihoa_to_French_Frigate_Shoals   HI US  2305 -16192     0 80
 FFSMARO  810100 French_Frigate_Shoals_to_Maro    HI US  2386 -16627     0 80
 MAROLIS  810200 Maro_Reef_to_Lisianski_Island    HI US  2533 -17050     0 80
-LISIAN   810300 Lisianski_Island_to_Pearl_Hermes HI US  2608 -17400     0 80
+LISIAN   810300 Lisianski_Island_to_Pearl_Hermes HI US  2606 -17396     0 80
 !
 !  Florida Keys
 !

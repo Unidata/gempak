@@ -3,8 +3,8 @@ C************************************************************************
 C* TI_YYYY								*
 C*									*
 C* This subroutine reorders a list of GEMPAK times so that times in the *
-C* 20th century (YY greater than 20) precede those in the 21st century  *
-C* (YY less than or equal to 20).  The input and output arrays may be   *
+C* 20th century (YY greater than 40) precede those in the 21st century  *
+C* (YY less than or equal to 40).  The input and output arrays may be   *
 C* the same.  The input times must be sorted smallest to largest.  The  *
 C* output times will be sorted earliest to latest.                      *
 C*									*
@@ -23,6 +23,7 @@ C* Log:									*
 C* D. Kidwell/NCEP	 2/99	                                        *
 C* D. Kidwell/NCEP	 4/99	Stored to outime; added check for YYYY  *
 C* T. Piper/SAIC	 4/02	Fixed UMR; checked for ntime < 1	*
+C* B. Hebbard/NCEP       3/18   Moved century break from 2020 to 2040   *
 C************************************************************************
 	CHARACTER*(*) 	timin (*), outime (*)
 C*
@@ -54,7 +55,7 @@ C
 		i = 1
 		found = .false.
 	        DO WHILE ( .not. found )
-		    IF ( timin ( i ) ( 1:2 ) .gt. '20' ) THEN
+		    IF ( timin ( i ) ( 1:2 ) .gt. '40' ) THEN
 			found = .true.
 			IF ( i .gt. ( ntime / 2 ) ) THEN
 			    down  = .true.

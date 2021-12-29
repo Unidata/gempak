@@ -1439,13 +1439,14 @@ static void af_getFirstLastIssueTimes( int *firstIssueTm, int *lastIssueTm,
  * Log:                                                                 *
  * B. Yin/SAIC          02/07   Created	                         	*
  * B. Yin/SAIC          05/07   Added first/last cycles to output	*
+ * S. Guan/NCEP         07/20   Added tzone as an input of TI_DST	*  
  ***********************************************************************/
 {
 
     int         ii, tmType, ier, tmArray[ 5 ], isDst, nCycles, tmpint;
     int		nSortedCycle;
     char        **cycles, issueTm[ 32 ];
-    char        dattim[ 20 ];
+    char        dattim[ 20 ], tzone[2];
 /*---------------------------------------------------------------------*/
                                                                                       
     *iret = 0;
@@ -1453,10 +1454,13 @@ static void af_getFirstLastIssueTimes( int *firstIssueTm, int *lastIssueTm,
     /*
      *  Read the cycle times from the airmet table
      */
-    tmType = 0;
+    tmType = 1;
     css_gtim ( &tmType, dattim, &ier );
     ti_ctoi ( dattim, tmArray, &ier, strlen ( dattim ) );
-    ti_dst ( tmArray, &isDst, &ier );
+    /* Central Time zone assumed for this code specific to AWC. */
+    tzone[0] = 'C';
+    tzone[1] = '\0';
+    ti_dst ( tmArray, tzone, &isDst, &ier );
 
     ctb_airmetGetCycleTms( (isDst != 0), &nCycles, &cycles, &ier );
 

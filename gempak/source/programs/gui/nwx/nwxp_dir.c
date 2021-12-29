@@ -84,8 +84,7 @@ void dir_getflist ( struct datatype_list *dtyp_info, int idtyp,
  * T. Piper/SAIC	03/04	fixed logic on scandir status		*
  * M. Li/SAIC		01/08	_selectdir -> _select_dir		*
  * T. Piper/SAIC	02/08	Initialize namelist to NULL		*
- * S. Jacobs/NCEP	 4/13	Added checks for TAFS_DEC 		*
- * M. James/Unidata	10/09	changed _exten for "_" file exts	*	
+ * S. Jacobs/NCEP	 4/13	Added checks for TAFS_DEC		*
  ***********************************************************************/
 {
 int		i, ier, isec, jday;
@@ -115,56 +114,59 @@ struct date_time_info	curtim;
 	    SET_DTTM(startdttm, curtim);
 	    if ( dtyp_info[idtyp].bsflag[0] == 'O' ) {
 		if ( strcmp ( dtyp_info[idtyp].datatyp, "TAFS_DEC" ) == 0 ) {
-		  sprintf( _sdttm, "%04d%02d%02d%02d",
-                      startdttm.year, startdttm.month,
-                      startdttm.day,  startdttm.hour );
-              }
-              else {
-                   sprintf( _sdttm, "%04d%02d%02d",
+		    sprintf( _sdttm, "%04d%02d%02d%02d",
+	      		startdttm.year, startdttm.month,
+	      		startdttm.day,  startdttm.hour );
+		}
+		else {
+		    sprintf( _sdttm, "%04d%02d%02d",
 	      		startdttm.year, startdttm.month,
 	      		startdttm.day );
-	        }
+		}
 	    }
 	    else {
 		sprintf( _sdttm, "%04d%02d%02d%02d",
 	      		startdttm.year, startdttm.month,
 	      		startdttm.day,  startdttm.hour );
-	     }
+	    }
 	}
 
 /*
  * set the ending time 
  */
 	SET_DTTM(enddttm, curtim);
-	if ( strcmp ( dtyp_info[idtyp].datatyp, "TAFS_DEC" ) == 0 ) {
-	    sprintf( _edttm, "%04d%02d%02d%02d",
-                  enddttm.year, enddttm.month,
-                  enddttm.day,  enddttm.hour );
-        }
 	if ( dtyp_info[idtyp].bsflag[0] == 'O' ) {
-		sprintf( _edttm, "%04d%02d%02d",
-		      enddttm.year, enddttm.month,
-		      enddttm.day );
-	}
-	else
+	    if ( strcmp ( dtyp_info[idtyp].datatyp, "TAFS_DEC" ) == 0 ) {
 		sprintf( _edttm, "%04d%02d%02d%02d",
 		      enddttm.year, enddttm.month,
 		      enddttm.day,  enddttm.hour );
+	    }
+	    else {
+		sprintf( _edttm, "%04d%02d%02d",
+		      enddttm.year, enddttm.month,
+		      enddttm.day );
+	    }
+	}
+	else {
+		sprintf( _edttm, "%04d%02d%02d%02d",
+		      enddttm.year, enddttm.month,
+		      enddttm.day,  enddttm.hour );
+	}
 
 	_dttmlen = strlen(_sdttm);
 
 /*
  * Set EXTEN for use in the SELECT_DIR function.
  */
-	 if  ( ( srchInfo.smethod == OBS ) &&
+        if  ( ( srchInfo.smethod == OBS ) &&
             ( ( strcmp ( dtyp_info->datatyp,"SFC_HRLY" ) == 0 ) ||
               ( strcmp ( dtyp_info->datatyp, "SND_DATA" ) == 0 ) ||
               ( strcmp ( dtyp_info->datatyp, "SYN_DATA" ) == 0 ) ) ) {
-		sprintf( _exten, "%s", dtyp_info[idtyp].filext );
-	}
-	else {
-		sprintf( _exten, ".%s", dtyp_info[idtyp].filext );
-	}
+               sprintf( _exten, "%s", dtyp_info[idtyp].filext );
+        }
+        else {
+               sprintf( _exten, ".%s", dtyp_info[idtyp].filext );
+        }
 	_extlen = (int)strlen(_exten);
 /*
  * Set DTYPE for use in the SELECT_DIR function.
@@ -248,6 +250,8 @@ int _select_dir ( const struct dirent *check )
  * D. Kidwell/NCEP	 9/02   add check for SFC_HRLY data type        *
  * M. Mainelli/TPC	11/03   add check for SYN_DATA data type	*
  * T. Piper/SAIC	04/05	add check for SND_DATA data type	*
+ * B. Hebbard/NCEP	01/21	Changed century breakpoint from		*
+ *				2020/2021 to 2040/2041 (iyr)		*
  ***********************************************************************/
 {
 	int	len, lendat, idate, iyr, imn, idy, ihr, ier;
@@ -277,7 +281,7 @@ int _select_dir ( const struct dirent *check )
 	    idy = idate % 100;
 	    imn = ( idate / 100 ) % 100;
 	    iyr = idate / 10000;
-	    if  ( iyr <= 20 )  iyr += 2000;
+	    if  ( iyr <= 40 )  iyr += 2000;
 	    if  ( iyr < 100 )  iyr += 1900;
 	    sprintf ( tmpnam, "%04d%02d%02d", iyr, imn, idy );
 
@@ -288,7 +292,7 @@ int _select_dir ( const struct dirent *check )
 	    idy = ( idate / 100 ) % 100;
 	    imn = ( idate / 10000 ) % 100;
 	    iyr = idate / 1000000;
-	    if  ( iyr <= 20 )  iyr += 2000;
+	    if  ( iyr <= 40 )  iyr += 2000;
 	    if  ( iyr < 100 )  iyr += 1900;
 	    sprintf ( tmpnam, "%04d%02d%02d%02d", iyr, imn, idy, ihr );
 	}

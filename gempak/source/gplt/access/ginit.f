@@ -42,6 +42,7 @@ C* S. Jacobs/NCEP	 6/98	Changed pip size from int to real	*
 C* A. Hardy/GSC         10/98   Added kcsywd and rcsysz                 *
 C* S. Jacobs/NCEP	 5/99	Added rrfilt				*
 C* S. Gilbert/NCEP	 5/07	Removed CONTUR.CMN and corres. init. 	*
+C* S. Guan/NCEP         07/18   Change hipowo.cia to hipowo.nws         *
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 	INCLUDE		'DEVCHR.CMN'
@@ -154,8 +155,8 @@ C
 C
 	mset   = .false.
 	mtype  = 0
-	mpfil  = 'hipowo.cia'
-	cmpfil = 'hipowo.cia'
+	mpfil  = 'hipowo.nws'
+	cmpfil = 'hipowo.nws'
 	gset   = .false.
 C
 	RETURN

@@ -30,13 +30,15 @@ C* A. Hardy/GSC		 6/01	Added GH_SAVE, GH_REST			*
 C* D. Kidwell/NCEP	 4/02	Rewrote for label placement; cleaned up *
 C* D. Kidwell/NCEP	 3/03	Increased allowable number of points    *
 C* D. Kidwell/NCEP	12/05	Fixed for year changeover               *
+C* B. Hebbard/NCEP	 5/20	Update for new 60hr forecast - SCN20-20	*
+C*                              by increasing PARAMETER NUMHR 8 -> 9    *
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 C*
 	CHARACTER*(*)	ddate (*) , tzone
         REAL		alat (*), alon (*), xkey (*), ykey (*)
 C*
-	PARAMETER	( NUMHR = 8 )
+	PARAMETER	( NUMHR = 9 )
 	PARAMETER	( NUMPRV = 5 )
         CHARACTER       pos1*20, fmonth*9, fmon*9, fday*9, ctime*2,
      +                  zone2*3, ampm*2, tdate*20, mm*2, yymm*4,

@@ -8,7 +8,8 @@
 ! D. Kidwell/NCEP	 7/05	Added Orange Co., Sipacate, Dry Tort. Isl.
 ! C. Lauer/NHC           4/09   Updated for 2009 Season
 ! M. Brennan/NHC         2/12   Updated for Block Isl, Nantucket, and Martha's Vinyrd
-! M. Brennan/NHC        12/16   Cleanup and updates for 2017
+! M. Brennan/NHC        12/16   Cleanup and updates for 2017 
+! M. Brennan/NHC         4/19   Updated for 2019 Season
 !
 !STID    STNM   NAME                             ST CO   LAT    LON  ELV PRI TBCHRS  
 !(8)     (6)    (32)                            (2)(2)   (5)    (6)   (5)(2)   (20)
@@ -87,8 +88,8 @@ OAHU     505300 Oahu                             -- HI  2146 -15800     0 50
 ! Other Pacific islands
 !
 JOHNSTON 505400 Johnston_Atoll                   -- --  1675 -16950     0 50
-MIDWAY   505500 Midway_Island                    -- --  2822 -17737     0 50
-KURE     505600 Kure_Atoll                       -- --  2842 -17833     0 50
+MIDWAY   505500 Midway_Island                    -- --  2821 -17737     0 50
+KURE     505600 Kure_Atoll                       -- --  2840 -17830     0 50
 !
 ! Atlantic Canada islands
 ! 

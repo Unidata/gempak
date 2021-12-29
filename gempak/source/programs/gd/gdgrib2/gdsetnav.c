@@ -34,11 +34,14 @@ void gdsetnav ( GDG2_input *input, float *rnvblk, int *iret )
  **                                                                     *
  * Log:                                                                 *
  * S. Gilbert/NCEP           6/2005   Orig                              *
+ * B. Hebbard/NCEP           2/2021   On gd_open of CPYFIL, pass actual *
+ *                                    (vs. alloc) strlen (NAWIPS-160);  *
+ *                                    remove gd_clos() of unused igdfln *
  ***********************************************************************/
 {
 
     int    ret;
-    int    nxgd, nygd, nowrit, igdfln, maxgrd;
+    int    nxgd, nygd, nowrit, maxgrd;
     int    mxanl, mxnav, iacss;
     char   cname[TMPLEN], cproj[TMPLEN];
     float  anlblk[LLNANL], garea[4];
@@ -68,12 +71,11 @@ void gdsetnav ( GDG2_input *input, float *rnvblk, int *iret )
            mxanl=0;
            mxnav=13;
            gd_open( input->cpyfil, &nowrit, &mxanl, &mxnav, &iacss,
-                    anlblk, rnvblk, &maxgrd, &ret, LLMXLN );
+                    anlblk, rnvblk, &maxgrd, &ret, strlen(input->cpyfil) );
            if ( ret != 0 ) {
                *iret = -31;
                return;
            }
-           gd_clos( &igdfln, &ret);
         }
         /*
          *  Set output grid navigation in DG library

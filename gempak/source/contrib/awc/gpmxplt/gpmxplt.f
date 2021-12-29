@@ -8,6 +8,9 @@ C* Since this is really only useful for setting GAREA and exiting, we   *
 C* only set the area for the first frame in an image loop               *
 C**                                                                     *
 C* Log:                                                                 *
+C*    S. Danz/AWC       2000's                                          *
+C*    L. Hinson/AWC     5/31/2018 Declared/Assigned Undeclared tb to 0. *
+C*                               (Type Real)                            *
 C************************************************************************
         INCLUDE         'GEMPRM.PRM'
         INCLUDE         'ERMISS.FNC'
@@ -27,7 +30,7 @@ C*
 C*
         REAL            xlv, ybv, xrv, ytv,
      +                  xcv, ycv, xcntr, ycntr, xdst, ydst,
-     +                  lm, bm, rm, tm,
+     +                  lm, bm, rm, tm, tb
      +                  vlm, vbm, vrm, vtm,
      +                  xlwr, xupr, ylwr, yupr, rwdth, rhght,
      +                  szmkx, szmky, sztxx, sztxy, szwbx, szwby
@@ -37,6 +40,7 @@ C-----------------------------------------------------------------------
 C
 C*      Initialize user interface and graphics.
 C
+        tb = 0.
         iperr = 0
         respond = .TRUE.
         CALL IP_INIT  ( respond, iperr )
