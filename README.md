@@ -3,8 +3,9 @@
 
 [![GitHub release](https://img.shields.io/github/release/Unidata/gempak.svg)]() [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)  
 
-GEMPAK (GEneral Meteorology PAcKage) is a set of programs to decode, analyze, and render meteorological data.  
-UCAR's Unidata Program Center maintains an open-source, non-operational release for use in the geoscience community.
+GEMPAK (GEneral Meteorology PAcKage) is a set of programs to decode, analyze, and render meteorological data.
+
+Members of the Unidata community maintain an open-source, non-operational release for use in the geoscience community.
 
 **GEMPAK is no longer being actively maintained or supported by the Unidata Program Center.**
 
