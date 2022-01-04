@@ -16,7 +16,7 @@ GEMPAK downloads can be accessed at: https://github.com/Unidata/gempak/releases
 
 ## Documentation
 
-Documenation for GEMPAK version 7.5.1 (released in 2019) is provided from 
+Documentation for GEMPAK version 7.5.1 (released in 2019) is provided from 
 [Unidata](https://docs.unidata.ucar.edu/software/gempak/)
 _AS IS_ as a convenience for the community: <https://docs.unidata.ucar.edu/software/gempak/>
 
