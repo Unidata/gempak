@@ -30,7 +30,7 @@ elif [ "$os_type" = "centos" ]; then
         sudo docker run --privileged -d -ti -e "container=docker" -v `pwd`:/gempak:rw unidata/gempak-devel:$TAG /usr/sbin/init
         DOCKER_CONTAINER_ID=$(sudo docker ps | grep ${os_version} | awk '{print $1}' | head -1 )
         sudo docker logs $DOCKER_CONTAINER_ID
-        sudo docker exec -ti $DOCKER_CONTAINER_ID /bin/bash -xec "bash -xe /gempak/build/build_${os_type}.sh ${os_version}";
+        sudo docker exec --tty $DOCKER_CONTAINER_ID /bin/bash -xec "bash -xe /gempak/build/build_${os_type}.sh ${os_version}";
         sudo docker ps -a
         sudo docker stop $DOCKER_CONTAINER_ID
         sudo docker rm -v $DOCKER_CONTAINER_ID
