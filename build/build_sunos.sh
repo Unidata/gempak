@@ -38,8 +38,8 @@ if [ -d ${BUILD_DIR} ]; then
   cd ${BUILD_DIR}
   mkdir GEMPAK7
   pushd GEMPAK7
-  rsync -av --progress /home/gempak/GEMPAK7/ . --exclude .git --exclude build --exclude extlibs --exclude config  --exclude .travis.yml --exclude .gitignore --exclude Makefile
-  #rm -rf extlibs config .gitignore .travis.yml build
+  rsync -av --progress /home/gempak/GEMPAK7/ . --exclude .git --exclude build --exclude extlibs --exclude config  --exclude .github --exclude .gitignore --exclude Makefile
+  #rm -rf extlibs config .gitignore .github build
   popd
   ln -s GEMPAK7 NAWIPS
   tar -cf gempak-${package_version}.sol.x86.tar GEMPAK7 NAWIPS

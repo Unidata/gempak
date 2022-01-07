@@ -49,7 +49,7 @@ make everything
 #grep -i error $gemlog
 
 # Cleanup
-rm -rf .gitignore .travis.yml
+rm -rf .gitignore .github
 
 # Build the deb package
 mkdir -p /tmp/gempak-${package_version}/home
