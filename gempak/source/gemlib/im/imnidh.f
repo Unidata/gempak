@@ -573,12 +573,15 @@ C
 	RETURN
 	END
 C
-        SUBROUTINE short_ieee (ishort, fval)
+        SUBROUTINE short_ieee (ishort2, fval)
 C
-        INTEGER*2       smask, emask, fmask
+	INTEGER*2       ishort
+	INTEGER*2       smask, emask, fmask
         DATA            smask / X'8000' /
         DATA            emask / X'7C00' /
         DATA            fmask / X'03FF' /
+C
+	ishort = ishort2
 C
         isval = ISHFT(IAND ( ishort, smask),-15)
         IF ( isval .eq. 0 ) THEN
