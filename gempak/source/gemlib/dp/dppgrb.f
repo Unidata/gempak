@@ -35,6 +35,7 @@ C* K. Brill/NMC		03/92	Fix for constant grid			*
 C* H. Zeng/SAIC		09/07	Fixed constant grib with missing data	*
 C* K. Brill/HPC         03/09   Fix infinite loop for NINT cycling	*
 C* K. Tyle/UAlbany	10/10	Fixed for case with all missing data	*
+C* S. Decker/Rutgers     6/19   Fix infinite loop for very small qdif   *
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 C*
@@ -112,7 +113,7 @@ C
 	    RETURN
 	END IF
 	imax = 2 ** nbits - 1
-	IF  ( qdif .ne. 0.0 )  THEN
+	IF  ( ABS(qdif) .gt. TINY(qdif) * imax ) THEN
 C
 	  IF ( idat .ge. imax )  THEN
 	    DO WHILE  ( idat .ge. imax )
