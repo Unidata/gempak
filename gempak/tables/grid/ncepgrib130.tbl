@@ -1,6 +1,9 @@
 !
 ! NCEPGRIB130.TBL -- GRIB 1 parameter conversion table version 130
 !
+! S. Chiswell Reference: http://www.nco.ncep.noaa.gov/pmb/docs/on388/table2.html#TABLE130
+!
+!
 !ID# NAME                             UNITS                GNAM         SCALE   MISSING HZREMAP DIRECTION
 !
 144 Volumetric soil moistur (0.0-1.0) -                    SOILW            0  -9999.00       0         0
@@ -14,7 +17,7 @@
 151 Liquid soil moisture content      Kg/m**2              LSOIL            0  -9999.00       0         0
 152 Open water evaporation            Kg/m**2              EWATR            0  -9999.00       0         0
 !153 Reserved for future use                   
-!154 Land Surface Precipitation Accum Kg/m**2		   LSPA		    0  -9999.00       0         0
+154 Land Surface Precipitation Accm   kg/m**2              LSPA             0  -9999.00       0         0
 155 Ground Heat Flux                  Kg/m**2              GFLUX            0  -9999.00       0         0
 156 Convective inhibition             J/kg                 CIN              0  -9999.00       0         0
 157 CAPE                              J/kg                 CAPE             0  -9999.00       0         0
@@ -33,7 +36,7 @@
 169 Near IR diffuse down solar flux   W/m**2               NDDSF            0  -9999.00       0         0
 170 Snow-free albedo                  %                    SNFALB           0  -9999.00       0         0
 !                   
-!171 No. of soil layers in root zone   -                    RLYRS            0  -9999.00       0         0        
+171 Number of soil layers/Root Zone   number               NSOILL           0  -9999.00       0         0
 172 Momentum flux                     N/m**2               MFLX             0  -9999.00       0         0
 !173 Reserved for future use                   
 !174 Reserved for future use                   

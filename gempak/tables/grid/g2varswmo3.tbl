@@ -32,7 +32,7 @@
 000 000 011 011 Sensible Heat Net Flux           W m**-2              FXSH             0  -9999.00
 000 000 011 012 Sensible Heat Net Flux           W m**-2              FXSH             0  -9999.00
 000 000 012 000 Heat Index                       K                    HEAT             0  -9999.00
-!000 000 013 000 Wind Chill Factor                K                    ????             0  -9999.00
+000 000 013 000 Wind Chill Factor                K                    CHILL            0  -9999.00
 !000 000 014 000 Minimum Dew Point Depression     K                    ????             0  -9999.00
 !000 000 015 000 Virtual Potential Temperature    K                    ????             0  -9999.00
 !
@@ -80,7 +80,7 @@
 !000 001 026 000 Horizon Moisture Converg         kg kg**-1 s**-1      ????             ?  -9999.00
 !000 001 027 000 Maximum Relative Humidity        %                    ????             ?  -9999.00
 !000 001 028 000 Maximum Absolute Humidity        kg m**-3             ????             ?  -9999.00
-000 001 029 008 Total Snowfall                   m                    W--M             3     -0.01
+000 001 029 008 Total Snowfall                   m                    SNOW             3     -0.01
 !000 001 030 000 Precipitable water Category      code table           ????             ?  -9999.00
 000 001 031 000 Hail                             m                    H--M             3     -0.01
 !000 001 032 000 Graupel (snow pellets)           kg kg**-1            ????             ?  -9999.00
