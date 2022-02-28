@@ -45,8 +45,53 @@
 190 U component from scatterometer    -                    USCT             0  -9999.00       0         0
 191 V component from scatterometer    -                    VSCT             0  -9999.00       0         0
 !
-211 Reflectivity                      dbZ                  REFD             0  -9999.00       0         0
-212 Composite Reflectivity            dbZ                  REFC             0  -9999.00       0         0
+! Unidata Additions
+143 Cloud Emissivity                  Fraction 0-1         CEMS             0  -9999.00       0         0
+144 Cloud Optical Depth               non-dim              COPDS            0  -9999.00       0         0
+145 Effective Particle size           Microns              PSIZ             0  -9999.00       0         0
+146 Total Water Cloud                 %                    TCWAT            0  -9999.00       0         0
+147 Total Ice Cloud                   %                    TCICE            0  -9999.00       0         0
+148 Wind difference                   m/s                  WDIF             0  -9999.00       0         0
+149 Wave Steepness                    non-dim              WSTP             0  -9999.00       0         0
+157 Particulate matter (fine)         g**-6/m**3           PMTF             0  -9999.00       0         0
+158 Analysis error of temperature     K                    AETMP            0  -9999.00       0         0
+159 Analysis error of dew point       K                    AEDPT            0  -9999.00       0         0
+160 Analysis error of specific hum.   kg kg**-1            AESPH            0  -9999.00       0         0
+161 Analysis error of u-wind          m s**-1              AEUWD            0  -9999.00       0         0
+162 Analysis error of v-wind          m s**-1              AEVWD            0  -9999.00       0         0
+163 Particulate matter (fine)         log10(g10**-6 m**-3) LPMTF            0  -9999.00       0         0
+164 Integrated column part mat (fine) log10(g10**-6 m**-3) LIPMF            0  -9999.00       0         0
+168 Total column-int supercooled H2O  kg m**-2             TCLSW            0  -9999.00       0         0
+169 Total column-int melting ice      kg m**-2             TCOLM            0  -9999.00       0         0
+172 Secs after initial reference time s                    TSECA            0  -9999.00       0         0
+174 Analysis error of pressure        Pa                   AEPRS           -2  -9999.00       0         0
+175 Icing severity                    non-dim              ICSEV            0  -9999.00       0         0
+176 Icing probability                 non-dim              ICPRB            0  -9999.00       0         0
+177 Low-level aviation interest       non-dim              LAVNI            0  -9999.00       0         0
+178 High-level aviation interest      non-dim              HAVNI            0  -9999.00       0         0
+182 Vert eddy diffusivity heat exch   m**2/s               VEDHB            0  -9999.00       0         0
+183 Sigma level value                 non-dim              SIGV             0  -9999.00       0         0
+!
+194 Tropical Cyclone Heat Potential   J m**-2              TCHP             0  -9999.00       0         0
+195 Geometric Depth Below Sea Surface m                    DBSS             0  -9999.00       0         0
+196 Ocean Dynamic Height Anomaly      m                    ODHA             0  -9999.00       0         0
+197 Ocean Heat Content                J/m**2               OHC              0  -9999.00       0         0
+198 Sea Surface Height Rel to Geoid   m                    SSHG             0  -9999.00       0         0
+199 Salt Flux                         g/cm**2/s            SLTFL            0  -9999.00       0         0
+!
+200 UV-B downward solar flux          W/m**2               DUVB             0  -9999.00       0         0
+201 Clear sky UV-B downward solar flx W/m**2               CDUVB            0  -9999.00       0         0
+202 Total downward heat flux (sfc)    W/m**2               THFLX            0  -9999.00       0         0
+!
+! added from WRF documentation (Chiz)
+203 Dominant rain                     0,1                  WXDR             0  -9999.00       0         0
+204 Dominant freezing rain            0,1                  WXDZ             0  -9999.00       0         0
+205 Dominant ice pellets              0,1                  WXDP             0  -9999.00       0         0
+206 Dominant snow                     0,1                  WXDS             0  -9999.00       0         0
+!
+210 Observed radar reflectivity       dbZ                  REFO             0  -9999.00       0         0
+211 Derived radar reflectivity        dbZ                  REFD             0  -9999.00       0         0
+212 Maximum/Composite reflectivity    dbZ                  REFC             0  -9999.00       0         0
 !
 213 Sim Sat bright-T Chan2 GOES12     K                    SBT122           0  -9999.00       0         0
 214 Sim Sat bright-T Chan3 GOES12     K                    SBT123           0  -9999.00       0         0

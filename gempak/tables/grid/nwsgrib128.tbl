@@ -6,7 +6,7 @@
 !
 !ID# NAME                             UNITS                GNAM         SCALE   MISSING  HZREMAP DIRECTION
 !
-191 Total Precipitation               Kg/m**2              P--M             0  -9999.00        0         0
+191 Total Precipitation               Kg/m**2              APCP             0  -9999.00        0         0
 192 Cond 25% pcpn amt fractile        Kg/m**2              EF25M            0  -9999.00        0         0
 !      past 24 hours. Accumulation. 
 193 Cond 50% pcpn amt fractile        Kg/m**2              EF50M            0  -9999.00        0         0

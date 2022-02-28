@@ -28,3 +28,13 @@
 246 255 Maximum equiv potential tmp level -                    MTHE     0
 247 255 Equilibrium level                 -                    EHLT     0
 
+!
+! Unidata Additions
+200   0 Entire atmosphere as a layer      -                    NONE     0
+206 255 Grid scale cloud bottom level     -                    GCBL     0
+207 255 Grid scale cloud top level        -                    GCTL     0
+245 255 Lowest level of the wet bulb zero -                    LLTW     0
+248 255 Shallow convective cloud bottom l -                    SCBL     0
+249 255 Shallow convective cloud top lev  -                    SCTL     0
+251 255 Deep convective cloud bottom lev  -                    DCBL     0
+252 255 Deep convective cloud top level   -                    DCTL     0
