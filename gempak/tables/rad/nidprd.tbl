@@ -27,7 +27,8 @@
 ! G. Grosshans/SPC	12/20	Added MRMS v12.1 radar products
 ! B. Hebbard/NCEP	 1/21	Corrected MRMS radar ID to 5
 ! B. Hebbard/NCEP	 2/21	MRMS updates - w/ T. Lee
-! P. Pokrandt/UW-AOS 2/22 Super High Res reflectivity at 0.5 deg (prod 153)
+! P. Pokrandt/UW-AOS     2/22   Super High Res reflectivity at 0.5 deg (prod 153)
+! D. Herzmann/ISU        3/22   Super High Res velocity
 !------------------------------------------------------------------------
 !
 !Type    Name      Prod#   #Lvls Units    Res    Description
@@ -53,6 +54,7 @@ LOCAL    VEL          99      16 KNOTS      0.25 RAD_VEL_.25KM_TILT
 LOCAL    VIL         134      16 KG/M**2    1.00 PREC_WATER
 LOCAL    TOPS        135      16 KFT        1.00 ECHO_TOPS_1KM
 LOCAL    BREF256     153     256 DBZ        0.25 BASE_REFL_1KM_TILT
+LOCAL    VEL256      154     256 KNOTS      0.25 RAD_VEL_.25KM_TILT
 !
 ! Used for data from other vendors.
 LOCAL    BREF         16       8 DBZ        1.00 BASE_REFL_1KM_TILT

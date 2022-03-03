@@ -79,7 +79,8 @@
 ! B. Hebbard/NCEP        2/21   MRMS updates - w/ T. Lee
 ! B. Hebbard/NCEP        3/21   Move Unisys entries after MRMS; comment out 
 !				duplicates; "MRMS12.1"->"REFLECT" (NAWIPS-172)
-! P. Pokrandt/UW-AOS  2/22  Add Super High-Res reflectivity 
+! P. Pokrandt/UW-AOS     2/22   Add Super High-Res reflectivity
+! D. Herzmann/ISU        3/22   Add Super High-Res velocity
 !------------------------------------------------------------------------------
 !
 ! SATELLITE IMAGE TYPES
@@ -768,7 +769,8 @@ LOCAL  1 KM  BASE    REFLECT       0     15      7     94      1 osf_ref16.tbl
 LOCAL .25 KM  RADIAL VELOCITY      0     15      7     99      1 nids_vel16.tbl
 LOCAL  1 KM  DIGITAL VIL           0     15      7    134      1 osf_ref16.tbl
 LOCAL  1 KM  ECHO    TOPS          0     15      7    135      1 nids_tops.tbl
-LOCAL  .25 KM  BASE  REFLECT       0    255      7    153      1 upc_ref2.tbl
+LOCAL .25 KM  BASE  REFLECT        0    255      7    153      1 upc_ref2.tbl
+LOCAL .25 KM  RADIAL VELOCITY      0    255      7    154      1 upc_vel2.tbl
 LOCAL  1 KM  DIFF REFLECTIVITY     0     15      7    159      1 osf_ref16.tbl
 LOCAL  1 KM  DIGITAL CORR COEFF    0     15      7    161      1 osf_ref16.tbl
 LOCAL  1 KM  DKD PHASE             0     15      7    163      1 osf_ref16.tbl
