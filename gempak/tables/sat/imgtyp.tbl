@@ -768,7 +768,7 @@ LOCAL  1 KM  BASE    REFLECT       0     15      7     94      1 osf_ref16.tbl
 LOCAL .25 KM  RADIAL VELOCITY      0     15      7     99      1 nids_vel16.tbl
 LOCAL  1 KM  DIGITAL VIL           0     15      7    134      1 osf_ref16.tbl
 LOCAL  1 KM  ECHO    TOPS          0     15      7    135      1 nids_tops.tbl
-LOCAL  .25 KM  BASE  REFLECT       0    255      7    153      1 upc_n0q.tbl
+LOCAL  .25 KM  BASE  REFLECT       0    255      7    153      1 upc_ref2.tbl
 LOCAL  1 KM  DIFF REFLECTIVITY     0     15      7    159      1 osf_ref16.tbl
 LOCAL  1 KM  DIGITAL CORR COEFF    0     15      7    161      1 osf_ref16.tbl
 LOCAL  1 KM  DKD PHASE             0     15      7    163      1 osf_ref16.tbl
