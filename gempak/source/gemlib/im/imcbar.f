@@ -219,14 +219,14 @@ C
 	    IF ( ilblfq .ne. 0 .and. cmblev (i) .ne. ' ' ) THEN
                IF ( imftyp .eq. 13 ) THEN
                   SELECT CASE ( imtype ) 
-                     CASE (94,32,180,186)
+                     CASE (94,32,153,180,186)
                         IF ( ( i .eq. clevsp ) .or.
-     +                    ( MOD ( i + 3 , 10 ) .eq. 0 ) ) THEN
+     +                    ( MOD ( i + 5 , 10 ) .eq. 0 ) ) THEN
                            label = cmblev (i)
                         ELSE
                            label = ' '
                         END IF
-                     CASE (99,182)
+                     CASE (99,154,182)
                         IF ( MOD ( i-10 , 20 ) .eq. 0 ) THEN
                            label = cmblev (i)
                         ELSE
