@@ -227,7 +227,7 @@ C
                            label = ' '
                         END IF
                      CASE (99,154,182)
-                        IF ( MOD ( i-10 , 20 ) .eq. 0 ) THEN
+                        IF ( MOD ( i-8 , 20 ) .eq. 0 ) THEN
                            label = cmblev (i)
                         ELSE
                            label = ' '
