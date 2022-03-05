@@ -133,7 +133,7 @@ GDIR = gn
 
 CFLAGS = $(COPT) $(XWINCDIR) $(MOTIFINC) -I$(NETCDFINC) -I$(ZLIBINC) -I$(PNGINC) -I$(RSLINC)
 
-all : $(ALIB) device.f $(PROG)
+all : $(ALIB) $(PROG)
 
 install:
 	$(INSTALL) $(PROG) $(OS_BIN)
@@ -153,9 +153,6 @@ $(ALIB): $(LOBJS) $(COBJS)
 	$(FC) $(FFLAGS) -g -c $<
 
 
-device.f :
-	$(LN) $(GEMPAK)/source/device/main/device.f .
-
 clean:
-	$(RM) *.o device.f $(PROG)
+	$(RM) *.o $(PROG)
 

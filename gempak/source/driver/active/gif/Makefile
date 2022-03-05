@@ -66,7 +66,7 @@ CFLAGS = $(COPT) $(XWINCDIR)
 
 .PRECIOUS: $(ALIB)
 
-all : device.f $(ALIB) $(PROG)
+all :  $(ALIB) $(PROG)
 
 install:
 	$(INSTALL) $(PROG) $(OS_BIN)
@@ -86,9 +86,6 @@ $(ALIB): $(LOBJS) $(COBJS)
 	$(FC) $(FFLAGS) -c $<
 
 
-device.f :
-	$(LN) $(GEMPAK)/source/device/main/device.f .
-
 clean:
-	$(RM) *.o device.f $(PROG)
+	$(RM) *.o $(PROG)
 
