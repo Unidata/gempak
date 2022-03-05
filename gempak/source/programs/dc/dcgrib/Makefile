@@ -43,38 +43,11 @@ PROG_OBJS =  \
 	quasi.o 
 #	inetutil.o 
 
-SYMLINKS = \
-	centers.h \
-	emalloc.c \
-	emalloc.h \
-	gbds.h \
-	gbds.c \
-	gbytem.c \
-	gbytem.h \
-	gdes.h \
-	gdes.c \
-	gds.h \
-	get_prod.c \
-	get_prod.h \
-	grib1.c \
-	grib1.h \
-	gribtypes.c \
-	gribtypes.h \
-	params.c \
-	params.h \
-	product_data.c \
-	product_data.h \
-	quasi.c \
-	quasi.h 
-
-##	inetutil.h 
-#	inetutil.c 
-
 DECODEDIR = ../gribtonc_src
 
 CFLAGS = $(COPT) -DGEMPAK -I$(GEMPAK)/source/programs/upc/ldmlog
 
-all : $(SYMLINKS) nacmn.cmn gbcmn.h $(PROG)
+all : nacmn.cmn gbcmn.h $(PROG)
 	
 install : $(OS_BIN)/$(PROG) $(GEMHLP)/hlp/$(PROG).hlp
 
@@ -89,9 +62,6 @@ $(GEMHLP)/hlp/$(PROG).hlp : $(PROG).hlp
 $(MANDIR)/man1/$(PROG).1 : $(PROG).1
 	-@cmp -s $? $@ || \
 		($(AUXINSTALL) $? $@ && echo 'updated $@')
-
-$(SYMLINKS) : 
-	ln -s $(DECODEDIR)/$@ $@
 
 nacmn.cmn: 
 	-$(LN) $(GEMPAK)/source/griblib/na/nacmn.cmn .
