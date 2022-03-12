@@ -82,7 +82,7 @@ C------------------------------------------------------------------------
 C
 C*	Set the version string and add a null to the end.
 C
-	vmsg = 'Version 7.14.0'
+	vmsg = 'Version 7.14.0.1'
 	CALL ST_NULL ( vmsg, vmsg, lens, ier )
 C*
 	RETURN

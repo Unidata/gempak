@@ -2,9 +2,9 @@
 %define __prelink_undo_cmd %{nil}
 %define gem_home /home/gempak/GEMPAK7
 %define prefix /home/gempak
-%define version 7.14.0
+%define version 7.14.0.1
 Name: gempak-extlibs
-Summary: Unidata GEMPAK
+Summary: Unidata Community GEMPAK
 Version: %{version}
 Release: 1%{?dist}
 Prefix: %{prefix}
@@ -13,8 +13,8 @@ BuildRoot: /tmp
 URL: https://www.unidata.ucar.edu/software/gempak/
 License: Open Source
 Distribution: N/A
-Vendor: Unidata
-Packager: mjames@ucar.edu
+Vendor: Unidata Community
+Packager: akrherz@iastate.edu
 BuildRequires: libX11-devel, libXt-devel, libXext, libXp-devel
 BuildRequires: libXft-devel, libXtst-devel, xorg-x11-xbitmaps
 BuildRequires: flex, byacc, openmotif-devel
