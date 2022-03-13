@@ -1,5 +1,5 @@
 FROM unidata/ldm-docker
-MAINTAINER Michael James <mjames@ucar.edu>
+MAINTAINER Daryl Herzmann <akrherz@iastate.edu>
 
 ENV HOME /home/ldm
 

@@ -1,6 +1,6 @@
 Package: gempak
-Version: 7.14.0
-Maintainer: Michael James
+Version: 7.14.0.1
+Maintainer: Daryl Herzmann
 Architecture: all
 Description: Unidata GEMPAK Distribution
 Depends: libgfortran3, libx11-6, libxm4, libxtst6, libxt6
