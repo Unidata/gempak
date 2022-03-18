@@ -129,3 +129,16 @@ hinpsa       US PSA Areas             hinpsa.nws
 mwo          MWO                      mwo.nws
 vaacar	     VAAC (all) Boundaries    vaacar.ncp
 pubzones     US Pub Fcst Zones, NWS   tpznus.nws
+! Unidata additions
+rdis         Interstates              rdis.uni
+rdus         US Highways              rdus.uni
+rdsh         State Highways           rdsh.uni
+rdar         Arterial Roads           rdar.uni
+hirdlo       Local Streets            hirdlo.uni
+hicnuni      AWIPS counties           hicnus.uni
+histuni      AWIPS states             states.uni
+hirdny       NYC streets              hirdny.uni
+hicnny       NYC counties             hicnny.uni
+tpnynj       NYC area counties        tpnynj.uni
+brazil       Brazillian States        histbr.uni
+argentina    Argentinian States       histar.uni
