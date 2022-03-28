@@ -1,5 +1,8 @@
 ! GRIB2  - NSSL Local Parameter Table
 !
+! Upstream: https://github.com/Unidata/GEMPAK-Tables/g2varsnssl.tbl
+! Copied to GEMPAK: gempak/tables/grid/g2varsnoaa1.tbl
+!
 !D#  = Discipline number
 !CT# = Category number (Octet 10, Code Table 4.2)
 !ID# = Parameter number (Octet 11)
@@ -13,6 +16,9 @@
 209 002 002 000 CG Lightning Density 15min       flash km**-2 min**-1 LgtDens15min     0     -1.00
 209 002 003 000 CG Lightning Density 30min       flash km**-2 min**-1 LgtDens30min     0     -1.00
 209 002 005 000 Lightning Prob. next 30min Grid  %                    LgtProb30min     0      0.00
+209 002 006 000 Lightning Prob. next 60min Grid  %                    LgtProb60min     0      0.00
+209 002 007 000 Lightning Jump Grid              non-dim              LgtJmpGd         0 -99900.00
+209 002 008 000 Lightning Jump Grid Max 5min     non-dim              LgtJmpGd5min     0 -99900.00
 !
 ! Radar products
 !D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING
@@ -40,6 +46,8 @@
 209 003 032 000 MESH Hail Swath 240-min          mm                   MESHMx240mn      0  -9999.00
 209 003 033 000 MESH Hail Swath 360-min          mm                   MESHMx360mn      0  -9999.00
 209 003 034 000 MESH Hail Swath 1440-min         mm                   MESHMx1440mn     0  -9999.00
+209 003 037 000 VIL Max 120-min                  kg m**-2             VILMax120mn      0     -1.00
+209 003 040 000 VIL Max 1440-min                 kg m**-2             VILMax1440mn     0     -1.00
 209 003 041 000 Vertically Integrated Liquid     kg m**-2             VIL              0  -9999.00
 209 003 042 000 Vertically Integrated Liquid Den g m**-3              VILDensity       0  -9999.00
 209 003 043 000 Vertically Integrated Ice        kg m**-2             VII              0  -9999.00
@@ -114,6 +122,9 @@
 209 006 041 000 MultiSensor QPE 24H Pass2        mm                   MrgdQpe24HP2     0     -1.00
 209 006 042 000 MultiSensor QPE 48H Pass2        mm                   MrgdQpe48HP2     0     -1.00
 209 006 043 000 MultiSensor QPE 72H Pass2        mm                   MrgdQpe72HP2     0     -1.00
+209 006 044 000 Synthetic Precip Rate ID         flag                 SynthPrcpRt      0     -1.00
+209 006 045 000 RADAR-Only QPE 15min             mm                   RadarQPE15mn     0     -1.00
+209 006 046 000 RADAR-Only QPE Since 12z         mm                   RadarQPE12z      0     -1.00
 !
 ! Radar RAP model
 !D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING
@@ -138,12 +149,28 @@
 209 008 007 000 Gauge Infl Index for 72hour QPE  non-dim              GInflIdx72H      0  -9999.00
 209 008 008 000 Hybrid Scan Refl with VPR cor    dBZ                  SeamlsHSR        0  -9999.00
 209 008 009 000 Hgh Hybrid Scan Reflectivity     km AGL               SeamlsHSRHgt     0  -9999.00
+209 008 010 000 Radar Accum Qual Index 1hour     non-dim              RadarQIdx01H     0     -1.00
+209 008 011 000 Radar Accum Qual Index 3hour     non-dim              RadarQIdx03H     0     -1.00
+209 008 012 000 Radar Accum Qual Index 6hour     non-dim              RadarQIdx06H     0     -1.00
+209 008 013 000 Radar Accum Qual Index 12hour    non-dim              RadarQIdx12H     0     -1.00
+209 008 014 000 Radar Accum Qual Index 24hour    non-dim              RadarQIdx24H     0     -1.00
+209 008 015 000 Radar Accum Qual Index 48hour    non-dim              RadarQIdx48H     0     -1.00
+209 008 016 000 Radar Accum Qual Index 72hour    non-dim              RadarQIdx72H     0     -1.00
+209 008 017 000 Gauge Infl Index Pass2 1hour     non-dim              GInflP2Id01H     0     -1.00
+209 008 018 000 Gauge Infl Index Pass2 3hour     non-dim              GInflP2Id03H     0     -1.00
+209 008 019 000 Gauge Infl Index Pass2 6hour     non-dim              GInflP2Id06H     0     -1.00
+209 008 020 000 Gauge Infl Index Pass2 12 hour   non-dim              GInflP2Id12H     0     -1.00
+209 008 021 000 Gauge Infl Index Pass2 24 hour   non-dim              GInflP2Id24H     0     -1.00
+209 008 022 000 Gauge Infl Index Pass2 48 hour   non-dim              GInflP2Id48H     0     -1.00
+209 008 023 000 Gauge Infl Index Pass2 72 hour   non-dim              GInflP2Id72H     0     -1.00
 !
 ! Radar CAPPI
 !D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING
 !23|123|123|123|12345678901234567890123456789012|12345678901234567890|123456789012|12345|123456.89
 209 009 000 000 88D3D Refl CAPPI 500-19000m      dBZ                  ConusReflQC      0  -9999.00
 209 009 001 000 AllRdr 3D Refl CAPPI 500-19000m  dBZ                  Conus+ReflQC     0  -9999.00
+209 009 003 000 Merged Rho HV                    non-dim              MrgRhoHV         0    -99.00
+209 009 004 000 Merged Zdr                       dBZ                  MrgZdr           0    -99.00
 !
 ! Radar composite reflectivity
 !D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING
@@ -157,6 +184,8 @@
 209 010 006 000 Layer CompRefl Mos 33-60 kft     dBZ                  LCompReflSHi     0  -9999.00
 209 010 007 000 CompRefl Hourly Maximum          dBZ                  ReflCompHrMx     0  -9999.00
 209 010 008 000 Max Refl -10 deg C hgt and above dBZ                  ReflMaxAM10C     0  -9999.00
+209 010 009 000 Layer CompRef ANC                dBZ                  LCompRefANC      0    -99.00
+209 010 010 000 BREF 1hr MAX                     dBZ                  BREF1hrMax       0    -99.00
 !
 ! Radar mosaic
 !D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING
@@ -164,6 +193,7 @@
 209 011 000 000 Mosaic Base Refl (opt method)    dBZ                  MrgBasReflQC     0  -9999.00
 209 011 001 000 UnQc                             dBZ                  MrgReflComp      0  -9999.00
 209 011 002 000 Comp Refl Mosaic (max ref)       dBZ                  MrgReflQComp     0  -9999.00
+209 011 003 000 Merged Base Reflectivity Raw     dBZ                  MrgBasReflRw     0  -9999.00
 !
 ! FLASH parameters
 !D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING
@@ -182,3 +212,15 @@
 209 012 027 000 Flash QPE to FFG Ratio 3-hr      non-dim              FlQpe/Ffg3h      0  -9999.00
 209 012 028 000 Flash QPE to FFG Ratio 6-hr      non-dim              FlQpe/Ffg6h      0  -9999.00
 209 012 029 000 Flash QPE to FFG Ratio Max       non-dim              FlQpe/FfgMax     0  -9999.00
+209 012 039 000 Flash HP Max Unit Stream Flow    m3/s/km2             FlHpUntStrFw     0  -9999.00
+209 012 040 000 Flash HP Max Stream Flow         m3/s                 FlHpStrFw        0  -9999.00
+!
+! ANC
+!D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING
+209 013 000 000 ANC Convective Likelihood        non-dim              ANCConvLkly      0      0.00
+209 013 001 000 ANC Final Forecast 1-hr          dBZ                  ANCFnlFx01h      0      0.00
+!
+! Level III
+!D# CT# ID# PD# NAME                             UNITS                GNAM         SCALE   MISSING
+209 014 000 000 Level III HREET                  kft                  L3HREET          0     -1.00
+209 014 001 000 Level III High Res VIL           kg m**-2             L3HighVIL        0     -1.00
