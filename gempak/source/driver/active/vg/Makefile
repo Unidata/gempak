@@ -113,7 +113,6 @@ install:
 
 $(PROG): $(ALIB)
 	$(LINK.f) device.f $(LIBINC) -o $@
-	$(RM) device.f
 
 $(ALIB): $(LOBJS) $(COBJS)
 	$(AR) $(ARFLAGS) $@ *.o
