@@ -1,7 +1,19 @@
 # Gemenviron file for GEMPAK
 #
+# Setting of the NAWIPS environment variable is critical to the proper
+# operation of GEMPAK.  It defines the installation directory of GEMPAK.
+# There are now three ways for this variable to be set:
+#  1) Define the NAWIPS variable prior to sourcing this Gemenviron file.
+#  2) Let this Gemenviron file dynamically set it based on the filesystem
+#     location of this script (recommended / default).
+#  3) Manually set it below.
+if [ -z ${NAWIPS+x} ]; then
+    # Set the NAWIPS variable based on the location of this script.
+    NAWIPS=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+fi
+
 # Please configure the following definitions to reflect your system:
-NAWIPS=/home/gempak/GEMPAK7
+# NAWIPS=/home/gempak/GEMPAK7
 export EDEX_SERVER="edex-cloud.unidata.ucar.edu"
 #
 #		Sets environment variables used in running GEMPAK
