@@ -2,25 +2,14 @@
 #
 # Setting of the NAWIPS environment variable is critical to the proper
 # operation of GEMPAK.  It defines the installation directory of GEMPAK.
-# There are now three ways for this variable to be set:
+# There are two ways for this variable to be set:
 #  1) Define the NAWIPS variable prior to sourcing this Gemenviron file.
-#  2) Let this Gemenviron file dynamically set it based on the filesystem
-#     location of this script (recommended / default).
-#  3) Manually set it below.
+#  2) Manually set it below.
 if (! $?NAWIPS) then
-    # Set the NAWIPS variable based on the location of this script.
-    set called=($_)
-    if ( "$called" != "" ) then  ### called by source
-        set script_fn=`readlink -f $called[2]`
-    else                         ### called by direct execution of the script
-        set script_fn=`readlink -f $0`
-    endif
-    set script_dir=`dirname $script_fn`
-    setenv NAWIPS $script_dir
+    setenv NAWIPS /home/gempak/GEMPAK7
 endif
 
 # Please configure the following definitions to reflect your system:
-# setenv NAWIPS /home/gempak/GEMPAK7
 setenv EDEX_SERVER "edex-cloud.unidata.ucar.edu"
 #
 #		Sets environment variables used in running GEMPAK
