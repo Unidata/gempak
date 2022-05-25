@@ -1,5 +1,7 @@
 #include "dccmn.h"
 
+#define MAX_TRIES 10
+
 /*
 ** Define and initialize the finite-state machine for finding a
 ** bulletin in the buffer.
@@ -34,12 +36,23 @@ void dc_gbul ( char *bulletin, int *lenb, int *ifdtyp, int *iret )
  * E. Wehner/EAI	 7/96	Added more checking for state machine	*
  * J. Whistler/AWC	 8/96	Changed call to dcb_peekc		*
  * S. Chiswell/UPC	 1/99	Fixed CR_CR_ state when CR_ is found	*
- * S. Chiswell/UPC	 2/04	handle EBFULL to continue looking	*
+ * S. Guan/NCEP		11/10	Added retry when EOF is found		*
+ * J. Ator/NCEP		10/13	For WMO feed, don't accept CHCTLC as	*
+ *				end of bulletin if it immediately	*
+ *				follows the header.			*
+ * M. Weiss/NCEP         5/2018 Inserted ^M check in case IN_BULLETIN   *
+ *                              when ifdtyp = 1                         * 
  ***********************************************************************/
 {
 
 	static unsigned char	ch;
-	int			ier;
+	int			ier, try;
+	unsigned long		nline;
+				/* Keeps count of number of lines
+				   (CR_CR_NL) in current bulletin. */
+	unsigned long		nchar;
+				/* Keeps count of number of characters
+				   in current line of bulletin. */
 
 /*---------------------------------------------------------------------*/
 	*iret = 0;
@@ -57,30 +70,40 @@ void dc_gbul ( char *bulletin, int *lenb, int *ifdtyp, int *iret )
 	    if  ( ( finite_state != START ) ||
 		  ( dcb_isempt() == 1 ) ) {
 
+		try = 0;
+		while ( try < MAX_TRIES ) {
 /*
-**		Read from standard input to the buffer.
+**		    Read from standard input to the buffer.
 */
-		if  ( ( ier = dcb_put ( STDIN_FILENO, itmout ) ) < 0 ) {
-
-		    if  ( ier == EBFULL ) {
+		    ier = dcb_put ( STDIN_FILENO, itmout );
+		    if  ( ( ier == EBEND  ) < 0 ) {
 /*
-**			If buffer overflowed, start over looking for 
-**			bulletins that we can fit into buffer. 
+**			End of data file has occurred.
+**			To make sure it is true end,
+**			check maximum MAX_TRIES times,
+**			each waits one second.
 */
-			dcb_sbtl ( 0 );
-			ier = dcb_getb ( bulletin );
-			/* reset start (Chiz) */
-			finite_state = START;
-			continue;
+			sleep(1);
+			try++;
 		    }
-
-		    else {
+		    else if ( ier < 0 ) {
 /*
-**		        Timeout or end of data file has occurred.
+**			Timeout has occurred.
 */
 			*iret = ier;
 			return;
 		    }
+		    else {
+			break;
+		    }
+                }
+
+		if ( ier < 0 ) {
+/*
+**		    "True" end of data file has occurred.
+*/
+		    *iret = ier;
+		    return;
 		}
 
 	    }
@@ -171,6 +194,13 @@ void dc_gbul ( char *bulletin, int *lenb, int *ifdtyp, int *iret )
 			    dcb_sbhd ( -3 );
 			    finite_state = IN_BULLETIN;
 			    *ifdtyp = 0;
+/*
+**			    SOH_CR_CR_NL is the 1st line of the bulletin.  The
+**			    next 2 lines will contain the rest of the header,
+**			    for a total of 3 lines in the bulletin header.
+*/
+			    nline = 1;
+			    nchar = 0;
 			}
 			else {
 			    if (ch == 'Z')
@@ -271,12 +301,16 @@ void dc_gbul ( char *bulletin, int *lenb, int *ifdtyp, int *iret )
 			    }
 			    else {
 				finite_state = IN_BULLETIN;
+				nchar++;
 			    }
 			}
 			else {
 			    if  ( ch == 'N' ) {
 				finite_state = N_;
 			    }
+                            else if ( ch == CHCR ) {
+                                finite_state = CR_;
+                            }
 			    else {
 				finite_state = IN_BULLETIN;
 			    }
@@ -293,6 +327,7 @@ void dc_gbul ( char *bulletin, int *lenb, int *ifdtyp, int *iret )
 			}
 			else {
 			    finite_state = IN_BULLETIN;
+			    nchar++;
 			}
 			break;
 
@@ -303,6 +338,8 @@ void dc_gbul ( char *bulletin, int *lenb, int *ifdtyp, int *iret )
 		    case CR_CR_:
 			if  ( ch == CHLF ) {
 			    finite_state = CR_CR_NL_;
+			    if ( nchar > 0 ) nline++;
+			    nchar = 0;
 			}
 			else 
 			{
@@ -313,16 +350,18 @@ void dc_gbul ( char *bulletin, int *lenb, int *ifdtyp, int *iret )
       			    else
 			    {
 			        finite_state = IN_BULLETIN;
+				nchar++;
 			    }
 			}
 			break;
 
 /*
 **		    If two Carriage Returns and a Line Feed have been
-**		    found, check for a Control-C.
+**		    found, and if we've reached at least the end of the
+**		    4th line of the bulletin, check for a Control-C.
 */
 		    case CR_CR_NL_:
-			if  ( ch == CHCTLC ) {
+			if  ( ( ch == CHCTLC ) && ( nline > 3 ) ) {
 /*
 **			    If it is a Control-C, reset the search, then
 **			    retrieve and return the complete bulletin.
@@ -344,6 +383,7 @@ void dc_gbul ( char *bulletin, int *lenb, int *ifdtyp, int *iret )
 			}
 			else {
 			    finite_state = IN_BULLETIN;
+			    nchar++;
 			}
 			break;
 

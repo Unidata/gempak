@@ -31,12 +31,11 @@ void gb2_polr ( gribfield *gfld, float *gdsarr, int *scan_mode, int *iret )
  * D.W.Plummer/NCEP      2/96      	Cleanup GBDIAGs and comments	*
  * S. Jacobs/NCEP	12/00	Added prototypes			*
  * S. Gilbert           11/04       Modified from gb_polr for use w/ GRIB2  *
- * M. James/Unidata	04/14	Fix for south pole grids		*
  ***********************************************************************/
 {
         int	Dx, Dy, flag2, mode, Nx, Ny, La1, Lo1, LoV;
         int     Lo1e, LoVe;
-/*	int	flag1, LaD; */
+	int	flag1, LaD; 
 
         double	loncnt, lat1, lon1, rtemp, X1, X2, Y1, Y2,
         	TDx, TDy, Xll, Xur, Yll, Yur;
@@ -67,7 +66,7 @@ void gb2_polr ( gribfield *gfld, float *gdsarr, int *scan_mode, int *iret )
 	 */
 	Lo1e = (int)gfld->igdtmpl[10];
         Lo1 = Lo1e;
-        /* if ( Lo1 > 180000000 ) Lo1 = Lo1 - 360000000; */
+        /*if ( Lo1 > 180000000 ) Lo1 = Lo1 - 360000000;*/
         Lo1 = Lo1 - 360000000;
 	lon1 = ( Lo1 / 1000000.0 ) * DTR;
 
@@ -79,16 +78,15 @@ void gb2_polr ( gribfield *gfld, float *gdsarr, int *scan_mode, int *iret )
 	/*
 	 * LaD - Latitude where Dx and Dy are specified.
 	 */
-/*	LaD = (int)gfld->igdtmpl[12];  NOT used */
+	LaD = (int)gfld->igdtmpl[12];  
 
 	/*
 	 * Lov - orientation of the grid (center longitude)
 	 */
 	LoVe = (int)gfld->igdtmpl[13];
         LoV = LoVe;
-        /* if ( LoV > 180000000 ) LoV = LoV - 360000000; */
+        /*if ( LoV > 180000000 ) LoV = LoV - 360000000;*/
         LoV = LoV - 360000000;
-        if ( LoV < -180000000 ) LoV = LoV + 180000000;
 	loncnt = ( LoV / 1000000.00 ) * DTR;
 
 	/*
@@ -134,8 +132,9 @@ void gb2_polr ( gribfield *gfld, float *gdsarr, int *scan_mode, int *iret )
 	/*
 	 * Compute the grid spacing
 	 */
-	TDx = ((float)Dx / 1000.0) / ( 1 + sin ( PI3RD ) );
-	TDy = (Dy / 1000.0) / ( 1 + sin ( PI3RD ) );
+        if ( abs(LaD) > 90000000 ||  abs(LaD) < 10000000 ) LaD = 60000000;
+	TDx = ((float)Dx / 1000.0) / ( 1 + sin ( PI3RD * LaD/60000000.0 ) );
+	TDy = (Dy / 1000.0) / ( 1 + sin ( PI3RD * LaD/60000000.0 ) );
 
 	/*
 	 * Compute the linear coordinates of the second point.
@@ -208,7 +207,7 @@ void gb2_polr ( gribfield *gfld, float *gdsarr, int *scan_mode, int *iret )
 		      atan2 ( sqrt ( pow (Xur,2.0) + pow (Yur,2.0) ),
 			      RADIUS ) ) * RTD;
 		rtemp = loncnt + atan2 ( Xur,  Yur );
-}
+	}
 
 	if ( rtemp > PI )
 	    gdsarr[6] = ( rtemp - TWOPI ) * RTD;

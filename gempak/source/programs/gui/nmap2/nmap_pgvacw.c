@@ -47,6 +47,7 @@ void    pgvacw_attrSave (        void );
 void    pgvacw_updtType ( int subtype );
 
 /************************************************************************
+ * 
  * nmap_pgvacw.c							*
  *									*
  * This module defines everything for Ash Cloud's formatting.		*

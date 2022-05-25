@@ -18,12 +18,12 @@ static float special_prod = -9999.0F;
 #define LPF_DIR  "$GEMTBL/pgen"
 
 #define	NINFO	 7	/* Number of different elements listed here	*/
-#define	VOLC	 0	/* Vocano names					*/
+#define	VOLC	 0	/* Volcano names				*/
 #define	VAAC	 1	/* Orign Stn/VAAC names				*/
 #define INSR     2      /* Information Source entries			*/
 #define	AVCC	 3	/* Aviation Color Code  entries			*/
 #define	FACD	 4	/* Fcst Ash Cloud entries			*/
-#define	NXAD	 5	/* Next Advisory  entriess			*/
+#define	NXAD	 5	/* Next Advisory  entries			*/
 #define	FCST	 6	/* Forecaster names				*/
 
 #define	WMID	 101	/* WMO ID entries				*/
@@ -73,7 +73,7 @@ static Widget		_adnmTxtW, _correctTxtW, _wmoTxtW, _aviaForm;
 static Widget		_infoTxtW, _aviaTxtW, _erupTxtW, _obdateTxtW;
 static Widget		_obtimeTxtW, _obcloudTxtW;
 static Widget		_facdTxt06W, _facdTxt12W, _facdTxt18W;
-static Widget		_nxadTxtW, _fcstTxtW, _insrLstW, _nilBtnW;
+static Widget		_nxadTxtW, _fcstTxtW, _insrLstW, _nilBtnW, _estBtnW;
 static Widget		_locLbl, _areaLbl, _elevLbl;
 static Widget		*_wmoBtnW, *_hdrBtnW, _corrBtnW, _corrRc;
 static WidgetList	_ctlBtnW;
@@ -110,6 +110,8 @@ static Boolean		_locOK   =  FALSE;
 static Boolean		_areaOK  =  FALSE;
 static Boolean		_elevOK  =  FALSE;
 
+static Boolean          _isInitialEstimated =  FALSE;
+
 /*
  *  private callback functions
  */
@@ -130,6 +132,7 @@ void pgvolw_elevTxtCb     ( Widget, long, XtPointer );
 void pgvolw_corrBtnCb     ( Widget, long, XmToggleButtonCallbackStruct* );
 void pgvolw_goBtnCb       ( Widget, long, XmToggleButtonCallbackStruct* );
 void pgvolw_nilBtnCb      ( Widget, long, XmToggleButtonCallbackStruct* );
+void pgvolw_estBtnCb      ( Widget, long, XmToggleButtonCallbackStruct* );
 
 /*
  *  private functions
@@ -166,6 +169,10 @@ void    pgvolw_iniTxtInfo ( void );
 void    pgvolw_getTxtInfo ( char** loc, char* buf );
 void    pgvolw_getMesgInfo( char*  buf );
 void	pgvolw_rdVAATbl( int * );
+Boolean pgvolw_isObstimeEst   ( char* obstimeWithFlag, 
+                                char* obstimeWithoutFlag );
+void	pgvolw_markObstimeEst ( char* obstimeWithoutFlag,
+                                char* obstimeWithFlag );
 
 /************************************************************************
  * nmap_pgvolw.c							*
@@ -214,6 +221,8 @@ void	pgvolw_rdVAATbl( int * );
  *	pgvolw_iniTxtInfo()     initializes _vaaTxtInfo var.		*
  *	pgvolw_getTxtInfo()	gets vaa text info from buffer		*
  *	pgvolw_getMesgInfo()	gets vaa message info from buffer	*
+ *	pgvolw_isObstimeEst()	check if an obstime string is estimated	*
+ *	pgvolw_markObstimeEst()	mark an obstime string as estimated	*
  *	pgvolw_getFcstInfo()	gets the pointer to other-Fcst info	*
  *	pgvolw_getFcstNum ()	gets the total # of ohter-Fcst info	*
  *	pgvolw_getProdInfo()	gets the latest year&adv. no. info	*
@@ -234,6 +243,7 @@ void	pgvolw_rdVAATbl( int * );
  *	pgvolw_infoBtnCb()	callback for info source btn		* 
  *      pgvolw_obsBtnCb()	callback for ash cloud info btn		*
  *	pgvolw_nilBtnCb()	callback for nil btn			*
+ *	pgvolw_estBtnCb()	callback for EST (estimated) btn	*
  *	pgvolw_corrBtnCb()	callback for correction btn		*
  *	pgvolw_goBtnCb()	callback for go btn			*
  ***********************************************************************/
@@ -593,6 +603,7 @@ Widget pgvolw_editCreate ( Widget parent )
  * H. Zeng/XTRIA	02/04   added text formating option menu	*
  * H. Zeng/XTRIA	03/04   minor GUI changes			*
  * H. Zeng/SAIC		04/06	added callback for corr. textfield	*
+ * B. Hebbard/NCEP	02/22	added initial OBServed/ESTimated select	*
  ***********************************************************************/
 {
     Widget	pane, orign_form, hdr_form, vaac_form, year_form, year_rc;
@@ -927,10 +938,10 @@ Widget pgvolw_editCreate ( Widget parent )
 		      NULL ); 
 
 /*
- * Obs Ash Date textfield
+ * Initial (was Observed) Ash Date textfield
  */
     obdate_rc = (Widget)NxmTxtIn_create(info_form,
-                                 "Obs Ash Date(DD): ", 5, &_obdateTxtW);
+                                 "Initial Ash Date(DD): ", 5, &_obdateTxtW);
 
     XtVaSetValues(_obdateTxtW, XmNmaxLength, 14, NULL);
 
@@ -956,6 +967,8 @@ Widget pgvolw_editCreate ( Widget parent )
 		   XmNleftWidget,	obdate_rc,
                    XmNleftOffset,       2,
                    NULL);
+
+    _isInitialEstimated =  FALSE;  // needed here??
 
 /*
  * "z" label
@@ -986,7 +999,7 @@ Widget pgvolw_editCreate ( Widget parent )
     XtVaSetValues (_nilBtnW,
                    XmNtopAttachment,    XmATTACH_OPPOSITE_WIDGET,
 		   XmNtopWidget,	obtime_rc,
-		   XmNtopOffset,        10,
+		   XmNtopOffset,        -2,
                    XmNleftAttachment,   XmATTACH_WIDGET,
 		   XmNleftWidget,	obtime_rc,
 		   XmNleftOffset,	30,
@@ -999,17 +1012,53 @@ Widget pgvolw_editCreate ( Widget parent )
 		   xmLabelWidgetClass,	info_form,
                    XmNtopAttachment,    XmATTACH_OPPOSITE_WIDGET,
 		   XmNtopWidget,	obtime_rc,
-		   XmNtopOffset,        12,
+		   XmNtopOffset,        1,
                    XmNleftAttachment,   XmATTACH_WIDGET,
 		   XmNleftWidget,	_nilBtnW,
 		   XmNleftOffset,	0,
 		   NULL );
 
 /*
- * Obs Ash Cloud button
+ * EST check box
+ */
+    _estBtnW = XtVaCreateManagedWidget(" ",
+			xmToggleButtonWidgetClass,  info_form,
+			XmNindicatorType,	    XmN_OF_MANY,
+			XmNtraversalOn,		    FALSE,
+			XmNset,		            FALSE,
+			XmNspacing,		    0,
+			NULL);
+
+    XtAddCallback(_estBtnW, XmNvalueChangedCallback,
+		  (XtCallbackProc)pgvolw_estBtnCb, (XtPointer)NULL);
+
+    XtVaSetValues (_estBtnW,
+                   XmNtopAttachment,    XmATTACH_OPPOSITE_WIDGET,
+		   XmNtopWidget,	obtime_rc,
+		   XmNtopOffset,        16,
+                   XmNleftAttachment,   XmATTACH_WIDGET,
+		   XmNleftWidget,	obtime_rc,
+		   XmNleftOffset,	30,
+                   NULL);
+
+/*
+ * EST label
+ */
+    XtVaCreateManagedWidget ("EST",
+		   xmLabelWidgetClass,	info_form,
+                   XmNtopAttachment,    XmATTACH_OPPOSITE_WIDGET,
+		   XmNtopWidget,	obtime_rc,
+		   XmNtopOffset,        21,
+                   XmNleftAttachment,   XmATTACH_WIDGET,
+		   XmNleftWidget,	_estBtnW,
+		   XmNleftOffset,	0,
+		   NULL );
+
+/*
+ * Initial (formerly Obs) Ash Cloud button
  */
     obs_btn = XtVaCreateManagedWidget ( 
-		      "Observed and Forecast Ash Cloud Information...",
+		      "Initial and Forecast Ash Cloud Information...",
                       xmPushButtonWidgetClass,  info_form,
                       XmNtopAttachment,         XmATTACH_WIDGET,
 		      XmNtopWidget,		obdate_rc,
@@ -1128,7 +1177,8 @@ void pgvolw_editPopup ( VG_DBStruct* el )
  ***********************************************************************/
 {
     char      label_str[96], vaac_str[64], vol_name[64], cyear[8];
-    char      ash_info[1024],cadvnm[8], orig_volnm[64];
+    char      ash_info[1024],cadvnm[8], orig_volnm[64]; 
+    char      display_obstime[16];
     float     elev_ft, elev_m;
     struct tm	  *utctime;
     time_t    tp;
@@ -1261,17 +1311,35 @@ void pgvolw_editPopup ( VG_DBStruct* el )
     XmTextSetString(_aviaTxtW,     el->elem.vol.info.avcc      );
     XmTextSetString(_erupTxtW,     el->elem.vol.info.details   );
 
-    if ( strcmp(el->elem.vol.info.obsdate, "NIL") == 0 || 
-         strcmp(el->elem.vol.info.obstime, "NIL") == 0    ) {
+/*
+ * Check whether obstime is marked as estimated
+ */
+    _isInitialEstimated = pgvolw_isObstimeEst (el->elem.vol.info.obstime, 
+                                              display_obstime);
 
-         XmToggleButtonSetState(_nilBtnW, TRUE, TRUE);
+/*
+ * Set date/time "NIL" button state
+ */
+    if ( el->elem.vol.info.obsdate == NULL ||
+         strcmp(el->elem.vol.info.obsdate, "NIL") == 0 || 
+         el->elem.vol.info.obstime == NULL ||
+         strcmp(display_obstime, "NIL") == 0    ) {
+        /* with notify enabled, callback will set user text fields "NIL" */
+        XmToggleButtonSetState(_nilBtnW, TRUE, TRUE);
     }
     else {
-
          XmToggleButtonSetState(_nilBtnW, FALSE, TRUE);
-         XmTextSetString(_obdateTxtW,   el->elem.vol.info.obsdate); 
-         XmTextSetString(_obtimeTxtW,   el->elem.vol.info.obstime);
+         XmTextSetString(_obdateTxtW, el->elem.vol.info.obsdate);
+         XmTextSetString(_obtimeTxtW, display_obstime);
     }
+
+/*
+ * Set date/time (DTG/CLD) "EST" (estimated) button state
+ */
+    XmToggleButtonSetState(_estBtnW, _isInitialEstimated, FALSE);
+    XmTextSetString(_obdateTxtW, el->elem.vol.info.obsdate);
+    XmTextSetString(_obtimeTxtW, display_obstime);
+
 
 /*
  * Get Ash Cloud Info and update the VAA Ash Cloud Info window.
@@ -1293,7 +1361,6 @@ void pgvolw_editPopup ( VG_DBStruct* el )
  * VAA Ash Cloud Info window. 
  */
     pgvolw_insertObsTime ();
-
 
     XmTextSetString(_remkTxtW,     el->elem.vol.info.remarks   );
     XmTextSetString(_nxadTxtW,     el->elem.vol.info.nextadv   ); 
@@ -1390,7 +1457,7 @@ Widget pgvolw_insrCreate ( Widget parent )
  * Return parameters:							*
  * pgvolw_insrCreate	Widget	Widget ID of Info. Source popup 	*
  *									*
- **									*
+**									*
  * Log:									*
  * H. Zeng/XTRIA	07/03	initial coding				*
  * H. Zeng/XTRIA	09/03   modified the creation of List Widget	*
@@ -1825,9 +1892,9 @@ Widget pgvolw_obsCreate ( Widget parent )
     form = XtVaCreateWidget("form", xmFormWidgetClass, pane, NULL);
 
 /*
- * Obs Ash Cloud:
+ * Initial (Observed or Estimated) Ash Cloud:
  */
-    obcloud_lbl = XtVaCreateManagedWidget ( "Obs Ash Cloud:",
+    obcloud_lbl = XtVaCreateManagedWidget ( "Init Ash Cloud:",
                       xmLabelWidgetClass,	form,
                       XmNtopAttachment,         XmATTACH_FORM,
 		      XmNtopOffset,	        toff,
@@ -2246,6 +2313,8 @@ void pgvolw_clearEditForm ( void )
     XmTextSetString(_fcstTxtW,     "\0");
 
     XmToggleButtonSetState(_nilBtnW,  FALSE, TRUE);
+    XmToggleButtonSetState(_estBtnW,  FALSE, TRUE);
+    _isInitialEstimated = FALSE;  // needed?
     XmToggleButtonSetState(_corrBtnW, FALSE, TRUE);
 
     XmListDeselectAllItems(_insrLstW);
@@ -3361,6 +3430,36 @@ void pgvolw_nilBtnCb ( Widget wid, long which,
 
 /*=====================================================================*/
 /* ARGSUSED */
+void pgvolw_estBtnCb ( Widget wid, long which, 
+					XmToggleButtonCallbackStruct *cbs)
+/************************************************************************
+ * pgvolw_estBtnCb							*
+ *									*
+ * Callback function for "EST" toggle button on edit window.		*
+ *									*
+ * void pgvolw_estBtnCb (wid, which, call)				*
+ *									*
+ * Input parameters:							*
+ *	wid	Widget		widget ID				*
+ *	which	long		which button				*
+ *	cbs	XmToggleButtonCallbackStruct				*
+ *									*
+ * Output parameters:							*
+ * Return parameters:							*
+ *			NONE						*
+ *									*
+ **									*
+ * Log:									*
+ * B. Hebbard/NCEP	02/22	initial; based on pgvolw_nilBtnCb()	*
+ ***********************************************************************/
+{
+/*---------------------------------------------------------------------*/
+
+    _isInitialEstimated = (Boolean)cbs->set;
+}
+
+/*=====================================================================*/
+/* ARGSUSED */
 void pgvolw_corrBtnCb ( Widget wid, long which, 
 					XmToggleButtonCallbackStruct *cbs)
 /************************************************************************
@@ -3666,17 +3765,18 @@ void pgvolw_createProd ( VG_DBStruct *vol, char **filter, char *text,
  * J. Wu/SAIC		04/06		add parameter in cst_wrap 	*
  * H. Zeng/SAIC		04/06	changed to use month index number	*
  * S. Jacobs/NCEP	10/12	Removed NNNN and preceding blank line	*
- * B. Hebbard/NCEP	11/19	If obsdate/time NIL, dflt OAC->NOT AVBL	*
+ * B. Hebbard/NCEP	11/19	If obsdate/time NIL, dflt OAC->NOT AVBL	*i
+ * B. Hebbard/NCEP 	03/22	Choose OBS v. EST in prod text for init	*
  ***********************************************************************/
 {
     int   vg_class, vg_type, adjust_min;
     int   tarry[5], new_tarry[5], ier;
-    const int line_len =   50;	/* line lenth for text product  */
+    const int line_len =   50;	/* line length for text product  */
     float elev;
     struct tm	    *utctime;
     time_t	    tp;
-    char  *wdstr, wdtxt1[128], wdtxt2[128];
-    char  blank[2]={' '},time_str[20], latlon_str[25];
+    char  *wdstr, wdtxt1[128], wdtxt2[128], display_obstime[16];
+    char  blank[2]={' '}, temp_str[16], time_str[20], latlon_str[25];
     char  elevm[9], vol_name[64], mon_abbrev[8], next_adv[128];
     char  month[13][4] = {"   ", "JAN", "FEB", "MAR", "APR", "MAY", "JUN",
 			  "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"};
@@ -3720,10 +3820,21 @@ void pgvolw_createProd ( VG_DBStruct *vol, char **filter, char *text,
     if ( strlen(vol->elem.vol.info.corr) != (size_t)0 )  
 	sprintf ( &text[strlen(text)], " CC%s", vol->elem.vol.info.corr );
     cst_gtag ( "<VAA>", wdstr, " ", wdtxt1, iret );
+    sprintf ( &text[strlen(text)], "\n%s%s", wdtxt1,
+	strlen(vol->elem.vol.info.corr) != (size_t)0 ? " -CORRECTION":"");
+    if ( filter[15] != NULL ) {
+    	strcat ( text, "\n" );
+    	strcat ( text, "STATUS: " );
+        if ( strcmp(filter[15], "USE_DEFAULT") == 0 ) {
+              strcat ( text, "TEST" );
+	 }
+	 else {
+              strcat ( text, filter[15] );
+         }
+    }
+
     cst_gtag ( "<DTG>", wdstr, " ", wdtxt2, iret );
-    sprintf ( &text[strlen(text)], "\n%s%s\n%s: ", wdtxt1,
-	strlen(vol->elem.vol.info.corr) != (size_t)0 ? " -CORRECTION":"",
-	wdtxt2 );
+    sprintf ( &text[strlen(text)], "\n%s: ", wdtxt2 );
     strcpy ( mon_abbrev, month[tarry[1]] );
     sprintf ( &text[strlen(text)], "%4d%02d%02d/%02d%02dZ", 
               tarry[0], tarry[1], tarry[2], tarry[3], tarry[4] );
@@ -3890,21 +4001,29 @@ void pgvolw_createProd ( VG_DBStruct *vol, char **filter, char *text,
 
     if ( filter[8] != NULL ) { 
 
-         cst_gtag ( "<OAD>", wdstr, " ", wdtxt1, iret );
+         if ( pgvolw_isObstimeEst ( vol->elem.vol.info.obstime, 
+                                          display_obstime ) ) {
+             cst_gtag ( "<EAD>", wdstr, " ", wdtxt1, iret );
+             strcpy ( temp_str, display_obstime );
+         }
+         else {
+             cst_gtag ( "<OAD>", wdstr, " ", wdtxt1, iret );
+             strcpy ( temp_str, vol->elem.vol.info.obstime );
+         }
 	 strcat ( text, wdtxt1 );
          strcat ( text, ": " );
 
          if ( strcmp(filter[8], "USE_DEFAULT") == 0 ) {
 
               if ( strcmp(vol->elem.vol.info.obsdate, "NIL") == 0 || 
-                   strcmp(vol->elem.vol.info.obstime, "NIL") == 0    ) {
+                   strcmp(vol->elem.vol.info.obstime, "NIL") == 0   ) {
 
                    strcat ( text, "NIL" );
               }
               else {
                    strcat ( text, vol->elem.vol.info.obsdate );
                    strcat ( text, "/" );
-                   strcat ( text, vol->elem.vol.info.obstime );
+                   strcat ( text, temp_str );
 	           strcat ( text, "Z" );
               }
               strcat ( text, "\n\n" );
@@ -3919,7 +4038,12 @@ void pgvolw_createProd ( VG_DBStruct *vol, char **filter, char *text,
 
     if ( filter[9] != NULL ) { 
 
-         cst_gtag ( "<OAC>", wdstr, " ", wdtxt1, iret );
+         if (strchr (vol->elem.vol.info.obstime, 'E') == NULL) {
+             cst_gtag ( "<OAC>", wdstr, " ", wdtxt1, iret );
+         }
+         else {
+             cst_gtag ( "<EAC>", wdstr, " ", wdtxt1, iret );
+         }
 	 strcat ( text, wdtxt1 );
          strcat ( text, ": " );
 
@@ -4605,6 +4729,7 @@ void pgvolw_getAttr ( VG_DBStruct *el )
  * T. Lee/SAIC		11/03	used cvg_getworkfile			*
  * H. Zeng/XTRIA	11/03   added additional info source		*
  * H. Zeng/XTRIA	02/04	added call to pgvolw_getAshInfo		*
+ * B. Hebbard/NCEP	03/22	mark obstime if estimated		*
  ***********************************************************************/
 {
     char   vol_elev[24], vaac_str[64], *ptext=NULL, *ptr=NULL;
@@ -4798,7 +4923,13 @@ void pgvolw_getAttr ( VG_DBStruct *el )
          XtVaGetValues (_obtimeTxtW, XmNvalue, &ptext,  NULL);      
          if ( ptext != NULL && ptext[0] != '\0' ) {
 
-	    strcpy(el->elem.vol.info.obstime, ptext);
+            if (_isInitialEstimated) {
+               pgvolw_markObstimeEst ( ptext, 
+                                       el->elem.vol.info.obstime );         
+            }
+            else {
+	       strcpy(el->elem.vol.info.obstime, ptext);
+            }
          }
 	 else {
 
@@ -5213,12 +5344,13 @@ void pgvolw_iniTxtInfo ( void )
  **									*
  * Log:									*
  * H. Zeng/XTRIA	02/04   initial coding				*
+ * B. Hebbard/NCEP	05/22   added "STATUS"				*
  ***********************************************************************/
 {
     int	       nn, ii;
 /*---------------------------------------------------------------------*/
    
-    _vaaTxtInfoNum = 15;
+    _vaaTxtInfoNum = 16;
 
     nn = _vaaTxtInfoNum;
     _vaaTxtInfo = (char**) malloc ( nn * sizeof(char*) );
@@ -5243,6 +5375,7 @@ void pgvolw_iniTxtInfo ( void )
     strcpy (_vaaTxtInfo[12], "FCST ASH CLOUD +18H");
     strcpy (_vaaTxtInfo[13], "REMARKS" );
     strcpy (_vaaTxtInfo[14], "NEXT ADVISORY");
+    strcpy (_vaaTxtInfo[15], "STATUS");
 }
 
 /*=====================================================================*/
@@ -5357,6 +5490,85 @@ void pgvolw_getMesgInfo ( char* buf )
 
     _vaaMesgInfo = (char*) malloc( (strlen(buf)+2) * sizeof(char) );
     strcpy ( _vaaMesgInfo, buf );
+}
+
+/*=====================================================================*/
+
+void pgvolw_markObstimeEst ( char* obstimeWithoutFlag, char* obstimeWithFlag )
+/************************************************************************
+ * pgvolw_markObstimeEst						*
+ *									*
+ * This function takes an obstime string, and adds an indication	*
+ * that it is an "estimated" value (for DTG and associated CLD).	*
+ * This "marked" string is suitable for storage in the VBStruct		*
+ * without having to add incompatible fields, but it not presented	*
+ * to the user as such on GUI or output products.			*
+ *									*
+ * void pgvolw_markObstimeEst ( obstimeWithoutFlag,		*
+                                      obstimeWithFlag )			*
+ *									*
+ * Input parameters:							*
+ *	obstimeWithoutFlag	char*	user-visible obstime string 	*
+ * Output parameters:							*
+ *	obstimeWithFlag		char*	coded obstime for VBStruct 	*
+ * Return parameters:							*
+ *			NONE						*
+ *									*
+ * Note:  Paired with pgvolw_isObstimeEst				*
+ *									*
+ **									*
+ * Log:									*
+ * B. Hebbard 		05/22   initial coding				*
+ ***********************************************************************/
+{
+    int index;
+
+    if ( obstimeWithoutFlag != NULL ) {
+        strcpy(obstimeWithFlag, obstimeWithoutFlag);
+        index = strlen(obstimeWithFlag);
+        obstimeWithFlag[index] = 'E';
+        obstimeWithFlag[index+1] = '\0';               
+    }
+}
+
+Boolean pgvolw_isObstimeEst ( char* obstimeWithFlag, char* obstimeWithoutFlag )
+/************************************************************************
+ * pgvolw_isObstimeEst						*
+ *									*
+ * This function gets vaa mics message info from buffer.		*
+ *									*
+ * Boolean pgvolw_isObstimeEst ( obstimeWithFlag,			*
+ * 			               obstimeWithoutFlag )		*
+ *									*
+ * Input parameters:							*
+ *	obstimeWithFlag		char*	 coded obstime from VBStruct 	*
+ * Output parameters:							*
+ *	obstimeWithoutFlag	char*	 user-visible obstime string 	*
+ *	                                 (with flag removed) 		*
+ * Return parameters:							*
+ *			        Boolean	 TRUE if and only if input      *
+ *			                 contained flag for estimated	*
+ *									*
+ * Note:  Paired with pgvolw_markObstimeEst			*
+ *									*
+ **									*
+ * Log:									*
+ * B. Hebbard 		05/22   initial coding				*
+ ***********************************************************************/
+{
+    int ier;
+
+    if ( obstimeWithFlag != NULL && 
+         strlen (obstimeWithFlag) > 1 &&
+         obstimeWithFlag[strlen(obstimeWithFlag)-1] == 'E') {
+        cst_ncpy (obstimeWithoutFlag, obstimeWithFlag, 
+                  strlen(obstimeWithFlag) - 1, &ier);
+        return TRUE;
+    }
+    else {
+        strcpy (obstimeWithoutFlag, obstimeWithFlag);
+        return FALSE;
+    }
 }
 
 /*=====================================================================*/
@@ -5648,8 +5860,8 @@ void pgvolw_insertObsTime ( void )
 /************************************************************************
  * pgvolw_insertObsTime							*
  *									*
- * This function updates the OBS date/time info. on VAA Ash Cloud info  *
- * window.							        *
+ * This function updates the INITial (OBServed or ESTimated) date/time  *
+ * information on the VAA Ash Cloud info window.			*
  *									*
  * void pgvolw_insertObsTime()						*
  *									*

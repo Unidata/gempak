@@ -89,6 +89,8 @@ C* T. Piper/SAIC	1/06	Added cst_wrap to properly wrap ATTN LN	*
 C* F. J. Yen/NCEP	2/06  	        Added cst_wrap to non-CNCL ATTN *
 C*					LN. Fixed wrap for CNCL ATTN LN.*
 C* J. Wu/SAIC		4/06		Add para newLineStr in cst_wrap *
+C* S. GUAN/NCEP         3/22            Added cst_wrap to properly      *
+C*                                      wrap purge.                     *
 C************************************************************************
 	INCLUDE	'GEMPRM.PRM'
 C*
@@ -104,12 +106,12 @@ C*
      +		  	day(7)*3, month(12)*3, pmm*3,
      +		  	pdw*3, ampm*2, genstr*50, sampm*2, cetim*2,
      +		  	one, wfostr*200, mtchid(20)*3
-	CHARACTER	sep*4, eol*2, newLineStr*10
+	CHARACTER	sep*4, eol*2, dash*2, newLineStr*10
 	CHARACTER       gemtim*13, cstime*2, wtp*2, wfocnl*200,
      +                  prcd*5,vtec*50, fulvtc*50, attnlc*180
 	CHARACTER       cntyln*(MXLIN*32), stln*(MXLIN*2),
      +                  ugln*(MXLIN*6), charr(10)*32, etn*5, phen*3,
-     +                  cday*3, chour*5, cntystr*10000, purge*80,
+     +                  cday*3, chour*5, cntystr*10000, purge*500,
      +                  endtm*13, actn*4, tag*25, value*120, endarr*20
         CHARACTER       tblnam*72, dirsym*160
         INTEGER         etarr(5), starr(5), stime, time
@@ -139,6 +141,7 @@ C
        sep (4:4) = CHNULL
        eol (1:1) = CHLF
        eol (2:2) = CHNULL
+       dash = '-' // CHNULL
        newLineStr (1:1) = CHNULL
 C
 C*     Determine storm type.
@@ -468,6 +471,8 @@ C
            CALL ST_LSTR ( stzstr, lenz, ier )
            purge = stzstr(:lenz) // '-' // stptim(5:6) //  
      +             stptim(8:11) // '-'
+           CALL ST_NULL ( purge, purge, lenga, ier )
+           CALL CST_WRAP (purge, dash, NW, eol, newLineStr, purge, ier)
            CALL ST_LSTR ( fulvtc, lenvc, ier )
            CALL ST_LSTR ( purge, lenz, ier )
 
