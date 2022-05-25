@@ -17,6 +17,8 @@
 ! M. Brennan/NHC         8/18   Updated for new Cuban provinces
 ! M. Brennan/NHC         4/19   Updated for 2019 Season
 ! M. Brennan/NHC         1/20   Updated for 2020 Season
+! M. Brennan/NHC        12/20   Updated for 2021 Season
+! M. Brennan/NHC        12/21   Updated for 2022 Season
 ! 
 !STID    STNM   NAME                             ST CO   LAT    LON  ELV PRI TBCHRS
 !(8)     (6)    (32)                            (2)(2)   (5)    (6)   (5)(2)   (20)
@@ -24,7 +26,8 @@
 !  United States Gulf of Mexico and east coast
 !
 MTH_RIO  100100 Mouth_of_the_Rio_Grande_River    TX US  2596  -9715     0 10
-PT_MANSF 100200 Port_Mansfield                   TX US  2660  -9729     0 10
+ARROYO_C 100150 Arroyo_City                      TX US  2641  -9723     0 10
+PT_MANSF 100200 North_of_Port_Mansfield          TX US  2660  -9729     0 10
 BAFFN_BY 100300 Baffin_Bay                       TX US  2729  -9737     0 10
 PADRE_IS 100400 N_Entrance_Padre_Island_NS       TX US  2747  -9729     0 10
 PT_ARANS 100500 Port_Aransas                     TX US  2783  -9707     0 10
@@ -38,7 +41,9 @@ PORT_BOL 101034 Port_Bolivar                     TX US  2938  -9476     0 10
 HIGH_IS  101100 High_Island                      TX US  2954  -9439     0 10
 SABINE_P 101200 Sabine_Pass                      TX US  2969  -9384     0 10
 CAMERON  101300 Cameron                          LA US  2978  -9330     0 10
-INTRAC_C 101400 Intracoastal_City                LA US  2962  -9204     0 10
+VERM_CAM 101350 Vermillion_Cameron_Parish_Line   LA US  2959  -9261     0 10
+INTRAC_C 101400 Intracoastal_City                LA US  2978  -9216     0 10 
+CYPREMON 101450 Cypremont_Point                  LA US  2972  -9187     0 10
 MORGAN_C 101500 Morgan_City                      LA US  2948  -9129     0 10
 GRAND_IS 101600 Grand_Isle                       LA US  2925  -8996     0 10
 MTH_MS_R 101700 Mouth_Mississippi_River          LA US  2912  -8910     0 10
@@ -47,17 +52,14 @@ BAY_ST_L 101900 Bay_St_Louis                     MS US  3031  -8933     0 10
 OCEAN_SP 101950 Ocean_Springs                    MS US  3040  -8882     0 10
 MS/AL    102000 MS/AL_border                     -- US  3038  -8832     0 10
 AL/FL    102100 AL/FL_border                     -- US  3027  -8755     0 10
-NAVARRE  102160 Navarre                          FL US  3038  -8686     0 10
+SANR_OKA 102160 Santa_Rosa_Okaloosa_County_Line  FL US  3039  -8680     0 10
 OKAL_WAL 102300 Okaloosa_Walton_County_Line      FL US  3038  -8640     0 10
 WALT_BAY 102356 Walton_Bay_County_Line           FL US  3028  -8598     0 10
-PANA_CTY 102400 Panama_City                      FL US  3012  -8570     0 10
 MEXICO_B 102460 Mexico_Beach                     FL US  2993  -8539     0 10
-INDIAN_P 102500 Indian_Pass                      FL US  2968  -8527     0 10
-APALACHI 102600 Apalachicola                     FL US  2973  -8499     0 10
+INDIAN_P 102500 Indian_Pass                      FL US  2968  -8522     0 10
 OCHLOC_R 102700 Ochlockonee_River                FL US  2996  -8438     0 10
-ST_MARKS 102800 St_Marks                         FL US  3010  -8420     0 10
+WAK_JEFF 102800 Wakulla_Jefferson_County_Line    FL US  3010  -8408     0 10
 AUCILL_R 102900 Aucilla_River                    FL US  3009  -8399     0 10
-KEATON_B 102990 Keaton_Beach                     FL US  2982  -8359     0 10
 STEINH_R 103000 Steinhatchee_River               FL US  2967  -8340     0 10
 SUWANN_R 103100 Suwannee_River                   FL US  2930  -8317     0 10
 YANKEETO 103200 Yankeetown                       FL US  2903  -8275     0 10
@@ -84,7 +86,7 @@ STUART   105600 Stuart                           FL US  2721  -8018     0 10
 FT_PIERC 105700 Fort_Pierce                      FL US  2745  -8028     0 10
 VERO_BEA 105800 Vero_Beach                       FL US  2765  -8035     0 10
 SEBAS_IN 105900 Sebastian_Inlet                  FL US  2783  -8043     0 10
-COCOA_BE 106000 Cocoa_Beach                      FL US  2832  -8061     0 10
+PORT_CAN 106000 Port_Canaveral                   FL US  2841  -8059     0 10
 VOLU_BRE 106110 Volusia_Brevard_County_Line      FL US  2879  -8073     0 10
 NEW_SM_B 106200 New_Smyrna_Beach                 FL US  2903  -8089     0 10
 FLAG_VOL 106300 Flagler_Volusia_County_Line      FL US  2943  -8111     0 10
@@ -103,10 +105,11 @@ MURREL_I 107000 Murrells_Inlet                   SC US  3356  -7901     0 10
 L_RVR_IN 107100 Little_River_Inlet               SC US  3385  -7855     0 10
 CAPE_FEA 107200 Cape_Fear                        NC US  3384  -7796     0 10
 SURF_CTY 107300 Surf_City_NC                     NC US  3444  -7752     0 10
-NEW_R_IN 107400 New_River_Inlet                  NC US  3453  -7734     0 10
 BOGUE_IN 107500 Bogue_Inlet                      NC US  3464  -7711     0 10
+BEAUF_IN 107520 Beaufort_Inlet                   NC US  3469  -7667     0 10
 CP_LOOKO 107600 Cape_Lookout                     NC US  3460  -7653     0 10
 OCRAC_IN 107700 Ocracoke_Inlet                   NC US  3506  -7600     0 10
+HATTE_IN 107750 Hatteras_Inlet                   NC US  3519  -7575     0 10
 CP_HATTE 107800 Cape_Hatteras                    NC US  3522  -7553     0 10
 OREGO_IN 107900 Oregon_Inlet                     NC US  3577  -7553     0 10
 DUCK     108000 Duck                             NC US  3623  -7577     0 10
@@ -141,7 +144,7 @@ GLOUCEST 110400 Gloucester                       MA US  4258  -7066     0 10
 MERRIM_R 110500 Merrimack_River                  MA US  4282  -7084     0 10
 PORTSMOU 110600 Portsmouth                       NH US  4305  -7072     0 10
 CAPE_ELZ 110700 Cape_Elizabeth                   ME US  4356  -7019     0 10
-PORT_CLY 110800 Port_Clyde                       ME US  4392  -6925     0 10
+WALDOBOR 110800 Waldoboro                        ME US  4402  -6936     0 10 
 STONINGT 110900 Stonington_ME                    ME US  4416  -6867     0 10
 PETIT_MA 111000 Petit_Manan_Point                ME US  4440  -6790     0 10
 EASTPORT 111100 Eastport                         ME US  4492  -6700     0 10
@@ -236,7 +239,7 @@ POUCH_CO 171231 Pouch_Cove                       -- CN  4780  -5278     0 10
 CHAPELS_ 171232 Chapels_Cove                     -- CN  4742  -5312     0 10
 GRATES_C 171233 Grates_Cove                      -- CN  4817  -5293     0 10
 LONG_COV 171234 Long_Cove                        -- CN  4757  -5368     0 10
-JONES_HA 171260 Jones_Harbour                    -- CN  4792  -5370     0 10
+SUNNYSID 171260 Sunnyside                        -- CN  4786  -5392     0 10
 NEW_BONA 171290 New_Bonaventure                  -- CN  4825  -5350     0 10
 BONAVIST 171291 Bonavista                        -- CN  4867  -5308     0 10
 CHARLOTT 171320 Charlottetown                    -- CN  4837  -5390     0 10
@@ -378,7 +381,7 @@ SAMANA   401400 Samana                           -- DR  1923  -6933     0 40
 !
 POINT_PB 600000 Point_Piedras_Blancas            CA US  3566 -12129     0 60
 POINT_SA 600050 Point_Sal                        CA US  3490 -12067     0 60
-POINT_CO 600100 Point_Conception                 CA US  3445 -12045     0 60
+POINT_AR 600100 Point_Arguello                   CA US  3458 -12065     0 60
 POINT_MU 600200 Point_Mugu                       CA US  3411 -11912     0 60
 ORNG_LAC 600250 Orange_Los_Angeles_Co_Line       CA US  3375 -11811     0 60
 SAN_ORGC 600300 San_Diego_Orange_Co_Line         CA US  3339 -11759     0 60
@@ -470,6 +473,5 @@ PANAMA/C 605700 Panama/Colombia_border           -- --   723  -7788     0 60
 DRY_TORT 904400 Dry_Tortugas                     FL US  2466  -8286     0 90
 KEY_WEST 904500 Key_West                         FL US  2455  -8181     0 90
 7-MILE_B 904600 Seven_Mile_Bridge                FL US  2470  -8114     0 90
-CRAIG_KY 904700 Craig_Key                        FL US  2483  -8077     0 90
-KY_LARGO 904800 Key_Largo                        FL US  2509  -8044     0 90
+CHAN5_BR 904700 Channel_5_Bridge                 FL US  2484  -8077     0 90
 OCEAN_RF 904900 Ocean_Reef                       FL US  2533  -8026     0 90
