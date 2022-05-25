@@ -93,6 +93,7 @@
 ! S. Jacobs/NCEP	 1/10	Add NWS_States
 ! S. Jacobs/NCEP	12/10	Add VAAC and volcano overlays
 ! S. Jacobs/NCEP	11/12	Added Alaska Area of Resp outline map
+! M. Sardi/NHC           5/16   Added NHC_EPAC_OFFZ (nhcoffep) overlay
 ! B. Hebbard/NCEP       11/20   Added Public Zones and Fire Zones display
 !
 !-------------------------------------------------------------------------------
@@ -137,6 +138,7 @@ ARTCC           1    artcc               0      7      1      2
 WR_QPF          2    wrqpf.tbl           0     15      1      1         2         2         1
 Time_Zone       1    timezone            0     14      1      1
 Marine_Cnty     1    wbcmarine           0     22      1      2
+NHC_EPAC_OFFZ   1    nhcoffep            0     23      1      2
 AK_Area_of_Resp 1    akarea              0      2      1      3
 AK_Desk         1    akdesk              0      2      1      3
 NE_Corr         1    necorr              0      3      1      3
