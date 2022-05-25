@@ -1,6 +1,25 @@
 <!-- markdownlint-configure-file {"MD024": { "siblings_only": true } } -->
 # Unidata Community GEMPAK Change Log
 
+## 7.15.0 (25 May 2022)
+
+This release merges upstream NCEP NAWIPS 7.15.0, whose CHANGELOG includes:
+
+- Bug fixes and other issue resolutions.
+- Cumulative revisions to NAWIPS data tables to support maps/bounds,
+surface stations, tropical, and other routine periodic updates.
+- Integration of compiler, and certain changes required to support the
+WCOSS supercomputer and RHEL 8 Operating System transition projects.
+- Updates to Volcanic Ash Advisory user interface to support the NESDIS
+Satellite Analysis Branch.
+
+This release also includes the following GEMPAK Community changes:
+
+- More dynamic setting of `NAWIPS` environment variable on bash (#85).
+- Update MRMS Grib Tables to v12.1 (#89).
+- Continued cleanup of bad previous merges that overwrote Unidata
+local table modifications.
+
 ## 7.14.0.1 (13 March 2022)
 
 This release signifies the desire for the community to make releases at a faster
