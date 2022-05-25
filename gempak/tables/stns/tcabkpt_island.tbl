@@ -10,13 +10,16 @@
 ! M. Brennan/NHC         2/12   Updated for Block Isl, Nantucket, and Martha's Vinyrd
 ! M. Brennan/NHC        12/16   Cleanup and updates for 2017 
 ! M. Brennan/NHC         4/19   Updated for 2019 Season
+! M. Brennan/NHC         4/21   Updated for 2021 Season
+! M. Brennan/NHC        12/21   Updated for 2022 Season
 !
 !STID    STNM   NAME                             ST CO   LAT    LON  ELV PRI TBCHRS  
 !(8)     (6)    (32)                            (2)(2)   (5)    (6)   (5)(2)   (20)
 !
 !  Other Caribbean islands
 !
-ANTIGUA/ 500100 Antigua/Barbuda                  -- AD  1735  -6180     0 50    
+ANTIGUA  500100 Antigua                          -- AD  1706  -6179     0 50   
+BARBUDA  500150 Barbuda                          -- AD  1762  -6178     0 50 
 ARUBA    500200 Aruba                            -- AR  1250  -6997     0 50
 CURACAO  500230 Curacao                          -- CC  1218  -6900     0 50
 BONAIRE  500260 Bonaire                          -- BO  1219  -6821     0 50
@@ -36,11 +39,13 @@ JAMAICA_ 501300 Jamaica_(all)                    -- JM  1810  -7730     0 50
 JAMAIC_N 501400 Jamaica_(north_coast)            -- JM  1850  -7750     0 50    
 JAMAIC_S 501500 Jamaica_(south_coast)            -- JM  1770  -7720     0 50    
 MARTINIQ 501600 Martinique                       -- MR  1470  -6100     0 50    
-SAB/NEV/ 502000 Saba/Nevis/StKitt/StE/Montserrat -- KM  1730  -6270     0 50    
+SAB/STEU 502000 Saba/StE                         -- KM  1750  -6298     0 50
+STK/NEV/ 502050 Nevis/StKitt/StE/Montserrat      -- KM  1710  -6256     0 50    
 SAN_ANDR 502100 San_Andres                       -- SS  1255  -8170     0 50    
 PROVIDEN 502150 Providencia                      -- CO  1335  -8137     0 50
 ST._LUCI 502200 St._Lucia                        -- LC  1390  -6095     0 50    
-ST._MART 502300 St._Mart/St._Bart/Anguilla       -- AA  1800  -6300     0 50    
+ST._MART 502300 St._Mart/St._Bart                -- AA  1800  -6300     0 50    
+ANGUILLA 502350 Anguilla                         -- AD  1823  -6304     0 50
 TOBAGO   502400 Tobago                           -- TD  1125  -6065     0 50    
 TRINIDAD 502500 Trinidad                         -- TD  1050  -6125     0 50    
 TURKS_AN 502600 Turks_and_Caicos                 -- TI  2175  -7160     0 50    
@@ -77,6 +82,10 @@ DRY_ISLE 504400 Dry_Tortugas_Island              FL US  2467  -8285     0 50
 BLOCK_IS 506000 Block_Island                     RI US  4116  -7156     0 50
 NANTUKCT 506100 Nantucket                        MA US  4127  -7004     0 50
 MRT_VYRD 506200 Marthas_Vineyard                 MA US  4138  -7063     0 50
+!
+! Islas Marias
+! 
+ISLAS_MA 504000 Las_Islas_Marias                 -- MX  2153 -10652     0 50
 ! 
 ! Main Hawaiian Islands
 !
@@ -90,6 +99,9 @@ OAHU     505300 Oahu                             -- HI  2146 -15800     0 50
 JOHNSTON 505400 Johnston_Atoll                   -- --  1675 -16950     0 50
 MIDWAY   505500 Midway_Island                    -- --  2821 -17737     0 50
 KURE     505600 Kure_Atoll                       -- --  2840 -17830     0 50
+TERAINA  505700 Teraina_Atoll                    -- --  0468 -16037     0 50
+TABUAER  505800 Tabuaeran_Atoll                  -- --  0387 -15932     0 50
+KIRITIM  505900 Kiritimati_Island                -- --  0187 -15742     0 50
 !
 ! Atlantic Canada islands
 ! 
@@ -112,5 +124,3 @@ PLM_ATOL 520000 Palmyra_Atoll                    -- CP  0589 -16208     0 50
 TER_ATOL 520015 Teraina_Atoll                    -- CP  0468 -16037     0 50
 TAB_ATOL 520030 Tabuaeran_Atoll                  -- CP  0387 -15932     0 50
 KIRTI_IS 520045 Kiritimati_(Christmas)_Island    -- CP  0187 -15742     0 50
-
-

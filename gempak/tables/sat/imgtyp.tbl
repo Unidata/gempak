@@ -673,6 +673,7 @@ NATIONAL  1 KM  24HR PRECIP        0     15      8    255      1 nids_pre.tbl
 NATIONAL  1 KM  CREF NOFILTER      0     15      8    257      1 osf_ref16.tbl
 NATIONAL  1 KM  BREF NOFILTER      0     15      8    258      1 osf_ref16.tbl
 NATIONAL  1 KM  PRCPC PRECIP       0     15      8    266      1 nids_pre.tbl
+NATIONAL  l KM  RALA NOQC          0     15      8    265      1 osf_ref16.tbl
 NATL 1 KM 4API(01KM) REFLECT       0     15      8    214      1 osf_ref16.tbl
 NATL 1 KM CAPI(02KM) REFLECT       0     15      8    215      1 osf_ref16.tbl
 NATL 1 KM CAPI(03KM) REFLECT       0     15      8    216      1 osf_ref16.tbl

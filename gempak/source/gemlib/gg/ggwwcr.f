@@ -41,6 +41,7 @@ C* F. J. Yen/NCEP   02/06	Increase length of buffer to max decoded*
 C* m.gamazaychikov/SAIC 04/06   Added idtmch flag to CTB_DTGET CS       *
 C* F. J. Yen/NCEP        4/08   Added bin mins & mstrct to CTB_DTGET CSC*
 C* F. J. Yen/NCEP	 7/08	Increased look back from 6 hrs to 48 hrs*
+C* B. Hebbard/NCEP	 4/21	Fixed SPC WOU display issue (NAWIPS-177)*
 C************************************************************************
         INCLUDE                'GEMPRM.PRM'
         INCLUDE                'ggcmn.cmn'
@@ -50,9 +51,8 @@ C*
         INTEGER                iuwtch(*)
 C*
         CHARACTER        path*25, templ*(MXTMPL), cdttm*20, dattm2*20, 
-     +                   buffer*120, tfile*128, tmstr4*20,
-     +                   tmstp4*20, carr(11)*20, tnum*4, 
-     +                   temp4*20
+     +                   buffer*120, tfile*128, tmstr4*20, tmstr2*20,
+     +                   carr(11)*20, tnum*4, temp4*20
 C*
         CHARACTER        stime*20, flstrt*160, zone(NW)*3, 
      +                   chiss(NW)*20, fnull*(MXFLSZ)
@@ -68,7 +68,7 @@ C
         CALL ST_NULL ( alias, fnull, nf, ier )
         path  = ' '
         templ = ' '
-	CALL CTB_DTGET ( fnull, path, templ, ic, is, if, ir, ii, ion,
+        CALL CTB_DTGET ( fnull, path, templ, ic, is, if, ir, ii, ion,
      +          ihb, mnb, iha, mna, mstrct, idtmch, ier )
         CALL ST_RNUL ( path, path, lens, ier )
         CALL ST_RNUL ( templ, templ, lens, ier )
@@ -160,10 +160,10 @@ C
                                 temp4 = carr ( 5 )
                             END IF
                         END IF
-
 C
 C*                        See if this may actually be a correction
 C*                        to a watch number.
+C
                         IF ( icorr .eq. 1 ) THEN
                             DO ii = 1, nwtch
                                 IF ( ( carr(2)(:2) .eq. wtype(ii))  
@@ -184,7 +184,7 @@ C
                             timstp (jw) = temp4
                             wnum   (jw) = carr (6)(:4)
                             zone   (jw) = carr (9)(:3)
-			    npt    (jw) = 0
+                            npt    (jw) = 0
                             itest  (jw) = jtest
                         END IF
                       END IF
@@ -201,27 +201,32 @@ C
 C
         CALL TI_CTOI ( dattm4, idtarr, ier )
         CALL TI_ADDM ( idtarr, mndif, idtarr, ier )
-        CALL TI_ITOC ( idtarr, dattm4, ier )
+        CALL TI_ITOC ( idtarr, dattm2, ier )
+        CALL TI_DTM4 ( dattm2, dattm4, ier )
 C
         ij = 1
         iunum = 0
         iuflg = .false.
         DO ii = nwtch, 1, -1
-           gdtim = .false.
+            gdtim = .false.
 C
-           
-           CALL TI_DTM4 ( timstp ( ii ), tmstp4, ier )
-           CALL TI_DTM4 ( timstr ( ii ), tmstr4, ier )
-C
+            CALL TI_DTM4 ( timstr ( ii ), tmstr4, ier )
             CALL TI_CTOI ( tmstr4, idtarr, ier )
             CALL TI_ADDM ( idtarr, mndif, idtarr, ier )
-            CALL TI_ITOC ( idtarr, tmstr4, ier )
-            CALL TI_CTOI ( tmstp4, idtarr, ier )
-            CALL TI_ITOC ( idtarr, tmstp4, ier )
+            CALL TI_ITOC ( idtarr, tmstr2, ier )
+            CALL TI_DTM4 ( tmstr2, tmstr4, ier )
 C
-            IF ( (dattim .eq. 'ALL' ) .or.
-     +          ( ( tmstp4 .ge. dattm4 ) .and.
-     +            ( tmstr4 .le. dattm4 ) ) ) THEN
+C*          Consider this watch further if (a) DATTIM="ALL",
+C*          OR (b) current frame time is at or after this
+C*          watch's start time.  Note that we don't filter
+C*          here on stop time, because a cancellation WOU
+C*          resets its stop time to cancellation time, which 
+C*          may be in the past (before frame time), but we
+C*          still need to include it to correctly apply the
+C*          (zero counties) cancellation WOU. 
+C          
+            IF ( ( dattim .eq. 'ALL' ) .or.
+     +           ( tmstr4 .le. dattm4 )  ) THEN
 C
 C*             Check time differences.
 C
@@ -285,5 +290,5 @@ C
             END IF
         END DO
 C*
-	RETURN
-	END
+        RETURN
+        END

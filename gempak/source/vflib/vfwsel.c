@@ -61,6 +61,7 @@ void vfwsel ( char strin[], int *iret )
  * T. Piper/SAIC	12/05	Updated for cst_wrap CSC		*
  * J. Wu/SAIC		04/06	Added parameter in cst_wrap 		*
  * H. Zeng/SAIC		06/06	Removed MIDNIGHT processing(fix wch#281)*
+ * S. Guan/NCEP         02/22   Add cst_wrap before output SEL          * 
  ***********************************************************************/
 {
     FILE    *ifpsel;
@@ -106,6 +107,8 @@ void vfwsel ( char strin[], int *iret )
     fprintf( ifpsel, "SEL%d\n", spcinfo.sssnum);
     fprintf ( ifpsel, "%cSPC WW %02d%s\n", CHRS, spcinfo.itime.day,
                                        spcinfo.itime.hour);
+    len = 59;
+    cst_wrap ( stzstr, "-", &len, EOL, (char *)NULL, stzstr, &ier );
     fprintf ( ifpsel, "%s-%02d%s-\n\n",
                       stzstr, spcinfo.etime.day, spcinfo.etime.hour );
    /*

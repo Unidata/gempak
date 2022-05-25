@@ -10,7 +10,7 @@
 %define __prelink_undo_cmd %{nil}
 %define gem_home /home/gempak/GEMPAK7
 %define prefix /home/gempak
-%define version 7.14.0.1
+%define version 7.15.0
 Name: gempak
 Summary: Unidata Community GEMPAK
 Version: %{version}

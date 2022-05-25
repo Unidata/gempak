@@ -46,6 +46,7 @@
 ! H. Zeng/SAIC		 07/06  Changed originator from KWNO to KWBC for PTWA93
 ! G. Grosshans/SPC	 09/07	Added extended SPC outlook products, 48O and FW3
 ! G. Grosshans/SPC	 09/12	Added SPC enhanced thunderstorm outlook products
+! S. Guan/NCO            03/22  Modified HX6 and HX8
 !--------------------------------------------------------------------------------------------------------
 !Nam AWIPS id   Org  Flg graphic id ext     WMO   MapBk  PI Cord Scale  Area Label Cordfg Count Valid Map
 !--------------------------------------------------------------------------------------------------------
@@ -257,10 +258,10 @@ HI9 0101500209 KWNC U 00 HPISF228CH HI1110 PTAT00 PNAM02 21  2   20 00   33   0 
 HX3 0101500210 KWNC U 00 HPISF210CN HX307X PTNK98 PNAM02 21  2   20 00   33   0      0      4   120    1
 !
 !   6-10 DAY MAX HEAT INDEX
-HX6 0101500211 KWNC U 00 HPISF216CN HX610X PTNQ98 PNAM02 21  2   20 00   33   0      0      4   192    1
+HX6 0101500211 KWNC U 00 HPISF216CN HX610X PTNT98 PNAM02 21  2   20 00   33   0      0      4   192    1
 !
 !   8-14 DAY MAX HEAT INDEX
-HX8 0101500212 KWNC U 00 HPISF222CN HX814X PTNW98 PNAM02 21  2   20 00   33   0      0      4   264    1
+HX8 0101500212 KWNC U 00 HPISF222CN HX814X PTNR98 PNAM02 21  2   20 00   33   0      0      4   264    1
 !
 !   PACIFIC EL NINO SEA SURFACE TEMP OUTLOOK
 SST 0101500213 KWNC U 00 HPISF000CN SST3MO PTNV88 PNAM02 21  2   20 00   33   0      0      4    00    1

@@ -44,6 +44,19 @@
 ! G. Grosshans/SPC	08/13	Updated per WFO BOU MIC Nezette and SPC Bill Bunting
 !				to perm cluster Broomfield county/city to Jefferson
 !				county...email July 2013.
+! G. Grosshans/SPC	07/15	Updated per WFO Sterling MIC Lee to perm cluster
+!				ANZ537 to Baltimore City, uncluster ANZ531 from
+!				Baltimore city and cluster it instead to 
+!				Baltimore county(last one already was done).
+! G. Grosshans/SPC	10/16	Updated per WFO Sterling WCM Chris Strong to
+!				UNCLUSTER ANZ535 from Charles County, MD and
+!				UNCLUSTER ANZ536 from Fairfax County, MD.
+! G. Grosshans/SPC	05/17	Updated to cluster City of Falls Church to Fairfax County per
+!				agreement by WFO James E. Lee
+! G. Grosshans/SPC	03/19	Updated per WFO BOU WCM (Greg Hanson) and Bill Bunting:
+!				Broomfield county/city to change perm clust from Jefferson
+!				to Boulder County.  Email Mar 4 2019.
+! G. Grosshans/SPC	03/22	Updated WFO CRP marine zones for their March 2022 changes
 !--------------------------------------------------------------------------
 !
 ! MARINE ZONES GREAT LAKES
@@ -55,7 +68,8 @@
 ! then the marine zone will ALWAYS be in.
 !BUF|Erie|36029+630200
 !BUF|Niagara|36063+630200
-BOU|Jefferson+Broomfield|8059 + 8014
+!BOU|Jefferson+Broomfield|8059 + 8014
+BOU|Boulder+Broomfield|8013 + 8014
 BOX|Bristol+Newport+Narag Bay|44001 + 44005 + 672360
 BOX|Norfolk + Boston Harbor|25021 + 672300
 BOX|Dukes+Vineyard&Nantucket Snd|25007 + 672320 + 672330
@@ -66,12 +80,12 @@ BOX|Plymouth+Boston Harbor|25023+672300
 !CAR|Washington+costal_waters|23029+670500
 CHS|Charleston|45019+663300
 CLE|Cuyahoga|39035+631460
-CRP|Calhoun + Bays|48057 + 682350
-CRP|Refugio + Bays|48391+682350
-CRP|Aransas + Bays|48007+682350
-CRP|San_Patricio + Bays|48409+682300
-CRP|Nueces + Bays|48355+682300
-CRP|Kleberg + Bays|48273+682300
+CRP|Calhoun + Bays|48057 + 682370
+CRP|Refugio + Bays|48391+682360
+CRP|Aransas + Bays|48007+682360
+CRP|San_Patricio + Bays|48409+682320
+CRP|Nueces + Bays|48355+682320
+CRP|Kleberg + Bays|48273+682310
 DTX|Macomb|26099+604600
 DTX|St._Clair + St._Clair River|26147 + 604220
 DTX|Wayne|26163+604230
@@ -84,12 +98,15 @@ LWX|Anne_Arundel + Chesapeake Bay|24003 + 675310 + 675320
 LWX|Arlington+ Tidal Potomac|51013 + 675350
 LWX|Balt + Chke Bay|24005 + 675310
 !LWX|Baltimore_City + Chesapeake Bay|24510 + 675310
-LWX|Baltimore_City+Chesapk Bay|24510 + 675310
+LWX|Baltimore_City+Patapsco River|24510 + 675380
 LWX|Calvert + Chesapeake Bay|24009 + 675330 + 675420
-LWX|Charles + Tidal Potomac|24017 + 675360 + 675350
+!LWX|Charles + Tidal Potomac|24017 + 675360 + 675350
+LWX|Charles + Tidal Potomac|24017 + 675360
 LWX|City_of_Alexandria+Tidal Pot|51510 + 675350
 LWX|D.C. + Tidal Potomac|11001 + 675350
-LWX|Fairfax + Tidal Potomac|51059 + 675350 + 675360
+!LWX|Fairfax + Tidal Potomac|51059 + 675350 + 675360
+!LWX|Fairfax + Tidal Potomac|51059 + 675350 
+LWX|Fairfax + Tidal Potomac + City_of_Falls_Church|51059 + 675350 + 51610
 LWX|Harford + Chesapeake Bay|24025 + 675300 + 675310
 LWX|King_George + Chesapeake Bay|51099 + 675360
 LWX|Prince_William + Chesapeake Bay|51153 + 675360

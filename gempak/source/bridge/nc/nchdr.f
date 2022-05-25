@@ -36,6 +36,8 @@ C* J. Lewis/AWC		04/05   Add check for new WMO headers WC,WV	*
 C* J. Lewis/AWC		04/05	Remove check for match between          *
 C*				originating station and stnid		*
 C*				in product				*
+C* B. Hebbard/NCO per   04/21   Fix AWC non-convective SIGMETs for      *
+C* L. Hinson/AWC                Blowing Dust (NAWIPS-173)               *
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 C*
@@ -58,10 +60,10 @@ C
 	astart = ' '
 	astop  = ' '
 	ii     = 1
-	DO WHILE ( .not. found )
-	    IF ( ( INDEX ( carr ( ii + 1 ), 'WS' ) .ne. 0 ) .or.
-     +           ( INDEX ( carr ( ii + 1 ), 'WC' ) .ne. 0 ) .or.
-     +           ( INDEX ( carr ( ii + 1 ), 'WV' ) .ne. 0 ) ) THEN
+   	DO WHILE ( .not. found )
+	    IF ( carr ( ii + 1 ) .eq. "WS" .or.
+     +		 carr ( ii + 1 ) .eq. "WC" .or.
+     +		 carr ( ii + 1 ) .eq. "WV" ) THEN
                 found  = .true.
 	        astart = carr ( ii + 2 )
 	        IF ( carr ( ii + 3 ) .ne. 'SIGMET' ) THEN

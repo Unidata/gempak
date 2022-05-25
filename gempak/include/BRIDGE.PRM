@@ -8,6 +8,7 @@ C**									*
 C* Log:									*
 C* S. Jacobs/NMC	 7/95						*
 C* S. Jacobs/NCEP	12/02	Increased DCMXBF from 16kb to 100kb	*
+C* B. Hebbard/NCEP       9/21   Increased DCMXBF from 100kB to 5MB      *
 C************************************************************************
 	INTEGER		DCDFTM, DCMXLN, DCMXBF, EOD,
      +			EBNMEM, EBREAD, EBTMOUT, EBFULL, EBEMPT
@@ -18,7 +19,7 @@ C!
 	PARAMETER	( DCMXLN  =   132 )
 C!						Max char length
 C!
-	PARAMETER	( DCMXBF  = 102400 )
+	PARAMETER	( DCMXBF  = 5000000 )
 C!						Max bulletin length
 C!
 	PARAMETER	( EOD     =    -2 )

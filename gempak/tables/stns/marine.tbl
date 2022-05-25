@@ -37,6 +37,7 @@ KTNF1     99999 KEATON_BEACH                     FL US 02982 -08359 00002  0
 LKWF1     99999 LAKE_WORTH                       FL US 02661 -08003 00000  0   
 LONF1     99999 LONG_KEY                         FL US 02484 -08086 00000  0   
 LPOI1     99999 LAKE_PEND_OREILLE                ID US 04810 -11650 00625  0   
+MBNN6     99999 Masonboro_Island                 NC US 03417 -07782 00002  0
 MDRM1     99999 MOUNT_DESERT_ROCK                ME US 04397 -06813 00009  0   
 MHBT2     99999 MODA_INGLESIDE                   TX US 02783 -09720 00006  0   
 MISM1     99999 MATINICUS_ROCK                   ME US 04378 -06886 00016  0   
@@ -66,7 +67,7 @@ TTIW1     99999 TATOOSH_ISLAND                   WA US 04839 -12474 00031  0
 VENF1     99999 VENICE                           FL US 02707 -08245 00000  0   
 WPOW1     99999 WEST_POINT                       WA US 04766 -12244 00003  0   
 44004     44004 HOTEL                            -- US  3850  -7070     0  0   
-44075     44004 OOI_PIONEER                      -- US  4036  -7088     0  0   
+44075     44075 OOI_PIONEER                      -- US  4036  -7088     0  0   
 41001     41001 EAST_HATTERAS                    -- US  3470  -7260     0  0   
 41002     41002 SOUTH_HATTERAS                   -- US  3230  -7520     0  0   
 42003     42003 GULF                             -- US  2601  -8591     4  0
@@ -83,3 +84,14 @@ WPOW1     99999 WEST_POINT                       WA US 04766 -12244 00003  0
 46005     46005 WASHINGTON                       -- US  4610 -13100     0  0   
 46002     46002 OREGON                           -- US  4250 -13030     0  0   
 46059     46059 POINT_ARENA                      -- US  3800 -13000     0  0   
+MBNN6     99999 Masonboro_Island                 NC US 03417 -07782 00002  0
+SXXA2     99999 Saxman_Landing                   AK US 05532 -13160 00009  0
+BKBF1     99999 Jacksonville_Buckman_Bridge      FL US 03019 -08169 00001  0
+VTBT2     99999 Corpus_Christi_Viola_Turning_Ba  TX US 02784 -09752 00001  0
+HIVT2     99999 Port_Aransas_Harbor_Island       TX US 02784 -09707 00002  0
+GPXA2     99999 Grave_Point                      AK US 05806 -13405 00012  0
+MIXA2     99999 Midway_Island                    AK US 05784 -13381 00019  0
+NLXA2     99999 Nelson_Lagoon                    AK US 05600 -16118 00011  0
+BBCW8     99999 Palmetto_Bay                     FL US 02560 -08031 00000  0
+WCXA2     99999 Ward_Cove                        AK US 05540 -13173 00007  0
+46273     46273 Torrey_Pines_Inner               CA US 03293 -11728 00000  0
