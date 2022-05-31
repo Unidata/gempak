@@ -112,7 +112,7 @@ HDS	(/mNAM|/mNMM).*#2([^1]|1[^1256])
 	PIPE	dcgrib2 -d data/gempak/logs/dcgrib2_NAM2xx.log
 		-e GEMTBL=@GEMTBL@ 
 #
-CONDUIT	^data/nccf/com/nam/prod/nam\.(........)/nam.t(..)z\.firewxnest
+CONDUIT	^data/nccf/com/nam/.*/nam\.(........)/nam.t(..)z\.firewxnest
 	PIPE	dcgrib2 -d data/gempak/logs/dcgrib2_NAMfirewxnest.log
 		-e GEMTBL=@GEMTBL@ 
 		data/gempak/model/nam-firewx/YYYYMMDDHHfFFF_firewxnest.gem
@@ -287,7 +287,7 @@ CONDUIT	prod/gfs.*pgrb2
 #
 # GRIB2 ensemble
 #CONDUIT	prod/gefs\.(........)/(..)/pgrb2a/(ge.*)\.t..z\.pgrb2af(.*) !(.*)!
-# data/nccf/com/gens/prod/gefs.20061004/06/pgrb2a/gep07.t06z.pgrb2aanl
+# data/nccf/com/gens/{prod,vX.X.X}/gefs.20061004/06/pgrb2a/gep07.t06z.pgrb2aanl
 CONDUIT	(data/nccf|data2/TIGGE).*/(ge[cp][0-9][0-9])\.t[0-2][0-9]z\.pgrb2.* !(.*)!
 	PIPE	dcgrib2 -v 1 -m 10000 -e ENSEXT=0 -d data/gempak/logs/dcgrib2_CONDUITens.log
 	-e GEMTBL=@GEMTBL@
