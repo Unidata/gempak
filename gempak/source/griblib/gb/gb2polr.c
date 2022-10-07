@@ -35,7 +35,7 @@ void gb2_polr ( gribfield *gfld, float *gdsarr, int *scan_mode, int *iret )
 {
         int	Dx, Dy, flag2, mode, Nx, Ny, La1, Lo1, LoV;
         int     Lo1e, LoVe;
-	int	flag1, LaD; 
+/*	int	flag1, LaD; */
 
         double	loncnt, lat1, lon1, rtemp, X1, X2, Y1, Y2,
         	TDx, TDy, Xll, Xur, Yll, Yur;
@@ -78,7 +78,7 @@ void gb2_polr ( gribfield *gfld, float *gdsarr, int *scan_mode, int *iret )
 	/*
 	 * LaD - Latitude where Dx and Dy are specified.
 	 */
-	LaD = (int)gfld->igdtmpl[12];  
+/*	LaD = (int)gfld->igdtmpl[12];  NOT used */
 
 	/*
 	 * Lov - orientation of the grid (center longitude)
@@ -132,9 +132,8 @@ void gb2_polr ( gribfield *gfld, float *gdsarr, int *scan_mode, int *iret )
 	/*
 	 * Compute the grid spacing
 	 */
-        if ( abs(LaD) > 90000000 ||  abs(LaD) < 10000000 ) LaD = 60000000;
-	TDx = ((float)Dx / 1000.0) / ( 1 + sin ( PI3RD * LaD/60000000.0 ) );
-	TDy = (Dy / 1000.0) / ( 1 + sin ( PI3RD * LaD/60000000.0 ) );
+	TDx = ((float)Dx / 1000.0) / ( 1 + sin ( PI3RD ) );
+	TDy = (Dy / 1000.0) / ( 1 + sin ( PI3RD ) );
 
 	/*
 	 * Compute the linear coordinates of the second point.

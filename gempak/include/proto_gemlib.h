@@ -115,7 +115,8 @@
  *                              da_getheader                            *
  * P. Moyer/NCEP     06/30/16   R17968  Added DA functions for new      *
  *                                      processing through EDEX         *
- * S. Guan/NCEP	       07/20    Added tzone as an input of TI_DST       *  
+ * S. Guan/NCEP	        07/20   Added tzone as an input of TI_DST       *
+ * B. Hebbard/NCEP      08/21   Changed strlen in protos int->size_t    *  
  ************************************************************************/
 
 /* AW library */
@@ -363,7 +364,7 @@ void gcboxx(const int *, const int *, const float *, const int *, const int *,
 void gcfill(int*, int*, float*, int*, int*, int*, int*, float*, int*, int*,
         int*, int*);
 void gclgrn(int*, int*, float*, int*, int*, int*, int*, float*, char*, int*,
-        int*, int*, int*, int*, int*, int);
+        int*, int*, int*, int*, int*, size_t);
 void gstrml(const int *, const int *, float *, float *, const int *,
         const int *, const int *, const int *, int *, float *, float *, float *,
         float *, float *, int *);

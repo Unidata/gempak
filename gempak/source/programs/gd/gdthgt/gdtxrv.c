@@ -4,17 +4,17 @@
 void gdtxrvf ( char *time, char *gvcord, char *gvecx, int *levt, int *levb, 
               int *lavflg, float *rgx, float *rgy, int *inttyp, int *lvert, 
               float *gridu, float *gridv, float *uu, float *vv, int *iret, 
-              int timesize, int gvcordsize, int gvecxsize );
+              size_t timesize, size_t gvcordsize, size_t gvecxsize );
 
 void gdtxrv ( char *time, char *gvcord, char *gvecx, int *levt, int *levb, 
               int *lavflg, float *rgx, float *rgy, int *inttyp, int *lvert, 
-              float *uu, float *vv, int *iret, int timesize, int gvcordsize,
-              int gvecxsize );
+              float *uu, float *vv, int *iret, size_t timesize, size_t gvcordsize,
+              size_t gvecxsize );
 
 void gdtxrv ( char *time, char *gvcord, char *gvecx, int *levt, int *levb, 
               int *lavflg, float *rgx, float *rgy, int *inttyp, int *lvert, 
-              float *uu, float *vv, int *iret, int timesize, int gvcordsize,
-              int gvecxsize )
+              float *uu, float *vv, int *iret, size_t timesize, size_t gvcordsize,
+              size_t gvecxsize )
 /************************************************************************
  * GDTXRV								*
  *									*
@@ -47,6 +47,7 @@ void gdtxrv ( char *time, char *gvcord, char *gvecx, int *levt, int *levb,
  * Log:									*
  * S.Gilbert/NCEP	 8/07	                       			*
  * T. Piper/SAIC	03/08	Replaced cmm functions with Macros	*
+ * B. Hebbard/NCEP	08/21	Changed strlen in protos int->size_t    *
  ***********************************************************************/
 {
     int   kx, ky, kxy, ier;

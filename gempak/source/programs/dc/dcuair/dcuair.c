@@ -13,7 +13,7 @@
 
 void dcudcd ( char *curtim, char *gemfil, char *stntbl, int *iadstn, 
                  int *maxtim, int *nhours, int *txtflg, int *iwndht, 
-                 int *iret, int, int, int );
+                 int *iret, size_t, size_t, size_t );
 
 int main ( int argc, char *argv[] )
 /************************************************************************
@@ -41,6 +41,7 @@ int main ( int argc, char *argv[] )
  * m.gamazaychikov/SAIC 07/05   Set deflt value for sfc wind cutoff hght*
  * H. Zeng/SAIC		08/05	Added a new parameter for dc_gopt	*
  * L. Hinson/AWC        06/08   Added circflg parameter to dc_gopt      *
+ * SGuan-BHebbard/NCEP  06/22   Changed strlen in protos int->size_t    *
  ***********************************************************************/
 {
 

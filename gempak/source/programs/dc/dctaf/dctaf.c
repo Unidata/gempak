@@ -14,7 +14,7 @@
 void tf_dcod ( char *curtim, char *gemfil, char *stntbl, char *stntb2,
 	       char *prmfil, int *iadstn, int *maxtim, int *nhours,
 	       int *circflg, int *iret, 
-                  int, int, int, int, int );
+               size_t, size_t, size_t, size_t, size_t );
 
 int main ( int argc, char *argv[] )
 /************************************************************************
@@ -36,6 +36,7 @@ int main ( int argc, char *argv[] )
  * L. Hinson/AWC        06/08   Added circflg to dc_gopt and call to    *
  *                              tf_dcod                                 *
  * S. Jacobs/NCEP	 3/14	Added black list station table		*
+ * SGuan-BHebbard/NCEP  06/22   Changed strlen in protos int->size_t    *
  ***********************************************************************/
 {
 

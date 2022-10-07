@@ -1,0 +1,18 @@
+
+PROB2CAT
+                                                                       
+  PROB2CAT accepts as input VGF files containing probabilistic 
+  contours for tornado, wind and hail and generates a VGF file with
+  categorical outlook.  
+
+INPUT PARAMETERS
+
+  prob2cat VGF_file(s)
+
+  VGF_Files         	a list of VGF files separated by whitespace
+
+                                                                       
+EXAMPLES
+
+	prob2cat hailoutlook_DAY1_191200Z.vgf windoutlook_DAY1_191200Z.vgf tornoutlook_DAY1_191200Z.vgf
+	prob2cat proboutlook_DAY2_161730Z.vgf

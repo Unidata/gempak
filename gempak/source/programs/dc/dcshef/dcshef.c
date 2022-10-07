@@ -11,7 +11,7 @@
 void shn_dcod ( char *curtim, char *shefpm, char *sheftb, char *bufrtb, char *gemfil,  
                 char *prmfil, char *pestr, int *npe, int *iadstn, int *maxtim,  
                 int *nhours, int *iflag, int *iret,
-		int, int, int, int, int, int, int );
+		size_t, size_t, size_t, size_t, size_t, size_t, size_t );
 
 void    dc_wclg  (  int     loglev,
 		    char    *errgrp,
@@ -56,6 +56,7 @@ int main ( int argc, char *argv[] )
  *                              defined OHSHEF library PECODES          *
  * L. Hinson/AWC        06/08   Added circflg parameter to dc_gopt      *
  * S. Jacobs/NCEP	 4/11	Fixed to remove compiler warning/errors	*
+ * SGuan-BHebbard/NCEP  06/22   Changed strlen in protos int->size_t    *
  ***********************************************************************/
 
 {
