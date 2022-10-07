@@ -25,7 +25,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        OS_VERSION: ["6", "7"]
+        OS_VERSION: ["7", "stream8", "stream9"]
     env:
       OS_VERSION: ${{ matrix.OS_VERSION }}
       OS_TYPE: "centos"
@@ -37,6 +37,6 @@ jobs:
         echo 'DOCKER_OPTS="-H tcp://127.0.0.1:2375 -H unix:///var/run/docker.sock -s devicemapper"' | sudo tee /etc/default/docker > /dev/null
         sudo service docker restart
         sleep 5
-        sudo docker pull ${OS_TYPE}:${OS_VERSION}
+        sudo docker pull quay.io/centos/${OS_TYPE}:${OS_VERSION}
         build/setup.sh ${OS_TYPE} ${OS_VERSION}
 
