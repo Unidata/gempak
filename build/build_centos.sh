@@ -1,6 +1,7 @@
 #!/bin/sh -xe
 
-dnf -y install gcc-gfortran git rpm-build byacc flex libX11-devel libXext libXft-devel libXp-devel libXt-devel libXtst-devel openmotif-devel xorg-x11-xbitmaps autoconf libtool automake
+# runs on centos7, so no dnf
+yum -y install gcc-gfortran git rpm-build byacc flex libX11-devel libXext libXft-devel libXp-devel libXt-devel libXtst-devel openmotif-devel xorg-x11-xbitmaps autoconf libtool automake
 
 useradd gempak
 
