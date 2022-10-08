@@ -81,6 +81,7 @@
 !				duplicates; "MRMS12.1"->"REFLECT" (NAWIPS-172)
 ! P. Pokrandt/UW-AOS     2/22   Add Super High-Res reflectivity
 ! D. Herzmann/ISU        3/22   Add Super High-Res velocity
+! B. Hebbard/NCEP	 9/22	Add GOES-18 entries (courtesy of SPC, per OPC)
 !------------------------------------------------------------------------------
 !
 ! SATELLITE IMAGE TYPES
@@ -91,6 +92,43 @@
 !                   |        |      |      |      |      |      |              |
 !------------------------------------------------------------------------------
 ! Standard image products
+GOES18 CH01          VIS_0.47      0    255    190      1      1 GRAY
+GOES18 CH02          VIS_0.64      0    255    190      2      1 GRAY
+GOES18 CH03          NIR_0.86      0    255    190      4      1 GRAY
+GOES18 CH04          NIR_1.38      0    255    190      8      1 GRAY
+GOES18 CH05          NIR_1.6       0    255    190     16      1 GRAY
+GOES18 CH06          NIR_2.3       0    255    190     32      1 GRAY
+GOES18 CH07          SWIR_3.9      0    255    190     64      1 GRAY
+GOES18 CH08          WV_6.2        0    255    190    128      1 wvcimss.tbl
+GOES18 CH09          WV_6.9        0    255    190    256      1 wvcimss.tbl
+GOES18 CH10          WV_7.3        0    255    190    512      1 wvcimss.tbl
+GOES18 CH11          IR_8.6        0    255    190   1024      1 GRAY
+GOES18 CH12          IR_9.6        0    255    190   2048      1 GRAY
+GOES18 CH13          IR_10.4       0    255    190   4096      1 GRAY
+GOES18 CH14          IR_11.2       0    255    190   8192      1 GRAY
+GOES18 CH15          IR_12.3       0    255    190  16384      1 GRAY
+GOES18 CH16          IR_13.3       0    255    190  32768      1 GRAY
+GOES18 RGBABI        GEOCOLOR      0     95    392  2**13      1 geocolor_g16_96
+GOES18 RGBABI        AIRMASS       0     94    392   2**0      1 abiairmass.tbl
+GOES18 RGBABI        NTMICROA      0     94    392   2**1      1 abintmicadv.tbl
+GOES18 RGBABI        DAYLANDC      0     94    392   2**2      1 abidaylc.tbl
+GOES18 RGBABI        DUST          0     94    392   2**3      1 abidust.tbl
+GOES18 RGBABI        DAYCONV       0     94    392   2**4      1 abidayconv.tbl
+GOES18 RGBABI        DAYMICRO      0     94    392   2**5      1 abidaymicro.tbl
+GOES18 RGBABI        FIRETEMP      0     94    392   2**6      1 abifiretemp.tbl
+GOES18 RGBABI        ASH           0     94    392   2**7      1 abiash.tbl
+GOES18 RGBABI        DAYLNDCF      0     94    392   2**8      1 abidaylcf.tbl
+GOES18 RGBABI        DAYOCC        0     94    392   2**9      1 abidayocc.tbl
+GOES18 RGBABI        DAYSNOWF      0     94    392   2**10     1 abidaysnowf.tbl
+GOES18 RGBABI        SIMPLEWV      0     94    392   2**11     1 abisimplewv.tbl
+GOES18 RGBABI        SO2           0     94    392   2**12     1 abiso2.tbl
+GOES18 RGBABI        GEOCOLOR      0     95    392   2**13     1 geocolor_g16.tbl
+GOES18 ABI           DAYCLDPH      0     94    392   2**14     1 abidaycp.tbl
+GOES18 ABI           DIFFWV        0     94    392   2**15     1 abidiffwv.tbl
+GOES18 ABI           DAYCLDCN      0     94    392   2**16     1 abidayccon.tbl
+GOES18 ABI           PSEUDONC      0     94    392   2**17     1 abipsnatur.tbl
+GOES18 ABI           SAL           0    255    392   2**18     1 sal.tbl
+!
 GOES17 CH01          VIS_0.47      0    255    188  65536      1 GRAY
 GOES17 CH02          VIS_0.64      0    255    188      2      1 GRAY
 GOES17 CH03          NIR_0.86      0    255    188      4      1 GRAY

@@ -2958,7 +2958,7 @@ ORC045    41045 Malheur                          OR US  4320 -11763     0  0 BOI
 ORC061    41061 Union                            OR US  4533 -11806     0  0 PDT
 ORC069    41069 Wheeler                          OR US  4472 -12000     0  0 PDT
 ORC039    41039 Lane                             OR US  4392 -12281     0  0 PQR
-ORC057    41057 Tillamook                        OR US  4540 -12355     0  0 PQR
+ORC057    41057 Tillamook                        OR US  4541 -12355     0  0 PQR
 ORC007    41007 Clatsop                          OR US  4596 -12360     0  0 PQR
 ORC009    41009 Columbia                         OR US  4595 -12311     0  0 PQR
 ORC067    41067 Washington                       OR US  4556 -12311     0  0 PQR
@@ -3209,14 +3209,12 @@ AKC185     2185 North_Slope                      AK US  6931 -15345     0  0 AFG
 AKC060     2060 Bristol_Bay                      AK US  5874 -15668     0  0 AFC
 AKC150     2150 Kodiak_Island                    AK US  5730 -15317     0  0 AFC
 AKC282     2282 Yakutat                          AK US  5993 -14047     0  0 AJK
-AKC105     2105 Hoonah-Angoon                    AK US  5867 -13639     0  0 AJK
-AKC100     2100 Haines                           AK US  5914 -13576     0  0 AJK
+AKC100     2100 Haines                           AK US  5915 -13578     0  0 AJK
 AKC110     2110 Juneau                           AK US  5862 -13438     0  0 AJK
 AKC220     2220 Sitka                            AK US  5707 -13532     0  0 AJK
 AKC130     2130 Ketchikan_Gateway                AK US  5557 -13062     0  0 AJK
-AKC198     2198 Prince_of_Wales-Hyder            AK US  5551 -13270     0  0 AJK
+AKC198     2198 Prince_of_Wales-Hyder            AK US  5580 -13301     0  0 AJK
 AKC275     2275 Wrangell                         AK US  5637 -13186     0  0 AJK
-AKC195     2195 Petersburg_Census_Area           AK US  5697 -13236     0  0 AJK
 AKC230     2230 Skagway                          AK US  5956 -13534     0  0 AJK
 NYC029    36029 Erie                             NY US  4278  -7878     0  0 BUF
 TXC261    48261 Kenedy                           TX US  2692  -9772     0  0 BRO
@@ -3266,6 +3264,8 @@ FMC010    64010 Eauripik                         FM US   669  14306     0  0 PQW
 FMC080    64080 Ngulu                            FM US   839  13751     0  0 PQW
 FMC060    64060 Yap                              FM US   954  13813     0  0 PQW
 FMC110    64110 Ulithi                           FM US   999  13973     0  0 PQW
+AKC195     2195 Petersburg_Borough               AK US  5714 -13254     0  0 AJK
+AKC105     2105 Hoonah-Angoon                    AK US  5867 -13639     0  0 AJK
 PHZ113   701130 PHZ113                           PH US  2162 -15898     0  0 HFO
 PHZ112   701120 PHZ112                           PH US  2167 -16023     0  0 HFO
 GMZ155   681550 GMZ155                           GM US  2691  -9715     0  0 BRO
@@ -3392,13 +3392,10 @@ PZZ415   614150 PZZ415                           PZ US  4079 -12417     0  0 EKA
 PZZ470   614700 PZZ470                           PZ US  4112 -12504     0  0 EKA
 PZZ376   613760 PZZ376                           PZ US  4231 -12528     0  0 MFR
 PZZ370   613700 PZZ370                           PZ US  4342 -12520     0  0 MFR
-PZZ255   612550 PZZ255                           PZ US  4451 -12410     0  0 PQR
-PZZ275   612750 PZZ275                           PZ US  4454 -12497     0  0 PQR
-PZZ270   612700 PZZ270                           PZ US  4591 -12490     0  0 PQR
 PZZ176   611760 PZZ176                           PZ US  4703 -12513     0  0 SEW
 PZZ173   611730 PZZ173                           PZ US  4761 -12544     0  0 SEW
 PZZ210   612100 PZZ210                           PZ US  4623 -12375     0  0 PQR
-PZZ350   613500 PZZ350                           PZ US  4343 -12446     0  0 MFR
+PZZ350   613500 PZZ350                           PZ US  4342 -12443     0  0 MFR
 PZZ545   615450 PZZ545                           PZ US  3765 -12265     0  0 MTR
 PZZ540   615400 PZZ540                           PZ US  3842 -12319     0  0 MTR
 PZZ455   614550 PZZ455                           PZ US  3970 -12403     0  0 EKA
@@ -3406,7 +3403,6 @@ PZZ170   611700 PZZ170                           PZ US  4810 -12547     0  0 SEW
 PZZ130   611300 PZZ130                           PZ US  4829 -12426     0  0 SEW
 PZZ131   611310 PZZ131                           PZ US  4822 -12365     0  0 SEW
 PZZ135   611350 PZZ135                           PZ US  4747 -12241     0  0 SEW
-PZZ250   612500 PZZ250                           PZ US  4597 -12416     0  0 PQR
 PZZ156   611560 PZZ156                           PZ US  4706 -12438     0  0 SEW
 PZZ150   611500 PZZ150                           PZ US  4822 -12488     0  0 SEW
 LSZ245   652450 LSZ245                           LS US  4735  -8775     0  0 MQT
@@ -3773,3 +3769,9 @@ AMZ274   662740 AMZ274                           AM US  3334  -7819     0  0 ILM
 AMZ276   662760 AMZ276                           AM US  3314  -7875     0  0 ILM
 AMZ372   663720 AMZ372                           AM US  3202  -8006     0  0 CHS
 PKZ181   691810 PKZ181                           PK US  6043 -16787     0  0 AFC
+PZZ271   612710 PZZ271                           PZ US  4626 -12495     0  0 PQR
+PZZ251   612510 PZZ251                           PZ US  4633 -12421     0  0 PQR
+PZZ253   612530 PZZ253                           PZ US  4440 -12422     0  0 PQR
+PZZ252   612520 PZZ252                           PZ US  4530 -12416     0  0 PQR
+PZZ273   612730 PZZ273                           PZ US  4440 -12499     0  0 PQR
+PZZ272   612720 PZZ272                           PZ US  4525 -12484     0  0 PQR

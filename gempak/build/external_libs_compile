@@ -2,6 +2,11 @@
 #  To avoid creating unnecessary libraries put '#' in first column.
 #  Note:  Order is important for some libraries, so maintain order.
 
+# Untar external libraries
+cd $NAWIPS
+tar xzf extlibs.tgz
+
+
 cd $GEMPAK/build
 
 #  AODT library used by nmap2, aodt, testaodtv64, and testaodtv72.
@@ -15,7 +20,7 @@ ndfd_compile
 melbufr_build		v5.2
 
 #  NCEP BUFR library used by bfr2gp, cwordsh, dctama, dcshef, dcigdr, and namsnd.
-ncepbufr_compile	v10.2.3
+ncepbufr_compile	v11.3.0
 
 # OHSHEF library used only by dcshef!
 ohshef_compile
@@ -27,7 +32,7 @@ shape_compile		v1.2
 GNUmake_build		v3.81
 pkg-config_build	v0.23
 #zlib_compile		v1.2.3
-zlib_compile		v1.2.6
+zlib_compile		v1.2.11
 bzip2_compile		v1.0.5
 libiconv_build		v1.12
 if [ $OS != Linux ]
@@ -43,10 +48,13 @@ xml2_compile		v2.6.31
 xslt_compile		v1.1.22
 DOM_build		v2-0.8.1
 
+#  polarssl library required for encrypted lightning decoder
+polarssl_compile        v1.2.6 
+
 #  netCDF used by many programs.
-#hdf5_build		v1.8.0
+hdf5_build		v1.8.15
 #netcdf_compile		v3.6.2
-netcdf_compile		v4.1.3
+netcdf_compile		v4.3.3.1
 
 #  JasPer and PNG libraries used only by nagrib2!
 jasper_compile		v1.900.1

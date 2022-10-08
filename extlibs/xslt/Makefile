@@ -8,6 +8,7 @@ $(OS_LIB)/libxslt.a:
 
 _xslt: clean INSTALLDIR 
 	@(cd libxslt; echo "Making in `pwd`"; \
+	make clean ; \
 	autoreconf --force --install ; \
 	./configure '--prefix=$(OS_ROOT)' --disable-shared --without-debug --without-debugger '--with-libxml-prefix=$(OS_ROOT)' 'CC=$(CC)' ; \
 	$(MAKE) install )

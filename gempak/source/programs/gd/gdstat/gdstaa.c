@@ -6,17 +6,17 @@ void gdstaaf ( int *kx, int *ky,
                float *grid, float *sums, float *sumsq,
                float *gmax, float *gmin, float *cnt,
                int *iret,
-               int glevelsize, int gvcordsize, int gfuncsize, int grdnamsize );
+               size_t glevelsize, size_t gvcordsize, size_t gfuncsize, size_t grdnamsize );
 
 void gdstaa  ( int *kx, int *ky,
                char *glevel, char *gvcord, char *gfunc, char *grdnam,
                int *iret,
-               int glevelsize, int gvcordsize, int gfuncsize, int grdnamsize );
+               size_t glevelsize, size_t gvcordsize, size_t gfuncsize, size_t grdnamsize );
 
 void gdstaa  ( int *kx, int *ky,
                char *glevel, char *gvcord, char *gfunc, char *grdnam,
                int *iret,
-               int glevelsize, int gvcordsize, int gfuncsize, int grdnamsize ) 
+               size_t glevelsize, size_t gvcordsize, size_t gfuncsize, size_t grdnamsize ) 
 
 /************************************************************************
  * gdstaa  (GDSTAT allocation)                                         *
@@ -55,7 +55,8 @@ void gdstaa  ( int *kx, int *ky,
  *                                                                      *
  **                                                                     *
  * Log:                                                                 *
- * B. Hebbard/SAIC      03/08                                           *
+ * B. Hebbard/SAIC	03/08   Initial					*
+ * B. Hebbard/NCEP	08/21	Changed strlen in protos int->size_t    *
  ***********************************************************************/
 {
 

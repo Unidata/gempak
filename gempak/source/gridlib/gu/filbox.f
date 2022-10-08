@@ -31,6 +31,7 @@ C* Log:									*
 C* J. Fulson-Woytek/GSFC 						*
 C* M. desJardins/NMC	11/91	Adapted algorithm for GEMPAK 5.1	*
 C* S. Jacobs/EAI	 3/93	Fixed typo cver --> dver		*
+C* S. Guan/NCEP		 6/22	Fixed a divide by zero			*
 C************************************************************************
 	REAL		box (4), clvl (*)
 	INTEGER		lincol (*), lintyp (*), linwid (*)
@@ -47,6 +48,7 @@ C
      +					    ( xy2 - xy1 )
 C----------------------------------------------------------------------
 	iret = 0
+        smallv = 0.0001
 	ilow = icornr
 	dlow = box (ilow)
 C
@@ -141,6 +143,7 @@ C*
 		IF  ( ( iside1 .le. 1 ) .and. 
      +		      ( dhor .ge. clev ) )  THEN
 		    ipt = ipt + 1
+                    if ( abs ( dlow - dhor ) . lt. smallv ) RETURN 
 		    xpt (ipt) = RINTRP ( dlow, dhor, xlow, xhor ) 
 		    ypt (ipt) = ylow
 		    iside1 = 1
@@ -158,6 +161,7 @@ C*
      +			     ( dopp .ge. clev ) )  THEN
 		    ipt = ipt + 1
 		    xpt (ipt) = xhor
+                    if ( abs ( dhor - dopp ) . lt. smallv ) RETURN
 		    ypt (ipt) = RINTRP ( dhor, dopp, yhor, yopp )
 		    IF  ( dopp .eq. clev )  iside1 = 3
 		    found = .true.
@@ -177,6 +181,7 @@ C*
 		  ELSE IF  ( ( iside1 .eq. 3 ) .and.
      +			     ( dver .ge. clev ) )  THEN
 		    ipt = ipt + 1
+                    if ( abs ( dopp - dver ) . lt. smallv ) RETURN
 		    xpt (ipt) = RINTRP ( dopp, dver, xopp, xver )
 		    ypt (ipt) = yopp
 		    IF  ( dver .eq. clev )  iside1 = 4
@@ -204,12 +209,14 @@ C
      +		      ( dver .ge. clev ) )  THEN
 		    ipt = ipt + 1
 		    xpt (ipt) = xlow
+                    if ( abs ( dlow - dver ) . lt. smallv ) RETURN
 		    ypt (ipt) = RINTRP ( dlow, dver, ylow, yver )
 		    iside2 = 4
 		    IF  ( dver .eq. clev )  iside2 = 3
 		  ELSE IF  ( ( iside2 .ge. 3 ) .and.
      +			     ( dopp .ge. clev ) )  THEN
 		    ipt = ipt + 1
+                    if ( abs ( dver - dopp ) . lt. smallv ) RETURN
 		    xpt (ipt) = RINTRP ( dver, dopp, xver, xopp )
 		    ypt (ipt) = yver
 		    IF  ( iside2 .eq. 4 )  THEN
@@ -222,6 +229,7 @@ C
 		  ELSE 
 		    ipt = ipt + 1
 		    xpt (ipt) = xopp
+                    if ( abs ( dhor - dopp ) . lt. smallv ) RETURN
 		    ypt (ipt) = RINTRP ( dopp, dhor, yopp, yhor )
 		    IF  ( iside2 .ge. 3 )  THEN
 			ipt = ipt + 1
@@ -261,7 +269,9 @@ C
 		    xptopp (2) = xopp
 		    yptopp (2) = yq1
 		    xptopp (3) = xopp
+                    if ( abs ( dhor - dopp ) . lt. smallv ) RETURN
 		    yptopp (3) = RINTRP ( dopp, dhor, yopp, yhor )
+                    if ( abs ( dver - dopp ) . lt. smallv ) RETURN
 		    xptopp (4) = RINTRP ( dver, dopp, xver, xopp )
 		    yptopp (4) = yopp
 		    ipt = 4
@@ -273,7 +283,9 @@ C
 		    xptopp (1) = xopp
 		    yptopp (1) = yopp
 		    xptopp (2) = xopp
+                    if ( abs ( dhor - dopp ) . lt. smallv ) RETURN
 		    yptopp (2) = RINTRP ( dopp, dhor, yopp, yhor )
+                    if ( abs ( dver - dopp ) . lt. smallv ) RETURN
 		    xptopp (3) = RINTRP ( dver, dopp, xver, xopp )
 		    yptopp (3) = yopp
 		    ipt = 3

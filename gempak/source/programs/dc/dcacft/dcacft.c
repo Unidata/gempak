@@ -14,7 +14,7 @@
 
 void af_dcod ( char *curtim, char *gemfil, char *pnvtbl, char *awptbl, 
                   char *prmfil, int *iadstn, int *maxtim, int *nhours, 
-                  int *iret, int, int, int, int, int );
+                  int *iret, size_t, size_t, size_t, size_t, size_t );
 
 int main ( int argc, char *argv[] )
 /************************************************************************
@@ -39,6 +39,7 @@ int main ( int argc, char *argv[] )
  * m.gamazaychikov/SAIC	07/05	Added parameters to CS of dc_gopt	*
  * H. Zeng/SAIC		07/05	Added parameters to CS of dc_gopt	*
  * L. Hinson/AWC        06/08   Added circflg parameter to dc_gopt      *
+ * SGuan-BHebbard/NCEP  06/22   Changed strlen in protos int->size_t    *	
  ***********************************************************************/
 {
 

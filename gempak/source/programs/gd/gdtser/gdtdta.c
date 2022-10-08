@@ -5,22 +5,25 @@ void gdtdtaf ( char *glevel, char *gvcord, char *gfunc,
                char *gpoint, float * grid, int *npts, char *timfnd, float *rgx,
                float *rgy,    float *rlat,   float *rlon,  float *x, float *y,
                char *parm,   int *level,  int *ivcord, int *iret,
-               int glevelsize, int gvcordsize, int gfuncsize, int gpointsize,
-               int timfndsize, int parmsize );
+               size_t glevelsize, size_t gvcordsize, 
+	       size_t gfuncsize,  size_t gpointsize,
+               size_t timfndsize, size_t parmsize );
 
 void gdtdta  ( char *glevel, char *gvcord, char *gfunc,
                char *gpoint, int *npts,   char *timfnd, float *rgx,
                float *rgy,    float *rlat,   float *rlon,  float *x, float *y,
                char *parm,   int *level,  int *ivcord, int *iret,
-               int glevelsize, int gvcordsize, int gfuncsize, int gpointsize,
-               int timfndsize, int parmsize );
+               size_t glevelsize, size_t gvcordsize,
+	       size_t gfuncsize,  size_t gpointsize,
+               size_t timfndsize, size_t parmsize );
 
 void gdtdta  ( char *glevel, char *gvcord, char *gfunc,
                char *gpoint, int *npts,   char *timfnd, float *rgx,
                float *rgy,    float *rlat,   float *rlon,  float *x, float *y,
                char *parm,   int *level,  int *ivcord, int *iret,
-               int glevelsize, int gvcordsize, int gfuncsize, int gpointsize,
-               int timfndsize, int parmsize )
+               size_t glevelsize, size_t gvcordsize, 
+	       size_t gfuncsize,  size_t gpointsize,
+               size_t timfndsize, size_t parmsize )
 /************************************************************************
  * gdtdta								*
  *									*
@@ -60,6 +63,7 @@ void gdtdta  ( char *glevel, char *gvcord, char *gfunc,
  * Log:									*
  * S. Gilbert/NCEP	 8/07						*
  * T. Piper/SAIC	03/08	Replaced cmm functions with Macros	*
+ * B. Hebbard/NCEP	08/21	Changed strlen in protos int->size_t    *
  ***********************************************************************/
 {
     int   kxy, ier;

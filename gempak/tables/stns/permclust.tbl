@@ -57,6 +57,7 @@
 !				Broomfield county/city to change perm clust from Jefferson
 !				to Boulder County.  Email Mar 4 2019.
 ! G. Grosshans/SPC	03/22	Updated WFO CRP marine zones for their March 2022 changes
+! G. Grosshans/SPC	09/22	Updated WFO PQR marine zones for their September 2022 changes
 !--------------------------------------------------------------------------
 !
 ! MARINE ZONES GREAT LAKES
@@ -131,10 +132,9 @@ OKX|Suffolk|036103+673400+673450
 !PHI|Middlesex|34023+673380
 PHI|Cape_May|34009+674310
 PHI|New_Castle|10003+674300
-PQR|Clatsop+Columbia Rvr Bar+CW|41007+612500+612100
-PQR|Pacific+Columbia Rvr Bar+CW|53049+612500+612100
-PQR|Tillamook + CW|41057 + 612500
-PQR|Lincoln + CW|41041 + 612550
+PQR|Clatsop + Colum_Rvr_Bar + CW|41007 + 612510 + 612100
+PQR|Tillamook + CW|41057 + 612520
+PQR|Lincoln + CW|41041 + 612530
 SEW|Grays_Harbor|53027+611100
 SEW|Jefferson|53031+611340+611350
 SEW|Mason|53045+611350

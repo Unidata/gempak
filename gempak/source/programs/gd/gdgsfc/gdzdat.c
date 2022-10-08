@@ -4,23 +4,23 @@
 void gdzdatf ( int *iproc, int *ipos, char *timfnd, char *gdfile, 
                char *glevel, char *gvcord, char *gfunc, char *scale, 
                char *sffile, char *sfp, float *grid, int *isffln, 
-               int *iret, int timfndsize, int gdfilesize, 
-               int glevelsize, int gvcordsize, int gfuncsize,
-               int scalesize, int sffilesize, int sfpsize );
+               int *iret, size_t timfndsize, size_t gdfilesize, 
+               size_t glevelsize, size_t gvcordsize, size_t gfuncsize,
+               size_t scalesize, size_t sffilesize, size_t sfpsize );
 
 void gdzdat ( int *iproc, int *ipos, char *timfnd, char *gdfile, 
                char *glevel, char *gvcord, char *gfunc, char *scale, 
                char *sffile, char *sfp, int *isffln, int *iret,
-               int timfndsize, int gdfilesize,  
-               int glevelsize, int gvcordsize, int gfuncsize, 
-               int scalesize, int sffilesize, int sfpsize  );
+               size_t timfndsize, size_t gdfilesize,  
+               size_t glevelsize, size_t gvcordsize, size_t gfuncsize, 
+               size_t scalesize, size_t sffilesize, size_t sfpsize  );
 
 void gdzdat ( int *iproc, int *ipos, char *timfnd, char *gdfile, 
                char *glevel, char *gvcord, char *gfunc, char *scale,
                char *sffile, char *sfp, int *isffln, int *iret, 
-               int timfndsize, int gdfilesize,
-               int glevelsize, int gvcordsize, int gfuncsize,
-               int scalesize, int sffilesize, int sfpsize )
+               size_t timfndsize, size_t gdfilesize,
+               size_t glevelsize, size_t gvcordsize, size_t gfuncsize,
+               size_t scalesize, size_t sffilesize, size_t sfpsize )
 /************************************************************************
  * gdzdat                                                               *
  *                                                                      *
@@ -52,6 +52,7 @@ void gdzdat ( int *iproc, int *ipos, char *timfnd, char *gdfile,
  * Log:                                                                 *
  * M. Li/SAIC		11/07                                           *
  * T. Piper/SAIC	03/08	Replaced cmm functions with Macros	*
+ * B. Hebbard/NCEP	08/21	Changed strlen in protos int->size_t    *
  ***********************************************************************/
 {
     int   kx, ky, kxy, ier;

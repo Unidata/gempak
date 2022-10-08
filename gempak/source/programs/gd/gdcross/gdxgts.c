@@ -3,15 +3,15 @@
 
 void gdxgtsf ( char *time, int *ivcord, float *rgx, float *rgy, int *nhxs, 
                float *grid, float *vclsfc, int *havsfc, char *parm, int *iret,
-               int timesize, int parmsize );
+               size_t timesize, size_t parmsize );
 
 void gdxgts  ( char *time, int *ivcord, float *rgx, float *rgy, int *nhxs, 
                float *vclsfc, int *havsfc, char *parm, int *iret,
-               int timesize, int parmsize );
+               size_t timesize, size_t parmsize );
 
 void gdxgts  ( char *time, int *ivcord, float *rgx, float *rgy, int *nhxs, 
                float *vclsfc, int *havsfc, char *parm, int *iret,
-               int timesize, int parmsize )
+               size_t timesize, size_t parmsize )
 /************************************************************************
  * gdxgts								*
  *									*
@@ -43,6 +43,7 @@ void gdxgts  ( char *time, int *ivcord, float *rgx, float *rgy, int *nhxs,
  * S. Gilbert/NCEP       8/07   					*
  * S. Jacobs/NCEP	02/08	Set grid size as LLMXGD			*
  * T. Piper/SAIC	03/08	Replace cmm functions with Macros	*
+ * B. Hebbard/NCEP	08/21	Changed strlen in protos int->size_t    *
  ***********************************************************************/
 {
     int   kx, ky, kxy, ier;

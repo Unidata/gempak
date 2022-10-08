@@ -5,22 +5,22 @@ void gdpdtaf ( int *iflno, char *gdatim, char *gvcord, char *gfunc,
                char *gpoint, char *time, int *ivcord, float *ystrt,
                float *ystop, float *grid, float *rgx, float *rgy, float *rlat,
                float *rlon, int *npts, float *x, float *y, char *parm, 
-               int *iret, int gdatimsize, int gvcordsize, int gfuncsize,
-               int gpointsize, int timesize, int parmsize );
+               int *iret, size_t gdatimsize, size_t gvcordsize, size_t gfuncsize,
+               size_t gpointsize, size_t timesize, size_t parmsize );
 
 void gdpdta  ( int *iflno, char *gdatim, char *gvcord, char *gfunc, 
                char *gpoint, char *time, int *ivcord, float *ystrt,
                float *ystop, float *rgx, float *rgy, float *rlat,
                float *rlon, int *npts, float *x, float *y, char *parm, 
-               int *iret, int gdatimsize, int gvcordsize, int gfuncsize,
-               int gpointsize, int timesize, int parmsize );
+               int *iret, size_t gdatimsize, size_t gvcordsize, size_t gfuncsize,
+               size_t gpointsize, size_t timesize, size_t parmsize );
 
 void gdpdta  ( int *iflno, char *gdatim, char *gvcord, char *gfunc, 
                char *gpoint, char *time, int *ivcord, float *ystrt,
                float *ystop, float *rgx, float *rgy, float *rlat,
                float *rlon, int *npts, float *x, float *y, char *parm, 
-               int *iret, int gdatimsize, int gvcordsize, int gfuncsize,
-               int gpointsize, int timesize, int parmsize )
+               int *iret, size_t gdatimsize, size_t gvcordsize, size_t gfuncsize,
+               size_t gpointsize, size_t timesize, size_t parmsize )
 /************************************************************************
  * gdpdta								*
  *									*
@@ -63,6 +63,7 @@ void gdpdta  ( int *iflno, char *gdatim, char *gvcord, char *gfunc,
  * S. Gilbert/NCEP	08/07						*
  * S. Jacobs/NCEP	02/08	Set grid size as LLMXGD			*
  * T. Piper/SAIC	03/08	Replaced cmm functions with Macros	*
+ * B. Hebbard/NCEP	08/21	Changed strlen in protos int->size_t    *
  ***********************************************************************/
 {
 

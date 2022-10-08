@@ -5,12 +5,12 @@ void gclgrnf ( int *kx, int *ky, float *grid, int *ioffx, int *ioffy,
                int *iskip, int *nlvl, float *clvl, char *clbl, 
                int *icolr, int *lintyp, int *linwid, int *linlbl, 
      	       int *scflag, float *zgrid, int *jhline, int*jvline,
-               int *iret, int strsize );
+               int *iret, size_t strsize );
 
 void gclgrn  ( int *kx, int *ky, float *grid, int *ioffx, int *ioffy, 
                int *iskip, int *nlvl, float *clvl, char *clbl, 
                int *icolr, int *lintyp, int *linwid, int *linlbl, 
-     	       int *scflag, int *iret, int strsize )
+     	       int *scflag, int *iret, size_t strsize )
 /************************************************************************
  * gclgrn								*
  * 									*

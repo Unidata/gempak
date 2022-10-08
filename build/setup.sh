@@ -1,6 +1,7 @@
 #!/bin/sh -xe
 # ./setup.sh centos 7
-# ./setup.sh centos 6
+# ./setup.sh centos stream8
+# ./setup.sh centos stream9
 # ./setup.sh fedora latest
 # ./setup.sh ubuntu latest
 
@@ -17,24 +18,14 @@ if [ "$os_type" = "dev" ]; then
 
 elif [ "$os_type" = "centos" ]; then
 
-    if [ "$os_version" = "container" ]; then
-
-        sudo docker build -t unidata/gempak-devel:centos6 -f build/docker/Dockerfile.gempak build/docker
-
-    elif [ "$os_version" = "6" ]; then
-
-        sudo docker run --rm=true -v `pwd`:/gempak:rw unidata/gempak-devel:$TAG /bin/bash -c "bash -xe /gempak/build/build_${os_type}.sh ${os_version}"
-
-    elif [ "$os_version" = "7" ]; then
-
-        sudo docker run --privileged -d -ti -e "container=docker" -v `pwd`:/gempak:rw unidata/gempak-devel:$TAG /usr/sbin/init
+        sudo docker run --privileged -d -ti -e "container=docker" -v `pwd`:/gempak:rw quay.io/centos/centos:$os_version /bin/bash
         DOCKER_CONTAINER_ID=$(sudo docker ps | grep ${os_version} | awk '{print $1}' | head -1 )
         sudo docker logs $DOCKER_CONTAINER_ID
         sudo docker exec --tty $DOCKER_CONTAINER_ID /bin/bash -xec "bash -xe /gempak/build/build_${os_type}.sh ${os_version}";
         sudo docker ps -a
         sudo docker stop $DOCKER_CONTAINER_ID
         sudo docker rm -v $DOCKER_CONTAINER_ID
-    fi
+
 elif [ "$os_type" = "ubuntu" ]; then
 
     sudo docker run --rm=true -v `pwd`:/gempak:rw unidata/gempak-devel:$os_type /bin/bash -c "bash -xe /gempak/build/build_${os_type}.sh "

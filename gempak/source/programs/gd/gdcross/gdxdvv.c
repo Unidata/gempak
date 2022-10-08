@@ -6,25 +6,25 @@ void gdxdvvf ( int *iflno, char *gdatim, char *gvcord, float *ystrt,
                float *rgx, float *rgy, int *nhxs, float *gridu, float *gridv, 
                float *rlvl, float *ugrd, 
                float *vgrd, float *ponth, int *nvxs, char *parmu, char *parmv, 
-               int *lvert, int *lscal, int *iret, int gdatimsize, 
-               int gvcordsize, int gvecxsize, int timesize, int parmusize, 
-               int parmvsize );
+               int *lvert, int *lscal, int *iret, size_t gdatimsize, 
+               size_t gvcordsize, size_t gvecxsize, size_t timesize, size_t parmusize, 
+               size_t parmvsize );
 
 void gdxdvv  ( int *iflno, char *gdatim, char *gvcord, float *ystrt,
                float *ystop, char *gvecx, char *time, int *ivcord, 
                float *rgx, float *rgy, int *nhxs, float *rlvl, float *ugrd, 
                float *vgrd, float *ponth, int *nvxs, char *parmu, char *parmv, 
-               int *lvert, int *lscal, int *iret, int gdatimsize, 
-               int gvcordsize, int gvecxsize, int timesize, int parmusize, 
-               int parmvsize );
+               int *lvert, int *lscal, int *iret, size_t gdatimsize, 
+               size_t gvcordsize, size_t gvecxsize, size_t timesize, size_t parmusize, 
+               size_t parmvsize );
 
 void gdxdvv  ( int *iflno, char *gdatim, char *gvcord, float *ystrt,
                float *ystop, char *gvecx, char *time, int *ivcord, 
                float *rgx, float *rgy, int *nhxs, float *rlvl, float *ugrd, 
                float *vgrd, float *ponth, int *nvxs, char *parmu, char *parmv, 
-               int *lvert, int *lscal, int *iret, int gdatimsize, 
-               int gvcordsize, int gvecxsize, int timesize, int parmusize, 
-               int parmvsize )
+               int *lvert, int *lscal, int *iret, size_t gdatimsize, 
+               size_t gvcordsize, size_t gvecxsize, size_t timesize, size_t parmusize, 
+               size_t parmvsize )
 /************************************************************************
  * gdxdvv								*
  *									*
@@ -73,6 +73,7 @@ void gdxdvv  ( int *iflno, char *gdatim, char *gvcord, float *ystrt,
  * S. Gilbert/NCEP       8/07   					*
  * S. Jacobs/NCEP	02/08	Set grid size as LLMXGD			*
  * T. Piper/SAIC	03/08	Replaced cmm functions with Macros	*
+ * B. Hebbard/NCEP	08/21	Changed strlen in protos int->size_t    *
  ***********************************************************************/
 {
     int   kx, ky, kxy, ier;
