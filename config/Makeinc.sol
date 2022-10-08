@@ -26,7 +26,7 @@ export echo=echo
 
 
 INSTALL = /usr/ucb/install -s
-AUXINSTALL = /usr/ucb/install
+AUXINSTALL = cp
 
 SYSLIBS = -lm -lsocket -lnsl -lgen
 #PURIFY = purify -best-effort
