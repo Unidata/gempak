@@ -1,6 +1,18 @@
 <!-- markdownlint-configure-file {"MD024": { "siblings_only": true } } -->
 # Unidata Community GEMPAK Change Log
 
+## 7.15.1 (8 Oct 2022)
+
+This release merges upstream NCEP NAWIPS 7.15.1, whose CHANGELOG includes:
+
+- Build fixes on RHEL 8.
+- GOES18 table additions.
+
+This release also includes the following GEMPAK Community changes:
+
+- Continued table cleanups.
+- Build cleanups and fixes.
+
 ## 7.15.0 (25 May 2022)
 
 This release merges upstream NCEP NAWIPS 7.15.0, whose CHANGELOG includes:
