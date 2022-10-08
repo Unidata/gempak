@@ -30,7 +30,7 @@ MOTIFLIBS = -lXm
 MOTIFINC  = 
 XWINCDIR  = 
 INSTALL = install -i -s
-AUXINSTALL = install -i
+AUXINSTALL = cp
 
 SYSLIBS = -lm
 CSYSLIB = -lm

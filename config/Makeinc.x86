@@ -23,7 +23,7 @@ FFLAGS = $(FOPT)
 LDM_FLAGS = -D_DEV_CONSLOG
 
 INSTALL = /usr/ucb/install -s
-AUXINSTALL = /usr/ucb/install
+AUXINSTALL = cp
 
 SYSLIBS = -lm -lsocket -lnsl -lgen 
 CSYSLIB = -lm -lsocket -lnsl -lgen

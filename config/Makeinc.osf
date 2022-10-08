@@ -23,7 +23,7 @@ MOTIFLIBS = -lXm
 
 
 INSTALL = installbsd -c -s
-AUXINSTALL = installbsd -c
+AUXINSTALL = cp
 
 # The following line will allow the system to pause 1 second before
 # trying to access the archive files being built to work around the
