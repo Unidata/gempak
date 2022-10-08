@@ -25,7 +25,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        OS_VERSION: ["7", "stream8", "stream9"]
+        OS_VERSION: ["7", "stream8"]
     env:
       OS_VERSION: ${{ matrix.OS_VERSION }}
       OS_TYPE: "centos"
