@@ -1,0 +1,26 @@
+<!doctype html><head><title>GEMPAK Help: vcoord</title></head><body>
+<a href=../../help_and_documentation>GEMPAK Manual</a> | 
+<a href=../prog/>Programs</a> | <a href=../parm/>Parameters</a><br><hr>
+<pre>
+     VCOORD
+
+     VCOORD specifies the vertical coordinate system of the levels to 
+     process.  Currently, there are four coordinates:
+
+	NONE	=	surface data only
+	PRES	=	pressure
+	THTA	=	theta (isentropic)
+	HGHT	=	height
+
+     A list or range of levels will be based on the vertical coordinate 
+     type, with the exception of MAN or VAS which always refer to a 
+     pressure coordinate system.
+
+     Note that data are ignored within superadiabatic layers found working 
+     upwards from the surface when interpolations are performed to 
+     isentropic coordinates.
+
+</pre>
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

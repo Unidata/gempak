@@ -1,0 +1,233 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="md.css" type="text/css">
+
+<title>5. GPMAP Overview</title>
+
+</head>
+<body>
+<blockquote><p><a href=/gempak/tutorial/>GEMPAK Online Tutorial</a></p></blockquote>
+
+<h1>5. GPMAP Overview</h1>
+
+<p><code>gpmap</code> draws a map for a specified graphics area.  Plots may be drawn in any GEMPAK projection and may be overlaid on images, similar as with <code>sfmap</code>, <code>gpmap</code> can display various types of graphics products including:</p>
+
+<ol>
+<li>AWIPS</li>
+<li>AFOS</li>
+<li>watches and warnings</li>
+<li>tropical or hurricane storm tracks</li>
+<li>international SIGMETs</li>
+<li>lightning</li>
+<li><code>ATCF</code> tracks</li>
+<li>airmets</li>
+<li>non-convective sigmets</li>
+<li>severe local storm watches</li>
+<li>winter storm warning, watch and advisories</li>
+<li>convective sigmets</li>
+<li>ensemble cyclone tracks</li>
+</ol>
+
+
+<p>Images are animated if more than one image file is specified in
+<code>SATFIL</code> or <code>RADFIL</code>.  Images are sampled to correspond to the
+geographic area specified by <code>GAREA</code>.</p>
+
+<p><a name="5.1"></a></p>
+
+<h2>GPMAP Input Parameters</h2>
+
+<pre>
+<a href=/gempak/man/parm/map.html>MAP</a>       Map color/dash/width/filter flag
+<a href=/gempak/man/parm/mscale.html>MSCALE</a>    fgc;bgc;mask/units/lat;hide/values/anch/x;y/ln;wd/freq|text_info|t
+<a href=/gempak/man/parm/garea.html>GAREA</a>     Graphics area
+<a href=/gempak/man/parm/proj.html>PROJ</a>      Map projection/angles/margins|drop flag
+<a href=/gempak/man/parm/satfil.html>SATFIL</a>    Satellite image filename(s)
+<a href=/gempak/man/parm/radilf.html>RADFIL</a>    Radar image filename(s)
+<a href=/gempak/man/parm/imcbar.html>IMCBAR</a>    Color/ornt/anch/x;y/ln;wd/freq
+<a href=/gempak/man/parm/latlon.html>LATLON</a>    Line color/dash/width/freq/inc/label/format
+<a href=/gempak/man/parm/panel.html>PANEL</a>     Panel loc/color/dash/width/regn
+<a href=/gempak/man/parm/title.html>TITLE</a>     Title color/line/title
+<a href=/gempak/man/parm/text.html>TEXT</a>      Size/fnt/wdth/brdr/N-rot/just/hw flg
+<a href=/gempak/man/parm/clear.html>CLEAR</a>     Clear screen flag
+<a href=/gempak/man/parm/device.html>DEVICE</a>    Device|name|x size;y size|color type
+<a href=/gempak/man/parm/lutfil.html>LUTFIL</a>    Enhancement lookup table filename
+<a href=/gempak/man/parm/stnplt.html>STNPLT</a>    Txtc/txt attr|marker attr|stnfil#col
+<a href=/gempak/man/parm/vgfile.html>VGFILE</a>    Vgfile | scale file | attribute file | filter
+<a href=/gempak/man/parm/afosfl.html>AFOSFL</a>    AFOS Graphics File
+<a href=/gempak/man/parm/awpsfl.html>AWPSFL</a>    AWIPS Graphics File
+<a href=/gempak/man/parm/line.html>LINE</a>      Color/type/width/label/smth/fltr/scflg
+<a href=/gempak/man/parm/watch.html>WATCH</a>     End time|Wtch clrs|Wtch Tm;Status Ln Tm|Watch Num;
+<a href=/gempak/man/parm/warn.html>WARN</a>      End time|TS;TN;FF clrs|Tm|Lb|Outline|Poly
+<a href=/gempak/man/parm/hrcn.html>HRCN</a>      End time|colors|syms|Tm|Lb|Mt|Qw|F12|F24|F36|F48|F72|F96|F120|Name
+<a href=/gempak/man/parm/isig.html>ISIG</a>      End time|colors|Sym|Tm|Id|Mv|Fl
+<a href=/gempak/man/parm/ltng.html>LTNG</a>      End time|time ints/colors|markers
+<a href=/gempak/man/parm/atcf.html>ATCF</a>      Time|colors|models|Tm|Id|Mv|Mkr|Name
+<a href=/gempak/man/parm/airm.html>AIRM</a>      Airmet Plotting Attributes
+<a href=/gempak/man/parm/gairm.html>GAIRM</a>     GAirmet Plotting Attributes
+<a href=/gempak/man/parm/ncon.html>NCON</a>      NCON attributes
+<a href=/gempak/man/parm/csig.html>CSIG</a>      End time|0_Hr;1_Hr;2_Hr;OL clrs|Seq0|Tm|Mv|Fl|Insty|Seq1|Seq2
+<a href=/gempak/man/parm/svrl.html>SVRL</a>      End time|SVRL clrs|Tm|Lb|Outline|Clr
+<a href=/gempak/man/parm/bnd.html>BND</a>       Bnd name/color/fillsiz/fillpat/filt/minpts!lincol/linpat/linwid!mr
+<a href=/gempak/man/parm/tcmg.html>TCMG</a>      End time|colors|center
+<a href=/gempak/man/parm/qsct.html>QSCT</a>      QuickScat Plotting Attributes
+<a href=/gempak/man/parm/wstm.html>WSTM</a>      End time|WN;WT;AD clrs|Tm|Lb|Outline/WN;WT;AD lwidth
+<a href=/gempak/man/parm/wou.html>WOU</a>       End time|Mrkr and Otln clrs|Tm|Lb|Wt|Clr|Mrkr|Otln|Fill/Fill clrs|
+<a href=/gempak/man/parm/wcn.html>WCN</a>       End time|Mrkr and Otln clrs|Tm|Lb|Wt|Clr|Mrkr|Otln|Fill/Fill clrs|
+<a href=/gempak/man/parm/wcp.html>WCP</a>       End time|Wtch clrs|Tm|Lb|Clr
+<a href=/gempak/man/parm/ency.html>ENCY</a>      Time|colors|models|Tm|Prs|Mkr|Ccd;wlevs|Fcst_Hour
+<a href=/gempak/man/parm/ffa.html>FFA</a>       End time|FF;FA clrs|Tm|Lb|Ic|Outline/FF;FA lwidth
+<a href=/gempak/man/parm/wsat.html>WSAT</a>      WindSAT Plotting Attributes
+<a href=/gempak/man/parm/asct.html>ASCT</a>      AScat Plotting Attributes
+<a href=/gempak/man/parm/trak1.html>TRAK1</a>     Jason-1 Ground Track Prediction Plotting Attributes
+<a href=/gempak/man/parm/trake.html>TRAKE</a>     ENVISAT Ground Track Prediction Plotting Attributes
+<a href=/gempak/man/parm/trak2.html>TRAK2</a>     Jason-2 Ground Track Prediction Plotting Attributes
+<a href=/gempak/man/parm/osct.html>OSCT</a>      OScat Plotting Attributes
+<a href=/gempak/man/parm/sgwh.html>SGWH</a>      Significant Wave Heights Plotting Attributes
+<a href=/gempak/man/parm/asdi.html>ASDI</a>      End time|Mode|DepArr|time increment/clrs or ht range/clrs|time lmt
+</pre>
+
+
+<p><a name="5.2"></a></p>
+
+<h2>Exercise #6 (NIDS Display)</h2>
+
+<p>Display the current NIDS Base Reflectivity image overlain with county boundaries and interstates</p>
+
+<ol>
+<li><p>Begin by finding the latest NIDS file for KFTG (Front Range Airport, near Denver):</p>
+
+<pre><code> ls $GEMDATA/nexrad/NIDS/FTG/N0Q/ | tail -1
+ N0Q_20121030_0005
+</code></pre></li>
+<li><p>set <code>RADFIL</code> to this latest file available (full path name), set projection to use to radar file, set the graphics area to the entire set:</p>
+
+<pre><code> radfil = $GEMDATA/nexrad/NIDS/FTG/N0Q/N0Q_20121030_0005
+ proj   = rad
+ garea  = dset
+ map    = 1
+ lutfil = default
+ imcbar = 1
+</code></pre></li>
+<li><p>After running <code>gpmap</code> to check that the reflectivity scan shows correctly, define the <code>$mapfil</code> variable to add roads and county boundaries, and define <code>map</code> to specify different colors for each map:</p>
+
+<pre><code> $mapfil = hicnus.nws + hiisus.nws + hiuhus.nws + hipowo.cia 
+ map     = 23         + 15/1/2     + 14/1/1     + 1/1/1
+ GEMPAK-GPMAP&gt;r
+</code></pre></li>
+</ol>
+
+
+<p><img src="gpmap1.gif" alt="image" /></p>
+
+<p><a name="5.3"></a></p>
+
+<h2>What is this $MAPFIL Variable?</h2>
+
+<p>You won't find this variable on any user interface, it is a <strong>hidden variable</strong>. Why? Good question.</p>
+
+<p><code>$MAPFIL</code> defaults to a medium-resolution political boundary map of the world (countries and states), caled <code>HIPOWO.CIA</code>.  Alternate maps, such as lakes, rivers and more detailed political boundaries, can be called as well.</p>
+
+<p>The mapfiles themselves are located in the directory <code>$GEMMAPS</code>.  The higher the resolution of the map, the longer it takes to draw (best to use low-res for global maps).</p>
+
+<p>You can specify multiple map files using the <code>+</code> character to separate each file name:</p>
+
+<pre><code>$MAPFIL = file1 + file2 + .... + fileN
+</code></pre>
+
+<p>The map files are named by concatenating the <strong>resolution</strong>, <strong>map boundaries</strong>, and <strong>area</strong> with the three-letter source file type. For example, the medium-resolution political world map from GSFC is called <code>MEPOWO.GSF</code> (<code>ME</code> = medium, <code>PO</code> = political boundaries, <code>WO</code> = world).</p>
+
+<blockquote><p><img src=warning.gif width=30 align=left> GEMPAK will "remember" the last map file used. If you forgot to reset <code>$MAPFIL</code> after some customization, the GEMPAK program will use the last definition you entered (on everything).</p></blockquote>
+
+<p>We will explore mapfiles again in this tutorial, but for now, while still in <code>gpmap</code>, reset the mapfile to the default:</p>
+
+<pre><code>$mapfil = hipowo.cia
+</code></pre>
+
+<p><a name="5.4"></a></p>
+
+<h2>Exercise #7 (Watches and Warnings)</h2>
+
+<p>Using the latest visible satellite image, display
+    the latest watches, warnings, international SIGMETs, lightning,
+    ATCF tracks, airmets and non-convective and convective sigmets,
+    SLS watches, winter storm messages, and all tropical
+    disturbances.</p>
+
+<p>Be sure that <code>SATFIL</code> is defined correctly!</p>
+
+<pre><code> MAP      = 1/7
+ MSCALE   = 0
+ GAREA    = us
+ PROJ     = sat
+ SATFIL   = $SAT/EAST-CONUS/1km/VIS/VIS_20121029_2132
+ RADFIL   =  
+ IMCBAR   =  
+ LATLON   =  
+ PANEL    = 0
+ TITLE    = 1
+ TEXT     = 1
+ CLEAR    = y
+ DEVICE   = xw
+ LUTFIL   =  
+ STNPLT   =  
+ VGFILE   =  
+ AFOSFL   =  
+ AWPSFL   =  
+ LINE     =  
+ WATCH    = last
+ WARN     = last
+ HRCN     = all
+ ISIG     = last
+ LTNG     = last
+ ATCF     = last
+ AIRM     = last
+ GAIRM    =  
+ NCON     = last
+ CSIG     = last
+ SVRL     = last
+ BND      =  
+ TCMG     =  
+ QSCT     =  
+ WSTM     = last
+ WOU      =  
+ WCN      =  
+ WCP      =  
+ ENCY     =  
+ FFA      =  
+ WSAT     =  
+ ASCT     =  
+ TRAK1    =  
+ TRAKE    =  
+ TRAK2    =  
+</code></pre>
+
+<p><img src="gpmap3.gif" alt="image" /></p>
+
+<ol>
+<li><code>WATCH</code> sets the ending time and the colors for plotting the watches.</li>
+<li><code>WARN</code> sets the ending time and the colors for plotting warnings.</li>
+<li><code>WSTM</code> sets the ending time and the colors for plotting winter storm warning, watch, and advisory.</li>
+<li><code>FFA</code> sets the ending time and the colors for plotting flash flood and areal flood watches.</li>
+<li><code>CSIG</code> sets the ending time and the colors for plotting convective sigmets.</li>
+<li><code>HRCN</code> sets the ending time and the colors for plotting tropical depressions, storms, and hurricane positions. Optionally, a specific storm name may be entered to display only that specific tropical disturbance.</li>
+<li><code>ISIG</code> sets the ending time and the colors for plotting international SIGMETs.</li>
+<li><code>LTNG</code> sets the ending time, time increments, colors and markers for plotting lightning data.</li>
+<li><code>ATCF</code> sets the time, models and colors for plotting <code>ATCF</code> (Automated Tropical Cyclone Forecast) tracks.  As with <code>HRCN</code>, a specific storm name may be entered.</li>
+<li><code>AIRM</code> sets the ending time and the colors for plotting airmets.</li>
+<li><code>NCON</code> sets the ending time and the colors for plotting non-convective sigmets.</li>
+<li><code>SVRL</code> sets the ending time and the colors for plotting severe local storms watches.</li>
+<li><code>WOU</code> sets the ending time and the colors for plotting the watch outline update (<code>WOU</code>).</li>
+<li><code>WCN</code> sets the ending time and the colors for plotting the watch county notification(<code>WCN</code>).</li>
+<li><code>WCP</code> sets the ending time and the colors for plotting the watch corner product.</li>
+<li><code>ENCY</code> sets the initial time, colors, model names, and date/time, pressure and marker flags for plotting of the ensemble cyclone tracks.</li>
+</ol>
+
+
+<blockquote><p><a href=/gempak/tutorial/>GEMPAK Online Tutorial</a> | <a href="map_aesthetics.html">Next: Map Aesthetics</a></p></blockquote>
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

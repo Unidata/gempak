@@ -1,0 +1,186 @@
+<!doctype html><head><title>GEMPAK Help: sfcntr</title></head><body>
+<a href=../../help_and_documentation>GEMPAK Manual</a> | 
+<a href=../prog/>Programs</a><br><hr>
+<pre>
+SFCNTR plots surface station data on a map and optionally
+       contours one of the fields being plotted.
+
+INPUT PARAMETERS
+ 
+    <a href=../parm/area.html>AREA</a>      Data area
+    <a href=../parm/garea.html>GAREA</a>     Graphics area
+    <a href=../parm/satfil.html>SATFIL</a>    Satellite image filename(s)
+    <a href=../parm/radfil.html>RADFIL</a>    Radar image filename(s)
+    <a href=../parm/sfparm.html>SFPARM</a>    Surface parameter list
+    <a href=../parm/dattim.html>DATTIM</a>    Date/time
+    <a href=../parm/sffile.html>SFFILE</a>    Surface data file
+    <a href=../parm/colors.html>COLORS</a>    Color list
+    <a href=../parm/map.html>MAP</a>       Map color/dash/width/filter flag
+    <a href=../parm/latlon.html>LATLON</a>    Line color/dash/width/label/inc
+    <a href=../parm/title.html>TITLE</a>     Title color/line/title
+    <a href=../parm/clear.html>CLEAR</a>     Clear screen flag
+    <a href=../parm/panel.html>PANEL</a>     Panel loc/color/dash/width/regn
+    <a href=../parm/device.html>DEVICE</a>    Device|name|x size;y size|color type
+    <a href=../parm/proj.html>PROJ</a>      Map projection/angles/margins|drop flag
+    <a href=../parm/filter.html>FILTER</a>    Filter data factor
+    <a href=../parm/text.html>TEXT</a>      Size/fnt/wdth/brdr/N-rot/just/hw flg
+    <a href=../parm/lutfil.html>LUTFIL</a>    Enhancement lookup table filename
+    <a href=../parm/stnplt.html>STNPLT</a>    Txtc/txt attr|marker attr|stnfil
+    <a href=../parm/clrbar.html>CLRBAR</a>    Color/ornt/anch/x;y/ln;wd/freq
+    <a href=../parm/cntrprm.html>CNTRPRM</a>   Parameter to contour
+    <a href=../parm/gamma.html>GAMMA</a>     Convergence parameter
+    <a href=../parm/weight.html>WEIGHT</a>    Barnes Weighting parameter
+    <a href=../parm/line.html>LINE</a>      Color/type/width/label/smth/fltr
+    <a href=../parm/contur.html>CONTUR</a>    Subbox/smooth
+    <a href=../parm/npass.html>NPASS</a>     Number of passes
+    <a href=../parm/cint.html>CINT</a>      Contour interval/min/max
+ 
+ 
+
+PROGRAM DESCRIPTION
+ 
+    SFCNTR is a special version of SFMAP which optionally
+    allows the user to select one of the parameters specified in
+    <a href=../parm/sfparm.html>SFPARM</a> to be contoured using Barnes objective analysis.
+
+    SFCNTR uses the mean station spacing as provided in OAGRID
+    in order to define a suitable number of gridpoints for the
+    analysis. Objective analysis is accomplished using the Barnes
+    method as given in OABSFC. Finally, contours are drawn as in
+    the GDCNTR program.
+
+    SFMAP plots data at station locations on a map.  Any
+    parameter that can be computed from the parameters in
+    the data set can be displayed.  Conditions can be specified
+    for the parameters.  The conditions are documented in the
+    <a href=../parm/sfparm.html>SFPARM</a> documentation.  Data may be plotted in any
+    valid GEMPAK projection and may be overlaid on images.
+
+    A list of times may be given in <a href=../parm/dattim.html>DATTIM</a> allowing animation of
+    surface plots.
+
+    The order of the input parameters determines their location
+    on the plot.  Parameters are separated by semicolons.  A
+    position may be skipped by entering two consecutive semicolons
+    or entering the name SPAC or BLNK.  A parameter will be
+    plotted centered at the station if it is the first parameter
+    in the list, for example, if <a href=../parm/sfparm.html>SFPARM</a> = SKYC, the sky cover symbol
+    will be plotted centered on the station location.  If no
+    parameter is to be displayed centered on the station location,
+    a semicolon must appear before the first parameter listed.
+    SPAC or BLNK may also be entered.  The following chart shows
+    the location on the model of each position.
+
+				8
+			2	10	4
+			3	1	5
+			6	11	7
+				9
+
+    Note that wind symbols and markers are always plotted at the center
+    of the station model.
+
+    If <a href=../parm/filter.html>FILTER</a> is set to YES, the stations will be filtered so that
+    overlapping stations will not be plotted.  <a href=../parm/filter.html>FILTER</a> may also be
+    entered as a number greater than or equal to zero.  <a href=../parm/filter.html>FILTER</a> = NO
+    has the same effect as <a href=../parm/filter.html>FILTER</a> = 0.  <a href=../parm/filter.html>FILTER</a> = 1 has the same
+    effect as <a href=../parm/filter.html>FILTER</a> = YES.  Values less than 1 allow more crowding
+    of stations, values exceeding 1 less crowding.  If a position
+    is skipped using two semicolons or if the parameter is BLNK, the
+    filter will not allocate the space.  The parameter SPAC may be
+    used to reserve the space with the filter option.  Then later
+    plots will plot the same stations after filtering, provided
+    that the same parameter locations are specified.
+
+    If certain stations are not to be removed by the filter, these
+    stations are listed first following an @.  The area over which
+    filtering is to occur is specified after a slash.  For example,
+
+			<a href=../parm/area.html>AREA</a>   = @bwi;iad;dca/md
+			<a href=../parm/filter.html>FILTER</a> = YES
+
+    will display a filtered array of stations over the area
+    corresponding to MD, but BWI, IAD and DCA will be shown
+    regardless of the filtering.
+
+    Weather symbols can also be plotted.  The size and width of
+    the symbols can be specified by appending the numbers to the
+    parameter name using a colon as a separator.  For example,
+    WSYM:2:5 will plot weather symbols with size of 2. and line
+    width of 5.
+
+    Other symbols can be specified in a similar way.  The names for
+    the pressure tendency, sky cover, cloud type, weather and wind
+    symbols and how their characteristics are set are given in the
+    <a href=../parm/sfparm.html>SFPARM</a> documentation.
+
+    Parameters can be color-coded based on their own value or on
+    the value of any other computable parameter.  Refer to the
+    <a href=../parm/colors.html>COLORS</a> documentation for details.  If one or more parameters
+    are color-coded, a color bar will be displayed for the first
+    color-coded parameter.
+
+    <a href=../parm/cntrprm.html>CNTRPRM</a> is the name of one of the parameters specified in <a href=../parm/sfparm.html>SFPARM</a>
+    which will be contoured from objective analysis of the data.
+    The parameter must be one listed in <a href=../parm/sfparm.html>SFPARM</a>. If the used does not
+    want the data values displayed, set COLOR=0 for that <a href=../parm/sfparm.html>SFPARM</a> value.
+
+    <a href=../parm/gamma.html>GAMMA</a> is the Barnes objective analysis convergence parameter.
+
+    <a href=../parm/weight.html>WEIGHT</a> is the Barnes weighting parameter. Typical values range from 20 to 50
+    A value of 20 is the default.
+
+    <a href=../parm/line.html>LINE</a> provides the settings for contour lines used in the display.
+
+    <a href=../parm/contur.html>CONTUR</a> is the grid sub-box and number of smoothing passes used by the
+    contouring algorithm.
+
+    <a href=../parm/npass.html>NPASS</a> is the number of passes in the Barnes scheme.
+
+    <a href=../parm/cint.html>CINT</a> is the contour interval for the display.
+
+ 
+EXAMPLES
+ 
+    1.  Plot the 12Z observerd surface temperatures (tmpf) on a US map and
+        contour the data using a contour interval of 5 degrees.
+
+	<a href=../parm/area.html>AREA</a>	 =  dset
+	<a href=../parm/garea.html>GAREA</a>	 =  nj
+	<a href=../parm/satfil.html>SATFIL</a>	 =
+	<a href=../parm/radfil.html>RADFIL</a>	 =
+	<a href=../parm/sfparm.html>SFPARM</a>	 =  tmpf
+	<a href=../parm/dattim.html>DATTIM</a>	 =  1200
+	<a href=../parm/sffile.html>SFFILE</a>	 =  metar
+	<a href=../parm/colors.html>COLORS</a>	 =  6
+	<a href=../parm/map.html>MAP</a>	 =  3/1/1
+	<a href=../parm/latlon.html>LATLON</a>	 =  0
+	<a href=../parm/title.html>TITLE</a>	 =  1
+	<a href=../parm/clear.html>CLEAR</a>	 =  yes
+	<a href=../parm/panel.html>PANEL</a>	 =  0
+	<a href=../parm/device.html>DEVICE</a>	 =  xw
+	<a href=../parm/proj.html>PROJ</a>	 =  lcc
+	<a href=../parm/filter.html>FILTER</a>	 =  n
+	<a href=../parm/text.html>TEXT</a>	 =  1/22//hw
+	<a href=../parm/lutfil.html>LUTFIL</a>   =
+	<a href=../parm/stnplt.html>STNPLT</a>   =
+	<a href=../parm/clrbar.html>CLRBAR</a>   =
+	<a href=../parm/cntrprm.html>CNTRPRM</a>  =  tmpf
+	<a href=../parm/gamma.html>GAMMA</a>    =  .3
+	<a href=../parm/weight.html>WEIGHT</a>   =  50
+	<a href=../parm/line.html>LINE</a>     =  5/1/1
+	<a href=../parm/contur.html>CONTUR</a>   =  3/3
+	<a href=../parm/npass.html>NPASS</a>    =  2
+	<a href=../parm/cint.html>CINT</a>     =  5
+
+ERROR MESSAGES
+ 
+    [SFCNTR  -1]    Fatal error initializing TAE.
+    [SFCNTR  -2]    Fatal error reading TAE parameters.
+    [SFCNTR  -3]    Fatal error initializing GEMPLT.
+    [SFCNTR  -4]    Parameter ... is not calculable.
+    [SFCNTR  -5]    Winds are not calculable.
+</pre>
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

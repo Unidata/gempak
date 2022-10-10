@@ -1,0 +1,301 @@
+<!doctype html><head><title>GEMPAK Help: gdgrib2</title></head><body>
+<a href=../../help_and_documentation>GEMPAK Manual</a> | 
+<a href=../prog/>Programs</a><br><hr>
+<pre>
+GDGRIB2 computes a scalar diagnostic grid and adds it to a
+GRIB2 file.
+
+INPUT PARAMETERS
+ 
+    <a href=../parm/gdfile.html>GDFILE</a>    Grid file
+    <a href=../parm/gbfile.html>GBFILE</a>    GRIB data file name
+    <a href=../parm/gfunc.html>GFUNC</a>     Scalar grid
+    <a href=../parm/gdattim.html>GDATTIM</a>   Grid date/time
+    <a href=../parm/glevel.html>GLEVEL</a>    Grid level
+    <a href=../parm/gvcord.html>GVCORD</a>    Grid vertical coordinate
+    <a href=../parm/proj.html>PROJ</a>      Map projection/angles/margins|drop flag
+    <a href=../parm/grdarea.html>GRDAREA</a>   Area covered by grid
+    <a href=../parm/kxky.html>KXKY</a>      Number of grid points in x;y
+    <a href=../parm/cpyfil.html>CPYFIL</a>    Grid file whose navigation is to be used in new grid file | subare
+    <a href=../parm/g2tbls.html>G2TBLS</a>    Input GRIB2 decoding tables
+    <a href=../parm/g2is.html>G2IS</a>      Info for GRIB2 Section 0 (Indicator Section)
+    <a href=../parm/g2ids.html>G2IDS</a>     Info for GRIB2 Section 1 (Identification Section)
+    <a href=../parm/g2pdt.html>G2PDT</a>     Info for GRIB2 Section 4 (Product Definition Section)
+    <a href=../parm/g2drt.html>G2DRT</a>     Packing/scaling info for GRIB2 Section 5 (Data Representation Sect
+    <a href=../parm/wmohdr.html>WMOHDR</a>    WMO_ID/Origin_ID/DDHHMM
+ 
+ 
+
+PROGRAM DESCRIPTION
+ 
+    GDGRIB2 computes a diagnostic grid and saves the result in
+    a GRIB2 file.
+
+    The input grids for the computation must be in <a href=../parm/gdfile.html>GDFILE</a>.  The
+    resulting GRIB message is added to the output file, <a href=../parm/gbfile.html>GBFILE</a>.
+    If <a href=../parm/gbfile.html>GBFILE</a> does not exist, it will be created.
+
+    The parameters <a href=../parm/g2is.html>G2IS</a>, <a href=../parm/g2ids.html>G2IDS</a>, and <a href=../parm/g2pdt.html>G2PDT</a> allow control over how the
+    grid is identified in the Indicator Section (IS), Identification Section
+    (IDS), and the Product Definition Section (PDS) of the GRIB2 message,
+    respectively.
+
+    The <a href=../parm/g2drt.html>G2DRT</a> parameter allows the user to specify the packing algorithm
+    used to encode the grid point data as well as the precision of the data
+    to maintain.  The desired precision can be specified either in terms
+    of binary precision with rounding to the nearest power of two or
+    decimal precision in terms of the number of significant digits to preserve.
+
+    A World Meteorological Organization (WMO) header may be
+    prefixed to the GRIB message by giving at least the first
+    six bytes of the header in the <a href=../parm/wmohdr.html>WMOHDR</a> input parameter.
+    Default values will be supplied for the originating center
+    (KWBC) and reference time.
+
+    GDGRIB2 will interpolate scalar fields horizontally to a
+    different output grid.  The navigation for the output grid is
+    specified using <a href=../parm/cpyfil.html>CPYFIL</a> (see below) or by setting the <a href=../parm/proj.html>PROJ</a>,
+    <a href=../parm/grdarea.html>GRDAREA</a>, and <a href=../parm/kxky.html>KXKY</a> parameters.  The Grid Description Section
+    (GDS) in the GRIB message will represent this navigation.
+
+    Do not attempt to interpolate grid-relative vector components
+    to another grid because this requires a rotation of a vector,
+    which cannot be done without both vector components and is
+    beyond the capability of the current version of GDGRIB2.  North-
+    relative components may be interpolated.  Wind direction should
+    NOT be interpolated in any case.
+
+    The output grid navigation can be specified with the <a href=../parm/cpyfil.html>CPYFIL</a> parameter.
+    <a href=../parm/cpyfil.html>CPYFIL</a> may be set to the name of a GEMPAK grid file (other than the
+    file specified in <a href=../parm/gdfile.html>GDFILE</a>), in which case the output grid is
+    interpolated to the grid whose navigation is defined in the
+    GEMPAK grid file.  If <a href=../parm/cpyfil.html>CPYFIL</a> is set to #NNN, grid number NNN is found
+    in grdnav.tbl, and that specification is used as the output navigation.
+
+    The <a href=../parm/cpyfil.html>CPYFIL</a> parameter supersedes <a href=../parm/proj.html>PROJ</a>, <a href=../parm/grdarea.html>GRDAREA</a>, and <a href=../parm/kxky.html>KXKY</a> input.
+    If <a href=../parm/cpyfil.html>CPYFIL</a> is valid, <a href=../parm/proj.html>PROJ</a>, <a href=../parm/grdarea.html>GRDAREA</a>, and <a href=../parm/kxky.html>KXKY</a> are ignored.  If
+    <a href=../parm/cpyfil.html>CPYFIL</a> is not set, <a href=../parm/proj.html>PROJ</a>, <a href=../parm/grdarea.html>GRDAREA</a>, and <a href=../parm/kxky.html>KXKY</a> will be used if they
+    are valid.
+
+    <a href=../parm/g2tbls.html>G2TBLS</a> allows for specification of the GRIB2 decoding tables.
+    The defaults are:
+
+	$GEMTBL/grid/g2varswmoX.tbl,
+	$GEMTBL/grid/g2varsYYYYZ.tbl,
+	$GEMTBL/grid/g2vcrdwmoX.tbl,
+	$GEMTBL/grid/g2vcrdYYYYZ.tbl,
+	$GEMTBL/grid/wmocenter.tbl
+
+    where X is replaced by the master table version number, which can be
+    specified in <a href=../parm/g2ids.html>G2IDS</a> (default is 2).  YYYY and Z (can also be specified
+    in parameter <a href=../parm/g2ids.html>G2IDS</a>) define the originating center and local tables
+    version, respectively.  The defaults are YYYY = "ncep" and Z = 1.
+
+ 
+EXAMPLES
+ 
+    1.  Compute the average absolute vorticity of the 250- and 300-
+        mb wind for the 24-h forecast.  Assign this to the 275-mb
+        level in the GRIB message PDT.  Also assign the appropriate
+        parameter number for absolute vorticity (AVOR).  Use decimal
+        precision to pack the data so as to preserve 4 decimal
+        significant digits.  Specify that the data source is from a
+        high resolution eta model run (generating process 110 in PDT)
+        diagnosed at the Storm Prediction Center (sub-center
+        number 9 in IDS).  Interpolate the grid to standard AWIPS grid
+        212, without using <a href=../parm/cpyfil.html>CPYFIL</a>.  Do not make a WMO header.  The output
+        is written to file hrcbob.pgrb2.
+
+        <a href=../parm/gdfile.html>GDFILE</a>   = $GEMPAK/data/hrcbob.grd
+        <a href=../parm/gbfile.html>GBFILE</a>   = hrcbob.pgrb2
+        <a href=../parm/gfunc.html>GFUNC</a>    = avg(avor(wind@300),avor(wind@250))
+        <a href=../parm/gdattim.html>GDATTIM</a>  = f24
+        <a href=../parm/glevel.html>GLEVEL</a>   = 300
+        <a href=../parm/gvcord.html>GVCORD</a>   = pres
+        <a href=../parm/proj.html>PROJ</a>     = lcc/25;-95;25
+        <a href=../parm/grdarea.html>GRDAREA</a>  = 12.190;-133.459;57.290;-49.385
+        <a href=../parm/kxky.html>KXKY</a>     = 185;129
+	<a href=../parm/cpyfil.html>CPYFIL</a>   =
+        <a href=../parm/g2tbls.html>G2TBLS</a>   =
+        <a href=../parm/g2is.html>G2IS</a>     =
+        <a href=../parm/g2ids.html>G2IDS</a>    = ;9
+        <a href=../parm/g2pdt.html>G2PDT</a>    = 0|2;10;;;110;;;;;100;0;27500;255;0;0
+        <a href=../parm/g2drt.html>G2DRT</a>    = |4
+        <a href=../parm/wmohdr.html>WMOHDR</a>   =
+
+    2.  Transfer the 24-h forecast of the 500-mb temperature grid
+        into a GRIB2 file.  Use binary precision to pack the data
+        to the nearest 1/8 K.  The output GRIB message is to be
+        added to existing file hrcbob.pgrb2.  Accept default
+        entries for the IDS and PDS, with the parameter number coming from
+        a specific lookup table (g2varswmo2.tbl) in $GEMTBL.  Also,
+        add the WMO header for 500-mb temperature destined for
+        Family of Services, and interpolate to grid 212 using <a href=../parm/cpyfil.html>CPYFIL</a>.
+
+        <a href=../parm/gdfile.html>GDFILE</a>   = $GEMPAK/data/hrcbob.grd
+        <a href=../parm/gbfile.html>GBFILE</a>   = hrcbob.pgrb2
+        <a href=../parm/gfunc.html>GFUNC</a>    = tmpk
+        <a href=../parm/gdattim.html>GDATTIM</a>  = f24
+        <a href=../parm/glevel.html>GLEVEL</a>   = 500
+        <a href=../parm/gvcord.html>GVCORD</a>   = pres
+        <a href=../parm/proj.html>PROJ</a>     =
+        <a href=../parm/grdarea.html>GRDAREA</a>  =
+        <a href=../parm/kxky.html>KXKY</a>     =
+	<a href=../parm/cpyfil.html>CPYFIL</a>   = #212
+        <a href=../parm/g2tbls.html>G2TBLS</a>   = g2varswmo2.tbl
+        <a href=../parm/g2is.html>G2IS</a>     =
+        <a href=../parm/g2ids.html>G2IDS</a>    =
+        <a href=../parm/g2pdt.html>G2PDT</a>    =
+        <a href=../parm/g2drt.html>G2DRT</a>    = ||-3
+        <a href=../parm/wmohdr.html>WMOHDR</a>   = HTRE50
+
+    3.  Transfer the tropopause temperature from a 24-h model forecast
+        into a GRIB file. Reassign the parameter and the vertical
+        coordinate name properly to treat this as a tropopause
+        temperature.  Use the default parameter lookup table for
+        the GRIB parameter (TMPK) identification number.  Use the
+        vertical coordinate table named g2vcrdwmo2.tbl in $GEMTBL to
+        lookup the vertical coordinate identification number.  Do not
+        do horizontal interpolation.  Since hrcbob.grd data is
+        already on grid #6, GDGRIB will detect this and not do
+        interpolation.  Pack grid points using first order differencing.
+
+        <a href=../parm/gdfile.html>GDFILE</a>   = $GEMPAK/data/hrcbob.grd
+        <a href=../parm/gbfile.html>GBFILE</a>   = tmpk_trop.grb2
+        <a href=../parm/gfunc.html>GFUNC</a>    = tmpktpps
+        <a href=../parm/gdattim.html>GDATTIM</a>  = f24
+        <a href=../parm/glevel.html>GLEVEL</a>   = 0
+        <a href=../parm/gvcord.html>GVCORD</a>   = none
+        <a href=../parm/proj.html>PROJ</a>     =
+        <a href=../parm/grdarea.html>GRDAREA</a>  =
+        <a href=../parm/kxky.html>KXKY</a>     =
+	<a href=../parm/cpyfil.html>CPYFIL</a>   = #6
+        <a href=../parm/g2tbls.html>G2TBLS</a>   = ;;g2vcrdwmo2.tbl
+        <a href=../parm/g2is.html>G2IS</a>     =
+        <a href=../parm/g2ids.html>G2IDS</a>    =
+        <a href=../parm/g2pdt.html>G2PDT</a>    = 0|0;0;;;;;;;;7;0;0;255;0;0
+        <a href=../parm/g2drt.html>G2DRT</a>    = 3||-3
+        <a href=../parm/wmohdr.html>WMOHDR</a>   =
+
+    4.  Transfer the 12-hour precipitation at forecast hour 18 to
+        a GRIB file.  Specifically denote the generating process
+        identifier as 84.  Interpolate to 1- by 1-degree resolution
+        global grid #3.  Note that many points on this grid will
+        have missing values.  Pack the grid to a precision of 1/4
+        millimeter using second order differencing.
+
+        <a href=../parm/gdfile.html>GDFILE</a>	= $GEMPAK/data/hrcbob.grd
+        <a href=../parm/gbfile.html>GBFILE</a>	= p12m.grb2
+        <a href=../parm/gfunc.html>GFUNC</a>	= p12m
+        <a href=../parm/gdattim.html>GDATTIM</a>	= f18
+        <a href=../parm/glevel.html>GLEVEL</a>	= 0
+        <a href=../parm/gvcord.html>GVCORD</a>	= none
+        <a href=../parm/proj.html>PROJ</a>	=
+        <a href=../parm/grdarea.html>GRDAREA</a>	=
+        <a href=../parm/kxky.html>KXKY</a>	=
+        <a href=../parm/cpyfil.html>CPYFIL</a>	= #3
+        <a href=../parm/g2tbls.html>G2TBLS</a>	=
+        <a href=../parm/g2is.html>G2IS</a>    =
+        <a href=../parm/g2ids.html>G2IDS</a>   =
+        <a href=../parm/g2pdt.html>G2PDT</a>   = 8|;;;;84
+        <a href=../parm/g2drt.html>G2DRT</a>   = 3||-2|2
+        <a href=../parm/wmohdr.html>WMOHDR</a>	=
+
+    5.  Compute an "off-time" 6-hour precipitation amount using the
+        average of two accumulations.  Identify the precip grid as a 6 hour
+        accumulation ending at 21 hours after the initial reference time.
+        Interpolate to grid 215.  Use the default packing algorithm and
+        precision.
+
+        <a href=../parm/gdfile.html>GDFILE</a>	= $GEMPAK/data/hrcbob.grd
+        <a href=../parm/gbfile.html>GBFILE</a>	= p06m.grb2
+        <a href=../parm/gfunc.html>GFUNC</a>	= avg(P06M^F24,P06M^F18)
+        <a href=../parm/gdattim.html>GDATTIM</a>	= f18
+        <a href=../parm/glevel.html>GLEVEL</a>	= 0
+        <a href=../parm/gvcord.html>GVCORD</a>	= none
+        <a href=../parm/proj.html>PROJ</a>	=
+        <a href=../parm/grdarea.html>GRDAREA</a>	=
+        <a href=../parm/kxky.html>KXKY</a>	=
+        <a href=../parm/cpyfil.html>CPYFIL</a>	= #215
+        <a href=../parm/g2tbls.html>G2TBLS</a>	=
+        <a href=../parm/g2is.html>G2IS</a>    =
+        <a href=../parm/g2ids.html>G2IDS</a>   =
+        <a href=../parm/pdsval.html>PDSVAL</a>	= P06M^19910819/0000F21
+        <a href=../parm/g2pdt.html>G2PDT</a>   = 8|1;8;;;;;;1;15;1;0;0;255;0;0;1991;8;19;21;0;0;1;0;1;255;1;6
+        <a href=../parm/g2drt.html>G2DRT</a>   =
+        <a href=../parm/wmohdr.html>WMOHDR</a>	=
+
+    6.  Transfer the 12-hour forecast of the 850-mb grid-relative
+        U-wind component to a GRIB file.  Pack the data to the
+        nearest 1/8 m/s using PNG encoding.  DO NOT INTERPOLATE!
+
+        <a href=../parm/gdfile.html>GDFILE</a>	= $GEMPAK/data/hrcbob.grd
+        <a href=../parm/gbfile.html>GBFILE</a>	= wind1.grb2
+        <a href=../parm/gfunc.html>GFUNC</a>	= urel
+        <a href=../parm/gdattim.html>GDATTIM</a>	= f12
+        <a href=../parm/glevel.html>GLEVEL</a>	= 850
+        <a href=../parm/gvcord.html>GVCORD</a>	= pres
+        <a href=../parm/proj.html>PROJ</a>	=
+        <a href=../parm/grdarea.html>GRDAREA</a>	=
+        <a href=../parm/kxky.html>KXKY</a>	=
+        <a href=../parm/cpyfil.html>CPYFIL</a>	=
+        <a href=../parm/g2tbls.html>G2TBLS</a>	=
+        <a href=../parm/g2is.html>G2IS</a>    =
+        <a href=../parm/g2ids.html>G2IDS</a>   =
+        <a href=../parm/g2pdt.html>G2PDT</a>   =
+        <a href=../parm/g2drt.html>G2DRT</a>   = 41||-3
+        <a href=../parm/wmohdr.html>WMOHDR</a>	=
+
+    7.  Complete the transfer of the 850-mb wind by transfering
+        the grid-relative V-wind component.
+
+        <a href=../parm/gdfile.html>GDFILE</a>	= $GEMPAK/data/hrcbob.grd
+        <a href=../parm/gbfile.html>GBFILE</a>	= wind1.grb2
+        <a href=../parm/gfunc.html>GFUNC</a>	= vrel
+        <a href=../parm/gdattim.html>GDATTIM</a>	= f12
+        <a href=../parm/glevel.html>GLEVEL</a>	= 850
+        <a href=../parm/gvcord.html>GVCORD</a>	= pres
+        <a href=../parm/proj.html>PROJ</a>	=
+        <a href=../parm/grdarea.html>GRDAREA</a>	=
+        <a href=../parm/kxky.html>KXKY</a>	=
+        <a href=../parm/cpyfil.html>CPYFIL</a>	=
+        <a href=../parm/g2tbls.html>G2TBLS</a>	=
+        <a href=../parm/g2is.html>G2IS</a>    =
+        <a href=../parm/g2ids.html>G2IDS</a>   =
+        <a href=../parm/g2pdt.html>G2PDT</a>   =
+        <a href=../parm/g2drt.html>G2DRT</a>   = 41||-3
+        <a href=../parm/wmohdr.html>WMOHDR</a>	=
+
+ERROR MESSAGES
+ 
+    [GDGRIB2  -1]   Fatal error initializing TAE.
+    [GDGRIB2  -2]   Fatal error reading TAE parameters.
+    [GDGRIB2  -3]   Error initializing GEMPLT.
+    [GDGRIB2  -4]   Grid file could not be opened.
+    [GDGRIB2  -6]   Grid diagnostics package initialization failed.
+    [GDGRIB2  -9]  First 6 characters of WMO header must be given.
+    [GDGRIB2 -11]   Invalid grid navigation set in <a href=../parm/proj.html>PROJ</a>.
+    [GDGRIB2 -12]   Invalid grid area set in <a href=../parm/grdarea.html>GRDAREA</a> or <a href=../parm/cpyfil.html>CPYFIL</a>.
+    [GDGRIB2 -13]   Invalid grid size.
+    [GDGRIB2 -16]   Cannot set output grid navigation.
+    [GDGRIB2 -17]   Cannot set input grid navigation.
+    [GDGRIB2 -18]   Invalid horizontal interpolation type.
+    [GDGRIB2 -19]   <a href=../parm/cpyfil.html>CPYFIL</a> entry is not valid.SAG
+    [GDGRIB2 -20]   Could not process <a href=../parm/gdattim.html>GDATTIM</a> information
+    [GDGRIB2 -21]   Could not get next Date/Time stamp.
+    [GDGRIB2 -22]   Could not get requested grid
+    [GDGRIB2 -23]   Could not allocate space for grid.
+    [GDGRIB2 -24]   Could not open output GRIB file.
+    [GDGRIB2 -25]   Error writing to output GRIB file.
+    [GDGRIB2 -26]   Could not allocate space for GRIB2 message.
+    [GDGRIB2 -27]   Error encoding GRIB2 message.
+    [GDGRIB2 -28]   Output GRIB file (<a href=../parm/gbfile.html>GBFILE</a>) not specified.
+    [GDGRIB2 -29]   Invalid <a href=../parm/g2pdt.html>G2PDT</a> parameter.
+    [GDGRIB2 -30]   Could not read grid in <a href=../parm/cpyfil.html>CPYFIL</a> from grdnav.tbl
+    [GDGRIB2 -31]   Could not open grid file specified in <a href=../parm/cpyfil.html>CPYFIL</a>.
+    [GDGRIB2 -32]   Error setting output grid navigation
+    [GDGRIB2 -33]   Error creating navigation block from <a href=../parm/proj.html>PROJ</a>, <a href=../parm/kxky.html>KXKY</a>, <a href=../parm/grdarea.html>GRDAREA</a>
+</pre>
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

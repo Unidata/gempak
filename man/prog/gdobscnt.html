@@ -1,0 +1,46 @@
+<!doctype html><head><title>GEMPAK Help: gdobscnt</title></head><body>
+<a href=../../help_and_documentation>GEMPAK Manual</a> | 
+<a href=../prog/>Programs</a><br><hr>
+<pre>
+GDOBSCNT creates a gridded sampling of the number of surface observations
+within a specified radius of each grid point.
+
+INPUT PARAMETERS
+ 
+    <a href=../parm/sffile.html>SFFILE</a>    Surface data file
+    <a href=../parm/gdfile.html>GDFILE</a>    Grid file
+    <a href=../parm/radius.html>RADIUS</a>    Radius (in meters) to search
+ 
+ 
+
+PROGRAM DESCRIPTION
+ 
+   GDOBSCNT produces a grid for each time found in a surface file.
+
+   <a href=../parm/sffile.html>SFFILE</a> specifies the input surface file. Each station in the
+   surface file will be checked to see if it is within the
+   specified radius of every grid point in the output grid file.
+
+   <a href=../parm/gdfile.html>GDFILE</a> specifies the output grid file. It must already exist.
+
+   <a href=../parm/radius.html>RADIUS</a> is the distance in meters for which a surface station
+   will contribute to the observed density at a grid point.
+
+
+EXAMPLES
+ 
+    1.  Create a grid for each time within the NLDN lightning file
+        showing the number of strikes within 50km of each grid point.
+        The grid file (obs.grd) has already been created with GDCFIL.
+
+        <a href=../parm/sffile.html>SFFILE</a>   = nldn
+        <a href=../parm/gdfile.html>GDFILE</a>   = obs.grd
+        <a href=../parm/radius.html>RADIUS</a>   = 50000
+
+ERROR MESSAGES
+
+        [GDOBSCNT  0]    Using: 
+</pre>
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

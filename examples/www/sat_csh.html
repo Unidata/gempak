@@ -1,0 +1,52 @@
+<body>
+<title>IR Satellite gifs</title>
+<pre>
+#!/bin/csh -f
+setenv DISPLAY unix:0
+source $NAWIPS/Gemenviron
+
+#
+# GOES8 variable set in Gemenviron
+#   GOES images follow NSAT naming convention
+#     Platform/Resolution/type_yymmdd_hhmm
+#
+cd $GOES8/8km
+#
+set CURRENT_SAT=`ls IR_* | tail -10`
+
+# generate gifs in /tmp
+cd /tmp
+
+if(-e sat.gif ) then
+   rm -f sat.gif*
+endif
+
+foreach FILE ($CURRENT_SAT)
+
+gpmap << EOF
+MAP      = 1
+TITLE    = 1/-2/
+DEVICE   = gf|sat.gif|350;300
+SATFIL   = $GOES8/8km/$FILE
+RADFIL   = 
+PROJ     = sat
+GAREA    = usnps
+CLEAR    = y
+PANEL    = 0
+TEXT     = 1.2/23/1/hw
+LATLON   = 0
+\$mapfil = hipowo.gsf
+r
+
+e
+EOF
+
+gpend
+
+end
+
+
+</pre>
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

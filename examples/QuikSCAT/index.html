@@ -1,0 +1,94 @@
+<HTML><HEAD><TITLE>GEMPAK QuikSCAT Examples</TITLE>
+<META NAME="BOOKMARK" CONTENT="GEMPAK QuikSCAT Examples">
+<META NAME="AUTHOR" CONTENT="Steve Chiswell">
+<META NAME="KEYWORDS" CONTENT="Software, GEMPAK, Examples, QuikSCAT">
+<META NAME="DESCRIPTION" CONTENT="GEMPAK QuikSCAT Examples.">
+</HEAD><BODY>
+
+
+<TABLE width="100%" border=0> 
+  <TR>
+    <TD valign=top><IMG SRC="../../tutorial/images/world_small.gif" width=150></TD>
+    <TD align="left"> 
+        <H1>GEMPAK / N-AWIPS</H1>
+        <h2>QuikSCAT display </h2>
+    </TD>
+  </TR>
+</TABLE>
+
+QuikSCAT data may be displayed using either NMAP2 or GPMAP. For sites receiving the
+BUFR format products available via NOAAPORT, the <font color=#800000>QBUF</font>
+data type is used. A 6 hour time window is used to select passes for display.
+<p>
+<img src="nmap2_qbuf.gif">
+<p>
+
+A general tutorial on the background and use of QuikSCAT winds and scatterometry
+can be found in the
+<a href="https://www.cira.colostate.edu/ramm/visit/qswinds.html">VISIT QuikSCAT tutorial</a>.
+
+<h3>Configure the LDM to store QuikSCAT BUFR products</h3>
+
+The following pattern/action lines, as provided in the GEMPAK pqact entries for 
+the LDM, are used to store the QuikSCAT BUFR data products data from the NOAAPORT IDD data stream. 
+<br>
+<pre>
+HRS	^ISXX(..) KNES ([0-3][0-9])([0-2][0-9])([0-6][0-9])
+	FILE	data/gempak/qsct/(\2:yyyy)(\2:mm)\2\3.bufr
+</pre>
+
+<h3>Setting the GEMPAK file template</h3>
+
+The QBUF data template is used in $GEMTBL/config/datatype.tbl
+to define the naming convention which matches the above LDM pattern/action:<br>
+<pre>
+QBUF         $GEMDATA/qsct             YYYYMMDDHH.bufr           CAT_MSC  SCAT_NIL   -1   2880    300
+</pre>
+<p>
+If you use the suggested LDM pattern action above, then you will not have to
+make any modifications to the supplied template.
+
+<h3>Displaying QuikSCAT winds in NMAP2</h3>
+QuikSCAT winds are selected using the MISC data selection menu in NMAP2.
+Select QBUF from the MISC menu to display the BUFR products from NOAAPORT.
+<p>
+<table>
+<tr>
+   <td><img src="attributes.gif"></td>
+   <td valign="TOP">Plot attributes may be configured by selecting
+	<b>EDIT SOURCE</b> in the data display menu.
+      <ul>
+      <li>Wind data may be displayed as wind speed color coded wind barbs, directional arrows, or magnitude propotional vectors.
+	select the "Arrw/Barb" menu to configure the symbol type and size.
+
+      <li>The wind speed color and data range are set by defaults in $GEMTBL/config/miscset.tbl as shown. These
+	values may be changed in the GUI interactively. The Wind speed unit used for color ranges is in knots.
+	 
+      <li>The QuikSCAT BUFR data provides QC flags allowing the user to configure display of the wind data. <p>
+      The QC flags may be used to plot data when the following flag conditions are present:
+	<ul>
+	   <li>High Wind Speed in excess of 30 m/s
+	   <li>Low Wind Speed below 3 m/s
+	   <li>Rain present
+           <li>Data Availability limited due to ice, land, or retrieval conditions
+	</ul> 
+	<p>
+	If the 2nd color for Rain box is selected and data is plotted when the Rain Flag is present, the 2nd column color is used. This option has no effect if the wind data are not being plotted when the Rain Flag is present.
+      </ul>
+   </td>
+</tr>
+</table>
+<p>
+<a href="nmap2_qbuf_goes10.gif"><img src="nmap2_qbuf_goes10_sm.gif"></a>
+<center>Example showing color coded directional arrpws overlaid on GOES-10 IR image</center>
+<h3>Displaying QuikSCAT Winds in GPMAP</h3>
+The <b>QSCT</b> parameter is used to select display of QuikSCAT winds in GPMAP.
+Use the datatype QBUF and provide the wind speed ranges, colors and display flags as
+defined in the QSCT parameter definition. A suitable definition for QSCT is:
+<pre>
+QSCT = qbuf|last|6;12;18;24;30;36;42;48;54;60|30;6;26;24;21;23;5;17;8;14|31;31;31;31;31;31;31;31;31;31|.2;.4;1;5|0|1|1|Y|Y|Y|Y|Y
+</pre>
+
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</HTML>

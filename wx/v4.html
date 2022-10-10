@@ -1,0 +1,136 @@
+
+<html>
+<head>
+</head>
+
+
+
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script> 
+<link type="text/css" href="v4/jquery-ui-1.8.16.custom.css" rel="Stylesheet" />	
+<script type="text/javascript" src="v4/jquery-1.6.2.min.js"></script>
+<script type="text/javascript" src="v4/jquery-ui-1.8.16.custom.min.js"></script>
+<script type="text/javascript" src="v4/main.js"></script>
+<script type="text/javascript" src="v4/RadarMapType.js"></script>
+<script type="text/javascript" src="v4/GoogleroadsMapType.js"></script>
+<script type="text/javascript" src="v4/countyMapType.js"></script>
+<script type="text/javascript" src="v4/stateMapType.js"></script>
+<script type="text/javascript" src="v4/wwaMapType.js"></script>
+<script type="text/javascript" src="v4/polyWarnings.js"></script>
+<script type="text/javascript" src="v4/mapStyles.js"></script>
+<script type="text/javascript" src="v4/spcMapType.js"></script>
+<script type="text/javascript" src="v4/ridge2radar.js"></script>
+
+
+<body onload="initialize()">
+
+<div id="menuToggleButton"><button onclick="shrinkMenuForfFullscreen();">Toggle Menu</button></div>
+
+<div id="main_contain"  style=" position:relative; width:100%; height:800px;">
+	<div class = "ALLinfoAboveMap" id="ALLinfoAboveMap">
+		<div id = "radarInfoAboveMap" style=" position:absolute; top:0px; height:60px;">---</div>
+		<div id="radarTimeDisplay" style="font-size:120%; position:absolute; top:61px; height:20px; ">Loading...</div>
+		<div style="position:absolute; left: 120px; top:61px; height:20px;">
+			<!-- 
+		  	<div style=" position:absolute; border:0px solid blue; width:100%; text-align:center;" id="startAniDiv"><a border="0" href="javascript:void(0)" onclick="radar.animate();"><image height="20px" src="images/animate-play.gif"/></a></div>
+		  	 --> 
+		</div>
+  	</div>
+  	<div id = "mapCanvasPlaceholder">
+	  <div class = "mapstyle" id="map_canvas">
+	  </div> 
+	</div>
+	  
+  
+	  <div id="legendRadarDiv"  style="float:right; position:absolute; top: 81px;width:50px; height:500px; left:911px">x
+	  </div> 
+	  
+	  
+	  <div id="mosaicSelect" style="z-index:100; font-size:150%; padding:5px; position:absolute; top:125px; left:320px; display:none;"><button style="font-size:150%;" onclick="radar.changeRadar('NAT','N0Q')">Select National Mosaic</button>
+	  	
+	  </div>
+	  
+	   <div style="font-size:150%; padding:0px; position:absolute; top:0px; left:630px;">
+			<input class="textBoxClass" onclick="this.value = '';" id="address" size="40" type="text" value='Enter Your "City, ST" or zip code' />
+    		<input type="button" value="Find" onclick="codeAddress()">
+    		<span style="font-size:75%"><b>Refreshes in:</b> <span id = "countDown"></span> sec.&nbsp;&nbsp;<button style="font-size:75%;" onclick="wwaLayerOverlay.refresh();wwaPoly.refresh();radar.changeRadar(rid,pid)">Refresh Now</button></span>
+	  </div>
+	  
+	  
+	  
+<!--
+  	  <div style="position:absolute; left:400px; top:585px; height:20px;">
+  	  	<button id="showlayercontrolsbutton" style="font-size:100%;" onclick="$('div.mapstyle').toggleClass('mapstyle_short'); $('div#layer_controls').toggle(); $('button#hidelayercontrolsbutton').toggle();$('button#showlayercontrolsbutton').toggle();">^ Show Layer Controls</button>
+  	  	<button id="hidelayercontrolsbutton" style="display:none; font-size:100%;" onclick="$('div.mapstyle').toggleClass('mapstyle_short'); $('div#layer_controls').toggle(); $('button#showlayercontrolsbutton').toggle();$('button#hidelayercontrolsbutton').toggle();">v Hide Layer Controls</button>
+  	  </div>
+--> 	  
+  	  
+	  <div class="layercontrolsstyle" id="layer_controls">
+	  	<table style="width:100%">
+	  		<tr>
+	  			<td style="text-align:left;" valign="top">
+	  				<input checked type="checkbox" id="show_hide_Radar" onClick="radar.toggle()" />Radar Overlay<br/>
+	  				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Loop:</b> <INPUT checked TYPE="radio" NAME="frames" VALUE="1"  onclick="numberOfFramesInAnimation = 1;radar.changeRadar(rid,pid);">Off <!-- | <INPUT TYPE="radio" NAME="frames" VALUE="3"  onclick="numberOfFramesInAnimation = 3;radar.changeRadar(rid,pid);">3 | <INPUT TYPE="radio" NAME="frames" VALUE="5" onclick="numberOfFramesInAnimation = 5;radar.changeRadar(rid,pid);">5--> |  <INPUT TYPE="radio" NAME="frames" VALUE="10" onclick="numberOfFramesInAnimation = 10;radar.changeRadar(rid,pid);">On<br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Loop Speed:</b> <INPUT TYPE="radio" NAME="lpspeed" VALUE="a"  onclick="defaultLoopDelay = 600;radar.changeRadar(rid,pid);">Slow | <INPUT checked TYPE="radio" NAME="lpspeed" VALUE="b"  onclick="defaultLoopDelay = 300;radar.changeRadar(rid,pid);">Medium | <INPUT TYPE="radio" NAME="lpspeed" VALUE="c"  onclick="defaultLoopDelay = 100;radar.changeRadar(rid,pid);">Fast<br/>
+	  				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Opacity:</b> <INPUT onclick="radarOpacity = 0.25;" TYPE="radio" NAME="opacity" VALUE="a"  onclick="">25% | <INPUT onclick="radarOpacity = 0.5;" TYPE="radio" NAME="opacity" VALUE="b"  onclick="">50% | <INPUT checked onclick="radarOpacity = 0.75;" TYPE="radio" NAME="opacity" VALUE="c"  onclick="">75% | <INPUT onclick="radarOpacity = 1.0;" TYPE="radio" NAME="opacity" VALUE="d"  onclick="">100%
+	  			</td>
+	  			<td style="text-align:left;" valign="top" colspan="3">
+	  				<input type="checkbox" id="show_hide_GoogleRoads" onClick="wwaLayerOverlay.toggle()" />Watch/Warning/Advisory Overlay<br/>
+	  				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Opacity:</b> <INPUT onclick="wwaLayerOverlay.setOpacity(0.25);" TYPE="radio" NAME="wwaopacity" VALUE="a"  onclick="">25% | <INPUT onclick="wwaLayerOverlay.setOpacity(0.5);" TYPE="radio" NAME="wwaopacity" VALUE="b"  onclick="">50% | <INPUT onclick="wwaLayerOverlay.setOpacity(0.75);" TYPE="radio" NAME="wwaopacity" VALUE="c"  onclick="">75% | <INPUT checked onclick="wwaLayerOverlay.setOpacity(1.0);" TYPE="radio" NAME="wwaopacity" VALUE="d"  onclick="">100%
+				</td>
+	  			<td style="text-align:right;" valign="top"  colspan="3">
+	  				<input checked type="checkbox" id="show_hide_state" onClick="stateOverlay.toggle()" />State Overlay<br/>
+	  				<input checked type="checkbox" id="show_hide_county" onClick="countyOverlay.toggle()" />County Overlay<br/>
+	  				<input type="checkbox" id="show_hide_GoogleRoads" onClick="googleroadOverlay.toggle()" />Road/City Overlay<br/>
+	  				<input checked type="checkbox" id="show_hide_polygowarn" onClick="wwaPoly.toggle()" />Polygon Warning Overlay<br/>
+	  				
+	  			</td>
+	  			</tr>
+	  		</tr>
+	  	</table>
+	  </div>
+	  
+	  <div class="LegendMain" style="filter:alpha(opacity=70); opacity:0.7; top: 460px; right: 75px; border: 1px solid #000000; padding: 3px; position: absolute; z-index: 1; background-color :#FFFFFF; font-size: 10px; font-family : Arial, Helvetica, sans-serif;"> 
+			<div class="LegendBlockholder" style="clear: both; padding: 0px;"> 
+				<div class="LegendcolorBlock" style="overflow: hidden; float: left; padding: 0px; margin: 2px; width: 8px; height: 8px; border: 3px solid #f0f;"></div>
+		        <span style="position: relative; top: 2px;">Tornado Warning</span>
+			</div> 
+			<div class="LegendBlockholder" style="clear: both; padding: 0px;"> 
+				<div class="LegendcolorBlock" style="overflow: hidden; float: left; padding: 0px; margin: 2px; width: 8px; height: 8px; border: 3px solid #00f; "></div>
+		        <span style="position: relative; top: 2px;">Severe T-Storm Warning</span>
+			</div> 
+			<div class="LegendBlockholder" style="clear: both; padding: 0px;"> 
+				<div class="LegendcolorBlock" style="overflow: hidden; float: left; padding: 0px; margin: 2px; width: 8px; height: 8px; border: 3px solid #0f0;"></div>
+		        <span style="position: relative; top: 2px;">Flash Flood Warning</span>
+			</div> 
+			
+				<div class="LegendBlockholder" style="clear: both; padding: 0px;"> 
+				<div class="LegendcolorBlock" style="overflow: hidden; float: left; padding: 0px; margin: 2px; width: 8px; height: 8px; border: 1px solid black; background-color:red;"></div>
+		        <span style="position: relative; top: 2px;">Warnings</span>
+			</div> 
+			<div class="LegendBlockholder" style="clear: both; padding: 0px;"> 
+				<div class="LegendcolorBlock" style="overflow: hidden; float: left; padding: 0px; margin: 2px; width: 8px; height: 8px; border: 1px solid black; background-color:orange;"></div>
+		        <span style="position: relative; top: 2px;">Watches</span>
+			</div> 
+			<div class="LegendBlockholder" style="clear: both; padding: 0px;"> 
+				<div class="LegendcolorBlock" style="overflow: hidden; float: left; padding: 0px; margin: 2px; width: 8px; height: 8px; border: 1px solid black; background-color:yellow;"></div>
+		        <span style="position: relative; top: 2px;">Advisories</span>
+			</div> 
+	</div> 
+	  
+	  
+</div>
+  
+  <div id="dialog-modal" title="Click product type to switch">
+	<div id="radarPopUpInfo"></div>
+  </div>
+  
+    
+  <div id="wwadialog-modal" title="">
+	<!--  <iframe id="wwaPopUpInfo" width="100%" height="2000px" src=""></iframe>  -->
+	<div id="wwaPopUpInfo" width="100%" height="2000px"></div>
+  </div>
+
+
+</body> 
+</html> 
+

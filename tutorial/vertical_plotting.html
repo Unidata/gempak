@@ -1,0 +1,363 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="md.css" type="text/css">
+
+<title>12. Vertical Plotting</title>
+
+</head>
+<body>
+<blockquote><p><a href=/gempak/tutorial/>GEMPAK Online Tutorial</a></p></blockquote>
+
+<h1>12. Vertical Plotting</h1>
+
+<p>GEMPAK supports the following known vertical coordinates:</p>
+
+<pre><code>NONE - Surface Data
+PRES - Pressure
+HGHT - Height
+THTA - Potential Temperature
+SGMA - Sigma
+</code></pre>
+
+<p>Other vertical coordinates that GEMPAK doesn't know about can be handled as long as they are 4 letter representations, such as <code>ETAL</code>.</p>
+
+<p><a name="12.1"></a></p>
+
+<h2>Sounding Data Cross Sections</h2>
+
+<p><code>sncross</code> draws cross sections using upper-air sounding data. The cross-section line, <code>CXSTNS</code>, must be specified as a list of stations separated with semicolons.</p>
+
+<p>Alternatively, a single station may be entered in <code>CXSTNS</code> and a list of times in <code>DATTIM</code>.  In this case, a time section will be drawn.</p>
+
+<p>The plot background consists of a pressure axis, a horizontal
+axis with the station names, a filled region indicating the
+part of the plot below the earth surface, and vertical lines
+at each station.</p>
+
+<p>The horizontal axis represents a straight line between the
+first and last stations.  The positions of intervening stations
+are proportional to the perpendicular projections of the actual
+positions onto the section line.  All of these calculations
+are done in lat/lon coordinates.  If the plot is a time section,
+the times will be displayed on the x axis with the earliest
+time at the left.  If the first character in <code>TAXIS</code> is an <code>R</code>, the
+earliest time will appear on the right.</p>
+
+<p>The vertical coordinate may be specified as <code>LIN</code>, <code>LOG</code>, or <code>STUVE</code>;
+<code>SKEWT</code> is not valid in this program.  The bottom and top limits
+for the y axis are specified in <code>YAXIS</code>, but the axis labeling
+specifications are ignored.</p>
+
+<p><a name="12.1.1"></a></p>
+
+<h3>SNCROSS Input Parameters</h3>
+
+<pre>
+<a href=/gempak/man/parm/cxstns.html>CXSTNS</a>    Cross-section station line
+<a href=/gempak/man/parm/snparm.html>SNPARM</a>    Sounding parameter list
+<a href=/gempak/man/parm/snfile.html>SNFILE</a>    Sounding data file
+<a href=/gempak/man/parm/dattim.html>DATTIM</a>    Date/time
+<a href=/gempak/man/parm/vcoord.html>VCOORD</a>    Vertical coordinate type
+<a href=/gempak/man/parm/ptype.html>PTYPE</a>     Plot type/h:w ratio/margins
+<a href=/gempak/man/parm/yaxis.html>YAXIS</a>     Ystrt/ystop/yinc/lbl;gln;tck
+<a href=/gempak/man/parm/taxis.html>TAXIS</a>     Time1-time2-tinc;lbl;gln;tck
+<a href=/gempak/man/parm/line.html>LINE</a>      Color/type/width/label/smth/fltr/scflg
+<a href=/gempak/man/parm/border.html>BORDER</a>    Background color/type/width
+<a href=/gempak/man/parm/cint.html>CINT</a>      Contour interval/min/max
+<a href=/gempak/man/parm/wind.html>WIND</a>      Wind symbol/siz/wdth/typ/hdsz
+<a href=/gempak/man/parm/title.html>TITLE</a>     Title color/line/title
+<a href=/gempak/man/parm/panel.html>PANEL</a>     Panel loc/color/dash/width/regn
+<a href=/gempak/man/parm/device.html>DEVICE</a>    Device|name|x size;y size|color type
+<a href=/gempak/man/parm/clear.html>CLEAR</a>     Clear screen flag
+<a href=/gempak/man/parm/filter.html>FILTER</a>    Filter data factor
+<a href=/gempak/man/parm/text.html>TEXT</a>      Size/fnt/wdth/brdr/N-rot/just/hw flg
+<a href=/gempak/man/parm/curve.html>CURVE</a>     Curve fit type
+<a href=/gempak/man/parm/clrbar.html>CLRBAR</a>    Color/ornt/anch/x;y/ln;wd/freq|text_info
+<a href=/gempak/man/parm/contur.html>CONTUR</a>    Subbox/smooth
+<a href=/gempak/man/parm/fint.html>FINT</a>      Fill interval/min/max
+<a href=/gempak/man/parm/fline.html>FLINE</a>     Fill colors/fill types
+<a href=/gempak/man/parm/ctype.html>CTYPE</a>     Contour type:  C/F
+</pre>
+
+
+<p><a name="12.1.2"></a></p>
+
+<h3>Exercise #17 (Contoured Upper Air Cross-Section)</h3>
+
+<p>Draw isentropes in color 3 for the last time in the data set.  Plot the background in color 1.  Use a logarithmic scale for the y axis and a 5 degree interval for the isentropes.  Draw wind barbs in color number 6 with line width 2.</p>
+
+<pre><code>    CXSTNS   =  epz;abq;gjt;riw
+    SNPARM   =  thta
+    SNFILE   =  uair
+    DATTIM   =  0000
+    VCOORD   =  pres
+    PTYPE    =  log
+    YAXIS    =
+    TAXIS    =
+    LINE     =  3
+    BORDER   =  1
+    CINT     =  5
+    WIND     =  bm6//2
+    TITLE    =  1
+    PANEL    =  0
+    DEVICE   =  xw
+    CLEAR    =  y
+    FILTER   =  .8
+    TEXT     =  1
+    CURVE    =  2
+    CLRBAR   =
+    CONTUR   =  0
+    FINT     =  0
+    FLINE    =  10-20
+    CTYPE    =  C
+    GEMPAK-SNCROSS&gt;r
+</code></pre>
+
+<p><img src="sncross.gif" alt="image" /></p>
+
+<p><a name="12.1.3"></a></p>
+
+<h2>Exercise #18 (Filled Upper Air Cross-Section)</h2>
+
+<p>Draw filled contours of relative humidity for the same cross section.  Fill in contours greater than 50%.  Draw a horizontal color bar at the bottom of the plot.  Draw the cross section from 1050 mb to 300 mb.</p>
+
+<pre><code>   CXSTNS    =  epz;abq;gjt;riw
+   SNPARM    =  relh
+   SNFILE    =  uair
+   DATTIM    =  0000
+   VCOORD    =  pres
+   PTYPE     =  log/.5
+   YAXIS     =  1050/300
+   TAXIS     =
+   LINE      =  3
+   BORDER    =  1
+   CINT      =  5
+   WIND      =  bm6//2
+   TITLE     =  1
+   PANEL     =  0
+   DEVICE    =  xw
+   CLEAR     =  y
+   FILTER    =  .8
+   TEXT      =  1
+   CURVE     =  2
+   CLRBAR    =  1/h
+   CONTUR    =  0
+   FINT      =  50;60;70;80
+   FLINE     =  0;21;22;23;24
+   CTYPE     =  f
+   GEMPAK-SNCROSS&gt;r
+</code></pre>
+
+<p><img src="sncross2.gif" alt="image" /></p>
+
+<p><a name="12.2"></a></p>
+
+<h2>Gridded Data Cross-Sections</h2>
+
+<p><code>gdcross</code> draws a vertical cross section between two points
+in a grid field.  The cross-section path is a line segment
+on the grid projection plane joining the two points.  Gridded
+data are interpolated to the cross-section plane at intervals
+corresponding to approximately one grid increment.</p>
+
+<p>The vertical coordinate, set in <code>GVCORD</code>, can be <code>PRES</code>, <code>THTA</code>, <code>HGHT</code>,
+or <code>SGMA</code>.  The data must be stored in that vertical coordinate in
+the grid file.  No automatic vertical interpolation is included.</p>
+
+<p><a name="12.2.1"></a></p>
+
+<h3>Exercise #19 (Gridded Cross-Section)</h3>
+
+<p>Plot temperature in Kelvin on a log-P chart along the cross section from LAX to BWI.  Plot the filled contours using colors from 13 to 30.  Plot wind barbs for the wind.  Plot a horizontal color bar centered under the cross section.</p>
+
+<pre><code>CXSTNS   = lax&gt;bwi
+GDATTIM  = f06
+GVCORD   = pres
+GFUNC    = tmpk
+GVECT    = wnd
+GDFILE   = gfs
+WIND     = bm32
+REFVEC   = 10
+PTYPE    = log
+YAXIS    =  
+IJSKIP   = 0
+CINT     =  
+SCALE    =  
+LINE     = 32/1/3
+BORDER   = 1
+TITLE    = 1
+CLEAR    = yes
+DEVICE   = xw
+TEXT     = 1
+PANEL    = 0
+CLRBAR   = 1/h/cc/.5;.03/.6;.01
+CONTUR   = 3
+FINT     = 5
+FLINE    = 13-30
+CTYPE    = f
+GEMPAK-GDCROSS&gt;r
+</code></pre>
+
+<p><img src="gdcross.gif" alt="image" /></p>
+
+<p><a name="12.2.2"></a></p>
+
+<h3>Exercise #20 (Nationwide Vorticity Advection Cross-Section)</h3>
+
+<p>Using the same cross-section and grid file as before, plot a log pressure cross
+        section of the vorticity advection, scaled by 10**9, colored by positive and negative values as shades of red and blue.
+        Also, plot the ageostrophic circulation using arrows.  Use a height-to-width plot ratio of 0.5.</p>
+
+<pre><code>CXSTNS   = lax&gt;bwi
+GDATTIM  = f06
+GVCORD   = pres
+GFUNC    = adv(avor(wnd),wnd)
+GVECT    = circ(age;omeg)
+GDFILE   = gfs
+WIND     = bm32
+REFVEC   = 5;.05;.2
+PTYPE    = log/0.5
+YAXIS    =  
+IJSKIP   = 0
+CINT     = 1/-3/3
+SCALE    = 9
+LINE     = 32
+BORDER   = 1
+TITLE    = 1/-2
+CLEAR    = yes
+DEVICE   = xw
+TEXT     = 1
+PANEL    = 0
+CLRBAR   = 1/h/lc/.5;.01;.5;.01
+CONTUR   = 3
+FINT     = 1/-3/3
+FLINE    = 24;25;26;27;11;12;13;14
+CTYPE    = c/f
+GEMPAK-GDCROSS&gt;r
+</code></pre>
+
+<p><img src="gdcross2.gif" alt="image" /></p>
+
+<p><a name="12.2.3"></a></p>
+
+<h3>Exercise #21 (Gridded Data Vertical Profile)</h3>
+
+<p><code>gdprof</code> draws vertical profiles at a point.  Data from each
+    level in the grid file are interpolated to the point.</p>
+
+<p><code>GPOINT</code> specifies the location for the profile.  It may be
+    entered as a latitude and longitude separated with a semicolon,
+    as a station character identifier or station number, or as a
+    set of x and y grid points separated with a semicolon and
+    preceded with an <code>@</code>.  The profile location may also be selected
+    graphically with the <code>CURSOR</code> command.</p>
+
+<p><a name="12.3"></a></p>
+
+<h2>Upper-Air Vertical Plotting</h2>
+
+<p><code>GDPROF</code> draws upper-air profiles using gridded data.</p>
+
+<p>Run <code>GPCOLOR</code> first to set the background color to white:</p>
+
+<pre><code>COLORS   = 101=255:255:255
+DEVICE   = xw
+GEMPAK-GPCOLOR&gt;
+</code></pre>
+
+<p>Next run <code>GDPROF</code> for the station <code>iad</code> (Washington DC)</p>
+
+<pre><code>GPOINT   = iad
+GDATTIM  = last
+GVCORD   = pres
+GFUNC    = tmpc
+GVECT    = wnd
+GDFILE   = gfs
+LINE     = 2//3
+MARKER   =  
+BORDER   = 32
+PTYPE    = skewt
+SCALE    = 0
+XAXIS    = -40/40/10
+YAXIS    = 1000/100/100/;1
+WIND     = bm32
+REFVEC   = 10
+WINPOS   = 1
+FILTER   = no
+TITLE    = 32/3/ GFS ^ ~ TMPC DWPC #
+PANEL    = 0
+CLEAR    = yes
+TEXT     = 1
+DEVICE   = xw
+OUTPUT   =  
+THTALN   = 2/2
+THTELN   = 23/2
+MIXRLN   = 19/10
+GEMPAK-GDPROF&gt;r
+</code></pre>
+
+<p><img src="gdprof.gif" alt="image" /></p>
+
+<p>Now re-run to overlay dewpoint temperature using <code>CLEAR = n</code> on the same graphics device:</p>
+
+<pre><code>GFUNC    = dwpc
+LINE     = 3//3
+CLEAR    = n
+GEMPAK-GDPROF&gt;r
+</code></pre>
+
+<p><img src="gdprof2.gif" alt="image" /></p>
+
+<p><a name="12.3.1"></a></p>
+
+<h3>Exercise #22 (Upper-Air Sounding)</h3>
+
+<p>Make note that because <code>GDCROSS</code> uses <code>GFUNC</code> (and not <code>GDPFUN</code>) we can not plot both temperature and dewpoint at the same time, making use of <code>CLEAR = n</code> overlaying.</p>
+
+<p>For <code>SNPROF</code>, we can plot both profiles simulataneously.</p>
+
+<p>Draw a Skew-T, Log-P for the same station (<code>iad</code>) using <code>SNPROF</code>.  Again, start with <code>GPCOLOR</code> to set the background to white:</p>
+
+<pre><code>COLORS   = 101=255:255:255
+DEVICE   = xw
+GEMPAK-GPCOLOR&gt;
+</code></pre>
+
+<p>Now run <code>SNPROF</code> with sounding parameters <code>tmpc;dwpc</code> matched by line style <code>2;3//2</code>:</p>
+
+<pre><code>SNFILE   = uair
+DATTIM   = 1200
+AREA     = @iad
+SNPARM   = tmpc;dwpc
+LINE     = 2;3//2
+PTYPE    = skewt
+VCOORD   = pres
+STNDEX   =  
+STNCOL   =  
+WIND     = bm32
+WINPOS   = 1
+MARKER   =  
+BORDER   = 32
+TITLE    = 32/3/ IAD SKEW-T/LOG-P 1200 UTC
+DEVICE   = xw
+YAXIS    = 1000/100/100/;1
+XAXIS    = -40/40/10
+FILTER   = no
+CLEAR    = n
+PANEL    = 0
+TEXT     = 1
+THTALN   = 2/2
+THTELN   = 23/2
+MIXRLN   = 19/10
+GEMPAK-SNPROF&gt;r
+</code></pre>
+
+<p> <img src="snprof.gif" alt="image" /></p>
+
+<blockquote><p><a href=/gempak/tutorial/>GEMPAK Online Tutorial</a> | <a href="radar_programs.html">Next: Radar Programs</a></p></blockquote>
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

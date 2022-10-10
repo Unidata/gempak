@@ -1,0 +1,36 @@
+<!doctype html><head><title>GEMPAK Help: loci</title></head><body>
+<a href=../../help_and_documentation>GEMPAK Manual</a> | 
+<a href=../prog/>Programs</a> | <a href=../parm/>Parameters</a><br><hr>
+<pre>
+     LOCI is the point(s) needed to place the object to be plotted.
+
+          <a href=text.html>TEXT</a>            x;y
+          POLYGON         x1;y1/x2;y2/x3;y3/.../xN;yN
+          REGPOLY         x;y
+          ARC             x;y
+          <a href=curve.html>CURVE</a>           x1;y1/x2;y2/x3;y3/.../xN;yN
+          <a href=line.html>LINE</a>            x1;y1/x2;y2/x3;y3/.../xN;yN
+          ARROW           x;y
+          COLDFRONT       x1;y1/x2;y2/x3;y3/.../xN;yN
+          WARMFRONT       x1;y1/x2;y2/x3;y3/.../xN;yN
+          OCCLFRONT       x1;y1/x2;y2/x3;y3/.../xN;yN
+          STATFRONT       x1;y1/x2;y2/x3;y3/.../xN;yN
+          WEATHER         x;y
+          CLOUD           x;y
+          SKY             x;y
+          TURB            x;y
+          ICNG            x;y
+          SPCL            x;y
+          <a href=marker.html>MARKER</a>          x;y
+          PRESTEND        x;y
+          PASTWTHR        x;y
+
+     If LOCI is preceded by a '#' then the x and y values should be
+     latitudes and longitudes. If the first character is a '@' then
+     all points will be grid point columns and rows.  In GDPLOT3, 
+     the grid coordinates are not implemented for annotation.
+
+</pre>
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

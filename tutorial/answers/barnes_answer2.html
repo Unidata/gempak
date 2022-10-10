@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html>
+<HEAD>
+<TITLE>Barnes Analysis Answer#2</TITLE>
+</HEAD>
+<BODY>
+ 
+<h2>Lets recycle our first grid file from #1:</h2>
+<strong>
+<pre>
+% gddelt
+ GDFILE    Grid file                         barnes4.grd
+ GDNUM     Grid numbers                      LIST
+ Parameters requested: GDFILE,GDNUM.
+ GEMPAK-GDDELT>gdfile = barnes1.grd
+ GEMPAK-GDDELT>r
+  NUM       TIME1              TIME2           LEVL1 LEVL2  VCORD PARM
+    1     960227/1200                              0         NONE TMPF        
+    2     960227/1200                              0         NONE DWPF        
+    3     960227/1200                              0         NONE PMSL        
+    4     960227/1200                              0         NONE SPED        
+    5     960227/1200                              0         NONE DRCT        
+ Enter grids to delete or type EXIT:1-5
+
+      Deleting grid: 
+    1     960227/1200                              0         NONE TMPF        
+            to grid: 
+    5     960227/1200                              0         NONE DRCT        
+Enter <cr> to delete grids or type EXIT:
+ Parameters requested: GDFILE,GDNUM.
+ GEMPAK-GDDELT>e
+</pre>
+
+<h2>Now make 3 more copies of the file: </h2>
+<pre>
+cp barnes1.grd barnes2.grd
+cp barnes1.grd barnes3.grd
+cp barnes1.grd barnes4.grd
+</pre>
+<p>
+<h2>Next, perform the Barnes Analyses</h2>
+<pre>
+%oabsfc
+ GEMPAK-OABSFC>l
+ SFFILE   = metar
+ GDFILE   = barnes1.grd
+ SFPARM   = tmpf
+ DATTIM   = /1200
+ DTAAREA  = 
+ GUESS    = 
+ GAMMA    = .3
+ SEARCH   = 5
+ NPASS    = 2
+ GEMPAK-OABSFC>r
+
+ GEMPAK-OABSFC>gdfile = barnes2.grd
+ GEMPAK-OABSFC>search = 10
+ GEMPAK-OABSFC>r
+
+ GEMPAK-OABSFC>gdfile = barnes3.grd
+ GEMPAK-OABSFC>search = 20
+ GEMPAK-OABSFC>r
+
+ GEMPAK-OABSFC>gdfile = barnes4.grd
+ GEMPAK-OABSFC>search = 50
+ GEMPAK-OABSFC>r
+
+ GEMPAK-OABSFC>e
+</pre>
+<p>
+<h2>Finally, lets plot it up:</h2>
+<pre>
+% gdcntr &lt <A HREF="barnes_search.dat">barnes_search.dat</a>
+<p>
+<A HREF="../images/barnes_search.gif"><IMG SRC="../images/viewindow.gif"></a>
+<p>
+
+</strong>
+
+ 
+<p>
+<img src="../images/bluehorizontaline.gif">
+<pre>
+<a href="../barnes_exercises.html#answer2"><img alt="previous page" src="../images/prev.gif"></a>
+
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

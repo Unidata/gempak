@@ -1,0 +1,79 @@
+<!doctype html><head><title>GEMPAK Help: gpfront</title></head><body>
+<a href=../../help_and_documentation>GEMPAK Manual</a> | 
+<a href=../prog/>Programs</a><br><hr>
+<pre>
+GPFRONT is a version of GPMAP that plots map symbols interpreted
+from the ASUS1 bulletins. Forecast front positions from FSUS2
+bulletins can be plotted by specifying the forecast hour desired
+from the bulletin (typically a bulletin contains 12 and 24 hour
+forecast positions).
+
+INPUT PARAMETERS
+ 
+    <a href=../parm/map.html>MAP</a>       Map color/dash/width/filter flag
+    <a href=../parm/garea.html>GAREA</a>     Graphics area
+    <a href=../parm/proj.html>PROJ</a>      Map projection/angles/margins|drop flag
+    <a href=../parm/satfil.html>SATFIL</a>    Satellite image filename(s)
+    <a href=../parm/radfil.html>RADFIL</a>    Radar image filename(s)
+    <a href=../parm/latlon.html>LATLON</a>    Line color/dash/width/freq/inc/label/format
+    <a href=../parm/panel.html>PANEL</a>     Panel loc/color/dash/width/regn
+    <a href=../parm/title.html>TITLE</a>     Title color/line/title
+    <a href=../parm/text.html>TEXT</a>      Size/fnt/wdth/brdr/N-rot/just/hw flg
+    <a href=../parm/clear.html>CLEAR</a>     Clear screen flag
+    <a href=../parm/device.html>DEVICE</a>    Device|name|x size;y size|color type
+    ASFIL     ASUS1 front data file (FSUS2 forecast)
+    ASHR      valid hour (used for forecast hour)
+    ASATT     H-L symbol Size/WX symbol flag/Frontal Pip Size
+    <a href=../parm/lutfil.html>LUTFIL</a>    Enhancement lookup table filename
+    <a href=../parm/imcbar.html>IMCBAR</a>    Color/ornt/anch/x;y/ln;wd/freq
+ 
+ 
+
+PROGRAM DESCRIPTION
+ 
+    GPFRONT is derived from the standard GEMPAK program GPMAP.
+    The behaviour is similar to gpmap, with the addition of
+    plotting map symbols defined in an ASUS bulletin, with the
+    map area specified. Satellite and radar data may be used
+    as backgrounds. ASFIL specifies the name or file template
+    of a front file. For ASUS1 bulletins which contain a single
+    analysis time, ASHR is ignored. For FSUS2 bulletins that
+    contain forecast positions for 12 and 24 hour progs,
+    ASHR should be the desired forecast hour (eg 12 or 24).
+    ASATT can be used to specify the scaling of H/L symbols drawn
+    (default is 1.0), High and Low values flag (default is Y),
+    and frontal pip size (default as same as weather symbols).
+
+
+EXAMPLES
+ 
+    1.  Draw a Lambert Conformal map of the US.
+        Display frontal position from the file 98032016_frt.wmo.
+
+         <a href=../parm/garea.html>GAREA</a>    = uslcc
+         <a href=../parm/proj.html>PROJ</a>     = lcc
+         <a href=../parm/satfil.html>SATFIL</a>   =
+         <a href=../parm/radfil.html>RADFIL</a>   =
+         <a href=../parm/latlon.html>LATLON</a>   = 0
+         <a href=../parm/panel.html>PANEL</a>    = 0
+         <a href=../parm/title.html>TITLE</a>    = 2/-1/Frontal Positions
+         <a href=../parm/text.html>TEXT</a>     = 3/31/2/hw
+         <a href=../parm/clear.html>CLEAR</a>    = yes
+         <a href=../parm/device.html>DEVICE</a>   = xw
+         ASFIL    = 98032016_frt.wmo
+         ASHR     =
+         ASATT    =
+         <a href=../parm/lutfil.html>LUTFIL</a>   = default
+         <a href=../parm/imcbar.html>IMCBAR</a>   =
+
+
+ERROR MESSAGES
+ 
+    [GPFRONT  -1]   Fatal error initializing TAE.
+    [GPFRONT  -2]   Fatal error reading TAE parameters.
+    [GPFRONT  -3]   Fatal error initializing GEMPLT.
+    [GPFRONT  -4]   Frontal position file not found
+</pre>
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

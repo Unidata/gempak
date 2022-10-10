@@ -1,0 +1,116 @@
+<!doctype html><head><title>GEMPAK Help: snmod</title></head><body>
+<a href=../../help_and_documentation>GEMPAK Manual</a> | 
+<a href=../prog/>Programs</a><br><hr>
+<pre>
+SNMOD moves selected sounding data from an input sounding file to
+an output sounding file.
+
+
+INPUT PARAMETERS
+ 
+    <a href=../parm/snfile.html>SNFILE</a>    Sounding data file
+    <a href=../parm/snoutf.html>SNOUTF</a>    Output sounding file
+    <a href=../parm/snparm.html>SNPARM</a>    Sounding parameter list
+    <a href=../parm/area.html>AREA</a>      Data area
+    <a href=../parm/dattim.html>DATTIM</a>    Date/time
+    <a href=../parm/levels.html>LEVELS</a>    Vertical levels
+    <a href=../parm/vcoord.html>VCOORD</a>    Vertical coordinate type
+    <a href=../parm/timstn.html>TIMSTN</a>    Times/additional stations
+    <a href=../parm/mrgdat.html>MRGDAT</a>    Merge data file flag/part type
+    <a href=../parm/idntyp.html>IDNTYP</a>    STNM or STID
+ 
+ 
+PROGRAM DESCRIPTION
+ 
+    SNMOD takes data from a GEMPAK sounding file, <a href=../parm/snfile.html>SNFILE</a>, and
+    writes it to an output GEMPAK sounding file, <a href=../parm/snoutf.html>SNOUTF</a>.
+    This program can be used to subset the original dataset
+    by time and/or stations and to change the levels and
+    vertical coordinate.
+
+    The output dataset may be either a merged or unmerged data
+    set.  If the output file does not exist, a new file will be
+    created by this program.  If a new file is created, <a href=../parm/mrgdat.html>MRGDAT</a>
+    will determine whether the output file will be a merged or
+    unmerged dataset.  Note that an error will result if the
+    input dataset is merged and the output dataset is unmerged.
+
+    The value of <a href=../parm/snparm.html>SNPARM</a> will be ignored if the output dataset is
+    unmerged.  If a merged data file is to be created, <a href=../parm/snparm.html>SNPARM</a>
+    will specify the parameters to be included.  In this case,
+    if <a href=../parm/snparm.html>SNPARM</a> = DSET, the parameters in the input dataset will be
+    used.  If the output file is an existing merged dataset, the
+    parameters specified in <a href=../parm/snparm.html>SNPARM</a> must be in the dataset.  In
+    this case, if <a href=../parm/snparm.html>SNPARM</a> = DSET, the parameters in the output file
+    will be used.  Undecoded text (raw reports) may be included in
+    the input file, but will not be moved to the output file.
+
+    If the output file is to be created, the maximum number of
+    times and stations which can be stored in the file must be
+    specified in <a href=../parm/timstn.html>TIMSTN</a>.
+
+    <a href=../parm/idntyp.html>IDNTYP</a> has been added to specify whether station numbers or
+    station identifiers will be used in referring to stations.
+    Generally, <a href=../parm/idntyp.html>IDNTYP</a> should be set to STNM to use station
+    numbers.  However, in datasets which do not have station
+    numbers, or which have a single invalid number, character
+    station identifiers must be used and <a href=../parm/idntyp.html>IDNTYP</a> must be set
+    to STID.
+
+
+EXAMPLES
+ 
+    1.  Put the mandatory data for stations in an area centered
+        on IL at time 910819/1200 into a new unmerged sounding
+        file, NEW.SND, which may contain 2 times and 150
+        stations.
+
+        <a href=../parm/snfile.html>SNFILE</a>  =  gemdata:hrcbob.snd
+        <a href=../parm/snoutf.html>SNOUTF</a>  =  new.snd
+        <a href=../parm/snparm.html>SNPARM</a>  =  dset
+        <a href=../parm/area.html>AREA</a>    =  il
+        <a href=../parm/dattim.html>DATTIM</a>  =  19/12
+        <a href=../parm/levels.html>LEVELS</a>  =  man
+        <a href=../parm/vcoord.html>VCOORD</a>  =  pres
+        <a href=../parm/timstn.html>TIMSTN</a>  =  2/150
+        <a href=../parm/mrgdat.html>MRGDAT</a>  =  no
+        <a href=../parm/idntyp.html>IDNTYP</a>  =  stnm
+
+    2.  Add the stations at time 910819/00 to the file created in
+        example 1.
+
+        <a href=../parm/dattim.html>DATTIM</a>  =  19/00
+
+    3.  Create an isentropic dataset containing the specified
+        parameters with levels every 5 degrees.  Include all the
+        US stations.
+
+        <a href=../parm/snfile.html>SNFILE</a>  =  gemdata:hrcbob.snd
+        <a href=../parm/snoutf.html>SNOUTF</a>  =  thta.snd
+        <a href=../parm/snparm.html>SNPARM</a>  =  thta;pres;mixr;uwnd;vwnd;psym
+        <a href=../parm/area.html>AREA</a>    =  @us
+        <a href=../parm/dattim.html>DATTIM</a>  =  all
+        <a href=../parm/levels.html>LEVELS</a>  =  250-450-5
+        <a href=../parm/vcoord.html>VCOORD</a>  =  thta
+        <a href=../parm/timstn.html>TIMSTN</a>  =  4/150
+        <a href=../parm/mrgdat.html>MRGDAT</a>	=  yes
+
+ERROR MESSAGES
+ 
+    [SNMOD  -1]     Fatal error initializing TAE.
+    [SNMOD  -2]     Fatal error reading TAE parameters.
+    [SNMOD  -3]     Output file cannot be unmerged type.
+    [SNMOD  -4]     A new file cannot be created with no times.
+    [SNMOD  -5]     A new file cannot be created with no stations.
+    [SNMOD  -6]     Parameter ... cannot be computed.
+    [SNMOD  -7]     ... is character type; cannot be added to file.
+    [SNMOD  -8]     Output vertical coordinate ... cannot be used.
+    [SNMOD  -9]     No valid parameters were specified.
+    [SNMOD -10]     Time ... cannot be added to the output file.
+    [SNMOD -11]     Station ... cannot be added to output file.
+    [SNMOD -12]     Parms do not match those in output data set.
+    [SNMOD -13]     Output file name is blank.
+</pre>
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

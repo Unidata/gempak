@@ -1,0 +1,145 @@
+<!doctype html><head><title>GEMPAK Help: ndfdg2</title></head><body>
+<a href=../../help_and_documentation>GEMPAK Manual</a> | 
+<a href=../prog/>Programs</a><br><hr>
+<pre>
+NDFDG2 converts NDFD gridded data in GRIB2 files to GEMPAK gridded data.
+
+INPUT PARAMETERS
+ 
+    <a href=../parm/gbfile.html>GBFILE</a>    GRIB data file name
+    <a href=../parm/gdoutf.html>GDOUTF</a>    Output grid file
+    <a href=../parm/maxgrd.html>MAXGRD</a>    Maximum number of grids
+    <a href=../parm/garea.html>GAREA</a>     Graphics area
+    <a href=../parm/gskip.html>GSKIP</a>     Skip factor for GRIB2 files
+    <a href=../parm/output.html>OUTPUT</a>    Output device/filename
+    <a href=../parm/overwr.html>OVERWR</a>    Overwr flag
+ 
+ 
+
+PROGRAM DESCRIPTION
+ 
+    NDFDG2 will convert NDFD gridded data which is in GRIB2 files to
+    gridded data in a GEMPAK file.
+
+    The GRIB2 input file is specified in <a href=../parm/gbfile.html>GBFILE</a>.
+
+    The GEMPAK output file is given in <a href=../parm/gdoutf.html>GDOUTF</a>.  This file will
+    be opened if it exists and the projection information
+    matches the GRIB2 message projection.  If the output filename is
+    "LIST", the GRIB file will be scanned and the decoded GEMPAK
+    header information will be printed out.
+
+    <a href=../parm/garea.html>GAREA</a> is used to subset the grid.  It may be specified as
+    any valid input for <a href=../parm/garea.html>GAREA</a> which are equivalent to lat/lon bounds
+    or as a single @ followed by the lower-left and upper-right grid
+    point coordinates separated by semicolons.  In the former case,
+    the locations are rounded to the nearest grid points.  The
+    projection type and angles entered as described above along with
+    the lat/lon coordinates of the corners of the subset define a
+    new grid navigation different from that of the full grid.  The
+    navigation entered as described in the preceding paragraph is
+    always that of the full grid.  To get the full grid, set <a href=../parm/garea.html>GAREA</a> to
+    blank, GRID or DSET.
+
+    <a href=../parm/gskip.html>GSKIP</a> is used to reduce the resolution of a grid.  This may be
+    required if the GRIB2 full resolution grid exceeds the GEMPAK
+    maximum grid size.
+
+    <a href=../parm/output.html>OUTPUT</a> defines the direction and destination of printed output.
+
+    <a href=../parm/overwr.html>OVERWR</a> is a logical flag that allows the user to overwrite the existing
+    GEMPAK grid file.  If <a href=../parm/overwr.html>OVERWR</a> is YES, then the grid file is being
+    overwritten.  Otherwise, it remains the same.
+
+
+EXAMPLES
+ 
+    1.  Convert the data in the GRIB2 file for the <a href=../parm/meso.html>MESO</a> model.
+
+
+	<a href=../parm/gbfile.html>GBFILE</a>   =  /tmp/model/meso.mdl
+	<a href=../parm/gdoutf.html>GDOUTF</a>   =  /tmp/model/meso.mdl.gem
+	<a href=../parm/maxgrd.html>MAXGRD</a>   =  3000
+	<a href=../parm/garea.html>GAREA</a>    =  KY
+	<a href=../parm/gskip.html>GSKIP</a>	 =
+	<a href=../parm/output.html>OUTPUT</a>   =  t
+
+
+    2.  Scan a GRIB2 file and print out the message info.
+
+
+	<a href=../parm/gbfile.html>GBFILE</a>   =  ensemble.grib
+	<a href=../parm/gdoutf.html>GDOUTF</a>   =  LIST
+	<a href=../parm/maxgrd.html>MAXGRD</a>   =  3999
+	<a href=../parm/garea.html>GAREA</a>    =  KY
+	<a href=../parm/gskip.html>GSKIP</a>	 =
+	<a href=../parm/output.html>OUTPUT</a>   =  t
+
+    3.  Skip every two grid points in X and Y for whole grid.
+
+
+        <a href=../parm/gbfile.html>GBFILE</a>   =  /tmp/model/meso.mdl
+        <a href=../parm/gdoutf.html>GDOUTF</a>   =  /tmp/model/meso.mdl.gem
+        <a href=../parm/maxgrd.html>MAXGRD</a>   =  3000
+        <a href=../parm/garea.html>GAREA</a>    =
+        <a href=../parm/gskip.html>GSKIP</a>    =  2
+        <a href=../parm/output.html>OUTPUT</a>   =  t
+
+
+    4.  Skip every other grid point in X and Y for <a href=../parm/garea.html>GAREA</a>.
+
+        <a href=../parm/gbfile.html>GBFILE</a>   =  ensemble.grib
+        <a href=../parm/gdoutf.html>GDOUTF</a>   =  ensemble.grib.gem
+        <a href=../parm/maxgrd.html>MAXGRD</a>   =  3000
+        <a href=../parm/garea.html>GAREA</a>    =  MD
+        <a href=../parm/gskip.html>GSKIP</a>    =  1
+        <a href=../parm/output.html>OUTPUT</a>   =  t
+
+
+    5.  Overwrite the existing GEMPAK grid file..
+
+
+        <a href=../parm/gbfile.html>GBFILE</a>   =  /tmp/model/meso.mdl
+        <a href=../parm/gdoutf.html>GDOUTF</a>   =  /tmp/model/meso.mdl.gem
+        <a href=../parm/maxgrd.html>MAXGRD</a>   =  3000
+        <a href=../parm/garea.html>GAREA</a>    =
+        <a href=../parm/gskip.html>GSKIP</a>    =
+        <a href=../parm/output.html>OUTPUT</a>   =  t
+        <a href=../parm/overwr.html>OVERWR</a>   = yes
+
+
+ERROR MESSAGES
+ 
+    [NDFDG2  +5]    GRIB version 0 cannot be decoded.
+    [NDFDG2  +4]    Parameter not found in table: ...
+    [NDFDG2  +3]    GRIB2 unpacking warning ... returned from unpk_grib2.
+    [NDFDG2  +2]    Vertical coordinate ... not supported.
+    [NDFDG2  +1]    WARNING: This grid is too large for GEMPAK programs.
+    [NDFDG2  -1]    Fatal error initializing TAE.
+    [NDFDG2  -2]    Fatal error reading TAE parameters.
+    [NDFDG2  -3]    Fatal error initializing GEMPLT.
+    [NDFDG2  -4]    Grid Definition Template number ... not supported.
+    [NDFDG2  -5]    Grid area ... is invalid.
+    [NDFDG2  -6]    Grid size is invalid.
+    [NDFDG2  -7]    The grid file name may not be blank.
+    [NDFDG2  -8]    Source of Grid Definition ... not supported.
+    [NDFDG2  -9]    Fatal GRIB2 unpacking error ... returned from unpk_grib2.
+    [NDFDG2 -10]    Input for GEMPAK output file is blank.
+    [NDFDG2 -11]    Error opening GEMPAK grid file.
+    [NDFDG2 -12]    Error creating GEMPAK grid file.
+    [NDFDG2 -13]    Discipline number ... not supported.
+    [NDFDG2 -14]    Data type ... not supported.
+    [NDFDG2 -15]    Error opening GRIB file.
+    [NDFDG2 -16]    Error getting next message.
+    [NDFDG2 -17]    Error setting date/time.
+    [NDFDG2 -18]    Invalid bitmap specification.
+    [NDFDG2 -19]    Error reading GRIB file.
+    [NDFDG2 -20]    Invalid input for <a href=../parm/garea.html>GAREA</a>.
+    [NDFDG2 -21]    Grid is too large.
+    [NDFDG2 -22]    Local section present, but not supported.
+    [NDFDG2 -23]    No data present in grib message.
+    [NDFDG2 -24]    <a href=../parm/gskip.html>GSKIP</a> too large for size of grid.
+</pre>
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!doctype html><head><title>GEMPAK Help: vg2uka</title></head><body>
+<a href=../../help_and_documentation>GEMPAK Manual</a> | 
+<a href=../prog/>Programs</a><br><hr>
+<pre>
+VG2UKA converts VG files to ASCII files, using the UKMET browsable
+ASCII format.  Currently, only high level significant weather (SWH)
+and mid level significant weather (SWM) VG files may be converted.
+
+INPUT PARAMETERS
+ 
+    <a href=../parm/dattim.html>DATTIM</a>    Date/time
+    <a href=../parm/fhour.html>FHOUR</a>     Forecast hour
+    <a href=../parm/fxytbl.html>FXYTBL</a>    FXY table file
+    <a href=../parm/center.html>CENTER</a>    Originating Center ID #/Sub-Center ID #/Generating Process ID #
+    <a href=../parm/vgfile.html>VGFILE</a>    Vgfile | scale file | attribute file | filter
+    <a href=../parm/ukafil.html>UKAFIL</a>    Intermediate input/output ASCII file
+ 
+ 
+
+PROGRAM DESCRIPTION
+ 
+    VG2UKA is a table-driven GEMPAK program with parameter input,
+    which reads an input VG file and converts it to the UKMET
+    browsable ASCII format.  (A description of this format for SWH
+    and SWM data may be found in the WAFC document "Representing
+    WAFS Significant Weather (SIGWX) Data in BUFR", version 2.5,
+    November 2004.)  The input parameters are GEMPAK date/time,
+    forecast hour, FXY table file name (chart type alias), originating
+    center id, VG input file name and ASCII output file name.
+
+    Parameters <a href=../parm/dattim.html>DATTIM</a> and <a href=../parm/fxytbl.html>FXYTBL</a> must be specified.  Default values
+    for other parameters are <a href=../parm/fhour.html>FHOUR</a> = 24, <a href=../parm/center.html>CENTER</a> = 7, <a href=../parm/vgfile.html>VGFILE</a> =
+    $SIGWX/vgfiles/YYYYMMDDHH_FF_final.vgf (from
+    $GEMTBL/config/datytype.tbl, with SIGWX set by the site
+    administrator) and <a href=../parm/ukafil.html>UKAFIL</a> = <<a href=../parm/fxytbl.html>FXYTBL</a>>.txt.  Only the first field of
+    the <a href=../parm/center.html>CENTER</a> parameter is used; other fields are ignored.
+
+    An SWH or SWM VG file may consist of groups of clouds, fronts, jets,
+    turbulence, storm symbols and/or volcano symbols.  Tropopause
+    text information and radiation symbols appear in the the file as
+    ungrouped elements.  Ungrouped "JET" elements may also be used.
+
+    See the Product Generation-BUFR help for information about
+    creating the input VG file.
+
+ 
+EXAMPLES
+ 
+    1.  Convert a 24-hour forecast SWH VG file, test1.vgf, to an
+	ASCII file, SIGWXHI.txt.  The originating center is NCEP.
+
+        <a href=../parm/dattim.html>DATTIM</a>  = 040527/1200
+    	<a href=../parm/fhour.html>FHOUR</a>   = 24
+	<a href=../parm/fxytbl.html>FXYTBL</a>  = SWH
+	<a href=../parm/center.html>CENTER</a>  = 7
+	<a href=../parm/vgfile.html>VGFILE</a>  = test1.vgf
+    	<a href=../parm/ukafil.html>UKAFIL</a>  = SIGWXHI.txt
+
+    2.  Convert an 18-hour forecast SWH VG file, test2.vgf, to an
+	ASCII file, SIGWXHI_18.txt.  The originating center is
+        WAFC London.
+
+      	<a href=../parm/dattim.html>DATTIM</a>  = 040526/0000
+        <a href=../parm/fhour.html>FHOUR</a>   = 18
+        <a href=../parm/fxytbl.html>FXYTBL</a>  = SWH
+        <a href=../parm/center.html>CENTER</a>  = 93
+        <a href=../parm/vgfile.html>VGFILE</a>  = test2.vgf
+        <a href=../parm/ukafil.html>UKAFIL</a>  = SIGWXHI_18.txt
+
+    3.  Using default values, convert a 24-hour forecast SWH VG
+	file, $SIGWX/vgfiles/2004060718_24_final.vgf, to an ASCII
+	file, SWH.txt.  The originating center is NCEP.
+
+        <a href=../parm/dattim.html>DATTIM</a>  = 040607/1800
+	<a href=../parm/fhour.html>FHOUR</a>   =
+	<a href=../parm/fxytbl.html>FXYTBL</a>  = SWH
+	<a href=../parm/center.html>CENTER</a>  =
+	<a href=../parm/vgfile.html>VGFILE</a>  =
+	<a href=../parm/ukafil.html>UKAFIL</a>  =
+
+    4.  Convert an 18-hour forecast SWM VG file, test4.vgf, to an
+        ASCII file, SIGWXMD_18.txt.
+
+        <a href=../parm/dattim.html>DATTIM</a>  = 040526/0000
+        <a href=../parm/fhour.html>FHOUR</a>   = 18
+        <a href=../parm/fxytbl.html>FXYTBL</a>  = SWM
+        <a href=../parm/center.html>CENTER</a>  = 7
+        <a href=../parm/vgfile.html>VGFILE</a>  = test4.vgf
+        <a href=../parm/ukafil.html>UKAFIL</a>  = SIGWXMD_18.txt
+
+
+ERROR MESSAGES
+ 
+    [VG2UKA  -1]    The GEMPAK date/time and/or valid hour should be input.
+    [VG2UKA  -2]    Group type ... cannot be found in the group type list.
+    [VG2UKA  -3]    Cannot create alias from datatyp.tbl. Check alias or inputs.
+    [VG2UKA  -4]  VG file ... not found.
+    [VG2UKA  -5]    Cannot mix high and mid level charts in fxytbl.
+    [VG2UKA  -6]    Chart type/alias should be input.
+</pre>
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

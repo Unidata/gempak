@@ -1,0 +1,64 @@
+<!doctype html><head><title>GEMPAK Help: gptext</title></head><body>
+<a href=../../help_and_documentation>GEMPAK Manual</a> | 
+<a href=../prog/>Programs</a><br><hr>
+<pre>
+GPTEXT draws the contents of a text file to the output device.
+
+INPUT PARAMETERS
+ 
+    <a href=../parm/panel.html>PANEL</a>     Panel loc/color/dash/width/regn
+    <a href=../parm/colors.html>COLORS</a>    Color list
+    <a href=../parm/text.html>TEXT</a>      Size/fnt/wdth/brdr/N-rot/just/hw flg
+    <a href=../parm/clear.html>CLEAR</a>     Clear screen flag
+    <a href=../parm/device.html>DEVICE</a>    Device|name|x size;y size|color type
+    <a href=../parm/txtfil.html>TXTFIL</a>    Text filename or LOGO|size|mode
+    <a href=../parm/txtloc.html>TXTLOC</a>    Text location
+    <a href=../parm/column.html>COLUMN</a>    Number of columns
+ 
+ 
+
+PROGRAM DESCRIPTION
+ 
+    GPTEXT draws text read from an ASCII text file to the
+    output device driver. If the input file is LOGO, the NOAA
+    logo will be plotted.  The logo can be plotted in either
+    full color or monochrome. The NOAA logo is also plotted if
+    "NOAA" is entered for the file name. The NWS logo is plotted
+    if "NWS" is entered.
+
+    The text location <a href=../parm/txtloc.html>TXTLOC</a> is given as the X and Y values
+    in the Normalized coordinate system or Map coordinate
+    system if a '#' is prefixed before the X and Y values.
+    To use map coordinates, the map projection must be
+    defined by another GEMPAK application such as GPMAP.
+
+    <a href=../parm/column.html>COLUMN</a> is the number of columns the text will be divided
+    into within a panel.
+
+ 
+EXAMPLES
+ 
+    1.  Draw the contents of the text file mytext.txt to the XW
+	device.  Display the text at the location .1;.8.  Display
+	in a single column.
+
+	<a href=../parm/panel.html>PANEL</a>	 =  0
+	<a href=../parm/colors.html>COLORS</a>   =  1
+	<a href=../parm/text.html>TEXT</a>	 =  1
+	<a href=../parm/clear.html>CLEAR</a>	 =  yes
+	<a href=../parm/device.html>DEVICE</a>	 =  xw
+	<a href=../parm/txtfil.html>TXTFIL</a>	 =  mytext.txt
+	<a href=../parm/txtloc.html>TXTLOC</a>	 =  .1;.8
+	<a href=../parm/column.html>COLUMN</a>	 =  1
+
+ERROR MESSAGES
+ 
+    [GPTEXT  -1]    Fatal error initializing TAE.
+    [GPTEXT  -2]    Fatal error reading TAE parameters.
+    [GPTEXT  -3]    Fatal error initializing GEMPLT.
+    [GPTEXT  -4]    File ... does not exist.
+    [GPTEXT  -5]    Map projection is not set.
+</pre>
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

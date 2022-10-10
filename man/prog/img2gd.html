@@ -1,0 +1,63 @@
+<!doctype html><head><title>GEMPAK Help: img2gd</title></head><body>
+<a href=../../help_and_documentation>GEMPAK Manual</a> | 
+<a href=../prog/>Programs</a><br><hr>
+<pre>
+IMG2GD converts an image to a grid. The grid navigation specified may be
+different than that of the source image.
+
+
+INPUT PARAMETERS
+ 
+    <a href=../parm/proj.html>PROJ</a>      Map projection/angles/margins|drop flag
+    <a href=../parm/grdarea.html>GRDAREA</a>   Area covered by grid
+    <a href=../parm/kxky.html>KXKY</a>      Number of grid points in x;y
+    <a href=../parm/grdnam.html>GRDNAM</a>    Grid parameter name
+    <a href=../parm/gdfile.html>GDFILE</a>    Grid file
+    <a href=../parm/glevel.html>GLEVEL</a>    Grid level
+    <a href=../parm/gvcord.html>GVCORD</a>    Grid vertical coordinate
+    <a href=../parm/gdattim.html>GDATTIM</a>   Grid date/time
+    <a href=../parm/cpyfil.html>CPYFIL</a>    Grid file whose navigation is to be used in new grid file | subare
+    <a href=../parm/maxgrd.html>MAXGRD</a>    Maximum number of grids
+    <a href=../parm/imgfil.html>IMGFIL</a>    Image filename(s)
+    <a href=../parm/imgtim.html>IMGTIM</a>    image file current/dattim
+    <a href=../parm/calimg.html>CALIMG</a>    Flag to use calibrated values or pixel values
+ 
+ 
+PROGRAM DESCRIPTION
+ 
+   IMG2GD converts an image to a grid.
+
+   <a href=../parm/gdfile.html>GDFILE</a> specifies the output grid file. If the file does not already
+   exist, the file is created using the grid defined by <a href=../parm/cpyfil.html>CPYFIL</a>,
+   or if <a href=../parm/cpyfil.html>CPYFIL</a> is not defined then by <a href=../parm/proj.html>PROJ</a>, <a href=../parm/grdarea.html>GRDAREA</a>, and <a href=../parm/kxky.html>KXKY</a>.
+
+   <a href=../parm/cpyfil.html>CPYFIL</a> may provide either an existing grid file to read the projection
+   information from, or a grid number (#nnn) defined in grdnav.tbl.
+
+   <a href=../parm/proj.html>PROJ</a>, <a href=../parm/grdarea.html>GRDAREA</a>, and <a href=../parm/kxky.html>KXKY</a> define a grid navigation as in GDCFIL if
+   the output file does not already exist, and <a href=../parm/cpyfil.html>CPYFIL</a> is blank.
+
+   <a href=../parm/grdnam.html>GRDNAM</a> is the name of the output grid.
+
+   <a href=../parm/gvcord.html>GVCORD</a> is the grid coordinate of the output grid.
+
+   <a href=../parm/gdattim.html>GDATTIM</a> is the date/time of the output grid.
+
+   <a href=../parm/imgfil.html>IMGFIL</a> is the source image file name or template to be copnverted
+   to a grid.
+
+   <a href=../parm/imgtim.html>IMGTIM</a> is the time to use for <a href=../parm/imgfil.html>IMGFIL</a> templates.
+
+   <a href=../parm/calimg.html>CALIMG</a> determines whether to use the supplied calibration information
+   of the image for gridded values (YES), or use the raw pixel values of
+   the image (NO).
+
+
+EXAMPLES
+ 
+ERROR MESSAGES
+
+</pre>
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

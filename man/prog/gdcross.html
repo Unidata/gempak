@@ -1,0 +1,181 @@
+<!doctype html><head><title>GEMPAK Help: gdcross</title></head><body>
+<a href=../../help_and_documentation>GEMPAK Manual</a> | 
+<a href=../prog/>Programs</a><br><hr>
+<pre>
+GDCROSS displays a vertical cross section of scalar and/or vector
+        grids.
+
+INPUT PARAMETERS
+ 
+    <a href=../parm/cxstns.html>CXSTNS</a>    Cross-section station line
+    <a href=../parm/gdattim.html>GDATTIM</a>   Grid date/time
+    <a href=../parm/gvcord.html>GVCORD</a>    Grid vertical coordinate
+    <a href=../parm/gfunc.html>GFUNC</a>     Scalar grid
+    <a href=../parm/gvect.html>GVECT</a>     Vector grid
+    <a href=../parm/gdfile.html>GDFILE</a>    Grid file
+    <a href=../parm/wind.html>WIND</a>      Wind symbol/siz/wdth/typ/hdsz
+    <a href=../parm/refvec.html>REFVEC</a>    Mag;x;y;txtsiz/font/wdth/HW;labl
+    <a href=../parm/ptype.html>PTYPE</a>     Plot type/h:w ratio/margins
+    <a href=../parm/yaxis.html>YAXIS</a>     Ystrt/ystop/yinc/lbl;gln;tck
+    <a href=../parm/ijskip.html>IJSKIP</a>    Iskp;Istrt;Istp/Jskp;Jstrt;Jstp
+    <a href=../parm/cint.html>CINT</a>      Contour interval/min/max
+    <a href=../parm/scale.html>SCALE</a>     Scalar scale / vector scale
+    <a href=../parm/line.html>LINE</a>      Color/type/width/label/smth/fltr/scflg
+    <a href=../parm/border.html>BORDER</a>    Background color/type/width
+    <a href=../parm/title.html>TITLE</a>     Title color/line/title
+    <a href=../parm/clear.html>CLEAR</a>     Clear screen flag
+    <a href=../parm/device.html>DEVICE</a>    Device|name|x size;y size|color type
+    <a href=../parm/text.html>TEXT</a>      Size/fnt/wdth/brdr/N-rot/just/hw flg
+    <a href=../parm/panel.html>PANEL</a>     Panel loc/color/dash/width/regn
+    <a href=../parm/clrbar.html>CLRBAR</a>    Color/ornt/anch/x;y/ln;wd/freq|text_info
+    <a href=../parm/contur.html>CONTUR</a>    Subbox/smooth
+    <a href=../parm/fint.html>FINT</a>      Fill interval/min/max
+    <a href=../parm/fline.html>FLINE</a>     Fill colors/fill types
+    <a href=../parm/ctype.html>CTYPE</a>     Contour type:  C/F
+ 
+ 
+
+PROGRAM DESCRIPTION
+ 
+    GDCROSS draws a vertical cross section between two points
+    in a grid field.  The cross-section path is a line segment
+    on the grid projection plane joining the two points.  Gridded
+    data are interpolated to the cross-section plane at intervals
+    corresponding to approximately one grid increment.
+
+    <a href=../parm/cxstns.html>CXSTNS</a> specifies the beginning and ending points of the cross
+    section.  Each point may be entered as a latitude and longitude
+    separated by a semicolon, as station identifiers or numbers or
+    as x and y grid coordinates separated by a semicolon and
+    preceded by @.  The two points are separated by >.  The cross
+    section end points may also be selected graphically by setting
+    <a href=../parm/cxstns.html>CXSTNS</a> with the CURSOR command.  The end points are then
+    selected by clicking on a horizontal map displayed in another
+    GEMPAK XW window.
+
+    The vertical coordinate, set in <a href=../parm/gvcord.html>GVCORD</a>, can be PRES, THTA, HGHT,
+    or SGMA.  The data must be stored in that vertical coordinate in
+    the grid file.  No automatic vertical interpolation is included.
+    The vertical axis scaling, set in <a href=../parm/ptype.html>PTYPE</a>, can be LIN, LOG, KAP
+    or STUVE.  STUVE and KAP are the same; SKEWT may not be entered.
+    The plot aspect ratio and margins may also be entered in <a href=../parm/ptype.html>PTYPE</a>.
+
+    Both scalar and vector fields can be displayed in the
+    cross-section plane.  Contour lines are drawn through the scalar
+    field.  Contours may be color filled.  The line contours and filled
+    contours are specified as in GDCNTR.   <a href=../parm/clrbar.html>CLRBAR</a> allows a color bar to
+    be added for color fill contours.  Vector fields may be depicted
+    using arrows or barbs.
+
+    If M is entered in <a href=../parm/wind.html>WIND</a>, winds will be displayed in meters
+    per second unless the KNOTV operator has been specified in
+    <a href=../parm/gvect.html>GVECT</a>, in which case the winds will be displayed in knots.
+    IF K is entered in <a href=../parm/wind.html>WIND</a>, the wind is displayed in knots.
+
+    Circulations can be displayed in the cross-section plane by
+    specifying <a href=../parm/gfunc.html>GFUNC</a> = CIRC ( V, W ), where V is a vector field
+    and W is the scalar vertical motion in the <a href=../parm/gvcord.html>GVCORD</a> coordinate.
+    The horizontal component of the circulation is the tangential
+    component of V.  The vertical component is W scaled up to
+    account for the exaggerated aspect ratio of the display
+    relative to that of the real atmosphere.  For the CIRC
+    operator, W is assumed to be pressure velocity in mb/s
+    for PRES and THTA coordinates and cm/s for the HGHT coordinate.
+    If the vertical component does not require scaling, the
+    circulation can be specified explicitly in the form
+    <a href=../parm/gvect.html>GVECT</a> = VECR ( TANG ( V ), W )/VERT, where VERT is a flag
+    indicating that the vector components should not be rotated to
+    be north-relative.
+
+
+EXAMPLES
+ 
+    1.  Plot temperature in Celsius on a log-P chart along the
+        cross section from LAX to BWI.  Plot the filled contours
+	using every other color from 30 to 8.  Plot the contour
+	lines in color number 32, using solid lines.  Plot wind
+        barbs for the wind.  Plot a horizontal color bar centered
+	under the cross section.
+
+	<a href=../parm/cxstns.html>CXSTNS</a>	 =  lax>bwi
+	<a href=../parm/gdattim.html>GDATTIM</a>	 =  f06
+	<a href=../parm/gvcord.html>GVCORD</a>	 =  pres
+	<a href=../parm/gfunc.html>GFUNC</a>	 =  tmpc
+	<a href=../parm/gvect.html>GVECT</a>	 =  wnd
+	<a href=../parm/gdfile.html>GDFILE</a>	 =  $GEMPAK/data/hrcbob.grd
+	<a href=../parm/wind.html>WIND</a>	 =  bm6//2
+	<a href=../parm/refvec.html>REFVEC</a>	 =  10
+	<a href=../parm/ptype.html>PTYPE</a>	 =  log
+	<a href=../parm/yaxis.html>YAXIS</a>	 =
+	<a href=../parm/cint.html>CINT</a>	 =
+	<a href=../parm/scale.html>SCALE</a>	 =
+	<a href=../parm/line.html>LINE</a>	 =  32/1/3
+	<a href=../parm/border.html>BORDER</a>	 =  1
+	<a href=../parm/title.html>TITLE</a>	 =  1
+	<a href=../parm/clear.html>CLEAR</a>	 =  yes
+	<a href=../parm/device.html>DEVICE</a>	 =  xw
+	<a href=../parm/text.html>TEXT</a>	 =  1
+	<a href=../parm/panel.html>PANEL</a>	 =  0
+	<a href=../parm/clrbar.html>CLRBAR</a>	 =  1/h/cc/.5;.03/.6;.01
+	<a href=../parm/contur.html>CONTUR</a>	 =  3
+	<a href=../parm/fint.html>FINT</a>	 =
+	<a href=../parm/fline.html>FLINE</a>	 =  30-8-2
+	<a href=../parm/ctype.html>CTYPE</a>	 =  c/f
+
+    2.  Now, using the same file, plot a log pressure cross
+        section of the vorticity advection, scaled by 10**9.
+        Also, plot the ageostrophic circulation using arrows.
+        Use a cross-section line from grid point (1,1) to grid
+        point (10,20).  Use a height-to-width plot ratio of 0.25.
+
+	<a href=../parm/cxstns.html>CXSTNS</a>	 =  @1;1>@10;20
+	<a href=../parm/gdattim.html>GDATTIM</a>	 =  f06
+	<a href=../parm/gvcord.html>GVCORD</a>	 =  pres
+	<a href=../parm/gfunc.html>GFUNC</a>	 =  adv(avor(wnd),wnd)
+	<a href=../parm/gvect.html>GVECT</a>	 =  circ(age;omeg)
+	<a href=../parm/gdfile.html>GDFILE</a>	 =  $GEMPAK/data/hrcbob.grd
+	<a href=../parm/wind.html>WIND</a>	 =  am6//2//.75
+	<a href=../parm/refvec.html>REFVEC</a>	 =  5;.05;.2
+	<a href=../parm/ptype.html>PTYPE</a>	 =  log/.25
+	<a href=../parm/yaxis.html>YAXIS</a>	 =
+	<a href=../parm/cint.html>CINT</a>	 =  .5
+	<a href=../parm/scale.html>SCALE</a>	 =  9
+	<a href=../parm/line.html>LINE</a>	 =  32/1/2
+	<a href=../parm/border.html>BORDER</a>	 =  1
+	<a href=../parm/title.html>TITLE</a>	 =  1
+	<a href=../parm/clear.html>CLEAR</a>	 =  yes
+	<a href=../parm/device.html>DEVICE</a>	 =  xw
+	<a href=../parm/text.html>TEXT</a>	 =  1
+	<a href=../parm/panel.html>PANEL</a>	 =  0
+	<a href=../parm/clrbar.html>CLRBAR</a>	 =  1/h/cc/.5;.2/.1;.01
+	<a href=../parm/contur.html>CONTUR</a>	 =  3
+	<a href=../parm/fint.html>FINT</a>	 =  0/0/0
+	<a href=../parm/fline.html>FLINE</a>	 =  4;2
+	<a href=../parm/ctype.html>CTYPE</a>	 =  c/f
+
+ERROR MESSAGES
+ 
+    [GDCROSS  +3]   WARNING:  ... not found.  CONTINUING---
+    [GDCROSS  +2]  Surface value of <a href=../parm/gvcord.html>GVCORD</a> is not available.
+    [GDCROSS  +1]   WARNING.  There are no contour levels.
+    [GDCROSS  -1]   Fatal error initializing TAE.
+    [GDCROSS  -2]   Fatal error reading TAE parameters.
+    [GDCROSS  -3]   Fatal error initializing GEMPLT.
+    [GDCROSS  -4]   Input for <a href=../parm/cxstns.html>CXSTNS</a> is invalid.
+    [GDCROSS  -5]   Input for <a href=../parm/gdattim.html>GDATTIM</a> is invalid.
+    [GDCROSS  -6]   Input for <a href=../parm/gvcord.html>GVCORD</a> is invalid.
+    [GDCROSS  -7]   Input for <a href=../parm/ptype.html>PTYPE</a> is invalid.
+    [GDCROSS  -8]   Graph coordinates are incorrectly defined.
+    [GDCROSS  -9]   No points found for cross section.
+    [GDCROSS -10]   LOG is not possible for this vertical coordinate.
+    [GDCROSS -11]   Cross-section coordinates are invalid.
+    [GDCROSS -12]   No levels--check input for <a href=../parm/gdattim.html>GDATTIM</a> and <a href=../parm/gvcord.html>GVCORD</a>.
+    [GDCROSS -13]   @LEVEL in-line parameter is not allowed.
+    [GDCROSS -14]   %VCORD in-line parameter is not allowed.
+    [GDCROSS -18]   <a href=../parm/gvect.html>GVECT</a> cannot be evaluated.
+    [GDCROSS -19]   <a href=../parm/gfunc.html>GFUNC</a> cannot be evaluated.
+    [GDCROSS -20]   Input for <a href=../parm/yaxis.html>YAXIS</a> is invalid.
+</pre>
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

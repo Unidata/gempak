@@ -1,0 +1,138 @@
+<!doctype html><head><title>GEMPAK Help: sfcfil</title></head><body>
+<a href=../../help_and_documentation>GEMPAK Manual</a> | 
+<a href=../prog/>Programs</a><br><hr>
+<pre>
+SFCFIL creates a new GEMPAK surface file.
+
+
+INPUT PARAMETERS
+ 
+    <a href=../parm/sfoutf.html>SFOUTF</a>    Output surface file
+    <a href=../parm/sfprmf.html>SFPRMF</a>    Surface parameter packing file
+    <a href=../parm/stnfil.html>STNFIL</a>    Station information file
+    <a href=../parm/shipfl.html>SHIPFL</a>    Ship data file flag
+    <a href=../parm/timstn.html>TIMSTN</a>    Times/additional stations
+    <a href=../parm/sffsrc.html>SFFSRC</a>    Surface file source
+ 
+ 
+PROGRAM DESCRIPTION
+ 
+    SFCFIL creates a GEMPAK surface file.  The file may be a
+    standard file or a ship format file. The file may have two
+    data types -- decoded data and/or text data.
+
+    <a href=../parm/sffsrc.html>SFFSRC</a> is the surface file source and may be set to either
+    decoded data (including AIRW, METR, SHIP, BUOY, and SYNP)
+    or <a href=../parm/text.html>TEXT</a>.
+
+    If both types are requested, they are separated by a '|'.
+    <a href=../parm/sffsrc.html>SFFSRC</a> may be entered as:
+
+		<a href=../parm/sffsrc.html>SFFSRC</a> =		==> create a file for
+                                            unknown (UNKN) decoded
+                                            data
+
+		<a href=../parm/sffsrc.html>SFFSRC</a> = AIRW		==> create a file for
+                                            decoded airways data
+
+		<a href=../parm/sffsrc.html>SFFSRC</a> = <a href=../parm/text.html>TEXT</a>		==> create a file for
+                                            text data
+
+		<a href=../parm/sffsrc.html>SFFSRC</a> = AIRW|<a href=../parm/text.html>TEXT</a>	==> create a file for both
+
+    The decoded file type MUST be specified first, otherwise a
+    default to text only will occur.
+
+    If <a href=../parm/shipfl.html>SHIPFL</a> is set to YES, a ship format file is created.  In
+    this case, both station location and time are stored with
+    each data entry.  This capability is useful when the station
+    location varies in time, such as for moving ships, aircraft
+    or free-floating buoys.
+
+    If a standard file is to be created, the maximum number of
+    times to be included in the file must be entered as the first
+    value in <a href=../parm/timstn.html>TIMSTN</a>.  If a ship format file is being created, the
+    maximum number of entries in the file is given by the first
+    value in <a href=../parm/timstn.html>TIMSTN</a>.
+
+    If <a href=../parm/stnfil.html>STNFIL</a> is not blank, information about all the stations in
+    <a href=../parm/stnfil.html>STNFIL</a> will be added to the data set.  Space will be left in the
+    file for the additional number of stations specified as the
+    second parameter in <a href=../parm/timstn.html>TIMSTN</a>.  Note that an error will result if
+    <a href=../parm/stnfil.html>STNFIL</a> is blank and <a href=../parm/timstn.html>TIMSTN</a> does not request more stations.
+
+    <a href=../parm/sfprmf.html>SFPRMF</a> contains information about the parameters to be included
+    in the file.  <a href=../parm/sfprmf.html>SFPRMF</a> may be either a list of parameters or the
+    name of a packing file.  If a list is entered, the parameters
+    must be separated with semicolons; packing information may also
+    be included after a slash with the minimum and maximum values
+    and the resolution separated by dashes.  For example, to
+    include temperature and dewpoint in a file without packing,
+    <a href=../parm/sfprmf.html>SFPRMF</a> may be entered as :
+
+               <a href=../parm/sfprmf.html>SFPRMF</a> = TMPC;DWPC
+
+    To pack the data, use:
+
+               <a href=../parm/sfprmf.html>SFPRMF</a> = TMPC/-127-63-.1;DWPC/-63-63-.1
+
+    <a href=../parm/sfprmf.html>SFPRMF</a> may also contain the name of a packing file.  A packing
+    file for data which is not to be packed contains a list of
+    parameters with one parameter per line.  In a file for packed
+    data, each line must include the parameter name, the minimum
+    and maximum data values and the resolution, all separated with
+    spaces.  The default packing file for surface data is SF51.PACK.
+
+ 
+EXAMPLES
+ 
+    1.  Create a surface file which can contain both decoded and
+	text data called SURF.DAT with a maximum of 15 times using
+	the default station and parameter files.  Leave room in the
+	file for 100 stations in addition to the stations in <a href=../parm/stnfil.html>STNFIL</a>.
+	Use the GEMPAK standard packing file and table file.
+
+        <a href=../parm/sfoutf.html>SFOUTF</a>  =  surf.dat
+        <a href=../parm/sfprmf.html>SFPRMF</a>  =  sf51.tbl
+        <a href=../parm/stnfil.html>STNFIL</a>  =  stations.tbl
+        <a href=../parm/shipfl.html>SHIPFL</a>  =  no
+        <a href=../parm/timstn.html>TIMSTN</a>  =  15/100
+	<a href=../parm/sffsrc.html>SFFSRC</a>  =  AIRW|<a href=../parm/text.html>TEXT</a>
+
+    2.  Create a ship file which can contain decoded data only
+	and a maximum of 1000 ship reports.  Use a locally
+	developed parameter file named SHIP.PRM for packing.
+
+        <a href=../parm/sfoutf.html>SFOUTF</a>  =  ship.dat
+        <a href=../parm/sfprmf.html>SFPRMF</a>  =  ship.prm
+        <a href=../parm/stnfil.html>STNFIL</a>  =
+        <a href=../parm/shipfl.html>SHIPFL</a>  =  yes
+        <a href=../parm/timstn.html>TIMSTN</a>  =  1000
+	<a href=../parm/sffsrc.html>SFFSRC</a>  =  SHIP
+
+    3.  Create a surface file which can contain text data only
+	called SURF.DAT. Use a locally developed parameter file
+	named SURF.PRM for packing.
+
+	<a href=../parm/sfoutf.html>SFOUTF</a>  =  ship.dat
+	<a href=../parm/sfprmf.html>SFPRMF</a>  =  surf.prm
+	<a href=../parm/stnfil.html>STNFIL</a>  =
+	<a href=../parm/shipfl.html>SHIPFL</a>  =  no
+	<a href=../parm/timstn.html>TIMSTN</a>  =
+	<a href=../parm/sffsrc.html>SFFSRC</a>  =  <a href=../parm/text.html>TEXT</a>
+
+ERROR MESSAGES
+ 
+    [SFCFIL  +2]    WARNING! <a href=../parm/addstn.html>ADDSTN</a> was negative -- set to 0.
+    [SFCFIL  +1]    Cannot add stn to a ship file; <a href=../parm/stnfil.html>STNFIL</a> ignored.
+    [SFCFIL  -1]    Fatal error initializing TAE.
+    [SFCFIL  -2]    Fatal error reading TAE parameters.
+    [SFCFIL  -3]    Error opening station file ... .
+    [SFCFIL  -4]    File does not include room for any stations.
+    [SFCFIL  -5]    File does not include room for any times.
+    [SFCFIL  -6]    <a href=../parm/sfprmf.html>SFPRMF</a> is incorrectly specified.
+    [SFCFIL  -7]    The output file name is blank.
+</pre>
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

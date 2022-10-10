@@ -1,0 +1,54 @@
+<html>
+<head>
+<title>GEMPAK Grid Inventory</title>
+<script src='https://code.jquery.com/jquery-1.11.1.min.js'></script>
+<script src='../jquery.dynatable.js'></script>
+<script src='../bootstrap.min.js'></script>
+<script src='gempak-models.json'></script>
+<link rel="stylesheet" href="../jquery.dynatable.css">
+<link rel="stylesheet" href="../bootstrap.css">
+
+<script>
+console.log(records);
+//var gempakRecords = JSON.parse(records);
+$( document ).ready(function() {
+	$('#gempak-models').dynatable({
+	  dataset: {
+	    records: records
+	  },
+	  features: {
+	    paginate: false,
+	    search: true,
+	    recordCount: true,
+	    perPageSelect: false
+	  },
+	  table: {
+	    copyHeaderClass: true
+	  },
+	  "fnInitComplete": function() {
+             $('#gempak-models tbody tr').each(function(){
+                $(this).find('td:eq(0)').attr('nowrap', 'nowrap');
+            });
+          }
+	});
+});
+</script>
+</head>
+<body>
+<table id="gempak-models" class="table table-bordered table-hover">
+  <thead>
+    <th>name</th>
+    <th>alias</th>
+    <th>gridsize</th>
+    <th>proj</th>
+    <th>num</th>
+    <th>Max</th>
+    <th>Time</th>
+    <th>Filename</th>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

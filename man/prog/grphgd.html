@@ -1,0 +1,256 @@
+<!doctype html><head><title>GEMPAK Help: grphgd</title></head><body>
+<a href=../../help_and_documentation>GEMPAK Manual</a> | 
+<a href=../prog/>Programs</a><br><hr>
+<pre>
+GRPHGD generates a grid either from contours drawn via NMAP product generation,
+or from a provided VGF file.
+
+INPUT PARAMETERS
+ 
+    <a href=../parm/gdoutf.html>GDOUTF</a>    Output grid file
+    <a href=../parm/guess.html>GUESS</a>     Guess file
+    <a href=../parm/proj.html>PROJ</a>      Map projection/angles/margins|drop flag
+    <a href=../parm/grdarea.html>GRDAREA</a>   Area covered by grid
+    <a href=../parm/kxky.html>KXKY</a>      Number of grid points in x;y
+    <a href=../parm/maxgrd.html>MAXGRD</a>    Maximum number of grids
+    <a href=../parm/cpyfil.html>CPYFIL</a>    Grid file whose navigation is to be used in new grid file | subare
+    <a href=../parm/anlyss.html>ANLYSS</a>    Grid analysis block
+    <a href=../parm/cntrfl.html>CNTRFL</a>    Contour file
+    <a href=../parm/gdattim.html>GDATTIM</a>   Grid date/time
+    <a href=../parm/gfunc.html>GFUNC</a>     Scalar grid
+    <a href=../parm/glevel.html>GLEVEL</a>    Grid level
+    <a href=../parm/gvcord.html>GVCORD</a>    Grid vertical coordinate
+    <a href=../parm/keycol.html>KEYCOL</a>    Key color
+    <a href=../parm/keyline.html>KEYLINE</a>   Key line (<a href=../parm/line.html>LINE</a> or SPLN/subtyp)
+    <a href=../parm/olkday.html>OLKDAY</a>    Day of extended outlook
+    <a href=../parm/gglims.html>GGLIMS</a>    Grid value limitations and control
+    <a href=../parm/histgrd.html>HISTGRD</a>   Toggle writing history grid (y/n)
+    <a href=../parm/bounds.html>BOUNDS</a>    <a href=../parm/bounds.html>BOUNDS</a> name|<key>key_name|mask_flag
+    <a href=../parm/type.html>TYPE</a>      GDPLOT2 function processing type
+    <a href=../parm/gamma.html>GAMMA</a>     Convergence parameter
+    <a href=../parm/search.html>SEARCH</a>    Search radius/Extrapolation
+    <a href=../parm/npass.html>NPASS</a>     Number of passes
+    <a href=../parm/qcntl.html>QCNTL</a>     Quality control threshold
+    <a href=../parm/guesfun.html>GUESFUN</a>   Guess grid
+    <a href=../parm/catmap.html>CATMAP</a>    s1=x;s2=y;...sN=z
+    <a href=../parm/discrete.html>DISCRETE</a>  a-b=x;c-d=y;e-f=z
+    <a href=../parm/dlines.html>DLINES</a>    [yes/no][;yes/no] | epsilon
+    <a href=../parm/ggvgf.html>GGVGF</a>     VGF file
+    <a href=../parm/edgeopts.html>EDGEOPTS</a>  Option to specify boundary conditions.
+ 
+ 
+
+PROGRAM DESCRIPTION
+ 
+    GRPHGD generates a grid from contours drawn via NMAP product generation.
+    A two-step process is involved:
+
+	1) Contours must be drawn via NMAP and the coordinates saved,
+	2) The saved coordinates are passed into GRPHGD for
+	   conversion into gridded data.
+
+    Alternatively, the user can specify the VGF file name, containing contour
+    information, thus by-passing NMAP procedre described below.
+
+    NMAP Procedure
+
+    To generate contours, invoke NMAP and enter product generation.
+    Contours are defined as a simple solid line grouped with a numeric
+    text value using 'LABEL' grouping.  The label may be located anywhere.
+    Any number of equal-valued labels may be grouped with any number of lines.
+    When drawing, labeling and grouping have been completed, a text file
+    containing the geographical contour coordinates must be created.  Click
+    'PROD' then 'GRAPH GRID'.  A popup will appear with a listing of all
+    properly grouped contours and their associated value and coordinates.
+    Click 'SAVE' to save this text to the ASCII file <a href=../parm/cntrfl.html>CNTRFL</a>.  This is the
+    file which will be passed into GRPHGD.
+
+    Note that NMAP now invokes the GRPHGD program directly when the user
+    selects "MAKE GRID".
+
+    GRPHGD Procedure
+
+    To generate a gridded field from contour data, use the program GRPHGD.
+    The following parameters are used:
+
+	<a href=../parm/gdoutf.html>GDOUTF</a>   = Output grid file
+	<a href=../parm/proj.html>PROJ</a>     = Map projection/angles/margins|dr
+	<a href=../parm/grdarea.html>GRDAREA</a>  = Area covered by grid
+	<a href=../parm/kxky.html>KXKY</a>     = Number of grid points in x;y
+	<a href=../parm/maxgrd.html>MAXGRD</a>   = Maximum number of grids
+	<a href=../parm/cpyfil.html>CPYFIL</a>   = File to be copied
+	<a href=../parm/anlyss.html>ANLYSS</a>   = Grid analysis block
+	<a href=../parm/cntrfl.html>CNTRFL</a>   = Contour file (ASCII data generated via NMAP)
+	<a href=../parm/gdattim.html>GDATTIM</a>  = Grid date/time
+	<a href=../parm/gfunc.html>GFUNC</a>    = GEMPAK parameter name
+	<a href=../parm/glevel.html>GLEVEL</a>   = GEMPAK vertical level value
+	<a href=../parm/gvcord.html>GVCORD</a>   = GEMPAK vertical coordinate
+	<a href=../parm/keycol.html>KEYCOL</a>   = Key color
+	<a href=../parm/keyline.html>KEYLINE</a>  = Key line (<a href=../parm/line.html>LINE</a> or SPLN/subtyp)
+	<a href=../parm/olkday.html>OLKDAY</a>   = Day of extended outlook
+	<a href=../parm/bounds.html>BOUNDS</a>   = Bound area(s) to exclude or include
+	<a href=../parm/type.html>TYPE</a>     = function processing type
+        <a href=../parm/gamma.html>GAMMA</a>    = Convergence parameter
+        <a href=../parm/search.html>SEARCH</a>   = Search radius/Extrapolation
+        <a href=../parm/npass.html>NPASS</a>    = Number of passes
+        <a href=../parm/qcntl.html>QCNTL</a>    = Quality control threshold
+        <a href=../parm/guesfun.html>GUESFUN</a>  = Guess grid
+        <a href=../parm/catmap.html>CATMAP</a>   = s1=x;s2=y;...sN=z
+        <a href=../parm/discrete.html>DISCRETE</a> = a-b=x;c-d=y;e-f=z
+        <a href=../parm/dlines.html>DLINES</a>   = Directional lines
+        <a href=../parm/ggvgf.html>GGVGF</a>    = VGF file
+        <a href=../parm/edgeopts.html>EDGEOPTS</a> = FALSE
+
+    Several parameters (<a href=../parm/proj.html>PROJ</a>, <a href=../parm/grdarea.html>GRDAREA</a>, <a href=../parm/kxky.html>KXKY</a>, <a href=../parm/maxgrd.html>MAXGRD</a>, <a href=../parm/cpyfil.html>CPYFIL</a>, <a href=../parm/anlyss.html>ANLYSS</a>) are
+    intended to be used identically as in the programs GDCFIL and NAGRIB.
+    These define the grid (and gridfile) to create the data.
+    The grid is written to file <a href=../parm/gdoutf.html>GDOUTF</a> with parameter name <a href=../parm/gfunc.html>GFUNC</a> valid
+    at <a href=../parm/gdattim.html>GDATTIM</a>.  <a href=../parm/glevel.html>GLEVEL</a> and <a href=../parm/gvcord.html>GVCORD</a> may be assigned accordingly.
+    <a href=../parm/keycol.html>KEYCOL</a> indicates which lines actually get processed; =0 processes all
+    lines, =n processes only lines with color n. <a href=../parm/bounds.html>BOUNDS</a> determines whether
+    to assign missing values to gridpoints inside (<a href=../parm/bounds.html>BOUNDS</a>=...|...|false) or
+    outside (<a href=../parm/bounds.html>BOUNDS</a>=...|...|true) a bounded area. Up to ten bounds areas
+    may be specified by separating with '+'. <a href=../parm/keyline.html>KEYLINE</a> is similar to <a href=../parm/keycol.html>KEYCOL</a>
+    but is for line type.  It indicates which lines get processed; =0
+    all line types are processed, =m/n, where m is the vgtype and n is
+    the subtyp of vgtype m.
+
+    <a href=../parm/type.html>TYPE</a> specifiies the processing type that is used similar to that of GDPLOT2
+    function. Valid TYPEs are 'c' for contour line processing, 'b' for wind
+    barb processing, and 'a' for wind arrow processing.
+
+    The parameters <a href=../parm/gamma.html>GAMMA</a>, <a href=../parm/search.html>SEARCH</a>, <a href=../parm/npass.html>NPASS</a>, <a href=../parm/qcntl.html>QCNTL</a> and <a href=../parm/guesfun.html>GUESFUN</a> apply to analysis
+    of point-value wind vector information (TYPEs 'b' or 'a').
+
+    <a href=../parm/catmap.html>CATMAP</a> allows for mapping of alphanumeric contour labels to be mapped to
+    numeric-only values prior to the GRPHGD analysis. For instance, the contour
+    label 'LOW' could be mapped to the value '1', 'MED' to '2', etc.
+
+    <a href=../parm/olkday.html>OLKDAY</a> indicates the day of the extended outlook to process.
+
+    <a href=../parm/discrete.html>DISCRETE</a> allows for the discrete representation of values on the final grid.
+    For instance, all values inside a closed contour with value '0.5' could be
+    assigned the value '0.5'.
+
+    <a href=../parm/dlines.html>DLINES</a> specifies that the direction of the contour line (the order of points
+    which may be depicted with an arrowed line) will be used to determine the
+    final grid point values in ambiguous cases. For instance, if only one
+    contour line is drawn, the situation is ambiguous as to which side of the
+    line should have values greater (or lesser) than the contour value. The
+    convention is that GREATER VALUES ARE ALWAYS TO THE RIGHT OF THE <a href=../parm/line.html>LINE</a>.
+    <a href=../parm/dlines.html>DLINES</a> also specifies if the left of line value is smaller. If the
+    <a href=../parm/discrete.html>DISCRETE</a> option is enabled, then <a href=../parm/dlines.html>DLINES</a> is automatically TRUE for right of
+    line.
+
+    <a href=../parm/ggvgf.html>GGVGF</a> specifies the name of VGF file that contains the contour information.
+    If <a href=../parm/ggvgf.html>GGVGF</a> is not specified, the <a href=../parm/cntrfl.html>CNTRFL</a> parameter must be specified and exist.
+    If <a href=../parm/ggvgf.html>GGVGF</a> is specified, there is no need to go through NMAP Procedure,
+    described above.  The grid file would be generated from the specified VGF
+    file.  Also, the info file would be generated as well.
+    If both <a href=../parm/ggvgf.html>GGVGF</a> and <a href=../parm/cntrfl.html>CNTRFL</a> are specified, the contour information is gotten
+    from the specified VGF file, and written out to the specified .info file.
+
+    <a href=../parm/edgeopts.html>EDGEOPTS</a> specifies whether or not to access the contours beyond the grid
+    domain. Input TRUE or FALSE.
+
+    The GRPHGD contour line algorithm
+
+    GRPHGD loosely follows an algorithm originally described in TDL OFFICE
+    NOTE 92-14 "The Systematic Interpolative Radial Search (SIRS) -- A
+    Method to Compute Gridpoint Values from Contours".  Some changes
+    were incorporated to improve data consistency, to increase execution
+    efficiency and for added capability:
+
+    The program performs several methodologies to assign values at gridpoints:
+    1) bounds check w/ appropriate missing value assignments,
+    2) exact value assignment when a contour lies directly on a gridpoint,
+    3) radial search/assignment for grid points between different valued
+       contours,
+    4) grid points within closed contours, with and without relative
+       minima/maxima,
+    5) grid points surrounded by like-valued contours, without
+       relative minima/maxima,
+    6) a weighted search and assignment where neither 1) thru 5) could be
+       applied.  A 9-point smoother is applied as a final step.
+
+    The GRPHGD wind barb/arrow algorithm
+
+    Wind barbs and arrows are analyzed using the GEMPAK Objective Analysis
+    Barnes algorithm.
+
+
+EXAMPLES
+ 
+    1.  Create a grid from the NMAP ASCII file qpf.info.  Use the same grid
+	as found in the RUC2 model.  Identify the grid as 'prcp' valid
+	at 980903/1200.
+
+	<a href=../parm/gdoutf.html>GDOUTF</a>   = qpf.98090312
+        <a href=../parm/proj.html>PROJ</a>     =
+        <a href=../parm/grdarea.html>GRDAREA</a>  =
+        <a href=../parm/kxky.html>KXKY</a>     =
+        <a href=../parm/maxgrd.html>MAXGRD</a>   = 10
+        <a href=../parm/cpyfil.html>CPYFIL</a>   = $MODEL/ruc2/ruc2_98090312
+        <a href=../parm/anlyss.html>ANLYSS</a>   =
+        <a href=../parm/cntrfl.html>CNTRFL</a>   = qpf.info
+        <a href=../parm/gdattim.html>GDATTIM</a>  = 980903/1200
+        <a href=../parm/gfunc.html>GFUNC</a>    = prcp
+
+    2.  Same as example 1, except assign missing values outside the SSA
+        bounded area HPC050, i.e., assign values only to those grid points
+        inside the bounds area.
+
+        <a href=../parm/gdoutf.html>GDOUTF</a>   = qpf.98090312
+        <a href=../parm/proj.html>PROJ</a>     =
+        <a href=../parm/grdarea.html>GRDAREA</a>  =
+        <a href=../parm/kxky.html>KXKY</a>     =
+        <a href=../parm/maxgrd.html>MAXGRD</a>   = 10
+        <a href=../parm/cpyfil.html>CPYFIL</a>   = $MODEL/ruc2/ruc2_98090312
+        <a href=../parm/anlyss.html>ANLYSS</a>   =
+        <a href=../parm/cntrfl.html>CNTRFL</a>   = qpf.info
+        <a href=../parm/gdattim.html>GDATTIM</a>  = 980903/1200
+        <a href=../parm/gfunc.html>GFUNC</a>    = prcp
+        <a href=../parm/bounds.html>BOUNDS</a>   = SSA|<<a href=../parm/area.html>AREA</a>>HPC050|true
+
+    3.  Same as example 2, except that the countour information is processed
+        directy from gpf.vgf file.
+
+        <a href=../parm/gdoutf.html>GDOUTF</a>   = qpf.98090312
+        <a href=../parm/proj.html>PROJ</a>     =
+        <a href=../parm/grdarea.html>GRDAREA</a>  =
+        <a href=../parm/kxky.html>KXKY</a>     =
+        <a href=../parm/maxgrd.html>MAXGRD</a>   = 10
+        <a href=../parm/cpyfil.html>CPYFIL</a>   = $MODEL/ruc2/ruc2_98090312
+        <a href=../parm/anlyss.html>ANLYSS</a>   =
+        <a href=../parm/cntrfl.html>CNTRFL</a>   =
+        <a href=../parm/gdattim.html>GDATTIM</a>  = 980903/1200
+        <a href=../parm/gfunc.html>GFUNC</a>    = prcp
+        <a href=../parm/bounds.html>BOUNDS</a>   = SSA|<<a href=../parm/area.html>AREA</a>>HPC050|true
+        <a href=../parm/ggvgf.html>GGVGF</a>   =  qpf.vgf
+
+ERROR MESSAGES
+ 
+    [GRPHGD  +5]    WARNING.  visib reset to TRUE by rule.
+    [GRPHGD  +4]    WARNING.  Maximum number of lines exceeded.
+    [GRPHGD  +3]    WARNING.  Maximum number of intersections exceeded (...).
+    [GRPHGD  +2]    WARNING.  This grid dimension is too large.
+    [GRPHGD  +1]    WARNING.  This grid is too large.
+    [GRPHGD  -1]    Fatal error initializing TAE.
+    [GRPHGD  -2]    Fatal error reading TAE parameters.
+    [GRPHGD  -3]    Fatal error initializing GEMPLT.
+    [GRPHGD  -4]    Navigation information is invalid.
+    [GRPHGD  -5]    Grid area ... is invalid.
+    [GRPHGD  -6]    Grid size is invalid.
+    [GRPHGD  -7]    The grid file name may not be blank.
+    [GRPHGD  -8]    Cannot create file ....
+    [GRPHGD  -9]    Grid name ... cannot be found in grid table.
+    [GRPHGD -11]    Cannot open file ....
+    [GRPHGD -12]    Cannot convert value from file ....
+    [GRPHGD -13]    File ... does not exist.
+    [GRPHGD -14]    The control file name may not be blank.
+    [GRPHGD -15]    Boundary condition can not be set due to open line(s).
+    [GRPHGD ]
+</pre>
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

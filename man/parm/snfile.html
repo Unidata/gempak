@@ -1,0 +1,37 @@
+<!doctype html><head><title>GEMPAK Help: snfile</title></head><body>
+<a href=../../help_and_documentation>GEMPAK Manual</a> | 
+<a href=../prog/>Programs</a> | <a href=../parm/>Parameters</a><br><hr>
+<pre>
+     SNFILE
+
+     SNFILE is the filename for an upper air data set.
+
+     The input for SNFILE may also be a file type. The following file
+     type may be input:
+
+		UAIR		observed upper air
+
+     When this file type is input, the program searches locally for the 
+     most recent file. If no files are found locally, the program
+     searches remotely for the most recent file. The remote directories 
+     are specified in the table DATA.TBL.
+
+     An optional base time may be included with the file type name,
+     following a bar (|). For example:
+
+                SNFILE = uair | base time
+
+     The base time may be any valid format for a GEMPAK date/time. 
+     Any missing parts of the date/time will be supplied by the 
+     system time.
+
+     Access to upper air data in the AWIPS database is accomplished by
+     setting SNFILE to an alias found in datatype.tbl. Each entry for
+     upper air data references an XML control file that needs to be 
+     created to specify the attributes of the metadata in the database.
+     For example, the alias A2UAIR uses the XML file 
+     $GEMTBL/data-access/uair.xml.
+</pre>
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

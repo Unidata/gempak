@@ -1,0 +1,135 @@
+<!doctype html><head><title>GEMPAK Help: acprof</title></head><body>
+<a href=../../help_and_documentation>GEMPAK Manual</a> | 
+<a href=../prog/>Programs</a><br><hr>
+<pre>
+ACPROF draws profiles of ACARS data
+
+INPUT PARAMETERS
+ 
+    <a href=../parm/sffile.html>SFFILE</a>    Surface data file
+    <a href=../parm/dattim.html>DATTIM</a>    Date/time
+    <a href=../parm/area.html>AREA</a>      Data area
+    <a href=../parm/snparm.html>SNPARM</a>    Sounding parameter list
+    <a href=../parm/line.html>LINE</a>      Color/type/width/label/smth/fltr
+    <a href=../parm/ptype.html>PTYPE</a>     Plot type/h:w ratio/margins
+    <a href=../parm/vcoord.html>VCOORD</a>    Vertical coordinate type
+    <a href=../parm/stndex.html>STNDEX</a>    Stability indices
+    <a href=../parm/stncol.html>STNCOL</a>    Stability index color
+    <a href=../parm/wind.html>WIND</a>      Wind symbol/siz/wdth/typ/hdsz
+    <a href=../parm/winpos.html>WINPOS</a>    Wind position
+    <a href=../parm/marker.html>MARKER</a>    Marker color/type/size/width/hw
+    <a href=../parm/border.html>BORDER</a>    Background color/type/width
+    <a href=../parm/title.html>TITLE</a>     Title color/line/title
+    <a href=../parm/device.html>DEVICE</a>    Device|name|x size;y size|color type
+    <a href=../parm/yaxis.html>YAXIS</a>     Ystrt/ystop/yinc/lbl;gln;tck
+    <a href=../parm/xaxis.html>XAXIS</a>     Xstrt/xstop/xinc/lbl;gln;tck
+    <a href=../parm/filter.html>FILTER</a>    Filter data factor
+    <a href=../parm/clear.html>CLEAR</a>     Clear screen flag
+    <a href=../parm/panel.html>PANEL</a>     Panel loc/color/dash/width/regn
+    <a href=../parm/text.html>TEXT</a>      Size/fnt/wdth/brdr/N-rot/just/hw flg
+    <a href=../parm/thtaln.html>THTALN</a>    THTA color/dash/width/mn/mx/inc
+    <a href=../parm/thteln.html>THTELN</a>    THTE color/dash/width/mn/mx/inc
+    <a href=../parm/mixrln.html>MIXRLN</a>    MIXR color/dash/width/mn/mx/inc
+ 
+ 
+
+PROGRAM DESCRIPTION
+ 
+    ACPROF draws profiles of ACARS data. The program is derived from
+    SNPROF to use ACARS data stored in ship format files. If <a href=../parm/area.html>AREA</a>
+    is given as a single tail number (eg @FSL0001) then only data from
+    that aircraft will be used. If <a href=../parm/area.html>AREA</a> is given as a region (eg DEN)
+    then all aircraft in vicinity of that location will be used.
+    <a href=../parm/area.html>AREA</a> can be expanded/contracted as usual with +,*/-. All observations
+    in the given time range will be used. Once data is obtained, program
+    behavior is similar to SNPROF.
+
+    Any two parameters that can be computed from the data set can
+    be plotted.  These parameters are specified in <a href=../parm/snparm.html>SNPARM</a>.
+    The profiles' colors, line types, and widths are
+    specified in <a href=../parm/line.html>LINE</a>.  Markers identifying the data points
+    can be plotted by setting a color in <a href=../parm/marker.html>MARKER</a>. A different <a href=../parm/marker.html>MARKER</a>
+    number is assigned to each aircraft. If marker numbers overlap, the
+    marker color is incremented.
+
+    The type of y axis is specified in <a href=../parm/ptype.html>PTYPE</a>.  LIN, LOG, STUVE,
+    and SKEW are all valid.  Note that SKEW is only valid when
+    plotting temperature vs. pressure.  The bottom and top of
+    the axis, along with an increment for labels, are set in
+    <a href=../parm/yaxis.html>YAXIS</a>.  If the panel is changed to be less than the full
+    screen, the default margins will often be too large.  The
+    margins can be set explicitly in <a href=../parm/ptype.html>PTYPE</a>.
+
+    Winds are plotted in the right margin and can be specified in
+    <a href=../parm/wind.html>WIND</a>.  There are three positions available for plotting winds.
+    They are numbered 1 to 3, with 1 being the leftmost position.
+    The location for the wind to be plotted is specified in <a href=../parm/winpos.html>WINPOS</a>.
+    The positions also apply to the station identifier, date/time
+    and stability indices which are plotted above the diagram.
+
+    Dry adiabats, moist adiabats and mixing ratio background
+    lines can be added to the diagram.  The attributes of these
+    lines are specified in <a href=../parm/thtaln.html>THTALN</a>, <a href=../parm/thteln.html>THTELN</a>, and <a href=../parm/mixrln.html>MIXRLN</a>.
+
+    If the color is set to 0, no lines will be plotted.  If the
+    start, stop and increment are not set, defaults will be
+    supplied.  Note that these lines can only be drawn on plots
+    of pressure versus temperature.
+
+    <a href=../parm/filter.html>FILTER</a> in this program determines whether the wind barbs are
+    filtered.
+
+
+EXAMPLES
+ 
+    1.  Plot a Skew T chart using ACARS observations in the vicinity
+        of DEN.
+
+	<a href=../parm/sffile.html>SFFILE</a>   = acars.gem
+	<a href=../parm/dattim.html>DATTIM</a>   = all
+	<a href=../parm/area.html>AREA</a>     = den
+	<a href=../parm/snparm.html>SNPARM</a>   = tmpc;dwpc
+	<a href=../parm/line.html>LINE</a>     = 2;4
+	<a href=../parm/ptype.html>PTYPE</a>    = skewt
+	<a href=../parm/vcoord.html>VCOORD</a>   = PRES
+	<a href=../parm/stndex.html>STNDEX</a>   =
+	<a href=../parm/stncol.html>STNCOL</a>   = 1
+	<a href=../parm/wind.html>WIND</a>     = BM1
+	<a href=../parm/winpos.html>WINPOS</a>   = 1
+	<a href=../parm/marker.html>MARKER</a>   = 0
+	<a href=../parm/border.html>BORDER</a>   = 1
+	<a href=../parm/title.html>TITLE</a>    = 1
+	<a href=../parm/device.html>DEVICE</a>   = XW
+	<a href=../parm/yaxis.html>YAXIS</a>    =
+	<a href=../parm/xaxis.html>XAXIS</a>    =
+	<a href=../parm/filter.html>FILTER</a>   = N
+	<a href=../parm/clear.html>CLEAR</a>    = YES
+	<a href=../parm/panel.html>PANEL</a>    = 0
+	<a href=../parm/text.html>TEXT</a>     = 1
+	<a href=../parm/thtaln.html>THTALN</a>   = 8/1/1
+	<a href=../parm/thteln.html>THTELN</a>   = 6/10/1
+	<a href=../parm/mixrln.html>MIXRLN</a>   = 5/2/1
+
+ERROR MESSAGES
+ 
+    [ACPROF  +6]    Background lines cannot be drawn.
+    [ACPROF  +5]    Stability indicies are specified with color = 0
+    [ACPROF  +4]    Parameter ... was requested with color set to 0.
+    [ACPROF  +3]    Winds cannot be computed.
+    [ACPROF  +2]    Parameter ... is a character type.
+    [ACPROF  +1]    Parameter ... cannot be computed.
+    [ACPROF  -1]    Fatal error initializing TAE.
+    [ACPROF  -2]    Fatal error reading TAE parameters.
+    [ACPROF  -3]    Fatal error initializing GEMPLT.
+    [ACPROF  -4]    The plot type ... is invalid.
+    [ACPROF  -5]    The the x-axis range must be specified in <a href=../parm/xaxis.html>XAXIS</a>.
+    [ACPROF  -6]    The two parms use different temperature units.
+    [ACPROF  -7]    The vertical coordinate ... cannot be computed.
+    [ACPROF  -8]    The range along the x or y axis is invalid.
+    [ACPROF  -9]    No valid stations were found.
+    [ACPROF -10]    <a href=../parm/snparm.html>SNPARM</a> has not been specified.
+
+</pre>
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

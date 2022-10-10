@@ -1,0 +1,26 @@
+<html>
+<head><title>ACARS data in Gempak</title>
+</head>
+
+<body>
+
+<h2>pqact.conf pattern action for dcacars</h2>
+<pre>
+PCWS	^FSL\.NetCDF\.ACARS\.QC
+	PIPE	-close	dcacars -l data/gempak/logs/dcacars.log -b 30
+	-e GEMTBL=/home/gempak/NAWIPS-5.4/gempak5.4/tables
+        data/gempak/acars/YYYYMMDDHHNN_acars.gem
+</pre>
+<p>
+<h3>ACARS data in NSHARP</H3>
+
+<IMG SRC="nsharp_data_selection_small.gif">
+<p>
+<IMG SRC="acars_selection_window_small.gif">
+<p>
+<IMG SRC="acars_sounding_small.gif">
+<p>
+
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

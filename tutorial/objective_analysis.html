@@ -1,0 +1,518 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="md.css" type="text/css">
+
+<title>11. Objective Analysis</title>
+
+</head>
+<body>
+<blockquote><p><a href=/gempak/tutorial/>GEMPAK Online Tutorial</a></p></blockquote>
+
+<h1>11. Objective Analysis</h1>
+
+<p>Objective analysis is the process of interpolating data from irregularly
+spaced locations to a fixed grid.</p>
+
+<p>GEMPAK grid programs which plot contours and vectors use algorithms which
+require data on a rectangular grid. The process of contouring, as well as calculating finite differences, uses the gridpoints to perform the desired operation.</p>
+
+<p><strong>Numerical model simulations are perfomed using gridpoints</strong>, so that data is
+already on a regular grid. However, for standard surface and upperair
+measurements the data must first be gridded.</p>
+
+<p> In addition to simply gridding unevenly-spaced data, objective analysis can filter data. The process of filtering occurs as stations surrounding a nearby grid point receive a relative weight, typically based on the distance they lie
+from the gridpoint. The process of assigning weights to grid points
+determines the eventual contribution that point will have in the
+final value of the gridpoint.</p>
+
+<p>Stations which lie closest to the gridpoint receive the greatest weight,
+while those that lie farther away contribute less to the overall value.
+In this way, the gridpoint is not representative of a single station, but is instead
+a best fit to all the surrounding data.</p>
+
+<p>As a result, the final grid value is a compromise between all the stations which are used to determine the value. The effect of considering several stations leads to smoothing of the data. The final grid point value will range somewhere between the maximum and minimum values of the stations used.</p>
+
+<p><a name="11.1"></a></p>
+
+<h2>Barnes Analysis</h2>
+
+<p>The Objective Analysis procedure used for GEMPAK is known as a Barnes scheme. For a detailed technical description, see <strong><em>Koch, desJardins,and Kocin: Journal of Climate Appl. Meteor., 22, 1487-1503</em></strong>.</p>
+
+<p>The Barnes Scheme applies a <strong>Gaussian Weighting function</strong>, in which the weight a station contributes to the overall value of the grid point falls off rapidly with increasing distance from the point. Since the tails of a Gaussian function are infinite, in practice a radius of influence is chosen such that stations outside the circle about the gridpoint are not considered.</p>
+
+<p><img src="warning.gif" width=30 align=left> The GEMPAK implementation requires that at least 3 stations be within the radius for a value to be assigned to a grid point.</p>
+
+<p>The depiction above represents the Barnes Analysis process. For each gridpoint, stations within the radius of influence <code>R</code> are assigned a weight value <code>W</code> using the formula:</p>
+
+<center><img src=oaeq1.gif></center>
+
+
+<p>where <code>d</code> is the distance from the station to the gridpoint.</p>
+
+<p>After the weights are determined, the first guess of the gridpoint is determined by:</p>
+
+<center><img src=oaeq2.gif></center>
+
+
+<p>This is known as the <strong>first pass</strong> of the scheme. If more than 1 iteration of the scheme is desired (typically 2 passes are preformed), a method known as successive correction is applied. This method interpolates from the new (first pass) grid values back to the original station. The difference in the interpolation from the original value is then used as a correction to the first pass grid point value.</p>
+
+<p>A new parameter called the convergence parameter (Γ) is used to control the amount of smoothing. Each correction step can be represented as:</p>
+
+<center><img src=oaeq3.gif></center>
+
+
+<p>where (W') is the correction weight parameter:</p>
+
+<center><img src=oaeq4.gif></center>
+
+
+<p>The convergence parameter (Γ - or <code>GAMMA</code> in GEMPAK) ranges between 0 and 1. A value between .2 and .3 is generally assumed.</p>
+
+<blockquote><p><img src="tip.gif" width=30 align=left> Since the grid point values are essentially weighted averages of surrounding stations, the grid point value will always be less than the maximum, and greater than the minimum values surrounding the point. As a result, there is smoothing occuring within the grid. The purpose of the convergence parameter on successive correction passes is to mitigate oversmoothing of the data.</p></blockquote>
+
+<p><a name="11.2"></a></p>
+
+<h2>Creating Grid Files</h2>
+
+<p>Prior to running the objective analysis routines, a grid file must be created in which to store the output grids. Grid files can be created either with <code>OAGRID</code> or with <code>GDCFIL</code>.</p>
+
+<p><code>GDCFIL</code> is typically used when the user has some knowledge about the data that will be gridded, and is experienced in the selection of the Barnes Analysis parameteres. The program <code>OAGRID</code> is designed to query that data that will be gridded, and suggest reasonable values for the parameters used in Barnes Analysis, which if accepted will be used to create the grid file.</p>
+
+<p>Grid files may also be created by using information in existing grid files and copying the navigation and analysis parameters to the newly generated grid file.</p>
+
+<p><code>OAGRID</code> creates a GEMPAK grid file which can be used in a Barnes
+objective analysis program.</p>
+
+<p><a name="11.3"></a></p>
+
+<h2>OAGRID Input Parameters</h2>
+
+<pre>
+<A HREF="/gempak/man/parm/gdfile.html">GDFILE</a>   Grid file
+<A HREF="/gempak/man/parm/deltan.html">DELTAN</a>   Station spacing
+<A HREF="/gempak/man/parm/deltax.html">DELTAX</a>   X spacing
+<A HREF="/gempak/man/parm/deltay.html">DELTAY</a>   Y spacing
+<A HREF="/gempak/man/parm/grdarea.html">GRDAREA</a>      Area covered by grid
+<A HREF="/gempak/man/parm/extend.html">EXTEND</a>   Points to extend grid
+<A HREF="/gempak/man/parm/dtaarea.html">DTAAREA</a>      Data area for OA
+<A HREF="/gempak/man/parm/source.html">SOURCE</a>   Data source (SN or SF)
+<A HREF="/gempak/man/parm/snfile.html">SNFILE</a>   Sounding data file
+<A HREF="/gempak/man/parm/sffile.html">SFFILE</a>   Surface data file
+<A HREF="/gempak/man/parm/snparm.html">SNPARM</a>   Sounding parameter list
+<A HREF="/gempak/man/parm/sfparm.html">SFPARM</a>   Surface parameter list
+<A HREF="/gempak/man/parm/dattim.html">DATTIM</a>   Date/time
+<A HREF="/gempak/man/parm/levels.html">LEVELS</a>   Vertical levels
+<A HREF="/gempak/man/parm/maxgrd.html">MAXGRD</a>   Maximum number of grids
+</pre>
+
+
+<p>The computed station spacing <code>DELTAN</code> is the average of the computed and uniform station spacing. This spacing will be used in the Barnes Analysis routines to determine the search radius also known as the radius of influence. A default value of 0 should be used for <code>OAGRID</code> to compute and select its own value.</p>
+
+<p>The value of <code>DELTAN</code> is used with the selected grid region to compute <code>DELTAX</code> and <code>DELTAX</code>. If values are given for <code>DELTAN</code>, <code>DELTAX</code>, and <code>DELTAY</code>, <code>OAGRID</code> will accept those values for the grid.</p>
+
+<p>The <code>EXTEND</code> area is the number of grid rows to extend the <code>GRDAREA</code> for the first pass of the Barnes analysis. The purpose of extending the desired grid area is to reduce the edge effects. <code>DTAAREA</code> is the region in which station data is considered.</p>
+
+<p><code>OAGRID</code> produces evenly spaced lat/lon (CED) grids. For greater flexibility in choosing the projection, <code>GDCFIL</code> may be used.</p>
+
+<p><a name="11.4"></a></p>
+
+<h2>GDCFIL</h2>
+
+<p>For more experienced users of objective analysis schemes, <code>GDCFIL</code> cay be used to create a new grid file or copy grid information from an existing file. <code>GDCFIL</code> allows the user the ability to choose the projection and number of grid points the file will contain.</p>
+
+<p>New variables to make note of:</p>
+
+<ol>
+<li><code>KXKY</code> The number of X;Y grid points</li>
+<li><code>CPYFIL</code> Used to copy grid file information from an existing grid file. Other variables are ignored if <code>CPYFIL</code> is not blank.</li>
+<li><code>ANLYSS</code> Grid analysis block, in the form: DELTAN / EXTEND</li>
+</ol>
+
+
+<p>If the <code>DELTAN</code> field in <code>ANLYSS</code> is left blank, the <code>DELTAN</code> values is assigned as twice the grid spacing computed from the gridarea and <code>KXKY</code>.</p>
+
+<p><code>CPYFIL</code> can be used to transfer the grid information from an existing file, or to generate a grid based on one of the known grids in the grid navigation table used for model grids.</p>
+
+<p><a name="11.5"></a></p>
+
+<h2>Creating Grids from Surface Data</h2>
+
+<p><code>OABSFC</code> may be used to perform and objective analysis on surface data, once a grid file has been created using <code>OAGRID</code> and/or <code>GDCFIL</code>.</p>
+
+<p>New variables for <code>OABSFC</code>:</p>
+
+<ol>
+<li><code>DTAAREA</code>        Area of objective analysis if not same as grid file</li>
+<li><code>GUESS</code>          First guess file, if available</li>
+<li><code>GUESFUN</code>        First guess field, if available</li>
+<li><code>QCNTL</code>          Quality control threshold for first guess</li>
+<li><code>GAMMA</code>          Value of the convergence parameter</li>
+<li><code>SEARCH</code>         Search radius for stations</li>
+<li><code>NPASS</code>          Number of passes in the Barnes Scheme</li>
+<li><code>OABND</code>          Bounds file(s) to use for 'blocking' out regions</li>
+</ol>
+
+
+<p><code>DTAAREA</code> is typically the same area as the grid file, and may be left blank or set to <code>DATA</code>. Stations which posses bad data may be eliminated from consideration by appending a tag <code>/-@station1;station2;etc.</code> to this variable.</p>
+
+<p><code>GUESS</code> and <code>GUESFUN</code> can be used to supply the original guess field as a zeroeth pass of the Barnes analysis. <code>GUESFUN</code> may be different than the field to be analyzed. For example, the 10 meter temperature from a model at a specific forecast hour can be used as a first guess for the 2 meter temperature analyzed field. <code>QCNTL</code> can be used to create a threshold for rejecting data which deviate from the expected first guess field.</p>
+
+<p><code>GAMMA</code> is a value between 0 and 1. Typically a value between .2 and .3 is used.
+<code>SEARCH</code> is a value between 1 and 50, such that stations receiving a weight less than <code>EXP(-SEARCH)</code> are considered negligible. Typically a value of 20 is used, which corresponds to a weight threshold of approximately 2e-9. A modifier of <code>/EX</code> may be used to allow data extrapolation for regions that lack at least 3 station within the search radius.</p>
+
+<p><code>NPASS</code> may be from 1 to 5 passes. 2 passes are recommended.</p>
+
+<blockquote><p><img src="warning.gif" width=30 align=left> A word of warning! Although objective analysis does filter data so that any singular value does not contribute solely to a grid point value, it does not prevent the contribution of <strong>BAD</strong> data.</p>
+
+<p>You should always inspect the raw data that is used in objective analysis to determine possible contamination of grid results. When using gridded data, the #1 rule is always, <strong>Garbage in, Garbage out</strong>.</p></blockquote>
+
+<p><a name="11.6"></a></p>
+
+<h2>Creating Grids from Sounding Data</h2>
+
+<p><code>OABSND</code> may be used to perform and objective analysis on sounding data, once a grid file has been created using <code>OAGRID</code> and/or <code>GDCFIL</code>.</p>
+
+<p>New variables for <code>OABSFC</code>:</p>
+
+<ol>
+<li><code>SNPARM</code>         Level parameters indicies to be gridded</li>
+<li><code>STNDEX</code>         Special entire sounding indices to be gridded</li>
+<li><code>VCOORD</code>         Vertical coordinate for levels used</li>
+<li><code>LEVELS</code>         Levels on which to perform analysis</li>
+</ol>
+
+
+<blockquote><p><img src="warning.gif" width=30 align=left> Note: Due to the large numbers of grids that may be generated when perfoming objective analysis on multiple parameters on multiple levels, you may have to run <code>OABSND</code> using several subsets instead of all desired combinations at one in order to avoid running your workstation out of memory!</p></blockquote>
+
+<p>Upper air stations are typically spaced at greater distances than surface data stations, so the grid spacings should be correspondingly greater for upperair data. Remember that data void regions can cause maximas and minimas to be displaced!</p>
+
+<p><a name="11.7"></a></p>
+
+<h2>Exercise #15 (Objective Analysis)</h2>
+
+<p>Perform objective analyses for surface temperature as a function of convergence parameter GAMMA. Plot a 4 panel graphic showing the comparison, using the following values:</p>
+
+<ol>
+<li><code>GAMMA = 1.0</code> (maximum smoothing)</li>
+<li><code>GAMMA = 0.5</code></li>
+<li><code>GAMMA = 0.3</code> (default)</li>
+<li><code>GAMMA = 0.1</code>(minimum smoothing)</li>
+</ol>
+
+
+<p>You will need to create your grid file <code>barnes1.grd</code> and make 3 additional copies.</p>
+
+<h4>1. Create Grid File</h4>
+
+<p>Start with <code>OAGRID</code>:</p>
+
+<pre><code>GEMPAK-OAGRID&gt;
+GDFILE   = barnes1.grd
+DELTAN   = 0
+DELTAX   = 0
+DELTAY   = 0
+GRDAREA  = us
+EXTEND   = 2;2;2;2
+DTAAREA  = 
+SOURCE   = SF
+SNFILE   = 
+SFFILE   = metar
+SNPARM   = ;TMPC;;HGHT;DWPC;BRBM
+SFPARM   = tmpf;dwpf;pmsl;sped;drct
+DATTIM   = 1200
+LEVELS   = 500
+MAXGRD   = 200
+GEMPAK-OAGRID&gt;r
+</code></pre>
+
+<p>We're using <strong>live data</strong> by specifying <code>SFFILE = metar</code>, as <code>SOURCE</code> is set to <code>SF</code>.</p>
+
+<p>After runing, exit the program:</p>
+
+<pre><code>GEMPAK-OAGRID&gt;e
+</code></pre>
+
+<p>and make three copies of your file <code>barnes1.grd</code></p>
+
+<pre><code>cp barnes1.grd barnes2.grd
+cp barnes1.grd barnes3.grd
+cp barnes1.grd barnes4.grd
+</code></pre>
+
+<h4>2. Perform the Barnes Analyses</h4>
+
+<pre><code>GEMPAK-OABSFC&gt;
+SFFILE  = metar
+GDFILE  = barnes1.grd
+SFPARM  = tmpf;dwpf;pmsl;sped;drct
+DATTIM  = 1200
+DTAAREA =                 
+GUESS   =
+GAMMA   = 1
+SEARCH  = 20
+NPASS   = 2
+QCNTL   =         
+OABND   = 
+GDATTIM =
+GFUNC   =
+GLEVEL  = 0
+GVCORD  = none
+GEMPAK-OABSFC&gt;r
+</code></pre>
+
+<p>Next, change <code>GDFILE</code> and <code>GAMMA</code> to the next value:</p>
+
+<pre><code>GDFILE  = barnes3.grd
+GAMMA   = 0.5
+GEMPAK-OABSFC&gt;r
+</code></pre>
+
+<p>Do the same for <code>GAMMA = 0.3</code> and <code>GAMMA = 0.1</code>, saving to the other two barnes analysis grid files.</p>
+
+<h4>3. Plot The Surface Grid</h4>
+
+<p>Plot the four new surface grids using <code>GDCNTR</code>, and using setting different panels for each using the <code>PANEL</code> variable.</p>
+
+<pre><code>&gt; gdcntr
+
+gdattim = last
+glevel  = 0
+gvcord  = none
+gfunc   = tmpf
+gdfile  = barnes1.grd
+panel   = ul
+clear   = y
+garea   = #35;-93;12;27
+proj    = lea/35;-100;0
+fline   = 30-7
+ctype   = f
+fint    = 5
+title   = 1/-1/GAMMA = 1.0
+GEMPAK-GDCNTR&gt;r   
+
+clear = n
+panel = ur
+gdfile = barnes2.grd
+title = 1/-1/GAMMA = .5
+GEMPAK-GDCNTR&gt;r
+
+panel = ll
+gdfile = barnes3.grd
+title = 1/-1/GAMMA = .3
+GEMPAK-GDCNTR&gt;r
+
+panel = lr
+gdfile = barnes4.grd
+title = 1/-1/GAMMA = .1
+GEMPAK-GDCNTR&gt;r
+</code></pre>
+
+<p><img src="barnes_gamma.gif" alt="images" /></p>
+
+<h4>4. Adjusting Search Radius</h4>
+
+<p>Now perform objective analyses of surface temperature using search values of 5, 10, 20 and 50 (<code>GAMMA = 0.3</code>). Plot a 4 panel graphic to compare search radii.</p>
+
+<p>Lets recycle our first grid file from the first run:</p>
+
+<pre><code>&gt; gddelt
+
+gdfile = barnes1.grd
+gdnum  = list
+GEMPAK-GDDELT&gt;r
+
+Enter  to delete grids or type EXIT:
+
+GEMPAK-GDDELT&gt;e
+</code></pre>
+
+<p>Now make 3 more copies of the file again:</p>
+
+<pre><code>cp barnes1.grd barnes2.grd
+cp barnes1.grd barnes3.grd
+cp barnes1.grd barnes4.grd
+</code></pre>
+
+<p>Now perform the Barnes Analyses:</p>
+
+<pre><code>&gt; oabsfc
+SFFILE   = metar
+GDFILE   = barnes1.grd
+SFPARM   = tmpf
+DATTIM   = 1200
+DTAAREA  = 
+GUESS    = 
+GAMMA    = .3
+SEARCH   = 5
+NPASS    = 2
+GEMPAK-OABSFC&gt;r
+
+GEMPAK-OABSFC&gt;gdfile = barnes2.grd
+GEMPAK-OABSFC&gt;search = 10
+GEMPAK-OABSFC&gt;r
+
+GEMPAK-OABSFC&gt;gdfile = barnes3.grd
+GEMPAK-OABSFC&gt;search = 20
+GEMPAK-OABSFC&gt;r
+
+GEMPAK-OABSFC&gt;gdfile = barnes4.grd
+GEMPAK-OABSFC&gt;search = 50
+GEMPAK-OABSFC&gt;r
+
+GEMPAK-OABSFC&gt;e
+</code></pre>
+
+<p>Finally, lets plot it up:</p>
+
+<pre>
+    > gdcntr < <a href="answers/barnes_search.dat">barnes_search.dat</a>
+</pre>
+
+
+<p><img src="barnes_search.gif" alt="images" /></p>
+
+<p><a name="11.8"></a></p>
+
+<h2>Multi-Panel Display</h2>
+
+<p>Multi-panel displays are composed in a manner very similar to overlays. The first panel is drawn with <code>CLEAR=YES</code>, and subsequent panels are drawn with <code>CLEAR=NO</code>. The only difference is that the <code>PANEL</code> variable is changed to a different region of the window. Of course, you can create multi-panel displays with overlays too!
+PANEL specifies the panel location, panel outline color, line type and width separated with slashes:</p>
+
+<pre><code>  panel location / outline color / line type / width / region
+</code></pre>
+
+<p>The panel location determines the location of the view region on the graphics device. It may be specified using a number or abbreviation as follows:</p>
+
+<pre><code>    NUMBER  ABBREVIATION    DESCRIPTION
+    0       ALL             Entire device
+    1       UL              Upper left quadrant
+    2       UR              Upper right quadrant
+    3       LL              Lower left quadrant
+    4       LR              Lower right quadrant
+    5       L               Left half
+    6       R               Right half
+    7       T               Top half
+    8       B               Bottom half
+</code></pre>
+
+<p>An easy 9-panel capability uses abbreviations M1,...,M9 which will be laid out on the page as:</p>
+
+<pre><code>            M1      M2      M3
+
+            M4      M5      M6
+
+            M7      M8      M9
+</code></pre>
+
+<p>The view region may also be specified as four numbers separated with semicolons, giving the lower left and upper right corners in fractions of the graphics display area. The origin is in the lower left of the display. For example, the lower left quadrant can be given as:</p>
+
+<pre><code>            0;0;.5;.5
+</code></pre>
+
+<p>If the panel location is unspecified, the current location is unchanged.
+The panel outline color, line type and line width specify the values used to draw a box around the specified region. The valid regions are <code>VIEW</code>, <code>PLOT</code> and <code>DEVICE</code>. If the color is 0 or unspecified, no box is drawn.</p>
+
+<p><a name="11.9"></a></p>
+
+<h2>Exercise #16 (Surface File from Gridded Data)</h2>
+
+<p><a name="11.9.1"></a></p>
+
+<h3>Creating the Surface File</h3>
+
+<p><code>SFCFIL</code> creates a new GEMPAK surface file.</p>
+
+<pre><code>SFOUTF   = metar.sfc
+SFPRMF   = tmpc;dwpc;sped;drct;pmsl
+STNFIL   = sfstns.tbl
+SHIPFL   = no
+TIMSTN   = 15/100
+SFFSRC   = AIRW|TEXT
+GEMPAK-SFCFIL&gt;r
+</code></pre>
+
+<p><a name="11.9.2"></a></p>
+
+<h3>GDGSFC</h3>
+
+<p><code>GDGSFC</code> computes grid data and interpolates to stations in a GEMPAK surface file.</p>
+
+<p>INPUT PARAMETERS</p>
+
+<pre>
+<A HREF="/gempak/man/parm/gdfile.html">GDFILE</a>       Grid file
+<A HREF="/gempak/man/parm/gdattim.html">GDATTIM</a>      Grid date/time
+<A HREF="/gempak/man/parm/gvcord.html">GVCORD</a>       Grid vertical coordinate
+<A HREF="/gempak/man/parm/glevel.html">GLEVEL</a>       Grid level
+<A HREF="/gempak/man/parm/gfunc.html">GFUNC</a>        Scalar grid
+<A HREF="/gempak/man/parm/scale.html">SCALE</a>        Scalar scale / vector scale
+<A HREF="/gempak/man/parm/sffile.html">SFFILE</a>       Surface data file
+<A HREF="/gempak/man/parm/sfparm.html">SFPARM</a>       Surface parameter list
+</pre>
+
+
+<p>The program computes the requested grid data from the given
+grid file.  <code>GFUNC</code> can be any valid GEMPAK grid function.  The
+other grid related parameters are used to specify the grid
+to calculate.</p>
+
+<p>The output surface file, <code>SFFILE</code>, must already exist.  The
+output parameter, <code>SFPARM</code>, must also exist in the surface file.<br/>
+The program reads each successive station from the surface file
+and overwrites the existing data with the interpolated data from
+the grid.</p>
+
+<h4>Interpolate Grid data into the surface file</h4>
+
+<p>With <code>GDGSFC</code>:</p>
+
+<pre><code>GDFILE   = gfs
+GDATTIM  = 0000f012
+GVCORD   = none
+GLEVEL   = 0
+GFUNC    = tmpc
+SCALE    =  
+SFFILE   = metar.sfc
+SFPARM   = tmpc
+GEMPAK-GDGSFC&gt;r
+</code></pre>
+
+<h4>Map The Surface Temperature</h4>
+
+<p>With <code>SFMAP</code>:</p>
+
+<pre><code>AREA     = us-
+GAREA    = us
+SATFIL   =  
+RADFIL   =  
+IMCBAR   =  
+SFPARM   = tmpf
+DATTIM   = 1200
+SFFILE   = metar.sfc
+COLORS   = (20-95-5/30-14//U)
+MAP      = 1
+MSCALE   = 0
+LATLON   = 0
+TITLE    = @ GFS Forecast Temperatures (F)
+CLEAR    = y
+PANEL    = 0
+DEVICE   = xw
+PROJ     =  
+FILTER   = YES
+TEXT     = 1/2//hw
+LUTFIL   =  
+STNPLT   =  
+CLRBAR   =  
+LSTPRM   = 
+GEMPAK-SFMAP&gt;r
+</code></pre>
+
+<p><img src="tmpf.gif" alt="image" /></p>
+
+<blockquote><p><a href=/gempak/tutorial/>GEMPAK Online Tutorial</a> | <a href="vertical_plotting.html">Next: Veritcal Plotting</a></p></blockquote>
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

@@ -1,0 +1,200 @@
+<HTML><HEAD><TITLE>GEMPAK RTMODEL Examples</TITLE>
+<META NAME="BOOKMARK" CONTENT="GEMPAK RTMODEL Examples">
+<META NAME="AUTHOR" CONTENT="Steve Chiswell">
+<META NAME="KEYWORDS" CONTENT="Software, GEMPAK, Examples, RTMODEL">
+<META NAME="DESCRIPTION" CONTENT="GEMPAK RTMODEL Examples.">
+<link rel="stylesheet" href="../../tutorial/md.css" type="text/css" media="screen, handheld" />
+
+</HEAD><BODY>
+
+<h2>Creating A Region of Interest Mask</h2>
+
+<p>A <a target=_blank href="conusoutline_cmask.vgf"><b>vgf file</b></a> is created using the interactive product generation tools within NMAP2. A closed line is drawn enclosing the region of interest, and a text label is grouped with the line assigning a value of 1 to the contour.</p>
+
+<p><img src="/gempak/examples/product_roi/conus_vgfoutline.gif"></p>
+
+<p>Once the region of interest is defined, a <a target=_blank href="/gempak/examples/product_roi/2007071900_cmask.grd">grid file</a> can be created using the <strong>GRPHGD</strong> standalone program (It can also be created using the graph-to-grid option in NMAP2).</p>
+
+<h4>Create grid from VGF file with GRPHGD</h4>
+
+<pre><code>GEMPAK-GRPHGD&gt;
+GDOUTF   = 2007071900_cmask.grd
+GUESS    =  
+PROJ     = MER
+GRDAREA  =  
+KXKY     = 10;10
+MAXGRD   = 200
+CPYFIL   = #A218
+ANLYSS   =  
+CNTRFL   = cmask.info
+GDATTIM  = 070719/0000f000
+GFUNC    = cmask
+GLEVEL   = 0
+GVCORD   = none
+KEYCOL   =  
+KEYLINE  =  
+OLKDAY   =  
+GGLIMS   =  
+HISTGRD  = NO
+BOUNDS   =  
+TYPE     = C
+GAMMA    = 0.3
+SEARCH   = 20
+NPASS    = 2
+QCNTL    =  
+GUESFUN  =  
+CATMAP   =  
+DISCRETE =  
+DLINES   = yes;no|-0.5
+GGVGF    = conusoutline_cmask.vgf
+EDGEOPTS =
+GEMPAK-GRPHGD&gt;r
+</code></pre>
+
+<h4>Check with GDINFO</h4>
+
+<pre><code>GEMPAK-GDINFO&gt;
+GDFILE   = 2007071900_cmask.grd
+LSTALL   = YES
+OUTPUT   = T
+GDATTIM  = all
+GLEVEL   = 0
+GVCORD   = none
+GFUNC    = cmask
+GEMPAK-GDINFO&gt;r
+
+GRID FILE: cmask.gem                                                                                           
+
+GRID NAVIGATION: 
+    PROJECTION:          LCC                 
+    ANGLES:                25.0   -95.0    25.0
+    GRID SIZE:          614 428
+    LL CORNER:              12.19   -133.46
+    UR CORNER:              57.33    -49.42
+
+Number of grids in file:     1
+
+ NUM       TIME1              TIME2           LEVL1 LEVL2  VCORD PARM
+   1     070719/0000F000                          0         NONE CMASK       
+GEMPAK-GDINFO&gt;
+</code></pre>
+
+<p>The parameter <strong>CMASK</strong> is created where values greater than 1 are enclosed by the contour. <strong>DLINES</strong> defines the epsilon of (here -0.5 is used since the contour was drawn counterclockwise) to add to vlaues on either side of the single contour to be define greater / less than the contour value of 1.0.</p>
+
+<p>The grid point values of <strong>SGT(cmask,1)</strong> (greater than 1.0) as shown here:</p>
+
+<p><img src="/gempak/examples/product_roi/conus_outline_points.gif"></p>
+
+<h4>Plot with GDPLOT2</h4>
+
+<p>The resultant grid can ge used with the <strong>MASK()</strong> function and logical operators to define mask or clipping regions of interest. As an example, the 24 hour precipitation in the top panel is masked by the region of interest in the lower panel so that only data within the region of interest will be considered.</p>
+
+<pre><code>GDFILE  = nam12 + 2007071900_cmask.grd                                                                                 
+GDATTIM  = f030
+GLEVEL   = 0
+GVCORD   = none
+PANEL    = t     ! b
+SKIP     = 0
+SCALE    = 0
+GDPFUN   = p24i  ! mask(p24i,sgt(cmask^070719/0000f000+2,1))
+TYPE     = f
+CONTUR   = 3/3
+CINT     = 0
+LINE     = 2/1/2
+FINT     = .01;.1;.25;.5;.75;1;1.25;1.5;1.75;2;2.5;3;4;5;6;7;8;9
+FLINE    = 0;21-30;14-20;5
+HILO     =  
+HLSYM    =  
+CLRBAR   = 1
+WIND     = BM1
+REFVEC   =  
+TITLE    = 1
+TEXT     = 0.7/2/SW
+CLEAR    = YES
+GAREA    = us
+IJSKIP   =  
+PROJ     = STR/90;-100;0
+</code></pre>
+
+<p><img src="/gempak/examples/product_roi/cmask.gif"></p>
+
+<h4>Using GDCSV to find local maximas</h4>
+
+<p>The <strong>HIGH()</strong> function can be used to obtain local maximas from the grid region of interest. The <strong>GWFS()</strong> gaussian weighted smoothing function can be used to reduce higher frequency features in the grid and focus on broader areas of interest. By using the <strong>GDCSV</strong> program, the locations of <strong>HIGH()</strong> output are output to a file for use in determining local mesoscale model domain centers. By masking the region, the model domains are ensured to be within the desired region.</p>
+
+<pre><code>GEMPAK-GDCSV&gt;l
+GDATTIM  = f030
+GDFILE   = nam12 + 2007071900_cmask.grd
+GLEVEL   = 0
+GAREA    = grid
+PROJ     = def
+GVCORD   = none
+GFUNC    = high(mask(gwfs(p24i,40),sgt(cmask^070719/0000f000+2,1)),30)
+SCALE    = 0
+OUTPUT   = f/p24i_highs.dat
+GEMPAK-GDCSV&gt;r
+</code></pre>
+
+<p><strong>OUTPUT</strong> is to the text file <code>p24i_highs.dat</code>. You can use the <code>sort</code> command to return the top two local maxima:</p>
+
+<pre><code>sort -t, -k 5bnr p24i_highs.dat | head -2
+
+ 508,     244,        42.3889,       -72.2385,        2.53370
+ 338,     236,        42.9560,       -96.3721,        0.58850
+</code></pre>
+
+<p>These two values are now scriptable (use <code>|head -1</code> for the first and
+<code>| head -2 | tail -1</code> for the second) both for plotting regional areas of
+interest and for WRF domains. </p>
+
+<h4>Plotting again with GDPLOT2 and GPANOT</h4>
+
+<p>The locations of the 2 greatest local maximas (<strong>42.3889,-72.2385</strong> and <strong>42.9560,-96.3721</strong>) are shown along with the precipitation forecast field. The primary and secondary domains can be drawn using <strong>GPANOT</strong> to overlay the boxes.</p>
+
+<p>First plot masked precipitation, same as above, but change <code>PANEL = 0</code> and <code>CLEAR = n</code></p>
+
+<pre><code>GDFILE   = nam12 + 2007071900_cmask.grd                                                                                 
+GDATTIM  = f030
+GLEVEL   = 0
+GVCORD   = none
+PANEL    = 0
+SKIP     = 0
+SCALE    = 0
+GDPFUN   = mask(p24i,sgt(cmask^070719/0000f000+2,1))
+TYPE     = f
+CONTUR   = 3/3
+CINT     = 0
+LINE     = 2/1/2
+FINT     = .01;.1;.25;.5;.75;1;1.25;1.5;1.75;2;2.5;3;4;5;6;7;8;9
+FLINE    = 0;21-30;14-20;5
+HILO     =  
+HLSYM    =  
+CLRBAR   = 1
+WIND     = BM1
+REFVEC   =  
+TITLE    = 1
+TEXT     = 0.7/2/SW
+CLEAR    = YES
+GAREA    = us
+IJSKIP   =  
+PROJ     = STR/90;-100;0
+CLEAR    = n
+r
+</code></pre>
+
+<p><img src="/gempak/examples/product_roi/box.gif"></p>
+
+
+
+
+<br><br>
+
+
+
+
+
+
+
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</HTML>

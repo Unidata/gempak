@@ -1,0 +1,88 @@
+
+
+/*
+.installdoc {
+ ackground: #ff0000;
+ border: 1px solid #ccc; 
+ text-align: center;
+}
+
+a {
+ text-decoration: none;
+}
+
+li {
+# list-style: none;
+}
+
+#sectionHeader {
+ font-weight: bold;
+ font-size: 24px;
+ border-bottom: 1px solid #ccc;
+ padding-top: 40px;
+}
+
+
+#term {
+ background: #0000ff;
+ color: #ccc;
+ float: relative;
+}
+*/
+
+h4 {
+ margin-top: 30px;
+}
+
+h5 {
+ margin-top: 20px;
+}
+
+file {color: #800000; }
+
+pre {
+ background:#e4f2ff;
+ font-family:Consolas,"Andale Mono",Monaco,Courier,"Courier New",Verdana,sans-serif;
+ font-size:.857em;
+ line-height:1.5em;
+ width: 600px;
+ margin:20px 0 20px 20px;
+ padding:.2em .6em;
+}
+
+.code{
+ background:#e4f2ff;
+ display:table;
+ font-family:Consolas,"Andale Mono",Monaco,Courier,"Courier New",Verdana,sans-serif;
+ 
+ overflow:auto;
+ font-size:.857em;
+ line-height:1.5em;
+ margin:20 0 20 20px;
+ padding:.2em .6em;
+}
+
+.indent {
+ margin-left: 20px;
+}
+
+snip{
+ background:#e4f2ff;
+ font-weight: normal;
+ font-family:Consolas,"Andale Mono",Monaco,Courier,"Courier New",Verdana,sans-serif;
+ overflow:auto;
+ font-size:.857em;
+ line-height:1.5em;
+ padding:.2em .2em;
+}
+
+ul#breadcrumbs { 
+ line-height: 10px;
+}
+
+.format_text .wp-caption{background-color:#fff;border-color:0;border-style:none;}
+.custom code{}
+.custom pre{overflow:auto;clear:both;}
+.custom .format_text code{font-size:.857em;line-height:1.5em;margin-bottom:1.833em;padding:.667em .917em;}
+
+

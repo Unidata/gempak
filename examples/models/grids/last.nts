@@ -1,0 +1,25 @@
+GDATTIM LAST                                                                                                                            
+GLEVEL  0                                                                                                                               
+GVCORD  none                                                                                                                            
+GFUNC   pres                                                                                                                            
+GDFILE  $HDS/2000042712_eta216.gem                                                                                                      
+GAREA   dset                                                                                                                            
+SATFIL                                                                                                                                  
+RADFIL                                                                                                                                  
+SKIP    0                                                                                                                               
+POSN    0                                                                                                                               
+COLORS  0                                                                                                                               
+MARKER  5/15/1/1                                                                                                                        
+MAP     6                                                                                                                               
+LATLON  0                                                                                                                               
+PANEL   0                                                                                                                               
+CINT    0                                                                                                                               
+TITLE   0                                                                                                                               
+SCALE                                                                                                                                   
+DEVICE  gf|grid216.gif|1500;1200                                                                                                        
+PROJ    str/90;-135;0                                                                                                                   
+CLEAR   YES                                                                                                                             
+TEXT    1                                                                                                                               
+GRDLBL  0                                                                                                                               
+LUTFIL                                                                                                                                  
+STNPLT                                                                                                                                  

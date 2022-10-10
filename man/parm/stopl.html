@@ -1,0 +1,22 @@
+<!doctype html><head><title>GEMPAK Help: stopl</title></head><body>
+<a href=../../help_and_documentation>GEMPAK Manual</a> | 
+<a href=../prog/>Programs</a> | <a href=../parm/>Parameters</a><br><hr>
+<pre>
+     STOPL 
+
+     STOPL is the level in the input data file at which to end the
+     search for the output vertical level in gdpvsf.  STOPL must be
+     a specific grid level in the input data file.  The search may 
+     proceed upward or downward, depending on the relative locations of
+     <a href=startl.html>STARTL</a> and STOPL.
+
+     If the desired level in the new vertical coordinate is not 
+     encountered in a particular grid column between <a href=startl.html>STARTL</a> and STOPL,
+     the value of all interpolated fields in the output file will be 
+     set to missing at that grid point.
+
+
+</pre>
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

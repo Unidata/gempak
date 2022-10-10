@@ -1,0 +1,77 @@
+<HTML><HEAD><TITLE>GEMPAK Examples: Displaying Lightning Data</TITLE>
+<META NAME="BOOKMARK" CONTENT="GEMPAK Examples: Displaying Lightning Data">
+<META NAME="AUTHOR" CONTENT="Steve Chiswell">
+<META NAME="KEYWORDS" CONTENT="Software, GEMPAK, Examples, Lightning, NLDN">
+<META NAME="DESCRIPTION" CONTENT="GEMPAK Examples: Displaying Lightning Data.">
+</HEAD><BODY>
+
+<IMG SRC="ltgloop.gif"><p>
+<IMG SRC="lightning_icon.gif"><A HREF="lightning.gif">Lighning Displays</A>
+<P>
+The lightning images were generated using NLDN data and
+<FONT COLOR=#800000>SFMAP<FONT COLOR=#000000>. Each color represents 
+lightning strikes observed during a single hour. The ldmbridge decoder
+<FONT COLOR=#800000>DCNLDN<FONT COLOR=#000000> stores lightning data
+in surface format data files. SFLIST and SFMAP are used to list
+and display lightning data files. 
+<P>
+
+<pre>
+#!/bin/csh -f
+
+
+@ START_COLOR = 30
+@ STOP_HOUR = 23
+
+@ HOUR = 0
+@ COUNT = 0
+@ COLOR = $START_COLOR
+while($HOUR <= $STOP_HOUR)
+   if($COUNT == 0) then
+      set CLEAR='y'
+      set MAP=1
+   else
+      set CLEAR='n'
+      set MAP=0
+   endif
+   if($HOUR < 10) then
+      set SFFILE=9510230${HOUR}.gem
+   else
+      set SFFILE=951023${HOUR}.gem
+   endif 
+   sfmap << EOF
+   sfparm = 
+   proj = nps
+   garea = ia
+   clear = $CLEAR
+   dev = gf|lightning_plot.gif
+   text = 1.2/23/1/hw
+   title = ${MAP}/-2/Lightning Strikes Oct 23, 1995
+   map = $MAP
+   panel = .02;.02;.97;.97/1/1/4
+   sffile = $SFFILE
+   marker = ${COLOR}/2/.1/4/hw
+   r
+   
+   e
+EOF
+
+   @ HOUR = $HOUR + 1
+   @ COLOR = $COLOR - 1
+   if($COLOR == 0) then
+      set COLOR=$START_COLOR
+   endif
+   @ COUNT = $COUNT + 1
+end
+
+exit(0)
+      
+</pre>
+<hr>
+<A HREF="../examples.html">
+Return to the Walk Through Examples Table of Contents.</A>
+
+
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

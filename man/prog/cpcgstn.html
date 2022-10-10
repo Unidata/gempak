@@ -1,0 +1,86 @@
+<!doctype html><head><title>GEMPAK Help: cpcgstn</title></head><body>
+<a href=../../help_and_documentation>GEMPAK Manual</a> | 
+<a href=../prog/>Programs</a><br><hr>
+<pre>
+CPCGSTN searches for stations located inside specified areas
+from a Vector Graphics File.
+
+INPUT PARAMETERS
+ 
+    <a href=../parm/vgfile.html>VGFILE</a>    Vgfile | scale file | attribute file | filter
+    <a href=../parm/dattim.html>DATTIM</a>    Date/time
+    <a href=../parm/stnfil.html>STNFIL</a>    Station information file
+    <a href=../parm/output.html>OUTPUT</a>    Output device/filename
+ 
+ 
+
+PROGRAM DESCRIPTION
+ 
+    CPCGSTN lists all stations in a given station table, and
+    indicates which stations are located inside areas drawn
+    in the Vector Graphics File. The areas must be drawn using
+    the "tick mark" special line. The file may contain multiple
+    areas that do not overlap.
+
+    If the given polygon is not closed, then the appropriate
+    portion of the U.S. border is used to construct a closed
+    polygon.
+
+    The <a href=../parm/dattim.html>DATTIM</a> is only used to fill in the format of the output
+    listing. In this way the output listing may be used as
+    input to SFEDIT.
+
+    The output includes the station number, GEMPAK time, the flag
+    indicating if the station is inside (1) or outside (0) of the
+    polygon and the polygon color.
+
+
+EXAMPLES
+ 
+    1.  Identify the stations located in the polygons in the VG file
+        vgf.vgf. Use the current system time and the station table
+	stns_ll90.tbl. The output is displayed to the terminal.
+
+	<a href=../parm/vgfile.html>VGFILE</a>   = vgf.vgf
+ 	<a href=../parm/dattim.html>DATTIM</a>   = last
+ 	<a href=../parm/stnfil.html>STNFIL</a>   = stns_ll90.tbl
+ 	<a href=../parm/output.html>OUTPUT</a>   = t
+
+    2.  As in example 1, except the output is written to the file
+        data.dat.
+
+        <a href=../parm/vgfile.html>VGFILE</a>   = vgf.vgf
+        <a href=../parm/dattim.html>DATTIM</a>   = last
+        <a href=../parm/stnfil.html>STNFIL</a>   = stns_ll90.tbl
+        <a href=../parm/output.html>OUTPUT</a>   = f/data.dat
+
+
+EXAMPLE <a href=../parm/output.html>OUTPUT</a>
+
+	 PARM = FLAG;ICLR
+
+    STN    YYMMDD/HHMM    FLAG    ICLR
+  69002    010831/1822       1      17
+  69007    010831/1822       1      17
+  69008    010831/1822       1      17
+  69012    010831/1822       0       0
+  69013    010831/1822       0       0
+  69014    010831/1822       0       0
+  69016    010831/1822       0       0
+  69017    010831/1822       0       0
+  69019    010831/1822       0       0
+  70026    010831/1822       0       0
+  .... ....
+  .... ....
+
+
+ERROR MESSAGES
+ 
+    [CPCGSTN  -1]   Fatal error initializing TAE.
+    [CPCGSTN  -2]   Fatal error reading TAE parameters.
+    [CPCGSTN  -3]   Error initializing GEMPLT.
+    [CPCGSTN ]
+</pre>
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

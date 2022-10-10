@@ -1,0 +1,131 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <title>GEMPAK Installation Guide: Mac OS X</title>
+    <meta name="bookmark" CONTENT="GEMPAK Installation Guide: Mac OS X">
+    <meta name="author" content="Michael James">
+    <meta name="keywords" CONTENT="Software, GEMPAK, Install, Mac OS X">
+    <meta name="description" CONTENT="GEMPAK installation information for Mac OS X.">
+    <link rel=stylesheet type="text/css" href="./css_core.css"> 
+    <link rel=stylesheet type="text/css" href="/css/tabs/breadcrumbs.css"> 
+ </head>
+ <body>
+  <a href=../help_and_documentation>GEMPAK Manual</a> | 
+  <a href=install.html>Back to Linux, Unix and Solaris Instructions</a><br><hr>
+    <h1>GEMPAK Installation Guide: Mac OS X</h1>
+
+    <p>This installation document, created by Kevin Tyle, <a href="https://www.atmos.albany.edu/" target="_blank"><b>University of Albany</b></a>, serves to guide users through building the latest version of GEMPAK on Intel Mac OS X <b>10.6 (Snow Leopard), 10.7 (Lion)</b> , and <b>10.8 (Mountain Lion) </b>with the GCC compilers, and should also work for <b>10.5 (Leopard)</b>. Earlier versions/CPUs of OS X are untested.</p>
+
+    <p>The following steps should lead to a successful build, with a user account with admin (sudo) privileges.</p>
+    <nav> 
+     <ol>
+      <li><a href="#xcode">Install Xcode</a></li>
+      <li><a href="#macports">Install Macports Packages</a></li>
+      <li><a href="#openmotif">Install OpenMotif</a></li>
+      <li><a href="#compile">Compile GEMPAK From Source</a></li>
+      <li><a href="#troubleshooting">Troublshooting</a></li>
+     </ol>
+    </nav> 
+
+
+
+    <!-- XCODE -->
+    <section>
+     <h4><a name="xcode"></a>1. Install Xcode</h4>
+     <h5>Lion (10.7)</h5>
+     <div class="indent">
+      <p>Xcode can be found as an optional install on the install DVD, or (again pre-Lion) you can download the latest disk image of Xcode from the Apple Developer web site (you will have to register in order to download the .dmg file): <a href="https://developer.apple.com/technologies/tools/xcode.html">https://developer.apple.com/technologies/tools/xcode.html</a></p>
+     </div>
+
+     <h5>Mountain Lion (10.8)</h5>
+     <div class="indent">
+      <p>Xcode can be downloaded from the Mac App Store, Command Line Tools are optional, so you must install it manually in the <strong>Preferencs</strong> tab:</p>
+      <p><img src="command-line.jpg"></p>
+     </div>
+
+     <h5>Mavericks (10.9)</h5>
+     <div class="indent">
+      <p>Installing command line tools changes slightly than previous versions. You can install Command Line Tools stand alone with the following command:</p>
+      <pre><code>sudo xcode-select --install</code></pre>
+      <p>and a popup window will appear asking you about install tools. Select Install and agree to the TOS.  Finally, update all installed packages:</p>
+      <pre><code>sudo port -v selfupdate</code></pre>
+     </div>
+    </section>
+
+    <!-- MACPORTS-->
+    <section>
+     <h4><a name="macports"></a>2. Install Macports Packages</h4>
+     <p><a href="https://www.macports.org/install.php">MacPorts.org</a> provides a DMG download for the 10.7, 10.8 and 10.9.</p>
+     <ol>
+      <li><p>Add <code>/opt/local/bin</code> to the beginning of <code>$PATH</code></p></li>
+      <li><p>Re-source your ~/<strong>.profile</strong> or ~/<strong>.cshrc</strong></p>
+       <pre><code> source .cshrc</code></pre>
+      </li>
+      <li><p>Install the <strong>GNU gcc compiler</strong> suite. Look for the latest non-beta build (e.g., <strong>4.9</strong>). This will take a long time, perhaps even a couple hours if you are on a slower/low-RAM system.</p>
+         <p> In order to compile GEMPAK you must <strong>install gcc</strong>.</p>
+        <pre><code> sudo port install gcc49 gcc_select
+ sudo port select gcc mp-gcc49</code></pre>
+      </li>
+      <li><p>Install packages</p>
+       <pre><code> sudo port install xorg-libXtst fontconfig jpeg libpng splint xbitmaps 
+ sudo port install Xft2 xorg-libXp xorg-libXmu xpm</code></pre>
+      </li>
+     </ol>
+
+     <p>Installing <code>fontconfig</code> will also install freetype.</p>
+     <p>Installing <code>Xft2</code> will also install <code>xorg-renderproto</code> and <code>libXrender</code>.</p>
+     <p>Installing <code>xorg-libXp</code> will also install <code>xorg-printproto</code>.</p>
+     <p>Installing <code>xorg-libXmu</code> will also install <code>xorg-libXt</code>, <code>xorg-libsm</code> and <code>xorg-libice</code>.</p>
+    </section>
+
+    <!-- OPENMOTIF-->
+    <section>
+     <h4><a name="openmotif"></a>3. Install OpenMotif</h4>
+
+     <p>In the past (see below), OpenMotif was either not present on MacPorts, or it was necessary to build from source due to problems with the binary. This appears no longer to be the case; although for reference, the instructions for a source-code build of OpenMotif appear below. Note: the latest (2.3.4) version of OpenMotif has been problematic building from source, although the binaries work. You may wish to build the previous version, 2.3.3.</p>
+     <pre><code>sudo port install openmotif</code></pre>
+     <p>If that doesn't work, then:</p>
+     <div class="indent">
+      <h5>Build Open Motif from source (2.3.3):</h5>
+      <p>The GEMPAK graphical programs, such as NMAP2 and NWX, require OpenMotif. This is no longer available from MacPorts, so you need to download and install OpenMotif 2.3.3. Unfortunately the OpenMotif source obtained from motifzone.net will produce compilation errors on OS X systems, so the UPC has provided the package with necessary edits in order to correctly build on your system.</p>
+      <p>Obtain the OpenMotif OS X specific tarball from the <a href="https://www.unidata.ucar.edu/downloads/gempak/motif/">GEMPAK downloads page</a>. Untar this in a directory of your choice. cd into it.</p>
+
+     <p>Set the CFLAGS and LDFLAGS environment variables:</p>
+       <h5>Bourne shell</h5>
+     <div class="indent">
+      <pre><code>    export CFLAGS="-I/opt/local/include"; export LDFLAGS="-L/opt/local/lib"</code></pre>
+     </div>
+
+     <h5>C shell</h5>
+     <div class="indent">
+      <pre><code>    setenv CFLAGS -I/opt/local/include; setenv LDFLAGS -L/opt/local/lib</code></pre>
+      <p>In the top level of OpenMotif 2.3.3:</p>
+      <pre><code>    configure --prefix=/opt/local; make all
+    sudo make install</code></pre>
+      </div>
+     </div>
+    </section>
+
+     <!-- COMPILE -->
+    <section>
+     <h4><a name="compile"></a>4. Compile GEMPAK From Source</h4>
+     <p>Extract the GEMPAK tarball archive obtained from the <a href="https://www.unidata.ucar.edu/downloads/gempak/latest/">GEMPAK Downloads page</a> and <strong>modify Gemenviron or Gemenviron.profile</strong> depending on your shell so that the environmental variable $NAWIPS is set to the correct directory path. Then cd into the $NAWIPS directory (this is the parent directory of the GEMPAK/N-AWIPS directory tree).</p>
+     <p>Be sure you are cd'd into the top level GEMPAK6.10 directory at this time. Type</p>
+     <pre><code>make &gt; make.out     </code></pre>
+     <p>to build the package, which may take a long time, depending on the speed of your computer. In a separate window, you can watch the compilation process by typing</p>
+     <pre><code>tail -f make.out</code></pre>
+     <p>Once done, verify there are no fatal errors in the make.out file (there should be two non-critical Error 2 messages but no Error 1 messages. If all went well, run</p>
+     <pre><code>make install</code></pre>
+     <p>and you should be good-to-go.</p>
+    </section>
+
+     <!-- TROUBLSHOOTING -->
+    <section>
+    <h4><a name="troubleshooting"></a>Troubleshooting</h4>
+    <p>No doubt some individuals with different CPUs/OS versions may discover some problems not mentioned or covered here. Although basic run-time testing on OS X-compiled GEMPAK has been successful, it's possible there may be bugs in the OS X build which are not seen on other platforms. Users can report known probelms to Unidata's GEMPAK Support desk (<strong><a href="mailto:support-gempak@unidata.ucar.edu">support-gempak@unidata.ucar.edu</a></strong>), and are encouraged to post updates and questions to the GEMBUD mailing list (<strong><a href="mailto:gembud@unidata.ucar.edu">gembud@unidata.ucar.edu</a></strong>) as well.</p>
+    <p>Corrections and comments concerning this guide can be sent to <strong><a href="mailto:support-gempak@unidata.ucar.edu">support-gempak@unidata.ucar.edu</a></strong></p>
+    </section>
+
+  <script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+ </html>

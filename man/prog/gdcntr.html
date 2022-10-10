@@ -1,0 +1,280 @@
+<!doctype html><head><title>GEMPAK Help: gdcntr</title></head><body>
+<a href=../../help_and_documentation>GEMPAK Manual</a> | 
+<a href=../prog/>Programs</a><br><hr>
+<pre>
+GDCNTR draws contour lines through a scalar grid.
+
+INPUT PARAMETERS
+ 
+    <a href=../parm/gdattim.html>GDATTIM</a>   Grid date/time
+    <a href=../parm/glevel.html>GLEVEL</a>    Grid level
+    <a href=../parm/gvcord.html>GVCORD</a>    Grid vertical coordinate
+    <a href=../parm/gfunc.html>GFUNC</a>     Scalar grid
+    <a href=../parm/gdfile.html>GDFILE</a>    Grid file
+    <a href=../parm/cint.html>CINT</a>      Contour interval/min/max
+    <a href=../parm/line.html>LINE</a>      Color/type/width/label/smth/fltr/scflg
+    <a href=../parm/map.html>MAP</a>       Map color/dash/width/filter flag
+    <a href=../parm/mscale.html>MSCALE</a>    fgc;bgc;mask/units/lat;hide/values/anch/x;y/ln;wd/freq|text_info|t
+    <a href=../parm/title.html>TITLE</a>     Title color/line/title
+    <a href=../parm/device.html>DEVICE</a>    Device|name|x size;y size|color type
+    <a href=../parm/satfil.html>SATFIL</a>    Satellite image filename(s)
+    <a href=../parm/radfil.html>RADFIL</a>    Radar image filename(s)
+    <a href=../parm/imcbar.html>IMCBAR</a>    Color/ornt/anch/x;y/ln;wd/freq
+    <a href=../parm/proj.html>PROJ</a>      Map projection/angles/margins|drop flag
+    <a href=../parm/garea.html>GAREA</a>     Graphics area
+    <a href=../parm/ijskip.html>IJSKIP</a>    Iskp;Istrt;Istp/Jskp;Jstrt;Jstp
+    <a href=../parm/clear.html>CLEAR</a>     Clear screen flag
+    <a href=../parm/panel.html>PANEL</a>     Panel loc/color/dash/width/regn
+    <a href=../parm/text.html>TEXT</a>      Size/fnt/wdth/brdr/N-rot/just/hw flg
+    <a href=../parm/scale.html>SCALE</a>     Scalar scale / vector scale
+    <a href=../parm/latlon.html>LATLON</a>    Line color/dash/width/freq/inc/label/format
+    <a href=../parm/hilo.html>HILO</a>      Color/symbol/rng/rad/cnt/intp
+    <a href=../parm/hlsym.html>HLSYM</a>     <a href=../parm/hilo.html>HILO</a> txt size/posn/font/wdth/hw
+    <a href=../parm/clrbar.html>CLRBAR</a>    Color/ornt/anch/x;y/ln;wd/freq|text_info
+    <a href=../parm/contur.html>CONTUR</a>    Subbox/smooth
+    <a href=../parm/skip.html>SKIP</a>      Skip_cntr/skip_plt_x;skip_plt_y
+    <a href=../parm/fint.html>FINT</a>      Fill interval/min/max
+    <a href=../parm/fline.html>FLINE</a>     Fill colors/fill types
+    <a href=../parm/ctype.html>CTYPE</a>     Contour type:  C/F
+    <a href=../parm/lutfil.html>LUTFIL</a>    Enhancement lookup table filename
+    <a href=../parm/stnplt.html>STNPLT</a>    Txtc/txt attr|marker attr|stnfil#col
+ 
+ 
+
+PROGRAM DESCRIPTION
+ 
+    GDCNTR draws contour lines through a scalar grid computed
+    using the GEMPAK grid diagnostic functions.  Contours may be
+    drawn in any valid GEMPAK projection and may be overlaid on
+    images.
+
+    A list of times may be given in <a href=../parm/gdattim.html>GDATTIM</a> allowing animation
+    of the contours.
+
+    Contours may be plotted in different display windows by specifying
+    a name for the XW driver in <a href=../parm/device.html>DEVICE</a>.
+
+    Contours may be displayed as lines or as a color fill.
+    If <a href=../parm/ctype.html>CTYPE</a> is C, contour lines are drawn using input from <a href=../parm/cint.html>CINT</a>
+    and <a href=../parm/line.html>LINE</a>.  If <a href=../parm/ctype.html>CTYPE</a> is F, filled contours are drawn using
+    specifications from <a href=../parm/fint.html>FINT</a> and <a href=../parm/fline.html>FLINE</a>. Both contour lines and
+    filled contours are drawn if <a href=../parm/ctype.html>CTYPE</a> is F/C.
+
+    The attributes of the contour lines, including the color,
+    line type, line width, and label frequency are specified
+    in <a href=../parm/line.html>LINE</a>.  The four attributes must be separated with slashes;
+    semicolons separate the values for each attribute.  If the
+    line type is set to a single negative number, negative
+    contour values will have the absolute value of the line type
+    and positive values will be solid.  If the label frequency
+    is set to a single number, n, then every nth value will be
+    labeled.
+
+    <a href=../parm/cint.html>CINT</a> specifies the contour interval, minimum value, and maximum
+    value separated with slashes.  A scaling factor may be entered
+    in <a href=../parm/scale.html>SCALE</a>. The data in the grid file will be multiplied by
+    10 ** <a href=../parm/scale.html>SCALE</a> before the contour levels are selected.  If no
+    contour interval is entered, a default value which will generate
+    5 to 10 contour levels will be selected.
+
+    The contour fill intervals are specified in <a href=../parm/fint.html>FINT</a>; the attributes
+    for the fill are specified in <a href=../parm/fline.html>FLINE</a>.  The first color specified
+    in <a href=../parm/fline.html>FLINE</a> fills values less than the first level; while the
+    last color fills values greater than the last level.  Therefore,
+    n levels require n+1 colors.
+
+    A range of colors may be specified in either <a href=../parm/fline.html>FLINE</a> or <a href=../parm/line.html>LINE</a> by
+    specifying starting, ending and increment values in that order
+    separated by dashes.  If the increment is missing, a default
+    of 1 is used.
+
+    The fill type may be set to 1 (solid), 2 (slanted dash) or 3
+    (slanted line).  If fill type is set to 0, solid fill is used.
+    If the fill type is set to a single negative number, negative
+    values will use the absolute value of the fill type, and positive
+    values will be solid.
+
+    The <a href=../parm/hilo.html>HILO</a> and <a href=../parm/hlsym.html>HLSYM</a> parameters control marking and labeling the
+    values of relative maxima and minima.  <a href=../parm/clrbar.html>CLRBAR</a> allows a color bar
+    to be added for color fill contours.
+
+    The <a href=../parm/skip.html>SKIP</a> parameter specifies the number of grid points to skip
+    in generating contours.  For example, if <a href=../parm/skip.html>SKIP</a> = 1, every other
+    point is used to generate the contours.
+
+ 
+EXAMPLES
+ 
+    1.  Draw contours every 2 degrees through the 700 mb
+        temperature field for all of the forecast times.  Negative
+        values will be dashed using line type 3; every other
+        contour line will be labeled; all the contour lines will be
+        drawn in color number 3. The display area will be a enlarged
+        Mercator map centered on New York.  The contours are drawn on
+        a clear screen with a map in dash pattern 7, dotted lat/lon
+        lines every 5 degrees and no title.
+
+	<a href=../parm/gdattim.html>GDATTIM</a>	 =  all
+	<a href=../parm/glevel.html>GLEVEL</a>	 =  700
+	<a href=../parm/gvcord.html>GVCORD</a>	 =  pres
+	<a href=../parm/gfunc.html>GFUNC</a>	 =  tmpc
+	<a href=../parm/gdfile.html>GDFILE</a>	 =  $GEMPAK/data/hrcbob.grd
+	<a href=../parm/cint.html>CINT</a>	 =  2
+	<a href=../parm/line.html>LINE</a>	 =  3/-3/1/2
+	<a href=../parm/map.html>MAP</a>	 =  1/7
+	<a href=../parm/title.html>TITLE</a>	 =  0
+	<a href=../parm/device.html>DEVICE</a>	 =  xw
+	<a href=../parm/satfil.html>SATFIL</a>	 =
+	<a href=../parm/radfil.html>RADFIL</a>	 =
+	<a href=../parm/imcbar.html>IMCBAR</a>   =
+	<a href=../parm/proj.html>PROJ</a>	 =  mer
+	<a href=../parm/garea.html>GAREA</a>	 =  ny-
+	<a href=../parm/clear.html>CLEAR</a>	 =  yes
+	<a href=../parm/panel.html>PANEL</a>	 =  0
+	<a href=../parm/text.html>TEXT</a>	 =  1
+	<a href=../parm/scale.html>SCALE</a>	 =  999
+	<a href=../parm/latlon.html>LATLON</a>	 =  2/10/1/1/5;5
+	<a href=../parm/hilo.html>HILO</a>	 =
+	<a href=../parm/hlsym.html>HLSYM</a>	 =
+	<a href=../parm/clrbar.html>CLRBAR</a>	 =
+	<a href=../parm/contur.html>CONTUR</a>	 =  3
+	<a href=../parm/skip.html>SKIP</a>	 =  0
+	<a href=../parm/fint.html>FINT</a>	 =  0
+	<a href=../parm/fline.html>FLINE</a>	 =  10-20
+	<a href=../parm/ctype.html>CTYPE</a>	 =  C
+	<a href=../parm/lutfil.html>LUTFIL</a>   =
+	<a href=../parm/stnplt.html>STNPLT</a>   =
+
+    2.  Now overlay dewpoint lines on the above plots. The contour
+        interval is set to 5.  The lines will be drawn in color 17,
+        with labeling and line types as above.  The map and lat/lon
+        lines will not be drawn for the overlay.  The title, which
+        includes the date, level and the string "TEMPERATURE AND
+        DEWPOINT", is added in color 1.
+
+	<a href=../parm/gdattim.html>GDATTIM</a>	 =  all
+	<a href=../parm/glevel.html>GLEVEL</a>	 =  700
+	<a href=../parm/gvcord.html>GVCORD</a>	 =  pres
+	<a href=../parm/gfunc.html>GFUNC</a>	 =  dwpc
+	<a href=../parm/gdfile.html>GDFILE</a>	 =  $GEMPAK/data/hrcbob.grd
+	<a href=../parm/cint.html>CINT</a>	 =  5
+	<a href=../parm/line.html>LINE</a>	 =  17/-3/1/2
+	<a href=../parm/map.html>MAP</a>	 =  0
+	<a href=../parm/title.html>TITLE</a>	 =  1//~  @  TEMPERATURE AND DEWPOINT
+	<a href=../parm/device.html>DEVICE</a>	 =  xw
+	<a href=../parm/satfil.html>SATFIL</a>	 =
+	<a href=../parm/radfil.html>RADFIL</a>	 =
+   	<a href=../parm/imcbar.html>IMCBAR</a>   =
+	<a href=../parm/proj.html>PROJ</a>	 =  mer
+	<a href=../parm/garea.html>GAREA</a>	 =  ny-
+	<a href=../parm/clear.html>CLEAR</a>	 =  no
+	<a href=../parm/panel.html>PANEL</a>	 =  0
+	<a href=../parm/text.html>TEXT</a>	 =  1
+	<a href=../parm/scale.html>SCALE</a>	 =  999
+	<a href=../parm/latlon.html>LATLON</a>	 =  0
+	<a href=../parm/hilo.html>HILO</a>	 =
+	<a href=../parm/hlsym.html>HLSYM</a>	 =
+	<a href=../parm/clrbar.html>CLRBAR</a>	 =
+	<a href=../parm/contur.html>CONTUR</a>	 =  3
+	<a href=../parm/skip.html>SKIP</a>	 =  0
+	<a href=../parm/fint.html>FINT</a>	 =  0
+	<a href=../parm/fline.html>FLINE</a>	 =  10-20
+	<a href=../parm/ctype.html>CTYPE</a>	 =  C
+	<a href=../parm/lutfil.html>LUTFIL</a>   =
+	<a href=../parm/stnplt.html>STNPLT</a>   =
+
+    3.  Now clear the screen and draw a color fill of the divergence
+        of the gridded wind, alternating between color 23 and 19, for
+        the 24 hour forecast time.  Scale the data by 10**5 and use a
+        contour interval of 0.5.  Draw contour lines in color 2 using
+        heavy, solid lines, labeling every contour level. Draw a
+        color bar of the fill colors using the default conditions.
+        The display area is changed to Missouri and the lat/lon lines
+        are plotted at 5 degree intervals.
+
+	<a href=../parm/gdattim.html>GDATTIM</a>	 =  f24
+	<a href=../parm/glevel.html>GLEVEL</a>	 =  700
+	<a href=../parm/gvcord.html>GVCORD</a>	 =  pres
+	<a href=../parm/gfunc.html>GFUNC</a>	 =  div(wnd)
+	<a href=../parm/gdfile.html>GDFILE</a>	 =  $GEMPAK/data/hrcbob.grd
+	<a href=../parm/cint.html>CINT</a>	 =  .5
+	<a href=../parm/line.html>LINE</a>	 =  2/1/7/1
+	<a href=../parm/map.html>MAP</a>	 =  1
+	<a href=../parm/title.html>TITLE</a>	 =  1
+	<a href=../parm/device.html>DEVICE</a>	 =  xw
+	<a href=../parm/satfil.html>SATFIL</a>	 =
+	<a href=../parm/radfil.html>RADFIL</a>	 =
+	<a href=../parm/imcbar.html>IMCBAR</a>   =
+	<a href=../parm/proj.html>PROJ</a>	 =  mer
+	<a href=../parm/garea.html>GAREA</a>	 =  mo
+	<a href=../parm/clear.html>CLEAR</a>	 =  yes
+	<a href=../parm/panel.html>PANEL</a>	 =  0
+	<a href=../parm/text.html>TEXT</a>	 =  1
+	<a href=../parm/scale.html>SCALE</a>	 =  5
+	<a href=../parm/latlon.html>LATLON</a>	 =  0
+	<a href=../parm/hilo.html>HILO</a>	 =
+	<a href=../parm/hlsym.html>HLSYM</a>	 =
+	<a href=../parm/clrbar.html>CLRBAR</a>	 =  1
+	<a href=../parm/contur.html>CONTUR</a>	 =  3
+	<a href=../parm/skip.html>SKIP</a>	 =  0
+	<a href=../parm/fint.html>FINT</a>	 =  .5
+	<a href=../parm/fline.html>FLINE</a>	 =  23;19
+	<a href=../parm/ctype.html>CTYPE</a>	 =  f/c
+	<a href=../parm/lutfil.html>LUTFIL</a>   =
+	<a href=../parm/stnplt.html>STNPLT</a>   =
+
+    4.  Clear the screen and draw contours of absolute vorticity.
+        Label vorticity maxima with a red X and minima with a cyan N.
+        Plot the values of the extrema.  Exclude minima less than
+        4 * 10 ** -5.  The search radius for finding extrema is
+        5 grid points.  Interpolate the extrema to off-grid point
+        locations.  Plot the values in font number 2 on the
+        right beneath the marking symbol.  Plot the marking label
+        in size 1.5, the values in size 1.
+
+	<a href=../parm/gdattim.html>GDATTIM</a>	 =  f24
+	<a href=../parm/glevel.html>GLEVEL</a>	 =  700
+	<a href=../parm/gvcord.html>GVCORD</a>	 =  pres
+	<a href=../parm/gfunc.html>GFUNC</a>	 =  avor(wnd)
+	<a href=../parm/gdfile.html>GDFILE</a>	 =  $GEMPAK/data/hrcbob.grd
+	<a href=../parm/cint.html>CINT</a>	 =  2
+	<a href=../parm/line.html>LINE</a>	 =  2/1/2
+	<a href=../parm/map.html>MAP</a>	 =  1
+	<a href=../parm/title.html>TITLE</a>	 =  1
+	<a href=../parm/device.html>DEVICE</a>	 =  xw
+	<a href=../parm/satfil.html>SATFIL</a>	 =
+	<a href=../parm/radfil.html>RADFIL</a>	 =
+	<a href=../parm/imcbar.html>IMCBAR</a>   =
+	<a href=../parm/proj.html>PROJ</a>	 =  mer
+	<a href=../parm/garea.html>GAREA</a>	 =  ri
+	<a href=../parm/clear.html>CLEAR</a>	 =  yes
+	<a href=../parm/panel.html>PANEL</a>	 =  0
+	<a href=../parm/text.html>TEXT</a>	 =  1
+	<a href=../parm/scale.html>SCALE</a>	 =  5
+	<a href=../parm/latlon.html>LATLON</a>	 =  0
+	<a href=../parm/hilo.html>HILO</a>	 =  2;6/X#;N#/;4-28/5//yes
+	<a href=../parm/hlsym.html>HLSYM</a>	 =  1.5;1/3/1;2
+	<a href=../parm/clrbar.html>CLRBAR</a>	 =  1
+	<a href=../parm/contur.html>CONTUR</a>	 =  3
+	<a href=../parm/skip.html>SKIP</a>	 =  0
+	<a href=../parm/fint.html>FINT</a>	 =  2
+	<a href=../parm/fline.html>FLINE</a>	 =  23;19
+	<a href=../parm/ctype.html>CTYPE</a>	 =  f/c
+	<a href=../parm/lutfil.html>LUTFIL</a>   =
+	<a href=../parm/stnplt.html>STNPLT</a>   =
+
+ERROR MESSAGES
+ 
+    [GDCNTR  +2]    WARNING:  ... not found.  CONTINUING---
+    [GDCNTR  +1]    WARNING.  There are no contour levels.
+    [GDCNTR  -1]    Fatal error initializing TAE.
+    [GDCNTR  -2]    Fatal error reading TAE parameters.
+    [GDCNTR  -3]    Fatal error initializing GEMPLT.
+    [GDCNTR  -4]    Grid requested is not available.
+    [GDCNTR  -5]    Error setting grid navigation for file ....
+    [GDCNTR  -6]    There are no grids in grid file.
+    [GDCNTR -13]    There are no times in the grid file
+</pre>
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

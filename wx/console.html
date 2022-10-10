@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script> 
+
+	<style type='text/css'  media='all'>
+			
+	#container {
+		border: 1px solid #ccc;
+		position: absolute;
+		left: 60px;
+		top: 21px;
+		background: #fff;
+		//background-image: url('ly_base.svg');
+	}
+	.buttons {
+		position: absolute;
+		top: 21px;
+		left: 2px;
+		width: 100px;
+		height: 200px;
+	}
+	.counter {
+		position: absolute;
+		top: 0px;
+		left: 60px;
+		width: 900px;
+		height: 20px;
+		text-align: center;
+	}
+	#fps {
+		font-size: 12px;
+	}
+	input.btn {   
+		color: #ccc;
+	} 
+	
+	.ftime {
+		padding: 0px 8.5px 0px 8.5px;
+		font-size: 12px;
+		text-align: center;
+	}
+	.ftime:hover {
+		background: #ddd;
+	}
+	.box {
+		background: #ddd;
+	}
+	
+	</style>
+
+    <script>
+    
+	// settings	
+	var canvas = null;
+	var context = null;
+	var numFrames = 33;
+	var sources = {};
+	var sources2 = {};
+	var sources3 = {};	
+	
+	// build product arrays
+	var hght = [];
+	var wnd = [];
+	var prcp = [];
+	for (var i=0;i<numFrames;i++) {
+		if (i < 10) {
+			hght[i] = 'ly_hght_f0' + i*3 + '.svg';
+			wnd[i] = 'ly_wnd_f0' + i*3 + '.svg';
+			prcp[i] = 'ly_p03i_f0' + i*3 + '.gif';
+		} else {
+			hght[i] = 'ly_hght_f0' + i*3 + '.svg';
+			wnd[i] = 'ly_wnd_f0' + i*3 + '.svg';
+			prcp[i] = 'ly_p03i_f0' + i*3 + '.gif';
+		}
+	}
+	// concat to master array for preloading
+	var rawSource = hght.concat(wnd).concat(prcp);
+	
+	// onload/preload/animation settings
+	var fps = 4;
+	var loaded_images = 0;
+	var image_objects = [];
+	var ii = -1;
+	var show_src = {
+		hght: 1,
+		wnd: 1,
+		prcp: 1
+	};
+	
+	var jj = 0;
+	var spanStr = '';
+	for (jj=0;jj<prcp.length;jj++){
+		spanStr += '<span class="ftime" id="f' + jj*3 + '">' + jj*3 + '</span>';
+	}
+	
+	
+	// drawOnCanvas called once all images loaded
+	function drawOnCanvas(fid) {
+		$('div.counter').html(spanStr);
+		     
+		     
+		 if (fid == -9) {
+			timer = setInterval( function() {
+				if (ii++ == numFrames-1) { ii = 0 };
+				var selector = $('#f'+ii*3).selector;
+				var lastsel = $('#f'+(ii-1)*3).selector;
+				if (ii == 0) { lastsel = $('#f96').selector}
+		    	$(selector).addClass('box');
+		    	$(lastsel).removeClass('box');
+				canvas.width = canvas.width;
+				if (show_src["prcp"] == 1){ context.drawImage(image_objects[ii + 2*numFrames], 0, 0)}
+				if (show_src["hght"] == 1){ context.drawImage(image_objects[ii], 0, 0)			 }
+				if (show_src["wnd"] == 1){ context.drawImage(image_objects[ii + numFrames], 0, 0)   }
+				var baseimg = new Image();
+		        baseimg.src= 'ly_base.svg';
+		        context.drawImage(baseimg, 0, 0);  							// base overlaid
+			}, 1000 / fps ); // fps
+		} else if ( fid > 1) {
+			ii = ( fid - 2 ) / 3;
+		    var spanID = ii * 3;
+		    var selector = $('#f'+spanID).selector;
+		    $(selector).addClass('box');
+			if (ii < 0) { ii = numFrames-1;}
+			if (ii == numFrames) { ii = 0; }
+			canvas.width = canvas.width;
+			if (show_src["prcp"] == 1){ context.drawImage(image_objects[ii + 2*numFrames], 0, 0)}
+			if (show_src["hght"] == 1){ context.drawImage(image_objects[ii], 0, 0)			 }
+			if (show_src["wnd"] == 1){ context.drawImage(image_objects[ii + numFrames], 0, 0)   }
+			var baseimg = new Image();
+	        baseimg.src= 'ly_base.svg';
+	        context.drawImage(baseimg, 0, 0); 
+		} else {
+			ii += fid;
+			if (ii < 0) { ii = numFrames-1;}
+			if (ii == numFrames) {ii = 0; }
+			var spanID = ii * 3;
+			console.log(spanID);
+			var selector = $('#f'+spanID).selector;
+		    var lastsel = $('#f'+(ii-1)*3).selector;
+		    if (ii == 0) { selector = $('#f0').selector}
+		    $(lastsel).removeClass('box');
+		    $(selector).addClass('box');
+			if (ii == numFrames) { ii = 0; }
+			canvas.width = canvas.width;
+			if (show_src["prcp"] == 1){ context.drawImage(image_objects[ii + 2*numFrames], 0, 0)}
+			if (show_src["hght"] == 1){ context.drawImage(image_objects[ii], 0, 0)			 }
+			if (show_src["wnd"] == 1){ context.drawImage(image_objects[ii + numFrames], 0, 0)   }
+			var baseimg = new Image();
+	        baseimg.src= 'ly_base.svg';
+	        context.drawImage(baseimg, 0, 0);  							// base overlaid
+		}
+	}
+	
+	function handleLoadedImage() {
+	    ++loaded_images;
+	    if (loaded_images == rawSource.length) { // preload to rawSource length
+		console.log(rawSource.length);
+	        drawOnCanvas(-9);
+	    }
+	}
+	
+	var timer = 0;
+	document.ready = function() {
+	    var swtch = -9;
+   	    $('#loop').click(function() {
+			 fps = 4;
+			 swtch = -9;
+			 show_src = {
+				hght: 1,
+				wnd: 1,
+				prcp: 1
+			 }
+	    	 $('#hght').removeClass("btn");
+	    	 $('#wnd').removeClass("btn");
+	    	 $('#prcp').removeClass("btn");
+	    	 $('#fps').html('');
+			 console.log('click reset');
+			 clearInterval(timer);
+	         drawOnCanvas(swtch);
+	    });
+	    $('#stop').click(function() {
+	    	 console.log('click stop');
+	         clearInterval(timer);
+	         $('#fps').html('');
+	         swtch = 0;
+	    });
+	    $('#fwd').click(function() {
+	         console.log('click fwd');
+	         clearInterval(timer);
+	         $('#fps').html('');
+	         swtch = 0;
+	         drawOnCanvas(1);
+	        
+	    });
+	    $('#back').click(function() {
+	         console.log('click back');
+	         clearInterval(timer);
+	         $('#fps').html('');
+	         drawOnCanvas(-1);
+	         swtch = 0;
+	    });
+	    $('#fast').click(function() {
+	         console.log('click fast');
+	         fps = 2 * fps;
+	         clearInterval(timer);
+	         if (fps > 32) {fps = 32}
+	         $('#fps').html( fps + ' fps');
+	         swtch = -9;
+	         drawOnCanvas(swtch);
+	    });
+	    $('#slow').click(function() {
+	         console.log('click slow');
+	         fps = fps / 2;
+	         clearInterval(timer);
+	         if (fps < 1) {fps = 1}
+	         $('#fps').html( fps + ' fps');
+	         swtch = -9;
+	         drawOnCanvas(swtch);
+	    });
+	    $('#hght, #wnd, #prcp').click(function() {
+	    	 show_src[this.id] = 1 - show_src[this.id];
+	    	 $(this).toggleClass("btn")
+			 clearInterval(timer);
+			 if (swtch == -1 || swtch == 1){
+			 	swtch = 0;
+			 }
+	         drawOnCanvas(swtch);
+	    });
+	    console.log('hi there');
+	    /*
+	    $('.ftime').live("hover", function() {
+	    	 $('#fps').html('');
+	    	 var id = $(this).context.id.replace('f','');
+	         clearInterval(timer);
+	         swtch = parseInt(id) + 2;
+	         drawOnCanvas(swtch);
+	    });
+	    */
+	    canvas = document.getElementById('container');
+	    context = canvas.getContext('2d');
+	    console.log(context);
+	    for (var i=0;i<rawSource.length;i++) {
+	    	console.log('preloading frame ' + i);
+	        var tempimage = new Image();
+	        tempimage.src= 'ly/' + rawSource[i];
+	        tempimage.onload = handleLoadedImage;
+	        image_objects[i] = tempimage;
+	    }
+	}
+	
+	var handleInput = function(event) {
+		clearInterval(timer);
+	    switch(event.keyCode) {
+	      //ENTER
+	      case 13:
+	        break;
+	      //SPACEBAR
+	      case 32:
+	        break;
+	      //LEFT ARROW
+	      case 37:
+	      	$('#fps').html('');
+	      	drawOnCanvas(-1);
+	        break;
+	      //UP ARROW
+	      case 38:
+	        break;
+	      //RIGHT ARROW
+	      case 39:
+	      	$('#fps').html('');
+	      	drawOnCanvas(1);
+	        break;
+	      //DOWN ARROW
+	      case 40:
+	        break;
+	    }
+	  }
+	
+	document.addEventListener("keyup", handleInput, false);
+
+    </script>
+
+	<canvas id="container" width="900" height="600"></canvas>
+    <div class="buttons">
+		<input type="button" id="loop" value="Reset"/> <br />
+		<input type="button" id="stop" value="Stop"/> <br />
+		<input type="button" id="fwd" value="&gt;"/> <br />
+		<input type="button" id="back" value="&lt;"/> <br />
+		<input type="button" id="fast" value="faster"/> <br />
+		<input type="button" id="slow" value="slower"/> <br />
+		<div id="fps"></div>
+		<br>
+		<input type="button" id="hght" value="hght"/> <br />
+		<input type="button" id="wnd" value="wind"/> <br />
+		<input type="button" id="prcp" value="prcp"/> <br />
+	</div>
+	
+	<div class="counter"></div>
+</html>
+

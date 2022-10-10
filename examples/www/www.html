@@ -1,0 +1,48 @@
+<HTML><HEAD><TITLE>GEMPAK Examples: Creating Images for the Web</TITLE>
+<META NAME="BOOKMARK" CONTENT="GEMPAK Examples: Creating Images for the Web">
+<META NAME="AUTHOR" CONTENT="Steve Chiswell">
+<META NAME="KEYWORDS" CONTENT="Software, GEMPAK, Examples, Web">
+<META NAME="DESCRIPTION" CONTENT="GEMPAK Examples: Creating Images for the Web.">
+</HEAD><BODY>
+
+<h2>Generating MPEG animations</h2>
+The Gempak gif driver can be used to generate multiple
+image frames which can be combined in MPEG format to provide
+annimation sequences. The process is similar to that for generating
+meta files for NTRANS, with the exception that a separate gif file
+is produced for each frame whereas the meta files can be
+appended to a single file.<p>
+Once the desired gif files are generated, the individual frames
+can be combined into a single MPEG file using one of several
+publically available <A HREF="ftp://mm-ftp.cs.berkeley.edu/pub/mpeg/encode">encoders</a>.<p>
+
+When generating the gif files, remember that MPEG files can
+grow very large, so you will probably want to specify a
+smaller output size than the default for the GF driver.
+<p>
+<em>Tips for animations:</em>
+<li>Use broader line widths for contours which will move
+from frame to frame.
+<li>Try to reduce the number of colors used.
+<li>Use bold fonts for labels, especially for dates which change.
+<p>
+
+
+
+<p>
+<A HREF="eta.mpg">MPEG loop of ETA surface pressure</a><br>
+<A HREF="eta_csh.html">Script to create ETA gif images</a><br>
+<A HREF="eta_mpg.html">Script to create ETA animation from gifs</a>
+<P>
+<A HREF="sat.mpg">MPEG loop of IR satellite images</a><br>
+<A HREF="sat_csh.html">Script to create satellite gif images</a><br>
+<A HREF="sat_mpg.html">Script to create satellite animation from gifs</a>
+<p>
+<hr>
+<A HREF="../examples.html">
+Return to the Walk Through Examples Table of Contents.</A>
+
+
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

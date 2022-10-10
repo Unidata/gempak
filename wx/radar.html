@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Simple SlippyMap using Google Maps v3 API</title>
+    </head>
+    <body onload="initialize()">
+ <div id="map"  style="width: 900px; height: 600px;"></div>
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript" src="gbridge.js"></script>
+<script type="text/javascript" src="gradar.js"></script>
+<script type="text/javascript">
+var Clock ;
+var Cycle ;
+var Google;
+var Helper;
+var Last=  0;
+var Skew=  0;
+var Wrap= 10;
+var Idle=100;
+var Back=500;
+
+var Radar=[];
+var Ridge=["BUF","CLE"];
+var Product="NCR";
+ var overlay;
+
+  NIDSOverlay.prototype = new google.maps.OverlayView();
+
+  function initialize() {
+    var myLatLng = new google.maps.LatLng(42.5, -77);
+    var myOptions = {
+      zoom: 8,
+      center: myLatLng,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+
+    var map = new google.maps.Map(document.getElementById("map"), myOptions);
+	// 23;-130;55;-60
+    var swBound = new google.maps.LatLng(40.241795, -81.680043);
+    var neBound = new google.maps.LatLng(45.646381, -75.784130);
+    var bounds = new google.maps.LatLngBounds(swBound, neBound);
+
+    // Photograph courtesy of the U.S. Geological Survey
+    var srcImage = 'rad.gif';
+    overlay = new NIDSOverlay(bounds, srcImage, map);
+
+    for (var i=0;Ridge[i];i++){
+	Radar[i]=new NIDSLayer({bbox:bbox(Ridge[i],Product),size:{x:640,y:640},last:Last,skew:Skew,wrap:Wrap,name:Ridge[i]+"_"+Product});
+        console.log(Radar[i]);
+        //Radar[i].setMap(map);
+    }
+    NIDSFeed();
+  }
+
+
+  /* --- NIDS LAYER --- */
+
+  function NIDSLayer(obj) {
+    this.bbox=obj.bbox ? obj.bbox : {};
+    this.size=obj.size ? obj.size : {};
+    this.last=obj.last ? obj.last :  0;
+    this.skew=obj.skew ? obj.skew :  0;
+    this.wrap=obj.wrap ? obj.wrap : 10;
+    this.name=obj.name ? obj.name : "";
+    this.filter=1;
+    this.adjust=1;
+  }
+  
+  NIDSLayer.prototype.onAdd = function() {
+    var div = document.createElement("DIV");
+    div.style.position = "absolute";
+    for (var i=0;this.wrap-i;i++){
+      var img = document.createElement("img");
+      img.style.position="absolute";
+      img.style.visibility="visible";
+      img.style.display="block";
+      img.style.left  ="0px";
+      img.style.top   ="0px";
+      img.style.width =this.adjust ? "100%" : "";
+      img.style.height=this.adjust ? "100%" : "";
+      img.onload =this.loaded;
+      img.onerror=this.failed;
+      img.galleryImg="no";
+      div.appendChild(img);
+    }
+    this.div_ = div;
+    var panes = this.getPanes();
+    panes.overlayImage.appendChild(div);
+  }
+
+  function NIDSFeed(){
+    var stub="http://www.srh.noaa.gov/ridge2/JSON_generator.php?callback=CallBack&frames="+Wrap;
+    for (var i=0;Ridge[i];i++){
+      Radar[i].feed(stub+"&rid="+Ridge[i]+"&product="+Product);
+      console.log(Radar[i].feed(stub+"&rid="+Ridge[i]+"&product="+Product));
+    }
+    Cycle=clearTimeout(Cycle);
+    Cycle=setTimeout("Feed()",150000);
+  }
+
+  NIDSLayer.prototype.feed=function(recall){
+    var div=document.getElementById("("+this.name+")");
+    if (div) document.body.removeChild(div);
+    div=document.createElement("SCRIPT");
+    if (div) document.body.appendChild(div);
+    div.src=recall+"&random="+(""+Math.random().toFixed(10)+"").slice(-10);
+    div.id="("+this.name+")";
+  }
+
+
+
+  /* --- END NIDS LAYER --- */
+
+
+
+  function NIDSOverlay(bounds, image, map) {
+    this.bounds_ = bounds;
+    this.image_ = image;
+    this.map_ = map;
+    this.div_ = null;
+    this.setMap(map);
+  }
+
+  NIDSOverlay.prototype.onAdd = function() {
+
+    // Note: an overlay's receipt of onAdd() indicates that
+    // the map's panes are now available for attaching
+    // the overlay to the map via the DOM.
+
+    // Create the DIV and set some basic attributes.
+    var div = document.createElement('div');
+    div.style.borderStyle = "none";
+    div.style.borderWidth = "0px";
+    div.style.position = "absolute";
+
+    // Create an IMG element and attach it to the DIV.
+    var img = document.createElement("img");
+    img.src = this.image_;
+    img.style.width = "100%";
+    img.style.height = "100%";
+    img.style.position = 'absolute';
+    div.appendChild(img);
+
+    // Set the overlay's div_ property to this DIV
+    this.div_ = div;
+
+    // We add an overlay to a map via one of the map's panes.
+    // We'll add this overlay to the overlayImage pane.
+    var panes = this.getPanes();
+    panes.overlayImage.appendChild(div);
+  }
+
+  NIDSOverlay.prototype.draw = function() {
+
+    // Size and position the overlay. We use a southwest and northeast
+    // position of the overlay to peg it to the correct position and size.
+    // We need to retrieve the projection from this overlay to do this.
+    var overlayProjection = this.getProjection();
+
+    // Retrieve the southwest and northeast coordinates of this overlay
+    // in latlngs and convert them to pixels coordinates.
+    // We'll use these coordinates to resize the DIV.
+    var sw = overlayProjection.fromLatLngToDivPixel(this.bounds_.getSouthWest());
+    var ne = overlayProjection.fromLatLngToDivPixel(this.bounds_.getNorthEast());
+
+    // Resize the image's DIV to fit the indicated dimensions.
+    var div = this.div_;
+    div.style.left = sw.x + 'px';
+    div.style.top = ne.y + 'px';
+    div.style.width = (ne.x - sw.x) + 'px';
+    div.style.height = (sw.y - ne.y) + 'px';
+  }
+
+  NIDSOverlay.prototype.onRemove = function() {
+    this.div_.parentNode.removeChild(this.div_);
+    this.div_ = null;
+  }
+</script>
+</head>
+
+<div id="map"  style="width: 900px; height: 600px;"></div>
+
+<div id="helper"></div>
+          <div>
+            <input type="radio" name="pause" onclick="Pause( 5);"/> Extra Fast
+            <input type="radio" name="pause" onclick="Pause( 8);"/> Fast
+            <input type="radio" name="pause" onclick="Pause(12);"/> Medium
+            <input type="radio" name="pause" onclick="Pause(18);"/> Slow
+            <input type="radio" name="pause" onclick="Pause(25);"/> Extra Slow
+            <input type="radio" name="pause" onclick="Pause( 2000);"/> Pause
+          </div>
+          <div>Opacity
+            <input type="radio" name="opacity" onclick="Opacity(0.25);"/>  25%
+            <input type="radio" name="opacity" onclick="Opacity(0.50);"/>  50%
+            <input type="radio" name="opacity" onclick="Opacity(0.75);"/>  75%
+            <input type="radio" name="opacity" onclick="Opacity(1.00);"/> 100%
+          </div>
+</body>
+</html>

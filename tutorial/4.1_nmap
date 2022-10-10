@@ -1,0 +1,143 @@
+<html>
+<head>
+<title>NMAP2</title>
+  <link rel="stylesheet" type="text/css" href="./default.css" title="Style">
+
+</head>
+
+<body>
+<a href="nprogs.html"><img src="images/PreviousArrow.gif" border="0"   alt="Previous: NPROGS" title="Previous: NPROGS"></a> <a href="nmap_data.html"><img src="images/NextArrow.gif" border="0"   alt="Next: NMAP Data Selection" title="Next: NMAP Data Selection"></a>  <a href="toc.html#nmap.html"><img src="images/TOCIcon.gif" border="0"   alt="Table of contents" title="Table of contents"></a>    <a href="frames.html" target="_top"><img src="images/Frames.gif" border="0"   alt="Frames" title="Frames"></a>  <a href="../help_and_documentation/manual/"><img border=0 alt="User Manual" src="images/manual.gif"></a>
+
+<span class="breadcrumb"><a href="index.html">GEMPAK Online Tutorial</a>  > <a href="nprogs.html">NPROGS</a>  </span>
+<br>
+<img src="./images/blueline.gif">
+<p>
+<div class="pagetitle">9.0 NMAP2</div>
+
+
+NMAP2 provides a graphical user interface to the GEMPAK library functions,
+as well as user interactive drawing, looping and product generation capabilities.
+You can always select the popup "Help" window from the data display window to
+find out more about the program.
+
+<p>
+<MAP NAME="nmap2">
+   <AREA SHAPE="rect" COORDS="9,40,29,60" HREF="nmap_data.html">
+   <AREA SHAPE="rect" COORDS="55,40,75,60" HREF="nmap_map.html">
+   <AREA SHAPE="rect" COORDS="78,40,98,60" HREF="nmap_pgen.html">
+   <AREA SHAPE="rect" COORDS="101,40,121,60" HREF="nmap_print.html">
+   <AREA SHAPE="rect" COORDS="124,40,144,60" HREF="nmap_clear.html">
+   <AREA SHAPE="rect" COORDS="147,40,167,60" HREF="nmap_reload.html">
+   <AREA SHAPE="rect" COORDS="170,40,190,60" HREF="nmap_seek.html">
+   <AREA SHAPE="rect" COORDS="193,40,213,60" HREF="nmap_cloudz.html">
+
+   <AREA SHAPE="rect" COORDS="253,40,290,60" HREF="nmap_frame.html">
+   <AREA SHAPE="rect" COORDS="315,40,360,60" HREF="nmap_zoom_unzoom.html">
+
+   <AREA SHAPE="rect" COORDS="65,17,85,35" HREF="nmap_roam.html">
+   <AREA SHAPE="rect" COORDS="499,486,580,504" HREF="nmap_locator.html">
+</MAP>
+<center><IMG SRC="images/nmap1.gif" USEMAP="#nmap2" BORDER=0>
+<p>
+Use the image above to select the icon or widget you wish information on.
+</center>
+<p>
+
+<h2>Topics:</h2>
+<ol>
+<li><A HREF="nmap_data.html">Data Selection</a>
+<li><A HREF="nmap_spf.html">Using SPF files</a>
+<li><A HREF="nmap_map.html">Map Configuration</a>
+<li><A HREF="nmap_pgen.html">Product Generation</a>
+<li><A HREF="nmap_print.html">Print Control</a>
+<li><A HREF="nmap_clear.html">Clear</a>
+<li><A HREF="nmap_reload.html">Reload</a>
+<li><A HREF="nmap_seek.html">Seek/Locate Control</a>
+<li><A HREF="nmap_cloudz.html">Cloud Height Control</a>
+<li><A HREF="nmap_frame.html">Loop Frame Control</a>
+<li><A HREF="nmap_zoom_unzoom.html">Zoom/Unzoom</a>
+<li><A HREF="nmap_roam.html">Roaming</a>
+<li><A HREF="importingdata_gui.html">Adding new data sets</a>
+</ol>
+<p>
+<IMG ALT="Exercises" SRC="images/exercises.gif">Lets do some 
+<A HREF="nmap_examples.html">exercises!</a>
+
+
+
+<p>
+<div  class="childlist" ><table  width="100%" ><tr  valign="top" ><td  width="10%"  align="right" ><span  class="childlist-level" >
+9.0.0&nbsp;
+</span></td><td><a  class="childlist-link"  href="nmap_data.html" >
+NMAP Data Selection
+</a></td></tr><tr  valign="top" ><td  width="10%"  align="right" ><span  class="childlist-level" >
+9.0.1&nbsp;
+</span></td><td><a  class="childlist-link"  href="nmap_data2.html" >
+NMAP Data Set Options
+</a></td></tr><tr  valign="top" ><td  width="10%"  align="right" ><span  class="childlist-level" >
+9.0.2&nbsp;
+</span></td><td><a  class="childlist-link"  href="nmap_spf.html" >
+NMAP SPF
+</a></td></tr><tr  valign="top" ><td  width="10%"  align="right" ><span  class="childlist-level" >
+9.0.3&nbsp;
+</span></td><td><a  class="childlist-link"  href="nmap_map.html" >
+NMAP MAP
+</a></td></tr><tr  valign="top" ><td  width="10%"  align="right" ><span  class="childlist-level" >
+9.0.4&nbsp;
+</span></td><td><a  class="childlist-link"  href="nmap_pgen.html" >
+NMAP Product Generation
+</a></td></tr><tr  valign="top" ><td  width="10%"  align="right" ><span  class="childlist-level" >
+9.0.5&nbsp;
+</span></td><td><a  class="childlist-link"  href="nmap_print.html" >
+NMAP Printing
+</a></td></tr><tr  valign="top" ><td  width="10%"  align="right" ><span  class="childlist-level" >
+9.0.6&nbsp;
+</span></td><td><a  class="childlist-link"  href="nmap_clear.html" >
+NMAP CLEAR
+</a></td></tr><tr  valign="top" ><td  width="10%"  align="right" ><span  class="childlist-level" >
+9.0.7&nbsp;
+</span></td><td><a  class="childlist-link"  href="nmap_reload.html" >
+NMAP RELOAD
+</a></td></tr><tr  valign="top" ><td  width="10%"  align="right" ><span  class="childlist-level" >
+9.0.8&nbsp;
+</span></td><td><a  class="childlist-link"  href="nmap_seek.html" >
+NMAP Seek/Locator
+</a></td></tr><tr  valign="top" ><td  width="10%"  align="right" ><span  class="childlist-level" >
+9.0.9&nbsp;
+</span></td><td><a  class="childlist-link"  href="nmap_cloudz.html" >
+NMAP Cloud Height Determination
+</a></td></tr><tr  valign="top" ><td  width="10%"  align="right" ><span  class="childlist-level" >
+9.0.10&nbsp;
+</span></td><td><a  class="childlist-link"  href="nmap_frame.html" >
+NMAP Frame Selection
+</a></td></tr><tr  valign="top" ><td  width="10%"  align="right" ><span  class="childlist-level" >
+9.0.11&nbsp;
+</span></td><td><a  class="childlist-link"  href="nmap_zoom_unzoom.html" >
+NMAP Zoom/Unzoom
+</a></td></tr><tr  valign="top" ><td  width="10%"  align="right" ><span  class="childlist-level" >
+9.0.12&nbsp;
+</span></td><td><a  class="childlist-link"  href="nmap_roam.html" >
+NMAP Roam
+</a></td></tr><tr  valign="top" ><td  width="10%"  align="right" ><span  class="childlist-level" >
+9.0.13&nbsp;
+</span></td><td><a  class="childlist-link"  href="nmap_locator.html" >
+NMAP Locator
+</a></td></tr><tr  valign="top" ><td  width="10%"  align="right" ><span  class="childlist-level" >
+9.0.14&nbsp;
+</span></td><td><a  class="childlist-link"  href="importingdata_gui.html" >
+Adding GEMPAK data sets to GUIs
+</a></td></tr><tr  valign="top" ><td  width="10%"  align="right" ><span  class="childlist-level" >
+9.0.15&nbsp;
+</span></td><td><a  class="childlist-link"  href="nmap_examples.html" >
+NMAP Examples
+</a></td></tr></table></div>
+<p>&nbsp;<p>
+<img src="./images/blueline.gif">
+<br>
+<a href="nprogs.html"><img src="images/PreviousArrow.gif" border="0"   alt="Previous: NPROGS" title="Previous: NPROGS"></a> <a href="nmap_data.html"><img src="images/NextArrow.gif" border="0"   alt="Next: NMAP Data Selection" title="Next: NMAP Data Selection"></a>  <a href="toc.html#nmap.html"><img src="images/TOCIcon.gif" border="0"   alt="Table of contents" title="Table of contents"></a>    <a href="frames.html" target="_top"><img src="images/Frames.gif" border="0"   alt="Frames" title="Frames"></a>  <a href="../help_and_documentation/manual/"><img border=0 alt="User Manual" src="images/manual.gif"></a>
+<span class="breadcrumb"><a href="index.html">GEMPAK Online Tutorial</a>  > <a href="nprogs.html">NPROGS</a>  </span>
+<p>
+
+</body>
+</html>
+

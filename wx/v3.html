@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Simple SlippyMap using Google Maps v3 API</title>
+    </head>
+    <body onload="initialize()">
+ <div id="map"  style="width: 900px; height: 600px;"></div>
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript" src="v3bridge.js"></script>
+<script type="text/javascript" src="v3radar.js"></script>
+<script type="text/javascript">
+var Clock ;
+var Cycle ;
+var Google;
+var Helper;
+var Last=  0;
+var Skew=  0;
+var Wrap= 10;
+var Idle=100;
+var Back=500;
+var NIDS=[];
+var Radar=[];
+var Ridge=["BUF","MOB"];
+var Product="NCR";
+
+var overlay;
+
+NIDSOverlay.prototype = new google.maps.OverlayView();
+
+
+  function initialize() {
+    var myLatLng = new google.maps.LatLng(43.82,-91.18);
+    var myOptions = {
+      zoom: 6,
+      center: myLatLng,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+
+    var map = new google.maps.Map(document.getElementById("map"), myOptions);
+
+  
+   var swBound = new google.maps.LatLng(22.50, -127.005);
+  var neBound = new google.maps.LatLng( 30.509, -111.50);
+  var bounds = new google.maps.LatLngBounds(swBound, neBound);
+  var srcImage = 'x0y0.gif';
+  overlay = new NIDSOverlay(bounds, srcImage, map);
+  
+  var swBound = new google.maps.LatLng(22.50, -111.505);
+  var neBound = new google.maps.LatLng( 30.509,  -96.00);
+  var bounds = new google.maps.LatLngBounds(swBound, neBound);
+  var srcImage = 'x1y1.gif';
+  overlay = new NIDSOverlay(bounds, srcImage, map);
+  
+  var swBound = new google.maps.LatLng(22.50,  -96.005);
+  var neBound = new google.maps.LatLng( 30.509,  -80.50);
+  var bounds = new google.maps.LatLngBounds(swBound, neBound);
+  var srcImage = 'x2y2.gif';
+  overlay = new NIDSOverlay(bounds, srcImage, map);
+  
+  var swBound = new google.maps.LatLng(22.50,  -80.505);
+  var neBound = new google.maps.LatLng( 30.509,  -65.00);
+  var bounds = new google.maps.LatLngBounds(swBound, neBound);
+  var srcImage = 'x3y3.gif';
+  overlay = new NIDSOverlay(bounds, srcImage, map);
+  
+  var swBound = new google.maps.LatLng(30.50, -127.005);
+  var neBound = new google.maps.LatLng( 38.009, -111.50);
+  var bounds = new google.maps.LatLngBounds(swBound, neBound);
+  var srcImage = 'x4y4.gif';
+  overlay = new NIDSOverlay(bounds, srcImage, map);
+  
+  var swBound = new google.maps.LatLng(30.50, -111.505);
+  var neBound = new google.maps.LatLng( 38.009,  -96.00);
+  var bounds = new google.maps.LatLngBounds(swBound, neBound);
+  var srcImage = 'x5y5.gif';
+  overlay = new NIDSOverlay(bounds, srcImage, map);
+  
+  var swBound = new google.maps.LatLng(30.50,  -96.005);
+  var neBound = new google.maps.LatLng( 38.009,  -80.50);
+  var bounds = new google.maps.LatLngBounds(swBound, neBound);
+  var srcImage = 'x6y6.gif';
+  overlay = new NIDSOverlay(bounds, srcImage, map);
+  
+  var swBound = new google.maps.LatLng(30.50,  -80.505);
+  var neBound = new google.maps.LatLng( 38.009,  -65.00);
+  var bounds = new google.maps.LatLngBounds(swBound, neBound);
+  var srcImage = 'x7y7.gif';
+  overlay = new NIDSOverlay(bounds, srcImage, map);
+  
+  var swBound = new google.maps.LatLng(38.00, -127.005);
+  var neBound = new google.maps.LatLng( 44.759, -111.50);
+  var bounds = new google.maps.LatLngBounds(swBound, neBound);
+  var srcImage = 'x8y8.gif';
+  overlay = new NIDSOverlay(bounds, srcImage, map);
+  
+  var swBound = new google.maps.LatLng(38.00, -111.505);
+  var neBound = new google.maps.LatLng( 44.759,  -96.00);
+  var bounds = new google.maps.LatLngBounds(swBound, neBound);
+  var srcImage = 'x9y9.gif';
+  overlay = new NIDSOverlay(bounds, srcImage, map);
+  
+  var swBound = new google.maps.LatLng(38.00,  -96.005);
+  var neBound = new google.maps.LatLng( 44.759,  -80.50);
+  var bounds = new google.maps.LatLngBounds(swBound, neBound);
+  var srcImage = 'x10y10.gif';
+  overlay = new NIDSOverlay(bounds, srcImage, map);
+  
+  var swBound = new google.maps.LatLng(38.00,  -80.505);
+  var neBound = new google.maps.LatLng( 44.759,  -65.00);
+  var bounds = new google.maps.LatLngBounds(swBound, neBound);
+  var srcImage = 'x11y11.gif';
+  overlay = new NIDSOverlay(bounds, srcImage, map);
+  
+  var swBound = new google.maps.LatLng(44.75, -127.005);
+  var neBound = new google.maps.LatLng( 50.509, -111.50);
+  var bounds = new google.maps.LatLngBounds(swBound, neBound);
+  var srcImage = 'x12y12.gif';
+  overlay = new NIDSOverlay(bounds, srcImage, map);
+  
+  var swBound = new google.maps.LatLng(44.75, -111.505);
+  var neBound = new google.maps.LatLng( 50.509,  -96.00);
+  var bounds = new google.maps.LatLngBounds(swBound, neBound);
+  var srcImage = 'x13y13.gif';
+  overlay = new NIDSOverlay(bounds, srcImage, map);
+  
+  var swBound = new google.maps.LatLng(44.75,  -96.005);
+  var neBound = new google.maps.LatLng( 50.509,  -80.50);
+  var bounds = new google.maps.LatLngBounds(swBound, neBound);
+  var srcImage = 'x14y14.gif';
+  overlay = new NIDSOverlay(bounds, srcImage, map);
+  
+  var swBound = new google.maps.LatLng(44.75,  -80.505);
+  var neBound = new google.maps.LatLng( 50.509,  -65.00);
+  var bounds = new google.maps.LatLngBounds(swBound, neBound);
+  var srcImage = 'x15y15.gif';
+  overlay = new NIDSOverlay(bounds, srcImage, map);
+ 
+ 
+ 
+ }
+
+  function NIDSLayerInfo(obj){
+    this.bbox=obj.bbox ? obj.bbox : {};
+    this.size=obj.size ? obj.size : {};
+    this.last=obj.last ? obj.last :  0;
+    this.skew=obj.skew ? obj.skew :  0;
+    this.wrap=obj.wrap ? obj.wrap : 10;
+    this.name=obj.name ? obj.name : "";
+    this.filter=1;
+    this.adjust=1;
+  }
+
+  function NIDSOverlay(obj, image, map) {
+    this.bounds_ = obj;
+    this.image_ = image;
+    this.map_ = map;
+    this.div_ = null;
+    this.setMap(map);
+  }
+
+  NIDSOverlay.prototype.onAdd = function() {
+    var div = document.createElement('div');
+    div.style.borderStyle = "none";
+    div.style.borderWidth = "0px";
+    div.style.position = "absolute";
+    div.style.opacity = "1";
+
+    // Create an IMG element and attach it to the DIV.
+    var img = document.createElement("img");
+    img.src = this.image_;
+    img.style.width = "100%";
+    img.style.height = "100%";
+    img.style.position = 'absolute';
+    div.appendChild(img);
+
+    // Set the overlay's div_ property to this DIV
+    this.div_ = div;
+
+    // We add an overlay to a map via one of the map's panes.
+    // We'll add this overlay to the overlayImage pane.
+    var panes = this.getPanes();
+    panes.overlayImage.appendChild(div);
+  }
+
+  NIDSOverlay.prototype.draw = function() {
+    var overlayProjection = this.getProjection();
+    var sw = overlayProjection.fromLatLngToDivPixel(this.bounds_.getSouthWest());
+    var ne = overlayProjection.fromLatLngToDivPixel(this.bounds_.getNorthEast());
+    var div = this.div_;
+    div.style.left = sw.x + 'px';
+    div.style.top = ne.y + 'px';
+    div.style.width = (ne.x - sw.x) + 'px';
+    div.style.height = (sw.y - ne.y) + 'px';
+  }
+
+  NIDSOverlay.prototype.onRemove = function() {
+    this.div_.parentNode.removeChild(this.div_);
+    this.div_ = null;
+  }
+
+
+
+
+/* -------------------------- */
+
+  NIDSOverlay.prototype.feed=function(recall){
+    var div=document.getElementById("("+this.name+")");
+    if (div) document.body.removeChild(div);
+    div=document.createElement("SCRIPT");
+    if (div) document.body.appendChild(div);
+    div.src=recall+"&random="+(""+Math.random().toFixed(10)+"").slice(-10);
+    div.src=recall;
+    console.log(div);
+    div.id="("+this.name+")";
+  }
+
+
+  function Feed(){
+    var stub="http://www.srh.noaa.gov/ridge2/JSON_generator.php?callback=CallBack&frames="+Wrap;
+    for (var i=0;Ridge[i];i++){
+      Radar[i].feed(stub+"&rid="+Ridge[i]+"&product="+Product);
+    }
+    Cycle=clearTimeout(Cycle);
+    Cycle=setTimeout("Feed()",150000);
+  }
+
+
+function Free()
+{
+	GUnload();
+}
+</script>
+</head>
+
+<div id="map"  style="width: 900px; height: 600px;"></div>
+
+<div id="helper"></div>
+          <div>
+            <input type="radio" name="pause" onclick="Pause( 5);"/> Extra Fast
+            <input type="radio" name="pause" onclick="Pause( 8);"/> Fast
+            <input type="radio" name="pause" onclick="Pause(12);"/> Medium
+            <input type="radio" name="pause" onclick="Pause(18);"/> Slow
+            <input type="radio" name="pause" onclick="Pause(25);"/> Extra Slow
+            <input type="radio" name="pause" onclick="Pause( 2000);"/> Pause
+          </div>
+          <div>Opacity
+            <input type="radio" name="opacity" onclick="Opacity(0.25);"/>  25%
+            <input type="radio" name="opacity" onclick="Opacity(0.50);"/>  50%
+            <input type="radio" name="opacity" onclick="Opacity(0.75);"/>  75%
+            <input type="radio" name="opacity" onclick="Opacity(1.00);"/> 100%
+          </div>
+</body>
+</html>

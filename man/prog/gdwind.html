@@ -1,0 +1,158 @@
+<!doctype html><head><title>GEMPAK Help: gdwind</title></head><body>
+<a href=../../help_and_documentation>GEMPAK Manual</a> | 
+<a href=../prog/>Programs</a><br><hr>
+<pre>
+GDWIND displays a vector grid using wind barbs or arrows.
+
+INPUT PARAMETERS
+ 
+    <a href=../parm/gdattim.html>GDATTIM</a>   Grid date/time
+    <a href=../parm/glevel.html>GLEVEL</a>    Grid level
+    <a href=../parm/gvcord.html>GVCORD</a>    Grid vertical coordinate
+    <a href=../parm/gvect.html>GVECT</a>     Vector grid
+    <a href=../parm/gdfile.html>GDFILE</a>    Grid file
+    <a href=../parm/garea.html>GAREA</a>     Graphics area
+    <a href=../parm/ijskip.html>IJSKIP</a>    Iskp;Istrt;Istp/Jskp;Jstrt;Jstp
+    <a href=../parm/satfil.html>SATFIL</a>    Satellite image filename(s)
+    <a href=../parm/radfil.html>RADFIL</a>    Radar image filename(s)
+    <a href=../parm/imcbar.html>IMCBAR</a>    Color/ornt/anch/x;y/ln;wd/freq
+    <a href=../parm/skip.html>SKIP</a>      Skip_cntr/skip_plt_x;skip_plt_y
+    <a href=../parm/wind.html>WIND</a>      Wind symbol/siz/wdth/typ/hdsz
+    <a href=../parm/refvec.html>REFVEC</a>    Mag;x;y;txtsiz/font/wdth/HW;labl
+    <a href=../parm/map.html>MAP</a>       Map color/dash/width/filter flag
+    <a href=../parm/mscale.html>MSCALE</a>    fgc;bgc;mask/units/lat;hide/values/anch/x;y/ln;wd/freq|text_info|t
+    <a href=../parm/latlon.html>LATLON</a>    Line color/dash/width/freq/inc/label/format
+    <a href=../parm/panel.html>PANEL</a>     Panel loc/color/dash/width/regn
+    <a href=../parm/title.html>TITLE</a>     Title color/line/title
+    <a href=../parm/device.html>DEVICE</a>    Device|name|x size;y size|color type
+    <a href=../parm/proj.html>PROJ</a>      Map projection/angles/margins|drop flag
+    <a href=../parm/clear.html>CLEAR</a>     Clear screen flag
+    <a href=../parm/scale.html>SCALE</a>     Scalar scale / vector scale
+    <a href=../parm/text.html>TEXT</a>      Size/fnt/wdth/brdr/N-rot/just/hw flg
+    <a href=../parm/lutfil.html>LUTFIL</a>    Enhancement lookup table filename
+    <a href=../parm/stnplt.html>STNPLT</a>    Txtc/txt attr|marker attr|stnfil#col
+ 
+ 
+
+PROGRAM DESCRIPTION
+ 
+    GDWIND draws wind barbs or arrows at each grid point of a
+    vector grid.  Vector plots can be drawn for any vector field
+    computed using the GEMPAK grid diagnostic functions.  Vectors
+    may be drawn in any valid GEMPAK projection and may be
+    overlaid on images.
+
+    A list of times may be given in <a href=../parm/gdattim.html>GDATTIM</a> allowing animation
+    of the plots.
+
+    <a href=../parm/skip.html>SKIP</a> specifies the number of points to skip in both coordinate
+    directions.  For example, <a href=../parm/skip.html>SKIP</a> = /1;2 will display winds at every
+    other grid point in the x direction and every third grid point in
+    the y direction.  <a href=../parm/skip.html>SKIP</a> = /0 displays winds at every grid point.
+    Wind barbs or arrows can also be staggered by specifying negative
+    values for <a href=../parm/skip.html>SKIP</a>.
+
+    IF M is entered as part of the wind symbol, winds will be
+    displayed in m/s, unless the KNOTV operator has been specified
+    in <a href=../parm/gvect.html>GVECT</a>, in which case the winds will be displayed in knots.
+    If K is entered in <a href=../parm/wind.html>WIND</a>, the wind is displayed in knots.
+
+ 
+  EXAMPLES
+ 
+    1.  Draw wind barbs in m/s in a staggered array.  The vector
+        field is the gridded wind at 850 mb for the 18 hour forecast.
+	The barbs are plotted as an overlay on the entire visible
+	satellite image for 18Z.
+
+	<a href=../parm/gdattim.html>GDATTIM</a>	 =  f18
+	<a href=../parm/glevel.html>GLEVEL</a>	 =  850
+	<a href=../parm/gvcord.html>GVCORD</a>	 =  pres
+	<a href=../parm/gvect.html>GVECT</a>	 =  wnd
+	<a href=../parm/gdfile.html>GDFILE</a>	 =  $GEMPAK/data/hrcbob.grd
+	<a href=../parm/garea.html>GAREA</a>	 =  dset
+	<a href=../parm/satfil.html>SATFIL</a>	 =  $GEMPAK/data/VIS_910819_1801
+	<a href=../parm/radfil.html>RADFIL</a>	 =
+	<a href=../parm/imcbar.html>IMCBAR</a>   =  1/V/LL/0;.05/.90
+	<a href=../parm/skip.html>SKIP</a>	 =  /-1
+	<a href=../parm/wind.html>WIND</a>	 =  bk6/1.5/3
+	<a href=../parm/refvec.html>REFVEC</a>	 =  10
+	<a href=../parm/map.html>MAP</a>	 =  1/7
+	<a href=../parm/latlon.html>LATLON</a>	 =  2/10/1/1/5;5
+	<a href=../parm/panel.html>PANEL</a>	 =  0
+	<a href=../parm/title.html>TITLE</a>	 =  1
+	<a href=../parm/device.html>DEVICE</a>	 =  xw
+	<a href=../parm/proj.html>PROJ</a>	 =  sat
+	<a href=../parm/clear.html>CLEAR</a>	 =  yes
+	<a href=../parm/scale.html>SCALE</a>	 =
+	<a href=../parm/text.html>TEXT</a>	 =  1
+	<a href=../parm/lutfil.html>LUTFIL</a>   =
+	<a href=../parm/stnplt.html>STNPLT</a>   =
+
+    2.  Using the values of the variables supplied above, change
+	the <a href=../parm/garea.html>GAREA</a> to Rhode Island.  The satellite image is subset
+	for the given area and the data is replotted.
+
+	<a href=../parm/gdattim.html>GDATTIM</a>	 =  f18
+	<a href=../parm/glevel.html>GLEVEL</a>	 =  850
+	<a href=../parm/gvcord.html>GVCORD</a>	 =  pres
+	<a href=../parm/gvect.html>GVECT</a>	 =  wnd
+	<a href=../parm/gdfile.html>GDFILE</a>	 =  $GEMPAK/data/hrcbob.grd
+	<a href=../parm/garea.html>GAREA</a>	 =  ri
+	<a href=../parm/satfil.html>SATFIL</a>	 =  $GEMPAK/data/VIS_910819_1801
+	<a href=../parm/radfil.html>RADFIL</a>	 =
+        <a href=../parm/imcbar.html>IMCBAR</a>   =  1/V/LL/0;.05/.90
+	<a href=../parm/skip.html>SKIP</a>	 =  0
+	<a href=../parm/wind.html>WIND</a>	 =  bk6/1.5/3
+	<a href=../parm/refvec.html>REFVEC</a>	 =  10
+	<a href=../parm/map.html>MAP</a>	 =  1/7
+	<a href=../parm/latlon.html>LATLON</a>	 =  2/10/1/1/5;5
+	<a href=../parm/panel.html>PANEL</a>	 =  0
+	<a href=../parm/title.html>TITLE</a>	 =  1
+	<a href=../parm/device.html>DEVICE</a>	 =  xw
+	<a href=../parm/proj.html>PROJ</a>	 =  sat
+	<a href=../parm/clear.html>CLEAR</a>	 =  yes
+	<a href=../parm/scale.html>SCALE</a>	 =
+	<a href=../parm/text.html>TEXT</a>	 =  1
+	<a href=../parm/lutfil.html>LUTFIL</a>   =
+	<a href=../parm/stnplt.html>STNPLT</a>   =
+
+    3.  Plot arrows for the temperature gradient at 850 mb.  Scale the
+	data by 10**6.  Also, plot a reference vector with the label
+	"degrees C / meter".  The display area is centered on New York.
+
+	<a href=../parm/gdattim.html>GDATTIM</a>	 =  f18
+	<a href=../parm/glevel.html>GLEVEL</a>	 =  850
+	<a href=../parm/gvcord.html>GVCORD</a>	 =  pres
+	<a href=../parm/gvect.html>GVECT</a>	 =  grad(tmpc)
+	<a href=../parm/gdfile.html>GDFILE</a>	 =  $GEMPAK/data/hrcbob.grd
+	<a href=../parm/garea.html>GAREA</a>	 =  ny-
+	<a href=../parm/satfil.html>SATFIL</a>	 =
+	<a href=../parm/radfil.html>RADFIL</a>	 =
+	<a href=../parm/imcbar.html>IMCBAR</a>   =
+	<a href=../parm/skip.html>SKIP</a>	 =  0
+	<a href=../parm/wind.html>WIND</a>	 =  am7//3
+	<a href=../parm/refvec.html>REFVEC</a>	 =  10;;;;degrees C / meter
+	<a href=../parm/map.html>MAP</a>	 =  1/7
+	<a href=../parm/latlon.html>LATLON</a>	 =  2/10/1/1/5;5
+	<a href=../parm/panel.html>PANEL</a>	 =  0
+	<a href=../parm/title.html>TITLE</a>	 =  1
+	<a href=../parm/device.html>DEVICE</a>	 =  xw
+	<a href=../parm/proj.html>PROJ</a>	 =  nps
+	<a href=../parm/clear.html>CLEAR</a>	 =  yes
+	<a href=../parm/scale.html>SCALE</a>	 =  /6
+	<a href=../parm/text.html>TEXT</a>	 =  1
+	<a href=../parm/lutfil.html>LUTFIL</a>   =
+	<a href=../parm/stnplt.html>STNPLT</a>   =
+
+ERROR MESSAGES
+ 
+    [GDWIND  +2]    WARNING:  ... not found.  CONTINUING---
+    [GDWIND  -1]    Fatal error initializing TAE.
+    [GDWIND  -2]    Fatal error reading TAE parameters.
+    [GDWIND  -3]    Fatal error initializing GEMPLT.
+    [GDWIND -13]    No times in grid file.
+</pre>
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

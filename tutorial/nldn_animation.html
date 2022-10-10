@@ -1,0 +1,340 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="md.css" type="text/css">
+
+<title>Additional Exercises</title>
+
+</head>
+<body>
+<blockquote><p><a href=/gempak/tutorial/>GEMPAK Online Tutorial</a></p></blockquote>
+
+<h1>Additional Exercises</h1>
+
+<h2>NLDN Animation</h2>
+
+<p>Here we will build an script that may be used either interactively, or as a batch script. While you may not wish to run this script at your site, you should be able to apply your knowledge of GEMPAK and similar principles to either create your own scripts, or to modify those provided with the GEMPAK distribution.</p>
+
+<p>We will build this script in pieces so that you may follow more easily.</p>
+
+<h3>Create Shell Script</h3>
+
+<p>Create a shell script to allow the user to interactively (graphically) select the area they wish to use for eventual application:</p>
+
+<pre><code>#!/bin/csh -f
+
+gpmap &lt;&lt; SELECT
+  garea = usnps
+  proj = str/90;-100;0 
+  map = 6
+  title = 5/-1/Select Map Area
+  dev = xw|GAREA SELECTION
+  clear = y
+  \$mapfil = hipowo.gsf
+  r
+
+  cursor garea
+  e
+SELECT
+gpend
+
+exit(0)
+</code></pre>
+
+<h3>Modify the Script to Accept an Argument</h3>
+
+<p>Now modify the shell script above to be run either interactively, or by specifying the area on the command line with the shell invocation.</p>
+
+<pre><code>#!/bin/csh -f
+
+if(x${1} != x) then
+   gpmap &lt;&lt; SELECT1
+      garea = $1
+      e
+SELECT1
+else
+  gpmap &lt;&lt; SELECT2
+     garea = usnps
+     proj = str/90;-100;0 
+     map = 6
+     title = 5/-1/Select Map Area
+     dev = xw|SELECT_AREA
+     clear = y
+     \$mapfil = hipowo.gsf
+     r
+
+     cursor garea
+     e
+SELECT2
+  gpend
+endif
+
+exit(0)
+</code></pre>
+
+<h3>Plot Lightning for Each Time</h3>
+
+<p>Expand your script to plot the location of lightning strikes for the desired area for the current hour today. Use MARK to plot a suitably sized circle for each lightning location.</p>
+
+<pre><code>#!/bin/csh -f
+
+# set directory of lightning data
+set NLDN=$GEMDATA/nldn
+# set the current year, month day
+set YMD=`date -u '+%Y%m%d'`
+# set the current HOUR
+set HOUR=`date -u '+%H'`
+# get the day of week, month abbrev., day and 4 digit year for title
+set TITLE = `date -u '+%A %B %d, %Y'`
+
+# There may be more than 1 NLDN file for each hour...we store ours
+# at 30 minute intervals. Alternatively, if more that the maximum number
+# of strikes that can be stored in a single file is exceeded, then
+# an additional file is opened (see the dcnldn template @@).
+# The file naming expected can be one of:
+# YYYYMMDDHHNN_@@_nldn.gem
+# YYYYMMDDHHNN_nldn.gem
+# YYYYMMDDHH_@@_nldn.gem
+# YYYYMMDDHH_nldn.gem
+set FILES=`ls $NLDN/${YMD}${HOUR}*_nldn.gem`
+
+if($#FILES &gt; 0) then
+
+   foreach FILE ($FILES)
+      # Data may be binned hourly, or at other intervals. We assume 5 minute bins.
+      # We could use dattim=all (but that will generate a loop using XW
+      # instead, plot the data for each time in the file, setting clear=no
+      # after the first time in the file.
+      set TIMES=`sfctime $FILE`
+
+      foreach TIME ($TIMES)
+      sfmap &lt;&lt; EOF
+      map = 1
+      dev = xw|"lightning strikes"
+      proj = nps
+      area = dset
+      filter = no
+      garea = us
+      clear = yes
+      text = 1.2/23/1/hw
+      title = 5/-2/Lightning Strikes ${YMD}/${TIME}Z
+      panel = .02;.02;.97;.97/1/1/4
+      sffile = $FILE
+      sfparm = sgnl;mark:15:3:1
+      color = 0;30
+      dattim = $TIME
+      r
+
+      e
+EOF
+      end
+   end
+endif
+
+exit(0)
+</code></pre>
+
+<p>Use the <code>SGNL</code> parameter stored in the NLDN file to plot stikes with <code>SGNL &lt; -400</code> with a <code>-</code>, <code>SGNL &gt; 400</code> with a <code>+</code>, and values from -400 to 400 with a dot.</p>
+
+<pre><code>…
+
+foreach TIME ($TIMES)
+  sfmap &lt;&lt; EOF
+  map = 1
+  dev = xw|"lightning strikes"
+  area = dset
+  filter = no
+  clear = yes
+  garea = us
+  text = 1.2/23/1/hw
+  title = 1/-2/Lightning Strikes ${YMD}/${TIME}Z
+  panel = .02;.02;.97;.97/1/1/4
+  sffile = $FILE
+  color = 0;30
+  dattim = $TIME
+  sfparm = sgnl&lt;-400;mark:22:1:1
+  r
+
+  clear = no 
+  sfparm = sgnl&gt;400;mark:1:1:1
+  r
+
+  sfparm = sgnl &gt; -401 &lt; 401;mark:15:2:1
+  r
+
+  e
+EOF
+
+...
+</code></pre>
+
+<p>Using the result from #3 above, create a gif image for each hour today. Use a different color for each hour.</p>
+
+<p>You'll need to set the above block within a loop for <code>$HOUR</code> and increment <code>$COLOR</code> with <code>@ COLOR = $COLOR - 4</code>.</p>
+
+<p>Limit the animation to the last 2 hours with the inclusion of a definition <code>set HRSB = 2</code>:</p>
+
+<pre><code>#!/bin/csh -f
+
+# hour setback
+set HRSB = 2
+# This is the directory of our lightning data
+set NLDN=$GEMDATA/nldn
+# set the current year, month day
+set YMD=`date -u '+%Y%m%d'`
+# get the day of week, month abbrev., day and 4 digit year for title
+set INC = 1
+set CURHR = `date -u '+%H'`
+if($CURHR &lt; $HRSB) then
+        @ HOUR = 23 - $HRSB - $CURHR
+        @ STOP_HOUR = ($CURHR + 23 ) % 23
+
+else
+        @ HOUR = $CURHR - $HRSB
+        @ STOP_HOUR = $CURHR
+endif
+
+
+@ COLOR=29
+
+while($HOUR &lt;= $STOP_HOUR)
+
+   if($HOUR &lt; 10) then
+      set SFHOUR=0${HOUR}
+   else
+      set SFHOUR=${HOUR}
+   endif
+
+   set FILES=`ls $NLDN/${YMD}${SFHOUR}*_nldn.gem`
+   if($#FILES &gt; 0) then
+
+   foreach FILE ($FILES)
+      set TIMES=`sfctime $FILE`
+
+     foreach TIME ($TIMES)
+         set DEV = 'gif|lightning_'${YMD}'_'${INC}.gif'|900;600'
+         if($INC &lt; 10) then
+            set DEV = 'gif|lightning_'${YMD}'_0'${INC}.gif'|900;600'
+         endif
+         sfmap &lt;&lt; EOF
+         map = 1
+         garea = us
+         proj = str/90;-100;0
+         \$mapfil = hipowo.gsf
+         dev = ${DEV}
+         area = dset
+         filter = no
+         clear = y
+         text = 1.2/23/1/hw
+         title = ${COLOR}/-2/Lightning Strikes ${YMD}/${TIME}Z
+         panel = .02;.02;.97;.97/1/1/4
+         sffile = $FILE
+         color = 0;${COLOR}
+         dattim = $TIME
+         sfparm = sgnl&lt;-400;mark:22:1:1
+         r
+
+         clear = no
+         sfparm = sgnl&gt;400;mark:1:1:1
+         r
+
+         sfparm = sgnl &gt; -401 &lt; 401;mark:15:2:1
+         r
+
+         e
+EOF
+         @ INC = $INC + 1
+      end # foreach TIME
+   end # foreach file
+   endif
+
+   @ HOUR = $HOUR + 1
+   @ COLOR = $COLOR - 4
+   gpend
+end
+
+# now create an animated GIF
+convert -delay 10 -loop 0 lightning_${YMD}_*.gif lightning.gif
+
+exit(0)
+</code></pre>
+
+<p><img src="lightning.gif" alt="image" /></p>
+
+<h3>What if we want all lightning data plotted on the same image?</h3>
+
+<p>Modify the script to write the same file <code>lightning_YYYYMMDD.gif</code> and move the <code>gpend</code> call from the <code>FILE</code> loop to the end of the script, and use the entire days' worth o data:</p>
+
+<pre><code>#!/bin/csh -f
+
+# This is the directory of our lightning data
+set NLDN=$GEMDATA/nldn
+# set the current year, month day
+set YMD=`date -u '+%Y%m%d'`
+# get the day of week, month abbrev., day and 4 digit year for title
+@ HOUR = 0
+@ STOP_HOUR = 23
+@ COLOR=30
+
+while($HOUR &lt;= $STOP_HOUR)
+   if($HOUR &lt; 10) then
+      set SFHOUR=0${HOUR}
+   else
+      set SFHOUR=${HOUR}
+   endif
+   set YMD='20121102'
+   set FILES=`ls $NLDN/${YMD}${SFHOUR}*_nldn.gem`
+   if($#FILES &gt; 0) then
+
+   foreach FILE ($FILES)
+      echo "plotting $FILE"
+      set TIMES=`sfctime $FILE`
+
+      foreach TIME ($TIMES)
+         set DEV = 'gif|lightning_'${YMD}'.gif|900;600'
+         sfmap &lt;&lt; EOF
+         map = 1
+         garea = us
+         proj = str/90;-100;0
+         \$mapfil = hipowo.gsf
+         dev = ${DEV}
+         area = dset
+         filter = no
+         clear = n
+         text = 1.2/23/1/hw
+         title = 1/-2/Lightning Strikes ${YMD}
+         panel = .02;.02;.97;.97/1/1/4
+         sffile = $FILE
+         color = 0;${COLOR}
+         dattim = $TIME
+         sfparm = sgnl&lt;-400;mark:22:1:1
+         r
+
+         sfparm = sgnl&gt;400;mark:1:1:1
+         r
+
+         sfparm = sgnl &gt; -401 &lt; 401;mark:15:1:1
+         r
+
+         e
+EOF
+      end # foreach TIME
+   end # foreach file
+   endif
+
+   @ HOUR = $HOUR + 1
+   @ COLOR = $COLOR - 1
+end
+
+gpend
+exit(0)
+</code></pre>
+
+<p><img src="lightning_YYYYMMDD.gif" alt="image" /></p>
+
+<blockquote><p><a href=/gempak/tutorial/>GEMPAK Online Tutorial</a></p></blockquote>
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

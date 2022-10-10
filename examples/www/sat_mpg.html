@@ -1,0 +1,70 @@
+<body>
+<title>IR Satellite mpeg script</title>
+
+<pre>
+#!/bin/csh -f
+#
+# Note: This script uses the following software:
+#    giftoppm from the pbmplus distribution
+#    mpeg_encode from the mm-ftp.cs.berkeley.edu archive
+#
+setenv PATH /usr/local/bin:/usr/local/bin/pbmplus:/usr/bin:/bin
+
+#
+# This is where the gif files are
+cd /tmp
+
+set FILES=`ls -r sat.gif* `
+
+setenv DISPLAY unix:0
+
+if(! -e irmpeg) then
+   mkdir irmpeg
+else
+   rm -f irmpeg/*
+endif
+
+# Plan for at most 24 frames
+@ COUNT = 53
+foreach FILE ($FILES)
+   ln -s $cwd/$FILE irmpeg/ir.$COUNT.gif
+   @ COUNT = $COUNT - 1
+end
+
+cd irmpeg
+
+# create the input data file
+@ START = $COUNT + 1
+
+echo "PATTERN         IBBPBBP" >! ir.param
+echo "OUTPUT          sat.mpg" >> ir.param
+echo " " >> ir.param
+echo "BASE_FILE_FORMAT        PPM" >> ir.param
+echo "INPUT_CONVERT   giftoppm *" >> ir.param
+echo "GOP_SIZE        30" >> ir.param
+echo "SLICES_PER_FRAME  1" >> ir.param
+echo " " >> ir.param
+echo "INPUT_DIR       /tmp/irmpeg" >> ir.param
+echo " " >> ir.param
+echo "INPUT" >> ir.param
+echo "ir.*.gif       [${START}-53]" >> ir.param
+echo "END_INPUT" >> ir.param
+echo " " >> ir.param
+echo "PIXEL           HALF" >> ir.param
+echo "RANGE           10" >> ir.param
+echo " " >> ir.param
+echo "PSEARCH_ALG     LOGARITHMIC" >> ir.param
+echo "BSEARCH_ALG     CROSS2" >> ir.param
+echo " " >> ir.param
+echo "IQSCALE         1" >> ir.param
+echo "PQSCALE         5" >> ir.param
+echo "BQSCALE         10" >> ir.param
+echo " " >> ir.param
+echo "REFERENCE_FRAME ORIGINAL" >> ir.param
+echo "FORCE_ENCODE_LAST_FRAME" >> ir.param
+
+mpeg_encode ir.param  
+</pre>
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

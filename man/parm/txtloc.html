@@ -1,0 +1,32 @@
+<!doctype html><head><title>GEMPAK Help: txtloc</title></head><body>
+<a href=../../help_and_documentation>GEMPAK Manual</a> | 
+<a href=../prog/>Programs</a> | <a href=../parm/>Parameters</a><br><hr>
+<pre>
+     TXTLOC
+
+     TXTLOC specifies the start location for plotting the contents of 
+     an ASCII text file specified by <a href=txtfil.html>TXTFIL</a>.  The X and Y coordinates
+     are separated by a semi-colon:
+
+		x ; y
+
+     The X and Y are given in normalized-type coordinates for the given
+     panel.  They range from 0.0 to 1.0 in each dimension.  The origin
+     is at the lower left corner of the panel.  For example,
+
+		TXTLOC = .25 ; 1
+
+     The values are treated as a percentage of the panel size in each
+     dimension.  Therefore, in this example, the text starts at a point
+     25% of the X direction panel size and at the top of the panel in 
+     the Y direction.
+
+     TXTLOC can also specify the location in map coordinates.  The
+     map coordinates start with a # and are separated by a semicolon:
+
+		#lat ; lon
+
+</pre>
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script> 
+
+<style type='text/css'  media='all'>
+
+
+</style>
+</head>
+
+
+<object id="layer-base" type="image/svg+xml" style="position: absolute; z-index: 10; top: -254px; left: 0px; width:100%; height: 1280px; overflow: hidden;" data="base.svg" width="" height="" opacity="1"></object>
+<object id="layer-hght" type="image/svg+xml" style="position: absolute; z-index: 2; top: -254px; left: 0px;  width:100%; height: 1280px; overflow: hidden;" data="hght.svg" width="" height="" opacity="1"></object>
+<object id="layer-prcp" type="image/svg+xml" style="position: absolute; z-index: 1; top: -254px; left: 0px;  width:100%; height: 1280px; overflow: hidden;" data="p120i.svg" width="" height="" opacity="1"></object>
+<object id="layer-wind" type="image/svg+xml" style="position: absolute; z-index: 1; top: -254px; left: 0px;  width:100%; height: 1280px; overflow: hidden;" data="wnd.svg" width="" height="" opacity="1"></object>
+
+<div style="padding:5px; background: #fff; border: 3px solid #000;z-index: 101; position: absolute;top: 0px; left: 0px;" width="100%" height="20">
+	<form id="product-select">
+    <input type="checkbox" checked id="prcp" value="" onclick="toggle('prcp');" /> PRCP 
+	<input type="checkbox" checked id="hght" value="" onclick="toggle('hght');"/> HGHT
+	<input type="checkbox" checked id="wind" value="" onclick="toggle('wind');"/> WIND
+	<input type="checkbox" checked id="base" value="" onclick="toggle('base');"/> BASE
+	</form>
+</div>
+
+<script>
+
+var hidden = false;
+function toggle(id) {
+	var layer = document.getElementById("layer-"+id);
+	hidden = !hidden;
+    if(hidden) {
+        layer.style.display = 'none';
+    } else {
+        layer.style.display = 'block';
+    }
+}
+</script>
+    
+</html>
+

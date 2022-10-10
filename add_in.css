@@ -1,0 +1,17 @@
+
+
+div.warnbox {
+  background-color: #f88425;
+  margin: 0 auto 2em auto;
+  width: 100%;
+  position: sticky;
+  top: 0;
+}
+
+div.warnbox p {
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  font-size: 1.2em;
+  padding: 1em;
+  color:#0c3a55;
+}

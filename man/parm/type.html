@@ -1,0 +1,59 @@
+<!doctype html><head><title>GEMPAK Help: type</title></head><body>
+<a href=../../help_and_documentation>GEMPAK Manual</a> | 
+<a href=../prog/>Programs</a> | <a href=../parm/>Parameters</a><br><hr>
+<pre>
+     TYPE
+ 
+     TYPE specifies the processing type for the GDPLOT2 <a href=gdpfun.html>GDPFUN</a> parameter.
+     The TYPE list does not need separators, however slashes could be
+     used for clarity:
+
+		type 1 / type 2 / ... / type n
+
+     Valid inputs for type are:
+
+	SCALAR TYPEs:
+	C	the original GEMPAK contouring algorithm
+	F	contour fill algorithm
+	X	box algorithm -- same as contour fill, but draws lines 
+		around the polygons rather than filling in polygons.
+	P	plot grid point values
+	D	plot scaler as a directional arrow
+
+	VECTOR TYPEs:
+	A	wind arrows
+	B	wind barbs
+	S	streamlines
+
+	OTHER TYPEs:
+	M	plot grid point markers
+	G	plot grid indices (row/column numbers)
+
+
+     Note that contour attributes are specified in <a href=contur.html>CONTUR</a>.  The contour 
+     interval and line characteristics for types C, S and X are read
+     from <a href=cint.html>CINT</a> and <a href=line.html>LINE</a> and for type F from <a href=fint.html>FINT</a> and <a href=fline.html>FLINE</a>.  The wind
+     arrow and barb characteristics are read from <a href=wind.html>WIND</a>.  The streamline
+     characteristics are read from <a href=stream.html>STREAM</a>.  The marker characteristics 
+     are read from <a href=marker.html>MARKER</a>.  The grid point index characteristics are 
+     read from <a href=grdlbl.html>GRDLBL</a>.
+
+
+     Examples:
+
+	TYPE = C	--	draws contour lines
+
+	TYPE = C / F	--	draws filled contours overlaid with lines
+
+	TYPE = A	--	plots wind arrows
+
+	TYPE = BS	--	plots wind barbs and streamlines
+
+	TYPE = CFMP	--	draws contour lines and fill, plots a marker
+				at all grid point locations and the
+				grid point values at all locations
+
+</pre>
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

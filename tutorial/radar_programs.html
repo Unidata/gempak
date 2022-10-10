@@ -1,0 +1,555 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="md.css" type="text/css">
+
+<title>13. Radar Programs</title>
+
+</head>
+<body>
+<blockquote><p><a href=/gempak/tutorial/>GEMPAK Online Tutorial</a></p></blockquote>
+
+<h1>13. Radar Programs</h1>
+
+<p><a name="13.1"></a></p>
+
+<h2>GDRADR - NEXRAD to Grid</h2>
+
+<p><code>GDRADR</code> samples NEXRAD Level III (NIDS) products to a common
+grid projection.</p>
+
+<p><code>GDFILE</code> specifies the output grid file. If the file does not already
+exist, the file is created using the grid defined by <code>CPYFIL</code>,
+or if <code>CPYFIL</code> is not defined then by <code>PROJ</code>, <code>GRDAREA</code>, and <code>KXKY</code>.</p>
+
+<p><code>CPYFIL</code> may provide either an existing grid file to read the projection
+information from, or a grid number (<code>#nnn</code>) defined in grdnav.tbl.</p>
+
+<p><code>STNFIL</code> is the station table which supplies radar IDs to be searched
+for the composite. If <code>STNFIL</code> is blank, then <code>nexrad.tbl</code> is used
+by default.</p>
+
+<p><code>GDPFUN</code> is a list of data parameters for which composites are created.
+The NEXRAD file naming is assumed to be such that the site identifier
+and the product type are both present in the directory/file naming
+structure.</p>
+
+<p><a name="13.1.1"></a></p>
+
+<h3>Exercise #23 (Create a NEXRAD N0Q Grid)</h3>
+
+<p>Create a  National composite of NEXRAD base reflectivity (N0Q). Use the current time with a 30 minute window  for data. Use the <code>nexrad.tbl</code> station table.
+Create the grid output file using the <code>YYYYMMDD_radar.gem</code> file name
+template. Accept data only from radars operating in precipitation
+mode.</p>
+
+<pre><code>PROJ     = lcc/25;-103;60
+GRDAREA  = 23.0;-120.0;47.0;-65.0
+KXKY     = 720;500
+GDPFUN   = n0q
+GDFILE   = YYYYMMDD_radr.gem
+RADTIM   = current
+RADDUR   = 30
+RADFRQ   = 
+CPYFIL   =  
+STNFIL   = nexrad.tbl
+MAXGRD   = 1000
+RADMODE  = P
+</code></pre>
+
+<p>Examine the contents with <code>GDINFO</code>:</p>
+
+<pre><code>GDFILE   = 20121102_radr.gem
+LSTALL   = YES
+OUTPUT   = T
+GDATTIM  = all
+GLEVEL   = all
+GVCORD   = all
+GFUNC    = n0q
+GEMPAK-GDINFO&gt;
+</code></pre>
+
+<p>Now color-fill the N0Q reflectivity contours with <code>GDPLOT2</code>:</p>
+
+<pre><code>GDFILE   = 20121102_radr.gem
+GDATTIM  = last
+GLEVEL   = 0
+GVCORD   = none
+PANEL    = 0
+SKIP     = l
+SCALE    =  
+GDPFUN   = n0q
+TYPE     = f
+CONTUR   = 2
+CINT     = l
+LINE     =  
+FINT     = 5/5
+FLINE    = 0;30-7
+HILO     =  
+HLSYM    =  
+CLRBAR   = 1
+WIND     = 0
+REFVEC   =  
+TITLE    = @
+TEXT     = 1/2//hw
+CLEAR    = y
+GAREA    = us
+IJSKIP   = 0
+PROJ     = lcc/25;-103;60
+MAP      = 1
+MSCALE   = 0
+LATLON   = 0
+DEVICE   = xw
+STNPLT   =  
+SATFIL   =  
+RADFIL   =  
+IMCBAR   = 1
+LUTFIL   =  
+STREAM   =  
+POSN     = 0
+COLORS   =  
+MARKER   = 0
+GRDLBL   = 0
+FILTER   = YES
+</code></pre>
+
+<p><img src="gdradr.gif" alt="image" /></p>
+
+<p><a name="13.2"></a></p>
+
+<h2>NEX2GINI - GINI File from NEXRAD Composite</h2>
+
+<p><code>NEX2IMG</code> samples NEXRAD Level III (NIDS) products to a common
+   grid projection, and then creates a GIF format image raster.
+   <code>NEX2IMG</code> is not limited by the traditional <code>LLMXGD</code>
+   limitation for grid files.</p>
+
+<p><a name="13.2.1"></a></p>
+
+<h3>NEX2GINI Input Variables</h3>
+
+<pre>
+<a href="/gempak/man/parm/grdarea.html">GRDAREA</a>    Area covered by grid
+<a href="/gempak/man/parm/proj.html">PROJ</a>       Map projection/angles/margins|drop flag
+<a href="/gempak/man/parm/kxky.html">KXKY</a>       Number of grid points in x;y
+<a href="/gempak/man/parm/cpyfil.html">CPYFIL</a>     Grid file whose navigation is to be used in new grid file | subarea
+<a href="/gempak/man/parm/gfunc.html">GFUNC</a>      Scalar grid
+<a href="/gempak/man/parm/radtim.html">RADTIM</a>     Radar composite current/dattim
+<a href="/gempak/man/parm/raddur.html">RADDUR</a>     Radar time window (minutes prior to RADTIM)
+<a href="/gempak/man/parm/radfrq.html">RADFRQ</a>     Update Frequency
+<a href="/gempak/man/parm/stnfil.html">STNFIL</a>     Station information file
+<a href="/gempak/man/parm/radmode.html">RADMODE</a>    Radar operational mode
+<a href="/gempak/man/parm/satfil.html">SATFIL</a>     Satellite image filename(s)
+<a href="/gempak/man/parm/compress.html">COMPRESS</a>   output in compressed format
+</pre>
+
+
+<p><code>NEX2GINI</code> uses a suplemental table <code>$GEMTBL/unidata/nex2gini.tbl</code> to specify
+configurations for data to pixel mappings.</p>
+
+<p><code>SATFIL</code> specifies the output file. If the file already exists,
+it is overwritten.</p>
+
+<p><code>CPYFIL</code> may provide either an existing grid file to read the projection
+information from, or a grid number (#nnn) defined in grdnav.tbl.</p>
+
+<p><code>PROJ</code>, <code>GRDAREA</code>, and <code>KXKY</code> define a grid navigation as in <code>GDCFIL</code> if
+CPYFIL is blank.</p>
+
+<p><code>STNFIL</code> is the station table which supplies radar IDs to be searched
+for the composite. If <code>STNFIL</code> is blank, then <code>nexrad.tbl</code> is used
+by default.</p>
+
+<p><code>GFUNC</code> is the data parameter which the composite is created for.
+The NEXRAD file naming is assumed to be such that the site identifier
+and the product type are both present in the directory/file naming
+structure.</p>
+
+<p><a name="13.2.2"></a></p>
+
+<h3>Exercise #24 (NEX2GINI N0Q Composite)</h3>
+
+<p>Create a 1km National composite of NEXRAD base reflectivity (<code>N0Q</code>).
+        Use the current time with a 30 minute window for data. Use the <code>nexrad.tbl</code> station table. Create the GINI
+        output file using the <code>rad_YYYYMMDD_HHNN</code> file name template.
+        Accept data from radars operating in precipitation and
+        clear air mode.</p>
+
+<pre><code>GRDAREA  = 25;-128;50;-65
+PROJ     = mer
+KXKY     = 4000;2400
+CPYFIL   =  
+GFUNC    = n0q
+RADTIM   = current
+RADDUR   = 5
+RADFRQ   = 0
+STNFIL   = nexrad.tbl
+RADMODE  = PC
+SATFIL   = rad_YYYYMMDD_HHNN
+COMPRESS =  
+GEMPAK-NEX2GINI&gt;r
+</code></pre>
+
+<p>You now have the <code>rad_YYYYMMDD_HHNN</code> in your working directory.</p>
+
+<p>Display the NEXRAD composite as a satellite image in <code>GPMAP</code>:</p>
+
+<pre><code>MAP      = 1
+MSCALE   = 0
+GAREA    = 25;-128;50;-65
+PROJ     = sat
+SATFIL   = rad_20121102_0349
+RADFIL   = 
+IMCBAR   = 1/V/LL/0.05;0.04/0.925;0.0125/-5
+LATLON   =  
+PANEL    = 0
+TITLE    = 1/-2
+TEXT     = 1/2//hw
+CLEAR    = y
+DEVICE   = xw
+LUTFIL   = upc_ref256.tbl
+STNPLT   =  
+VGFILE   =  
+AFOSFL   =  
+AWPSFL   =  
+LINE     =  
+WATCH    =  
+WARN     =  
+HRCN     =  
+ISIG     =  
+LTNG     =  
+ATCF     =  
+AIRM     =  
+GAIRM    =  
+NCON     =  
+CSIG     =  
+SVRL     =  
+BND      = lakes/24
+TCMG     =  
+QSCT     =  
+WSTM     =  
+WOU      =  
+WCN      =  
+WCP      =  
+ENCY     =  
+FFA      =  
+WSAT     =  
+ASCT     =  
+TRAK1    =  
+TRAKE    =  
+TRAK2    =  
+GEMPAK-GPMAP&gt;r
+</code></pre>
+
+<p><img src="nex2gini.gif" alt="image" /></p>
+
+<p><a name="13.2.3"></a></p>
+
+<h3>Exercise #25 (NEX2IMG N0Q Composite)</h3>
+
+<p><code>nex2img</code> operates the exact same way as <code>nex2gini</code> , only it outputs the radar data directly to a GIF image.</p>
+
+<p>To create a composite of NEXRAD base reflectivity (N0Q), use the current time with a 30 minute window for data. Create the GIF output file using the <code>YYYYMMDD_HHNN.gif</code> file name template.
+        Accept data from radars operating in precipitation and
+        clear air mode.</p>
+
+<pre><code>    GRDAREA  = 25;-125;50;-65
+    PROJ     = MER
+    KXKY     = 4000;2400
+    CPYFIL   =  
+    GFUNC    = n0q
+    RADTIM   = current
+    RADDUR   = 30
+    RADFRQ   =  
+    STNFIL   = nexrad.tbl
+    RADMODE  = PC
+    RADFIL   = YYYYMMDD_HHNN.gif
+    LUTFIL   = upc_rad24.tbl
+    GEMPAK-NEX2IMG&gt;r
+</code></pre>
+
+<p><a name="13.3"></a></p>
+
+<h2>GPNIDS - NEXRAD Level III Plotting</h2>
+
+<p><code>GPNIDS</code> plots NEXRAD Level III products.</p>
+
+<p><code>RADFIL</code> is the NEXRAD Level III input file. A template may
+be specified, with an optional site name and product type
+(eg <code>NEXRIII|DDC|NWV</code>). If a site name is provided, it will
+be used to replace the <code>%SITE%</code> alias in the template name.
+If a product type is provided, it will be used to replace
+the <code>%PROD%</code> alias in the template string if present. Products
+will br plotted in graph or map coordinates depending on
+the type of product. For VAD wind profile products (NVW) the
+display is graph coordinates, while raster and radial images,
+and overlay products (eg mesocyclone, storm track, tvs etc) are
+displayed in map coordinates. The NEXRIII template is provided
+for NEXRAD Level III files.</p>
+
+<p><a name="13.3.1"></a></p>
+
+<h3>GPNIDS Input Parameters</h3>
+
+<pre>
+<a href="/gempak/man/parm/radfil.html">RADFIL</a>    Radar image filename(s)
+<a href="/gempak/man/parm/radtim.html">RADTIM</a>    Radar composite current/dattim
+<a href="/gempak/man/parm/title.html">TITLE</a>     Title color/line/title
+<a href="/gempak/man/parm/panel.html">PANEL</a>     Panel loc/color/dash/width/regn
+<a href="/gempak/man/parm/device.html">DEVICE</a>    Device|name|x size;y size|color type
+<a href="/gempak/man/parm/clear.html">CLEAR</a>     Clear screen flag
+<a href="/gempak/man/parm/text.html">TEXT</a>      Size/fnt/wdth/brdr/N-rot/just/hw flg
+<a href="/gempak/man/parm/colors.html">COLORS</a>   Color list
+<a href="/gempak/man/parm/wind.html">WIND</a>      Wind symbol/siz/wdth/typ/hdsz
+<a href="/gempak/man/parm/line.html">LINE</a>      Color/type/width/label/smth/fltr
+<a href="/gempak/man/parm/clrbar.html">CLRBAR</a>   Color/ornt/anch/x;y/ln;wd/freq|text_info
+<a href="/gempak/man/parm/imcbar.html">IMCBAR</a>    Color/ornt/anch/x;y/ln;wd/freq
+<a href="/gempak/man/parm/garea.html">GAREA</a>     Graphics area
+<a href="/gempak/man/parm/map.html">MAP</a>       Map color/dash/width/filter flag
+<a href="/gempak/man/parm/latlon.html">LATLON</a>    Line color/dash/width/freq/inc/label/format
+<a href="/gempak/man/parm/output.html">OUTPUT</a>    Output device/filename
+</pre>
+
+
+<p><code>WIND</code> can be used to select the type and plot size of barbs or
+    arrows for the vectors in the VAD display.</p>
+
+<p><a name="13.3.2"></a></p>
+
+<h3>Exercise #26 (Level 3 Reflectivity)</h3>
+
+<p>Plot the High Resolition Reflectivity (N0Q) product for RTX:</p>
+
+<pre><code>RADFIL   = NEXRIII|RTX|N0Q
+RADTIM   = last
+TITLE    = 1/-2
+PANEL    = 0
+DEVICE   = xw
+CLEAR    = Y
+TEXT     = 1/2/2/hw
+COLORS   = 7
+WIND     =  
+LINE     =  
+CLRBAR   =  
+IMCBAR   = 5/v/LL/.005;.6/.4;.01
+GAREA    = dset
+$mapfil  = lorvus.usg + hicnus.nws + hipona.nws + louhus.nws + loisus.nws
+MAP      = 24 + 23 + 1/1/2 + 14 + 15/1/2
+LATLON   = 0
+OUTPUT   = t
+GEMPAK-GPNIDS&gt;r
+</code></pre>
+
+<p><img src="gpnids.gif" alt="image" /></p>
+
+<p><a name="13.4"></a></p>
+
+<h2>GPNEXR2 - NEXRAD Level II Plotting</h2>
+
+<p><code>GPNEXR2</code> displays NEXRAD Level II products in ARCHIVE2 format.</p>
+
+<p><code>RADFIL</code> specifies the input level II file. A template may be
+specified, with an optional site name (eg <code>NEXRII|KDDC</code>).
+If a site name is provided, it will be used to replace the <code>%SITE%</code>
+alias in the template name. The NEXRII template is provided
+for ARCHIVE2 format files.</p>
+
+<p><code>RADPARM</code> is the Radar parameter to be displayed.</p>
+
+<p>Valid values are:</p>
+
+<ul>
+<li><code>dz</code> (reflectivity)</li>
+<li><code>vr</code> (radial velocity)</li>
+<li><code>sw</code> (spectrum width).</li>
+</ul>
+
+
+<p><a name="13.4.1"></a></p>
+
+<h3>GPNEXR2 Input Parameters</h3>
+
+<pre>
+<a href="/gempak/man/parm/map.html">MAP</a>       Map color/dash/width/filter flag
+<a href="/gempak/man/parm/garea.html">GAREA</a>     Graphics area
+<a href="/gempak/man/parm/proj.html">PROJ</a>      Map projection/angles/margins|drop flag
+<a href="/gempak/man/parm/radfil.html">RADFIL</a>    Radar image filename(s)
+<a href="/gempak/man/parm/latlon.html">LATLON</a>    Line color/dash/width/freq/inc/label/format
+<a href="/gempak/man/parm/panel.html">PANEL</a>     Panel loc/color/dash/width/regn
+<a href="/gempak/man/parm/title.html">TITLE</a>     Title color/line/title
+<a href="/gempak/man/parm/text.html">TEXT</a>      Size/fnt/wdth/brdr/N-rot/just/hw flg
+<a href="/gempak/man/parm/clear.html">CLEAR</a>     Clear screen flag
+<a href="/gempak/man/parm/device.html">DEVICE</a>    Device|name|x size;y size|color type
+<a href="/gempak/man/parm/lutfil.html">LUTFIL</a>    Enhancement lookup table filename
+<a href="/gempak/man/parm/imcbar.html">IMCBAR</a>    Color/ornt/anch/x;y/ln;wd/freq|text_info
+<a href="/gempak/man/parm/tilt.html">TILT</a>      Radar beam elevation/tilt number
+<a href="/gempak/man/parm/radparm.html">RADPARM</a>  Radar parameter (dz, vr, sw)
+<a href="/gempak/man/parm/radtim.html">RADTIM</a>    Radar composite current/dattim
+</pre>
+
+
+<p><a name="13.4.2"></a></p>
+
+<h3>Exercise #27 (Level 2 Reflectivity)</h3>
+
+<p>Display the most recent reflectivity for KRTX using the sweep with
+        mean elevation angle is closest to .5 degrees.</p>
+
+<pre><code>    MAP      = 6/1/1+3/1/2
+    GAREA    = dset
+    PROJ     = rad
+    RADFIL   = NEXRII|KRTX
+    LATLON   = 0
+    PANEL    = 0
+    TITLE    = 31
+    TEXT     = 1
+    CLEAR    = YES
+    DEVICE   = xw
+    LUTFIL   = default
+    IMCBAR   = 31/V/LL/.005;.05/.85;.01|.7/1/1/hw
+    TILT     = .5
+    RADPARM  = dz
+    RADTIM   = last
+    GEMPAK-GPNEXR2&gt;r
+</code></pre>
+
+<p><img src="gpnexr2.gif" alt="image" /></p>
+
+<p><a name="13.5"></a></p>
+
+<h2>GPVAD - NEXRAD Level III Wind Profile</h2>
+
+<p><code>GPVAD</code> plots the NEXRAD Level III wind profile product.</p>
+
+<p><code>RADFIL</code> is used the same as in <code>GPNIDS</code> (eg <code>NEXRIII|DDC|NWV</code>).</p>
+
+<pre>
+<a href="/gempak/man/parm/radfil.html">RADFIL</a>    Radar image filename(s)
+<a href="/gempak/man/parm/radtim.html">RADTIM</a>    Radar composite current/dattim
+<a href="/gempak/man/parm/wind.html">WIND</a>      Wind symbol/siz/wdth/typ/hdsz
+<a href="/gempak/man/parm/title.html">TITLE</a>     Title color/line/title
+<a href="/gempak/man/parm/panel.html">PANEL</a>     Panel loc/color/dash/width/regn
+<a href="/gempak/man/parm/device.html">DEVICE</a>    Device|name|x size;y size|color type
+<a href="/gempak/man/parm/clear.html">CLEAR</a>     Clear screen flag
+<a href="/gempak/man/parm/text.html">TEXT</a>      Size/fnt/wdth/brdr/N-rot/just/hw flg
+<a href="/gempak/man/parm/clrbar.html">CLRBAR</a>    Color/ornt/anch/x;y/ln;wd/freq|text_info
+<a href="/gempak/man/parm/output.html">OUTPUT</a>    Output device/filename
+</pre>
+
+
+<p><a name="13.5.1"></a></p>
+
+<h3>Exercise #28 (VAD Time Series)</h3>
+
+<p>Plot the VAD profile for radar location RTX using the NEXRIII
+    template for the most recent time. Use wind barbs, and plot the
+    RMS bar along the altitude axis.</p>
+
+<pre><code>RADFIL   = NEXRIII|RTX|NVW
+RADTIM   = last
+WIND     = bk1
+TITLE    = 1/-2/VAD DISPLAY ~
+PANEL    = 0
+DEVICE   = XW
+CLEAR    = y
+TEXT     = 1/1/1/hw
+CLRBAR   = 1/v/cl/.05;.5/.3;.01
+GEMPAK-GPVAD&gt;r
+</code></pre>
+
+<p><img src="gpvad.gif" alt="image" /></p>
+
+<p><a name="13.6"></a></p>
+
+<h2>NEXR2RHI - NEXRAD Level II Vertical Cross-Section</h2>
+
+<p><code>NEXR2RHI</code> displays NEXRAD Level II vertical cross sections for
+data in ARCHIVE2 format. This program is adopted from <code>GDCROSS</code> to
+create a volume rendering of NEXRAD data along a specified
+axis.</p>
+
+<pre>
+<a href="/gempak/man/parm/cxstns.html">CXSTNS</a>    Cross-section station line
+<a href="/gempak/man/parm/gvcord.html">GVCORD</a>    Grid vertical coordinate
+<a href="/gempak/man/parm/ptype.html">PTYPE</a>     Plot type/h:w ratio/margins
+<a href="/gempak/man/parm/yaxis.html">YAXIS</a>     Ystrt/ystop/yinc/lbl;gln;tck
+<a href="/gempak/man/parm/cint.html">CINT</a>      Contour interval/min/max
+<a href="/gempak/man/parm/scale.html">SCALE</a>     Scalar scale / vector scale
+<a href="/gempak/man/parm/line.html">LINE</a>      Color/type/width/label/smth/fltr
+<a href="/gempak/man/parm/border.html">BORDER</a>    Background color/type/width
+<a href="/gempak/man/parm/title.html">TITLE</a>     Title color/line/title
+<a href="/gempak/man/parm/clear.html">CLEAR</a>     Clear screen flag
+<a href="/gempak/man/parm/device.html">DEVICE</a>    Device|name|x size;y size|color type
+<a href="/gempak/man/parm/text.html">TEXT</a>      Size/fnt/wdth/brdr/N-rot/just/hw flg
+<a href="/gempak/man/parm/panel.html">PANEL</a>     Panel loc/color/dash/width/regn
+<a href="/gempak/man/parm/clrbar.html">CLRBAR</a>    Color/ornt/anch/x;y/ln;wd/freq|text_info
+<a href="/gempak/man/parm/contur.html">CONTUR</a>    Subbox/smooth
+<a href="/gempak/man/parm/fint.html">FINT</a>      Fill interval/min/max
+<a href="/gempak/man/parm/fline.html">FLINE</a>     Fill colors/fill types
+<a href="/gempak/man/parm/ctype.html">CTYPE</a>     Contour type: C/F
+<a href="/gempak/man/parm/radfil.html">RADFIL</a>    Radar file
+<a href="/gempak/man/parm/radparm.html">RADPARM</a>  Radar parameter (dz, vr, sw)
+<a href="/gempak/man/parm/radtim.html">RADTIM</a>    Radar date/time
+<a href="/gempak/man/parm/interp.html">INTERP</a>    Interpolation flag
+ </pre>
+
+
+<p><code>RADPARM</code> is the Radar parameter to be displayed. Valid values are
+   <code>dz</code> (reflectivity), <code>vr</code> (radial velocity), <code>sw</code> (spectrum width).</p>
+
+<p><code>RADTIM</code> is a valid GEMPAK date/time string or abbreviation. A time
+   range may be specified.</p>
+
+<p><code>INTERP</code> is a logical variable which determines whether interpolation
+   between sweeps will occur.</p>
+
+<p><code>CXSTNS</code> is the cross section axis (as in <code>GDCROSS</code>). A grid coordinate
+   can be used with row and colums 1 to 920.</p>
+
+<p><code>GVCORD</code> is the vertical coordinate of the radar data (always <code>HGHT</code>).</p>
+
+<p><code>PTYPE</code> is the plot type. A value of <code>LIN</code> is generally the only
+   useful setting.</p>
+
+<p><a name="13.6.1"></a></p>
+
+<h3>Exercise #29 (Reflectivity RHI)</h3>
+
+<p>Display an East-West RHI which passes through the radar location
+    for reflectivity data from KRTX. Display the RHI from 0 to 6km
+    using color filled contours. Use a contour interval of 4 dBZ
+    with a minimum value of -12 dBZ. Grid point 460;460 is the radar center.
+    Interpolate contours between beam scans.</p>
+
+<pre><code>CXSTNS   = @300;460&gt;@620;460
+GVCORD   = hght
+PTYPE    = lin
+YAXIS    = 0/6000
+CINT     = 0
+SCALE    = 0
+LINE     = 1
+BORDER   = 1
+TITLE    = 1/-2/RHI Base Reflectivity Level II ^
+CLEAR    = YES
+DEVICE   = xw
+TEXT     = .8/1/1/111/hw
+PANEL    = 0
+CLRBAR   = 1
+CONTUR   = 3/2
+FINT     = 4
+FLINE    = 0;30-7
+CTYPE    = f
+RADFIL   = NEXRII|KRTX
+RADPARM  = dz
+RADTIM   = last
+INTERP   = y
+</code></pre>
+
+<p><img src="nexr2rhi.gif" alt="image" /></p>
+
+<blockquote><p><a href=/gempak/tutorial/>GEMPAK Online Tutorial</a></p></blockquote>
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

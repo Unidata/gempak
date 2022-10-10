@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="md.css" type="text/css">
+
+<title>Building GEMPAK with GCC/gfortran 4.6+</title>
+
+</head>
+<h2>Building GEMPAK with GCC/gfortran 4.6+</h2>
+
+<p>Some systems with GCC 4.6+ experience decoder runtime errors due to an update to gfortran in GCC.</p>
+
+<p>The error message</p>
+
+<pre><code>dcwarn -v 4 -d - YYYYMMDDHH_warn.gem
+[17367] 120927/1740[DC 3]  Starting up. Version 6.7.0
+[17367] 120927/1740[DC 2]  read 1627/102399 bytes strt 0 newstrt 1627
+
+At line 74 of file wnout.f (unit = 11, file = '2012092800_warn.gem')
+Fortran runtime error: Sequential READ or WRITE not allowed after EOF
+marker, possibly use REWIND or BACKSPACE
+</code></pre>
+
+<p>indicates that a new default optimization flag in gfortran <code>-fwhole-file</code> is enabled.  To deactivate it, use the counter-flag <code>-fno-whole-file</code> in $NAWIPS/condig/Makeinc.linux64_gfortran:</p>
+
+<p>Change</p>
+
+<pre>FOPT = -fno-second-underscore -fno-range-check -fd-lines-as-comments $(GEMINC) -g #-O # -g</pre>
+
+
+<p>to</p>
+
+<pre>FOPT = <span style="color: blue;">-fno-whole-file</span> -fno-second-underscore -fno-range-check -fd-lines-as-comments $(GEMINC) -g #-O # -g</pre>
+
+
+<p>Then run <code>make all</code> and <code>make install</code> as usual.</p>
+
+<p>The flag <code>-fno-whole-file</code> has been added to <code>FOPT</code> as a default for all future releases of GEMPAK.</p>
+
+<p>See the updated source gode at <a href="https://github.com/Unidata/gempak/">github</a>.</p>
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+<HEAD>
+<TITLE>Listing Program Exercises - Answers</TITLE>
+<link rel="stylesheet" type="text/css" href="../default.css" title="Style">
+</HEAD>
+<BODY>
+<dl>
+<dt>
+For this exercise, I chose CHH (Chatham, Mass).  If you chose a different 
+station, you're numbers will be different, but the ideas are the same.<p>
+<pre class="code">SNFILE    Sounding data file                $GEMPAK/data/hrcbob.snd
+ AREA      Data area                         @chh
+ DATTIM    Date/time                         910820/0000
+ SNPARM    Sounding parameter list           brbk;tmpc;;hght;;dwpc
+ STNDEX    Stability indices                 lift;kinx
+ LEVELS    Vertical levels                   300
+ VCOORD    Vertical coordinate type          thta
+ OUTPUT    Output device (TPF)               T
+ MRGDAT    Merge data file flag/part type    no
+ GEMPAK-SNLIST>r
+
+ STID = CHH        STNM =    74494   TIME = 910820/0000         
+ SLAT =  41.66     SLON =   -69.96   SELV =    16.0
+
+    TTAA      0
+          PRES      TMPC      DWPC      DRCT      SPED      HGHT
+        999.00     21.60     20.90    250.00     21.00  -9999.00
+       1000.00  -9999.00  -9999.00  -9999.00  -9999.00      7.00
+        850.00     14.20     11.70    275.00     38.00   1400.00
+        700.00      8.00      3.80    250.00     37.00   3026.00
+        500.00     -4.10    -23.10    240.00     31.00   5740.00
+        400.00    -15.50    -32.50    230.00     36.00   7470.00
+        300.00    -29.70    -43.70    215.00     38.00   9590.00
+        250.00    -37.90    -50.90    210.00     33.00  10860.00
+        200.00    -50.10  -9999.00    200.00     31.00  12360.00
+        150.00    -63.50  -9999.00    200.00     22.00  14180.00
+        100.00    -61.30  -9999.00    205.00     10.00  16680.00
+
+    TTBB      0
+          PRES      TMPC      DWPC
+        999.00     21.60     20.90
+        996.00     21.20     18.60
+        925.00     16.80     15.00
+        808.00     11.40     10.40
+        748.00     11.80      7.10
+        640.00      2.60      0.80
+        614.00      3.00     -3.00
+        602.00      4.00    -15.00
+        597.00      4.40    -15.60
+        521.00     -3.50    -22.50
+        500.00     -4.10    -23.10
+        238.00    -39.90    -51.90
+        187.00    -54.70  -9999.00
+        142.00    -65.30  -9999.00
+        129.00    -60.50  -9999.00
+        111.00    -64.70  -9999.00
+        100.00    -61.30  -9999.00
+
+    PPBB      0
+          HGHT      DRCT      SPED
+          0.00    250.00     21.00
+       1219.00    275.00     38.00
+       1829.00    270.00     38.00
+       2134.00    265.00     36.00
+       2438.00    260.00     35.00
+       2743.00    255.00     35.00
+       3048.00    250.00     37.00
+       3658.00    250.00     37.00
+       4267.00    250.00     35.00
+       4877.00    240.00     34.00
+       6096.00    235.00     30.00
+       7620.00    230.00     35.00
+       9144.00    215.00     39.00
+      10668.00    215.00     33.00
+      12802.00    195.00     29.00
+      15240.00    205.00     16.00
+      16459.00    205.00     12.00
+
+    TTCC      0
+          PRES      TMPC      DWPC      DRCT      SPED      HGHT
+         70.00    -58.30  -9999.00    215.00      4.00  18910.00
+
+    TTDD      0
+          PRES      TMPC      DWPC
+         97.90    -59.90  -9999.00
+         79.70    -60.90  -9999.00
+         58.20    -56.30  -9999.00
+
+    PPDD      0
+          HGHT      DRCT      SPED
+      16764.00    205.00     10.00
+      18593.00    220.00      6.00
+      19812.00    140.00      3.00
+ Parameters requested: SNFILE,AREA,DATTIM,SNPARM,STNDEX,LEVELS,VCOORD,OUTPUT,
+ MRGDAT.
+ GEMPAK-SNLIST>
+</pre>
+
+Now, let's list the data in merged format.  I chose to calculate the Lifted
+Index, the Showalter Index, and the K-Index.  You may have chosen others from
+the list in <code><a href="/gempak/man/parm/stndex.html">phelp stndex</a></code>.
+Note that if the data needed to calculate a stability index is not present,
+the index will not be calculated.
+<pre class="code"> SNFILE    Sounding data file                $GEMPAK/data/hrcbob.snd
+ AREA      Data area                         @chh
+ DATTIM    Date/time                         910820/0000
+ SNPARM    Sounding parameter list           sped;drct;hght;tmpk
+ STNDEX    Stability indices                 lift;show;kinx
+ LEVELS    Vertical levels                   all
+ VCOORD    Vertical coordinate type          pres
+ OUTPUT    Output device (TPF)               T
+ MRGDAT    Merge data file flag/part type    yes
+ GEMPAK-SNLIST>r
+
+ SNPARM = PRES;SPED;DRCT;HGHT;TMPK                                              
+ STNPRM = LIFT;SHOW;KINX                                                        
+
+ STID = CHH        STNM =    74494   TIME = 910820/0000         
+ SLAT =  41.66     SLON =   -69.96   SELV =    16.0
+ STIM =     0
+
+ LIFT =     6.35    SHOW =     6.53    KINX =    25.80
+
+      PRES     SPED     DRCT     HGHT     TMPK
+    999.00    21.00   250.00    16.00   294.76
+   1000.00 -9999.00 -9999.00     7.00 -9999.00
+    996.00    21.36   250.54    42.19   294.36
+    925.00    30.33   263.72   680.10   289.96
+    868.26    38.00   275.00  1219.00   288.01
+    850.00    38.00   275.00  1400.00   287.36
+    808.00    38.00   270.03  1826.85   284.56
+    807.79    38.00   270.00  1829.00   284.56
+    778.93    36.00   265.00  2134.00   284.75
+    751.19    35.00   260.00  2438.00   284.94
+    748.00    35.00   259.42  2473.73   284.96
+    724.20    35.00   255.00  2743.00   283.11
+    700.00    37.00   250.00  3026.00   281.16
+    698.12    37.00   250.00  3048.00   281.00
+    647.98    37.00   250.00  3658.00   276.51
+    640.00    36.67   250.00  3759.48   275.76
+    614.00    35.56   250.00  4095.68   276.16
+    602.00    35.04   250.00  4255.87   277.16
+    601.18    35.00   250.00  4267.00   277.23
+    597.00    34.91   249.08  4323.67   277.56
+    557.19    34.00   240.00  4877.00   273.56
+    521.00    32.14   240.00  5415.35   269.66
+    500.00    31.00   240.00  5740.00   269.06
+    477.56    30.00   235.00  6096.00   266.71
+    400.00    36.00   230.00  7470.00   257.66
+    391.94    35.00   230.00  7620.00   256.66
+    318.72    39.00   215.00  9144.00   246.45
+    300.00    38.00   215.00  9590.00   243.46
+    256.99    33.00   215.00 10668.00   236.50
+    250.00    33.00   210.00 10860.00   235.26
+    238.00    32.56   207.80 11197.53   233.26
+    200.00    31.00   200.00 12360.00   223.06
+    187.00    29.03   195.08 12795.32   218.46
+    186.80    29.00   195.00 12802.00   218.42
+    150.00    22.00   200.00 14180.00   209.66
+    142.00    20.09   201.59 14515.71   207.86
+    129.00    16.74   204.38 15108.04   212.66
+    126.27    16.00   205.00 15240.00   212.06
+    111.00    13.39   205.00 16036.49   208.46
+    103.65    12.00   205.00 16459.00   210.69
+    100.00    10.00   205.00 16680.00   211.86
+     98.66    10.00   205.00 16764.00   212.75
+     97.90     9.89   205.40 16812.39   213.26
+     79.70     7.08   215.94 18096.64   212.26
+     73.63     6.00   220.00 18593.00   213.85
+     70.00     4.00   215.00 18910.00   214.86
+     60.69     3.00   140.00 19812.00   216.41
+     58.20 -9999.00 -9999.00 20076.46   216.86
+ Parameters requested: SNFILE,AREA,DATTIM,SNPARM,STNDEX,LEVELS,VCOORD,OUTPUT,
+ MRGDAT.
+ GEMPAK-SNLIST>
+</pre>
+
+Now let's see that same data, but only on the mandatory pressure levels.
+<pre class="code"> SNFILE    Sounding data file                $GEMPAK/data/hrcbob.snd
+ AREA      Data area                         @chh
+ DATTIM    Date/time                         910820/0000
+ SNPARM    Sounding parameter list           sped;drct;hght;tmpk
+ STNDEX    Stability indices                 lift;show;kinx
+ LEVELS    Vertical levels                   man
+ VCOORD    Vertical coordinate type          pres
+ OUTPUT    Output device (TPF)               T
+ MRGDAT    Merge data file flag/part type    yes
+ GEMPAK-SNLIST>r
+
+ SNPARM = PRES;SPED;DRCT;HGHT;TMPK                                              
+ STNPRM = LIFT;SHOW;KINX                                                        
+
+ STID = CHH        STNM =    74494   TIME = 910820/0000         
+ SLAT =  41.66     SLON =   -69.96   SELV =    16.0
+ STIM =     0
+
+ LIFT =     6.35    SHOW =     6.53    KINX =    25.80
+
+      PRES     SPED     DRCT     HGHT     TMPK
+    999.00    21.00   250.00    16.00   294.76
+   1000.00 -9999.00 -9999.00     7.00 -9999.00
+    925.00    30.33   263.72   680.10   289.96
+    850.00    38.00   275.00  1400.00   287.36
+    700.00    37.00   250.00  3026.00   281.16
+    500.00    31.00   240.00  5740.00   269.06
+    400.00    36.00   230.00  7470.00   257.66
+    300.00    38.00   215.00  9590.00   243.46
+    250.00    33.00   210.00 10860.00   235.26
+    200.00    31.00   200.00 12360.00   223.06
+    150.00    22.00   200.00 14180.00   209.66
+    100.00    10.00   205.00 16680.00   211.86
+ Parameters requested: SNFILE,AREA,DATTIM,SNPARM,STNDEX,LEVELS,VCOORD,OUTPUT,
+ MRGDAT.
+ GEMPAK-SNLIST>
+</pre>
+
+OK, now let's look at the same data, but this time on isentropic (theta) levels.
+<pre class="code">SNFILE    Sounding data file                $GEMPAK/data/hrcbob.snd
+ AREA      Data area                         @chh
+ DATTIM    Date/time                         910820/0000
+ SNPARM    Sounding parameter list           sped;drct;hght;tmpk
+ STNDEX    Stability indices                 lift;show;kinx
+ LEVELS    Vertical levels                   all
+ VCOORD    Vertical coordinate type          thta
+ OUTPUT    Output device (TPF)               T
+ MRGDAT    Merge data file flag/part type    yes
+ GEMPAK-SNLIST>r
+
+ SNPARM = THTA;SPED;DRCT;HGHT;TMPK                                              
+ STNPRM = LIFT;SHOW;KINX                                                        
+
+ STID = CHH        STNM =    74494   TIME = 910820/0000         
+ SLAT =  41.66     SLON =   -69.96   SELV =    16.0
+ STIM =     0
+
+ LIFT =     6.35    SHOW =     6.53    KINX =    25.80
+
+      THTA     SPED     DRCT     HGHT     TMPK
+    294.84    21.00   250.00    16.00   294.76
+    294.70    21.36   250.54    42.19   294.36
+    296.49    30.33   263.72   680.10   289.96
+    299.88    38.00   275.00  1219.00   288.01
+    301.02    38.00   275.00  1400.00   287.36
+    302.43    38.00   270.03  1826.85   284.56
+    302.46    38.00   270.00  1829.00   284.56
+    305.82    36.00   265.00  2134.00   284.75
+    309.21    35.00   260.00  2438.00   284.94
+    309.61    35.00   259.42  2473.73   284.96
+    310.45    35.00   255.00  2743.00   283.11
+    311.32    37.00   250.00  3026.00   281.16
+    311.38    37.00   250.00  3048.00   281.00
+    313.00    37.00   250.00  3658.00   276.51
+    313.26    36.67   250.00  3759.48   275.76
+    317.46    35.56   250.00  4095.68   276.16
+    320.41    35.04   250.00  4255.87   277.16
+    320.61    35.00   250.00  4267.00   277.23
+    321.64    34.91   249.08  4323.67   277.56
+    323.31    34.00   240.00  4877.00   273.56
+    324.88    32.14   240.00  5415.35   269.66
+    327.99    31.00   240.00  5740.00   269.06
+    329.42    30.00   235.00  6096.00   266.71
+    334.77    36.00   230.00  7470.00   257.66
+    335.41    35.00   230.00  7620.00   256.66
+    341.67    39.00   215.00  9144.00   246.45
+    343.42    38.00   215.00  9590.00   243.46
+    348.68    33.00   215.00 10668.00   236.50
+    349.60    33.00   210.00 10860.00   235.26
+    351.53    32.56   207.80 11197.53   233.26
+    353.29    31.00   200.00 12360.00   223.06
+    352.71    29.03   195.08 12795.32   218.46
+    352.75    29.00   195.00 12802.00   218.42
+    360.51    22.00   200.00 14180.00   209.66
+    363.06    20.09   201.59 14515.71   207.86
+    381.77    16.74   204.38 15108.04   212.66
+    383.03    16.00   205.00 15240.00   212.06
+    390.65    13.39   205.00 16036.49   208.46
+    402.64    12.00   205.00 16459.00   210.69
+    409.04    10.00   205.00 16680.00   211.86
+    412.34    10.00   205.00 16764.00   212.75
+    414.24     9.89   205.40 16812.39   213.26
+    437.26     7.08   215.94 18096.64   212.26
+    450.61     6.00   220.00 18593.00   213.85
+    459.33     4.00   215.00 18910.00   214.86
+    481.90     3.00   140.00 19812.00   216.41
+    488.72 -9999.00 -9999.00 20076.46   216.86
+ Parameters requested: SNFILE,AREA,DATTIM,SNPARM,STNDEX,LEVELS,VCOORD,OUTPUT,
+ MRGDAT.
+ GEMPAK-SNLIST>
+</pre>
+
+Rather impressive, since we know that this data was not measured on theta
+levels.  GEMPAK did all the interpolation, and I'll bet you didn't even
+notice the time it took to do the computations. <p>
+
+<hr>
+
+Well, how did you do?  If you are confused about something, take a look
+back to the tutorial section.  Also, you can use your User's Manual, or
+the on-line help.<p>
+
+<hr>
+
+<a href="../3.2_listing.html"><img src="../images/PreviousArrow.gif" border="0" align="left"> Back to listing programs</a>
+</a>
+
+
+
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

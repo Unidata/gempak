@@ -1,0 +1,64 @@
+<!doctype html><head><title>GEMPAK Help: gdbiint</title></head><body>
+<a href=../../help_and_documentation>GEMPAK Manual</a> | 
+<a href=../prog/>Programs</a><br><hr>
+<pre>
+GDBIINT interpolates grids from one projection to another
+
+INPUT PARAMETERS
+ 
+    <a href=../parm/gdfile.html>GDFILE</a>    Grid file
+    <a href=../parm/gdoutf.html>GDOUTF</a>    Output grid file
+    <a href=../parm/gfunc.html>GFUNC</a>     Scalar grid
+    <a href=../parm/glevel.html>GLEVEL</a>    Grid level
+    <a href=../parm/gvcord.html>GVCORD</a>    Grid vertical coordinate
+    <a href=../parm/gdattim.html>GDATTIM</a>   Grid date/time
+    <a href=../parm/gdnum.html>GDNUM</a>     Grid numbers
+ 
+ 
+
+PROGRAM DESCRIPTION
+ 
+	GDBIINT uses bi-linear interpolation to convert
+	grid point data from one projection to another.
+
+	The output file must be created first using GDCFIL.
+	The program determines the location of the output
+	grid point locations withing the input grid file domain.
+	Each grid in the input file is interpolated to the output
+	file.
+
+	If <a href=../parm/gdnum.html>GDNUM</a> is ALL, all grids from the input file will be
+	interpolated to the output file. Otherwise, the single grid
+	specified by <a href=../parm/gfunc.html>GFUNC</a>, <a href=../parm/gdattim.html>GDATTIM</a>, <a href=../parm/glevel.html>GLEVEL</a> and <a href=../parm/gvcord.html>GVCORD</a> will
+	be interpolated.
+
+ 
+EXAMPLES
+ 
+    1.	Convert a data set from grid 211 to grid 87.
+	First create a new grid file with gdcfil using
+	<a href=../parm/cpyfil.html>CPYFIL</a> = #87.
+
+	<a href=../parm/gdfile.html>GDFILE</a>	 =  $HDS/98033112_grid211.gem
+	<a href=../parm/gdoutf.html>GDOUTF</a>   =  $HDS/98033112_grid87.gem
+	<a href=../parm/gdnum.html>GDNUM</a>    =  all
+
+    2.	Convert the LAND mask from grid projection 212 to grid
+	projection 211.
+
+	<a href=../parm/gdfile.html>GDFILE</a>	 =  $HDS/98033112_grid211.gem
+	<a href=../parm/gdoutf.html>GDOUTF</a>   =  $HDS/98033112_grid87.gem
+	<a href=../parm/gfunc.html>GFUNC</a>    =  mask
+	<a href=../parm/gdattim.html>GDATTIM</a>  =  f000
+	<a href=../parm/glevel.html>GLEVEL</a>   =  0
+	<a href=../parm/gvcord.html>GVCORD</a>   =  none
+	<a href=../parm/gdnum.html>GDNUM</a>    =
+
+ERROR MESSAGES
+ 
+    [GDBIINT  -1]   Fatal error initializing TAE.
+    [GDBIINT  -2]   Fatal error reading TAE parameters.
+</pre>
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

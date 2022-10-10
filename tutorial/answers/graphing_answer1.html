@@ -1,0 +1,175 @@
+
+<!DOCTYPE html>
+<html>
+<HEAD>
+<TITLE>Graphing Program Answer#1</TITLE>
+</HEAD>
+<BODY>
+ 
+<strong>
+<dl>
+<dd>
+First, you have to plot four different parameters for
+ five cities.  To do this you use a meteogram created with
+ SFGRAM.  So, to start off, run SFGRAM and read in the
+ defaults file:
+<dt>prompt% sfgram<img alt="GEMPAK displays saved settings"
+src="../images/gempakdisplays.gif" align=top>
+<dt>
+<pre>
+ SFFILE    Surface data file                 $GEMPAKHOME/data/hrcbob.sfc
+ DATTIM    Date/time                         all
+ STATION   Stations                          lax;phl;clt;pwm;sea
+ TRACE1    Parms/colors/range/witness        skyc:1:2;brbk:1:2/5;6!;;wsym:1:2;tmpc:1:2/;;11;3
+ TRACE2    Parms/colors/range/witness        skyc:1:2;brbk:1:2/5;6!;;wsym:1:2;tmpc:1:2/;;11;3
+ TRACE3    Parms/colors/range/witness        skyc:1:2;brbk:1:2/5;6!;;wsym:1:2;tmpc:1:2/;;11;3
+ TRACE4    Parms/colors/range/witness        skyc:1:2;brbk:1:2/5;6!;;wsym:1:2;tmpc:1:2/;;11;3
+ TRACE5    Parms/colors/range/witness        skyc:1:2;brbk:1:2/5;6!;;wsym:1:2;tmpc:1:2/;;11;3
+ NTRACE    Number of traces                  5
+ TAXIS     Time1-time2-tinc;lbl;gln;tck      
+ BORDER    Background color/dash/width       2/1/2
+ MARKER    Marker color/type/size/width/hw   0
+ TITLE     Title color/line/title            32/0
+ CLEAR     Clear screen flag                 y
+ DEVICE    Graphics device                   xw
+ PANEL     Panel location/color/dash/width   0
+ TEXT      Text size/font/width/hw flag      .8//1.5/sw
+ Parameters requested: SFFILE,DATTIM,STATION,TRACE1,TRACE2,TRACE3,TRACE4,
+ TRACE5,NTRACE,TAXIS,BORDER,MARKER,TITLE,CLEAR,DEVICE,PANEL,TEXT.
+ GEMPAK-SFGRAM>restore $GEMPAKHOME/defaults/sfgram.nts
+ GEMPAK-SFGRAM>d<img align=middle alt="redisplay settings"
+src="../images/redisplaysettings.gif">
+
+ SFFILE    Surface data file                 
+ DATTIM    Date/time                         all
+ STATION   Stations                          
+ TRACE1    Parms/colors/range/witness        tmpf:1:2;dwpf:1:2/2;3
+ TRACE2    Parms/colors/range/witness        ;vsby::2/8;4!pmsl::2;;/28
+ TRACE3    Parms/colors/range/witness        ;darr:1:2;sknt:1:2/1;22;12!gust/5
+ TRACE4    Parms/colors/range/witness        clds;skyk:.6:2/15;6!;;wsym:1:1/3
+ TRACE5    Parms/colors/range/witness        stha:1:2;sthe:1:2/22;19
+ NTRACE    Number of traces                  5
+ TAXIS     Time1-time2-tinc;lbl;gln;tck      
+ BORDER    Background color/dash/width       2/1/2
+ MARKER    Marker color/type/size/width/hw   0
+ TITLE     Title color/line/title            1/0
+ CLEAR     Clear screen flag                 y
+ DEVICE    Graphics device                   xw
+ PANEL     Panel location/color/dash/width   0
+ TEXT      Text size/font/width/hw flag      .8//1.5/sw
+ GEMPAK-SFGRAM>
+
+</pre>
+<dd>
+<img src="../images/warning.gif"> You must change some of the 
+settings that the default files put in for you,
+, as well as SFFILE and STATION. This is because
+TRACE1 through TRACE5 are not set to display what the 
+question asked.
+<P>First, let's set the file and stations:
+<p><Dt><pre>
+ GEMPAK-SFGRAM>sffile=$GEMPAKHOME/defaults/sfgram.nts
+ GEMPAK-SFGRAM>station=lax;phl;clt;pwm;sea
+</pre>
+<P><DD>
+<P><Dd><img alt=TIP:" src="../images/tipicon.gif">You can leave 
+taxis blank for this exercise.
+<P><Dd>TRACE1, TRACE2,
+ TRACE3, TRACE4, and TRACE5 will all be identical because 
+for each city because you will be looking at the same four 
+parameters. With a list of cities ,
+TRACE1 will correspond to the first city, and so on.  So, 
+TRACE1 will be for Los Angeles (LAX) and TRACE2 will be for 
+Philadelphia (PHL), etc. for this exercise. 
+
+<P><DD>Now, let`s set up the parameters.  We're going to 
+put the sky symbol(skyc) and weather barb in knots (BRBK)
+on the left, and the the weather symbol (WSYS) and 
+temperature in degrees C (TMPC) on the right.  They will
+be in these positions with these colors:
+<Pre>
+SKYC---Position 1--Color 5 (Yellow)
+BRBK---Position 2--Color 6 (Cyan)
+WSYM---Position 3--Color 11(Pink)
+TMPC---Position 4--Color 3(Green)
+</pre>
+<P>The line will be the default size 1, with line width 2:
+<P><DT><PRE>
+GEMPAK-SFGRAM>trace1=skyc:1:2;brbk:1:2/5;6!;;wsym:1:2;tmpc:1:2/;;11;3
+</pre>
+<DD>Because TRACE1 is the same as TRACE2 throught TRACE5, 
+you can enter this shortcut:
+<DT><PRE>
+GEMPAK-SFGRAM> trace2=&trace1
+GEMPAK-SFGRAM> trace3=&trace1
+GEMPAK-SFGRAM> trace4=&trace1
+GEMPAK-SFGRAM> trace5=&trace1
+GEMPAK-SFGRAM>d<img alt="Redisplay settings" align=middle 
+src="../images/redisplaysettings.gif">
+ SFFILE    Surface data file                 $GEMPAKHOME/data/hrcbob.sfc
+ DATTIM    Date/time                         all
+ STATION   Stations                          lax;phl;clt;pwm;sea
+ TRACE1    Parms/colors/range/witness        skyc:1:2;brbk:1:2/5;6!;;wsym:1:2;tmpc:1:2/;;11;3
+ TRACE2    Parms/colors/range/witness        skyc:1:2;brbk:1:2/5;6!;;wsym:1:2;tmpc:1:2/;;11;3
+ TRACE3    Parms/colors/range/witness        skyc:1:2;brbk:1:2/5;6!;;wsym:1:2;tmpc:1:2/;;11;3
+ TRACE4    Parms/colors/range/witness        skyc:1:2;brbk:1:2/5;6!;;wsym:1:2;tmpc:1:2/;;11;3
+ TRACE5    Parms/colors/range/witness        skyc:1:2;brbk:1:2/5;6!;;wsym:1:2;tmpc:1:2/;;11;3
+ NTRACE    Number of traces                  5
+ TAXIS     Time1-time2-tinc;lbl;gln;tck      
+ BORDER    Background color/dash/width       2/1/2
+ MARKER    Marker color/type/size/width/hw   0
+ TITLE     Title color/line/title            32/0
+ CLEAR     Clear screen flag                 y
+ DEVICE    Graphics device                   xw
+ PANEL     Panel location/color/dash/width   0
+ TEXT      Text size/font/width/hw flag      .8//1.5/sw
+ GEMPAK-SFGRAM>
+</pre>
+
+<P><img alt="warning" src="../images/warning.gif">There are 
+several places you can get tripped up:
+<ol>
+<li>Not using the exclamation mark "!" to separate the 
+titles, half on the right, half on the left.
+<LI>Putting a symbol in position four.  You can only put
+characters or symbols in position 1-3.  This is mentioned 
+briefly in the <a href="/gempak/man/prog/sfgram.html">sfgram
+</a> phelp file. This would either give you an error 
+message or overlap the data in position 4 and 3.
+<LI>...to be continued.
+</ol>
+
+<pre>
+ GEMPAK-SFGRAM>r<img alt="run the program" src="../images/runtheprogram.gif" align=middle>
+ SFGRAM PARAMETERS<img src="../images/gempakwindowpops.gif"
+align=top alt="GENPAK window may pop up here">
+ 
+ Surface file:       $GEMPAKHOME/data/hrcbob.sfc
+ Number of times:      25
+ Time range:         910819/06-20/06                                 
+ Traces: 
+     LAX       skyc:1:2;brbk:1:2/5;6!;;wsym:1:2;tmpc:1:2/;;11;3
+     PHL       skyc:1:2;brbk:1:2/5;6!;;wsym:1:2;tmpc:1:2/;;11;3
+     CLT       skyc:1:2;brbk:1:2/5;6!;;wsym:1:2;tmpc:1:2/;;11;3
+     PWM       skyc:1:2;brbk:1:2/5;6!;;wsym:1:2;tmpc:1:2/;;11;3
+     SEA       skyc:1:2;brbk:1:2/5;6!;;wsym:1:2;tmpc:1:2/;;11;3
+   
+Enter &ltcr&gt to accept parameters or type EXIT:
+
+</pre>
+<a href="../images/graphing_answer1.gif"><img alt="view window"
+src="../images/viewindow.gif"></a>
+<P><DT>
+<P><DT><img src="../images/helpicon.gif">Why are the parameters
+organized that way?
+
+
+ 
+<p>
+<img src="../images/bluehorizontaline.gif">
+<pre>
+<a href="../graphing_exercises.html#answer1"><img alt="previous page" src="../images/return.gif"></a>
+
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

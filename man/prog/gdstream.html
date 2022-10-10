@@ -1,0 +1,144 @@
+<!doctype html><head><title>GEMPAK Help: gdstream</title></head><body>
+<a href=../../help_and_documentation>GEMPAK Manual</a> | 
+<a href=../prog/>Programs</a><br><hr>
+<pre>
+GDSTREAM draws streamlines through a vector grid.
+
+INPUT PARAMETERS
+ 
+    <a href=../parm/gdattim.html>GDATTIM</a>   Grid date/time
+    <a href=../parm/glevel.html>GLEVEL</a>    Grid level
+    <a href=../parm/gvcord.html>GVCORD</a>    Grid vertical coordinate
+    <a href=../parm/gvect.html>GVECT</a>     Vector grid
+    <a href=../parm/gdfile.html>GDFILE</a>    Grid file
+    <a href=../parm/garea.html>GAREA</a>     Graphics area
+    <a href=../parm/ijskip.html>IJSKIP</a>    Iskp;Istrt;Istp/Jskp;Jstrt;Jstp
+    <a href=../parm/satfil.html>SATFIL</a>    Satellite image filename(s)
+    <a href=../parm/radfil.html>RADFIL</a>    Radar image filename(s)
+    <a href=../parm/imcbar.html>IMCBAR</a>    Color/ornt/anch/x;y/ln;wd/freq
+    <a href=../parm/line.html>LINE</a>      Color/type/width/label/smth/fltr/scflg
+    <a href=../parm/map.html>MAP</a>       Map color/dash/width/filter flag
+    <a href=../parm/mscale.html>MSCALE</a>    fgc;bgc;mask/units/lat;hide/values/anch/x;y/ln;wd/freq|text_info|t
+    <a href=../parm/latlon.html>LATLON</a>    Line color/dash/width/freq/inc/label/format
+    <a href=../parm/title.html>TITLE</a>     Title color/line/title
+    <a href=../parm/panel.html>PANEL</a>     Panel loc/color/dash/width/regn
+    <a href=../parm/text.html>TEXT</a>      Size/fnt/wdth/brdr/N-rot/just/hw flg
+    <a href=../parm/device.html>DEVICE</a>    Device|name|x size;y size|color type
+    <a href=../parm/proj.html>PROJ</a>      Map projection/angles/margins|drop flag
+    <a href=../parm/clear.html>CLEAR</a>     Clear screen flag
+    <a href=../parm/wind.html>WIND</a>      Wind symbol/siz/wdth/typ/hdsz
+    <a href=../parm/lutfil.html>LUTFIL</a>    Enhancement lookup table filename
+    <a href=../parm/stnplt.html>STNPLT</a>    Txtc/txt attr|marker attr|stnfil#col
+    <a href=../parm/stream.html>STREAM</a>    lines/arrows/stop/slow/scale
+ 
+ 
+
+PROGRAM DESCRIPTION
+ 
+    GDSTREAM draws streamlines through any vector grid computed
+    by the grid diagnostics package. The vector grid is specified
+    in <a href=../parm/gvect.html>GVECT</a>.
+
+    Streamlines are plotted in an animation sequence by specifying
+    more than one time in <a href=../parm/gdattim.html>GDATTIM</a>.
+
+    The line color, dash pattern and line width are set in <a href=../parm/line.html>LINE</a>.
+    A map, title and latitude/longitude lines may also be included.
+    The size of the arrow heads may be controlled by specifying
+    the fifth value in <a href=../parm/wind.html>WIND</a>.
+
+    The <a href=../parm/stream.html>STREAM</a> parameter controls several parameters dealing with
+    the overall streamline calculation and display.  "Lines" is a
+    real number multiplier which controls the number (density) of
+    streamlines drawn (default 1.0); "arrows" is a real number
+    multiplier which controls the number of arrowheads displayed
+    (default 1.5*lines); "stop" is a real number multiplier which
+    controls how close a streamline comes to another streamline
+    before it is stopped being drawn (default 0.5); "slow" is a
+    real number multiplier which controls the minimum vector speed
+    threshold for stopping a streamline (default 0.67); "scale" is
+    a real number multiplier which controls how much the input vector
+    field is scaled prior to streamline calculation (default 0.33).
+
+
+EXAMPLES
+ 
+    1.  Draw streamlines through the gridded wind field at 850
+        mb using color 3.  Add a North Polar Stereographic map
+	in color 1 and line type 7 and a title in color 5.
+	Center the graphics area on Ohio.
+
+	<a href=../parm/gdattim.html>GDATTIM</a>	 =  f24
+	<a href=../parm/glevel.html>GLEVEL</a>	 =  850
+	<a href=../parm/gvcord.html>GVCORD</a>	 =  pres
+	<a href=../parm/gvect.html>GVECT</a>	 =  wnd
+	<a href=../parm/gdfile.html>GDFILE</a>	 =  $GEMPAK/data/hrcbob.grd
+	<a href=../parm/garea.html>GAREA</a>	 =  oh-
+	<a href=../parm/satfil.html>SATFIL</a>	 =
+	<a href=../parm/radfil.html>RADFIL</a>	 =
+	<a href=../parm/imcbar.html>IMCBAR</a>   =
+	<a href=../parm/line.html>LINE</a>	 =  3//2
+	<a href=../parm/map.html>MAP</a>	 =  1/7
+	<a href=../parm/latlon.html>LATLON</a>	 =  2/10/1/1/5;5
+	<a href=../parm/title.html>TITLE</a>	 =  5
+	<a href=../parm/panel.html>PANEL</a>	 =  0
+	<a href=../parm/text.html>TEXT</a>	 =  1
+	<a href=../parm/device.html>DEVICE</a>	 =  xw
+	<a href=../parm/proj.html>PROJ</a>	 =  nps
+	<a href=../parm/clear.html>CLEAR</a>	 =  yes
+	<a href=../parm/wind.html>WIND</a>	 =
+	<a href=../parm/lutfil.html>LUTFIL</a>   =
+	<a href=../parm/stnplt.html>STNPLT</a>   =
+
+    2.  Similar to 1), except for a global 1x1 degree dataset over the
+	Pacific Ocean, specifying the <a href=../parm/stream.html>STREAM</a> parameter to properly
+	thin and display the field given the overall density of
+	grid boxes.
+
+	<a href=../parm/gdfile.html>GDFILE</a>   = $MODEL/fnl/fnl_96052800
+	<a href=../parm/gdattim.html>GDATTIM</a>	 = f00
+	<a href=../parm/glevel.html>GLEVEL</a>	 = 250
+	<a href=../parm/garea.html>GAREA</a>    = -25;-180;55;-45
+	<a href=../parm/proj.html>PROJ</a>     = mer
+	<a href=../parm/latlon.html>LATLON</a>   = 31/12/2//10
+	<a href=../parm/stream.html>STREAM</a>   = 0.4/0.8/3//
+	<a href=../parm/wind.html>WIND</a>     = am1/2/3//0.8
+	<a href=../parm/title.html>TITLE</a>    = 31/-2/@ FNL ANALYSIS VALID ~         NHC MIAMI FLA
+
+    3.  Clear the screen and draw the streamlines of the thermal
+        wind.  Make the arrowheads 0.75 of the default size.
+	Plot the streamlines in a second window named "window2".
+
+	<a href=../parm/gdattim.html>GDATTIM</a>	 =  f24
+	<a href=../parm/glevel.html>GLEVEL</a>	 =  500:850
+	<a href=../parm/gvcord.html>GVCORD</a>	 =  pres
+	<a href=../parm/gvect.html>GVECT</a>	 =  thrm
+	<a href=../parm/gdfile.html>GDFILE</a>	 =  $GEMPAK/data/hrcbob.grd
+	<a href=../parm/garea.html>GAREA</a>	 =  oh-
+	<a href=../parm/satfil.html>SATFIL</a>	 =
+	<a href=../parm/radfil.html>RADFIL</a>	 =
+	<a href=../parm/imcbar.html>IMCBAR</a>   =
+	<a href=../parm/line.html>LINE</a>	 =  3//2
+	<a href=../parm/map.html>MAP</a>	 =  1/7
+	<a href=../parm/latlon.html>LATLON</a>	 =  2/10/1/1/5;5
+	<a href=../parm/title.html>TITLE</a>	 =  5
+	<a href=../parm/panel.html>PANEL</a>	 =  0
+	<a href=../parm/text.html>TEXT</a>	 =  1
+	<a href=../parm/device.html>DEVICE</a>	 =  xw|window2
+	<a href=../parm/proj.html>PROJ</a>	 =  nps
+	<a href=../parm/clear.html>CLEAR</a>	 =  yes
+	<a href=../parm/wind.html>WIND</a>	 =  an3////.75
+	<a href=../parm/lutfil.html>LUTFIL</a>   =
+	<a href=../parm/stnplt.html>STNPLT</a>   =
+
+ERROR MESSAGES
+ 
+    [GDSTREAM  +2]  WARNING:  ... not found.  CONTINUING---
+    [GDSTREAM  -1]  Fatal error initializing TAE.
+    [GDSTREAM  -2]  Fatal error reading TAE parameters.
+    [GDSTREAM  -3]  Fatal error initializing GEMPLT.
+
+</pre>
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

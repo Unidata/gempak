@@ -1,0 +1,28 @@
+<!doctype html><head><title>GEMPAK Help: gvcord</title></head><body>
+<a href=../../help_and_documentation>GEMPAK Manual</a> | 
+<a href=../prog/>Programs</a> | <a href=../parm/>Parameters</a><br><hr>
+<pre>
+     GVCORD
+
+     GVCORD is the vertical coordinate of the grid to be selected.
+
+     The standard values are:
+ 
+	NONE	for surface data
+	PRES	data in pressure coordinates (millibars)
+	THTA	data in isentropic coordinates (Kelvin)
+	HGHT	data in height coordinates (meters)
+	SGMA	data in sigma coordinates
+
+     The value in GVCORD may be overridden by specifying %GVCORD with the 
+     grids to be found.  For example:
+  
+	<a href=gfunc.html>GFUNC</a> = SUB ( TMPC @850 %PRES, TMPC @1500 %HGHT )  
+  
+     will compute the difference between temperatures on the 850-mb level 
+     and the 1500-meter level.
+
+</pre>
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

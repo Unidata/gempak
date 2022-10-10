@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="md.css" type="text/css">
+
+<title>Additional Exercises</title>
+
+</head>
+<body>
+<blockquote><p><a href=/gempak/tutorial/>GEMPAK Online Tutorial</a></p></blockquote>
+
+<h1>Additional Exercises</h1>
+
+<h2>Creating a Topographic Image</h2>
+
+<p>This example utilizes DEM topography data 5 minute topography data to create a topographic image that may be used as a basemap.</p>
+
+<p>For this exercise you will need to download the DEM global 5 minute topography file <a href="world_topo.5min"><code>world_topo.5min</code></a> to your working directory.</p>
+
+<ol>
+<li><p>Create a topographic grid for desired area using <code>GDTOPO</code></p>
+
+<pre><code> GDFILE   = nam_basemap.gem
+ GAREA    = 10;-140;65;-40
+ GDATTIM  = 070101/0000
+ GVCORD   = none
+ GFUNC    = topo
+ TOPOFL   = world_topo.5min
+ IJSKIP   = 0
+ GEMPAK-GDTOPO&gt;r
+</code></pre></li>
+<li><p>Create an image from topography/bathymetry data using <code>GD2IMG</code></p>
+
+<p> Use a 2 part calibration range for band 3.</p>
+
+<p> Use pixel values 0 to 7 for negative values (-8103 to 0 meters), and pixel values 8 to 95 to represent positive values (0 to 4700 meters).</p>
+
+<p> The region selected represents a 6 km resolution product.</p>
+
+<pre><code> GDATTIM  = last
+ GDFILE   = nam_basemap.gem
+ GLEVEL   = 0
+ GVCORD   = none
+ GFUNC    = topo
+ SCALE    = 0
+ PROJ     = str/90;-97;0
+ GRDAREA  = 15;-116;50;-51.95
+ KXKY     = 1002;925
+ CPYFIL   =  
+ SATFIL   = nam_basemap.gini
+ CALINFO  = 99/3/TOPO,0,7,-8103,0;8,95,0,4700
+ WMOHDR   = TICZ99/UPC/
+ GEMPAK-GD2IMG&gt;r
+</code></pre></li>
+<li><p>Display the composite image in GEMPAK programs as a satellite image and overlay data as desired.</p>
+
+<pre><code> MAP      = 1
+ GAREA    = dset
+ PROJ     = sat
+ SATFIL   = nam_basemap.gini
+ LUTFIL   = upc_dem5.tbl
+ GEMPAK-GPMAP&gt;r
+</code></pre></li>
+</ol>
+
+
+<p><img src="gd2img.gif" alt="image" /></p>
+
+<blockquote><p><a href=/gempak/tutorial/>GEMPAK Online Tutorial</a></p></blockquote>
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

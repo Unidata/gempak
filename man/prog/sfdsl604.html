@@ -1,0 +1,98 @@
+<!doctype html><head><title>GEMPAK Help: sfdsl604</title></head><body>
+<a href=../../help_and_documentation>GEMPAK Manual</a> | 
+<a href=../prog/>Programs</a><br><hr>
+<pre>
+SFDSL604 lists data from a GEMPAK surface file in a fixed format
+for use on the AMS DataStreme web site.
+
+INPUT PARAMETERS
+ 
+    <a href=../parm/sffile.html>SFFILE</a>    Surface data file
+    <a href=../parm/area.html>AREA</a>      Data area
+    <a href=../parm/dattim.html>DATTIM</a>    Date/time
+    <a href=../parm/output.html>OUTPUT</a>    Output device/filename
+    <a href=../parm/skpmis.html>SKPMIS</a>    Skip missing data flag
+    <a href=../parm/idntyp.html>IDNTYP</a>    STNM or STID
+    <a href=../parm/sfparm.html>SFPARM</a>    Surface parameter list
+ 
+ 
+
+PROGRAM DESCRIPTION
+ 
+    SFDSL604 lists data from a surface file in a format designed
+    to display airways data.
+
+    Data will be listed for the stations and times requested in
+    <a href=../parm/area.html>AREA</a> and <a href=../parm/dattim.html>DATTIM</a>.  If <a href=../parm/skpmis.html>SKPMIS</a> is YES, stations that are within
+    the area requested, but have not reported data, will not
+    be listed.  If <a href=../parm/skpmis.html>SKPMIS</a> is set to NO, then only the date and
+    station identifier will be listed for nonreporting stations.
+
+    Stations may be identified in the output listing by character
+    or numeric identifier.  This is accomplished by setting <a href=../parm/idntyp.html>IDNTYP</a>
+    to STID or STNM.
+
+    This program will list predefined parameters only.  However,
+    stations may be selected using conditions in <a href=../parm/sfparm.html>SFPARM</a>.  For
+    example, if <a href=../parm/sfparm.html>SFPARM</a> = WTHR=S+, then only those stations
+    reporting heavy snow will be listed.  The conditions specified
+    in <a href=../parm/sfparm.html>SFPARM</a> can be for any computable parameter, not just
+    those to be listed.
+
+ 
+EXAMPLES
+ 
+    1.	List the data for all stations in Pennsylvania at
+	the most recent time.
+
+	<a href=../parm/sffile.html>SFFILE</a>	 =  $GEMPAK/data/HRCBOB.SFC
+	<a href=../parm/area.html>AREA</a>	 =  @pa
+	<a href=../parm/dattim.html>DATTIM</a>	 =  last
+	<a href=../parm/output.html>OUTPUT</a>	 =  t
+	<a href=../parm/skpmis.html>SKPMIS</a>	 =  yes
+	<a href=../parm/idntyp.html>IDNTYP</a>	 =  stid
+	<a href=../parm/sfparm.html>SFPARM</a>	 =
+
+    2.	List the data for all times at PHL.
+
+	<a href=../parm/sffile.html>SFFILE</a>	 =  $GEMPAK/data/HRCBOB.SFC
+	<a href=../parm/area.html>AREA</a>	 =  @phl
+	<a href=../parm/dattim.html>DATTIM</a>	 =  all
+	<a href=../parm/output.html>OUTPUT</a>	 =  t
+	<a href=../parm/skpmis.html>SKPMIS</a>	 =  yes
+	<a href=../parm/idntyp.html>IDNTYP</a>	 =  stid
+	<a href=../parm/sfparm.html>SFPARM</a>	 =
+
+    3.	List all stations in Pennsylvania, including nonreporting
+	stations for the last time.
+
+	<a href=../parm/sffile.html>SFFILE</a>	 =  $GEMPAK/data/HRCBOB.SFC
+	<a href=../parm/area.html>AREA</a>	 =  @pa
+	<a href=../parm/dattim.html>DATTIM</a>	 =  last
+	<a href=../parm/output.html>OUTPUT</a>	 =  t
+	<a href=../parm/skpmis.html>SKPMIS</a>	 =  no
+	<a href=../parm/idntyp.html>IDNTYP</a>	 =  STID
+	<a href=../parm/sfparm.html>SFPARM</a>	 =
+
+    4.	List all stations in Pennsylvania where there are reported
+	thunderstorms.
+
+	<a href=../parm/sffile.html>SFFILE</a>	 =  $GEMPAK/data/HRCBOB.SFC
+	<a href=../parm/area.html>AREA</a>	 =  @pa
+	<a href=../parm/dattim.html>DATTIM</a>	 =  LAST
+	<a href=../parm/output.html>OUTPUT</a>	 =  t
+	<a href=../parm/skpmis.html>SKPMIS</a>	 =  yes
+	<a href=../parm/idntyp.html>IDNTYP</a>	 =  STID
+	<a href=../parm/sfparm.html>SFPARM</a>	 =  wthr=t
+
+ERROR MESSAGES
+ 
+    [SFDSL604  +1]  Parameter ... cannot be computed.
+    [SFDSL604  -1]  Fatal error initializing TAE.
+    [SFDSL604  -2]  Fatal error reading TAE parameters.
+    [SFDSL604  -3]  No valid stations could be found.
+    [SFDSL604  -4]  No parameters can be computed.
+</pre>
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

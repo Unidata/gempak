@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script> 
+<script type="text/javascript" src="http://canvg.googlecode.com/svn/trunk/rgbcolor.js"></script> 
+<script type="text/javascript" src="http://canvg.googlecode.com/svn/trunk/canvg.js"></script> 
+<style type='text/css'  media='all'>
+
+
+</style>
+<script type="text/javascript">
+window.onload = function() {
+  //canvg('canvas', 'ly_hght.svg') 
+  //canvg('canvas', 'ly_base.svg') 
+  //canvg('canvas', 'ly_hght.svg', { ignoreMouse: true, ignoreAnimation: true }) 
+  //$(".layer-hght").attr('data',ly_base.svg);
+
+}
+</script>
+</head>
+<!--
+<canvas id="canvas" width="1000px" height="600px"></canvas> 
+-->
+
+<object id="layer-base" type="image/svg+xml" style="position: absolute; z-index: 10;" data="ly_base.svg" width="900" height=600"" opacity="1"></object>
+<object id="layer-hght" type="image/svg+xml" style="position: absolute; z-index: 2;" data="ly_hght.svg" width="900" height="600" opacity="1"></object>
+<image id="layer-prcp" type="image" style="position: absolute; z-index: 1;" src="ly_prcp.gif" width="900" height="600" opacity="1"></object>
+<object id="layer-wind" type="image/svg+xml" style="position: absolute; z-index: 1;" data="ly_wnd.svg" width="900" height="600" opacity="1"></object>
+<div style="padding:5px; background: #fff; border: 3px solid #000;z-index: 101; position: absolute;top: 0px; left: 0px;" width="100%" height="20">
+	<form id="product-select">
+    <input type="checkbox" checked id="prcp" value="" onclick="toggle('prcp');" /> PRCP 
+	<input type="checkbox" checked id="hght" value="" onclick="toggle('hght');"/> HGHT
+	<input type="checkbox" checked id="wind" value="" onclick="toggle('wind');"/> WIND
+	<input type="checkbox" checked id="base" value="" onclick="toggle('base');"/> BASE
+	</form>
+</div>
+
+<script>
+
+var hidden = false;
+function toggle(id) {
+	var layer = document.getElementById("layer-"+id);
+	hidden = !hidden;
+    if(hidden) {
+        layer.style.display = 'none';
+    } else {
+        layer.style.display = 'block';
+    }
+}
+</script>
+    
+</html>
+

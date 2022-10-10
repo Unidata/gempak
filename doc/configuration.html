@@ -1,0 +1,113 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <title>GEMPAK Configuration Information</title>
+    <meta name="bookmark" CONTENT="GEMPAK Configuration Information">
+    <meta name="author" content="Michael James">
+    <meta name="keywords" CONTENT="Software, GEMPAK, Configuration">
+    <meta name="description" CONTENT="GEMPAK Configuration Information.">
+    <link rel=stylesheet type="text/css" href="./css_core.css"> 
+    <link rel=stylesheet type="text/css" href="/css/tabs/breadcrumbs.css"> 
+ </head>
+ <body>
+  <a href=../help_and_documentation>GEMPAK Manual</a> <br><hr>
+
+ 
+
+    <h1>GEMPAK Configuration Information</h1>
+    <section>
+     <h4>Decoder/Data Entries for LDM pqact.conf</h4>
+     <p>Sample decoder/data entries for LDM are provided in the GEMPAK distribution under the <file>$NAWIPS/ldm/etc</file> directory using a set of templates which will automatically create <file>pqact.conf</file> lines based on your <file>$GEMTBL</file> and <file>$GEMPAK</file> environmental variable settings. </p>
+     <p>Ensure your GEMPAK environmental variables are set (source the <file>Gemenviron</file> file if not already set), then run the script </p>
+     <pre>$NAWIPS/ldm/etc/gen_pqact.csh</pre>
+     <p>This template script will produce a pqact.gempak file your current directory that you can edit and append to your <file>pqact.conf</file> file (or, you can have a separate pqact running from <file>ldmd.conf</file> just for the <file>pqact.gempak</file> file).</p>
+     <p>Typically, the <file>$GEMDATA</file> environmental variable set in the <file>$NAWIPS/Gemenviron</file> script will point to the <file>data/gempak</file> directory which resides under the LDM distribution. The environmental variables can be redefined to point to case studies or archive directories without any reconfiguration if the same directory structure as the real-time data is followed.</p>
+     <p>Create your data and log directories that LDM will expect under the <file>~ldm/data/gempak</file> tree. The FILE actions from the LDM will create their own directory paths, however decoders which receive their data via PIPE should have their directory created first (decoders from NCEP do not automatically create their paths, most written at Unidata do create their output paths).</p>
+    </section>
+
+
+    <section>
+     <h4>Displaying Satellite and NIDS data in NMAP, NSAT and Garp</h4>
+     <p>Imagery is stored into a three tier tree structure which enables the Graphical User Interfaces to provide a hierachy of data menues. NIDS data can be directly filed from the LDM into this structure. Additionally, satellite imagery transmitted on the Unidata/Wisconsin IDD feedtype in AREA file format can be directly filed into the data hierarchy using the ldm-mcidas program pnga2area. Pattern-action examples for storing these products are available in the <file>pqact.conf</file> examples above.</p>
+
+
+
+<!--
+<h4>Decoder Entries for LDM <a href="../tutorial/pqact/decoders.tbl">
+pqact.conf</a>
+</h4>
+To download the pqact.conf entries from the link above, use the right
+mouse button in your web browser and select "save link as".
+By downloading the link from its source, you will preserve the TAB
+positions which are critical in pqact.conf. If you cut and paste
+from the table, always remember to check your TAB locations.
+You will need to modify the entries to reflect your site configuration.
+<p>
+<hr>
+<h4>NWX Entries for LDM <a href="../tutorial/pqact/nwx.tbl">
+pqact.conf</a>
+</h4>
+The NWX entries are used to store the LDM products in to the appropriate
+directory tree structure for NWX. The Environmental variable
+TEXT_DATA which is set in $NAWIPS/Gemenviron should point to the
+top of the NWX data tree..(eg /usr/local/ldm/data/gempak/nwx
+as in the entries above).
+-->
+
+    </section>
+
+
+
+    <section>
+     <h4><a name="NALARM"></a>Configuring the LDM to store files for NALARM</h4>
+     <p><file>Nalarm</file> is a desktop GUI that automatically notifies you when a bulletin you are interested in arrives, and provides a text window for browsing the content of the product. Each user can have their own set of files to be viewed in  Nalarm.</p>
+     <p>To configure Nalarm for your system:</p>
+     <ol>
+      <li><p>Decide where alarm bulletins from the LDM will be written. This directory will be defined using the <file>AFOS_ALARMS</file> environmental valiable defined in the Gemenviron file. Typically, <file>AFOS_ALARMS</file> is defined as <file>$GEMDATA/alarms</file>.</p></li>
+      <li><p>Create pqact.conf entries to file desired bulletins into user directories under <file>$GEMDATA/alarms</file>. For example, if the user <file>"frodo"</file> wants to be notified of all tornado warnings issued, the following <file>pqact.conf</file> entry could be used:
+       <pre>WMO	^(......) (....) ([0-3][0-9])([0-2][0-9])([0-6][0-9]).*/p(TOR.*)
+FILE     data/gempak/alarms/frodo/(\3:yyyy)(\3:mm)\3\4\5_\6.\1_\2</pre>
+      </p></li>
+      <li><p>The LDM will automatically create the <file>data/gempak/alarms/frodo</file> directory when a product arrives if it does not already exist. You should give the user <file>"frodo"</file> write access to that directory as well so that he can delete bulletins after he reads them. It is useful to automaticall scour these directories to several days accumulation (such as with the <file>scour.conf</file> configuration for <file>"ldmadmin scour"</file>) to keep these directories from accumulating too many messages if the user is deleting them himself.</p></li>
+      <li><p>Nalarm will look for files for the current user under <file>$AFOS_ALARMS/~frodo</file>.</p></li>
+      <li><p>In order for <file>"frodo"</file> to be notified when bulletins arrive, he should launch <file>Nalarm</file> (available from the <file>NTL</file> bar, or the command line), A small window will be created which can be placed in a convenient area of the desktop.</p></li>
+      <li><p>When a new file appears in the user's alarm directory, the <file>New Product</file> panel of the Nalarm window will flash red. Clicking on the <file>New Product</file> icon will launch a browser showing available products in the top window. Clicking on a product name will display the text in the bottom of the window.</p></li>
+      <li><p>The bulletin can be printed or deleted from the browser.</p></li>
+      <li><p>Clicking <file>Exit</file> closes the browser down, the allarm button will remain on the desktop until the Nalarm window is exited.    </p></li>
+      <li><p>If a <file>$AFOS_ALARMS/~frodo</file> directory does not exist, the GUI will attempt to look in <file>$AFOS_ALARMS/nawips</file> if it exists.</p></li>
+    </ol>
+    </section>
+
+
+    <section>
+     <h4>Keeping up to date with NOAAPORT changes</h4>
+     <p>Realtime data stream users can keep informed about NOAAPORT data stream changes through the nws-changes email list, as well as through the administrative messages broadcast on NOAAPORT. Here is a sample <file>pqact.conf</file> entry to mail these messages automatically from your LDM:</p>
+     <tt>
+WMO	^(ADMN[0-68]. ....|ADMN9[^9] ....|ADMN7[^5] ....|NOXX.. ....|NOUS[^456789]. ....|NOUS[4678]. (KWNO|KWBC|KNCF)|NOUS9[^7] ....)
+	PIPE	-strip	-close	/usr/bin/mailx -s "ADMIN NOTICE \1" joe.user@foo.bar
+    </tt>
+    <p>Just replace the template email address with one you wish to receive notifications with.</p>
+    </section>
+
+
+    <section>
+     <h4>Generating Nmeta files for NTRANS</h4>
+     <p>The Ntrans program utilizes an environmental variable in Gemenviron called <file>$NTRANS_META</file> which specifies the top of your metafile tree. Ntrans will create selection buttons withing the <file>select model</file> widget for each subdirectory it finds in <file>$NTRANS_META</file>. Clicking on a button within <file>select model</file> will present all the file names located in that directory.</p>
+     <p>For example, if you generate meta files for the ETA model, and store these in the directory <file>$NTRANS_META/eta</file>, selecting the ETA button will display the names of your meta files in that directory. For more information see <a href="../tutorial/ntrans.html"><b>Ntrans</b></a> in the tutorial.</p>
+    </section>
+
+
+    <section>
+     <h4>Configuring the Garp_defaults file</h4>
+     <p>Garp uses the file <file>$GARPHOME/config/Garp_defaults</file> to define the names and locations of the various gempak data sets it can plot. These defaults are currently set to use the file suffixes demonstrated in the decoders examples for <file>pqact.conf</file>. Additionally, the directories are compatible with those defined in Gemenviron (<file>$MODEL</file> for gridded data sets, <file>$SAT</file> for the AREA, <file>$RAD</file> for Nids image tree, <file>$GEMDATA/surface</file> for METAR, <file>$GEMDATA/syn</file> for land synoptic, <file>$GEMDATA/ship</file> for ship synoptic, <file>$GEMDATA/upperair</file> for radiosonde data, <file>$GEMDATA/profiler</file> for profiler data).</p>
+     <p>The grid functions which may be defined for quick access are defined in files called FDFs. You may add additional FDF functions or categories. If you add a new subdirectory for a separate category, you must add this directory to the <file>Garp_defaults</file> file. FDF files contain parameters similar to those you typically specify in the GD programs within GEMPAK.</p>
+
+<!--
+     <p>For further information, see the UPC <a href="../tutorial/garp.html"><b>GARP</b></a> tutorial.</p>
+
+-->
+    </section>
+
+  <script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

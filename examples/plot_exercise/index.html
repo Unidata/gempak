@@ -1,0 +1,56 @@
+<HTML><HEAD><TITLE>GEMPAK Student Plotting Exercise</TITLE>
+<META NAME="BOOKMARK" CONTENT="GEMPAK Student Plotting Exercise">
+<META NAME="AUTHOR" CONTENT="Steve Chiswell">
+<META NAME="KEYWORDS" CONTENT="Software, GEMPAK, Examples">
+<META NAME="DESCRIPTION" CONTENT="GEMPAK Student Plotting Exercise.">
+<META NAME="UIINDEX" CONTENT="4">
+</HEAD><BODY>
+
+
+<TABLE width="100%" border=0> 
+  <TR>
+    <TD valign=top><IMG SRC="../../tutorial/images/world_small.gif" width=150></TD>
+    <TD align="left"> 
+        <H1>GEMPAK / N-AWIPS</H1>
+        <h2>Student Plotting Exercise</h2>
+    </TD>
+  </TR>
+</TABLE>
+
+<p>
+This directory contains a set of data which can be used by students to
+plot a standard surface map for analysis. A blank basemap showing 
+selected station identifiers with cloud cover symbol location is provided.
+Decoded surface observations in text format for first order stations are
+provided.
+</p>
+
+<p>
+<li><a href="basemap.ps">basemap (8.5x11" postscript)</a>
+<li><a href="basemap_11x17.ps">basemap (11x17" postscript)</a>
+<li><a href="basemap.gif">basemap (gif format)</a>
+<li><a href="sfl604.txt">Surface parameter text file for 12Z Nov 10, 1998</a>
+</p>
+<p>Surafce parameters listed are:
+<pre>
+ HH   STN  CLDL  CLDM  CLDH VSBY  WTHR  PMSL  TMP DWP DDSS GST ALT  PTND PCPN SN
+hour  ID     \          /     |    |     |   /    |      | Wind |    |    | snow
+              \        /      | present  | tempF  |      | gust |    |  precip
+        Low, middle and high  | weather  |     dewpointF |      |  pressure tendency
+        cloud levels in       |          |               |  altimiter"
+	thousands of feet:    |       sea level          |
+         S = scattered,       |       pressure    wind direction
+         B = Broken,      Visibility    in        in 10s of degrees
+         O = Overcast     in statute  millibars        and
+         C = Clear         miles                   speed in knots
+</pre>
+</p>
+
+<p>
+The data for this exercise is part of a 
+<a href="https://www.comet.ucar.edu/resources/cases/c23_09nov98/">
+case study</a> for which additional information is available,
+
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</HTML>

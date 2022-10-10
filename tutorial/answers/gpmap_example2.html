@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<HEAD>
+<TITLE>GPMAP Example 2 Answer</TITLE>
+</HEAD>
+<BODY>
+<center>
+<h1>GPMAP Example 2</h1>
+</center>
+<hr>
+<h2>2A. Display the IR Image</h2>
+<p>
+<strong>
+<pre>
+% gpmap
+Creating process: gplt for queue 4650
+ MAP       Map color/dash/width              4
+ GAREA     Graphics area                     dset
+ PROJ      Map projection/angles/margins     rad
+ SATFIL    Satellite image filename(s)       
+ RADFIL    Radar image filename(s)           $NIDS/BREF1_960220_2300
+ LATLON    Line color/dash/width/label/inc   0
+ PANEL     Panel loc/color/dash/width/regn   0
+ TITLE     Title color/line/title            0
+ TEXT      Text size/font/width/hw flag      1
+ CLEAR     Clear screen flag                 n
+ DEVICE    Dev|name|X;Y|colormode|plotmode   xw
+ Parameters requested: MAP,GAREA,PROJ,SATFIL,RADFIL,LATLON,PANEL,TITLE,TEXT,
+ CLEAR,DEVICE.
+ GEMPAK-GPMAP>map = 2
+ GEMPAK-GPMAP>proj = sat <IMG ALIGN=CENTER SRC="../images/settheprojection.gif">
+ GEMPAK-GPMAP>satfil = $GEMPAKHOME/data/IR_910819_1801
+ GEMPAK-GPMAP>clear = y
+ GEMPAK-GPMAP>title = 5/-2
+ GEMPAK-GPMAP>$mapfil = hipowo.gsf
+ GEMPAK-GPMAP>r
+
+Creating process: xw for queue 4651
+ GPMAP PARAMETERS:
+ Device:              xw                                             
+ Projection:          sat                                                      
+ Graphics area name:  dset                                                      
+ Map:                 2                                                        
+ Title:               5/-2                                                   
+ Panel:               0                                                        
+ Latlon:              0                                                    
+ Clear:               YES
+Enter <cr> to accept parameters or type EXIT:
+ Parameters requested: MAP,GAREA,PROJ,SATFIL,RADFIL,LATLON,PANEL,TITLE,TEXT,
+ CLEAR,DEVICE.
+ GEMPAK-GPMAP>
+</pre>
+<p>
+<A HREF="../images/gpmap_example2a.gif"><IMG SRC="../images/viewindow.gif"></a>
+<p>
+<h2>2B. Now lets get crazy...</h2>
+<p>
+<pre>
+ GEMPAK-GPMAP>cursor garea <IMG ALIGN=CENTER SRC="../images/getcursorinput.gif">
+</pre>
+<p>
+<h3>After entering the command to get cursor input to GAREA,
+place the mouse at one corner of the desired region, 
+depress and hold the left mouse button while dragging the mouse
+pointer to the opposite corner of the region and release the mouse
+button. This is called <em>Rubber Banding</em> the region.
+<p>
+You should now have a box outlining an area similar to that shown
+in the answer window above.
+<p>
+Now lets look at what is in our GAREA variable!
+<p>
+</h3>
+<pre>
+ GEMPAK-GPMAP>dis garea <IMG ALIGN=CENTER SRC="../images/redisplaysettings.gif">
+ GAREA     Graphics area                     31.6;-84.1;52.7;-49.8
+</pre>
+<p>
+<h3>Great! I wouldn't have wanted to guess those coordinates.
+<p>
+Now lets finish by displaying <em>Region of Interest</em>.
+<p>
+</h3>
+
+<pre>
+ GEMPAK-GPMAP>dev = xw|closeup <IMG ALIGN=CENTER SRC="../images/definewindow.gif">
+ GEMPAK-GPMAP>r
+ GPMAP PARAMETERS:
+ Device:              xw|closeup               
+ Projection:          sat    
+ Graphics area name:  31.6;-84.1;52.7;-49.8    
+ Map:                 2  
+ Title:               5/-2
+ Panel:               0                                         
+ Latlon:              0                                              
+ Clear:               YES
+Enter <cr> to accept parameters or type EXIT:
+ Parameters requested: MAP,GAREA,PROJ,SATFIL,RADFIL,LATLON,PANEL,TITLE,TEXT,
+ CLEAR,DEVICE.
+ GEMPAK-GPMAP>e
+</pre>
+<p>
+<a href="../images/gpmap_example2b.gif"><img alt="view window" src="../images/viewindow.gif"></a>
+
+<h2> <p> <FONT COLOR=#800000>Cool!</font> </h2>
+<p>
+<h3><IMG SRC="../images/warning.gif">Run GPEND when finished to close both windows,
+or you can use GPCLOSE to close just the <em>closeup</em> window.
+</h3>
+<p>
+<img src="../images/bluehorizontaline.gif">
+<pre>
+<a href="../gpmap.html#answer"><img alt="previous page" src="../images/return.gif" BORDER=0>
+</a>
+
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+
+</html>

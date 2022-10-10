@@ -1,0 +1,136 @@
+<!doctype html><head><title>GEMPAK Help: nexr2rhi</title></head><body>
+<a href=../../help_and_documentation>GEMPAK Manual</a> | 
+<a href=../prog/>Programs</a><br><hr>
+<pre>
+NEXR2RHI displays NEXRAD level II vertical cross sections.
+
+INPUT PARAMETERS
+ 
+    <a href=../parm/cxstns.html>CXSTNS</a>    Cross-section station line
+    <a href=../parm/gvcord.html>GVCORD</a>    Grid vertical coordinate
+    <a href=../parm/ptype.html>PTYPE</a>     Plot type/h:w ratio/margins
+    <a href=../parm/yaxis.html>YAXIS</a>     Ystrt/ystop/yinc/lbl;gln;tck
+    <a href=../parm/cint.html>CINT</a>      Contour interval/min/max
+    <a href=../parm/scale.html>SCALE</a>     Scalar scale / vector scale
+    <a href=../parm/line.html>LINE</a>      Color/type/width/label/smth/fltr
+    <a href=../parm/border.html>BORDER</a>    Background color/type/width
+    <a href=../parm/title.html>TITLE</a>     Title color/line/title
+    <a href=../parm/clear.html>CLEAR</a>     Clear screen flag
+    <a href=../parm/device.html>DEVICE</a>    Device|name|x size;y size|color type
+    <a href=../parm/text.html>TEXT</a>      Size/fnt/wdth/brdr/N-rot/just/hw flg
+    <a href=../parm/panel.html>PANEL</a>     Panel loc/color/dash/width/regn
+    <a href=../parm/clrbar.html>CLRBAR</a>    Color/ornt/anch/x;y/ln;wd/freq|text_info
+    <a href=../parm/contur.html>CONTUR</a>    Subbox/smooth
+    <a href=../parm/fint.html>FINT</a>      Fill interval/min/max
+    <a href=../parm/fline.html>FLINE</a>     Fill colors/fill types
+    <a href=../parm/ctype.html>CTYPE</a>     Contour type:  C/F
+    <a href=../parm/radfil.html>RADFIL</a>    Radar image filename(s)
+    <a href=../parm/radtim.html>RADTIM</a>    Radar composite current/dattim
+    <a href=../parm/radparm.html>RADPARM</a>   Radar parameter (dz, vr, sw)
+    <a href=../parm/interp.html>INTERP</a>    Interpolation flag
+ 
+ 
+
+PROGRAM DESCRIPTION
+ 
+   NEXR2RHI displays NEXRAD Level II vertical cross sections for
+   data in ARCHIVE2 format. This program is adopted from GDCROSS to
+   create a volume rendering of NEXRAD data along a specified
+   axis.
+
+   <a href=../parm/radfil.html>RADFIL</a> specifies the input Level II file. A template may be
+   specified, with an optional site name (eg NEXRII|KDDC).
+   If a site name is provided, it will be used to replace the %SITE%
+   alias in the template name. The NEXRII template is provided
+   for ARCHIVE2 format files.
+
+   <a href=../parm/radparm.html>RADPARM</a> is the Radar parameter to be displayed. Valid values are
+   dz (reflectivity), vr (radial velocity), sw (spectrum width).
+
+   <a href=../parm/radtim.html>RADTIM</a> is a valid GEMPAK date/time string or abbreviation. A time
+   range may be specified.
+
+   <a href=../parm/interp.html>INTERP</a> is a logical variable which determines whether interpolation
+   between sweeps will occur.
+
+   <a href=../parm/cxstns.html>CXSTNS</a> is the cross section axis (as in GDCROSS). A grid coordinate
+   can be used with row and colums 1 to 920.
+
+   <a href=../parm/gvcord.html>GVCORD</a> is the vertical coordinate of the radar data (always HGHT).
+
+   <a href=../parm/ptype.html>PTYPE</a> is the plot type. A value of "LIN" is generally the only
+   useful setting.
+
+   Other parameters as in GDCROSS.
+
+ 
+EXAMPLES
+ 
+    1. Display an East-West RHI which passes through the radar location
+    for reflectivity data from KLVX. Display the RHI from 0 to 20KM
+    using color filled contours. Use a contour interval of 4 dBZ
+    with a minimum value of -12 dBZ. Grid point 460;460 is the radar center.
+    Interpolate contours between beam scans.
+
+    <a href=../parm/cxstns.html>CXSTNS</a>   = @1;460>@920;460
+    <a href=../parm/gvcord.html>GVCORD</a>   = hght
+    <a href=../parm/ptype.html>PTYPE</a>    = lin
+    <a href=../parm/yaxis.html>YAXIS</a>    = 0/20000
+    <a href=../parm/cint.html>CINT</a>     = 0
+    <a href=../parm/scale.html>SCALE</a>    = 0
+    <a href=../parm/line.html>LINE</a>     = 1
+    <a href=../parm/border.html>BORDER</a>   = 1
+    <a href=../parm/title.html>TITLE</a>    = 1/-2/RHI Base Reflectivity Level II ^
+    <a href=../parm/clear.html>CLEAR</a>    = YES
+    <a href=../parm/device.html>DEVICE</a>   = xw
+    <a href=../parm/text.html>TEXT</a>     = .8/1/1/111/hw
+    <a href=../parm/panel.html>PANEL</a>    = 0
+    <a href=../parm/clrbar.html>CLRBAR</a>   = 1
+    <a href=../parm/contur.html>CONTUR</a>   = 3/2
+    <a href=../parm/fint.html>FINT</a>     = 4
+    <a href=../parm/fline.html>FLINE</a>    = 0;30-7
+    <a href=../parm/ctype.html>CTYPE</a>    = f
+    <a href=../parm/radfil.html>RADFIL</a>   = NEXRII|KLVX
+    <a href=../parm/radparm.html>RADPARM</a>  = dz
+    <a href=../parm/radtim.html>RADTIM</a>   = last
+    <a href=../parm/interp.html>INTERP</a>   = y
+
+    2. Display a cross section of radial velocity from 38.6N;86.8W to
+    37.4N;84.8W. Plot filled contours at 4 m/s intervals. Display data
+    from 0 to 20km. Allow interpolation between beam scans. Use
+    line countours, with negative values contoured by a dotted line,
+    positive values contoured with a solid line.
+
+    <a href=../parm/cxstns.html>CXSTNS</a>   = 38.6;-86.8>37.4;-84.8
+    <a href=../parm/gvcord.html>GVCORD</a>   = hght
+    <a href=../parm/ptype.html>PTYPE</a>    = lin
+    <a href=../parm/yaxis.html>YAXIS</a>    = 0/20000
+    <a href=../parm/cint.html>CINT</a>     = 4
+    <a href=../parm/scale.html>SCALE</a>    = 0
+    <a href=../parm/line.html>LINE</a>     = 5/-10
+    <a href=../parm/border.html>BORDER</a>   = 1
+    <a href=../parm/title.html>TITLE</a>    = 1/-2/RHI Radial Velocity Level II ^
+    <a href=../parm/clear.html>CLEAR</a>    = YES
+    <a href=../parm/device.html>DEVICE</a>   = xw
+    <a href=../parm/text.html>TEXT</a>     = .8/1/1/111/hw
+    <a href=../parm/panel.html>PANEL</a>    = 0
+    <a href=../parm/clrbar.html>CLRBAR</a>   =
+    <a href=../parm/contur.html>CONTUR</a>   = 3/2
+    <a href=../parm/fint.html>FINT</a>     =
+    <a href=../parm/fline.html>FLINE</a>    =
+    <a href=../parm/ctype.html>CTYPE</a>    = c
+    <a href=../parm/radfil.html>RADFIL</a>   = NEXRII|KLVX
+    <a href=../parm/radparm.html>RADPARM</a>  = vr
+    <a href=../parm/radtim.html>RADTIM</a>   = last
+    <a href=../parm/interp.html>INTERP</a>   = y
+
+
+ERROR MESSAGES
+ 
+    [NEXR2RHI  -1]  Fatal error initializing TAE.
+    [NEXR2RHI  -2]  Fatal error reading TAE parameters.
+    [NEXR2RHI  -3]  Fatal error initializing GEMPLT.
+</pre>
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

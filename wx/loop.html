@@ -1,0 +1,55 @@
+        <script type="text/javascript">
+        //<![CDATA[
+            <!--
+            var nframes = 16;
+            var timeOn = 0;
+            var timer;
+            var i = 0;
+	    var j = 0;
+            var imgLoop = new Array();
+	    var fhr = 0;
+	    var sfhr = "";
+            for (j=0;j<nframes;j++) {
+               fhr = ( j + 1 ) * 3 ;
+	       sfhr = "" + fhr + "";
+	       if (fhr < 10) {
+		  sfhr = "0" + fhr;
+	       }
+	       imgLoop[j] = "http://www.unidata.ucar.edu/software/gempak/wx/prcp_" + sfhr + ".gif";
+            }
+
+	    /*
+            imgLoop[0] = "http://www.unidata.ucar.edu/software/gempak/wx/prcp_03.gif";
+            imgLoop[1] = "http://www.unidata.ucar.edu/software/gempak/wx/prcp_06.gif";
+            imgLoop[2] = "http://www.unidata.ucar.edu/software/gempak/wx/prcp_09.gif";
+            imgLoop[3] = "http://www.unidata.ucar.edu/software/gempak/wx/prcp_12.gif";
+            */
+
+            function Play() {
+                if (!timeOn) {
+                    timerOn = 1;
+                    Loop(); 
+                }
+            }
+
+            function Loop() {
+                var img = document.getElementById('img1');
+                img.src = imgLoop[i];
+                i++;
+                if (i == nframes) {    
+                    i = 0;   
+                }    
+                timer = setTimeout("Loop()", 100);
+            }
+
+            function Stop() {
+                clearTimeout(timer);
+                timerOn = 0;
+            }
+            //-->
+        //]]>
+        </script>
+
+        <input type="button" value="Play" onclick="Play()" />
+        <input type="button" value="Stop" onclick="Stop()" /><br />
+        <img src="" id="img1" alt="imageloop" width="900" height="675"/>

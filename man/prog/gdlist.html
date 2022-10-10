@@ -1,0 +1,77 @@
+<!doctype html><head><title>GEMPAK Help: gdlist</title></head><body>
+<a href=../../help_and_documentation>GEMPAK Manual</a> | 
+<a href=../prog/>Programs</a><br><hr>
+<pre>
+GDLIST lists data from a scalar grid.
+
+INPUT PARAMETERS
+ 
+    <a href=../parm/gdattim.html>GDATTIM</a>   Grid date/time
+    <a href=../parm/glevel.html>GLEVEL</a>    Grid level
+    <a href=../parm/gvcord.html>GVCORD</a>    Grid vertical coordinate
+    <a href=../parm/gfunc.html>GFUNC</a>     Scalar grid
+    <a href=../parm/gdfile.html>GDFILE</a>    Grid file
+    <a href=../parm/garea.html>GAREA</a>     Graphics area
+    <a href=../parm/proj.html>PROJ</a>      Map projection/angles/margins|drop flag
+    <a href=../parm/scale.html>SCALE</a>     Scalar scale / vector scale
+    <a href=../parm/output.html>OUTPUT</a>    Output device/filename
+ 
+ 
+
+PROGRAM DESCRIPTION
+ 
+    GDLIST lists a diagnostic grid computed from the grids in a
+    GEMPAK grid file.
+
+    The data may be listed over a subgrid.  The variables <a href=../parm/garea.html>GAREA</a>
+    and <a href=../parm/proj.html>PROJ</a> specify the data subset area.  This area is only
+    approximate; the subgrid selected will cover the subset area.
+    <a href=../parm/garea.html>GAREA</a> must be specified as a geographic area, as an area
+    centered on a station, as latitude/longitude bounds or as
+    DSET or GRID.  If DSET or GRID is chosen, the entire grid
+    will be printed.
+
+    Output to the terminal or to a file will be 80 columns wide.
+    If the output is sent to a file, the file will be named
+    gdlist.fil if no name is specified.
+
+ 
+EXAMPLES
+ 
+    1.	List the 850 mb dewpoint temperature for the 24 hour
+ 	forecast time.  The data subset area is a zoomed area
+	centered on New York.
+
+	<a href=../parm/gdattim.html>GDATTIM</a>	 =  /f24
+	<a href=../parm/glevel.html>GLEVEL</a>	 =  850
+	<a href=../parm/gvcord.html>GVCORD</a>	 =  PRES
+	<a href=../parm/gfunc.html>GFUNC</a>	 =  dwpc
+	<a href=../parm/gdfile.html>GDFILE</a>	 =  $GEMPAK/data/HRCBOB.GRD
+	<a href=../parm/garea.html>GAREA</a>	 =  ny*
+	<a href=../parm/proj.html>PROJ</a>	 =  lcc
+	<a href=../parm/scale.html>SCALE</a>	 =  999
+	<a href=../parm/output.html>OUTPUT</a>	 =  T
+
+    2.	Compute the divergence at 300 mb and list the output
+	over the Eastern US.  Write the output to a file
+	called div.east.
+
+	<a href=../parm/gdattim.html>GDATTIM</a>	 =  /f24
+	<a href=../parm/glevel.html>GLEVEL</a>	 =  300
+	<a href=../parm/gvcord.html>GVCORD</a>	 =  PRES
+	<a href=../parm/gfunc.html>GFUNC</a>	 =  div(wnd)
+	<a href=../parm/gdfile.html>GDFILE</a>	 =  $GEMPAK/data/HRCBOB.GRD
+	<a href=../parm/garea.html>GAREA</a>	 =  east
+	<a href=../parm/proj.html>PROJ</a>	 =  lcc
+	<a href=../parm/scale.html>SCALE</a>	 =  999
+	<a href=../parm/output.html>OUTPUT</a>	 =  f/div.east
+
+ERROR MESSAGES
+ 
+    [GDLIST  +2]    WARNING:  ... not found.  CONTINUING---
+    [GDLIST  -1]    Fatal error initializing TAE.
+    [GDLIST  -2]    Fatal error reading TAE parameters.
+</pre>
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

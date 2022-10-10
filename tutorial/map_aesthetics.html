@@ -1,0 +1,202 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="md.css" type="text/css">
+
+<title>6. Map Aesthetics</title>
+
+</head>
+<body>
+<blockquote><p><a href=/gempak/tutorial/>GEMPAK Online Tutorial</a></p></blockquote>
+
+<h1>6. Map Aesthetics</h1>
+
+<p><a name="6.1"></a></p>
+
+<h2>Colors</h2>
+
+<p>Each of the parameters you select will be given a color corresponding this color list.</p>
+
+<pre><code>sfparm = tmpk;relh;wsym;dwpf
+colors = 1;2;3;4
+</code></pre>
+
+<p><code>TMPK</code> will be color 1 (vanilla), <code>RELH</code> will be color 2 (red), <code>WSYM</code> will be color 3 (green), <code>DWPF</code> will be color 4 (blue)</p>
+
+<p><strong>By Range</strong>: First-last-increment</p>
+
+<pre><code>colors = 1-31-5
+</code></pre>
+
+<p>This would give colors 1-35 in increments of five (1,6,11,16,21,26,31)</p>
+
+<p>Colors will repeat when all have been matched to a parameter.
+Color zero will not plot the parameter.
+Blank input defaults to color 1.</p>
+
+<p><strong>By Parameter Value</strong>:</p>
+
+<p>Color-coding of any parameter may be done based on its own value or on the value of any other computable parameter. There is a one-to- one correspondence between the elements in the color list and the elements in the parameter list (e.g., <code>SFPARM</code>). To color-code any parameter, replace its corresponding color number in the <code>COLORS</code> list with the form:</p>
+
+<pre><code>    (v1;v2;...;vN-1/c1;c2;...;cN/PARM/E)   or
+    (v1-vN-1-vInc/c1-cN-cInc/PARM/E)       or
+    a combination of a list and a range
+</code></pre>
+
+<p>where the v's are parameter values, the c's are color numbers, and <code>PARM</code> is the parameter whose value determines the color. If <code>PARM</code> is omitted, the parameter will be color-coded based on its own value. The number of values must be one less than the number of colors. If a value range is used, an increment must be specified. If a color range is used and no increment is specified, 1 is assumed. For example, to color-code a marker based on the 3-hour flash flood guidance value, the color element corresponding to the parameter <code>MARK</code> could be specified as:</p>
+
+<pre><code>    COLORS = (0.5;1;1.5;2;3/2;19;21;22;6;4/FF03)
+    or
+    COLORS = (50;60;70;80/2;3;4;5;6/TMPF)
+    or
+    COLORS = (20-95-5/30-14//U)
+</code></pre>
+
+<p>meaning that values less than or equal to .5 inch would be plotted with color 2, values greater than .5 but less than or equal to 1 would be plotted with color 19, etc. The E is a flag to indicate whether to include the break value with the lower range or the upper range of values. Valid values are L and U, respectively. The default is L for inclusion in the lower range of values. In the above example, the first data range is X &lt;= 0.5, the second is 0.5 &lt; X &lt;= 1.0, etc. If the U flag is added, the ranges change to X &lt; 0.5, 0.5 &lt;= X &lt; 1.0, etc.</p>
+
+<p><a name="6.2"></a></p>
+
+<h2>Color Enhancement</h2>
+
+<h3>Enhancement Tables</h3>
+
+<p>Enhancement tables are found under the directory <code>$GEMTBL/luts</code>.</p>
+
+<p>Several predefined color tables are provided with the GEMPAK, and can be used within GEMPAK programs by using the <code>LUTFIL</code> variable.</p>
+
+<p>Additionally, the enhancement can be changed after a mapping program has been run with the look up table command at the program prompt, ie:</p>
+
+<pre><code>LUT enhancement.tbl
+</code></pre>
+
+<p>Where <code>enhancement</code> is the name of the file. The default enhancement used for each image type is defined in the file <code>IMGTYP.TBL</code>. To select a different default enhancement for a given satellite image, simply enter a new enhancement name under the DEFAULT LUT FILE column.</p>
+
+<h3>Adding New Enhancement Tables</h3>
+
+<p>If you want to add new enhancement tables of your own, be sure to follow the format of one of the existing files. Location of RGB values is dependent on column location. When new enhancements are created, you will need to add the name to the <code>$GEMTBL/luts/enhance.tbl</code> file. Note that the enhancement names must end with the <code>.tbl</code> extension.</p>
+
+<p><a name="6.3"></a></p>
+
+<h2>Exercise #8 (Temperature Color Map)</h2>
+
+<p>Plot an IR image from this morning for the continental United States with temperature (F) observations overlayed, colored according to value (see above).
+Some notes:</p>
+
+<p>You'll be plotting obs on top of an image with <code>SFMAP</code>:</p>
+
+<pre><code>AREA     = us-
+GAREA    = 20;-120;55;-60
+SATFIL   = $SAT/GOES-13/4km/IR/IR_20121104_1800
+RADFIL   =  
+IMCBAR   =  
+SFPARM   = TMPF
+DATTIM   = 1800
+SFFILE   = metar
+COLORS   = (20-95-5/30-14//U)
+MAP      = 31
+MSCALE   = 0
+LATLON   = 0
+TITLE    = 1
+CLEAR    = y
+PANEL    = 0
+DEVICE   = xw
+PROJ     = sat
+FILTER   = y
+TEXT     = 1//2
+LUTFIL   =  
+STNPLT   =  
+CLRBAR   = 1
+LSTPRM   =  
+GEMPAK-SFMAP&gt;r
+</code></pre>
+
+<p><img src="color_temp.gif" alt="image" /></p>
+
+<p><a name="6.4"></a></p>
+
+<h2>Device Drivers</h2>
+
+<p>Device drivers translate the graphics commands generated by GEMPLT into format specific commands for each output device.
+The following device drivers are currently supported by GEMPAK:</p>
+
+<pre><code>XW   : X Windows terminal
+PS   : Generalized PostScript
+GF   : GIF format (uses X11 window)
+GIF  : GIF format (rendered in software)
+NC   : NTRANS CGM
+VG   : Vector Graphics (N-AWIPS Product Generation)
+TIFF : TIFF file
+RBK  : AWIPS RedBook Graphics
+</code></pre>
+
+<h3>Device-Specific Notes</h3>
+
+<ol>
+<li><p>XW - X windows are by far the most popular format for displaying graphics on workstations. The portability in display features provides the user with the ability to design displays that can be viewed locally, or to any other display console which provides display access to the computer initiating the output. As a result, distributed processing of data sets is possible.</p>
+
+<p> The XW device is capable of dumping the contents of the current frame to a GIF file by using the GSAVE [NAME] command at the GEMPAK prompt.</p></li>
+<li><p>PS - Postscript output is generally used for hardcopy devices. The attractive feature about Postscript is that the graphics are independent of the resolution of the hardware which generates the image. This is because the graphics commands use vectors to define graphics primatives. Ultimately, the resolution of the image is determined by the printer or other output device which is typically a much higher resolution device than the workstation console.</p>
+
+<p> The PS driver now supports image types as well.</p></li>
+<li><p>GF - GIF format graphics files are one of the most popular forms for storing and transporting image information due to the widely accepted standard, and their relatively efficient use of data compression. GIF images are raster data, and therefore are limited by the resolution of the hardware on which they are generated. These images are typically used for console display, but are less attractive for hardcopy output.</p></li>
+<li><p>GIF - The standard GF driver utilizes the X display to generate its graphics output, as well as to obtain hardware fonts. GIF provides for GIF file generation without connecting to an X server. All fonts will be rendered in software.</p></li>
+<li><p>NC - NTRANS CGM driver for creating META files for use with the NTRANS viewing Software.</p></li>
+</ol>
+
+
+<h3>DEVICE Definitions</h3>
+
+<p>The <code>DEVICE</code> definition in GEMPAK programs utilizes the following format:</p>
+
+<pre><code>DEVICE = device | name | X ; Y-size | color-type
+</code></pre>
+
+<ol>
+<li><p>NAME</p>
+
+<ul>
+<li>In the XW driver, NAME specifies the window to be used. Up to 5 windows may be opened. The default window name is "GEMPAK".</li>
+<li>For the NC, GF and PS drivers, NAME is the output filename. For the NC driver, if the file already exists, subsequent plots (frames) will be appended to the end of the file unless the name specified is the default name ("Nmeta"), in which case a new file is always created. The PS driver will always overwrite an existing file (if it exists) when it starts up. The default file for the PS driver is <code>ps.plt</code>. The gif driver GF default output file is <code>gempak.gif</code>. If the file <code>gempak.gif</code> already exists, then a sequence number is appended, so that the next file written is <code>gempak.gif.1</code>. This is useful when generating multiple gif images from the same application.</li>
+</ul>
+</li>
+<li><p>X ; Y-size</p>
+
+<ul>
+<li>X and Y are the device dimensions. For XW, xsize and ysize may be (1) the number of pixels in the corresponding direction, or (2) a percentage of the screen size. In the PS driver, xsize and ysize are the paper dimensions in inches. If xsize is greater than ysize, then a landscape orientation is used. For xsize less than ysize, the plot orientation is portrait.</li>
+</ul>
+
+
+<p> If xsize and ysize are not specified the following defaults will be used:</p>
+
+<ul>
+<li>XW .7;.7 (70 percent of the screen size)</li>
+<li>PS 11;8.5 (Standard letter size paper in landscape)</li>
+<li>Xsize and ysize are not currently used by the NC driver.</li>
+</ul>
+</li>
+<li><p>CMODE</p>
+
+<ul>
+<li><p>CMODE is the color mode for the device. It is only used by the PS driver. Possible values are:</p>
+
+<pre><code>  M : Monochrome (one color - black)
+  G : Gray scales, 20
+  C : 32 colors
+</code></pre></li>
+</ul>
+</li>
+</ol>
+
+
+<p>The default is <code>M</code>.</p>
+
+<p>Not all options are valid for all devices.</p>
+
+<p><img src="warning.gif" width=30 align=left> It is very important that you run <code>GPEND</code> when you are finished generating your output files. Otherwise, the "End of File" message won't get written to the files. Without the "End of File" message, you will be unable to view or print your picture.</p>
+
+<blockquote><p><a href=/gempak/tutorial/>GEMPAK Online Tutorial</a> | <a href="gridded_data_mapping.html">Next: Gridded Data Mapping</a></p></blockquote>
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

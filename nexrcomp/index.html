@@ -1,0 +1,73 @@
+<HTML><HEAD><TITLE>GEMPAK NEXRCOMP Products</TITLE>
+<META NAME="BOOKMARK" CONTENT="GEMPAK NEXRCOMP Products">
+<META NAME="AUTHOR" CONTENT="Steve Chiswell">
+<META NAME="KEYWORDS" CONTENT="Software, GEMPAK, Examples, NEXRCOMP">
+<META NAME="DESCRIPTION" CONTENT="GEMPAK NEXRCOMP Products.">
+<link rel="stylesheet" href="../tutorial/md.css" type="text/css" media="screen, handheld" />
+</HEAD><BODY>
+<h1>Unidata FNEXRAD Products</h1>
+
+<p>
+The FNEXRAD data feed distributes national composite images (most are 1 km resolution) for various NEXRAD level 3 products.  While only the N0R base reflectivity product has been made available as grib2, Unidata is considering adding more products in both grib2 and GINI format (<a href="#upcoming">see bottom of page</a>). The images shown below side-by-side compare GINI products with gridded products.
+</p>
+
+
+<h3>DHR - Digital Hybrid Reflectivity</h3>
+<ul>
+<li>Pattern Action: <pre>FNEXRAD ^rad/NEXRCOMP/1km/dhr_(........)_(....)
+        FILE    -close  data/gempak/images/sat/NEXRCOMP/1km/dhr/dhr_\1_\2</pre>
+</li></ul>
+<a href=dhr1km.gif><img style="width:445px; padding:2px;" src=dhr1km.gif></a><a href=dhr-grid.gif><img style="width:445px; padding:2px;" src=dhr-grid.gif></a><br><br>
+<h3>DVL - Digital Vertically Integrated Liquid</h3>
+<ul>
+<li>Pattern Action: <pre>FNEXRAD ^rad/NEXRCOMP/1km/dvl_(........)_(....)
+        FILE    -close  data/gempak/images/sat/NEXRCOMP/1km/dvl/dvl_\1_\2</pre>
+</li></ul>
+<a href=dvl1km.gif><img style="width:445px; padding:2px;" src=dvl1km.gif></a><a href=dvl-grid.gif><img style="width:445px; padding:2px;" src=dvl-grid.gif></a><br><br>
+<h3>EET - Enhanced Echo Tops</h3>
+<ul>
+<li>Pattern Action: <pre>FNEXRAD ^rad/NEXRCOMP/1km/eet_(........)_(....)
+        FILE    -close  data/gempak/images/sat/NEXRCOMP/1km/eet/eet_\1_\2</pre>
+</li></ul>
+<a href=eet1km.gif><img style="width:445px; padding:2px;" src=eet1km.gif></a><a href=eet-grid.gif><img style="width:445px; padding:2px;" src=eet-grid.gif></a><br><br>
+<h3>HHC - Hybrid Hydrometeor Classification</h3>
+<ul>
+<li>Pattern Action: <pre>FNEXRAD ^rad/NEXRCOMP/1km/hhc_(........)_(....)
+        FILE    -close  data/gempak/images/sat/NEXRCOMP/1km/hhc/hhc_\1_\2</pre>
+</li></ul>
+<img style="width:445px; padding:2px;" src=hhc1km.gif><br><br>
+<h3>N0R - Base Reflectivity</h3>
+<ul>
+<li>Pattern Action: <pre>FNEXRAD ^rad/NEXRCOMP/1km/n0r_(........)_(....)
+        FILE    -close  data/gempak/images/sat/NEXRCOMP/1km/n0r/n0r_\1_\2</pre>
+</li></ul>
+<a href=n0r1km.gif><img style="width:445px; padding:2px;" src=n0r1km.gif></a><a href=n0r-grid.gif><img style="width:445px; padding:2px;" src=n0r-grid.gif></a><br><br>
+<h3>N1P - One Hour Precipiation</h3>
+<ul>
+<li>Pattern Action: <pre>FNEXRAD ^rad/NEXRCOMP/2km/n1p_(........)_(....)
+        FILE    -close  data/gempak/images/sat/NEXRCOMP/2km/n1p/n1p_\1_\2</pre>
+</li></ul>
+<a href=n1p2km.gif><img style="width:445px; padding:2px;" src=n1p2km.gif></a><a href=n1p-grid.gif><img style="width:445px; padding:2px;" src=n1p-grid.gif></a><br><br>
+<h3>NTP - Storm Total Precipitation</h3>
+<ul>
+<li>Pattern Action: <pre>FNEXRAD ^rad/NEXRCOMP/4km/ntp_(........)_(....)
+        FILE    -close  data/gempak/images/sat/NEXRCOMP/4km/ntp/ntp_\1_\2</pre>
+</li></ul>
+<a href=ntp4km.gif><img style="width:445px; padding:2px;" src=ntp4km.gif></a><a href=ntp-grid.gif><img style="width:445px; padding:2px;" src=ntp-grid.gif></a><br><br>
+<br><br>
+<a name="upcoming"></a>
+<h1>Future Composite Products on FNEXRAD</h1>
+<h3>OHA - One Hour Precipiation Accumulation</h3>
+<a href=oha1km.gif><img style="width:445px; padding:2px;" src=oha1km.gif></a><a href=oha-grid.gif><img style="width:445px; padding:2px;" src=oha-grid.gif></a><br><br>
+
+<h3>DAA - One Hour Digital Accumulation Array</h3>
+<a href=daa1km.gif><img style="width:445px; padding:2px;" src=daa1km.gif></a><a href=daa-grid.gif><img style="width:445px; padding:2px;" src=daa-grid.gif></a><br><br>
+<h3>DTA - Digital Storm Total Precipiation</h3>
+<a href=dta1km.gif><img style="width:445px; padding:2px;" src=dta1km.gif></a><a href=dta-grid.gif><img style="width:445px; padding:2px;" src=dta-grid.gif></a><br><br>
+
+
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+
+</BODY>
+</HTML>
+

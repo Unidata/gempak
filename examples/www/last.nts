@@ -1,0 +1,19 @@
+AREA    us                                                                      
+GAREA   bjc*                                                                    
+SATFIL                                                                          
+RADFIL                                                                          
+SFPARM  SKYC;TMPF;WSYM;PMSL;;DWPF;BRBK;stid                                     
+DATTIM  LAST                                                                    
+SFFILE  /var/data/ldm/gempak/surface/sao/960202.gem                             
+COLORS  1                                                                       
+MAP     1                                                                       
+LATLON  0                                                                       
+MARKER  0                                                                       
+TITLE   1                                                                       
+CLEAR   YES                                                                     
+PANEL   0                                                                       
+DEVICE  XW                                                                      
+PROJ    MER                                                                     
+FILTER  n                                                                       
+TEXT    1                                                                       
+SKPMIS  NO                                                                      

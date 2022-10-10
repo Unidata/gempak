@@ -1,0 +1,213 @@
+<html>
+<head>
+<title>GEMPAK Grid Inventory</title>
+<script src='https://code.jquery.com/jquery-1.11.1.min.js'></script>
+<script src='../jquery.dynatable.js'></script>
+<script src='../bootstrap.min.js'></script>
+<script src='gempak-models.json'></script>
+<link rel="stylesheet" href="../jquery.dynatable.css">
+<link rel="stylesheet" href="../tutorial/md.css">
+<script>
+$(function(){
+  console.log("ready");
+  $('.grids').click(function(){
+    var uniqueGrids=this.id.replace("-unique","");
+    //this.expand = !this.expand;
+    //$(this).text(this.expand?"Click to collapse":"Click to read more");
+    $("#" + uniqueGrids).toggleClass('small big');
+    return false;
+  });
+ /*
+  $(".grids").click(function(){
+    console.log($(this).id);
+    return false;
+  });
+  */
+});
+</script>
+<style>
+.small { display:none; }
+.big { display:block; }
+</style>
+</head><body>
+<a name=ross-beardmore><h2> AMPS Ross-Beardmore 10 km</h2></a>
+<b>Alias</b>: <code>AMPSRB</code><br><b>Default Filename</b>: <code>$MODEL/amps/YYYYMMDDHH_ross-beardmore.gem</code>
+<table><tr>
+<th>World CED Projection</th>
+<th>Default Grid Projection</th>
+</tr><tr><td>
+<a href=/gempak/grids/gd_ross-beardmore.gif><img width=450 border=0 src=/gempak/grids/gd_ross-beardmore.gif></a>
+</td><td>
+<a href=/gempak/grids/dset_gd_ross-beardmore.gif><img width=450 src=/gempak/grids/dset_gd_ross-beardmore.gif></a>
+</td></tr></table>
+<pre>
+ GRID FILE: /data/ldm/gempak/model/amps/2015032400_ross-beardmore.gem                                           
+ GRID NAVIGATION: 
+     PROJECTION:          STR                 
+     ANGLES:               -90.0   180.0     0.0
+     GRID SIZE:              537     825
+     LL CORNER:           -80.5820   59.9040
+     UR CORNER:           -67.9930 -157.9915
+ Number of grids in file:  5000
+ Maximum number of grids in file:   5000
+</pre><h3>Available Times</h3><pre> F000 F001 F002 F003 F004 F005 F006 F007 F008 F009 F010 F011 F012 F013 F014 F015 F016 F017 F018 F019 F020 F021 F022 F023 F024 F025 F026 F027 F028 F029 F030 F031 F032 F033 F034
+</pre><h3><a href="#" class="grids" id="_ross-beardmore-unique">151 Unique Grids</a></h3>
+<div class=small id="_ross-beardmore"><pre>
+ LEVL1 LEVL2  VCORD PARM 
+     0  10     DPTH TMPK        
+     0         CLDL HGHT        
+     0         NONE ALBD        
+     0         NONE FXLH        
+     0         NONE FXSH        
+     0         NONE HGHT        
+     0         NONE ICE         
+     0         NONE LAND        
+     0         NONE P00M        
+     0         NONE P01M        
+     0         NONE P02M        
+     0         NONE P03M        
+     0         NONE PMSL        
+     0         NONE PRES        
+     0         NONE TMPK        
+  1000         PRES HGHT        
+  1000         PRES MIXR        
+  1000         PRES RELH        
+  1000         PRES TMPK        
+  1000         PRES UREL        
+  1000         PRES VREL        
+   100  200    DPTH TMPK        
+   100         PRES HGHT        
+   100         PRES MIXR        
+   100         PRES RELH        
+   100         PRES TMPK        
+   100         PRES UREL        
+   100         PRES VREL        
+    10  40     DPTH TMPK        
+    10         HGHT UREL        
+    10         HGHT VREL        
+   150         HGHT UREL        
+   150         HGHT VREL        
+   150         PRES HGHT        
+   150         PRES MIXR        
+   150         PRES RELH        
+   150         PRES TMPK        
+   150         PRES UREL        
+   150         PRES VREL        
+     1         NONE PWTR        
+   200         PRES HGHT        
+   200         PRES MIXR        
+   200         PRES RELH        
+   200         PRES TMPK        
+   200         PRES UREL        
+   200         PRES VREL        
+    20         PRES HGHT        
+    20         PRES MIXR        
+    20         PRES TMPK        
+    20         PRES UREL        
+    20         PRES VREL        
+   250         PRES HGHT        
+   250         PRES MIXR        
+   250         PRES RELH        
+   250         PRES TMPK        
+   250         PRES UREL        
+   250         PRES VREL        
+     2         HGHT MIXR        
+     2         HGHT RELH        
+     2         HGHT TMPK        
+   300         HGHT UREL        
+   300         HGHT VREL        
+   300         PRES HGHT        
+   300         PRES MIXR        
+   300         PRES RELH        
+   300         PRES TMPK        
+   300         PRES UREL        
+   300         PRES VREL        
+    30         PRES HGHT        
+    30         PRES MIXR        
+    30         PRES TMPK        
+    30         PRES UREL        
+    30         PRES VREL        
+   400         PRES HGHT        
+   400         PRES MIXR        
+   400         PRES RELH        
+   400         PRES TMPK        
+   400         PRES UREL        
+   400         PRES VREL        
+    40  100    DPTH TMPK        
+   500         PRES HGHT        
+   500         PRES MIXR        
+   500         PRES RELH        
+   500         PRES TMPK        
+   500         PRES UREL        
+   500         PRES VREL        
+   500         PRES VVEL        
+    50         PRES HGHT        
+    50         PRES MIXR        
+    50         PRES TMPK        
+    50         PRES UREL        
+    50         PRES VREL        
+   600         PRES HGHT        
+   600         PRES MIXR        
+   600         PRES RELH        
+   600         PRES TMPK        
+   600         PRES UREL        
+   600         PRES VREL        
+   700         PRES HGHT        
+   700         PRES MIXR        
+   700         PRES RELH        
+   700         PRES TMPK        
+   700         PRES UREL        
+   700         PRES VREL        
+    70         PRES HGHT        
+    70         PRES MIXR        
+    70         PRES TMPK        
+    70         PRES UREL        
+    70         PRES VREL        
+   800         PRES HGHT        
+   800         PRES MIXR        
+   800         PRES RELH        
+   800         PRES TMPK        
+   800         PRES UREL        
+   800         PRES VREL        
+   850         PRES HGHT        
+   850         PRES MIXR        
+   850         PRES RELH        
+   850         PRES TMPK        
+   850         PRES UREL        
+   850         PRES VREL        
+   875         PRES HGHT        
+   875         PRES MIXR        
+   875         PRES RELH        
+   875         PRES TMPK        
+   875         PRES UREL        
+   875         PRES VREL        
+   900         PRES HGHT        
+   900         PRES MIXR        
+   900         PRES RELH        
+   900         PRES TMPK        
+   900         PRES UREL        
+   900         PRES VREL        
+   925         PRES HGHT        
+   925         PRES MIXR        
+   925         PRES RELH        
+   925         PRES TMPK        
+   925         PRES UREL        
+   925         PRES VREL        
+   950         PRES HGHT        
+   950         PRES MIXR        
+   950         PRES RELH        
+   950         PRES TMPK        
+   950         PRES UREL        
+   950         PRES VREL        
+   975         PRES HGHT        
+   975         PRES MIXR        
+   975         PRES RELH        
+   975         PRES TMPK        
+   975         PRES UREL        
+   975         PRES VREL        
+ LEVL1 LEVL2  VCORD PARM 
+</pre></div>
+
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

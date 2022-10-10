@@ -1,0 +1,507 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="md.css" type="text/css">
+
+<title>7. Gridded Data Mapping</title>
+
+</head>
+<body>
+<blockquote><p><a href=/gempak/tutorial/>GEMPAK Online Tutorial</a></p></blockquote>
+
+<h1>7. Gridded Data Mapping</h1>
+
+<p>Gridded data may be obtained from numerical model output, or by performing objective analysis on surface or sounding data sets using the OA programs. For now, we will deal with data that is already in gridded form. Later we will see what goes in to converting surface and upper air data into grid files, and learn about the various models available for ingest via the LDM.</p>
+
+<p><a name="7.1"></a></p>
+
+<h2>Grid Data Types</h2>
+
+<p>Gridded data assumes one of two forms:</p>
+
+<ol>
+<li><strong>Scalar data</strong> - possess only magnitude (handled by the program <code>gdcntr</code>)</li>
+<li><strong>Vector data</strong> - comprised of both magnitude and direction (handled by <code>gdstream</code> and <code>gdwind</code>)</li>
+</ol>
+
+
+<p>The program <code>gdplot2</code> is designed to handle <strong>both</strong> scalar and vector data.  Think of <code>gdplot2</code> as a combination of the capabilities offered by <code>gdcntr</code>, <code>gdstream</code> and <code>gdwind</code> in one program.</p>
+
+<p>Before we look at the <code>GD</code> plotting programs, we have to familiarize ourselves with a very useful program called <code>gdinfo</code>.</p>
+
+<p><a name="7.2"></a></p>
+
+<h2>GDINFO - Grid Info</h2>
+
+<p><code>gdinfo</code> lists information about the navigation and fields stored within a GEMPAK grid file.</p>
+
+<pre>
+<a href=/gempak/man/parm/gdfile.html">GDFILE</a>    Grid file
+<a href=/gempak/man/parm/lstall.html">LSTALL</a>    Full list flag
+<a href=/gempak/man/parm/output.html">OUTPUT</a>    Output device/filename
+<a href=/gempak/man/parm/gdattim.html">GDATTIM</a>   Grid date/time
+<a href=/gempak/man/parm/glevel.html">GLEVEL</a>    Grid level
+<a href=/gempak/man/parm/gvcord.html">GVCORD</a>    Grid vertical coordinate
+<a href=/gempak/man/parm/gfunc.html">GFUNC</a>     Scalar grid
+</pre>
+
+
+<p>Let's run <code>gdinfo</code> for the first time to load the default Hurricane Bob grid:</p>
+
+<pre><code>gdinfo
+GDFILE    Grid file                         $GEMPAK/data/hrcbob.grd
+LSTALL    Full list flag                    YES
+OUTPUT    Output device/filename            T
+GDATTIM   Grid date/time                    LAST
+GLEVEL    Grid level                        500
+GVCORD    Grid vertical coordinate          PRES
+GFUNC     Scalar grid                       TMPC
+Parameters requested: GDFILE,LSTALL,OUTPUT,GDATTIM,GLEVEL,GVCORD,GFUNC.
+GEMPAK-GDINFO&gt;r
+</code></pre>
+
+<p><a name="7.2.1"></a></p>
+
+<h3>Grid Navigation</h3>
+
+<p>Before listing the requested grids, <code>gdinfo</code> will print out the full pathname of the grid file, the grid navigation, analysis block, and number of grids in the file:</p>
+
+<pre><code> GRID FILE: /Users/gempak/GEMPAK6.7.0/gempak/data/hrcbob.grd                                                    
+
+ GRID NAVIGATION: 
+     PROJECTION:          STR                 
+     ANGLES:                90.0  -105.0     0.0
+     GRID SIZE:           53  45
+     LL CORNER:               7.65   -133.44
+     UR CORNER:              44.29    -23.75
+
+ GRID ANALYSIS BLOCK: 
+     ANALYSIS TYPE:        BARNES
+     DELTAN:               3.750
+     DELTAX:               2.110
+     DELTAY:               0.833
+     GRID AREA:             7.65 -133.44   44.29  -23.75
+     EXTEND AREA:           7.65 -133.44   44.29  -23.75
+     DATA AREA:             7.65 -133.44   44.29  -23.75
+
+ Number of grids in file:   433
+
+ Maximum number of grids in file:    500
+</code></pre>
+
+<p>Un oh, what's this?</p>
+
+<pre><code> [GDU 2]  Did not find any matching grids.
+</code></pre>
+
+<p>This is because <code>gdinfo</code> is looking for grid <code>TMPC</code> at <code>500</code> mb <code>PRES</code> at <code>GDATTIM = last</code>, but this grid can not be found.  Let's set <code>GFUNC = all</code> and <code>GDATTIM = first</code> to see the first grids available:</p>
+
+<pre><code>  NUM       TIME1              TIME2           LEVL1 LEVL2  VCORD PARM
+   33     910819/0000F000                        500         PRES TMPK        
+   34     910819/0000F000                        500         PRES RELH        
+   36     910819/0000F000                        500         PRES HGHT        
+   37     910819/0000F000                        500         PRES OMEG        
+   38     910819/0000F000                        500         PRES UREL        
+   39     910819/0000F000                        500         PRES VREL        
+</code></pre>
+
+<blockquote><p><img src=warning.gif width=30 align=left> Note that if only one parameter is entered, the program searches only for that parameter. In the case above, the grid <code>TMPC</code> was being searched for but not found. <code>gdinfo</code> does <strong>not</strong> perform grid parameter conversions!</p>
+
+<p>If <code>GFUNC = all</code> is entered, the program will match all of the parameters in its search.  Entering several parameters separated by semicolons will match those parameters only.</p></blockquote>
+
+<p>Now that we know what grids are available, we can start plotting the data with <code>gdcntr</code>.</p>
+
+<p><a name="7.3"></a></p>
+
+<h2>Scalar Plotting</h2>
+
+<p><a name="7.3.1"></a></p>
+
+<h3>GDCNTR Input Parameters</h3>
+
+<p><code>gdcntr</code> draws contour lines through a scalar grid computed
+using the GEMPAK grid diagnostic functions.</p>
+
+<pre>
+<a href=/gempak/man/parm/gdattim.html">GDATTIM</a>   Grid date/time
+<a href=/gempak/man/parm/glevel.html">GLEVEL</a>    Grid level
+<a href=/gempak/man/parm/gvcord.html">GVCORD</a>    Grid vertical coordinate
+<a href=/gempak/man/parm/gfunc.html">GFUNC</a>     Scalar grid
+<a href=/gempak/man/parm/gdfile.html">GDFILE</a>    Grid file
+<a href=/gempak/man/parm/cint.html">CINT</a>      Contour interval/min/max
+<a href=/gempak/man/parm/line.html">LINE</a>      Color/type/width/label/smth/fltr/scflg
+<a href=/gempak/man/parm/map.html">MAP</a>       Map color/dash/width/filter flag
+<a href=/gempak/man/parm/mscale.html">MSCALE</a>    fgc;bgc;mask/units/lat;hide/values/anch/x;y/ln;wd/freq|text_info|t
+<a href=/gempak/man/parm/title.html">TITLE</a>     Title color/line/title
+<a href=/gempak/man/parm/device.html">DEVICE</a>    Device|name|x size;y size|color type
+<a href=/gempak/man/parm/satfil.html">SATFIL</a>    Satellite image filename(s)
+<a href=/gempak/man/parm/radfil.html">RADFIL</a>    Radar image filename(s)
+<a href=/gempak/man/parm/imcbar.html">IMCBAR</a>    Color/ornt/anch/x;y/ln;wd/freq
+<a href=/gempak/man/parm/proj.html">PROJ</a>      Map projection/angles/margins|drop flag
+<a href=/gempak/man/parm/garea.html">GAREA</a>     Graphics area
+<a href=/gempak/man/parm/ijskip.html">IJSKIP</a>    Iskp;Istrt;Istp/Jskp;Jstrt;Jstp
+<a href=/gempak/man/parm/clear.html">CLEAR</a>     Clear screen flag
+<a href=/gempak/man/parm/panel.html">PANEL</a>     Panel loc/color/dash/width/regn
+<a href=/gempak/man/parm/text.html">TEXT</a>      Size/fnt/wdth/brdr/N-rot/just/hw flg
+<a href=/gempak/man/parm/scale.html">SCALE</a>     Scalar scale / vector scale
+<a href=/gempak/man/parm/latlon.html">LATLON</a>    Line color/dash/width/freq/inc/label/format
+<a href=/gempak/man/parm/hilo.html">HILO</a>      Color/symbol/rng/rad/cnt/intp
+<a href=/gempak/man/parm/hlsym.html">HLSYM</a>     HILO txt size/posn/font/wdth/hw
+<a href=/gempak/man/parm/clrbar.html">CLRBAR</a>    Color/ornt/anch/x;y/ln;wd/freq|text_info
+<a href=/gempak/man/parm/contur.html">CONTUR</a>    Subbox/smooth
+<a href=/gempak/man/parm/skip.html">SKIP</a>      Skip_cntr/skip_plt_x;skip_plt_y
+<a href=/gempak/man/parm/fint.html">FINT</a>      Fill interval/min/max
+<a href=/gempak/man/parm/fline.html">FLINE</a>     Fill colors/fill types
+<a href=/gempak/man/parm/ctype.html">CTYPE</a>     Contour type:  C/F
+<a href=/gempak/man/parm/lutfil.html">LUTFIL</a>    Enhancement lookup table filename
+<a href=/gempak/man/parm/stnplt.html">STNPLT</a>    Txtc/txt attr|marker attr|stnfil#col
+</pre>
+
+
+<p><a name="7.3.2"></a></p>
+
+<h3>Contouring and Filling</h3>
+
+<p>Contours may be displayed three different ways:</p>
+
+<ol>
+<li><code>CTYPE = c</code> draws contour lines using input from <code>CINT</code> and <code>LINE</code>.</li>
+<li><code>CTYPE = f</code> draws filled contours using input from <code>FINT</code> and <code>FLINE</code>.</li>
+<li><code>CTYPE = f/c</code> draws both contour lines and filled contours.</li>
+</ol>
+
+
+<p><code>CINT</code> specifies the contour interval, minimum value, and maximum value separated with slashes:</p>
+
+<pre><code>CINT = contour interval / minimum / maximum / ndigits
+</code></pre>
+
+<p>Likewise, <code>FINT</code> specified the same intervales, minimum and maximum values for color-filled contours.</p>
+
+<p><a name="7.3.3"></a></p>
+
+<h3>Line Type</h3>
+
+<p><code>LINE</code> is the color, line type, line width, line label freqency, smoothing separated by slashes, and flag to suppress small contours.  The individual values in each group are separated by semicolons:</p>
+
+<pre><code> colr1;..;colrn/type1;..;typen/width1;..;widthn/labl1;..;labln/smth/fltr
+</code></pre>
+
+<p>For example:</p>
+
+<pre><code>    LINE = 1;2 / 7;8 / 4;5 / 2 / 2
+</code></pre>
+
+<p>assigns colors 1 and 2 to alternate lines, dashing patterns 7 and 8 to
+     alternate lines, line widths 4 and 5 to alternate lines, and labels
+     every other line.  Smoothing level 2 is used on all lines.</p>
+
+<blockquote><p><img src=warning.gif width=30 align=left> If any specification is missing, a default of 1 is used, except for smoothing, which defaults to 0, or no smoothing.</p></blockquote>
+
+<p>There are ten distinct line types:</p>
+
+<ol>
+<li>solid</li>
+<li>short dashed</li>
+<li>medium dashed</li>
+<li>long dash short dash</li>
+<li>long dash</li>
+<li>long dash three short dashes</li>
+<li>long dash dot</li>
+<li>long dash three dots</li>
+<li>medium dash dot</li>
+<li>dotted</li>
+</ol>
+
+
+<p><a name="7.3.4"></a></p>
+
+<h3>Exercise #9 (Simple Gridded Contours)</h3>
+
+<p>Use <code>gdcntr</code> to plot 500mb heights for last nights 0000 UTC GFS forecast valid at 1200 UTC this morning, using the standard 60 m contour interval.</p>
+
+<pre><code> GDATTIM  = 0000f12
+ GLEVEL   = 500
+ GVCORD   = pres
+ GFUNC    = hght
+ GDFILE   = gfs
+ CINT     = 60
+ LINE     = 5/1/2
+ MAP      = 1
+ MSCALE   = 0
+ TITLE    = @
+ DEVICE   = xw
+ SATFIL   =  
+ RADFIL   =  
+ IMCBAR   =  
+ PROJ     = STR/90;-100;0
+ GAREA    = us
+ IJSKIP   =  
+ CLEAR    = yes
+ PANEL    = 0
+ TEXT     = 1
+ SCALE    = 999
+ LATLON   =  
+ HILO     =  
+ HLSYM    =  
+ CLRBAR   =  
+ CONTUR   = 3
+ SKIP     = 0
+ FINT     = 0
+ FLINE    = 10-20
+ CTYPE    = C
+ LUTFIL   =  
+ STNPLT   = 
+</code></pre>
+
+<p><img src="gdcntr1.gif" alt="image" /></p>
+
+<p>Now overlay 500mb absolute vorticity ontop of the 500mb map we just plotted.  Remember the check the <code>CLEAR</code> setting so the graphics area isn't cleared before we plot another layer!</p>
+
+<pre><code> CLEAR    = no
+ GFUNC    = avor(wnd)
+ CINT     = 0
+ LINE     = 3/10
+ TITLE    = 1/-2
+</code></pre>
+
+<p><img src="gdcntr2.gif" alt="image" /></p>
+
+<p>Now mark the vorticity centers the old fashioned way, X's for maximas, -'s for minimas, and run again</p>
+
+<pre><code>hilo = 6;6/X;-
+hlsym = 3/2/22/1/hw
+</code></pre>
+
+<p><img src="gdcntr3.gif" alt="image" /></p>
+
+<p><a name="7.3.5"></a></p>
+
+<h3>Exercise #10 (Color-Fill Grid Contours)</h3>
+
+<p>With that we've visualized vorticity advection for this morning's forecast from last night.  But why don't we save some work and have GEMPAK compute vorticity advection itself:</p>
+
+<pre><code>clear = y
+ctype = f
+hilo =
+fline = 0;30-7
+fint = 1/1
+scale = 9                  
+gfunc = adv(avor(wnd),wnd) 
+</code></pre>
+
+<p><img src="gdcntr4.gif" alt="image" /></p>
+
+<p><a name="7.3.6"></a></p>
+
+<h3>GDMAP - Point Data</h3>
+
+<p><code>gdmap</code> plots data computed from GEMPAK grid files on a map.</p>
+
+<pre><code> GDATTIM  = 0000f12
+ GLEVEL   = 500
+ GVCORD   = pres
+ GFUNC    = tmpf
+ GDFILE   = gfs
+ GAREA    = us
+ IJSKIP   = 2
+ COLORS   = 6
+ TITLE    = 1/-2
+ SCALE    =  
+ DEVICE   = xw
+ PROJ     = STR/90;-100;0
+ CLEAR    = y
+ TEXT     = 1
+ GRDLBL   = 0
+</code></pre>
+
+<p><img src="gdmap.gif" alt="image" /></p>
+
+<p><a name="7.4"></a></p>
+
+<h2>Vector Plotting</h2>
+
+<p><a name="7.4.1"></a></p>
+
+<h3>GDWIND - Wind Vectors</h3>
+
+<p><code>gdwind</code> draws wind barbs or arrows at each grid point of a
+vector grid.  Vector plots can be drawn for any vector field
+computed using the GEMPAK grid diagnostic functions.</p>
+
+<p>As an example, plot 300 and 700 mb wind barbs</p>
+
+<pre><code> GDATTIM  = 0000f12
+ GLEVEL   = 300
+ GVCORD   = pres
+ GVECT    = geo
+ GDFILE   = gfs
+ GAREA    = us
+ IJSKIP   = 1
+ SATFIL   =  
+ RADFIL   =  
+ IMCBAR   = 1
+ SKIP     = /-1
+ WIND     = bk6
+ REFVEC   =  
+ MAP      = 1
+ MSCALE   = 0
+ LATLON   =  
+ PANEL    = 0
+ TITLE    = 1
+ DEVICE   = xw
+ PROJ     = STR/90;-100;0
+ CLEAR    = y
+ SCALE    =  
+ TEXT     = 1
+ LUTFIL   =  
+ STNPLT   =  
+ GEMPAK-GDWIND&gt;r
+
+ CLEAR    = no
+ GLEVEL   = 700
+ WIND     = bk22
+ GEMPAK-GDWIND&gt;r
+</code></pre>
+
+<p><img src="gdwind.gif" alt="image" /></p>
+
+<p><a name="7.4.2"></a></p>
+
+<h3>GDSTREAM - Streamlines</h3>
+
+<p><code>gdstream</code> draws streamlines through any vector grid computed
+by the grid diagnostics package. The vector grid is specified
+by <code>GVECT</code>.</p>
+
+<pre><code> GDATTIM  = last
+ GLEVEL   = 850
+ GVCORD   = pres
+ GVECT    = wnd
+ GDFILE   = gfs
+ GAREA    = us
+ IJSKIP   =  
+ SATFIL   =  
+ RADFIL   =  
+ IMCBAR   = 1
+ LINE     = 6/1
+ MAP      = 1
+ MSCALE   = 0
+ LATLON   =  
+ TITLE    = 1
+ PANEL    = 0
+ TEXT     = 1
+ DEVICE   = xw
+ PROJ     = STR/90;-100;0
+ CLEAR    = y
+ WIND     =  
+ LUTFIL   =  
+ STNPLT   =  
+ STREAM   =  
+</code></pre>
+
+<p><img src="gdstream.gif" alt="image" /></p>
+
+<p>In the examples above, we were able to contour layers on top of each other with the <code>CLEAR = no</code> definition.  Now we will learn an easier way to display multiple grids on the same map using <code>gdplot2</code>.</p>
+
+<p><a name="7.5"></a></p>
+
+<h2>Plotting Scalars and Vectors</h2>
+
+<p><a name="7.5.1"></a></p>
+
+<h3>GDPLOT2 Input Parameters</h3>
+
+<p><code>gdplot2</code> has the special ability to plot multiple sets of contours, vectors and/or streamlines for each frame.</p>
+
+<pre>
+<a href=/gempak/man/parm/gdfile.html">GDFILE</a>    Grid file
+<a href=/gempak/man/parm/gdattim.html">GDATTIM</a>   Grid date/time
+<a href=/gempak/man/parm/glevel.html">GLEVEL</a>    Grid level
+<a href=/gempak/man/parm/gvcord.html">GVCORD</a>    Grid vertical coordinate
+<a href=/gempak/man/parm/panel.html">PANEL</a>     Panel loc/color/dash/width/regn
+<a href=/gempak/man/parm/skip.html">SKIP</a>      Skip_cntr/skip_plt_x;skip_plt_y
+<a href=/gempak/man/parm/scale.html">SCALE</a>     Scalar scale / vector scale
+<a href=/gempak/man/parm/gdpfun.html">GDPFUN</a>    Scalar grid or vector grid function
+<a href=/gempak/man/parm/type.html">TYPE</a>      GDPLOT2 function processing type
+<a href=/gempak/man/parm/contur.html">CONTUR</a>    Subbox/smooth
+<a href=/gempak/man/parm/cint.html">CINT</a>      Contour interval/min/max
+<a href=/gempak/man/parm/line.html">LINE</a>      Color/type/width/label/smth/fltr/scflg
+<a href=/gempak/man/parm/fint.html">FINT</a>      Fill interval/min/max
+<a href=/gempak/man/parm/fline.html">FLINE</a>     Fill colors/fill types
+<a href=/gempak/man/parm/hilo.html">HILO</a>      Color/symbol/rng/rad/cnt/intp
+<a href=/gempak/man/parm/hlsym.html">HLSYM</a>     HILO txt size/posn/font/wdth/hw
+<a href=/gempak/man/parm/clrbar.html">CLRBAR</a>    Color/ornt/anch/x;y/ln;wd/freq|text_info
+<a href=/gempak/man/parm/wind.html">WIND</a>      Wind symbol/siz/wdth/typ/hdsz
+<a href=/gempak/man/parm/refvec.html">REFVEC</a>    Mag;x;y;txtsiz/font/wdth/HW;labl
+<a href=/gempak/man/parm/title.html">TITLE</a>     Title color/line/title
+<a href=/gempak/man/parm/text.html">TEXT</a>      Size/fnt/wdth/brdr/N-rot/just/hw flg
+<a href=/gempak/man/parm/clear.html">CLEAR</a>     Clear screen flag
+<a href=/gempak/man/parm/garea.html">GAREA</a>     Graphics area
+<a href=/gempak/man/parm/ijskip.html">IJSKIP</a>    Iskp;Istrt;Istp/Jskp;Jstrt;Jstp
+<a href=/gempak/man/parm/proj.html">PROJ</a>      Map projection/angles/margins|drop flag
+<a href=/gempak/man/parm/map.html">MAP</a>       Map color/dash/width/filter flag
+<a href=/gempak/man/parm/mscale.html">MSCALE</a>    fgc;bgc;mask/units/lat;hide/values/anch/x;y/ln;wd/freq|text_info|t
+<a href=/gempak/man/parm/latlon.html">LATLON</a>    Line color/dash/width/freq/inc/label/format
+<a href=/gempak/man/parm/device.html">DEVICE</a>    Device|name|x size;y size|color type
+<a href=/gempak/man/parm/stnplt.html">STNPLT</a>    Txtc/txt attr|marker attr|stnfil#col
+<a href=/gempak/man/parm/satfil.html">SATFIL</a>    Satellite image filename(s)
+<a href=/gempak/man/parm/radfil.html">RADFIL</a>    Radar image filename(s)
+<a href=/gempak/man/parm/imcbar.html">IMCBAR</a>    Color/ornt/anch/x;y/ln;wd/freq
+<a href=/gempak/man/parm/lutfil.html">LUTFIL</a>    Enhancement lookup table filename
+<a href=/gempak/man/parm/stream.html">STREAM</a>    lines/arrows/stop/slow/scale
+<a href=/gempak/man/parm/posn.html">POSN</a>      Position / Text format
+<a href=/gempak/man/parm/colors.html">COLORS</a>    Color list
+<a href=/gempak/man/parm/marker.html">MARKER</a>    Marker color/type/size/width/hw
+<a href=/gempak/man/parm/grdlbl.html">GRDLBL</a>    Grid point label color
+<a href=/gempak/man/parm/filter.html">FILTER</a>    Filter data factor
+</pre>
+
+
+<p><a name="7.5.2"></a></p>
+
+<h3>Plotting Multiple Fields</h3>
+
+<p>Exclamation points <code>!</code> are used in <code>GDPFUN</code> to delimit multiple overlays of scalar and vector fields.  All other parameters (except <code>DEVICE</code>, <code>CLEAR</code> and <code>LUTFIL</code>) may contain exclamation points to delimit specifications for the fields defined by <code>GDPFUN</code>.  If any parameter contains more specifications than the maximum number of plots specified in <code>GDPFUN</code> or <code>GDFILE</code>, they will be ignored.  Positions between exclamation points may be left blank.  Most parameters will replace the blank with the previous value (repeat).  A trailing exclamation point will be treated as a blank.  If there is no trailing exclamation point, the last specification will be repeated for subsequent plots.</p>
+
+<p><a name="7.5.3"></a></p>
+
+<h3>Exercise #11 (Scalars and Vectors)</h3>
+
+<p>Use <code>gdplot2</code> to plot 12-hr precipitation color area contours, overlaid with sea level pressure line contours, and 850 mb wind vectors.  Use the 12hr forecast fields of the most recent GFS model.</p>
+
+<pre><code>GDPFUN  = p12m      ! emsl      ! wnd  
+GLEVEL  = 0         ! 0         ! 850   
+GVCORD  = none      ! none      ! pres
+TYPE    = f         ! c         ! b
+GAREA   = uslcc
+PROJ    = def  
+CINT    =           ! 4         !
+FINT    = 2.5/2.5   !           !
+FLINE   = 0;30-7
+SCALE   = 0
+TITLE   = 1/-1      ! 1/-2      ! 1/-3
+GEMPAK-GDPLOT2&gt;r        
+</code></pre>
+
+<p>Each column seperated by exclamation points essentially contains it's own instructions on what to contour or plot and how.  <code>gdplot2</code> eliminates the need to run GEMPAK programs multiple times with the <code>CLEAR = n</code> option.</p>
+
+<p>In this example there are three fields being plotted:</p>
+
+<ol>
+<li>12-hour precipitation in mm <code>GDPFUN = p12m</code> at the surface <code>GLEVEL = 0</code> with a fill interval of 2.5 mm, beginning at 2.5 mm <code>FINT = 2.5/2.5</code>, each level colored in the range 30-7, with no color drawn for levels lower than 2.5 mm <code>FLINE = 0;30-7</code>.</li>
+<li>sea level pressure <code>GDPFUN = emsl</code> contoured <code>TYPE = c</code> every 4 millibars <code>CINT = 4</code>.</li>
+<li>850mb <code>GLEVEL = 850</code> wind <code>GDPFUN = wnd</code> barbs <code>TYPE = b</code>.</li>
+</ol>
+
+
+<p><img src="gdplot2.gif" alt="image" /></p>
+
+<p>Later on in the workshop tutorial we will revisit multiple fields plotted on the same map using <code>gdplot2</code>, and get more in depth with shell scripting to make it happen.</p>
+
+<blockquote><p><a href=/gempak/tutorial/>GEMPAK Online Tutorial</a> | <a href="grid_diagnostics.html">Next: Grid Diagnostics</a></p></blockquote>
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

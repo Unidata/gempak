@@ -1,0 +1,138 @@
+#!/bin/csh -f
+#
+# This script will select the 5 most interesting radar sites.
+# The "interesting" sites are determined by interpolating the 
+# Gaussian weighted (GWFS) N0R base reflectivity values from 
+# the gridded data to the individual site locations. The 5 sites
+# with the greatest interpolated reflectivites will be hyperlinked
+# to a web page which generates the radar images via CGI.
+# 
+# Steve Chiswell
+# Unidata Program Center
+# March 2001
+##################################################################
+#
+# Read in the GEMPAK environmental variables
+#
+source /home/gempak/NAWIPS/Gemenviron
+#
+# 
+# Set the directory where generated web page will reside
+#
+set WEBDIR=/unidata/images/nids
+#
+#
+# Create a temporary working directory
+#
+cd /tmp
+set WORK=rcmwork.$$
+if(! -e $WORK) mkdir $WORK
+cd $WORK
+#
+#
+#
+#
+# Create a new GEMPAK surface file using the nexrad.tbl
+# station locations. We will call the iinterpolated reflectivity
+# values "MAXZ".
+#
+sfcfil << EOF
+SFOUTF = rad.sfc
+SFPRMF = maxz
+STNFIL = nexrad.tbl
+SHIPFL = NO
+TIMSTN = 300/10
+SFFSRC =
+r
+
+e
+EOF
+#
+#
+#
+#
+# Interpolate the gridded values of NOR to the surface station
+# locations of the file created above. Use a Gaussian weight
+# filter to smooth out reflectivities (account for some ground
+# clutter).
+#
+gdgsfc << EOF3
+      GDFILE   = nexr
+      GAREA    = uslcc
+      GDATTIM  = last
+      GVCORD   = none
+      GLEVEL   = 0
+      GFUNC    = GWFS(n0r,20)
+      SCALE    = 0
+      SFFILE   = rad.sfc
+      SFPARM   = maxz
+     l
+     r
+
+     e
+EOF3
+#
+#
+#
+# List the surface station values for postprocessing
+#
+sflist << EOF4
+      DATTIM = last
+      SFFILE = rad.sfc
+      output = f
+      idntyp = stid
+      sfparm = maxz
+      area = dset
+     r
+
+     e
+EOF4
+#
+#
+# Close down GEMPAL message queues for GPLT
+gpend
+#
+#
+#
+#
+# Create a web page which contains links to the CGI script
+# which will plot the radar image for each of the 5 interesting
+# sites. The 5 most interesting sites are determined from the
+# surface station values by sorting the output data.
+#
+if(-e rad.sfc) then
+   #
+   echo '<html>' >! $WEBDIR/interesting.html
+   echo '<head>' >> $WEBDIR/interesting.html
+   echo '<title>Interesting Sites</title>' >> $WEBDIR/interesting.html
+   echo '</head>' >> $WEBDIR/interesting.html
+   echo '<body bgcolor=#000000>' >> $WEBDIR/interesting.html
+   #
+   # sort the station values (skip the first 3 lines of GEMPAK output )
+   #
+   set SITES=`tail +4 sflist.fil | sort -k 3bnr | head -5`
+   # 
+   # Create a link for each of the 5 sites
+   #
+   @ COUNT = 1
+   while($COUNT < $#SITES)
+      @ CNT = $COUNT + 2
+      echo $SITES[$COUNT] val $SITES[$CNT]
+      echo '<IMG SRC="/cgi-bin/ldm/radargif?'$SITES[${COUNT}]'">' >> $WEBDIR/interesting.html
+      @ COUNT = $COUNT + 3
+   end
+   echo '</body>' >> $WEBDIR/interesting.html
+   echo '</html>' >> $WEBDIR/interesting.html
+   endif
+   #
+endif
+#
+#
+#
+#
+# Remove working directory files
+rm *.nts sflist.fil rad.sfc
+cd ..
+cd /tmp
+rmdir $WORK
+

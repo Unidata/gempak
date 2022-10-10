@@ -1,0 +1,95 @@
+<!doctype html><head><title>GEMPAK Help: sflist</title></head><body>
+<a href=../../help_and_documentation>GEMPAK Manual</a> | 
+<a href=../prog/>Programs</a><br><hr>
+<pre>
+SFLIST lists surface data from a GEMPAK surface data file.
+
+INPUT PARAMETERS
+ 
+    <a href=../parm/sffile.html>SFFILE</a>    Surface data file
+    <a href=../parm/area.html>AREA</a>      Data area
+    <a href=../parm/dattim.html>DATTIM</a>    Date/time
+    <a href=../parm/sfparm.html>SFPARM</a>    Surface parameter list
+    <a href=../parm/output.html>OUTPUT</a>    Output device/filename
+    <a href=../parm/idntyp.html>IDNTYP</a>    STNM or STID
+ 
+ 
+
+PROGRAM DESCRIPTION
+ 
+    SFLIST lists any parameters which can be derived from the data
+    in a surface data file.  The stations and times to be included
+    are specified in <a href=../parm/area.html>AREA</a> and <a href=../parm/dattim.html>DATTIM</a>.  If no data are reported for
+    a station, that station will not be listed.  The listings will
+    be grouped by time.
+
+    If the surface file contains both decoded and undecoded text
+    data, both types can be listed by specifying GEMPAK parameters
+    along with parameter '<a href=../parm/text.html>TEXT</a>'.  The special reports may also be
+    listed in an undecoded format using the paramter 'SPCL'.  <a href=../parm/text.html>TEXT</a>
+    and SPCL may appear anywhere in the list of parameters.
+
+    Conditions can be specified for the parameters.  The conditions
+    are documented in the <a href=../parm/sfparm.html>SFPARM</a> documentation.
+
+ 
+EXAMPLES
+ 
+    1.	List the decoded and undecoded text air and dewpoint
+        temperatures in Fahrenheit and the mean sea-level pressure
+	and weather of stations in Pennsylvania for the latest time.
+	Use a locally created surface file that contains both types
+	of data called SAOTEXT.SFC.
+
+	<a href=../parm/sffile.html>SFFILE</a>	 =  SAOTEXT.SFC
+	<a href=../parm/area.html>AREA</a>	 =  @pa
+	<a href=../parm/dattim.html>DATTIM</a>	 =  last
+	<a href=../parm/sfparm.html>SFPARM</a>	 =  tmpf;dwpf;pmsl;wthr;text
+	<a href=../parm/output.html>OUTPUT</a>	 =  t
+	<a href=../parm/idntyp.html>IDNTYP</a>	 =  stid
+
+    2.	List the same parameters for PIT and BWI at 0500 and
+	0600 GMT.
+
+	<a href=../parm/sffile.html>SFFILE</a>	 =  SAOTEXT.SFC
+	<a href=../parm/area.html>AREA</a>	 =  @pit;bwi
+	<a href=../parm/dattim.html>DATTIM</a>	 =  /05-06
+	<a href=../parm/sfparm.html>SFPARM</a>	 =  tmpf;dwpf;pmsl;wthr;text
+	<a href=../parm/output.html>OUTPUT</a>	 =  t
+	<a href=../parm/idntyp.html>IDNTYP</a>	 =  stid
+
+    3.	List the temperature, dewpoint, pressure, and weather
+	for stations in Pennsylvania which are reporting
+	thunderstorms and dewpoint temperatures greater than
+	65 degrees Fahrenheit.
+
+	<a href=../parm/sffile.html>SFFILE</a>	 =  $GEMPAK/data/HRCBOB.SFC
+	<a href=../parm/area.html>AREA</a>	 =  @PA
+	<a href=../parm/dattim.html>DATTIM</a>	 =  /05-06
+	<a href=../parm/sfparm.html>SFPARM</a>	 =  tmpf;dwpf>65;pmsl;wthr=t
+	<a href=../parm/output.html>OUTPUT</a>	 =  T
+	<a href=../parm/idntyp.html>IDNTYP</a>	 =  STID
+
+    4.	List the latest undecoded SAO text data for stations in
+	Pennsylvania. Use a locally created surface file with SAO
+	decoded and text data called SAOTEXT.SFC.
+
+	<a href=../parm/sffile.html>SFFILE</a>   =  SAOTEXT.SFC
+	<a href=../parm/area.html>AREA</a>     =  @PA
+	<a href=../parm/dattim.html>DATTIM</a>   =  last
+	<a href=../parm/sfparm.html>SFPARM</a>   =  text;spcl
+	<a href=../parm/output.html>OUTPUT</a>   =  T
+	<a href=../parm/idntyp.html>IDNTYP</a>   =  STID
+
+
+ERROR MESSAGES
+ 
+    [SFLIST  +1]    Parameter ... is not computable.
+    [SFLIST  -1]    Fatal error initializing TAE.
+    [SFLIST  -2]    Fatal error reading TAE parameters.
+    [SFLIST  -3]    No stations reporting data.
+    [SFLIST  -4]    No valid computable parameters.
+</pre>
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

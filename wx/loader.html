@@ -1,0 +1,206 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+
+<style>
+	body {
+		margin: 0px;
+		padding: 0px;
+	}
+	#container {
+		position: absolute;
+		border: 1px solid #9C9898;
+		left: 100px;
+	}
+</style>
+</head>
+<canvas id="container" style="background-image: url('ly_base.svg');" width="900" height="600"></canvas>
+<script>
+
+
+	// methods needed
+	// drawBase - draws base map
+	// loop products - loop all in product array
+	// stop loop
+	
+	
+	
+	// draw base
+	// save base
+	//		draw hght
+	//		save hght
+	//			draw wnd
+	//			draw wnd
+	//				draw prcp
+	//			restore wnd
+	//		restore hght
+	// restore base
+
+
+		function loadImages(prod, callback) {
+		
+			console.log('entered loadImages ('+ prod +')');
+			if (prod == 'all') {
+				var sources = {
+			      	prcp: { src: 'ly_prcp.gif', show: 1 },
+			        hght: { src: 'ly_hght.svg', show: 1 },
+			        wnd:  { src: 'ly_wnd.svg',  show: 1 }
+				};
+				//console.log(sources);
+				var images = {};
+				var loadedImages = 0;
+				var numImages = 0;
+				// get num of sources
+				for(var src in sources) {
+					console.log('showing src:');
+					console.log(src);
+					numImages++;
+				}
+				for(var src in sources) {
+				  console.log('showing sources in loadImages:');
+				  console.log(sources);
+				  images[src] = new Image();
+				  images[src].onload = function() {
+				    if(++loadedImages >= numImages) {
+				      callback(images);
+				    }
+				  };
+				  images[src].src = sources[src].src;
+				}
+			} else {
+				var sources = new Array();
+				sources[prod] = 'ly_'+ prod +'.svg';
+				sources.show = 1;
+				console.log('COMPLETED adding single product, printing sources:');
+				var images = {};
+				var numImages = 1;
+				console.log('showing sources in loadImages:');
+				console.log(sources);
+				images = new Image();
+				images.onload = function() {
+				    callback(images);
+				};
+				images.src = sources[prod];
+			}
+		
+			
+		
+		
+
+
+		}
+
+	
+	var canvas = document.getElementById('container');
+	var context = canvas.getContext('2d');
+
+	
+	// load all product layers
+	
+	loadImages('all', function (images) {
+		console.log('NOW IN loadImages(all), printing images:');
+		console.log(images);
+		context.clearRect(0, 0, canvas.width, canvas.height);
+		for (var src in images) {
+			context.drawImage(images[src], 0, 0, canvas.width, canvas.height);
+		}
+	});
+	
+	// always load base map at the end
+	
+	function loadBase() {
+		loadImages('base', function (images) {
+			console.log('NOW IN loadBase, printing images:');
+			console.log(images);
+			context.drawImage(images, 0, 0, canvas.width, canvas.height);
+		});
+	}
+	//loadBase();
+	//context.save();
+	
+	
+	function loop() {
+		var imgNumber = 1;
+		//var sources = [ 'ly_prcp', 'ly_wnd', 'ly_hght', 'ly_base' ];
+		
+		var sources = [ 'ly_hght_f000.svg', 'ly_hght_f003.svg', 'ly_hght_f006.svg', 'ly_hght_f009.svg', 'ly_hght_f012.svg', 
+						'ly_hght_f015.svg', 'ly_hght_f018.svg', 'ly_hght_f021.svg', 'ly_hght_f024.svg', 'ly_hght_f027.svg',
+						'ly_hght_f030.svg', 'ly_hght_f033.svg', 'ly_hght_f036.svg', 'ly_hght_f039.svg', 'ly_hght_f042.svg', 
+						'ly_hght_f045.svg', 'ly_hght_f048.svg', 'ly_hght_f051.svg', 'ly_hght_f054.svg', 'ly_hght_f057.svg',
+						'ly_hght_f060.svg', 'ly_hght_f063.svg', 'ly_hght_f066.svg', 'ly_hght_f069.svg', 'ly_hght_f072.svg', 
+						'ly_hght_f075.svg', 'ly_hght_f078.svg', 'ly_hght_f081.svg', 'ly_hght_f084.svg', 'ly_hght_f087.svg',
+						'ly_hght_f090.svg', 'ly_hght_f093.svg', 'ly_hght_f096.svg' ]
+		var sources2 = [ 'ly_wnd_f000.svg', 'ly_wnd_f003.svg', 'ly_wnd_f006.svg', 'ly_wnd_f009.svg', 'ly_wnd_f012.svg', 
+						'ly_wnd_f015.svg', 'ly_wnd_f018.svg', 'ly_wnd_f021.svg', 'ly_wnd_f024.svg', 'ly_wnd_f027.svg',
+						'ly_wnd_f030.svg', 'ly_wnd_f033.svg', 'ly_wnd_f036.svg', 'ly_wnd_f039.svg', 'ly_wnd_f042.svg', 
+						'ly_wnd_f045.svg', 'ly_wnd_f048.svg', 'ly_wnd_f051.svg', 'ly_wnd_f054.svg', 'ly_wnd_f057.svg',
+						'ly_wnd_f060.svg', 'ly_wnd_f063.svg', 'ly_wnd_f066.svg', 'ly_wnd_f069.svg', 'ly_wnd_f072.svg', 
+						'ly_wnd_f075.svg', 'ly_wnd_f078.svg', 'ly_wnd_f081.svg', 'ly_wnd_f084.svg', 'ly_wnd_f087.svg',
+						'ly_wnd_f090.svg', 'ly_wnd_f093.svg', 'ly_wnd_f096.svg' ]
+		var sources3 = [ '../ly_prcp.gif', 'ly_p03i_f003.gif', 'ly_p03i_f006.gif', 'ly_p03i_f009.gif', 'ly_p03i_f012.gif', 
+						'ly_p03i_f015.gif', 'ly_p03i_f018.gif', 'ly_p03i_f021.gif', 'ly_p03i_f024.gif', 'ly_p03i_f027.gif',
+						'ly_p03i_f030.gif', 'ly_p03i_f033.gif', 'ly_p03i_f036.gif', 'ly_p03i_f039.gif', 'ly_p03i_f042.gif', 
+						'ly_p03i_f045.gif', 'ly_p03i_f048.gif', 'ly_p03i_f051.gif', 'ly_p03i_f054.gif', 'ly_p03i_f057.gif',
+						'ly_p03i_f060.gif', 'ly_p03i_f063.gif', 'ly_p03i_f066.gif', 'ly_p03i_f069.gif', 'ly_p03i_f072.gif', 
+						'ly_p03i_f075.gif', 'ly_p03i_f078.gif', 'ly_p03i_f081.gif', 'ly_p03i_f084.gif', 'ly_p03i_f087.gif',
+						'ly_p03i_f090.gif', 'ly_p03i_f093.gif', 'ly_p03i_f096.gif' ]
+		
+		var lastImgNumber = sources.length;
+
+		context.clearRect( 0, 0, 900, 600 );
+
+		var img3 = new Image();
+		img3.onload = drawCanvasImage(img3,1);
+		var img = new Image();
+		img.onload = drawCanvasImage(img,0);		
+		var img2 = new Image();
+		img2.onload = drawCanvasImage(img2,0);
+
+		var timer = setInterval( function(){
+			
+			img3.src = 'ly/' + sources3[imgNumber-1];
+		    img.src =  'ly/' + sources[imgNumber-1];
+		    img2.src = 'ly/' + sources2[imgNumber-1];
+		    //console.log(imgNumber-1);
+			
+		    if ( imgNumber > lastImgNumber-1) {
+		    	//clearInterval(timer);
+		    	imgNumber = 1;
+		    }
+		    imgNumber++;
+		}, 1000 / 8 ); // 4 fps
+	}
+	
+	var drawCanvasImage = function(image,i) {
+		return function() {
+			if (i == 1) {
+				context.clearRect( 0, 0, 900, 600 );
+			}
+			context.drawImage( image, 0, 0, 900, 600 );
+		}
+	}
+	function stop() {
+		context.clearRect( 0, 0, canvas.width, canvas.height );
+		loadBase();
+	}
+	
+</script>
+
+    <div style="position: absolute;top: 0px; left: 0px;" width="200" height="200">
+		<form id="product-select">
+		<!--
+	    <input type="checkbox" checked id="prcp" value="" onclick="toggle('prcp');" /> PRCP<br />
+		<input type="checkbox" checked id="hght" value="" onclick="toggle('hght');"/> HGHT<br />
+		<input type="checkbox" checked id="wind" value="" onclick="toggle('wnd');"/> WIND<br />
+		<input type="checkbox" checked id="base" value="" onclick="toggle('base');"/> BASE<br />
+		
+		<input type="button" id="looping" value="Clear" onclick="stop();"/> <br />
+		-->
+		<input type="button" id="looping" value="Loop" onclick="loop();"/> <br />
+		<!-- 
+		<input type="button" id="looping" value="Stop" onclick="stop();"/> <br />
+		-->
+
+		</form>
+	</div>
+</html>

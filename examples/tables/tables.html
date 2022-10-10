@@ -1,0 +1,50 @@
+<HTML><HEAD><TITLE>GEMPAK Examples: Enhancement tables</TITLE>
+<META NAME="BOOKMARK" CONTENT="GEMPAK Examples: Enhancement tables">
+<META NAME="AUTHOR" CONTENT="Steve Chiswell">
+<META NAME="KEYWORDS" CONTENT="Software, GEMPAK, Examples, Enhancement tables">
+<META NAME="DESCRIPTION" CONTENT="GEMPAK Examples: Enhancement tables.">
+</HEAD><BODY>
+
+<h2>Enhancement Tables</h2>
+Satellite enhancements can be used in Gempak programs
+as well as NSAT. Enhancement tables are found under
+the directory $GEMTBL/luts.
+<p>
+Several <a href="enhancements.html">predefined color tables</a> 
+are provided with the Gempak distribution, and can be used
+within Gempak programs by specifying: 
+<strong>LUT <em>enhancement.tbl</em></strong>
+at the program prompt after the display is generated.
+<P>
+The default enhancement used for each image type is
+defined in the file <FONT COLOR=#800000>IMGTYP.TBL.
+<FONT COLOR=#000000>
+To select a different default enhancement for a
+given satellite image, simply enter a new enhancement
+name under the DEFAULT LUT FILE column.
+<p>
+<h2>Adding New Enhancement Tables</h2>
+If you want to add new enhancement tables of your own,
+be sure to follow the format of one of the existing files.
+Location of RGB values is dependent on column location.
+When new enhancements are created, you will need to
+add the name to the 
+<FONT COLOR=#800000>$NAWIPS/tables/nsat/enhance.tbl
+<FONT COLOR=#000000>file so that they will be available
+in the <A HREF="../nsat/nsat_enhance.gif">NSAT enhancements pulldown menu</a>.
+Note, the enhancement names must end with the <em>.tbl</em> extension.
+
+
+
+
+<P>
+
+<p>
+<hr>
+<A HREF="../examples.html">
+Return to the Walk Through Examples Table of Contents.</A>
+
+
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>
