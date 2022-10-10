@@ -17,11 +17,11 @@ GEMPAK downloads can be accessed at: https://github.com/Unidata/gempak/releases
 
 ## Documentation
 
-Documentation for GEMPAK version 7.5.1 (released in 2019) is provided from 
-[Unidata](https://docs.unidata.ucar.edu/gempak/man/prog/)
-_AS IS_ as a convenience for the community: <https://docs.unidata.ucar.edu/gempak/man/prog/>
+Documentation for GEMPAK is available here: https://unidata.github.io/gempak/
 
-GEMPAK users or community members who are interested in assuming or contributing to the maintenance of GEMPAK documentation can contact <support@unidata.ucar.edu>.
+**NOTE:** This documentation was last updated by Unidata for version 7.5.1 and may be slightly out of date in some places.
+
+GEMPAK users or community members who are interested in contributing to the maintenance of GEMPAK documentation can contribute to the `gh-pages` branch of this repo.
 
 
 ## Support
