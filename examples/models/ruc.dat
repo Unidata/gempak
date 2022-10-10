@@ -1,0 +1,647 @@
+
+ GRID FILE: $HDS/96040800_ruc.gem                                                   
+
+ GRID NAVIGATION: 
+     PROJECTION:          LCC                 
+     ANGLES:                25.0   -95.0    25.0
+     GRID SIZE:           93  65
+     LL CORNER:              12.19   -133.46
+     UR CORNER:              57.29    -49.38
+
+ GRID ANALYSIS BLOCK: 
+      UNKNOWN ANALYSIS TYPE 
+
+ Number of grids in file:   629
+
+ Maximum number of grids in file:   1500
+
+  NUM       TIME1              TIME2           LEVL1 LEVL2  VCORD PARM
+    1     960408/0000F000                          0         MAXW PRES        
+    2     960408/0000F000                          0         MAXW UREL        
+    3     960408/0000F000                          0         MAXW VREL        
+    4     960408/0000F000                          0         FRZL PRES        
+    5     960408/0000F000                          0         FRZL HGHT        
+    6     960408/0000F000                          0         FRZL RELH        
+    7     960408/0000F000                        180  150    PAGL RELH        
+    8     960408/0000F000                        180  150    PAGL UREL        
+    9     960408/0000F000                        180  150    PAGL VREL        
+   10     960408/0000F000                         90  60     PAGL RELH        
+   11     960408/0000F000                         90  60     PAGL UREL        
+   12     960408/0000F000                         90  60     PAGL VREL        
+   13     960408/0000F000                         90  60     PAGL TMPK        
+   14     960408/0000F000                         30  0      PAGL RELH        
+   15     960408/0000F000                         30  0      PAGL UREL        
+   16     960408/0000F000                         30  0      PAGL VREL        
+   17     960408/0000F000                         30  0      PAGL TMPK        
+   18     960408/0000F000                         10         HGHT UREL        
+   19     960408/0000F000                         10         HGHT VREL        
+   20     960408/0000F000                          2         HGHT RELH        
+   21     960408/0000F000                          2         HGHT TMPK        
+   22     960408/0000F000                          0         PRES MMSL        
+   23     960408/0000F000                          0         PRES HGHT        
+   24     960408/0000F000                       1000         PRES HGHT        
+   25     960408/0000F000                       1000         PRES TMPK        
+   26     960408/0000F000                       1000         PRES RELH        
+   27     960408/0000F000                       1000         PRES UREL        
+   28     960408/0000F000                       1000         PRES VREL        
+   29     960408/0000F000                        950         PRES HGHT        
+   30     960408/0000F000                        950         PRES TMPK        
+   31     960408/0000F000                        950         PRES RELH        
+   32     960408/0000F000                        950         PRES UREL        
+   33     960408/0000F000                        950         PRES VREL        
+   34     960408/0000F000                        900         PRES HGHT        
+   35     960408/0000F000                        900         PRES TMPK        
+   36     960408/0000F000                        900         PRES RELH        
+   37     960408/0000F000                        900         PRES UREL        
+   38     960408/0000F000                        900         PRES VREL        
+   39     960408/0000F000                        850         PRES HGHT        
+   40     960408/0000F000                        850         PRES TMPK        
+   41     960408/0000F000                        850         PRES RELH        
+   42     960408/0000F000                        850         PRES UREL        
+   43     960408/0000F000                        850         PRES VREL        
+   44     960408/0000F000                        800         PRES HGHT        
+   45     960408/0000F000                        800         PRES TMPK        
+   46     960408/0000F000                        800         PRES RELH        
+   47     960408/0000F000                        800         PRES UREL        
+   48     960408/0000F000                        800         PRES VREL        
+   49     960408/0000F000                        750         PRES HGHT        
+   50     960408/0000F000                        750         PRES TMPK        
+   51     960408/0000F000                        750         PRES RELH        
+   52     960408/0000F000                        750         PRES UREL        
+   53     960408/0000F000                        750         PRES VREL        
+   54     960408/0000F000                        700         PRES HGHT        
+   55     960408/0000F000                        700         PRES TMPK        
+   56     960408/0000F000                        700         PRES RELH        
+   57     960408/0000F000                        700         PRES UREL        
+   58     960408/0000F000                        700         PRES VREL        
+   59     960408/0000F000                        650         PRES HGHT        
+   60     960408/0000F000                        650         PRES TMPK        
+   61     960408/0000F000                        650         PRES RELH        
+   62     960408/0000F000                        650         PRES UREL        
+   63     960408/0000F000                        650         PRES VREL        
+   64     960408/0000F000                        600         PRES HGHT        
+   65     960408/0000F000                        600         PRES TMPK        
+   66     960408/0000F000                        600         PRES RELH        
+   67     960408/0000F000                        600         PRES UREL        
+   68     960408/0000F000                        600         PRES VREL        
+   69     960408/0000F000                        550         PRES HGHT        
+   70     960408/0000F000                        550         PRES TMPK        
+   71     960408/0000F000                        550         PRES RELH        
+   72     960408/0000F000                        550         PRES UREL        
+   73     960408/0000F000                        550         PRES VREL        
+   74     960408/0000F000                        500         PRES HGHT        
+   75     960408/0000F000                        500         PRES TMPK        
+   76     960408/0000F000                        500         PRES RELH        
+   77     960408/0000F000                        500         PRES UREL        
+   78     960408/0000F000                        500         PRES VREL        
+   79     960408/0000F000                        450         PRES HGHT        
+   80     960408/0000F000                        450         PRES TMPK        
+   81     960408/0000F000                        450         PRES RELH        
+   82     960408/0000F000                        450         PRES UREL        
+   83     960408/0000F000                        450         PRES VREL        
+   84     960408/0000F000                        400         PRES HGHT        
+   85     960408/0000F000                        400         PRES TMPK        
+   86     960408/0000F000                        400         PRES RELH        
+   87     960408/0000F000                        400         PRES UREL        
+   88     960408/0000F000                        400         PRES VREL        
+   89     960408/0000F000                        350         PRES HGHT        
+   90     960408/0000F000                        350         PRES TMPK        
+   91     960408/0000F000                        350         PRES RELH        
+   92     960408/0000F000                        350         PRES UREL        
+   93     960408/0000F000                        350         PRES VREL        
+   94     960408/0000F000                        300         PRES HGHT        
+   95     960408/0000F000                        300         PRES TMPK        
+   96     960408/0000F000                        300         PRES RELH        
+   97     960408/0000F000                        300         PRES UREL        
+   98     960408/0000F000                        300         PRES VREL        
+   99     960408/0000F000                        250         PRES HGHT        
+  100     960408/0000F000                        250         PRES TMPK        
+  101     960408/0000F000                        250         PRES RELH        
+  102     960408/0000F000                        250         PRES UREL        
+  103     960408/0000F000                        250         PRES VREL        
+  104     960408/0000F000                        200         PRES HGHT        
+  105     960408/0000F000                        200         PRES TMPK        
+  106     960408/0000F000                        200         PRES RELH        
+  107     960408/0000F000                        200         PRES UREL        
+  108     960408/0000F000                        200         PRES VREL        
+  109     960408/0000F000                        150         PRES HGHT        
+  110     960408/0000F000                        150         PRES TMPK        
+  111     960408/0000F000                        150         PRES RELH        
+  112     960408/0000F000                        150         PRES UREL        
+  113     960408/0000F000                        150         PRES VREL        
+  114     960408/0000F000                        100         PRES HGHT        
+  115     960408/0000F000                        100         PRES TMPK        
+  116     960408/0000F000                        100         PRES RELH        
+  117     960408/0000F000                        100         PRES UREL        
+  118     960408/0000F000                        100         PRES VREL        
+  119     960408/0000F000                          0         TROP PRES        
+  120     960408/0000F000                          0         TROP THTA        
+  121     960408/0000F000                          0         TROP UREL        
+  122     960408/0000F000                          0         TROP VREL        
+  123     960408/0000F003                          0         MAXW PRES        
+  124     960408/0000F003                          0         MAXW UREL        
+  125     960408/0000F003                          0         MAXW VREL        
+  126     960408/0000F003                          0         FRZL PRES        
+  127     960408/0000F003                          0         FRZL HGHT        
+  128     960408/0000F003                          0         FRZL RELH        
+  129     960408/0000F003                        180  150    PAGL RELH        
+  130     960408/0000F003                        180  150    PAGL UREL        
+  131     960408/0000F003                        180  150    PAGL VREL        
+  132     960408/0000F003                        180  150    PAGL TMPK        
+  133     960408/0000F003                         90  60     PAGL RELH        
+  134     960408/0000F003                         90  60     PAGL UREL        
+  135     960408/0000F003                         90  60     PAGL VREL        
+  136     960408/0000F003                         90  60     PAGL TMPK        
+  137     960408/0000F003                         30  0      PAGL RELH        
+  138     960408/0000F003                         30  0      PAGL UREL        
+  139     960408/0000F003                         30  0      PAGL VREL        
+  140     960408/0000F003                         30  0      PAGL TMPK        
+  141     960408/0000F003                         10         HGHT UREL        
+  142     960408/0000F003                         10         HGHT VREL        
+  143     960408/0000F003                          2         HGHT RELH        
+  144     960408/0000F003                          2         HGHT TMPK        
+  145     960408/0000F003                          0         PRES PRES        
+  146     960408/0000F003                          0         PRES MMSL        
+  147     960408/0000F003                          0         PRES S03M        
+  148     960408/0000F003                          0         PRES C03M        
+  149     960408/0000F003                          0         PRES P03M        
+  150     960408/0000F003                          0         PRES PCPR        
+  151     960408/0000F003                       1000         PRES HGHT        
+  152     960408/0000F003                       1000         PRES TMPK        
+  153     960408/0000F003                       1000         PRES RELH        
+  154     960408/0000F003                       1000         PRES UREL        
+  155     960408/0000F003                       1000         PRES VREL        
+  156     960408/0000F003                        950         PRES HGHT        
+  157     960408/0000F003                        950         PRES TMPK        
+  158     960408/0000F003                        950         PRES RELH        
+  159     960408/0000F003                        950         PRES UREL        
+  160     960408/0000F003                        950         PRES VREL        
+  161     960408/0000F003                        900         PRES HGHT        
+  162     960408/0000F003                        900         PRES TMPK        
+  163     960408/0000F003                        900         PRES RELH        
+  164     960408/0000F003                        900         PRES UREL        
+  165     960408/0000F003                        900         PRES VREL        
+  166     960408/0000F003                        850         PRES HGHT        
+  167     960408/0000F003                        850         PRES TMPK        
+  168     960408/0000F003                        850         PRES RELH        
+  169     960408/0000F003                        850         PRES UREL        
+  170     960408/0000F003                        850         PRES VREL        
+  171     960408/0000F003                        800         PRES HGHT        
+  172     960408/0000F003                        800         PRES TMPK        
+  173     960408/0000F003                        800         PRES RELH        
+  174     960408/0000F003                        800         PRES UREL        
+  175     960408/0000F003                        800         PRES VREL        
+  176     960408/0000F003                        750         PRES HGHT        
+  177     960408/0000F003                        750         PRES TMPK        
+  178     960408/0000F003                        750         PRES RELH        
+  179     960408/0000F003                        750         PRES UREL        
+  180     960408/0000F003                        750         PRES VREL        
+  181     960408/0000F003                        700         PRES HGHT        
+  182     960408/0000F003                        700         PRES TMPK        
+  183     960408/0000F003                        700         PRES RELH        
+  184     960408/0000F003                        700         PRES UREL        
+  185     960408/0000F003                        700         PRES VREL        
+  186     960408/0000F003                        650         PRES HGHT        
+  187     960408/0000F003                        650         PRES TMPK        
+  188     960408/0000F003                        650         PRES RELH        
+  189     960408/0000F003                        650         PRES UREL        
+  190     960408/0000F003                        650         PRES VREL        
+  191     960408/0000F003                        600         PRES HGHT        
+  192     960408/0000F003                        600         PRES TMPK        
+  193     960408/0000F003                        600         PRES RELH        
+  194     960408/0000F003                        600         PRES UREL        
+  195     960408/0000F003                        600         PRES VREL        
+  196     960408/0000F003                        550         PRES HGHT        
+  197     960408/0000F003                        550         PRES TMPK        
+  198     960408/0000F003                        550         PRES RELH        
+  199     960408/0000F003                        550         PRES UREL        
+  200     960408/0000F003                        550         PRES VREL        
+  201     960408/0000F003                        500         PRES HGHT        
+  202     960408/0000F003                        500         PRES TMPK        
+  203     960408/0000F003                        500         PRES RELH        
+  204     960408/0000F003                        500         PRES UREL        
+  205     960408/0000F003                        500         PRES VREL        
+  206     960408/0000F003                        450         PRES HGHT        
+  207     960408/0000F003                        450         PRES TMPK        
+  208     960408/0000F003                        450         PRES RELH        
+  209     960408/0000F003                        450         PRES UREL        
+  210     960408/0000F003                        450         PRES VREL        
+  211     960408/0000F003                        400         PRES HGHT        
+  212     960408/0000F003                        400         PRES TMPK        
+  213     960408/0000F003                        400         PRES RELH        
+  214     960408/0000F003                        400         PRES UREL        
+  215     960408/0000F003                        400         PRES VREL        
+  216     960408/0000F003                        350         PRES HGHT        
+  217     960408/0000F003                        350         PRES TMPK        
+  218     960408/0000F003                        350         PRES RELH        
+  219     960408/0000F003                        350         PRES UREL        
+  220     960408/0000F003                        350         PRES VREL        
+  221     960408/0000F003                        300         PRES HGHT        
+  222     960408/0000F003                        300         PRES TMPK        
+  223     960408/0000F003                        300         PRES RELH        
+  224     960408/0000F003                        300         PRES UREL        
+  225     960408/0000F003                        300         PRES VREL        
+  226     960408/0000F003                        250         PRES HGHT        
+  227     960408/0000F003                        250         PRES TMPK        
+  228     960408/0000F003                        250         PRES RELH        
+  229     960408/0000F003                        250         PRES UREL        
+  230     960408/0000F003                        250         PRES VREL        
+  231     960408/0000F003                        200         PRES HGHT        
+  232     960408/0000F003                        200         PRES TMPK        
+  233     960408/0000F003                        200         PRES RELH        
+  234     960408/0000F003                        200         PRES UREL        
+  235     960408/0000F003                        200         PRES VREL        
+  236     960408/0000F003                        150         PRES HGHT        
+  237     960408/0000F003                        150         PRES TMPK        
+  238     960408/0000F003                        150         PRES RELH        
+  239     960408/0000F003                        150         PRES UREL        
+  240     960408/0000F003                        150         PRES VREL        
+  241     960408/0000F003                        100         PRES HGHT        
+  242     960408/0000F003                        100         PRES TMPK        
+  243     960408/0000F003                        100         PRES RELH        
+  244     960408/0000F003                        100         PRES UREL        
+  245     960408/0000F003                        100         PRES VREL        
+  246     960408/0000F003                          0         TROP PRES        
+  247     960408/0000F003                          0         TROP THTA        
+  248     960408/0000F003                          0         TROP UREL        
+  249     960408/0000F003                          0         TROP VREL        
+  250     960408/0000F006                          0         MAXW PRES        
+  251     960408/0000F006                          0         MAXW UREL        
+  252     960408/0000F006                          0         MAXW VREL        
+  253     960408/0000F006                          0         FRZL PRES        
+  254     960408/0000F006                          0         FRZL HGHT        
+  255     960408/0000F006                          0         FRZL RELH        
+  256     960408/0000F006                        180  150    PAGL RELH        
+  257     960408/0000F006                        180  150    PAGL UREL        
+  258     960408/0000F006                        180  150    PAGL VREL        
+  259     960408/0000F006                        180  150    PAGL TMPK        
+  260     960408/0000F006                         90  60     PAGL RELH        
+  261     960408/0000F006                         90  60     PAGL UREL        
+  262     960408/0000F006                         90  60     PAGL VREL        
+  263     960408/0000F006                         90  60     PAGL TMPK        
+  264     960408/0000F006                         30  0      PAGL RELH        
+  265     960408/0000F006                         30  0      PAGL UREL        
+  266     960408/0000F006                         30  0      PAGL VREL        
+  267     960408/0000F006                         30  0      PAGL TMPK        
+  268     960408/0000F006                         10         HGHT UREL        
+  269     960408/0000F006                         10         HGHT VREL        
+  270     960408/0000F006                          2         HGHT RELH        
+  271     960408/0000F006                          2         HGHT TMPK        
+  272     960408/0000F006                          0         PRES PRES        
+  273     960408/0000F006                          0         PRES MMSL        
+  274     960408/0000F006                          0         PRES S03M        
+  275     960408/0000F006                          0         PRES C03M        
+  276     960408/0000F006                          0         PRES P03M        
+  277     960408/0000F006                          0         PRES PCPR        
+  278     960408/0000F006                       1000         PRES HGHT        
+  279     960408/0000F006                       1000         PRES TMPK        
+  280     960408/0000F006                       1000         PRES RELH        
+  281     960408/0000F006                       1000         PRES UREL        
+  282     960408/0000F006                       1000         PRES VREL        
+  283     960408/0000F006                        950         PRES HGHT        
+  284     960408/0000F006                        950         PRES TMPK        
+  285     960408/0000F006                        950         PRES RELH        
+  286     960408/0000F006                        950         PRES UREL        
+  287     960408/0000F006                        950         PRES VREL        
+  288     960408/0000F006                        900         PRES HGHT        
+  289     960408/0000F006                        900         PRES TMPK        
+  290     960408/0000F006                        900         PRES RELH        
+  291     960408/0000F006                        900         PRES UREL        
+  292     960408/0000F006                        900         PRES VREL        
+  293     960408/0000F006                        850         PRES HGHT        
+  294     960408/0000F006                        850         PRES TMPK        
+  295     960408/0000F006                        850         PRES RELH        
+  296     960408/0000F006                        850         PRES UREL        
+  297     960408/0000F006                        850         PRES VREL        
+  298     960408/0000F006                        800         PRES HGHT        
+  299     960408/0000F006                        800         PRES TMPK        
+  300     960408/0000F006                        800         PRES RELH        
+  301     960408/0000F006                        800         PRES UREL        
+  302     960408/0000F006                        800         PRES VREL        
+  303     960408/0000F006                        750         PRES HGHT        
+  304     960408/0000F006                        750         PRES TMPK        
+  305     960408/0000F006                        750         PRES RELH        
+  306     960408/0000F006                        750         PRES UREL        
+  307     960408/0000F006                        750         PRES VREL        
+  308     960408/0000F006                        700         PRES HGHT        
+  309     960408/0000F006                        700         PRES TMPK        
+  310     960408/0000F006                        700         PRES RELH        
+  311     960408/0000F006                        700         PRES UREL        
+  312     960408/0000F006                        700         PRES VREL        
+  313     960408/0000F006                        650         PRES HGHT        
+  314     960408/0000F006                        650         PRES TMPK        
+  315     960408/0000F006                        650         PRES RELH        
+  316     960408/0000F006                        650         PRES UREL        
+  317     960408/0000F006                        650         PRES VREL        
+  318     960408/0000F006                        600         PRES HGHT        
+  319     960408/0000F006                        600         PRES TMPK        
+  320     960408/0000F006                        600         PRES RELH        
+  321     960408/0000F006                        600         PRES UREL        
+  322     960408/0000F006                        600         PRES VREL        
+  323     960408/0000F006                        550         PRES HGHT        
+  324     960408/0000F006                        550         PRES TMPK        
+  325     960408/0000F006                        550         PRES RELH        
+  326     960408/0000F006                        550         PRES UREL        
+  327     960408/0000F006                        550         PRES VREL        
+  328     960408/0000F006                        500         PRES HGHT        
+  329     960408/0000F006                        500         PRES TMPK        
+  330     960408/0000F006                        500         PRES RELH        
+  331     960408/0000F006                        500         PRES UREL        
+  332     960408/0000F006                        500         PRES VREL        
+  333     960408/0000F006                        450         PRES HGHT        
+  334     960408/0000F006                        450         PRES TMPK        
+  335     960408/0000F006                        450         PRES RELH        
+  336     960408/0000F006                        450         PRES UREL        
+  337     960408/0000F006                        450         PRES VREL        
+  338     960408/0000F006                        400         PRES HGHT        
+  339     960408/0000F006                        400         PRES TMPK        
+  340     960408/0000F006                        400         PRES RELH        
+  341     960408/0000F006                        400         PRES UREL        
+  342     960408/0000F006                        400         PRES VREL        
+  343     960408/0000F006                        350         PRES HGHT        
+  344     960408/0000F006                        350         PRES TMPK        
+  345     960408/0000F006                        350         PRES RELH        
+  346     960408/0000F006                        350         PRES UREL        
+  347     960408/0000F006                        350         PRES VREL        
+  348     960408/0000F006                        300         PRES HGHT        
+  349     960408/0000F006                        300         PRES TMPK        
+  350     960408/0000F006                        300         PRES RELH        
+  351     960408/0000F006                        300         PRES UREL        
+  352     960408/0000F006                        300         PRES VREL        
+  353     960408/0000F006                        250         PRES HGHT        
+  354     960408/0000F006                        250         PRES TMPK        
+  355     960408/0000F006                        250         PRES RELH        
+  356     960408/0000F006                        250         PRES UREL        
+  357     960408/0000F006                        250         PRES VREL        
+  358     960408/0000F006                        200         PRES HGHT        
+  359     960408/0000F006                        200         PRES TMPK        
+  360     960408/0000F006                        200         PRES RELH        
+  361     960408/0000F006                        200         PRES UREL        
+  362     960408/0000F006                        200         PRES VREL        
+  363     960408/0000F006                        150         PRES HGHT        
+  364     960408/0000F006                        150         PRES TMPK        
+  365     960408/0000F006                        150         PRES RELH        
+  366     960408/0000F006                        150         PRES UREL        
+  367     960408/0000F006                        150         PRES VREL        
+  368     960408/0000F006                        100         PRES HGHT        
+  369     960408/0000F006                        100         PRES TMPK        
+  370     960408/0000F006                        100         PRES RELH        
+  371     960408/0000F006                        100         PRES UREL        
+  372     960408/0000F006                        100         PRES VREL        
+  373     960408/0000F006                          0         TROP PRES        
+  374     960408/0000F006                          0         TROP THTA        
+  375     960408/0000F006                          0         TROP UREL        
+  376     960408/0000F006                          0         TROP VREL        
+  377     960408/0000F009                          0         MAXW PRES        
+  378     960408/0000F009                          0         MAXW UREL        
+  379     960408/0000F009                          0         MAXW VREL        
+  380     960408/0000F009                          0         FRZL PRES        
+  381     960408/0000F009                          0         FRZL HGHT        
+  382     960408/0000F009                          0         FRZL RELH        
+  383     960408/0000F009                        180  150    PAGL RELH        
+  384     960408/0000F009                        180  150    PAGL UREL        
+  385     960408/0000F009                        180  150    PAGL VREL        
+  386     960408/0000F009                        180  150    PAGL TMPK        
+  387     960408/0000F009                         90  60     PAGL RELH        
+  388     960408/0000F009                         90  60     PAGL UREL        
+  389     960408/0000F009                         90  60     PAGL VREL        
+  390     960408/0000F009                         90  60     PAGL TMPK        
+  391     960408/0000F009                         30  0      PAGL RELH        
+  392     960408/0000F009                         30  0      PAGL UREL        
+  393     960408/0000F009                         30  0      PAGL VREL        
+  394     960408/0000F009                         30  0      PAGL TMPK        
+  395     960408/0000F009                         10         HGHT UREL        
+  396     960408/0000F009                         10         HGHT VREL        
+  397     960408/0000F009                          2         HGHT RELH        
+  398     960408/0000F009                          2         HGHT TMPK        
+  399     960408/0000F009                          0         PRES PRES        
+  400     960408/0000F009                          0         PRES MMSL        
+  401     960408/0000F009                          0         PRES S03M        
+  402     960408/0000F009                          0         PRES C03M        
+  403     960408/0000F009                          0         PRES P03M        
+  404     960408/0000F009                          0         PRES PCPR        
+  405     960408/0000F009                       1000         PRES HGHT        
+  406     960408/0000F009                       1000         PRES TMPK        
+  407     960408/0000F009                       1000         PRES RELH        
+  408     960408/0000F009                       1000         PRES UREL        
+  409     960408/0000F009                       1000         PRES VREL        
+  410     960408/0000F009                        950         PRES HGHT        
+  411     960408/0000F009                        950         PRES TMPK        
+  412     960408/0000F009                        950         PRES RELH        
+  413     960408/0000F009                        950         PRES UREL        
+  414     960408/0000F009                        950         PRES VREL        
+  415     960408/0000F009                        900         PRES HGHT        
+  416     960408/0000F009                        900         PRES TMPK        
+  417     960408/0000F009                        900         PRES RELH        
+  418     960408/0000F009                        900         PRES UREL        
+  419     960408/0000F009                        900         PRES VREL        
+  420     960408/0000F009                        850         PRES HGHT        
+  421     960408/0000F009                        850         PRES TMPK        
+  422     960408/0000F009                        850         PRES RELH        
+  423     960408/0000F009                        850         PRES UREL        
+  424     960408/0000F009                        850         PRES VREL        
+  425     960408/0000F009                        800         PRES HGHT        
+  426     960408/0000F009                        800         PRES TMPK        
+  427     960408/0000F009                        800         PRES RELH        
+  428     960408/0000F009                        800         PRES UREL        
+  429     960408/0000F009                        800         PRES VREL        
+  430     960408/0000F009                        750         PRES HGHT        
+  431     960408/0000F009                        750         PRES TMPK        
+  432     960408/0000F009                        750         PRES RELH        
+  433     960408/0000F009                        750         PRES UREL        
+  434     960408/0000F009                        750         PRES VREL        
+  435     960408/0000F009                        700         PRES HGHT        
+  436     960408/0000F009                        700         PRES TMPK        
+  437     960408/0000F009                        700         PRES RELH        
+  438     960408/0000F009                        700         PRES UREL        
+  439     960408/0000F009                        700         PRES VREL        
+  440     960408/0000F009                        650         PRES HGHT        
+  441     960408/0000F009                        650         PRES TMPK        
+  442     960408/0000F009                        650         PRES RELH        
+  443     960408/0000F009                        650         PRES UREL        
+  444     960408/0000F009                        650         PRES VREL        
+  445     960408/0000F009                        600         PRES HGHT        
+  446     960408/0000F009                        600         PRES TMPK        
+  447     960408/0000F009                        600         PRES RELH        
+  448     960408/0000F009                        600         PRES UREL        
+  449     960408/0000F009                        600         PRES VREL        
+  450     960408/0000F009                        550         PRES HGHT        
+  451     960408/0000F009                        550         PRES TMPK        
+  452     960408/0000F009                        550         PRES RELH        
+  453     960408/0000F009                        550         PRES UREL        
+  454     960408/0000F009                        550         PRES VREL        
+  455     960408/0000F009                        500         PRES HGHT        
+  456     960408/0000F009                        500         PRES TMPK        
+  457     960408/0000F009                        500         PRES UREL        
+  458     960408/0000F009                        500         PRES VREL        
+  459     960408/0000F009                        450         PRES HGHT        
+  460     960408/0000F009                        450         PRES TMPK        
+  461     960408/0000F009                        450         PRES RELH        
+  462     960408/0000F009                        450         PRES UREL        
+  463     960408/0000F009                        450         PRES VREL        
+  464     960408/0000F009                        400         PRES HGHT        
+  465     960408/0000F009                        400         PRES TMPK        
+  466     960408/0000F009                        400         PRES RELH        
+  467     960408/0000F009                        400         PRES UREL        
+  468     960408/0000F009                        400         PRES VREL        
+  469     960408/0000F009                        350         PRES HGHT        
+  470     960408/0000F009                        350         PRES TMPK        
+  471     960408/0000F009                        350         PRES RELH        
+  472     960408/0000F009                        350         PRES UREL        
+  473     960408/0000F009                        350         PRES VREL        
+  474     960408/0000F009                        300         PRES HGHT        
+  475     960408/0000F009                        300         PRES TMPK        
+  476     960408/0000F009                        300         PRES RELH        
+  477     960408/0000F009                        300         PRES UREL        
+  478     960408/0000F009                        300         PRES VREL        
+  479     960408/0000F009                        250         PRES HGHT        
+  480     960408/0000F009                        250         PRES TMPK        
+  481     960408/0000F009                        250         PRES RELH        
+  482     960408/0000F009                        250         PRES UREL        
+  483     960408/0000F009                        250         PRES VREL        
+  484     960408/0000F009                        200         PRES HGHT        
+  485     960408/0000F009                        200         PRES TMPK        
+  486     960408/0000F009                        200         PRES RELH        
+  487     960408/0000F009                        200         PRES UREL        
+  488     960408/0000F009                        200         PRES VREL        
+  489     960408/0000F009                        150         PRES HGHT        
+  490     960408/0000F009                        150         PRES TMPK        
+  491     960408/0000F009                        150         PRES RELH        
+  492     960408/0000F009                        150         PRES UREL        
+  493     960408/0000F009                        150         PRES VREL        
+  494     960408/0000F009                        100         PRES HGHT        
+  495     960408/0000F009                        100         PRES TMPK        
+  496     960408/0000F009                        100         PRES RELH        
+  497     960408/0000F009                        100         PRES UREL        
+  498     960408/0000F009                        100         PRES VREL        
+  499     960408/0000F009                          0         TROP PRES        
+  500     960408/0000F009                          0         TROP THTA        
+  501     960408/0000F009                          0         TROP UREL        
+  502     960408/0000F009                          0         TROP VREL        
+  503     960408/0000F012                          0         MAXW PRES        
+  504     960408/0000F012                          0         MAXW UREL        
+  505     960408/0000F012                          0         MAXW VREL        
+  506     960408/0000F012                          0         FRZL PRES        
+  507     960408/0000F012                          0         FRZL HGHT        
+  508     960408/0000F012                          0         FRZL RELH        
+  509     960408/0000F012                        180  150    PAGL RELH        
+  510     960408/0000F012                        180  150    PAGL UREL        
+  511     960408/0000F012                        180  150    PAGL VREL        
+  512     960408/0000F012                        180  150    PAGL TMPK        
+  513     960408/0000F012                         90  60     PAGL RELH        
+  514     960408/0000F012                         90  60     PAGL UREL        
+  515     960408/0000F012                         90  60     PAGL VREL        
+  516     960408/0000F012                         90  60     PAGL TMPK        
+  517     960408/0000F012                         30  0      PAGL RELH        
+  518     960408/0000F012                         30  0      PAGL UREL        
+  519     960408/0000F012                         30  0      PAGL VREL        
+  520     960408/0000F012                         30  0      PAGL TMPK        
+  521     960408/0000F012                         10         HGHT UREL        
+  522     960408/0000F012                         10         HGHT VREL        
+  523     960408/0000F012                          2         HGHT RELH        
+  524     960408/0000F012                          2         HGHT TMPK        
+  525     960408/0000F012                          0         PRES PRES        
+  526     960408/0000F012                          0         PRES MMSL        
+  527     960408/0000F012                          0         PRES S03M        
+  528     960408/0000F012                          0         PRES C03M        
+  529     960408/0000F012                          0         PRES P03M        
+  530     960408/0000F012                          0         PRES PCPR        
+  531     960408/0000F012                       1000         PRES HGHT        
+  532     960408/0000F012                       1000         PRES TMPK        
+  533     960408/0000F012                       1000         PRES RELH        
+  534     960408/0000F012                       1000         PRES UREL        
+  535     960408/0000F012                       1000         PRES VREL        
+  536     960408/0000F012                        950         PRES HGHT        
+  537     960408/0000F012                        950         PRES TMPK        
+  538     960408/0000F012                        950         PRES RELH        
+  539     960408/0000F012                        950         PRES UREL        
+  540     960408/0000F012                        950         PRES VREL        
+  541     960408/0000F012                        900         PRES HGHT        
+  542     960408/0000F012                        900         PRES TMPK        
+  543     960408/0000F012                        900         PRES RELH        
+  544     960408/0000F012                        900         PRES UREL        
+  545     960408/0000F012                        900         PRES VREL        
+  546     960408/0000F012                        850         PRES HGHT        
+  547     960408/0000F012                        850         PRES TMPK        
+  548     960408/0000F012                        850         PRES RELH        
+  549     960408/0000F012                        850         PRES UREL        
+  550     960408/0000F012                        850         PRES VREL        
+  551     960408/0000F012                        800         PRES HGHT        
+  552     960408/0000F012                        800         PRES TMPK        
+  553     960408/0000F012                        800         PRES RELH        
+  554     960408/0000F012                        800         PRES UREL        
+  555     960408/0000F012                        800         PRES VREL        
+  556     960408/0000F012                        750         PRES HGHT        
+  557     960408/0000F012                        750         PRES TMPK        
+  558     960408/0000F012                        750         PRES RELH        
+  559     960408/0000F012                        750         PRES UREL        
+  560     960408/0000F012                        750         PRES VREL        
+  561     960408/0000F012                        700         PRES HGHT        
+  562     960408/0000F012                        700         PRES TMPK        
+  563     960408/0000F012                        700         PRES RELH        
+  564     960408/0000F012                        700         PRES UREL        
+  565     960408/0000F012                        700         PRES VREL        
+  566     960408/0000F012                        650         PRES HGHT        
+  567     960408/0000F012                        650         PRES TMPK        
+  568     960408/0000F012                        650         PRES RELH        
+  569     960408/0000F012                        650         PRES UREL        
+  570     960408/0000F012                        650         PRES VREL        
+  571     960408/0000F012                        600         PRES HGHT        
+  572     960408/0000F012                        600         PRES TMPK        
+  573     960408/0000F012                        600         PRES RELH        
+  574     960408/0000F012                        600         PRES UREL        
+  575     960408/0000F012                        600         PRES VREL        
+  576     960408/0000F012                        550         PRES HGHT        
+  577     960408/0000F012                        550         PRES TMPK        
+  578     960408/0000F012                        550         PRES RELH        
+  579     960408/0000F012                        550         PRES UREL        
+  580     960408/0000F012                        550         PRES VREL        
+  581     960408/0000F012                        500         PRES HGHT        
+  582     960408/0000F012                        500         PRES TMPK        
+  583     960408/0000F012                        500         PRES RELH        
+  584     960408/0000F012                        500         PRES UREL        
+  585     960408/0000F012                        500         PRES VREL        
+  586     960408/0000F012                        450         PRES HGHT        
+  587     960408/0000F012                        450         PRES TMPK        
+  588     960408/0000F012                        450         PRES RELH        
+  589     960408/0000F012                        450         PRES UREL        
+  590     960408/0000F012                        450         PRES VREL        
+  591     960408/0000F012                        400         PRES HGHT        
+  592     960408/0000F012                        400         PRES TMPK        
+  593     960408/0000F012                        400         PRES RELH        
+  594     960408/0000F012                        400         PRES UREL        
+  595     960408/0000F012                        400         PRES VREL        
+  596     960408/0000F012                        350         PRES HGHT        
+  597     960408/0000F012                        350         PRES TMPK        
+  598     960408/0000F012                        350         PRES RELH        
+  599     960408/0000F012                        350         PRES UREL        
+  600     960408/0000F012                        350         PRES VREL        
+  601     960408/0000F012                        300         PRES HGHT        
+  602     960408/0000F012                        300         PRES TMPK        
+  603     960408/0000F012                        300         PRES RELH        
+  604     960408/0000F012                        300         PRES UREL        
+  605     960408/0000F012                        300         PRES VREL        
+  606     960408/0000F012                        250         PRES HGHT        
+  607     960408/0000F012                        250         PRES TMPK        
+  608     960408/0000F012                        250         PRES RELH        
+  609     960408/0000F012                        250         PRES UREL        
+  610     960408/0000F012                        250         PRES VREL        
+  611     960408/0000F012                        200         PRES HGHT        
+  612     960408/0000F012                        200         PRES TMPK        
+  613     960408/0000F012                        200         PRES RELH        
+  614     960408/0000F012                        200         PRES UREL        
+  615     960408/0000F012                        200         PRES VREL        
+  616     960408/0000F012                        150         PRES HGHT        
+  617     960408/0000F012                        150         PRES TMPK        
+  618     960408/0000F012                        150         PRES RELH        
+  619     960408/0000F012                        150         PRES UREL        
+  620     960408/0000F012                        150         PRES VREL        
+  621     960408/0000F012                        100         PRES HGHT        
+  622     960408/0000F012                        100         PRES TMPK        
+  623     960408/0000F012                        100         PRES RELH        
+  624     960408/0000F012                        100         PRES UREL        
+  625     960408/0000F012                        100         PRES VREL        
+  626     960408/0000F012                          0         TROP PRES        
+  627     960408/0000F012                          0         TROP THTA        
+  628     960408/0000F012                          0         TROP UREL        
+  629     960408/0000F012                          0         TROP VREL        

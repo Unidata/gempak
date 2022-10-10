@@ -1,0 +1,49 @@
+<!doctype html><head><title>GEMPAK Help: sfdelt</title></head><body>
+<a href=../../help_and_documentation>GEMPAK Manual</a> | 
+<a href=../prog/>Programs</a><br><hr>
+<pre>
+SFDELT deletes data from a surface data file.
+
+
+INPUT PARAMETERS
+ 
+    <a href=../parm/sffile.html>SFFILE</a>    Surface data file
+    <a href=../parm/dattim.html>DATTIM</a>    Date/time
+    <a href=../parm/area.html>AREA</a>      Data area
+ 
+ 
+PROGRAM DESCRIPTION
+ 
+    SFDELT deletes data from a surface data file.  The stations
+    to be deleted may be specified in <a href=../parm/area.html>AREA</a>; the times to be
+    deleted are given in <a href=../parm/dattim.html>DATTIM</a>.
+
+    If <a href=../parm/area.html>AREA</a> is set to DSET or ALL, all the data present at the
+    times in <a href=../parm/dattim.html>DATTIM</a> will be deleted, along with the headers for
+    those times.
+
+
+EXAMPLES
+ 
+    1.  Delete all the data at time 920722/1200.
+
+        <a href=../parm/sffile.html>SFFILE</a>  =  92jul.sfc
+        <a href=../parm/dattim.html>DATTIM</a>  =  920722/1200
+        <a href=../parm/area.html>AREA</a>    =  dset
+
+    2.  Delete data at BWI for the most recent time in the file.
+
+        <a href=../parm/sffile.html>SFFILE</a>  =  realtime.sfc
+        <a href=../parm/dattim.html>DATTIM</a>  =  last
+        <a href=../parm/area.html>AREA</a>    =  @bwi
+
+
+ERROR MESSAGES
+ 
+    [SFDELT  -1]    Fatal error initializing TAE.
+    [SFDELT  -2]    Fatal error reading TAE parameters.
+    [SFDELT  -3]    Error deleting data at time ....
+</pre>
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

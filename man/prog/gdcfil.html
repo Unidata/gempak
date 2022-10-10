@@ -1,0 +1,124 @@
+<!doctype html><head><title>GEMPAK Help: gdcfil</title></head><body>
+<a href=../../help_and_documentation>GEMPAK Manual</a> | 
+<a href=../prog/>Programs</a><br><hr>
+<pre>
+GDCFIL creates a GEMPAK grid file.
+
+INPUT PARAMETERS
+ 
+    <a href=../parm/gdoutf.html>GDOUTF</a>    Output grid file
+    <a href=../parm/proj.html>PROJ</a>      Map projection/angles/margins|drop flag
+    <a href=../parm/grdarea.html>GRDAREA</a>   Area covered by grid
+    <a href=../parm/kxky.html>KXKY</a>      Number of grid points in x;y
+    <a href=../parm/maxgrd.html>MAXGRD</a>    Maximum number of grids
+    <a href=../parm/cpyfil.html>CPYFIL</a>    Grid file whose navigation is to be used in new grid file | subare
+    <a href=../parm/anlyss.html>ANLYSS</a>    Grid analysis block
+ 
+ 
+
+PROGRAM DESCRIPTION
+ 
+    This program creates a GEMPAK grid file.  Information about
+    the file to be created is received from the input values,
+    from the grid navigation table, or from an existing grid file.
+
+    Each grid file must contain navigation information.  It
+    may also contain analysis block information which is used
+    when an objective analysis program writes to the grid file.
+
+    If the value in <a href=../parm/cpyfil.html>CPYFIL</a> begins with a #, the rest of the
+    string specifies a grid number or name contained in the
+    grid navigation table. Any other non-blank entry in <a href=../parm/cpyfil.html>CPYFIL</a>
+    is taken as the name of an existing grid file, whose navigation
+    and analysis blocks will be copied to the new grid file.
+
+    If <a href=../parm/cpyfil.html>CPYFIL</a> is blank, the navigation and analysis information
+    will be obtained from <a href=../parm/proj.html>PROJ</a>, <a href=../parm/grdarea.html>GRDAREA</a>, <a href=../parm/kxky.html>KXKY</a>, and <a href=../parm/anlyss.html>ANLYSS</a>.  <a href=../parm/kxky.html>KXKY</a>
+    contains the number of points in the x and y directions.
+    The two integers must be separated with a semicolon.  If
+    the grid projection type specified in <a href=../parm/proj.html>PROJ</a> is CED, the
+    grid spacing consisting of deltax and deltay may be entered
+    in <a href=../parm/kxky.html>KXKY</a> by prefixing the numbers with a #.  <a href=../parm/deltax.html>DELTAX</a> and <a href=../parm/deltay.html>DELTAY</a>
+    are in degrees longitude and degrees latitude, respectively.
+    The analysis information specifies <a href=../parm/deltan.html>DELTAN</a>, which is the
+    station spacing, and the extend area separated by a slash.
+    The extend area is four integers separated by semicolons.  If
+    <a href=../parm/anlyss.html>ANLYSS</a> is blank, default values will be assigned.  If there
+    is no analysis block in the file to be copied, <a href=../parm/anlyss.html>ANLYSS</a> is
+    used to create one.
+
+    <a href=../parm/maxgrd.html>MAXGRD</a> is the maximum number of grids which will be allowed
+    in the grid file.
+
+
+EXAMPLES
+ 
+   1.  Create a grid file called lfm.grd from the information in
+       the grid navigation table, allowing up to 1000 grids in the
+       file.  <a href=../parm/proj.html>PROJ</a>, <a href=../parm/grdarea.html>GRDAREA</a> and <a href=../parm/kxky.html>KXKY</a> are ignored since this
+       information will be obtained from the grid navigation
+       table.
+
+       <a href=../parm/gdoutf.html>GDOUTF</a>  = lfm.grd
+       <a href=../parm/proj.html>PROJ</a>    =
+       <a href=../parm/grdarea.html>GRDAREA</a> =
+       <a href=../parm/kxky.html>KXKY</a>    =
+       <a href=../parm/maxgrd.html>MAXGRD</a>  = 1000
+       <a href=../parm/cpyfil.html>CPYFIL</a>  = #lfm
+       <a href=../parm/anlyss.html>ANLYSS</a>  =
+
+   2.  Create a grid file called sound.grd with a maximum of 15
+       grids.  The grid dimensions are 20 by 30; the area
+       is US in a Mercator projection.  The station
+       spacing is 5 degrees of latitude and the grid extension
+       for objective analysis is 3 grid points in each direction.
+
+       <a href=../parm/gdoutf.html>GDOUTF</a>  = sound.grd
+       <a href=../parm/proj.html>PROJ</a>    = mer
+       <a href=../parm/grdarea.html>GRDAREA</a> = us
+       <a href=../parm/kxky.html>KXKY</a>    = 20;30
+       <a href=../parm/maxgrd.html>MAXGRD</a>  = 15
+       <a href=../parm/cpyfil.html>CPYFIL</a>  =
+       <a href=../parm/anlyss.html>ANLYSS</a>  = 5/3;3;3;3
+
+   3.  Create a file for evenly spaced lat/lon grids over area IL-
+       using a grid spacing of .75 degrees in each direction.
+       Compute reasonable values for the analysis block.
+
+       <a href=../parm/gdoutf.html>GDOUTF</a>  = il.grd
+       <a href=../parm/proj.html>PROJ</a>    = ced
+       <a href=../parm/grdarea.html>GRDAREA</a> = il-
+       <a href=../parm/kxky.html>KXKY</a>    = #.75;.75
+       <a href=../parm/maxgrd.html>MAXGRD</a>  = 100
+       <a href=../parm/cpyfil.html>CPYFIL</a>  =
+       <a href=../parm/anlyss.html>ANLYSS</a>  =
+
+   4.  Create a grid file called new.grd from the information
+       within grid file old.grd.
+
+       <a href=../parm/gdoutf.html>GDOUTF</a>  = new.grd
+       <a href=../parm/proj.html>PROJ</a>    =
+       <a href=../parm/grdarea.html>GRDAREA</a> =
+       <a href=../parm/kxky.html>KXKY</a>    =
+       <a href=../parm/maxgrd.html>MAXGRD</a>  = 100
+       <a href=../parm/cpyfil.html>CPYFIL</a>  = old.grd
+       <a href=../parm/anlyss.html>ANLYSS</a>  =
+
+
+ERROR MESSAGES
+ 
+    [GDCFIL  +1]    WARNING: This grid is too large for GEMPAK programs.
+    [GDCFIL  -1]    Fatal error initializing TAE.
+    [GDCFIL  -2]    Fatal error reading TAE parameters.
+    [GDCFIL  -3]    Fatal error initializing GEMPLT.
+    [GDCFIL  -4]    Navigation information is invalid.
+    [GDCFIL  -5]    Grid area ... is invalid.
+    [GDCFIL  -6]    Grid size is invalid.
+    [GDCFIL  -7]    The grid file name may not be blank.
+    [GDCFIL  -8]    Navigation table cannot be read.
+    [GDCFIL  -9]    Grid name ... cannot be found in grid table.
+    [GDCFIL -10]    Extend region is invalid.  Try 2;2;2;2.
+</pre>
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

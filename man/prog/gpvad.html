@@ -1,0 +1,96 @@
+<!doctype html><head><title>GEMPAK Help: gpvad</title></head><body>
+<a href=../../help_and_documentation>GEMPAK Manual</a> | 
+<a href=../prog/>Programs</a><br><hr>
+<pre>
+GPVAD plots the NEXRAD Level III VAD wind profile.
+
+INPUT PARAMETERS
+ 
+    <a href=../parm/radfil.html>RADFIL</a>    Radar image filename(s)
+    <a href=../parm/radtim.html>RADTIM</a>    Radar composite current/dattim
+    <a href=../parm/wind.html>WIND</a>      Wind symbol/siz/wdth/typ/hdsz
+    <a href=../parm/title.html>TITLE</a>     Title color/line/title
+    <a href=../parm/panel.html>PANEL</a>     Panel loc/color/dash/width/regn
+    <a href=../parm/device.html>DEVICE</a>    Device|name|x size;y size|color type
+    <a href=../parm/clear.html>CLEAR</a>     Clear screen flag
+    <a href=../parm/text.html>TEXT</a>      Size/fnt/wdth/brdr/N-rot/just/hw flg
+    <a href=../parm/clrbar.html>CLRBAR</a>    Color/ornt/anch/x;y/ln;wd/freq|text_info
+    <a href=../parm/output.html>OUTPUT</a>    Output device/filename
+ 
+ 
+
+PROGRAM DESCRIPTION
+ 
+    GPVAD plots the NEXRAD Level III wind profile product.
+
+    <a href=../parm/radfil.html>RADFIL</a> is the NEXRAD Level III input file. A template may
+    be specified, with an optional site name and product type
+    (eg NEXRIII|DDC|NWV). If a site name is provided, it will
+    be used to replace the %SITE% alias in the template name.
+    If a product type is provided, it will be used to replace
+    the %PROD% alias in the template string if present. NVW
+    is the only valid VAD product identifier at present.
+    The NEXRIII template is provided for NEXRAD Level III files.
+
+    <a href=../parm/radtim.html>RADTIM</a> is a valid GEMPAK date/time string or abbreviation.
+    A time range may be specified.
+
+    <a href=../parm/clrbar.html>CLRBAR</a> specifies the attributes used to plot the RMS ranges
+    of the VAD winds.
+
+    <a href=../parm/wind.html>WIND</a> can be used to select the type and plot size of barbs or
+    arrows for the vectors in the VAD display.
+
+    <a href=../parm/text.html>TEXT</a> can be used to control the attributes used to plot the text
+    symbols contained in the VAD product file.
+
+    Colors for the axes and wind vectors drawn by GPVAD are specified
+    in the gpvad.config file. If the file does not exist, a default
+    set of colors will be used. The config file will be searched for
+    in the standard locations, including the current working directory
+    in order to allow the user to tailor colors for the individual
+    application. $GEMTBL/unidata/gpvad.config is provided.
+
+ 
+EXAMPLES
+ 
+    1.	Plot the VAD profile for radar location FFC using the NEXRIII
+	template for the most recent time. Use wind barbs, and plot the
+	RMS bar along the altitude axis.
+
+	<a href=../parm/radfil.html>RADFIL</a>   = NEXRIII|FFC|NVW
+	<a href=../parm/radtim.html>RADTIM</a>   = last
+	<a href=../parm/wind.html>WIND</a>     = bk1
+	<a href=../parm/title.html>TITLE</a>    = 1/-2/VAD DISPLAY ~
+	<a href=../parm/panel.html>PANEL</a>    = 0
+	<a href=../parm/device.html>DEVICE</a>   = XW
+	<a href=../parm/clear.html>CLEAR</a>    = y
+	<a href=../parm/text.html>TEXT</a>     = 1/1/1/hw
+	<a href=../parm/clrbar.html>CLRBAR</a>   = 1/v/cl/.05;.5/.3;.01
+
+
+    2.	Plot an animated VAD profile series for radar location FFC
+	using the NEXRIII template and specifying the time range
+	from 21Z to 23Z today.
+
+	<a href=../parm/radfil.html>RADFIL</a>   = NEXRIII|FFC|NVW
+	<a href=../parm/radtim.html>RADTIM</a>   = 2200-2300
+	<a href=../parm/wind.html>WIND</a>     = bk1
+	<a href=../parm/title.html>TITLE</a>    = 1/-2/VAD DISPLAY ~
+	<a href=../parm/panel.html>PANEL</a>    = 0
+	<a href=../parm/device.html>DEVICE</a>   = XW
+	<a href=../parm/clear.html>CLEAR</a>    = y
+	<a href=../parm/text.html>TEXT</a>     = 1/1/1/hw
+	<a href=../parm/clrbar.html>CLRBAR</a>   = 1/v/cl/.05;.5/.3;.01
+
+
+ERROR MESSAGES
+ 
+    [GPVAD  +2]     NEXRIII template not found using ...
+    [GPVAD  -1]     Fatal error initializing TAE.
+    [GPVAD  -2]     Fatal error reading TAE parameters.
+    [GPVAD  -3]     GEMPLT initialization error.
+</pre>
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<HTML><HEAD><TITLE>GEMPAK Redbook Graphic Examples</TITLE>
+<META NAME="BOOKMARK" CONTENT="GEMPAK Redbook Graphic Examples">
+<META NAME="AUTHOR" CONTENT="Steve Chiswell">
+<META NAME="KEYWORDS" CONTENT="Software, GEMPAK, Examples, Redbook">
+<META NAME="DESCRIPTION" CONTENT="GEMPAK Redbook Graphic Examples.">
+<META NAME="UIINDEX" CONTENT="4">
+</HEAD><BODY>
+
+
+<TABLE> 
+  <TR>
+    <TD valign=top><IMG SRC="/gempak/tutorial/images/world_small.gif"></TD>
+    <TD align=center>
+        <H1>GEMPAK / N-AWIPS</H1>
+        <h2>REDBOOK Graphics</h2>
+    </TD>
+  </TR>
+</TABLE>
+
+
+<h3>What are REDBOOK Graphics?</h3>
+REDBOOK Graphics are products used for operational forecasts and are transmitted
+on the NWSTG channel of NOAAPORT. REDBOOK graphics are binary files which contain 
+georeferenced drawing commands and can be mapped and reprojected into any desired 
+display area. Since the products are not fixed to a set map area/projection,
+the end use can tailor the products to local needs. Moreover, the user can
+overlay graphics with other REDBOOK graphics, or any other GEMPAK data set.
+The product generation tools can be used to edit and modify these products
+as well by converting them to GEMPAK's Vector Graphics Format (VGF).
+<p>
+<center>
+<h3>Redbook QPF and NEXRAD Mosaic</h3>
+<A HREF="product_annotations.png">
+<IMG SRC="product_annotations_small.png"></a><br>
+</center>
+
+<p>
+GEMPAK is capable of displaying REDBOOK Graphics using the GPMAP program.
+Additionally, I have provided a program <FONT COLOR=#800000>DCREDBOOK</FONT>
+in the Unidata distribution of GEMPAK to automate generation of graphical
+output of these products. Since the REDBOOK products are device independent,
+you can use any of the available GEMPAK device drivers to display them-
+including 11"x17" tabloid paper for postscript prints for a map wall.
+Moreover, if you want to change the display region, you can configure
+your desired plot area for each product.
+<p>
+Sample displays of REDBOOK Graphics products
+shows the range of analysis and forecast products currently available.
+The script used to generate the GIF output files is
+<A HREF="dcredbook_gif.csh">dcredbook_gif.csh</a>.
+<p>
+The script bellow is an example of the use of dcredbook_ps (the
+dcredbook decoder linked directly to the PS driver)
+which can be used with the LDM pqact.conf file to automatically
+send REDBOOK graphics to a postscript printer:
+
+
+<pre>
+#!/bin/csh -f
+#
+# Filename: dcredbook_ps.csh
+#
+# This script may be used as a pqact.conf action to automatically
+# print REDBOOK graphics found on NOAAPORT.
+#
+# pqact.conf usage:
+# 
+# send all NOAAPORT graphic products (except those from KWAL) to this script
+#HRS     ^P..... (K[^W]|KW[^A]|KWA[^L])
+#	PIPE    -close  util/dcredbook_ps.csh
+#
+#
+# source the GEMPAK environment so that table, mapfiles etc. are found
+#
+source /home/gempak/NAWIPS/Gemenviron
+
+# Set a work directory and change directory to it
+setenv PSDIR $GEMDATA/web/redbook
+cd $PSDIR
+
+# set the GEMPAK device line, use the process number of this script as the file ID.
+# The default postscript output is for 8.5" x 11" paper. If you have an alternate
+# paper tray for 11" x 17" paper, you can specify that paper size in the device
+# options.
+#
+#set DEV='PS|'$$'.ps|11;17|M'
+set DEV='PS|'$$'.ps||M'
+
+# Redirect standard input to the dcredbook_ps decoder
+cat | dcredbook_ps -v 1 -d $GEMDATA/logs/dcredbook.log $DEV
+
+# print and remove the postscript file (use -c to copy the file to spool)
+lp -c -dhp $$.ps
+rm $$.ps
+
+exit 0
+</pre>
+
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</HTML>

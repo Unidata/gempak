@@ -1,0 +1,128 @@
+h1, h2, h3, strong {color:#666666;
+   font-family:verdana, arial, sans-serif;}
+   
+  div.main {position:relative; padding: 0.5em 5%;}
+  
+  div.content {
+   position:relative;
+   margin: 0.2em 1.0em;
+   padding-bottom: 25px;
+  }
+  
+  div.container {
+   position:relative;
+   border-bottom: 1px solid #666;
+   margin: 0.2em 1.0em;
+   padding-top: 2px;
+   
+  }
+
+div.container p
+{margin:0em; padding-left:2.0em;
+   font-family:verdana, arial, sans-serif;
+   }
+   
+div.container ol,
+div.container ul 
+   {padding-left:0px;
+   font-family:verdana, arial, sans-serif;
+   list-style-type: none;}
+   
+  div.container li
+   {padding-left:25px;
+   padding-bottom: 20px;
+   font-family:verdana, arial, sans-serif;
+   font-size: 16px;}
+   
+div.container h3
+   {margin:0em; padding-left:1.0em;
+   padding-bottom:0.5em;}
+
+div.installmenu {
+   text-align: center;
+   font-family:verdana, arial, sans-serif;
+   font-size: 14px;
+   padding:10px;
+}
+
+div.date {
+   text-align: center;
+   font-style: italic;
+   font-family:verdana, arial, sans-serif;
+   font-size: 12px;
+   padding:0px;
+}
+div#title, div#footer
+   {border:1px solid #CCCCCC;
+   background-color: #EEEEEE;
+   padding-top:0em;
+   padding-bottom:1.5em;}
+
+div#title h1,
+div#title h2,
+div#title h3,
+div#title p
+{text-align:center; padding-top: 0.1em;
+   font-family:verdana, arial, sans-serif;}
+
+div#footer
+   { height:1em;
+   line-height:2.2em;
+   font-style:italic;
+   text-align:center;}
+   
+div#redcode {
+	font-color: red;
+}
+
+div.sublist {
+   position: relative;
+	padding: 20 20 0 0px;
+	margin: 0px 25px 30px 25px;
+	background: #f7f7f7;
+	border: 1px dotted #cccccc;
+}
+
+div.support {
+   position: relative;
+	padding: 0 20 0 0px;
+	margin: 0px 25px 30px 25px;
+}
+  
+/* Format different kinds of code blocks */
+div.cmd {
+    color: #080;
+    font-family: courier-new, monospace;
+    font-weight: bold;
+    padding: 25px;
+}
+div.err {
+    color: #008;
+    font-family: courier-new, monospace;
+    font-weight: normal;
+    padding: 25px;
+    font-size: 14px;
+}
+.dir {
+    color: #800;
+    font-family: courier-new, monospace;
+    font-weight: bold;
+}
+.spec {
+    color: #ff0000;
+    font-family:verdana, arial, sans-serif;
+    font-weight: bold;
+}
+.file {
+    color: #800;
+    font-family: courier-new, monospace;
+    font-weight: bold;
+}
+
+div.code {
+    position: relative;
+    color: #008;
+    font-family: courier-new, monospace;
+    font-weight: bold;
+    padding: 25px;
+}

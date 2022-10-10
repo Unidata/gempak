@@ -1,0 +1,213 @@
+<ul>
+<a name="index.html"></a> <span class="nv">0</span><span class="dv">|</span> <a href="index.html">GEMPAK Online Tutorial</a><br>
+<ul>
+<a name="organization.html"></a> <b>0.1</b> - <a href="organization.html">GEMPAK Workshop Description and Overview</a><br>
+<a name="outline.html"></a> <b>0.2</b> - <a href="outline.html">GEMPAK Application Workshop Outline</a>
+</ul>
+
+<br>
+
+<a name="page_introduction.html"></a> <span class="nv">1</span><span class="dv">|</span> <a href="page_introduction.html">Introduction to GEMPAK</a><br>
+<ul>
+<a name="intro.html"></a> <b>1.1</b> - <a href="intro.html">Introduction: What is GEMPAK?</a><br>
+<a name="intro2.html"></a> <b>1.2</b> - <a href="intro2.html">Introduction: GEMPAK Capabilities</a><br>
+<a name="intro3.html"></a> <b>1.3</b> - <a href="intro3.html">Introduction: Unidata's Role</a><br>
+<a name="intro4.html"></a> <b>1.4</b> - <a href="intro4.html">Introduction: What is NAWIPS?</a><br>
+</ul>
+
+<br>
+
+<a name="page_packagelayout.html"></a> <span class="nv">2</span><span class="dv">|</span><a href="page_packagelayout.html">Package Layout</a><br>
+<ul>
+<a name="layout.html"></a> <b>2.1</b> - <a href="layout.html">GEMPAK Organization</a><br>
+<a name="layout2.html"></a> <b>2.2</b> - <a href="layout2.html">User Interface</a><br>
+<a name="layout3.html"></a> <b>2.3</b> - <a href="layout3.html">Default Files</a><br>
+<a name="layout4.html"></a> <b>2.4</b> - <a href="layout4.html">Environmental Variables</a><br>
+<a name="layout5.html"></a> <b>2.5</b> - <a href="layout5.html">User Manual</a><br>
+</ul>
+
+<br>
+
+<a name="listing.html"></a> <span class="nv">3</span><span class="dv">|</span> <a href="listing.html">GEMPAK  Programs</a><br>
+<ul>
+<a name="listing.html"></a> <b>3.1</b> - <a href="listing.html">GEMPAK Listing Programs</a><br>
+<ul>
+<a name="sflist.html"></a> <b>3.1.1</b> - <a href="sflist.html">SFLIST</a><br>
+<a name="snlist.html"></a> <b>3.1.2</b> - <a href="snlist.html">SNLIST</a><br>
+<a name="gdlist.html"></a> <b>3.1.3</b> - <a href="gdlist.html">GDLIST</a><br>
+<a name="gdinfo.html"></a> <b>3.1.4</b> - <a href="gdinfo.html">GDINFO</a><br>
+<a name="listing_exercises.html"></a> <a href="listing_exercises.html">Listing Program Exercises</a><br>
+</ul>
+
+<a name="mapping.html"></a> <b>3.2</b> - <a href="Mapping.html">GEMPAK Mapping Programs</a><br>
+
+<ul>
+<a name="sfmap.html"></a> <b>3.2.1</b> - <a href="sfmap.html">GEMPAK Mapping Programs: SFMAP</a><br>
+<a name="snmap.html"></a> <b>3.2.2</b> - <a href="snmap.html">GEMPAK Mapping Programs: SNMAP & GDMAP</a><br>
+<a name="mapping_exercises.html"></a> <b>3.2.3</b> - <a href="mapping_exercises.html">Mapping Program Exercises for GEMPAK</a><br>
+<a name="gpmap.html"></a> <b>3.2.4</b> - <a href="gpmap.html">GEMPAK Mapping Programs: GPMAP</a><br>
+</ul>
+
+<a name="page_gempakgridprograms.html"></a> <b>3.3</b> - <a href="Mapping.html">GEMPAK Grid Programs</a><br>
+
+<ul>
+<a name="gridprogs.html"></a> <b>3.3.1</b> - <a href="gridprogs.html">GEMPAK Grid Data Types</a><br>
+<a name="gridprogs2.html"></a> <b>3.3.2</b> - <a href="gridprogs2.html">GEMPAK Grid Plotting Programs</a><br>
+<a name="gridprog_exercises.html"></a> <b>3.3.3</b> - <a href="gridprog_exercises.html">GEMPAK Grid Program Exercises!! (Scalar Values)</a><br>
+<a name="gridprog_exercises2.html"></a> <b>3.3.4</b> - <a href="gridprog_exercises2.html">GEMPAK Grid Program Exercises!! (Vectors)</a><br>
+<a name="gridprog_exercises3.html"></a> <b>3.3.5</b> - <a href="gridprog_exercises3.html">GEMPAK Grid Program Exercises!!</a><br>
+</ul>
+
+<a name="graphing.html"></a> <b>3.4</b> - <a href="graphing.html">GEMPAK Graphing Programs</a><br>
+
+<ul>
+<a name=""></a> <b>3.4.1</b> - <a href="">SFGRAM</a><br>
+<a name=""></a> <b>3.4.2</b> - <a href="">SNCROSS</a><br>
+<a name=""></a> <b>3.4.3</b> - <a href="">SNHODO</a><br>
+<a name=""></a> <b>3.4.4</b> - <a href="">SNPROF</a><br>
+<a name=""></a> <b>3.4.5</b> - <a href="">SNTSER</a><br>
+<a name=""></a> <b>3.4.6</b> - <a href="">GDCROSS</a><br>
+<a name=""></a> <b>3.4.7</b> - <a href="">GDPROF</a><br>
+<a name=""></a> <b>3.4.8</b> - <a href="">GDTSER</a><br>
+<a href="graphing_exercises.html">Graphing Exercises</a><br>
+</ul>
+
+<a name=""></a> <b>3.5</b> - <a href="">SFEDIT and SNEDIT</a><br>
+<a name="importingdata.html"></a>  <a href="importingdata.html">Importing data</a><br>
+<a name="importing_exercises.html"></a> <a href="importing_exercises.html">Importing data into GEMPAK</a><br>
+<a name="coordinates.html"></a> <b>3.6</b> - <a href="coordinates.html">Vertical Coordinates</a><br>
+</ul>
+
+<br>
+
+<a name="nprogs.html"></a> <span class="nv">4</span><span class="dv">|</span> <a href="nprogs.html">NPROGS</a><br>
+<a name="image_directory_structure.html"></a> <a href="image_directory_structure.html">Image Directory Structure for NMAP2 & Garp</a><br>
+
+<ul>
+<a name="nmap.html"></a> <b>4.1</b> - <a href="nmap.html">NMAP2</a><br>
+<a name="nmap_frame.html"></a><a href="nmap_frame.html">Frame Selection</a><br>
+<a name="nmap_zoom_unzoom.html"></a> <a href="nmap_zoom_unzoom.html">Zoom/Unzoom</a><br>
+<a name="nmap_roam.html"></a>  <a href="nmap_roam.html">Roam</a><br>
+<a name="nmap_locator.html"></a> <a href="nmap_locator.html">Locator</a><br>
+<a name="nmap_cloudz.html"></a> <a href="nmap_cloudz.html">NMAP Cloud Height Determination</a><br>
+<ul>
+<a name="nmap_data.html"></a> <b>4.1.1</b> - <a href="nmap_data.html">Data Selection</a><br>
+<a name="nmap_data2.html"></a> <b>4.1.2</b> - <a href="nmap_data2.html">Data Config</a> (w/ Config Data)<br>
+<a name="importingdata_gui.html"></a> <a href="importingdata_gui.html">Adding GEMPAK data sets to GUIs</a><br>
+<a name="nmap_spf.html"></a> <b>4.1.3</b> - <a href="nmap_spf.html">SPF</a><br>
+<a name="nmap_pgen.html"></a> <b>4.1.4</b> - <a href="nmap_pgen.html">Product Generation</a><br>
+<a name="nmap_pgen_grid.html"></a>  <a href="nmap_pgen_grid.html">NMAP Product Generation</a><br>
+<a name="nmap_pgen_grid_gdcntr.html"></a> <a href="nmap_pgen_grid_gdcntr.html">NMAP Product Generation Exercise (GDCNTR)</a><br>
+<a name="nmap_pgen_watch.html"></a><a href="nmap_pgen_watch.html">NMAP Product Generation</a><br>
+<a name=""></a> <b>4.1.5</b> - <a href="">Furthur Options</a><br>
+<a name="nmap_examples.html"></a> <a href="nmap_examples.html">Examples</a><br>
+</ul>
+<a name="nsharp.html"></a> <b>4.2</b> - <a href="nsharp.html">NSHARP</a><br>
+<ul>
+<a name="nsharp2.html"></a> <b>4.2.1</b> - <a href="nsharp2.html">Display and Charts</a><br>
+<a name="nsharp3.html"></a> <b>4.2.2</b> - <a href="nsharp3.html">Observed Data Soundings</a><br>
+<a name="nsharp4.html"></a> <b>4.2.3</b> - <a href="nsharp4.html">Gridded Data Soundings</a><br>
+<a name="nsharp6.html"></a> <b>4.2.4</b> - <a href="nsharp6.html">Point Forecast Soundings</a><br>
+<a name="nsharp5.html"></a> <b>4.2.5</b> - <a href="nsharp5.html">ACARS Soundings</a><br>
+</ul>
+<a name="ntrans.html"></a> <b>4.3</b> - <a href="ntrans.html">NTRANS</a><br>
+<a name="ntrans2.html"></a> <a href="ntrans2.html">NTRANS</a><br>
+
+<a name="nwx.html"></a> <b>4.4</b> - <a href="nwx.html">NWX</a><br>
+<a name="nwx2.html"></a> <a href="nwx2.html">NWX Interface</a><br>
+<a name="nwx3.html"></a> <a href="nwx3.html">NWX Products</a><br>
+<a name="nwx4.html"></a> <a href="nwx4.html">NWX Output</a><br>
+
+<a name="nalarm.html"></a> <b>4.5</b> - <a href="nalarm.html">NALARM</a><br>
+<a name="ncolor.html"></a> <b>4.6</b> - <a href="ncolor.html">NCOLOR</a><br>
+<a name="garp.html"></a> <b>4.7</b> - <a href="garp.html">GARP</a><br>
+<ul>
+<a name="garp2.html"></a> <b>4.7.1</b> - <a href="garp2.html">GARP Display</a><br>
+<a name="garp6.html"></a>  <a href="garp6.html">GARP Menu bar</a><br>
+<a name="garp3.html"></a>  <a href="garp3.html">GARP Image Display</a><br>
+<a name="garp4.html"></a> <b>4.7.2</b> - <a href="garp4.html">Data Types</a><br>
+<a name="garp5.html"></a> <b>4.7.3</b> - <a href="garp5.html">FDF's</a><br>
+
+</ul>
+</ul>
+
+<br>
+
+<a name=""></a> <span class="nv">5</span><span class="dv">|</span> <a href="">GEMPAK Extended</a><br>
+<ul>
+<a name="aesthetics.html"></a> <b>5.1</b> - <a href="aesthetics.html">Map Aesthetics</a><br>
+<a name="enhancements.html"></a> <a href="enhancements.html">Color Enhancements</a><br>
+<a name="maps.html"></a> <b>5.2</b> - <a href="maps.html">Map Database Reference</a><br>
+
+<a name="devices.html"></a> <b>5.3</b> - <a href="devices.html">GEMPAK Device Drivers</a><br>
+<a name="filetemplates.html"></a><b>5.4</b> - <a href="filetemplates.html">GEMPAK Datafile Templates and Aliases</a><br>
+<a name="projections.html"></a> <b>5.5</b> - <a href="projections.html">GEMPAK Map Projections</a><br>
+<ul>
+<a name="gridinterp.html"></a> <b>5.4.1</b> - <a href="gridinterp.html">Grid Projections & Interpolation</a><br>
+
+<a name="projections2.html"></a> <a href="projections2.html">GEMPAK Projection Examples</a><br>
+</ul>
+<a name="diagnostics.html"></a> <b>5.5</b> - <a href="diagnostics.html">GEMPAK Grid Diagnostics</a><br>
+<ul>
+<a name="diagnostic_exercises.html"></a> <a href="diagnostic_exercises.html">GRID DIAGNOSTIC EXERCISES</a><br>
+</ul>
+<a name="loops.html"></a> <b>5.6</b> - <a href="loops.html">Looping GEMPAK Displays</a><br>
+<a name="overlay.html"></a> <b>5.7</b> - <a href="overlay.html">GEMPAK Overlays</a><br>
+<ul>
+<a name="overlay2.html"></a> <b>5.8</b> - <a href="overlay2.html">GEMPAK Overlays: Multi-panel Displays</a><br>
+</ul>
+</ul>
+
+<br>
+
+<a name="decoders.html"></a> <span class="nv">6</span><span class="dv">|</span> <a href="decoders.html">GEMPAK Decoders</a><br>
+<ul>
+<a name="decoders2.html"></a> <b>6.1</b> - <a href="decoders2.html">Decoding data into GEMPAK Format</a><br>
+<a name="decoders2a.html"></a> <a href="decoders2a.html">GEMPAK Decoders: GEMPAK DC-style decoders</a><br>
+<a name="decoders3.html"></a> <b>6.2</b> - <a href="decoders3.html">Importing ASCII data</a><br>
+<a name="decoders4.html"></a> <b>6.3</b> - <a href="decoders4.html">Packing Files</a><br>
+<a name="decoder_exercises.html"></a> <a href="decoder_exercises.html">GEMPAK Decoder Program Exercises</a><br>
+</ul>
+
+<br>
+
+<a name="batch.html"></a> <span class="nv">7</span><span class="dv">|</span> <a href="batch.html">Scripting GEMPAK</a><br>
+<ul>
+<a name="batch_exercises.html"></a> <a href="batch_exercises.html">GEMPAK Scripting Exercises</a><br>
+</ul>
+
+<br>
+
+<a name="barnes.html"></a> <span class="nv">8</span><span class="dv">|</span> <a href="barnes.html">GEMPAK Objective Analysis</a><br>
+<ul>
+<a name="barnes2.html"></a> <b>8.1</b> - <a href="barnes2.html">GEMPAK Objective Analysis Programs</a><br>
+<a name="barnes3.html"></a> <b>8.2</b> - <a href="barnes3.html">GEMPAK Objective Analysis: Surface Data</a><br>
+<a name="barnes4.html"></a> <a href="barnes4.html">GEMPAK Objective Analysis: Sounding Data</a><br>
+<a name="barnes_exercises.html"></a> <a href="barnes_exercises.html">GEMPAK Objective Analysis Exercises</a><br>
+</ul>
+
+<br>
+
+<a name="administration.html"></a> <span class="nv">9</span><span class="dv">|</span> <a href="administration.html">GEMPAK Administration</a><br>
+<ul>
+<a name="administration2.html"></a> <b>9.1</b> - <a href="administration2.html">Resource Administration</a><br>
+<a name="administration2.html"></a> <b>9.2</b> - <a href="administration2.html">Swap Space</a><br>
+<a name="administration2.html"></a> <b>9.3</b> - <a href="administration2.html">8-bit Displays</a><br>
+<a name="support.html"></a> <b>9.4</b> - <a href="support.html">Unidata Support</a><br>
+</ul>
+
+<br>
+
+<a name="exam.html"></a> <span class="nv">10</span><span class="dv">|</span> <a href="exam.html">Final Exercises</a><br>
+<ul>
+<a name="workshop_mapwall.html"></a> <b>10.1</b> - <a href="workshop_mapwall.html">GEMPAK Workshop Map Wall Exercise</a><br>
+<a name="workshop_mapdiscussion.html"></a> <b>10.2</b> - <a href="workshop_mapdiscussion.html">GEMPAK Workshop Map Discussion</a><br>
+</ul>
+
+<br>
+
+<a name="page_appendix.html"></a> <span class="nv">11</span><span class="dv">|</span> <a href="page_appendix.html">Appendix</a><br>
+<ul>
+
+</ul>
+</ul>

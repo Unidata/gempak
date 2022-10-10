@@ -1,0 +1,212 @@
+<!doctype html><head><title>GEMPAK Help: gdplot</title></head><body>
+<a href=../../help_and_documentation>GEMPAK Manual</a> | 
+<a href=../prog/>Programs</a><br><hr>
+<pre>
+GDPLOT draws contour lines through scalar grids and/or wind
+       barbs or arrows through vector grids.  Multiple sets
+       of contours and vectors can be generated for each
+       frame.
+
+INPUT PARAMETERS
+ 
+    <a href=../parm/gdfile.html>GDFILE</a>    Grid file
+    <a href=../parm/gdattim.html>GDATTIM</a>   Grid date/time
+    <a href=../parm/glevel.html>GLEVEL</a>    Grid level
+    <a href=../parm/gvcord.html>GVCORD</a>    Grid vertical coordinate
+    <a href=../parm/panel.html>PANEL</a>     Panel loc/color/dash/width/regn
+    <a href=../parm/skip.html>SKIP</a>      Skip_cntr/skip_plt_x;skip_plt_y
+    <a href=../parm/scale.html>SCALE</a>     Scalar scale / vector scale
+    <a href=../parm/gfunc.html>GFUNC</a>     Scalar grid
+    <a href=../parm/ctype.html>CTYPE</a>     Contour type:  C/F
+    <a href=../parm/contur.html>CONTUR</a>    Subbox/smooth
+    <a href=../parm/cint.html>CINT</a>      Contour interval/min/max
+    <a href=../parm/line.html>LINE</a>      Color/type/width/label/smth/fltr/scflg
+    <a href=../parm/fint.html>FINT</a>      Fill interval/min/max
+    <a href=../parm/fline.html>FLINE</a>     Fill colors/fill types
+    <a href=../parm/hilo.html>HILO</a>      Color/symbol/rng/rad/cnt/intp
+    <a href=../parm/hlsym.html>HLSYM</a>     <a href=../parm/hilo.html>HILO</a> txt size/posn/font/wdth/hw
+    <a href=../parm/clrbar.html>CLRBAR</a>    Color/ornt/anch/x;y/ln;wd/freq|text_info
+    <a href=../parm/gvect.html>GVECT</a>     Vector grid
+    <a href=../parm/wind.html>WIND</a>      Wind symbol/siz/wdth/typ/hdsz
+    <a href=../parm/refvec.html>REFVEC</a>    Mag;x;y;txtsiz/font/wdth/HW;labl
+    <a href=../parm/title.html>TITLE</a>     Title color/line/title
+    <a href=../parm/text.html>TEXT</a>      Size/fnt/wdth/brdr/N-rot/just/hw flg
+    <a href=../parm/clear.html>CLEAR</a>     Clear screen flag
+    <a href=../parm/garea.html>GAREA</a>     Graphics area
+    <a href=../parm/ijskip.html>IJSKIP</a>    Iskp;Istrt;Istp/Jskp;Jstrt;Jstp
+    <a href=../parm/proj.html>PROJ</a>      Map projection/angles/margins|drop flag
+    <a href=../parm/map.html>MAP</a>       Map color/dash/width/filter flag
+    <a href=../parm/mscale.html>MSCALE</a>    fgc;bgc;mask/units/lat;hide/values/anch/x;y/ln;wd/freq|text_info|t
+    <a href=../parm/latlon.html>LATLON</a>    Line color/dash/width/freq/inc/label/format
+    <a href=../parm/device.html>DEVICE</a>    Device|name|x size;y size|color type
+    <a href=../parm/stnplt.html>STNPLT</a>    Txtc/txt attr|marker attr|stnfil#col
+ 
+ 
+
+PROGRAM DESCRIPTION
+ 
+    GDPLOT draws contours through scalar grids and wind barbs
+    or arrows at grid points for vector grids.  Plots are
+    generated for any field computed using the GEMPAK grid
+    diagnostic functions.  The program can generate multiple
+    sets of contours and vector plots for each frame.  It can
+    also generate plots for multiple times.
+
+    A list of times may be given in <a href=../parm/gdattim.html>GDATTIM</a> allowing animation.
+
+    Exclamation points are used in <a href=../parm/gfunc.html>GFUNC</a> and <a href=../parm/gvect.html>GVECT</a> to delimit
+    multiple sets of contours and vectors, respectively.
+    <a href=../parm/glevel.html>GLEVEL</a>, <a href=../parm/gvcord.html>GVCORD</a>, <a href=../parm/panel.html>PANEL</a>, <a href=../parm/skip.html>SKIP</a>, <a href=../parm/scale.html>SCALE</a>, <a href=../parm/gfunc.html>GFUNC</a>, <a href=../parm/ctype.html>CTYPE</a>, <a href=../parm/contur.html>CONTUR</a>,
+    <a href=../parm/cint.html>CINT</a>, <a href=../parm/title.html>TITLE</a>, <a href=../parm/line.html>LINE</a>, <a href=../parm/fint.html>FINT</a>, <a href=../parm/fline.html>FLINE</a>, <a href=../parm/gvect.html>GVECT</a>, <a href=../parm/wind.html>WIND</a>, <a href=../parm/refvec.html>REFVEC</a>, <a href=../parm/hilo.html>HILO</a>,
+    and <a href=../parm/hlsym.html>HLSYM</a> may contain exclamation points to delimit
+    specifications for the fields defined by <a href=../parm/gfunc.html>GFUNC</a> and <a href=../parm/gvect.html>GVECT</a>.
+    If any parameter contains more specifications than the
+    number of plots specified in <a href=../parm/gfunc.html>GFUNC</a> or <a href=../parm/gvect.html>GVECT</a>, they will be
+    ignored.  Positions between exclamation points may be left
+    blank.  A trailing exclamation point will be treated as a
+    blank.  If there is no trailing exclamation point, the
+    last specification will be repeated for subsequent plots.
+
+    Contours may be displayed as lines or as a color fill.
+    If <a href=../parm/ctype.html>CTYPE</a> is C, contour lines are drawn using input from <a href=../parm/cint.html>CINT</a>
+    and <a href=../parm/line.html>LINE</a>.  If <a href=../parm/ctype.html>CTYPE</a> is F, filled contours are drawn using
+    specifications from <a href=../parm/fint.html>FINT</a> and <a href=../parm/fline.html>FLINE</a>. Both contour lines and
+    filled contours are drawn if <a href=../parm/ctype.html>CTYPE</a> is F/C.
+
+    The attributes of the contour lines, including the color,
+    line type, line width, and label frequency are specified
+    in <a href=../parm/line.html>LINE</a>.  The four attributes must be separated with slashes;
+    semicolons separate the values for each attribute.  If the
+    line type is set to a single negative number, negative
+    contour values will have the absolute value of the line type
+    and positive values will be solid.  If the label type is set
+    to a single number, n, then every nth value will be labeled.
+
+    The contour fill intervals are specified in <a href=../parm/fint.html>FINT</a>; the attributes
+    for the fill are specified in <a href=../parm/fline.html>FLINE</a>.  The first color specified
+    in <a href=../parm/fline.html>FLINE</a> fills values less than the first level; while the
+    last color fills values greater than the last level.  Therefore,
+    n levels require n+1 colors.
+
+    A range of colors may be specified in either <a href=../parm/fline.html>FLINE</a> or <a href=../parm/line.html>LINE</a> by
+    specifying starting, ending and increment values in that order
+    separated by dashes.  If the increment is missing, a default
+    of 1 is used.
+
+    The fill type may be set to 1 (solid), 2 (slanted dash) or 3
+    (slanted line).  If fill type is set to 0, solid fill is used.
+    If the fill type is set to a single negative number, negative
+    values will use the absolute value of the fill type, and positive
+    values will be solid.
+
+    If M is entered in the wind symbol specification of <a href=../parm/wind.html>WIND</a>, winds
+    will be displayed in m/s, unless the KNOTV operator has been
+    specified in <a href=../parm/gvect.html>GVECT</a>, in which case the winds will be displayed
+    in knots.  If K is entered in <a href=../parm/wind.html>WIND</a>, the wind is displayed in
+    knots.
+
+    For contours, <a href=../parm/skip.html>SKIP</a> specifies the number of grid points to skip
+    in generating contours.  For example, if <a href=../parm/skip.html>SKIP</a> = 1, every other
+    point is used to generate the contours.
+
+    For vectors, <a href=../parm/skip.html>SKIP</a> specifies the number of points to skip in both
+    coordinate directions.  For example, <a href=../parm/skip.html>SKIP</a> = /1;2 will display winds
+    at every other grid point in the x direction and every third grid
+    in the y direction.  <a href=../parm/skip.html>SKIP</a> = /0 displays winds at every grid point.
+    Wind barbs or arrows can also be staggered by specifying negative
+    values for <a href=../parm/skip.html>SKIP</a>.
+
+    The <a href=../parm/hilo.html>HILO</a> and <a href=../parm/hlsym.html>HLSYM</a> parameters control marking and labeling the
+    values of relative maxima and minima.  <a href=../parm/clrbar.html>CLRBAR</a> allows a color bar
+    to be added for color fill contours.
+
+ 
+EXAMPLES
+ 
+    1.  Plot the 700 mb temperature, dewpoint and wind barbs.  Plot the
+	temperature in color 3 and the dewpoint in color 17.  For both
+	sets of contours, the lines of negative value are drawn in
+	pattern 3 and the those of positive value are solid.  Every other
+	contour is labeled.  The wind barbs are plotted in m/s in color 6.
+	The display area is an enlarged area centered on New York.
+
+	<a href=../parm/gdfile.html>GDFILE</a>	 =  $GEMPAK/data/hrcbob.grd
+	<a href=../parm/gdattim.html>GDATTIM</a>	 =  f24
+	<a href=../parm/glevel.html>GLEVEL</a>	 =  700
+	<a href=../parm/gvcord.html>GVCORD</a>	 =  pres
+	<a href=../parm/panel.html>PANEL</a>	 =  0
+	<a href=../parm/skip.html>SKIP</a>	 =  0
+	<a href=../parm/scale.html>SCALE</a>	 =  0
+	<a href=../parm/gfunc.html>GFUNC</a>	 =  tmpc                                      ! dwpc
+	<a href=../parm/ctype.html>CTYPE</a>	 =  C
+	<a href=../parm/contur.html>CONTUR</a>	 =  3
+	<a href=../parm/cint.html>CINT</a>	 =  2                                         ! 5
+	<a href=../parm/line.html>LINE</a>	 =  3/-3/3/2                                  ! 17/-3/2/2
+	<a href=../parm/fint.html>FINT</a>	 =  0
+	<a href=../parm/fline.html>FLINE</a>	 =  10-20
+	<a href=../parm/hilo.html>HILO</a>	 =
+	<a href=../parm/hlsym.html>HLSYM</a>	 =
+	<a href=../parm/clrbar.html>CLRBAR</a>	 =
+	<a href=../parm/gvect.html>GVECT</a>	 =  wnd
+	<a href=../parm/wind.html>WIND</a>	 =  bm6//2
+	<a href=../parm/refvec.html>REFVEC</a>	 =  10
+	<a href=../parm/title.html>TITLE</a>	 =  1/-2/~  @  TEMPERATURE, DEWPOINT AND <a href=../parm/wind.html>WIND</a> ! 0
+	<a href=../parm/text.html>TEXT</a>	 =  1/22//hw
+	<a href=../parm/clear.html>CLEAR</a>	 =  yes
+	<a href=../parm/garea.html>GAREA</a>	 =  ny-
+	<a href=../parm/proj.html>PROJ</a>	 =  mer
+	<a href=../parm/map.html>MAP</a>	 =  1/7
+	<a href=../parm/latlon.html>LATLON</a>	 =  2/10/1/1/5;5
+	<a href=../parm/device.html>DEVICE</a>	 =  xw
+	<a href=../parm/stnplt.html>STNPLT</a>   =
+
+    2.  Draw fills and contours of the magnitude of the wind (knots),
+	contours of height and wind barbs (knots) at 250 mb.  The
+	contour and fill intervals are specified in <a href=../parm/cint.html>CINT</a> and <a href=../parm/fint.html>FINT</a>.
+	The display area is the entire grid on a stereographic map.
+
+	<a href=../parm/gdfile.html>GDFILE</a>	 =  $GEMPAK/data/hrcbob.grd
+	<a href=../parm/gdattim.html>GDATTIM</a>	 =  f24
+	<a href=../parm/glevel.html>GLEVEL</a>	 =  250
+	<a href=../parm/gvcord.html>GVCORD</a>	 =  pres
+	<a href=../parm/panel.html>PANEL</a>	 =  0
+	<a href=../parm/skip.html>SKIP</a>	 =  0/1
+	<a href=../parm/scale.html>SCALE</a>	 =  0                                           ! -1
+	<a href=../parm/gfunc.html>GFUNC</a>	 =  knts(mag(wnd))                              ! hght
+	<a href=../parm/ctype.html>CTYPE</a>	 =  c/f                                         ! c
+	<a href=../parm/contur.html>CONTUR</a>	 =  1
+	<a href=../parm/cint.html>CINT</a>	 =  30;50;70;90;110;130;150                     ! 12
+	<a href=../parm/line.html>LINE</a>	 =  27/5/2/1                                    ! 20/1/2/1
+	<a href=../parm/fint.html>FINT</a>	 =  70;90;110;130;150
+	<a href=../parm/fline.html>FLINE</a>	 =  0;25;24;29;7;15
+	<a href=../parm/hilo.html>HILO</a>	 =
+	<a href=../parm/hlsym.html>HLSYM</a>	 =
+	<a href=../parm/clrbar.html>CLRBAR</a>	 =  1
+	<a href=../parm/gvect.html>GVECT</a>	 =  kntv(wnd)
+	<a href=../parm/wind.html>WIND</a>	 =  bk18//1
+	<a href=../parm/refvec.html>REFVEC</a>	 =
+	<a href=../parm/title.html>TITLE</a>	 =  5/-2/~  @  HEIGHTS, ISOTACHS AND <a href=../parm/wind.html>WIND</a> (KTS) ! 0
+	<a href=../parm/text.html>TEXT</a>	 =  1/21//hw
+	<a href=../parm/clear.html>CLEAR</a>	 =  yes
+	<a href=../parm/garea.html>GAREA</a>	 =  grid
+	<a href=../parm/proj.html>PROJ</a>	 =  str/90;-105;0
+	<a href=../parm/map.html>MAP</a>	 =  1
+	<a href=../parm/latlon.html>LATLON</a>	 =  0
+	<a href=../parm/device.html>DEVICE</a>	 =  XW
+	<a href=../parm/stnplt.html>STNPLT</a>   =
+
+ERROR MESSAGES
+ 
+    [GDPLOT  +3]    WARNING:  ... not found.  CONTINUING---
+    [GDPLOT  +2]    The requested scalar/vector cannot be computed.
+    [GDPLOT  +1]    WARNING.  There are no contour levels.
+    [GDPLOT  -1]    Fatal error initializing TAE.
+    [GDPLOT  -2]    Fatal error reading TAE parameters.
+    [GDPLOT  -3]    Fatal error initializing GEMPLT.
+    [GDPLOT  -4]    Grid requested is not available.
+    [GDPLOT  -5]    Error setting grid navigation for file ....
+    [GDPLOT  -6]    There are no grids in grid file.
+</pre>
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

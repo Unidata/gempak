@@ -1,0 +1,119 @@
+#!/bin/csh -f
+#
+############################################################
+#
+#  3 hourly surface map
+# 
+# This script creates the 3 hourly surface map analysis from
+# redbook graphics isobars and frontal analyses overlayed
+# on the surface observations decoded from METAR reports.
+#
+# Redbook Graphics used:
+# 90I	PPAA89 KWNO	MSL_ISOBARS_3H
+# 90F	PYAA98 KWNO	SFC_FRONTS_3H 
+#
+############################################################
+
+setenv PATH /bin:/usr/bin:/usr/ucb:/usr/local/bin
+source /home/gempak/Gemenviron
+
+setenv DISPLAY laraine:1
+
+set WORKDIR = ~/web/redbook
+set WEBDIR=/dist/htdocs/staff/chiz/redbook
+
+setenv ISO_DIR $GEMDATA/redbook/ssi
+setenv FNT_DIR $GEMDATA/redbook/fronts
+
+cd $ISO_DIR
+set ISO=`ls -t * | head -1`
+if($#ISO < 1) then
+   echo "NO ISOBARS"
+   exit
+endif
+
+# check to see if we need to make a gif
+set NEWER=`find $ISO -newer $WEBDIR/surfacechart.gif -print`
+if($#NEWER < 1) then
+   echo "Already have this map generated, no need to replot"
+   exit
+endif
+
+set ISOT=`echo $ISO | cut -f1 -d"_"`
+
+cd $FNT_DIR
+
+# see if we have fronts for lastest isobars
+set FNT=`ls ${ISOT}_*`
+if($#FNT < 1) then
+   echo "NO FRONTS for ISOBARS"
+   exit
+endif
+
+#
+# set time for surface OBS to match analysis time
+set YYMMDD=`echo $ISOT | cut -c3-8`
+set HHNN=`echo $ISOT | cut -c9-12`
+
+cd $WORKDIR
+
+if(-e surfacechart.gif) rm surfacechart.gif
+
+sfmap << EOF1
+ AREA     = dset
+ GAREA    = afus
+ SATFIL   =  
+ RADFIL   =  
+ SFPARM   = SKYK:.7;TMPF;WSYM;PMSL;;DWPF
+ DATTIM   = ${YYMMDD}/${HHNN}
+ SFFILE   = metar
+ COLORS   = 3
+ MAP      = 2
+ LATLON   = 0
+ TITLE    = 31/0/Surface Analysis ${YYMMDD}/${HHNN}
+ CLEAR    = YES
+ PANEL    = 0
+ DEVICE   = gf|surfacechart.gif|1280;1024
+ PROJ     = STR/90;-105;0
+ FILTER   = .7
+ TEXT     = .7
+ LUTFIL   =  
+ STNPLT   =  
+ CLRBAR   =
+ \$mapfil = hipowo.cia
+ r
+
+ e
+EOF1
+
+gpmap << EOF2
+ MAP      = 0
+ SATFIL   = 
+ RADFIL   = 
+ TEXT     = 1
+ CLEAR    = n
+ TITLE    =
+ LUTFIL   = 
+ STNPLT   = 
+ VGFILE   = 
+ AFOSFL   = 
+ LINE     = 6
+ WATCH    = 
+ WARN     = 
+ HRCN     = 
+ ISIG     = 
+ LTNG     =
+ AWPSFL   = \$ISO_DIR/${ISO}
+ r
+
+ AWPSFL   = \$FNT_DIR/${FNT}
+ line = 5
+ r
+
+ e
+EOF2
+
+gpend
+
+mv surfacechart.gif ${WEBDIR}/surfacechart.gif
+exit 0

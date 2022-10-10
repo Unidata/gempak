@@ -1,0 +1,137 @@
+<!doctype html><head><title>GEMPAK Help: oagrid</title></head><body>
+<a href=../../help_and_documentation>GEMPAK Manual</a> | 
+<a href=../prog/>Programs</a><br><hr>
+<pre>
+OAGRID creates a GEMPAK grid file which can be used in a Barnes
+objective analysis program.
+
+INPUT PARAMETERS
+ 
+    <a href=../parm/gdfile.html>GDFILE</a>    Grid file
+    <a href=../parm/deltan.html>DELTAN</a>    Station spacing
+    <a href=../parm/deltax.html>DELTAX</a>    X spacing
+    <a href=../parm/deltay.html>DELTAY</a>    Y spacing
+    <a href=../parm/grdarea.html>GRDAREA</a>   Area covered by grid
+    <a href=../parm/extend.html>EXTEND</a>    Points to extend grid
+    <a href=../parm/dtaarea.html>DTAAREA</a>   Data area for OA
+    <a href=../parm/source.html>SOURCE</a>    Data source (SN or SF)
+    <a href=../parm/snfile.html>SNFILE</a>    Sounding data file
+    <a href=../parm/sffile.html>SFFILE</a>    Surface data file
+    <a href=../parm/snparm.html>SNPARM</a>    Sounding parameter list
+    <a href=../parm/sfparm.html>SFPARM</a>    Surface parameter list
+    <a href=../parm/dattim.html>DATTIM</a>    Date/time
+    <a href=../parm/levels.html>LEVELS</a>    Vertical levels
+    <a href=../parm/maxgrd.html>MAXGRD</a>    Maximum number of grids
+ 
+ 
+
+PROGRAM DESCRIPTION
+ 
+    This program allows the user to create a GEMPAK grid file
+    which contains the information required to perform a Barnes
+    objective analysis.
+
+    The output grids will be evenly spaced latitude/longitude
+    (CED) grids.  Three areas used by the objective analysis
+    programs are defined in this program.  <a href=../parm/grdarea.html>GRDAREA</a> defines a
+    region for the output grid.  The upper right corner
+    specified will be moved toward the lower left in order
+    to align it on a grid point.
+
+    The second area, defined by <a href=../parm/extend.html>EXTEND</a>, is used to extend the
+    grid area outward by some number of grid points.  This area
+    is used as a first-pass grid area in the objective analysis.
+    The default <a href=../parm/extend.html>EXTEND</a> values are 2,2,2,2.
+
+    <a href=../parm/dtaarea.html>DTAAREA</a> defines the area over which station data will be
+    input to the analysis.  Only data within the <a href=../parm/extend.html>EXTEND</a> area are
+    used for the second pass.  If a value for <a href=../parm/dtaarea.html>DTAAREA</a> is not
+    specified, the <a href=../parm/extend.html>EXTEND</a> area will be used.
+
+    If values for the station spacing and grid spacings, <a href=../parm/deltan.html>DELTAN</a>,
+    <a href=../parm/deltax.html>DELTAX</a>, and <a href=../parm/deltay.html>DELTAY</a>, are all specified by the user, they are
+    stored in the grid file for use by the analysis programs.  If
+    any of these numbers is 0, a suggested station spacing is
+    computed using the station data from the file specified.  This
+    station spacing will be used to compute values for <a href=../parm/deltax.html>DELTAX</a> and
+    <a href=../parm/deltay.html>DELTAY</a>.  The computed station spacing is the average of the
+    average minimum station spacing and the uniform station
+    spacing.  These station spacing values are computed using the
+    stations reporting data for the first <a href=../parm/dattim.html>DATTIM</a>.  The average
+    minimum station spacing is the average of the distances from
+    each station to its closest station.  The uniform spacing is
+    the spacing that would be found between stations if they were
+    evenly spaced over the data area.
+
+    GDCFIL can also be used to create grid files.  OAGRID creates
+    only CED grids, but values for the grid spacing and station
+    spacing are estimated from the input surface or upper air file.
+    GDCFIL creates grid files for grids in any projection, but
+    the grid spacing and station spacing must be input directly.
+
+ 
+EXAMPLES
+ 
+    1.	Create a surface grid file called hbobsfc.grd.  Use the
+	temperature and dewpoint in the surface file hrcbob.sfc to
+	compute the station spacing.  The grid area is US; use
+	defaults for the remaining parameters.  Create a file which
+	can contain up to 200 grids.
+
+	<a href=../parm/gdfile.html>GDFILE</a>	 =  hbobsfc.grd
+	<a href=../parm/deltan.html>DELTAN</a>	 =  0
+	<a href=../parm/deltax.html>DELTAX</a>	 =  0
+	<a href=../parm/deltay.html>DELTAY</a>	 =  0
+	<a href=../parm/grdarea.html>GRDAREA</a>	 =  us
+	<a href=../parm/extend.html>EXTEND</a>	 =  2;2;2;2
+	<a href=../parm/dtaarea.html>DTAAREA</a>	 =
+	<a href=../parm/source.html>SOURCE</a>	 =  sf
+	<a href=../parm/snfile.html>SNFILE</a>	 =  $GEMPAK/data/hrcbob.snd
+	<a href=../parm/sffile.html>SFFILE</a>	 =  $GEMPAK/data/hrcbob.sfc
+	<a href=../parm/snparm.html>SNPARM</a>	 =
+	<a href=../parm/sfparm.html>SFPARM</a>	 =  tmpc;dwpc
+	<a href=../parm/dattim.html>DATTIM</a>	 =  last
+	<a href=../parm/levels.html>LEVELS</a>	 =  850
+	<a href=../parm/maxgrd.html>MAXGRD</a>	 =  200
+
+     2.	Create a upper-air grid file called hbobsnd.grd.  Use the
+	temperature and dewpoint at 500 mb from the upper-air file
+	hrcbob.snd to compute the station spacing.  Create a file
+	which can contain up to 2000 grids.
+
+	<a href=../parm/gdfile.html>GDFILE</a>	 =  hbobsnd.grd
+	<a href=../parm/deltan.html>DELTAN</a>	 =  0
+	<a href=../parm/deltax.html>DELTAX</a>	 =  0
+	<a href=../parm/deltay.html>DELTAY</a>	 =  0
+	<a href=../parm/grdarea.html>GRDAREA</a>	 =  us
+	<a href=../parm/extend.html>EXTEND</a>	 =  2;2;2;2
+	<a href=../parm/dtaarea.html>DTAAREA</a>	 =  us
+	<a href=../parm/source.html>SOURCE</a>	 =  sn
+	<a href=../parm/snfile.html>SNFILE</a>	 =  $GEMPAK/data/hrcbob.snd
+	<a href=../parm/sffile.html>SFFILE</a>	 =  $GEMPAK/data/hrcbob.sfc
+	<a href=../parm/snparm.html>SNPARM</a>	 =  tmpc;dwpc
+	<a href=../parm/sfparm.html>SFPARM</a>	 =  tmpc;dwpc
+	<a href=../parm/dattim.html>DATTIM</a>	 =  last
+	<a href=../parm/levels.html>LEVELS</a>	 =  500
+	<a href=../parm/maxgrd.html>MAXGRD</a>	 =  2000
+
+ERROR MESSAGES
+ 
+    [OAGRID  +1]    WARNING : This grid is too large for GEMPAK programs.
+    [OAGRID  -1]    Fatal error initializing TAE.
+    [OAGRID  -2]    Fatal error reading TAE parameters.
+    [OAGRID  -3]    ... is invalid for <a href=../parm/grdarea.html>GRDAREA</a>.
+    [OAGRID  -4]    ... is invalid for <a href=../parm/dtaarea.html>DTAAREA</a>.
+    [OAGRID  -5]    No data file name specified.
+    [OAGRID  -6]    Parameter input is invalid.
+    [OAGRID  -7]    Parameter ... cannot be calculated.
+    [OAGRID  -8]    Invalid value for <a href=../parm/deltax.html>DELTAX</a> or <a href=../parm/deltay.html>DELTAY</a>.
+    [OAGRID  -9]    Too few stations to calculate <a href=../parm/deltan.html>DELTAN</a>.
+    [OAGRID -10]    Source must be set to SN or SF.
+    [OAGRID -11]    Station data file is invalid.
+    [OAGRID -12]    Invalid time requested.
+    [OAGRID -13]    Invalid level requested.
+</pre>
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

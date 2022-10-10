@@ -1,0 +1,67 @@
+<html>
+<head>
+<TITLE>GEMPAK SREF product names</TITLE>
+<META NAME="BOOKMARK" CONTENT="GEMPAK SREF Examples">
+<META NAME="AUTHOR" CONTENT="Steve Chiswell">
+<META NAME="KEYWORDS" CONTENT="Software, GEMPAK, Examples, SREF">
+<META NAME="DESCRIPTION" CONTENT="GEMPAK SREF Examples.">
+</head>
+
+<body>
+
+<table cellpadding="0" cellspacing="0" border="2" width="600">
+<th width="0" height="0" colspan="4" rowspan="1" bgcolor="#ADD8E6">SREF Products
+</th>
+<tr><td>Quantities</td><td>Parameters</td><td>levels/times</td><td>GEMPAK name</td><tr>
+
+<tr>
+<td colspan="1" rowspan="9" align="left">
+<b>Means</b>
+</td>
+</tr>
+
+<tr><td>Heights</td><td>at 1000, 850, 700, 500, 250 mb</td><td>HGHTENMW</td></tr>
+<tr><td>U&V</td><td>at 1000, 850, 700, 500, 250 mb & 10 m</td><td>URELENMW, VRELENMW</td></tr>
+<tr><td>Temperature</td><td>at 850, 700, 500 mb & 2 m</td><td>TMPKENMW</td></tr>
+<tr><td>Dew Point</td><td>at 850, 700, 500 mb & 2 m</td><td>DWPKENMW</td></tr>
+<tr><td>QPF</td><td>3, 6, 12 and 24 hour increments</td><td>P--MENMW</td></tr>
+<tr><td>Snowfall</td><td>12 hour increments</td><td>LSNO12ENMW</td></tr>
+<tr><td>Sea Level Pressure</td><td>&nbsp</td><td>PMSLENMW</td></tr>
+<tr><td>Precipitable Water</td><td>&nbsp</td><td>PWTRENMW</td></tr>
+
+<tr><td colspan="1" rowspan="8" align="left"><b>Spreads</b></td></tr>
+<tr><td>Heights</td><td>at 1000, 850, 700, 500, 250 mb</td><td>HGHTENSA</td></tr>
+<!-- tr><td>Thickness</td><td>1000-500 mb</td><td>				</td></tr>
+<tr><td>&nbsp</td><td>U&V</td><td>at 1000, 850, 700, 500, 250 mb & 10 m</td><td> 		</td></tr -->
+<tr><td>Temperature</td><td>at 850, 700, 500 mb & 2 m</td><td>TMPKENSA</td></tr>
+<tr><td>Dew Point</td><td>at 850, 700, 500 mb & 2 m</td><td>DWPKENSA</td></tr>
+<tr><td>QPF</td><td>3, 6, 12 and 24 hour increments</td><td>P--MENSA</td></tr>
+<tr><td>Snowfall</td><td>12 hour increments</td><td>LSNO12ENSA</td></tr>
+<tr><td>Sea Level Pressure</td><td>&nbsp</td><td>PMSLENSA</td></tr>
+<tr><td>Precipitable Water</td><td>&nbsp</td><td>PWTRENSA</td></tr>
+
+
+<tr><td colspan="1" rowspan="11" align="left"><b>Probabilistic Fields</b></td></tr>
+<tr><td>3-hr/6-hr QPF</td><td>GT .00" (0mm),<br>GE .25" (6mm),<br>GE .50" (12mm),<br>GE 1.0" (25mm)</td><td>PP--0000PA,<br>PP--0006PA,<br>PP--0012PA,<br>PP--0025PA</td></tr>
+<tr><td>12-hr/24-hr QPF</td><td>GT .00" (0mm),<br>GE .25" (6mm),<br>GE .50" (12mm),<br>GE 1.0" (25mm),<br>GE 2.0" (50mm)</td><td>PP--0000PA,<br>PP--0006PA,<br>PP--0012PA,<br>PP--0025PA,<br>PP--0050PA</td></tr>
+<tr><td>12-hr Snowfall</td><td>GE 1" (25mm),<br>GE 4" (101mm),<br>GE 8" (203mm),<br>GE 12" (304mm)</td><td>LSNO120025PA,<br>LSNO120101PA,<br>LSNO120203PA,<br>LSNO120304PA</td></tr>
+<tr><td>Temperature - 2 m & 850 mb</td><td>LE 0&#176C</td><td>TMPK0273PB</td></tr>
+<tr><td>10 m Wind</td><td>GE 25 kt (12m/s),<br>GE 34 kt (17m/s),<br>GE 50 kt (25m/s)</td><td>SPED0012PA,<br>SPED0017PA,<br>SPED0025PA</td></tr>
+<tr><td>CAPE</td><td>GE 500 (J/kg),<br>GE 1000 (J/kg),<br>GE 2000 (J/kg),<br>GE 3000 (J/kg),<br>GE 4000 (J/kg)</td><td>CAPE0500PA,<br>CAPE1000PA,<br>CAPE2000PA,<br>CAPE3000PA,<br>CAPE4000PA</td></tr>
+<tr><td>Lifted Index</td><td>LE 0,<br>LE -4,<br>LE -8</td><td>LIFT0000PB,<br>LIFT-004PB,<br>LIFT-008PB</td></tr>
+<tr><td>Surface Visibility</td><td>LE 1 mi (1609m),<br>LE 3 mi (4827m)</td><td>VSBY1609PB,<br>VSBY4827PB</td></tr>
+<tr><td>Cloud Ceiling</td><td>LE 500 ft (152m),<br>LE 1000 ft (305m),<br>LE 3000 ft (914m)</td><td>HGHT0152PB,<br>HGHT0305PB,<br>HGHT0914PB</td></tr>
+<tr><td>Probability of precipitation types</td><td>rain,<br>ice,<br>frozen,<br>freezing</td><td>WXTR00010001,<br>WXTP00010001,<br>WXTS00010001,<br>WXTZ00010001</td></tr>
+</table>
+<p>
+<ul>
+<li>"--" is replaced by time interval
+<li>"ENMW" denotes ensemble weighted mean
+<li>"ENSA" denotes Stddev wrt ensemble mean
+<li>"xxxxPB" is probability of value below threshold xxxx.
+<li>"xxxxPA" is probability of value above threshold xxxx.
+<li>"bbbbaaaa" is probability of value within range bbbb to aaaa.
+</ul>
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

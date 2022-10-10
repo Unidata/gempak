@@ -1,0 +1,89 @@
+<!doctype html><head><title>GEMPAK Help: sfmod</title></head><body>
+<a href=../../help_and_documentation>GEMPAK Manual</a> | 
+<a href=../prog/>Programs</a><br><hr>
+<pre>
+SFMOD moves selected surface data from an input surface file to an
+output surface file.
+
+
+INPUT PARAMETERS
+ 
+    <a href=../parm/sffile.html>SFFILE</a>    Surface data file
+    <a href=../parm/sfoutf.html>SFOUTF</a>    Output surface file
+    <a href=../parm/dattim.html>DATTIM</a>    Date/time
+    <a href=../parm/datout.html>DATOUT</a>    Output date/time
+    <a href=../parm/area.html>AREA</a>      Data area
+    <a href=../parm/sfparm.html>SFPARM</a>    Surface parameter list
+ 
+ 
+PROGRAM DESCRIPTION
+ 
+    SFMOD takes data from an existing GEMPAK surface file,
+    <a href=../parm/sffile.html>SFFILE</a>, and writes the data into another existing surface
+    file, <a href=../parm/sfoutf.html>SFOUTF</a>.  This program can be used to subset the
+    original dataset by time and/or stations and/or parameters.
+
+    This program will not create a new surface file.  The GEMPAK
+    program, SFCFIL, can be used to create a surface file.  If the
+    parameters in the output file are not the same as the
+    parameters in the input file, the required parameter
+    conversions will be done.
+
+    If a requested station or time is not in the output file, it
+    will be added to the file if there is room.  The number of
+    times and stations that can be included in a file is specified
+    by <a href=../parm/timstn.html>TIMSTN</a> in SFCFIL.
+
+    The parameter <a href=../parm/datout.html>DATOUT</a> can be used to set different times in the
+    output file from those times listed with the parameter <a href=../parm/dattim.html>DATTIM</a>.
+
+    The parameter <a href=../parm/sfparm.html>SFPARM</a> can be used to specify which parameters
+    in the output file are to be written.
+
+
+EXAMPLES
+ 
+    1.  Put the data for all stations at the latest time in file
+        TEST.SFC into a file called LAST.SFC.
+
+        <a href=../parm/sffile.html>SFFILE</a>  =  test.sfc
+        <a href=../parm/sfoutf.html>SFOUTF</a>  =  last.sfc
+        <a href=../parm/dattim.html>DATTIM</a>  =  last
+        <a href=../parm/area.html>AREA</a>    =  dset
+
+    2.  Put the data for stations in Maryland and Virginia for
+        all times into the output data set.
+
+        <a href=../parm/sffile.html>SFFILE</a>  =  test.sfc
+        <a href=../parm/sfoutf.html>SFOUTF</a>  =  last.sfc
+        <a href=../parm/dattim.html>DATTIM</a>  =  all
+        <a href=../parm/area.html>AREA</a>    =  @md/@va
+
+    3.  Put the data for stations in Maryland for 1100 - 1400 UTC
+        into the output file with the new times from 1500 - 1800 UTC.
+	Write only the temperature and dewpoint data to the output
+	file.
+
+	<a href=../parm/sffile.html>SFFILE</a>   = test.sfc
+	<a href=../parm/sfoutf.html>SFOUTF</a>   = last.sfc
+	<a href=../parm/dattim.html>DATTIM</a>   = 940513/1100;940513/1200;940513/1300;940513/1400
+	<a href=../parm/datout.html>DATOUT</a>   = 0513/1500;0513/1600;0513/1700;0513/1800
+	<a href=../parm/area.html>AREA</a>     = @md
+	<a href=../parm/sfparm.html>SFPARM</a>   = tmpf;dwpf
+
+
+ERROR MESSAGES
+ 
+    [SFMOD  +4]     Parameter ... is not in output file.
+    [SFMOD  +3]     Some stations were not added to file.
+    [SFMOD  +2]     Character parameter cannot be used:  ...
+    [SFMOD  +1]     Parameter ... cannot be calculated.
+    [SFMOD  -1]     Fatal error initializing TAE.
+    [SFMOD  -2]     Fatal error reading TAE parameters.
+    [SFMOD  -3]     There are no parameters to be computed.
+    [SFMOD  -4]     Time ... cannot be added.
+    [SFMOD  -5]     Number of input and output date/time are not equal.
+</pre>
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

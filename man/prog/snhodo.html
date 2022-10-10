@@ -1,0 +1,103 @@
+<!doctype html><head><title>GEMPAK Help: snhodo</title></head><body>
+<a href=../../help_and_documentation>GEMPAK Manual</a> | 
+<a href=../prog/>Programs</a><br><hr>
+<pre>
+SNHODO draws a hodograph of upper air data.
+
+INPUT PARAMETERS
+ 
+    <a href=../parm/snfile.html>SNFILE</a>    Sounding data file
+    <a href=../parm/area.html>AREA</a>      Data area
+    <a href=../parm/line.html>LINE</a>      Color/type/width/label/smth/fltr/scflg
+    <a href=../parm/marker.html>MARKER</a>    Marker color/type/size/width/hw
+    <a href=../parm/border.html>BORDER</a>    Background color/type/width
+    <a href=../parm/title.html>TITLE</a>     Title color/line/title
+    <a href=../parm/xaxis.html>XAXIS</a>     Xstrt/xstop/xinc/lbl;gln;tck
+    <a href=../parm/yaxis.html>YAXIS</a>     Ystrt/ystop/yinc/lbl;gln;tck
+    <a href=../parm/levels.html>LEVELS</a>    Vertical levels
+    <a href=../parm/vcoord.html>VCOORD</a>    Vertical coordinate type
+    <a href=../parm/dattim.html>DATTIM</a>    Date/time
+    <a href=../parm/clear.html>CLEAR</a>     Clear screen flag
+    <a href=../parm/device.html>DEVICE</a>    Device|name|x size;y size|color type
+    <a href=../parm/panel.html>PANEL</a>     Panel loc/color/dash/width/regn
+    <a href=../parm/text.html>TEXT</a>      Size/fnt/wdth/brdr/N-rot/just/hw flg
+ 
+ 
+
+PROGRAM DESCRIPTION
+ 
+    SNHODO draws a hodograph which represents the vertical
+    distribution of the horizontal wind at a station.  The winds
+    are plotted in meters/sec.
+
+    The line color, line type, and width are specified in <a href=../parm/line.html>LINE</a>.
+    The marker color, type, and size are specified in <a href=../parm/marker.html>MARKER</a>.
+    The levels at which the line will be labeled are specified
+    in <a href=../parm/levels.html>LEVELS</a>; <a href=../parm/vcoord.html>VCOORD</a> specifies the vertical coordinate for
+    <a href=../parm/levels.html>LEVELS</a>.
+
+    The x and y axis limits are specified in <a href=../parm/xaxis.html>XAXIS</a> and <a href=../parm/yaxis.html>YAXIS</a>.  If
+    these values are blank, the axes will be scaled to the actual
+    data.
+
+ 
+EXAMPLES
+ 
+    1.	Plot the hodograph for station CHH for the latest time in
+	the data set.  Label the hodograph every 100 mb from 1000 mb
+	to 100 mb.  Use hardware font 2 for the text and display
+	the hodograph in a XW window named snhodo.
+
+	<a href=../parm/snfile.html>SNFILE</a>	 =  $GEMPAK/data/HRCBOB.SND
+	<a href=../parm/area.html>AREA</a>	 =  @chh
+	<a href=../parm/line.html>LINE</a>	 =  3
+	<a href=../parm/marker.html>MARKER</a>	 =  1
+	<a href=../parm/border.html>BORDER</a>	 =  1
+	<a href=../parm/title.html>TITLE</a>	 =  1
+	<a href=../parm/xaxis.html>XAXIS</a>	 =
+	<a href=../parm/yaxis.html>YAXIS</a>	 =
+	<a href=../parm/levels.html>LEVELS</a>	 =  1000-100-100
+	<a href=../parm/vcoord.html>VCOORD</a>	 =  pres
+	<a href=../parm/dattim.html>DATTIM</a>	 =  last
+	<a href=../parm/clear.html>CLEAR</a>	 =  y
+	<a href=../parm/device.html>DEVICE</a>	 =  xw|snhodo
+	<a href=../parm/panel.html>PANEL</a>	 =  0
+	<a href=../parm/text.html>TEXT</a>	 =  1/2/1/hw
+
+    2.	Plot the CHH hodograph using height coordinates.
+	Label every 2000 meters from 1000 meters to
+	24000 meters.  Draw the x and y axes from -10 to
+	40 meters/sec.
+
+	<a href=../parm/snfile.html>SNFILE</a>	 =  $GEMPAK/data/HRCBOB.SND
+	<a href=../parm/area.html>AREA</a>	 =  @chh
+	<a href=../parm/line.html>LINE</a>	 =  3
+	<a href=../parm/marker.html>MARKER</a>	 =  1
+	<a href=../parm/border.html>BORDER</a>	 =  1
+	<a href=../parm/title.html>TITLE</a>	 =  1
+	<a href=../parm/xaxis.html>XAXIS</a>	 =  -10/40/10
+	<a href=../parm/yaxis.html>YAXIS</a>	 =  -10/40/10
+	<a href=../parm/levels.html>LEVELS</a>	 =  1000-24000-2000
+	<a href=../parm/vcoord.html>VCOORD</a>	 =  hght
+	<a href=../parm/dattim.html>DATTIM</a>	 =  last
+	<a href=../parm/clear.html>CLEAR</a>	 =  y
+	<a href=../parm/device.html>DEVICE</a>	 =  xw|snhodo
+	<a href=../parm/panel.html>PANEL</a>	 =  0
+	<a href=../parm/text.html>TEXT</a>	 =  1/2/1/hw
+
+ERROR MESSAGES
+ 
+    [SNHODO  -1]    Fatal error initializing TAE.
+    [SNHODO  -2]    Fatal error reading TAE parameters.
+    [SNHODO  -3]    Fatal error initializing GEMPLT.
+    [SNHODO  -4]    The input for <a href=../parm/xaxis.html>XAXIS</a> is invalid.
+    [SNHODO  -5]    The input for <a href=../parm/yaxis.html>YAXIS</a> is invalid.
+    [SNHODO  -6]    Winds cannot be computed.
+    [SNHODO  -7]    The vertical coordinate ... cannot be computed.
+    [SNHODO  -8]    The range along the x or y axis is invalid.
+    [SNHODO  -9]    No winds can be plotted.
+    [SNHODO -10]    No valid stations were found.
+</pre>
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!doctype html><head><title>GEMPAK Help: sgwh</title></head><body>
+<a href=../../help_and_documentation>GEMPAK Manual</a> | 
+<a href=../prog/>Programs</a> | <a href=../parm/>Parameters</a><br><hr>
+<pre>
+     SGWH
+
+     SGWH is the ending valid time for the significant wave height data, 
+     the height intervals and colors.  Skip is a value that indicates how 
+     many data points to skip when plotting.
+
+       Data type | End time | Height intervals | colors | Skip |
+       Time stamp interval | Time stamp color 
+
+     The data type is a selection to plot SGWH (Jason-1), SGWHA (Altika), 
+     SGWHC (CryoSat), SGWHE (Envisat), SGWHG (GFO), or SGWH2 (Jason-2). 
+
+     The ending time is the latest time for which SGWH data will be plotted. 
+     The ending time is given as a GEMPAK date/time string.  Any missing items
+     from the string will be filled in by the system time.  The ending time
+     may also be LAST.  LAST will use the system time and plot all SGWH data
+     for the preceding 4 hours. ALL is not accepted as an ending time for 
+     SGWH data.
+
+     The height intervals and colors may each be specified using either a list
+     separated by semicolons or a range in the form first-last-increment.
+     Height intervals are given in feet.  If any color is missing, a default 
+     will be used.  If no interval and color are given, a single height 
+     interval of 200 feet will be used.  This means that any significant wave 
+     height less than 200 feet will be plotted.  The default color for the 
+     single height is green.  
+
+     The Skip value is an integer used for skipping of data when plotting 
+     the heights.
+
+     The time stamp interval is the time interval in minutes. Time stamp 
+     color is the color of the time stamps. The default value is 30 for the
+     time stamp interval and 5 for the time stamp color.
+</pre>
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

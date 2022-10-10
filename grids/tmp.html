@@ -1,0 +1,62 @@
+<html>
+<head>
+<title>GEMPAK Grid Inventory</title>
+<script src='https://code.jquery.com/jquery-1.11.1.min.js'></script>
+<script src='../jquery.dynatable.js'></script>
+<script src='../bootstrap.min.js'></script>
+<script src='gempak-models.json'></script>
+<link rel="stylesheet" href="../jquery.dynatable.css">
+<link rel="stylesheet" href="../tutorial/md.css">
+<script>
+$(function(){
+  console.log("ready");
+  $('.grids').click(function(){
+    var uniqueGrids=this.id.replace("-unique","");
+    //this.expand = !this.expand;
+    //$(this).text(this.expand?"Click to collapse":"Click to read more");
+    $("#" + uniqueGrids).toggleClass('small big');
+    return false;
+  });
+ /*
+  $(".grids").click(function(){
+    console.log($(this).id);
+    return false;
+  });
+  */
+});
+</script>
+<style>
+.small { display:none; }
+.big { display:block; }
+</style>
+</head><body>
+<a name=sst><h2>SST</h2></a>
+<b>Alias</b>: <code>SST</code><br><b>Default Filename</b>: <code>$MODEL/sst/YYYYMMDDHH_sst.gem</code>
+<table><tr>
+<th>World CED Projection</th>
+<th>Default Grid Projection</th>
+</tr><tr><td>
+<a href=/gempak/grids/gd_sst.gif><img width=450 border=0 src=/gempak/grids/gd_sst.gif></a>
+</td><td>
+<a href=/gempak/grids/dset_gd_sst.gif><img width=450 src=/gempak/grids/dset_gd_sst.gif></a>
+</td></tr></table>
+<pre>
+ GRID FILE: /data/ldm/gempak/model/sst/2015071300_sst.gem                                                       
+ GRID NAVIGATION: 
+     PROJECTION:          CED                 
+     ANGLES:                 0.0     0.0     0.0
+     GRID SIZE:             4320    2160
+     LL CORNER:           -89.9580    0.0420
+     UR CORNER:            89.9580   -0.0420
+ Number of grids in file:     1
+ Maximum number of grids in file:   5000
+</pre><h3>Available Times</h3><pre> F000
+</pre><h3><a href="#" class="grids" id="_sst-unique">1 Unique Grids</a></h3>
+<div class=small id="_sst"><pre>
+ LEVL1 LEVL2  VCORD PARM 
+     0         NONE TMPK         
+</pre></div>
+
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!doctype html><head><title>GEMPAK Help: bounds</title></head><body>
+<a href=../../help_and_documentation>GEMPAK Manual</a> | 
+<a href=../prog/>Programs</a> | <a href=../parm/>Parameters</a><br><hr>
+<pre>
+     BOUNDS
+
+     BOUNDS specifies the bound area(s) to consider when performing the
+	graph-to-grid procedure.
+
+	name|<key>key_name|mask_flag
+
+	More than one bounds area may be indicated via the '+' separator.
+
+     name - Name of the bounds area, eg., "SSA" for seamless surface analysis.
+
+     key - The specific bound area keyword, eg., "<a href=area.html>AREA</a>".
+
+     key_name - The specific bound area, eg., "HPC050".
+
+     mask_flag - "true" to perform the graph-to-grid analysis inside the
+	above specified bounds area, "false" to perform the analysis outside.
+
+
+     Examples:
+
+		BOUNDS   = SSA|<<a href=area.html>AREA</a>>HPC050|true
+
+		Performs the graph-to-grid analysis only inside the HPC050
+		seamless surface analysis area.
+
+</pre>
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

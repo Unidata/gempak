@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="md.css" type="text/css">
+
+<title>Additional Exercises</title>
+
+</head>
+<body>
+<blockquote><p><a href=/gempak/tutorial/>GEMPAK Online Tutorial</a></p></blockquote>
+
+<h1>Additional Exercises</h1>
+
+<h2>Masking Grid Fields</h2>
+
+<p>The GFS model provides deterministic output at the 72 hour forecast time for 6 hour accumulated precipitation <code>P06M</code> and boundary layer <code>CAPE</code> (using an internal function) as shown in <code>GDPLOT2</code> using:</p>
+
+<pre><code>GDFILE   = gfs004
+GDATTIM  = f072
+GLEVEL   = 0        ! 2
+GVCORD   = none     ! hght
+SCALE    = 0
+GDPFUN   = p06m     ! cape(pres@0%none,hght@0%none,tmpc,dwpc)
+TYPE     = f        ! c
+CONTUR   = 3/3
+CINT     = 300
+LINE     = 2/1/1
+FINT     = .25;2.5;6.35;12.7;19.05;25.4;31.75;38.1;44.45;50.8;63.5;76.2;101.6;127;152.4;177.8 
+FLINE    = 0;21-30;14-20;5 
+GAREA    = 25;-100;50;-50
+PROJ     = STR/90;-100;0  
+GEMPAK-GDPLOT2&gt;r
+</code></pre>
+
+<p><img src="ens1.gif" alt="image" /></p>
+
+<p>The figure above shows areas of precipitation with low CAPE values. We also see several areas with large cape values and little precipitation.</p>
+
+<p>Now plot the areas of greater than .25mm (red contour lines), and CAPE values exceeding 300 J Kg^-2 (yellow shading) in <code>GDPLOT2</code> using:</p>
+
+<pre><code>GDFILE   = gfs004
+GDATTIM  = f072
+GLEVEL   = 0                ! 2
+GVCORD   = none             ! hght
+SCALE    = 0
+GDPFUN   = sgt(p06m,.25)    ! sgt(cape(pres@0%none,hght@0%none,tmpc,dwpc),300)
+TYPE     = p                ! f
+CONTUR   = 3/3
+FINT     =                  ! 100
+FLINE    =                  ! 5/7
+COLORS   = 3
+TEXT     = 0.5
+GEMPAK-GDPLOT2&gt;r
+</code></pre>
+
+<p><img src="ens2.gif" alt="image" /></p>
+
+<p>Observing the plot above, we can visually detect several regions where precipitation probability and CAPE values might suggest likely areas of thunderstorm activity where the two contour regions intersect. We can quantify the  probability by using the logical operator <code>AND()</code> to compute the probability of both conditions as shown below:</p>
+
+<pre><code>GDFILE   = gfs004
+GDATTIM  = f072
+GLEVEL   = 2
+GVCORD   = hght
+SCALE    = 0
+GDPFUN   = and(gt(p06m,.25),gt(cape(pres@0%none,hght@0%none,tmpc,dwpc),300))
+TYPE     = f
+CONTUR   = 3/3
+CINT     = 
+LINE     = 
+FINT     = .05/.05
+FLINE    = 0;23-13/7
+CLRBAR   = 1
+GEMPAK-GDPLOT2&gt;r
+</code></pre>
+
+<p><img src="ens3.gif" alt="image" /></p>
+
+<blockquote><p><a href=/gempak/tutorial/>GEMPAK Online Tutorial</a></p></blockquote>
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

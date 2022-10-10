@@ -1,0 +1,355 @@
+<!doctype html><head><title>GEMPAK Help: gpmap</title></head><body>
+<a href=../../help_and_documentation>GEMPAK Manual</a> | 
+<a href=../prog/>Programs</a><br><hr>
+<pre>
+GPMAP draws a map, latitude/longitude lines, and various image and
+graphic products.
+
+
+INPUT PARAMETERS
+ 
+    <a href=../parm/map.html>MAP</a>       Map color/dash/width/filter flag
+    <a href=../parm/mscale.html>MSCALE</a>    fgc;bgc;mask/units/lat;hide/values/anch/x;y/ln;wd/freq|text_info|t
+    <a href=../parm/garea.html>GAREA</a>     Graphics area
+    <a href=../parm/proj.html>PROJ</a>      Map projection/angles/margins|drop flag
+    <a href=../parm/satfil.html>SATFIL</a>    Satellite image filename(s)
+    <a href=../parm/radfil.html>RADFIL</a>    Radar image filename(s)
+    <a href=../parm/imcbar.html>IMCBAR</a>    Color/ornt/anch/x;y/ln;wd/freq
+    <a href=../parm/latlon.html>LATLON</a>    Line color/dash/width/freq/inc/label/format
+    <a href=../parm/panel.html>PANEL</a>     Panel loc/color/dash/width/regn
+    <a href=../parm/title.html>TITLE</a>     Title color/line/title
+    <a href=../parm/text.html>TEXT</a>      Size/fnt/wdth/brdr/N-rot/just/hw flg
+    <a href=../parm/clear.html>CLEAR</a>     Clear screen flag
+    <a href=../parm/device.html>DEVICE</a>    Device|name|x size;y size|color type
+    <a href=../parm/lutfil.html>LUTFIL</a>    Enhancement lookup table filename
+    <a href=../parm/stnplt.html>STNPLT</a>    Txtc/txt attr|marker attr|stnfil#col
+    <a href=../parm/vgfile.html>VGFILE</a>    Vgfile | scale file | attribute file | filter
+    <a href=../parm/afosfl.html>AFOSFL</a>    AFOS Graphics File
+    <a href=../parm/awpsfl.html>AWPSFL</a>    AWIPS Graphics File
+    <a href=../parm/line.html>LINE</a>      Color/type/width/label/smth/fltr/scflg
+    <a href=../parm/watch.html>WATCH</a>     End time|Wtch clrs|Wtch Tm;Status Ln Tm|Watch Num;
+    <a href=../parm/warn.html>WARN</a>      End time|TS;TN;FF clrs|Tm|Lb|Outline|Poly
+    <a href=../parm/hrcn.html>HRCN</a>      End time|colors|syms|Tm|Lb|Mt|Qw|F12|F24|F36|F48|F72|F96|F120|Name
+    <a href=../parm/isig.html>ISIG</a>      End time|colors|Sym|Tm|Id|Mv|Fl
+    <a href=../parm/ltng.html>LTNG</a>      End time|time ints/colors|markers
+    <a href=../parm/atcf.html>ATCF</a>      Time|colors|models|Tm|Id|Mv|Mkr|Name
+    <a href=../parm/airm.html>AIRM</a>      Airmet Plotting Attributes
+    <a href=../parm/gairm.html>GAIRM</a>     GAirmet Plotting Attributes
+    <a href=../parm/ncon.html>NCON</a>      <a href=../parm/ncon.html>NCON</a> attributes
+    <a href=../parm/csig.html>CSIG</a>      End time|0_Hr;1_Hr;2_Hr;OL clrs|Seq0|Tm|Mv|Fl|Insty|Seq1|Seq2
+    <a href=../parm/svrl.html>SVRL</a>      End time|<a href=../parm/svrl.html>SVRL</a> clrs|Tm|Lb|Outline|Clr
+    <a href=../parm/bnd.html>BND</a>       Bnd name/color/fillsiz/fillpat/filt/minpts!lincol/linpat/linwid!mr
+    <a href=../parm/tcmg.html>TCMG</a>      End time|colors|center
+    <a href=../parm/qsct.html>QSCT</a>      QuickScat Plotting Attributes
+    <a href=../parm/wstm.html>WSTM</a>      End time|WN;WT;AD clrs|Tm|Lb|Outline/WN;WT;AD lwidth
+    <a href=../parm/wou.html>WOU</a>       End time|Mrkr and Otln clrs|Tm|Lb|Wt|Clr|Mrkr|Otln|Fill/Fill clrs|
+    <a href=../parm/wcn.html>WCN</a>       End time|Mrkr and Otln clrs|Tm|Lb|Wt|Clr|Mrkr|Otln|Fill/Fill clrs|
+    <a href=../parm/wcp.html>WCP</a>       End time|Wtch clrs|Tm|Lb|Clr
+    <a href=../parm/ency.html>ENCY</a>      Time|colors|models|Tm|Prs|Mkr|Ccd;wlevs|Fcst_Hour
+    <a href=../parm/ffa.html>FFA</a>       End time|FF;FA clrs|Tm|Lb|Ic|Outline/FF;FA lwidth
+    <a href=../parm/wsat.html>WSAT</a>      WindSAT Plotting Attributes
+    <a href=../parm/asct.html>ASCT</a>      AScat Plotting Attributes
+    <a href=../parm/osct.html>OSCT</a>      OScat Plotting Attributes
+    <a href=../parm/trak.html>TRAK</a>      Altimetric Satellite Ground Track Prediction Plotting Attributes
+    <a href=../parm/sgwh.html>SGWH</a>      Significant Wave Heights Plotting Attributes
+    <a href=../parm/asdi.html>ASDI</a>      End time|Mode|DepArr|time increment/clrs or ht range/clrs|time lmt
+    <a href=../parm/edr.html>EDR</a>       End time|ht ranges/clrs|time lmt|Edr ranges/clrs|symb1/symb2|aoa18
+    <a href=../parm/wspdalt.html>WSPDALT</a>   Altimeter-derived Windspeed Plotting Attributes
+ 
+ 
+PROGRAM DESCRIPTION
+ 
+    GPMAP draws a map and/or latitude/longitude lines for a specified
+    graphics area.  Plots may be drawn in any GEMPAK projection and
+    may be overlaid on images.  GPMAP also post-processes NMAP
+    Vector Graphics Files (VGFs) to create products in any format
+    supported by GEMPAK device drivers.  In addition, GPMAP displays
+    various types of graphics products including AWIPS, AFOS, watches,
+    warnings, tropical or hurricane storm tracks, international
+    SIGMETs, lightning, <a href=../parm/atcf.html>ATCF</a> tracks, airmets, non-convective
+    sigmets, severe local storm watches, winter storm warning,
+    watch and advisory, convective sigmets, and ensemble cyclone tracks.
+
+    Images are animated if more than one image file is specified in
+    <a href=../parm/satfil.html>SATFIL</a> or <a href=../parm/radfil.html>RADFIL</a>.  Images are sampled to correspond to the
+    geographic area specified by <a href=../parm/garea.html>GAREA</a>.  The geographic area may be
+    defined graphically by setting <a href=../parm/garea.html>GAREA</a> using the CURSOR command.
+    This command allows for interactive zooming of images and the
+    corresponding map and latitude/longitude plots.
+
+    GPMAP can post-process NMAP VGFs to create products in different
+    formats including AFOS, AWIPS Redbook, GIF, TIFF, 6 bit FAX, and
+    PostScript.  The <a href=../parm/vgfile.html>VGFILE</a> variable specifies the input VGF and the
+    <a href=../parm/device.html>DEVICE</a> variable specifies the desired output format.  VGF object
+    attributes may be modified when creating products by specifying
+    a table (attribute file) in the <a href=../parm/vgfile.html>VGFILE</a> variable.  This table uses
+    the same format as the $GEMTBL/pgen/setting.tbl to alter object
+    attributes.  For example, the color, width, and smoothing flag
+    attributes can be changed for a solid line by setting them in the
+    attribute file.  The table, $GEMTBL/pgen/uattribd.tbl, provides a
+    template for this capability.  Refer to this table for additional
+    details.  GPMAP can also scale attributes for an entire class of
+    objects by specifying a table (scale file) in the <a href=../parm/vgfile.html>VGFILE</a>
+    variable.  Refer to the scale.fax table in $GEMTBL/pgen for
+    additional information.
+
+    GPMAP can also plot the current thunderstorm and tornado watches.
+    The parameter <a href=../parm/watch.html>WATCH</a> sets the ending time and the colors for
+    plotting the watches.  The parameter <a href=../parm/warn.html>WARN</a> sets the ending time
+    and the colors for plotting warnings.  The parameter <a href=../parm/wstm.html>WSTM</a> sets the
+    ending time and the colors for plotting winter storm warning, watch,
+    and advisory. The parameter <a href=../parm/ffa.html>FFA</a> sets the ending time and the colors
+    for plotting flash flood and areal flood watches. The parameter <a href=../parm/csig.html>CSIG</a>
+    sets the ending time and the colors for plotting convective sigmets.
+    The parameter <a href=../parm/hrcn.html>HRCN</a> sets the ending time and the colors for plotting
+    tropical depressions, storms, and hurricane positions.  Optionally,
+    a specific storm name may be entered to display only that specific
+    tropical disturbance. The parameter <a href=../parm/isig.html>ISIG</a> sets the ending time and
+    the colors for plotting international SIGMETs.  The parameter <a href=../parm/ltng.html>LTNG</a>
+    sets the ending time, time increments, colors and markers for
+    plotting lightning data. The parameter <a href=../parm/atcf.html>ATCF</a> sets the time, models
+    and colors for plotting <a href=../parm/atcf.html>ATCF</a> (Automated Tropical Cyclone Forecast)
+    tracks.  As with <a href=../parm/hrcn.html>HRCN</a>, a specific storm name may be entered.  The
+    parameter <a href=../parm/airm.html>AIRM</a> sets the ending time and the colors for plotting
+    airmets.  The parameter <a href=../parm/ncon.html>NCON</a> sets the ending time and the colors for
+    plotting non-convective sigmets.  The parameter <a href=../parm/svrl.html>SVRL</a> sets the ending
+    time and the colors for plotting severe local storms watches. The
+    parameter <a href=../parm/wou.html>WOU</a> sets the ending time and the colors for plotting the
+    watch outline update (<a href=../parm/wou.html>WOU</a>). The parameter <a href=../parm/wcn.html>WCN</a> sets the ending time
+    and the colors for plotting the watch county notification(<a href=../parm/wcn.html>WCN</a>).  The
+    parameter <a href=../parm/wcp.html>WCP</a> sets the ending time and the colors for plotting the
+    watch corner product.  The parameter <a href=../parm/ency.html>ENCY</a> sets the initial time,
+    colors, model names, and date/time, pressure and marker flags for
+    plotting of the ensemble cyclone tracks.
+
+    GPMAP can also plot QuikScat and ASCAT ocean vector wind data.
+    The parameter <a href=../parm/qsct.html>QSCT</a> sets the type of QuikScat data (<a href=../parm/qsct.html>QSCT</a>, QSCT_HI,
+    and four possible ambiguities, AMBG1, AMBG2, AMBG3, and AMBG4).
+    This parameter also sets the ending time, windspeed increments,
+    colors for plotting, wind barb/arrow attributes, timestamp
+    attributes and various plotting-related flags. The parameter <a href=../parm/asct.html>ASCT</a>
+    does the same for the ASCAT winds (<a href=../parm/asct.html>ASCT</a>, ASCT_HI, and the four
+    ambiguities: AAMBG1, AAMBG2, AAMBG1_HI, AAMBG2_HI).  The parameter
+    <a href=../parm/osct.html>OSCT</a> does the same for the OSCAT winds (<a href=../parm/osct.html>OSCT</a>, OSCT_HI, and the four
+    ambiguities: OAMBG1_HI, OAMBG2_HI, OAMBG3_HI, OAMBG4_HI).
+
+    GPMAP can also plot altimeter-derived wind speeds. The parameter
+    <a href=../parm/wspdalt.html>WSPDALT</a> sets the source of the wind speeds: <a href=../parm/wspda.html>WSPDA</a> (Altika),
+    WSPDC (Cryosat), and WSPD2 (Jason-2); the ending time of the wind
+    speed data, as well as the wind speed increments, color for each
+    increment, skip value, time stamp interval, and time stamp color.
+
+ 
+EXAMPLES
+ 
+    1.  Draw a Polar Stereographic map of the Northern Hemisphere.
+	Draw the map in color 1 and lat/lon lines in color 2 every
+	15 degrees.
+
+	<a href=../parm/map.html>MAP</a>	 =  1
+	<a href=../parm/garea.html>GAREA</a>	 =  -10;-130;-10;50
+	<a href=../parm/proj.html>PROJ</a>	 =  str/90;-80;0
+	<a href=../parm/satfil.html>SATFIL</a>	 =
+	<a href=../parm/radfil.html>RADFIL</a>	 =
+	<a href=../parm/imcbar.html>IMCBAR</a>	 =
+	<a href=../parm/latlon.html>LATLON</a>	 =  2/10/1/1/15;15
+	<a href=../parm/panel.html>PANEL</a>	 =  0
+	<a href=../parm/title.html>TITLE</a>	 =  1
+	<a href=../parm/text.html>TEXT</a>	 =  1
+	<a href=../parm/clear.html>CLEAR</a>	 =  yes
+	<a href=../parm/device.html>DEVICE</a>	 =  xw
+	<a href=../parm/lutfil.html>LUTFIL</a>   =
+	<a href=../parm/stnplt.html>STNPLT</a>   =
+	<a href=../parm/vgfile.html>VGFILE</a>	 =
+	<a href=../parm/afosfl.html>AFOSFL</a>	 =
+	<a href=../parm/awpsfl.html>AWPSFL</a>	 =
+	<a href=../parm/line.html>LINE</a>	 =
+	<a href=../parm/watch.html>WATCH</a>    =
+	<a href=../parm/warn.html>WARN</a>     =
+	<a href=../parm/hrcn.html>HRCN</a>     =
+	<a href=../parm/isig.html>ISIG</a>     =
+	<a href=../parm/ltng.html>LTNG</a>     =
+	<a href=../parm/atcf.html>ATCF</a>     =
+	<a href=../parm/airm.html>AIRM</a>     =
+	<a href=../parm/ncon.html>NCON</a>     =
+	<a href=../parm/csig.html>CSIG</a>     =
+	<a href=../parm/svrl.html>SVRL</a>     =
+	<a href=../parm/wstm.html>WSTM</a>	 =
+	<a href=../parm/wou.html>WOU</a>      =
+	<a href=../parm/wcn.html>WCN</a>      =
+	<a href=../parm/wcp.html>WCP</a>      =
+        <a href=../parm/ency.html>ENCY</a>     =
+        <a href=../parm/ffa.html>FFA</a>      =
+        <a href=../parm/wsat.html>WSAT</a>     =
+        <a href=../parm/asct.html>ASCT</a>     =
+        <a href=../parm/osct.html>OSCT</a>     =
+        <a href=../parm/trak.html>TRAK</a>     =
+        <a href=../parm/sgwh.html>SGWH</a>     =
+        <a href=../parm/asdi.html>ASDI</a>     =
+        <a href=../parm/edr.html>EDR</a>      =
+        <a href=../parm/wspdalt.html>WSPDALT</a>  =
+
+    2.  Display two infrared satellite images in a second window
+	named "IR".  Overlay the VGF test.vgf.  In addition, display
+	the latest watches, warnings, international SIGMETs, lightning,
+	<a href=../parm/atcf.html>ATCF</a> tracks, airmets and non-convective and convective sigmets,
+	SLS watches, winter storm messages, and all tropical
+	disturbances.
+
+	<a href=../parm/map.html>MAP</a>	 =  1/7
+	<a href=../parm/garea.html>GAREA</a>	 =  dset
+	<a href=../parm/proj.html>PROJ</a>	 =  sat
+	<a href=../parm/satfil.html>SATFIL</a>	 =  $GEMDATA/IR_910819_\18\01;19
+	<a href=../parm/radfil.html>RADFIL</a>	 =
+	<a href=../parm/imcbar.html>IMCBAR</a>   =  1/V/LL/0.001;0.04/0.925;0.0125/1
+	<a href=../parm/latlon.html>LATLON</a>	 =  2/10/1/1/10;10
+	<a href=../parm/panel.html>PANEL</a>	 =  0
+	<a href=../parm/title.html>TITLE</a>	 =  1
+	<a href=../parm/text.html>TEXT</a>	 =  1
+	<a href=../parm/clear.html>CLEAR</a>	 =  yes
+	<a href=../parm/device.html>DEVICE</a>	 =  xw|IR
+	<a href=../parm/lutfil.html>LUTFIL</a>   =
+	<a href=../parm/stnplt.html>STNPLT</a>   =
+	<a href=../parm/vgfile.html>VGFILE</a>	 =  test.vgf
+	<a href=../parm/afosfl.html>AFOSFL</a>	 =
+        <a href=../parm/awpsfl.html>AWPSFL</a>   =
+	<a href=../parm/line.html>LINE</a>	 =
+        <a href=../parm/watch.html>WATCH</a>    =  last
+	<a href=../parm/warn.html>WARN</a>     =  last
+	<a href=../parm/hrcn.html>HRCN</a>     =  all
+	<a href=../parm/isig.html>ISIG</a>     =  last
+	<a href=../parm/ltng.html>LTNG</a>     =  last
+	<a href=../parm/atcf.html>ATCF</a>     =  last
+	<a href=../parm/airm.html>AIRM</a>     =  last
+	<a href=../parm/ncon.html>NCON</a>     =  last
+	<a href=../parm/csig.html>CSIG</a>     =  last
+	<a href=../parm/svrl.html>SVRL</a>     =  last
+	<a href=../parm/wstm.html>WSTM</a>	 =  last
+	<a href=../parm/wou.html>WOU</a>      =
+	<a href=../parm/wcn.html>WCN</a> 	 =
+	<a href=../parm/wcp.html>WCP</a> 	 =
+        <a href=../parm/ency.html>ENCY</a>     =
+        <a href=../parm/ffa.html>FFA</a>      =
+        <a href=../parm/wsat.html>WSAT</a>     =
+        <a href=../parm/asct.html>ASCT</a>     =
+        <a href=../parm/osct.html>OSCT</a>     =
+        <a href=../parm/trak.html>TRAK</a>     =
+        <a href=../parm/sgwh.html>SGWH</a>     =
+        <a href=../parm/asdi.html>ASDI</a>     =
+        <a href=../parm/edr.html>EDR</a>      =
+        <a href=../parm/wspdalt.html>WSPDALT</a>  =
+
+    3.  Display two visible satellite images in a third window
+	named "VIS".  Overlay the AFOS test product T01 in
+	color 6 with line width 2.
+
+	<a href=../parm/map.html>MAP</a>	 =  1/7
+	<a href=../parm/garea.html>GAREA</a>	 =  dset
+	<a href=../parm/proj.html>PROJ</a>	 =  sat
+	<a href=../parm/satfil.html>SATFIL</a>	 =  $GEMDATA/VIS_910819_\18\01;19
+	<a href=../parm/radfil.html>RADFIL</a>	 =
+	<a href=../parm/imcbar.html>IMCBAR</a>   =  1/V/LL/0.001;0.04/0.925;0.0125/1
+	<a href=../parm/latlon.html>LATLON</a>	 =  2/10/1/1/10;10
+	<a href=../parm/panel.html>PANEL</a>	 =  0
+	<a href=../parm/title.html>TITLE</a>	 =  1
+	<a href=../parm/text.html>TEXT</a>	 =  1
+	<a href=../parm/clear.html>CLEAR</a>	 =  yes
+	<a href=../parm/device.html>DEVICE</a>	 =  xw|VIS
+	<a href=../parm/lutfil.html>LUTFIL</a>   =
+	<a href=../parm/stnplt.html>STNPLT</a>   =
+	<a href=../parm/vgfile.html>VGFILE</a>	 =
+	<a href=../parm/afosfl.html>AFOSFL</a>	 =  NMCGPHT01
+        <a href=../parm/awpsfl.html>AWPSFL</a>   =
+	<a href=../parm/line.html>LINE</a>	 =  6//2
+        <a href=../parm/watch.html>WATCH</a>    =
+	<a href=../parm/warn.html>WARN</a>     =
+	<a href=../parm/hrcn.html>HRCN</a>     =
+	<a href=../parm/isig.html>ISIG</a>     =
+	<a href=../parm/ltng.html>LTNG</a>     =
+	<a href=../parm/atcf.html>ATCF</a>     =
+	<a href=../parm/airm.html>AIRM</a>     =
+	<a href=../parm/ncon.html>NCON</a>     =
+	<a href=../parm/csig.html>CSIG</a>     =
+	<a href=../parm/svrl.html>SVRL</a>     =
+	<a href=../parm/wstm.html>WSTM</a>	 =
+ 	<a href=../parm/wou.html>WOU</a>      =
+	<a href=../parm/wcn.html>WCN</a>      =
+	<a href=../parm/wcp.html>WCP</a> 	 =
+        <a href=../parm/ency.html>ENCY</a>     =
+        <a href=../parm/ffa.html>FFA</a>      =
+        <a href=../parm/wsat.html>WSAT</a>     =
+        <a href=../parm/asct.html>ASCT</a>     =
+        <a href=../parm/osct.html>OSCT</a>     =
+        <a href=../parm/trak.html>TRAK</a>     =
+        <a href=../parm/sgwh.html>SGWH</a>     =
+        <a href=../parm/asdi.html>ASDI</a>     =
+        <a href=../parm/edr.html>EDR</a>      =
+        <a href=../parm/wspdalt.html>WSPDALT</a>  =
+
+    4.  Postprocess an NMAP VGF to create an AWIPS Redbook Graphics file.
+	Change selected object attributes by using the table attrib.xmp
+
+	<a href=../parm/map.html>MAP</a>	 =  1
+	<a href=../parm/garea.html>GAREA</a>    =  us
+	<a href=../parm/proj.html>PROJ</a>     =
+	<a href=../parm/satfil.html>SATFIL</a>   =
+	<a href=../parm/radfil.html>RADFIL</a>   =
+	<a href=../parm/imcbar.html>IMCBAR</a>   =
+	<a href=../parm/latlon.html>LATLON</a>   =  1
+	<a href=../parm/panel.html>PANEL</a>    =  0
+	<a href=../parm/title.html>TITLE</a>    =  1
+	<a href=../parm/text.html>TEXT</a>     =  1
+	<a href=../parm/clear.html>CLEAR</a>    =  y
+	<a href=../parm/device.html>DEVICE</a>   =  RBK
+	<a href=../parm/lutfil.html>LUTFIL</a>   =  grey
+	<a href=../parm/stnplt.html>STNPLT</a>   =
+	<a href=../parm/vgfile.html>VGFILE</a>   =  symbols_big.vgf||attrib.xmp
+	<a href=../parm/afosfl.html>AFOSFL</a>   =
+	<a href=../parm/awpsfl.html>AWPSFL</a>   =
+	<a href=../parm/line.html>LINE</a>     =  3
+	<a href=../parm/watch.html>WATCH</a>    =
+	<a href=../parm/warn.html>WARN</a>     =
+	<a href=../parm/hrcn.html>HRCN</a>     =
+	<a href=../parm/isig.html>ISIG</a>     =
+	<a href=../parm/ltng.html>LTNG</a>     =
+	<a href=../parm/atcf.html>ATCF</a>     =
+	<a href=../parm/airm.html>AIRM</a>     =
+	<a href=../parm/ncon.html>NCON</a>     =
+	<a href=../parm/csig.html>CSIG</a>     =
+	<a href=../parm/svrl.html>SVRL</a>     =
+	<a href=../parm/wstm.html>WSTM</a>	 =
+	<a href=../parm/wou.html>WOU</a>	 =
+	<a href=../parm/wcn.html>WCN</a>      =
+	<a href=../parm/wcp.html>WCP</a> 	 =
+        <a href=../parm/ency.html>ENCY</a>     =
+        <a href=../parm/ffa.html>FFA</a>      =
+        <a href=../parm/wsat.html>WSAT</a>     =
+        <a href=../parm/asct.html>ASCT</a>     =
+        <a href=../parm/osct.html>OSCT</a>     =
+        <a href=../parm/trak.html>TRAK</a>     =
+        <a href=../parm/sgwh.html>SGWH</a>     =
+        <a href=../parm/asdi.html>ASDI</a>     =
+        <a href=../parm/edr.html>EDR</a>      =
+        <a href=../parm/wspdalt.html>WSPDALT</a>  =
+
+    Where
+
+	attrib.xmp contains:
+
+CLASS_SYMBOLS  -99        -99    3   3     0    2.0
+CLASS_SYMBOLS  SPSYM_ELM   12    0   0     0    5.0
+
+    which means set all symbols to GEMPAK color 3
+    and size 2.0 except for symbol type SPSYM_ELM,
+    sub-type 12 (High symbol) which will retain
+    default color and be size 5.
+
+ERROR MESSAGES
+ 
+    [GPMAP  -1]     Fatal error initializing TAE.
+    [GPMAP  -2]     Fatal error reading TAE parameters.
+    [GPMAP  -3]     Fatal error initializing GEMPLT.
+</pre>
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

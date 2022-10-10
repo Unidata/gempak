@@ -1,0 +1,125 @@
+<!doctype html><head><title>GEMPAK Help: gdthgt</title></head><body>
+<a href=../../help_and_documentation>GEMPAK Manual</a> | 
+<a href=../prog/>Programs</a><br><hr>
+<pre>
+GDTHGT draws contours and wind barbs or arrows on a time section at a
+	point within a grid.
+
+INPUT PARAMETERS
+ 
+    <a href=../parm/gpoint.html>GPOINT</a>    Grid point
+    <a href=../parm/gdattim.html>GDATTIM</a>   Grid date/time
+    <a href=../parm/gvcord.html>GVCORD</a>    Grid vertical coordinate
+    <a href=../parm/gfunc.html>GFUNC</a>     Scalar grid
+    <a href=../parm/gvect.html>GVECT</a>     Vector grid
+    <a href=../parm/gdfile.html>GDFILE</a>    Grid file
+    <a href=../parm/ptype.html>PTYPE</a>     Plot type/h:w ratio/margins
+    <a href=../parm/taxis.html>TAXIS</a>     Time1-time2-tinc;lbl;gln;tck
+    <a href=../parm/yaxis.html>YAXIS</a>     Ystrt/ystop/yinc/lbl;gln;tck
+    <a href=../parm/border.html>BORDER</a>    Background color/type/width
+    <a href=../parm/line.html>LINE</a>      Color/type/width/label/smth/fltr/scflg
+    <a href=../parm/cint.html>CINT</a>      Contour interval/min/max
+    <a href=../parm/wind.html>WIND</a>      Wind symbol/siz/wdth/typ/hdsz
+    <a href=../parm/title.html>TITLE</a>     Title color/line/title
+    <a href=../parm/clear.html>CLEAR</a>     Clear screen flag
+    <a href=../parm/scale.html>SCALE</a>     Scalar scale / vector scale
+    <a href=../parm/panel.html>PANEL</a>     Panel loc/color/dash/width/regn
+    <a href=../parm/device.html>DEVICE</a>    Device|name|x size;y size|color type
+    <a href=../parm/text.html>TEXT</a>      Size/fnt/wdth/brdr/N-rot/just/hw flg
+ 
+ 
+
+PROGRAM DESCRIPTION
+ 
+    GDTHGT is a user contributed program that draws a
+    vertical time section at a location in a grid field.
+    The location is specified by setting <a href=../parm/gpoint.html>GPOINT</a>.  Gridded
+    data are interpolated to the time-section plane at regular
+    intervals of time specified in <a href=../parm/gdattim.html>GDATTIM</a>.
+
+    The grid vertical coordinate (<a href=../parm/gvcord.html>GVCORD</a>) may be PRES, THTA, or
+    HGHT, depending on what is available in the grid file.
+    The vertical axis scaling, set in <a href=../parm/ptype.html>PTYPE</a>, can be LIN,
+    LOG, KAP or STUVE.  STUVE and KAP are the same; SKEWT may
+    not be entered.  The plot aspect ratio and margins may also be
+    entered in <a href=../parm/ptype.html>PTYPE</a>.
+
+    Vector fields may be specified in <a href=../parm/gvect.html>GVECT</a> and displayed as
+    arrows or barbs. For a wind vector field, the default is north
+    relative direction. A "/G" indicates grid relative direction.
+    The vector function CIRC cannot be computed for time sections.
+
+    If M is entered in <a href=../parm/wind.html>WIND</a>, winds will be displayed in meters
+    per second unless the KNOTV operator has been specified in
+    <a href=../parm/gvect.html>GVECT</a>, in which case the winds will be displayed in knots.
+    IF K is entered in <a href=../parm/wind.html>WIND</a>, the wind is displayed in knots.
+
+ 
+EXAMPLES
+ 
+    1.  Plot temperature in Celsius on a log-P chart on a
+        time section for all times at BWI.  Plot the contours
+        in color number 2, using thick, solid lines.  Plot wind
+        barbs for the forecast wind.  Plot the chart to 50
+        millibars using the default labels.
+
+	<a href=../parm/gpoint.html>GPOINT</a>	 =  bwi
+	<a href=../parm/gdattim.html>GDATTIM</a>	 =  all
+	<a href=../parm/gvcord.html>GVCORD</a>	 =  PRES
+	<a href=../parm/gfunc.html>GFUNC</a>	 =  temp
+	<a href=../parm/gvect.html>GVECT</a>	 =  wnd
+	<a href=../parm/gdfile.html>GDFILE</a>	 =  $GEMPAK/data/HRCBOB.GRD
+	<a href=../parm/ptype.html>PTYPE</a>	 =  log
+	<a href=../parm/taxis.html>TAXIS</a>	 =
+	<a href=../parm/yaxis.html>YAXIS</a>	 =  /50
+	<a href=../parm/border.html>BORDER</a>	 =  1
+	<a href=../parm/line.html>LINE</a>	 =  2/2/3/1
+	<a href=../parm/cint.html>CINT</a>	 =  5
+	<a href=../parm/wind.html>WIND</a>	 =  bm1
+	<a href=../parm/title.html>TITLE</a>	 =  1
+	<a href=../parm/clear.html>CLEAR</a>	 =  YES
+	<a href=../parm/scale.html>SCALE</a>	 =  999
+	<a href=../parm/panel.html>PANEL</a>	 =  0
+	<a href=../parm/device.html>DEVICE</a>	 =  xw
+	<a href=../parm/text.html>TEXT</a>	 =  1/21//hw
+
+    2.  Now, using the same file, plot a log pressure time
+        section of the vorticity advection.  Positive values
+	are contoured with solid lines, negative values are
+	contoured with dashed lines. Plot the wind in grid
+	relative direction.
+
+	<a href=../parm/gpoint.html>GPOINT</a>	 =  bwi
+	<a href=../parm/gdattim.html>GDATTIM</a>	 =  all
+	<a href=../parm/gvcord.html>GVCORD</a>	 =  PRES
+	<a href=../parm/gfunc.html>GFUNC</a>	 =  adv(avor(obs);obs)
+	<a href=../parm/gvect.html>GVECT</a>	 =  wnd/G
+	<a href=../parm/gdfile.html>GDFILE</a>	 =  $GEMPAK/data/HRCBOB.GRD
+	<a href=../parm/ptype.html>PTYPE</a>	 =  log
+	<a href=../parm/taxis.html>TAXIS</a>	 =
+	<a href=../parm/yaxis.html>YAXIS</a>	 =  /50
+	<a href=../parm/border.html>BORDER</a>	 =  1
+	<a href=../parm/line.html>LINE</a>	 =  2/-2/3/1
+	<a href=../parm/cint.html>CINT</a>	 =  5
+	<a href=../parm/wind.html>WIND</a>	 =  bm1
+	<a href=../parm/title.html>TITLE</a>	 =  1
+	<a href=../parm/clear.html>CLEAR</a>	 =  YES
+	<a href=../parm/scale.html>SCALE</a>	 =  999
+	<a href=../parm/panel.html>PANEL</a>	 =  0
+	<a href=../parm/device.html>DEVICE</a>	 =  xw
+	<a href=../parm/text.html>TEXT</a>	 =  1/21//hw
+
+ERROR MESSAGES
+ 
+    [GDTHGT  -1]   Fatal error initializing TAE.
+    [GDTHGT  -2]   Fatal error reading TAE parameters.
+    [GDTHGT  -3]   Fatal error initializing GEMPLT.
+    [GDTHGT  -4]    Invalid vertical coordinate.
+    [GDTHGT  -7]    Invalid axis type.
+    [GDTHGT  -8]    Invalid vertical coordinate type.
+    [GDTHGT -14]    Input for <a href=../parm/gpoint.html>GPOINT</a> is invalid.
+    [GDTHGT -20]    Input for <a href=../parm/yaxis.html>YAXIS</a> is invalid.
+</pre>
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

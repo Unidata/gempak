@@ -1,0 +1,141 @@
+<html>
+<head>
+<TITLE>GEMPAK IMAGE to GRID Examples</TITLE>
+<META NAME="BOOKMARK" CONTENT="GEMPAK Examples">
+<META NAME="AUTHOR" CONTENT="Steve Chiswell">
+<META NAME="KEYWORDS" CONTENT="Software, GEMPAK, Examples">
+<META NAME="DESCRIPTION" CONTENT="GEMPAK Examples.">
+</head>
+
+<body>
+<h1>Creating a Satellite Composite Basemap</h1>
+This example utilizes DEM topography data 5 minute topography data
+to create a composite satellite basemap. It is similar to the 
+<a href="../sat_landmask/">Land/Sea mask</a> example, but adds the
+use of a higher resolution topographic data set.
+<p>
+<h2>Tools Used</h2>
+Gempak Programs<br>
+<ul>
+   <li>GDTOPO
+   <li>IMG2GD
+   <li>GD2IMG
+</ul>
+<p>
+Data Used<br>
+<ul>
+    <li>DEM global 5 minute topography
+    <li>IR Satellite Imagery
+</ul>
+
+<h2>Steps</h2>
+<ol>
+<li>Create a topographic grid for desired area using <font color="#3030E0">GDTOPO</font>
+   <ul><pre>
+
+    GDFILE   = south_america_topo5.gem
+    GAREA    = -60;-105;30;-20
+    GDATTIM  = 070101/0000
+    TOPOFL   = dem5
+    GEMPAK-GDTOPO>r
+
+
+    GDTOPO PARAMETERS: 
+
+    Grid file:       south_america_topo5.gem                                                                                                         
+
+    Topography file: /home/gempak/GEMPAK5.10.2/gempak/tables/unidata/world_topo.5min                                                                 
+
+    GAREA:              -60;-105;30;-20                                 
+    Lower left corner:     -60.0000  -105.0000
+    Upper right corner:     30.0000   -20.0000
+   
+    Number of X/Y grid points:   1020  1080
+        Number of Grid points:      1101600
+
+    Minimum and Maximum values -8139.00  6212.00
+   </pre></ul>
+
+<li>Convert current IR satellite image to grid using <font color="#3030E0">IMG2GD</font>
+   <ul><pre>
+
+    PROJ     =  
+    GRDAREA  =  
+    KXKY     =  
+    GRDNAM   = irsat
+    GDFILE   = south_america_irsat.gem
+    GLEVEL   = 0
+    GVCORD   = none
+    GDATTIM  = 070525/1545
+    CPYFIL   = south_america_topo5.gem
+    MAXGRD   = 200
+    IMGFIL   = $SAT/GOES-12/4km/IR/IR_20070525_1545
+    IMGTIM   = last
+    CALIMG   = no
+    GEMPAK-IMG2GD>r
+    satellite image date/time 070525/1545
+   </pre></ul>
+
+<li>Create a composite image from grids of satellite and topography using <font color="#3030E0">GD2IMG</font>
+   <ul>
+   <li>Use IRSAT values where brightness value is greater than 112 (eg 113 to 255, or colder than 0C). Subtract
+       112 from pixel values to produce values from 1 to 143 and set remaining values to 1.
+   <li>Create a 0/1 boolean grid of land/sea.
+   <li>Multiply the boolean 1/0 grid by 143 and add to the transformed IRSAT values as above.
+   <li>The result is a grid of values ranging from 1 to 143 over land and 144 to 286 over the ocean.
+   <li>Store the image as a gini image (mercator projection 870 x 1090 calculated for pixel size).
+   <li>Use a calibration range for band 10 for colors 0 to 94 representing pixel values 0 to 286.
+   <pre>
+    GDATTIM  = last
+    GDFILE   = south_america_irsat.gem + south_america_topo5.gem
+    GLEVEL   = 0
+    GVCORD   = none
+    GFUNC    = add(mul(bool(slt(topo%pres^070101/0000+2,0)),143),miss(sub(sgt(irsat,112),112),1)
+    SCALE    = 0
+    PROJ     = mer
+    GRDAREA  = -60;-105;30;-20
+    KXKY     = 870;1090
+    CPYFIL   =  
+    SATFIL   = south_america_satbase.gini
+    CALINFO  = 99/10/SAT,0,94,0,286
+    WMOHDR   = TICZ99/CHIZ/
+    GEMPAK-GD2IMG>r
+   </pre>
+   </ul>
+
+<li>Create a color lookup table representing land, ocean, and shades of IRSAT clouds
+for the 2 ranges of data above. The color values 0 to 94 will be divided into 2 
+groups of 47 with the last color entry representing missing data. Each section of
+47 colors will start with the color for land or ocean and end with the maximum value
+of white (RGB 255,255,255). The remaining colors will be evenly ramped from the
+starting color to the ending color (a short program saved time for this step).
+You can download the color table <a href="upc_t_s.tbl">upc_t_s.tbl</a>
+generated for this <a href="south_america_satbase.gini">composite satellite image</a>.
+
+<li>Add an image type entry for this band 2**(10 - 1) image for sensor 11 (Gini ID 99 above)
+into GEMTBL/sat/imgtyp.tbl if it does not already exist.
+<pre>
+   IRSAT-BASE           COMPOS        0     94     11   2**9      1 upc_t_s.tbl
+</pre>
+
+<li>Display the composite image in GEMPAK programs as a satellite image and overlay data as desired.
+   <ul><pre>
+
+    MAP      = 1
+    GAREA    = dset
+    PROJ     = sat
+    SATFIL   = south_america_satbase.gini
+    LUTFIL   = upc_irsatbase.tbl
+
+   </pre></ul>
+<p>
+<img src="south_america_satbase.gif">
+<p>
+<li>To create a realtime product, schedule the conversion of the IR image to grid and generation
+of the composite image using the previously generated topography grid.
+
+</ol>
+
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

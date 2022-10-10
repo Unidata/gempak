@@ -1,0 +1,39 @@
+! COLTBL.XWP
+!
+! XWP color table for 25-level TMPF colors
+! M.James/Unidata
+!
+!Color name    Abrev   Red  Green   Blue  X color name
+BLACK           BLA      0      0      0  black
+VANILLA         VAN    255    228    220  bisque1
+RED             RED    140      0      0  red
+GREEN           GRE     99      0      0  green
+BLUE            BLU     99      0     99  blue
+YELLOW          YEL    148      0    148  yellow
+CYAN            CYA    198      0    198  cyan
+MAGENTA         MAG    247      0    247  magenta
+BROWN           BRO    181      0    247  sienna3
+CORAL           COR    123      0    247  sienna1
+APRICOT         APR      0      0    247  tan1
+PINK            PIN      0     89    247  LightPink1
+DKPINK          DKP      0    134    247  IndianRed1
+MDVIOLET        MDV      0    186    247  firebrick2
+MAROON          MAR      0    247    247  red4
+FIREBRIC        FIR      0    227    198  red3
+ORRED           ORR      0    199    123  OrangeRed2
+ORANGE          ORA      0    174     18  DarkOrange1
+DKORANGE        DKO    123    199      0  orange3
+GOLD            GOL    198    227      0  gold1
+DKYELLOW        DKY    247    247      0  yellow2
+LWNGREEN        LWN    247    199      0  chartreuse1
+MDGREEN         MDG    247    150      0  green3
+DKGREEN         DKG    247    101      0  green4
+GRPBLUE         GRP    247      0      0  DodgerBlue4
+LTBLUE          LTB    198      0      0  DodgerBlue1
+SKY             SKY      0    178    238  DeepSkyBlue2
+MDCYAN          MDC      0    238    238  cyan2
+VIOLET          VIO    137    104    205  MediumPurple3
+PURPLE          PUR    145     44    238  purple2
+PLUM            PLU    139      0    139  magenta4
+WHITE           WHI    255    255    255  white
+BLACK           BLA      0      0      0  black

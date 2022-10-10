@@ -1,0 +1,6 @@
+SFFILE  $GEMDATA/acars/1999062318_acars.gem                                     
+AREA    den                                                                     
+DATTIM  all                                                                     
+SFPARM  pres;hght;tmpc;sped;drct                                                
+OUTPUT  T                                                                       
+IDNTYP  STID                                                                    

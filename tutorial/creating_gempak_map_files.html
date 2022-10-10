@@ -1,0 +1,218 @@
+
+<!doctype html>
+<html>
+<head>
+<LINK REL="StyleSheet" HREF="md.css" TYPE="text/css">
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Creating GEMPAK Map Files</title>
+
+</head>
+<body>
+<blockquote><p><a href=/gempak/tutorial/>GEMPAK Online Tutorial</a></p></blockquote>
+
+<h2>Creating GEMPAK Map Files</h2>
+
+<p>GEMPAK map files are stored as direct access, packed binary files in a
+GEMPAK Standard Format (<strong>GSF</strong>).  This form was chosen for compactness and relatively rapid access.</p>
+
+<p>In addition, a Sequential Standard Format (<strong>SSF</strong>) is defined for storing maps as ASCII sequential files.  SSF files are used to create new maps, edit existing maps, and transfer maps between computer systems that are not binary-compatible.  Since SSF files are ASCII files, they may be created or changed using a text editor.  SSF files use the same format as NCAR sequential map files.</p>
+
+<p>The Named (<strong>NAM</strong>) format is similar to the SSF format.  It too is an ASCII format.  It includes names (such as country, or river names) associated with a group of map records.</p>
+
+<p>In all forms of the GEMPAK map files, latitude and longitude are given
+in degrees.  West longitude is negative.  All longitudes are between
+-180 and +180 degrees.  No map segments cross the International Date
+Line.</p>
+
+<h3>SSF File Format</h3>
+
+<p>A SSF file contains map segments, each of which is a series of latitude/longitude points to be connected by straight lines when the map is drawn.  Each segment contains the following information:</p>
+
+<pre><code>NP2        INTEGER  Number of points (np) * 2
+RMXLT      REAL     Maximum latitude in segment
+RMNLT      REAL     Minimum latitude in segment
+RMXLN      REAL     Maximum longitude in segment
+RMNLN      REAL     Minimum longitude in segment
+PTS (NP2)  REAL     LAT1, LON1, ..., LATnp, LONnp
+</code></pre>
+
+<p>These segments are written and read with the following FORTRAN format
+statement:</p>
+
+<pre><code>FORMAT ( I4,  14X,  6F9.3,  8X,  /  ( 8F9.3,  8X ) )
+</code></pre>
+
+<p>A segment may include at most 3000 points.</p>
+
+<h3>GSF File Format</h3>
+
+<p>A GSF file is a direct access file with a record size of 128 words.  The data is written in blocks of two records, or 256 words.  The first block is the file header, followed by data blocks.  Map segments are packed into the data blocks; no map segment spans blocks.</p>
+
+<p>The file header has <code>181 INTEGER*2</code> words containing the following
+information:</p>
+
+<pre><code>NMBLK       INTEGER*2   Total number of blocks
+LATPTR1     INTEGER*2   Latitude pointer for 90 degrees
+LATPTR2     INTEGER*2   Latitude pointer for 89 degrees
+   :
+   :
+LATPTR180   INTEGER*2   Latitude pointer for -89 degrees
+</code></pre>
+
+<p>The GSF files are sorted by maximum latitude.  The LATPTR array contains the first block to use given the maximum latitude in a plot.</p>
+
+<p>These <code>INTEGER*2</code> values may be changed to <code>INTEGER*4</code> if required.  The changes must be made in the conversion programs <strong>GSFSSF</strong> and <strong>SSFGSF</strong>, described below, as well as in GDRMAP, the GEMPLT subroutine that draws maps.</p>
+
+<p>The data blocks contain only 4-byte integer or real words.  Each data
+block contains the following information:</p>
+
+<pre><code>NMSEG           INTEGER     Number of segments
+-----           ------      Unused
+NP1             INTEGER     Number of points in segment 1
+RMNLT1          REAL        Minimum latitude
+RMNLN1          REAL        Minimum longitude
+RMXLT1          REAL        Maximum latitude
+RMXLN1          REAL        Maximum longitude
+-----           ------      Unused
+RLAT1 (1)       REAL        Latitude of point 1
+RLON1 (1)       REAL        Longitude of point 1
+  :
+  :
+RLAT1 (np1)     REAL        Latitude of point np1
+RLON1 (np1)     REAL        Longitude of point np1
+NP2             INTEGER     Number of points in segment 2
+RMNLT1          REAL        Minimum latitude
+  :
+  :
+</code></pre>
+
+<h3>Naming Conventions For GEMPAK Map Files</h3>
+
+<p>Map files are named by concatenating two-letter acronyms for the
+resolution, map boundaries, and area with a three-letter origin code.
+This is described in the discussion of the GEMPAK variable <strong>$MAPFIL</strong>; see the NAWIPS User's Guide.</p>
+
+<ul>
+<li>GEMPAK binary map files (GSF format) are stored in directory <strong>$GEMMAPS</strong></li>
+<li>The ASCII (SSF format) files are stored in <strong>$GEMMAPS/ascii</strong></li>
+</ul>
+
+
+<p>Some GSF format map file names end with a <em>.gsf</em> suffix.  The suffix
+indicates the origin of the map; a <em>.gsf</em> suffix indicates that a map
+originated at the Goddard Space Flight Center (GSFC).  Note that ""GSF"
+and <em>.gsf</em> have different meanings.</p>
+
+<h2>Converting GSF To SSF</h2>
+
+<p>The program <strong>GSFSSF</strong> is used to convert any GSF file to a SSF file.  The user is prompted for the existing GSF file name and a name for the SSF file to be created.</p>
+
+<h3>Use</h3>
+
+<pre><code>gsfssf -o output.ssf input.gsf
+</code></pre>
+
+<h2>SSFGSF: Converting SSF To GSF</h2>
+
+<p>The program <strong>SSFGSF</strong> is used to convert a SSF file to a GSF file.  The user is prompted for the existing SSF file name and a name for the GSF file to be created.</p>
+
+<h3>Program Synopsis</h3>
+
+<pre><code>ssfgsf [options] -o output input
+</code></pre>
+
+<h3>Program Options</h3>
+
+<ul>
+<li><p><code>-w subset</code> Define subset area in the form of</p>
+
+<p>  <code>MINLAT;MINLON;MAXLAT;MAXLON</code></p>
+
+<p>  If no subset is provided, the whole SSF file will be converted.</p></li>
+<li><p><code>-h</code> Display this help section.</p></li>
+</ul>
+
+
+<h3>Example</h3>
+
+<pre><code>ssfgsf -o hiosuo.gsf hiosuo.ssf
+</code></pre>
+
+<p>the program converts the whole SSF file into GSF file.</p>
+
+<pre><code>ssfgsf -w 19.00;-119.00;47.00;-56.00 -o hiosuo.gsf hiosuo.ssf
+</code></pre>
+
+<p>the program converts those points within the given bounds.</p>
+
+<p>The user can also enter a latitude/longitude window to subset the data.
+Any point outside the window is eliminated from the output file.
+However, no clipping is done.  If a partial or no subset is desired,
+"missing" values (-9999) are used for the latitude and longitude bounds.</p>
+
+<p>The minimum and maximum latitude and longitude stored with each segment
+is recomputed internally, so the values in the SSF file need not be
+correct.  The intermediate files, <em>DAFIL.INT</em> and <em>SEQFIL.INT</em>, are used by the program and may be deleted after the conversion.</p>
+
+<h2>Other Utilities</h2>
+
+<p>Utility <strong>NAMCHECK</strong> is used to check the binary format (GSF) map files for any records that cross the International Date Line.  GEMPAK map files have no segments that cross this boundary.</p>
+
+<h2>CIA Map File With Names</h2>
+
+<p>GEMPAK maps include a subset of the CIA map database.  Geographical
+names were added to each record in this database at the Goddard Space
+Flight Center by Joseph Fulson-Woytek.</p>
+
+<p>The result is a file named <em>CIA.NAM</em> and it is located in directory <strong>$GEMMAPS/nam</strong>.  Several of the GSF maps in <strong>$GEMMAPS</strong> were derived from this CIA source.</p>
+
+<blockquote><p>File <em>DOC.NAM</em>, located in <strong>$GEMMAPS/nam</strong>, includes more information about the <em>CIA.NAM</em> file.</p>
+
+<p>File <em>REC.NAM</em>, also located in <strong>$GEMMAPS/nam</strong>, is a list of records (an index) for the map elements in <em>CIA.NAM</em>.</p></blockquote>
+
+<p>Utility programs <strong>NAMSSF</strong>, <strong>NAMPLT</strong>, <strong>NAMUPD</strong>, and <strong>SSFNAM</strong> are used in conjunction with <em>CIA.NAM</em>.</p>
+
+<ul>
+<li><p><strong>NAMSSF</strong> converts a subset of <em>CIA.NAM</em> into a SSF file.  The program prompts for the following inputs:</p>
+
+<ul>
+<li><p><strong>AREA</strong> Any geographic name or a range of records specified by the start and stop records, separated by a dash ("-").</p></li>
+<li><p><strong>REGION</strong>   A string listing the regions to be used (a blank
+   defaults to all) where the valid regions are:</p>
+
+<pre><code>  C  -  Continental borders
+  I  -  Islands
+  L  -  Lakes
+  S  -  State borders
+  N  -  National borders
+  R  -  Rivers
+  T  -  Tectonic plates
+  M  -  Miscellaneous
+</code></pre></li>
+</ul>
+
+
+<p>  <strong>NAMSSF Example</strong></p>
+
+<p>  A map containing only Mexico borders is created as follows.</p>
+
+<pre><code>  AREA     Mexico
+  REGION   CN
+</code></pre>
+
+<p>  In this example, adding "S" to the region specification would include "New Mexico;" adding "I" would include "Gulf of Mexico Islands."</p></li>
+<li><p><strong>NAMPLT</strong> plots individual records.  It is used for debugging a map file.  Before running NAMPLT, the GEMPAK program GPMAP is executed to select a GAREA and a plot device.  NAMPLT is executed second.  As it runs, it plots each record, lists it, and waits for a <code>&lt;CR&gt;</code> before proceeding on to the next record.</p></li>
+<li><p><strong>SSFNAM</strong> converts a SSF file into a NAME file.</p></li>
+<li><p><strong>NAMUPD</strong> updates records in the <em>CIA.NAM</em> database.  It creates new
+files containing the names of all the records.  The new files are
+<em>CIA.NAM_NEW</em> and <em>REC.NAM_NEW</em>.  File <em>REC.NAM_TMP</em> is a temporary file that may be deleted.</p></li>
+</ul>
+
+
+<p>If anyone makes modifications to <em>CIA.NAM</em>, the GEMPAK developers will
+very much appreciate a copy of the changes so that all of the GEMPAK map files that are based on <em>CIA.NAM</em> can be updated.  This includes all those map files named with the <em>.cia</em> suffix.</p>
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

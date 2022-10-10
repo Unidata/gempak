@@ -1,0 +1,61 @@
+#!/bin/csh -f
+###################################################
+# Sample GPRCM radar coded message summary plotting 
+# script. 
+#
+# Chiz/Unidata 11/99
+###################################################
+
+source /home/gempak/Gemenviron
+setenv DISPLAY unix:0
+
+set DATTIM=`date -u '+%y%m%d/%H%M'`
+
+if(-e radar_sum.gif) rm radar_sum.gif
+
+# Obtain last 3 RCM file names to obtain data over
+# the past hour. Open these files in reverse order.
+#
+set RCM=`ls -r /data/ldm/rcm/*_rcm.dat | head -3`
+
+if($#RCM < 1) then
+   echo "no radar data"
+   exit
+endif
+
+
+# cat the rcm data to a single file
+set RCM1=/tmp/tmprad.$$
+cat $RCM > $RCM1
+
+gprcm << EOF_RCM
+ MAP      = 2
+ GAREA    = AFUS
+ PROJ     = STR/90.0;-105.0;0.0
+ SATFIL   = 
+ RADFIL   = 
+ LATLON   = 0
+ PANEL    = 0
+ TITLE    = 1/0/Radar Summary ${DATTIM}
+ TEXT     = .9/21/1/hw
+ CLEAR    = YES
+ DEVICE   = gf|radar_sum.gif
+ RCMFIL   = $RCM1
+ RADTIM   = current
+ RADDUR   = 50
+ DITHER   = 0
+ MESO     = 5/2/1/2/hw
+ TVS      = 5/1/1/2/hw
+ CNTR     = 1/.7/1
+ MAXTOP   = 1
+ RADINFO  = 1
+ ECHO     = 1
+ CLRBAR   = 1/h/cc/.45;.06
+ r
+
+ e
+EOF_RCM
+
+gpend
+rm $RCM1
+

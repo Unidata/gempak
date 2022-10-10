@@ -1,0 +1,261 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="md.css" type="text/css">
+
+<title>8. Grid Diagnostics</title>
+
+</head>
+<body>
+<blockquote><p><a href=/gempak/tutorial/>GEMPAK Online Tutorial</a></p></blockquote>
+
+<h1>8. Grid Diagnostics</h1>
+
+<p>GEMPAK possess a robust set of mathmatical and meteorological functions which may be used in the grid programs to generate a wide range of diagnostics.</p>
+
+<p>Formulas can be extended up to 128 characters. When designing complex equations, it is often helpful to develop the equation in pieces, or terms. In these cases, <code>GDDIAG</code> can be used to calculate store the terms, for ultimate use in the final expansion.</p>
+
+<p>When storing grids with <code>GDDIAG</code>, the variable <code>GRDNAM</code> will be used to define a name for the new parameter. If this parameter is left blank, GEMPAK will compose a name based on the variables and functions used in the expression.</p>
+
+<p><a name="8.1"></a></p>
+
+<h2>In-line Modifiers</h2>
+
+<p>Many times, a single <code>GLEVEL</code>, <code>GDATTIM</code>, or even <code>GVCORD</code> is not sufficient for calculating all the quantities in a formula. In these cases we need to use in-line modifiers.</p>
+
+<p>In line expansions allow us to modify the values used for a parameter in a per-variable manner.</p>
+
+<p>The following may be used to specify a value other than that which a variable would obtain if using the values specified in the user interface variables:</p>
+
+<pre><code>^time, @level, %vcord
+</code></pre>
+
+<p>Additionally, we may need to specify more than 1 value, as in the case of a layer quantity such as thickness between pressure levels, or as in time differences such as the height change of a surface with time.</p>
+
+<p>When we have to specify more than 1 value for a level or time parameter (either in <code>GLEVEL</code> and <code>GDATTIM</code>, or through the in-line modifiers) the values are separated with a color: <code>:</code>.</p>
+
+<p><a name="8.2"></a></p>
+
+<h2>Multiple Grid Files</h2>
+
+<p>When multiple grid files are used, a <code>+</code> character is used in the <code>GDFILE</code> variable to separate the filenames. Then when referencing which file a grid field should be found, the variable is appended with <code>+n</code>, where n is the number of the grid file in the order given in <code>GDFILE</code>.</p>
+
+<p>Remember the batch script we created? Now we're going to modify it perform more complicated grid diagnostics.</p>
+
+<p><a name="8.3"></a></p>
+
+<h2>Exercise #12 (Grid Diagnostics with Multiple Files and In-line Modifiers)</h2>
+
+<ol>
+<li><p>Using the ability to open multiple input files, compare the 24 hour 500mb
+   height forecast from the GFS and ETA models by
+   computing the difference of the height fields.</p>
+
+<ul>
+<li>define two files in <code>GDFILE</code> using <code>+</code></li>
+<li>reference the second of the two files by using the in-line modifier <code>+2</code></li>
+<li><p>allow <code>CINT = 0</code> for automatic contouring</p>
+
+<pre><code>   GDATTIM  = f024
+   GLEVEL   = 500
+   GVCORD   = pres
+   GFUNC    = sub(hght,hght+2)
+   GDFILE   = eta + gfs
+   CINT     = 0
+   LINE     = 5
+   MAP      = 3/1/1
+   TITLE    = 1
+   DEVICE   = xw
+   SATFIL   =  
+   RADFIL   =  
+   PROJ     = str/90;-100;0
+   GAREA    = us
+   CLEAR    = YES
+   PANEL    = 0
+   TEXT     = 1
+   SCALE    = 999
+   LATLON   = 0
+   HILO     =  
+   HLSYM    =
+   CLRBAR   = 
+   CONTUR   = 3/3
+   SKIP     = 0
+   FINT     = 
+   FLINE    = 
+   CTYPE    = c
+   LUTFIL   = default
+   STNPLT   =  
+  GEMPAK-GDCNTR&gt;r
+</code></pre></li>
+</ul>
+
+
+<p> <img src="gdcntr_1.gif" alt="image" /></p></li>
+<li><p>Produce a contour plot of the 1000-500mb change in thickness between the 0 and 24 hour forecast ETA fields.</p>
+
+<ul>
+<li>Use the layer difference function <code>ldf()</code> along with the subtraction function <code>sub(X,Y)</code> (see the <a href="/gempak/man/parm/gparm.html"><code>GPARM</code></a> man page for help)</li>
+<li><p>You'll need to specify the exact times for the paramaters used in the calculation (see "in-line modifiers" above).</p>
+
+<pre><code>   GDATTIM  = f000
+   GLEVEL   = 500:1000
+   GVCORD   = pres
+   GFUNC    = sub(ldf(hght^f024),ldf(hght^f000))
+   GDFILE   = eta
+   CINT     = 60
+   LINE     = 5
+   MAP      = 1
+   TITLE    = 1
+   DEVICE   = xw
+   SATFIL   = 
+   RADFIL   = 
+   PROJ     = str/90;-100;0
+   GAREA    = us
+   CLEAR    = y
+   PANEL    = 0
+   TEXT     = 1.3/22/1/hw
+   SCALE    = 
+   LATLON   = 0
+   HILO     = 
+   HLSYM    = 
+   CLRBAR   = 
+   CONTUR   = 3/3
+   SKIP     = 0
+   FINT     = 
+   FLINE    = 
+   CTYPE    = c
+   GEMPAK-GDCNTR&gt;r
+</code></pre></li>
+</ul>
+
+
+<p> <img src="gdcntr_2.gif" alt="image" /></p></li>
+<li><p>Contour the advection of 500mb geostrophic relative vorticity by
+the thermal wind in the 300mb to 700mb layer (i.e. Trenberth's Q-G formula).</p>
+
+<p>  functions you'll need to use:</p>
+
+<ul>
+<li>advection: <code>adv()</code></li>
+<li>vorticity: <code>vor()</code></li>
+<li>thermal wind: <code>thrm()</code></li>
+<li>use in-line modifiers for <code>hght@300:700</code> to calculate the thermal wind</li>
+<li><p>you'll need to adjust the contour interval down from 60 (try <code>CINT = 2//2</code>)</p>
+
+<pre><code>   GDATTIM  = f000
+   GLEVEL   = 500
+   GVCORD   = pres
+   GFUNC    = adv(vor(geo),thrm(hght@300:700))
+   GDFILE   = eta
+   CINT     = 2//2
+   LINE     = 5
+   MAP      = 6
+   TITLE    = 5/-2/ADV of Geo. Relative Vorticity in the layer 300-700mb ~
+   DEVICE   = xw
+   SATFIL   = 
+   RADFIL   = 
+   PROJ     = str/90;-100;0
+   GAREA    = us
+   CLEAR    = y
+   PANEL    = 0
+   TEXT     = 1.3/22/1/hw
+   SCALE    = 
+   LATLON   = 0
+   HILO     = 
+   HLSYM    = 
+   CLRBAR   = 1/h/lc/.5/.5;.01
+   CONTUR   = 3/3
+   SKIP     = 0
+   FINT     = 2/4
+   FLINE    = 0;30-7
+   CTYPE    = c/f
+   GEMPAK-GDCNTR&gt;
+</code></pre></li>
+</ul>
+
+
+<p>  <img src="gdcntr_3.gif" alt="image" /></p></li>
+<li><p>Calculate and plot helicity for the 1000mb - 700mb layer using the formula:</p>
+
+<p> <img src="helicityeqn.gif" alt="image" /></p>
+
+<p> functions you'll need to use:</p>
+
+<ul>
+<li>quotient: <code>quo(X,Y)</code></li>
+<li>subtraction: <code>sub(X,Y)</code></li>
+<li>multiplication: <code>mul(X,Y)</code></li>
+<li>layer difference: <code>ldf()</code></li>
+<li>you'll need to adjust the contour interval to <code>CINT = 5</code></li>
+</ul>
+
+
+<p> <img src="warning.gif" width=30 align=left> First we must rewrite the formula for helicity in GEMPAK GPARM notation!</p>
+
+<p> In "psuedocode", the forumla would look like:</p>
+
+<pre><code>      H =  vrel@850 * (urel@700 - urel@1000)/(hght@700 - hght@1000)
+         - urel@850 * (vrel@700 - vrel@1000)/(hght@700 - hght@1000)
+</code></pre>
+
+<p> Substituting <code>ldf()</code> for the <code>hght</code>, <code>urel</code> and <code>vrel</code> differences, and using our <code>GLEVEL = 700:1000</code> definition:</p>
+
+<pre><code>      H =  vrel@850 * ( ldf(urel) )/( ldf(hght) )
+         - urel@850 * ( ldf(vrel) )/( ldf(hght) )
+</code></pre>
+
+<p> Factoring out the common denominator:</p>
+
+<pre><code>      H = ( vrel@850 * ldf(urel)  - urel@850 * ldf(vrel) )
+         % ldf(hght)
+</code></pre>
+
+<p> Now using the <code>sub()</code>, <code>mul()</code> and <code>qou()</code> mathematical operators:</p>
+
+<pre><code>     H = quo( sub(mul(vrel@850,ldf(urel)),mul(urel@850,ldf(vrel))), ldf(hght) )
+</code></pre>
+
+<p> So the full entry to <code>GDCNTR</code> would be:</p>
+
+<pre><code>      GEMPAK-GDCNTR&gt;l
+      GDATTIM  = f000
+      GLEVEL   = 700:1000
+      GVCORD   = pres
+      GFUNC    = quo(sub(mul(vrel@850,ldf(urel)),mul(urel@850,ldf(vrel))),ldf(hght))
+      GDFILE   = eta
+      CINT     = 5
+      LINE     = 5//2
+      MAP      = 1
+      TITLE    = 1
+      DEVICE   = xw
+      SATFIL   = 
+      RADFIL   = 
+      PROJ     = str/90;-100;0
+      GAREA    = us
+      CLEAR    = y
+      PANEL    = 0
+      TEXT     = 1.3/22/1/hw
+      SCALE    = 2
+      LATLON   = 0
+      HILO     = 
+      HLSYM    = 
+      CLRBAR   = 1/h/lc/.5/.5;.01
+      CONTUR   = 3/3
+      SKIP     = 0
+      FINT     = 2/4
+      FLINE    = 0;30-7
+      CTYPE    = c
+      GEMPAK-GDCNTR&gt;r
+</code></pre>
+
+<p> 
+ <img src="gdcntr_4.gif" alt="image" /></p></li>
+</ol>
+
+
+<blockquote><p><a href=/gempak/tutorial/>GEMPAK Online Tutorial</a> | <a href="grid_interpolation.html">Next: Grid Interpolation and Transformation</a></p></blockquote>
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

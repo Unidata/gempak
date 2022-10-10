@@ -1,0 +1,237 @@
+<!doctype html><head><title>GEMPAK Help: sncross</title></head><body>
+<a href=../../help_and_documentation>GEMPAK Manual</a> | 
+<a href=../prog/>Programs</a><br><hr>
+<pre>
+SNCROSS draws cross sections through sounding data.
+
+INPUT PARAMETERS
+ 
+    <a href=../parm/cxstns.html>CXSTNS</a>    Cross-section station line
+    <a href=../parm/snparm.html>SNPARM</a>    Sounding parameter list
+    <a href=../parm/snfile.html>SNFILE</a>    Sounding data file
+    <a href=../parm/dattim.html>DATTIM</a>    Date/time
+    <a href=../parm/vcoord.html>VCOORD</a>    Vertical coordinate type
+    <a href=../parm/ptype.html>PTYPE</a>     Plot type/h:w ratio/margins
+    <a href=../parm/yaxis.html>YAXIS</a>     Ystrt/ystop/yinc/lbl;gln;tck
+    <a href=../parm/taxis.html>TAXIS</a>     Time1-time2-tinc;lbl;gln;tck
+    <a href=../parm/line.html>LINE</a>      Color/type/width/label/smth/fltr/scflg
+    <a href=../parm/border.html>BORDER</a>    Background color/type/width
+    <a href=../parm/cint.html>CINT</a>      Contour interval/min/max
+    <a href=../parm/wind.html>WIND</a>      Wind symbol/siz/wdth/typ/hdsz
+    <a href=../parm/title.html>TITLE</a>     Title color/line/title
+    <a href=../parm/panel.html>PANEL</a>     Panel loc/color/dash/width/regn
+    <a href=../parm/device.html>DEVICE</a>    Device|name|x size;y size|color type
+    <a href=../parm/clear.html>CLEAR</a>     Clear screen flag
+    <a href=../parm/filter.html>FILTER</a>    Filter data factor
+    <a href=../parm/text.html>TEXT</a>      Size/fnt/wdth/brdr/N-rot/just/hw flg
+    <a href=../parm/curve.html>CURVE</a>     Curve fit type
+    <a href=../parm/clrbar.html>CLRBAR</a>    Color/ornt/anch/x;y/ln;wd/freq|text_info
+    <a href=../parm/contur.html>CONTUR</a>    Subbox/smooth
+    <a href=../parm/fint.html>FINT</a>      Fill interval/min/max
+    <a href=../parm/fline.html>FLINE</a>     Fill colors/fill types
+    <a href=../parm/ctype.html>CTYPE</a>     Contour type:  C/F
+ 
+ 
+
+PROGRAM DESCRIPTION
+ 
+    SNCROSS draws cross sections using upper-air sounding data.
+    The cross-section line, <a href=../parm/cxstns.html>CXSTNS</a>, must be specified as a list
+    of stations separated with semicolons.  Alternatively, a
+    single station may be entered in <a href=../parm/cxstns.html>CXSTNS</a> and a list of times
+    in <a href=../parm/dattim.html>DATTIM</a>.  In this case, a time section will be drawn.
+
+    Any parameter that can be computed from the data set
+    parameters can be displayed.  The parameter to be displayed
+    is specified in <a href=../parm/snparm.html>SNPARM</a>.  If the value of <a href=../parm/snparm.html>SNPARM</a> is ISEN,
+    isentropes will be drawn.  Note that <a href=../parm/snparm.html>SNPARM</a> may also be
+    THTA, in which case, potential temperature will be gridded
+    and contoured.  ISEN will fit splines to the station data
+    in plot space and then check for tangled lines and untangle
+    them if necessary.
+
+    Contours may be displayed as lines or as a color fill.
+    If <a href=../parm/ctype.html>CTYPE</a> is C, contour lines are drawn using input from <a href=../parm/cint.html>CINT</a>
+    and <a href=../parm/line.html>LINE</a>.  If <a href=../parm/ctype.html>CTYPE</a> is F, filled contours are drawn using
+    specifications from <a href=../parm/fint.html>FINT</a> and <a href=../parm/fline.html>FLINE</a>. Both contour lines and
+    filled contours are drawn if <a href=../parm/ctype.html>CTYPE</a> is F/C.
+
+    The attributes of the contour lines, including the color,
+    line type, line width, and label frequency are specified
+    in <a href=../parm/line.html>LINE</a>.  The four attributes are separated with slashes;
+    semicolons separate the values for each attribute.  If the
+    line type is set to a single negative number, negative
+    contour values will have the absolute value of the line type
+    and positive values will be solid.  If the label type is set
+    to a single number, n, then every nth value will be labeled.
+
+    The contour fill intervals are specified in <a href=../parm/fint.html>FINT</a>; the attributes
+    for the fill are specified in <a href=../parm/fline.html>FLINE</a>.  The first color specified
+    in <a href=../parm/fline.html>FLINE</a> fills values less than the first level; while the
+    last color fills values greater than the last level.  Therefore,
+    n levels require n+1 colors.  <a href=../parm/clrbar.html>CLRBAR</a> allows a color bar to be
+    added for color fill contours.
+
+    A range of colors may be specified in either <a href=../parm/fline.html>FLINE</a> or <a href=../parm/line.html>LINE</a> by
+    specifying starting, ending and increment values in that order
+    separated by dashes.  If the increment is missing, a default
+    of 1 is used.
+
+    The fill type may be set to 1 (solid), 2 (slanted dash) or 3
+    (slanted line).  If fill type is set to 0, solid fill is used.
+    If the fill type is set to a single negative number, negative
+    values will use the absolute value of the fill type, and positive
+    values will be solid.
+
+    The plot background consists of a pressure axis, a horizontal
+    axis with the station names, a filled region indicating the
+    part of the plot below the earth surface, and vertical lines
+    at each station.  The station lines are the specified line type
+    up to the level at which wind data stop, and are dotted from
+    there to the level at which temperature data stop.  The color
+    and other attributes for the background axes and labels are
+    given by the first numbers separated by semicolons in the color
+    number, line type and line width entry sections for <a href=../parm/border.html>BORDER</a>.  The
+    second set of numbers applies to the station lines, and the third
+    set to the underground color fill (for which the line type and
+    width do not apply).  To eliminate, the background, the station
+    lines, or the underground fill, just set the corresponding color
+    number to zero.  If one color number is entered, it is used for
+    all three; if two are entered, the second is used for both the
+    station lines and the underground fill.  So, <a href=../parm/border.html>BORDER</a> has the
+    following entries:
+
+     background color; station line color; underground fill color /
+     background line type; station line type /
+     background line width; station line width
+
+    The horizontal axis represents a straight line between the
+    first and last stations.  The positions of intervening stations
+    are proportional to the perpendicular projections of the actual
+    positions onto the section line.  All of these calculations
+    are done in lat/lon coordinates.  If the plot is a time section,
+    the times will be displayed on the x axis with the earliest
+    time at the left.  If the first character in <a href=../parm/taxis.html>TAXIS</a> is an R, the
+    earliest time will appear on the right.
+
+    The vertical coordinate may be specified as LIN, LOG, or STUVE;
+    SKEWT is not valid in this program.  The bottom and top limits
+    for the y axis are specified in <a href=../parm/yaxis.html>YAXIS</a>, but the axis labeling
+    specifications are ignored.
+
+ 
+EXAMPLES
+ 
+    1.	Draw isentropes in color 3 for the last time in the
+	data set.  Plot the background in color 1.  Use a
+	logarithmic scale for the y axis and a 5 degree interval
+	for the isentropes.  Draw wind barbs in color number
+	6 with line width 2.
+
+	<a href=../parm/cxstns.html>CXSTNS</a>	 =  chh;acy;wal;hat;chs;ays
+	<a href=../parm/snparm.html>SNPARM</a>	 =  thta
+	<a href=../parm/snfile.html>SNFILE</a>	 =  $GEMPAK/data/HRCBOB.SND
+	<a href=../parm/dattim.html>DATTIM</a>	 =  last
+	<a href=../parm/vcoord.html>VCOORD</a>	 =  pres
+	<a href=../parm/ptype.html>PTYPE</a>	 =  log
+	<a href=../parm/yaxis.html>YAXIS</a>	 =
+	<a href=../parm/taxis.html>TAXIS</a>	 =
+	<a href=../parm/line.html>LINE</a>	 =  3
+	<a href=../parm/border.html>BORDER</a>	 =  1
+	<a href=../parm/cint.html>CINT</a>	 =  5
+	<a href=../parm/wind.html>WIND</a>	 =  bm6//2
+	<a href=../parm/title.html>TITLE</a>	 =  1
+	<a href=../parm/panel.html>PANEL</a>	 =  0
+	<a href=../parm/device.html>DEVICE</a>	 =  xw
+	<a href=../parm/clear.html>CLEAR</a>	 =  y
+	<a href=../parm/filter.html>FILTER</a>	 =  .8
+	<a href=../parm/text.html>TEXT</a>	 =  1
+	<a href=../parm/curve.html>CURVE</a>	 =  2
+	<a href=../parm/clrbar.html>CLRBAR</a>	 =
+	<a href=../parm/contur.html>CONTUR</a>	 =  0
+	<a href=../parm/fint.html>FINT</a>	 =  0
+	<a href=../parm/fline.html>FLINE</a>	 =  10-20
+	<a href=../parm/ctype.html>CTYPE</a>	 =  C
+
+    2.	Draw filled contours of relative humidity for the same
+	cross section.  Fill in contours greater than 70%.  Draw
+	a horizontal color bar at the bottom of the plot.  Draw
+	the cross section from 1050 mb to 300 mb.
+
+	<a href=../parm/cxstns.html>CXSTNS</a>	 =  chh;acy;wal;hat;chs;ays
+	<a href=../parm/snparm.html>SNPARM</a>	 =  relh
+	<a href=../parm/snfile.html>SNFILE</a>	 =  $GEMPAK/data/HRCBOB.SND
+	<a href=../parm/dattim.html>DATTIM</a>	 =  last
+	<a href=../parm/vcoord.html>VCOORD</a>	 =  pres
+	<a href=../parm/ptype.html>PTYPE</a>	 =  log/.5
+	<a href=../parm/yaxis.html>YAXIS</a>	 =  1050/300
+	<a href=../parm/taxis.html>TAXIS</a>	 =
+	<a href=../parm/line.html>LINE</a>	 =  3
+	<a href=../parm/border.html>BORDER</a>	 =  1
+	<a href=../parm/cint.html>CINT</a>	 =  5
+	<a href=../parm/wind.html>WIND</a>	 =  bm6//2
+	<a href=../parm/title.html>TITLE</a>	 =  1
+	<a href=../parm/panel.html>PANEL</a>	 =  0
+	<a href=../parm/device.html>DEVICE</a>	 =  xw
+	<a href=../parm/clear.html>CLEAR</a>	 =  y
+	<a href=../parm/filter.html>FILTER</a>	 =  .8
+	<a href=../parm/text.html>TEXT</a>	 =  1
+	<a href=../parm/curve.html>CURVE</a>	 =  2
+	<a href=../parm/clrbar.html>CLRBAR</a>	 =  1/h
+	<a href=../parm/contur.html>CONTUR</a>	 =  0
+	<a href=../parm/fint.html>FINT</a>	 =  70;80;90
+	<a href=../parm/fline.html>FLINE</a>	 =  0;21;22;23
+	<a href=../parm/ctype.html>CTYPE</a>	 =  f
+
+    3.	Draw a time section of relative humidity for ACY.
+	Reverse the time axis to plot latest time on the left.
+
+	<a href=../parm/cxstns.html>CXSTNS</a>	 =  acy
+	<a href=../parm/snparm.html>SNPARM</a>	 =  relh
+	<a href=../parm/snfile.html>SNFILE</a>	 =  $GEMPAK/data/HRCBOB.SND
+	<a href=../parm/dattim.html>DATTIM</a>	 =  all
+	<a href=../parm/vcoord.html>VCOORD</a>	 =  pres
+	<a href=../parm/ptype.html>PTYPE</a>	 =  log/.5
+	<a href=../parm/yaxis.html>YAXIS</a>	 =  1050/300
+	<a href=../parm/taxis.html>TAXIS</a>	 =  r
+	<a href=../parm/line.html>LINE</a>	 =  3
+	<a href=../parm/border.html>BORDER</a>	 =  1
+	<a href=../parm/cint.html>CINT</a>	 =  5
+	<a href=../parm/wind.html>WIND</a>	 =  bm6//2
+	<a href=../parm/title.html>TITLE</a>	 =  1
+	<a href=../parm/panel.html>PANEL</a>	 =  0
+	<a href=../parm/device.html>DEVICE</a>	 =  xw
+	<a href=../parm/clear.html>CLEAR</a>	 =  y
+	<a href=../parm/filter.html>FILTER</a>	 =  .8
+	<a href=../parm/text.html>TEXT</a>	 =  1
+	<a href=../parm/curve.html>CURVE</a>	 =  2
+	<a href=../parm/clrbar.html>CLRBAR</a>	 =  1/h
+	<a href=../parm/contur.html>CONTUR</a>	 =  0
+	<a href=../parm/fint.html>FINT</a>	 =  70;80;90
+	<a href=../parm/fline.html>FLINE</a>	 =  0;21;22;23
+	<a href=../parm/ctype.html>CTYPE</a>	 =  f
+
+ERROR MESSAGES
+ 
+    [SNCROSS  -1]   Fatal error initializing TAE.
+    [SNCROSS  -2]   Fatal error reading TAE parameters.
+    [SNCROSS  -3]   GEMPLT initialization error.
+    [SNCROSS  -4]   Vertical coordinate for isentropes must be PRES.
+    [SNCROSS  -5]   There are no times in the file.
+    [SNCROSS  -6]   Fewer than four stations/times were selected.
+    [SNCROSS  -7]   Data buffer is too small.
+    [SNCROSS  -8]   Temperature or pressure data not available.
+    [SNCROSS  -9]   The station ... cannot be found in the data set.
+    [SNCROSS -10]   Error setting up graph; check invalid LOG axis.
+    [SNCROSS -11]   Input ... for <a href=../parm/ptype.html>PTYPE</a> is invalid.
+    [SNCROSS -12]   Either input ... for <a href=../parm/yaxis.html>YAXIS</a> or input for <a href=../parm/vcoord.html>VCOORD</a> is invalid.
+    [SNCROSS -13]   Parameter ... is not computable.
+    [SNCROSS -14]   Parameter ... is a character.
+    [SNCROSS -15]   The grid coordinates cannot be defined.
+    [SNCROSS -16]   Multiple station entry is invalid for time sections.
+    [SNCROSS -17]   Data at time ... is not in the file.
+    [SNCROSS -18]   Wind data cannot be computed.
+</pre>
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

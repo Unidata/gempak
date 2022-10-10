@@ -1,0 +1,46 @@
+ GDATTIM  = last
+ GLEVEL   = 0
+ GVCORD   = none
+ GFUNC    = tmpf
+ GDFILE   = barnes1.grd
+ CINT     = 0
+ LINE     = 8/1/2
+ MAP      = 15/1/2
+ TITLE    = 1/-1/SEARCH = 5
+ DEVICE   = xw
+ SATFIL   = 
+ RADFIL   = 
+ PROJ     = lea/35;-100;0
+ GAREA    = #35;-93;12;27
+ CLEAR    = y
+ PANEL    = ul
+ TEXT     = 1.3/23//hw
+ SCALE    = 999
+ LATLON   = 0
+ HILO     = 
+ HLSYM    = 
+ CLRBAR   = 
+ CONTUR   = 3/0
+ SKIP     = 0
+ FINT     = 10
+ FLINE    = 30-7
+ CTYPE    = f
+r
+
+GDFILE   = barnes2.grd
+panel = ur
+title = 1/-1/SEARCH = 10
+clear = n
+r
+
+GDFILE   = barnes3.grd
+panel = ll
+title = 1/-1/SEARCH = 20
+r
+
+GDFILE   = barnes4.grd
+panel = lr
+title = 1/-1/SEARCH = 50
+r
+
+e

@@ -1,0 +1,125 @@
+
+<!DOCTYPE html>
+<html>
+<HEAD>
+<TITLE>Graphing Program Exercises Answer 3</TITLE>
+</HEAD>
+<BODY>
+<strong>
+<pre> 
+prompt% sncross
+Creating process: gplt for queue 4800
+ CXSTNS    Cross-section station line        
+ SNPARM    Sounding parameter list           ;TMPC;;HGHT;DWPC;BRBM
+ SNFILE    Sounding data file                $GEMDATA/HRCBOB.SND
+ DATTIM    Date/time                         LAST
+ VCOORD    Vertical coordinate type          PRES
+ PTYPE     Plot type/h:w ratio/margins       LOG
+ YAXIS     Ystrt/ystop/yinc/lbl;gln;tck      
+ TAXIS     Time1-time2-tinc;lbl;gln;tck      
+ LINE      Line color/type/width/label       3
+ BORDER    Background color/dash/width       1
+ CINT      Contour interval/min/max          0
+ WIND      Wind symbol/siz/wdth/typ/hdsz     BM1
+ TITLE     Title color/line/title            5/-2
+ PANEL     Panel loc/color/dash/width/regn   0
+ DEVICE    Dev|name|X;Y|colormode|plotmode   xw|closeup
+ CLEAR     Clear screen flag                 y
+ FILTER    Filter data factor                YES
+ TEXT      Text size/font/width/hw flag      1
+ CURVE     Curve fit type                    2
+ CLRBAR    Color/ornt/anch/x;y/ln;wd/freq    
+ CONTUR    Subbox/smooth                     0
+ FINT      Fill interval/min/max             0
+ FLINE     Fill colors                       10-20
+ CTYPE     Contour type:  C/F                C
+ Parameters requested: CXSTNS,SNPARM,SNFILE,DATTIM,VCOORD,PTYPE,YAXIS,TAXIS,
+ LINE,BORDER,CINT,WIND,TITLE,PANEL,DEVICE,CLEAR,FILTER,TEXT,CURVE,CLRBAR,
+ CONTUR,FINT,FLINE,CTYPE.
+ GEMPAK-SNCROSS>restore defaults/sncross.nts
+ GEMPAK-SNCROSS>cxstns = elp;abq;den;rap
+ GEMPAK-SNCROSS>snparm = tmpc
+ GEMPAK-SNCROSS>ptype = log
+ GEMPAK-SNCROSS>vcoord = pres
+ GEMPAK-SNCROSS>snfile = $GEMPAKHOME/data/hrcbob.snd
+ GEMPAK-SNCROSS>dattim = 910819/1200
+ GEMPAK-SNCROSS>l <IMG ALIGN=CENTER SRC="../images/redisplaysettings.gif">
+
+<IMG SRC="../images/gempakdisplays.gif">
+ CXSTNS   = elp;abq;den;rap
+ SNPARM   = tmpc
+ SNFILE   = $GEMPAKHOME/data/hrcbob.snd
+ DATTIM   = 910819/1200
+ VCOORD   = pres
+ PTYPE    = log
+ YAXIS    = dset
+ TAXIS    = dset
+ LINE     = 4/1/2
+ BORDER   = 1
+ CINT     = 0
+ WIND     = 
+ TITLE    = 1/-1
+ PANEL    = 0
+ DEVICE   = xw
+ CLEAR    = yes
+ FILTER   = 0
+ TEXT     = 1.3/23//hw
+ CURVE    = 2
+ CLRBAR   = 
+ CONTUR   = 3/0
+ FINT     = 0
+ FLINE    = 30-18--1
+ CTYPE    = c/f
+ GEMPAK-SNCROSS>r <IMG ALIGN=CENTER SRC="../images/runtheprogram.gif">
+<center><IMG SRC="../images/programoutput.gif"></center>
+
+     SNCROSS PARAMETERS
+
+ STATION       TOP LVL FOR TEMP  TOP LVL FOR WIND
+ ELP                      6                 7
+ ABQ                     20                21
+ DEN                      7                 7
+ RAP                     12                14
+ PARM:      TMPC
+ VCOORD:    PRES
+ CLEAR:     YES 
+ TIME:      910819/1200         
+
+ LEVELS:       -70.00   -60.00   -50.00   -40.00   -30.00   -20.00   -10.00
+ COLORS:            4        4        4        4        4        4        4
+ LINTYP:            1        1        1        1        1        1        1
+ LINWID:            2        2        2        2        2        2        2
+ LABEL:             1        1        1        1        1        1        1
+
+ LEVELS:         0.00    10.00
+ COLORS:            4        4
+ LINTYP:            1        1
+ LINWID:            2        2
+ LABEL:             1        1
+
+ FILLED CONTOURS: 
+
+ LEVELS:       -70.00   -60.00   -50.00   -40.00   -30.00   -20.00   -10.00
+ COLORS:     30       29       28       27       26       25       24
+
+ LEVELS:         0.00    10.00
+ COLORS:     23       22       21
+Enter <cr> to accept parameters or type EXIT:
+ Parameters requested: CXSTNS,SNPARM,SNFILE,DATTIM,VCOORD,PTYPE,YAXIS,TAXIS,
+ LINE,BORDER,CINT,WIND,TITLE,PANEL,DEVICE,CLEAR,FILTER,TEXT,CURVE,CLRBAR,
+ CONTUR,FINT,FLINE,CTYPE.
+ GEMPAK-SNCROSS>e
+
+
+</pre>
+<A HREF="../images/graphing_answer3.gif"><IMG SRC="../images/viewindow.gif"></a>
+<p>
+
+
+<img src="../images/bluehorizontaline.gif">
+<pre>
+<a href="../graphing_exercises.html#answer3"><img alt="previous page" src="../images/return.gif"></a>
+
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

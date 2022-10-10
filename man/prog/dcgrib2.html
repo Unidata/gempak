@@ -1,0 +1,113 @@
+<!doctype html><head><title>GEMPAK Help: dcgrib2</title></head><body>
+<a href=../../help_and_documentation>GEMPAK Manual</a> | 
+<a href=../prog/>Programs</a><br><hr>
+<pre>
+
+DCGRIB2 (Unidata)
+
+    DCGRIB2 decodes GRIB format grids from a real-time data
+    feed, or from a file fed to the program through standard input, and
+    writes the data to GEMPAK grid files.  The program is 
+    controlled by inputs to the command line as well as several
+    configuration tables.
+
+    DCGRIB2 utilizes the GEMPAK GB library routines (as NAGRIB does)
+    although several distinct features have been added to facilitate
+    the use of the decoder with GRIB bulletins transmitted via
+    NOAAPORT/FOS. 
+
+    1. DCGRIB2 posses the capability to "stitch" together grids
+       transmitted in tiles. Currently these grids are typically
+       global grids, such as the "thinned" AVN, MRF, and ECMWF
+       tiles. Since GRIB bulletins transmitted as tiles generally
+       lack the projection information of the larger grid system
+       of which the tile is imbedded, a lookup table 
+       $GEMTBL/grid/dcgrib.tbl is maintained with this information.
+
+    2. Ouput file name templates are supported using keys described below.
+
+    3. If an output filename is not provided, the program will attempt
+       to find a suitable template from the table $GEMTBL/grid/gribkey.tbl.
+       By using this feature, a single dcgrib2 process may be invoked for
+       many different sources of GRIB data (typically for real-time data).
+       If a matching set of criteria exist, the grid is decoded. The first
+       template that matches the search criteria will be used, such that
+       global matches can be permitted. The number of grid entries in the
+       output file can be set in the gribkey.tbl file.
+
+    4. Up to MMFILE files will be opened at a time to allow for cycling of output
+       files when different data sets are inter-mixed in the data stream.
+
+           
+    The command line inputs are program options, and the output_file name may
+    use the defined template characters below. If the output_file name is ommited,
+    a template in the gribkey.tbl file will be used if defined.
+
+    For example, for real-time data feeds:
+    
+	dcgrib2 [options] [output_file]
+
+    When using with the LDM, the GEMPAK grib routines must be able
+    to access the grib tables located in the gempak distribution.
+    This is done through the GEMTBL environmental variable.
+    If the the LDM process does not have the GEMTBL variable set,
+    then you must use the "-e GEMTBL=path" option.
+
+    The following tables files are expected to be found:
+	$GEMTBL/grid/cntrgrib[X].tbl
+	$GEMTBL/grid/vcrdgrib[X].tbl
+	$GEMTBL/grid/wmogrib[X].tbl
+	$GEMTBL/grid/[CENTER]grib[X].tbl
+	$GEMTBL/grid/dcgrib.tbl
+	$GEMTBL/grid/gribkey.tbl
+
+    If running the program interactively with standard input, 
+    the input file must be also be specified.
+    For example:
+		
+    dcgrib2 [options] [output_file] < input_file
+    
+    A template may be used to specify the output file name.  The file
+    name template uses the date and time of the bulletin or report
+    to replace the following characters.
+
+	YYYY		Year with century
+	YY		Year without the century
+	MM		Month number
+	DD		Day
+	HH		Hour
+	NN		Minute
+	FF		Forecast hour (2 digit)
+	FFF		Forecast hour (3 digit)
+	###		Generating process model id (PDS Octet 5)
+	@@@		Grid number (PDS Octet 7)
+	%%%             Generating subcenter (PDS Octet 26)
+	%subc%          replace with [CENTER]subcenter.tbl abbreviation for generating subcenter
+	%ens%           replace with ensemble member extension
+
+    Valid command line options for DCGRIB2 are:
+
+	-v N, -m maxgrids, -d logfile, -t timeout, -h show help, -e PARM=value
+
+    Other DC decoder options are ignored.
+
+    In order to provide flexibility in decoded output. The following environmental
+    variables may be used to configure the decoder:
+
+	ENSEXT : Environmental variable for adding ensemble extensions to parameter names
+		If ENSEXT is not set, use of PDSEXT parameter name extensions defaults 
+		to yes for grib1 and no for grib2. If ENSEXT is set, and equal to 1, 
+		then the extension will be added to parameter names. If ENSEXT is
+		set, and not equal to 1, the PDS extension will not be added to parameter 
+		names.
+
+	MDMETH : Environmental variable for backward compatibility when decoding GRIB2 data.
+		Default storage method uses GRIB2 packing (MDGRB2) for grib2 data, which is 
+		not backward compatible with older GEMPAK distributions. If environmental 
+		variable MDMETH=MDGDEC, use backward compatibility - which will be much 
+		slower for GRIB2 decoding, and result in output files which may be much larger..
+
+</pre>
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

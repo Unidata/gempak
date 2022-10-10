@@ -1,0 +1,869 @@
+<!doctype html><head><title>GEMPAK Help: gparm</title></head><body>
+<a href=../../help_and_documentation>GEMPAK Manual</a> | 
+<a href=../prog/>Programs</a> | <a href=../parm/>Parameters</a><br><hr>
+<pre>
+     GPARM
+
+     <a href=gfunc.html>GFUNC</a> and <a href=gvect.html>GVECT</a> are the scalar and vector grid functions. They are
+     input as nested strings of operators and operands.  The operand list
+     for an operator is enclosed in parentheses or square brackets, with
+     operands separated by semicolons or commas.
+
+     If the entire grid is small enough (less than LLMXGD grid points)
+     and <a href=garea.html>GAREA</a> is set to GRID, then the computations below are done over
+     the entire grid; otherwise, the computations are done over a subset
+     of the grid.  This subset grid is large enough to cover the display
+     area.
+
+     The following grids will be computed automatically from grids in the
+     grid file, if possible:
+ 
+	TMPK    DWPK    TVRK    MIXR    THTA    DRCT    TMWK    THWK
+	TMPC    DWPC    TVRC    SMXR    STHA    SPED    TMWC    THWC
+	TMPF    DWPF    TVRF    MIXS    THTE    RELH    TMWF    THWF
+                        THES    SMXS    STHE               
+
+     Mixing ratios will be computed automatically from dewpoint
+     temperatures, specific humidity, or vapor pressure if a pressure
+     grid exists.
+
+     The stability indices will be computed automatically from
+     temperature, dewpoint temperature, and wind speed and direction.
+     These special scalar parameters are:
+
+	CTOT    VTOT    TOTL    KINX    SWET
+
+     Haines Indices for fire weather detection will be computed 
+     automatically from temperature and dewpoint at three different 
+     levels.  These scalar parameters are:
+
+	LHAN	Low elevation Haines Index
+	MHAN	Middle elevation Haines Index
+	HHAN	High elevation Haines Index
+
+     The Heat Index, HEAT, will also be automatically computed from the
+     temperature and relative humidity.
+
+     In addition, precipitation will be converted from inches (I) to
+     millimeters (M) and vice versa, if the grids are named P__M or
+     P__I.  The middle characters are numbers giving the time interval
+     over which the precipitation accumulated. For example, P24M is
+     a 24-hour precipitation total. 
+
+     The units for sea surface temperature (SSTx), maximum temperature (TMXx),
+     and minimum temperature (TMNx) will be converted automatically. 
+     (x may be K, C, or F.)
+     
+     These special scalar parameter names denote constant value grids:
+ 
+	DTR	Conversion factor for degrees to radians = PI / 180
+	E	Base of natural logarithms = 2.71828182
+	GRAVTY	Gravitational constant = 9.80616 (note spelling)
+	KAPPA	Gas constant/specific heat = 2/7
+	PI	3.14159265
+	RTD	Conversion factor for radians to degrees = 180 / PI
+	nnn	Any number (e.g., 2, -10.2)
+ 
+     Another class of special parameter names depends on the grid navigation:
+ 
+	CORL	Coriolis force  = 2. * OMEGA * SIN ( LATR ) 
+	LATR	Latitude in radians
+	LONR	Longitude in radians
+	XVAL	Value of the x coordinate in graph coordinates
+	YVAL	Value of the y coordinate in graph coordinates
+	IGPT	I index on grid of first <a href=gdfile.html>GDFILE</a> entry or output grid
+        JGPT	J index on grid of first <a href=gdfile.html>GDFILE</a> entry or output grid
+	MSFX	Map scale factor in the x direction
+	MSFY	Map scale factor in the y direction
+	LAND	Land array; land=1,  sea=RMISSD
+	SEA	Sea  array;  sea=1, land=RMISSD
+
+	BETA	Derivative of Coriolis force with respect to y direction
+ 		Note: This only works correctly for cylindrical grids.
+      
+     A grid may be identified by its number in the grid file by prefixing the
+     number with the symbol #, e.g., #5.
+
+     Standard vector grids are:
+ 
+	WND	Total wind
+	GEO	Geostrophic wind
+	AGE	Ageostrophic wind
+	ISAL	Isallobaric wind
+	THRM	Thermal wind
+ 
+     Time, level, and vertical coordinate as specified through the user
+     interface may be overridden by in-line parameters:
+ 
+		^time	@level	%ivcord
+ 
+     appended to an operand in any combination.  
+
+     If more than one file is opened, +n may also be used as an in-line
+     parameter, where "n" is the number corresponding to the position
+     of the file list entered in <a href=gdfile.html>GDFILE</a>.  If +n is omitted, the first
+     file is used.  For example, to advect temperature from file 3 using
+     winds from file 1:
+
+		<a href=gdfile.html>GDFILE</a> =file1.grd + file2.grd + file3.grd
+		<a href=gfunc.html>GFUNC</a>  =ADV ( TMPK+3, WND )
+ 
+     Grid operators may be nested.  Note that layer and time range operators
+     expect operands read directly from the grid file.
+
+     <a href=gfunc.html>GFUNC</a> may include a name for the computed grid.  This name may be used
+     in later diagnostic functions in an application.  The grid is stored
+     in an internal grid list and will not be overwritten.  If a number of
+     grids are saved in this manner, some diagnostic calculations may begin
+     to fail because there are not enough internal grids available.  Stored
+     grids are never available after exiting the application or after the
+     grid navigation has been changed.  The name is specified after two
+     slashes at the end of <a href=gfunc.html>GFUNC</a>.  For example,
+
+                <a href=gfunc.html>GFUNC</a> = DIV ( WND ) //DVRG
+
+     permits the divergence to be used in a later calculation as DVRG, as
+     in this example:
+
+		<a href=gfunc.html>GFUNC</a> = LAP ( DVRG )
+
+     This name will also be the default name used in the title.  If a
+     computed grid is given the same name as one computed in a previous
+     <a href=gfunc.html>GFUNC</a> specification, then the earlier grid is replaced by the one
+     most recently computed, even if the grids have different level or
+     time identifiers.  Use different names to preserve both grids.  To
+     recall saved grids, specifying the name is all that is required. It is
+     not necessary to use in-line identifiers following the name. Changing
+     the settings for <a href=gdattim.html>GDATTIM</a>, <a href=glevel.html>GLEVEL</a>, or <a href=gvcord.html>GVCORD</a> will have no impact on
+     recalling saved grids.  A saved grid may be renamed using the //
+     feature, for example,
+
+                <a href=gfunc.html>GFUNC</a> = DVRG//DIVA
+
+     renames the grid saved as DVRG to DIVA.  The name DVRG is no longer
+     found in the internal grid list.
+ 
+     In the following list of diagnostic operators, scalar operands are named
+     Si, and vector operands are Vi.  Vector components are denoted by u
+     and v.  All meteorological grids are in MKS units, except as noted.  POL
+     following the description indicates that the computation currently can
+     only be performed on polar (R, THETA) grids.  In the trigonometric
+     functions, the angles are expressed in radians.
+
+     The scalar constants used as arguments for the radial and tangential
+     wind computations are defined as follows:
+
+	<a href=lat.html>LAT</a> = latitude of storm center
+	<a href=lon.html>LON</a> = longitude of storm center
+	D   = direction of storm motion
+	ST  = speed of storm motion
+ 
+     The second input in each of the filter functions GWFS and GWFV is an
+     integer N.  N gives the wavelength in units of the grid spacing for
+     which the theoretical response of a filter with normally distributed
+     weights is 1/e = .3679.  In practice, the actual response function will
+     exceed the theoretical values at all wavelengths.  The larger N is, the
+     stronger the filtering will be.  The RDFS and RDFV filters are
+     resolution dependent filters that call the GWFS filter.  The parameter
+     N is computed from the requested effective output resolution (dx,km) so
+     that the 2 X dx amplitude is reduced to ~1/e of the original amplitude
+     on the fine resolution grid.
+
+     The SGMX and SGMN functions return the maximum and minimum, respectively,
+     found on the subset of the grid defined by <a href=garea.html>GAREA</a> and <a href=proj.html>PROJ</a>.  In GDDIAG,
+     the maximum and minimum are found by scanning the entire output grid.
+
+     The binormal finite mixture distribution (BNCDF) is formed by two Gaussian
+     curves with different standard deviations fitted together with matching
+     values at the mode and scaling such that the total integral is 1.  This
+     permits the use of a skewed probability density function.  If the mode,
+     Qm, of a distribution for random variable, q, and the cumulative
+     probability up to the mode, Pm, are known along with the value of q = Qx,
+     corresponding to cumulative probability x, 0 < x < 1, then the left and
+     right sigma values can be computed by using either one of the following
+     two sets of grid diagnostic functions in gddiag:
+
+     Case 1 for x < Pm:
+     <a href=gfunc.html>GFUNC</a>=quo(sub(Qx,Qm),incd(quo(mul(.5,x),Pm),0,1))
+     <a href=grdnam.html>GRDNAM</a>=lftsig
+     <a href=gfunc.html>GFUNC</a>=quo(mul(lftsig,sub(1,Pm)),Pm)
+     <a href=grdnam.html>GRDNAM</a>=rhtsig
+
+     Case 2 for x > Pm:
+     <a href=gfunc.html>GFUNC</a>=quo(sub(Qx,Qm),incd(quo(sub(mul(.5,add(1,x)),Pm),sub(1,Pm)),0,1))
+     <a href=grdnam.html>GRDNAM</a>=rhtsig
+     <a href=gfunc.html>GFUNC</a>=quo(mul(rhtsig,Pm),sub(1,Pm))
+     <a href=grdnam.html>GRDNAM</a>=lftsig
+
+     Note that the inverse of the standard cumulative normal distribution,
+     INCD, is required.  Since the value of x is fixed, only one of the two
+     cases applies at all grid points if x is near 0 or 1.  The values Qm,
+     lftsig, and rhtsig completely specify the binormal distribution.  In
+     general, case 1 and case 2 will not yield the same results.  The greater
+     the differences, the less the data conforms to the binormal distribution.
+     If q is binormally distributed, the results for cases 1 and 2 should
+     be very similar.
+
+
+     SCALAR <a href=output.html>OUTPUT</a> GRID
+ 
+	ABS	(S)		Absolute value
+	ACOS	(S)		Arc cosine function
+	ASIN	(S)		Arc sine function
+	ATAN	(S)		Arc tangent function
+	ATN2	(S1,S2)		Arc tangent function
+	COS	(S)		Cosine function
+	EXP	(S1,S2)		Exponential to real
+	EXPI	(S1,S2)		Exponential to integer [uses NINT(S2)]
+	INT	(S)		Convert to an integer
+	LN	(S)		Natural logarithm
+	LOG	(S)		Base 10 logarithm
+	NINT	(S)		Round to nearest integer
+	SIN	(S)		Sine function
+	SQRT	(S)		Square root
+	TAN	(S)		Tangent function
+
+	NCDF	(S1,S2,S3)	Cumulative normal distribution function
+				for value, mean, and std dev
+        INCD    (S1,S2,S3)      Inverse cumulative normal distribution value
+                                given cumulative probability, mean, and std dev
+        BNCDF   (S1,S2,S3,S4)   Cumulative binormal mixture distribution
+                                function for value, mode, left sigma, and right
+                                sigma
+        IBNCD   (S1,S2,S3,S4)   Inverse cumulative binormal mixture distribution
+                                value given cumulative probability, mode, left
+                                sigma, and right sigma
+
+	PAUB	(S1,S2,S3)	Combine probabilities (S1 OR S2) with
+                                dependency parameter S3
+
+	ADD	(S1,S2)		Addition
+	MUL	(S1,S2)		Multiplication
+	QUO	(S1,S2)		Division
+	SUB	(S1,S2)		Subtraction
+
+	BOOL	(S)		Boolean function
+	SLT	(S1,S2)		Less than function
+	SLE	(S1,S2)		Less than or equal to function
+	SGT	(S1,S2)		Greater than function
+	SGE	(S1,S2)		Greater than or equal to function
+	SBTW	(S1,S2,S3)	Between two values function
+	SMAX	(S1,S2)		Maximum of S1 and S2
+	SMIN	(S1,S2)		Minimum of S1 and S2
+	MASK	(S1,S2)		Mask S1 based on S2
+	MISS	(S1,S2)		Set missing values in S1 to S2
+
+	ADV	(S,V)		Advection
+	AVG	(S1,S2)		Average
+	AVOR	(V)		Absolute vorticity   
+	BVSQ	(THTA)		Brunt-Vaisala frequency squared in a layer
+	CROS	(V1,V2)		Vector cross product magnitude
+	DDEN	(PRES,TMPC)	Density of dry air  (kg / m**3)
+	DDR	(S)		Partial derivative with respect to R (POL)
+	DDT	(S)		Time derivative
+	DDX	(S)		Partial derivative with respect to X  
+	DDY	(S)		Partial derivative with respect to Y
+	DEF	(V)		Total deformation
+	DIRN	(V)		Direction relative to north
+	DIRR	(V)		Direction relative to grid
+	DIV	(V)		Divergence  
+	DIVT	(S,V)		Divergence Tendency (only for cylindrical grids)
+	DOT	(V1,V2)		Vector dot product
+	DTH	(S)		Partial deriv. with respect to THETA (POL)
+	FCNT	(S)		Coriolis force at grid center (POL) 
+	FOSB	(TMPC,RELH,
+			SPED)	Fosberg index, also called Fire Weather Index
+	FRNT	(THTA,V)	Frontogenesis  
+	GWFS	(S,N)		Filter with normal distribution of weights
+	RDFS    (S,DX)		GWFS applied for given output resolution (dx,km)
+	HIGH	(S,<a href=radius.html>RADIUS</a>)	Relative maxima over a grid
+				    (<a href=radius.html>RADIUS</a> is expressed in grid points)
+	JCBN	(S1,S2)		Jacobian determinant
+	KNTS	(S)		Convert meters / second to knots
+	LAP	(S)		Laplacian operator  
+	LAV	(S)		Layer average (2 levels)
+	LDF	(S)		Layer difference (2 levels)
+	LOWS	(S,<a href=radius.html>RADIUS</a>)	Relative minima over a grid
+				    (<a href=radius.html>RADIUS</a> is expressed in grid points)
+	MAG	(V)		Magnitude of a vector
+	MASS			Mass per unit volume in a layer from PRES
+	MDIV	(V)		Layer-average mass divergence  
+	MIXR	(DWPC,PRES)	Mixing ratio kg/kg internally, g/kg on output
+	MRAD	(V,<a href=lat.html>LAT</a>,<a href=lon.html>LON</a>,
+			D,ST)	Magnitude of radial wind
+	MSDV	(S,V)		Layer-avg. mass-scalar flux divergence  
+	MSFC	(V)		Psuedo angular momentum (for cross sections)
+	MTNG	(V,<a href=lat.html>LAT</a>,<a href=lon.html>LON</a>,
+			D,ST)	Magnitude of tangential wind
+	NORM	(V)		Normal component (for cross sections)
+	NMAX	(S,ROI) 	Neighborhood maximum value for a radius of influence
+				    (ROI is expressed in meters)
+	NMIN	(S,ROI)	        Neighborhood minimum value for a radius of influence
+				    (ROI is expressed in meters)
+	PLAT	(S)		Latitude at each point (POL)
+	PLON	(S)		Longitude at each point (POL)
+        PLCL    (PRES,TMPC, 
+                        DWPC)   Pressure of the lifting condensation level
+	POIS	(S1,S2)		Solve Poisson equation of forcing function
+				    with boundary conditions
+	POLF	(S)		Coriolis force at each point (POL)
+	PVOR	(S,V)		Potential vorticity in a layer
+	PVR3	(S,V)		3-D Potential vorticity for a level
+	RELH	(TMPC,DWPT)	Relative humidity
+	RICH	(V)		Richardson stability number in a layer
+	ROSS	(V1,V2)		Rossby number  
+	SAVS	(S)		Average over display subset area of grid
+	SDIV	(S,V)		Flux divergence of a scalar  
+	SGMX	(S)		Maximum of S over <a href=garea.html>GAREA</a>
+	SGMN	(S)		Minimum of S over <a href=garea.html>GAREA</a>
+	SHR	(V)		Shearing deformation  
+	SM5S	(S)		5-point smoother
+	SM9S	(S)		9-point smoother
+	STAB	(TMPC)		Lapse rate over a layer in K/km
+	STR	(V)		Stretching deformation  
+	TANG	(V)		Tangential component (for cross sections)
+	TAV	(S)		Time average
+	TDF	(S)		Time difference
+	THES	(PRES,TMPC)	Saturated equivalent potential temperature
+				    in Kelvin		
+	THTA	(TMPC,PRES)	Potential temperature
+	THTE	(PRES,TMPC,
+			DWPC)	Equivalent potential temperature
+	THWC	(PRES,TMPC,
+			DWPC)	Wet bulb potential temperature in Celsius
+        TLCL    (TMPC,DWPC)     Temperature of the lifting condensation level
+ 	TMST	(THTE,PRES)	Parcel temperature in Kelvin along a 
+				    moist adiabat
+	TMWK	(PRES,TMPK,
+			RMIX)	Wet bulb temperature in Kelvin
+	DSUB	(V1,V2)		DIRN (V1) - DIRN (V2)
+	UN	(V)		North relative u component
+	UR	(V)		Grid relative u component
+	VN	(V)		North relative v component
+	VOR	(V)		Vorticity  
+	VR	(V)		Grid relative v component
+	WNDX	(S1,S2,S3,S4)	WINDEX (index for microburst potential)
+	WSHR	(V)		Magnitude of the vertical wind shear in
+				    a layer
+	XAV	(S)		Average along a display subset grid row 
+	XSUM	(S)		Sum along a display subset grid row
+	YAV	(S)		Average along a display subset grid column
+	YSUM	(S)		Sum along a display subset grid column
+
+     VECTOR <a href=output.html>OUTPUT</a> GRID
+
+	AGE	(S)		Ageostrophic wind  
+	CIRC	(V,S)		Circulation (for cross section)
+	DVDX	(V)		Partial x derivative of V
+	DVDY	(V)		Partial y derivative of V
+	GCIR	(<a href=lat.html>LAT</a>,<a href=lon.html>LON</a>)	Great Circle from point to anitpodal point
+	GCWV	(<a href=lat.html>LAT</a>,<a href=lon.html>LON</a>,MASK)	Great Circle from point to anitpodal point
+				     with land blocking algorithm
+				     MASK will usually be SEA
+	GEO	(S)		Geostrophic wind  
+	GRAD	(S)		Gradient of a scalar  
+	GWFV	(V,N)		Filter with normal distribution of weights
+	RDFV    (V,DX)		GWFV applied for given output resolution (dx,km)
+	INAD	(V1,V2)		Inertial advective wind  
+	ISAL	(S)		Isallobaric wind  
+	KCRS	(V)		Curl of V
+	KNTV	(V)		Convert meters/second to knots
+	LTRN	(S,V)		Layer-averaged transport of a scalar
+	NORMV	(V)		Vector normal wind (for cross sections)
+	QVEC	(S,V)		Q-vector at a level
+	QVCL	(S,V)		Q-vector of a layer
+	RAD	(V,<a href=lat.html>LAT</a>,<a href=lon.html>LON</a>,
+			D,ST)	Radial wind
+	ROT	(angle,V)	Coordinate rotation
+	SMUL	(S,V)		Multiply a vector's components by a scalar
+	SM5V	(V)		5-point smoother
+	SQUO	(S,V)		Vector division by a scalar
+	TANGV	(V)		Vector tangential wind (for cross sections)
+	THRM	(S)		Thermal wind over a layer  
+	TNG	(V,<a href=lat.html>LAT</a>,<a href=lon.html>LON</a>,
+			D,ST)	Tangential wind
+	VADD	(V1,V2)		Add the components of two vectors
+	VASV	(V1,V2)		Vector component of V1 along V2
+	VAVS	(V)		Average vector over display subset grid
+	VECN	(S1,S2)		Create vector from north relative components
+	VECR	(S1,S2)		Create vector from grid relative components
+        VESD    (SPD,DIR)       Create vector from speed & north-rel. direction
+	VLAV	(V)		Layer average for a vector
+	VLDF	(V)		Layer difference for a vector
+	VMUL	(V1,V2)		Multiply the components of two vectors
+	VQUO	(V1,V2)		Divide the components of two vectors
+	VSUB	(V1,V2)		Subtract the components of two vectors
+	VLT	(V,S)		Less than function
+	VLE	(V,S)		Less than or equal to function
+	VGT	(V,S)		Greater than function
+	VGE	(V,S)		Greater than or equal to function
+	VBTW	(V,S1,S2)	Between two values function
+	VMSK	(V,S)		Mask V based on S
+
+     LOGICAL <a href=output.html>OUTPUT</a> GRID
+
+     This set of functions returns 1 for true, 0 for false, and missing only if one or
+     more operands is missing.  S1, S2, and S3 in the functions below are scalar grids.
+
+        LT     (S1,S2)         Returns 1 if S1 < S2; otherwise 0
+        LE     (S1,S2)         Returns 1 if S1 <= S2; otherwise 0
+        GT     (S1,S2)         Returns 1 if S1 > S2; otherwise 0
+        GE     (S1,S2)         Returns 1 if S1 >= S2; otherwise 0
+        GTLT   (S1,S2,S3)      Returns 1 if S1 > S2 AND S1 < S3; otherwise 0
+        GELT   (S1,S2,S3)      Returns 1 if S1 >= S2 AND S1 < S3; otherwise 0
+        GTLE   (S1,S2,S3)      Returns 1 if S1 > S2 AND S1 <= S3; otherwise 0
+        GELE   (S1,S2,S3)      Returns 1 if S1 >= S2 AND S1 <= S3; otherwise 0
+	EQ     (S1,S2,S3)      Returns 1 if |S1-S2| <= S3; otherwise 0
+        NE     (S1,S2,S3)      Returns 1 if |S1-S2| > S3; otherwise 0
+        AND    (S1,S2,...,Sn)  Returns 1 if ALL Sx > 0; otherwise 0
+        OR     (S1,S2,...,Sn)  Returns 1 if at least ONE Sx > 0; otherwise 0
+        EOR    (S1,S2,...,Sn)  Returns 1 if exactly ONE Sx > 0; otherwise 0
+	NOT    (S)             Returns 1 if S == 0; otherwise 0
+
+     A special set of functions, all of which are named beginning with ENS_, 
+     are provided to do specific calculations over multiple members of an 
+     ensemble.  The constitution of the ensemble is specified as a <a href=gdfile.html>GDFILE</a> 
+     entry by listing file names and aliases, separated by commas and enclosed
+     in curly brackets ({}).  Each alias therein may have an optional cycle 
+     time specification appended to it following |.  The latest cycle time 
+     is the default.
+
+     The members of an ensemble may be assigned weights as percentages prefixed 
+     to the member name and separated from it by a % character.  The 
+     specification of weights is described in the help for <a href=gdfile.html>GDFILE</a>.  The weights 
+     are used in the scalar (ENS_SAVG) and vector (ENS_VAVG) average functions 
+     and in the percentile function (ENS_PRCNTL).  The weights are ignored in 
+     the spread functions.  If no weights are specified, all members are equally 
+     weighted.
+
+     If the first <a href=gdfile.html>GDFILE</a> entry is an ensemble specification, then the 
+     undetermined portions of the <a href=gdattim.html>GDATTIM</a> entry are filled using the last time
+     from the last file associated with the first entry of the ensemble 
+     specification.  Each GEMPAK grid time to be processed, derived from the 
+     <a href=gdattim.html>GDATTIM</a> input, is associated with a valid date-time.  This valid date-time
+     and the cycle for each ensemble member is used to compute the forecast 
+     hour for that member so that all members contribute data for the same 
+     valid date-time.  The exception to this occurs when a member is an actual
+     file name.  In that case, it is assumed that the GEMPAK grid time exists 
+     in the file.
+
+     The general form for entering an ENS_ function follows:
+
+	ENS_NAME ( input_arg1 & ... & input_argN & output_arg )
+
+     NAME is the name of the ENS_ function.  The arguments are separated by 
+     the & character.  The output argument, which is rarely used for ENS_ 
+     functions, is present only when the function can produce more than one 
+     result and the user must enter the name of the result to return.  The 
+     input arguments may be any valid GEMPAK diagnostic function specification.
+
+     The user must read the documentation for each function in order to specify
+     correctly the input arguments.  There are two kinds of input arguments:
+
+	1.Dynamic arguments are evaluated for each member of the ensemble.
+	2.Static arguments are evaluated only once.
+
+     The documentation for each ENS_ functions tells the user which arguments 
+     are dynamic and which ones are static.  Dynamic arguments are always listed
+     first before any static arguments in the ENS_ function specification.  
+     Within an argument there are two possible kinds of parameters:
+
+	1.Dynamic parameters are read from the changing members of the ensemble.
+	2.Static parameters are read from an unchanging file.
+
+     A dynamic argument may include both dynamic and static parameters; while, 
+     a static argument must use only static parameters.  The in-line +k 
+     parameter qualifier is used to link parameters to <a href=gdfile.html>GDFILE</a> entries, where k 
+     is the <a href=gdfile.html>GDFILE</a> position number.  If +k is not given, the default is k=1.  
+     Dynamic parameters must have +k that points to an ensemble specification.  
+     Also, any numerical constants embedded within an ENS_ function must be
+     followed by +k when the ensemble specification is not in position 1.
+     All dynamic parameters given in the arguments to an ENS_ function must have
+     the same value of k; therefore, all static parameters should have other 
+     values of k, pointing to non-ensemble entires in <a href=gdfile.html>GDFILE</a>.
+
+     The time stamps assumed for all parameters within an ENS_ function are
+     controlled by the ensemble time; therefore, static parameters will
+     usually require an in-line time specification.
+
+     To clarify these concepts, consider the function ENS_SAVG, which computes 
+     the mean of a scalar argument over the members of an ensemble.  Using 
+     ENS_SAVG, compute the spread of the SREF temperature about the operational 
+     GFS temperature:
+
+        <a href=glevel.html>GLEVEL</a>=850
+        <a href=gvcord.html>GVCORD</a>=PRES
+        <a href=gdattim.html>GDATTIM</a>=F24
+	<a href=gdfile.html>GDFILE</a>=gfs|06/00+{sref|05/21}
+	<a href=gdpfun.html>GDPFUN</a>=sqrt( ENS_SAVG ( expi(sub(tmpk+2,tmpk^06/00f24),2+2) ) )
+
+     The single argument to ENS_SAVG is a dynamic argument (all ENS_ functions 
+     will have at least one dynamic argument).  In this case, the parameters 
+     within the diagnostic sub function are of two different types.  The first, 
+     tmpk+2, is a dynamic parameter whose associated grid changes with each new 
+     ensemble member.  The second, tmpk, is a static parameter whose associated 
+     grid is always the same one read from the GFS file.  Since the matching
+     time in the SREF is a 27-h forecast (F27) from 21 UTC, the static tmpk
+     parameter from the GFS requires an in-line time specification.  Even
+     constants in GEMPAK have associated identifiers; so, the +k, where k is 2,
+     must be appended because it is inside the ENS_ function.
+ 
+     An important side affect of this capability is that ensemble <a href=gdfile.html>GDFILE</a> entries
+     are defined and viable for any function.  So, a diagnostic function that is
+     not an ensemble function will produce a result, even when the <a href=gdfile.html>GDFILE</a> entry 
+     associated with its arguments is an ensemble.  The last file associated 
+     with the first entry in the <a href=gdfile.html>GDFILE</a> ensemble specification (a list enclosed 
+     by curly brackets {}) will be used.  Since the user may not know what this 
+     file will be, use of non-ensemble functions of parameters associated with 
+     ensemble <a href=gdfile.html>GDFILE</a> entries is discouraged.
+
+     ENS_ FUNCTIONS:
+
+	ENS_SAVG ( input_arg1  & input_arg2): Compute the average of a scalar
+                diagnostic field over an ensemble.  This average is an equally
+                weighted ensemble mean unless weights have been specified
+                in the <a href=gdfile.html>GDFILE</a> entry as described above or in input_arg2.
+                Input_arg1 specifies the scalar field to average and is a 
+                dynamic argument.  Input_arg2 specifies the name of a weight
+		grid to be used in the calculation. 
+ 
+	ENS_SSPRD ( input_arg1 ): Compute the spread (sample standard deviation)
+		of a scalar diagnostic field over an ensemble.  Input_arg1 
+		specifies the scalar field and is a dynamic argument.  The
+                formula used to compute the spread is
+
+		SQRT { [ SUM ( Xi**2 ) - ( SUM (Xi) ** 2 ) / N ] / ( N -1 ) }
+		
+		where SUM is the summation over the members, Xi are values of
+                the scalar field from individual ensemble members, and N is
+                the number of members.  Note that the average of the squared
+                deviations from the mean is computed by dividing the sum of
+                the squared deviations by ( N - 1 ).
+
+        ENS_SSUM ( input_arg1 ):  Compute the non-weighted sum of the values
+                of a scalar field over an ensemble.  Note that this returns
+                the number of members in the ensemble if "input_arg1" is a
+                logical function that always evaluates to 1 [e.g., gt(2,1)].
+
+	ENS_SWSPRD ( input_arg1 & input_arg2 ):  Compute the spred, similar
+                to ENS_SSPRD, of a scalar diagnostic field over an ensemble.
+                The spread is weighted and input_arg2 specifies the name of 
+                a weight grid to be used in the calculation.
+                NOTE:
+                For uniform weights ens_ssprd (input_arg1) might be expected 
+                to give the same result as ens_swsprd(input_arg1 & w1) where
+                w1 is uniform field of 1.  This does not happen because of 
+                the division by (N-1) in ens_ssprd.  The same is also true 
+                in comparing ens_vsprd and ens_vwsprd results.
+
+	ENS_VAVG ( input_arg1 & input_arg2 ): Compute the average of a vector 
+		diagnostic field over an ensemble.  This average is an equally
+	 	weighted ensemble mean unless weights have been specified
+                in the <a href=gdfile.html>GDFILE</a> entry as described above or in input_arg2. 
+                Input_arg1 specifies the vector field to average and is a 
+		dynamic argument.  Input_arg2 specifies the name of a weight
+                grid to be used in the calculation.
+ 
+	ENS_VSPRD ( input_arg1 ): Compute the spread (sample standard deviation)
+		of a vector diagnostic field over an ensemble.  Input_arg1 
+		specifies the vector field and is a dynamic argument.  The
+                formula used to compute the variance for each individual
+                component of a vector is the same as for ENS_SSPRD.  The
+                variances of the components are added, then the square root
+                is taken to compute the vector spread, which is a scalar.
+
+	ENS_VWSPRD ( input_arg1 & input_arg2 ):  Compute the spred, similar
+                to ENS_VSPRD, of a vector diagnostic field over an ensemble.
+                The spread is weighted and input_arg2 specifies the name of a 
+                weight grid to be used in the calculation.  Also, see NOTE for
+                function ENS_SWSPRD. 
+
+	ENS_SMAX ( input_arg1 ): Compute the maximum of a scalar diagnostic
+		field over an ensemble.
+
+	ENS_SMIN ( input_arg1 ): Compute the minimum of a scalar diagnostic
+		field over an ensemble.
+
+	ENS_SRNG ( input_arg1 ): Compute the range of a scalar diagnostic
+		field over an ensemble. The range is defined as the difference
+		between the maximum and the minimum.
+
+	ENS_PRCNTL ( input_arg1 & input_arg2 & input_arg3 ):  
+                                                   At each grid point determine 
+	    	the value of input_arg1 such that it exceeds that found in P% of
+		the members of the ensemble, where P is given by input_arg2. The
+		first argument is a dynamic argument, the second is a static 
+		argument. Input_arg3 specifies the name of a weight
+                grid to be used in the calculation.  
+                The value of P must range between 0 and 100, and it 
+		may vary from grid point to grid point.  If the ensemble members
+		are weighted, it is the sum of the weights associated with the 
+		order statistics that determines the value corresponding to the
+		percentile.  If the percentile falls between two members, the 
+		value is determined by interpolation.  The following example 
+		finds the median 850 hPa temperature:
+	    	  <a href=glevel.html>GLEVEL</a>  = 850
+            	  <a href=gvcord.html>GVCORD</a>  = PRES
+	    	  <a href=gdattim.html>GDATTIM</a> = f24
+	    	  <a href=gdfile.html>GDFILE</a>  = { 75%ENS, GFS|00, GFS|12 }
+            	  <a href=gdpfun.html>GDPFUN</a>  = ENS_PRCNTL ( tmp & 50 )
+     
+	ENS_MODE ( input_arg1 & input_arg2):  At each grid point, determine the mode
+                of a weighted ensemble distribution.  The mode value is the first one
+                found by a trisection algorithm.  The algorithm uses a moving,
+                shrinking data interval in which the weight sums for the data
+                values are made in each of three subintervals.  The largest
+                weight sum determines the next interval, with ties decided in
+                the direction of the data mean.  The algorithm terminates when
+                only the middle subinterval has a non-zero sum of weights.  The
+                weighted average of the data values in this lone subinterval is
+                the mode.  Input_arg2 specifies the name of a weight
+                grid to be used in the calculation. 
+
+	ENS_PROB ( input_arg1 ):  Compute the probability of the multi-
+                variate expression given in the input argument.  The
+                expression in the input argument is composed of the
+                logical functions AND, OR, and EOR operating on the
+                logical arithmetic comparison functions LT, LE, GT,
+                GE, GTLT, GELT, GTLE, and GELE.  ENS_PROB computes
+                the weighted average of the 1 or 0 logical evaluations
+                over the members of the ensemble to yield the relative
+                frequency, or probability, of occurrence.  For example,
+                compute the probability of wind speeds greater than
+                10 m/s or temperature less than 0 C, either occurring
+                along with precipitation accumulating between .25 and
+                1.0 inch:
+
+                <a href=gfunc.html>GFUNC</a>=ENS_PROB(AND(OR(GT(sped@10%hght,10),LT(tmpc,0)),
+                               GTLT(p06i,.25,1.0)))
+
+	ENS_CPRB ( input_arg1 & input_arg2 & input_arg3 & input_arg4 ):
+                At each grid point, determine the univariate cumulative
+                probability that the value of a given function is less
+                than or equal to a given value in an ideal ensemble.  The
+                input arguments are, respectively, the function to evaluate,
+                the given value whose cumulative probability is sought, the
+                lower bound below which values of the function are impossible,
+                and the upper bound above which values of the function are
+                impossible.  If a value for input_arg2 is outside of a given
+                bound, the result is a missing value.  The first argument is a
+                dynamic argument; the others are static.  The last two are
+                are optional.  To omit input_arg3 but include input_arg4,
+                specify input as ( input_arg1 & input_arg2 & & input_arg4 ).
+                All arguments may be functions that vary from one grid point to
+                another.  For an ideal ensemble, there is a 2/(N+1) probability
+                of values falling outside of the ensemble envelope.  The
+                probability density function is piecewise linear with triangular
+                extrapolations beyond the ensemble, limited by any bounding
+                values given.  The following example finds the cumulative
+                probability of relative humidity less than or equal to 75%:
+
+                <a href=gdpfun.html>GDPFUN</a> = ENS_CPRB ( relh & 75 & 0 & 100 )
+
+	ENS_CVAL ( input_arg1 & input_arg2 & input_arg3 & input_arg4 ):
+
+                At each grid point, determine the value of a given
+                function such that the univariate cumulative probability
+                of values less than or equal to the computed value is
+                the given probability, assuming an ideal ensemble.  The
+                input arguments are, respectively, the function to evaluate,
+                the given cumulative probability ranging from 0 to 1, the
+                lower bound below which values of the function are impossible,
+                and the upper bound above which values of the function are
+                impossible.  A computed value will never fall outside of a
+                bounding value.  The first argument is a dynamic argument; the
+                others are static.  The last two are are optional.  To omit
+                input_arg3 but include input_arg4, specify input as
+                ( input_arg1 & input_arg2 & & input_arg4 ).  All arguments may
+                be functions that vary from one grid point to another.  If the
+                the value of the second argument is not between 0 and 1,
+                inclusive, then a missing value is assigned at that grid point.
+                For an ideal ensemble, there is a 2/(N+1) probability of values
+                falling outside of the ensemble envelope.  The probability
+                density function is piecewise linear with triangular
+                extrapolations beyond the ensemble, limited by any bounding
+                values given.  The following example finds the value of
+                relative humidity (%) such that the cumulative probability of
+                relative humidity less than or equal to it is 0.6.
+
+                <a href=gdpfun.html>GDPFUN</a> = ENS_CVAL ( relh & 0.6 & 0 & 100 )
+                 
+
+     Another special set of functions, all of which are named beginning with 
+     LYR_, are provided to do specific calculations over multiple levels 
+     constituting a layer.  The depth of a layer, and hence the levels that are
+     included in it, must be specified by the user.  The level information may 
+     be entered in the <a href=glevel.html>GLEVEL</a> parameter, but, if the LYR_ function is embedded 
+     in a diagnostic function requiring parameters at a given level, then the 
+     level information for the LYR_ function is specified following a | placed 
+     after the arguments for the function.  The arguments to the function are 
+     separated by the & character.  The | character separates the list of 
+     arguments from the specification of levels. If only the level specification
+     is given, the | must be present.   
+
+     The general form for entering a LYR_ function follows:
+
+	LYR_NAME ( input_arg1 & ... & input_argN & output_arg | levels )
+
+     The simplest possible form is LYR_NAME ().
+
+     NAME is the name of the LYR_ function. The user must read the documentation
+     for each function in order to specify correctly the input arguments.  Some 
+     LYR_ functions will be able to compute more than one possible output.  For 
+     example, some LYR_ function may return either the level of the maximum 
+     value of a scalar quantity or the maximum value itself.  The user uses the 
+     output argument to choose between or among the possible outputs.  The name 
+     of each output is given in the individual LYR_ function documentation.  If
+     a LYR_ function can only produce one result, then the output argument may 
+     be omitted, or, if given, will be ignored.  If a LYR_ function has no 
+     required inputs, only one possible output, and the user has specified the 
+     levels in <a href=glevel.html>GLEVEL</a>, then the simplest form is used to specify the LYR_ 
+     function.  The open and closing parentheses are always required.
+     Currently, ENS_ functions cannot be embedded in LYR_ functions, and
+     vice-versa.
+
+     The "| levels" specification allows the user to specify the layer 
+     independently of <a href=glevel.html>GLEVEL</a>.  Whether entered in <a href=glevel.html>GLEVEL</a> or following the |,
+     the level input must be one of the following:
+
+	1. ALL uses all levels available for the vertical coordinate specified 
+	   in <a href=gvcord.html>GVCORD</a>, sorted to proceed from the surface of the earth upward.
+
+	2. MAN uses all mandatory isobaric levels below 100 mb, but will give 
+	   an error if <a href=gvcord.html>GVCORD</a> is not PRES.  The order is from highest pressure
+	   to lowest.
+
+	3. Range with increment uses beginning and ending values along with the 
+	   increment to create a list of levels.  The arithmetic sign of the 
+	   increment is determined to be that needed to progress from the 
+	   beginning to the ending value.  The last value, if not equal to the 
+	   specified ending value, will not exceed the ending value.  If some 
+	   levels do not exist, an error will occur during the calculations.
+
+	4. Range without an increment uses all available levels between the 
+	   two levels given by the user in the order implied by the user.
+
+	5. A list of levels separated by semicolons.  
+
+     Note that <a href=glevel.html>GLEVEL</a> = LEVEL1:LEVEL2 is not a valid input for layer functions.
+
+     GEMPAK grid diagnostic functions that require two levels (two-level layer 
+     functions) are allowed in the input arguments to LYR_ functions, but cannot
+     be mixed with single level functions.  This applies across all arguments 
+     entered in the LYR_ function.  If one argument contains a two-level layer 
+     function, all arguments must be two-level layer functions.  Users must use
+     the LAV or VLAV function to include what would normally be single level 
+     parameters in these cases.  When two-level layer functions are detected, 
+     the internal list of levels is generated from the user input for a single 
+     list of levels by creating layers bounded by consecutive levels.  For 
+     example, the first layer extends from level 1 to level 2.  Parameters in 
+     the gridded data file identified by two levels will not be available as 
+     arguments to LYR_ functions.
+     
+     LYR_ FUNCTIONS:
+
+	LYR_SWTM ( input_arg1 | levels ): Computes the weighted mean of a 
+		scalar field.  If the input argument is a single-level parameter
+		or function, the weight is the depth of the layer extending from
+		point halfway between the level and the next lower level and 
+		the point halfway between the level and the next upper level.  
+		If the the input argument is a two-level function, then the 
+		weight is the depth of the two-level layer used in calculating 
+	 	the function. In isobaric coordinates, the logarithm of pressure
+		is used to compute the depths.  Input_arg1 specifies diagnostic
+		function to average over the layers and output_arg is not 
+		required.
+
+        LYR_MXMN(argin & fldout [& argout] [| lvls]):
+          Computes the following over the specified range of levels...
+            1.The maximum or minimum value of a scalar quantity.
+            2.The value of a second output function coincident with the extrema
+              of the input function.  It might be a level, such as HGHT or PRES.
+              It might be some other function, e.g. absolute vorticity.
+
+          Arguments...
+            argin is the name of the <a href=gfunc.html>GFUNC</a>...e.g. SPED, RELH, TEMP
+            fldout specifies the desired output:
+              MXVAL -> returns maximum of argin
+                        MNVAL -> returns minimum of argin
+                        MXOUT -> returns value of argout where argin is maximum
+              MNOUT -> returns value of argout where argin is minimum
+
+            argout can be a simple or complex function. Examples: HGHT,
+               THTA, PRES, AVOR(WND). The argout parameter is supplied
+               only when fldout does not request the value of argin (e.g.
+               If your computing max/min values do not specify argout).
+
+            lvls- A list of single levels or a list of layers.  In case,
+              of the latter, the argument functions must be layer
+              functions, including argout (which can be any function,
+              but likely will be one we think of as a vertical 
+              coordinate.  
+
+          Example Uses...
+            1.Compute the height (MSL) of the maximum wind speed
+               LYR_MXMN(SPED & MXOUT & HGHT|1000-100)
+            2.Compute the height (AGL) of the maximum wind speed
+               sub(LYR_MXMN(SPED & MXOUT & HGHT|1000-100),hght@0%NONE)
+            3.Compute the absolute vorticity of the maximum wind speed
+               LYR_MXMN (SPED & MXOUT & AVOR(WND)|1000-100)
+            4.Compute the maximum relative humidity
+               LYR_MXMN (RELH & MXVAL|1000-100)
+               
+        LYR_FVONISFC (fvalu & fisfc & visfc & n & gradflag [| lvls])
+          Computes the value of a function on a specified isosurface of a 
+          second function. The function  will have the ability to  traverse 
+          the atmosphere starting from the bottom level upwards or top level
+          downwards and return either the 1st, 2nd, or nth level at which the 
+          isosurface threshold value exist.
+
+          Arguments...
+            fvalu - The function to interpolate to isosurface.   This can be a 
+            vertical coordinate, such as HGHT or PRES.  This could be a more 
+            complex function such as AVOR(WND).
+
+            fisfc - The function to supply the isosurface - The input grids to 
+            find the threshold value within
+
+            visfc - Function supplying the local value of an isosurface.  In 
+            another words - A function supplying the local threshold value to
+            find.
+
+            n - The number of levels to find the threshold value. The sign of 
+            the number will be used to define whether to traverse the
+            atmosphere starting from the bottom to the top or vice versa.  An n
+            value of 1 signifies to return the 1st occurrence starting from the 
+            bottom of the atmosphere and working upward.  An n value of -2 
+            signifies to return the 2nd occurrence of the threshold working 
+            from the top level downward.  If the threshold value does not exist
+            for the number of levels specified, the grid point will be set to
+            RMISSD.
+
+            Gradflag - Gradflag = function to flag required gradient across 
+            isosurface. 
+            If < 0, values of fisfc must decrease in crossing the 
+              isosurface in the direction of the search.  
+            If gradflag = 0, it does not matter whether values increase or  
+              not;         
+            If gradflag > 0, values of fisfc must increase in crossing the 
+              isosurface in the direction of the search. 
+              
+          Example Uses:
+            1. Compute the 1st level (MSL) where the winds decrease to 35 m/sec 
+               starting at the ground level.  (Useful for finding the LLJ).
+               LYR_FVONISFC(HGHT & SPED & 35 & 1 & -1|1000-300)
+            2. Compute the 1st level (MSL) where the humidity increases to 
+               above 70 percent starting from the top and working downward.
+               LYR_FVONISFC(HGHT & RELH & 70 & -1 & 1|300-1000) 
+            3. Compute the 1st level (AGL) where the humidity increases to
+               above 70 percent starting from the bottom and working upward.
+               This example assumes there is a height grid of the surface.
+               sub(LYR_FVONISFC(HGHT&RELH&70 & 1 & 1|1000-300), hght@0%NONE)
+
+     If <a href=gfunc.html>GFUNC</a> and <a href=gvect.html>GVECT</a> contain both LYR_ and ENS_ functions, an error message 
+     will be produced.  Likewise, ensemble and layer diagnostics cannot be 
+     computed recursively.
+</pre>
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

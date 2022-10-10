@@ -1,0 +1,72 @@
+<html>
+<head><title>Nsharp Development</title></head>
+
+<body bgcolor="ffffff">
+
+<h1>New development progress</h1>
+<h3>Animation of Pixmaps</h3>
+<li>Added array of pixmaps and soundings with pointer to current sounding replacing
+use of global variable SNDG thoughout computations. The sounding pointer is updated each
+time the current pixmap is changed.
+<li>Added Nxmlib animation controls
+<li>Moved cursor value display out of animated pixmap (eg, the animated Pixmaps consist of
+sounding and thermodynamic panels now without cursor values). Although this is not evident 
+in the animated GIF below, the mouse postion readout is independently updated in
+a single pixmap since this is not a static quantity for each sounding. Will clean up
+the thermodynamic panel display positioning.
+
+<p> <img src="nsharp_loop.gif"></p>
+
+<li>Modified observed time selection widget for selection of sounding times
+from aggregation of times in files matching the template. At this point, no
+time line such as NMAP2 is implemented, rather all times in available files
+are displayed in the scrolled widget. Multiple times can be selected as
+EXTENDED_SELECTION events for a scrolled XmList using
+the "CNTL+mouse1" method. Ranges of times can be selected by dragging,
+or by selecting one time with "mouse1" and then another time with "mouse2"
+(all times in the range will be selected). The locations displayed on the map
+are those in the most recent time selected.
+<li>BROWSE for selection of a single file only.
+<li>Removed text widget for file name in observed selection.
+<p><img src="select.gif"></p>
+
+<h3>Items remaining to be completed</h3>
+<li>Update model selection and PFC selection for ranges. (3 days)
+<li>Clean up unused callbacks. (1 day)
+
+<h1>Items for consideration</h1>
+<h3>Overlay button</h3>
+<p>Current functionality allows the user to overlay a previously plotted
+sounding with a new sounding from any source or time. The last sounding
+data is copied from the SNDG array to SNDG2 array. The old sounding can not
+be edited, and no information about the station/time/source is maintained
+or displayed. The overlayed sounding is drawn in purple as shown below.
+No time matching is attempted. Common uses would be to show how the atmosphere
+at a location has modified between observed sounding times, to compare
+model soundings at the same time from different initializations or models,
+comparison between model forecast and observation, etc.</p>
+<p>
+How should overlay be handled with animation? 
+<ul>
+<li>Toggle overlay (eg only with single pixmap frame) vs separate pixmap for animation? 
+<li>Maintain a single SNDG2 for display with any/all pixmaps?
+<li>Keep MAXPIXMAPS number of SNDG2 arrays for separate overlay with each frame?
+</ul>
+</p>
+<p> <img src="nsharp_overlay.gif"></p>
+
+<li>Remove color bar at bottom of main panel?
+<li>Should map selection in observed soundings be updated for all stations in selected range,
+rather than just displaying those in the latest time of selection?
+<li>Should Model time selection show all times available for all files matching template,
+or should the user select model times and then forecast times separately?
+<li>Should the thermodynamic parameter tables be forced to show the same "page"
+when looping? Eg, if the use clicks "next page" button to look at storm relative
+parameters for the current pixmap/sounding, should all pixmaps in the loop be
+updated to that page, or would the user need/want to have independent control?
+
+
+
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

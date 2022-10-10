@@ -1,0 +1,356 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <title>GEMPAK Installation Guide: Linux, Unix, Solaris</title>
+    <meta name="bookmark" CONTENT="GEMPAK Installation Guide: Linux, Unix and Solaris">
+    <meta name="author" content="Michael James">
+    <meta name="keywords" CONTENT="Software, GEMPAK, Install, Linux, Unix, Solaris">
+    <meta name="description" CONTENT="GEMPAK installation information for Linux, Unix and Solaris.">
+    <link rel=stylesheet type="text/css" href="./css_core.css"> 
+    <link rel=stylesheet type="text/css" href="/css/tabs/breadcrumbs.css"> 
+ </head>
+ <body>
+  <a href=../help_and_documentation>GEMPAK Manual</a> <br><hr>
+
+    <h1>GEMPAK Installation Guide: Linux, Unix and Solaris</h1>
+    <nav> 
+     <ul>
+      <li><a href="#install">Installation</a></li>
+       <ul>
+        <li><a href="#64bitrpm">64-bit Linux RPM</a></li>
+        <li><a href="#rpmpython2.7">64-bit Linux RPM (built against Python 2.7)</a></li>
+        <li><a href="#sourceinstall">Source Code</a></li>
+       </ul>
+       <li><a href="#configure">Configure You System</a></li>
+       <ul>
+        <li><a href="#gemenviron">Gemenviron</a></li>
+        <li><a href="#sourcing">Sourcing Environmental Variables</a></li>
+       </ul>
+      <li>
+       <a href="#libraries">Required Libraries</a>
+      </li>
+      <li>
+       <a href="#buildoptions">Build Options</a>
+      </li>
+      <li>
+       <a href="#building">Compiling GEMPAK Source</a>
+      </li>
+      <li>
+       <a href="#troubleshooting">Troubleshooting</a>
+      </li>
+      <li>
+       <a href="#furthersupport">Further Support</a>
+      </li>
+      <li>
+       <a href="install_osx.html" class="external">OS X Instructions</a>
+      </li>
+      <li>
+       <a href="configuration.html" class="external">GEMPAK / LDM Configuration</a>
+      </li>
+     </ul>
+    </nav> 
+
+    <!-- INSTALLATION-->
+    <section>
+     <h4><a name="install"></a>GEMPAK Installation</h4>
+     <p><b>NOTE:</b> All files referenced in the following installation instructions can also be <a href="/downloads/gempak/">obtained/downloaded</a> from <a href="/downloads/gempak/">here</a>.</p>
+     <h5></h5>
+
+     <h5><a name="64bitrpm"></a>64-bit Linux RPM</h5>
+     <div class="indent">
+      <p>As root (or with super-user/sudo):</p>
+      <pre>sudo rpm -ivh gempak-latest*.rpm</pre>
+      <p>to install to a custom directory (--prefix=/usr/local will install to /usr/local/GEMPAK7)</p>
+      <pre>sudo rpm -ivh gempak-latest*.rpm --prefix=/usr/local</pre>
+
+      <p><b>OR</b>, Install via Unidata AWIPS yum repository:</p>
+      <pre>wget -O /etc/yum.repos.d/awips2.repo https://www.unidata.ucar.edu/software/awips2/doc/awips2.repo
+sudo yum clean all
+sudo yum install gempak</pre>
+     </div>
+     
+     <h5><a name="rpmpython2.7"></a>64-bit Linux RPM (built against Python 2.7)</h5>
+     <div class="indent">
+      <p>GEMPAK built against libpython2.7.so, which allows the use of the <a href="https://python-awips.readthedocs.io">python-awips</a> package to retrieve and display AWIPS data in GEMPAK programs.</p>
+      <p>As root (or with super-user/sudo):</p>
+      <pre>sudo rpm -ivh gempak-python-latest*.rpm</pre>
+      <p>Install via Unidata AWIPS yum repository (incl. python packages installed to <file>/awips2/python</file>)</p>
+      <pre>sudo yum groupinstall gempak-python</pre>
+      <p>or (standalone, requires Python 2.7 be installed and available via LD_LIBRARY_PATH)</p>
+      <pre>sudo yum install gempak-python</pre>
+     </div>
+
+
+     <h5><a name="sourceinstall"></a>Source Code</h5>
+     <div class="indent">
+      <p>GEMPAK can be installed by an individual user, and root / superuser permission is not required.  It's assumed for this guide and throughout other online documentation that GEMPAK is installed for a gempak user account in the home directory (<file>/home/gempak</file>).</p>
+
+      <ol>
+       <li>Install prereqs:
+        <pre>yum install openmotif libX11 libXt libXext libXp libXft libXtst xorg-x11-xbitmaps -y</pre>
+       </li>
+       <li>Download the latest <a href="https://github.com/Unidata/gempak/releases">source code tarball from github.com</a></li>
+       <li>Unpack 
+        <pre>tar -xvzf gempak-7.4.0.tar.gz</pre>
+       </li>
+       <li>Edit <file>GEMPAK7/Gemenviron.profile</file> to set $NAWIPS to the new GEMPAK7 directory (<a href="#gemenviron">see below</a>)</li>
+       <li>Create a symbolic link <file>NAWIPS</file> in your home directory will allow you to maintain a single command in <file>.cshrc</file> or <file>.profile</file> that sources the current GEMPAK installation:
+        <pre>ln -s GEMPAK7/ NAWIPS</pre>
+       </li>
+       <li>cd to GEMPAK7, source <file>Gemenviron.profile</file>, and build.
+        <pre>cd GEMPAK7
+. Gemenviron.profile
+make everything</pre>
+       </li>
+       <li><b>Optional</b>: Source <file>build_python.sh</file> before make to build against Python 2.7
+        <pre>. build_python.sh
+make everything</pre>
+       </li>
+      </ol>
+      <p><a href="#building">More Build Instructions...</a></p>
+     </div>
+    </section>
+
+    <!-- CONFIGURE YOUR SYSTEM -->
+    <section>
+     <h4><a name="configure"></a>Configure Your System</h4>
+
+     <h5><a name="gemenviron"></a>Gemenviron / Gemenviron.profile</h5>
+     <div class="indent">
+      <p>To build GEMPAK on your system, the environmental variable <file>$NAWIPS</file> must be defined at the top of <file>Gemenviron</file> [ for csh/tcsh ] or <file>Gemenviron.profile</file> [ for bash/ksh ].  These files contain definitions for the locations of various components used by GEMPAK. It is the responsibility of the GEMPAK administrator to confirm that $NAWIPS is defined correctly with the full path of the GEMPAK 7 directory.  Other variables which point to the location of data directories, tables and can be tailored at your lesiure, but it's recommended that only $NAWIPS be modified as all other variables related to GEMPAK are dependant on $NAWIPS.</p>
+      <p>If you unpacked GEMPAK in <file>/home/gempak</file> and plan on compiling with gfortran, you can skip this step.</p>
+      <p>If you unpacked and plan to install GEMPAK in an uncommon directory (such as <file>/opt/gempak/</file>), you'll need to edit the NAWIPS definition at the top of the appropriate file:</p>
+        <pre># Please configure the following definitions to reflect your system:
+#
+# Top level directory:
+   <font color="black">setenv NAWIPS /home/gempak/GEMPAK7</font>
+#</pre>
+     </div>
+
+
+     <h5><a name="sourcing"></a>Sourcing Environmental Variables</h5>
+     <div class="indent">
+      <p><code><b>csh/tcsh</b></code></p>
+      <p>source the full path of Gemenviron in your <file>.cshrc</file></p>
+      <pre>source /home/gempak/NAWIPS/Gemenviron</pre>
+
+      <p><code><b>bash</b></code></p>
+      <p>add the following to <file>.profile</file></p>
+      <pre>. /home/gempak/NAWIPS/Gemenviron.profile</pre>
+      <p>Important environmental variable to be familiar with are:</p>
+      <ul>     
+       <li>$NAWIPS as defined above</li>
+       <li>$GEMPAK points to $NAWIPS/gempak</li>
+       <li>$GEMTBL points to $GEMPAK/tables</li>
+       <li>$OS_BIN points to $GEMPAK/os/$NA_OS/bin</li>
+       <li>$OS_LIB points to $GEMPAK/os/$NA_OS/lib</li>
+       <li>$GEMMAPS points to $GEMPAK/maps</li>
+       <li>$GEMDATA points to /data/ldm/gempak</li>
+       <li>$NA_OS is determined by Gemenviron (linux, linux64, x86, SunOS, Darwin, etc. )</li>
+      </ul>
+      <p>The last definition, <file>$GEMDATA</file>, points to the <file>/data/ldm/gempak</file> but can be changed depending on how you <a href="/gempak/doc/configuration.html"><b>install and configure the LDM</b></a>.</p>
+     </div>
+    </section>
+
+    <!-- REQUIRED LIBRARIES -->
+    <section>
+     <h4><a name="libraries"></a>Required Libraries</h4>
+     <p>If your system uses standard locations for its compilers, X11/Motif libraries and make utilities, you do not needto change any settings. It's assumed both an ansi compatible C compiler and a Fortran 77 compatible compiler are available.</p>
+     <p>To build locally from source, you must have the developer environments installed for X11, Open Motif and libXp.</p>
+
+     <h5>X11</h5>
+     <ul class="indent">
+      <li><file>libX11</file></li>
+      <li><file>libX11-devel</file></li>
+     </ul>
+
+     <h5>Open Motif</h5>
+     <div class="indent">
+      <ul>
+       <li><file>openmotif</file></li>
+       <li><file>openmotif-deve</file></li>
+      </ul>
+      <p>RPM packages of <b><a href="https://www.motifzone.net/filebrowser/openmotif/2.3/2.3.1">v2.3.1</a></b> are recommended for most systems, and are available <a href="https://www.motifzone.net/filebrowser/openmotif/2.3/2.3.1"><b>mozifzone.net</b></a>). Some operating systems provide the MOTIF libraries, but some only install them as an option.</p>
+      <p>Generally you have the option to build Open Motif locally from source (<a href="https://www.motifzone.net/files/public_downloads/openmotif/2.3/2.3.3/openmotif-2.3.3.tar.gz"><b>v2.3.3</b></a>), but for Fedora Core 13 & 14 systems a source build is <i>required</i>.</p>
+     </div>
+
+     <h5>libXp</h5>
+     <ul class="indent">
+      <li><file>libXp</file></li>
+      <li><file>libXp-devel</file></li>
+     </ul>
+
+     <h5>Full List of Required Libraries</h5>
+    <div class="indent">
+     <p>Some systems, most notably recent releases of Fedora Core (fc16 and fc17) require a number of packages be installed in order to successfully build OpenMotif and GEMPAK.  Below is a list of all required packages, followed by a single yum install command to take care of them in one instance: </p>
+     <ul>
+       <li><file>gcc</file></li>
+       <li><file>gcc-c++</file></li>
+       <li><file>gcc-gfortran</file></li>
+       <li><file>libX11</file></li>
+       <li><file>libX11-devel</file></li>
+       <li><file>libXt-devel</file></li>
+       <li><file>libXext</file></li>
+       <li><file>libXp</file></li>
+       <li><file>libXp-devel</file></li>
+       <li><file>libXft-devel</file></li>
+       <li><file>libXtst-devel</file></li>
+       <li><file>xorg-x11-xbitmaps</file></li>
+       <li><file>flex</file></li>
+       <li><file>byacc</file></li>
+       <li><file>*fonts-ISO8859-*</file></li>
+     </ul>
+     <p>To install all at once:</p>
+     <pre>
+yum install gcc gcc-c++ gcc-gfortran libX11 libX11-devel libXt-devel \<br> libXext libXp libXp-devel libXft-devel libXtst-devel xorg-x11-xbitmaps flex \<br> byacc *fonts-ISO8859-* -y</pre>
+     </div>
+    </section>  
+
+    <!-- BUILD OPTIONS -->
+    <section> 
+     <h4><a name="buildoptions"></a>Build Options</h4>
+
+     <h5>Gemenviron / Gemenviron.profile</h5>
+     <div class="indent">
+      <p>To change the GCC compiler, edit the <file>USE_GFORTRAN</file>, <file>USE_PGI</file> and <file>USE_G77</file> definitions in Gemenviron or Gemenviron.profile (gfortran is the default):</p>
+      <pre># Uncomment the following lines for using GCC compilers (Solaris/HP only)
+# set USEGCC_SOL=1
+# set USEGCC_HPUX=1
+#
+<font color="black">set USE_GFORTRAN=1</font>
+#set USE_PGI=1
+#set USE_G77=1</pre>
+     </div>
+
+
+     <h5>Makeinc.common</h5>
+     <div class="indent">
+      <p>For most systems, GEMPAK will be built using either g77 or gfortran[4.1+].   Files located in <file>$NAWIPS/config/</file> contain information specific to the individual platform you will be installing on (sol, x86, hpux, linux, osf, irix, aix, freebsd, darwin). </p>      
+     </div>
+
+     <h5>SunOS-Specific Options</h5>
+     <div class="indent">
+      <p> Bundled cc is not ansi compatible, so SunOS users should make sure <file>SUNWspro/bin/cc</file> is found before <file>/usr/ucb/cc</file> in your path. Also, you will need to ensure that <file>/usr/ccs/bin</file> is in your path.</p>
+     </div>
+
+     <h5>Ubuntu Linux</h5>
+     <div class="indent">
+      <p>Ubuntu builds require the compiler flag <file>-fno-stack-protector</file> be added to COPT (C compiler options) and FOPT (fortran compiler options).  Ubuntu-specific <file>Makeinc</file> files are provided in <file>$NAWIPS/config/</file> that include this compiler flag:</p>
+   
+      <ul>
+       <li><file>$NAWIPS/config/Makeinc.linux_gfortran_ubuntu</file></li>
+       <li><file>$NAWIPS/config/Makeinc.linux64_gfortran_ubuntu</file></li>
+      </ul>
+     </div>
+     <h5>Mac OS X</h5>
+     <div class="indent">
+      <p><a href="install_osx.html"><b>Mac OS X GEMPAK Installation Guide</b></a>, Kevin Tyle, University of Albany.</p>
+      <p>This document will guide users through building GEMPAK on Intel Mac OS X 10.6 (Snow Leopard) with GCC 4.4 compilers.  The same procedure should also work for 10.5 (Leopard), but earlier versions/CPU's of OS X remain untested.</p>
+    </div>
+    </section>  
+
+    <!-- BUILDING GEMPAK FROM SOURCE -->
+    <section>  
+     <h4><a name="building"></a>Compiling GEMPAK Source</h4>
+
+     <h5>Make</h5>
+     <div class="indent">
+      <p>GEMPAK and various bundled libearies are compiled from source by the Make tool, using the Fortran and C compilers specified in the above configuration files.  From <file>$NAWIPS</file> issue the command</p>
+      <pre>make all &gt;& make.out</pre>
+      <p>The redirection command <b>&gt;&</b> sends STDOUT to the log file <file>make.out</file>.  The Make process takes several minutes to complete, first compiling libraries such as netCDF, ncepBUFR, HDF5 and zlib, followed by the GEMPAK source.  In another terminal you can follow the STDOUT log with the command</p>
+      <pre>tail -f make.out</pre>
+      <p>or attach an ampersand to send make to the background and tail the log instantly</p>
+      <pre>make all &gt;& make.out & tail -f make.out</pre>
+      <p>This process allows you to examine the build as it runs but preserves the output in the event something goes horribly wrong.  If seeking help from Unidata, attach some or all of this <file>make.out</file> log.  One should note that with the Makefile installation, only fatal errors (errors that cause the build to end prematurely) are significant, and most "warnings" can be ignored.</p>
+     </div>
+
+     <h5>Install & Clean</h5>
+     <div class="indent">
+      <pre>make install; make clean</pre>
+      <p>Executables are installed to <file>$OS_BIN</file> and libraries should already be located in <file>$OS_LIB</file>. </p>
+      <p>The command <file>make clean</file> will remove compiled objects and binary executables from the source tree.</p>
+      <p>If your distribution is modified by patches or other edits and updates and you have to rebuild, the compilation time will be reduced as the libraries which took the majority of the time to build already exist. </p>
+     </div>
+
+     <h5>Cleaning a Build</h5>
+     <div class="indent">
+      <p>In the event that core definitions change and libraries must be built from scratch, a the entire install for your system will need to be cleaned:</p>
+      <pre>make distclean</pre>
+      <p>This full clean will delete all objects and executables as well as all libraries built for the current system.</p>
+     </div>
+
+
+     <h5>Everything</h5>
+     <div class="indent">
+      <pre>make everything</pre>
+      <p>This command will combine the steps of <file>make all</file>, <file>make install</file> and <file>make clean</file> to  build and install the package, but will not log STDOUT to file. The command also runs the <file>make programs_nc</file> and <file>make programs_gf</file> targets mentioned below.</p>
+     </div>
+
+     <h5>GF & NC Programs</h5>
+     <div class="indent">
+      <pre>make programs_nc</pre>
+      <p>and </p>
+      <pre>make programs_gf</pre>
+      <p>build versions of programs which link directly to device drivers (eliminating the gplt/message queue interface). These are primarily used for projects where multiple scripts are run at scheduled times, as in the cron, and don't require user interaction.</p>
+     </div>
+     <p>Everything Okay?  Continue on to <a href="configuration.html"><b>LDM & GEMPAK Setup</b></a></p>
+    </section>
+
+
+
+    <!-- TROUBLESHOOTING -->
+    <section>
+    <h4><a name="troubleshooting"></a>Troubleshooting</h4>
+        
+    <h5>Missing MOTIF Libraries</h5>
+     <div class="indent">
+      <p>Any error messages involving missing <file>Xm</file> files (such as <file>Xm/XmAll.h</file>):</p>
+      <pre>
+> ...include/geminc.h:59:22: <file>Xm/XmAll.h</file>: No such file or directory
+> In file included from /home/gempak/GEMPAK7/include/<file>proto.h</file>:28,
+>    from /home/gempak/GEMPAK7/include/<file>gemprm.h</file>:647,
+</pre>
+     <p>Indicate that openmotif and openmotif-devel were not found on your system. Either the motif libraries are not installed on your system, or the correct location has not been specified to the compiler.  If the latter is the case, you will need to edit <file>$NAWIPS/config/Makeinc.linux_gfortran</file> (assuming a linux system using gfortran), where <file>$NA_OS</file> is your system architecture as determined in the Gemenviron configuration file.</p>
+     </div>
+
+     <h5>Incorrectly sourced Gemenviron/Gemenviron.profile</h5>
+     <div class="indent">
+     <p>The runtime error</p>
+     <pre>
+> [GEMPLT -101]  NOPROC - Nonexistent executable</pre>
+  
+     <p>indicates that your environmental variables are not sourced correctly (type command 'env' to see all envars and make sure the Gemenviron configuration file is edited and sourced as described above).</p>
+     </div>
+
+     <h5>Error in message queue</h5>
+     <div class="indent">
+      <pre>
+> Error in message send = 22
+> itype, ichan, nwords,0,65536,3</pre>
+      <p>This runtime error means the message queue is full, which typically occurs when executing GEMPAK programs in batch mode from scripts.  To fix, exit GEMPAK and run </p>
+      <pre>cleanup -c</pre>
+      <p>This command will remove existing message queues (the "ipcrm" command is run to remove message queues found with "ipcs"). It will also look for running "gplt" processes and kill them.</p>
+     </div>
+    </section>
+
+    <!-- FURTHER SUPPORT   -->
+    <section>
+     <a name="furthersupport"></a><h4>Further Support</h4>
+     <div class="left">
+      <ul class="tabular full">
+       <li><a href="/gempak/help_and_documentation/manual/"><img src="man-32x32.png" alt="Manual Help Pages" class="dec"></a> <a href="/gempak/help_and_documentation/manual/">GEMPAK manual pages</a> provide extensive documentation in the use of GEMPAK programs.</p>
+       <li><a href="/gempak/doc/configuration.html"><img src="https://www.unidata.ucar.edu/community/img/data-32x32.png" alt="GEMPAK-LDM Integration" class="dec"></a> <a href="/gempak/doc/configuration.html">Configuring the LDM</a> is available for GEMPAK decoding of IDD data.</li>
+       <li><a href="/gempak/examples/"><img src="gempakviz-32x32.png" alt="GEMPAK Display Capabilities" class="dec"></a>    GEMPAK <a href="/gempak/examples/">display capability examples</a> show what is possible for data analysis. </li>
+      </ul>
+     </div>
+     <div class="right">
+      <ul class="tabular full">
+       <li><a href="/support/index.html#mailinglists"><img src="https://www.unidata.ucar.edu/support/img/mailinglists-32x32.png" alt="Archives" class="dec"></a> Use the GEMPAK <a href="/support/index.html#mailinglists">mailing lists</a> to query experts in the Unidata community.</li>
+       <li><a href="/support/help/MailArchives/gempak/maillist.html"><img src="https://www.unidata.ucar.edu/support/img/archives-32x32.png" alt="Request Support" class="dec"></a> Browse the archive of previously answered GEMPAK <a href="/support/help/MailArchives/gempak/maillist.html">support questions</a>.</li>
+      </ul>
+     </div>
+    </section>
+    <script src="/gempak/add_in.js" type="text/javascript"></script>
+
+  </body>
+ </html>

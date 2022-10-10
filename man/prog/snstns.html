@@ -1,0 +1,62 @@
+<!doctype html><head><title>GEMPAK Help: snstns</title></head><body>
+<a href=../../help_and_documentation>GEMPAK Manual</a> | 
+<a href=../prog/>Programs</a><br><hr>
+<pre>
+SNSTNS modifies the station information in an upper air file.
+
+
+INPUT PARAMETERS
+ 
+    <a href=../parm/snfile.html>SNFILE</a>    Sounding data file
+    <a href=../parm/stnfil.html>STNFIL</a>    Station information file
+    <a href=../parm/addstn.html>ADDSTN</a>    Add station flag
+    <a href=../parm/idntyp.html>IDNTYP</a>    STNM or STID
+ 
+ 
+PROGRAM DESCRIPTION
+ 
+    SNSTNS updates the station information in a GEMPAK upper air
+    file.  The station information generally consists of the
+    character station identifier, STID, the station number, STNM,
+    the latitude, SLAT, the longitude, SLON, the elevation, SELV,
+    the state, <a href=../parm/stat.html>STAT</a> and the country, COUN.
+
+    This information, along with the station name, which is not
+    used, must be stored in a fixed format in the table file
+    specified in <a href=../parm/stnfil.html>STNFIL</a>.  The current GEMPAK upper air station
+    table for US, Canadian and Mexican stations is SNSTNS.TBL.
+    An upper air file containing stations for the world is
+    SNWORLD.TBL.
+
+    <a href=../parm/addstn.html>ADDSTN</a> is a logical parameter which indicates whether stations
+    which are in the table file but not already in the upper air
+    file will also be added to the upper air file, provided there
+    is room for them.
+
+    Either STID or STNM may be used to key on the desired station
+    identifier by setting the desired value in <a href=../parm/idntyp.html>IDNTYP</a>.
+
+ 
+EXAMPLES
+ 
+    1.  Update upper air file called SOUNDINGS.DAT with station
+        information from MYSTN.DAT adding stations that are not
+        already in the file.
+
+        <a href=../parm/snfile.html>SNFILE</a>  =  soundings.dat
+        <a href=../parm/stnfil.html>STNFIL</a>  =  mystn.dat
+        <a href=../parm/addstn.html>ADDSTN</a>  =  yes
+        <a href=../parm/idntyp.html>IDNTYP</a>  =  stid
+
+
+ERROR MESSAGES
+ 
+    [SNSTNS  +1]    WARNING! No stations were updated.
+    [SNSTNS  -1]    Fatal error initializing TAE.
+    [SNSTNS  -2]    Fatal error reading TAE parameters.
+    [SNSTNS  -3]    Invalid input for <a href=../parm/idntyp.html>IDNTYP</a>; must be STID or STNM.
+    [SNSTNS  -4]    <a href=../parm/stnfil.html>STNFIL</a> ... cannot be opened.
+</pre>
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

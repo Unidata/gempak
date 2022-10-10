@@ -1,0 +1,211 @@
+<HTML><HEAD><TITLE>GEMPAK GDRADR Examples</TITLE>
+<META NAME="BOOKMARK" CONTENT="GEMPAK GDRADR Examples">
+<META NAME="AUTHOR" CONTENT="Steve Chiswell">
+<META NAME="KEYWORDS" CONTENT="Software, GEMPAK, Examples, GDRADR">
+<META NAME="DESCRIPTION" CONTENT="GEMPAK GDRADR Examples.">
+</HEAD><BODY>
+
+
+<TABLE width="100%" border=0> 
+  <TR>
+    <TD valign=top><IMG SRC="../../tutorial/images/world_small.gif" width=150></TD>
+    <TD align="left"> 
+        <H1>GEMPAK / N-AWIPS</H1>
+        <h2>NEXRAD Composite Tutorial</h2>
+    </TD>
+  </TR>
+</TABLE>
+
+GDRADR samples NEXRAD Level III (NIDS) products to a common grid projection
+for use with standard GEMPAK grid programs. The sections below will describe
+how to set up files on your system in order to create grid files with GDRADR.
+Examples of products which may be created using the composite grids are
+shown below. For more applications see <A HREF="https://motherlode.ucar.edu/unidata/images/nids/gdradr.html">GDRADR</a> output.
+
+
+<h3>Configure the LDM to store NEXRAD feed products</h3>
+
+The following action, as shown in the LDM pattern actions for 
+<A HREF="/gempak/tutorial/pqact/images.tbl">
+NEXRAD products</a>, is used to store NEXRAD data from the NOAAPORT IDD
+data stream. 
+<br>
+<pre>
+NEXRAD	^SDUS[2357]. .... ([0-3][0-9])([0-2][0-9])([0-6][0-9]).*/p(...)(...)
+	FILE	-close	data/gempak/nexrad/NIDS/\5/\4/\4_(\1:yyyy)(\1:mm)\1_\2\3
+</pre>
+
+<h3>Setting the GEMPAK file template</h3>
+
+GDRADR will use file templates to find the NEXRAD product files. 
+We will refer to the ~ldm/data/gempak directory as $GEMDATA.
+The RAD environmental variable is set in Gemenviron to $GEMDATA/nexrad.
+<p>
+The following file name template is used in $GEMTBL/config/datatype.tbl
+to define the naming convention which matches the above LDM pattern/action:<br>
+<pre>
+NEXRIII   $RAD/NIDS/%SITE%/%PROD%   %PROD%_YYYYMMDD_HHNN  CAT_NIL  SCAT_NIL   10   2880     -1 
+</pre>
+<p>
+If you use the suggested LDM pattern action above, then you will not have to
+make any modifications to the supplied template.
+
+<h3>Running GDRADR</h3>
+When GDRADR is run, it will look for the NEXRIII template in the datatype.tbl
+file to learn how to recognize the NEXRAD level III products in their file 
+directories.
+<p>
+GDRADR also uses a station table (default is nexrad.tbl) to determine what 
+radar locations to use for the composite. Each radar location found in the
+station table will be substituted for the %SITE% template above. The station
+ID's found in the nexrad,tbl file match the 3 letter ID's used in the
+PIL pattern shown in the pqact.conf example above. If you are creating
+a regional composite, you can substantially speed up the gridding
+process by creating a station table consisting only of those
+radar locations which will be in the grid domain.
+<p>
+The GFUNC (eg n0r, ntp etc.) defined in GDRADR will be used as the %PROD%.
+The PIL tag used in the data broadcast identifies each radar product,
+and is used in the pqact.conf pattern/action line shown above.
+Each radar file matching the above template will be used in the composite
+grid product. Upon completion, the gridded data file will contain a grid
+identified by GFUNC with vertical coordinate NONE and grid level 0.  
+<p>
+The output grid file will be created if it does not already exist. The file
+may be specified in several ways.
+<ol>
+<li>An existing grid file can be used.
+<li>CPYFIL may be specified to identify a grid file whose projection information
+will be used to create a new grid file. For ways to define CPYFIL, see the
+<A HREF="/gempak/help_and_documentation/manual/">CPYFIL</a> online help.
+<li>PROJ, GRDAREA, and KXKY define a grid navigation as in GDCFIL if
+    the output file does not already exist, and CPYFIL is blank.
+</ol>
+<p>
+RADTIM determines the output grid time for the radar composite.
+The value of RADTIM may either be 'current', or a GEMPAK dattim.
+If 'current' is selected for RADTIM, then the current system clock
+time is used. No data files later than RADTIM will be included
+in the composite. RADDUR provides the time window previous to
+RADTIM in order to include data for each site. The time closest
+to RADTIM will be used. A default RADDUR of 30 minutes is
+used if RADDUR is blank.
+<p>  
+RADFRQ is the frequency in minutes at which the program will run.
+When RADFRQ is defined, GDRADR will wait for the specified time
+before rerunning. This option is most useful when RADTIM is
+set to 'current'. When the program is sleeping, ctrl-c can be
+used to exit the loop and return to the dynamic tutor. If
+RADFRQ is not set, the dynamic tutor will be re-entered at the
+end of processing the radar mosaic.
+
+<p>
+For more information and examples, see the online help for
+<A HREF="/gempak/help_and_documentation/manual/">GDRADR</a>
+
+<h3>Using GDRADR to create products</h3>
+
+<h4>Creating a national radar mosaic</h4>
+A sample <A HREF="gdradr_shell">shell</a> script to run GDRADR in a perpetual loop is provided
+in $NAWIPS/unidata/programs/gdradr/gdradar_usmosaic.csh. The restore file
+<A HREF="gdradr.nts">gdradr.nts</a> settings used to create a 
+<A HREF="https://motherlode.ucar.edu/unidata/images/nids/radar_mosaic.gif">6km US national mosaic</a>
+are provided in $NAWIPS/unidata/programs/gdradr/gdradr.nts. The shell script example runs
+GDRADR by restoring the gdradr.nts settings which specify that the program will
+rerun itself every 5 minutes (RADFRQ=5). To change the running configuration,
+the user would edit the gdradr.nts file, then issue a KILL to the GDRADR process.
+The shell script should automatically restart the GDRADR program with the
+updated restore file settings.
+<p>
+<A NAME="GRIDCALCS">
+<h4>Using radar data in grid calculations</h4>
+Here is a script which shows how to determine the 5 most 
+<A HREF="NEXLsel"><em>Interesting</em></a> radar sites using the
+gridded national mosaic from the above script. This script
+produces the sample page of sites 
+<A HREF="https://motherlode.ucar.edu/unidata/images/nids/interesting.html">
+here</a>.
+<p>
+<h4>Using gridded radar with other gridded data</h4>
+In order to use GEMPAK's grid diagnostic routines to compute quantities
+with data from other sources, such as gridded model output, the grid files
+need to be of the same projection. I have provided a program called GDBIINT to
+interpolate data from one grid projection to another.
+<p>
+The following script shows how to use RUC boundary layer temperature grids
+to estimate the <A HREF="NEXTYPE">precipitation type</a> using masking functions.
+The RUC grids are interpolated to the same projection and resolution as
+the <A HREF="https://motherlode.ucar.edu/unidata/images/nids/radar_type.gif">national radar mosaic</a>
+grids shown above. The temperature
+grids are then used to create MASK values for the radar reflectivities for
+rain, frozen precip, and snow.
+
+<A NAME="DECODING">
+<h4>Decoding National and Regional Composites from FNEXRAD data feed</h4>
+The following pqact.conf pattern action lines provide an example for
+processing the data into GEMPAK grid files.
+<pre>
+#
+# National radar composite
+FNEXRAD	^radar_mosaic_national
+	PIPE	-close	decoders/dcgrib2 -d data/gempak/logs/dcgrib_radar.log
+	-e GEMTBL=/home/gempak/NAWIPS/gempak/tables
+	data/gempak/radar/YYYYMMDD_radr.gem
+#
+# Regional/Floater radar composite
+FNEXRAD	^radar_mosaic_regional_(.*) !.*!
+	PIPE	-close	decoders/dcgrib2 -d data/gempak/logs/dcgrib_radar.log
+	-e GEMTBL=/home/gempak/NAWIPS/gempak/tables
+	data/gempak/radar/YYYYMMDD_float_\1.gem
+</pre>
+Any site running GEMPAK 5.6.D or later has the necessary configurations
+for decoding and displaying the data in NMAP2 and/or gdplot2. If you are
+running an older version of GEMPAK, then you will need to create a   
+file $GEMTBL/grid/ncargrib2.tbl <A HREF="ncargrib2.tbl">table</a> which 
+identifies parameter #201 as N0R from the NCAR model center ID.
+<p>
+If you wish to use other software to decode/view the products, then the
+relavant GRIB decoding information you will need is that the
+center identification in the PDS block is "60" which is designates NCAR/UCAR,
+and the parameter number for the grids will be #201 for level 0 reflectivity.
+<p>
+The $GEMTBL/config/datatype.tbl template file provides the templates
+of NEXR, NEXF, and NEXL for the national, floater and local region mosaics 
+respectively:
+<pre>
+NEXR         $GEMDATA/radar            YYYYMMDD_radr.gem ............ etc.
+NEXF         $GEMDATA/radar            YYYYMMDD_float_*  ............ etc.
+NEXL         $GEMDATA/radar            YYYYMMDD_local.gem ........... etc.
+</pre>
+These NEXR and NEXF templates match the decoding example above. The NEXL is designed
+for sites that locally generate regional mosaics.
+<p>
+The $GEMTBL/nmap/mod_res.tbl file provides for 2 predefined products:<br>
+<li>Radar_Reflectivity
+<li>Radar_Reflectivity_qc
+<p>
+You may want to add "nexf" to the "nexr;nexl" list for these products if you will be
+decoding the regional floater composite.
+<p>
+The difference between the two products above is that
+Radar_Reflectivity uses a gdplot2 TYPE=Z and Radar_Reflectivity_qc uses a gdplot2 TYPE=F.
+The former just fills in the grid boxes. The latter contours the data
+for a slightly smoother appearance.
+<p>
+If you are looking for an example of plotting the data in gdplot2, use the
+restore files mentioned in the mod_res.tbl entry as a guide and
+consult the GDRADR page for examples of how to
+use the grids in 
+<A HREF="#GRIDCALCS">
+grid calculations</a>, precipitation type plots, etc.
+<p>
+The NMAP2 GRID selection menu will display the available files that match the
+file templates NEXR, NEXL and NEXF. For floater mosaics, the region of the
+mosaic will also appear in the pull down allowing for identification
+when more than 1 region is present (eg, the floater region has been changed
+during the day).
+<p>
+
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</HTML>

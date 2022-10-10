@@ -1,0 +1,22 @@
+<!doctype html><head><title>GEMPAK Help: pmax</title></head><body>
+<a href=../../help_and_documentation>GEMPAK Manual</a> | 
+<a href=../prog/>Programs</a> | <a href=../parm/>Parameters</a><br><hr>
+<pre>
+     PMAX 
+
+     PMAX defines the maximum possible pressure from which data may 
+     be interpolated to the output vertical coordinate.
+
+     PMAX originated as a way to exclude low-level PV when interpolating
+     to the tropopause level from a THTA-coordinate input file.  A good
+     value of PMAX could be 650 or 700 (mb).
+
+     When interpolating from pressure coordinates or any other coordinate
+     system, make sure that PMAX does not conflict with the bounds of
+     the search as specified by <a href=startl.html>STARTL</a> and <a href=stopl.html>STOPL</a>.
+
+
+</pre>
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

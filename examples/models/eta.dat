@@ -1,0 +1,1410 @@
+
+ GRID FILE: $HDS/96040800_eta.gem                                                   
+
+ GRID NAVIGATION: 
+     PROJECTION:          LCC                 
+     ANGLES:                25.0   -95.0    25.0
+     GRID SIZE:           93  65
+     LL CORNER:              12.19   -133.46
+     UR CORNER:              57.29    -49.38
+
+ GRID ANALYSIS BLOCK: 
+      UNKNOWN ANALYSIS TYPE 
+
+ Number of grids in file:  1392
+
+ Maximum number of grids in file:   1500
+
+  NUM       TIME1              TIME2           LEVL1 LEVL2  VCORD PARM
+    1     960408/0000F000                          0  10000  SGMA PWTR        
+    2     960408/0000F000                       9700  9900   SGMA LIFT        
+    3     960408/0000F000                       9700  10000  SGMA TMPK        
+    4     960408/0000F000                       9700  10000  SGMA RELH        
+    5     960408/0000F000                       9700  10000  SGMA UREL        
+    6     960408/0000F000                       9700  10000  SGMA VREL        
+    7     960408/0000F000                       9400  9700   SGMA TMPK        
+    8     960408/0000F000                       9400  9700   SGMA RELH        
+    9     960408/0000F000                       9400  9700   SGMA UREL        
+   10     960408/0000F000                       9400  9700   SGMA VREL        
+   11     960408/0000F000                       9100  9400   SGMA TMPK        
+   12     960408/0000F000                       9100  9400   SGMA RELH        
+   13     960408/0000F000                       9100  9400   SGMA UREL        
+   14     960408/0000F000                       9100  9400   SGMA VREL        
+   15     960408/0000F000                       8800  9100   SGMA TMPK        
+   16     960408/0000F000                       8800  9100   SGMA RELH        
+   17     960408/0000F000                       8800  9100   SGMA UREL        
+   18     960408/0000F000                       8800  9100   SGMA VREL        
+   19     960408/0000F000                       8500  8800   SGMA TMPK        
+   20     960408/0000F000                       8500  8800   SGMA RELH        
+   21     960408/0000F000                       8500  8800   SGMA UREL        
+   22     960408/0000F000                       8500  8800   SGMA VREL        
+   23     960408/0000F000                       8400  9800   SGMA LFT4        
+   24     960408/0000F000                       8400  9800   SGMA CAPE        
+   25     960408/0000F000                       8400  9800   SGMA CINS        
+   26     960408/0000F000                       3000  0      HGHT HELC        
+   27     960408/0000F000                         10         HGHT UREL        
+   28     960408/0000F000                         10         HGHT VREL        
+   29     960408/0000F000                          2         HGHT TMPK        
+   30     960408/0000F000                          2         HGHT RELH        
+   31     960408/0000F000                          0         PRES PRES        
+   32     960408/0000F000                          0         PRES HGHT        
+   33     960408/0000F000                          0         PRES EMSL        
+   34     960408/0000F000                          0         PRES CAPE        
+   35     960408/0000F000                          0         PRES CINS        
+   36     960408/0000F000                       1000         PRES OMEGA       
+   37     960408/0000F000                       1000         PRES HGHT        
+   38     960408/0000F000                       1000         PRES TMPK        
+   39     960408/0000F000                       1000         PRES UREL        
+   40     960408/0000F000                       1000         PRES VREL        
+   41     960408/0000F000                       1000         PRES RELH        
+   42     960408/0000F000                       1000         PRES AVOR        
+   43     960408/0000F000                        950         PRES OMEGA       
+   44     960408/0000F000                        950         PRES HGHT        
+   45     960408/0000F000                        950         PRES TMPK        
+   46     960408/0000F000                        950         PRES UREL        
+   47     960408/0000F000                        950         PRES VREL        
+   48     960408/0000F000                        950         PRES RELH        
+   49     960408/0000F000                        900         PRES OMEGA       
+   50     960408/0000F000                        900         PRES HGHT        
+   51     960408/0000F000                        900         PRES TMPK        
+   52     960408/0000F000                        900         PRES UREL        
+   53     960408/0000F000                        900         PRES VREL        
+   54     960408/0000F000                        900         PRES RELH        
+   55     960408/0000F000                        850         PRES OMEGA       
+   56     960408/0000F000                        850         PRES HGHT        
+   57     960408/0000F000                        850         PRES TMPK        
+   58     960408/0000F000                        850         PRES UREL        
+   59     960408/0000F000                        850         PRES VREL        
+   60     960408/0000F000                        850         PRES RELH        
+   61     960408/0000F000                        850         PRES AVOR        
+   62     960408/0000F000                        800         PRES OMEGA       
+   63     960408/0000F000                        800         PRES HGHT        
+   64     960408/0000F000                        800         PRES TMPK        
+   65     960408/0000F000                        800         PRES UREL        
+   66     960408/0000F000                        800         PRES VREL        
+   67     960408/0000F000                        800         PRES RELH        
+   68     960408/0000F000                        750         PRES OMEGA       
+   69     960408/0000F000                        750         PRES HGHT        
+   70     960408/0000F000                        750         PRES TMPK        
+   71     960408/0000F000                        750         PRES UREL        
+   72     960408/0000F000                        750         PRES VREL        
+   73     960408/0000F000                        750         PRES RELH        
+   74     960408/0000F000                        700         PRES OMEGA       
+   75     960408/0000F000                        700         PRES HGHT        
+   76     960408/0000F000                        700         PRES TMPK        
+   77     960408/0000F000                        700         PRES UREL        
+   78     960408/0000F000                        700         PRES VREL        
+   79     960408/0000F000                        700         PRES RELH        
+   80     960408/0000F000                        700         PRES AVOR        
+   81     960408/0000F000                        650         PRES OMEGA       
+   82     960408/0000F000                        650         PRES HGHT        
+   83     960408/0000F000                        650         PRES TMPK        
+   84     960408/0000F000                        650         PRES UREL        
+   85     960408/0000F000                        650         PRES VREL        
+   86     960408/0000F000                        650         PRES RELH        
+   87     960408/0000F000                        600         PRES OMEGA       
+   88     960408/0000F000                        600         PRES HGHT        
+   89     960408/0000F000                        600         PRES TMPK        
+   90     960408/0000F000                        600         PRES UREL        
+   91     960408/0000F000                        600         PRES VREL        
+   92     960408/0000F000                        600         PRES RELH        
+   93     960408/0000F000                        550         PRES OMEGA       
+   94     960408/0000F000                        550         PRES HGHT        
+   95     960408/0000F000                        550         PRES TMPK        
+   96     960408/0000F000                        550         PRES UREL        
+   97     960408/0000F000                        550         PRES VREL        
+   98     960408/0000F000                        550         PRES RELH        
+   99     960408/0000F000                        500         PRES OMEGA       
+  100     960408/0000F000                        500         PRES HGHT        
+  101     960408/0000F000                        500         PRES TMPK        
+  102     960408/0000F000                        500         PRES UREL        
+  103     960408/0000F000                        500         PRES VREL        
+  104     960408/0000F000                        500         PRES RELH        
+  105     960408/0000F000                        500         PRES AVOR        
+  106     960408/0000F000                        450         PRES OMEGA       
+  107     960408/0000F000                        450         PRES HGHT        
+  108     960408/0000F000                        450         PRES TMPK        
+  109     960408/0000F000                        450         PRES UREL        
+  110     960408/0000F000                        450         PRES VREL        
+  111     960408/0000F000                        450         PRES RELH        
+  112     960408/0000F000                        400         PRES OMEGA       
+  113     960408/0000F000                        400         PRES HGHT        
+  114     960408/0000F000                        400         PRES TMPK        
+  115     960408/0000F000                        400         PRES UREL        
+  116     960408/0000F000                        400         PRES VREL        
+  117     960408/0000F000                        400         PRES RELH        
+  118     960408/0000F000                        350         PRES OMEGA       
+  119     960408/0000F000                        350         PRES HGHT        
+  120     960408/0000F000                        350         PRES TMPK        
+  121     960408/0000F000                        350         PRES UREL        
+  122     960408/0000F000                        350         PRES VREL        
+  123     960408/0000F000                        350         PRES RELH        
+  124     960408/0000F000                        300         PRES OMEGA       
+  125     960408/0000F000                        300         PRES HGHT        
+  126     960408/0000F000                        300         PRES TMPK        
+  127     960408/0000F000                        300         PRES UREL        
+  128     960408/0000F000                        300         PRES VREL        
+  129     960408/0000F000                        300         PRES RELH        
+  130     960408/0000F000                        250         PRES OMEGA       
+  131     960408/0000F000                        250         PRES HGHT        
+  132     960408/0000F000                        250         PRES TMPK        
+  133     960408/0000F000                        250         PRES UREL        
+  134     960408/0000F000                        250         PRES VREL        
+  135     960408/0000F000                        250         PRES RELH        
+  136     960408/0000F000                        250         PRES AVOR        
+  137     960408/0000F000                        200         PRES OMEGA       
+  138     960408/0000F000                        200         PRES HGHT        
+  139     960408/0000F000                        200         PRES TMPK        
+  140     960408/0000F000                        200         PRES UREL        
+  141     960408/0000F000                        200         PRES VREL        
+  142     960408/0000F000                        200         PRES RELH        
+  143     960408/0000F000                        150         PRES OMEGA       
+  144     960408/0000F000                        150         PRES HGHT        
+  145     960408/0000F000                        150         PRES TMPK        
+  146     960408/0000F000                        150         PRES UREL        
+  147     960408/0000F000                        150         PRES VREL        
+  148     960408/0000F000                        150         PRES RELH        
+  149     960408/0000F000                        100         PRES OMEGA       
+  150     960408/0000F000                        100         PRES HGHT        
+  151     960408/0000F000                        100         PRES TMPK        
+  152     960408/0000F000                        100         PRES UREL        
+  153     960408/0000F000                        100         PRES VREL        
+  154     960408/0000F000                        100         PRES RELH        
+  155     960408/0000F006                          0  10000  SGMA PWTR        
+  156     960408/0000F006                       9700  9900   SGMA LIFT        
+  157     960408/0000F006                       9700  10000  SGMA TMPK        
+  158     960408/0000F006                       9700  10000  SGMA RELH        
+  159     960408/0000F006                       9700  10000  SGMA UREL        
+  160     960408/0000F006                       9700  10000  SGMA VREL        
+  161     960408/0000F006                       9400  9700   SGMA TMPK        
+  162     960408/0000F006                       9400  9700   SGMA RELH        
+  163     960408/0000F006                       9400  9700   SGMA UREL        
+  164     960408/0000F006                       9400  9700   SGMA VREL        
+  165     960408/0000F006                       9100  9400   SGMA TMPK        
+  166     960408/0000F006                       9100  9400   SGMA RELH        
+  167     960408/0000F006                       9100  9400   SGMA UREL        
+  168     960408/0000F006                       9100  9400   SGMA VREL        
+  169     960408/0000F006                       8800  9100   SGMA TMPK        
+  170     960408/0000F006                       8800  9100   SGMA RELH        
+  171     960408/0000F006                       8800  9100   SGMA UREL        
+  172     960408/0000F006                       8800  9100   SGMA VREL        
+  173     960408/0000F006                       8500  8800   SGMA TMPK        
+  174     960408/0000F006                       8500  8800   SGMA RELH        
+  175     960408/0000F006                       8500  8800   SGMA UREL        
+  176     960408/0000F006                       8500  8800   SGMA VREL        
+  177     960408/0000F006                       8400  9800   SGMA LFT4        
+  178     960408/0000F006                       8400  9800   SGMA CAPE        
+  179     960408/0000F006                       8400  9800   SGMA CINS        
+  180     960408/0000F006                       3000  0      HGHT HELC        
+  181     960408/0000F006                         10         HGHT UREL        
+  182     960408/0000F006                         10         HGHT VREL        
+  183     960408/0000F006                          2         HGHT TMPK        
+  184     960408/0000F006                          2         HGHT RELH        
+  185     960408/0000F006                          0         PRES PRES        
+  186     960408/0000F006                          0         PRES P06M        
+  187     960408/0000F006                          0         PRES C06M        
+  188     960408/0000F006                          0         PRES EMSL        
+  189     960408/0000F006                          0         PRES CAPE        
+  190     960408/0000F006                          0         PRES CINS        
+  191     960408/0000F006                       1000         PRES OMEGA       
+  192     960408/0000F006                       1000         PRES HGHT        
+  193     960408/0000F006                       1000         PRES TMPK        
+  194     960408/0000F006                       1000         PRES UREL        
+  195     960408/0000F006                       1000         PRES VREL        
+  196     960408/0000F006                       1000         PRES RELH        
+  197     960408/0000F006                       1000         PRES AVOR        
+  198     960408/0000F006                        950         PRES OMEGA       
+  199     960408/0000F006                        950         PRES HGHT        
+  200     960408/0000F006                        950         PRES TMPK        
+  201     960408/0000F006                        950         PRES UREL        
+  202     960408/0000F006                        950         PRES VREL        
+  203     960408/0000F006                        950         PRES RELH        
+  204     960408/0000F006                        900         PRES OMEGA       
+  205     960408/0000F006                        900         PRES HGHT        
+  206     960408/0000F006                        900         PRES TMPK        
+  207     960408/0000F006                        900         PRES UREL        
+  208     960408/0000F006                        900         PRES VREL        
+  209     960408/0000F006                        900         PRES RELH        
+  210     960408/0000F006                        850         PRES OMEGA       
+  211     960408/0000F006                        850         PRES HGHT        
+  212     960408/0000F006                        850         PRES TMPK        
+  213     960408/0000F006                        850         PRES UREL        
+  214     960408/0000F006                        850         PRES VREL        
+  215     960408/0000F006                        850         PRES RELH        
+  216     960408/0000F006                        850         PRES AVOR        
+  217     960408/0000F006                        800         PRES OMEGA       
+  218     960408/0000F006                        800         PRES HGHT        
+  219     960408/0000F006                        800         PRES TMPK        
+  220     960408/0000F006                        800         PRES UREL        
+  221     960408/0000F006                        800         PRES VREL        
+  222     960408/0000F006                        800         PRES RELH        
+  223     960408/0000F006                        750         PRES OMEGA       
+  224     960408/0000F006                        750         PRES HGHT        
+  225     960408/0000F006                        750         PRES TMPK        
+  226     960408/0000F006                        750         PRES UREL        
+  227     960408/0000F006                        750         PRES VREL        
+  228     960408/0000F006                        750         PRES RELH        
+  229     960408/0000F006                        700         PRES OMEGA       
+  230     960408/0000F006                        700         PRES HGHT        
+  231     960408/0000F006                        700         PRES TMPK        
+  232     960408/0000F006                        700         PRES UREL        
+  233     960408/0000F006                        700         PRES VREL        
+  234     960408/0000F006                        700         PRES RELH        
+  235     960408/0000F006                        700         PRES AVOR        
+  236     960408/0000F006                        650         PRES OMEGA       
+  237     960408/0000F006                        650         PRES HGHT        
+  238     960408/0000F006                        650         PRES TMPK        
+  239     960408/0000F006                        650         PRES UREL        
+  240     960408/0000F006                        650         PRES VREL        
+  241     960408/0000F006                        650         PRES RELH        
+  242     960408/0000F006                        600         PRES OMEGA       
+  243     960408/0000F006                        600         PRES HGHT        
+  244     960408/0000F006                        600         PRES TMPK        
+  245     960408/0000F006                        600         PRES UREL        
+  246     960408/0000F006                        600         PRES VREL        
+  247     960408/0000F006                        600         PRES RELH        
+  248     960408/0000F006                        550         PRES OMEGA       
+  249     960408/0000F006                        550         PRES HGHT        
+  250     960408/0000F006                        550         PRES TMPK        
+  251     960408/0000F006                        550         PRES UREL        
+  252     960408/0000F006                        550         PRES VREL        
+  253     960408/0000F006                        550         PRES RELH        
+  254     960408/0000F006                        500         PRES OMEGA       
+  255     960408/0000F006                        500         PRES HGHT        
+  256     960408/0000F006                        500         PRES TMPK        
+  257     960408/0000F006                        500         PRES UREL        
+  258     960408/0000F006                        500         PRES VREL        
+  259     960408/0000F006                        500         PRES RELH        
+  260     960408/0000F006                        500         PRES AVOR        
+  261     960408/0000F006                        450         PRES OMEGA       
+  262     960408/0000F006                        450         PRES HGHT        
+  263     960408/0000F006                        450         PRES TMPK        
+  264     960408/0000F006                        450         PRES UREL        
+  265     960408/0000F006                        450         PRES VREL        
+  266     960408/0000F006                        450         PRES RELH        
+  267     960408/0000F006                        400         PRES OMEGA       
+  268     960408/0000F006                        400         PRES HGHT        
+  269     960408/0000F006                        400         PRES TMPK        
+  270     960408/0000F006                        400         PRES UREL        
+  271     960408/0000F006                        400         PRES VREL        
+  272     960408/0000F006                        400         PRES RELH        
+  273     960408/0000F006                        350         PRES OMEGA       
+  274     960408/0000F006                        350         PRES HGHT        
+  275     960408/0000F006                        350         PRES TMPK        
+  276     960408/0000F006                        350         PRES UREL        
+  277     960408/0000F006                        350         PRES VREL        
+  278     960408/0000F006                        350         PRES RELH        
+  279     960408/0000F006                        300         PRES OMEGA       
+  280     960408/0000F006                        300         PRES HGHT        
+  281     960408/0000F006                        300         PRES TMPK        
+  282     960408/0000F006                        300         PRES UREL        
+  283     960408/0000F006                        300         PRES VREL        
+  284     960408/0000F006                        300         PRES RELH        
+  285     960408/0000F006                        250         PRES OMEGA       
+  286     960408/0000F006                        250         PRES HGHT        
+  287     960408/0000F006                        250         PRES TMPK        
+  288     960408/0000F006                        250         PRES UREL        
+  289     960408/0000F006                        250         PRES VREL        
+  290     960408/0000F006                        250         PRES RELH        
+  291     960408/0000F006                        250         PRES AVOR        
+  292     960408/0000F006                        200         PRES OMEGA       
+  293     960408/0000F006                        200         PRES HGHT        
+  294     960408/0000F006                        200         PRES TMPK        
+  295     960408/0000F006                        200         PRES UREL        
+  296     960408/0000F006                        200         PRES VREL        
+  297     960408/0000F006                        200         PRES RELH        
+  298     960408/0000F006                        150         PRES OMEGA       
+  299     960408/0000F006                        150         PRES HGHT        
+  300     960408/0000F006                        150         PRES TMPK        
+  301     960408/0000F006                        150         PRES UREL        
+  302     960408/0000F006                        150         PRES VREL        
+  303     960408/0000F006                        150         PRES RELH        
+  304     960408/0000F006                        100         PRES OMEGA       
+  305     960408/0000F006                        100         PRES HGHT        
+  306     960408/0000F006                        100         PRES TMPK        
+  307     960408/0000F006                        100         PRES UREL        
+  308     960408/0000F006                        100         PRES VREL        
+  309     960408/0000F006                        100         PRES RELH        
+  310     960408/0000F012                          0  10000  SGMA PWTR        
+  311     960408/0000F012                       9700  9900   SGMA LIFT        
+  312     960408/0000F012                       9700  10000  SGMA TMPK        
+  313     960408/0000F012                       9700  10000  SGMA RELH        
+  314     960408/0000F012                       9700  10000  SGMA UREL        
+  315     960408/0000F012                       9700  10000  SGMA VREL        
+  316     960408/0000F012                       9400  9700   SGMA TMPK        
+  317     960408/0000F012                       9400  9700   SGMA RELH        
+  318     960408/0000F012                       9400  9700   SGMA UREL        
+  319     960408/0000F012                       9400  9700   SGMA VREL        
+  320     960408/0000F012                       9100  9400   SGMA TMPK        
+  321     960408/0000F012                       9100  9400   SGMA RELH        
+  322     960408/0000F012                       9100  9400   SGMA UREL        
+  323     960408/0000F012                       9100  9400   SGMA VREL        
+  324     960408/0000F012                       8800  9100   SGMA TMPK        
+  325     960408/0000F012                       8800  9100   SGMA RELH        
+  326     960408/0000F012                       8800  9100   SGMA UREL        
+  327     960408/0000F012                       8800  9100   SGMA VREL        
+  328     960408/0000F012                       8500  8800   SGMA TMPK        
+  329     960408/0000F012                       8500  8800   SGMA RELH        
+  330     960408/0000F012                       8500  8800   SGMA UREL        
+  331     960408/0000F012                       8500  8800   SGMA VREL        
+  332     960408/0000F012                       8400  9800   SGMA LFT4        
+  333     960408/0000F012                       8400  9800   SGMA CAPE        
+  334     960408/0000F012                       8400  9800   SGMA CINS        
+  335     960408/0000F012                       3000  0      HGHT HELC        
+  336     960408/0000F012                         10         HGHT UREL        
+  337     960408/0000F012                         10         HGHT VREL        
+  338     960408/0000F012                          2         HGHT TMPK        
+  339     960408/0000F012                          2         HGHT RELH        
+  340     960408/0000F012                          0         PRES PRES        
+  341     960408/0000F012                          0         PRES P12M        
+  342     960408/0000F012                          0         PRES C12M        
+  343     960408/0000F012                          0         PRES EMSL        
+  344     960408/0000F012                          0         PRES CAPE        
+  345     960408/0000F012                          0         PRES CINS        
+  346     960408/0000F012                       1000         PRES OMEGA       
+  347     960408/0000F012                       1000         PRES HGHT        
+  348     960408/0000F012                       1000         PRES TMPK        
+  349     960408/0000F012                       1000         PRES UREL        
+  350     960408/0000F012                       1000         PRES VREL        
+  351     960408/0000F012                       1000         PRES RELH        
+  352     960408/0000F012                       1000         PRES AVOR        
+  353     960408/0000F012                        950         PRES OMEGA       
+  354     960408/0000F012                        950         PRES HGHT        
+  355     960408/0000F012                        950         PRES TMPK        
+  356     960408/0000F012                        950         PRES UREL        
+  357     960408/0000F012                        950         PRES VREL        
+  358     960408/0000F012                        950         PRES RELH        
+  359     960408/0000F012                        900         PRES OMEGA       
+  360     960408/0000F012                        900         PRES HGHT        
+  361     960408/0000F012                        900         PRES TMPK        
+  362     960408/0000F012                        900         PRES UREL        
+  363     960408/0000F012                        900         PRES VREL        
+  364     960408/0000F012                        900         PRES RELH        
+  365     960408/0000F012                        850         PRES OMEGA       
+  366     960408/0000F012                        850         PRES HGHT        
+  367     960408/0000F012                        850         PRES TMPK        
+  368     960408/0000F012                        850         PRES UREL        
+  369     960408/0000F012                        850         PRES VREL        
+  370     960408/0000F012                        850         PRES RELH        
+  371     960408/0000F012                        850         PRES AVOR        
+  372     960408/0000F012                        800         PRES OMEGA       
+  373     960408/0000F012                        800         PRES HGHT        
+  374     960408/0000F012                        800         PRES TMPK        
+  375     960408/0000F012                        800         PRES UREL        
+  376     960408/0000F012                        800         PRES VREL        
+  377     960408/0000F012                        800         PRES RELH        
+  378     960408/0000F012                        750         PRES OMEGA       
+  379     960408/0000F012                        750         PRES HGHT        
+  380     960408/0000F012                        750         PRES TMPK        
+  381     960408/0000F012                        750         PRES UREL        
+  382     960408/0000F012                        750         PRES VREL        
+  383     960408/0000F012                        750         PRES RELH        
+  384     960408/0000F012                        700         PRES OMEGA       
+  385     960408/0000F012                        700         PRES HGHT        
+  386     960408/0000F012                        700         PRES TMPK        
+  387     960408/0000F012                        700         PRES UREL        
+  388     960408/0000F012                        700         PRES VREL        
+  389     960408/0000F012                        700         PRES RELH        
+  390     960408/0000F012                        700         PRES AVOR        
+  391     960408/0000F012                        650         PRES OMEGA       
+  392     960408/0000F012                        650         PRES HGHT        
+  393     960408/0000F012                        650         PRES TMPK        
+  394     960408/0000F012                        650         PRES UREL        
+  395     960408/0000F012                        650         PRES VREL        
+  396     960408/0000F012                        650         PRES RELH        
+  397     960408/0000F012                        600         PRES OMEGA       
+  398     960408/0000F012                        600         PRES HGHT        
+  399     960408/0000F012                        600         PRES TMPK        
+  400     960408/0000F012                        600         PRES UREL        
+  401     960408/0000F012                        600         PRES VREL        
+  402     960408/0000F012                        600         PRES RELH        
+  403     960408/0000F012                        550         PRES OMEGA       
+  404     960408/0000F012                        550         PRES HGHT        
+  405     960408/0000F012                        550         PRES TMPK        
+  406     960408/0000F012                        550         PRES UREL        
+  407     960408/0000F012                        550         PRES VREL        
+  408     960408/0000F012                        550         PRES RELH        
+  409     960408/0000F012                        500         PRES OMEGA       
+  410     960408/0000F012                        500         PRES HGHT        
+  411     960408/0000F012                        500         PRES TMPK        
+  412     960408/0000F012                        500         PRES UREL        
+  413     960408/0000F012                        500         PRES VREL        
+  414     960408/0000F012                        500         PRES RELH        
+  415     960408/0000F012                        500         PRES AVOR        
+  416     960408/0000F012                        450         PRES OMEGA       
+  417     960408/0000F012                        450         PRES HGHT        
+  418     960408/0000F012                        450         PRES TMPK        
+  419     960408/0000F012                        450         PRES UREL        
+  420     960408/0000F012                        450         PRES VREL        
+  421     960408/0000F012                        450         PRES RELH        
+  422     960408/0000F012                        400         PRES OMEGA       
+  423     960408/0000F012                        400         PRES HGHT        
+  424     960408/0000F012                        400         PRES TMPK        
+  425     960408/0000F012                        400         PRES UREL        
+  426     960408/0000F012                        400         PRES VREL        
+  427     960408/0000F012                        400         PRES RELH        
+  428     960408/0000F012                        350         PRES OMEGA       
+  429     960408/0000F012                        350         PRES HGHT        
+  430     960408/0000F012                        350         PRES TMPK        
+  431     960408/0000F012                        350         PRES UREL        
+  432     960408/0000F012                        350         PRES VREL        
+  433     960408/0000F012                        350         PRES RELH        
+  434     960408/0000F012                        300         PRES OMEGA       
+  435     960408/0000F012                        300         PRES HGHT        
+  436     960408/0000F012                        300         PRES TMPK        
+  437     960408/0000F012                        300         PRES UREL        
+  438     960408/0000F012                        300         PRES VREL        
+  439     960408/0000F012                        300         PRES RELH        
+  440     960408/0000F012                        250         PRES OMEGA       
+  441     960408/0000F012                        250         PRES HGHT        
+  442     960408/0000F012                        250         PRES TMPK        
+  443     960408/0000F012                        250         PRES UREL        
+  444     960408/0000F012                        250         PRES VREL        
+  445     960408/0000F012                        250         PRES RELH        
+  446     960408/0000F012                        250         PRES AVOR        
+  447     960408/0000F012                        200         PRES OMEGA       
+  448     960408/0000F012                        200         PRES HGHT        
+  449     960408/0000F012                        200         PRES TMPK        
+  450     960408/0000F012                        200         PRES UREL        
+  451     960408/0000F012                        200         PRES VREL        
+  452     960408/0000F012                        200         PRES RELH        
+  453     960408/0000F012                        150         PRES OMEGA       
+  454     960408/0000F012                        150         PRES HGHT        
+  455     960408/0000F012                        150         PRES TMPK        
+  456     960408/0000F012                        150         PRES UREL        
+  457     960408/0000F012                        150         PRES VREL        
+  458     960408/0000F012                        150         PRES RELH        
+  459     960408/0000F012                        100         PRES OMEGA       
+  460     960408/0000F012                        100         PRES HGHT        
+  461     960408/0000F012                        100         PRES TMPK        
+  462     960408/0000F012                        100         PRES UREL        
+  463     960408/0000F012                        100         PRES VREL        
+  464     960408/0000F012                        100         PRES RELH        
+  465     960408/0000F018                          0  10000  SGMA PWTR        
+  466     960408/0000F018                       9700  9900   SGMA LIFT        
+  467     960408/0000F018                       9700  10000  SGMA TMPK        
+  468     960408/0000F018                       9700  10000  SGMA RELH        
+  469     960408/0000F018                       9700  10000  SGMA UREL        
+  470     960408/0000F018                       9700  10000  SGMA VREL        
+  471     960408/0000F018                       9400  9700   SGMA TMPK        
+  472     960408/0000F018                       9400  9700   SGMA RELH        
+  473     960408/0000F018                       9400  9700   SGMA UREL        
+  474     960408/0000F018                       9400  9700   SGMA VREL        
+  475     960408/0000F018                       9100  9400   SGMA TMPK        
+  476     960408/0000F018                       9100  9400   SGMA RELH        
+  477     960408/0000F018                       9100  9400   SGMA UREL        
+  478     960408/0000F018                       9100  9400   SGMA VREL        
+  479     960408/0000F018                       8800  9100   SGMA TMPK        
+  480     960408/0000F018                       8800  9100   SGMA RELH        
+  481     960408/0000F018                       8800  9100   SGMA UREL        
+  482     960408/0000F018                       8800  9100   SGMA VREL        
+  483     960408/0000F018                       8500  8800   SGMA TMPK        
+  484     960408/0000F018                       8500  8800   SGMA RELH        
+  485     960408/0000F018                       8500  8800   SGMA UREL        
+  486     960408/0000F018                       8500  8800   SGMA VREL        
+  487     960408/0000F018                       8400  9800   SGMA LFT4        
+  488     960408/0000F018                       8400  9800   SGMA CAPE        
+  489     960408/0000F018                       8400  9800   SGMA CINS        
+  490     960408/0000F018                       3000  0      HGHT HELC        
+  491     960408/0000F018                         10         HGHT UREL        
+  492     960408/0000F018                         10         HGHT VREL        
+  493     960408/0000F018                          2         HGHT TMPK        
+  494     960408/0000F018                          2         HGHT RELH        
+  495     960408/0000F018                          0         PRES PRES        
+  496     960408/0000F018                          0         PRES P06M        
+  497     960408/0000F018                          0         PRES C06M        
+  498     960408/0000F018                          0         PRES EMSL        
+  499     960408/0000F018                          0         PRES CAPE        
+  500     960408/0000F018                          0         PRES CINS        
+  501     960408/0000F018                       1000         PRES OMEGA       
+  502     960408/0000F018                       1000         PRES HGHT        
+  503     960408/0000F018                       1000         PRES TMPK        
+  504     960408/0000F018                       1000         PRES UREL        
+  505     960408/0000F018                       1000         PRES VREL        
+  506     960408/0000F018                       1000         PRES RELH        
+  507     960408/0000F018                       1000         PRES AVOR        
+  508     960408/0000F018                        950         PRES OMEGA       
+  509     960408/0000F018                        950         PRES HGHT        
+  510     960408/0000F018                        950         PRES TMPK        
+  511     960408/0000F018                        950         PRES UREL        
+  512     960408/0000F018                        950         PRES VREL        
+  513     960408/0000F018                        950         PRES RELH        
+  514     960408/0000F018                        900         PRES OMEGA       
+  515     960408/0000F018                        900         PRES HGHT        
+  516     960408/0000F018                        900         PRES TMPK        
+  517     960408/0000F018                        900         PRES UREL        
+  518     960408/0000F018                        900         PRES VREL        
+  519     960408/0000F018                        900         PRES RELH        
+  520     960408/0000F018                        850         PRES OMEGA       
+  521     960408/0000F018                        850         PRES HGHT        
+  522     960408/0000F018                        850         PRES TMPK        
+  523     960408/0000F018                        850         PRES UREL        
+  524     960408/0000F018                        850         PRES VREL        
+  525     960408/0000F018                        850         PRES RELH        
+  526     960408/0000F018                        850         PRES AVOR        
+  527     960408/0000F018                        800         PRES OMEGA       
+  528     960408/0000F018                        800         PRES HGHT        
+  529     960408/0000F018                        800         PRES TMPK        
+  530     960408/0000F018                        800         PRES UREL        
+  531     960408/0000F018                        800         PRES VREL        
+  532     960408/0000F018                        800         PRES RELH        
+  533     960408/0000F018                        750         PRES OMEGA       
+  534     960408/0000F018                        750         PRES HGHT        
+  535     960408/0000F018                        750         PRES TMPK        
+  536     960408/0000F018                        750         PRES UREL        
+  537     960408/0000F018                        750         PRES VREL        
+  538     960408/0000F018                        750         PRES RELH        
+  539     960408/0000F018                        700         PRES OMEGA       
+  540     960408/0000F018                        700         PRES HGHT        
+  541     960408/0000F018                        700         PRES TMPK        
+  542     960408/0000F018                        700         PRES UREL        
+  543     960408/0000F018                        700         PRES VREL        
+  544     960408/0000F018                        700         PRES RELH        
+  545     960408/0000F018                        700         PRES AVOR        
+  546     960408/0000F018                        650         PRES OMEGA       
+  547     960408/0000F018                        650         PRES HGHT        
+  548     960408/0000F018                        650         PRES TMPK        
+  549     960408/0000F018                        650         PRES UREL        
+  550     960408/0000F018                        650         PRES VREL        
+  551     960408/0000F018                        650         PRES RELH        
+  552     960408/0000F018                        600         PRES OMEGA       
+  553     960408/0000F018                        600         PRES HGHT        
+  554     960408/0000F018                        600         PRES TMPK        
+  555     960408/0000F018                        600         PRES UREL        
+  556     960408/0000F018                        600         PRES VREL        
+  557     960408/0000F018                        600         PRES RELH        
+  558     960408/0000F018                        550         PRES OMEGA       
+  559     960408/0000F018                        550         PRES HGHT        
+  560     960408/0000F018                        550         PRES TMPK        
+  561     960408/0000F018                        550         PRES UREL        
+  562     960408/0000F018                        550         PRES VREL        
+  563     960408/0000F018                        550         PRES RELH        
+  564     960408/0000F018                        500         PRES OMEGA       
+  565     960408/0000F018                        500         PRES HGHT        
+  566     960408/0000F018                        500         PRES TMPK        
+  567     960408/0000F018                        500         PRES UREL        
+  568     960408/0000F018                        500         PRES VREL        
+  569     960408/0000F018                        500         PRES RELH        
+  570     960408/0000F018                        500         PRES AVOR        
+  571     960408/0000F018                        450         PRES OMEGA       
+  572     960408/0000F018                        450         PRES HGHT        
+  573     960408/0000F018                        450         PRES TMPK        
+  574     960408/0000F018                        450         PRES UREL        
+  575     960408/0000F018                        450         PRES VREL        
+  576     960408/0000F018                        450         PRES RELH        
+  577     960408/0000F018                        400         PRES OMEGA       
+  578     960408/0000F018                        400         PRES HGHT        
+  579     960408/0000F018                        400         PRES TMPK        
+  580     960408/0000F018                        400         PRES UREL        
+  581     960408/0000F018                        400         PRES VREL        
+  582     960408/0000F018                        400         PRES RELH        
+  583     960408/0000F018                        350         PRES OMEGA       
+  584     960408/0000F018                        350         PRES HGHT        
+  585     960408/0000F018                        350         PRES TMPK        
+  586     960408/0000F018                        350         PRES UREL        
+  587     960408/0000F018                        350         PRES VREL        
+  588     960408/0000F018                        350         PRES RELH        
+  589     960408/0000F018                        300         PRES OMEGA       
+  590     960408/0000F018                        300         PRES HGHT        
+  591     960408/0000F018                        300         PRES TMPK        
+  592     960408/0000F018                        300         PRES UREL        
+  593     960408/0000F018                        300         PRES VREL        
+  594     960408/0000F018                        300         PRES RELH        
+  595     960408/0000F018                        250         PRES OMEGA       
+  596     960408/0000F018                        250         PRES HGHT        
+  597     960408/0000F018                        250         PRES TMPK        
+  598     960408/0000F018                        250         PRES UREL        
+  599     960408/0000F018                        250         PRES VREL        
+  600     960408/0000F018                        250         PRES RELH        
+  601     960408/0000F018                        250         PRES AVOR        
+  602     960408/0000F018                        200         PRES OMEGA       
+  603     960408/0000F018                        200         PRES HGHT        
+  604     960408/0000F018                        200         PRES TMPK        
+  605     960408/0000F018                        200         PRES UREL        
+  606     960408/0000F018                        200         PRES VREL        
+  607     960408/0000F018                        200         PRES RELH        
+  608     960408/0000F018                        150         PRES OMEGA       
+  609     960408/0000F018                        150         PRES HGHT        
+  610     960408/0000F018                        150         PRES TMPK        
+  611     960408/0000F018                        150         PRES UREL        
+  612     960408/0000F018                        150         PRES VREL        
+  613     960408/0000F018                        150         PRES RELH        
+  614     960408/0000F018                        100         PRES OMEGA       
+  615     960408/0000F018                        100         PRES HGHT        
+  616     960408/0000F018                        100         PRES TMPK        
+  617     960408/0000F018                        100         PRES UREL        
+  618     960408/0000F018                        100         PRES VREL        
+  619     960408/0000F018                        100         PRES RELH        
+  620     960408/0000F024                          0  10000  SGMA PWTR        
+  621     960408/0000F024                       9700  9900   SGMA LIFT        
+  622     960408/0000F024                       9700  10000  SGMA TMPK        
+  623     960408/0000F024                       9700  10000  SGMA RELH        
+  624     960408/0000F024                       9700  10000  SGMA UREL        
+  625     960408/0000F024                       9700  10000  SGMA VREL        
+  626     960408/0000F024                       9400  9700   SGMA TMPK        
+  627     960408/0000F024                       9400  9700   SGMA RELH        
+  628     960408/0000F024                       9400  9700   SGMA UREL        
+  629     960408/0000F024                       9400  9700   SGMA VREL        
+  630     960408/0000F024                       9100  9400   SGMA TMPK        
+  631     960408/0000F024                       9100  9400   SGMA RELH        
+  632     960408/0000F024                       9100  9400   SGMA UREL        
+  633     960408/0000F024                       9100  9400   SGMA VREL        
+  634     960408/0000F024                       8800  9100   SGMA TMPK        
+  635     960408/0000F024                       8800  9100   SGMA RELH        
+  636     960408/0000F024                       8800  9100   SGMA UREL        
+  637     960408/0000F024                       8500  8800   SGMA TMPK        
+  638     960408/0000F024                       8500  8800   SGMA RELH        
+  639     960408/0000F024                       8500  8800   SGMA UREL        
+  640     960408/0000F024                       8500  8800   SGMA VREL        
+  641     960408/0000F024                       8400  9800   SGMA LFT4        
+  642     960408/0000F024                       8400  9800   SGMA CAPE        
+  643     960408/0000F024                       8400  9800   SGMA CINS        
+  644     960408/0000F024                       3000  0      HGHT HELC        
+  645     960408/0000F024                         10         HGHT UREL        
+  646     960408/0000F024                         10         HGHT VREL        
+  647     960408/0000F024                          2         HGHT TMPK        
+  648     960408/0000F024                          2         HGHT RELH        
+  649     960408/0000F024                          0         PRES PRES        
+  650     960408/0000F024                          0         PRES P12M        
+  651     960408/0000F024                          0         PRES C12M        
+  652     960408/0000F024                          0         PRES EMSL        
+  653     960408/0000F024                          0         PRES CAPE        
+  654     960408/0000F024                          0         PRES CINS        
+  655     960408/0000F024                       1000         PRES OMEGA       
+  656     960408/0000F024                       1000         PRES HGHT        
+  657     960408/0000F024                       1000         PRES TMPK        
+  658     960408/0000F024                       1000         PRES UREL        
+  659     960408/0000F024                       1000         PRES VREL        
+  660     960408/0000F024                       1000         PRES RELH        
+  661     960408/0000F024                       1000         PRES AVOR        
+  662     960408/0000F024                        950         PRES OMEGA       
+  663     960408/0000F024                        950         PRES HGHT        
+  664     960408/0000F024                        950         PRES TMPK        
+  665     960408/0000F024                        950         PRES UREL        
+  666     960408/0000F024                        950         PRES VREL        
+  667     960408/0000F024                        950         PRES RELH        
+  668     960408/0000F024                        900         PRES OMEGA       
+  669     960408/0000F024                        900         PRES HGHT        
+  670     960408/0000F024                        900         PRES TMPK        
+  671     960408/0000F024                        900         PRES UREL        
+  672     960408/0000F024                        900         PRES VREL        
+  673     960408/0000F024                        900         PRES RELH        
+  674     960408/0000F024                        850         PRES OMEGA       
+  675     960408/0000F024                        850         PRES HGHT        
+  676     960408/0000F024                        850         PRES TMPK        
+  677     960408/0000F024                        850         PRES UREL        
+  678     960408/0000F024                        850         PRES VREL        
+  679     960408/0000F024                        850         PRES RELH        
+  680     960408/0000F024                        850         PRES AVOR        
+  681     960408/0000F024                        800         PRES OMEGA       
+  682     960408/0000F024                        800         PRES HGHT        
+  683     960408/0000F024                        800         PRES TMPK        
+  684     960408/0000F024                        800         PRES UREL        
+  685     960408/0000F024                        800         PRES VREL        
+  686     960408/0000F024                        800         PRES RELH        
+  687     960408/0000F024                        750         PRES OMEGA       
+  688     960408/0000F024                        750         PRES HGHT        
+  689     960408/0000F024                        750         PRES TMPK        
+  690     960408/0000F024                        750         PRES UREL        
+  691     960408/0000F024                        750         PRES VREL        
+  692     960408/0000F024                        750         PRES RELH        
+  693     960408/0000F024                        700         PRES OMEGA       
+  694     960408/0000F024                        700         PRES HGHT        
+  695     960408/0000F024                        700         PRES TMPK        
+  696     960408/0000F024                        700         PRES UREL        
+  697     960408/0000F024                        700         PRES VREL        
+  698     960408/0000F024                        700         PRES RELH        
+  699     960408/0000F024                        700         PRES AVOR        
+  700     960408/0000F024                        650         PRES OMEGA       
+  701     960408/0000F024                        650         PRES HGHT        
+  702     960408/0000F024                        650         PRES TMPK        
+  703     960408/0000F024                        650         PRES UREL        
+  704     960408/0000F024                        650         PRES VREL        
+  705     960408/0000F024                        650         PRES RELH        
+  706     960408/0000F024                        600         PRES OMEGA       
+  707     960408/0000F024                        600         PRES HGHT        
+  708     960408/0000F024                        600         PRES TMPK        
+  709     960408/0000F024                        600         PRES UREL        
+  710     960408/0000F024                        600         PRES VREL        
+  711     960408/0000F024                        600         PRES RELH        
+  712     960408/0000F024                        550         PRES OMEGA       
+  713     960408/0000F024                        550         PRES HGHT        
+  714     960408/0000F024                        550         PRES TMPK        
+  715     960408/0000F024                        550         PRES UREL        
+  716     960408/0000F024                        550         PRES VREL        
+  717     960408/0000F024                        550         PRES RELH        
+  718     960408/0000F024                        500         PRES OMEGA       
+  719     960408/0000F024                        500         PRES HGHT        
+  720     960408/0000F024                        500         PRES TMPK        
+  721     960408/0000F024                        500         PRES UREL        
+  722     960408/0000F024                        500         PRES VREL        
+  723     960408/0000F024                        500         PRES RELH        
+  724     960408/0000F024                        500         PRES AVOR        
+  725     960408/0000F024                        450         PRES OMEGA       
+  726     960408/0000F024                        450         PRES HGHT        
+  727     960408/0000F024                        450         PRES TMPK        
+  728     960408/0000F024                        450         PRES UREL        
+  729     960408/0000F024                        450         PRES VREL        
+  730     960408/0000F024                        450         PRES RELH        
+  731     960408/0000F024                        400         PRES OMEGA       
+  732     960408/0000F024                        400         PRES HGHT        
+  733     960408/0000F024                        400         PRES TMPK        
+  734     960408/0000F024                        400         PRES UREL        
+  735     960408/0000F024                        400         PRES VREL        
+  736     960408/0000F024                        400         PRES RELH        
+  737     960408/0000F024                        350         PRES OMEGA       
+  738     960408/0000F024                        350         PRES HGHT        
+  739     960408/0000F024                        350         PRES TMPK        
+  740     960408/0000F024                        350         PRES UREL        
+  741     960408/0000F024                        350         PRES VREL        
+  742     960408/0000F024                        350         PRES RELH        
+  743     960408/0000F024                        300         PRES OMEGA       
+  744     960408/0000F024                        300         PRES HGHT        
+  745     960408/0000F024                        300         PRES TMPK        
+  746     960408/0000F024                        300         PRES UREL        
+  747     960408/0000F024                        300         PRES VREL        
+  748     960408/0000F024                        300         PRES RELH        
+  749     960408/0000F024                        250         PRES OMEGA       
+  750     960408/0000F024                        250         PRES HGHT        
+  751     960408/0000F024                        250         PRES TMPK        
+  752     960408/0000F024                        250         PRES UREL        
+  753     960408/0000F024                        250         PRES VREL        
+  754     960408/0000F024                        250         PRES RELH        
+  755     960408/0000F024                        250         PRES AVOR        
+  756     960408/0000F024                        200         PRES OMEGA       
+  757     960408/0000F024                        200         PRES HGHT        
+  758     960408/0000F024                        200         PRES TMPK        
+  759     960408/0000F024                        200         PRES UREL        
+  760     960408/0000F024                        200         PRES VREL        
+  761     960408/0000F024                        200         PRES RELH        
+  762     960408/0000F024                        150         PRES OMEGA       
+  763     960408/0000F024                        150         PRES HGHT        
+  764     960408/0000F024                        150         PRES TMPK        
+  765     960408/0000F024                        150         PRES UREL        
+  766     960408/0000F024                        150         PRES VREL        
+  767     960408/0000F024                        150         PRES RELH        
+  768     960408/0000F024                        100         PRES OMEGA       
+  769     960408/0000F024                        100         PRES HGHT        
+  770     960408/0000F024                        100         PRES TMPK        
+  771     960408/0000F024                        100         PRES UREL        
+  772     960408/0000F024                        100         PRES VREL        
+  773     960408/0000F024                        100         PRES RELH        
+  774     960408/0000F030                          0  10000  SGMA PWTR        
+  775     960408/0000F030                       9700  9900   SGMA LIFT        
+  776     960408/0000F030                       9700  10000  SGMA TMPK        
+  777     960408/0000F030                       9700  10000  SGMA RELH        
+  778     960408/0000F030                       9700  10000  SGMA UREL        
+  779     960408/0000F030                       9700  10000  SGMA VREL        
+  780     960408/0000F030                       9400  9700   SGMA TMPK        
+  781     960408/0000F030                       9400  9700   SGMA RELH        
+  782     960408/0000F030                       9400  9700   SGMA UREL        
+  783     960408/0000F030                       9400  9700   SGMA VREL        
+  784     960408/0000F030                       9100  9400   SGMA TMPK        
+  785     960408/0000F030                       9100  9400   SGMA RELH        
+  786     960408/0000F030                       9100  9400   SGMA UREL        
+  787     960408/0000F030                       9100  9400   SGMA VREL        
+  788     960408/0000F030                       8800  9100   SGMA TMPK        
+  789     960408/0000F030                       8800  9100   SGMA RELH        
+  790     960408/0000F030                       8800  9100   SGMA UREL        
+  791     960408/0000F030                       8800  9100   SGMA VREL        
+  792     960408/0000F030                       8500  8800   SGMA TMPK        
+  793     960408/0000F030                       8500  8800   SGMA RELH        
+  794     960408/0000F030                       8500  8800   SGMA UREL        
+  795     960408/0000F030                       8500  8800   SGMA VREL        
+  796     960408/0000F030                       8400  9800   SGMA LFT4        
+  797     960408/0000F030                       8400  9800   SGMA CAPE        
+  798     960408/0000F030                       8400  9800   SGMA CINS        
+  799     960408/0000F030                       3000  0      HGHT HELC        
+  800     960408/0000F030                         10         HGHT UREL        
+  801     960408/0000F030                         10         HGHT VREL        
+  802     960408/0000F030                          2         HGHT TMPK        
+  803     960408/0000F030                          2         HGHT RELH        
+  804     960408/0000F030                          0         PRES PRES        
+  805     960408/0000F030                          0         PRES P06M        
+  806     960408/0000F030                          0         PRES C06M        
+  807     960408/0000F030                          0         PRES EMSL        
+  808     960408/0000F030                          0         PRES CAPE        
+  809     960408/0000F030                          0         PRES CINS        
+  810     960408/0000F030                       1000         PRES OMEGA       
+  811     960408/0000F030                       1000         PRES HGHT        
+  812     960408/0000F030                       1000         PRES TMPK        
+  813     960408/0000F030                       1000         PRES UREL        
+  814     960408/0000F030                       1000         PRES VREL        
+  815     960408/0000F030                       1000         PRES RELH        
+  816     960408/0000F030                       1000         PRES AVOR        
+  817     960408/0000F030                        950         PRES OMEGA       
+  818     960408/0000F030                        950         PRES HGHT        
+  819     960408/0000F030                        950         PRES TMPK        
+  820     960408/0000F030                        950         PRES UREL        
+  821     960408/0000F030                        950         PRES VREL        
+  822     960408/0000F030                        950         PRES RELH        
+  823     960408/0000F030                        900         PRES OMEGA       
+  824     960408/0000F030                        900         PRES HGHT        
+  825     960408/0000F030                        900         PRES TMPK        
+  826     960408/0000F030                        900         PRES UREL        
+  827     960408/0000F030                        900         PRES VREL        
+  828     960408/0000F030                        900         PRES RELH        
+  829     960408/0000F030                        850         PRES OMEGA       
+  830     960408/0000F030                        850         PRES HGHT        
+  831     960408/0000F030                        850         PRES TMPK        
+  832     960408/0000F030                        850         PRES UREL        
+  833     960408/0000F030                        850         PRES VREL        
+  834     960408/0000F030                        850         PRES RELH        
+  835     960408/0000F030                        850         PRES AVOR        
+  836     960408/0000F030                        800         PRES OMEGA       
+  837     960408/0000F030                        800         PRES HGHT        
+  838     960408/0000F030                        800         PRES TMPK        
+  839     960408/0000F030                        800         PRES UREL        
+  840     960408/0000F030                        800         PRES VREL        
+  841     960408/0000F030                        800         PRES RELH        
+  842     960408/0000F030                        750         PRES OMEGA       
+  843     960408/0000F030                        750         PRES HGHT        
+  844     960408/0000F030                        750         PRES TMPK        
+  845     960408/0000F030                        750         PRES UREL        
+  846     960408/0000F030                        750         PRES VREL        
+  847     960408/0000F030                        750         PRES RELH        
+  848     960408/0000F030                        700         PRES OMEGA       
+  849     960408/0000F030                        700         PRES HGHT        
+  850     960408/0000F030                        700         PRES TMPK        
+  851     960408/0000F030                        700         PRES UREL        
+  852     960408/0000F030                        700         PRES VREL        
+  853     960408/0000F030                        700         PRES RELH        
+  854     960408/0000F030                        700         PRES AVOR        
+  855     960408/0000F030                        650         PRES OMEGA       
+  856     960408/0000F030                        650         PRES HGHT        
+  857     960408/0000F030                        650         PRES TMPK        
+  858     960408/0000F030                        650         PRES UREL        
+  859     960408/0000F030                        650         PRES VREL        
+  860     960408/0000F030                        650         PRES RELH        
+  861     960408/0000F030                        600         PRES OMEGA       
+  862     960408/0000F030                        600         PRES HGHT        
+  863     960408/0000F030                        600         PRES TMPK        
+  864     960408/0000F030                        600         PRES UREL        
+  865     960408/0000F030                        600         PRES VREL        
+  866     960408/0000F030                        600         PRES RELH        
+  867     960408/0000F030                        550         PRES OMEGA       
+  868     960408/0000F030                        550         PRES HGHT        
+  869     960408/0000F030                        550         PRES TMPK        
+  870     960408/0000F030                        550         PRES UREL        
+  871     960408/0000F030                        550         PRES VREL        
+  872     960408/0000F030                        550         PRES RELH        
+  873     960408/0000F030                        500         PRES OMEGA       
+  874     960408/0000F030                        500         PRES HGHT        
+  875     960408/0000F030                        500         PRES TMPK        
+  876     960408/0000F030                        500         PRES UREL        
+  877     960408/0000F030                        500         PRES VREL        
+  878     960408/0000F030                        500         PRES RELH        
+  879     960408/0000F030                        500         PRES AVOR        
+  880     960408/0000F030                        450         PRES OMEGA       
+  881     960408/0000F030                        450         PRES HGHT        
+  882     960408/0000F030                        450         PRES TMPK        
+  883     960408/0000F030                        450         PRES UREL        
+  884     960408/0000F030                        450         PRES VREL        
+  885     960408/0000F030                        450         PRES RELH        
+  886     960408/0000F030                        400         PRES OMEGA       
+  887     960408/0000F030                        400         PRES HGHT        
+  888     960408/0000F030                        400         PRES TMPK        
+  889     960408/0000F030                        400         PRES UREL        
+  890     960408/0000F030                        400         PRES VREL        
+  891     960408/0000F030                        400         PRES RELH        
+  892     960408/0000F030                        350         PRES OMEGA       
+  893     960408/0000F030                        350         PRES HGHT        
+  894     960408/0000F030                        350         PRES TMPK        
+  895     960408/0000F030                        350         PRES UREL        
+  896     960408/0000F030                        350         PRES VREL        
+  897     960408/0000F030                        350         PRES RELH        
+  898     960408/0000F030                        300         PRES OMEGA       
+  899     960408/0000F030                        300         PRES HGHT        
+  900     960408/0000F030                        300         PRES TMPK        
+  901     960408/0000F030                        300         PRES UREL        
+  902     960408/0000F030                        300         PRES VREL        
+  903     960408/0000F030                        300         PRES RELH        
+  904     960408/0000F030                        250         PRES OMEGA       
+  905     960408/0000F030                        250         PRES HGHT        
+  906     960408/0000F030                        250         PRES TMPK        
+  907     960408/0000F030                        250         PRES UREL        
+  908     960408/0000F030                        250         PRES VREL        
+  909     960408/0000F030                        250         PRES RELH        
+  910     960408/0000F030                        250         PRES AVOR        
+  911     960408/0000F030                        200         PRES OMEGA       
+  912     960408/0000F030                        200         PRES HGHT        
+  913     960408/0000F030                        200         PRES TMPK        
+  914     960408/0000F030                        200         PRES UREL        
+  915     960408/0000F030                        200         PRES VREL        
+  916     960408/0000F030                        200         PRES RELH        
+  917     960408/0000F030                        150         PRES OMEGA       
+  918     960408/0000F030                        150         PRES HGHT        
+  919     960408/0000F030                        150         PRES TMPK        
+  920     960408/0000F030                        150         PRES UREL        
+  921     960408/0000F030                        150         PRES VREL        
+  922     960408/0000F030                        150         PRES RELH        
+  923     960408/0000F030                        100         PRES OMEGA       
+  924     960408/0000F030                        100         PRES HGHT        
+  925     960408/0000F030                        100         PRES TMPK        
+  926     960408/0000F030                        100         PRES UREL        
+  927     960408/0000F030                        100         PRES VREL        
+  928     960408/0000F030                        100         PRES RELH        
+  929     960408/0000F036                          0  10000  SGMA PWTR        
+  930     960408/0000F036                       9700  9900   SGMA LIFT        
+  931     960408/0000F036                       9700  10000  SGMA TMPK        
+  932     960408/0000F036                       9700  10000  SGMA RELH        
+  933     960408/0000F036                       9700  10000  SGMA UREL        
+  934     960408/0000F036                       9700  10000  SGMA VREL        
+  935     960408/0000F036                       9400  9700   SGMA TMPK        
+  936     960408/0000F036                       9400  9700   SGMA RELH        
+  937     960408/0000F036                       9400  9700   SGMA UREL        
+  938     960408/0000F036                       9400  9700   SGMA VREL        
+  939     960408/0000F036                       9100  9400   SGMA TMPK        
+  940     960408/0000F036                       9100  9400   SGMA RELH        
+  941     960408/0000F036                       9100  9400   SGMA UREL        
+  942     960408/0000F036                       9100  9400   SGMA VREL        
+  943     960408/0000F036                       8800  9100   SGMA TMPK        
+  944     960408/0000F036                       8800  9100   SGMA RELH        
+  945     960408/0000F036                       8800  9100   SGMA UREL        
+  946     960408/0000F036                       8800  9100   SGMA VREL        
+  947     960408/0000F036                       8500  8800   SGMA TMPK        
+  948     960408/0000F036                       8500  8800   SGMA RELH        
+  949     960408/0000F036                       8500  8800   SGMA UREL        
+  950     960408/0000F036                       8500  8800   SGMA VREL        
+  951     960408/0000F036                       8400  9800   SGMA LFT4        
+  952     960408/0000F036                       8400  9800   SGMA CAPE        
+  953     960408/0000F036                       8400  9800   SGMA CINS        
+  954     960408/0000F036                       3000  0      HGHT HELC        
+  955     960408/0000F036                         10         HGHT UREL        
+  956     960408/0000F036                         10         HGHT VREL        
+  957     960408/0000F036                          2         HGHT TMPK        
+  958     960408/0000F036                          2         HGHT RELH        
+  959     960408/0000F036                          0         PRES PRES        
+  960     960408/0000F036                          0         PRES P12M        
+  961     960408/0000F036                          0         PRES C12M        
+  962     960408/0000F036                          0         PRES EMSL        
+  963     960408/0000F036                          0         PRES CAPE        
+  964     960408/0000F036                          0         PRES CINS        
+  965     960408/0000F036                       1000         PRES OMEGA       
+  966     960408/0000F036                       1000         PRES HGHT        
+  967     960408/0000F036                       1000         PRES TMPK        
+  968     960408/0000F036                       1000         PRES UREL        
+  969     960408/0000F036                       1000         PRES VREL        
+  970     960408/0000F036                       1000         PRES RELH        
+  971     960408/0000F036                       1000         PRES AVOR        
+  972     960408/0000F036                        950         PRES OMEGA       
+  973     960408/0000F036                        950         PRES HGHT        
+  974     960408/0000F036                        950         PRES TMPK        
+  975     960408/0000F036                        950         PRES UREL        
+  976     960408/0000F036                        950         PRES VREL        
+  977     960408/0000F036                        950         PRES RELH        
+  978     960408/0000F036                        900         PRES OMEGA       
+  979     960408/0000F036                        900         PRES HGHT        
+  980     960408/0000F036                        900         PRES TMPK        
+  981     960408/0000F036                        900         PRES UREL        
+  982     960408/0000F036                        900         PRES VREL        
+  983     960408/0000F036                        900         PRES RELH        
+  984     960408/0000F036                        850         PRES OMEGA       
+  985     960408/0000F036                        850         PRES HGHT        
+  986     960408/0000F036                        850         PRES TMPK        
+  987     960408/0000F036                        850         PRES UREL        
+  988     960408/0000F036                        850         PRES VREL        
+  989     960408/0000F036                        850         PRES RELH        
+  990     960408/0000F036                        850         PRES AVOR        
+  991     960408/0000F036                        800         PRES OMEGA       
+  992     960408/0000F036                        800         PRES HGHT        
+  993     960408/0000F036                        800         PRES TMPK        
+  994     960408/0000F036                        800         PRES UREL        
+  995     960408/0000F036                        800         PRES VREL        
+  996     960408/0000F036                        800         PRES RELH        
+  997     960408/0000F036                        750         PRES OMEGA       
+  998     960408/0000F036                        750         PRES HGHT        
+  999     960408/0000F036                        750         PRES TMPK        
+ 1000     960408/0000F036                        750         PRES UREL        
+ 1001     960408/0000F036                        750         PRES VREL        
+ 1002     960408/0000F036                        750         PRES RELH        
+ 1003     960408/0000F036                        700         PRES OMEGA       
+ 1004     960408/0000F036                        700         PRES HGHT        
+ 1005     960408/0000F036                        700         PRES TMPK        
+ 1006     960408/0000F036                        700         PRES UREL        
+ 1007     960408/0000F036                        700         PRES VREL        
+ 1008     960408/0000F036                        700         PRES RELH        
+ 1009     960408/0000F036                        700         PRES AVOR        
+ 1010     960408/0000F036                        650         PRES OMEGA       
+ 1011     960408/0000F036                        650         PRES HGHT        
+ 1012     960408/0000F036                        650         PRES TMPK        
+ 1013     960408/0000F036                        650         PRES UREL        
+ 1014     960408/0000F036                        650         PRES VREL        
+ 1015     960408/0000F036                        650         PRES RELH        
+ 1016     960408/0000F036                        600         PRES OMEGA       
+ 1017     960408/0000F036                        600         PRES HGHT        
+ 1018     960408/0000F036                        600         PRES TMPK        
+ 1019     960408/0000F036                        600         PRES UREL        
+ 1020     960408/0000F036                        600         PRES VREL        
+ 1021     960408/0000F036                        600         PRES RELH        
+ 1022     960408/0000F036                        550         PRES OMEGA       
+ 1023     960408/0000F036                        550         PRES HGHT        
+ 1024     960408/0000F036                        550         PRES TMPK        
+ 1025     960408/0000F036                        550         PRES UREL        
+ 1026     960408/0000F036                        550         PRES VREL        
+ 1027     960408/0000F036                        550         PRES RELH        
+ 1028     960408/0000F036                        500         PRES OMEGA       
+ 1029     960408/0000F036                        500         PRES HGHT        
+ 1030     960408/0000F036                        500         PRES TMPK        
+ 1031     960408/0000F036                        500         PRES UREL        
+ 1032     960408/0000F036                        500         PRES VREL        
+ 1033     960408/0000F036                        500         PRES RELH        
+ 1034     960408/0000F036                        500         PRES AVOR        
+ 1035     960408/0000F036                        450         PRES OMEGA       
+ 1036     960408/0000F036                        450         PRES HGHT        
+ 1037     960408/0000F036                        450         PRES TMPK        
+ 1038     960408/0000F036                        450         PRES UREL        
+ 1039     960408/0000F036                        450         PRES VREL        
+ 1040     960408/0000F036                        450         PRES RELH        
+ 1041     960408/0000F036                        400         PRES OMEGA       
+ 1042     960408/0000F036                        400         PRES HGHT        
+ 1043     960408/0000F036                        400         PRES TMPK        
+ 1044     960408/0000F036                        400         PRES UREL        
+ 1045     960408/0000F036                        400         PRES VREL        
+ 1046     960408/0000F036                        400         PRES RELH        
+ 1047     960408/0000F036                        350         PRES OMEGA       
+ 1048     960408/0000F036                        350         PRES HGHT        
+ 1049     960408/0000F036                        350         PRES TMPK        
+ 1050     960408/0000F036                        350         PRES UREL        
+ 1051     960408/0000F036                        350         PRES VREL        
+ 1052     960408/0000F036                        350         PRES RELH        
+ 1053     960408/0000F036                        300         PRES OMEGA       
+ 1054     960408/0000F036                        300         PRES HGHT        
+ 1055     960408/0000F036                        300         PRES TMPK        
+ 1056     960408/0000F036                        300         PRES UREL        
+ 1057     960408/0000F036                        300         PRES VREL        
+ 1058     960408/0000F036                        300         PRES RELH        
+ 1059     960408/0000F036                        250         PRES OMEGA       
+ 1060     960408/0000F036                        250         PRES HGHT        
+ 1061     960408/0000F036                        250         PRES TMPK        
+ 1062     960408/0000F036                        250         PRES UREL        
+ 1063     960408/0000F036                        250         PRES VREL        
+ 1064     960408/0000F036                        250         PRES RELH        
+ 1065     960408/0000F036                        250         PRES AVOR        
+ 1066     960408/0000F036                        200         PRES OMEGA       
+ 1067     960408/0000F036                        200         PRES HGHT        
+ 1068     960408/0000F036                        200         PRES TMPK        
+ 1069     960408/0000F036                        200         PRES UREL        
+ 1070     960408/0000F036                        200         PRES VREL        
+ 1071     960408/0000F036                        200         PRES RELH        
+ 1072     960408/0000F036                        150         PRES OMEGA       
+ 1073     960408/0000F036                        150         PRES HGHT        
+ 1074     960408/0000F036                        150         PRES TMPK        
+ 1075     960408/0000F036                        150         PRES UREL        
+ 1076     960408/0000F036                        150         PRES VREL        
+ 1077     960408/0000F036                        150         PRES RELH        
+ 1078     960408/0000F036                        100         PRES OMEGA       
+ 1079     960408/0000F036                        100         PRES HGHT        
+ 1080     960408/0000F036                        100         PRES TMPK        
+ 1081     960408/0000F036                        100         PRES UREL        
+ 1082     960408/0000F036                        100         PRES VREL        
+ 1083     960408/0000F036                        100         PRES RELH        
+ 1084     960408/0000F042                          0  10000  SGMA PWTR        
+ 1085     960408/0000F042                       9700  9900   SGMA LIFT        
+ 1086     960408/0000F042                       9700  10000  SGMA TMPK        
+ 1087     960408/0000F042                       9700  10000  SGMA RELH        
+ 1088     960408/0000F042                       9700  10000  SGMA UREL        
+ 1089     960408/0000F042                       9700  10000  SGMA VREL        
+ 1090     960408/0000F042                       9400  9700   SGMA TMPK        
+ 1091     960408/0000F042                       9400  9700   SGMA RELH        
+ 1092     960408/0000F042                       9400  9700   SGMA UREL        
+ 1093     960408/0000F042                       9400  9700   SGMA VREL        
+ 1094     960408/0000F042                       9100  9400   SGMA TMPK        
+ 1095     960408/0000F042                       9100  9400   SGMA RELH        
+ 1096     960408/0000F042                       9100  9400   SGMA UREL        
+ 1097     960408/0000F042                       9100  9400   SGMA VREL        
+ 1098     960408/0000F042                       8800  9100   SGMA TMPK        
+ 1099     960408/0000F042                       8800  9100   SGMA RELH        
+ 1100     960408/0000F042                       8800  9100   SGMA UREL        
+ 1101     960408/0000F042                       8800  9100   SGMA VREL        
+ 1102     960408/0000F042                       8500  8800   SGMA TMPK        
+ 1103     960408/0000F042                       8500  8800   SGMA RELH        
+ 1104     960408/0000F042                       8500  8800   SGMA UREL        
+ 1105     960408/0000F042                       8500  8800   SGMA VREL        
+ 1106     960408/0000F042                       8400  9800   SGMA LFT4        
+ 1107     960408/0000F042                       8400  9800   SGMA CAPE        
+ 1108     960408/0000F042                       8400  9800   SGMA CINS        
+ 1109     960408/0000F042                       3000  0      HGHT HELC        
+ 1110     960408/0000F042                         10         HGHT UREL        
+ 1111     960408/0000F042                         10         HGHT VREL        
+ 1112     960408/0000F042                          2         HGHT TMPK        
+ 1113     960408/0000F042                          2         HGHT RELH        
+ 1114     960408/0000F042                          0         PRES PRES        
+ 1115     960408/0000F042                          0         PRES P06M        
+ 1116     960408/0000F042                          0         PRES C06M        
+ 1117     960408/0000F042                          0         PRES EMSL        
+ 1118     960408/0000F042                          0         PRES CAPE        
+ 1119     960408/0000F042                          0         PRES CINS        
+ 1120     960408/0000F042                       1000         PRES OMEGA       
+ 1121     960408/0000F042                       1000         PRES HGHT        
+ 1122     960408/0000F042                       1000         PRES TMPK        
+ 1123     960408/0000F042                       1000         PRES UREL        
+ 1124     960408/0000F042                       1000         PRES VREL        
+ 1125     960408/0000F042                       1000         PRES RELH        
+ 1126     960408/0000F042                       1000         PRES AVOR        
+ 1127     960408/0000F042                        950         PRES OMEGA       
+ 1128     960408/0000F042                        950         PRES HGHT        
+ 1129     960408/0000F042                        950         PRES TMPK        
+ 1130     960408/0000F042                        950         PRES UREL        
+ 1131     960408/0000F042                        950         PRES VREL        
+ 1132     960408/0000F042                        950         PRES RELH        
+ 1133     960408/0000F042                        900         PRES OMEGA       
+ 1134     960408/0000F042                        900         PRES HGHT        
+ 1135     960408/0000F042                        900         PRES TMPK        
+ 1136     960408/0000F042                        900         PRES UREL        
+ 1137     960408/0000F042                        900         PRES VREL        
+ 1138     960408/0000F042                        900         PRES RELH        
+ 1139     960408/0000F042                        850         PRES OMEGA       
+ 1140     960408/0000F042                        850         PRES HGHT        
+ 1141     960408/0000F042                        850         PRES TMPK        
+ 1142     960408/0000F042                        850         PRES UREL        
+ 1143     960408/0000F042                        850         PRES VREL        
+ 1144     960408/0000F042                        850         PRES RELH        
+ 1145     960408/0000F042                        850         PRES AVOR        
+ 1146     960408/0000F042                        800         PRES OMEGA       
+ 1147     960408/0000F042                        800         PRES HGHT        
+ 1148     960408/0000F042                        800         PRES TMPK        
+ 1149     960408/0000F042                        800         PRES UREL        
+ 1150     960408/0000F042                        800         PRES VREL        
+ 1151     960408/0000F042                        800         PRES RELH        
+ 1152     960408/0000F042                        750         PRES OMEGA       
+ 1153     960408/0000F042                        750         PRES HGHT        
+ 1154     960408/0000F042                        750         PRES TMPK        
+ 1155     960408/0000F042                        750         PRES UREL        
+ 1156     960408/0000F042                        750         PRES VREL        
+ 1157     960408/0000F042                        750         PRES RELH        
+ 1158     960408/0000F042                        700         PRES OMEGA       
+ 1159     960408/0000F042                        700         PRES HGHT        
+ 1160     960408/0000F042                        700         PRES TMPK        
+ 1161     960408/0000F042                        700         PRES UREL        
+ 1162     960408/0000F042                        700         PRES VREL        
+ 1163     960408/0000F042                        700         PRES RELH        
+ 1164     960408/0000F042                        700         PRES AVOR        
+ 1165     960408/0000F042                        650         PRES OMEGA       
+ 1166     960408/0000F042                        650         PRES HGHT        
+ 1167     960408/0000F042                        650         PRES TMPK        
+ 1168     960408/0000F042                        650         PRES UREL        
+ 1169     960408/0000F042                        650         PRES VREL        
+ 1170     960408/0000F042                        650         PRES RELH        
+ 1171     960408/0000F042                        600         PRES OMEGA       
+ 1172     960408/0000F042                        600         PRES HGHT        
+ 1173     960408/0000F042                        600         PRES TMPK        
+ 1174     960408/0000F042                        600         PRES UREL        
+ 1175     960408/0000F042                        600         PRES VREL        
+ 1176     960408/0000F042                        600         PRES RELH        
+ 1177     960408/0000F042                        550         PRES OMEGA       
+ 1178     960408/0000F042                        550         PRES HGHT        
+ 1179     960408/0000F042                        550         PRES TMPK        
+ 1180     960408/0000F042                        550         PRES UREL        
+ 1181     960408/0000F042                        550         PRES VREL        
+ 1182     960408/0000F042                        550         PRES RELH        
+ 1183     960408/0000F042                        500         PRES OMEGA       
+ 1184     960408/0000F042                        500         PRES HGHT        
+ 1185     960408/0000F042                        500         PRES TMPK        
+ 1186     960408/0000F042                        500         PRES UREL        
+ 1187     960408/0000F042                        500         PRES VREL        
+ 1188     960408/0000F042                        500         PRES RELH        
+ 1189     960408/0000F042                        500         PRES AVOR        
+ 1190     960408/0000F042                        450         PRES OMEGA       
+ 1191     960408/0000F042                        450         PRES HGHT        
+ 1192     960408/0000F042                        450         PRES TMPK        
+ 1193     960408/0000F042                        450         PRES UREL        
+ 1194     960408/0000F042                        450         PRES VREL        
+ 1195     960408/0000F042                        450         PRES RELH        
+ 1196     960408/0000F042                        400         PRES OMEGA       
+ 1197     960408/0000F042                        400         PRES HGHT        
+ 1198     960408/0000F042                        400         PRES TMPK        
+ 1199     960408/0000F042                        400         PRES UREL        
+ 1200     960408/0000F042                        400         PRES VREL        
+ 1201     960408/0000F042                        400         PRES RELH        
+ 1202     960408/0000F042                        350         PRES OMEGA       
+ 1203     960408/0000F042                        350         PRES HGHT        
+ 1204     960408/0000F042                        350         PRES TMPK        
+ 1205     960408/0000F042                        350         PRES UREL        
+ 1206     960408/0000F042                        350         PRES VREL        
+ 1207     960408/0000F042                        350         PRES RELH        
+ 1208     960408/0000F042                        300         PRES OMEGA       
+ 1209     960408/0000F042                        300         PRES HGHT        
+ 1210     960408/0000F042                        300         PRES TMPK        
+ 1211     960408/0000F042                        300         PRES UREL        
+ 1212     960408/0000F042                        300         PRES VREL        
+ 1213     960408/0000F042                        300         PRES RELH        
+ 1214     960408/0000F042                        250         PRES OMEGA       
+ 1215     960408/0000F042                        250         PRES HGHT        
+ 1216     960408/0000F042                        250         PRES TMPK        
+ 1217     960408/0000F042                        250         PRES UREL        
+ 1218     960408/0000F042                        250         PRES VREL        
+ 1219     960408/0000F042                        250         PRES RELH        
+ 1220     960408/0000F042                        250         PRES AVOR        
+ 1221     960408/0000F042                        200         PRES OMEGA       
+ 1222     960408/0000F042                        200         PRES HGHT        
+ 1223     960408/0000F042                        200         PRES TMPK        
+ 1224     960408/0000F042                        200         PRES UREL        
+ 1225     960408/0000F042                        200         PRES VREL        
+ 1226     960408/0000F042                        200         PRES RELH        
+ 1227     960408/0000F042                        150         PRES OMEGA       
+ 1228     960408/0000F042                        150         PRES HGHT        
+ 1229     960408/0000F042                        150         PRES TMPK        
+ 1230     960408/0000F042                        150         PRES UREL        
+ 1231     960408/0000F042                        150         PRES VREL        
+ 1232     960408/0000F042                        150         PRES RELH        
+ 1233     960408/0000F042                        100         PRES OMEGA       
+ 1234     960408/0000F042                        100         PRES HGHT        
+ 1235     960408/0000F042                        100         PRES TMPK        
+ 1236     960408/0000F042                        100         PRES UREL        
+ 1237     960408/0000F042                        100         PRES VREL        
+ 1238     960408/0000F042                        100         PRES RELH        
+ 1239     960408/0000F048                          0  10000  SGMA PWTR        
+ 1240     960408/0000F048                       9700  9900   SGMA LIFT        
+ 1241     960408/0000F048                       9700  10000  SGMA TMPK        
+ 1242     960408/0000F048                       9700  10000  SGMA RELH        
+ 1243     960408/0000F048                       9700  10000  SGMA UREL        
+ 1244     960408/0000F048                       9700  10000  SGMA VREL        
+ 1245     960408/0000F048                       9400  9700   SGMA TMPK        
+ 1246     960408/0000F048                       9400  9700   SGMA RELH        
+ 1247     960408/0000F048                       9400  9700   SGMA UREL        
+ 1248     960408/0000F048                       9400  9700   SGMA VREL        
+ 1249     960408/0000F048                       9100  9400   SGMA TMPK        
+ 1250     960408/0000F048                       9100  9400   SGMA RELH        
+ 1251     960408/0000F048                       9100  9400   SGMA UREL        
+ 1252     960408/0000F048                       9100  9400   SGMA VREL        
+ 1253     960408/0000F048                       8800  9100   SGMA TMPK        
+ 1254     960408/0000F048                       8800  9100   SGMA RELH        
+ 1255     960408/0000F048                       8800  9100   SGMA UREL        
+ 1256     960408/0000F048                       8800  9100   SGMA VREL        
+ 1257     960408/0000F048                       8500  8800   SGMA TMPK        
+ 1258     960408/0000F048                       8500  8800   SGMA RELH        
+ 1259     960408/0000F048                       8500  8800   SGMA UREL        
+ 1260     960408/0000F048                       8500  8800   SGMA VREL        
+ 1261     960408/0000F048                       8400  9800   SGMA LFT4        
+ 1262     960408/0000F048                       8400  9800   SGMA CAPE        
+ 1263     960408/0000F048                       8400  9800   SGMA CINS        
+ 1264     960408/0000F048                       3000  0      HGHT HELC        
+ 1265     960408/0000F048                         10         HGHT UREL        
+ 1266     960408/0000F048                         10         HGHT VREL        
+ 1267     960408/0000F048                          2         HGHT TMPK        
+ 1268     960408/0000F048                          2         HGHT RELH        
+ 1269     960408/0000F048                          0         PRES PRES        
+ 1270     960408/0000F048                          0         PRES P12M        
+ 1271     960408/0000F048                          0         PRES C12M        
+ 1272     960408/0000F048                          0         PRES EMSL        
+ 1273     960408/0000F048                          0         PRES CAPE        
+ 1274     960408/0000F048                          0         PRES CINS        
+ 1275     960408/0000F048                       1000         PRES OMEGA       
+ 1276     960408/0000F048                       1000         PRES HGHT        
+ 1277     960408/0000F048                       1000         PRES TMPK        
+ 1278     960408/0000F048                       1000         PRES UREL        
+ 1279     960408/0000F048                       1000         PRES VREL        
+ 1280     960408/0000F048                       1000         PRES RELH        
+ 1281     960408/0000F048                       1000         PRES AVOR        
+ 1282     960408/0000F048                        950         PRES OMEGA       
+ 1283     960408/0000F048                        950         PRES HGHT        
+ 1284     960408/0000F048                        950         PRES TMPK        
+ 1285     960408/0000F048                        950         PRES UREL        
+ 1286     960408/0000F048                        950         PRES VREL        
+ 1287     960408/0000F048                        950         PRES RELH        
+ 1288     960408/0000F048                        900         PRES OMEGA       
+ 1289     960408/0000F048                        900         PRES HGHT        
+ 1290     960408/0000F048                        900         PRES TMPK        
+ 1291     960408/0000F048                        900         PRES UREL        
+ 1292     960408/0000F048                        900         PRES VREL        
+ 1293     960408/0000F048                        900         PRES RELH        
+ 1294     960408/0000F048                        850         PRES OMEGA       
+ 1295     960408/0000F048                        850         PRES HGHT        
+ 1296     960408/0000F048                        850         PRES TMPK        
+ 1297     960408/0000F048                        850         PRES UREL        
+ 1298     960408/0000F048                        850         PRES VREL        
+ 1299     960408/0000F048                        850         PRES RELH        
+ 1300     960408/0000F048                        800         PRES OMEGA       
+ 1301     960408/0000F048                        800         PRES HGHT        
+ 1302     960408/0000F048                        800         PRES TMPK        
+ 1303     960408/0000F048                        800         PRES UREL        
+ 1304     960408/0000F048                        800         PRES VREL        
+ 1305     960408/0000F048                        800         PRES RELH        
+ 1306     960408/0000F048                        750         PRES OMEGA       
+ 1307     960408/0000F048                        750         PRES HGHT        
+ 1308     960408/0000F048                        750         PRES TMPK        
+ 1309     960408/0000F048                        750         PRES UREL        
+ 1310     960408/0000F048                        750         PRES VREL        
+ 1311     960408/0000F048                        750         PRES RELH        
+ 1312     960408/0000F048                        700         PRES OMEGA       
+ 1313     960408/0000F048                        700         PRES HGHT        
+ 1314     960408/0000F048                        700         PRES TMPK        
+ 1315     960408/0000F048                        700         PRES UREL        
+ 1316     960408/0000F048                        700         PRES VREL        
+ 1317     960408/0000F048                        700         PRES RELH        
+ 1318     960408/0000F048                        700         PRES AVOR        
+ 1319     960408/0000F048                        650         PRES OMEGA       
+ 1320     960408/0000F048                        650         PRES HGHT        
+ 1321     960408/0000F048                        650         PRES TMPK        
+ 1322     960408/0000F048                        650         PRES UREL        
+ 1323     960408/0000F048                        650         PRES VREL        
+ 1324     960408/0000F048                        650         PRES RELH        
+ 1325     960408/0000F048                        600         PRES OMEGA       
+ 1326     960408/0000F048                        600         PRES HGHT        
+ 1327     960408/0000F048                        600         PRES TMPK        
+ 1328     960408/0000F048                        600         PRES UREL        
+ 1329     960408/0000F048                        600         PRES VREL        
+ 1330     960408/0000F048                        600         PRES RELH        
+ 1331     960408/0000F048                        550         PRES OMEGA       
+ 1332     960408/0000F048                        550         PRES HGHT        
+ 1333     960408/0000F048                        550         PRES TMPK        
+ 1334     960408/0000F048                        550         PRES UREL        
+ 1335     960408/0000F048                        550         PRES VREL        
+ 1336     960408/0000F048                        550         PRES RELH        
+ 1337     960408/0000F048                        500         PRES OMEGA       
+ 1338     960408/0000F048                        500         PRES HGHT        
+ 1339     960408/0000F048                        500         PRES TMPK        
+ 1340     960408/0000F048                        500         PRES UREL        
+ 1341     960408/0000F048                        500         PRES VREL        
+ 1342     960408/0000F048                        500         PRES RELH        
+ 1343     960408/0000F048                        500         PRES AVOR        
+ 1344     960408/0000F048                        450         PRES OMEGA       
+ 1345     960408/0000F048                        450         PRES HGHT        
+ 1346     960408/0000F048                        450         PRES TMPK        
+ 1347     960408/0000F048                        450         PRES UREL        
+ 1348     960408/0000F048                        450         PRES VREL        
+ 1349     960408/0000F048                        450         PRES RELH        
+ 1350     960408/0000F048                        400         PRES OMEGA       
+ 1351     960408/0000F048                        400         PRES HGHT        
+ 1352     960408/0000F048                        400         PRES TMPK        
+ 1353     960408/0000F048                        400         PRES UREL        
+ 1354     960408/0000F048                        400         PRES VREL        
+ 1355     960408/0000F048                        400         PRES RELH        
+ 1356     960408/0000F048                        350         PRES OMEGA       
+ 1357     960408/0000F048                        350         PRES HGHT        
+ 1358     960408/0000F048                        350         PRES TMPK        
+ 1359     960408/0000F048                        350         PRES UREL        
+ 1360     960408/0000F048                        350         PRES VREL        
+ 1361     960408/0000F048                        350         PRES RELH        
+ 1362     960408/0000F048                        300         PRES OMEGA       
+ 1363     960408/0000F048                        300         PRES HGHT        
+ 1364     960408/0000F048                        300         PRES TMPK        
+ 1365     960408/0000F048                        300         PRES UREL        
+ 1366     960408/0000F048                        300         PRES VREL        
+ 1367     960408/0000F048                        300         PRES RELH        
+ 1368     960408/0000F048                        250         PRES OMEGA       
+ 1369     960408/0000F048                        250         PRES HGHT        
+ 1370     960408/0000F048                        250         PRES TMPK        
+ 1371     960408/0000F048                        250         PRES UREL        
+ 1372     960408/0000F048                        250         PRES VREL        
+ 1373     960408/0000F048                        250         PRES RELH        
+ 1374     960408/0000F048                        250         PRES AVOR        
+ 1375     960408/0000F048                        200         PRES OMEGA       
+ 1376     960408/0000F048                        200         PRES HGHT        
+ 1377     960408/0000F048                        200         PRES TMPK        
+ 1378     960408/0000F048                        200         PRES UREL        
+ 1379     960408/0000F048                        200         PRES VREL        
+ 1380     960408/0000F048                        200         PRES RELH        
+ 1381     960408/0000F048                        150         PRES OMEGA       
+ 1382     960408/0000F048                        150         PRES HGHT        
+ 1383     960408/0000F048                        150         PRES TMPK        
+ 1384     960408/0000F048                        150         PRES UREL        
+ 1385     960408/0000F048                        150         PRES VREL        
+ 1386     960408/0000F048                        150         PRES RELH        
+ 1387     960408/0000F048                        100         PRES OMEGA       
+ 1388     960408/0000F048                        100         PRES HGHT        
+ 1389     960408/0000F048                        100         PRES TMPK        
+ 1390     960408/0000F048                        100         PRES UREL        
+ 1391     960408/0000F048                        100         PRES VREL        
+ 1392     960408/0000F048                        100         PRES RELH        

@@ -1,0 +1,159 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<LINK REL="StyleSheet" HREF="md.css" TYPE="text/css">
+<title>Adding Grids to NMAP2</title>
+
+</head>
+<body>
+<blockquote><p><a href=/gempak/tutorial/>GEMPAK Online Tutorial</a></p></blockquote>
+<h2>Adding Grids to NMAP2</h2>
+
+<p>Any GEMPAK grid file can be directly read and used by the GDFILE definition in the GD comman line programs.  NMAP2 requires entries in two tables in order for load, view, loop and export new grids.</p>
+
+<p>The <a href="https://www.opc.ncep.noaa.gov/lightning/index.php?basin=atl&amp;sector=n&amp;sat=IR&amp;loop=1#contents">Ocean Prediction Center lightning strike density fields</a> are provided as grib2 and GEMPAK grid files, each with a single grid, parameter name <strong>LTNG</strong>.  Like any GEMPAK grid file they can be directly defined by <strong>GDFILE</strong> in any of the <strong>GD</strong> programs.</p>
+
+<h3>1. <strong>$GEMTBL/nmap/mod_res.tbl</strong></h3>
+
+<p>Using the <a href="opc_lightning_strike_density_grids.html">OPC Lightning Strike Density Grids</a> as an example, each file contains a single grid with parameter name <strong>LTNG</strong>.  For the two restore files provided by OPC, we add entries to <em>mod_res.tbl</em>.</p>
+
+<pre><code>! PRODUCT NAME       PATH/FILENAME                            GROUP    MODELS
+LTNG_DENSITY_CONTOUR $NMAP_RESTORE/stnd/ltng_density_contour  standard opcltng
+LTNG_DENSITY_FILLED  $NMAP_RESTORE/stnd/ltng_density_filled   standard opcltng
+</code></pre>
+
+<p>Unlike <em>datatype.tbl</em>, the columns in <em>mod_res.tbl</em> are not in fixed locations.</p>
+
+<ol>
+<li><code>PRODUCT NAME</code> as it is to appear in NMAP2</li>
+<li><code>PATH/FILENAME</code> is the path to the GEMPAK nts file that NMAP2 will use for this grid.</li>
+<li><code>GROUP</code> name under which the product is to appear</li>
+<li><code>MODELS</code> is a list of models for which this restore file will appear, in this case only one.</li>
+</ol>
+
+
+<p><b>If you want to use an existing restore file</b>, it's as easy as copying the name from another entry in <em>datatype.tbl</em>.</p>
+
+<p><b>If you want to add a restore file</b>, you need to move it to the <code>PATH/FILENAME</code> defined for the grid.</p>
+
+<h3>2. <strong>$GEMTBL/config/datatype.tbl</strong></h3>
+
+<p>The second file to edit is <em>datatype.tbl</em>.  An entry must exist with the same model name as defined in <em>mod_res.tbl</em>. For lightning strike density grids, the <strong>OPCLTNG</strong> entry is:</p>
+
+<pre><code>!FILE TYPE  |PATH                     |FILE TEMPLATE                 |CATEGORY|SUBCAT  |#FRM|RANGE |INTRVL|BIN HRS              |MATCH
+!(12)       |(25)                     |(48)                          |(8)     |(8)     |(4) |(6)   |(6)   |(21)                 |(6)
+!           |                         |                              |        |        |    |             |                     |
+OPCLTNG     $MODEL/opcltng            YYYYMMDDHHNN.30.grd            CAT_GRD  SCAT_ANL    -1    720     1  OFF/0/0               4
+</code></pre>
+
+<p>You can scroll to the right inside the "code window" above to see (and Copy/Paste) the entire table entry.  The columns are fixed, unlike <em>mod_res.tbl</em>, so you must use standard formatting within this file.  Use other entries as a guide when adding a new line.</p>
+
+<ul>
+<li><code>PATH</code> is where the OCP lightning GEMPAK grid files are stored.</li>
+<li><code>FILE TEMPLATE</code> is the format of grid file naming. For example, <strong>YYYYMMDDHHNN.30.grd</strong> for files named <strong>201310172030.30.grd</strong> for 2030 UTC October 17 2013.</li>
+<li><code>CAT_GRD</code> is for NMAP2 grid menus.  <code>SCAT_ANL</code> is for analysis subcategory</li>
+</ul>
+
+
+<h2>Viewing Grids in NMAP2</h2>
+
+<p>After making the above table additions, re-start NMAP2 and open the data loader from <strong>GRID</strong> -> <strong>Others</strong> -> <strong>opcltng</strong> -> date/time -> <strong>standard</strong> -></p>
+
+<p><img src="opcltng_menu1.jpg"></p>
+
+<p>In the data time selection window you will see three times</p>
+
+<p><img src="opcltng_menu2.jpg"></p>
+
+<p>Select <strong>LOAD</strong> and adjust the <strong>Map</strong> to outside North America if there are no visible contours of lightning strike density.</p>
+
+<p><img src="opcltng_filled2.jpg"></p>
+
+<h2>Lightning Strike Density NMAP2 Restore File</h2>
+
+<p>For the above colored plot, <em>$NMAP_RESTORE/stnd/ltng_density_filled</em></p>
+
+<pre><code>!
+! Restore File : ltng_density_filled
+!
+! Log:
+! M.Mainelli/TPC     09/2004  Initial creation
+! J.M.Sienkiewicz/OPC 10/2008 adapted to colors for altimeter wave heights
+! J.M.Sienkiewicz/OPC 2/2013 adapted for display of ltng density 10**3
+!
+    GLEVEL  0
+    GVCORD  none
+    PANEL   0
+    SKIP    0
+    SCALE   3
+    GDPFUN  ltng
+    TYPE    f
+    CONTUR  0
+    CINT
+    LINE
+    FINT    0.10;0.25;0.5;1;2.5;5;7.5;10;15;20;25;30;40;50;60;70;80;90;100;125;150;175;200;225;250
+    FLINE   0;26;24;4;21;22;23;4;20;19;10;9;8;16;15;14;13;31;28;29;30;31;20;13;7;11
+    HILO    0
+    HLSYM   0
+    CLRBAR  1
+    WIND
+    REFVEC
+    TITLE   5/1/~  ltng strike density ( /km**2/min)*10 ** 3
+    TEXT    1/21/1/hw
+    CLEAR   yes
+    STNPLT
+    SATFIL
+    RADFIL
+    STREAM
+    POSN    4
+    COLORS  2
+    MARKER  2
+    GRDLBL  5
+    LUTFIL  none
+    FILTER  yes
+</code></pre>
+
+<p>This nts file will draw color-filled contours for lightning strike density in units <em>strikes per square kilometer per minute</em>:  <code>(/km**2/min)*10**3</code> in GEMPAK.</p>
+
+<p><img src="opcltng_filled.jpg"></p>
+
+<h2>Viewing Grid Contents in GDINFO</h2>
+
+<p>In <strong>GDINFO</strong> you can see the contents of a lightning density</p>
+
+<pre><code>GDFILE   = 201310171800.30.grd
+LSTALL   = YES
+OUTPUT   = T
+GDATTIM  = all
+GLEVEL   = all
+GVCORD   = all
+GFUNC    = all
+</code></pre>
+
+<p>After running <strong>GDINFO</strong> we see the grid navigation/  Notice the grid size.</p>
+
+<pre><code>GRID FILE: 201310171800.30.grd                                                                                 
+
+GRID NAVIGATION: 
+    PROJECTION:          CED                 
+    GRID SIZE:         34761460
+    LL CORNER:             -25.00    110.00
+    UR CORNER:              80.00      0.00
+
+GRID ANALYSIS BLOCK: 
+    ANALYSIS TYPE:        BARNES
+    DELTAN:               4.000
+    DELTAX:           -9999.000
+    DELTAY:           -9999.000
+
+Number of grids in file:     1
+Maximum number of grids in file:   2000
+
+NUM       TIME1              TIME2           LEVL1 LEVL2  VCORD PARM
+1     131017/1800                              0         NONE LTNG     
+</code></pre>
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

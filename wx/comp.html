@@ -1,0 +1,92 @@
+<html lang="en">
+<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=AIzaSyA2G5dh6mBHu2SxKT5CELPj8wWwxdUWvro" type="text/javascript">
+</script>
+<script type="text/javascript" src="v2radar.js"></script>
+<script type="text/javascript" src="grid4x4.js"></script>
+<script type="text/javascript">
+
+var Clock ;
+var Cycle ;
+var Google;
+var Helper;
+var Last=  0;
+var Skew=  0;
+var Wrap= 10;
+var Idle=100;
+var Back=500;
+var Radar=[];
+var Ridge=["x0y0","x10y10","x11y11","x12y12","x13y13","x14y14","x15y15","x1y1","x2y2","x3y3","x4y4","x5y5","x6y6","x7y7","x8y8","x9y9"];
+//var Ridge=["x10y10","x12y12"];
+var Product="n0q";
+
+function Pause(pause){
+	Idle=pause*10;
+	Back=pause*50;
+}
+
+function Opacity(opacity){
+	for (var i=0;Ridge[i];i++){
+		Radar[i].opacity(opacity);
+	}
+}
+
+function Loop(){
+	for (var i=0;Ridge[i];i++){
+		Helper.childNodes[i].childNodes[0].data=Radar[i].select(Last);
+	}
+	Last=(Last+1)%Wrap;
+	Clock=clearTimeout(Clock);
+	Clock=setTimeout("Loop()",Last ? Idle : Back);
+}
+
+function Feed(){
+	for (var i=0;Ridge[i];i++){
+		Radar[i].feed("http://www.unidata.ucar.edu/software/gempak/wx/comp/"+Ridge[i]+"/json.js");
+	}
+	//Cycle=clearTimeout(Cycle);
+	//Cycle=setTimeout("Feed()",150000);
+}
+
+function CallBack(callback){
+	var stub="http://www.unidata.ucar.edu/";
+	var pair;
+	var reload=[];
+	for (var i=0;callback.directory[i];i++){
+		pair=callback.directory[i].match(/(x[0-9][0-9]?y[0-9][0-9]?|[a-z][0-9][a-z])/g);
+		reload[i]=stub+callback.directory[i];
+	}
+	for (var i=0;Ridge[i];i++){
+		if (pair) if (pair[0]==Ridge[i]) if (pair[1]==Product) Radar[i].reload(reload);
+	}
+}
+
+function Load(){
+	Google=document.getElementById("map_canvas");
+	GDraggableObject.setDraggableCursor("pointer");
+	GDraggableObject.setDraggingCursor ("pointer");
+	Google=new GMap2(Google);
+	Google.setCenter (new GLatLng(35.329,-97.274),5, G_PHYSICAL_MAP);
+        Google.setUIToDefault();
+	Helper=document.getElementById("helper");
+	for (var i=0;Ridge[i];i++){
+		Helper.appendChild(document.createElement("DIV"));
+                Helper.childNodes[i].appendChild(document.createElement("a"));
+		Radar[i]=new FrameAnimationLayerOverlay({bbox:BBox(Ridge[i],Product),size:{x:640,y:640},last:Last,skew:Skew,wrap:Wrap,name:Ridge[i]+"_"+Product});
+ 		console.log({bbox:BBox(Ridge[i],Product),size:{x:640,y:640},last:Last,skew:Skew,wrap:Wrap,name:Ridge[i]+"_"+Product});
+		Google.addOverlay(Radar[i]);
+	}
+	Feed();
+	Loop();
+
+}
+
+function Free(){
+	GUnload();
+}
+</script></head>
+<body onload="Load();" onunload="Free();">
+<div style="font-family:arial; font-size:13px; font-weight:normal" align="center">
+	<div id="map_canvas" style="width:800px;height: 600px;"></div>
+	<div id="helper"></div>
+</div>
+

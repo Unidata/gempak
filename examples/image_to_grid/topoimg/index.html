@@ -1,0 +1,202 @@
+<html>
+<head>
+<TITLE>GEMPAK IMAGE to GRID Examples</TITLE>
+<META NAME="BOOKMARK" CONTENT="GEMPAK Examples">
+<META NAME="AUTHOR" CONTENT="Steve Chiswell">
+<META NAME="KEYWORDS" CONTENT="Software, GEMPAK, Examples">
+<META NAME="DESCRIPTION" CONTENT="GEMPAK Examples.">
+</head>
+
+<body>
+<h1>Creating a Topographic image</h1>
+This example utilizes DEM topography data 5 minute topography data
+to create a topographic image that may be used as a basemap. It is similar to the 
+<a href="../sat_basemap/">Satellite Basemap</a> example, but 
+visualizes the topography/bathymetry digital elevation model data. 
+<p>
+<h2>Tools Used</h2>
+Gempak Programs<br>
+<ul>
+   <li>GDTOPO
+   <li>GD2IMG
+</ul>
+<p>
+Data Used<br>
+<ul>
+    <li>DEM global 5 minute topography
+    <li>Land Use global 30 second data
+</ul>
+
+<h2>Steps</h2>
+<ol>
+<li>Create a topographic grid for desired area using <font color="#3030E0">GDTOPO</font>
+   <ul><pre>
+
+    GDFILE   = nam_basemap.gem
+    GAREA    = 10;-140;65;-40
+    GDATTIM  = 070101/0000
+    GVCORD   = none
+    GFUNC    = topo
+    TOPOFL   = dem5
+    IJSKIP   = 0
+    GEMPAK-GDTOPO>r
+
+
+    GDTOPO PARAMETERS: 
+
+    Grid file:       nam_basemap.gem                                                                                                         
+
+    Topography file: /home/gempak/GEMPAK5.10.2/gempak/tables/unidata/world_topo.5min                                                                 
+
+    GAREA:              10;-140;65;-40                              
+    Lower left corner:      10.0000  -140.0000
+    Upper right corner:     65.0000   -40.0000
+   
+    Number of X/Y grid points:   1200  660
+        Number of Grid points:       792000
+
+    Minimum and Maximum values -8103.00  4700.00
+   </pre></ul>
+<p>
+
+<li>Create an image from topography/bathymetry data using <font color="#3030E0">GD2IMG</font>
+   <ul>
+   <li>Use a 2 part calibration range for band 3. Use pixel values 0 to 7 for negative values (-8103 to 0 meters), and pixel values 8 to 95 to represent positive values (0 to 4700 meters). The region selected represents a 6 Km resolution product.
+   <pre>
+    GDATTIM  = last
+    GDFILE   = nam_basemap.gem
+    GLEVEL   = 0
+    GVCORD   = none
+    GFUNC    = topo
+    SCALE    = 0
+    PROJ     = str/90;-97;0
+    GRDAREA  = 15;-116;50;-51.95
+    KXKY     = 1002;925
+    CPYFIL   =  
+    SATFIL   = nam_basemap.gini
+    CALINFO  = 99/3/TOPO,0,7,-8103,0;8,95,0,4700
+    WMOHDR   = TICZ99/CHIZ/
+    GEMPAK-GD2IMG>r
+   </pre>
+   </ul>
+
+<li>Create a color lookup table representing ocean and land
+for the 2 ranges of data above. The color values 0 to 95 will be divided into 2 
+sections (0 to 7 providing shades of blue corresponding to depth below sea level,
+and 8 to 95 representing evelation above sea level). 
+You can download the color table <a href="upc_dem5.tbl">upc_dem5.tbl</a>
+generated for this <a href="nam_basemap.gini">topographic image</a>.
+
+<li>Add an image type entry for this band 2**(3 - 1) image for sensor 11 (Gini ID 99 above)
+into GEMTBL/sat/imgtyp.tbl if it does not already exist.
+<pre>
+   TOPO                 TOPO_DEM5     0     94     11      4      1 upc_dem5.tbl
+</pre>
+
+<li>Display the composite image in GEMPAK programs as a satellite image and overlay data as desired.
+   <ul><pre>
+
+    MAP      = 1
+    GAREA    = dset
+    PROJ     = sat
+    SATFIL   = nam_basemap.gini
+    LUTFIL   = upc_dem5.tbl
+
+   </pre></ul>
+<p>
+<img src="nam_basemap.gif">
+</ol>
+
+<p>
+<h2>Part II: Mask lakes above sea level and valleys below sea level</h2>
+<p>
+The DEM topography/bathymetry data set used above provides elevation above and below
+sea level, however, it does not distinguish between land and water. The Great Lakes
+and Great Salt Lake represent areas above sea level that we might want to be the
+color of water, while Death Valley and the Salton Sea areas have areas below sea level
+that we would want to represent as land. If we used the 0.5 degree land/sea mask functions 
+in GEMPAK, the boundary areas would be much coarser than the 6 Km resolution of the
+image product and appear blocky. We could use the land mask from one of the operational
+models, but to obtain the best reolution, we'll use a 1 Km (30 second) land classification data set.
+<p>
+<ol>
+<li>Create a grid from 1km <a href="https://glcf.umiacs.umd.edu/data/landcover/data.shtml">land classification</a> raster data. We'll set IJSKIP to 5 since that approximates the resolution of the image we are producing.
+   <ul>
+   <pre>
+     GDFILE   = landuse.gem
+     GAREA    = 10;-140;65;-40
+     GDATTIM  = 070101/0000
+     GVCORD   = none
+     GFUNC    = luse
+     TOPOFL   = land1
+     IJSKIP   = 5
+     GEMPAK-GDTOPO>
+   </pre>
+   </ul>
+<p>
+<li>Create a boolean grid (1=land, 0=water) based on the classification type values greater than 0 representing land. Write this LUSE grid out to the <a href="nam_basemap.gem">nam_basemap.gem</a> grid file created previously.
+   <ul>
+   <pre>
+    GDFILE    = landuse.gem
+    GDOUTF   = nam_basemap.gem
+    GFUNC    = bool(sgt(luse,0))
+    GDATTIM  = 070101/0000
+    GLEVEL   = 0
+    GVCORD   = none
+    GRDNAM   = luse
+    GRDTYP   = S
+    GPACK    =  
+    GRDHDR   =  
+    PROJ     =  
+    GRDAREA  =  
+    KXKY     =  
+    MAXGRD   = 200
+    CPYFIL   =  
+    ANLYSS   = 4/2;2;2;2
+    GEMPAK-GDDIAG>
+   </pre>
+   </ul>
+<p>
+<li>Create a new nam_topomap.gini image using the boolean land use grid to mask:
+   <ul>
+      <li>Water areas below 0 m (sea level) 
+      <li>Set water areas above sea level to 0 m
+      <li>Remaining topography above sea level unchanged
+      <li>All other points (eg land areas below sea level) assigned a value of 1 m
+   <p>
+   <pre>
+    GDATTIM  = 070101/0000
+    GDFILE   = nam_basemap.gem
+    GLEVEL   = 0
+    GVCORD   = none
+    GFUNC    = miss(miss(miss(mask(slt(topo,0),slt(luse,.5)),mask(0,slt(luse,.5))),sgt(topo,0)),1)
+    SCALE    = 0
+    PROJ     = str/90;-97;0
+    GRDAREA  = 15;-116;50;-51.95
+    KXKY     = 1002;925
+    CPYFIL   =  
+    SATFIL   = nam_topomap.gini
+    CALINFO  = 99/3/TOPO,0,7,-8103,0;8,95,0,4700
+    WMOHDR   = TICZ99/CHIZ/
+    GEMPAK-GD2IMG>
+   </pre>
+   </ul>
+<p>
+<li>Display the land/water masked topography image as above
+   <ul><pre>
+
+    MAP      = 1
+    GAREA    = dset
+    PROJ     = sat
+    SATFIL   = nam_topomap.gini
+    LUTFIL   = upc_dem5.tbl
+
+   </pre></ul>
+<p>
+<img src="nam_topomap.gif">
+
+</ol>
+
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

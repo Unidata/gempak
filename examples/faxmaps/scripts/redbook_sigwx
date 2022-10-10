@@ -1,0 +1,74 @@
+#!/bin/csh -f
+#
+############################################################
+#
+# Significant Weather Outlook
+#
+# This script creates the Significant Weather Outlook from
+# redbook graphics analyses.
+#
+# Redbook Graphics used:
+# P0W   PGWA31 KWBC     OBS_WX_DPCN
+# 90F   PGWA32 KWBC     OBS_WX_DPCN_ANL
+#
+############################################################
+
+setenv PATH /bin:/usr/bin:/usr/ucb:/usr/local/bin
+source /home/gempak/GEMPAK5.6/Gemenviron
+
+setenv DISPLAY laraine:1
+
+set WORKDIR = ~/web/redbook
+
+setenv WXPLT_DIR $GEMDATA/redbook/sigwx
+setenv WXANL_DIR  $GEMDATA/redbook/sigwx
+
+
+cd $WXPLT_DIR
+set WXPLT=`ls -t *_sigplt.rbk | head -1`
+
+cd $WXANL_DIR
+set WXANL=`ls -t *_siganl.rbk | head -1`
+
+cd $WORKDIR
+
+if(-e redsigwx.gif) rm redsigwx.gif
+
+gpmap_gf << EOF
+ MAP      = 2
+ GAREA    = afna
+ PROJ     = STR/90;-104;0
+ GAREA    = llvl
+ PROJ     = STR/90;-98;0
+ SATFIL   = 
+ RADFIL   = 
+ LATLON   = 0
+ PANEL    = 0
+ TITLE    = 4
+ TEXT     = 1
+ CLEAR    = y
+ DEVICE   = gf|redsigwx.gif|1280;1024
+ LUTFIL   = 
+ STNPLT   = 
+ VGFILE   = 
+ AFOSFL   = 
+ LINE     = 23
+ WATCH    = 
+ WARN     = 
+ HRCN     = 
+ ISIG     = 
+ LTNG     =
+ AWPSFL   = \$WXPLT_DIR/${WXPLT}
+ \$mapfil = hipowo.cia
+ r
+
+ AWPSFL   = \$WXANL_DIR/${WXANL}
+ line = 5
+ clear = n
+ map = 0
+ r
+
+ e
+EOF
+
+mv redsigwx.gif /dist/htdocs/staff/chiz/redbook/sigwx.gif

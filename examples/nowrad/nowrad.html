@@ -1,0 +1,63 @@
+<HTML><HEAD><TITLE>2Displaying WSI Nowrad Imagery Examples</TITLE>
+<META NAME="BOOKMARK" CONTENT="GEMPAK Examples, WSI Nowrad Imagery">
+<META NAME="AUTHOR" CONTENT="Steve Chiswell">
+<META NAME="KEYWORDS" CONTENT="Software, GEMPAK, Examples, WSI Nowrad Imagery">
+<META NAME="DESCRIPTION" CONTENT="GEMPAK Examples, WSI Nowrad Imagery.">
+</HEAD><BODY>
+
+<IMG SRC="nowrad_icon.gif"><A HREF="nowrad.gif">Blizzard of 1996 NOWrad</A>
+<P>
+The WSI NOWrad image was generated using
+<FONT COLOR=#800000>GPMAP<FONT COLOR=#000000>. GEMPAK
+programs read the WSI INC NOWrad images in their native
+format. All programs
+that support the RADFIL variable option can be used to
+overlay data.<P>
+
+<pre>
+MAP       = 5
+GAREA     = dset
+PROJ      = sat
+SATFIL    = $NOWRAD/NOW_960121_2100
+RADFIL    =           
+LATLON    = 0
+PANEL     = 0
+TITLE     = 1/-2
+TEXT      = 1.2/23/1/hw
+CLEAR     = y
+DEVICE    = xw
+GEMPAK-GPMAP>r
+
+</pre>
+
+<FONT COLOR=#800000>GPWATCH<FONT COLOR=#000000> can be used to plot
+watch boxes decoded with the watchtogem decoder.<p>
+<A HREF="watches.gif"><IMG SRC="watches_icon.gif"></a>
+<p>
+<pre>
+ MAP      = 6/1/1
+ GAREA    = uslcc
+ PROJ     = rad
+ SATFIL   = 
+ RADFIL   = $NOWRAD/NOW_960613_2100
+ LATLON   = 0
+ PANEL    = 0
+ TITLE    = 3/-1/Watches 
+ TEXT     = 1/22/1/hw
+ CLEAR    = yes
+ DEVICE   = xw
+ WWFIL    = $WATCHES/watches_1996.gem
+ WWS      = cur
+ WWATT    = y
+ GEMPAK-GPWATCH>
+</pre>
+
+
+<hr>
+<A HREF="../examples.html">
+Return to the Walk Through Examples Table of Contents.</A>
+
+
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

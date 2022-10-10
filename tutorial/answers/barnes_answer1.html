@@ -1,0 +1,274 @@
+
+<!DOCTYPE html>
+<html>
+<HEAD>
+<TITLE>Barnes Analysis Answer#1</TITLE>
+</HEAD>
+<BODY>
+ 
+<h2>First create a new grid file:</h2>
+<strong>
+<pre>
+% oagrid
+<IMG SRC="../images/restoreandedit.gif">
+ GEMPAK-OAGRID>GDFILE = barnes1.grd
+ GEMPAK-OAGRID>GRDAREA = us
+ GEMPAK-OAGRID>SOURCE = SF
+ GEMPAK-OAGRID>SFFILE = metar
+ GEMPAK-OAGRID>SFPARM = tmpf;dwpf;pmsl;sped;drct
+ GEMPAK-OAGRID>DATTIM = 1200
+ GEMPAK-OAGRID>DELTAN   = 0      <IMG ALIGN=CENTER SRC="../images/usethedefault.gif">
+ GEMPAK-OAGRID>DELTAX   = 0
+ GEMPAK-OAGRID>DELTAY   = 0
+ GEMPAK-OAGRID>l                 <IMG ALIGN=CENTER SRC="../images/redisplaysettings.gif">
+ GDFILE   = barnes1.grd
+ DELTAN   = 0
+ DELTAX   = 0
+ DELTAY   = 0
+ GRDAREA  = us
+ EXTEND   = 2;2;2;2
+ DTAAREA  = 
+ SOURCE   = SF
+ SNFILE   = $GEMPAK/DATA/HRCBOB.SND
+ SFFILE   = metar
+ SNPARM   = ;TMPC;;HGHT;DWPC;BRBM
+ SFPARM   = tmpf;dwpf;pmsl;sped;drct
+ DATTIM   = 27/1200
+ LEVELS   = 500
+ MAXGRD   = 200
+ GEMPAK-OAGRID>r
+<center><IMG SRC="../images/programoutput.gif"></center>
+                    OBJECTIVE ANALYSIS PARAMETERS
+
+ GRIDAREA           19.00   -119.00     46.88    -56.10  (us     47.00  -56.00)
+ DELTAN              0.680
+ DELTAX              0.340
+ DELTAY              0.340
+
+ GRID POINTS     X : 186  ( 2, 2 )        Y :  83  ( 2, 2 )
+ EXTENDAREA           18.32   -119.68     47.56    -55.42
+ DATAAREA             18.32   -119.68     47.56    -55.42
+
+
+ CALCULATIONS: 
+   FILE      /data/ldm/gempak/surface/20101025_sao.gem                     
+ SOURCE    SF               19.00   -119.00     47.00    -56.00       NSTN 1563
+   PARM      TMPF        LEVEL    0.0        DATTIM       101025/1200         
+
+     COMPUTED DATA SPACING           0.369
+     UNIFORM  DATA SPACING           0.999
+     RECOMMENDED   DELTAN =  0.684   DELTAX =  0.408   DELTAY =  0.342
+
+Enter <cr> to accept parameters or type EXIT:
+
+GEMPAK-OAGRID>e
+</pre>
+
+<h2>Now make 3 more copies of the file: </h2>
+<pre>
+cp barnes1.grd barnes2.grd
+cp barnes1.grd barnes3.grd
+cp barnes1.grd barnes4.grd
+</pre>
+<p>
+<h2>Next, perform the Barnes Analyses</h2>
+<pre>
+%oabsfc
+<IMG SRC="../images/gempakdisplays.gif">
+ SFFILE    Surface data file                 metar
+ GDFILE    Grid file                         barnes1.grd
+ SFPARM    Surface parameter list            tmpf;dwpf;pmsl;sped;drct
+ DATTIM    Date/time                         27/1200
+ DTAAREA   Data area for OA                  
+ GUESS     Guess file^time                   
+ GAMMA     Convergence parameter             0.3
+ SEARCH    Search radius/Extrapolation       20
+ NPASS     Number of passes                  2
+ QCNTL     Quality control threshold          
+ OABND     Bounds file(s) to use for 'block   
+ GDATTIM   Grid date/time                     
+ GFUNC     Scalar grid                        
+ GLEVEL    Grid level                        0
+ GVCORD    Grid vertical coordinate          none
+ Parameters requested: SFFILE,GDFILE,SFPARM,DATTIM,DTAAREA,GUESS,GAMMA,
+ SEARCH,NPASS.
+ GEMPAK-OABSFC>gamma = 1.0
+ GEMPAK-OABSFC>r
+ <center><IMG SRC="../images/programoutput.gif"></center>
+Creating process: gplt for queue 5850
+
+ OABSFC PARAMETERS: 
+
+ Output grid file:        barnes1.grd
+ Number of x, y points:   143    60
+ Grid bnds:     25.00  -125.00    49.78   -65.36  Grid xtnd:    2   2   2   2
+ Station spacing:           0.84
+ No first guess file is requested. 
+ Surface file:            $GEMDATA/surface/sao/960227.gem
+ Data area:               24.16;-125.84;50.62;-64.52
+ Parameters:              TMPF  DWPF  PMSL  SPED  DRCT
+ Time:                   960227/1200         
+ GAMMA: 1.00   SEARCH:  20.00  NPASS:  2
+ No data extrapolation will occur. 
+Enter <cr> to accept parameters or type EXIT:
+
+   RMS values for pass  1
+            TMPF    DWPF    PMSL    SPED    DRCT
+  RMS       3.31    3.60    0.78    1.70   84.90
+  #STN       908     876     558     943     943
+
+   RMS values for pass  2
+            TMPF    DWPF    PMSL    SPED    DRCT
+  RMS       2.82    3.07    0.63    1.60   79.60
+  #STN       881     849     539     913     913
+ Parameters requested: SFFILE,GDFILE,SFPARM,DATTIM,DTAAREA,GUESS,GAMMA,
+ SEARCH,NPASS.
+ GEMPAK-OABSFC> gamma = .5
+ GEMPAK-OABSFC>gdfile = barnes2.grd
+ GEMPAK-OABSFC>r
+<center><IMG SRC="../images/programoutput.gif"></center>
+
+ OABSFC PARAMETERS: 
+
+ Output grid file:        barnes2.grd
+ Number of x, y points:   143    60
+ Grid bnds:     25.00  -125.00    49.78   -65.36  Grid xtnd:    2   2   2   2
+ Station spacing:           0.84
+ No first guess file is requested. 
+ Surface file:            $GEMDATA/surface/sao/960227.gem
+ Data area:               24.16;-125.84;50.62;-64.52
+ Parameters:              TMPF  DWPF  PMSL  SPED  DRCT
+ Time:                   960227/1200         
+ GAMMA: 0.50   SEARCH:  20.00  NPASS:  2
+ No data extrapolation will occur. 
+Enter <cr> to accept parameters or type EXIT:
+
+   RMS values for pass  1
+            TMPF    DWPF    PMSL    SPED    DRCT
+  RMS       3.31    3.60    0.78    1.70   84.90
+  #STN       908     876     558     943     943
+
+   RMS values for pass  2
+            TMPF    DWPF    PMSL    SPED    DRCT
+  RMS       2.45    2.67    0.52    1.48   72.96
+  #STN       874     842     532     905     905
+ Parameters requested: SFFILE,GDFILE,SFPARM,DATTIM,DTAAREA,GUESS,GAMMA,
+ SEARCH,NPASS.
+ GEMPAK-OABSFC>gamma = .3
+ GEMPAK-OABSFC>gdfile = barnes3.grd
+ GEMPAK-OABSFC>r
+<center><IMG SRC="../images/programoutput.gif"></center>
+
+ OABSFC PARAMETERS: 
+
+ Output grid file:        barnes3.grd
+ Number of x, y points:   143    60
+ Grid bnds:     25.00  -125.00    49.78   -65.36  Grid xtnd:    2   2   2   2
+ Station spacing:           0.84
+ No first guess file is requested. 
+ Surface file:            $GEMDATA/surface/sao/960227.gem
+ Data area:               24.16;-125.84;50.62;-64.52
+ Parameters:              TMPF  DWPF  PMSL  SPED  DRCT
+ Time:                   960227/1200         
+ GAMMA: 0.30   SEARCH:  20.00  NPASS:  2
+ No data extrapolation will occur. 
+Enter <cr> to accept parameters or type EXIT:
+
+   RMS values for pass  1
+            TMPF    DWPF    PMSL    SPED    DRCT
+  RMS       3.31    3.60    0.78    1.70   84.90
+  #STN       908     876     558     943     943
+
+   RMS values for pass  2
+            TMPF    DWPF    PMSL    SPED    DRCT
+  RMS       2.13    2.32    0.46    1.35   66.27
+  #STN       870     838     521     901     901
+ Parameters requested: SFFILE,GDFILE,SFPARM,DATTIM,DTAAREA,GUESS,GAMMA,
+ SEARCH,NPASS.
+ GEMPAK-OABSFC>gamma = .1
+ GEMPAK-OABSFC>gdfile = barnes4.grd
+ GEMPAK-OABSFC>r
+<center><IMG SRC="../images/programoutput.gif"></center>
+
+ OABSFC PARAMETERS: 
+
+ Output grid file:        barnes4.grd
+ Number of x, y points:   143    60
+ Grid bnds:     25.00  -125.00    49.78   -65.36  Grid xtnd:    2   2   2   2
+ Station spacing:           0.84
+ No first guess file is requested. 
+ Surface file:            $GEMDATA/surface/sao/960227.gem
+ Data area:               24.16;-125.84;50.62;-64.52
+ Parameters:              TMPF  DWPF  PMSL  SPED  DRCT
+ Time:                   960227/1200         
+ GAMMA: 0.10   SEARCH:  20.00  NPASS:  2
+ No data extrapolation will occur. 
+Enter <cr> to accept parameters or type EXIT:
+
+   RMS values for pass  1
+            TMPF    DWPF    PMSL    SPED    DRCT
+  RMS       3.31    3.60    0.78    1.70   84.90
+  #STN       908     876     558     943     943
+
+   RMS values for pass  2
+            TMPF    DWPF    PMSL    SPED    DRCT
+  RMS       1.51    1.63    0.38    1.09   51.50
+  #STN       785     750     381     815     815
+ Parameters requested: SFFILE,GDFILE,SFPARM,DATTIM,DTAAREA,GUESS,GAMMA,
+ SEARCH,NPASS.
+ GEMPAK-OABSFC>e
+
+</pre>
+<p>
+<h2>Finally, lets plot it up:</h2>
+<pre>
+&gt; gdcntr
+ <IMC SRC="../images/restoreandedit.gif">
+restore defaults/gdcntr.nts
+gdattim = last
+glevel = 0
+gvcord = none
+gfunc = tmpf
+gdfile = barnes1.grd
+panel = ul
+clear = y
+garea = #35;-93;12;27
+proj = lea/35;-100;0
+fline = 30-7
+ctype = f
+fint = 5
+title = 1/-1/GAMMA = 1.0
+r                        <IMG ALIGN=CENTER SRC="../images/runtheprogram.gif">
+
+clear = n
+panel = ur
+gdfile = barnes2.grd
+title = 1/-1/GAMMA = .5
+r                        <IMG ALIGN=CENTER SRC="../images/runtheprogram.gif">
+
+panel = ll
+gdfile = barnes3.grd
+title = 1/-1/GAMMA = .3
+r                        <IMG ALIGN=CENTER SRC="../images/runtheprogram.gif">
+
+panel = lr
+gdfile = barnes4.grd
+title = 1/-1/GAMMA = .1
+r                        <IMG ALIGN=CENTER SRC="../images/runtheprogram.gif">
+
+</pre>
+<p>
+<A HREF="../images/barnes_gamma.gif"><IMG SRC="../images/viewindow.gif"></a>
+<p>
+
+</strong>
+
+ 
+<p>
+<img src="../images/bluehorizontaline.gif">
+<pre>
+<a href="../barnes_exercises.html#answer1"><img alt="previous page" src="../images/prev.gif"></a>
+
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

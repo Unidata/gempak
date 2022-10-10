@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<HEAD>
+<TITLE>EXAM Answer #2</TITLE>
+
+</HEAD>
+<BODY>
+<strong>
+<pre>
+
+#!/bin/csh -f
+
+if(x${1} != x) then
+   gpmap << SELECT1
+      garea = $1
+      e
+SELECT1
+else
+  gpmap << SELECT2
+     garea = usnps
+     proj = str/90;-100;0 
+     map = 6
+     title = 5/-1/Select Map Area
+     dev = xw|SELECT_AREA
+     clear = y
+     \$mapfil = hipowo.gsf
+     r
+
+     cursor garea
+     e
+SELECT2
+  gpend
+endif
+
+
+
+exit(0)
+      
+</pre>
+</strong>
+      
+
+ 
+<p>
+<img src="../images/bluehorizontaline.gif">
+<pre>
+<a href="../exam.html#2"><img alt="previous page" src="../images/prev.gif"></a>
+
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

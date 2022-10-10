@@ -1,0 +1,221 @@
+#!/bin/csh -f
+#
+# This script uses the RUC temperature grids to produce
+# plotting MASKs for the radar reflectivity grids. This is only
+# an estimate of precipitation type using model temperatures.
+# It is not based on surface observations.
+#
+# The precipitation type is estimated using surface temperature and
+# the 30:0 mb pressure layer temperature. The following simple 
+# nomagram shows the masks used:
+#
+#     +-----------+-----------+-----------+ 30:0 pressure layer temperature
+#     |           |           |           |
+#     |   Snow    |   Snow    |   Rain    |  <0C
+#     |           |           |           |
+#     +-----------+-----------+-----------+
+#     |           |           |           |
+#     |   Frozen  |   Rain    |   Rain    |  >0C
+#     |           |           |           |
+#     +-----------+-----------+-----------+
+#          <0C         0-3C         >3C
+#
+#             Surface (2m) temperature
+#
+#
+#
+# Steve Chiswell
+# Unidata
+# March 2001   
+
+source /home/gempak/NAWIPS/Gemenviron
+set WEBDIR=/unidata/images/nids
+
+cd /tmp
+set WORK=.nexrwork.$$
+if(! -e $WORK) mkdir $WORK
+
+cd $WORK
+
+#
+#
+# Use a special color table for precipitation type plotting
+#
+cp $GEMTBL/colors/coltbl.ptype coltbl.xwp
+#
+#
+# create a new grid file of the same projection as the RADAR mosaic
+# NEXR is the template for the national mosaic defined in datatype.tbl.
+#
+gdcfil << EOFC
+  \$respond = yes
+  gdoutf = ptype.gem
+  cpyfil = nexr
+  maxgrd = 25
+  anlyss = 
+  r
+
+  e
+EOFC
+#
+#
+# Create a copy of this file. Use ptype.gem to hold precipitation type mask
+# functions. Use the second copy nexmsk.gem to mask rain with precipitation
+# tops to supress some of the ground clutter. We could do this in one file, 
+# but using 2 files makes it easier to access times since model forecast
+# times are not the same as radar image times.
+#
+cp ptype.gem nexmsk.gem
+#
+#
+# interpolate the relevant RUC temperature grids to the RADAR projection
+#
+gdbiint << EOF
+  gdfile = ruc
+  gdoutf = ptype.gem
+  glevel = 30:0
+  gvcord = pdly
+  gdattim = f000
+  gdnum  =
+  gfunc = tmpk
+  r
+
+  glevel = 2
+  gvcord = hght
+  r
+
+  e
+EOF
+
+gddiag << EOFD
+glevel = 2
+gvcord = hght
+gdattim = f000
+gdfile = ptype.gem
+gdoutf = ptype.gem
+gpack = none
+!
+gfunc = sgt(tmpc,0)
+GRDNAM = rain1@0%none
+r
+
+gfunc = sgt(tmpc@30:0%pdly,0)
+grdnam = rain2@0%none
+r
+
+glevel = 0
+gvcord = none
+gfunc = mask(rain1,rain2)
+grdnam = rain@0%none
+r
+
+glevel = 2
+gvcord = hght
+gfunc = sle(tmpc,3)
+grdnam = snow1@0%none
+r
+
+gfunc = sle(tmpc@30:0%pdly,0)
+grdnam = snow2@0%none
+r
+
+glevel = 0
+gvcord = none
+gfunc = mask(snow1,snow2)
+grdnam = snow
+r
+
+glevel = 2
+gvcord = hght
+gfunc = sle(tmpc,0)
+grdnam = frzn1@0%none
+r
+
+gfunc = mask(frzn1@0%none,rain2@0%none)
+grdnam = frzn@0%none
+r
+
+!
+! create a mask for echo tops greater than 5km
+! This step could be omitted.
+gdfile = nexr
+gdoutf = nexmsk.gem
+glevel = 0
+gvcord = none
+gfunc = sge(net,5)
+gdattim = last
+grdnam = netm
+r
+
+e
+EOFD
+
+gdcntr << EOF2
+device   = gif|radar_type.gif|900;700
+gdfile   = nexr+ptype.gem+nexmsk.gem
+\$mapfil = hipowo.cia
+proj     = lcc/25;-103;60
+garea    = 22.0;-122.0;47.0;-65.0
+map      = 1
+clear    = y
+gdattim  = LAST
+text     = 1/1/1
+TITLE    = 1/-1/~ Unidata 6km type composite
+GLEVEL   = 0
+GVCORD   = none
+CTYPE    = F
+PANEL    = 0
+SKIP     = 0
+SCALE    = 0
+CONTUR   = 0
+HILO     =
+LATLON   = 0
+STNPLT   =
+SATFIL   =
+RADFIL   =
+LUTFIL   =
+STREAM   =
+POSN     = 0
+COLORS   = 1
+MARKER   = 0
+GRDLBL   = 0
+FILTER   = YES
+!
+! plot precip masked by echo tops greater than 5km. This is
+! just the background precip. Snow and frozen will overlay
+! and will not be masked.
+GFUNC    = mask(n0r,netm+3)
+FINT     = 5;15;25;35;45;55;65;75
+FLINE    = 0;14-19;19;19;19;19;19
+CLRBAR   = 1/V/LL/0.001;0.1/0.5;0.01/1|.7/1/1
+r
+
+!
+! Plot the frozen mask
+GFUNC    = mask(n0r,frzn+2^f000)
+FINT     = 5;15;25;35;45;55;65;75
+FLINE    = 0;20-25;25;25;25;25;25;25;25
+CLRBAR   = 1/V/LL/0.025;0.1/0.5;0.01/1|.7/1/1
+clear = n
+title =
+r
+
+!
+! plot the snow mask
+GFUNC = mask(n0r,snow+2^f000)
+FINT = 5;15;25;35;45;55;65;75
+FLINE = 0;26-31;31;31;31;31;31;31;31;31
+CLRBAR   = 1/V/LL/0.050;0.1/0.5;0.01/1|.7/1/1
+r
+
+e
+EOF2
+ 
+
+gpend
+
+if(-e radar_type.gif) mv radar_type.gif $WEBDIR
+
+cd ..
+rm -rf $WORK
+

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <body onload="initialize()">
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript">
+
+var map; 
+
+function initialize() { 
+
+  var center = new google.maps.LatLng(30.411944, -91.185556); 
+
+  var myOptions = { 
+    zoom: 7, 
+    center: center, 
+    mapTypeId: google.maps.MapTypeId.TERRAIN, 
+  } 
+
+  map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+
+  var lchLayer = new google.maps.KmlLayer('http://www.srh.noaa.gov/ridge/kml/animation/N0R/LCH_N0R_loop.kml', {preserveViewport:true});
+
+  lchLayer.setMap(map); 
+
+  var lixLayer = new google.maps.KmlLayer('http://www.srh.noaa.gov/ridge/kml/animation/N0R/LIX_N0R_loop.kml', {preserveViewport:true,suppressInfoWindows:true});
+
+  lixLayer.setMap(map); 
+} 
+</script>
+</head>
+
+<div id="map_canvas"  style="width: 900px; height: 600px;"></div>
+
+</body>
+</html>

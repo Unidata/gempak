@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html>
+<HEAD>
+<TITLE>GDVINT Exercise#1</TITLE>
+
+</HEAD>
+<BODY>
+
+<h2>Create the new grids with GDVINT</h2>
+<strong> <pre>
+% gdvint
+<IMG SRC="../images/gempakdisplays.gif">
+GEMPAK-GDVINT>l                   
+ GDFILE   = $HDS/96030312_eta.gem
+ GDOUTF   = eta_theta.grd
+ GDATTIM  = f000
+ GVCORD   = pres/thta
+ GLEVEL   = 280-350-5             <IMG ALIGN=CENTER SRC="../images/settherange.gif">
+ MAXGRD   = 2000
+ GAREA    = @1;1;93;65
+ VCOORD   = pres;none;trop;maxw;sgma
+ GEMPAK-GDVINT>r                  <IMG ALIGN=CENTER SRC="../images/runtheprogram.gif">
+       <IMG SRC="../images/programoutput.gif">
+Creating process: gplt for queue 102
+ PRES         found. 
+ TMPK         found. 
+ HGHT         found. 
+ OMEGA        found. 
+ UREL         found. 
+ VREL         found. 
+ RELH         found. 
+ AVOR         found. 
+  Interpolation is done.  No errors. 
+ Parameters requested: GDFILE,GDOUTF,GDATTIM,GVCORD,GLEVEL,MAXGRD,GAREA,
+ VCOORD.
+ GEMPAK-GDVINT>e
+</pre>
+</strong>
+<p>
+<h2>Now use GDINFO to look at the grids on the 300K surface</h2>
+<strong> <pre>
+<ul>
+  NUM       TIME1              TIME2           LEVL1 LEVL2  VCORD PARM
+   80     960303/1200F000                        300         THTA PRES        
+   81     960303/1200F000                        300         THTA PSYM        
+   82     960303/1200F000                        300         THTA OMEGA       
+   83     960303/1200F000                        300         THTA UREL        
+   84     960303/1200F000                        300         THTA VREL        
+   85     960303/1200F000                        300         THTA SPFH        
+   86     960303/1200F000                        300         THTA AVOR        
+
+<ul>
+<pre>
+</strong>
+<p>
+<h3>
+There are some new parameters in our grid file.
+PSYM is Montgomery stream function divided by 100, SPFH is specific humidity.
+</h3>
+
+
+ 
+<p>
+<img src="../images/bluehorizontaline.gif">
+<pre>
+<a href="../coordinates.html#answer1"><img alt="previous page" src="../images/prev.gif"></a>
+
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

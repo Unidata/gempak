@@ -1,0 +1,124 @@
+<!doctype html><head><title>GEMPAK Help: snlist</title></head><body>
+<a href=../../help_and_documentation>GEMPAK Manual</a> | 
+<a href=../prog/>Programs</a><br><hr>
+<pre>
+SNLIST lists upper air data from a sounding file for specified
+vertical levels and stations.
+
+INPUT PARAMETERS
+ 
+    <a href=../parm/snfile.html>SNFILE</a>    Sounding data file
+    <a href=../parm/area.html>AREA</a>      Data area
+    <a href=../parm/dattim.html>DATTIM</a>    Date/time
+    <a href=../parm/snparm.html>SNPARM</a>    Sounding parameter list
+    <a href=../parm/stndex.html>STNDEX</a>    Stability indices
+    <a href=../parm/levels.html>LEVELS</a>    Vertical levels
+    <a href=../parm/vcoord.html>VCOORD</a>    Vertical coordinate type
+    <a href=../parm/output.html>OUTPUT</a>    Output device/filename
+    <a href=../parm/mrgdat.html>MRGDAT</a>    Merge data file flag/part type
+ 
+ 
+
+PROGRAM DESCRIPTION
+ 
+    SNLIST lists parameters derived from an upper air data set for
+    the requested stations and times.
+
+    Parameters which can be computed at various levels in the
+    data set should be specified in <a href=../parm/snparm.html>SNPARM</a>.  Parameters which have
+    a single value at the station, such as stability indices,
+    should be specified in <a href=../parm/stndex.html>STNDEX</a>.
+
+    Any parameters which can be computed from the data set
+    parameters may be listed.  If the vertical levels requested
+    are not present in the data set, the data will be interpolated
+    between existing levels.  Data will also be interpolated to a
+    new vertical coordinate system, if requested.
+
+    Data from an unmerged data set can be listed without
+    being merged if <a href=../parm/mrgdat.html>MRGDAT</a> is set to NO.  If unmerged data
+    are listed, <a href=../parm/snparm.html>SNPARM</a>, <a href=../parm/vcoord.html>VCOORD</a> and <a href=../parm/levels.html>LEVELS</a> will be ignored, except
+    that parameter '<a href=../parm/text.html>TEXT</a>' is allowed for <a href=../parm/snparm.html>SNPARM</a>.
+
+    If the sounding file contains both decoded data and undecoded
+    text data, both types can be listed by specifying parameter
+    '<a href=../parm/text.html>TEXT</a>' in the parameter list for either <a href=../parm/snparm.html>SNPARM</a> or <a href=../parm/stndex.html>STNDEX</a>.
+    <a href=../parm/text.html>TEXT</a> may appear anywhere in the list of parameters.  Only
+    text data for parts TTAA, TTBB, PPBB and TTCC will be listed.
+
+ 
+EXAMPLES
+ 
+    1.	List the parameters in the data set for the stations IAD
+	and ACY at the mandatory levels.  Also list the Showalter,
+	lifted and K indices.
+
+	<a href=../parm/snfile.html>SNFILE</a>	 =  $GEMPAK/data/HRCBOB.SND
+	<a href=../parm/area.html>AREA</a>	 =  @iad;acy
+	<a href=../parm/dattim.html>DATTIM</a>	 =  last
+	<a href=../parm/snparm.html>SNPARM</a>	 =  dset
+	<a href=../parm/stndex.html>STNDEX</a>	 =  show;lift;kinx
+	<a href=../parm/levels.html>LEVELS</a>	 =  man
+	<a href=../parm/vcoord.html>VCOORD</a>	 =  pres
+	<a href=../parm/output.html>OUTPUT</a>	 =  t
+	<a href=../parm/mrgdat.html>MRGDAT</a>	 =  YES
+
+    2.	List the unmerged data from IAD.
+
+	<a href=../parm/snfile.html>SNFILE</a>	 =  $GEMPAK/data/HRCBOB.SND
+	<a href=../parm/area.html>AREA</a>	 =  @iad
+	<a href=../parm/dattim.html>DATTIM</a>	 =  last
+	<a href=../parm/snparm.html>SNPARM</a>	 =  dset
+	<a href=../parm/stndex.html>STNDEX</a>	 =  show;lift;kinx
+	<a href=../parm/levels.html>LEVELS</a>	 =  man
+	<a href=../parm/vcoord.html>VCOORD</a>	 =  pres
+	<a href=../parm/output.html>OUTPUT</a>	 =  t
+	<a href=../parm/mrgdat.html>MRGDAT</a>	 =  no
+
+    3.  List the pressure, mixing ratio, u- and v-wind components
+        and the Montgomery stream function on the isentropic
+        surfaces from 300 to 400 degrees in 10-degree increments.
+        Change the station to ACY.
+
+	<a href=../parm/snfile.html>SNFILE</a>	 =  $GEMPAK/data/HRCBOB.SND
+	<a href=../parm/area.html>AREA</a>	 =  @acy
+	<a href=../parm/dattim.html>DATTIM</a>	 =  last
+	<a href=../parm/snparm.html>SNPARM</a>	 =  pres;mixr;uwnd;vwnd;psym
+	<a href=../parm/stndex.html>STNDEX</a>	 =
+	<a href=../parm/levels.html>LEVELS</a>	 =  300-400-10
+	<a href=../parm/vcoord.html>VCOORD</a>	 =  thta
+	<a href=../parm/output.html>OUTPUT</a>	 =  t
+	<a href=../parm/mrgdat.html>MRGDAT</a>	 =  yes
+
+    4.	List the unmerged data and the undecoded text for station
+	BOI.  Use a locally created sounding file containing both
+	types of data called DATA.SND.
+
+	<a href=../parm/snfile.html>SNFILE</a>	 =  DATA.SND
+	<a href=../parm/area.html>AREA</a>	 =  @boi
+	<a href=../parm/dattim.html>DATTIM</a>	 =  last
+	<a href=../parm/snparm.html>SNPARM</a>	 =  text
+	<a href=../parm/stndex.html>STNDEX</a>	 =
+	<a href=../parm/levels.html>LEVELS</a>	 =
+	<a href=../parm/vcoord.html>VCOORD</a>	 =
+	<a href=../parm/output.html>OUTPUT</a>	 =  t
+	<a href=../parm/mrgdat.html>MRGDAT</a>	 =  no
+
+ERROR MESSAGES
+ 
+    [SNLIST  -1]    Fatal error initializing TAE.
+    [SNLIST  -2]    Fatal error reading TAE parameters.
+    [SNLIST  -3]    There are no parameters to be listed.
+    [SNLIST  -4]    Level parameter ... cannot be computed.
+    [SNLIST  -5]    Parm ... is character; cannot be listed.
+    [SNLIST  -6]    Vertical coordinate ... cannot be computed.
+    [SNLIST  -7]    Station parameter ... cannot be computed.
+    [SNLIST  -8]    Parm ... is character; cannot be listed.
+    [SNLIST  -9]    No stations reported at these times.
+    [SNLIST -10]    Too many parameters; ... cannot be added.
+    [SNLIST -11]    The data set is merged.
+    [SNLIST -12]    No inputs for levels.
+</pre>
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

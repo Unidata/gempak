@@ -1,0 +1,5 @@
+This directory holds realtime generated gifs.
+They are sent directly to conan from shemp.
+
+Old files can be removed such as:
+find . -mtime +90 -name '*.gif' -print -exec rm {} \;

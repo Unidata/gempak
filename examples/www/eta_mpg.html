@@ -1,0 +1,70 @@
+<body>>>>>>>>>
+<title>MPEG generation script</title>
+
+<pre>
+#!/bin/csh -f
+#
+# Note: This script uses the following software:
+#    giftoppm from the pbmplus distribution
+#    mpeg_encode from the mm-ftp.cs.berkeley.edu archive
+#
+setenv PATH /usr/local/bin:/usr/local/bin/pbmplus:/usr/bin:/bin
+setenv DISPLAY unix:0
+
+#
+# This is where the gif files are
+cd /tmp
+
+set FILES=`ls -r eta_emsl.gif* `
+
+
+if(! -e mpeg) then
+   mkdir mpeg
+else
+   rm -f mpeg/*
+endif
+
+# Plan for at most 24 frames
+@ COUNT = 53
+foreach FILE ($FILES)
+   ln -s $cwd/$FILE mpeg/eta.$COUNT.gif
+   @ COUNT = $COUNT - 1
+end
+
+cd mpeg
+
+# create the input data file
+@ START = $COUNT + 1
+
+echo "PATTERN         IBBPBBP" >! eta.param
+echo "OUTPUT          eta.mpg" >> eta.param
+echo " " >> eta.param
+echo "BASE_FILE_FORMAT        PPM" >> eta.param
+echo "INPUT_CONVERT   giftoppm *" >> eta.param
+echo "GOP_SIZE        30" >> eta.param
+echo "SLICES_PER_FRAME  1" >> eta.param
+echo " " >> eta.param
+echo "INPUT_DIR       /tmp/mpeg" >> eta.param
+echo " " >> eta.param
+echo "INPUT" >> eta.param
+echo "eta.*.gif       [${START}-53]" >> eta.param
+echo "END_INPUT" >> eta.param
+echo " " >> eta.param
+echo "PIXEL           HALF" >> eta.param
+echo "RANGE           10" >> eta.param
+echo " " >> eta.param
+echo "PSEARCH_ALG     LOGARITHMIC" >> eta.param
+echo "BSEARCH_ALG     CROSS2" >> eta.param
+echo " " >> eta.param
+echo "IQSCALE         1" >> eta.param
+echo "PQSCALE         5" >> eta.param
+echo "BQSCALE         10" >> eta.param
+echo " " >> eta.param
+echo "REFERENCE_FRAME ORIGINAL" >> eta.param
+echo "FORCE_ENCODE_LAST_FRAME" >> eta.param
+
+mpeg_encode eta.param  
+</pre>
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<HTML><HEAD><TITLE>GEMPAK Scatterometer Examples</TITLE>
+<META NAME="BOOKMARK" CONTENT="GEMPAK Scatterometer Examples">
+<META NAME="AUTHOR" CONTENT="Steve Chiswell">
+<META NAME="KEYWORDS" CONTENT="Software, GEMPAK, Examples, Scatterometer">
+<META NAME="DESCRIPTION" CONTENT="GEMPAK Scatterometer Examples.">
+<link rel="stylesheet" href="../tutorial/md.css" type="text/css" media="screen, handheld" />
+
+</HEAD><BODY>
+
+<h1>Scatterometer wind and wave heights</h1>
+
+Scatterometer data may be displayed using either NMAP2 or GPMAP. For sites receiving the BUFR format products available via the <a href=>Unidata IDD</a>, the following satellite data for winds and wave height are supported in GEMPAK7:
+
+<p><b>This document is a holder.  These products have not yet been added to the Unidata IDD. </b></p>
+
+<h2>Live ASCT_HI Demo</h2>
+<p>
+<table><tr>
+<td>3 hours</td><td>6 hours</td><td>12 hours</td>
+</tr><tr>
+<td><a href=ascat_hi-live-3hr.gif><img src="ascat_hi-live-3hr.gif" width=300></a></td>
+<td><a href=ascat_hi-live-6hr.gif><img src="ascat_hi-live-6hr.gif" width=300></a></td>
+<td><a href=ascat_hi-live-12hr.gif><img src="ascat_hi-live-12hr.gif" width=300></a></td>
+</tr></table>
+</p>
+<h2>Live Jason2 SGWH2 Demo</h2>
+<p>
+<table><tr>
+<td>3 hours</td><td>6 hours</td><td>12 hours</td></tr>
+<tr>
+<td><a href=sgwh2-live-3hr.gif><img src="sgwh2-live-3hr.gif" width=300></a></td>
+<td><a href=sgwh2-live-6hr.gif><img src="sgwh2-live-6hr.gif" width=300></a></td>
+<td><a href=sgwh2-live-12hr.gif><img src="sgwh2-live-12hr.gif" width=300></a></td>
+</tr>
+</table>
+</p>
+
+<h2>ASCT_HI meteo A and B</h2>
+<b>gpmap input</b><br><code>ASCT=ASCT_HI|last|1440|6;12;18;24;30;36;42;48;54;60|30;6;26;24;21;23;5;17;8;14|31|.2;.4;1;5|0|0|1|1|</code>
+<br>
+<b>LDM pattern action</b><br> <code>EXP	(.*\.ascat$)	FILE	-log $SAT/ascatd_hi/\1</code>
+<br>
+<b>datatype.tbl</b><br>
+<code>ASCT_HI      $SAT/ascatd_hi           YYYYMMDDHHNN.ascat </code>
+<Br><br>
+<img src=asct_hi-europe.gif width=400>
+<img src=asct_hi-india.gif width=400>
+<img src=asct_hi-spacific.gif width=400>
+<img src=asct_hi-caribbean.gif width=400>
+<h1>Global ASCT_HI</h1>
+<img src=ASCT_HI-scat.gif width=800>
+<h2>OSCT_HI from NESDIS</h2>
+<code>OSCT=OSCT_HI|last|6;12;18;24;30;36;42;48;54;60|30;6;26;24;21;23;5;17;8;14|31|.2;.4;1;5|0|0|31|1</code>
+<br><br>
+<img src=OSCT_HI-europe.gif width=400>
+<img src=OSCT_HI-india.gif width=400>
+<img src=OSCT_HI-spacific.gif width=400>
+<img src=OSCT_HI-caribbean.gif width=400>
+<br><br>
+<h1>Global OSCT_HI</h1>
+<img src=OSCT_HI-globe.gif width=800>
+<h2>SGWH2 (Jason2)</h2>
+<b>gpmap input</b><br>
+<code>SGWH=SGWH2|last|3;6;9;12;15;18;21;24;27;30;33;36;39;45;70|31;6;26;24;21;22;23;20;19;17;16;15;14;28;7|31|0|0|1</code>
+<b>LDM pattern action</b><br>
+<code>
+EXP	(^jason2_.*)	FILE	-log $SAT/sgwh2/\1
+</code>
+<br>
+<b>datatype.tbl</b><br>
+<code>SGWH2        $SAT/sgwh2    jason2_YYYYMMDDHH.sgwh</code>
+<br><br>
+<img src=SGWH2-europe.gif width=400>
+<img src=SGWH2-india.gif width=400>
+<img src=SGWH2-spacific.gif width=400>
+<img src=SGWH2-caribbean.gif width=400>
+
+
+
+
+
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<HEAD>
+<TITLE>GPMAP Example Answer</TITLE>
+</HEAD>
+<BODY>
+<BASEFONT SIZE=2>
+<FONT SIZE=+1>
+<strong>
+<pre>
+% gpmap
+Creating process: gplt for queue 4550
+ MAP       Map color/dash/width              15/1/2
+ GAREA     Graphics area                     
+ PROJ      Map projection/angles/margins     
+ SATFIL    Satellite image filename(s)       
+ RADFIL    Radar image filename(s)           
+ LATLON    Line color/dash/width/label/inc   1
+ PANEL     Panel loc/color/dash/width/regn   0
+ TITLE     Title color/line/title            1/-2
+ TEXT      Text size/font/width/hw flag      1
+ CLEAR     Clear screen flag                 YES
+ DEVICE    Dev|name|X;Y|colormode|plotmode   XW
+ LUTFIL    Enhancement lookup table filenam  
+ STNPLT    Txc|mkc/mkt/mks/mkwd/hwfl|stnfil
+ Parameters requested: MAP,GAREA,PROJ,SATFIL,RADFIL,LATLON,PANEL,TITLE,TEXT,
+ CLEAR,DEVICE.
+ GEMPAK-GPMAP>proj = rad <IMG ALIGN=CENTER SRC="../images/settheprojection.gif">
+ GEMPAK-GPMAP>garea = dset <IMG ALIGN=CENTER SRC="../images/acceptregion.gif">
+ GEMPAK-GPMAP>radfil = $NIDS/BREF1_960221_0105
+ GEMPAK-GPMAP>$mapfil = hicnus.gsf<IMG ALIGN=CENTER SRC="../images/setthemapfile.gif">
+ GEMPAK-GPMAP>map = 5/1/2
+ GEMPAK-GPMAP>latlon = 0
+ GEMPAK-GPMAP>lutfil = default
+ GEMPAK-GPMAP>r <IMG ALIGN=CENTER SRC="../images/runtheprogram.gif">
+
+ GPMAP PARAMETERS:
+
+ Device:              xw                                                                      
+ Projection:          rad                                                                     
+ Graphics area name:  dset                                                                    
+ Map:                 5/1/2                                                                   
+ Title:               1/-2                                                                    
+ Panel:               0                                                                       
+ Latlon:              0                                                                       
+ Clear:               YES
+Enter <cr> to accept parameters or type EXIT:
+ Parameters requested: MAP,GAREA,PROJ,SATFIL,RADFIL,LATLON,PANEL,TITLE,TEXT,
+ CLEAR,DEVICE.
+ GEMPAK-GPMAP>map = 2
+ GEMPAK-GPMAP>clear = n <IMG ALIGN=CENTER SRC="../images/nodropping.gif">
+ GEMPAK-GPMAP>title = 0
+ GEMPAK-GPMAP>$mapfil = rd_int.gsf <IMG ALIGN=CENTER SRC="../images/setthemapfile.gif">
+ GEMPAK-GPMAP>r <IMG ALIGN=CENTER SRC="../images/runtheprogram.gif">
+  
+ <strong><FONT COLOR=#800000> . . . Program responses . . .</font></strong>
+
+ GEMPAK-GPMAP>map = 3
+ GEMPAK-GPMAP>$mapfil = rd_us.gsf <IMG ALIGN=CENTER SRC="../images/setthemapfile.gif">
+ GEMPAK-GPMAP>r <IMG ALIGN=CENTER SRC="../images/runtheprogram.gif">
+  
+ <strong><FONT COLOR=#800000> . . . Program responses . . .</font></strong>
+
+ GEMPAK-GPMAP>map = 23
+ GEMPAK-GPMAP>$mapfil = rd_state.gsf <IMG ALIGN=CENTER SRC="../images/setthemapfile.gif">
+ GEMPAK-GPMAP>r <IMG ALIGN=CENTER SRC="../images/runtheprogram.gif">
+  
+ <strong><FONT COLOR=#800000> . . . Program responses . . .</font></strong>
+
+ GEMPAK-GPMAP>map = 24
+ GEMPAK-GPMAP>$mapfil = river_major.gsf
+ GEMPAK-GPMAP>r <IMG ALIGN=CENTER SRC="../images/runtheprogram.gif">
+  
+ <strong><FONT COLOR=#800000> . . . Program responses . . .</font></strong>
+
+ GEMPAK-GPMAP>$mapfil = mepowo.gsf   <strong><FONT COLOR=#800000>Reset the mapfile</font></strong>
+ GEMPAK-GPMAP>e
+
+
+
+</pre>
+<FONT COLOR=#006000 SIZE=+4><blink>OR</blink></FONT>, you can specify the map files and attributes for
+a single invocation.
+<pre>
+ GEMPAK-GPMAP>$mapfil = hicnus.gsf+hiisus.usg+hiuhus.usg+hishus.usg+lorvus.usg+hipowo.cia 
+ GEMPAK-GPMAP>map = 5/1/2+2/1/1+3/1/1+23/1/1+24/1/1+8/1/2
+ GEMPAK-GPMAP>r
+
+
+</pre>
+ 
+
+
+<a href="../images/gpmap_example.gif"><img alt="view window" src="../images/viewindow.gif"></a>
+
+<p>
+<img src="../images/bluehorizontaline.gif">
+<pre>
+<a href="../gpmap.html#answer"><img alt="previous page" src="../images/return.gif" BORDER=0>
+</a>
+
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+
+</html>

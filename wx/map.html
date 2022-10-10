@@ -1,0 +1,35 @@
+<html>
+<head>
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+<title>Google Maps JavaScript API v3 Example: Ground Overlays</title>
+<link href="http://google-developers.appspot.com/maps/documentation/javascript/examples/default.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript">
+function initialize() {
+//23;-120;47.2634;-63.5664
+  var newark = new google.maps.LatLng(40.740, -74.18);
+  var imageBounds = new google.maps.LatLngBounds(
+      new google.maps.LatLng(23,-120),
+      new google.maps.LatLng(47.2634,-63.5664));
+
+  var myOptions = {
+    zoom: 5,
+    center: newark,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  }
+
+  var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+
+  var oldmap = new google.maps.GroundOverlay(
+      "nexrcomp.gif",
+      imageBounds);
+  oldmap.setMap(map);
+}
+</script>
+</head>
+<body onload="initialize()">
+  <div id="map_canvas"></div>
+</body>
+</html>
+

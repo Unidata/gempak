@@ -1,0 +1,132 @@
+<!doctype html><head><title>GEMPAK Help: sntser</title></head><body>
+<a href=../../help_and_documentation>GEMPAK Manual</a> | 
+<a href=../prog/>Programs</a><br><hr>
+<pre>
+SNTSER draws a time series at a sounding station.
+
+INPUT PARAMETERS
+ 
+    <a href=../parm/snfile.html>SNFILE</a>    Sounding data file
+    <a href=../parm/dattim.html>DATTIM</a>    Date/time
+    <a href=../parm/taxis.html>TAXIS</a>     Time1-time2-tinc;lbl;gln;tck
+    <a href=../parm/levels.html>LEVELS</a>    Vertical levels
+    <a href=../parm/vcoord.html>VCOORD</a>    Vertical coordinate type
+    <a href=../parm/snparm.html>SNPARM</a>    Sounding parameter list
+    <a href=../parm/stndex.html>STNDEX</a>    Stability indices
+    <a href=../parm/area.html>AREA</a>      Data area
+    <a href=../parm/ptype.html>PTYPE</a>     Plot type/h:w ratio/margins
+    <a href=../parm/yaxis.html>YAXIS</a>     Ystrt/ystop/yinc/lbl;gln;tck
+    <a href=../parm/border.html>BORDER</a>    Background color/type/width
+    <a href=../parm/line.html>LINE</a>      Color/type/width/label/smth/fltr/scflg
+    <a href=../parm/marker.html>MARKER</a>    Marker color/type/size/width/hw
+    <a href=../parm/title.html>TITLE</a>     Title color/line/title
+    <a href=../parm/clear.html>CLEAR</a>     Clear screen flag
+    <a href=../parm/panel.html>PANEL</a>     Panel loc/color/dash/width/regn
+    <a href=../parm/text.html>TEXT</a>      Size/fnt/wdth/brdr/N-rot/just/hw flg
+    <a href=../parm/device.html>DEVICE</a>    Device|name|x size;y size|color type
+ 
+ 
+
+PROGRAM DESCRIPTION
+ 
+    SNTSER draws a time series plot for a sounding station.
+
+    Only one parameter may be plotted at a time.  This parameter
+    may be a level parameter defined in <a href=../parm/snparm.html>SNPARM</a> or a stability
+    index defined in <a href=../parm/stndex.html>STNDEX</a>.  If both <a href=../parm/snparm.html>SNPARM</a> and <a href=../parm/stndex.html>STNDEX</a> have
+    values, <a href=../parm/snparm.html>SNPARM</a> will be used.  If a level parameter is
+    defined in <a href=../parm/snparm.html>SNPARM</a>, a vertical level must also be set in
+    <a href=../parm/levels.html>LEVELS</a>.
+
+    The type of y axis can be set in <a href=../parm/ptype.html>PTYPE</a>.  Either LIN or LOG
+    is valid.  The limits on the y axis can be set in <a href=../parm/yaxis.html>YAXIS</a>.
+
+    The times to plot are specified in <a href=../parm/dattim.html>DATTIM</a>.  Only those
+    times specified will be plotted.  Lines will be drawn
+    connecting the data points, provided that no more than two
+    points are missing between segments.
+
+    The time axis is specified in <a href=../parm/taxis.html>TAXIS</a> using the usual GEMPAK
+    date/time conventions, including FIRST and LAST.  If
+    <a href=../parm/taxis.html>TAXIS</a> has no increment, a reasonable value is chosen.
+    If <a href=../parm/taxis.html>TAXIS</a> is blank, the limits are taken from the first and
+    last valid times set in <a href=../parm/dattim.html>DATTIM</a>.
+
+    When the user desires multiple lines on the same graph, <a href=../parm/taxis.html>TAXIS</a>
+    and <a href=../parm/yaxis.html>YAXIS</a> should be explicitly set.  Then <a href=../parm/line.html>LINE</a>, <a href=../parm/marker.html>MARKER</a>, and
+    <a href=../parm/title.html>TITLE</a> can be varied for successive combinations of <a href=../parm/levels.html>LEVELS</a>,
+    <a href=../parm/vcoord.html>VCOORD</a>, <a href=../parm/area.html>AREA</a>, and <a href=../parm/snparm.html>SNPARM</a>.
+
+    The height-to-width ratio of the plot may be specified in
+    <a href=../parm/ptype.html>PTYPE</a> following a slash.  If no value is entered, a value of
+    0.5 will be used.
+
+ 
+EXAMPLES
+ 
+    1.	Plot the relative humidity at the 850 mb level for
+	station CHH for all of the times in the data set.  Use
+	hardware font 2 for the text and plot the relative
+	humidity using a solid green line.
+
+	<a href=../parm/snfile.html>SNFILE</a>	 =  $GEMPAK/data/HRCBOB.SND
+	<a href=../parm/dattim.html>DATTIM</a>	 =  all
+	<a href=../parm/taxis.html>TAXIS</a>	 =
+	<a href=../parm/levels.html>LEVELS</a>	 =  850
+	<a href=../parm/vcoord.html>VCOORD</a>	 =  pres
+	<a href=../parm/snparm.html>SNPARM</a>	 =  relh
+	<a href=../parm/stndex.html>STNDEX</a>	 =
+	<a href=../parm/area.html>AREA</a>	 =  @chh
+	<a href=../parm/ptype.html>PTYPE</a>	 =  lin
+	<a href=../parm/yaxis.html>YAXIS</a>	 =
+	<a href=../parm/border.html>BORDER</a>	 =  1
+	<a href=../parm/line.html>LINE</a>	 =  3
+	<a href=../parm/marker.html>MARKER</a>	 =  1
+	<a href=../parm/title.html>TITLE</a>	 =  1
+	<a href=../parm/clear.html>CLEAR</a>	 =  y
+	<a href=../parm/panel.html>PANEL</a>	 =  0
+	<a href=../parm/text.html>TEXT</a>	 =  1/2/1/hw
+	<a href=../parm/device.html>DEVICE</a>	 =  xw
+
+   2.	Plot the lifted index at CHH for the times between
+	18/00 and 20/00.  Plot the line with a thick short
+	dashed pattern.  Use asterisks for the markers.
+
+	<a href=../parm/snfile.html>SNFILE</a>	 =  $GEMPAK/data/HRCBOB.SND
+	<a href=../parm/dattim.html>DATTIM</a>	 =  all
+	<a href=../parm/taxis.html>TAXIS</a>	 =  18/00-20/00
+	<a href=../parm/levels.html>LEVELS</a>	 =  850
+	<a href=../parm/vcoord.html>VCOORD</a>	 =  pres
+	<a href=../parm/snparm.html>SNPARM</a>	 =
+	<a href=../parm/stndex.html>STNDEX</a>	 =  lift
+	<a href=../parm/area.html>AREA</a>	 =  @chh
+	<a href=../parm/ptype.html>PTYPE</a>	 =  lin
+	<a href=../parm/yaxis.html>YAXIS</a>	 =
+	<a href=../parm/border.html>BORDER</a>	 =  1
+	<a href=../parm/line.html>LINE</a>	 =  2/2/3
+	<a href=../parm/marker.html>MARKER</a>	 =  3/12
+	<a href=../parm/title.html>TITLE</a>	 =  1
+	<a href=../parm/clear.html>CLEAR</a>	 =  y
+	<a href=../parm/panel.html>PANEL</a>	 =  0
+	<a href=../parm/text.html>TEXT</a>	 =  1/2/1/hw
+	<a href=../parm/device.html>DEVICE</a>	 =  xw
+
+ERROR MESSAGES
+ 
+    [SNTSER  +2]    WARNING, invalid <a href=../parm/ptype.html>PTYPE</a>, LIN will be used.
+    [SNTSER  +1]    WARNING, more than one parameter specified.
+    [SNTSER  -1]    Fatal error initializing TAE.
+    [SNTSER  -2]    Fatal error reading TAE parameters.
+    [SNTSER  -3]    Fatal error initializing GEMPLT.
+    [SNTSER  -4]    Input for LEVEL is invalid.
+    [SNTSER  -5]    Error defining graph coordinates.
+    [SNTSER  -6]    No points found for plot.
+    [SNTSER  -7]    Session not interactive.
+    [SNTSER  -8]    No parameters entered.
+    [SNTSER  -9]    Parm ... not calculable.
+    [SNTSER -10]    Parm ... is a character.
+    [SNTSER -11]    <a href=../parm/ptype.html>PTYPE</a> chosen is invalid.
+</pre>
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>

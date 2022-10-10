@@ -1,0 +1,140 @@
+<!doctype html><head><title>GEMPAK Help: nexrcomp</title></head><body>
+<a href=../../help_and_documentation>GEMPAK Manual</a> | 
+<a href=../prog/>Programs</a><br><hr>
+<pre>
+NEXRCOMP creates a GINI format image composite of NEXRAD level III products.
+
+INPUT PARAMETERS
+ 
+    <a href=../parm/grdarea.html>GRDAREA</a>   Area covered by grid
+    <a href=../parm/proj.html>PROJ</a>      Map projection/angles/margins|drop flag
+    <a href=../parm/kxky.html>KXKY</a>      Number of grid points in x;y
+    <a href=../parm/cpyfil.html>CPYFIL</a>    Grid file whose navigation is to be used in new grid file | subare
+    <a href=../parm/gfunc.html>GFUNC</a>     Scalar grid
+    <a href=../parm/radtim.html>RADTIM</a>    Radar composite current/dattim
+    <a href=../parm/raddur.html>RADDUR</a>    Radar time window (minutes prior to <a href=../parm/radtim.html>RADTIM</a>)
+    <a href=../parm/radfrq.html>RADFRQ</a>    Update Frequency
+    <a href=../parm/stnfil.html>STNFIL</a>    Station information file
+    <a href=../parm/radmode.html>RADMODE</a>   Radar operational mode
+    <a href=../parm/satfil.html>SATFIL</a>    Radar image filename(s)
+    <a href=../parm/gdfile.html>GDFILE</a>    Grid file
+    <a href=../parm/ndval.html>NDVAL</a>     Replacement value for "ND" (default RMISSD)
+    <a href=../parm/maxgrd.html>MAXGRD</a>    Maximum number of grids
+    <a href=../parm/compress.html>COMPRESS</a>  Write output in compressed format
+ 
+ 
+
+PROGRAM DESCRIPTION
+ 
+   NEXRCOMP samples NEXRAD Level III (NIDS) products to a common
+   grid projection. Then creates a GINI format image with
+   appropriate header information using the grid as the
+   image raster, before saving the grid to a GEMPAK grid file.
+   NEXRCOMP is not limited by the traditional LLMXGD
+   limitation for grid files.
+
+   NEXRCOMP uses a suplemental table $GEMTBL/unidata/nex2gini.tbl to specify 
+   configurations for product identifiers so that the generated images
+   are correctly identified for enhancement tables in $GEMTBL/sat/imgtyp.tbl.
+
+   <a href=../parm/satfil.html>SATFIL</a> specifies the output GIF file. If the file already exists,
+   it is overwritten.
+
+   <a href=../parm/gdfile.html>GDFILE</a> specifies the output grid file. If the file does not already
+   exist, the file is created using the grid defined by <a href=../parm/cpyfil.html>CPYFIL</a>,
+   or if <a href=../parm/cpyfil.html>CPYFIL</a> is not defined then by <a href=../parm/proj.html>PROJ</a>, <a href=../parm/grdarea.html>GRDAREA</a>, and <a href=../parm/kxky.html>KXKY</a>.
+
+   <a href=../parm/cpyfil.html>CPYFIL</a> may provide either an existing grid file to read the projection
+   information from, or a grid number (#nnn) defined in grdnav.tbl.
+
+   <a href=../parm/proj.html>PROJ</a>, <a href=../parm/grdarea.html>GRDAREA</a>, and <a href=../parm/kxky.html>KXKY</a> define a grid navigation as in GDCFIL if
+   <a href=../parm/cpyfil.html>CPYFIL</a> is blank. The GINI format has additional restrictions
+   which limit which GEMPAK projections may be used. These are,
+   LCC tangent projection (eg la1 and la2 are the same), STR, and CED.
+
+   <a href=../parm/stnfil.html>STNFIL</a> is the station table which supplies radar IDs to be searched
+   for the composite. If <a href=../parm/stnfil.html>STNFIL</a> is blank, then 'nexrad.tbl' is used
+   by default.
+
+   <a href=../parm/gfunc.html>GFUNC</a> is the data parameter which the composite is created for.
+   The NEXRAD file naming is assumed to be such that the site identifier
+   and the product type are both present in the directory/file naming
+   structure. The datatype.tbl template NEXRIII is used to provide the
+   file naming convention used. If NEXRIII is not found in the template
+   database, a default directory structure for NEXRAD data is assumed
+   where the root directory $RAD/NIDS contains a tree structure supporting
+   %SITE%/%PROD%/%PROD%_YYYYMMDD_HHNN file names. The %SITE% template
+   will be replaced by the site IDs in the <a href=../parm/stnfil.html>STNFIL</a> table. The %PROD% will
+   be replaced by the <a href=../parm/gfunc.html>GFUNC</a> product name. The GEMPAK data/time template
+   will be used with <a href=../parm/radtim.html>RADTIM</a> and <a href=../parm/raddur.html>RADDUR</a> to determine which NEXRAD products
+   are in the valid time range.
+
+   <a href=../parm/radtim.html>RADTIM</a> determined the output grid time for the radar composite.
+   The value of <a href=../parm/radtim.html>RADTIM</a> may either be 'current', or a GEMPAK dattim.
+   If 'current' is selected for <a href=../parm/radtim.html>RADTIM</a>, then the current system clock
+   time is used. No data files later than <a href=../parm/radtim.html>RADTIM</a> will be included
+   in the composite. <a href=../parm/raddur.html>RADDUR</a> provides the time window previous to
+   <a href=../parm/radtim.html>RADTIM</a> in order to include data for each site. The time closest
+   to <a href=../parm/radtim.html>RADTIM</a> will be used. A default <a href=../parm/raddur.html>RADDUR</a> of 30 minutes is
+   used if <a href=../parm/raddur.html>RADDUR</a> is blank.
+
+   <a href=../parm/radfrq.html>RADFRQ</a> is the frequency in minutes at which the program will run.
+   When <a href=../parm/radfrq.html>RADFRQ</a> is defined, NEXRCOMP will wait for the specified time
+   before rerunning. This option is most useful when <a href=../parm/radtim.html>RADTIM</a> is
+   set to 'current'. When the program is sleeping, ctrl-c can be
+   used to exit the loop and return to the dynamic tutor. If
+   <a href=../parm/radfrq.html>RADFRQ</a> is not set, the dynamic tutor will be re-entered at the
+   end of processing the radar mosaic.
+
+   <a href=../parm/radmode.html>RADMODE</a> allows the user to select whether to include radar data
+   from sites operating in (P) precipitation/storm mode, (C) clear
+   air mode, and/or (M) maintainence mode. The default, if none
+   are specified is data from all 3 modes (PCM). Multiple modes
+   may be specified.
+
+   <a href=../parm/compress.html>COMPRESS</a> allows the user to optionally write the GINI file using PNG
+   compression for the image raster. The GINI header will identify the
+   image as a compressed product.
+
+
+EXAMPLES
+ 
+    1.  Create a 1km National composite of NEXRAD base reflectivity (N0Q).
+        Use the current time with a 30 minute window for data. Rerun the
+        mosaic creation continuously with a 5 minute wait period between
+        each update. Use the nexrad.tbl station table. Create the 
+        output file using the rad_YYYYMMDD_HHNN file name template.
+        Accept data from radars operating in precipitation and
+        clear air mode. 
+
+        <a href=../parm/grdarea.html>GRDAREA</a>  = 23;-120;47.2634;-63.5664
+        <a href=../parm/proj.html>PROJ</a>     = lcc/40;-100;40
+        <a href=../parm/kxky.html>KXKY</a>     = 4736;3000
+        <a href=../parm/cpyfil.html>CPYFIL</a>   =
+        <a href=../parm/gfunc.html>GFUNC</a>    = n0q
+        <a href=../parm/radtim.html>RADTIM</a>   = current
+        <a href=../parm/raddur.html>RADDUR</a>   = 30
+        <a href=../parm/radfrq.html>RADFRQ</a>   = 5
+        <a href=../parm/stnfil.html>STNFIL</a>   = nexrad.tbl
+        <a href=../parm/radmode.html>RADMODE</a>  = PC
+        <a href=../parm/satfil.html>SATFIL</a>   = rad_YYYYMMDD_HHNN
+        <a href=../parm/gdfile.html>GDFILE</a>   = YYYYMMDD_radr.gem
+	<a href=../parm/maxgrd.html>MAXGRD</a>   = 1000
+
+ERROR MESSAGES
+ 
+    [NEXRCOMP  +5] Mode rejected: ...
+    [NEXRCOMP  +4]  Write image ...
+    [NEXRCOMP  +3]  Using default station file ...
+    [NEXRCOMP  +2]  NEXRIII template not found using ...
+    [NEXRCOMP  +1]  Too old: ...
+    [NEXRCOMP  0]  Using:   ...
+    [NEXRCOMP  -1]  Fatal error initializing TAE.
+    [NEXRCOMP  -2]  Fatal error reading TAE parameters.
+    [NEXRCOMP  -3]  Fatal error initializing GEMPLT.
+    [NEXRCOMP  -4]  Failed to read grid projection ...
+    [NEXRCOMP  -8]  Station table ... not found
+</pre>
+<script src="/gempak/add_in.js" type="text/javascript"></script>
+</body>
+</html>
