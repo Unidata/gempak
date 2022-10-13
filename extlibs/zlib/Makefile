@@ -14,7 +14,7 @@ clean: _zlib_clean
 $(ZLIB):
 	( cd zlib; echo "making $@ in `pwd`" ; \
 		make -s distclean ; \
-		autoreconf --force --install ; \
+		( autoreconf --force --install || touch * ); \
 		./configure --static -s --prefix=$(OS_ROOT); \
 		make -s all install ; \
 		make -s distclean )
