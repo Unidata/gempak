@@ -21,6 +21,8 @@ C*					  0 = normal return		*
 C**									*
 C* Log:									*
 C* M. desJardins/GSFC	 8/86						*
+C* S. Guan   NCEP/NCO	11/22		Improve to handle all missing	*
+C*					data case.			*
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 C*
@@ -51,15 +53,28 @@ C
 C
 C*	Convert the unit digits to integers and compute height.
 C
-	DO WHILE ( ( ier .eq. 0 ) .and. ( nwnd .lt. 3 ) )
+	DO WHILE ( ( nwnd .lt. 3 ) )
 	    i = nwnd + 3
 	    CALL ST_INTG ( field (i:i), iunit, ier )
+	    nwnd = nwnd + 1
 	    IF  ( ier .eq. 0 ) THEN
-		nwnd = nwnd + 1
-		z    = ( (iten + iunit) * 1000 + iadd ) 
-		hght ( nwnd ) = PR_HGFM  ( z )
+	        z    = ( (iten + iunit) * 1000 + iadd )
+	        hght ( nwnd ) = PR_HGFM ( z )
+	    ELSE
+	        hght ( nwnd ) = RMISSD
 	    END IF
 	END DO
-C*
+C
+C*	Determine nwnd.
+C
+	DO  i = 5, 3, -1
+	    CALL ST_INTG ( field (i:i), iunit, ier )
+	    IF  ( ier .eq. 0 ) THEN
+	        nwnd = i - 2
+	        RETURN
+	    END IF
+	END DO
+	nwnd = 0
+
 	RETURN
 	END
