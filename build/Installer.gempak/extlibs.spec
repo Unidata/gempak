@@ -2,7 +2,7 @@
 %define __prelink_undo_cmd %{nil}
 %define gem_home /home/gempak/GEMPAK7
 %define prefix /home/gempak
-%define version 7.15.1
+%define version 7.15.2
 Name: gempak-extlibs
 Summary: Unidata Community GEMPAK
 Version: %{version}
