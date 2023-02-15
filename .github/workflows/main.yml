@@ -14,7 +14,7 @@ jobs:
         sudo apt-get update
         sudo apt install gcc build-essential libx11-dev libxt-dev libxext-dev libxft-dev libxtst-dev 
         sudo apt install flex byacc libmotif-common libmotif-dev libxpm4 libxpm-dev
-        sudo apt install gfortran-8
+        sudo apt install gfortran
         . Gemenviron.profile
         rm -f config/Makeinc.linux64_gfortran
         ln -s `pwd`/config/Makeinc.linux64_gfortran_ubuntu config/Makeinc.linux64_gfortran
