@@ -1,6 +1,16 @@
 <!-- markdownlint-configure-file {"MD024": { "siblings_only": true } } -->
 # Unidata Community GEMPAK Change Log
 
+## 7.15.2 (15 Feb 2023)
+
+This release merges upstream NCEP NAWIPS 7.15.2, whose CHANGELOG includes:
+
+- fix to gempak/source/bridge/ru/ruwhgt.f
+
+This release also includes the following GEMPAK Community changes:
+
+- Some fixes and cleanups to CI/build infrastructure.
+
 ## 7.15.1 (8 Oct 2022)
 
 This release merges upstream NCEP NAWIPS 7.15.1, whose CHANGELOG includes:
