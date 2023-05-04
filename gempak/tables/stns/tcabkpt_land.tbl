@@ -19,6 +19,7 @@
 ! M. Brennan/NHC         1/20   Updated for 2020 Season
 ! M. Brennan/NHC        12/20   Updated for 2021 Season
 ! M. Brennan/NHC        12/21   Updated for 2022 Season
+! M. Brennan/NHC         1/23   Updated for 2023 Season
 ! 
 !STID    STNM   NAME                             ST CO   LAT    LON  ELV PRI TBCHRS
 !(8)     (6)    (32)                            (2)(2)   (5)    (6)   (5)(2)   (20)
@@ -77,11 +78,9 @@ E_CP_SAB 104200 East_Cape_Sable                  FL US  2512  -8108     0 10
 FLAMINGO 104300 Flamingo                         FL US  2514  -8093     0 10
 CARD_SOU 105000 Card_Sound_Bridge                FL US  2529  -8037     0 10
 OCN_RF_2 104920 Ocean_Reef_Coastal               FL US  2536  -8031     0 10
-GOLDEN_B 105100 Golden_Beach                     FL US  2597  -8012     0 10
-HALLANDA 105200 Hallandale_Beach                 FL US  2599  -8012     0 10
-DEERFI_B 105300 Deerfield_Beach                  FL US  2632  -8007     0 10
-BOCA_RAT 105400 Boca_Raton                       FL US  2636  -8007     0 10
-JUPIT_IN 105500 Jupiter_Inlet                    FL US  2695  -8007     0 10
+MIA_BROW 105100 MiamiDade_Broward_County_Line    FL US  2598  -8012     0 10
+BROW_PBC 105300 Broward_Palm_Bch_Cnty_Line       FL US  2632  -8008     0 10
+PB_MARTN 105500 Palm_Bch_Martin_Cnty_Line        FL US  2697  -8008     0 10
 STUART   105600 Stuart                           FL US  2721  -8018     0 10
 FT_PIERC 105700 Fort_Pierce                      FL US  2745  -8028     0 10
 VERO_BEA 105800 Vero_Beach                       FL US  2765  -8035     0 10
@@ -297,6 +296,8 @@ PUNTA_HE 202450 Punta_Herrero                    -- MX  1931  -8745     0 20
 PUERTO_C 202500 Puerto_Costa_Maya                -- MX  1873  -8769     0 20
 CHETUMAL 202600 Chetumal                         -- MX  1849  -8829     0 20
 BELIZE_C 202700 Belize_City                      -- BH  1748  -8818     0 20
+DANGRIGA 202730 Dangriga                         -- BH  1697  -8822     0 20
+PLACENCI 202760 Placencia                        -- BH  1651  -8837     0 20
 P._BARRI 202800 P._Barrios                       -- GU  1587  -8883     0 20
 GUA/HON  202900 Border_of_Gua/Hon                -- --  1572  -8822     0 20
 PUNTASAL 202920 Punta_Sal                        -- HO  1590  -8760     0 20

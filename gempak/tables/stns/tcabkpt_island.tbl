@@ -12,6 +12,7 @@
 ! M. Brennan/NHC         4/19   Updated for 2019 Season
 ! M. Brennan/NHC         4/21   Updated for 2021 Season
 ! M. Brennan/NHC        12/21   Updated for 2022 Season
+! M. Brennan/NHC         1/23   Updated for 2023 Season
 !
 !STID    STNM   NAME                             ST CO   LAT    LON  ELV PRI TBCHRS  
 !(8)     (6)    (32)                            (2)(2)   (5)    (6)   (5)(2)   (20)
@@ -20,13 +21,15 @@
 !
 ANTIGUA  500100 Antigua                          -- AD  1706  -6179     0 50   
 BARBUDA  500150 Barbuda                          -- AD  1762  -6178     0 50 
-ARUBA    500200 Aruba                            -- AR  1250  -6997     0 50
-CURACAO  500230 Curacao                          -- CC  1218  -6900     0 50
-BONAIRE  500260 Bonaire                          -- BO  1219  -6821     0 50
+ARUBA    500200 Aruba                            -- AR  1250  -6997     0 50 
+CURACAO  500230 Curacao                          -- CC  1218  -6900     0 50 
+BONAIRE  500260 Bonaire                          -- BO  1219  -6821     0 50 
+BAHAMA_B 500295 Bahamas_(Bimini_only)            -- BA  2573  -7929     0 50 
 BAHAMA_C 500300 Bahamas_(Central)                -- BA  2400  -7550     0 50    
 BAHAM_AN 500400 Bahamas_(Andros_only)            -- BA  2440  -7790     0 50    
-BAHAM_NW 500450 Bahamas_(NW_not_Andros)          -- BA  2590  -7740     0 50    
+BAHAM_NW 500450 Bahamas_(NW_not_Andros)          -- BA  2500  -7710     0 50    
 BAHAM_SE 500500 Bahamas_(Southeast)              -- BA  2200  -7350     0 50    
+BAHAM_XW 500580 Bahamas_(Extreme_NW)             -- BA  2620  -7800     0 50 
 BARBADOS 500600 Barbados                         -- BR  1315  -5955     0 50    
 BERMUDA  500700 Bermuda                          -- BE  3230  -6475     0 50    
 GR_CAYMN 500800 Grand_Cayman                     -- GC  1932  -8126     0 50    
@@ -93,6 +96,9 @@ HAWAII   505000 Hawaii                           -- HI  1965 -15550     0 50
 KAUAI    505100 Kauai_Niihau                     -- HI  2206 -15951     0 50
 MAUI     505200 Maui_Molokai_Lanai_Kahoolawe     -- HI  2080 -15635     0 50
 OAHU     505300 Oahu                             -- HI  2146 -15800     0 50
+!
+! Add Catalina Island -- Dec 2022
+CATALINA 609500 Catalina_Island                  CA US  3339 -11842     0 50
 !
 ! Other Pacific islands
 !

@@ -71,6 +71,7 @@
 ! M. Brennan/NHC         1/20   Updated for 2020 Season
 ! M. Brennan/NHC        12/20   Updated for 2021 Season
 ! M. Brennan/NHC        12/21   Updated for 2022 Season
+! M. Brennan/NHC         1/23   Updated for 2023 Season
 !
 !STID    STNM   NAME                             ST CO   LAT    LON  ELV PRI TBCHRS  
 !(8)     (6)    (32)                            (2)(2)   (5)    (6)   (5)(2)   (20)
@@ -361,18 +362,16 @@ CARD_SOU 105000 Card_Sound_Bridge                FL US  2529  -8037     0 10  FL
 HOMESTEA 105020 Homestead                        FL US  2547  -8048     0 19
 CORAL_GA 105030 Coral_Gables                     FL US  2572  -8027     0 19
 SURFSIDE 105040 Surfside                         FL US  2588  -8013     0 19
-GOLDEN_B 105100 Golden_Beach                     FL US  2597  -8013     0 10  FL086FL011M651
+MIA_BROW 105100 MiamiDade_Broward_County_Line    FL US  2598  -8012     0 10  FL086FL011M651
          105112                                  FL US  2597  -8012     0 12            M671
-HALLANDA 105200 Hallandale_Beach                 FL US  2599  -8012     0 10  FL086FL011M651
          105212                                  FL US  2599  -8013     0 12            M671
 HOLLYWOO 105220 Hollywood                        FL US  2601  -8015     0 19
 DANIA    105230 Dania                            FL US  2605  -8014     0 19
 FORT_LAU 105240 Fort_Lauderdale                  FL US  2612  -8014     0 19
 POMPANO_ 105250 Pompano_Beach                    FL US  2624  -8013     0 19
 LIGHTHOU 105260 Lighthouse_Point                 FL US  2628  -8009     0 19
-DEERFI_B 105300 Deerfield_Beach                  FL US  2632  -8007     0 10  FL011FL099M651M650
+BROW_PBC 105300 Broward_Palm_Bch_Cnty_Line       FL US  2632  -8008     0 10  FL011FL099M651M650
          105312                                  FL US  2633  -8007     0 12            M670M671
-BOCA_RAT 105400 Boca_Raton                       FL US  2636  -8007     0 10  FL011FL099M651M650
 DELRAY_B 105420 Delray_Beach                     FL US  2646  -8007     0 19
 BOYNTON_ 105430 Boynton_Beach                    FL US  2653  -8007     0 19
 LANTANA  105440 Lantana                          FL US  2659  -8005     0 19
@@ -381,7 +380,7 @@ LAKE_WOR 105450 Lake_Worth                       FL US  2662  -8006     0 19
 WEST_PAL 105460 West_Palm_Beach                  FL US  2672  -8005     0 19
 JUNO_BEA 105470 Juno_Beach                       FL US  2688  -8005     0 19
 JUPITER  105480 Jupiter                          FL US  2693  -8009     0 19
-JUPIT_IN 105500 Jupiter_Inlet                    FL US  2695  -8006     0 10  FL099FL085M670M555
+PB_MARTN 105500 Palm_Bch_Martin_Cnty_Line        FL US  2697  -8008     0 10  FL099FL085M670M555
 HOBE_SOU 105520 Hobe_Sound                       FL US  2706  -8014     0 19
 STUART   105600 Stuart                           FL US  2721  -8018     0 10  FL085FL111M575
 JENSEN_B 105620 Jensen_Beach                     FL US  2725  -8023     0 19
@@ -845,6 +844,8 @@ PUERTO_C 202500 Puerto_Costa_Maya                -- MX  1873  -8769     0 20
          202530                                  -- MX  1885  -8803     0 25
 CHETUMAL 202600 Chetumal                         -- MX  1849  -8829     0 20
 BELIZE_C 202700 Belize_City                      -- BH  1748  -8818     0 20
+DANGRIGA 202730 Dangriga                         -- BH  1697  -8822     0 20
+PLACENCI 202760 Placencia                        -- BH  1651  -8837     0 20
 P._BARRI 202800 P._Barrios                       -- GU  1587  -8883     0 20
 GUA/HON  202900 Border_of_Gua/Hon                -- --  1572  -8822     0 20
 PUNTASAL 202920 Punta_Sal                        -- HO  1590  -8760     0 20
@@ -987,6 +988,9 @@ BONAIRE  500260 Bonaire                          -- BO  1219  -6821     0 50
          500270                                  -- BO  1226  -6837     0 51
          500280                                  -- BO  1219  -6823     0 55
          500290                                  -- BO  1203  -6824     0 55
+BAHAMA_B 500295 Bahamas_(Bimini_only)            -- BA  2573  -7929     0 50 
+         500296                                  -- BA  2570  -7929     0 51
+         500297                                  -- BA  2579  -7924     0 55
 BAHAMA_C 500300 Bahamas_(Central)                -- BA  2400  -7550     0 50    
          500310                                  -- BA  2285  -7485     0 51    
          500320                                  -- BA  2370  -7536     0 55    
@@ -1004,18 +1008,15 @@ BAHAM_AN 500400 Bahamas_(Andros_only)            -- BA  2440  -7790     0 50
          500430                                  -- BA  2520  -7821     0 55    
          500440                                  -- BA  2457  -7840     0 55    
          500445                                  -- BA  2375  -7757     0 55    
-BAHAM_NW 500450 Bahamas_(NW_not_Andros)          -- BA  2590  -7740     0 50    
-         500455                                  -- BA  2587  -7734     0 51    
-         500460                                  -- BA  2650  -7708     0 55    
-         500465                                  -- BA  2691  -7758     0 55    
-         500470                                  -- BA  2670  -7789     0 51    
-         500475                                  -- BA  2667  -7897     0 55    
+BAHAM_NW 500450 Bahamas_(NW_not_Andros)          -- BA  2500  -7710     0 50     
          500480                                  -- BA  2505  -7727     0 51    
          500485                                  -- BA  2502  -7759     0 55    
          500490                                  -- BA  2465  -7628     0 51    
-         500492                                  -- BA  2515  -7613     0 55    
-         500494                                  -- BA  2550  -7669     0 55    
-         500496                                  -- BA  2535  -7685     0 55    
+         500492                                  -- BA  2515  -7613     0 55 
+         500493                                  -- BA  2515  -7613     0 51 
+         500494                                  -- BA  2560  -7690     0 55 
+         500497                                  -- BA  2533  -7779     0 51
+         500498                                  -- BA  2586  -7789     0 55   
 BAHAM_SE 500500 Bahamas_(Southeast)              -- BA  2200  -7350     0 50    
          500510                                  -- BA  2093  -7311     0 51    
          500520                                  -- BA  2150  -7300     0 55    
@@ -1026,7 +1027,14 @@ BAHAM_SE 500500 Bahamas_(Southeast)              -- BA  2200  -7350     0 50
          500560                                  -- BA  2243  -7315     0 55    
          500565                                  -- BA  2220  -7427     0 51    
          500570                                  -- BA  2254  -7384     0 55    
-         500575                                  -- BA  2283  -7437     0 55    
+         500575                                  -- BA  2283  -7437     0 55 
+BAHAM_XW 500580 Bahamas_(Extreme_NW)             -- BA  2620  -7800     0 50 
+         500581                                  -- BA  2670  -7789     0 51    
+         500583                                  -- BA  2667  -7897     0 55 
+         500590                                  -- BA  2650  -7708     0 51
+         500592                                  -- BA  2691  -7758     0 55
+         500593                                  -- BA  2650  -7708     0 51 
+         500594                                  -- BA  2596  -7731     0 55   
 BARBADOS 500600 Barbados                         -- BR  1315  -5955     0 50    
          500610                                  -- BR  1285  -5957     0 51    
          500620                                  -- BR  1340  -5957     0 55    
@@ -1242,6 +1250,9 @@ PR_ED_IS 509400 Prince_Edward_Island             -- CN  4634  -6335     0 50
          509460 North_Cape                       -- CN  4705  -6400     0 51
          509471 West_Point                       -- CN  4665  -6440     0 51
          509480 Victoria                         -- CN  4622  -6348     0 55
+CATALINA 609500 Catalina_Island                  CA US  3339 -11842     0 50
+         609510                                  CA US  3345 -11855     0 51
+         609520                                  CA US  3330 -11830     0 55
 !
 !  Azores Islands and Cape Verde Islands - Added September 2016 - Matt Onderlinde - NHC
 !

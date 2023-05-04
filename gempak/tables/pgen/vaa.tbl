@@ -19,6 +19,7 @@
 ! B. Hebbard/NCEP	11/19	updates for NAWIPS-92 change verbiage for NEAR and QUICK
 ! B. Hebbard/NCEP	03/20	updates for NAWIPS-125 "NO ASH EXP" ==> "NO VA EXP"
 ! B. Hebbard/NCEP	04/20	updates for NAWIPS-125 "NOT AVBL" ==> "NOT PROVIDED" for NEAR only
+! B. Hebbard/NCEP	02/23	updates for NAWIPS-142 various UI changes & merge SAB's updates
 !
 !--------------------------------------------------------------------------
 ! VAA GUI Information
@@ -31,50 +32,65 @@ PATH   TXT_PATH     ./
 !                Orig Stn   VAAC        WMO ID      WMO Header Number
 !
 Header Information  KNES  /WASHINGTON    /XX        /20;21;22;23;24;25;26;27
-Header Information  PAWU  /ANCHORAGE     /AK        /20;21;22;23;24
-Header Information  CWAO  /MONTREAL      /CN        /01;02;03;04
-Header Information  SABM  /BUENOS AIRES  /AG        /01
-Header Information  ADRM  /DARWIN        /AU        /01;02;03;04
-Header Information  EGRR  /LONDON        /UK        /01
+Header Information  PAWU  /ANCHORAGE     /AK        /20;21;22;23;24;25
+Header Information  CWAO  /MONTREAL      /CN        /03;04
+Header Information  SABM  /BUENOS AIRES  /AG        /01;02;03;04;05
+Header Information  ADRM  /DARWIN        /AU        /01;02;03;04;05;06
+Header Information  EGRR  /LONDON        /UK        /01;02;03
 Header Information  RJTD  /TOKYO         /FE        /01
 Header Information  LFPW  /TOULOUSE      /XX        /01;02;03;04
-Header Information  NZKL  /WELLINGTON    /PS        /01
+Header Information  NZKL  /WELLINGTON    /PS        /01;02;03;04;05
 !
 !
+Information Source    GOES-16
+Information Source    GOES-17
+Information Source    HIMAWARI
+Information Source    MSG
 Information Source    AWC
+Information Source    557TH WW
 Information Source    MEXICO CITY MWO
 Information Source    TEGUCIGALPA MWO
 Information Source    PIARCO MWO
+Information Source    BOGOTA MWO
 Information Source    GUAYAQUIL MWO
-Information Source    GUAM WFO
-Information Source    HONOLULU MWO
-Information Source    GUAM NWS
-Information Source    GOES-13
-Information Source    GOES-11
-Information Source    GOES-12
-Information Source    MTSAT
-Information Source    FY-2D
-Information Source    GFS WINDS
-Information Source    NAM WINDS
-Information Source    VAFTAD
-Information Source    SEISMIC DETECTION
-Information Source    INFRASOUND DETECTION
-Information Source    RADIOSONDE
-Information Source    METAR
-Information Source    VOLCANO WEB CAMERA
-Information Source    PILOT REPORT
-Information Source    USGS
-Information Source    CENAPRED
-Information Source    COLIMA OBSERVATORY
-Information Source    GEOPHYSICAL INST
-Information Source    INSIVUMEH
-Information Source    MONTSERRAT OBSERVATORY
-Information Source    INETER
-Information Source    HVO
+Information Source    ANCHORAGE VAAC
+Information Source    MONTREAL VAAC
+Information Source    BUENOS AIRES VAAC
+Information Source    DARWIN VAAC
+Information Source    TOKYO VAAC
 Information Source    AVO
+Information Source    HVO
 Information Source    CVO
-Information Source    AFWA
-Information Source    Anchorage VAAC
+Information Source    HONOLULU MWO
+Information Source    GUAM WFO
+Information Source    VONA
+Information Source    WEBCAM
+Information Source    NWP MODELS
+Information Source    HYSPLIT
+Information Source    ASH3D
+Information Source    VOLCAT
+Information Source    METAR
+Information Source    RADIOSONDE
+Information Source    PILOT RPRT
+Information Source    NOTAM
+Information Source    ASHTAM
+Information Source    INETER
+Information Source    SERVICIO GEOLOGICO COLOMBIANO
+Information Source    INSIVUMEH
+Information Source    OVSICORI-UNA
+Information Source    MVO
+Information Source    GEOPHYSICAL INST
+Information Source    UWI SEISMIC RESEARCH CENTRE
+Information Source    USGS
+Information Source    SOCIAL MEDIA
+Information Source    SEISMIC
+Information Source    INFRASOUND
+Information Source    CENAPRED
+Information Source    COLIMA TOWERS
+Information Source    SNET
+Information Source    LIMA MWO
+Information Source    PANAMA MWO
+Information Source    ABBA
 !
 !
 Aviation Color Code   NOT GIVEN
@@ -90,19 +106,24 @@ Next Advisory   WILL BE ISSUED BY YYYYMMMDD/HHNNZ
 Next Advisory   NO FURTHER ADVISORIES
 !
 !
-Forecaster(s)   BALDWIN
-Forecaster(s)   BIRCH
-Forecaster(s)   EVANS
-Forecaster(s)   GALLINA
+Forecaster(s)   BROWN
+Forecaster(s)   CLARK
+Forecaster(s)   COVERDALE
+Forecaster(s)   FISHER
+Forecaster(s)   GATLING
+Forecaster(s)   HANNA
+Forecaster(s)   HOSLEY
+Forecaster(s)   KIM
 Forecaster(s)   KIBLER
-Forecaster(s)   LIDDICK
-Forecaster(s)   RUMINSKI
-Forecaster(s)   SALEMI
-Forecaster(s)   SCHWARTZ
-Forecaster(s)   SPAMPATA
-Forecaster(s)   STREETT
-Forecaster(s)   SWANSON
+Forecaster(s)   KONON
+Forecaster(s)   LEE
+Forecaster(s)   LEVINE
+Forecaster(s)   RAMIREZ
+Forecaster(s)   SAMBUCCI
 Forecaster(s)   TURK
+Forecaster(s)   VELASCO
+Forecaster(s)   ZENG
+Forecaster(s)   ZHU
 !
 !
 ! Identify which VAA form entries are used to make a VAA text product.
@@ -157,9 +178,9 @@ FORMAT  LOC_1  QUICK       <INFORMATION SOURCE>
 FORMAT  LOC_1  QUICK       <ERUPTION DETAILS>
 FORMAT  LOC_1  QUICK       <OBS ASH DATE/TIME>
 FORMAT  LOC_1  QUICK       <OBS ASH CLOUD>
-FORMAT  LOC_1  QUICK       <FCST ASH CLOUD +6H>
-FORMAT  LOC_1  QUICK       <FCST ASH CLOUD +12H>
-FORMAT  LOC_1  QUICK       <FCST ASH CLOUD +18H>
+FORMAT  LOC_1  QUICK       <FCST ASH CLOUD +6H>NOT AVBL
+FORMAT  LOC_1  QUICK       <FCST ASH CLOUD +12H>NOT AVBL
+FORMAT  LOC_1  QUICK       <FCST ASH CLOUD +18H>NOT AVBL
 FORMAT  LOC_1  QUICK       <REMARKS>WE HAVE RECEIVED INFORMATION SUGGESTING A POSSIBLE VA EMISSION. WE WILL GATHER FURTHER INFORMATION AND ISSUE A FULL ADVISORY AS SOON AS POSSIBLE.
 FORMAT  LOC_1  QUICK       <NEXT ADVISORY>AS SOON AS POSSIBLE
 !
@@ -168,7 +189,7 @@ FORMAT  LOC_1  NEAR        <LOCATION>
 FORMAT  LOC_1  NEAR        <AREA>
 FORMAT  LOC_1  NEAR        <SUMMIT ELEVATION>
 FORMAT  LOC_1  NEAR        <ADVISORY NUMBER>
-FORMAT  LOC_1  NEAR        <INFORMATION SOURCE>NOT PROVIDED
+FORMAT  LOC_1  NEAR        <INFORMATION SOURCE>
 FORMAT  LOC_1  NEAR        <ERUPTION DETAILS>NOT PROVIDED
 FORMAT  LOC_1  NEAR        <OBS ASH DATE/TIME>NOT PROVIDED
 FORMAT  LOC_1  NEAR        <OBS ASH CLOUD>NOT PROVIDED
@@ -195,14 +216,14 @@ FORMAT  LOC_1  TEST        <LOCATION>
 FORMAT  LOC_1  TEST        <AREA>
 FORMAT  LOC_1  TEST        <SUMMIT ELEVATION>
 FORMAT  LOC_1  TEST        <ADVISORY NUMBER>
-FORMAT  LOC_1  TEST        <INFORMATION SOURCE>TEST ... TEST
-FORMAT  LOC_1  TEST        <ERUPTION DETAILS>TEST - NO ERUPTION
+FORMAT  LOC_1  TEST        <INFORMATION SOURCE>
+FORMAT  LOC_1  TEST        <ERUPTION DETAILS>
 FORMAT  LOC_1  TEST        <OBS ASH DATE/TIME>
 FORMAT  LOC_1  TEST        <OBS ASH CLOUD>
 FORMAT  LOC_1  TEST        <FCST ASH CLOUD +6H>
 FORMAT  LOC_1  TEST        <FCST ASH CLOUD +12H>
 FORMAT  LOC_1  TEST        <FCST ASH CLOUD +18H>
-FORMAT  LOC_1  TEST        <REMARKS>TEST NO ERUPTION TEST TEST.
+FORMAT  LOC_1  TEST        <REMARKS>
 FORMAT  LOC_1  TEST        <NEXT ADVISORY>
 !
 FORMAT  LOC_1  EXER        <STATUS>EXER
@@ -211,19 +232,19 @@ FORMAT  LOC_1  EXER        <LOCATION>
 FORMAT  LOC_1  EXER        <AREA>
 FORMAT  LOC_1  EXER        <SUMMIT ELEVATION>
 FORMAT  LOC_1  EXER        <ADVISORY NUMBER>
-FORMAT  LOC_1  EXER        <INFORMATION SOURCE>EXERCISE ... EXERCISE
-FORMAT  LOC_1  EXER        <ERUPTION DETAILS>EXERCISE - NO ERUPTION
+FORMAT  LOC_1  EXER        <INFORMATION SOURCE>
+FORMAT  LOC_1  EXER        <ERUPTION DETAILS>
 FORMAT  LOC_1  EXER        <OBS ASH DATE/TIME>
 FORMAT  LOC_1  EXER        <OBS ASH CLOUD>
 FORMAT  LOC_1  EXER        <FCST ASH CLOUD +6H>
 FORMAT  LOC_1  EXER        <FCST ASH CLOUD +12H>
 FORMAT  LOC_1  EXER        <FCST ASH CLOUD +18H>
-FORMAT  LOC_1  EXER        <REMARKS>EXERCISE NO ERUPTION EXERCISE EXERCISE.
+FORMAT  LOC_1  EXER        <REMARKS>
 FORMAT  LOC_1  EXER        <NEXT ADVISORY>
 !
 !---------------------------------------------------------------------
 !
-! LOC_2 emtroes -- available on the "VAA Create" form.
+! LOC_2 entries -- available on the "VAA Create" form.
 !
 FORMAT  LOC_2  TEST        <VOLCANO>TEST
 FORMAT  LOC_2  TEST        <NUMBER>9999-99
