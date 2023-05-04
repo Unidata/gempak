@@ -1002,7 +1002,7 @@ Widget pgvolw_editCreate ( Widget parent )
 		   XmNtopOffset,        -2,
                    XmNleftAttachment,   XmATTACH_WIDGET,
 		   XmNleftWidget,	obtime_rc,
-		   XmNleftOffset,	30,
+		   XmNleftOffset,	28,
                    NULL);
 
 /*
@@ -1019,7 +1019,7 @@ Widget pgvolw_editCreate ( Widget parent )
 		   NULL );
 
 /*
- * EST check box
+ * EST (estimated, or "Est'd"check box
  */
     _estBtnW = XtVaCreateManagedWidget(" ",
 			xmToggleButtonWidgetClass,  info_form,
@@ -1038,13 +1038,13 @@ Widget pgvolw_editCreate ( Widget parent )
 		   XmNtopOffset,        16,
                    XmNleftAttachment,   XmATTACH_WIDGET,
 		   XmNleftWidget,	obtime_rc,
-		   XmNleftOffset,	30,
+		   XmNleftOffset,	28,
                    NULL);
 
 /*
- * EST label
+ * ESTi (estimated, or "Est'd" label
  */
-    XtVaCreateManagedWidget ("EST",
+    XtVaCreateManagedWidget ("Est'd",
 		   xmLabelWidgetClass,	info_form,
                    XmNtopAttachment,    XmATTACH_OPPOSITE_WIDGET,
 		   XmNtopWidget,	obtime_rc,
@@ -3765,8 +3765,9 @@ void pgvolw_createProd ( VG_DBStruct *vol, char **filter, char *text,
  * J. Wu/SAIC		04/06		add parameter in cst_wrap 	*
  * H. Zeng/SAIC		04/06	changed to use month index number	*
  * S. Jacobs/NCEP	10/12	Removed NNNN and preceding blank line	*
- * B. Hebbard/NCEP	11/19	If obsdate/time NIL, dflt OAC->NOT AVBL	*i
+ * B. Hebbard/NCEP	11/19	If obsdate/time NIL, dflt OAC->NOT AVBL	*
  * B. Hebbard/NCEP 	03/22	Choose OBS v. EST in prod text for init	*
+ * B. Hebbard/NCEP      02/23   F06/F12/F18: Show generated times always*
  ***********************************************************************/
 {
     int   vg_class, vg_type, adjust_min;
@@ -4078,10 +4079,11 @@ void pgvolw_createProd ( VG_DBStruct *vol, char **filter, char *text,
               strcat ( text, vol->elem.vol.info.fcst_06 );
               strcat ( text, "\n\n" );
 	 }
-	 else {
+	 else { 
 
-	      strcat ( text, filter[10] );
-	      strcat ( text, "\n\n"    );
+              strcat ( text, vol->elem.vol.info.fcst_06 );
+              strcat ( text, filter[10] );
+              strcat ( text, "\n\n" );
          }
     }
 
@@ -4096,11 +4098,12 @@ void pgvolw_createProd ( VG_DBStruct *vol, char **filter, char *text,
               strcat ( text, vol->elem.vol.info.fcst_12 );
               strcat ( text, "\n\n" );
 	 }
-	 else {
+         else {
 
-	      strcat ( text, filter[11] );
-	      strcat ( text, "\n\n"    );
-         }
+              strcat ( text, vol->elem.vol.info.fcst_12 );
+              strcat ( text, filter[11] );
+              strcat ( text, "\n\n" );
+	 }
     }
 
     if ( filter[12] != NULL ) { 
@@ -4114,11 +4117,12 @@ void pgvolw_createProd ( VG_DBStruct *vol, char **filter, char *text,
               strcat ( text, vol->elem.vol.info.fcst_18 );
               strcat ( text, "\n\n" );
 	 }
-	 else {
+         else {
 
-	      strcat ( text, filter[12] );
-	      strcat ( text, "\n\n"    );
-         }
+              strcat ( text, vol->elem.vol.info.fcst_18 );
+              strcat ( text, filter[12] );
+              strcat ( text, "\n\n" );
+	 }
     }
 
     if ( filter[13] != NULL ) { 

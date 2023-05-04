@@ -2735,10 +2735,12 @@ void pgsigw_phenllCb ( Widget wid, long clnt, XtPointer cbs )
  * H. Zeng/EAI          11/00   Added more rigid check to the values    *
  * E. Safford/SAIC	12/01	correct array bound write, use NO_VAL   *
  * J. Lewis/AWC         09/07   Prepend N,S,E,W to phenom lat/lon values*
+ * S. Guan/NCEP         02/23   Concurred and accepted the code change  *
+ *                              Larry Hinson/AWC did.                   * 
  ***********************************************************************/
 {
     char	*newlatlon,  chlatlon[MAX_LONSTR], chnum[MAX_LONSTR];
-    char	dirch[] = "N", chtmp[4];
+    char	dirch[] = "N", chtmp[MAX_LONSTR];
     int		length, iret, nlatlon;
 /*---------------------------------------------------------------------*/
 
