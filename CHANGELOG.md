@@ -1,6 +1,14 @@
 <!-- markdownlint-configure-file {"MD024": { "siblings_only": true } } -->
 # Unidata Community GEMPAK Change Log
 
+## 7.16.0 (4 May 2023)
+
+This release merges upstream NCEP NAWIPS 7.16.0, whose CHANGELOG includes:
+
+- NWS zones updated to March 2023
+- Small nmap2 fixes
+- Volcanic Ash Advisory updates
+
 ## 7.15.2 (15 Feb 2023)
 
 This release merges upstream NCEP NAWIPS 7.15.2, whose CHANGELOG includes:
