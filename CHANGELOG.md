@@ -1,6 +1,13 @@
 <!-- markdownlint-configure-file {"MD024": { "siblings_only": true } } -->
 # Unidata Community GEMPAK Change Log
 
+## 7.16.1 (21 June 2023)
+
+This release merges upstream NCEP NAWIPS 7.16.1, whose CHANGELOG includes:
+
+- Bug fix for upper air decoder (dcuair) where 21212 group is processed incorrectly.
+- Bug fix for “white spots/specks” graphic issue on accumulated QPF.
+
 ## 7.16.0 (4 May 2023)
 
 This release merges upstream NCEP NAWIPS 7.16.0, whose CHANGELOG includes:
