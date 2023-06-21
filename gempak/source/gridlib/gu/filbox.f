@@ -32,6 +32,7 @@ C* J. Fulson-Woytek/GSFC 						*
 C* M. desJardins/NMC	11/91	Adapted algorithm for GEMPAK 5.1	*
 C* S. Jacobs/EAI	 3/93	Fixed typo cver --> dver		*
 C* S. Guan/NCEP		 6/22	Fixed a divide by zero			*
+C* S. Guan/NCEP		 5/23	Set smallv to 0.0000001			*
 C************************************************************************
 	REAL		box (4), clvl (*)
 	INTEGER		lincol (*), lintyp (*), linwid (*)
@@ -48,7 +49,7 @@ C
      +					    ( xy2 - xy1 )
 C----------------------------------------------------------------------
 	iret = 0
-        smallv = 0.0001
+        smallv = 0.0000001
 	ilow = icornr
 	dlow = box (ilow)
 C
