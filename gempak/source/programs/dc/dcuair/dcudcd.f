@@ -41,6 +41,9 @@ C*				checked for 1-hour interval             *
 C* S. Chiswell/Unidata	 5/01	Added stid to RU_SHDR, RU_DECD, RU_DUPE	*
 C* B. Yin/SAIC           3/04   Changed SS_GTIM to CSS_GTIM             *
 C* m.gamazaychikov/SAIC	07/05	Added code for dropsonde wind cutoff hgt*
+C* S. Guan/NCEP          3/23   Decode both the 21212 group winds in    *
+C*                              the TTBB message and the following PPBB *
+C*                              winds.                                  * 
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 	INCLUDE		'BRIDGE.PRM'
@@ -233,6 +236,15 @@ C
      +					       stid, part, ihhmm, 
      +					       nlev, data, zwind, ier )
 			        IF ( ier .ne. 0 ) good = .false.
+C
+C*                              If there are the 21212 group winds in 
+C*                              the TTBB message, still decode the following
+C*                              PPBB winds.
+C
+                                ipres =  INDEX ( bultin ( 1: lenbul ), '21212' )
+                                IF  ( ipres .ne. 0 )  THEN
+                                    IF ( part .eq.  'PPBB' )  good  = .true.
+                                END IF    
 			    END IF
 			    IF ( good ) THEN
 C
