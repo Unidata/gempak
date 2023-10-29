@@ -14,6 +14,7 @@
  * m.gamazaychikov/SAIC 06/08		Added MAP_OFSH, _CNPR, _UNDF	*
  * S. Jacobs/NCEP	 4/10		Added MAP_NPSA			*
  * S. Jacobs/NCEP	 3/11		Modified MAXFLD: 16 -> 24	*
+ * B. Hebbard/NCEP	 7/23		Added American Samoa: "AS"	*
  ***********************************************************************/
 
 /*---------------------------------------------------------------------*/
@@ -262,7 +263,7 @@ char stateno[NUMSTNO][3] = {
 	"GU",		/* 54 */	/* Guam */
 	"MP",		/* 55 */	/* Marianas Islands */
 	"UM",		/* 56 */	/* Midway Islands */
-	"--",		/* 57 */	/* No name */
+	"AS",		/* 57 */	/* American Samoa */
 	"--",		/* 58 */	/* No name */
 	"--",		/* 59 */	/* No name */
 	"LC",		/* 60 */	/* Lake St. Clair */

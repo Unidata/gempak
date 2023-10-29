@@ -1798,6 +1798,7 @@ void dsp_getSingleTmOrdr ( int lp, int nsrcs, int frm, int plot_ordr[],
  * M. Li/GSC		07/01	subtract ndata by the "off" grid source	*
  * E. Safford/GSC	07/01	revise noff calculation    		*
  * M. Li/SAIC		03/08	Added case CAT_ENS			*
+ * S. Guan/NCO          09/23   adjust *ndata                           *
  ***********************************************************************/
 {
 dsrc_t	*dsrc, *dom;
@@ -1822,6 +1823,7 @@ int	catg_ordr[] = {CAT_IMG, CAT_GRD, CAT_ENS, CAT_SFC, CAT_SND, CAT_SFF,
 
     if (nsrcs == 1) {
 	plot_ordr[0] = 0;
+	cnt++;
 	ngds++;
     }
     else {
@@ -1889,6 +1891,10 @@ int	catg_ordr[] = {CAT_IMG, CAT_GRD, CAT_ENS, CAT_SFC, CAT_SND, CAT_SFF,
      *
      */
     *ndata = nsrcs - ngds - noff + 1;
+    /*
+     * Adjust *ndata 
+     */
+    if (  *ndata > cnt ) *ndata = cnt;
 
 }
 
