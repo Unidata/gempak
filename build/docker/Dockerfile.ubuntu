@@ -11,8 +11,8 @@ RUN apt-get install wget python-pip python-dev build-essential -y
 RUN pip install --upgrade pip 
 
 # Latest source code
-RUN wget https://www.unidata.ucar.edu/downloads/gempak/latest/gempak-7.16.1.deb
-RUN dpkg -i gempak-7.16.1.deb
+RUN wget https://www.unidata.ucar.edu/downloads/gempak/latest/gempak-7.17.0.deb
+RUN dpkg -i gempak-7.17.0.deb
 
 # Python AWIPS Data Acess Framework
 RUN pip install six shapely numpy
