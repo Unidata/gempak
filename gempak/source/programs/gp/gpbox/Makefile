@@ -21,7 +21,8 @@ LIBINC = \
 	$(CGEMLIB) \
 	$(APPL) \
 	$(SYSLIB) \
-	$(GEMLIB)
+	$(GEMLIB) \
+	$(LIBREADLINE)
 
 LIBINC_NC = \
 	$(GPLT_NC) \
@@ -33,7 +34,8 @@ LIBINC_NC = \
 	$(GN) \
 	$(CGEMLIB) \
 	$(GPLT) \
-	$(GEMLIB)
+	$(GEMLIB) \
+	$(LIBREADLINE)
 
 PROG_NC = $(PROG)_nc
 

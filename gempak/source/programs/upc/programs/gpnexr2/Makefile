@@ -30,7 +30,8 @@ LIBINC = \
 	$(NETCDF) \
         $(XMLLIB) \
         $(ZLIB) \
-        $(CGEMLIB)
+        $(CGEMLIB) \
+	$(LIBREADLINE)
 
 LIBINC_NC = \
 	$(GPLT_NC) \
@@ -49,7 +50,8 @@ LIBINC_NC = \
         $(XMLLIB) \
         $(ZLIB) \
         $(LIBBZ2) \
-        $(CGEMLIB)
+        $(CGEMLIB) \
+	$(LIBREADLINE)
 
 LIBINC_PNG = \
 	$(GPLT_NC) \
@@ -68,7 +70,8 @@ LIBINC_PNG = \
         $(XMLLIB) \
         $(ZLIB) \
         $(LIBBZ2) \
-        $(CGEMLIB)
+        $(CGEMLIB) \
+	$(LIBREADLINE)
 
 LIBINC_GF = \
 	$(GPLT_NC) \
@@ -85,7 +88,8 @@ LIBINC_GF = \
 	$(PNGLIB) \
         $(XMLLIB) \
         $(ZLIB) \
-        $(CGEMLIB)
+        $(CGEMLIB) \
+	$(LIBREADLINE)
 
 LIBINC_XW = \
 	$(GPLT_NC) \
@@ -102,7 +106,8 @@ LIBINC_XW = \
 	$(PNGLIB) \
         $(XMLLIB) \
         $(ZLIB) \
-        $(CGEMLIB)
+        $(CGEMLIB) \
+	$(LIBREADLINE)
 
 LIBINC_GIF = \
 	$(GPLT_NC) \
@@ -119,7 +124,8 @@ LIBINC_GIF = \
 	$(PNGLIB) \
         $(XMLLIB) \
         $(ZLIB) \
-        $(CGEMLIB)
+        $(CGEMLIB) \
+	$(LIBREADLINE)
 
 LIBINC_PS = \
 	$(GPLT_NC) \
@@ -138,7 +144,8 @@ LIBINC_PS = \
         $(XMLLIB) \
         $(ZLIB) \
         $(LIBBZ2) \
-        $(CGEMLIB)
+        $(CGEMLIB) \
+	$(LIBREADLINE)
 
 PROG_NC = $(PROG)_nc
 PROG_GF = $(PROG)_gf

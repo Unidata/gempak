@@ -24,7 +24,8 @@ LIBINC = \
 	$(APPL) \
 	$(SYSLIB) \
 	$(CGEMLIB) \
-	$(GEMLIB)
+	$(GEMLIB) \
+	$(LIBREADLINE)
 
 CFLAGS = $(COPT) $(BUFRFLAGS)
 
