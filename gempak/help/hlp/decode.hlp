@@ -17,5 +17,5 @@ DECODER OPTIONS
 	-a iadstn	Set the number of additional stations
 	-m maxtim	Set the maximum number of times
 	-e PARM=value	Set the environment variable PARM to value
-        -w iwndht	Cutoff height for dropsonde "close-to-surface" winds
+	-w iwndht	Cutoff height for dropsonde "close-to-surface" winds
 
