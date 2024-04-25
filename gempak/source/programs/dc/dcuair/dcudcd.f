@@ -241,10 +241,10 @@ C*                              If there are the 21212 group winds in
 C*                              the TTBB message, still decode the following
 C*                              PPBB winds.
 C
-                                ipres =  INDEX ( bultin ( 1: lenbul ), '21212' )
-                                IF  ( ipres .ne. 0 )  THEN
-                                    IF ( part .eq.  'PPBB' )  good  = .true.
-                                END IF    
+								ipres =  INDEX ( bultin ( 1: lenbul ), '21212' )
+								IF  ( ipres .ne. 0 )  THEN
+									IF ( part .eq.  'PPBB' )  good  = .true.
+								END IF
 			    END IF
 			    IF ( good ) THEN
 C
