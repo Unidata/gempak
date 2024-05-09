@@ -19,7 +19,7 @@ echo " *** Getting sample AR4 files $file_list"
 for f1 in $file_list
 do
     if ! test -f $f1; then
-	wget ftp://ftp.unidata.ucar.edu/pub/netcdf/sample_data/ar4/$f1.gz
+	wget https://resources.unidata.ucar.edu/netcdf/sample_data/ar4/$f1.gz
 	gunzip $f1.gz
     fi
 done

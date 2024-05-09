@@ -68,7 +68,7 @@ full functionality. (See \ref architecture).
 - \ref build_classic
 - \ref build_hdf4
 - \ref build_parallel
-- <a class="el" href="http://www.unidata.ucar.edu/netcdf/docs/netcdf-fortran-install.html" >Building netCDF-Fortran Libraries</a>
+- <a class="el" href="https://docs.unidata.ucar.edu/netcdf-c/current/building_netcdf_fortran.html" >Building netCDF-Fortran Libraries</a>
 - \ref configure_options
 
 \subsection sub CMake and Windows support
@@ -83,9 +83,12 @@ libraries. (And, optionally, the szlib library). Versions required are
 at least HDF5 1.8.8, zlib 1.2.5, and curl 7.18.0 or later.
 (Optionally, if building with szlib, get szip 2.0 or later.)
 
-HDF5 1.8.12 and zlib 1.2.8 packages are available from the <a
-href="ftp://ftp.unidata.ucar.edu/pub/netcdf/netcdf-4">netCDF-4 ftp
-site</a>. If you wish to use the remote data client code, then you
+These packages are available at:
+
+https://resources.unidata.ucar.edu/netcdf/netcdf-4/
+
+
+If you wish to use the remote data client code, then you
 will also need libcurl, which can be obtained from the <a
 href="http://curl.haxx.se/download.html">curl website</a>.
 
@@ -138,7 +141,7 @@ is being built.
 
 Note that for shared libraries, you may need to add the install
 directory to the LD_LIBRARY_PATH environment variable. See
-the <a href="http://www.unidata.ucar.edu/netcdf/docs/faq.html#Shared%20Libraries">netCDF
+the <a href="https://docs.unidata.ucar.edu/netcdf-c/current/faq.html#Shared-Libraries">netCDF
 FAQ</a> for more details on using shared libraries.
 
 If you are building HDF5 with szip, then include the <CODE>--with-szlib=</CODE>
@@ -291,7 +294,7 @@ make check install
 If parallel I/O access to netCDF classic and 64-bit offset files is
 also needed, the parallel-netcdf library should also be installed.
 (Note: the previously recommended <a
-href=ftp://ftp.unidata.ucar.edu/pub/netcdf/contrib/pnetcdf.h>replacement
+href=https://resources.unidata.ucar.edu/netcdf/contrib/pnetcdf.h>replacement
 pnetcdf.h</a> should no longer be used.)  Then configure netCDF with the
 "--enable-pnetcdf" option.
 
@@ -334,7 +337,7 @@ Note: --disable prefix indicates that the option is normally enabled.
 <tr><td>--enable-netcdf-4<td>build with netcdf-4<td>HDF5 and zlib
 <tr><td>--enable-netcdf4<td>synonym for enable-netcdf-4
 <tr><td>--enable-hdf4<td>build netcdf-4 with HDF4 read capability<td>HDF4, HDF5 and zlib
-<tr><td>--enable-hdf4-file-tests<td>test ability to read HDF4 files<td>selected HDF4 files from Unidata ftp site
+<tr><td>--enable-hdf4-file-tests<td>test ability to read HDF4 files<td>selected HDF4 files from Unidata
 <tr><td>--enable-pnetcdf<td>build netcdf-4 with parallel I/O for classic and
                           64-bit offset files using parallel-netcdf
 <tr><td>--enable-extra-example-tests<td>Run extra example tests<td>--enable-netcdf-4,GNU sed
@@ -358,7 +361,7 @@ Note: --disable prefix indicates that the option is normally enabled.
 			  The benchmarks are a
                           bunch of extra tests, which are timed. We use these
                           tests to check netCDF performance.
-    <td>sample data files from the Unidata ftp site
+    <td>sample data files from the Unidata resources site
 <tr><td>--disable-extreme-numbers
 <td>don't use extreme numbers during testing, such as MAX_INT - 1<td>
 <tr><td>--enable-dll<td>build a win32 DLL<td>mingw compiler

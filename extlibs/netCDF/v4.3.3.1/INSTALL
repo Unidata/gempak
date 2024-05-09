@@ -68,10 +68,10 @@ libraries. (And, optionally, the szlib library). Versions required are
 at least HDF5 1.8.8, zlib 1.2.5, and curl 7.18.0 or later.
 (Optionally, if building with szlib, get szip 2.0 or later.)
 
-HDF5 1.8.9 and zlib 1.2.7 packages are available from the netCDF-4 ftp
-site:
+These packages are available at:
 
-  ftp://ftp.unidata.ucar.edu/pub/netcdf/netcdf-4
+  https://resources.unidata.ucar.edu/netcdf/netcdf-4
+
 
 If you wish to use the remote data client code, then you will also
 need libcurl, which can be obtained from the curl website:
@@ -122,7 +122,7 @@ Note that for shared libraries, you may need to add the install
 directory to the LD_LIBRARY_PATH environment variable. See the netCDF
 FAQ:
 
-  http://www.unidata.ucar.edu/netcdf/docs/faq.html#Shared%20Libraries
+  https://docs.unidata.ucar.edu/netcdf-c/current/faq.html#Shared-Libraries
 
 for more details on using shared libraries.
 
@@ -152,7 +152,7 @@ It is possible to build the netCDF C libraries and utilities so that
 only the netCDF classic and 64-bit offset formats are supported, or
 the remote data access client is not built.  (See
 
-  http://www.unidata.ucar.edu/netcdf/docs/netcdf_format.html
+  https://docs.unidata.ucar.edu/netcdf-c/current/faq.html#formatsdatamodelssoftwarereleases
 
 for more information about the netCDF format variants.  See the
 netCDF-DAP site
@@ -217,7 +217,7 @@ If the HDF5 used by netCDF has been built with parallel I/O, then
 netCDF will also be built with support for parallel I/O. This allows
 parallel I/O access to netCDF-4/HDF5 files.  (See
 
-  http://www.unidata.ucar.edu/netcdf/docs/netcdf_format.html
+  https://docs.unidata.ucar.edu/netcdf-c/current/faq.html#formatsdatamodelssoftwarereleases
 
 for more information about the netCDF format variants.)
 
@@ -225,7 +225,7 @@ If parallel I/O access to netCDF classic and 64-bit offset files is
 also needed, the parallel-netcdf library should also be installed,
 (and the replacement pnetcdf.h at
 
-  ftp://ftp.unidata.ucar.edu/pub/netcdf/contrib/pnetcdf.h
+  https://resources.unidata.ucar.edu/netcdf/contrib/pnetcdf.h
 
 must be used). Then configure netCDF with the --enable-pnetcdf flag.
 

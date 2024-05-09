@@ -57,7 +57,7 @@ distribution.
 
 The latest version of this document, and the language specific guides,
 can be found at the netCDF web site,
-http://www.unidata.ucar.edu/netcdf/docs, along with extensive
+https://docs.unidata.ucar.edu/netcdf-c/current/, along with extensive
 additional information about netCDF, including pointers to other
 software that works with netCDF data.
 
@@ -98,25 +98,21 @@ data is designed to be independent of the computer on which the data
 were written.
 
 Unidata supports the netCDF interfaces for C (see <a
-href="http://www.unidata.ucar.edu/netcdf/docs/netcdf-c.html#Top" >NetCDF C Interface
-Guide</a>), FORTRAN 77 (see <a
-href="http://www.unidata.ucar.edu/netcdf/docs/netcdf-f77.html#Top" >NetCDF Fortran 77
-Interface Guide</a>), FORTRAN 90 (see <a
-href="http://www.unidata.ucar.edu/netcdf/docs/netcdf-f90.html#Top" >NetCDF Fortran 90
+href="https://docs.unidata.ucar.edu/netcdf-c/current/" >NetCDF C Interface
+Guide</a>), FORTRAN 77 & 90 (see <a
+href="https://docs.unidata.ucar.edu/netcdf-fortran/current/" >NetCDF Fortran
 Interface Guide</a>), and C++ (see <a
-href="http://www.unidata.ucar.edu/netcdf/docs/netcdf-cxx.html#Top" >NetCDF C++ Interface
+href="https://docs.unidata.ucar.edu/netcdf-cxx/current/" >NetCDF C++ Interface
 Guide</a>).
 
 The netCDF library is supported for various UNIX operating systems. A
 MS Windows port is also available. The software is also ported and
 tested on a few other operating systems, with assistance from users
 with access to these systems, before each major release. Unidata's
-netCDF software is freely available <a
-href="ftp://ftp.unidata.ucar.edu/pub/netcdf">via FTP</a> to encourage
-its widespread use.
+netCDF software is freely available at: https://downloads.unidata.ucar.edu/netcdf/
 
 For detailed installation instructions, see <a
-href="http://www.unidata.ucar.edu/netcdf/docs/building.html" >Building NetCDF</a>.
+href="https://docs.unidata.ucar.edu/netcdf-c/current/netCDF-CMake.html" >Building NetCDF</a>.
 
 \section netcdf_format The netCDF File Format
 
@@ -970,8 +966,8 @@ If present, 'Conventions' is a global attribute that is a character
 array for the name of the conventions followed by the
 dataset. Originally, these conventions were named by a string that was
 interpreted as a directory name relative to the directory
-/pub/netcdf/Conventions/ on the host ftp.unidata.ucar.edu. The web
-page http://www.unidata.ucar.edu/netcdf/conventions.html is now the
+/pub/netcdf/Conventions/ on the defunct unidata ftp site. The web
+page https://docs.unidata.ucar.edu/netcdf-c/current/attribute_conventions.html is now the
 preferred and authoritative location for registering a URI reference
 to a set of conventions maintained elsewhere. The FTP site will be
 preserved for compatibility with existing references, but authors of
