@@ -9,7 +9,7 @@ echo ""
 echo "Getting radar 2D data file from Unidata FTP site..."
 file=20070803-2300_tile1-2d.nc3
 if ! test -f $file; then
-    wget ftp://ftp.unidata.ucar.edu/pub/netcdf/sample_data/$file
+    wget https://resources.unidata.ucar.edu/netcdf/sample_data/$file
 fi
 
 echo "*** Running bm_file for parallel access on $file..."

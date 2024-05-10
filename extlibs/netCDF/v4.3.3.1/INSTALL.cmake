@@ -48,7 +48,7 @@ It is possible to build the netCDF C libraries and utilities so that
 only the netCDF classic and 64-bit offset formats are supported, or
 the remote data access client is not built.  (See
 
-  http://www.unidata.ucar.edu/netcdf/docs/netcdf_format.html
+  https://docs.unidata.ucar.edu/netcdf-c/current/faq.html#formatsdatamodelssoftwarereleases
 
 for more information about the netCDF format variants.  See the
 netCDF-DAP site
@@ -125,7 +125,7 @@ If the HDF5 used by netCDF has been built with parallel I/O, then
 netCDF will also be built with support for parallel I/O. This allows
 parallel I/O access to netCDF-4/HDF5 files.  (See
 
-  http://www.unidata.ucar.edu/netcdf/docs/netcdf_format.html
+  https://docs.unidata.ucar.edu/netcdf-c/current/faq.html#formatsdatamodelssoftwarereleases
 
 for more information about the netCDF format variants.)
 
@@ -133,7 +133,7 @@ If parallel I/O access to netCDF classic and 64-bit offset files is
 also needed, the parallel-netcdf library should also be installed,
 (and the replacement pnetcdf.h at
 
-  ftp://ftp.unidata.ucar.edu/pub/netcdf/contrib/pnetcdf.h
+  https://resources.unidata.ucar.edu/netcdf/contrib/pnetcdf.h
 
 must be used). Then configure netCDF with the --enable-pnetcdf flag.
 

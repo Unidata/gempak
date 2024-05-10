@@ -58,13 +58,11 @@ the COPYRIGHT file accompanying the software
 To install this package, please see the file INSTALL in the
 distribution, or the (usually more up-to-date) document:
 
-* http://www.unidata.ucar.edu/netcdf/docs/building.html
+* https://docs.unidata.ucar.edu/netcdf-c/current/netCDF-CMake.html
 
-The netCDF-3 C and FORTRAN-77 interfaces are documented in man(1)
-pages at
+The netCDF FORTRAN interfaces are documented at
 
-* http://www.unidata.ucar.edu/netcdf/docs/netcdf-man-3.html
-* http://www.unidata.ucar.edu/netcdf/docs/netcdf-man-3f.html
+* https://docs.unidata.ucar.edu/netcdf-fortran/current/
 
 User's Guides are also available in several forms from the same
 location.

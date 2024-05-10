@@ -10,7 +10,7 @@ intended to illustrate the use of the netCDF-4 C API.
 This is part of the netCDF package. Copyright 2006-2011 University
 Corporation for Atmospheric Research/Unidata. See COPYRIGHT file for
 conditions of use. Full documentation of the netCDF can be found at
-http://www.unidata.ucar.edu/software/netcdf/docs.
+https://docs.unidata.ucar.edu/netcdf-c.
 */
 #include <stdlib.h>
 #include <stdio.h>
