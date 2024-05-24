@@ -24,6 +24,8 @@ C* T. Piper/SAIC        01/08   Added GD_INIT; removed from IN_BDTA     *
 C* m.gamazaychikov/SAIC 06/08   Added remnlo to GH_RDAD CS		*
 C* X. Guo/CWS           03/10   Used Post-Tropical instead of Extratrop *
 C*                              and Remnant Low. Removed remnlo         *
+C* B. Hebbard/SDB       02/24   Changed 2-digit-year century break from *
+C*                              2025/2026 to 2040/2041 to match others  *
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 C*
@@ -174,7 +176,9 @@ C
                 CALL ST_LSTR( strnam, lenn, ier )
                 IF ( lenn .eq. 6 ) THEN
                     CALL ST_NUMB ( strnam(5:6), istrm, ier )
-                    IF ( istrm .le. 25 ) THEN
+C                   Two-digit-year century break is currently 2040/2041;
+C                   will require pushback before then.
+                    IF ( istrm .le. 40 ) THEN
                         chyy = '20'
                       ELSE
                         chyy = '19'
