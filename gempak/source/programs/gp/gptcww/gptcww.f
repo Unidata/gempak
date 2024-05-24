@@ -32,7 +32,9 @@ C* Krautkramer	        04/10   Added variable definition,  calculate   *
 C*				the correct first tau, pass the inital  *
 C*                              tau to GC_TC2VG                         *
 C* X. Guo/CWS		05/10   Added idays to GH_TCWW			*
-C* S. Jacobs/NCEP	 6/10	Re-added flag for plotting the scale	*
+C* S. Jacobs/NCEP        6/10   Re-added flag for plotting the scale    *
+C* B. Hebbard/SDB       02/24   Changed 2-digit-year century break from *
+C*                              2025/2026 to 2040/2041 to match others  *
 C************************************************************************
 	INCLUDE		'GEMPRM.PRM'
 C*
@@ -260,7 +262,9 @@ C
                 CALL ST_LSTR( strnam, lenn, ier )
                 IF ( lenn .eq. 6 ) THEN
                     CALL ST_NUMB ( strnam(5:6), istrm, ier )
-                    IF ( istrm .le. 25 ) THEN
+C                   Two-digit-year century break is currently 2040/2041;
+C                   will require pushback before then.
+                    IF ( istrm .le. 40 ) THEN
                         chyy = '20'
                       ELSE
                         chyy = '19'
