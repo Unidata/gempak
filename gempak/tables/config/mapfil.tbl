@@ -48,6 +48,7 @@
 ! S. Jacobs/NCEP	11/12	Added akarea.hpc
 ! M. Sardi/NHC           2/18   Added hioffep.ncp (NHC EPAC Offshore Zones)
 ! B. Hebbard/NCEP       11/20   Added tpznus.nws (NWS US Public Forecast Zones))
+! B. Hebbard/NCEP        3/24   Changed US Interstates (inter) default to "hi"
 !
 !-----------------------------------------------------------------------------
 !ALIAS       DESCRIPTION              MAP FILE NAME
@@ -75,7 +76,7 @@ county       US counties, NWS         hicnus.nws
 zones        US zones, NWS            hiznus.nws
 coast        World Coasts             hicowo.cia
 country      Hi-res World Countries   hicywo.cia
-inter        US Interstates           loisus.nws
+inter        US Interstates           hiisus.nws
 base         Poltcal Bndry,World,CIA  hipowo.nws
 nmap         Poltcal Bndry,World,CIA  hipowo.nws
 nsat         Poltcal Bndry,World,CIA  hipowo.nws
