@@ -108,6 +108,8 @@ LIBAODT		= $(OS_LIB)/libaodt.a
 LIBGPC		= $(OS_LIB)/libgpc.a
 LIBNCEPBUFR	= $(OS_LIB)/libncepBUFR.a
 
+LIBREADLINE     = -lreadline
+
 BUFRFLAGS        = -O
 
 HAVEMOTIF        = yes

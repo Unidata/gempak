@@ -33,7 +33,8 @@ LIBINC = \
 	$(GEMLIB) \
 	$(CGEMLIB) \
 	$(RSLLIB) \
-	$(LIBBZ2)
+	$(LIBBZ2) \
+	$(LIBREADLINE)
 
 LIBINC_NC = \
 	$(GPLT_NC) \
@@ -53,7 +54,8 @@ LIBINC_NC = \
 	$(GEMLIB) \
 	$(CGEMLIB) \
 	$(RSLLIB) \
-	$(LIBBZ2)
+	$(LIBBZ2) \
+	$(LIBREADLINE)
 
 LIBINC_GF = \
 	$(GPLT_NC) \
@@ -72,7 +74,8 @@ LIBINC_GF = \
 	$(GEMLIB) \
 	$(CGEMLIB) \
 	$(RSLLIB) \
-	$(LIBBZ2)
+	$(LIBBZ2) \
+	$(LIBREADLINE)
 
 PROG_NC = $(PROG)_nc
 PROG_GF = $(PROG)_gf

@@ -23,7 +23,8 @@ LIBINC = \
 	$(ZLIB) \
 	$(CGEMLIB) \
 	$(RSLLIB) \
-	$(LIBBZ2)
+	$(LIBBZ2) \
+	$(LIBREADLINE)
 
 OBJS = gdptin.o gdpttm.o gdcsv.o gdpout.o dgconav.o \
 	cwrapgcalc.o cwrapgcalcf.o

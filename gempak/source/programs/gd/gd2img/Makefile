@@ -20,7 +20,8 @@ LIBINC = \
 	$(PNGLIB) \
         $(XMLLIB) \
 	$(ZLIB) \
-	$(CGEMLIB)
+	$(CGEMLIB) \
+	$(LIBREADLINE)
 
 OBJS = gdptin.o gdpttm.o gdptup.o gd2img.o dgconav.o gdcnav.o gdcanl.o \
 	gdlgin.o writepng.o

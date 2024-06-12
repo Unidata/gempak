@@ -19,7 +19,8 @@ LIBINC = \
 	$(XMLLIB) \
         $(ZLIB) \
         $(GEMLIB) \
-        $(CGEMLIB)
+        $(CGEMLIB) \
+	$(LIBREADLINE)
 
 FOBJS = \
 	$(ALIB)(sndarr.o) \
