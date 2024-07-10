@@ -203,7 +203,14 @@ make everything</pre>
      <p>To install all at once:</p>
      <pre>
 yum install gcc gcc-c++ gcc-gfortran libX11 libX11-devel libXt-devel \<br> libXext libXp libXp-devel libXft-devel libXtst-devel xorg-x11-xbitmaps flex \<br> byacc *fonts-ISO8859-* -y</pre>
-     </div>
+     <p>Note that on recent RHEL-based systems, these packages must also be installed:
+     <ul><li>motif-devel</li>
+     <li>autoconf</li>
+     <li>zlib-devel</li></ul></p>
+
+     <p>On recent systems (running GCC 10+), the changes in <a href="https://github.com/Unidata/gempak/pull/149/commits/a207432e5b4d0f1f1b150cfdb14b77e4734a064f">this commit</a> should be applied to fix various compilation errors.</p>
+
+    </div>
     </section>  
 
     <!-- BUILD OPTIONS -->
