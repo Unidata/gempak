@@ -22,6 +22,7 @@
 ! B. Hebbard/NCEP	02/23	updates for NAWIPS-142 various UI changes & merge SAB's updates
 ! B. Hebbard/NCEP	03/23	added volcano <NUMBER> to NEAR, and also to new TEST and EXER
 ! B. Hebbard/NCEP	05/23	restore <REMARKS> field to END product; inadv. removed with <ALL>
+! B. Hebbard/NCEP	11/24   change SUMMIT ELEV wording to SOURCE ELEV per SAB
 !
 !--------------------------------------------------------------------------
 ! VAA GUI Information
@@ -289,7 +290,7 @@ WORDING         <VAA>   VOLCANIC_ASH_ADVISORY   |       VA_ADVISORY
 WORDING         <DTG>   ISSUED                  |       DTG
 WORDING         <STS>   STATUS                  |       STATUS
 WORDING         <PSN>   LOCATION                |       PSN
-WORDING         <SUM>   SUMMIT_ELEVATION        |       SUMMIT_ELEV
+WORDING         <SUM>   SUMMIT_ELEVATION        |       SOURCE_ELEV
 WORDING         <ADV>   ADVISORY_NUMBER         |       ADVISORY_NR
 WORDING         <INF>   INFORMATION_SOURCE      |       INFO_SOURCE
 WORDING         <OAD>   OBS_ASH_DATE/TIME       |       OBS_VA_DTG

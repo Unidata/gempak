@@ -1,9 +1,13 @@
 <!-- markdownlint-configure-file {"MD024": { "siblings_only": true } } -->
 # Unidata Community GEMPAK Change Log
 
+## 7.19.0 (12 Dec 2024)
+
+This release merges upstream NCEP NAWIPS 7.19.0.
+
 ## 7.18.0 (24 May 2024)
 
-This release merges upstream NCEP NAWIPS 7.17.0, changes are mostly table
+This release merges upstream NCEP NAWIPS 7.18.0, changes are mostly table
 and NWS Zone updates.
 
 ## 7.17.0 (29 Oct 2023)

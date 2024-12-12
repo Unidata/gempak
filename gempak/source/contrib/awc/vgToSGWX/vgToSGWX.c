@@ -27,12 +27,16 @@
             Radiation Symbols
       JET - Create Jet Objects with Labels properly rotated so they can
             be registered with placement objects to be placed around the jet.
+      TROP - Create TROP Objects so that they can be registered with placement
+             objects placed around the Trops.
    
    Usage Statement: Usage: vgToSGWX -i <filenamein> -o <filenameout> 
    
 Log:
-   L. Hinson/AWC     06/12    Created     
+   L. Hinson/AWC     06/12    Created
+   L. Hinson/AWC     10/13    Add Trop Object
 ******************************************************************************/
+static void genTropObject(VG_DBStruct *el_txt, char *vgFileOut);
 
 static void genSGWXTurb(VG_DBStruct *el_line, VG_DBStruct *el_txt, 
                         char *vgFileOut);
@@ -46,7 +50,7 @@ static void cvg_crthdrcolor ( VG_DBStruct *el, int np, float *lat, float *lon,
                               int major, int minor, int grouptype, int groupnumber, int *iret );
 
 int main (int argc, char *argv[]) {
-  static char usageString[] = "Usage: vgToSGWX -i <filenamein> -o <filenameout>";
+  static char usageString[] = "Usage: vgToSGWX -i <filenamein> -o <filenameout> -cvttrop";
   char vgFileIn [FILE_FULLSZ];
   char vgFileOut [FILE_FULLSZ];
   VG_DBStruct *el;
@@ -60,7 +64,8 @@ int main (int argc, char *argv[]) {
   int iret;
   char command[256];
   long fsize;
-  char newfil[256];
+  char newfil[256];  
+  int cvtTropFlag = 0;
   
   for (i=0; i < argc; i++) {
     if (strcmp(argv[i], "-h") == 0) {
@@ -74,6 +79,9 @@ int main (int argc, char *argv[]) {
       strcpy(vgFileOut, argv[i+1]);
       outfileset = -1;
     }
+    if (strcmp(argv[i], "-cvttrop") == 0) {
+      cvtTropFlag = -1;
+    }      
   }
   if (! infileset) {
     printf("%s",usageString);
@@ -169,9 +177,39 @@ int main (int argc, char *argv[]) {
     }
     if (el[i].hdr.vg_type == JET_ELM ) {
       genJetObject(&el[i],vgFileOut);
+    }
+    /* Process Tropopause Data */
+    if (cvtTropFlag && el[i].hdr.vg_type == SPTX_ELM) {
+      genTropObject(&el[i],vgFileOut);
     }      
+          
   }
   return 0;
+}
+
+static void genTropObject(VG_DBStruct *el_txt, char *vgFileOut)
+{
+  int start, loc, ier;
+  start = -1;
+  switch(el_txt->elem.spt.info.sptxtyp) {
+    /* Is this a Regular Tropopause Box ? */
+    case 4:
+      el_txt->elem.spt.info.sztext = 1.25F;
+      break;
+    /* Is this a high tropopause Box ? */
+    case 2:
+      el_txt->elem.spt.info.sztext = 0.85F;
+      break;
+    /* Is this a low tropopause Box ? */
+    case 1:
+      el_txt->elem.spt.info.sztext = 0.85F;
+      break;
+    /* Default */
+    default:
+      el_txt->elem.spt.info.sztext = 1.00F;
+      break;
+  }      
+  cvg_writefD ( el_txt, start, el_txt->hdr.recsz, vgFileOut, &loc, &ier);
 }
 
 static void genSGWXTurb(VG_DBStruct *el_line, VG_DBStruct *el_txt, 
@@ -311,6 +349,7 @@ static void genSGWXSpSymObject(VG_DBStruct *el_sym, VG_DBStruct *el_txt,
   el.elem.sgwx.info.textlon = el_txt->elem.spt.info.lon;
   
   strcpy(el.elem.sgwx.spt.text,"");
+  el.elem.sgwx.spt.info.sptxtyp = 4;
   if (el_sym->hdr.vg_type == SPSYM_ELM || el_sym->hdr.vg_type == WXSYM_ELM) {
     /* Is this a STMSYM? */
     if (fabs(el_sym->elem.sym.data.code[0] - STMSYM) < .001) {
@@ -320,27 +359,34 @@ static void genSGWXSpSymObject(VG_DBStruct *el_sym, VG_DBStruct *el_txt,
         el.elem.sgwx.info.splsym = STMSYM_S;
       }
       if (strstr(el_txt->elem.spt.text,"TCNN")) {
-        strcpy(el.elem.sgwx.spt.text, "TC NN");
+        strcpy(el.elem.sgwx.spt.text, "\"TC NN\"");
       } else {
         strcpy(el.elem.sgwx.spt.text, el_txt->elem.spt.text);
       }
+      el.elem.sgwx.spt.info.sptxtyp = 0;
+      el.elem.sgwx.spt.info.filcol = 0;
+      el.elem.sgwx.spt.info.lincol = 0;
     }
     /* Is this a VOLSYM? */
     if (fabs(el_sym->elem.sym.data.code[0] - VOLSYM) < .001) {
       el.elem.sgwx.info.wxsym = VOLSYM;      
       el.elem.sgwx.spt.info.turbsym = 0;
       strcpy(el.elem.sgwx.spt.text, el_txt->elem.spt.text);      
+      el.elem.sgwx.spt.info.filcol = 31;
+      el.elem.sgwx.spt.info.lincol = 32;
+      el.elem.sgwx.spt.info.sztext = 0.70;
+      el.elem.sgwx.spt.info.ialign = 0;
     }
     /* Is this a RADSYM? */
     if (fabs(el_sym->elem.sym.data.code[0] - RADSYM) < .001) {
       el.elem.sgwx.info.splsym = RADSYM;
       strcpy(el.elem.sgwx.spt.text, el_txt->elem.spt.text);
+      el.elem.sgwx.spt.info.filcol = 31;
+      el.elem.sgwx.spt.info.lincol = 32;
+
     }
-    el.elem.sgwx.spt.info.sptxtyp = 4;
     el.elem.sgwx.spt.info.turbsym = 4;
     el.elem.sgwx.spt.info.txtcol = el_txt->elem.spt.info.txtcol;
-    el.elem.sgwx.spt.info.filcol = 31;
-    el.elem.sgwx.spt.info.lincol = 32;
     
   }
   /* Write the SGWX Polygon Object */
@@ -362,7 +408,7 @@ static void genJetObject(VG_DBStruct *el, char *vgFileOut)
   lwfactor = (int)(el->elem.jet.line.spl.info.splwid / 14.0);
   
   for (i=0; i < el->elem.jet.nbarb; i++) {
-    el->elem.jet.barb[i].spt.info.sztext=0.7;
+    el->elem.jet.barb[i].spt.info.sztext=0.8;
     el->elem.jet.barb[i].spt.info.itxfn=2;
     el->elem.jet.barb[i].spt.info.lat = el->elem.jet.barb[i].wnd.data.latlon[0];
     el->elem.jet.barb[i].spt.info.lon = el->elem.jet.barb[i].wnd.data.latlon[1];

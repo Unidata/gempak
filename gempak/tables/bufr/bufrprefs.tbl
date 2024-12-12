@@ -16,11 +16,11 @@ AREAS_TO_INCLUDE         ICAO_EU;ICAO_ME;ICAO_AS;ICAO_NA
 ICAO_EU                  NO_LONDON_BACKUP
 ICAO_ME                  NO_LONDON_BACKUP
 ICAO_AS                  NO_LONDON_BACKUP
-ICAO_NA                  17.2_-54.1,_44.7_-101.7,_50.7_60.3,_19.7_10.0
+ICAO_NA                  17.2_-54.1,_44.7_-101.7,_50.7_60.3,_19.7_10.0.
 ! Backup values for WAFC London
-ICAO_EU_BKUP             21.4_-21.6,_46.6_-56.6,_58.7_68.4,_26.4_33.4
-ICAO_ME_BKUP             10.0_17.0,_44.0_17.0,_44.0_70.0,_10.0_70.0
-ICAO_AS_BKUP             0.0_53.0,_36.0_53.0,_36.0_108.0,_0.0_108.0
+ICAO_EU_BKUP             21.4_-21.6,_46.6_-56.6,_58.7_68.4,_26.4_33.4.
+ICAO_ME_BKUP             10.0_17.0,_44.0_17.0,_44.0_70.0,_10.0_70.0.
+ICAO_AS_BKUP             0.0_53.0,_36.0_53.0,_36.0_108.0,_0.0_108.0.
 ! Values for BUFR sections 0, 1 and 3.  Keep entries in the order given below.
 MASTER_TABLE             0
 EDITION                  3
