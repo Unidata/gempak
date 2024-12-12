@@ -5,8 +5,9 @@
 !
 ! Log:
 ! G. Krueger/EAI         6/97
-! A. Hardy/GSC           4/99	Added underscores to names
-! C.J.Janota/MPC	 7/00	Added 3 more WATL buoys for MPC verification
+! A. Hardy/GSC           4/99  Added underscores to names
+! C.J.Janota/MPC         7/00  Added 3 more WATL buoys for MPC verification
+! B. Hebbard/SDB        10/24  Added 22 buoys per recent data-curation list
 !
 ! The format for the file is given below, with the number of characters in
 ! parentheses.
@@ -41,10 +42,32 @@
          46274  Leucadia_Nearshore                  US  3306 -11731     0  0
          46275  Red_Beach_Nearshore                 US  3329 -11750     0  0
          44084  Bethany_Beach                       US  3854  -7504    11  0
-         41067	FRP2WAVE                            US  3228  -8041     0  0
-         45200	Maumee_Bay                          US  4172  -8337   174  0
-         45210	Rawley_Point_East		    US  4406  -8705     0  0
-         45211	Grand_Island_North                  US  4697  -8657   183  0
-         46277	Green_Beach_Offshore                US  3334 -11766     0  0
+         41067  FRP2WAVE                            US  3228  -8041     0  0
+         45200  Maumee_Bay                          US  4172  -8337   174  0
+         45210  Rawley_Point_East                   US  4406  -8705     0  0
+         45211  Grand_Island_North                  US  4697  -8657   183  0
+         46277  Green_Beach_Offshore                US  3334 -11766     0  0
          41112  Hollywood_Beach                     US  2600  -8010     0  0
-         46276	Pajaro_Beach                        US  3685 -12183     0  0
+         46276  Pajaro_Beach                        US  3685 -12183     0  0
+         46278  Tillamook_Bay_South_Jetty           US  4556 -12399     0  0
+         46279  Pajaro_Beach_South                  US  3684 -12182     0  0
+         41068  Fort_Pierce                         US  2759  -8019     0  0
+         41069  Ponce_de_Leon_Inlet                 US  2929  -8080     0  0
+         41070  Ponce_de_Leon_Inlet_Waves           US  2929  -8080     0  0
+         44078  OOI_Irminger_Sea_Surface_Mooring    --  5994  -3952     0  0
+         45213  East_Superior_Spotter               US  4759   8659   183  0
+         45212  North_Huron_Spotter                 US  4535   8284   177  0
+         45214  South_Michigan_Spotter              US  4267  -8703   176  0
+         52213  North_Point                         FM   708  15824     0  0
+         41082  Mid-Atl_Bight_Central_Sfc_Mooring   US  3595  -7513     4  0
+         41083  Mid-Atl_Bright_Southern_Sfc_Mooring US  3573  -7485     0  0
+         44079  Mid-Atl_Bright_Northern_Sfc_Mooring US  3618  -7483     0  0
+         45218  Sheboygan_Shipwreck_Coast_NMS       US  4373   8762   176  0
+         46280  Newport_PWS_North                   US  4458 -12423     0  0
+         46281  Newport_PWS_South                   US  4456 -12423     0  0
+         52214  Rumung                              FM   968  13818     0  0
+         45216  Ontonagon                           US  4693  -8935   183  0
+         45219  Two_Harbors_Nearshore               US  4702  -9163   183  0
+         51214  King-Poloa                          AS  1430 -17088     0  0
+         46282  Aptos_Creek_Nearshore               US  3695 -12192     0  0
+         52215  Utwe                                FM   524  16300     0  0

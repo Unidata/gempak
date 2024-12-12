@@ -1,32 +1,33 @@
-!	This table contains elevations for Great Lakes buoys (45nnn)
-!	and locations and elevations for CMAN stations.  The entries
-!	need not be sorted in increasing order based on the ASCII
-!	station identifier.
+!    This table contains elevations for Great Lakes buoys (45nnn)
+!    and locations and elevations for CMAN stations.  The entries
+!    need not be sorted in increasing order based on the ASCII
+!    station identifier.
 !!
 ! Log:
-! D. Kidwell/NCEP	11/97	Added log and several ids, reordered
-! D. Kidwell/NCEP	12/97	Changed documentation re station order
-! D. Kidwell/NCEP	 8/98	Added Canadian buoy 45150
-! A. Hardy/GSC		 4/99	Added underscores to names
-! R. Hollern/NCEP	 8/99	Added Canadian station 45151 in L. Simcoe
-! R. Hollern/NCEP	 9/99	Added DRFA2 and 45154, removed BUSL1
-! D. Kidwell/NCEP	11/99	Added AUGA2, modified LPOI1
-! A. Hardy/GSC		12/99	Added CMAN station PILA2
+! D. Kidwell/NCEP    11/97    Added log and several ids, reordered
+! D. Kidwell/NCEP    12/97    Changed documentation re station order
+! D. Kidwell/NCEP     8/98    Added Canadian buoy 45150
+! A. Hardy/GSC         4/99    Added underscores to names
+! R. Hollern/NCEP     8/99    Added Canadian station 45151 in L. Simcoe
+! R. Hollern/NCEP     9/99    Added DRFA2 and 45154, removed BUSL1
+! D. Kidwell/NCEP    11/99    Added AUGA2, modified LPOI1
+! A. Hardy/GSC        12/99    Added CMAN station PILA2
 ! D. Kidwell/NCEP        3/00   Added PMAN1, POLD1, PSTP1, PSUN1, PTAM1
-! A. Hardy/GSC		 4/00	Added CMAN station PMOT1
-! A. Hardy/GSC		 8/00	Added CN buoys 45145, 45147, 45148, 45149, 
+! A. Hardy/GSC         4/00    Added CMAN station PMOT1
+! A. Hardy/GSC         8/00    Added CN buoys 45145, 45147, 45148, 45149, 
 !                               45152 and PCLR1 
-! C. Caruso Magee/NCEP   4/01	Added Coast Guard data.      
-! F. J. Yen/NCEP	 4/01	Added underscores & removed last col. of cg data
-! F. J. Yen/NCEP	 5/01	Corrected longitude value for Point Wilson
+! C. Caruso Magee/NCEP   4/01    Added Coast Guard data.      
+! F. J. Yen/NCEP     4/01    Added underscores & removed last col. of cg data
+! F. J. Yen/NCEP     5/01    Corrected longitude value for Point Wilson
 ! C. Caruso Magee/NCEP   8/01   Added Canadian buoy 45158 to table.
 ! C. Caruso Magee/NCEP   9/01   Added buoys 45035, 45507, and 45805 to table.     
-! A. Hardy/SAIC		12/01   Added CMAN station LSCM4
-! D. Kidwell/NCEP	 9/03	Added 10 CMAN stations and 4 Great Lakes buoys
-! D. Kidwell/NCEP	 3/04	Added 14 CMAN stations
-! D. Kidwell/NCEP	 5/04	Added CMAN stations ACMN4, AVAN4, BRBN4
-! D. Kidwell/NCEP	 8/04	Added 17 CMAN stations
-! D. Kidwell/NCEP   	 5/05   Added 60 CMAN stations per TPC 
+! A. Hardy/SAIC        12/01   Added CMAN station LSCM4
+! D. Kidwell/NCEP     9/03    Added 10 CMAN stations and 4 Great Lakes buoys
+! D. Kidwell/NCEP     3/04    Added 14 CMAN stations
+! D. Kidwell/NCEP     5/04    Added CMAN stations ACMN4, AVAN4, BRBN4
+! D. Kidwell/NCEP     8/04    Added 17 CMAN stations
+! D. Kidwell/NCEP        5/05   Added 60 CMAN stations per TPC 
+! B. Hebbard/SDB     10/24    Added 22 CMAN stations per UCAR data-curation
 !
 45001         0                                  -- US     0      0   183  0                    
 45002         0                                  -- US     0      0   176  0                    
@@ -460,3 +461,24 @@ WGXA2         0 Wrangell_Harbor                  AK US  5647 -13238    15  0
 OWMO1         0 Old_Woman_Creek_Western_Reserve  OH US  4125  -8245   270  0
 VRMO1         0 Vermilion_River                  OH US  4143  -8236   177  0
 NBGM3         0 New_Bedford_Barrier_Gate         MA US  4162  -7091     7  0
+NLHC3         0 New_London                       CT US  4137  -7210     2  0
+PBWM4         0 Port_Huron_N_Blue_Water_Bridge   MI US  4300  -8242   178  0
+PRHH1         0 Pearl_Harbor                     HI US  2137 -15796    18  0
+FRMA1         0 Fort_Morgan                      AL US  3023  -8799     2  0
+KLMW1         0 TEMCO_Kalama_Terminal            WA US  4598 -12284     3  0
+ABYA2         0 Auke_Bay_Lab_Dock                AK US  5838 -13465     9  0
+CBCM2         0 Curtis_Bay_Channel_Entrance      MD US  3922  -7654     0  0
+HWPM2         0 Hawkins_Point                    MD US  3921  -7653    50  0
+ADBF1         0 Apalachicola_Reserve_Dry_Bar     FL US  2968  -8506     0  0
+BEIS1         0 Edisto_Island_ACE_Basin_Reserve  SC US  3250  -8033     0  0
+CWWT2         0 Copano_Bay_West                  TX US  2808  -9720     0  0
+FLQN6         0 Hudson_River_Reserve_Ferry_Lndg  NY US  4235  -7379     0  0
+GBCM6         0 Grand_Bay_Reserve_Bayou_Cumbest  MS US  3038  -8844     0  0
+HRRH1         0 Heeia_Reserve_Lono_Circle        HI US  2143 -15782    12  0
+HWWH1         0 Heeia_Reserve_Wai_2              HI US  2144 -15781     0  0
+OWWO1         0 Old_Woman_Creek_Reserve          OH US  4137  -8251     0  0
+PBJW1         0 Padilla_Bay_Reserve              WA US  4852 -12247     0  0
+PPHH1         0 Heeia_Reserve_Papahana           HI US  2141 -15782     0  0
+PTFL1         0 Port_Fourchon                    LA US  2911  -9020     0  0
+NPQC1         0 Tijuana_River_Reserve            CA US  3260 -11712     0  0
+WQQM1         0 Wells_Reserve                    ME US  4330  -7059     0  0

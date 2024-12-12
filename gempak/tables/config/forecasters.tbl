@@ -3,7 +3,7 @@
 !*                                                                      *
 !* This table contains the names of individual forecasters.		*
 !* This list is used when thunderstorm or tornado watchs are issued.    *
-!* The range lists may contain a maximum of 30 elements 		*
+!* The range lists may contain a maximum of 50 elements 		*
 !* of no more than 16 characters each.					*
 !*									*
 !**									*
@@ -13,10 +13,11 @@
 !* G. Grosshans	 	11/99	Updated Outlook forecasters		*
 !* R. Curtis		 5/00   Increased max and removed key word      *
 !* G. Grosshans	 	 6/00	Added rest of forecasters		*
+!* B. Hebbard   	11/24   Updated comment to max 50 (chg'd 2009)  *
 !************************************************************************
 !
 !	Forecaster names 
-!	(maximum of 30 names, maximum of 16 characters each)
+!	(maximum of 50 names, maximum of 16 characters each)
 !
 BANACOS
 BOTHWELL
