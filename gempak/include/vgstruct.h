@@ -909,7 +909,7 @@ typedef struct sgwxinfo {
 typedef struct sgwxtype {
   SGWXInfo info;
   SptxType spt;
-  float latlon[256];
+  float latlon[512];
 } SGWXType;
 
 typedef struct vg_hdrstruct
