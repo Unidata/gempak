@@ -92,6 +92,37 @@
 !                   |        |      |      |      |      |      |              |
 !------------------------------------------------------------------------------
 ! Standard image products
+GOES19 CH01          VIS_0.47      0    255    192      1      1 GRAY
+GOES19 CH02          VIS_0.64      0    255    192      2      1 GRAY
+GOES19 CH03          NIR_0.86      0    255    192      4      1 GRAY
+GOES19 CH04          NIR_1.38      0    255    192      8      1 GRAY
+GOES19 CH05          NIR_1.6       0    255    192     16      1 GRAY
+GOES19 CH06          NIR_2.3       0    255    192     32      1 GRAY
+GOES19 CH07          SWIR_3.9      0    255    192     64      1 GRAY
+GOES19 CH08          WV_6.2        0    255    192    128      1 WVCIMSS.tbl
+GOES19 CH09          WV_6.9        0    255    192    256      1 WVCIMSS.tbl
+GOES19 CH10          WV_7.3        0    255    192    512      1 WVCIMSS.tbl
+GOES19 CH11          IR_8.6        0    255    192   1024      1 GRAY
+GOES19 CH12          IR_9.6        0    255    192   2048      1 GRAY
+GOES19 CH13          IR_10.4       0    255    192   4096      1 GRAY
+GOES19 CH14          IR_11.2       0    255    192   8192      1 GRAY
+GOES19 CH15          IR_12.3       0    255    192  16384      1 GRAY
+GOES19 CH16          IR_13.3       0    255    192  32768      1 GRAY
+GOES19 RGB           AIRMASS       0     94    393   2**0      1 abiam.tbl
+GOES19 RGB           NTMICROA      0     94    393   2**1      1 abintmicadv.tbl
+GOES19 RGB           DAYLANDC      0     94    393   2**2      1 abidaylc.tbl
+GOES19 RGB           DUST          0     94    393   2**3      1 abidust.tbl
+GOES19 RGB           DAYCONV       0     94    393   2**4      1 abidayconv.tbl
+GOES19 RGB           DAYMICRO      0     94    393   2**5      1 abidaymicro.tbl
+GOES19 RGB           FIRETEMP      0     94    393   2**6      1 abifiretemp.tbl
+GOES19 RGB           ASH           0     94    393   2**7      1 abiash.tbl
+GOES19 RGB           DAYLNDCF      0     94    393   2**8      1 abidaylcf.tbl
+GOES19 RGB           DAYOCC        0     94    393   2**9      1 abidayocc.tbl
+GOES19 RGB           DAYSNOWF      0     94    393   2**10     1 abidaysnowf.tbl
+GOES19 RGB           SIMPLEWV      0     94    393   2**11     1 abisimplewv.tbl
+GOES19 RGB           SO2           0     94    393   2**12     1 abiso2.tbl
+GOES19 RGB           GEOCOLOR      0     95    393   2**13     1 geocolor_g16.tbl
+!
 GOES18 CH01          VIS_0.47      0    255    190      1      1 GRAY
 GOES18 CH02          VIS_0.64      0    255    190      2      1 GRAY
 GOES18 CH03          NIR_0.86      0    255    190      4      1 GRAY
