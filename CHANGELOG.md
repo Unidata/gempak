@@ -1,6 +1,10 @@
 <!-- markdownlint-configure-file {"MD024": { "siblings_only": true } } -->
 # Unidata Community GEMPAK Change Log
 
+## 7.19.0.1 (14 Apr 2025)
+
+Support GOES 19 (#162), patch by @vgensini
+
 ## 7.19.0 (12 Dec 2024)
 
 This release merges upstream NCEP NAWIPS 7.19.0.
