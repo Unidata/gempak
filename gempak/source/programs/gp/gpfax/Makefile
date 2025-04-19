@@ -29,7 +29,8 @@ LIBINC = \
 	$(LIBBZ2)\
 	$(GN) \
         $(XMLLIB) \
-        $(ZLIB)
+        $(ZLIB) \
+	$(LIBREADLINE)
 
 
 

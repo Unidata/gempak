@@ -23,7 +23,8 @@ LIBINC = \
 	$(APPL) \
 	$(SYSLIB) \
 	$(CGEMLIB) \
-	$(GEMLIB)
+	$(GEMLIB) \
+	$(LIBREADLINE)
 
 .PRECIOUS: $(ALIB)
 

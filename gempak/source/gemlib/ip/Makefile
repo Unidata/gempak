@@ -8,6 +8,8 @@ include $(CONFIGDIR)/$(MAKEINC)
 ALIB = $(GEMLIB)
 
 FOBJS = \
+	$(ALIB)(rlgets.o) \
+	$(ALIB)(ipread.o) \
 	$(ALIB)(ipcwin.o) \
 	$(ALIB)(ipdflt.o) \
 	$(ALIB)(ipdynm.o) \
@@ -34,7 +36,7 @@ FOBJS = \
 	$(ALIB)(ipsvar.o) \
 	$(ALIB)(ipswin.o) \
 	$(ALIB)(ipvers.o)
- 
+
 GDIR = ip
 
 .PRECIOUS: $(ALIB)
@@ -48,7 +50,7 @@ $(ALIB): $(FOBJS)
 .c.a :
 	$(CC) $(CFLAGS) -c $<
 .f.a :
-	$(FC) $(FFLAGS) -c $<
+	$(FC) $(FFLAGS) -J$(OS_INC) -c $<
 
 
 clean:
