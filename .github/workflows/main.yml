@@ -7,7 +7,7 @@ jobs:
     name: Build Ubuntu
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
 
     - name: build
       run: |
@@ -21,22 +21,18 @@ jobs:
         make all
 
   build:
-    name: Build Centos (${{ matrix.OS_VERSION }})
+    name: Build Alma Linux (${{ matrix.OS_VERSION }})
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        OS_VERSION: ["7", "stream8"]
+        OS_VERSION: ["9", "10"]
     env:
       OS_VERSION: ${{ matrix.OS_VERSION }}
-      OS_TYPE: "centos"
+      OS_TYPE: "almalinux"
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
 
     - name: build
       run: |
-        echo 'DOCKER_OPTS="-H tcp://127.0.0.1:2375 -H unix:///var/run/docker.sock -s devicemapper"' | sudo tee /etc/default/docker > /dev/null
-        sudo service docker restart
-        sleep 5
-        sudo docker pull quay.io/centos/${OS_TYPE}:${OS_VERSION}
+        sudo docker pull quay.io/almalinuxorg/${OS_VERSION}-base
         build/setup.sh ${OS_TYPE} ${OS_VERSION}
-
