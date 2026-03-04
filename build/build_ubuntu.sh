@@ -77,4 +77,4 @@ cp gempak-${package_version}.deb /gempak/build/dist/
 # Confirm install with dependencies
 apt-get update -y
 dpkg -i gempak-${package_version}.deb
-apt-get -f install
+apt-get -f install -y
