@@ -7,8 +7,18 @@ if [ -d "/awips2/python" ]; then
     pv="`${PYHOME}/bin/python -V 2>&1 | cut -c8- | cut -d. -f1`"
     pr="`${PYHOME}/bin/python -V 2>&1 | cut -c8- | cut -d. -f2`"
     export PYTHONPATH="${PYHOME}/lib/python${pv}.${pr}/site-packages:${NAWIPS}/scripts/python"
+    export PYINC="-I${PYHOME}/include/python${pv}.${pr}"
+    export PYLIB="-lpython${pv}.${pr}"
+    export WITHPY="-DWITHPYTHON"
+    export PYDEP="-lpthread -ldl -lutil"
+    export LDFLAGS="-L${PYHOME}/lib -L$OS_LIB -s"
 else
     export PYTHONPATH="${NAWIPS}/scripts/python:${PYTHONPATH}"
+    export PYINC=""
+    export PYLIB=""
+    export WITHPY=""
+    export PYDEP=""
+    export LDFLAGS="-L$OS_LIB -s"
 fi
 
 if [ ! -d $NAWIPS ] ; then
@@ -18,8 +28,3 @@ if [ ! -d $NAWIPS ] ; then
     exit
 fi
 
-export PYINC="-I${PYHOME}/include/python${pv}.${pr}"
-export PYLIB="-lpython${pv}.${pr}"
-export WITHPY="-DWITHPYTHON"
-export PYDEP="-lpthread -ldl -lutil"
-export LDFLAGS="-L${PYHOME}/lib -L$OS_LIB -s"
