@@ -11,6 +11,7 @@ jobs:
 
     - name: build
       run: |
+        set -e -x
         sudo apt-get update
         sudo apt install gcc build-essential libx11-dev libxt-dev libxext-dev libxft-dev libxtst-dev 
         sudo apt install flex byacc libmotif-common libmotif-dev libxpm4 libxpm-dev
@@ -19,6 +20,7 @@ jobs:
         rm -f config/Makeinc.linux64_gfortran
         ln -s `pwd`/config/Makeinc.linux64_gfortran_ubuntu config/Makeinc.linux64_gfortran
         make all
+        make install
 
   build:
     name: Build Alma Linux (${{ matrix.OS_VERSION }})
