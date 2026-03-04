@@ -8,7 +8,6 @@ $(OS_LIB)/libxslt.a:
 
 _xslt: clean INSTALLDIR 
 	@(cd libxslt; echo "Making in `pwd`"; \
-	( autoreconf --force --install || touch * ); \
 	./configure '--prefix=$(OS_ROOT)' --disable-shared --without-debug --without-debugger '--with-libxml-prefix=$(OS_ROOT)' 'CC=$(CC)' ; \
 	$(MAKE) all install man_MANS= MANS= )
 

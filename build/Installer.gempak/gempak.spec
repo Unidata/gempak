@@ -42,6 +42,7 @@ tar -xvzf /tmp/rpmbuild/SOURCES/gempak-%{version}.tar.gz -C %{prefix}/ >& /dev/n
 
 %install
 # create build root directory
+set -ex
 pushd %{gem_home}
 export NAWIPS=`pwd`
 cat source_python.sh
@@ -50,10 +51,10 @@ cat source_python.sh >> build/Installer.gempak/Gemenviron.profile
 # TODO: ". source_python.sh" doesn't seem to work from spec file
 make extlibs #>& make.extlibs
 make gempak #>& make.gempak
-make install >& /dev/null
-make programs_gf >& /dev/null
-make programs_nc >& /dev/null
-make clean >& /dev/null
+make install
+make programs_gf
+make programs_nc
+make clean
 
 #grep -i error make.gempak
 #rm -rf make.gempak

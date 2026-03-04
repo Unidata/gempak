@@ -35,7 +35,7 @@ SUBDIRS = \
 all : INSTALLDIRS
 	@for dir in $(SUBDIRS); do \
 	   ( cd $$dir; echo "Making $@ in `pwd`" ; \
-		$(MAKE) $(MFLAGS) $@ ) ; \
+		$(MAKE) $(MFLAGS) $@ ) || exit $$?; \
 	done
 
 All : all
