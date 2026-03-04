@@ -34,7 +34,7 @@ elif [ "$os_type" = "almalinux" ]; then
 
 elif [ "$os_type" = "ubuntu" ]; then
 
-    sudo docker run --rm=true -v `pwd`:/gempak:rw unidata/gempak-devel:$os_type /bin/bash -c "bash -xe /gempak/build/build_${os_type}.sh "
+    sudo docker run --rm=true -v `pwd`:/gempak:rw ubuntu:${os_version} /bin/bash -c "bash -xe /gempak/build/build_${os_type}.sh "
 
 elif [ "$os_type" = "fedora" ]; then
 
