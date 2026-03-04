@@ -20,7 +20,7 @@ jobs:
             container_image: quay.io/almalinuxorg/8-base
             release_glob: build/dist/*.rpm
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6
 
     - name: Pull container image
       run: |
