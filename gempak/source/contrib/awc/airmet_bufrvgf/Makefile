@@ -38,13 +38,15 @@ LIBINC = \
 
 .PRECIOUS: $(ALIB)
 
+XML2_CFLAGS = $(shell xml2-config --cflags 2>/dev/null || pkg-config --cflags libxml-2.0 2>/dev/null)
+
 CFLAGS = $(COPT) $(BUFRFLAGS) \
         -DDEBUG_PRINT=1 \
         -DFNOC_KLUDGE=0 \
         -DIGNORE_NESTING=1 \
         -DMEMORY_DEBUG=0 \
         -DTRACE_PRINT=1 \
-        -I$(OS_INC)/libxml2
+	-I$(OS_INC)/libxml2 $(XML2_CFLAGS)
 
 
 all : $(ALIB) $(PROG)

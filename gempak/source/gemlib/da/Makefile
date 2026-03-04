@@ -7,7 +7,9 @@ include $(CONFIGDIR)/$(MAKEINC)
 
 ALIB = $(GEMLIB) 
 
-CFLAGS += -I$(OS_INC)/libxml2
+XML2_CFLAGS = $(shell xml2-config --cflags 2>/dev/null || pkg-config --cflags libxml-2.0 2>/dev/null)
+
+CFLAGS += -I$(OS_INC)/libxml2 $(XML2_CFLAGS)
 
 COBJS = \
         $(ALIB)(dagetdtc.o) \
