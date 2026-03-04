@@ -86,7 +86,7 @@ if(!giniinfo_ptr)
    return;
    }
 
-if(setjmp(ginipng_ptr->jmpbuf))
+if(setjmp(png_jmpbuf(ginipng_ptr)))
    {
    png_destroy_write_struct(&ginipng_ptr,&giniinfo_ptr);
    return;
