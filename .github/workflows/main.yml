@@ -25,7 +25,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        OS_VERSION: ["9", "10"]
+        # TODO 10  libXp-devel openmotif-devel xorg-x11-xbitmaps
+        OS_VERSION: ["9"]
     env:
       OS_VERSION: ${{ matrix.OS_VERSION }}
       OS_TYPE: "almalinux"
