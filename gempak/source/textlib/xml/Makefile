@@ -18,10 +18,7 @@ COBJS = \
  
 GDIR = xml
 
-XML2_CFLAGS = $(shell xml2-config --cflags 2>/dev/null || pkg-config --cflags libxml-2.0 2>/dev/null)
-XSLT_CFLAGS = $(shell xslt-config --cflags 2>/dev/null || pkg-config --cflags libxslt 2>/dev/null)
-
-CFLAGS = $(COPT) -I$(OS_INC)/libxslt -I$(OS_INC)/libxml2 $(XML2_CFLAGS) $(XSLT_CFLAGS)
+CFLAGS = $(COPT) -I$(OS_INC)/libxslt -I$(OS_INC)/libxml2 
 
 .PRECIOUS: $(ALIB)
 
