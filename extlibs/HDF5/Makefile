@@ -13,9 +13,9 @@ $(OS_LIB)/libhdf5.a:
 	$(MAKE) _lhdf5 $(HDFOPT)
 
 _lhdf5: INSTALLDIR
-	-@cd libhdf; \
+	@cd libhdf; \
 	pwd; \
-	$(MAKE) distclean ; \
+	if [ -f Makefile ]; then $(MAKE) distclean ; fi ; \
 	./configure '--prefix=$(OS_ROOT)' '--with-zlib=$(OS_ROOT)' --disable-debug --disable-trace 'CFLAGS=$(HDF5_CFLAGS)' 'CPPFLAGS=$(HDF5_CPPFLAGS)' ; \
 	$(MAKE) -s all install
 

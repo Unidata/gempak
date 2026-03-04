@@ -2,7 +2,7 @@ include $(CONFIGDIR)/$(MAKEINC)
 include makefile.common
 
 NETCDF_CFLAGS = -O2 -w
-NETCDF_CPPFLAGS = -w
+NETCDF_CPPFLAGS = -I$(OS_INC) -w
 
 NETCDF            = $(OS_LIB)/libnetcdf.a
 
@@ -13,13 +13,13 @@ install:
 
 $(NETCDF):
 	@echo look netcdf $(NETCDF)
-	$(MAKE) lnetcdf $(NCOPT) $(NCENV)
+	$(MAKE) lnetcdf $(NCOPT) $(NCENV) || exit $$?
 
 lnetcdf: INSTALLDIR
-	-@cd netcdf; \
+	@cd netcdf; \
 	pwd; \
 	touch macros.make; \
-	$(MAKE) distclean ; \
+	if [ -f Makefile ]; then $(MAKE) distclean ; fi ; \
 	./configure --disable-dap '--prefix=$(OS_ROOT)' 'CFLAGS=$(NETCDF_CFLAGS)' 'CPPFLAGS=$(NETCDF_CPPFLAGS)'; \
 	$(MAKE) -s all install
 
