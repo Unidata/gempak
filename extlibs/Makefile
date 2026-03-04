@@ -6,19 +6,11 @@
 include $(CONFIGDIR)/$(MAKEINC)
 
 SUBDIRS = \
-	zlib \
-	PNG \
-	bzip2 \
-	HDF5 \
 	GPC \
 	AODT \
 	melBUFR \
 	ncepBUFR \
-	netCDF \
 	OHSHEF \
-	xml2 \
-	xslt \
-	JasPer \
 	NDFD \
 	SHAPE \
 	GAMET \
