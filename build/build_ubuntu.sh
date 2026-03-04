@@ -1,10 +1,20 @@
 #!/bin/sh -xe
 ls -l /home
 
+export DEBIAN_FRONTEND=noninteractive
+apt-get update -y
+apt-get install -y --no-install-recommends \
+	git gcc gfortran build-essential \
+	libx11-dev libxt-dev libxext-dev libxft-dev libxtst-dev \
+	flex byacc libmotif-common libmotif-dev libxpm4 libxpm-dev \
+	dpkg-dev ca-certificates
+
 # Package GEMPAK source from HEAD
 pushd /gempak
 package_version=`grep "define version" build/Installer.gempak/gempak.spec | grep -v version_core| awk '{print $3}'`
-git archive --format=tar --prefix=gempak-${package_version}/ HEAD  | gzip >/tmp/gempak-${package_version}.tar.gz
+git config --global --add safe.directory /gempak
+git archive --format=tar --prefix=gempak-${package_version}/ -o /tmp/gempak-${package_version}.tar HEAD
+gzip -f /tmp/gempak-${package_version}.tar
 
 # Prepare the environment
 mkdir -p /tmp/gempak-${package_version}/
@@ -12,16 +22,22 @@ mkdir -p /tmp/gempak-${package_version}/
 cp -r /gempak/build/DEBIAN /tmp/gempak-${package_version}/
 
 mkdir -p /home/gempak/
+srcdir=$(tar -tzf /tmp/gempak-${package_version}.tar.gz | awk -F/ 'NF>1{print $1; exit}')
+if [ -z "$srcdir" ]; then
+	echo "Failed to determine top-level source directory from /tmp/gempak-${package_version}.tar.gz" >&2
+	exit 1
+fi
 tar -xvzf /tmp/gempak-${package_version}.tar.gz -C /home/gempak >& /dev/null
+rm -rf /home/gempak/GEMPAK7
+mv "/home/gempak/${srcdir}" /home/gempak/GEMPAK7
 pushd /home/gempak
-mv gempak-${package_version} GEMPAK7
 cd GEMPAK7
 . Gemenviron.profile
-export PYINC="-I/usr/include/python2.7"
-export PYLIB="-lpython2.7"
-export WITHPY="-DWITHPYTHON"
-export PYDEP="-lpthread -lutil -ldl"
-export LDFLAGS="-L/usr/lib -L$OS_LIB -s"
+export PYINC=""
+export PYLIB=""
+export WITHPY=""
+export PYDEP=""
+export LDFLAGS="-L$OS_LIB -s"
 
 pushd config
 rm -rf Makeinc.linux64_gfortran
@@ -61,4 +77,4 @@ cp gempak-${package_version}.deb /gempak/build/dist/
 # Confirm install with dependencies
 apt-get update -y
 dpkg -i gempak-${package_version}.deb
-apt-get -f install
+apt-get -f install -y

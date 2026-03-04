@@ -10,11 +10,11 @@ SUBDIRS = libncepBUFR
 all :
 	@for dir in $(SUBDIRS); do \
 	   ( cd $$dir; echo "making $@ in `pwd`" ; \
-		$(MAKE) $(MFLAGS) $@ ) ; \
+		$(MAKE) $(MFLAGS) $@ ) || exit $$?; \
 	done
 
 clean:
 	@for dir in $(SUBDIRS); do \
 	( cd libncepBUFR; echo "making $@ in `pwd`" ; \
-		$(MAKE) $(MFLAGS) $@ ) ; \
+		$(MAKE) $(MFLAGS) $@ ) || exit $$?; \
 	done

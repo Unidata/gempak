@@ -3,5 +3,5 @@ Version: 7.20.0
 Maintainer: Daryl Herzmann
 Architecture: all
 Description: Unidata GEMPAK Distribution
-Depends: libgfortran3, libx11-6, libxm4, libxtst6, libxt6
+Depends: libgfortran5 | libgfortran4 | libgfortran3, libx11-6, libxm4, libxtst6, libxt6
 Homepage: https://www.unidata.ucar.edu/software/gempak/

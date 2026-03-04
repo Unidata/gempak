@@ -12,12 +12,12 @@ install: all
 clean: _zlib_clean
 
 $(ZLIB):
-	( cd zlib; echo "making $@ in `pwd`" ; \
-		make -s distclean ; \
+	( set -e; cd zlib; echo "making $@ in `pwd`"; \
+		if [ -f Makefile ]; then $(MAKE) -s distclean; fi; \
 		( autoreconf --force --install || touch * ); \
 		./configure --static -s --prefix=$(OS_ROOT); \
-		make -s all install ; \
-		make -s distclean )
+		$(MAKE) -s all install; \
+		$(MAKE) -s distclean )
 
 _zlib: $(ZLIB)
 

@@ -67,6 +67,7 @@ COBJS = \
 	$(ALIB)(dflt.o) \
 	$(ALIB)(dfmask.o) \
 	$(ALIB)(dfmass.o) \
+	$(ALIB)(dfmfrq.o) \
 	$(ALIB)(dfmiss.o) \
 	$(ALIB)(dfmixr.o) \
 	$(ALIB)(dfmul.o) \

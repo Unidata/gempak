@@ -35,7 +35,7 @@ SUBDIRS = \
 all : INSTALLDIRS
 	@for dir in $(SUBDIRS); do \
 	   ( cd $$dir; echo "Making $@ in `pwd`" ; \
-		$(MAKE) $(MFLAGS) $@ ) ; \
+		$(MAKE) $(MFLAGS) $@ ) || exit $$?; \
 	done
 
 All : all
@@ -71,7 +71,7 @@ install : INSTALLDIRS
 			NODIR) ;; \
 			*) if [ -d $$dir ]; then \
 				(cd $$dir; echo "Making $@ in `pwd`" ; \
-				$(MAKE) $(MFLAGS) $@) ; \
+				$(MAKE) $(MFLAGS) $@) || exit $$?; \
 			   else \
 				echo "Skipping $$dir"; \
 			   fi; \
@@ -85,7 +85,7 @@ install : INSTALLDIRS
 			NODIR) ;; \
 			*) if [ -d $$dir ]; then \
 				(cd $$dir; echo "Making $@ in `pwd`" ; \
-				$(MAKE) $(MFLAGS) $@) ; \
+				$(MAKE) $(MFLAGS) $@) || exit $$?; \
 			   else \
 				echo "Skipping $$dir"; \
 			   fi; \
@@ -101,7 +101,7 @@ clean:
 			NODIR) ;; \
 			*) if [ -d $$dir ]; then \
 				(cd $$dir; echo "Making $@ in `pwd`" ; \
-				$(MAKE) $(MFLAGS) $@) ; \
+				$(MAKE) $(MFLAGS) $@) || exit $$?; \
 			   else \
 				echo "Skipping $$dir"; \
 			   fi; \

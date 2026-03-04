@@ -9,13 +9,13 @@ SUBDIRS = \
 
 all :
 	@for dir in $(SUBDIRS); do \
-	   cd $$dir; pwd; $(MAKE) $(MFLAGS) $@; \
+	   cd $$dir; pwd; $(MAKE) $(MFLAGS) $@ || exit $$?; \
 	done
 
 install:
 
 clean:
 	@for dir in $(SUBDIRS); do \
-	   cd $$dir; pwd; $(MAKE) $(MFLAGS) $@; \
+	   cd $$dir; pwd; $(MAKE) $(MFLAGS) $@ || exit $$?; \
 	done
 

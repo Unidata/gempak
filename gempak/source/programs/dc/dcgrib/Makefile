@@ -63,11 +63,16 @@ $(MANDIR)/man1/$(PROG).1 : $(PROG).1
 	-@cmp -s $? $@ || \
 		($(AUXINSTALL) $? $@ && echo 'updated $@')
 
-nacmn.cmn: 
-	-$(LN) $(GEMPAK)/source/griblib/na/nacmn.cmn .
+nacmn.cmn:
+	@$(RM) -f $@
+	$(LN) $(GEMPAK)/source/griblib/na/nacmn.cmn $@
 
 gbcmn.h:
-	-$(LN) $(GEMPAK)/source/griblib/gb/gbcmn.h .
+	@$(RM) -f $@
+	$(LN) $(GEMPAK)/source/griblib/gb/gbcmn.h $@
+
+put_gem_grid.o: nacmn.cmn
+gemgds.o gempds.o stagger_e.o: gbcmn.h
 
 $(PROG) : $(SYMLINKS) nacmn.cmn gbcmn.h $(PROG_OBJS)
 	$(LINK.f) $(NOFORMAIN) -o $@ \

@@ -29,7 +29,7 @@ all :
 		case $$dir in \
 			NODIR) ;; \
 			*) (cd $$dir; echo -n "making in " ; \
-				pwd ; $(MAKE) $(MFLAGS) $@) ;; \
+				pwd ; $(MAKE) $(MFLAGS) $@) || exit $$? ;; \
 		esac ; \
 	done
 
@@ -38,20 +38,14 @@ programs_nc :
 programs_gf : 
 
 install:
-	@for dir in NODIR $(SUBDIRS); do \
-		case $$dir in \
-			NODIR) ;; \
-			*) (cd $$dir; echo -n "installing in " ; \
-				pwd ; $(MAKE) $(MFLAGS) $@) ;; \
-		esac ; \
-	done
+	@echo "Nothing to install in extlibs (handled during 'all')"
 
 clean: 
 	@for dir in NODIR $(SUBDIRS); do \
 		case $$dir in \
 			NODIR) ;; \
 		*) (cd $$dir; echo -n "making clean in " ; \
-				pwd ; $(MAKE) $(MFLAGS) $@) ;; \
+				pwd ; $(MAKE) $(MFLAGS) $@) || exit $$? ;; \
 		esac ; \
 	done
 

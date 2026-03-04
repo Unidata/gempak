@@ -3,40 +3,37 @@ name: CI
 on: ["push", "pull_request"]
 
 jobs:
-  build_ubuntu:
-    name: Build Ubuntu
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-
-    - name: build
-      run: |
-        sudo apt-get update
-        sudo apt install gcc build-essential libx11-dev libxt-dev libxext-dev libxft-dev libxtst-dev 
-        sudo apt install flex byacc libmotif-common libmotif-dev libxpm4 libxpm-dev
-        sudo apt install gfortran
-        . Gemenviron.profile
-        rm -f config/Makeinc.linux64_gfortran
-        ln -s `pwd`/config/Makeinc.linux64_gfortran_ubuntu config/Makeinc.linux64_gfortran
-        make all
-
   build:
-    name: Build Centos (${{ matrix.OS_VERSION }})
+    name: Build ${{ matrix.os_type }} (${{ matrix.os_version }})
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     strategy:
       matrix:
-        OS_VERSION: ["7", "stream8"]
-    env:
-      OS_VERSION: ${{ matrix.OS_VERSION }}
-      OS_TYPE: "centos"
+        include:
+          - os_type: ubuntu
+            os_version: "24.04"
+            container_image: ubuntu:24.04
+            release_glob: build/dist/*.deb
+          - os_type: almalinux
+            os_version: "8"
+            container_image: quay.io/almalinuxorg/8-base
+            release_glob: build/dist/*.rpm
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
+
+    - name: Pull container image
+      run: |
+        sudo docker pull ${{ matrix.container_image }}
 
     - name: build
       run: |
-        echo 'DOCKER_OPTS="-H tcp://127.0.0.1:2375 -H unix:///var/run/docker.sock -s devicemapper"' | sudo tee /etc/default/docker > /dev/null
-        sudo service docker restart
-        sleep 5
-        sudo docker pull quay.io/centos/${OS_TYPE}:${OS_VERSION}
-        build/setup.sh ${OS_TYPE} ${OS_VERSION}
+        build/setup.sh ${{ matrix.os_type }} ${{ matrix.os_version }}
 
+    - name: Attach assets to GitHub Release
+      if: github.ref_type == 'tag'
+      uses: softprops/action-gh-release@v2
+      with:
+        files: |
+          ${{ matrix.release_glob }}
+        fail_on_unmatched_files: true

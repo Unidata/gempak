@@ -22,6 +22,7 @@ COBJS = \
 	$(ALIB)(pdinmm.o) \
 	$(ALIB)(pdkinx.o) \
 	$(ALIB)(pdknms.o) \
+	$(ALIB)(pdmfrq.o) \
 	$(ALIB)(pdmixr.o) \
 	$(ALIB)(pdmmin.o) \
 	$(ALIB)(pdmskn.o) \

@@ -15,17 +15,17 @@ SUBDIRS = \
 
 all : INCDIR
 	@for dir in $(SUBDIRS); do \
-	   ( cd $$dir; pwd; $(MAKE) $(MFLAGS) $@ ) ; \
+	   ( cd $$dir; pwd; $(MAKE) $(MFLAGS) $@ ) || exit $$?; \
 	done
 
 install:
 	@for dir in $(SUBDIRS); do \
-	   (cd $$dir; pwd; $(MAKE) $(MFLAGS) $@ ) ; \
+	   (cd $$dir; pwd; $(MAKE) $(MFLAGS) $@ ) || exit $$?; \
 	done
 
 clean:
 	@for dir in $(SUBDIRS); do \
-	   (cd $$dir; pwd; $(MAKE) $(MFLAGS) $@ ) ; \
+	   (cd $$dir; pwd; $(MAKE) $(MFLAGS) $@ ) || exit $$?; \
 	done
 
 programs_nc:
