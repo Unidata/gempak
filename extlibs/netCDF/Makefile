@@ -1,6 +1,9 @@
 include $(CONFIGDIR)/$(MAKEINC)
 include makefile.common
 
+NETCDF_CFLAGS = -O2 -w
+NETCDF_CPPFLAGS = -w
+
 NETCDF            = $(OS_LIB)/libnetcdf.a
 
 
@@ -17,8 +20,8 @@ lnetcdf: INSTALLDIR
 	pwd; \
 	touch macros.make; \
 	$(MAKE) distclean ; \
-	./configure --disable-dap '--prefix=$(OS_ROOT)'; \
-	$(MAKE) all install
+	./configure --disable-dap '--prefix=$(OS_ROOT)' 'CFLAGS=$(NETCDF_CFLAGS)' 'CPPFLAGS=$(NETCDF_CPPFLAGS)'; \
+	$(MAKE) -s all install
 
 INSTALLDIR:
 	@echo " Creating $(OS_ROOT)"

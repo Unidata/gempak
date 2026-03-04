@@ -1,5 +1,8 @@
 include $(CONFIGDIR)/$(MAKEINC)
 
+HDF5_CFLAGS = -O2 -w
+HDF5_CPPFLAGS = -w
+
 
 all: $(OS_LIB)/libhdf5.a
 
@@ -13,8 +16,8 @@ _lhdf5: INSTALLDIR
 	-@cd libhdf; \
 	pwd; \
 	$(MAKE) distclean ; \
-	./configure '--prefix=$(OS_ROOT)' '--with-zlib=$(OS_ROOT)' --disable-debug --disable-trace ; \
-	$(MAKE) all install
+	./configure '--prefix=$(OS_ROOT)' '--with-zlib=$(OS_ROOT)' --disable-debug --disable-trace 'CFLAGS=$(HDF5_CFLAGS)' 'CPPFLAGS=$(HDF5_CPPFLAGS)' ; \
+	$(MAKE) -s all install
 
 INSTALLDIR:
 	@echo " Creating $(OS_ROOT)"
