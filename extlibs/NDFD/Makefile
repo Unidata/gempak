@@ -12,7 +12,7 @@ SUBDIRS = \
 all :
 	@for dir in $(SUBDIRS) ; do \
 	   (cd $$dir; echo "making $@ in `pwd` " ; \
-		$(MAKE) $(MFLAGS) $@) ; $(ARSLEEP) \
+		$(MAKE) $(MFLAGS) $@) || exit $$?; $(ARSLEEP) \
 	done
 
 install :
@@ -20,5 +20,5 @@ install :
 clean:
 	@for dir in $(SUBDIRS) ; do \
 	   (cd $$dir; echo "making $@ in `pwd` " ; \
-		$(MAKE) $(MFLAGS) $@) ; \
+		$(MAKE) $(MFLAGS) $@) || exit $$?; \
 	done

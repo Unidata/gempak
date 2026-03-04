@@ -22,6 +22,7 @@ lnetcdf: INSTALLDIR
 	if [ -f Makefile ]; then $(MAKE) distclean ; fi ; \
 	./configure --disable-dap '--prefix=$(OS_ROOT)' 'CFLAGS=$(NETCDF_CFLAGS)' 'CPPFLAGS=$(NETCDF_CPPFLAGS)'; \
 	$(MAKE) -s all install
+	@test -f $(OS_INC)/netcdf.h || (echo "ERROR: expected $(OS_INC)/netcdf.h after netCDF install" >&2; exit 1)
 
 INSTALLDIR:
 	@echo " Creating $(OS_ROOT)"

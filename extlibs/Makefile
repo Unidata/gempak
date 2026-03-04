@@ -38,13 +38,7 @@ programs_nc :
 programs_gf : 
 
 install:
-	@for dir in NODIR $(SUBDIRS); do \
-		case $$dir in \
-			NODIR) ;; \
-			*) (cd $$dir; echo -n "installing in " ; \
-				pwd ; $(MAKE) $(MFLAGS) $@) || exit $$? ;; \
-		esac ; \
-	done
+	@echo "Nothing to install in extlibs (handled during 'all')"
 
 clean: 
 	@for dir in NODIR $(SUBDIRS); do \
