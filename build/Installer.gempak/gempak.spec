@@ -48,6 +48,7 @@ cat source_python.sh
 cat source_python.sh >> build/Installer.gempak/Gemenviron.profile
 . build/Installer.gempak/Gemenviron.profile
 # TODO: ". source_python.sh" doesn't seem to work from spec file
+make extlibs #>& make.extlibs
 make gempak #>& make.gempak
 make install >& /dev/null
 make programs_gf >& /dev/null

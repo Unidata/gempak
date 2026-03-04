@@ -54,6 +54,7 @@ rm -rf Makeinc.linux64_gfortran
 ln -s Makeinc.linux64_gfortran_fedora Makeinc.linux64_gfortran
 popd
 
+make extlibs #>& make.extlibs
 make gempak #>& make.gempak
 make install >& /dev/null
 make programs_gf >& /dev/null
