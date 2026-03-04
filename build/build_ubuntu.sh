@@ -33,11 +33,11 @@ mv "/home/gempak/${srcdir}" /home/gempak/GEMPAK7
 pushd /home/gempak
 cd GEMPAK7
 . Gemenviron.profile
-export PYINC="-I/usr/include/python2.7"
-export PYLIB="-lpython2.7"
-export WITHPY="-DWITHPYTHON"
-export PYDEP="-lpthread -lutil -ldl"
-export LDFLAGS="-L/usr/lib -L$OS_LIB -s"
+export PYINC=""
+export PYLIB=""
+export WITHPY=""
+export PYDEP=""
+export LDFLAGS="-L$OS_LIB -s"
 
 pushd config
 rm -rf Makeinc.linux64_gfortran
