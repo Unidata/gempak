@@ -1,6 +1,11 @@
 <!-- markdownlint-configure-file {"MD024": { "siblings_only": true } } -->
 # Unidata Community GEMPAK Change Log
 
+## Unreleased Version
+
+- Previously when building, `make` errors would not error the build.  This will
+  be changing going forward so to prevent broken builds.  The year is 2026.
+
 ## 7.20.0 (16 Jan 2026)
 
 This release merges NCEP NAWIPS 7.20.0.
