@@ -2,8 +2,6 @@
 #include "gemprm.h"
 #include "xwcmn.h"
 
-void xwrpng ( int *iret );
-
 
 void xclosp ( int *ixsize, int *iysize, int *ncurwn, int *iret )
 /************************************************************************

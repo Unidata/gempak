@@ -35,7 +35,7 @@ if (!winfo_ptr)
     return (-1);
     }
 
-if (setjmp(png_jmpbuf(write_ptr)))
+if (setjmp(write_ptr->jmpbuf))
     {
     png_destroy_write_struct(&write_ptr, &winfo_ptr);
     return (-2);
