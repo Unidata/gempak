@@ -54,7 +54,7 @@ all :
 		case $$dir in \
 			NODIR) ;; \
 			*) (cd $$dir; echo -n "making in " ; \
-				pwd ; $(MAKE) $(MFLAGS) $@) ;; \
+				pwd ; $(MAKE) $(MFLAGS) $@) || exit $$? ;; \
 		esac ; \
 	done
 
@@ -70,7 +70,7 @@ install:
 		case $$dir in \
 			NODIR) ;; \
 			*) (cd $$dir; echo -n "installing in " ; \
-				pwd ; $(MAKE) $(MFLAGS) $@) ;; \
+				pwd ; $(MAKE) $(MFLAGS) $@) || exit $$? ;; \
 		esac ; \
 	done
 
@@ -79,7 +79,7 @@ clean:
 		case $$dir in \
 			NODIR) ;; \
 		*) (cd $$dir; echo -n "making clean in " ; \
-				pwd ; $(MAKE) $(MFLAGS) $@) ;; \
+				pwd ; $(MAKE) $(MFLAGS) $@) || exit $$? ;; \
 		esac ; \
 	done
 
