@@ -28,7 +28,8 @@ LIBINC = \
 	$(XMLLIB) \
 	$(CGEMLIB) \
 	$(PNGLIB) \
-	$(ZLIB)
+	$(ZLIB) \
+	$(LIBREADLINE)
  
 
 .PRECIOUS: $(ALIB)

@@ -66,7 +66,8 @@ LIBINC = \
 	$(GEMLIB) \
 	$(LIBJASPER) \
 	$(PNGLIB) \
-        $(ZLIB)
+        $(ZLIB) \
+	$(LIBREADLINE)
 
 .PRECIOUS: $(ALIB)
 

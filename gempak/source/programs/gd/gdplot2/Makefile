@@ -51,7 +51,8 @@ LIBINC = \
 	$(GEMLIB) \
 	$(CGEMLIB) \
 	$(RSLLIB) \
-	$(LIBBZ2)
+	$(LIBBZ2) \
+	$(LIBREADLINE)
 
 LIBINC_NC = \
 	$(OS_LIB)/sfmap.a \
@@ -74,7 +75,8 @@ LIBINC_NC = \
 	$(GEMLIB) \
 	$(CGEMLIB) \
 	$(RSLLIB) \
-	$(LIBBZ2)
+	$(LIBBZ2) \
+	$(LIBREADLINE)
 
 LIBINC_GF = \
 	$(OS_LIB)/sfmap.a \
@@ -96,7 +98,8 @@ LIBINC_GF = \
 	$(GEMLIB) \
 	$(CGEMLIB) \
 	$(RSLLIB) \
-	$(LIBBZ2)
+	$(LIBBZ2) \
+	$(LIBREADLINE)
 
 LIBINC_GF = \
         $(GEMOLB)/sfmap.a \
@@ -116,7 +119,8 @@ LIBINC_GF = \
         $(XMLLIB) \
         $(ZLIB) \
         $(RSLLIB) \
-        $(LIBBZ2)
+        $(LIBBZ2) \
+	$(LIBREADLINE)
 
 LIBINC_GIF = \
 	$(OS_LIB)/sfmap.a \
@@ -136,7 +140,8 @@ LIBINC_GIF = \
         $(XMLLIB) \
 	$(ZLIB) \
 	$(RSLLIB) \
-	$(LIBBZ2)
+	$(LIBBZ2) \
+	$(LIBREADLINE)
 
 LIBINC_PS = \
 	$(OS_LIB)/sfmap.a \
@@ -157,7 +162,8 @@ LIBINC_PS = \
         $(XMLLIB) \
 	$(ZLIB) \
 	$(RSLLIB) \
-	$(LIBBZ2)
+	$(LIBBZ2) \
+	$(LIBREADLINE)
 
 LIBINC_PNG = \
         $(OS_LIB)/sfmap.a \
@@ -180,7 +186,8 @@ LIBINC_PNG = \
         $(XMLLIB) \
         $(ZLIB) \
         $(LIBBZ2) \
-        $(CGEMLIB)
+        $(CGEMLIB) \
+	$(LIBREADLINE)
 
 LIBINC_XW = \
 	$(OS_LIB)/sfmap.a \
@@ -201,7 +208,8 @@ LIBINC_XW = \
         $(XMLLIB) \
 	$(ZLIB) \
 	$(RSLLIB) \
-	$(LIBBZ2)
+	$(LIBBZ2) \
+	$(LIBREADLINE)
 
 PROG_NC = $(PROG)_nc
 PROG_GF = $(PROG)_gf

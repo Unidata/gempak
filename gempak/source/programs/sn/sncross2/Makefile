@@ -77,7 +77,8 @@ LIBINC = \
 	$(PNGLIB) \
         $(XMLLIB) \
         $(ZLIB) \
-	$(CGEMLIB)
+	$(CGEMLIB) \
+	$(LIBREADLINE)
 
 LIBINC_NC = \
 	$(GPLT_NC) \
@@ -93,7 +94,8 @@ LIBINC_NC = \
 	$(PNGLIB) \
         $(XMLLIB) \
         $(ZLIB) \
-        $(CGEMLIB)
+        $(CGEMLIB) \
+	$(LIBREADLINE)
 
 LIBINC_GF = \
 	$(GPLT_NC) \
@@ -110,7 +112,8 @@ LIBINC_GF = \
 	$(PNGLIB) \
         $(XMLLIB) \
         $(ZLIB) \
-        $(CGEMLIB)
+        $(CGEMLIB) \
+	$(LIBREADLINE)
 
 PROG_NC = $(PROG)_nc
 PROG_GF = $(PROG)_gf

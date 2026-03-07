@@ -26,7 +26,8 @@ LIBINC = \
         $(XMLLIB) \
 	$(ZLIB) \
 	$(RSLLIB) \
-	$(LIBBZ2)
+	$(LIBBZ2) \
+	$(LIBREADLINE)
 
 LIBINC_NC = \
 	$(GPLT_NC) \
@@ -43,7 +44,8 @@ LIBINC_NC = \
         $(XMLLIB) \
 	$(ZLIB) \
 	$(RSLLIB) \
-	$(LIBBZ2)
+	$(LIBBZ2) \
+	$(LIBREADLINE)
 
 LIBINC_GF = \
 	$(GPLT_NC) \
@@ -61,7 +63,8 @@ LIBINC_GF = \
         $(XMLLIB) \
 	$(ZLIB) \
 	$(RSLLIB) \
-	$(LIBBZ2)
+	$(LIBBZ2) \
+	$(LIBREADLINE)
 
 PROG_NC = $(PROG)_nc
 PROG_GF = $(PROG)_gf

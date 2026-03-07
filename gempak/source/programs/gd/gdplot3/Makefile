@@ -61,7 +61,8 @@ LIBINC = \
 	$(GEMLIB) \
 	$(CGEMLIB) \
 	$(RSLLIB) \
-	$(LIBBZ2)
+	$(LIBBZ2) \
+	$(LIBREADLINE)
 
 LIBINC_NC = \
 	$(OS_LIB)/gdstream.a \
@@ -83,7 +84,8 @@ LIBINC_NC = \
         $(GEMLIB) \
 	$(CGEMLIB) \
 	$(RSLLIB) \
-	$(LIBBZ2)
+	$(LIBBZ2) \
+	$(LIBREADLINE)
 
 LIBINC_GF = \
 	$(OS_LIB)/gdstream.a \
@@ -105,7 +107,8 @@ LIBINC_GF = \
         $(GEMLIB) \
 	$(CGEMLIB) \
 	$(RSLLIB) \
-	$(LIBBZ2)
+	$(LIBBZ2) \
+	$(LIBREADLINE)
 
 LIBINC_GIF = \
 	$(OS_LIB)/gdstream.a \
@@ -124,7 +127,8 @@ LIBINC_GIF = \
 	$(PNGLIB) \
 	$(ZLIB) \
 	$(RSLLIB) \
-	$(LIBBZ2)
+	$(LIBBZ2) \
+	$(LIBREADLINE)
 
 LIBINC_XW = \
 	$(OS_LIB)/sfmap.a \
@@ -144,7 +148,8 @@ LIBINC_XW = \
 	$(PNGLIB) \
 	$(ZLIB) \
 	$(RSLLIB) \
-	$(LIBBZ2)
+	$(LIBBZ2) \
+	$(LIBREADLINE)
 
 PROG_NC = $(PROG)_nc
 PROG_GF = $(PROG)_gf

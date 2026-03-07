@@ -20,7 +20,8 @@ LIBINC = \
 	$(XMLLIB) \
         $(ZLIB) \
         $(GEMLIB) \
-        $(CGEMLIB)
+        $(CGEMLIB) \
+	$(LIBREADLINE)
 
 FLIBMODS = \
 	$(OLIB)(gdtdsp.o) \
