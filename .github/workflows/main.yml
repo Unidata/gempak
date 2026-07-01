@@ -20,7 +20,7 @@ jobs:
             container_image: quay.io/almalinuxorg/8-base
             release_glob: build/dist/*.rpm
     steps:
-    - uses: actions/checkout@v6
+    - uses: actions/checkout@v7
 
     - name: Pull container image
       run: |
@@ -32,7 +32,7 @@ jobs:
 
     - name: Attach assets to GitHub Release
       if: github.ref_type == 'tag'
-      uses: softprops/action-gh-release@v2
+      uses: softprops/action-gh-release@v3
       with:
         files: |
           ${{ matrix.release_glob }}
